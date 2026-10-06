@@ -34,56 +34,21 @@
 <script src="../assets/hub-progress.js" defer></script>
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
+<script src="../assets/course/hub.js" defer></script>
 <script src="../assets/exam-date.js" defer></script>
 <script src="assets/ochem-xp.js" defer></script>
 <link rel="stylesheet" href="assets/ochem.css">
 <link rel="stylesheet" href="assets/periodic-table.css">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../assets/course/base.css">
+<link rel="stylesheet" href="../assets/course/hub.css">
 <style>
-  .section-head{
-    font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
-    color:var(--muted);margin:26px 0 10px;
-  }
-  /* `.section-head` is centred, which suits the marketing home pages it was
-     built for. On a dashboard it put a centred label above left-aligned cards,
-     so the eye kept switching axis. Left-align it here only. */
-  .xshell .section-head{text-align:left;}
-  /* Concept map on the left; level, quests and badges stacked on the right. */
-  .mastery-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 36px;align-items:start;}
-  .mastery-main,.mastery-side{min-width:0;}
-  .mastery-side .game-grid{grid-template-columns:1fr;}
-  .mastery-lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px;align-items:start;}
-  .mastery-lists .section-head{margin-top:26px;}
-  .mastery-lists > div:has(> [hidden]){display:none;}
-  .mastery-side .badge-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
-  @media (max-width:900px){
-    .mastery-grid,.mastery-lists{grid-template-columns:1fr;}
-    .mastery-side{margin-top:26px;}
-  }
-
-  /* Width is the shell's job now — this page used to cap itself at 760px
-     while Home and Tools ran the full shell, so the course changed width
-     as you moved through it. */
-  /* Space held for the cards the script draws, so the page does not jump
-     when they land (audit 2026-10, layout shift: CLS 0.74 on a phone). */
-  #overallCard:empty{min-height:98px;}
-  /* The main column on a phone: the overall card and, for a free reader, the
-     Premium card the script adds under it. Content only ever exceeds it. */
-  @media (max-width:640px){ #overallCard:empty{min-height:132px;} .mastery-main{min-height:470px;} }
-  .overall-card{
-    background:var(--navy);color:#fff;border-radius:22px;padding:28px clamp(20px,4vw,34px);
-    display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:22px;
-  }
-  .overall-card .big{font:900 44px var(--font-ui);}
-  .overall-card .k{color:var(--muted-on-dark);font:800 12px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;}
-  .rec-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:26px;}
-  .rec-card{
-    flex:1 1 220px;background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius);
-    padding:16px 18px;box-shadow:var(--lift-sm);
-  }
-  .rec-card .k{font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-  .rec-card .v{font:900 15px var(--font-ui);}
-  .rec-card a{color:var(--accent);text-decoration:none;}
+  /* Space held for the tiles the script draws, so the page does not jump
+     when they land (audit 2026-10, layout shift). */
+  #ocStats:empty{min-height:98px;}
+  @media (max-width:640px){ #ocStats:empty{min-height:190px;} }
+  #ocDash > div:empty:not(#ocStats),#ocDash .cx-db-col > div:empty{display:none;}
+  .dep-alert{margin:0;}
 </style>
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
@@ -124,50 +89,39 @@
 <div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Dashboard</span></nav></div>
 <!-- crumb:end -->
 
-<div class="xshell narrow">
-  <div class="hero">
+<div class="xshell">
+  <header class="page-head">
     <div class="eyebrow">Organic Chemistry</div>
-    <h1 style="margin-bottom:4px;">Mastery, not a readiness score.</h1>
-    <p class="lede" style="margin-top:0;">Built from every question you've answered, not from lessons opened.</p>
-  </div>
+    <h1>Dashboard</h1>
+    <p>Mastery, not a readiness score: built from every question you have answered, not from lessons opened.</p>
+  </header>
   <div data-levl-cross="ochem"></div>
   <script>document.addEventListener('DOMContentLoaded', function(){ var el = document.querySelector('[data-levl-cross]'); if(window.LevlLazy && /"m":\{"/.test(localStorage.getItem('levlprep_cross') || '')) window.LevlLazy('cross-course', function(X){ X.offer(el, 'ochem'); }); });</script>
 
-  <div class="xsection mastery-grid" style="padding-top:0;">
-    <div class="mastery-main">
-      <div class="section-head" style="margin-top:0;">Where you actually stand</div>
-      <noscript><div class="site-nav-fallback"><p>Mastery is computed in your browser from every question you have answered, so this page has nothing to show without JavaScript. The course itself is in the <a href="learn.html">textbook</a> and the <a href="index.html">lessons</a>.</p></div></noscript>
-      <div class="overall-card" id="overallCard"></div>
-      <div id="masterySnapshot"></div>
-      <div id="leechAlerts"></div>
-      <div id="dependencyAlerts"></div>
-      <div class="rec-row" id="recRow"></div>
-      <div class="section-head" id="weakHead">Weakest concepts</div>
-      <div id="weakConcepts"></div>
-    </div>
-    <aside class="mastery-side">
-      <div id="examDateCard"></div>
-      <div id="gameLevel"></div>
-      <div class="game-grid">
+  <!-- The shared dashboard (assets/course/hub.css): mastery-page.js and
+       game-panel.js fill these slots from the concept model and ochem-xp. -->
+  <div class="cx-db" id="ocDash">
+    <noscript><div class="site-nav-fallback"><p>Mastery is computed in your browser from every question you have answered, so this page has nothing to show without JavaScript. The course itself is in the <a href="learn.html">textbook</a> and the <a href="index.html">lessons</a>.</p></div></noscript>
+    <div id="ocStats"></div>
+    <div id="ocStart"></div>
+    <div id="recRow"></div>
+    <div id="examDateCard"></div>
+    <div class="cx-db-grid">
+      <div class="cx-db-col">
+        <div id="leechAlerts"></div>
+        <div id="dependencyAlerts"></div>
+        <div id="weakConcepts"></div>
+        <div id="moduleStats"></div>
+        <div id="familyStats"></div>
+      </div>
+      <aside class="cx-db-col" aria-label="Level, Rounds and badges">
+        <div id="gameLevel"></div>
         <div id="gameRounds"></div>
         <div id="gameDebt"></div>
-      </div>
-      <div id="gameConcepts"></div>
-      <div class="section-head">Achievements</div>
-      <div class="badge-grid" id="gameAchievements"></div>
-    </aside>
-  </div>
-
-  <!-- The two long lists sit side by side under both columns, so neither
-       column runs on alone with empty space beside it. -->
-  <div class="xsection mastery-lists" style="padding-top:0;">
-    <div>
-      <div class="section-head" id="moduleHead">By module</div>
-      <div id="moduleStats"></div>
-    </div>
-    <div>
-      <div class="section-head" id="familyHead">By concept family</div>
-      <div id="familyStats"></div>
+        <div id="gameConcepts"></div>
+        <div id="gameAchievements"></div>
+        <div id="ocPremium"></div>
+      </aside>
     </div>
   </div>
   <!-- Milestones and certificates (assets/milestones.js, fetched on demand). -->

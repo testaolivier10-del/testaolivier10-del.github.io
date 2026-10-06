@@ -231,7 +231,7 @@ async function flowAnpSearch() {
     const box = page.locator('form.anp-toc-search input[name="q"]').first();
     await box.fill('sodium', { force: true });
     await Promise.all([page.waitForURL(/search\.html\?q=sodium/, { timeout: 15000 }), box.press('Enter')]);
-    await page.waitForSelector('#anp-sr-results .anp-sr-hit', { timeout: 15000 });
+    await page.waitForSelector('#anp-sr-results .cx-sr-hit', { timeout: 15000 });
     const status = await page.textContent('#anp-sr-status');
     if (/did not load/i.test(status || '')) problems.push(`search status: ${status}`);
   } catch (e) {

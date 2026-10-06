@@ -11,7 +11,7 @@
   var XP = window.OchemXP;
   var HP = window.HubProgress;
   var M = window.OchemMastery;
-  if(!XP || !HP) return;
+  if(!XP || !HP || !window.LevlHub) return;
 
   var base = window.OCHEM_BASE || '';
 
@@ -26,30 +26,14 @@
   /* ---- level ---------------------------------------------------------- */
 
   function renderLevel(){
+    var H = window.LevlHub;
+    if(!H) return;
     var info = HP.levelInfo('ochem');
     var streak = HP.streak();
-    var fill = Math.round(info.into / info.span * 100);
     var mine = info.subjects.ochem || 0;
     // The level is site-wide, so say so plainly rather than implying this
     // course earned all of it.
-    var elsewhere = info.total - mine;
-    var note = elsewhere > 0
-      ? '<p class="game-note">' + mine + ' XP here, ' + elsewhere + ' elsewhere. One level across every subject.</p>'
-      : '';
-    set('gameLevel',
-      '<div class="game-level">' +
-        '<div class="game-level-top">' +
-          '<span class="game-ring">L' + info.level + '</span>' +
-          '<div>' +
-            '<p class="game-level-title">' + esc(info.title) + '</p>' +
-            '<p class="game-level-sub">' + info.total + ' XP total' +
-              (streak.current ? ' &middot; ' + streak.current + '-day streak' : '') + '</p>' +
-          '</div>' +
-        '</div>' +
-        '<div class="game-track"><div class="game-fill" style="width:' + fill + '%"></div></div>' +
-        '<p class="game-level-sub">' + info.into + ' / ' + info.span + ' XP to Level ' + (info.level + 1) + '</p>' +
-        note +
-      '</div>');
+    set('gameLevel', H.level(info, { xpLine: mine.toLocaleString() + ' XP earned in Organic Chemistry &middot; ' + info.total.toLocaleString() + ' site-wide', sub: [H.streakLine(streak)] }));
   }
 
   /* ---- daily Rounds ---------------------------------------------------- */
@@ -58,22 +42,12 @@
     var q = XP.quest();
     var streak = XP.roundsStreak(false);
     var done = Math.min(q.done, q.target);
-    var pct = Math.round(done / q.target * 100);
     var complete = q.done >= q.target;
-    var body = complete
-      ? '<p class="game-card-body">Done for today. Tomorrow refills from what’s due next.</p>'
-      : '<p class="game-card-body">' + plural(q.target - done, 'question') + ' to go, from what’s due today.</p>';
-    set('gameRounds',
-      '<div class="game-card' + (complete ? ' done' : '') + '">' +
-        '<div class="game-card-head">' +
-          '<span class="game-card-title">Daily Rounds</span>' +
-          '<span class="game-pill">' + done + ' / ' + q.target + '</span>' +
-        '</div>' +
-        '<div class="game-track sm"><div class="game-fill" style="width:' + pct + '%"></div></div>' +
-        body +
-        (streak > 1 ? '<p class="game-note">' + streak + ' days of Rounds in a row.</p>' : '') +
-        (complete ? '' : '<a class="game-cta" href="' + base + 'review.html">Start Rounds &rarr;</a>') +
-      '</div>');
+    set('gameRounds', window.LevlHub.panel({ id: 'oc-rounds', title: 'Daily Rounds',
+      body: window.LevlHub.row({ label: 'Today', value: done / q.target, text: done + ' / ' + q.target, tier: complete ? { label: 'Done', lvl: 4 } : null,
+          note: complete ? 'Done for today. Tomorrow refills from what’s due next.' : plural(q.target - done, 'question') + ' to go, from what’s due today.',
+          action: complete ? null : { href: base + 'review.html', label: 'Start Rounds' } }) +
+        (streak > 1 ? '<p class="cx-hint" style="margin:6px 0 0">' + streak + ' days of Rounds in a row.</p>' : '') }));
   }
 
   /* ---- review debt ------------------------------------------------------ */
@@ -91,17 +65,10 @@
     // Deliberately not a streak: missing a day costs nothing, it just shows
     // you the backlog. A meter you can always empty beats a counter you can
     // permanently lose.
-    set('gameDebt',
-      '<div class="game-card debt-' + d.level + '">' +
-        '<div class="game-card-head">' +
-          '<span class="game-card-title">Review debt</span>' +
-          '<span class="game-pill">' + copy.label + '</span>' +
-        '</div>' +
-        '<p class="game-big">' + d.count + '</p>' +
-        '<p class="game-card-body">' + (d.count ? plural(d.count, 'concept') + ' due' +
-          (d.worstDays > 0 ? ', the oldest ' + plural(d.worstDays, 'day') + ' past due. ' : '. ') : '') +
-          copy.line + '</p>' +
-      '</div>');
+    var lvl = { clear: 4, light: 3, building: 2, heavy: 1 }[d.level] || 0;
+    set('gameDebt', window.LevlHub.panel({ id: 'oc-debt', title: 'Review debt',
+      body: '<div class="cx-row" style="border-top:0"><div class="cx-row-top"><span class="cx-row-name">' + plural(d.count, 'concept') + ' due</span><span class="cx-row-val">' + window.LevlHub.chip({ label: copy.label, lvl: lvl }) + '</span></div>' +
+        '<div class="cx-row-foot"><span>' + (d.worstDays > 0 ? 'The oldest is ' + plural(d.worstDays, 'day') + ' past due. ' : '') + copy.line + '</span></div></div>' }));
   }
 
   /* ---- concept badges ---------------------------------------------------- */
@@ -109,35 +76,22 @@
   function renderConceptBadges(){
     var counts = XP.conceptTierCounts();
     var total = M && window.OchemConcepts ? window.OchemConcepts.ALL.length : 0;
-    var rows = XP.CONCEPT_TIERS.map(function(t, i){
+    var rows = XP.CONCEPT_TIERS.map(function(t){
       var n = counts[t.key];
-      var pct = total ? Math.round(n / total * 100) : 0;
-      return '<div class="tier-row">' +
-        '<span class="tier-name tier-' + t.key + '">' + esc(t.label) + '</span>' +
-        '<div class="game-track sm"><div class="game-fill" style="width:' + pct + '%"></div></div>' +
-        '<span class="tier-count">' + n + (total ? ' / ' + total : '') + '</span>' +
-      '</div>';
+      return window.LevlHub.row({ label: t.label, value: total ? n / total : 0, text: n + (total ? ' / ' + total : '') });
     }).join('');
-    set('gameConcepts',
-      '<div class="game-card">' +
-        '<div class="game-card-head"><span class="game-card-title">Concept badges</span></div>' +
-        '<p class="game-card-body">Earned on strength, not accuracy. Strength decays; a badge doesn’t.</p>' +
-        rows +
-      '</div>');
+    set('gameConcepts', window.LevlHub.panel({ id: 'oc-tiers', title: 'Concept badges', hint: 'Earned on strength, not accuracy. Strength decays; a badge doesn’t.', body: rows }));
   }
 
   /* ---- achievements ------------------------------------------------------ */
 
   function renderAchievements(){
     var list = XP.achievements();
-    set('gameAchievements', list.map(function(a){
-      // Its own icon, greyed until earned, rather than one lock for all
-      // (audit 2026-10); the blurb says how to earn it.
-      return '<div class="badge' + (a.earned ? '' : ' is-locked') + '" title="' + esc(a.blurb) + '" role="img" aria-label="' + esc(a.label + ': ' + (a.earned ? 'earned' : 'not yet. ' + a.blurb)) + '">' +
-        '<div class="badge-circle' + (a.earned ? '' : ' locked') + '" aria-hidden="true">' + a.icon + '</div>' +
-        '<span aria-hidden="true">' + esc(a.label) + '</span>' +
-      '</div>';
-    }).join(''));
+    // Each with its own icon, greyed until earned (audit 2026-10); the blurb
+    // says how to earn it.
+    set('gameAchievements', window.LevlHub.badges(list.map(function(a){
+      return { icon: a.icon, label: a.label, earned: a.earned, title: a.blurb, aria: a.label + ': ' + (a.earned ? 'earned' : 'not yet. ' + a.blurb) };
+    }), { id: 'oc-ach', title: 'Achievements' }));
   }
 
   renderLevel();

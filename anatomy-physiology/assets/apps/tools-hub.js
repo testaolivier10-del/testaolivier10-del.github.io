@@ -28,14 +28,7 @@
   }
   function unitWord(el, n){ var u = (el.getAttribute('data-unit') || 'item,items').split(','); return n === 1 ? u[0] : u[1]; }
 
-  function statusHtml(slug){
-    if(!A) return '';
-    var s = A.toolStats(slug);
-    if(!s || !s.n) return '<span class="anp-hub-stat is-new">Not tried yet</span><span class="track thin anp-hub-track" aria-hidden="true"><i style="width:0%"></i></span>';
-    var p = Math.round(s.c / s.n * 100);
-    return '<span class="anp-hub-stat"><b>' + p + '%</b> right &middot; ' + s.c + ' of ' + s.n + ' items</span>' +
-      '<span class="track thin anp-hub-track" aria-hidden="true"><i style="width:' + p + '%"></i></span>';
-  }
+  function statusHtml(slug){ return A && window.LevlHub ? window.LevlHub.toolStatus(A.toolStats(slug)) : ''; }
 
   var tools = Array.prototype.slice.call(app.querySelectorAll('[data-tool]'));
 
@@ -48,7 +41,7 @@
     }
     tools.forEach(function(el){
       var n = counts(el)[chapter.id] || 0;
-      var countEl = el.querySelector('.anp-hub-count');
+      var countEl = el.querySelector('.cx-tool-count');
       if(countEl) countEl.innerHTML = n ? '<b>' + n + '</b> ' + esc(unitWord(el, n)) + ' in this chapter' : 'None in this chapter yet';
       el.classList.toggle('is-empty', !n);
       if(n && el.hasAttribute('data-chq')){
@@ -63,16 +56,16 @@
 
   function render(){
     tools.forEach(function(el){
-      var st = el.querySelector('.anp-hub-status');
+      var st = el.querySelector('.cx-tool-status');
       if(st) st.innerHTML = statusHtml(el.getAttribute('data-tool'));
     });
   }
-  // The Premium pill on each Premium tool, beside its link (never inside it).
+  // The Premium pill on each Premium tool: in the card's top row (a span, as
+  // the card is a link), or in the featured block's kicker (a button).
   if(A && A.badge) tools.forEach(function(el){
-    var b = el.hasAttribute('data-premium') && A.badge();
-    if(!b) return;
-    if(el.matches('a')){ el.parentNode.classList.add('anp-hub-p'); el.insertAdjacentHTML('afterend', b); }
-    else el.querySelector('.anp-hub-feat-kick').insertAdjacentHTML('beforeend', ' ' + b);
+    if(!el.hasAttribute('data-premium') || !A.badge()) return;
+    if(el.matches('a')){ var top = el.querySelector('.cx-tool-top'); if(top) top.insertAdjacentHTML('beforeend', '<span class="premium-badge">Premium</span>'); }
+    else el.querySelector('.cx-feat-kick').insertAdjacentHTML('beforeend', ' ' + A.badge());
   });
   applyChapter();
   render();

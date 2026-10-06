@@ -25,6 +25,7 @@
    "ap" (spec decision 2). */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
+import { Hub } from './lib/hub.mjs';
 import { courseTitle } from './lib/page-title.mjs';
 import { premiumData, lockedLd, courseOffers } from './lib/premium-data.mjs';
 import {
@@ -596,20 +597,20 @@ ${bodyOpen()}
   </header>
 
   <section class="xsection" aria-label="What to do now">
-    <div class="bio-now-row">
-      <div class="bio-now-card" id="bioStart">
+    <div class="bio-now-row cx-now-row">
+      <div class="bio-now-card cx-now-card" id="bioStart">
         <div class="k">Start here</div>
         ${first ? `<h2>${esc(first.title)}</h2>
         <p>${esc(unitLabel(firstCh))} &middot; ${esc(firstCh.title)}.${freeUnitsText ? ` ${freeUnitsText} lessons and every notes page are free.` : ' Every notes page is free.'}</p>
         <a class="btn-press" href="lessons/${first.id}.html">Start the first lesson</a>` : `<h2>Pick any unit</h2><p>Every notes page is free.</p>`}
       </div>
-      <div class="bio-now-card" id="bioReview">
+      <div class="bio-now-card cx-now-card" id="bioReview">
         <div class="k">Review queue</div>
         <h2>Missed questions come back</h2>
         <p>Anything you miss returns when you are about to forget it, not on a fixed date.</p>
         <a class="link-quiet" href="review.html">Open review &rarr;</a>
       </div>
-      <div class="bio-now-card" id="bioGoal">
+      <div class="bio-now-card cx-now-card" id="bioGoal">
         <div class="k">Today&rsquo;s goal</div>
         <h2>A little every day</h2>
         <p>Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject.${dailyFree ? ` ${dailyFree} practice questions a day are free.` : ''}</p>
@@ -688,17 +689,56 @@ ${tail({ depth, section: 'home', extra: ['bio-home.js'] })}
 </body>
 </html>
 `;
-    return head({ title, desc, path: '', depth, ogType: 'website', jsonld, noindex, meta: '<link rel="stylesheet" href="assets/bio-home.css">\n' }) + body;
+    return head({ title, desc, path: '', depth, ogType: 'website', jsonld, noindex, meta: '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<link rel="stylesheet" href="assets/bio-home.css">\n' }) + body;
   }
 
   /* --------------------------------------------------- app page shells */
   // Pages that show one student's own state are never indexed; the cram kit
   // is one (a plan from their exam date and mastery; docs/apbio-spec.md decision 26).
   const STATE_PAGES = new Set(['dashboard', 'review', 'search', 'cram']);
+  /* ---- Tools hub (docs/course-shell.md, W-D): every published tool as the
+     shared tool card (assets/course/hub.js), grouped by kind, written into
+     the page so it reads and links without JavaScript. pages/tools.js adds
+     each tool's "Not tried yet" or accuracy and the Premium pills. */
+  const HUB_PAGES = new Set(['dashboard', 'search', 'tools']);
+  const TOOL_ICON = {
+    simulator: '<path d="M9 3v6L4 19a1.6 1.6 0 0 0 1.4 2h13.2A1.6 1.6 0 0 0 20 19l-5-10V3"/><path d="M7.5 3h9M6.7 14h10.6"/>',
+    skill: '<path d="M4 4v16h16"/><path d="M7 15l4-4 3 3 5-6"/>',
+    drill: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/>',
+    osmosis: '<path d="M12 3c3 4.5 6 7.6 6 11a6 6 0 0 1-12 0c0-3.4 3-6.5 6-11z"/>',
+    'enzyme-activity': '<path d="M4 18c3 0 4-12 8-12s5 12 8 12"/>',
+    'cell-cycle-checkpoints': '<path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4.5h-4.5"/>',
+    'tree-reading': '<path d="M12 21v-7M12 14l-6-6M12 14l6-6M6 8V4M18 8V4"/>',
+    'population-growth': '<path d="M4 20h16"/><path d="M5 18c6 0 7-12 14-13"/>',
+    'chi-square': '<path d="M5 5l6 8M11 5l-6 8M14 19h6M17 13v6"/>',
+    'graph-builder': '<path d="M4 4v16h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/>',
+  };
+  const TOOL_GROUPS = [
+    { kind: 'simulator', h: 'Simulators', p: 'Change a variable, watch what happens, then answer questions about it.' },
+    { kind: 'skill', h: 'Skills tools', p: 'The math and data skills the exam tests, with worked steps.' },
+    { kind: 'drill', h: 'Drills', p: 'Short practice on experimental design.' },
+  ];
+  function toolsHub() {
+    const live = (C.pages.tools || []).filter(toolLive);
+    const topicTitle = t => { const id = JSON.parse(readFileSync(join(C.data, 'tools', `${t.slug}.json`), 'utf8')).topic; const x = map.topicById(id); return x ? x.title : ''; };
+    const groups = TOOL_GROUPS.map(g => ({ ...g, tools: live.filter(t => t.kind === g.kind) })).filter(g => g.tools.length);
+    return `
+  <div class="cx-tools">
+  ${groups.map(g => `<div class="cx-tools-h"><h2>${esc(g.h)}</h2><p>${esc(g.p)}</p></div>
+  ${Hub.toolGrid(g.tools.map(t => ({
+    href: `tools/${t.slug}.html`, name: t.name, desc: t.blurb, icon: TOOL_ICON[t.slug] || TOOL_ICON[t.kind], stroke: true,
+    attrs: ` data-tool="${t.slug}"${t.premium ? ' data-premium="1"' : ''}`, foot: esc(topicTitle(t)), status: '',
+  })), g.h)}`).join('\n  ')}
+  <p class="cx-tools-note">Every tool records what you answer: missed questions go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="dashboard.html">dashboard</a>.</p>
+  </div>
+  `;
+  }
+
   function appShell(a) {
     const depth = '', path = `${a.slug}.html`, url = `${SITE}${BASE}${path}`;
     const scriptOk = a.script && existsSync(join(ROOT, 'bio', 'assets', a.script));
     const cssOk = a.css && existsSync(join(ROOT, 'bio', 'assets', a.css));
+    const hub = HUB_PAGES.has(a.slug);
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'WebPage', '@id': `${url}#page`, name: a.h1, url, description: a.desc, isPartOf: { '@id': COURSE_ID } },
       crumbs(orgCrumbs([{ name: a.h1, url }])),
@@ -707,13 +747,15 @@ ${tail({ depth, section: 'home', extra: ['bio-home.js'] })}
 ${bodyOpen(` data-app="${a.slug}"`)}
 <main id="main" class="xshell bio-app">
   ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: a.h1 }])}
-  <header class="hero bio-hero"><div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div><h1>${esc(a.h1)}</h1><p class="lede">${esc(a.lede || a.desc)}</p></header>
-  <div id="app" class="bio-app-mount" data-slug="${a.slug}"${a.premium ? ` data-premium="${a.premium}"` : ''}>${scriptOk
+  ${hub
+    ? `<header class="page-head"><div class="eyebrow">${COURSE_HTML} <span class="cx-beta">Beta</span></div><h1>${esc(a.h1)}</h1><p>${esc(a.lede || a.desc)}</p></header>`
+    : `<header class="hero bio-hero"><div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div><h1>${esc(a.h1)}</h1><p class="lede">${esc(a.lede || a.desc)}</p></header>`}
+  <div id="app" class="bio-app-mount" data-slug="${a.slug}"${a.premium ? ` data-premium="${a.premium}"` : ''}>${a.slug === 'tools' ? toolsHub() : scriptOk
     ? '<noscript><p>This page needs JavaScript. Every notes page works without it.</p></noscript>'
     : `<p class="bio-soon">This page arrives with the first published unit. Meanwhile, read the <a href="learn.html">free notes</a>.</p>`}</div>
 </main>
 ${footer(depth, `page:${a.slug}`)}
-${cssOk ? `<link rel="stylesheet" href="assets/${a.css}">\n` : ''}${tail({ depth, section: a.section, extra: ['bio-questions.js', ...(scriptOk ? [a.script] : [])], premium: true, site: a.siteScripts || [] })}
+${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<script src="../assets/course/hub.js" defer></script>\n' : ''}${cssOk ? `<link rel="stylesheet" href="assets/${a.css}">\n` : ''}${tail({ depth, section: a.section, extra: ['bio-questions.js', ...(scriptOk ? [a.script] : [])], premium: true, site: a.siteScripts || [] })}
 </body>
 </html>
 `;

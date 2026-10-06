@@ -857,24 +857,21 @@ if (existsSync(curriculumPath)) {
   }
 }
 
-// ---- 9. The static tool tiles on ochem/tools.html match the registry ----
-// tools.html carries the seven tiles as markup so a crawler or a reader
-// with scripts off still gets the list; tools-page.js re-renders the same
-// markup from tools-registry.js on load. If a tool is added to the registry
-// and not the page, the two versions of the page disagree.
+// ---- 9. The static tool cards on ochem/tools.html match the registry ----
+// tools.html carries one shared tool card (assets/course/hub.js) per tool,
+// written by scripts/build-tool-pages.mjs (whose --check catches stale
+// markup). This catches a tool added to the registry with the page never
+// regenerated, or a card edited by hand.
 const registryPath = join(ROOT, 'ochem', 'assets', 'tools-registry.js');
 const toolsPagePath = join(ROOT, 'ochem', 'tools.html');
 if (existsSync(registryPath) && existsSync(toolsPagePath)) {
   const w = {};
   new Function('window', readFileSync(registryPath, 'utf8'))(w);
-  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const wanted = w.OchemTools.ALL.map(t =>
-    `<a class="tool-tile" href="tools/${esc(t.slug)}.html"><span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true">${t.icon}</svg></span><span class="tool-tile__name">${esc(t.name)}</span><span class="tool-tile__tag">${esc(t.tagline)}</span><span class="tool-tile__blurb">${esc(t.blurb)}</span><span class="tool-tile__foot"><span>${esc(t.teaches)}</span><span class="tool-tile__go">Open &rarr;</span></span></a>`
-  );
+  const wanted = w.OchemTools.ALL.map(t => `tools/${t.slug}.html`);
   const page = readFileSync(toolsPagePath, 'utf8');
-  const have = [...page.matchAll(/<a class="tool-tile"[\s\S]*?<\/a>/g)].map(m => m[0]);
+  const have = [...page.matchAll(/<a class="cx-tool" href="([^"]+)"/g)].map(m => m[1]);
   if (have.length !== wanted.length || have.some((h, i) => h !== wanted[i])) {
-    fail(`ochem/tools.html: the static tool tiles differ from tools-registry.js (${have.length} on the page, ${wanted.length} in the registry). Regenerate them from the registry.`);
+    fail(`ochem/tools.html: the tool cards differ from tools-registry.js (${have.length} on the page, ${wanted.length} in the registry). Run node scripts/build-tool-pages.mjs.`);
   }
 }
 
