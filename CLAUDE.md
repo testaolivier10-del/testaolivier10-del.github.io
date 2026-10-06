@@ -17,6 +17,11 @@ review; add to it instead of guessing.
 before AP® Biology work and update it in the same commit. Formats: `docs/apbio-architecture.md`; writing rules:
 `docs/apbio-authoring-guide.md`; contested science: `docs/apbio-needs-author.md`; reviews: `docs/apbio-reviews/`.
 
+## AP® Chemistry course
+
+`docs/apchem-spec.md` is the source of truth (research summary, positioning, continuity rules, build plan, decisions);
+read it before AP® Chemistry work and update it in the same commit. Research with sources: `docs/apchem-research/`.
+
 ## Ochem readability and diagram pass
 
 `docs/ochem-readability-audit.md` lists every notes and lesson page's findings, worst first, and
