@@ -1,0 +1,8 @@
+{
+ "reaction-type": {
+  "def": "A precipitation reaction forms an insoluble solid when two solutions are mixed. Reactions are also described by their pattern: synthesis (substances combine into one), decomposition (one substance breaks into several), single replacement (an element replaces another in a compound) and double replacement (two compounds swap partners)."
+ },
+ "combustion": {
+  "def": "A reaction of a substance with oxygen gas, usually giving off heat and light. A hydrocarbon (a compound of only carbon and hydrogen) burning in excess oxygen gives carbon dioxide and water."
+ }
+}

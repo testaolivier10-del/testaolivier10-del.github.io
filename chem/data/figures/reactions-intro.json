@@ -1,0 +1,12 @@
+{
+ "balanced-equation-anatomy": {
+  "file": "figures/balanced-equation-anatomy.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 350,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The equation N₂(g) + 3H₂(g) → 2NH₃(g). Labels point to the coefficients 3 and 2 (how many particles or moles; change these to balance), to a subscript (never change it) and to a formula (it names the substance). Reactants are on the left and the product on the right. The atom count is 2 N and 6 H on each side, so mass is conserved."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "net-ionic-steps": {
+  "file": "figures/net-ionic-steps.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three stacked boxes. Molecular equation: Pb(NO₃)₂(aq) + 2KI(aq) → PbI₂(s) + 2KNO₃(aq). Complete ionic equation: Pb²⁺(aq) + 2NO₃⁻(aq) + 2K⁺(aq) + 2I⁻(aq) → PbI₂(s) + 2K⁺(aq) + 2NO₃⁻(aq), with the potassium and nitrate ions crossed out on both sides as spectators. Net ionic equation: Pb²⁺(aq) + 2I⁻(aq) → PbI₂(s). Atoms and charge balance."
+ }
+}

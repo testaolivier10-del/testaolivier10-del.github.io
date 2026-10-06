@@ -1,0 +1,12 @@
+{
+ "titration-setup": {
+  "file": "figures/titration-setup.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 350,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A buret clamped on a stand above an Erlenmeyer flask. The buret holds the titrant of known molarity and has been rinsed with titrant; a stopcock at its bottom controls the flow, dropwise near the end. The flask holds a measured volume of analyte plus a few drops of indicator and is swirled while titrant is added. An inset shows the curved liquid surface in the buret with a dashed line at its lowest point: read the bottom of the meniscus at eye level."
+ }
+}

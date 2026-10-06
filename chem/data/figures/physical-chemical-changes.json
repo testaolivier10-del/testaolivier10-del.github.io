@@ -1,0 +1,12 @@
+{
+ "physical-vs-chemical": {
+  "file": "figures/physical-vs-chemical.svg",
+  "ext": "svg",
+  "w": 810,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left, physical change: a box of eight closely packed water molecules becomes a box of the same eight water molecules far apart, still H₂O; attractions between molecules are overcome, about 41 kJ per mole. Right, chemical change: four water molecules become four hydrogen molecules and two oxygen molecules; O–H bonds inside the molecules break and new bonds form. The question to ask is whether the particles after are the same as the particles before."
+ }
+}

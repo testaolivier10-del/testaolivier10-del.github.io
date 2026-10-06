@@ -1,0 +1,715 @@
+{
+ "stimuli": {
+  "stoichiometry-s1": {
+   "kind": "table",
+   "title": "How much chloride is in the powder?",
+   "text": "<p>A white powder is a mixture of sodium chloride and sodium nitrate. A student dissolves a weighed sample in distilled water, adds silver nitrate solution until no more solid forms, then adds a few more drops. The white precipitate, AgCl (molar mass 143.32 g/mol), is collected on a weighed filter paper, rinsed with distilled water and dried in an oven. The paper and solid are weighed after each of three dryings. An analytical balance reads to 0.0001 g. Molar mass of Cl: 35.45 g/mol.</p>",
+   "table": {
+    "caption": "Gravimetric data",
+    "cols": [
+     "Measurement",
+     "Mass (g)"
+    ],
+    "rows": [
+     [
+      "Sample of powder",
+      "0.5120"
+     ],
+     [
+      "Filter paper",
+      "22.4518"
+     ],
+     [
+      "Paper + AgCl, after drying 1",
+      "23.4071"
+     ],
+     [
+      "Paper + AgCl, after drying 2",
+      "23.3856"
+     ],
+     [
+      "Paper + AgCl, after drying 3",
+      "23.3851"
+     ]
+    ]
+   }
+  },
+  "stoichiometry-s2": {
+   "kind": "graph",
+   "title": "Precipitate as iodide is added",
+   "text": "<p>A student pipets 25.0 mL of a lead(II) nitrate solution of unknown concentration into each of seven beakers. A different volume of 0.100 M KI is added to each. The yellow PbI₂ (molar mass 461.0 g/mol) is filtered, dried to constant mass and weighed. Pb²⁺(aq) + 2I⁻(aq) → PbI₂(s).</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Volume of 0.100 M KI added",
+     "unit": "mL"
+    },
+    "y": {
+     "label": "Mass of dry PbI₂",
+     "unit": "g"
+    },
+    "series": [
+     {
+      "name": "Measured",
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        10,
+        0.229
+       ],
+       [
+        20,
+        0.463
+       ],
+       [
+        30,
+        0.69
+       ],
+       [
+        40,
+        0.92
+       ],
+       [
+        50,
+        0.922
+       ],
+       [
+        60,
+        0.922
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "stoichiometry-s3": {
+   "kind": "table",
+   "title": "Heating baking soda",
+   "text": "<p>Sodium hydrogen carbonate (baking soda) decomposes when heated strongly: 2NaHCO₃(s) → Na₂CO₃(s) + H₂O(g) + CO₂(g). A student heats a sample in a crucible, cools it in a desiccator and weighs it, three times. Molar masses: NaHCO₃ 84.01 g/mol; Na₂CO₃ 105.99 g/mol.</p>",
+   "table": {
+    "caption": "Masses recorded",
+    "cols": [
+     "Measurement",
+     "Mass (g)"
+    ],
+    "rows": [
+     [
+      "Empty crucible",
+      "21.385"
+     ],
+     [
+      "Crucible + NaHCO₃",
+      "23.905"
+     ],
+     [
+      "After heating 1",
+      "23.012"
+     ],
+     [
+      "After heating 2",
+      "22.968"
+     ],
+     [
+      "After heating 3",
+      "22.967"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-stoichiometry-1",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "stoichiometry-s1",
+   "q": "How many moles of AgCl did the student collect?",
+   "numeric": {
+    "answer": 0.006512,
+    "rel": 0.0003,
+    "unit": "mol",
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 0.006666,
+      "rel": 0.0003,
+      "why": "Value: you used the first drying. The solid was still losing water then; use the last, constant mass (23.3851 g)."
+     },
+     {
+      "value": 133.8,
+      "rel": 0.002,
+      "why": "Value: you multiplied the mass by the molar mass. Divide grams by grams per mole to get moles."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Mass of AgCl = 23.3851 g − 22.4518 g = 0.9333 g (the last two dryings agree, so the solid is dry). 0.9333 g × (1 mol / 143.32 g) = 0.006512 mol AgCl, to four significant figures."
+   }
+  },
+  {
+   "id": "chem-stoichiometry-2",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "stoichiometry-s1",
+   "q": "What is the mass percent of chloride in the powder?",
+   "numeric": {
+    "answer": 45.09,
+    "tol": 0.02,
+    "unit": "%",
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 182.3,
+      "rel": 0.002,
+      "why": "Value: you used the mass of AgCl as if it were all chlorine. Only the chloride part comes from the powder: convert to moles of Cl first."
+     },
+     {
+      "value": 46.15,
+      "rel": 0.002,
+      "why": "Value: you used the first drying, when the solid still held water. Use the constant mass from the last two dryings."
+     }
+    ]
+   },
+   "why": {
+    "correct": "0.9333 g AgCl × (1 mol AgCl / 143.32 g) × (1 mol Cl / 1 mol AgCl) × (35.45 g / 1 mol Cl) = 0.2308 g Cl. 0.2308 g ÷ 0.5120 g × 100 = 45.09% chloride."
+   }
+  },
+  {
+   "id": "chem-stoichiometry-3",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "stoichiometry-s1",
+   "q": "Another student skips the third drying and uses the mass after drying 1. How does this change the calculated percent of chloride, and why?",
+   "options": [
+    "Too high, because the weighed solid still contains water",
+    "Too low, because water dilutes the chloride in the solid",
+    "No effect, because water contains no chloride",
+    "Too high, because drying 1 removed some AgCl"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The solid weighed after drying 1 includes water, so the mass of \"AgCl\" is too large. That gives too many moles of Cl and a percent that is too high. Drying to constant mass removes this error.",
+    "options": [
+     "Right: extra mass from water is counted as AgCl.",
+     "The calculation turns the whole mass into moles of AgCl, so extra water raises the result, not lowers it.",
+     "Water has no chloride, but its mass is wrongly counted as AgCl, which inflates the result.",
+     "Drying removes water, not AgCl; and losing AgCl would lower the result."
+    ]
+   }
+  },
+  {
+   "id": "chem-stoichiometry-4",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "stoichiometry-s1",
+   "q": "Why does the student add a few more drops of silver nitrate after no more precipitate seems to form?",
+   "options": [
+    "So that Ag⁺ is in excess and every chloride ion is precipitated",
+    "So that the precipitate dissolves and passes through the paper",
+    "So that nitrate is the limiting reactant in the beaker",
+    "So that the mass of AgCl increases beyond what the chloride allows"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The chloride in the sample must be the limiting reactant, so all of it ends up in the solid. A small excess of Ag⁺ makes sure of that. Extra Ag⁺ cannot make more AgCl than the chloride allows.",
+    "options": [
+     "Right: an excess of silver ions makes chloride the limiting reactant.",
+     "The point is to keep the precipitate on the paper, not dissolve it.",
+     "Nitrate is a spectator ion; it does not react, so it is not a reactant at all.",
+     "Once all the chloride is used, more Ag⁺ makes no more AgCl; the excess stays dissolved."
+    ]
+   }
+  },
+  {
+   "id": "chem-stoichiometry-5",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "5.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "stoichiometry-s2",
+   "q": "In the beaker with 20.0 mL of KI added, which reactant is limiting?",
+   "options": [
+    "I⁻, since more KI would still make more solid",
+    "Pb²⁺, since the mass of solid has stopped rising there",
+    "Pb²⁺, since the lead solution has the larger volume",
+    "Neither, since the ions react in a fixed 1 : 2 ratio"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At 20.0 mL the mass is still rising with volume: beakers with more KI made more solid. So iodide runs out first there, and lead ions are left in excess. The mass stops rising only after about 40 mL.",
+    "options": [
+     "Right: on the rising part of the graph, iodide is the limiting reactant.",
+     "The mass levels off near 40 mL, not at 20 mL; at 20 mL it is still rising.",
+     "Volume alone does not decide; it is the moles of each ion and the 1 : 2 ratio needed.",
+     "The ratio of the equation is fixed, but the amounts mixed are not; at 20 mL there are not enough I⁻ ions for every Pb²⁺."
+    ]
+   }
+  },
+  {
+   "id": "chem-stoichiometry-6",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "stoichiometry-s2",
+   "q": "Use the mass of PbI₂ where the graph levels off (0.922 g) to find the molarity of the lead(II) nitrate solution.",
+   "numeric": {
+    "answer": 0.08,
+    "tol": 0.0002,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.16,
+      "rel": 0.01,
+      "why": "Value: you used the 1 : 2 ratio backward. One mole of PbI₂ comes from one mole of Pb²⁺, so moles of Pb²⁺ equal moles of PbI₂."
+     },
+     {
+      "value": 0.04,
+      "rel": 0.01,
+      "why": "Value: you halved the moles of PbI₂. Each PbI₂ holds one lead ion, so the ratio of PbI₂ to Pb²⁺ is 1 : 1."
+     },
+     {
+      "value": 0.002,
+      "rel": 0.01,
+      "why": "Value: that is the number of moles. Divide by the volume in liters, 0.0250 L, to get molarity."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Where the graph is flat, all the Pb²⁺ has precipitated. 0.922 g ÷ 461.0 g/mol = 0.00200 mol PbI₂ = 0.00200 mol Pb²⁺ (1 : 1). 0.00200 mol ÷ 0.0250 L = 0.0800 M."
+   }
+  },
+  {
+   "id": "chem-stoichiometry-7",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "stoichiometry-s2",
+   "q": "The graph levels off at 40.0 mL of KI. How does this support the 1 : 2 ratio in the equation?",
+   "options": [
+    "0.00400 mol I⁻ were added, twice the 0.00200 mol Pb²⁺",
+    "40.0 mL of KI equals the 25.0 mL of lead solution plus 15.0 mL of water",
+    "It shows the solid is PbI, with one I⁻ per Pb²⁺",
+    "It shows that iodide is in excess in each of the beakers"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At the break, the two reactants are used up together. 0.0400 L × 0.100 mol/L = 0.00400 mol I⁻, and the lead found from the plateau is 0.00200 mol: a 2 : 1 ratio of I⁻ to Pb²⁺, as in Pb²⁺ + 2I⁻ → PbI₂.",
+    "options": [
+     "Right: moles of iodide at the break are twice the moles of lead.",
+     "Volumes are not moles; the concentrations differ, so compare moles.",
+     "A 1 : 1 solid would level off at 20 mL, half the observed volume.",
+     "Before 40 mL iodide is limiting, not in excess; after 40 mL it is in excess."
+    ]
+   }
+  },
+  {
+   "id": "chem-stoichiometry-8",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "stoichiometry-s2",
+   "q": "Why does adding 60.0 mL of KI give no more precipitate than adding 50.0 mL?",
+   "options": [
+    "All the Pb²⁺ has already precipitated, so extra I⁻ has nothing to react with",
+    "The beaker is too full for more solid to form",
+    "Extra KI dissolves some of the PbI₂ already formed",
+    "Potassium ions block lead ions from reaching iodide ions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Past 40 mL, lead ions are the limiting reactant. Once they are used up, more iodide stays dissolved as an excess reactant and the mass of solid is fixed.",
+    "options": [
+     "Right: the lead ions are used up.",
+     "The total volume does not limit the reaction; the amount of Pb²⁺ does.",
+     "The mass stays the same rather than falling, so the solid is not dissolving.",
+     "K⁺ is a spectator ion and does not stop the reaction."
+    ]
+   }
+  },
+  {
+   "id": "chem-stoichiometry-9",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "stoichiometry-s3",
+   "q": "What is the theoretical yield of Na₂CO₃?",
+   "numeric": {
+    "answer": 1.59,
+    "tol": 0.002,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 3.179,
+      "rel": 0.002,
+      "why": "Value: you used a 1 : 1 mole ratio. The equation has 2 NaHCO₃ for each Na₂CO₃, so divide the moles of NaHCO₃ by 2."
+     },
+     {
+      "value": 6.359,
+      "rel": 0.002,
+      "why": "Value: you inverted the mole ratio, multiplying by 2 instead of dividing. Two NaHCO₃ make one Na₂CO₃."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Mass of NaHCO₃ = 23.905 g − 21.385 g = 2.520 g. 2.520 g × (1 mol / 84.01 g) × (1 mol Na₂CO₃ / 2 mol NaHCO₃) × (105.99 g / 1 mol) = 1.590 g Na₂CO₃."
+   }
+  },
+  {
+   "id": "chem-stoichiometry-10",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "stoichiometry-s3",
+   "q": "What is the percent yield of Na₂CO₃?",
+   "numeric": {
+    "answer": 99.52,
+    "tol": 0.02,
+    "unit": "%",
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 102.3,
+      "rel": 0.002,
+      "why": "Value: you used the mass after heating 1, before the mass was constant. Use the final mass, 22.967 g."
+     },
+     {
+      "value": 49.76,
+      "rel": 0.003,
+      "why": "Value: your theoretical yield used a 1 : 1 ratio. With 2 NaHCO₃ per Na₂CO₃, the theoretical yield is 1.590 g."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Actual yield = 22.967 g − 21.385 g = 1.582 g. Percent yield = 1.582 g ÷ 1.590 g × 100 = 99.52%."
+   }
+  },
+  {
+   "id": "chem-stoichiometry-11",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "stoichiometry-s3",
+   "q": "Why does the student heat, cool and weigh the crucible until two masses agree?",
+   "options": [
+    "To confirm that no more gas leaves, so the reaction is done",
+    "To make sure the crucible itself has fully decomposed",
+    "To let the sample absorb water from the air between heatings",
+    "To average three readings and reduce random error"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "While the mass still drops, gas is still leaving and some NaHCO₃ has not decomposed. Agreement between heatings 2 and 3 (22.968 g and 22.967 g) shows the reaction has finished.",
+    "options": [
+     "Right: a constant mass shows no more gas is leaving.",
+     "The crucible is chosen because it does not react or decompose.",
+     "The desiccator keeps the sample from picking up water from the air; absorbing water would spoil the data.",
+     "The readings are not averaged; the final constant mass is used, because the earlier ones are not of the finished product."
+    ]
+   }
+  },
+  {
+   "id": "chem-stoichiometry-12",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "stoichiometry-s3",
+   "q": "Which errors would make the calculated percent yield too high? Select all that apply.",
+   "options": [
+    "Stopping after heating 1",
+    "Cooling the crucible in open, humid air before weighing",
+    "Some solid spattering out of the crucible during heating",
+    "Weighing the crucible while it is still hot"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Anything that leaves extra mass in the crucible raises the \"actual yield\". Undecomposed NaHCO₃ or absorbed water add mass. Spattering removes solid, lowering the yield. A hot crucible sets up air currents that make it read light, lowering the yield.",
+    "options": [
+     "Right: undecomposed NaHCO₃ is still there and counted as product.",
+     "Right: water picked up from the air adds mass that is counted as product.",
+     "Solid that spatters out is lost, so the actual yield is too low.",
+     "Rising warm air makes a hot crucible read lighter, so the yield would come out too low."
+    ]
+   }
+  },
+  {
+   "id": "chem-stoichiometry-13",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Propane burns by C₃H₈(g) + 5O₂(g) → 3CO₂(g) + 4H₂O(g). What mass of O₂ (32.00 g/mol) is needed to burn 10.0 g of propane (44.09 g/mol) completely?",
+   "numeric": {
+    "answer": 36.3,
+    "tol": 0.1,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 1.45,
+      "rel": 0.01,
+      "why": "Value: you inverted the mole ratio. Each mole of propane needs 5 mol of O₂, so multiply by 5/1."
+     },
+     {
+      "value": 7.26,
+      "rel": 0.01,
+      "why": "Value: you skipped the mole ratio and treated it as 1 : 1. Use 5 mol O₂ per 1 mol C₃H₈."
+     },
+     {
+      "value": 50,
+      "rel": 0.01,
+      "why": "Value: you multiplied grams by the coefficient. Coefficients relate moles, not grams; convert to moles first."
+     }
+    ]
+   },
+   "why": {
+    "correct": "10.0 g × (1 mol C₃H₈ / 44.09 g) × (5 mol O₂ / 1 mol C₃H₈) × (32.00 g / 1 mol O₂) = 36.3 g O₂."
+   }
+  },
+  {
+   "id": "chem-stoichiometry-14",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "A sealed vessel holds 20.0 g of N₂ (28.02 g/mol) and 5.00 g of H₂ (2.016 g/mol). They react completely by N₂ + 3H₂ → 2NH₃. What mass of NH₃ (17.03 g/mol) forms?",
+   "numeric": {
+    "answer": 24.3,
+    "tol": 0.1,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 28.2,
+      "rel": 0.01,
+      "why": "Value: you used hydrogen, but nitrogen runs out first. Find the product each reactant could make; the smaller amount is the answer."
+     },
+     {
+      "value": 25,
+      "rel": 0.005,
+      "why": "Value: you added the reactant masses. Only the limiting reactant and the part of H₂ that reacts end up in the product."
+     }
+    ]
+   },
+   "why": {
+    "correct": "N₂: 20.0 g ÷ 28.02 g/mol = 0.7138 mol, which could make 1.428 mol NH₃. H₂: 5.00 g ÷ 2.016 g/mol = 2.480 mol, which could make 2.480 × 2/3 = 1.653 mol NH₃. N₂ makes less, so it is limiting. 1.428 mol × 17.03 g/mol = 24.3 g NH₃."
+   }
+  },
+  {
+   "id": "chem-stoichiometry-15",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "For the same vessel (20.0 g N₂ and 5.00 g H₂ reacting by N₂ + 3H₂ → 2NH₃), what mass of the excess reactant is left over?",
+   "numeric": {
+    "answer": 0.68,
+    "tol": 0.02,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 4.32,
+      "rel": 0.01,
+      "why": "Value: that is the mass of H₂ that reacts. Subtract it from the 5.00 g you started with."
+     },
+     {
+      "value": -3.2,
+      "rel": 0.02,
+      "why": "Value: you treated hydrogen as limiting. Nitrogen runs out first, so the leftover reactant is hydrogen."
+     }
+    ]
+   },
+   "why": {
+    "correct": "N₂ is limiting: 0.7138 mol N₂ uses 3 × 0.7138 = 2.141 mol H₂ = 4.317 g H₂. Left over: 5.00 g − 4.32 g = 0.68 g H₂ (subtraction keeps two decimal places)."
+   }
+  },
+  {
+   "id": "chem-stoichiometry-16",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Equal masses of hydrogen and oxygen gas are mixed and react: 2H₂ + O₂ → 2H₂O. Which reactant is limiting?",
+   "options": [
+    "O₂, since far fewer moles of the heavier O₂ are present",
+    "H₂, because the equation needs twice as many moles of it",
+    "Neither, because equal masses means equal amounts",
+    "H₂, because it is the smaller molecule and reacts first"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With equal masses, the lighter molecule gives more moles: 1 g of H₂ is 0.496 mol, while 1 g of O₂ is 0.0313 mol. Even though each O₂ needs two H₂, there are about 16 times more moles of H₂, so O₂ runs out first.",
+    "options": [
+     "Right: equal masses give far fewer moles of the heavier O₂.",
+     "H₂ is needed in twice the moles, but there are about 16 times as many moles of H₂ present.",
+     "Equal masses of different substances hold different numbers of moles.",
+     "Size does not decide which runs out; the ratio of moles present to moles needed does."
+    ]
+   }
+  },
+  {
+   "id": "chem-stoichiometry-17",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "For 4NH₃ + 5O₂ → 4NO + 6H₂O, which mole ratio converts moles of O₂ into moles of H₂O?",
+   "options": [
+    "6 mol H₂O / 5 mol O₂",
+    "5 mol O₂ / 6 mol H₂O",
+    "6 g H₂O / 5 g O₂",
+    "1 mol H₂O / 1 mol O₂"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Put the unit you want on top and the unit you have on the bottom, with the coefficients as the numbers: 6 mol H₂O per 5 mol O₂.",
+    "options": [
+     "Right: wanted over given, with the coefficients.",
+     "Inverts the ratio, so mol O₂ would not cancel.",
+     "Coefficients relate moles, not grams.",
+     "Ignores the coefficients 5 and 6 from the balanced equation."
+    ]
+   }
+  },
+  {
+   "id": "chem-stoichiometry-18",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "A synthesis has a theoretical yield of 5.36 g. The student collects 4.12 g of dry product. What is the percent yield?",
+   "numeric": {
+    "answer": 76.9,
+    "tol": 0.2,
+    "unit": "%",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 130,
+      "rel": 0.005,
+      "why": "Value: you divided theoretical by actual. Percent yield is actual ÷ theoretical × 100, which cannot exceed 100% for a pure, dry product."
+     }
+    ]
+   },
+   "why": {
+    "correct": "4.12 g ÷ 5.36 g × 100 = 76.9%."
+   }
+  },
+  {
+   "id": "chem-stoichiometry-19",
+   "type": "order",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps of a gravimetric analysis for sulfate in order.",
+   "options": [
+    "Weigh the sample on an analytical balance and dissolve it in distilled water",
+    "Add barium chloride solution until no more precipitate forms, then a little extra",
+    "Filter the precipitate through weighed filter paper and rinse it with distilled water",
+    "Dry, cool and weigh the paper and solid, repeating until the mass is constant",
+    "Convert the mass of BaSO₄ to moles, then to moles and mass of sulfate"
+   ],
+   "why": {
+    "correct": "Weigh and dissolve; precipitate with a small excess of reagent; filter and rinse; dry to constant mass; then calculate."
+   }
+  },
+  {
+   "id": "chem-stoichiometry-20",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "stoichiometry",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student reports a percent yield of 112% for a dry solid product. Which explanations are reasonable? Select all that apply.",
+   "options": [
+    "The product was still wet when weighed",
+    "Some product was spilled during filtering",
+    "Some product stuck to the beaker and was not collected",
+    "The reaction did not go to completion"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "A yield over 100% means the weighed \"product\" includes something else, such as water. Losing product or an incomplete reaction would lower the yield instead.",
+    "options": [
+     "Right: water adds mass that is not product.",
+     "Spilled product is lost, so the actual yield is too low.",
+     "Lost product lowers the actual yield, so the percent would be below 100%.",
+     "An incomplete reaction makes less product, so the percent would be below 100%."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,500 @@
+{
+ "stimuli": {
+  "net-ionic-equations-s1": {
+   "kind": "particle",
+   "title": "Mixing two solutions",
+   "html": "<svg viewBox=\"0 0 716 200\" width=\"716\" height=\"200\" role=\"img\" aria-label=\"Solution A holds three silver ions, Ag+, and three nitrate ions, NO3−, moving separately in water. Solution B holds three sodium ions, Na+, and three chloride ions, Cl−. After mixing, three sodium ions and three nitrate ions still move separately in the water, while three silver ions and three chloride ions sit packed together in a solid row on the bottom.\"><text x=\"199\" y=\"84\" font-size=\"22\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><rect x=\"4\" y=\"4\" width=\"180\" height=\"150\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"29\" cy=\"48\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"29\" y=\"51.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"29\" cy=\"31\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"29\" y=\"34.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"14\" cy=\"57\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"14\" y=\"60.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"44\" cy=\"57\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"44\" y=\"60.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><text x=\"53.36964176340193\" y=\"28.630358236598074\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"90\" cy=\"33\" r=\"11\" fill=\"#B8B8B8\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"90\" y=\"36.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Ag</text><text x=\"101.25\" y=\"26.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"157\" cy=\"35\" r=\"11\" fill=\"#B8B8B8\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"157\" y=\"38.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Ag</text><text x=\"168.25\" y=\"28.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"32\" cy=\"112\" r=\"11\" fill=\"#B8B8B8\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"32\" y=\"115.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Ag</text><text x=\"43.25\" y=\"105.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"94\" cy=\"120\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"94\" y=\"123.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"94\" cy=\"103\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"94\" y=\"106.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"79\" cy=\"129\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"79\" y=\"132.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"109\" cy=\"129\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"109\" y=\"132.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><text x=\"118.36964176340193\" y=\"100.63035823659807\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"153\" cy=\"116\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"153\" y=\"119.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"153\" cy=\"99\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"153\" y=\"102.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"138\" cy=\"125\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"138\" y=\"128.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"168\" cy=\"125\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"168\" y=\"128.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><text x=\"177.36964176340192\" y=\"96.63035823659807\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><text x=\"94\" y=\"172\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Solution A</text><rect x=\"214\" y=\"4\" width=\"180\" height=\"150\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"244\" cy=\"34\" r=\"11\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"244\" y=\"37.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Na</text><text x=\"255.25\" y=\"27.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"299\" cy=\"52\" r=\"11\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"299\" y=\"55.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Na</text><text x=\"310.25\" y=\"45.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"359\" cy=\"32\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"359\" y=\"35.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"371\" y=\"25\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"244\" cy=\"121\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"244\" y=\"124.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"256\" y=\"114\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"300\" cy=\"126\" r=\"11\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"300\" y=\"129.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Na</text><text x=\"311.25\" y=\"119.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"364\" cy=\"113\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"364\" y=\"116.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"376\" y=\"106\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><text x=\"304\" y=\"172\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Solution B</text><line x1=\"400\" y1=\"80\" x2=\"442\" y2=\"80\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><path d=\"M440,74 L450,80 L440,86 Z\" fill=\"#1F2A28\"/><rect x=\"456\" y=\"4\" width=\"240\" height=\"150\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"493\" cy=\"38\" r=\"11\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"493\" y=\"41.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Na</text><text x=\"504.25\" y=\"31.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"568\" cy=\"37\" r=\"11\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"568\" y=\"40.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Na</text><text x=\"579.25\" y=\"30.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"651\" cy=\"28\" r=\"11\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"651\" y=\"31.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Na</text><text x=\"662.25\" y=\"21.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"486\" cy=\"96\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"486\" y=\"99.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"486\" cy=\"79\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"486\" y=\"82.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"471\" cy=\"105\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"471\" y=\"108.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"501\" cy=\"105\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"501\" y=\"108.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><text x=\"510.36964176340194\" y=\"76.63035823659807\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"584\" cy=\"88\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"584\" y=\"91.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"584\" cy=\"71\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"584\" y=\"74.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"569\" cy=\"97\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"569\" y=\"100.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"599\" cy=\"97\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"599\" y=\"100.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><text x=\"608.3696417634019\" y=\"68.63035823659807\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"668\" cy=\"93\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"668\" y=\"96.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"668\" cy=\"76\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"668\" y=\"79.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"653\" cy=\"102\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"653\" y=\"105.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"683\" cy=\"102\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"683\" y=\"105.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><text x=\"692.3696417634019\" y=\"73.63035823659807\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"501\" cy=\"138\" r=\"11\" fill=\"#B8B8B8\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"501\" y=\"141.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Ag</text><text x=\"512.25\" y=\"131.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"531\" cy=\"138\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"531\" y=\"141.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"543\" y=\"131\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"561\" cy=\"138\" r=\"11\" fill=\"#B8B8B8\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"561\" y=\"141.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Ag</text><text x=\"572.25\" y=\"131.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"591\" cy=\"138\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"591\" y=\"141.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"603\" y=\"131\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"621\" cy=\"138\" r=\"11\" fill=\"#B8B8B8\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"621\" y=\"141.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Ag</text><text x=\"632.25\" y=\"131.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"651\" cy=\"138\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"651\" y=\"141.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"663\" y=\"131\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><text x=\"576\" y=\"172\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">After mixing</text></svg><p>Key: grey Ag, silver ion; pink Na, sodium ion; green Cl, chloride ion; blue N with three red O, nitrate ion. Water molecules are not drawn.</p>"
+  },
+  "net-ionic-equations-s2": {
+   "kind": "table",
+   "title": "Spot tests in a well plate",
+   "text": "<p>A student mixes 1 mL each of two 0.1 M solutions in the wells of a plate and records what happens. All sodium, potassium and nitrate compounds are soluble in water.</p>",
+   "table": {
+    "caption": "Results of mixing pairs of solutions",
+    "cols": [
+     "Well",
+     "Solution 1",
+     "Solution 2",
+     "Observation"
+    ],
+    "rows": [
+     [
+      "1",
+      "Pb(NO₃)₂(aq)",
+      "KI(aq)",
+      "Bright yellow solid forms"
+     ],
+     [
+      "2",
+      "BaCl₂(aq)",
+      "Na₂SO₄(aq)",
+      "White solid forms"
+     ],
+     [
+      "3",
+      "KCl(aq)",
+      "NaNO₃(aq)",
+      "No visible change"
+     ],
+     [
+      "4",
+      "CuSO₄(aq)",
+      "NaOH(aq)",
+      "Pale blue solid forms"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-net-ionic-equations-1",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "net-ionic-equations-s1",
+   "q": "Which net ionic equation matches the change in the diagram?",
+   "options": [
+    "Ag⁺(aq) + Cl⁻(aq) → AgCl(s)",
+    "Na⁺(aq) + NO₃⁻(aq) → NaNO₃(s)",
+    "AgNO₃(aq) + NaCl(aq) → AgCl(s) + NaNO₃(aq)",
+    "Ag⁺(aq) + Cl⁻(aq) → Ag⁺(s) + Cl⁻(s)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only silver and chloride ions change: they go from moving separately in water to a packed solid. Sodium and nitrate ions look the same before and after, so they are left out.",
+    "options": [
+     "Right: the only species that change are Ag⁺ and Cl⁻, which form solid AgCl.",
+     "Sodium and nitrate ions are still separate in the water after mixing, so no NaNO₃ solid forms.",
+     "This is the molecular equation. It is balanced, but it shows spectators and treats dissolved ionic compounds as if they were intact units.",
+     "The solid is the compound AgCl, held together by attraction between oppositely charged ions; it is written as one formula with no charges."
+    ]
+   }
+  },
+  {
+   "id": "chem-net-ionic-equations-2",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "net-ionic-equations-s1",
+   "q": "Which species in the diagram are spectator ions? Select all that apply.",
+   "options": [
+    "Na⁺",
+    "NO₃⁻",
+    "Ag⁺",
+    "Cl⁻"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A spectator ion is in the solution, unchanged, before and after. Na⁺ and NO₃⁻ are still free in the water after mixing.",
+    "options": [
+     "Right: sodium ions start and end dissolved in the water.",
+     "Right: nitrate ions start and end dissolved in the water.",
+     "Silver ions leave the solution and become part of the solid, so they take part.",
+     "Chloride ions leave the solution and become part of the solid, so they take part."
+    ]
+   }
+  },
+  {
+   "id": "chem-net-ionic-equations-3",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "net-ionic-equations-s1",
+   "q": "Count the ions that are still dissolved in the After mixing box.",
+   "numeric": {
+    "answer": 6,
+    "tol": 0,
+    "unit": "ions",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 12,
+      "rel": 0.01,
+      "why": "Value: you counted every ion before mixing. The silver and chloride ions are now in the solid, not dissolved."
+     },
+     {
+      "value": 3,
+      "rel": 0.01,
+      "why": "Value: count both kinds of spectator ions: three sodium and three nitrate."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Three Na⁺ and three NO₃⁻ remain in the water: 6 ions. The six Ag⁺ and Cl⁻ ions are in the solid."
+   }
+  },
+  {
+   "id": "chem-net-ionic-equations-4",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "net-ionic-equations-s1",
+   "q": "A student filters the mixture and dries the solid. What does the liquid that passes through the filter contain, besides water?",
+   "options": [
+    "Na⁺ and NO₃⁻ ions, which would form NaNO₃ if the water evaporated",
+    "AgCl dissolved as Ag⁺ and Cl⁻ ions, since the filter breaks up the solid",
+    "No ions, since forming the solid used up each one of them",
+    "Neutral Na and Cl atoms left over after the electrons moved"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The spectator ions stay in solution and pass through the filter paper. If the water evaporates, they pack together as solid sodium nitrate.",
+    "options": [
+     "Right: the spectators stay dissolved and pass through.",
+     "The filter paper holds back the solid; it does not break it into ions.",
+     "Sodium and nitrate ions never left the solution; only silver and chloride did.",
+     "No electrons are transferred here; sodium and chloride stay as ions throughout."
+    ]
+   }
+  },
+  {
+   "id": "chem-net-ionic-equations-5",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "net-ionic-equations-s2",
+   "q": "Which is the balanced net ionic equation for well 1?",
+   "options": [
+    "Pb²⁺(aq) + 2I⁻(aq) → PbI₂(s)",
+    "Pb²⁺(aq) + I⁻(aq) → PbI(s)",
+    "K⁺(aq) + NO₃⁻(aq) → KNO₃(s)",
+    "Pb(NO₃)₂(aq) + 2KI(aq) → PbI₂(s) + 2KNO₃(aq)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K⁺ and NO₃⁻ are spectators (their compounds are soluble). The yellow solid must be lead(II) iodide. Pb²⁺ needs two I⁻ to make a neutral solid, and the charges balance: +2 + 2(−1) = 0 on the left, 0 on the right.",
+    "options": [
+     "Right: atoms and charges both balance, and only the changing species appear.",
+     "PbI would need lead to be +1. With Pb²⁺, the neutral solid is PbI₂, and the left side carries a +1 charge that the right side lacks.",
+     "Potassium nitrate is soluble, so its ions stay dissolved; they are the spectators.",
+     "This is the molecular equation, which includes the spectator ions in its formulas."
+    ]
+   }
+  },
+  {
+   "id": "chem-net-ionic-equations-6",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "net-ionic-equations-s2",
+   "q": "What does well 3 show?",
+   "options": [
+    "There is no reaction, since every ion stays dissolved",
+    "The net ionic equation is K⁺(aq) + NO₃⁻(aq) → KNO₃(aq)",
+    "A reaction occurs, but its product is a colorless solid",
+    "The solutions were too dilute for their ions to meet"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Mixing the solutions only gives a solution of four kinds of ions, K⁺, Cl⁻, Na⁺ and NO₃⁻, all spectators. Nothing changes, so there is no net ionic equation (no reaction).",
+    "options": [
+     "Right: all four ions are spectators.",
+     "KNO₃(aq) is just K⁺ and NO₃⁻ dissolved, the same as before; nothing has changed.",
+     "Every possible combination is soluble according to the data given, so no solid can form.",
+     "At 0.1 M the ions meet constantly; wells 1, 2 and 4 react at the same concentration."
+    ]
+   }
+  },
+  {
+   "id": "chem-net-ionic-equations-7",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "net-ionic-equations-s2",
+   "q": "Which is the net ionic equation for well 4?",
+   "options": [
+    "Cu²⁺(aq) + 2OH⁻(aq) → Cu(OH)₂(s)",
+    "Cu²⁺(aq) + OH⁻(aq) → CuOH(s)",
+    "Na⁺(aq) + SO₄²⁻(aq) → NaSO₄(s)",
+    "CuSO₄(s) + 2NaOH(s) → Cu(OH)₂(s) + Na₂SO₄(s)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sodium compounds are soluble, so Na⁺ and SO₄²⁻ stay in solution. The blue solid is copper(II) hydroxide; Cu²⁺ needs two OH⁻.",
+    "options": [
+     "Right: atoms and charge balance and only the changing ions appear.",
+     "With Cu²⁺, one OH⁻ leaves a +1 charge; the neutral solid needs two hydroxide ions.",
+     "Sodium sulfate is soluble (all sodium compounds are), and its formula would be Na₂SO₄ in any case.",
+     "The reactants are dissolved, not solids; writing (s) for them misdescribes the solutions in the wells."
+    ]
+   }
+  },
+  {
+   "id": "chem-net-ionic-equations-8",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "net-ionic-equations-s2",
+   "q": "Using only the results in the table and the solubility note, which compounds can you conclude are insoluble in water? Select all that apply.",
+   "options": [
+    "BaSO₄",
+    "PbI₂",
+    "NaCl",
+    "KNO₃"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A solid forms only when a combination of ions cannot stay dissolved. In well 2 the new combinations are BaSO₄ and NaCl; NaCl is soluble, so the white solid is BaSO₄. In well 1 the yellow solid is PbI₂.",
+    "options": [
+     "Right: the white solid in well 2 must be barium sulfate.",
+     "Right: the yellow solid in well 1 must be lead(II) iodide.",
+     "All sodium compounds are soluble, and well 3 shows Na⁺ and Cl⁻ staying in solution.",
+     "All nitrate and potassium compounds are soluble, as the note says."
+    ]
+   }
+  },
+  {
+   "id": "chem-net-ionic-equations-9",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Solid calcium carbonate dissolves in hydrochloric acid, HCl(aq), giving CaCl₂(aq), H₂O(l) and CO₂(g). HCl ionizes fully in water. Which net ionic equation is correct?",
+   "options": [
+    "CaCO₃(s) + 2H⁺(aq) → Ca²⁺(aq) + H₂O(l) + CO₂(g)",
+    "Ca²⁺(aq) + CO₃²⁻(aq) + 2H⁺(aq) → Ca²⁺(aq) + H₂O(l) + CO₂(g)",
+    "CO₃²⁻(aq) + 2H⁺(aq) → H₂O(l) + CO₂(g)",
+    "CaCO₃(s) + 2HCl(aq) → CaCl₂(aq) + H₂O(l) + CO₂(g)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The solid stays as a formula because its ions are locked in the solid, not free in water. HCl is fully ionized, so it appears as H⁺ with Cl⁻ as a spectator. Ca²⁺ ends up dissolved and must appear as a product.",
+    "options": [
+     "Right: the solid is written whole, Cl⁻ is dropped, and charge balances (+2 each side).",
+     "Splits a solid into ions. A solid is written as a formula because its ions are not free in solution.",
+     "Leaves out the solid entirely and treats it as if carbonate ions were already dissolved.",
+     "This is the molecular equation; HCl and CaCl₂ are dissolved as ions and Cl⁻ is a spectator."
+    ]
+   }
+  },
+  {
+   "id": "chem-net-ionic-equations-10",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Is this equation balanced? Zn(s) + Ag⁺(aq) → Zn²⁺(aq) + Ag(s)",
+   "options": [
+    "No; the atoms balance, but the charge is +1 on the left and +2 on the right",
+    "Yes; there is one Zn and one Ag on each side",
+    "No; zinc should be written as Zn²⁺ on the left as well",
+    "Yes; charge does not need to balance in an ionic equation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A net ionic equation balances atoms and charge. Here the charges are +1 and +2. With 2Ag⁺ and 2Ag both balance: Zn(s) + 2Ag⁺(aq) → Zn²⁺(aq) + 2Ag(s).",
+    "options": [
+     "Right: the charge is unbalanced; 2Ag⁺ and 2Ag fix it.",
+     "Atoms balance, but charge does not; both must balance.",
+     "Zinc starts as a solid metal, so it is written Zn(s).",
+     "Charge is conserved, so the total charge must match on both sides."
+    ]
+   }
+  },
+  {
+   "id": "chem-net-ionic-equations-11",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "How is sodium sulfate, Na₂SO₄(aq), written in a complete ionic equation?",
+   "options": [
+    "2Na⁺(aq) + SO₄²⁻(aq)",
+    "Na₂⁺(aq) + SO₄²⁻(aq)",
+    "2Na⁺(aq) + S²⁻(aq) + 4O²⁻(aq)",
+    "Na₂SO₄(aq)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A dissolved ionic compound separates into its ions. Polyatomic ions such as sulfate stay together. Two Na⁺ balance one SO₄²⁻.",
+    "options": [
+     "Right: two sodium ions and one intact sulfate ion.",
+     "The subscript 2 means two separate Na⁺ ions, each +1; there is no Na₂⁺ ion.",
+     "Sulfate is a polyatomic ion held by covalent bonds; it does not fall apart in water.",
+     "In a complete ionic equation a dissolved ionic compound is written as its separate ions."
+    ]
+   }
+  },
+  {
+   "id": "chem-net-ionic-equations-12",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Write the complete ionic equation for 2AgNO₃(aq) + CaCl₂(aq) → 2AgCl(s) + Ca(NO₃)₂(aq). How many spectator ions appear on the left side?",
+   "numeric": {
+    "answer": 3,
+    "tol": 0,
+    "unit": "ions",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 6,
+      "rel": 0.01,
+      "why": "Value: you counted every ion on the left. Ag⁺ and Cl⁻ form the solid; only Ca²⁺ and the two NO₃⁻ are spectators."
+     },
+     {
+      "value": 2,
+      "rel": 0.01,
+      "why": "Value: the coefficient 2 on AgNO₃ gives two nitrate ions. Count them both, plus the one calcium ion."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Left side: 2Ag⁺ + 2NO₃⁻ + Ca²⁺ + 2Cl⁻. The spectators are the 2 NO₃⁻ and the 1 Ca²⁺, which reappear unchanged on the right: 3 ions. The net ionic equation is Ag⁺(aq) + Cl⁻(aq) → AgCl(s)."
+   }
+  },
+  {
+   "id": "chem-net-ionic-equations-13",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Acetic acid, CH₃COOH, is a weak electrolyte: in water, nearly all of it stays as molecules. How should dissolved acetic acid appear in a net ionic equation?",
+   "options": [
+    "As CH₃COOH(aq), since most of it is molecules",
+    "As H⁺(aq) + CH₃COO⁻(aq), because it is dissolved",
+    "As CH₃COOH(l), because it is a liquid when pure",
+    "It is left out, as a spectator molecule"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Write each species the way most of it exists in the solution. A weak electrolyte is mostly un-ionized molecules, so it is written as its formula with (aq).",
+    "options": [
+     "Right: write the form that dominates in the solution.",
+     "Only strong electrolytes, which separate almost completely, are written as ions.",
+     "In the solution it is dissolved, so (aq); (l) is for a pure liquid.",
+     "Acetic acid itself reacts in such equations, so it appears; a spectator is something unchanged on both sides."
+    ]
+   }
+  },
+  {
+   "id": "chem-net-ionic-equations-14",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What is the main advantage of a net ionic equation over the molecular equation for a reaction in water?",
+   "options": [
+    "It shows just the species that change, so it fits many different mixtures",
+    "It lists each ion present in the solution, spectators included",
+    "It adds water molecules to the reactants to show the solvent",
+    "It gives the masses of the products that are formed in the beaker"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ag⁺(aq) + Cl⁻(aq) → AgCl(s) describes mixing silver nitrate with sodium chloride, potassium chloride or calcium chloride: the spectators differ, but the change is the same.",
+    "options": [
+     "Right: it shows the change itself, whatever the spectators are.",
+     "That is the complete ionic equation; the net ionic equation removes the spectators.",
+     "Water appears only when it is a reactant or product.",
+     "No equation gives masses directly; the coefficients count particles."
+    ]
+   }
+  },
+  {
+   "id": "chem-net-ionic-equations-15",
+   "type": "predict",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student adds NaCl(aq) drop by drop to AgNO₃(aq) until just enough has been added to react with all the silver ions. Predict how each quantity changes compared with the original AgNO₃ solution.",
+   "variables": [
+    {
+     "name": "Number of dissolved Ag⁺ ions",
+     "answer": "down",
+     "why": "Silver ions join chloride ions in the solid, so fewer remain dissolved."
+    },
+    {
+     "name": "Number of dissolved NO₃⁻ ions",
+     "answer": "none",
+     "why": "Nitrate is a spectator: it neither joins the solid nor is added, so the count is unchanged."
+    },
+    {
+     "name": "Number of dissolved Na⁺ ions",
+     "answer": "up",
+     "why": "Each drop of NaCl(aq) adds sodium ions, which stay dissolved as spectators."
+    },
+    {
+     "name": "Mass of solid in the beaker",
+     "answer": "up",
+     "why": "AgCl forms as a solid, so solid mass grows as silver ions are used."
+    }
+   ],
+   "why": {
+    "correct": "Only Ag⁺ and Cl⁻ react. Sodium ions accumulate as spectators, nitrate ions stay put, and the solid grows."
+   }
+  },
+  {
+   "id": "chem-net-ionic-equations-16",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes the net ionic equation 2Na⁺(aq) + 2Cl⁻(aq) → 2NaCl(aq). Which statement best explains why this is wrong?",
+   "options": [
+    "NaCl(aq) is the same dissolved ions, so nothing changed",
+    "The coefficients should be reduced to 1 each",
+    "Sodium chloride should be written as NaCl(s), a solid",
+    "The chloride ions should be written with a 2− charge"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "NaCl(aq) means Na⁺ and Cl⁻ dissolved in water, exactly the left side. No new substance forms, so no reaction is shown.",
+    "options": [
+     "Right: both sides are the same dissolved ions.",
+     "Dividing by 2 still leaves an equation that shows no change.",
+     "Sodium chloride is soluble, so in water it is dissolved ions, not a solid.",
+     "A chloride ion is Cl⁻; the charges in the equation are correct."
+    ]
+   }
+  }
+ ]
+}

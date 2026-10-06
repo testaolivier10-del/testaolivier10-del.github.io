@@ -1,0 +1,12 @@
+{
+ "reaction-type-map": {
+  "file": "figures/reaction-type-map.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four cards. Precipitation: ions from two solutions form a solid, for example Ag⁺(aq) + Cl⁻(aq) → AgCl(s). Acid-base: an H⁺ moves from one particle to another, for example H⁺(aq) + OH⁻(aq) → H₂O(l). Electron transfer: electrons move, look for a free element, for example Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s). Combustion: a fuel combines with O₂, for example CH₄ + 2O₂ → CO₂ + 2H₂O. A note says every combustion is also an electron transfer, because O₂ goes from a free element to compounds."
+ }
+}

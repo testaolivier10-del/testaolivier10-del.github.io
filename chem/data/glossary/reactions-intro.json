@@ -1,0 +1,14 @@
+{
+ "chemical-reaction": {
+  "def": "A process in which bonds break and form, so the atoms of the starting substances end up in new substances with different properties."
+ },
+ "reactant": {
+  "def": "A starting substance in a chemical reaction, written on the left of the arrow; the new substances formed, on the right, are the products."
+ },
+ "chemical-equation": {
+  "def": "A statement of a reaction in formulas: reactants, an arrow, then products. Coefficients in front of each formula make the atom counts equal on both sides."
+ },
+ "conservation-of-mass": {
+  "def": "In a chemical reaction atoms are rearranged, not created or destroyed, so the total mass of the products equals the total mass of the reactants."
+ }
+}

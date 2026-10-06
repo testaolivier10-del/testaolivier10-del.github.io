@@ -1,0 +1,97 @@
+{
+ "topic": "reaction-types",
+ "hook": "Thousands of reactions happen in labs, kitchens and engines, and no one memorizes them all. Chemists sort them by what moves between the particles: ions that pair off and fall out of solution, a hydrogen ion passed from one particle to another, or electrons handed over. Spot which one is happening and you can predict the products.",
+ "prereq": [
+  {
+   "q": "Mixing two solutions forms an insoluble solid. What is that solid called?",
+   "options": [
+    "A precipitate",
+    "A spectator",
+    "An electrolyte",
+    "A solvent"
+   ],
+   "correct": 0,
+   "why": "An insoluble solid formed from solutions is a precipitate.",
+   "review": "net-ionic-equations"
+  },
+  {
+   "q": "What is the charge on a magnesium ion?",
+   "options": [
+    "2+",
+    "1+",
+    "2−",
+    "0"
+   ],
+   "correct": 0,
+   "why": "Magnesium is in group 2 and loses its two valence electrons, forming Mg²⁺.",
+   "review": "ionic-compounds-valence"
+  },
+  {
+   "q": "Which formula is empirical?",
+   "options": [
+    "CH₂O",
+    "C₆H₁₂O₆",
+    "C₂H₄O₂",
+    "H₂O₂"
+   ],
+   "correct": 0,
+   "why": "CH₂O has subscripts with no common factor; the others can be divided.",
+   "review": "elemental-composition"
+  }
+ ],
+ "figure": {
+  "figure": "reaction-type-map",
+  "caption": "Four kinds of reaction, sorted by what changes between the particles: ions pair off into a solid, a proton (H⁺) moves, electrons move, or a fuel combines with oxygen."
+ },
+ "chain": [
+  {
+   "cause": "Ions from two solutions meet a partner they cannot stay dissolved with",
+   "effect": "an insoluble solid forms: a precipitation reaction"
+  },
+  {
+   "cause": "An H⁺ passes from one particle to another",
+   "effect": "the reaction is an acid-base reaction, such as H⁺ + OH⁻ → H₂O"
+  },
+  {
+   "cause": "An element goes from uncombined to combined, or the reverse",
+   "effect": "electrons have moved between particles"
+  },
+  {
+   "cause": "A hydrocarbon burns in plenty of oxygen",
+   "effect": "its carbon ends up in CO₂ and its hydrogen in H₂O"
+  }
+ ],
+ "ideas": [
+  "<b>Precipitation reaction</b>: two solutions give an insoluble solid. Acid-base: an H⁺ moves. Electron transfer: electrons move from one particle to another.",
+  "Clue for electron transfer: an element appears uncombined on one side and in a compound on the other.",
+  "<b>Combustion</b> of a <b>hydrocarbon</b> in excess O₂ gives CO₂ and H₂O; with too little O₂, toxic CO can form.",
+  "Older names describe the pattern: <b>synthesis</b>, <b>decomposition reaction</b>, <b>single replacement</b>, <b>double replacement</b>."
+ ],
+ "misconception": {
+  "wrong": "Every reaction belongs to exactly one type.",
+  "right": "The categories overlap. Every combustion is also an electron-transfer reaction, and magnesium dissolving in acid is both a single replacement and an electron transfer. Classify by what changes between the particles, and name every description that fits."
+ },
+ "check": [
+  "chem-reaction-types-1",
+  "chem-reaction-types-2",
+  "chem-reaction-types-3",
+  "chem-reaction-types-4",
+  "chem-reaction-types-9",
+  "chem-reaction-types-10"
+ ],
+ "summary": "Reactions can be sorted by what changes between particles: ions combining into an insoluble solid (precipitation), an H⁺ moving (acid-base), electrons moving (electron transfer, including every combustion). A hydrocarbon burning in excess oxygen gives carbon dioxide and water.",
+ "connections": [
+  {
+   "href": "../notes/net-ionic-equations.html",
+   "label": "Back: precipitates and net ionic equations (4.2)"
+  },
+  {
+   "href": "../notes/acid-base-reactions-intro.html",
+   "label": "Next: proton transfer in detail (4.8)"
+  },
+  {
+   "href": "../notes/redox-reactions.html",
+   "label": "Ahead: electron transfer in detail (4.9)"
+  }
+ ]
+}

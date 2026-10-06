@@ -1,0 +1,11 @@
+{
+ "state-symbol": {
+  "def": "A label after a formula that says how the species exists: (s) solid, (l) liquid, (g) gas, (aq) dissolved in water."
+ },
+ "limiting-reactant": {
+  "def": "The limiting reactant is the one that runs out first and so sets how much product can form; any reactant left over is in excess (the excess reactant)."
+ },
+ "reaction-diagram": {
+  "def": "A drawing of the particles before and after a reaction. It conserves every atom, and the change in particle counts shows the ratio given by the coefficients."
+ }
+}

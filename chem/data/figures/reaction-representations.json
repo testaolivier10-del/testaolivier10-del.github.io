@@ -1,0 +1,12 @@
+{
+ "leftover-reactant-diagram": {
+  "file": "figures/leftover-reactant-diagram.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Before box: 2 nitrogen molecules and 8 hydrogen molecules. After box: 4 ammonia molecules and 2 hydrogen molecules left over. A tally shows 2 N₂ used, 6 H₂ used and 4 NH₃ made, a ratio of 2 : 6 : 4, which reduces to 1 : 3 : 2. The equation is N₂(g) + 3H₂(g) → 2NH₃(g). Nitrogen ran out; the leftover hydrogen was in excess and is not in the equation. Each box holds 4 N and 16 H atoms."
+ }
+}

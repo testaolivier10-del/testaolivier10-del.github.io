@@ -1,0 +1,12 @@
+{
+ "proton-transfer": {
+  "file": "figures/proton-transfer.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 310,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An HF molecule passes an H⁺ (curved arrow) to a water molecule. HF is the acid, the proton donor; water is the base, the proton acceptor. The products are F⁻, the conjugate base, and H₃O⁺, the conjugate acid. Brackets join HF with F⁻ and H₂O with H₃O⁺ as conjugate pairs, each differing by one H⁺. Equation: HF(aq) + H₂O(l) ⇌ F⁻(aq) + H₃O⁺(aq)."
+ }
+}

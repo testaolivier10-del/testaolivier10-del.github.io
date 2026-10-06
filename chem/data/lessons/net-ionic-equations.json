@@ -1,0 +1,97 @@
+{
+ "topic": "net-ionic-equations",
+ "hook": "Pour clear silver nitrate solution into clear table-salt water and a white cloud appears at once. Swap the salt for potassium chloride or calcium chloride and you get the same white cloud. The particles that make it are the same each time; the others just watch. A net ionic equation writes down only the ones that act.",
+ "prereq": [
+  {
+   "q": "What happens to an ionic compound such as KBr when it dissolves in water?",
+   "options": [
+    "It separates into K⁺ and Br⁻ ions, each surrounded by water",
+    "It stays as KBr units surrounded by water",
+    "Its atoms share electrons with water molecules",
+    "It forms K atoms and Br₂ molecules"
+   ],
+   "correct": 0,
+   "why": "A dissolved ionic compound dissociates into ions, each hydrated by water molecules.",
+   "review": "solution-particle-models"
+  },
+  {
+   "q": "A substance that gives a solution that conducts electricity because it forms ions is",
+   "options": [
+    "an electrolyte",
+    "a nonelectrolyte",
+    "a solvent",
+    "a pure substance"
+   ],
+   "correct": 0,
+   "why": "Electrolytes form mobile ions in water, which carry charge.",
+   "review": "solutions"
+  },
+  {
+   "q": "Balance __Al + __Cl₂ → __AlCl₃. What is the coefficient of Cl₂?",
+   "options": [
+    "3",
+    "2",
+    "1",
+    "6"
+   ],
+   "correct": 0,
+   "why": "2Al + 3Cl₂ → 2AlCl₃: 6 Cl atoms on each side.",
+   "review": "reactions-intro"
+  }
+ ],
+ "figure": {
+  "figure": "net-ionic-steps",
+  "caption": "From molecular to net ionic. Split every dissolved ionic compound into ions, keep the solid together, then cross out the ions that are the same on both sides."
+ },
+ "chain": [
+  {
+   "cause": "Dissolved ionic compounds exist as separate ions in water",
+   "effect": "the complete ionic equation writes them as ions"
+  },
+  {
+   "cause": "Some ions are dissolved both before and after mixing",
+   "effect": "they are spectator ions and take no part in the change"
+  },
+  {
+   "cause": "Removing the spectators from both sides",
+   "effect": "leaves the net ionic equation: only the species that change"
+  },
+  {
+   "cause": "Atoms and charge are both conserved",
+   "effect": "the net ionic equation must balance both"
+  }
+ ],
+ "ideas": [
+  "Molecular equation: whole formulas. <b>Complete ionic equation</b>: every soluble ionic compound split into its ions. <b>Net ionic equation</b>: spectators removed.",
+  "Write as ions only what is mostly ions in water. Solids, liquids, gases and weak electrolytes stay as formulas.",
+  "A <b>spectator ion</b> is dissolved and unchanged on both sides.",
+  "A <b>precipitate</b> is an insoluble solid that forms from solutions. A net ionic equation balances atoms and charge."
+ ],
+ "misconception": {
+  "wrong": "In a complete ionic equation you split every compound into ions, including the solids.",
+  "right": "Only species that are dissolved as separate ions are split. A precipitate or any other solid is written as one formula, because its ions are held together in the solid, not free in the water."
+ },
+ "check": [
+  "chem-net-ionic-equations-1",
+  "chem-net-ionic-equations-2",
+  "chem-net-ionic-equations-3",
+  "chem-net-ionic-equations-4",
+  "chem-net-ionic-equations-5",
+  "chem-net-ionic-equations-10"
+ ],
+ "summary": "Dissolved ionic compounds exist as ions. Remove the spectator ions, which are dissolved and unchanged on both sides, and what is left is the net ionic equation: only the species that change, balanced for atoms and charge, with solids, liquids, gases and weak electrolytes written as formulas.",
+ "connections": [
+  {
+   "href": "../notes/solution-particle-models.html",
+   "label": "Back: ions in water (3.8)"
+  },
+  {
+   "href": "../notes/solubility.html",
+   "label": "Back: what dissolves and why (3.10)"
+  },
+  {
+   "href": "../notes/reaction-representations.html",
+   "label": "Next: equations and particle diagrams (4.3)"
+  }
+ ]
+}

@@ -1,0 +1,75 @@
+{
+ "id": "frq-sulfate-precipitate",
+ "type": "short",
+ "points": 4,
+ "title": "Sulfate in a water sample",
+ "units": [
+  "unit-4"
+ ],
+ "topics": [
+  "net-ionic-equations",
+  "stoichiometry"
+ ],
+ "practices": [
+  "2.E",
+  "5.E",
+  "5.F",
+  "6.D"
+ ],
+ "stimulus": {
+  "kind": "setup",
+  "title": "Precipitating barium sulfate",
+  "text": "<p>To find the sulfate concentration in a 50.00 mL water sample, a student adds BaCl₂(aq) until no more white solid forms, then a few drops more. The solid, BaSO₄ (molar mass 233.40 g/mol), is filtered, rinsed, dried to constant mass and found to weigh 0.4668 g. The only sulfate compound in the water is Na₂SO₄.</p>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 1,
+   "prompt": "<b>Write</b> the balanced net ionic equation for the formation of the precipitate.",
+   "rubric": [
+    {
+     "point": "Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s), with Na⁺ and Cl⁻ omitted.",
+     "accept": [
+      "Ba²⁺ + SO₄²⁻ → BaSO₄(s)"
+     ]
+    }
+   ],
+   "sample": "Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s). Na⁺ and Cl⁻ are spectator ions."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "<b>Calculate</b> the molarity of sulfate ions in the water sample.",
+   "rubric": [
+    {
+     "point": "Moles BaSO₄ = 0.4668 g ÷ 233.40 g/mol = 0.002000 mol = moles SO₄²⁻ (1 : 1).",
+     "accept": [
+      "2.000 × 10⁻³ mol"
+     ]
+    },
+    {
+     "point": "Molarity = 0.002000 mol ÷ 0.05000 L = 0.04000 M.",
+     "accept": [
+      "0.0400 M",
+      "0.04000 mol/L"
+     ]
+    }
+   ],
+   "sample": "0.4668 g BaSO₄ × (1 mol / 233.40 g) = 0.002000 mol BaSO₄, which came from 0.002000 mol SO₄²⁻ (1 : 1). Molarity = 0.002000 mol ÷ 0.05000 L = 0.04000 M sulfate."
+  },
+  {
+   "label": "c",
+   "points": 1,
+   "prompt": "The student skipped rinsing the precipitate, and some dissolved NaCl dried onto the solid. <b>Predict</b> the effect on the calculated sulfate molarity and <b>justify</b> your prediction.",
+   "rubric": [
+    {
+     "point": "Too high, because the dried NaCl adds mass that is counted as BaSO₄, giving too many moles of sulfate.",
+     "accept": [
+      "larger, since the extra salt is weighed as barium sulfate"
+     ]
+    }
+   ],
+   "sample": "Too high. The NaCl left on the solid adds to the weighed mass, which the calculation treats as BaSO₄. That gives too many moles of BaSO₄, and so of sulfate, and too large a molarity."
+  }
+ ]
+}

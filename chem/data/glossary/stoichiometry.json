@@ -1,0 +1,11 @@
+{
+ "stoichiometry": {
+  "def": "Using the mole ratios given by the coefficients of a balanced equation to find the amounts of reactants and products; a mole ratio such as 2 mol H₂O / 1 mol O₂ is the conversion factor."
+ },
+ "yield": {
+  "def": "The theoretical yield is the most product the limiting reactant can make; the actual yield is the amount collected; percent yield = actual yield ÷ theoretical yield × 100."
+ },
+ "gravimetric": {
+  "def": "Finding how much of a substance or ion a sample holds by turning it into a precipitate of known formula, then filtering, drying to constant mass and weighing the solid."
+ }
+}

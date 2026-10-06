@@ -1,0 +1,438 @@
+{
+ "stimuli": {
+  "acid-base-reactions-intro-s1": {
+   "kind": "model",
+   "title": "Four proton transfers",
+   "html": "<p>Each equation shows a proton (H⁺) moving from one particle to another.</p><table><caption>Proton-transfer reactions</caption><thead><tr><th scope=\"col\">Reaction</th><th scope=\"col\">Equation</th></tr></thead><tbody><tr><td>1</td><td>HF(aq) + H₂O(l) ⇌ F⁻(aq) + H₃O⁺(aq)</td></tr><tr><td>2</td><td>NH₃(aq) + H₂O(l) ⇌ NH₄⁺(aq) + OH⁻(aq)</td></tr><tr><td>3</td><td>HCO₃⁻(aq) + OH⁻(aq) → CO₃²⁻(aq) + H₂O(l)</td></tr><tr><td>4</td><td>CH₃COOH(aq) + NH₃(aq) → CH₃COO⁻(aq) + NH₄⁺(aq)</td></tr></tbody></table><p>The double arrow (⇌) means the products also react to re-form the reactants, which you will study in Unit 7.</p>"
+  },
+  "acid-base-reactions-intro-s2": {
+   "kind": "particle",
+   "title": "A gas dissolves in water",
+   "html": "<svg viewBox=\"0 0 498 180\" width=\"498\" height=\"180\" role=\"img\" aria-label=\"Left box: four HCl molecules, each one H atom joined to one Cl atom, above the water. Right box, after the gas dissolves: four H₃O⁺ ions, each one O atom joined to three H atoms, and four Cl⁻ ions, spread among the water. No HCl molecules remain.\"><rect x=\"4\" y=\"4\" width=\"220\" height=\"150\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"73\" cy=\"47\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"73\" y=\"50.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><circle cx=\"58\" cy=\"47\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"58\" y=\"49.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"196\" cy=\"47\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"196\" y=\"50.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><circle cx=\"181\" cy=\"47\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"181\" y=\"49.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"69\" cy=\"121\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"69\" y=\"124.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><circle cx=\"54\" cy=\"121\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"54\" y=\"123.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"148\" cy=\"113\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"148\" y=\"116.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><circle cx=\"133\" cy=\"113\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"133\" y=\"115.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><text x=\"114\" y=\"172\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">HCl(g) added</text><line x1=\"232\" y1=\"79\" x2=\"260\" y2=\"79\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><path d=\"M258,73 L268,79 L258,85 Z\" fill=\"#1F2A28\"/><rect x=\"274\" y=\"4\" width=\"220\" height=\"150\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"303\" cy=\"31\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"303\" y=\"34.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"292\" cy=\"39\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"292\" y=\"41.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"314\" cy=\"39\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"314\" y=\"41.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"303\" cy=\"18\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"303\" y=\"20.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><text x=\"321.4511028815516\" y=\"17.548897118448416\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"383\" cy=\"25\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"383\" y=\"28.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"372\" cy=\"33\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"372\" y=\"35.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"394\" cy=\"33\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"394\" y=\"35.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"383\" cy=\"12\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"383\" y=\"14.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><text x=\"401.4511028815516\" y=\"11.548897118448416\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"467\" cy=\"28\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"467\" y=\"31.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"456\" cy=\"36\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"456\" y=\"38.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"478\" cy=\"36\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"478\" y=\"38.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"467\" cy=\"15\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"467\" y=\"17.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><text x=\"485.4511028815516\" y=\"14.548897118448416\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"309\" cy=\"76\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"309\" y=\"79.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"321\" y=\"69\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"389\" cy=\"78\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"389\" y=\"81.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"401\" y=\"71\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"466\" cy=\"79\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"466\" y=\"82.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"478\" y=\"72\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"306\" cy=\"126\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"306\" y=\"129.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"318\" y=\"119\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"387\" cy=\"128\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"387\" y=\"131.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"376\" cy=\"136\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"376\" y=\"138.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"398\" cy=\"136\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"398\" y=\"138.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"387\" cy=\"115\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"387\" y=\"117.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><text x=\"405.4511028815516\" y=\"114.54889711844842\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><text x=\"384\" y=\"172\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">In solution</text></svg><p>Key: green Cl, chlorine atom or chloride ion (marked −); red O with white H, water-derived species; + and − mark ion charges. Water molecules that do not react are not drawn.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-acid-base-reactions-intro-1",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "acid-base-reactions-intro-s1",
+   "q": "In reaction 2, which species acts as the Brønsted-Lowry acid?",
+   "options": [
+    "H₂O",
+    "NH₃",
+    "NH₄⁺",
+    "OH⁻"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Water gives up an H⁺ (becoming OH⁻) and ammonia accepts it (becoming NH₄⁺). The proton donor on the reactant side is water.",
+    "options": [
+     "Right: water donates the proton and becomes OH⁻.",
+     "Ammonia gains an H⁺, so it is the base (proton acceptor).",
+     "NH₄⁺ is a product: the conjugate acid formed when ammonia accepts the proton.",
+     "OH⁻ is a product: what is left of water after it donates a proton."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-reactions-intro-2",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-base-reactions-intro-s1",
+   "q": "In which reactions does water act as a base? Select all that apply.",
+   "options": [
+    "Reaction 1",
+    "Reaction 2",
+    "Reaction 3",
+    "Reaction 4"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "In reaction 1, water accepts the proton from HF and becomes H₃O⁺, so it is a base there. In reaction 2 water donates a proton (acid). In reaction 3 water is a product, and in reaction 4 it does not appear.",
+    "options": [
+     "Right: water accepts H⁺ from HF and becomes hydronium.",
+     "In reaction 2 water gives an H⁺ to ammonia, so it is the acid.",
+     "Water is formed in reaction 3 (when OH⁻ gains a proton); it is not a reactant there.",
+     "Water is not one of the reacting species in reaction 4."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-reactions-intro-3",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acid-base-reactions-intro-s1",
+   "q": "In reaction 3, what is the conjugate base of HCO₃⁻?",
+   "options": [
+    "CO₃²⁻",
+    "H₂CO₃",
+    "OH⁻",
+    "H₂O"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Remove one H⁺ from HCO₃⁻ and you get CO₃²⁻; the charge drops by one. They differ by exactly one proton, so they are a conjugate pair.",
+    "options": [
+     "Right: HCO₃⁻ minus H⁺ is CO₃²⁻.",
+     "H₂CO₃ has one more H⁺, so it is the conjugate acid of HCO₃⁻.",
+     "OH⁻ is the base that takes the proton; its conjugate acid is H₂O.",
+     "Water is the conjugate acid of OH⁻, not related to HCO₃⁻ by one proton."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-reactions-intro-4",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-base-reactions-intro-s1",
+   "q": "HCO₃⁻ appears in reaction 3. Which statement about it is supported by its behavior?",
+   "options": [
+    "It can donate or accept a proton, so it is amphoteric",
+    "It is a base, because it carries a negative charge",
+    "It is an acid and not a base, as it has an H to give",
+    "It is a spectator, because it keeps its carbon atom"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In reaction 3 HCO₃⁻ donates a proton to OH⁻. It also has a site to accept one (giving H₂CO₃). A species that can do either is amphoteric, like water.",
+    "options": [
+     "Right: it can donate or accept a proton.",
+     "A negative charge does not decide; in reaction 3 HCO₃⁻ donates a proton, acting as an acid.",
+     "It does have an H to give, but it can also accept a proton on an oxygen lone pair, forming H₂CO₃.",
+     "It changes (it loses H⁺), so it is not a spectator."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-reactions-intro-5",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-base-reactions-intro-s1",
+   "q": "Which pair is a conjugate acid-base pair in reaction 4?",
+   "options": [
+    "NH₃ and NH₄⁺",
+    "CH₃COOH and NH₃",
+    "CH₃COO⁻ and NH₄⁺",
+    "CH₃COOH and NH₄⁺"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A conjugate pair differs by one H⁺. NH₃ gains a proton to become NH₄⁺. The other pair is CH₃COOH and CH₃COO⁻.",
+    "options": [
+     "Right: they differ by exactly one H⁺.",
+     "These are the acid and base that react with each other, not a conjugate pair.",
+     "These are the two products: the conjugate base of one pair and the conjugate acid of the other.",
+     "Both are proton donors from different pairs; they do not differ by one H⁺."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-reactions-intro-6",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-base-reactions-intro-s2",
+   "q": "Which equation describes what the diagram shows?",
+   "options": [
+    "HCl(g) + H₂O(l) → H₃O⁺(aq) + Cl⁻(aq)",
+    "HCl(g) → H(g) + Cl(g)",
+    "HCl(g) + H₂O(l) → H₂(g) + HOCl(aq)",
+    "HCl(g) → HCl(aq), with no other change"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each HCl molecule gives its H⁺ to a water molecule. The diagram shows only H₃O⁺ and Cl⁻ afterward, with no HCl molecules left.",
+    "options": [
+     "Right: a proton moves from HCl to water.",
+     "The diagram shows ions, not neutral H and Cl atoms.",
+     "No hydrogen gas forms; the H ends up in hydronium.",
+     "If HCl simply dissolved, the right box would show HCl molecules, but it shows none."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-reactions-intro-7",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "acid-base-reactions-intro-s2",
+   "q": "In this reaction, which species is the proton acceptor?",
+   "options": [
+    "H₂O",
+    "HCl",
+    "Cl⁻",
+    "H₃O⁺"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Water takes the H⁺ and becomes H₃O⁺, so water is the Brønsted-Lowry base.",
+    "options": [
+     "Right: water accepts the proton.",
+     "HCl gives the proton away, so it is the acid.",
+     "Cl⁻ is a product, the conjugate base of HCl.",
+     "H₃O⁺ is a product, the conjugate acid of water."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-reactions-intro-8",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acid-base-reactions-intro-s2",
+   "q": "A student bubbles 0.0365 g of HCl gas (36.46 g/mol) into water to make 100.0 mL of solution. Every HCl molecule reacts as in the diagram. What is the concentration of H₃O⁺ in the solution?",
+   "numeric": {
+    "answer": 0.01,
+    "tol": 0.0001,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.001,
+      "rel": 0.01,
+      "why": "Value: that is the moles of H₃O⁺. Divide by the volume in liters, 0.1000 L, to get molarity."
+     },
+     {
+      "value": 0.000365,
+      "rel": 0.01,
+      "why": "Value: you divided grams by milliliters. Convert grams to moles (÷ 36.46 g/mol) and milliliters to liters first."
+     }
+    ]
+   },
+   "why": {
+    "correct": "0.0365 g ÷ 36.46 g/mol = 0.001001 mol HCl, giving 0.001001 mol H₃O⁺ (1 : 1). 0.001001 mol ÷ 0.1000 L = 0.0100 M."
+   }
+  },
+  {
+   "id": "chem-acid-base-reactions-intro-9",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "acid-base-reactions-intro-s2",
+   "q": "The solution conducts electricity well, while liquid HCl that contains no water does not. Which explanation fits the diagram?",
+   "options": [
+    "In water, HCl gives its proton away, forming ions",
+    "Water itself conducts electricity well, whatever is dissolved",
+    "Liquid HCl is made of ions that are held in place",
+    "Dissolving breaks HCl into neutral atoms that carry charge"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Pure HCl is made of neutral molecules, so nothing carries charge. In water, the proton transfer makes H₃O⁺ and Cl⁻ ions that move through the solution and conduct.",
+    "options": [
+     "Right: the reaction with water creates mobile ions.",
+     "Pure water conducts very poorly; the ions from HCl are what make the solution conduct.",
+     "Pure HCl is molecular, not ionic, which is why it does not conduct.",
+     "Neutral atoms carry no charge; the diagram shows ions."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-reactions-intro-10",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the conjugate acid of HPO₄²⁻?",
+   "options": [
+    "H₂PO₄⁻",
+    "PO₄³⁻",
+    "H₃PO₄",
+    "H₂PO₄²⁻"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Add one H⁺: the formula gains an H and the charge rises by one, from 2− to 1−, giving H₂PO₄⁻.",
+    "options": [
+     "Right: one more H⁺, charge 2− becomes 1−.",
+     "That is the conjugate base, with one H⁺ removed.",
+     "That adds two protons, not one.",
+     "Adds an H but forgets that the proton's + charge changes 2− to 1−."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-reactions-intro-11",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What happens to an acid's formula and charge when it forms its conjugate base?",
+   "options": [
+    "It loses one H and its charge goes down by one",
+    "It loses one H and its charge goes up by one",
+    "It gains one OH and its charge goes down by one",
+    "It loses one H and its charge stays the same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Removing H⁺ removes one hydrogen and one positive charge: HF (0) → F⁻ (1−), NH₄⁺ (1+) → NH₃ (0).",
+    "options": [
+     "Right: one H and one positive charge leave together.",
+     "Losing a positive charge lowers the overall charge; it does not raise it.",
+     "A conjugate base differs by one H⁺, not by an added OH.",
+     "The proton carries a + charge, so removing it changes the charge."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-reactions-intro-12",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says \"acids contain H and bases contain OH.\" Which reaction shows that this definition is too narrow?",
+   "options": [
+    "NH₃ + HCl → NH₄⁺ + Cl⁻",
+    "HCl + NaOH → NaCl + H₂O",
+    "HNO₃ + KOH → KNO₃ + H₂O",
+    "H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ammonia has no OH, yet it accepts a proton from HCl, so it is a base. The Brønsted-Lowry definition (proton acceptor) covers it; \"contains OH\" does not.",
+    "options": [
+     "Right: NH₃ acts as a base without containing OH.",
+     "Here the base contains OH, so this reaction fits the narrow definition.",
+     "Here too the base is a hydroxide, which fits the narrow definition.",
+     "The base is again a hydroxide, so this does not test the definition."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-reactions-intro-13",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which species can act as both a Brønsted-Lowry acid and a Brønsted-Lowry base? Select all that apply.",
+   "options": [
+    "H₂O",
+    "HSO₄⁻",
+    "Cl⁻",
+    "NH₄⁺"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "An amphoteric species must have an H to give and a site to take one. Water can become OH⁻ or H₃O⁺; HSO₄⁻ can become SO₄²⁻ or H₂SO₄.",
+    "options": [
+     "Right: water can lose or gain H⁺.",
+     "Right: HSO₄⁻ has an H to give and can also accept one.",
+     "Cl⁻ has no hydrogen, so it cannot donate a proton.",
+     "NH₄⁺ can donate a proton but has no lone pair left to accept another."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-reactions-intro-14",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why is \"H⁺(aq)\" often written as H₃O⁺(aq) in equations?",
+   "options": [
+    "A bare proton bonds at once to a lone pair on water",
+    "H⁺ ions are too large to fit between the water molecules",
+    "H₃O⁺ is a separate acid that forms when the solution is heated",
+    "Writing H₃O⁺ shows that water is a spectator ion"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "H⁺ is a lone proton with an intense positive charge in a tiny space. It bonds at once to a lone pair on a water oxygen, giving hydronium. H⁺(aq) is shorthand for it.",
+    "options": [
+     "Right: the proton bonds to a lone pair on water.",
+     "A proton is far smaller than any atom; size is not the reason.",
+     "Hydronium forms at room temperature whenever an acid gives protons to water; it is what H⁺(aq) stands for.",
+     "Water is a reactant (proton acceptor) here, not a spectator."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-reactions-intro-15",
+   "type": "predict",
+   "unit": "unit-4",
+   "topic": "acid-base-reactions-intro",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Hydrochloric acid is slowly added to a beaker of NaOH solution, but not enough to use up all the hydroxide. Predict how each quantity changes.",
+   "variables": [
+    {
+     "name": "Number of OH⁻ ions in the beaker",
+     "answer": "down",
+     "why": "Each H⁺ added combines with an OH⁻ to form water."
+    },
+    {
+     "name": "Number of Na⁺ ions in the beaker",
+     "answer": "none",
+     "why": "Na⁺ is a spectator; none is added or removed."
+    },
+    {
+     "name": "Number of Cl⁻ ions in the beaker",
+     "answer": "up",
+     "why": "Each portion of HCl adds chloride ions, which stay dissolved as spectators."
+    },
+    {
+     "name": "Number of water molecules in the beaker",
+     "answer": "up",
+     "why": "Water is a product of H⁺ + OH⁻ → H₂O, and the acid solution also adds water."
+    }
+   ],
+   "why": {
+    "correct": "The change is H⁺(aq) + OH⁻(aq) → H₂O(l). Hydroxide is used up, water forms, and the spectators follow their sources."
+   }
+  }
+ ]
+}
