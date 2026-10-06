@@ -1,0 +1,45 @@
+<p>Topic 9.1 let you predict the <i>sign</i> of an entropy change. This page puts numbers on it. Just as a table of enthalpies of formation gives ΔH° for a reaction (topic 6.8), a table of standard molar entropies gives ΔS°.</p>
+
+<h2>Where entropy starts: zero at 0 K</h2>
+<p>Cool a perfect crystal toward 0 K (absolute zero). Its particles settle into the lowest-energy arrangement, and at 0 K there is exactly one way to arrange them and their energy: a single microstate. A single microstate means zero entropy. This is the <b>third law of thermodynamics</b>: a perfect crystal at 0 K has S = 0.</p>
+<p>Because there is a true zero, entropy can be measured as an absolute value. Warm the crystal and its particles start to vibrate; the entropy climbs. It jumps at the melting point and jumps again, by more, at the boiling point, because each phase gives the particles far more freedom. Within each phase it keeps rising with temperature as the energy spreads over a wider range of speeds.</p>
+
+<h2>Standard molar entropy, S°</h2>
+<p>The <b>standard molar entropy</b>, S°, is the entropy of one mole of a substance in its standard state (1 bar for a gas, 1 M for a solution), usually listed at 298 K. Its unit is <b>J/(mol·K)</b>: joules, not kilojoules.</p>
+<figure id="fig-values" data-fig="entropy-values"><figcaption>Figure 1. Standard molar entropies of six substances at 298 K.</figcaption></figure>
+<p><a class="figref" href="#fig-values">Figure 1</a> shows the patterns to know:</p>
+<ul>
+<li><b>Every S° is positive</b>, including elements such as O<sub>2</sub>(g) (205.2 J/(mol·K)) and Fe(s). This is different from ΔH°f, which is zero for an element in its standard state by definition.</li>
+<li><b>Gases ≫ liquids &gt; solids.</b> Water vapor (188.8) has nearly three times the entropy of liquid water (69.9).</li>
+<li><b>Rigid, simple solids are lowest.</b> Diamond (2.4) has the strongest, stiffest network, so its atoms barely vibrate.</li>
+<li><b>More atoms per molecule, more entropy</b> for similar substances: propane, C<sub>3</sub>H<sub>8</sub>(g) (270.3), beats CO<sub>2</sub>(g) (213.8), because a bigger molecule has more ways to rotate and vibrate.</li>
+</ul>
+
+<h2>Calculating ΔS° for a reaction</h2>
+<p>Entropy is a state function, so the change depends only on where you start and finish:</p>
+<p style="text-align:center"><b>ΔS°<sub>rxn</sub> = Σ nS°(products) − Σ nS°(reactants)</b></p>
+<p>where n is each substance's coefficient in the balanced equation. This is the same "products minus reactants" pattern as ΔH°<sub>rxn</sub> from ΔH°f, with one difference: elements do not drop out, because their S° is not zero.</p>
+<div class="worked">
+<p><b>Worked example.</b> Calculate ΔS° for N<sub>2</sub>(g) + 3 H<sub>2</sub>(g) → 2 NH<sub>3</sub>(g). S° in J/(mol·K): N<sub>2</sub>(g) 191.6, H<sub>2</sub>(g) 130.7, NH<sub>3</sub>(g) 192.8.</p>
+<p>Products: 2 mol × 192.8 J/(mol·K) = 385.6 J/K for the reaction as written.</p>
+<p>Reactants: 1 mol × 191.6 J/(mol·K) + 3 mol × 130.7 J/(mol·K) = 191.6 + 392.1 = 583.7 J/K.</p>
+<p>ΔS° = 385.6 − 583.7 = −198.1 J/(mol·K) (per mole of reaction as written).</p>
+<p>Check the sign: 4 mol of gas become 2 mol of gas, so ΔS° should be negative. It is. Each S° is known to a tenth, so the answer keeps one decimal place: −198.1 J/(mol·K).</p>
+</div>
+<p>The "per mole" in the unit means per mole of reaction as the equation is written. If you double the equation, ΔS° doubles; if you reverse it, ΔS° changes sign. For 4 NH<sub>3</sub>(g) → 2 N<sub>2</sub>(g) + 6 H<sub>2</sub>(g), ΔS° = +396.2 J/(mol·K).</p>
+
+<h2>Common slips</h2>
+<table class="compare">
+<caption>Errors in ΔS° calculations and how to catch them</caption>
+<thead><tr><th scope="col">Slip</th><th scope="col">How to catch it</th></tr></thead>
+<tbody>
+<tr><td>Leaving out coefficients</td><td>Write n × S° for every term before adding.</td></tr>
+<tr><td>Reactants minus products</td><td>Compare the sign with the change in moles of gas.</td></tr>
+<tr><td>Using S° for the wrong phase (H<sub>2</sub>O(g) for H<sub>2</sub>O(l))</td><td>Read the state symbols in the equation, then find that exact row.</td></tr>
+<tr><td>Treating S° of an element as zero</td><td>Only ΔH°f of an element is zero; S° never is.</td></tr>
+<tr><td>Mixing J and kJ later on</td><td>S° is in J/(mol·K); ΔH° is in kJ/mol. Convert one before combining them (topic 9.3).</td></tr>
+</tbody>
+</table>
+
+<h2>When the sign is not obvious</h2>
+<p>If a reaction has the same number of moles of gas on each side and no phase change, such as H<sub>2</sub>(g) + Cl<sub>2</sub>(g) → 2 HCl(g), ΔS° is small and you need the table to know its sign. When the moles of gas change, the gas term dominates and you can predict the sign before calculating, which is the best check you have.</p>

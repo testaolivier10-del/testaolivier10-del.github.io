@@ -1,0 +1,12 @@
+{
+ "coupled-reactions-bars": {
+  "file": "figures/coupled-reactions-bars.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 390,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Bar chart of ΔG° in kJ/mol: the unfavored step rises to +86, the favored step falls to −300, and their sum, the overall coupled reaction, falls to −214, so the coupled process is favored."
+ }
+}

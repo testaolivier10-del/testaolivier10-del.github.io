@@ -1,0 +1,86 @@
+{
+ "topic": "dissolution-free-energy",
+ "hook": "Squeeze an instant cold pack and it turns icy in seconds: ammonium nitrate is dissolving and soaking up heat. Squeeze a hot pack and calcium chloride dissolves and gets warm. Both salts dissolve on their own. Free energy explains how two opposite heat effects can both lead to dissolving.",
+ "prereq": [
+  {
+   "q": "In water, which end of each water molecule points toward a cation?",
+   "options": [
+    "The oxygen end, which is partly negative",
+    "A hydrogen end, which is partly positive",
+    "Either end, at random",
+    "Neither: water does not attract ions"
+   ],
+   "correct": 0,
+   "why": "Opposite partial charges attract: δ− oxygen toward the cation.",
+   "review": "solution-particle-models"
+  },
+  {
+   "q": "A process has ΔH° > 0 and ΔS° > 0. When is it favored?",
+   "options": [
+    "At high temperature",
+    "At low temperature",
+    "At every temperature",
+    "At no temperature"
+   ],
+   "correct": 0,
+   "why": "ΔG° = ΔH° − TΔS° becomes negative once TΔS° > ΔH°.",
+   "review": "gibbs-free-energy"
+  }
+ ],
+ "figure": {
+  "figure": "dissolution-steps",
+  "caption": "Dissolving: pulling ions apart and pushing water apart absorb energy; water surrounding the ions releases energy. The small difference is ΔH°soln."
+ },
+ "chain": [
+  {
+   "cause": "Ions must be pulled apart and water molecules pushed apart",
+   "effect": "these steps absorb energy (Coulombic attractions and hydrogen bonds are overcome)"
+  },
+  {
+   "cause": "Water then surrounds each ion through ion-dipole attractions",
+   "effect": "this step releases energy, and the balance of the three steps is ΔH°soln"
+  },
+  {
+   "cause": "The ions spread out, but water molecules are held in place around them",
+   "effect": "ΔS°soln is usually positive, but can be negative for small, highly charged ions"
+  },
+  {
+   "cause": "ΔG°soln = ΔH°soln − TΔS°soln",
+   "effect": "a solid dissolves readily when ΔG°soln < 0, whether it is driven by ΔH° or by ΔS°"
+  }
+ ],
+ "ideas": [
+  "Dissolving = separate the solute particles (absorbs energy) + separate the solvent particles (absorbs) + form solute-solvent attractions (releases).",
+  "ΔH°soln is the small difference between large numbers, so it can be positive (cold pack) or negative (hot pack).",
+  "ΔS°soln is usually positive (ions disperse), but small, highly charged ions order the water around them and can make it negative.",
+  "A solid dissolves readily when <b>ΔG°soln = ΔH°soln − TΔS°soln &lt; 0</b>; ΔG°soln = −RT ln Ksp links it to solubility."
+ ],
+ "misconception": {
+  "wrong": "A salt dissolves only if dissolving releases heat, because favored processes are exothermic.",
+  "right": "Many salts dissolve endothermically (ammonium nitrate cools the water). They dissolve because the ions spreading out makes ΔS°soln large enough that TΔS° > ΔH°, so ΔG°soln < 0."
+ },
+ "check": [
+  "chem-dissolution-free-energy-1",
+  "chem-dissolution-free-energy-2",
+  "chem-dissolution-free-energy-3",
+  "chem-dissolution-free-energy-4",
+  "chem-dissolution-free-energy-10",
+  "chem-dissolution-free-energy-12",
+  "chem-dissolution-free-energy-15"
+ ],
+ "summary": "Dissolving a solid absorbs energy to separate solute and solvent particles and releases energy as solute-solvent attractions form. The balance, ΔH°soln, can have either sign. ΔS°soln is usually positive but can be negative when water is ordered around small, highly charged ions. The solid dissolves readily when ΔG°soln < 0.",
+ "connections": [
+  {
+   "href": "../notes/solution-particle-models.html",
+   "label": "Back: ions in water (3.8)"
+  },
+  {
+   "href": "../notes/solubility-equilibria.html",
+   "label": "Back: Ksp and molar solubility (7.11)"
+  },
+  {
+   "href": "../notes/coupled-reactions.html",
+   "label": "Next: driving an unfavored reaction (9.7)"
+  }
+ ]
+}

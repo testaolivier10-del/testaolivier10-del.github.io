@@ -1,0 +1,87 @@
+{
+ "topic": "entropy-change",
+ "hook": "A tank of ammonia gas at a fertilizer plant, a block of ice and a diamond ring all have a measured entropy, a number in a table. Those numbers let a chemist calculate the entropy change of a reaction before running it, the same way a table of enthalpies of formation gives ΔH°.",
+ "prereq": [
+  {
+   "q": "For which process does the entropy of the system increase?",
+   "options": [
+    "Dry ice turning to CO₂ gas",
+    "Steam condensing to water",
+    "2 SO₂(g) + O₂(g) → 2 SO₃(g)",
+    "Water freezing"
+   ],
+   "correct": 0,
+   "why": "Solid to gas disperses the matter; the others reduce the dispersal.",
+   "review": "entropy-intro"
+  },
+  {
+   "q": "How is ΔH°rxn found from standard enthalpies of formation?",
+   "options": [
+    "Σ nΔH°f(products) − Σ nΔH°f(reactants)",
+    "Σ ΔH°f(reactants) − Σ ΔH°f(products), without coefficients",
+    "Multiply all the ΔH°f values together",
+    "Add every ΔH°f value in the equation"
+   ],
+   "correct": 0,
+   "why": "Products minus reactants, each multiplied by its coefficient.",
+   "review": "enthalpy-of-formation"
+  }
+ ],
+ "figure": {
+  "figure": "entropy-values",
+  "caption": "Standard molar entropies at 298 K: solids smallest, then liquids, then gases; among gases, bigger molecules have more."
+ },
+ "chain": [
+  {
+   "cause": "A perfect crystal at 0 K has a single arrangement of its particles and energy",
+   "effect": "its entropy is zero, the starting point for measuring every S°"
+  },
+  {
+   "cause": "Any substance above 0 K has motion and so more than one microstate",
+   "effect": "every standard molar entropy S° at 298 K is positive, elements included"
+  },
+  {
+   "cause": "Entropy is a state function measured per mole",
+   "effect": "ΔS° of a reaction is Σ nS°(products) − Σ nS°(reactants)"
+  },
+  {
+   "cause": "The result should match the change in moles of gas",
+   "effect": "checking its sign catches missing coefficients and sign slips"
+  }
+ ],
+ "ideas": [
+  "A perfect crystal at 0 K has S = 0; every substance at 298 K has a <b>positive S°</b>, elements included (unlike ΔH°f).",
+  "S° values: gases ≫ liquids &gt; solids; among similar substances, more atoms per molecule means a larger S°.",
+  "<b>ΔS° = Σ nS°(products) − Σ nS°(reactants)</b>, each multiplied by its coefficient. Units: J/(mol·K).",
+  "Reverse a reaction: flip the sign. Double it: double ΔS°.",
+  "Check the sign of the answer against the change in moles of gas."
+ ],
+ "misconception": {
+  "wrong": "Elements in their standard states have S° = 0, just as they have ΔH°f = 0.",
+  "right": "ΔH°f is zero for an element by definition. S° is measured from zero at 0 K, so every substance at 298 K, elements included, has a positive S°: O₂(g) has 205.2 J/(mol·K)."
+ },
+ "check": [
+  "chem-entropy-change-1",
+  "chem-entropy-change-2",
+  "chem-entropy-change-3",
+  "chem-entropy-change-4",
+  "chem-entropy-change-10",
+  "chem-entropy-change-14",
+  "chem-entropy-change-16"
+ ],
+ "summary": "Standard molar entropies S° are measured up from zero for a perfect crystal at 0 K, so every one is positive. The entropy change of a reaction is the sum of nS° for the products minus the sum for the reactants, in J/(mol·K). Its sign should agree with the change in moles of gas.",
+ "connections": [
+  {
+   "href": "../notes/entropy-intro.html",
+   "label": "Back: what entropy means (9.1)"
+  },
+  {
+   "href": "../notes/enthalpy-of-formation.html",
+   "label": "Back: products minus reactants with ΔH°f (6.8)"
+  },
+  {
+   "href": "../notes/gibbs-free-energy.html",
+   "label": "Next: combining ΔH° and ΔS° (9.3)"
+  }
+ ]
+}

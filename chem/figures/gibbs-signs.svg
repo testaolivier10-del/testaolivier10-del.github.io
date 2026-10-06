@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" role="img" aria-labelledby="t d">
+<title id="t">The four sign combinations of ΔH° and ΔS°</title>
+<desc id="d">A two by two grid. Columns: ΔS° positive, ΔS° negative. Rows: ΔH° negative, ΔH° positive. ΔH° negative and ΔS° positive: ΔG° is negative at every temperature, favored at all temperatures. ΔH° negative and ΔS° negative: favored only at low temperature, below T equals ΔH° over ΔS°. ΔH° positive and ΔS° positive: favored only at high temperature, above T equals ΔH° over ΔS°. ΔH° positive and ΔS° negative: not favored at any temperature.</desc>
+<rect width="760" height="380" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<g font-size="16" font-weight="700" text-anchor="middle"><text x="355" y="34">ΔS° &gt; 0</text><text x="605" y="34">ΔS° &lt; 0</text></g>
+<g font-size="16" font-weight="700" text-anchor="middle"><text x="120" y="135">ΔH° &lt; 0</text><text x="120" y="290">ΔH° &gt; 0</text></g>
+<g stroke-width="2">
+<rect x="235" y="50" width="240" height="150" rx="8" fill="#D9F2E6" stroke="#009E73"/>
+<rect x="485" y="50" width="240" height="150" rx="8" fill="#FBEBC9" stroke="#E69F00"/>
+<rect x="235" y="210" width="240" height="150" rx="8" fill="#FBEBC9" stroke="#E69F00"/>
+<rect x="485" y="210" width="240" height="150" rx="8" fill="#F8D9CC" stroke="#D55E00"/>
+</g>
+<g font-size="15" text-anchor="middle">
+<text x="355" y="105" font-weight="700">favored at all T</text><text x="355" y="135">both terms make ΔG° negative</text><text x="355" y="160">ΔG° &lt; 0 at every T</text>
+<text x="605" y="105" font-weight="700">favored at low T</text><text x="605" y="135">ΔH° wins when T is small</text><text x="605" y="160">T &lt; ΔH°/ΔS°</text>
+<text x="355" y="265" font-weight="700">favored at high T</text><text x="355" y="295">−TΔS° wins when T is large</text><text x="355" y="320">T &gt; ΔH°/ΔS°</text>
+<text x="605" y="265" font-weight="700">not favored at any T</text><text x="605" y="295">both terms make ΔG° positive</text><text x="605" y="320">ΔG° &gt; 0 at every T</text>
+</g>
+<text x="120" y="210" font-size="14" text-anchor="middle" fill="#3D4A66">ΔG° = ΔH° − TΔS°</text>
+</g></svg>

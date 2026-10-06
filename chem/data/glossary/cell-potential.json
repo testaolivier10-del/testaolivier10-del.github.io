@@ -1,0 +1,8 @@
+{
+ "cell-potential": {
+  "def": "The voltage of an electrochemical cell, E. Under standard conditions E°cell = E°(cathode) − E°(anode), where each E° is a standard reduction potential; a positive E°cell means a favored reaction."
+ },
+ "faraday-constant": {
+  "def": "F = 96,485 C/mol e⁻, the charge on one mole of electrons. It links cell potential to free energy, ΔG° = −nFE°."
+ }
+}

@@ -1,0 +1,5 @@
+{
+ "coupled-reaction": {
+  "def": "A pair of reactions linked by a shared intermediate, so a thermodynamically favored reaction drives an unfavored one; their ΔG° values add and their K values multiply."
+ }
+}

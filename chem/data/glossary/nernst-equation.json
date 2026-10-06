@@ -1,0 +1,5 @@
+{
+ "nernst": {
+  "def": "E = E° − (RT/nF) ln Q: the cell potential under nonstandard conditions. E > E° when Q < 1, E < E° when Q > 1, and E = 0 at equilibrium (Q = K)."
+ }
+}

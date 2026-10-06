@@ -1,0 +1,544 @@
+{
+ "stimuli": {
+  "electrolysis-faraday-s1": {
+   "kind": "setup",
+   "title": "Copper plating a key",
+   "text": "<p>A student plates copper onto a brass key. The key and a copper strip dip into 1.0 M CuSO₄(aq) and are connected to a power supply. A steady current of 2.50 A runs for 30.0 minutes. Cu²⁺(aq) + 2e⁻ → Cu(s). Molar mass of Cu = 63.55 g/mol; F = 96,485 C/mol e⁻.</p>"
+  },
+  "electrolysis-faraday-s2": {
+   "kind": "table",
+   "title": "Three cells in series",
+   "text": "<p>Three electrolytic cells are connected one after another (in series), so the same charge, 1.93 × 10⁴ C, passes through each. F = 96,485 C/mol e⁻.</p>",
+   "table": {
+    "caption": "Metal plated in each cell",
+    "cols": [
+     "Cell",
+     "Solution",
+     "Cathode half-reaction",
+     "Molar mass of metal (g/mol)"
+    ],
+    "rows": [
+     [
+      "1",
+      "AgNO₃",
+      "Ag⁺ + e⁻ → Ag",
+      "107.87"
+     ],
+     [
+      "2",
+      "Cu(NO₃)₂",
+      "Cu²⁺ + 2e⁻ → Cu",
+      "63.55"
+     ],
+     [
+      "3",
+      "Al₂(SO₄)₃ in a molten mixture",
+      "Al³⁺ + 3e⁻ → Al",
+      "26.98"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-electrolysis-faraday-1",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "electrolysis-faraday-s1",
+   "q": "How much charge, in coulombs, passes through the circuit?",
+   "numeric": {
+    "answer": 4500,
+    "tol": 10,
+    "unit": "C",
+    "units": [
+     "coulombs",
+     "coulomb"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 75,
+      "tol": 0.5,
+      "unit": "C",
+      "why": "Value: you used 30.0 minutes as if it were seconds. Convert to 1800 s first: q = It needs t in seconds."
+     }
+    ]
+   },
+   "why": {
+    "correct": "q = It = (2.50 A)(30.0 min × 60 s/min) = (2.50 C/s)(1800 s) = 4.50 × 10³ C."
+   }
+  },
+  {
+   "id": "chem-electrolysis-faraday-2",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "electrolysis-faraday-s1",
+   "q": "Calculate the mass of copper plated onto the key.",
+   "numeric": {
+    "answer": 1.48,
+    "tol": 0.01,
+    "unit": "g",
+    "units": [
+     "grams",
+     "gram"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 2.96,
+      "tol": 0.01,
+      "why": "Value: you left out the 2 mol e⁻ per mol Cu. Each Cu²⁺ needs two electrons, so divide moles of electrons by 2."
+     },
+     {
+      "value": 0.0247,
+      "rel": 0.01,
+      "why": "Value: time must be in seconds (1800 s), not minutes."
+     },
+     {
+      "value": 5.93,
+      "tol": 0.01,
+      "why": "Value: you multiplied by 2. There are 2 mol e⁻ per mol Cu, so divide moles of electrons by 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "4.50 × 10³ C × (1 mol e⁻ / 96,485 C) = 0.04664 mol e⁻; × (1 mol Cu / 2 mol e⁻) = 0.02332 mol Cu; × 63.55 g/mol = 1.48 g Cu."
+   }
+  },
+  {
+   "id": "chem-electrolysis-faraday-3",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "electrolysis-faraday-s1",
+   "q": "Which electrode is the key, and what happens there?",
+   "options": [
+    "The anode, where Cu²⁺ ions gain electrons and copper plates on",
+    "The cathode, where Cu²⁺ gains electrons and copper plates on",
+    "The cathode, where copper atoms lose electrons and dissolve",
+    "The anode, where copper atoms lose electrons and dissolve"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The key gains copper, so Cu²⁺ is reduced on it: the key is the cathode.",
+    "options": [
+     "Gaining electrons is reduction, which happens at the cathode, not the anode.",
+     "Right: plating is reduction, which happens at the cathode.",
+     "Losing electrons is oxidation, which happens at the anode.",
+     "That is what happens at the copper strip, not at the key."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrolysis-faraday-4",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "electrolysis-faraday-s1",
+   "q": "How many minutes would it take to plate 2.00 g of copper at the same current?",
+   "numeric": {
+    "answer": 40.5,
+    "tol": 0.2,
+    "unit": "min",
+    "units": [
+     "minutes",
+     "minute"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 2430,
+      "rel": 0.005,
+      "unit": "s",
+      "why": "Units: that is the time in seconds. Divide by 60 to report minutes."
+     },
+     {
+      "value": 20.2,
+      "tol": 0.2,
+      "why": "Value: you used 1 mol e⁻ per mol Cu. Copper(II) needs 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "2.00 g ÷ 63.55 g/mol = 0.03147 mol Cu; × 2 = 0.06294 mol e⁻; × 96,485 C/mol = 6073 C; t = q/I = 6073 C ÷ 2.50 A = 2429 s = 40.5 min."
+   }
+  },
+  {
+   "id": "chem-electrolysis-faraday-5",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "electrolysis-faraday-s2",
+   "q": "How many moles of electrons pass through each cell?",
+   "numeric": {
+    "answer": 0.2,
+    "tol": 0.001,
+    "unit": "mol",
+    "units": [
+     "mol e-",
+     "mol e⁻",
+     "moles"
+    ],
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 1860000000,
+      "rel": 0.01,
+      "why": "Value: divide the charge by F (coulombs per mole of electrons); do not multiply."
+     }
+    ]
+   },
+   "why": {
+    "correct": "n(e⁻) = q/F = 1.93 × 10⁴ C ÷ 96,485 C/mol e⁻ = 0.200 mol e⁻."
+   }
+  },
+  {
+   "id": "chem-electrolysis-faraday-6",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "electrolysis-faraday-s2",
+   "q": "What mass of aluminum is produced in Cell 3?",
+   "numeric": {
+    "answer": 1.8,
+    "tol": 0.01,
+    "unit": "g",
+    "units": [
+     "grams",
+     "gram"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 5.4,
+      "tol": 0.01,
+      "why": "Value: Al³⁺ needs 3 mol e⁻ per mol Al. Divide the moles of electrons by 3."
+     },
+     {
+      "value": 16.2,
+      "tol": 0.01,
+      "why": "Value: you multiplied by 3. Three electrons are needed for each Al, so divide."
+     }
+    ]
+   },
+   "why": {
+    "correct": "0.2000 mol e⁻ × (1 mol Al / 3 mol e⁻) × 26.98 g/mol = 1.8 g Al."
+   }
+  },
+  {
+   "id": "chem-electrolysis-faraday-7",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "electrolysis-faraday-s2",
+   "q": "Which cell produces the greatest mass of metal, and why?",
+   "options": [
+    "Cell 3: aluminum ions carry the largest charge, so they attract the most electrons.",
+    "The three masses are equal, because the same charge passes through each cell.",
+    "Cell 2: copper is between silver and aluminum, so it balances charge and mass best.",
+    "Cell 1: Ag⁺ needs one electron, giving the most moles, and Ag is heaviest."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Same mol e⁻ in each cell; mol metal = mol e⁻ ÷ (electrons per ion), then × molar mass. Silver wins on both counts.",
+    "options": [
+     "A larger charge means more electrons per atom, so fewer atoms form from the same charge.",
+     "Equal charge gives equal moles of electrons, but different moles and masses of metal.",
+     "There is no balancing; work out each cell: Ag is largest in both moles and mass.",
+     "Right: 0.200 mol Ag (21.6 g) versus 0.100 mol Cu (6.36 g) and 0.0667 mol Al (1.80 g)."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrolysis-faraday-8",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "electrolysis-faraday-s2",
+   "q": "What is the ratio of moles of Ag : Cu : Al produced?",
+   "options": [
+    "6 : 3 : 2",
+    "1 : 2 : 3",
+    "1 : 1 : 1",
+    "108 : 64 : 27"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "mol metal = mol e⁻ ÷ charge on the ion: 0.200/1 : 0.200/2 : 0.200/3 = 6 : 3 : 2.",
+    "options": [
+     "Right: 0.200 : 0.100 : 0.0667 mol, the ratio 1 : ½ : ⅓, or 6 : 3 : 2.",
+     "This follows the charges, but more electrons per ion means fewer moles of metal, not more.",
+     "The moles of electrons are equal, not the moles of metal.",
+     "Those are the molar masses; the mole ratio depends on electrons per ion."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrolysis-faraday-9",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "5.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does the Faraday constant, F = 96,485 C/mol e⁻, represent?",
+   "options": [
+    "The charge carried by one electron",
+    "The current that plates one mole of metal per second",
+    "The charge carried by one mole of electrons",
+    "The voltage needed to plate one mole of metal"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "F is the charge of one mole of electrons: 96,485 C/mol e⁻.",
+    "options": [
+     "One electron carries 1.602 × 10⁻¹⁹ C; F is that times Avogadro’s number.",
+     "F is a charge per mole, not a current, and the metal plated depends on its ion’s charge.",
+     "Right: it converts between coulombs and moles of electrons.",
+     "F is in coulombs per mole, not volts."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrolysis-faraday-10",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A car part is chrome-plated from a Cr³⁺ solution (Cr³⁺ + 3e⁻ → Cr). If 1.80 × 10⁴ C pass through the cell, what mass of chromium (52.00 g/mol) is deposited? (F = 96,485 C/mol e⁻)",
+   "numeric": {
+    "answer": 3.23,
+    "tol": 0.01,
+    "unit": "g",
+    "units": [
+     "grams",
+     "gram"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 9.7,
+      "tol": 0.02,
+      "why": "Value: each Cr³⁺ needs 3 electrons. Divide mol e⁻ by 3 before converting to grams."
+     }
+    ]
+   },
+   "why": {
+    "correct": "1.80 × 10⁴ C ÷ 96,485 C/mol e⁻ = 0.1866 mol e⁻; ÷ 3 = 0.06219 mol Cr; × 52.00 g/mol = 3.23 g Cr."
+   }
+  },
+  {
+   "id": "chem-electrolysis-faraday-11",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "What constant current deposits 0.500 g of silver (107.87 g/mol) from Ag⁺(aq) in 600. s? (F = 96,485 C/mol e⁻)",
+   "numeric": {
+    "answer": 0.745,
+    "tol": 0.002,
+    "unit": "A",
+    "units": [
+     "amps",
+     "amperes",
+     "amp",
+     "C/s"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 447,
+      "rel": 0.005,
+      "unit": "C",
+      "why": "Value: that is the charge. Divide by the time, 600. s, to get the current."
+     }
+    ]
+   },
+   "why": {
+    "correct": "0.500 g ÷ 107.87 g/mol = 0.004635 mol Ag = 0.004635 mol e⁻ (1 e⁻ per Ag⁺); × 96,485 C/mol = 447.2 C; I = q/t = 447.2 C ÷ 600. s = 0.745 A."
+   }
+  },
+  {
+   "id": "chem-electrolysis-faraday-12",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "An aluminum smelting cell runs at 1.00 × 10⁵ A for 1.00 hour. Al³⁺ + 3e⁻ → Al (26.98 g/mol). What mass of aluminum, in kilograms, does it produce? (F = 96,485 C/mol e⁻)",
+   "numeric": {
+    "answer": 33.6,
+    "tol": 0.1,
+    "unit": "kg",
+    "units": [
+     "kilograms"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 33600,
+      "rel": 0.005,
+      "unit": "g",
+      "why": "Units: that is grams. Divide by 1000 for kilograms."
+     },
+     {
+      "value": 101,
+      "tol": 0.2,
+      "why": "Value: each Al³⁺ needs three electrons. Divide moles of electrons by 3."
+     },
+     {
+      "value": 0.559,
+      "rel": 0.01,
+      "why": "Value: 1.00 hour is 3600 s, not 60 s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "q = (1.00 × 10⁵ A)(3600 s) = 3.60 × 10⁸ C; ÷ 96,485 = 3731 mol e⁻; ÷ 3 = 1244 mol Al; × 26.98 g/mol = 3.356 × 10⁴ g = 33.6 kg."
+   }
+  },
+  {
+   "id": "chem-electrolysis-faraday-13",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two students electrolyze molten NaCl (2 Na⁺ + 2 Cl⁻ → 2 Na + Cl₂) with the same current for the same time. Which statement about the products is correct?",
+   "options": [
+    "Equal moles of Na and Cl₂ form, because the same current passes both electrodes.",
+    "Twice as many moles of Cl₂ as of Na form, because chlorine is a diatomic gas.",
+    "Twice as many moles of Na as Cl₂: 1 e⁻ per Na, but 2 e⁻ per Cl₂.",
+    "No sodium forms, because the reaction is not thermodynamically favored."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The same electrons pass both electrodes. 1 mol e⁻ makes 1 mol Na but only ½ mol Cl₂.",
+    "options": [
+     "Equal electrons, but 1 e⁻ per Na and 2 e⁻ per Cl₂.",
+     "Being diatomic means each Cl₂ takes two electrons, so fewer Cl₂ form.",
+     "Right: Na⁺ + e⁻ → Na, and 2 Cl⁻ → Cl₂ + 2e⁻.",
+     "An electrolytic cell drives an unfavored reaction; that is its purpose."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrolysis-faraday-14",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student plates copper and finds the key gained less mass than calculated from the current and time. Which is a plausible cause?",
+   "options": [
+    "Some current went into another reduction at the cathode, such as making H₂.",
+    "The student used a larger key, which needs more copper.",
+    "The copper anode lost mass during the run.",
+    "The CuSO₄ solution was more concentrated than 1.0 M."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Faraday’s law assumes every electron reduces Cu²⁺. Side reactions use some electrons, so less copper forms.",
+    "options": [
+     "Right: if not every electron reduces Cu²⁺, less copper plates than Faraday’s law predicts.",
+     "The mass plated depends on the charge, not on the size of the key.",
+     "The anode is expected to lose mass as Cu dissolves; it does not reduce the mass plated.",
+     "A more concentrated solution would not reduce the copper plated by a given charge."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrolysis-faraday-15",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Doubling which quantity, with everything else unchanged, halves the mass of metal plated?",
+   "options": [
+    "The current through the cell",
+    "The time the current runs",
+    "The molar mass of the metal plated",
+    "The number of electrons needed by each metal ion"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "mass = (I t / F) × (1 / electrons per ion) × molar mass. Only the electrons per ion is in the denominator.",
+    "options": [
+     "Doubling the current doubles the charge, which doubles the mass plated.",
+     "Doubling the time doubles the charge, which doubles the mass plated.",
+     "Same moles, but each mole weighs twice as much: the mass doubles.",
+     "Right: twice the electrons per atom means half the moles of metal for the same charge."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrolysis-faraday-16",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "In the plating of copper from Cu²⁺, which sequence of conversions takes you from current and time to mass?",
+   "options": [
+    "I × t → coulombs → × F → mol e⁻ → × 2 → mol Cu → × 63.55 → g Cu",
+    "I × t → coulombs → ÷ F → mol e⁻ → ÷ 2 → mol Cu → × 63.55 → g Cu",
+    "I ÷ t → coulombs → ÷ F → mol e⁻ → ÷ 2 → mol Cu → × 63.55 → g Cu",
+    "I × t → coulombs → ÷ F → mol Cu → × 63.55 → g Cu"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "q = It; mol e⁻ = q/F; mol Cu = mol e⁻ ÷ 2; mass = mol × molar mass.",
+    "options": [
+     "Multiplying by F and by 2 inverts two steps: coulombs ÷ F give mol e⁻, and mol e⁻ ÷ 2 give mol Cu.",
+     "Right: charge, then moles of electrons, then moles of metal through the half-reaction, then mass.",
+     "Charge is current × time, not current ÷ time.",
+     "This skips the 2 mol e⁻ per mol Cu step, which doubles the answer."
+    ]
+   }
+  }
+ ]
+}

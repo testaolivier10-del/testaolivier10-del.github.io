@@ -1,0 +1,87 @@
+{
+ "topic": "kinetic-control",
+ "hook": "A diamond is \"forever\" in the advertisements, but thermodynamics says it should slowly turn into graphite, the gray stuff in a pencil. It never does in any time you could wait. The gap between what is favored and what actually happens is the subject of this short topic.",
+ "prereq": [
+  {
+   "q": "What is the activation energy of a reaction?",
+   "options": [
+    "The minimum energy colliding particles need to react",
+    "The total energy released by the reaction",
+    "The energy of the products minus the reactants",
+    "The energy of the reactants"
+   ],
+   "correct": 0,
+   "why": "Only collisions with at least Ea of energy (and the right orientation) lead to reaction.",
+   "review": "collision-model"
+  },
+  {
+   "q": "A process is thermodynamically favored when…",
+   "options": [
+    "ΔG° < 0",
+    "ΔH° > 0",
+    "ΔS° < 0",
+    "ΔG° > 0"
+   ],
+   "correct": 0,
+   "why": "ΔG° = ΔH° − TΔS° < 0 is the test for favorability.",
+   "review": "gibbs-free-energy"
+  }
+ ],
+ "figure": {
+  "figure": "kinetic-control-profile",
+  "caption": "Products lie below reactants (ΔG° < 0), but a tall barrier means almost no collisions get over it at room temperature."
+ },
+ "chain": [
+  {
+   "cause": "ΔG° compares only the starting and ending states",
+   "effect": "it says whether a reaction can go, not how fast"
+  },
+  {
+   "cause": "The rate depends on how many collisions have at least the activation energy",
+   "effect": "a large Ea makes the rate tiny, however negative ΔG° is"
+  },
+  {
+   "cause": "A favored reaction with a very large Ea barely proceeds at room temperature",
+   "effect": "it is under kinetic control: the reactants are kinetically stable"
+  },
+  {
+   "cause": "Heat, a spark or a catalyst gets more particles over the barrier",
+   "effect": "the favored reaction then runs at a measurable rate; ΔG° is unchanged"
+  }
+ ],
+ "ideas": [
+  "Thermodynamics (ΔG°) answers <i>can it go?</i> Kinetics (Ea, rate) answers <i>how fast?</i> They are independent.",
+  "A thermodynamically favored process with a very large activation energy may show no measurable change: it is under <b>kinetic control</b>.",
+  "Examples: diamond → graphite, paper and gasoline in air, H₂ and O₂ without a spark.",
+  "A spark, heat or a catalyst can start such a reaction; none of them changes ΔG°.",
+  "No visible reaction does not prove ΔG° &gt; 0."
+ ],
+ "misconception": {
+  "wrong": "If a reaction has a negative ΔG°, it happens quickly, and if nothing happens, ΔG° must be positive.",
+  "right": "ΔG° says nothing about rate. A favored reaction with a large activation energy can be unmeasurably slow (diamond to graphite); only thermodynamic data, not watching, tell you the sign of ΔG°."
+ },
+ "check": [
+  "chem-kinetic-control-1",
+  "chem-kinetic-control-2",
+  "chem-kinetic-control-3",
+  "chem-kinetic-control-4",
+  "chem-kinetic-control-9",
+  "chem-kinetic-control-10",
+  "chem-kinetic-control-12"
+ ],
+ "summary": "A negative ΔG° means a process is thermodynamically favored, not that it is fast. When the activation energy is very large, a favored reaction can be too slow to observe; it is under kinetic control. Rate is set by Ea; favorability by ΔG°.",
+ "connections": [
+  {
+   "href": "../notes/collision-model.html",
+   "label": "Back: activation energy and collisions (5.5)"
+  },
+  {
+   "href": "../notes/catalysis.html",
+   "label": "Back: catalysts lower the barrier (5.11)"
+  },
+  {
+   "href": "../notes/free-energy-equilibrium.html",
+   "label": "Next: ΔG° and the equilibrium constant (9.5)"
+  }
+ ]
+}

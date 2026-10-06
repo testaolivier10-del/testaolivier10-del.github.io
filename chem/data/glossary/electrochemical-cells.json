@@ -1,0 +1,14 @@
+{
+ "galvanic-cell": {
+  "def": "An electrochemical cell (also called a voltaic cell) in which a thermodynamically favored redox reaction, split into two half-cells, produces an electric current."
+ },
+ "electrode": {
+  "def": "A conductor where a half-reaction takes place: oxidation at the anode, reduction at the cathode."
+ },
+ "salt-bridge": {
+  "def": "A tube or porous barrier of an inert electrolyte that lets ions move between the half-cells, keeping each electrically neutral and completing the circuit."
+ },
+ "electrolytic-cell": {
+  "def": "An electrochemical cell in which an outside power supply drives a redox reaction that is not thermodynamically favored."
+ }
+}

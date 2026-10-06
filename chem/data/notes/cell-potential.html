@@ -1,0 +1,55 @@
+<p>Topic 9.8 built cells and found the anode from experiments. This page puts numbers on cells: how large the voltage is, which electrode is which, and how the voltage connects to ΔG° and K. The exam does not give you a table of potentials on its reference sheet; every question that needs them lists them, as the items here do.</p>
+
+<h2>Standard reduction potentials</h2>
+<p>Every half-reaction has a <b>standard reduction potential</b>, E°: a measure, in volts, of how strongly it pulls electrons in when written as a reduction, with every species at standard conditions (1 M, 1 bar, usually 25 °C). The values are all measured against one reference half-reaction, 2 H<sup>+</sup>(aq) + 2e<sup>−</sup> → H<sub>2</sub>(g), which is assigned E° = 0.00 V.</p>
+<table class="compare">
+<caption>Some standard reduction potentials at 25 °C</caption>
+<thead><tr><th scope="col">Half-reaction</th><th scope="col">E° (V)</th></tr></thead>
+<tbody>
+<tr><td>Ag<sup>+</sup>(aq) + e<sup>−</sup> → Ag(s)</td><td>+0.80</td></tr>
+<tr><td>Cu<sup>2+</sup>(aq) + 2e<sup>−</sup> → Cu(s)</td><td>+0.34</td></tr>
+<tr><td>2 H<sup>+</sup>(aq) + 2e<sup>−</sup> → H<sub>2</sub>(g)</td><td>0.00</td></tr>
+<tr><td>Ni<sup>2+</sup>(aq) + 2e<sup>−</sup> → Ni(s)</td><td>−0.25</td></tr>
+<tr><td>Zn<sup>2+</sup>(aq) + 2e<sup>−</sup> → Zn(s)</td><td>−0.76</td></tr>
+<tr><td>Al<sup>3+</sup>(aq) + 3e<sup>−</sup> → Al(s)</td><td>−1.66</td></tr>
+</tbody>
+</table>
+<p>Read it this way: the <b>more positive</b> the E°, the more readily the species on the left is reduced, so Ag<sup>+</sup> is the strongest oxidizing agent here. The <b>more negative</b> the E°, the more readily the metal on the right is oxidized, so Al is the strongest reducing agent.</p>
+
+<h2>Finding E°cell</h2>
+<p>In a galvanic cell the half-reaction with the more positive E° runs as written at the <b>cathode</b> (reduction), and the other runs in reverse at the <b>anode</b> (oxidation). Then</p>
+<p style="text-align:center"><b>E°cell = E°(cathode) − E°(anode)</b></p>
+<p>using both values exactly as they appear in the reduction table. A galvanic cell always has E°cell &gt; 0.</p>
+<div class="worked">
+<p><b>Worked example.</b> A cell is made from Al in 1 M Al<sup>3+</sup> and Cu in 1 M Cu<sup>2+</sup>. Find the half-reactions, the overall equation and E°cell.</p>
+<p>Cu<sup>2+</sup>/Cu (+0.34 V) is more positive than Al<sup>3+</sup>/Al (−1.66 V), so copper ions are reduced at the cathode and aluminum is oxidized at the anode.</p>
+<p>Cathode: Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu. Anode: Al → Al<sup>3+</sup> + 3e<sup>−</sup>.</p>
+<p>Balance electrons: the least common multiple of 2 and 3 is 6. Multiply the copper half-reaction by 3 and the aluminum one by 2: 2 Al(s) + 3 Cu<sup>2+</sup>(aq) → 2 Al<sup>3+</sup>(aq) + 3 Cu(s), with n = 6 mol e<sup>−</sup>.</p>
+<p>E°cell = E°(cathode) − E°(anode) = +0.34 V − (−1.66 V) = 2.00 V. The 3 and the 2 used to balance electrons do <b>not</b> touch the E° values.</p>
+</div>
+
+<h2>Why E° is never multiplied</h2>
+<p>Voltage is energy per unit charge (1 V = 1 J/C). Doubling a half-reaction doubles the electrons and doubles the energy, so the energy per electron, the potential, stays the same. E° is <b>intensive</b>, like temperature or density: two cups of 60 °C water are still 60 °C. Multiplying E° by a coefficient is one of the most common errors on the exam.</p>
+
+<h2>From E°cell to ΔG°</h2>
+<p>The electrical work a cell can do is charge × voltage. One mole of electrons carries F = 96,485 C (the <b>Faraday constant</b>), so n moles carry nF coulombs, and</p>
+<p style="text-align:center"><b>ΔG° = −nFE°</b></p>
+<p>where n is the moles of electrons transferred in the balanced equation. The minus sign makes a positive E° give a negative ΔG°. Units: C × V = J, so ΔG° comes out in J/mol; divide by 1000 for kJ/mol.</p>
+<div class="worked">
+<p><b>Worked example.</b> Find ΔG° for 2 Al(s) + 3 Cu<sup>2+</sup>(aq) → 2 Al<sup>3+</sup>(aq) + 3 Cu(s), E°cell = 2.00 V.</p>
+<p>ΔG° = −nFE° = −(6 mol e<sup>−</sup>)(96,485 C/mol e<sup>−</sup>)(2.00 V) = −1.158 × 10<sup>6</sup> J/mol = −1.16 × 10<sup>3</sup> kJ/mol.</p>
+<p>Here the coefficients matter, through n = 6. Doubling the equation would double n and ΔG° but leave E° at 2.00 V.</p>
+</div>
+
+<h2>One triangle: ΔG°, K and E°</h2>
+<figure id="fig-triangle" data-fig="dg-k-e-triangle"><figcaption>Figure 1. Three linked measures of how far a reaction goes.</figcaption></figure>
+<p>Combining ΔG° = −nFE° with ΔG° = −RT ln K (topic 9.5) links all three (<a class="figref" href="#fig-triangle">Figure 1</a>). Given any one, you can find the others. For Cu + 2 Ag<sup>+</sup> → Cu<sup>2+</sup> + 2 Ag, E° = +0.46 V and n = 2, so ΔG° = −(2)(96,485)(0.46) = −8.9 × 10<sup>4</sup> J/mol, and ln K = 88,766 ÷ (8.314 × 298) = 35.8, so K = e<sup>35.8</sup> ≈ 3.6 × 10<sup>15</sup>.</p>
+<table class="compare">
+<caption>Signs that go together</caption>
+<thead><tr><th scope="col">E°cell</th><th scope="col">ΔG°</th><th scope="col">K</th><th scope="col">Cell type</th></tr></thead>
+<tbody>
+<tr><td>&gt; 0</td><td>&lt; 0</td><td>&gt; 1</td><td>galvanic: runs on its own</td></tr>
+<tr><td>&lt; 0</td><td>&gt; 0</td><td>&lt; 1</td><td>electrolytic: needs a power supply</td></tr>
+</tbody>
+</table>
+<p>A negative calculated E°cell is not an error to fix by swapping numbers; it tells you the reaction as written is not favored and could be run only in an electrolytic cell.</p>

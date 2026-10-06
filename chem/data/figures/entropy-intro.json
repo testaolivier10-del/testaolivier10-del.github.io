@@ -1,0 +1,12 @@
+{
+ "entropy-dispersal": {
+  "file": "figures/entropy-dispersal.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three boxes of the same twelve particles: packed in a grid as a solid, touching but able to slide as a liquid, and spread through the whole box as a gas. An arrow below shows entropy increasing from solid to liquid to gas because the particles and their energy can be arranged in more ways."
+ }
+}

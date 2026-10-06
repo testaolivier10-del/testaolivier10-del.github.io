@@ -1,0 +1,12 @@
+{
+ "gibbs-signs": {
+  "file": "figures/gibbs-signs.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A two by two grid of the signs of ΔH° and ΔS°. ΔH° negative with ΔS° positive: favored at all temperatures. ΔH° negative with ΔS° negative: favored at low temperature, below ΔH°/ΔS°. ΔH° positive with ΔS° positive: favored at high temperature, above ΔH°/ΔS°. ΔH° positive with ΔS° negative: not favored at any temperature."
+ }
+}

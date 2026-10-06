@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 350" width="760" height="350" role="img" aria-labelledby="t d">
+<title id="t">A favored reaction with a large activation energy</title>
+<desc id="d">An energy profile. Reactants start on the left at a higher free energy than the products on the right, so ΔG° is negative and the reaction is thermodynamically favored. Between them is a very tall hump, the activation energy, so almost no collisions have enough energy and the reaction is too slow to observe at room temperature: it is under kinetic control.</desc>
+<defs><marker id="kc-a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="350" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<line x1="70" y1="310" x2="720" y2="310" stroke="#1F2A28" stroke-width="2"/><line x1="70" y1="20" x2="70" y2="310" stroke="#1F2A28" stroke-width="2"/>
+<text transform="translate(30 165) rotate(-90)" font-size="14" text-anchor="middle">free energy</text>
+<text x="395" y="335" font-size="14" text-anchor="middle">reaction progress</text>
+<path d="M90,200 L200,200 C300,200 330,45 395,45 C460,45 500,250 590,250 L700,250" fill="none" stroke="#0072B2" stroke-width="4"/>
+<g stroke="#1F2A28" stroke-width="1.5" stroke-dasharray="5 4"><line x1="200" y1="200" x2="300" y2="200"/><line x1="395" y1="45" x2="250" y2="45"/></g>
+<line x1="250" y1="194" x2="250" y2="52" stroke="#1F2A28" stroke-width="2" marker-start="url(#kc-a)" marker-end="url(#kc-a)"/>
+<text x="240" y="120" font-size="14" text-anchor="end" font-weight="700">large Ea</text>
+<line x1="590" y1="200" x2="700" y2="200" stroke="#D55E00" stroke-width="1.5" stroke-dasharray="5 4"/>
+<line x1="660" y1="204" x2="660" y2="244" stroke="#D55E00" stroke-width="2" marker-end="url(#kc-a)"/>
+<text x="670" y="230" font-size="14" fill="#D55E00" font-weight="700">ΔG° &lt; 0</text>
+<text x="140" y="190" font-size="14" text-anchor="middle">reactants</text><text x="645" y="275" font-size="14" text-anchor="middle">products</text>
+<text x="470" y="80" font-size="13">few collisions get over:</text><text x="470" y="98" font-size="13">too slow to observe</text>
+</g></svg>

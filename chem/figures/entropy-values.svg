@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" width="760" height="340" role="img" aria-labelledby="t d">
+<title id="t">Standard molar entropies of six substances</title>
+<desc id="d">A bar chart of standard molar entropy at 298 K in joules per mole kelvin. Diamond 2.4, iron 27.3, liquid water 69.9, water vapor 188.8, carbon dioxide gas 213.8, propane gas 270.3. Solids are lowest, the liquid is in the middle, and gases are highest; among gases the molecule with more atoms has the larger value.</desc>
+<rect width="760" height="340" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<line x1="80" y1="270" x2="730" y2="270" stroke="#1F2A28" stroke-width="2"/><line x1="80" y1="30" x2="80" y2="270" stroke="#1F2A28" stroke-width="2"/>
+<g stroke="#D7DCDB" stroke-width="1"><line x1="80" y1="195" x2="730" y2="195"/><line x1="80" y1="120" x2="730" y2="120"/><line x1="80" y1="45" x2="730" y2="45"/></g>
+<g font-size="12" text-anchor="end"><text x="72" y="274">0</text><text x="72" y="199">100</text><text x="72" y="124">200</text><text x="72" y="49">300</text></g>
+<text transform="translate(24 150) rotate(-90)" font-size="13" text-anchor="middle">S° (J/(mol·K))</text>
+<g stroke-width="1.5">
+<rect x="105" y="268.2" width="70" height="1.8" fill="#0072B2" stroke="#00466E"/>
+<rect x="210" y="249.5" width="70" height="20.5" fill="#0072B2" stroke="#00466E"/>
+<rect x="315" y="217.6" width="70" height="52.4" fill="#009E73" stroke="#006B4E"/>
+<rect x="420" y="128.4" width="70" height="141.6" fill="#E69F00" stroke="#9C6B00"/>
+<rect x="525" y="109.7" width="70" height="160.3" fill="#E69F00" stroke="#9C6B00"/>
+<rect x="630" y="67.3" width="70" height="202.7" fill="#E69F00" stroke="#9C6B00"/>
+</g>
+<g font-size="13" text-anchor="middle" font-weight="700"><text x="140" y="262">2.4</text><text x="245" y="243">27.3</text><text x="350" y="211">69.9</text><text x="455" y="122">188.8</text><text x="560" y="103">213.8</text><text x="665" y="61">270.3</text></g>
+<g font-size="13" text-anchor="middle"><text x="140" y="290">C (diamond)</text><text x="245" y="290">Fe(s)</text><text x="350" y="290">H₂O(l)</text><text x="455" y="290">H₂O(g)</text><text x="560" y="290">CO₂(g)</text><text x="665" y="290">C₃H₈(g)</text></g>
+<g font-size="13" text-anchor="middle" fill="#3D4A66"><text x="192" y="320">solids</text><text x="350" y="320">liquid</text><text x="560" y="320">gases</text></g>
+</g></svg>

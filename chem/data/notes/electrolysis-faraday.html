@@ -1,0 +1,54 @@
+<p>Topic 9.8 introduced the electrolytic cell: an outside power supply pushes electrons to drive a redox reaction that would not go on its own. This page is about using one, <b>electrolysis</b>, and about answering the question every electrolysis problem asks: how much product does a given current make in a given time?</p>
+
+<h2>What electrolysis does</h2>
+<p>Electrolysis is used wherever a metal or element has to be pulled out of a stable compound or laid down as a coating:</p>
+<ul>
+<li><b>Electroplating</b>: coating an object with a thin layer of metal (copper, silver, chromium, gold). The object is the cathode, because the metal forms by reduction of its ions.</li>
+<li><b>Producing reactive metals</b>: aluminum from molten Al<sub>2</sub>O<sub>3</sub>, sodium from molten NaCl. These metals are so easily oxidized that no chemical reducing agent is practical.</li>
+<li><b>Splitting water</b> into H<sub>2</sub> and O<sub>2</sub>, a reaction with ΔG° = +474.2 kJ/mol.</li>
+</ul>
+<figure id="fig-plating" data-fig="electrolysis-plating"><figcaption>Figure 1. Copper plating, and the chain of conversions from current to mass.</figcaption></figure>
+<p>In <a class="figref" href="#fig-plating">Figure 1</a>, the power supply pulls electrons out of the copper anode, where Cu → Cu<sup>2+</sup> + 2e<sup>−</sup>, and pushes them into the key, where Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu. Oxidation is still at the anode and reduction at the cathode, as in every cell.</p>
+
+<h2>Current, charge and moles of electrons</h2>
+<p>Electric <b>current</b>, I, is the rate at which charge flows, measured in amperes: 1 A = 1 coulomb per second. So the charge that passes is</p>
+<p style="text-align:center"><b>q = It</b> &nbsp;&nbsp; (coulombs = amperes × seconds)</p>
+<p>and, since one mole of electrons carries F = 96,485 C (the Faraday constant, topic 9.9),</p>
+<p style="text-align:center"><b>moles of electrons = q / F</b></p>
+<p>The half-reaction then turns moles of electrons into moles of product. This chain is <b>Faraday's law</b>: the amount of product is proportional to the charge passed.</p>
+
+<h2>The Faraday chain</h2>
+<div class="worked">
+<p><b>Worked example.</b> A key is copper-plated from CuSO<sub>4</sub>(aq) with a steady current of 2.50 A for 30.0 minutes. What mass of copper plates onto the key? (Cu = 63.55 g/mol)</p>
+<p>1. Time in seconds: 30.0 min × 60 s/min = 1800 s.</p>
+<p>2. Charge: q = It = (2.50 C/s)(1800 s) = 4.50 × 10<sup>3</sup> C.</p>
+<p>3. Moles of electrons: 4.50 × 10<sup>3</sup> C × (1 mol e<sup>−</sup> / 96,485 C) = 0.04664 mol e<sup>−</sup>.</p>
+<p>4. Moles of copper, from Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu: 0.04664 mol e<sup>−</sup> × (1 mol Cu / 2 mol e<sup>−</sup>) = 0.02332 mol Cu.</p>
+<p>5. Mass: 0.02332 mol × 63.55 g/mol = 1.48 g Cu.</p>
+<p>Units cancel at every step, and the answer has three significant figures, like the current and the time.</p>
+</div>
+<p>The step most often missed is step 4. One mole of electrons makes 1 mol of Ag (Ag<sup>+</sup> + e<sup>−</sup>), but only ½ mol of Cu (Cu<sup>2+</sup> + 2e<sup>−</sup>) and ⅓ mol of Al (Al<sup>3+</sup> + 3e<sup>−</sup>).</p>
+
+<h2>Running the chain backward</h2>
+<p>To find the time or current needed for a given mass, start at the other end.</p>
+<div class="worked">
+<p><b>Worked example.</b> How long does it take to plate 2.00 g of copper at 2.50 A?</p>
+<p>2.00 g ÷ 63.55 g/mol = 0.03147 mol Cu; × 2 mol e<sup>−</sup>/mol Cu = 0.06294 mol e<sup>−</sup>; × 96,485 C/mol e<sup>−</sup> = 6073 C.</p>
+<p>t = q/I = 6073 C ÷ 2.50 A = 2429 s = 40.5 min.</p>
+</div>
+
+<h2>Cells in series</h2>
+<p>When cells are wired one after another, the same current flows through each, so the same moles of electrons pass through each. Different metals still form in different amounts. With 1.93 × 10<sup>4</sup> C (0.200 mol e<sup>−</sup>):</p>
+<table class="compare">
+<caption>The same charge through three cells</caption>
+<thead><tr><th scope="col">Half-reaction</th><th scope="col">mol metal</th><th scope="col">mass</th></tr></thead>
+<tbody>
+<tr><td>Ag<sup>+</sup> + e<sup>−</sup> → Ag</td><td>0.200</td><td>21.6 g</td></tr>
+<tr><td>Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu</td><td>0.100</td><td>6.36 g</td></tr>
+<tr><td>Al<sup>3+</sup> + 3e<sup>−</sup> → Al</td><td>0.0667</td><td>1.80 g</td></tr>
+</tbody>
+</table>
+<p>A mass comparison needs both the electrons per ion and the molar mass; comparing masses without the molar mass is a common slip.</p>
+
+<h2>When the numbers do not match</h2>
+<p>Faraday's law assumes every electron reduces the intended ion. In a real cell, some current may go into a side reaction (such as reducing water to H<sub>2</sub> at the cathode), so less metal forms than calculated. The ratio of actual to predicted mass is the cell's current efficiency.</p>
