@@ -1,0 +1,85 @@
+/* Shared course-page components (docs/course-shell.md).
+   Every course page (NREMT, Ochem, A&P, AP Bio and any course added later)
+   draws its common pieces from here, so a Review page in one course looks like
+   a Review page in every other. A course's identity comes only from the
+   tokens --ctint and --cink (theme.css, set from body[data-course]) and from
+   its own content; nothing here names a course.
+
+   Load after theme.css and before the course's own stylesheet. */
+
+/* ---- Breadcrumb ------------------------------------------------------- */
+.cx-crumb{font:800 12.5px var(--font-ui);color:var(--muted);margin:18px 0 0;}
+.cx-crumb a{color:var(--muted);text-decoration:none;}
+.cx-crumb a:hover{color:var(--ink);text-decoration:underline;}
+
+/* ---- Page opener ------------------------------------------------------
+   Course sub-pages open with .page-head (theme.css): eyebrow = the course
+   name (plus the Beta pill), h1 = the plain page name, one lede line.
+   Slogan headlines belong on the course home only. */
+.page-head .cx-beta,.hero .cx-beta{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--cink);color:var(--ctint);font:900 10px var(--font-ui);letter-spacing:.06em;vertical-align:1px;}
+.page-head + .cx-body{margin-top:22px;}
+
+/* ---- Two-column body: work on the left, "Your numbers" on the right ---- */
+.cx-body{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;margin:22px 0 40px;}
+@media (min-width:960px){ .cx-body.has-rail{grid-template-columns:minmax(0,1fr) 300px;align-items:start;} }
+.cx-rail{display:grid;gap:14px;align-content:start;}
+
+/* ---- Cards ------------------------------------------------------------ */
+.cx-card{background:var(--surface);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:22px 24px;min-width:0;}
+.cx-card + .cx-card{margin-top:0;}
+.cx-card h2,.cx-card h3{margin:0 0 6px;font-size:18px;}
+.cx-card > p{color:var(--muted);font-weight:700;font-size:14.5px;margin:0 0 14px;max-width:62ch;}
+.cx-card > :last-child{margin-bottom:0;}
+.cx-kicker{font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin:0 0 8px;}
+
+/* Empty state: one card shape for "nothing due", "nothing yet", "no results". */
+.cx-empty{display:flex;gap:18px;align-items:flex-start;}
+.cx-empty-num{flex:0 0 auto;min-width:64px;padding:10px 12px;border-radius:var(--radius);background:var(--ctint);color:var(--cink);text-align:center;font:900 26px/1 var(--font-ui);}
+.cx-empty-num small{display:block;font:800 10.5px var(--font-ui);margin-top:4px;}
+.cx-empty h2,.cx-empty h3{margin:2px 0 6px;font-size:18px;}
+.cx-empty p{color:var(--muted);font-weight:700;font-size:14.5px;margin:0 0 14px;max-width:60ch;}
+.cx-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+
+/* Stat tiles ("Your numbers", dashboard top row). */
+.cx-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;}
+.cx-rail .cx-stats{grid-template-columns:1fr 1fr;}
+.cx-stat{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow-card);padding:14px 16px;min-width:0;}
+.cx-rail .cx-stat{box-shadow:none;background:var(--surface2);}
+.cx-stat-label{font:900 10.5px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.cx-stat-num{font:900 26px/1.15 var(--font-ui);color:var(--ink);margin-top:4px;}
+.cx-stat-sub{font:700 12px var(--font-ui);color:var(--muted);margin-top:2px;}
+
+/* Choice cards: one look for "pick a mode / an exam / a deck". Radio inputs
+   inside, so the keyboard and screen-reader behaviour is the native one. */
+.cx-choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:0 0 18px;padding:0;border:0;}
+.cx-choices legend{font:900 15px var(--font-ui);color:var(--ink);margin-bottom:10px;padding:0;}
+.cx-choice{position:relative;display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:var(--radius);background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);cursor:pointer;min-height:44px;}
+.cx-choice input{margin:3px 0 0;accent-color:var(--cink);flex:0 0 auto;}
+.cx-choice b{display:block;font:900 14px var(--font-ui);color:var(--ink);}
+.cx-choice span{display:block;font:700 12.5px/1.4 var(--font-ui);color:var(--muted);margin-top:2px;}
+.cx-choice:has(input:checked){background:var(--ctint);box-shadow:inset 0 0 0 2px var(--cink);}
+.cx-choice:has(input:focus-visible){outline:3px solid var(--cink);outline-offset:2px;}
+.cx-choice:has(input:disabled){opacity:.55;cursor:not-allowed;}
+
+/* Free-tier line under a start button: same wording slot on every page. */
+.cx-free{font:700 13px var(--font-ui);color:var(--muted);margin:12px 0 0;}
+
+/* Pills: small filters and toggles (deck card types, question counts). */
+.cx-pills{display:flex;flex-wrap:wrap;gap:8px;}
+.cx-pill{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 14px;border-radius:999px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);font:800 13px var(--font-ui);color:var(--ink);cursor:pointer;}
+.cx-pill[aria-pressed="true"],.cx-pill:has(input:checked){background:var(--ctint);color:var(--cink);box-shadow:inset 0 0 0 2px var(--cink);}
+
+/* Search field with an icon: glossary filter, course search, notes search. */
+.cx-search{position:relative;max-width:560px;}
+.cx-search input{width:100%;min-height:46px;padding:10px 14px 10px 40px;font:700 15px var(--font-ui);}
+.cx-search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--muted);pointer-events:none;}
+
+/* ---- Glossary terms inside reading (notes, lessons, textbook) ----------
+   A term the course defines gets a dotted underline; hover, focus or tap
+   shows the definition (assets/course/glossary-tip.js). Same in every course. */
+.gl{text-decoration:underline dotted;text-decoration-thickness:1.5px;text-underline-offset:3px;cursor:help;color:inherit;}
+a.gl{cursor:pointer;}
+.cx-tip{position:absolute;z-index:60;max-width:320px;padding:10px 13px;border-radius:12px;background:var(--ink);color:var(--paper);font:600 13.5px/1.5 var(--font-ui);box-shadow:var(--shadow-pop);}
+.cx-tip b{display:block;font-weight:900;margin-bottom:2px;}
+.cx-tip .cx-tip-roots{display:block;opacity:.8;font-size:12.5px;margin-top:4px;}
+.cx-tip .cx-tip-link{display:block;margin-top:6px;font-weight:800;color:inherit;}
