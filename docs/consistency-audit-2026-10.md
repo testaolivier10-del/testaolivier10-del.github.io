@@ -79,4 +79,4 @@ molecule editor, FRQ, cram plan, skill sheets), exam formats, Beta badge and rev
 
 ## Fix status
 
-(filled in as work proceeds)
+All findings above are addressed on `claude/course-consistency`; see `docs/course-shell.md` for what changed and what is still per course.

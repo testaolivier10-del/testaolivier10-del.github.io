@@ -70,7 +70,9 @@ Each workstream: before/after screenshots at 1280 and 390, light and dark, of ev
 
 - [x] Audit, decisions, base.css, Bio tint tokens moved to theme.css
 - [x] W-A  - [x] W-B  - [x] W-C  - [x] W-D
-- [ ] Merge, regenerate, bump sw.js CACHE, full CI, before/after screenshots, PR
+- [x] Merge, regenerate, bump sw.js CACHE (v57), full CI (ALL PASS with BROWSER=1), before/after screenshots, PR
+- Merge fixes: base `.cx-card`/`.cx-stat` use `--white` + 2px line like theme `.card`; Beta pill readable in dark; rail link subtitles without opacity (axe); A&P/Bio study feedback keeps the `.anp-verdict`/`.bio-verdict` hook; Bio review reads `ApBioToolList`; one review empty state ("Nothing to review yet" / "You are all caught up"); one search placeholder; no Premium pill in Ochem dashboard opener; `assets/course` budget 17 KB, `/assets` back to 282.
+- Still per course (not converged): exam run and results screens; Ochem's daily goal is 5 rounds.
 
 ## W-D notes
 
