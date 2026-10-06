@@ -190,6 +190,13 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    (`moles-molar-mass`, 15 items in two sets incl. a particle set and unit/sig-fig numerics, two
    placeholder FRQs) lives in `scripts/test/fixtures/apchem-data/` and is built only by tests
    (`APCHEM_DATA`). It is not accuracy-checked; authors write the real topic in `chem/data/`.
+13. (2026-10-06, Unit 8 draft) **Unit 8 written, not yet accuracy-checked or published.** Topics
+   8.1-8.11 in `chem/data/` (lessons, notes with a worked example before each calculation type,
+   203 items, glossary), 11 figures in `chem/figures/`, 5 FRQs (`frq-weak-acid-titration-lab` long;
+   `frq-buffer-preparation`, `frq-acid-strength-structure`, `frq-strong-weak-acid`,
+   `frq-ph-solubility` short). 8.11 is qualitative only. Every numeric key and authored mistake was
+   graded by the runtime grader; that found and fixed a small-key bug in `near()`
+   (needs-author `unit8-values`). Next: the independent accuracy check (section 6).
 
 ## 8. Open items for the owner
 

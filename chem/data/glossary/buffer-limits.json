@@ -1,0 +1,5 @@
+{
+ "buffer-capacity": {
+  "def": "How much strong acid or base a buffer can absorb before its pH changes greatly. It grows with the moles of weak acid and conjugate base, and is greatest in both directions when the two are about equal (pH near pKa)."
+ }
+}

@@ -1,0 +1,98 @@
+{
+ "topic": "ph-and-pka",
+ "hook": "Red cabbage juice turns red in lemon juice and green in baking soda water. The pigment is a weak acid whose protonated and deprotonated forms have different colors, and which one wins depends only on how the pH compares with its pKa. That one comparison also picks the indicator for a titration.",
+ "prereq": [
+  {
+   "q": "What is pKa if Ka = 1 × 10⁻⁶?",
+   "options": [
+    "6",
+    "−6",
+    "1 × 10⁶",
+    "8"
+   ],
+   "correct": 0,
+   "why": "pKa = −log Ka = −log(10⁻⁶) = 6.",
+   "review": "weak-acids-bases"
+  },
+  {
+   "q": "At the half-equivalence point of a weak acid titration, what is true?",
+   "options": [
+    "pH = pKa",
+    "pH = 7",
+    "All the acid has reacted",
+    "pH = pKb"
+   ],
+   "correct": 0,
+   "why": "[HA] = [A⁻] there, so pH = pKa.",
+   "review": "acid-base-titrations"
+  },
+  {
+   "q": "What does an indicator mark in a titration?",
+   "options": [
+    "The end point, ideally at the equivalence point",
+    "The start of the titration",
+    "The half-equivalence point",
+    "The volume of the buret"
+   ],
+   "correct": 0,
+   "why": "The indicator's color change is the end point, which should coincide with equivalence.",
+   "review": "titration-intro"
+  }
+ ],
+ "figure": {
+  "figure": "pka-ladder",
+  "caption": "Below pKa the protonated form wins; above it, the deprotonated form. An indicator changes color over about pKa ± 1."
+ },
+ "chain": [
+  {
+   "cause": "Ka = [H₃O⁺][A⁻]/[HA] holds at any pH",
+   "effect": "[A⁻]/[HA] = Ka/[H₃O⁺] = 10^(pH − pKa)"
+  },
+  {
+   "cause": "When pH is below pKa, [H₃O⁺] is larger than Ka",
+   "effect": "the ratio is below 1: the protonated form HA predominates"
+  },
+  {
+   "cause": "When pH is above pKa",
+   "effect": "the deprotonated form A⁻ predominates; at pH = pKa they are equal"
+  },
+  {
+   "cause": "An indicator is a weak acid with two colored forms",
+   "effect": "its color switches over about pKa ± 1, where neither form outnumbers the other more than tenfold"
+  },
+  {
+   "cause": "The end point should land on the steep part of the curve",
+   "effect": "choose an indicator whose pKa is close to the equivalence-point pH"
+  }
+ ],
+ "ideas": [
+  "pH &lt; pKa: protonated form (HA, or BH⁺) predominates. pH &gt; pKa: deprotonated form (A⁻, or B). pH = pKa: equal.",
+  "Every pH unit away from pKa is a factor of 10 in [A⁻]/[HA]: ratio = 10^(pH − pKa).",
+  "An indicator HIn changes color over about pKa ± 1.",
+  "Pick the indicator whose pKa is near the equivalence-point pH: phenolphthalein for weak acid + strong base, a pKa near 5 for weak base + strong acid."
+ ],
+ "misconception": {
+  "wrong": "Any indicator that changes color somewhere during the titration will mark the equivalence point.",
+  "right": "An indicator changes color at a pH near its own pKa. If that pH is reached in the buffer region, the color changes too early; its pKa has to match the equivalence-point pH."
+ },
+ "check": [
+  "chem-ph-and-pka-1",
+  "chem-ph-and-pka-2",
+  "chem-ph-and-pka-3",
+  "chem-ph-and-pka-6",
+  "chem-ph-and-pka-7",
+  "chem-ph-and-pka-15",
+  "chem-ph-and-pka-17"
+ ],
+ "summary": "Comparing pH with pKa tells you which form of an acid is in the majority: protonated below pKa, deprotonated above it, equal at pKa, with a tenfold change in ratio for every pH unit. An indicator is a weak acid whose two forms have different colors, so it changes over about pKa ± 1; choose one whose pKa matches the equivalence-point pH.",
+ "connections": [
+  {
+   "href": "../notes/acid-base-titrations.html",
+   "label": "Back: titration curves (8.5)"
+  },
+  {
+   "href": "../notes/buffer-properties.html",
+   "label": "Next: properties of buffers (8.8)"
+  }
+ ]
+}

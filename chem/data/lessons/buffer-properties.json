@@ -1,0 +1,82 @@
+{
+ "topic": "buffer-properties",
+ "hook": "Pour 1 mL of strong acid into a glass of water and its pH drops by five units. Pour the same acid into a glass of acetate buffer and the pH barely moves, by less than a tenth. Nothing magic happens: the acid is still added, but particles in the buffer react with it before it can pile up.",
+ "prereq": [
+  {
+   "q": "Which pair makes a buffer?",
+   "options": [
+    "HNO₂ and NaNO₂",
+    "HCl and NaCl",
+    "NaOH and NaCl",
+    "HNO₃ and NaNO₃"
+   ],
+   "correct": 0,
+   "why": "A weak acid and its conjugate base; HNO₂ is weak.",
+   "review": "buffers-intro"
+  },
+  {
+   "q": "For an acid with pKa 4.7, which form predominates at pH 5.7?",
+   "options": [
+    "A⁻, about 10 to 1",
+    "HA, about 10 to 1",
+    "Equal amounts",
+    "A⁻, about 1.2 to 1"
+   ],
+   "correct": 0,
+   "why": "pH is 1 unit above pKa, so [A⁻]/[HA] = 10.",
+   "review": "ph-and-pka"
+  }
+ ],
+ "figure": {
+  "figure": "buffer-addition-bars",
+  "caption": "The same 0.010 mol of hydroxide changes the buffer's pH by 0.09 units and pure water's by 5.00."
+ },
+ "chain": [
+  {
+   "cause": "Strong acid is added to a buffer",
+   "effect": "H₃O⁺ + A⁻ → HA + H₂O runs to completion, so the added H₃O⁺ does not stay free"
+  },
+  {
+   "cause": "Strong base is added to a buffer",
+   "effect": "OH⁻ + HA → A⁻ + H₂O runs to completion, so the added OH⁻ does not stay free"
+  },
+  {
+   "cause": "Each addition only shifts a little HA into A⁻ or back",
+   "effect": "the ratio [A⁻]/[HA] changes slightly, so [H₃O⁺] = Ka × [HA]/[A⁻] changes slightly"
+  },
+  {
+   "cause": "Diluting a buffer lowers [HA] and [A⁻] by the same factor",
+   "effect": "the ratio, and so the pH, stays almost the same"
+  }
+ ],
+ "ideas": [
+  "<b>Buffer action</b>: added acid is consumed by A⁻; added base is consumed by HA. The added ion is turned into a member of the pair.",
+  "Buffer pH depends on the <b>ratio</b> [A⁻]/[HA], not on the amounts. Same ratio, same pH.",
+  "Diluting a buffer barely changes its pH.",
+  "A buffer limits pH change; it does not stop it. Each addition shifts the ratio a little."
+ ],
+ "misconception": {
+  "wrong": "A more concentrated buffer has a lower pH because it contains more acid.",
+  "right": "It also contains more conjugate base. The pH depends on the ratio [A⁻]/[HA], so two buffers with the same ratio have the same pH; the concentrated one can simply absorb more added acid or base."
+ },
+ "check": [
+  "chem-buffer-properties-1",
+  "chem-buffer-properties-2",
+  "chem-buffer-properties-3",
+  "chem-buffer-properties-5",
+  "chem-buffer-properties-6",
+  "chem-buffer-properties-7",
+  "chem-buffer-properties-8"
+ ],
+ "summary": "A buffer resists pH change because its two components react with whatever is added: the conjugate base takes up added acid and the weak acid takes up added base. Only the ratio [A⁻]/[HA] sets the pH, so additions shift it slightly and dilution barely at all.",
+ "connections": [
+  {
+   "href": "../notes/buffers-intro.html",
+   "label": "Back: what a buffer is (8.4)"
+  },
+  {
+   "href": "../notes/henderson-hasselbalch.html",
+   "label": "Next: calculating buffer pH (8.9)"
+  }
+ ]
+}

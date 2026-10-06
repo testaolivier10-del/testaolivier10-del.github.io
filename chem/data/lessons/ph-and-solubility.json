@@ -1,0 +1,98 @@
+{
+ "topic": "ph-and-solubility",
+ "hook": "Limestone caves form because rainwater is slightly acidic: dissolved carbon dioxide makes it so, and calcium carbonate, almost insoluble in pure water, slowly dissolves in it. The same chemistry erodes tooth enamel after a soda. In each case the acid attacks the anion of a salt, and the solid dissolves to replace it.",
+ "prereq": [
+  {
+   "q": "For CaF₂(s) ⇌ Ca²⁺ + 2 F⁻, what is the expression for Ksp?",
+   "options": [
+    "[Ca²⁺][F⁻]²",
+    "[Ca²⁺][F⁻]",
+    "[Ca²⁺][2F⁻]",
+    "[CaF₂]/([Ca²⁺][F⁻]²)"
+   ],
+   "correct": 0,
+   "why": "Products raised to their coefficients; the solid is left out.",
+   "review": "solubility-equilibria"
+  },
+  {
+   "q": "If Q < Ksp for a salt with solid present, what happens?",
+   "options": [
+    "More solid dissolves",
+    "More solid forms",
+    "Nothing: the system is at equilibrium",
+    "Ksp increases"
+   ],
+   "correct": 0,
+   "why": "Q < K means the net reaction goes forward: dissolving.",
+   "review": "q-and-le-chatelier"
+  },
+  {
+   "q": "Which anion is the conjugate base of a weak acid?",
+   "options": [
+    "F⁻",
+    "Cl⁻",
+    "NO₃⁻",
+    "I⁻"
+   ],
+   "correct": 0,
+   "why": "HF is weak; HCl, HNO₃ and HI are strong.",
+   "review": "weak-acids-bases"
+  }
+ ],
+ "figure": {
+  "figure": "fluoride-solubility-ph",
+  "caption": "Hydronium removes fluoride, so more calcium fluoride dissolves. Chloride does not react, so silver chloride is unaffected by pH."
+ },
+ "chain": [
+  {
+   "cause": "A salt's anion is the conjugate base of a weak acid",
+   "effect": "H₃O⁺ reacts with it: F⁻ + H₃O⁺ → HF + H₂O"
+  },
+  {
+   "cause": "That reaction lowers the anion's concentration",
+   "effect": "Q = [Ca²⁺][F⁻]² falls below Ksp"
+  },
+  {
+   "cause": "Q < Ksp with solid present",
+   "effect": "more solid dissolves until Q = Ksp again, so solubility rises as pH falls"
+  },
+  {
+   "cause": "An anion from a strong acid (Cl⁻, NO₃⁻) does not take protons",
+   "effect": "its salts' solubility does not depend on pH"
+  }
+ ],
+ "ideas": [
+  "Lowering the pH dissolves more of a salt whose anion is a base: F⁻, CO₃²⁻, PO₄³⁻, S²⁻, OH⁻.",
+  "Explain with Q and Ksp: H₃O⁺ removes the anion, Q &lt; Ksp, more solid dissolves. Ksp itself does not change.",
+  "Anions from strong acids (Cl⁻, Br⁻, I⁻, NO₃⁻) are unaffected, so those salts' solubility does not depend on pH.",
+  "The weaker the conjugate acid, the stronger the base, and the more the solubility depends on pH."
+ ],
+ "misconception": {
+  "wrong": "Acid makes every salt more soluble.",
+  "right": "Only salts whose anions are bases. AgCl is as insoluble in nitric acid as in water, because Cl⁻ does not react with H₃O⁺."
+ },
+ "check": [
+  "chem-ph-and-solubility-1",
+  "chem-ph-and-solubility-2",
+  "chem-ph-and-solubility-3",
+  "chem-ph-and-solubility-5",
+  "chem-ph-and-solubility-6",
+  "chem-ph-and-solubility-9",
+  "chem-ph-and-solubility-10"
+ ],
+ "summary": "The solubility of a salt depends on pH when its anion is a base. Added H₃O⁺ reacts with the anion, its concentration drops, Q falls below Ksp, and more solid dissolves; Ksp itself does not change. Salts of anions from strong acids are unaffected by pH. On the exam this is reasoned qualitatively.",
+ "connections": [
+  {
+   "href": "../notes/solubility-equilibria.html",
+   "label": "Back: Ksp and molar solubility (7.11)"
+  },
+  {
+   "href": "../notes/common-ion-effect.html",
+   "label": "Back: the common-ion effect (7.12)"
+  },
+  {
+   "href": "../notes/weak-acids-bases.html",
+   "label": "Back: conjugate bases of weak acids (8.3)"
+  }
+ ]
+}

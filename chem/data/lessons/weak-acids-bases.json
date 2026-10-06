@@ -1,0 +1,94 @@
+{
+ "topic": "weak-acids-bases",
+ "hook": "Vinegar is about 0.8 M acetic acid, yet you can splash it on a salad. A hydrochloric acid solution of the same concentration would have a pH near 0. The difference is that most acetic acid molecules never give up their proton: the reaction reaches equilibrium with the acid mostly intact.",
+ "prereq": [
+  {
+   "q": "For A ⇌ 2 B with K = 4.0 × 10⁻⁶ and [A]₀ = 0.10 M, what does the small-x approximation replace (0.10 − x) with?",
+   "options": [
+    "0.10",
+    "x",
+    "0.10 + x",
+    "2x"
+   ],
+   "correct": 0,
+   "why": "When K is small, x is tiny compared with 0.10, so 0.10 − x ≈ 0.10. You check afterwards that x is under 5% of 0.10.",
+   "review": "equilibrium-concentrations"
+  },
+  {
+   "q": "What is the pH of 0.010 M HCl?",
+   "options": [
+    "2.00",
+    "12.00",
+    "0.010",
+    "1.00"
+   ],
+   "correct": 0,
+   "why": "HCl is strong: [H₃O⁺] = 0.010 M, pH = 2.00.",
+   "review": "strong-acids-bases"
+  },
+  {
+   "q": "What is the conjugate base of HNO₂?",
+   "options": [
+    "NO₂⁻",
+    "H₂NO₂⁺",
+    "NO₂",
+    "OH⁻"
+   ],
+   "correct": 0,
+   "why": "Remove one H⁺ from the acid: HNO₂ → NO₂⁻.",
+   "review": "acid-base-reactions-intro"
+  }
+ ],
+ "figure": {
+  "figure": "strong-weak-boxes",
+  "caption": "The same amount of acid: the strong acid is all ions, the weak acid mostly whole molecules."
+ },
+ "chain": [
+  {
+   "cause": "A weak acid holds its proton fairly tightly",
+   "effect": "HA + H₂O ⇌ H₃O⁺ + A⁻ reaches equilibrium with most HA un-ionized (Ka ≪ 1)"
+  },
+  {
+   "cause": "Only a small amount x ionizes",
+   "effect": "an ICE table gives Ka = x²/(C − x) ≈ x²/C, so [H₃O⁺] ≈ √(Ka·C)"
+  },
+  {
+   "cause": "Diluting lowers every concentration",
+   "effect": "Q falls below Ka, so a larger fraction ionizes: percent ionization rises"
+  },
+  {
+   "cause": "An acid and its conjugate base are linked through water",
+   "effect": "Ka × Kb = Kw, so the weaker the acid, the stronger its conjugate base"
+  }
+ ],
+ "ideas": [
+  "<b>Weak acid</b>: Ka ≪ 1, mostly un-ionized. Larger Ka (smaller pKa) = stronger acid.",
+  "Weak acid pH: [H₃O⁺] = x ≈ √(Ka × C). Check x &lt; 5% of C; if not, solve the quadratic.",
+  "Weak base: same method with Kb to find [OH⁻], then pOH, then pH.",
+  "<b>Ka × Kb = Kw</b> for a conjugate pair; pKa + pKb = 14.00 at 25 °C. Kb is not 1/Ka."
+ ],
+ "misconception": {
+  "wrong": "A weak acid is one that is dilute.",
+  "right": "Weak means it ionizes only partly (Ka ≪ 1); dilute means low concentration. Concentrated acetic acid is still weak, and 0.0010 M HCl is still strong."
+ },
+ "check": [
+  "chem-weak-acids-bases-1",
+  "chem-weak-acids-bases-2",
+  "chem-weak-acids-bases-4",
+  "chem-weak-acids-bases-6",
+  "chem-weak-acids-bases-7",
+  "chem-weak-acids-bases-11",
+  "chem-weak-acids-bases-16"
+ ],
+ "summary": "A weak acid or base reacts with water only partly, so its pH comes from an equilibrium. With Ka (or Kb) and the concentration, an ICE table and the small-x approximation give [H₃O⁺] ≈ √(Ka·C). Percent ionization rises on dilution, and a conjugate pair obeys Ka × Kb = Kw.",
+ "connections": [
+  {
+   "href": "../notes/equilibrium-concentrations.html",
+   "label": "Back: ICE tables and small x (7.7)"
+  },
+  {
+   "href": "../notes/buffers-intro.html",
+   "label": "Next: acid-base reactions and buffers (8.4)"
+  }
+ ]
+}

@@ -1,0 +1,67 @@
+<p>Every buffer calculation so far has used [H₃O⁺] = Ka × [HA]/[A⁻]. The Henderson-Hasselbalch equation is the same relationship written in pH units, which makes it faster to use and, more importantly, easy to run backwards: given a target pH, it tells you how to make the buffer. Buffer preparation was one of the lowest-scoring free-response questions in recent years, so this page spends most of its time there.</p>
+
+<h2>Deriving the equation</h2>
+<p>Start from Ka for HA + H₂O ⇌ H₃O⁺ + A⁻ and take −log of both sides:</p>
+<p style="text-align:center">Ka = [H₃O⁺] × [A⁻]/[HA]<br>−log Ka = −log[H₃O⁺] − log([A⁻]/[HA])<br>pKa = pH − log([A⁻]/[HA])</p>
+<p style="text-align:center"><b>pH = pKa + log([A⁻]/[HA])</b></p>
+<p>This is the Henderson-Hasselbalch equation, and it is on the equations sheet. Three rules for using it:</p>
+<ol>
+<li><b>Base-10 log.</b> pH and pKa are base-10, so the log here is base-10 too. Using ln, a mistake readers flag every year, gives an answer off by a factor of 2.303 in the log term.</li>
+<li><b>Base on top.</b> The conjugate base A⁻ is in the numerator. Sanity check: more base than acid means pH above pKa.</li>
+<li><b>Moles are fine.</b> Both species are in the same volume, so the ratio of concentrations equals the ratio of moles.</li>
+</ol>
+<figure id="fig-hh" data-fig="hh-ratio-line"><figcaption>Every factor of ten in the ratio moves the pH by one unit.</figcaption></figure>
+<p><a class="figref" href="#fig-hh">The figure</a> shows the equation as a straight line: pH against log([A⁻]/[HA]) has slope 1 and crosses pKa at a ratio of 1.</p>
+<p>The equation needs real amounts of both HA and A⁻, so it is for buffers. It does not give the pH of a weak acid alone (A⁻ would be zero) or of a solution at the equivalence point (HA would be zero).</p>
+
+<h2>Calculating a buffer's pH</h2>
+<div class="worked">
+<p><b>Worked example 1.</b> A buffer is 0.40 M HNO₂ and 0.25 M NaNO₂ (Ka = 4.0 × 10⁻⁴). Find its pH.</p>
+<p><b>Step 1.</b> pKa = −log(4.0 × 10⁻⁴) = 3.40.</p>
+<p><b>Step 2.</b> pH = 3.40 + log(0.25/0.40) = 3.40 + (-0.20) = <b>3.19</b>.</p>
+<p><b>Check.</b> More acid than base, so the pH should be below pKa. It is. (With ln, you would get 2.93: wrong.)</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2: a weak base buffer.</b> A buffer is 0.15 M NH₃ and 0.35 M NH₄Cl (Kb of NH₃ = 1.8 × 10⁻⁵). Find its pH.</p>
+<p><b>Step 1.</b> The acid of this pair is NH₄⁺. pKa = 14.00 − pKb = 14.00 − 4.74 = 9.26. Using pKb (4.74) here is a common slip that gives an acidic pH for an ammonia buffer.</p>
+<p><b>Step 2.</b> The base is NH₃: pH = 9.26 + log(0.15/0.35) = 9.26 + (-0.37) = <b>8.89</b>.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3: after an addition.</b> 0.0050 mol NaOH is added to a buffer of 0.0300 mol CH₃COOH and 0.0200 mol CH₃COO⁻ (pKa 4.74). Find the new pH.</p>
+<p><b>Step 1, react first.</b> OH⁻ + CH₃COOH → CH₃COO⁻ + H₂O: acid 0.0250 mol, base 0.0250 mol.</p>
+<p><b>Step 2.</b> pH = 4.74 + log(0.0250/0.0250) = <b>4.74</b>. (Before the addition: 4.74 + log(0.0200/0.0300) = 4.56.)</p>
+</div>
+
+<h2>Designing a buffer</h2>
+<p>Run the equation backwards. Three steps:</p>
+<ol>
+<li><b>Choose the acid.</b> Pick the conjugate pair whose pKa is closest to the target pH, within about 1 unit. That keeps the ratio between 0.1 and 10, so both components are present in useful amounts.</li>
+<li><b>Find the ratio.</b> [A⁻]/[HA] = 10^(pH − pKa).</li>
+<li><b>Turn the ratio into amounts</b>, either by weighing the salt or by partly neutralizing the acid with strong base.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 4: choose and weigh.</b> Make 0.250 L of a buffer at pH 4.50 that contains 0.100 M acetic acid. How many grams of sodium acetate (82.03 g/mol) are needed? Options: acetic acid (pKa 4.74), formic acid (3.74), H₂PO₄⁻ (7.21).</p>
+<p><b>Step 1.</b> Acetic acid's pKa (4.74) is closest to 4.50.</p>
+<p><b>Step 2.</b> [A⁻]/[HA] = 10^(4.50 − 4.74) = 10^−0.24 = 0.575.</p>
+<p><b>Step 3.</b> mol HA = 0.250 L × 0.100 M = 0.0250 mol; mol A⁻ = 0.575 × 0.0250 = 0.0144 mol.</p>
+<p><b>Step 4.</b> Mass = 0.0144 mol × 82.03 g/mol = <b>1.18 g</b> of sodium acetate.</p>
+<p><b>Procedure.</b> Weigh the salt on an analytical balance, dissolve it with the acetic acid in some distilled water in a 250.0 mL volumetric flask, dilute to the mark, stopper and invert to mix. Check the pH with a calibrated meter.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 5: partial neutralization.</b> You have 50.0 mL of 0.200 M acetic acid and 0.100 M NaOH. How much NaOH makes a buffer at pH 4.94?</p>
+<p><b>Step 1.</b> Ratio: 10^(4.94 − 4.74) = 10^0.20 = 1.58.</p>
+<p><b>Step 2.</b> Start with 0.0100 mol HA. Adding x mol OH⁻ leaves (0.0100 − x) mol HA and makes x mol A⁻, so x / (0.0100 − x) = 1.58.</p>
+<p><b>Step 3.</b> x = 1.58 × 0.0100 / (1 + 1.58) = 0.00613 mol.</p>
+<p><b>Step 4.</b> Volume of NaOH = 0.00613 mol ÷ 0.100 mol/L = 0.0613 L = <b>61.3 mL</b>, added from a buret rinsed with the NaOH solution.</p>
+</div>
+<p>The trap in Example 5 is to set x = ratio × 0.0100. The base you add makes A⁻ <i>and</i> removes HA, so both sides of the ratio change.</p>
+
+<h2>Where students lose points</h2>
+<ul>
+<li>ln instead of log.</li>
+<li>The ratio upside down (acid on top).</li>
+<li>pKb in place of pKa for an NH₃/NH₄⁺ buffer.</li>
+<li>Forgetting to react an added strong acid or base before using the equation.</li>
+<li>Vague procedures: name the glassware (volumetric flask, buret, analytical balance) and say "dilute to the mark".</li>
+<li>Choosing an acid whose pKa is far from the target pH.</li>
+</ul>

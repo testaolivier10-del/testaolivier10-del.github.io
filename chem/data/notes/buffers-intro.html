@@ -1,0 +1,64 @@
+<p>Acids and bases are often mixed: in a titration, in a lab buffer, in your bloodstream. The key to every mixture is the same two-stage method. First let the acid and base react completely, counting moles. Then look at what is left, and choose the right equilibrium for the pH. One of the possible leftovers, a weak acid together with its conjugate base, is special enough to have its own name: a buffer.</p>
+
+<h2>Stage 1: the neutralization goes to completion</h2>
+<p>When a strong base meets a weak acid, the net ionic equation shows the weak acid as a molecule:</p>
+<p style="text-align:center"><b>CH₃COOH(aq) + OH⁻(aq) → CH₃COO⁻(aq) + H₂O(l)</b></p>
+<p>Its K is the acid's Ka times 1/Kw (the reverse of water's ionization): K = 1.8 × 10⁻⁵ / 1.0 × 10⁻¹⁴ = 1.8 × 10⁹. With K that large, the reaction runs until the limiting reactant is used up. The same is true for a weak base with a strong acid (NH₃ + H₃O⁺ → NH₄⁺ + H₂O, K = Kb/Kw = 1.8 × 10⁹) and, even more so, for strong acid with strong base (K = 1/Kw). So: <b>convert to moles, react, and make a before-and-after table.</b></p>
+
+<h2>Stage 2: what is left decides the pH</h2>
+<table class="compare">
+<thead><tr><th scope="col">What is left after the reaction</th><th scope="col">How to find the pH</th></tr></thead>
+<tbody>
+<tr><td>Weak acid only (no base added yet)</td><td>Weak acid equilibrium: [H₃O⁺] ≈ √(Ka·C)</td></tr>
+<tr><td>Weak acid <i>and</i> its conjugate base: a buffer</td><td>[H₃O⁺] = Ka × [HA]/[A⁻]</td></tr>
+<tr><td>Conjugate base only (the equivalence point)</td><td>Weak base equilibrium with Kb = Kw/Ka: the solution is basic</td></tr>
+<tr><td>Excess strong base</td><td>[OH⁻] = excess moles / total volume</td></tr>
+</tbody></table>
+<p>For a weak base neutralized by a strong acid, the same table runs with B and BH⁺, and the equivalence-point solution (only BH⁺) is <i>acidic</i>.</p>
+<div class="worked">
+<p><b>Worked example 1: partway, a buffer.</b> 20.0 mL of 0.100 M NaOH is added to 50.0 mL of 0.100 M acetic acid (Ka = 1.8 × 10⁻⁵). Find the pH.</p>
+<table class="compare"><thead><tr><th scope="col">mol</th><th scope="col">CH₃COOH</th><th scope="col">OH⁻</th><th scope="col">CH₃COO⁻</th></tr></thead>
+<tbody><tr><td>Before</td><td>5.00 × 10⁻³</td><td>2.00 × 10⁻³</td><td>0</td></tr><tr><td>Change</td><td>−2.00 × 10⁻³</td><td>−2.00 × 10⁻³</td><td>+2.00 × 10⁻³</td></tr><tr><td>After</td><td>3.00 × 10⁻³</td><td>0</td><td>2.00 × 10⁻³</td></tr></tbody></table>
+<p><b>Step 1.</b> Both the acid and its conjugate base are left: a buffer.</p>
+<p><b>Step 2.</b> Rearrange Ka = [H₃O⁺][A⁻]/[HA] to [H₃O⁺] = Ka × [HA]/[A⁻]. Both species share the same 70.0 mL, so the volume cancels and you can use moles: [H₃O⁺] = 1.8 × 10⁻⁵ × (3.00 × 10⁻³)/(2.00 × 10⁻³) = 2.7 × 10⁻⁵ M.</p>
+<p><b>Step 3.</b> pH = −log(2.7 × 10⁻⁵) = <b>4.57</b>. (Check: more acid than base, so the pH is below pKa = 4.74. It is.)</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2: exactly neutralized.</b> Same flask, but 50.0 mL of 0.100 M NaOH is added.</p>
+<p><b>Step 1.</b> 5.00 × 10⁻³ mol OH⁻ reacts with all 5.00 × 10⁻³ mol acid. Left: 5.00 × 10⁻³ mol CH₃COO⁻ in 100.0 mL, so [CH₃COO⁻] = 0.0500 M.</p>
+<p><b>Step 2.</b> Acetate is a weak base: Kb = Kw/Ka = 1.0 × 10⁻¹⁴ / 1.8 × 10⁻⁵ = 5.56 × 10⁻¹⁰.</p>
+<p><b>Step 3.</b> [OH⁻] = √(5.56 × 10⁻¹⁰ × 0.0500) = 5.27 × 10⁻⁶ M; pOH = 5.28; pH = <b>8.72</b>. Basic, as expected when a weak acid is neutralized by a strong base.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3: past the end.</b> Same flask with 70.0 mL of 0.100 M NaOH. Excess OH⁻ = 7.00 × 10⁻³ − 5.00 × 10⁻³ = 2.00 × 10⁻³ mol in 120.0 mL: [OH⁻] = 0.0167 M, pOH = 1.78, pH = <b>12.22</b>. The acetate is still there, but beside this much OH⁻ its own contribution is negligible.</p>
+</div>
+
+<h2>What a buffer is</h2>
+<p>A <b>buffer</b> is a solution that contains a weak acid and its conjugate base (or a weak base and its conjugate acid) in similar amounts. <a class="figref" href="#fig-buf">The figure</a> shows why that pair is useful:</p>
+<figure id="fig-buf" data-fig="buffer-reactions"><figcaption>Added acid is taken up by A⁻; added base is taken up by HA.</figcaption></figure>
+<ul>
+<li>Added strong acid reacts with the base of the pair: H₃O⁺ + A⁻ → HA + H₂O.</li>
+<li>Added strong base reacts with the acid of the pair: OH⁻ + HA → A⁻ + H₂O.</li>
+</ul>
+<p>Either way, the added ion is turned into a member of the pair. The ratio [HA]/[A⁻] moves a little, so by [H₃O⁺] = Ka × [HA]/[A⁻] the pH moves a little. Without the pair, the same addition would stay as free H₃O⁺ or OH⁻ and the pH would change by several units. Topic 8.8 looks at this in detail.</p>
+<p>Two ways to make a buffer:</p>
+<ol>
+<li><b>Mix the pair directly</b>: a weak acid with a soluble salt of its conjugate base, such as HNO₂ with NaNO₂, or NH₃ with NH₄Cl.</li>
+<li><b>Partly neutralize</b>: add strong base to a weak acid (or strong acid to a weak base), using less than one mole of strong reagent per mole of weak one. Worked example 1 did exactly this.</li>
+</ol>
+<p>A strong acid and the salt of its anion (HCl with NaCl) is <i>not</i> a buffer: Cl⁻ is the conjugate base of a strong acid, too weak a base to take up added H₃O⁺.</p>
+<div class="worked">
+<p><b>Worked example 4: a base buffer.</b> 0.10 mol NH₃ and 0.050 mol HCl are mixed in 1.0 L. Kb of NH₃ = 1.8 × 10⁻⁵. Find the pH.</p>
+<p><b>Step 1.</b> H₃O⁺ + NH₃ → NH₄⁺ + H₂O: left are 0.050 mol NH₃ and 0.050 mol NH₄⁺. A buffer.</p>
+<p><b>Step 2.</b> The acid of this pair is NH₄⁺, with Ka = Kw/Kb = 5.6 × 10⁻¹⁰.</p>
+<p><b>Step 3.</b> [H₃O⁺] = Ka × [NH₄⁺]/[NH₃] = 5.6 × 10⁻¹⁰ × (0.050/0.050) = 5.6 × 10⁻¹⁰ M; pH = <b>9.26</b>. Using Kb in place of Ka here would give 4.74, an acidic answer for an ammonia buffer, which cannot be right.</p>
+</div>
+
+<h2>Where students lose points</h2>
+<ul>
+<li>Writing a weak acid as ions (H⁺ + F⁻) in a net ionic equation. Weak acids are written as molecules.</li>
+<li>Skipping stage 1: finding the pH from the starting concentrations without letting the acid and base react.</li>
+<li>Saying the equivalence point is always pH 7.</li>
+<li>Using Kb of the base where the Ka of its conjugate acid belongs.</li>
+<li>Dividing leftover moles by one solution's volume instead of the total.</li>
+</ul>

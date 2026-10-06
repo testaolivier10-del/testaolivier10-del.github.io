@@ -1,0 +1,104 @@
+{
+ "topic": "acid-base-titrations",
+ "hook": "A food lab measuring the acid in a juice adds base drop by drop from a buret while a pH meter logs every reading. The graph that comes out has a flat stretch, a cliff and a plateau, and from its shape alone you can read how much acid there was, whether it was strong or weak, and its Ka.",
+ "prereq": [
+  {
+   "q": "At the equivalence point of a titration, what is true?",
+   "options": [
+    "Moles of titrant added equal the moles of analyte (by the equation)",
+    "The pH is 7",
+    "The buret is empty",
+    "The volumes of titrant and analyte are equal"
+   ],
+   "correct": 0,
+   "why": "Equivalence is a stoichiometric point: the moles match by the balanced equation. Its pH depends on what is left.",
+   "review": "titration-intro"
+  },
+  {
+   "q": "A mixture holds 2.0 × 10⁻³ mol of HA and 2.0 × 10⁻³ mol of A⁻ (Ka = 1.0 × 10⁻⁵). What is [H₃O⁺]?",
+   "options": [
+    "1.0 × 10⁻⁵ M",
+    "2.0 × 10⁻³ M",
+    "1.0 × 10⁻¹⁰ M",
+    "4.5 × 10⁻⁴ M"
+   ],
+   "correct": 0,
+   "why": "[H₃O⁺] = Ka × [HA]/[A⁻] = Ka × 1 = 1.0 × 10⁻⁵ M.",
+   "review": "buffers-intro"
+  },
+  {
+   "q": "What is the pH of 0.050 M acetate ion (Kb = 5.6 × 10⁻¹⁰)?",
+   "options": [
+    "8.72",
+    "5.28",
+    "7.00",
+    "1.30"
+   ],
+   "correct": 0,
+   "why": "[OH⁻] = √(5.6 × 10⁻¹⁰ × 0.050) = 5.3 × 10⁻⁶ M; pOH = 5.28; pH = 8.72.",
+   "review": "weak-acids-bases"
+  }
+ ],
+ "figure": {
+  "figure": "weak-acid-titration-curve",
+  "caption": "Four regions of a weak acid titration: the weak acid alone, the buffer region with pH = pKa halfway, the steep rise to an equivalence point above 7, and excess hydroxide."
+ },
+ "chain": [
+  {
+   "cause": "Each drop of OH⁻ reacts completely with HA",
+   "effect": "the flask holds HA and A⁻ together, so the pH climbs slowly (the buffer region)"
+  },
+  {
+   "cause": "Halfway to equivalence, half the HA has become A⁻",
+   "effect": "[HA] = [A⁻], so Ka = [H₃O⁺] and pH = pKa"
+  },
+  {
+   "cause": "Near equivalence almost no HA is left to react with new OH⁻",
+   "effect": "each drop changes the pH sharply: the steep rise"
+  },
+  {
+   "cause": "At equivalence only A⁻ remains, a weak base",
+   "effect": "the equivalence point of a weak acid is above pH 7"
+  },
+  {
+   "cause": "An acid with two protons loses them one at a time",
+   "effect": "a diprotic acid shows two equivalence points, equally spaced in volume"
+  }
+ ],
+ "ideas": [
+  "Equivalence volume → moles of analyte → its concentration. The steep rise is centered on it.",
+  "<b>Half-equivalence</b> (half the equivalence volume): [HA] = [A⁻], so <b>pH = pKa</b>. Do not confuse it with equivalence.",
+  "Equivalence pH: 7 for strong/strong; above 7 for weak acid + strong base; below 7 for weak base + strong acid.",
+  "Weak base titrated with strong acid: pH at half-equivalence is the pKa of the conjugate acid (14.00 − pKb), not pKb.",
+  "Polyprotic acids: one equivalence point per proton; pKa₁, pKa₂ at each half-equivalence."
+ ],
+ "misconception": {
+  "wrong": "pH = pKa at the equivalence point.",
+  "right": "pH = pKa at the half-equivalence point, where half the acid has been converted and [HA] = [A⁻]. At the equivalence point no HA is left."
+ },
+ "check": [
+  "chem-acid-base-titrations-1",
+  "chem-acid-base-titrations-2",
+  "chem-acid-base-titrations-3",
+  "chem-acid-base-titrations-4",
+  "chem-acid-base-titrations-5",
+  "chem-acid-base-titrations-6",
+  "chem-acid-base-titrations-7",
+  "chem-acid-base-titrations-8"
+ ],
+ "summary": "A titration curve shows four regions. The equivalence volume gives the moles of analyte; half that volume is the half-equivalence point, where [HA] = [A⁻] and pH = pKa. The equivalence pH is 7 only for a strong acid with a strong base; it is basic for a weak acid and acidic for a weak base. A polyprotic acid shows one equivalence point per proton.",
+ "connections": [
+  {
+   "href": "../notes/buffers-intro.html",
+   "label": "Back: what is left after an acid-base reaction (8.4)"
+  },
+  {
+   "href": "../notes/titration-intro.html",
+   "label": "Back: titration and equivalence (4.6)"
+  },
+  {
+   "href": "../notes/ph-and-pka.html",
+   "label": "Next: pH, pKa and indicators (8.7)"
+  }
+ ]
+}

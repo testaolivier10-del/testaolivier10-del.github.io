@@ -37,3 +37,30 @@ teacher signs off (site rule `apchem-beta-and-report`).
 AP® Biology frees one simulator and all skills tools (apbio decision 9). Proposed for AP®
 Chemistry: the particle-diagram trainer free, the other trainers and drills Premium. Owner to
 confirm before the first trainer ships.
+
+## unit8-values: Unit 8 conventions to confirm (open, 2026-10-06)
+
+Written for Unit 8 (`chem/data/*/` for topics 8.1-8.11); please confirm or correct:
+
+- **pH significant figures.** Items grade pH and pKa with decimal places equal to the significant
+  figures of the concentration or K (`places`), and ratios from 10^(pH − pKa) with significant
+  figures equal to the exponent's decimal places. Some teachers accept one place more or less.
+- **Ka/Kb values used** (25 °C, rounded to 2 significant figures): acetic acid 1.8 × 10⁻⁵, HF
+  6.8 × 10⁻⁴, HNO₂ 4.0 × 10⁻⁴, HOCl 3.0 × 10⁻⁸, HOBr 2.0 × 10⁻⁹, HOI 2.3 × 10⁻¹¹, HClO₂
+  1.1 × 10⁻², chloroacetic 1.4 × 10⁻³, dichloroacetic 5.5 × 10⁻², fluoroacetic 2.6 × 10⁻³,
+  trifluoroacetic 0.59, formic 1.8 × 10⁻⁴, H₂PO₄⁻ 6.2 × 10⁻⁸, HCO₃⁻ 4.7 × 10⁻¹¹, HCN
+  6.2 × 10⁻¹⁰, NH₃ Kb 1.8 × 10⁻⁵, CH₃NH₂ Kb 4.4 × 10⁻⁴, ethanol about 10⁻¹⁶. Literature values
+  vary in the second figure; every item gives the value it uses. Kw at 0 °C (1.1 × 10⁻¹⁵) and
+  50 °C (5.5 × 10⁻¹⁴) are rounded literature values.
+- **Indicator pKa values** (methyl orange 3.5, bromocresol green 4.7, bromothymol blue 7.1,
+  phenolphthalein 9.3, methyl red 5.0, thymol blue 8.9 for its second change) and "range ≈ pKa ± 1"
+  are the textbook simplification; real ranges are listed slightly differently by suppliers.
+- **8.11 kept qualitative** (ced-exclusions above): no solubility-vs-pH calculation anywhere; one
+  `going-further` aside mentions that it can be done.
+- **Polyprotic titrations**: items read pKa₁/pKa₂ and equivalence points from a curve and identify
+  species; no polyprotic pH calculation is required (the old "polyprotic titration numerics"
+  exclusion is from the pre-2019 framework; check whether the 2024 CED says anything).
+- **Grader fix**: `chem/assets/chem-questions.js` `near()` used an absolute 1e-9 slack, so any
+  answer below about 1e-9 was accepted for small keys (Ka, Kb, [OH⁻]). Changed to a relative
+  slack; test `scripts/test/apchem-numeric-small.test.mjs`. No other copy of this function was
+  found in the repo.

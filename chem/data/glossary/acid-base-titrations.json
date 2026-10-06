@@ -1,0 +1,14 @@
+{
+ "titration-curve": {
+  "def": "A graph of pH against volume of titrant added. Its steep rise (or fall) is centered on the equivalence point; its shape shows whether the acid or base is strong or weak."
+ },
+ "half-equivalence": {
+  "def": "The point in a weak acid (or weak base) titration where half the analyte has reacted, at half the equivalence volume. There [HA] = [A⁻], so pH = pKa."
+ },
+ "buffer-region": {
+  "def": "The flat, slowly rising part of a weak acid or weak base titration curve before the equivalence point, where the weak species and its conjugate are both present."
+ },
+ "polyprotic": {
+  "def": "An acid that can give up more than one proton, one at a time (diprotic H₂A, triprotic H₃A). Each proton has its own Ka, and a titration curve can show one equivalence point per proton."
+ }
+}

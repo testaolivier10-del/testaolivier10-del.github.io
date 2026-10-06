@@ -1,0 +1,68 @@
+<p>Everything in Unit 8 rests on one small fact: water is not just H₂O molecules. A tiny fraction of them have swapped a proton, so every glass of water, every soft drink and every bottle of drain cleaner contains both hydronium ions, H₃O⁺, and hydroxide ions, OH⁻. This page shows where those ions come from, how their amounts are linked, and how the pH scale reports them.</p>
+
+<h2>Water ionizes itself</h2>
+<p>Water molecules are constantly colliding. Once in a while, one molecule pulls a proton off a neighbor:</p>
+<p style="text-align:center"><b>H₂O(l) + H₂O(l) ⇌ H₃O⁺(aq) + OH⁻(aq)</b></p>
+<p>One molecule acts as a Brønsted-Lowry acid (it donates H⁺) and the other as a base (it accepts it). The reverse reaction is fast too: an H₃O⁺ and an OH⁻ that meet give two water molecules back. So this is a dynamic equilibrium, called the <b>autoionization</b> (self-ionization) of water. It lies far to the left. In pure water at 25 °C, [H₃O⁺] = 1.0 × 10⁻⁷ M. Water itself is about 55.5 M, so only about 2 molecules in every billion are ionized at any moment.</p>
+
+<h2>Kw: the ion product of water</h2>
+<p>Write the equilibrium constant for autoionization. Water is the pure liquid solvent, so it is left out, just as pure solids and liquids are left out of any K expression:</p>
+<p style="text-align:center"><b>Kw = [H₃O⁺][OH⁻] = 1.0 × 10⁻¹⁴ at 25 °C</b></p>
+<p>This holds in <i>every</i> water solution, not only in pure water. Dissolve an acid and [H₃O⁺] rises; then Q = [H₃O⁺][OH⁻] is larger than Kw, so the reverse reaction runs (H₃O⁺ + OH⁻ → 2 H₂O) until the product is back to Kw. The result: more H₃O⁺ always means less OH⁻, and the reverse. Know one, and you can calculate the other.</p>
+<div class="worked">
+<p><b>Worked example 1: one ion from the other.</b> A cleaning solution at 25 °C has [OH⁻] = 6.3 × 10⁻⁵ M. What is [H₃O⁺]?</p>
+<p><b>Step 1.</b> Rearrange Kw: [H₃O⁺] = Kw / [OH⁻].</p>
+<p><b>Step 2.</b> [H₃O⁺] = (1.0 × 10⁻¹⁴) / (6.3 × 10⁻⁵ M) = 1.587 × 10⁻¹⁰ M.</p>
+<p><b>Step 3.</b> Round once, to the two significant figures of the data: <b>1.6 × 10⁻¹⁰ M</b>. Check: [OH⁻] is larger than 1.0 × 10⁻⁷ M, so the solution is basic and [H₃O⁺] must be smaller than 1.0 × 10⁻⁷ M. It is.</p>
+</div>
+
+<h2>The pH scale</h2>
+<p>Hydronium concentrations in real solutions run from about 1 M down to 10⁻¹⁴ M, fourteen powers of ten. Writing them all in scientific notation is clumsy, so chemists use a logarithm scale:</p>
+<p style="text-align:center"><b>pH = −log[H₃O⁺]&nbsp;&nbsp;&nbsp;&nbsp;pOH = −log[OH⁻]</b></p>
+<figure id="fig-scale" data-fig="ph-scale"><figcaption>The pH scale at 25 °C. Each step left is ten times more H₃O⁺.</figcaption></figure>
+<p>Two features of <a class="figref" href="#fig-scale">the pH scale</a> trip people up. First, the minus sign: a <i>lower</i> pH means <i>more</i> H₃O⁺. Second, the log: a change of one pH unit is a factor of 10 in [H₃O⁺], two units is a factor of 100, three is 1,000. pH 3 is not "a bit more acidic" than pH 5; it has 100 times the hydronium.</p>
+<p>Take −log of both sides of Kw = [H₃O⁺][OH⁻] = 1.0 × 10⁻¹⁴ and you get a handy shortcut:</p>
+<p style="text-align:center"><b>pH + pOH = 14.00 at 25 °C</b></p>
+<p>The equations sheet gives pH, pOH, Kw and this sum. The log is the base-10 log (the LOG key), never ln.</p>
+<div class="worked">
+<p><b>Worked example 2: pH from a concentration, with the right decimal places.</b> A sample of rainwater has [H₃O⁺] = 2.5 × 10⁻⁵ M. Find its pH and pOH.</p>
+<p><b>Step 1.</b> pH = −log(2.5 × 10⁻⁵) = 4.6021.</p>
+<p><b>Step 2, significant figures.</b> In a logarithm, the digits before the decimal point come from the power of ten; only the digits after it carry the measurement. The concentration has two significant figures, so the pH gets <b>two decimal places</b>: pH = <b>4.60</b>.</p>
+<p><b>Step 3.</b> pOH = 14.00 − 4.60 = <b>9.40</b>.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3: going back from pH to concentration.</b> Stomach fluid has pH 1.85. Find [H₃O⁺] and [OH⁻].</p>
+<p><b>Step 1.</b> Undo the log with the antilog: [H₃O⁺] = 10^−pH = 10^−1.85 = 1.413 × 10⁻² M.</p>
+<p><b>Step 2.</b> Two decimal places in the pH means two significant figures: [H₃O⁺] = <b>1.4 × 10⁻² M</b>.</p>
+<p><b>Step 3.</b> [OH⁻] = 10^−pOH = 10^−(14.00 − 1.85) = 10^−12.15 = <b>7.1 × 10⁻¹³ M</b>. (Kw / [H₃O⁺] gives the same answer.)</p>
+</div>
+
+<h2>Acidic, basic and neutral</h2>
+<table class="compare">
+<thead><tr><th scope="col">Solution</th><th scope="col">Definition</th><th scope="col">pH at 25 °C</th></tr></thead>
+<tbody>
+<tr><td>Acidic</td><td>[H₃O⁺] &gt; [OH⁻]</td><td>below 7.00</td></tr>
+<tr><td>Neutral</td><td>[H₃O⁺] = [OH⁻]</td><td>7.00</td></tr>
+<tr><td>Basic</td><td>[OH⁻] &gt; [H₃O⁺]</td><td>above 7.00</td></tr>
+</tbody></table>
+<p>The definitions in the middle column are the real ones. The pH column is true only at 25 °C, as the next section shows. And notice that an acidic solution still contains OH⁻, and a basic one still contains H₃O⁺: Kw never lets either ion reach zero.</p>
+
+<h2>Kw changes with temperature</h2>
+<p>Autoionization breaks an O–H bond in one molecule while forming a new one in another, and overall it absorbs energy: it is endothermic. By Le Châtelier's principle, heating shifts an endothermic equilibrium toward products, so Kw rises with temperature. At 50 °C, Kw = 5.5 × 10⁻¹⁴.</p>
+<div class="worked">
+<p><b>Worked example 4: neutral water that is not pH 7.</b> Find the pH of pure water at 50 °C.</p>
+<p><b>Step 1.</b> In pure water every ionization makes one H₃O⁺ and one OH⁻, so [H₃O⁺] = [OH⁻] = x and x² = Kw.</p>
+<p><b>Step 2.</b> x = √(5.5 × 10⁻¹⁴) = 2.35 × 10⁻⁷ M.</p>
+<p><b>Step 3.</b> pH = −log(2.3 × 10⁻⁷) = <b>6.63</b>. The water is still neutral, since [H₃O⁺] = [OH⁻]; it is not acidic. At this temperature, pH + pOH = pKw = −log(5.5 × 10⁻¹⁴) = 13.26, not 14.00.</p>
+</div>
+<p>Unless a question says otherwise, assume 25 °C, Kw = 1.0 × 10⁻¹⁴ and pH + pOH = 14.00.</p>
+
+<h2>Where students lose points</h2>
+<ul>
+<li><b>Reporting pOH as pH.</b> If you started from [OH⁻], you have pOH; subtract from 14.00. Then check: a basic solution must have pH above 7.</li>
+<li><b>Using ln instead of log.</b> −ln(1.0 × 10⁻³) = 6.91, which is not a pH of 3.00. pH is base-10.</li>
+<li><b>Decimal places.</b> [H₃O⁺] with three significant figures gives a pH with three decimal places.</li>
+<li><b>"Neutral means pH 7."</b> Only at 25 °C. Neutral means equal concentrations.</li>
+<li><b>Treating pH as linear.</b> pH 2 is 10 times more acidic than pH 3, not "one more".</li>
+</ul>
+<aside class="going-further"><p><b>Going further:</b> the H⁺ ion is a bare proton and never floats free in water; it is always bonded to at least one water molecule. Writing H₃O⁺ is the usual model, and many books write H⁺(aq) as shorthand for the same thing. Either is accepted on the exam.</p></aside>
