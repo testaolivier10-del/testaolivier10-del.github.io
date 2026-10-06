@@ -1,0 +1,81 @@
+{
+ "topic": "concentration-time",
+ "hook": "A hospital orders a radioactive tracer for a scan on Thursday. It is made on Monday, and by Thursday some of it has already decayed. Pharmacists work out how much to make with the same equations chemists use for any first-order reaction: how much is left after a given time, and how long until half of it is gone.",
+ "prereq": [
+  {
+   "q": "What is ln(e^(−2))?",
+   "options": [
+    "−2",
+    "2",
+    "0.135",
+    "−0.301"
+   ],
+   "correct": 0,
+   "why": "ln undoes e: ln(e^x) = x, so ln(e^(−2)) = −2.",
+   "review": "math-logs"
+  },
+  {
+   "q": "For rate = k[A], the units of k are:",
+   "options": [
+    "s⁻¹",
+    "M s⁻¹",
+    "M⁻¹ s⁻¹",
+    "M"
+   ],
+   "correct": 0,
+   "why": "k = rate/[A] = (M/s)/M = s⁻¹.",
+   "review": "rate-laws"
+  }
+ ],
+ "figure": {
+  "figure": "rate-plots",
+  "caption": "Each order has one straight-line plot: [A], ln[A] or 1/[A] against time."
+ },
+ "chain": [
+  {
+   "cause": "Each rate law can be turned into an equation for [A] against time",
+   "effect": "each order makes a different plot of the data come out straight"
+  },
+  {
+   "cause": "Only one of [A], ln[A] or 1/[A] against time is linear",
+   "effect": "naming that plot identifies the order, and its slope gives k"
+  },
+  {
+   "cause": "For first order, the starting concentration cancels out of the halving time",
+   "effect": "the half-life is constant: t½ = 0.693/k"
+  },
+  {
+   "cause": "With k and the integrated law",
+   "effect": "you can predict the concentration at any time or the time to reach any concentration"
+  }
+ ],
+ "ideas": [
+  "Zero order: [A] vs t is linear (slope −k). First order: ln[A] vs t is linear (slope −k). Second order: 1/[A] vs t is linear (slope +k).",
+  "Justify an order by naming the plot that is linear.",
+  "First-order half-life: t½ = 0.693/k, independent of concentration. Radioactive decay is first order.",
+  "Integrated laws use ln, not log."
+ ],
+ "misconception": {
+  "wrong": "\"The graph is linear, so the reaction is first order.\"",
+  "right": "Every order has a linear graph of something. Say which: \"ln[A] against time is linear, so first order.\" For second order it is 1/[A] against time."
+ },
+ "check": [
+  "chem-concentration-time-1",
+  "chem-concentration-time-2",
+  "chem-concentration-time-3",
+  "chem-concentration-time-6",
+  "chem-concentration-time-7",
+  "chem-concentration-time-15"
+ ],
+ "summary": "Integrated rate laws link concentration and time. The plot that is linear identifies the order: [A] vs t for zero order, ln[A] vs t for first order, 1/[A] vs t for second order, and its slope gives k. A first-order reaction has a constant half-life, t½ = 0.693/k.",
+ "connections": [
+  {
+   "href": "../notes/math-logs.html",
+   "label": "Logarithms and ln refresher"
+  },
+  {
+   "href": "../notes/rate-laws.html",
+   "label": "Back: rate laws and orders (5.2)"
+  }
+ ]
+}

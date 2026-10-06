@@ -1,0 +1,11 @@
+{
+ "integrated-rate-law": {
+  "def": "An equation linking a reactant concentration to time, such as ln[A]t − ln[A]0 = −kt for a first-order reaction."
+ },
+ "rate-plot": {
+  "def": "The graph of concentration data that comes out as a straight line for a given order: [A] vs t (zero), ln[A] vs t (first) or 1/[A] vs t (second). Its slope gives k."
+ },
+ "half-life": {
+  "def": "The time for a reactant concentration to fall to half its value. For a first-order reaction it is constant: t½ = 0.693/k."
+ }
+}

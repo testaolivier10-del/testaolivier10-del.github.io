@@ -1,0 +1,81 @@
+{
+ "topic": "multistep-energy-profiles",
+ "hook": "A hiking trail with two mountain passes has a rest hut in the valley between them. How long the hike takes depends mostly on the harder of the two climbs, and you only count each climb from where it starts: from the trailhead for the first pass, and from the hut for the second.",
+ "prereq": [
+  {
+   "q": "On a one-step energy profile, the activation energy is:",
+   "options": [
+    "the climb from the reactants to the peak",
+    "the energy of the products",
+    "products minus reactants",
+    "the energy of the peak alone"
+   ],
+   "correct": 0,
+   "why": "Ea = E(transition state) − E(reactants).",
+   "review": "energy-profiles"
+  },
+  {
+   "q": "Which step of a mechanism sets the overall rate?",
+   "options": [
+    "The slowest step",
+    "The first step",
+    "The last step",
+    "The fastest step"
+   ],
+   "correct": 0,
+   "why": "The overall reaction cannot be faster than its slowest step.",
+   "review": "mechanism-rate-laws"
+  }
+ ],
+ "figure": {
+  "figure": "multistep-profile",
+  "caption": "Two peaks for two steps, an intermediate in the valley, and the larger barrier on the slow step."
+ },
+ "chain": [
+  {
+   "cause": "Each elementary step has its own transition state",
+   "effect": "a mechanism with n steps has n peaks on its profile"
+  },
+  {
+   "cause": "An intermediate is a real species between two steps",
+   "effect": "it sits in a valley between neighbouring peaks"
+  },
+  {
+   "cause": "Each step starts from the level the previous step ended at",
+   "effect": "its barrier is measured from that level, not from the reactants"
+  },
+  {
+   "cause": "The step with the largest barrier has the fewest successful collisions",
+   "effect": "it is the slow, rate-determining step"
+  }
+ ],
+ "ideas": [
+  "A <b>multistep energy profile</b> has one peak per elementary step; valleys between peaks are intermediates.",
+  "A step's E<sub>a</sub> is its peak minus the level it starts from.",
+  "The step with the largest E<sub>a</sub> is the rate-determining step; it need not be the first.",
+  "The overall energy change is products minus reactants, whatever happens in between."
+ ],
+ "misconception": {
+  "wrong": "On a multistep profile, every activation energy is measured from the reactants.",
+  "right": "Each step's barrier starts from the level that step begins at: the reactants for step 1, the intermediate for step 2, and so on."
+ },
+ "check": [
+  "chem-multistep-energy-profiles-1",
+  "chem-multistep-energy-profiles-2",
+  "chem-multistep-energy-profiles-3",
+  "chem-multistep-energy-profiles-4",
+  "chem-multistep-energy-profiles-10",
+  "chem-multistep-energy-profiles-14"
+ ],
+ "summary": "A multistep energy profile has one peak, a transition state, for each elementary step, with intermediates in the valleys between them. Each step's activation energy is measured from its own starting level, and the step with the largest barrier is the rate-determining step. The overall energy change is products minus reactants.",
+ "connections": [
+  {
+   "href": "../notes/energy-profiles.html",
+   "label": "Back: single-step energy profiles (5.6)"
+  },
+  {
+   "href": "../notes/mechanism-rate-laws.html",
+   "label": "Rate-determining steps (5.8)"
+  }
+ ]
+}

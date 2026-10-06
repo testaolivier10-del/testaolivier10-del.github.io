@@ -1,0 +1,699 @@
+{
+ "stimuli": {
+  "concentration-time-s1": {
+   "kind": "table",
+   "title": "Cyclopropane turning into propene",
+   "text": "<p>When heated to a fixed high temperature, cyclopropane gas rearranges into propene:</p><p>C₃H₆ (cyclopropane) → C₃H₆ (propene)</p><p>A student records [cyclopropane] over time and calculates two more columns from it.</p>",
+   "table": {
+    "caption": "Concentration of cyclopropane over time, with ln[C₃H₆] and 1/[C₃H₆]",
+    "cols": [
+     "Time (s)",
+     "[C₃H₆] (M)",
+     "ln[C₃H₆]",
+     "1/[C₃H₆] (M⁻¹)"
+    ],
+    "rows": [
+     [
+      "0",
+      "0.0500",
+      "−3.00",
+      "20.0"
+     ],
+     [
+      "500",
+      "0.0370",
+      "−3.30",
+      "27.0"
+     ],
+     [
+      "1000",
+      "0.0274",
+      "−3.60",
+      "36.5"
+     ],
+     [
+      "1500",
+      "0.0203",
+      "−3.90",
+      "49.3"
+     ],
+     [
+      "2000",
+      "0.0151",
+      "−4.19",
+      "66.2"
+     ]
+    ]
+   }
+  },
+  "concentration-time-s2": {
+   "kind": "graph",
+   "title": "Nitrogen dioxide breaking down",
+   "text": "<p>At a fixed high temperature, nitrogen dioxide decomposes: 2 NO₂(g) → 2 NO(g) + O₂(g). A student measures [NO₂] and plots 1/[NO₂] against time.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Time",
+     "unit": "s",
+     "min": 0,
+     "max": 100,
+     "step": 20
+    },
+    "y": {
+     "label": "1/[NO₂]",
+     "unit": "M⁻¹",
+     "min": 0,
+     "max": 100,
+     "step": 20
+    },
+    "series": [
+     {
+      "name": "1/[NO₂]",
+      "points": [
+       [
+        0,
+        25
+       ],
+       [
+        20,
+        35
+       ],
+       [
+        40,
+        45
+       ],
+       [
+        60,
+        55
+       ],
+       [
+        80,
+        65
+       ],
+       [
+        100,
+        75
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "concentration-time-s3": {
+   "kind": "graph",
+   "title": "Ammonia on a hot metal wire",
+   "text": "<p>Ammonia gas breaks down on the surface of a hot tungsten wire: 2 NH₃(g) → N₂(g) + 3 H₂(g). The graph shows [NH₃] against time.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Time",
+     "unit": "s",
+     "min": 0,
+     "max": 80,
+     "step": 10
+    },
+    "y": {
+     "label": "[NH₃]",
+     "unit": "M",
+     "min": 0,
+     "max": 0.025,
+     "step": 0.005
+    },
+    "series": [
+     {
+      "name": "[NH₃]",
+      "points": [
+       [
+        0,
+        0.02
+       ],
+       [
+        10,
+        0.0175
+       ],
+       [
+        20,
+        0.015
+       ],
+       [
+        30,
+        0.0125
+       ],
+       [
+        40,
+        0.01
+       ],
+       [
+        50,
+        0.0075
+       ],
+       [
+        60,
+        0.005
+       ],
+       [
+        70,
+        0.0025
+       ],
+       [
+        80,
+        0
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-concentration-time-1",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "concentration-time-s1",
+   "q": "Which claim about the order of this reaction is best supported by the table?",
+   "options": [
+    "First order: ln[C₃H₆] drops about 0.30 per 500 s",
+    "Second order: 1/[C₃H₆] goes up in each 500 s interval",
+    "Zero order: [C₃H₆] goes down in each 500 s interval",
+    "First order, because the graph of these data is linear"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "ln[C₃H₆] goes −3.00, −3.30, −3.60, −3.90, −4.19: it falls by about 0.30 each 500 s, so a plot of ln[C₃H₆] against time is a straight line, which means first order. 1/[C₃H₆] rises by more each interval (20.0, 27.0, 36.5, 49.3, 66.2), so that plot curves.",
+    "options": [
+     "Right: equal steps in ln[A] in equal times means ln[A] vs t is linear, which is first order.",
+     "1/[A] rises, but by growing amounts (not equal steps), so 1/[A] vs t is not linear; it is not second order.",
+     "[A] falls by shrinking amounts (0.0130, 0.0096, ...), so [A] vs t is curved; it is not zero order.",
+     "This is the claim readers do not accept: it does not say which graph is linear. Name the plot, ln[A] against time."
+    ]
+   }
+  },
+  {
+   "id": "chem-concentration-time-2",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "concentration-time-s1",
+   "q": "Use the first and last rows to find the rate constant k. Include units.",
+   "numeric": {
+    "answer": 0.0006,
+    "tol": 0.00001,
+    "unit": "s^-1",
+    "askUnit": true,
+    "units": [
+     "s-1",
+     "1/s",
+     "s⁻¹",
+     "/s"
+    ],
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.00026,
+      "why": "Value: you used log (base 10). The integrated rate law uses the natural log, ln."
+     },
+     {
+      "value": 0.0231,
+      "why": "Value: that slope comes from the 1/[A] column, the second-order plot. This reaction is first order, so use the ln[A] column."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For first order, ln[A] vs t has slope −k. k = −(ln[A]₂₀₀₀ − ln[A]₀)/(2000 s − 0 s) = −(−4.19 − (−3.00))/2000 s = 1.19/2000 s = 6.0 × 10⁻⁴ s⁻¹."
+   }
+  },
+  {
+   "id": "chem-concentration-time-3",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "concentration-time-s1",
+   "q": "With k = 6.0 × 10⁻⁴ s⁻¹, what is the half-life of cyclopropane at this temperature? Include units.",
+   "numeric": {
+    "answer": 1200,
+    "tol": 100,
+    "unit": "s",
+    "askUnit": true,
+    "units": [
+     "sec",
+     "seconds"
+    ],
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.000416,
+      "why": "Value: you multiplied. The half-life is t½ = 0.693 / k."
+     },
+     {
+      "value": 1670,
+      "why": "Value: t½ = 0.693/k; you left out the 0.693 (that is ln 2)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "t½ = 0.693 / k = 0.693 / (6.0 × 10⁻⁴ s⁻¹) = 1155 s, which is 1.2 × 10³ s to two significant figures. Check with the table: [C₃H₆] falls from 0.0500 M to 0.0250 M somewhere between 1000 s and 1500 s."
+   }
+  },
+  {
+   "id": "chem-concentration-time-4",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "concentration-time-s1",
+   "q": "Predict [C₃H₆], in M, at 3000 s if the reaction continues the same way.",
+   "numeric": {
+    "answer": 0.0083,
+    "tol": 0.0001,
+    "unit": "M",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": -4.8,
+      "why": "Value: that is ln[A], not [A]. Finish by taking e to that power: [A] = e^(ln[A])."
+     },
+     {
+      "value": 0.000792,
+      "why": "Value: you used 10^(−kt). The first-order law uses e^(−kt) (natural log)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "[A]t = [A]₀e^(−kt) = (0.0500 M)e^(−(6.0 × 10⁻⁴ s⁻¹)(3000 s)) = (0.0500 M)e^(−1.80) = (0.0500 M)(0.165) = 8.3 × 10⁻³ M."
+   }
+  },
+  {
+   "id": "chem-concentration-time-5",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "concentration-time-s2",
+   "q": "Which statement correctly uses the graph to find the order with respect to NO₂?",
+   "options": [
+    "1/[NO₂] vs time is linear, so second order",
+    "The plot is a straight line, so the reaction is zero order in NO₂",
+    "1/[NO₂] vs time is linear, so the reaction is first order in NO₂",
+    "The plot rises, so [NO₂] rises with time and NO₂ is a product here"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A straight line for 1/[A] against time is the signature of second order (1/[A]t = kt + 1/[A]₀). The justification names the plot that is linear.",
+    "options": [
+     "Right: names the linear plot and draws the right conclusion.",
+     "Zero order would make [NO₂] against time linear, not 1/[NO₂].",
+     "First order would make ln[NO₂] against time linear.",
+     "1/[NO₂] rises because [NO₂] falls; NO₂ is the reactant."
+    ]
+   }
+  },
+  {
+   "id": "chem-concentration-time-6",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "concentration-time-s2",
+   "q": "Use the slope of the 1/[NO₂] line to find the second-order rate constant. Include units.",
+   "numeric": {
+    "answer": 0.5,
+    "tol": 0.01,
+    "unit": "M^-1 s^-1",
+    "askUnit": true,
+    "units": [
+     "M^-1 s^-1",
+     "M-1 s-1",
+     "1/(M s)",
+     "L/(mol s)",
+     "L mol-1 s-1",
+     "M⁻¹ s⁻¹",
+     "L/(mol·s)"
+    ],
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": -0.5,
+      "why": "Sign: for second order the slope of 1/[A] vs t is +k, and k is positive."
+     },
+     {
+      "value": 1,
+      "why": "Value: read two points from the line and divide the rise by the run: (75 − 25) M⁻¹ ÷ 100 s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For second order, slope of 1/[A] vs t = k. Slope = (75 M⁻¹ − 25 M⁻¹)/(100 s − 0 s) = 0.50 M⁻¹ s⁻¹."
+   }
+  },
+  {
+   "id": "chem-concentration-time-7",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "concentration-time-s2",
+   "q": "How long, in seconds, does it take for [NO₂] to fall from 0.0400 M to 0.0100 M?",
+   "numeric": {
+    "answer": 150,
+    "tol": 10,
+    "unit": "s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2.77,
+      "why": "Value: you used the first-order half-life twice. This is second order: use 1/[A]t − 1/[A]₀ = kt."
+     },
+     {
+      "value": 37.5,
+      "why": "Value: you multiplied by k. Solve for t: t = (1/[A]t − 1/[A]₀)/k."
+     }
+    ]
+   },
+   "why": {
+    "correct": "t = (1/[A]t − 1/[A]₀)/k = (100 M⁻¹ − 25.0 M⁻¹)/(0.50 M⁻¹ s⁻¹) = 1.5 × 10² s."
+   }
+  },
+  {
+   "id": "chem-concentration-time-8",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "concentration-time-s2",
+   "q": "How does the time for [NO₂] to halve change as the reaction goes on?",
+   "options": [
+    "It gets longer, since the rate falls with [NO₂]²",
+    "It stays the same, since half-lives are constant for any reaction",
+    "It gets shorter, since there is less NO₂ left to react each time",
+    "It stays the same, since the rate constant k does not change"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From 0.0400 to 0.0200 M: (50 − 25)/0.50 = 50 s. From 0.0200 to 0.0100 M: (100 − 50)/0.50 = 100 s. For second order the halving time doubles each time, because the rate falls with the square of the concentration.",
+    "options": [
+     "Right: 50 s, then 100 s.",
+     "A constant half-life belongs to first-order reactions only.",
+     "Less reactant means a slower rate, so halving takes longer, not shorter.",
+     "k is constant, but for second order the half-life also depends on [A]."
+    ]
+   }
+  },
+  {
+   "id": "chem-concentration-time-9",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "concentration-time-s3",
+   "q": "What is the order of this reaction with respect to NH₃, and what is the evidence?",
+   "options": [
+    "Zero order: [NH₃] vs time is a straight line",
+    "First order: [NH₃] falls steadily with time",
+    "Second order: [NH₃] vs time slopes downward",
+    "Zero order: the rate drops to zero by the end"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "[NH₃] against time is linear, so the rate (the slope) is the same at every concentration: zero order. For first or second order, [A] against time curves.",
+    "options": [
+     "Right: the linear plot named is [A] vs t, which is zero order.",
+     "A first-order reaction gives a curve for [A] vs t; ln[A] vs t would be the straight one.",
+     "A second-order reaction gives a curve for [A] vs t; 1/[A] vs t would be the straight one.",
+     "The rate is constant until the NH₃ runs out; that is why the line is straight."
+    ]
+   }
+  },
+  {
+   "id": "chem-concentration-time-10",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "concentration-time-s3",
+   "q": "What is the rate constant k, from the slope of the line? Include units.",
+   "numeric": {
+    "answer": 0.00025,
+    "tol": 0.00001,
+    "unit": "M/s",
+    "askUnit": true,
+    "units": [
+     "M s^-1",
+     "M s-1",
+     "mol/(L s)",
+     "mol L-1 s-1",
+     "M·s⁻¹"
+    ],
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": -0.00025,
+      "why": "Sign: the slope of [A] vs t is −k; k itself is positive."
+     },
+     {
+      "value": 0.0125,
+      "why": "Value: for zero order, k is the slope itself, not the slope divided by [A]."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Slope = (0.0000 M − 0.0200 M)/(80 s − 0 s) = −2.5 × 10⁻⁴ M/s. For zero order, slope = −k, so k = 2.5 × 10⁻⁴ M/s."
+   }
+  },
+  {
+   "id": "chem-concentration-time-11",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "concentration-time-s3",
+   "q": "While [NH₃] falls at 2.5 × 10⁻⁴ M/s, at what rate does H₂ form, in M/s?",
+   "numeric": {
+    "answer": 0.00038,
+    "tol": 0.00001,
+    "unit": "M/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.00025,
+      "why": "Value: H₂ has a different coefficient. 3 H₂ form for every 2 NH₃ used, so multiply by 3/2."
+     },
+     {
+      "value": 0.000167,
+      "why": "Value: the ratio is inverted. H₂ (coefficient 3) forms faster than NH₃ (coefficient 2) is used."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Δ[H₂]/Δt = (3/2)(2.5 × 10⁻⁴ M/s) = 3.75 × 10⁻⁴ M/s, which is 3.8 × 10⁻⁴ M/s to two significant figures."
+   }
+  },
+  {
+   "id": "chem-concentration-time-12",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "concentration-time-s3",
+   "q": "The wire's surface has a fixed number of spots where NH₃ can sit and react. Which explanation of the zero-order behavior fits this?",
+   "options": [
+    "The spots stay full, so a fixed number react per second",
+    "NH₃ molecules in the gas react with each other, away from the wire",
+    "The wire itself is used up at a steady rate, and that sets the rate",
+    "The NH₃ molecules in the gas react at the same instant"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When every spot on the surface is occupied, adding more NH₃ to the gas cannot speed things up: the number of reacting molecules per second is set by the surface, so the rate does not depend on [NH₃].",
+    "options": [
+     "Right: a saturated surface makes the rate independent of the gas concentration.",
+     "If NH₃ molecules reacted with each other in the gas, the rate would depend on [NH₃].",
+     "The wire is not a reactant in 2 NH₃ → N₂ + 3 H₂.",
+     "If everything reacted at once, the concentration would drop to zero at once, not along a line."
+    ]
+   }
+  },
+  {
+   "id": "chem-concentration-time-13",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Iodine-131 decays by a first-order process with a half-life of 8.02 days. How many days pass until 12.5% of a sample is left?",
+   "numeric": {
+    "answer": 24.1,
+    "tol": 0.1,
+    "unit": "days",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 16,
+      "why": "Value: two half-lives leave 25%. 100% → 50% → 25% → 12.5% is three half-lives."
+     },
+     {
+      "value": 64.2,
+      "why": "Value: 12.5% is (½)³, so three half-lives, not eight."
+     }
+    ]
+   },
+   "why": {
+    "correct": "100% → 50% → 25% → 12.5% is three half-lives: 3 × 8.02 days = 24.1 days. Radioactive decay is first order, so every half-life is the same length."
+   }
+  },
+  {
+   "id": "chem-concentration-time-14",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "predict",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A first-order reaction is run twice at the same temperature, the second time with twice the starting concentration. Predict each change in the second run.",
+   "variables": [
+    {
+     "name": "Initial rate",
+     "answer": "up",
+     "why": "rate = k[A], so doubling [A] doubles the initial rate."
+    },
+    {
+     "name": "Half-life",
+     "answer": "none",
+     "why": "For first order t½ = 0.693/k, which does not depend on concentration."
+    },
+    {
+     "name": "Rate constant k",
+     "answer": "none",
+     "why": "k depends on temperature, which is unchanged."
+    },
+    {
+     "name": "Slope of ln[A] against time",
+     "answer": "none",
+     "why": "The slope is −k, and k is unchanged; the line just starts higher."
+    }
+   ],
+   "why": {
+    "correct": "Doubling [A]₀ doubles the rate, but k, the half-life and the slope of the ln[A] plot all stay the same."
+   }
+  },
+  {
+   "id": "chem-concentration-time-15",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A first-order reaction has k = 0.0350 min⁻¹. Starting at 0.800 M, what is [A] after 20.0 min, in M?",
+   "numeric": {
+    "answer": 0.397,
+    "tol": 0.001,
+    "unit": "M",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.16,
+      "why": "Value: you used base 10. The first-order law is [A]t = [A]₀e^(−kt)."
+     },
+     {
+      "value": 0.1,
+      "why": "Value: that subtracts kt as if the reaction were zero order."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ln[A]t = ln[A]₀ − kt = ln(0.800) − (0.0350 min⁻¹)(20.0 min) = −0.2231 − 0.700 = −0.9231. [A]t = e^(−0.9231) = 0.397 M."
+   }
+  },
+  {
+   "id": "chem-concentration-time-16",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pair correctly matches a straight-line plot with its slope?",
+   "options": [
+    "ln[A] vs t, first order; slope −k",
+    "1/[A] vs t, second order; slope −k",
+    "[A] vs t, first order; slope −k",
+    "ln[A] vs t, second order; slope +k"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "First order: ln[A] vs t, slope −k. Second order: 1/[A] vs t, slope +k. Zero order: [A] vs t, slope −k.",
+    "options": [
+     "Right: the first-order plot falls with slope −k.",
+     "1/[A] rises over time, so its slope is +k, not −k.",
+     "For first order, [A] vs t curves; only ln[A] vs t is straight.",
+     "ln[A] vs t is the first-order plot, and it falls."
+    ]
+   }
+  },
+  {
+   "id": "chem-concentration-time-17",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A first-order reaction has a half-life of 45 s. What is k, in s⁻¹?",
+   "numeric": {
+    "answer": 0.015,
+    "tol": 0.001,
+    "unit": "s^-1",
+    "units": [
+     "s-1",
+     "1/s",
+     "s⁻¹",
+     "/s"
+    ],
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 64.9,
+      "why": "Value: rearrange t½ = 0.693/k to k = 0.693/t½, not t½/0.693."
+     },
+     {
+      "value": 0.0222,
+      "why": "Value: k = 0.693/t½; you left out ln 2 = 0.693."
+     }
+    ]
+   },
+   "why": {
+    "correct": "k = 0.693 / t½ = 0.693 / 45 s = 0.0154 s⁻¹, which is 0.015 s⁻¹ to two significant figures."
+   }
+  }
+ ]
+}

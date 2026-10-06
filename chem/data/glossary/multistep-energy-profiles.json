@@ -1,0 +1,5 @@
+{
+ "multistep-profile": {
+  "def": "The energy profile of a reaction with several elementary steps: one peak (transition state) per step, with intermediates in the valleys between peaks."
+ }
+}

@@ -1,0 +1,49 @@
+<p>Topic 5.6 drew the energy profile of a single step: one hill. A mechanism with several steps has one hill for each step. Reading that profile tells you how many steps there are, where the intermediates sit, and which step is slowest.</p>
+
+<h2>One hump per step</h2>
+<figure id="fig-multi" data-fig="multistep-profile"><figcaption>Figure 1. A two-step reaction: two transition states (peaks) and one intermediate (the valley between them). Step 1 has the larger barrier, so it is the slow step.</figcaption></figure>
+<ul>
+<li>Each <b>peak</b> is the transition state of one elementary step.</li>
+<li>Each <b>valley</b> between two peaks is an intermediate: a real species made by one step and used by the next.</li>
+<li>A mechanism with n steps has n peaks and n − 1 valleys between them.</li>
+<li>The overall energy change is still products minus reactants. Intermediates and transition states do not change it.</li>
+</ul>
+
+<h2>Each step's barrier starts where that step starts</h2>
+<p>The activation energy of a step is measured from the level that step starts at to its own peak. Step 1 starts at the reactants; step 2 starts at the first intermediate; and so on.</p>
+
+<div class="worked"><h3>Worked example: reading a two-step profile</h3>
+<p>Levels: reactants 50, transition state 1 at 140, intermediate 80, transition state 2 at 110, products 20 (all kJ/mol).</p>
+<p><b>Step 1 E<sub>a</sub></b> = 140 − 50 = 90 kJ/mol.</p>
+<p><b>Step 2 E<sub>a</sub></b> = 110 − 80 = 30 kJ/mol.</p>
+<p><b>Slow step:</b> step 1, the larger barrier.</p>
+<p><b>Overall energy change</b> = 20 − 50 = −30 kJ/mol (energy released).</p>
+<p><b>Rate law:</b> if step 1 is A + B → C, the slow first step gives rate = k[A][B] (topic 5.8).</p></div>
+
+<h2>Which step is rate-determining?</h2>
+<p>Compare the barriers: the step with the largest activation energy, measured from its own starting level, is usually the slowest. Often that step also has the highest transition state on the whole graph, but not always: after a deep valley, a lower peak can still be the biggest climb. Compare the barriers.</p>
+<p>Two traps:</p>
+<ul>
+<li>The first step is not slowest by rule. A deep valley (a very stable intermediate) followed by a tall peak makes a later step slow.</li>
+<li>Do not measure every barrier from the reactants. A later step starts from an intermediate.</li>
+</ul>
+<table class="compare">
+<caption>Reading a multistep profile</caption>
+<thead><tr><th>You want</th><th>Read</th></tr></thead>
+<tbody>
+<tr><td>Number of steps</td><td>Number of peaks</td></tr>
+<tr><td>Intermediates</td><td>Valleys between peaks</td></tr>
+<tr><td>E<sub>a</sub> of a step</td><td>Its peak minus the level it starts from</td></tr>
+<tr><td>Slow step</td><td>The step with the largest E<sub>a</sub></td></tr>
+<tr><td>Overall energy change</td><td>Products minus reactants</td></tr>
+</tbody></table>
+
+<div class="worked"><h3>Worked example: a three-step profile from a table</h3>
+<p>Levels in order (kJ/mol): reactants 10, TS1 70, intermediate 1 at 25, TS2 60, intermediate 2 at −30, TS3 55, products −45.</p>
+<p><b>Barriers:</b> step 1 = 70 − 10 = 60; step 2 = 60 − 25 = 35; step 3 = 55 − (−30) = 85 kJ/mol.</p>
+<p><b>Slow step:</b> step 3, with the largest barrier. Its peak (55) is not the highest point on the graph (TS1 is at 70), which is why you compare barriers, not peak heights alone.</p>
+<p><b>Counts:</b> three peaks (transition states) and two valleys (intermediates).</p>
+<p><b>Overall change:</b> −45 − 10 = −55 kJ/mol.</p></div>
+
+<h2>Linking the profile to the rate law</h2>
+<p>Once you know the slow step, the rules of topics 5.8 and 5.9 give the rate law. If the slow step is first, the rate law is that step's rate law. If a fast step comes first, its products feed the slow step, and you use the pre-equilibrium approximation to replace the intermediate.</p>

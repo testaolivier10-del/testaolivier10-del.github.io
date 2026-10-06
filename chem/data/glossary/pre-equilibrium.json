@@ -1,0 +1,8 @@
+{
+ "reversible-reaction": {
+  "def": "A reaction or step that runs in both directions, written with ⇌. The forward reaction turns reactants into products; the reverse reaction turns products back into reactants."
+ },
+ "pre-equilibrium": {
+  "def": "The approximation that a fast reversible step before the slow step has equal forward and reverse rates, used to express an intermediate's concentration in terms of reactants."
+ }
+}

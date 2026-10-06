@@ -1,0 +1,123 @@
+{
+ "id": "frq-peroxide-iodide-rates",
+ "type": "short",
+ "points": 4,
+ "title": "Initial rates for hydrogen peroxide and iodide",
+ "units": [
+  "unit-5"
+ ],
+ "topics": [
+  "rate-laws",
+  "collision-model",
+  "elementary-reactions"
+ ],
+ "practices": [
+  "5.C",
+  "5.F",
+  "6.E"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Initial rates at 25 °C",
+  "text": "<p>In acidic solution, hydrogen peroxide oxidizes iodide ions: H₂O₂(aq) + 2 I⁻(aq) + 2 H⁺(aq) → I₂(aq) + 2 H₂O(l). Initial rates of formation of I₂ were measured at 25 °C.</p>",
+  "table": {
+   "caption": "Initial concentrations and initial rates",
+   "cols": [
+    "Trial",
+    "[H₂O₂] (M)",
+    "[I⁻] (M)",
+    "[H⁺] (M)",
+    "Initial rate (M/s)"
+   ],
+   "rows": [
+    [
+     "1",
+     "0.10",
+     "0.10",
+     "0.10",
+     "1.20 × 10⁻⁴"
+    ],
+    [
+     "2",
+     "0.20",
+     "0.10",
+     "0.10",
+     "2.40 × 10⁻⁴"
+    ],
+    [
+     "3",
+     "0.10",
+     "0.30",
+     "0.10",
+     "3.60 × 10⁻⁴"
+    ],
+    [
+     "4",
+     "0.10",
+     "0.10",
+     "0.20",
+     "1.20 × 10⁻⁴"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 1,
+   "prompt": "<b>Determine</b> the rate law for the reaction.",
+   "rubric": [
+    {
+     "point": "rate = k[H₂O₂][I⁻]: doubling [H₂O₂] doubles the rate (trials 1, 2); tripling [I⁻] triples it (trials 1, 3); doubling [H⁺] has no effect (trials 1, 4)",
+     "accept": [
+      "rate = k[H₂O₂][I⁻][H⁺]⁰"
+     ]
+    }
+   ],
+   "sample": "Trials 1 and 2: [H₂O₂] doubles and the rate doubles, so first order in H₂O₂. Trials 1 and 3: [I⁻] triples and the rate triples, so first order in I⁻. Trials 1 and 4: [H⁺] doubles and the rate does not change, so zero order in H⁺. rate = k[H₂O₂][I⁻]."
+  },
+  {
+   "label": "b",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the value of the rate constant, k. Include units.",
+   "rubric": [
+    {
+     "point": "k = (1.20 × 10⁻⁴ M/s)/((0.10 M)(0.10 M)) = 1.2 × 10⁻² M⁻¹ s⁻¹, with correct units",
+     "accept": [
+      "0.012 M⁻¹ s⁻¹",
+      "1.2 × 10⁻² L mol⁻¹ s⁻¹"
+     ]
+    }
+   ],
+   "sample": "From trial 1: k = rate/([H₂O₂][I⁻]) = (1.20 × 10⁻⁴ M/s)/((0.10 M)(0.10 M)) = 1.2 × 10⁻² M⁻¹ s⁻¹."
+  },
+  {
+   "label": "c",
+   "points": 1,
+   "prompt": "A student claims the reaction happens in one elementary step, exactly as the balanced equation is written. <b>Explain</b> why the data do not support this claim.",
+   "rubric": [
+    {
+     "point": "A single elementary step would give rate = k[H₂O₂][I⁻]²[H⁺]², which does not match the measured orders (first in I⁻, zero in H⁺); a five-particle collision is also extremely unlikely",
+     "accept": [
+      "the orders do not match the coefficients, so it cannot be elementary"
+     ]
+    }
+   ],
+   "sample": "If the equation were one elementary step, its rate law would come from its coefficients: rate = k[H₂O₂][I⁻]²[H⁺]². The data show first order in I⁻ and zero order in H⁺, so the reaction cannot be a single step. A collision of five particles at once would also be far too unlikely."
+  },
+  {
+   "label": "d",
+   "points": 1,
+   "prompt": "Trial 1 is repeated at 35 °C and the initial rate is larger. <b>Explain</b> this observation in terms of the collisions between reacting particles.",
+   "rubric": [
+    {
+     "point": "At higher temperature a larger fraction of collisions has energy at or above the activation energy (the energy distribution shifts higher), so more collisions are effective per second; the activation energy itself is unchanged",
+     "accept": [
+      "more particles have at least Ea, so more successful collisions"
+     ]
+    }
+   ],
+   "sample": "At 35 °C the particles have a higher average kinetic energy, so the distribution of energies shifts to higher values and a larger fraction of H₂O₂–I⁻ collisions has at least the activation energy. More collisions per second are effective, so the rate (and k) is larger. The activation energy is the same at both temperatures."
+  }
+ ]
+}

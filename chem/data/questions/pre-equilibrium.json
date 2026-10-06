@@ -1,0 +1,463 @@
+{
+ "stimuli": {
+  "pre-equilibrium-s1": {
+   "kind": "model",
+   "title": "A fast reversible first step",
+   "html": "<p>A proposed mechanism for 2 NO(g) + O₂(g) → 2 NO₂(g):</p><ol><li>NO + NO ⇌ N₂O₂ &nbsp;(fast, reversible; k₁ = 2.0 × 10³ M⁻¹ s⁻¹ forward, k₋₁ = 5.0 × 10⁴ s⁻¹ back)</li><li>N₂O₂ + O₂ → 2 NO₂ &nbsp;(slow; k₂ = 1.5 × 10² M⁻¹ s⁻¹)</li></ol>"
+  },
+  "pre-equilibrium-s2": {
+   "kind": "table",
+   "title": "Testing mechanisms for hydrogen iodide",
+   "text": "<p>For H₂(g) + I₂(g) → 2 HI(g) at a fixed high temperature, initial rates were measured:</p><p>Mechanism P: H₂ + I₂ → 2 HI (one step).</p><p>Mechanism Q: (1) I₂ ⇌ 2 I (fast, reversible); (2) H₂ + 2 I → 2 HI (slow).</p>",
+   "table": {
+    "caption": "Initial concentrations and initial rates",
+    "cols": [
+     "Trial",
+     "[H₂] (M)",
+     "[I₂] (M)",
+     "Initial rate (M/s)"
+    ],
+    "rows": [
+     [
+      "1",
+      "0.050",
+      "0.050",
+      "1.2 × 10⁻⁵"
+     ],
+     [
+      "2",
+      "0.100",
+      "0.050",
+      "2.4 × 10⁻⁵"
+     ],
+     [
+      "3",
+      "0.050",
+      "0.100",
+      "2.4 × 10⁻⁵"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-pre-equilibrium-1",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "pre-equilibrium-s1",
+   "q": "What is the rate law of the slow step, written as it stands?",
+   "options": [
+    "rate = k₂[N₂O₂][O₂]",
+    "rate = k₂[NO]²[O₂]",
+    "rate = k₂[NO₂]²",
+    "rate = k₂[NO][O₂]"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Step 2 is elementary: one N₂O₂ and one O₂ collide, so rate = k₂[N₂O₂][O₂]. It contains N₂O₂, an intermediate, so it is not yet the final rate law.",
+    "options": [
+     "Right: written from the step's coefficients.",
+     "That is the final rate law after substitution, not the slow step as written.",
+     "NO₂ is the product of step 2.",
+     "NO is not a reactant in step 2."
+    ]
+   }
+  },
+  {
+   "id": "chem-pre-equilibrium-2",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "pre-equilibrium-s1",
+   "q": "Setting the forward and back rates of step 1 equal, what is [N₂O₂]?",
+   "options": [
+    "(k₁/k₋₁)[NO]²",
+    "(k₋₁/k₁)[NO]²",
+    "(k₁/k₋₁)[NO]",
+    "k₁k₋₁[NO]²"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Forward rate k₁[NO]² equals back rate k₋₁[N₂O₂], so [N₂O₂] = (k₁/k₋₁)[NO]².",
+    "options": [
+     "Right: k₁[NO]² = k₋₁[N₂O₂].",
+     "The ratio is upside down: solve k₁[NO]² = k₋₁[N₂O₂] for [N₂O₂].",
+     "Two NO molecules collide in step 1, so [NO] is squared.",
+     "The constants divide, they do not multiply."
+    ]
+   }
+  },
+  {
+   "id": "chem-pre-equilibrium-3",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "pre-equilibrium-s1",
+   "q": "What overall rate law does the mechanism predict?",
+   "options": [
+    "rate = k[NO]²[O₂]",
+    "rate = k[NO][O₂]",
+    "rate = k[N₂O₂][O₂]",
+    "rate = k[NO]²"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Substitute [N₂O₂] = (k₁/k₋₁)[NO]² into rate = k₂[N₂O₂][O₂]: rate = (k₂k₁/k₋₁)[NO]²[O₂] = k[NO]²[O₂].",
+    "options": [
+     "Right: the intermediate is replaced by reactants.",
+     "Step 1 involves two NO, so NO is second order.",
+     "A final rate law cannot contain an intermediate.",
+     "O₂ is a reactant in the slow step, so it stays."
+    ]
+   }
+  },
+  {
+   "id": "chem-pre-equilibrium-4",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "pre-equilibrium-s1",
+   "q": "Using the constants given, calculate the overall rate constant k = k₂k₁/k₋₁. Include units.",
+   "numeric": {
+    "answer": 6,
+    "tol": 0.1,
+    "unit": "M^-2 s^-1",
+    "askUnit": true,
+    "units": [
+     "M-2 s-1",
+     "1/(M^2 s)",
+     "L^2/(mol^2 s)",
+     "L2 mol-2 s-1",
+     "M⁻² s⁻¹",
+     "L²/(mol²·s)"
+    ],
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 3750,
+      "why": "Value: the ratio is inverted. [N₂O₂] = (k₁/k₋₁)[NO]², so k = k₂k₁/k₋₁."
+     },
+     {
+      "value": 15000000000,
+      "why": "Value: k₋₁ goes in the denominator, not the numerator."
+     }
+    ]
+   },
+   "why": {
+    "correct": "k = k₂k₁/k₋₁ = (1.5 × 10² M⁻¹ s⁻¹)(2.0 × 10³ M⁻¹ s⁻¹)/(5.0 × 10⁴ s⁻¹) = 6.0 M⁻² s⁻¹. Units: (M⁻¹ s⁻¹)(M⁻¹ s⁻¹)/s⁻¹ = M⁻² s⁻¹, as a third-order rate law needs."
+   }
+  },
+  {
+   "id": "chem-pre-equilibrium-5",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "pre-equilibrium-s2",
+   "q": "What is the experimental rate law?",
+   "options": [
+    "rate = k[H₂][I₂]",
+    "rate = k[H₂]²[I₂]",
+    "rate = k[H₂][I₂]²",
+    "rate = k[I₂]"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Doubling [H₂] doubles the rate (trials 1, 2); doubling [I₂] doubles the rate (trials 1, 3). First order in each.",
+    "options": [
+     "Right: first order in both.",
+     "Second order in H₂ would quadruple the rate in trial 2.",
+     "Second order in I₂ would quadruple the rate in trial 3.",
+     "The rate also depends on [H₂]."
+    ]
+   }
+  },
+  {
+   "id": "chem-pre-equilibrium-6",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "pre-equilibrium-s2",
+   "q": "What rate law does mechanism Q predict?",
+   "options": [
+    "rate = k[H₂][I₂]",
+    "rate = k[H₂][I]²",
+    "rate = k[H₂][I₂]²",
+    "rate = k[I₂]"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Slow step: rate = k₂[H₂][I]². Fast reversible step: k₁[I₂] = k₋₁[I]², so [I]² = (k₁/k₋₁)[I₂]. Substituting: rate = (k₂k₁/k₋₁)[H₂][I₂].",
+    "options": [
+     "Right: [I]² is replaced by a term in [I₂].",
+     "This still contains the intermediate I.",
+     "Only one I₂ is broken in step 1, so [I₂] is first order.",
+     "H₂ is a reactant in the slow step, so it must appear."
+    ]
+   }
+  },
+  {
+   "id": "chem-pre-equilibrium-7",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "pre-equilibrium-s2",
+   "q": "Which conclusion is justified by the data?",
+   "options": [
+    "Both fit; rate data do not separate them",
+    "Q fits and P does not, because Q has a reversible step",
+    "P fits and Q does not, because P is a single step",
+    "Neither fits, because I atoms are missing from the rate law"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "P predicts k[H₂][I₂] directly; Q predicts k[H₂][I₂] after substitution. Both match the measured rate law, so the rate data alone cannot decide between them.",
+    "options": [
+     "Right: two mechanisms, one rate law.",
+     "Having a reversible step is not evidence for a mechanism.",
+     "Being a single step is not evidence either.",
+     "An intermediate should not appear in the final rate law; its absence is expected."
+    ]
+   }
+  },
+  {
+   "id": "chem-pre-equilibrium-8",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "pre-equilibrium-s2",
+   "q": "In mechanism Q, why can the first step be treated as having equal forward and back rates?",
+   "options": [
+    "It runs fast both ways compared with step 2",
+    "I atoms do not react with H₂ here",
+    "The slow step uses up the I₂ as soon as it forms",
+    "The first step has no activation energy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Because I₂ ⇌ 2 I runs quickly both ways while step 2 removes I only slowly, the first step stays balanced: as many I₂ break apart each second as I pairs rejoin.",
+    "options": [
+     "Right: the fast step stays balanced while the slow step trickles.",
+     "I atoms do react with H₂; that is step 2.",
+     "The slow step uses I atoms, not I₂ directly, and slowly.",
+     "Every step has some activation energy; being fast does not mean zero."
+    ]
+   }
+  },
+  {
+   "id": "chem-pre-equilibrium-9",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Why must a rate law be written without the concentration of an intermediate?",
+   "options": [
+    "Its concentration is not set by the experimenter",
+    "An intermediate has a concentration of exactly zero throughout",
+    "Intermediates are transition states",
+    "Intermediates exist just in solids"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A rate law is tested by changing reactant concentrations. An intermediate is made and used inside the reaction at low concentration, so it cannot be set by the experimenter.",
+    "options": [
+     "Right: rate laws use species you can control.",
+     "An intermediate is present at a small, not zero, concentration.",
+     "Intermediates sit between steps; transition states are peaks.",
+     "Intermediates can be gases or dissolved particles."
+    ]
+   }
+  },
+  {
+   "id": "chem-pre-equilibrium-10",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Mechanism: (1) NO + Br₂ ⇌ NOBr₂ (fast, reversible); (2) NOBr₂ + NO → 2 NOBr (slow). What rate law does it predict?",
+   "options": [
+    "rate = k[NO]²[Br₂]",
+    "rate = k[NO][Br₂]",
+    "rate = k[NOBr₂][NO]",
+    "rate = k[NO]²"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Slow step: rate = k₂[NOBr₂][NO]. Fast step balanced: k₁[NO][Br₂] = k₋₁[NOBr₂], so [NOBr₂] = (k₁/k₋₁)[NO][Br₂]. Rate = (k₂k₁/k₋₁)[NO]²[Br₂].",
+    "options": [
+     "Right: one NO from each step.",
+     "That would be the rate law if step 1 were slow.",
+     "This contains the intermediate NOBr₂.",
+     "Br₂ is a reactant in step 1, so it carries into the rate law."
+    ]
+   }
+  },
+  {
+   "id": "chem-pre-equilibrium-11",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "predict",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the mechanism NO + Br₂ ⇌ NOBr₂ (fast), NOBr₂ + NO → 2 NOBr (slow), predict each change in the initial rate.",
+   "variables": [
+    {
+     "name": "Rate when [NO] is doubled",
+     "answer": "up",
+     "why": "The rate law is k[NO]²[Br₂], so the rate goes up by a factor of 4."
+    },
+    {
+     "name": "Rate when [Br₂] is doubled",
+     "answer": "up",
+     "why": "First order in Br₂: the rate doubles."
+    },
+    {
+     "name": "Rate when NOBr (product) is added at the start",
+     "answer": "none",
+     "why": "NOBr does not appear in the predicted rate law, which uses only NO and Br₂."
+    }
+   ],
+   "why": {
+    "correct": "Both reactants are in the predicted rate law; the product is not."
+   }
+  },
+  {
+   "id": "chem-pre-equilibrium-12",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a proposed pathway, X and Y quickly form XY and XY quickly falls apart again; then XY reacts slowly with a second Y to give the product. Which rate law follows?",
+   "options": [
+    "rate = k[X][Y]²",
+    "rate = k[X][Y]",
+    "rate = k[XY][Y]",
+    "rate = k[X]²[Y]"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fast step balanced: k₁[X][Y] = k₋₁[XY], so [XY] = (k₁/k₋₁)[X][Y]. Slow step: rate = k₂[XY][Y] = (k₂k₁/k₋₁)[X][Y]².",
+    "options": [
+     "Right: one Y from each step.",
+     "That would be the rate law if the first step were slow.",
+     "This contains the intermediate XY.",
+     "X appears once, in the first step; Y appears in both steps."
+    ]
+   }
+  },
+  {
+   "id": "chem-pre-equilibrium-13",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "In the fast reversible step NO + NO ⇌ N₂O₂, k₁ = 2.0 × 10³ M⁻¹ s⁻¹ and k₋₁ = 5.0 × 10⁴ s⁻¹. What is [N₂O₂], in M, when [NO] = 0.010 M?",
+   "numeric": {
+    "answer": 0.000004,
+    "tol": 1e-7,
+    "unit": "M",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.0004,
+      "why": "Value: two NO molecules react in step 1, so square [NO]."
+     },
+     {
+      "value": 0.0025,
+      "why": "Value: the ratio is inverted. From k₁[NO]² = k₋₁[N₂O₂], [N₂O₂] = (k₁/k₋₁)[NO]²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "[N₂O₂] = (k₁/k₋₁)[NO]² = (2.0 × 10³ / 5.0 × 10⁴ M⁻¹)(0.010 M)² = (0.040 M⁻¹)(1.0 × 10⁻⁴ M²) = 4.0 × 10⁻⁶ M. The intermediate is present at a tiny concentration, as expected."
+   }
+  },
+  {
+   "id": "chem-pre-equilibrium-14",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes the rate law for a mechanism with a fast reversible first step as rate = k₂[I][H₂]... and stops. What is missing?",
+   "options": [
+    "Replacing [I] using the balanced fast step",
+    "Adding the coefficients of the overall equation as exponents",
+    "Multiplying by the forward rate constant of the fast step",
+    "Nothing; intermediates belong in rate laws"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The slow step's rate law contains an intermediate. Use the balanced fast step (forward rate = back rate) to express the intermediate in terms of reactants, then substitute.",
+    "options": [
+     "Right: substitute the intermediate.",
+     "Overall coefficients do not give the orders.",
+     "The ratio k₁/k₋₁ is needed, not k₁ alone.",
+     "A rate law is written in species the experimenter controls, not intermediates."
+    ]
+   }
+  },
+  {
+   "id": "chem-pre-equilibrium-15",
+   "unit": "unit-5",
+   "topic": "pre-equilibrium",
+   "type": "single",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a mechanism with a fast reversible first step and a slow second step, which step is rate-determining?",
+   "options": [
+    "The slow second step",
+    "The fast first step, since it comes first",
+    "Both steps equally",
+    "Neither; a reversible step has no rate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The slow step limits the overall rate wherever it sits. The fast reversible step only sets how much intermediate is available to it.",
+    "options": [
+     "Right: the slowest step limits the rate.",
+     "Coming first does not make a step rate-determining; being slowest does.",
+     "One step, the slowest, limits the rate.",
+     "Each direction of a reversible step has its own rate."
+    ]
+   },
+   "fixed": true
+  }
+ ]
+}

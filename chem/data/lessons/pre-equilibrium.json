@@ -1,0 +1,81 @@
+{
+ "topic": "pre-equilibrium",
+ "hook": "Picture a busy doorway between two rooms, with people walking in and out all the time, and a slow ticket booth at the far end of the second room. The number of people waiting in the second room stays steady, because as many come in as go back out. The ticket booth sets the pace, but how many are in line depends on that busy doorway.",
+ "prereq": [
+  {
+   "q": "If the first step of a mechanism is slow, the overall rate law is:",
+   "options": [
+    "the rate law of that first step",
+    "from the overall coefficients",
+    "the rate law of the last step",
+    "first order in each reactant"
+   ],
+   "correct": 0,
+   "why": "The slow step limits the rate; if it comes first, its rate law is the overall one.",
+   "review": "mechanism-rate-laws"
+  },
+  {
+   "q": "What is a dynamic equilibrium?",
+   "options": [
+    "Two opposite processes going on at equal rates",
+    "A process that has stopped completely",
+    "A process that goes in one direction only",
+    "Two processes at different rates"
+   ],
+   "correct": 0,
+   "why": "In a dynamic equilibrium both directions continue at equal rates, so nothing changes overall.",
+   "review": "phases-of-matter"
+  }
+ ],
+ "figure": {
+  "figure": "pre-equilibrium",
+  "caption": "Forward and reverse rates of the fast step are equal, which gives the intermediate's concentration in terms of reactants."
+ },
+ "chain": [
+  {
+   "cause": "A fast reversible step comes before a slow step",
+   "effect": "the fast step runs back and forth many times and stays balanced"
+  },
+  {
+   "cause": "Its forward and reverse rates are equal",
+   "effect": "k₁[reactants] = k₋₁[intermediate] gives the intermediate in terms of reactants"
+  },
+  {
+   "cause": "The slow step's rate law contains that intermediate",
+   "effect": "substituting removes it, leaving only reactant concentrations"
+  },
+  {
+   "cause": "The constants combine into one k",
+   "effect": "the predicted rate law can be compared with the measured one"
+  }
+ ],
+ "ideas": [
+  "A <b>reversible reaction</b> step runs forward and in reverse (⇌), each with its own rate constant.",
+  "When a fast reversible step comes before a slow step, set its forward rate equal to its reverse rate (<b>pre-equilibrium</b>).",
+  "Solve for the intermediate, substitute into the slow step's rate law, and combine constants: k = k₂k₁/k₋₁.",
+  "A final rate law contains no intermediates."
+ ],
+ "misconception": {
+  "wrong": "The rate law of a mechanism is the slow step's rate law, even if it contains an intermediate.",
+  "right": "A rate law cannot contain an intermediate. If the slow step has one, replace it using the fast reversible step before it."
+ },
+ "check": [
+  "chem-pre-equilibrium-1",
+  "chem-pre-equilibrium-2",
+  "chem-pre-equilibrium-3",
+  "chem-pre-equilibrium-4",
+  "chem-pre-equilibrium-10",
+  "chem-pre-equilibrium-13"
+ ],
+ "summary": "When a fast reversible step comes before the slow step, its forward and reverse rates are equal. That equality gives the intermediate's concentration in terms of reactants, which is substituted into the slow step's rate law. The result contains only reactants, with a combined rate constant, and can be compared with the measured rate law.",
+ "connections": [
+  {
+   "href": "../notes/mechanism-rate-laws.html",
+   "label": "Back: rate-determining steps (5.8)"
+  },
+  {
+   "href": "../notes/phases-of-matter.html",
+   "label": "Dynamic equilibrium (3.3)"
+  }
+ ]
+}

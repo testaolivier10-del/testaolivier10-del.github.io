@@ -37,3 +37,25 @@ teacher signs off (site rule `apchem-beta-and-report`).
 AP® Biology frees one simulator and all skills tools (apbio decision 9). Proposed for AP®
 Chemistry: the particle-diagram trainer free, the other trainers and drills Premium. Owner to
 confirm before the first trainer ships.
+
+## unit5-kinetics-scope: Unit 5 choices to confirm (open, 2026-10-06)
+
+Written for Unit 5 (`chem/data/*/` for the 11 kinetics topics); check against the CED:
+
+- **Arrhenius equation.** Not on the equations sheet. The notes for 5.5 mention it only in a
+  `going-further` aside and teach the qualitative idea (higher T or lower Ea gives a larger k);
+  no item calculates with it. Confirm no quantitative Arrhenius is assessed.
+- **Zero-order integrated law.** Not on the sheet, but 5.3 teaches [A]t = [A]0 − kt and the
+  [A]-vs-t plot, and one set (NH₃ on hot tungsten) asks for a zero-order k from the slope.
+  Confirm zero order is assessed this way.
+- **Half-lives other than first order.** Only t½ = 0.693/k is calculated. Second-order halving
+  times appear only as reasoning from the integrated law (one MCQ). Confirm no second- or
+  zero-order half-life formula is expected.
+- **Fractional orders.** Rate laws use orders 0, 1 and 2 only (the 5.2 notes say so); a
+  pre-equilibrium with A ⇌ 2 B (giving order ½) was left out. Confirm.
+- **Pre-equilibrium notation.** 5.9 uses k₁, k₋₁, k₂ and k = k₂k₁/k₋₁ with one numeric item on
+  combining constants. Confirm a numeric item like this is within scope (it may be
+  qualitative-only on the exam), and that "forward/reverse rates equal" is the wording wanted
+  before Unit 7 introduces equilibrium.
+- **Pseudo-first-order.** The long FRQ `frq-dye-fading` uses a large excess of OH⁻ and asks for
+  k = k_obs/[OH⁻] without naming "pseudo-first-order". Confirm this is fair at this level.

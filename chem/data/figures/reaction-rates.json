@@ -1,0 +1,12 @@
+{
+ "rate-curves": {
+  "file": "figures/rate-curves.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Concentration on the vertical axis, time on the horizontal axis. The reactant curve starts high and falls, steeply at first and then more and more slowly. The product curve starts at zero and rises the same way, levelling off. A dashed straight line touches the reactant curve at time zero: its slope is the initial rate. A second straight line joins two points on the reactant curve: its slope is the average rate over that interval. The curve gets flatter with time, so the rate falls as the reactant is used up."
+ }
+}
