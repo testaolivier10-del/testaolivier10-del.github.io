@@ -13,6 +13,14 @@
    assets/site-search.js (LevlSearch), loaded here. The query lives in
    ?q=, so a search is a shareable link. */
 (function(){
+  /* assets/glossary.json is the shared shape (scripts/lib/glossary.mjs); this
+     file works on the old map {id: {t, d, r, s, p, b}}. */
+  function glossMap(g){
+    if(!g || !g.terms) return g || {};
+    var o = {};
+    g.terms.forEach(function(x){ o[x.id] = { t: x.term, d: x.def, r: x.roots || [], s: x.say || '', p: x.topic, b: x.href ? 1 : 0 }; });
+    return o;
+  }
   var app = document.getElementById('app');
   var CU = window.ApBioCurriculum;
   if(!app || !CU) return;
@@ -159,7 +167,7 @@
     S = engine;
     INDEX = structure();
     return Promise.all([
-      getJson(BASE + 'assets/glossary.json').then(function(g){ INDEX = INDEX.concat(glossary(g)); }, function(){}),
+      getJson(BASE + 'assets/glossary.json').then(function(g){ INDEX = INDEX.concat(glossary(glossMap(g))); }, function(){}),
       getJson(BASE + 'assets/frq/index.json').then(function(l){ INDEX = INDEX.concat(frqs(l)); }, function(){})
     ]);
   }).then(function(){

@@ -19,6 +19,14 @@
    Self-grading moves no mastery number (cards never touch
    apbio_progress_v1); cards pay XP (2 each, 60 a day at most). */
 (function(){
+  /* assets/glossary.json is the shared shape (scripts/lib/glossary.mjs); this
+     file works on the old map {id: {t, d, r, s, p, b}}. */
+  function glossMap(g){
+    if(!g || !g.terms) return g || {};
+    var o = {};
+    g.terms.forEach(function(x){ o[x.id] = { t: x.term, d: x.def, r: x.roots || [], s: x.say || '', p: x.topic, b: x.href ? 1 : 0 }; });
+    return o;
+  }
   var app = document.getElementById('app');
   var CU = window.ApBioCurriculum;
   if(!app || !CU) return;
@@ -330,7 +338,7 @@
   app.innerHTML = '<div class="bio-fc-loading panel" aria-busy="true"><p>Shuffling the deck…</p></div>';
   function getJson(url){ return fetch(url).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).catch(function(){ return null; }); }
   Promise.all([getJson(BASE + 'assets/glossary.json'), getJson(BASE + 'assets/summaries.json')]).then(function(res){
-    buildCards(res[0], res[1]);
+    buildCards(glossMap(res[0]), res[1]);
     if(!(prefs.deck === 'all' || prefs.deck === 'missed' || deckCards(prefs.deck).length)) prefs.deck = 'all';
     if(prefs.deck === 'missed') return loadMissed().then(renderHome);
     renderHome();

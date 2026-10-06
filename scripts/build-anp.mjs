@@ -17,6 +17,7 @@ import { STUB_CSP } from './lib/site-config.mjs';
 import { premiumData, lockedLd, courseOffers } from './lib/premium-data.mjs';
 import { fileURLToPath } from 'node:url';
 import { courseTitle } from './lib/page-title.mjs';
+import { glossaryJson as sharedGlossaryJson, glossaryMain, glossaryScript } from './lib/glossary.mjs';
 import { APP_STATE_PAGES, NOINDEX } from './lib/app-pages.mjs';
 /* Course labels for page titles, longest first (scripts/lib/page-title.mjs). */
 const AP_LABELS = ['Anatomy & Physiology', 'A&P'];
@@ -571,81 +572,39 @@ ${tail({ depth, section: 'credits' })}
 
 /* ----------------------------------------------------------- glossary */
 
-/* Styles only the glossary page uses, inlined in its <head> so the shared
-   anp.css (on the critical path of every A&P page) does not carry them. The
-   A-Z bar stays under the header while the index scrolls; on a phone it is one
-   swipeable row. Letters and terms land below the header and the bar. */
-const GLOSSARY_CSS = `.anp-letters-hint{display:none;margin:4px 0 0;}
-.anp-letters{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 16px;position:sticky;top:var(--site-header-h,60px);z-index:5;padding:8px 0;background:var(--paper);}
-.anp-letters a{padding:4px 9px;border-radius:8px;background:var(--ctint);color:var(--cink);font:900 13px var(--font-ui);text-decoration:none;}
-.anp-letters a.on{background:var(--cink);color:var(--paper);}
-@media (max-width:640px){.anp-letters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-right:32px;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent);}.anp-letters-hint{display:block;}.anp-letters a{flex:0 0 auto;padding:7px 11px;}}
-.anp-terms{margin:0;}
-.anp-glossary .anp-letter,.anp-glossary .anp-term,.anp-glossary .anp-term-index li{scroll-margin-top:calc(var(--site-header-h,60px) + 64px);}
-.anp-letter{margin:0 0 22px;}
-.anp-letter > .anp-gl-more{margin:0 0 8px;}
-.anp-terms-full{margin:0;}
-.anp-letter h2{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 6px;}
-.anp-term-index{list-style:none;margin:0;padding:0;line-height:1.9;}
-.anp-term-index li{display:inline;font-weight:700;}
-.anp-term-index li:not(:last-child)::after{content:" \\00b7 ";color:var(--muted);}
-.anp-gl-more{font:800 13px var(--font-ui);padding:5px 12px;border-radius:999px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--white);color:var(--ink);cursor:pointer;}
-.anp-gl-more:hover{border-color:var(--cink);}
-.anp-term:target,.anp-term.hit{background:var(--ctint);border-radius:8px;padding-left:8px;padding-right:8px;}
-.anp-gl-results .anp-small{margin:4px 0 10px;}
-.anp-term{padding:10px 0;border-bottom:1px solid var(--line, rgba(0,0,0,0.08));}
-.anp-term dt{font-weight:900;}
-.anp-term dd{margin:3px 0 0;font-weight:600;line-height:1.6;}
-.anp-roots{display:block;color:var(--muted);font-size:13.5px;}
-.anp-say{color:var(--muted);font-weight:700;font-size:13.5px;}`;
-
 function glossaryPage() {
   const depth = '';
-  const entries = map.concepts.filter(c => C.glossary[c.id]).map(c => ({ c, g: C.glossary[c.id] }))
-    .sort((a, b) => a.c.term.localeCompare(b.c.term, 'en', { sensitivity: 'base' }));
+  const terms = glossaryTerms();
   const title = courseTitle('Glossary: terms and word roots', AP_LABELS);
-  const desc = clampDesc(`${entries.length.toLocaleString('en-US')} anatomy and physiology terms with plain definitions, word roots and pronunciation, each linked to the page that teaches it.`);
+  const desc = clampDesc(`${terms.length.toLocaleString('en-US')} anatomy and physiology terms with plain definitions, word roots and pronunciation, each linked to the page that teaches it.`);
   const url = `${SITE}${BASE}glossary.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'DefinedTermSet', '@id': `${url}#terms`, name: `${COURSE_NAME} glossary`, url, description: desc },
     crumbs(orgCrumbs([{ name: 'Glossary', url }])),
   ] };
-  const letters = [...new Set(entries.map(e => e.c.term[0].toUpperCase()))];
-  /* The page is an index, not the definitions. Written out in full, a
-     thousand definitions made a 700 KB page about 270,000 px tall on a phone.
-     The file carries every term once, under its letter, as a link to the page
-     that teaches it (and the anchor #t-<concept> other pages link to);
-     anp-glossary-page.js draws a letter's definitions from
-     assets/glossary.json when that letter is opened, and the filter searches
-     terms and their aliases (data-a). */
+  /* The shared glossary page (scripts/lib/glossary.mjs): the opener, filters
+     and A-Z rail are here; assets/course/glossary-page.js draws every term
+     from assets/glossary.json. #t-<concept> anchors still land on the term. */
   const body = `
 <body>
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<main id="main" class="xshell anp-glossary">
-  ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Glossary' }], depth)}
-  <header class="hero anp-hero"><div class="eyebrow">${COURSE_NAME}</div><h1>Glossary</h1><p class="lede">${entries.length.toLocaleString('en-US')} terms${C.built.size === map.topics.length ? '' : ' so far'}, with plain definitions, word roots and pronunciation. Each one links to the page that teaches it.</p>
-    <label class="anp-filter">Find a term <input type="search" id="gl-filter" autocomplete="off" aria-controls="gl-results"></label>
-    <p class="anp-small" id="gl-status" role="status" aria-live="polite"></p></header>
-  <p class="anp-letters-hint anp-small" aria-hidden="true">Swipe the letters for ${letters[letters.length - 1]} &rarr;</p>
-  <nav class="anp-letters" aria-label="Jump to letter">${letters.map(l => `<a href="#l-${l}">${l}</a>`).join('')}</nav>
-  <div id="gl-results" class="anp-gl-results" hidden></div>
-  <div class="anp-terms" id="gl-index">${letters.map(l => {
-    const here = entries.filter(e => e.c.term[0].toUpperCase() === l);
-    return `<section class="anp-letter" id="l-${l}" aria-labelledby="h-${l}"><h2 id="h-${l}">${l} <span class="anp-small">${here.length} term${here.length === 1 ? '' : 's'}</span></h2><ul class="anp-term-index">${here.map(({ c }) => {
-      const href = C.built.has(c.taughtIn) ? `notes/${c.taughtIn}.html` : null;
-      const aliases = c.aliases.filter(a => a.toLowerCase() !== c.term.toLowerCase());
-      return `<li id="t-${c.id}"${aliases.length ? ` data-a="${esc(aliases.join('|'))}"` : ''}>${href ? `<a href="${href}">${esc(c.term)}</a>` : esc(c.term)}</li>`;
-    }).join('')}</ul></section>`;
-  }).join('\n  ')}</div>
+<main id="main" class="xshell">
+  ${glossaryMain({
+    crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Glossary' }],
+    courseHtml: esc(COURSE_NAME), beta: true,
+    lede: `${terms.length.toLocaleString('en-US')} terms${C.built.size === map.topics.length ? '' : ' so far'}, with plain definitions, word roots and pronunciation. Each one links to the page that teaches it.`,
+    chapters: glossaryChapters(), terms, placeholder: 'e.g. systole, nephron, hypo-', searchHref: 'search.html',
+  })}
   ${reportPage('glossary')}
 </main>
 ${footer(depth)}
-${tail({ depth, section: 'glossary', extra: ['anp-glossary-page.js'], site: ['report-question.js'] })}
+${tail({ depth, section: 'glossary', site: ['report-question.js'] })}
+${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', root: '' })}
 </body>
 </html>
 `;
-  return head({ title, desc, path: 'glossary.html', depth, ogType: 'website', jsonld }).replace('</head>', `<style>${GLOSSARY_CSS}</style>\n</head>`) + body;
+  return head({ title, desc, path: 'glossary.html', depth, ogType: 'website', jsonld }).replace('<link rel="stylesheet" href="assets/anp.css">', '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/glossary.css">\n<link rel="stylesheet" href="assets/anp.css">') + body;
 }
 
 /* -------------------------------------------------------- learn, home */
@@ -1105,14 +1064,29 @@ window.AnpCurriculum = ${JSON.stringify(data)};
 `;
 }
 
-function glossaryJson() {
-  const out = {};
+/* The glossary in the shared shape (scripts/lib/glossary.mjs). Only the
+   published chapters' definitions are in C.glossary (see the top of this file);
+   href is empty for a term whose teaching page is not built yet. */
+function glossaryChapters() {
+  return map.chapters.map((ch, i) => ({ id: ch.id, title: `${i + 1}. ${ch.title}` }));
+}
+function glossaryTerms() {
+  const out = [];
   for (const c of map.concepts) {
     const g = C.glossary[c.id];
     if (!g) continue;
-    out[c.id] = { t: c.term, d: g.def, r: g.roots || [], s: g.say || '', p: c.taughtIn, b: C.built.has(c.taughtIn) ? 1 : 0 };
+    const t = topicById(c.taughtIn);
+    out.push({
+      id: c.id, term: c.term, def: g.def, topic: c.taughtIn, topicTitle: t ? t.title : '',
+      href: C.built.has(c.taughtIn) ? `notes/${c.taughtIn}.html` : '',
+      aka: c.aliases.filter(a => a.toLowerCase() !== c.term.toLowerCase()), roots: g.roots || [], say: g.say || '',
+      chapter: t ? t.chapter : '',
+    });
   }
-  return JSON.stringify(out);
+  return out;
+}
+function glossaryJson() {
+  return sharedGlossaryJson({ chapters: glossaryChapters(), terms: glossaryTerms() });
 }
 
 /* The question bank, one pair of files per published chapter

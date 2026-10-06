@@ -227,10 +227,6 @@ a.bio-tag:hover{text-decoration:underline;}
    focus or tap (bio-glossary.js). */
 .gl{text-decoration:underline dotted;text-decoration-thickness:1.5px;text-underline-offset:3px;cursor:help;color:inherit;}
 a.gl{cursor:pointer;}
-.bio-tip{position:absolute;z-index:60;max-width:320px;padding:10px 13px;border-radius:12px;background:var(--ink);color:var(--paper);font:600 13.5px/1.5 var(--font-ui);box-shadow:var(--shadow-pop);}
-.bio-tip b{display:block;font-weight:900;margin-bottom:2px;}
-.bio-tip .bio-tip-roots{display:block;opacity:.8;font-size:12.5px;margin-top:4px;}
-.bio-tip a{color:inherit;}
 
 /* Questions. */
 .bio-qs{display:grid;gap:14px;}

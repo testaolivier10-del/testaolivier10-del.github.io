@@ -12,6 +12,14 @@
    assets/site-search.js (LevlSearch), the one NREMT and ochem use. It is not
    among this page's generated script tags, so it is loaded here. */
 (function(){
+  /* assets/glossary.json is the shared shape (scripts/lib/glossary.mjs); this
+     file works on the old map {id: {t, d, r, s, p, b}}. */
+  function glossMap(g){
+    if(!g || !g.terms) return g || {};
+    var o = {};
+    g.terms.forEach(function(x){ o[x.id] = { t: x.term, d: x.def, r: x.roots || [], s: x.say || '', p: x.topic, b: x.href ? 1 : 0 }; });
+    return o;
+  }
   var app = document.getElementById('app');
   var CU = window.AnpCurriculum;
   if(!app || !CU) return;
@@ -201,7 +209,7 @@
   loadEngine().then(function(engine){
     S = engine;
     INDEX = structure();
-    return getJson(BASE + 'assets/glossary.json').then(function(g){ INDEX = INDEX.concat(glossary(g)); }, function(){});
+    return getJson(BASE + 'assets/glossary.json').then(function(g){ INDEX = INDEX.concat(glossary(glossMap(g))); }, function(){});
   }).then(function(){
     if(!S) return;
     setStatus(); run();

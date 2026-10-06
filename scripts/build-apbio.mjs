@@ -26,6 +26,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { courseTitle } from './lib/page-title.mjs';
+import { glossaryJson as sharedGlossaryJson, glossaryMain, glossaryScript } from './lib/glossary.mjs';
 import { premiumData, lockedLd, courseOffers } from './lib/premium-data.mjs';
 import {
   ROOT, SITE, BASE, COURSE_NAME, COURSE_HTML, COURSE_ID, COURSE_KEY, DISCLAIMER, BETA_NOTE, BETA_PILL,
@@ -376,74 +377,50 @@ ${tail({ depth, section: 'learn' })}
   }
 
   /* ---------------------------------------------------------- glossary */
-  /* Styles only the glossary page uses, inlined in its <head> so bio.css (on
-     every page) does not carry them. The A-Z bar stays under the header while
-     the index scrolls; on a phone it is one swipeable row. Letters and terms
-     land below the header and the bar. */
-  const GLOSSARY_CSS = `.bio-letters-hint{display:none;margin:4px 0 0;}
-.bio-letters{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 16px;position:sticky;top:var(--site-header-h,60px);z-index:5;padding:8px 0;background:var(--paper);}
-.bio-letters a{min-width:32px;min-height:32px;display:inline-grid;place-items:center;border-radius:8px;background:var(--ctint);color:var(--cink);font:900 13px var(--font-ui);text-decoration:none;}
-.bio-letters a.on{background:var(--cink);color:var(--paper);}
-@media (max-width:640px){.bio-letters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-right:32px;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent);}.bio-letters-hint{display:block;}.bio-letters a{flex:0 0 auto;padding:0 10px;}}
-.bio-glossary .bio-letter,.bio-glossary .bio-term,.bio-glossary .bio-term-index li{scroll-margin-top:calc(var(--site-header-h,60px) + 64px);}
-.bio-letter{margin:0 0 22px;}
-.bio-letter h2{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 6px;}
-.bio-letter > .bio-gl-more{margin:0 0 8px;}
-.bio-term-index{list-style:none;margin:0;padding:0;line-height:1.9;}
-.bio-term-index li{display:inline;font-weight:700;}
-.bio-term-index li:not(:last-child)::after{content:" \\00b7 ";color:var(--muted);}
-.bio-gl-more{font:800 13px var(--font-ui);padding:5px 12px;border-radius:999px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--white);color:var(--ink);cursor:pointer;}
-.bio-gl-more:hover{border-color:var(--cink);}
-.bio-terms{margin:0;}
-.bio-term{padding:10px 0;border-bottom:1px solid var(--line, rgba(0,0,0,0.08));}
-.bio-term:target,.bio-term.hit{background:var(--ctint);border-radius:8px;padding-left:8px;padding-right:8px;}
-.bio-term dt{font-weight:900;}
-.bio-term dd{margin:3px 0 0;font-weight:600;line-height:1.6;}
-.bio-gl-results .bio-small{margin:4px 0 10px;}`;
-
-  /* The page is an index, not the definitions (spec decision 22, A&P decision
-     69): every term once, under its letter, as a link to the notes page that
-     teaches it, with the #t-<concept> anchor other pages link to.
-     bio-glossary-page.js draws a letter's definitions from assets/glossary.json
-     when that letter is opened, and the filter searches terms and their
-     aliases (data-a). */
+  /* The shared glossary page (scripts/lib/glossary.mjs): the opener, filters
+     and A-Z rail are here; assets/course/glossary-page.js draws every term
+     from assets/glossary.json. #t-<concept> anchors still land on the term. */
+  function glossaryChapters() {
+    return map.chapters.map(ch => ({ id: ch.id, title: ch.part === 'course' ? `Unit ${ch.n}: ${ch.title}` : ch.title }));
+  }
+  function glossaryTerms() {
+    return map.concepts.filter(c => C.glossary[c.id]).map(c => {
+      const t = map.topicById(c.taughtIn);
+      return {
+        id: c.id, term: c.term, def: C.glossary[c.id].def, topic: c.taughtIn, topicTitle: t ? t.title : '',
+        href: C.built.has(c.taughtIn) ? `notes/${c.taughtIn}.html` : '',
+        aka: c.aliases.filter(a => a.toLowerCase() !== c.term.toLowerCase()), chapter: t ? t.chapter : '',
+      };
+    });
+  }
   function glossaryPage() {
     const depth = '';
-    const entries = map.concepts.filter(c => C.glossary[c.id]).sort((a, b) => a.term.localeCompare(b.term, 'en', { sensitivity: 'base' }));
+    const terms = glossaryTerms();
     const title = courseTitle('Glossary', [LABEL]);
-    const desc = clampDesc(`${entries.length.toLocaleString('en-US')} biology terms with plain definitions, each linked to the free notes page that teaches it.`);
+    const desc = clampDesc(`${terms.length.toLocaleString('en-US')} biology terms with plain definitions, each linked to the free notes page that teaches it.`);
     const url = `${SITE}${BASE}glossary.html`;
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'DefinedTermSet', '@id': `${url}#terms`, name: `${COURSE_NAME} glossary`, url, description: desc },
       crumbs(orgCrumbs([{ name: 'Glossary', url }])),
     ] };
-    const letters = [...new Set(entries.map(c => c.term[0].toUpperCase()))];
     const body = `
 ${bodyOpen()}
-<main id="main" class="xshell bio-glossary">
-  ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Glossary' }])}
-  <header class="hero bio-hero"><div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div><h1>Glossary</h1><p class="lede">${entries.length.toLocaleString('en-US')} terms${entries.length && !map.chapters.every(chapterBuilt) ? ' so far' : ''}. Each links to the page that teaches it; open a letter to read its definitions.</p>
-    <label class="bio-filter">Find a term <input type="search" id="gl-filter" autocomplete="off" aria-controls="gl-results"></label>
-    <p class="bio-small" id="gl-status" role="status" aria-live="polite"></p></header>
-  ${letters.length ? `<p class="bio-letters-hint bio-small" aria-hidden="true">Swipe the letters for ${letters[letters.length - 1]} &rarr;</p>
-  <nav class="bio-letters" aria-label="Jump to letter">${letters.map(l => `<a href="#l-${l}">${l}</a>`).join('')}</nav>` : ''}
-  <div id="gl-results" class="bio-gl-results" hidden></div>
-  <div id="gl-index">${letters.map(l => {
-      const here = entries.filter(c => c.term[0].toUpperCase() === l);
-      return `<section class="bio-letter" id="l-${l}" aria-labelledby="h-${l}"><h2 id="h-${l}">${l} <span class="bio-small">${here.length} term${here.length === 1 ? '' : 's'}</span></h2><ul class="bio-term-index">${here.map(c => {
-        const href = C.built.has(c.taughtIn) ? `notes/${c.taughtIn}.html` : null;
-        const aliases = c.aliases.filter(a => a.toLowerCase() !== c.term.toLowerCase());
-        return `<li id="t-${c.id}"${aliases.length ? ` data-a="${esc(aliases.join('|'))}"` : ''}>${href ? `<a href="${href}">${esc(c.term)}</a>` : esc(c.term)}</li>`;
-      }).join('')}</ul></section>`;
-    }).join('\n  ') || '<p>Terms appear here as units are published.</p>'}</div>
+<main id="main" class="xshell">
+  ${terms.length ? glossaryMain({
+    crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Glossary' }],
+    courseHtml: COURSE_HTML, beta: true, chapterWord: 'unit',
+    lede: `${terms.length.toLocaleString('en-US')} terms${!map.chapters.every(chapterBuilt) ? ' so far' : ''}, in plain words. Each one links to the page that teaches it.`,
+    chapters: glossaryChapters(), terms, placeholder: 'e.g. osmosis, allele, ATP', searchHref: 'search.html',
+  }) : '<p>Terms appear here as units are published.</p>'}
   <p class="bio-report-page bio-nav-ref">Spot a mistake on this page? ${reportButton('glossary')}</p>
 </main>
 ${footer(depth, 'glossary')}
-${tail({ depth, section: 'glossary', extra: ['bio-glossary-page.js'] })}
+${tail({ depth, section: 'glossary' })}
+${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', root: '' })}
 </body>
 </html>
 `;
-    return head({ title, desc, path: 'glossary.html', depth, ogType: 'website', jsonld, noindex }).replace('</head>', `<style>${GLOSSARY_CSS}</style>\n</head>`) + body;
+    return head({ title, desc, path: 'glossary.html', depth, ogType: 'website', jsonld, noindex }).replace('<link rel="stylesheet" href="assets/bio.css">', '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/glossary.css">\n<link rel="stylesheet" href="assets/bio.css">') + body;
   }
 
   /* ------------------------------------------------------------- learn */
@@ -947,9 +924,7 @@ window.ApBioCurriculum = ${JSON.stringify(data)};
 `;
   }
   function glossaryJson() {
-    const out = {};
-    for (const c of map.concepts) if (C.glossary[c.id]) out[c.id] = { t: c.term, d: C.glossary[c.id].def, p: c.taughtIn, b: C.built.has(c.taughtIn) ? 1 : 0 };
-    return JSON.stringify(out);
+    return sharedGlossaryJson({ chapters: glossaryChapters(), terms: glossaryTerms() });
   }
   /* The bank, one pair of files per published chapter: questions and their
      stimulus panels, then explanations (fetched after an answer). */

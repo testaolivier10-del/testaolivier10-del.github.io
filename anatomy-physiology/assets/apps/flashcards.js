@@ -27,6 +27,14 @@
    follows), so cards never touch anp_progress_v1. They pay XP (2 per
    scheduled card, 60 a day at most) and count toward the streak. */
 (function(){
+  /* assets/glossary.json is the shared shape (scripts/lib/glossary.mjs); this
+     file works on the old map {id: {t, d, r, s, p, b}}. */
+  function glossMap(g){
+    if(!g || !g.terms) return g || {};
+    var o = {};
+    g.terms.forEach(function(x){ o[x.id] = { t: x.term, d: x.def, r: x.roots || [], s: x.say || '', p: x.topic, b: x.href ? 1 : 0 }; });
+    return o;
+  }
   var app = document.getElementById('app');
   var CU = window.AnpCurriculum;
   if(!app || !CU) return;
@@ -467,7 +475,7 @@
   app.innerHTML = '<div class="anp-fc-loading panel" aria-busy="true"><p>Shuffling the deck…</p></div>';
   function getJson(url){ return fetch(url).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).catch(function(){ return null; }); }
   Promise.all([getJson(BASE + 'assets/glossary.json'), getJson(BASE + 'assets/tool-data/flashcards.json')]).then(function(res){
-    buildCards(res[0], res[1]);
+    buildCards(glossMap(res[0]), res[1]);
     var valid = prefs.deck === 'all' || prefs.deck === 'missed' || deckCards(prefs.deck).length || /^core:/.test(prefs.deck);
     if(!valid) prefs.deck = 'all';
     if(prefs.deck === 'missed') return loadMissed().then(renderHome);
