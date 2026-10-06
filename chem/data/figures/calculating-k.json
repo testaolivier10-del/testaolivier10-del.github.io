@@ -1,0 +1,12 @@
+{
+ "ice-table-layout": {
+  "file": "figures/ice-table-layout.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An ICE table for 2 NOCl forming 2 NO and Cl2. Columns are NOCl, NO and Cl2; rows are Initial, Change and Equilibrium. Initial: 0.250, 0, 0. Change: minus 2x, plus 2x, plus x, following the coefficients 2, 2 and 1. Equilibrium: 0.250 minus 2x, 2x, and x, where x equals the measured 0.0200 M Cl2. This gives NO = 0.0400 M and NOCl = 0.210 M, and Kc = 7.26 times 10 to the minus 4."
+ }
+}

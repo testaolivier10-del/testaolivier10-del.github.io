@@ -1,0 +1,102 @@
+{
+ "topic": "q-and-le-chatelier",
+ "hook": "Two students explain why adding hydrogen makes more ammonia. One writes “the system shifts to relieve the stress.” The other writes “adding H₂ makes Q less than K, so the net reaction proceeds forward until Q equals K.” Only the second earns the point. This lesson is about writing the second answer every time.",
+ "prereq": [
+  {
+   "q": "A mixture has Q &lt; K. Which way is the net reaction?",
+   "options": [
+    "Forward",
+    "Reverse",
+    "No net reaction",
+    "It depends on the rate"
+   ],
+   "correct": 0,
+   "why": "Q < K means too little product, so products form.",
+   "review": "q-and-k"
+  },
+  {
+   "q": "Adding a product to an equilibrium mixture makes it shift",
+   "options": [
+    "toward reactants",
+    "toward products",
+    "nowhere",
+    "toward whichever side has more moles"
+   ],
+   "correct": 0,
+   "why": "Le Châtelier: the system partly uses up what was added.",
+   "review": "le-chatelier"
+  },
+  {
+   "q": "Which change alters K for a given reaction?",
+   "options": [
+    "Changing the temperature",
+    "Adding a reactant",
+    "Halving the volume",
+    "Adding argon"
+   ],
+   "correct": 0,
+   "why": "Only temperature changes K.",
+   "review": "k-properties"
+  }
+ ],
+ "figure": {
+  "figure": "disturbance-q-k-path",
+  "caption": "Concentration and volume changes move Q; temperature moves K. Either way Q ≠ K, and the system reacts until Q = K."
+ },
+ "chain": [
+  {
+   "cause": "A concentration or the volume is changed",
+   "effect": "Q changes while K stays the same"
+  },
+  {
+   "cause": "The temperature is changed",
+   "effect": "K changes while Q stays the same at that instant"
+  },
+  {
+   "cause": "Q is now less than K",
+   "effect": "the net reaction goes forward"
+  },
+  {
+   "cause": "Q is now greater than K",
+   "effect": "the net reaction goes in reverse"
+  },
+  {
+   "cause": "The net reaction changes the concentrations",
+   "effect": "Q moves until Q = K again at a new equilibrium"
+  }
+ ],
+ "ideas": [
+  "Concentration and volume changes move <b>Q</b>; K stays fixed.",
+  "Temperature changes move <b>K</b>; Q is unchanged at that instant.",
+  "Then compare: Q &lt; K net forward; Q &gt; K net reverse; until Q = K.",
+  "A volume change shifts the equilibrium only if the gas exponents on the top and bottom of Q differ."
+ ],
+ "misconception": {
+  "wrong": "Adding a reactant increases K, and that is why more product forms.",
+  "right": "Adding a reactant decreases Q (more on the bottom), so Q < K, and the net reaction goes forward until Q = K. K is unchanged; only temperature changes it."
+ },
+ "check": [
+  "chem-q-and-le-chatelier-1",
+  "chem-q-and-le-chatelier-2",
+  "chem-q-and-le-chatelier-3",
+  "chem-q-and-le-chatelier-6",
+  "chem-q-and-le-chatelier-7",
+  "chem-q-and-le-chatelier-11",
+  "chem-q-and-le-chatelier-13"
+ ],
+ "summary": "Every Le Châtelier shift can be justified by comparing Q with K. Changing a concentration, the volume or the pressure changes Q but not K; changing the temperature changes K but not Q at that instant. If Q is then less than K the net reaction goes forward, if greater it goes in reverse, until Q equals K again. Full-credit answers name what changed, give the comparison and the direction.",
+ "connections": [
+  {
+   "href": "../notes/le-chatelier.html",
+   "label": "Back: Le Châtelier’s principle (7.9)"
+  },
+  {
+   "href": "../notes/q-and-k.html",
+   "label": "Back: Q and K (7.3)"
+  },
+  {
+   "href": "../notes/solubility-equilibria.html",
+   "label": "Next: equilibria of slightly soluble salts (7.11)"
+  }
+ ]
+}

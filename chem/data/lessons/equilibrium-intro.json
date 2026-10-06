@@ -1,0 +1,97 @@
+{
+ "topic": "equilibrium-intro",
+ "hook": "Seal some colorless N<sub>2</sub>O<sub>4</sub> gas in a flask and watch: it turns brown, darker and darker, and then the color stops changing. Nothing seems to be happening any more. Yet if you could tag a single molecule, you would see it split apart and re-form again and again. The flask has reached chemical equilibrium, and the stillness hides constant motion.",
+ "prereq": [
+  {
+   "q": "In a reversible reaction, what is the reverse reaction?",
+   "options": [
+    "Products reacting to re-form the reactants",
+    "The same reaction run at a lower temperature",
+    "Reactants forming a different set of products",
+    "A reaction that absorbs heat"
+   ],
+   "correct": 0,
+   "why": "A reversible reaction can run back: the products collide and react to give the original reactants.",
+   "review": "pre-equilibrium"
+  },
+  {
+   "q": "A liquid in a sealed jar reaches a steady vapor pressure. What is true at that point?",
+   "options": [
+    "Evaporation and condensation continue at equal rates",
+    "Evaporation has stopped",
+    "All of the liquid has evaporated",
+    "Condensation has stopped"
+   ],
+   "correct": 0,
+   "why": "This is dynamic equilibrium: two opposite processes at equal rates, so nothing changes overall.",
+   "review": "phases-of-matter"
+  },
+  {
+   "q": "If the concentration of a reactant falls, what usually happens to the rate of the reaction that uses it?",
+   "options": [
+    "It decreases",
+    "It increases",
+    "It stays the same",
+    "It becomes zero at once"
+   ],
+   "correct": 0,
+   "why": "Fewer reactant particles per liter means fewer collisions per second, so the rate drops.",
+   "review": "rate-laws"
+  }
+ ],
+ "figure": {
+  "figure": "equilibrium-approach",
+  "caption": "In a sealed flask, the forward rate falls and the reverse rate rises until they are equal. From that moment the concentrations stop changing, but they are not equal."
+ },
+ "chain": [
+  {
+   "cause": "Reactants are sealed in a closed container",
+   "effect": "only the forward reaction can run at first, at its fastest rate"
+  },
+  {
+   "cause": "Reactants are used up and products build up",
+   "effect": "the forward rate falls and the reverse rate rises"
+  },
+  {
+   "cause": "The two rates become equal",
+   "effect": "each species is made as fast as it is used, so every concentration stays constant"
+  },
+  {
+   "cause": "Both reactions keep running at equal rates",
+   "effect": "the equilibrium is dynamic: molecules still react, but the composition does not change"
+  }
+ ],
+ "ideas": [
+  "<b>Chemical equilibrium</b>: the forward and reverse rates are equal, so all concentrations are constant.",
+  "Constant does not mean equal. Equilibrium concentrations can be very different from each other.",
+  "Equilibrium is dynamic: both reactions continue. It is reached from either direction and only in a closed system.",
+  "On a concentration-time graph, equilibrium is where every curve becomes flat; changes before that follow the coefficients."
+ ],
+ "misconception": {
+  "wrong": "At equilibrium the reactions stop, and the reactants and products are present in equal amounts.",
+  "right": "At equilibrium both reactions keep running at equal rates, so the amounts stay constant. The amounts are usually not equal; in the N₂O₄ flask, 0.0300 M N₂O₄ sits with 0.0400 M NO₂."
+ },
+ "check": [
+  "chem-equilibrium-intro-1",
+  "chem-equilibrium-intro-2",
+  "chem-equilibrium-intro-3",
+  "chem-equilibrium-intro-7",
+  "chem-equilibrium-intro-10",
+  "chem-equilibrium-intro-14"
+ ],
+ "summary": "In a closed container, a reversible reaction slows as reactants are used, while the reverse reaction speeds up as products build. When the two rates are equal, the system is at chemical equilibrium: every concentration is constant, but not equal, and both reactions keep running. Concentration changes follow the coefficients, and the same equilibrium is reached from either direction.",
+ "connections": [
+  {
+   "href": "../notes/phases-of-matter.html",
+   "label": "Back: dynamic equilibrium in vapor pressure (3.3)"
+  },
+  {
+   "href": "../notes/pre-equilibrium.html",
+   "label": "Back: reversible steps in mechanisms (5.9)"
+  },
+  {
+   "href": "../notes/reaction-direction.html",
+   "label": "Next: which way a reaction goes (7.2)"
+  }
+ ]
+}

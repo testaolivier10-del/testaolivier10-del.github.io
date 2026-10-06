@@ -1,0 +1,5 @@
+{
+ "equilibrium-diagram": {
+  "def": "A particle diagram of a system at equilibrium: its counts of each species stay the same over time. Converted to concentrations, the counts give K."
+ }
+}

@@ -1,0 +1,8 @@
+{
+ "heterogeneous-equilibrium": {
+  "def": "An equilibrium with species in more than one phase, such as a solid and a gas; pure solids and liquids are left out of its K. A homogeneous equilibrium has every species in one phase."
+ },
+ "ice-table": {
+  "def": "A table with rows for Initial, Change and Equilibrium concentrations of each species. The change row is x times each coefficient, so one known value gives all the others."
+ }
+}

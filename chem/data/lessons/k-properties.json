@@ -1,0 +1,98 @@
+{
+ "topic": "k-properties",
+ "hook": "Some reactions are hard to study directly: they are too slow, or one product reacts further. Chemists get around this the way a navigator plots a route through waypoints. They measure K for simpler reactions that add up to the one they want, then combine those K values with three short rules.",
+ "prereq": [
+  {
+   "q": "What is K<sub>c</sub> for 2 SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2 SO<sub>3</sub>(g)?",
+   "options": [
+    "[SO<sub>3</sub>]<sup>2</sup> / ([SO<sub>2</sub>]<sup>2</sup>[O<sub>2</sub>])",
+    "2[SO<sub>3</sub>] / (2[SO<sub>2</sub>][O<sub>2</sub>])",
+    "[SO<sub>2</sub>]<sup>2</sup>[O<sub>2</sub>] / [SO<sub>3</sub>]<sup>2</sup>",
+    "[SO<sub>3</sub>] / ([SO<sub>2</sub>][O<sub>2</sub>])"
+   ],
+   "correct": 0,
+   "why": "Products over reactants, coefficients as exponents.",
+   "review": "q-and-k"
+  },
+  {
+   "q": "In Hess’s law, reversing a reaction does what to ΔH?",
+   "options": [
+    "Changes its sign",
+    "Takes its reciprocal",
+    "Doubles it",
+    "Leaves it unchanged"
+   ],
+   "correct": 0,
+   "why": "The reverse reaction has the same size of ΔH with the opposite sign.",
+   "review": "hess-law"
+  },
+  {
+   "q": "What does K ≪ 1 tell you?",
+   "options": [
+    "The equilibrium mixture is mostly reactants",
+    "The reaction is slow",
+    "The equilibrium mixture is mostly products",
+    "The reaction does not occur"
+   ],
+   "correct": 0,
+   "why": "Small K: reactant-favored, with a little product.",
+   "review": "k-magnitude"
+  }
+ ],
+ "figure": {
+  "figure": "k-manipulation-rules",
+  "caption": "Reverse an equation: 1/K. Multiply its coefficients by n: Kⁿ. Add equations: multiply the K values."
+ },
+ "chain": [
+  {
+   "cause": "An equation is reversed",
+   "effect": "its K expression turns upside down, so K becomes 1/K"
+  },
+  {
+   "cause": "Every coefficient is multiplied by n",
+   "effect": "every exponent in K is multiplied by n, so K becomes Kⁿ"
+  },
+  {
+   "cause": "Two equations are added",
+   "effect": "multiplying their expressions cancels the shared species, so K = K₁ × K₂"
+  },
+  {
+   "cause": "The same equation is studied at a new temperature",
+   "effect": "K takes a new value; at a fixed temperature nothing else changes it"
+  }
+ ],
+ "ideas": [
+  "Reverse an equation: K<sub>new</sub> = 1/K.",
+  "Multiply all coefficients by n: K<sub>new</sub> = K<sup>n</sup> (n = ½ means a square root).",
+  "Add equations: multiply their K values.",
+  "For a given equation, K depends only on temperature. Concentration, pressure, volume and catalysts do not change it."
+ ],
+ "misconception": {
+  "wrong": "Adding more reactant to an equilibrium mixture increases K.",
+  "right": "Adding reactant changes Q, not K. The system reacts until Q equals the same K again. For a given equation, only a change of temperature changes K."
+ },
+ "check": [
+  "chem-k-properties-1",
+  "chem-k-properties-2",
+  "chem-k-properties-3",
+  "chem-k-properties-4",
+  "chem-k-properties-6",
+  "chem-k-properties-12",
+  "chem-k-properties-16"
+ ],
+ "summary": "K belongs to one equation written one way. Reversing the equation gives 1/K, multiplying every coefficient by n gives Kⁿ, and adding equations multiplies their K values, because K is built from products of concentration terms. For a given equation, K changes only with temperature: adding substances, changing the volume or adding a catalyst changes Q or the rates, never K.",
+ "connections": [
+  {
+   "href": "../notes/hess-law.html",
+   "label": "Back: combining equations for ΔH (6.9)"
+  },
+  {
+   "href": "../notes/k-magnitude.html",
+   "label": "Back: what the size of K means (7.5)"
+  },
+  {
+   "href": "../notes/equilibrium-concentrations.html",
+   "label": "Next: using K to find concentrations (7.7)"
+  }
+ ]
+}

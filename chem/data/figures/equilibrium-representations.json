@@ -1,0 +1,12 @@
+{
+ "particles-to-k": {
+  "file": "figures/particles-to-k.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 250,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A container at equilibrium with 4 W atoms and 4 W2 molecules in 2.0 liters, each particle standing for 0.10 mol. Step 1, count: 4 W and 4 W2. Step 2, convert: 0.40 mol divided by 2.0 L is 0.20 M for each. Step 3, substitute: Kc = [W2] over [W] squared = 0.20 over 0.20 squared = 5.0. A note warns that putting counts straight into K would give 0.25, which is wrong because the volume does not cancel when gas moles differ on the two sides."
+ }
+}

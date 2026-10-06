@@ -1,0 +1,12 @@
+{
+ "k-manipulation-rules": {
+  "file": "figures/k-manipulation-rules.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 270,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three boxes. Reverse it: A + B forming C has K; C forming A + B has 1 over K. Multiply by n: doubling to 2A + 2B forming 2C gives K to the n, here K squared. Add reactions: A forming B with K1 and B forming C with K2 add to A forming C with K1 times K2. A note: coefficients are exponents in K, so scaling raises K to a power and adding multiplies K values; for one equation, only temperature changes K."
+ }
+}

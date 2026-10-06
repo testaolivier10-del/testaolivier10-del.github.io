@@ -1,0 +1,8 @@
+{
+ "equilibrium-constant": {
+  "def": "K: the value of products over reactants, each raised to the power of its coefficient, for a system at equilibrium at a given temperature. Kc uses molar concentrations, Kp partial pressures; pure solids and liquids are left out."
+ },
+ "reaction-quotient": {
+  "def": "Q: the same expression as K, filled in with the concentrations or pressures present at any moment. Q < K means net forward reaction, Q > K net reverse, Q = K equilibrium."
+ }
+}

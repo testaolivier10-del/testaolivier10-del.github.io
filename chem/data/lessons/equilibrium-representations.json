@@ -1,0 +1,98 @@
+{
+ "topic": "equilibrium-representations",
+ "hook": "You cannot see molecules, but you can draw them. Exam writers love to show a box of colored circles and ask: is this at equilibrium, which way will it react, and what is K? A student who can count carefully and remembers that K uses concentrations, not raw counts, turns these pictures into easy points.",
+ "prereq": [
+  {
+   "q": "What does a particulate diagram represent?",
+   "options": [
+    "The particles in a sample, drawn so you can count and identify them",
+    "The mass of a sample",
+    "The energy changes in a reaction",
+    "The rate of a reaction"
+   ],
+   "correct": 0,
+   "why": "Particle diagrams show which particles are present and how many.",
+   "review": "mixture-composition"
+  },
+  {
+   "q": "For X<sub>2</sub> + Y<sub>2</sub> ⇌ 2 XY, a box has 1 X<sub>2</sub>, 1 Y<sub>2</sub> and 4 XY (equal gas moles on both sides). What is Q?",
+   "options": [
+    "16",
+    "4",
+    "8",
+    "0.25"
+   ],
+   "correct": 0,
+   "why": "Q = 4² / (1 × 1) = 16.",
+   "review": "q-and-k"
+  },
+  {
+   "q": "How do you get a concentration from moles?",
+   "options": [
+    "Divide the moles by the volume in liters",
+    "Multiply the moles by the volume",
+    "Divide the volume by the moles",
+    "Multiply the moles by the molar mass"
+   ],
+   "correct": 0,
+   "why": "Molarity = mol / L.",
+   "review": "solutions"
+  }
+ ],
+ "figure": {
+  "figure": "particles-to-k",
+  "caption": "Count, convert counts to mol/L, then substitute. Raw counts work only when the gas moles are equal on both sides."
+ },
+ "chain": [
+  {
+   "cause": "Snapshots of a container show the same counts over time",
+   "effect": "the system is at equilibrium"
+  },
+  {
+   "cause": "Each count is turned into moles and divided by the volume",
+   "effect": "you have the molar concentrations K<sub>c</sub> needs"
+  },
+  {
+   "cause": "The total gas coefficients are equal on both sides",
+   "effect": "the volume cancels, so raw counts give the right Q or K"
+  },
+  {
+   "cause": "Q from a diagram is compared with K",
+   "effect": "you can predict and draw the equilibrium mixture, conserving atoms"
+  }
+ ],
+ "ideas": [
+  "An <b>equilibrium particle diagram</b> shows a composition that no longer changes; look for identical counts over time.",
+  "Convert counts → moles → mol/L before using K<sub>c</sub>. Counts work directly only when gas moles are equal on both sides.",
+  "On a concentration-time graph, equilibrium is where curves go flat; changes follow the coefficients.",
+  "An equilibrium mixture is not a limiting-reactant problem: it stops changing when Q = K."
+ ],
+ "misconception": {
+  "wrong": "A reaction shown in a particle diagram keeps going until one reactant runs out, as in a limiting-reactant problem.",
+  "right": "A reversible reaction stops changing when Q equals K, with reactants and products both present. Use the equilibrium expression, not limiting-reactant logic."
+ },
+ "check": [
+  "chem-equilibrium-representations-1",
+  "chem-equilibrium-representations-2",
+  "chem-equilibrium-representations-3",
+  "chem-equilibrium-representations-6",
+  "chem-equilibrium-representations-7",
+  "chem-equilibrium-representations-8",
+  "chem-equilibrium-representations-14"
+ ],
+ "summary": "Equilibrium shows up in a particle diagram as counts that stop changing and on a concentration-time graph as flat lines. To get K<sub>c</sub>, convert counts to moles and divide by the volume; raw counts work only when the gas coefficients are equal on both sides. Changes follow the coefficients, and a mixture reacts until Q equals K, not until a reactant runs out.",
+ "connections": [
+  {
+   "href": "../notes/equilibrium-concentrations.html",
+   "label": "Back: ICE tables (7.7)"
+  },
+  {
+   "href": "../notes/mixture-composition.html",
+   "label": "Back: particle diagrams (1.4)"
+  },
+  {
+   "href": "../notes/le-chatelier.html",
+   "label": "Next: disturbing an equilibrium (7.9)"
+  }
+ ]
+}

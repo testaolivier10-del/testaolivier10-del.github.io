@@ -11,6 +11,14 @@ import { createBrowser } from './harness.mjs';
 const Q = createBrowser().load('chem/assets/chem-questions.js').ApChemQuestions;
 const plain = x => JSON.parse(JSON.stringify(x));
 
+test('numeric: very small keys (Ksp) are not swamped by floating-point slack', () => {
+  const q = { type: 'numeric', numeric: { answer: 1.8e-11, tol: 1e-12, unit: '', sigfigs: 2 } };
+  assert.equal(Q.grade(q, '1.8e-11').correct, true);
+  assert.equal(Q.grade(q, '1.8 × 10^-11').correct, true);
+  assert.equal(Q.grade(q, '5.0e-11').parts.value, false);
+  assert.equal(Q.grade(q, '9.9e-10').parts.value, false);
+});
+
 test('numeric: value within the tolerance, and the key rounded to the student\'s precision', () => {
   const q = { type: 'numeric', numeric: { answer: 2.4, tol: 0.05, unit: '°C/min', decimals: 1 } };
   assert.equal(Q.grade(q, '2.4').correct, true);

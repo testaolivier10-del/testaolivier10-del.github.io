@@ -1,0 +1,102 @@
+{
+ "topic": "solubility-equilibria",
+ "hook": "Doctors give patients a thick drink of barium sulfate before an X-ray of the gut. Barium ions are toxic, so why is this safe? Barium sulfate dissolves so little that a liter of water holds only a few thousandths of a gram of it. An equilibrium constant, K<sub>sp</sub>, tells you exactly how little.",
+ "prereq": [
+  {
+   "q": "What does \"soluble\" mean for an ionic compound in water?",
+   "options": [
+    "An appreciable amount dissolves to form ions",
+    "It does not dissolve at all",
+    "It reacts with water to form a gas",
+    "It melts in water"
+   ],
+   "correct": 0,
+   "why": "Soluble salts dissolve and dissociate into ions.",
+   "review": "solubility"
+  },
+  {
+   "q": "When CaCl<sub>2</sub> dissolves, how many Cl<sup>−</sup> ions form per formula unit?",
+   "options": [
+    "2",
+    "1",
+    "3",
+    "0"
+   ],
+   "correct": 0,
+   "why": "CaCl₂ → Ca²⁺ + 2 Cl⁻.",
+   "review": "solution-particle-models"
+  },
+  {
+   "q": "Which species are left out of an equilibrium constant expression?",
+   "options": [
+    "Pure solids and pure liquids",
+    "Gases",
+    "Dissolved ions",
+    "Products"
+   ],
+   "correct": 0,
+   "why": "Their concentrations are fixed, so they drop out.",
+   "review": "q-and-k"
+  }
+ ],
+ "figure": {
+  "figure": "ksp-molar-solubility",
+  "caption": "Write each ion concentration as s times its coefficient, then solve K<sub>sp</sub> for s. Square the whole 2s."
+ },
+ "chain": [
+  {
+   "cause": "A slightly soluble salt is placed in water",
+   "effect": "ions leave the solid, and some return to it"
+  },
+  {
+   "cause": "Ions return as fast as they leave",
+   "effect": "the saturated solution is at equilibrium, with K<sub>sp</sub> = product of ion concentrations"
+  },
+  {
+   "cause": "Each formula unit releases ions in the ratio of its formula",
+   "effect": "every ion concentration is s times its coefficient"
+  },
+  {
+   "cause": "The ion concentrations are put into K<sub>sp</sub> with their exponents",
+   "effect": "you can solve for s, or calculate K<sub>sp</sub> from a measured s"
+  },
+  {
+   "cause": "The ion product Q is greater than K<sub>sp</sub>",
+   "effect": "solid precipitates until Q = K<sub>sp</sub>"
+  }
+ ],
+ "ideas": [
+  "<b>K<sub>sp</sub></b> is the product of the ion concentrations in a saturated solution, each raised to its coefficient; the solid is left out.",
+  "<b>Molar solubility</b> s: mol of salt dissolved per liter. 1 : 1 salt: K<sub>sp</sub> = s². MX<sub>2</sub> salt: K<sub>sp</sub> = s(2s)² = 4s³.",
+  "Rank solubility by K<sub>sp</sub> only for salts with the same ion ratio.",
+  "Q &gt; K<sub>sp</sub>: precipitate forms. Q &lt; K<sub>sp</sub>: more can dissolve."
+ ],
+ "misconception": {
+  "wrong": "For Mg(OH)₂, K<sub>sp</sub> = s × 2s, because there are two hydroxide ions.",
+  "right": "[OH⁻] = 2s, and it is raised to the power 2 in K<sub>sp</sub>: K<sub>sp</sub> = s(2s)² = 4s³. Forgetting to square [OH⁻] is the most common Ksp error on the exam."
+ },
+ "check": [
+  "chem-solubility-equilibria-1",
+  "chem-solubility-equilibria-2",
+  "chem-solubility-equilibria-3",
+  "chem-solubility-equilibria-4",
+  "chem-solubility-equilibria-11",
+  "chem-solubility-equilibria-13",
+  "chem-solubility-equilibria-14"
+ ],
+ "summary": "A slightly soluble salt reaches a dynamic equilibrium with its ions in a saturated solution. K<sub>sp</sub> is the product of the ion concentrations, each raised to its coefficient, with the solid left out. Writing each ion as s times its coefficient links K<sub>sp</sub> to the molar solubility s (s² for a 1 : 1 salt, 4s³ for a 1 : 2 or 2 : 1 salt). Compare K<sub>sp</sub> values directly only for salts with the same ion ratio; Q above K<sub>sp</sub> means a precipitate forms.",
+ "connections": [
+  {
+   "href": "../notes/solubility.html",
+   "label": "Back: soluble and insoluble (3.10)"
+  },
+  {
+   "href": "../notes/calculating-k.html",
+   "label": "Back: heterogeneous equilibria (7.4)"
+  },
+  {
+   "href": "../notes/common-ion-effect.html",
+   "label": "Next: dissolving in a solution that already has one of the ions (7.12)"
+  }
+ ]
+}
