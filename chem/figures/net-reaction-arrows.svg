@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" width="760" height="260" role="img" aria-labelledby="net-reaction-arrows-t net-reaction-arrows-d">
+<title id="net-reaction-arrows-t">Net reaction from relative rates</title>
+<desc id="net-reaction-arrows-d">Three panels, each with a forward arrow pointing right and a reverse arrow pointing left; arrow length shows rate. Net forward: the forward arrow is long and the reverse arrow short, so reactants turn into products overall. At equilibrium: the two arrows are the same length, so there is no net change. Net reverse: the reverse arrow is long and the forward arrow short, so products turn into reactants overall.</desc>
+<rect width="760" height="260" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<text x="380" y="24" font-size="15" font-weight="700" text-anchor="middle">Which way does the reaction go? Compare the two rates.</text>
+<rect x="15" y="40" width="230" height="170" rx="10" fill="#F4F7FD" stroke="#5D6B69" stroke-width="2"/>
+<text x="130" y="66" font-size="15" font-weight="700" text-anchor="middle" fill="#1D44A6">Net forward</text>
+<text x="33" y="100" font-size="13">forward</text>
+<line x1="95" y1="96" x2="205" y2="96" stroke="#1D44A6" stroke-width="7"/><path d="M205,86 l16,10 l-16,10 z" fill="#1D44A6"/>
+<text x="33" y="144" font-size="13">reverse</text>
+<line x1="111" y1="140" x2="156" y2="140" stroke="#B5541B" stroke-width="7"/><path d="M111,130 l-16,10 l16,10 z" fill="#B5541B"/>
+<text x="130" y="182" font-size="13" text-anchor="middle">reactants → products overall</text>
+<rect x="265" y="40" width="230" height="170" rx="10" fill="#F4F7FD" stroke="#5D6B69" stroke-width="2"/>
+<text x="380" y="66" font-size="15" font-weight="700" text-anchor="middle" fill="#1F2A28">At equilibrium</text>
+<text x="283" y="100" font-size="13">forward</text>
+<line x1="345" y1="96" x2="425" y2="96" stroke="#1D44A6" stroke-width="7"/><path d="M425,86 l16,10 l-16,10 z" fill="#1D44A6"/>
+<text x="283" y="144" font-size="13">reverse</text>
+<line x1="361" y1="140" x2="441" y2="140" stroke="#B5541B" stroke-width="7"/><path d="M361,130 l-16,10 l16,10 z" fill="#B5541B"/>
+<text x="380" y="182" font-size="13" text-anchor="middle">no net change</text>
+<rect x="515" y="40" width="230" height="170" rx="10" fill="#F4F7FD" stroke="#5D6B69" stroke-width="2"/>
+<text x="630" y="66" font-size="15" font-weight="700" text-anchor="middle" fill="#B5541B">Net reverse</text>
+<text x="533" y="100" font-size="13">forward</text>
+<line x1="595" y1="96" x2="635" y2="96" stroke="#1D44A6" stroke-width="7"/><path d="M635,86 l16,10 l-16,10 z" fill="#1D44A6"/>
+<text x="533" y="144" font-size="13">reverse</text>
+<line x1="611" y1="140" x2="721" y2="140" stroke="#B5541B" stroke-width="7"/><path d="M611,130 l-16,10 l16,10 z" fill="#B5541B"/>
+<text x="630" y="182" font-size="13" text-anchor="middle">products → reactants overall</text>
+<text x="380" y="242" font-size="13" text-anchor="middle">Arrow length = rate. Both reactions run in every panel; only their balance differs.</text>
+</g>
+</svg>

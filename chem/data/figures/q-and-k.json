@@ -1,0 +1,12 @@
+{
+ "q-vs-k-line": {
+  "file": "figures/q-vs-k-line.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 250,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A number line for Q starting at Q = 0 (no products) on the left and increasing to the right. K is marked in the middle. To the left of K, Q is less than K and an arrow points right toward K: the net reaction goes forward, products form and Q rises. To the right of K, Q is greater than K and an arrow points left toward K: the net reaction goes in reverse, reactants form and Q falls. At K, Q equals K and there is no net change."
+ }
+}

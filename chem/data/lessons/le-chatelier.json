@@ -1,0 +1,102 @@
+{
+ "topic": "le-chatelier",
+ "hook": "A tube of pale purple solution turns deep blue when you drop it into hot water and pink when you plunge it into ice. Pull it out and it slowly turns purple again. Nothing was added or removed. The solution is an equilibrium, and it responds to every push in a way you can predict.",
+ "prereq": [
+  {
+   "q": "Adding a reactant to a system at equilibrium first changes which rate?",
+   "options": [
+    "The forward rate",
+    "The reverse rate",
+    "Both rates equally",
+    "Neither rate"
+   ],
+   "correct": 0,
+   "why": "The forward reaction uses the reactant, so its rate rises first.",
+   "review": "reaction-direction"
+  },
+  {
+   "q": "For a given reaction equation, what changes the value of K?",
+   "options": [
+    "Temperature",
+    "Adding a reactant",
+    "Changing the volume",
+    "Adding a catalyst"
+   ],
+   "correct": 0,
+   "why": "K depends only on temperature.",
+   "review": "k-properties"
+  },
+  {
+   "q": "An endothermic reaction",
+   "options": [
+    "absorbs heat from the surroundings",
+    "releases heat to the surroundings",
+    "has a negative ΔH",
+    "needs no activation energy"
+   ],
+   "correct": 0,
+   "why": "Endothermic: heat flows into the system, ΔH > 0.",
+   "review": "endo-exothermic"
+  }
+ ],
+ "figure": {
+  "figure": "le-chatelier-stresses",
+  "caption": "Concentration and volume changes shift the equilibrium without changing K. A temperature change shifts it by changing K."
+ },
+ "chain": [
+  {
+   "cause": "A system at equilibrium is disturbed",
+   "effect": "it is no longer at equilibrium, and a net reaction starts"
+  },
+  {
+   "cause": "A reactant is added or a product removed",
+   "effect": "the system shifts toward products, partly undoing the change"
+  },
+  {
+   "cause": "The volume of a gas mixture is decreased",
+   "effect": "the system shifts toward the side with fewer gas moles"
+  },
+  {
+   "cause": "The temperature is raised",
+   "effect": "K changes: up for an endothermic reaction, down for an exothermic one, and the system shifts to match"
+  },
+  {
+   "cause": "A catalyst or an inert gas at constant volume is added",
+   "effect": "no shift: the equilibrium mixture stays the same"
+  }
+ ],
+ "ideas": [
+  "<b>Le Châtelier’s principle</b>: a disturbed equilibrium shifts in the direction that partly counteracts the change.",
+  "Add a species: shift away from it. Remove a species: shift toward it. Solids and pure liquids do not count.",
+  "Smaller volume: shift toward fewer gas moles. No shift if gas moles are equal, for a catalyst, or for an inert gas at constant volume.",
+  "Temperature changes K: heating favors the endothermic direction."
+ ],
+ "misconception": {
+  "wrong": "Adding a catalyst or an inert gas shifts an equilibrium toward more product.",
+  "right": "A catalyst speeds both directions equally and an inert gas at constant volume changes no reacting concentration, so neither shifts the equilibrium. Only concentration, volume (for unequal gas moles) and temperature changes do."
+ },
+ "check": [
+  "chem-le-chatelier-1",
+  "chem-le-chatelier-2",
+  "chem-le-chatelier-4",
+  "chem-le-chatelier-6",
+  "chem-le-chatelier-7",
+  "chem-le-chatelier-8",
+  "chem-le-chatelier-10"
+ ],
+ "summary": "Le Châtelier’s principle: a system at equilibrium that is disturbed shifts to partly counteract the change. Adding a species shifts the equilibrium away from it and removing one shifts toward it; decreasing the volume of a gas mixture shifts toward fewer gas moles. These changes leave K unchanged. A temperature change alters K, favoring the endothermic direction on heating. Catalysts, inert gases at constant volume and extra solid cause no shift.",
+ "connections": [
+  {
+   "href": "../notes/reaction-direction.html",
+   "label": "Back: rates after a disturbance (7.2)"
+  },
+  {
+   "href": "../notes/endo-exothermic.html",
+   "label": "Back: endothermic and exothermic (6.1)"
+  },
+  {
+   "href": "../notes/q-and-le-chatelier.html",
+   "label": "Next: justifying shifts with Q and K (7.10)"
+  }
+ ]
+}

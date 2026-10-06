@@ -1,0 +1,456 @@
+{
+ "stimuli": {
+  "q-and-le-chatelier-s1": {
+   "kind": "table",
+   "title": "Q right after three changes",
+   "text": "<p>For N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2 NO<sub>2</sub>(g) at a fixed temperature, K<sub>c</sub> = 4.6 × 10<sup>−3</sup>. A flask at equilibrium is changed in three separate experiments, each at constant temperature. The table gives the concentrations immediately after each change, before any reaction.</p>",
+   "table": {
+    "caption": "Concentrations and Q immediately after each change",
+    "cols": [
+     "Situation",
+     "[N<sub>2</sub>O<sub>4</sub>] (M)",
+     "[NO<sub>2</sub>] (M)",
+     "Q<sub>c</sub>"
+    ],
+    "rows": [
+     [
+      "Before any change (at equilibrium)",
+      "0.0400",
+      "0.0136",
+      "4.6 × 10<sup>−3</sup>"
+     ],
+     [
+      "A: NO<sub>2</sub> added",
+      "0.0400",
+      "0.0300",
+      "2.3 × 10<sup>−2</sup>"
+     ],
+     [
+      "B: volume doubled",
+      "0.0200",
+      "0.00680",
+      "2.3 × 10<sup>−3</sup>"
+     ],
+     [
+      "C: N<sub>2</sub>O<sub>4</sub> removed",
+      "0.0200",
+      "0.0136",
+      "9.2 × 10<sup>−3</sup>"
+     ]
+    ]
+   }
+  },
+  "q-and-le-chatelier-s2": {
+   "kind": "particle",
+   "title": "Adding X₂ to an equilibrium mixture",
+   "html": "<svg viewBox=\"0 0 454 192\" width=\"454\" height=\"192\" role=\"img\" aria-label=\"Two equal-volume containers. Left, at equilibrium: 2 X2, 2 Y2 and 4 XY. Right, immediately after 3 X2 molecules are added: 5 X2, 2 Y2 and 4 XY.\" style=\"max-width:100%;height:auto\"><text x=\"118\" y=\"32\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Equilibrium</text><rect x=\"18\" y=\"40\" width=\"200\" height=\"140\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"180.3\" cy=\"134.6\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"196.3\" cy=\"134.6\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"183.7\" cy=\"85.1\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"198.7\" cy=\"85.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"89.2\" cy=\"87.5\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"101.2\" cy=\"87.5\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"39.7\" cy=\"134.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"54.7\" cy=\"134.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"40.9\" cy=\"85.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"56.9\" cy=\"85.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"85.8\" cy=\"135.1\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"100.8\" cy=\"135.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"135.3\" cy=\"82.6\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"150.3\" cy=\"82.6\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"142.3\" cy=\"140.5\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"154.3\" cy=\"140.5\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><text x=\"336\" y=\"32\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Right after adding X₂</text><rect x=\"236\" y=\"40\" width=\"200\" height=\"140\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"267.3\" cy=\"110.2\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"282.3\" cy=\"110.2\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"307.5\" cy=\"69.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"323.5\" cy=\"69.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"349.3\" cy=\"150.6\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"364.3\" cy=\"150.6\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"350.8\" cy=\"111.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"362.8\" cy=\"111.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"389.5\" cy=\"69.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"405.5\" cy=\"69.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"266.5\" cy=\"69.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"282.5\" cy=\"69.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"308.7\" cy=\"109.8\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"323.7\" cy=\"109.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"266.5\" cy=\"151.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"282.5\" cy=\"151.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"391.9\" cy=\"151.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"403.9\" cy=\"151.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"349.8\" cy=\"68.7\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"364.8\" cy=\"68.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"307.5\" cy=\"151.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"323.5\" cy=\"151.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/></svg><p class=\"chem-small\">Key: <span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"42\" height=\"42\" aria-hidden=\"true\"><circle cx=\"13.0\" cy=\"21.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"29.0\" cy=\"21.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/></svg>X<sub>2</sub></span><span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"34\" height=\"34\" aria-hidden=\"true\"><circle cx=\"11.0\" cy=\"17.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"23.0\" cy=\"17.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/></svg>Y<sub>2</sub></span><span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"40\" height=\"40\" aria-hidden=\"true\"><circle cx=\"13.0\" cy=\"20.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"28.0\" cy=\"20.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/></svg>XY</span></p><p>For X<sub>2</sub>(g) + Y<sub>2</sub>(g) ⇌ 2 XY(g), the left container is at equilibrium. Three X<sub>2</sub> molecules are then injected at constant temperature and volume.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-q-and-le-chatelier-1",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "q-and-le-chatelier-s1",
+   "q": "Which statement correctly justifies the shift after change A?",
+   "options": [
+    "Q &gt; K, so the net reaction goes in reverse.",
+    "K increases because NO<sub>2</sub> was added, so the system shifts forward.",
+    "The reverse reaction speeds up, so the system shifts toward NO<sub>2</sub>.",
+    "Q &lt; K, so the net reaction goes forward."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "After a concentration change, compare the new Q with the unchanged K. Q > K: net reverse.",
+    "options": [
+     "Right: adding NO₂ raised Q to 2.3 × 10⁻² while K stayed 4.6 × 10⁻³.",
+     "K does not change with concentration. The added NO₂ changes Q.",
+     "A faster reverse reaction makes N₂O₄, not NO₂. And a justification should compare Q with K.",
+     "Q = 2.3 × 10⁻² is larger than K = 4.6 × 10⁻³, not smaller."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-le-chatelier-2",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "q-and-le-chatelier-s1",
+   "q": "After change B (volume doubled), which way does the system shift and why?",
+   "options": [
+    "Forward: halving each concentration halves Q.",
+    "No shift, because both concentrations were halved equally.",
+    "In reverse, because a larger volume favors fewer gas moles.",
+    "Forward, because doubling the volume doubles K."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Volume changes alter every concentration, and Q changes whenever the gas coefficients differ. Q < K means net forward, toward more gas molecules, consistent with Le Châtelier.",
+    "options": [
+     "Right: Q = [NO₂]²/[N₂O₄] has two factors on top and one on the bottom; halving all of them halves Q, to 2.3 × 10<sup>−3</sup>.",
+     "Equal halving cancels only when the exponents on top and bottom match. Here they are 2 and 1.",
+     "A larger volume favors more gas moles. The products side has 2 mol gas versus 1.",
+     "Volume does not change K; it changes Q."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-le-chatelier-3",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "q-and-le-chatelier-s1",
+   "q": "After change C, what happens to [NO<sub>2</sub>] as the system returns to equilibrium?",
+   "options": [
+    "It decreases, because Q &gt; K and the net reaction runs in reverse.",
+    "It increases, because Q &gt; K and the net reaction runs forward.",
+    "It stays the same, because NO<sub>2</sub> was not changed.",
+    "It increases, because the removed N<sub>2</sub>O<sub>4</sub> is replaced by NO<sub>2</sub>."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Q = (0.0136)² / 0.0200 = 9.2 × 10<sup>−3</sup> > K, so the net reaction goes in reverse: NO₂ is used to form N₂O₄.",
+    "options": [
+     "Right: removing N₂O₄ lowered the denominator, so Q rose above K; the reverse reaction uses NO₂ to re-form N₂O₄.",
+     "Q > K means net reverse, which uses NO₂.",
+     "Q no longer equals K, so every concentration changes until it does.",
+     "Replacing N₂O₄ means making N₂O₄, which uses NO₂."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-le-chatelier-4",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "q-and-le-chatelier-s1",
+   "q": "Calculate Q<sub>c</sub> right after change A.",
+   "numeric": {
+    "answer": 0.022,
+    "tol": 0.001,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.75,
+      "rel": 0.02,
+      "why": "Value: [NO₂] must be squared, because its coefficient is 2."
+     },
+     {
+      "value": 44.4,
+      "rel": 0.02,
+      "why": "Value: you inverted Q. Products go on top."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Q<sub>c</sub> = [NO₂]² / [N₂O₄] = (0.0300)² / 0.0400 = 0.0225 ≈ 2.3 × 10⁻²."
+   }
+  },
+  {
+   "id": "chem-q-and-le-chatelier-5",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "q-and-le-chatelier-s1",
+   "q": "In a fourth experiment, the flask is heated. The reaction is endothermic. How should the shift be justified?",
+   "options": [
+    "K rises, so now Q &lt; K: net forward.",
+    "Q increases with temperature, so the mixture shifts in reverse.",
+    "K stays the same, but the forward rate increases, so it shifts forward.",
+    "Heat is a product, so the system shifts in reverse."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For a temperature change, K itself changes. Endothermic: K rises on heating, so Q (unchanged) is now below K, and the net reaction goes forward.",
+    "options": [
+     "Right: here K changes, not Q. With the old concentrations, Q is now less than the new, larger K.",
+     "Heating a sealed flask does not change the concentrations at once, so Q does not change. K does.",
+     "A temperature change does change K. A justification must say so.",
+     "For an endothermic reaction, heat is like a reactant, not a product."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-le-chatelier-6",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "q-and-le-chatelier-s2",
+   "q": "Using particle counts (the gas moles are equal on both sides), calculate K for this reaction.",
+   "numeric": {
+    "answer": 4,
+    "tol": 0.1,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1,
+      "rel": 0.02,
+      "why": "Value: [XY] is squared, because its coefficient is 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "K = (XY)² / ((X₂)(Y₂)) = 4² / (2 × 2) = 4.0."
+   }
+  },
+  {
+   "id": "chem-q-and-le-chatelier-7",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "q-and-le-chatelier-s2",
+   "q": "Which justification of the shift after X<sub>2</sub> is added would earn full credit?",
+   "options": [
+    "Q = 4²/(5 × 2) = 1.6 &lt; K = 4.0, so net forward until Q = K.",
+    "Adding X<sub>2</sub> to the container increases K, so more XY forms.",
+    "The system wants to use up the extra X<sub>2</sub>, so it shifts right.",
+    "Adding X<sub>2</sub> speeds up the forward reaction, so it shifts right."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A full-credit justification compares Q with K: here Q = 1.6 < K = 4.0, so the net reaction goes forward.",
+    "options": [
+     "Right: claim (direction), evidence (the value of Q from the counts) and reasoning (comparison with the unchanged K).",
+     "K does not change with concentration. This answer would lose the point.",
+     "Systems do not \"want\" anything; a justification needs Q compared with K.",
+     "This is rate language alone. On the exam, a shift is justified with Q vs K."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-le-chatelier-8",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "q-and-le-chatelier-s2",
+   "q": "Compared with the left container, how do the amounts in the right container compare once equilibrium is restored?",
+   "options": [
+    "More X<sub>2</sub>, less Y<sub>2</sub>, more XY",
+    "The same amounts of each as in the left container",
+    "Less X<sub>2</sub>, more Y<sub>2</sub> and less XY than the left container",
+    "More X<sub>2</sub>, the same Y<sub>2</sub> and the same XY as the left container"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Q < K, so the net reaction goes forward: Y₂ falls, XY rises, and X₂ falls from 5 but stays above the original 2, because the shift only partly counteracts the change.",
+    "options": [
+     "Right: the shift uses part of the added X₂ (so X₂ ends above 2), uses some Y₂ (below 2) and makes XY (above 4).",
+     "The added X atoms cannot vanish; the new equilibrium has a different composition with the same K.",
+     "This describes a reverse shift, but Q < K after adding X₂.",
+     "With Q < K there must be a net forward reaction, which changes Y₂ and XY as well."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-le-chatelier-9",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "q-and-le-chatelier-s2",
+   "q": "Immediately after the X<sub>2</sub> is added, which rate has changed?",
+   "options": [
+    "The forward rate has increased.",
+    "The reverse rate has increased.",
+    "Both rates have increased equally.",
+    "Neither rate has changed."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The rate picture and the Q picture agree: Q < K is the same situation as forward rate > reverse rate.",
+    "options": [
+     "Right: more X₂ means more X₂-Y₂ collisions each second. This matches Q < K.",
+     "The reverse reaction uses XY, which is unchanged at that instant.",
+     "Only the forward reaction uses X₂.",
+     "The forward rate depends on [X₂], which has risen."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-le-chatelier-10",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "CaCO<sub>3</sub>(s) ⇌ CaO(s) + CO<sub>2</sub>(g) is at equilibrium in a sealed container. Some CO<sub>2</sub> is pumped out at constant temperature. Which justification is correct?",
+   "options": [
+    "Q = P<sub>CO₂</sub> drops below K<sub>p</sub>, so more CaCO<sub>3</sub> decomposes until P<sub>CO₂</sub> returns to K<sub>p</sub>.",
+    "K<sub>p</sub> drops, so the system shifts in reverse.",
+    "There is no shift, because the solids are unchanged.",
+    "Q rises above K<sub>p</sub>, so CO<sub>2</sub> is used up."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Here Q = P<sub>CO₂</sub>. Pumping out CO₂ makes Q < K, so the net forward reaction makes CO₂ until P<sub>CO₂</sub> = K<sub>p</sub> again, the same pressure as before.",
+    "options": [
+     "Right: with Q = P<sub>CO₂</sub>, removing gas makes Q < K and the net reaction goes forward.",
+     "Removing a gas changes Q, not K.",
+     "The solids are not in Q, but CO₂ is, and it changed.",
+     "Lowering P<sub>CO₂</sub> lowers Q."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-le-chatelier-11",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For N<sub>2</sub>(g) + 3 H<sub>2</sub>(g) ⇌ 2 NH<sub>3</sub>(g) at equilibrium, the volume is suddenly halved at constant temperature. By what factor does Q change at that instant? (Give Q<sub>new</sub> / Q<sub>old</sub>.)",
+   "numeric": {
+    "answer": 0.25,
+    "tol": 0.01,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.5,
+      "rel": 0.02,
+      "why": "Value: every concentration doubles. The top has (2)² and the bottom (2)(2)³ = 16, so Q changes by 4/16."
+     },
+     {
+      "value": 4,
+      "rel": 0.02,
+      "why": "Value: you only counted the top. The bottom grows by 2 × 2³ = 16, so Q falls to 4/16 of its value."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each concentration doubles. Q<sub>new</sub> = (2[NH₃])² / ((2[N₂])(2[H₂])³) = 4/16 × Q<sub>old</sub> = 0.25 Q<sub>old</sub>. Q < K, so the net reaction goes forward, toward fewer gas moles."
+   }
+  },
+  {
+   "id": "chem-q-and-le-chatelier-12",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For an exothermic reaction at equilibrium, the temperature is lowered. Which statement is correct?",
+   "options": [
+    "K increases, so Q &lt; K: shift to products.",
+    "K decreases; Q &gt; K, so it shifts toward reactants.",
+    "K stays the same; Q decreases, so it shifts toward products.",
+    "Neither Q nor K changes, so there is no shift."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Temperature changes K. For an exothermic forward reaction, K is larger at lower temperature, so Q (unchanged) < K and the net reaction goes forward.",
+    "options": [
+     "Right: cooling favors the exothermic direction, which shows up as a larger K.",
+     "For an exothermic reaction, cooling increases K.",
+     "Cooling changes K, not Q (the concentrations do not change at that instant).",
+     "K depends on temperature, so it changes."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-le-chatelier-13",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "multi",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statements are valid justifications on a free-response question? Select all that apply.",
+   "options": [
+    "\"Adding H<sub>2</sub> makes Q &lt; K, so the net reaction proceeds forward until Q = K.\"",
+    "\"Raising the temperature increases K for this endothermic reaction, so Q &lt; K and the reaction shifts forward.\"",
+    "\"Adding H<sub>2</sub> increases K, so more product forms.\"",
+    "\"The reaction shifts right to relieve the stress.\""
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A justification names what changed (Q, or K for a temperature change) and compares Q with K to give the direction.",
+    "options": [
+     "Right: names the change in Q and compares it with K.",
+     "Right: identifies that K changes with temperature and uses the comparison.",
+     "K does not change with concentration.",
+     "This restates Le Châtelier without evidence or reasoning; readers do not award it."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-le-chatelier-14",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For 2 SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2 SO<sub>3</sub>(g), K<sub>c</sub> = 280. A mixture has Q = 280. Then SO<sub>2</sub> and SO<sub>3</sub> are both doubled in concentration at constant temperature, with O<sub>2</sub> unchanged. What happens?",
+   "options": [
+    "No shift, since Q is still 280.",
+    "Forward shift: more reactant was added.",
+    "Reverse shift: more product was added.",
+    "K doubles, so the system shifts forward."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Calculate the new Q rather than guessing. The factors of 4 on top and bottom cancel, so Q still equals K and there is no shift.",
+    "options": [
+     "Right: Q = (2[SO₃])² / ((2[SO₂])²[O₂]) = 4/4 × 280 = 280 = K.",
+     "Product was added in the same proportion; Q is unchanged.",
+     "Reactant was added in the same proportion; Q is unchanged.",
+     "K does not change with concentration."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-le-chatelier-15",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "type": "order",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the parts of a full-credit justification for an equilibrium shift in order.",
+   "options": [
+    "State what the change does to Q (or to K, if the temperature changed).",
+    "Compare the new Q with K, giving the inequality.",
+    "State the direction of the net reaction that follows from the comparison.",
+    "State that the reaction continues until Q = K again."
+   ],
+   "why": {
+    "correct": "Claim, evidence and reasoning: what changed, the comparison, the direction, and when it stops."
+   }
+  }
+ ]
+}

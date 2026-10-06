@@ -1,0 +1,102 @@
+{
+ "topic": "q-and-k",
+ "hook": "A chemist mixes three gases in a steel tank and needs to know, before opening a valve, whether the tank will make more product or eat some up. Watching rates is slow and hard. Instead, she plugs today’s concentrations into one formula and compares the answer with a number from a table. Thirty seconds of arithmetic, and she knows which way the reaction will go.",
+ "prereq": [
+  {
+   "q": "At equilibrium, how do the forward and reverse rates compare?",
+   "options": [
+    "They are equal",
+    "The forward rate is larger",
+    "The reverse rate is larger",
+    "Both are zero"
+   ],
+   "correct": 0,
+   "why": "Equal rates keep the concentrations constant.",
+   "review": "equilibrium-intro"
+  },
+  {
+   "q": "If the reverse rate is greater than the forward rate, what happens to the product concentrations?",
+   "options": [
+    "They decrease",
+    "They increase",
+    "They stay constant",
+    "They become equal to the reactant concentrations"
+   ],
+   "correct": 0,
+   "why": "A faster reverse reaction turns products back into reactants overall.",
+   "review": "reaction-direction"
+  },
+  {
+   "q": "What is the partial pressure of a gas in a mixture?",
+   "options": [
+    "The pressure that gas alone would exert in the same volume",
+    "The total pressure divided by the number of gases",
+    "The pressure of the gas before it was mixed",
+    "The pressure of the gas at STP"
+   ],
+   "correct": 0,
+   "why": "Each gas contributes its own share of the total pressure (Dalton’s law).",
+   "review": "ideal-gas-law"
+  }
+ ],
+ "figure": {
+  "figure": "q-vs-k-line",
+  "caption": "A mixture always reacts in the direction that brings Q to K: forward when Q is less than K, in reverse when Q is greater."
+ },
+ "chain": [
+  {
+   "cause": "The expression for K is written from the balanced equation",
+   "effect": "products over reactants, each raised to its coefficient, with pure solids and liquids left out"
+  },
+  {
+   "cause": "Today’s concentrations or pressures are put into the same expression",
+   "effect": "you get Q, a snapshot of where the mixture is now"
+  },
+  {
+   "cause": "Q is less than K",
+   "effect": "the forward rate is larger, so products form and Q rises toward K"
+  },
+  {
+   "cause": "Q is greater than K",
+   "effect": "the reverse rate is larger, so reactants form and Q falls toward K"
+  },
+  {
+   "cause": "Q reaches K",
+   "effect": "the system is at equilibrium and the concentrations stop changing"
+  }
+ ],
+ "ideas": [
+  "<b>K</b> = products over reactants, each to the power of its coefficient, at equilibrium. Leave out pure solids and liquids.",
+  "K<sub>c</sub> uses molar concentrations in brackets; K<sub>p</sub> uses partial pressures (no brackets).",
+  "<b>Q</b> has the same expression, filled in with the amounts present now.",
+  "Q &lt; K: net forward. Q &gt; K: net reverse. Q = K: at equilibrium."
+ ],
+ "misconception": {
+  "wrong": "If a mixture contains more product than reactant, it will react in reverse.",
+  "right": "Direction comes only from Q compared with K. A flask full of SO₃ can still react forward if its Q is below K, as flask 1 does with Q = 80.0 and K = 280."
+ },
+ "check": [
+  "chem-q-and-k-1",
+  "chem-q-and-k-2",
+  "chem-q-and-k-3",
+  "chem-q-and-k-4",
+  "chem-q-and-k-5",
+  "chem-q-and-k-10",
+  "chem-q-and-k-13"
+ ],
+ "summary": "The equilibrium constant expression puts products over reactants, each raised to its coefficient, and leaves out pure solids and liquids; K<sub>c</sub> uses concentrations and K<sub>p</sub> partial pressures. The reaction quotient Q has the same expression filled in with the current amounts. If Q is less than K the net reaction goes forward, if Q is greater than K it goes in reverse, and when Q equals K the system is at equilibrium.",
+ "connections": [
+  {
+   "href": "../notes/reaction-direction.html",
+   "label": "Back: direction from rates (7.2)"
+  },
+  {
+   "href": "../notes/ideal-gas-law.html",
+   "label": "Back: partial pressures (3.4)"
+  },
+  {
+   "href": "../notes/calculating-k.html",
+   "label": "Next: calculating K from data (7.4)"
+  }
+ ]
+}

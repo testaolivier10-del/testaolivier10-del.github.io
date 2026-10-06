@@ -1,0 +1,5 @@
+{
+ "chemical-equilibrium": {
+  "def": "The state of a reversible reaction in a closed system when the forward and reverse rates are equal, so the concentrations of all species stay constant (but are usually not equal)."
+ }
+}

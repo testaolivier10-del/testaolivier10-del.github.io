@@ -1,0 +1,677 @@
+{
+ "stimuli": {
+  "equilibrium-concentrations-s1": {
+   "kind": "table",
+   "title": "An ICE table for ammonia",
+   "text": "<p>A sealed 1.00 L vessel starts with 0.500 M N<sub>2</sub> and 0.800 M H<sub>2</sub> at a high temperature: N<sub>2</sub>(g) + 3 H<sub>2</sub>(g) ⇌ 2 NH<sub>3</sub>(g). At equilibrium, [NH<sub>3</sub>] = 0.150 M. A student starts an ICE table.</p>",
+   "table": {
+    "caption": "Partly completed ICE table (concentrations in M)",
+    "cols": [
+     "",
+     "[N<sub>2</sub>]",
+     "[H<sub>2</sub>]",
+     "[NH<sub>3</sub>]"
+    ],
+    "rows": [
+     [
+      "Initial",
+      "0.500",
+      "0.800",
+      "0"
+     ],
+     [
+      "Change",
+      "−x",
+      "?",
+      "+2x"
+     ],
+     [
+      "Equilibrium",
+      "0.500 − x",
+      "?",
+      "0.150"
+     ]
+    ]
+   }
+  },
+  "equilibrium-concentrations-s2": {
+   "kind": "setup",
+   "title": "When x is not small",
+   "text": "<p>PCl<sub>5</sub> decomposes on heating: PCl<sub>5</sub>(g) ⇌ PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g), K<sub>c</sub> = 0.040 at a certain temperature. A sealed flask starts with 0.200 M PCl<sub>5</sub> and nothing else. A student writes x<sup>2</sup> / (0.200 − x) = 0.040, assumes x is small compared with 0.200, and gets x = 0.089 M.</p>"
+  },
+  "equilibrium-concentrations-s3": {
+   "kind": "setup",
+   "title": "Two students solve the same problem",
+   "text": "<p>For 2 H<sub>2</sub>S(g) ⇌ 2 H<sub>2</sub>(g) + S<sub>2</sub>(g), K<sub>c</sub> = 1.0 × 10<sup>−6</sup> at a certain temperature. A flask starts with 0.10 M H<sub>2</sub>S only.</p><p><b>Student P</b> writes the Equilibrium row as [H<sub>2</sub>S] = 0.10 − 2x, [H<sub>2</sub>] = 2x, [S<sub>2</sub>] = x, assumes 2x is small next to 0.10, and writes (2x)<sup>2</sup>(x) / (0.10)<sup>2</sup> = 1.0 × 10<sup>−6</sup>.</p><p><b>Student Q</b> writes the same Equilibrium row, then drops x everywhere it appears, including the top: (0)<sup>2</sup>(0) / (0.10)<sup>2</sup> = 1.0 × 10<sup>−6</sup>, and says there is no solution.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-equilibrium-concentrations-1",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "single",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "equilibrium-concentrations-s1",
+   "q": "What belongs in the Change row for H<sub>2</sub>?",
+   "options": [
+    "−3x",
+    "−x",
+    "+3x",
+    "−x/3"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The Change row is x times each coefficient, negative for species used up. H₂ has coefficient 3: −3x.",
+    "options": [
+     "Right: three H₂ react for every N₂, so H₂ falls three times as fast.",
+     "This ignores the coefficient 3 on H₂.",
+     "H₂ is a reactant in a net forward reaction, so it is used up: the sign is negative.",
+     "The coefficient multiplies x; it does not divide it."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-2",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "equilibrium-concentrations-s1",
+   "q": "Calculate [H<sub>2</sub>] at equilibrium.",
+   "numeric": {
+    "answer": 0.575,
+    "tol": 0.001,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.65,
+      "rel": 0.02,
+      "why": "Value: you subtracted [NH₃] directly. 2x = 0.150 M gives x = 0.0750 M, and H₂ falls by 3x."
+     },
+     {
+      "value": 0.725,
+      "rel": 0.02,
+      "why": "Value: H₂ falls by 3x, not x. Its coefficient is 3."
+     },
+     {
+      "value": 0.35,
+      "rel": 0.02,
+      "why": "Value: x is half of [NH₃], because NH₃ rises by 2x. Use x = 0.0750 M."
+     }
+    ]
+   },
+   "why": {
+    "correct": "2x = 0.150 M, so x = 0.0750 M. [H₂] = 0.800 − 3(0.0750) = 0.800 − 0.225 = 0.575 M."
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-3",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "equilibrium-concentrations-s1",
+   "q": "Using the completed ICE table, calculate K<sub>c</sub> for ammonia formation at this temperature.",
+   "numeric": {
+    "answer": 0.278,
+    "tol": 0.001,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.0921,
+      "rel": 0.02,
+      "why": "Value: [H₂] must be cubed, because its coefficient is 3."
+     },
+     {
+      "value": 0.0879,
+      "rel": 0.02,
+      "why": "Value: you used the initial concentrations of N₂ and H₂. Use the equilibrium values from the ICE table."
+     }
+    ]
+   },
+   "why": {
+    "correct": "[N₂] = 0.500 − 0.0750 = 0.425 M; [H₂] = 0.575 M; [NH₃] = 0.150 M. K<sub>c</sub> = (0.150)² / (0.425 × (0.575)³) = 0.278."
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-4",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "single",
+   "practice": "5.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "equilibrium-concentrations-s1",
+   "q": "Why does the Change row use one unknown, x, for all three species?",
+   "options": [
+    "The coefficients fix the ratio of the changes.",
+    "The three concentrations change by equal amounts.",
+    "x is the equilibrium concentration of each species.",
+    "The volume is 1.00 L, so moles and molarity are equal."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Species react and form in the mole ratio of the balanced equation, so every change is x times a coefficient.",
+    "options": [
+     "Right: once you know how much N₂ reacted, stoichiometry gives the change in H₂ and NH₃.",
+     "They change in the ratio 1 : 3 : 2, not by equal amounts; that is why the coefficients multiply x.",
+     "x is the change for a species with coefficient 1. The equilibrium values are Initial + Change.",
+     "That makes unit conversion easy but does not explain why a single unknown works."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-5",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "single",
+   "practice": "5.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "equilibrium-concentrations-s2",
+   "q": "Is the student’s small-x approximation valid?",
+   "options": [
+    "No: 0.089 M is about 45% of 0.200 M, far more than 5%.",
+    "Yes: x comes out less than 0.200 M.",
+    "Yes: K = 0.040 is less than 1.",
+    "No: the approximation is not used when the products start at zero."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Check the approximation: x / [initial] × 100% = 0.089 / 0.200 × 100% ≈ 45%. Over about 5%, x cannot be dropped and the equation must be solved exactly.",
+    "options": [
+     "Right: the approximation is only safe when x is a few percent of the starting concentration or less.",
+     "Being smaller than 0.200 is not enough; x must be negligible next to it (under about 5%).",
+     "K < 1 alone does not guarantee x is small. Here K is only moderately small compared with the concentration.",
+     "Starting with no products is the usual case for the approximation. It fails here because K is not small enough."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-6",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "equilibrium-concentrations-s2",
+   "q": "Solve x<sup>2</sup> / (0.200 − x) = 0.040 exactly (with the quadratic formula) and give [Cl<sub>2</sub>] at equilibrium.",
+   "numeric": {
+    "answer": 0.072,
+    "tol": 0.001,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.0894,
+      "rel": 0.02,
+      "why": "Value: that is the small-x answer, which is invalid here (45% of 0.200). Solve x² + 0.040x − 0.0080 = 0 exactly."
+     },
+     {
+      "value": -0.112,
+      "rel": 0.02,
+      "why": "Value: you took the negative root. A concentration cannot be negative; use the positive root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Rearrange: x² = 0.040(0.200 − x), so x² + 0.040x − 0.0080 = 0. x = [−0.040 + √((0.040)² + 4(0.0080))] / 2 = (−0.040 + √0.0336) / 2 = 0.0717 M ≈ 0.072 M."
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-7",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "equilibrium-concentrations-s2",
+   "q": "Using the exact x, calculate [PCl<sub>5</sub>] at equilibrium.",
+   "numeric": {
+    "answer": 0.13,
+    "tol": 0.01,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.111,
+      "rel": 0.02,
+      "why": "Value: you used the small-x value of 0.089 M. Use the exact x = 0.072 M."
+     },
+     {
+      "value": 0.2,
+      "rel": 0.02,
+      "why": "Value: [PCl₅] falls by x as it decomposes. Subtract x from 0.200 M."
+     }
+    ]
+   },
+   "why": {
+    "correct": "[PCl₅] = 0.200 − 0.0717 = 0.128 M ≈ 0.13 M."
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-8",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "equilibrium-concentrations-s2",
+   "q": "Check: put the exact equilibrium concentrations back into the K expression. What should you get, and what does it confirm?",
+   "options": [
+    "About 0.040, so Q = K.",
+    "About 0.089, confirming the approximation was valid.",
+    "Exactly 0.200, the starting concentration.",
+    "A value less than 0.040, showing the reaction is still going forward."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Substituting your answers into the K expression is a quick check: an equilibrium mixture gives Q = K.",
+    "options": [
+     "Right: (0.0717)² / 0.128 ≈ 0.040. Q equals K, so the mixture is at equilibrium.",
+     "Substituting into K gives K back, not x. And the approximation was not valid.",
+     "The starting concentration is not what the K expression returns.",
+     "If the solution is right, Q equals K. A smaller Q would mean an arithmetic error."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-9",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "single",
+   "practice": "5.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "equilibrium-concentrations-s3",
+   "q": "Which student used the small-x approximation correctly?",
+   "options": [
+    "Student P, who drops x just from (0.10 − 2x).",
+    "Student Q, who sets each x term to zero because x is small.",
+    "Both, because dropping x anywhere gives the same approximation.",
+    "Neither, because the approximation works for two-species reactions."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The approximation replaces (initial − x) by (initial) when x is tiny. It never replaces x itself by zero.",
+    "options": [
+     "Right: 0.10 − 2x ≈ 0.10 is fine, but x terms standing alone must stay, or nothing is left to solve for.",
+     "Setting x to zero on top makes Q = 0, which can never equal K. Only x inside a sum or difference may be dropped.",
+     "Dropping x from \"0.10 − 2x\" changes the value by a few percent; dropping it from \"(2x)²x\" changes it to zero. They are not the same.",
+     "The number of species does not matter. What matters is whether x is small next to the number it is subtracted from."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-10",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "equilibrium-concentrations-s3",
+   "q": "Finish Student P’s calculation: find [S<sub>2</sub>] at equilibrium.",
+   "numeric": {
+    "answer": 0.0014,
+    "tol": 0.0001,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.00215,
+      "rel": 0.02,
+      "why": "Value: (2x)² = 4x², so the top is 4x³. Divide by 4 before taking the cube root."
+     },
+     {
+      "value": 0.00005,
+      "rel": 0.02,
+      "why": "Value: the top is 4x³, so take a cube root, not a square root."
+     },
+     {
+      "value": 0.00271,
+      "rel": 0.02,
+      "why": "Value: that is [H₂] = 2x. [S₂] is x."
+     }
+    ]
+   },
+   "why": {
+    "correct": "4x³ / 0.010 = 1.0 × 10⁻⁶, so x³ = 2.5 × 10⁻⁹ and x = 1.36 × 10<sup>−3</sup> ≈ 1.4 × 10<sup>−3</sup> M. [S₂] = x."
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-11",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "equilibrium-concentrations-s3",
+   "q": "How should Student P check that the approximation was justified?",
+   "options": [
+    "Compare 2x with 0.10 M; it is under 5%.",
+    "Check that x is positive.",
+    "Check that K is less than 1.",
+    "Compare x with K; x should be smaller than K."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The 5% rule: the amount subtracted (here 2x) should be under about 5% of the starting concentration. If it is, the approximation was justified.",
+    "options": [
+     "Right: 2x = 2.7 × 10<sup>−3</sup> M, which is 2.7% of 0.10 M.",
+     "A positive x is needed, but it does not show the approximation is valid.",
+     "A small K makes the approximation likely to work, but you still verify it with the answer.",
+     "x and K are different kinds of quantity; the test compares x with the starting concentration."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-12",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "equilibrium-concentrations-s3",
+   "q": "Why was it reasonable to expect x to be small before solving?",
+   "options": [
+    "K = 1.0 × 10<sup>−6</sup> is very small.",
+    "The flask starts with no H<sub>2</sub> or S<sub>2</sub>.",
+    "H<sub>2</sub>S has a coefficient of 2 in the balanced equation.",
+    "The starting concentration, 0.10 M, is less than 1 M."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When K is much smaller than the starting concentration terms, little reactant is used, so x is small relative to the initial amount.",
+    "options": [
+     "Right: a tiny K means a reactant-favored equilibrium, so the change from the starting amount is small.",
+     "Starting with no products tells you the direction (forward), not how far the reaction goes.",
+     "Coefficients appear in the change row but do not decide whether x is small.",
+     "The size of the concentration alone does not decide it; the ratio of K to the concentration does."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-13",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "For H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g), K<sub>c</sub> = 50.0 at 450 °C. A flask starts with 0.100 M H<sub>2</sub> and 0.100 M I<sub>2</sub>. Calculate [HI] at equilibrium.",
+   "numeric": {
+    "answer": 0.156,
+    "tol": 0.001,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.078,
+      "rel": 0.02,
+      "why": "Value: that is x. [HI] = 2x."
+     },
+     {
+      "value": 0.707,
+      "rel": 0.02,
+      "why": "Value: you dropped x from 0.100 − x. K is not small here, so take the square root of both sides instead: 2x / (0.100 − x) = √50.0."
+     },
+     {
+      "value": 0.022,
+      "rel": 0.02,
+      "why": "Value: that is [H₂] (0.100 − x), not [HI]."
+     }
+    ]
+   },
+   "why": {
+    "correct": "(2x)² / (0.100 − x)² = 50.0. Both sides are perfect squares: 2x / (0.100 − x) = √50.0 = 7.071. So 2x = 0.7071 − 7.071x, 9.071x = 0.7071, x = 0.0780 M. [HI] = 2x = 0.156 M."
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-14",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "For 2 NOCl(g) ⇌ 2 NO(g) + Cl<sub>2</sub>(g), K<sub>c</sub> = 1.6 × 10<sup>−5</sup>. A flask starts with 0.50 M NOCl. Using the small-x approximation, calculate [Cl<sub>2</sub>] at equilibrium.",
+   "numeric": {
+    "answer": 0.01,
+    "tol": 0.001,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.0159,
+      "rel": 0.02,
+      "why": "Value: (2x)²x = 4x³. Divide by 4 before taking the cube root."
+     },
+     {
+      "value": 0.02,
+      "rel": 0.02,
+      "why": "Value: that is [NO] = 2x. [Cl₂] = x."
+     },
+     {
+      "value": 0.001,
+      "rel": 0.02,
+      "why": "Value: the top is 4x³, so take a cube root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "(2x)²(x) / (0.50)² = 1.6 × 10⁻⁵ → 4x³ = 4.0 × 10⁻⁶ → x³ = 1.0 × 10⁻⁶ → x = 0.010 M. Check: 2x = 0.020 M is 4% of 0.50 M, under 5%. [Cl₂] = 0.010 M."
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-15",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For CO(g) + H<sub>2</sub>O(g) ⇌ CO<sub>2</sub>(g) + H<sub>2</sub>(g), K<sub>c</sub> = 1.56. A flask starts with 0.0500 M CO, 0.0500 M H<sub>2</sub>O, 0.200 M CO<sub>2</sub> and 0.200 M H<sub>2</sub>. How should the Change row be written?",
+   "options": [
+    "+x for CO, H<sub>2</sub>O; −x for CO<sub>2</sub>, H<sub>2</sub>",
+    "−x for CO, H<sub>2</sub>O; +x for CO<sub>2</sub>, H<sub>2</sub>",
+    "−x for each of the four species",
+    "0 for each species, since the four start at nonzero values"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Compare Q with K before writing the Change row. Q > K means net reverse: the reactant side gains +x and the product side loses −x.",
+    "options": [
+     "Right: Q = (0.200)² / (0.0500)² = 16.0 > K, so the net reaction goes in reverse: reactants form, products are used.",
+     "This assumes a forward reaction. Check Q first: Q = 16.0 is greater than K, so the reaction runs in reverse.",
+     "Every species cannot decrease; atoms must go somewhere. One side forms while the other is used.",
+     "Having all species present does not mean equilibrium. Q = 16.0 ≠ K = 1.56."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-16",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Continue the CO + H<sub>2</sub>O problem (K<sub>c</sub> = 1.56; start 0.0500 M CO, 0.0500 M H<sub>2</sub>O, 0.200 M CO<sub>2</sub>, 0.200 M H<sub>2</sub>). Calculate [CO] at equilibrium.",
+   "numeric": {
+    "answer": 0.111,
+    "tol": 0.001,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": -0.0112,
+      "rel": 0.02,
+      "why": "Value: the net reaction runs in reverse, so CO increases: [CO] = 0.0500 + x."
+     },
+     {
+      "value": 0.0612,
+      "rel": 0.02,
+      "why": "Value: that is x. Add it to the starting 0.0500 M CO."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Net reverse: (0.200 − x)² / (0.0500 + x)² = 1.56. Square root: (0.200 − x)/(0.0500 + x) = 1.249. 0.200 − x = 0.06245 + 1.249x, so x = 0.13755 / 2.249 = 0.0612 M. [CO] = 0.0500 + 0.0612 = 0.111 M."
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-17",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "order",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for finding equilibrium concentrations from K in order.",
+   "options": [
+    "Calculate Q from the starting concentrations and compare it with K to find the direction.",
+    "Set up the ICE table with the changes as x times the coefficients, signed for that direction.",
+    "Substitute the Equilibrium row into the K expression; simplify if x is small or the expression is a perfect square.",
+    "Solve for x, check it (5% rule, or substitute back), and calculate each concentration."
+   ],
+   "why": {
+    "correct": "Direction first, then the ICE table, then solve and check. The check catches a bad approximation or a sign error."
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-18",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "In which case is the small-x approximation most likely to be valid?",
+   "options": [
+    "K = 2 × 10<sup>−8</sup>, start at 0.50 M",
+    "K = 2 × 10<sup>−1</sup>, start at 0.010 M",
+    "K = 5 × 10<sup>3</sup>, start at 1.0 M",
+    "K = 1.0, start at 0.10 M"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "x is small when K is much smaller than the starting concentration terms. Always confirm with the 5% check afterward.",
+    "options": [
+     "Right: K is tiny compared with the starting concentration, so x will be a very small fraction of 0.50 M.",
+     "K is large compared with the concentration here, so a large fraction reacts.",
+     "K > 1 means products are favored; most of the reactant reacts.",
+     "K near 1 leaves appreciable amounts of both sides; x is not small."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-19",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a reaction A(g) ⇌ B(g) + C(g), K<sub>c</sub> = 4.0 × 10<sup>−4</sup>. Starting from 0.100 M A, the small-x approximation gives x = 6.3 × 10<sup>−3</sup> M. Calculate the percent of A that reacts.",
+   "numeric": {
+    "answer": 6.3,
+    "tol": 0.1,
+    "unit": "%",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.00632,
+      "rel": 0.02,
+      "why": "Value: that is x itself. Divide x by 0.100 M and multiply by 100%."
+     }
+    ]
+   },
+   "why": {
+    "correct": "x / [A]₀ × 100% = (6.3 × 10⁻³ / 0.100) × 100% = 6.3%. That is just over 5%, so the approximation is borderline; solving exactly is safer."
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-20",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For the reaction in the previous calculation, x / [A]<sub>0</sub> came out at 6.3%. What should the student do?",
+   "options": [
+    "Solve exactly; x is over 5% of 0.100 M.",
+    "Keep the approximate answer, because 6.3% is less than 10%.",
+    "Change K to make x smaller.",
+    "Double x to account for the error."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "If x is more than about 5% of the starting concentration, the approximation is not reliable. Solve with the quadratic formula (or by successive approximation).",
+    "options": [
+     "Right: above about 5%, dropping x from 0.100 − x makes a noticeable error.",
+     "The usual threshold is about 5%, set so the error stays within the precision of the data.",
+     "K is fixed by the reaction and temperature; you cannot change it to suit the math.",
+     "There is no such correction. Solve the full equation instead."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-concentrations-21",
+   "unit": "unit-7",
+   "topic": "equilibrium-concentrations",
+   "type": "predict",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A flask of A(g) ⇌ B(g) + C(g) (K<sub>c</sub> small) starts with 0.20 M A instead of 0.10 M A, at the same temperature. Predict each quantity at equilibrium, compared with the 0.10 M flask.",
+   "variables": [
+    {
+     "name": "[B] at equilibrium",
+     "answer": "up",
+     "why": "With x small, x² ≈ K[A]₀, so doubling [A]₀ raises x (by a factor of √2)."
+    },
+    {
+     "name": "K<sub>c</sub>",
+     "answer": "none",
+     "why": "K depends only on temperature, which is unchanged."
+    },
+    {
+     "name": "Percent of A that reacts",
+     "answer": "down",
+     "why": "x grows by √2 while [A]₀ doubles, so x/[A]₀ falls by √2."
+    },
+    {
+     "name": "[A] at equilibrium",
+     "answer": "up",
+     "why": "Most of the extra A remains, because only a small fraction reacts."
+    }
+   ],
+   "why": {
+    "correct": "With K fixed, x ≈ √(K[A]₀). More starting reactant gives more product but a smaller percent reacted."
+   }
+  }
+ ]
+}

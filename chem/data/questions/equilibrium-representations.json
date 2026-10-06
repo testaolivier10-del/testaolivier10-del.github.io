@@ -1,0 +1,535 @@
+{
+ "stimuli": {
+  "equilibrium-representations-s1": {
+   "kind": "particle",
+   "title": "A gas forming dimers",
+   "html": "<svg viewBox=\"0 0 474 372\" width=\"474\" height=\"372\" role=\"img\" aria-label=\"Four snapshots of one 2.0 liter container for the reaction 2 W forming W2. At t = 0: 12 single W atoms. At 20 s: 6 W and 3 W2. At 40 s: 4 W and 4 W2. At 60 s: 4 W and 4 W2.\" style=\"max-width:100%;height:auto\"><text x=\"123\" y=\"32\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">t = 0</text><rect x=\"18\" y=\"40\" width=\"210\" height=\"140\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"53.8\" cy=\"144.6\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"50.6\" cy=\"111.6\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"156.4\" cy=\"109.3\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"189.8\" cy=\"147.7\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"86.4\" cy=\"73.8\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"122.6\" cy=\"112.3\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"58.7\" cy=\"79.1\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"89.7\" cy=\"141.6\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"123.6\" cy=\"144.4\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"192.4\" cy=\"113.4\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"119.3\" cy=\"74.7\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"92.5\" cy=\"110.1\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><text x=\"351\" y=\"32\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">t = 20 s</text><rect x=\"246\" y=\"40\" width=\"210\" height=\"140\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"372.6\" cy=\"71.7\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"323.4\" cy=\"151.2\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"337.4\" cy=\"151.2\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"323.3\" cy=\"110.5\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"337.3\" cy=\"110.5\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"281.0\" cy=\"103.0\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"323.6\" cy=\"68.9\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"337.6\" cy=\"68.9\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"376.5\" cy=\"114.8\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"281.8\" cy=\"63.2\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"412.2\" cy=\"67.6\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"415.1\" cy=\"105.6\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><text x=\"123\" y=\"212\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">t = 40 s</text><rect x=\"18\" y=\"220\" width=\"210\" height=\"140\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"43.9\" cy=\"316.8\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"57.9\" cy=\"316.8\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"144.2\" cy=\"309.1\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"158.2\" cy=\"309.1\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"205.6\" cy=\"305.2\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"139.6\" cy=\"264.1\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"153.6\" cy=\"264.1\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"189.4\" cy=\"270.1\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"100.0\" cy=\"317.0\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"45.2\" cy=\"261.1\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"59.2\" cy=\"261.1\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"92.9\" cy=\"257.4\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><text x=\"351\" y=\"212\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">t = 60 s</text><rect x=\"246\" y=\"220\" width=\"210\" height=\"140\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"376.2\" cy=\"322.4\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"276.4\" cy=\"267.0\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"412.0\" cy=\"316.0\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"426.0\" cy=\"316.0\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"269.6\" cy=\"310.5\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"283.6\" cy=\"310.5\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"372.6\" cy=\"270.2\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"386.6\" cy=\"270.2\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"319.0\" cy=\"263.5\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"333.0\" cy=\"263.5\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"318.6\" cy=\"313.7\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"412.0\" cy=\"265.7\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/></svg><p class=\"chem-small\">Key: <span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"24\" height=\"24\" aria-hidden=\"true\"><circle cx=\"12.0\" cy=\"12.0\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/></svg>W</span><span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"38\" height=\"38\" aria-hidden=\"true\"><circle cx=\"12.0\" cy=\"19.0\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/><circle cx=\"26.0\" cy=\"19.0\" r=\"8\" fill=\"#009E73\" stroke=\"#00513B\" stroke-width=\"1.5\"/></svg>W<sub>2</sub></span></p><p>A gas W forms dimers in a sealed 2.0 L container at constant temperature: 2 W(g) ⇌ W<sub>2</sub>(g). Each particle drawn stands for 0.10 mol.</p>"
+  },
+  "equilibrium-representations-s2": {
+   "kind": "particle",
+   "title": "Which mixture is at equilibrium?",
+   "html": "<svg viewBox=\"0 0 454 372\" width=\"454\" height=\"372\" role=\"img\" aria-label=\"Four equal-volume containers holding X2, Y2 and XY. Box 1: 2 X2, 2 Y2, 4 XY. Box 2: 3 X2, 3 Y2, 2 XY. Box 3: 1 X2, 1 Y2, 6 XY. Box 4: 4 X2, 1 Y2, 4 XY.\" style=\"max-width:100%;height:auto\"><text x=\"118\" y=\"32\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Box 1</text><rect x=\"18\" y=\"40\" width=\"200\" height=\"140\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"83.6\" cy=\"84.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"99.6\" cy=\"84.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"137.6\" cy=\"130.9\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"152.6\" cy=\"130.9\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"180.7\" cy=\"135.2\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"195.7\" cy=\"135.2\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"36.2\" cy=\"85.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"51.2\" cy=\"85.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"141.9\" cy=\"79.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"153.9\" cy=\"79.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"180.9\" cy=\"87.5\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"195.9\" cy=\"87.5\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"87.5\" cy=\"132.6\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"103.5\" cy=\"132.6\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"38.3\" cy=\"138.9\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"50.3\" cy=\"138.9\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><text x=\"336\" y=\"32\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Box 2</text><rect x=\"236\" y=\"40\" width=\"200\" height=\"140\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"253.4\" cy=\"131.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"265.4\" cy=\"131.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"399.1\" cy=\"88.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"411.1\" cy=\"88.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"351.9\" cy=\"83.7\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"366.9\" cy=\"83.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"258.7\" cy=\"84.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"274.7\" cy=\"84.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"307.6\" cy=\"131.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"319.6\" cy=\"131.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"301.7\" cy=\"84.4\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"316.7\" cy=\"84.4\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"398.7\" cy=\"135.5\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"414.7\" cy=\"135.5\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"350.0\" cy=\"132.2\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"366.0\" cy=\"132.2\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><text x=\"118\" y=\"212\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Box 3</text><rect x=\"18\" y=\"220\" width=\"200\" height=\"140\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"36.8\" cy=\"265.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"51.8\" cy=\"265.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"89.1\" cy=\"311.5\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"104.1\" cy=\"311.5\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"135.2\" cy=\"268.2\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"150.2\" cy=\"268.2\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"139.5\" cy=\"307.9\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"151.5\" cy=\"307.9\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"180.9\" cy=\"314.2\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"196.9\" cy=\"314.2\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"186.6\" cy=\"269.4\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"201.6\" cy=\"269.4\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"41.5\" cy=\"311.7\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"56.5\" cy=\"311.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"90.7\" cy=\"266.4\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"105.7\" cy=\"266.4\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><text x=\"336\" y=\"212\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Box 4</text><rect x=\"236\" y=\"220\" width=\"200\" height=\"140\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"389.5\" cy=\"331.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"405.5\" cy=\"331.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"348.5\" cy=\"249.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"364.5\" cy=\"249.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"348.5\" cy=\"331.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"364.5\" cy=\"331.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"390.6\" cy=\"289.8\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"405.6\" cy=\"289.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"267.7\" cy=\"331.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"282.7\" cy=\"331.3\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"267.9\" cy=\"290.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"282.9\" cy=\"290.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"308.2\" cy=\"330.8\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"323.2\" cy=\"330.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"389.8\" cy=\"248.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"401.8\" cy=\"248.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"307.5\" cy=\"290.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"323.5\" cy=\"290.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/></svg><p class=\"chem-small\">Key: <span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"42\" height=\"42\" aria-hidden=\"true\"><circle cx=\"13.0\" cy=\"21.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"29.0\" cy=\"21.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/></svg>X<sub>2</sub></span><span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"34\" height=\"34\" aria-hidden=\"true\"><circle cx=\"11.0\" cy=\"17.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"23.0\" cy=\"17.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/></svg>Y<sub>2</sub></span><span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"40\" height=\"40\" aria-hidden=\"true\"><circle cx=\"13.0\" cy=\"20.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"28.0\" cy=\"20.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/></svg>XY</span></p><p>For X<sub>2</sub>(g) + Y<sub>2</sub>(g) ⇌ 2 XY(g), K<sub>c</sub> = 4.0 at the temperature of the containers. The four containers have equal volumes.</p>"
+  },
+  "equilibrium-representations-s3": {
+   "kind": "graph",
+   "title": "Approaching equilibrium",
+   "text": "<p>A sealed flask starts with 0.80 M of gas A at constant temperature: A(g) ⇌ 2 B(g). The graph shows [A] and [B] over time.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Time",
+     "unit": "s"
+    },
+    "y": {
+     "label": "Concentration",
+     "unit": "M",
+     "min": 0,
+     "max": 1
+    },
+    "series": [
+     {
+      "name": "A",
+      "points": [
+       [
+        0,
+        0.8
+       ],
+       [
+        10,
+        0.62
+       ],
+       [
+        20,
+        0.52
+       ],
+       [
+        30,
+        0.466
+       ],
+       [
+        40,
+        0.436
+       ],
+       [
+        60,
+        0.4
+       ],
+       [
+        80,
+        0.4
+       ],
+       [
+        100,
+        0.4
+       ]
+      ]
+     },
+     {
+      "name": "B",
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        10,
+        0.361
+       ],
+       [
+        20,
+        0.559
+       ],
+       [
+        30,
+        0.668
+       ],
+       [
+        40,
+        0.727
+       ],
+       [
+        60,
+        0.8
+       ],
+       [
+        80,
+        0.8
+       ],
+       [
+        100,
+        0.8
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-equilibrium-representations-1",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "equilibrium-representations-s1",
+   "q": "What is the earliest time shown at which the system is at equilibrium?",
+   "options": [
+    "40 s",
+    "20 s",
+    "60 s",
+    "0 s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Equilibrium is reached when the particle counts stop changing. The first two identical snapshots are at 40 s and 60 s.",
+    "options": [
+     "Right: the counts at 40 s and 60 s are both 4 W and 4 W₂, so the composition has stopped changing.",
+     "The counts change between 20 s (6 W, 3 W₂) and 40 s (4 W, 4 W₂), so the system was still reacting at 20 s.",
+     "The system is at equilibrium at 60 s, but its composition was already the same at 40 s.",
+     "At 0 s there is no W₂, so the forward reaction is about to change the composition."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-representations-2",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "equilibrium-representations-s1",
+   "q": "Calculate [W] at equilibrium.",
+   "numeric": {
+    "answer": 0.2,
+    "tol": 0.01,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.4,
+      "rel": 0.02,
+      "why": "Value: 0.40 mol is the amount. Divide by the 2.0 L volume to get molarity."
+     },
+     {
+      "value": 4,
+      "rel": 0.02,
+      "why": "Value: 4 is the particle count. Each particle is 0.10 mol, and the volume is 2.0 L."
+     }
+    ]
+   },
+   "why": {
+    "correct": "4 particles × 0.10 mol = 0.40 mol W; [W] = 0.40 mol / 2.0 L = 0.20 M."
+   }
+  },
+  {
+   "id": "chem-equilibrium-representations-3",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "equilibrium-representations-s1",
+   "q": "Calculate K<sub>c</sub> for 2 W(g) ⇌ W<sub>2</sub>(g).",
+   "numeric": {
+    "answer": 5,
+    "tol": 0.1,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.25,
+      "rel": 0.02,
+      "why": "Value: you used particle counts. Because the moles of gas differ on the two sides, counts and concentrations give different K values; convert to molarity first."
+     },
+     {
+      "value": 1,
+      "rel": 0.02,
+      "why": "Value: [W] is squared, because its coefficient is 2."
+     },
+     {
+      "value": 2.5,
+      "rel": 0.02,
+      "why": "Value: you used moles, not concentrations. Divide each amount by 2.0 L."
+     }
+    ]
+   },
+   "why": {
+    "correct": "[W] = [W₂] = 0.40 mol / 2.0 L = 0.20 M. K<sub>c</sub> = [W₂] / [W]² = 0.20 / (0.20)² = 5.0."
+   }
+  },
+  {
+   "id": "chem-equilibrium-representations-4",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "equilibrium-representations-s1",
+   "q": "Between 0 s and 20 s, which statement about the rates is correct?",
+   "options": [
+    "The forward rate is greater than the reverse rate.",
+    "The rates are equal.",
+    "The reverse rate is greater than the forward rate.",
+    "Both rates are zero at 0 s."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A product count that is rising means the forward reaction is faster than the reverse.",
+    "options": [
+     "Right: W₂ is building up (0 to 3), so dimers form faster than they split.",
+     "Equal rates would leave the counts unchanged, but W falls from 12 to 6.",
+     "That would make W₂ split faster than it forms, but W₂ is increasing.",
+     "At 0 s the forward rate is at its largest: there are 12 W particles and no W₂."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-representations-5",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "single",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "equilibrium-representations-s1",
+   "q": "A student calculates K by using the particle counts directly: K = 4 / 4<sup>2</sup> = 0.25. Why does this differ from K<sub>c</sub>?",
+   "options": [
+    "K<sub>c</sub> needs mol/L, and the volume does not cancel here.",
+    "Counts are not allowed in K, because particles are too small to count.",
+    "The student should have counted W<sub>2</sub> as two particles.",
+    "K depends on the number of particles drawn, so both answers are valid."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K<sub>c</sub> uses molarities. Here the top has one concentration term and the bottom two, so V and the moles per particle do not cancel; skipping the conversion gives the wrong value.",
+    "options": [
+     "Right: K = (n/V) / (n/V)² = V/n here, so the volume, 2.0 L, and the 0.10 mol per particle stay in the answer.",
+     "Counts can be used once they are turned into concentrations; and when the gas moles are equal on both sides, they even give K directly.",
+     "Each W₂ is one molecule, so it counts once as W₂. The issue is units, not how W₂ is counted.",
+     "K<sub>c</sub> is defined with molar concentrations; only that version is the equilibrium constant."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-representations-6",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "multi",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "equilibrium-representations-s2",
+   "q": "Which boxes show mixtures at equilibrium? Select all that apply.",
+   "options": [
+    "Box 1",
+    "Box 2",
+    "Box 3",
+    "Box 4"
+   ],
+   "correct": [
+    0,
+    3
+   ],
+   "why": {
+    "correct": "Here the gas moles are equal on both sides (2 and 2), so the volume cancels and counts can go straight into Q. A box is at equilibrium when Q = K = 4.0.",
+    "options": [
+     "Right: Q = 4² / (2 × 2) = 4.0 = K.",
+     "Q = 2² / (3 × 3) = 0.44 < K, so it will react forward.",
+     "Q = 6² / (1 × 1) = 36 > K, so it will react in reverse.",
+     "Right: Q = 4² / (4 × 1) = 4.0 = K. Unequal amounts of X₂ and Y₂ do not matter; only Q = K does."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-representations-7",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "equilibrium-representations-s2",
+   "q": "How will the contents of Box 3 change as it approaches equilibrium?",
+   "options": [
+    "XY will decrease, because Q &gt; K.",
+    "XY will increase, because Q &gt; K.",
+    "Nothing will change, because XY is the most abundant species.",
+    "X<sub>2</sub> will decrease, because there is very little of it."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Compare Q with K. Box 3 has Q = 36 > K, so the net reaction goes in reverse until Q falls to 4.0.",
+    "options": [
+     "Right: Q = 36 > 4.0, so the net reaction runs in reverse and XY breaks down.",
+     "Q > K means too much product; the net reaction must lower Q by using up XY.",
+     "Abundance alone does not decide; Q = 36 is not K = 4.0.",
+     "The net reverse reaction makes X₂ and Y₂; they increase."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-representations-8",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "equilibrium-representations-s2",
+   "q": "Box 2 reaches equilibrium. Which set of counts could it then show?",
+   "options": [
+    "2 X<sub>2</sub>, 2 Y<sub>2</sub>, 4 XY",
+    "3 X<sub>2</sub>, 3 Y<sub>2</sub>, 4 XY",
+    "4 X<sub>2</sub>, 4 Y<sub>2</sub>, 0 XY",
+    "1 X<sub>2</sub>, 1 Y<sub>2</sub>, 6 XY"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two conditions: atoms are conserved (each X₂ + Y₂ that reacts makes 2 XY), and the final Q equals K.",
+    "options": [
+     "Right: one X₂ and one Y₂ react to give 2 XY (atoms conserved), and Q = 16/4 = 4.0 = K.",
+     "This adds 2 XY without using any X₂ or Y₂, so atoms are not conserved.",
+     "This runs the reaction in reverse, but Box 2 has Q < K, so it must go forward.",
+     "Atoms are conserved, but Q = 36 overshoots K = 4.0."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-representations-9",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "equilibrium-representations-s2",
+   "q": "Why can particle counts be used directly in Q for this reaction?",
+   "options": [
+    "The gas moles are equal on both sides, so the volume cancels.",
+    "Counts and concentrations are the same thing in any reaction.",
+    "The containers are drawn the same size.",
+    "K is 4.0, which is a whole number."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When the total coefficients of gases are equal on both sides, every V cancels from Q or K, so particle counts work directly.",
+    "options": [
+     "Right: Q = (n<sub>XY</sub>/V)² / ((n<sub>X₂</sub>/V)(n<sub>Y₂</sub>/V)) = n<sub>XY</sub>² / (n<sub>X₂</sub>n<sub>Y₂</sub>).",
+     "Counts become concentrations only after dividing by volume; the volume cancels only in special cases like this one.",
+     "Equal volumes let you compare boxes, but for a single box it is the equal gas moles that make V cancel.",
+     "The value of K has nothing to do with whether counts can be used."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-representations-10",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "equilibrium-representations-s3",
+   "q": "Use the graph to calculate K<sub>c</sub>.",
+   "numeric": {
+    "answer": 1.6,
+    "tol": 0.1,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2,
+      "rel": 0.02,
+      "why": "Value: [B] is squared in K, because its coefficient is 2."
+     },
+     {
+      "value": 0.625,
+      "rel": 0.02,
+      "why": "Value: you inverted K. Products go on top."
+     },
+     {
+      "value": 0.601,
+      "rel": 0.02,
+      "why": "Value: read the plateau values, after the curves level off, not a point on the way."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At equilibrium (60 s on), [A] = 0.40 M and [B] = 0.80 M. K<sub>c</sub> = [B]² / [A] = (0.80)² / 0.40 = 1.6."
+   }
+  },
+  {
+   "id": "chem-equilibrium-representations-11",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "single",
+   "practice": "5.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "equilibrium-representations-s3",
+   "q": "How does the graph show that B forms twice as fast as A is used up?",
+   "options": [
+    "[B] rises by 0.80 M while [A] falls by 0.40 M.",
+    "[B] ends twice as high as [A].",
+    "Both curves level off at the same time.",
+    "[B] starts at zero."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Compare changes, not final values: ΔB = +0.80 M, ΔA = −0.40 M, ratio 2 : 1.",
+    "options": [
+     "Right: the changes are in the ratio 2 : 1, the coefficients.",
+     "True here, but final values depend on K and the starting amounts; the ratio of the changes is what shows the coefficients.",
+     "They always level off together at equilibrium; that does not show the 2 : 1 ratio.",
+     "That only shows B is a product present at the start in no amount."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-representations-12",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "equilibrium-representations-s3",
+   "q": "A student says the system reaches equilibrium at about 18 s, where the curves cross. Which response is best?",
+   "options": [
+    "Wrong: equilibrium is where the curves level off, not where they cross.",
+    "Right: equal concentrations mean equal rates.",
+    "Right: after the crossing, B is favored, so the reaction stops.",
+    "Wrong: equilibrium is not reached, because the curves do not meet again."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On a concentration-time graph, equilibrium is where every curve is horizontal. Where curves cross has no special meaning.",
+    "options": [
+     "Right: the crossing only marks equal concentrations at one instant; both curves are still changing there.",
+     "Equal concentrations are not equal rates, and the curves are still steep at the crossing.",
+     "The reaction continues changing until about 60 s.",
+     "The curves need not meet. Equilibrium shows up as flat lines, which they become."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-representations-13",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "equilibrium-representations-s3",
+   "q": "Calculate Q<sub>c</sub> at 10 s, when [A] = 0.62 M and [B] = 0.36 M.",
+   "numeric": {
+    "answer": 0.21,
+    "tol": 0.01,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.582,
+      "rel": 0.02,
+      "why": "Value: square [B]; its coefficient is 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Q<sub>c</sub> = [B]² / [A] = (0.36)² / 0.62 = 0.21, less than K = 1.6, consistent with the net forward reaction still under way."
+   }
+  },
+  {
+   "id": "chem-equilibrium-representations-14",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "In a particle diagram of a system at equilibrium, what is true about two diagrams of the same container drawn at later times?",
+   "options": [
+    "They show the same numbers of each kind of particle.",
+    "They show product particles and no reactants.",
+    "They show equal numbers of reactant and product particles.",
+    "They show the particles in the same positions."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Equilibrium is constant composition: the counts of each species do not change from snapshot to snapshot.",
+    "options": [
+     "Right: at equilibrium the composition is constant, though individual particles keep reacting.",
+     "An equilibrium mixture contains reactants and products.",
+     "Equilibrium means constant counts, not equal counts.",
+     "Particles keep moving and reacting; only the counts stay the same."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-representations-15",
+   "unit": "unit-7",
+   "topic": "equilibrium-representations",
+   "type": "order",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for finding K<sub>c</sub> from a particle diagram in order.",
+   "options": [
+    "Confirm the diagram shows equilibrium (counts unchanged over time).",
+    "Count each kind of particle.",
+    "Convert counts to moles, then divide by the volume to get molarity.",
+    "Substitute the molarities into the K<sub>c</sub> expression."
+   ],
+   "why": {
+    "correct": "Only an equilibrium mixture gives K. Counts become concentrations through moles and volume; then use the expression."
+   }
+  }
+ ]
+}

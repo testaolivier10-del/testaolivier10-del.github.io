@@ -1,0 +1,81 @@
+{
+ "id": "frq-strontium-fluoride",
+ "type": "short",
+ "points": 4,
+ "title": "Strontium fluoride: Ksp and a common ion",
+ "units": [
+  "unit-7"
+ ],
+ "topics": [
+  "solubility-equilibria",
+  "common-ion-effect"
+ ],
+ "practices": [
+  "5.F",
+  "6.D"
+ ],
+ "stimulus": {
+  "kind": "setup",
+  "title": "A slightly soluble fluoride",
+  "text": "<p>Strontium fluoride, SrF<sub>2</sub>, is slightly soluble in water: SrF<sub>2</sub>(s) ⇌ Sr<sup>2+</sup>(aq) + 2 F<sup>−</sup>(aq). At 25 °C, K<sub>sp</sub> = 4.3 × 10<sup>−9</sup>. NaF is a soluble salt.</p>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 1,
+   "prompt": "<b>Write</b> the expression for K<sub>sp</sub> of SrF<sub>2</sub>.",
+   "rubric": [
+    {
+     "point": "K<sub>sp</sub> = [Sr²⁺][F⁻]², with the solid left out.",
+     "accept": [
+      "[Sr²⁺][F⁻]²"
+     ]
+    }
+   ],
+   "sample": "K<sub>sp</sub> = [Sr<sup>2+</sup>][F<sup>−</sup>]<sup>2</sup>"
+  },
+  {
+   "label": "b",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the molar solubility of SrF<sub>2</sub> in pure water at 25 °C.",
+   "rubric": [
+    {
+     "point": "s(2s)² = 4s³ = 4.3 × 10⁻⁹, so s = 1.0 × 10<sup>−3</sup> M.",
+     "accept": [
+      "1.0 × 10<sup>−3</sup> M",
+      "setup with 4s³; [F⁻] must be 2s and squared"
+     ]
+    }
+   ],
+   "sample": "[Sr<sup>2+</sup>] = s and [F<sup>−</sup>] = 2s. K<sub>sp</sub> = s(2s)<sup>2</sup> = 4s<sup>3</sup> = 4.3 × 10<sup>−9</sup>, so s<sup>3</sup> = 1.08 × 10<sup>−9</sup> and s = 1.0 × 10<sup>−3</sup> M."
+  },
+  {
+   "label": "c",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the molar solubility of SrF<sub>2</sub> in 0.10 M NaF at 25 °C.",
+   "rubric": [
+    {
+     "point": "[F⁻] ≈ 0.10 M; s = 4.3 × 10⁻⁹ / (0.10)² = 4.3 × 10<sup>−7</sup> M.",
+     "accept": [
+      "4.3 × 10<sup>−7</sup> M"
+     ]
+    }
+   ],
+   "sample": "[F<sup>−</sup>] = 0.10 + 2s ≈ 0.10 M. K<sub>sp</sub> = s(0.10)<sup>2</sup>, so s = 4.3 × 10<sup>−9</sup> / 0.010 = 4.3 × 10<sup>−7</sup> M. (2s is negligible next to 0.10 M.)"
+  },
+  {
+   "label": "d",
+   "points": 1,
+   "prompt": "A student claims that NaF lowers the solubility of SrF<sub>2</sub> because it lowers the value of K<sub>sp</sub>. <b>Explain</b> what is wrong with the claim, using Q and K<sub>sp</sub>.",
+   "rubric": [
+    {
+     "point": "K<sub>sp</sub> is unchanged (it depends only on temperature); added F⁻ raises Q = [Sr²⁺][F⁻]² above K<sub>sp</sub>, so SrF₂ precipitates (or less dissolves) until Q = K<sub>sp</sub>.",
+     "accept": [
+      "the common ion increases Q, not decreases K"
+     ]
+    }
+   ],
+   "sample": "K<sub>sp</sub> does not change; it depends only on temperature. The F<sup>−</sup> from NaF increases Q = [Sr<sup>2+</sup>][F<sup>−</sup>]<sup>2</sup>, so Q exceeds K<sub>sp</sub> at a lower [Sr<sup>2+</sup>]. Less SrF<sub>2</sub> dissolves before Q = K<sub>sp</sub>, so the solubility is lower."
+  }
+ ]
+}

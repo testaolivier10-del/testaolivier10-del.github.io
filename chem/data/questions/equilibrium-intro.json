@@ -1,0 +1,566 @@
+{
+ "stimuli": {
+  "equilibrium-intro-s1": {
+   "kind": "graph",
+   "title": "Brown gas forming in a sealed flask",
+   "text": "<p>A student fills a sealed 1.00 L flask with colorless N<sub>2</sub>O<sub>4</sub> gas at 0.0500 M and holds it at a constant temperature. The flask slowly turns brown as NO<sub>2</sub> forms: N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2 NO<sub>2</sub>(g). The graph shows the concentration of NO<sub>2</sub>, measured from the color, at several times.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Time",
+     "unit": "s"
+    },
+    "y": {
+     "label": "[NO₂]",
+     "unit": "M",
+     "min": 0,
+     "max": 0.05
+    },
+    "series": [
+     {
+      "name": "NO₂",
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        10,
+        0.028
+       ],
+       [
+        20,
+        0.0364
+       ],
+       [
+        30,
+        0.0389
+       ],
+       [
+        40,
+        0.0397
+       ],
+       [
+        50,
+        0.04
+       ],
+       [
+        60,
+        0.04
+       ],
+       [
+        70,
+        0.04
+       ],
+       [
+        80,
+        0.04
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "equilibrium-intro-s2": {
+   "kind": "particle",
+   "title": "One sealed container at four times",
+   "html": "<svg viewBox=\"0 0 454 392\" width=\"454\" height=\"392\" role=\"img\" aria-label=\"Four snapshots of one sealed container for the reaction X2 plus Y2 forming 2 XY. At t = 0: 6 X2 and 6 Y2 molecules, no XY. At t1: 4 X2, 4 Y2 and 4 XY. At t2: 3 X2, 3 Y2 and 6 XY. At t3: 3 X2, 3 Y2 and 6 XY.\" style=\"max-width:100%;height:auto\"><text x=\"118\" y=\"32\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">t = 0</text><rect x=\"18\" y=\"40\" width=\"200\" height=\"150\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"136.7\" cy=\"110.4\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"148.7\" cy=\"110.4\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"131.6\" cy=\"158.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"147.6\" cy=\"158.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"44.2\" cy=\"70.1\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"60.2\" cy=\"70.1\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"44.6\" cy=\"119.2\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"56.6\" cy=\"119.2\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"181.1\" cy=\"73.3\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"193.1\" cy=\"73.3\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"138.7\" cy=\"66.5\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"150.7\" cy=\"66.5\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"44.6\" cy=\"161.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"56.6\" cy=\"161.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"87.1\" cy=\"158.4\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"103.1\" cy=\"158.4\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"88.7\" cy=\"114.4\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"104.7\" cy=\"114.4\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"175.8\" cy=\"118.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"187.8\" cy=\"118.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"176.5\" cy=\"159.9\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"192.5\" cy=\"159.9\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"88.5\" cy=\"70.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"104.5\" cy=\"70.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><text x=\"336\" y=\"32\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">t₁</text><rect x=\"236\" y=\"40\" width=\"200\" height=\"150\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"351.7\" cy=\"112.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"363.7\" cy=\"112.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"261.6\" cy=\"116.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"276.6\" cy=\"116.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"261.4\" cy=\"159.1\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"276.4\" cy=\"159.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"305.6\" cy=\"70.1\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"320.6\" cy=\"70.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"393.3\" cy=\"70.8\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"409.3\" cy=\"70.8\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"394.0\" cy=\"114.2\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"409.0\" cy=\"114.2\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"350.0\" cy=\"71.9\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"366.0\" cy=\"71.9\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"350.1\" cy=\"158.5\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"366.1\" cy=\"158.5\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"397.0\" cy=\"163.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"409.0\" cy=\"163.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"305.7\" cy=\"117.2\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"317.7\" cy=\"117.2\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"261.7\" cy=\"67.5\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"273.7\" cy=\"67.5\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"306.4\" cy=\"158.1\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"322.4\" cy=\"158.1\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><text x=\"118\" y=\"222\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">t₂</text><rect x=\"18\" y=\"230\" width=\"200\" height=\"150\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"43.3\" cy=\"305.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"59.3\" cy=\"305.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"41.2\" cy=\"259.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"53.2\" cy=\"259.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"133.6\" cy=\"351.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"148.6\" cy=\"351.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"178.8\" cy=\"305.5\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"193.8\" cy=\"305.5\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"89.0\" cy=\"303.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"104.0\" cy=\"303.3\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"88.1\" cy=\"261.1\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"104.1\" cy=\"261.1\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"45.5\" cy=\"347.7\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"60.5\" cy=\"347.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"175.1\" cy=\"260.5\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"191.1\" cy=\"260.5\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"88.5\" cy=\"351.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"100.5\" cy=\"351.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"132.0\" cy=\"261.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"147.0\" cy=\"261.3\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"178.1\" cy=\"348.5\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"193.1\" cy=\"348.5\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"136.2\" cy=\"309.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"148.2\" cy=\"309.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><text x=\"336\" y=\"222\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">t₃</text><rect x=\"236\" y=\"230\" width=\"200\" height=\"150\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"264.4\" cy=\"350.1\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"279.4\" cy=\"350.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"399.8\" cy=\"309.9\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"411.8\" cy=\"309.9\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"261.7\" cy=\"304.9\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"276.7\" cy=\"304.9\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"306.5\" cy=\"305.9\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"322.5\" cy=\"305.9\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"394.7\" cy=\"349.5\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"410.7\" cy=\"349.5\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"264.4\" cy=\"262.1\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"279.4\" cy=\"262.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"308.1\" cy=\"348.5\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"323.1\" cy=\"348.5\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"352.7\" cy=\"346.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"364.7\" cy=\"346.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"349.2\" cy=\"261.1\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"365.2\" cy=\"261.1\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"349.9\" cy=\"304.7\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"364.9\" cy=\"304.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"306.2\" cy=\"261.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"321.2\" cy=\"261.3\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"398.2\" cy=\"264.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"410.2\" cy=\"264.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/></svg><p class=\"chem-small\">Key: <span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"42\" height=\"42\" aria-hidden=\"true\"><circle cx=\"13.0\" cy=\"21.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"29.0\" cy=\"21.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/></svg>X<sub>2</sub></span><span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"34\" height=\"34\" aria-hidden=\"true\"><circle cx=\"11.0\" cy=\"17.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"23.0\" cy=\"17.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/></svg>Y<sub>2</sub></span><span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"40\" height=\"40\" aria-hidden=\"true\"><circle cx=\"13.0\" cy=\"20.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"28.0\" cy=\"20.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/></svg>XY</span></p><p>The reaction is X<sub>2</sub>(g) + Y<sub>2</sub>(g) ⇌ 2 XY(g). The temperature is constant and t<sub>1</sub> &lt; t<sub>2</sub> &lt; t<sub>3</sub>.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-equilibrium-intro-1",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "equilibrium-intro-s1",
+   "q": "Which statement best describes the reactions in the flask at 20 s?",
+   "options": [
+    "The forward rate is greater than the reverse rate.",
+    "The forward and reverse rates are equal, so [NO<sub>2</sub>] is constant.",
+    "The forward reaction runs by itself until the N<sub>2</sub>O<sub>4</sub> is used up.",
+    "The reverse rate is greater than the forward rate, so N<sub>2</sub>O<sub>4</sub> is being re-formed."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A rising concentration of a product means the forward reaction is faster than the reverse reaction at that moment. The rates become equal only when the curve levels off.",
+    "options": [
+     "Right: [NO₂] is still rising at 20 s, so NO₂ forms faster than it turns back into N₂O₄.",
+     "Equal rates would make the curve flat. At 20 s the curve is still climbing, so the rates are not yet equal.",
+     "This treats the reaction as one-way. As soon as some NO₂ exists, NO₂ molecules collide and re-form N₂O₄, so the reverse reaction runs from the start.",
+     "If the reverse rate were larger, [NO₂] would be falling. It is rising."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-2",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "equilibrium-intro-s1",
+   "q": "Use the graph to calculate [N<sub>2</sub>O<sub>4</sub>] once the system has reached equilibrium.",
+   "numeric": {
+    "answer": 0.03,
+    "tol": 0.0001,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.01,
+      "rel": 0.02,
+      "why": "Value: you subtracted the NO₂ formed straight from the N₂O₄. Each N₂O₄ that reacts gives two NO₂, so N₂O₄ falls by half of 0.0400 M."
+     },
+     {
+      "value": 0.02,
+      "rel": 0.02,
+      "why": "Value: 0.0200 M is how much N₂O₄ reacted, not how much is left. Subtract it from the starting 0.0500 M."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At equilibrium [NO₂] = 0.0400 M. The 2 : 1 ratio means N₂O₄ fell by 0.0400 M ÷ 2 = 0.0200 M. So [N₂O₄] = 0.0500 M − 0.0200 M = 0.0300 M."
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-3",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "equilibrium-intro-s1",
+   "q": "From 50 s on, [NO<sub>2</sub>] stays at 0.0400 M. Which statement explains why?",
+   "options": [
+    "NO<sub>2</sub> forms and reacts away at equal rates.",
+    "The N<sub>2</sub>O<sub>4</sub> has run out, so no more NO<sub>2</sub> can form.",
+    "The molecules have stopped colliding because the flask has cooled.",
+    "The concentrations of N<sub>2</sub>O<sub>4</sub> and NO<sub>2</sub> have become equal."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A flat concentration curve means the rate at which NO₂ forms equals the rate at which it is used up. Both reactions keep running.",
+    "options": [
+     "Right: both reactions continue, and equal rates cancel in their effect on concentration. This is a dynamic equilibrium.",
+     "From the 2 : 1 ratio, 0.0300 M N₂O₄ is still present. It has not run out; it reacts as fast as it is re-formed.",
+     "The temperature is held constant and gas molecules keep colliding. Equilibrium is not a halt in motion.",
+     "At equilibrium [N₂O₄] = 0.0300 M and [NO₂] = 0.0400 M. Equilibrium means constant concentrations, not equal ones."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-4",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "equilibrium-intro-s1",
+   "q": "In a second trial at the same temperature, the student fills the same flask with 0.100 M NO<sub>2</sub> and no N<sub>2</sub>O<sub>4</sub>. What is [NO<sub>2</sub>] once the system reaches equilibrium?",
+   "options": [
+    "0.0400 M",
+    "0.100 M",
+    "0.0600 M",
+    "0.0200 M"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Equilibrium can be reached from either direction. 0.100 M NO₂ contains exactly the atoms of 0.0500 M N₂O₄, so at the same temperature the system ends at the same mixture: 0.0400 M NO₂ and 0.0300 M N₂O₄.",
+    "options": [
+     "Right: 0.100 M NO₂ holds the same atoms as 0.0500 M N₂O₄. Same atoms, same volume and same temperature give the same equilibrium mixture, whichever side you start from.",
+     "This assumes nothing happens when you start from the product side. NO₂ molecules combine to form N₂O₄ until the rates are equal.",
+     "This mirrors the first trial (0.100 − 0.0400) instead of reaching the same mixture. Starting from products, NO₂ falls to the same 0.0400 M.",
+     "This halves 0.0400 M as if the 2 : 1 ratio applied to the final concentration. The final mixture is the same as in the first trial."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-5",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "single",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "equilibrium-intro-s1",
+   "q": "Which feature of the graph shows that the system has reached equilibrium?",
+   "options": [
+    "The curve becomes flat.",
+    "The curve passes through half of its final value.",
+    "The curve is at its steepest, at the very start of the experiment.",
+    "[NO<sub>2</sub>] reaches the starting value of [N<sub>2</sub>O<sub>4</sub>]."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At equilibrium every concentration is constant, so a concentration-time graph becomes a horizontal line.",
+    "options": [
+     "Right: a slope of zero means the concentration is constant, which happens when the forward and reverse rates are equal.",
+     "Halfway is just a point on the way up; the concentration is still changing there.",
+     "The steepest part is where the forward reaction most outpaces the reverse reaction, the opposite of equilibrium.",
+     "No such rule exists. [NO₂] levels off at 0.0400 M, below the starting 0.0500 M of N₂O₄."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-6",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "equilibrium-intro-s2",
+   "q": "Based on the diagrams, which is the earliest time shown at which the system is known to be at equilibrium?",
+   "options": [
+    "t<sub>2</sub>",
+    "t<sub>1</sub>",
+    "t<sub>3</sub>",
+    "t = 0"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Equilibrium shows up as a composition that no longer changes with time. The first two snapshots with the same counts are t₂ and t₃.",
+    "options": [
+     "Right: the counts at t₂ and t₃ are the same (3, 3, 6), so the composition has stopped changing by t₂.",
+     "The counts change between t₁ and t₂ (XY goes from 4 to 6), so the system was still reacting overall at t₁.",
+     "The system is at equilibrium at t₃, but its composition was already the same at t₂.",
+     "At t = 0 there is no XY at all, so the reverse reaction cannot yet run and the composition is about to change."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-7",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "equilibrium-intro-s2",
+   "q": "Which statement describes what happens in the container between t<sub>2</sub> and t<sub>3</sub>?",
+   "options": [
+    "XY forms and breaks apart at equal rates.",
+    "No molecules react, because the reaction is complete.",
+    "XY molecules keep forming, but XY molecules no longer break apart into X<sub>2</sub> and Y<sub>2</sub>.",
+    "X<sub>2</sub> and Y<sub>2</sub> keep reacting until one of them runs out."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At equilibrium the forward and reverse rates are equal and not zero. The diagrams look the same because the two reactions cancel each other's effect on the counts.",
+    "options": [
+     "Right: equilibrium is dynamic. Individual XY molecules form and fall apart, but as many form as break apart in any stretch of time.",
+     "This is the static view of equilibrium. The forward and reverse reactions both continue; they just balance.",
+     "If XY only formed, its count would keep rising past 6. The count stays at 6, so XY also breaks apart.",
+     "Neither runs out: 3 of each remain at t₂ and t₃. A reversible reaction stops changing well before a reactant is used up."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-8",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "single",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "equilibrium-intro-s2",
+   "q": "Between t = 0 and t<sub>2</sub>, how many XY molecules form for each X<sub>2</sub> molecule that reacts?",
+   "options": [
+    "2",
+    "1",
+    "3",
+    "6"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Counts change in the ratio of the coefficients: X₂ goes from 6 to 3 (−3) and XY from 0 to 6 (+6), so 2 XY per X₂.",
+    "options": [
+     "Right: X₂ falls by 3 while XY rises by 6, matching the coefficients 1 and 2 in the equation.",
+     "This ignores the coefficient 2 in front of XY. Each X₂ supplies two X atoms, so it ends up in two XY molecules.",
+     "Three is how many X₂ molecules reacted, not how many XY form per X₂.",
+     "Six is the total number of XY formed. The question asks per X₂ molecule."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-9",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "single",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "equilibrium-intro-s2",
+   "q": "A student says, \"At equilibrium there should be equal numbers of reactant and product molecules, so the system at t<sub>3</sub> is not at equilibrium.\" Which response is correct?",
+   "options": [
+    "Wrong claim: equilibrium needs unchanging counts, as at t<sub>2</sub> and t<sub>3</sub>.",
+    "Right claim: there are more XY molecules than X<sub>2</sub> molecules, so the forward reaction is still ahead.",
+    "Right claim: equilibrium is reached when half of the reactant molecules have turned into product.",
+    "Wrong claim: the system is at equilibrium because the X<sub>2</sub> molecules have reacted away."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Equilibrium means the amounts are constant over time, not that they are equal. Here the composition is the same at t₂ and t₃.",
+    "options": [
+     "Right: the test for equilibrium is constant composition. The amounts can be very different from each other.",
+     "There are 3 X₂ + 3 Y₂ = 6 reactant molecules and 6 XY, but equality is not the test anyway. Constant counts are.",
+     "Nothing about equilibrium fixes it at the halfway point. Where it settles depends on the reaction and the temperature.",
+     "Three X₂ molecules remain. A system at equilibrium still holds reactants."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-10",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "single",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A sealed flask holds H<sub>2</sub>, I<sub>2</sub> and HI at equilibrium: H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g). A tiny amount of I<sub>2</sub> made of a radioactive iodine isotope is swapped in for the same amount of ordinary I<sub>2</sub>, so the concentrations do not change. Later, radioactive iodine atoms are found in HI molecules. What does this show?",
+   "options": [
+    "The forward reaction still runs at equilibrium.",
+    "The system was not at equilibrium before the swap.",
+    "The radioactive isotope made the forward reaction faster than the reverse reaction.",
+    "Reactions at equilibrium have stopped, and the label moved into HI molecules through mixing of the gases."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Labeled atoms trace individual molecules. Finding the label in HI proves I₂ keeps reacting at equilibrium; HI must also keep breaking down at the same rate, since the concentrations do not change.",
+    "options": [
+     "Right: the labeled I₂ could reach HI only by reacting. Constant concentrations with ongoing reaction is exactly a dynamic equilibrium.",
+     "The concentrations were constant before and after the swap. The label simply reveals reactions that were already happening.",
+     "The concentrations stay constant, so the rates stay equal. The isotope behaves chemically like ordinary iodine.",
+     "Mixing moves molecules around, but it cannot put an iodine atom inside an HI molecule. Bonds had to break and form."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-11",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Solid calcium carbonate decomposes when heated: CaCO<sub>3</sub>(s) ⇌ CaO(s) + CO<sub>2</sub>(g). A sample is heated in an open dish. Why does this system not reach equilibrium?",
+   "options": [
+    "CO<sub>2</sub> escapes, so it rarely meets CaO to react back.",
+    "Solids are not able to take part in reversible reactions.",
+    "The forward reaction is too slow to reach equilibrium at any temperature.",
+    "Heating makes the reverse reaction faster than the forward reaction."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A reversible reaction reaches equilibrium only in a closed system, where products stay available to react back. An open dish lets CO₂ escape.",
+    "options": [
+     "Right: equilibrium needs a closed system. With the gas leaving, CO₂ can hardly ever collide with CaO to re-form CaCO₃.",
+     "Solids can react in both directions; in a sealed container this same reaction does reach equilibrium.",
+     "Speed is not the issue: the heated solid does decompose. The problem is that a product leaves the system.",
+     "If the reverse reaction were faster, CaCO₃ would form, but the open dish loses CO₂ and the solid keeps decomposing."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-12",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "predict",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Pure N<sub>2</sub>O<sub>4</sub> is sealed in a flask at constant temperature. Predict how each quantity changes during the first minute, before equilibrium is reached: N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2 NO<sub>2</sub>(g).",
+   "variables": [
+    {
+     "name": "Rate of the forward reaction",
+     "answer": "down",
+     "why": "The forward rate depends on [N₂O₄], which falls as N₂O₄ is used up."
+    },
+    {
+     "name": "Rate of the reverse reaction",
+     "answer": "up",
+     "why": "The reverse rate depends on [NO₂], which rises from zero as NO₂ forms, so NO₂ molecules collide more often."
+    },
+    {
+     "name": "[NO<sub>2</sub>]",
+     "answer": "up",
+     "why": "The forward reaction is faster than the reverse reaction, so NO₂ builds up."
+    },
+    {
+     "name": "Total mass of gas in the flask",
+     "answer": "none",
+     "why": "The flask is sealed, so no atoms enter or leave; mass is conserved."
+    }
+   ],
+   "why": {
+    "correct": "As reactant is used up, the forward rate falls; as product builds up, the reverse rate rises. When the two meet, the concentrations stop changing."
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-13",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "order",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "H<sub>2</sub> and I<sub>2</sub> are sealed in a flask and react: H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g). Put the events in the order they happen.",
+   "options": [
+    "Only the forward reaction can occur, because no HI is present yet.",
+    "HI builds up, and HI molecules begin to react to re-form H<sub>2</sub> and I<sub>2</sub>.",
+    "The forward rate falls and the reverse rate rises as reactants are used up and HI accumulates.",
+    "The two rates become equal, and every concentration stays constant from then on."
+   ],
+   "why": {
+    "correct": "A reversible reaction starts with the forward rate largest and the reverse rate zero. The rates move toward each other until they are equal: that is chemical equilibrium."
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-14",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A flask starts with 0.0800 M N<sub>2</sub>O<sub>4</sub> and no NO<sub>2</sub>: N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2 NO<sub>2</sub>(g). At equilibrium, [N<sub>2</sub>O<sub>4</sub>] = 0.0520 M. Calculate [NO<sub>2</sub>] at equilibrium.",
+   "numeric": {
+    "answer": 0.056,
+    "tol": 0.0001,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.028,
+      "rel": 0.02,
+      "why": "Value: 0.0280 M is how much N₂O₄ reacted. Each N₂O₄ gives two NO₂, so multiply by 2."
+     },
+     {
+      "value": 0.014,
+      "rel": 0.02,
+      "why": "Value: you divided by 2. The coefficient 2 is on NO₂, so NO₂ rises twice as much as N₂O₄ falls."
+     }
+    ]
+   },
+   "why": {
+    "correct": "N₂O₄ fell by 0.0800 M − 0.0520 M = 0.0280 M. The coefficients are 1 : 2, so [NO₂] = 2 × 0.0280 M = 0.0560 M."
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-15",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which statement is true of every system at chemical equilibrium?",
+   "options": [
+    "The concentrations stay constant over time.",
+    "The concentrations of reactants and products are equal.",
+    "The forward and reverse reactions have both stopped.",
+    "The reaction has gone to completion."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At chemical equilibrium the forward and reverse rates are equal, so the concentrations are constant. They are usually not equal.",
+    "options": [
+     "Right: equal forward and reverse rates keep every amount steady.",
+     "This is the most common misconception. Equilibrium amounts can be very different; they are constant, not equal.",
+     "Both reactions continue at equal rates. That is why chemists call it dynamic.",
+     "A reaction that goes to completion uses up a reactant. At equilibrium, reactants and products are all present."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-16",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In the flask from the notes, N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2 NO<sub>2</sub>(g), the reverse reaction speeds up as NO<sub>2</sub> forms. Which explanation at the particle level is best?",
+   "options": [
+    "More NO<sub>2</sub> per liter means more NO<sub>2</sub>-NO<sub>2</sub> collisions.",
+    "NO<sub>2</sub> molecules move faster as they form, so they collide harder.",
+    "The N<sub>2</sub>O<sub>4</sub> molecules push the NO<sub>2</sub> molecules together.",
+    "The forward reaction releases energy that drives the reverse reaction."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A reaction rate depends on how often reacting particles collide. As [NO₂] grows, NO₂-NO₂ collisions become more frequent, so the reverse rate rises.",
+    "options": [
+     "Right: the reverse reaction needs two NO₂ molecules to collide. More NO₂ per liter means more such collisions each second.",
+     "Molecular speed depends on temperature, which is constant here. The change is in how many NO₂ molecules there are.",
+     "Molecules do not push others into reacting. The reverse rate depends on how often NO₂ molecules meet each other.",
+     "The reverse reaction does not need energy from the forward reaction to run; it speeds up because its reactant, NO₂, becomes more concentrated."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-17",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "multi",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which observations would tell you that a reaction in a sealed flask has reached equilibrium? Select all that apply.",
+   "options": [
+    "The color of the gas mixture stops changing.",
+    "The pressure inside the flask, at constant temperature, stops changing.",
+    "The flask contains equal amounts of reactants and products.",
+    "Bubbles of gas keep forming at a steady rate in the liquid."
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Any measured property that depends on composition, such as color or (when gas moles change) pressure, becomes constant at equilibrium.",
+    "options": [
+     "Right: color tracks the concentration of a colored gas, so a steady color means a steady concentration.",
+     "Right: when the number of gas molecules can change, a constant pressure means a constant composition.",
+     "Equal amounts are not the test for equilibrium. Constant amounts are.",
+     "Steady bubbling means a gas is being produced and leaving, so the composition is still changing."
+    ]
+   }
+  },
+  {
+   "id": "chem-equilibrium-intro-18",
+   "unit": "unit-7",
+   "topic": "equilibrium-intro",
+   "type": "single",
+   "practice": "1.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "What do the double half-arrows (⇌) in a chemical equation tell you?",
+   "options": [
+    "The reaction can run in both directions.",
+    "The reaction is twice as fast as one written with a single arrow.",
+    "The reactants and products are present in equal amounts.",
+    "The reaction gives off heat to the surroundings."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The ⇌ symbol shows a reversible reaction: products can react to re-form the reactants.",
+    "options": [
+     "Right: the symbol marks a reversible reaction.",
+     "The symbol says nothing about speed.",
+     "The symbol says the reaction is reversible, not how much of each species is present.",
+     "Energy changes are shown with ΔH, not with the arrow."
+    ]
+   }
+  }
+ ]
+}

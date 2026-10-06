@@ -1,0 +1,12 @@
+{
+ "equilibrium-approach": {
+  "file": "figures/equilibrium-approach.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 345,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two graphs for N2O4 forming NO2 in a sealed flask, starting from 0.0500 M N2O4. Graph A, concentration against time: N2O4 falls from 0.0500 M and levels off at 0.0300 M; NO2 rises from zero, twice as fast, and levels off at 0.0400 M. Graph B, rate against time: the forward rate starts high and falls, the reverse rate starts at zero and rises, and they meet and stay equal from about 50 s, the same time the concentrations level off."
+ }
+}

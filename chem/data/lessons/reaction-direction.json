@@ -1,0 +1,98 @@
+{
+ "topic": "reaction-direction",
+ "hook": "Push a swing that is already moving and it goes higher, then settles into a new steady rhythm. A reaction at equilibrium responds to a push in a similar way. Add more of one substance, and one of the two opposing reactions suddenly runs faster than the other. The mixture changes until the two rates are balanced again.",
+ "prereq": [
+  {
+   "q": "Which statement is true at chemical equilibrium?",
+   "options": [
+    "The forward and reverse rates are equal",
+    "The forward and reverse reactions have stopped",
+    "The reactant and product concentrations are equal",
+    "Only the forward reaction occurs"
+   ],
+   "correct": 0,
+   "why": "Equal rates keep every concentration constant; both reactions continue.",
+   "review": "equilibrium-intro"
+  },
+  {
+   "q": "Raising the concentration of a reactant usually does what to the rate of the reaction that uses it?",
+   "options": [
+    "Increases it",
+    "Decreases it",
+    "Has no effect",
+    "Reverses it"
+   ],
+   "correct": 0,
+   "why": "More particles per liter means more effective collisions each second.",
+   "review": "collision-model"
+  },
+  {
+   "q": "A catalyst speeds up a reaction by",
+   "options": [
+    "providing a pathway with a lower activation energy",
+    "raising the temperature",
+    "being used up as a reactant",
+    "raising the energy of the products"
+   ],
+   "correct": 0,
+   "why": "A catalyst offers a lower-barrier pathway and is regenerated at the end.",
+   "review": "catalysis"
+  }
+ ],
+ "figure": {
+  "figure": "net-reaction-arrows",
+  "caption": "The longer arrow wins: the net reaction goes in the direction of the faster reaction, and there is no net change when the rates are equal."
+ },
+ "chain": [
+  {
+   "cause": "The forward rate is greater than the reverse rate",
+   "effect": "there is a net forward reaction: reactants fall and products rise"
+  },
+  {
+   "cause": "Reactants are used up and products build up",
+   "effect": "the forward rate falls and the reverse rate rises"
+  },
+  {
+   "cause": "The two rates become equal",
+   "effect": "the net reaction stops and the system is at equilibrium"
+  },
+  {
+   "cause": "A species is added to or removed from the equilibrium mixture",
+   "effect": "the rate of the reaction that uses it changes first, so a net reaction runs until the rates are equal again"
+  }
+ ],
+ "ideas": [
+  "The <b>net reaction</b> goes in the direction of the faster reaction: forward if forward &gt; reverse, reverse if reverse &gt; forward.",
+  "Each rate depends on the concentrations of the species that react in that direction.",
+  "A net reaction always moves the rates toward each other, so a closed system heads to equilibrium.",
+  "Adding or removing a species changes one rate first; the system then has a net reaction until the rates match again. A catalyst speeds both rates equally and causes no net change."
+ ],
+ "misconception": {
+  "wrong": "The net reaction always goes forward, from the left side of the equation to the right.",
+  "right": "Direction depends only on which rate is larger. A mixture that starts rich in products has a faster reverse reaction, so it runs in reverse until the rates match."
+ },
+ "check": [
+  "chem-reaction-direction-1",
+  "chem-reaction-direction-2",
+  "chem-reaction-direction-3",
+  "chem-reaction-direction-6",
+  "chem-reaction-direction-7",
+  "chem-reaction-direction-11",
+  "chem-reaction-direction-14"
+ ],
+ "summary": "A mixture of reactants and products has a net reaction in the direction of the faster reaction: forward when the forward rate is larger, reverse when the reverse rate is larger, and none when they are equal. Each rate depends on the concentrations of the species it uses, so a net reaction pulls the rates together until equilibrium. Adding or removing a species changes one rate first and starts a net reaction; a catalyst speeds both equally.",
+ "connections": [
+  {
+   "href": "../notes/equilibrium-intro.html",
+   "label": "Back: what equilibrium is (7.1)"
+  },
+  {
+   "href": "../notes/collision-model.html",
+   "label": "Back: why concentration changes rate (5.5)"
+  },
+  {
+   "href": "../notes/q-and-k.html",
+   "label": "Next: a number-based test for direction (7.3)"
+  }
+ ]
+}

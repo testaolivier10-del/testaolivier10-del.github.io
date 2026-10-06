@@ -109,7 +109,10 @@
     }
     return null;
   }
-  function near(x, a, N){ var tol = N.rel != null ? Math.abs(a) * N.rel : (N.tol || 0); return Math.abs(x - a) <= tol + 1e-9 * Math.max(1, Math.abs(a)); }
+  // Floating-point slack is relative to the key: Ksp-sized answers (1e-11) must
+  // not accept everything within an absolute 1e-9.
+  function slack(a){ return 1e-9 * Math.abs(a) + 1e-300; }
+  function near(x, a, N){ var tol = N.rel != null ? Math.abs(a) * N.rel : (N.tol || 0); return Math.abs(x - a) <= tol + slack(a); }
 
   /* Grades a numeric response on its parts. Returns { valid, correct, score,
      value, parts: { value, unit, sig } (true, false, or null when not graded),
@@ -128,7 +131,7 @@
     // to the student's own precision: a rounding choice is a significant-figures
     // matter, reported once, under significant figures.
     var own = N.places != null || (N.sigfigs == null && N.decimals != null) ? +Number(N.answer).toFixed(places(p.digits)) : +Number(N.answer).toPrecision(Math.min(21, Math.max(1, sigFigs(p.digits))));
-    var valueOk = near(p.num, N.answer, N) || ((N.sigfigs != null || N.places != null) && Math.abs(p.num - own) <= 1e-9 * Math.max(1, Math.abs(own)));
+    var valueOk = near(p.num, N.answer, N) || ((N.sigfigs != null || N.places != null) && Math.abs(p.num - own) <= slack(own));
     var notes = [], parts = { value: valueOk, unit: null, sig: null }, mistake = null;
     if(N.askUnit && accepted.length){
       if(!unitTyped){ parts.unit = false; notes.push('Units: a number without its unit is incomplete. This answer is in ' + N.unit + '.'); }

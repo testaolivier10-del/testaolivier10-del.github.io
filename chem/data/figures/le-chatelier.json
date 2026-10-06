@@ -1,0 +1,12 @@
+{
+ "le-chatelier-stresses": {
+  "file": "figures/le-chatelier-stresses.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 345,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A table of changes made to a system at equilibrium, the direction of shift, and whether K changes. Add a reactant or remove a product: shift toward products, K unchanged. Add a product or remove a reactant: toward reactants, K unchanged. Decrease the volume of a gas mixture: toward fewer gas moles, K unchanged. Add an inert gas at constant volume: no shift. Add a catalyst: no shift. Raise the temperature of an endothermic reaction: toward products, and K rises. Raise the temperature of an exothermic reaction: toward reactants, and K falls."
+ }
+}

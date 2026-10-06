@@ -1,0 +1,12 @@
+{
+ "k-magnitude-scale": {
+  "file": "figures/k-magnitude-scale.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 230,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A logarithmic scale of K from 10 to the minus 12 on the left to 10 to the 12 on the right. Far left, K much less than 1: reactant-favored, mostly reactants at equilibrium with a little product. A shaded band around K = 1, roughly 10 to the minus 3 to 10 to the 3: appreciable amounts of both. Far right, K much greater than 1: product-favored, mostly products with a little reactant. A note says K tells where equilibrium lies, not how fast it is reached."
+ }
+}

@@ -1,0 +1,102 @@
+{
+ "topic": "equilibrium-concentrations",
+ "hook": "A factory making ammonia needs to know how much product it will get from a tank of nitrogen and hydrogen before it builds the reactor. Nobody can wait for the gases to settle and measure. Instead, engineers take the equilibrium constant, the starting amounts and a three-row table, and calculate exactly what the mixture will hold at equilibrium.",
+ "prereq": [
+  {
+   "q": "In an ICE table for A ⇌ 2 B, if A changes by −x, what is the change in B?",
+   "options": [
+    "+2x",
+    "+x",
+    "−2x",
+    "+x/2"
+   ],
+   "correct": 0,
+   "why": "Changes follow the coefficients: 1 A used makes 2 B.",
+   "review": "calculating-k"
+  },
+  {
+   "q": "A mixture has Q &gt; K. Which way does the net reaction go?",
+   "options": [
+    "In reverse, toward reactants",
+    "Forward, toward products",
+    "Neither; it is at equilibrium",
+    "It depends on the temperature only"
+   ],
+   "correct": 0,
+   "why": "Q > K means too much product, so the reaction runs in reverse until Q = K.",
+   "review": "q-and-k"
+  },
+  {
+   "q": "For a reaction with K = 1 × 10<sup>−8</sup>, starting from reactants, how much reactant is left at equilibrium?",
+   "options": [
+    "Almost all of it",
+    "About half",
+    "Almost none",
+    "Exactly none"
+   ],
+   "correct": 0,
+   "why": "A tiny K means a reactant-favored equilibrium: very little reacts.",
+   "review": "k-magnitude"
+  }
+ ],
+ "figure": {
+  "figure": "ice-solve-flow",
+  "caption": "Direction, ICE table, substitute, then solve by square root, small-x approximation or the quadratic formula, and check."
+ },
+ "chain": [
+  {
+   "cause": "Q is compared with K for the starting mixture",
+   "effect": "you know which side is used up and which forms"
+  },
+  {
+   "cause": "The ICE table writes each change as ±x times a coefficient",
+   "effect": "every equilibrium concentration is written with one unknown"
+  },
+  {
+   "cause": "The Equilibrium row is substituted into the K expression",
+   "effect": "you get one equation in x"
+  },
+  {
+   "cause": "K is small compared with the starting concentration",
+   "effect": "x can be dropped from (initial − x), and a 5% check confirms it"
+  },
+  {
+   "cause": "x is solved and checked",
+   "effect": "every equilibrium concentration follows from Initial + Change"
+  }
+ ],
+ "ideas": [
+  "Always find the direction first by comparing Q with K; it sets the signs in the Change row.",
+  "Changes are ±x × coefficient. Equilibrium = Initial + Change. Use molarities.",
+  "Perfect square: take the square root of both sides. Small K: drop x only from (initial − x), never x standing alone.",
+  "Check the <b>small-x approximation</b>: the change must be under about 5% of the starting value; otherwise solve exactly."
+ ],
+ "misconception": {
+  "wrong": "If K is small, x is small, so every x in the equation can be set to zero.",
+  "right": "Only x that is added to or subtracted from a larger number can be dropped: 0.50 − 2x ≈ 0.50. The x terms standing alone on top of the expression stay, or there is nothing left to solve. Then check the 5% rule."
+ },
+ "check": [
+  "chem-equilibrium-concentrations-1",
+  "chem-equilibrium-concentrations-2",
+  "chem-equilibrium-concentrations-5",
+  "chem-equilibrium-concentrations-6",
+  "chem-equilibrium-concentrations-13",
+  "chem-equilibrium-concentrations-14",
+  "chem-equilibrium-concentrations-15"
+ ],
+ "summary": "To find equilibrium concentrations from K, compare Q with K to get the direction, build an ICE table with changes of ±x times each coefficient, substitute the Equilibrium row into K and solve for x. A perfect-square expression is solved by a square root. When K is small compared with the starting concentration, x can be dropped from (initial − x) but never set to zero elsewhere, and the result must pass the 5% check; otherwise use the quadratic formula.",
+ "connections": [
+  {
+   "href": "../notes/calculating-k.html",
+   "label": "Back: ICE tables to find K (7.4)"
+  },
+  {
+   "href": "../notes/k-magnitude.html",
+   "label": "Back: why a small K means a small change (7.5)"
+  },
+  {
+   "href": "../notes/equilibrium-representations.html",
+   "label": "Next: particle diagrams and graphs of equilibrium (7.8)"
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+<p>Topic 7.4 used an ICE table to find K from a measured concentration. This page runs the same table the other way: you know K and the starting amounts, and you need the equilibrium concentrations. This is the calculation students most often say they cannot do, so the page walks through it slowly, with three worked examples that cover the three ways the algebra can go.</p>
+
+<h2>The method in four steps</h2>
+<figure id="fig-iceflow" data-fig="ice-solve-flow"><figcaption>Figure 1. The steps for finding equilibrium concentrations from K.</figcaption></figure>
+<ol>
+<li><b>Find the direction.</b> Calculate Q from the starting amounts and compare it with K (topic 7.3). If only reactants are present, Q = 0 and the reaction goes forward. If both sides are present, you must check.</li>
+<li><b>Build the ICE table.</b> Initial concentrations (convert moles to molarity first). Change: x times each coefficient, negative on the side that is used, positive on the side that forms. Equilibrium: Initial + Change.</li>
+<li><b>Substitute the Equilibrium row into the K expression</b> and solve for x.</li>
+<li><b>Check.</b> Concentrations cannot be negative. If you approximated, apply the 5% test. Optionally, put your answers back into K and confirm you get K.</li>
+</ol>
+
+<h2>Worked example 1: a perfect square</h2>
+<div class="worked">
+<p><b>Problem.</b> For H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g), K<sub>c</sub> = 50.0 at 450 °C. A 1.00 L flask starts with 0.100 M H<sub>2</sub> and 0.100 M I<sub>2</sub>. Find every equilibrium concentration.</p>
+<p><b>Step 1, direction.</b> No HI, so Q = 0 &lt; K: net forward.</p>
+<p><b>Step 2, ICE table.</b></p>
+<table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">[H<sub>2</sub>] (M)</th><th scope="col">[I<sub>2</sub>] (M)</th><th scope="col">[HI] (M)</th></tr></thead>
+<tbody>
+<tr><th scope="row">Initial</th><td>0.100</td><td>0.100</td><td>0</td></tr>
+<tr><th scope="row">Change</th><td>−x</td><td>−x</td><td>+2x</td></tr>
+<tr><th scope="row">Equilibrium</th><td>0.100 − x</td><td>0.100 − x</td><td>2x</td></tr>
+</tbody></table>
+<p><b>Step 3, substitute.</b> 50.0 = (2x)<sup>2</sup> / ((0.100 − x)(0.100 − x)) = (2x)<sup>2</sup> / (0.100 − x)<sup>2</sup>.</p>
+<p>K is not small, so x is not small; do not drop it. But both sides are perfect squares, so take the square root of each: 2x / (0.100 − x) = √50.0 = 7.071.</p>
+<p>Solve: 2x = 7.071(0.100 − x) = 0.7071 − 7.071x, so 9.071x = 0.7071 and x = 0.0780 M.</p>
+<p><b>Step 4, results and check.</b> [HI] = 2x = <b>0.156 M</b>; [H<sub>2</sub>] = [I<sub>2</sub>] = 0.100 − 0.0780 = <b>0.0220 M</b>. Check: (0.156)<sup>2</sup> / (0.0220)<sup>2</sup> = 50.3, equal to 50.0 within rounding.</p>
+</div>
+
+<h2>Worked example 2: K is small, so x is small</h2>
+<p>When K is very small compared with the starting concentration, very little reactant is used. Then a term such as (0.50 − 2x) is almost exactly 0.50, and replacing it by 0.50 makes the algebra easy. This is the <b>small-x approximation</b>.</p>
+<div class="worked">
+<p><b>Problem.</b> For 2 NOCl(g) ⇌ 2 NO(g) + Cl<sub>2</sub>(g), K<sub>c</sub> = 1.6 × 10<sup>−5</sup>. A flask starts with 0.50 M NOCl. Find [NO] and [Cl<sub>2</sub>] at equilibrium.</p>
+<p><b>Step 1.</b> Only NOCl present, so net forward.</p>
+<p><b>Step 2.</b> Initial: 0.50, 0, 0. Change: −2x, +2x, +x. Equilibrium: 0.50 − 2x, 2x, x.</p>
+<p><b>Step 3.</b> 1.6 × 10<sup>−5</sup> = (2x)<sup>2</sup>(x) / (0.50 − 2x)<sup>2</sup>. K is tiny, so assume 2x ≪ 0.50 and write 0.50 − 2x ≈ 0.50:</p>
+<p style="text-align:center">1.6 × 10<sup>−5</sup> = 4x<sup>3</sup> / (0.50)<sup>2</sup> → 4x<sup>3</sup> = 4.0 × 10<sup>−6</sup> → x<sup>3</sup> = 1.0 × 10<sup>−6</sup> → x = 0.010 M</p>
+<p><b>Step 4, the 5% check.</b> The amount subtracted is 2x = 0.020 M, and 0.020 / 0.50 × 100% = 4%. That is under 5%, so the approximation is justified. [Cl<sub>2</sub>] = x = <b>0.010 M</b>; [NO] = 2x = <b>0.020 M</b>; [NOCl] ≈ <b>0.48 M</b>.</p>
+</div>
+<p>Two rules make the approximation safe:</p>
+<ul>
+<li><b>Drop x only where it is added to or subtracted from a larger number.</b> (0.50 − 2x) becomes 0.50, but the 2x and x on top stay. Setting those to zero would leave nothing to solve for.</li>
+<li><b>Always check.</b> The change should be under about 5% of the starting concentration. If it is not, the approximation fails and you solve exactly.</li>
+</ul>
+
+<h2>Worked example 3: x is not small</h2>
+<div class="worked">
+<p><b>Problem.</b> For PCl<sub>5</sub>(g) ⇌ PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g), K<sub>c</sub> = 0.040. A flask starts with 0.200 M PCl<sub>5</sub>. Find [Cl<sub>2</sub>] at equilibrium.</p>
+<p><b>Steps 1-3.</b> Net forward; Equilibrium row 0.200 − x, x, x; so x<sup>2</sup> / (0.200 − x) = 0.040.</p>
+<p><b>Try the approximation:</b> x<sup>2</sup> ≈ 0.040 × 0.200 = 0.0080, x ≈ 0.089 M. <b>Check:</b> 0.089 / 0.200 = 45%. Far over 5%: the approximation fails.</p>
+<p><b>Solve exactly.</b> x<sup>2</sup> = 0.040(0.200 − x) gives x<sup>2</sup> + 0.040x − 0.0080 = 0. Quadratic formula: x = [−0.040 + √((0.040)<sup>2</sup> + 4 × 0.0080)] / 2 = (−0.040 + 0.1833) / 2 = <b>0.072 M</b>. (The other root is negative, so it is not a concentration.)</p>
+<p>[Cl<sub>2</sub>] = [PCl<sub>3</sub>] = 0.072 M; [PCl<sub>5</sub>] = 0.200 − 0.072 = 0.13 M. Check: (0.072)<sup>2</sup>/0.128 = 0.040.</p>
+</div>
+
+<h2>When the reaction runs in reverse</h2>
+<p>If the starting mixture has products, find Q first. For CO(g) + H<sub>2</sub>O(g) ⇌ CO<sub>2</sub>(g) + H<sub>2</sub>(g) with K<sub>c</sub> = 1.56 and starting concentrations 0.0500 M CO and H<sub>2</sub>O, 0.200 M CO<sub>2</sub> and H<sub>2</sub>: Q = (0.200)<sup>2</sup>/(0.0500)<sup>2</sup> = 16.0 &gt; K. The net reaction goes in reverse, so the Change row is +x for CO and H<sub>2</sub>O and −x for CO<sub>2</sub> and H<sub>2</sub>. Writing −x on the reactants out of habit gives negative concentrations or nonsense.</p>
+<aside class="going-further"><p><b>For your exam:</b> show the ICE table (or describe each change), state any approximation and justify it ("x is small because K is small; 2x = 0.020 M is 4% of 0.50 M"), and report concentrations with units. Exam problems are usually built so that x is small or the expression is a perfect square; if neither works, the quadratic formula always does.</p></aside>

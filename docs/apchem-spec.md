@@ -130,7 +130,7 @@ All on one branch, `claude/apchem` (decision 5), one PR at the end.
 |---|---|---|
 | 0 | CED topic map (own words, 91 topics), dependency map, fork generator and runtime, checks, registration (registry, Premium pass, Worker, SQL migration, hub/pricing hidden until published, search, sitemap, OG card, budgets, theme colour) | **done 2026-10-06** (decisions 6-12): `docs/apchem-ced-map.json`, `docs/apchem-dependency-map.json` (96 topics, 285 concepts; `docs/apchem-phase0.md`), `scripts/build-apchem.mjs`, `check-apchem-map.mjs`, `check-apchem-content.mjs`, runtime `chem/assets/`, formats in `docs/apchem-architecture.md`, rules in `docs/apchem-authoring-guide.md`. Nothing published (`chem/data/published.json` empty, every page noindex); placeholder sample only in `scripts/test/fixtures/apchem-data/` |
 | 1 | Units 1-3 (where students are now) with the math refresher, notes, lessons, banks, FRQs, particle-diagram practice; independent accuracy check per unit; Beta | next |
-| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | |
+| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 7 content written 2026-10-06 (decision 13): 12 topics, 200 items, 13 figures, 5 FRQs; not yet accuracy-checked or published; ICE and Q-vs-K trainers not built |
 | 3 | Justification trainer, full practice exams, equations-sheet page, score calculator, cram kit | |
 | 4 | Second accuracy pass on the whole course; PR to owner | |
 
@@ -190,6 +190,15 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    (`moles-molar-mass`, 15 items in two sets incl. a particle set and unit/sig-fig numerics, two
    placeholder FRQs) lives in `scripts/test/fixtures/apchem-data/` and is built only by tests
    (`APCHEM_DATA`). It is not accuracy-checked; authors write the real topic in `chem/data/`.
+
+13. (2026-10-06, Unit 7) **Unit 7 content and two shared fixes.** Map: "Q < K", "Q > K", "Q = K" moved to
+   `reaction-quotient` (7.3, where the CED teaches the comparison; `q-vs-k` in 7.10 keeps the justification
+   terms) and `ice-table` moved to `calculating-k` (7.4 uses ICE tables before 7.7). Grader: the numeric
+   floating-point slack in `chem-questions.js` (and the matching check in `check-apchem-content.mjs`) is now
+   relative to the key; the old absolute 1e-9 accepted any answer to a Ksp-sized question (test added).
+   Five FRQs: long `frq-iron-thiocyanate` (lab, Beer's law, Q vs K) and `frq-hydrogen-iodide-particles`;
+   short `frq-methanol-shift`, `frq-strontium-fluoride`, `frq-phosgene-ice`. Open points: needs-author
+   `unit7-data`, `unit7-small-x`.
 
 ## 8. Open items for the owner
 

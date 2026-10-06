@@ -1,0 +1,12 @@
+{
+ "common-ion-shift": {
+  "file": "figures/common-ion-shift.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A bar chart of the molar solubility of PbCl2 at 25 °C: 1.6 × 10−2 M in pure water, falling to 1.3 × 10−2 M in 0.010 M NaCl, 4.8 × 10−3 M in 0.050 M NaCl and 2.7 × 10−4 M in 0.25 M NaCl. A side panel explains: Q = [Pb2+][Cl−] squared; added chloride raises Q above Ksp, so solid forms until Q = Ksp; Ksp is unchanged but the solubility is lower."
+ }
+}

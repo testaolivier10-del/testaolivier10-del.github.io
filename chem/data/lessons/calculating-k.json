@@ -1,0 +1,98 @@
+{
+ "topic": "calculating-k",
+ "hook": "Seventy years ago, chemists ran the same reaction in dozens of flasks, each started with different amounts of hydrogen, iodine and hydrogen iodide. The final mixtures looked nothing alike. Yet when they combined the measured concentrations in one particular way, every flask gave the same number, to within rounding. That number is the equilibrium constant, and calculating it is the subject of this lesson.",
+ "prereq": [
+  {
+   "q": "What is K<sub>c</sub> for N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2 NO<sub>2</sub>(g)?",
+   "options": [
+    "[NO<sub>2</sub>]<sup>2</sup> / [N<sub>2</sub>O<sub>4</sub>]",
+    "2[NO<sub>2</sub>] / [N<sub>2</sub>O<sub>4</sub>]",
+    "[N<sub>2</sub>O<sub>4</sub>] / [NO<sub>2</sub>]<sup>2</sup>",
+    "[NO<sub>2</sub>] / [N<sub>2</sub>O<sub>4</sub>]"
+   ],
+   "correct": 0,
+   "why": "Products over reactants, each raised to its coefficient.",
+   "review": "q-and-k"
+  },
+  {
+   "q": "In 2 H<sub>2</sub> + O<sub>2</sub> → 2 H<sub>2</sub>O, if 0.30 mol O<sub>2</sub> reacts, how much H<sub>2</sub> reacts?",
+   "options": [
+    "0.60 mol",
+    "0.30 mol",
+    "0.15 mol",
+    "0.90 mol"
+   ],
+   "correct": 0,
+   "why": "The mole ratio is 2 H₂ : 1 O₂.",
+   "review": "stoichiometry"
+  },
+  {
+   "q": "What is the molarity of 0.40 mol of solute in 2.0 L of solution?",
+   "options": [
+    "0.20 M",
+    "0.80 M",
+    "5.0 M",
+    "0.40 M"
+   ],
+   "correct": 0,
+   "why": "Molarity = moles / liters = 0.40 / 2.0.",
+   "review": "solutions"
+  }
+ ],
+ "figure": {
+  "figure": "ice-table-layout",
+  "caption": "The change row follows the coefficients, so one measured equilibrium amount fixes x and every other concentration."
+ },
+ "chain": [
+  {
+   "cause": "Different equilibrium mixtures of one reaction are measured at the same temperature",
+   "effect": "their concentrations differ, but K = products over reactants (with exponents) comes out the same"
+  },
+  {
+   "cause": "Only the starting amounts and one equilibrium value are known",
+   "effect": "an ICE table writes every change as x times a coefficient"
+  },
+  {
+   "cause": "The measured value fixes x",
+   "effect": "every equilibrium concentration follows from Initial + Change"
+  },
+  {
+   "cause": "The equilibrium concentrations are put into the K expression",
+   "effect": "you get the value of K, with no units and the data’s significant figures"
+  }
+ ],
+ "ideas": [
+  "K is calculated from <b>equilibrium</b> concentrations or pressures only.",
+  "Every equilibrium mixture of a reaction at one temperature gives the same K.",
+  "In a <b>heterogeneous equilibrium</b> (more than one phase), pure solids and liquids still drop out of K.",
+  "An <b>ICE table</b> (Initial, Change, Equilibrium) writes each change as x times the coefficient, so one measured value gives them all."
+ ],
+ "misconception": {
+  "wrong": "You can put the starting concentrations into the K expression to find K.",
+  "right": "Starting concentrations give Q at the start, which can be any value. K needs the equilibrium concentrations; use an ICE table to get them from the starting amounts and one measured value."
+ },
+ "check": [
+  "chem-calculating-k-1",
+  "chem-calculating-k-3",
+  "chem-calculating-k-6",
+  "chem-calculating-k-7",
+  "chem-calculating-k-8",
+  "chem-calculating-k-10",
+  "chem-calculating-k-15"
+ ],
+ "summary": "To calculate K, substitute equilibrium concentrations (or partial pressures for K<sub>p</sub>) into the expression; every equilibrium mixture at one temperature gives the same value. Pure solids and liquids stay out of K even in a heterogeneous equilibrium. When only starting amounts and one equilibrium value are known, an ICE table writes each change as x times its coefficient, the measured value fixes x, and the equilibrium row goes into K.",
+ "connections": [
+  {
+   "href": "../notes/q-and-k.html",
+   "label": "Back: writing K and Q (7.3)"
+  },
+  {
+   "href": "../notes/stoichiometry.html",
+   "label": "Back: mole ratios (4.5)"
+  },
+  {
+   "href": "../notes/equilibrium-concentrations.html",
+   "label": "Ahead: ICE tables to find concentrations from K (7.7)"
+  }
+ ]
+}

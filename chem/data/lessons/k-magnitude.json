@@ -1,0 +1,98 @@
+{
+ "topic": "k-magnitude",
+ "hook": "The air around you is 78% nitrogen and 21% oxygen, and the two can react to form nitric oxide. They do not, at least not in any amount you could measure. The equilibrium constant for that reaction at room temperature is about 10<sup>−31</sup>. One glance at the size of K tells you the air is safe, without any calculation at all.",
+ "prereq": [
+  {
+   "q": "In the expression for K, where do the products go?",
+   "options": [
+    "In the numerator (top)",
+    "In the denominator (bottom)",
+    "They are left out",
+    "They are added to the reactants"
+   ],
+   "correct": 0,
+   "why": "K is products over reactants, each raised to its coefficient.",
+   "review": "q-and-k"
+  },
+  {
+   "q": "For A ⇌ B, an equilibrium mixture has [A] = 0.10 M and [B] = 0.50 M. What is K?",
+   "options": [
+    "5.0",
+    "0.20",
+    "0.050",
+    "0.60"
+   ],
+   "correct": 0,
+   "why": "K = [B]/[A] = 0.50/0.10.",
+   "review": "calculating-k"
+  },
+  {
+   "q": "What does activation energy control?",
+   "options": [
+    "How fast a reaction proceeds",
+    "How much product forms at equilibrium",
+    "Whether a reaction is exothermic",
+    "The coefficients in the equation"
+   ],
+   "correct": 0,
+   "why": "A higher activation energy means fewer effective collisions per second, so a slower reaction.",
+   "review": "collision-model"
+  }
+ ],
+ "figure": {
+  "figure": "k-magnitude-scale",
+  "caption": "Large K: mostly products at equilibrium. Small K: mostly reactants. Near 1: both. The size of K says nothing about speed."
+ },
+ "chain": [
+  {
+   "cause": "K is products over reactants at equilibrium",
+   "effect": "its size tells you which side dominates the equilibrium mixture"
+  },
+  {
+   "cause": "K is much greater than 1",
+   "effect": "the mixture is mostly products: product-favored"
+  },
+  {
+   "cause": "K is much less than 1",
+   "effect": "the mixture is mostly reactants, with a little product: reactant-favored"
+  },
+  {
+   "cause": "K describes only the final mixture",
+   "effect": "it gives no information about how fast equilibrium is reached"
+  }
+ ],
+ "ideas": [
+  "K ≫ 1: <b>product-favored</b>; mostly products at equilibrium.",
+  "K ≪ 1: <b>reactant-favored</b>; mostly reactants, but some product forms.",
+  "K near 1: appreciable amounts of both reactants and products.",
+  "K tells you how far a reaction goes, never how fast."
+ ],
+ "misconception": {
+  "wrong": "A large K means the reaction is fast.",
+  "right": "K describes the equilibrium mixture only. H₂ and O₂ have an enormous K for making water but do not react for years at room temperature, because the activation energy is high."
+ },
+ "check": [
+  "chem-k-magnitude-1",
+  "chem-k-magnitude-2",
+  "chem-k-magnitude-4",
+  "chem-k-magnitude-5",
+  "chem-k-magnitude-6",
+  "chem-k-magnitude-7",
+  "chem-k-magnitude-12"
+ ],
+ "summary": "Because K is products over reactants at equilibrium, its size describes the equilibrium mixture. K much greater than 1 means product-favored (mostly products), K much less than 1 means reactant-favored (mostly reactants, a little product), and K near 1 means appreciable amounts of both. A small K lets you estimate product amounts by treating the reactant concentration as unchanged. K says how far a reaction goes, not how fast.",
+ "connections": [
+  {
+   "href": "../notes/calculating-k.html",
+   "label": "Back: calculating K (7.4)"
+  },
+  {
+   "href": "../notes/energy-profiles.html",
+   "label": "Back: activation energy and speed (5.6)"
+  },
+  {
+   "href": "../notes/k-properties.html",
+   "label": "Next: K for reversed and combined reactions (7.6)"
+  }
+ ]
+}

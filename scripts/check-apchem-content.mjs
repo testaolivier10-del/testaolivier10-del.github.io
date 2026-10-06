@@ -165,11 +165,13 @@ export function numericProblems(N) {
   const tol = hasRel ? Math.abs(N.answer) * (N.rel || 0) : (N.tol || 0);
   // Honest rounding of intermediate steps moves the last digit by one or two;
   // a wider tolerance would accept a wrong method.
-  if (ulp !== null && tol > 2 * ulp + 1e-12) bad(`numeric tolerance (${+tol.toPrecision(3)}) is more than two units in the last digit (${+ulp.toPrecision(3)}); tighten it`);
+  // Float slack is relative to the answer, so Ksp-sized keys (1e-18) are judged fairly.
+  const eps = 1e-9 * Math.abs(N.answer) + 1e-300;
+  if (ulp !== null && tol > 2 * ulp + eps) bad(`numeric tolerance (${+tol.toPrecision(3)}) is more than two units in the last digit (${+ulp.toPrecision(3)}); tighten it`);
   if (N.answer !== 0 && tol >= Math.abs(N.answer) * 0.5) bad('numeric tolerance is half the answer or more');
   for (const [i, mk] of (N.mistakes || []).entries()) {
     if (!Number.isFinite(mk.value)) bad(`numeric.mistakes[${i}].value must be a number`);
-    else if (Math.abs(mk.value - N.answer) <= tol + 1e-12) bad(`numeric.mistakes[${i}] (${mk.value}) is inside the answer's tolerance, so it can never be shown`);
+    else if (Math.abs(mk.value - N.answer) <= tol + eps) bad(`numeric.mistakes[${i}] (${mk.value}) is inside the answer's tolerance, so it can never be shown`);
     if (!mk.why || strip(mk.why).trim().length < 20) bad(`numeric.mistakes[${i}] needs a "why" that names the slip and how to fix it`);
   }
   if (N.mistakes !== undefined && !Array.isArray(N.mistakes)) bad('numeric.mistakes must be a list');

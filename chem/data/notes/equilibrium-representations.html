@@ -1,0 +1,41 @@
+<p>The exam rarely hands you a table of equilibrium concentrations. It shows you pictures: boxes of colored circles, or graphs of concentration against time. This page shows how to read both, how to tell when a picture shows equilibrium, and how to get Q or K from it. Readers report that students lose points by counting carelessly, by using limiting-reactant thinking where an equilibrium is shown, and by putting raw counts into K when the volume does not cancel.</p>
+
+<h2>Is it at equilibrium?</h2>
+<p>An <b>equilibrium particle diagram</b> shows a mixture whose composition no longer changes. On its own, one box cannot prove equilibrium: you need either two snapshots with the same counts, or a statement that the system has reached equilibrium. In a time series, the first time the counts stop changing is when equilibrium is reached. Expect to see reactants and products together; an equilibrium mixture is never "all used up".</p>
+
+<h2>From particles to concentrations</h2>
+<figure id="fig-p2k" data-fig="particles-to-k"><figcaption>Figure 1. Counting particles, converting to molarity, and substituting into K.</figcaption></figure>
+<p>K<sub>c</sub> uses molarity. To get molarity from a diagram, count each kind of particle, turn the count into moles (the question tells you how many moles each particle stands for), and divide by the volume.</p>
+<div class="worked">
+<p><b>Worked example.</b> For 2 W(g) ⇌ W<sub>2</sub>(g) in a 2.0 L container at equilibrium, a diagram shows 4 W and 4 W<sub>2</sub>, and each particle stands for 0.10 mol. Find K<sub>c</sub>.</p>
+<p>1. Count: 4 W, 4 W<sub>2</sub>.</p>
+<p>2. Convert: 4 × 0.10 mol = 0.40 mol of each; 0.40 mol / 2.0 L = 0.20 M of each.</p>
+<p>3. Substitute: K<sub>c</sub> = [W<sub>2</sub>] / [W]<sup>2</sup> = 0.20 / (0.20)<sup>2</sup> = <b>5.0</b>.</p>
+<p>Putting the counts straight in would give 4/4<sup>2</sup> = 0.25, which is wrong.</p>
+</div>
+<p><b>When can you use counts directly?</b> When the total gas coefficients are the same on both sides, as in X<sub>2</sub>(g) + Y<sub>2</sub>(g) ⇌ 2 XY(g) (2 and 2). Then every V and every "moles per particle" factor cancels:</p>
+<p style="text-align:center">Q = (n<sub>XY</sub>/V)<sup>2</sup> / ((n<sub>X₂</sub>/V)(n<sub>Y₂</sub>/V)) = n<sub>XY</sub><sup>2</sup> / (n<sub>X₂</sub> n<sub>Y₂</sub>)</p>
+<p>If the gas coefficients differ, convert first. When in doubt, convert; it is never wrong.</p>
+
+<h2>Using diagrams to predict direction</h2>
+<div class="worked">
+<p><b>Worked example.</b> For X<sub>2</sub>(g) + Y<sub>2</sub>(g) ⇌ 2 XY(g), K<sub>c</sub> = 4.0. A box holds 3 X<sub>2</sub>, 3 Y<sub>2</sub> and 2 XY. Which way will it react, and what could it look like at equilibrium?</p>
+<p>1. Q = 2<sup>2</sup> / (3 × 3) = 0.44. (Gas moles equal on both sides, so counts are fine.)</p>
+<p>2. Q &lt; K, so the net reaction goes forward: X<sub>2</sub> and Y<sub>2</sub> decrease, XY increases.</p>
+<p>3. Try one more reaction event: 2 X<sub>2</sub>, 2 Y<sub>2</sub>, 4 XY. Atoms are conserved (X atoms: 2 × 2 + 4 = 8, the same as 2 × 3 + 2 = 8), and Q = 16/4 = 4.0 = K. That is the equilibrium picture.</p>
+</div>
+<p>Notice what this is <i>not</i>: it is not a limiting-reactant problem. The reaction does not run until X<sub>2</sub> or Y<sub>2</sub> is gone; it stops changing when Q reaches K.</p>
+
+<h2>Reading concentration-time graphs</h2>
+<ul>
+<li><b>Equilibrium</b> is where every curve becomes horizontal. Where two curves cross means nothing special: equal concentrations at one instant.</li>
+<li><b>Changes follow the coefficients.</b> For A ⇌ 2 B, B rises by twice as much as A falls.</li>
+<li><b>K comes from the plateau values.</b> Read them after the curves flatten and substitute.</li>
+<li><b>Q at an earlier time</b> uses values read before the plateau; it should be less than K if the curves show a net forward reaction.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example.</b> A flask starts with 0.80 M A: A(g) ⇌ 2 B(g). The curves level off at [A] = 0.40 M and [B] = 0.80 M. Find K<sub>c</sub>.</p>
+<p>1. Check the ratio: A fell by 0.40 M and B rose by 0.80 M, ratio 1 : 2, matching the coefficients.</p>
+<p>2. K<sub>c</sub> = [B]<sup>2</sup> / [A] = (0.80)<sup>2</sup> / 0.40 = <b>1.6</b>.</p>
+</div>
+<aside class="going-further"><p><b>For your exam:</b> when you draw an equilibrium particle diagram, conserve atoms exactly and make Q equal K. When you read one, say where the evidence for equilibrium comes from ("the counts are the same at 40 s and 60 s").</p></aside>

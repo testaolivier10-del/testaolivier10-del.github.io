@@ -1,0 +1,5 @@
+{
+ "k-manipulation": {
+  "def": "Rules for K when an equation is changed: reversing it gives 1/K, multiplying all coefficients by n gives K to the n, and adding equations multiplies their K values."
+ }
+}

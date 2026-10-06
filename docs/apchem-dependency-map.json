@@ -5153,7 +5153,10 @@
    "term": "reaction quotient",
    "aliases": [
     "Qc",
-    "Qp"
+    "Qp",
+    "Q < K",
+    "Q > K",
+    "Q = K"
    ],
    "taughtIn": "q-and-k",
    "dependsOn": [
@@ -5205,7 +5208,7 @@
     "ICE chart",
     "RICE table"
    ],
-   "taughtIn": "equilibrium-concentrations",
+   "taughtIn": "calculating-k",
    "dependsOn": [
     "equilibrium-constant",
     "stoichiometry",
@@ -5256,9 +5259,7 @@
    "id": "q-vs-k",
    "term": "Q vs K",
    "aliases": [
-    "Q versus K",
-    "Q < K",
-    "Q > K"
+    "Q versus K"
    ],
    "taughtIn": "q-and-le-chatelier",
    "dependsOn": [
