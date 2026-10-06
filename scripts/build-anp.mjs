@@ -286,7 +286,7 @@ function courseRail(curId, depth = '../', book = false) {
   return `<aside class="tb-rail anp-nav-ref" id="anp-rail">
     <p class="tb-rail-title">Contents</p>
     ${tocProg(builtTopics.length, 'lessons done')}
-    <form class="anp-toc-search bk-toc-search" action="${depth}search.html" method="get" role="search"><input type="search" name="q" class="tb-filter" placeholder="Search A&amp;P&hellip;" aria-label="Search A&amp;P"></form>
+    <form class="anp-toc-search bk-toc-search" action="${depth}search.html" method="get" role="search"><input type="search" name="q" class="tb-filter" placeholder="Search the notes&hellip;" aria-label="Search the notes"></form>
     ${book ? '<label class="anp-filter bk-filter">Show <select id="course-filter"><option value="">A&amp;P I and II</option><option value="I">A&amp;P I only</option><option value="II">A&amp;P II only</option></select></label>\n    ' : ''}<nav class="tb-contents" aria-label="Course contents">${groups}</nav>
   </aside>`;
 }

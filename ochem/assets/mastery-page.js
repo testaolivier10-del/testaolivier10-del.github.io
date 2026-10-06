@@ -183,9 +183,9 @@
       hide: ids.map(function(id){ return document.getElementById(id); }),
       after: document.getElementById('ocPremium'),
       notes: 'learn.html', notesText: 'Read the free textbook',
-      locked: function(){ return G.locked(); },
-      badgeIn: document.querySelector('.page-head .eyebrow'),
-      badge: G.badge()
+      // No Premium pill in the opener: the dashboard is mostly free, and no
+      // other course's opener carries one (docs/course-shell.md).
+      locked: function(){ return G.locked(); }
     });
   }
 })();

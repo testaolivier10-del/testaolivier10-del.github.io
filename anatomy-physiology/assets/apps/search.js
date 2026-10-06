@@ -88,7 +88,7 @@
 
   var engine = H.engine(BASE + '../assets/site-search.js');
   var sr = H.search({
-    mount: app, prefix: 'anp-sr', placeholder: 'Search lessons, notes, terms and tools (e.g. “gap junction”)',
+    mount: app, prefix: 'anp-sr', placeholder: 'Search the course… (e.g. “gap junction”, “why does pH fall”)',
     kinds: ['Lessons', 'Notes', 'Glossary', 'Tools', 'Pages'], engine: engine, allHref: BASE + '../search.html'
   });
   engine.then(function(){

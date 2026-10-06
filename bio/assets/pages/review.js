@@ -73,9 +73,9 @@
     var items = dueItems(), qs = items.filter(function(x){ return x.kind === 'q'; }), tools = items.filter(function(x){ return x.kind === 'tool'; }), up = upcoming();
     var main;
     if(!items.length){
-      main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: 0, unit: 'due now', h: 'You are all caught up',
+      main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: 0, unit: 'due now', h: up.next ? 'You are all caught up' : 'Nothing to review yet',
         p: up.next ? 'The next item comes back <b>' + esc(when(up.next)) + '</b>.' + (up.week > 1 ? ' ' + plural(up.week, 'item') + ' come back within the week.' : '')
-          : 'Nothing is scheduled. Every question you miss, in a lesson, in practice, in an exam or in a tool, lands here and comes back just before you would forget it.',
+          : 'The queue fills from questions you answer anywhere in the course. Answer a few, and they come back here when they are due.',
         actions: [{ href: BASE + 'practice.html', label: 'Practice', primary: true }, { href: BASE + 'learn.html', label: 'Next lesson' }, { href: BASE + 'flashcards.html', label: 'Flashcards' }] }) + '</section>';
     } else {
       var acts = [];

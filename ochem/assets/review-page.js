@@ -233,8 +233,8 @@
     var acts3 = [{ href: 'practice.html', label: 'Practice', primary: true }, { href: 'learn.html', label: 'Next lesson' }, { href: 'flashcards.html', label: 'Flashcards' }];
     var main = '';
     if(!everPracticed){
-      main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: 0, unit: 'due now', h: 'Nothing scheduled yet',
-        p: 'Fills in as you practice. Each right answer pushes a concept further out; a wrong one brings it back.', actions: acts3 }) + '</section>';
+      main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: 0, unit: 'due now', h: 'Nothing to review yet',
+        p: 'The queue fills from questions you answer anywhere in the course. Answer a few, and they come back here when they are due.', actions: acts3 }) + '</section>';
     } else if(q.today.length){
       main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: q.today.length, unit: 'due today',
         h: plural(q.today.length, 'concept') + ' to clear',

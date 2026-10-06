@@ -229,7 +229,7 @@ ${tail({ depth, section: 'learn', extra: ['bio-questions.js', 'bio-lesson.js'], 
      (assets/course/book.css); bio-toc.js paints the numbers. */
   const tocProg = (total, label, chId = '') =>
     `<div class="bio-toc-prog" data-toc-prog="${chId}"><div class="tb-progress-row"><span><b>0</b> of ${total} ${label}</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>`;
-  const tocSearch = depth => `<form class="bk-toc-search" action="${depth}search.html" method="get" role="search"><input type="search" name="q" class="tb-filter" placeholder="Search ${COURSE_HTML}&hellip;" aria-label="Search ${COURSE_HTML}"></form>`;
+  const tocSearch = depth => `<form class="bk-toc-search" action="${depth}search.html" method="get" role="search"><input type="search" name="q" class="tb-filter" placeholder="Search the notes&hellip;" aria-label="Search the notes"></form>`;
 
   /* The whole course in the rail: units, then the Skills section. */
   function courseRail(curId, depth, book = false) {

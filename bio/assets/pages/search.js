@@ -81,7 +81,7 @@
   function getJson(url){ return fetch(url).then(function(r){ if(!r.ok) throw 0; return r.json(); }); }
   var engine = H.engine(BASE + '../assets/site-search.js');
   var sr = H.search({
-    mount: app, prefix: 'bio-sr', placeholder: 'Search lessons, notes, terms and questions (e.g. “hydrogen bond”)',
+    mount: app, prefix: 'bio-sr', placeholder: 'Search the course… (e.g. “hydrogen bond”, “chi-square”)',
     kinds: ['Lessons', 'Notes', 'Glossary', 'Free response', 'Tools', 'Pages'], engine: engine, allHref: BASE + '../search.html'
   });
   engine.then(function(){
