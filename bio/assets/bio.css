@@ -468,19 +468,6 @@ table.bio-data td{font-variant-numeric:tabular-nums;}
 .bio-unit-acts{display:flex;gap:8px;margin:0;flex-wrap:wrap;}
 .bio-unit-n{min-width:34px;width:auto;padding:0 4px;}
 
-/* Course home. */
-.bio-home-hero h1{max-width:22ch;}
-.bio-pos{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr));max-width:860px;}
-@media (max-width:640px){.bio-pos{grid-template-columns:minmax(0,1fr);}}
-.bio-pos li{background:var(--white);border-radius:16px;padding:14px 16px;box-shadow:var(--lift-sm);font:600 14px/1.5 var(--font-ui);color:var(--muted);}
-.bio-pos b{display:block;color:var(--ink);font:900 15px/1.35 var(--font-ui);margin-bottom:4px;}
-.bio-unit-grid{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));}
-.bio-unit-grid li>a,.bio-unit-grid li>div{display:flex;flex-direction:column;gap:4px;height:100%;box-sizing:border-box;padding:15px 17px;border-radius:16px;background:var(--white);box-shadow:var(--lift-sm);text-decoration:none;color:var(--ink);}
-/* A unit not yet published: a dashed outline and no lift, never opacity,
-   which took its text below 4.5:1 (check-a11y with Unit 1 published). */
-.bio-unit-grid li>div{box-shadow:none;border:2px dashed var(--line);background:transparent;}
-.bio-unit-grid small{color:var(--muted);font:700 12.5px var(--font-ui);}
-.bio-unit-chip{align-self:flex-start;font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);background:var(--ctint);padding:3px 9px;border-radius:999px;}
 
 /* Glossary page: its styles are inlined in bio/glossary.html (build-apbio.mjs, GLOSSARY_CSS). */
 

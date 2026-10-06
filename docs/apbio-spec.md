@@ -274,6 +274,20 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    course home (the apps card list) and the dashboard (under the exam-date card). premium.js now
    lists the cram kit without "from March 2027" (needs-author cram-kit-claim resolved).
 
+27. (2026-10-06, owner) **Course home in the A&P and ochem layout.** `homePage()` in
+   `scripts/build-apbio.mjs` now writes the A&P home's sections: the shared level/XP card beside the
+   hero (part bars for the units and the skills track), Start here / Review queue / Today's goal
+   cards, "The path through the course" (the eight units, then the skills track as S1, S2, each
+   linking its unit page with generated topic counts and exam weights; "Start here" / "You are
+   here" on the student's current unit), the dark simulators band (every live simulator; the ones
+   without a `premium` flag, osmosis, marked free) and "Try a step." (bank item `bio-cell-size-17`,
+   Unit 2, free, stimulus-free single answer; dropped if it ever stops being built or free). The
+   four positioning points moved into the hero lede and "What the course covers" / "How to use
+   it"; free units and the daily allowance are read from `premium.js` data, every count from the
+   generated data. Styles and runtime are forks, `bio/assets/bio-home.css` and `bio-home.js`
+   (decision 1: A&P's `anp-home.*` stay untouched), using the same theme.css components; the old
+   unit-card and positioning-card rules left `bio.css`. Home 6.3 KB against its 7 KB budget.
+
 ## 4. Map format (Phase 0)
 
 `docs/apbio-dependency-map.json` (validated by `scripts/lib/apbio-map.mjs`, checked by

@@ -22,6 +22,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/bio-home.css">
 <link rel="stylesheet" href="../assets/theme.css">
 <script src="../assets/errors.js" defer></script>
 <script src="../assets/account.js" defer></script>
@@ -130,28 +131,116 @@
 <div class="course-nav"></div>
 <main id="main" class="xshell bio-home">
   <header class="hero bio-home-hero">
-    <div class="eyebrow">AP&reg; Biology <span class="bio-beta bio-nav-ref">Beta</span></div>
-    <h1>AP&reg; Biology, taught from scratch, in order.</h1>
-    <ul class="bio-pos">
-      <li><b>Built on the 2025 framework, in order.</b> Every unit and topic in the order the course framework lists them.</li>
-      <li><b>Teaches from scratch, for when your class moves too fast.</b> High-school level, slower, with a picture for every process.</li>
-      <li><b>Harder, data-heavy practice that matches the real exam.</b> Tables, graphs and experiments, with stimulus sets of four or five questions.</li>
-      <li><b>See the process, then answer questions about it.</b> Each lesson walks the cause and effect one step at a time before it asks.</li>
-    </ul>
-    <p class="bio-review-note"><span class="bio-beta bio-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Biology teacher.</p>
-    <div class="hero-ctas"><a class="btn-press" href="lessons/water-hydrogen-bonding.html">Start here</a><a class="link-quiet" href="learn.html">All units &rarr;</a></div>
+    <div>
+      <div class="eyebrow">AP&reg; Biology <span class="bio-beta bio-nav-ref">Beta</span></div>
+      <h1>AP&reg; Biology, taught from scratch, in order.</h1>
+      <p class="lede">Built on the 2025 course framework, in its order: eight units, each topic taught from scratch for when your class moves too fast. See each process step by step, then answer harder, data-heavy questions that match the real exam.</p>
+      <p class="bio-review-note"><span class="bio-beta bio-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Biology teacher.</p>
+      <div class="hero-ctas"><a class="btn-press" id="heroPrimaryCta" href="lessons/water-hydrogen-bonding.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('apbio_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script><a class="link-quiet" href="learn.html">All units &rarr;</a><a class="link-quiet" href="tools/osmosis.html">Osmosis and water potential &rarr;</a></div>
+    </div>
+    <div class="bio-level-card" id="bioLevel">
+      <div class="bio-level-top">
+        <div class="bio-level-chip"><div class="level-ring" id="bioLvRing">L1</div><div class="t"><b id="bioLvTitle">Water Watcher</b><span id="bioLvSub">Level 1 &middot; 0 XP</span></div></div>
+        <div class="streak-chip" id="bioStreak" hidden title="Day streak, across every subject"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c1.5 1 2 3 2 4.5A5.5 5.5 0 0111.5 21 6 6 0 016 15c0-5 4-6 4-9 0-1.5-.5-2.5-1-3.5C10.5 2 11 2 12 2z" fill="currentColor"/></svg><span id="bioStreakN">0</span></div>
+      </div>
+      <div class="xp-track"><div class="xp-fill" id="bioXpFill" style="width:0%"></div></div>
+      <div class="xp-label" id="bioXpLabel">0 / 100 XP to Level 2</div>
+      <div class="bio-part-bars"><div class="mini-domain-row"><span>Units</span><span class="bar"><i data-part-bar="course" style="width:0%;--dc:#3F8F2E"></i></span><span class="pct" data-part-pct="course">0%</span></div><div class="mini-domain-row"><span>Skills track</span><span class="bar"><i data-part-bar="skills" style="width:0%;--dc:#C9973A"></i></span><span class="pct" data-part-pct="skills">0%</span></div></div>
+    </div>
   </header>
 
-  <section class="xsection" aria-labelledby="h-units">
-    <div class="section-head"><h2 id="h-units">The units</h2><p class="section-lede">8 units, each with lessons, free notes, a printable unit sheet and exam-style practice.</p></div>
-    <ol class="bio-unit-grid"><li data-unit="unit-1"><a href="units/unit-1.html"><span class="bio-unit-chip">Unit 1</span><b>Chemistry of Life</b><small>7 topics &middot; 8&ndash;11% of the exam</small></a></li><li data-unit="unit-2"><a href="units/unit-2.html"><span class="bio-unit-chip">Unit 2</span><b>Cell Structure and Function</b><small>10 topics &middot; 10&ndash;13% of the exam</small></a></li><li data-unit="unit-3"><a href="units/unit-3.html"><span class="bio-unit-chip">Unit 3</span><b>Cellular Energetics</b><small>6 topics &middot; 12&ndash;16% of the exam</small></a></li><li data-unit="unit-4"><a href="units/unit-4.html"><span class="bio-unit-chip">Unit 4</span><b>Cell Communication and Cell Cycle</b><small>6 topics &middot; 10&ndash;15% of the exam</small></a></li><li data-unit="unit-5"><a href="units/unit-5.html"><span class="bio-unit-chip">Unit 5</span><b>Heredity</b><small>5 topics &middot; 8&ndash;11% of the exam</small></a></li><li data-unit="unit-6"><a href="units/unit-6.html"><span class="bio-unit-chip">Unit 6</span><b>Gene Expression and Regulation</b><small>8 topics &middot; 12&ndash;16% of the exam</small></a></li><li data-unit="unit-7"><a href="units/unit-7.html"><span class="bio-unit-chip">Unit 7</span><b>Natural Selection</b><small>12 topics &middot; 13&ndash;20% of the exam</small></a></li><li data-unit="unit-8"><a href="units/unit-8.html"><span class="bio-unit-chip">Unit 8</span><b>Ecology</b><small>7 topics &middot; 10&ndash;15% of the exam</small></a></li></ol>
+  <section class="xsection" aria-label="What to do now">
+    <div class="bio-now-row">
+      <div class="bio-now-card" id="bioStart">
+        <div class="k">Start here</div>
+        <h2>Structure of Water and Hydrogen Bonding</h2>
+        <p>Unit 1 &middot; Chemistry of Life. Units 1 and 2 lessons and every notes page are free.</p>
+        <a class="btn-press" href="lessons/water-hydrogen-bonding.html">Start the first lesson</a>
+      </div>
+      <div class="bio-now-card" id="bioReview">
+        <div class="k">Review queue</div>
+        <h2>Missed questions come back</h2>
+        <p>Anything you miss returns when you are about to forget it, not on a fixed date.</p>
+        <a class="link-quiet" href="review.html">Open review &rarr;</a>
+      </div>
+      <div class="bio-now-card" id="bioGoal">
+        <div class="k">Today&rsquo;s goal</div>
+        <h2>A little every day</h2>
+        <p>Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject. 15 practice questions a day are free.</p>
+        <a class="link-quiet" href="practice.html">Practice now &rarr;</a>
+      </div>
+    </div>
   </section>
 
-  <section class="xsection" aria-labelledby="h-skills">
-    <div class="section-head"><h2 id="h-skills">Skills</h2><p class="section-lede">The math and experimental design the exam tests, built on the official formula sheet, with answers checked as you type them.</p></div>
-    <ol class="bio-unit-grid"><li data-unit="skills-stats"><a href="units/skills-stats.html"><span class="bio-unit-chip">Skills</span><b>Statistics and math</b><small>9 topics</small></a></li><li data-unit="skills-design"><a href="units/skills-design.html"><span class="bio-unit-chip">Skills</span><b>Experimental design and argumentation</b><small>5 topics</small></a></li></ol>
+  <section class="xsection" aria-labelledby="h-path">
+    <div class="section-head">
+      <h2 id="h-path">The path through the course</h2>
+      <p class="section-lede">The units in framework order, then the skills track: the math and experimental design the exam tests. Tap one to open it.</p>
+    </div>
+    <div class="bio-path-legend"><span style="--c:#3F8F2E"><i></i>8 units &middot; 61 topics</span><span style="--c:#C9973A"><i></i>Skills track &middot; 14 topics</span></div>
+    <div class="bio-path" id="bioPath"><svg class="path-line" aria-hidden="true" focusable="false"><path class="path-track" d=""/><path class="path-fill" d=""/></svg><ol class="bio-path-list"><li class="node part-start current" data-unit="unit-1" style="--pc:#3F8F2E;--pcd:#2D6A1F;--r5:1;--c5:1;--r4:1;--c4:1;--r3:1;--c3:1"><a href="units/unit-1.html"><span class="ring" aria-hidden="true"><span class="n">1</span></span><span class="label"><span class="part">Units</span><b><span class="sr-only">Unit 1: </span>Chemistry of Life</b><small>Start here &middot; 7 topics &middot; 8&ndash;11% of exam</small></span></a></li><li class="node" data-unit="unit-2" style="--pc:#3F8F2E;--pcd:#2D6A1F;--r5:1;--c5:2;--r4:1;--c4:2;--r3:1;--c3:2"><a href="units/unit-2.html"><span class="ring" aria-hidden="true"><span class="n">2</span></span><span class="label"><b><span class="sr-only">Unit 2: </span>Cell Structure and Function</b><small>10 topics &middot; 10&ndash;13% of exam</small></span></a></li><li class="node" data-unit="unit-3" style="--pc:#3F8F2E;--pcd:#2D6A1F;--r5:1;--c5:3;--r4:1;--c4:3;--r3:1;--c3:3"><a href="units/unit-3.html"><span class="ring" aria-hidden="true"><span class="n">3</span></span><span class="label"><b><span class="sr-only">Unit 3: </span>Cellular Energetics</b><small>6 topics &middot; 12&ndash;16% of exam</small></span></a></li><li class="node" data-unit="unit-4" style="--pc:#3F8F2E;--pcd:#2D6A1F;--r5:1;--c5:4;--r4:1;--c4:4;--r3:2;--c3:3"><a href="units/unit-4.html"><span class="ring" aria-hidden="true"><span class="n">4</span></span><span class="label"><b><span class="sr-only">Unit 4: </span>Cell Communication and Cell Cycle</b><small>6 topics &middot; 10&ndash;15% of exam</small></span></a></li><li class="node" data-unit="unit-5" style="--pc:#3F8F2E;--pcd:#2D6A1F;--r5:1;--c5:5;--r4:2;--c4:4;--r3:2;--c3:2"><a href="units/unit-5.html"><span class="ring" aria-hidden="true"><span class="n">5</span></span><span class="label"><b><span class="sr-only">Unit 5: </span>Heredity</b><small>5 topics &middot; 8&ndash;11% of exam</small></span></a></li><li class="node" data-unit="unit-6" style="--pc:#3F8F2E;--pcd:#2D6A1F;--r5:2;--c5:5;--r4:2;--c4:3;--r3:2;--c3:1"><a href="units/unit-6.html"><span class="ring" aria-hidden="true"><span class="n">6</span></span><span class="label"><b><span class="sr-only">Unit 6: </span>Gene Expression and Regulation</b><small>8 topics &middot; 12&ndash;16% of exam</small></span></a></li><li class="node" data-unit="unit-7" style="--pc:#3F8F2E;--pcd:#2D6A1F;--r5:2;--c5:4;--r4:2;--c4:2;--r3:3;--c3:1"><a href="units/unit-7.html"><span class="ring" aria-hidden="true"><span class="n">7</span></span><span class="label"><b><span class="sr-only">Unit 7: </span>Natural Selection</b><small>12 topics &middot; 13&ndash;20% of exam</small></span></a></li><li class="node" data-unit="unit-8" style="--pc:#3F8F2E;--pcd:#2D6A1F;--r5:2;--c5:3;--r4:2;--c4:1;--r3:3;--c3:2"><a href="units/unit-8.html"><span class="ring" aria-hidden="true"><span class="n">8</span></span><span class="label"><b><span class="sr-only">Unit 8: </span>Ecology</b><small>7 topics &middot; 10&ndash;15% of exam</small></span></a></li><li class="node part-start" data-unit="skills-stats" style="--pc:#C9973A;--pcd:#8A6420;--r5:2;--c5:2;--r4:3;--c4:1;--r3:3;--c3:3"><a href="units/skills-stats.html"><span class="ring" aria-hidden="true"><span class="n">S1</span></span><span class="label"><span class="part">Skills track</span><b>Statistics and math</b><small>9 topics</small></span></a></li><li class="node" data-unit="skills-design" style="--pc:#C9973A;--pcd:#8A6420;--r5:2;--c5:1;--r4:3;--c4:2;--r3:4;--c3:3"><a href="units/skills-design.html"><span class="ring" aria-hidden="true"><span class="n">S2</span></span><span class="label"><b>Experimental design and argumentation</b><small>5 topics</small></span></a></li></ol></div>
   </section>
 
+  <section class="xsection bio-home-about" aria-label="About the course">
+    <div>
+      <h2 id="h-covers">What the course covers</h2>
+      <p>8 units and 61 topics in the order of the 2025 course framework, plus 14 skills topics built on the official formula sheet: statistics, rates, water potential and experimental design. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.</p>
+      <p>1,487 practice questions, many in stimulus sets of four or five that share one table, graph or experiment, as on the real exam. Every option has its own explanation.</p>
+      <p class="bio-small">All 75 topics are built, each with its lesson, notes and questions.</p>
+    </div>
+    <div>
+      <h2 id="h-how">How to use it</h2>
+      <ol class="bio-sample-list bio-how">
+        <li><span class="n" aria-hidden="true">1</span><span><b>Read the lesson.</b> It checks what you need first, then walks the cause and effect one step at a time, with a picture for every process.</span></li>
+        <li><span class="n" aria-hidden="true">2</span><span><b>Answer as you go.</b> Anything you miss goes into your review queue and comes back when you are about to forget it.</span></li>
+        <li><span class="n" aria-hidden="true">3</span><span><b>Run the simulators.</b> Watch the process, change one variable, then answer the data questions about what you saw.</span></li>
+        <li><span class="n" aria-hidden="true">4</span><span><b>Check your mastery.</b> Your dashboard shows it by unit, topic and science practice, and every miss links to its lesson.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="xsection" aria-labelledby="h-tools">
+    <div class="bio-feature">
+      <div class="icon-circle" aria-hidden="true">
+        <svg viewBox="0 0 170 170" fill="none" focusable="false">
+          <ellipse cx="85" cy="88" rx="50" ry="40" stroke="#fff" stroke-opacity=".9" stroke-width="3.5"/>
+          <ellipse cx="85" cy="88" rx="41" ry="31" stroke="#fff" stroke-opacity=".45" stroke-width="2.5" stroke-dasharray="5 6"/>
+          <circle cx="94" cy="84" r="13" stroke="#fff" stroke-opacity=".9" stroke-width="3.5"/>
+          <circle cx="94" cy="84" r="4" fill="#B6E2A2"/>
+          <path d="M18 64h20m-7-7l7 7-7 7M152 112h-20m7-7l-7 7 7 7" stroke="#B6E2A2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="62" cy="100" r="3" fill="#fff" fill-opacity=".7"/><circle cx="72" cy="112" r="3" fill="#fff" fill-opacity=".7"/><circle cx="110" cy="106" r="3" fill="#fff" fill-opacity=".7"/>
+        </svg>
+      </div>
+      <div>
+        <h2 id="h-tools">Ten simulators that let you see the process.</h2>
+        <p>Change one thing and watch water move, an enzyme slow down, an operon switch on or a population grow, then answer the questions about what you saw. The osmosis and water potential simulator is free.</p>
+        <div class="bio-tool-chips"><a href="tools/osmosis.html">Osmosis and water potential &middot; free</a><a href="tools/enzyme-activity.html">Enzyme activity and inhibition</a><a href="tools/signal-transduction-amplification.html">Signal transduction and amplification</a><a href="tools/cell-cycle-checkpoints.html">Cell cycle checkpoints</a><a href="tools/meiosis-nondisjunction.html">Meiosis and nondisjunction</a><a href="tools/operons.html">Lac and trp operons</a><a href="tools/hardy-weinberg-drift.html">Hardy-Weinberg and genetic drift</a><a href="tools/tree-reading.html">Phylogenetic tree reading</a><a href="tools/population-growth.html">Population growth</a><a href="tools/energy-flow.html">Energy flow and ecological pyramids</a></div>
+        <a class="btn-press alt" href="tools.html">See all tools</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="xsection" id="sample" aria-labelledby="h-sample">
+    <div class="bio-sample-row">
+      <div>
+        <h2 id="h-sample">Try a step.</h2>
+        <p class="section-lede">One real question from the bank. Pick an answer to see why it is right or wrong.</p>
+        <ol class="bio-sample-list">
+          <li><span class="n" aria-hidden="true">1</span> Read the situation</li>
+          <li><span class="n" aria-hidden="true">2</span> Pick the answer you would bet on</li>
+          <li><span class="n" aria-hidden="true">3</span> See the cause and effect behind it</li>
+        </ol>
+      </div>
+      <div class="bio-qcard" id="bioSample" data-correct="0">
+        <span class="tag domain">Unit 2 &middot; Cell Structure and Function</span> <span class="tag diff">Cell Size</span>
+        <p class="qtext" id="bioSampleQ">On hot days, African elephants flap their very large, thin ears, which are full of blood vessels. How do the ears help the elephant?</p>
+        <div class="bio-qopts" role="group" aria-labelledby="bioSampleQ"><button type="button" class="qopt" data-i="0" data-why="Thin ears add much surface with little volume, speeding heat loss from the blood."><span class="letter">A</span> They add a lot of surface for little volume, so heat leaves the blood faster.</button><button type="button" class="qopt" data-i="1" data-why="Looking larger does not change how much oxygen the body uses per gram."><span class="letter">B</span> They make the elephant look larger to predators, so it can rest more and use less oxygen per gram.</button><button type="button" class="qopt" data-i="2" data-why="The ears are thin flaps of skin and blood vessels, not water stores."><span class="letter">C</span> They store extra water, which the elephant draws on to keep its blood cool on hot days.</button><button type="button" class="qopt" data-i="3" data-why="Ears add a little volume, not remove it; their value is the surface they add."><span class="letter">D</span> They lower the elephant's volume, which lowers its body temperature.</button></div>
+        <p class="why" id="bioSampleWhy" aria-live="polite"></p>
+        <details class="bio-sample-key"><summary>Show the answer</summary><p><b>They add a lot of surface for little volume, so heat leaves the blood faster.</b> A huge animal has a low surface area ÷ volume and loses heat slowly. Large, thin ears with many blood vessels add a lot of exchange surface, and flapping moves air over it, so heat leaves the blood faster.</p></details>
+        <p class="bio-sample-more"><a class="link-quiet" href="lessons/cell-size.html">Open the free lesson on cell size &rarr;</a></p>
+      </div>
+    </div>
+  </section>
   <section class="xsection" aria-labelledby="h-go">
     <div class="section-head"><h2 id="h-go">Practice and study</h2></div>
     <ul class="bio-cards"><li><a href="practice.html"><b>Practice</b><span>Drill a unit, a topic or a science practice, with stimulus sets.</span></a></li><li><a href="review.html"><b>Review</b><span>Missed questions come back when you are about to forget them.</span></a></li><li><a href="exams.html"><b>Exams</b><span>Unit tests and full timed practice exams, scored with rubrics.</span></a></li><li><a href="frq.html"><b>Free-response practice</b><span>All six free-response types, with rubrics and sample answers.</span></a></li><li><a href="cram.html"><b>Cram kit</b><span>3-week and 2-week plans to exam day, and timed mixed sets.</span></a></li><li><a href="flashcards.html"><b>Flashcards</b><span>Spaced-repetition cards from the glossary.</span></a></li><li><a href="tools.html"><b>Tools</b><span>Simulators, then the questions about what you saw.</span></a></li><li><a href="dashboard.html"><b>Dashboard</b><span>Mastery by unit, topic and science practice.</span></a></li>
@@ -166,7 +255,7 @@
       <div class="trust-pill">Unit sheets free to print</div>
       <div class="trust-pill">Progress saved on your device</div>
     </div>
-    <p class="bio-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+    <p class="bio-disclaimer bio-home-legal">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
   </section>
 </main>
 <footer class="bio-foot xshell">
@@ -180,5 +269,6 @@
 <script src="assets/bio-core.js" defer></script>
 <script src="assets/bio-glossary.js" defer></script>
 <script src="assets/bio-nav.js" defer></script>
+<script src="assets/bio-home.js" defer></script>
 </body>
 </html>
