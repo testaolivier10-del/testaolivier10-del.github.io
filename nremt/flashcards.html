@@ -23,6 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/course/base.css">
+<link rel="stylesheet" href="../assets/course/study.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Deferred, like every script on the page, so the page paints
      before they arrive; they still run first, in this order. -->
@@ -33,45 +35,68 @@
 <script src="../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <!-- The card and its controls are shared with the ochem deck. -->
-<link rel="stylesheet" href="../assets/flashcards.css">
 <style>
-/* The deck view's panels. Ochem gets these from ochem.css; NREMT pages do
-   not load it, so the few the deck uses are here, in the same tokens. */
-.fc-shell{margin:0 auto;}
-#fcHero{margin-bottom:18px;}
+/* Ochem gets .module-card and .empty-panel from ochem.css; NREMT pages do
+   not load it, so the deck's end screen keeps these here. Everything else
+   is in assets/course/study.css (docs/course-shell.md, W-C). */
 .module-card{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);padding:20px 22px;box-shadow:var(--lift-sm);margin-bottom:16px;}
 .empty-panel{background:var(--white);border:var(--bw) dashed var(--line);border-radius:var(--radius-lg);padding:32px 28px;text-align:center;}
 .empty-panel h2{margin:0 0 8px;font-size:19px;}
 .empty-panel p{margin:0 auto;max-width:48ch;color:var(--muted);font-weight:600;font-size:14.5px;}
-.rec-card{background:var(--white);border:var(--bw) solid var(--accent);border-radius:var(--radius-lg);padding:clamp(20px,4vw,26px);box-shadow:var(--lift-lg);margin-bottom:16px;}
-.rec-card .k{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text);margin-bottom:8px;}
+.rec-card{background:var(--white);border-radius:var(--radius-lg);padding:clamp(20px,4vw,26px);box-shadow:var(--shadow-card);margin-bottom:16px;}
+.rec-card .k{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);margin-bottom:8px;}
 .rec-card h2{font:900 clamp(18px,3vw,22px) var(--font-ui);margin:0 0 8px;line-height:1.25;padding-top:0;border-top:0;}
 .rec-card h2:focus{outline:none;}
 .rec-card p{margin:0 0 16px;font-size:14.5px;font-weight:600;line-height:1.6;color:var(--ink);}
 .rec-card .actions{display:flex;justify-content:flex-start;flex-wrap:wrap;gap:10px;}
 .rec-card .fc-xp{color:var(--accent-text);}
-.session-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
-.session-head .mode{font:900 12px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--accent-text);}
-.session-head .quit{font:800 13px var(--font-ui);color:var(--muted);background:none;border:0;cursor:pointer;padding:4px;min-height:44px;}
-.session-head .quit:hover{color:var(--ink);text-decoration:underline;}
-.progress-bar{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
-.progress-bar .track{flex:1;height:10px;border-radius:999px;background:var(--track);overflow:hidden;}
-.progress-bar .fill{height:100%;background:var(--accent);border-radius:999px;transition:width .25s ease;}
-.progress-bar .label{font:900 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
 #fcDone .fc-note a{color:var(--accent-text);font-weight:800;}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "NREMT-EMT Prep",
+          "item": "https://levlprep.com/nremt/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Flashcards",
+          "item": "https://levlprep.com/nremt/flashcards.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Flashcards</span></nav></div>
+<!-- crumb:end -->
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
-<main id="main" class="xshell narrow fc-shell">
-  <div class="hero" id="fcHero">
-    <div class="eyebrow">NREMT-EMT Prep</div>
-    <h1 style="margin-bottom:4px;">Flashcards.</h1>
-    <p class="lede" style="margin-top:0;">The facts, terms, mnemonics and numbers the exam keeps asking for, across all six topic areas. Grade yourself honestly and each card comes back just before you would forget it.</p>
-  </div>
-  <div class="xsection" style="padding-top:0;">
+<main id="main" class="xshell cx-study">
+  <header class="page-head" id="fcHero">
+    <div class="eyebrow">NREMT-EMT</div>
+    <h1>Flashcards</h1>
+    <p class="lede">The facts, terms, mnemonics and numbers the exam keeps asking for, across all six topic areas. Grade yourself honestly and each card comes back just before you would forget it.</p>
+  </header>
+  <div class="cx-fcwrap">
     <!-- The deck: what's due, the filters, the domains. -->
     <div id="fcHome">
       <noscript>
@@ -82,15 +107,13 @@
       </noscript>
     </div>
     <!-- A running session. -->
-    <div id="fcSession" hidden>
-      <div class="session-head">
-        <span class="mode" id="fcMode"></span>
-        <button type="button" class="quit" id="fcQuit">End session</button>
+    <div id="fcSession" class="cx-session" hidden>
+      <div class="cx-sbar">
+        <span class="cx-sbar-t" id="fcMode"></span>
+        <span class="cx-sbar-n" id="fcProgLabel"></span>
+        <button type="button" class="cx-end" id="fcQuit">End session</button>
       </div>
-      <div class="progress-bar">
-        <div class="track"><div class="fill" id="fcProgFill" style="width:0%"></div></div>
-        <div class="label" id="fcProgLabel"></div>
-      </div>
+      <div class="cx-progress"><div class="fill" id="fcProgFill" style="width:0%"></div></div>
       <div class="fc-stage" id="fcStage"></div>
       <p class="sr-only" id="fcLive" aria-live="polite"></p>
     </div>
@@ -98,7 +121,7 @@
     <div id="fcDone" hidden></div>
   </div>
 </main>
-<div class="xshell narrow">
+<div class="xshell">
   <footer>
     <p>Widely taught EMT content, current to the 2025 AHA guidelines. Defer to your course and local protocol for anything protocol-specific.</p>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
@@ -106,6 +129,7 @@
 </div>
 <script src="assets/nav.js" defer></script>
 <script src="../ochem/assets/flashcard-scheduler.js" defer></script>
+<script src="../assets/course/study.js" defer></script>
 <script src="assets/flashcards-page.js" defer></script>
 </body>
 </html>

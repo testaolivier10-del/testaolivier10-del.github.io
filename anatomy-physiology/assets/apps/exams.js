@@ -32,7 +32,7 @@
   var BASE = window.ANP_BASE || '';
   var app = document.getElementById('app');
   if(!app) return;
-  var hero = document.querySelector('.anp-hero');
+  var hero = document.querySelector('.page-head, .anp-hero');
   var CUR = window.AnpCurriculum || { chapters: [], topics: [], core: [] };
   var Core = window.AnpCore, Q = window.AnpQuestions;
 
@@ -223,18 +223,18 @@
   }
 
   function timingField(){
-    return '<label class="anp-pr-field"><span>Timing</span><select name="timing">' + TIMINGS.map(function(t){
+    return '<label class="cx-field"><span>Timing</span><select name="timing">' + TIMINGS.map(function(t){
       return '<option value="' + t.id + '"' + (t.id === cfg.timing ? ' selected' : '') + '>' + t.name + '</option>';
     }).join('') + '</select></label>';
   }
   function chapterField(){
-    return '<label class="anp-pr-field"><span>Chapter</span><select name="chapter">' + builtChapters().map(function(c){
+    return '<label class="cx-field"><span>Chapter</span><select name="chapter">' + builtChapters().map(function(c){
       return '<option value="' + c.id + '"' + (c.id === cfg.chapter ? ' selected' : '') + '>' + esc(chLabel(c)) + '</option>';
     }).join('') + '</select></label>';
   }
   function checks(name, list, on, label){
     return list.map(function(x){
-      return '<label class="anp-ex-check"><input type="checkbox" name="' + name + '" value="' + esc(x.id) + '"' + (on.indexOf(String(x.id)) > -1 ? ' checked' : '') + '> <span>' + esc(label(x)) + '</span></label>';
+      return '<label class="cx-check anp-ex-check"><input type="checkbox" name="' + name + '" value="' + esc(x.id) + '"' + (on.indexOf(String(x.id)) > -1 ? ' checked' : '') + '> <span>' + esc(label(x)) + '</span></label>';
     }).join('');
   }
   function endoSwitch(name, on, note){
@@ -248,27 +248,27 @@
     if(k === 'unit'){
       var ts = builtTopics(cfg.chapter);
       if(!cfg.unitTopics) cfg.unitTopics = ts.map(function(t){ return t.id; });
-      return chapterField() + '<fieldset class="anp-ex-group"><legend>Topics</legend>' + checks('unitTopic', ts, cfg.unitTopics, function(t){ return t.n + '. ' + t.title; }) + '</fieldset>';
+      return chapterField() + '<fieldset class="cx-group anp-ex-group"><legend>Topics</legend>' + checks('unitTopic', ts, cfg.unitTopics, function(t){ return t.n + '. ' + t.title; }) + '</fieldset>';
     }
     if(k === 'system'){
       var n = chapterQs(cfg.chapter).length;
-      return chapterField() + '<fieldset class="anp-ex-group anp-ex-inline"><legend>Length</legend>' +
-        '<label class="anp-pr-chip"><input type="radio" name="sysLen" value="40"' + (cfg.sysLen === 40 ? ' checked' : '') + (n <= 40 ? ' disabled' : '') + '><span>40</span></label>' +
-        '<label class="anp-pr-chip"><input type="radio" name="sysLen" value="0"' + (cfg.sysLen === 0 || n <= 40 ? ' checked' : '') + '><span>All ' + n + '</span></label></fieldset>' +
+      return chapterField() + '<fieldset class="cx-group"><legend>Length</legend><div class="cx-pills">' +
+        '<label class="cx-pill"><input type="radio" name="sysLen" value="40"' + (cfg.sysLen === 40 ? ' checked' : '') + (n <= 40 ? ' disabled' : '') + '><span>40</span></label>' +
+        '<label class="cx-pill"><input type="radio" name="sysLen" value="0"' + (cfg.sysLen === 0 || n <= 40 ? ' checked' : '') + '><span>All ' + n + '</span></label></div></fieldset>' +
         timingField();
     }
     if(k === 'final'){
       var endo = cfg.course === 'I' ? cfg.endoI : cfg.endoII;
       var plan = finalPlan(cfg.course, endo, cfg.finalLen || 1e6);
       var cover = plan.total ? Math.round(plan.builtWeight / plan.total * 100) : 0;
-      return '<fieldset class="anp-ex-group anp-ex-inline"><legend>Course</legend>' +
-          '<label class="anp-pr-chip"><input type="radio" name="course" value="I"' + (cfg.course === 'I' ? ' checked' : '') + '><span>A&amp;P I</span></label>' +
-          '<label class="anp-pr-chip"><input type="radio" name="course" value="II"' + (cfg.course === 'II' ? ' checked' : '') + '><span>A&amp;P II</span></label></fieldset>' +
+      return '<fieldset class="cx-group"><legend>Course</legend><div class="cx-pills">' +
+          '<label class="cx-pill"><input type="radio" name="course" value="I"' + (cfg.course === 'I' ? ' checked' : '') + '><span>A&amp;P I</span></label>' +
+          '<label class="cx-pill"><input type="radio" name="course" value="II"' + (cfg.course === 'II' ? ' checked' : '') + '><span>A&amp;P II</span></label></div></fieldset>' +
         endoSwitch('endo', endo, cfg.course === 'I' ? 'Add it if your school teaches endocrine in A&P I.' : 'Turn it off if your school taught endocrine in A&P I.') +
-        '<fieldset class="anp-ex-group anp-ex-inline"><legend>Length</legend>' + [50, 100, 0].map(function(v){
-          return '<label class="anp-pr-chip"><input type="radio" name="finalLen" value="' + v + '"' + (cfg.finalLen === v ? ' checked' : '') + '><span>' + (v || 'All') + '</span></label>';
-        }).join('') + '</fieldset>' + timingField() +
-        '<div class="anp-ex-note"><p>' + (plan.built.length === plan.chapters.length ?
+        '<fieldset class="cx-group"><legend>Length</legend><div class="cx-pills">' + [50, 100, 0].map(function(v){
+          return '<label class="cx-pill"><input type="radio" name="finalLen" value="' + v + '"' + (cfg.finalLen === v ? ' checked' : '') + '><span>' + (v || 'All') + '</span></label>';
+        }).join('') + '</div></fieldset>' + timingField() +
+        '<div class="cx-note anp-ex-note"><p>' + (plan.built.length === plan.chapters.length ?
           '<b>How this final is split.</b> Questions come from all ' + plan.chapters.length + ' chapters of ' + (cfg.course === 'I' ? 'A&amp;P I' : 'A&amp;P II') + (endo ? ' with endocrine' : '') +
             ', each in proportion to its share of the course\'s topics.' :
           '<b>What this final covers today.</b> ' + plural(plan.built.length, 'chapter') + ' of ' + plan.chapters.length + ' in ' + (cfg.course === 'I' ? 'A&amp;P I' : 'A&amp;P II') +
@@ -281,18 +281,18 @@
       if(!c.types) c.types = TYPE_GROUPS.map(function(x){ return x.id; });
       if(!c.levels) c.levels = ['recall', 'apply', 'analyze'];
       if(!c.diffs) c.diffs = ['1', '2', '3'];
-      return '<fieldset class="anp-ex-group"><legend>Chapters</legend>' + checks('cch', chs, c.chapters, chLabel) + '</fieldset>' +
+      return '<fieldset class="cx-group anp-ex-group"><legend>Chapters</legend>' + checks('cch', chs, c.chapters, chLabel) + '</fieldset>' +
         endoSwitch('cendo', c.endo, 'Endocrine is tagged A&P II; schools teach it in either course.') +
-        '<fieldset class="anp-ex-group"><legend>Question types</legend>' + checks('ctype', TYPE_GROUPS, c.types, function(x){ return x.name; }) + '</fieldset>' +
-        '<div class="anp-ex-row"><fieldset class="anp-ex-group"><legend>Level</legend>' + checks('clevel', [{ id: 'recall' }, { id: 'apply' }, { id: 'analyze' }], c.levels, function(x){ return LEVEL_NAME[x.id]; }) + '</fieldset>' +
-        '<fieldset class="anp-ex-group"><legend>Difficulty</legend>' + checks('cdiff', [{ id: 1 }, { id: 2 }, { id: 3 }], c.diffs, function(x){ return DIFF_NAME[x.id]; }) + '</fieldset></div>' +
-        '<fieldset class="anp-ex-group anp-ex-inline"><legend>Length</legend>' + [10, 20, 40, 0].map(function(v){
-          return '<label class="anp-pr-chip"><input type="radio" name="clen" value="' + v + '"' + (c.len === v ? ' checked' : '') + '><span>' + (v || 'All') + '</span></label>';
-        }).join('') + '</fieldset>' + timingField();
+        '<fieldset class="cx-group anp-ex-group"><legend>Question types</legend>' + checks('ctype', TYPE_GROUPS, c.types, function(x){ return x.name; }) + '</fieldset>' +
+        '<div class="anp-ex-row"><fieldset class="cx-group anp-ex-group"><legend>Level</legend>' + checks('clevel', [{ id: 'recall' }, { id: 'apply' }, { id: 'analyze' }], c.levels, function(x){ return LEVEL_NAME[x.id]; }) + '</fieldset>' +
+        '<fieldset class="cx-group anp-ex-group"><legend>Difficulty</legend>' + checks('cdiff', [{ id: 1 }, { id: 2 }, { id: 3 }], c.diffs, function(x){ return DIFF_NAME[x.id]; }) + '</fieldset></div>' +
+        '<fieldset class="cx-group"><legend>Length</legend><div class="cx-pills">' + [10, 20, 40, 0].map(function(v){
+          return '<label class="cx-pill"><input type="radio" name="clen" value="' + v + '"' + (c.len === v ? ' checked' : '') + '><span>' + (v || 'All') + '</span></label>';
+        }).join('') + '</div></fieldset>' + timingField();
     }
     if(k === 'teas'){
       var p = teasPlan();
-      return '<div class="anp-ex-note anp-ex-teas"><p><b>An estimate, not the real split.</b> The TEAS 7 has 18 scored A&amp;P questions across 12 areas. ATI does not publish how many come from each area, so this mode gives every area one question and rotates the other six from one attempt to the next, so each area gets an equal share over time.</p>' +
+      return '<div class="cx-note anp-ex-note anp-ex-teas"><p><b>An estimate, not the real split.</b> The TEAS 7 has 18 scored A&amp;P questions across 12 areas. ATI does not publish how many come from each area, so this mode gives every area one question and rotates the other six from one attempt to the next, so each area gets an equal share over time.</p>' +
         (p.scaled ? '<p><b>Scaled to what is built.</b> Questions exist so far for ' + plural(p.avail.length, 'area') + ' of 12, so this set has ' + plural(p.n, 'question') + ': the share of 18 those areas would get. It grows to the full 18 as the course is written.</p>' : '') +
         '<ul class="anp-ex-areas">' + TEAS_AREAS.map(function(a){
           var on = p.per[a.id];
@@ -333,21 +333,44 @@
   function freeExamHtml(fe){
     if(fe.unlimited) return '';
     if(!fe.available) return Core.gate('exam', 'exams', '', 'Practice, review and flashcards stay open, and Foundations questions are unlimited in practice.');
-    return '<p class="anp-ex-note anp-ex-free"><b>Your free exam.</b> One full exam is free: starting any exam below uses it, and once started you can always finish it. ' + (Core.badge ? Core.badge() : '') + '</p>';
+    return '<p class="cx-notice anp-ex-free"><b>Your free exam.</b> One full exam is free: starting any exam below uses it, and once started you can always finish it. ' + (Core.badge ? Core.badge() : '') + '</p>';
+  }
+
+  /* The same rail as Practice and Review: your numbers, the queue, siblings. */
+  function examRail(){
+    var d = Core.load(), answered = 0;
+    Object.keys(d.q || {}).forEach(function(k){ if(d.q[k].n) answered++; });
+    var due = Core.reviewCount ? Core.reviewCount() : 0, miss = (Core.missed ? Core.missed() : []).length;
+    var topics = {}; Object.keys(d.lessons || {}).forEach(function(t){ topics[t] = 1; }); Object.keys(d.q || {}).forEach(function(k){ var r = d.q[k]; if(r && r.t) topics[r.t] = 1; });
+    return LevlStudy.rail({
+      stats: [
+        ['Answered', answered, answered ? 'questions and tool items' : 'nothing yet'],
+        ['Due for review', due, due ? 'waiting in your queue' : 'nothing due now', due ? 'is-due' : ''],
+        ['To fix', miss, miss ? 'missed, not yet right' : 'no open misses'],
+        ['Topics studied', Object.keys(topics).length, 'lessons or questions']
+      ],
+      due: { n: due, href: BASE + 'review.html', pill: Core.badge ? Core.badge() : '' },
+      links: [
+        { href: BASE + 'practice.html', title: 'Practice', sub: 'Untimed, with feedback after every answer.' },
+        { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Spaced cards from the glossary.' }
+      ]
+    });
   }
 
   function renderSetup(){
     view('setup');
     if(!cfg.chapter) cfg.chapter = builtChapters()[0].id;
     var fe = Core.freeExam ? Core.freeExam() : { unlimited: true, available: true };
-    app.innerHTML = freeExamHtml(fe) + '<form class="anp-pr-setup anp-ex-setup" novalidate>' +
-      '<fieldset class="anp-pr-modes"><legend>Choose an exam</legend>' + KINDS.map(function(k){
-        return '<label class="anp-pr-mode"><input type="radio" name="kind" value="' + k.id + '"' + (k.id === cfg.kind ? ' checked' : '') + '><span class="anp-pr-mode-t">' + esc(k.title) + '</span><span class="anp-pr-mode-d">' + esc(k.desc) + '</span></label>';
-      }).join('') + '</fieldset>' +
-      '<div class="anp-ex-panel">' + panelHtml() + '</div>' +
-      '<p class="anp-pr-avail" aria-live="polite"></p>' +
-      '<p class="anp-small anp-ex-how">Exam mode shows no feedback until the end. Your first tap on an answer locks it in; you can skip a question and come back. At the end you review every question with its explanation, and anything you missed goes to your review queue.</p>' +
-      '<button type="submit" class="btn-press anp-pr-start">Start</button></form>';
+    app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' + freeExamHtml(fe) +
+      '<form class="cx-card cx-builder anp-pr-setup anp-ex-setup" novalidate aria-label="Set up an exam">' +
+      '<fieldset class="cx-step"><legend><span class="cx-step-n" aria-hidden="true">1</span>Choose an exam</legend><div class="cx-choices">' + KINDS.map(function(k){
+        return '<label class="cx-choice"><input type="radio" name="kind" value="' + k.id + '"' + (k.id === cfg.kind ? ' checked' : '') + '><span><b>' + esc(k.title) + '</b><span>' + esc(k.desc) + '</span></span></label>';
+      }).join('') + '</div></fieldset>' +
+      '<div class="cx-step"><h2 class="cx-step-h"><span class="cx-step-n" aria-hidden="true">2</span>Settings</h2><div class="anp-ex-panel">' + panelHtml() + '</div></div>' +
+      '<div class="cx-start"><p class="cx-sum"><span class="anp-pr-avail" aria-live="polite"></span>' +
+      '<small>No feedback until the end. Your first tap locks an answer in; you can skip and come back. Then you review every question with its explanation, and misses go to your review queue.</small></p>' +
+      '<button type="submit" class="btn-press anp-pr-start">Start</button></div></form></div>' +
+      examRail() + '</div>';
     var form = app.querySelector('form');
     function refresh(){
       app.querySelector('.anp-pr-avail').textContent = planSummary();

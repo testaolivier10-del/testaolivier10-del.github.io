@@ -15,7 +15,7 @@ const RUNNER_HOME = { full: 'exams.html', spaced: 'review.html' };
 function runnerPageFor(m){ return RUNNER_HOME[m] || 'practice.html'; }
 const RUNNER_SCREENS = `
   <div id="quizScreen">
-    <div class="quiz-main">
+    <div class="quiz-main cx-q">
       <div id="practiceBanner" class="practice-banner"></div>
       <div class="exit-row">
         <button id="exitBtn" class="exit-link">&larr; Exit exam</button>
@@ -26,9 +26,9 @@ const RUNNER_SCREENS = `
         <button type="button" class="flag-btn" id="flagBtn"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>Flag for review</button>
       </div>
       <div class="q-prompt" id="qPrompt" role="heading" aria-level="2" tabindex="-1"></div>
-      <div class="options" id="qOptions"></div>
-      <div class="q-feedback" id="qFeedback" role="status" hidden></div>
-      <div class="nav-row" style="margin-bottom:20px;">
+      <div class="options cx-opts" id="qOptions"></div>
+      <div class="q-feedback cx-fb" id="qFeedback" role="status" hidden></div>
+      <div class="nav-row cx-next-row">
         <button id="prevBtn">Previous</button>
         <button class="primary" id="nextBtn">Next</button>
       </div>
@@ -45,7 +45,7 @@ const RUNNER_SCREENS = `
         <span id="progressText">Question 1 of 100</span>
         <span id="answeredText">0 answered</span>
       </div>
-      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:1%"></div></div>
+      <div class="progress-track cx-progress"><div class="progress-fill" id="progressFill" style="width:1%"></div></div>
       <div class="jump-row" id="jumpRow"></div>
       <div class="nav-row">
         <button class="primary" id="submitBtn" style="background:var(--accent);">Submit Now</button>
@@ -1282,8 +1282,12 @@ function renderPremium(){
     let html = '';
     if(locked && (RUNNER_PAGE === 'practice' || RUNNER_PAGE === 'review')){
       const left = G.quotaLeft();
+      // The same free-tier line, in the same place, as the other courses'
+      // study pages (docs/course-shell.md: .cx-free under the start button).
+      const q = window.LevlPremium && window.LevlPremium.quota ? window.LevlPremium.quota('nremt') : null;
+      const limit = q && isFinite(q.limit) ? q.limit : 15;
       html = left > 0
-        ? `<p class="premium-quota">${left} free question${left === 1 ? '' : 's'} left today, shared by practice and review.</p>`
+        ? `<p class="cx-free premium-quota">Free: <b>${left} of ${limit}</b> questions left today, shared with ${RUNNER_PAGE === 'review' ? 'practice' : 'review'}. ${G.badge()}</p>`
         : G.gate('daily-limit', RUNNER_PAGE);
     }
     notice.innerHTML = html;
@@ -1296,7 +1300,7 @@ function renderPremium(){
     const canStart = G.canStartExam();
     startBtn.hidden = !canStart;
     slot.innerHTML = !canStart ? G.gate('exam', 'exams')
-      : locked ? '<p class="premium-quota">Your one free timed exam is ready when you are.</p>' : '';
+      : locked ? `<p class="cx-notice"><b>Your free exam.</b> One full exam is free: starting it uses it, and once started you can always finish it. ${G.badge()}</p>` : '';
   }
 
   // Missed and spaced review are free and draw on the same allowance; once it
@@ -1990,7 +1994,7 @@ function renderQuestion(){
     optsEl.setAttribute('aria-label', 'Answer options');
     q.options.forEach((opt, i) => {
       const div = document.createElement('div');
-      div.className = 'option multi' + (selected.includes(i) ? ' selected' : '');
+      div.className = 'option cx-opt multi' + (selected.includes(i) ? ' selected' : '');
       // A checkbox to assistive tech and the keyboard, not just a clickable box.
       div.setAttribute('role', 'checkbox');
       div.setAttribute('aria-checked', selected.includes(i) ? 'true' : 'false');
@@ -2064,7 +2068,7 @@ function renderQuestion(){
     const tabStop = answers[current] === null || answers[current] === undefined ? 0 : answers[current];
     q.options.forEach((opt, i) => {
       const div = document.createElement('div');
-      div.className = 'option' + (answers[current]===i ? ' selected' : '');
+      div.className = 'option cx-opt' + (answers[current]===i ? ' selected' : '');
       div.setAttribute('role', 'radio');
       div.setAttribute('aria-checked', answers[current] === i ? 'true' : 'false');
       div.setAttribute('data-opt', i);
@@ -2147,10 +2151,10 @@ function showCheckedState(q, optsEl){
   }
   const fb = $id('qFeedback');
   fb.hidden = false;
-  fb.className = 'q-feedback ' + (right ? 'is-right' : 'is-wrong');
-  fb.innerHTML = `<p class="q-feedback-head">${right ? 'Correct.' : 'Not quite.'}</p>` +
+  fb.className = 'q-feedback cx-fb ' + (right ? 'is-right' : 'is-wrong');
+  fb.innerHTML = `<p class="q-feedback-head cx-fb-head">${right ? 'Correct.' : 'Not quite.'}</p>` +
     (right ? '' : `<p class="q-feedback-key">Answer: ${formatCorrectAnswerText(q, LETTERS)}</p>`) +
-    `<div class="q-feedback-explain">${q.explain || ''}</div>`;
+    `<div class="q-feedback-explain cx-explain">${q.explain || ''}</div>`;
   // The explanation may still be on its way on a slow connection.
   if(!q.explain){
     loadExplanations().then(() => {

@@ -739,6 +739,9 @@ ${tail({ depth, section: 'home', extra: ['bio-home.js'] })}
     const scriptOk = a.script && existsSync(join(ROOT, 'bio', 'assets', a.script));
     const cssOk = a.css && existsSync(join(ROOT, 'bio', 'assets', a.css));
     const hub = HUB_PAGES.has(a.slug);
+    // Practice, Review, Flashcards and Exams: the shared study shell
+    // (docs/course-shell.md, W-C), as in the other three courses.
+    const study = ['practice', 'review', 'exams', 'flashcards'].includes(a.slug);
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'WebPage', '@id': `${url}#page`, name: a.h1, url, description: a.desc, isPartOf: { '@id': COURSE_ID } },
       crumbs(orgCrumbs([{ name: a.h1, url }])),
@@ -746,20 +749,23 @@ ${tail({ depth, section: 'home', extra: ['bio-home.js'] })}
     const body = `
 ${bodyOpen(` data-app="${a.slug}"`)}
 <main id="main" class="xshell bio-app">
-  ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: a.h1 }])}
-  ${hub
-    ? `<header class="page-head"><div class="eyebrow">${COURSE_HTML} <span class="cx-beta">Beta</span></div><h1>${esc(a.h1)}</h1><p>${esc(a.lede || a.desc)}</p></header>`
+  ${study || hub ? crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: a.h1 }]).replace('class="bio-crumb', 'class="cx-crumb bio-crumb')
+    : crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: a.h1 }])}
+  ${study || hub
+    ? `<header class="page-head"><div class="eyebrow">${COURSE_HTML} <span class="cx-beta">Beta</span></div><h1>${esc(a.h1)}</h1><p class="lede">${esc(a.lede || a.desc)}</p></header>`
     : `<header class="hero bio-hero"><div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div><h1>${esc(a.h1)}</h1><p class="lede">${esc(a.lede || a.desc)}</p></header>`}
-  <div id="app" class="bio-app-mount" data-slug="${a.slug}"${a.premium ? ` data-premium="${a.premium}"` : ''}>${a.slug === 'tools' ? toolsHub() : scriptOk
+  <div id="app" class="bio-app-mount${study ? ' cx-study' : ''}" data-slug="${a.slug}"${a.premium ? ` data-premium="${a.premium}"` : ''}>${a.slug === 'tools' ? toolsHub() : scriptOk
     ? '<noscript><p>This page needs JavaScript. Every notes page works without it.</p></noscript>'
     : `<p class="bio-soon">This page arrives with the first published unit. Meanwhile, read the <a href="learn.html">free notes</a>.</p>`}</div>
 </main>
 ${footer(depth, `page:${a.slug}`)}
-${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<script src="../assets/course/hub.js" defer></script>\n' : ''}${cssOk ? `<link rel="stylesheet" href="assets/${a.css}">\n` : ''}${tail({ depth, section: a.section, extra: ['bio-questions.js', ...(scriptOk ? [a.script] : [])], premium: true, site: a.siteScripts || [] })}
+${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<script src="../assets/course/hub.js" defer></script>\n' : ''}${cssOk ? `<link rel="stylesheet" href="assets/${a.css}">\n` : ''}${tail({ depth, section: a.section, extra: ['bio-questions.js', ...(scriptOk ? [a.script] : [])], premium: true, site: [...(study ? ['course/study.js'] : []), ...(a.siteScripts || [])] })}
 </body>
 </html>
 `;
-    return head({ title: courseTitle(a.title, [LABEL]), desc: a.desc, path, depth, ogType: 'website', jsonld, noindex: noindex || STATE_PAGES.has(a.slug) }) + body;
+    const page = head({ title: courseTitle(a.title, [LABEL]), desc: a.desc, path, depth, ogType: 'website', jsonld, noindex: noindex || STATE_PAGES.has(a.slug) }) + body;
+    return study ? page.replace('<link rel="stylesheet" href="assets/bio.css">',
+      '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/study.css">\n<link rel="stylesheet" href="assets/bio.css">') : page;
   }
 
   /* ------------------------------------------------------------- FRQs */

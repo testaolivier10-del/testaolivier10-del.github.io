@@ -86,8 +86,8 @@
         ? window.OchemShuffle.apply(opts, q.id)
         : { options: opts, toOriginal: opts.map(function(_, i){ return i; }) };
       return {
-        html: '<div class="choice-row">' + shuf.options.map(function(o, i){
-          return '<button class="choice-btn" data-i="' + shuf.toOriginal[i] + '">' + esc(o) + '</button>';
+        html: '<div class="choice-row cx-opts">' + shuf.options.map(function(o, i){
+          return '<button class="choice-btn cx-opt" data-i="' + shuf.toOriginal[i] + '"><span>' + esc(o) + '</span></button>';
         }).join('') + '</div>',
         attach: function(submit){
           cardEl.querySelectorAll('.choice-btn').forEach(function(btn){
@@ -100,7 +100,7 @@
           cardEl.querySelectorAll('.choice-btn').forEach(function(b, i){
             var orig = shuf.toOriginal[i];
             b.disabled = true;
-            if(orig === q.answer) b.classList.add('correct');
+            if(orig === q.answer){ b.classList.add('correct'); if(orig === response.choice) b.classList.add('is-picked'); }
             else if(orig === response.choice) b.classList.add('wrong');
           });
         }
@@ -627,11 +627,11 @@
       var html = '';
 
       if(d.correct){
-        html += '<div class="diag good"><div class="k">Correct</div>' +
-          '<p class="msg">' + esc(d.why) + '</p></div>';
+        html += '<div class="diag good cx-fb is-right"><p class="k cx-fb-head">Correct.</p>' +
+          '<p class="msg cx-explain">' + esc(d.why) + '</p></div>';
       } else {
-        html += '<div class="diag"><div class="k">' +
-          (d.precise ? 'Here is what went wrong' : 'Not quite') + '</div>' +
+        html += '<div class="diag cx-fb is-wrong"><p class="k cx-fb-head">' +
+          (d.precise ? 'Here is what went wrong.' : 'Not quite.') + '</p>' +
           (d.whatYouDid ? '<div class="did">' + esc(d.whatYouDid) + '</div>' : '') +
           (d.diagnosis ? '<p class="msg">' + esc(d.diagnosis) + '</p>' : '') +
           (d.why ? '<p class="msg">' + esc(d.why) + '</p>' : '') +
@@ -684,7 +684,7 @@
 
       var label = check ? 'Try a similar one'
                 : (config.nextLabel ? config.nextLabel(S) : 'Next question');
-      html += '<div class="actions"><button class="btn-press" id="nextBtn">' + esc(label) + '</button></div>';
+      html += '<div class="actions cx-next-row"><button class="btn-press cx-next" id="nextBtn">' + esc(label) + '</button></div>';
       // Under the explanation, which is where the disagreement happens.
       if(window.LevlReport) html += '<div class="q-report">' + window.LevlReport.button('ochem', questionRef(q)) + '</div>';
       return html;

@@ -914,34 +914,41 @@ function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts
     ? [{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: entry.name }]
     : [{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: h1 }];
   const teas = /\bTEAS\b/.test(entry.desc + ' ' + (lede || '')) || entry.slug === 'exams';
+  // Practice, Review, Flashcards and Exams share one shell with the other
+  // courses (docs/course-shell.md, W-C): .page-head opener with the course
+  // eyebrow and Beta pill, the shared crumb, course/base.css + study.css.
+  const study = STUDY_PAGES.has(entry.slug);
   const body = `
 <body data-app="${entry.slug}">
 <header id="site-header"></header>
 <div class="course-nav"></div>
 <main id="main" class="xshell anp-app">
-  ${crumbNav(crumbItems, depth)}
-  ${HUB_PAGES.has(entry.slug) && !isTool
-    ? `<header class="page-head"><div class="eyebrow">${esc(eyebrow)} <span class="cx-beta">Beta</span></div><h1>${esc(h1)}</h1><p>${hero ? hero.ledeHtml : esc(lede)}</p></header>`
+  ${study || (HUB_PAGES.has(entry.slug) && !isTool) ? crumbNav(crumbItems, depth).replace('class="anp-crumb"', 'class="anp-crumb cx-crumb"') : crumbNav(crumbItems, depth)}
+  ${study || (HUB_PAGES.has(entry.slug) && !isTool)
+    ? `<header class="page-head"><div class="eyebrow">${esc(eyebrow)} <span class="cx-beta">Beta</span></div><h1>${esc(study && hero ? hero.h1 : h1)}</h1><p class="lede">${hero ? hero.ledeHtml : esc(lede)}</p></header>`
     : hero
     ? `<header class="hero anp-hero ${hero.cls}"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(hero.h1)}</h1><p class="lede">${hero.ledeHtml}</p></header>`
     : `<header class="hero anp-hero"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(h1)}</h1><p class="lede">${esc(lede)}</p></header>`}${
   // Where site-chrome.js puts a cross-course suggestion (assets/cross-course.js).
   entry.slug === 'dashboard' ? '\n  <div data-levl-cross="anp"></div>' : ''}
-  <div id="app" class="anp-app-mount" data-slug="${entry.slug}"${entry.premium ? ` data-premium="${entry.premium}"` : ''}${entry.data ? ` data-src="${depth}assets/tool-data/${entry.data}"` : ''}>${mount || `<noscript><p>This ${isTool ? 'tool' : 'page'} needs JavaScript. The lessons and notes pages work without it.</p></noscript>`}</div>
+  <div id="app" class="anp-app-mount${study ? ' cx-study' : ''}" data-slug="${entry.slug}"${entry.premium ? ` data-premium="${entry.premium}"` : ''}${entry.data ? ` data-src="${depth}assets/tool-data/${entry.data}"` : ''}>${mount || `<noscript><p>This ${isTool ? 'tool' : 'page'} needs JavaScript. The lessons and notes pages work without it.</p></noscript>`}</div>
   ${teas ? `<p class="anp-disclaimer">${esc(TEAS_DISCLAIMER)}</p>` : ''}
 </main>
 ${footer(depth)}
 ${HUB_PAGES.has(entry.slug) && !isTool ? `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/hub.css">\n<script src="${depth}../assets/course/hub.js" defer></script>\n` : ''}<link rel="stylesheet" href="${depth}assets/${entry.css}">
 <script src="${depth}../assets/report-question.js" defer></script>
-${(entry.siteScripts || []).map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), entry.script], premium: true })}
+${[...(study ? ['course/study.js'] : []), ...(entry.siteScripts || [])].map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), entry.script], premium: true })}
 </body>
 </html>
 `;
   // Dashboard, review and search show the visitor's own state: noindex, and
   // left out of the sitemap (scripts/lib/app-pages.mjs).
   const meta = APP_STATE_PAGES.includes(`anatomy-physiology/${path}`) ? `${NOINDEX}\n` : '';
-  return head({ title: courseTitle(entry.title, AP_LABELS), desc: entry.desc, path, depth, ogType: 'website', jsonld, meta }) + body;
+  const page = head({ title: courseTitle(entry.title, AP_LABELS), desc: entry.desc, path, depth, ogType: 'website', jsonld, meta }) + body;
+  return study ? page.replace(`<link rel="stylesheet" href="${depth}assets/anp.css">`,
+    `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/study.css">\n<link rel="stylesheet" href="${depth}assets/anp.css">`) : page;
 }
+const STUDY_PAGES = new Set(['practice', 'review', 'exams', 'flashcards']);
 
 /* ---- Tools hub and practice page (redesign) ----
    The tools hub is rendered here in full (featured lab practical banner, then
