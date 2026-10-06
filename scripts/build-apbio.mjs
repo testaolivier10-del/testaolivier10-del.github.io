@@ -152,7 +152,7 @@ function build() {
       { id: 'misconception', kind: 'Misconception', nav: 'A common mistake', h: 'A common mistake', cls: 'bio-misconception', html: `<p class="bio-wrong"><b>The wrong idea:</b> ${g(L.misconception.wrong)}</p><p class="bio-right"><b>What actually happens:</b> ${g(L.misconception.right)}</p>` },
       { id: 'check', kind: 'Check yourself', nav: 'Check yourself', h: 'Check yourself', html: `<p class="bio-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="bio-qs" data-set="check">${staticQuestions(check, stimuli, depth)}</div>` },
       { id: 'summary', kind: 'Summary', nav: 'Summary', h: 'Summary', html: g(L.summary) },
-      { id: 'next', kind: 'Up next', nav: 'What comes next', h: 'What comes next', html: nx ? `<nav class="bio-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="${nx.id}.html">${esc(nx.title)} &rarr;</a></p></nav>` : '<p>This is the last topic published so far.</p>' },
+      { id: 'next', kind: 'Up next', nav: 'What comes next', h: 'What comes next', html: nx ? `<nav class="bio-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="${nx.id}.html">${esc(nx.title)} &rarr;</a></p></nav>` : '<p>This is the last topic in the course.</p>' },
       (L.connections || []).length && { id: 'connections', kind: 'Connections', nav: 'Connections', h: 'Connections', html: `<ul class="bio-links">${L.connections.map(c => `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ul>` },
     ].filter(Boolean);
     const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -631,7 +631,7 @@ ${bodyOpen()}
     <div>
       <h2 id="h-covers">What the course covers</h2>
       <p>${units.length} units and ${unitTopics.length} topics in the order of the 2025 course framework, plus ${skillTopics} skills topics built on the official formula sheet: statistics, rates, water potential and experimental design. Each topic has an interactive lesson, a free notes page and exam-style practice, and each unit a printable unit sheet.</p>
-      <p>${nq.toLocaleString('en-US')} practice questions so far, many in stimulus sets of four or five that share one table, graph or experiment, as on the real exam. Every option has its own explanation.</p>
+      <p>${nq.toLocaleString('en-US')} practice questions${map.chapters.every(chapterBuilt) ? '' : ' so far'}, many in stimulus sets of four or five that share one table, graph or experiment, as on the real exam. Every option has its own explanation.</p>
       <p class="bio-small">${built.length === topics.length ? `All ${built.length} topics are built, each with its lesson, notes and questions.` : `So far, ${built.length} of ${topics.length} topics are built. The rest are listed so you can see where everything fits.`}</p>
     </div>
     <div>
