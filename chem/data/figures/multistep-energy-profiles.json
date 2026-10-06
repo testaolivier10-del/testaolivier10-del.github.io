@@ -1,0 +1,12 @@
+{
+ "multistep-profile": {
+  "file": "figures/multistep-profile.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Potential energy against reaction progress for a reaction in two elementary steps. The curve rises from the reactants over a tall first peak, the first transition state, drops into a valley where the intermediate sits, rises over a smaller second peak, the second transition state, and falls to products lower than the reactants. A double arrow from the reactants to the first peak is the activation energy of step 1; a shorter double arrow from the valley to the second peak is the activation energy of step 2. Step 1 has the larger activation energy, so it is the slow step."
+ }
+}

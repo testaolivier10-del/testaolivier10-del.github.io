@@ -1,0 +1,8 @@
+{
+ "energy-profile": {
+  "def": "A graph of the potential energy of reacting particles against reaction progress (the reaction coordinate), from reactants through the transition state to products."
+ },
+ "transition-state": {
+  "def": "The highest-energy arrangement of atoms along a reaction path, with bonds partly broken and partly formed. It cannot be isolated."
+ }
+}

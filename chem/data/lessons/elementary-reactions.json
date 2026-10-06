@@ -1,0 +1,77 @@
+{
+ "topic": "elementary-reactions",
+ "hook": "A dance floor gets more crowded and couples bump into each other more often. Put twice as many dancers of one kind in the room and there are twice as many chances for a bump. Molecules work the same way, and for a reaction that happens in one single bump, you can write its rate law just by counting who has to meet.",
+ "prereq": [
+  {
+   "q": "A reaction has rate = k[A][B]. If [A] doubles and [B] is unchanged, the rate:",
+   "options": [
+    "doubles",
+    "is unchanged",
+    "quadruples",
+    "halves"
+   ],
+   "correct": 0,
+   "why": "The rate is first order in A, so it changes by the same factor as [A].",
+   "review": "rate-laws"
+  },
+  {
+   "q": "Why do orders in a rate law have to be measured for an overall reaction?",
+   "options": [
+    "They need not match the coefficients of the balanced equation",
+    "Concentrations cannot be calculated",
+    "The rate constant changes with concentration",
+    "Rates can only be measured for gases"
+   ],
+   "correct": 0,
+   "why": "The overall equation shows totals, not how the rate depends on each concentration.",
+   "review": "rate-laws"
+  }
+ ],
+ "figure": {
+  "figure": "molecularity",
+  "caption": "One, two or three particles come together in a single elementary step."
+ },
+ "chain": [
+  {
+   "cause": "An elementary step happens in a single collision or event",
+   "effect": "its rate depends on how often those exact particles meet"
+  },
+  {
+   "cause": "Doubling the number of one kind of particle doubles its collisions",
+   "effect": "each particle in the step contributes one power of its concentration"
+  },
+  {
+   "cause": "So the coefficients of an elementary step are its orders",
+   "effect": "you can write its rate law without an experiment"
+  },
+  {
+   "cause": "An overall equation is usually several steps",
+   "effect": "its rate law must still come from data"
+  }
+ ],
+ "ideas": [
+  "An <b>elementary reaction</b> is one event: a single collision or one particle breaking apart.",
+  "The rate law of an elementary step uses its coefficients as orders: 2 A + B → products has rate = k[A]²[B].",
+  "<b>Molecularity</b>: unimolecular (1), bimolecular (2, most common), termolecular (3, rare).",
+  "Only elementary steps follow this rule. Overall rate laws are measured."
+ ],
+ "misconception": {
+  "wrong": "Any balanced equation's coefficients give its rate law.",
+  "right": "Only an elementary step's coefficients give its rate law. Most overall equations happen in several steps, so their rate laws must be measured."
+ },
+ "check": [
+  "chem-elementary-reactions-1",
+  "chem-elementary-reactions-2",
+  "chem-elementary-reactions-3",
+  "chem-elementary-reactions-5",
+  "chem-elementary-reactions-6",
+  "chem-elementary-reactions-9"
+ ],
+ "summary": "An elementary reaction happens in a single event, so its rate law follows from its coefficients and its molecularity is the number of particles in that event. Bimolecular steps are the most common and termolecular steps are rare. Overall reactions usually happen in several steps, so their rate laws must be measured.",
+ "connections": [
+  {
+   "href": "../notes/rate-laws.html",
+   "label": "Back: rate laws and orders (5.2)"
+  }
+ ]
+}

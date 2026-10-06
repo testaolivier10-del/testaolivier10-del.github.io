@@ -1,0 +1,44 @@
+<p>A rate law (topic 5.2) tells you the rate at one moment. Often you want something else: how much reactant is left after 10 minutes, or how long until half of it is gone. The <b>integrated rate laws</b> answer those questions. They also give the cleanest way to find the order from a single experiment: make the right graph and see which one is a straight line. This topic uses natural logarithms; the "Logarithms" page just before it covers ln and e.</p>
+
+<h2>Three orders, three equations</h2>
+<table class="compare">
+<caption>Integrated rate laws for a reaction A → products</caption>
+<thead><tr><th>Order</th><th>Rate law</th><th>Integrated rate law</th><th>Straight-line plot</th><th>Slope</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>rate = k</td><td>[A]<sub>t</sub> = [A]<sub>0</sub> − kt</td><td>[A] vs t</td><td>−k</td></tr>
+<tr><td>1</td><td>rate = k[A]</td><td>ln[A]<sub>t</sub> − ln[A]<sub>0</sub> = −kt</td><td>ln[A] vs t</td><td>−k</td></tr>
+<tr><td>2</td><td>rate = k[A]²</td><td>1/[A]<sub>t</sub> − 1/[A]<sub>0</sub> = kt</td><td>1/[A] vs t</td><td>+k</td></tr>
+</tbody></table>
+<p>[A]<sub>0</sub> is the starting concentration and [A]<sub>t</sub> the concentration at time t. The first-order law can also be written [A]<sub>t</sub> = [A]<sub>0</sub>e<sup>−kt</sup>. The exam's equations sheet gives the first- and second-order laws and the first-order half-life. It does not give the zero-order law, so learn it: it just says the concentration falls by the same amount every second.</p>
+
+<h2>Finding the order from a graph</h2>
+<p>Each integrated law has the shape y = mx + b, so one of three graphs comes out straight (<a class="figref" href="#fig-plots">Figure 1</a>):</p>
+<figure id="fig-plots" data-fig="rate-plots"><figcaption>Figure 1. The straight-line plot for each order. Only one of the three plots of the same data is straight.</figcaption></figure>
+<p>Plot [A], ln[A] and 1/[A] against time. Whichever plot is linear tells you the order, and its slope gives k. When you justify an order, <b>name the plot</b>: "The plot of ln[A] against time is linear, so the reaction is first order." "The graph is linear" earns nothing on its own, because every order has a linear graph of something.</p>
+<p>From a table, you can check without drawing: if ln[A] changes by the same amount in each equal time step, ln[A] vs t is linear. If 1/[A] changes by the same amount each step, 1/[A] vs t is linear.</p>
+
+<div class="worked"><h3>Worked example: order and k from data</h3>
+<p>A compound decomposes at constant temperature. [A] = 0.800 M at 0 min, 0.400 M at 20 min, 0.200 M at 40 min.</p>
+<p><b>Step 1: test each plot.</b> [A] drops 0.400, then 0.200: not equal, so [A] vs t is not linear. 1/[A] = 1.25, 2.50, 5.00 M⁻¹: steps of 1.25, then 2.50, not equal. ln[A] = −0.223, −0.916, −1.609: steps of −0.693 each time. ln[A] vs t is linear, so the reaction is first order.</p>
+<p><b>Step 2: k from the slope.</b> slope = (−1.609 − (−0.223))/(40 min − 0 min) = −1.386/40 min = −0.0347 min⁻¹. k = −slope = 0.0347 min⁻¹.</p>
+<p><b>Step 3: predict.</b> At 60 min: ln[A] = ln(0.800) − (0.0347 min⁻¹)(60 min) = −0.223 − 2.08 = −2.30, so [A] = e<sup>−2.30</sup> = 0.100 M.</p></div>
+
+<h2>Half-life</h2>
+<p>The <b>half-life</b>, t<sub>½</sub>, is the time for a reactant's concentration to fall to half its value. Put [A]<sub>t</sub> = ½[A]<sub>0</sub> into the first-order law: ln(½) = −kt<sub>½</sub>, and ln 2 = 0.693, so</p>
+<p style="text-align:center"><b>t<sub>½</sub> = 0.693 / k</b> (first order)</p>
+<p>The starting concentration is not in this equation. A first-order reaction takes the same time to go from 1.00 M to 0.50 M as from 0.50 M to 0.25 M. In the worked example, the concentration halves every 20 min: 0.693/0.0347 min⁻¹ = 20.0 min.</p>
+<p>Radioactive decay is first order. After n half-lives, (½)<sup>n</sup> of the sample is left: after 3 half-lives, 12.5%.</p>
+<p>For a second-order reaction the half-life is not constant: it gets longer as the reaction goes on, because the rate falls with [A]². For zero order it gets shorter. You only need the first-order formula; for the others, reason from the integrated law.</p>
+
+<div class="worked"><h3>Worked example: second order</h3>
+<p>2 HI(g) → H₂(g) + I₂(g) is second order in HI with k = 0.0300 M⁻¹ s⁻¹. Starting from [HI] = 0.500 M, find [HI] after 100. s.</p>
+<p>1/[HI]<sub>t</sub> = kt + 1/[HI]<sub>0</sub> = (0.0300 M⁻¹ s⁻¹)(100. s) + 1/(0.500 M) = 3.00 M⁻¹ + 2.00 M⁻¹ = 5.00 M⁻¹.</p>
+<p>[HI]<sub>t</sub> = 1/(5.00 M⁻¹) = 0.200 M.</p></div>
+
+<h2>Common slips</h2>
+<ul>
+<li>Using log (base 10) in place of ln. The integrated rate laws use the natural log.</li>
+<li>Getting the sign of the slope wrong: −k for the [A] and ln[A] plots, +k for the 1/[A] plot. k itself is always positive.</li>
+<li>Writing "the graph is linear" without saying which graph.</li>
+<li>Using t<sub>½</sub> = 0.693/k for a reaction that is not first order.</li>
+</ul>

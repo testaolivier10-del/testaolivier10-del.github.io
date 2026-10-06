@@ -1,0 +1,563 @@
+{
+ "stimuli": {
+  "multistep-energy-profiles-s1": {
+   "kind": "graph",
+   "title": "A two-step reaction",
+   "text": "<p>The energy profile for a reaction that happens in two elementary steps:</p><p>Step 1: A + B → C &nbsp; Step 2: C → D</p><p>Reaction progress has no units.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Reaction progress",
+     "min": 0,
+     "max": 16,
+     "step": 2
+    },
+    "y": {
+     "label": "Potential energy",
+     "unit": "kJ/mol",
+     "min": 0,
+     "max": 160,
+     "step": 20
+    },
+    "series": [
+     {
+      "name": "Energy",
+      "points": [
+       [
+        0,
+        50
+       ],
+       [
+        1,
+        50
+       ],
+       [
+        2,
+        50
+       ],
+       [
+        3,
+        72.5
+       ],
+       [
+        4,
+        117.5
+       ],
+       [
+        5,
+        140
+       ],
+       [
+        6,
+        125
+       ],
+       [
+        7,
+        95
+       ],
+       [
+        8,
+        80
+       ],
+       [
+        9,
+        87.5
+       ],
+       [
+        10,
+        102.5
+       ],
+       [
+        11,
+        110
+       ],
+       [
+        12,
+        87.5
+       ],
+       [
+        13,
+        42.5
+       ],
+       [
+        14,
+        20
+       ],
+       [
+        15,
+        20
+       ],
+       [
+        16,
+        20
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "multistep-energy-profiles-s2": {
+   "kind": "table",
+   "title": "Energies along a three-step reaction",
+   "text": "<p>A reaction happens in three elementary steps. The table lists the potential energy of each point along its energy profile, in order.</p>",
+   "table": {
+    "caption": "Energy levels along the profile",
+    "cols": [
+     "Point",
+     "Energy (kJ/mol)"
+    ],
+    "rows": [
+     [
+      "Reactants",
+      "0"
+     ],
+     [
+      "Transition state 1",
+      "45"
+     ],
+     [
+      "Intermediate 1",
+      "20"
+     ],
+     [
+      "Transition state 2",
+      "95"
+     ],
+     [
+      "Intermediate 2",
+      "−10"
+     ],
+     [
+      "Transition state 3",
+      "40"
+     ],
+     [
+      "Products",
+      "−60"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-multistep-energy-profiles-1",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "multistep-energy-profiles-s1",
+   "q": "Where is the intermediate C on the profile?",
+   "options": [
+    "In the valley between the two peaks, at 80 kJ/mol",
+    "At the first peak, at 140 kJ/mol",
+    "At the second peak, at 110 kJ/mol",
+    "At the right-hand plateau, at 20 kJ/mol"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An intermediate is a real species made in step 1 and used in step 2, so it sits in the local minimum between the two transition states.",
+    "options": [
+     "Right: the valley between the steps.",
+     "The first peak is the transition state of step 1, not a species that can be isolated.",
+     "The second peak is the transition state of step 2.",
+     "The right-hand plateau is the product D."
+    ]
+   }
+  },
+  {
+   "id": "chem-multistep-energy-profiles-2",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "numeric",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "multistep-energy-profiles-s1",
+   "q": "What is the activation energy of step 2, in kJ/mol?",
+   "numeric": {
+    "answer": 30,
+    "tol": 1,
+    "unit": "kJ/mol",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 60,
+      "why": "Value: you measured from the reactants (50). Step 2 starts at the intermediate (80 kJ/mol): 110 − 80."
+     },
+     {
+      "value": 110,
+      "why": "Value: that is the energy of the second transition state. Subtract the level step 2 starts from."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Step 2 starts at the intermediate (80 kJ/mol) and climbs to the second transition state (110 kJ/mol): Ea = 110 − 80 = 30 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-multistep-energy-profiles-3",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "multistep-energy-profiles-s1",
+   "q": "Which step is rate-determining, and what is the evidence?",
+   "options": [
+    "Step 1: its barrier, 90 kJ/mol, is larger",
+    "Step 2: its transition state comes later in the reaction",
+    "Step 2: its barrier ends nearest to the products",
+    "Step 1: being first, it is the slowest by rule"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Step 1 climbs 140 − 50 = 90 kJ/mol; step 2 climbs 110 − 80 = 30 kJ/mol. The larger barrier means fewer successful collisions, so step 1 is slower and limits the rate.",
+    "options": [
+     "Right: compares the two activation energies.",
+     "Position along the reaction coordinate does not decide which step is slower.",
+     "Where a step ends says nothing about its barrier.",
+     "The first step is not slowest by rule; here it is slowest because of its barrier."
+    ]
+   }
+  },
+  {
+   "id": "chem-multistep-energy-profiles-4",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "multistep-energy-profiles-s1",
+   "q": "What rate law does this profile predict for the overall reaction A + B → D?",
+   "options": [
+    "rate = k[A][B]",
+    "rate = k[C]",
+    "rate = k[A][B][C]",
+    "rate = k[D]"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Step 1 (A + B → C) is the slow step and comes first, so its rate law is the overall rate law: rate = k[A][B].",
+    "options": [
+     "Right: from the slow first step.",
+     "That is the rate law of the fast step, and C is an intermediate.",
+     "C is an intermediate and does not belong in the rate law.",
+     "D is a product."
+    ]
+   }
+  },
+  {
+   "id": "chem-multistep-energy-profiles-5",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "numeric",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "multistep-energy-profiles-s1",
+   "q": "What is the overall energy change for A + B → D, in kJ/mol?",
+   "numeric": {
+    "answer": -30,
+    "tol": 1,
+    "unit": "kJ/mol",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 30,
+      "why": "Sign: the products (20) are below the reactants (50), so energy is released and the change is negative."
+     },
+     {
+      "value": -60,
+      "why": "Value: compare the products with the reactants, not with the intermediate: 20 − 50."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Energy change = E(products) − E(reactants) = 20 − 50 = −30 kJ/mol. The intermediate and transition states do not affect it."
+   }
+  },
+  {
+   "id": "chem-multistep-energy-profiles-6",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "numeric",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "multistep-energy-profiles-s2",
+   "q": "What is the activation energy of step 2, in kJ/mol?",
+   "numeric": {
+    "answer": 75,
+    "tol": 1,
+    "unit": "kJ/mol",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 95,
+      "why": "Value: step 2 starts from intermediate 1 (20 kJ/mol), not from the reactants."
+     },
+     {
+      "value": 105,
+      "why": "Value: that runs from transition state 2 down to intermediate 2. Step 2 climbs from intermediate 1 up to transition state 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Step 2 goes from intermediate 1 (20 kJ/mol) up to transition state 2 (95 kJ/mol): Ea = 95 − 20 = 75 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-multistep-energy-profiles-7",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "multistep-energy-profiles-s2",
+   "q": "Which step is rate-determining?",
+   "options": [
+    "Step 2 (Ea = 75 kJ/mol)",
+    "Step 1 (Ea = 45 kJ/mol)",
+    "Step 3 (Ea = 50 kJ/mol)",
+    "Step 3, since it releases the most energy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Barriers: step 1, 45 − 0 = 45; step 2, 95 − 20 = 75; step 3, 40 − (−10) = 50 kJ/mol. Step 2 has the largest barrier, and its transition state is also the highest point on the profile, so it is the slow step.",
+    "options": [
+     "Right: the largest barrier and the highest transition state.",
+     "Step 1 has the smallest barrier.",
+     "Step 3's barrier is 50 kJ/mol, smaller than step 2's.",
+     "Releasing energy does not make a step slow; the barrier does."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-multistep-energy-profiles-8",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "multistep-energy-profiles-s2",
+   "q": "How many intermediates does this mechanism have, and how many transition states?",
+   "options": [
+    "2 intermediates and 3 transition states",
+    "3 intermediates and 2 transition states",
+    "3 intermediates and 3 transition states",
+    "2 intermediates and 2 transition states"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Three elementary steps give three peaks (transition states) and two valleys between them (intermediates).",
+    "options": [
+     "Right: n steps, n peaks, n − 1 valleys.",
+     "This swaps the counts: peaks are transition states.",
+     "The valleys sit between peaks, so there is one fewer of them.",
+     "Each of the three steps has its own peak."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-multistep-energy-profiles-9",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "numeric",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "multistep-energy-profiles-s2",
+   "q": "What is the overall energy change of the reaction, in kJ/mol?",
+   "numeric": {
+    "answer": -60,
+    "tol": 1,
+    "unit": "kJ/mol",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 60,
+      "why": "Sign: the products are below the reactants, so the change is negative."
+     },
+     {
+      "value": -50,
+      "why": "Value: the overall change is products minus reactants: −60 − 0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Overall change = E(products) − E(reactants) = −60 − 0 = −60 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-multistep-energy-profiles-10",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "On a multistep energy profile, what does each peak represent?",
+   "options": [
+    "The transition state of one elementary step",
+    "An intermediate that can be isolated",
+    "The products of the overall reaction",
+    "A point where no bonds are changing"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each elementary step has its own barrier, so each peak is that step's transition state.",
+    "options": [
+     "Right: one peak per step.",
+     "Intermediates are in the valleys, not at the peaks.",
+     "The products are the final plateau.",
+     "At a peak, bonds are partly broken and partly formed."
+    ]
+   }
+  },
+  {
+   "id": "chem-multistep-energy-profiles-11",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A two-step profile shows a deep valley (very stable intermediate) and a second peak higher than the first. A student says, \"Step 1 is first, so it must be the slow step.\" Which response is best?",
+   "options": [
+    "Step 2 has the larger climb from its valley, so it is slower",
+    "The student is right; the first step is the slow one",
+    "Both steps are equally slow, since there are two peaks",
+    "The deep valley means the reaction does not happen"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The slow step is the one with the larger barrier measured from where that step starts. A deep valley followed by a high second peak makes step 2's climb the largest.",
+    "options": [
+     "Right: compare barriers from each step's starting level.",
+     "Order in the mechanism does not decide speed; barrier height does.",
+     "Two peaks do not mean equal barriers.",
+     "A stable intermediate just means step 2 has a large climb; the reaction still goes."
+    ]
+   }
+  },
+  {
+   "id": "chem-multistep-energy-profiles-12",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For a two-step reaction, step 1 has Ea = 60 kJ/mol and step 2 has Ea = 25 kJ/mol. The reactants are at 0 kJ/mol and the intermediate at 35 kJ/mol. What is the energy of the second transition state?",
+   "options": [
+    "60 kJ/mol",
+    "25 kJ/mol",
+    "85 kJ/mol",
+    "35 kJ/mol"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Step 2 starts at the intermediate (35 kJ/mol) and climbs 25 kJ/mol: 35 + 25 = 60 kJ/mol. (The first transition state is also at 0 + 60 = 60 kJ/mol.)",
+    "options": [
+     "Right: intermediate plus the step 2 barrier.",
+     "That is the barrier of step 2, not the level of its peak.",
+     "That adds both barriers but ignores that step 2 starts from the intermediate, not from step 1's peak.",
+     "That is the level of the intermediate."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-multistep-energy-profiles-13",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "predict",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A two-step reaction has a slow first step. Suppose step 2 were changed so its barrier became even smaller, with nothing else changed. Predict each effect.",
+   "variables": [
+    {
+     "name": "Overall rate",
+     "answer": "none",
+     "why": "Step 1 is still the slow step, so it still sets the rate."
+    },
+    {
+     "name": "Overall energy change",
+     "answer": "none",
+     "why": "The reactant and product levels are unchanged."
+    },
+    {
+     "name": "Energy of the intermediate",
+     "answer": "none",
+     "why": "The valley level is unchanged; only the second peak drops."
+    }
+   ],
+   "why": {
+    "correct": "Lowering a barrier that is not rate-determining leaves the overall rate, the overall energy change and the intermediate level unchanged."
+   }
+  },
+  {
+   "id": "chem-multistep-energy-profiles-14",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A three-step reaction profile is drawn. How many valleys lie between the reactant and product plateaus?",
+   "options": [
+    "2",
+    "3",
+    "1",
+    "4"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "There is one valley between each pair of neighbouring peaks: three peaks give two valleys, one for each intermediate.",
+    "options": [
+     "Right: two intermediates.",
+     "Three is the number of peaks.",
+     "One valley would mean two steps.",
+     "Four would mean five steps."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-multistep-energy-profiles-15",
+   "unit": "unit-5",
+   "topic": "multistep-energy-profiles",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why is an intermediate on an energy profile drawn in a valley rather than at a peak?",
+   "options": [
+    "It is a real, if short-lived, species that sits at a local minimum",
+    "It has more energy than both transition states around it",
+    "It forms after the reaction is complete",
+    "It is the same as the transition state"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An intermediate is a species with fully formed bonds that lasts long enough to collide again. That makes it a local minimum, lower than the transition states on either side.",
+    "options": [
+     "Right: a local minimum between barriers.",
+     "It is lower in energy than the transition states on either side.",
+     "It forms and is used during the reaction.",
+     "A transition state is a peak; an intermediate is a valley."
+    ]
+   }
+  }
+ ]
+}

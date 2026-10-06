@@ -1,0 +1,12 @@
+{
+ "rate-orders": {
+  "file": "figures/rate-orders.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three small graphs of rate against the concentration of a reactant A. Zero order: a flat line, so doubling [A] leaves the rate the same. First order: a straight line through the origin, so doubling [A] doubles the rate. Second order: an upward curve, so doubling [A] multiplies the rate by four. Dashed lines mark one concentration and twice that concentration on each graph."
+ }
+}

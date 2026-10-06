@@ -1,0 +1,12 @@
+{
+ "rate-plots": {
+  "file": "figures/rate-plots.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 370,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three graphs, each a straight line through data points. For a zero-order reaction, concentration of A against time is a straight line with slope equal to minus k. For a first-order reaction, the natural log of the concentration of A against time is a straight line with slope minus k. For a second-order reaction, one over the concentration of A against time is a straight line that rises, with slope plus k."
+ }
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 260" width="680" height="260" role="img" aria-labelledby="t d">
+<title id="t">The slowest step limits the overall rate</title>
+<desc id="d">A two-stage assembly line drawn as two pipes in a row. The first pipe is narrow and labelled step 1, slow; the second pipe is wide and labelled step 2, fast. Product leaves the end only as fast as material squeezes through the narrow first pipe, so the overall rate equals the rate of the slow step, and making the fast step faster changes nothing.</desc>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="680" height="260" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<rect x="40" y="95" width="80" height="70" rx="6" fill="#5D6B69" fill-opacity="0.2" stroke="#1F2A28"/><text x="80" y="135" font-size="14" text-anchor="middle">reactants</text><rect x="130" y="118" width="190" height="24" fill="#D55E00" fill-opacity="0.35" stroke="#D55E00" stroke-width="2"/><text x="225" y="100" font-size="15" text-anchor="middle" font-weight="700" fill="#8E3B2E">Step 1: slow (narrow)</text><rect x="330" y="85" width="190" height="90" fill="#0072B2" fill-opacity="0.18" stroke="#0072B2" stroke-width="2"/><text x="425" y="72" font-size="15" text-anchor="middle" font-weight="700" fill="#005A8C">Step 2: fast (wide)</text><line x1="530" y1="130" x2="600" y2="130" stroke="#1F2A28" stroke-width="3" marker-end="url(#ar)"/><text x="630" y="135" font-size="14" text-anchor="middle">products</text><text x="340" y="220" font-size="15" text-anchor="middle">Products come out only as fast as step 1 lets material through:</text><text x="340" y="242" font-size="15" text-anchor="middle" font-weight="700">overall rate = rate of the slow step.</text>
+</g>
+</svg>

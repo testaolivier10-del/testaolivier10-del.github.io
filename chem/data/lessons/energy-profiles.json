@@ -1,0 +1,81 @@
+{
+ "topic": "energy-profiles",
+ "hook": "A ball at the top of a hill will roll down to the valley on the other side, but only if someone first pushes it over the small bump at the hilltop edge. Chemical reactions have a bump like that too. An energy profile is the map of the hill: where the reactants start, how high the bump is, and where the products end up.",
+ "prereq": [
+  {
+   "q": "What is the minimum energy a collision needs to cause a reaction called?",
+   "options": [
+    "The activation energy",
+    "The kinetic energy",
+    "The bond energy",
+    "The thermal energy"
+   ],
+   "correct": 0,
+   "why": "A collision needs at least the activation energy, Ea, to react.",
+   "review": "collision-model"
+  },
+  {
+   "q": "Raising the temperature speeds up a reaction mainly because:",
+   "options": [
+    "more collisions have at least Ea",
+    "Ea becomes smaller",
+    "the molecules become larger",
+    "fewer collisions happen"
+   ],
+   "correct": 0,
+   "why": "The energy distribution shifts so a larger fraction of collisions clears the same barrier.",
+   "review": "collision-model"
+  }
+ ],
+ "figure": {
+  "figure": "energy-profile",
+  "caption": "Activation energy is the climb from reactants to the transition state; the energy change is products minus reactants."
+ },
+ "chain": [
+  {
+   "cause": "Bonds must partly break before new ones form",
+   "effect": "potential energy rises to a peak, the transition state"
+  },
+  {
+   "cause": "The climb from reactants to that peak is the activation energy",
+   "effect": "a higher peak means fewer collisions succeed and a smaller k"
+  },
+  {
+   "cause": "The products sit at their own level, above or below the reactants",
+   "effect": "products minus reactants gives the energy released or absorbed"
+  },
+  {
+   "cause": "A reaction and its reverse share one transition state",
+   "effect": "the difference between their barriers equals the energy change"
+  }
+ ],
+ "ideas": [
+  "An <b>energy profile</b> plots potential energy against reaction progress, from reactants through the <b>transition state</b> to products.",
+  "E<sub>a</sub> = E(transition state) − E(reactants). Energy change = E(products) − E(reactants).",
+  "Energy change = E<sub>a</sub>(forward) − E<sub>a</sub>(reverse).",
+  "A higher barrier means a smaller k and a slower reaction at the same temperature. The overall energy change does not set the rate."
+ ],
+ "misconception": {
+  "wrong": "A reaction that releases a lot of energy must be fast.",
+  "right": "The rate depends on the barrier height, not on how much energy is released. A reaction can release a lot of energy and still be very slow if its activation energy is high."
+ },
+ "check": [
+  "chem-energy-profiles-1",
+  "chem-energy-profiles-2",
+  "chem-energy-profiles-3",
+  "chem-energy-profiles-4",
+  "chem-energy-profiles-5",
+  "chem-energy-profiles-13"
+ ],
+ "summary": "An energy profile shows potential energy along the reaction coordinate. The activation energy is the rise from the reactants to the transition state, and the energy change is products minus reactants. At the same temperature, a higher barrier means a smaller rate constant, whatever the overall energy change.",
+ "connections": [
+  {
+   "href": "../notes/collision-model.html",
+   "label": "Back: activation energy and collisions (5.5)"
+  },
+  {
+   "href": "../notes/bond-potential-energy.html",
+   "label": "Potential energy and bonds (2.2)"
+  }
+ ]
+}

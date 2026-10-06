@@ -1,0 +1,586 @@
+{
+ "stimuli": {
+  "collision-model-s1": {
+   "kind": "graph",
+   "title": "Molecular energies at two temperatures",
+   "text": "<p>The graph shows how the kinetic energies of the molecules in a gas are spread out at two temperatures, T₁ and T₂. The same gas sample is used for both. The reaction the gas undergoes has an activation energy of 20 kJ/mol.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Kinetic energy",
+     "unit": "kJ/mol",
+     "min": 0,
+     "max": 40,
+     "step": 5
+    },
+    "y": {
+     "label": "Fraction of molecules (relative)",
+     "min": 0,
+     "max": 20,
+     "step": 5
+    },
+    "series": [
+     {
+      "name": "T₁",
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        2,
+        15.8
+       ],
+       [
+        4,
+        11.4
+       ],
+       [
+        6,
+        7.2
+       ],
+       [
+        8,
+        4.3
+       ],
+       [
+        10,
+        2.4
+       ],
+       [
+        12,
+        1.4
+       ],
+       [
+        14,
+        0.8
+       ],
+       [
+        16,
+        0.4
+       ],
+       [
+        18,
+        0.2
+       ],
+       [
+        20,
+        0.1
+       ],
+       [
+        24,
+        0
+       ],
+       [
+        28,
+        0
+       ],
+       [
+        32,
+        0
+       ],
+       [
+        36,
+        0
+       ],
+       [
+        40,
+        0
+       ]
+      ]
+     },
+     {
+      "name": "T₂",
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        2,
+        7.8
+       ],
+       [
+        4,
+        7.9
+       ],
+       [
+        6,
+        6.9
+       ],
+       [
+        8,
+        5.7
+       ],
+       [
+        10,
+        4.6
+       ],
+       [
+        12,
+        3.6
+       ],
+       [
+        14,
+        2.8
+       ],
+       [
+        16,
+        2.1
+       ],
+       [
+        18,
+        1.6
+       ],
+       [
+        20,
+        1.2
+       ],
+       [
+        24,
+        0.7
+       ],
+       [
+        28,
+        0.4
+       ],
+       [
+        32,
+        0.2
+       ],
+       [
+        36,
+        0.1
+       ],
+       [
+        40,
+        0.1
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "collision-model-s2": {
+   "kind": "particle",
+   "title": "Two collisions with the same energy",
+   "text": "<p>Molecules of NOCl hit chlorine atoms. In the reaction NOCl + Cl → NO + Cl₂, the Cl atom must take the chlorine atom of NOCl. Both collisions below have more than enough energy.</p>",
+   "html": "<svg viewBox=\"0 0 520 170\" width=\"520\" height=\"170\" role=\"img\" aria-label=\"Two collisions. In collision 1 the chlorine atom approaches the chlorine end of the NOCl molecule. In collision 2 the chlorine atom approaches the oxygen end of the NOCl molecule, far from its chlorine atom.\"><g font-family=\"Arial,Helvetica,sans-serif\" font-size=\"14\" fill=\"#1F2A28\"><rect x=\"4\" y=\"4\" width=\"250\" height=\"140\" rx=\"8\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><rect x=\"266\" y=\"4\" width=\"250\" height=\"140\" rx=\"8\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"74\" r=\"14\" fill=\"#D55E00\"/><text x=\"40\" y=\"79\" text-anchor=\"middle\" fill=\"#fff\">O</text><circle cx=\"68\" cy=\"74\" r=\"14\" fill=\"#0072B2\"/><text x=\"68\" y=\"79\" text-anchor=\"middle\" fill=\"#fff\">N</text><circle cx=\"100\" cy=\"74\" r=\"18\" fill=\"#009E73\"/><text x=\"100\" y=\"79\" text-anchor=\"middle\" fill=\"#fff\">Cl</text><circle cx=\"210\" cy=\"74\" r=\"18\" fill=\"#009E73\"/><text x=\"210\" y=\"79\" text-anchor=\"middle\" fill=\"#fff\">Cl</text><line x1=\"188\" y1=\"74\" x2=\"130\" y2=\"74\" stroke=\"#1F2A28\" stroke-width=\"2\" marker-end=\"url(#am)\"/><circle cx=\"300\" cy=\"74\" r=\"18\" fill=\"#009E73\"/><text x=\"300\" y=\"79\" text-anchor=\"middle\" fill=\"#fff\">Cl</text><circle cx=\"332\" cy=\"74\" r=\"14\" fill=\"#0072B2\"/><text x=\"332\" y=\"79\" text-anchor=\"middle\" fill=\"#fff\">N</text><circle cx=\"360\" cy=\"74\" r=\"14\" fill=\"#D55E00\"/><text x=\"360\" y=\"79\" text-anchor=\"middle\" fill=\"#fff\">O</text><circle cx=\"472\" cy=\"74\" r=\"18\" fill=\"#009E73\"/><text x=\"472\" y=\"79\" text-anchor=\"middle\" fill=\"#fff\">Cl</text><line x1=\"450\" y1=\"74\" x2=\"382\" y2=\"74\" stroke=\"#1F2A28\" stroke-width=\"2\" marker-end=\"url(#am)\"/><text x=\"129\" y=\"164\" text-anchor=\"middle\">Collision 1</text><text x=\"391\" y=\"164\" text-anchor=\"middle\">Collision 2</text></g><defs><marker id=\"am\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto\"><path d=\"M0,0 L10,5 L0,10 Z\" fill=\"#1F2A28\"/></marker></defs></svg><p>Key: O, oxygen atom; N, nitrogen atom; Cl, chlorine atom. Arrows show the direction the lone Cl atom is moving.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-collision-model-1",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 1,
+   "stimulus": "collision-model-s1",
+   "q": "Which temperature is higher, and how does the graph show it?",
+   "options": [
+    "T₂: its curve is flatter and spread to higher energies",
+    "T₁: its curve has the taller peak",
+    "T₁: more of its molecules have low energies",
+    "T₂: its curve holds more molecules in total"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At a higher temperature the average kinetic energy is larger, so the distribution shifts right and spreads out; with the same number of molecules, its peak is lower. That describes T₂.",
+    "options": [
+     "Right: shifted and spread toward higher energy.",
+     "A taller, narrower peak at low energy means a lower temperature.",
+     "Many molecules at low energy means a lower average kinetic energy, so a lower temperature.",
+     "It is the same sample, so both curves represent the same number of molecules (equal areas)."
+    ]
+   }
+  },
+  {
+   "id": "chem-collision-model-2",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "collision-model-s1",
+   "q": "The reaction is faster at T₂. Which explanation uses the graph correctly?",
+   "options": [
+    "At T₂ more of the molecules have 20 kJ/mol or more",
+    "At T₂ the activation energy is lower than 20 kJ/mol",
+    "At T₂ each molecule has at least 20 kJ/mol",
+    "At T₂ the molecules are smaller and fit together more easily"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The area under each curve to the right of 20 kJ/mol is the fraction of molecules with enough energy to react. It is much larger for T₂, so a larger fraction of collisions succeeds.",
+    "options": [
+     "Right: more of the curve lies beyond the activation energy.",
+     "Heating does not change the activation energy; it changes how many molecules can reach it.",
+     "Even at T₂, many molecules have less than 20 kJ/mol; the curve starts near zero.",
+     "Temperature does not change the size of molecules."
+    ]
+   }
+  },
+  {
+   "id": "chem-collision-model-3",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "collision-model-s1",
+   "q": "Raising the temperature makes molecules collide more often, and makes collisions more energetic. Which effect is larger for most reactions, and why?",
+   "options": [
+    "The energy effect: the fraction above Ea grows fastest",
+    "The collision-frequency effect: faster molecules meet each other far more often",
+    "The two effects are about equal in size for most reactions",
+    "Neither: temperature changes the rate by changing the activation energy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A modest rise in temperature raises the collision frequency by a few percent, but it can multiply the fraction of molecules with energy above Ea several times over (compare the tails of the two curves beyond 20 kJ/mol). The energy effect dominates.",
+    "options": [
+     "Right: the high-energy tail grows sharply.",
+     "Collision frequency does rise, but only a little compared with the growth of the high-energy tail.",
+     "The energy effect is much larger for reactions with a significant activation energy.",
+     "The activation energy is a property of the pathway; heating does not change it."
+    ]
+   }
+  },
+  {
+   "id": "chem-collision-model-4",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "collision-model-s1",
+   "q": "On the graph, what represents the fraction of molecules that have enough energy to react at T₁?",
+   "options": [
+    "The area under the T₁ curve to the right of 20 kJ/mol",
+    "The height of the T₁ peak",
+    "The energy at which the T₁ curve peaks",
+    "The area under the T₁ curve to the left of 20 kJ/mol"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The area under a distribution curve between two energies is the fraction of molecules with energies in that range. Molecules beyond 20 kJ/mol can react if they also collide with the right orientation.",
+    "options": [
+     "Right: the tail beyond the activation energy.",
+     "The peak height is the fraction at the most common energy, not a count above Ea.",
+     "The peak energy is the most probable energy, which is well below Ea here.",
+     "Those are the molecules without enough energy to react."
+    ]
+   }
+  },
+  {
+   "id": "chem-collision-model-5",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "collision-model-s2",
+   "q": "Which collision can lead to reaction, and why?",
+   "options": [
+    "Collision 1: the Cl atom strikes the Cl end of NOCl",
+    "Collision 2: the Cl atom strikes the O end, which is more reactive",
+    "Both: each one has more than enough energy",
+    "Neither: Cl atoms need a third particle to react"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "To form Cl₂, the incoming Cl must meet the Cl of NOCl. A collision at the O end, however energetic, puts the atoms in the wrong places, so the molecules bounce apart.",
+    "options": [
+     "Right: enough energy and the right orientation.",
+     "The O end is far from the Cl atom that must be taken, so this orientation cannot make Cl₂.",
+     "Energy is necessary but not enough; orientation matters too.",
+     "The step is bimolecular; two particles are enough."
+    ]
+   }
+  },
+  {
+   "id": "chem-collision-model-6",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "multi",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "collision-model-s2",
+   "q": "Only a small fraction of collisions in a gas cause a reaction, even when the gas is hot. Which statements explain this? Select all that apply.",
+   "options": [
+    "Many colliding pairs have less than the activation energy",
+    "Many collisions have the wrong orientation",
+    "Each molecule collides about once per second",
+    "Molecules lose a little mass each time they collide"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A collision is effective only if it has at least the activation energy and the right orientation. Most collisions miss one or both.",
+    "options": [
+     "Right: not enough energy.",
+     "Right: wrong orientation.",
+     "Gas molecules collide billions of times per second; the rate limit is not the number of collisions.",
+     "Mass is conserved in collisions."
+    ]
+   }
+  },
+  {
+   "id": "chem-collision-model-7",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "predict",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "collision-model-s2",
+   "q": "The gas mixture is heated from 300 K to 320 K with the same container. Predict each change.",
+   "variables": [
+    {
+     "name": "Number of collisions per second",
+     "answer": "up",
+     "why": "Faster molecules meet more often (a small increase)."
+    },
+    {
+     "name": "Fraction of collisions with energy at or above Ea",
+     "answer": "up",
+     "why": "The energy distribution shifts toward higher energy, so more of it lies beyond Ea."
+    },
+    {
+     "name": "Activation energy",
+     "answer": "none",
+     "why": "Ea is a property of the reaction pathway, not of the temperature."
+    },
+    {
+     "name": "Fraction of collisions with a suitable orientation",
+     "answer": "none",
+     "why": "Orientation depends on the shapes of the molecules, not on how fast they move."
+    }
+   ],
+   "why": {
+    "correct": "Heating raises both the collision frequency and the share of energetic collisions; the activation energy and the orientation requirement stay the same."
+   }
+  },
+  {
+   "id": "chem-collision-model-8",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "collision-model-s2",
+   "q": "Which conditions must a collision meet to cause a reaction?",
+   "options": [
+    "Enough energy and a suitable orientation",
+    "Energy of at least Ea, with any orientation",
+    "A suitable orientation, with any amount of energy",
+    "The two molecules have the same mass"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The collision model needs both: enough energy to break and rearrange bonds, and the right atoms facing each other.",
+    "options": [
+     "Right: both conditions.",
+     "Energy alone is not enough; the wrong orientation bounces apart.",
+     "Orientation alone is not enough; a gentle bump does not break bonds.",
+     "Mass is not a requirement for an effective collision."
+    ]
+   }
+  },
+  {
+   "id": "chem-collision-model-9",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Food spoils more slowly in a refrigerator. Which explanation uses the collision model correctly?",
+   "options": [
+    "At lower temperature fewer collisions have enough energy to react",
+    "Cold temperatures raise the activation energy of the spoiling reactions",
+    "Cold molecules stop moving, so they no longer collide",
+    "Cold air contains fewer molecules of oxygen per liter"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Lower temperature shifts the energy distribution to lower energies, so a much smaller fraction of collisions reaches Ea, and the spoiling reactions slow down.",
+    "options": [
+     "Right: fewer energetic collisions.",
+     "The activation energy is set by the reaction pathway; temperature does not change it.",
+     "Molecules still move at refrigerator temperatures; they just move more slowly.",
+     "Cold air is slightly denser, which would speed reactions with oxygen, not slow them."
+    ]
+   }
+  },
+  {
+   "id": "chem-collision-model-10",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two reactions run at the same temperature. Reaction X has Ea = 40 kJ/mol and reaction Y has Ea = 90 kJ/mol. Other factors are similar. Which statement is correct?",
+   "options": [
+    "X is faster: more collisions reach its smaller Ea",
+    "Y is faster: its higher Ea gives each collision more energy",
+    "They have the same rate, since the temperature is the same",
+    "X is faster, since its molecules collide more often"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At one temperature the energy distribution is the same, so a larger fraction of molecules is above 40 kJ/mol than above 90 kJ/mol. More effective collisions means a faster reaction and a larger k.",
+    "options": [
+     "Right: lower barrier, more successful collisions.",
+     "Ea is a barrier to overcome, not energy given to the molecules.",
+     "Same temperature does not mean same rate; the barriers differ.",
+     "Ea does not change how often molecules collide."
+    ]
+   }
+  },
+  {
+   "id": "chem-collision-model-11",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A reaction in solution goes faster when the concentration of a reactant is raised, at constant temperature. Which part of the collision model explains this?",
+   "options": [
+    "More particles per liter collide more often each second",
+    "Each collision has more energy at higher concentration",
+    "The activation energy falls at higher concentration",
+    "More particles per liter means each has the right orientation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Concentration changes how often particles meet, not how hard they hit. More collisions per second means more effective collisions per second, at the same fraction.",
+    "options": [
+     "Right: collision frequency rises.",
+     "Energy per collision depends on temperature, not concentration.",
+     "Ea does not depend on concentration.",
+     "The fraction with a good orientation is unchanged; only the number of collisions rises."
+    ]
+   }
+  },
+  {
+   "id": "chem-collision-model-12",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a reaction, 2.0 × 10⁻⁵ of all collisions have enough energy, and of those, 0.15 have a suitable orientation. In 1.0 L, 3.0 × 10³¹ collisions happen each second. How many effective collisions occur per second?",
+   "numeric": {
+    "answer": 9e+25,
+    "tol": 1e+24,
+    "unit": "collisions/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 6e+26,
+      "why": "Value: include the orientation factor too. Only 0.15 of the energetic collisions are oriented correctly."
+     },
+     {
+      "value": 4.5e+30,
+      "why": "Value: include the energy factor too. Only 2.0 × 10⁻⁵ of collisions have enough energy."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Effective collisions = (total collisions) × (fraction with enough energy) × (fraction correctly oriented) = (3.0 × 10³¹ s⁻¹)(2.0 × 10⁻⁵)(0.15) = 9.0 × 10²⁵ per second."
+   }
+  },
+  {
+   "id": "chem-collision-model-13",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student says, \"Heating a reaction mixture lowers the activation energy, which is why it speeds up.\" Which response is best?",
+   "options": [
+    "Ea is unchanged; more molecules now reach it",
+    "Correct: heating lowers Ea and makes collisions more frequent",
+    "Ea rises when heated, but collisions become more frequent",
+    "Heating speeds a reaction just by making molecules collide more often"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Activation energy belongs to the reaction pathway. Heating shifts the distribution of molecular energies so that a larger fraction of collisions clears the same barrier.",
+    "options": [
+     "Right: same barrier, more molecules over it.",
+     "The barrier is not lowered by heat; that is the misconception.",
+     "Ea does not change with temperature in either direction.",
+     "Collision frequency rises only slightly; the big effect is the energy distribution."
+    ]
+   }
+  },
+  {
+   "id": "chem-collision-model-14",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student grinds a solid reactant into a fine powder before adding it to a solution. According to the collision model, what changes?",
+   "options": [
+    "More reactant particles are exposed, so collisions per second rise",
+    "Each collision now has more energy, so more of them react",
+    "The activation energy is lower for the small grains",
+    "The particles in the powder are oriented better"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only particles at the surface of a solid can collide with the dissolved reactant. Grinding exposes far more of them, so the number of collisions per second rises; the energy of each collision and Ea are unchanged.",
+    "options": [
+     "Right: more surface, more collisions.",
+     "Collision energy depends on temperature, not on particle size.",
+     "Ea is a property of the reaction pathway; grinding does not change it.",
+     "Grinding changes how many particles are exposed, not how each collision is aimed."
+    ]
+   }
+  },
+  {
+   "id": "chem-collision-model-15",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Two reactions have the same activation energy and are run at the same temperature and concentrations. In reaction 1 two small, round atoms combine; in reaction 2 a small molecule must hit one particular atom on a large molecule. Reaction 1 is much faster. Which explanation fits the collision model?",
+   "options": [
+    "In reaction 2 most energetic collisions hit the wrong part of the large molecule",
+    "In reaction 2 the collisions carry too much energy, so the particles bounce apart",
+    "Large molecules collide with less kinetic energy at any temperature",
+    "Small atoms have a lower activation energy than large molecules"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With the same barrier and temperature, the same fraction of collisions has enough energy. The difference is orientation: a round atom can react from any side, but only collisions that strike the one reactive atom of a large molecule can work.",
+    "options": [
+     "Right: the orientation requirement is much stricter for reaction 2.",
+     "Extra energy does not stop a reaction; a poor orientation does.",
+     "At one temperature, all particles share the same average kinetic energy.",
+     "The stem says the activation energies are equal."
+    ]
+   }
+  }
+ ]
+}

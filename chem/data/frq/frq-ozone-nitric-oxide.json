@@ -1,0 +1,74 @@
+{
+ "id": "frq-ozone-nitric-oxide",
+ "type": "short",
+ "points": 4,
+ "title": "Nitrogen monoxide and ozone high in the air",
+ "units": [
+  "unit-5"
+ ],
+ "topics": [
+  "mechanisms-intro",
+  "mechanism-rate-laws",
+  "catalysis"
+ ],
+ "practices": [
+  "4.C",
+  "5.C",
+  "6.E"
+ ],
+ "stimulus": {
+  "kind": "model",
+  "title": "A two-step mechanism",
+  "html": "<p>High in the atmosphere, oxygen atoms and ozone react: O₃(g) + O(g) → 2 O₂(g). The reaction is slow on its own, but much faster when a small amount of nitrogen monoxide, NO, is present. A proposed mechanism with NO:</p><ol><li>NO(g) + O₃(g) → NO₂(g) + O₂(g) &nbsp;(slow)</li><li>NO₂(g) + O(g) → NO(g) + O₂(g) &nbsp;(fast)</li></ol>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 1,
+   "prompt": "<b>Show</b> that the two steps add up to the overall reaction.",
+   "rubric": [
+    {
+     "point": "Adds the steps and cancels NO and NO₂ to get O₃ + O → 2 O₂",
+     "accept": [
+      "NO + O₃ + NO₂ + O → NO₂ + O₂ + NO + O₂; cancel NO and NO₂"
+     ]
+    }
+   ],
+   "sample": "Adding: NO + O₃ + NO₂ + O → NO₂ + O₂ + NO + O₂. NO and NO₂ appear on both sides and cancel, leaving O₃ + O → 2 O₂."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "<b>Identify</b> the catalyst and the intermediate in the mechanism. <b>Justify</b> each choice.",
+   "rubric": [
+    {
+     "point": "NO is the catalyst: it is used in step 1 and regenerated in step 2 (present at the start, not consumed overall)",
+     "accept": [
+      "NO, consumed then remade"
+     ]
+    },
+    {
+     "point": "NO₂ is the intermediate: it is made in step 1 and used up in step 2",
+     "accept": [
+      "NO₂, formed then consumed"
+     ]
+    }
+   ],
+   "sample": "NO is the catalyst: it is a reactant in step 1 and is made again in step 2, so it is present at the start and is not used up overall. NO₂ is the intermediate: it is made in step 1 and used up in step 2, so it is not present at the start or the end."
+  },
+  {
+   "label": "c",
+   "points": 1,
+   "prompt": "<b>Write</b> the rate law for the overall reaction that is consistent with the mechanism, and <b>explain</b> your reasoning.",
+   "rubric": [
+    {
+     "point": "rate = k[NO][O₃], because step 1 is the slow (rate-determining) step and its rate law follows from its coefficients",
+     "accept": [
+      "rate = k[NO][O₃] from the slow first step"
+     ]
+    }
+   ],
+   "sample": "rate = k[NO][O₃]. Step 1 is the slow, rate-determining step, and because it is an elementary step its rate law follows from its coefficients: one NO and one O₃ collide. O reacts only in the fast second step, so it does not appear."
+  }
+ ]
+}

@@ -1,0 +1,81 @@
+{
+ "topic": "collision-model",
+ "hook": "A box of matches can sit in a drawer for years, surrounded by oxygen, and nothing happens. Strike one and it bursts into flame. The molecules in the match head are colliding with oxygen all the time; striking the match just gives a few collisions enough energy to get started.",
+ "prereq": [
+  {
+   "q": "What happens to the average kinetic energy of gas molecules when the temperature rises?",
+   "options": [
+    "It increases",
+    "It decreases",
+    "It stays the same",
+    "It becomes zero"
+   ],
+   "correct": 0,
+   "why": "Temperature measures average kinetic energy; heating raises it.",
+   "review": "kinetic-molecular-theory"
+  },
+  {
+   "q": "A Maxwell-Boltzmann distribution at a higher temperature is:",
+   "options": [
+    "flatter and shifted to higher energy",
+    "taller and shifted to lower energy",
+    "identical to the lower-temperature curve",
+    "a single spike at the average energy"
+   ],
+   "correct": 0,
+   "why": "More molecules have high energies, so the curve spreads to the right and its peak drops.",
+   "review": "kinetic-molecular-theory"
+  }
+ ],
+ "figure": {
+  "figure": "mb-activation",
+  "caption": "The shaded area beyond the activation energy is the fraction of molecules that can react. It grows a lot at the higher temperature."
+ },
+ "chain": [
+  {
+   "cause": "Reactant particles move and collide constantly",
+   "effect": "a reaction is possible only where they meet"
+  },
+  {
+   "cause": "Bonds must stretch and break for atoms to rearrange",
+   "effect": "a collision needs at least the activation energy"
+  },
+  {
+   "cause": "The atoms that will bond must meet",
+   "effect": "a collision also needs a suitable orientation"
+  },
+  {
+   "cause": "Raising the temperature shifts the energy distribution to higher energies",
+   "effect": "a larger fraction of collisions clears the same barrier, so the rate and k rise"
+  }
+ ],
+ "ideas": [
+  "A reaction happens through <b>effective collisions</b>: enough energy (at least E<sub>a</sub>) and the right orientation.",
+  "Most collisions do not react, because they lack the energy, the orientation, or both.",
+  "Higher temperature: a little more collision frequency, and a much larger fraction of collisions above E<sub>a</sub>. E<sub>a</sub> itself does not change.",
+  "At the same temperature, a smaller E<sub>a</sub> means a faster reaction and a larger k."
+ ],
+ "misconception": {
+  "wrong": "Heating speeds up a reaction by lowering its activation energy.",
+  "right": "Heating leaves the activation energy the same. It gives a larger fraction of molecules at least that much energy, so more collisions succeed."
+ },
+ "check": [
+  "chem-collision-model-1",
+  "chem-collision-model-2",
+  "chem-collision-model-3",
+  "chem-collision-model-5",
+  "chem-collision-model-8",
+  "chem-collision-model-13"
+ ],
+ "summary": "A reaction happens when particles collide with at least the activation energy and a suitable orientation. Raising the temperature raises the fraction of collisions with enough energy far more than it raises the collision frequency, so the rate and the rate constant increase while the activation energy stays the same.",
+ "connections": [
+  {
+   "href": "../notes/kinetic-molecular-theory.html",
+   "label": "Back: the Maxwell-Boltzmann distribution (3.5)"
+  },
+  {
+   "href": "../notes/elementary-reactions.html",
+   "label": "Back: elementary steps are single collisions (5.4)"
+  }
+ ]
+}
