@@ -3,7 +3,7 @@
 The source of truth for LevlPrep's fifth course. A fresh session reads this file, `CLAUDE.md`,
 `docs/apchem-research/framework.md` and `docs/apchem-research/market.md`, not the chat history. When the
 plan changes, update this file in the same commit. Open points for a person go in
-`docs/apchem-needs-author.md` (create it with the first entry).
+`docs/apchem-needs-author.md`. Formats: `docs/apchem-architecture.md`; writing rules: `docs/apchem-authoring-guide.md`; map: `docs/apchem-phase0.md`.
 
 Course key `apchem` (storage, analytics, registry, SQL). URL path `/chem/`. Every new browser global
 starts with `ApChem`. Template: the AP® Biology course (`docs/apbio-spec.md`,
@@ -124,13 +124,15 @@ Built exactly like AP® Biology (decision 1 below), so every shared page type ma
 
 ## 6. Build plan (one week)
 
-| Phase | What | Branch |
+All on one branch, `claude/apchem` (decision 5), one PR at the end.
+
+| Phase | What | Status |
 |---|---|---|
-| 0 | CED topic map (own words, 91 topics), dependency map, fork generator and runtime, checks, registration (registry, Premium pass, Worker, SQL migration, hub/pricing hidden until published, search, sitemap, OG card, budgets, theme colour) | `claude/apchem-phase0` |
-| 1 | Units 1-3 (where students are now), notes, lessons, banks, FRQs, particle-diagram practice; independent accuracy check per unit; Beta | `claude/apchem-u1-3` |
-| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | `claude/apchem-u4` … |
-| 3 | Justification trainer, full practice exams, equations-sheet page, score calculator, cram kit | `claude/apchem-exams` |
-| 4 | Second accuracy pass on the whole course; PR to owner | — |
+| 0 | CED topic map (own words, 91 topics), dependency map, fork generator and runtime, checks, registration (registry, Premium pass, Worker, SQL migration, hub/pricing hidden until published, search, sitemap, OG card, budgets, theme colour) | **done 2026-10-06** (decisions 6-12): `docs/apchem-ced-map.json`, `docs/apchem-dependency-map.json` (96 topics, 285 concepts; `docs/apchem-phase0.md`), `scripts/build-apchem.mjs`, `check-apchem-map.mjs`, `check-apchem-content.mjs`, runtime `chem/assets/`, formats in `docs/apchem-architecture.md`, rules in `docs/apchem-authoring-guide.md`. Nothing published (`chem/data/published.json` empty, every page noindex); placeholder sample only in `scripts/test/fixtures/apchem-data/` |
+| 1 | Units 1-3 (where students are now) with the math refresher, notes, lessons, banks, FRQs, particle-diagram practice; independent accuracy check per unit; Beta | next |
+| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | |
+| 3 | Justification trainer, full practice exams, equations-sheet page, score calculator, cram kit | |
+| 4 | Second accuracy pass on the whole course; PR to owner | |
 
 Quality bar per unit: AP® Biology authoring guide rules (original items only, never adapted from
 released exams; at least 60% apply/analyze; stimulus sets; per-option explanations; key-length
@@ -153,8 +155,49 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    2027, cobalt-blue accent. Build everything in one go without check-ins unless really needed; one
    branch `claude/apchem`, one PR at the end.
 
+6. (2026-10-06, Phase 0) **Fork shape.** Everything AP® Biology has, renamed `chem`/`ApChem`/
+   `apchem`, and built the same way (`docs/apchem-architecture.md`). Inherited rules are cited by
+   their AP® Biology decision number in code comments. Free: every notes page, glossary,
+   flashcards, unit sheets, Units 1-2 lessons and every math lesson, 15 questions a day, one
+   exam; the pass `chem-2027` ($25, through 2027-06-30, the Worker's end of day in Hawaii) is
+   registered but `onSale: false` until the owner checklist is done.
+7. (2026-10-06) **Math refresher placed *before* its first use.** A skills topic takes
+   `before: <topic>` (or `after`). Units, exponents, scientific notation and sig figs come before
+   1.1; logs before 5.3 (the first ln). They form the "Math you need" chapter (`skills-math`),
+   free, published with Unit 1 (logs with Unit 5).
+8. (2026-10-06) **Item formats.** Single-answer MCQ has exactly 4 options. Numeric items grade
+   value, units (`askUnit`) and significant figures (`sigfigs`, or `places` for logarithms)
+   separately, with targeted feedback (prefix, °C/K, 1000, 273, 2.303 ln/log, sign) and authored
+   `mistakes`; tolerance at most two units in the last digit. New stimulus kind `particle` (our
+   SVG with a text alternative). Practice 3 is free response only. Grader tests in
+   `scripts/test/apchem-questions.test.mjs`.
+9. (2026-10-06) **Exams as the real split.** Section I 60 MCQ / 90 min; Section II 7 FRQs /
+   105 min, 3 long (10 points, 23 min) then 4 short (4 points, 9 min); readiness band from 50% MCQ +
+   50% FRQ, "Not calibrated". FRQ types are `long` and `short`. Exam-date default Thu 2027-05-06.
+10. (2026-10-06) **Identity.** Cobalt `--ctint #E3EAFA` / `--cink #1D44A6` (7.2:1), dark
+   `rgba(90,130,230,.12)` / `#B3C8F7` (8.7:1); flask icon on the hub card and trainers band; home
+   headline "AP® Chemistry, one particle at a time."; ranks Mole Counter → Chemistry Legend;
+   manifest and OG card "Chemistry" without the mark. "Simulators" are called trainers.
+11. (2026-10-06) **Registered, hidden until published** exactly as AP® Biology (apbio decision 11):
+   registry, every generated course list, Worker `PASSES`/`COURSE_NAMES`/`COURSE_RULES`, SQL
+   (`schema.sql`, `reports.sql`, `pageviews.sql`, migration `2026-10c-apchem.sql`, **not
+   applied**), premium.js, hub/404 cards and premium.html section (empty until a unit is
+   published), site search, tutor pages, sitemap, OG tags and card, manifest, noindex app pages,
+   weight budgets, a11y and console samples, CI and `ci-local.sh`, site rules
+   `apchem-trademark` and `apchem-beta-and-report`, `sw.js` (`COURSE_URLS.chem`, cache v58). Site
+   shell budget 282 → 283 KB for the fifth course. No tutor bank (as AP® Biology).
+12. (2026-10-06) **Placeholder sample outside the course.** The one sample topic
+   (`moles-molar-mass`, 15 items in two sets incl. a particle set and unit/sig-fig numerics, two
+   placeholder FRQs) lives in `scripts/test/fixtures/apchem-data/` and is built only by tests
+   (`APCHEM_DATA`). It is not accuracy-checked; authors write the real topic in `chem/data/`.
+
 ## 8. Open items for the owner
 
-- Launch checklist (only you can do): Polar product, `POLAR_PRODUCTS` entry, Supabase migration,
-  Worker deploy. Same steps as `docs/apbio-spec.md` section 6.
+- Launch checklist (only you can do), as `docs/apbio-spec.md` section 6, once Units 1-3 are
+  published: (1) apply `scripts/sql/migrations/2026-10c-apchem.sql` in Supabase (after
+  2026-10b); (2) Polar product "AP® Chemistry Premium (through June 30, 2027)", one-time $25;
+  (3) add `"chem-2027": "<product id>"` to `POLAR_PRODUCTS`; (4) deploy the Worker after merging;
+  (5) delete `onSale: false` from `COURSES.apchem` in `assets/premium.js` and bump `sw.js`.
+- Questions in `docs/apchem-needs-author.md` (CED exclusions for Units 3-9, practice weights,
+  which trainers are free).
 - Optional: a chemistry teacher to review the course (the Beta note stays until then).

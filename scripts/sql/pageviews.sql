@@ -66,7 +66,7 @@ limit 90;
 -- 4. Which course the traffic goes to.
 --
 -- The paths carry this: /nremt/... , /ochem/... , /anatomy-physiology/... ,
--- /bio/... (AP® Biology), and everything else is the hub and its standalone
+-- /bio/... (AP® Biology), /chem/... (AP® Chemistry), and everything else is the hub and its standalone
 -- pages.
 -- ---------------------------------------------------------------------------
 select
@@ -75,6 +75,7 @@ select
     when path like '/ochem/%' then 'Organic Chemistry'
     when path like '/anatomy-physiology/%' then 'Anatomy & Physiology'
     when path like '/bio/%' then 'AP® Biology'
+    when path like '/chem/%' then 'AP® Chemistry'
     else 'Hub and other'
   end as area,
   sum(views) as views

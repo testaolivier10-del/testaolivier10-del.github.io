@@ -35,3 +35,11 @@ test('other courses have no default, and a passed default is not shown', () => {
   b.setNow(Date.UTC(2027, 4, 4, 12));
   assert.equal(X.read('apbio'), null);
 });
+
+test('AP® Chemistry counts down to Thursday 6 May 2027 by default', () => {
+  const { X, ls } = load();
+  assert.equal(X.read('apchem'), '2027-05-06');
+  assert.equal(X.isDefault('apchem'), true);
+  assert.equal(X.DEFAULTS.apchem.label, 'AP® Chemistry exam (Thu, May 6, 2027)');
+  assert.equal(ls.getItem('apchem_exam_date'), null, 'the default is not written to storage');
+});

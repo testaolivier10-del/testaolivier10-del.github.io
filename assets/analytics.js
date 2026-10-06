@@ -40,6 +40,7 @@
     { key: 'ochem', dir: 'ochem' },
     { key: 'anp', dir: 'anatomy-physiology' },
     { key: 'apbio', dir: 'bio' },
+    { key: 'apchem', dir: 'chem' },
   ];
   // courses:end
 

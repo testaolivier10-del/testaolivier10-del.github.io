@@ -22,7 +22,10 @@
    6. AP® Biology's hub and 404 cards (<!-- hub-bio:start/end -->,
       <!-- nf-bio:start/end -->) and its pricing section, only once a unit is
       published (OPEN in scripts/lib/courses.mjs; empty until then), and its
-      manifest, bio/manifest.json, which never carries the mark. */
+      manifest, bio/manifest.json, which never carries the mark.
+   7. AP® Chemistry's the same way (<!-- hub-chem:start/end -->,
+      <!-- nf-chem:start/end -->, chem/manifest.json), hidden until its first
+      unit is published (docs/apchem-spec.md). */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, ORIGIN, FREE_SENTENCE, premiumData, counts, fmt, money, foundingPrice, longDate, courseOffers, guaranteeText } from './lib/premium-data.mjs';
@@ -56,6 +59,9 @@ function between(src, start, end, inner, rel) {
 const COURSE_URL = Object.fromEntries(PAID.map((c) => [c.key, c.path]));
 const ORDER = PAID.filter((c) => isOpen(c)).map((c) => c.key);
 const BIO = ORDER.includes('apbio');
+const CHEM = ORDER.includes('apchem');
+// Any course that uses the College Board's mark (AP® Biology, AP® Chemistry).
+const MARK = BIO || CHEM;
 // The College Board sentence, on every page that uses the mark (docs/apbio-spec.md).
 const TM_HTML = `<p class="tm-note">${esc(DISCLAIMER)}</p>`;
 const founding = FOUNDING && FOUNDING.until ? FOUNDING : null;
@@ -201,7 +207,7 @@ ${ORDER.map(courseSection).join('\n')}
 </div>
 <div class="xshell narrow">
   <footer>
-${BIO ? `    ${TM_HTML}
+${MARK ? `    ${TM_HTML}
 ` : ''}    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
@@ -254,7 +260,7 @@ function hubPricing() {
    data; both come from here, the prices from premium.js. The founding price
    is left out: it expires on a date, and the block above states it and hides
    it once it has. */
-const AFFILIATION = BIO
+const AFFILIATION = MARK
   ? `No. LevlPrep is an independent study aid. It is not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT), ATI, OpenStax, the College Board or any university. ${DISCLAIMER}`
   : 'No. LevlPrep is an independent study aid. It is not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT), ATI, OpenStax or any university.';
 const passWords = (p) => (p.until ? `for a pass valid through ${longDate(p.until)}`
@@ -264,7 +270,7 @@ const PRICE = `Premium is a one-time pass per course, with no subscription: ${OR
 const FAQ = [
   ['Is LevlPrep free?', FREE_SENTENCE],
   ['How much does Premium cost?', PRICE],
-  [BIO ? 'Is LevlPrep affiliated with the NREMT, ATI, OpenStax or the College Board?' : 'Is LevlPrep affiliated with the NREMT, ATI or OpenStax?', AFFILIATION],
+  [MARK ? 'Is LevlPrep affiliated with the NREMT, ATI, OpenStax or the College Board?' : 'Is LevlPrep affiliated with the NREMT, ATI or OpenStax?', AFFILIATION],
 ];
 
 function hubFaq() {
@@ -337,12 +343,35 @@ function hubBioCard() {
         </a>`;
 }
 
+/* AP® Chemistry's hub card, the same way: counted, never typed. */
+function hubChemCard() {
+  const topics = N.apchemTopics;
+  return `        <a class="featured-card" href="chem/">
+          <div class="featured-top">
+            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v6L4 19a1.6 1.6 0 0 0 1.4 2h13.2A1.6 1.6 0 0 0 20 19l-5-10V3"/><path d="M7.5 3h9M6.7 14h10.6"/></svg></div>
+            <span class="status-badge">Beta</span>
+          </div>
+          <div>
+            <p class="featured-name">AP® Chemistry</p>
+            <p class="featured-desc">Built on the 2024 course framework, in its order: lessons from scratch at the particle level, practice that checks units and significant figures, and justification training. ${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far, more every few weeks.</p>
+          </div>
+          <div class="featured-tags">
+            <span>Beta</span>
+            <span>Free notes</span>
+            <span>Particle diagrams</span>
+            <span>Units and sig figs</span>
+          </div>
+          <span class="featured-cta">Start learning &rarr;</span>
+        </a>`;
+}
+
 {
   const rel = 'index.html';
   let src = readFileSync(join(ROOT, rel), 'utf8');
   src = between(src, '<!-- pricing:start -->', '<!-- pricing:end -->', hubPricing(), rel);
   src = between(src, '<!-- faq:start -->', '<!-- faq:end -->', hubFaq(), rel);
   src = between(src, '<!-- hub-bio:start -->', '<!-- hub-bio:end -->', BIO ? hubBioCard() : '', rel);
+  src = between(src, '<!-- hub-chem:start -->', '<!-- hub-chem:end -->', CHEM ? hubChemCard() : '', rel);
   const m = src.indexOf('<!-- levlprep-structured-data -->');
   if (m === -1) throw new Error('index.html: no <!-- levlprep-structured-data --> marker');
   const s0 = src.indexOf('<script type="application/ld+json">', m);
@@ -358,8 +387,8 @@ function hubBioCard() {
   const src = readFileSync(join(ROOT, rel), 'utf8');
   const out = src.replace(/(The full )[\d,]+(-question bank[^\n]*\/\/ count:)(nremt|ochem|anp)/g,
     (_, a, b, k) => `${a}${fmt(N[k])}${b}${k}`);
-  // AP® Biology states no count while its bank grows unit by unit.
-  for (const k of ORDER.filter((x) => x !== 'apbio')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
+  // AP® Biology and AP® Chemistry state no count while their banks grow unit by unit.
+  for (const k of ORDER.filter((x) => x !== 'apbio' && x !== 'apchem')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
   put(rel, out);
 }
 
@@ -368,7 +397,7 @@ function hubBioCard() {
 /* Manifests never carry the AP® mark (docs/apbio-spec.md, "Trademark": no
    "AP" in meta tags or ad copy, and an install name is both): AP® Biology's
    app is "Biology". */
-const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology' };
+const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry' };
 const listWords = (a) => (a.length < 2 ? a.join('') : `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}`);
 const NUMBER_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six'];
 const MANIFESTS = {
@@ -381,6 +410,11 @@ const MANIFESTS = {
     name: 'LevlPrep — Biology',
     short_name: 'LevlPrep Bio',
     description: `Biology on the 2025 course framework, in its order, for the May exam: every notes page is free forever and Units 1 and 2 are fully interactive, with every skills lesson; Premium adds unlimited practice, the FRQs, practice exams, every simulator and every lesson.`,
+  },
+  'chem/manifest.json': {
+    name: 'LevlPrep — Chemistry',
+    short_name: 'LevlPrep Chem',
+    description: `Chemistry on the 2024 course framework, in its order, for the May exam: every notes page is free forever and Units 1 and 2 are fully interactive, with the math refresher; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.`,
   },
   'nremt/manifest.json': {
     name: 'LevlPrep — NREMT-EMT Practice Exam & Study Tools',
@@ -425,6 +459,11 @@ for (const [rel, fields] of Object.entries(MANIFESTS)) {
       <p>${fmt(N.apbioTopics)} published topic${N.apbioTopics === 1 ? '' : 's'} so far, in the order of the 2025 course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
     </a>`;
   out = between(out, '<!-- nf-bio:start -->', '<!-- nf-bio:end -->', BIO ? bio : '', rel);
+  const chem = `    <a class="card nf-card" href="/chem/">
+      <h2>AP® Chemistry (Beta) &rarr;</h2>
+      <p>${fmt(N.apchemTopics)} published topic${N.apchemTopics === 1 ? '' : 's'} so far, in the order of the 2024 course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
+    </a>`;
+  out = between(out, '<!-- nf-chem:start -->', '<!-- nf-chem:end -->', CHEM ? chem : '', rel);
   put(rel, out);
 }
 

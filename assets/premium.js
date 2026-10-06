@@ -161,6 +161,36 @@
         'The full dashboard: mastery by unit, topic and science practice',
       ],
     },
+    apchem: {
+      name: 'AP® Chemistry',
+      dailyFree: 15,
+      // Not on sale yet: no Polar product exists (docs/apchem-spec.md, owner
+      // checklist). While false the course behaves as before launch: nothing
+      // locked, "Premium coming soon" (decision 21 of docs/apbio-spec.md).
+      onSale: false,
+      // As AP® Biology: Units 1 and 2 open, and every math-skills lesson
+      // (topic.free in chem-curriculum.js, isFreeTopic in scripts/lib/apchem-build.mjs).
+      freeChapters: ['unit-1', 'unit-2'],
+      passes: [
+        { id: 'chem-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
+      ],
+      free: [
+        'Every notes page, the glossary, the flashcards and the printable unit sheets',
+        'The cram-kit study plan outline, printable',
+        'Every lesson in Units 1 and 2, and every math refresher lesson',
+        '15 practice or review questions a day from any unit',
+        'One full practice exam',
+        'Your progress, XP, streak and weak topics',
+      ],
+      premium: [
+        'Every interactive lesson',
+        'Unlimited practice and review from the whole question bank',
+        'Every trainer and drill: justifications, particle diagrams, equilibrium and buffer drills',
+        'All free-response questions, unit tests and practice exams',
+        'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
+        'The full dashboard: mastery by unit, topic and science practice',
+      ],
+    },
   };
 
   // Which course a page belongs to, for returnCourse().
@@ -170,6 +200,7 @@
     { key: 'ochem', path: '/ochem/' },
     { key: 'anp', path: '/anatomy-physiology/' },
     { key: 'apbio', path: '/bio/' },
+    { key: 'apchem', path: '/chem/' },
   ];
   // courses:end
 
@@ -594,7 +625,7 @@
         'Full refund within 7 days of buying, once per account and email address. Sold by Polar, our merchant of record. ' +
         'Under 18? You need a parent or guardian’s permission, and they accept the terms for you; under 16, they should make the purchase. ' +
         (course === 'nremt' ? 'Not affiliated with or endorsed by the National Registry of EMTs. ' : '') +
-        (course === 'apbio' ? 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site. ' : '')) +
+        (course === 'apbio' || course === 'apchem' ? 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site. ' : '')) +
         '<a href="/premium.html" target="_blank" rel="noopener">Free vs Premium</a> &middot; ' +
         '<a href="/terms.html#premium" target="_blank" rel="noopener">Terms and refunds</a>';
     } else {
@@ -815,8 +846,8 @@
     if (q.premium !== 'success' && !Object.prototype.hasOwnProperty.call(q, 'customer_session_token')) return null;
     var course = q.course;
     if (course && Object.prototype.hasOwnProperty.call(COURSES, course)) return course;
-    // A course whose key may not appear in a URL (apbio, docs/apbio-spec.md
-    // decision 2) comes back named by its folder ("bio").
+    // A course whose key may not appear in a URL (apbio, apchem;
+    // docs/apbio-spec.md decision 2) comes back named by its folder ("bio", "chem").
     for (var j = 0; course && j < COURSE_LIST.length; j++) {
       if (COURSE_LIST[j].path === '/' + course + '/') return COURSE_LIST[j].key;
     }

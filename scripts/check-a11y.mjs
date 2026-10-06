@@ -92,26 +92,33 @@ const PAGES = [
   ['/bio/frq.html', 'the AP® Biology free-response list'],
   ['/bio/cram.html', 'the AP® Biology cram kit'],
   ...bioPages(),
+  // AP® Chemistry, the same way (chemPages()).
+  ['/chem/', 'the AP® Chemistry course home'],
+  ['/chem/glossary.html', 'the AP® Chemistry glossary'],
+  ['/chem/practice.html', 'the AP® Chemistry practice builder'],
+  ['/chem/exams.html', 'the AP® Chemistry exams app'],
+  ['/chem/frq.html', 'the AP® Chemistry free-response list'],
+  ...bioPages('chem', 'AP® Chemistry'),
 ];
 
 /* The first published AP® Biology topic's lesson and notes page, the first
    unit sheet and the first tool page, when they exist: data-driven, so the
    list never names a page before the generator has written it. */
-function bioPages() {
+function bioPages(dir = 'bio', name = 'AP® Biology') {
   const out = [];
-  const idx = join(ROOT, 'bio', 'assets', 'notes-index.json');
+  const idx = join(ROOT, dir, 'assets', 'notes-index.json');
   const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
   if (first) {
     const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
-    out.push([`/bio/lessons/${id}.html`, 'an AP® Biology lesson with stimulus sets'], [`/bio/notes/${id}.html`, 'an AP® Biology notes page']);
+    out.push([`/${dir}/lessons/${id}.html`, `an ${name} lesson with stimulus sets`], [`/${dir}/notes/${id}.html`, `an ${name} notes page`]);
   }
-  const firstIn = (dir) => (existsSync(join(ROOT, 'bio', dir)) ? readdirSync(join(ROOT, 'bio', dir)).filter((f) => f.endsWith('.html')).sort()[0] : null);
+  const firstIn = (sub) => (existsSync(join(ROOT, dir, sub)) ? readdirSync(join(ROOT, dir, sub)).filter((f) => f.endsWith('.html')).sort()[0] : null);
   const sheet = firstIn('unit-sheets');
-  if (sheet) out.push([`/bio/unit-sheets/${sheet}`, 'an AP® Biology unit sheet']);
+  if (sheet) out.push([`/${dir}/unit-sheets/${sheet}`, `an ${name} unit sheet`]);
   const frq = firstIn('frq');
-  if (frq) out.push([`/bio/frq/${frq}`, 'an AP® Biology free-response question']);
+  if (frq) out.push([`/${dir}/frq/${frq}`, `an ${name} free-response question`]);
   const tool = firstIn('tools');
-  if (tool) out.push([`/bio/tools/${tool}`, 'an AP® Biology simulator or skills tool']);
+  if (tool) out.push([`/${dir}/tools/${tool}`, `an ${name} tool`]);
   return out;
 }
 

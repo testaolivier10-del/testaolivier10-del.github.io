@@ -116,6 +116,17 @@ jobs:
       # trademark wording. Only published units fail the build; the rest print.
       - name: the AP Biology content follows its rules
         run: node scripts/check-apbio-content.mjs --check
+      # AP Chemistry, the same three checks (docs/apchem-architecture.md): the
+      # map's ordering rule, the generated pages against chem/data, and the
+      # authored data against its rules (four-option MCQ, numeric items with
+      # units and significant figures, long and short FRQs). Only published
+      # units fail the build; the rest print.
+      - name: the AP Chemistry course uses no concept before it is taught
+        run: node scripts/check-apchem-map.mjs --check
+      - name: the AP Chemistry pages match their data
+        run: node scripts/build-apchem.mjs --check
+      - name: the AP Chemistry content follows its rules
+        run: node scripts/check-apchem-content.mjs --check
       # The ochem homepage lists the chapters twice (the path of nodes and the
       # JSON-LD syllabus). Both are generated from curriculum.js; a stale copy
       # would show a reader, and a search engine, the wrong course.

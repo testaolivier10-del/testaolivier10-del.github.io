@@ -1043,6 +1043,7 @@
     { storagePrefix: 'ochem_' },
     { storagePrefix: 'anp_' },
     { storagePrefix: 'apbio_' },
+    { storagePrefix: 'apchem_' },
   ];
   // courses:end
   var CLEAR_PREFIXES = ['hub_'].concat(COURSE_LIST.map(function(c){ return c.storagePrefix; }), ['levlprep_']);

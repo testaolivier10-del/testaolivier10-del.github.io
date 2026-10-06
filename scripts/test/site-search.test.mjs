@@ -156,7 +156,7 @@ test('?course= picks one course, and anything else means all of them', () => {
   assert.equal(A.parseCourse('anatomy-physiology'), 'anp');
   assert.equal(A.parseCourse(''), 'all');
   assert.equal(A.parseCourse(null), 'all');
-  assert.equal(A.parseCourse('chemistry'), 'all');
+  assert.equal(A.parseCourse('physics'), 'all');
   // AP® Biology: key apbio, but a URL names it by its folder (no "ap" in URLs).
   assert.equal(A.parseCourse('bio'), 'apbio');
   assert.equal(A.parseCourse('biology'), 'apbio');
@@ -164,7 +164,11 @@ test('?course= picks one course, and anything else means all of them', () => {
   assert.equal(A.urlKey('apbio'), 'bio');
   assert.equal(A.urlKey('anp'), 'anp');
   assert.equal(A.urlKey('ochem'), 'ochem');
-  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio']);
+  // AP® Chemistry the same way: folder chem, alias chemistry.
+  assert.equal(A.parseCourse('chem'), 'apchem');
+  assert.equal(A.parseCourse('chemistry'), 'apchem');
+  assert.equal(A.urlKey('apchem'), 'chem');
+  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem']);
   eq(A.scopeKeys('ochem'), ['ochem']);
 });
 

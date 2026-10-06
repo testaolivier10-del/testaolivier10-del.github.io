@@ -111,7 +111,10 @@ const SHELL_BUDGETS = [
      fourth course in every generated course list, premium.js's fixed-date
      pass and per-course on-sale switch, and the URL-safe course key.
      Measured 281.4 KB with the engagement pass. */
-  ['site', 282],
+  /* 282 -> 283 for registering AP® Chemistry (docs/apchem-spec.md, Phase 0):
+     the fifth course in every generated course list, its premium.js entry and
+     the theme tint. Measured 281.9 KB (from 281.4). */
+  ['site', 283],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
@@ -238,6 +241,10 @@ const SHELL_BUDGETS = [
      Measured 45.5 KB on the exams page before any unit was published;
      A&P's 46.5 is the reference. */
   ['bio', 50],
+  /* AP® Chemistry (chem/, a fork of the AP® Biology runtime, with the
+     numeric grader for units and significant figures). Bio's 50 is the
+     reference. */
+  ['chem', 50],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -421,6 +428,14 @@ const BUDGETS = [
      now lists all 19 published tools as cards in the page itself, so it
      reads without JavaScript. Measured 4.4 KB. */
   ['bio/tools.html', 5],
+  /* AP® Chemistry: as AP® Biology's (CHEM_PAGES below for the first lesson,
+     notes page and unit sheet once a unit is published). */
+  ['chem/index.html', 7],
+  ['chem/practice.html', 3],
+  ['chem/exams.html', 3],
+  ['chem/frq.html', 3],
+  ['chem/glossary.html', 30],
+  ['chem/tools.html', 5],
 
   // The privacy policy: the page that has to load well for somebody who has
   // not decided yet whether to trust the site.
@@ -772,6 +787,18 @@ function weigh(pageRel) {
     if (sheet) BUDGETS.push([`bio/unit-sheets/${sheet}`, 12]);
   }
 }
+/* The same for AP® Chemistry (chem/assets/notes-index.json, build-apchem.mjs). */
+{
+  const idx = join(ROOT, 'chem', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    BUDGETS.push([`chem/lessons/${id}.html`, 13], [`chem/notes/${id}.html`, 19.5]);
+    const sheets = join(ROOT, 'chem', 'unit-sheets');
+    const sheet = existsSync(sheets) ? readdirSync(sheets).filter((f) => f.endsWith('.html')).sort()[0] : null;
+    if (sheet) BUDGETS.push([`chem/unit-sheets/${sheet}`, 12]);
+  }
+}
 
 const rows = [];
 const shellSizes = {};
@@ -824,6 +851,14 @@ if (existsSync(BIO_BANK_DIR)) {
   }
 }
 DATA_BUDGETS.push(['bio/assets/glossary.json', 150], ['bio/assets/notes-index.json', 4], ['bio/assets/summaries.json', 40]);
+/* AP® Chemistry's bank and data, on AP® Biology's budgets and rule. */
+const CHEM_BANK_DIR = join(ROOT, 'chem', 'assets', 'bank');
+if (existsSync(CHEM_BANK_DIR)) {
+  for (const f of readdirSync(CHEM_BANK_DIR).filter(f => f.endsWith('.json')).sort()) {
+    DATA_BUDGETS.push([`chem/assets/bank/${f}`, f === 'index.json' ? 8 : f.endsWith('-why.json') ? ANP_BANK_BUDGETS.why : ANP_BANK_BUDGETS.core]);
+  }
+}
+DATA_BUDGETS.push(['chem/assets/glossary.json', 150], ['chem/assets/notes-index.json', 4], ['chem/assets/summaries.json', 40]);
 
 const dataRows = [];
 for (const [rel, budgetKb] of DATA_BUDGETS) {

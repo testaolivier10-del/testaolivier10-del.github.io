@@ -33,7 +33,7 @@ function filesUnder(dir, out = []) {
 export default function apbioTrademark({ ROOT, fail, htmlFiles }) {
   const rel = f => relative(ROOT, f).split(sep).join('/');
   // No web app manifest carries the mark, or "AP" at all.
-  for (const m of ['manifest.json', ...['nremt', 'ochem', 'anatomy-physiology', 'bio'].map(d => `${d}/manifest.json`)]) {
+  for (const m of ['manifest.json', ...['nremt', 'ochem', 'anatomy-physiology', 'bio', 'chem'].map(d => `${d}/manifest.json`)]) {
     const f = join(ROOT, m);
     if (existsSync(f) && /\bAP\b/.test(readFileSync(f, 'utf8'))) fail(`${m}: a web app manifest carries "AP" (docs/apbio-spec.md, "Trademark")`);
   }
