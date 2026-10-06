@@ -1,0 +1,84 @@
+{
+ "id": "frq-green-laser",
+ "type": "short",
+ "points": 4,
+ "title": "The energy of laser light",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "photons",
+  "electromagnetic-spectrum"
+ ],
+ "practices": [
+  "5.F",
+  "6.E"
+ ],
+ "stimulus": {
+  "kind": "setup",
+  "title": "A green laser pointer",
+  "text": "<p>A green laser pointer emits light with a wavelength of 532 nm. Inside it, an infrared laser at 1064 nm produces the light that is converted to green.</p>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Calculate</b> the frequency of the green light.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "ν = c/λ with λ in meters: 5.64 × 10¹⁴ s⁻¹.",
+     "accept": [
+      "5.64 × 10¹⁴ s⁻¹",
+      "5.64 × 10¹⁴ Hz"
+     ]
+    }
+   ],
+   "sample": "λ = 532 nm = 5.32 × 10⁻⁷ m. ν = c/λ = (2.998 × 10⁸ m/s) / (5.32 × 10⁻⁷ m) = 5.6353 × 10¹⁴ s⁻¹, which is 5.64 × 10¹⁴ s⁻¹."
+  },
+  {
+   "label": "b",
+   "prompt": "<b>Calculate</b> the energy of one photon of the green light, in joules.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "E = hν = 3.73 × 10⁻¹⁹ J, consistent with part (a).",
+     "accept": [
+      "3.73 × 10⁻¹⁹ J",
+      "3.74 × 10⁻¹⁹ J"
+     ]
+    }
+   ],
+   "sample": "E = hν = (6.626 × 10⁻³⁴ J·s)(5.635 × 10¹⁴ s⁻¹) = 3.7340 × 10⁻¹⁹ J, which is 3.73 × 10⁻¹⁹ J."
+  },
+  {
+   "label": "c",
+   "prompt": "<b>Calculate</b> the energy of one mole of these photons, in kJ/mol.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Multiplies by Avogadro's number and converts to kJ: 225 kJ/mol.",
+     "accept": [
+      "225 kJ/mol",
+      "2.25 × 10² kJ/mol"
+     ]
+    }
+   ],
+   "sample": "3.7340 × 10⁻¹⁹ J × 6.022 × 10²³ mol⁻¹ = 2.2486 × 10⁵ J/mol = 224.9 kJ/mol, which is 225 kJ/mol."
+  },
+  {
+   "label": "d",
+   "prompt": "A dye needs 3.0 × 10⁻¹⁹ J to promote an electron to an excited state. A student says the 1064 nm infrared beam will excite the dye if it is made bright enough. <b>Explain</b> why the student is incorrect.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Each 1064 nm photon carries about 1.87 × 10⁻¹⁹ J, less than the 3.0 × 10⁻¹⁹ J gap; a transition needs one photon of matching energy, and brightness adds photons, not energy per photon.",
+     "accept": [
+      "energy per photon is too small",
+      "brightness changes the number of photons only"
+     ]
+    }
+   ],
+   "sample": "Each 1064 nm photon has E = hc/λ = 1.87 × 10⁻¹⁹ J, less than the 3.0 × 10⁻¹⁹ J needed. An electron absorbs one photon at a time, so the photon itself must match the gap. A brighter beam has more photons, but each still has too little energy."
+  }
+ ]
+}

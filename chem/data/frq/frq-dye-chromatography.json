@@ -1,0 +1,82 @@
+{
+ "id": "frq-dye-chromatography",
+ "type": "short",
+ "points": 4,
+ "title": "Separating two food dyes",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "separating-mixtures"
+ ],
+ "practices": [
+  "2.A",
+  "5.F",
+  "6.D",
+  "6.E"
+ ],
+ "stimulus": {
+  "kind": "setup",
+  "title": "A paper chromatogram",
+  "text": "<p>A student spots a green candy coating on chromatography paper (cellulose, which is covered in –OH groups) and develops it in a 1% salt-water solvent. The solvent front ends 9.6 cm above the start line. Two spots appear: a yellow spot 7.2 cm and a blue spot 3.6 cm above the start line.</p>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Calculate</b> the Rf value of the blue spot.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Rf = 3.6 cm ÷ 9.6 cm = 0.38.",
+     "accept": [
+      "0.38",
+      "0.375"
+     ]
+    }
+   ],
+   "sample": "Rf = distance moved by the spot ÷ distance moved by the solvent = 3.6 cm ÷ 9.6 cm = 0.38."
+  },
+  {
+   "label": "b",
+   "prompt": "Which dye interacts more strongly with the paper? <b>Justify</b> your answer.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Blue, because it traveled a smaller fraction of the solvent distance (smaller Rf), so it spent more time attached to the stationary phase.",
+     "accept": [
+      "blue; smaller Rf means held more by the paper"
+     ]
+    }
+   ],
+   "sample": "The blue dye. It moved only 0.38 of the solvent distance, compared with 0.75 for the yellow dye, so it spent more time held by the paper and less time carried by the solvent."
+  },
+  {
+   "label": "c",
+   "prompt": "The student repeats the experiment with a less polar solvent. <b>Predict</b> how the Rf of the blue dye will change, and <b>justify</b> your prediction in terms of intermolecular forces.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Rf decreases, because the polar dye is attracted less by the less polar solvent, so it is held relatively more by the polar –OH groups of the paper.",
+     "accept": [
+      "smaller Rf; less attraction to the mobile phase"
+     ]
+    }
+   ],
+   "sample": "It will decrease. The blue dye is polar enough to hydrogen-bond to the paper's –OH groups. A less polar solvent forms weaker attractions with the dye, so the dye spends even more of its time on the paper and moves a smaller fraction of the solvent distance."
+  },
+  {
+   "label": "d",
+   "prompt": "<b>Explain</b> why the start line must be drawn in pencil and placed above the level of the solvent in the beaker.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Pencil (graphite) does not dissolve or move with the solvent, unlike ink; if the spots were below the solvent surface they would wash into the solvent instead of being carried up the paper.",
+     "accept": [
+      "graphite does not move; spots would dissolve into the solvent"
+     ]
+    }
+   ],
+   "sample": "Graphite does not dissolve in the solvent, so a pencil line stays put, while ink would separate into its own spots. If the start line were below the solvent surface, the dyes would wash off into the beaker instead of being carried up the paper."
+  }
+ ]
+}

@@ -1,0 +1,90 @@
+{
+ "topic": "photons",
+ "hook": "Only ultraviolet light gives you a sunburn. Hours under a red lamp will not, no matter how bright it is. The reason is that light comes in packets, and what matters is the energy of each packet, which you can calculate from its wavelength.",
+ "prereq": [
+  {
+   "q": "Which carries more energy per photon?",
+   "options": [
+    "Ultraviolet",
+    "Infrared",
+    "Microwave"
+   ],
+   "correct": 0,
+   "why": "Shorter wavelengths carry more energy per photon.",
+   "review": "electromagnetic-spectrum"
+  },
+  {
+   "q": "What is 500 nm in meters?",
+   "options": [
+    "5.00 × 10⁻⁷ m",
+    "5.00 × 10⁻⁹ m",
+    "5.00 × 10² m"
+   ],
+   "correct": 0,
+   "why": "500 × 10⁻⁹ m = 5.00 × 10⁻⁷ m.",
+   "review": "math-scientific-notation"
+  },
+  {
+   "q": "How many particles are in one mole?",
+   "options": [
+    "6.022 × 10²³",
+    "6.626 × 10⁻³⁴",
+    "2.998 × 10⁸"
+   ],
+   "correct": 0,
+   "why": "Avogadro's number.",
+   "review": "moles-molar-mass"
+  }
+ ],
+ "figure": {
+  "figure": "wavelength-energy",
+  "caption": "Shorter wavelength means higher frequency and more energy per photon; absorption needs a photon matching the gap."
+ },
+ "chain": [
+  {
+   "cause": "All light travels at c = 2.998 × 10⁸ m/s",
+   "effect": "c = λν, so wavelength and frequency are inversely proportional"
+  },
+  {
+   "cause": "Each photon carries energy E = hν",
+   "effect": "shorter wavelength, higher frequency, more energy per photon: E = hc/λ"
+  },
+  {
+   "cause": "Energy levels in atoms and molecules are quantized",
+   "effect": "only photons whose energy matches a gap are absorbed or emitted"
+  },
+  {
+   "cause": "Each element has its own set of gaps",
+   "effect": "each emits its own set of wavelengths, a line spectrum"
+  }
+ ],
+ "ideas": [
+  "c = λν with c = 2.998 × 10⁸ m/s; λ in meters (1 nm = 10⁻⁹ m).",
+  "E = hν = hc/λ with h = 6.626 × 10⁻³⁴ J·s. This is one photon, in joules.",
+  "Per mole: multiply by 6.022 × 10²³, then divide by 1000 for kJ/mol.",
+  "A photon is absorbed or emitted only when its energy equals a gap between levels."
+ ],
+ "misconception": {
+  "wrong": "Brighter light has more energy per photon, so a bright enough lamp of any color can cause any transition.",
+  "right": "Brightness is the number of photons. Energy per photon depends only on frequency (E = hν), so each photon must match the gap on its own."
+ },
+ "check": [
+  "chem-photons-1",
+  "chem-photons-2",
+  "chem-photons-3",
+  "chem-photons-4",
+  "chem-photons-14",
+  "chem-photons-15"
+ ],
+ "summary": "Light travels at c = λν, so wavelength and frequency are inversely related. Each photon carries E = hν = hc/λ joules, and a mole of photons carries 6.022 × 10²³ times that. Energy levels are quantized, so atoms and molecules absorb or emit only photons whose energy equals a gap between levels.",
+ "connections": [
+  {
+   "href": "../notes/electromagnetic-spectrum.html",
+   "label": "What each region of light does (Spectroscopy)"
+  },
+  {
+   "href": "../notes/beer-lambert-law.html",
+   "label": "Next: measuring concentration with light (Beer-Lambert Law)"
+  }
+ ]
+}

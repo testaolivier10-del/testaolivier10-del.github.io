@@ -1,0 +1,11 @@
+{
+ "chromatography": {
+  "def": "Separating a mixture by how strongly each component is attracted to a stationary phase (paper, a plate or a column) compared with a moving mobile phase. Rf = spot distance ÷ solvent-front distance."
+ },
+ "distillation": {
+  "def": "Separating a mixture by boiling off the most volatile component and condensing its vapor. The component with weaker intermolecular forces vaporizes first."
+ },
+ "filtration": {
+  "def": "Separating an undissolved solid from a liquid by passing the mixture through a filter; the liquid that passes through is the filtrate."
+ }
+}

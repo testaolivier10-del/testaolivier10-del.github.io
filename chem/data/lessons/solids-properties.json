@@ -1,0 +1,93 @@
+{
+ "topic": "solids-properties",
+ "hook": "Salt melts at 801 °C, sugar at about 186 °C, sand above 1,700 °C. Copper bends, salt shatters, and graphite smears onto paper. Every one of these differences comes from two questions: what are the particles, and what holds them together?",
+ "prereq": [
+  {
+   "q": "Why does a solid ionic compound fail to conduct electricity?",
+   "options": [
+    "Its ions are fixed in the lattice",
+    "It has no charged particles",
+    "Its electrons are delocalized"
+   ],
+   "correct": 0,
+   "why": "The ions carry charge but cannot move until the solid melts or dissolves.",
+   "review": "ionic-solids"
+  },
+  {
+   "q": "What makes metals malleable?",
+   "options": [
+    "Layers of cations slide within the sea of electrons",
+    "Their covalent bonds bend easily",
+    "Their ions repel each other"
+   ],
+   "correct": 0,
+   "why": "Metallic bonding is not tied to particular atoms, so layers slide without breaking it.",
+   "review": "metals-alloys"
+  },
+  {
+   "q": "Which attraction holds I₂ molecules to each other?",
+   "options": [
+    "London dispersion forces",
+    "Hydrogen bonds",
+    "Ionic bonds"
+   ],
+   "correct": 0,
+   "why": "I₂ is nonpolar, so its molecules attract only by dispersion forces.",
+   "review": "intermolecular-forces"
+  }
+ ],
+ "figure": {
+  "figure": "solid-types",
+  "caption": "Ionic, molecular, covalent network and metallic solids, drawn at the particle level."
+ },
+ "chain": [
+  {
+   "cause": "Molecular solids are separate molecules held only by intermolecular forces",
+   "effect": "melting overcomes weak attractions, so they melt low and are soft"
+  },
+  {
+   "cause": "Molecules carry no net charge and have no free electrons",
+   "effect": "molecular solids do not conduct in any state"
+  },
+  {
+   "cause": "In a covalent network every atom is covalently bonded to its neighbours",
+   "effect": "melting must break covalent bonds, so network solids melt very high and are very hard"
+  },
+  {
+   "cause": "A network's valence electrons are locked in bonds (graphite's layers excepted)",
+   "effect": "most network solids do not conduct"
+  }
+ ],
+ "ideas": [
+  "Ask what the particles are and what holds them: ions (ionic bonds), cations and electrons (metallic), molecules (IMFs) or atoms (covalent network).",
+  "Molecular solids melt low and never conduct; covalent network solids melt very high and are very hard.",
+  "Crystalline solids have repeating order and sharp melting points; amorphous solids soften over a range."
+ ],
+ "misconception": {
+  "wrong": "Molecular solids melt low because their covalent bonds are weak.",
+  "right": "Melting a molecular solid breaks no covalent bonds. It only overcomes the intermolecular forces between molecules, which are much weaker than covalent bonds."
+ },
+ "check": [
+  "chem-solids-properties-1",
+  "chem-solids-properties-3",
+  "chem-solids-properties-5",
+  "chem-solids-properties-7",
+  "chem-solids-properties-8",
+  "chem-solids-properties-10"
+ ],
+ "summary": "Solids are ionic, metallic, molecular or covalent network. Molecular solids are molecules held by intermolecular forces: soft, low-melting and nonconducting. Covalent network solids are one continuous web of covalent bonds: very hard, very high-melting and (except graphite) nonconducting.",
+ "connections": [
+  {
+   "href": "../notes/ionic-solids.html",
+   "label": "Ionic solids and lattices (Structure of Ionic Solids)"
+  },
+  {
+   "href": "../notes/metals-alloys.html",
+   "label": "Metallic bonding (Structure of Metals and Alloys)"
+  },
+  {
+   "href": "../notes/intermolecular-forces.html",
+   "label": "The forces between molecules (Intermolecular Forces)"
+  }
+ ]
+}

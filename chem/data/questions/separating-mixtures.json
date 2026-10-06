@@ -1,0 +1,525 @@
+{
+ "stimuli": {
+  "separating-mixtures-s1": {
+   "kind": "table",
+   "title": "Identifying the dyes in a drink",
+   "text": "<p>A student spots a sports drink and four known food dyes on one strip of chromatography paper and develops it with a salt-water solvent. The solvent front ends 8.0 cm above the start line.</p>",
+   "table": {
+    "caption": "Spot positions above the start line",
+    "cols": [
+     "Sample",
+     "Spot distance (cm)",
+     "Rf"
+    ],
+    "rows": [
+     [
+      "Unknown",
+      "6.4, 2.0",
+      "?"
+     ],
+     [
+      "Dye A",
+      "6.4",
+      "0.80"
+     ],
+     [
+      "Dye B",
+      "4.0",
+      "0.50"
+     ],
+     [
+      "Dye C",
+      "2.0",
+      "0.25"
+     ],
+     [
+      "Dye D",
+      "1.2",
+      "0.15"
+     ]
+    ]
+   }
+  },
+  "separating-mixtures-s2": {
+   "kind": "table",
+   "title": "Distilling a mixture of two liquids",
+   "text": "<p>A student distills a mixture of two liquids, acetone and water, and records the temperature of the vapor at the top of the apparatus as liquid collects in the receiving flask.</p>",
+   "table": {
+    "caption": "Vapor temperature during the distillation",
+    "cols": [
+     "Volume collected (mL)",
+     "Vapor temperature (°C)"
+    ],
+    "rows": [
+     [
+      "0",
+      "56"
+     ],
+     [
+      "10",
+      "57"
+     ],
+     [
+      "20",
+      "58"
+     ],
+     [
+      "30",
+      "61"
+     ],
+     [
+      "35",
+      "78"
+     ],
+     [
+      "40",
+      "97"
+     ],
+     [
+      "50",
+      "100"
+     ],
+     [
+      "60",
+      "100"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-separating-mixtures-1",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "separating-mixtures-s1",
+   "q": "What is the Rf of the drink's higher spot?",
+   "numeric": {
+    "answer": 0.8,
+    "tol": 0.01,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1.25,
+      "rel": 0.02,
+      "why": "Value: you divided the solvent distance by the spot distance. Rf = spot distance ÷ solvent distance, so it is never above 1."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Rf = 6.4 cm ÷ 8.0 cm = 0.80. The distances share units, so Rf has none."
+   }
+  },
+  {
+   "id": "chem-separating-mixtures-2",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "separating-mixtures-s1",
+   "q": "Which dyes are present in the drink? Select all that apply.",
+   "options": [
+    "Dye A",
+    "Dye B",
+    "Dye C",
+    "Dye D"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "The drink's spots have Rf = 6.4/8.0 = 0.80 and 2.0/8.0 = 0.25, matching Dye A (0.80) and Dye C (0.25).",
+    "options": [
+     "Right: Rf 0.80 matches.",
+     "Dye B has Rf 0.50; the drink has no spot there.",
+     "Right: Rf 0.25 matches.",
+     "Dye D has Rf 0.15; the drink has no spot there."
+    ]
+   }
+  },
+  {
+   "id": "chem-separating-mixtures-3",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "separating-mixtures-s1",
+   "q": "Dye D has the smallest Rf. Which conclusion is supported?",
+   "options": [
+    "Dye D is held most strongly by the paper relative to the solvent.",
+    "Dye D has the most mass, so it is too heavy to be carried far up the paper.",
+    "Dye D interacts most strongly with the solvent, so it stays near the start line.",
+    "Dye D was spotted last, so it had the least time to travel up the paper."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A small Rf means the component spent most of its time attached to the stationary phase. That reflects stronger attractions to the paper than to the solvent.",
+    "options": [
+     "Right: held most by the stationary phase.",
+     "Separation follows attractions to the two phases, not mass.",
+     "Strong attraction to the solvent would carry it farther, giving a large Rf.",
+     "All samples develop together for the same time."
+    ]
+   }
+  },
+  {
+   "id": "chem-separating-mixtures-4",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "2.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "separating-mixtures-s1",
+   "q": "The student marked the start line in ink instead of pencil. How might this affect the results?",
+   "options": [
+    "The ink could separate into its own spots and be mistaken for dyes in the drink.",
+    "The ink line would block the solvent from rising, so the spots would stay on the start line.",
+    "There is no effect, because the ink line is below the spots and is not part of the samples.",
+    "Each Rf would double, because the ink adds its own distance to each measured spot distance."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ink is itself a mixture of dyes and would travel with the solvent, producing spots that could be mistaken for parts of the drink. Pencil (graphite) does not move.",
+    "options": [
+     "Right: the line's own dyes would separate.",
+     "Solvent crosses an ink line easily.",
+     "The ink line is in the solvent's path and would move with it.",
+     "Rf uses measured distances; ink does not change them systematically."
+    ]
+   }
+  },
+  {
+   "id": "chem-separating-mixtures-5",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "separating-mixtures-s1",
+   "q": "The experiment is repeated with a much less polar solvent. What would most likely happen to the Rf values of these polar food dyes?",
+   "options": [
+    "They would decrease, because the dyes would be held more by the polar paper.",
+    "They would increase, because a less polar solvent moves faster up the paper and carries the dyes.",
+    "They would stay the same, because Rf depends on the dye and not on the solvent used.",
+    "They would rise to about 1.00, because the dyes would move with the solvent front."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Polar dyes are attracted to the polar paper. A less polar solvent attracts them less, so they spend more time on the paper and travel a smaller fraction of the solvent distance.",
+    "options": [
+     "Right: less competition from the solvent, smaller Rf.",
+     "Rf is a ratio, so speed does not raise it; attractions decide.",
+     "Rf depends on the pair of phases; changing the solvent changes it.",
+     "Polar dyes would be held back, not swept to the front."
+    ]
+   }
+  },
+  {
+   "id": "chem-separating-mixtures-6",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "separating-mixtures-s2",
+   "q": "Which liquid is collected first?",
+   "options": [
+    "Acetone, which boils at about 56 °C",
+    "Water, which boils at about 100 °C",
+    "Both at once, in equal amounts",
+    "Neither, until 100 °C is reached"
+   ],
+   "correct": 0,
+   "fixed": true,
+   "why": {
+    "correct": "The vapor stays near 56–61 °C for the first 30 mL: that is acetone, the lower-boiling liquid, vaporizing first.",
+    "options": [
+     "Right: the first plateau is near acetone's boiling point.",
+     "Water comes over later, at the 100 °C plateau.",
+     "The two plateaus show they come over one after the other.",
+     "Liquid starts collecting at 56 °C."
+    ]
+   }
+  },
+  {
+   "id": "chem-separating-mixtures-7",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "separating-mixtures-s2",
+   "q": "Which statement best explains why acetone distills first?",
+   "options": [
+    "Acetone has weaker intermolecular forces, so its vapor pressure is higher.",
+    "Acetone molecules are heavier than water molecules, so they rise into the vapor first.",
+    "Water molecules break apart at 56 °C, so they stay behind in the boiling flask.",
+    "Acetone hydrogen-bonds more strongly than water, so it leaves the liquid together."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Acetone has dipole-dipole and dispersion forces but cannot hydrogen-bond to itself; water hydrogen-bonds extensively. Weaker attractions give acetone the higher vapor pressure and the lower boiling point.",
+    "options": [
+     "Right: weaker attractions, more volatile.",
+     "Heavier molecules would not escape more easily; and attractions, not mass, decide.",
+     "Water molecules stay intact; no covalent bonds break.",
+     "Acetone has no H bonded to O, so it cannot hydrogen-bond with itself."
+    ]
+   }
+  },
+  {
+   "id": "chem-separating-mixtures-8",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "5.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "separating-mixtures-s2",
+   "q": "About how much acetone was in the original mixture?",
+   "options": [
+    "About 30 mL",
+    "About 10 mL",
+    "About 60 mL",
+    "About 100 mL"
+   ],
+   "correct": 0,
+   "fixed": true,
+   "why": {
+    "correct": "The vapor stays near acetone's boiling point until about 30 mL have collected, then the temperature rises sharply toward 100 °C as water starts to come over.",
+    "options": [
+     "Right: the first plateau ends near 30 mL.",
+     "Liquid at acetone's temperature kept collecting past 10 mL.",
+     "60 mL is the total collected, including water.",
+     "The table shows only 60 mL collected."
+    ]
+   }
+  },
+  {
+   "id": "chem-separating-mixtures-9",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "separating-mixtures-s2",
+   "q": "The 35 mL sample, collected at 78 °C, is tested. What is it most likely to be?",
+   "options": [
+    "A mixture of both, since 78 °C lies between their boiling points.",
+    "Pure acetone, since the liquid collected below 100 °C is acetone.",
+    "Pure water, since water starts to boil once the temperature passes 61 °C.",
+    "A new compound, formed when acetone and water reacted during heating."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Between the plateaus, both liquids are vaporizing in a changing ratio, so the distillate is a mixture. A simple distillation does not cut perfectly between two liquids.",
+    "options": [
+     "Right: the transition region holds both.",
+     "At 78 °C, well above acetone's boiling point, water is coming over too.",
+     "Water vaporizes at every temperature; at 78 °C both liquids are in the vapor.",
+     "Distillation is a physical separation; no reaction occurs."
+    ]
+   }
+  },
+  {
+   "id": "chem-separating-mixtures-10",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which method separates sand from a mixture of sand and salt water?",
+   "options": [
+    "Filtration",
+    "Chromatography",
+    "Distillation",
+    "Evaporating the water"
+   ],
+   "correct": 0,
+   "fixed": true,
+   "why": {
+    "correct": "Sand has not dissolved, so its grains stay on filter paper while the salt water passes through.",
+    "options": [
+     "Right: undissolved solid from a liquid.",
+     "Chromatography separates dissolved components, not a coarse solid.",
+     "Distillation would leave both sand and salt behind together.",
+     "Evaporation would leave salt mixed with the sand."
+    ]
+   }
+  },
+  {
+   "id": "chem-separating-mixtures-11",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does filtration not separate the salt from salt water?",
+   "options": [
+    "Dissolved ions are far smaller than the pores of the paper.",
+    "Salt ions stick to the filter paper and block it before any water passes.",
+    "Filtration works on gases, not on liquids such as salt water.",
+    "The salt reacts with the paper and forms a new dissolved compound."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A solution is mixed down to individual particles. Ions are about 10⁻¹⁰ m across, thousands of times smaller than filter pores, so they pass through with the water.",
+    "options": [
+     "Right: dissolved particles pass through.",
+     "The ions pass through freely; they do not clog the filter.",
+     "Filtration is used for liquids all the time.",
+     "No reaction occurs with filter paper."
+    ]
+   }
+  },
+  {
+   "id": "chem-separating-mixtures-12",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which method would best recover pure water from seawater?",
+   "options": [
+    "Distillation, because water vaporizes while the ions stay behind.",
+    "Filtration, because the ions are trapped by the filter paper.",
+    "Chromatography, because the salt moves faster than the water.",
+    "Decanting, because the salt settles to the bottom over time."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Water has a measurable vapor pressure; the ions, held by strong ion-dipole and ionic attractions, do not enter the vapor. Condensing the vapor gives pure water.",
+    "options": [
+     "Right: water vaporizes, ions stay behind.",
+     "Ions pass through filter paper.",
+     "Chromatography separates small samples of dissolved components; it does not yield pure water in bulk.",
+     "Dissolved salt does not settle out of a solution."
+    ]
+   }
+  },
+  {
+   "id": "chem-separating-mixtures-13",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Hexane (C₆H₁₄) and 1-propanol (C₃H₇OH) are separated on a column packed with polar silica (covered in –OH groups) using a nonpolar solvent. Which comes out of the column first, and why?",
+   "options": [
+    "Hexane, because it is barely attracted to the polar silica.",
+    "1-Propanol, because it hydrogen-bonds to the solvent and is carried along.",
+    "Hexane, because it is the heavier molecule and falls through the column faster.",
+    "1-Propanol, because it has fewer carbon atoms and fits through the packing."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The polar silica holds 1-propanol by hydrogen bonds; nonpolar hexane interacts only weakly with it and stays in the mobile phase, so it leaves first.",
+    "options": [
+     "Right: weakest attraction to the stationary phase moves fastest.",
+     "A nonpolar solvent cannot hydrogen-bond; 1-propanol is held by the silica instead.",
+     "Separation follows attractions, not falling speed.",
+     "Size is not the main factor here; polarity is."
+    ]
+   }
+  },
+  {
+   "id": "chem-separating-mixtures-14",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "On a chromatogram, the solvent front is 12.5 cm from the start line and a spot is 4.0 cm from it. What is the spot's Rf?",
+   "numeric": {
+    "answer": 0.32,
+    "tol": 0.01,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 3.125,
+      "rel": 0.02,
+      "why": "Value: you inverted the ratio. Rf = spot distance ÷ solvent distance, which is at most 1."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Rf = 4.0 cm ÷ 12.5 cm = 0.32 (two significant figures, from 4.0)."
+   }
+  },
+  {
+   "id": "chem-separating-mixtures-15",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which differences in physical properties are used to separate mixtures? Select all that apply.",
+   "options": [
+    "Particle size (filtration)",
+    "Attraction to a stationary phase (chromatography)",
+    "Vapor pressure (distillation)",
+    "Number of protons in the nucleus",
+    "Molar mass alone (heavier parts left behind)",
+    "Total mass of the sample"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Each physical method exploits a property that differs between components. The number of protons defines an element; physical separations do not change or use it.",
+    "options": [
+     "Right: larger particles stay on the filter.",
+     "Right: stronger attraction to the stationary phase slows a component.",
+     "Right: the more volatile component vaporizes first.",
+     "Protons identify elements; physical separations neither use nor change them.",
+     "Separations follow attractions and size, not molar mass by itself.",
+     "The total mass says nothing about the parts of the mixture."
+    ]
+   }
+  },
+  {
+   "id": "chem-separating-mixtures-16",
+   "type": "order",
+   "unit": "unit-3",
+   "topic": "separating-mixtures",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for running a paper chromatogram in order.",
+   "options": [
+    "Draw a pencil start line near the bottom of the paper",
+    "Place a small spot of each sample on the line",
+    "Stand the paper in solvent below the start line",
+    "Remove the paper when the solvent is near the top and mark the solvent front",
+    "Measure the distances and calculate each Rf"
+   ],
+   "why": {
+    "correct": "The start line must sit above the solvent so the spots are not washed off, and the solvent front must be marked before it evaporates."
+   }
+  }
+ ]
+}

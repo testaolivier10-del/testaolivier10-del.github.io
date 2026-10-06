@@ -1,0 +1,41 @@
+<p>Labs that test drinking water for nitrate, hospitals that measure blood glucose and food scientists who check the dye in a sports drink often use the same tool: shine light of one color through a sample and measure how much is absorbed. The more of the colored substance there is, the more light it absorbs. The Beer-Lambert law makes that exact.</p>
+
+<h2>Absorbance</h2>
+<p>A <b>spectrophotometer</b> (<a class="figref" href="#fig-sp">Figure 1</a>) sends light of one chosen wavelength through a sample held in a small, clear container called a <b>cuvette</b>, and a detector measures how much light comes out. The instrument reports the <b>absorbance</b>, A: a number with no units that is 0 when no light is absorbed and grows as more is absorbed. (An absorbance of 1 means 90% of the light is absorbed; 2 means 99%.) The fraction of light that does get through is the transmittance.</p>
+<figure id="fig-sp" data-fig="spectrophotometer"><figcaption>A spectrophotometer measures how much light of one wavelength a sample absorbs.</figcaption></figure>
+
+<h2>The Beer-Lambert law</h2>
+<p>The absorbance depends on three things, all in one equation from the equations sheet:</p>
+<p style="text-align:center"><b>A = εbc</b></p>
+<ul>
+<li><b>c</b>, the concentration of the absorbing substance, in mol/L. Twice as many absorbing particles in the beam absorb twice as much: A is proportional to c.</li>
+<li><b>b</b>, the path length, the distance the light travels through the sample, in cm (usually 1.00 cm). A longer path passes more particles.</li>
+<li><b>ε</b> (epsilon), the <b>molar absorptivity</b>, in L/(mol·cm): how strongly that substance absorbs light of that wavelength. It is a property of the substance and the wavelength.</li>
+</ul>
+<div class="worked"><p><b>Worked example: concentration from absorbance.</b> A dye has ε = 11,300 L/(mol·cm) at 630 nm. A solution of the dye in a 1.00 cm cuvette has an absorbance of 0.452. What is its concentration?</p>
+<p><b>Step 1, rearrange.</b> c = A / (εb).</p>
+<p><b>Step 2, substitute with units.</b> c = 0.452 / (11,300 L/(mol·cm) × 1.00 cm) = 0.452 / 11,300 L/mol = 4.0000 × 10<sup>−5</sup> mol/L. The cm cancels.</p>
+<p><b>Step 3, round.</b> Three significant figures: <b>4.00 × 10<sup>−5</sup> M</b>.</p></div>
+
+<h2>Choosing the wavelength</h2>
+<p>A substance absorbs some wavelengths far more than others. Measurements are made at the wavelength of maximum absorbance, <b>λ<sub>max</sub></b>, where ε is largest. There, a small change in concentration gives the biggest change in absorbance, so the measurement is most sensitive, and a small drift in the selected wavelength changes the reading least, because the absorption peak is flat at the top. For a blue dye that absorbs orange-red light, λ<sub>max</sub> might be 630 nm.</p>
+
+<h2>Calibration curves</h2>
+<p>Often ε is not known. Instead you make a <b>calibration curve</b> (a standard curve): prepare several standard solutions of known concentration, measure the absorbance of each at λ<sub>max</sub>, and plot A against c. By Beer's law the points fall on a straight line through the origin, with slope εb. Then measure the unknown and read its concentration from the line, or calculate it from the slope.</p>
+<table class="compare">
+<caption>Standards of a blue dye at 630 nm, 1.00 cm cuvette</caption>
+<thead><tr><th scope="col">Concentration (M)</th><th scope="col">Absorbance</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>0.000</td></tr><tr><td>2.00 × 10<sup>−5</sup></td><td>0.229</td></tr><tr><td>4.00 × 10<sup>−5</sup></td><td>0.450</td></tr><tr><td>6.00 × 10<sup>−5</sup></td><td>0.681</td></tr><tr><td>8.00 × 10<sup>−5</sup></td><td>0.902</td></tr><tr><td>1.00 × 10<sup>−4</sup></td><td>1.131</td></tr>
+</tbody>
+</table>
+<div class="worked"><p><b>Worked example: using a calibration curve.</b> From the table, the slope is about 1.131 / 1.00 × 10<sup>−4</sup> M = 11,300 M<sup>−1</sup>. A sports drink diluted with water gives A = 0.565. What is the dye concentration in the diluted drink?</p>
+<p>c = A / slope = 0.565 / 11,300 M<sup>−1</sup> = 5.000 × 10<sup>−5</sup> M. On the graph, 0.565 lies between the 4.00 and 6.00 × 10<sup>−5</sup> M standards, which agrees.</p></div>
+
+<h2>Good technique and errors</h2>
+<ul>
+<li><b>Blank first.</b> Zero the instrument with a cuvette of the solvent alone, so that only the substance of interest counts. If the blank is skipped and the solvent or cuvette absorbs a little, every absorbance reads too high and every concentration is too high.</li>
+<li><b>Clean, dry, matched cuvettes.</b> Fingerprints, scratches or water drops on the clear faces scatter or absorb light, so the reading is too high and the concentration found is too high. Hold cuvettes by the frosted sides.</li>
+<li><b>Same path length</b> for standards and samples; a cuvette put in sideways or a different size changes b.</li>
+<li><b>Stay on the line.</b> Very concentrated solutions can fall below the straight line; dilute them into the range of the standards and multiply back by the dilution factor.</li>
+</ul>

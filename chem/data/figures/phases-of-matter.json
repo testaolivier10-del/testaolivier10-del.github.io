@@ -1,0 +1,12 @@
+{
+ "vapor-pressure-flask": {
+  "file": "figures/vapor-pressure-flask.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two closed flasks holding the same liquid. Just after sealing, more molecules escape the liquid than return, and few are in the gas. Later, at dynamic equilibrium, molecules escape and return at equal rates and the gas above holds more molecules; its pressure is the vapor pressure."
+ }
+}

@@ -1,0 +1,79 @@
+{
+ "topic": "kinetic-molecular-theory",
+ "hook": "At room temperature the nitrogen molecules in the air around you average about 470 meters per second, faster than a jet airliner, and each collides with another several billion times a second. That frantic motion, and nothing else, is what makes a gas push on its container.",
+ "prereq": [
+  {
+   "q": "At constant n and V, how does the pressure of a gas change when its kelvin temperature doubles?",
+   "options": [
+    "It doubles",
+    "It halves",
+    "It stays the same"
+   ],
+   "correct": 0,
+   "why": "P = (nR/V)T, so P is proportional to T in kelvin.",
+   "review": "ideal-gas-law"
+  },
+  {
+   "q": "In which state are particles far apart and moving freely?",
+   "options": [
+    "Gas",
+    "Liquid",
+    "Solid"
+   ],
+   "correct": 0,
+   "why": "A gas is mostly empty space; its particles fly between collisions.",
+   "review": "phases-of-matter"
+  }
+ ],
+ "figure": {
+  "figure": "maxwell-boltzmann-n2",
+  "caption": "Nitrogen molecule speeds at 300 K and 600 K: heating shifts and spreads the distribution."
+ },
+ "chain": [
+  {
+   "cause": "Gas particles move constantly and collide elastically",
+   "effect": "they keep moving and hitting the walls, which is the pressure"
+  },
+  {
+   "cause": "The average kinetic energy of the particles is proportional to kelvin temperature",
+   "effect": "heating speeds particles up, so they hit the walls more often and harder"
+  },
+  {
+   "cause": "Every gas has the same average kinetic energy at a given temperature, and KE = ½mv²",
+   "effect": "lighter particles move faster"
+  },
+  {
+   "cause": "Collisions constantly swap energy between particles",
+   "effect": "speeds form a Maxwell-Boltzmann distribution that shifts and flattens as temperature rises"
+  }
+ ],
+ "ideas": [
+  "Model: tiny particles, negligible volume, no attractions, elastic collisions, average KE ∝ kelvin T.",
+  "Same temperature means same average kinetic energy; lighter particles move faster, by the square root of the mass ratio.",
+  "Pressure comes from collisions with the walls: more particles, less volume or higher temperature all raise it.",
+  "Maxwell-Boltzmann curves: higher T or lighter gas moves the peak right and makes it lower and wider; the area is constant."
+ ],
+ "misconception": {
+  "wrong": "At the same temperature, heavier gas particles have more kinetic energy because they have more mass.",
+  "right": "At the same temperature, all gases have the same average kinetic energy. Heavier particles simply move more slowly."
+ },
+ "check": [
+  "chem-kinetic-molecular-theory-1",
+  "chem-kinetic-molecular-theory-2",
+  "chem-kinetic-molecular-theory-3",
+  "chem-kinetic-molecular-theory-7",
+  "chem-kinetic-molecular-theory-9",
+  "chem-kinetic-molecular-theory-14"
+ ],
+ "summary": "The kinetic molecular theory models a gas as tiny particles in constant random motion, with no attractions and elastic collisions, whose average kinetic energy is proportional to kelvin temperature. It explains pressure and the gas laws, and why lighter gases move faster at the same temperature. Speeds follow a Maxwell-Boltzmann distribution that shifts right and flattens as temperature rises.",
+ "connections": [
+  {
+   "href": "../notes/ideal-gas-law.html",
+   "label": "The laws this model explains (Ideal Gas Law)"
+  },
+  {
+   "href": "../notes/real-gases.html",
+   "label": "Next: when the model breaks down (Deviation from Ideal Gas Law)"
+  }
+ ]
+}

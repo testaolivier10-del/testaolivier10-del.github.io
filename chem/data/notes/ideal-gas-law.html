@@ -1,0 +1,48 @@
+<p>A party balloon shrinks in a cold car and swells in the sun. A bike tire that was firm in the evening feels soft on a frosty morning. A scuba tank holds an hour of air in a few liters. All of these follow one simple equation, because at ordinary conditions every gas behaves in almost the same way, whatever its molecules are.</p>
+
+<h2>The four variables of a gas</h2>
+<p>A sample of gas is described by four quantities: its <b>pressure</b> P, its volume V, its absolute temperature T, and the amount of gas n, in moles. They are linked by the <b>ideal gas law</b>:</p>
+<p style="text-align:center"><b>PV = nRT</b></p>
+<p>R is the <b>gas constant</b>. Its value depends on the units you use, and the equations sheet gives two:</p>
+<ul>
+<li>R = 0.08206 L·atm/(mol·K), when P is in atm and V in liters</li>
+<li>R = 8.314 J/(mol·K), when you work in SI units (pressure in pascals, volume in cubic meters), mostly for energy</li>
+</ul>
+<p>Two rules prevent most mistakes. First, <b>T must be in kelvin</b>: K = °C + 273.15. A gas at 0 °C does not have zero volume; a gas at 0 K would. Second, <b>match R to your units</b>: convert pressure to atm (or use the R that fits) and volume to liters before substituting.</p>
+
+<h2>Solving for one variable</h2>
+<div class="worked"><p><b>Worked example: moles in a tank.</b> A 5.00 L steel tank holds oxygen at 12.5 atm and 22.0 °C. How many moles of O<sub>2</sub> are in it, and what mass?</p>
+<p><b>Step 1, temperature in kelvin.</b> T = 22.0 + 273.15 = 295.15 K.</p>
+<p><b>Step 2, rearrange.</b> n = PV / RT.</p>
+<p><b>Step 3, substitute with units.</b> n = (12.5 atm × 5.00 L) / (0.08206 L·atm/(mol·K) × 295.15 K) = 62.5 L·atm / 24.220 L·atm/mol = 2.5805 mol. Every unit cancels except mol.</p>
+<p><b>Step 4, round.</b> Three significant figures (12.5, 5.00 and 22.0 each have three): <b>2.58 mol</b>.</p>
+<p><b>Step 5, mass.</b> 2.5805 mol × 32.00 g/mol = 82.6 g.</p>
+<p>Had you used 22.0 instead of 295.15 for T, you would have found 34.6 mol, more than thirteen times too much. Always convert first.</p></div>
+
+<h2>The same sample under new conditions</h2>
+<p>If a sealed sample changes from one set of conditions to another, n and R are constant, so PV/T stays the same. That gives the <b>combined gas law</b>:</p>
+<p style="text-align:center">P<sub>1</sub>V<sub>1</sub> / T<sub>1</sub> = P<sub>2</sub>V<sub>2</sub> / T<sub>2</sub></p>
+<p>Hold any variable fixed and it drops out. At constant temperature, pressure and volume are inversely proportional (double the pressure, halve the volume). At constant pressure, volume is proportional to kelvin temperature. At constant volume, pressure is proportional to kelvin temperature. And at constant T and P, volume is proportional to moles: equal volumes of gases at the same conditions hold equal numbers of molecules.</p>
+<div class="worked"><p><b>Worked example: a balloon rises.</b> A weather balloon holds 125 L of helium at 755 torr and 18 °C. It rises to where the pressure is 285 torr and the temperature is −35 °C. What is its new volume?</p>
+<p><b>Step 1, kelvin.</b> T<sub>1</sub> = 18 + 273.15 = 291.15 K; T<sub>2</sub> = −35 + 273.15 = 238.15 K.</p>
+<p><b>Step 2, rearrange.</b> V<sub>2</sub> = V<sub>1</sub> × (P<sub>1</sub> / P<sub>2</sub>) × (T<sub>2</sub> / T<sub>1</sub>). Pressure units cancel, so torr is fine here.</p>
+<p><b>Step 3, substitute.</b> V<sub>2</sub> = 125 L × (755 / 285) × (238.15 / 291.15) = 125 L × 2.6491 × 0.81796 = 270.86 L.</p>
+<p><b>Step 4, check and round.</b> Lower pressure should make it bigger and colder air smaller; the pressure drop wins. <b>271 L</b>.</p></div>
+
+<h2>Standard conditions and molar volume</h2>
+<p><b>STP</b> (standard temperature and pressure) means 0 °C (273.15 K) and 1 atm. At STP, one mole of any ideal gas occupies V = nRT/P = (1 mol × 0.08206 × 273.15) / 1 = 22.4 L, the molar volume.</p>
+
+<h2>Molar mass and density from the gas law</h2>
+<p>Since n = mass / molar mass (n = m/M), the gas law can find a molar mass. Dividing both sides by V, it also links molar mass and density (d = m/V):</p>
+<p style="text-align:center">M = mRT / PV &nbsp;&nbsp;&nbsp; and &nbsp;&nbsp;&nbsp; M = dRT / P</p>
+<div class="worked"><p><b>Worked example: identifying a gas.</b> A gas has a density of 1.25 g/L at 0.950 atm and 25.0 °C. What is its molar mass?</p>
+<p>T = 25.0 + 273.15 = 298.15 K. M = dRT/P = (1.25 g/L × 0.08206 L·atm/(mol·K) × 298.15 K) / 0.950 atm = 30.583 / 0.950 = 32.2 g/mol. The gas is likely O<sub>2</sub> (32.00 g/mol).</p></div>
+
+<h2>Mixtures of gases: partial pressures</h2>
+<p>In a mixture, each gas behaves as if it were alone in the container. The pressure it would exert alone is its <b>partial pressure</b>. Because the particles of different gases act independently, the partial pressures add (<a class="figref" href="#fig-dal">Figure 1</a>):</p>
+<p style="text-align:center">P<sub>total</sub> = P<sub>A</sub> + P<sub>B</sub> + P<sub>C</sub> + …</p>
+<figure id="fig-dal" data-fig="partial-pressures"><figcaption>Each gas in a mixture contributes its own pressure; the total is the sum.</figcaption></figure>
+<p>Each gas's share of the pressure equals its share of the molecules. That share is the <b>mole fraction</b>, X<sub>A</sub> = moles of A / total moles, and</p>
+<p style="text-align:center">P<sub>A</sub> = P<sub>total</sub> × X<sub>A</sub></p>
+<div class="worked"><p><b>Worked example: a gas mixture.</b> A container holds 0.240 mol N<sub>2</sub>, 0.0600 mol O<sub>2</sub> and 0.0200 mol CO<sub>2</sub> at a total pressure of 1.60 atm. Find the partial pressure of O<sub>2</sub>.</p>
+<p>Total moles = 0.240 + 0.0600 + 0.0200 = 0.320 mol. X<sub>O₂</sub> = 0.0600 / 0.320 = 0.1875. P<sub>O₂</sub> = 1.60 atm × 0.1875 = <b>0.300 atm</b>. Check: P<sub>N₂</sub> = 1.20 atm and P<sub>CO₂</sub> = 0.100 atm, and 1.20 + 0.300 + 0.100 = 1.60 atm.</p></div>

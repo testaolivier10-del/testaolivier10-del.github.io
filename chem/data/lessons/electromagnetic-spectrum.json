@@ -1,0 +1,79 @@
+{
+ "topic": "electromagnetic-spectrum",
+ "hook": "A microwave oven heats leftovers, an infrared camera sees body heat, and ultraviolet light gives you a sunburn. All three are light, differing only in wavelength, and each does something different to molecules. Chemists use that to identify substances with light alone.",
+ "prereq": [
+  {
+   "q": "In photoelectron spectroscopy, what does a photon do to an atom?",
+   "options": [
+    "Knocks out an electron",
+    "Splits the nucleus",
+    "Adds a proton"
+   ],
+   "correct": 0,
+   "why": "A high-energy photon can remove an electron from an atom.",
+   "review": "photoelectron-spectroscopy"
+  },
+  {
+   "q": "Which bond is polar?",
+   "options": [
+    "O–H",
+    "H–H",
+    "N≡N"
+   ],
+   "correct": 0,
+   "why": "O and H differ in electronegativity.",
+   "review": "bond-types"
+  }
+ ],
+ "figure": {
+  "figure": "em-spectrum",
+  "caption": "The electromagnetic spectrum and the molecular change each region causes."
+ },
+ "chain": [
+  {
+   "cause": "Shorter-wavelength light carries more energy per photon",
+   "effect": "radio < microwave < infrared < visible < ultraviolet < X-ray in energy"
+  },
+  {
+   "cause": "Molecules hold energy in fixed levels: rotation (small gaps), vibration (medium), electronic (large)",
+   "effect": "a photon is absorbed only if its energy matches a gap"
+  },
+  {
+   "cause": "Each region matches a different kind of gap",
+   "effect": "microwaves rotate molecules, infrared vibrates bonds, visible and UV light promote electrons"
+  },
+  {
+   "cause": "The levels depend on the atoms and bonds present",
+   "effect": "absorption spectra identify substances"
+  }
+ ],
+ "ideas": [
+  "Shorter wavelength, higher frequency, more energy per photon.",
+  "Microwave: rotation. Infrared: vibration. Visible and UV: electronic transitions. X-ray: core electrons removed.",
+  "A photon is absorbed only if its energy matches the gap between two levels.",
+  "A colored substance absorbs some visible light; we see the light it does not absorb."
+ ],
+ "misconception": {
+  "wrong": "Brighter light of any color can always push an electron to a higher level, if there is enough of it.",
+  "right": "Each photon must carry energy matching the gap. Many low-energy photons cannot add up to one electronic transition."
+ },
+ "check": [
+  "chem-electromagnetic-spectrum-1",
+  "chem-electromagnetic-spectrum-2",
+  "chem-electromagnetic-spectrum-5",
+  "chem-electromagnetic-spectrum-6",
+  "chem-electromagnetic-spectrum-7",
+  "chem-electromagnetic-spectrum-10"
+ ],
+ "summary": "Electromagnetic radiation ranges from radio waves to X-rays; shorter wavelengths carry more energy per photon. A molecule absorbs a photon only when its energy matches a gap between levels: microwaves change rotation, infrared changes vibration, and visible and ultraviolet light move electrons to higher levels. Spectroscopy uses these absorptions to identify substances.",
+ "connections": [
+  {
+   "href": "../notes/photoelectron-spectroscopy.html",
+   "label": "Photons removing electrons (Photoelectron Spectroscopy)"
+  },
+  {
+   "href": "../notes/photons.html",
+   "label": "Next: calculating the energy of light (Properties of Photons)"
+  }
+ ]
+}

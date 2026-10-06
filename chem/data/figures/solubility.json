@@ -1,0 +1,12 @@
+{
+ "dissolving-balance": {
+  "file": "figures/dissolving-balance.svg",
+  "ext": "svg",
+  "w": 660,
+  "h": 230,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Dissolving overcomes solute-solute and solvent-solvent attractions and forms solute-solvent attractions. A substance dissolves well when the new attractions are comparable to the ones it replaces."
+ }
+}

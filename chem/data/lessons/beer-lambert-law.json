@@ -1,0 +1,80 @@
+{
+ "topic": "beer-lambert-law",
+ "hook": "Hospitals measure blood glucose, water labs measure nitrate, and food scientists check the dye in sports drinks by shining one color of light through a sample. The more of the colored substance there is, the more light it absorbs, in exact proportion.",
+ "prereq": [
+  {
+   "q": "What is the molarity of 0.0200 mol of solute in 0.500 L of solution?",
+   "options": [
+    "0.0400 M",
+    "0.0100 M",
+    "25.0 M"
+   ],
+   "correct": 0,
+   "why": "0.0200 mol ÷ 0.500 L = 0.0400 M.",
+   "review": "solutions"
+  },
+  {
+   "q": "A solution looks blue. Which light does it absorb most?",
+   "options": [
+    "Orange-red",
+    "Blue",
+    "None"
+   ],
+   "correct": 0,
+   "why": "We see the light that is not absorbed.",
+   "review": "electromagnetic-spectrum"
+  }
+ ],
+ "figure": {
+  "figure": "spectrophotometer",
+  "caption": "Light of one wavelength passes through the sample; the instrument reports absorbance."
+ },
+ "chain": [
+  {
+   "cause": "Each absorbing particle in the beam can absorb a photon of matching energy",
+   "effect": "more particles in the path absorb more light"
+  },
+  {
+   "cause": "Doubling the concentration or the path length doubles the particles in the beam",
+   "effect": "absorbance is proportional to both: A = εbc"
+  },
+  {
+   "cause": "ε is largest at λmax",
+   "effect": "measurements there are most sensitive to concentration"
+  },
+  {
+   "cause": "Standards of known concentration fall on a straight line of A against c",
+   "effect": "an unknown's absorbance on that line gives its concentration"
+  }
+ ],
+ "ideas": [
+  "A = εbc: A unitless, ε in L/(mol·cm), b in cm, c in mol/L.",
+  "Measure at λmax, the wavelength of maximum absorbance.",
+  "Calibration curve: A against c is a straight line through the origin with slope εb.",
+  "Errors that add absorbance (fingerprints, no blank) make the concentration too high."
+ ],
+ "misconception": {
+  "wrong": "A solution that absorbs more light must have a larger molar absorptivity.",
+  "right": "ε is fixed for a substance at one wavelength. More absorbance at the same wavelength and path length means a higher concentration."
+ },
+ "check": [
+  "chem-beer-lambert-law-1",
+  "chem-beer-lambert-law-2",
+  "chem-beer-lambert-law-3",
+  "chem-beer-lambert-law-5",
+  "chem-beer-lambert-law-7",
+  "chem-beer-lambert-law-8",
+  "chem-beer-lambert-law-11"
+ ],
+ "summary": "A spectrophotometer measures how much light of one wavelength a solution absorbs. The Beer-Lambert law, A = εbc, makes absorbance proportional to concentration and path length. Measurements are made at λmax, and a calibration curve of standards gives an unknown's concentration; anything that adds absorbance, such as fingerprints or a missed blank, makes it read too high.",
+ "connections": [
+  {
+   "href": "../notes/photons.html",
+   "label": "Photon energy and absorption (Properties of Photons)"
+  },
+  {
+   "href": "../notes/solutions.html",
+   "label": "Molarity and dilution (Solutions and Mixtures)"
+  }
+ ]
+}

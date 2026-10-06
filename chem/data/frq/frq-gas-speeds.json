@@ -1,0 +1,300 @@
+{
+ "id": "frq-gas-speeds",
+ "type": "short",
+ "points": 4,
+ "title": "Speeds of gas molecules",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "kinetic-molecular-theory"
+ ],
+ "practices": [
+  "4.A",
+  "5.B",
+  "6.E"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "Two samples of argon",
+  "text": "<p>The graph shows the distribution of molecular speeds in two samples of argon gas, X and Y, in identical rigid containers. The samples hold the same number of atoms.</p>",
+  "chart": {
+   "type": "line",
+   "x": {
+    "label": "Speed",
+    "unit": "m/s",
+    "min": 0,
+    "max": 1200,
+    "step": 200
+   },
+   "y": {
+    "label": "Fraction of atoms",
+    "unit": "per 1,000 m/s",
+    "min": 0
+   },
+   "series": [
+    {
+     "name": "X",
+     "points": [
+      [
+       0,
+       0.0
+      ],
+      [
+       50,
+       0.164
+      ],
+      [
+       100,
+       0.611
+      ],
+      [
+       150,
+       1.219
+      ],
+      [
+       200,
+       1.831
+      ],
+      [
+       250,
+       2.305
+      ],
+      [
+       300,
+       2.548
+      ],
+      [
+       350,
+       2.538
+      ],
+      [
+       400,
+       2.312
+      ],
+      [
+       450,
+       1.945
+      ],
+      [
+       500,
+       1.521
+      ],
+      [
+       550,
+       1.111
+      ],
+      [
+       600,
+       0.761
+      ],
+      [
+       650,
+       0.49
+      ],
+      [
+       700,
+       0.297
+      ],
+      [
+       750,
+       0.17
+      ],
+      [
+       800,
+       0.092
+      ],
+      [
+       850,
+       0.047
+      ],
+      [
+       900,
+       0.023
+      ],
+      [
+       950,
+       0.01
+      ],
+      [
+       1000,
+       0.005
+      ],
+      [
+       1050,
+       0.002
+      ],
+      [
+       1100,
+       0.001
+      ],
+      [
+       1150,
+       0.0
+      ],
+      [
+       1200,
+       0.0
+      ]
+     ]
+    },
+    {
+     "name": "Y",
+     "points": [
+      [
+       0,
+       0.0
+      ],
+      [
+       50,
+       0.045
+      ],
+      [
+       100,
+       0.174
+      ],
+      [
+       150,
+       0.372
+      ],
+      [
+       200,
+       0.616
+      ],
+      [
+       250,
+       0.88
+      ],
+      [
+       300,
+       1.135
+      ],
+      [
+       350,
+       1.356
+      ],
+      [
+       400,
+       1.525
+      ],
+      [
+       450,
+       1.628
+      ],
+      [
+       500,
+       1.661
+      ],
+      [
+       550,
+       1.629
+      ],
+      [
+       600,
+       1.54
+      ],
+      [
+       650,
+       1.407
+      ],
+      [
+       700,
+       1.245
+      ],
+      [
+       750,
+       1.07
+      ],
+      [
+       800,
+       0.892
+      ],
+      [
+       850,
+       0.724
+      ],
+      [
+       900,
+       0.572
+      ],
+      [
+       950,
+       0.44
+      ],
+      [
+       1000,
+       0.33
+      ],
+      [
+       1050,
+       0.241
+      ],
+      [
+       1100,
+       0.172
+      ],
+      [
+       1150,
+       0.12
+      ],
+      [
+       1200,
+       0.082
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "Which sample is at the higher temperature? <b>Justify</b> your answer using the graph.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Y, because its distribution is shifted to higher speeds (peak farther right, broader), so its average kinetic energy is greater.",
+     "accept": [
+      "Y; higher speeds mean higher average kinetic energy"
+     ]
+    }
+   ],
+   "sample": "Sample Y. Its curve peaks at a higher speed and is spread toward faster speeds, so its atoms have a greater average kinetic energy, which means a higher temperature."
+  },
+  {
+   "label": "b",
+   "prompt": "Which sample exerts the greater pressure? <b>Explain</b> in terms of collisions of the atoms with the walls.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Y, because its faster atoms collide with the walls more often and with greater force (same n and V).",
+     "accept": [
+      "Y; more frequent and harder collisions"
+     ]
+    }
+   ],
+   "sample": "Sample Y. With the same number of atoms in the same volume, its faster atoms hit the walls more often and each collision pushes harder, so the pressure is greater."
+  },
+  {
+   "label": "c",
+   "prompt": "A sample of neon (20.18 g/mol) is at the same temperature as sample X. <b>Compare</b> the average kinetic energy of the neon atoms with that of the argon atoms in X, and <b>calculate</b> the ratio of their average speeds, v(Ne) : v(Ar).",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "States the average kinetic energies are equal because the temperatures are equal.",
+     "accept": [
+      "same average kinetic energy"
+     ]
+    },
+    {
+     "point": "Calculates v(Ne)/v(Ar) = √(39.95/20.18) = 1.41.",
+     "accept": [
+      "1.41",
+      "square root of the mass ratio"
+     ]
+    }
+   ],
+   "sample": "Equal: average kinetic energy depends only on temperature. From ½m(Ne)v(Ne)² = ½m(Ar)v(Ar)², v(Ne)/v(Ar) = √(39.95/20.18) = √1.980 = 1.41, so neon atoms move about 1.41 times as fast."
+  }
+ ]
+}

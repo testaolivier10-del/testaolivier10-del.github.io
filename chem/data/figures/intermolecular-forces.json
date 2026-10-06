@@ -1,0 +1,12 @@
+{
+ "imf-four-kinds": {
+  "file": "figures/imf-four-kinds.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 270,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four panels showing the forces between particles: London dispersion between two nonpolar molecules with momentary dipoles; dipole-dipole between two H-Cl molecules lined up positive end to negative end; a hydrogen bond drawn as a dashed line from the H of one water molecule to the O of another; and a sodium ion ringed by water molecules with their oxygen ends toward it."
+ }
+}

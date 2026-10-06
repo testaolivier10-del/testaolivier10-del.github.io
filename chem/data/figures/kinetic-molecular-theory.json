@@ -1,0 +1,12 @@
+{
+ "maxwell-boltzmann-n2": {
+  "file": "figures/maxwell-boltzmann-n2.svg",
+  "ext": "svg",
+  "w": 600,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Speed distributions of nitrogen molecules at 300 K and 600 K. At the higher temperature the curve is flatter and wider, its peak shifts from about 422 to 597 m/s, and a larger fraction of molecules move faster than 1,000 m/s. Both curves enclose the same area."
+ }
+}

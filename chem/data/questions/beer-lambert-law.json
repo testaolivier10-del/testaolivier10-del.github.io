@@ -1,0 +1,543 @@
+{
+ "stimuli": {
+  "beer-lambert-law-s1": {
+   "kind": "graph",
+   "title": "Calibration curve for a blue food dye",
+   "text": "<p>A student measures five standard solutions of a blue dye at 630 nm in 1.00 cm cuvettes after zeroing the instrument with water. A diluted sports drink gives an absorbance of 0.565.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Dye concentration",
+     "unit": "× 10⁻⁵ M",
+     "min": 0,
+     "max": 10,
+     "step": 2
+    },
+    "y": {
+     "label": "Absorbance",
+     "min": 0,
+     "max": 1.2,
+     "step": 0.2
+    },
+    "series": [
+     {
+      "name": "Standards",
+      "points": [
+       [
+        0.0,
+        0.0
+       ],
+       [
+        2.0,
+        0.229
+       ],
+       [
+        4.0,
+        0.45
+       ],
+       [
+        6.0,
+        0.681
+       ],
+       [
+        8.0,
+        0.902
+       ],
+       [
+        10.0,
+        1.131
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "beer-lambert-law-s2": {
+   "kind": "table",
+   "title": "Measuring copper(II) ions",
+   "text": "<p>Copper(II) solutions absorb strongly at 810 nm. A student measures three samples with a spectrophotometer.</p>",
+   "table": {
+    "caption": "Absorbance at 810 nm",
+    "cols": [
+     "Sample",
+     "Concentration (M)",
+     "Path length (cm)",
+     "Absorbance"
+    ],
+    "rows": [
+     [
+      "1",
+      "0.0500",
+      "1.00",
+      "0.592"
+     ],
+     [
+      "2",
+      "0.1000",
+      "1.00",
+      "?"
+     ],
+     [
+      "3",
+      "0.0500",
+      "2.00",
+      "?"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-beer-lambert-law-1",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "beer-lambert-law-s1",
+   "q": "Use the calibration curve to find the dye concentration in the diluted drink, in units of 10⁻⁵ M (for example, 3.00 means 3.00 × 10⁻⁵ M).",
+   "numeric": {
+    "answer": 5.0,
+    "tol": 0.02,
+    "unit": "× 10⁻⁵ M",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.0639,
+      "rel": 0.02,
+      "why": "Value: you multiplied the absorbance by the slope. Concentration is A ÷ slope."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The line passes through the origin with slope 1.131 / 10.0 = 0.1131 per 10⁻⁵ M. c = 0.565 / 0.1131 = 4.996, so 5.00 × 10⁻⁵ M."
+   }
+  },
+  {
+   "id": "chem-beer-lambert-law-2",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "beer-lambert-law-s1",
+   "q": "The slope of the line equals εb. With b = 1.00 cm, what is the molar absorptivity of the dye?",
+   "numeric": {
+    "answer": 11300.0,
+    "tol": 200.0,
+    "unit": "L/(mol·cm)",
+    "units": [
+     "L mol^-1 cm^-1",
+     "M^-1 cm^-1",
+     "/M/cm",
+     "L/mol/cm"
+    ],
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 8.842e-05,
+      "rel": 0.02,
+      "why": "Value: you divided concentration by absorbance. The slope is ΔA ÷ Δc."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Slope = ΔA/Δc = 1.131 / (1.00 × 10⁻⁴ M) = 11,310 M⁻¹. ε = slope / b = 11,310 M⁻¹ / 1.00 cm = 1.13 × 10⁴ L/(mol·cm)."
+   }
+  },
+  {
+   "id": "chem-beer-lambert-law-3",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "2.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "beer-lambert-law-s1",
+   "q": "Before measuring the drink, the student touches the clear faces of its cuvette, leaving fingerprints. How does this affect the concentration she reports?",
+   "options": [
+    "Too high, because the fingerprints absorb or scatter light and raise the absorbance.",
+    "Too low, because the fingerprints let more light reach the detector.",
+    "No effect, because the fingerprints are outside the cuvette and not in the solution.",
+    "Too low, because fingerprints raise the path length b of the cuvette."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Any light lost at the cuvette walls is counted as absorbed by the sample. A higher absorbance read on the calibration line gives a higher concentration.",
+    "options": [
+     "Right: extra absorbance, higher concentration.",
+     "Fingerprints block or scatter light; they do not let more through.",
+     "The beam passes through the walls, so anything on them affects the reading.",
+     "Path length is the inside width, which does not change."
+    ]
+   }
+  },
+  {
+   "id": "chem-beer-lambert-law-4",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "beer-lambert-law-s1",
+   "q": "Why are the standards and the drink measured at 630 nm?",
+   "options": [
+    "630 nm is near λmax, where the reading is most sensitive.",
+    "630 nm is where water absorbs most strongly, so the blank cancels the most light.",
+    "630 nm is the color of the dye seen by eye, so it is the light that the dye absorbs.",
+    "630 nm is the shortest visible wavelength, so its photons carry the most energy."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At λmax, ε is largest, so each change in concentration gives the largest change in absorbance, and small wavelength errors matter least.",
+    "options": [
+     "Right: maximum absorbance, maximum sensitivity.",
+     "Water absorbs very little visible light; the blank removes small effects.",
+     "The dye looks blue because it absorbs orange-red light near 630 nm and transmits blue.",
+     "Violet, near 400 nm, is the shortest visible wavelength."
+    ]
+   }
+  },
+  {
+   "id": "chem-beer-lambert-law-5",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "beer-lambert-law-s1",
+   "q": "The drink was diluted by mixing 10.0 mL of it with water to a total of 50.0 mL. What was the dye concentration in the undiluted drink?",
+   "options": [
+    "2.50 × 10⁻⁴ M",
+    "1.00 × 10⁻⁵ M",
+    "5.00 × 10⁻⁵ M",
+    "6.25 × 10⁻⁴ M"
+   ],
+   "correct": 0,
+   "fixed": true,
+   "why": {
+    "correct": "The diluted solution is 5.00 × 10⁻⁵ M. The dilution factor is 50.0 / 10.0 = 5.00, so the original is 5.00 × 5.00 × 10⁻⁵ M = 2.50 × 10⁻⁴ M (M₁V₁ = M₂V₂).",
+    "options": [
+     "Right: multiply back by the dilution factor.",
+     "This divides by the dilution factor instead of multiplying.",
+     "This is the diluted concentration, not the original.",
+     "This used 40.0 mL of water added as the factor instead of the total volume."
+    ]
+   }
+  },
+  {
+   "id": "chem-beer-lambert-law-6",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "beer-lambert-law-s2",
+   "q": "From sample 1, what is the molar absorptivity of copper(II) at 810 nm?",
+   "numeric": {
+    "answer": 11.8,
+    "tol": 0.1,
+    "unit": "L/(mol·cm)",
+    "units": [
+     "L mol^-1 cm^-1",
+     "M^-1 cm^-1",
+     "/M/cm",
+     "L/mol/cm"
+    ],
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.0296,
+      "rel": 0.02,
+      "why": "Value: you multiplied A by c. Rearrange A = εbc to ε = A/(bc)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ε = A / (bc) = 0.592 / (1.00 cm × 0.0500 mol/L) = 11.84 L/(mol·cm), which is 11.8 L/(mol·cm)."
+   }
+  },
+  {
+   "id": "chem-beer-lambert-law-7",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "beer-lambert-law-s2",
+   "q": "What absorbance should sample 2 give?",
+   "options": [
+    "1.18",
+    "0.592",
+    "0.296",
+    "2.37"
+   ],
+   "correct": 0,
+   "fixed": true,
+   "why": {
+    "correct": "A is proportional to c. Doubling c from 0.0500 to 0.1000 M doubles A: 2 × 0.592 = 1.184, so 1.18.",
+    "options": [
+     "Right: twice the concentration, twice the absorbance.",
+     "This ignores the change in concentration.",
+     "This halves instead of doubling.",
+     "This quadruples; A is proportional to c, not c²."
+    ]
+   }
+  },
+  {
+   "id": "chem-beer-lambert-law-8",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "beer-lambert-law-s2",
+   "q": "What absorbance should sample 3 give?",
+   "options": [
+    "1.18",
+    "0.592",
+    "0.296",
+    "0.0592"
+   ],
+   "correct": 0,
+   "fixed": true,
+   "why": {
+    "correct": "A is proportional to the path length b. Same concentration as sample 1 but twice the path: 2 × 0.592 = 1.18.",
+    "options": [
+     "Right: twice the path, twice the absorbance.",
+     "A longer path passes more absorbing ions, so A rises.",
+     "A longer path increases A; it does not halve it.",
+     "This divides by 10 for no reason."
+    ]
+   }
+  },
+  {
+   "id": "chem-beer-lambert-law-9",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "beer-lambert-law-s2",
+   "q": "The student forgets to zero the instrument with a water blank, and the cuvette and water together absorb 0.015. How are her results affected?",
+   "options": [
+    "Each absorbance is 0.015 too high, so each concentration is too high.",
+    "Each absorbance is 0.015 too low, so each concentration she calculates is too low.",
+    "The absorbances are unaffected, because water absorbs no light at 810 nm.",
+    "The molar absorptivity changes, because ε depends on the volume of water present."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Without a blank, the instrument counts light lost to the cuvette and water as absorbed by copper(II). Each reading is too high, and c = A/(εb) is too high.",
+    "options": [
+     "Right: a higher reading means a higher calculated concentration.",
+     "Extra absorbing material raises, not lowers, the reading.",
+     "The question states the cuvette and water absorb 0.015.",
+     "ε is a property of copper(II) at 810 nm; the error is in A."
+    ]
+   }
+  },
+  {
+   "id": "chem-beer-lambert-law-10",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A solution of a compound with ε = 6,220 L/(mol·cm) at 340 nm has an absorbance of 0.373 in a 1.00 cm cuvette. What is its concentration?",
+   "numeric": {
+    "answer": 6e-05,
+    "tol": 1e-07,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 2320.0,
+      "rel": 0.02,
+      "why": "Value: you multiplied A by ε. Rearrange A = εbc to c = A/(εb)."
+     },
+     {
+      "value": 16680.0,
+      "rel": 0.02,
+      "why": "Value: you divided ε by A. Concentration is c = A/(εb)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "c = A / (εb) = 0.373 / (6,220 L/(mol·cm) × 1.00 cm) = 5.9968 × 10⁻⁵ mol/L, which is 6.00 × 10⁻⁵ M."
+   }
+  },
+  {
+   "id": "chem-beer-lambert-law-11",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In A = εbc, what does b stand for?",
+   "options": [
+    "The path length of light through the sample",
+    "The molar absorptivity of the substance",
+    "The concentration in mol/L",
+    "The wavelength of the light used"
+   ],
+   "correct": 0,
+   "fixed": true,
+   "why": {
+    "correct": "b is the path length, the distance light travels through the solution, usually 1.00 cm.",
+    "options": [
+     "Right: usually 1.00 cm.",
+     "That is ε.",
+     "That is c.",
+     "The wavelength is chosen (λmax) but is not a variable in the equation."
+    ]
+   }
+  },
+  {
+   "id": "chem-beer-lambert-law-12",
+   "type": "order",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for finding an unknown concentration with a calibration curve in order.",
+   "options": [
+    "Find λmax by scanning a standard across wavelengths",
+    "Zero the spectrophotometer with a blank of the solvent",
+    "Measure the absorbance of each standard at λmax",
+    "Plot absorbance against concentration and fit a line",
+    "Measure the unknown and read its concentration from the line"
+   ],
+   "why": {
+    "correct": "Pick the wavelength, zero with a blank, measure the standards, build the line, then measure the unknown."
+   }
+  },
+  {
+   "id": "chem-beer-lambert-law-13",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "2.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which errors would make a reported concentration too high? Select all that apply.",
+   "options": [
+    "A water drop on the outside of the cuvette",
+    "Skipping the blank when the solvent absorbs slightly",
+    "Using a cuvette with a shorter path length than the standards' cuvette",
+    "Diluting the unknown more than recorded",
+    "Measuring at a wavelength away from λmax for both standards and unknown"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A drop and a missed blank both add absorbance that is counted as the sample's. A shorter path lowers A, and over-dilution lowers the measured concentration; measuring everything at another wavelength only lowers sensitivity.",
+    "options": [
+     "Right: extra light lost, higher A.",
+     "Right: the solvent's absorbance is added to every reading.",
+     "A shorter path gives a lower A and so a lower concentration.",
+     "Extra unrecorded dilution makes the calculated original concentration too low.",
+     "If standards and unknown use the same wavelength, the curve still works, just less sensitively."
+    ]
+   }
+  },
+  {
+   "id": "chem-beer-lambert-law-14",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does a colorless solution of sugar give an absorbance near zero at 630 nm?",
+   "options": [
+    "Sugar has no energy gap matching 630 nm photons.",
+    "Sugar molecules are too small to block light of a visible wavelength.",
+    "Sugar molecules absorb 630 nm light but then re-emit it at the same moment.",
+    "Sugar solutions are too dilute to absorb any light in a 1.00 cm cuvette."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Absorption needs a photon whose energy matches a gap between levels. Sugar has no electronic transitions in the visible, so ε at 630 nm is about zero.",
+    "options": [
+     "Right: ε is near zero at that wavelength.",
+     "Size does not decide absorption; matching energy gaps do.",
+     "Absorbed energy is mostly turned into heat, and here nothing is absorbed.",
+     "Even concentrated sugar solutions are colorless."
+    ]
+   }
+  },
+  {
+   "id": "chem-beer-lambert-law-15",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student's most concentrated standard falls well below the straight line through the other points. Her unknown gives an absorbance above that standard. What should she do?",
+   "options": [
+    "Dilute the unknown by a known factor so its absorbance falls within the straight part of the line, then multiply back.",
+    "Read the unknown from a straight line extended past the last standard, since Beer's law holds for any absorbance.",
+    "Report the unknown as equal to the most concentrated standard, the highest value the curve reaches.",
+    "Measure the unknown at a wavelength far from λmax, where its absorbance reads higher."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At high absorbance, readings can fall below the Beer's-law line. Diluting the unknown into the range covered by good standards gives a reliable reading; multiplying by the dilution factor returns the original concentration.",
+    "options": [
+     "Right: stay within the calibrated range.",
+     "The curve has already bent at high absorbance, so extending the line is unreliable there.",
+     "Its absorbance is higher, so its concentration is likely higher too.",
+     "Away from λmax the absorbance is lower, not higher, and the standards were not measured there."
+    ]
+   }
+  },
+  {
+   "id": "chem-beer-lambert-law-16",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A dye solution in a 1.00 cm cuvette has A = 0.300 at λmax. Which changes would double its absorbance at λmax? Select all that apply.",
+   "options": [
+    "Doubling the dye concentration",
+    "Pouring twice the volume of the same solution into the cuvette",
+    "Using a lamp twice as bright",
+    "Switching to a 0.50 cm cuvette"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "A = εbc. Only c and b (and ε, fixed for the dye at λmax) change A. Doubling c doubles A; the volume poured in and the brightness of the lamp do not appear in the equation, and a shorter path halves A.",
+    "options": [
+     "Right: A is proportional to c.",
+     "The light crosses the same 1.00 cm of solution however much is in the cuvette.",
+     "Absorbance is a ratio of light out to light in, so a brighter lamp leaves it unchanged.",
+     "Halving the path length halves A."
+    ]
+   }
+  }
+ ]
+}

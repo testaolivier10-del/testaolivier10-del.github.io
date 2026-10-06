@@ -1,0 +1,12 @@
+{
+ "spectrophotometer": {
+  "file": "figures/spectrophotometer.svg",
+  "ext": "svg",
+  "w": 700,
+  "h": 220,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A spectrophotometer: light from a lamp passes through a wavelength selector, then through a cuvette of path length b holding the sample, and a detector measures how much gets through. The instrument reports absorbance, A = εbc."
+ }
+}
