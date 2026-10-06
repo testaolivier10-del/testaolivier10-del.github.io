@@ -1,0 +1,86 @@
+{
+ "topic": "nernst-equation",
+ "hook": "A fresh flashlight battery is bright; an old one is dim, then dead, even though it still holds plenty of zinc. The voltage of a cell is not fixed: it depends on how much reactant and product are present, and it falls to zero when the reaction reaches equilibrium.",
+ "prereq": [
+  {
+   "q": "How is Q compared with K to predict the direction of a reaction?",
+   "options": [
+    "Q < K: net forward; Q > K: net reverse",
+    "Q < K: net reverse; Q > K: net forward",
+    "Q and K are always equal",
+    "Only K matters"
+   ],
+   "correct": 0,
+   "why": "A reaction proceeds in the direction that moves Q toward K.",
+   "review": "q-and-k"
+  },
+  {
+   "q": "For a galvanic cell under standard conditions, what is the sign of E°cell?",
+   "options": [
+    "Positive",
+    "Negative",
+    "Zero",
+    "It depends on the salt bridge"
+   ],
+   "correct": 0,
+   "why": "A galvanic cell runs a favored reaction, so E°cell > 0.",
+   "review": "cell-potential"
+  }
+ ],
+ "figure": {
+  "figure": "nernst-q-line",
+  "caption": "Cell potential falls as Q rises: above E° when Q < 1, equal to E° at Q = 1, below E° when Q > 1, and zero at Q = K."
+ },
+ "chain": [
+  {
+   "cause": "A cell away from standard conditions has Q ≠ 1",
+   "effect": "its actual drive, ΔG, differs from ΔG°, so E differs from E°"
+  },
+  {
+   "cause": "Less product or more reactant makes Q < 1",
+   "effect": "the reaction is further from equilibrium and E > E°"
+  },
+  {
+   "cause": "As the cell runs, reactants are used and products form",
+   "effect": "Q rises and E falls"
+  },
+  {
+   "cause": "When Q reaches K, there is no net drive",
+   "effect": "E = 0 and the battery is dead"
+  }
+ ],
+ "ideas": [
+  "Q &lt; 1 → E &gt; E°. Q = 1 → E = E°. Q &gt; 1 → E &lt; E°. Q = K → E = 0 (equilibrium, a dead battery).",
+  "The <b>Nernst equation</b>, E = E° − (RT/nF) ln Q, describes this; the exam focuses on the direction of the change.",
+  "Q uses only dissolved species and gases: solid electrodes and spectator ions do not affect E.",
+  "A <b>concentration cell</b> has the same half-reaction on both sides (E° = 0) and runs until the concentrations are equal."
+ ],
+ "misconception": {
+  "wrong": "A cell’s voltage is always E°, and a dead battery has run out of electrons.",
+  "right": "E equals E° only when Q = 1. As the cell runs, Q rises toward K and E falls toward zero; a dead battery is a cell at equilibrium, with reactants often still present."
+ },
+ "check": [
+  "chem-nernst-equation-1",
+  "chem-nernst-equation-2",
+  "chem-nernst-equation-3",
+  "chem-nernst-equation-4",
+  "chem-nernst-equation-9",
+  "chem-nernst-equation-10",
+  "chem-nernst-equation-13"
+ ],
+ "summary": "Away from standard conditions, a cell’s potential depends on Q: it is above E° when Q < 1, equal to E° at Q = 1, below E° when Q > 1, and zero at equilibrium (Q = K). The Nernst equation expresses this. A concentration cell has E° = 0 and runs only on a concentration difference.",
+ "connections": [
+  {
+   "href": "../notes/q-and-k.html",
+   "label": "Back: comparing Q and K (7.3)"
+  },
+  {
+   "href": "../notes/cell-potential.html",
+   "label": "Back: E°cell and ΔG° (9.9)"
+  },
+  {
+   "href": "../notes/electrolysis-faraday.html",
+   "label": "Next: how much metal a current plates (9.11)"
+  }
+ ]
+}

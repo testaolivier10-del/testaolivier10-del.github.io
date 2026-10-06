@@ -1,0 +1,191 @@
+{
+ "id": "frq-dissolving-ammonium-chloride",
+ "type": "long",
+ "points": 10,
+ "title": "Why ammonium chloride dissolves",
+ "units": [
+  "unit-9"
+ ],
+ "topics": [
+  "dissolution-free-energy",
+  "gibbs-free-energy",
+  "entropy-intro",
+  "free-energy-equilibrium"
+ ],
+ "practices": [
+  "2.C",
+  "5.F",
+  "6.D",
+  "6.F"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Dissolving ammonium chloride in a calorimeter",
+  "text": "<p>A student adds 5.35 g of NH₄Cl(s) (molar mass 53.49 g/mol) to 50.00 g of water in a polystyrene-cup calorimeter, stirs until it dissolves completely, and records the temperature. Assume the solution has a specific heat capacity of 4.18 J/(g·°C) and that no heat is exchanged with the cup or the room.</p><p>NH₄Cl(s) → NH₄⁺(aq) + Cl⁻(aq); ΔS°soln = +75.0 J/(mol·K). R = 8.314 J/(mol·K).</p>",
+  "table": {
+   "caption": "Calorimeter data",
+   "cols": [
+    "Measurement",
+    "Value"
+   ],
+   "rows": [
+    [
+     "Mass of NH₄Cl",
+     "5.35 g"
+    ],
+    [
+     "Mass of water",
+     "50.00 g"
+    ],
+    [
+     "Initial temperature",
+     "23.50 °C"
+    ],
+    [
+     "Lowest temperature reached",
+     "17.10 °C"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Calculate</b> the magnitude of the heat, in joules, absorbed from the solution as the NH₄Cl dissolves.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "q = mcΔT = (55.35 g)(4.18 J/(g·°C))(6.40 °C) = 1.48 × 10³ J",
+     "accept": [
+      "1480 J",
+      "1.48 × 10³ J using the total mass of solution",
+      "accept 1.34 × 10³ J if 50.00 g is used, for the setup point only if consistent"
+     ]
+    }
+   ],
+   "sample": "The solution mass is 50.00 + 5.35 = 55.35 g and ΔT = 23.50 − 17.10 = 6.40 °C. q = (55.35 g)(4.18 J/(g·°C))(6.40 °C) = 1480 J ≈ 1.48 × 10³ J."
+  },
+  {
+   "label": "b",
+   "prompt": "<b>Calculate</b> ΔH°soln for NH₄Cl, in kJ/mol. Include the sign.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Moles of NH₄Cl: 5.35 g ÷ 53.49 g/mol = 0.100 mol, and q divided by moles",
+     "accept": [
+      "0.1000 mol",
+      "q per mole of solute"
+     ]
+    },
+    {
+     "point": "ΔH°soln = +14.8 kJ/mol, positive because the solution cooled (heat absorbed by the dissolving salt)",
+     "accept": [
+      "+14.8 kJ/mol",
+      "+15 kJ/mol",
+      "consistent with part (a), with a positive sign"
+     ]
+    }
+   ],
+   "sample": "n = 5.35 g ÷ 53.49 g/mol = 0.1000 mol. ΔH°soln = +1.48 × 10³ J ÷ 0.1000 mol = +1.48 × 10⁴ J/mol = +14.8 kJ/mol. The temperature fell, so the process absorbed heat and ΔH is positive."
+  },
+  {
+   "label": "c",
+   "prompt": "<b>Justify</b> the positive sign of ΔS°soln in terms of the particles involved.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "NH₄⁺ and Cl⁻ ions leave fixed positions in the crystal and disperse through the solution, giving many more possible arrangements (microstates); this outweighs the ordering of water around the ions",
+     "accept": [
+      "ions spread out from the lattice into the solution, more microstates",
+      "matter is dispersed; \"more disordered\" alone does not earn the point"
+     ]
+    }
+   ],
+   "sample": "In the solid, the NH₄⁺ and Cl⁻ ions are held in fixed positions in a lattice. On dissolving they spread through the whole solution, so there are many more ways to arrange them (more microstates). This dispersal outweighs the ordering of water molecules held around the ions, so ΔS°soln > 0."
+  },
+  {
+   "label": "d",
+   "prompt": "Use ΔH°soln = +14.8 kJ/mol. <b>Calculate</b> ΔG°soln at 298 K.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Setup with units converted: ΔG° = 14.8 kJ/mol − (298 K)(0.0750 kJ/(mol·K))",
+     "accept": [
+      "ΔS° converted to kJ, T in K",
+      "14.8 − 22.35"
+     ]
+    },
+    {
+     "point": "ΔG°soln = −7.6 kJ/mol (14.8 − 22.35 = −7.55)",
+     "accept": [
+      "−7.6 kJ/mol",
+      "−7.55 kJ/mol",
+      "consistent with a different ΔH° carried from part (b)"
+     ]
+    }
+   ],
+   "sample": "ΔG° = ΔH° − TΔS° = 14.8 kJ/mol − (298 K)(0.0750 kJ/(mol·K)) = 14.8 − 22.35 = −7.6 kJ/mol."
+  },
+  {
+   "label": "e",
+   "prompt": "Dissolving NH₄Cl absorbs heat, yet it dissolves on its own at 298 K. <b>Explain</b> why, using your answers to parts (c) and (d).",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "The entropy term outweighs the enthalpy term: TΔS° (22.4 kJ/mol) > ΔH° (14.8 kJ/mol), so ΔG° < 0 and dissolving is thermodynamically favored",
+     "accept": [
+      "ΔG° is negative because TΔS° is larger than ΔH°",
+      "entropy-driven: the positive ΔS° makes −TΔS° outweigh the positive ΔH°"
+     ]
+    }
+   ],
+   "sample": "Although ΔH° > 0 works against dissolving, the ions dispersing gives a large positive ΔS°. At 298 K, TΔS° = 22.4 kJ/mol is larger than ΔH° = 14.8 kJ/mol, so ΔG° = ΔH° − TΔS° is negative and the process is favored. It is entropy-driven."
+  },
+  {
+   "label": "f",
+   "prompt": "<b>Calculate</b> the value of the equilibrium constant for NH₄Cl(s) ⇌ NH₄⁺(aq) + Cl⁻(aq) at 298 K.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "K = e^(−ΔG°/RT) = e^(7550/(8.314 × 298)) ≈ 21",
+     "accept": [
+      "K ≈ 21",
+      "K between 20 and 22, consistent with part (d)",
+      "using ΔG° in J/mol and ln, not log"
+     ]
+    }
+   ],
+   "sample": "ln K = −ΔG°/RT = 7550 J/mol ÷ (8.314 J/(mol·K) × 298 K) = 3.05, so K = e^3.05 ≈ 21. K > 1, consistent with ΔG° < 0."
+  },
+  {
+   "label": "g",
+   "prompt": "Some of the NH₄Cl stuck to the weighing paper and never entered the calorimeter, but the student used 5.35 g in the calculation. <b>Determine</b> whether the student’s calculated ΔH°soln is too large, too small or unaffected. <b>Justify</b> your answer.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Too small (in magnitude): less solid dissolved, so less heat was absorbed (smaller ΔT), but q was divided by the larger recorded number of moles",
+     "accept": [
+      "less positive than the true value because the moles used are too large",
+      "the heat measured corresponds to fewer moles than 0.100"
+     ]
+    }
+   ],
+   "sample": "Too small. Less NH₄Cl dissolved than recorded, so less heat was absorbed and ΔT was smaller. Dividing that smaller q by the recorded 0.100 mol (more than actually dissolved) gives a ΔH°soln smaller than the true value per mole."
+  },
+  {
+   "label": "h",
+   "prompt": "The student heats the water to 50 °C before repeating the experiment. <b>Predict</b> whether more or less NH₄Cl can dissolve, and <b>justify</b> your prediction using ΔG°.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "More dissolves: with ΔS° > 0, raising T makes −TΔS° more negative, so ΔG° becomes more negative and K becomes larger",
+     "accept": [
+      "K increases with T because ΔG° decreases",
+      "Le Châtelier: endothermic dissolving is favored by heating, with ΔG° or K reasoning"
+     ]
+    }
+   ],
+   "sample": "More dissolves. ΔG° = ΔH° − TΔS° with ΔS° > 0, so at a higher T the −TΔS° term is more negative and ΔG° falls. A more negative ΔG° means a larger K (ΔG° = −RT ln K), so more solid dissolves."
+  }
+ ]
+}

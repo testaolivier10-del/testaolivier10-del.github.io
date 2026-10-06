@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" width="760" height="330" role="img" aria-labelledby="t d">
+<title id="t">Entropy rises from solid to liquid to gas</title>
+<desc id="d">Three boxes of the same twelve particles. In the solid the particles sit in a fixed grid and only vibrate. In the liquid they touch but slide past each other. In the gas they are far apart and spread through the whole box. An arrow under the boxes shows entropy increasing from solid to liquid to gas, because the particles and their energy can be arranged in more ways.</desc>
+<defs><marker id="ed-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="330" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<g font-size="17" font-weight="700" text-anchor="middle"><text x="130" y="30">Solid</text><text x="380" y="30">Liquid</text><text x="630" y="30">Gas</text></g>
+<g fill="none" stroke="#5D6B69" stroke-width="2"><rect x="30" y="45" width="200" height="190" rx="6"/><rect x="280" y="45" width="200" height="190" rx="6"/><rect x="530" y="45" width="200" height="190" rx="6"/></g>
+<g fill="#0072B2" stroke="#00466E" stroke-width="1.5">
+<circle cx="85" cy="155" r="13"/><circle cx="115" cy="155" r="13"/><circle cx="145" cy="155" r="13"/><circle cx="175" cy="155" r="13"/>
+<circle cx="85" cy="185" r="13"/><circle cx="115" cy="185" r="13"/><circle cx="145" cy="185" r="13"/><circle cx="175" cy="185" r="13"/>
+<circle cx="85" cy="215" r="13"/><circle cx="115" cy="215" r="13"/><circle cx="145" cy="215" r="13"/><circle cx="175" cy="215" r="13"/>
+<circle cx="303" cy="219" r="13"/><circle cx="330" cy="215" r="13"/><circle cx="358" cy="220" r="13"/><circle cx="386" cy="214" r="13"/><circle cx="414" cy="219" r="13"/><circle cx="452" cy="216" r="13"/>
+<circle cx="318" cy="191" r="13"/><circle cx="347" cy="189" r="13"/><circle cx="374" cy="186" r="13"/><circle cx="402" cy="191" r="13"/><circle cx="430" cy="189" r="13"/><circle cx="458" cy="188" r="13"/>
+<circle cx="560" cy="80" r="13"/><circle cx="645" cy="68" r="13"/><circle cx="705" cy="100" r="13"/><circle cx="600" cy="130" r="13"/><circle cx="680" cy="150" r="13"/><circle cx="555" cy="185" r="13"/>
+<circle cx="625" cy="205" r="13"/><circle cx="700" cy="215" r="13"/><circle cx="650" cy="112" r="13"/><circle cx="580" cy="220" r="13"/><circle cx="710" cy="170" r="13"/><circle cx="600" cy="78" r="13"/>
+</g>
+<g font-size="13" text-anchor="middle"><text x="130" y="258">fixed places; vibrate only</text><text x="380" y="258">touching; slide past each other</text><text x="630" y="258">far apart; fill the whole box</text></g>
+<line x1="60" y1="292" x2="700" y2="292" stroke="#1F2A28" stroke-width="3" marker-end="url(#ed-a)"/>
+<text x="380" y="318" font-size="15" font-weight="700" text-anchor="middle">entropy increases: more microstates for matter and energy</text>
+</g></svg>

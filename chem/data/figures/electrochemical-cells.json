@@ -1,0 +1,12 @@
+{
+ "galvanic-cell": {
+  "file": "figures/galvanic-cell.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 460,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A zinc-copper galvanic cell. Left beaker: zinc strip in zinc nitrate, the anode, where Zn is oxidized to Zn2+ and the strip loses mass. Right beaker: copper strip in copper(II) nitrate, the cathode, where Cu2+ is reduced to Cu and the strip gains mass. Electrons flow through the wire and a voltmeter from zinc to copper. In the KNO3 salt bridge, nitrate ions move toward the anode beaker and potassium ions toward the cathode beaker."
+ }
+}

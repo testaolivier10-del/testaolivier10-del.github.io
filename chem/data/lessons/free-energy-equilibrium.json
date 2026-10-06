@@ -1,0 +1,99 @@
+{
+ "topic": "free-energy-equilibrium",
+ "hook": "Making ammonia for fertilizer feeds about half the people on Earth. Engineers need to know how much ammonia an equilibrium mixture can hold before they build a plant. They do not have to run the reaction to find out: a single free energy value, ΔG°, tells them the equilibrium constant.",
+ "prereq": [
+  {
+   "q": "What does K > 1 tell you about an equilibrium?",
+   "options": [
+    "Products are favored at equilibrium",
+    "Reactants are favored at equilibrium",
+    "The reaction is fast",
+    "The reaction has stopped"
+   ],
+   "correct": 0,
+   "why": "A large K means the equilibrium mixture is mostly products.",
+   "review": "k-magnitude"
+  },
+  {
+   "q": "What is ln(1)?",
+   "options": [
+    "0",
+    "1",
+    "2.303",
+    "e"
+   ],
+   "correct": 0,
+   "why": "e⁰ = 1, so ln 1 = 0.",
+   "review": "math-logs"
+  },
+  {
+   "q": "Which value of R is used with energy in joules?",
+   "options": [
+    "8.314 J/(mol·K)",
+    "0.08206 L·atm/(mol·K)",
+    "96,485 C/mol",
+    "6.022 × 10²³ /mol"
+   ],
+   "correct": 0,
+   "why": "The energy form of the gas constant is 8.314 J/(mol·K).",
+   "review": "ideal-gas-law"
+  }
+ ],
+ "figure": {
+  "figure": "dg-k-scale",
+  "caption": "Negative ΔG° goes with K > 1 (products favored); positive ΔG° goes with K < 1. ΔG° = 0 means K = 1."
+ },
+ "chain": [
+  {
+   "cause": "ΔG° compares products and reactants under standard conditions",
+   "effect": "it measures how far the reaction goes before reaching equilibrium"
+  },
+  {
+   "cause": "The two are linked by ΔG° = −RT ln K",
+   "effect": "a negative ΔG° gives ln K > 0 and K > 1"
+  },
+  {
+   "cause": "The relation is exponential",
+   "effect": "a change of a few kJ/mol in ΔG° changes K by a large factor"
+  },
+  {
+   "cause": "At equilibrium Q = K and there is no net drive",
+   "effect": "ΔG = 0, while ΔG° keeps its fixed value"
+  }
+ ],
+ "ideas": [
+  "<b>ΔG° = −RT ln K</b>, with R = 8.314 J/(mol·K), T in kelvin, and ΔG° in J/mol.",
+  "ΔG° &lt; 0 ⇔ K &gt; 1 (products favored). ΔG° &gt; 0 ⇔ K &lt; 1 (reactants favored). ΔG° = 0 ⇔ K = 1.",
+  "To find K: K = e^(−ΔG°/RT). Use ln and e, not log and 10.",
+  "ΔG° near zero means K near 1: both reactants and products are present in large amounts.",
+  "Reverse a reaction: ΔG° changes sign and K inverts. Double it: ΔG° doubles and K is squared."
+ ],
+ "misconception": {
+  "wrong": "A reaction with a positive ΔG° makes no product at all.",
+  "right": "A positive ΔG° means K < 1, not K = 0. Starting from pure reactants, Q < K, so some product forms until Q = K; reactants are simply favored at equilibrium."
+ },
+ "check": [
+  "chem-free-energy-equilibrium-1",
+  "chem-free-energy-equilibrium-2",
+  "chem-free-energy-equilibrium-3",
+  "chem-free-energy-equilibrium-4",
+  "chem-free-energy-equilibrium-9",
+  "chem-free-energy-equilibrium-11",
+  "chem-free-energy-equilibrium-13"
+ ],
+ "summary": "The standard free energy change and the equilibrium constant are linked by ΔG° = −RT ln K. Negative ΔG° means K > 1 and products are favored; positive means K < 1. Because the link is exponential, small changes in ΔG° make big changes in K. Use R = 8.314 J/(mol·K), kelvin and ln.",
+ "connections": [
+  {
+   "href": "../notes/k-magnitude.html",
+   "label": "Back: what the size of K means (7.5)"
+  },
+  {
+   "href": "../notes/gibbs-free-energy.html",
+   "label": "Back: ΔG° = ΔH° − TΔS° (9.3)"
+  },
+  {
+   "href": "../notes/dissolution-free-energy.html",
+   "label": "Next: free energy of dissolving (9.6)"
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "electrolysis-plating": {
+  "file": "figures/electrolysis-plating.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A beaker of copper(II) sulfate with a copper anode and a key as the cathode, joined to a power supply that moves electrons from the anode to the key. Copper dissolves at the anode and plates onto the key. Below, a chain: current times time gives charge; divide by F for moles of electrons; divide by 2 for moles of copper; multiply by 63.55 for grams of copper."
+ }
+}

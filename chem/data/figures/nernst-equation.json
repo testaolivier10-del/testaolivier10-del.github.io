@@ -1,0 +1,12 @@
+{
+ "nernst-q-line": {
+  "file": "figures/nernst-q-line.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A graph of cell potential against Q on a log scale: a straight line falling from left to right. Where Q is below 1, E is above E°; at Q equal to 1, E equals E°; above 1, E is below E°; the line reaches zero at Q equal to K, equilibrium."
+ }
+}

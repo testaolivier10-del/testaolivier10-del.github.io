@@ -1,0 +1,5 @@
+{
+ "enthalpy-of-solution": {
+  "def": "The enthalpy change when a solute dissolves in a solvent, ΔH°soln: the energy absorbed to separate solute and solvent particles minus the energy released as solute-solvent attractions form. With ΔS°soln it gives the free energy of dissolution, ΔG°soln."
+ }
+}

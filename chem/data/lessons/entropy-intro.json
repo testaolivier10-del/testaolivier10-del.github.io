@@ -1,0 +1,87 @@
+{
+ "topic": "entropy-intro",
+ "hook": "Open a bottle of perfume in one corner of a room and, a few minutes later, someone across the room smells it. Nobody pushed the molecules across; they spread out on their own. Spill the same perfume and you will never see the scent gather itself back into the bottle. Entropy is the idea that explains which way things like this go.",
+ "prereq": [
+  {
+   "q": "In a gas, how do the particles move?",
+   "options": [
+    "Freely and randomly through the whole container, with a range of speeds",
+    "Only back and forth in fixed positions",
+    "Only when the container is heated",
+    "In straight lines toward the walls, all at the same speed"
+   ],
+   "correct": 0,
+   "why": "Kinetic molecular theory: gas particles move randomly through the container and have a distribution of speeds.",
+   "review": "kinetic-molecular-theory"
+  },
+  {
+   "q": "What happens to the distribution of molecular speeds when a gas is heated?",
+   "options": [
+    "The average speed rises and the range of speeds widens",
+    "Every molecule ends up with the same speed",
+    "The average speed falls",
+    "Nothing changes; only the pressure changes"
+   ],
+   "correct": 0,
+   "why": "A higher temperature shifts the Maxwell-Boltzmann curve to higher speeds and flattens it, so the speeds are more spread out.",
+   "review": "kinetic-molecular-theory"
+  }
+ ],
+ "figure": {
+  "figure": "entropy-dispersal",
+  "caption": "The same particles as a solid, a liquid and a gas. Each step gives the particles and their energy more possible arrangements, so the entropy rises."
+ },
+ "chain": [
+  {
+   "cause": "Particles move constantly and can be in many positions with many energies",
+   "effect": "a system can be in a huge number of microstates that look the same from outside"
+  },
+  {
+   "cause": "Each microstate is equally likely",
+   "effect": "the system ends up in the condition that has the most microstates"
+  },
+  {
+   "cause": "More volume, more particles or a phase where particles move more freely gives more arrangements of matter",
+   "effect": "entropy rises when matter disperses"
+  },
+  {
+   "cause": "A higher temperature spreads the energy over a wider range of speeds",
+   "effect": "entropy rises when energy disperses"
+  }
+ ],
+ "ideas": [
+  "<b>Entropy</b> measures the number of <b>microstates</b>: the ways the particles and their energy can be arranged.",
+  "Entropy increases when <b>matter disperses</b>: solid → liquid → gas, a gas expanding, a solute dissolving, or a reaction making more moles of gas.",
+  "Entropy increases when <b>energy disperses</b>: at a higher temperature the energy is spread over a wider range of speeds.",
+  "To predict the sign of ΔS for a reaction, compare the moles of gas first, then the phases.",
+  "Justify with dispersal and microstates, never with \"disorder\"."
+ ],
+ "misconception": {
+  "wrong": "Entropy is disorder, so a messier-looking picture always has more entropy.",
+  "right": "Entropy counts the ways particles and energy can be arranged. Justify a sign with dispersal of matter (more volume, more gas particles, a freer phase) or of energy (a higher temperature), not with how messy something looks."
+ },
+ "check": [
+  "chem-entropy-intro-1",
+  "chem-entropy-intro-2",
+  "chem-entropy-intro-3",
+  "chem-entropy-intro-4",
+  "chem-entropy-intro-10",
+  "chem-entropy-intro-12",
+  "chem-entropy-intro-15"
+ ],
+ "summary": "Entropy measures how many ways a system’s particles and energy can be arranged. It rises when matter spreads out (more gas, more volume, solid to liquid to gas, dissolving) and when energy spreads out (higher temperature). Predict the sign of ΔS from moles of gas and phases, and justify it with dispersal, not \"disorder\".",
+ "connections": [
+  {
+   "href": "../notes/kinetic-molecular-theory.html",
+   "label": "Back: particle motion and the spread of speeds (3.5)"
+  },
+  {
+   "href": "../notes/phases-of-matter.html",
+   "label": "Back: solids, liquids and gases (3.3)"
+  },
+  {
+   "href": "../notes/entropy-change.html",
+   "label": "Next: putting numbers on entropy (9.2)"
+  }
+ ]
+}

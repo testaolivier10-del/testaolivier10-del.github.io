@@ -1,0 +1,8 @@
+{
+ "electrolysis": {
+  "def": "Using an electric current from an outside source to drive a redox reaction that is not thermodynamically favored, as in electroplating or producing a metal from its molten salt."
+ },
+ "faraday-law": {
+  "def": "The amount of substance produced at an electrode is proportional to the charge passed: q = It, moles of electrons = q/F, and the half-reaction converts moles of electrons to moles of product."
+ }
+}

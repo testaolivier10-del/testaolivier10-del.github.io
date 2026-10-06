@@ -1,0 +1,497 @@
+{
+ "stimuli": {
+  "electrochemical-cells-s1": {
+   "kind": "model",
+   "title": "An iron-silver cell",
+   "text": "<p>A student builds the cell below. Beaker 1 holds an iron strip in 1.0 M Fe(NO₃)₂; Beaker 2 holds a silver strip in 1.0 M AgNO₃. The strips are joined by a wire through a voltmeter, and the beakers by a salt bridge of KNO₃(aq). The voltmeter shows a steady reading. After an hour the silver strip has gained mass and the iron strip has lost mass.</p>",
+   "html": "<svg viewBox=\"0 0 760 330\" width=\"760\" height=\"330\" role=\"img\" aria-label=\"Two beakers joined by a wire through a voltmeter and by a salt bridge of potassium nitrate. Beaker 1 on the left has an iron strip in 1.0 molar iron(II) nitrate. Beaker 2 on the right has a silver strip in 1.0 molar silver nitrate. The electrodes are not labeled as anode or cathode.\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect width=\"760\" height=\"330\" fill=\"#fff\"/><path d=\"M175,140 L175,38 L356,38 M404,38 L585,38 L585,140\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"3\"/><circle cx=\"380\" cy=\"38\" r=\"24\" fill=\"#F4F6F6\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><text x=\"380\" y=\"44\" font-size=\"16\" text-anchor=\"middle\" font-weight=\"700\">V</text><path d=\"M80,130 L80,290 Q80,302 92,302 L268,302 Q280,302 280,290 L280,130\" fill=\"none\" stroke=\"#5D6B69\" stroke-width=\"3\"/><path d=\"M480,130 L480,290 Q480,302 492,302 L668,302 Q680,302 680,290 L680,130\" fill=\"none\" stroke=\"#5D6B69\" stroke-width=\"3\"/><rect x=\"82\" y=\"170\" width=\"196\" height=\"130\" fill=\"#DCE8F2\"/><rect x=\"482\" y=\"170\" width=\"196\" height=\"130\" fill=\"#DCE8F2\"/><rect x=\"160\" y=\"140\" width=\"30\" height=\"130\" fill=\"#9AA3A8\" stroke=\"#4A5257\" stroke-width=\"2\"/><rect x=\"570\" y=\"140\" width=\"30\" height=\"130\" fill=\"#D9DDE0\" stroke=\"#4A5257\" stroke-width=\"2\"/><path d=\"M240,250 L240,110 Q240,90 260,90 L500,90 Q520,90 520,110 L520,250\" fill=\"none\" stroke=\"#7A8A88\" stroke-width=\"26\" stroke-linejoin=\"round\"/><path d=\"M240,250 L240,110 Q240,90 260,90 L500,90 Q520,90 520,110 L520,250\" fill=\"none\" stroke=\"#F1F3E6\" stroke-width=\"20\" stroke-linejoin=\"round\"/><text x=\"380\" y=\"125\" font-size=\"13\" text-anchor=\"middle\">salt bridge, KNO₃(aq)</text><text x=\"175\" y=\"322\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Fe(s) in 1.0 M Fe(NO₃)₂</text><text x=\"585\" y=\"322\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Ag(s) in 1.0 M AgNO₃</text><text x=\"130\" y=\"160\" font-size=\"13\" text-anchor=\"middle\">Beaker 1</text><text x=\"630\" y=\"160\" font-size=\"13\" text-anchor=\"middle\">Beaker 2</text></svg>"
+  },
+  "electrochemical-cells-s2": {
+   "kind": "table",
+   "title": "Metal strips in solutions",
+   "text": "<p>A student places a clean metal strip in each of six solutions and records whether a coating forms on the strip after 10 minutes.</p>",
+   "table": {
+    "caption": "Observations for metal strips in 1.0 M solutions",
+    "cols": [
+     "Trial",
+     "Metal",
+     "Solution",
+     "Observation"
+    ],
+    "rows": [
+     [
+      "1",
+      "Zn",
+      "Cu(NO₃)₂",
+      "red-brown coating of Cu forms"
+     ],
+     [
+      "2",
+      "Cu",
+      "Zn(NO₃)₂",
+      "no change"
+     ],
+     [
+      "3",
+      "Cu",
+      "AgNO₃",
+      "gray coating of Ag forms"
+     ],
+     [
+      "4",
+      "Ag",
+      "Cu(NO₃)₂",
+      "no change"
+     ],
+     [
+      "5",
+      "Zn",
+      "AgNO₃",
+      "gray coating of Ag forms"
+     ],
+     [
+      "6",
+      "Ag",
+      "Zn(NO₃)₂",
+      "no change"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-electrochemical-cells-1",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "electrochemical-cells-s1",
+   "q": "Which strip is the anode, and which process happens there?",
+   "options": [
+    "The silver strip, where Ag⁺(aq) is reduced to Ag(s)",
+    "The iron strip, where Fe(s) is oxidized to Fe²⁺(aq)",
+    "The iron strip, where Fe²⁺(aq) is reduced to Fe(s)",
+    "The silver strip, where Ag(s) is oxidized to Ag⁺(aq)"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Oxidation happens at the anode. The iron strip loses mass because Fe(s) → Fe²⁺(aq) + 2e⁻ there.",
+    "options": [
+     "This is the right process for the silver strip, but reduction happens at the cathode, not the anode.",
+     "Right: the iron loses mass as Fe atoms lose electrons and enter the solution as ions. Oxidation happens at the anode.",
+     "If Fe²⁺ were reduced, the iron strip would gain mass. It loses mass, so iron is oxidized.",
+     "If silver were oxidized, the silver strip would lose mass. It gains mass."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrochemical-cells-2",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "electrochemical-cells-s1",
+   "q": "Which is the balanced net ionic equation for the reaction in the cell?",
+   "options": [
+    "Fe(s) + Ag⁺(aq) → Fe²⁺(aq) + Ag(s)",
+    "Fe²⁺(aq) + 2 Ag(s) → Fe(s) + 2 Ag⁺(aq)",
+    "Fe(s) + 2 AgNO₃(aq) → Fe(NO₃)₂(aq) + 2 Ag(s)",
+    "Fe(s) + 2 Ag⁺(aq) → Fe²⁺(aq) + 2 Ag(s)"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Oxidation: Fe → Fe²⁺ + 2e⁻. Reduction: Ag⁺ + e⁻ → Ag, doubled to use both electrons. Adding gives Fe + 2 Ag⁺ → Fe²⁺ + 2 Ag.",
+    "options": [
+     "Atoms balance but charge does not: +1 on the left, +2 on the right. Each Fe gives two electrons, enough for two Ag⁺.",
+     "This is the reverse reaction: it would plate iron and dissolve silver, the opposite of what was observed.",
+     "This is a molecular equation; nitrate is a spectator ion and does not appear in the net ionic equation.",
+     "Right: two Ag⁺ are reduced for each Fe oxidized, so electrons (2) and charge (+2 on each side) balance."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrochemical-cells-3",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "electrochemical-cells-s1",
+   "q": "In which direction do electrons flow through the wire?",
+   "options": [
+    "From the iron strip to the silver strip",
+    "From the silver strip to the iron strip",
+    "Through the salt bridge from Beaker 1 to Beaker 2",
+    "They stay put; ions alone move in a cell"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Electrons are released at the anode (iron) and flow through the external wire to the cathode (silver).",
+    "options": [
+     "Right: electrons leave the anode, where iron is oxidized, and travel to the cathode, where Ag⁺ is reduced.",
+     "Electrons flow from where they are released (oxidation, iron) to where they are used (reduction, silver).",
+     "Electrons travel through the wire; the salt bridge carries ions, not electrons.",
+     "Electrons flowing through the wire are the current that the voltmeter detects."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrochemical-cells-4",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "electrochemical-cells-s1",
+   "q": "As the cell runs, which way do K⁺ and NO₃⁻ ions move out of the salt bridge?",
+   "options": [
+    "K⁺ into Beaker 1 and NO₃⁻ into Beaker 2",
+    "Both ions into Beaker 2, where silver is plating out",
+    "K⁺ into Beaker 2 and NO₃⁻ into Beaker 1",
+    "Neither: the salt bridge lets electrons, not ions, cross between beakers"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Without ion flow, Beaker 1 would build up positive charge (Fe²⁺ made) and Beaker 2 negative charge (Ag⁺ used), and the current would stop.",
+    "options": [
+     "Beaker 1 is gaining positive Fe²⁺ ions, so adding more cations would build up positive charge there.",
+     "Each beaker needs one kind of ion to balance its charge: cations to Beaker 2, anions to Beaker 1.",
+     "Right: Beaker 2 loses Ag⁺ (a positive charge) and needs cations; Beaker 1 gains Fe²⁺ and needs anions to stay neutral.",
+     "A salt bridge carries ions, not electrons, to keep both beakers electrically neutral."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrochemical-cells-5",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "electrochemical-cells-s1",
+   "q": "The salt bridge is lifted out while the wire stays connected. What happens to the voltmeter reading, and why?",
+   "options": [
+    "It stays the same, because electrons can still flow through the wire.",
+    "It increases, because iron and silver ions can no longer mix.",
+    "It drops to zero: charge builds up in each beaker and the reaction stops.",
+    "It reverses sign, because the electrons flow back the other way."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The salt bridge completes the circuit by letting ions move. Remove it and the beakers become charged, so electron flow stops.",
+    "options": [
+     "Electrons flow only if ions can move to balance the charge. The circuit is now open.",
+     "The two solutions never mix in a working cell; removing the bridge stops the current.",
+     "Right: without ion flow the circuit is broken and electrons stop flowing.",
+     "There is no closed circuit for any current, in either direction."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrochemical-cells-6",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "electrochemical-cells-s2",
+   "q": "In Trial 1, which species is oxidized?",
+   "options": [
+    "Zn(s)",
+    "Cu²⁺(aq)",
+    "NO₃⁻(aq)",
+    "Cu(s)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s): zinc goes from 0 to +2 (oxidized).",
+    "options": [
+     "Right: Zn atoms lose electrons and become Zn²⁺(aq), while Cu²⁺ gains them and plates out.",
+     "Cu²⁺ gains electrons to become the copper coating: it is reduced.",
+     "Nitrate is a spectator ion here; its oxidation number does not change.",
+     "Copper metal is a product in Trial 1, not something that reacts."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrochemical-cells-7",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "electrochemical-cells-s2",
+   "q": "A galvanic cell is built from a Cu strip in Cu(NO₃)₂(aq) and an Ag strip in AgNO₃(aq). Based on the trials, which electrode is the anode?",
+   "options": [
+    "Silver, because Trial 4 shows silver does not react with Cu²⁺",
+    "Silver, because silver is the more valuable metal",
+    "Copper, because copper has the larger mass of the two metals",
+    "Copper, because in Trial 3 Cu(s) gives electrons to Ag⁺"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The cell runs the favored reaction from Trial 3. Copper is oxidized, so the copper electrode is the anode.",
+    "options": [
+     "Trial 4 shows that silver is not oxidized by Cu²⁺; silver ions are reduced instead, at the cathode.",
+     "The cost of a metal has nothing to do with which electrode is the anode.",
+     "Atomic mass does not decide which metal is oxidized; the observed reaction does.",
+     "Right: the favored reaction is Cu + 2 Ag⁺ → Cu²⁺ + 2 Ag, so copper is oxidized at the anode."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrochemical-cells-8",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "electrochemical-cells-s2",
+   "q": "Which ranks the metals from the one most easily oxidized to the one least easily oxidized?",
+   "options": [
+    "Ag > Cu > Zn",
+    "Zn > Cu > Ag",
+    "Cu > Zn > Ag",
+    "Zn > Ag > Cu"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A metal that coats with another metal from solution is being oxidized by those ions. Zn reacts with both ions, Cu with one, Ag with none.",
+    "options": [
+     "This is reversed: silver never reacts, so it is the least easily oxidized.",
+     "Right: Zn gives electrons to Cu²⁺ and Ag⁺; Cu gives electrons to Ag⁺ but not to Zn²⁺; Ag gives electrons to neither.",
+     "Copper does not react with Zn²⁺ (Trial 2), so zinc is more easily oxidized than copper.",
+     "Silver does not react with Cu²⁺ (Trial 4), so copper is more easily oxidized than silver."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrochemical-cells-9",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "electrochemical-cells-s2",
+   "q": "If a strip of Ag is placed in Zn(NO₃)₂(aq), as in Trial 6, and connected to a power supply that forces zinc metal to plate onto it, what kind of cell is this?",
+   "options": [
+    "An electrolytic cell: outside energy drives an unfavored reaction",
+    "A galvanic cell, because a metal plates onto an electrode",
+    "A galvanic cell, because the power supply produces a current",
+    "Neither, because a reaction that is not favored will not happen"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An electrolytic cell uses an external energy source to drive a thermodynamically unfavored redox reaction.",
+    "options": [
+     "Right: Trial 6 shows Zn²⁺ is not reduced by Ag on its own, so the power supply must drive it.",
+     "Plating happens in both kinds of cell. What decides the type is whether the reaction is favored or driven.",
+     "In a galvanic cell the reaction itself produces the current; here the current is supplied from outside.",
+     "Outside energy can drive an unfavored reaction (topic 9.7); that is what an electrolytic cell does."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrochemical-cells-10",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In any electrochemical cell, galvanic or electrolytic, where does reduction take place?",
+   "options": [
+    "At the anode",
+    "In the salt bridge",
+    "At the cathode",
+    "In the wire"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Reduction always happens at the cathode and oxidation at the anode.",
+    "options": [
+     "The anode is where oxidation takes place.",
+     "The salt bridge carries ions between half-cells; no redox happens there.",
+     "Right: reduction at the cathode, oxidation at the anode, in both kinds of cell.",
+     "The wire carries electrons from the anode to the cathode; it is not where reduction happens."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrochemical-cells-11",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement correctly compares a galvanic cell with an electrolytic cell?",
+   "options": [
+    "In a galvanic cell the anode is where reduction happens; in an electrolytic cell it is where oxidation happens.",
+    "Galvanic: a favored reaction makes a current. Electrolytic: outside energy drives an unfavored one.",
+    "A galvanic cell needs a power supply; an electrolytic cell produces its own current.",
+    "Electrons flow from the cathode to the anode in a galvanic cell and the other way in an electrolytic cell."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Same definitions of anode and cathode in both; the difference is whether the reaction is favored (galvanic) or driven by outside energy (electrolytic).",
+    "options": [
+     "Oxidation happens at the anode in both kinds of cell.",
+     "Right: galvanic cells release free energy as electrical work; electrolytic cells use electrical work.",
+     "This is backwards: the electrolytic cell is the one that needs a power supply.",
+     "In both, electrons flow through the wire from the anode to the cathode."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrochemical-cells-12",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A galvanic cell is made from a Ni strip in Ni²⁺(aq) and a Sn strip in Sn²⁺(aq). As it runs, the nickel strip loses mass. What happens to [Sn²⁺] in the tin half-cell?",
+   "options": [
+    "It increases, because tin is oxidized at the anode",
+    "It stays the same, because the salt bridge replaces each Sn²⁺ ion",
+    "It increases, because Ni²⁺ ions cross the salt bridge and become Sn²⁺",
+    "It decreases, because Sn²⁺ ions are reduced to Sn(s) at the cathode"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Ni → Ni²⁺ + 2e⁻ at the anode; Sn²⁺ + 2e⁻ → Sn at the cathode, so [Sn²⁺] falls.",
+    "options": [
+     "Nickel is the anode (it loses mass), so tin is the cathode.",
+     "The salt bridge supplies spectator ions to balance charge; it does not supply Sn²⁺.",
+     "Ions do not change identity crossing the bridge, and Ni²⁺ cannot become Sn²⁺.",
+     "Right: nickel is oxidized, so tin ions take the electrons and plate out."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrochemical-cells-13",
+   "type": "multi",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which are needed for a galvanic cell to produce a steady current? Select ALL that apply.",
+   "options": [
+    "A favored redox reaction split into two half-reactions in separate compartments",
+    "An external wire connecting the two electrodes",
+    "A salt bridge or porous barrier that lets ions move",
+    "A power supply that pushes electrons into the anode",
+    "The same metal ion in both compartments",
+    "A reaction with ΔG° > 0"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "A galvanic cell separates a favored redox reaction into two half-cells joined by a wire (electrons) and a salt bridge (ions).",
+    "options": [
+     "The oxidation and the reduction must be separated so the electrons go through the wire.",
+     "The wire carries electrons from the anode to the cathode.",
+     "Ion flow keeps each compartment neutral and completes the circuit.",
+     "A galvanic cell needs no power supply; the favored reaction drives the current.",
+     "The two half-cells usually contain different metals and ions.",
+     "A galvanic cell runs a favored reaction, ΔG° < 0."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrochemical-cells-14",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "If the iron strip and the AgNO₃ solution of a cell were simply put in the same beaker, silver would plate onto the iron, but no useful current would flow. Why?",
+   "options": [
+    "The reaction is no longer favored when the reactants are in the same beaker.",
+    "Silver ions are unable to reach the iron strip without a salt bridge.",
+    "Iron is reduced instead of oxidized when it touches AgNO₃ directly.",
+    "Electrons pass straight from Fe atoms to Ag⁺ ions, not through a wire."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A cell separates oxidation from reduction so the electrons must flow through the wire. In one beaker they transfer directly and their energy becomes heat.",
+    "options": [
+     "ΔG° does not depend on the container; the reaction is still favored and still happens.",
+     "In one beaker the Ag⁺ ions reach the iron directly; that is exactly the problem.",
+     "Iron is still oxidized; the difference is only where the electrons go.",
+     "Right: separating the half-reactions forces the electrons through the external circuit, where they can do work."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrochemical-cells-15",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "In an electrolytic cell used to coat a steel spoon with silver, which electrode is the spoon, and why?",
+   "options": [
+    "The anode, because the spoon is oxidized so that it holds the silver",
+    "The cathode, because Ag⁺ ions must be reduced onto the spoon",
+    "The cathode, because electrons leave the spoon through the wire",
+    "The anode, because silver is plated wherever oxidation happens"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Metal from solution coats an electrode by reduction, so the object to be coated is the cathode.",
+    "options": [
+     "Oxidizing the spoon would dissolve steel, not coat it with silver.",
+     "Right: the coating forms by reduction, Ag⁺ + e⁻ → Ag, which happens at the cathode.",
+     "Electrons arrive at the cathode; they leave from the anode.",
+     "Plating a metal from its ions is a reduction, which happens at the cathode."
+    ]
+   }
+  },
+  {
+   "id": "chem-electrochemical-cells-16",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A galvanic cell runs the reaction Zn(s) + Pb²⁺(aq) → Zn²⁺(aq) + Pb(s). Which half-reaction occurs at the cathode?",
+   "options": [
+    "Zn(s) → Zn²⁺(aq) + 2e⁻",
+    "Pb(s) → Pb²⁺(aq) + 2e⁻",
+    "Pb²⁺(aq) + 2e⁻ → Pb(s)",
+    "Zn²⁺(aq) + 2e⁻ → Zn(s)"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "At the cathode the species gaining electrons is reduced: Pb²⁺ + 2e⁻ → Pb.",
+    "options": [
+     "This is the oxidation, at the anode.",
+     "This would be oxidation of lead, the reverse of what the reaction shows.",
+     "Right: lead ions gain electrons (reduction) at the cathode.",
+     "Zinc ions are a product here, not a species being reduced."
+    ]
+   }
+  }
+ ]
+}

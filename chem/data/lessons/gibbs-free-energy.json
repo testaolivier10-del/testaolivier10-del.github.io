@@ -1,0 +1,99 @@
+{
+ "topic": "gibbs-free-energy",
+ "hook": "A cold pack in a first-aid kit gets icy the moment you squeeze it, yet nothing pushes the salt inside to dissolve. Ice melts on a warm day even though melting absorbs heat. Neither enthalpy nor entropy alone predicts these. Gibbs free energy combines the two into one number that does.",
+ "prereq": [
+  {
+   "q": "What is the sign of ΔH for an exothermic reaction?",
+   "options": [
+    "Negative",
+    "Positive",
+    "Zero",
+    "It depends on the temperature"
+   ],
+   "correct": 0,
+   "why": "Exothermic means the system releases heat to the surroundings, so ΔH < 0.",
+   "review": "endo-exothermic"
+  },
+  {
+   "q": "What is the unit of a standard entropy change, ΔS°?",
+   "options": [
+    "J/(mol·K)",
+    "kJ/mol",
+    "K/mol",
+    "J/mol"
+   ],
+   "correct": 0,
+   "why": "Entropies are tabulated in joules per mole per kelvin.",
+   "review": "entropy-change"
+  },
+  {
+   "q": "Convert 25 °C to kelvin.",
+   "options": [
+    "298 K",
+    "248 K",
+    "25 K",
+    "−248 K"
+   ],
+   "correct": 0,
+   "why": "K = °C + 273.15, so 25 °C is 298 K.",
+   "review": "math-units"
+  }
+ ],
+ "figure": {
+  "figure": "gibbs-signs",
+  "caption": "The signs of ΔH° and ΔS° decide whether a process is favored at all temperatures, at low T, at high T or at none."
+ },
+ "chain": [
+  {
+   "cause": "Releasing heat (ΔH < 0) spreads energy into the surroundings and raises their entropy",
+   "effect": "a negative ΔH° makes a process more likely to be favored"
+  },
+  {
+   "cause": "Dispersing the system’s own matter or energy (ΔS > 0) raises the system’s entropy",
+   "effect": "a positive ΔS° also makes a process more likely to be favored"
+  },
+  {
+   "cause": "Gibbs free energy weighs both, ΔG° = ΔH° − TΔS°",
+   "effect": "a process is thermodynamically favored when ΔG° < 0"
+  },
+  {
+   "cause": "The entropy term is multiplied by T",
+   "effect": "temperature decides which term wins when the two disagree, and T = ΔH°/ΔS° is where they balance"
+  }
+ ],
+ "ideas": [
+  "<b>ΔG° = ΔH° − TΔS°</b>. A process is <b>thermodynamically favored</b> when ΔG° &lt; 0.",
+  "Make units match: ΔS° from J/(mol·K) to kJ/(mol·K) (÷ 1000), and T in kelvin.",
+  "ΔH° &lt; 0, ΔS° &gt; 0: favored at all T. ΔH° &gt; 0, ΔS° &lt; 0: not favored at any T. Same signs: temperature decides.",
+  "When the signs agree, the crossover is T = ΔH°/ΔS°, where ΔG° = 0.",
+  "ΔG°<sub>rxn</sub> = Σ nΔG°f(products) − Σ nΔG°f(reactants); ΔG°f of an element in its standard state is 0."
+ ],
+ "misconception": {
+  "wrong": "An endothermic process is never favored, or an exothermic one always is.",
+  "right": "Favorability depends on ΔG° = ΔH° − TΔS°. An endothermic process is favored when TΔS° > ΔH° (ice melting above 0 °C); an exothermic one with ΔS° < 0 stops being favored at high temperature."
+ },
+ "check": [
+  "chem-gibbs-free-energy-1",
+  "chem-gibbs-free-energy-2",
+  "chem-gibbs-free-energy-3",
+  "chem-gibbs-free-energy-4",
+  "chem-gibbs-free-energy-11",
+  "chem-gibbs-free-energy-13",
+  "chem-gibbs-free-energy-16"
+ ],
+ "summary": "Gibbs free energy, ΔG° = ΔH° − TΔS°, decides thermodynamic favorability: a process is favored when ΔG° < 0. Match the units (kJ and J) and use kelvin. The signs of ΔH° and ΔS° tell you whether a process is favored at all temperatures, none, or only above or below T = ΔH°/ΔS°.",
+ "connections": [
+  {
+   "href": "../notes/entropy-change.html",
+   "label": "Back: calculating ΔS° (9.2)"
+  },
+  {
+   "href": "../notes/enthalpy-of-formation.html",
+   "label": "Back: calculating ΔH° (6.8)"
+  },
+  {
+   "href": "../notes/kinetic-control.html",
+   "label": "Next: favored but too slow to see (9.4)"
+  }
+ ]
+}

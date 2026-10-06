@@ -1,0 +1,12 @@
+{
+ "entropy-values": {
+  "file": "figures/entropy-values.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Bar chart of standard molar entropy at 298 K in J/(mol·K): diamond 2.4, iron 27.3, liquid water 69.9, water vapor 188.8, carbon dioxide gas 213.8, propane gas 270.3. Solids are lowest, the liquid in the middle, gases highest."
+ }
+}

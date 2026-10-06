@@ -1,0 +1,99 @@
+{
+ "topic": "electrolysis-faraday",
+ "hook": "Every aluminum can starts as aluminum oxide, and the only practical way to get the metal out is to push enormous electric currents through the molten ore. Smelters run at hundreds of thousands of amperes, and their output in kilograms per hour is set by a single, simple chain of conversions: Faraday’s law.",
+ "prereq": [
+  {
+   "q": "In an electrolytic cell, what does the power supply do?",
+   "options": [
+    "Drives a redox reaction that is not favored",
+    "Lowers the activation energy",
+    "Makes E°cell positive",
+    "Keeps the solutions from mixing"
+   ],
+   "correct": 0,
+   "why": "An electrolytic cell uses outside energy to drive an unfavored reaction.",
+   "review": "electrochemical-cells"
+  },
+  {
+   "q": "What is the Faraday constant?",
+   "options": [
+    "96,485 C per mole of electrons",
+    "6.022 × 10²³ electrons",
+    "8.314 J/(mol·K)",
+    "1.602 × 10⁻¹⁹ C per mole"
+   ],
+   "correct": 0,
+   "why": "F is the charge on one mole of electrons.",
+   "review": "cell-potential"
+  },
+  {
+   "q": "How many moles of Cu form from 0.10 mol of electrons in Cu²⁺ + 2e⁻ → Cu?",
+   "options": [
+    "0.050 mol",
+    "0.10 mol",
+    "0.20 mol",
+    "0.025 mol"
+   ],
+   "correct": 0,
+   "why": "Two electrons per Cu: 0.10 ÷ 2 = 0.050 mol.",
+   "review": "stoichiometry"
+  }
+ ],
+ "figure": {
+  "figure": "electrolysis-plating",
+  "caption": "Copper plating: Cu²⁺ is reduced onto the key (cathode) and Cu dissolves from the anode. Below, the Faraday chain from current and time to grams."
+ },
+ "chain": [
+  {
+   "cause": "A current I flows for a time t",
+   "effect": "a charge q = It, in coulombs, passes through the cell"
+  },
+  {
+   "cause": "Each mole of electrons carries 96,485 C",
+   "effect": "moles of electrons = q ÷ F"
+  },
+  {
+   "cause": "The half-reaction fixes how many electrons each ion needs",
+   "effect": "moles of product = mol e⁻ ÷ electrons per ion"
+  },
+  {
+   "cause": "Each mole of product has a known mass",
+   "effect": "mass = moles × molar mass"
+  }
+ ],
+ "ideas": [
+  "<b>Electrolysis</b> uses an electric current to drive an unfavored redox reaction, such as plating a metal or splitting a molten salt.",
+  "Charge: <b>q = It</b> (coulombs = amperes × seconds). Convert minutes and hours to seconds.",
+  "Moles of electrons: <b>q ÷ F</b>, with F = 96,485 C/mol e⁻.",
+  "Use the half-reaction: Ag⁺ needs 1 e⁻, Cu²⁺ needs 2, Al³⁺ needs 3. Then moles × molar mass.",
+  "The same charge through cells in series gives the same mol e⁻ but different masses of metal."
+ ],
+ "misconception": {
+  "wrong": "One mole of electrons deposits one mole of any metal.",
+  "right": "The half-reaction decides: one mole of electrons deposits 1 mol Ag (Ag⁺ + e⁻), ½ mol Cu (Cu²⁺ + 2e⁻) or ⅓ mol Al (Al³⁺ + 3e⁻). Always divide moles of electrons by the electrons per ion."
+ },
+ "check": [
+  "chem-electrolysis-faraday-1",
+  "chem-electrolysis-faraday-2",
+  "chem-electrolysis-faraday-3",
+  "chem-electrolysis-faraday-4",
+  "chem-electrolysis-faraday-6",
+  "chem-electrolysis-faraday-7",
+  "chem-electrolysis-faraday-14"
+ ],
+ "summary": "In electrolysis a current drives an unfavored redox reaction. The amount of product follows a chain: charge q = It; moles of electrons = q/F; moles of product from the half-reaction’s electrons per ion; mass from the molar mass. The same chain run backward gives the current or time needed.",
+ "connections": [
+  {
+   "href": "../notes/stoichiometry.html",
+   "label": "Back: mole ratios (4.5)"
+  },
+  {
+   "href": "../notes/electrochemical-cells.html",
+   "label": "Back: electrolytic cells (9.8)"
+  },
+  {
+   "href": "../notes/cell-potential.html",
+   "label": "Back: the Faraday constant (9.9)"
+  }
+ ]
+}

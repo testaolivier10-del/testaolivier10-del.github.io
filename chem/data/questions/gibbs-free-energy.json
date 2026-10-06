@@ -1,0 +1,597 @@
+{
+ "stimuli": {
+  "gibbs-free-energy-s1": {
+   "kind": "table",
+   "title": "Four processes",
+   "text": "<p>A student collects standard enthalpy and entropy changes for four processes. Assume ΔH° and ΔS° do not change with temperature.</p>",
+   "table": {
+    "caption": "ΔH° and ΔS° for four processes",
+    "cols": [
+     "Process",
+     "ΔH° (kJ/mol)",
+     "ΔS° (J/(mol·K))"
+    ],
+    "rows": [
+     [
+      "P",
+      "−85.0",
+      "+42.0"
+     ],
+     [
+      "Q",
+      "−118.6",
+      "−154.0"
+     ],
+     [
+      "R",
+      "+58.4",
+      "+152"
+     ],
+     [
+      "S",
+      "+40.0",
+      "−25.0"
+     ]
+    ]
+   }
+  },
+  "gibbs-free-energy-s2": {
+   "kind": "graph",
+   "title": "ΔG° of a decomposition at different temperatures",
+   "text": "<p>A chemist determines ΔG° for a decomposition reaction, X(s) → Y(s) + Z(g), at several temperatures. Over this range ΔH° and ΔS° are constant.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Temperature",
+     "unit": "K",
+     "min": 0,
+     "max": 1000,
+     "step": 200
+    },
+    "y": {
+     "label": "ΔG°",
+     "unit": "kJ/mol",
+     "min": -80,
+     "max": 100,
+     "step": 20
+    },
+    "series": [
+     {
+      "name": "ΔG°",
+      "points": [
+       [
+        0,
+        90
+       ],
+       [
+        200,
+        60
+       ],
+       [
+        400,
+        30
+       ],
+       [
+        600,
+        0
+       ],
+       [
+        800,
+        -30
+       ],
+       [
+        1000,
+        -60
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-gibbs-free-energy-1",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "gibbs-free-energy-s1",
+   "q": "Which process is thermodynamically favored at every temperature?",
+   "options": [
+    "Q",
+    "P",
+    "R",
+    "S"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With ΔH° < 0 and ΔS° > 0, ΔG° = ΔH° − TΔS° is negative whatever the temperature.",
+    "options": [
+     "ΔS° < 0, so −TΔS° is positive and grows with T. Q is favored only at low temperature.",
+     "Right: ΔH° < 0 and ΔS° > 0, so both ΔH° and −TΔS° are negative and ΔG° < 0 at every temperature.",
+     "ΔH° > 0, so R is favored only when T is high enough for −TΔS° to outweigh ΔH°.",
+     "ΔH° > 0 and ΔS° < 0 make ΔG° positive at every temperature: S is not favored at any temperature."
+    ]
+   }
+  },
+  {
+   "id": "chem-gibbs-free-energy-2",
+   "type": "multi",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "gibbs-free-energy-s1",
+   "q": "Which processes are thermodynamically favored at 298 K? Select ALL that apply.",
+   "options": [
+    "P",
+    "Q",
+    "R",
+    "S"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Convert ΔS° to kJ/(mol·K) and compute ΔG° = ΔH° − TΔS° at 298 K for each process; only P and Q give negative values.",
+    "options": [
+     "ΔG° = −85.0 − 298(0.0420) = -97.5 kJ/mol < 0.",
+     "ΔG° = −118.6 − 298(−0.1540) = -72.7 kJ/mol < 0.",
+     "ΔG° = 58.4 − 298(0.152) = 13.1 kJ/mol > 0: 298 K is below the temperature where R becomes favored.",
+     "ΔG° = 40.0 − 298(−0.0250) = 47.5 kJ/mol > 0."
+    ]
+   }
+  },
+  {
+   "id": "chem-gibbs-free-energy-3",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "gibbs-free-energy-s1",
+   "q": "Above what temperature does process R become thermodynamically favored?",
+   "numeric": {
+    "answer": 384,
+    "tol": 1,
+    "unit": "K",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.384,
+      "rel": 0.01,
+      "unit": "K",
+      "why": "Value: you divided kJ by J. Convert ΔH° to 58,400 J/mol (or ΔS° to 0.152 kJ/(mol·K)) first."
+     },
+     {
+      "value": 111,
+      "tol": 1,
+      "unit": "°C",
+      "why": "Units: T = ΔH°/ΔS° gives kelvin. 384 K is 111 °C; the question asks for the temperature in K."
+     }
+    ]
+   },
+   "why": {
+    "correct": "R becomes favored where ΔG° = 0: T = ΔH°/ΔS° = (58,400 J/mol)/(152 J/(mol·K)) = 384.2 K, which is 384 K to three significant figures. Above this, −TΔS° outweighs ΔH°."
+   }
+  },
+  {
+   "id": "chem-gibbs-free-energy-4",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "gibbs-free-energy-s1",
+   "q": "Calculate ΔG° for process R at 500. K.",
+   "numeric": {
+    "answer": -17.6,
+    "tol": 0.2,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1",
+     "kJ·mol⁻¹",
+     "kJ/mol rxn"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": -75941.6,
+      "rel": 0.01,
+      "unit": "kJ/mol",
+      "why": "Value: you used ΔS° in J/(mol·K) with ΔH° in kJ/mol. Convert 152 J/(mol·K) to 0.152 kJ/(mol·K)."
+     },
+     {
+      "value": 23.9,
+      "tol": 0.2,
+      "why": "Value: you used 227 °C instead of 500. K. The temperature is already in kelvin."
+     },
+     {
+      "value": 134.4,
+      "tol": 0.2,
+      "why": "Sign: ΔG° = ΔH° − TΔS°; subtract TΔS°."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔG° = ΔH° − TΔS° = 58.4 kJ/mol − (500. K)(0.152 kJ/(mol·K)) = 58.4 − 76.0 = -17.6 kJ/mol. Negative, so R is favored at 500. K, as expected above 384 K."
+   }
+  },
+  {
+   "id": "chem-gibbs-free-energy-5",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "gibbs-free-energy-s1",
+   "q": "Process Q is carried out at higher and higher temperatures. What happens to whether it is favored, and why?",
+   "options": [
+    "It becomes more favored, because a higher temperature speeds up the reaction.",
+    "It stays favored as T rises, because it is an exothermic process.",
+    "It stops being favored above about 0.770 K, where ΔH° and ΔS° are equal.",
+    "It stops being favored above about 770 K, where the positive −TΔS° outweighs ΔH°."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "For ΔH° < 0 and ΔS° < 0, the process is favored only at low temperature, below T = ΔH°/ΔS°.",
+    "options": [
+     "Speed is not favorability. With ΔS° < 0, raising T makes ΔG° less negative and eventually positive.",
+     "Being exothermic is not enough when ΔS° < 0: at high T the −TΔS° term wins.",
+     "That divides kJ by J without converting. In consistent units the crossover is about 770 K.",
+     "Right: T = (−118.6)/(−0.1540) = 770 K. Below it ΔH° wins; above it the unfavorable entropy term wins."
+    ]
+   }
+  },
+  {
+   "id": "chem-gibbs-free-energy-6",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "gibbs-free-energy-s2",
+   "q": "Use the graph to find ΔH° for the reaction.",
+   "numeric": {
+    "answer": 90,
+    "tol": 1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1",
+     "kJ·mol⁻¹",
+     "kJ/mol rxn"
+    ],
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 600,
+      "tol": 2,
+      "unit": "kJ/mol",
+      "why": "Value: 600 is where the line crosses zero, a temperature in K. ΔH° is the value of ΔG° where T = 0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔG° = ΔH° − TΔS° is a straight line in T. At T = 0 the TΔS° term vanishes, so the y-intercept is ΔH° = +90 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-gibbs-free-energy-7",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "5.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "gibbs-free-energy-s2",
+   "q": "Use the slope of the graph to find ΔS° for the reaction, in J/(mol·K).",
+   "numeric": {
+    "answer": 150,
+    "tol": 2,
+    "unit": "J/(mol·K)",
+    "units": [
+     "J/mol·K",
+     "J/(mol K)",
+     "J mol^-1 K^-1",
+     "J/mol/K"
+    ],
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": -150,
+      "tol": 2,
+      "why": "Sign: the slope is −ΔS°. A line that falls as T rises means ΔS° is positive."
+     },
+     {
+      "value": 0.15,
+      "tol": 0.003,
+      "unit": "J/(mol·K)",
+      "why": "Value: 0.150 is the slope in kJ/(mol·K). The question asks for J/(mol·K): multiply by 1000."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Slope = (−60 − 90) kJ/mol ÷ (1000 − 0) K = −0.150 kJ/(mol·K). The slope is −ΔS°, so ΔS° = +0.150 kJ/(mol·K) = +150 J/(mol·K)."
+   }
+  },
+  {
+   "id": "chem-gibbs-free-energy-8",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "gibbs-free-energy-s2",
+   "q": "In which temperature range is the decomposition thermodynamically favored?",
+   "options": [
+    "Above 600 K, where the line is below zero",
+    "Below 600 K, where the line is above zero",
+    "At exactly 600 K, where ΔG° is zero",
+    "Across the whole range shown, since the reaction absorbs heat"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Favored means ΔG° < 0. The line crosses zero at 600 K and is negative above it.",
+    "options": [
+     "Right: ΔG° < 0 above 600 K.",
+     "A positive ΔG° means the process is not favored.",
+     "At 600 K, ΔG° = 0: neither direction is favored under standard conditions. The reaction is favored above that.",
+     "Absorbing heat (ΔH° > 0) works against favorability; the reaction needs a high T for the entropy term to win."
+    ]
+   }
+  },
+  {
+   "id": "chem-gibbs-free-energy-9",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "gibbs-free-energy-s2",
+   "q": "Which particle-level reasoning explains why ΔS° for this reaction is positive?",
+   "options": [
+    "The products are more disordered because there are two of them instead of one.",
+    "Heat is absorbed, so the solid products have more energy than the reactant.",
+    "A gas forms from a solid, so Z particles spread through the container: more arrangements.",
+    "Breaking X apart releases energy, and released energy spreads out."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Making 1 mol of gas from a solid disperses matter enormously, so ΔS° > 0.",
+    "options": [
+     "\"Disorder\" is not particle-level reasoning, and the key fact is that one product is a gas.",
+     "The positive ΔH° is a separate quantity. The entropy rises because a gas forms.",
+     "Right: gas formation disperses matter, increasing the number of microstates.",
+     "The reaction absorbs energy (ΔH° = +90 kJ/mol). The entropy gain comes from the gas."
+    ]
+   }
+  },
+  {
+   "id": "chem-gibbs-free-energy-10",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "For N₂(g) + 3 H₂(g) → 2 NH₃(g), ΔH° = −92.2 kJ/mol and ΔS° = −198.1 J/(mol·K). Calculate ΔG° at 298 K.",
+   "numeric": {
+    "answer": -33.2,
+    "tol": 0.2,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1",
+     "kJ·mol⁻¹",
+     "kJ/mol rxn"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 58941.6,
+      "rel": 0.01,
+      "unit": "kJ/mol",
+      "why": "Value: you combined kJ with J. Convert ΔS° to −0.1981 kJ/(mol·K) before multiplying by T."
+     },
+     {
+      "value": -87.2,
+      "tol": 0.2,
+      "why": "Value: you used 25 °C. T must be in kelvin: 298 K."
+     },
+     {
+      "value": -151.2,
+      "tol": 0.2,
+      "why": "Sign: ΔS° is negative, so −TΔS° = −(298)(−0.1981) = +59.0 kJ/mol."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔG° = ΔH° − TΔS° = −92.2 kJ/mol − (298 K)(−0.1981 kJ/(mol·K)) = −92.2 + 59.03 = -33.2 kJ/mol. Rounded to tenths, matching ΔH°."
+   }
+  },
+  {
+   "id": "chem-gibbs-free-energy-11",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "For CaCO₃(s) → CaO(s) + CO₂(g), ΔH° = +178.3 kJ/mol and ΔS° = +160.2 J/(mol·K). Calculate the lowest temperature at which the reaction is thermodynamically favored.",
+   "numeric": {
+    "answer": 1113,
+    "tol": 1,
+    "unit": "K",
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 840,
+      "tol": 2,
+      "unit": "°C",
+      "why": "Units: T = ΔH°/ΔS° comes out in kelvin. Report it in K."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Set ΔG° = 0: T = ΔH°/ΔS° = (178,300 J/mol)/(160.2 J/(mol·K)) = 1113 K. Above this temperature, ΔG° < 0. (At 298 K, ΔG° = 130.6 kJ/mol, strongly unfavored, which is why limestone does not fall apart on its own.)"
+   }
+  },
+  {
+   "id": "chem-gibbs-free-energy-12",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Calculate ΔG° for C₂H₅OH(l) + 3 O₂(g) → 2 CO₂(g) + 3 H₂O(l). Standard free energies of formation, ΔG°f, in kJ/mol: C₂H₅OH(l) −174.8, CO₂(g) −394.4, H₂O(l) −237.1.",
+   "numeric": {
+    "answer": -1325.3,
+    "tol": 0.2,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1",
+     "kJ·mol⁻¹",
+     "kJ/mol rxn"
+    ],
+    "askUnit": true,
+    "sigfigs": 5,
+    "mistakes": [
+     {
+      "value": -456.7,
+      "tol": 0.2,
+      "why": "Value: you left out the coefficients 2 on CO₂ and 3 on H₂O."
+     },
+     {
+      "value": -1674.9,
+      "tol": 0.2,
+      "why": "Sign: subtract the reactant term: − (−174.8) = +174.8."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔG° = Σ nΔG°f(products) − Σ nΔG°f(reactants) = [2(−394.4) + 3(−237.1)] − [−174.8 + 3(0)] = −1500.1 + 174.8 = -1325.3 kJ/mol. ΔG°f of O₂(g), an element in its standard state, is zero."
+   }
+  },
+  {
+   "id": "chem-gibbs-free-energy-13",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For ice melting, ΔH° = +6.01 kJ/mol and ΔS° = +22.0 J/(mol·K). Which statement about a block of ice at −10 °C (263 K) is supported by these data?",
+   "options": [
+    "It melts: ΔS° is positive, and any process with a positive ΔS° is favored.",
+    "It melts: ΔG° = 6.01 − (−10)(0.0220) = +6.23 kJ/mol, which is close to zero.",
+    "It does not melt: ΔG° = 6.01 − 263(0.0220) = +0.22 kJ/mol, so melting is not favored.",
+    "It does not melt: melting absorbs heat, and heat-absorbing processes are not favored."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "At 263 K the entropy term is too small to overcome ΔH°, so melting is not favored. Above 273 K it is.",
+    "options": [
+     "A positive ΔS° helps but must outweigh ΔH°. At 263 K it does not.",
+     "Temperature must be in kelvin, and a positive ΔG° is not favored anyway.",
+     "Right: at 263 K, TΔS° (5.79 kJ/mol) is smaller than ΔH°, so ΔG° > 0.",
+     "The conclusion is right for the wrong reason. Ice does melt above 273 K even though melting absorbs heat, because TΔS° then outweighs ΔH°."
+    ]
+   }
+  },
+  {
+   "id": "chem-gibbs-free-energy-14",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Solid ammonium nitrate dissolves readily in water at 25 °C even though the solution gets colder. Which is the best explanation?",
+   "options": [
+    "ΔH° > 0, but the ions spreading out make ΔS° large, so TΔS° > ΔH° and ΔG° < 0.",
+    "ΔH° < 0, because the solution gets colder as heat is released from it, so ΔG° < 0.",
+    "A process that happens on its own is exothermic, so dissolving releases heat here as well.",
+    "ΔG° > 0, but the salt dissolves anyway because water is a strong solvent."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dissolving absorbs heat (ΔH° > 0) but disperses the ions (ΔS° > 0). At 298 K, TΔS° is larger than ΔH°, so ΔG° = ΔH° − TΔS° < 0.",
+    "options": [
+     "Right: an entropy-driven process. The dispersal of the ions makes TΔS° larger than ΔH°.",
+     "A colder solution means heat was absorbed from the water: ΔH° > 0, not negative.",
+     "Endothermic processes can be favored when TΔS° > ΔH°, as this one is.",
+     "A process that occurs readily under standard conditions has ΔG° < 0; the solvent cannot override that."
+    ]
+   }
+  },
+  {
+   "id": "chem-gibbs-free-energy-15",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes: \"This reaction is endothermic, so it is favorable at all temperatures because it takes in energy.\" Which correction is accurate?",
+   "options": [
+    "An endothermic reaction is not favored at any temperature, because it needs a supply of heat.",
+    "The student is right as long as ΔS° is negative, since both terms then point the same way.",
+    "Favorability depends on ΔH° alone, so the student needs to check its size.",
+    "An endothermic reaction is favored when TΔS° > ΔH°: ΔS° > 0 and a high enough T."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "ΔG° = ΔH° − TΔS°. With ΔH° > 0, only a positive ΔS° at a high enough T makes ΔG° negative.",
+    "options": [
+     "Endothermic processes such as ice melting at 25 °C are favored when TΔS° is large enough.",
+     "With ΔH° > 0 and ΔS° < 0, both terms make ΔG° positive: not favored at any temperature.",
+     "Favorability depends on ΔG°, which combines ΔH° and TΔS°.",
+     "Right: for ΔH° > 0, ΔG° < 0 requires the entropy term to win."
+    ]
+   }
+  },
+  {
+   "id": "chem-gibbs-free-energy-16",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "A reaction has ΔH° = −50.0 kJ/mol and ΔS° = −100. J/(mol·K). A student calculates ΔG° at 300. K as −50.0 − (300.)(−100.) = +29,950 kJ/mol. What went wrong?",
+   "options": [
+    "The temperature should be in °C, so T = 27 and ΔG° = −47.3 kJ/mol instead.",
+    "ΔS° was not converted to kJ/(mol·K); with −0.100 kJ/(mol·K), ΔG° = −20.0 kJ/mol.",
+    "The sign of ΔS° should have been ignored, giving ΔG° = −80.0 kJ/mol.",
+    "ΔH° should have been multiplied by T, giving ΔG° = −15,000 kJ/mol."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "ΔH° is in kJ/mol and ΔS° in J/(mol·K). Convert one so the units match: ΔG° = −50.0 − (300.)(−0.100) = −20.0 kJ/mol.",
+    "options": [
+     "Thermodynamic equations need kelvin, so 300. K was right.",
+     "Right: −50.0 − (300.)(−0.100) = −50.0 + 30.0 = −20.0 kJ/mol.",
+     "The sign of ΔS° matters; with ΔS° < 0, −TΔS° is positive.",
+     "In ΔG° = ΔH° − TΔS°, only ΔS° is multiplied by T."
+    ]
+   }
+  }
+ ]
+}
