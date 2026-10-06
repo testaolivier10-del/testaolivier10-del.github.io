@@ -314,11 +314,11 @@ or a waitlist sign-up for it, needs the migration first. Until step 3 is done, A
 fully open with "Premium coming soon" (`onSale: false` in `assets/premium.js`, decision 21);
 step 5 turns the sale on.
 
-- [ ] **1. Apply the migration before selling.** Supabase → project → SQL Editor → New query → paste
+- [x] **1. Apply the migration before selling.** Supabase → project → SQL Editor → New query → paste
       `scripts/sql/migrations/2026-10b-apbio.sql` → Run (idempotent). Check:
       `select pg_get_constraintdef(oid) from pg_constraint where conname = 'premium_passes_course_check';`
       lists `apbio`, and `select count(*) from pg_proc where proname = 'premium_add_pass';` is 1.
-- [ ] **2. Create the Polar product.** Polar → Products → New product:
+- [x] **2. Create the Polar product.** Polar → Products → New product:
       - Name: **AP® Biology Premium (through June 30, 2027)**
       - Pricing: **one-time purchase, fixed price, $25.00 USD**
       - Description: "Premium for LevlPrep's AP® Biology course until June 30, 2027, whenever you
@@ -329,7 +329,7 @@ step 5 turns the sale on.
         not endorse, this site."
       - If the founding-member discount (Polar → Discounts) is limited to products, add this one.
       Copy the product id.
-- [ ] **3. Add it to `POLAR_PRODUCTS`.** Cloudflare → Workers → levlprep-ask → Settings →
+- [x] **3. Add it to `POLAR_PRODUCTS`.** Cloudflare → Workers → levlprep-ask → Settings →
       Variables and Secrets → `POLAR_PRODUCTS` (plaintext JSON, pass id → Polar product id). Add one
       entry to the existing object, keeping the five there:
       `"bio-2027": "<the product id from step 2>"`, e.g.
@@ -340,7 +340,7 @@ step 5 turns the sale on.
       refund it from the Account page.
 - [x] **5. Units 1-3 and the skills track published in Beta** (2026-10-03), each after its
       independent accuracy check (`docs/apbio-reviews/`).
-- [ ] **6. Put the pass on sale.** After steps 1-4: in `assets/premium.js`, delete `onSale: false`
+- [x] **6. Put the pass on sale.** After steps 1-4: in `assets/premium.js`, delete `onSale: false`
       from `COURSES.apbio`, bump `CACHE` in `sw.js`, commit to main. Free users then meet the gates
       (Units 3+, every simulator but osmosis, FRQ rubrics outside Units 1-2, more than one exam,
       more than 15 questions a day).

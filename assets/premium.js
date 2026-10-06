@@ -133,9 +133,6 @@
     apbio: {
       name: 'AP® Biology',
       dailyFree: 15,
-      // Until the owner creates the Polar product (docs/apbio-spec.md, launch
-      // checklist), the course is fully open and Premium reads "Coming soon".
-      onSale: false,
       // Units 1 and 2 are fully open. Every skills lesson is free too, per
       // topic rather than per chapter (topic.free in bio-curriculum.js, from
       // isFreeTopic in scripts/lib/apbio-build.mjs), so skills practice still
