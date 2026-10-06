@@ -35,54 +35,12 @@
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
 <script src="../assets/site-search.js" defer></script>
+<script src="../assets/course/hub.js" defer></script>
 <script src="assets/curriculum.js" defer></script>
 <script src="assets/tools-registry.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
-<style>
-
-  #searchBox{
-    width:100%;padding:14px 16px;border:2px solid var(--line);border-radius:var(--radius);
-    font-family:var(--font-ui);font-weight:700;font-size:16px;background:var(--white);color:var(--ink);margin-bottom:6px;
-  }
-  #searchBox:focus{outline:2px solid var(--accent);outline-offset:1px;}
-  .search-status{font:700 12.5px var(--font-mono);color:var(--muted);margin-bottom:14px;}
-
-  /* One row of filters, because this index mixes five very different things
-     and "show me only the lessons" is the first thing anyone wants after a
-     query returns forty practice questions. */
-  .search-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
-  .search-filters button{
-    border:2px solid var(--line);background:var(--white);color:var(--muted);
-    font-family:var(--font-ui);font-weight:800;font-size:12px;letter-spacing:.03em;
-    padding:7px 13px;border-radius:999px;cursor:pointer;
-  }
-  .search-filters button:hover{color:var(--ink);}
-  .search-filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--white);}
-  .search-filters button[disabled]{opacity:.4;cursor:default;}
-
-  .result{
-    display:block;background:var(--white);border:2px solid var(--line);border-radius:16px;box-shadow:var(--lift-sm);
-    padding:16px 18px;margin-bottom:12px;text-decoration:none;color:inherit;
-    transition:transform .08s ease, box-shadow .08s ease, border-color .12s ease;
-  }
-  .result:hover{transform:translateY(-2px);box-shadow:var(--lift-lg);}
-  .result-page{
-    font-family:var(--font-ui);font-weight:800;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;
-    color:var(--accent);margin-bottom:4px;
-  }
-  .result-heading{font-weight:900;font-size:15px;margin-bottom:4px;}
-  .result-snippet{font-size:13.5px;font-weight:600;color:var(--muted);line-height:1.6;}
-  .result-snippet mark{background:#FDE9A0;color:inherit;border-radius:2px;}
-  :root[data-theme="dark"] .result-snippet mark{background:#6b5a1f;}
-  .search-all{margin:-6px 0 14px;font:800 13px var(--font-ui);}
-  .empty-note{font-size:14px;font-weight:700;color:var(--muted);line-height:1.6;}
-
-  @media (prefers-reduced-motion: reduce){
-    .result{transition:none;}
-    .result:hover{transform:none;}
-  }
-
-</style>
+<link rel="stylesheet" href="../assets/course/base.css">
+<link rel="stylesheet" href="../assets/course/hub.css">
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
 {
@@ -122,22 +80,16 @@
 <div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Search</span></nav></div>
 <!-- crumb:end -->
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="learn.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
-<div class="wrap">
-  <div class="page-head">
-  <div class="eyebrow">Tools</div>
-  <h1>Search</h1>
-  <p class="lede">The textbook, every lesson and mechanism, the eight tools, and every practice question &mdash; in one place.</p>
-  </div>
-
-  <label class="sr-only" for="searchBox">Search the course</label>
-  <input type="search" id="searchBox" placeholder="Search the course… (e.g. &quot;anti-periplanar&quot;, &quot;why is SN1 racemic&quot;)" autocomplete="off" aria-describedby="searchStatus">
-  <div class="search-status" id="searchStatus" role="status" aria-live="polite">Building search index&hellip;</div>
-  <p class="search-all"><a id="searchAll" href="../search.html">Search all courses &rarr;</a></p>
-  <div class="search-filters" id="searchFilters" role="group" aria-label="Filter results by kind"></div>
-  <div id="results"></div>
+<div class="xshell">
+  <header class="page-head">
+    <div class="eyebrow">Organic Chemistry</div>
+    <h1>Search</h1>
+    <p>The textbook, every lesson and mechanism, the tools and every practice question, in one place.</p>
+  </header>
+  <!-- The shared search page (assets/course/hub.js, LevlHub.search). -->
+  <div id="app"><noscript><p>Search runs in your browser and needs JavaScript. The <a href="learn.html">textbook</a> works without it.</p></noscript></div>
 
   <footer>
-    <p>Runs in your browser. Nothing is sent anywhere.</p>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
     </footer>
 </div>
@@ -170,19 +122,7 @@ window.OCHEM_BASE = '';
    own: offline, a reader should get whatever is in the cache rather than an
    empty page. The status line says what actually made it in. */
 document.addEventListener('DOMContentLoaded', function(){
-  var S = window.LevlSearch;
   var CU = window.OchemCurriculum;
-  var statusEl = document.getElementById('searchStatus');
-  var resultsEl = document.getElementById('results');
-  var filtersEl = document.getElementById('searchFilters');
-  var searchBox = document.getElementById('searchBox');
-
-  var INDEX = [];
-  var activeKind = 'all';
-
-  // Ordered as the filter row renders them, most specific first. 'Textbook'
-  // leads because prose is what a question-shaped query usually wants.
-  var KINDS = ['Textbook', 'Lessons', 'Mechanisms', 'Tools', 'Practice questions'];
 
   function topics(){
     if(!CU || !CU.MODULES) return [];
@@ -210,6 +150,7 @@ document.addEventListener('DOMContentLoaded', function(){
         page: isMech ? 'Mechanisms' : 'Lessons',
         file: t.href,
         heading: t.title,
+        meta: e.module.title,
         text: t.title + ' — ' + e.module.title + '. ' +
               (isMech ? 'Click-through mechanism walkthrough: identify the nucleophile and electrophile, push the arrows, predict the product.'
                       : 'Interactive lesson: explain, visualize, interact, guided and independent practice, then a challenge.'),
@@ -221,6 +162,7 @@ document.addEventListener('DOMContentLoaded', function(){
           page: 'Mechanisms',
           file: t.mechanism,
           heading: t.title + ' — mechanism',
+          meta: e.module.title,
           text: 'The ' + t.title.toLowerCase() + ' mechanism, step by step: ' + e.module.title + '.',
           weight: 3,
         });
@@ -234,6 +176,7 @@ document.addEventListener('DOMContentLoaded', function(){
     return window.OchemTools.ALL.map(function(t){
       return {
         page: 'Tools',
+        meta: 'Interactive tool',
         file: 'tools/' + t.slug + '.html',
         heading: t.name,
         text: t.tagline + ' ' + t.blurb + ' Teaches: ' + t.teaches,
@@ -267,6 +210,8 @@ document.addEventListener('DOMContentLoaded', function(){
         heading: title === heading ? title : title + ' — ' + heading,
         text: text,
         moduleTitle: moduleTitle,
+        meta: moduleTitle,
+        fragment: 1,
       });
     });
     return out;
@@ -329,6 +274,7 @@ document.addEventListener('DOMContentLoaded', function(){
               heading: title,
               text: (q.q || '') + ' ' + (whys[i] || ''),
               isQuestion: true,
+              meta: 'Practice question, opens the section it covers',
               // Below prose and structure: a question that mentions a term is
               // weaker evidence than a section that explains it.
               weight: 0.8,
@@ -340,106 +286,21 @@ document.addEventListener('DOMContentLoaded', function(){
       .catch(function(){ return []; });
   }
 
-  function countsByPage(){
-    var c = {};
-    INDEX.forEach(function(x){ c[x.page] = (c[x.page] || 0) + 1; });
-    return c;
-  }
-
-  function renderFilters(){
-    var counts = countsByPage();
-    var buttons = [['all', 'Everything', INDEX.length]];
-    KINDS.forEach(function(k){ if(counts[k]) buttons.push([k, k, counts[k]]); });
-    filtersEl.innerHTML = buttons.map(function(b){
-      return '<button type="button" data-kind="' + S.escapeHtml(b[0]) + '" aria-pressed="' +
-        (b[0] === activeKind ? 'true' : 'false') + '">' + S.escapeHtml(b[1]) +
-        ' <span>' + b[2].toLocaleString() + '</span></button>';
-    }).join('');
-    filtersEl.querySelectorAll('button').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        activeKind = btn.dataset.kind;
-        renderFilters();
-        runSearch(searchBox.value.trim());
-      });
-    });
-  }
-
-  function buildIndex(){
-    if(!CU || !CU.MODULES){
-      statusEl.textContent = 'The course outline didn’t load, so there is nothing to search yet. Reload the page.';
-      return;
-    }
-    // Structure first and synchronously, so a query typed immediately finds
-    // the lessons while the megabyte of prose is still arriving.
-    INDEX = structureChunks().concat(toolChunks());
-    renderFilters();
-    if(searchBox.value.trim()) runSearch(searchBox.value.trim());
-
-    Promise.all([fetchNotes(), fetchQuestions()]).then(function(parts){
-      INDEX = INDEX.concat(parts[0]).concat(parts[1]);
-      var counts = countsByPage();
-      var bits = [];
-      if(counts['Lessons'] || counts['Mechanisms']) {
-        bits.push(((counts['Lessons'] || 0) + (counts['Mechanisms'] || 0)) + ' lessons and mechanisms');
-      }
-      if(counts['Textbook']) bits.push(counts['Textbook'].toLocaleString() + ' textbook passages');
-      if(counts['Practice questions']) bits.push(counts['Practice questions'].toLocaleString() + ' practice questions');
-      if(counts['Tools']) bits.push(counts['Tools'] + ' tools');
-
-      // Name what is MISSING rather than only what is present: offline, the
-      // difference between "the bank isn't here" and "your search found
-      // nothing" is the whole difference between a working page and a broken
-      // one, and the reader cannot tell them apart from an empty result list.
-      var missing = [];
-      if(!counts['Textbook']) missing.push('the textbook');
-      if(!counts['Practice questions']) missing.push('the practice bank');
-      statusEl.textContent = 'Searching ' + bits.join(', ') + '. Type to search.' +
-        (missing.length ? ' ' + missing.join(' and ') + ' couldn’t be loaded — reconnect once and they’ll be included next time.' : '');
-      renderFilters();
-      if(searchBox.value.trim()) runSearch(searchBox.value.trim());
-    });
-  }
-
-  // The site-wide search at /search.html, carrying the query across.
-  var allLink = document.getElementById('searchAll');
-  function runSearch(q){
-    allLink.href = '../search.html' + (q ? '?q=' + encodeURIComponent(q) : '');
-    if(!q){ resultsEl.innerHTML = ''; return; }
-    var pool = activeKind === 'all' ? INDEX : INDEX.filter(function(c){ return c.page === activeKind; });
-    var hits = S.rank(pool, q, { limit: 40, maxPerSource: 2 });
-    var terms = S.tokenize(q);
-
-    if(!hits.length){
-      resultsEl.innerHTML = '<p class="empty-note">No results for &ldquo;' + S.escapeHtml(q) + '&rdquo;' +
-        (activeKind === 'all' ? '.' : ' in ' + S.escapeHtml(activeKind) + ' — try Everything.') + '</p>';
-      return;
-    }
-
-    resultsEl.innerHTML = hits.map(function(c){
-      // A textbook hit already carries the section hash; adding a text fragment
-      // to it scrolls to the paragraph inside that section. A lesson, mechanism
-      // or tool is a whole page about the thing, so there is nothing to scroll
-      // to and a fragment would only risk landing mid-page.
-      var href = c.page === 'Textbook' ? S.textFragment(c.file, terms) : c.file;
-      var label = c.isQuestion ? 'Practice question — opens the section it covers' : c.page;
-      return '<a class="result" href="' + S.escapeHtml(href) + '">' +
-        '<div class="result-page">' + S.escapeHtml(label) + '</div>' +
-        '<div class="result-heading">' + S.escapeHtml(c.heading) + '</div>' +
-        '<div class="result-snippet">' + c.snippet + '</div>' +
-      '</a>';
-    }).join('');
-  }
-
-  var debounceTimer;
-  searchBox.addEventListener('input', function(){
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(function(){ runSearch(searchBox.value.trim()); }, 120);
+  // The page itself (box, kind pills, grouped results, keyboard) is the
+  // shared search page, the same in every course (assets/course/hub.js).
+  var sr = window.LevlHub.search({
+    mount: document.getElementById('app'), prefix: 'ochem-sr',
+    placeholder: 'Search the course… (e.g. “anti-periplanar”, “why is SN1 racemic”)',
+    kinds: ['Lessons', 'Mechanisms', 'Textbook', 'Tools', 'Practice questions'],
+    engine: window.LevlSearch, allHref: '../search.html', maxPerSource: 2,
   });
-
-  var params = new URLSearchParams(location.search);
-  if(params.get('q')) searchBox.value = params.get('q');
-
-  buildIndex();
+  if(!CU || !CU.MODULES){
+    sr.fail('The course outline didn’t load, so there is nothing to search yet. Reload the page.');
+  } else {
+    sr.add(structureChunks().concat(toolChunks()));
+    sr.add(fetchNotes(), 'the textbook');
+    sr.add(fetchQuestions(), 'the practice bank');
+  }
 });
 </script>
 <script src="assets/ochem-nav.js" defer></script>

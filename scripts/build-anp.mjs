@@ -11,6 +11,7 @@
      node scripts/build-anp.mjs --check   exit 1 if anything on disk is stale
 
    Nothing it writes is edited by hand; docs/anp-phase1-architecture.md. */
+import { Hub } from './lib/hub.mjs';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { STUB_CSP } from './lib/site-config.mjs';
@@ -793,20 +794,20 @@ function homePage() {
   </header>
 
   <section class="xsection" aria-label="What to do now">
-    <div class="anp-now-row">
-      <div class="anp-now-card" id="anpStart">
+    <div class="anp-now-row cx-now-row">
+      <div class="anp-now-card cx-now-card" id="anpStart">
         <div class="k">Start here</div>
         ${first ? `<h2>${esc(first.title)}</h2>
         <p>Foundations &middot; ${esc(firstCh.title)}. Foundations is recommended, not required: nothing is locked.</p>
         <a class="btn-press" href="lessons/${first.id}.html">Start the first lesson</a>` : `<h2>Pick any chapter</h2><p>Nothing is locked.</p>`}
       </div>
-      <div class="anp-now-card" id="anpReview">
+      <div class="anp-now-card cx-now-card" id="anpReview">
         <div class="k">Review queue</div>
         <h2>Missed questions come back</h2>
         <p>Anything you miss returns when you are about to forget it, not on a fixed date.</p>
         <a class="link-quiet" href="review.html">Open review &rarr;</a>
       </div>
-      <div class="anp-now-card" id="anpGoal">
+      <div class="anp-now-card cx-now-card" id="anpGoal">
         <div class="k">Today&rsquo;s goal</div>
         <h2>A little every day</h2>
         <p>Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject.</p>
@@ -889,7 +890,7 @@ ${tail({ depth, section: 'home', extra: ['anp-home.js'] })}
 </body>
 </html>
 `;
-  return head({ title, desc, path: '', depth, ogType: 'website', jsonld, meta: '<link rel="stylesheet" href="assets/anp-home.css">\n' }) + body;
+  return head({ title, desc, path: '', depth, ogType: 'website', jsonld, meta: '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<link rel="stylesheet" href="assets/anp-home.css">\n' }) + body;
 }
 
 /* ---------------------------------------------------- apps and tools */
@@ -899,6 +900,8 @@ const PAGES = JSON.parse(readFileSync(join(C.data, 'pages.json'), 'utf8'));
 /* The shell of an app or tool page. The page's behavior is its script, which
    mounts into #app; the static text here is what a reader without JavaScript
    (or a search engine) sees. */
+// Hub pages (docs/course-shell.md, W-D): the shared opener and components.
+const HUB_PAGES = new Set(['dashboard', 'search', 'tools']);
 function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts, isTool, hero, mount }) {
   const url = `${SITE}${BASE}${path}`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -917,7 +920,9 @@ function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts
 <div class="course-nav"></div>
 <main id="main" class="xshell anp-app">
   ${crumbNav(crumbItems, depth)}
-  ${hero
+  ${HUB_PAGES.has(entry.slug) && !isTool
+    ? `<header class="page-head"><div class="eyebrow">${esc(eyebrow)} <span class="cx-beta">Beta</span></div><h1>${esc(h1)}</h1><p>${hero ? hero.ledeHtml : esc(lede)}</p></header>`
+    : hero
     ? `<header class="hero anp-hero ${hero.cls}"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(hero.h1)}</h1><p class="lede">${hero.ledeHtml}</p></header>`
     : `<header class="hero anp-hero"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(h1)}</h1><p class="lede">${esc(lede)}</p></header>`}${
   // Where site-chrome.js puts a cross-course suggestion (assets/cross-course.js).
@@ -926,7 +931,7 @@ function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts
   ${teas ? `<p class="anp-disclaimer">${esc(TEAS_DISCLAIMER)}</p>` : ''}
 </main>
 ${footer(depth)}
-<link rel="stylesheet" href="${depth}assets/${entry.css}">
+${HUB_PAGES.has(entry.slug) && !isTool ? `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/hub.css">\n<script src="${depth}../assets/course/hub.js" defer></script>\n` : ''}<link rel="stylesheet" href="${depth}assets/${entry.css}">
 <script src="${depth}../assets/report-question.js" defer></script>
 ${(entry.siteScripts || []).map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), entry.script], premium: true })}
 </body>
@@ -1014,42 +1019,44 @@ function toolsHubMount() {
   const lab = tools.find(t => t.slug === 'lab-practical');
   const labData = hubToolCounts('lab-practical');
   const figN = Object.keys(labData.figures).length;
-  const feat = `<section class="anp-hub-feat" aria-labelledby="anp-hub-feat-h" data-tool="lab-practical" data-n="${labData.n}" data-ch="${chCounts(labData.by)}" data-unit="station,stations" data-chq="1"${lab.premium ? ' data-premium="1"' : ''}>
-    <div class="anp-hub-feat-text">
-      <p class="anp-hub-feat-kick"><span class="anp-hub-dot" aria-hidden="true"></span>Featured tool &middot; ${esc(HUB_SKILL['lab-practical'])}</p>
-      <h2 id="anp-hub-feat-h">${esc(lab.name)}</h2>
-      <p class="anp-hub-feat-tag">${esc(lab.tag || '')}</p>
-      <p class="anp-hub-feat-blurb">${esc(lab.blurb)} Every structure tells you what it does and which lesson teaches it.</p>
+  // The featured tool (shared .cx-feat block): the lab practical, with its
+  // modes and a masked figure as its art.
+  const feat = `<section class="cx-feat" aria-labelledby="cx-feat-h" data-tool="lab-practical" data-n="${labData.n}" data-ch="${chCounts(labData.by)}" data-unit="station,stations" data-chq="1"${lab.premium ? ' data-premium="1"' : ''}>
+    <div class="cx-feat-text">
+      <p class="cx-feat-kick"><span class="anp-hub-dot" aria-hidden="true"></span>Featured tool &middot; ${esc(HUB_SKILL['lab-practical'])}</p>
+      <h2 id="cx-feat-h">${esc(lab.name)}</h2>
+      <p class="cx-feat-desc">${esc(lab.tag || '')}</p>
+      <p class="cx-feat-blurb">${esc(lab.blurb)} Every structure tells you what it does and which lesson teaches it.</p>
       <ul class="anp-hub-modes" aria-label="Modes">${LAB_MODES.map(m => `<li><a class="anp-hub-mode${m.key === 'quiz' ? ' is-on' : ''}" href="tools/lab-practical.html#${m.key}" data-hash="${m.key}"><b><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${m.icon}</svg>${esc(m.label)}</b><span>${esc(m.blurb)}</span></a></li>`).join('')}</ul>
-      <div class="anp-hub-feat-row">
-        <a class="anp-hub-cta" href="tools/lab-practical.html">Start the lab practical <span aria-hidden="true">&rarr;</span></a>
-        <span class="anp-hub-feat-stats"><b>${figN}</b> figures &middot; <b>${labData.sets.length}</b> sets &middot; <span class="anp-hub-count"><b>${labData.n}</b> stations</span></span>
+      <div class="cx-feat-row">
+        <a class="cx-feat-cta" href="tools/lab-practical.html">Start the lab practical <span aria-hidden="true">&rarr;</span></a>
+        <span class="cx-feat-stats"><b>${figN}</b> figures &middot; <b>${labData.sets.length}</b> sets &middot; <span class="cx-tool-count"><b>${labData.n}</b> stations</span></span>
       </div>
-      <p class="anp-hub-status anp-hub-feat-status" aria-live="polite"></p>
+      <p class="cx-tool-status" aria-live="polite"></p>
     </div>
-    ${hubFigure(labData)}
+    <div class="cx-feat-art">${hubFigure(labData)}</div>
   </section>`;
   const others = tools.filter(t => t.slug !== 'lab-practical');
   const cards = others.map(t => {
     const c = hubToolCounts(t.slug);
     const [pl, sg] = HUB_ITEMS[t.slug];
-    return `<li><a class="anp-hub-card" href="tools/${t.slug}.html" data-tool="${t.slug}" data-n="${c.n}" data-ch="${chCounts(c.by)}" data-unit="${sg},${pl}"${HUB_CHAPTER_AWARE.has(t.slug) ? ' data-chq="1"' : ''}${t.premium ? ' data-premium="1"' : ''}>
-      <span class="anp-hub-top"><span class="anp-hub-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false">${HUB_ICON[t.slug] || '<circle cx="12" cy="12" r="7"/>'}</svg></span><span class="anp-hub-skill">${esc(HUB_SKILL[t.slug] || '')}</span></span>
-      <span class="anp-hub-name">${esc(t.name)}</span>
-      <span class="anp-hub-tag">${esc(t.tag || '')}</span>
-      <span class="anp-hub-blurb">${esc(t.blurb)}</span>
-      <span class="anp-hub-status"></span>
-      <span class="anp-hub-foot"><span class="anp-hub-count"><b>${c.n}</b> ${c.n === 1 ? sg : pl}</span><span class="anp-hub-go">Open <span aria-hidden="true">&rarr;</span></span></span>
-    </a></li>`;
+    return Hub.toolCard({
+      href: `tools/${t.slug}.html`, name: t.name, desc: t.tag || t.blurb, icon: HUB_ICON[t.slug], stroke: true,
+      attrs: ` data-tool="${t.slug}" data-n="${c.n}" data-ch="${chCounts(c.by)}" data-unit="${sg},${pl}"${HUB_CHAPTER_AWARE.has(t.slug) ? ' data-chq="1"' : ''}${t.premium ? ' data-premium="1"' : ''}`,
+      foot: `<span class="cx-tool-count"><b>${c.n}</b> ${c.n === 1 ? sg : pl}</span> &middot; ${esc(HUB_SKILL[t.slug] || '')}`,
+      status: '',
+    });
   }).join('\n    ');
   return `
+  <div class="cx-tools">
   <div class="anp-hub-filter" hidden></div>
   ${feat}
-  <div class="anp-hub-more-h"><h2>${numWord(others.length)} more ways to practice</h2><p>Physiology, numbers and words.</p></div>
-  <ul class="anp-hub" aria-label="More tools">
+  <div class="cx-tools-h"><h2>${numWord(others.length)} more ways to practice</h2><p>Physiology, numbers and words.</p></div>
+  <ul class="cx-tool-grid" aria-label="More tools">
     ${cards}
   </ul>
-  <p class="anp-hub-note">Every tool records what you answer: missed items go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="dashboard.html">dashboard</a>. Want cards instead? Try the <a href="flashcards.html">flashcards</a>.</p>
+  <p class="cx-tools-note">Every tool records what you answer: missed items go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="dashboard.html">dashboard</a>. Want cards instead? Try the <a href="flashcards.html">flashcards</a>.</p>
+  </div>
   `;
 }
 
@@ -1057,8 +1064,8 @@ function toolsHubMount() {
 // hub, the static page body. Other app pages keep the default hero.
 const APP_EXTRAS = {
   tools: () => ({
-    hero: { cls: 'anp-hero-hub', h1: `${numWord(PAGES.tools.length)} tools. Start at the lab bench.`,
-      ledeHtml: 'Name structures on real figures, then work the physiology: predict, build, trace, read and calculate. Every tool explains its answers, and what you miss goes into your <a href="review.html">review queue</a>.' },
+    hero: { cls: 'anp-hero-hub', h1: 'Tools',
+      ledeHtml: `${numWord(PAGES.tools.length)} tools. Start at the lab bench: name structures on real figures, then work the physiology. Every tool explains its answers, and what you miss goes into your <a href="review.html">review queue</a>.` },
     mount: toolsHubMount(),
   }),
   practice: () => ({

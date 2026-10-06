@@ -111,7 +111,14 @@ const SHELL_BUDGETS = [
      fourth course in every generated course list, premium.js's fixed-date
      pass and per-course on-sale switch, and the URL-safe course key.
      Measured 281.4 KB with the engagement pass. */
-  ['site', 282],
+  /* 282 -> 293.5 for the shared hub layer (docs/course-shell.md, W-D):
+     assets/course/hub.js and hub.css, the one dashboard, search page, tools
+     hub and home row every course now draws from (about 10.9 KB gzipped).
+     Only those pages load them, but this ruler counts all of /assets. Each
+     course dropped its own copy in return (A&P tools-hub.css, the ochem and
+     NREMT inline dashboard and search styles), which sits in the course and
+     page budgets. Measured 292.7 KB. */
+  ['site', 293.5],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -258,7 +265,11 @@ const BUDGETS = [
   /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
      preloads its one text face (Nunito, latin) so it is ready at first paint
      with font-display: optional, which removed the font-swap layout shift. */
-  ['nremt/index.html', 9.2],
+  /* 9.2 -> 10.4 for the Start here / Review queue / Today's goal row every
+     course home has (docs/course-shell.md, W-D): its first-visit markup and
+     the script that fills it from the practice-engine records. Measured
+     10.3 KB. */
+  ['nremt/index.html', 10.4],
   /* 10 -> 11. The home page lists every chapter's topics, so it grows by a
      line of markup each time the course gains a section; the generated list
      crossed 10 KB gzipped when the reactivity chapter gained its energy-
@@ -400,7 +411,10 @@ const BUDGETS = [
      with Units 1-4 (441 terms, about 23 bytes gzipped per term); the whole
      course should land near 25 KB. */
   ['bio/glossary.html', 30],
-  ['bio/tools.html', 3],
+  /* 3 -> 5 (W-D, docs/course-shell.md): the hub was a placeholder shell; it
+     now lists all 19 published tools as cards in the page itself, so it
+     reads without JavaScript. Measured 4.4 KB. */
+  ['bio/tools.html', 5],
 
   // The privacy policy: the page that has to load well for somebody who has
   // not decided yet whether to trust the site.
