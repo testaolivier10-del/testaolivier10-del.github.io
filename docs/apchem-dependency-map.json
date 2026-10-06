@@ -1,0 +1,5893 @@
+{
+ "about": "AP Chemistry concept dependency map (docs/apchem-spec.md, docs/apchem-phase0.md): the 91 CED topics in CED order, the math refresher skills with the topic each comes before, and every concept with the topic that teaches it and the concepts it depends on. Our own words; no CED text. Checked by scripts/check-apchem-map.mjs.",
+ "version": 1,
+ "ced": {
+  "edition": "Fall 2024 revision (unchanged for 2025-26 and 2026-27)",
+  "effective": "Fall 2024; exam on this framework since May 2025",
+  "note": "Built from docs/apchem-ced-map.json, itself from docs/apchem-research/framework.md. Units 3-9 exclusions unverified (docs/apchem-needs-author.md)."
+ },
+ "practices": [
+  {
+   "id": 1,
+   "name": "Models and Representations",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "mcqWeight": [
+    8,
+    12
+   ],
+   "frqWeight": [
+    2,
+    4
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Question and Method",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C",
+    "2.D",
+    "2.E",
+    "2.F"
+   ],
+   "mcqWeight": [
+    8,
+    12
+   ],
+   "frqWeight": [
+    10,
+    16
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Representing Data and Phenomena",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C"
+   ],
+   "mcqWeight": [
+    0,
+    0
+   ],
+   "frqWeight": [
+    8,
+    16
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Model Analysis",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "4.D"
+   ],
+   "mcqWeight": [
+    23,
+    30
+   ],
+   "frqWeight": [
+    5,
+    9
+   ]
+  },
+  {
+   "id": 5,
+   "name": "Mathematical Routines",
+   "skills": [
+    "5.A",
+    "5.B",
+    "5.C",
+    "5.D",
+    "5.E",
+    "5.F"
+   ],
+   "mcqWeight": [
+    35,
+    42
+   ],
+   "frqWeight": [
+    43,
+    53
+   ]
+  },
+  {
+   "id": 6,
+   "name": "Argumentation",
+   "skills": [
+    "6.A",
+    "6.B",
+    "6.C",
+    "6.D",
+    "6.E",
+    "6.F",
+    "6.G"
+   ],
+   "mcqWeight": [
+    8,
+    12
+   ],
+   "frqWeight": [
+    15,
+    24
+   ]
+  }
+ ],
+ "parts": [
+  {
+   "id": "course",
+   "title": "Units"
+  },
+  {
+   "id": "skills",
+   "title": "Skills"
+  }
+ ],
+ "chapters": [
+  {
+   "id": "unit-1",
+   "n": 1,
+   "part": "course",
+   "title": "Atomic Structure and Properties",
+   "weight": [
+    7,
+    9
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "mass-spectrum-reader",
+      "title": "Mass spectrum reader: isotopes, abundances and average atomic mass",
+      "topic": "mass-spectra"
+     },
+     {
+      "id": "pes-reader",
+      "title": "PES reader: peaks to subshells and electron configurations",
+      "topic": "photoelectron-spectroscopy"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Empirical formula from combustion or mass data",
+      "topic": "elemental-composition",
+      "type": "Long"
+     },
+     {
+      "title": "Explain a PES spectrum and an ionization energy difference with Coulomb's law",
+      "topic": "photoelectron-spectroscopy",
+      "type": "Short"
+     },
+     {
+      "title": "Justify a periodic trend comparing both atoms",
+      "topic": "periodic-trends",
+      "type": "Short"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Mass spectrum of an element with three isotopes",
+      "topic": "mass-spectra",
+      "stimulus": "graph"
+     },
+     {
+      "title": "Photoelectron spectra of two neighboring elements",
+      "topic": "photoelectron-spectroscopy",
+      "stimulus": "graph"
+     },
+     {
+      "title": "Successive ionization energies of an unknown element",
+      "topic": "periodic-trends",
+      "stimulus": "table"
+     },
+     {
+      "title": "Particle diagrams of elements, compounds and mixtures",
+      "topic": "mixture-composition",
+      "stimulus": "particle"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Atomic radius, ionization energy, electronegativity: across and down",
+      "topic": "periodic-trends"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Grams to moles to particles",
+      "topic": "moles-molar-mass"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-2",
+   "n": 2,
+   "part": "course",
+   "title": "Compound Structure and Properties",
+   "weight": [
+    7,
+    9
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "vsepr-shapes",
+      "title": "VSEPR shapes: domains, lone pairs, angles and polarity",
+      "topic": "vsepr-hybridization"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Lewis diagram, formal charge and geometry of a polyatomic ion",
+      "topic": "resonance-formal-charge",
+      "type": "Long"
+     },
+     {
+      "title": "Read a potential energy curve for a diatomic molecule",
+      "topic": "bond-potential-energy",
+      "type": "Short"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Potential energy curves for H2, N2 and a hypothetical pair",
+      "topic": "bond-potential-energy",
+      "stimulus": "graph"
+     },
+     {
+      "title": "Melting points and lattice energies of ionic compounds",
+      "topic": "ionic-solids",
+      "stimulus": "table"
+     },
+     {
+      "title": "Particle pictures of interstitial and substitutional alloys",
+      "topic": "metals-alloys",
+      "stimulus": "particle"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Ionic, covalent and metallic bonding",
+      "topic": "bond-types"
+     },
+     {
+      "title": "Electron domains to molecular shapes",
+      "topic": "vsepr-hybridization"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From formula to Lewis diagram to shape to polarity",
+      "topic": "vsepr-hybridization"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-3",
+   "n": 3,
+   "part": "course",
+   "title": "Properties of Substances and Mixtures",
+   "weight": [
+    18,
+    22
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "justification-trainer",
+      "title": "Justification trainer: compare both species, cite the particle-level cause",
+      "topic": "intermolecular-forces"
+     },
+     {
+      "id": "gas-laws",
+      "title": "Gas laws lab: P, V, T and n with particle view",
+      "topic": "ideal-gas-law"
+     },
+     {
+      "id": "particle-diagrams",
+      "title": "Particle diagram practice: ions in water, hydration orientation, mixtures",
+      "topic": "solution-particle-models"
+     },
+     {
+      "id": "beer-lambert-lab",
+      "title": "Beer-Lambert lab: calibration curve and unknown concentration",
+      "topic": "beer-lambert-law"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Compare boiling points of two substances by their intermolecular forces",
+      "topic": "intermolecular-forces",
+      "type": "Short"
+     },
+     {
+      "title": "Gas stoichiometry with partial pressures and a real-gas deviation",
+      "topic": "real-gases",
+      "type": "Long"
+     },
+     {
+      "title": "Prepare a solution and a dilution with named glassware",
+      "topic": "solutions",
+      "type": "Short"
+     },
+     {
+      "title": "Calibration curve and concentration of an unknown",
+      "topic": "beer-lambert-law",
+      "type": "Long"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Boiling points of a series of related compounds",
+      "topic": "intermolecular-forces",
+      "stimulus": "table"
+     },
+     {
+      "title": "Vapor pressure against temperature for three liquids",
+      "topic": "phases-of-matter",
+      "stimulus": "graph"
+     },
+     {
+      "title": "Maxwell-Boltzmann distributions at two temperatures",
+      "topic": "kinetic-molecular-theory",
+      "stimulus": "graph"
+     },
+     {
+      "title": "Particle diagrams of dissolved ions with water orientation",
+      "topic": "solution-particle-models",
+      "stimulus": "particle"
+     },
+     {
+      "title": "Paper chromatogram of a dye mixture",
+      "topic": "separating-mixtures",
+      "stimulus": "setup"
+     },
+     {
+      "title": "Absorbance against concentration for standard solutions",
+      "topic": "beer-lambert-law",
+      "stimulus": "graph"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "The four kinds of solids",
+      "topic": "solids-properties"
+     },
+     {
+      "title": "Intermolecular forces: who has them and how strong",
+      "topic": "intermolecular-forces"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From photon wavelength to energy per mole",
+      "topic": "photons"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-4",
+   "n": 4,
+   "part": "course",
+   "title": "Chemical Reactions",
+   "weight": [
+    7,
+    9
+   ],
+   "tools": {
+    "simulators": [],
+    "frqThemes": [
+     {
+      "title": "Limiting reactant and percent yield with a particle diagram",
+      "topic": "stoichiometry",
+      "type": "Long"
+     },
+     {
+      "title": "Net ionic equation for a precipitation reaction",
+      "topic": "net-ionic-equations",
+      "type": "Short"
+     },
+     {
+      "title": "Titration procedure and an error analysis",
+      "topic": "titration-intro",
+      "type": "Short"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Before-and-after particle diagrams of a reaction",
+      "topic": "reaction-representations",
+      "stimulus": "particle"
+     },
+     {
+      "title": "Gravimetric analysis data",
+      "topic": "stoichiometry",
+      "stimulus": "table"
+     },
+     {
+      "title": "Titration setup with buret readings",
+      "topic": "titration-intro",
+      "stimulus": "setup"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Precipitation, acid-base, redox and combustion reactions",
+      "topic": "reaction-types"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Mass of A to moles of A to moles of B to mass of B",
+      "topic": "stoichiometry"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-5",
+   "n": 5,
+   "part": "course",
+   "title": "Kinetics",
+   "weight": [
+    7,
+    9
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "rate-plots",
+      "title": "Rate plots: [A], ln[A] and 1/[A] against time",
+      "topic": "concentration-time"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Rate law from initial-rate data and a mechanism check",
+      "topic": "mechanism-rate-laws",
+      "type": "Long"
+     },
+     {
+      "title": "Name the linear plot and justify the order",
+      "topic": "concentration-time",
+      "type": "Short"
+     },
+     {
+      "title": "Catalyst or intermediate in a mechanism",
+      "topic": "catalysis",
+      "type": "Short"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Initial-rate table for three trials",
+      "topic": "rate-laws",
+      "stimulus": "table"
+     },
+     {
+      "title": "Concentration against time with ln and reciprocal plots",
+      "topic": "concentration-time",
+      "stimulus": "graph"
+     },
+     {
+      "title": "Multistep energy profile",
+      "topic": "multistep-energy-profiles",
+      "stimulus": "graph"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Zero, first and second order: plots, slopes and half-lives",
+      "topic": "concentration-time"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Collision to reaction: energy, orientation, frequency",
+      "topic": "collision-model"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-6",
+   "n": 6,
+   "part": "course",
+   "title": "Thermochemistry",
+   "weight": [
+    7,
+    9
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "calorimetry-lab",
+      "title": "Calorimetry lab: q = mcΔT, sign and per-mole ΔH",
+      "topic": "calorimetry"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Calorimetry experiment with molar enthalpy and an error",
+      "topic": "calorimetry",
+      "type": "Long"
+     },
+     {
+      "title": "Hess's law with two steps",
+      "topic": "hess-law",
+      "type": "Short"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Temperature-time data from a coffee-cup calorimeter",
+      "topic": "calorimetry",
+      "stimulus": "graph"
+     },
+     {
+      "title": "Heating curve of water",
+      "topic": "phase-change-energy",
+      "stimulus": "graph"
+     },
+     {
+      "title": "Bond enthalpy table",
+      "topic": "bond-enthalpies",
+      "stimulus": "table"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Three ways to find ΔH: calorimetry, bond enthalpies, enthalpies of formation",
+      "topic": "hess-law"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From temperature change to molar enthalpy",
+      "topic": "calorimetry"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-7",
+   "n": 7,
+   "part": "course",
+   "title": "Equilibrium",
+   "weight": [
+    7,
+    9
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "ice-table-drills",
+      "title": "ICE table drills: seeded, unlimited, checked step by step",
+      "topic": "equilibrium-concentrations"
+     },
+     {
+      "id": "q-vs-k",
+      "title": "Q vs K: disturb a system and justify the shift",
+      "topic": "q-and-le-chatelier"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Equilibrium from particle diagrams: K, Q and the shift",
+      "topic": "equilibrium-representations",
+      "type": "Long"
+     },
+     {
+      "title": "Justify a shift with Q vs K",
+      "topic": "q-and-le-chatelier",
+      "type": "Short"
+     },
+     {
+      "title": "Ksp, molar solubility and a common ion",
+      "topic": "common-ion-effect",
+      "type": "Short"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Concentration against time reaching equilibrium",
+      "topic": "equilibrium-intro",
+      "stimulus": "graph"
+     },
+     {
+      "title": "Particle diagrams of a gas-phase equilibrium",
+      "topic": "equilibrium-representations",
+      "stimulus": "particle"
+     },
+     {
+      "title": "Ksp values and solubility data",
+      "topic": "solubility-equilibria",
+      "stimulus": "table"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Stresses and shifts: what changes Q and what changes K",
+      "topic": "le-chatelier"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Disturbance to new equilibrium through Q vs K",
+      "topic": "q-and-le-chatelier"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-8",
+   "n": 8,
+   "part": "course",
+   "title": "Acids and Bases",
+   "weight": [
+    11,
+    15
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "titration-curve-reader",
+      "title": "Titration curve reader: equivalence, half-equivalence, pKa, indicator",
+      "topic": "acid-base-titrations"
+     },
+     {
+      "id": "buffer-drills",
+      "title": "Buffer and Henderson-Hasselbalch drills, seeded",
+      "topic": "henderson-hasselbalch"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Weak acid titration: curve, pKa and species present",
+      "topic": "acid-base-titrations",
+      "type": "Long"
+     },
+     {
+      "title": "Prepare a buffer of a chosen pH",
+      "topic": "henderson-hasselbalch",
+      "type": "Short"
+     },
+     {
+      "title": "Rank acid strength from structure",
+      "topic": "acid-strength-structure",
+      "type": "Short"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Titration curve of a weak acid with strong base",
+      "topic": "acid-base-titrations",
+      "stimulus": "graph"
+     },
+     {
+      "title": "Particle diagrams of species at points on a titration curve",
+      "topic": "acid-base-titrations",
+      "stimulus": "particle"
+     },
+     {
+      "title": "Ka values of a series of acids",
+      "topic": "acid-strength-structure",
+      "stimulus": "table"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Strong vs weak acids and bases",
+      "topic": "weak-acids-bases"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "From added base to pH at each region of a titration",
+      "topic": "acid-base-titrations"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-9",
+   "n": 9,
+   "part": "course",
+   "title": "Thermodynamics and Electrochemistry",
+   "weight": [
+    7,
+    9
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "galvanic-cell-builder",
+      "title": "Galvanic cell builder: half-cells, electron flow, E°cell",
+      "topic": "electrochemical-cells"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Galvanic cell: diagram, half-reactions, E°cell and ΔG°",
+      "topic": "cell-potential",
+      "type": "Long"
+     },
+     {
+      "title": "Sign of ΔS with particle-level reasoning",
+      "topic": "entropy-intro",
+      "type": "Short"
+     },
+     {
+      "title": "Electrolysis mass from current and time",
+      "topic": "electrolysis-faraday",
+      "type": "Short"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Standard reduction potentials for several half-reactions",
+      "topic": "cell-potential",
+      "stimulus": "table"
+     },
+     {
+      "title": "Galvanic cell diagram",
+      "topic": "electrochemical-cells",
+      "stimulus": "model"
+     },
+     {
+      "title": "ΔH° and ΔS° data for several reactions",
+      "topic": "gibbs-free-energy",
+      "stimulus": "table"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Galvanic vs electrolytic cells",
+      "topic": "electrochemical-cells"
+     },
+     {
+      "title": "Signs of ΔH and ΔS and when a process is favored",
+      "topic": "gibbs-free-energy"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "ΔG°, K and E°: one triangle",
+      "topic": "cell-potential"
+     }
+    ]
+   }
+  },
+  {
+   "id": "skills-math",
+   "part": "skills",
+   "title": "Math you need",
+   "tools": {}
+  }
+ ],
+ "topics": [
+  {
+   "id": "moles-molar-mass",
+   "ced": "1.1",
+   "title": "Moles and Molar Mass",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    5
+   ],
+   "searchPhrase": "moles and molar mass explained"
+  },
+  {
+   "id": "mass-spectra",
+   "ced": "1.2",
+   "title": "Mass Spectra of Elements",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    4,
+    5
+   ],
+   "searchPhrase": "mass spectra of elements and average atomic mass"
+  },
+  {
+   "id": "elemental-composition",
+   "ced": "1.3",
+   "title": "Elemental Composition of Pure Substances",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    5
+   ],
+   "searchPhrase": "empirical formula and percent composition"
+  },
+  {
+   "id": "mixture-composition",
+   "ced": "1.4",
+   "title": "Composition of Mixtures",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    5
+   ],
+   "searchPhrase": "composition of mixtures and percent purity"
+  },
+  {
+   "id": "electron-configuration",
+   "ced": "1.5",
+   "title": "Atomic Structure and Electron Configuration",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    4
+   ],
+   "searchPhrase": "electron configuration and Coulomb's law"
+  },
+  {
+   "id": "photoelectron-spectroscopy",
+   "ced": "1.6",
+   "title": "Photoelectron Spectroscopy",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    4,
+    5
+   ],
+   "searchPhrase": "photoelectron spectroscopy PES explained"
+  },
+  {
+   "id": "periodic-trends",
+   "ced": "1.7",
+   "title": "Periodic Trends",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "periodic trends atomic radius ionization energy"
+  },
+  {
+   "id": "ionic-compounds-valence",
+   "ced": "1.8",
+   "title": "Valence Electrons and Ionic Compounds",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    6
+   ],
+   "searchPhrase": "valence electrons and ionic compound formulas"
+  },
+  {
+   "id": "bond-types",
+   "ced": "2.1",
+   "title": "Types of Chemical Bonds",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    4,
+    6
+   ],
+   "searchPhrase": "types of chemical bonds ionic covalent metallic"
+  },
+  {
+   "id": "bond-potential-energy",
+   "ced": "2.2",
+   "title": "Intramolecular Force and Potential Energy",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    3,
+    4,
+    6
+   ],
+   "searchPhrase": "potential energy curve bond length bond energy"
+  },
+  {
+   "id": "ionic-solids",
+   "ced": "2.3",
+   "title": "Structure of Ionic Solids",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    4
+   ],
+   "searchPhrase": "structure and properties of ionic solids"
+  },
+  {
+   "id": "metals-alloys",
+   "ced": "2.4",
+   "title": "Structure of Metals and Alloys",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    4
+   ],
+   "searchPhrase": "metallic bonding interstitial and substitutional alloys"
+  },
+  {
+   "id": "lewis-diagrams",
+   "ced": "2.5",
+   "title": "Lewis Diagrams",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "how to draw Lewis diagrams"
+  },
+  {
+   "id": "resonance-formal-charge",
+   "ced": "2.6",
+   "title": "Resonance and Formal Charge",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    4,
+    6
+   ],
+   "searchPhrase": "resonance structures and formal charge"
+  },
+  {
+   "id": "vsepr-hybridization",
+   "ced": "2.7",
+   "title": "VSEPR and Hybridization",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    4,
+    6
+   ],
+   "searchPhrase": "VSEPR shapes and hybridization"
+  },
+  {
+   "id": "intermolecular-forces",
+   "ced": "3.1",
+   "title": "Intermolecular and Interparticle Forces",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "intermolecular forces explained"
+  },
+  {
+   "id": "solids-properties",
+   "ced": "3.2",
+   "title": "Properties of Solids",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1,
+    4,
+    6
+   ],
+   "searchPhrase": "types of solids and their properties"
+  },
+  {
+   "id": "phases-of-matter",
+   "ced": "3.3",
+   "title": "Solids, Liquids, and Gases",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1,
+    3,
+    4
+   ],
+   "searchPhrase": "solids liquids gases and vapor pressure"
+  },
+  {
+   "id": "ideal-gas-law",
+   "ced": "3.4",
+   "title": "Ideal Gas Law",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    5
+   ],
+   "searchPhrase": "ideal gas law PV = nRT practice"
+  },
+  {
+   "id": "kinetic-molecular-theory",
+   "ced": "3.5",
+   "title": "Kinetic Molecular Theory",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1,
+    4,
+    6
+   ],
+   "searchPhrase": "kinetic molecular theory and Maxwell-Boltzmann distribution"
+  },
+  {
+   "id": "real-gases",
+   "ced": "3.6",
+   "title": "Deviation from Ideal Gas Law",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "real gases and deviation from ideal behavior"
+  },
+  {
+   "id": "solutions",
+   "ced": "3.7",
+   "title": "Solutions and Mixtures",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "molarity and dilution calculations"
+  },
+  {
+   "id": "solution-particle-models",
+   "ced": "3.8",
+   "title": "Representations of Solutions",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "particle diagrams of solutions"
+  },
+  {
+   "id": "separating-mixtures",
+   "ced": "3.9",
+   "title": "Separation of Solutions and Mixtures",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    2,
+    6
+   ],
+   "searchPhrase": "chromatography and distillation explained"
+  },
+  {
+   "id": "solubility",
+   "ced": "3.10",
+   "title": "Solubility",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "solubility and like dissolves like"
+  },
+  {
+   "id": "electromagnetic-spectrum",
+   "ced": "3.11",
+   "title": "Spectroscopy and the Electromagnetic Spectrum",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "spectroscopy and the electromagnetic spectrum"
+  },
+  {
+   "id": "photons",
+   "ced": "3.12",
+   "title": "Properties of Photons",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    5
+   ],
+   "searchPhrase": "photon energy wavelength frequency calculations"
+  },
+  {
+   "id": "beer-lambert-law",
+   "ced": "3.13",
+   "title": "Beer-Lambert Law",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "Beer-Lambert law and calibration curves"
+  },
+  {
+   "id": "reactions-intro",
+   "ced": "4.1",
+   "title": "Introduction for Reactions",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    5
+   ],
+   "searchPhrase": "balancing chemical equations"
+  },
+  {
+   "id": "net-ionic-equations",
+   "ced": "4.2",
+   "title": "Net Ionic Equations",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "how to write net ionic equations"
+  },
+  {
+   "id": "reaction-representations",
+   "ced": "4.3",
+   "title": "Representations of Reactions",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "particle diagrams of chemical reactions"
+  },
+  {
+   "id": "physical-chemical-changes",
+   "ced": "4.4",
+   "title": "Physical and Chemical Changes",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    6
+   ],
+   "searchPhrase": "physical vs chemical changes"
+  },
+  {
+   "id": "stoichiometry",
+   "ced": "4.5",
+   "title": "Stoichiometry",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    5
+   ],
+   "searchPhrase": "stoichiometry and limiting reactant"
+  },
+  {
+   "id": "titration-intro",
+   "ced": "4.6",
+   "title": "Introduction to Titration",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "titration calculations introduction"
+  },
+  {
+   "id": "reaction-types",
+   "ced": "4.7",
+   "title": "Types of Chemical Reactions",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    4
+   ],
+   "searchPhrase": "types of chemical reactions"
+  },
+  {
+   "id": "acid-base-reactions-intro",
+   "ced": "4.8",
+   "title": "Introduction to Acid-Base Reactions",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    6
+   ],
+   "searchPhrase": "Bronsted-Lowry acids and bases introduction"
+  },
+  {
+   "id": "redox-reactions",
+   "ced": "4.9",
+   "title": "Oxidation-Reduction (Redox) Reactions",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    5
+   ],
+   "searchPhrase": "oxidation numbers and redox reactions"
+  },
+  {
+   "id": "reaction-rates",
+   "ced": "5.1",
+   "title": "Reaction Rates",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    4,
+    5
+   ],
+   "searchPhrase": "reaction rates and relative rates"
+  },
+  {
+   "id": "rate-laws",
+   "ced": "5.2",
+   "title": "Introduction to Rate Law",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    5
+   ],
+   "searchPhrase": "rate laws from initial rate data"
+  },
+  {
+   "id": "concentration-time",
+   "ced": "5.3",
+   "title": "Concentration Changes Over Time",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    3,
+    5,
+    6
+   ],
+   "searchPhrase": "integrated rate laws and half-life"
+  },
+  {
+   "id": "elementary-reactions",
+   "ced": "5.4",
+   "title": "Elementary Reactions",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    1,
+    5
+   ],
+   "searchPhrase": "elementary reactions and molecularity"
+  },
+  {
+   "id": "collision-model",
+   "ced": "5.5",
+   "title": "Collision Model",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "collision theory and activation energy"
+  },
+  {
+   "id": "energy-profiles",
+   "ced": "5.6",
+   "title": "Reaction Energy Profile",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "reaction energy profile diagrams"
+  },
+  {
+   "id": "mechanisms-intro",
+   "ced": "5.7",
+   "title": "Introduction to Reaction Mechanisms",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    1,
+    4
+   ],
+   "searchPhrase": "reaction mechanisms and intermediates"
+  },
+  {
+   "id": "mechanism-rate-laws",
+   "ced": "5.8",
+   "title": "Reaction Mechanism and Rate Law",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "rate determining step and mechanism rate law"
+  },
+  {
+   "id": "pre-equilibrium",
+   "ced": "5.9",
+   "title": "Pre-Equilibrium Approximation",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    5,
+    6
+   ],
+   "searchPhrase": "pre-equilibrium approximation mechanism"
+  },
+  {
+   "id": "multistep-energy-profiles",
+   "ced": "5.10",
+   "title": "Multistep Reaction Energy Profile",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "multistep reaction energy profiles"
+  },
+  {
+   "id": "catalysis",
+   "ced": "5.11",
+   "title": "Catalysis",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "catalysts and catalysis explained"
+  },
+  {
+   "id": "endo-exothermic",
+   "ced": "6.1",
+   "title": "Endothermic and Exothermic Processes",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1,
+    4,
+    6
+   ],
+   "searchPhrase": "endothermic vs exothermic processes"
+  },
+  {
+   "id": "energy-diagrams",
+   "ced": "6.2",
+   "title": "Energy Diagrams",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    3,
+    4
+   ],
+   "searchPhrase": "energy diagrams and enthalpy change"
+  },
+  {
+   "id": "heat-transfer",
+   "ced": "6.3",
+   "title": "Heat Transfer and Thermal Equilibrium",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1,
+    4,
+    6
+   ],
+   "searchPhrase": "heat transfer and thermal equilibrium"
+  },
+  {
+   "id": "calorimetry",
+   "ced": "6.4",
+   "title": "Heat Capacity and Calorimetry",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    2,
+    5
+   ],
+   "searchPhrase": "calorimetry and q = mcΔT practice"
+  },
+  {
+   "id": "phase-change-energy",
+   "ced": "6.5",
+   "title": "Energy of Phase Changes",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    4,
+    5
+   ],
+   "searchPhrase": "energy of phase changes and heating curves"
+  },
+  {
+   "id": "enthalpy-of-reaction",
+   "ced": "6.6",
+   "title": "Introduction to Enthalpy of Reaction",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    4,
+    5
+   ],
+   "searchPhrase": "enthalpy of reaction and thermochemical equations"
+  },
+  {
+   "id": "bond-enthalpies",
+   "ced": "6.7",
+   "title": "Bond Enthalpies",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    5,
+    6
+   ],
+   "searchPhrase": "bond enthalpy calculations"
+  },
+  {
+   "id": "enthalpy-of-formation",
+   "ced": "6.8",
+   "title": "Enthalpy of Formation",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    5
+   ],
+   "searchPhrase": "enthalpy of formation calculations"
+  },
+  {
+   "id": "hess-law",
+   "ced": "6.9",
+   "title": "Hess's Law",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    5
+   ],
+   "searchPhrase": "Hess's law practice"
+  },
+  {
+   "id": "equilibrium-intro",
+   "ced": "7.1",
+   "title": "Introduction to Equilibrium",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    1,
+    6
+   ],
+   "searchPhrase": "chemical equilibrium introduction"
+  },
+  {
+   "id": "reaction-direction",
+   "ced": "7.2",
+   "title": "Direction of Reversible Reactions",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "direction of reversible reactions"
+  },
+  {
+   "id": "q-and-k",
+   "ced": "7.3",
+   "title": "Reaction Quotient and Equilibrium Constant",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    1,
+    5
+   ],
+   "searchPhrase": "reaction quotient Q vs equilibrium constant K"
+  },
+  {
+   "id": "calculating-k",
+   "ced": "7.4",
+   "title": "Calculating the Equilibrium Constant",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    5
+   ],
+   "searchPhrase": "calculating the equilibrium constant"
+  },
+  {
+   "id": "k-magnitude",
+   "ced": "7.5",
+   "title": "Magnitude of the Equilibrium Constant",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "what the size of K means"
+  },
+  {
+   "id": "k-properties",
+   "ced": "7.6",
+   "title": "Properties of the Equilibrium Constant",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    5
+   ],
+   "searchPhrase": "properties of the equilibrium constant"
+  },
+  {
+   "id": "equilibrium-concentrations",
+   "ced": "7.7",
+   "title": "Calculating Equilibrium Concentrations",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    5
+   ],
+   "searchPhrase": "ICE tables equilibrium concentrations"
+  },
+  {
+   "id": "equilibrium-representations",
+   "ced": "7.8",
+   "title": "Representations of Equilibrium",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    1,
+    3,
+    5
+   ],
+   "searchPhrase": "particle diagrams at equilibrium"
+  },
+  {
+   "id": "le-chatelier",
+   "ced": "7.9",
+   "title": "Introduction to Le Châtelier's Principle",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "Le Chatelier's principle explained"
+  },
+  {
+   "id": "q-and-le-chatelier",
+   "ced": "7.10",
+   "title": "Reaction Quotient and Le Châtelier's Principle",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    6
+   ],
+   "searchPhrase": "using Q vs K to justify equilibrium shifts"
+  },
+  {
+   "id": "solubility-equilibria",
+   "ced": "7.11",
+   "title": "Introduction to Solubility Equilibria",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    5
+   ],
+   "searchPhrase": "Ksp and molar solubility"
+  },
+  {
+   "id": "common-ion-effect",
+   "ced": "7.12",
+   "title": "Common-Ion Effect",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    5,
+    6
+   ],
+   "searchPhrase": "common ion effect"
+  },
+  {
+   "id": "acids-bases-intro",
+   "ced": "8.1",
+   "title": "Introduction to Acids and Bases",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1,
+    5
+   ],
+   "searchPhrase": "pH pOH and Kw introduction"
+  },
+  {
+   "id": "strong-acids-bases",
+   "ced": "8.2",
+   "title": "pH and pOH of Strong Acids and Bases",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    5
+   ],
+   "searchPhrase": "pH of strong acids and bases"
+  },
+  {
+   "id": "weak-acids-bases",
+   "ced": "8.3",
+   "title": "Weak Acid and Base Equilibria",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    5,
+    6
+   ],
+   "searchPhrase": "weak acid pH and Ka calculations"
+  },
+  {
+   "id": "buffers-intro",
+   "ced": "8.4",
+   "title": "Acid-Base Reactions and Buffers",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1,
+    5,
+    6
+   ],
+   "searchPhrase": "acid base reactions and buffers"
+  },
+  {
+   "id": "acid-base-titrations",
+   "ced": "8.5",
+   "title": "Acid-Base Titrations",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    3,
+    4,
+    5
+   ],
+   "searchPhrase": "reading acid base titration curves"
+  },
+  {
+   "id": "acid-strength-structure",
+   "ced": "8.6",
+   "title": "Molecular Structure of Acids and Bases",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "acid strength and molecular structure"
+  },
+  {
+   "id": "ph-and-pka",
+   "ced": "8.7",
+   "title": "pH and pKa",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "pH vs pKa and choosing an indicator"
+  },
+  {
+   "id": "buffer-properties",
+   "ced": "8.8",
+   "title": "Properties of Buffers",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1,
+    4,
+    6
+   ],
+   "searchPhrase": "how buffers resist pH change"
+  },
+  {
+   "id": "henderson-hasselbalch",
+   "ced": "8.9",
+   "title": "Henderson-Hasselbalch Equation",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    5
+   ],
+   "searchPhrase": "Henderson-Hasselbalch equation practice"
+  },
+  {
+   "id": "buffer-limits",
+   "ced": "8.10",
+   "title": "Buffer Capacity",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "buffer capacity explained"
+  },
+  {
+   "id": "ph-and-solubility",
+   "ced": "8.11",
+   "title": "pH and Solubility",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "how pH affects solubility"
+  },
+  {
+   "id": "entropy-intro",
+   "ced": "9.1",
+   "title": "Introduction to Entropy",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    1,
+    4,
+    6
+   ],
+   "searchPhrase": "entropy introduction and predicting ΔS"
+  },
+  {
+   "id": "entropy-change",
+   "ced": "9.2",
+   "title": "Absolute Entropy and Entropy Change",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    5
+   ],
+   "searchPhrase": "calculating entropy change of a reaction"
+  },
+  {
+   "id": "gibbs-free-energy",
+   "ced": "9.3",
+   "title": "Gibbs Free Energy and Thermodynamic Favorability",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    4,
+    5,
+    6
+   ],
+   "searchPhrase": "Gibbs free energy and thermodynamic favorability"
+  },
+  {
+   "id": "kinetic-control",
+   "ced": "9.4",
+   "title": "Thermodynamic and Kinetic Control",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "thermodynamic vs kinetic control"
+  },
+  {
+   "id": "free-energy-equilibrium",
+   "ced": "9.5",
+   "title": "Free Energy and Equilibrium",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    4,
+    5
+   ],
+   "searchPhrase": "ΔG° = −RT ln K"
+  },
+  {
+   "id": "dissolution-free-energy",
+   "ced": "9.6",
+   "title": "Free Energy of Dissolution",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "free energy of dissolution"
+  },
+  {
+   "id": "coupled-reactions",
+   "ced": "9.7",
+   "title": "Coupled Reactions",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    4,
+    5
+   ],
+   "searchPhrase": "coupled reactions and free energy"
+  },
+  {
+   "id": "electrochemical-cells",
+   "ced": "9.8",
+   "title": "Galvanic (Voltaic) and Electrolytic Cells",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    1,
+    3,
+    4
+   ],
+   "searchPhrase": "galvanic and electrolytic cells"
+  },
+  {
+   "id": "cell-potential",
+   "ced": "9.9",
+   "title": "Cell Potential and Free Energy",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    5,
+    6
+   ],
+   "searchPhrase": "cell potential and free energy"
+  },
+  {
+   "id": "nernst-equation",
+   "ced": "9.10",
+   "title": "Cell Potential Under Nonstandard Conditions",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    4,
+    6
+   ],
+   "searchPhrase": "Nernst equation and nonstandard cell potential"
+  },
+  {
+   "id": "electrolysis-faraday",
+   "ced": "9.11",
+   "title": "Electrolysis and Faraday's Law",
+   "chapter": "unit-9",
+   "kind": "concept",
+   "practices": [
+    5
+   ],
+   "searchPhrase": "electrolysis and Faraday's law calculations"
+  },
+  {
+   "id": "math-units",
+   "ced": null,
+   "title": "Units and Dimensional Analysis",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    5
+   ],
+   "before": "moles-molar-mass",
+   "searchPhrase": "dimensional analysis and unit conversions for chemistry"
+  },
+  {
+   "id": "math-exponents",
+   "ced": null,
+   "title": "Exponents",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    5
+   ],
+   "before": "moles-molar-mass",
+   "searchPhrase": "exponent rules review for chemistry"
+  },
+  {
+   "id": "math-scientific-notation",
+   "ced": null,
+   "title": "Scientific Notation",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    5
+   ],
+   "before": "moles-molar-mass",
+   "searchPhrase": "scientific notation practice for chemistry"
+  },
+  {
+   "id": "math-sig-figs",
+   "ced": null,
+   "title": "Significant Figures",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    5
+   ],
+   "before": "moles-molar-mass",
+   "searchPhrase": "significant figures rules for chemistry calculations"
+  },
+  {
+   "id": "math-logs",
+   "ced": null,
+   "title": "Logarithms",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    5
+   ],
+   "before": "concentration-time",
+   "searchPhrase": "logarithms and natural logs review for chemistry"
+  }
+ ],
+ "everydayWords": {
+  "about": "Common words a student already roughly knows from regular chemistry. They may be used in their everyday sense before the topic that teaches them; technical terms of the same concept stay strict.",
+  "words": [
+   "solid",
+   "solids",
+   "liquid",
+   "liquids",
+   "gas",
+   "gases",
+   "pressure",
+   "metal",
+   "metals",
+   "acid",
+   "acids",
+   "bases",
+   "enzyme",
+   "enzymes",
+   "chemical reaction",
+   "chemical reactions",
+   "atom",
+   "atoms",
+   "molecule",
+   "molecules",
+   "element",
+   "elements",
+   "electron",
+   "electrons",
+   "proton",
+   "protons",
+   "neutron",
+   "neutrons",
+   "ion",
+   "ions",
+   "compound",
+   "compounds",
+   "solution",
+   "solutions",
+   "acidic",
+   "periodic table",
+   "mixture",
+   "mixtures",
+   "melting",
+   "freezing",
+   "evaporation"
+  ]
+ },
+ "concepts": [
+  {
+   "id": "unit",
+   "term": "unit of measurement",
+   "aliases": [
+    "units of measurement",
+    "SI unit",
+    "SI units"
+   ],
+   "taughtIn": "math-units",
+   "dependsOn": []
+  },
+  {
+   "id": "si-prefix",
+   "term": "metric prefix",
+   "aliases": [
+    "metric prefixes",
+    "SI prefix",
+    "SI prefixes",
+    "kilo",
+    "milli",
+    "micro",
+    "nano"
+   ],
+   "taughtIn": "math-units",
+   "dependsOn": [
+    "unit"
+   ]
+  },
+  {
+   "id": "dimensional-analysis",
+   "term": "dimensional analysis",
+   "aliases": [
+    "conversion factor",
+    "conversion factors",
+    "unit conversion",
+    "unit conversions",
+    "factor-label method"
+   ],
+   "taughtIn": "math-units",
+   "dependsOn": [
+    "unit",
+    "si-prefix"
+   ]
+  },
+  {
+   "id": "kelvin",
+   "term": "kelvin",
+   "aliases": [
+    "Kelvin scale",
+    "absolute temperature",
+    "absolute zero"
+   ],
+   "taughtIn": "math-units",
+   "dependsOn": [
+    "unit"
+   ]
+  },
+  {
+   "id": "density",
+   "term": "density",
+   "aliases": [
+    "densities"
+   ],
+   "taughtIn": "math-units",
+   "dependsOn": [
+    "unit",
+    "dimensional-analysis"
+   ]
+  },
+  {
+   "id": "exponent",
+   "term": "exponent",
+   "aliases": [
+    "exponents",
+    "power of ten",
+    "powers of ten"
+   ],
+   "taughtIn": "math-exponents",
+   "dependsOn": []
+  },
+  {
+   "id": "exponent-rules",
+   "term": "exponent rules",
+   "aliases": [
+    "laws of exponents",
+    "rules of exponents",
+    "square root",
+    "cube root"
+   ],
+   "taughtIn": "math-exponents",
+   "dependsOn": [
+    "exponent"
+   ]
+  },
+  {
+   "id": "scientific-notation",
+   "term": "scientific notation",
+   "aliases": [
+    "standard form (scientific)",
+    "coefficient (scientific notation)"
+   ],
+   "taughtIn": "math-scientific-notation",
+   "dependsOn": [
+    "exponent",
+    "exponent-rules"
+   ]
+  },
+  {
+   "id": "order-of-magnitude",
+   "term": "order of magnitude",
+   "aliases": [
+    "orders of magnitude"
+   ],
+   "taughtIn": "math-scientific-notation",
+   "dependsOn": [
+    "scientific-notation"
+   ]
+  },
+  {
+   "id": "significant-figures",
+   "term": "significant figures",
+   "aliases": [
+    "significant figure",
+    "sig figs",
+    "sig fig",
+    "significant digits"
+   ],
+   "taughtIn": "math-sig-figs",
+   "dependsOn": [
+    "scientific-notation"
+   ]
+  },
+  {
+   "id": "measurement-uncertainty",
+   "term": "measurement uncertainty",
+   "aliases": [
+    "uncertainty",
+    "estimated digit"
+   ],
+   "taughtIn": "math-sig-figs",
+   "dependsOn": [
+    "significant-figures"
+   ]
+  },
+  {
+   "id": "precision",
+   "term": "precision",
+   "aliases": [
+    "precise",
+    "accuracy",
+    "accurate"
+   ],
+   "taughtIn": "math-sig-figs",
+   "dependsOn": [
+    "measurement-uncertainty"
+   ]
+  },
+  {
+   "id": "exact-number",
+   "term": "exact number",
+   "aliases": [
+    "exact numbers",
+    "defined quantity"
+   ],
+   "taughtIn": "math-sig-figs",
+   "dependsOn": [
+    "significant-figures"
+   ]
+  },
+  {
+   "id": "logarithm",
+   "term": "logarithm",
+   "aliases": [
+    "logarithms",
+    "base-10 logarithm",
+    "common logarithm",
+    "log"
+   ],
+   "taughtIn": "math-logs",
+   "dependsOn": [
+    "exponent",
+    "scientific-notation"
+   ]
+  },
+  {
+   "id": "natural-log",
+   "term": "natural logarithm",
+   "aliases": [
+    "natural log",
+    "ln",
+    "e (base)"
+   ],
+   "taughtIn": "math-logs",
+   "dependsOn": [
+    "logarithm"
+   ]
+  },
+  {
+   "id": "antilog",
+   "term": "antilog",
+   "aliases": [
+    "inverse log",
+    "inverse logarithm"
+   ],
+   "taughtIn": "math-logs",
+   "dependsOn": [
+    "logarithm"
+   ]
+  },
+  {
+   "id": "atom",
+   "term": "atom",
+   "aliases": [
+    "atoms"
+   ],
+   "taughtIn": "moles-molar-mass",
+   "dependsOn": []
+  },
+  {
+   "id": "element",
+   "term": "element",
+   "aliases": [
+    "elements",
+    "chemical element",
+    "chemical elements"
+   ],
+   "taughtIn": "moles-molar-mass",
+   "dependsOn": [
+    "atom"
+   ]
+  },
+  {
+   "id": "periodic-table",
+   "term": "periodic table",
+   "aliases": [],
+   "taughtIn": "moles-molar-mass",
+   "dependsOn": [
+    "element"
+   ]
+  },
+  {
+   "id": "molecule",
+   "term": "molecule",
+   "aliases": [
+    "molecules"
+   ],
+   "taughtIn": "moles-molar-mass",
+   "dependsOn": [
+    "atom"
+   ]
+  },
+  {
+   "id": "compound",
+   "term": "compound",
+   "aliases": [
+    "compounds",
+    "chemical compound",
+    "chemical compounds"
+   ],
+   "taughtIn": "moles-molar-mass",
+   "dependsOn": [
+    "element",
+    "molecule"
+   ]
+  },
+  {
+   "id": "atomic-mass-unit",
+   "term": "atomic mass unit",
+   "aliases": [
+    "atomic mass units",
+    "amu",
+    "dalton"
+   ],
+   "taughtIn": "moles-molar-mass",
+   "dependsOn": [
+    "atom"
+   ]
+  },
+  {
+   "id": "atomic-mass",
+   "term": "atomic mass",
+   "aliases": [
+    "atomic masses"
+   ],
+   "taughtIn": "moles-molar-mass",
+   "dependsOn": [
+    "atomic-mass-unit",
+    "periodic-table"
+   ]
+  },
+  {
+   "id": "mole",
+   "term": "mole",
+   "aliases": [
+    "moles",
+    "mol",
+    "amount of substance"
+   ],
+   "taughtIn": "moles-molar-mass",
+   "dependsOn": [
+    "dimensional-analysis",
+    "scientific-notation",
+    "atom"
+   ]
+  },
+  {
+   "id": "avogadro",
+   "term": "Avogadro's number",
+   "aliases": [
+    "Avogadro constant",
+    "Avogadro's constant"
+   ],
+   "taughtIn": "moles-molar-mass",
+   "dependsOn": [
+    "mole"
+   ]
+  },
+  {
+   "id": "molar-mass",
+   "term": "molar mass",
+   "aliases": [
+    "molar masses",
+    "g/mol"
+   ],
+   "taughtIn": "moles-molar-mass",
+   "dependsOn": [
+    "mole",
+    "atomic-mass"
+   ]
+  },
+  {
+   "id": "proton",
+   "term": "proton",
+   "aliases": [
+    "protons"
+   ],
+   "taughtIn": "mass-spectra",
+   "dependsOn": [
+    "atom"
+   ]
+  },
+  {
+   "id": "neutron",
+   "term": "neutron",
+   "aliases": [
+    "neutrons"
+   ],
+   "taughtIn": "mass-spectra",
+   "dependsOn": [
+    "atom"
+   ]
+  },
+  {
+   "id": "electron",
+   "term": "electron",
+   "aliases": [
+    "electrons"
+   ],
+   "taughtIn": "mass-spectra",
+   "dependsOn": [
+    "atom"
+   ]
+  },
+  {
+   "id": "nucleus",
+   "term": "nucleus",
+   "aliases": [
+    "nuclei",
+    "atomic nucleus"
+   ],
+   "taughtIn": "mass-spectra",
+   "dependsOn": [
+    "proton",
+    "neutron"
+   ]
+  },
+  {
+   "id": "atomic-number",
+   "term": "atomic number",
+   "aliases": [],
+   "taughtIn": "mass-spectra",
+   "dependsOn": [
+    "proton",
+    "element"
+   ]
+  },
+  {
+   "id": "mass-number",
+   "term": "mass number",
+   "aliases": [],
+   "taughtIn": "mass-spectra",
+   "dependsOn": [
+    "proton",
+    "neutron"
+   ]
+  },
+  {
+   "id": "isotope",
+   "term": "isotope",
+   "aliases": [
+    "isotopes",
+    "isotopic"
+   ],
+   "taughtIn": "mass-spectra",
+   "dependsOn": [
+    "atomic-number",
+    "mass-number"
+   ]
+  },
+  {
+   "id": "ion",
+   "term": "ion",
+   "aliases": [
+    "ions"
+   ],
+   "taughtIn": "mass-spectra",
+   "dependsOn": [
+    "electron",
+    "atom"
+   ]
+  },
+  {
+   "id": "cation",
+   "term": "cation",
+   "aliases": [
+    "cations",
+    "positive ion",
+    "positive ions"
+   ],
+   "taughtIn": "mass-spectra",
+   "dependsOn": [
+    "ion"
+   ]
+  },
+  {
+   "id": "anion",
+   "term": "anion",
+   "aliases": [
+    "anions",
+    "negative ion",
+    "negative ions"
+   ],
+   "taughtIn": "mass-spectra",
+   "dependsOn": [
+    "ion"
+   ]
+  },
+  {
+   "id": "relative-abundance",
+   "term": "relative abundance",
+   "aliases": [
+    "percent abundance",
+    "isotopic abundance",
+    "natural abundance"
+   ],
+   "taughtIn": "mass-spectra",
+   "dependsOn": [
+    "isotope"
+   ]
+  },
+  {
+   "id": "mass-spectrum",
+   "term": "mass spectrum",
+   "aliases": [
+    "mass spectra",
+    "mass spectrometry",
+    "mass spectrometer"
+   ],
+   "taughtIn": "mass-spectra",
+   "dependsOn": [
+    "isotope",
+    "relative-abundance",
+    "cation"
+   ]
+  },
+  {
+   "id": "mass-to-charge",
+   "term": "mass-to-charge ratio",
+   "aliases": [
+    "m/z"
+   ],
+   "taughtIn": "mass-spectra",
+   "dependsOn": [
+    "mass-spectrum"
+   ]
+  },
+  {
+   "id": "average-atomic-mass",
+   "term": "average atomic mass",
+   "aliases": [
+    "weighted average atomic mass"
+   ],
+   "taughtIn": "mass-spectra",
+   "dependsOn": [
+    "relative-abundance",
+    "atomic-mass"
+   ]
+  },
+  {
+   "id": "pure-substance",
+   "term": "pure substance",
+   "aliases": [
+    "pure substances"
+   ],
+   "taughtIn": "elemental-composition",
+   "dependsOn": [
+    "element",
+    "compound"
+   ]
+  },
+  {
+   "id": "definite-proportions",
+   "term": "law of definite proportions",
+   "aliases": [
+    "law of constant composition"
+   ],
+   "taughtIn": "elemental-composition",
+   "dependsOn": [
+    "compound"
+   ]
+  },
+  {
+   "id": "chemical-formula",
+   "term": "chemical formula",
+   "aliases": [
+    "chemical formulas",
+    "subscript (formula)"
+   ],
+   "taughtIn": "elemental-composition",
+   "dependsOn": [
+    "compound"
+   ]
+  },
+  {
+   "id": "mass-percent",
+   "term": "mass percent",
+   "aliases": [
+    "percent by mass",
+    "percent composition",
+    "mass percent composition"
+   ],
+   "taughtIn": "elemental-composition",
+   "dependsOn": [
+    "molar-mass",
+    "chemical-formula"
+   ]
+  },
+  {
+   "id": "empirical-formula",
+   "term": "empirical formula",
+   "aliases": [
+    "empirical formulas"
+   ],
+   "taughtIn": "elemental-composition",
+   "dependsOn": [
+    "mole",
+    "mass-percent",
+    "chemical-formula"
+   ]
+  },
+  {
+   "id": "molecular-formula",
+   "term": "molecular formula",
+   "aliases": [
+    "molecular formulas"
+   ],
+   "taughtIn": "elemental-composition",
+   "dependsOn": [
+    "empirical-formula",
+    "molar-mass"
+   ]
+  },
+  {
+   "id": "mixture",
+   "term": "mixture",
+   "aliases": [
+    "mixtures"
+   ],
+   "taughtIn": "mixture-composition",
+   "dependsOn": [
+    "pure-substance"
+   ]
+  },
+  {
+   "id": "homogeneous-mixture",
+   "term": "homogeneous mixture",
+   "aliases": [
+    "homogeneous mixtures",
+    "homogeneous"
+   ],
+   "taughtIn": "mixture-composition",
+   "dependsOn": [
+    "mixture"
+   ]
+  },
+  {
+   "id": "heterogeneous-mixture",
+   "term": "heterogeneous mixture",
+   "aliases": [
+    "heterogeneous mixtures",
+    "heterogeneous"
+   ],
+   "taughtIn": "mixture-composition",
+   "dependsOn": [
+    "mixture"
+   ]
+  },
+  {
+   "id": "purity",
+   "term": "purity",
+   "aliases": [
+    "percent purity",
+    "impurity",
+    "impurities"
+   ],
+   "taughtIn": "mixture-composition",
+   "dependsOn": [
+    "mixture",
+    "mass-percent"
+   ]
+  },
+  {
+   "id": "elemental-analysis",
+   "term": "elemental analysis",
+   "aliases": [
+    "combustion analysis"
+   ],
+   "taughtIn": "mixture-composition",
+   "dependsOn": [
+    "mass-percent",
+    "purity"
+   ]
+  },
+  {
+   "id": "particulate-diagram",
+   "term": "particulate diagram",
+   "aliases": [
+    "particulate diagrams",
+    "particle diagram",
+    "particle diagrams",
+    "particulate model",
+    "particulate level"
+   ],
+   "taughtIn": "mixture-composition",
+   "dependsOn": [
+    "molecule",
+    "mixture"
+   ]
+  },
+  {
+   "id": "macroscopic",
+   "term": "macroscopic",
+   "aliases": [
+    "macroscopic level",
+    "macroscopic scale"
+   ],
+   "taughtIn": "mixture-composition",
+   "dependsOn": [
+    "particulate-diagram"
+   ]
+  },
+  {
+   "id": "coulombs-law",
+   "term": "Coulomb's law",
+   "aliases": [
+    "Coulombic attraction",
+    "Coulombic force",
+    "Coulombic interaction",
+    "Coulombic repulsion"
+   ],
+   "taughtIn": "electron-configuration",
+   "dependsOn": [
+    "proton",
+    "electron",
+    "nucleus"
+   ]
+  },
+  {
+   "id": "potential-energy",
+   "term": "potential energy",
+   "aliases": [],
+   "taughtIn": "electron-configuration",
+   "dependsOn": [
+    "coulombs-law"
+   ]
+  },
+  {
+   "id": "electron-shell",
+   "term": "electron shell",
+   "aliases": [
+    "electron shells",
+    "energy level",
+    "energy levels",
+    "principal energy level",
+    "shell (atom)"
+   ],
+   "taughtIn": "electron-configuration",
+   "dependsOn": [
+    "electron",
+    "nucleus"
+   ]
+  },
+  {
+   "id": "subshell",
+   "term": "subshell",
+   "aliases": [
+    "subshells",
+    "sublevel",
+    "sublevels",
+    "s subshell",
+    "p subshell",
+    "d subshell"
+   ],
+   "taughtIn": "electron-configuration",
+   "dependsOn": [
+    "electron-shell"
+   ]
+  },
+  {
+   "id": "orbital",
+   "term": "orbital",
+   "aliases": [
+    "orbitals",
+    "atomic orbital",
+    "atomic orbitals"
+   ],
+   "taughtIn": "electron-configuration",
+   "dependsOn": [
+    "subshell"
+   ]
+  },
+  {
+   "id": "aufbau",
+   "term": "aufbau principle",
+   "aliases": [],
+   "taughtIn": "electron-configuration",
+   "dependsOn": [
+    "subshell"
+   ]
+  },
+  {
+   "id": "electron-configuration",
+   "term": "electron configuration",
+   "aliases": [
+    "electron configurations",
+    "noble gas notation",
+    "noble-gas notation"
+   ],
+   "taughtIn": "electron-configuration",
+   "dependsOn": [
+    "subshell",
+    "aufbau"
+   ]
+  },
+  {
+   "id": "valence-electron",
+   "term": "valence electron",
+   "aliases": [
+    "valence electrons",
+    "valence shell"
+   ],
+   "taughtIn": "electron-configuration",
+   "dependsOn": [
+    "electron-shell"
+   ]
+  },
+  {
+   "id": "core-electron",
+   "term": "core electron",
+   "aliases": [
+    "core electrons",
+    "inner electrons"
+   ],
+   "taughtIn": "electron-configuration",
+   "dependsOn": [
+    "electron-shell"
+   ]
+  },
+  {
+   "id": "shielding",
+   "term": "shielding",
+   "aliases": [
+    "electron shielding",
+    "screening"
+   ],
+   "taughtIn": "electron-configuration",
+   "dependsOn": [
+    "core-electron",
+    "coulombs-law"
+   ]
+  },
+  {
+   "id": "ionization-energy",
+   "term": "ionization energy",
+   "aliases": [
+    "ionization energies",
+    "first ionization energy"
+   ],
+   "taughtIn": "electron-configuration",
+   "dependsOn": [
+    "coulombs-law",
+    "valence-electron",
+    "potential-energy"
+   ]
+  },
+  {
+   "id": "photon",
+   "term": "photon",
+   "aliases": [
+    "photons"
+   ],
+   "taughtIn": "photoelectron-spectroscopy",
+   "dependsOn": [
+    "electron"
+   ],
+   "fullIn": [
+    "photons"
+   ]
+  },
+  {
+   "id": "photoelectron-spectroscopy",
+   "term": "photoelectron spectroscopy",
+   "aliases": [
+    "PES",
+    "photoelectron spectrum",
+    "photoelectron spectra"
+   ],
+   "taughtIn": "photoelectron-spectroscopy",
+   "dependsOn": [
+    "photon",
+    "ionization-energy",
+    "electron-configuration"
+   ]
+  },
+  {
+   "id": "binding-energy",
+   "term": "binding energy",
+   "aliases": [
+    "binding energies"
+   ],
+   "taughtIn": "photoelectron-spectroscopy",
+   "dependsOn": [
+    "photoelectron-spectroscopy"
+   ]
+  },
+  {
+   "id": "periodic-trend",
+   "term": "periodic trend",
+   "aliases": [
+    "periodic trends",
+    "periodicity"
+   ],
+   "taughtIn": "periodic-trends",
+   "dependsOn": [
+    "periodic-table",
+    "coulombs-law"
+   ]
+  },
+  {
+   "id": "periodic-group",
+   "term": "group (periodic table)",
+   "aliases": [
+    "period (periodic table)",
+    "family (periodic table)"
+   ],
+   "taughtIn": "periodic-trends",
+   "dependsOn": [
+    "periodic-table",
+    "valence-electron"
+   ]
+  },
+  {
+   "id": "effective-nuclear-charge",
+   "term": "effective nuclear charge",
+   "aliases": [
+    "Zeff"
+   ],
+   "taughtIn": "periodic-trends",
+   "dependsOn": [
+    "shielding",
+    "coulombs-law"
+   ]
+  },
+  {
+   "id": "atomic-radius",
+   "term": "atomic radius",
+   "aliases": [
+    "atomic radii",
+    "atomic size"
+   ],
+   "taughtIn": "periodic-trends",
+   "dependsOn": [
+    "effective-nuclear-charge",
+    "electron-shell"
+   ]
+  },
+  {
+   "id": "ionic-radius",
+   "term": "ionic radius",
+   "aliases": [
+    "ionic radii"
+   ],
+   "taughtIn": "periodic-trends",
+   "dependsOn": [
+    "atomic-radius",
+    "ion"
+   ]
+  },
+  {
+   "id": "electronegativity",
+   "term": "electronegativity",
+   "aliases": [
+    "electronegativities",
+    "electronegative"
+   ],
+   "taughtIn": "periodic-trends",
+   "dependsOn": [
+    "effective-nuclear-charge"
+   ]
+  },
+  {
+   "id": "electron-affinity",
+   "term": "electron affinity",
+   "aliases": [
+    "electron affinities"
+   ],
+   "taughtIn": "periodic-trends",
+   "dependsOn": [
+    "effective-nuclear-charge"
+   ]
+  },
+  {
+   "id": "metal",
+   "term": "metal",
+   "aliases": [
+    "metals",
+    "nonmetal",
+    "nonmetals",
+    "metalloid",
+    "metalloids",
+    "metallic character"
+   ],
+   "taughtIn": "periodic-trends",
+   "dependsOn": [
+    "periodic-trend"
+   ]
+  },
+  {
+   "id": "noble-gas-configuration",
+   "term": "noble gas configuration",
+   "aliases": [
+    "noble-gas configuration",
+    "isoelectronic"
+   ],
+   "taughtIn": "ionic-compounds-valence",
+   "dependsOn": [
+    "electron-configuration",
+    "valence-electron"
+   ]
+  },
+  {
+   "id": "ionic-compound",
+   "term": "ionic compound",
+   "aliases": [
+    "ionic compounds",
+    "salt (ionic compound)",
+    "formula unit",
+    "formula units"
+   ],
+   "taughtIn": "ionic-compounds-valence",
+   "dependsOn": [
+    "cation",
+    "anion",
+    "metal"
+   ]
+  },
+  {
+   "id": "chemical-bond",
+   "term": "chemical bond",
+   "aliases": [
+    "chemical bonds"
+   ],
+   "taughtIn": "bond-types",
+   "dependsOn": [
+    "valence-electron",
+    "coulombs-law"
+   ]
+  },
+  {
+   "id": "covalent-bond",
+   "term": "covalent bond",
+   "aliases": [
+    "covalent bonds",
+    "covalent",
+    "shared pair of electrons"
+   ],
+   "taughtIn": "bond-types",
+   "dependsOn": [
+    "chemical-bond"
+   ]
+  },
+  {
+   "id": "polar-covalent",
+   "term": "polar covalent bond",
+   "aliases": [
+    "polar covalent bonds",
+    "polar covalent",
+    "polar bond",
+    "polar bonds",
+    "nonpolar covalent bond",
+    "nonpolar covalent bonds",
+    "nonpolar covalent",
+    "bond polarity"
+   ],
+   "taughtIn": "bond-types",
+   "dependsOn": [
+    "covalent-bond",
+    "electronegativity"
+   ]
+  },
+  {
+   "id": "partial-charge",
+   "term": "partial charge",
+   "aliases": [
+    "partial charges",
+    "δ+",
+    "δ−"
+   ],
+   "taughtIn": "bond-types",
+   "dependsOn": [
+    "polar-covalent"
+   ]
+  },
+  {
+   "id": "dipole",
+   "term": "dipole",
+   "aliases": [
+    "dipoles",
+    "bond dipole",
+    "bond dipoles"
+   ],
+   "taughtIn": "bond-types",
+   "dependsOn": [
+    "partial-charge"
+   ]
+  },
+  {
+   "id": "ionic-bond",
+   "term": "ionic bond",
+   "aliases": [
+    "ionic bonds",
+    "ionic bonding"
+   ],
+   "taughtIn": "bond-types",
+   "dependsOn": [
+    "ionic-compound",
+    "chemical-bond"
+   ]
+  },
+  {
+   "id": "metallic-bond",
+   "term": "metallic bond",
+   "aliases": [
+    "metallic bonds",
+    "metallic bonding",
+    "electron sea",
+    "sea of electrons"
+   ],
+   "taughtIn": "bond-types",
+   "dependsOn": [
+    "metal",
+    "chemical-bond"
+   ]
+  },
+  {
+   "id": "intramolecular-force",
+   "term": "intramolecular force",
+   "aliases": [
+    "intramolecular forces"
+   ],
+   "taughtIn": "bond-potential-energy",
+   "dependsOn": [
+    "chemical-bond"
+   ]
+  },
+  {
+   "id": "potential-energy-curve",
+   "term": "potential energy curve",
+   "aliases": [
+    "potential energy curves"
+   ],
+   "taughtIn": "bond-potential-energy",
+   "dependsOn": [
+    "potential-energy",
+    "chemical-bond"
+   ]
+  },
+  {
+   "id": "bond-length",
+   "term": "bond length",
+   "aliases": [
+    "bond lengths"
+   ],
+   "taughtIn": "bond-potential-energy",
+   "dependsOn": [
+    "potential-energy-curve"
+   ]
+  },
+  {
+   "id": "bond-energy",
+   "term": "bond energy",
+   "aliases": [
+    "bond energies",
+    "bond strength",
+    "bond dissociation energy"
+   ],
+   "taughtIn": "bond-potential-energy",
+   "dependsOn": [
+    "potential-energy-curve"
+   ]
+  },
+  {
+   "id": "bond-multiplicity",
+   "term": "single bond",
+   "aliases": [
+    "single bonds",
+    "double bond",
+    "double bonds",
+    "triple bond",
+    "triple bonds",
+    "multiple bond",
+    "multiple bonds"
+   ],
+   "taughtIn": "bond-potential-energy",
+   "dependsOn": [
+    "covalent-bond",
+    "bond-length"
+   ]
+  },
+  {
+   "id": "ionic-solid",
+   "term": "ionic solid",
+   "aliases": [
+    "ionic solids",
+    "crystal lattice",
+    "ionic lattice",
+    "lattice"
+   ],
+   "taughtIn": "ionic-solids",
+   "dependsOn": [
+    "ionic-bond"
+   ]
+  },
+  {
+   "id": "lattice-energy",
+   "term": "lattice energy",
+   "aliases": [
+    "lattice energies"
+   ],
+   "taughtIn": "ionic-solids",
+   "dependsOn": [
+    "ionic-solid",
+    "coulombs-law"
+   ]
+  },
+  {
+   "id": "conductivity",
+   "term": "electrical conductivity",
+   "aliases": [
+    "conduct electricity",
+    "conducts electricity",
+    "electrical conductor"
+   ],
+   "taughtIn": "ionic-solids",
+   "dependsOn": [
+    "ion",
+    "ionic-solid"
+   ]
+  },
+  {
+   "id": "brittleness",
+   "term": "brittle",
+   "aliases": [
+    "brittleness"
+   ],
+   "taughtIn": "ionic-solids",
+   "dependsOn": [
+    "ionic-solid"
+   ]
+  },
+  {
+   "id": "metallic-solid",
+   "term": "metallic solid",
+   "aliases": [
+    "metallic solids"
+   ],
+   "taughtIn": "metals-alloys",
+   "dependsOn": [
+    "metallic-bond"
+   ]
+  },
+  {
+   "id": "malleability",
+   "term": "malleable",
+   "aliases": [
+    "malleability",
+    "ductile",
+    "ductility"
+   ],
+   "taughtIn": "metals-alloys",
+   "dependsOn": [
+    "metallic-solid"
+   ]
+  },
+  {
+   "id": "alloy",
+   "term": "alloy",
+   "aliases": [
+    "alloys"
+   ],
+   "taughtIn": "metals-alloys",
+   "dependsOn": [
+    "metallic-solid"
+   ]
+  },
+  {
+   "id": "interstitial-alloy",
+   "term": "interstitial alloy",
+   "aliases": [
+    "interstitial alloys"
+   ],
+   "taughtIn": "metals-alloys",
+   "dependsOn": [
+    "alloy",
+    "atomic-radius"
+   ]
+  },
+  {
+   "id": "substitutional-alloy",
+   "term": "substitutional alloy",
+   "aliases": [
+    "substitutional alloys"
+   ],
+   "taughtIn": "metals-alloys",
+   "dependsOn": [
+    "alloy",
+    "atomic-radius"
+   ]
+  },
+  {
+   "id": "lewis-diagram",
+   "term": "Lewis diagram",
+   "aliases": [
+    "Lewis diagrams",
+    "Lewis structure",
+    "Lewis structures",
+    "Lewis dot diagram",
+    "electron-dot diagram"
+   ],
+   "taughtIn": "lewis-diagrams",
+   "dependsOn": [
+    "valence-electron",
+    "covalent-bond"
+   ]
+  },
+  {
+   "id": "central-atom",
+   "term": "central atom",
+   "aliases": [
+    "central atoms"
+   ],
+   "taughtIn": "lewis-diagrams",
+   "dependsOn": [
+    "lewis-diagram"
+   ]
+  },
+  {
+   "id": "lone-pair",
+   "term": "lone pair",
+   "aliases": [
+    "lone pairs",
+    "nonbonding pair",
+    "unshared pair"
+   ],
+   "taughtIn": "lewis-diagrams",
+   "dependsOn": [
+    "lewis-diagram"
+   ]
+  },
+  {
+   "id": "bonding-pair",
+   "term": "bonding pair",
+   "aliases": [
+    "bonding pairs",
+    "shared pair"
+   ],
+   "taughtIn": "lewis-diagrams",
+   "dependsOn": [
+    "lewis-diagram"
+   ]
+  },
+  {
+   "id": "octet-rule",
+   "term": "octet rule",
+   "aliases": [
+    "octet",
+    "octets"
+   ],
+   "taughtIn": "lewis-diagrams",
+   "dependsOn": [
+    "lewis-diagram",
+    "noble-gas-configuration"
+   ]
+  },
+  {
+   "id": "octet-exception",
+   "term": "expanded octet",
+   "aliases": [
+    "expanded octets",
+    "incomplete octet",
+    "odd-electron molecule",
+    "free radical",
+    "free radicals"
+   ],
+   "taughtIn": "lewis-diagrams",
+   "dependsOn": [
+    "octet-rule"
+   ]
+  },
+  {
+   "id": "polyatomic-ion",
+   "term": "polyatomic ion",
+   "aliases": [
+    "polyatomic ions"
+   ],
+   "taughtIn": "lewis-diagrams",
+   "dependsOn": [
+    "ion",
+    "lewis-diagram"
+   ]
+  },
+  {
+   "id": "resonance",
+   "term": "resonance",
+   "aliases": [
+    "resonance structure",
+    "resonance structures",
+    "resonance forms",
+    "resonance hybrid"
+   ],
+   "taughtIn": "resonance-formal-charge",
+   "dependsOn": [
+    "lewis-diagram",
+    "bond-multiplicity"
+   ]
+  },
+  {
+   "id": "delocalization",
+   "term": "delocalized electrons",
+   "aliases": [
+    "delocalized",
+    "delocalization"
+   ],
+   "taughtIn": "resonance-formal-charge",
+   "dependsOn": [
+    "resonance"
+   ]
+  },
+  {
+   "id": "formal-charge",
+   "term": "formal charge",
+   "aliases": [
+    "formal charges"
+   ],
+   "taughtIn": "resonance-formal-charge",
+   "dependsOn": [
+    "lewis-diagram",
+    "valence-electron"
+   ]
+  },
+  {
+   "id": "bond-order",
+   "term": "bond order",
+   "aliases": [
+    "bond orders",
+    "fractional bond order"
+   ],
+   "taughtIn": "resonance-formal-charge",
+   "dependsOn": [
+    "resonance",
+    "bond-multiplicity"
+   ]
+  },
+  {
+   "id": "vsepr",
+   "term": "VSEPR",
+   "aliases": [
+    "VSEPR theory",
+    "valence shell electron pair repulsion"
+   ],
+   "taughtIn": "vsepr-hybridization",
+   "dependsOn": [
+    "lewis-diagram",
+    "lone-pair"
+   ]
+  },
+  {
+   "id": "electron-domain",
+   "term": "electron domain",
+   "aliases": [
+    "electron domains",
+    "electron domain geometry",
+    "electron geometry",
+    "steric number"
+   ],
+   "taughtIn": "vsepr-hybridization",
+   "dependsOn": [
+    "vsepr"
+   ]
+  },
+  {
+   "id": "molecular-geometry",
+   "term": "molecular geometry",
+   "aliases": [
+    "molecular shape",
+    "molecular shapes",
+    "linear (shape)",
+    "bent (shape)",
+    "trigonal planar",
+    "tetrahedral",
+    "trigonal pyramidal",
+    "trigonal bipyramidal",
+    "octahedral",
+    "seesaw",
+    "T-shaped",
+    "square planar",
+    "square pyramidal"
+   ],
+   "taughtIn": "vsepr-hybridization",
+   "dependsOn": [
+    "electron-domain"
+   ]
+  },
+  {
+   "id": "bond-angle",
+   "term": "bond angle",
+   "aliases": [
+    "bond angles"
+   ],
+   "taughtIn": "vsepr-hybridization",
+   "dependsOn": [
+    "molecular-geometry"
+   ]
+  },
+  {
+   "id": "molecular-polarity",
+   "term": "molecular polarity",
+   "aliases": [
+    "polar molecule",
+    "polar molecules",
+    "nonpolar molecule",
+    "nonpolar molecules",
+    "net dipole",
+    "dipole moment"
+   ],
+   "taughtIn": "vsepr-hybridization",
+   "dependsOn": [
+    "dipole",
+    "molecular-geometry"
+   ]
+  },
+  {
+   "id": "hybridization",
+   "term": "hybridization",
+   "aliases": [
+    "hybrid orbital",
+    "hybrid orbitals",
+    "sp hybridized",
+    "sp2",
+    "sp3",
+    "sp²",
+    "sp³"
+   ],
+   "taughtIn": "vsepr-hybridization",
+   "dependsOn": [
+    "orbital",
+    "electron-domain"
+   ]
+  },
+  {
+   "id": "sigma-pi",
+   "term": "sigma bond",
+   "aliases": [
+    "sigma bonds",
+    "pi bond",
+    "pi bonds",
+    "σ bond",
+    "π bond"
+   ],
+   "taughtIn": "vsepr-hybridization",
+   "dependsOn": [
+    "hybridization",
+    "bond-multiplicity"
+   ]
+  },
+  {
+   "id": "imf",
+   "term": "intermolecular force",
+   "aliases": [
+    "intermolecular forces",
+    "IMF",
+    "IMFs",
+    "interparticle force",
+    "interparticle forces"
+   ],
+   "taughtIn": "intermolecular-forces",
+   "dependsOn": [
+    "molecular-polarity",
+    "coulombs-law",
+    "intramolecular-force"
+   ]
+  },
+  {
+   "id": "polarizability",
+   "term": "polarizability",
+   "aliases": [
+    "polarizable"
+   ],
+   "taughtIn": "intermolecular-forces",
+   "dependsOn": [
+    "electron-shell"
+   ]
+  },
+  {
+   "id": "london-dispersion",
+   "term": "London dispersion force",
+   "aliases": [
+    "London dispersion forces",
+    "dispersion force",
+    "dispersion forces",
+    "LDF",
+    "LDFs",
+    "instantaneous dipole",
+    "induced dipole"
+   ],
+   "taughtIn": "intermolecular-forces",
+   "dependsOn": [
+    "imf",
+    "polarizability"
+   ]
+  },
+  {
+   "id": "dipole-dipole",
+   "term": "dipole-dipole force",
+   "aliases": [
+    "dipole-dipole forces",
+    "dipole-dipole interaction",
+    "dipole-dipole interactions"
+   ],
+   "taughtIn": "intermolecular-forces",
+   "dependsOn": [
+    "imf",
+    "molecular-polarity"
+   ]
+  },
+  {
+   "id": "dipole-induced",
+   "term": "dipole-induced dipole",
+   "aliases": [
+    "dipole-induced dipole forces"
+   ],
+   "taughtIn": "intermolecular-forces",
+   "dependsOn": [
+    "dipole-dipole",
+    "london-dispersion"
+   ]
+  },
+  {
+   "id": "hydrogen-bond",
+   "term": "hydrogen bond",
+   "aliases": [
+    "hydrogen bonds",
+    "hydrogen bonding",
+    "H-bond",
+    "H-bonds",
+    "H-bonding"
+   ],
+   "taughtIn": "intermolecular-forces",
+   "dependsOn": [
+    "dipole-dipole",
+    "electronegativity",
+    "lone-pair"
+   ]
+  },
+  {
+   "id": "ion-dipole",
+   "term": "ion-dipole force",
+   "aliases": [
+    "ion-dipole forces",
+    "ion-dipole interaction",
+    "ion-dipole interactions",
+    "ion-dipole"
+   ],
+   "taughtIn": "intermolecular-forces",
+   "dependsOn": [
+    "ion",
+    "molecular-polarity",
+    "imf"
+   ]
+  },
+  {
+   "id": "boiling-point",
+   "term": "boiling point",
+   "aliases": [
+    "boiling points",
+    "normal boiling point"
+   ],
+   "taughtIn": "intermolecular-forces",
+   "dependsOn": [
+    "imf"
+   ]
+  },
+  {
+   "id": "melting-point",
+   "term": "melting point",
+   "aliases": [
+    "melting points"
+   ],
+   "taughtIn": "intermolecular-forces",
+   "dependsOn": [
+    "imf"
+   ]
+  },
+  {
+   "id": "molecular-solid",
+   "term": "molecular solid",
+   "aliases": [
+    "molecular solids"
+   ],
+   "taughtIn": "solids-properties",
+   "dependsOn": [
+    "imf"
+   ]
+  },
+  {
+   "id": "covalent-network",
+   "term": "covalent network solid",
+   "aliases": [
+    "covalent network solids",
+    "network solid",
+    "network solids",
+    "network covalent"
+   ],
+   "taughtIn": "solids-properties",
+   "dependsOn": [
+    "covalent-bond"
+   ]
+  },
+  {
+   "id": "crystalline-solid",
+   "term": "crystalline solid",
+   "aliases": [
+    "crystalline solids",
+    "amorphous solid",
+    "amorphous solids",
+    "crystalline",
+    "amorphous"
+   ],
+   "taughtIn": "solids-properties",
+   "dependsOn": [
+    "ionic-solid"
+   ]
+  },
+  {
+   "id": "states-of-matter",
+   "term": "state of matter",
+   "aliases": [
+    "states of matter",
+    "solid",
+    "solids",
+    "liquid",
+    "liquids",
+    "gas",
+    "gases"
+   ],
+   "taughtIn": "phases-of-matter",
+   "dependsOn": [
+    "particulate-diagram"
+   ]
+  },
+  {
+   "id": "pressure",
+   "term": "pressure",
+   "aliases": [
+    "gas pressure",
+    "atmosphere (unit)",
+    "atm",
+    "torr",
+    "mm Hg",
+    "pascal",
+    "kPa"
+   ],
+   "taughtIn": "phases-of-matter",
+   "dependsOn": [
+    "states-of-matter"
+   ]
+  },
+  {
+   "id": "phase-change",
+   "term": "phase change",
+   "aliases": [
+    "phase changes",
+    "phase transition",
+    "melting",
+    "freezing",
+    "vaporization",
+    "evaporation",
+    "evaporate",
+    "condensation",
+    "sublimation",
+    "deposition (phase)"
+   ],
+   "taughtIn": "phases-of-matter",
+   "dependsOn": [
+    "states-of-matter",
+    "imf"
+   ]
+  },
+  {
+   "id": "dynamic-equilibrium",
+   "term": "dynamic equilibrium",
+   "aliases": [
+    "equilibrium"
+   ],
+   "taughtIn": "phases-of-matter",
+   "dependsOn": [
+    "phase-change"
+   ],
+   "fullIn": [
+    "equilibrium-intro"
+   ]
+  },
+  {
+   "id": "vapor-pressure",
+   "term": "vapor pressure",
+   "aliases": [
+    "vapor pressures",
+    "equilibrium vapor pressure",
+    "volatile",
+    "volatility"
+   ],
+   "taughtIn": "phases-of-matter",
+   "dependsOn": [
+    "dynamic-equilibrium",
+    "pressure",
+    "imf"
+   ]
+  },
+  {
+   "id": "ideal-gas",
+   "term": "ideal gas law",
+   "aliases": [
+    "PV = nRT",
+    "ideal gas",
+    "ideal gases"
+   ],
+   "taughtIn": "ideal-gas-law",
+   "dependsOn": [
+    "pressure",
+    "mole",
+    "kelvin"
+   ]
+  },
+  {
+   "id": "gas-constant",
+   "term": "gas constant",
+   "aliases": [
+    "universal gas constant",
+    "R (gas constant)"
+   ],
+   "taughtIn": "ideal-gas-law",
+   "dependsOn": [
+    "ideal-gas"
+   ]
+  },
+  {
+   "id": "combined-gas-law",
+   "term": "combined gas law",
+   "aliases": [
+    "Boyle's law",
+    "Charles's law",
+    "Gay-Lussac's law",
+    "Avogadro's law"
+   ],
+   "taughtIn": "ideal-gas-law",
+   "dependsOn": [
+    "ideal-gas"
+   ]
+  },
+  {
+   "id": "stp",
+   "term": "STP",
+   "aliases": [
+    "standard temperature and pressure",
+    "molar volume"
+   ],
+   "taughtIn": "ideal-gas-law",
+   "dependsOn": [
+    "ideal-gas"
+   ]
+  },
+  {
+   "id": "partial-pressure",
+   "term": "partial pressure",
+   "aliases": [
+    "partial pressures",
+    "Dalton's law",
+    "Dalton's law of partial pressures",
+    "total pressure"
+   ],
+   "taughtIn": "ideal-gas-law",
+   "dependsOn": [
+    "ideal-gas"
+   ]
+  },
+  {
+   "id": "mole-fraction",
+   "term": "mole fraction",
+   "aliases": [
+    "mole fractions"
+   ],
+   "taughtIn": "ideal-gas-law",
+   "dependsOn": [
+    "mole",
+    "partial-pressure"
+   ]
+  },
+  {
+   "id": "kinetic-energy",
+   "term": "kinetic energy",
+   "aliases": [
+    "average kinetic energy",
+    "KE"
+   ],
+   "taughtIn": "kinetic-molecular-theory",
+   "dependsOn": [
+    "kelvin"
+   ]
+  },
+  {
+   "id": "kmt",
+   "term": "kinetic molecular theory",
+   "aliases": [
+    "kinetic-molecular theory",
+    "KMT",
+    "elastic collision",
+    "elastic collisions"
+   ],
+   "taughtIn": "kinetic-molecular-theory",
+   "dependsOn": [
+    "ideal-gas",
+    "kinetic-energy"
+   ]
+  },
+  {
+   "id": "thermal-energy",
+   "term": "thermal energy",
+   "aliases": [],
+   "taughtIn": "kinetic-molecular-theory",
+   "dependsOn": [
+    "kinetic-energy"
+   ]
+  },
+  {
+   "id": "maxwell-boltzmann",
+   "term": "Maxwell-Boltzmann distribution",
+   "aliases": [
+    "Maxwell-Boltzmann distributions",
+    "Maxwell-Boltzmann",
+    "distribution of molecular speeds"
+   ],
+   "taughtIn": "kinetic-molecular-theory",
+   "dependsOn": [
+    "kmt"
+   ]
+  },
+  {
+   "id": "real-gas",
+   "term": "real gas",
+   "aliases": [
+    "real gases",
+    "nonideal gas",
+    "deviation from ideal behavior",
+    "ideal behavior"
+   ],
+   "taughtIn": "real-gases",
+   "dependsOn": [
+    "kmt",
+    "imf"
+   ]
+  },
+  {
+   "id": "solution",
+   "term": "solution",
+   "aliases": [
+    "solutions",
+    "solute",
+    "solutes",
+    "solvent",
+    "solvents",
+    "aqueous",
+    "aqueous solution",
+    "aqueous solutions"
+   ],
+   "taughtIn": "solutions",
+   "dependsOn": [
+    "homogeneous-mixture"
+   ]
+  },
+  {
+   "id": "molarity",
+   "term": "molarity",
+   "aliases": [
+    "molar concentration",
+    "M (molarity)",
+    "mol/L"
+   ],
+   "taughtIn": "solutions",
+   "dependsOn": [
+    "solution",
+    "mole"
+   ]
+  },
+  {
+   "id": "dilution",
+   "term": "dilution",
+   "aliases": [
+    "dilutions",
+    "dilute",
+    "diluted",
+    "stock solution",
+    "M1V1 = M2V2"
+   ],
+   "taughtIn": "solutions",
+   "dependsOn": [
+    "molarity"
+   ]
+  },
+  {
+   "id": "volumetric-flask",
+   "term": "volumetric flask",
+   "aliases": [
+    "volumetric flasks",
+    "volumetric pipet",
+    "volumetric pipette",
+    "analytical balance"
+   ],
+   "taughtIn": "solutions",
+   "dependsOn": [
+    "molarity"
+   ]
+  },
+  {
+   "id": "electrolyte",
+   "term": "electrolyte",
+   "aliases": [
+    "electrolytes",
+    "strong electrolyte",
+    "weak electrolyte",
+    "nonelectrolyte",
+    "nonelectrolytes"
+   ],
+   "taughtIn": "solutions",
+   "dependsOn": [
+    "solution",
+    "ion",
+    "conductivity"
+   ]
+  },
+  {
+   "id": "dissociation",
+   "term": "dissociation",
+   "aliases": [
+    "dissociate",
+    "dissociates",
+    "dissociated"
+   ],
+   "taughtIn": "solution-particle-models",
+   "dependsOn": [
+    "ionic-compound",
+    "solution"
+   ]
+  },
+  {
+   "id": "hydration",
+   "term": "hydration",
+   "aliases": [
+    "hydrated",
+    "hydration shell",
+    "solvation",
+    "solvated"
+   ],
+   "taughtIn": "solution-particle-models",
+   "dependsOn": [
+    "ion-dipole",
+    "dissociation"
+   ]
+  },
+  {
+   "id": "chromatography",
+   "term": "chromatography",
+   "aliases": [
+    "paper chromatography",
+    "thin-layer chromatography",
+    "column chromatography",
+    "Rf",
+    "retention factor",
+    "mobile phase",
+    "stationary phase"
+   ],
+   "taughtIn": "separating-mixtures",
+   "dependsOn": [
+    "imf",
+    "solution"
+   ]
+  },
+  {
+   "id": "distillation",
+   "term": "distillation",
+   "aliases": [
+    "fractional distillation",
+    "distill",
+    "distilled"
+   ],
+   "taughtIn": "separating-mixtures",
+   "dependsOn": [
+    "vapor-pressure",
+    "boiling-point"
+   ]
+  },
+  {
+   "id": "filtration",
+   "term": "filtration",
+   "aliases": [
+    "filtrate",
+    "filter paper"
+   ],
+   "taughtIn": "separating-mixtures",
+   "dependsOn": [
+    "mixture"
+   ]
+  },
+  {
+   "id": "solubility",
+   "term": "solubility",
+   "aliases": [
+    "solubilities",
+    "soluble",
+    "insoluble",
+    "miscible",
+    "immiscible",
+    "like dissolves like"
+   ],
+   "taughtIn": "solubility",
+   "dependsOn": [
+    "imf",
+    "solution"
+   ]
+  },
+  {
+   "id": "electromagnetic-spectrum",
+   "term": "electromagnetic spectrum",
+   "aliases": [
+    "electromagnetic radiation",
+    "EM spectrum",
+    "ultraviolet",
+    "UV",
+    "infrared",
+    "IR",
+    "microwave",
+    "microwaves",
+    "visible light",
+    "X-ray",
+    "X-rays"
+   ],
+   "taughtIn": "electromagnetic-spectrum",
+   "dependsOn": [
+    "photon"
+   ]
+  },
+  {
+   "id": "wavelength",
+   "term": "wavelength",
+   "aliases": [
+    "wavelengths",
+    "frequency (light)",
+    "λ"
+   ],
+   "taughtIn": "electromagnetic-spectrum",
+   "dependsOn": [
+    "electromagnetic-spectrum"
+   ]
+  },
+  {
+   "id": "molecular-motion",
+   "term": "molecular vibration",
+   "aliases": [
+    "molecular vibrations",
+    "vibrational energy",
+    "molecular rotation",
+    "rotational energy"
+   ],
+   "taughtIn": "electromagnetic-spectrum",
+   "dependsOn": [
+    "electromagnetic-spectrum"
+   ]
+  },
+  {
+   "id": "electronic-transition",
+   "term": "electronic transition",
+   "aliases": [
+    "electronic transitions",
+    "absorption spectrum",
+    "emission spectrum",
+    "spectroscopy",
+    "excited state",
+    "ground state"
+   ],
+   "taughtIn": "electromagnetic-spectrum",
+   "dependsOn": [
+    "electromagnetic-spectrum",
+    "electron-shell"
+   ]
+  },
+  {
+   "id": "photon-energy",
+   "term": "photon energy",
+   "aliases": [
+    "E = hν",
+    "Planck's constant",
+    "Planck constant",
+    "quantized"
+   ],
+   "taughtIn": "photons",
+   "dependsOn": [
+    "photon",
+    "wavelength"
+   ]
+  },
+  {
+   "id": "speed-of-light",
+   "term": "speed of light",
+   "aliases": [
+    "c = λν"
+   ],
+   "taughtIn": "photons",
+   "dependsOn": [
+    "wavelength"
+   ]
+  },
+  {
+   "id": "absorbance",
+   "term": "absorbance",
+   "aliases": [
+    "absorbances",
+    "transmittance"
+   ],
+   "taughtIn": "beer-lambert-law",
+   "dependsOn": [
+    "electromagnetic-spectrum"
+   ]
+  },
+  {
+   "id": "beer-lambert",
+   "term": "Beer-Lambert law",
+   "aliases": [
+    "Beer's law",
+    "A = εbc",
+    "molar absorptivity",
+    "path length"
+   ],
+   "taughtIn": "beer-lambert-law",
+   "dependsOn": [
+    "absorbance",
+    "molarity"
+   ]
+  },
+  {
+   "id": "spectrophotometer",
+   "term": "spectrophotometer",
+   "aliases": [
+    "spectrophotometry",
+    "colorimeter",
+    "cuvette",
+    "cuvettes",
+    "calibration curve",
+    "standard curve",
+    "λmax"
+   ],
+   "taughtIn": "beer-lambert-law",
+   "dependsOn": [
+    "beer-lambert"
+   ]
+  },
+  {
+   "id": "chemical-reaction",
+   "term": "chemical reaction",
+   "aliases": [
+    "chemical reactions"
+   ],
+   "taughtIn": "reactions-intro",
+   "dependsOn": [
+    "molecule"
+   ]
+  },
+  {
+   "id": "reactant",
+   "term": "reactant",
+   "aliases": [
+    "reactants",
+    "product (chemistry)"
+   ],
+   "taughtIn": "reactions-intro",
+   "dependsOn": [
+    "chemical-reaction"
+   ]
+  },
+  {
+   "id": "chemical-equation",
+   "term": "chemical equation",
+   "aliases": [
+    "chemical equations",
+    "balanced equation",
+    "balanced chemical equation",
+    "balancing equations",
+    "coefficient (equation)"
+   ],
+   "taughtIn": "reactions-intro",
+   "dependsOn": [
+    "reactant",
+    "chemical-formula"
+   ]
+  },
+  {
+   "id": "conservation-of-mass",
+   "term": "conservation of mass",
+   "aliases": [
+    "law of conservation of mass"
+   ],
+   "taughtIn": "reactions-intro",
+   "dependsOn": [
+    "chemical-equation",
+    "atom"
+   ]
+  },
+  {
+   "id": "net-ionic-equation",
+   "term": "net ionic equation",
+   "aliases": [
+    "net ionic equations",
+    "complete ionic equation",
+    "complete ionic equations",
+    "molecular equation",
+    "molecular equations"
+   ],
+   "taughtIn": "net-ionic-equations",
+   "dependsOn": [
+    "chemical-equation",
+    "dissociation",
+    "electrolyte"
+   ]
+  },
+  {
+   "id": "spectator-ion",
+   "term": "spectator ion",
+   "aliases": [
+    "spectator ions"
+   ],
+   "taughtIn": "net-ionic-equations",
+   "dependsOn": [
+    "net-ionic-equation"
+   ]
+  },
+  {
+   "id": "precipitate",
+   "term": "precipitate",
+   "aliases": [
+    "precipitates",
+    "precipitation"
+   ],
+   "taughtIn": "net-ionic-equations",
+   "dependsOn": [
+    "solubility",
+    "net-ionic-equation"
+   ]
+  },
+  {
+   "id": "state-symbol",
+   "term": "state symbol",
+   "aliases": [
+    "state symbols"
+   ],
+   "taughtIn": "reaction-representations",
+   "dependsOn": [
+    "chemical-equation",
+    "states-of-matter"
+   ]
+  },
+  {
+   "id": "reaction-diagram",
+   "term": "reaction particle diagram",
+   "aliases": [
+    "reaction particle diagrams"
+   ],
+   "taughtIn": "reaction-representations",
+   "dependsOn": [
+    "particulate-diagram",
+    "chemical-equation"
+   ]
+  },
+  {
+   "id": "physical-change",
+   "term": "physical change",
+   "aliases": [
+    "physical changes",
+    "physical process"
+   ],
+   "taughtIn": "physical-chemical-changes",
+   "dependsOn": [
+    "states-of-matter"
+   ]
+  },
+  {
+   "id": "chemical-change",
+   "term": "chemical change",
+   "aliases": [
+    "chemical changes"
+   ],
+   "taughtIn": "physical-chemical-changes",
+   "dependsOn": [
+    "chemical-reaction",
+    "physical-change"
+   ]
+  },
+  {
+   "id": "stoichiometry",
+   "term": "stoichiometry",
+   "aliases": [
+    "stoichiometric",
+    "mole ratio",
+    "mole ratios"
+   ],
+   "taughtIn": "stoichiometry",
+   "dependsOn": [
+    "chemical-equation",
+    "mole"
+   ]
+  },
+  {
+   "id": "limiting-reactant",
+   "term": "limiting reactant",
+   "aliases": [
+    "limiting reactants",
+    "limiting reagent",
+    "excess reactant",
+    "excess reagent",
+    "in excess"
+   ],
+   "taughtIn": "stoichiometry",
+   "dependsOn": [
+    "stoichiometry"
+   ]
+  },
+  {
+   "id": "yield",
+   "term": "theoretical yield",
+   "aliases": [
+    "percent yield",
+    "actual yield"
+   ],
+   "taughtIn": "stoichiometry",
+   "dependsOn": [
+    "limiting-reactant"
+   ]
+  },
+  {
+   "id": "gravimetric",
+   "term": "gravimetric analysis",
+   "aliases": [],
+   "taughtIn": "stoichiometry",
+   "dependsOn": [
+    "precipitate",
+    "stoichiometry"
+   ]
+  },
+  {
+   "id": "titration",
+   "term": "titration",
+   "aliases": [
+    "titrations",
+    "titrant",
+    "analyte",
+    "titrate"
+   ],
+   "taughtIn": "titration-intro",
+   "dependsOn": [
+    "stoichiometry",
+    "molarity"
+   ]
+  },
+  {
+   "id": "equivalence-point",
+   "term": "equivalence point",
+   "aliases": [
+    "equivalence points",
+    "end point",
+    "endpoint"
+   ],
+   "taughtIn": "titration-intro",
+   "dependsOn": [
+    "titration"
+   ]
+  },
+  {
+   "id": "buret",
+   "term": "buret",
+   "aliases": [
+    "burets",
+    "burette",
+    "meniscus"
+   ],
+   "taughtIn": "titration-intro",
+   "dependsOn": [
+    "titration"
+   ]
+  },
+  {
+   "id": "indicator",
+   "term": "indicator",
+   "aliases": [
+    "indicators"
+   ],
+   "taughtIn": "titration-intro",
+   "dependsOn": [
+    "titration"
+   ]
+  },
+  {
+   "id": "reaction-type",
+   "term": "precipitation reaction",
+   "aliases": [
+    "precipitation reactions",
+    "synthesis reaction",
+    "decomposition reaction",
+    "single replacement",
+    "double replacement"
+   ],
+   "taughtIn": "reaction-types",
+   "dependsOn": [
+    "chemical-equation",
+    "precipitate"
+   ]
+  },
+  {
+   "id": "combustion",
+   "term": "combustion",
+   "aliases": [
+    "combustion reaction",
+    "combustion reactions",
+    "hydrocarbon",
+    "hydrocarbons"
+   ],
+   "taughtIn": "reaction-types",
+   "dependsOn": [
+    "chemical-equation"
+   ]
+  },
+  {
+   "id": "bronsted-lowry",
+   "term": "Brønsted-Lowry acid",
+   "aliases": [
+    "Brønsted-Lowry base",
+    "Bronsted-Lowry acid",
+    "Bronsted-Lowry base",
+    "Brønsted-Lowry",
+    "proton donor",
+    "proton acceptor",
+    "acid",
+    "acids",
+    "base (chemistry)",
+    "bases"
+   ],
+   "taughtIn": "acid-base-reactions-intro",
+   "dependsOn": [
+    "proton",
+    "ion",
+    "chemical-reaction"
+   ]
+  },
+  {
+   "id": "conjugate-pair",
+   "term": "conjugate acid",
+   "aliases": [
+    "conjugate acids",
+    "conjugate base",
+    "conjugate bases",
+    "conjugate acid-base pair",
+    "conjugate acid-base pairs",
+    "conjugate pair"
+   ],
+   "taughtIn": "acid-base-reactions-intro",
+   "dependsOn": [
+    "bronsted-lowry"
+   ]
+  },
+  {
+   "id": "hydronium",
+   "term": "hydronium",
+   "aliases": [
+    "hydronium ion",
+    "H3O+",
+    "H₃O⁺"
+   ],
+   "taughtIn": "acid-base-reactions-intro",
+   "dependsOn": [
+    "bronsted-lowry"
+   ]
+  },
+  {
+   "id": "amphoteric",
+   "term": "amphoteric",
+   "aliases": [
+    "amphiprotic"
+   ],
+   "taughtIn": "acid-base-reactions-intro",
+   "dependsOn": [
+    "bronsted-lowry"
+   ]
+  },
+  {
+   "id": "neutralization",
+   "term": "neutralization",
+   "aliases": [
+    "neutralize",
+    "neutralizes",
+    "neutralization reaction"
+   ],
+   "taughtIn": "acid-base-reactions-intro",
+   "dependsOn": [
+    "bronsted-lowry"
+   ]
+  },
+  {
+   "id": "oxidation-number",
+   "term": "oxidation number",
+   "aliases": [
+    "oxidation numbers",
+    "oxidation state",
+    "oxidation states"
+   ],
+   "taughtIn": "redox-reactions",
+   "dependsOn": [
+    "electron",
+    "ion"
+   ]
+  },
+  {
+   "id": "redox",
+   "term": "redox",
+   "aliases": [
+    "redox reaction",
+    "redox reactions",
+    "oxidation",
+    "oxidized",
+    "reduction (chemistry)",
+    "reduced (chemistry)"
+   ],
+   "taughtIn": "redox-reactions",
+   "dependsOn": [
+    "oxidation-number"
+   ]
+  },
+  {
+   "id": "half-reaction",
+   "term": "half-reaction",
+   "aliases": [
+    "half-reactions",
+    "half reaction",
+    "half reactions"
+   ],
+   "taughtIn": "redox-reactions",
+   "dependsOn": [
+    "redox"
+   ]
+  },
+  {
+   "id": "oxidizing-agent",
+   "term": "oxidizing agent",
+   "aliases": [
+    "oxidizing agents",
+    "reducing agent",
+    "reducing agents"
+   ],
+   "taughtIn": "redox-reactions",
+   "dependsOn": [
+    "redox"
+   ]
+  },
+  {
+   "id": "reaction-rate",
+   "term": "reaction rate",
+   "aliases": [
+    "reaction rates",
+    "rate of reaction",
+    "rate of appearance",
+    "rate of disappearance",
+    "initial rate",
+    "initial rates",
+    "average rate",
+    "instantaneous rate"
+   ],
+   "taughtIn": "reaction-rates",
+   "dependsOn": [
+    "stoichiometry",
+    "molarity"
+   ]
+  },
+  {
+   "id": "rate-law",
+   "term": "rate law",
+   "aliases": [
+    "rate laws",
+    "rate equation",
+    "rate law expression"
+   ],
+   "taughtIn": "rate-laws",
+   "dependsOn": [
+    "reaction-rate",
+    "exponent"
+   ]
+  },
+  {
+   "id": "rate-constant",
+   "term": "rate constant",
+   "aliases": [
+    "rate constants",
+    "k (rate constant)"
+   ],
+   "taughtIn": "rate-laws",
+   "dependsOn": [
+    "rate-law"
+   ]
+  },
+  {
+   "id": "reaction-order",
+   "term": "reaction order",
+   "aliases": [
+    "order of reaction",
+    "overall order",
+    "zero order",
+    "zero-order",
+    "first order",
+    "first-order",
+    "second order",
+    "second-order"
+   ],
+   "taughtIn": "rate-laws",
+   "dependsOn": [
+    "rate-law"
+   ]
+  },
+  {
+   "id": "initial-rates",
+   "term": "method of initial rates",
+   "aliases": [],
+   "taughtIn": "rate-laws",
+   "dependsOn": [
+    "reaction-order"
+   ]
+  },
+  {
+   "id": "integrated-rate-law",
+   "term": "integrated rate law",
+   "aliases": [
+    "integrated rate laws"
+   ],
+   "taughtIn": "concentration-time",
+   "dependsOn": [
+    "reaction-order",
+    "natural-log"
+   ]
+  },
+  {
+   "id": "rate-plot",
+   "term": "linear plot",
+   "aliases": [
+    "linearized plot",
+    "first-order plot",
+    "second-order plot",
+    "zero-order plot"
+   ],
+   "taughtIn": "concentration-time",
+   "dependsOn": [
+    "integrated-rate-law"
+   ]
+  },
+  {
+   "id": "half-life",
+   "term": "half-life",
+   "aliases": [
+    "half-lives",
+    "t½",
+    "t1/2"
+   ],
+   "taughtIn": "concentration-time",
+   "dependsOn": [
+    "integrated-rate-law"
+   ]
+  },
+  {
+   "id": "elementary-reaction",
+   "term": "elementary reaction",
+   "aliases": [
+    "elementary reactions",
+    "elementary step",
+    "elementary steps"
+   ],
+   "taughtIn": "elementary-reactions",
+   "dependsOn": [
+    "reaction-order"
+   ]
+  },
+  {
+   "id": "molecularity",
+   "term": "molecularity",
+   "aliases": [
+    "unimolecular",
+    "bimolecular",
+    "termolecular"
+   ],
+   "taughtIn": "elementary-reactions",
+   "dependsOn": [
+    "elementary-reaction"
+   ]
+  },
+  {
+   "id": "collision-model",
+   "term": "collision model",
+   "aliases": [
+    "collision theory",
+    "effective collision",
+    "effective collisions",
+    "successful collision",
+    "successful collisions"
+   ],
+   "taughtIn": "collision-model",
+   "dependsOn": [
+    "kmt",
+    "reaction-rate"
+   ]
+  },
+  {
+   "id": "activation-energy",
+   "term": "activation energy",
+   "aliases": [
+    "activation energies",
+    "Ea"
+   ],
+   "taughtIn": "collision-model",
+   "dependsOn": [
+    "collision-model",
+    "maxwell-boltzmann"
+   ]
+  },
+  {
+   "id": "energy-profile",
+   "term": "reaction energy profile",
+   "aliases": [
+    "energy profile",
+    "energy profiles",
+    "reaction coordinate",
+    "reaction coordinate diagram",
+    "potential energy diagram"
+   ],
+   "taughtIn": "energy-profiles",
+   "dependsOn": [
+    "activation-energy",
+    "potential-energy"
+   ]
+  },
+  {
+   "id": "transition-state",
+   "term": "transition state",
+   "aliases": [
+    "transition states",
+    "activated complex"
+   ],
+   "taughtIn": "energy-profiles",
+   "dependsOn": [
+    "energy-profile"
+   ]
+  },
+  {
+   "id": "reaction-mechanism",
+   "term": "reaction mechanism",
+   "aliases": [
+    "reaction mechanisms",
+    "mechanism (reaction)"
+   ],
+   "taughtIn": "mechanisms-intro",
+   "dependsOn": [
+    "elementary-reaction"
+   ]
+  },
+  {
+   "id": "intermediate",
+   "term": "reaction intermediate",
+   "aliases": [
+    "reaction intermediates",
+    "intermediate (mechanism)"
+   ],
+   "taughtIn": "mechanisms-intro",
+   "dependsOn": [
+    "reaction-mechanism"
+   ]
+  },
+  {
+   "id": "rate-determining-step",
+   "term": "rate-determining step",
+   "aliases": [
+    "rate-limiting step",
+    "slow step",
+    "RDS"
+   ],
+   "taughtIn": "mechanism-rate-laws",
+   "dependsOn": [
+    "reaction-mechanism",
+    "rate-law"
+   ]
+  },
+  {
+   "id": "reversible-reaction",
+   "term": "reversible reaction",
+   "aliases": [
+    "reversible reactions",
+    "reversible",
+    "forward reaction",
+    "reverse reaction"
+   ],
+   "taughtIn": "pre-equilibrium",
+   "dependsOn": [
+    "elementary-reaction",
+    "dynamic-equilibrium"
+   ]
+  },
+  {
+   "id": "pre-equilibrium",
+   "term": "pre-equilibrium",
+   "aliases": [
+    "pre-equilibrium approximation",
+    "fast equilibrium",
+    "fast reversible step"
+   ],
+   "taughtIn": "pre-equilibrium",
+   "dependsOn": [
+    "reversible-reaction",
+    "rate-determining-step",
+    "intermediate"
+   ]
+  },
+  {
+   "id": "multistep-profile",
+   "term": "multistep energy profile",
+   "aliases": [
+    "multistep energy profiles",
+    "multistep reaction energy profile"
+   ],
+   "taughtIn": "multistep-energy-profiles",
+   "dependsOn": [
+    "energy-profile",
+    "intermediate",
+    "rate-determining-step"
+   ]
+  },
+  {
+   "id": "catalyst",
+   "term": "catalyst",
+   "aliases": [
+    "catalysts",
+    "catalyzed",
+    "catalysis",
+    "catalytic",
+    "homogeneous catalyst",
+    "heterogeneous catalyst",
+    "enzyme",
+    "enzymes"
+   ],
+   "taughtIn": "catalysis",
+   "dependsOn": [
+    "activation-energy",
+    "reaction-mechanism",
+    "intermediate"
+   ]
+  },
+  {
+   "id": "system-surroundings",
+   "term": "system (thermodynamics)",
+   "aliases": [
+    "surroundings"
+   ],
+   "taughtIn": "endo-exothermic",
+   "dependsOn": [
+    "kinetic-energy"
+   ]
+  },
+  {
+   "id": "enthalpy",
+   "term": "enthalpy",
+   "aliases": [
+    "enthalpy change",
+    "change in enthalpy",
+    "ΔH"
+   ],
+   "taughtIn": "endo-exothermic",
+   "dependsOn": [
+    "system-surroundings"
+   ]
+  },
+  {
+   "id": "exothermic",
+   "term": "exothermic",
+   "aliases": [
+    "exothermic process",
+    "exothermic reaction",
+    "exothermic reactions"
+   ],
+   "taughtIn": "endo-exothermic",
+   "dependsOn": [
+    "system-surroundings",
+    "thermal-energy"
+   ]
+  },
+  {
+   "id": "endothermic",
+   "term": "endothermic",
+   "aliases": [
+    "endothermic process",
+    "endothermic reaction",
+    "endothermic reactions"
+   ],
+   "taughtIn": "endo-exothermic",
+   "dependsOn": [
+    "system-surroundings",
+    "thermal-energy"
+   ]
+  },
+  {
+   "id": "energy-diagram",
+   "term": "energy diagram",
+   "aliases": [
+    "energy diagrams",
+    "enthalpy diagram",
+    "enthalpy diagrams"
+   ],
+   "taughtIn": "energy-diagrams",
+   "dependsOn": [
+    "enthalpy",
+    "potential-energy"
+   ]
+  },
+  {
+   "id": "heat-transfer",
+   "term": "heat transfer",
+   "aliases": [
+    "thermal equilibrium",
+    "heat flow",
+    "transfer of thermal energy"
+   ],
+   "taughtIn": "heat-transfer",
+   "dependsOn": [
+    "thermal-energy",
+    "kinetic-energy"
+   ]
+  },
+  {
+   "id": "specific-heat",
+   "term": "specific heat capacity",
+   "aliases": [
+    "specific heat",
+    "specific heats",
+    "q = mcΔT"
+   ],
+   "taughtIn": "calorimetry",
+   "dependsOn": [
+    "heat-transfer"
+   ]
+  },
+  {
+   "id": "heat-capacity",
+   "term": "heat capacity",
+   "aliases": [
+    "heat capacities"
+   ],
+   "taughtIn": "calorimetry",
+   "dependsOn": [
+    "specific-heat"
+   ]
+  },
+  {
+   "id": "calorimeter",
+   "term": "calorimetry",
+   "aliases": [
+    "calorimeter",
+    "calorimeters",
+    "coffee-cup calorimeter",
+    "constant-pressure calorimeter"
+   ],
+   "taughtIn": "calorimetry",
+   "dependsOn": [
+    "specific-heat",
+    "enthalpy"
+   ]
+  },
+  {
+   "id": "enthalpy-of-fusion",
+   "term": "enthalpy of fusion",
+   "aliases": [
+    "heat of fusion",
+    "molar enthalpy of fusion",
+    "ΔHfus"
+   ],
+   "taughtIn": "phase-change-energy",
+   "dependsOn": [
+    "enthalpy",
+    "phase-change"
+   ]
+  },
+  {
+   "id": "enthalpy-of-vaporization",
+   "term": "enthalpy of vaporization",
+   "aliases": [
+    "heat of vaporization",
+    "molar enthalpy of vaporization",
+    "ΔHvap"
+   ],
+   "taughtIn": "phase-change-energy",
+   "dependsOn": [
+    "enthalpy",
+    "phase-change"
+   ]
+  },
+  {
+   "id": "heating-curve",
+   "term": "heating curve",
+   "aliases": [
+    "heating curves",
+    "cooling curve",
+    "cooling curves"
+   ],
+   "taughtIn": "phase-change-energy",
+   "dependsOn": [
+    "enthalpy-of-fusion",
+    "specific-heat"
+   ]
+  },
+  {
+   "id": "enthalpy-of-reaction",
+   "term": "enthalpy of reaction",
+   "aliases": [
+    "heat of reaction",
+    "standard enthalpy of reaction",
+    "ΔH°rxn",
+    "thermochemical equation",
+    "thermochemical equations"
+   ],
+   "taughtIn": "enthalpy-of-reaction",
+   "dependsOn": [
+    "enthalpy",
+    "stoichiometry"
+   ]
+  },
+  {
+   "id": "bond-enthalpy",
+   "term": "bond enthalpy",
+   "aliases": [
+    "bond enthalpies",
+    "average bond enthalpy",
+    "average bond enthalpies"
+   ],
+   "taughtIn": "bond-enthalpies",
+   "dependsOn": [
+    "bond-energy",
+    "enthalpy-of-reaction"
+   ]
+  },
+  {
+   "id": "enthalpy-of-formation",
+   "term": "standard enthalpy of formation",
+   "aliases": [
+    "enthalpy of formation",
+    "enthalpies of formation",
+    "heat of formation",
+    "ΔH°f",
+    "standard state",
+    "standard states"
+   ],
+   "taughtIn": "enthalpy-of-formation",
+   "dependsOn": [
+    "enthalpy-of-reaction",
+    "element"
+   ]
+  },
+  {
+   "id": "hess-law",
+   "term": "Hess's law",
+   "aliases": [
+    "state function",
+    "state functions"
+   ],
+   "taughtIn": "hess-law",
+   "dependsOn": [
+    "enthalpy-of-reaction"
+   ]
+  },
+  {
+   "id": "chemical-equilibrium",
+   "term": "chemical equilibrium",
+   "aliases": [
+    "equilibrium concentrations",
+    "equilibrium mixture",
+    "equilibrium position",
+    "position of equilibrium"
+   ],
+   "taughtIn": "equilibrium-intro",
+   "dependsOn": [
+    "dynamic-equilibrium",
+    "reversible-reaction",
+    "reaction-rate"
+   ]
+  },
+  {
+   "id": "net-reaction",
+   "term": "net reaction",
+   "aliases": [
+    "net forward reaction",
+    "net reverse reaction"
+   ],
+   "taughtIn": "reaction-direction",
+   "dependsOn": [
+    "chemical-equilibrium"
+   ]
+  },
+  {
+   "id": "equilibrium-constant",
+   "term": "equilibrium constant",
+   "aliases": [
+    "equilibrium constants",
+    "equilibrium constant expression",
+    "equilibrium expression",
+    "Kc",
+    "Kp",
+    "law of mass action"
+   ],
+   "taughtIn": "q-and-k",
+   "dependsOn": [
+    "chemical-equilibrium",
+    "molarity",
+    "partial-pressure"
+   ]
+  },
+  {
+   "id": "reaction-quotient",
+   "term": "reaction quotient",
+   "aliases": [
+    "Qc",
+    "Qp"
+   ],
+   "taughtIn": "q-and-k",
+   "dependsOn": [
+    "equilibrium-constant"
+   ]
+  },
+  {
+   "id": "heterogeneous-equilibrium",
+   "term": "heterogeneous equilibrium",
+   "aliases": [
+    "heterogeneous equilibria",
+    "homogeneous equilibrium"
+   ],
+   "taughtIn": "calculating-k",
+   "dependsOn": [
+    "equilibrium-constant"
+   ]
+  },
+  {
+   "id": "k-magnitude",
+   "term": "product-favored",
+   "aliases": [
+    "reactant-favored",
+    "products favored",
+    "reactants favored"
+   ],
+   "taughtIn": "k-magnitude",
+   "dependsOn": [
+    "equilibrium-constant"
+   ]
+  },
+  {
+   "id": "k-manipulation",
+   "term": "combining equilibrium constants",
+   "aliases": [
+    "K for a reversed reaction",
+    "manipulating equilibrium constants"
+   ],
+   "taughtIn": "k-properties",
+   "dependsOn": [
+    "equilibrium-constant"
+   ]
+  },
+  {
+   "id": "ice-table",
+   "term": "ICE table",
+   "aliases": [
+    "ICE tables",
+    "ICE chart",
+    "RICE table"
+   ],
+   "taughtIn": "equilibrium-concentrations",
+   "dependsOn": [
+    "equilibrium-constant",
+    "stoichiometry",
+    "reaction-quotient"
+   ]
+  },
+  {
+   "id": "small-x",
+   "term": "small-x approximation",
+   "aliases": [
+    "5% rule",
+    "x is small"
+   ],
+   "taughtIn": "equilibrium-concentrations",
+   "dependsOn": [
+    "ice-table"
+   ]
+  },
+  {
+   "id": "equilibrium-diagram",
+   "term": "equilibrium particle diagram",
+   "aliases": [
+    "equilibrium particle diagrams"
+   ],
+   "taughtIn": "equilibrium-representations",
+   "dependsOn": [
+    "chemical-equilibrium",
+    "particulate-diagram",
+    "equilibrium-constant"
+   ]
+  },
+  {
+   "id": "le-chatelier",
+   "term": "Le Châtelier's principle",
+   "aliases": [
+    "Le Chatelier's principle",
+    "Le Châtelier",
+    "Le Chatelier",
+    "shift (equilibrium)"
+   ],
+   "taughtIn": "le-chatelier",
+   "dependsOn": [
+    "chemical-equilibrium",
+    "endothermic"
+   ]
+  },
+  {
+   "id": "q-vs-k",
+   "term": "Q vs K",
+   "aliases": [
+    "Q versus K",
+    "Q < K",
+    "Q > K"
+   ],
+   "taughtIn": "q-and-le-chatelier",
+   "dependsOn": [
+    "reaction-quotient",
+    "le-chatelier"
+   ]
+  },
+  {
+   "id": "ksp",
+   "term": "solubility product",
+   "aliases": [
+    "solubility product constant",
+    "Ksp"
+   ],
+   "taughtIn": "solubility-equilibria",
+   "dependsOn": [
+    "equilibrium-constant",
+    "solubility",
+    "dissociation"
+   ]
+  },
+  {
+   "id": "molar-solubility",
+   "term": "molar solubility",
+   "aliases": [],
+   "taughtIn": "solubility-equilibria",
+   "dependsOn": [
+    "ksp"
+   ]
+  },
+  {
+   "id": "common-ion",
+   "term": "common-ion effect",
+   "aliases": [
+    "common ion effect",
+    "common ion",
+    "common ions"
+   ],
+   "taughtIn": "common-ion-effect",
+   "dependsOn": [
+    "ksp",
+    "le-chatelier"
+   ]
+  },
+  {
+   "id": "kw",
+   "term": "Kw",
+   "aliases": [
+    "autoionization",
+    "autoionization of water",
+    "self-ionization of water",
+    "ion product of water"
+   ],
+   "taughtIn": "acids-bases-intro",
+   "dependsOn": [
+    "equilibrium-constant",
+    "hydronium"
+   ]
+  },
+  {
+   "id": "ph",
+   "term": "pH",
+   "aliases": [
+    "pOH",
+    "pH scale"
+   ],
+   "taughtIn": "acids-bases-intro",
+   "dependsOn": [
+    "hydronium",
+    "logarithm",
+    "kw"
+   ]
+  },
+  {
+   "id": "acidic-basic",
+   "term": "acidic solution",
+   "aliases": [
+    "acidic solutions",
+    "basic solution",
+    "basic solutions",
+    "neutral solution",
+    "acidic"
+   ],
+   "taughtIn": "acids-bases-intro",
+   "dependsOn": [
+    "ph"
+   ]
+  },
+  {
+   "id": "strong-acid",
+   "term": "strong acid",
+   "aliases": [
+    "strong acids",
+    "strong base",
+    "strong bases"
+   ],
+   "taughtIn": "strong-acids-bases",
+   "dependsOn": [
+    "bronsted-lowry",
+    "ph",
+    "dissociation"
+   ]
+  },
+  {
+   "id": "weak-acid",
+   "term": "weak acid",
+   "aliases": [
+    "weak acids",
+    "weak base",
+    "weak bases"
+   ],
+   "taughtIn": "weak-acids-bases",
+   "dependsOn": [
+    "strong-acid",
+    "chemical-equilibrium"
+   ]
+  },
+  {
+   "id": "ka",
+   "term": "acid dissociation constant",
+   "aliases": [
+    "acid ionization constant",
+    "Ka",
+    "pKa",
+    "Kb",
+    "pKb",
+    "base dissociation constant",
+    "base ionization constant"
+   ],
+   "taughtIn": "weak-acids-bases",
+   "dependsOn": [
+    "weak-acid",
+    "equilibrium-constant",
+    "logarithm"
+   ]
+  },
+  {
+   "id": "percent-ionization",
+   "term": "percent ionization",
+   "aliases": [
+    "percent dissociation",
+    "degree of ionization"
+   ],
+   "taughtIn": "weak-acids-bases",
+   "dependsOn": [
+    "ka"
+   ]
+  },
+  {
+   "id": "ka-kb",
+   "term": "Ka × Kb = Kw",
+   "aliases": [
+    "pKa + pKb = pKw"
+   ],
+   "taughtIn": "weak-acids-bases",
+   "dependsOn": [
+    "ka",
+    "kw",
+    "conjugate-pair"
+   ]
+  },
+  {
+   "id": "buffer",
+   "term": "buffer",
+   "aliases": [
+    "buffers",
+    "buffer solution",
+    "buffer solutions",
+    "buffered"
+   ],
+   "taughtIn": "buffers-intro",
+   "dependsOn": [
+    "conjugate-pair",
+    "weak-acid"
+   ]
+  },
+  {
+   "id": "titration-curve",
+   "term": "titration curve",
+   "aliases": [
+    "titration curves",
+    "pH curve"
+   ],
+   "taughtIn": "acid-base-titrations",
+   "dependsOn": [
+    "titration",
+    "ph"
+   ]
+  },
+  {
+   "id": "half-equivalence",
+   "term": "half-equivalence point",
+   "aliases": [
+    "half-equivalence",
+    "half equivalence point"
+   ],
+   "taughtIn": "acid-base-titrations",
+   "dependsOn": [
+    "titration-curve",
+    "equivalence-point",
+    "ka"
+   ]
+  },
+  {
+   "id": "buffer-region",
+   "term": "buffer region",
+   "aliases": [
+    "buffering region"
+   ],
+   "taughtIn": "acid-base-titrations",
+   "dependsOn": [
+    "titration-curve",
+    "buffer"
+   ]
+  },
+  {
+   "id": "polyprotic",
+   "term": "polyprotic acid",
+   "aliases": [
+    "polyprotic acids",
+    "diprotic",
+    "triprotic",
+    "monoprotic"
+   ],
+   "taughtIn": "acid-base-titrations",
+   "dependsOn": [
+    "weak-acid",
+    "titration-curve"
+   ]
+  },
+  {
+   "id": "acid-strength",
+   "term": "acid strength",
+   "aliases": [
+    "conjugate base stability",
+    "electron-withdrawing"
+   ],
+   "taughtIn": "acid-strength-structure",
+   "dependsOn": [
+    "conjugate-pair",
+    "electronegativity",
+    "resonance",
+    "weak-acid"
+   ]
+  },
+  {
+   "id": "oxyacid",
+   "term": "oxyacid",
+   "aliases": [
+    "oxyacids",
+    "oxoacid",
+    "oxoacids"
+   ],
+   "taughtIn": "acid-strength-structure",
+   "dependsOn": [
+    "acid-strength"
+   ]
+  },
+  {
+   "id": "organic-acid-base",
+   "term": "carboxylic acid",
+   "aliases": [
+    "carboxylic acids",
+    "carboxylate",
+    "amine",
+    "amines"
+   ],
+   "taughtIn": "acid-strength-structure",
+   "dependsOn": [
+    "weak-acid",
+    "lewis-diagram"
+   ]
+  },
+  {
+   "id": "predominant-form",
+   "term": "protonated form",
+   "aliases": [
+    "deprotonated form",
+    "predominant form",
+    "predominant species"
+   ],
+   "taughtIn": "ph-and-pka",
+   "dependsOn": [
+    "ka",
+    "ph"
+   ]
+  },
+  {
+   "id": "indicator-choice",
+   "term": "acid-base indicator",
+   "aliases": [
+    "acid-base indicators",
+    "indicator range"
+   ],
+   "taughtIn": "ph-and-pka",
+   "dependsOn": [
+    "predominant-form",
+    "indicator"
+   ]
+  },
+  {
+   "id": "buffer-action",
+   "term": "buffer action",
+   "aliases": [
+    "buffering action",
+    "resists changes in pH"
+   ],
+   "taughtIn": "buffer-properties",
+   "dependsOn": [
+    "buffer"
+   ]
+  },
+  {
+   "id": "henderson-hasselbalch",
+   "term": "Henderson-Hasselbalch equation",
+   "aliases": [
+    "Henderson-Hasselbalch"
+   ],
+   "taughtIn": "henderson-hasselbalch",
+   "dependsOn": [
+    "buffer",
+    "ka",
+    "logarithm"
+   ]
+  },
+  {
+   "id": "buffer-capacity",
+   "term": "buffer capacity",
+   "aliases": [
+    "buffering capacity"
+   ],
+   "taughtIn": "buffer-limits",
+   "dependsOn": [
+    "buffer",
+    "henderson-hasselbalch"
+   ]
+  },
+  {
+   "id": "ph-solubility",
+   "term": "pH-dependent solubility",
+   "aliases": [
+    "basic anion",
+    "basic anions"
+   ],
+   "taughtIn": "ph-and-solubility",
+   "dependsOn": [
+    "ksp",
+    "le-chatelier",
+    "conjugate-pair"
+   ]
+  },
+  {
+   "id": "entropy",
+   "term": "entropy",
+   "aliases": [
+    "microstate",
+    "microstates",
+    "dispersal of matter",
+    "dispersal of energy",
+    "energy dispersal"
+   ],
+   "taughtIn": "entropy-intro",
+   "dependsOn": [
+    "kmt",
+    "states-of-matter"
+   ]
+  },
+  {
+   "id": "standard-entropy",
+   "term": "standard molar entropy",
+   "aliases": [
+    "absolute entropy",
+    "standard entropy",
+    "S°",
+    "ΔS°",
+    "entropy change",
+    "third law of thermodynamics"
+   ],
+   "taughtIn": "entropy-change",
+   "dependsOn": [
+    "entropy",
+    "enthalpy-of-formation"
+   ]
+  },
+  {
+   "id": "gibbs",
+   "term": "Gibbs free energy",
+   "aliases": [
+    "Gibbs energy",
+    "free energy",
+    "ΔG",
+    "ΔG°"
+   ],
+   "taughtIn": "gibbs-free-energy",
+   "dependsOn": [
+    "enthalpy-of-reaction",
+    "standard-entropy"
+   ]
+  },
+  {
+   "id": "favorability",
+   "term": "thermodynamically favored",
+   "aliases": [
+    "thermodynamically favorable",
+    "thermodynamic favorability",
+    "spontaneous"
+   ],
+   "taughtIn": "gibbs-free-energy",
+   "dependsOn": [
+    "gibbs"
+   ]
+  },
+  {
+   "id": "kinetic-control",
+   "term": "kinetic control",
+   "aliases": [
+    "kinetically controlled",
+    "kinetically stable",
+    "kinetic stability",
+    "thermodynamic control"
+   ],
+   "taughtIn": "kinetic-control",
+   "dependsOn": [
+    "favorability",
+    "activation-energy"
+   ]
+  },
+  {
+   "id": "deltag-k",
+   "term": "ΔG° = −RT ln K",
+   "aliases": [
+    "free energy and equilibrium"
+   ],
+   "taughtIn": "free-energy-equilibrium",
+   "dependsOn": [
+    "gibbs",
+    "equilibrium-constant",
+    "natural-log",
+    "gas-constant"
+   ]
+  },
+  {
+   "id": "enthalpy-of-solution",
+   "term": "enthalpy of solution",
+   "aliases": [
+    "enthalpy of dissolution",
+    "heat of solution",
+    "free energy of dissolution"
+   ],
+   "taughtIn": "dissolution-free-energy",
+   "dependsOn": [
+    "gibbs",
+    "solubility",
+    "hydration"
+   ]
+  },
+  {
+   "id": "coupled-reaction",
+   "term": "coupled reaction",
+   "aliases": [
+    "coupled reactions",
+    "reaction coupling"
+   ],
+   "taughtIn": "coupled-reactions",
+   "dependsOn": [
+    "gibbs"
+   ]
+  },
+  {
+   "id": "galvanic-cell",
+   "term": "galvanic cell",
+   "aliases": [
+    "galvanic cells",
+    "voltaic cell",
+    "voltaic cells",
+    "electrochemical cell",
+    "electrochemical cells"
+   ],
+   "taughtIn": "electrochemical-cells",
+   "dependsOn": [
+    "redox",
+    "half-reaction",
+    "favorability"
+   ]
+  },
+  {
+   "id": "electrode",
+   "term": "electrode",
+   "aliases": [
+    "electrodes",
+    "anode",
+    "anodes",
+    "cathode",
+    "cathodes"
+   ],
+   "taughtIn": "electrochemical-cells",
+   "dependsOn": [
+    "galvanic-cell"
+   ]
+  },
+  {
+   "id": "salt-bridge",
+   "term": "salt bridge",
+   "aliases": [
+    "salt bridges"
+   ],
+   "taughtIn": "electrochemical-cells",
+   "dependsOn": [
+    "galvanic-cell",
+    "ion"
+   ]
+  },
+  {
+   "id": "electrolytic-cell",
+   "term": "electrolytic cell",
+   "aliases": [
+    "electrolytic cells"
+   ],
+   "taughtIn": "electrochemical-cells",
+   "dependsOn": [
+    "galvanic-cell"
+   ]
+  },
+  {
+   "id": "cell-potential",
+   "term": "cell potential",
+   "aliases": [
+    "standard cell potential",
+    "E°cell",
+    "standard reduction potential",
+    "standard reduction potentials",
+    "reduction potential",
+    "reduction potentials"
+   ],
+   "taughtIn": "cell-potential",
+   "dependsOn": [
+    "galvanic-cell",
+    "electrode"
+   ]
+  },
+  {
+   "id": "faraday-constant",
+   "term": "Faraday constant",
+   "aliases": [
+    "Faraday's constant",
+    "ΔG° = −nFE°"
+   ],
+   "taughtIn": "cell-potential",
+   "dependsOn": [
+    "cell-potential",
+    "gibbs"
+   ]
+  },
+  {
+   "id": "nernst",
+   "term": "Nernst equation",
+   "aliases": [
+    "nonstandard conditions",
+    "nonstandard cell potential",
+    "concentration cell",
+    "concentration cells"
+   ],
+   "taughtIn": "nernst-equation",
+   "dependsOn": [
+    "cell-potential",
+    "reaction-quotient",
+    "natural-log"
+   ]
+  },
+  {
+   "id": "electrolysis",
+   "term": "electrolysis",
+   "aliases": [
+    "electroplating",
+    "electroplate",
+    "electroplated"
+   ],
+   "taughtIn": "electrolysis-faraday",
+   "dependsOn": [
+    "electrolytic-cell"
+   ]
+  },
+  {
+   "id": "faraday-law",
+   "term": "Faraday's law",
+   "aliases": [
+    "Faraday's laws",
+    "ampere",
+    "amperes",
+    "I = q/t"
+   ],
+   "taughtIn": "electrolysis-faraday",
+   "dependsOn": [
+    "electrolysis",
+    "faraday-constant",
+    "stoichiometry"
+   ]
+  }
+ ],
+ "circularDependencies": [
+  {
+   "id": "photon-for-pes",
+   "problem": "Photoelectron spectroscopy (1.6) knocks electrons out with light, before 3.11-3.12 teach the electromagnetic spectrum and photon energy.",
+   "resolution": "pull-forward",
+   "into": [
+    "photoelectron-spectroscopy"
+   ],
+   "concepts": [
+    "photon"
+   ],
+   "fullIn": [
+    "photons"
+   ],
+   "detail": "A one-line short version: a photon is a packet of light energy, and higher-energy light can remove an electron. 3.12 owns E = hν and the calculations."
+  },
+  {
+   "id": "equilibrium-for-vapor-pressure",
+   "problem": "Vapor pressure (3.3) is defined by the dynamic equilibrium between evaporation and condensation, and pre-equilibrium (5.9) needs equal forward and reverse rates, before Unit 7 teaches chemical equilibrium.",
+   "resolution": "pull-forward",
+   "into": [
+    "phases-of-matter"
+   ],
+   "concepts": [
+    "dynamic-equilibrium"
+   ],
+   "fullIn": [
+    "equilibrium-intro"
+   ],
+   "detail": "A short version: two opposite processes at equal rates, so nothing changes overall. 3.3 owns the plain word \"equilibrium\"; 7.1 owns chemical equilibrium, equilibrium concentrations and position."
+  }
+ ]
+}

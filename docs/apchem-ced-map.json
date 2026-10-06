@@ -1,0 +1,2019 @@
+{
+ "about": "Topic map of the AP Chemistry Course and Exam Description (Fall 2024 revision), written in LevlPrep's own words from docs/apchem-research/framework.md. No CED text is reproduced. Objectives and knowledge are paraphrases for authors; exclusions for Units 1-2 were read in the CED, those for Units 3-9 are reported by secondary sources and must be verified (docs/apchem-needs-author.md, ced-exclusions).",
+ "ced": {
+  "title": "AP Chemistry Course and Exam Description",
+  "edition": "Fall 2024 revision",
+  "effective": "Fall 2024; unchanged for 2025-26 and 2026-27",
+  "officialUrls": [
+   "https://apcentral.collegeboard.org/media/pdf/ap-chemistry-course-and-exam-description.pdf",
+   "https://apcentral.collegeboard.org/courses/ap-chemistry/exam"
+  ],
+  "verification": "The CED PDF text was read through topic 3.1; topic lists for all units were read from the CED and the Course at a Glance. Exclusions after 3.1 come from secondary sources.",
+  "oldNamesWarning": "Do not copy unit names or topic numbers from pre-2024 resources (old 7.13 is now 8.11, old 7.14 is now 9.6, old 9.6-9.10 are now 9.7-9.11)."
+ },
+ "sciencePractices": [
+  {
+   "id": 1,
+   "name": "Models and Representations",
+   "skills": [
+    "1.A",
+    "1.B"
+   ],
+   "mcqWeight": [
+    8,
+    12
+   ],
+   "frqWeight": [
+    2,
+    4
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Question and Method",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C",
+    "2.D",
+    "2.E",
+    "2.F"
+   ],
+   "mcqWeight": [
+    8,
+    12
+   ],
+   "frqWeight": [
+    10,
+    16
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Representing Data and Phenomena",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C"
+   ],
+   "mcqWeight": [
+    0,
+    0
+   ],
+   "frqWeight": [
+    8,
+    16
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Model Analysis",
+   "skills": [
+    "4.A",
+    "4.B",
+    "4.C",
+    "4.D"
+   ],
+   "mcqWeight": [
+    23,
+    30
+   ],
+   "frqWeight": [
+    5,
+    9
+   ]
+  },
+  {
+   "id": 5,
+   "name": "Mathematical Routines",
+   "skills": [
+    "5.A",
+    "5.B",
+    "5.C",
+    "5.D",
+    "5.E",
+    "5.F"
+   ],
+   "mcqWeight": [
+    35,
+    42
+   ],
+   "frqWeight": [
+    43,
+    53
+   ]
+  },
+  {
+   "id": 6,
+   "name": "Argumentation",
+   "skills": [
+    "6.A",
+    "6.B",
+    "6.C",
+    "6.D",
+    "6.E",
+    "6.F",
+    "6.G"
+   ],
+   "mcqWeight": [
+    8,
+    12
+   ],
+   "frqWeight": [
+    15,
+    24
+   ]
+  }
+ ],
+ "sciencePracticesNote": "MCQ assesses practices 1, 2, 4, 5 and 6; practice 3 is free response only. Weights by practice are from third-party copies of the CED exam table [unverified].",
+ "units": [
+  {
+   "n": 1,
+   "id": "unit-1",
+   "title": "Atomic Structure and Properties",
+   "weight": "7-9%",
+   "classPeriods": "9-10",
+   "topics": [
+    {
+     "id": "1.1",
+     "slug": "moles-molar-mass",
+     "title": "Moles and Molar Mass",
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Connect the number of particles, the amount in moles and the mass of a sample."
+     ],
+     "knowledge": [
+      "Chemists count particles in moles because single atoms and molecules are far too small to count or weigh.",
+      "One mole is 6.022 × 10^23 particles (Avogadro's number).",
+      "The mass of one particle in atomic mass units has the same number as the mass of one mole in grams (the molar mass).",
+      "Dimensional analysis moves between mass, moles and number of particles."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "1.2",
+     "slug": "mass-spectra",
+     "title": "Mass Spectra of Elements",
+     "practices": [
+      4,
+      5
+     ],
+     "objectives": [
+      "Explain how a mass spectrum shows an element's isotopes and their abundances, and find the average atomic mass from it."
+     ],
+     "knowledge": [
+      "Atoms of one element all have the same number of protons but can differ in neutrons: these are isotopes.",
+      "A mass spectrometer separates singly charged ions by mass; each peak is one isotope and its height is the relative abundance.",
+      "The average atomic mass on the periodic table is the abundance-weighted average of the isotope masses."
+     ],
+     "exclusions": [
+      "Mass spectra of samples with more than one element, and peaks from anything other than singly charged ions of single atoms, are not tested."
+     ]
+    },
+    {
+     "id": "1.3",
+     "slug": "elemental-composition",
+     "title": "Elemental Composition of Pure Substances",
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Relate the mass percent of each element in a pure compound to its empirical formula."
+     ],
+     "knowledge": [
+      "A pure compound always has the same elements in the same mass proportions (law of definite proportions).",
+      "Mass percent of an element = mass of that element in the formula ÷ molar mass × 100.",
+      "The empirical formula is the simplest whole-number ratio of atoms; find it from mass data by converting to moles and dividing by the smallest.",
+      "The molecular formula is a whole-number multiple of the empirical formula, found with the molar mass."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "1.4",
+     "slug": "mixture-composition",
+     "title": "Composition of Mixtures",
+     "practices": [
+      1,
+      2,
+      5
+     ],
+     "objectives": [
+      "Explain how the composition of a mixture can vary, and use elemental analysis to find the purity of a sample."
+     ],
+     "knowledge": [
+      "A mixture contains two or more substances whose proportions can vary; a pure substance has fixed composition.",
+      "Homogeneous mixtures have uniform composition; heterogeneous mixtures do not.",
+      "Elemental analysis (for example, mass percent of one element) can show how pure a sample is or what it is mixed with.",
+      "Particulate diagrams show substances at the level of particles; the macroscopic level is what we see and measure."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "1.5",
+     "slug": "electron-configuration",
+     "title": "Atomic Structure and Electron Configuration",
+     "practices": [
+      1,
+      4
+     ],
+     "objectives": [
+      "Write the electron configuration of an atom or ion and explain electron energies with Coulomb's law."
+     ],
+     "knowledge": [
+      "Coulomb's law: the attraction between the nucleus and an electron grows with the charges and falls with distance.",
+      "Electrons occupy shells and subshells (s, p, d) filled in order of increasing energy (aufbau principle).",
+      "Electrons in the outermost shell are valence electrons; inner (core) electrons shield valence electrons from the nucleus.",
+      "Ionization energy is the energy needed to remove an electron; it reflects how strongly the nucleus holds it."
+     ],
+     "exclusions": [
+      "Assigning quantum numbers to electrons is not tested."
+     ]
+    },
+    {
+     "id": "1.6",
+     "slug": "photoelectron-spectroscopy",
+     "title": "Photoelectron Spectroscopy",
+     "practices": [
+      4,
+      5
+     ],
+     "objectives": [
+      "Read a photoelectron spectrum to identify an element's electron configuration and compare electron energies."
+     ],
+     "knowledge": [
+      "Photoelectron spectroscopy (PES) uses high-energy light to knock electrons out and measures the energy each needed (binding energy).",
+      "Each peak is one subshell; its position gives the binding energy and its relative height gives the number of electrons.",
+      "Electrons closer to the nucleus (lower shells) have higher binding energies; a larger nuclear charge raises every peak."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "1.7",
+     "slug": "periodic-trends",
+     "title": "Periodic Trends",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Explain trends in atomic radius, ionization energy, electronegativity and electron affinity with Coulomb's law and shielding."
+     ],
+     "knowledge": [
+      "Across a period, nuclear charge rises while shielding barely changes, so atoms get smaller and hold electrons more tightly.",
+      "Down a group, electrons occupy more shells, so atoms get larger and hold valence electrons less tightly.",
+      "Electronegativity is how strongly an atom attracts shared electrons; it rises across a period and falls down a group.",
+      "Trends are explained by number of protons, distance and shielding, not by \"wanting\" a full octet."
+     ],
+     "exclusions": [
+      "Writing electron configurations for elements that break the aufbau order is not tested."
+     ]
+    },
+    {
+     "id": "1.8",
+     "slug": "ionic-compounds-valence",
+     "title": "Valence Electrons and Ionic Compounds",
+     "practices": [
+      1,
+      6
+     ],
+     "objectives": [
+      "Predict the charges of common ions and the formulas of ionic compounds from valence electrons."
+     ],
+     "knowledge": [
+      "Main-group atoms tend to gain or lose valence electrons until they have the electron configuration of a noble gas.",
+      "Metals form cations; nonmetals form anions; the charges must add to zero in an ionic compound.",
+      "Elements in the same group have similar chemical properties because they have the same number of valence electrons."
+     ],
+     "exclusions": []
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "id": "unit-2",
+   "title": "Compound Structure and Properties",
+   "weight": "7-9%",
+   "classPeriods": "12-13",
+   "topics": [
+    {
+     "id": "2.1",
+     "slug": "bond-types",
+     "title": "Types of Chemical Bonds",
+     "practices": [
+      1,
+      4,
+      6
+     ],
+     "objectives": [
+      "Classify bonds as nonpolar covalent, polar covalent, ionic or metallic from electronegativity and the elements involved."
+     ],
+     "knowledge": [
+      "A covalent bond is a shared pair of electrons; unequal sharing between atoms of different electronegativity makes it polar.",
+      "An ionic bond is the Coulombic attraction between cations and anions, typically a metal with a nonmetal.",
+      "Metallic bonding is cations held in a sea of delocalized valence electrons.",
+      "Bond character is a continuum: a larger electronegativity difference means more polar, more ionic character."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "2.2",
+     "slug": "bond-potential-energy",
+     "title": "Intramolecular Force and Potential Energy",
+     "practices": [
+      3,
+      4,
+      6
+     ],
+     "objectives": [
+      "Explain the shape of a potential energy curve for two bonded atoms and relate bond length and bond energy to it."
+     ],
+     "knowledge": [
+      "As two atoms approach, attraction lowers the potential energy until repulsion between nuclei makes it rise again.",
+      "The minimum of the curve gives the bond length and its depth gives the bond energy.",
+      "Double and triple bonds are shorter and stronger than single bonds between the same atoms.",
+      "For ions, Coulomb's law shows that larger charges and smaller ions give stronger attraction."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "2.3",
+     "slug": "ionic-solids",
+     "title": "Structure of Ionic Solids",
+     "practices": [
+      1,
+      4
+     ],
+     "objectives": [
+      "Explain the properties of ionic solids from the arrangement of ions and Coulombic attractions."
+     ],
+     "knowledge": [
+      "Ionic solids are a repeating three-dimensional array of alternating cations and anions.",
+      "Strong attractions throughout the lattice give high melting points and brittleness.",
+      "Ionic solids do not conduct electricity, but melted or dissolved, their ions can move and they conduct."
+     ],
+     "exclusions": [
+      "Knowledge of specific crystal structures is not tested."
+     ]
+    },
+    {
+     "id": "2.4",
+     "slug": "metals-alloys",
+     "title": "Structure of Metals and Alloys",
+     "practices": [
+      1,
+      4
+     ],
+     "objectives": [
+      "Explain the properties of metals and alloys from metallic bonding and the sizes of the atoms involved."
+     ],
+     "knowledge": [
+      "Delocalized electrons let metals conduct electricity and heat, and let layers slide, so metals are malleable and ductile.",
+      "In an interstitial alloy, small atoms fill holes between larger metal atoms, making the metal harder and less malleable.",
+      "In a substitutional alloy, atoms of similar size replace metal atoms in the lattice."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "2.5",
+     "slug": "lewis-diagrams",
+     "title": "Lewis Diagrams",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Draw Lewis diagrams for molecules and polyatomic ions from valence electron counts."
+     ],
+     "knowledge": [
+      "A Lewis diagram shows every valence electron as bonding pairs (lines) and lone pairs (dots).",
+      "Most second-period atoms end with eight electrons around them (octet rule); hydrogen ends with two.",
+      "Some molecules break the octet rule: incomplete octets (B), odd electron counts, and expanded octets from period 3 on."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "2.6",
+     "slug": "resonance-formal-charge",
+     "title": "Resonance and Formal Charge",
+     "practices": [
+      1,
+      4,
+      6
+     ],
+     "objectives": [
+      "Draw resonance structures and use formal charge to choose the best Lewis diagram."
+     ],
+     "knowledge": [
+      "When more than one valid Lewis diagram exists, the real structure is a resonance hybrid of them; electrons are delocalized.",
+      "Formal charge = valence electrons − lone-pair electrons − half the bonding electrons.",
+      "The best diagram has formal charges closest to zero, with any negative formal charge on the more electronegative atom.",
+      "Resonance gives equal, intermediate bond lengths and fractional bond orders."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "2.7",
+     "slug": "vsepr-hybridization",
+     "title": "VSEPR and Hybridization",
+     "practices": [
+      1,
+      4,
+      6
+     ],
+     "objectives": [
+      "Predict molecular geometry, bond angles, polarity and hybridization from a Lewis diagram."
+     ],
+     "knowledge": [
+      "Electron domains (bonds and lone pairs) around a central atom spread out as far apart as possible (VSEPR).",
+      "Lone pairs take up more room than bonding pairs and squeeze bond angles.",
+      "A molecule is polar when its bond dipoles do not cancel because of its shape.",
+      "Hybridization (sp, sp², sp³) matches the number of electron domains; single bonds are sigma bonds, and each extra bond in a double or triple bond is a pi bond."
+     ],
+     "exclusions": [
+      "Deriving or drawing hybrid orbitals, hybridization involving d orbitals, and molecular orbital theory are not tested."
+     ]
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "id": "unit-3",
+   "title": "Properties of Substances and Mixtures",
+   "weight": "18-22%",
+   "classPeriods": "14-15",
+   "topics": [
+    {
+     "id": "3.1",
+     "slug": "intermolecular-forces",
+     "title": "Intermolecular and Interparticle Forces",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Identify the forces between particles of a substance and use them to compare physical properties."
+     ],
+     "knowledge": [
+      "London dispersion forces exist between all particles and grow with the number of electrons (polarizability), not with mass as such.",
+      "Polar molecules also attract by dipole-dipole forces; hydrogen bonds form when H bonded to N, O or F meets a lone pair on N, O or F.",
+      "Ion-dipole forces hold ions and polar molecules together, as when salts dissolve in water.",
+      "Stronger forces between particles mean higher boiling and melting points and lower vapor pressure.",
+      "Intermolecular forces are much weaker than the bonds inside molecules; boiling breaks no covalent bonds."
+     ],
+     "exclusions": [
+      "Note: London dispersion forces are not another name for all van der Waals forces."
+     ]
+    },
+    {
+     "id": "3.2",
+     "slug": "solids-properties",
+     "title": "Properties of Solids",
+     "practices": [
+      1,
+      4,
+      6
+     ],
+     "objectives": [
+      "Classify solids as ionic, molecular, covalent network or metallic and explain their properties."
+     ],
+     "knowledge": [
+      "Molecular solids are held by intermolecular forces, so they melt low and do not conduct.",
+      "Covalent network solids (diamond, quartz) are one continuous web of covalent bonds: very high melting points, very hard.",
+      "Crystalline solids have an ordered repeating arrangement; amorphous solids do not."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "3.3",
+     "slug": "phases-of-matter",
+     "title": "Solids, Liquids, and Gases",
+     "practices": [
+      1,
+      3,
+      4
+     ],
+     "objectives": [
+      "Describe the arrangement and motion of particles in each phase and explain phase changes and vapor pressure."
+     ],
+     "knowledge": [
+      "Particles in a solid vibrate in place; in a liquid they are close but move past each other; in a gas they are far apart and move freely.",
+      "A phase change rearranges particles by overcoming or forming intermolecular forces, not covalent bonds.",
+      "In a closed container, evaporation and condensation reach a dynamic equilibrium; the gas pressure then is the vapor pressure.",
+      "A liquid has a vapor pressure at every temperature, not only at its boiling point."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "3.4",
+     "slug": "ideal-gas-law",
+     "title": "Ideal Gas Law",
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Use the ideal gas law and Dalton's law to relate pressure, volume, temperature and amount of gas."
+     ],
+     "knowledge": [
+      "PV = nRT links the four gas variables; T must be in kelvin and R must match the pressure and volume units.",
+      "The combined gas law relates two states of the same gas sample.",
+      "In a mixture, each gas has a partial pressure; they add to the total pressure, and the mole fraction gives each share.",
+      "Molar mass and density of a gas can be found from PV = nRT."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "3.5",
+     "slug": "kinetic-molecular-theory",
+     "title": "Kinetic Molecular Theory",
+     "practices": [
+      1,
+      4,
+      6
+     ],
+     "objectives": [
+      "Explain gas behavior with the kinetic molecular theory and read Maxwell-Boltzmann distributions."
+     ],
+     "knowledge": [
+      "Gas particles move randomly, collide elastically, and take up negligible volume compared with the container.",
+      "Average kinetic energy is proportional to kelvin temperature; at the same temperature, lighter particles move faster.",
+      "A Maxwell-Boltzmann distribution shows the spread of particle speeds; raising the temperature flattens it and shifts it to higher speeds."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "3.6",
+     "slug": "real-gases",
+     "title": "Deviation from Ideal Gas Law",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Explain when and why real gases deviate from ideal behavior."
+     ],
+     "knowledge": [
+      "Real gases deviate most at high pressure and low temperature, and for particles with strong intermolecular forces or large volumes.",
+      "Attractions between particles make the measured pressure lower than ideal; particle volume makes the real volume larger than ideal."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "3.7",
+     "slug": "solutions",
+     "title": "Solutions and Mixtures",
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Calculate molarity, prepare solutions and dilutions, and describe solutions at the particle level."
+     ],
+     "knowledge": [
+      "A solution is a homogeneous mixture of a solute dissolved in a solvent; in an aqueous solution the solvent is water.",
+      "Molarity = moles of solute ÷ liters of solution (not liters of solvent).",
+      "Dilution: moles of solute stay the same, so M1V1 = M2V2; V2 is the total final volume.",
+      "Prepare a solution precisely with an analytical balance and a volumetric flask filled to the mark."
+     ],
+     "exclusions": [
+      "Molality, percent by mass and percent by volume calculations of solutions, and colligative properties, are reported as not tested (needs-author: verify against the CED)."
+     ]
+    },
+    {
+     "id": "3.8",
+     "slug": "solution-particle-models",
+     "title": "Representations of Solutions",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Draw and read particle diagrams of solutions, with ions and water molecules correctly placed and oriented."
+     ],
+     "knowledge": [
+      "When an ionic solid dissolves, its ions separate (dissociate) and are surrounded by water molecules (hydration).",
+      "Water's partially negative oxygen points toward cations; its partially positive hydrogens point toward anions.",
+      "A particle diagram of a solution keeps the formula ratio of ions and shows solute particles spread evenly."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "3.9",
+     "slug": "separating-mixtures",
+     "title": "Separation of Solutions and Mixtures",
+     "practices": [
+      2,
+      6
+     ],
+     "objectives": [
+      "Explain how chromatography and distillation separate components by their intermolecular interactions."
+     ],
+     "knowledge": [
+      "In chromatography, components that interact more strongly with the stationary phase move more slowly; Rf compares distance traveled.",
+      "Distillation separates liquids because the one with weaker intermolecular forces has the higher vapor pressure and boils first.",
+      "Filtration separates an undissolved solid from a liquid."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "3.10",
+     "slug": "solubility",
+     "title": "Solubility",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Predict and explain solubility from the interactions between solute and solvent particles."
+     ],
+     "knowledge": [
+      "A substance dissolves well when solute-solvent attractions are similar in strength to the attractions they replace (\"like dissolves like\").",
+      "Polar and ionic solutes dissolve in polar solvents; nonpolar solutes dissolve in nonpolar solvents.",
+      "Gas solubility in water rises with gas pressure and falls as temperature rises."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "3.11",
+     "slug": "electromagnetic-spectrum",
+     "title": "Spectroscopy and the Electromagnetic Spectrum",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Match regions of the electromagnetic spectrum to the molecular and electronic changes they cause."
+     ],
+     "knowledge": [
+      "Microwaves change rotational energy, infrared changes vibrational energy, and ultraviolet and visible light move electrons between energy levels.",
+      "Absorption happens only when a photon's energy matches the difference between two energy levels."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "3.12",
+     "slug": "photons",
+     "title": "Properties of Photons",
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Calculate the energy, frequency and wavelength of light and relate them to energy level differences."
+     ],
+     "knowledge": [
+      "Light travels at c = λν, so frequency and wavelength are inversely related.",
+      "A photon's energy is E = hν; higher frequency (shorter wavelength) means more energy.",
+      "Energy per photon in joules converts to energy per mole with Avogadro's number."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "3.13",
+     "slug": "beer-lambert-law",
+     "title": "Beer-Lambert Law",
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Use the Beer-Lambert law and a calibration curve to find concentration from absorbance."
+     ],
+     "knowledge": [
+      "Absorbance is proportional to concentration, path length and molar absorptivity: A = εbc.",
+      "Measure at the wavelength of maximum absorbance; a calibration curve of standards gives concentration from absorbance.",
+      "Errors such as fingerprints on the cuvette or a wrong blank change the absorbance read and the concentration found."
+     ],
+     "exclusions": []
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "id": "unit-4",
+   "title": "Chemical Reactions",
+   "weight": "7-9%",
+   "classPeriods": "14-15",
+   "topics": [
+    {
+     "id": "4.1",
+     "slug": "reactions-intro",
+     "title": "Introduction for Reactions",
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Recognize evidence of a chemical reaction and write balanced chemical equations."
+     ],
+     "knowledge": [
+      "In a chemical reaction atoms rearrange into new substances; atoms are conserved, so equations must balance.",
+      "Evidence can include a color change, a gas, a precipitate or a temperature change, but none of these alone proves a reaction.",
+      "Coefficients give mole ratios; subscripts are fixed by the formulas and never changed to balance."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "4.2",
+     "slug": "net-ionic-equations",
+     "title": "Net Ionic Equations",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Write net ionic equations that show only the species that change."
+     ],
+     "knowledge": [
+      "Strong electrolytes are written as separate ions; solids, liquids, gases and weak electrolytes stay as formulas.",
+      "Spectator ions appear unchanged on both sides and are left out of the net ionic equation.",
+      "A net ionic equation must balance both atoms and charge."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "4.3",
+     "slug": "reaction-representations",
+     "title": "Representations of Reactions",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Move between balanced equations and particle diagrams of a reaction."
+     ],
+     "knowledge": [
+      "A particle diagram of a reaction conserves every atom and shows the ratio given by the coefficients.",
+      "State symbols (s), (l), (g) and (aq) say how each species exists.",
+      "Leftover reactant particles in a diagram show which reactant was in excess."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "4.4",
+     "slug": "physical-chemical-changes",
+     "title": "Physical and Chemical Changes",
+     "practices": [
+      1,
+      6
+     ],
+     "objectives": [
+      "Distinguish physical from chemical changes by what happens to particles and bonds."
+     ],
+     "knowledge": [
+      "A physical change alters arrangement or phase without making new substances; a chemical change forms new substances with new bonds.",
+      "Dissolving an ionic solid breaks ionic attractions and forms ion-dipole attractions, so it has features of both."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "4.5",
+     "slug": "stoichiometry",
+     "title": "Stoichiometry",
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Use mole ratios from a balanced equation to find amounts of reactants and products, including the limiting reactant."
+     ],
+     "knowledge": [
+      "Mole ratios from coefficients convert moles of one species into moles of another.",
+      "The limiting reactant runs out first and sets the theoretical yield; the other reactant is in excess.",
+      "Percent yield = actual yield ÷ theoretical yield × 100.",
+      "Gravimetric analysis finds the amount of an ion from the mass of a precipitate."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "4.6",
+     "slug": "titration-intro",
+     "title": "Introduction to Titration",
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Find an unknown concentration from titration data at the equivalence point."
+     ],
+     "knowledge": [
+      "In a titration, a solution of known concentration (titrant) is added from a buret to the analyte until they have reacted in stoichiometric amounts.",
+      "At the equivalence point, moles of titrant added match the moles of analyte by the mole ratio.",
+      "An indicator changes color at the end point, which should be close to the equivalence point.",
+      "Rinse the buret with the titrant, read the volume at the bottom of the meniscus, and record to the right precision."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "4.7",
+     "slug": "reaction-types",
+     "title": "Types of Chemical Reactions",
+     "practices": [
+      1,
+      4
+     ],
+     "objectives": [
+      "Classify reactions as precipitation, acid-base, redox or combustion and predict products."
+     ],
+     "knowledge": [
+      "Precipitation reactions form an insoluble solid from two solutions.",
+      "Acid-base reactions transfer a proton; redox reactions transfer electrons.",
+      "Combustion of a hydrocarbon in excess oxygen gives carbon dioxide and water."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "4.8",
+     "slug": "acid-base-reactions-intro",
+     "title": "Introduction to Acid-Base Reactions",
+     "practices": [
+      1,
+      6
+     ],
+     "objectives": [
+      "Identify Brønsted-Lowry acids, bases and conjugate pairs in a proton-transfer reaction."
+     ],
+     "knowledge": [
+      "A Brønsted-Lowry acid donates a proton (H⁺); a base accepts one.",
+      "Removing H⁺ from an acid gives its conjugate base; adding H⁺ to a base gives its conjugate acid.",
+      "Water is amphoteric: it can act as an acid or a base; in water, H⁺ exists as hydronium, H₃O⁺."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "4.9",
+     "slug": "redox-reactions",
+     "title": "Oxidation-Reduction (Redox) Reactions",
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Assign oxidation numbers, identify what is oxidized and reduced, and balance redox reactions with half-reactions."
+     ],
+     "knowledge": [
+      "Oxidation is loss of electrons (oxidation number rises); reduction is gain of electrons (oxidation number falls).",
+      "The oxidizing agent is reduced; the reducing agent is oxidized.",
+      "Balance a redox reaction by writing half-reactions so that electrons lost equal electrons gained."
+     ],
+     "exclusions": []
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "id": "unit-5",
+   "title": "Kinetics",
+   "weight": "7-9%",
+   "classPeriods": "13-14",
+   "topics": [
+    {
+     "id": "5.1",
+     "slug": "reaction-rates",
+     "title": "Reaction Rates",
+     "practices": [
+      4,
+      5
+     ],
+     "objectives": [
+      "Express reaction rates from concentration changes and relate rates of different species through the balanced equation."
+     ],
+     "knowledge": [
+      "Rate is the change in concentration per unit time; it can be measured by any species.",
+      "Rates of appearance and disappearance are related by the coefficients of the balanced equation.",
+      "Rates depend on concentration, temperature, surface area and catalysts."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "5.2",
+     "slug": "rate-laws",
+     "title": "Introduction to Rate Law",
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Determine a rate law and rate constant from initial-rate data."
+     ],
+     "knowledge": [
+      "A rate law has the form rate = k[A]^m[B]^n; the orders m and n come from experiment, not from coefficients.",
+      "Compare trials where only one concentration changes to find each order.",
+      "The units of k depend on the overall order."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "5.3",
+     "slug": "concentration-time",
+     "title": "Concentration Changes Over Time",
+     "practices": [
+      3,
+      5,
+      6
+     ],
+     "objectives": [
+      "Use integrated rate laws, linear plots and half-life to find order and rate constants."
+     ],
+     "knowledge": [
+      "First order: a plot of ln[A] against time is linear with slope −k; second order: 1/[A] against time is linear with slope k; zero order: [A] against time is linear.",
+      "Name the plot that is linear when you justify an order.",
+      "A first-order reaction has a constant half-life, t½ = 0.693/k, independent of concentration."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "5.4",
+     "slug": "elementary-reactions",
+     "title": "Elementary Reactions",
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Write the rate law of an elementary reaction from its molecularity."
+     ],
+     "knowledge": [
+      "An elementary reaction happens in a single collision or event; its rate law follows directly from its coefficients.",
+      "Molecularity is the number of particles colliding: unimolecular, bimolecular, rarely termolecular."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "5.5",
+     "slug": "collision-model",
+     "title": "Collision Model",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Explain reaction rates with collision frequency, energy and orientation."
+     ],
+     "knowledge": [
+      "A reaction happens only when particles collide with enough energy (the activation energy) and the right orientation.",
+      "Raising the temperature increases collision frequency and, much more, the fraction of collisions with enough energy.",
+      "On a Maxwell-Boltzmann distribution, the area beyond the activation energy is the fraction of particles that can react."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "5.6",
+     "slug": "energy-profiles",
+     "title": "Reaction Energy Profile",
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Read and draw a reaction energy profile and relate it to rate."
+     ],
+     "knowledge": [
+      "An energy profile plots potential energy along the reaction coordinate from reactants through the transition state to products.",
+      "The activation energy is the rise from reactants to the transition state; the overall energy change is products minus reactants.",
+      "A larger activation energy gives a smaller rate constant at the same temperature."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "5.7",
+     "slug": "mechanisms-intro",
+     "title": "Introduction to Reaction Mechanisms",
+     "practices": [
+      1,
+      4
+     ],
+     "objectives": [
+      "Check that a mechanism adds up to the overall reaction and identify intermediates."
+     ],
+     "knowledge": [
+      "A reaction mechanism is a sequence of elementary steps that adds up to the overall equation.",
+      "An intermediate is formed in one step and used up in a later step; it does not appear in the overall equation."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "5.8",
+     "slug": "mechanism-rate-laws",
+     "title": "Reaction Mechanism and Rate Law",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Derive the rate law of a mechanism whose first step is slow."
+     ],
+     "knowledge": [
+      "The slowest step (rate-determining step) limits the overall rate.",
+      "If the first step is slow, the overall rate law is the rate law of that step.",
+      "A mechanism is consistent with data only if its predicted rate law matches the experimental one."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "5.9",
+     "slug": "pre-equilibrium",
+     "title": "Pre-Equilibrium Approximation",
+     "practices": [
+      5,
+      6
+     ],
+     "objectives": [
+      "Derive the rate law of a mechanism with a fast reversible first step followed by a slow step."
+     ],
+     "knowledge": [
+      "When a fast reversible step comes before the slow step, its forward and reverse rates are equal.",
+      "Setting them equal expresses the intermediate's concentration with reactant concentrations, which removes it from the rate law."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "5.10",
+     "slug": "multistep-energy-profiles",
+     "title": "Multistep Reaction Energy Profile",
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Read a multistep energy profile to find intermediates and the rate-determining step."
+     ],
+     "knowledge": [
+      "Each elementary step has its own hump; valleys between humps are intermediates.",
+      "The step with the highest transition state relative to its starting point is usually the slowest step."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "5.11",
+     "slug": "catalysis",
+     "title": "Catalysis",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Explain how a catalyst speeds a reaction and distinguish a catalyst from an intermediate."
+     ],
+     "knowledge": [
+      "A catalyst provides a new mechanism with a lower activation energy; it is used in one step and regenerated in a later one.",
+      "A catalyst speeds forward and reverse reactions equally; it does not change the overall energy change or the equilibrium.",
+      "Catalysts can be homogeneous, heterogeneous (surface), acid-base, or enzymes."
+     ],
+     "exclusions": []
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "id": "unit-6",
+   "title": "Thermochemistry",
+   "weight": "7-9%",
+   "classPeriods": "10-11",
+   "topics": [
+    {
+     "id": "6.1",
+     "slug": "endo-exothermic",
+     "title": "Endothermic and Exothermic Processes",
+     "practices": [
+      1,
+      4,
+      6
+     ],
+     "objectives": [
+      "Classify processes as endothermic or exothermic from temperature data and particle-level reasoning."
+     ],
+     "knowledge": [
+      "In an exothermic process energy flows from the system to the surroundings; in an endothermic process it flows in.",
+      "A temperature rise in the surroundings (the water or calorimeter) signals an exothermic process.",
+      "Breaking attractions or bonds absorbs energy; forming them releases energy."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "6.2",
+     "slug": "energy-diagrams",
+     "title": "Energy Diagrams",
+     "practices": [
+      3,
+      4
+     ],
+     "objectives": [
+      "Represent energy changes with energy diagrams and connect them to the sign of ΔH."
+     ],
+     "knowledge": [
+      "An energy diagram shows reactants and products at their enthalpies; the difference is ΔH.",
+      "Products lower than reactants: ΔH negative, exothermic; higher: ΔH positive, endothermic."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "6.3",
+     "slug": "heat-transfer",
+     "title": "Heat Transfer and Thermal Equilibrium",
+     "practices": [
+      1,
+      4,
+      6
+     ],
+     "objectives": [
+      "Explain heat transfer between objects at the particle level until thermal equilibrium."
+     ],
+     "knowledge": [
+      "Heat is energy transferred because of a temperature difference, by collisions between particles.",
+      "Energy flows from the warmer object to the cooler one until they reach the same temperature (thermal equilibrium).",
+      "Energy lost by one object equals energy gained by the other in an isolated system."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "6.4",
+     "slug": "calorimetry",
+     "title": "Heat Capacity and Calorimetry",
+     "practices": [
+      2,
+      5
+     ],
+     "objectives": [
+      "Calculate heat with q = mcΔT and find enthalpy changes from calorimetry data."
+     ],
+     "knowledge": [
+      "q = mcΔT; specific heat capacity is the energy to raise 1 g by 1 °C (or 1 K).",
+      "In a coffee-cup calorimeter, the heat released by the reaction equals the heat gained by the solution, with opposite sign.",
+      "Divide q by moles of the limiting reactant for the molar enthalpy change, with the sign set by the direction of flow.",
+      "Heat lost to the surroundings or a wrong mass or ΔT changes the result in a predictable direction."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "6.5",
+     "slug": "phase-change-energy",
+     "title": "Energy of Phase Changes",
+     "practices": [
+      4,
+      5
+     ],
+     "objectives": [
+      "Calculate the energy of phase changes and read heating curves."
+     ],
+     "knowledge": [
+      "During a phase change, added energy overcomes intermolecular forces and the temperature stays constant.",
+      "Enthalpy of fusion and of vaporization are per mole; vaporization is larger because the forces are overcome completely.",
+      "A heating curve has sloped parts (q = mcΔT) and flat parts (q = nΔH)."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "6.6",
+     "slug": "enthalpy-of-reaction",
+     "title": "Introduction to Enthalpy of Reaction",
+     "practices": [
+      4,
+      5
+     ],
+     "objectives": [
+      "Use the enthalpy of reaction with stoichiometry to find the heat of a reaction."
+     ],
+     "knowledge": [
+      "ΔH°rxn is the enthalpy change for the reaction as written, in kJ per mole of reaction.",
+      "Heat for a given amount = moles × ΔH per the coefficients; reversing a reaction changes the sign.",
+      "The sign of q for the surroundings is opposite to that of the reaction."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "6.7",
+     "slug": "bond-enthalpies",
+     "title": "Bond Enthalpies",
+     "practices": [
+      5,
+      6
+     ],
+     "objectives": [
+      "Estimate ΔH of reaction from bond enthalpies."
+     ],
+     "knowledge": [
+      "Breaking bonds absorbs energy; forming bonds releases it.",
+      "ΔH ≈ (bonds broken) − (bonds formed), using average bond enthalpies, which makes it an estimate."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "6.8",
+     "slug": "enthalpy-of-formation",
+     "title": "Enthalpy of Formation",
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Calculate ΔH°rxn from standard enthalpies of formation."
+     ],
+     "knowledge": [
+      "The standard enthalpy of formation is the enthalpy change to make one mole of a compound from its elements in their standard states.",
+      "Elements in their standard states have ΔH°f = 0.",
+      "ΔH°rxn = Σ ΔH°f(products) − Σ ΔH°f(reactants), each times its coefficient."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "6.9",
+     "slug": "hess-law",
+     "title": "Hess's Law",
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Combine reactions and their enthalpies with Hess's law."
+     ],
+     "knowledge": [
+      "Enthalpy is a state function, so ΔH for an overall reaction is the sum of ΔH for steps that add up to it.",
+      "Reversing a step changes the sign of its ΔH; multiplying a step multiplies its ΔH."
+     ],
+     "exclusions": []
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "id": "unit-7",
+   "title": "Equilibrium",
+   "weight": "7-9%",
+   "classPeriods": "13-15",
+   "topics": [
+    {
+     "id": "7.1",
+     "slug": "equilibrium-intro",
+     "title": "Introduction to Equilibrium",
+     "practices": [
+      1,
+      6
+     ],
+     "objectives": [
+      "Describe chemical equilibrium as equal forward and reverse rates with constant concentrations."
+     ],
+     "knowledge": [
+      "At equilibrium the forward and reverse reactions continue at equal rates, so concentrations stay constant, not equal.",
+      "Equilibrium can be approached from either direction.",
+      "Concentration-time graphs level off at equilibrium."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "7.2",
+     "slug": "reaction-direction",
+     "title": "Direction of Reversible Reactions",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Explain which way a reversible reaction proceeds from the relative forward and reverse rates."
+     ],
+     "knowledge": [
+      "If the forward rate is greater than the reverse rate, the net reaction goes forward, and vice versa.",
+      "Adding or removing a species changes one rate first, so the system has a net change until rates are equal again."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "7.3",
+     "slug": "q-and-k",
+     "title": "Reaction Quotient and Equilibrium Constant",
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Write expressions for K and Q and compare them to predict the direction of a reaction."
+     ],
+     "knowledge": [
+      "K is products over reactants, each raised to its coefficient, at equilibrium; Q has the same form for any moment.",
+      "Kc uses molar concentrations; Kp uses partial pressures.",
+      "Pure solids and liquids are left out of K and Q.",
+      "Q < K: net forward; Q > K: net reverse; Q = K: at equilibrium."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "7.4",
+     "slug": "calculating-k",
+     "title": "Calculating the Equilibrium Constant",
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Calculate K from equilibrium concentrations or pressures."
+     ],
+     "knowledge": [
+      "Substitute equilibrium values into the K expression; K has no units on the exam.",
+      "Use an initial-change-equilibrium table when only some equilibrium values are given.",
+      "Heterogeneous equilibria include only gases and dissolved species in K."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "7.5",
+     "slug": "k-magnitude",
+     "title": "Magnitude of the Equilibrium Constant",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Use the size of K to say whether reactants or products are favored at equilibrium."
+     ],
+     "knowledge": [
+      "K much larger than 1: products favored at equilibrium; K much smaller than 1: reactants favored.",
+      "The size of K says nothing about how fast equilibrium is reached."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "7.6",
+     "slug": "k-properties",
+     "title": "Properties of the Equilibrium Constant",
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Find K for reversed, multiplied or added reactions."
+     ],
+     "knowledge": [
+      "Reversing a reaction gives 1/K; multiplying the equation by n raises K to the n; adding reactions multiplies their K values.",
+      "K depends only on temperature for a given reaction."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "7.7",
+     "slug": "equilibrium-concentrations",
+     "title": "Calculating Equilibrium Concentrations",
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Find equilibrium concentrations from K and initial amounts with an ICE table."
+     ],
+     "knowledge": [
+      "An ICE table tracks initial amounts, the change (x times coefficients) and equilibrium amounts.",
+      "When K is small, x is small compared with the starting concentration and can be dropped from sums and differences.",
+      "Compare Q with K first to know which direction the change goes."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "7.8",
+     "slug": "equilibrium-representations",
+     "title": "Representations of Equilibrium",
+     "practices": [
+      1,
+      3,
+      5
+     ],
+     "objectives": [
+      "Read particle diagrams and graphs of systems at equilibrium and calculate K from particle counts."
+     ],
+     "knowledge": [
+      "A particle diagram at equilibrium shows a mixture whose composition no longer changes over time.",
+      "Counting particles of each species (and dividing by volume) gives concentrations for K."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "7.9",
+     "slug": "le-chatelier",
+     "title": "Introduction to Le Châtelier's Principle",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Predict how an equilibrium shifts when concentration, pressure, volume or temperature change."
+     ],
+     "knowledge": [
+      "A system at equilibrium that is disturbed shifts to partly counteract the change.",
+      "Adding a species shifts away from it; reducing the volume shifts toward fewer moles of gas.",
+      "Raising the temperature shifts an endothermic reaction forward and changes K; adding a catalyst or an inert gas at constant volume causes no shift."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "7.10",
+     "slug": "q-and-le-chatelier",
+     "title": "Reaction Quotient and Le Châtelier's Principle",
+     "practices": [
+      6
+     ],
+     "objectives": [
+      "Justify an equilibrium shift by comparing Q with K."
+     ],
+     "knowledge": [
+      "A change in concentration or pressure changes Q but not K; the system shifts until Q equals K again.",
+      "A temperature change changes K itself.",
+      "Justify shifts with Q vs K, not with rate language alone."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "7.11",
+     "slug": "solubility-equilibria",
+     "title": "Introduction to Solubility Equilibria",
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Write Ksp expressions and convert between Ksp and molar solubility."
+     ],
+     "knowledge": [
+      "A slightly soluble salt in water reaches equilibrium with its ions; Ksp is the product of ion concentrations raised to their coefficients.",
+      "Molar solubility s is the moles of salt that dissolve per liter; for MX2, Ksp = s(2s)² = 4s³.",
+      "Comparing Ksp directly works only for salts with the same ion ratio."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "7.12",
+     "slug": "common-ion-effect",
+     "title": "Common-Ion Effect",
+     "practices": [
+      5,
+      6
+     ],
+     "objectives": [
+      "Explain and calculate how a common ion lowers solubility."
+     ],
+     "knowledge": [
+      "Adding an ion already in the equilibrium makes Q > Ksp, so more solid forms: solubility drops.",
+      "Ksp does not change; only the solubility does."
+     ],
+     "exclusions": []
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "id": "unit-8",
+   "title": "Acids and Bases",
+   "weight": "11-15%",
+   "classPeriods": "14-16",
+   "topics": [
+    {
+     "id": "8.1",
+     "slug": "acids-bases-intro",
+     "title": "Introduction to Acids and Bases",
+     "practices": [
+      1,
+      5
+     ],
+     "objectives": [
+      "Relate pH, pOH, [H3O+] and [OH−] through the autoionization of water."
+     ],
+     "knowledge": [
+      "Water ionizes slightly: Kw = [H3O+][OH−] = 1.0 × 10^-14 at 25 °C.",
+      "pH = −log[H3O+]; pOH = −log[OH−]; pH + pOH = 14 at 25 °C.",
+      "A neutral solution has [H3O+] = [OH−]; Kw, and so neutral pH, changes with temperature."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "8.2",
+     "slug": "strong-acids-bases",
+     "title": "pH and pOH of Strong Acids and Bases",
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Calculate the pH of strong acid and strong base solutions, including mixtures."
+     ],
+     "knowledge": [
+      "Strong acids and strong bases ionize completely in water, so [H3O+] or [OH−] comes straight from the concentration.",
+      "Know the common strong acids (HCl, HBr, HI, HNO3, HClO4, H2SO4 first proton) and strong bases (group 1 and heavy group 2 hydroxides).",
+      "When strong acid and strong base mix, find what is left over after neutralization, then the pH."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "8.3",
+     "slug": "weak-acids-bases",
+     "title": "Weak Acid and Base Equilibria",
+     "practices": [
+      5,
+      6
+     ],
+     "objectives": [
+      "Calculate the pH of weak acid and weak base solutions with Ka or Kb."
+     ],
+     "knowledge": [
+      "A weak acid is mostly un-ionized in water; Ka measures how far it ionizes, and pKa = −log Ka.",
+      "For a weak acid, [H3O+] ≈ √(Ka × C) when ionization is small.",
+      "Ka × Kb = Kw for a conjugate pair; percent ionization rises as a weak acid is diluted."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "8.4",
+     "slug": "buffers-intro",
+     "title": "Acid-Base Reactions and Buffers",
+     "practices": [
+      1,
+      5,
+      6
+     ],
+     "objectives": [
+      "Predict the products and pH of acid-base mixtures and recognize when a buffer forms."
+     ],
+     "knowledge": [
+      "Strong acid + strong base gives a neutral solution at equivalence; a weak acid + strong base gives the conjugate base, so the solution is basic.",
+      "A buffer contains a weak acid and its conjugate base (or weak base and conjugate acid) in similar amounts.",
+      "Partly neutralizing a weak acid with a strong base makes a buffer."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "8.5",
+     "slug": "acid-base-titrations",
+     "title": "Acid-Base Titrations",
+     "practices": [
+      3,
+      4,
+      5
+     ],
+     "objectives": [
+      "Read titration curves to find the equivalence point, half-equivalence point and pKa."
+     ],
+     "knowledge": [
+      "A titration curve plots pH against volume of titrant; the steep rise centers on the equivalence point.",
+      "At the half-equivalence point of a weak acid titration, [HA] = [A−], so pH = pKa.",
+      "The pH at equivalence is 7 for strong-strong, above 7 for weak acid with strong base, below 7 for weak base with strong acid.",
+      "A polyprotic acid shows one equivalence point per ionizable proton."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "8.6",
+     "slug": "acid-strength-structure",
+     "title": "Molecular Structure of Acids and Bases",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Explain relative acid strength from molecular structure and the stability of the conjugate base."
+     ],
+     "knowledge": [
+      "An acid is stronger when its conjugate base is more stable: charge spread by resonance or pulled by electronegative atoms.",
+      "For oxyacids, more oxygen atoms or a more electronegative central atom makes the acid stronger.",
+      "Carboxylic acids are weak acids; amines are weak bases (they accept a proton on the nitrogen lone pair)."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "8.7",
+     "slug": "ph-and-pka",
+     "title": "pH and pKa",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Compare pH and pKa to find which form of an acid predominates and choose an indicator."
+     ],
+     "knowledge": [
+      "When pH < pKa, the protonated form predominates; when pH > pKa, the deprotonated form does; at pH = pKa they are equal.",
+      "An indicator changes color over about pKa ± 1, so choose one whose pKa is near the equivalence-point pH."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "8.8",
+     "slug": "buffer-properties",
+     "title": "Properties of Buffers",
+     "practices": [
+      1,
+      4,
+      6
+     ],
+     "objectives": [
+      "Explain at the particle level how a buffer resists pH change."
+     ],
+     "knowledge": [
+      "Added strong acid reacts with the conjugate base; added strong base reacts with the weak acid, so few H3O+ or OH− ions remain free.",
+      "The buffer pH depends on the ratio of conjugate base to acid, not on their absolute amounts.",
+      "Diluting a buffer barely changes its pH."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "8.9",
+     "slug": "henderson-hasselbalch",
+     "title": "Henderson-Hasselbalch Equation",
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Calculate buffer pH and buffer composition with the Henderson-Hasselbalch equation."
+     ],
+     "knowledge": [
+      "pH = pKa + log([A−]/[HA]), using base-10 log, not ln.",
+      "For a weak base buffer, use the pKa of the conjugate acid, not pKb.",
+      "To make a buffer of a chosen pH, pick an acid with pKa near that pH and set the ratio."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "8.10",
+     "slug": "buffer-limits",
+     "title": "Buffer Capacity",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Compare buffer capacities and explain when a buffer is exhausted."
+     ],
+     "knowledge": [
+      "Buffer capacity grows with the amounts of weak acid and conjugate base present.",
+      "A buffer resists additions of acid or base best when [A−] and [HA] are similar, and fails once one component is used up."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "8.11",
+     "slug": "ph-and-solubility",
+     "title": "pH and Solubility",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Predict qualitatively how pH changes the solubility of a salt with a basic anion."
+     ],
+     "knowledge": [
+      "A salt whose anion is the conjugate base of a weak acid becomes more soluble as pH falls, because H3O+ removes the anion and the equilibrium shifts toward dissolving.",
+      "Salts of anions from strong acids (Cl−, NO3−) are not affected by pH."
+     ],
+     "exclusions": [
+      "Calculations of solubility as a function of pH are reported as not tested (needs-author: verify against the CED)."
+     ]
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "id": "unit-9",
+   "title": "Thermodynamics and Electrochemistry",
+   "weight": "7-9%",
+   "classPeriods": "10-13",
+   "topics": [
+    {
+     "id": "9.1",
+     "slug": "entropy-intro",
+     "title": "Introduction to Entropy",
+     "practices": [
+      1,
+      4,
+      6
+     ],
+     "objectives": [
+      "Predict the sign of ΔS for a process with particle-level reasoning about how matter and energy disperse."
+     ],
+     "knowledge": [
+      "Entropy measures how many ways (microstates) the particles and energy of a system can be arranged.",
+      "Entropy increases when matter spreads out (more gas particles, larger volume, solid to liquid to gas, dissolving) or energy spreads (higher temperature).",
+      "Explain entropy with dispersal of matter and energy, not with \"disorder\"."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "9.2",
+     "slug": "entropy-change",
+     "title": "Absolute Entropy and Entropy Change",
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Calculate ΔS° of a reaction from standard molar entropies."
+     ],
+     "knowledge": [
+      "Every substance has a positive standard molar entropy S°; a perfect crystal at 0 K has zero entropy.",
+      "ΔS°rxn = Σ S°(products) − Σ S°(reactants), each times its coefficient; units are J/(mol·K)."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "9.3",
+     "slug": "gibbs-free-energy",
+     "title": "Gibbs Free Energy and Thermodynamic Favorability",
+     "practices": [
+      4,
+      5,
+      6
+     ],
+     "objectives": [
+      "Use ΔG° = ΔH° − TΔS° to decide whether a process is thermodynamically favored and at which temperatures."
+     ],
+     "knowledge": [
+      "A process is thermodynamically favored when ΔG° < 0.",
+      "ΔG° = ΔH° − TΔS°; convert ΔS° from J to kJ (or ΔH° to J) and use kelvin.",
+      "The signs of ΔH° and ΔS° decide whether a process is favored at all, at none, at high or at low temperature."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "9.4",
+     "slug": "kinetic-control",
+     "title": "Thermodynamic and Kinetic Control",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Explain why a thermodynamically favored process may not be observed at a measurable rate."
+     ],
+     "knowledge": [
+      "A favored process with a very large activation energy can be too slow to observe: it is under kinetic control.",
+      "ΔG° says whether a process can go, not how fast."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "9.5",
+     "slug": "free-energy-equilibrium",
+     "title": "Free Energy and Equilibrium",
+     "practices": [
+      4,
+      5
+     ],
+     "objectives": [
+      "Relate ΔG° to K with ΔG° = −RT ln K."
+     ],
+     "knowledge": [
+      "ΔG° = −RT ln K, with R = 8.314 J/(mol·K) and T in kelvin.",
+      "ΔG° < 0 means K > 1 (products favored); ΔG° > 0 means K < 1.",
+      "When ΔG° is near zero, K is near 1 and both reactants and products are present in large amounts."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "9.6",
+     "slug": "dissolution-free-energy",
+     "title": "Free Energy of Dissolution",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Explain the enthalpy, entropy and free energy changes of dissolving a solid."
+     ],
+     "knowledge": [
+      "Dissolving breaks solute-solute and solvent-solvent attractions (absorbs energy) and forms solute-solvent attractions (releases energy).",
+      "Dissolving usually raises entropy, though ordering of water around small, highly charged ions can lower it.",
+      "A solid dissolves readily when ΔG° of dissolution is negative."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "9.7",
+     "slug": "coupled-reactions",
+     "title": "Coupled Reactions",
+     "practices": [
+      4,
+      5
+     ],
+     "objectives": [
+      "Explain how coupling to a favored reaction drives an unfavored one."
+     ],
+     "knowledge": [
+      "An unfavored reaction (ΔG° > 0) can proceed when coupled to a favored one so that the total ΔG° is negative.",
+      "Coupling needs a shared intermediate; ΔG° values of coupled steps add, and their K values multiply.",
+      "External energy (electric current, light) can also drive an unfavored process."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "9.8",
+     "slug": "electrochemical-cells",
+     "title": "Galvanic (Voltaic) and Electrolytic Cells",
+     "practices": [
+      1,
+      3,
+      4
+     ],
+     "objectives": [
+      "Describe the parts and electron flow of galvanic and electrolytic cells."
+     ],
+     "knowledge": [
+      "In a galvanic cell a favored redox reaction produces an electric current; in an electrolytic cell a current drives an unfavored one.",
+      "Oxidation happens at the anode and reduction at the cathode; electrons flow through the wire from anode to cathode.",
+      "The salt bridge lets ions move to keep each half-cell neutral."
+     ],
+     "exclusions": [
+      "Labeling electrodes as positive or negative is reported as not tested (needs-author: verify against the CED)."
+     ]
+    },
+    {
+     "id": "9.9",
+     "slug": "cell-potential",
+     "title": "Cell Potential and Free Energy",
+     "practices": [
+      5,
+      6
+     ],
+     "objectives": [
+      "Calculate E°cell from half-reactions and relate it to ΔG°."
+     ],
+     "knowledge": [
+      "E°cell = E°(cathode) − E°(anode) using standard reduction potentials; a positive E°cell means a favored reaction.",
+      "E° is intensive: multiplying a half-reaction to balance electrons does not change its E°.",
+      "ΔG° = −nFE°, where n is moles of electrons transferred and F = 96,485 C/mol e−."
+     ],
+     "exclusions": []
+    },
+    {
+     "id": "9.10",
+     "slug": "nernst-equation",
+     "title": "Cell Potential Under Nonstandard Conditions",
+     "practices": [
+      4,
+      6
+     ],
+     "objectives": [
+      "Predict how cell potential changes when concentrations change."
+     ],
+     "knowledge": [
+      "When Q < 1, the cell potential is larger than E°; when Q > 1, it is smaller; at equilibrium the cell potential is zero.",
+      "The Nernst equation, E = E° − (RT/nF) ln Q, describes this; the exam emphasizes reasoning about direction.",
+      "A concentration cell has the same half-reaction on both sides and runs on a concentration difference."
+     ],
+     "exclusions": [
+      "Quantitative Nernst calculations are reported as de-emphasized (needs-author: verify against the CED)."
+     ]
+    },
+    {
+     "id": "9.11",
+     "slug": "electrolysis-faraday",
+     "title": "Electrolysis and Faraday's Law",
+     "practices": [
+      5
+     ],
+     "objectives": [
+      "Calculate the amount of substance produced or used in electrolysis from current and time."
+     ],
+     "knowledge": [
+      "Charge = current × time (q = It); charge ÷ F gives moles of electrons.",
+      "Moles of electrons and the half-reaction give moles, then mass, of the substance plated or produced."
+     ],
+     "exclusions": []
+    }
+   ]
+  }
+ ],
+ "skillsTopics": [
+  {
+   "slug": "math-units",
+   "title": "Units and Dimensional Analysis",
+   "before": "moles-molar-mass",
+   "objectives": [
+    "Carry units through every calculation and convert between them with conversion factors."
+   ],
+   "knowledge": [
+    "Every measured quantity is a number with a unit; the unit is part of the answer.",
+    "Metric prefixes (giga to pico) scale a unit by powers of ten; kilo is 10^3, milli 10^-3, micro 10^-6, nano 10^-9.",
+    "A conversion factor is a ratio equal to one, so multiplying by it changes the unit, not the quantity.",
+    "Temperature in kelvin is the Celsius temperature plus 273.15; gas and thermodynamics equations need kelvin.",
+    "Density is mass divided by volume."
+   ]
+  },
+  {
+   "slug": "math-exponents",
+   "title": "Exponents",
+   "before": "moles-molar-mass",
+   "objectives": [
+    "Use the rules of exponents to multiply, divide and raise powers."
+   ],
+   "knowledge": [
+    "An exponent says how many times a base is multiplied by itself; a negative exponent means one over the power.",
+    "Multiplying powers of the same base adds exponents; dividing subtracts them; a power of a power multiplies them.",
+    "A fractional exponent is a root: x^(1/2) is the square root of x."
+   ]
+  },
+  {
+   "slug": "math-scientific-notation",
+   "title": "Scientific Notation",
+   "before": "moles-molar-mass",
+   "objectives": [
+    "Write, read and calculate with numbers in scientific notation."
+   ],
+   "knowledge": [
+    "Scientific notation writes a number as a coefficient from 1 to less than 10 times a power of ten.",
+    "To multiply, multiply the coefficients and add the exponents; to divide, divide and subtract.",
+    "A calculator entry such as 6.022E23 means 6.022 × 10^23.",
+    "An order of magnitude is a factor of ten; comparing exponents compares sizes quickly."
+   ]
+  },
+  {
+   "slug": "math-sig-figs",
+   "title": "Significant Figures",
+   "before": "moles-molar-mass",
+   "objectives": [
+    "Report a calculated value with the number of significant figures the data support."
+   ],
+   "knowledge": [
+    "Significant figures are the digits a measurement actually knows, plus one estimated digit.",
+    "Nonzero digits and zeros between them count; leading zeros never count; trailing zeros count when there is a decimal point.",
+    "Multiplying or dividing: keep as many significant figures as the least precise factor.",
+    "Adding or subtracting: keep as many decimal places as the least precise term.",
+    "For a logarithm such as pH, the number of decimal places equals the significant figures of the concentration.",
+    "Exact numbers (counted items, defined conversions) do not limit significant figures."
+   ]
+  },
+  {
+   "slug": "math-logs",
+   "title": "Logarithms",
+   "before": "concentration-time",
+   "objectives": [
+    "Use base-10 and natural logarithms and their inverses in chemistry equations."
+   ],
+   "knowledge": [
+    "The base-10 logarithm of a number is the power of ten that gives the number: log(1000) = 3.",
+    "The natural logarithm (ln) uses base e; ln x = 2.303 log x.",
+    "log(ab) = log a + log b and log(a/b) = log a − log b; log(10^x) = x.",
+    "The inverse of log is 10^x; the inverse of ln is e^x.",
+    "Mixing up ln and log is one of the most common calculation errors on the exam."
+   ]
+  }
+ ],
+ "topicCount": 91,
+ "topicCountByUnit": {
+  "1": 8,
+  "2": 7,
+  "3": 13,
+  "4": 9,
+  "5": 11,
+  "6": 9,
+  "7": 12,
+  "8": 11,
+  "9": 11
+ },
+ "exclusionsSummary": {
+  "verifiedUnits1to2": [
+   "1.2 mass spectra of samples with several elements or of species other than singly charged monatomic ions",
+   "1.5 assigning quantum numbers",
+   "1.7 electron configurations of aufbau exceptions",
+   "2.3 specific crystal structures",
+   "2.7 hybrid orbital derivation, d-orbital hybridization, molecular orbital theory"
+  ],
+  "unverifiedUnits3to9": [
+   "3.7 molality, percent by mass and by volume of solutions; colligative properties",
+   "8.11 solubility as a function of pH calculations",
+   "9.8 labeling electrodes positive or negative",
+   "9.10 quantitative Nernst calculations de-emphasized"
+  ],
+  "inScope": [
+   "photoelectron spectroscopy (1.6)",
+   "Beer-Lambert law (3.13)",
+   "spectroscopy and the electromagnetic spectrum (3.11)",
+   "Coulomb's law reasoning"
+  ]
+ },
+ "exam": {
+  "date2027": "2027-05-06",
+  "day": "Thursday",
+  "session": "afternoon",
+  "totalTime": "3 h 15 min",
+  "delivery": "Hybrid digital in Bluebook: multiple choice on screen; free-response questions read on screen and handwritten in paper booklets.",
+  "mcq": {
+   "questions": 60,
+   "minutes": 90,
+   "weight": "50%",
+   "options": 4,
+   "format": "Discrete items and sets of items that share a stimulus."
+  },
+  "frq": {
+   "questions": 7,
+   "minutes": 105,
+   "weight": "50%",
+   "long": {
+    "count": 3,
+    "points": 10
+   },
+   "short": {
+    "count": 4,
+    "points": 4
+   },
+   "suggestedMinutes": {
+    "long": 23,
+    "short": 9
+   }
+  },
+  "calculator": "Allowed on both sections; Desmos built into Bluebook.",
+  "reference": "Periodic table and the equations and constants sheet. No reduction potential table, solubility rules, Arrhenius equation or zero-order integrated law."
+ },
+ "changes2024": [
+  "Big ideas and enduring understandings removed; content coded by topic.",
+  "Units 2, 3, 6 and 9 renamed.",
+  "Old 7.13 pH and Solubility became 8.11; old 7.14 Free Energy of Dissolution became 9.6; old 9.6-9.10 became 9.7-9.11.",
+  "Equations sheet reorganized: Coulomb's law, metric prefixes, Ka × Kb = Kw and pKa + pKb = pKw added.",
+  "AP Classroom multiple choice moved to four options."
+ ]
+}
