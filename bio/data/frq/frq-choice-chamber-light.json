@@ -51,11 +51,10 @@
       "prompt": "The black paper may also make the covered half warmer or cooler than the lit half. <b>Describe</b> how the student could change the design so that any preference can be attributed to light, and <b>justify</b> the change.",
       "rubric": [
         {
-          "point": "Describes a way to remove or control the temperature difference, with a reason: place a water bath or heat filter between lamp and box (or use an LED/cool light), measure and match the temperature of both halves with thermometers, or run a control chamber with both halves covered/both lit to check for side preference; justified by keeping all variables other than light the same.",
+          "point": "Describes a way to remove or control the temperature difference, with a reason: place a water bath or heat filter between lamp and box (or use an LED/cool light), measure and match the temperature of both halves with thermometers; justified by keeping all variables other than light the same.",
           "accept": [
             "put a heat-absorbing water filter under the lamp and check both halves are the same temperature, so only light differs",
-            "use a cool LED light and thermometers in both halves to show temperature is equal",
-            "run a control chamber with both halves dark to show the animals have no preference without a light difference"
+            "use a cool LED light and thermometers in both halves to show temperature is equal"
           ]
         }
       ],

@@ -113,7 +113,9 @@ person decides; lessons follow the "meanwhile" line.
   (χ² = 11.6), with a "For your exam" box; no item hinges on the choice.
 - **ci-two-se** (open). The skills topics use 95% CI ≈ x̄ ± 2SE, as exam materials do; for small
   samples (n = 4-9 in our items) the exact t multiplier is 2.3-3.2, so true intervals are wider.
-  Meanwhile: the notes say "the exam uses 2" once (`stats-confidence-intervals`); items use 2SE.
+  Meanwhile: the notes say the exact multiplier is just under 2 for large samples and larger for small
+  ones (about 2.3 for n = 9, 3.2 for n = 4) and that the exam uses 2 (`stats-confidence-intervals`,
+  second pass 2026-10-06); items use 2SE.
 - **nacl-ionization** (open). Items use i = 2 for NaCl and i = 3 for CaCl₂ (formula-sheet
   convention); real solutions ionize slightly less than completely. Meanwhile: the notes call it a
   convenient approximation (`stats-water-potential`).
@@ -540,6 +542,33 @@ Unit 8 (Ecology), raised by its author, 2026-10-03:
   shows a circannual clock that keeps migratory restlessness going under constant day length. The key now
   says day-length change, with food and temperature steady, is enough for migratory behavior, and the
   explanation notes that the design cannot separate day length from an internal yearly clock.
+
+- **carbohydrates-amylase-yield** (open, 1.3; second pass u1). `carbohydrates-s1` (invented data) has
+  salivary amylase release 9.2 of 10 mg of glycogen and 7.9 of starch as "sugar" in 60 min. α-amylase
+  cannot cut α-1,6 branch points and gives maltose, maltotriose and limit dextrins, so near-complete
+  release reads high if "sugar units" means free sugars; read as reducing sugar or small fragments it
+  is plausible. No item depends on the absolute values (items 1-5 compare tubes). Meanwhile: kept.
+- **exo-enzyme-slowing** (open, 1.2; second pass u1). After the first review, `macromolecules-intro-s1`
+  uses an enzyme that cuts single units off chain ends. `bio-macromolecules-intro-3` keys "fewer
+  unbroken bonds left" for the slowing release; for an end-cutting enzyme the rate depends more on
+  chain ends and on substrate running low than on the total number of bonds. The keyed answer is the
+  intended exam-level idea (substrate depletion) and no distractor is better. Meanwhile: kept; a
+  reviewer may want "less polymer left to cut" wording.
+- **mercury-fat-soluble** (open, 8.7; second pass u8). Notes, glossary, `bio-ecosystem-disruptions-21` and the
+  energy-flow tool group mercury with DDT and PCBs as "fat-soluble", stored in body fat. Methylmercury, the form that
+  biomagnifies, binds mainly to proteins (thiol groups) in muscle and is excreted slowly; DDT and PCBs are the
+  fat-stored ones. The exam-level rule (persistent and poorly excreted, so it biomagnifies) is right, and no key
+  depends on where mercury is stored. Meanwhile: kept as written; confirm, or change to "persistent, stored in body
+  tissues (DDT and PCBs in fat, mercury mostly in muscle)".
+- **choice-chamber-temperature-control** (resolved 2026-10-06, `frq-choice-chamber-light` part c; second pass
+  u8). The rubric accepted "run a control chamber with both halves dark", which checks for a side preference but
+  does not rule out a temperature difference. That accepted wording and the matching clause in the point are removed;
+  heat filter, cool light or matched thermometer readings remain.
+- **ci-tool-direction** (open, low priority; `bio/data/tools/confidence-intervals.json`, `genCi` in
+  `bio/assets/tools/bio-skill-problems.js`). The generator puts the second group's mean above or below the first at
+  random, so the `bean-light` context can produce dim-lamp plants heavier than bright-lamp plants, which reads as
+  implausible biology (the other four contexts are fine either way). Not changed (code). Meanwhile: practice numbers
+  only; no conclusion depends on the direction. Option: let a context fix the sign, or drop the lamp wording.
 
 ## Map content to confirm
 
