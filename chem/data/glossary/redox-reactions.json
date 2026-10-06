@@ -1,0 +1,14 @@
+{
+ "oxidation-number": {
+  "def": "A bookkeeping charge given to each atom as if every bond were ionic, with shared electrons assigned to the more electronegative atom (also called oxidation state). A rise means electrons were lost; a fall means electrons were gained."
+ },
+ "redox": {
+  "def": "A reaction in which electrons move from one species to another. Oxidation is loss of electrons (oxidation number rises); reduction is gain of electrons (oxidation number falls). The two always happen together."
+ },
+ "half-reaction": {
+  "def": "An equation for just the oxidation or just the reduction part of a redox reaction, with the electrons shown, such as Zn → Zn²⁺ + 2e⁻."
+ },
+ "oxidizing-agent": {
+  "def": "The oxidizing agent takes electrons from another species, so it is itself reduced; the reducing agent gives electrons to another species, so it is itself oxidized."
+ }
+}

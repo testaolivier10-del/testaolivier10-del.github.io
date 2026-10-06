@@ -1,0 +1,12 @@
+{
+ "redox-electron-flow": {
+  "file": "figures/redox-electron-flow.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 356,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A zinc atom passes two electrons to a Cu²⁺ ion, giving a Zn²⁺ ion and a copper atom. Oxidation numbers: Zn 0, Cu²⁺ +2, Zn²⁺ +2, Cu 0. Zinc goes from 0 to +2 and loses two electrons: it is oxidized and is the reducing agent. Copper goes from +2 to 0 and gains two electrons: it is reduced, and Cu²⁺ is the oxidizing agent. Half-reactions: Zn(s) → Zn²⁺(aq) + 2e⁻ and Cu²⁺(aq) + 2e⁻ → Cu(s). Electrons lost equal electrons gained."
+ }
+}

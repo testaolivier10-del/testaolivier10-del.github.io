@@ -1,0 +1,93 @@
+{
+ "topic": "redox-reactions",
+ "hook": "A battery, a rusting bike chain, a burning match and the cells in your body releasing energy from food all run on one kind of reaction: electrons passing from one substance to another. Chemists track those electrons with a simple bookkeeping number, and the bookkeeping tells you what is oxidized, what is reduced and how to balance the equation.",
+ "prereq": [
+  {
+   "q": "How many valence electrons does a neutral zinc atom lose to form Zn²⁺?",
+   "options": [
+    "2",
+    "1",
+    "0",
+    "3"
+   ],
+   "correct": 0,
+   "why": "The 2+ charge means two more protons than electrons: two electrons were lost.",
+   "review": "ionic-compounds-valence"
+  },
+  {
+   "q": "In which reaction do electrons move from one particle to another?",
+   "options": [
+    "Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s)",
+    "H⁺(aq) + OH⁻(aq) → H₂O(l)",
+    "Ag⁺(aq) + Cl⁻(aq) → AgCl(s)",
+    "H₂O(s) → H₂O(l)"
+   ],
+   "correct": 0,
+   "why": "Zinc atoms become ions and copper ions become atoms: electrons moved from zinc to copper.",
+   "review": "reaction-types"
+  },
+  {
+   "q": "Which element is more electronegative, O or H?",
+   "options": [
+    "O",
+    "H",
+    "They are equal",
+    "It depends on the compound"
+   ],
+   "correct": 0,
+   "why": "Oxygen has a much larger effective nuclear charge acting on its valence electrons.",
+   "review": "periodic-trends"
+  }
+ ],
+ "figure": {
+  "figure": "redox-electron-flow",
+  "caption": "Zinc in copper(II) sulfate. Each zinc atom gives two electrons to a Cu²⁺ ion. Zinc is oxidized (its oxidation number rises from 0 to +2); copper is reduced (+2 to 0)."
+ },
+ "chain": [
+  {
+   "cause": "One substance gives up electrons and another takes them",
+   "effect": "oxidation and reduction always happen together"
+  },
+  {
+   "cause": "Oxidation numbers track electrons as if every bond were ionic",
+   "effect": "a rise shows oxidation and a fall shows reduction"
+  },
+  {
+   "cause": "The species that takes electrons causes the other to be oxidized",
+   "effect": "the oxidizing agent is the species reduced, and the reducing agent is the one oxidized"
+  },
+  {
+   "cause": "Electrons are neither created nor destroyed",
+   "effect": "half-reactions are multiplied so electrons lost equal electrons gained"
+  }
+ ],
+ "ideas": [
+  "<b>Oxidation</b> is loss of electrons (oxidation number goes up); reduction is gain (it goes down).",
+  "Assign an <b>oxidation number</b>: elements 0; monatomic ions = charge; O usually −2; H usually +1; the sum equals the charge.",
+  "The <b>oxidizing agent</b> is reduced; the reducing agent is oxidized.",
+  "Write each <b>half-reaction</b>, multiply so electrons lost = electrons gained, add, and check atoms and charge."
+ ],
+ "misconception": {
+  "wrong": "Oxidation means a reaction with oxygen, and the oxidizing agent is the substance that is oxidized.",
+  "right": "Oxidation is loss of electrons, with or without oxygen (Zn + Cu²⁺ has none). The oxidizing agent takes electrons, so it is the species that is reduced."
+ },
+ "check": [
+  "chem-redox-reactions-1",
+  "chem-redox-reactions-2",
+  "chem-redox-reactions-3",
+  "chem-redox-reactions-5",
+  "chem-redox-reactions-6",
+  "chem-redox-reactions-7"
+ ],
+ "summary": "In a redox reaction electrons move from the species oxidized (oxidation number rises) to the species reduced (oxidation number falls). The oxidizing agent is reduced and the reducing agent is oxidized. Balance redox reactions with half-reactions so electrons lost equal electrons gained, then check atoms and charge.",
+ "connections": [
+  {
+   "href": "../notes/reaction-types.html",
+   "label": "Back: electron transfer among reaction types (4.7)"
+  },
+  {
+   "href": "../notes/titration-intro.html",
+   "label": "Back: titration calculations (4.6)"
+  }
+ ]
+}

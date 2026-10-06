@@ -1,0 +1,11 @@
+{
+ "net-ionic-equation": {
+  "def": "An equation for a reaction in solution that shows only the species that change. The molecular equation writes whole formulas; the complete ionic equation splits every dissolved ionic compound into ions; removing the spectator ions gives the net ionic equation."
+ },
+ "spectator-ion": {
+  "def": "An ion that is dissolved and unchanged on both sides of a reaction in solution, so it is left out of the net ionic equation."
+ },
+ "precipitate": {
+  "def": "An insoluble solid that forms when solutions are mixed; precipitation is the forming of that solid."
+ }
+}

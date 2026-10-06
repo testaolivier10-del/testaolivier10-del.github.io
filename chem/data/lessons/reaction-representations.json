@@ -1,0 +1,93 @@
+{
+ "topic": "reaction-representations",
+ "hook": "An equation like 2CO + O₂ → 2CO₂ is a recipe written in shorthand. A particle diagram is the same recipe drawn: you can count every atom and see which ingredient is left on the counter when the cooking stops. The exam asks you to move between the two, both ways.",
+ "prereq": [
+  {
+   "q": "Balance __CO + __O₂ → __CO₂. What are the coefficients, in order?",
+   "options": [
+    "2, 1, 2",
+    "1, 1, 1",
+    "1, 2, 1",
+    "2, 2, 2"
+   ],
+   "correct": 0,
+   "why": "2CO + O₂ → 2CO₂: 2 C and 4 O on each side.",
+   "review": "reactions-intro"
+  },
+  {
+   "q": "In a particle diagram, two joined circles of the same color most likely show",
+   "options": [
+    "a molecule of an element, such as O₂",
+    "a compound",
+    "a mixture of two elements",
+    "two separate atoms of a compound"
+   ],
+   "correct": 0,
+   "why": "Two atoms of the same element bonded together are a molecule of that element.",
+   "review": "mixture-composition"
+  },
+  {
+   "q": "Which ions does NaCl(aq) contain?",
+   "options": [
+    "Na⁺ and Cl⁻",
+    "Na and Cl atoms",
+    "NaCl molecules",
+    "Na⁻ and Cl⁺"
+   ],
+   "correct": 0,
+   "why": "A dissolved ionic compound is separate cations and anions.",
+   "review": "net-ionic-equations"
+  }
+ ],
+ "figure": {
+  "figure": "leftover-reactant-diagram",
+  "caption": "Reading a reaction particle diagram. The particles used, not the particles present, give the coefficients; whatever is left over was in excess."
+ },
+ "chain": [
+  {
+   "cause": "Atoms are rearranged, never made or destroyed",
+   "effect": "a correct diagram has the same count of each kind of atom before and after"
+  },
+  {
+   "cause": "Coefficients give the ratio in which particles react",
+   "effect": "the change in each count, not its starting value, gives the coefficients"
+  },
+  {
+   "cause": "One reactant runs out first",
+   "effect": "the other reactant still appears in the After box"
+  },
+  {
+   "cause": "State symbols tell how each species exists",
+   "effect": "a diagram shows gases spread out, solids packed, and dissolved ions apart in water"
+  }
+ ],
+ "ideas": [
+  "A <b>reaction particle diagram</b> draws the particles before and after. Every atom drawn before is drawn after.",
+  "Find coefficients from what was <i>used</i> and <i>made</i> (After minus Before), reduced to the smallest whole numbers.",
+  "The <b>limiting reactant</b> runs out first. A reactant still present After was in excess; leave it out of the equation.",
+  "<b>State symbols</b>: (s) solid, (l) liquid, (g) gas, (aq) dissolved in water. Ionic solids are drawn as packed arrays, never molecules."
+ ],
+ "misconception": {
+  "wrong": "Write the equation with the numbers of particles drawn in each box, leftovers included.",
+  "right": "The equation gives the reacting ratio. Use only the particles that reacted and formed, reduce to the smallest whole numbers, and leave the excess reactant out."
+ },
+ "check": [
+  "chem-reaction-representations-1",
+  "chem-reaction-representations-2",
+  "chem-reaction-representations-3",
+  "chem-reaction-representations-4",
+  "chem-reaction-representations-6",
+  "chem-reaction-representations-7"
+ ],
+ "summary": "A reaction particle diagram and a balanced equation say the same thing. Atoms are conserved between the boxes, the changes in particle counts give the coefficients, a leftover reactant was in excess, and state symbols say whether each species is a solid, liquid, gas or dissolved in water.",
+ "connections": [
+  {
+   "href": "../notes/net-ionic-equations.html",
+   "label": "Back: writing ions in solution (4.2)"
+  },
+  {
+   "href": "../notes/stoichiometry.html",
+   "label": "Ahead: limiting reactant calculations (4.5)"
+  }
+ ]
+}

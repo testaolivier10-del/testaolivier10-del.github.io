@@ -4346,9 +4346,9 @@
     "excess reagent",
     "in excess"
    ],
-   "taughtIn": "stoichiometry",
+   "taughtIn": "reaction-representations",
    "dependsOn": [
-    "stoichiometry"
+    "reaction-diagram"
    ]
   },
   {
@@ -4360,7 +4360,8 @@
    ],
    "taughtIn": "stoichiometry",
    "dependsOn": [
-    "limiting-reactant"
+    "limiting-reactant",
+    "stoichiometry"
    ]
   },
   {

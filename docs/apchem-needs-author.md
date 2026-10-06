@@ -37,3 +37,35 @@ teacher signs off (site rule `apchem-beta-and-report`).
 AP® Biology frees one simulator and all skills tools (apbio decision 9). Proposed for AP®
 Chemistry: the particle-diagram trainer free, the other trainers and drills Premium. Owner to
 confirm before the first trainer ships.
+
+## unit4-dissolving: is dissolving an ionic solid physical or chemical? (open, 2026-10-06)
+
+Topic 4.4 (`physical-chemical-changes`) teaches that dissolving an ionic solid has features of both
+kinds of change (strong ionic attractions broken and ion-dipole attractions formed, yet no new
+substance), and asks students to justify a classification at the particle level. No item keys a
+single label for it. Check how the CED and recent scoring guidelines treat this case, and whether an
+item should key one answer.
+
+## unit4-reaction-type-labels: are synthesis, decomposition and replacement labels assessed? (open, 2026-10-06)
+
+Topic 4.7 (`reaction-types`) classifies reactions mainly as precipitation, acid-base and electron
+transfer (with combustion), as the CED does, and teaches synthesis, decomposition and
+single/double replacement only as descriptive pattern names (one select-all item asks which reactions are
+decompositions). Confirm that these older labels are not tested directly; if they are not, consider
+dropping the decomposition item.
+
+## unit4-electron-transfer-before-4.9: "electron transfer" used in 4.7 before 4.9 (open, 2026-10-06)
+
+The CED asks 4.7 to classify reactions as redox, but the map teaches the terms "redox",
+"oxidation" and "reduction" in 4.9. Topic 4.7 therefore says "electron transfer" (a plain
+description, built from "electron" taught in 1.2) and points ahead to 4.9. If you would rather 4.7
+use the word "redox", move a short version of the `redox` concept into 4.7 as a
+`circularDependencies` pull-forward.
+
+## unit4-limiting-reactant-moved: limiting reactant now taught in 4.3 (decision needed, 2026-10-06)
+
+The CED's 4.3 (representations of reactions) has students identify the excess reactant in a
+particle diagram, so the `limiting-reactant` concept (aliases include "in excess") moved from 4.5
+`stoichiometry` to 4.3 `reaction-representations` in `docs/apchem-dependency-map.json`, depending
+on `reaction-diagram`; `yield` (4.5) now depends on both `limiting-reactant` and `stoichiometry`.
+4.3 teaches it with particles; 4.5 does the gram calculations. Confirm or revert.

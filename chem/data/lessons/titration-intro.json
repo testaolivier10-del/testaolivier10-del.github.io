@@ -1,0 +1,97 @@
+{
+ "topic": "titration-intro",
+ "hook": "A food lab needs to know how much acid is in a batch of vinegar, to the third significant figure, using nothing more expensive than glassware. The trick is to add a solution of known concentration, one drop at a time, until the acid is exactly used up, then let stoichiometry do the rest.",
+ "prereq": [
+  {
+   "q": "How many moles of NaOH are in 25.00 mL of 0.1000 M NaOH?",
+   "options": [
+    "0.002500 mol",
+    "2.500 mol",
+    "0.004000 mol",
+    "0.2500 mol"
+   ],
+   "correct": 0,
+   "why": "0.1000 mol/L × 0.02500 L = 0.002500 mol.",
+   "review": "solutions"
+  },
+  {
+   "q": "For H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O, how many moles of H₂SO₄ react with 0.0040 mol NaOH?",
+   "options": [
+    "0.0020 mol",
+    "0.0080 mol",
+    "0.0040 mol",
+    "0.0010 mol"
+   ],
+   "correct": 0,
+   "why": "Use the mole ratio: 0.0040 mol × (1/2) = 0.0020 mol.",
+   "review": "stoichiometry"
+  },
+  {
+   "q": "Which glassware measures a fixed volume such as 10.00 mL most precisely?",
+   "options": [
+    "A volumetric pipet",
+    "A beaker",
+    "An Erlenmeyer flask",
+    "A 100 mL graduated cylinder"
+   ],
+   "correct": 0,
+   "why": "A volumetric pipet is made to deliver one volume to ±0.02 mL or better.",
+   "review": "solutions"
+  }
+ ],
+ "figure": {
+  "figure": "titration-setup",
+  "caption": "A titration setup. Titrant of known concentration in the buret is added to a measured volume of analyte in the flask until the indicator changes color. Read the buret at the bottom of the meniscus, at eye level."
+ },
+ "chain": [
+  {
+   "cause": "Titrant of known concentration is added from a buret",
+   "effect": "the moles added are known from molarity × volume"
+  },
+  {
+   "cause": "At the equivalence point the reactants have reacted in the mole ratio",
+   "effect": "moles of analyte follow from moles of titrant and the balanced equation"
+  },
+  {
+   "cause": "An indicator changes color with the first slight excess of titrant",
+   "effect": "the end point signals the equivalence point"
+  },
+  {
+   "cause": "Volumes are read to 0.01 mL and trials are repeated",
+   "effect": "the result is precise, and outlying trials are spotted"
+  }
+ ],
+ "ideas": [
+  "In a <b>titration</b>, the titrant (known concentration) is added from a <b>buret</b> to the analyte (unknown amount).",
+  "At the <b>equivalence point</b>, moles of titrant match the analyte by the mole ratio. The <b>indicator</b>'s color change, the end point, signals it.",
+  "Calculation: M × V (in L) of titrant → mole ratio → moles of analyte → ÷ volume of analyte.",
+  "Rinse the buret with titrant, clear the tip, read the bottom of the meniscus at eye level to 0.01 mL, and repeat until trials agree."
+ ],
+ "misconception": {
+  "wrong": "Water added to the analyte flask, or left in the flask from rinsing, changes the result, so the flask must be dry.",
+  "right": "The titrant reacts with the moles of analyte, and water does not change them. Water in the buret matters, because it dilutes the titrant; water in the flask does not."
+ },
+ "check": [
+  "chem-titration-intro-1",
+  "chem-titration-intro-2",
+  "chem-titration-intro-3",
+  "chem-titration-intro-4",
+  "chem-titration-intro-5",
+  "chem-titration-intro-11"
+ ],
+ "summary": "In a titration, a titrant of known concentration is added from a buret until it has reacted with the analyte in the mole ratio, the equivalence point, signaled by an indicator's end point. Moles of titrant (M × V) and the mole ratio give the moles, then the concentration, of the analyte.",
+ "connections": [
+  {
+   "href": "../notes/solutions.html",
+   "label": "Back: molarity and volumetric glassware (3.7)"
+  },
+  {
+   "href": "../notes/stoichiometry.html",
+   "label": "Back: mole ratios (4.5)"
+  },
+  {
+   "href": "../notes/reaction-types.html",
+   "label": "Next: types of reactions (4.7)"
+  }
+ ]
+}

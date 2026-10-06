@@ -1,0 +1,12 @@
+{
+ "stoich-roadmap": {
+  "file": "figures/stoich-roadmap.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A flow diagram. Grams of A (divide by molar mass) or volume of a solution of A (multiply by molarity) lead to moles of A. Moles of A times the mole ratio, moles of B over moles of A, gives moles of B. Moles of B lead to grams of B (multiply by molar mass) or to a volume of a solution of B (divide by molarity). The mole ratio comes from the coefficients of the balanced equation."
+ }
+}

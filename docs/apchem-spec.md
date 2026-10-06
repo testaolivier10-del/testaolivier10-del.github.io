@@ -130,7 +130,7 @@ All on one branch, `claude/apchem` (decision 5), one PR at the end.
 |---|---|---|
 | 0 | CED topic map (own words, 91 topics), dependency map, fork generator and runtime, checks, registration (registry, Premium pass, Worker, SQL migration, hub/pricing hidden until published, search, sitemap, OG card, budgets, theme colour) | **done 2026-10-06** (decisions 6-12): `docs/apchem-ced-map.json`, `docs/apchem-dependency-map.json` (96 topics, 285 concepts; `docs/apchem-phase0.md`), `scripts/build-apchem.mjs`, `check-apchem-map.mjs`, `check-apchem-content.mjs`, runtime `chem/assets/`, formats in `docs/apchem-architecture.md`, rules in `docs/apchem-authoring-guide.md`. Nothing published (`chem/data/published.json` empty, every page noindex); placeholder sample only in `scripts/test/fixtures/apchem-data/` |
 | 1 | Units 1-3 (where students are now) with the math refresher, notes, lessons, banks, FRQs, particle-diagram practice; independent accuracy check per unit; Beta | next |
-| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | |
+| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 4 drafted 2026-10-06 (9 topics, 147 items, 4 FRQs: `frq-oxalic-acid-titration` long, `frq-ammonia-limiting`, `frq-metal-displacement`, `frq-sulfate-precipitate` short; 9 figures); not published, accuracy check pending. Map: `limiting-reactant` moved to 4.3 (needs-author `unit4-limiting-reactant-moved`) |
 | 3 | Justification trainer, full practice exams, equations-sheet page, score calculator, cram kit | |
 | 4 | Second accuracy pass on the whole course; PR to owner | |
 
