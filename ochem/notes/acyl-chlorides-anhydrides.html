@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Carboxylic Acids &amp; Derivatives</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Carboxylic Acids &amp; Derivatives &middot; Section 85 of 123</p>
-    <h1>Acid chlorides &amp; anhydrides</h1>
-    <a class="notes-onward-cta" href="../lessons/acyl-chlorides-anhydrides.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="acyl-chlorides-anhydrides">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-redox"><span class="bk-toc-n">16</span>Oxidation &amp; Reduction</a>
+    <a class="bk-toc-chap" href="../learn.html#m-carboxylic-acids"><span class="bk-toc-chap-n">17</span><span><b>Carboxylic Acids &amp; Derivatives</b><small>6 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 6 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="carboxylic-acids"><a href="carboxylic-acids.html"><span class="bk-toc-n">82</span>Carboxylic acids</a></li><li data-toc-t="esters-amides"><a href="esters-amides.html"><span class="bk-toc-n">83</span>Esters &amp; amides</a></li><li data-toc-t="acyl-substitution"><a href="acyl-substitution.html"><span class="bk-toc-n">84</span>Nucleophilic acyl substitution</a></li><li class="current" data-toc-t="acyl-chlorides-anhydrides"><a href="#main" aria-current="page"><span class="bk-toc-n">85</span>Acid chlorides &amp; anhydrides</a><div class="bk-toc-onpage"><p>On this page</p><a href="#why-the-acid-itself-is-a">Why the acid itself is a poor acylating agent</a><a href="#making-an-acid-chloride">Making an acid chloride</a><a href="#what-an-acid-chloride-then-does">What an acid chloride then does</a><a href="#anhydrides">Anhydrides</a><a href="#cyclic-anhydrides">Cyclic anhydrides</a><a href="#the-other-use-friedel-crafts">The other use: Friedel–Crafts</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="nitriles"><a href="nitriles.html"><span class="bk-toc-n">86</span>Nitriles</a></li><li data-toc-t="baeyer-villiger"><a href="baeyer-villiger.html"><span class="bk-toc-n">87</span>Baeyer–Villiger oxidation</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-organometallics"><span class="bk-toc-n">18</span>Organolithiums, Cuprates &amp; Cross-Coupling</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-carboxylic-acids">Carboxylic Acids &amp; Derivatives</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Acid chlorides &amp; anhydrides: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/acyl-chlorides-anhydrides.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="carboxylic-acids">Carboxylic Acids &amp; Derivatives</span> &middot; Section 85 of 123</p>
+      <h1 class="bk-title">Acid chlorides &amp; anhydrides</h1>
+      <p class="bk-meta"><span class="bk-small">14 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/acyl-chlorides-anhydrides.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="acyl-chlorides-anhydrides" data-bk-ids="why-the-acid-itself-is-a making-an-acid-chloride what-an-acid-chloride-then-does anhydrides cyclic-anhydrides the-other-use-friedel-crafts what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Mix butanoic acid with diethylamine and you do not get an amide. You get a salt, because the amine simply takes the acid&rsquo;s proton. Yet the same amide forms cleanly in two steps: turn the acid into an acid chloride first, then add the amine. This page is about that first step, and about what acid chlorides and anhydrides do once you have them.</p>
 <p class="step-body">An <b>acyl group</b> is the R&ndash;C=O unit, and an <b>acylating agent</b> is a compound that hands its acyl group to a nucleophile. An <b>acid chloride</b> (also called an acyl chloride), RCOCl, carries a chlorine on the carbonyl carbon. An <b>anhydride</b>, RCO&ndash;O&ndash;COR, is two acyl groups joined through one oxygen. These two are the most reactive acylating agents on the ladder from <a class="chapter-ref" href="/ochem/notes/esters-amides.html">Esters &amp; amides</a>: acid chloride &gt; anhydride &gt; ester &gt; amide.</p>
@@ -162,14 +171,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">Almost every multistep problem that involves a carboxylic acid opens with the same move: activate with SOCl<sub>2</sub>, then run down the ladder. Recognize that move and half the planning is done before you start.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="acyl-substitution.html"><span>Previous</span>Nucleophilic acyl substitution</a><a class="notes-prevnext notes-next" href="nitriles.html"><span>Next</span>Nitriles</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="acyl-substitution.html"><span>&larr; Section 84</span><b>Nucleophilic acyl substitution</b></a><a class="tb-chapter-link next" href="nitriles.html"><span>Section 86 &rarr;</span><b>Nitriles</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

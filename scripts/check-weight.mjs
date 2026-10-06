@@ -112,12 +112,21 @@ const SHELL_BUDGETS = [
      pass and per-course on-sale switch, and the URL-safe course key.
      Measured 281.4 KB with the engagement pass. */
   ['site', 282],
+  /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
+     on every course page, plus the glossary popups (glossary-tip.js) on every
+     reading page and the glossary page's script and styles there. Counted on
+     its own because only course pages load it. Measured 10.5 KB with the
+     glossary work (W-A). 14 -> 17 once book.css, study.css/js and hub.css/js
+     joined it (W-B, W-C, W-D), each replacing four per-course copies; the
+     /assets every-page ruler stayed under its old 282. Measured 16.0 KB. */
+  ['assets/course', 17],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
      the same place ochem's deck script is counted. No other NREMT page got
      heavier. */
-  ['nremt', 11],
+  /* 11 -> 11.4: the flashcard deck's shared deck card and by-topic list (W-C). */
+  ['nremt', 11.4],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with
@@ -211,7 +220,8 @@ const SHELL_BUDGETS = [
      clickable atom (ochem-nav.js), hit areas on practice atoms, the phone
      lesson rail and reserved card space (ochem.css), rail labels from step
      titles (step-back.js). Measured 109.9 KB. */
-  ['ochem', 110.5],
+  /* 110.5 -> 111: shared classes in session-runner.js and the free line (W-C). */
+  ['ochem', 111],
   /* The A&P course runtime (anp-core, questions, nav, glossary tooltips,
      anp.css) plus whichever app or tool script the page loads. Measured
      37.3 KB at the Phase 1 pilot. 44 -> 46 (audit 2026-10): the lazy bank
@@ -258,7 +268,11 @@ const BUDGETS = [
   /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
      preloads its one text face (Nunito, latin) so it is ready at first paint
      with font-display: optional, which removed the font-swap layout shift. */
-  ['nremt/index.html', 9.2],
+  /* 9.2 -> 10.4 for the Start here / Review queue / Today's goal row every
+     course home has (docs/course-shell.md, W-D): its first-visit markup and
+     the script that fills it from the practice-engine records. Measured
+     10.3 KB. */
+  ['nremt/index.html', 10.4],
   /* 10 -> 11. The home page lists every chapter's topics, so it grows by a
      line of markup each time the course gains a section; the generated list
      crossed 10 KB gzipped when the reactivity chapter gained its energy-
@@ -284,7 +298,9 @@ const BUDGETS = [
      DOMAIN_TARGETS so later tagging stays consistent (about 0.2 KB). */
   /* 45 -> 45.2 for the engagement pass: the one-line share and next-step
      hooks on the results screen. Measured 45.1 KB. */
-  ['nremt/practice.html', 45.2],
+  // 45.2 -> 48: the shared step builder and "Your numbers" rail, with
+  // nremt/practice-study.js mapping it onto the engine's controls (W-C).
+  ['nremt/practice.html', 48],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read
@@ -364,7 +380,8 @@ const BUDGETS = [
   ['ochem/flashcards.html', 3],
   /* 5 -> 3 above: the deck's card styles moved out of the page into
      /assets/flashcards.css (1.9 KB gzipped, counted in the site shell) so the
-     NREMT deck can share them. Its page carries only the deck-view panels
+     NREMT deck can share them; since the course shell (W-C) they are part of
+     /assets/course/study.css with the other study-page styles. Its page carries only the deck-view panels
      ochem gets from ochem.css; the scheduler it shares is in ochem/assets. */
   ['nremt/flashcards.html', 3],
   // The glossary page is a shell plus every term's name (the definitions are
@@ -400,7 +417,10 @@ const BUDGETS = [
      with Units 1-4 (441 terms, about 23 bytes gzipped per term); the whole
      course should land near 25 KB. */
   ['bio/glossary.html', 30],
-  ['bio/tools.html', 3],
+  /* 3 -> 5 (W-D, docs/course-shell.md): the hub was a placeholder shell; it
+     now lists all 19 published tools as cards in the page itself, so it
+     reads without JavaScript. Measured 4.4 KB. */
+  ['bio/tools.html', 5],
 
   // The privacy policy: the page that has to load well for somebody who has
   // not decided yet whether to trust the site.
@@ -587,7 +607,8 @@ const DATA_BUDGETS = [
      the engines, not the shell), and nothing else would measure these.
      Measured 3.4 and 10.0 KB gzipped, about a tenth added. */
   ['ochem/assets/exam-core.js', 4],
-  ['ochem/assets/exams-page.js', 11],
+  // 11 -> 12: the exam setup now carries the shared rail (W-C).
+  ['ochem/assets/exams-page.js', 12],
   /* The flashcard deck, generated from the notes' tables by
      scripts/build-flashcards.mjs. Fetched by flashcards.html after it paints,
      alongside concept-teach.json. Measured at 25.3 KB for 526 cards — about
@@ -596,8 +617,8 @@ const DATA_BUDGETS = [
      strings out of each card is the saving, not a bigger number. */
   ['ochem/assets/flashcards.json', 28],
   /* The ochem glossary (scripts/build-ochem-glossary.mjs): ~500 terms and
-     definitions, fetched after load by the notes popups (glossary-tip.js) and
-     by glossary.html, which ships names only so the page itself stays small.
+     definitions, fetched after load by the popups (assets/course/glossary-tip.js)
+     and by the shared glossary page.
      Measured 45.4 KB at 502 terms. */
   ['ochem/assets/glossary.json', 48],
   /* The A&P question bank used to be two files for the whole course (core
@@ -625,7 +646,13 @@ const DATA_BUDGETS = [
      tool needs it, and three tools (word roots, search, flashcards) read the
      whole file, so splitting it would cost more requests than it saves
      (decision 65). */
-  ['anatomy-physiology/assets/glossary.json', 150],
+  /* 150 -> 190 (2026-10-06, cross-course consistency W-A): the file moved to
+     the shared shape every course serves (scripts/lib/glossary.mjs) and now
+     carries what the glossary page's HTML used to: each term's aliases (the
+     filter searches them), its topic title and link ("Taught in") and its
+     chapter (the chapter filter). The page itself went from 42.9 to 15.9 KB
+     gzipped. Measured 180 KB for all 162 topics. */
+  ['anatomy-physiology/assets/glossary.json', 190],
   /* The Reagent Roadmap's graph: every group, reagent and reaction the tool
      routes over. Same situation as question-molecules.js — a <script src>
      on a page with no line of its own above, so nothing was measuring it —
@@ -659,6 +686,9 @@ function read(path) {
 /* Which bucket an asset belongs to, from where it lives. */
 function bucketOf(relPath) {
   const parts = relPath.split(sep);
+  // The shared course layer (docs/course-shell.md) is loaded by course pages
+  // only, so it is its own shell rather than part of every page's.
+  if (parts[0] === 'assets' && parts[1] === 'course') return 'assets/course';
   if (parts[0] === 'assets') return 'site';
   if (parts.length > 1 && parts[1] === 'assets') return parts[0];
   return 'page';
@@ -826,7 +856,7 @@ for (const [name, budget] of SHELL_BUDGETS) {
   const over = kb > budget;
   if (over) failures++;
   shellRows.push({ name, kb, budget, over });
-  console.log(line(name === 'site' ? '/assets (every page)' : `${name}/assets`, kb, budget));
+  console.log(line(name === 'site' ? '/assets (every page)' : name.includes('/') ? `/${name} (course pages)` : `${name}/assets`, kb, budget));
 }
 
 console.log('\nPer page — the HTML and anything only this page loads.\n');

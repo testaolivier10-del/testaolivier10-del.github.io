@@ -68,6 +68,12 @@ jobs:
       # "see also" that points at nothing.
       - name: the ochem glossary matches its source
         run: node scripts/build-ochem-glossary.mjs --check
+      # Same for NREMT: nremt/data/glossary.json is the source of the glossary
+      # page and the JSON the popups, search and tutor read; the check also
+      # rejects a link to a study-notes section that does not exist and a term
+      # with no NREMT domain.
+      - name: the NREMT glossary matches its source
+        run: node scripts/build-nremt-glossary.mjs --check
       # The course map's two silent failure modes: a topic that is a dead link,
       # and a mastery percentage that overstates how much of the course has
       # actually been measured. Neither breaks a page, so nothing else here

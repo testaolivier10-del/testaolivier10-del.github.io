@@ -66,7 +66,7 @@
       return art.innerHTML;
     }).catch(function(){
       delete cache[id];
-      return '<p class="bio-book-err">These notes could not be loaded. Check your connection and reload.</p>';
+      return '<p class="bk-err">These notes could not be loaded. Check your connection and reload.</p>';
     });
     return cache[id];
   }
@@ -107,20 +107,20 @@
           (dir === 'next' ? label(c) + ' &rarr;' : '&larr; ' + label(c)) + '</span><b>' + esc(c.title) + '</b></a>';
       };
       book.innerHTML =
-        '<header class="tb-chapter-head bio-unit-head"><div>' +
+        '<header class="tb-chapter-head bk-chap-head"><div>' +
           '<p class="tb-chapter-eyebrow">' + label(ch) + ' &middot; ' + esc(partTitle[ch.part] || '') + '</p>' +
           '<h1 class="tb-chapter-title" tabindex="-1">' + esc(ch.title) + '</h1>' +
           '<p class="tb-chapter-meta">' + ts.length + ' topic' + (ts.length === 1 ? '' : 's') + ' &middot; <span data-unit-meta="' + ch.id + '">not practiced yet</span></p>' +
-        '</div><p class="bio-unit-acts"><a class="bio-tb-btn solid" href="practice.html?unit=' + ch.id + '">Practice this unit</a><a class="bio-tb-btn ghost" href="units/' + ch.id + '.html">Unit page</a></p></header>' +
+        '</div><p class="bk-chap-acts"><a class="bk-btn solid" href="practice.html?unit=' + ch.id + '">Practice this unit</a><a class="bk-btn ghost" href="units/' + ch.id + '.html">Unit page</a></p></header>' +
         ts.map(function(t){
           // Hidden until its prose and every earlier topic's has arrived, so
           // a topic landing never pushes the ones below it down the screen
           // (audit 2026-10, layout shift: CLS 0.57 on a phone).
-          return '<section class="bio-book-sec" id="' + t.id + '" aria-labelledby="h-' + t.id + '" hidden>' +
-            '<div class="bio-book-head"><h2 id="h-' + t.id + '"><span class="bio-toc-n">' + t.n + '</span>' + esc(t.title) + '</h2>' +
-            '<div class="bio-book-acts"><span class="bio-tb-chip" data-chip-topic="' + t.id + '">Not practiced</span>' +
-            '<a class="bio-tb-btn solid" href="lessons/' + t.id + '.html" aria-label="Lesson: ' + esc(t.title) + '">Lesson</a></div></div>' +
-            '<div class="bio-prose" data-book-t="' + t.id + '"><p class="bio-book-wait">Loading&hellip;</p></div></section>';
+          return '<section class="bk-sec" id="' + t.id + '" aria-labelledby="h-' + t.id + '" hidden>' +
+            '<div class="bk-sec-head"><h2 id="h-' + t.id + '"><span class="bk-toc-n">' + t.n + '</span>' + esc(t.title) + '</h2>' +
+            '<div class="bk-sec-acts"><span class="bk-chip" data-chip-topic="' + t.id + '">Not practiced</span>' +
+            '<a class="bk-btn solid" href="lessons/' + t.id + '.html" aria-label="Lesson: ' + esc(t.title) + '">Lesson</a></div></div>' +
+            '<div class="bio-prose bk-prose" data-book-t="' + t.id + '"><p class="bk-wait">Loading&hellip;</p></div></section>';
         }).join('') +
         '<nav class="tb-chapter-nav bio-nav-ref" aria-label="Unit navigation" hidden>' + link(prev, 'prev') + link(next, 'next') + '</nav>';
       if(window.ApBioToc) window.ApBioToc.paint();

@@ -23,6 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/course/base.css">
+<link rel="stylesheet" href="../assets/course/study.css">
 <script src="../assets/errors.js" defer></script>
 <script src="../assets/account.js" defer></script>
 <script src="../assets/premium.js" defer></script>
@@ -209,18 +211,15 @@
 <div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Exams</span></nav></div>
 <!-- crumb:end -->
 
-<div class="xshell">
-  <div class="hero" id="examHero" style="padding-bottom:0;">
+<main class="xshell cx-study" id="main" tabindex="-1">
+  <header class="page-head" id="examHero">
     <div class="eyebrow">Organic Chemistry</div>
-    <h1 style="margin-bottom:4px;">Exams</h1>
-    <p class="lede" style="margin-top:0;">Timed tests on one chapter, a range of chapters or the whole course, with a full review at the end.</p>
-  </div>
-
-  <div class="xsection" style="padding-top:0;">
-    <div id="examApp"></div>
-    <noscript><div class="site-nav-fallback"><p>Exams draw their questions from the practice bank and keep the clock, which needs JavaScript. With scripts off you can still read the <a href="learn.html">textbook</a>.</p></div></noscript>
-  </div>
-</div>
+    <h1>Exams</h1>
+    <p class="lede">Timed tests on one chapter, a range of chapters or the whole course, with a full review at the end.</p>
+  </header>
+  <div id="examApp"></div>
+  <noscript><div class="site-nav-fallback"><p>Exams draw their questions from the practice bank and keep the clock, which needs JavaScript. With scripts off you can still read the <a href="learn.html">textbook</a>.</p></div></noscript>
+</main>
 
 <script src="assets/curriculum.js" defer></script>
 <script src="assets/concepts.js" defer></script>
@@ -240,6 +239,7 @@
 </script>
 <script src="assets/ochem-nav.js" defer></script>
 <script src="assets/exam-core.js" defer></script>
+<script src="../assets/course/study.js" defer></script>
 <script src="assets/exams-page.js" defer></script>
 <div class="xshell">
   <footer>

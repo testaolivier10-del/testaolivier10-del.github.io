@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Enolate Chemistry</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Enolate Chemistry &middot; Section 94 of 123</p>
-    <h1>Alpha halogenation &amp; the haloform reaction</h1>
-    <a class="notes-onward-cta" href="../lessons/alpha-halogenation.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="alpha-halogenation">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-organometallics"><span class="bk-toc-n">18</span>Organolithiums, Cuprates &amp; Cross-Coupling</a>
+    <a class="bk-toc-chap" href="../learn.html#m-enolate-chemistry"><span class="bk-toc-chap-n">19</span><span><b>Enolate Chemistry</b><small>7 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 7 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="alpha-hydrogens"><a href="alpha-hydrogens.html"><span class="bk-toc-n">91</span>Alpha hydrogens &amp; enolates</a></li><li data-toc-t="aldol"><a href="aldol.html"><span class="bk-toc-n">92</span>Aldol reactions</a></li><li data-toc-t="claisen"><a href="claisen.html"><span class="bk-toc-n">93</span>Claisen reactions</a></li><li class="current" data-toc-t="alpha-halogenation"><a href="#main" aria-current="page"><span class="bk-toc-n">94</span>Alpha halogenation &amp; the haloform reaction</a><div class="bk-toc-onpage"><p>On this page</p><a href="#acid-through-the-enol-and-it">Acid: through the enol, and it stops</a><a href="#base-through-the-enolate-and-it">Base: through the enolate, and it runs away</a><a href="#which-carbon-takes-the-halogen">Which α carbon takes the halogen?</a><a href="#the-haloform-reaction">The haloform reaction</a><a href="#hell-volhard-zelinsky-halogenating-an-acid">Hell–Volhard–Zelinsky: halogenating an acid</a><a href="#the-halo-ketone-itself">The α-halo ketone itself</a></div></li><li data-toc-t="enolate-regiochemistry"><a href="enolate-regiochemistry.html"><span class="bk-toc-n">95</span>Kinetic &amp; thermodynamic enolates</a></li><li data-toc-t="ester-syntheses"><a href="ester-syntheses.html"><span class="bk-toc-n">96</span>Malonic and acetoacetic ester</a></li><li data-toc-t="michael-robinson"><a href="michael-robinson.html"><span class="bk-toc-n">97</span>Michael and Robinson</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-amines"><span class="bk-toc-n">20</span>Amines</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-enolate-chemistry">Enolate Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Alpha halogenation &amp; the haloform reaction: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/alpha-halogenation.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="enolate-chemistry">Enolate Chemistry</span> &middot; Section 94 of 123</p>
+      <h1 class="bk-title">Alpha halogenation &amp; the haloform reaction</h1>
+      <p class="bk-meta"><span class="bk-small">10 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/alpha-halogenation.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="alpha-halogenation" data-bk-ids="acid-through-the-enol-and-it base-through-the-enolate-and-it which-carbon-takes-the-halogen the-haloform-reaction hell-volhard-zelinsky-halogenating-an-acid the-halo-ketone-itself">
 <!-- notes:start -->
 <p class="step-body">Stir acetophenone, C₆H₅COCH₃, with bromine in acetic acid. One hydrogen on the methyl group is replaced by a bromine, and the product is C₆H₅COCH₂Br. (C₆H₅ is a benzene ring, often written Ph.)</p>
 
@@ -166,14 +175,21 @@
 <figure class="notes-figure notes-figure--wide" style="--vb:760"><svg viewBox="0 0 760 200" role="img" aria-label="2-Bromocyclohexanone, with the bromine on C2 and a hydrogen on C3 highlighted, loses HBr when heated with pyridine, a weak base. The product is cyclohex-2-en-1-one, with a new C=C between C2 and C3, conjugated with the C=O."><line class="fg-bond" x1="150" y1="70" x2="179.44" y2="87"></line><line class="fg-bond" x1="179.44" y1="87" x2="179.44" y2="121"></line><line class="fg-bond" x1="179.44" y1="121" x2="150" y2="138"></line><line class="fg-bond" x1="150" y1="138" x2="120.56" y2="121"></line><line class="fg-bond" x1="120.56" y1="121" x2="120.56" y2="87"></line><line class="fg-bond" x1="120.56" y1="87" x2="150" y2="70"></line><line class="fg-bond" x1="146" y1="70" x2="146" y2="51"></line><line class="fg-bond" x1="154" y1="70" x2="154" y2="51"></line><circle class="fg-atom" cx="150" cy="36" r="15"></circle><text class="fg-lbl" x="150" y="40.44" text-anchor="middle" font-size="12">O</text><text class="fg-tag-mut" x="168.44" y="96" text-anchor="middle" font-size="11">2</text><text class="fg-tag-mut" x="168.44" y="122" text-anchor="middle" font-size="11">3</text><line class="fg-bond" x1="179.44" y1="87" x2="196.77" y2="77"></line><circle class="fg-atom-hi" cx="210.62" cy="69" r="16"></circle><text class="fg-lbl" x="210.62" y="72.89" text-anchor="middle" font-size="10.5">Br</text><line class="fg-bond" x1="179.44" y1="121" x2="195.9" y2="130.5"></line><circle class="fg-atom-hi" cx="207.16" cy="137" r="13"></circle><text class="fg-lbl" x="207.16" y="141.44" text-anchor="middle" font-size="12">H</text><text class="fg-tag" x="150" y="190" text-anchor="middle" font-size="11">2-bromocyclohexanone</text><line class="fg-arrow" x1="270" y1="104" x2="412" y2="104"></line><path class="fg-head" d="M420 104 L412 108.16 L412 99.84 Z"></path><text class="fg-tag" x="345" y="92" text-anchor="middle" font-size="11">pyridine, heat (E2)</text><text class="fg-tag-mut" x="345" y="124" text-anchor="middle" font-size="11">loses H and Br</text><line class="fg-bond" x1="540" y1="70" x2="569.44" y2="87"></line><line class="fg-bond-hi" x1="569.44" y1="87" x2="569.44" y2="121"></line><line class="fg-bond-hi" x1="564.84" y1="93" x2="564.84" y2="115"></line><line class="fg-bond" x1="569.44" y1="121" x2="540" y2="138"></line><line class="fg-bond" x1="540" y1="138" x2="510.56" y2="121"></line><line class="fg-bond" x1="510.56" y1="121" x2="510.56" y2="87"></line><line class="fg-bond" x1="510.56" y1="87" x2="540" y2="70"></line><line class="fg-bond" x1="536" y1="70" x2="536" y2="51"></line><line class="fg-bond" x1="544" y1="70" x2="544" y2="51"></line><circle class="fg-atom" cx="540" cy="36" r="15"></circle><text class="fg-lbl" x="540" y="40.44" text-anchor="middle" font-size="12">O</text><text class="fg-tag-mut" x="583.44" y="85" text-anchor="middle" font-size="11">2</text><text class="fg-tag-mut" x="583.44" y="133" text-anchor="middle" font-size="11">3</text><text class="fg-lbl" x="660" y="108" text-anchor="middle" font-size="13">+ HBr</text><text class="fg-tag-good" x="540" y="190" text-anchor="middle" font-size="11">cyclohex-2-en-1-one</text></svg><figcaption>The highlighted H and Br leave; the new C=C forms between the two carbons that held them.</figcaption></figure>
 <!-- fig:enone-elimination:end -->
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="claisen.html"><span>Previous</span>Claisen reactions</a><a class="notes-prevnext notes-next" href="enolate-regiochemistry.html"><span>Next</span>Kinetic &amp; thermodynamic enolates</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="claisen.html"><span>&larr; Section 93</span><b>Claisen reactions</b></a><a class="tb-chapter-link next" href="enolate-regiochemistry.html"><span>Section 95 &rarr;</span><b>Kinetic &amp; thermodynamic enolates</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

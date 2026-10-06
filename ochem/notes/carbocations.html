@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>How Reactions Happen</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">How Reactions Happen &middot; Section 42 of 123</p>
-    <h1>Carbocations</h1>
-    <a class="notes-onward-cta" href="../lessons/carbocations.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="carbocations">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-stereochemistry"><span class="bk-toc-n">6</span>Stereochemistry</a>
+    <a class="bk-toc-chap" href="../learn.html#m-reactivity"><span class="bk-toc-chap-n">7</span><span><b>How Reactions Happen</b><small>7 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 7 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="nucleophiles"><a href="nucleophiles.html"><span class="bk-toc-n">37</span>Nucleophiles</a></li><li data-toc-t="electrophiles"><a href="electrophiles.html"><span class="bk-toc-n">38</span>Electrophiles</a></li><li data-toc-t="electron-rich-poor"><a href="electron-rich-poor.html"><span class="bk-toc-n">39</span>Electron-rich vs. electron-poor atoms</a></li><li data-toc-t="leaving-groups"><a href="leaving-groups.html"><span class="bk-toc-n">40</span>Leaving groups</a></li><li data-toc-t="energy-diagrams"><a href="energy-diagrams.html"><span class="bk-toc-n">41</span>Energy diagrams &amp; the Hammond postulate</a></li><li class="current" data-toc-t="carbocations"><a href="#main" aria-current="page"><span class="bk-toc-n">42</span>Carbocations</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-it-is-and-how-to">What it is, and how to check your drawing</a><a href="#its-shape-flat-with-an-empty">Its shape: flat, with an empty p orbital</a><a href="#where-they-come-from">Where they come from</a><a href="#stability-alkyl-groups-help">Stability: alkyl groups help</a><a href="#resonance-beats-substitution">Resonance beats substitution</a><a href="#vinyl-and-aryl-cations-the-empty">Vinyl and aryl cations: the empty orbital points the wrong way</a><a href="#rearrangements-cations-do-not-stay-put">Rearrangements: cations do not stay put</a><a href="#why-a-more-stable-cation-also">Why a more stable cation also forms faster</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="radical-halogenation"><a href="radical-halogenation.html"><span class="bk-toc-n">43</span>Radical halogenation</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-substitution-elimination"><span class="bk-toc-n">8</span>Substitution &amp; Elimination</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-reactivity">How Reactions Happen</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Carbocations: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/carbocations.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="reactivity">How Reactions Happen</span> &middot; Section 42 of 123</p>
+      <h1 class="bk-title">Carbocations</h1>
+      <p class="bk-meta"><span class="bk-small">18 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/carbocations.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="carbocations" data-bk-ids="what-it-is-and-how-to its-shape-flat-with-an-empty where-they-come-from stability-alkyl-groups-help resonance-beats-substitution vinyl-and-aryl-cations-the-empty rearrangements-cations-do-not-stay-put why-a-more-stable-cation-also what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Put <i>tert</i>-butyl bromide, (CH<sub>3</sub>)<sub>3</sub>C&ndash;Br, in warm water and its C&ndash;Br bond breaks on its own. The bromine leaves with both electrons of the bond, as bromide ion. The carbon it leaves behind keeps only three bonds and carries a positive charge. That species, (CH<sub>3</sub>)<sub>3</sub>C<sup>+</sup>, is the <i>tert</i>-butyl cation.</p>
 <p class="step-body">A <b>carbocation</b> is any carbon with three bonds, no lone pair and a positive charge. Carbocations are short-lived, but many of the reactions ahead pass through one. Most questions about them come down to two skills: judging how stable a particular cation is, and spotting when it will rearrange into a more stable cation before a nucleophile can reach it.</p>
@@ -157,14 +166,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">The next section, radical halogenation, ranks its intermediates by the same hyperconjugation argument, with one electron in the p orbital instead of none. The ionizing substitution and elimination mechanisms in <a class="chapter-ref" href="/ochem/learn.html#m-substitution-elimination">Substitution &amp; Elimination</a> run through a carbocation, and rearrangements explain why their products sometimes have a different carbon skeleton from the starting material.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="energy-diagrams.html"><span>Previous</span>Energy diagrams &amp; the Hammond postulate</a><a class="notes-prevnext notes-next" href="radical-halogenation.html"><span>Next</span>Radical halogenation</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="energy-diagrams.html"><span>&larr; Section 41</span><b>Energy diagrams &amp; the Hammond postulate</b></a><a class="tb-chapter-link next" href="radical-halogenation.html"><span>Section 43 &rarr;</span><b>Radical halogenation</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

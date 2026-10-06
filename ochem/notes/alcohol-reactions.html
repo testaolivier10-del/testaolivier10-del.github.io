@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Alcohols, Ethers &amp; Related Chemistry</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Alcohols, Ethers &amp; Related Chemistry &middot; Section 67 of 123</p>
-    <h1>Alcohol reactions</h1>
-    <a class="notes-onward-cta" href="../lessons/alcohol-reactions.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="alcohol-reactions">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-aromatic-chemistry"><span class="bk-toc-n">12</span>Aromatic Chemistry</a>
+    <a class="bk-toc-chap" href="../learn.html#m-alcohols-ethers"><span class="bk-toc-chap-n">13</span><span><b>Alcohols, Ethers &amp; Related Chemistry</b><small>3 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 3 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li class="current" data-toc-t="alcohol-reactions"><a href="#main" aria-current="page"><span class="bk-toc-n">67</span>Alcohol reactions</a><div class="bk-toc-onpage"><p>On this page</p><a href="#why-the-oh-has-to-be">Why the OH has to be changed first</a><a href="#sulfonate-esters-tscl-mscl-and-triflates">Sulfonate esters: TsCl, MsCl and triflates</a><a href="#alcohol-to-alkyl-halide">Alcohol to alkyl halide</a><a href="#what-each-reagent-does-to-a">What each reagent does to a stereocenter</a><a href="#dehydration-elimination-of-water">Dehydration: elimination of water</a><a href="#choosing-the-reagent">Choosing the reagent</a><a href="#a-preview-oxidation">A preview: oxidation</a><a href="#alcohols-as-acids">Alcohols as acids</a><a href="#where-alcohols-come-from">Where alcohols come from</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="ether-chemistry"><a href="ether-chemistry.html"><span class="bk-toc-n">68</span>Ether chemistry</a></li><li data-toc-t="epoxides"><a href="epoxides.html"><span class="bk-toc-n">69</span>Epoxides</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-grignard"><span class="bk-toc-n">14</span>Organometallic Bonding &amp; Grignard Reagents</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-alcohols-ethers">Alcohols, Ethers &amp; Related Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Alcohol reactions: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/alcohol-reactions.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="alcohols-ethers">Alcohols, Ethers &amp; Related Chemistry</span> &middot; Section 67 of 123</p>
+      <h1 class="bk-title">Alcohol reactions</h1>
+      <p class="bk-meta"><span class="bk-small">14 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/alcohol-reactions.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="alcohol-reactions" data-bk-ids="why-the-oh-has-to-be sulfonate-esters-tscl-mscl-and-triflates alcohol-to-alkyl-halide what-each-reagent-does-to-a dehydration-elimination-of-water choosing-the-reagent a-preview-oxidation alcohols-as-acids where-alcohols-come-from what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Put butan-2-ol in a flask with sodium bromide and nothing happens. Change the reagent and the same alcohol gives 2-bromobutane, 2-chlorobutane, but-2-ene or a nitrile. The reagent also decides what happens at the carbon that carried the OH. Its configuration can be kept, inverted or lost, and with some reagents the halogen ends up on a different carbon altogether. This page is about making that choice on purpose.</p>
 <p class="step-body">Alcohols are worth the effort because they sit at the center of synthesis. They can be made from alkenes, carbonyl compounds and alkyl halides, and they can be turned into halides, alkenes, ethers, esters, aldehydes, ketones and acids. Many multistep routes pass through one.</p>
@@ -174,14 +183,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">Activating an alcohol is a move you will make in many multistep syntheses: nothing happens at that carbon until the OH becomes a leaving group. The alkoxides made here are the nucleophiles of <a class="chapter-ref" href="/ochem/notes/ether-chemistry.html">Ether chemistry</a>. And oxidation (taught in Oxidation &amp; Reduction) ties alcohols to <a class="chapter-ref" href="/ochem/learn.html#m-carbonyl-chemistry">Carbonyl Chemistry</a> and <a class="chapter-ref" href="/ochem/learn.html#m-carboxylic-acids">Carboxylic Acids &amp; Derivatives</a>, because most aldehydes and ketones you meet there can be traced back to an alcohol.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="directing-effects.html"><span>Previous</span>Ortho/meta/para directing effects</a><a class="notes-prevnext notes-next" href="ether-chemistry.html"><span>Next</span>Ether chemistry</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="directing-effects.html"><span>&larr; Section 66</span><b>Ortho/meta/para directing effects</b></a><a class="tb-chapter-link next" href="ether-chemistry.html"><span>Section 68 &rarr;</span><b>Ether chemistry</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

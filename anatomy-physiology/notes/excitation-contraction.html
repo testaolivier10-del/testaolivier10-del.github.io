@@ -29,6 +29,8 @@
 <script src="../../assets/hub-progress.js" defer></script>
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/anp.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -90,25 +92,26 @@
 <body data-topic="excitation-contraction">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell anp-tb anp-notes">
+<div class="tb-shell bk bk-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 10 contents</button>
-  <aside class="tb-rail anp-nav-ref anp-notes-rail" id="anp-rail">
+  <aside class="tb-rail anp-nav-ref bk-rail" id="anp-rail">
     <p class="tb-rail-title">Contents</p>
-    <a class="anp-toc-other" href="../chapters/joints.html"><span class="anp-toc-n">9</span>Joints</a>
-    <a class="anp-toc-chap" href="../chapters/muscle-tissue.html"><span class="anp-toc-chap-n">10</span><span><b>Muscle tissue</b><small>8 topics &middot; A&amp;P I</small></span></a>
-    <div class="anp-toc-prog" data-toc-prog="muscle-tissue"><div class="tb-progress-row"><span><b>0</b> of 8 lessons done</span><span class="anp-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
-    <nav class="tb-contents" aria-label="Chapter contents"><ol class="anp-toc-list"><li data-toc-t="skeletal-muscle-structure"><a href="skeletal-muscle-structure.html"><span class="anp-toc-n">51</span>Skeletal muscle structure</a></li><li data-toc-t="neuromuscular-junction"><a href="neuromuscular-junction.html"><span class="anp-toc-n">52</span>The neuromuscular junction</a></li><li class="current" data-toc-t="excitation-contraction"><a href="#main" aria-current="page"><span class="anp-toc-n">53</span>Excitation–contraction coupling</a><div class="anp-toc-onpage"><p>On this page</p><a href="#from-signal-to-pull">From signal to pull</a><a href="#the-muscle-fiber-action-potential">The muscle fiber action potential</a><a href="#down-the-t-tubules">Down the T tubules</a><a href="#at-the-triad-a-voltage-sensor">At the triad: a voltage sensor pulls a channel open</a><a href="#calcium-release-from-the-sarcoplasmic-reticulum">Calcium release from the sarcoplasmic reticulum</a><a href="#troponin-and-tropomyosin-regulation">Troponin and tropomyosin regulation</a><a href="#the-whole-sequence-and-how-long">The whole sequence, and how long it takes</a><a href="#muscle-relaxation">Muscle relaxation</a><a href="#when-e-c-coupling-goes-wrong">When E-C coupling goes wrong</a></div></li><li data-toc-t="cross-bridge-cycle"><a href="cross-bridge-cycle.html"><span class="anp-toc-n">54</span>The sliding filament model and cross-bridge cycle</a></li><li data-toc-t="muscle-tension"><a href="muscle-tension.html"><span class="anp-toc-n">55</span>Motor units and muscle tension</a></li><li data-toc-t="muscle-metabolism"><a href="muscle-metabolism.html"><span class="anp-toc-n">56</span>Muscle energy and fatigue</a></li><li data-toc-t="fiber-types"><a href="fiber-types.html"><span class="anp-toc-n">57</span>Muscle fiber types and exercise</a></li><li data-toc-t="smooth-cardiac-muscle"><a href="smooth-cardiac-muscle.html"><span class="anp-toc-n">58</span>Smooth muscle and cardiac muscle</a></li></ol></nav>
-    <a class="anp-toc-other" href="../chapters/muscular-system.html"><span class="anp-toc-n">11</span>The muscular system</a>
+    <a class="bk-toc-other" href="../chapters/joints.html"><span class="bk-toc-n">9</span>Joints</a>
+    <a class="bk-toc-chap" href="../chapters/muscle-tissue.html"><span class="bk-toc-chap-n">10</span><span><b>Muscle tissue</b><small>8 topics &middot; A&amp;P I</small></span></a>
+    <div class="anp-toc-prog" data-toc-prog="muscle-tissue"><div class="tb-progress-row"><span><b>0</b> of 8 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="skeletal-muscle-structure"><a href="skeletal-muscle-structure.html"><span class="bk-toc-n">51</span>Skeletal muscle structure</a></li><li data-toc-t="neuromuscular-junction"><a href="neuromuscular-junction.html"><span class="bk-toc-n">52</span>The neuromuscular junction</a></li><li class="current" data-toc-t="excitation-contraction"><a href="#main" aria-current="page"><span class="bk-toc-n">53</span>Excitation–contraction coupling</a><div class="bk-toc-onpage"><p>On this page</p><a href="#from-signal-to-pull">From signal to pull</a><a href="#the-muscle-fiber-action-potential">The muscle fiber action potential</a><a href="#down-the-t-tubules">Down the T tubules</a><a href="#at-the-triad-a-voltage-sensor">At the triad: a voltage sensor pulls a channel open</a><a href="#calcium-release-from-the-sarcoplasmic-reticulum">Calcium release from the sarcoplasmic reticulum</a><a href="#troponin-and-tropomyosin-regulation">Troponin and tropomyosin regulation</a><a href="#the-whole-sequence-and-how-long">The whole sequence, and how long it takes</a><a href="#muscle-relaxation">Muscle relaxation</a><a href="#when-e-c-coupling-goes-wrong">When E-C coupling goes wrong</a></div></li><li data-toc-t="cross-bridge-cycle"><a href="cross-bridge-cycle.html"><span class="bk-toc-n">54</span>The sliding filament model and cross-bridge cycle</a></li><li data-toc-t="muscle-tension"><a href="muscle-tension.html"><span class="bk-toc-n">55</span>Motor units and muscle tension</a></li><li data-toc-t="muscle-metabolism"><a href="muscle-metabolism.html"><span class="bk-toc-n">56</span>Muscle energy and fatigue</a></li><li data-toc-t="fiber-types"><a href="fiber-types.html"><span class="bk-toc-n">57</span>Muscle fiber types and exercise</a></li><li data-toc-t="smooth-cardiac-muscle"><a href="smooth-cardiac-muscle.html"><span class="bk-toc-n">58</span>Smooth muscle and cardiac muscle</a></li></ol></nav>
+    <a class="bk-toc-other" href="../chapters/muscular-system.html"><span class="bk-toc-n">11</span>The muscular system</a>
   </aside>
   <main class="tb-main" id="main">
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/muscle-tissue.html">Muscle tissue</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Excitation–contraction coupling: notes</span></nav>
-    <div class="anp-pillbar"><a class="anp-pill" href="../lessons/excitation-contraction.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
-    <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 10 &middot; Topic 53 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
-      <h1 class="anp-notes-title">Excitation–contraction coupling</h1>
-      <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">10 min read</span><span class="anp-tb-chip" data-chip-topic="excitation-contraction">Not practiced</span></p>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/excitation-contraction.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Chapter 10 &middot; Topic 53 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Excitation–contraction coupling</h1>
+      <p class="bk-meta anp-nav-ref"><span class="bk-tag">A&amp;P I</span><a class="bk-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="bk-small">10 min read</span><span class="bk-chip" data-chip-topic="excitation-contraction">Not practiced</span></p>
+      <div class="bk-actions anp-nav-ref" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/anatomy-physiology/notes/excitation-contraction.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
     </header>
-    <article class="anp-prose">
+    <article class="anp-prose bk-prose">
 <p>An <a class="gl" href="../notes/action-potential-basics.html" data-c="action-potential-basic">action potential</a> is an electrical event on a membrane. Contraction is a mechanical event among protein filaments <a class="gl" href="../notes/anatomical-position.html" data-c="superficial-deep">deep</a> inside the <a class="gl" href="../notes/body-organization.html" data-c="cell">cell</a>. Something has to connect the two, and in a <a class="gl" href="../notes/muscle-tissue-overview.html" data-c="skeletal-muscle-tissue">skeletal muscle</a> fiber that link takes about two milliseconds. This page walks through the excitation–contraction coupling steps: <span class="gl" tabindex="0" data-c="muscle-action-potential">the muscle fiber action potential</span>, its trip down the <a class="gl" href="../notes/skeletal-muscle-structure.html" data-c="t-tubule">T tubules</a>, the two <a class="gl" href="../notes/biomolecules.html" data-c="protein">proteins</a> at the triad that open the calcium store, the troponin–<a class="gl" href="../notes/skeletal-muscle-structure.html" data-c="thin-filament">tropomyosin</a> switch, and the pumps that return the calcium so the fiber can relax.</p>
 
 <h2 id="from-signal-to-pull">From signal to pull</h2>
@@ -259,11 +262,12 @@
   <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
 <script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>
-<script src="../assets/anp-glossary.js" defer></script>
 <script src="../assets/anp-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
 <script src="../assets/anp-toc.js" defer></script>
 </body>
 </html>

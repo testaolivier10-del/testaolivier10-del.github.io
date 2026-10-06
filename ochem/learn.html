@@ -34,6 +34,8 @@
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
 <script src="assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/course/base.css">
+<link rel="stylesheet" href="../assets/course/book.css">
 <link rel="stylesheet" href="assets/ochem.css">
 <link rel="stylesheet" href="assets/periodic-table.css">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
@@ -73,24 +75,22 @@
 <body>
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<!-- crumb:start -->
-<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Learn</span></nav></div>
-<!-- crumb:end -->
 
-<div class="tb-shell">
+<div class="tb-shell bk bk-book">
   <button type="button" class="tb-toc-btn" id="tbContentsToggle" aria-controls="tbContents">&#9776; Contents</button>
 
-  <aside class="tb-rail">
+  <aside class="tb-rail" id="oc-rail">
     <p class="tb-rail-title">Contents</p>
     <div id="tbProgress"></div>
     <label class="sr-only" for="tbFilter">Search the textbook</label>
-    <input type="search" class="tb-filter" id="tbFilter" placeholder="Search the textbook&hellip;" autocomplete="off"
+    <input type="search" class="tb-filter" id="tbFilter" placeholder="Search the notes&hellip;" autocomplete="off"
            aria-describedby="tbFilterHint">
     <p class="tb-filter-hint" id="tbFilterHint">Searches every word, not just section names.</p>
     <nav class="tb-contents" id="tbContents" aria-label="Textbook contents"></nav>
   </aside>
 
   <main class="tb-main" id="tbMain">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Learn</span></nav>
     <div class="tb-results" id="tbResults" role="region" aria-label="Search results" hidden></div>
     <div id="tbChapter">
       <!-- toc:start -->
@@ -361,7 +361,7 @@
 <script src="assets/ochem-nav.js" defer></script>
 <script src="assets/periodic-table.js" defer></script>
 <script src="assets/textbook-search.js" defer></script>
-<script src="assets/glossary-tip.js" defer></script>
+<script src="../assets/course/glossary-tip.js" data-glossary="assets/glossary.json" data-course-root="" defer></script>
 <script src="assets/textbook.js" defer></script>
 <div class="xshell">
   <footer>

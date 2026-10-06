@@ -27,6 +27,14 @@
    follows), so cards never touch anp_progress_v1. They pay XP (2 per
    scheduled card, 60 a day at most) and count toward the streak. */
 (function(){
+  /* assets/glossary.json is the shared shape (scripts/lib/glossary.mjs); this
+     file works on the old map {id: {t, d, r, s, p, b}}. */
+  function glossMap(g){
+    if(!g || !g.terms) return g || {};
+    var o = {};
+    g.terms.forEach(function(x){ o[x.id] = { t: x.term, d: x.def, r: x.roots || [], s: x.say || '', p: x.topic, b: x.href ? 1 : 0 }; });
+    return o;
+  }
   var app = document.getElementById('app');
   var CU = window.AnpCurriculum;
   if(!app || !CU) return;
@@ -253,32 +261,52 @@
       }).join('');
     var kinds = [['t', 'Term → definition', kindCount('t')], ['d', 'Definition → term', kindCount('d')], ['f', 'Comparisons and key facts', kindCount('f')]];
     var missedNote = prefs.deck === 'missed'
-      ? (missedConcepts === null ? '<p class="anp-fc-note">Finding the terms in your missed questions…</p>'
-        : !cards.length ? '<p class="anp-fc-note">No missed terms right now. When you get a question wrong in practice, a lesson or a tool, the glossary terms it uses land in this deck.</p>' : '')
+      ? (missedConcepts === null ? '<p class="cx-small">Finding the terms in your missed questions…</p>'
+        : !cards.length ? '<p class="cx-small">No missed terms right now. When you get a question wrong in practice, a lesson or a tool, the glossary terms it uses land in this deck.</p>' : '')
       : '';
-    var stat = function(v, l, cls){ return '<div class="anp-fc-stat' + (cls ? ' ' + cls : '') + '"><b>' + v + '</b><span>' + l + '</span></div>'; };
-    app.innerHTML =
-      '<section class="anp-fc-deck panel" aria-labelledby="anp-fc-deck-h">' +
+    var stat = function(v, l, cls){ return LevlStudy.stat(l, v, '', cls); };
+    // By chapter: progress across every card in each chapter, same list as
+    // NREMT's "By topic area" and Ochem's "By chapter". A row opens that deck.
+    var dd = load();
+    var byChapter = chapters.map(function(ch, i){
+      var cs = CARDS.filter(function(c){ return prefs.kinds[c.kind] && TOPIC[c.topic].chapter === ch.id; });
+      var learned = 0, due = 0;
+      cs.forEach(function(c){ var st = dd.cards[c.id]; if(!isNew(st)){ learned++; if(st.d <= now) due++; } });
+      var deck = 'chapter:' + ch.id;
+      return '<button type="button" class="cx-prow" data-deck="' + esc(deck) + '" aria-pressed="' + (prefs.deck === deck) + '">' +
+        '<span class="n"><b>' + (ch.n || i + 1) + '</b>' + esc(ch.title) + '</span>' +
+        '<span class="c">' + (due ? '<span class="due">' + due + ' due</span> &middot; ' : '') + learned + '/' + cs.length + '</span>' +
+        '<span class="bar" aria-hidden="true"><span style="width:' + (cs.length ? Math.round(learned / cs.length * 100) : 0) + '%"></span></span></button>';
+    }).join('');
+    app.innerHTML = '<div class="cx-main">' +
+      '<section class="cx-card cx-deck" aria-labelledby="anp-fc-deck-h">' +
         '<h2 id="anp-fc-deck-h">Choose a deck</h2>' +
-        '<label class="anp-fc-field" for="anp-fc-deck">Deck</label>' +
-        '<select id="anp-fc-deck" class="anp-fc-select">' + sel + '</select>' +
-        '<fieldset class="anp-fc-kinds"><legend>Card types</legend><div class="anp-fc-seg">' + kinds.map(function(k){
-          return '<label><input type="checkbox" value="' + k[0] + '"' + (prefs.kinds[k[0]] ? ' checked' : '') + '><span>' + esc(k[1]) + ' <small>' + k[2] + '</small></span></label>';
+        '<label class="cx-field" for="anp-fc-deck"><span>Deck</span><select id="anp-fc-deck">' + sel + '</select></label>' +
+        '<fieldset class="cx-group anp-fc-kinds"><legend>Card types</legend><div class="cx-pills">' + kinds.map(function(k){
+          return '<label class="cx-pill"><input type="checkbox" value="' + k[0] + '"' + (prefs.kinds[k[0]] ? ' checked' : '') + '><span>' + esc(k[1]) + ' <small>' + k[2] + '</small></span></label>';
         }).join('') + '</div></fieldset>' +
         missedNote +
       '</section>' +
-      '<section class="anp-fc-today panel" aria-labelledby="anp-fc-today-h">' +
+      '<section class="cx-card cx-deckcard" aria-labelledby="anp-fc-today-h">' +
         '<h2 id="anp-fc-today-h">' + esc(deckName(prefs.deck)) + '</h2>' +
-        '<div class="anp-fc-stats">' + stat(q.due.length, 'due now', q.due.length ? 'is-due' : '') + stat(q.fresh.length, 'new today') + stat(q.learned, 'learned') + stat(q.total, 'in this deck') + '</div>' +
-        '<p class="anp-fc-note">' + (q.soon ? plural(q.soon, 'card') + ' coming due in the next 7 days. ' : '') +
+        '<div class="cx-stats">' + stat(q.due.length, 'Due now', q.due.length ? 'is-due' : '') + stat(q.fresh.length, 'New today') + stat(q.learned, 'Learned') + stat(q.total, 'In this deck') + '</div>' +
+        '<p class="cx-small">' + (q.soon ? plural(q.soon, 'card') + ' coming due in the next 7 days. ' : '') +
           (q.newTotal > q.fresh.length ? plural(q.newTotal - q.fresh.length, 'more new card') + ' will be introduced on later days (' + NEW_PER_DAY + ' a day keeps reviews manageable).' : '') + '</p>' +
-        '<div class="anp-fc-actions">' +
-          (todo ? '<button type="button" class="btn-press alt" data-act="study">Study ' + plural(todo, 'card') + '</button>'
-                : '<p class="anp-fc-caught">' + (q.total ? 'You are caught up on this deck.' : 'This deck has no cards with the card types chosen.') + '</p>') +
+        '<div class="cx-actions">' +
+          (todo ? '<button type="button" class="btn-press" data-act="study">Study ' + plural(todo, 'card') + '</button>'
+                : '<p class="cx-caught">' + (q.total ? 'You are caught up on this deck.' : 'This deck has no cards with the card types chosen.') + '</p>') +
           (q.learned && !q.due.length ? '<button type="button" class="btn-outline" data-act="ahead">Study ahead</button>' : '') +
         '</div>' +
-        '<p class="anp-fc-how">Grade yourself honestly: <b>Again</b> if you did not know it, <b>Hard</b> if it took effort, <b>Good</b> if you knew it, <b>Easy</b> if it was instant. Each card comes back just before you would forget it. Cards do not change your mastery scores; questions do.</p>' +
-      '</section>';
+        '<p class="cx-how">Grade yourself honestly: <b>Again</b> if you did not know it, <b>Hard</b> if it took effort, <b>Good</b> if you knew it, <b>Easy</b> if it was instant. Each card comes back just before you would forget it. Cards do not change your mastery scores; questions do.</p>' +
+      '</section>' +
+      (byChapter ? '<section aria-labelledby="anp-fc-ch-h"><h2 class="cx-h2" id="anp-fc-ch-h">By chapter</h2><div class="cx-card cx-plist">' + byChapter + '</div></section>' : '') +
+    '</div>';
+    app.querySelectorAll('[data-deck]').forEach(function(b){
+      b.addEventListener('click', function(){
+        prefs.deck = b.getAttribute('data-deck'); savePrefs(); renderHome();
+        var h = document.getElementById('anp-fc-today-h'); if(h){ h.setAttribute('tabindex', '-1'); h.focus(); }
+      });
+    });
     var s = document.getElementById('anp-fc-deck');
     s.addEventListener('change', function(){
       prefs.deck = s.value; savePrefs();
@@ -341,11 +369,11 @@
     var state = isNew(s) ? '<span class="anp-fc-tag new">New</span>' : isLearning(s) ? '<span class="anp-fc-tag learn">Learning</span>' : '<span class="anp-fc-tag">Review</span>';
     var pct = Math.round(run.done / Math.max(1, run.done + run.queue.length) * 100);
     app.innerHTML =
-      '<div class="anp-fc-session">' +
-        '<div class="anp-fc-bar"><span class="anp-fc-mode">' + esc(deckName(run.deck)) + (run.mode === 'ahead' ? ' &middot; studying ahead' : '') + '</span>' +
-          '<button type="button" class="anp-fc-quit" data-act="quit">End session</button></div>' +
-        '<div class="anp-fc-prog"><div class="track thin" role="progressbar" aria-label="Session progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '"><i style="width:' + pct + '%"></i></div>' +
-          '<span class="anp-fc-prog-l">' + run.done + ' done &middot; ' + run.queue.length + ' to go</span></div>' +
+      '<div class="cx-session anp-fc-session">' +
+        '<div class="cx-sbar"><span class="cx-sbar-t">' + esc(deckName(run.deck)) + (run.mode === 'ahead' ? ' &middot; studying ahead' : '') + '</span>' +
+          '<span class="cx-sbar-n">' + run.done + ' done &middot; ' + run.queue.length + ' to go</span>' +
+          '<button type="button" class="cx-end" data-act="quit">End session</button></div>' +
+        '<div class="cx-progress" role="progressbar" aria-label="Session progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '"><i style="width:' + pct + '%"></i></div>' +
         '<div class="anp-fc-card" id="anp-fc-card">' +
           '<button type="button" class="anp-fc-face anp-fc-front" data-act="flip" aria-describedby="anp-fc-hint">' +
             '<span class="anp-fc-meta">' + state + '<span class="anp-fc-tag">' + kindLabel + '</span><span>' + esc(t.title) + '</span></span>' +
@@ -467,7 +495,7 @@
   app.innerHTML = '<div class="anp-fc-loading panel" aria-busy="true"><p>Shuffling the deck…</p></div>';
   function getJson(url){ return fetch(url).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).catch(function(){ return null; }); }
   Promise.all([getJson(BASE + 'assets/glossary.json'), getJson(BASE + 'assets/tool-data/flashcards.json')]).then(function(res){
-    buildCards(res[0], res[1]);
+    buildCards(glossMap(res[0]), res[1]);
     var valid = prefs.deck === 'all' || prefs.deck === 'missed' || deckCards(prefs.deck).length || /^core:/.test(prefs.deck);
     if(!valid) prefs.deck = 'all';
     if(prefs.deck === 'missed') return loadMissed().then(renderHome);

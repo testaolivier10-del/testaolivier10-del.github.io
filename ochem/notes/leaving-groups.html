@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>How Reactions Happen</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">How Reactions Happen &middot; Section 40 of 123</p>
-    <h1>Leaving groups</h1>
-    <a class="notes-onward-cta" href="../lessons/leaving-groups.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="leaving-groups">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-stereochemistry"><span class="bk-toc-n">6</span>Stereochemistry</a>
+    <a class="bk-toc-chap" href="../learn.html#m-reactivity"><span class="bk-toc-chap-n">7</span><span><b>How Reactions Happen</b><small>7 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 7 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="nucleophiles"><a href="nucleophiles.html"><span class="bk-toc-n">37</span>Nucleophiles</a></li><li data-toc-t="electrophiles"><a href="electrophiles.html"><span class="bk-toc-n">38</span>Electrophiles</a></li><li data-toc-t="electron-rich-poor"><a href="electron-rich-poor.html"><span class="bk-toc-n">39</span>Electron-rich vs. electron-poor atoms</a></li><li class="current" data-toc-t="leaving-groups"><a href="#main" aria-current="page"><span class="bk-toc-n">40</span>Leaving groups</a><div class="bk-toc-onpage"><p>On this page</p><a href="#why-spreading-charge-out-matters">Why spreading charge out matters</a><a href="#what-makes-a-good-one">What makes a good one</a><a href="#quantifying-it-pkah">Quantifying it: pKaH</a><a href="#ranking-the-halides">Ranking the halides</a><a href="#which-way-a-substitution-runs">Which way a substitution runs</a><a href="#leaving-as-a-neutral-molecule">Leaving as a neutral molecule</a><a href="#an-alcohol-has-to-be-activated">An alcohol has to be activated before it can leave</a><a href="#reading-the-names-sn1-sn2-e1">Reading the names SN1, SN2, E1, E2</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="energy-diagrams"><a href="energy-diagrams.html"><span class="bk-toc-n">41</span>Energy diagrams &amp; the Hammond postulate</a></li><li data-toc-t="carbocations"><a href="carbocations.html"><span class="bk-toc-n">42</span>Carbocations</a></li><li data-toc-t="radical-halogenation"><a href="radical-halogenation.html"><span class="bk-toc-n">43</span>Radical halogenation</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-substitution-elimination"><span class="bk-toc-n">8</span>Substitution &amp; Elimination</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-reactivity">How Reactions Happen</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Leaving groups: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/leaving-groups.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="reactivity">How Reactions Happen</span> &middot; Section 40 of 123</p>
+      <h1 class="bk-title">Leaving groups</h1>
+      <p class="bk-meta"><span class="bk-small">18 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/leaving-groups.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="leaving-groups" data-bk-ids="why-spreading-charge-out-matters what-makes-a-good-one quantifying-it-pkah ranking-the-halides which-way-a-substitution-runs leaving-as-a-neutral-molecule an-alcohol-has-to-be-activated reading-the-names-sn1-sn2-e1 what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Start with a reaction that works. Hydroxide ion, HO⁻, meets bromomethane, CH₃Br. The oxygen uses one of its lone pairs to bond to the carbon, and at the same moment the C–Br bond breaks. Both electrons of that bond go with the bromine, which leaves as bromide ion, Br⁻. The products are methanol and bromide.</p>
 <!-- fig:lg-bromide-leaves:start -->
@@ -199,14 +208,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">Leaving-group quality is one of the four variables, along with the substrate, the nucleophile and the solvent, that decide which of SN1, SN2, E1 and E2 you get in <a class="chapter-ref" href="/ochem/learn.html#m-substitution-elimination">Substitution &amp; Elimination</a>. Alcohol activation is a recurring move throughout <a class="chapter-ref" href="/ochem/learn.html#m-alcohols-ethers">Alcohols, Ethers &amp; Related Chemistry</a> and <a class="chapter-ref" href="/ochem/learn.html#m-amines">Amines</a>. And in <a class="chapter-ref" href="/ochem/learn.html#m-carboxylic-acids">Carboxylic Acids &amp; Derivatives</a>, the entire reactivity order of the acid derivatives, acid chloride &gt; anhydride &gt; ester &gt; amide, turns out to be largely a leaving-group ranking in disguise.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="electron-rich-poor.html"><span>Previous</span>Electron-rich vs. electron-poor atoms</a><a class="notes-prevnext notes-next" href="energy-diagrams.html"><span>Next</span>Energy diagrams &amp; the Hammond postulate</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="electron-rich-poor.html"><span>&larr; Section 39</span><b>Electron-rich vs. electron-poor atoms</b></a><a class="tb-chapter-link next" href="energy-diagrams.html"><span>Section 41 &rarr;</span><b>Energy diagrams &amp; the Hammond postulate</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

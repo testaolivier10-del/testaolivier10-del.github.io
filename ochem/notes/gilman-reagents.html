@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Organolithiums, Cuprates &amp; Cross-Coupling</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Organolithiums, Cuprates &amp; Cross-Coupling &middot; Section 89 of 123</p>
-    <h1>Cuprates and conjugate addition</h1>
-    <a class="notes-onward-cta" href="../lessons/gilman-reagents.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="gilman-reagents">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-carboxylic-acids"><span class="bk-toc-n">17</span>Carboxylic Acids &amp; Derivatives</a>
+    <a class="bk-toc-chap" href="../learn.html#m-organometallics"><span class="bk-toc-chap-n">18</span><span><b>Organolithiums, Cuprates &amp; Cross-Coupling</b><small>3 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 3 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="organolithium-reagents"><a href="organolithium-reagents.html"><span class="bk-toc-n">88</span>Organolithiums and acetylides</a></li><li class="current" data-toc-t="gilman-reagents"><a href="#main" aria-current="page"><span class="bk-toc-n">89</span>Cuprates and conjugate addition</a><div class="bk-toc-onpage"><p>On this page</p><a href="#one-conjugate-addition">One: conjugate addition</a><a href="#two-coupling-with-halides">Two: coupling with halides</a><a href="#three-stopping-at-the-ketone">Three: stopping at the ketone</a><a href="#opening-an-epoxide">Opening an epoxide</a><a href="#selectivity-as-a-general-principle">Selectivity as a general principle</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="cross-coupling"><a href="cross-coupling.html"><span class="bk-toc-n">90</span>Palladium cross-coupling</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-enolate-chemistry"><span class="bk-toc-n">19</span>Enolate Chemistry</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-organometallics">Organolithiums, Cuprates &amp; Cross-Coupling</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Cuprates and conjugate addition: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/gilman-reagents.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="organometallics">Organolithiums, Cuprates &amp; Cross-Coupling</span> &middot; Section 89 of 123</p>
+      <h1 class="bk-title">Cuprates and conjugate addition</h1>
+      <p class="bk-meta"><span class="bk-small">11 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/gilman-reagents.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="gilman-reagents" data-bk-ids="one-conjugate-addition two-coupling-with-halides three-stopping-at-the-ketone opening-an-epoxide selectivity-as-a-general-principle what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Stir two equivalents of methyllithium with one of copper(I) iodide in cold ether, and both methyl groups move onto copper. The product is lithium dimethylcuprate, (CH<sub>3</sub>)<sub>2</sub>CuLi: a copper atom holding two methyl groups and a negative charge, with a lithium ion beside it.</p>
 
@@ -176,14 +185,21 @@
 
 <p class="step-body">A Gilman reagent is the selective carbon nucleophile. It adds 1,4 to an enone where a Grignard adds 1,2. It couples with vinyl and aryl halides, which S<sub>N</sub>2 cannot touch. And it adds once to an acyl chloride where a Grignard adds twice. The next section, <a class="chapter-ref" href="/ochem/notes/cross-coupling.html">Palladium cross-coupling</a>, joins vinyl and aryl partners more generally, with a catalyst instead of a full equivalent of copper. Whenever a question gives you an enone and asks for the product, check first which metal the nucleophile carries.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="organolithium-reagents.html"><span>Previous</span>Organolithiums and acetylides</a><a class="notes-prevnext notes-next" href="cross-coupling.html"><span>Next</span>Palladium cross-coupling</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="organolithium-reagents.html"><span>&larr; Section 88</span><b>Organolithiums and acetylides</b></a><a class="tb-chapter-link next" href="cross-coupling.html"><span>Section 90 &rarr;</span><b>Palladium cross-coupling</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

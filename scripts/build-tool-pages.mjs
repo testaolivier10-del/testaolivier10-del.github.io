@@ -36,6 +36,7 @@
      node scripts/build-tool-pages.mjs --check    fail if stale (CI)
 */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { Hub } from './lib/hub.mjs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
@@ -177,6 +178,26 @@ for (const tool of tools) {
   if (check) { stale.push(tool.slug); continue; }
   writeFileSync(file, next);
   written++;
+}
+
+/* The hub (ochem/tools.html): every registry tool as the shared tool card
+   (assets/course/hub.js, the same card every course's tools hub uses),
+   written into the page so it reads and links without JavaScript.
+   tools-page.js adds the Premium pills at runtime. */
+const HUB_START = '<!-- tool-hub:start -->', HUB_END = '<!-- tool-hub:end -->';
+const hubFile = join(ROOT, 'ochem', 'tools.html');
+const hubHtml = '\n    ' + Hub.toolGrid(tools.map((t) => ({
+  href: `tools/${t.slug}.html`, name: t.name, desc: t.tagline, icon: t.icon,
+  attrs: ` data-tool="${esc(t.slug)}"`, foot: esc(t.teaches),
+})), 'Tools') + '\n    ';
+{
+  const cur = readFileSync(hubFile, 'utf8');
+  const a = cur.indexOf(HUB_START), b = cur.indexOf(HUB_END);
+  if (a === -1 || b < a) broken.push(`ochem/tools.html: expected ${HUB_START} … ${HUB_END}`);
+  else {
+    const next = cur.slice(0, a + HUB_START.length) + hubHtml + cur.slice(b);
+    if (next !== cur) { if (check) stale.push('tools.html (hub)'); else { writeFileSync(hubFile, next); written++; } }
+  }
 }
 
 if (broken.length) {

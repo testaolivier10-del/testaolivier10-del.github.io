@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Aromatic Follow-Through</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Aromatic Follow-Through &middot; Section 106 of 123</p>
-    <h1>Diazonium salts and Sandmeyer</h1>
-    <a class="notes-onward-cta" href="../lessons/diazonium-chemistry.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="diazonium-chemistry">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-amines"><span class="bk-toc-n">20</span>Amines</a>
+    <a class="bk-toc-chap" href="../learn.html#m-aromatic-breadth"><span class="bk-toc-chap-n">21</span><span><b>Aromatic Follow-Through</b><small>5 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 5 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="nucleophilic-aromatic"><a href="nucleophilic-aromatic.html"><span class="bk-toc-n">102</span>SNAr and benzyne</a></li><li data-toc-t="benzylic-reactivity"><a href="benzylic-reactivity.html"><span class="bk-toc-n">103</span>Benzylic reactivity</a></li><li data-toc-t="phenols"><a href="phenols.html"><span class="bk-toc-n">104</span>Phenols</a></li><li data-toc-t="birch-reduction"><a href="birch-reduction.html"><span class="bk-toc-n">105</span>Birch reduction</a></li><li class="current" data-toc-t="diazonium-chemistry"><a href="#main" aria-current="page"><span class="bk-toc-n">106</span>Diazonium salts and Sandmeyer</a><div class="bk-toc-onpage"><p>On this page</p><a href="#three-steps-to-the-salt">Three steps to the salt</a><a href="#why-n2-is-such-a-good">Why N2+ is such a good leaving group</a><a href="#the-substitution-menu">The substitution menu</a><a href="#what-the-copper-does">What the copper does</a><a href="#aryl-nitriles-and-where-they-lead">Aryl nitriles, and where they lead</a><a href="#removing-a-group-is-a-synthetic">Removing a group is a synthetic tool</a><a href="#azo-coupling-and-why-dyes-are">Azo coupling, and why dyes are colored</a><a href="#what-carries-forward">What carries forward</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-spectroscopy"><span class="bk-toc-n">22</span>NMR Spectroscopy</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-aromatic-breadth">Aromatic Follow-Through</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Diazonium salts and Sandmeyer: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/diazonium-chemistry.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="aromatic-breadth">Aromatic Follow-Through</span> &middot; Section 106 of 123</p>
+      <h1 class="bk-title">Diazonium salts and Sandmeyer</h1>
+      <p class="bk-meta"><span class="bk-small">12 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/diazonium-chemistry.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="diazonium-chemistry" data-bk-ids="three-steps-to-the-salt why-n2-is-such-a-good the-substitution-menu what-the-copper-does aryl-nitriles-and-where-they-lead removing-a-group-is-a-synthetic azo-coupling-and-why-dyes-are what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Benzonitrile is a benzene ring that carries a CN group, and no electrophilic aromatic substitution can make it. The reactions in <a class="chapter-ref" href="/ochem/notes/eas.html">Electrophilic aromatic substitution</a> can add a halogen, a nitro group, a sulfonic acid, an alkyl group or an acyl group, but no practical electrophile delivers a CN to benzene. The same is true for an OH and for an F. Iodine goes on only when an oxidant is added along with the I<sub>2</sub>. And no substitution can take a group off a ring once it is there.</p>
 
@@ -202,14 +211,21 @@
 
 <p class="step-body">Nitrate, reduce, diazotize cold, then substitute. The diazonium group leaves as N<sub>2</sub>, the best leaving group on a ring. That makes it the route to OH, CN and F, and an easy route to I. An amine put on just to direct, then deleted, is a removable directing group, and coupling a diazonium ion onto an activated ring makes a dye. When a substitution pattern looks impossible by directing effects alone, check whether a diazonium salt reaches it.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="birch-reduction.html"><span>Previous</span>Birch reduction</a><a class="notes-prevnext notes-next" href="h-nmr.html"><span>Next</span>¹H NMR</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="birch-reduction.html"><span>&larr; Section 105</span><b>Birch reduction</b></a><a class="tb-chapter-link next" href="h-nmr.html"><span>Section 107 &rarr;</span><b>¹H NMR</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

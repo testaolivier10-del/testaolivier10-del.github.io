@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Drawing Molecules &amp; Moving Electrons</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Drawing Molecules &amp; Moving Electrons &middot; Section 12 of 123</p>
-    <h1>Curved arrows</h1>
-    <a class="notes-onward-cta" href="../lessons/curved-arrows.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="curved-arrows">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-foundations"><span class="bk-toc-n">1</span>Foundations</a>
+    <a class="bk-toc-chap" href="../learn.html#m-electron-movement"><span class="bk-toc-chap-n">2</span><span><b>Drawing Molecules &amp; Moving Electrons</b><small>3 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 3 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="skeletal-structures"><a href="skeletal-structures.html"><span class="bk-toc-n">11</span>Skeletal structures</a></li><li class="current" data-toc-t="curved-arrows"><a href="#main" aria-current="page"><span class="bk-toc-n">12</span>Curved arrows</a><div class="bk-toc-onpage"><p>On this page</p><a href="#one-arrow-one-pair-of-electrons">One arrow, one pair of electrons</a><a href="#when-the-target-is-already-full">When the target is already full: two arrows</a><a href="#four-patterns">Four patterns</a><a href="#spotting-invalid-arrows">Spotting invalid arrows</a><a href="#arrows-in-resonance-and-arrows-in">Arrows in resonance and arrows in a mechanism</a><a href="#fishhook-arrows-move-one-electron">Fishhook arrows move one electron</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="resonance"><a href="resonance.html"><span class="bk-toc-n">13</span>Resonance</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-nomenclature"><span class="bk-toc-n">3</span>IUPAC Nomenclature</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-electron-movement">Drawing Molecules &amp; Moving Electrons</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Curved arrows: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/curved-arrows.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="electron-movement">Drawing Molecules &amp; Moving Electrons</span> &middot; Section 12 of 123</p>
+      <h1 class="bk-title">Curved arrows</h1>
+      <p class="bk-meta"><span class="bk-small">13 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/curved-arrows.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="curved-arrows" data-bk-ids="one-arrow-one-pair-of-electrons when-the-target-is-already-full four-patterns spotting-invalid-arrows arrows-in-resonance-and-arrows-in fishhook-arrows-move-one-electron what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">A curved arrow shows where a pair of electrons goes when bonds form or break. A <b>mechanism</b> is the step-by-step account of how a reaction happens, and every one in this course is drawn with these arrows.</p>
 
@@ -173,14 +182,21 @@
 <p class="step-body">Next comes <a class="chapter-ref" href="/ochem/notes/resonance.html">Resonance</a>, which uses these arrows to find every valid drawing of a molecule. After that, every mechanism from <a class="chapter-ref" href="/ochem/learn.html#m-substitution-elimination">Substitution &amp; Elimination</a> onward is written with them.</p>
 <p class="step-body">When you meet a reaction you have never seen, start the same way each time. Find the electron-rich site, find the electron-poor site, and draw the arrow from the first to the second. Much of what looks like memorization in organic chemistry is this one skill, used on new molecules.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="skeletal-structures.html"><span>Previous</span>Skeletal structures</a><a class="notes-prevnext notes-next" href="resonance.html"><span>Next</span>Resonance</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="skeletal-structures.html"><span>&larr; Section 11</span><b>Skeletal structures</b></a><a class="tb-chapter-link next" href="resonance.html"><span>Section 13 &rarr;</span><b>Resonance</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

@@ -64,9 +64,10 @@
     G0.quotaNote = function(){
       if(!G0.locked()) return '';
       var q = quota();
-      return '<p class="ochem-quota" role="status">' +
+      // The shared free-tier line under a start button (docs/course-shell.md).
+      return '<p class="cx-free ochem-quota" role="status">' +
         (q.left > 0
-          ? q.left + ' of ' + q.limit + ' free questions left today from chapters past the first four. The first four chapters are unlimited.'
+          ? 'Free: ' + q.left + ' of ' + q.limit + ' free questions left today, shared by practice and review. The first four chapters are unlimited.'
           : 'You have used today\u2019s ' + q.limit + ' free questions from chapters past the first four. The first four chapters stay unlimited, and the allowance resets at midnight.') +
         ' ' + LP().badge('ochem') + '</p>';
     };

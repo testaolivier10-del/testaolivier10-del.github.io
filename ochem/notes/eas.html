@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Aromatic Chemistry</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Aromatic Chemistry &middot; Section 65 of 123</p>
-    <h1>Electrophilic aromatic substitution</h1>
-    <a class="notes-onward-cta" href="../lessons/eas.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="eas">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-conjugation"><span class="bk-toc-n">11</span>Conjugation &amp; Pericyclic Reactions</a>
+    <a class="bk-toc-chap" href="../learn.html#m-aromatic-chemistry"><span class="bk-toc-chap-n">12</span><span><b>Aromatic Chemistry</b><small>3 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 3 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="aromaticity"><a href="aromaticity.html"><span class="bk-toc-n">64</span>Aromaticity</a></li><li class="current" data-toc-t="eas"><a href="#main" aria-current="page"><span class="bk-toc-n">65</span>Electrophilic aromatic substitution</a><div class="bk-toc-onpage"><p>On this page</p><a href="#two-steps-attack-then-loss-of">Two steps: attack, then loss of H⁺</a><a href="#why-the-ring-does-not-add">Why the ring does not add</a><a href="#where-the-positive-charge-sits">Where the positive charge sits</a><a href="#why-step-1-is-the-slow">Why step 1 is the slow step</a><a href="#the-five-reactions-and-how-each">The five reactions, and how each electrophile is made</a><a href="#three-limits-of-friedel-crafts-alkylation">Three limits of Friedel–Crafts alkylation</a><a href="#acylation-avoids-the-first-two">Acylation avoids the first two</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="directing-effects"><a href="directing-effects.html"><span class="bk-toc-n">66</span>Ortho/meta/para directing effects</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-alcohols-ethers"><span class="bk-toc-n">13</span>Alcohols, Ethers &amp; Related Chemistry</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-aromatic-chemistry">Aromatic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Electrophilic aromatic substitution: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/eas.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="aromatic-chemistry">Aromatic Chemistry</span> &middot; Section 65 of 123</p>
+      <h1 class="bk-title">Electrophilic aromatic substitution</h1>
+      <p class="bk-meta"><span class="bk-small">17 min read &middot; free</span><a class="bk-tag" href="../mechanisms/eas.html">Draw the mechanism</a></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/eas.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="eas" data-bk-ids="two-steps-attack-then-loss-of why-the-ring-does-not-add where-the-positive-charge-sits why-step-1-is-the-slow the-five-reactions-and-how-each three-limits-of-friedel-crafts-alkylation acylation-avoids-the-first-two what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Cyclohexene and benzene both have C=C bonds, and in both the π electrons can attack an electrophile. Mix each with bromine, Br₂, at room temperature in the dark. The cyclohexene takes up the bromine at once and becomes 1,2-dibromocyclohexane: the two bromine atoms <b>add</b> across the double bond, as in <a class="chapter-ref" href="/ochem/notes/addition-reactions.html">Addition reactions</a>. The benzene does nothing.</p>
 <p class="step-body">Now add a little iron(III) bromide, FeBr₃, to the benzene. This time the benzene reacts, giving bromobenzene, C₆H₅Br, and HBr. One hydrogen on the ring has been swapped for a bromine, and the ring still has its three double bonds. The bromine has <b>substituted</b> for the hydrogen rather than adding.</p>
@@ -193,14 +202,21 @@
 <p class="step-body">The arenium ion, with its charge on three carbons, is the starting point of <a class="chapter-ref" href="/ochem/notes/directing-effects.html">Ortho/meta/para directing effects</a>. A group already on a ring changes both how fast the next substitution goes and where it lands, so the order in which groups go on changes the product.</p>
 <p class="step-body">The reactions on this page are half the toolkit for building substituted benzene rings, which appear in a large share of medicines. The other half is diazonium chemistry, which turns an NH₂ on a ring into many other groups. It is introduced in <a class="chapter-ref" href="/ochem/learn.html#m-amines">Amines</a> and completed in <a class="chapter-ref" href="/ochem/learn.html#m-aromatic-breadth">Aromatic Follow-Through</a>.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="aromaticity.html"><span>Previous</span>Aromaticity</a><a class="notes-prevnext notes-next" href="directing-effects.html"><span>Next</span>Ortho/meta/para directing effects</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="aromaticity.html"><span>&larr; Section 64</span><b>Aromaticity</b></a><a class="tb-chapter-link next" href="directing-effects.html"><span>Section 66 &rarr;</span><b>Ortho/meta/para directing effects</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

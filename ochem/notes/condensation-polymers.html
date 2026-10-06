@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Polymers</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Polymers &middot; Section 121 of 123</p>
-    <h1>Condensation polymers</h1>
-    <a class="notes-onward-cta" href="../lessons/condensation-polymers.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="condensation-polymers">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-biomolecules"><span class="bk-toc-n">24</span>Biomolecules</a>
+    <a class="bk-toc-chap" href="../learn.html#m-polymers"><span class="bk-toc-chap-n">25</span><span><b>Polymers</b><small>5 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 5 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="polymer-basics"><a href="polymer-basics.html"><span class="bk-toc-n">119</span>What a polymer is</a></li><li data-toc-t="addition-polymers"><a href="addition-polymers.html"><span class="bk-toc-n">120</span>Addition polymers</a></li><li class="current" data-toc-t="condensation-polymers"><a href="#main" aria-current="page"><span class="bk-toc-n">121</span>Condensation polymers</a><div class="bk-toc-onpage"><p>On this page</p><a href="#polyesters">Polyesters</a><a href="#polyamides">Polyamides</a><a href="#esters-and-amides-under-attack">Esters and amides under attack</a><a href="#nylon-6-and-why-one-number">Nylon 6, and why one number is not two</a><a href="#kevlar-and-what-aromatic-rings-buy">Kevlar, and what aromatic rings buy</a><a href="#polycarbonates">Polycarbonates</a><a href="#polyurethanes-nothing-lost">Polyurethanes: nothing lost</a><a href="#which-one-loses-what">Which one loses what</a><a href="#pushing-a-step-growth-reaction-to">Pushing a step-growth reaction to the end</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="polymer-properties"><a href="polymer-properties.html"><span class="bk-toc-n">122</span>Structure and properties</a></li><li data-toc-t="polymer-design"><a href="polymer-design.html"><span class="bk-toc-n">123</span>Designing and unmaking a polymer</a></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-polymers">Polymers</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Condensation polymers: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/condensation-polymers.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="polymers">Polymers</span> &middot; Section 121 of 123</p>
+      <h1 class="bk-title">Condensation polymers</h1>
+      <p class="bk-meta"><span class="bk-small">13 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/condensation-polymers.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="condensation-polymers" data-bk-ids="polyesters polyamides esters-and-amides-under-attack nylon-6-and-why-one-number kevlar-and-what-aromatic-rings-buy polycarbonates polyurethanes-nothing-lost which-one-loses-what pushing-a-step-growth-reaction-to what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Start with one molecule of terephthalic acid and one of ethylene glycol. The acid has a COOH group at each end, and the glycol has an OH group at each end. An esterification joins one COOH to one OH and releases a molecule of water. The product still has a free COOH at one end and a free OH at the other, so it can react again at both ends. Repeat that thousands of times and you have PET, the plastic of drinks bottles.</p>
 
@@ -203,14 +212,21 @@
 
 <p class="step-body">A diacid with a diol gives a polyester, and a diacid with a diamine gives a polyamide; the small molecule lost depends on the monomers. Amides resist hydrolysis better than esters, so polyester gives way first in hot base. Acid, chlorine and sunlight attack nylon instead: each polymer survives different conditions. Rigid para-linked aromatic monomers give the straight, fully hydrogen-bonded chains of Kevlar. And 1/(1&minus;p) explains why these reactions are pushed almost to completion, far further than anyone would push a single esterification.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="addition-polymers.html"><span>Previous</span>Addition polymers</a><a class="notes-prevnext notes-next" href="polymer-properties.html"><span>Next</span>Structure and properties</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="addition-polymers.html"><span>&larr; Section 120</span><b>Addition polymers</b></a><a class="tb-chapter-link next" href="polymer-properties.html"><span>Section 122 &rarr;</span><b>Structure and properties</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

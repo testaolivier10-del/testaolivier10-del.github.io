@@ -29,6 +29,8 @@
 <script src="../assets/hub-progress.js" defer></script>
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/course/base.css">
+<link rel="stylesheet" href="../assets/course/study.css">
 <link rel="stylesheet" href="assets/bio.css">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -77,9 +79,9 @@
 <header id="site-header"></header>
 <div class="course-nav"></div>
 <main id="main" class="xshell bio-app">
-  <nav class="bio-crumb bio-nav-ref" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Review</span></nav>
-  <header class="hero bio-hero"><div class="eyebrow">AP&reg; Biology <span class="bio-beta bio-nav-ref">Beta</span></div><h1>Review</h1><p class="lede">Your biology spaced review queue: every question you missed comes back just before you would forget it.</p></header>
-  <div id="app" class="bio-app-mount" data-slug="review" data-premium="review"><noscript><p>This page needs JavaScript. Every notes page works without it.</p></noscript></div>
+  <nav class="cx-crumb bio-crumb bio-nav-ref" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Review</span></nav>
+  <header class="page-head"><div class="eyebrow">AP&reg; Biology <span class="cx-beta">Beta</span></div><h1>Review</h1><p class="lede">Your biology spaced review queue: every question you missed comes back just before you would forget it.</p></header>
+  <div id="app" class="bio-app-mount cx-study" data-slug="review" data-premium="review"><noscript><p>This page needs JavaScript. Every notes page works without it.</p></noscript></div>
 </main>
 <footer class="bio-foot xshell">
   <p class="bio-accuracy-note"><span class="bio-beta bio-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="../sources.html">Sources</a> page. Spot a mistake? <span class="bio-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="page:review">Report a problem</button></span></p>
@@ -88,12 +90,13 @@
 </footer>
 <link rel="stylesheet" href="assets/pages/pages.css">
 <script src="../assets/report-question.js" defer></script>
+<script src="../assets/course/study.js" defer></script>
 <script src="../assets/premium.js" defer></script>
 <script>window.ApBioSection = 'review'; window.ApBioBase = '';</script>
 <script src="assets/bio-curriculum.js" defer></script>
 <script src="assets/bio-core.js" defer></script>
-<script src="assets/bio-glossary.js" defer></script>
 <script src="assets/bio-nav.js" defer></script>
+<script src="../assets/course/glossary-tip.js" data-glossary="assets/glossary.json" data-course-root="" defer></script>
 <script src="assets/bio-questions.js" defer></script>
 <script src="assets/pages/review.js" defer></script>
 </body>

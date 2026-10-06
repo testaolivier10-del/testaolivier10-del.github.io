@@ -119,6 +119,8 @@
   }
   function markOpt(x, word, cls){ x.insertAdjacentHTML('beforeend', '<span class="bio-mark ' + cls + '">' + word + '</span>'); }
 
+  // Practice, Review and Exams load the shared study styles (docs/course-shell.md).
+  function studyPage(){ return !!document.querySelector('.cx-study'); }
   function render(q, host, opts){
     opts = opts || {};
     var reveal = opts.reveal !== false && !opts.exam;
@@ -130,11 +132,11 @@
       getWhy(q).then(cb, cb);
     }
     var wrap = document.createElement('div');
-    wrap.className = 'bio-q';
+    wrap.className = 'bio-q' + (studyPage() ? ' cx-q' : '');
     wrap.setAttribute('data-qid', q.id);
     var stemId = 'q-' + (++uid);
-    wrap.innerHTML = '<p class="bio-q-stem" id="' + stemId + '">' + (opts.n ? '<span class="bio-q-n">' + opts.n + '.</span> ' : '') + html(q.q) + '</p>' +
-      '<div class="bio-q-body"></div><div class="bio-q-feedback" aria-live="polite"></div><div class="bio-q-actions"></div>';
+    wrap.innerHTML = '<p class="bio-q-stem cx-q-stem" id="' + stemId + '">' + (opts.n ? '<span class="bio-q-n">' + opts.n + '.</span> ' : '') + html(q.q) + '</p>' +
+      '<div class="bio-q-body"></div><div class="bio-q-feedback cx-fb" aria-live="polite"></div><div class="bio-q-actions"></div>';
     var body = wrap.querySelector('.bio-q-body'), fb = wrap.querySelector('.bio-q-feedback'), actions = wrap.querySelector('.bio-q-actions');
     host.appendChild(wrap);
 
@@ -144,9 +146,13 @@
       var result = { correct: g.correct, score: g.score, q: q, pick: pick };
       if(opts.record !== false && window.ApBioCore) window.ApBioCore.record(q.id, g.correct, { topic: q.topic, unit: q.unit, practice: q.practice, level: q.level, diff: q.diff, src: 'q' });
       if(!opts.exam){
-        fb.innerHTML = '<p><span class="bio-verdict ' + (g.correct ? 'ok' : 'no') + '">' +
-          (g.correct ? 'Correct.' : g.score > 0 && part ? part : 'Not quite.') + '</span> ' + (q.why && q.why.correct ? html(q.why.correct) : '') + '</p>' + (detailHtml || '') +
+        var verdict = g.correct ? 'Correct.' : g.score > 0 && part ? part : 'Not quite.';
+        // On the study pages, the shared feedback box (assets/course/study.css).
+        fb.innerHTML = (studyPage()
+          ? '<p class="cx-fb-head"><span class="bio-verdict ' + (g.correct ? 'ok' : 'no') + '">' + verdict + '</span></p>' + (q.why && q.why.correct ? '<p class="cx-explain">' + html(q.why.correct) + '</p>' : '')
+          : '<p><span class="bio-verdict ' + (g.correct ? 'ok' : 'no') + '">' + verdict + '</span> ' + (q.why && q.why.correct ? html(q.why.correct) : '') + '</p>') + (detailHtml || '') +
           (!g.correct && opts.record !== false ? '<p class="bio-small">Added to your review queue.</p>' : '');
+        fb.classList.toggle('is-right', !!g.correct); fb.classList.toggle('is-wrong', !g.correct);
         try{ if(window.LevlSound && window.LevlSound.answer) window.LevlSound.answer(g.correct); }catch(e){}
       }
       actions.innerHTML = report(q);
@@ -162,8 +168,8 @@
 
     /* One right option: a radio group. */
     function choice(){
-      body.innerHTML = '<div class="bio-opt-btns" role="radiogroup" aria-labelledby="' + stemId + '">' + displayOrder(q).map(function(i){
-        return '<button type="button" class="bio-opt" role="radio" aria-checked="false" data-i="' + i + '">' + html(q.options[i]) + '</button>';
+      body.innerHTML = '<div class="bio-opt-btns cx-opts" role="radiogroup" aria-labelledby="' + stemId + '">' + displayOrder(q).map(function(i){
+        return '<button type="button" class="bio-opt cx-opt" role="radio" aria-checked="false" data-i="' + i + '">' + html(q.options[i]) + '</button>';
       }).join('') + '</div>';
       arrowGroup(body.querySelector('.bio-opt-btns'));
       body.querySelectorAll('.bio-opt').forEach(function(b){
@@ -190,8 +196,8 @@
     /* Select all that apply: checkboxes; the record is right only when the
        whole set is right, partial credit is said in words. */
     function multi(){
-      body.innerHTML = '<p class="bio-small">Select all that apply.</p><div class="bio-opt-btns" role="group" aria-labelledby="' + stemId + '">' + displayOrder(q).map(function(i){
-        return '<button type="button" class="bio-opt" role="checkbox" aria-checked="false" data-i="' + i + '">' + html(q.options[i]) + '</button>';
+      body.innerHTML = '<p class="bio-small">Select all that apply.</p><div class="bio-opt-btns cx-opts" role="group" aria-labelledby="' + stemId + '">' + displayOrder(q).map(function(i){
+        return '<button type="button" class="bio-opt cx-opt" role="checkbox" aria-checked="false" data-i="' + i + '">' + html(q.options[i]) + '</button>';
       }).join('') + '</div>';
       arrowGroup(body.querySelector('.bio-opt-btns'));
       actions.innerHTML = '<button type="button" class="btn-press sm bio-check" disabled>Check</button>';

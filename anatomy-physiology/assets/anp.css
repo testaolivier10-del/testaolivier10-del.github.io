@@ -228,10 +228,6 @@ a.anp-tag:hover{text-decoration:underline;}
    focus or tap (anp-glossary.js). */
 .gl{text-decoration:underline dotted;text-decoration-thickness:1.5px;text-underline-offset:3px;cursor:help;color:inherit;}
 a.gl{cursor:pointer;}
-.anp-tip{position:absolute;z-index:60;max-width:320px;padding:10px 13px;border-radius:12px;background:var(--ink);color:var(--paper);font:600 13.5px/1.5 var(--font-ui);box-shadow:var(--shadow-pop);}
-.anp-tip b{display:block;font-weight:900;margin-bottom:2px;}
-.anp-tip .anp-tip-roots{display:block;opacity:.8;font-size:12.5px;margin-top:4px;}
-.anp-tip a{color:inherit;}
 
 /* Questions. */
 .anp-qs{display:grid;gap:14px;}
@@ -280,120 +276,9 @@ a.gl{cursor:pointer;}
    Home-only rules live in anp-home.css, loaded by the home page alone, so
    every other A&P page does not download them. */
 
-/* ============ Chapter and notes textbook frame (redesign)
-   The ochem textbook shell (theme.css tb-*) in the course's coral, a contents
-   rail beside the page; anp-toc.js paints progress and chips. */
-.anp-tb{--accent:var(--cink);--tint-accent:var(--ctint);}
-.anp-tb .anp-crumb{margin:0 0 14px;}
-.anp-tb .tb-toc-btn{justify-self:start;}
-.anp-tb .tb-toc-topic{align-items:flex-start;line-height:1.35;}
-.anp-tb .tb-toc-topic .tb-toc-tick{margin-top:2px;}
-.anp-tb .tb-toc-topic.read .tb-toc-tick::after{border-color:var(--paper);}
-.anp-tb a.tb-toc-modhead{text-decoration:none;}
-.anp-tb .tb-toc-modhead[aria-current]{background:var(--ctint);}
-.anp-tb .tb-toc-modhead.anp-unbuilt{cursor:default;color:var(--muted);}
-.anp-toc-group{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:14px 6px 4px;}
-.anp-toc-group:first-child{margin-top:2px;}
-/* Notes rail: this chapter, the current topic open to its sections. */
-.anp-notes-rail{gap:12px;}
-.anp-toc-chap{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--ctint);color:var(--cink);text-decoration:none;}
-.anp-toc-chap-n{flex-shrink:0;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--cink);color:var(--paper);font:900 13px var(--font-ui);}
-.anp-toc-chap b{display:block;font:900 14px/1.25 var(--font-ui);}
-.anp-toc-chap small{display:block;font:800 11.5px var(--font-ui);}
-.anp-toc-other{display:flex;gap:9px;align-items:center;padding:6px;border-radius:8px;font:800 12.5px var(--font-ui);color:var(--muted);text-decoration:none;}
-.anp-toc-other:hover{background:var(--hover-tint);color:var(--ink);}
-.anp-toc-other .anp-toc-n{background:var(--line);color:var(--muted);}
-.anp-toc-list{list-style:none;margin:0;padding:0;}
-.anp-toc-list>li>a{display:flex;gap:9px;align-items:flex-start;padding:6px;border-radius:8px;font:700 12.5px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;}
-.anp-toc-list>li>a:hover{background:var(--hover-tint);color:var(--ink);}
-.anp-toc-n{flex-shrink:0;min-width:28px;height:20px;padding:0 4px;box-sizing:border-box;border-radius:6px;display:grid;place-items:center;background:var(--ctint);color:var(--cink);font:900 10.5px var(--font-mono);}
-.anp-toc-list .read .anp-toc-n,.anp-toc-list .current .anp-toc-n{background:var(--cink);color:var(--paper);}
-.anp-toc-list .current>a{background:var(--ctint);color:var(--cink);font-weight:900;}
-.anp-toc-onpage{margin:4px 0 8px 43px;border-left:2px solid var(--ctint);padding-left:10px;}
-.anp-toc-onpage p{margin:4px 0;font:900 10px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-.anp-toc-onpage a{display:block;padding:4px 0;font:700 12px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;}
-.anp-toc-onpage a:hover{color:var(--cink);}
-/* Mastery chip (chapter rows, notes header). */
-.anp-tb-chip{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font:800 11.5px var(--font-ui);padding:4px 10px;border-radius:999px;background:var(--surface2);color:var(--muted);}
-.anp-tb-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.55;}
-.anp-tb-chip.mastered{background:var(--tint-good);color:var(--good-text);}
-.anp-tb-chip.learning{background:var(--tint-amber);color:var(--amber-text);}
-.anp-tb-chip.started{background:var(--ctint);color:var(--cink);}
-.anp-tb-chip:is(.mastered,.learning,.started)::before{opacity:1;}
-.anp-tb-btn{display:inline-flex;align-items:center;font:900 13px var(--font-ui);text-decoration:none;padding:8px 14px;border-radius:11px;white-space:nowrap;}
-.anp-tb-btn.solid{background:var(--navy);color:var(--on-accent);}
-.anp-tb-btn.solid:hover{color:var(--on-accent);filter:brightness(1.08);}
-.anp-tb-btn.ghost{background:var(--surface2);color:var(--ink);}
-.anp-tb-btn.ghost:hover{background:var(--hover-tint);color:var(--ink);}
-/* Chapter page. */
-.anp-chapter .tb-main{max-width:none;}
-.anp-chap-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px 20px;flex-wrap:wrap;}
-.anp-chap-acts{display:flex;gap:8px;margin:0;}
-.anp-chap-h{font:900 12px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:34px 0 10px;}
-.anp-chap-h#h-topics{margin-top:22px;}
-.anp-chap-list{list-style:none;margin:0;padding:0;}
-.anp-chap-row{display:grid;grid-template-columns:34px minmax(0,1fr) auto auto;gap:16px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--line-soft,var(--line));}
-.anp-chap-n{width:30px;height:30px;border-radius:9px;background:var(--ctint);color:var(--cink);display:flex;align-items:center;justify-content:center;font:900 12px var(--font-mono);}
-.anp-chap-title{font:900 16px/1.35 var(--font-ui);color:var(--ink);text-decoration:none;}
-a.anp-chap-title:hover{color:var(--cink);}
-.anp-chap-row .anp-tb-chip{min-width:96px;justify-content:center;}
-.anp-chap-btns{display:flex;gap:6px;}
-.anp-chap-practice{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
-.anp-chap-card{display:block;background:var(--white);border-radius:var(--radius-lg);padding:18px 20px;box-shadow:var(--lift);text-decoration:none;color:var(--ink);}
-.anp-chap-card:hover{box-shadow:var(--lift-lg);color:var(--ink);}
-.anp-chap-card b{display:block;font:900 15.5px var(--font-ui);margin-bottom:4px;}
-.anp-chap-card span{font:700 13px/1.45 var(--font-ui);color:var(--muted);}
-.anp-chap-tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;}
-.anp-chap-toolset{background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:14px 16px;}
-.anp-chap-toolset h3{font:900 14px var(--font-ui);margin:0 0 6px;display:flex;justify-content:space-between;gap:8px;}
-.anp-chap-toolset h3 small{font:800 11px var(--font-ui);color:var(--muted);}
-.anp-chap-toolset ul{margin:0;padding-left:18px;font:600 13.5px/1.5 var(--font-ui);}
-/* Learn page: the course as one textbook (anp-book.js). */
-.anp-book .tb-main{max-width:760px;}
-.anp-book .anp-filter{margin:0;color:var(--muted);}
-.anp-book .tb-chapter-title:focus{outline:none;}
-.anp-book .tb-toc-mod[hidden]{display:none;}
-.anp-book-sec{padding:30px 0 12px;border-bottom:1px solid var(--line);scroll-margin-top:calc(var(--site-header-h,112px) + 14px);}
-.anp-book-sec:last-of-type{border-bottom:0;}
-.anp-book-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;margin-bottom:12px;}
-.anp-book-head h2{display:flex;gap:10px;align-items:baseline;font:900 clamp(19px,2.4vw,23px)/1.25 var(--font-ui);letter-spacing:-.01em;margin:0;}
-.anp-book-head h2 .anp-toc-n{position:relative;top:-2px;}
-.anp-book-acts{display:flex;align-items:center;gap:8px;flex-shrink:0;}
-.anp-book .anp-prose{max-width:none;font-size:15.5px;}
-.anp-book .anp-prose h3{font-size:18px;margin:26px 0 10px;scroll-margin-top:calc(var(--site-header-h,112px) + 14px);}
-.anp-book-wait{font:700 13px var(--font-ui);color:var(--muted);}
-.anp-book-err{color:var(--bad-text,#b3261e);}
-.tb-static-toc h1{font:900 clamp(26px,3.6vw,34px)/1.15 var(--font-ui);margin:0 0 8px;}
-.tb-static-chapter h2{font-size:18px;margin:22px 0 6px;}
-@media (max-width:700px){.anp-book-acts .anp-tb-chip{display:none;}}
-/* Notes page. */
-.anp-notes .tb-main{max-width:720px;}
-.anp-notes-head{margin-bottom:24px;}
-.anp-notes-eyebrow{font:900 11.5px var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--cink);margin:0 0 6px;}
-.anp-notes-title{font:900 clamp(26px,3.6vw,34px)/1.15 var(--font-ui);letter-spacing:-.02em;margin:0 0 10px;max-width:none;}
-.anp-notes-meta{align-items:center;}
-.anp-notes-meta .anp-tag{font-size:11.5px;padding:3px 10px;}
-.anp-pillbar{position:sticky;top:calc(var(--site-header-h,112px) + 10px);z-index:5;height:0;display:flex;justify-content:flex-end;align-items:flex-start;}
-.anp-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px 8px 12px;border-radius:999px;background:var(--cink);color:var(--paper);font:900 12.5px var(--font-ui);text-decoration:none;box-shadow:var(--lift-sm);}
-.anp-pill:hover{color:var(--paper);filter:brightness(1.08);}
-.anp-pill i{font-style:normal;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--paper);color:var(--cink);font-size:9px;}
-.anp-notes .anp-notes-head{padding-right:170px;}
-.anp-notes .anp-prose{max-width:none;font-size:15.5px;}
-.anp-notes .anp-prose h2{margin:36px 0 12px;padding-top:22px;border-top:1px solid var(--line);scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
-.anp-notes .anp-prose h2:first-child{margin-top:0;border-top:0;padding-top:0;}
-@media (max-width:900px){
-  .anp-pillbar{position:fixed;top:auto;bottom:calc(84px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);height:auto;z-index:20;}
-  .anp-pill{box-shadow:var(--lift);}
-  .anp-notes .anp-notes-head{padding-right:0;}
-}
-@media (max-width:700px){
-  .anp-chap-row{grid-template-columns:30px minmax(0,1fr);gap:8px 12px;}
-  .anp-chap-n{grid-row:1 / span 3;align-self:start;}
-  .anp-chap-row .anp-tb-chip,.anp-chap-btns,.anp-chap-row .anp-small{grid-column:2;justify-self:start;}
-  .anp-chap-practice{grid-template-columns:minmax(0,1fr);}
-  .anp-tb .tb-chapter-nav{flex-direction:column;}
-  .anp-tb .tb-chapter-link{max-width:100%;}
-}
+/* ============ Chapter, notes and Learn pages
+   The textbook layout is shared by every course: assets/course/book.css
+   (.bk-*), loaded by those pages after base.css. Only A&P specifics stay. */
 
 @media (max-width:560px){
   .anp-part h2{font-size:19px;}
@@ -410,4 +295,4 @@ a.anp-chap-title:hover{color:var(--cink);}
 
 /* Learn: the book column keeps the footer below the fold while the chosen
    chapter's topics load in order (anp-book.js), so nothing on screen moves. */
-.anp-book #anp-book{min-height:100vh;}
+#anp-book{min-height:100vh;}

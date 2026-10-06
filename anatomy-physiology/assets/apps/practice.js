@@ -20,7 +20,7 @@
   var BASE = window.ANP_BASE || '';
   var app = document.getElementById('app');
   if(!app) return;
-  var hero = document.querySelector('.anp-hero');
+  var hero = document.querySelector('.page-head, .anp-hero');
 
   var CUR = window.AnpCurriculum || { chapters: [], topics: [], core: [] };
   var Core = window.AnpCore, Q = window.AnpQuestions;
@@ -139,24 +139,19 @@
     var due = Core ? Core.reviewCount() : 0;
     var miss = Object.keys(missedIds()).length;
     var studied = studiedTopics().length;
-    function tile(k, v, s){ return '<div class="anp-pr-stat"><span class="anp-pr-stat-k">' + k + '</span><span class="anp-pr-stat-v">' + v + '</span><span class="anp-pr-stat-s">' + s + '</span></div>'; }
-    var check = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-    return '<aside class="anp-pr-rail" aria-labelledby="anp-pr-rail-h">' +
-      '<h2 class="anp-pr-rail-k" id="anp-pr-rail-h">Your numbers</h2>' +
-      '<div class="anp-pr-stats">' +
-        tile('Answered', answered, answered ? 'questions and tool items' : 'nothing yet') +
-        tile('Studied', studied, 'of ' + plural(builtTopics().length, 'built topic')) +
-        tile('Due for review', due, due ? 'waiting in your queue' : 'nothing due now') +
-        tile('To fix', miss, miss ? 'missed, not yet right' : 'no open misses') +
-      '</div>' +
-      '<div class="anp-pr-rcard"><p class="anp-pr-rcard-k">Due for review' + pill() + '</p>' +
-        (due
-          ? '<h3>' + plural(due, 'item') + ' due now</h3><p>Questions and tool items you missed come back on a spacing schedule, so they stick. Clear them before new work.</p>'
-          : '<h3>Your queue is clear</h3><p>Questions you miss come back here on a spacing schedule, so they stick.</p><p class="anp-pr-rcard-empty">' + check + 'Nothing due now</p>') +
-        '<a class="anp-pr-rcard-more" href="' + BASE + 'review.html">' + (due ? 'Start your review' : 'Open review') + ' <span aria-hidden="true">&rarr;</span></a></div>' +
-      '<a class="anp-pr-exam anp-pr-fc" href="' + BASE + 'flashcards.html"><span class="anp-pr-exam-t">Flashcards<small>Spaced cards from the glossary.</small></span><span class="anp-pr-exam-go" aria-hidden="true">&rarr;</span></a>' +
-      '<a class="anp-pr-exam" href="' + BASE + 'exams.html"><span class="anp-pr-exam-t">Ready for a timed test?<small>Unit quizzes, system exams, A&amp;P I and II finals.</small></span><span class="anp-pr-exam-go" aria-hidden="true">&rarr;</span></a>' +
-    '</aside>';
+    return LevlStudy.rail({
+      stats: [
+        ['Answered', answered, answered ? 'questions and tool items' : 'nothing yet'],
+        ['Due for review', due, due ? 'waiting in your queue' : 'nothing due now', due ? 'is-due' : ''],
+        ['To fix', miss, miss ? 'missed, not yet right' : 'no open misses'],
+        ['Topics studied', studied, 'of ' + plural(builtTopics().length, 'built topic')]
+      ],
+      due: { n: due, href: BASE + 'review.html', pill: pill() },
+      links: [
+        { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Spaced cards from the glossary.' },
+        { href: BASE + 'exams.html', title: 'Exams', sub: 'Unit quizzes, system exams, A&amp;P I and II finals.' }
+      ]
+    });
   }
 
   function optionList(list, sel, label){
@@ -167,28 +162,28 @@
       var ts = builtTopics().filter(function(t){ return t.chapter === c.id; });
       return '<optgroup label="' + esc(c.n + '. ' + c.title) + '">' + optionList(ts, state.topic, function(t){ return t.n + '. ' + t.title; }) + '</optgroup>';
     }).join('');
-    return '<label class="anp-pr-field"><span>Topic</span><select id="anp-pr-topic">' + groups + '</select></label>';
+    return '<label class="cx-field"><span>Topic</span><select id="anp-pr-topic">' + groups + '</select></label>';
   }
   function pickerHtml(){
     var m = state.mode;
     if(m === 'topic') return topicSelect();
-    if(m === 'chapter') return '<label class="anp-pr-field"><span>Chapter</span><select id="anp-pr-chapter">' +
+    if(m === 'chapter') return '<label class="cx-field"><span>Chapter</span><select id="anp-pr-chapter">' +
       optionList(builtChapters(), state.chapter, function(c){ return c.n + '. ' + c.title; }) + '</select></label>' +
-      (builtChapters().length < CUR.chapters.length ? '<p class="anp-small">Only chapters with built topics are listed.</p>' : '');
-    if(m === 'core') return '<label class="anp-pr-field"><span>Core concept</span><select id="anp-pr-core">' +
+      (builtChapters().length < CUR.chapters.length ? '<p class="cx-small">Only chapters with built topics are listed.</p>' : '');
+    if(m === 'core') return '<label class="cx-field"><span>Core concept</span><select id="anp-pr-core">' +
       optionList(coresWithQuestions(), state.core, function(c){ return c.name; }) + '</select></label>';
     if(m === 'studied'){
       var st = studiedTopics();
-      return '<p class="anp-small">' + (st.length ? 'From ' + plural(st.length, 'topic') + ': ' + st.map(function(t){ return esc(TOPIC[t].title); }).join(', ') + '.' : '') + '</p>';
+      return '<p class="cx-small">' + (st.length ? 'From ' + plural(st.length, 'topic') + ': ' + st.map(function(t){ return esc(TOPIC[t].title); }).join(', ') + '.' : '') + '</p>';
     }
     if(m === 'weak'){
       var w = weakSpots();
       var bits = w.topics.map(function(x){ return esc(x.title) + ' (' + Core.pct(x.value) + ')'; }).concat(w.core.map(function(x){ return esc(x.name) + ' (' + Core.pct(x.value) + ')'; }));
-      return '<p class="anp-small">' + (bits.length ? 'Lowest mastery right now: ' + bits.join(', ') + '.' : '') + '</p>';
+      return '<p class="cx-small">' + (bits.length ? 'Lowest mastery right now: ' + bits.join(', ') + '.' : '') + '</p>';
     }
     if(m === 'missed'){
       var tools = missedToolCount();
-      return tools ? '<p class="anp-small">' + plural(tools, 'missed tool item') + ' (lab practical, predictions, loops and so on) ' + (tools === 1 ? 'waits' : 'wait') + ' in your <a href="' + BASE + 'review.html">review queue</a>, which links you back to each tool.</p>' : '';
+      return tools ? '<p class="cx-small">' + plural(tools, 'missed tool item') + ' (lab practical, predictions, loops and so on) ' + (tools === 1 ? 'waits' : 'wait') + ' in your <a href="' + BASE + 'review.html">review queue</a>, which links you back to each tool.</p>' : '';
     }
     return '';
   }
@@ -219,32 +214,32 @@
     var k = state.count ? Math.min(state.count, n) : n;
     return (state.count && state.count < n ? '' : 'All ') + plural(k, 'question') + ' &middot; ' + esc(setLabel());
   }
-  function step(n){ return '<span class="anp-pr-n" aria-hidden="true">' + n + '</span>'; }
+  function step(n){ return '<span class="cx-step-n" aria-hidden="true">' + n + '</span>'; }
 
   function renderSetup(){
     view('setup');
     if(MODE[state.mode] && modeUnavailable(state.mode)) state.mode = 'topic';
-    app.innerHTML = '<div class="anp-pr-grid">' +
-      '<form class="anp-pr-setup" novalidate aria-label="Build a practice set">' +
-        '<fieldset class="anp-pr-step anp-pr-modes"><legend class="anp-pr-step-h">' + step(1) + 'What do you want to practice?</legend>' +
-          '<div class="anp-pr-mode-grid">' +
+    app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' +
+      '<form class="cx-card cx-builder anp-pr-setup" novalidate aria-label="Build a practice set">' +
+        '<fieldset class="cx-step anp-pr-modes"><legend>' + step(1) + 'What do you want to practice?</legend>' +
+          '<div class="cx-choices">' +
           MODES.map(function(m){
             var why = modeUnavailable(m.id);
-            return '<label class="anp-pr-mode' + (why ? ' is-off' : '') + '"><input type="radio" name="mode" value="' + m.id + '"' +
-              (m.id === state.mode ? ' checked' : '') + (why ? ' disabled' : '') + '><span class="anp-pr-mode-t">' + esc(m.title) + '</span>' +
-              '<span class="anp-pr-mode-d">' + esc(why || m.desc) + '</span></label>';
+            return '<label class="cx-choice"><input type="radio" name="mode" value="' + m.id + '"' +
+              (m.id === state.mode ? ' checked' : '') + (why ? ' disabled' : '') + '><span><b>' + esc(m.title) + '</b>' +
+              '<span>' + esc(why || m.desc) + '</span></span></label>';
           }).join('') +
         '</div></fieldset>' +
-        '<div class="anp-pr-step anp-pr-pickstep"><h2 class="anp-pr-step-h">' + step(2) + '<span class="anp-pr-pick-h"></span></h2>' +
-          '<div class="anp-pr-pick"></div><p class="anp-pr-avail"></p></div>' +
-        '<fieldset class="anp-pr-step anp-pr-count"><legend class="anp-pr-step-h">' + step(3) + 'How many questions?</legend>' +
-          '<div class="anp-pr-chips">' +
-          COUNTS.map(function(n){ return '<label class="anp-pr-chip"><input type="radio" name="count" value="' + n + '"' + (n === state.count ? ' checked' : '') + '><span>' + (n || 'All') + '</span></label>'; }).join('') +
+        '<div class="cx-step anp-pr-pickstep"><h2 class="cx-step-h">' + step(2) + '<span class="anp-pr-pick-h"></span></h2>' +
+          '<div class="anp-pr-pick"></div><p class="cx-avail anp-pr-avail"></p></div>' +
+        '<fieldset class="cx-step anp-pr-count"><legend>' + step(3) + 'How many questions?</legend>' +
+          '<div class="cx-pills">' +
+          COUNTS.map(function(n){ return '<label class="cx-pill"><input type="radio" name="count" value="' + n + '"' + (n === state.count ? ' checked' : '') + '><span>' + (n || 'All') + '</span></label>'; }).join('') +
         '</div></fieldset>' +
-        '<div class="anp-pr-go"><p class="anp-pr-sum" aria-live="polite"><span class="anp-pr-sum-main"></span><small>Feedback after every answer. Misses go to your review queue.</small></p>' +
+        '<div class="cx-start"><p class="cx-sum" aria-live="polite"><span class="anp-pr-sum-main"></span><small>Feedback after every answer. Misses go to your review queue.</small></p>' +
           '<button type="submit" class="btn-press anp-pr-start">Start practice</button></div>' +
         allowanceHtml() +
-      '</form>' +
+      '</form></div>' +
       railHtml() +
     '</div>';
 
@@ -260,7 +255,7 @@
       app.querySelector('.anp-pr-pick').innerHTML = html;
       app.querySelector('.anp-pr-pick-h').textContent = PICK_H[state.mode] || '';
       stepEl.hidden = !html;
-      app.querySelector('.anp-pr-count .anp-pr-n').textContent = html ? '3' : '2';
+      app.querySelector('.anp-pr-count .cx-step-n').textContent = html ? '3' : '2';
     }
     function refresh(){
       syncPickers();
@@ -292,7 +287,7 @@
   function allowanceHtml(){
     var a = Core && Core.quota ? Core.quota() : null;
     if(!a || a.limit === Infinity) return '';
-    return '<p class="anp-small anp-pr-allow">Free: Foundations questions are unlimited. Questions from other chapters: <b>' + a.left + ' of ' + a.limit + '</b> left today, shared with review.' + pill() + '</p>';
+    return LevlStudy.free('Free: <b>' + a.left + ' of ' + a.limit + '</b> questions left today, shared with review. Foundations questions are unlimited.' + pill());
   }
   /* Today's allowance is used up: what is left to do, instead of the question. */
   function limitHtml(){
@@ -336,13 +331,13 @@
       tries: {}, retryUntilRight: mode === 'missed' || mode === 'retry', finished: false
     };
     view('session');
-    app.innerHTML = '<div class="anp-pr-session">' +
-      '<div class="anp-pr-bar"><span class="anp-pr-label">' + esc(session.label) + '</span>' +
-        '<span class="anp-pr-count-l" aria-live="polite"></span>' +
-        '<button type="button" class="btn-outline anp-pr-quit">End session</button></div>' +
-      '<div class="track thin anp-pr-track" aria-hidden="true"><i style="width:0%"></i></div>' +
+    app.innerHTML = '<div class="cx-session anp-pr-session">' +
+      '<div class="cx-sbar"><span class="cx-sbar-t">' + esc(session.label) + '</span>' +
+        '<span class="cx-sbar-n anp-pr-count-l" aria-live="polite"></span>' +
+        '<button type="button" class="cx-end anp-pr-quit">End session</button></div>' +
+      '<div class="cx-progress anp-pr-track" aria-hidden="true"><i style="width:0%"></i></div>' +
       '<div class="anp-pr-stage"></div>' +
-      '<div class="anp-pr-after" hidden></div>' +
+      '<div class="cx-next-row anp-pr-after" hidden></div>' +
     '</div>';
     app.querySelector('.anp-pr-quit').addEventListener('click', finish);
     ask();
@@ -385,9 +380,9 @@
     var t = TOPIC[q.topic];
     var after = app.querySelector('.anp-pr-after');
     var last = session.i + 1 >= session.queue.length;
-    after.innerHTML = '<p class="anp-pr-from">From <a href="' + lessonHref(q.topic) + '">' + esc(t.title) + '</a> <span aria-hidden="true">&middot;</span> <a href="' + notesHref(q.topic) + '">notes</a>' +
+    after.innerHTML = '<p class="cx-from anp-pr-from">From <a href="' + lessonHref(q.topic) + '">' + esc(t.title) + '</a> <span aria-hidden="true">&middot;</span> <a href="' + notesHref(q.topic) + '">notes</a>' +
       (again ? ' <span class="anp-pr-again">This one comes back later in the session.</span>' : '') + '</p>' +
-      '<button type="button" class="btn-press anp-pr-next">' + (last ? 'See your results' : 'Next question') + '</button>';
+      '<button type="button" class="btn-press cx-next anp-pr-next">' + (last ? 'See your results' : 'Next question') + '</button>';
     after.hidden = false;
     var next = after.querySelector('.anp-pr-next');
     next.addEventListener('click', function(){ session.i++; ask(); });
@@ -429,7 +424,7 @@
       nextHtml = '<p>Everything right. ' + (nxt ? 'Keep going with <a href="' + lessonHref(nxt.id) + '">' + esc(nxt.title) + '</a>, the next topic you have not started.' : 'Try a timed <a href="' + BASE + 'exams.html">system exam</a> to test it under pressure.') + '</p>';
     }
     var cores = Object.keys(coreMiss).sort(function(a, b){ return coreMiss[b] - coreMiss[a]; }).slice(0, 2).filter(function(c){ return CORE[c]; });
-    var coreHtml = cores.length ? '<p class="anp-small">The misses cluster on ' + cores.map(function(c){ return '<a href="' + BASE + 'concepts/' + c + '.html">' + esc(CORE[c].name) + '</a>'; }).join(' and ') + '. The concept page shows the same idea in every system.</p>' : '';
+    var coreHtml = cores.length ? '<p class="cx-small">The misses cluster on ' + cores.map(function(c){ return '<a href="' + BASE + 'concepts/' + c + '.html">' + esc(CORE[c].name) + '</a>'; }).join(' and ') + '. The concept page shows the same idea in every system.</p>' : '';
 
     var pctRight = Math.round(right / res.length * 100);
     var mode = session.mode, count = state.count;

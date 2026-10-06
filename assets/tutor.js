@@ -59,7 +59,7 @@
     // the prose actually is; without it the assistant silently lost the
     // largest body of teaching text on the site.
     { file: '/nremt/study-notes.html', title: 'Study Notes', data: '/nremt/assets/study-notes.json' },
-    { file: '/nremt/glossary.html',    title: 'Glossary' },
+    { file: '/nremt/glossary.html',    title: 'Glossary', data: '/nremt/assets/glossary.json' },
     { file: '/nremt/mnemonics.html',   title: 'Mnemonics' },
     { file: '/nremt/flowcharts.html',  title: 'Flow Diagrams' },
     { file: '/nremt/skillsheets.html', title: 'Skills Guide' },
@@ -84,8 +84,8 @@
           seen[m[1]] = 1;
           out.push({ file: '/ochem/notes/' + m[1] + '.html', title: m[2] });
         }
-        // The glossary page ships term names only; its definitions live in
-        // the JSON file (scripts/build-ochem-glossary.mjs), keyed term/def.
+        // The glossary page draws its definitions from the JSON file
+        // (scripts/build-ochem-glossary.mjs), keyed term/def.
         out.push({ file: '/ochem/glossary.html', title: 'Glossary', data: '/ochem/assets/glossary.json' });
         return out;
       })
@@ -105,7 +105,7 @@
   function bioPages(){
     return fetch('/bio/assets/notes-index.json')
       .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function(list){ return list.length ? list.concat([{ file: '/bio/glossary.html', title: 'Glossary' }]) : list; })
+      .then(function(list){ return list.length ? list.concat([{ file: '/bio/glossary.html', title: 'Glossary', data: '/bio/assets/glossary.json' }]) : list; })
       .catch(function(){ return []; });
   }
 

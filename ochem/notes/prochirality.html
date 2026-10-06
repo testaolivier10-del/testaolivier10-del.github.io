@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Stereochemistry</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Stereochemistry &middot; Section 36 of 123</p>
-    <h1>Prochirality: which hydrogens are the same?</h1>
-    <a class="notes-onward-cta" href="../lessons/prochirality.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="prochirality">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-alkanes-conformations"><span class="bk-toc-n">5</span>Alkanes &amp; Conformations</a>
+    <a class="bk-toc-chap" href="../learn.html#m-stereochemistry"><span class="bk-toc-chap-n">6</span><span><b>Stereochemistry</b><small>9 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 9 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="chirality"><a href="chirality.html"><span class="bk-toc-n">28</span>Chirality</a></li><li data-toc-t="stereocenters"><a href="stereocenters.html"><span class="bk-toc-n">29</span>Stereocenters</a></li><li data-toc-t="rs-configuration"><a href="rs-configuration.html"><span class="bk-toc-n">30</span>R/S configuration</a></li><li data-toc-t="enantiomers"><a href="enantiomers.html"><span class="bk-toc-n">31</span>Enantiomers</a></li><li data-toc-t="diastereomers"><a href="diastereomers.html"><span class="bk-toc-n">32</span>Diastereomers</a></li><li data-toc-t="meso"><a href="meso.html"><span class="bk-toc-n">33</span>Meso compounds</a></li><li data-toc-t="fischer"><a href="fischer.html"><span class="bk-toc-n">34</span>Fischer projections</a></li><li data-toc-t="cis-trans-ez"><a href="cis-trans-ez.html"><span class="bk-toc-n">35</span>Cis/trans and E/Z</a></li><li class="current" data-toc-t="prochirality"><a href="#main" aria-current="page"><span class="bk-toc-n">36</span>Prochirality: which hydrogens are the same?</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-question-and-the-test-that">The question, and the test that answers it</a><a href="#a-ring-or-a-double-bond">A ring or a double bond can do the same job</a><a href="#prochiral-centers-and-the-pro-r">Prochiral centers, and the pro-R / pro-S labels</a><a href="#faces-re-and-si">Faces: Re and Si</a><a href="#why-this-matters">Why this matters</a><a href="#mistakes-to-avoid">Mistakes to avoid</a><a href="#what-carries-forward">What carries forward</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-reactivity"><span class="bk-toc-n">7</span>How Reactions Happen</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-stereochemistry">Stereochemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Prochirality: which hydrogens are the same?: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/prochirality.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="stereochemistry">Stereochemistry</span> &middot; Section 36 of 123</p>
+      <h1 class="bk-title">Prochirality: which hydrogens are the same?</h1>
+      <p class="bk-meta"><span class="bk-small">15 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/prochirality.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="prochirality" data-bk-ids="the-question-and-the-test-that a-ring-or-a-double-bond prochiral-centers-and-the-pro-r faces-re-and-si why-this-matters mistakes-to-avoid what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Look at the CH₂ group of ethanol, CH₃–CH₂–OH. Its two hydrogens sit on the same carbon and are drawn the same way. It is natural to assume they are interchangeable, but they are not: the liver enzyme that breaks down ethanol removes one of them and never the other.</p>
 <p class="step-body">Whether two look-alike groups are really interchangeable matters all through the course. It decides which hydrogens count as equivalent, which <a class="chapter-ref" href="/ochem/learn.html#m-spectroscopy">NMR Spectroscopy</a> relies on. It also decides what happens when a reagent attacks a flat C=O group from one side or the other. This page gives you one test that settles the question, and the names for its three possible answers.</p>
@@ -178,14 +187,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">Topicity links the stereochemistry you have just finished to the two places it is used most. It is how NMR spectroscopy decides which hydrogens give separate signals. It is also the language every stereoselective reaction is described in: which face was attacked, which hydrogen was removed, and which of two diastereomeric transition states won. Keep the substitution test ready. Replace one, replace the other, and compare the products; every question in this area comes down to that.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="cis-trans-ez.html"><span>Previous</span>Cis/trans and E/Z</a><a class="notes-prevnext notes-next" href="nucleophiles.html"><span>Next</span>Nucleophiles</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="cis-trans-ez.html"><span>&larr; Section 35</span><b>Cis/trans and E/Z</b></a><a class="tb-chapter-link next" href="nucleophiles.html"><span>Section 37 &rarr;</span><b>Nucleophiles</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

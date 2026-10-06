@@ -26,12 +26,12 @@
     document.querySelectorAll('[data-toc-prog]').forEach(function(el){
       var ch = el.getAttribute('data-toc-prog'), n = count(ch), t = total(ch) || 1, p = Math.round(n / t * 100) + '%';
       el.querySelector('b').textContent = n;
-      el.querySelector('.bio-toc-pct').textContent = p;
+      el.querySelector('.bk-toc-pct').textContent = p;
       el.querySelector('.tb-progress-fill').style.width = p;
     });
     document.querySelectorAll('[data-chip-topic]').forEach(function(el){
       var k = tier(C.topicMastery(el.getAttribute('data-chip-topic')));
-      el.className = 'bio-tb-chip' + (k[0] ? ' ' + k[0] : '');
+      el.className = 'bk-chip' + (k[0] ? ' ' + k[0] : '');
       el.textContent = k[1];
     });
     document.querySelectorAll('[data-unit-meta]').forEach(function(el){

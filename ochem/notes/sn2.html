@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Substitution &amp; Elimination</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Substitution &amp; Elimination &middot; Section 44 of 123</p>
-    <h1>SN2</h1>
-    <a class="notes-onward-cta" href="../mechanisms/sn2.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="sn2">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-reactivity"><span class="bk-toc-n">7</span>How Reactions Happen</a>
+    <a class="bk-toc-chap" href="../learn.html#m-substitution-elimination"><span class="bk-toc-chap-n">8</span><span><b>Substitution &amp; Elimination</b><small>5 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 5 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li class="current" data-toc-t="sn2"><a href="#main" aria-current="page"><span class="bk-toc-n">44</span>SN2</a><div class="bk-toc-onpage"><p>On this page</p><a href="#one-step-two-arrows">One step, two arrows</a><a href="#the-transition-state-one-hill-no">The transition state: one hill, no valley</a><a href="#why-the-nucleophile-attacks-from-the">Why the nucleophile attacks from the back</a><a href="#inversion-of-configuration">Inversion of configuration</a><a href="#steric-effects-which-carbons-can-react">Steric effects: which carbons can react</a><a href="#rate-law">Rate law</a><a href="#solvent">Solvent</a><a href="#the-nucleophile">The nucleophile</a><a href="#the-four-variables-summarized">The four variables, summarized</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="sn1"><a href="sn1.html"><span class="bk-toc-n">45</span>SN1</a></li><li data-toc-t="e2"><a href="e2.html"><span class="bk-toc-n">46</span>E2</a></li><li data-toc-t="e1"><a href="e1.html"><span class="bk-toc-n">47</span>E1</a></li><li data-toc-t="substrate-effects"><a href="substrate-effects.html"><span class="bk-toc-n">48</span>Substrate &amp; solvent effects</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-alkenes-alkynes"><span class="bk-toc-n">9</span>Alkenes &amp; Alkynes</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-substitution-elimination">Substitution &amp; Elimination</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">SN2: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../mechanisms/sn2.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="substitution-elimination">Substitution &amp; Elimination</span> &middot; Section 44 of 123</p>
+      <h1 class="bk-title">SN2</h1>
+      <p class="bk-meta"><span class="bk-small">14 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/sn2.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="sn2" data-bk-ids="one-step-two-arrows the-transition-state-one-hill-no why-the-nucleophile-attacks-from-the inversion-of-configuration steric-effects-which-carbons-can-react rate-law solvent the-nucleophile the-four-variables-summarized what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Hydroxide ion and bromomethane react in a single step. A lone pair on the oxygen forms a new C–O bond while the C–Br bond breaks, and out come methanol and bromide ion. You met this reaction, and its name, SN2, in <a class="chapter-ref" href="/ochem/notes/nucleophiles.html">Nucleophiles</a> and <a class="chapter-ref" href="/ochem/notes/leaving-groups.html">Leaving groups</a>. This page takes it apart: where the nucleophile has to come in, what that does to a stereocenter, which carbons can react at all, and what sets the speed.</p>
 <p class="step-body">SN2 is the first mechanism the course studies in full. Its rate law can be measured, its stereochemistry can be predicted, and its sensitivity to crowding follows from its shape. Most later mechanisms are described by how they differ from this one.</p>
@@ -174,14 +183,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">SN2 is the model for concerted mechanisms in general, and its inversion is a basic tool of stereochemical planning in synthesis. It competes directly with E2 for the same substrates and reagents, and judging that competition is the central skill of this chapter. Backside attack into a σ* orbital also returns later in the course, whenever a nucleophile opens a three-membered ring, as with the bromine-bridged ion in alkene bromination and with epoxides in <a class="chapter-ref" href="/ochem/learn.html#m-alcohols-ethers">Alcohols, Ethers &amp; Related Chemistry</a>.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="radical-halogenation.html"><span>Previous</span>Radical halogenation</a><a class="notes-prevnext notes-next" href="sn1.html"><span>Next</span>SN1</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="radical-halogenation.html"><span>&larr; Section 43</span><b>Radical halogenation</b></a><a class="tb-chapter-link next" href="sn1.html"><span>Section 45 &rarr;</span><b>SN1</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

@@ -80,122 +80,104 @@
      HOME — recommendations, snapshot, modes, weak concepts
      ===================================================================== */
 
-  function snapshotHtml(){
-    var overall = M.overall();
-    var counts = M.counts();
+  /* The rail (assets/course/study.js): the same tiles as every course. */
+  function railHtml(){
+    var answered = 0;
+    M.allProfiles().forEach(function(p){ answered += p.attempts || 0; });
     var dueCount = E.reviewQueue().dueTotal;   // only concepts with a question in a reached topic
+    var toFix = M.mistakes({ limit: 999 }).length;
     var streak = M.streakDays();
-    var cells = [];
-
-    cells.push('<div class="cell"><div class="k">Concept mastery</div><div class="v accent">' +
-      (overall ? pct(overall.value) + '%' : '—') + '</div><div class="s">' +
-      (overall ? overall.touched + ' of ' + overall.total + ' concepts touched' : 'nothing practiced yet') +
-      '</div></div>');
-    cells.push('<div class="cell"><div class="k">Solid or better</div><div class="v">' +
-      (counts.solid + counts.mastered) + '</div><div class="s">' + counts.shaky + ' shaky, ' +
-      counts.developing + ' developing</div></div>');
-    cells.push('<div class="cell"><div class="k">Due for review</div><div class="v' + (dueCount ? ' warn' : '') + '">' +
-      dueCount + '</div><div class="s">' + (dueCount ? 'scheduled to resurface' : 'nothing overdue') + '</div></div>');
-    cells.push('<div class="cell"><div class="k">Day streak</div><div class="v">' + streak +
-      '</div><div class="s">' + (streak ? 'keep it going' : 'practice today to start one') + '</div></div>');
-
-    return '<div class="snapshot">' + cells.join('') + '</div>';
+    var G = window.OchemPremium;
+    return LevlStudy.rail({
+      stats: [
+        ['Answered', answered, answered ? 'questions so far' : 'nothing yet'],
+        ['Due for review', dueCount, dueCount ? 'concepts to resurface' : 'nothing overdue', dueCount ? 'is-due' : ''],
+        ['To fix', toFix, toFix ? 'missed, not fixed since' : 'no open misses'],
+        ['Day streak', streak, streak ? 'keep it going' : 'practice today to start one']
+      ],
+      due: { n: dueCount, noun: 'concept', href: 'review.html', pill: G && G.badge ? '' : '',
+        text: dueCount ? 'Each comes back inside a fresh problem, not the same card.' : 'Concepts come back here when they are closest to being forgotten.' },
+      links: [
+        { href: 'flashcards.html', title: 'Flashcards', sub: 'Concepts, pKa, IR and NMR values and reagents.' },
+        { href: 'exams.html', title: 'Exams', sub: 'Timed tests on a chapter, a range or the course.' }
+      ]
+    });
   }
 
-  function recommendationsHtml(recs){
-    if(!recs.length) return '';
-    var primary = recs[0];
-    var html = '<div class="rec-card">' +
-      '<div class="k">Recommended for you</div>' +
-      '<h2>' + esc(primary.headline) + '</h2>' +
-      '<p>' + esc(primary.detail) + '</p>' +
-      '<div class="actions">' +
-        (primary.plan ? '<button class="btn-press" data-rec="0">' + esc(primary.cta) + '</button>' : '') +
-        (primary.href ? '<a class="btn-press alt" href="' + primary.href + '">' + esc(primary.cta) + '</a>' : '') +
-      '</div></div>';
-
-    var rest = recs.slice(1);
-    if(rest.length){
-      html += '<div class="rec-alt">' + rest.map(function(r, i){
-        var inner = '<span class="t">' + esc(r.headline) + '<small class="d">' + esc(r.detail) + '</small></span>' +
-                    '<span class="go" aria-hidden="true">&rarr;</span>';
-        // A recommendation that points at a lesson is a link, not a session.
-        return r.href
-          ? '<a href="' + r.href + '" style="text-decoration:none;color:inherit;"><button type="button" tabindex="-1">' + inner + '</button></a>'
-          : '<button type="button" data-rec="' + (i + 1) + '">' + inner + '</button>';
-      }).join('') + '</div>';
-    }
-    return html;
-  }
-
+  /* The modes, in the shared builder's step 1. Spaced review and flashcards
+     are their own pages (Review owns the capped daily queue; two copies
+     would drift), linked from the rail. */
   var MODES = [
-    { mode:'adaptive', title:'Adaptive practice', pill:'Default',
-      desc:'Every question picked from your profile.', count:10 },
-    { mode:'mistakes', title:'Review your mistakes',
-      desc:'Wrong, and not fixed since.', count:10 },
-    // Flags are the student's own judgement rather than the engine's, which
-    // is exactly why the mode exists: "I got this right and could not tell
-    // you why" is invisible to every other signal on this page.
-    { mode:'flagged', title:'Flagged questions',
-      desc:'The ones you marked to revisit.' },
-    // Spaced review is the Review page's job, not a mode here: it is a
-    // finite, capped, daily queue rather than an open-ended session, and two
-    // implementations of it would drift apart.
-    { mode:'review', title:'Spaced review', href:'review.html',
-      desc:'Your due queue, on the Review page.' },
-    // Flashcards used to be a tab of their own; they are a way of practicing,
-    // so they are a mode here (and a link on Review).
-    { mode:'flashcards', title:'Flashcards', href:'flashcards.html',
-      desc:'Concepts, pKa, IR and NMR values and reagents, on spaced cards.' },
-    { mode:'topic', title:'Pick a topic',
-      desc:'One topic, at a difficulty you choose.' },
-    { mode:'quick', title:'Quick 5',
-      desc:'Five adaptive questions.', count:5 },
+    { mode:'adaptive', title:'Adaptive practice', desc:'Every question picked from your profile.' },
+    { mode:'topic', title:'One topic', desc:'One topic, at a difficulty you choose.' },
+    { mode:'quick', title:'Quick 5', desc:'Five adaptive questions.', count:5 },
     // The one mode that mixes topics on purpose, and only finished ones.
-    { mode:'cumulative', title:'Cumulative review',
-      desc:'Mixes questions from every topic you\'ve completed.', count:10 }
+    { mode:'cumulative', title:'Cumulative review', desc:'Mixes questions from every topic you\'ve completed.' },
+    { mode:'mistakes', title:'Questions I missed', desc:'Wrong, and not fixed since.' },
+    // Flags are the student's own judgement rather than the engine's: "I got
+    // this right and could not tell you why" is invisible to every other signal.
+    { mode:'flagged', title:'Flagged questions', desc:'The ones you marked to revisit.' }
   ];
+  var MODE = {}; MODES.forEach(function(m){ MODE[m.mode] = m; });
+  var COUNTS = [5, 10, 20];
+  var pick = { mode: 'adaptive', count: 10 };
 
-  function modeGridHtml(){
-    return '<div class="mode-grid">' + MODES.map(function(m, i){
-      var disabled = '';
-      var pill = m.pill;
-      // An empty queue is omitted rather than rendered dead: "Review your
-      // mistakes" and "Flagged questions" are both empty on a first visit,
-      // so two of the seven tiles were always greyed out on arrival.
-      if(m.mode === 'mistakes' && !M.mistakes({ limit: 1 }).length) return '';
-      var countPill = false;
-      if(m.mode === 'flagged'){
-        var n = flaggedQuestions().length;
-        if(!n) return '';
-        pill = String(n); countPill = true;
-      }
-      // A one- or two-digit pill needs far less room reserved beside the
-      // title than the word "Default" does.
-      // Before any answer, adaptive practice has no profile to adapt to: it
-      // is a diagnostic, and says so (audit 2026-10).
-      var title = m.title, desc = m.desc;
-      if(m.mode === 'adaptive' && !M.overall()){ title = 'Diagnostic'; desc = 'Ten questions across the course to find where to start.'; }
-      var inner = (pill ? '<span class="pill' + (countPill ? ' pill--count' : '') + '">' + esc(pill) + '</span>' : '') +
-        '<span class="t">' + esc(title) + '</span>' +
-        '<span class="d">' + esc(desc) + '</span>';
-      if(m.href) return '<a class="mode-card" href="' + m.href + '">' + inner + '</a>';
-      return '<button type="button" class="mode-card" data-mode="' + i + '"' + disabled + '>' + inner + '</button>';
-    }).join('') + '</div>' +
-    '<div class="drill-panel" id="drillPanel" hidden>' +
-      '<div class="practice-field"><label for="topicFilter">Topic</label><select id="topicFilter"></select></div>' +
-      '<div class="practice-field"><label for="tierFilter">Difficulty</label><select id="tierFilter">' +
-        '<option value="">Any — let the engine choose</option>' +
-        '<option value="1">Foundational — recognize and recall</option>' +
-        '<option value="2">Intermediate — apply one concept</option>' +
-        '<option value="3">Advanced — combine several concepts</option>' +
-        '<option value="4">Challenge — little guidance</option>' +
-      '</select></div>' +
-      '<div class="practice-field"><label for="lengthFilter">Session length</label><select id="lengthFilter">' +
-        '<option value="5">5 questions</option><option value="10" selected>10 questions</option><option value="20">20 questions</option>' +
-      '</select></div>' +
-      '<div class="actions" style="justify-content:flex-start;"><button class="btn-press" id="startDrill">Start drill</button></div>' +
-    '</div>';
+  function modeOff(m){
+    if(m === 'mistakes' && !M.mistakes({ limit: 1 }).length) return 'Nothing missed. Nice.';
+    if(m === 'flagged' && !flaggedQuestions().length) return 'Nothing flagged yet.';
+    return '';
+  }
+  function modeTitle(m){
+    // Before any answer, adaptive practice has no profile to adapt to: it is
+    // a diagnostic, and says so (audit 2026-10).
+    if(m.mode === 'adaptive' && !M.overall()) return { t: 'Diagnostic', d: 'Ten questions across the course to find where to start.' };
+    if(m.mode === 'flagged' && flaggedQuestions().length) return { t: m.title, d: plural(flaggedQuestions().length, 'question') + ' you marked to revisit.' };
+    return { t: m.title, d: m.desc };
+  }
+
+  function builderHtml(recs){
+    var step = function(n){ return '<span class="cx-step-n" aria-hidden="true">' + n + '</span>'; };
+    return '<form class="cx-card cx-builder" id="ocBuilder" novalidate aria-label="Build a practice set">' +
+      '<fieldset class="cx-step"><legend>' + step(1) + 'What do you want to practice?</legend><div class="cx-choices">' +
+        MODES.map(function(m){
+          var off = modeOff(m.mode), lab = modeTitle(m);
+          return '<label class="cx-choice"><input type="radio" name="ocMode" value="' + m.mode + '"' + (m.mode === pick.mode ? ' checked' : '') + (off ? ' disabled' : '') + '>' +
+            '<span><b>' + esc(lab.t) + (m.mode === 'adaptive' ? ' <small class="cx-tag">Default</small>' : '') + '</b><span>' + esc(off || lab.d) + '</span></span></label>';
+        }).join('') +
+      '</div></fieldset>' +
+      '<div class="cx-step" id="ocPickStep"><h2 class="cx-step-h">' + step(2) + '<span id="ocPickH">Which topic?</span></h2><div id="ocPick"></div></div>' +
+      '<fieldset class="cx-step" id="ocCountStep"><legend>' + step(3) + 'How many questions?</legend><div class="cx-pills">' +
+        COUNTS.map(function(n){ return '<label class="cx-pill"><input type="radio" name="ocCount" value="' + n + '"' + (n === pick.count ? ' checked' : '') + '><span>' + n + '</span></label>'; }).join('') +
+      '</div></fieldset>' +
+      '<div class="cx-start"><p class="cx-sum" aria-live="polite"><span id="ocSum"></span><small>Feedback after every answer, with the concept behind a miss. Misses go to your review queue.</small></p>' +
+        '<button type="submit" class="btn-press" id="startDrill">Start practice</button></div>' +
+      (window.OchemPremium ? window.OchemPremium.quotaNote() : '') +
+    '</form>';
+  }
+
+  function pickHtml(recs){
+    var m = pick.mode;
+    if(m === 'topic'){
+      return '<div class="cx-fields">' +
+        '<label class="cx-field"><span>Topic</span><select id="topicFilter">' + E.topicsWithQuestions().map(function(group){
+          return '<optgroup label="' + esc(group.title) + '">' + group.topics.map(function(t){
+            return '<option value="' + esc(t.id) + '"' + (t.id === pick.topic ? ' selected' : '') + '>' + esc(t.title) + '</option>';
+          }).join('') + '</optgroup>';
+        }).join('') + '</select></label>' +
+        '<label class="cx-field"><span>Difficulty</span><select id="tierFilter">' +
+          '<option value="">Any: let the engine choose</option>' +
+          '<option value="1">Foundational: recognize and recall</option>' +
+          '<option value="2">Intermediate: apply one concept</option>' +
+          '<option value="3">Advanced: combine several concepts</option>' +
+          '<option value="4">Challenge: little guidance</option>' +
+        '</select></label></div>';
+    }
+    if(m === 'adaptive'){
+      var r = recs[0];
+      return r ? '<p class="cx-small"><b>' + esc(r.headline) + '.</b> ' + esc(r.detail) + '</p>' : '';
+    }
+    if(m === 'cumulative') return '<p class="cx-small">Only topics you have completed are mixed in, so nothing you have not been taught turns up.</p>';
+    return '';
   }
 
   function conceptRowsHtml(profiles, opts){
@@ -221,31 +203,37 @@
     var strong = M.strongest(3);
     var stats = E.stats();
 
-    // Two columns: starting a session on the left, your profile on the right.
-    var html = '<div class="practice-grid"><div class="practice-main">' + recommendationsHtml(recs);
-    html += '<div class="section-head">Other ways to practice</div>' + modeGridHtml();
-    html += '<p style="margin-top:18px;font:700 12.5px var(--font-ui);color:var(--muted);line-height:1.6;">' +
-      esc(stats.total.toLocaleString() + ' questions across ' + stats.topics + ' topics, ' + stats.interactive +
-      ' interactive. ') +
+    // The shared study layout: the builder on the left, your numbers on the
+    // right (docs/course-shell.md, W-C).
+    if(modeOff(pick.mode)) pick.mode = 'adaptive';
+    var html = '<div class="cx-body has-rail"><div class="cx-main">' + builderHtml(recs);
+
+    var rest = recs.slice(1);
+    if(rest.length){
+      html += '<div class="rec-alt">' + rest.map(function(r, i){
+        var inner = '<span class="t">' + esc(r.headline) + '<small class="d">' + esc(r.detail) + '</small></span>' +
+                    '<span class="go" aria-hidden="true">&rarr;</span>';
+        // A recommendation that points at a lesson is a link, not a session.
+        return r.href
+          ? '<a href="' + r.href + '" class="rec-alt-link">' + inner + '</a>'
+          : '<button type="button" data-rec="' + (i + 1) + '">' + inner + '</button>';
+      }).join('') + '</div>';
+    }
+    html += '<p class="cx-small">' + esc(stats.total.toLocaleString() + ' questions across ' + stats.topics + ' topics, ' + stats.interactive + ' interactive. ') +
       'Your concept map is on the <a href="dashboard.html">Dashboard</a>.</p>';
-    // Without Premium: what is left of today's allowance past the free chapters.
-    var G = window.OchemPremium;
-    if(G) html += G.quotaNote();
-    html += '</div><aside class="practice-side">';
-    html += '<div class="section-head">Your numbers</div>' + snapshotHtml();
 
     if(weak.length){
-      html += '<div class="section-head">Where you are weakest</div>' +
-        '<div class="module-card">' + conceptRowsHtml(weak, { drill: true }) + '</div>';
+      html += '<section><h2 class="cx-h2">Where you are weakest</h2>' +
+        '<div class="module-card">' + conceptRowsHtml(weak, { drill: true }) + '</div></section>';
     }
     if(strong.length){
-      html += '<div class="section-head">Holding up well</div>' +
-        '<div class="module-card">' + conceptRowsHtml(strong) + '</div>';
+      html += '<section><h2 class="cx-h2">Holding up well</h2>' +
+        '<div class="module-card">' + conceptRowsHtml(strong) + '</div></section>';
     }
 
     var flagged = flaggedQuestions();
     if(flagged.length){
-      html += '<div class="section-head">Flagged to come back to</div>' +
+      html += '<section><h2 class="cx-h2">Flagged to come back to</h2>' +
         '<div class="module-card">' + flagged.slice(0, 8).map(function(q){
           return '<div class="flag-row">' +
             '<span class="name">' + esc(q.prompt || q.q) +
@@ -258,14 +246,10 @@
           ? '<div class="flag-row"><span class="name" style="color:var(--muted);font-weight:700;">' +
             esc('+ ' + (flagged.length - 8) + ' more flagged') + '</span></div>'
           : '') +
-        '</div>' +
-        '<div class="actions" style="justify-content:flex-start;margin-top:12px;">' +
-          '<button class="btn-press alt sm" id="startFlagged">Practice ' +
-          esc(plural(flagged.length, 'flagged question')) + '</button>' +
-        '</div>';
+        '</div></section>';
     }
 
-    html += '</aside></div>';
+    html += '</div>' + railHtml() + '</div>';
 
     homeEl.innerHTML = html;
 
@@ -285,61 +269,61 @@
       });
     });
 
-    var startFlagged = homeEl.querySelector('#startFlagged');
-    if(startFlagged) startFlagged.addEventListener('click', function(){
-      startSession(E.makePlan('flagged', {}));
+    var form = homeEl.querySelector('#ocBuilder');
+    function syncTopic(){ var t = homeEl.querySelector('#topicFilter'); if(t) pick.topic = t.value; }
+    function paintPick(){
+      var h = pickHtml(recs), stepEl = homeEl.querySelector('#ocPickStep');
+      homeEl.querySelector('#ocPick').innerHTML = h;
+      homeEl.querySelector('#ocPickH').textContent = pick.mode === 'topic' ? 'Which topic?' : pick.mode === 'adaptive' ? 'What the engine suggests' : 'What goes in';
+      stepEl.hidden = !h;
+      var fixed = pick.mode === 'quick' || pick.mode === 'flagged';
+      homeEl.querySelector('#ocCountStep').hidden = fixed;
+      homeEl.querySelector('#ocCountStep .cx-step-n').textContent = h ? '3' : '2';
+      syncTopic();
+    }
+    function planNow(){
+      var m = pick.mode;
+      if(m === 'topic'){
+        var tier = homeEl.querySelector('#tierFilter').value;
+        return E.makePlan('topic', { topic: pick.topic, count: pick.count, tiers: tier ? [parseInt(tier, 10)] : null });
+      }
+      if(m === 'quick') return E.makePlan('quick', { count: 5 });
+      if(m === 'flagged') return E.makePlan('flagged', {});
+      if(m === 'adaptive' && !M.overall() && recs[0] && recs[0].plan) return recs[0].plan;
+      return E.makePlan(m, { count: pick.count });
+    }
+    function paintSum(){
+      var m = pick.mode, n = m === 'quick' ? 5 : m === 'flagged' ? flaggedQuestions().length : pick.count;
+      var lab = m === 'topic' && C.findTopic(pick.topic) ? (C.findTopic(pick.topic).title || '') : modeTitle(MODE[m]).t;
+      homeEl.querySelector('#ocSum').textContent = plural(n, 'question') + ' · ' + lab;
+    }
+    form.addEventListener('change', function(e){
+      if(e.target.name === 'ocMode'){ pick.mode = e.target.value; paintPick(); }
+      else if(e.target.name === 'ocCount') pick.count = +e.target.value;
+      else syncTopic();
+      paintSum();
     });
+    form.addEventListener('submit', function(e){
+      e.preventDefault(); syncTopic();
+      var plan = planNow();
+      if(pick.mode === 'topic'){
+        E.resetLimited();
+        if(!E.availableCount(plan) && !E.wasLimited()){
+          alert('No questions match that topic and difficulty yet. Try "Any difficulty".');
+          return;
+        }
+      }
+      if(pick.mode === 'flagged' && !flaggedQuestions().length) return;
+      startSession(plan);
+    });
+    paintPick(); paintSum();
 
-    /* Unflagging re-renders the whole home view rather than just removing the
-       row: the count on the Flagged mode card and the section heading both
-       have to follow, and a stale "4" next to three rows is worse than a
-       repaint. */
     homeEl.querySelectorAll('[data-unflag]').forEach(function(btn){
       btn.addEventListener('click', function(){
         if(!F) return;
         F.remove(btn.getAttribute('data-unflag'));
         renderHome();
       });
-    });
-
-    var drillPanel = homeEl.querySelector('#drillPanel');
-    homeEl.querySelectorAll('[data-mode]').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var m = MODES[parseInt(btn.getAttribute('data-mode'), 10)];
-        if(m.mode === 'topic'){
-          drillPanel.hidden = !drillPanel.hidden;
-          if(!drillPanel.hidden){
-            if(window.LevlMotion) window.LevlMotion.scrollIntoView(drillPanel, { block:'nearest' });
-            else drillPanel.scrollIntoView({ behavior:'smooth', block:'nearest' });
-          }
-          return;
-        }
-        if(m.mode === 'flagged' && !flaggedQuestions().length) return;
-        startSession(E.makePlan(m.mode, { count: m.count }));
-      });
-    });
-
-    // Topic picker, grouped by module, listing only topics that have questions.
-    var topicSelect = homeEl.querySelector('#topicFilter');
-    topicSelect.innerHTML = E.topicsWithQuestions().map(function(group){
-      return '<optgroup label="' + esc(group.title) + '">' + group.topics.map(function(t){
-        return '<option value="' + esc(t.id) + '">' + esc(t.title) + '</option>';
-      }).join('') + '</optgroup>';
-    }).join('');
-
-    homeEl.querySelector('#startDrill').addEventListener('click', function(){
-      var tier = homeEl.querySelector('#tierFilter').value;
-      var plan = E.makePlan('topic', {
-        topic: topicSelect.value,
-        count: parseInt(homeEl.querySelector('#lengthFilter').value, 10) || 10,
-        tiers: tier ? [parseInt(tier, 10)] : null
-      });
-      E.resetLimited();
-      if(!E.availableCount(plan) && !E.wasLimited()){
-        alert('No questions match that topic and difficulty yet. Try "Any difficulty".');
-        return;
-      }
-      startSession(plan);
     });
 
     show('home');

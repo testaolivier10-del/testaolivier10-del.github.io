@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Foundations</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Foundations &middot; Section 7 of 123</p>
-    <h1>Lewis structures</h1>
-    <a class="notes-onward-cta" href="../lessons/lewis-structures.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="lewis-structures">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../learn.html#m-foundations"><span class="bk-toc-chap-n">1</span><span><b>Foundations</b><small>10 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 10 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="atomic-structure"><a href="atomic-structure.html"><span class="bk-toc-n">1</span>Atomic structure</a></li><li data-toc-t="orbitals"><a href="orbitals.html"><span class="bk-toc-n">2</span>Orbitals</a></li><li data-toc-t="hybridization"><a href="hybridization.html"><span class="bk-toc-n">3</span>Hybridization</a></li><li data-toc-t="bonding"><a href="bonding.html"><span class="bk-toc-n">4</span>Bonding</a></li><li data-toc-t="electronegativity"><a href="electronegativity.html"><span class="bk-toc-n">5</span>Electronegativity</a></li><li data-toc-t="formal-charge"><a href="formal-charge.html"><span class="bk-toc-n">6</span>Formal charge</a></li><li class="current" data-toc-t="lewis-structures"><a href="#main" aria-current="page"><span class="bk-toc-n">7</span>Lewis structures</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-method-you-will-actually-use">The method you will actually use: the valence rule</a><a href="#reading-a-condensed-formula">Reading a condensed formula</a><a href="#when-an-atom-leaves-its-quota">When an atom leaves its quota: charges</a><a href="#the-general-chemistry-recipe-for-molecules">The general-chemistry recipe, for molecules with a real center</a><a href="#using-formal-charge-as-the-tiebreaker">Using formal charge as the tiebreaker</a><a href="#three-real-exceptions-to-the-octet">Three real exceptions to the octet rule</a><a href="#four-structures-that-are-wrong">Four structures that are wrong</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="molecular-geometry"><a href="molecular-geometry.html"><span class="bk-toc-n">8</span>Molecular geometry</a></li><li data-toc-t="bond-polarity"><a href="bond-polarity.html"><span class="bk-toc-n">9</span>Bond polarity</a></li><li data-toc-t="functional-groups"><a href="functional-groups.html"><span class="bk-toc-n">10</span>Functional groups</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-electron-movement"><span class="bk-toc-n">2</span>Drawing Molecules &amp; Moving Electrons</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-foundations">Foundations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Lewis structures: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/lewis-structures.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="foundations">Foundations</span> &middot; Section 7 of 123</p>
+      <h1 class="bk-title">Lewis structures</h1>
+      <p class="bk-meta"><span class="bk-small">17 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/lewis-structures.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="lewis-structures" data-bk-ids="the-method-you-will-actually-use reading-a-condensed-formula when-an-atom-leaves-its-quota the-general-chemistry-recipe-for-molecules using-formal-charge-as-the-tiebreaker three-real-exceptions-to-the-octet four-structures-that-are-wrong what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">A Lewis structure is the working drawing of organic chemistry. It shows three things: which atoms are joined to which, where every valence electron sits, and which atoms carry a charge. Every valence electron appears either in a bond (a pair shared by two atoms) or in a lone pair (a pair kept by one atom). From those three things you can predict a molecule's shape, polarity, acidity and reactivity. Most mistakes in a mechanism trace back to a Lewis structure drawn carelessly at the start.</p>
 <p class="step-body">A Lewis structure is flat. It records connections and electrons, not the 3D shape; <a class="chapter-ref" href="/ochem/notes/molecular-geometry.html">Molecular geometry</a> reads the shape off a finished structure. Every structure on this page ends with the formula from <a class="chapter-ref" href="/ochem/notes/formal-charge.html">Formal charge</a>: FC = valence electrons − lone-pair electrons − bonds.</p>
@@ -242,14 +251,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">Everything. Molecular geometry is read off a completed Lewis structure. Resonance is the observation that some molecules need more than one. Arrow pushing is the practice of converting one Lewis structure into another legally, and every mechanism in the course is a sequence of Lewis structures. If one section of <a class="chapter-ref" href="/ochem/learn.html#m-foundations">Foundations</a> is worth over-practicing, it is this one.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="formal-charge.html"><span>Previous</span>Formal charge</a><a class="notes-prevnext notes-next" href="molecular-geometry.html"><span>Next</span>Molecular geometry</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="formal-charge.html"><span>&larr; Section 6</span><b>Formal charge</b></a><a class="tb-chapter-link next" href="molecular-geometry.html"><span>Section 8 &rarr;</span><b>Molecular geometry</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

@@ -23,6 +23,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/course/base.css">
+<link rel="stylesheet" href="../assets/course/study.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Deferred, like every script on the page, so the page paints
      before they arrive; they still run first, in this order. -->
@@ -105,29 +107,27 @@
 <div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Practice</span></nav></div>
 <!-- crumb:end -->
 
-<main class="xshell" id="main" tabindex="-1">
-  <div class="hero" id="practiceHero" style="padding-bottom:0;">
+<main class="xshell cx-study" id="main" tabindex="-1">
+  <header class="page-head" id="practiceHero">
     <div class="eyebrow">Organic Chemistry</div>
-    <h1 style="margin-bottom:4px;">Practice</h1>
-    <p class="lede" style="margin-top:0;">The question that will teach you the most right now.</p>
-  </div>
+    <h1>Practice</h1>
+    <p class="lede">The question that will teach you the most right now, picked from your own answers.</p>
+  </header>
 
-  <div class="xsection" style="padding-top:0;">
-    <!-- Landing: recommendations, mastery snapshot, modes, weak concepts. -->
+  <div>
+    <!-- Landing: the builder and your numbers (practice-page.js). -->
     <div id="practiceHome"></div>
     <noscript><div class="site-nav-fallback"><p>Practice picks each question from your own attempt history and scores it live, which needs JavaScript. With scripts off you can still read the <a href="learn.html">textbook</a>, and every lesson under <a href="index.html">Home</a> has its own worked questions.</p></div></noscript>
 
     <!-- A running session: progress chrome + the question card. -->
-    <div id="practiceSession" class="practice-view" hidden>
-      <div class="session-head">
-        <span class="mode" id="sessionMode"></span>
-        <button type="button" class="quit" id="sessionQuit">End session</button>
+    <div id="practiceSession" class="practice-view cx-session" hidden>
+      <div class="cx-sbar">
+        <span class="cx-sbar-t" id="sessionMode"></span>
+        <span class="cx-sbar-n" id="practiceProgLabel"></span>
+        <button type="button" class="cx-end" id="sessionQuit">End session</button>
       </div>
-      <div class="progress-bar">
-        <div class="track"><div class="fill" id="practiceProgFill" style="width:0%"></div></div>
-        <div class="label" id="practiceProgLabel"></div>
-      </div>
-      <div class="lesson-card" id="practiceCard"></div>
+      <div class="cx-progress"><div class="fill" id="practiceProgFill" style="width:0%"></div></div>
+      <div class="lesson-card cx-q" id="practiceCard"></div>
     </div>
 
     <!-- End-of-session: score, what moved, what's next. -->
@@ -157,6 +157,7 @@
 </script>
 <script src="assets/ochem-nav.js" defer></script>
 <script src="assets/periodic-table.js" defer></script>
+<script src="../assets/course/study.js" defer></script>
 <script src="assets/practice-page.js" defer></script>
 <div class="xshell">
   <footer>
