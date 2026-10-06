@@ -1,0 +1,12 @@
+{
+ "ph-scale": {
+  "file": "figures/ph-scale.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The pH scale from 0 to 14 at 25 °C. Hydronium concentration falls from 1 M at pH 0 to 10 to the minus 14 M at pH 14, while hydroxide concentration rises the other way. Below pH 7 is acidic, pH 7 is neutral, above 7 is basic. One pH unit is a factor of ten in hydronium concentration; pH plus pOH is 14.00 at 25 °C."
+ }
+}

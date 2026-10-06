@@ -1,0 +1,11 @@
+{
+ "acid-strength": {
+  "def": "How fully an acid gives up its proton, measured by Ka. An acid is stronger when its conjugate base is more stable: the negative charge spread by resonance, pulled by electronegative atoms, or held on a large atom."
+ },
+ "oxyacid": {
+  "def": "An acid in which the acidic H is bonded to an O that is bonded to a central atom (H–O–X), such as HOCl or HNO₃. More O atoms or a more electronegative central atom makes it stronger."
+ },
+ "organic-acid-base": {
+  "def": "A carboxylic acid (–COOH) is a weak acid whose conjugate base, the carboxylate (–COO⁻), is stabilized by resonance. An amine (–NH₂) is a weak base that accepts a proton on its nitrogen lone pair."
+ }
+}

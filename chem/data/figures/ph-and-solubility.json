@@ -1,0 +1,12 @@
+{
+ "fluoride-solubility-ph": {
+  "file": "figures/fluoride-solubility-ph.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 320,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "CaF₂(s) ⇌ Ca²⁺ + 2 F⁻. Adding hydronium turns fluoride into HF, so Q falls below Ksp and more CaF₂ dissolves. For AgCl, chloride comes from the strong acid HCl and does not react with hydronium, so pH has no effect on its solubility."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "oxyacid-series": {
+  "file": "figures/oxyacid-series.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Chlorine oxyacids HOCl, HOClO, HOClO2 and HOClO3 with Ka rising from 3.0 × 10⁻⁸ to well above 1: each extra oxygen pulls electron density from the O–H bond and spreads the conjugate base charge over more oxygens, so the acid is stronger. Below, HOI, HOBr and HOCl: a more electronegative central atom gives a larger Ka."
+ }
+}

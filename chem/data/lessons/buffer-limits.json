@@ -1,0 +1,82 @@
+{
+ "topic": "buffer-limits",
+ "hook": "A swimming pool and a test tube can hold buffers with the same pH, but drop a cup of acid into each and only the pool barely notices. Pool owners top up the buffer, not the pH, because a buffer can only absorb as much acid or base as it has particles to react with.",
+ "prereq": [
+  {
+   "q": "A buffer has [A⁻]/[HA] = 1. What is its pH?",
+   "options": [
+    "pKa",
+    "7.00",
+    "pKa + 1",
+    "0"
+   ],
+   "correct": 0,
+   "why": "pH = pKa + log 1 = pKa.",
+   "review": "henderson-hasselbalch"
+  },
+  {
+   "q": "Which species in a buffer reacts with added OH⁻?",
+   "options": [
+    "The weak acid HA",
+    "The conjugate base A⁻",
+    "Water",
+    "The spectator ion"
+   ],
+   "correct": 0,
+   "why": "OH⁻ + HA → A⁻ + H₂O.",
+   "review": "buffer-properties"
+  }
+ ],
+ "figure": {
+  "figure": "buffer-limits-curves",
+  "caption": "Two buffers at the same pH: the one with five times the material absorbs five times the base before it fails."
+ },
+ "chain": [
+  {
+   "cause": "Each mole of added OH⁻ uses up one mole of HA, and each mole of H₃O⁺ one mole of A⁻",
+   "effect": "the moles of the components set how much acid or base the buffer can absorb"
+  },
+  {
+   "cause": "A buffer with more moles of both components",
+   "effect": "has a larger capacity, even at the same pH"
+  },
+  {
+   "cause": "When the components are equal, the ratio is furthest from both ends",
+   "effect": "capacity for acid and for base is balanced, at pH = pKa"
+  },
+  {
+   "cause": "Once one component is used up",
+   "effect": "the next addition stays free and the pH jumps, as in the steep part of a titration curve"
+  }
+ ],
+ "ideas": [
+  "<b>Buffer capacity</b> grows with the moles of HA and A⁻. Same ratio, more material: same pH, bigger capacity.",
+  "Capacity for added base depends on HA; capacity for added acid depends on A⁻.",
+  "A buffer works best within pKa ± 1, where neither component is less than a tenth of the other.",
+  "Once a component is used up, find the pH from the excess strong acid or base, not from Henderson-Hasselbalch."
+ ],
+ "misconception": {
+  "wrong": "A buffer at the right pH can absorb any amount of added acid.",
+  "right": "Each mole of added acid uses up a mole of conjugate base. Once A⁻ runs out, the next acid stays free and the pH falls sharply."
+ },
+ "check": [
+  "chem-buffer-limits-1",
+  "chem-buffer-limits-2",
+  "chem-buffer-limits-3",
+  "chem-buffer-limits-4",
+  "chem-buffer-limits-6",
+  "chem-buffer-limits-7",
+  "chem-buffer-limits-8"
+ ],
+ "summary": "Buffer capacity is how much strong acid or base a buffer can absorb before its pH changes sharply. It depends on the moles of the components, not the pH: more of each, more capacity, with capacity for base set by HA and for acid by A⁻. Capacity is balanced at pH = pKa, and the buffer fails once one component is used up.",
+ "connections": [
+  {
+   "href": "../notes/henderson-hasselbalch.html",
+   "label": "Back: the Henderson-Hasselbalch equation (8.9)"
+  },
+  {
+   "href": "../notes/ph-and-solubility.html",
+   "label": "Next: pH and solubility (8.11)"
+  }
+ ]
+}

@@ -1,0 +1,98 @@
+{
+ "topic": "strong-acids-bases",
+ "hook": "A drop of concentrated hydrochloric acid and a spoonful of drain cleaner do opposite things to water, but both are easy to calculate. A strong acid or strong base breaks apart fully, so once you know how much you dissolved, you know exactly how many hydronium or hydroxide ions are in the solution.",
+ "prereq": [
+  {
+   "q": "What is the pH of a solution with [H₃O⁺] = 1.0 × 10⁻³ M?",
+   "options": [
+    "3.00",
+    "11.00",
+    "−3.00",
+    "0.0010"
+   ],
+   "correct": 0,
+   "why": "pH = −log(1.0 × 10⁻³) = 3.00.",
+   "review": "acids-bases-intro"
+  },
+  {
+   "q": "How many moles of solute are in 25.0 mL of 0.200 M solution?",
+   "options": [
+    "0.00500 mol",
+    "5.00 mol",
+    "0.125 mol",
+    "0.0080 mol"
+   ],
+   "correct": 0,
+   "why": "Moles = 0.0250 L × 0.200 mol/L = 0.00500 mol. Convert mL to L first.",
+   "review": "solutions"
+  },
+  {
+   "q": "In a net ionic equation for HCl(aq) + NaOH(aq), which ions are spectators?",
+   "options": [
+    "Na⁺ and Cl⁻",
+    "H₃O⁺ and OH⁻",
+    "H₃O⁺ and Cl⁻",
+    "Na⁺ and OH⁻"
+   ],
+   "correct": 0,
+   "why": "The net reaction is H₃O⁺ + OH⁻ → 2 H₂O; Na⁺ and Cl⁻ are unchanged.",
+   "review": "net-ionic-equations"
+  }
+ ],
+ "figure": {
+  "figure": "strong-ionization",
+  "caption": "A strong acid leaves no whole molecules behind, so [H₃O⁺] is the acid concentration. When strong acid meets strong base, find what is left over."
+ },
+ "chain": [
+  {
+   "cause": "A strong acid gives its proton to water essentially every time",
+   "effect": "no acid molecules remain, and [H₃O⁺] equals the acid concentration"
+  },
+  {
+   "cause": "A strong base such as Ba(OH)₂ dissociates fully",
+   "effect": "[OH⁻] equals the base concentration times the OH⁻ per formula unit"
+  },
+  {
+   "cause": "H₃O⁺ and OH⁻ react to form water whenever they meet",
+   "effect": "mixing strong acid and strong base leaves only the excess of whichever had more moles"
+  },
+  {
+   "cause": "The excess is spread through the whole mixed volume",
+   "effect": "its concentration, and then the pH, comes from the excess moles over the total volume"
+  }
+ ],
+ "ideas": [
+  "Strong acids: HCl, HBr, HI, HNO₃, HClO₄, H₂SO₄ (first proton). Strong bases: group 1 hydroxides, Ca(OH)₂, Sr(OH)₂, Ba(OH)₂.",
+  "Strong acid: [H₃O⁺] = C. Strong base: [OH⁻] = C × (number of OH⁻ per formula unit), then pOH, then pH.",
+  "Mixing: moles first, subtract, divide the excess by the <b>total</b> volume, then take the log.",
+  "At equivalence, strong acid + strong base gives a neutral salt solution: pH 7.00 at 25 °C."
+ ],
+ "misconception": {
+  "wrong": "A 1.0 × 10⁻⁸ M HCl solution has pH 8.",
+  "right": "An acid cannot make water basic. At that tiny concentration, water's own 1.0 × 10⁻⁷ M H₃O⁺ is larger than the acid's, so the pH is just under 7 (about 6.98)."
+ },
+ "check": [
+  "chem-strong-acids-bases-1",
+  "chem-strong-acids-bases-2",
+  "chem-strong-acids-bases-3",
+  "chem-strong-acids-bases-6",
+  "chem-strong-acids-bases-7",
+  "chem-strong-acids-bases-10",
+  "chem-strong-acids-bases-11"
+ ],
+ "summary": "Strong acids and strong bases ionize fully, so [H₃O⁺] or [OH⁻] comes straight from the concentration (doubled for hydroxides such as Ba(OH)₂). When they are mixed, the H₃O⁺ and OH⁻ cancel mole for mole; the pH comes from whatever is left over, divided by the total volume.",
+ "connections": [
+  {
+   "href": "../notes/acids-bases-intro.html",
+   "label": "Back: Kw, pH and pOH (8.1)"
+  },
+  {
+   "href": "../notes/weak-acids-bases.html",
+   "label": "Next: acids that ionize only partly (8.3)"
+  },
+  {
+   "href": "../notes/titration-intro.html",
+   "label": "Back: equivalence in a titration (4.6)"
+  }
+ ]
+}

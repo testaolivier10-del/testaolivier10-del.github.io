@@ -1,0 +1,12 @@
+{
+ "buffer-reactions": {
+  "file": "figures/buffer-reactions.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A buffer box holds similar numbers of HA molecules and A minus ions. Added strong acid reacts with A minus to make HA; added strong base reacts with HA to make A minus. Either way the added ion is used up and the ratio of A minus to HA changes only a little, so the pH changes only a little."
+ }
+}

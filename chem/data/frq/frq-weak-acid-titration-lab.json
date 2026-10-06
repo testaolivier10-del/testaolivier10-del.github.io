@@ -1,0 +1,240 @@
+{
+ "id": "frq-weak-acid-titration-lab",
+ "type": "long",
+ "points": 10,
+ "title": "Identifying an unknown weak acid by titration",
+ "units": [
+  "unit-8"
+ ],
+ "topics": [
+  "acid-base-titrations",
+  "weak-acids-bases",
+  "ph-and-pka",
+  "buffer-properties"
+ ],
+ "practices": [
+  "5.F",
+  "4.A",
+  "3.B",
+  "6.E",
+  "2.D"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "Titration of 25.00 mL of an unknown monoprotic acid with 0.150 M NaOH",
+  "text": "<p>A student pipets 25.00 mL of a solution of an unknown monoprotic weak acid, HA, into a beaker and titrates it with 0.150 M NaOH from a buret, measuring the pH with a calibrated pH meter. The data are plotted below. The steep rise is centered at 18.00 mL of NaOH, and the pH at 9.00 mL is 4.20.</p><p>Indicators available: methyl red (pKa 5.0), bromothymol blue (pKa 7.1), thymol blue (pKa 8.9).</p>",
+  "chart": {
+   "type": "line",
+   "x": {
+    "label": "Volume of NaOH added",
+    "unit": "mL",
+    "min": 0,
+    "max": 24,
+    "step": 3
+   },
+   "y": {
+    "label": "pH",
+    "min": 0,
+    "max": 14,
+    "step": 2
+   },
+   "series": [
+    {
+     "name": "pH",
+     "points": [
+      [
+       0,
+       2.59
+      ],
+      [
+       3,
+       3.51
+      ],
+      [
+       6,
+       3.9
+      ],
+      [
+       9,
+       4.2
+      ],
+      [
+       12,
+       4.5
+      ],
+      [
+       15,
+       4.9
+      ],
+      [
+       16,
+       5.1
+      ],
+      [
+       17,
+       5.43
+      ],
+      [
+       17.5,
+       5.74
+      ],
+      [
+       18,
+       8.5
+      ],
+      [
+       18.5,
+       11.24
+      ],
+      [
+       19,
+       11.53
+      ],
+      [
+       20,
+       11.82
+      ],
+      [
+       22,
+       12.11
+      ],
+      [
+       24,
+       12.26
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Calculate</b> the concentration of HA in the original 25.00 mL sample.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Correct concentration with setup, using the equivalence volume",
+     "accept": [
+      "0.01800 L × 0.150 mol/L = 2.70 × 10⁻³ mol; 2.70 × 10⁻³ mol / 0.02500 L = 0.108 M",
+      "0.108 M (0.1080 M)"
+     ]
+    }
+   ],
+   "sample": "At the equivalence point, mol NaOH = mol HA = 0.01800 L × 0.150 mol/L = 2.70 × 10⁻³ mol. [HA] = 2.70 × 10⁻³ mol ÷ 0.02500 L = 0.108 M."
+  },
+  {
+   "label": "b",
+   "prompt": "<b>Determine</b> the value of Ka for HA. <b>Justify</b> your choice of point on the curve.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Justification: at 9.00 mL (half of 18.00 mL), half of HA has been converted to A⁻, so [HA] = [A⁻] and pH = pKa",
+     "accept": [
+      "half-equivalence point, [HA] = [A⁻], Ka = [H₃O⁺]",
+      "pH = pKa at half the equivalence volume"
+     ]
+    },
+    {
+     "point": "Ka = 10^−4.20 = 6.3 × 10⁻⁵",
+     "accept": [
+      "6.3 × 10⁻⁵",
+      "6.31 × 10⁻⁵"
+     ]
+    }
+   ],
+   "sample": "At 9.00 mL, half the equivalence volume, half the HA has reacted, so [HA] = [A⁻]. Then Ka = [H₃O⁺][A⁻]/[HA] = [H₃O⁺], so pKa = pH = 4.20 and Ka = 10^−4.20 = 6.3 × 10⁻⁵."
+  },
+  {
+   "label": "c",
+   "prompt": "<b>Calculate</b> the pH of the original HA solution, before any NaOH is added. Use your values from parts (a) and (b).",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Correct setup and pH consistent with (a) and (b)",
+     "accept": [
+      "x = √(6.3 × 10⁻⁵ × 0.108) = 2.6 × 10⁻³ M; pH = 2.58",
+      "pH = 2.59 (quadratic)"
+     ]
+    }
+   ],
+   "sample": "Ka = x²/(0.108 − x) ≈ x²/0.108, so x = √(6.3 × 10⁻⁵ × 0.108) = 2.6 × 10⁻³ M = [H₃O⁺] (2.4% of 0.108, so the approximation is valid). pH = −log(2.6 × 10⁻³) = 2.58."
+  },
+  {
+   "label": "d",
+   "prompt": "Draw a box to represent a small volume of the solution in the beaker after 9.00 mL of NaOH has been added, and put 4 particles of HA in it. <b>Draw</b> the other solute particles that should be present in the same volume. Represent the conjugate base as A⁻ and sodium ions as Na⁺; do not draw water.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "4 A⁻ and 4 Na⁺ drawn, with no OH⁻ and no (or only a trace of) H₃O⁺",
+     "accept": [
+      "4 HA, 4 A⁻, 4 Na⁺"
+     ]
+    }
+   ],
+   "sample": "Four A⁻ and four Na⁺ are drawn beside the four HA. At the half-equivalence point, [HA] = [A⁻], and each A⁻ was made by one NaOH, which also added one Na⁺. No free OH⁻ is drawn, because all of it reacted with HA."
+  },
+  {
+   "label": "e",
+   "prompt": "<b>Calculate</b> the pH at the equivalence point. (Use Ka = 6.3 × 10⁻⁵.)",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Concentration of A⁻ at equivalence using the total volume",
+     "accept": [
+      "2.70 × 10⁻³ mol / 0.04300 L = 0.0628 M"
+     ]
+    },
+    {
+     "point": "Kb = Kw/Ka and correct pH",
+     "accept": [
+      "Kb = 1.6 × 10⁻¹⁰; [OH⁻] = 3.2 × 10⁻⁶ M; pH = 8.50"
+     ]
+    }
+   ],
+   "sample": "All 2.70 × 10⁻³ mol HA has become A⁻ in 25.00 + 18.00 = 43.00 mL: [A⁻] = 0.0628 M. A⁻ + H₂O ⇌ HA + OH⁻ with Kb = Kw/Ka = 1.0 × 10⁻¹⁴ / 6.3 × 10⁻⁵ = 1.6 × 10⁻¹⁰. [OH⁻] = √(1.6 × 10⁻¹⁰ × 0.0628) = 3.2 × 10⁻⁶ M; pOH = 5.50; pH = 8.50."
+  },
+  {
+   "label": "f",
+   "prompt": "<b>Identify</b> the best indicator for this titration from the list. <b>Justify</b> your choice.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Thymol blue, because its pKa (8.9) is close to the equivalence-point pH (about 8.5), so it changes color on the steep part of the curve",
+     "accept": [
+      "thymol blue; pKa close to the pH at equivalence"
+     ]
+    }
+   ],
+   "sample": "Thymol blue. An indicator changes color over about pKa ± 1, so it should have a pKa close to the equivalence-point pH (8.5). Thymol blue (pKa 8.9) changes on the steep rise; methyl red would change in the buffer region, long before equivalence."
+  },
+  {
+   "label": "g",
+   "prompt": "Between 3 mL and 15 mL of NaOH, the pH changes by less than 1.5 units. <b>Explain</b> why, in terms of the species present.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Both HA and A⁻ are present (a buffer); added OH⁻ reacts with HA, so the ratio [A⁻]/[HA] and the pH change only slowly",
+     "accept": [
+      "buffer region: OH⁻ + HA → A⁻ + H₂O"
+     ]
+    }
+   ],
+   "sample": "In this region the beaker contains both HA and its conjugate base A⁻, so it is a buffer. Each portion of OH⁻ added reacts with HA (OH⁻ + HA → A⁻ + H₂O) instead of staying free, so the ratio [A⁻]/[HA] changes gradually and so does the pH."
+  },
+  {
+   "label": "h",
+   "prompt": "A second student does not rinse the buret with the NaOH solution after rinsing it with distilled water. Would this student's calculated concentration of HA be greater than, less than, or equal to the value in part (a)? <b>Justify</b> your answer.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Greater than; water dilutes the NaOH, so a larger volume is needed to reach equivalence, and that larger volume times 0.150 M gives too many moles of HA",
+     "accept": [
+      "greater, because the titrant is diluted and more volume is used"
+     ]
+    }
+   ],
+   "sample": "Greater than. Water left in the buret dilutes the NaOH, so more than 18.00 mL is needed to deliver 2.70 × 10⁻³ mol of OH⁻. The student multiplies that larger volume by 0.150 M, overestimates the moles of NaOH, and so overestimates the concentration of HA."
+  }
+ ]
+}

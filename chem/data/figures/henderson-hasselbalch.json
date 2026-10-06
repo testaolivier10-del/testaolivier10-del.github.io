@@ -1,0 +1,12 @@
+{
+ "hh-ratio-line": {
+  "file": "figures/hh-ratio-line.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "pH against log([A⁻]/[HA]) for pKa 4.74: a straight line of slope 1 through (0, 4.74), (1, 5.74) and (−1, 3.74). The shaded band is ratios from 0.1 to 10. A note: use the base-10 log; ln would give pKa + 2.30 for a 10:1 ratio."
+ }
+}

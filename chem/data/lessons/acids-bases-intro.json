@@ -1,0 +1,98 @@
+{
+ "topic": "acids-bases-intro",
+ "hook": "Black coffee sits around pH 5 and household ammonia around pH 11. That gap of six units means the coffee has a million times more hydronium ions per liter. Even the purest water holds a few of these ions, and that tiny amount is the starting point for every acid and base in this unit.",
+ "prereq": [
+  {
+   "q": "What is log(1 × 10⁻⁵)?",
+   "options": [
+    "−5",
+    "5",
+    "0.00001",
+    "−0.00001"
+   ],
+   "correct": 0,
+   "why": "The base-10 log of a power of ten is the exponent: log(10⁻⁵) = −5.",
+   "review": "math-logs"
+  },
+  {
+   "q": "In the reaction H₂O + H₂O ⇌ H₃O⁺ + OH⁻, what does the first water molecule do?",
+   "options": [
+    "Accepts a proton",
+    "Donates a proton",
+    "Gains an electron",
+    "Loses an oxygen atom"
+   ],
+   "correct": 0,
+   "why": "It becomes H₃O⁺ by gaining H⁺, so it acts as a Brønsted-Lowry base; the other water molecule donates the proton.",
+   "review": "acid-base-reactions-intro"
+  },
+  {
+   "q": "Which species are left out of an equilibrium constant expression?",
+   "options": [
+    "Pure liquids and solids",
+    "Gases",
+    "Dissolved ions",
+    "Products"
+   ],
+   "correct": 0,
+   "why": "Pure liquids and solids have constant concentrations, so they are left out. That is why water does not appear in Kw.",
+   "review": "calculating-k"
+  }
+ ],
+ "figure": {
+  "figure": "ph-scale",
+  "caption": "The pH scale at 25 °C. Hydronium and hydroxide concentrations run in opposite directions, and their product stays 1.0 × 10⁻¹⁴."
+ },
+ "chain": [
+  {
+   "cause": "Water molecules collide and a few transfer a proton to a neighbor",
+   "effect": "pure water always holds equal, tiny amounts of H₃O⁺ and OH⁻"
+  },
+  {
+   "cause": "That self-ionization is an equilibrium",
+   "effect": "Kw = [H₃O⁺][OH⁻] has one value at a given temperature: 1.0 × 10⁻¹⁴ at 25 °C"
+  },
+  {
+   "cause": "Adding acid raises [H₃O⁺]",
+   "effect": "some of the added H₃O⁺ reacts with OH⁻ until the product is back to Kw, so [OH⁻] falls"
+  },
+  {
+   "cause": "Concentrations span many powers of ten",
+   "effect": "chemists report them as pH = −log[H₃O⁺], where each unit is a factor of ten"
+  },
+  {
+   "cause": "Self-ionization absorbs heat",
+   "effect": "warm water has a larger Kw, so neutral water there has a pH below 7"
+  }
+ ],
+ "ideas": [
+  "<b>Kw</b> = [H₃O⁺][OH⁻] = 1.0 × 10⁻¹⁴ at 25 °C, in every water solution. Know one ion and you know the other.",
+  "<b>pH</b> = −log[H₃O⁺] and pOH = −log[OH⁻]; at 25 °C pH + pOH = 14.00. One pH unit is ten times the [H₃O⁺].",
+  "Acidic: [H₃O⁺] > [OH⁻]. Basic: [OH⁻] > [H₃O⁺]. Neutral: equal. Neutral is pH 7.00 only at 25 °C.",
+  "Significant figures: the pH gets as many decimal places as the concentration has significant figures."
+ ],
+ "misconception": {
+  "wrong": "Water at pH 6.6 must be acidic, because neutral is pH 7.",
+  "right": "Neutral means [H₃O⁺] = [OH⁻]. Pure water is neutral at every temperature; at 50 °C, where Kw is larger, neutral water has a pH of about 6.6."
+ },
+ "check": [
+  "chem-acids-bases-intro-1",
+  "chem-acids-bases-intro-2",
+  "chem-acids-bases-intro-4",
+  "chem-acids-bases-intro-6",
+  "chem-acids-bases-intro-7",
+  "chem-acids-bases-intro-14",
+  "chem-acids-bases-intro-17"
+ ],
+ "summary": "Water ionizes itself slightly, so every water solution holds both H₃O⁺ and OH⁻, tied together by Kw = [H₃O⁺][OH⁻] = 1.0 × 10⁻¹⁴ at 25 °C. pH and pOH are base-10 logarithm scales of the two concentrations, adding to 14.00 at 25 °C. Neutral means equal concentrations, which falls at pH 7 only at 25 °C.",
+ "connections": [
+  {
+   "href": "../notes/strong-acids-bases.html",
+   "label": "Next: pH of strong acids and bases (8.2)"
+  },
+  {
+   "href": "../notes/acid-base-reactions-intro.html",
+   "label": "Back: Brønsted-Lowry acids and hydronium (4.8)"
+  }
+ ]
+}

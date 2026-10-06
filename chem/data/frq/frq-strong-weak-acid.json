@@ -1,0 +1,75 @@
+{
+ "id": "frq-strong-weak-acid",
+ "type": "short",
+ "points": 4,
+ "title": "A strong acid and a weak acid at the same concentration",
+ "units": [
+  "unit-8"
+ ],
+ "topics": [
+  "strong-acids-bases",
+  "weak-acids-bases",
+  "acid-base-titrations"
+ ],
+ "practices": [
+  "5.F",
+  "6.E",
+  "3.B"
+ ],
+ "stimulus": {
+  "kind": "setup",
+  "title": "Two acid solutions",
+  "text": "<p>Flask 1 contains 50.0 mL of 0.050 M HNO₃. Flask 2 contains 50.0 mL of 0.050 M HNO₂ (Ka = 4.0 × 10⁻⁴). Both are at 25 °C.</p>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Calculate</b> the pH of the solution in each flask.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Flask 1: pH = −log(0.050) = 1.30",
+     "accept": [
+      "1.30"
+     ]
+    },
+    {
+     "point": "Flask 2: weak acid equilibrium, pH 2.37 (quadratic) or 2.35 (small x)",
+     "accept": [
+      "2.37",
+      "2.35"
+     ]
+    }
+   ],
+   "sample": "Flask 1: HNO₃ is strong, so [H₃O⁺] = 0.050 M and pH = 1.30. Flask 2: Ka = x²/(0.050 − x) = 4.0 × 10⁻⁴. The small-x estimate, 4.5 × 10⁻³ M, is 9% of 0.050, so solve the quadratic: x = 4.3 × 10⁻³ M and pH = 2.37."
+  },
+  {
+   "label": "b",
+   "prompt": "A student says Flask 2 will need less NaOH to reach the equivalence point, because it has fewer H₃O⁺ ions. Do you agree or disagree? <b>Justify</b> your answer.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Disagree: both contain 2.5 × 10⁻³ mol of acid; OH⁻ reacts with HNO₂ molecules as well as with H₃O⁺, so both need the same volume of NaOH",
+     "accept": [
+      "disagree; same moles of acid, OH⁻ reacts with un-ionized HNO₂"
+     ]
+    }
+   ],
+   "sample": "Disagree. Each flask holds 0.0500 L × 0.050 M = 2.5 × 10⁻³ mol of acid. OH⁻ takes protons directly from HNO₂ molecules (HNO₂ + OH⁻ → NO₂⁻ + H₂O goes to completion), not only from H₃O⁺, so both flasks need 2.5 × 10⁻³ mol of OH⁻."
+  },
+  {
+   "label": "c",
+   "prompt": "Each flask is diluted tenfold with water. <b>Explain</b> why the pH of Flask 2 rises by less than the pH of Flask 1.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Dilution makes Q < Ka for HNO₂, so a larger fraction ionizes, partly offsetting the dilution; the strong acid is already fully ionized, so its [H₃O⁺] falls tenfold",
+     "accept": [
+      "percent ionization of the weak acid increases on dilution"
+     ]
+    }
+   ],
+   "sample": "HNO₃ is already fully ionized, so diluting tenfold lowers [H₃O⁺] tenfold and the pH rises by exactly 1.00. For HNO₂, diluting lowers all concentrations, making Q = [H₃O⁺][NO₂⁻]/[HNO₂] less than Ka, so more HNO₂ ionizes. That extra ionization partly replaces the lost H₃O⁺, so the pH rises by less than 1."
+  }
+ ]
+}

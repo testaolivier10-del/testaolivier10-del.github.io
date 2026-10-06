@@ -1,0 +1,615 @@
+{
+ "stimuli": {
+  "buffer-limits-s1": {
+   "kind": "table",
+   "title": "Four acetate buffers",
+   "text": "<p>Four 1.00 L buffers are made from acetic acid (pKa 4.74) and sodium acetate.</p>",
+   "table": {
+    "caption": "Moles of each component in 1.00 L",
+    "cols": [
+     "Buffer",
+     "CH₃COOH (mol)",
+     "CH₃COO⁻ (mol)",
+     "pH"
+    ],
+    "rows": [
+     [
+      "P",
+      "0.50",
+      "0.50",
+      "4.74"
+     ],
+     [
+      "Q",
+      "0.050",
+      "0.050",
+      "4.74"
+     ],
+     [
+      "R",
+      "0.90",
+      "0.10",
+      "3.79"
+     ],
+     [
+      "S",
+      "0.10",
+      "0.90",
+      "5.69"
+     ]
+    ]
+   }
+  },
+  "buffer-limits-s2": {
+   "kind": "graph",
+   "title": "Adding base to two buffers",
+   "text": "<p>Solid NaOH is added in portions to two 1.00 L buffers, each made from the same weak acid HA and NaA, and the pH is measured after each addition.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "NaOH added",
+     "unit": "mol",
+     "min": 0,
+     "max": 0.12,
+     "step": 0.02
+    },
+    "y": {
+     "label": "pH",
+     "min": 2,
+     "max": 14,
+     "step": 2
+    },
+    "series": [
+     {
+      "name": "Buffer 1",
+      "points": [
+       [
+        0,
+        4.74
+       ],
+       [
+        0.01,
+        4.83
+       ],
+       [
+        0.02,
+        4.92
+       ],
+       [
+        0.03,
+        5.01
+       ],
+       [
+        0.04,
+        5.11
+       ],
+       [
+        0.06,
+        5.34
+       ],
+       [
+        0.08,
+        5.69
+       ],
+       [
+        0.09,
+        6.02
+       ],
+       [
+        0.1,
+        9.02
+       ],
+       [
+        0.11,
+        12
+       ],
+       [
+        0.12,
+        12.3
+       ]
+      ]
+     },
+     {
+      "name": "Buffer 2",
+      "points": [
+       [
+        0,
+        4.74
+       ],
+       [
+        0.01,
+        5.22
+       ],
+       [
+        0.02,
+        8.67
+       ],
+       [
+        0.03,
+        12
+       ],
+       [
+        0.04,
+        12.3
+       ],
+       [
+        0.06,
+        12.6
+       ],
+       [
+        0.08,
+        12.78
+       ],
+       [
+        0.09,
+        12.85
+       ],
+       [
+        0.1,
+        12.9
+       ],
+       [
+        0.11,
+        12.95
+       ],
+       [
+        0.12,
+        13
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "buffer-limits-s3": {
+   "kind": "particle",
+   "title": "Three buffers of the same acid",
+   "html": "<svg viewBox=\"0 0 760 230\" width=\"760\" height=\"230\" role=\"img\" aria-label=\"Three boxes of equal volume. Box X: 2 HA and 2 A minus. Box Y: 6 HA and 6 A minus. Box Z: 10 HA and 2 A minus.\"><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect x=\"5\" y=\"5\" width=\"245\" height=\"220\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"127.5\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">X</text><circle cx=\"39.3\" cy=\"79.5\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"39.3\" y=\"83.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"121.0\" cy=\"79.5\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"121.0\" y=\"83.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"202.6\" cy=\"79.5\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"202.6\" y=\"83.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"55.6\" cy=\"176.5\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"55.6\" y=\"180.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><rect x=\"258\" y=\"5\" width=\"245\" height=\"220\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"380.5\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Y</text><circle cx=\"283.7\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"283.7\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"345.0\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"345.0\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"406.2\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"406.2\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"467.5\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"467.5\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"296.0\" cy=\"128.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"296.0\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"357.2\" cy=\"128.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"357.2\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"418.5\" cy=\"128.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"418.5\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"479.7\" cy=\"128.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"479.7\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"283.7\" cy=\"192.7\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"283.7\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"345.0\" cy=\"192.7\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"345.0\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"406.2\" cy=\"192.7\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"406.2\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"467.5\" cy=\"192.7\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"467.5\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><rect x=\"511\" y=\"5\" width=\"245\" height=\"220\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"633.5\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Z</text><circle cx=\"536.7\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"536.7\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"598.0\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"598.0\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"659.2\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"659.2\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"720.5\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"720.5\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"549.0\" cy=\"128.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"549.0\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"610.2\" cy=\"128.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"610.2\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"671.5\" cy=\"128.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"671.5\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"732.7\" cy=\"128.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"732.7\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"536.7\" cy=\"192.7\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"536.7\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"598.0\" cy=\"192.7\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"598.0\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"659.2\" cy=\"192.7\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"659.2\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"720.5\" cy=\"192.7\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"720.5\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text></g></svg><p>Key: HA weak acid; A⁻ conjugate base. Spectator ions and water are not drawn.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-buffer-limits-1",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffer-limits-s1",
+   "q": "Which buffer has the largest capacity for both added strong acid and added strong base?",
+   "options": [
+    "P",
+    "Q",
+    "R",
+    "S"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Capacity for acid depends on the moles of CH₃COO⁻ and capacity for base on the moles of CH₃COOH. P has 0.50 mol of each, so it can take up to 0.50 mol of either.",
+    "options": [
+     "Right: large and equal amounts of both components.",
+     "Q has the same ratio but a tenth of the amounts, so a tenth of the capacity.",
+     "R can absorb up to 0.90 mol of base but only 0.10 mol of acid.",
+     "S can absorb up to 0.90 mol of acid but only 0.10 mol of base."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-limits-2",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffer-limits-s1",
+   "q": "What is the pH of Buffer Q after 0.010 mol HCl is added?",
+   "numeric": {
+    "answer": 4.56,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 4.92,
+      "why": "Value: added acid lowers the acetate (0.050 → 0.040 mol) and raises the acetic acid (0.050 → 0.060 mol).",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "Acetate 0.050 − 0.010 = 0.040 mol; acid 0.050 + 0.010 = 0.060 mol. pH = 4.74 + log(0.040/0.060) = 4.56, a drop of 0.18. The same acid would lower P by only 0.02."
+   }
+  },
+  {
+   "id": "chem-buffer-limits-3",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "buffer-limits-s1",
+   "q": "Buffer R is much better at handling one kind of addition than the other. Which, and why?",
+   "options": [
+    "Added base, because it has 0.90 mol CH₃COOH to react with OH⁻",
+    "Added acid, because its pH is below pKa",
+    "Added acid, because it has 0.90 mol CH₃COOH to react with H₃O⁺",
+    "Both equally, because a buffer resists acid and base the same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "OH⁻ is consumed by CH₃COOH, which R has plenty of. H₃O⁺ is consumed by CH₃COO⁻, which R has only 0.10 mol of, so 0.10 mol of acid would use it up.",
+    "options": [
+     "Right: the large acid component handles base.",
+     "A low pH says nothing about how much acetate is left to take up added acid.",
+     "H₃O⁺ reacts with acetate, not with acetic acid.",
+     "A buffer with unequal components resists one direction much better than the other."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-limits-4",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "buffer-limits-s1",
+   "q": "What is the pH of Buffer R after 0.15 mol HCl is added? (The buffer is overwhelmed: find the excess first.)",
+   "numeric": {
+    "answer": 1.3,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 0.72,
+      "why": "Value: the Henderson-Hasselbalch equation needs both components. All 0.10 mol acetate is used up, so 0.05 mol H₃O⁺ is left free and sets the pH.",
+      "tol": 0.02
+     },
+     {
+      "value": 0.82,
+      "why": "Value: 0.10 mol of the HCl was taken up by acetate; only the excess, 0.05 mol, stays as H₃O⁺.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "0.10 mol CH₃COO⁻ reacts with 0.10 mol H₃O⁺; 0.05 mol H₃O⁺ is left over in 1.00 L. The H₃O⁺ from 1.00 M acetic acid is negligible beside 0.050 M of strong acid. pH = −log(0.050) = 1.30."
+   }
+  },
+  {
+   "id": "chem-buffer-limits-5",
+   "type": "multi",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "buffer-limits-s1",
+   "q": "Which pairs of buffers have the same pH but different capacities? Select all that apply.",
+   "options": [
+    "P and Q",
+    "R and S",
+    "P and R",
+    "Q and S"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "P and Q share a 1 : 1 ratio, so both are at pH 4.74, but P holds ten times the moles and so has ten times the capacity.",
+    "options": [
+     "Right: same ratio, ten times the amounts.",
+     "R (pH 3.79) and S (pH 5.69) have inverted ratios, so different pH values.",
+     "P is at 4.74 and R at 3.79.",
+     "Q is at 4.74 and S at 5.69."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-limits-6",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffer-limits-s2",
+   "q": "Which statement does the graph support?",
+   "options": [
+    "Buffer 1 has the larger capacity: its pH stays nearly flat until about 0.10 mol NaOH",
+    "Buffer 2 has the larger capacity, because its pH rises sooner",
+    "The buffers have different pKa values, because they start at different pH",
+    "The capacities are equal, because both start at pH 4.74"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Buffer 1 holds its pH until roughly 0.10 mol of base; Buffer 2 fails after about 0.02 mol. The longer flat stretch means more HA available to react with OH⁻.",
+    "options": [
+     "Right: capacity is how much it can absorb before the pH shoots up.",
+     "A buffer that fails sooner has the smaller capacity.",
+     "Both start at pH 4.74, the same pKa and the same 1 : 1 ratio.",
+     "Equal starting pH means equal ratios, not equal amounts."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-limits-7",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "buffer-limits-s2",
+   "q": "The pH of each buffer rises sharply once its HA is used up. How many moles of HA did Buffer 2 contain at the start? (Read where its steep rise is centered.)",
+   "numeric": {
+    "answer": 0.02,
+    "tol": 0.001,
+    "unit": "mol",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.1,
+      "why": "Value: that is Buffer 1. Buffer 2's steep rise is centered near 0.020 mol NaOH.",
+      "rel": 0.02
+     },
+     {
+      "value": 0.04,
+      "why": "Value: that is the total of HA and A⁻. OH⁻ reacts only with HA, so the steep rise comes when the HA (half the total) is used up.",
+      "rel": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "OH⁻ + HA → A⁻ + H₂O. The steep rise is centered where the base added equals the HA present: about 0.020 mol for Buffer 2."
+   }
+  },
+  {
+   "id": "chem-buffer-limits-8",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "buffer-limits-s2",
+   "q": "How do the compositions of the two buffers most likely differ?",
+   "options": [
+    "Buffer 1 has about five times the moles of both HA and A⁻",
+    "Buffer 1 has five times as much HA but the same A⁻",
+    "Buffer 1 has a larger ratio [A⁻]/[HA]",
+    "Buffer 1 uses a stronger weak acid"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Same starting pH means the same ratio (and the same acid). Buffer 1 resists five times as much base (0.10 vs 0.02 mol), so it has five times the amounts of both.",
+    "options": [
+     "Right: same ratio, five times the amounts.",
+     "More HA with the same A⁻ would make Buffer 1 start at a lower pH.",
+     "A larger ratio would start at a higher pH.",
+     "A different acid would show a different pKa, so a different starting pH."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-limits-9",
+   "type": "predict",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffer-limits-s2",
+   "q": "Buffer 1 is diluted with water from 1.00 L to 2.00 L before the NaOH additions. Predict the change in each.",
+   "variables": [
+    {
+     "name": "Starting pH",
+     "answer": "none",
+     "why": "Dilution keeps the ratio [A⁻]/[HA] the same."
+    },
+    {
+     "name": "Moles of NaOH needed to use up the HA",
+     "answer": "none",
+     "why": "Adding water does not change the moles of HA; capacity in moles is the same."
+    },
+    {
+     "name": "[HA] in the buffer",
+     "answer": "down",
+     "why": "The same moles in twice the volume."
+    }
+   ],
+   "why": {
+    "correct": "Capacity counts moles of the buffer components; diluting the buffer leaves the moles, and the ratio, unchanged."
+   }
+  },
+  {
+   "id": "chem-buffer-limits-10",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "buffer-limits-s3",
+   "q": "Which two boxes have the same pH?",
+   "options": [
+    "X and Y",
+    "Y and Z",
+    "X and Z",
+    "Y and Z, which have the most HA"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "X and Y both have a 1 : 1 ratio, so both are at pH = pKa.",
+    "options": [
+     "Right: same ratio.",
+     "Y is 1 : 1 and Z is 5 : 1 acid to base.",
+     "X is 1 : 1, Z is 5 : 1.",
+     "Y and Z have different ratios (1 : 1 and 5 : 1), so different pH values."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-limits-11",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "buffer-limits-s3",
+   "q": "Three OH⁻ ions are added to each box. Which box can no longer act as a buffer afterward?",
+   "options": [
+    "X",
+    "Y",
+    "Z",
+    "Y and Z"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "X has only 2 HA, so the third OH⁻ is left free and no HA remains: the buffer is exhausted.",
+    "options": [
+     "Right: its acid component runs out.",
+     "Y goes to 3 HA and 9 A⁻, still a buffer.",
+     "Z goes to 7 HA and 5 A⁻, still a buffer (now closer to 1 : 1).",
+     "Both Y and Z keep both components."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-limits-12",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "buffer-limits-s3",
+   "q": "Two H₃O⁺ ions are added to Box Z. Which statement is correct?",
+   "options": [
+    "Its A⁻ is used up, so Z stops being a buffer",
+    "Z resists well, because it has the most HA",
+    "The pH of Z rises",
+    "Z is unchanged, because it has more acid than base"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "H₃O⁺ reacts with A⁻. Z has only 2 A⁻, so two H₃O⁺ convert both, leaving 12 HA and no conjugate base.",
+    "options": [
+     "Right: the base component runs out.",
+     "HA does not react with added acid; A⁻ does.",
+     "Added acid lowers the pH.",
+     "Added acid reacts with the A⁻ that Z has."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-limits-13",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "buffer-limits-s3",
+   "q": "The acid has pKa 4.74. What is the pH of Box Z after three OH⁻ ions are added?",
+   "numeric": {
+    "answer": 4.59,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 4.04,
+      "why": "Value: that is Box Z before the addition. Three OH⁻ convert three HA to A⁻: 7 HA and 5 A⁻.",
+      "tol": 0.02
+     },
+     {
+      "value": 4.89,
+      "why": "Value: the ratio is inverted; base goes on top: log(5/7).",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "OH⁻ + HA → A⁻ + H₂O: 10 − 3 = 7 HA, 2 + 3 = 5 A⁻. pH = 4.74 + log(5/7) = 4.74 + (-0.15) = 4.59. Particle counts work as moles because the volume cancels."
+   }
+  },
+  {
+   "id": "chem-buffer-limits-14",
+   "type": "order",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Rank these 1.00 L buffers of the same acid by their capacity for added strong base, smallest first.",
+   "options": [
+    "0.020 mol HA + 0.050 mol A⁻",
+    "0.050 mol HA + 0.020 mol A⁻",
+    "0.20 mol HA + 0.20 mol A⁻",
+    "0.50 mol HA + 0.30 mol A⁻"
+   ],
+   "why": {
+    "correct": "Added base reacts with HA, so capacity for base follows the moles of HA: 0.020 < 0.050 < 0.20 < 0.50."
+   }
+  },
+  {
+   "id": "chem-buffer-limits-15",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student wants a buffer at pH 7.0 with a large capacity for both acid and base. Which plan is best?",
+   "options": [
+    "1.0 M H₂PO₄⁻ and 0.6 M HPO₄²⁻ (pKa 7.2)",
+    "0.010 M H₂PO₄⁻ and 0.006 M HPO₄²⁻ (pKa 7.2)",
+    "1.0 M NH₄⁺ and 0.006 M NH₃ (pKa 9.25)",
+    "1.0 M CH₃COOH and 180 M CH₃COO⁻ (pKa 4.74)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "pKa is close to 7.0, so the ratio is near 1 (0.6), and both components are concentrated, so the capacity is large in both directions.",
+    "options": [
+     "Right: pKa near target, large amounts.",
+     "Right ratio, but a hundred times less material: a small capacity.",
+     "The pKa is far from 7.0, so NH₃ is nearly absent and there is almost no capacity for added acid.",
+     "A 180 : 1 ratio is far from 1, and 180 M is impossible to dissolve."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-limits-16",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-limits",
+   "practice": "6.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does a buffer work best within about one pH unit of its pKa?",
+   "options": [
+    "Outside that range one component is less than a tenth of the other, so it is quickly used up",
+    "Outside that range the weak acid becomes strong",
+    "Outside that range Ka changes",
+    "Outside that range water reacts with the buffer"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At pH = pKa ± 1, the ratio is 10 : 1 or 1 : 10. Beyond that, the minor component is so small that a little added acid or base exhausts it.",
+    "options": [
+     "Right: the minor component runs out.",
+     "The acid's strength does not change with pH.",
+     "Ka depends only on temperature.",
+     "Water is the solvent throughout; the issue is the amount of the minor component."
+    ]
+   }
+  }
+ ]
+}

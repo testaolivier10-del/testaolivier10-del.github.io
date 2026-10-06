@@ -1,0 +1,14 @@
+{
+ "weak-acid": {
+  "def": "An acid that ionizes only partly in water (Ka much less than 1), so at equilibrium most of it stays as whole HA molecules. A weak base, such as NH₃, accepts protons from water only partly."
+ },
+ "ka": {
+  "def": "The acid dissociation constant, Ka = [H₃O⁺][A⁻]/[HA], the equilibrium constant for HA + H₂O ⇌ H₃O⁺ + A⁻; pKa = −log Ka, so a smaller pKa means a stronger acid. Kb and pKb do the same for a base."
+ },
+ "percent-ionization": {
+  "def": "The share of a weak acid that has ionized at equilibrium: [H₃O⁺]eq / [HA]initial × 100%. It rises as the acid is diluted."
+ },
+ "ka-kb": {
+  "def": "For an acid and its conjugate base, Ka × Kb = Kw (1.0 × 10⁻¹⁴ at 25 °C), so pKa + pKb = 14.00. The weaker the acid, the stronger its conjugate base."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "strong-weak-boxes": {
+  "file": "figures/strong-weak-boxes.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 320,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two boxes holding the same amount of acid. The strong acid has become six hydronium ions and six anions with no molecules left. The weak acid box has five whole HA molecules and only one hydronium ion and one A minus ion, so it has fewer hydronium ions and a higher pH."
+ }
+}
