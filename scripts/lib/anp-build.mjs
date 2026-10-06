@@ -101,7 +101,7 @@ export function clampDesc(s, fallback) {
 }
 
 /* depth: '' for pages in anatomy-physiology/, '../' for pages one folder down. */
-export function head({ title, desc, path, depth, ogType = 'article', jsonld, scripts = [], meta = '' }) {
+export function head({ title, desc, path, depth, ogType = 'article', jsonld, scripts = [], meta = '', book = false }) {
   const url = `${SITE}${BASE}${path}`;
   const up = depth + '../';
   return `<!DOCTYPE html>
@@ -134,7 +134,9 @@ ${meta}<link rel="stylesheet" href="${up}assets/theme.css">
 <script src="${up}assets/hub-progress.js" defer></script>
 <script src="${up}assets/chime.js" defer></script>
 <script src="${up}assets/site-chrome.js" defer></script>
-<link rel="stylesheet" href="${depth}assets/anp.css">
+${book ? `<link rel="stylesheet" href="${up}assets/course/base.css">
+<link rel="stylesheet" href="${up}assets/course/book.css">
+` : ''}<link rel="stylesheet" href="${depth}assets/anp.css">
 <link rel="stylesheet" href="${up}assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">

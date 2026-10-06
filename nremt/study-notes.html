@@ -44,79 +44,28 @@ window.__notesData.catch(function(){});
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../assets/course/base.css">
+<link rel="stylesheet" href="../assets/course/book.css">
 <style>
-  /* The reading face. The site's interface is Nunito throughout, and Nunito
-     is served at 600 and up. A textbook page is read for an hour at a time,
-     and a bold sans at that length tires the eye, so this page sets its prose
-     (and only its prose: headings, tables, labels and buttons stay in the
-     site's face) in a serif at regular weight. System faces only, so there is
-     no file to download and nothing to block first paint. */
-  .tb-main{--book-serif:'Charter','Bitstream Charter','Iowan Old Style','Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif;}
-  body{line-height:1.65;}
-
-  /* Running head: the chapter on the left, the section you are in on the
-     right, pinned under the site header the way a book prints them at the top
-     of every page. */
-  .book-running{
-    position:sticky;top:var(--site-header-h,112px);z-index:5;
-    display:flex;justify-content:space-between;gap:16px;align-items:baseline;
-    margin:0 0 6px;padding:9px 0 8px;background:var(--paper);
-    border-bottom:1px solid var(--line);
-    font:800 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+  /* The reading layout is the one every course shares (assets/course/book.css):
+     site sans, contents rail, crumb, eyebrow, h1, meta row, prose column. What
+     follows is only what the NREMT notes have and the others do not: tables
+     numbered per chapter, key points, the end matter (key terms, review
+     questions, tools) and the printable whole book. */
+  .bk-lede{font:600 16.5px/1.65 var(--font-ui);color:var(--ink);margin:14px 0 0;max-width:68ch;}
+  .tb-chapter-meta .bk-actions{margin:12px 0 0;}
+  .bk-sec .domain-tag{
+    font:900 10.5px var(--font-ui);color:var(--cink);
+    background:var(--ctint);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;align-self:center;
   }
-  .book-running span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .book-running span:last-child{text-align:right;color:var(--ink);}
-  .book-running span:last-child:empty{display:none;}
-  .book-running:not(.on){visibility:hidden;}
-
-  /* ---- chapter opener ---------------------------------------------------- */
-  .book-opener{border-bottom:0;padding-bottom:0;margin-bottom:0;}
-  .book-opener__row{display:flex;align-items:flex-start;gap:16px;margin:4px 0 16px;}
-  .book-num{
-    flex-shrink:0;font:900 clamp(58px,9vw,88px)/.86 var(--font-ui);
-    letter-spacing:-.05em;color:var(--accent);
-  }
-  .book-opener .tb-chapter-title{margin:4px 0 0;}
-  .book-intro{
-    font:400 clamp(17px,2vw,19px)/1.65 var(--book-serif);color:var(--ink);margin:0 0 22px;
-    text-wrap:pretty;
-  }
-  .book-intro::first-letter{
-    float:left;font:900 3.55em/.78 var(--font-ui);color:var(--accent);margin:7px 9px 0 0;
-  }
-  .book-contents{
-    background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);
-    padding:16px 20px 12px;margin:0 0 18px;
-  }
-  .book-k{
-    font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
-    color:var(--accent);margin:0 0 8px;
-  }
-  .book-contents ol{list-style:none;margin:0;padding:0;}
-  .book-contents li{padding:8px 0;border-top:1px solid var(--line);}
-  .book-contents li:first-child{border-top:0;padding-top:0;}
-  .book-contents a.book-contents__sec{
-    display:flex;gap:10px;align-items:baseline;text-decoration:none;
-    font:800 14.5px var(--font-ui);color:var(--ink);
-  }
-  .book-contents a.book-contents__sec:hover{color:var(--accent);}
-  .book-contents a.book-contents__sec b{font:700 12px var(--font-mono);color:var(--accent);min-width:34px;flex-shrink:0;}
-  .book-contents__topics{margin:4px 0 0 44px;font:600 12.5px/1.55 var(--font-ui);color:var(--muted);}
-  .book-contents__topics a{color:inherit;text-decoration:none;}
-  .book-contents__topics a:hover{color:var(--accent);}
-  .book-contents__flat li{padding:5px 0;border-top:0;}
-  .book-contents__flat a.book-contents__sec{font-weight:700;font-size:14px;}
-  .book-contents__flat a.book-contents__sec b{min-width:18px;}
-
-  /* Chapter meta row: length on the left, print on the right. */
-  .tb-chapter-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--line);}
-  .print-btn{
-    display:inline-flex;align-items:center;gap:6px;cursor:pointer;
-    border:2px solid var(--line);background:var(--white);color:var(--muted);
-    padding:4px 11px 4px 8px;border-radius:var(--radius-pill);
-    font:800 11.5px var(--font-ui);white-space:nowrap;
-  }
-  .print-btn:hover{border-color:var(--accent);color:var(--accent);}
+  .section-note{font:600 14px/1.55 var(--font-ui);color:var(--muted);margin:0 0 6px;}
+  .topic{margin-bottom:22px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+  .topic:last-of-type{margin-bottom:0;}
+  .topic h3{margin-top:0;}
+  .topic ul,.topic ol{margin:0 0 12px;padding-left:22px;}
+  .topic li{margin-bottom:6px;}
+  .topic li > ul,.topic li > ol{margin-top:5px;margin-bottom:0;}
+  .topic .sub{font-size:14px;color:var(--muted);margin:-2px 0 12px;padding-left:12px;border-left:2px solid var(--line);}
 
   /* Search results, shown in place of the chapter while a query is typed. */
   /* While the chapters are on their way, and if they never arrive. Both are
@@ -168,40 +117,6 @@ window.__notesData.catch(function(){});
     .tb-hit{animation:none;background:var(--tint-accent);box-shadow:0 0 0 8px var(--tint-accent);}
   }
 
-  /* ---- a numbered section --------------------------------------------- */
-  .section{padding:34px 0 14px;border-bottom:1px solid var(--line);scroll-margin-top:calc(var(--site-header-h,112px) + 48px);}
-  .section:last-of-type{border-bottom:0;}
-  .section-intro{margin-bottom:18px;}
-  .section-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
-  .section-num{font:700 14px var(--font-mono);color:var(--accent);letter-spacing:.02em;}
-  .section-head h2{font:900 clamp(21px,2.6vw,25px) var(--font-ui);letter-spacing:-.015em;margin:0;}
-  .domain-tag{
-    font:900 10.5px var(--font-ui);color:var(--accent);
-    background:var(--tint-accent);border-radius:var(--radius-pill);padding:4px 10px;letter-spacing:0.02em;flex-shrink:0;
-  }
-  .section-note{font:400 14px/1.55 var(--book-serif);font-style:italic;color:var(--muted);margin:0;}
-
-  /* ---- the prose ------------------------------------------------------- */
-  .topic{margin-bottom:26px;scroll-margin-top:calc(var(--site-header-h,112px) + 48px);}
-  .topic:last-of-type{margin-bottom:0;}
-  .topic h3{font:800 16.5px/1.35 var(--font-ui);letter-spacing:-.01em;margin:0 0 8px;color:var(--ink);}
-  .topic p{font:400 16.5px/1.72 var(--book-serif);color:var(--ink);margin:0 0 12px;}
-  /* Consecutive paragraphs indent instead of gapping, the way set type does. */
-  .topic p:not(.sub) + p:not(.sub){text-indent:1.6em;margin-top:-6px;}
-  .topic p:last-child{margin-bottom:0;}
-  .topic ul, .topic ol{font:400 15.5px/1.62 var(--book-serif);color:var(--ink);margin:0 0 12px;padding-left:22px;}
-  .topic ul:last-child, .topic ol:last-child{margin-bottom:0;}
-  .topic li{margin-bottom:6px;}
-  .topic li:last-child{margin-bottom:0;}
-  .topic li > ul, .topic li > ol{margin-top:5px;margin-bottom:0;}
-  .topic strong{font-weight:700;color:var(--ink);}
-  /* A side remark, set as a margin note: smaller, italic, ruled off. */
-  .topic .sub{
-    font:400 14px/1.55 var(--book-serif);font-style:italic;color:var(--muted);
-    margin:-2px 0 12px;padding-left:12px;border-left:2px solid var(--line);
-  }
-  .topic .sub:last-child{margin-bottom:0;}
-
   /* Tables are numbered per chapter and captioned with the heading they sit
      under. Numbering is done after render, so the notes data stays unnumbered
      and a table added or removed renumbers the rest. */
@@ -215,6 +130,7 @@ window.__notesData.catch(function(){});
      chemical/biological/radiological/explosive stays one 42-character word and
      overflows its list item — which scrolled the whole page sideways on a phone. */
   .topic li,.topic p,.topic td,.topic th{overflow-wrap:anywhere;}
+  .topic table{margin:0;}
   .topic table{width:100%;border-collapse:collapse;font:600 13px/1.5 var(--font-ui);background:var(--white);}
   .topic table:last-child{margin-bottom:0;}
   .topic th, .topic td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
@@ -222,14 +138,14 @@ window.__notesData.catch(function(){});
   .topic tr:last-child td{border-bottom:none;}
 
   .takeaways{
-    background:var(--white);border-left:3px solid var(--accent);
+    background:var(--white);border-left:3px solid var(--cink);
     border-radius:12px;box-shadow:var(--lift-sm);padding:16px 18px;margin-top:22px;
   }
   .takeaways .tk-title{
     font-family:var(--font-mono);font-size:11px;color:var(--accent);
     text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
   }
-  .takeaways ul{margin:0;padding-left:18px;font:400 14.5px/1.6 var(--book-serif);color:var(--ink);}
+  .takeaways ul{margin:0;padding-left:18px;font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
   .takeaways li{margin-bottom:6px;}
   .takeaways li:last-child{margin-bottom:0;}
 
@@ -240,7 +156,7 @@ window.__notesData.catch(function(){});
     font:900 19px var(--font-ui);letter-spacing:-.01em;color:var(--ink);margin:0 0 10px;
   }
   .book-end__title small{font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);}
-  .book-end__lede{font:400 15px/1.6 var(--book-serif);color:var(--muted);margin:0 0 14px;}
+  .book-end__lede{font:600 14.5px/1.6 var(--font-ui);color:var(--muted);margin:0 0 14px;}
   .book-end > section + section{margin-top:30px;}
 
   .book-terms dl{margin:0;}
@@ -249,7 +165,7 @@ window.__notesData.catch(function(){});
   .book-terms dt{font:800 14.5px var(--font-ui);color:var(--ink);}
   .book-terms dt a{color:inherit;text-decoration:none;}
   .book-terms dt a:hover{color:var(--accent);}
-  .book-terms dd{margin:2px 0 0;font:400 14.5px/1.55 var(--book-serif);color:var(--muted);}
+  .book-terms dd{margin:2px 0 0;font:600 14px/1.55 var(--font-ui);color:var(--muted);}
   .book-terms__all{font:700 12.5px var(--font-ui);margin:12px 0 0;}
 
   .book-btn{
@@ -264,7 +180,7 @@ window.__notesData.catch(function(){});
   .book-review__status{font:700 13px var(--font-ui);color:var(--muted);margin:10px 0 0;}
   .book-q{background:var(--white);border-radius:14px;box-shadow:var(--lift-sm);padding:16px 18px;margin:0 0 12px;}
   .book-q__n{font:700 11px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin:0 0 6px;}
-  .book-q__stem{font:400 16px/1.6 var(--book-serif);color:var(--ink);margin:0 0 12px;}
+  .book-q__stem{font:700 15.5px/1.6 var(--font-ui);color:var(--ink);margin:0 0 12px;}
   .book-q__opts{display:grid;gap:6px;margin:0;padding:0;list-style:none;}
   .book-q__opt{
     display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;
@@ -277,7 +193,7 @@ window.__notesData.catch(function(){});
   .book-q.answered .book-q__opt:hover{border-color:transparent;}
   .book-q__opt.correct{border-color:var(--good);background:var(--tint-good);}
   .book-q__opt.wrong{border-color:var(--bad);background:var(--tint-bad);}
-  .book-q__why{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font:400 14.5px/1.6 var(--book-serif);color:var(--ink);}
+  .book-q__why{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font:600 14.5px/1.6 var(--font-ui);color:var(--ink);}
   .book-q__why b{font:800 13px var(--font-ui);display:block;margin-bottom:3px;}
   .book-q__why b.good{color:var(--good-text);}
   .book-q__why b.bad{color:var(--bad-text);}
@@ -302,10 +218,7 @@ window.__notesData.catch(function(){});
   .chapter-tools a:hover{color:var(--accent);}
   .chapter-tools a small{font-weight:600;font-size:11.5px;color:var(--muted);}
 
-  .tb-main footer{margin-top:44px;font-size:12px;color:var(--muted);max-width:60ch;}
 
-  /* The rail: sections carry their number. */
-  .tb-toc-secnum{flex-shrink:0;font:700 10.5px var(--font-mono);color:var(--accent);min-width:30px;}
 
   /* Printing lays the whole book out in order — a cover, the contents, then
      every chapter on a fresh page; the script swaps the one-chapter view for
@@ -313,20 +226,19 @@ window.__notesData.catch(function(){});
   .print-cover,.print-toc{display:none;}
   @media print{
     .tb-shell{display:block;}
-    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.book-running,.book-review,.chapter-tools,.print-btn{display:none !important;}
+    .tb-rail,.tb-toc-btn,.tb-chapter-nav,.tb-results,.book-review,.chapter-tools,.bk-actions,.cx-crumb{display:none !important;}
     .tb-main{max-width:none;padding-top:0;}
     .print-cover{display:block;break-after:page;padding-top:34vh;text-align:center;}
     .print-cover .print-cover__k{font:800 12px var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
     .print-cover h1{font:900 44px/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 12px;}
-    .print-cover p{font:400 16px/1.5 var(--book-serif);color:var(--muted);margin:0;}
+    .print-cover p{font:600 16px/1.5 var(--font-ui);color:var(--muted);margin:0;}
     .print-toc{display:block;break-after:page;}
     .print-toc h2{font:900 26px var(--font-ui);margin:0 0 14px;}
     .print-toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;font:600 13px/1.7 var(--font-ui);}
     .print-toc li{break-inside:avoid;display:flex;gap:10px;}
     .print-toc li b{font:700 12px var(--font-mono);color:var(--accent);min-width:22px;}
     .print-chapter{break-before:page;}
-    .book-num{font-size:64px;}
-    .book-q,.tb-caption,.takeaways,.book-contents{break-inside:avoid;}
+    .book-q,.tb-caption,.takeaways{break-inside:avoid;}
     .topic{break-inside:auto;}
   }
 </style>
@@ -382,15 +294,12 @@ window.__notesData.catch(function(){});
 <body>
   <header id="site-header"></header>
 <div class="course-nav"></div>
-<!-- crumb:start -->
-<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">NREMT-EMT study notes</span></nav></div>
-<!-- crumb:end -->
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
-<div class="tb-shell">
-  <button type="button" class="tb-toc-btn" id="tbContentsToggle" aria-controls="tbContents">&#9776; Chapters</button>
+<div class="tb-shell bk bk-book">
+  <button type="button" class="tb-toc-btn" id="tbContentsToggle" aria-controls="nr-rail" aria-expanded="false">&#9776; Chapters</button>
 
-  <aside class="tb-rail">
-    <p class="tb-rail-title">Chapters</p>
+  <aside class="tb-rail" id="nr-rail">
+    <p class="tb-rail-title">Contents</p>
     <label class="sr-only" for="tbFilter">Search the notes</label>
     <input type="search" class="tb-filter" id="tbFilter" placeholder="Search the notes&hellip;" autocomplete="off"
            aria-describedby="tbFilterHint">
@@ -400,6 +309,7 @@ window.__notesData.catch(function(){});
   </aside>
 
   <main class="tb-main" id="tbMain">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="index.html">NREMT-EMT</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Study notes</span></nav>
     <div class="tb-results" id="tbResults" role="region" aria-label="Search results" hidden></div>
     <div id="tbChapter">
       <!-- notes-toc:start -->
@@ -452,6 +362,8 @@ window.__notesData.catch(function(){});
       <!-- notes-toc:end -->
     </div>
   </main>
+</div>
+<div class="xshell">
   <footer>
     <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
@@ -708,7 +620,7 @@ function renderContents(activeIndex, q){
         <span class="tb-toc-count">${ch.sections.length}</span>
       </button>
       <div class="tb-toc-topics">${sections.map(({ s, si }) =>
-        `<a href="#${s.id}" class="tb-toc-topic${i === activeIndex && s.id === pendingSection ? ' current' : ''}" data-section="${s.id}"><span class="tb-toc-secnum">${sectionNumber(ch, si)}</span><span>${esc(s.title)}</span></a>`
+        `<a href="#${s.id}" class="tb-toc-topic${i === activeIndex && s.id === pendingSection ? ' current' : ''}" data-section="${s.id}"><span class="bk-toc-n">${sectionNumber(ch, si)}</span><span>${esc(s.title)}</span></a>`
       ).join('')}</div>
     </div>`;
   }).join('');
@@ -745,16 +657,15 @@ function sectionHtml(sec, si, ch){
       <div class="tk-title">Key points · ${sectionNumber(ch, si)}</div>
       <ul>${sec.takeaways.map(k => `<li>${k}</li>`).join('')}</ul>
     </div>` : '';
-  return `<section class="section" id="${sec.id}" data-num="${sectionNumber(ch, si)}" data-title="${esc(sec.title)}">
-    <div class="section-intro">
-      <div class="section-head">
-        <span class="section-num">${sectionNumber(ch, si)}</span>
-        <h2>${sec.title}</h2>
-        ${sec.domain ? `<span class="domain-tag">${sec.domain} domain</span>` : ''}
-      </div>
-      ${sec.note ? `<p class="section-note">${sec.note}</p>` : ''}
+  // One section of the chapter, laid out like a topic on A&P's and Bio's
+  // Learn pages (assets/course/book.css .bk-sec).
+  return `<section class="section bk-sec" id="${sec.id}" data-num="${sectionNumber(ch, si)}" data-title="${esc(sec.title)}">
+    <div class="bk-sec-head">
+      <h2><span class="bk-toc-n">${sectionNumber(ch, si)}</span>${sec.title}</h2>
+      ${sec.domain ? `<span class="domain-tag">${sec.domain} domain</span>` : ''}
     </div>
-    ${topicsHtml}
+    ${sec.note ? `<p class="section-note">${sec.note}</p>` : ''}
+    <div class="bk-prose">${topicsHtml}</div>
     ${takeawaysHtml}
   </section>`;
 }
@@ -769,28 +680,14 @@ function chapterOpenerHtml(ch, forPrint){
     `${topics} topic${topics === 1 ? '' : 's'}`,
     `about ${minutes} min`
   ].join(' · ');
-  return `<header class="tb-chapter-head book-opener">
+  return `<header class="tb-chapter-head">
       <p class="tb-chapter-eyebrow">Chapter ${ch.num} of ${CHAPTERS.length}${domains.length ? ' · ' + esc(domains.join(', ')) + ' domain' : ''}</p>
-      <div class="book-opener__row">
-        <span class="book-num" aria-hidden="true">${ch.num}</span>
-        <h1 class="tb-chapter-title">${esc(ch.title)}</h1>
-      </div>
-      ${ch.intro ? `<p class="book-intro">${esc(ch.intro)}</p>` : ''}
-      <nav class="book-contents" aria-label="In this chapter">
-        <p class="book-k">In this chapter</p>
-        ${ch.sections.length === 1
-          /* One section: its heading is the next thing on the page, so the
-             box lists the topics themselves rather than repeating it. */
-          ? `<ol class="book-contents__flat">${ch.sections[0].topics.map((t, ti) => `<li><a class="book-contents__sec" href="#${topicId(ch.sections[0], ti)}"><b>${ti + 1}</b><span>${t.heading}</span></a></li>`).join('')}</ol>`
-          : `<ol>${ch.sections.map((s, si) => `<li>
-          <a class="book-contents__sec" href="#${s.id}"><b>${sectionNumber(ch, si)}</b><span>${esc(s.title)}</span></a>
-          <p class="book-contents__topics">${s.topics.map((t, ti) => `<a href="#${topicId(s, ti)}">${t.heading}</a>`).join(' · ')}</p>
-        </li>`).join('')}</ol>`}
-      </nav>
+      <h1 class="tb-chapter-title">${esc(ch.title)}</h1>
       <div class="tb-chapter-meta">
         <span>${meta}</span>
-        ${forPrint ? '' : `<button type="button" class="print-btn" id="printBtn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7"/></svg>Print the book</button>`}
+        ${forPrint ? '' : `<div class="bk-actions" role="group" aria-label="Share or print these notes"><button type="button" class="bk-action" id="copyBtn">Copy link</button><button type="button" class="bk-action" id="printBtn">Print the book</button></div>`}
       </div>
+      ${ch.intro ? `<p class="bk-lede">${esc(ch.intro)}</p>` : ''}
     </header>`;
 }
 
@@ -820,7 +717,6 @@ function chapterHtml(index, forPrint){
   // #chapter-N, and an element with that id would have the browser scroll to
   // it on load — under the sticky header, with the opener cut off.
   return `<div class="${forPrint ? 'print-chapter' : ''}" data-chapter="${ch.num}">
-    ${forPrint ? '' : `<div class="book-running" aria-hidden="true"><span>Chapter ${ch.num} · ${esc(ch.title)}</span><span id="bookRunningSec"></span></div>`}
     ${chapterOpenerHtml(ch, forPrint)}
     ${ch.sections.map((s, si) => sectionHtml(s, si, ch)).join('')}
     ${forPrint ? '' : chapterEndHtml(ch)}
@@ -934,27 +830,6 @@ function wireReview(ch){
   });
 }
 
-/* The running head follows the reader through the chapter. */
-let runningTicking = false;
-function updateRunningHead(){
-  runningTicking = false;
-  const el = document.getElementById('bookRunningSec');
-  if (!el) return;
-  const line = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--site-header-h')) || 112) + 60;
-  let current = null;
-  chapterEl.querySelectorAll('.section').forEach(sec => {
-    if (sec.getBoundingClientRect().top <= line) current = sec;
-  });
-  const label = current ? current.dataset.num + ' · ' + current.dataset.title : '';
-  if (el.textContent !== label) el.textContent = label;
-  el.parentNode.classList.toggle('on', !!current);
-}
-window.addEventListener('scroll', () => {
-  if (runningTicking) return;
-  runningTicking = true;
-  requestAnimationFrame(updateRunningHead);
-}, { passive: true });
-
 function renderChapter(index){
   currentIndex = index;
   rememberChapter(index);
@@ -964,9 +839,27 @@ function renderChapter(index){
   document.title = 'Chapter ' + ch.num + ' · ' + ch.title + ' — NREMT-EMT Study Notes | LevlPrep';
   const pb = document.getElementById('printBtn');
   if (pb) pb.addEventListener('click', () => window.print());
+  const cb = document.getElementById('copyBtn');
+  if (cb) cb.addEventListener('click', () => copyLink(cb, location.origin + location.pathname + '#chapter-' + ch.num));
   fillKeyTerms(ch);
   wireReview(ch);
-  updateRunningHead();
+  markTerms();
+}
+
+/* Copy link, as on every course's notes pages (assets/course/book.css). */
+function copyLink(btn, url){
+  const was = btn.textContent;
+  const said = (t) => { btn.textContent = t; setTimeout(() => { btn.textContent = was; }, 2500); };
+  try { navigator.clipboard.writeText(url).then(() => said('Link copied'), () => window.prompt('Copy this link:', url)); }
+  catch (e) { window.prompt('Copy this link:', url); }
+}
+
+/* Glossary terms underlined in the prose, first use per section, with the
+   shared popup (assets/course/glossary-tip.js, loaded when the course has
+   its glossary.json; scripts/build-nremt-notes-toc.mjs writes the tag). */
+function markTerms(){
+  if (!window.LevlGlossary) return;
+  chapterEl.querySelectorAll('.bk-sec .bk-prose').forEach(el => window.LevlGlossary.mark(el, {}));
 }
 
 function scrollToTarget(id){
@@ -1068,9 +961,9 @@ filterEl.addEventListener('keydown', e => { if (e.key === 'Escape') closeSearch(
 
 /* ---- drawer on small screens ---------------------------------------- */
 function closeContentsOnMobile(){
-  if (window.matchMedia('(max-width: 900px)').matches) document.body.classList.remove('tb-toc-open');
+  if (window.matchMedia('(max-width: 900px)').matches) { document.body.classList.remove('tb-toc-open'); toggleEl.setAttribute('aria-expanded', 'false'); }
 }
-toggleEl.addEventListener('click', () => document.body.classList.toggle('tb-toc-open'));
+toggleEl.addEventListener('click', () => { const open = document.body.classList.toggle('tb-toc-open'); toggleEl.setAttribute('aria-expanded', String(open)); });
 
 /* ---- routing --------------------------------------------------------- */
 function route(){
@@ -1153,6 +1046,8 @@ window.addEventListener('afterprint', () => {
 });
 });
 </script>
+<!-- glossary-tip:start -->
+<!-- glossary-tip:end -->
 <script src="assets/nav.js" defer></script>
 </body>
 </html>

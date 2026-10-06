@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Drawing Molecules &amp; Moving Electrons</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Drawing Molecules &amp; Moving Electrons &middot; Section 11 of 123</p>
-    <h1>Skeletal structures</h1>
-    <a class="notes-onward-cta" href="../lessons/skeletal-structures.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="skeletal-structures">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-foundations"><span class="bk-toc-n">1</span>Foundations</a>
+    <a class="bk-toc-chap" href="../learn.html#m-electron-movement"><span class="bk-toc-chap-n">2</span><span><b>Drawing Molecules &amp; Moving Electrons</b><small>3 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 3 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li class="current" data-toc-t="skeletal-structures"><a href="#main" aria-current="page"><span class="bk-toc-n">11</span>Skeletal structures</a><div class="bk-toc-onpage"><p>On this page</p><a href="#four-rules-for-reading-the-drawing">Four rules for reading the drawing</a><a href="#charged-atoms-what-a-or-a">Charged atoms: what a + or a − does to the hidden half</a><a href="#reading-one-back">Reading one back</a><a href="#one-molecule-several-drawings">One molecule, several drawings</a><a href="#reading-the-condensed-form">Reading the condensed form</a><a href="#rings-and-why-they-are-the">Rings, and why they are the clearest case for the notation</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="curved-arrows"><a href="curved-arrows.html"><span class="bk-toc-n">12</span>Curved arrows</a></li><li data-toc-t="resonance"><a href="resonance.html"><span class="bk-toc-n">13</span>Resonance</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-nomenclature"><span class="bk-toc-n">3</span>IUPAC Nomenclature</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-electron-movement">Drawing Molecules &amp; Moving Electrons</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Skeletal structures: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/skeletal-structures.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="electron-movement">Drawing Molecules &amp; Moving Electrons</span> &middot; Section 11 of 123</p>
+      <h1 class="bk-title">Skeletal structures</h1>
+      <p class="bk-meta"><span class="bk-small">14 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/skeletal-structures.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="skeletal-structures" data-bk-ids="four-rules-for-reading-the-drawing charged-atoms-what-a-or-a reading-one-back one-molecule-several-drawings reading-the-condensed-form rings-and-why-they-are-the what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Here is one small alcohol, CH&#8323;CH&#8322;CH&#8322;CH&#8322;OH, drawn three ways.</p>
 
@@ -187,14 +196,21 @@
 
 <p class="step-body">Every drawing after this section uses this notation, and two later parts of the course depend on reading it fluently. <b>Stereochemistry</b> puts the wedges and dashes from Foundations onto skeletal structures to show which bonds come toward you and which go away, and that is meaningless while the skeleton itself still needs decoding. <b>Mechanisms</b> ask you to draw curved arrows between atoms that are not written down. That only works if you can see the hidden carbons and the undrawn lone pairs as clearly as the drawn ones.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="functional-groups.html"><span>Previous</span>Functional groups</a><a class="notes-prevnext notes-next" href="curved-arrows.html"><span>Next</span>Curved arrows</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="functional-groups.html"><span>&larr; Section 10</span><b>Functional groups</b></a><a class="tb-chapter-link next" href="curved-arrows.html"><span>Section 12 &rarr;</span><b>Curved arrows</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

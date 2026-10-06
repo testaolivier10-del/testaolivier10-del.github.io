@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Enolate Chemistry</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Enolate Chemistry &middot; Section 93 of 123</p>
-    <h1>Claisen reactions</h1>
-    <a class="notes-onward-cta" href="../lessons/claisen.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="claisen">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-organometallics"><span class="bk-toc-n">18</span>Organolithiums, Cuprates &amp; Cross-Coupling</a>
+    <a class="bk-toc-chap" href="../learn.html#m-enolate-chemistry"><span class="bk-toc-chap-n">19</span><span><b>Enolate Chemistry</b><small>7 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 7 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="alpha-hydrogens"><a href="alpha-hydrogens.html"><span class="bk-toc-n">91</span>Alpha hydrogens &amp; enolates</a></li><li data-toc-t="aldol"><a href="aldol.html"><span class="bk-toc-n">92</span>Aldol reactions</a></li><li class="current" data-toc-t="claisen"><a href="#main" aria-current="page"><span class="bk-toc-n">93</span>Claisen reactions</a><div class="bk-toc-onpage"><p>On this page</p><a href="#enolate-meets-ester">Enolate meets ester</a><a href="#step-by-step">Step by step</a><a href="#why-the-final-deprotonation-drives-everything">Why the final deprotonation drives everything</a><a href="#which-esters-work-two-alpha-hydrogens">Which esters work: two alpha hydrogens</a><a href="#crossed-claisens-two-different-partners">Crossed Claisens: two different partners</a><a href="#the-dieckmann-condensation-closing-a-ring">The Dieckmann condensation: closing a ring</a><a href="#the-same-reaction-in-your-cells">The same reaction in your cells</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="alpha-halogenation"><a href="alpha-halogenation.html"><span class="bk-toc-n">94</span>Alpha halogenation &amp; the haloform reaction</a></li><li data-toc-t="enolate-regiochemistry"><a href="enolate-regiochemistry.html"><span class="bk-toc-n">95</span>Kinetic &amp; thermodynamic enolates</a></li><li data-toc-t="ester-syntheses"><a href="ester-syntheses.html"><span class="bk-toc-n">96</span>Malonic and acetoacetic ester</a></li><li data-toc-t="michael-robinson"><a href="michael-robinson.html"><span class="bk-toc-n">97</span>Michael and Robinson</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-amines"><span class="bk-toc-n">20</span>Amines</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-enolate-chemistry">Enolate Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Claisen reactions: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/claisen.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="enolate-chemistry">Enolate Chemistry</span> &middot; Section 93 of 123</p>
+      <h1 class="bk-title">Claisen reactions</h1>
+      <p class="bk-meta"><span class="bk-small">10 min read &middot; free</span><a class="bk-tag" href="../mechanisms/claisen.html">Draw the mechanism</a></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/claisen.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="claisen" data-bk-ids="enolate-meets-ester step-by-step why-the-final-deprotonation-drives-everything which-esters-work-two-alpha-hydrogens crossed-claisens-two-different-partners the-dieckmann-condensation-closing-a-ring the-same-reaction-in-your-cells what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Stir ethyl acetate with sodium ethoxide, NaOEt, then add dilute acid. Two ethyl acetate molecules join into one: ethyl acetoacetate (ethyl 3-oxobutanoate), CH₃COCH₂CO₂Et. One ethoxy group is lost along the way.</p>
 <!-- fig:claisen-overall:start -->
@@ -143,14 +152,21 @@
 <p class="step-body">With the Claisen in hand you have most of this course's carbon–carbon bond-forming reactions: acetylide alkylation, Grignard and organolithium addition, cuprate conjugate addition, cross-coupling, the Wittig, the Diels–Alder, the aldol and now the Claisen, with the Michael reaction still to come at the end of this chapter. Between them they can build most carbon skeletons. Recognizing which one made a given bond is the central skill of <b>retrosynthesis</b>, working backward from a target molecule to the reactions that could build it.</p>
 <p class="step-body">Hold on to ethyl acetoacetate. It is the starting material for the acetoacetic ester synthesis, one of the classical routes to substituted ketones, covered in <i>Malonic and acetoacetic ester</i> later in this chapter. There you alkylate its stabilized anion, then hydrolyze the ester to a beta-keto acid and warm it. The acid loses CO₂ through the six-membered cyclic transition state of <a class="chapter-ref" href="/ochem/learn.html#m-carboxylic-acids">Carboxylic Acids &amp; Derivatives</a>. The malonic ester synthesis starts from a beta-dicarbonyl too.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="aldol.html"><span>Previous</span>Aldol reactions</a><a class="notes-prevnext notes-next" href="alpha-halogenation.html"><span>Next</span>Alpha halogenation &amp; the haloform reaction</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="aldol.html"><span>&larr; Section 92</span><b>Aldol reactions</b></a><a class="tb-chapter-link next" href="alpha-halogenation.html"><span>Section 94 &rarr;</span><b>Alpha halogenation &amp; the haloform reaction</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

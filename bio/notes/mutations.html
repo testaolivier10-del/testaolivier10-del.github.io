@@ -28,6 +28,8 @@
 <script src="../../assets/hub-progress.js" defer></script>
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/bio.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -89,23 +91,26 @@
 <body class="bio" data-topic="mutations" data-unit="unit-6">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell bio-tb bio-notes">
+<div class="tb-shell bk bk-notes">
   <button type="button" class="tb-toc-btn" aria-controls="bio-rail" aria-expanded="false">&#9776; Unit 6 contents</button>
-  <aside class="tb-rail bio-nav-ref bio-notes-rail" id="bio-rail">
+  <aside class="tb-rail bio-nav-ref bk-rail" id="bio-rail">
     <p class="tb-rail-title">Contents</p>
-    <a class="bio-toc-chap" href="../units/unit-6.html"><span class="bio-toc-chap-n">6</span><span><b>Gene Expression and Regulation</b><small>8 topics</small></span></a>
-    <nav class="tb-contents" aria-label="Unit contents"><ol class="bio-toc-list"><li data-toc-t="dna-rna-structure"><a href="dna-rna-structure.html"><span class="bio-toc-n">6.1</span>DNA and RNA Structure</a></li><li data-toc-t="dna-replication"><a href="dna-replication.html"><span class="bio-toc-n">6.2</span>Replication</a></li><li data-toc-t="transcription-rna-processing"><a href="transcription-rna-processing.html"><span class="bio-toc-n">6.3</span>Transcription and RNA Processing</a></li><li data-toc-t="translation"><a href="translation.html"><span class="bio-toc-n">6.4</span>Translation</a></li><li data-toc-t="gene-regulation"><a href="gene-regulation.html"><span class="bio-toc-n">6.5</span>Regulation of Gene Expression</a></li><li data-toc-t="cell-specialization"><a href="cell-specialization.html"><span class="bio-toc-n">6.6</span>Gene Expression and Cell Specialization</a></li><li class="current" data-toc-t="mutations"><a href="#main" aria-current="page"><span class="bio-toc-n">6.7</span>Mutations</a><div class="bio-toc-onpage"><p>On this page</p><a href="#point-mutations-one-base-replaced">Point mutations: one base replaced</a><a href="#insertions-deletions-and-frameshifts">Insertions, deletions and frameshifts</a><a href="#from-one-amino-acid-to-a">From one amino acid to a disease: sickle cell</a><a href="#where-mutations-come-from">Where mutations come from</a><a href="#mutations-are-random">Mutations are random</a><a href="#harmful-neutral-or-helpful">Harmful, neutral or helpful</a><a href="#changes-in-chromosomes">Changes in chromosomes</a><a href="#how-bacteria-gain-genes">How bacteria gain genes</a><a href="#variation-in-viruses">Variation in viruses</a><a href="#common-mistakes">Common mistakes</a></div></li><li data-toc-t="biotechnology"><a href="biotechnology.html"><span class="bio-toc-n">6.8</span>Biotechnology</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Heredity</a>
+    <a class="bk-toc-chap" href="../units/unit-6.html"><span class="bk-toc-chap-n">6</span><span><b>Gene Expression and Regulation</b><small>8 topics</small></span></a>
+    <div class="bio-toc-prog" data-toc-prog="unit-6"><div class="tb-progress-row"><span><b>0</b> of 8 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="dna-rna-structure"><a href="dna-rna-structure.html"><span class="bk-toc-n">6.1</span>DNA and RNA Structure</a></li><li data-toc-t="dna-replication"><a href="dna-replication.html"><span class="bk-toc-n">6.2</span>Replication</a></li><li data-toc-t="transcription-rna-processing"><a href="transcription-rna-processing.html"><span class="bk-toc-n">6.3</span>Transcription and RNA Processing</a></li><li data-toc-t="translation"><a href="translation.html"><span class="bk-toc-n">6.4</span>Translation</a></li><li data-toc-t="gene-regulation"><a href="gene-regulation.html"><span class="bk-toc-n">6.5</span>Regulation of Gene Expression</a></li><li data-toc-t="cell-specialization"><a href="cell-specialization.html"><span class="bk-toc-n">6.6</span>Gene Expression and Cell Specialization</a></li><li class="current" data-toc-t="mutations"><a href="#main" aria-current="page"><span class="bk-toc-n">6.7</span>Mutations</a><div class="bk-toc-onpage"><p>On this page</p><a href="#point-mutations-one-base-replaced">Point mutations: one base replaced</a><a href="#insertions-deletions-and-frameshifts">Insertions, deletions and frameshifts</a><a href="#from-one-amino-acid-to-a">From one amino acid to a disease: sickle cell</a><a href="#where-mutations-come-from">Where mutations come from</a><a href="#mutations-are-random">Mutations are random</a><a href="#harmful-neutral-or-helpful">Harmful, neutral or helpful</a><a href="#changes-in-chromosomes">Changes in chromosomes</a><a href="#how-bacteria-gain-genes">How bacteria gain genes</a><a href="#variation-in-viruses">Variation in viruses</a><a href="#common-mistakes">Common mistakes</a></div></li><li data-toc-t="biotechnology"><a href="biotechnology.html"><span class="bk-toc-n">6.8</span>Biotechnology</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-7.html"><span class="bk-toc-n">7</span>Natural Selection</a>
   </aside>
   <main class="tb-main" id="main">
     <nav class="bio-crumb bio-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-6.html">Gene Expression and Regulation</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Mutations: notes</span></nav>
-    <div class="bio-pillbar"><a class="bio-pill" href="../lessons/mutations.html">Practice this lesson</a></div>
-    <header class="bio-notes-head">
-      <p class="bio-notes-eyebrow">Unit 6 &middot; Topic 6.7 <span class="bio-beta bio-nav-ref">Beta</span></p>
-      <h1 class="bio-notes-title">Mutations</h1>
-      <p class="bio-tags bio-notes-meta bio-nav-ref"><span class="bio-small">8 min read &middot; free</span><span class="bio-tb-chip" data-chip-topic="mutations">Not practiced</span></p>
-      <div class="bio-share bio-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bio-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fbio%2Fnotes%2Fmutations.html&amp;title=Mutations%3A%20biology%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bio-share-btn" data-copy="https://levlprep.com/bio/notes/mutations.html">Copy link</button><button type="button" class="bio-share-btn" data-print>Print</button></div>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/mutations.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 6 &middot; Topic 6.7 <span class="bio-beta bio-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Mutations</h1>
+      <p class="bk-meta bio-nav-ref"><span class="bk-small">8 min read &middot; free</span><span class="bk-chip" data-chip-topic="mutations">Not practiced</span></p>
+      <div class="bk-actions bio-share bio-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fbio%2Fnotes%2Fmutations.html&amp;title=Mutations%3A%20biology%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/bio/notes/mutations.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
     </header>
-    <article class="bio-prose">
+    <article class="bio-prose bk-prose">
 <p><a class="gl" href="../notes/nucleic-acids.html" data-c="dna">DNA</a> is copied with astonishing accuracy, but not perfectly, and it can be damaged. A permanent change in the <a class="gl" href="../notes/nucleic-acids.html" data-c="genetic-information">base sequence</a> is a <b><a class="gl" href="../notes/signal-transduction-pathways.html" data-c="mutation-basic">mutation</a></b>. This page sorts mutations by what they do to a <a class="gl" href="../notes/nucleic-acids.html" data-c="gene-basic">gene</a> and its <a class="gl" href="../notes/elements-of-life.html" data-c="protein">protein</a>, explains where they come from, and shows how <a class="gl" href="../notes/cell-structure-function.html" data-c="bacteria">bacteria</a> and <a class="gl" href="../notes/dna-rna-structure.html" data-c="virus">viruses</a> gain genetic variety in other ways too.</p>
 
 <h2 id="point-mutations-one-base-replaced">Point mutations: one base replaced</h2>

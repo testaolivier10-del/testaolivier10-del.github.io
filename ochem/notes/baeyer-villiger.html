@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Carboxylic Acids &amp; Derivatives</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Carboxylic Acids &amp; Derivatives &middot; Section 87 of 123</p>
-    <h1>Baeyer–Villiger oxidation</h1>
-    <a class="notes-onward-cta" href="../lessons/baeyer-villiger.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="baeyer-villiger">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-redox"><span class="bk-toc-n">16</span>Oxidation &amp; Reduction</a>
+    <a class="bk-toc-chap" href="../learn.html#m-carboxylic-acids"><span class="bk-toc-chap-n">17</span><span><b>Carboxylic Acids &amp; Derivatives</b><small>6 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 6 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="carboxylic-acids"><a href="carboxylic-acids.html"><span class="bk-toc-n">82</span>Carboxylic acids</a></li><li data-toc-t="esters-amides"><a href="esters-amides.html"><span class="bk-toc-n">83</span>Esters &amp; amides</a></li><li data-toc-t="acyl-substitution"><a href="acyl-substitution.html"><span class="bk-toc-n">84</span>Nucleophilic acyl substitution</a></li><li data-toc-t="acyl-chlorides-anhydrides"><a href="acyl-chlorides-anhydrides.html"><span class="bk-toc-n">85</span>Acid chlorides &amp; anhydrides</a></li><li data-toc-t="nitriles"><a href="nitriles.html"><span class="bk-toc-n">86</span>Nitriles</a></li><li class="current" data-toc-t="baeyer-villiger"><a href="#main" aria-current="page"><span class="bk-toc-n">87</span>Baeyer–Villiger oxidation</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-mechanism-an-addition-then-a">The mechanism: an addition, then a shift</a><a href="#which-group-migrates">Which group migrates</a><a href="#the-migrating-group-keeps-its-configuration">The migrating group keeps its configuration</a><a href="#rings-become-lactones">Rings become lactones</a><a href="#when-the-molecule-also-has-an">When the molecule also has an alkene</a><a href="#what-carries-forward">What carries forward</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-organometallics"><span class="bk-toc-n">18</span>Organolithiums, Cuprates &amp; Cross-Coupling</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-carboxylic-acids">Carboxylic Acids &amp; Derivatives</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Baeyer–Villiger oxidation: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/baeyer-villiger.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="carboxylic-acids">Carboxylic Acids &amp; Derivatives</span> &middot; Section 87 of 123</p>
+      <h1 class="bk-title">Baeyer–Villiger oxidation</h1>
+      <p class="bk-meta"><span class="bk-small">13 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/baeyer-villiger.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="baeyer-villiger" data-bk-ids="the-mechanism-an-addition-then-a which-group-migrates the-migrating-group-keeps-its-configuration rings-become-lactones when-the-molecule-also-has-an what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Treat acetone, CH<sub>3</sub>&ndash;CO&ndash;CH<sub>3</sub>, with the reagent mCPBA and you get methyl acetate, CH<sub>3</sub>&ndash;CO&ndash;O&ndash;CH<sub>3</sub>. One oxygen atom has slipped into a carbon&ndash;carbon bond, between the carbonyl carbon and one of its methyl groups. The ketone has become an ester.</p>
 <!-- fig:acetone-to-ester:start -->
@@ -213,14 +222,21 @@
 
 <p class="step-body">A Baeyer&ndash;Villiger can also make esters that Fischer esterification makes badly. <i>tert</i>-Butyl acetate is one. In hot acid, <i>tert</i>-butyl alcohol loses water to give a tertiary cation, which mostly eliminates to an alkene, so that route fails. A tertiary group is the easiest carbon group to migrate, though, so 3,3-dimethylbutan-2-one and mCPBA give <i>tert</i>-butyl acetate directly.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="nitriles.html"><span>Previous</span>Nitriles</a><a class="notes-prevnext notes-next" href="organolithium-reagents.html"><span>Next</span>Organolithiums and acetylides</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="nitriles.html"><span>&larr; Section 86</span><b>Nitriles</b></a><a class="tb-chapter-link next" href="organolithium-reagents.html"><span>Section 88 &rarr;</span><b>Organolithiums and acetylides</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

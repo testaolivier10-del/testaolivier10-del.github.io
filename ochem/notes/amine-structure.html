@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Amines</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Amines &middot; Section 98 of 123</p>
-    <h1>Structure &amp; basicity</h1>
-    <a class="notes-onward-cta" href="../lessons/amine-structure.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="amine-structure">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-enolate-chemistry"><span class="bk-toc-n">19</span>Enolate Chemistry</a>
+    <a class="bk-toc-chap" href="../learn.html#m-amines"><span class="bk-toc-chap-n">20</span><span><b>Amines</b><small>4 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 4 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li class="current" data-toc-t="amine-structure"><a href="#main" aria-current="page"><span class="bk-toc-n">98</span>Structure &amp; basicity</a><div class="bk-toc-onpage"><p>On this page</p><a href="#nitrogen-s-lone-pair">Nitrogen’s lone pair</a><a href="#alkyl-groups-a-small-effect-and">Alkyl groups: a small effect, and a tangled one</a><a href="#resonance-donation-the-big-drop-in">Resonance donation: the big drop in basicity</a><a href="#pyridine-and-pyrrole-two-aromatic-nitrogen">Pyridine and pyrrole: two aromatic nitrogen rings</a><a href="#when-resonance-makes-a-nitrogen-more">When resonance makes a nitrogen more basic</a><a href="#the-question-to-ask">The question to ask</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="amine-reactions"><a href="amine-reactions.html"><span class="bk-toc-n">99</span>Amine reactions</a></li><li data-toc-t="amine-synthesis"><a href="amine-synthesis.html"><span class="bk-toc-n">100</span>Making amines</a></li><li data-toc-t="hofmann-elimination"><a href="hofmann-elimination.html"><span class="bk-toc-n">101</span>Hofmann elimination</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-aromatic-breadth"><span class="bk-toc-n">21</span>Aromatic Follow-Through</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-amines">Amines</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Structure &amp; basicity: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/amine-structure.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="amines">Amines</span> &middot; Section 98 of 123</p>
+      <h1 class="bk-title">Structure &amp; basicity</h1>
+      <p class="bk-meta"><span class="bk-small">15 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/amine-structure.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="amine-structure" data-bk-ids="nitrogen-s-lone-pair alkyl-groups-a-small-effect-and resonance-donation-the-big-drop-in pyridine-and-pyrrole-two-aromatic-nitrogen when-resonance-makes-a-nitrogen-more the-question-to-ask what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">At the pH of blood, 7.4, more than 99.9% of methylamine, CH<sub>3</sub>NH<sub>2</sub>, carries an extra proton as the methylammonium ion, CH<sub>3</sub>NH<sub>3</sub><sup>+</sup>. Ethanol, a molecule of about the same size, stays neutral. The difference is the lone pair on nitrogen. How available that pair is decides almost everything on this page: how strong a base an amine is, how good a nucleophile it is, and whether its nitrogen can act as a leaving group. Across the compounds on this page, pK<sub>aH</sub> runs from about 14 down to about &minus;10.</p>
 
@@ -177,14 +186,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">How available the lone pair is also decides how an amine reacts. A free pair makes a good nucleophile and a delocalized one does not. <a class="chapter-ref" href="/ochem/notes/amine-reactions.html">Amine reactions</a> builds on that and uses the difference on purpose: turning an amine into an amide makes its nitrogen far less reactive. The pair also ties back to <a class="chapter-ref" href="/ochem/notes/directing-effects.html">Ortho/meta/para directing effects</a>: an NH<sub>2</sub> group strongly activates a benzene ring and directs to ortho and para through the same donation that makes aniline a million times weaker as a base.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="michael-robinson.html"><span>Previous</span>Michael and Robinson</a><a class="notes-prevnext notes-next" href="amine-reactions.html"><span>Next</span>Amine reactions</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="michael-robinson.html"><span>&larr; Section 97</span><b>Michael and Robinson</b></a><a class="tb-chapter-link next" href="amine-reactions.html"><span>Section 99 &rarr;</span><b>Amine reactions</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

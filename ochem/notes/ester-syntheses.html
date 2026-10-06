@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Enolate Chemistry</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Enolate Chemistry &middot; Section 96 of 123</p>
-    <h1>Malonic and acetoacetic ester</h1>
-    <a class="notes-onward-cta" href="../lessons/ester-syntheses.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="ester-syntheses">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-organometallics"><span class="bk-toc-n">18</span>Organolithiums, Cuprates &amp; Cross-Coupling</a>
+    <a class="bk-toc-chap" href="../learn.html#m-enolate-chemistry"><span class="bk-toc-chap-n">19</span><span><b>Enolate Chemistry</b><small>7 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 7 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="alpha-hydrogens"><a href="alpha-hydrogens.html"><span class="bk-toc-n">91</span>Alpha hydrogens &amp; enolates</a></li><li data-toc-t="aldol"><a href="aldol.html"><span class="bk-toc-n">92</span>Aldol reactions</a></li><li data-toc-t="claisen"><a href="claisen.html"><span class="bk-toc-n">93</span>Claisen reactions</a></li><li data-toc-t="alpha-halogenation"><a href="alpha-halogenation.html"><span class="bk-toc-n">94</span>Alpha halogenation &amp; the haloform reaction</a></li><li data-toc-t="enolate-regiochemistry"><a href="enolate-regiochemistry.html"><span class="bk-toc-n">95</span>Kinetic &amp; thermodynamic enolates</a></li><li class="current" data-toc-t="ester-syntheses"><a href="#main" aria-current="page"><span class="bk-toc-n">96</span>Malonic and acetoacetic ester</a><div class="bk-toc-onpage"><p>On this page</p><a href="#why-two-carbonyls">Why two carbonyls</a><a href="#malonic-ester-synthesis-a-carboxylic-acid">Malonic ester synthesis → a carboxylic acid</a><a href="#why-the-decarboxylation-works">Why the decarboxylation works</a><a href="#two-alkylations-one-dihalide-a-ring">Two alkylations, one dihalide: a ring</a><a href="#acetoacetic-ester-synthesis-a-methyl-ketone">Acetoacetic ester synthesis → a methyl ketone</a><a href="#the-sn2-limit-which-is-the">The SN2 limit, which is the real constraint</a><a href="#reading-a-target-backwards">Reading a target backwards</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="michael-robinson"><a href="michael-robinson.html"><span class="bk-toc-n">97</span>Michael and Robinson</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-amines"><span class="bk-toc-n">20</span>Amines</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-enolate-chemistry">Enolate Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Malonic and acetoacetic ester: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/ester-syntheses.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="enolate-chemistry">Enolate Chemistry</span> &middot; Section 96 of 123</p>
+      <h1 class="bk-title">Malonic and acetoacetic ester</h1>
+      <p class="bk-meta"><span class="bk-small">11 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/ester-syntheses.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="ester-syntheses" data-bk-ids="why-two-carbonyls malonic-ester-synthesis-a-carboxylic-acid why-the-decarboxylation-works two-alkylations-one-dihalide-a-ring acetoacetic-ester-synthesis-a-methyl-ketone the-sn2-limit-which-is-the reading-a-target-backwards what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Say you want butanoic acid, CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>COOH, and you plan to make it by putting an ethyl group on the &alpha; carbon of acetic acid. The &alpha; carbon is the carbon bonded to the C=O. The obvious starting ester is ethyl acetate, but its &alpha; hydrogens are hard to remove: their pKa is near 25. Only a very strong, bulky base such as LDA (lithium diisopropylamide) removes them fully, at &minus;78&nbsp;&deg;C. A smaller base such as ethoxide removes only a trace, and that enolate attacks another ester molecule instead (a Claisen condensation).</p>
 
@@ -189,14 +198,21 @@
 
 <p class="step-body">Every route runs the same four steps: deprotonate, alkylate, hydrolyze, decarboxylate. The S<sub>N</sub>2 step limits all of them. When a target is a carboxylic acid or a methyl ketone with a substituent on the &alpha; carbon, look for the halide that installed it.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="enolate-regiochemistry.html"><span>Previous</span>Kinetic &amp; thermodynamic enolates</a><a class="notes-prevnext notes-next" href="michael-robinson.html"><span>Next</span>Michael and Robinson</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="enolate-regiochemistry.html"><span>&larr; Section 95</span><b>Kinetic &amp; thermodynamic enolates</b></a><a class="tb-chapter-link next" href="michael-robinson.html"><span>Section 97 &rarr;</span><b>Michael and Robinson</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

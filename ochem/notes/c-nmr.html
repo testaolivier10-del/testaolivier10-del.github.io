@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>NMR Spectroscopy</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">NMR Spectroscopy &middot; Section 108 of 123</p>
-    <h1>¹³C NMR</h1>
-    <a class="notes-onward-cta" href="../lessons/c-nmr.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="c-nmr">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-aromatic-breadth"><span class="bk-toc-n">21</span>Aromatic Follow-Through</a>
+    <a class="bk-toc-chap" href="../learn.html#m-spectroscopy"><span class="bk-toc-chap-n">22</span><span><b>NMR Spectroscopy</b><small>2 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 2 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="h-nmr"><a href="h-nmr.html"><span class="bk-toc-n">107</span>¹H NMR</a></li><li class="current" data-toc-t="c-nmr"><a href="#main" aria-current="page"><span class="bk-toc-n">108</span>¹³C NMR</a><div class="bk-toc-onpage"><p>On this page</p><a href="#why-the-carbon-signal-is-weak">Why the carbon signal is weak</a><a href="#decoupling-one-line-for-each-carbon">Decoupling: one line for each carbon</a><a href="#chemical-shift-ranges">Chemical shift ranges</a><a href="#counting-carbon-environments-symmetry-made-visible">Counting carbon environments: symmetry made visible</a><a href="#dept-recovering-the-hydrogen-counts">DEPT: recovering the hydrogen counts</a><a href="#how-the-techniques-fit-together">How the techniques fit together</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-synthesis"><span class="bk-toc-n">23</span>Synthesis &amp; Retrosynthesis</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-spectroscopy">NMR Spectroscopy</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">¹³C NMR: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/c-nmr.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="spectroscopy">NMR Spectroscopy</span> &middot; Section 108 of 123</p>
+      <h1 class="bk-title">¹³C NMR</h1>
+      <p class="bk-meta"><span class="bk-small">11 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/c-nmr.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="c-nmr" data-bk-ids="why-the-carbon-signal-is-weak decoupling-one-line-for-each-carbon chemical-shift-ranges counting-carbon-environments-symmetry-made-visible dept-recovering-the-hydrogen-counts how-the-techniques-fit-together">
 <!-- notes:start -->
 <p class="step-body">Ethanol, CH₃CH₂OH, has two carbon atoms, and its ¹³C NMR (carbon-13 NMR) spectrum shows two sharp lines, one for each. Where the ¹H spectrum records a molecule&rsquo;s hydrogens, this one records its carbons.</p>
 <p class="step-body">The experiment works the same way as <a class="chapter-ref" href="/ochem/notes/h-nmr.html">¹H NMR</a>. Nuclei in a strong magnetic field absorb radio waves, and the electrons around each nucleus shift where it absorbs. This section covers only what changes when the nucleus is carbon. The payoff is a spectrum that answers one question very cleanly: how many different kinds of carbon does the molecule have?</p>
@@ -146,14 +155,21 @@
 <p class="step-body">¹³C is also the quickest check on a proposed structure. Count the carbon environments your structure predicts and compare that with the spectrum. If the numbers differ, the structure is wrong.</p>
 <p class="step-body">Every problem above starts from a molecular formula. That formula usually comes from <a class="chapter-ref" href="/ochem/notes/mass-spec.html">Mass spectrometry</a>, the technique that measures a molecule&rsquo;s mass.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="h-nmr.html"><span>Previous</span>¹H NMR</a><a class="notes-prevnext notes-next" href="retrosynthesis.html"><span>Next</span>Thinking backwards</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="h-nmr.html"><span>&larr; Section 107</span><b>¹H NMR</b></a><a class="tb-chapter-link next" href="retrosynthesis.html"><span>Section 109 &rarr;</span><b>Thinking backwards</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

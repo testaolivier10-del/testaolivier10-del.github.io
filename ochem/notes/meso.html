@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Stereochemistry</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Stereochemistry &middot; Section 33 of 123</p>
-    <h1>Meso compounds</h1>
-    <a class="notes-onward-cta" href="../lessons/meso.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="meso">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-alkanes-conformations"><span class="bk-toc-n">5</span>Alkanes &amp; Conformations</a>
+    <a class="bk-toc-chap" href="../learn.html#m-stereochemistry"><span class="bk-toc-chap-n">6</span><span><b>Stereochemistry</b><small>9 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 9 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="chirality"><a href="chirality.html"><span class="bk-toc-n">28</span>Chirality</a></li><li data-toc-t="stereocenters"><a href="stereocenters.html"><span class="bk-toc-n">29</span>Stereocenters</a></li><li data-toc-t="rs-configuration"><a href="rs-configuration.html"><span class="bk-toc-n">30</span>R/S configuration</a></li><li data-toc-t="enantiomers"><a href="enantiomers.html"><span class="bk-toc-n">31</span>Enantiomers</a></li><li data-toc-t="diastereomers"><a href="diastereomers.html"><span class="bk-toc-n">32</span>Diastereomers</a></li><li class="current" data-toc-t="meso"><a href="#main" aria-current="page"><span class="bk-toc-n">33</span>Meso compounds</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-exception-to-2">The exception to 2ⁿ</a><a href="#how-to-test-for-meso">How to test for meso</a><a href="#meso-compounds-in-rings">Meso compounds in rings</a><a href="#relationships-among-the-tartaric-acid-stereoisomers">Relationships among the tartaric acid stereoisomers</a><a href="#why-meso-compounds-matter-in-reactions">Why meso compounds matter in reactions</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="fischer"><a href="fischer.html"><span class="bk-toc-n">34</span>Fischer projections</a></li><li data-toc-t="cis-trans-ez"><a href="cis-trans-ez.html"><span class="bk-toc-n">35</span>Cis/trans and E/Z</a></li><li data-toc-t="prochirality"><a href="prochirality.html"><span class="bk-toc-n">36</span>Prochirality: which hydrogens are the same?</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-reactivity"><span class="bk-toc-n">7</span>How Reactions Happen</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-stereochemistry">Stereochemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Meso compounds: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/meso.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="stereochemistry">Stereochemistry</span> &middot; Section 33 of 123</p>
+      <h1 class="bk-title">Meso compounds</h1>
+      <p class="bk-meta"><span class="bk-small">9 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/meso.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="meso" data-bk-ids="the-exception-to-2 how-to-test-for-meso meso-compounds-in-rings relationships-among-the-tartaric-acid-stereoisomers why-meso-compounds-matter-in-reactions what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Tartaric acid, HOOC–CH(OH)–CH(OH)–COOH, has two stereocenters, C2 and C3. The 2ⁿ rule from <a class="chapter-ref" href="/ochem/notes/stereocenters.html">Stereocenters</a> allows it up to 2² = 4 stereoisomers, but tartaric acid has only three. Two of the four R/S combinations turn out to be the same molecule, and that molecule is achiral. This section shows how that happens, how to spot it, and why it matters.</p>
 
@@ -134,14 +143,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">Meso compounds are the standard trap in questions that ask you to count stereoisomers, and they come up whenever a symmetric alkene undergoes an addition with defined stereochemistry in <a class="chapter-ref" href="/ochem/learn.html#m-alkenes-alkynes">Alkenes &amp; Alkynes</a>. They also reinforce the chapter's central claim: chirality belongs to the molecule, not to its atoms, and the only way to settle it is to look for symmetry in the whole structure.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="diastereomers.html"><span>Previous</span>Diastereomers</a><a class="notes-prevnext notes-next" href="fischer.html"><span>Next</span>Fischer projections</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="diastereomers.html"><span>&larr; Section 32</span><b>Diastereomers</b></a><a class="tb-chapter-link next" href="fischer.html"><span>Section 34 &rarr;</span><b>Fischer projections</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

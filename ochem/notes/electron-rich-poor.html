@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>How Reactions Happen</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">How Reactions Happen &middot; Section 39 of 123</p>
-    <h1>Electron-rich vs. electron-poor atoms</h1>
-    <a class="notes-onward-cta" href="../lessons/electron-rich-poor.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="electron-rich-poor">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-stereochemistry"><span class="bk-toc-n">6</span>Stereochemistry</a>
+    <a class="bk-toc-chap" href="../learn.html#m-reactivity"><span class="bk-toc-chap-n">7</span><span><b>How Reactions Happen</b><small>7 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 7 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="nucleophiles"><a href="nucleophiles.html"><span class="bk-toc-n">37</span>Nucleophiles</a></li><li data-toc-t="electrophiles"><a href="electrophiles.html"><span class="bk-toc-n">38</span>Electrophiles</a></li><li class="current" data-toc-t="electron-rich-poor"><a href="#main" aria-current="page"><span class="bk-toc-n">39</span>Electron-rich vs. electron-poor atoms</a><div class="bk-toc-onpage"><p>On this page</p><a href="#one-lens-for-everything">One lens for everything</a><a href="#electron-poor-is-not-enough">Electron-poor is not enough</a><a href="#scanning-a-whole-molecule">Scanning a whole molecule</a><a href="#induction-a-pull-through-bonds">Induction: a pull through σ bonds</a><a href="#resonance-can-reach-further-than-you">Resonance can reach further than you would expect</a><a href="#when-induction-and-resonance-disagree">When induction and resonance disagree</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="leaving-groups"><a href="leaving-groups.html"><span class="bk-toc-n">40</span>Leaving groups</a></li><li data-toc-t="energy-diagrams"><a href="energy-diagrams.html"><span class="bk-toc-n">41</span>Energy diagrams &amp; the Hammond postulate</a></li><li data-toc-t="carbocations"><a href="carbocations.html"><span class="bk-toc-n">42</span>Carbocations</a></li><li data-toc-t="radical-halogenation"><a href="radical-halogenation.html"><span class="bk-toc-n">43</span>Radical halogenation</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-substitution-elimination"><span class="bk-toc-n">8</span>Substitution &amp; Elimination</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-reactivity">How Reactions Happen</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Electron-rich vs. electron-poor atoms: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/electron-rich-poor.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="reactivity">How Reactions Happen</span> &middot; Section 39 of 123</p>
+      <h1 class="bk-title">Electron-rich vs. electron-poor atoms</h1>
+      <p class="bk-meta"><span class="bk-small">12 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/electron-rich-poor.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="electron-rich-poor" data-bk-ids="one-lens-for-everything electron-poor-is-not-enough scanning-a-whole-molecule induction-a-pull-through-bonds resonance-can-reach-further-than-you when-induction-and-resonance-disagree what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Put ammonia and chloromethane in the same flask. You can predict what happens without knowing the name of the reaction. Ammonia&rsquo;s nitrogen has a lone pair that it is not using. Chloromethane&rsquo;s carbon is δ+, because chlorine pulls the C–Cl bonding pair toward itself. So the lone pair goes to the carbon and forms a new N–C bond, and chloride leaves with the old C–Cl pair.</p>
 <!-- fig:rp-first-look:start -->
@@ -156,14 +165,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">This lens is the working method for the rest of the course. It tells you which carbon is attacked in <a class="chapter-ref" href="/ochem/learn.html#m-substitution-elimination">Substitution &amp; Elimination</a>, why the carbonyl carbon is the target in <a class="chapter-ref" href="/ochem/learn.html#m-carbonyl-chemistry">Carbonyl Chemistry</a>, which position on a ring reacts in <a class="chapter-ref" href="/ochem/learn.html#m-aromatic-chemistry">Aromatic Chemistry</a>, and which proton is removed in <a class="chapter-ref" href="/ochem/learn.html#m-enolate-chemistry">Enolate Chemistry</a>. When a later page says a site is &ldquo;activated&rdquo; or &ldquo;deactivated,&rdquo; it is talking about electron density, and the explanation will always turn out to be induction, resonance, or both.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="electrophiles.html"><span>Previous</span>Electrophiles</a><a class="notes-prevnext notes-next" href="leaving-groups.html"><span>Next</span>Leaving groups</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="electrophiles.html"><span>&larr; Section 38</span><b>Electrophiles</b></a><a class="tb-chapter-link next" href="leaving-groups.html"><span>Section 40 &rarr;</span><b>Leaving groups</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

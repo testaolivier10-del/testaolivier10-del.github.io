@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Amines</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Amines &middot; Section 101 of 123</p>
-    <h1>Hofmann elimination</h1>
-    <a class="notes-onward-cta" href="../lessons/hofmann-elimination.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="hofmann-elimination">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-enolate-chemistry"><span class="bk-toc-n">19</span>Enolate Chemistry</a>
+    <a class="bk-toc-chap" href="../learn.html#m-amines"><span class="bk-toc-chap-n">20</span><span><b>Amines</b><small>4 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 4 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="amine-structure"><a href="amine-structure.html"><span class="bk-toc-n">98</span>Structure &amp; basicity</a></li><li data-toc-t="amine-reactions"><a href="amine-reactions.html"><span class="bk-toc-n">99</span>Amine reactions</a></li><li data-toc-t="amine-synthesis"><a href="amine-synthesis.html"><span class="bk-toc-n">100</span>Making amines</a></li><li class="current" data-toc-t="hofmann-elimination"><a href="#main" aria-current="page"><span class="bk-toc-n">101</span>Hofmann elimination</a><div class="bk-toc-onpage"><p>On this page</p><a href="#why-the-amine-has-to-be">Why the amine has to be converted first</a><a href="#the-hofmann-rule-the-less-substituted">The Hofmann rule: the less substituted alkene</a><a href="#worked-example-2-methylpentan-3-amine">Worked example: 2-methylpentan-3-amine</a><a href="#the-cope-elimination-similar-regiochemistry-the">The Cope elimination: similar regiochemistry, the other geometry</a><a href="#counting-methyl-groups-working-out-structures">Counting methyl groups: working out structures before spectroscopy</a><a href="#what-carries-forward">What carries forward</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-aromatic-breadth"><span class="bk-toc-n">21</span>Aromatic Follow-Through</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-amines">Amines</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Hofmann elimination: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/hofmann-elimination.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="amines">Amines</span> &middot; Section 101 of 123</p>
+      <h1 class="bk-title">Hofmann elimination</h1>
+      <p class="bk-meta"><span class="bk-small">12 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/hofmann-elimination.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="hofmann-elimination" data-bk-ids="why-the-amine-has-to-be the-hofmann-rule-the-less-substituted worked-example-2-methylpentan-3-amine the-cope-elimination-similar-regiochemistry-the counting-methyl-groups-working-out-structures what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Heat butan-2-amine (also called 2-aminobutane) with a strong base, and no alkene forms. Turn its NH<sub>2</sub> group into an N<sup>+</sup>(CH<sub>3</sub>)<sub>3</sub> group first, then heat it with hydroxide, and it gives mainly but-1-ene. This two-stage route from an amine to an alkene is the <b>Hofmann elimination</b>.</p>
 
@@ -184,14 +193,21 @@
 
 <p class="step-body"><a class="chapter-ref" href="/ochem/notes/e2.html">E2</a> treated Zaitsev&rsquo;s rule as a preference and showed two ways to override it: geometry, when only one &beta; hydrogen can be anti-periplanar, and a bulky base. The Hofmann elimination adds a third: a bulky leaving group. Before you predict the more substituted alkene, check the size of the base and of the leaving group.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="amine-synthesis.html"><span>Previous</span>Making amines</a><a class="notes-prevnext notes-next" href="nucleophilic-aromatic.html"><span>Next</span>SNAr and benzyne</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="amine-synthesis.html"><span>&larr; Section 100</span><b>Making amines</b></a><a class="tb-chapter-link next" href="nucleophilic-aromatic.html"><span>Section 102 &rarr;</span><b>SNAr and benzyne</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Foundations</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Foundations &middot; Section 9 of 123</p>
-    <h1>Bond polarity</h1>
-    <a class="notes-onward-cta" href="../lessons/bond-polarity.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="bond-polarity">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../learn.html#m-foundations"><span class="bk-toc-chap-n">1</span><span><b>Foundations</b><small>10 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 10 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="atomic-structure"><a href="atomic-structure.html"><span class="bk-toc-n">1</span>Atomic structure</a></li><li data-toc-t="orbitals"><a href="orbitals.html"><span class="bk-toc-n">2</span>Orbitals</a></li><li data-toc-t="hybridization"><a href="hybridization.html"><span class="bk-toc-n">3</span>Hybridization</a></li><li data-toc-t="bonding"><a href="bonding.html"><span class="bk-toc-n">4</span>Bonding</a></li><li data-toc-t="electronegativity"><a href="electronegativity.html"><span class="bk-toc-n">5</span>Electronegativity</a></li><li data-toc-t="formal-charge"><a href="formal-charge.html"><span class="bk-toc-n">6</span>Formal charge</a></li><li data-toc-t="lewis-structures"><a href="lewis-structures.html"><span class="bk-toc-n">7</span>Lewis structures</a></li><li data-toc-t="molecular-geometry"><a href="molecular-geometry.html"><span class="bk-toc-n">8</span>Molecular geometry</a></li><li class="current" data-toc-t="bond-polarity"><a href="#main" aria-current="page"><span class="bk-toc-n">9</span>Bond polarity</a><div class="bk-toc-onpage"><p>On this page</p><a href="#bond-dipoles">Bond dipoles</a><a href="#adding-bond-dipoles-the-molecular-dipole">Adding bond dipoles: the molecular dipole</a><a href="#cancelling-in-three-dimensions">Cancelling in three dimensions</a><a href="#dipole-moments-the-measured-values">Dipole moments: the measured values</a><a href="#how-polarity-decides-boiling-points">How polarity decides boiling points</a><a href="#like-dissolves-like">Like dissolves like</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="functional-groups"><a href="functional-groups.html"><span class="bk-toc-n">10</span>Functional groups</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-electron-movement"><span class="bk-toc-n">2</span>Drawing Molecules &amp; Moving Electrons</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-foundations">Foundations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Bond polarity: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/bond-polarity.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="foundations">Foundations</span> &middot; Section 9 of 123</p>
+      <h1 class="bk-title">Bond polarity</h1>
+      <p class="bk-meta"><span class="bk-small">15 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/bond-polarity.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="bond-polarity" data-bk-ids="bond-dipoles adding-bond-dipoles-the-molecular-dipole cancelling-in-three-dimensions dipole-moments-the-measured-values how-polarity-decides-boiling-points like-dissolves-like what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Carbon dioxide and water each have two strongly polar bonds. Yet a carbon dioxide molecule has no positive end and no negative end, and a water molecule has both. The difference is shape: carbon dioxide is straight, and water is bent.</p>
 <p class="step-body">This section puts two earlier ideas together. The Electronegativity section tells you which bonds are polar. The Molecular Geometry section tells you which way each bond points. Together they tell you whether a whole molecule is polar. That decides what it dissolves in, what it boils at, and how strongly it holds on to the molecules around it.</p>
@@ -174,14 +183,21 @@
 <p class="step-body">The next section, Functional Groups, reads the δ+ and δ&minus; ends of each group's bonds to predict where it reacts. <a class="chapter-ref" href="/ochem/learn.html#m-reactivity">How Reactions Happen</a> gives the δ+ carbon of a polar bond its proper name, an <b>electrophile</b>, and in most of the mechanisms ahead it is the atom that gets attacked.</p>
 <p class="step-body">Polarity also decides solvent choice in every reaction you will run. In <a class="chapter-ref" href="/ochem/learn.html#m-substitution-elimination">Substitution &amp; Elimination</a>, the solvent is what tips a reaction between its two substitution pathways, SN1 and SN2. And the boiling-point and solubility rankings above come back for alcohols, ethers, aldehydes and carboxylic acids.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="molecular-geometry.html"><span>Previous</span>Molecular geometry</a><a class="notes-prevnext notes-next" href="functional-groups.html"><span>Next</span>Functional groups</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="molecular-geometry.html"><span>&larr; Section 8</span><b>Molecular geometry</b></a><a class="tb-chapter-link next" href="functional-groups.html"><span>Section 10 &rarr;</span><b>Functional groups</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

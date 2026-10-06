@@ -29,6 +29,8 @@
 <script src="../../assets/hub-progress.js" defer></script>
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/anp.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -90,25 +92,26 @@
 <body data-topic="action-potential">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell anp-tb anp-notes">
+<div class="tb-shell bk bk-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 12 contents</button>
-  <aside class="tb-rail anp-nav-ref anp-notes-rail" id="anp-rail">
+  <aside class="tb-rail anp-nav-ref bk-rail" id="anp-rail">
     <p class="tb-rail-title">Contents</p>
-    <a class="anp-toc-other" href="../chapters/muscular-system.html"><span class="anp-toc-n">11</span>The muscular system</a>
-    <a class="anp-toc-chap" href="../chapters/nervous-tissue.html"><span class="anp-toc-chap-n">12</span><span><b>Nervous tissue and neural signaling</b><small>4 topics &middot; A&amp;P I</small></span></a>
-    <div class="anp-toc-prog" data-toc-prog="nervous-tissue"><div class="tb-progress-row"><span><b>0</b> of 4 lessons done</span><span class="anp-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
-    <nav class="tb-contents" aria-label="Chapter contents"><ol class="anp-toc-list"><li data-toc-t="nervous-system-organization"><a href="nervous-system-organization.html"><span class="anp-toc-n">64</span>Organization of the nervous system</a></li><li data-toc-t="neurons-glia"><a href="neurons-glia.html"><span class="anp-toc-n">65</span>Neurons and glial cells</a></li><li class="current" data-toc-t="action-potential"><a href="#main" aria-current="page"><span class="anp-toc-n">66</span>The action potential in detail</a><div class="anp-toc-onpage"><p>On this page</p><a href="#where-you-are-starting-from">Where you are starting from</a><a href="#the-sodium-channel-has-two-gates">The sodium channel has two gates</a><a href="#the-potassium-channel-is-the-late">The potassium channel is the late one</a><a href="#the-phases-on-the-graph-with">The phases on the graph, with numbers</a><a href="#threshold-and-all-or-none">Threshold and all-or-none</a><a href="#absolute-and-relative-refractory-periods">Absolute and relative refractory periods</a><a href="#propagation-continuous-conduction">Propagation: continuous conduction</a><a href="#saltatory-conduction">Saltatory conduction</a><a href="#what-sets-conduction-velocity">What sets conduction velocity</a><a href="#demyelinating-disease">Demyelinating disease</a><a href="#predicting-what-drugs-toxins-and-potassium">Predicting what drugs, toxins and potassium do</a></div></li><li data-toc-t="synapses"><a href="synapses.html"><span class="anp-toc-n">67</span>Synapses and neurotransmitters</a></li></ol></nav>
-    <a class="anp-toc-other" href="../chapters/cns.html"><span class="anp-toc-n">13</span>The brain and spinal cord</a>
+    <a class="bk-toc-other" href="../chapters/muscular-system.html"><span class="bk-toc-n">11</span>The muscular system</a>
+    <a class="bk-toc-chap" href="../chapters/nervous-tissue.html"><span class="bk-toc-chap-n">12</span><span><b>Nervous tissue and neural signaling</b><small>4 topics &middot; A&amp;P I</small></span></a>
+    <div class="anp-toc-prog" data-toc-prog="nervous-tissue"><div class="tb-progress-row"><span><b>0</b> of 4 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="nervous-system-organization"><a href="nervous-system-organization.html"><span class="bk-toc-n">64</span>Organization of the nervous system</a></li><li data-toc-t="neurons-glia"><a href="neurons-glia.html"><span class="bk-toc-n">65</span>Neurons and glial cells</a></li><li class="current" data-toc-t="action-potential"><a href="#main" aria-current="page"><span class="bk-toc-n">66</span>The action potential in detail</a><div class="bk-toc-onpage"><p>On this page</p><a href="#where-you-are-starting-from">Where you are starting from</a><a href="#the-sodium-channel-has-two-gates">The sodium channel has two gates</a><a href="#the-potassium-channel-is-the-late">The potassium channel is the late one</a><a href="#the-phases-on-the-graph-with">The phases on the graph, with numbers</a><a href="#threshold-and-all-or-none">Threshold and all-or-none</a><a href="#absolute-and-relative-refractory-periods">Absolute and relative refractory periods</a><a href="#propagation-continuous-conduction">Propagation: continuous conduction</a><a href="#saltatory-conduction">Saltatory conduction</a><a href="#what-sets-conduction-velocity">What sets conduction velocity</a><a href="#demyelinating-disease">Demyelinating disease</a><a href="#predicting-what-drugs-toxins-and-potassium">Predicting what drugs, toxins and potassium do</a></div></li><li data-toc-t="synapses"><a href="synapses.html"><span class="bk-toc-n">67</span>Synapses and neurotransmitters</a></li></ol></nav>
+    <a class="bk-toc-other" href="../chapters/cns.html"><span class="bk-toc-n">13</span>The brain and spinal cord</a>
   </aside>
   <main class="tb-main" id="main">
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/nervous-tissue.html">Nervous tissue and neural signaling</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The action potential in detail: notes</span></nav>
-    <div class="anp-pillbar"><a class="anp-pill" href="../lessons/action-potential.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
-    <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 12 &middot; Topic 66 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
-      <h1 class="anp-notes-title">The action potential in detail</h1>
-      <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/gradients.html">Flow down gradients</a><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">15 min read</span><span class="anp-tb-chip" data-chip-topic="action-potential">Not practiced</span></p>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/action-potential.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Chapter 12 &middot; Topic 66 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
+      <h1 class="bk-title">The action potential in detail</h1>
+      <p class="bk-meta anp-nav-ref"><span class="bk-tag">A&amp;P I</span><a class="bk-tag" href="../concepts/gradients.html">Flow down gradients</a><a class="bk-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="bk-small">15 min read</span><span class="bk-chip" data-chip-topic="action-potential">Not practiced</span></p>
+      <div class="bk-actions anp-nav-ref" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/anatomy-physiology/notes/action-potential.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
     </header>
-    <article class="anp-prose">
+    <article class="anp-prose bk-prose">
 <p>An <a class="gl" href="../notes/action-potential-basics.html" data-c="action-potential-basic">action potential</a> lasts about two milliseconds, yet every phase of it is set by the opening and closing of two kinds of channel. This page explains the action potential phases on a graph, with the numbers you are expected to know: the gates inside the <a class="gl" href="../notes/action-potential-basics.html" data-c="voltage-gated-na-k">voltage-gated sodium channel</a>, why the potassium channels are late, the <span class="gl" tabindex="0" data-c="refractory-periods">absolute and relative refractory periods</span>, and how <a class="gl" href="../notes/neurons-glia.html" data-c="myelin">myelin</a> turns slow <span class="gl" tabindex="0" data-c="continuous-conduction">continuous conduction</span> into fast <span class="gl" tabindex="0" data-c="saltatory-conduction">saltatory conduction</span>. It ends with what happens when myelin is lost, as in <span class="gl" tabindex="0" data-c="demyelination">multiple sclerosis</span>.</p>
 
 <h2 id="where-you-are-starting-from">Where you are starting from</h2>
@@ -370,6 +373,7 @@
   <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
 <script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

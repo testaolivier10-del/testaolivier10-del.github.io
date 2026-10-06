@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Alcohols, Ethers &amp; Related Chemistry</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Alcohols, Ethers &amp; Related Chemistry &middot; Section 69 of 123</p>
-    <h1>Epoxides</h1>
-    <a class="notes-onward-cta" href="../lessons/epoxides.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="epoxides">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-aromatic-chemistry"><span class="bk-toc-n">12</span>Aromatic Chemistry</a>
+    <a class="bk-toc-chap" href="../learn.html#m-alcohols-ethers"><span class="bk-toc-chap-n">13</span><span><b>Alcohols, Ethers &amp; Related Chemistry</b><small>3 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 3 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="alcohol-reactions"><a href="alcohol-reactions.html"><span class="bk-toc-n">67</span>Alcohol reactions</a></li><li data-toc-t="ether-chemistry"><a href="ether-chemistry.html"><span class="bk-toc-n">68</span>Ether chemistry</a></li><li class="current" data-toc-t="epoxides"><a href="#main" aria-current="page"><span class="bk-toc-n">69</span>Epoxides</a><div class="bk-toc-onpage"><p>On this page</p><a href="#ring-strain-makes-epoxides-reactive">Ring strain makes epoxides reactive</a><a href="#naming-them">Naming them</a><a href="#making-an-epoxide">Making an epoxide</a><a href="#base-catalyzed-opening-sn2-at-the">Base-catalyzed opening: SN2 at the less hindered carbon</a><a href="#acid-catalyzed-opening-attack-shifts-to">Acid-catalyzed opening: attack shifts to the more substituted carbon</a><a href="#same-substrate-opposite-regiochemistry">Same substrate, opposite regiochemistry</a><a href="#both-openings-are-anti">Both openings are anti</a><a href="#why-this-matters-beyond-the-exam">Why this matters beyond the exam</a><a href="#what-carries-forward">What carries forward</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-grignard"><span class="bk-toc-n">14</span>Organometallic Bonding &amp; Grignard Reagents</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-alcohols-ethers">Alcohols, Ethers &amp; Related Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Epoxides: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/epoxides.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="alcohols-ethers">Alcohols, Ethers &amp; Related Chemistry</span> &middot; Section 69 of 123</p>
+      <h1 class="bk-title">Epoxides</h1>
+      <p class="bk-meta"><span class="bk-small">12 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/epoxides.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="epoxides" data-bk-ids="ring-strain-makes-epoxides-reactive naming-them making-an-epoxide base-catalyzed-opening-sn2-at-the acid-catalyzed-opening-attack-shifts-to same-substrate-opposite-regiochemistry both-openings-are-anti why-this-matters-beyond-the-exam what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Stir diethyl ether with sodium methoxide and nothing happens, even after days. Ethylene oxide is also an ether, yet under the same conditions its ring opens readily and gives 2-methoxyethanol, CH<sub>3</sub>O&ndash;CH<sub>2</sub>&ndash;CH<sub>2</sub>&ndash;OH.</p>
 <p class="step-body">The difference is the ring. An <b>epoxide</b> is an ether whose oxygen sits in a three-membered ring with two carbons, and ethylene oxide is the simplest one. <a class="chapter-ref" href="/ochem/notes/ether-chemistry.html">Ether chemistry</a> showed that ordinary ethers hardly react at all. Squeeze the C&ndash;O&ndash;C unit into a three-membered ring and it becomes one of the most useful electrophiles in synthesis.</p>
@@ -150,14 +159,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">Opening an epoxide with a carbon nucleophile is a standard way to lengthen a chain in synthesis, and the acid/base switch in regiochemistry is a favorite exam question. This section also closes <a class="chapter-ref" href="/ochem/learn.html#m-alcohols-ethers">Alcohols, Ethers &amp; Related Chemistry</a> with a general point: reactivity often depends on strain and activation as much as on the functional group. The same C&ndash;O bond is inert in diethyl ether and eager to react in ethylene oxide.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="ether-chemistry.html"><span>Previous</span>Ether chemistry</a><a class="notes-prevnext notes-next" href="organometallic-bonding.html"><span>Next</span>Why C–metal means nucleophilic carbon</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="ether-chemistry.html"><span>&larr; Section 68</span><b>Ether chemistry</b></a><a class="tb-chapter-link next" href="organometallic-bonding.html"><span>Section 70 &rarr;</span><b>Why C–metal means nucleophilic carbon</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

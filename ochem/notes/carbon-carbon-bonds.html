@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Synthesis &amp; Retrosynthesis</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Synthesis &amp; Retrosynthesis &middot; Section 110 of 123</p>
-    <h1>Making carbon–carbon bonds</h1>
-    <a class="notes-onward-cta" href="../lessons/carbon-carbon-bonds.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="carbon-carbon-bonds">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-spectroscopy"><span class="bk-toc-n">22</span>NMR Spectroscopy</a>
+    <a class="bk-toc-chap" href="../learn.html#m-synthesis"><span class="bk-toc-chap-n">23</span><span><b>Synthesis &amp; Retrosynthesis</b><small>5 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 5 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="retrosynthesis"><a href="retrosynthesis.html"><span class="bk-toc-n">109</span>Thinking backwards</a></li><li class="current" data-toc-t="carbon-carbon-bonds"><a href="#main" aria-current="page"><span class="bk-toc-n">110</span>Making carbon–carbon bonds</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-list">The list</a><a href="#four-limits-that-rule-out-routes">Four limits that rule out routes</a><a href="#count-the-carbons-first">Count the carbons first</a><a href="#where-the-new-bond-can-go">Where the new bond can go relative to a carbonyl</a><a href="#reactions-that-build-rings">Reactions that build rings</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="functional-group-interconversion"><a href="functional-group-interconversion.html"><span class="bk-toc-n">111</span>Functional group interconversion</a></li><li data-toc-t="protecting-groups"><a href="protecting-groups.html"><span class="bk-toc-n">112</span>Protecting groups</a></li><li data-toc-t="multistep-synthesis"><a href="multistep-synthesis.html"><span class="bk-toc-n">113</span>Planning a multistep route</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-biomolecules"><span class="bk-toc-n">24</span>Biomolecules</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-synthesis">Synthesis &amp; Retrosynthesis</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Making carbon–carbon bonds: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/carbon-carbon-bonds.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="synthesis">Synthesis &amp; Retrosynthesis</span> &middot; Section 110 of 123</p>
+      <h1 class="bk-title">Making carbon–carbon bonds</h1>
+      <p class="bk-meta"><span class="bk-small">15 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/carbon-carbon-bonds.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="carbon-carbon-bonds" data-bk-ids="the-list four-limits-that-rule-out-routes count-the-carbons-first where-the-new-bond-can-go reactions-that-build-rings what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Take 1-phenylpropan-1-ol: a benzene ring bonded to a three-carbon chain that carries an OH. Suppose you have to make it from benzene and pieces of three carbons or fewer. The OH could be put in place several ways, but the bond that joins the ring to the chain can come from only a few reactions. Choosing that reaction is most of the problem.</p>
 
@@ -213,14 +222,21 @@
 
 <p class="step-body">This list is the skeleton of every synthesis question you will meet. Functional group interconversions decorate it, protecting groups keep it from interfering with itself, and route planning puts the steps in the right order. The C–C bonds are the decisions, and everything else is bookkeeping around them.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="retrosynthesis.html"><span>Previous</span>Thinking backwards</a><a class="notes-prevnext notes-next" href="functional-group-interconversion.html"><span>Next</span>Functional group interconversion</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="retrosynthesis.html"><span>&larr; Section 109</span><b>Thinking backwards</b></a><a class="tb-chapter-link next" href="functional-group-interconversion.html"><span>Section 111 &rarr;</span><b>Functional group interconversion</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

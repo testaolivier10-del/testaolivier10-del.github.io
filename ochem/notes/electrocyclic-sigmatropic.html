@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Conjugation &amp; Pericyclic Reactions</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Conjugation &amp; Pericyclic Reactions &middot; Section 63 of 123</p>
-    <h1>Electrocyclic &amp; sigmatropic reactions</h1>
-    <a class="notes-onward-cta" href="../lessons/electrocyclic-sigmatropic.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="electrocyclic-sigmatropic">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-ir-mass-spec"><span class="bk-toc-n">10</span>IR &amp; Mass Spectrometry</a>
+    <a class="bk-toc-chap" href="../learn.html#m-conjugation"><span class="bk-toc-chap-n">11</span><span><b>Conjugation &amp; Pericyclic Reactions</b><small>6 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 6 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="conjugated-systems"><a href="conjugated-systems.html"><span class="bk-toc-n">58</span>Conjugated systems</a></li><li data-toc-t="diene-addition"><a href="diene-addition.html"><span class="bk-toc-n">59</span>1,2- vs 1,4-addition</a></li><li data-toc-t="kinetic-thermodynamic"><a href="kinetic-thermodynamic.html"><span class="bk-toc-n">60</span>Kinetic vs thermodynamic control</a></li><li data-toc-t="diels-alder"><a href="diels-alder.html"><span class="bk-toc-n">61</span>The Diels–Alder reaction</a></li><li data-toc-t="uv-vis"><a href="uv-vis.html"><span class="bk-toc-n">62</span>UV-Vis spectroscopy</a></li><li class="current" data-toc-t="electrocyclic-sigmatropic"><a href="#main" aria-current="page"><span class="bk-toc-n">63</span>Electrocyclic &amp; sigmatropic reactions</a><div class="bk-toc-onpage"><p>On this page</p><a href="#electrocyclic-reactions-a-chain-closes-into">Electrocyclic reactions: a chain closes into a ring</a><a href="#conrotatory-and-disrotatory">Conrotatory and disrotatory</a><a href="#which-way-the-ends-turn-the">Which way the ends turn: the HOMO decides</a><a href="#the-woodward-hoffmann-rules-for-electrocyclic">The Woodward–Hoffmann rules for electrocyclic reactions</a><a href="#following-the-end-groups">Following the end groups</a><a href="#sigmatropic-rearrangements-a-bond-moves">Sigmatropic rearrangements: a σ bond moves</a><a href="#the-claisen-rearrangement">The Claisen rearrangement</a><a href="#the-chair-transition-state">The chair transition state</a><a href="#three-kinds-of-pericyclic-reaction">Three kinds of pericyclic reaction</a><a href="#what-carries-forward">What carries forward</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-aromatic-chemistry"><span class="bk-toc-n">12</span>Aromatic Chemistry</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-conjugation">Conjugation &amp; Pericyclic Reactions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Electrocyclic &amp; sigmatropic reactions: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/electrocyclic-sigmatropic.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="conjugation">Conjugation &amp; Pericyclic Reactions</span> &middot; Section 63 of 123</p>
+      <h1 class="bk-title">Electrocyclic &amp; sigmatropic reactions</h1>
+      <p class="bk-meta"><span class="bk-small">10 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/electrocyclic-sigmatropic.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="electrocyclic-sigmatropic" data-bk-ids="electrocyclic-reactions-a-chain-closes-into conrotatory-and-disrotatory which-way-the-ends-turn-the the-woodward-hoffmann-rules-for-electrocyclic following-the-end-groups sigmatropic-rearrangements-a-bond-moves the-claisen-rearrangement the-chair-transition-state three-kinds-of-pericyclic-reaction what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Heat (2<i>E</i>,4<i>Z</i>,6<i>E</i>)-octa-2,4,6-triene, a chain of eight carbons with three conjugated C=C bonds, and it closes into a six-membered ring: 5,6-dimethylcyclohexa-1,3-diene. Only the <i>cis</i> isomer forms, with both methyls on the same face of the ring. Shine ultraviolet light on the same triene instead, and the ring that forms is the <i>trans</i> isomer. Same starting material, same ring, opposite stereochemistry, and the only thing that changed is heat against light.</p>
 
@@ -179,14 +188,21 @@
 
 <p class="step-body">For an electrocyclic reaction, count the &pi; electrons, decide heat or light, read conrotatory or disrotatory from the table, and then follow the in and out groups. For a sigmatropic rearrangement, find the &sigma; bond that breaks, number outward from it, and draw the six-atom chair. Woodward and Hoffmann&rsquo;s idea, that orbital phases decide which concerted reactions are allowed, is the reason Hoffmann shared the 1981 Nobel Prize in Chemistry.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="uv-vis.html"><span>Previous</span>UV-Vis spectroscopy</a><a class="notes-prevnext notes-next" href="aromaticity.html"><span>Next</span>Aromaticity</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="uv-vis.html"><span>&larr; Section 62</span><b>UV-Vis spectroscopy</b></a><a class="tb-chapter-link next" href="aromaticity.html"><span>Section 64 &rarr;</span><b>Aromaticity</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

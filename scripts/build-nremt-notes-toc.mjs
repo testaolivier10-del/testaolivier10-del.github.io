@@ -44,7 +44,7 @@
      node scripts/build-nremt-notes-toc.mjs            rewrite
      node scripts/build-nremt-notes-toc.mjs --check    fail if stale (CI)
 */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -82,7 +82,23 @@ ${items}
       </div>
       ${END}`;
 
-const current = readFileSync(PAGE, 'utf8');
+/* The shared glossary popups (docs/course-shell.md): the page loads
+   assets/course/glossary-tip.js with the course's glossary.json, and its
+   script marks each section's prose after render. Written only when both
+   files exist, so the page never names a script or data file that is not
+   there; rerun this once they land. */
+const TIP_START = '<!-- glossary-tip:start -->';
+const TIP_END = '<!-- glossary-tip:end -->';
+const tipReady = existsSync(join(ROOT, 'assets', 'course', 'glossary-tip.js')) && existsSync(join(ROOT, 'nremt', 'assets', 'glossary.json'));
+const tipBlock = `${TIP_START}\n${tipReady ? '<script src="../assets/course/glossary-tip.js" data-glossary="assets/glossary.json" data-course-root="./" defer></script>\n' : ''}${TIP_END}`;
+
+const original = readFileSync(PAGE, 'utf8');
+const ta = original.indexOf(TIP_START), tb = original.indexOf(TIP_END);
+if (ta === -1 || tb === -1) {
+  console.error('FAIL: nremt/study-notes.html has no <!-- glossary-tip:start --> / <!-- glossary-tip:end --> markers.');
+  process.exit(1);
+}
+const current = original;
 const a = current.indexOf(START);
 const b = current.indexOf(END);
 
@@ -98,6 +114,11 @@ if (a !== -1 && b !== -1) {
     process.exit(1);
   }
   next = current.replace(anchor, `<div id="tbChapter">\n      ${block}`);
+}
+
+{
+  const x = next.indexOf(TIP_START), y = next.indexOf(TIP_END);
+  next = next.slice(0, x) + tipBlock + next.slice(y + TIP_END.length);
 }
 
 if (next === current) {

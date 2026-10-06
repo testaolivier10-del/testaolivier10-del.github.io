@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>IUPAC Nomenclature</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">IUPAC Nomenclature &middot; Section 14 of 123</p>
-    <h1>The parent chain</h1>
-    <a class="notes-onward-cta" href="../lessons/naming-parent-chain.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="naming-parent-chain">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-electron-movement"><span class="bk-toc-n">2</span>Drawing Molecules &amp; Moving Electrons</a>
+    <a class="bk-toc-chap" href="../learn.html#m-nomenclature"><span class="bk-toc-chap-n">3</span><span><b>IUPAC Nomenclature</b><small>4 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 4 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li class="current" data-toc-t="naming-parent-chain"><a href="#main" aria-current="page"><span class="bk-toc-n">14</span>The parent chain</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-roots-ten-words-that-do">The roots: ten words that do most of the work</a><a href="#rule-1-the-parent-chain-is">Rule 1: the parent chain is the longest continuous chain of carbons</a><a href="#check-every-end-not-just-the">Check every end, not just the one you started from</a><a href="#when-two-chains-tie">When two chains tie</a><a href="#rule-2-number-the-chain-to">Rule 2: number the chain to give the lowest locants</a><a href="#punctuation-is-part-of-the-name">Punctuation is part of the name</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="naming-substituents"><a href="naming-substituents.html"><span class="bk-toc-n">15</span>Substituents &amp; locants</a></li><li data-toc-t="naming-functional-groups"><a href="naming-functional-groups.html"><span class="bk-toc-n">16</span>Functional group priority</a></li><li data-toc-t="naming-rings-unsaturation"><a href="naming-rings-unsaturation.html"><span class="bk-toc-n">17</span>Rings &amp; unsaturation</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-acids-bases"><span class="bk-toc-n">4</span>Acids &amp; Bases</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-nomenclature">IUPAC Nomenclature</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The parent chain: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/naming-parent-chain.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="nomenclature">IUPAC Nomenclature</span> &middot; Section 14 of 123</p>
+      <h1 class="bk-title">The parent chain</h1>
+      <p class="bk-meta"><span class="bk-small">11 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/naming-parent-chain.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="naming-parent-chain" data-bk-ids="the-roots-ten-words-that-do rule-1-the-parent-chain-is check-every-end-not-just-the when-two-chains-tie rule-2-number-the-chain-to punctuation-is-part-of-the-name what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Start with one name: <b>2-methylbutan-1-ol</b>. Every piece of it points at part of a drawing. The 2 and the 1 are <b>locants</b>: numbers that say which carbon something sits on. <i>Methyl</i> is a one-carbon branch, <i>but</i> says the main chain has four carbons, and <i>ol</i> says an OH group is attached.</p>
 <!-- fig:name-anatomy:start -->
@@ -202,14 +211,21 @@
 
 <p class="step-body">Practice finding and numbering the parent now, on molecules where nothing competes. Each later rule is then a small addition, not a new skill.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="resonance.html"><span>Previous</span>Resonance</a><a class="notes-prevnext notes-next" href="naming-substituents.html"><span>Next</span>Substituents &amp; locants</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="resonance.html"><span>&larr; Section 13</span><b>Resonance</b></a><a class="tb-chapter-link next" href="naming-substituents.html"><span>Section 15 &rarr;</span><b>Substituents &amp; locants</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

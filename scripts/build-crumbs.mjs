@@ -24,10 +24,13 @@ const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const check = process.argv.includes('--check');
 const DIRS = ['nremt', 'ochem', 'ochem/lessons', 'ochem/mechanisms', 'ochem/tools'];
 const GENERATED = new Set(['ochem/glossary.html']); // its generator applies the row itself
+/* Textbook pages carry their crumb inside the reading column, as A&P and Bio
+   do (assets/course/book.css), so they get no row under the tabs. */
+const IN_PAGE = new Set(['ochem/learn.html', 'nremt/study-notes.html']);
 const stale = [];
 for (const dir of DIRS) {
   for (const f of readdirSync(join(ROOT, dir))) {
-    if (!f.endsWith('.html') || GENERATED.has(`${dir}/${f}`)) continue;
+    if (!f.endsWith('.html') || GENERATED.has(`${dir}/${f}`) || IN_PAGE.has(`${dir}/${f}`)) continue;
     const file = join(ROOT, dir, f);
     const html = readFileSync(file, 'utf8');
     const want = applyCrumbs(html);

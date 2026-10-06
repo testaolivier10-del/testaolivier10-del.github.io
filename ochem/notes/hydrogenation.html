@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Alkenes &amp; Alkynes</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Alkenes &amp; Alkynes &middot; Section 54 of 123</p>
-    <h1>Catalytic hydrogenation</h1>
-    <a class="notes-onward-cta" href="../lessons/hydrogenation.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="hydrogenation">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-substitution-elimination"><span class="bk-toc-n">8</span>Substitution &amp; Elimination</a>
+    <a class="bk-toc-chap" href="../learn.html#m-alkenes-alkynes"><span class="bk-toc-chap-n">9</span><span><b>Alkenes &amp; Alkynes</b><small>7 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 7 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="alkene-structure"><a href="alkene-structure.html"><span class="bk-toc-n">49</span>Alkene structure</a></li><li data-toc-t="addition-reactions"><a href="addition-reactions.html"><span class="bk-toc-n">50</span>Addition reactions</a></li><li data-toc-t="markovnikov"><a href="markovnikov.html"><span class="bk-toc-n">51</span>Markovnikov / anti-Markovnikov</a></li><li data-toc-t="alkene-oxidation"><a href="alkene-oxidation.html"><span class="bk-toc-n">52</span>Oxidative cleavage &amp; dihydroxylation</a></li><li data-toc-t="cyclopropanation"><a href="cyclopropanation.html"><span class="bk-toc-n">53</span>Carbenes &amp; cyclopropanation</a></li><li class="current" data-toc-t="hydrogenation"><a href="#main" aria-current="page"><span class="bk-toc-n">54</span>Catalytic hydrogenation</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-basic-reaction">The basic reaction</a><a href="#how-the-metal-delivers-the-hydrogens">How the metal delivers the hydrogens</a><a href="#syn-fixes-the-arrangement-not-the">Syn fixes the arrangement, not the mirror image</a><a href="#what-gets-reduced-and-in-what">What gets reduced, and in what order</a><a href="#stopping-an-alkyne-halfway-in-either">Stopping an alkyne halfway, in either geometry</a><a href="#heats-of-hydrogenation-as-a-measuring">Heats of hydrogenation, as a measuring tool</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="alkynes"><a href="alkynes.html"><span class="bk-toc-n">55</span>Alkynes</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-ir-mass-spec"><span class="bk-toc-n">10</span>IR &amp; Mass Spectrometry</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-alkenes-alkynes">Alkenes &amp; Alkynes</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Catalytic hydrogenation: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/hydrogenation.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="alkenes-alkynes">Alkenes &amp; Alkynes</span> &middot; Section 54 of 123</p>
+      <h1 class="bk-title">Catalytic hydrogenation</h1>
+      <p class="bk-meta"><span class="bk-small">11 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/hydrogenation.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="hydrogenation" data-bk-ids="the-basic-reaction how-the-metal-delivers-the-hydrogens syn-fixes-the-arrangement-not-the what-gets-reduced-and-in-what stopping-an-alkyne-halfway-in-either heats-of-hydrogenation-as-a-measuring what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Stir cyclohexene with a little powdered palladium under hydrogen gas. It takes up one molecule of H₂ and becomes cyclohexane. One hydrogen atom has joined each carbon of the old C=C. This is <b>catalytic hydrogenation</b>: adding H₂ across a multiple bond with the help of a metal. You met it in <a class="chapter-ref" href="/ochem/learn.html#m-alkenes-alkynes">Alkene structure</a> as a way to measure alkene stability; this section shows how it works.</p>
 
@@ -179,14 +188,21 @@
 
 <p class="step-body">Two ideas carry forward. First, stereochemistry: hydrogenation is syn, and the Lindlar and dissolving-metal pair is the standard way to build an alkene of known geometry from an alkyne, which is a large part of why alkynes are useful in synthesis. Second, chemoselectivity: set the order above beside the hydride reagents of <a class="chapter-ref" href="/ochem/learn.html#m-redox">Oxidation &amp; Reduction</a>, and you can answer most questions of the form "which reagent, and what survives?"</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="cyclopropanation.html"><span>Previous</span>Carbenes &amp; cyclopropanation</a><a class="notes-prevnext notes-next" href="alkynes.html"><span>Next</span>Alkynes</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="cyclopropanation.html"><span>&larr; Section 53</span><b>Carbenes &amp; cyclopropanation</b></a><a class="tb-chapter-link next" href="alkynes.html"><span>Section 55 &rarr;</span><b>Alkynes</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

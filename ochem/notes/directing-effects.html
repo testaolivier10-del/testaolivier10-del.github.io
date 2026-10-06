@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Aromatic Chemistry</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Aromatic Chemistry &middot; Section 66 of 123</p>
-    <h1>Ortho/meta/para directing effects</h1>
-    <a class="notes-onward-cta" href="../lessons/directing-effects.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="directing-effects">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-conjugation"><span class="bk-toc-n">11</span>Conjugation &amp; Pericyclic Reactions</a>
+    <a class="bk-toc-chap" href="../learn.html#m-aromatic-chemistry"><span class="bk-toc-chap-n">12</span><span><b>Aromatic Chemistry</b><small>3 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 3 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="aromaticity"><a href="aromaticity.html"><span class="bk-toc-n">64</span>Aromaticity</a></li><li data-toc-t="eas"><a href="eas.html"><span class="bk-toc-n">65</span>Electrophilic aromatic substitution</a></li><li class="current" data-toc-t="directing-effects"><a href="#main" aria-current="page"><span class="bk-toc-n">66</span>Ortho/meta/para directing effects</a><div class="bk-toc-onpage"><p>On this page</p><a href="#two-questions-how-fast-and-where">Two questions: how fast, and where</a><a href="#where-the-positive-charge-lands">Where the positive charge lands</a><a href="#activators-donate-direct-ortho-para-speed">Activators: donate, direct ortho/para, speed it up</a><a href="#meta-directors-withdraw-direct-meta-slow">Meta directors: withdraw, direct meta, slow it down</a><a href="#halogens-they-slow-the-ring-but">Halogens: they slow the ring but still direct ortho/para</a><a href="#ortho-versus-para">Ortho versus para</a><a href="#two-groups-on-one-ring">Two groups on one ring</a><a href="#planning-the-order-of-steps">Planning the order of steps</a><a href="#two-practical-tricks">Two practical tricks</a><a href="#what-carries-forward">What carries forward</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-alcohols-ethers"><span class="bk-toc-n">13</span>Alcohols, Ethers &amp; Related Chemistry</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-aromatic-chemistry">Aromatic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Ortho/meta/para directing effects: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/directing-effects.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="aromatic-chemistry">Aromatic Chemistry</span> &middot; Section 66 of 123</p>
+      <h1 class="bk-title">Ortho/meta/para directing effects</h1>
+      <p class="bk-meta"><span class="bk-small">14 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/directing-effects.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="directing-effects" data-bk-ids="two-questions-how-fast-and-where where-the-positive-charge-lands activators-donate-direct-ortho-para-speed meta-directors-withdraw-direct-meta-slow halogens-they-slow-the-ring-but ortho-versus-para two-groups-on-one-ring planning-the-order-of-steps two-practical-tricks what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Nitrate toluene and it reacts about 25 times faster than benzene, with the nitro group landing mostly ortho and para to the methyl group. Nitrate nitrobenzene and it reacts far more slowly than benzene, with the second nitro group going meta. In both cases the group already on the ring decided two things: where the new group went, and how fast it got there.</p>
 <p class="step-body">Ortho, meta and para name positions relative to that first group, as in <a class="chapter-ref" href="/ochem/notes/naming-rings-unsaturation.html">Rings &amp; unsaturation</a>. Ortho is the carbon next to it, meta is one carbon further round, and para is directly across the ring. This page explains which groups send the next electrophile where, and why.</p>
@@ -173,14 +182,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">Directing effects are what make substituted aromatic synthesis possible. Diazonium chemistry, introduced in <a class="chapter-ref" href="/ochem/learn.html#m-amines">Amines</a> and completed in <a class="chapter-ref" href="/ochem/learn.html#m-aromatic-breadth">Aromatic Follow-Through</a>, will add ways to reach substitution patterns that directing effects alone cannot. The reasoning here is the one used for carbocations and conjugated systems throughout the course: draw the intermediates, find the most stable one, and the reaction goes that way.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="eas.html"><span>Previous</span>Electrophilic aromatic substitution</a><a class="notes-prevnext notes-next" href="alcohol-reactions.html"><span>Next</span>Alcohol reactions</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="eas.html"><span>&larr; Section 65</span><b>Electrophilic aromatic substitution</b></a><a class="tb-chapter-link next" href="alcohol-reactions.html"><span>Section 67 &rarr;</span><b>Alcohol reactions</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Carbonyl Chemistry</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Carbonyl Chemistry &middot; Section 78 of 123</p>
-    <h1>Oxidizing an aldehyde</h1>
-    <a class="notes-onward-cta" href="../lessons/aldehyde-oxidation.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="aldehyde-oxidation">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-grignard"><span class="bk-toc-n">14</span>Organometallic Bonding &amp; Grignard Reagents</a>
+    <a class="bk-toc-chap" href="../learn.html#m-carbonyl-chemistry"><span class="bk-toc-chap-n">15</span><span><b>Carbonyl Chemistry</b><small>7 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 7 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="aldehydes-ketones"><a href="aldehydes-ketones.html"><span class="bk-toc-n">72</span>Aldehydes &amp; ketones</a></li><li data-toc-t="nucleophilic-addition"><a href="nucleophilic-addition.html"><span class="bk-toc-n">73</span>Nucleophilic addition</a></li><li data-toc-t="hydrates-cyanohydrins"><a href="hydrates-cyanohydrins.html"><span class="bk-toc-n">74</span>Hydrates &amp; cyanohydrins</a></li><li data-toc-t="acetals"><a href="acetals.html"><span class="bk-toc-n">75</span>Acetals &amp; hemiacetals</a></li><li data-toc-t="imines-enamines"><a href="imines-enamines.html"><span class="bk-toc-n">76</span>Imines and enamines</a></li><li data-toc-t="wittig-reaction"><a href="wittig-reaction.html"><span class="bk-toc-n">77</span>The Wittig reaction</a></li><li class="current" data-toc-t="aldehyde-oxidation"><a href="#main" aria-current="page"><span class="bk-toc-n">78</span>Oxidizing an aldehyde</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-difference-is-one-hydrogen">The difference is one hydrogen</a><a href="#chromium-vi-oxidizes-the-hydrate">Chromium(VI) oxidizes the hydrate</a><a href="#chlorite-adds-to-the-c-o">Chlorite adds to the C=O itself</a><a href="#permanganate-strong-and-unselective">Permanganate: strong and unselective</a><a href="#choosing-the-reagent">Choosing the reagent</a><a href="#tollens-reagent-and-the-silver-mirror">Tollens’ reagent and the silver mirror</a><a href="#fehling-s-and-benedict-s-solutions">Fehling’s and Benedict’s solutions</a><a href="#why-glucose-tests-positive-and-sucrose">Why glucose tests positive and sucrose does not</a><a href="#the-consequence-on-the-shelf">The consequence on the shelf</a><a href="#what-carries-forward">What carries forward</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-redox"><span class="bk-toc-n">16</span>Oxidation &amp; Reduction</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-carbonyl-chemistry">Carbonyl Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Oxidizing an aldehyde: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/aldehyde-oxidation.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="carbonyl-chemistry">Carbonyl Chemistry</span> &middot; Section 78 of 123</p>
+      <h1 class="bk-title">Oxidizing an aldehyde</h1>
+      <p class="bk-meta"><span class="bk-small">14 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/aldehyde-oxidation.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="aldehyde-oxidation" data-bk-ids="the-difference-is-one-hydrogen chromium-vi-oxidizes-the-hydrate chlorite-adds-to-the-c-o permanganate-strong-and-unselective choosing-the-reagent tollens-reagent-and-the-silver-mirror fehling-s-and-benedict-s-solutions why-glucose-tests-positive-and-sucrose the-consequence-on-the-shelf what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Stir butanal with an oxidizing agent and you get butanoic acid. Stir butanone with the same reagent and nothing happens. Leave butanal in a half-empty bottle for a few months and it turns into butanoic acid anyway, with air as the only oxidant.</p>
 
@@ -226,14 +235,21 @@
 
 <p class="step-body">Aldehyde to carboxylic acid is a one-step move in any synthesis, with the reagent chosen from the table above. Read the other way, the same ease is a warning: a route that makes an aldehyde and leaves it standing has a problem, because air will finish the job.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="wittig-reaction.html"><span>Previous</span>The Wittig reaction</a><a class="notes-prevnext notes-next" href="oxidation-states.html"><span>Next</span>Oxidation levels in organic chemistry</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="wittig-reaction.html"><span>&larr; Section 77</span><b>The Wittig reaction</b></a><a class="tb-chapter-link next" href="oxidation-states.html"><span>Section 79 &rarr;</span><b>Oxidation levels in organic chemistry</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

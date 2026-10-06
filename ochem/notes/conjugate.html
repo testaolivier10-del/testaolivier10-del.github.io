@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Acids &amp; Bases</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Acids &amp; Bases &middot; Section 19 of 123</p>
-    <h1>Conjugate acids/bases</h1>
-    <a class="notes-onward-cta" href="../lessons/conjugate.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="conjugate">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-nomenclature"><span class="bk-toc-n">3</span>IUPAC Nomenclature</a>
+    <a class="bk-toc-chap" href="../learn.html#m-acids-bases"><span class="bk-toc-chap-n">4</span><span><b>Acids &amp; Bases</b><small>5 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 5 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="bronsted"><a href="bronsted.html"><span class="bk-toc-n">18</span>Brønsted acids/bases</a></li><li class="current" data-toc-t="conjugate"><a href="#main" aria-current="page"><span class="bk-toc-n">19</span>Conjugate acids/bases</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-conjugate-means">What &quot;conjugate&quot; means</a><a href="#the-inverse-relationship">The inverse relationship</a><a href="#one-ranking-read-in-both-directions">One ranking, read in both directions</a><a href="#preview-the-numbers-behind-the-ranking">Preview: the numbers behind the ranking</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="pka"><a href="pka.html"><span class="bk-toc-n">20</span>pKa</a></li><li data-toc-t="acidity-factors"><a href="acidity-factors.html"><span class="bk-toc-n">21</span>Factors affecting acidity</a></li><li data-toc-t="lewis-acids"><a href="lewis-acids.html"><span class="bk-toc-n">22</span>Lewis acids/bases</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-alkanes-conformations"><span class="bk-toc-n">5</span>Alkanes &amp; Conformations</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-acids-bases">Acids &amp; Bases</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Conjugate acids/bases: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/conjugate.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="acids-bases">Acids &amp; Bases</span> &middot; Section 19 of 123</p>
+      <h1 class="bk-title">Conjugate acids/bases</h1>
+      <p class="bk-meta"><span class="bk-small">10 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/conjugate.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="conjugate" data-bk-ids="what-conjugate-means the-inverse-relationship one-ranking-read-in-both-directions preview-the-numbers-behind-the-ranking what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">When an acid gives away its proton, what is left behind can take a proton back, so it is a base. Every acid therefore has a partner base, and every base has a partner acid. This page is about those partners, and about how the strength of one sets the strength of the other.</p>
 
@@ -158,14 +167,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">The conjugate relationship lets one ranking serve for acid strength and base strength, and later for leaving-group ability too. The next section, <a class="chapter-ref" href="/ochem/notes/pka.html">pKa</a>, puts numbers on that ranking. The one after it, <a class="chapter-ref" href="/ochem/notes/acidity-factors.html">Factors affecting acidity</a>, explains which features of a structure decide where a species lands on it.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="bronsted.html"><span>Previous</span>Brønsted acids/bases</a><a class="notes-prevnext notes-next" href="pka.html"><span>Next</span>pKa</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="bronsted.html"><span>&larr; Section 18</span><b>Brønsted acids/bases</b></a><a class="tb-chapter-link next" href="pka.html"><span>Section 20 &rarr;</span><b>pKa</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

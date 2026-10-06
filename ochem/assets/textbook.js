@@ -387,10 +387,10 @@
       // 134,000 px tall on a phone). Every section's shell is here so the
       // jump menu and search can name it; showSection() reveals one and
       // fetches only its notes (and the next one's, ahead of the tap).
-      return '<section class="tb-section" id="' + t.id + '" data-topic="' + t.id + '" hidden>' +
-        '<div class="tb-section-head">' +
-          '<h2 class="tb-section-title">' + escapeHtml(t.title) + '</h2>' +
-          '<div class="tb-section-meta">' +
+      return '<section class="tb-section bk-sec" id="' + t.id + '" data-topic="' + t.id + '" hidden>' +
+        '<div class="tb-section-head bk-sec-head">' +
+          '<h2 class="tb-section-title"><span class="bk-toc-n">' + (ALL_TOPICS.findIndex(function(e){ return e.topic.id === t.id; }) + 1) + '</span>' + escapeHtml(t.title) + '</h2>' +
+          '<div class="tb-section-meta bk-sec-acts">' +
             (!C.hasLesson(t)
               ? '<span class="tb-mastery none" title="' + escapeHtml(C.NOTES_ONLY_LABEL) + '">Not tracked yet</span>'
               : pct === null
@@ -401,22 +401,23 @@
             '</button>' +
           '</div>' +
         '</div>' +
-        '<div class="notes-view tb-notes" data-notes="' + t.id + '"><p class="tb-loading">Loading&hellip;</p></div>' +
+        '<div class="notes-view tb-notes bk-prose" data-notes="' + t.id + '"><p class="tb-loading">Loading&hellip;</p></div>' +
         sectionActionsHtml(t) +
         '<div class="tb-section-end" data-end="' + t.id + '"></div>' +
       '</section>';
     }).join('');
 
 
+    // The chapter head every course's Learn page shares (assets/course/book.css).
     chapterEl.innerHTML =
-      '<header class="tb-chapter-head">' +
+      '<header class="tb-chapter-head bk-chap-head"><div>' +
         '<p class="tb-chapter-eyebrow">Chapter ' + (index + 1) + ' of ' + C.MODULES.length + '</p>' +
         '<h1 class="tb-chapter-title">' + escapeHtml(mod.title) + '</h1>' +
         '<p class="tb-chapter-meta" id="tbChapterMeta" data-mastery="' +
           (mastery === null ? '' : mastery) + '" data-total="' + mod.topics.length + '">' +
           chapterMetaText(mod, doneCount, mastery) +
         '</p>' +
-      '</header>' +
+      '</div><p class="bk-chap-acts"><a class="bk-btn ghost" href="flashcards.html?chapter=' + encodeURIComponent(mod.id) + '">Chapter flashcards</a></p></header>' +
       jumpMenuHtml(mod) +
       sections +
       '<nav class="tb-chapter-nav tb-section-pager" aria-label="Sections"></nav>';

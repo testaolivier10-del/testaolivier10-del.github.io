@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Conjugation &amp; Pericyclic Reactions</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Conjugation &amp; Pericyclic Reactions &middot; Section 58 of 123</p>
-    <h1>Conjugated systems</h1>
-    <a class="notes-onward-cta" href="../lessons/conjugated-systems.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="conjugated-systems">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-ir-mass-spec"><span class="bk-toc-n">10</span>IR &amp; Mass Spectrometry</a>
+    <a class="bk-toc-chap" href="../learn.html#m-conjugation"><span class="bk-toc-chap-n">11</span><span><b>Conjugation &amp; Pericyclic Reactions</b><small>6 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 6 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li class="current" data-toc-t="conjugated-systems"><a href="#main" aria-current="page"><span class="bk-toc-n">58</span>Conjugated systems</a><div class="bk-toc-onpage"><p>On this page</p><a href="#isolated-conjugated-cumulated">Isolated, conjugated, cumulated</a><a href="#conjugation-is-worth-about-15-kj">Conjugation is worth about 15 kJ/mol (3.6 kcal/mol)</a><a href="#s-cis-and-s-trans-a">s-cis and s-trans: a conformation, not a configuration</a><a href="#the-orbital-picture-one-molecular-orbital">The orbital picture: one molecular orbital per p orbital</a><a href="#why-the-ends-of-the-system">Why the ends of the system are where the chemistry happens</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="diene-addition"><a href="diene-addition.html"><span class="bk-toc-n">59</span>1,2- vs 1,4-addition</a></li><li data-toc-t="kinetic-thermodynamic"><a href="kinetic-thermodynamic.html"><span class="bk-toc-n">60</span>Kinetic vs thermodynamic control</a></li><li data-toc-t="diels-alder"><a href="diels-alder.html"><span class="bk-toc-n">61</span>The Diels–Alder reaction</a></li><li data-toc-t="uv-vis"><a href="uv-vis.html"><span class="bk-toc-n">62</span>UV-Vis spectroscopy</a></li><li data-toc-t="electrocyclic-sigmatropic"><a href="electrocyclic-sigmatropic.html"><span class="bk-toc-n">63</span>Electrocyclic &amp; sigmatropic reactions</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-aromatic-chemistry"><span class="bk-toc-n">12</span>Aromatic Chemistry</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-conjugation">Conjugation &amp; Pericyclic Reactions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Conjugated systems: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/conjugated-systems.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="conjugation">Conjugation &amp; Pericyclic Reactions</span> &middot; Section 58 of 123</p>
+      <h1 class="bk-title">Conjugated systems</h1>
+      <p class="bk-meta"><span class="bk-small">14 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/conjugated-systems.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="conjugated-systems" data-bk-ids="isolated-conjugated-cumulated conjugation-is-worth-about-15-kj s-cis-and-s-trans-a the-orbital-picture-one-molecular-orbital why-the-ends-of-the-system what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Buta-1,3-diene and penta-1,4-diene both have two C=C double bonds. Yet buta-1,3-diene is measurably more stable, and it reacts in ways that penta-1,4-diene does not. Since the count is the same, the difference must lie in how the double bonds are arranged. In buta-1,3-diene one single bond joins the two double bonds; in penta-1,4-diene a CH₂ group sits between them.</p>
 
@@ -197,14 +206,21 @@
 
 <p class="step-body">Three ideas from this section return later. The extra <b>stability</b> of conjugated systems explains the allylic bromination previewed in <a class="chapter-ref" href="/ochem/learn.html#m-reactivity">How Reactions Happen</a>. It also explains why an elimination that can form a conjugated diene favors that product. And it is the starting point for the special stability of benzene in <a class="chapter-ref" href="/ochem/learn.html#m-aromatic-chemistry">Aromatic Chemistry</a>. The <b>s-cis conformation</b> returns in the Diels–Alder section later in this chapter. And the <b>orbital ladder</b>, whose gap narrows as the chain lengthens, is what UV-Vis spectroscopy measures.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="mass-spec.html"><span>Previous</span>Mass spectrometry</a><a class="notes-prevnext notes-next" href="diene-addition.html"><span>Next</span>1,2- vs 1,4-addition</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="mass-spec.html"><span>&larr; Section 57</span><b>Mass spectrometry</b></a><a class="tb-chapter-link next" href="diene-addition.html"><span>Section 59 &rarr;</span><b>1,2- vs 1,4-addition</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

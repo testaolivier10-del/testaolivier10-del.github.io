@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>NMR Spectroscopy</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">NMR Spectroscopy &middot; Section 107 of 123</p>
-    <h1>¹H NMR</h1>
-    <a class="notes-onward-cta" href="../lessons/h-nmr.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="h-nmr">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-aromatic-breadth"><span class="bk-toc-n">21</span>Aromatic Follow-Through</a>
+    <a class="bk-toc-chap" href="../learn.html#m-spectroscopy"><span class="bk-toc-chap-n">22</span><span><b>NMR Spectroscopy</b><small>2 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 2 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li class="current" data-toc-t="h-nmr"><a href="#main" aria-current="page"><span class="bk-toc-n">107</span>¹H NMR</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-nmr-measures">What NMR measures</a><a href="#chemical-shift-where-a-signal-appears">Chemical shift: where a signal appears</a><a href="#pi-bonds-when-geometry-sets-the">Pi bonds: when geometry sets the shift</a><a href="#integration-how-many-hydrogens">Integration: how many hydrogens</a><a href="#equivalent-hydrogens-how-many-signals">Equivalent hydrogens: how many signals</a><a href="#splitting-which-hydrogens-are-next-door">Splitting: which hydrogens are next door</a><a href="#working-a-spectrum">Working a spectrum</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="c-nmr"><a href="c-nmr.html"><span class="bk-toc-n">108</span>¹³C NMR</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-synthesis"><span class="bk-toc-n">23</span>Synthesis &amp; Retrosynthesis</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-spectroscopy">NMR Spectroscopy</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">¹H NMR: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/h-nmr.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="spectroscopy">NMR Spectroscopy</span> &middot; Section 107 of 123</p>
+      <h1 class="bk-title">¹H NMR</h1>
+      <p class="bk-meta"><span class="bk-small">18 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/h-nmr.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="h-nmr" data-bk-ids="what-nmr-measures chemical-shift-where-a-signal-appears pi-bonds-when-geometry-sets-the integration-how-many-hydrogens equivalent-hydrogens-how-many-signals splitting-which-hydrogens-are-next-door working-a-spectrum what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Ethanol, CH₃CH₂OH, has six hydrogens, yet its proton NMR spectrum shows only three signals: one for the three CH₃ hydrogens, one for the two CH₂ hydrogens and one for the OH. Each signal tells you three things. Its position says what the hydrogens sit near, its size says how many hydrogens produced it, and its shape says how many hydrogens sit on the next carbon.</p>
 <p class="step-body"><b>Proton NMR</b>, written ¹H NMR, is the method that records those signals. NMR stands for nuclear magnetic resonance. <a class="chapter-ref" href="/ochem/notes/ir.html">IR</a> tells you which functional groups a molecule has; proton NMR shows how its pieces are joined. Read together, the three kinds of information often settle a structure on their own.</p>
@@ -186,14 +195,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">Proton NMR does its best work alongside the other methods. <a class="chapter-ref" href="/ochem/notes/ir.html">IR</a> names the functional groups. <a class="chapter-ref" href="/ochem/notes/mass-spec.html">Mass spectrometry</a>, from the same earlier chapter, measures the mass of the molecule and so helps fix its formula. Then <a class="chapter-ref" href="/ochem/notes/c-nmr.html">¹³C NMR</a>, the next section, counts the carbon environments using the same idea of chemical shift.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="diazonium-chemistry.html"><span>Previous</span>Diazonium salts and Sandmeyer</a><a class="notes-prevnext notes-next" href="c-nmr.html"><span>Next</span>¹³C NMR</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="diazonium-chemistry.html"><span>&larr; Section 106</span><b>Diazonium salts and Sandmeyer</b></a><a class="tb-chapter-link next" href="c-nmr.html"><span>Section 108 &rarr;</span><b>¹³C NMR</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

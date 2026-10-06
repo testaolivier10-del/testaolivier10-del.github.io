@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>IR &amp; Mass Spectrometry</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">IR &amp; Mass Spectrometry &middot; Section 56 of 123</p>
-    <h1>IR</h1>
-    <a class="notes-onward-cta" href="../lessons/ir.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="ir">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-alkenes-alkynes"><span class="bk-toc-n">9</span>Alkenes &amp; Alkynes</a>
+    <a class="bk-toc-chap" href="../learn.html#m-ir-mass-spec"><span class="bk-toc-chap-n">10</span><span><b>IR &amp; Mass Spectrometry</b><small>2 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 2 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li class="current" data-toc-t="ir"><a href="#main" aria-current="page"><span class="bk-toc-n">56</span>IR</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-ir-measures">What IR measures</a><a href="#two-variables-set-the-frequency">Two variables set the frequency</a><a href="#the-absorptions-worth-recognizing-on-sight">The absorptions worth recognizing on sight</a><a href="#the-carbonyl-region-in-detail">The carbonyl region in detail</a><a href="#the-fingerprint-region">The fingerprint region</a><a href="#how-to-read-a-spectrum-in">How to read a spectrum in thirty seconds</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="mass-spec"><a href="mass-spec.html"><span class="bk-toc-n">57</span>Mass spectrometry</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-conjugation"><span class="bk-toc-n">11</span>Conjugation &amp; Pericyclic Reactions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-ir-mass-spec">IR &amp; Mass Spectrometry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">IR: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/ir.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="ir-mass-spec">IR &amp; Mass Spectrometry</span> &middot; Section 56 of 123</p>
+      <h1 class="bk-title">IR</h1>
+      <p class="bk-meta"><span class="bk-small">15 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/ir.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="ir" data-bk-ids="what-ir-measures two-variables-set-the-frequency the-absorptions-worth-recognizing-on-sight the-carbonyl-region-in-detail the-fingerprint-region how-to-read-a-spectrum-in what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Pass infrared light through a sample of acetone and most of it comes out the other side. The main exception is a narrow band near 1715 cm⁻¹ (the units are explained below), which acetone absorbs almost completely. That absorption comes from its C=O bond. Every simple ketone absorbs near 1715 too.</p>
 <p class="step-body"><b>Infrared (IR) spectroscopy</b> records which infrared frequencies a compound absorbs. Each kind of bond absorbs in its own range, so the pattern of absorptions tells you which functional groups the molecule contains. IR is the first and quickest of the structure methods, so it is usually where you start. <a class="chapter-ref" href="/ochem/notes/mass-spec.html">Mass spectrometry</a>, the next section, gives the molecular weight and formula. NMR, which maps the carbon skeleton, comes later in the course, in <a class="chapter-ref" href="/ochem/learn.html#m-spectroscopy">NMR Spectroscopy</a>.</p>
@@ -198,14 +207,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">IR is the first step in every structure problem in the course. It pairs naturally with the degrees of unsaturation from <a class="chapter-ref" href="/ochem/notes/alkene-structure.html">Alkene structure</a>: that count says how many rings and π bonds to look for, and IR says what kind they are. <a class="chapter-ref" href="/ochem/notes/mass-spec.html">Mass spectrometry</a>, next, supplies the molecular formula, and the NMR methods, later, the carbon skeleton.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="alkynes.html"><span>Previous</span>Alkynes</a><a class="notes-prevnext notes-next" href="mass-spec.html"><span>Next</span>Mass spectrometry</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="alkynes.html"><span>&larr; Section 55</span><b>Alkynes</b></a><a class="tb-chapter-link next" href="mass-spec.html"><span>Section 57 &rarr;</span><b>Mass spectrometry</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>
