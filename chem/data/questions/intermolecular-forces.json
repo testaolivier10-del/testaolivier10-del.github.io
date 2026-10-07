@@ -344,7 +344,7 @@
     "options": [
      "Right: polarizability, from more electrons in more shells, sets the dispersion strength.",
      "X–X molecules of one element have no polar bonds, so there are no permanent dipoles at all.",
-     "The bonds inside these molecules do not break on boiling, and they actually get weaker down the group.",
+     "The bonds inside these molecules do not break on boiling, and their strengths do not follow the boiling points: F–F (159 kJ/mol) is weaker than Cl–Cl (243 kJ/mol), yet F₂ boils lower.",
      "Gravity on a single molecule is negligible; the mass-only argument skips the real cause, polarizability."
     ]
    }
@@ -631,7 +631,7 @@
    "level": "analyze",
    "diff": 3,
    "stimulus": "intermolecular-forces-s4",
-   "q": "Water (18 electrons) boils at 100 °C, but H₂Te (54 electrons) boils at −2 °C. A student says this shows dispersion forces do not depend on electron count. Which response is best?",
+   "q": "Water (10 electrons) boils at 100 °C, but H₂Te (54 electrons) boils at −2 °C. A student says this shows dispersion forces do not depend on electron count. Which response is best?",
    "options": [
     "H₂Te does have stronger dispersion forces, but water's hydrogen bonds add an attraction large enough to outweigh that difference.",
     "The student is right: water has fewer electrons but stronger dispersion forces because its molecules are smaller.",
