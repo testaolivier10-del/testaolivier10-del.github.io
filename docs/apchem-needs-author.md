@@ -190,7 +190,7 @@ Nine new SVGs in `chem/figures/` (endo-exo-energy-flow, enthalpy-diagram-pair,
 thermal-contact-particles, coffee-cup-calorimeter, water-heating-curve, thermochemical-scaling,
 bond-enthalpy-ladder, formation-pathway, hess-carbon-routes) were rendered and inspected by the
 author only. The heating curve and ladders are labelled "not to scale" or use schematic heights.
-## unit7-data: reference values used in Unit 7 items (open, 2026-10-06)
+## unit7-data: reference values used in Unit 7 items (resolved, 2026-10-06)
 
 Unit 7 items quote approximate K and Ksp values at 25 °C (or "a certain temperature") as given data:
 Kc for N2 + O2 ⇌ 2 NO ≈ 4.5 × 10⁻³¹ and H2 + Cl2 ⇌ 2 HCl ≈ 2.5 × 10³³; Kc(N2O4 ⇌ 2 NO2) = 4.6 × 10⁻³ at
@@ -204,11 +204,35 @@ Kp of 2.5 × 10⁻³ at 500 K, the FeSCN²⁺ molar absorptivity) are invented f
 data, and that the cobalt chloride equilibrium is described correctly as endothermic in the forward
 (blue) direction.
 
-## unit7-small-x: the 5% rule (open, 2026-10-06)
+**Resolved 2026-10-06 (Unit 7 review, `docs/apchem-reviews/u7.md`).** Values checked: Ksp against the
+LibreTexts table "Solubility Constants for Compounds at 25 °C" (AgCl 1.77 × 10⁻¹⁰, AgBr 5.35 × 10⁻¹³,
+Ag₂CrO₄ 1.12 × 10⁻¹², CaF₂ 3.45 × 10⁻¹¹, PbCl₂ 1.70 × 10⁻⁵, BaSO₄ 1.08 × 10⁻¹⁰, Mg(OH)₂ 5.61 × 10⁻¹²,
+Ca(OH)₂ 5.02 × 10⁻⁶, SrF₂ 4.33 × 10⁻⁹, PbI₂ 9.8 × 10⁻⁹): all item values agree to two figures except CaF₂
+(3.9 vs 3.45, within the usual spread between tables; kept, since it is given data). Gas-phase K values
+recomputed from standard ΔG°f at 298 K: NO 4.5 × 10⁻³¹, HCl 2.5 × 10³³, water-gas shift 1.0 × 10⁵, all match.
+Kc(N₂O₄) 4.6 × 10⁻³ at 298 K is the textbook value; the k-properties temperature table said 7.1 × 10⁻³ at
+298 K, inconsistent with the rest of the unit, and was changed to 4.6 × 10⁻³ (notes: "about 5 × 10⁻³").
+Ag₃PO₄: the item's solubility 1.6 × 10⁻⁵ M gave Ksp 1.8 × 10⁻¹⁸, far from the tabulated 8.9 × 10⁻¹⁷;
+changed to 4.3 × 10⁻⁵ M (key 9.2 × 10⁻¹⁷). Cobalt: the forward reaction
+Co(H₂O)₆²⁺ + 4 Cl⁻ → CoCl₄²⁻ + 6 H₂O is endothermic (heating turns it blue, cooling pink), as stated by
+the RSC practical "The equilibrium between two coloured cobalt species"
+(https://edu.rsc.org/experiments/the-equilibrium-between-two-coloured-cobalt-species/1.article);
+the content is correct. Invented "certain temperature" constants are acceptable as given data.
+
+## unit7-small-x: the 5% rule (resolved, 2026-10-06)
 
 Notes and items teach the common "5% rule" for the small-x approximation and use the quadratic formula
 when it fails. The CED is understood to expect the approximation for small K; confirm the exam does not
 require the quadratic formula (we teach it as the fallback and test it in two items only).
+
+**Resolved 2026-10-06 (Unit 7 review).** The CED 7.7 knowledge statement (in `docs/apchem-ced-map.json`)
+expects the small-x simplification when K is small; no exclusion mentions the quadratic formula, and
+study guides (e.g. Fiveable 7.7) say exam items are built so the approximation almost always works.
+Keep the current treatment: the quadratic is taught as a fallback (one worked example, items
+`chem-equilibrium-concentrations-6`/`-7`) and never needed in an FRQ. Every approximation in the unit
+was rechecked against the exact solution: NOCl x = 0.0100 vs 0.0097 exact (4% check), phosgene 0.0200
+vs 0.0196, H₂S 1.36 × 10⁻³ vs 1.33 × 10⁻³, A ⇌ B + C 6.3 × 10⁻³ vs 6.1 × 10⁻³ (6.3%, correctly flagged
+as over 5%), PbCl₂ in 0.25 M NaCl 2.7 × 10⁻⁴ (exact 2.71 × 10⁻⁴).
 ## unit8-values: Unit 8 conventions to confirm (open, 2026-10-06)
 
 Written for Unit 8 (`chem/data/*/` for topics 8.1-8.11); please confirm or correct:

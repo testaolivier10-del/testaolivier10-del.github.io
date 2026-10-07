@@ -38,7 +38,7 @@
     "rows": [
      [
       "298",
-      "7.1 × 10<sup>−3</sup>"
+      "4.6 × 10<sup>−3</sup>"
      ],
      [
       "350",
@@ -130,7 +130,7 @@
    "level": "apply",
    "diff": 2,
    "stimulus": "k-properties-s1",
-   "q": "Calculate K<sub>c</sub> for N<sub>2</sub>(g) + 2 O<sub>2</sub>(g) ⇌ 2 NO<sub>2</sub>(g).",
+   "q": "Reactions A and B can be combined to describe nitrogen dioxide forming directly from the elements. Use the table to calculate K<sub>c</sub> at 25 °C for N<sub>2</sub>(g) + 2 O<sub>2</sub>(g) ⇌ 2 NO<sub>2</sub>(g).",
    "numeric": {
     "answer": 2.7e-17,
     "tol": 1e-18,
@@ -254,7 +254,7 @@
    "why": {
     "correct": "A larger K means more product at equilibrium. Here K rises with temperature, so the equilibrium mixture holds more NO₂ at higher temperatures.",
     "options": [
-     "Right: K grows from 7.1 × 10⁻³ to 10. as the temperature goes from 298 K to 450 K.",
+     "Right: K grows from 4.6 × 10⁻³ to 10. as the temperature goes from 298 K to 450 K.",
      "K is rising, which means more NO₂ relative to N₂O₄ at equilibrium.",
      "The table gives K, which says nothing about speed.",
      "K is clearly changing in the table. Q depends on the mixture, not on the temperature alone."

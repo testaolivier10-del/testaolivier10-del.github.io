@@ -64,7 +64,7 @@
     "options": [
      "Right: the solubility falls from 1.6 × 10<sup>−2</sup> M in water to 2.7 × 10<sup>−4</sup> M in 0.25 M NaCl.",
      "The numbers fall, not rise, as [NaCl] increases.",
-     "The solubility changes by about a factor of 10 across the table.",
+     "The solubility changes by a factor of about 60 across the table.",
      "The trend is right, but the cause is wrong: K<sub>sp</sub> is the same in every solution at 25 °C."
     ]
    }
@@ -116,17 +116,12 @@
      {
       "value": 0.000068,
       "rel": 0.02,
-      "why": "Value: [Cl⁻] is squared in K<sub>sp</sub>: s = K<sub>sp</sub> / (0.25)²."
+      "why": "Value: you divided K<sub>sp</sub> by 0.25 (or by 4 × 0.0625). [Cl⁻] ≈ 0.25 M is squared and not multiplied by 4: s = K<sub>sp</sub> / (0.25)²."
      },
      {
       "value": 0.0162,
       "rel": 0.02,
       "why": "Value: that is the solubility in pure water. Include the 0.25 M Cl⁻ from NaCl."
-     },
-     {
-      "value": 0.000068,
-      "rel": 0.02,
-      "why": "Value: in this solution [Cl⁻] ≈ 0.25 M, not 2s, so do not multiply by 4."
      }
     ]
    },
@@ -152,7 +147,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Always check the approximation. Here 2s would be 0.34 M, far more than 5% of 0.010 M; the exact solution (about ${sci(svals[1], 2, { force: true })} M, below the pure-water value) needs the full expression.",
+    "correct": "Always check the approximation. Here 2s would be 0.34 M, far more than 5% of 0.010 M; the exact solution (about 1.3 × 10<sup>−2</sup> M, below the pure-water value) needs the full expression.",
     "options": [
      "Right: 2s would be 0.34 M, far more than 0.010 M, so 0.010 + 2s is not ≈ 0.010. A solubility above the pure-water value is a sure sign.",
      "Squaring was done: 1.7 × 10⁻⁵ / (0.010)² = 0.17. The problem is the approximation itself.",

@@ -1,6 +1,6 @@
 {
  "topic": "calculating-k",
- "hook": "Seventy years ago, chemists ran the same reaction in dozens of flasks, each started with different amounts of hydrogen, iodine and hydrogen iodide. The final mixtures looked nothing alike. Yet when they combined the measured concentrations in one particular way, every flask gave the same number, to within rounding. That number is the equilibrium constant, and calculating it is the subject of this lesson.",
+ "hook": "More than a century ago, chemists ran the same reaction in dozens of flasks, each started with different amounts of hydrogen, iodine and hydrogen iodide. The final mixtures looked nothing alike. Yet when they combined the measured concentrations in one particular way, every flask gave the same number, to within rounding. That number is the equilibrium constant, and calculating it is the subject of this lesson.",
  "prereq": [
   {
    "q": "What is K<sub>c</sub> for N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2 NO<sub>2</sub>(g)?",
