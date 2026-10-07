@@ -22,7 +22,7 @@
  "stimulus": {
   "kind": "table",
   "title": "Titrating a rust remover",
-  "text": "<p>A powdered rust remover contains oxalic acid, H₂C₂O₄ (molar mass 90.04 g/mol), mixed with substances that do not react with bases. Each oxalic acid molecule gives up two protons: H₂C₂O₄(aq) + 2OH⁻(aq) → C₂O₄²⁻(aq) + 2H₂O(l).</p><p>A student weighs 1.2500 g of the powder, dissolves it in distilled water and makes the solution up to exactly 250.0 mL. She titrates 25.00 mL portions of this solution with 0.1045 M NaOH, using phenolphthalein as the indicator.</p>",
+  "text": "<p>A powdered rust remover contains oxalic acid, H₂C₂O₄ (molar mass 90.04 g/mol), mixed with substances that do not react with bases. Oxalic acid is a weak acid, present in water mostly as H₂C₂O₄ molecules. In the titration each molecule gives up both of its acidic protons to hydroxide ions, forming the oxalate ion, C₂O₄²⁻.</p><p>A student weighs 1.2500 g of the powder, dissolves it in distilled water and makes the solution up to exactly 250.0 mL. She titrates 25.00 mL portions of this solution with 0.1045 M NaOH, using phenolphthalein as the indicator.</p>",
   "table": {
    "caption": "Buret readings for three trials",
    "cols": [
@@ -116,16 +116,16 @@
   {
    "label": "d",
    "points": 1,
-   "prompt": "<b>Write</b> the balanced net ionic equation for the reaction at the equivalence point, and <b>identify</b> the Brønsted-Lowry base in it.",
+   "prompt": "<b>Write</b> the balanced net ionic equation for the reaction between oxalic acid and sodium hydroxide in the titration, and <b>identify</b> the Brønsted-Lowry base in it.",
    "rubric": [
     {
-     "point": "Writes H₂C₂O₄(aq) + 2OH⁻(aq) → C₂O₄²⁻(aq) + 2H₂O(l) with Na⁺ omitted as a spectator, AND identifies OH⁻ as the base (proton acceptor).",
+     "point": "Writes H₂C₂O₄(aq) + 2OH⁻(aq) → C₂O₄²⁻(aq) + 2H₂O(l), with oxalic acid as a molecule (weak acid), Na⁺ omitted as a spectator and atoms and charge balanced, AND identifies OH⁻ as the base (proton acceptor).",
      "accept": [
       "OH⁻ accepts the protons"
      ]
     }
    ],
-   "sample": "H₂C₂O₄(aq) + 2OH⁻(aq) → C₂O₄²⁻(aq) + 2H₂O(l). Na⁺ is a spectator. OH⁻ is the Brønsted-Lowry base, because it accepts the protons given up by oxalic acid."
+   "sample": "H₂C₂O₄(aq) + 2OH⁻(aq) → C₂O₄²⁻(aq) + 2H₂O(l). Oxalic acid is weak, so it is written as molecules; Na⁺ is a spectator. Charge is −2 on each side. OH⁻ is the Brønsted-Lowry base, because it accepts the protons given up by oxalic acid."
   },
   {
    "label": "e",
