@@ -128,21 +128,13 @@ All on one branch, `claude/apchem` (decision 5), one PR at the end.
 
 | Phase | What | Status |
 |---|---|---|
-| 0 | CED topic map (own words, 91 topics), dependency map, fork generator and runtime, checks, registration (registry, Premium pass, Worker, SQL migration, hub/pricing hidden until published, search, sitemap, OG card, budgets, theme colour) | **done 2026-10-06** (decisions 6-12): `docs/apchem-ced-map.json`, `docs/apchem-dependency-map.json` (96 topics, 285 concepts; `docs/apchem-phase0.md`), `scripts/build-apchem.mjs`, `check-apchem-map.mjs`, `check-apchem-content.mjs`, runtime `chem/assets/`, formats in `docs/apchem-architecture.md`, rules in `docs/apchem-authoring-guide.md`. Nothing published (`chem/data/published.json` empty, every page noindex); placeholder sample only in `scripts/test/fixtures/apchem-data/` |
-| 1 | Units 1-3 (where students are now) with the math refresher, notes, lessons, banks, FRQs, particle-diagram practice; independent accuracy check per unit; Beta | in progress. **Unit 3 written 2026-10-06** (13 topics, 220 items, 6 FRQs: 2 long, 4 short; 13 figures in `chem/figures/`), all checks clean, not published; independent accuracy check done 2026-10-06 (`docs/apchem-reviews/u3.md`: 220 items, 6 FRQs, 3 keys changed; `unit3-real-gas-data` resolved, `unit3-scope-checks` waits on `ced-exclusions`) |
-| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | |
-| 1 | Units 1-3 (where students are now) with the math refresher, notes, lessons, banks, FRQs, particle-diagram practice; independent accuracy check per unit; Beta | in progress. **Unit 3 written 2026-10-06** (13 topics, 220 items, 6 FRQs: 2 long, 4 short; 13 figures in `chem/figures/`), all checks clean, not published, independent accuracy check pending (needs-author `unit3-real-gas-data`, `unit3-scope-checks`) |
-| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 6 accuracy check done 2026-10-06 (`docs/apchem-reviews/u6.md`): no key changed, 12 kinds of fixes; needs-author `unit6-data-values` and `unit6-figures-review` resolved; not yet published |
-| 1 | Units 1-3 (where students are now) with the math refresher, notes, lessons, banks, FRQs, particle-diagram practice; independent accuracy check per unit; Beta | next |
-| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 4 drafted 2026-10-06 (9 topics, 147 items, 4 FRQs: `frq-oxalic-acid-titration` long, `frq-ammonia-limiting`, `frq-metal-displacement`, `frq-sulfate-precipitate` short; 9 figures); not published. **Accuracy check done 2026-10-06** (`docs/apchem-reviews/u4.md`: 7 items and 1 FRQ fixed, no numeric key changed; all four `unit4-*` needs-author entries resolved, `limiting-reactant` in 4.3 confirmed) |
-| 1 | Units 1-3 (where students are now) with the math refresher, notes, lessons, banks, FRQs, particle-diagram practice; independent accuracy check per unit; Beta | next |
-| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 7 content written 2026-10-06 (decision 13): 12 topics, 200 items, 13 figures, 5 FRQs; not yet accuracy-checked or published; ICE and Q-vs-K trainers built (decision 15) |
-| 2 | Unit 5 accuracy check | **done 2026-10-06**: `docs/apchem-reviews/u5.md` (171 items, 3 FRQs, 11 figures; 31 items fixed, no key wrong in substance); needs-author `unit5-kinetics-scope` resolved (Arrhenius calculations excluded per the CED; the rest kept) |
-| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 7 content written 2026-10-06 (decision 13): 12 topics, 200 items, 13 figures, 5 FRQs; accuracy-checked 2026-10-06 (`docs/apchem-reviews/u7.md`), not yet published; ICE and Q-vs-K trainers built (decision 15) |
-| 3 | Justification trainer, full practice exams, equations-sheet page, score calculator, cram kit | |
-| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 7 content written 2026-10-06 (decision 13): 12 topics, 200 items, 13 figures, 5 FRQs; accuracy-checked 2026-10-06 (`docs/apchem-reviews/u7.md`), not yet published; ICE and Q-vs-K trainers not built |
-| 3 | Justification trainer, full practice exams, equations-sheet page, score calculator, cram kit | **built 2026-10-06** (decision 15): 37 prompts over 9 units; 2 fixed practice exams (60 + 7 each, 32 exam-only items); equations-sheet walkthrough, score calculator, 9 unit practice tests; cram kit wired to the forms. Not yet accuracy-checked (Phase 4). Drill trainers built separately |
-| 4 | Second accuracy pass on the whole course; PR to owner | |
+| 0 | CED topic map (own words, 91 topics), dependency map, fork generator and runtime, checks, registration (registry, Premium pass, Worker, SQL migration, hub/pricing hidden until published, search, sitemap, OG card, budgets, theme colour) | **done 2026-10-06** (decisions 6-12): `docs/apchem-ced-map.json`, `docs/apchem-dependency-map.json` (96 topics, 285 concepts; `docs/apchem-phase0.md`), `scripts/build-apchem.mjs`, `check-apchem-map.mjs`, `check-apchem-content.mjs`, runtime `chem/assets/`, formats in `docs/apchem-architecture.md`, rules in `docs/apchem-authoring-guide.md` |
+| 1 | Units 1-3 with the math refresher (`skills-math`, 5 topics), notes, lessons, banks, FRQs, particle-diagram practice | **done 2026-10-06**; independent accuracy check per unit: `docs/apchem-reviews/u1.md`, `u2.md`, `u3.md` |
+| 2 | Units 4-9, with the drills and titration reader | **done 2026-10-06**: all units written (96 topics, 1,565 bank items, 38 FRQs, figures in `chem/figures/`); accuracy checks `docs/apchem-reviews/u4.md`-`u9.md` (decisions 13-14) |
+| 2b | Trainers and drills: particle diagrams, ICE tables, Q vs K, buffers, titration curve reader, units and sig figs | **done 2026-10-06** (decision 15); seeded generators with independent validators |
+| 3 | Justification trainer (37 prompts), two fixed practice exams (32 exam-only items), equations-sheet page, score calculator, 9 unit practice tests, cram kit | **built 2026-10-06** (decision 15, Phase 3); exams and justification prompts under review by a separate pass (needs-author `phase3-findings`) |
+| Launch review | Phase 3 content findings fixed, 36 fixed-order items no longer show the key first, published, continuity pass, full CI | **done 2026-10-06** (decision 16). **Published**: `chem/data/published.json` lists `skills-math` and `unit-1`…`unit-9`; Beta badge and "not yet reviewed by an AP® teacher" note stay; Premium stays `onSale: false` until section 8 is done |
+| 4 | Second accuracy pass on the whole course (incl. exam-only items and justify prompts); PR to owner | open |
 
 Quality bar per unit: AP® Biology authoring guide rules (original items only, never adapted from
 released exams; at least 60% apply/analyze; stimulus sets; per-option explanations; key-length
@@ -194,7 +186,7 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    applied**), premium.js, hub/404 cards and premium.html section (empty until a unit is
    published), site search, tutor pages, sitemap, OG tags and card, manifest, noindex app pages,
    weight budgets, a11y and console samples, CI and `ci-local.sh`, site rules
-   `apchem-trademark` and `apchem-beta-and-report`, `sw.js` (`COURSE_URLS.chem`, cache v58). Site
+   `apchem-trademark` and `apchem-beta-and-report`, `sw.js` (`COURSE_URLS.chem`, cache v58; v59 at publish). Site
    shell budget 282 → 283 KB for the fifth course. No tutor bank (as AP® Biology).
 12. (2026-10-06) **Placeholder sample outside the course.** The one sample topic
    (`moles-molar-mass`, 15 items in two sets incl. a particle set and unit/sig-fig numerics, two
@@ -262,13 +254,24 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
      label like K<sub>A</sub> is not read as Ka (fixed a false ordering failure in 7.6).
    - Inline stimulus SVGs shrink to the column (`.chem-stim-html svg`; one was 806 px at 360 px).
 
+16. (2026-10-06, launch review) **Published, Premium not on sale.** All nine units and `skills-math`
+   are in `published.json`; generators rerun (course, courses, pricing, OG tags, sitemap, crumbs,
+   Worker). Hub and 404 cards say "All 96 published topics" once every map topic is out
+   (`CHEM_ALL` in `build-pricing.mjs`); site search gained the AP course tints and noscript links;
+   changelog entry; `sw.js` cache v59. Fixed-order singles: 22 put in natural order (key moved,
+   answer text unchanged), 14 unfixed so they shuffle (as `u5.md`). Continuity pass (chem vs bio
+   screenshots, every shared page, 1280/360, light/dark): two shared-layer gaps fixed, the doubled
+   answer chip (`study.css` knew only `.bio-mark`) and the notes crumb spacing (`book.css`).
+
 ## 8. Open items for the owner
 
-- Launch checklist (only you can do), as `docs/apbio-spec.md` section 6, once Units 1-3 are
-  published: (1) apply `scripts/sql/migrations/2026-10c-apchem.sql` in Supabase (after
-  2026-10b); (2) Polar product "AP® Chemistry Premium (through June 30, 2027)", one-time $25;
-  (3) add `"chem-2027": "<product id>"` to `POLAR_PRODUCTS`; (4) deploy the Worker after merging;
-  (5) delete `onSale: false` from `COURSES.apchem` in `assets/premium.js` and bump `sw.js`.
+- **Launch checklist (only you can do).** The course is published (free parts live, Premium shows
+  "coming soon" and locks nothing) until these are done, in order:
+  1. Apply `scripts/sql/migrations/2026-10c-apchem.sql` in Supabase (after 2026-10b).
+  2. Create the Polar product "AP® Chemistry Premium (through June 30, 2027)", one-time $25.
+  3. Add `"chem-2027": "<product id>"` to `POLAR_PRODUCTS` (Worker config, the `chem` pass key).
+  4. Merge the PR, then deploy the Worker (`node scripts/build-worker.mjs`, then deploy).
+  5. Delete `onSale: false` from `COURSES.apchem` in `assets/premium.js` and bump `CACHE_NAME` in `sw.js`.
 - Questions in `docs/apchem-needs-author.md` (CED exclusions for Units 3-9, practice weights,
   which trainers are free).
 - Optional: a chemistry teacher to review the course (the Beta note stays until then).

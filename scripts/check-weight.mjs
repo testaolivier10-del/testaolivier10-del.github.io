@@ -243,8 +243,11 @@ const SHELL_BUDGETS = [
   ['bio', 50],
   /* AP® Chemistry (chem/, a fork of the AP® Biology runtime, with the
      numeric grader for units and significant figures). Bio's 50 is the
-     reference. */
-  ['chem', 50],
+     reference. Raised 50 -> 52 at publish (2026-10-06): with all nine units
+     and the math chapter out, the generated chem-curriculum.js lists every
+     topic as live and the exams page's shell measured 50.2 KB; the extra is
+     course data, not code. */
+  ['chem', 52],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
