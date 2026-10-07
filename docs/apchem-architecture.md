@@ -176,8 +176,7 @@ point; a sample for every part; `stimulus` an object or a stimulus id from a que
 
 ### Pages, published, descriptions, tools
 
-- `pages.json`: `{ apps: [...], tools: [] }`, as AP® Biology. `tools[]` is empty until a trainer
-  is built.
+- `pages.json`: `{ apps: [...], tools: [...] }`, as AP® Biology. Six tools (spec decision 15).
 - `published.json`: `{ "chapters": [] }`.
 - `descriptions.json`: `{ lessons, notes, units }` meta-description overrides; never "AP".
 - A tool is one `pages.json` `tools[]` entry `{ slug, kind: simulator|skill|drill, name, title,
@@ -186,6 +185,17 @@ point; a sample for every part; `stimulus` an object or a stimulus id from a que
   in the bank item format with `chem-` ids replaced by `<slug>:<content>:<item>`, …) + a validator
   `scripts/lib/apchem-tool-checks/<slug>.mjs` exporting `check(data, map)` that recomputes every
   number through `runtime()` (`_shared.mjs`). "simulator" is shown as "Trainers" in the course.
+- **Seeded step drills** (ICE tables, Q vs K, buffers, titration reader, particle diagrams): the data
+  file holds `contexts[]` (each with its own `topic`, so a context is served only once its unit is
+  published) and no fixed questions. `ApChemMath.<kind>.generate(rng, context, type?)` returns
+  `{ ctx, topic, text, steps, solution }`; a step is `num` / `vol` (a "cell" `{ answer, rel, abs?,
+  mistakes: [{ value, why }] }`, graded by `ApChemMath.diagnose`, which names the matching slip),
+  `row` / `coef` (one ICE row, a cell per species; change typed as −x, +2x), or `choice` (`options`,
+  `optionsHtml` for pictures, `correct`, `why[]`). `ApChemTools.drill(app, data, o)` renders and checks
+  them one step at a time (retry or "Show the answer"; the first try is recorded as
+  `<slug>:<context>:<step>`). `units-sig-figs` instead generates bank-format numeric items graded by
+  `ApChemQuestions`. Shared validator code: `apchem-tool-checks/_drills.mjs` (300 seeds per context and
+  type; every key graded right, no mistake graded right, no NaN in any text).
 
 ## Publishing a unit
 

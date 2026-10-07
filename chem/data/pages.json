@@ -1,5 +1,5 @@
 {
- "about": "The AP Chemistry app pages. scripts/build-apchem.mjs writes each page's shell (head, header, footer, a <div id=\"app\"> mount) from this file; the page's behavior is its script in chem/assets/<script>, which mounts into #app. Until that script exists the shell says the page arrives with the first published unit. \"static\": true marks a generated page that is not an app (teachers.html). premium names the Premium feature (ApChemCore gates it); card is the line on the course home. No path may contain the token \"ap\" (docs/apchem-spec.md decision 2). tools[] are the trainers, skills tools and drills: page chem/tools/<slug>.html, script chem/assets/tools/<slug>.js, content chem/data/tools/<slug>.json (docs/apchem-architecture.md, Tools). None is built yet.",
+ "about": "The AP Chemistry app pages. scripts/build-apchem.mjs writes each page's shell (head, header, footer, a <div id=\"app\"> mount) from this file; the page's behavior is its script in chem/assets/<script>, which mounts into #app. Until that script exists the shell says the page arrives with the first published unit. \"static\": true marks a generated page that is not an app (teachers.html). premium names the Premium feature (ApChemCore gates it); card is the line on the course home. No path may contain the token \"ap\" (docs/apchem-spec.md decision 2). tools[] are the trainers, skills tools and drills: page chem/tools/<slug>.html, script chem/assets/tools/<slug>.js, content chem/data/tools/<slug>.json (docs/apchem-architecture.md, Tools). Free or Premium per tool: the first tool of each unit (in the map's order) and every skills tool are free, as in AP® Biology; the rest carry \"premium\": \"tools\" (docs/apchem-spec.md decision 15).",
  "apps": [
   {
    "slug": "practice",
@@ -111,5 +111,56 @@
    "static": true
   }
  ],
- "tools": []
+ "tools": [
+  {
+   "slug": "particle-diagrams",
+   "kind": "simulator",
+   "name": "Particle diagrams",
+   "title": "Particle diagram trainer",
+   "desc": "Choose the right particle picture: water around ions, limiting reactants, equilibrium counts, and strong against weak acids, with feedback on each wrong one.",
+   "blurb": "Water around ions, limiting reactants, equilibrium counts and acid strength, drawn particle by particle."
+  },
+  {
+   "slug": "ice-table-drills",
+   "kind": "drill",
+   "name": "ICE table drills",
+   "title": "ICE table drills",
+   "desc": "Unlimited ICE table problems: find K, find equilibrium amounts with small x and the 5% check, and perfect squares, checked row by row.",
+   "blurb": "Build the I, C and E rows step by step; every slip gets its own feedback."
+  },
+  {
+   "slug": "q-vs-k",
+   "kind": "simulator",
+   "premium": "tools",
+   "name": "Q vs K",
+   "title": "Q vs K trainer",
+   "desc": "Calculate Q from concentrations, pressures or a particle picture, compare it with K, predict the shift and pick the justification that earns the point.",
+   "blurb": "Q from numbers or particles, the direction of the shift, and the wording that earns the point."
+  },
+  {
+   "slug": "titration-curve-reader",
+   "kind": "simulator",
+   "name": "Titration curve reader",
+   "title": "Titration curve reader",
+   "desc": "Read titration curves computed from the equilibrium math: equivalence and half-equivalence points, pKa, indicator choice and the species present.",
+   "blurb": "Equivalence, half-equivalence and pKa, indicator choice and the species at each point."
+  },
+  {
+   "slug": "buffer-drills",
+   "kind": "drill",
+   "premium": "tools",
+   "name": "Buffer and Henderson-Hasselbalch drills",
+   "title": "Buffer and Henderson-Hasselbalch drills",
+   "desc": "Unlimited buffer problems: Henderson-Hasselbalch pH, the ratio for a target pH, added strong acid or base, and capacity, with feedback on ln and log.",
+   "blurb": "Buffer pH, target ratios, added acid or base and capacity, checked step by step."
+  },
+  {
+   "slug": "units-sig-figs",
+   "kind": "skill",
+   "name": "Units and significant figures",
+   "title": "Units and significant figures checker",
+   "desc": "Calculation habits graded on value, units and significant figures: J and kJ, Celsius and kelvin, the right R, and the rules for multiplying and adding.",
+   "blurb": "Value, unit and significant figures graded separately, with a note on every slip."
+  }
+ ]
 }

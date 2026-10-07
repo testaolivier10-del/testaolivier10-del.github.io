@@ -309,3 +309,55 @@
 .tr-fb li.ok{box-shadow:inset 4px 0 0 var(--good-text);}
 .tr-fb li.no{box-shadow:inset 4px 0 0 var(--bad-text);}
 .hw-readout dt{text-transform:none;letter-spacing:0;font-size:13px;}
+
+/* Step drills (ApChemTools.drill): ICE tables, Q vs K, buffers, titration
+   reader, particle pictures. */
+.cd-steps{display:grid;gap:12px;grid-template-columns:minmax(0,1fr);}
+.cd-step{display:flex;flex-direction:column;gap:8px;}
+.cd-step.is-right{box-shadow:inset 4px 0 0 var(--good-text);}
+.cd-step.is-wrong:not(.is-right){box-shadow:inset 4px 0 0 var(--bad-text);}
+.cd-step.is-shown{box-shadow:inset 4px 0 0 var(--muted);}
+.cd-label{margin:0;font:800 15px/1.45 var(--font-ui);}
+.cd-n{display:block;font:800 12px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+.cd-num{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.cd-num input,.cd-cell{min-height:44px;padding:6px 10px;border-radius:12px;border:2px solid var(--line);background:var(--white);color:var(--ink);font:800 16px var(--font-mono);box-sizing:border-box;}
+.cd-num input{width:13ch;max-width:100%;}
+.cd-cell{width:100%;min-width:7ch;}
+.cd-num input.is-right,.cd-cell.is-right{border-color:var(--good-text);}
+.cd-num input.is-wrong,.cd-cell.is-wrong{border-color:var(--bad-text);}
+.cd-vol{display:flex;flex-direction:column;gap:4px;}
+.cd-vol label{font:700 13px var(--font-ui);color:var(--muted);}
+.cd-vol input[type=range]{width:100%;height:44px;accent-color:var(--cink);}
+.cd-opts{border:0;margin:0;padding:0;display:grid;gap:4px;}
+.cd-pics{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:10px;}
+.cd-pics .bt-radio{align-items:flex-start;border:2px solid var(--line);border-radius:14px;padding:6px 8px;background:var(--white);}
+.cd-pics .bt-radio:has(input:checked){border-color:var(--cink);background:var(--ctint);}
+.cd-pics .bt-radio input{margin-top:10px;}
+.cd-pics label{flex-direction:column;align-items:stretch;gap:4px;}
+.cd-pic-n{font:800 12px var(--font-ui);color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
+.cd-fb{font:700 14.5px/1.5 var(--font-ui);}
+.cd-fb:empty{display:none;}
+.cd-notes{margin:6px 0 0;padding-left:20px;display:grid;gap:4px;font-weight:600;}
+.cd-step .bt-actions:empty{display:none;}
+.cd-ice{width:100%;border-collapse:collapse;}
+.cd-ice th,.cd-ice td{padding:6px;text-align:center;vertical-align:middle;border-bottom:1px solid var(--line);font:700 14px var(--font-ui);}
+.cd-ice th[scope=row]{text-align:left;white-space:nowrap;}
+.cd-ice th[scope=row] .bt-small{display:block;}
+.cd-ice tr.is-active{background:var(--ctint);}
+.cd-blank{color:var(--muted);}
+.cd-fig{margin:0;display:flex;flex-direction:column;gap:4px;align-items:flex-start;}
+.cd-fig svg{width:100%;max-width:320px;height:auto;}
+.tc-fig{margin:0;}
+.tc-plot svg{width:100%;height:auto;display:block;cursor:crosshair;touch-action:manipulation;}
+.tc-read{min-height:1.4em;}
+/* Particle pictures: every atom carries its symbol, so these colors are a
+   second cue only. Fills are light in both themes so the black symbol reads. */
+.pt-box{width:100%;height:auto;display:block;}
+.pt-frame{fill:var(--paper);stroke:var(--line);stroke-width:2;}
+.pt-atom circle{stroke:#1d1d1f;stroke-width:1.2;}
+.pt-atom text{fill:#111;font-family:var(--font-ui);font-weight:800;pointer-events:none;}
+.pt-atom.pa circle{fill:#9CC8F0;} .pt-atom.pb circle{fill:#F4B58A;}
+.pt-atom.ph circle{fill:#FFFFFF;} .pt-atom.po circle{fill:#F2A0A0;}
+.pt-atom.pn circle{fill:#B6B8F2;} .pt-atom.pcl circle{fill:#A8E0A0;} .pt-atom.pc circle{fill:#C9C9C9;}
+.pt-atom.pcat circle{fill:#F7D774;} .pt-atom.pani circle{fill:#B9E3E8;}
+:root[data-theme="dark"] .pt-atom circle{stroke:#0b0b0c;}
