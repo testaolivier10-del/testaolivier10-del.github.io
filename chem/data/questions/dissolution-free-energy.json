@@ -78,7 +78,7 @@
     ]
    },
    "why": {
-    "correct": "ΔG° = ΔH° − TΔS° = 25.7 − (298)(0.1087) = 25.7 − 32.39 = -6.7 kJ/mol. The subtraction leaves the tenths place, so −6.7 kJ/mol (two significant figures)."
+    "correct": "ΔG° = ΔH° − TΔS° = 25.7 − (298)(0.1087) = 25.7 − 32.39 = −6.7 kJ/mol. The subtraction leaves the tenths place, so −6.7 kJ/mol (two significant figures)."
    }
   },
   {

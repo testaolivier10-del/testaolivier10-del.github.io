@@ -13,7 +13,8 @@ secondary sources and memory of the 2019 CED, and need checking against the curr
 - 3.7: molality, percent by mass and percent by volume calculations not assessed; colligative
   properties not assessed.
 - 8.11: calculations of solubility as a function of pH not assessed (qualitative only).
-- 9.8: labeling electrodes as positive or negative not assessed.
+- 9.8: labeling electrodes as positive or negative not assessed. (Confirmed in the CED, 9.8.A.3,
+  Unit 9 review 2026-10-06.)
 - 9.10: the Nernst equation is on the sheet; the exam emphasizes qualitative reasoning (sign and
   direction from Q vs 1). Is any quantitative Nernst calculation assessed?
 - Any other Unit 3-9 exclusion statement the CED has that is not listed here.
@@ -235,7 +236,7 @@ Written for Unit 8 (`chem/data/*/` for topics 8.1-8.11); please confirm or corre
   answer below about 1e-9 was accepted for small keys (Ka, Kb, [OH⁻]). Changed to a relative
   slack; test `scripts/test/apchem-numeric-small.test.mjs`. No other copy of this function was
   found in the repo.
-## unit9-data: thermodynamic values used in Unit 9 (open, 2026-10-06)
+## unit9-data: thermodynamic values used in Unit 9 (resolved 2026-10-06, Unit 9 review)
 
 Unit 9 items use standard values at 298 K from general tables, not from the CED (the exam gives
 data in each question). Spot-check against one reference before publishing: S° (N₂ 191.6, H₂ 130.7,
@@ -248,7 +249,16 @@ is recomputed from these numbers, so a changed value means regenerating the depe
 Where: `chem/data/questions/{entropy-change,gibbs-free-energy,dissolution-free-energy,coupled-reactions,cell-potential}.json`,
 `chem/data/frq/frq-*.json` (Unit 9).
 
-## unit9-atp: ATP values in coupled-reactions (open, 2026-10-06)
+**Resolved (Unit 9 review, `docs/apchem-reviews/u9.md`).** Every S° and ΔG°f above matches the
+LibreTexts "T1: Standard Thermodynamic Quantities" table (NBS/NIST values); H₂O(l) is 70.0 there and
+69.9 in other tables (NIST 69.95), so either is fine. The other values used (NO₂ 240.1, SO₂ 248.2,
+SO₃ 256.8, diamond 2.4, Fe 27.3, C₃H₈ 270.3) also match. The dissolution data agree with ΔH°f and S°
+of the solids and aqueous ions (NaCl +3.9 and +43.4, NH₄Cl +14.7 and +75.3, NH₄NO₃ ΔS° +108.7;
+NH₄NO₃ +25.7 and CaCl₂ −81.3/−44.7 are the usual tabulated enthalpies of solution, within table
+scatter). The E° values are the standard textbook values. Every Unit 9 numeric key, authored
+mistake and FRQ number was recomputed in code from these values; all keys were right.
+
+## unit9-atp: ATP values in coupled-reactions (resolved 2026-10-06, Unit 9 review)
 
 The ATP item set gives ΔG = −30.5 kJ/mol for ATP hydrolysis and +13.8 kJ/mol for glucose
 phosphorylation "at 37 °C and pH 7". These are the usual biochemical standard values (ΔG°′); the
@@ -256,9 +266,21 @@ actual ΔG in a cell is more negative. Is presenting them as cell-condition valu
 the exam's level, or should the stem say "biochemical standard conditions"? Where:
 `chem/data/questions/coupled-reactions.json` (stimulus coupled-reactions-s2).
 
-## unit9-exclusions-applied: how Unit 9 handles the reported exclusions (open, 2026-10-06)
+**Resolved.** Labeled as what they are: the stimulus now says "standard free energy changes at pH 7
+(the standard state biochemists use), taken here for 37 °C", every ΔG in the set is ΔG°, and the
+notes add one sentence that the real ΔG in a cell is more negative. Keys unchanged (−16.7 kJ/mol;
+K = 6.5 × 10² at 310 K, which treats ΔG°′ as ΔG° at 310 K: fine for the exam's level).
+
+## unit9-exclusions-applied: how Unit 9 handles the reported exclusions (partly resolved 2026-10-06)
 
 Pending `ced-exclusions`: no Unit 9 item asks for an electrode's sign (9.8), and every Nernst item
 is qualitative (direction of E from Q, concentration cells). The notes for 9.8 and 9.10 mention
 electrode signs and one worked Nernst number only inside `going-further` asides. If the CED allows
 quantitative Nernst, add numeric items to `nernst-equation`.
+
+**Partly resolved (Unit 9 review).** Read in the current CED PDF: 9.8.A.3 has the exclusion
+statement "Labeling an electrode as positive or negative will not be assessed on the AP Exam", so
+the 9.8 handling is confirmed (the notes' aside now says so). For 9.10, EKs 9.10.A.1-A.3 are all
+qualitative (direction and size of E relative to E° from Q, E = 0 at Q = K, concentration cells);
+the rest of the 9.10 page (any EK or exclusion on algorithmic Nernst calculations) could not be
+extracted, so the qualitative-only choice stays until someone reads that page.

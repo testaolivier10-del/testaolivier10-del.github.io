@@ -38,7 +38,7 @@
   },
   {
    "cause": "Any substance above 0 K has motion and so more than one microstate",
-   "effect": "every standard molar entropy S° at 298 K is positive, elements included"
+   "effect": "the standard molar entropy S° of every pure substance at 298 K is positive, elements included"
   },
   {
    "cause": "Entropy is a state function measured per mole",
@@ -50,7 +50,7 @@
   }
  ],
  "ideas": [
-  "A perfect crystal at 0 K has S = 0; every substance at 298 K has a <b>positive S°</b>, elements included (unlike ΔH°f).",
+  "A perfect crystal at 0 K has S = 0; every pure substance at 298 K has a <b>positive S°</b>, elements included (unlike ΔH°f).",
   "S° values: gases ≫ liquids &gt; solids; among similar substances, more atoms per molecule means a larger S°.",
   "<b>ΔS° = Σ nS°(products) − Σ nS°(reactants)</b>, each multiplied by its coefficient. Units: J/(mol·K).",
   "Reverse a reaction: flip the sign. Double it: double ΔS°.",
@@ -58,7 +58,7 @@
  ],
  "misconception": {
   "wrong": "Elements in their standard states have S° = 0, just as they have ΔH°f = 0.",
-  "right": "ΔH°f is zero for an element by definition. S° is measured from zero at 0 K, so every substance at 298 K, elements included, has a positive S°: O₂(g) has 205.2 J/(mol·K)."
+  "right": "ΔH°f is zero for an element by definition. S° is measured from zero at 0 K, so every pure substance at 298 K, elements included, has a positive S°: O₂(g) has 205.2 J/(mol·K)."
  },
  "check": [
   "chem-entropy-change-1",
