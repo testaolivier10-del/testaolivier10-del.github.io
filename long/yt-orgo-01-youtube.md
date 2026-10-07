@@ -9,14 +9,14 @@ Free practice and notes for this topic: https://levlprep.com/ochem/notes/atomic-
 0:00 Start here
 0:52 The three particles
 2:17 Isotopes and mass number
-3:37 Shells and valence electrons
-6:16 The octet rule
-8:54 Ions: cations and anions
-10:03 Transfer or share
-12:18 Carbocations and carbanions
-14:20 Recap
-14:58 Practice problems
-16:51 Next: orbitals
+3:41 Shells and valence electrons
+6:49 The octet rule
+9:45 Ions: cations and anions
+10:56 Transfer or share
+14:10 Carbocations and carbanions
+16:24 Recap
+17:02 Practice problems
+18:56 Next: orbitals
 
 Next video in the series: Orbitals.
 
