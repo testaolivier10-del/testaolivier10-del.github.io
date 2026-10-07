@@ -264,7 +264,6 @@
     "An inner electron is removed."
    ],
    "correct": 0,
-   "fixed": true,
    "why": {
     "correct": "Infrared photons match the energy gaps between vibrational levels. The broad dip near 3,350 cm⁻¹ is in the O–H stretch range.",
     "options": [
@@ -367,19 +366,19 @@
    "stimulus": "electromagnetic-spectrum-s2",
    "q": "At which wavelength does the dye absorb most strongly?",
    "options": [
-    "About 630 nm",
     "About 450 nm",
     "About 540 nm",
+    "About 630 nm",
     "About 700 nm"
    ],
-   "correct": 0,
+   "correct": 2,
    "fixed": true,
    "why": {
     "correct": "The absorption peaks near 630 nm, in the red-orange part of the spectrum.",
     "options": [
-     "Right: the peak of the curve.",
      "Absorption there is close to zero.",
      "Absorption there is low.",
+     "Right: the peak of the curve.",
      "Absorption has fallen far from its peak by 700 nm."
     ]
    }
@@ -428,7 +427,6 @@
     "A covalent bond breaks and the molecule falls apart."
    ],
    "correct": 0,
-   "fixed": true,
    "why": {
     "correct": "Visible photons carry enough energy to match electronic energy gaps, so an electron is promoted to an excited state.",
     "options": [
@@ -538,7 +536,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Microwave photons match the energy gaps of molecular rotation. Polar water molecules absorb them, rotate faster, and collide with neighbours, raising the temperature. The glass absorbs little.",
+    "correct": "Microwave photons match the energy gaps of molecular rotation. Polar water molecules absorb them, rotate faster, and collide with neighbors, raising the temperature. The glass absorbs little.",
     "options": [
      "Right: rotation of polar molecules.",
      "Microwave photons carry less energy than visible photons and break no bonds.",
@@ -557,20 +555,20 @@
    "diff": 1,
    "q": "Which kind of radiation has the longest wavelength?",
    "options": [
-    "Microwave",
-    "Infrared",
+    "Ultraviolet",
     "Visible",
-    "Ultraviolet"
+    "Infrared",
+    "Microwave"
    ],
-   "correct": 0,
+   "correct": 3,
    "fixed": true,
    "why": {
     "correct": "Of these, microwaves have the longest wavelengths (1 mm to 1 m) and the lowest energy per photon.",
     "options": [
-     "Right: 1 mm to 1 m.",
-     "Infrared wavelengths are shorter than microwaves.",
+     "Ultraviolet is shorter than visible.",
      "Visible light is 400–700 nm.",
-     "Ultraviolet is shorter than visible."
+     "Infrared wavelengths are shorter than microwaves.",
+     "Right: 1 mm to 1 m."
     ]
    }
   },
@@ -636,20 +634,20 @@
    "diff": 2,
    "q": "A molecule's two lowest electronic levels are far apart, but its vibrational levels are close together. Which light could it absorb to excite a vibration but not an electronic transition?",
    "options": [
-    "Infrared",
+    "X-ray",
     "Ultraviolet",
     "Visible",
-    "X-ray"
+    "Infrared"
    ],
-   "correct": 0,
+   "correct": 3,
    "fixed": true,
    "why": {
     "correct": "Infrared photons have energies that match vibrational gaps but fall far short of electronic gaps.",
     "options": [
-     "Right: IR matches vibrational gaps.",
+     "X-ray photons remove inner electrons.",
      "UV photons match electronic gaps.",
      "Visible photons match electronic gaps in colored substances.",
-     "X-ray photons remove inner electrons."
+     "Right: IR matches vibrational gaps."
     ]
    }
   }

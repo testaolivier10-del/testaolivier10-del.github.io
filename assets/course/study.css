@@ -193,7 +193,7 @@
 .cx-q .cx-opt[aria-disabled="true"],.cx-q .cx-opt:disabled{cursor:default;opacity:1;}
 .cx-q .cx-opt .letter{flex:0 0 26px;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--muted);font:900 12px var(--font-ui);border:0;}
 .cx-q .cx-opt.selected .letter,.cx-q .cx-opt[aria-checked="true"] .letter{background:var(--cink);color:var(--white);box-shadow:none;}
-.cx-q .cx-opt > span:not(.letter):not(.sr-only):not([class*="why"]):not(.bio-mark){flex:1 1 0;min-width:0;}
+.cx-q .cx-opt > span:not(.letter):not(.sr-only):not([class*="why"]):not(.bio-mark):not(.chem-mark){flex:1 1 0;min-width:0;}
 .cx-q .cx-opt [class*="opt-why"]{flex-basis:100%;display:block;font:600 13.5px/1.5 var(--font-ui);color:var(--muted);margin:2px 0 0;}
 .cx-q .cx-opt:is(.is-right,.correct){background:var(--tint-good);box-shadow:inset 0 0 0 2px var(--good-text);}
 .cx-q .cx-opt:is(.is-wrong,.incorrect,.wrong){background:var(--tint-bad);box-shadow:inset 0 0 0 2px var(--bad-text);}
@@ -236,10 +236,11 @@
 .premium-slot:empty{display:none;}
 .cx-tag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:var(--radius-pill);background:var(--cink);color:var(--white);font:900 9.5px/1.6 var(--font-ui);letter-spacing:.06em;text-transform:uppercase;vertical-align:1px;}
 .cx-choice b .cx-tag{display:inline-block;}
-/* Bio's renderer writes a visible mark chip itself (.bio-mark); keep one. */
-.cx-q .cx-opt:has(.bio-mark)::before{content:none;display:none;}
-.cx-q .cx-opt .bio-mark{order:9;}
-.cx-q .cx-opt .bio-mark{flex:0 0 auto;margin-left:auto;white-space:nowrap;}
+/* Bio's and Chemistry's renderers write a visible mark chip themselves
+   (.bio-mark, .chem-mark); keep one. */
+.cx-q .cx-opt:has(.bio-mark,.chem-mark)::before{content:none;display:none;}
+.cx-q .cx-opt :is(.bio-mark,.chem-mark){order:9;}
+.cx-q .cx-opt :is(.bio-mark,.chem-mark){flex:0 0 auto;margin-left:auto;white-space:nowrap;}
 .cx-q .cx-opt:is(.is-right,.correct,.is-wrong,.incorrect,.wrong)::before{margin-left:auto;}
 .cx-q .cx-opt [class*="opt-why"]{order:10;}
 /* NREMT pages sit in .wrap, which pads its top; the opener spaces itself. */

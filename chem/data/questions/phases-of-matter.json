@@ -121,19 +121,19 @@
    "stimulus": "phases-of-matter-s1",
    "q": "Which liquid has the strongest intermolecular forces?",
    "options": [
-    "Water",
-    "Ethanol",
     "Diethyl ether",
+    "Ethanol",
+    "Water",
     "The three are about equal"
    ],
-   "correct": 0,
+   "correct": 2,
    "fixed": true,
    "why": {
     "correct": "At every temperature water has the lowest vapor pressure, so the fewest molecules escape: its molecules attract each other most strongly.",
     "options": [
-     "Right: lowest vapor pressure at every temperature.",
-     "Ethanol's vapor pressure is higher than water's at every temperature shown, so its attractions are weaker.",
      "Ether has the highest vapor pressure, so its attractions are the weakest of the three.",
+     "Ethanol's vapor pressure is higher than water's at every temperature shown, so its attractions are weaker.",
+     "Right: lowest vapor pressure at every temperature.",
      "The three curves are far apart, so the attractions clearly differ."
     ]
    }
@@ -176,19 +176,19 @@
    "stimulus": "phases-of-matter-s1",
    "q": "On a mountain the air pressure is 355 torr. At about what temperature would water boil there?",
    "options": [
+    "60 °C",
     "80 °C",
     "100 °C",
-    "60 °C",
     "120 °C"
    ],
-   "correct": 0,
+   "correct": 1,
    "fixed": true,
    "why": {
     "correct": "A liquid boils when its vapor pressure equals the pressure above it. Water's vapor pressure reaches 355 torr at 80 °C.",
     "options": [
+     "At 60 °C water's vapor pressure is 149 torr, still below 355 torr.",
      "Right: the vapor pressure equals the 355 torr air pressure at 80 °C.",
      "100 °C is the boiling point at 760 torr, sea-level pressure.",
-     "At 60 °C water's vapor pressure is 149 torr, still below 355 torr.",
      "Lower air pressure lowers the boiling point; it does not raise it."
     ]
    }
@@ -258,19 +258,19 @@
    "stimulus": "phases-of-matter-s2",
    "q": "Which box shows the substance as a liquid?",
    "options": [
-    "R",
     "P",
     "Q",
+    "R",
     "Q and R both"
    ],
-   "correct": 0,
+   "correct": 2,
    "fixed": true,
    "why": {
     "correct": "In a liquid the molecules touch but are jumbled, and they settle into the bottom of the container: box R.",
     "options": [
-     "Right: touching and disordered, taking the container's shape.",
      "P shows molecules far apart throughout the box: a gas.",
      "Q shows molecules touching in a regular pattern: a solid.",
+     "Right: touching and disordered, taking the container's shape.",
      "Q is ordered like a solid, so only R fits a liquid."
     ]
    }
@@ -292,7 +292,6 @@
     "Deposition"
    ],
    "correct": 0,
-   "fixed": true,
    "why": {
     "correct": "Q is a solid and P is a gas. Solid directly to gas is sublimation.",
     "options": [
@@ -558,7 +557,7 @@
      "Gas particles are captured by attractions, which releases energy.",
      "Right: solid to gas overcomes attractions.",
      "Particles settle into fixed positions, releasing energy.",
-     "Right: molecules must overcome their neighbours' attractions to escape.",
+     "Right: molecules must overcome their neighbors' attractions to escape.",
      "Gas to solid releases energy as attractions form."
     ]
    }
@@ -583,7 +582,7 @@
     "correct": "Vapor pressure follows the strength of attractions, not mass. Water's hydrogen bonds hold its molecules more tightly than Br₂'s dispersion forces, so fewer water molecules escape.",
     "options": [
      "Right: name the forces in both substances.",
-     "Mass does not set vapor pressure; the attractions do, and here they favour water.",
+     "Mass does not set vapor pressure; the attractions do, and here they favor water.",
      "At the same temperature heavier molecules move more slowly, not faster.",
      "Evaporation leaves Br₂ molecules whole; bromine vapor is Br₂."
     ]

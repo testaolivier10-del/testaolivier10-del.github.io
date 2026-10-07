@@ -68,14 +68,14 @@
    "prompt": "<b>Draw</b> an energy diagram for the reaction. Label the reactants, the products and ΔH, and show an activation energy.",
    "rubric": [
     {
-     "point": "Products drawn lower than reactants, with ΔH shown as an arrow (or span) from the reactant level down to the product level, and a hump labelled with Ea above the reactants",
+     "point": "Products drawn lower than reactants, with ΔH shown as an arrow (or span) from the reactant level down to the product level, and a hump labeled with Ea above the reactants",
      "accept": [
       "exothermic diagram with ΔH arrow pointing down",
       "reactants higher than products, hump between them"
      ]
     }
    ],
-   "sample": "A diagram with enthalpy on the vertical axis and progress of the reaction on the horizontal axis: a reactant level (CH₄ + Cl₂) on the left, a hump, and a product level (CH₃Cl + HCl) about 104 kJ lower on the right. A downward arrow from the reactant level to the product level is labelled ΔH; an upward arrow from the reactant level to the top of the hump is labelled Ea."
+   "sample": "A diagram with enthalpy on the vertical axis and progress of the reaction on the horizontal axis: a reactant level (CH₄ + Cl₂) on the left, a hump, and a product level (CH₃Cl + HCl) about 104 kJ lower on the right. A downward arrow from the reactant level to the product level is labeled ΔH; an upward arrow from the reactant level to the top of the hump is labeled Ea."
   },
   {
    "label": "c",

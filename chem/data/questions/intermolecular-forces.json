@@ -91,7 +91,7 @@
   "intermolecular-forces-s3": {
    "kind": "particle",
    "title": "Four water molecules",
-   "html": "<svg viewBox=\"0 0 270 240\" width=\"270\" height=\"240\" role=\"img\" aria-label=\"Four water molecules with four labelled dashed lines. W runs from an H of the top-left molecule to the O of the bottom-left molecule. X runs from an H of the bottom-right molecule to the O of the top-right molecule. Y runs from the O of the bottom-left molecule to the O of the bottom-right molecule. Z runs from an H of the top-left molecule to an H of the top-right molecule.\"><rect x=\"2\" y=\"2\" width=\"266\" height=\"236\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><line x1=\"69.9\" y1=\"92.6\" x2=\"80.0\" y2=\"190.0\" stroke=\"#0072B2\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/><line x1=\"177.4\" y1=\"180.1\" x2=\"170.0\" y2=\"80.0\" stroke=\"#0072B2\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/><line x1=\"80.0\" y1=\"190.0\" x2=\"190.0\" y2=\"190.0\" stroke=\"#0072B2\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/><line x1=\"69.9\" y1=\"67.4\" x2=\"160.1\" y2=\"67.4\" stroke=\"#0072B2\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/><circle cx=\"69.9\" cy=\"67.4\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"69.9\" cy=\"92.6\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"60.0\" cy=\"80.0\" r=\"12\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"160.1\" cy=\"92.6\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"160.1\" cy=\"67.4\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"170.0\" cy=\"80.0\" r=\"12\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"92.6\" cy=\"199.9\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"67.4\" cy=\"199.9\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"80.0\" cy=\"190.0\" r=\"12\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"177.4\" cy=\"180.1\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"202.6\" cy=\"180.1\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"190.0\" cy=\"190.0\" r=\"12\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"62.9\" y=\"145.3\" font-size=\"15\" font-weight=\"700\" fill=\"#1D44A6\" text-anchor=\"middle\">W</text><text x=\"185.7\" y=\"134.1\" font-size=\"15\" font-weight=\"700\" fill=\"#1D44A6\" text-anchor=\"middle\">X</text><text x=\"135.0\" y=\"186.0\" font-size=\"15\" font-weight=\"700\" fill=\"#1D44A6\" text-anchor=\"middle\">Y</text><text x=\"115.0\" y=\"63.4\" font-size=\"15\" font-weight=\"700\" fill=\"#1D44A6\" text-anchor=\"middle\">Z</text></svg><p>Key: orange circle, oxygen atom; white circle, hydrogen atom; dashed lines W, X, Y and Z, possible attractions between molecules.</p>"
+   "html": "<svg viewBox=\"0 0 270 240\" width=\"270\" height=\"240\" role=\"img\" aria-label=\"Four water molecules with four labeled dashed lines. W runs from an H of the top-left molecule to the O of the bottom-left molecule. X runs from an H of the bottom-right molecule to the O of the top-right molecule. Y runs from the O of the bottom-left molecule to the O of the bottom-right molecule. Z runs from an H of the top-left molecule to an H of the top-right molecule.\"><rect x=\"2\" y=\"2\" width=\"266\" height=\"236\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><line x1=\"69.9\" y1=\"92.6\" x2=\"80.0\" y2=\"190.0\" stroke=\"#0072B2\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/><line x1=\"177.4\" y1=\"180.1\" x2=\"170.0\" y2=\"80.0\" stroke=\"#0072B2\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/><line x1=\"80.0\" y1=\"190.0\" x2=\"190.0\" y2=\"190.0\" stroke=\"#0072B2\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/><line x1=\"69.9\" y1=\"67.4\" x2=\"160.1\" y2=\"67.4\" stroke=\"#0072B2\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/><circle cx=\"69.9\" cy=\"67.4\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"69.9\" cy=\"92.6\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"60.0\" cy=\"80.0\" r=\"12\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"160.1\" cy=\"92.6\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"160.1\" cy=\"67.4\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"170.0\" cy=\"80.0\" r=\"12\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"92.6\" cy=\"199.9\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"67.4\" cy=\"199.9\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"80.0\" cy=\"190.0\" r=\"12\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"177.4\" cy=\"180.1\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"202.6\" cy=\"180.1\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"190.0\" cy=\"190.0\" r=\"12\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"62.9\" y=\"145.3\" font-size=\"15\" font-weight=\"700\" fill=\"#1D44A6\" text-anchor=\"middle\">W</text><text x=\"185.7\" y=\"134.1\" font-size=\"15\" font-weight=\"700\" fill=\"#1D44A6\" text-anchor=\"middle\">X</text><text x=\"135.0\" y=\"186.0\" font-size=\"15\" font-weight=\"700\" fill=\"#1D44A6\" text-anchor=\"middle\">Y</text><text x=\"115.0\" y=\"63.4\" font-size=\"15\" font-weight=\"700\" fill=\"#1D44A6\" text-anchor=\"middle\">Z</text></svg><p>Key: orange circle, oxygen atom; white circle, hydrogen atom; dashed lines W, X, Y and Z, possible attractions between molecules.</p>"
   },
   "intermolecular-forces-s4": {
    "kind": "graph",
@@ -250,7 +250,7 @@
     "Dipole-dipole forces",
     "Hydrogen bonds",
     "Ion-dipole forces",
-    "Covalent bonds between neighbouring molecules"
+    "Covalent bonds between neighboring molecules"
    ],
    "correct": [
     0,
@@ -286,7 +286,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Boiling overcomes intermolecular forces. The O–H bond matters because it lets the molecule form hydrogen bonds with its neighbours, but it does not break.",
+    "correct": "Boiling overcomes intermolecular forces. The O–H bond matters because it lets the molecule form hydrogen bonds with its neighbors, but it does not break.",
     "options": [
      "Right: covalent bonds do not break when a liquid boils.",
      "O–H bonds are in fact strong (about 460 kJ/mol), and they do not break on boiling either way.",
@@ -306,7 +306,7 @@
    "stimulus": "intermolecular-forces-s1",
    "q": "Ethylene glycol, HOCH₂CH₂OH (62.07 g/mol), has two O–H groups per molecule. How would its boiling point most likely compare with that of 1-propanol?",
    "options": [
-    "Higher, because each molecule can form more hydrogen bonds with its neighbours.",
+    "Higher, because each molecule can form more hydrogen bonds with its neighbors.",
     "Lower, because it has two oxygen atoms, which makes the molecule less polarizable.",
     "About the same, because the two molar masses differ by just 2 g/mol, so their attractions are about equal.",
     "Lower, because its two O–H groups cancel each other's dipoles and leave it nonpolar."
@@ -334,7 +334,7 @@
    "q": "Which explanation accounts for the rise in boiling point from F₂ to I₂?",
    "options": [
     "More electrons in larger electron clouds make the molecules more polarizable, so dispersion forces grow stronger.",
-    "Each molecule down the group is more polar than the one above it, so the dipole-dipole forces between neighbouring molecules grow stronger.",
+    "Each molecule down the group is more polar than the one above it, so the dipole-dipole forces between neighboring molecules grow stronger.",
     "The covalent bond inside each molecule grows stronger down the group, so more energy is needed to boil it.",
     "Heavier molecules are pulled down by gravity more strongly, so they need more energy to escape as a gas."
    ],
@@ -439,7 +439,7 @@
    "level": "apply",
    "diff": 2,
    "stimulus": "intermolecular-forces-s3",
-   "q": "Which labelled dashed lines correctly show hydrogen bonds? Select all that apply.",
+   "q": "Which labeled dashed lines correctly show hydrogen bonds? Select all that apply.",
    "options": [
     "W",
     "X",
@@ -505,7 +505,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Boiling separates whole water molecules from their neighbours by overcoming the hydrogen bonds (and dispersion forces) between them. Steam is still H₂O.",
+    "correct": "Boiling separates whole water molecules from their neighbors by overcoming the hydrogen bonds (and dispersion forces) between them. Steam is still H₂O.",
     "options": [
      "Right: attractions between molecules are overcome; covalent bonds are not.",
      "This is the \"covalent bonds break on boiling\" error; steam is made of H₂O molecules, not separate atoms.",
@@ -666,7 +666,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Both have the formula C₅H₁₂, so the same electrons and mass. A long chain can lie alongside its neighbours over more of its length, so the momentary dipoles interact over a larger area.",
+    "correct": "Both have the formula C₅H₁₂, so the same electrons and mass. A long chain can lie alongside its neighbors over more of its length, so the momentary dipoles interact over a larger area.",
     "options": [
      "Right: same electrons, more contact, stronger dispersion forces.",
      "Isomers have the same formula and so the same number of electrons.",
@@ -724,11 +724,11 @@
    "why": {
     "correct": "Methanol and ammonia have H bonded directly to N, O or F, plus a lone pair on that atom. In dimethyl ether and fluoromethane, every H is bonded to carbon. Cl is not one of the hydrogen-bonding atoms.",
     "options": [
-     "Right: its O–H hydrogen can bond to an O lone pair on a neighbour.",
+     "Right: its O–H hydrogen can bond to an O lone pair on a neighbor.",
      "It has an O with lone pairs, but every H is on carbon, so no H carries a large enough δ+.",
      "It has F, but the H atoms are on carbon, not on F, so it shows dipole-dipole forces instead.",
      "H–Cl is polar, but Cl is not N, O or F; its attractions are dipole-dipole and dispersion.",
-     "Right: each N–H hydrogen can bond to the lone pair on the N of a neighbour."
+     "Right: each N–H hydrogen can bond to the lone pair on the N of a neighbor."
     ]
    }
   },
@@ -789,8 +789,8 @@
    "options": [
     "An attraction between an H atom bonded to N, O or F and a lone pair on N, O or F of another molecule",
     "A covalent bond between a hydrogen atom and any other atom inside one molecule",
-    "An attraction between two hydrogen atoms on neighbouring molecules that share a pair of electrons between them",
-    "An attraction between any H atom and the most electronegative atom of a neighbouring molecule"
+    "An attraction between two hydrogen atoms on neighboring molecules that share a pair of electrons between them",
+    "An attraction between any H atom and the most electronegative atom of a neighboring molecule"
    ],
    "correct": 0,
    "why": {
@@ -814,7 +814,7 @@
    "q": "Octane, C₈H₁₈ (66 electrons, nonpolar), boils at 126 °C, higher than water at 100 °C. Which statement best explains this?",
    "options": [
     "Octane's large, polarizable electron cloud and long contact area give dispersion forces that add up to more than water's attractions.",
-    "Octane forms hydrogen bonds through its 18 H atoms, many more than the two H atoms that each water molecule can offer to its neighbours.",
+    "Octane forms hydrogen bonds through its 18 H atoms, many more than the two H atoms that each water molecule can offer to its neighbors.",
     "Octane is a polar molecule because it has so many C–H bonds, each adding a small dipole.",
     "Octane boils higher because more of its 25 covalent bonds have to break before the liquid can turn into a vapor."
    ],

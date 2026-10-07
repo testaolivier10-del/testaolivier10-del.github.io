@@ -344,7 +344,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "HF is weak, so it is mostly molecules and is written whole. NaOH is a strong electrolyte, so it appears as OH⁻ with Na⁺ cancelled as a spectator.",
+    "correct": "HF is weak, so it is mostly molecules and is written whole. NaOH is a strong electrolyte, so it appears as OH⁻ with Na⁺ canceled as a spectator.",
     "options": [
      "Right: weak acid written as a molecule.",
      "This is the net equation for a strong acid; HF is not ionized enough to write it as H₃O⁺.",

@@ -523,7 +523,7 @@
    ],
    "correct": 1,
    "why": {
-    "correct": "There is one valley between each pair of neighbouring peaks: three peaks give two valleys, one for each intermediate.",
+    "correct": "There is one valley between each pair of neighboring peaks: three peaks give two valleys, one for each intermediate.",
     "options": [
      "One valley would mean two steps.",
      "Right: two intermediates.",

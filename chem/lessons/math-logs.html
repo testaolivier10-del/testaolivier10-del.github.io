@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logarithms — AP® Chemistry Lesson | LevlPrep</title>
+<meta name="description" content="A base-10 logarithm is the exponent of ten that gives a number; the natural logarithm uses base e.">
+<link rel="canonical" href="https://levlprep.com/chem/lessons/math-logs.html">
+<meta property="og:title" content="Logarithms — AP® Chemistry Lesson | LevlPrep">
+<meta property="og:description" content="A base-10 logarithm is the exponent of ten that gives a number; the natural logarithm uses base e.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/chem/lessons/math-logs.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/chem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/chem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/chem/lessons/math-logs.html#lesson",
+      "name": "Logarithms",
+      "url": "https://levlprep.com/chem/lessons/math-logs.html",
+      "description": "A base-10 logarithm is the exponent of ten that gives a number; the natural logarithm uses base e.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "logarithm"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "natural logarithm"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "antilog"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/chem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Chemistry",
+          "item": "https://levlprep.com/chem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Math you need",
+          "item": "https://levlprep.com/chem/units/skills-math.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Logarithms",
+          "item": "https://levlprep.com/chem/lessons/math-logs.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="chem" data-topic="math-logs" data-unit="skills-math">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="chem-crumb chem-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-math.html">Math you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Logarithms</span></nav></div>
+<div class="xshell chem-ls chem-stepped">
+  <aside class="chem-ls-rail chem-nav-ref" aria-label="Lesson parts">
+    <p class="chem-ls-k">Skills · Math you need</p>
+    <p class="chem-ls-links"><a href="../units/skills-math.html">&larr; Back to the unit</a><a href="../notes/math-logs.html">Read the notes</a></p>
+    <div class="chem-ls-prog"><div class="chem-ls-track"><div class="chem-ls-fill"></div></div><span class="chem-ls-count">Step 1 / 11</span></div>
+    <ol class="chem-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="chem-ls-main chem-lesson">
+  <header class="chem-ls-hero">
+    <div class="eyebrow">Skills <span class="chem-beta chem-nav-ref">Beta</span></div>
+    <h1>Logarithms</h1>
+    <p class="lede">A base-10 logarithm is the exponent of ten that gives a number; the natural logarithm uses base e.</p>
+    <p class="chem-tags chem-nav-ref"><span class="chem-tag">Practice 5: Mathematical Routines</span></p>
+    <div class="chem-share chem-nav-ref" role="group" aria-label="Share or print this lesson"><a class="chem-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fchem%2Flessons%2Fmath-logs.html&amp;title=Logarithms%3A%20chemistry%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="chem-share-btn" data-copy="https://levlprep.com/chem/lessons/math-logs.html">Copy link</button><button type="button" class="chem-share-btn" data-print>Print</button></div>
+    <p class="chem-small chem-nav-ref"><a href="../practice.html?topic=math-logs">Question set for this topic</a></p>
+  </header>
+  <div class="chem-ls-card">
+  <section class="chem-part chem-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="chem-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="chem-step-body chem-hook">Earthquake scales, the loudness of sound in decibels and the brightness of stars all use <span class="gl" tabindex="0" data-c="logarithm">logarithms</span>, because each covers a range of millions or billions. A log turns "a thousand times bigger" into "3 more". Chemistry uses the same trick for quantities that change by <a class="gl" href="../notes/math-exponents.html" data-c="exponent">powers of ten</a>.</div>
+  </section>
+  <section class="chem-part chem-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="chem-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Earlier topics"><ul class="chem-links"><li><a href="../notes/math-exponents.html">Exponents</a></li><li><a href="../notes/math-scientific-notation.html">Scientific Notation</a></li></ul></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="chem-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="chem-step-body"><div class="chem-qs" data-set="prereq"><div class="chem-q" data-qid="math-logs-pre-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> What is 10⁻³ × 10⁵?</p><ol class="chem-opts"><li>10²</li><li>10⁻¹⁵</li><li>10⁸</li><li>10⁻²</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Multiplying powers adds the exponents: −3 + 5 = 2.</p><ul><li><b>Correct:</b> 10²: </li><li>10⁻¹⁵: </li><li>10⁸: </li><li>10⁻²: </li></ul></details></div><div class="chem-q" data-qid="math-logs-pre-2"><p class="chem-q-stem"><span class="chem-q-n">2.</span> Which is 0.00047 in scientific notation?</p><ol class="chem-opts"><li>4.7 × 10⁻⁴</li><li>4.7 × 10⁴</li><li>47 × 10⁻⁵</li><li>4.7 × 10⁻³</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Move the point 4 places right to reach 4.7, so the exponent is −4.</p><ul><li><b>Correct:</b> 4.7 × 10⁻⁴: </li><li>4.7 × 10⁴: </li><li>47 × 10⁻⁵: </li><li>4.7 × 10⁻³: </li></ul></details></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="figure" aria-labelledby="h-figure">
+    <p class="chem-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="chem-step-body"><figure class="chem-figure chem-lesson-fig"><div class="chem-figimg" data-fig="log-scale"><img src="../figures/log-scale.svg" alt="A number line from 0.0001 to 10,000 in powers of ten, with logs −4 to 4 underneath: each factor of 10 adds 1 to the log, and numbers below 1 have negative logs." width="680" height="200" loading="lazy" decoding="async"></div><figcaption>A logarithm is the exponent: each step of 1 on the log scale is a factor of 10 in the number. <span class="chem-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="chem-part chem-step" id="chain" aria-labelledby="h-chain">
+    <p class="chem-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="chem-step-body"><ol class="chem-chain"><li><span class="chem-cause">A logarithm is the exponent that 10 must be raised to</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">log 1000 = 3 and log 0.001 = −3</span></li><li><span class="chem-cause">Multiplying numbers adds their exponents</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">the log of a product is the sum of the logs, so a factor of 10 adds 1</span></li><li><span class="chem-cause">The <span class="gl" tabindex="0" data-c="natural-log">natural log</span> uses base e (about 2.718) instead of 10</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">ln x = 2.303 log x, and mixing them up gives answers 2.303 times off</span></li><li><span class="chem-cause">An <span class="gl" tabindex="0" data-c="antilog">antilog</span> raises the base to the log</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">10ˣ undoes log and eˣ undoes ln</span></li></ol></div>
+  </section>
+  <section class="chem-part chem-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="chem-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="chem-step-body"><ul class="chem-ideas"><li><b>log x</b> (base 10) is the power of ten that gives x: log 10⁻⁵ = −5. Numbers between 0 and 1 have negative logs.</li><li>log (A × B) = log A + log B; log (A/B) = log A − log B; log (Aⁿ) = n log A.</li><li><b>ln x</b> is the natural log, base e. ln x = 2.303 log x. Use the key the equation names.</li><li>Digits after the decimal point in a log are its <a class="gl" href="../notes/math-sig-figs.html" data-c="significant-figures">significant figures</a>: log (3.2 × 10⁻⁴) = −3.49. Undo log with 10ˣ and ln with eˣ (the <b>antilog</b>).</li></ul></div>
+  </section>
+  <section class="chem-part chem-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="chem-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="chem-step-body chem-misconception"><p class="chem-wrong"><b>The wrong idea:</b> log and ln are two names for the same button, so either one works.</p><p class="chem-right"><b>What actually happens:</b> They use different <a class="gl" href="../notes/acid-base-reactions-intro.html" data-c="bronsted-lowry">bases</a>. ln x is 2.303 times log x, so using the wrong one makes the answer 2.303 times off. Equations that say ln need LN; equations that say log need LOG.</p></div>
+  </section>
+  <section class="chem-part chem-step" id="check" aria-labelledby="h-check">
+    <p class="chem-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="chem-step-body"><p class="chem-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="chem-qs" data-set="check"><div class="chem-q" data-qid="chem-math-logs-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> What is log 1000?</p><ol class="chem-opts"><li>1000</li><li>0.001</li><li>3</li><li>30</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>A logarithm answers "10 to what power?". 10³ = 1000, so log 1000 = 3.</p><ul><li>1000: The log is the exponent, not the number itself.</li><li>0.001: That is 10⁻³, the reciprocal of 1000.</li><li><b>Correct:</b> 3: Right: 10³ = 1000, so the base-10 logarithm of 1000 is 3.</li><li>30: log 1000 asks "10 to what power gives 1000?", which is 3.</li></ul></details></div><div class="chem-q" data-qid="chem-math-logs-3"><p class="chem-q-stem"><span class="chem-q-n">2.</span> Calculate log (3.2 × 10⁻⁴). Give the right number of decimal places.</p><p class="chem-small">Type a number.</p><details class="chem-q-key"><summary>Show the answer</summary><p>log (3.2 × 10⁻⁴) = log 3.2 + log 10⁻⁴ = 0.505 − 4 = −3.49. The coefficient 3.2 has two significant figures, so the log has two decimal places.</p><ul><li>Answer: -3.49</li></ul></details></div><div class="chem-q" data-qid="chem-math-logs-4"><p class="chem-q-stem"><span class="chem-q-n">3.</span> Calculate ln (0.50). Give the right number of decimal places.</p><p class="chem-small">Type a number.</p><details class="chem-q-key"><summary>Show the answer</summary><p>ln (0.50) = −0.693, written −0.69: two significant figures in 0.50 give two decimal places.</p><ul><li>Answer: -0.69</li></ul></details></div><div class="chem-q" data-qid="chem-math-logs-5"><p class="chem-q-stem"><span class="chem-q-n">4.</span> Find x if log x = 2.45. Give x with the right number of significant figures.</p><p class="chem-small">Type a number.</p><details class="chem-q-key"><summary>Show the answer</summary><p>x = 10^2.45 = 281.8…, written 2.8 × 10². The two decimal places in 2.45 give two significant figures in x.</p><ul><li>Answer: 2.8e+2</li></ul></details></div><div class="chem-q" data-qid="chem-math-logs-8"><p class="chem-q-stem"><span class="chem-q-n">5.</span> log 2 = 0.301. What is log 200?</p><ol class="chem-opts"><li>0.602</li><li>60.2</li><li>2.301</li><li>200.301</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Split 200 into 2 × 10². Then log 200 = 0.301 + 2 = 2.301.</p><ul><li>0.602: This is log 4 (2 × log 2). 200 is 2 × 100, not 2².</li><li>60.2: This multiplies log 2 by 200. The log of a product adds, it does not multiply.</li><li><b>Correct:</b> 2.301: Right: log (2 × 10²) = log 2 + log 10² = 0.301 + 2.</li><li>200.301: Add log 100, which is 2, not 200.</li></ul></details></div><div class="chem-q" data-qid="chem-math-logs-12"><p class="chem-q-stem"><span class="chem-q-n">6.</span> A student needs log (4.7 × 10⁻³) but presses LN and gets −5.36. How far off is the answer, and what is the fix?</p><ol class="chem-opts"><li>It is correct, since ln and log are two names for one function</li><li>It is 2.303 times too large in size; press LOG to get −2.33</li><li>It is off by 10; divide −5.36 by 10</li><li>It has the wrong sign; the answer is +5.36</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>log (4.7 × 10⁻³) = −2.33. The 2.303 factor between ln and log is a slip the exam readers see every year.</p><ul><li>It is correct, since ln and log are two names for one function: They use different bases (e and 10) and give different numbers.</li><li><b>Correct:</b> It is 2.303 times too large in size; press LOG to get −2.33: Right: ln x = 2.303 log x, so −5.36 ÷ 2.303 = −2.33.</li><li>It is off by 10; divide −5.36 by 10: The logs differ by a factor of 2.303 (ln 10), not 10.</li><li>It has the wrong sign; the answer is +5.36: Numbers below 1 have negative logs in both bases; the sign is right.</li></ul></details></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="summary" aria-labelledby="h-summary">
+    <p class="chem-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="chem-step-body">A base-10 logarithm is the exponent of ten that gives a number; the natural logarithm uses base e. Logs turn multiplying into adding, so a factor of ten adds 1 to log x. ln x = 2.303 log x. An antilog undoes a log: 10ˣ for log, eˣ for ln. The decimal places of a log match the significant figures of the number.</div>
+  </section>
+  <section class="chem-part chem-step" id="next" aria-labelledby="h-next">
+    <p class="chem-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="concentration-time.html">Concentration Changes Over Time &rarr;</a></p></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="connections" aria-labelledby="h-connections">
+    <p class="chem-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="chem-step-body"><ul class="chem-links chem-nav-ref"><li><a href="../notes/math-exponents.html">Back: Exponents</a></li><li><a href="../notes/math-scientific-notation.html">Back: Scientific Notation</a></li><li><a href="../notes/concentration-time.html">Next: Concentration Changes Over Time (5.3)</a></li></ul></div>
+  </section>
+    <div class="chem-ls-actions chem-nav-ref"><button type="button" class="chem-ls-back">&larr; Previous</button><button type="button" class="chem-ls-go">Continue &rarr;</button><a class="chem-ls-go" hidden href="concentration-time.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.chem-ls'),p=s&&s.querySelectorAll('.chem-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.chem-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apchem_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="chem-foot xshell">
+  <p class="chem-accuracy-note"><span class="chem-beta chem-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Chemistry teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="chem-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="lesson:math-logs">Report a problem</button></span></p>
+  <p class="chem-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="chem-page-data">{"topic":"math-logs","unit":"skills-math","free":true,"prereq":[{"id":"math-logs-pre-1","type":"single","unit":"skills-math","topic":"math-logs","q":"What is 10⁻³ × 10⁵?","options":["10²","10⁻¹⁵","10⁸","10⁻²"],"correct":0,"why":{"correct":"Multiplying powers adds the exponents: −3 + 5 = 2.","options":["","","",""]},"reviewHref":"../notes/math-exponents.html","reviewTitle":"Exponents"},{"id":"math-logs-pre-2","type":"single","unit":"skills-math","topic":"math-logs","q":"Which is 0.00047 in scientific notation?","options":["4.7 × 10⁻⁴","4.7 × 10⁴","47 × 10⁻⁵","4.7 × 10⁻³"],"correct":0,"why":{"correct":"Move the point 4 places right to reach 4.7, so the exponent is −4.","options":["","","",""]},"reviewHref":"../notes/math-scientific-notation.html","reviewTitle":"Scientific Notation"}],"check":[{"id":"chem-math-logs-1","type":"single","unit":"skills-math","topic":"math-logs","practice":"1.A","level":"recall","diff":1,"q":"What is log 1000?","options":["1000","0.001","3","30"],"correct":2,"why":{"correct":"A logarithm answers \"10 to what power?\". 10³ = 1000, so log 1000 = 3.","options":["The log is the exponent, not the number itself.","That is 10⁻³, the reciprocal of 1000.","Right: 10³ = 1000, so the base-10 logarithm of 1000 is 3.","log 1000 asks \"10 to what power gives 1000?\", which is 3."]}},{"id":"chem-math-logs-3","type":"numeric","unit":"skills-math","topic":"math-logs","practice":"5.F","level":"apply","diff":2,"q":"Calculate log (3.2 × 10⁻⁴). Give the right number of decimal places.","numeric":{"answer":-3.49,"tol":0.01,"unit":"","places":2,"mistakes":[{"value":-8.047,"rel":0.01,"why":"Value: you used ln (natural log) instead of log (base 10). Use the LOG key."},{"value":3.49,"rel":0.01,"why":"Value: the sign is wrong. A number smaller than 1 has a negative log."}]},"why":{"correct":"log (3.2 × 10⁻⁴) = log 3.2 + log 10⁻⁴ = 0.505 − 4 = −3.49. The coefficient 3.2 has two significant figures, so the log has two decimal places."}},{"id":"chem-math-logs-4","type":"numeric","unit":"skills-math","topic":"math-logs","practice":"5.F","level":"apply","diff":2,"q":"Calculate ln (0.50). Give the right number of decimal places.","numeric":{"answer":-0.69,"tol":0.01,"unit":"","places":2,"mistakes":[{"value":-0.301,"rel":0.01,"why":"Value: you used log (base 10). ln is the natural logarithm, base e; use the LN key."}]},"why":{"correct":"ln (0.50) = −0.693, written −0.69: two significant figures in 0.50 give two decimal places."}},{"id":"chem-math-logs-5","type":"numeric","unit":"skills-math","topic":"math-logs","practice":"5.F","level":"apply","diff":2,"q":"Find x if log x = 2.45. Give x with the right number of significant figures.","numeric":{"answer":280,"tol":10,"unit":"","sigfigs":2,"mistakes":[{"value":11.59,"rel":0.01,"why":"Value: you used eˣ, the antilog of ln. The antilog of log is 10ˣ."},{"value":0.3892,"rel":0.01,"why":"Value: you took the log again. To undo a log, raise 10 to that power."}]},"why":{"correct":"x = 10^2.45 = 281.8…, written 2.8 × 10². The two decimal places in 2.45 give two significant figures in x."}},{"id":"chem-math-logs-8","type":"single","unit":"skills-math","topic":"math-logs","practice":"5.B","level":"apply","diff":2,"q":"log 2 = 0.301. What is log 200?","options":["0.602","60.2","2.301","200.301"],"correct":2,"why":{"correct":"Split 200 into 2 × 10². Then log 200 = 0.301 + 2 = 2.301.","options":["This is log 4 (2 × log 2). 200 is 2 × 100, not 2².","This multiplies log 2 by 200. The log of a product adds, it does not multiply.","Right: log (2 × 10²) = log 2 + log 10² = 0.301 + 2.","Add log 100, which is 2, not 200."]}},{"id":"chem-math-logs-12","type":"single","unit":"skills-math","topic":"math-logs","practice":"6.G","level":"analyze","diff":2,"q":"A student needs log (4.7 × 10⁻³) but presses LN and gets −5.36. How far off is the answer, and what is the fix?","options":["It is correct, since ln and log are two names for one function","It is 2.303 times too large in size; press LOG to get −2.33","It is off by 10; divide −5.36 by 10","It has the wrong sign; the answer is +5.36"],"correct":1,"why":{"correct":"log (4.7 × 10⁻³) = −2.33. The 2.303 factor between ln and log is a slip the exam readers see every year.","options":["They use different bases (e and 10) and give different numbers.","Right: ln x = 2.303 log x, so −5.36 ÷ 2.303 = −2.33.","The logs differ by a factor of 2.303 (ln 10), not 10.","Numbers below 1 have negative logs in both bases; the sign is right."]}}],"stimuli":{}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApChemSection = 'learn'; window.ApChemBase = '../';</script>
+<script src="../assets/chem-curriculum.js" defer></script>
+<script src="../assets/chem-core.js" defer></script>
+<script src="../assets/chem-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/chem-questions.js" defer></script>
+<script src="../assets/chem-lesson.js" defer></script>
+</body>
+</html>

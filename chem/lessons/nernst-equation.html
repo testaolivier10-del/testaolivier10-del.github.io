@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cell Potential Under Nonstandard Conditions — AP® Chemistry</title>
+<meta name="description" content="Away from standard conditions, a cell’s potential depends on Q: it is above E° when Q 1, and zero at equilibrium (Q = K). The Nernst equation expresses this.">
+<link rel="canonical" href="https://levlprep.com/chem/lessons/nernst-equation.html">
+<meta property="og:title" content="Cell Potential Under Nonstandard Conditions — AP® Chemistry">
+<meta property="og:description" content="Away from standard conditions, a cell’s potential depends on Q: it is above E° when Q 1, and zero at equilibrium (Q = K). The Nernst equation expresses this.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/chem/lessons/nernst-equation.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/chem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/chem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/chem/lessons/nernst-equation.html#lesson",
+      "name": "Cell Potential Under Nonstandard Conditions",
+      "url": "https://levlprep.com/chem/lessons/nernst-equation.html",
+      "description": "Away from standard conditions, a cell’s potential depends on Q: it is above E° when Q 1, and zero at equilibrium (Q = K). The Nernst equation expresses this.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".chem-ls-card"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Nernst equation"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/chem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Chemistry",
+          "item": "https://levlprep.com/chem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Thermodynamics and Electrochemistry",
+          "item": "https://levlprep.com/chem/units/unit-9.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Cell Potential Under Nonstandard Conditions",
+          "item": "https://levlprep.com/chem/lessons/nernst-equation.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="chem" data-topic="nernst-equation" data-unit="unit-9">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="chem-crumb chem-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-9.html">Thermodynamics and Electrochemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Cell Potential Under Nonstandard Conditions</span></nav></div>
+<div class="xshell chem-ls chem-stepped">
+  <aside class="chem-ls-rail chem-nav-ref" aria-label="Lesson parts">
+    <p class="chem-ls-k">Unit 9 · Thermodynamics and Electrochemistry</p>
+    <p class="chem-ls-links"><a href="../units/unit-9.html">&larr; Back to the unit</a><a href="../notes/nernst-equation.html">Read the notes</a></p>
+    <div class="chem-ls-prog"><div class="chem-ls-track"><div class="chem-ls-fill"></div></div><span class="chem-ls-count">Step 1 / 11</span></div>
+    <ol class="chem-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="chem-ls-main chem-lesson">
+  <header class="chem-ls-hero">
+    <div class="eyebrow">Unit 9 · Topic 9.10 <span class="chem-beta chem-nav-ref">Beta</span></div>
+    <h1>Cell Potential Under Nonstandard Conditions</h1>
+    <p class="lede">Away from standard conditions, a cell’s potential depends on Q: it is above E° when Q 1, and zero at equilibrium (Q = K).</p>
+    <p class="chem-tags chem-nav-ref"><span class="chem-tag">Practice 4: Model Analysis</span><span class="chem-tag">Practice 6: Argumentation</span></p>
+    <div class="chem-share chem-nav-ref" role="group" aria-label="Share or print this lesson"><a class="chem-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fchem%2Flessons%2Fnernst-equation.html&amp;title=Cell%20Potential%20Under%20Nonstandard%20Conditions%3A%20chemistry%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="chem-share-btn" data-copy="https://levlprep.com/chem/lessons/nernst-equation.html">Copy link</button><button type="button" class="chem-share-btn" data-print>Print</button></div>
+    <p class="chem-small chem-nav-ref"><a href="../practice.html?topic=nernst-equation">Question set for this topic</a></p>
+  </header>
+  <div class="chem-ls-card">
+  <section class="chem-part chem-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="chem-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="chem-step-body chem-hook">A fresh flashlight battery is bright; an old one is dim, then dead, even though it still holds plenty of zinc. The voltage of a cell is not fixed: it depends on how much <a class="gl" href="../notes/reactions-intro.html" data-c="reactant">reactant</a> and product are present, and it falls to zero when the reaction reaches <a class="gl" href="../notes/phases-of-matter.html" data-c="dynamic-equilibrium">equilibrium</a>.</div>
+  </section>
+  <section class="chem-part chem-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="chem-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Earlier topics"><ul class="chem-links"><li><a href="../notes/math-logs.html">Logarithms</a></li><li><a href="../notes/q-and-k.html">Reaction Quotient and Equilibrium Constant</a></li><li><a href="../notes/cell-potential.html">Cell Potential and Free Energy</a></li></ul></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="chem-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="chem-step-body"><div class="chem-qs" data-set="prereq"><div class="chem-q" data-qid="nernst-equation-pre-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> How is Q compared with K to predict the direction of a reaction?</p><ol class="chem-opts"><li>Q < K: net forward; Q > K: net reverse</li><li>Q < K: net reverse; Q > K: net forward</li><li>Q and K are always equal</li><li>Only K matters</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>A reaction proceeds in the direction that moves Q toward K.</p><ul><li><b>Correct:</b> Q < K: net forward; Q > K: net reverse: </li><li>Q < K: net reverse; Q > K: net forward: </li><li>Q and K are always equal: </li><li>Only K matters: </li></ul></details></div><div class="chem-q" data-qid="nernst-equation-pre-2"><p class="chem-q-stem"><span class="chem-q-n">2.</span> For a galvanic cell under standard conditions, what is the sign of E°cell?</p><ol class="chem-opts"><li>Positive</li><li>Negative</li><li>Zero</li><li>It depends on the salt bridge</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>A galvanic cell runs a favored reaction, so E°cell > 0.</p><ul><li><b>Correct:</b> Positive: </li><li>Negative: </li><li>Zero: </li><li>It depends on the salt bridge: </li></ul></details></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="figure" aria-labelledby="h-figure">
+    <p class="chem-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="chem-step-body"><figure class="chem-figure chem-lesson-fig"><div class="chem-figimg" data-fig="nernst-q-line"><img src="../figures/nernst-q-line.svg" alt="A graph of cell potential against Q on a log scale: a straight line falling from left to right. Where Q is below 1, E is above E°; at Q equal to 1, E equals E°; above 1, E is below E°; the line reaches zero at Q equal to K, equilibrium." width="760" height="360" loading="lazy" decoding="async"></div><figcaption><a class="gl" href="../notes/cell-potential.html" data-c="cell-potential">Cell potential</a> falls as Q rises: above E° when Q < 1, equal to E° at Q = 1, below E° when Q > 1, and zero at <a class="gl" href="../notes/q-and-k.html" data-c="reaction-quotient">Q = K</a>. <span class="chem-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="chem-part chem-step" id="chain" aria-labelledby="h-chain">
+    <p class="chem-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="chem-step-body"><ol class="chem-chain"><li><span class="chem-cause">A cell away from standard conditions has Q ≠ 1</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">its actual drive, ΔG, differs from <a class="gl" href="../notes/gibbs-free-energy.html" data-c="gibbs">ΔG°</a>, so E differs from E°</span></li><li><span class="chem-cause">Less product or more reactant makes Q < 1</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">the reaction is further from equilibrium and E > E°</span></li><li><span class="chem-cause">As the cell runs, reactants are used and products form</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">Q rises and E falls</span></li><li><span class="chem-cause">When Q reaches K, there is no net drive</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">E = 0 and the battery is dead</span></li></ol></div>
+  </section>
+  <section class="chem-part chem-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="chem-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="chem-step-body"><ul class="chem-ideas"><li>Q &lt; 1 → E &gt; E°. Q = 1 → E = E°. Q &gt; 1 → E &lt; E°. Q = K → E = 0 (equilibrium, a dead battery).</li><li>The <b><span class="gl" tabindex="0" data-c="nernst">Nernst equation</span></b>, E = E° − (RT/nF) <a class="gl" href="../notes/math-logs.html" data-c="natural-log">ln</a> Q, describes this; the exam focuses on the direction of the change.</li><li>Q uses only dissolved species and gases: <a class="gl" href="../notes/phases-of-matter.html" data-c="states-of-matter">solid</a> <a class="gl" href="../notes/electrochemical-cells.html" data-c="electrode">electrodes</a> and <a class="gl" href="../notes/net-ionic-equations.html" data-c="spectator-ion">spectator ions</a> do not affect E.</li><li>A <b>concentration cell</b> has the same <a class="gl" href="../notes/redox-reactions.html" data-c="half-reaction">half-reaction</a> on both sides (E° = 0) and runs until the concentrations are equal.</li></ul></div>
+  </section>
+  <section class="chem-part chem-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="chem-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="chem-step-body chem-misconception"><p class="chem-wrong"><b>The wrong idea:</b> A cell’s voltage is always E°, and a dead battery has run out of <a class="gl" href="../notes/mass-spectra.html" data-c="electron">electrons</a>.</p><p class="chem-right"><b>What actually happens:</b> E equals E° only when Q = 1. As the cell runs, Q rises toward K and E falls toward zero; a dead battery is a cell at equilibrium, with reactants often still present.</p></div>
+  </section>
+  <section class="chem-part chem-step" id="check" aria-labelledby="h-check">
+    <p class="chem-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="chem-step-body"><p class="chem-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="chem-qs" data-set="check"><div class="chem-set"><section class="chem-stim" data-stim="nernst-equation-s1" aria-labelledby="stim-nernst-equation-s1"><p class="chem-stim-k">Data table</p><h3 id="stim-nernst-equation-s1">A zinc-copper cell at different concentrations</h3><div class="chem-stim-text"><p>A student measures the voltage of the cell Zn(s) | Zn²⁺(aq) || Cu²⁺(aq) | Cu(s), which runs Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s) with E° = 1.10 V, at 25 °C with different starting concentrations.</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Measured cell potential for five concentration pairs"><table class="chem-data"><caption>Measured cell potential for five concentration pairs</caption><thead><tr><th scope="col">Trial</th><th scope="col">[Zn²⁺] (M)</th><th scope="col">[Cu²⁺] (M)</th><th scope="col">E (V)</th></tr></thead><tbody><tr><th scope="row">1</th><td>1.0</td><td>1.0</td><td>1.100</td></tr><tr><th scope="row">2</th><td>0.10</td><td>1.0</td><td>1.130</td></tr><tr><th scope="row">3</th><td>0.010</td><td>1.0</td><td>1.159</td></tr><tr><th scope="row">4</th><td>1.0</td><td>0.10</td><td>1.070</td></tr><tr><th scope="row">5</th><td>1.0</td><td>0.010</td><td>1.041</td></tr></tbody></table></div></section><div class="chem-q" data-qid="chem-nernst-equation-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> In which trial is the cell at standard conditions, so that E = E°?</p><ol class="chem-opts"><li>Trial 3, where the voltage is highest</li><li>Trial 1, where both ions are 1.0 M and Q = 1</li><li>Trial 5, where the voltage is lowest</li><li>Each of the five trials, because each is at 25 °C</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Q = [Zn²⁺]/[Cu²⁺] = 1 only in Trial 1, so only there does E equal E°.</p><ul><li>Trial 3, where the voltage is highest: The highest voltage comes from Q < 1, not from standard conditions.</li><li><b>Correct:</b> Trial 1, where both ions are 1.0 M and Q = 1: Right: standard conditions mean 1 M for every dissolved species, so Q = 1 and E = E° = 1.100 V.</li><li>Trial 5, where the voltage is lowest: The lowest voltage comes from Q > 1, far from standard conditions.</li><li>Each of the five trials, because each is at 25 °C: Standard conditions also require 1 M concentrations, which only Trial 1 has.</li></ul></details></div><div class="chem-q" data-qid="chem-nernst-equation-2"><p class="chem-q-stem"><span class="chem-q-n">2.</span> Which statement explains why E is greater than E° in Trials 2 and 3?</p><ol class="chem-opts"><li>Less Zn²⁺ means fewer ions in solution, so the electrons meet less resistance in the wire.</li><li>E° itself increases when [Zn²⁺] decreases.</li><li>The reaction reaches equilibrium faster when [Zn²⁺] is low.</li><li>Q < 1, so the cell is further from equilibrium and its drive is greater.</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>When Q < 1 the reaction has a larger drive to proceed (ΔG < ΔG°), so E > E°.</p><ul><li>Less Zn²⁺ means fewer ions in solution, so the electrons meet less resistance in the wire.: Electrons in the wire do not depend on the ion concentration. The change in E comes from Q.</li><li>E° itself increases when [Zn²⁺] decreases.: E° is fixed (1.10 V); E changes with concentration through Q.</li><li>The reaction reaches equilibrium faster when [Zn²⁺] is low.: At equilibrium E would be zero. The higher E shows the cell is further from equilibrium.</li><li><b>Correct:</b> Q < 1, so the cell is further from equilibrium and its drive is greater.: Right: a lower product concentration (Zn²⁺) or a higher reactant concentration makes Q < 1, raising E above E°.</li></ul></details></div><div class="chem-q" data-qid="chem-nernst-equation-3"><p class="chem-q-stem"><span class="chem-q-n">3.</span> A sixth trial uses [Zn²⁺] = 0.50 M and [Cu²⁺] = 0.050 M. How does its voltage compare with E°?</p><ol class="chem-opts"><li>Less than 1.10 V, because Q = 10 > 1</li><li>Greater than 1.10 V, because both concentrations are below 1 M</li><li>Equal to 1.10 V, because neither concentration is zero</li><li>Zero, because the concentrations are not equal</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Q > 1 means E < E°. The ratio, not the individual concentrations, decides it.</p><ul><li><b>Correct:</b> Less than 1.10 V, because Q = 10 > 1: Right: Q = 0.50/0.050 = 10, the same as Trial 4, so E ≈ 1.07 V.</li><li>Greater than 1.10 V, because both concentrations are below 1 M: What matters is the ratio Q = [Zn²⁺]/[Cu²⁺], here 10, not whether each is below 1 M.</li><li>Equal to 1.10 V, because neither concentration is zero: E equals E° only when Q = 1.</li><li>Zero, because the concentrations are not equal: E = 0 only at equilibrium, where Q = K (an enormous number here).</li></ul></details></div><div class="chem-q" data-qid="chem-nernst-equation-4"><p class="chem-q-stem"><span class="chem-q-n">4.</span> The cell from Trial 1 is left running until it no longer lights a bulb. What are E and Q at that point?</p><ol class="chem-opts"><li>E = E° and Q = 1, because the reaction has stopped</li><li>E = 0 and Q = 0, because one reactant is used up</li><li>E = 0 and Q = K: the reaction is at equilibrium</li><li>E is negative and Q > K, because the reaction runs backward</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>As the cell runs, Q rises toward K and E falls toward 0. At equilibrium, Q = K and E = 0.</p><ul><li>E = E° and Q = 1, because the reaction has stopped: E = E° only at Q = 1; as the cell runs, [Zn²⁺] rises and [Cu²⁺] falls, so Q grows.</li><li>E = 0 and Q = 0, because one reactant is used up: Q = [Zn²⁺]/[Cu²⁺] grows, not shrinks, as the cell runs.</li><li><b>Correct:</b> E = 0 and Q = K: the reaction is at equilibrium: Right: a "dead" battery is at equilibrium: no net drive, so no voltage.</li><li>E is negative and Q > K, because the reaction runs backward: Left alone, a galvanic cell runs down to equilibrium; it does not overshoot.</li></ul></details></div></div><div class="chem-q" data-qid="chem-nernst-equation-9"><p class="chem-q-stem"><span class="chem-q-n">5.</span> For a galvanic cell, how does E compare with E° when Q > 1?</p><ol class="chem-opts"><li>E is smaller than E°</li><li>E is larger than E°</li><li>E equals E°</li><li>E is zero</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Q < 1: E > E°. Q = 1: E = E°. Q > 1: E < E°. Q = K: E = 0.</p><ul><li><b>Correct:</b> E is smaller than E°: Right: more products (or fewer reactants) than standard lowers the drive, so E < E°.</li><li>E is larger than E°: That is the case for Q < 1.</li><li>E equals E°: That is the case only for Q = 1.</li><li>E is zero: That is the case only at equilibrium, Q = K.</li></ul></details></div><div class="chem-q" data-qid="chem-nernst-equation-10"><p class="chem-q-stem"><span class="chem-q-n">6.</span> A galvanic cell runs Ni(s) + 2 Ag⁺(aq) → Ni²⁺(aq) + 2 Ag(s), starting at standard conditions. Predict the effect of each change on the measured cell potential, E.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Table: Variable, Change"><table class="chem-predict"><thead><tr><th scope="col">Variable</th><th scope="col">Change</th></tr></thead><tbody><tr><th scope="row">Adding solid AgNO₃ to the silver half-cell, raising [Ag⁺]</th><td>—</td></tr><tr><th scope="row">Adding solid Ni(NO₃)₂ to the nickel half-cell, raising [Ni²⁺]</th><td>—</td></tr><tr><th scope="row">Using a larger nickel strip of the same metal</th><td>—</td></tr><tr><th scope="row">Letting the cell run for an hour</th><td>—</td></tr><tr><th scope="row">Replacing the KNO₃ salt bridge with a NaNO₃ salt bridge</th><td>—</td></tr></tbody></table></div><details class="chem-q-key"><summary>Show the answer</summary><p>E depends on Q = [Ni²⁺]/[Ag⁺]². Raising reactants lowers Q and raises E; raising products does the opposite. Solids and spectator ions do not appear in Q.</p><ul><li><b>Adding solid AgNO₃ to the silver half-cell, raising [Ag⁺]: increases.</b> More reactant lowers Q, so E rises above E°.</li><li><b>Adding solid Ni(NO₃)₂ to the nickel half-cell, raising [Ni²⁺]: decreases.</b> More product raises Q, so E falls below E°.</li><li><b>Using a larger nickel strip of the same metal: no change.</b> Solids do not appear in Q, so the size of the strip does not change E.</li><li><b>Letting the cell run for an hour: decreases.</b> As the cell runs, Ag⁺ is used and Ni²⁺ forms, so Q rises and E falls.</li><li><b>Replacing the KNO₃ salt bridge with a NaNO₃ salt bridge: no change.</b> The salt bridge ions are spectators; they do not appear in Q.</li></ul></details></div><div class="chem-q" data-qid="chem-nernst-equation-13"><p class="chem-q-stem"><span class="chem-q-n">7.</span> For Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s), which change raises the cell potential the most?</p><ol class="chem-opts"><li>Lowering [Cu²⁺] to 0.010 M while keeping [Zn²⁺] at 1.0 M</li><li>Lowering both concentrations to 0.010 M</li><li>Using a zinc strip twice as large</li><li>Lowering [Zn²⁺] to 0.010 M, with [Cu²⁺] at 1.0 M</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>E is largest when Q = [Zn²⁺]/[Cu²⁺] is smallest.</p><ul><li>Lowering [Cu²⁺] to 0.010 M while keeping [Zn²⁺] at 1.0 M: Q = 100: E falls below E° to about 1.04 V.</li><li>Lowering both concentrations to 0.010 M: Q = 1, so E = E° = 1.10 V: no change.</li><li>Using a zinc strip twice as large: Solids do not appear in Q, so E is unchanged.</li><li><b>Correct:</b> Lowering [Zn²⁺] to 0.010 M, with [Cu²⁺] at 1.0 M: Right: Q = 0.010, the smallest Q of the choices, so E is the largest (about 1.16 V).</li></ul></details></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="summary" aria-labelledby="h-summary">
+    <p class="chem-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="chem-step-body">Away from standard conditions, a cell’s potential depends on Q: it is above E° when Q < 1, equal to E° at Q = 1, below E° when Q > 1, and zero at equilibrium (Q = K). The Nernst equation expresses this. A concentration cell has E° = 0 and runs only on a concentration difference.</div>
+  </section>
+  <section class="chem-part chem-step" id="next" aria-labelledby="h-next">
+    <p class="chem-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="electrolysis-faraday.html">Electrolysis and Faraday's Law &rarr;</a></p></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="connections" aria-labelledby="h-connections">
+    <p class="chem-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="chem-step-body"><ul class="chem-links chem-nav-ref"><li><a href="../notes/q-and-k.html">Back: comparing Q and K (7.3)</a></li><li><a href="../notes/cell-potential.html">Back: E°cell and ΔG° (9.9)</a></li><li><a href="../notes/electrolysis-faraday.html">Next: how much metal a current plates (9.11)</a></li></ul></div>
+  </section>
+    <div class="chem-ls-actions chem-nav-ref"><button type="button" class="chem-ls-back">&larr; Previous</button><button type="button" class="chem-ls-go">Continue &rarr;</button><a class="chem-ls-go" hidden href="electrolysis-faraday.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.chem-ls'),p=s&&s.querySelectorAll('.chem-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.chem-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apchem_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="chem-foot xshell">
+  <p class="chem-accuracy-note"><span class="chem-beta chem-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Chemistry teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="chem-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="lesson:nernst-equation">Report a problem</button></span></p>
+  <p class="chem-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="chem-page-data">{"topic":"nernst-equation","unit":"unit-9","free":false,"prereq":[{"id":"nernst-equation-pre-1","type":"single","unit":"unit-9","topic":"nernst-equation","q":"How is Q compared with K to predict the direction of a reaction?","options":["Q \u003c K: net forward; Q > K: net reverse","Q \u003c K: net reverse; Q > K: net forward","Q and K are always equal","Only K matters"],"correct":0,"why":{"correct":"A reaction proceeds in the direction that moves Q toward K.","options":["","","",""]},"reviewHref":"../notes/q-and-k.html","reviewTitle":"Reaction Quotient and Equilibrium Constant"},{"id":"nernst-equation-pre-2","type":"single","unit":"unit-9","topic":"nernst-equation","q":"For a galvanic cell under standard conditions, what is the sign of E°cell?","options":["Positive","Negative","Zero","It depends on the salt bridge"],"correct":0,"why":{"correct":"A galvanic cell runs a favored reaction, so E°cell > 0.","options":["","","",""]},"reviewHref":"../notes/cell-potential.html","reviewTitle":"Cell Potential and Free Energy"}],"check":[{"id":"chem-nernst-equation-1","type":"single","unit":"unit-9","topic":"nernst-equation","practice":"4.C","level":"apply","diff":1,"stimulus":"nernst-equation-s1","q":"In which trial is the cell at standard conditions, so that E = E°?","options":["Trial 3, where the voltage is highest","Trial 1, where both ions are 1.0 M and Q = 1","Trial 5, where the voltage is lowest","Each of the five trials, because each is at 25 °C"],"correct":1,"why":{"correct":"Q = [Zn²⁺]/[Cu²⁺] = 1 only in Trial 1, so only there does E equal E°.","options":["The highest voltage comes from Q \u003c 1, not from standard conditions.","Right: standard conditions mean 1 M for every dissolved species, so Q = 1 and E = E° = 1.100 V.","The lowest voltage comes from Q > 1, far from standard conditions.","Standard conditions also require 1 M concentrations, which only Trial 1 has."]}},{"id":"chem-nernst-equation-2","type":"single","unit":"unit-9","topic":"nernst-equation","practice":"6.C","level":"analyze","diff":2,"stimulus":"nernst-equation-s1","q":"Which statement explains why E is greater than E° in Trials 2 and 3?","options":["Less Zn²⁺ means fewer ions in solution, so the electrons meet less resistance in the wire.","E° itself increases when [Zn²⁺] decreases.","The reaction reaches equilibrium faster when [Zn²⁺] is low.","Q \u003c 1, so the cell is further from equilibrium and its drive is greater."],"correct":3,"why":{"correct":"When Q \u003c 1 the reaction has a larger drive to proceed (ΔG \u003c ΔG°), so E > E°.","options":["Electrons in the wire do not depend on the ion concentration. The change in E comes from Q.","E° is fixed (1.10 V); E changes with concentration through Q.","At equilibrium E would be zero. The higher E shows the cell is further from equilibrium.","Right: a lower product concentration (Zn²⁺) or a higher reactant concentration makes Q \u003c 1, raising E above E°."]}},{"id":"chem-nernst-equation-3","type":"single","unit":"unit-9","topic":"nernst-equation","practice":"4.C","level":"apply","diff":2,"stimulus":"nernst-equation-s1","q":"A sixth trial uses [Zn²⁺] = 0.50 M and [Cu²⁺] = 0.050 M. How does its voltage compare with E°?","options":["Less than 1.10 V, because Q = 10 > 1","Greater than 1.10 V, because both concentrations are below 1 M","Equal to 1.10 V, because neither concentration is zero","Zero, because the concentrations are not equal"],"correct":0,"why":{"correct":"Q > 1 means E \u003c E°. The ratio, not the individual concentrations, decides it.","options":["Right: Q = 0.50/0.050 = 10, the same as Trial 4, so E ≈ 1.07 V.","What matters is the ratio Q = [Zn²⁺]/[Cu²⁺], here 10, not whether each is below 1 M.","E equals E° only when Q = 1.","E = 0 only at equilibrium, where Q = K (an enormous number here)."]}},{"id":"chem-nernst-equation-4","type":"single","unit":"unit-9","topic":"nernst-equation","practice":"6.E","level":"analyze","diff":2,"stimulus":"nernst-equation-s1","q":"The cell from Trial 1 is left running until it no longer lights a bulb. What are E and Q at that point?","options":["E = E° and Q = 1, because the reaction has stopped","E = 0 and Q = 0, because one reactant is used up","E = 0 and Q = K: the reaction is at equilibrium","E is negative and Q > K, because the reaction runs backward"],"correct":2,"why":{"correct":"As the cell runs, Q rises toward K and E falls toward 0. At equilibrium, Q = K and E = 0.","options":["E = E° only at Q = 1; as the cell runs, [Zn²⁺] rises and [Cu²⁺] falls, so Q grows.","Q = [Zn²⁺]/[Cu²⁺] grows, not shrinks, as the cell runs.","Right: a \"dead\" battery is at equilibrium: no net drive, so no voltage.","Left alone, a galvanic cell runs down to equilibrium; it does not overshoot."]}},{"id":"chem-nernst-equation-9","type":"single","unit":"unit-9","topic":"nernst-equation","practice":"4.C","level":"recall","diff":1,"q":"For a galvanic cell, how does E compare with E° when Q > 1?","options":["E is smaller than E°","E is larger than E°","E equals E°","E is zero"],"correct":0,"why":{"correct":"Q \u003c 1: E > E°. Q = 1: E = E°. Q > 1: E \u003c E°. Q = K: E = 0.","options":["Right: more products (or fewer reactants) than standard lowers the drive, so E \u003c E°.","That is the case for Q \u003c 1.","That is the case only for Q = 1.","That is the case only at equilibrium, Q = K."]}},{"id":"chem-nernst-equation-10","type":"predict","unit":"unit-9","topic":"nernst-equation","practice":"6.E","level":"apply","diff":2,"q":"A galvanic cell runs Ni(s) + 2 Ag⁺(aq) → Ni²⁺(aq) + 2 Ag(s), starting at standard conditions. Predict the effect of each change on the measured cell potential, E.","variables":[{"name":"Adding solid AgNO₃ to the silver half-cell, raising [Ag⁺]","answer":"up","why":"More reactant lowers Q, so E rises above E°."},{"name":"Adding solid Ni(NO₃)₂ to the nickel half-cell, raising [Ni²⁺]","answer":"down","why":"More product raises Q, so E falls below E°."},{"name":"Using a larger nickel strip of the same metal","answer":"none","why":"Solids do not appear in Q, so the size of the strip does not change E."},{"name":"Letting the cell run for an hour","answer":"down","why":"As the cell runs, Ag⁺ is used and Ni²⁺ forms, so Q rises and E falls."},{"name":"Replacing the KNO₃ salt bridge with a NaNO₃ salt bridge","answer":"none","why":"The salt bridge ions are spectators; they do not appear in Q."}],"why":{"correct":"E depends on Q = [Ni²⁺]/[Ag⁺]². Raising reactants lowers Q and raises E; raising products does the opposite. Solids and spectator ions do not appear in Q."}},{"id":"chem-nernst-equation-13","type":"single","unit":"unit-9","topic":"nernst-equation","practice":"6.E","level":"analyze","diff":3,"q":"For Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s), which change raises the cell potential the most?","options":["Lowering [Cu²⁺] to 0.010 M while keeping [Zn²⁺] at 1.0 M","Lowering both concentrations to 0.010 M","Using a zinc strip twice as large","Lowering [Zn²⁺] to 0.010 M, with [Cu²⁺] at 1.0 M"],"correct":3,"why":{"correct":"E is largest when Q = [Zn²⁺]/[Cu²⁺] is smallest.","options":["Q = 100: E falls below E° to about 1.04 V.","Q = 1, so E = E° = 1.10 V: no change.","Solids do not appear in Q, so E is unchanged.","Right: Q = 0.010, the smallest Q of the choices, so E is the largest (about 1.16 V)."]}}],"stimuli":{"nernst-equation-s1":{"kind":"table","title":"A zinc-copper cell at different concentrations","html":"\u003cdiv class=\"chem-stim-text\">\u003cp>A student measures the voltage of the cell Zn(s) | Zn²⁺(aq) || Cu²⁺(aq) | Cu(s), which runs Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s) with E° = 1.10 V, at 25 °C with different starting concentrations.\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Measured cell potential for five concentration pairs\">\u003ctable class=\"chem-data\">\u003ccaption>Measured cell potential for five concentration pairs\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Trial\u003c/th>\u003cth scope=\"col\">[Zn²⁺] (M)\u003c/th>\u003cth scope=\"col\">[Cu²⁺] (M)\u003c/th>\u003cth scope=\"col\">E (V)\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">1\u003c/th>\u003ctd>1.0\u003c/td>\u003ctd>1.0\u003c/td>\u003ctd>1.100\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">2\u003c/th>\u003ctd>0.10\u003c/td>\u003ctd>1.0\u003c/td>\u003ctd>1.130\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">3\u003c/th>\u003ctd>0.010\u003c/td>\u003ctd>1.0\u003c/td>\u003ctd>1.159\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">4\u003c/th>\u003ctd>1.0\u003c/td>\u003ctd>0.10\u003c/td>\u003ctd>1.070\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">5\u003c/th>\u003ctd>1.0\u003c/td>\u003ctd>0.010\u003c/td>\u003ctd>1.041\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApChemSection = 'learn'; window.ApChemBase = '../';</script>
+<script src="../assets/chem-curriculum.js" defer></script>
+<script src="../assets/chem-core.js" defer></script>
+<script src="../assets/chem-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/chem-questions.js" defer></script>
+<script src="../assets/chem-lesson.js" defer></script>
+</body>
+</html>

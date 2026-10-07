@@ -213,20 +213,20 @@
    "stimulus": "beer-lambert-law-s1",
    "q": "The drink was diluted by mixing 10.0 mL of it with water to a total of 50.0 mL. What was the dye concentration in the undiluted drink?",
    "options": [
-    "2.50 × 10⁻⁴ M",
     "1.00 × 10⁻⁵ M",
     "5.00 × 10⁻⁵ M",
-    "6.25 × 10⁻⁵ M"
+    "6.25 × 10⁻⁵ M",
+    "2.50 × 10⁻⁴ M"
    ],
-   "correct": 0,
+   "correct": 3,
    "fixed": true,
    "why": {
     "correct": "The diluted solution is 5.00 × 10⁻⁵ M. The dilution factor is 50.0 / 10.0 = 5.00, so the original is 5.00 × 5.00 × 10⁻⁵ M = 2.50 × 10⁻⁴ M (M₁V₁ = M₂V₂).",
     "options": [
-     "Right: multiply back by the dilution factor.",
      "This divides by the dilution factor instead of multiplying.",
      "This is the diluted concentration, not the original.",
-     "This used the 40.0 mL of water added as V₁ (50.0/40.0); the volume of drink taken was 10.0 mL."
+     "This used the 40.0 mL of water added as V₁ (50.0/40.0); the volume of drink taken was 10.0 mL.",
+     "Right: multiply back by the dilution factor."
     ]
    }
   },
@@ -274,19 +274,19 @@
    "stimulus": "beer-lambert-law-s2",
    "q": "What absorbance should sample 2 give?",
    "options": [
-    "1.18",
-    "0.592",
     "0.296",
+    "0.592",
+    "1.18",
     "2.37"
    ],
-   "correct": 0,
+   "correct": 2,
    "fixed": true,
    "why": {
     "correct": "A is proportional to c. Doubling c from 0.0500 to 0.1000 M doubles A: 2 × 0.592 = 1.184, so 1.18.",
     "options": [
-     "Right: twice the concentration, twice the absorbance.",
-     "This ignores the change in concentration.",
      "This halves instead of doubling.",
+     "This ignores the change in concentration.",
+     "Right: twice the concentration, twice the absorbance.",
      "This quadruples; A is proportional to c, not c²."
     ]
    }
@@ -302,20 +302,20 @@
    "stimulus": "beer-lambert-law-s2",
    "q": "What absorbance should sample 3 give?",
    "options": [
-    "1.18",
-    "0.592",
+    "0.0592",
     "0.296",
-    "0.0592"
+    "0.592",
+    "1.18"
    ],
-   "correct": 0,
+   "correct": 3,
    "fixed": true,
    "why": {
     "correct": "A is proportional to the path length b. Same concentration as sample 1 but twice the path: 2 × 0.592 = 1.18.",
     "options": [
-     "Right: twice the path, twice the absorbance.",
-     "A longer path passes more absorbing ions, so A rises.",
+     "This divides by 10 for no reason.",
      "A longer path increases A; it does not halve it.",
-     "This divides by 10 for no reason."
+     "A longer path passes more absorbing ions, so A rises.",
+     "Right: twice the path, twice the absorbance."
     ]
    }
   },
@@ -397,7 +397,6 @@
     "The wavelength of the light used"
    ],
    "correct": 0,
-   "fixed": true,
    "why": {
     "correct": "b is the path length, the distance light travels through the solution, usually 1.00 cm.",
     "options": [

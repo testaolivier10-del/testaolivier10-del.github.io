@@ -7,6 +7,6 @@
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
-  "alt": "A two-stage assembly line drawn as two pipes in a row. The first pipe is narrow and labelled step 1, slow; the second pipe is wide and labelled step 2, fast. Product leaves the end only as fast as material squeezes through the narrow first pipe, so the overall rate equals the rate of the slow step, and making the fast step faster changes nothing."
+  "alt": "A two-stage assembly line drawn as two pipes in a row. The first pipe is narrow and labeled step 1, slow; the second pipe is wide and labeled step 2, fast. Product leaves the end only as fast as material squeezes through the narrow first pipe, so the overall rate equals the rate of the slow step, and making the fast step faster changes nothing."
  }
 }

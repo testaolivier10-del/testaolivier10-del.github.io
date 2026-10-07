@@ -310,7 +310,7 @@
     "options": [
      "Right: C cancels; B appears twice.",
      "This forgets that B is used in both steps.",
-     "C must be cancelled, because it appears on both sides.",
+     "C must be canceled, because it appears on both sides.",
      "That is only step 2."
     ]
    }

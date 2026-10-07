@@ -471,7 +471,7 @@ Test Ninjas and num8ers (which attributes them to 2025). Other calculators run l
 at or a little below 72; the page says so and still calls the result an estimate. Revisit if the
 College Board releases a newer scoring worksheet.
 
-## phase3-findings: unit content issues seen while building Phase 3 (open, 2026-10-06)
+## phase3-findings: unit content issues seen while building Phase 3 (resolved 2026-10-06, except the Phase 4 accuracy check)
 
 Not fixed (unit content files were out of scope); for the unit owners:
 - `check-apchem-map.mjs --check` with every unit published fails on
@@ -484,3 +484,10 @@ Not fixed (unit content files were out of scope); for the unit owners:
 - Accuracy check (Phase 4) should cover `chem/data/exams/items.json` (32 items) and
   `chem/data/justify/*.json` (37 prompts).
 
+Resolved 2026-10-06 (launch-review pass): the 2.3 explanation now says the ions move "toward the
+oppositely charged ends of the circuit" (no `electrode`); every British spelling in `chem/data` unit
+content (neighbour, labelled, favour, cancelled, grey, favourite: 31 source files) is American;
+the four notes pages have hand-written descriptions in `chem/data/descriptions.json`; the FRQ titles
+are now "Tracking a fading dye by absorbance" and "Equilibrium in a decomposing gas". `check-site`
+and `check-apchem-map --check` pass with every unit published. The exam items and justify prompts
+are with the exams agent.

@@ -1269,10 +1269,10 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Water left in the buret dilutes the NaOH, so more volume is delivered to supply the same moles of OH⁻. The student multiplies that larger volume by the labelled molarity and overestimates the acid.",
+    "correct": "Water left in the buret dilutes the NaOH, so more volume is delivered to supply the same moles of OH⁻. The student multiplies that larger volume by the labeled molarity and overestimates the acid.",
     "options": [
      "Right: larger volume × assumed molarity = too many moles.",
-     "The NaOH is diluted, but the calculation uses the labelled molarity, so the error runs the other way.",
+     "The NaOH is diluted, but the calculation uses the labeled molarity, so the error runs the other way.",
      "Water does not change the moles of acid, but it lowers the molarity of the titrant actually used.",
      "Diluted titrant means more volume is needed, not less."
     ]

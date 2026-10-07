@@ -6,7 +6,7 @@
   "def": "How easily a particle's electron cloud is distorted. More electrons, held farther from the nucleus, make a particle more polarizable."
  },
  "london-dispersion": {
-  "def": "The attraction between momentary dipoles in neighbouring particles. It acts between all particles and grows with polarizability and contact area."
+  "def": "The attraction between momentary dipoles in neighboring particles. It acts between all particles and grows with polarizability and contact area."
  },
  "dipole-dipole": {
   "def": "The attraction between the δ+ end of one polar molecule and the δ− end of another."

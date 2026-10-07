@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Units and Dimensional Analysis — AP® Chemistry Notes</title>
+<meta name="description" content="If a lab partner tells you &quot;the sample is 12.6&quot;, you do not know anything yet. Is that 12.6 grams, 12.6 milliliters or 12.6 degrees?">
+<link rel="canonical" href="https://levlprep.com/chem/notes/math-units.html">
+<meta property="og:title" content="Units and Dimensional Analysis — AP® Chemistry Notes">
+<meta property="og:description" content="If a lab partner tells you &quot;the sample is 12.6&quot;, you do not know anything yet. Is that 12.6 grams, 12.6 milliliters or 12.6 degrees?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/chem/notes/math-units.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/chem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/chem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/chem/notes/math-units.html#reading",
+      "name": "Units and Dimensional Analysis",
+      "url": "https://levlprep.com/chem/notes/math-units.html",
+      "description": "If a lab partner tells you \"the sample is 12.6\", you do not know anything yet. Is that 12.6 grams, 12.6 milliliters or 12.6 degrees?",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "dimensional analysis and unit conversions for chemistry",
+      "isPartOf": {
+        "@id": "https://levlprep.com/chem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Chemistry",
+          "item": "https://levlprep.com/chem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Math you need",
+          "item": "https://levlprep.com/chem/units/skills-math.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Units and Dimensional Analysis: notes",
+          "item": "https://levlprep.com/chem/notes/math-units.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="chem" data-topic="math-units" data-unit="skills-math">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="chem-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail chem-nav-ref bk-rail" id="chem-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-9.html"><span class="bk-toc-n">9</span>Thermodynamics and Electrochemistry</a>
+    <a class="bk-toc-chap" href="../units/skills-math.html"><span class="bk-toc-chap-n">S</span><span><b>Math you need</b><small>5 topics</small></span></a>
+    <div class="chem-toc-prog" data-toc-prog="skills-math"><div class="tb-progress-row"><span><b>0</b> of 5 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li class="current" data-toc-t="math-units"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Units and Dimensional Analysis</a><div class="bk-toc-onpage"><p>On this page</p><a href="#a-number-is-not-a-measurement">A number is not a measurement until it has a unit</a><a href="#metric-prefixes">Metric prefixes</a><a href="#conversion-factors-multiplying-by-1">Conversion factors: multiplying by 1</a><a href="#chains-of-factors">Chains of factors</a><a href="#density-mass-and-volume">Density: mass and volume</a><a href="#temperature-and-the-kelvin">Temperature and the kelvin</a><a href="#habits-that-save-points">Habits that save points</a></div></li><li data-toc-t="math-exponents"><a href="math-exponents.html"><span class="bk-toc-n">S</span>Exponents</a></li><li data-toc-t="math-scientific-notation"><a href="math-scientific-notation.html"><span class="bk-toc-n">S</span>Scientific Notation</a></li><li data-toc-t="math-sig-figs"><a href="math-sig-figs.html"><span class="bk-toc-n">S</span>Significant Figures</a></li><li data-toc-t="math-logs"><a href="math-logs.html"><span class="bk-toc-n">S</span>Logarithms</a></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="chem-crumb chem-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-math.html">Math you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Units and Dimensional Analysis: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/math-units.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Skills <span class="chem-beta chem-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Units and Dimensional Analysis</h1>
+      <p class="bk-meta chem-nav-ref"><span class="bk-small">5 min read &middot; free</span><span class="bk-chip" data-chip-topic="math-units">Not practiced</span></p>
+      <div class="bk-actions chem-share chem-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fchem%2Fnotes%2Fmath-units.html&amp;title=Units%20and%20Dimensional%20Analysis%3A%20chemistry%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/chem/notes/math-units.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="chem-prose bk-prose">
+<h2 id="a-number-is-not-a-measurement">A number is not a measurement until it has a unit</h2>
+<p>If a lab partner tells you "the sample is 12.6", you do not know anything yet. Is that 12.6 grams, 12.6 milliliters or 12.6 degrees? A <b>unit</b> is the agreed-on amount a measurement counts in, and every measured number in chemistry carries one. On the exam, an answer without its unit usually loses the point, even when the number is right.</p>
+<p>Chemistry uses the metric system, built on <span class="gl" tabindex="0" data-c="unit">SI units</span> (the International System). The ones you meet first:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Common units in chemistry"><table class="compare">
+<caption>Common units in chemistry</caption>
+<thead><tr><th scope="col">Quantity</th><th scope="col">Unit</th><th scope="col">Symbol</th><th scope="col">Notes</th></tr></thead>
+<tbody>
+<tr><th scope="row">Mass</th><td>gram, kilogram</td><td>g, kg</td><td>The SI base unit is the kilogram; labs weigh in grams.</td></tr>
+<tr><th scope="row">Length</th><td>meter</td><td>m</td><td><a class="gl" href="../notes/moles-molar-mass.html" data-c="atom">Atoms</a> are measured in picometers (pm).</td></tr>
+<tr><th scope="row">Volume</th><td>liter, milliliter, cubic centimeter</td><td>L, mL, cm³</td><td>1 mL = 1 cm³ exactly.</td></tr>
+<tr><th scope="row">Temperature</th><td><span class="gl" tabindex="0" data-c="kelvin">kelvin</span>, degree Celsius</td><td>K, °C</td><td>K = °C + 273.15</td></tr>
+<tr><th scope="row">Time</th><td>second</td><td>s</td><td>1 min = 60 s</td></tr>
+<tr><th scope="row">Energy</th><td>joule, kilojoule</td><td>J, kJ</td><td>1 kJ = 1000 J</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="metric-prefixes">Metric prefixes</h2>
+<p>Instead of inventing a new unit for every size, the metric system puts a <b><span class="gl" tabindex="0" data-c="si-prefix">metric prefix</span></b> in front of a unit. The prefix multiplies the unit by a fixed factor of ten. A kilogram is 1000 grams; a milliliter is one thousandth of a liter.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="The prefixes you will use most"><table class="compare">
+<caption>The prefixes you will use most</caption>
+<thead><tr><th scope="col">Prefix</th><th scope="col">Symbol</th><th scope="col">Means</th><th scope="col">Example</th></tr></thead>
+<tbody>
+<tr><th scope="row">giga</th><td>G</td><td>1,000,000,000 ×</td><td>1 GJ = 1,000,000,000 J</td></tr>
+<tr><th scope="row">mega</th><td>M</td><td>1,000,000 ×</td><td>1 MJ = 1,000,000 J</td></tr>
+<tr><th scope="row">kilo</th><td>k</td><td>1000 ×</td><td>1 km = 1000 m</td></tr>
+<tr><th scope="row">centi</th><td>c</td><td>1/100 ×</td><td>100 cm = 1 m</td></tr>
+<tr><th scope="row">milli</th><td>m</td><td>1/1000 ×</td><td>1000 mL = 1 L</td></tr>
+<tr><th scope="row">micro</th><td>µ</td><td>1/1,000,000 ×</td><td>1,000,000 µg = 1 g</td></tr>
+<tr><th scope="row">nano</th><td>n</td><td>1/1,000,000,000 ×</td><td>1,000,000,000 nm = 1 m</td></tr>
+<tr><th scope="row">pico</th><td>p</td><td>1/1,000,000,000,000 ×</td><td>atoms are about 100 pm across</td></tr>
+</tbody>
+</table></div>
+<p>You do not need to memorize the table for the exam: the official equations sheet lists the prefixes. You do need to use them quickly and in the right direction.</p>
+
+<h2 id="conversion-factors-multiplying-by-1">Conversion factors: multiplying by 1</h2>
+<p>Since 1 km and 1000 m are the same length, the ratio 1000 m / 1 km equals 1. So does its flip, 1 km / 1000 m. A ratio like this is a <b><span class="gl" tabindex="0" data-c="dimensional-analysis">conversion factor</span></b>. Multiplying a quantity by it changes the number and the unit together, but not the amount itself, because you multiplied by 1.</p>
+<p>The trick is choosing which way up the factor goes. Units cancel like numbers: a unit on the top and the same unit on the bottom divide out. So put the unit you <i>have</i> on the bottom, and the unit you <i>want</i> on the top. This method is called <b>dimensional analysis</b> (or the factor-label method), and it is the single most useful habit in this course (<a class="figref" href="#fig-chain">Figure 1</a>).</p>
+<figure id="fig-chain"  class="chem-figure"><div class="chem-figimg" data-fig="unit-cancel-chain"><img src="../figures/unit-cancel-chain.svg" alt="3.5 hours times 60 minutes per hour times 60 seconds per minute equals 12,600 seconds; hours cancel, then minutes cancel, leaving seconds." width="680" height="260" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Converting 3.5 hours into seconds. Each factor has the old unit on the bottom, so hours cancel, then minutes cancel, and only seconds are left. <span class="chem-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example.</b> A hiking trail is 2.45 km long. How long is it in meters?</p>
+<p>Start with what you know, then put km on the bottom of the factor so it cancels:</p>
+<p>2.45 km × (1000 m / 1 km) = <b>2450 m</b></p>
+<p>Check the size: a meter is much smaller than a kilometer, so you need many more of them. 2450 is larger than 2.45, as it should be.</p>
+</div>
+
+<h2 id="chains-of-factors">Chains of factors</h2>
+<p>When no single factor connects the two units, chain several. Each factor cancels the unit left over from the step before.</p>
+<div class="worked">
+<p><b>Worked example.</b> Convert 4250 mg into kilograms.</p>
+<p>There is no direct mg-to-kg factor on most lists, so go through grams:</p>
+<p>4250 mg × (1 g / 1000 mg) × (1 kg / 1000 g) = <b>0.00425 kg</b></p>
+<p>mg cancels in the first step and g cancels in the second. A kilogram is a million milligrams, so the number had to shrink a lot. If your answer had grown instead, a factor was upside down.</p>
+</div>
+<p>A rate such as "15 mg per kilogram of body mass" is also a conversion factor: 15 mg / 1 kg. A speed in km/h is a factor between distance and time. Any "per" is a ratio you can use.</p>
+
+<h2 id="density-mass-and-volume">Density: mass and volume</h2>
+<p><b><span class="gl" tabindex="0" data-c="density">Density</span></b> is mass divided by volume: d = m / V. <a class="gl" href="../notes/phases-of-matter.html" data-c="states-of-matter">Liquids</a> and solids are usually given in g/mL or g/cm³ (the same thing, since 1 mL = 1 cm³). Water is about 1.00 g/mL; a solid denser than the liquid it is placed in sinks.</p>
+<div class="worked">
+<p><b>Worked example.</b> Ethanol has a density of 0.789 g/mL. What is the mass of 250.0 mL of ethanol?</p>
+<p>The density is a conversion factor from volume to mass. Put mL on the bottom:</p>
+<p>250.0 mL × (0.789 g / 1 mL) = 197.25 g, reported as <b>197 g</b>.</p>
+<p>How many digits to keep is the subject of a later page in this chapter. For now, notice that the answer has the same number of meaningful digits as the least detailed measurement.</p>
+</div>
+<p>Going the other way, from mass to volume, flip the density: volume = mass × (1 mL / 0.789 g).</p>
+
+<h2 id="temperature-and-the-kelvin">Temperature and the kelvin</h2>
+<p>Temperatures in chemistry are measured in degrees Celsius in the lab, but most equations need the <b>kelvin</b> (K, no degree sign). A kelvin is the same size as a Celsius degree; only the starting point differs. Zero kelvin is absolute zero, the coldest temperature possible, so no temperature in kelvin is ever negative.</p>
+<p>K = °C + 273.15. Room temperature, 25 °C, is 298.15 K, often rounded to 298 K. Forgetting this conversion is one of the most common lost points on the free-response section, especially in gas and energy problems.</p>
+<div class="worked">
+<p><b>Worked example.</b> Convert body temperature, 37.0 °C, to kelvin.</p>
+<p>K = 37.0 + 273.15 = 310.15, reported as <b>310.2 K</b> (the measurement was given to one decimal place).</p>
+</div>
+
+<h2 id="habits-that-save-points">Habits that save points</h2>
+<ul>
+<li>Write the unit on every number, in every line, not just at the end.</li>
+<li>Set up the whole chain of factors before you touch the calculator.</li>
+<li>Before you report an answer, ask if the size makes sense: more of a smaller unit, fewer of a larger one.</li>
+<li>Watch J and kJ, mL and L, °C and K: the exam's readers name these as the most common unit slips.</li>
+</ul>
+
+    </article>
+    <p class="chem-report-page chem-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="notes:math-units">Report a problem</button></p>
+    <nav class="tb-chapter-nav chem-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link next" href="math-exponents.html"><span>Next &rarr;</span><b>Exponents</b></a></nav>
+  </main>
+</div>
+<footer class="chem-foot xshell">
+  <p class="chem-accuracy-note"><span class="chem-beta chem-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Chemistry teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="chem-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="notes:math-units">Report a problem</button></span></p>
+  <p class="chem-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApChemSection = 'learn'; window.ApChemBase = '../';</script>
+<script src="../assets/chem-curriculum.js" defer></script>
+<script src="../assets/chem-core.js" defer></script>
+<script src="../assets/chem-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/chem-toc.js" defer></script>
+</body>
+</html>

@@ -60,6 +60,9 @@ const COURSE_URL = Object.fromEntries(PAID.map((c) => [c.key, c.path]));
 const ORDER = PAID.filter((c) => isOpen(c)).map((c) => c.key);
 const BIO = ORDER.includes('apbio');
 const CHEM = ORDER.includes('apchem');
+/* Once every topic in the map is published the card stops promising more.
+   "N published topics" keeps clear of check-site's ochem topic-count claim. */
+const CHEM_ALL = N.apchemTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apchem-dependency-map.json'), 'utf8')).topics.length;
 // Any course that uses the College Board's mark (AP® Biology, AP® Chemistry).
 const MARK = BIO || CHEM;
 // The College Board sentence, on every page that uses the mark (docs/apbio-spec.md).
@@ -353,7 +356,7 @@ function hubChemCard() {
           </div>
           <div>
             <p class="featured-name">AP® Chemistry</p>
-            <p class="featured-desc">Built on the 2024 course framework, in its order: lessons from scratch at the particle level, practice that checks units and significant figures, and justification training. ${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far, more every few weeks.</p>
+            <p class="featured-desc">Built on the 2024 course framework, in its order: lessons from scratch at the particle level, practice that checks units and significant figures, and justification training. ${CHEM_ALL ? `All ${fmt(topics)} published topics, from the math you need to electrochemistry.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far, more every few weeks.`}</p>
           </div>
           <div class="featured-tags">
             <span>Beta</span>
@@ -461,7 +464,7 @@ for (const [rel, fields] of Object.entries(MANIFESTS)) {
   out = between(out, '<!-- nf-bio:start -->', '<!-- nf-bio:end -->', BIO ? bio : '', rel);
   const chem = `    <a class="card nf-card" href="/chem/">
       <h2>AP® Chemistry (Beta) &rarr;</h2>
-      <p>${fmt(N.apchemTopics)} published topic${N.apchemTopics === 1 ? '' : 's'} so far, in the order of the 2024 course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
+      <p>${CHEM_ALL ? `All ${fmt(N.apchemTopics)} published topics` : `${fmt(N.apchemTopics)} published topic${N.apchemTopics === 1 ? '' : 's'} so far`}, in the order of the 2024 course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
     </a>`;
   out = between(out, '<!-- nf-chem:start -->', '<!-- nf-chem:end -->', CHEM ? chem : '', rel);
   put(rel, out);

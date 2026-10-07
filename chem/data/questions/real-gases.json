@@ -204,7 +204,6 @@
     "CO₂"
    ],
    "correct": 0,
-   "fixed": true,
    "why": {
     "correct": "Helium’s curve starts at 1 and only rises. Its atoms attract each other so weakly that only the volume effect shows, and it grows with pressure.",
     "options": [
@@ -280,20 +279,20 @@
    "stimulus": "real-gases-s1",
    "q": "At 1 atm, by about what percent does CO₂ differ from ideal behavior?",
    "options": [
-    "About 0.3%",
+    "About 90%",
     "About 34%",
     "About 16%",
-    "About 90%"
+    "About 0.3%"
    ],
-   "correct": 0,
+   "correct": 3,
    "fixed": true,
    "why": {
     "correct": "At 1 atm, PV/nRT for CO₂ is 0.997, which is 0.3% below 1. That is why the ideal gas law works well at ordinary pressures.",
     "options": [
-     "Right: a small deviation at low pressure.",
+     "No gas in the graph deviates that much at any pressure shown.",
      "That is the deviation at 100 atm, not at 1 atm.",
      "That is the deviation at 50 atm, not at 1 atm.",
-     "No gas in the graph deviates that much at any pressure shown."
+     "Right: a small deviation at low pressure."
     ]
    }
   },
@@ -315,9 +314,9 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "At higher temperature molecules move faster, so the brief tug of a neighbour changes their motion less. Gases behave more ideally at high temperature.",
+    "correct": "At higher temperature molecules move faster, so the brief tug of a neighbor changes their motion less. Gases behave more ideally at high temperature.",
     "options": [
-     "Right: high temperature favours ideal behavior.",
+     "Right: high temperature favors ideal behavior.",
      "The attractions themselves do not grow with temperature; their effect on fast molecules shrinks.",
      "T in the denominator does not remove the effect of attractions on the measured P.",
      "Molecules do not swell when heated."
@@ -426,10 +425,10 @@
    "why": {
     "correct": "In 100 L the pressure is about 0.74 atm. The molecules are far apart, so they rarely feel each other's attractions and their volume is negligible: nearly ideal.",
     "options": [
-     "Right: low pressure favours ideal behavior.",
+     "Right: low pressure favors ideal behavior.",
      "Speed depends on temperature, which is unchanged.",
      "Deviations depend strongly on pressure and temperature.",
-     "Molecules far apart have fewer neighbours, so attractions matter less."
+     "Molecules far apart have fewer neighbors, so attractions matter less."
     ]
    }
   },
@@ -449,9 +448,8 @@
     "High temperature and high pressure"
    ],
    "correct": 0,
-   "fixed": true,
    "why": {
-    "correct": "Fast particles (high T) are barely affected by attractions, and particles far apart (low P) have negligible volume and few neighbours.",
+    "correct": "Fast particles (high T) are barely affected by attractions, and particles far apart (low P) have negligible volume and few neighbors.",
     "options": [
      "Right: fast, far-apart particles.",
      "These conditions make both deviations largest, near condensation.",
@@ -477,7 +475,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Deviations from attractions grow with intermolecular forces. SO₂ is polar with many electrons, so it attracts its neighbours most strongly.",
+    "correct": "Deviations from attractions grow with intermolecular forces. SO₂ is polar with many electrons, so it attracts its neighbors most strongly.",
     "options": [
      "Right: polar and polarizable.",
      "Ne has few electrons and weak dispersion forces.",
@@ -503,9 +501,9 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "A particle near the wall is pulled back by its neighbours, so the force on the wall is less than for an ideal gas.",
+    "correct": "A particle near the wall is pulled back by its neighbors, so the force on the wall is less than for an ideal gas.",
     "options": [
-     "Right: neighbours pull particles back from the wall.",
+     "Right: neighbors pull particles back from the wall.",
      "Particle volume raises the pressure (or volume) above ideal; it does not lower it.",
      "Elastic collisions lose no energy; this is an ideal-gas assumption, not a deviation.",
      "At a given temperature the average kinetic energy is set; the attractions are what differ."
@@ -577,19 +575,19 @@
    "diff": 2,
    "q": "A real gas has PV/nRT = 0.92 under certain conditions. If its pressure at those conditions is measured as 46.0 atm, what pressure would an ideal gas have?",
    "options": [
-    "50.0 atm",
     "42.3 atm",
     "46.0 atm",
+    "50.0 atm",
     "92.0 atm"
    ],
-   "correct": 0,
+   "correct": 2,
    "fixed": true,
    "why": {
     "correct": "PV/nRT = P(real)/P(ideal) at the same n, V and T, so P(ideal) = 46.0 / 0.92 = 50.0 atm. The real gas pushes less because of attractions.",
     "options": [
-     "Right: 46.0 ÷ 0.92.",
      "This multiplies by 0.92 instead of dividing.",
      "The ratio is not 1, so the pressures differ.",
+     "Right: 46.0 ÷ 0.92.",
      "This multiplies by 2 for no reason."
     ]
    }
@@ -613,7 +611,7 @@
     0
    ],
    "why": {
-    "correct": "Attractions push PV/nRT below 1, and NH₃ attracts its neighbours by hydrogen bonds, far more strongly than the small, barely polarizable He, Ne or H₂.",
+    "correct": "Attractions push PV/nRT below 1, and NH₃ attracts its neighbors by hydrogen bonds, far more strongly than the small, barely polarizable He, Ne or H₂.",
     "options": [
      "Right: the strongest attractions.",
      "He has the weakest attractions of any gas; it sits slightly above 1.",

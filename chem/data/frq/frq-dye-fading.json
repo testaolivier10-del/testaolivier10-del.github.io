@@ -2,7 +2,7 @@
  "id": "frq-dye-fading",
  "type": "long",
  "points": 10,
- "title": "Following a fading dye with a spectrophotometer",
+ "title": "Tracking a fading dye by absorbance",
  "units": [
   "unit-5"
  ],
@@ -108,7 +108,7 @@
    "prompt": "On the grid provided, <b>plot</b> ln(A) against time for the six readings and draw the best-fit line.",
    "rubric": [
     {
-     "point": "All six points plotted correctly on labelled axes, with a single straight best-fit line through them",
+     "point": "All six points plotted correctly on labeled axes, with a single straight best-fit line through them",
      "accept": [
       "points within half a grid square of the table values, joined by one straight line"
      ]

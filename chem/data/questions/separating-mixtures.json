@@ -237,18 +237,18 @@
    "stimulus": "separating-mixtures-s2",
    "q": "Which liquid is collected first?",
    "options": [
-    "Acetone, which boils at about 56 °C",
     "Water, which boils at about 100 °C",
+    "Acetone, which boils at about 56 °C",
     "Both at once, in equal amounts",
     "Neither, until 100 °C is reached"
    ],
-   "correct": 0,
+   "correct": 1,
    "fixed": true,
    "why": {
     "correct": "The vapor stays near 56–61 °C for the first 30 mL: that is acetone, the lower-boiling liquid, vaporizing first.",
     "options": [
-     "Right: the first plateau is near acetone's boiling point.",
      "Water comes over later, at the 100 °C plateau.",
+     "Right: the first plateau is near acetone's boiling point.",
      "The two plateaus show they come over one after the other.",
      "Liquid starts collecting at 56 °C."
     ]
@@ -292,18 +292,18 @@
    "stimulus": "separating-mixtures-s2",
    "q": "About how much acetone was in the original mixture?",
    "options": [
-    "About 30 mL",
     "About 10 mL",
+    "About 30 mL",
     "About 60 mL",
     "About 100 mL"
    ],
-   "correct": 0,
+   "correct": 1,
    "fixed": true,
    "why": {
     "correct": "The vapor stays near acetone's boiling point until about 30 mL have collected, then the temperature rises sharply toward 100 °C as water starts to come over.",
     "options": [
-     "Right: the first plateau ends near 30 mL.",
      "Liquid at acetone's temperature kept collecting past 10 mL.",
+     "Right: the first plateau ends near 30 mL.",
      "60 mL is the total collected, including water.",
      "The table shows only 60 mL collected."
     ]
@@ -352,7 +352,6 @@
     "Evaporating the water"
    ],
    "correct": 0,
-   "fixed": true,
    "why": {
     "correct": "Sand has not dissolved, so its grains stay on filter paper while the salt water passes through.",
     "options": [

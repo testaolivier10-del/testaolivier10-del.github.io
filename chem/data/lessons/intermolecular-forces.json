@@ -1,6 +1,6 @@
 {
  "topic": "intermolecular-forces",
- "hook": "Water boils at 100 °C, but methane, a molecule of nearly the same mass, boils at −162 °C. Nitrogen is a gas, bromine a liquid and iodine a solid at room temperature. The difference is not in the molecules themselves but in how strongly each one tugs on its neighbours.",
+ "hook": "Water boils at 100 °C, but methane, a molecule of nearly the same mass, boils at −162 °C. Nitrogen is a gas, bromine a liquid and iodine a solid at room temperature. The difference is not in the molecules themselves but in how strongly each one tugs on its neighbors.",
  "prereq": [
   {
    "q": "Which molecule is polar?",
@@ -45,7 +45,7 @@
  "chain": [
   {
    "cause": "Electrons in every particle shift from moment to moment",
-   "effect": "momentary dipoles attract their neighbours: London dispersion forces act in every substance"
+   "effect": "momentary dipoles attract their neighbors: London dispersion forces act in every substance"
   },
   {
    "cause": "More electrons, farther from the nucleus, make an electron cloud easier to distort",
@@ -53,7 +53,7 @@
   },
   {
    "cause": "A polar molecule has a permanent δ+ end and δ− end",
-   "effect": "neighbours line up and add dipole-dipole forces"
+   "effect": "neighbors line up and add dipole-dipole forces"
   },
   {
    "cause": "H bonded to N, O or F carries a large, exposed δ+",

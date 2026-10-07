@@ -447,18 +447,18 @@
    "stimulus": "kinetic-molecular-theory-s2",
    "q": "The two boxes have the same volume. Which box is at the higher temperature?",
    "options": [
-    "Box 2",
     "Box 1",
+    "Box 2",
     "They are at the same temperature",
     "The pressure is needed to decide"
    ],
-   "correct": 0,
+   "correct": 1,
    "fixed": true,
    "why": {
     "correct": "Same gas, same number of particles. Longer arrows mean faster particles, a higher average kinetic energy, and so a higher temperature.",
     "options": [
-     "Right: faster particles of the same gas mean a higher temperature.",
      "Box 1's particles are slower, so it is cooler.",
+     "Right: faster particles of the same gas mean a higher temperature.",
      "The arrows differ in length, so the average kinetic energies differ.",
      "The particle speeds alone show the temperature for the same gas."
     ]
@@ -535,7 +535,6 @@
     "The average speed halves and the pressure doubles."
    ],
    "correct": 0,
-   "fixed": true,
    "why": {
     "correct": "Constant temperature means constant average kinetic energy, so the speeds are unchanged. In half the volume the particles reach the walls twice as often, so the pressure doubles (P ∝ 1/V).",
     "options": [

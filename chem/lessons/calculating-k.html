@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculating the Equilibrium Constant — AP® Chemistry</title>
+<meta name="description" content="Pure solids and liquids stay out of K even in a heterogeneous equilibrium.">
+<link rel="canonical" href="https://levlprep.com/chem/lessons/calculating-k.html">
+<meta property="og:title" content="Calculating the Equilibrium Constant — AP® Chemistry">
+<meta property="og:description" content="Pure solids and liquids stay out of K even in a heterogeneous equilibrium.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/chem/lessons/calculating-k.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/chem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/chem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/chem/lessons/calculating-k.html#lesson",
+      "name": "Calculating the Equilibrium Constant",
+      "url": "https://levlprep.com/chem/lessons/calculating-k.html",
+      "description": "Pure solids and liquids stay out of K even in a heterogeneous equilibrium.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".chem-ls-card"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "heterogeneous equilibrium"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "ICE table"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/chem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Chemistry",
+          "item": "https://levlprep.com/chem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Equilibrium",
+          "item": "https://levlprep.com/chem/units/unit-7.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Calculating the Equilibrium Constant",
+          "item": "https://levlprep.com/chem/lessons/calculating-k.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="chem" data-topic="calculating-k" data-unit="unit-7">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="chem-crumb chem-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-7.html">Equilibrium</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Calculating the Equilibrium Constant</span></nav></div>
+<div class="xshell chem-ls chem-stepped">
+  <aside class="chem-ls-rail chem-nav-ref" aria-label="Lesson parts">
+    <p class="chem-ls-k">Unit 7 · Equilibrium</p>
+    <p class="chem-ls-links"><a href="../units/unit-7.html">&larr; Back to the unit</a><a href="../notes/calculating-k.html">Read the notes</a></p>
+    <div class="chem-ls-prog"><div class="chem-ls-track"><div class="chem-ls-fill"></div></div><span class="chem-ls-count">Step 1 / 11</span></div>
+    <ol class="chem-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="chem-ls-main chem-lesson">
+  <header class="chem-ls-hero">
+    <div class="eyebrow">Unit 7 · Topic 7.4 <span class="chem-beta chem-nav-ref">Beta</span></div>
+    <h1>Calculating the Equilibrium Constant</h1>
+    <p class="lede">To calculate K, substitute equilibrium concentrations (or partial pressures for K p ) into the expression; every equilibrium mixture at one temperature gives the same value.</p>
+    <p class="chem-tags chem-nav-ref"><span class="chem-tag">Practice 5: Mathematical Routines</span></p>
+    <div class="chem-share chem-nav-ref" role="group" aria-label="Share or print this lesson"><a class="chem-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fchem%2Flessons%2Fcalculating-k.html&amp;title=Calculating%20the%20Equilibrium%20Constant%3A%20chemistry%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="chem-share-btn" data-copy="https://levlprep.com/chem/lessons/calculating-k.html">Copy link</button><button type="button" class="chem-share-btn" data-print>Print</button></div>
+    <p class="chem-small chem-nav-ref"><a href="../practice.html?topic=calculating-k">Question set for this topic</a></p>
+  </header>
+  <div class="chem-ls-card">
+  <section class="chem-part chem-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="chem-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="chem-step-body chem-hook">More than a century ago, chemists ran the same reaction in dozens of flasks, each started with different amounts of hydrogen, iodine and hydrogen iodide. The final <a class="gl" href="../notes/mixture-composition.html" data-c="mixture">mixtures</a> looked nothing alike. Yet when they combined the measured concentrations in one particular way, every flask gave the same number, to within rounding. That number is the <a class="gl" href="../notes/q-and-k.html" data-c="equilibrium-constant">equilibrium constant</a>, and calculating it is the subject of this lesson.</div>
+  </section>
+  <section class="chem-part chem-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="chem-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Earlier topics"><ul class="chem-links"><li><a href="../notes/stoichiometry.html">Stoichiometry</a></li><li><a href="../notes/q-and-k.html">Reaction Quotient and Equilibrium Constant</a></li></ul></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="chem-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="chem-step-body"><div class="chem-qs" data-set="prereq"><div class="chem-q" data-qid="calculating-k-pre-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> What is K<sub>c</sub> for N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2 NO<sub>2</sub>(g)?</p><ol class="chem-opts"><li>[NO<sub>2</sub>]<sup>2</sup> / [N<sub>2</sub>O<sub>4</sub>]</li><li>2[NO<sub>2</sub>] / [N<sub>2</sub>O<sub>4</sub>]</li><li>[N<sub>2</sub>O<sub>4</sub>] / [NO<sub>2</sub>]<sup>2</sup></li><li>[NO<sub>2</sub>] / [N<sub>2</sub>O<sub>4</sub>]</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Products over reactants, each raised to its coefficient.</p><ul><li><b>Correct:</b> [NO<sub>2</sub>]<sup>2</sup> / [N<sub>2</sub>O<sub>4</sub>]: </li><li>2[NO<sub>2</sub>] / [N<sub>2</sub>O<sub>4</sub>]: </li><li>[N<sub>2</sub>O<sub>4</sub>] / [NO<sub>2</sub>]<sup>2</sup>: </li><li>[NO<sub>2</sub>] / [N<sub>2</sub>O<sub>4</sub>]: </li></ul></details></div><div class="chem-q" data-qid="calculating-k-pre-2"><p class="chem-q-stem"><span class="chem-q-n">2.</span> In 2 H<sub>2</sub> + O<sub>2</sub> → 2 H<sub>2</sub>O, if 0.30 mol O<sub>2</sub> reacts, how much H<sub>2</sub> reacts?</p><ol class="chem-opts"><li>0.60 mol</li><li>0.30 mol</li><li>0.15 mol</li><li>0.90 mol</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>The mole ratio is 2 H₂ : 1 O₂.</p><ul><li><b>Correct:</b> 0.60 mol: </li><li>0.30 mol: </li><li>0.15 mol: </li><li>0.90 mol: </li></ul></details></div><div class="chem-q" data-qid="calculating-k-pre-3"><p class="chem-q-stem"><span class="chem-q-n">3.</span> What is the molarity of 0.40 mol of solute in 2.0 L of solution?</p><ol class="chem-opts"><li>0.20 M</li><li>0.80 M</li><li>5.0 M</li><li>0.40 M</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Molarity = moles / liters = 0.40 / 2.0.</p><ul><li><b>Correct:</b> 0.20 M: </li><li>0.80 M: </li><li>5.0 M: </li><li>0.40 M: </li></ul></details></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="figure" aria-labelledby="h-figure">
+    <p class="chem-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="chem-step-body"><figure class="chem-figure chem-lesson-fig"><div class="chem-figimg" data-fig="ice-table-layout"><img src="../figures/ice-table-layout.svg" alt="An ICE table for 2 NOCl forming 2 NO and Cl2. Columns are NOCl, NO and Cl2; rows are Initial, Change and Equilibrium. Initial: 0.250, 0, 0. Change: minus 2x, plus 2x, plus x, following the coefficients 2, 2 and 1. Equilibrium: 0.250 minus 2x, 2x, and x, where x equals the measured 0.0200 M Cl2. This gives NO = 0.0400 M and NOCl = 0.210 M, and Kc = 7.26 times 10 to the minus 4." width="760" height="300" loading="lazy" decoding="async"></div><figcaption>The change row follows the coefficients, so one measured <a class="gl" href="../notes/phases-of-matter.html" data-c="dynamic-equilibrium">equilibrium</a> amount fixes x and every other concentration. <span class="chem-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="chem-part chem-step" id="chain" aria-labelledby="h-chain">
+    <p class="chem-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="chem-step-body"><ol class="chem-chain"><li><span class="chem-cause">Different equilibrium mixtures of one reaction are measured at the same temperature</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">their concentrations differ, but K = products over <a class="gl" href="../notes/reactions-intro.html" data-c="reactant">reactants</a> (with <a class="gl" href="../notes/math-exponents.html" data-c="exponent">exponents</a>) comes out the same</span></li><li><span class="chem-cause">Only the starting amounts and one equilibrium value are known</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">an <span class="gl" tabindex="0" data-c="ice-table">ICE table</span> writes every change as x times a coefficient</span></li><li><span class="chem-cause">The measured value fixes x</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">every equilibrium concentration follows from Initial + Change</span></li><li><span class="chem-cause">The <a class="gl" href="../notes/equilibrium-intro.html" data-c="chemical-equilibrium">equilibrium concentrations</a> are put into the K expression</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">you get the value of K, with no units and the data’s <a class="gl" href="../notes/math-sig-figs.html" data-c="significant-figures">significant figures</a></span></li></ol></div>
+  </section>
+  <section class="chem-part chem-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="chem-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="chem-step-body"><ul class="chem-ideas"><li>K is calculated from <b>equilibrium</b> concentrations or pressures only.</li><li>Every equilibrium mixture of a reaction at one temperature gives the same K.</li><li>In a <b><span class="gl" tabindex="0" data-c="heterogeneous-equilibrium">heterogeneous equilibrium</span></b> (more than one phase), pure solids and <a class="gl" href="../notes/phases-of-matter.html" data-c="states-of-matter">liquids</a> still drop out of K.</li><li>An <b>ICE table</b> (Initial, Change, Equilibrium) writes each change as x times the coefficient, so one measured value gives them all.</li></ul></div>
+  </section>
+  <section class="chem-part chem-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="chem-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="chem-step-body chem-misconception"><p class="chem-wrong"><b>The wrong idea:</b> You can put the starting concentrations into the K expression to find K.</p><p class="chem-right"><b>What actually happens:</b> Starting concentrations give Q at the start, which can be any value. K needs the equilibrium concentrations; use an ICE table to get them from the starting amounts and one measured value.</p></div>
+  </section>
+  <section class="chem-part chem-step" id="check" aria-labelledby="h-check">
+    <p class="chem-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="chem-step-body"><p class="chem-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="chem-qs" data-set="check"><div class="chem-set"><section class="chem-stim" data-stim="calculating-k-s1" aria-labelledby="stim-calculating-k-s1"><p class="chem-stim-k">Data table</p><h3 id="stim-calculating-k-s1">Three equilibrium mixtures of H₂, I₂ and HI</h3><div class="chem-stim-text"><p>Three sealed flasks at 450 °C each start with different amounts of H<sub>2</sub>, I<sub>2</sub> and HI and are left to reach equilibrium: H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g). The table gives the equilibrium concentrations.</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Equilibrium concentrations at 450 °C"><table class="chem-data"><caption>Equilibrium concentrations at 450 °C</caption><thead><tr><th scope="col">Trial</th><th scope="col">[H<sub>2</sub>] (M)</th><th scope="col">[I<sub>2</sub>] (M)</th><th scope="col">[HI] (M)</th></tr></thead><tbody><tr><th scope="row">1</th><td>0.0114</td><td>0.00120</td><td>0.0262</td></tr><tr><th scope="row">2</th><td>0.00456</td><td>0.00456</td><td>0.0322</td></tr><tr><th scope="row">3</th><td>0.00353</td><td>0.0148</td><td>0.0511</td></tr></tbody></table></div></section><div class="chem-q" data-qid="chem-calculating-k-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> Calculate K<sub>c</sub> from the data for trial 1.</p><p class="chem-small">Type a number.</p><details class="chem-q-key"><summary>Show the answer</summary><p>K<sub>c</sub> = [HI]² / ([H₂][I₂]) = (0.0262)² / (0.0114 × 0.00120) = 50.2.</p><ul><li>Answer: 50.2</li></ul></details></div><div class="chem-q" data-qid="chem-calculating-k-3"><p class="chem-q-stem"><span class="chem-q-n">2.</span> What do the three trials show about K<sub>c</sub>?</p><ol class="chem-opts"><li>K<sub>c</sub> is about the same in each trial.</li><li>K<sub>c</sub> is largest in the trial with the most HI.</li><li>K<sub>c</sub> depends on which substances were put into the flask first.</li><li>K<sub>c</sub> is the same because [H<sub>2</sub>] equals [I<sub>2</sub>] in each trial.</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>At one temperature, every equilibrium mixture of the same reaction gives the same value of K, whatever amounts it started with. Small differences come from measurement precision.</p><ul><li><b>Correct:</b> K<sub>c</sub> is about the same in each trial.: Right: K comes out at about 50 every time (50.2, 49.9, 50.0), though the mixtures look nothing alike.</li><li>K<sub>c</sub> is largest in the trial with the most HI.: K is a ratio. Trial 3 has the most HI but also by far the most I₂, so the ratio [HI]² / ([H₂][I₂]) comes out about the same.</li><li>K<sub>c</sub> depends on which substances were put into the flask first.: All three started differently, yet K is about the same. At a fixed temperature, K does not depend on the starting mixture.</li><li>K<sub>c</sub> is the same because [H<sub>2</sub>] equals [I<sub>2</sub>] in each trial.: [H₂] equals [I₂] only in trial 2. K is constant anyway.</li></ul></details></div></div><div class="chem-set"><section class="chem-stim" data-stim="calculating-k-s2" aria-labelledby="stim-calculating-k-s2"><p class="chem-stim-k">Experimental setup</p><h3 id="stim-calculating-k-s2">Nitrosyl chloride decomposing</h3><div class="chem-stim-text"><p>A student puts 0.500 mol of NOCl gas into an empty, sealed 2.00 L flask and holds it at a constant temperature: 2 NOCl(g) ⇌ 2 NO(g) + Cl<sub>2</sub>(g). When equilibrium is reached, the flask contains 0.0400 mol of Cl<sub>2</sub>.</p></div></section><div class="chem-q" data-qid="chem-calculating-k-6"><p class="chem-q-stem"><span class="chem-q-n">3.</span> Calculate [NOCl] at equilibrium.</p><p class="chem-small">Type a number and its unit.</p><details class="chem-q-key"><summary>Show the answer</summary><p>[Cl₂]eq = 0.0400 mol / 2.00 L = 0.0200 M, so x = 0.0200 M. NOCl changes by −2x: 0.250 M − 2(0.0200 M) = 0.210 M.</p><ul><li>Answer: 0.210 M</li></ul></details></div><div class="chem-q" data-qid="chem-calculating-k-7"><p class="chem-q-stem"><span class="chem-q-n">4.</span> Use your equilibrium concentrations to calculate K<sub>c</sub> for the decomposition of NOCl at this temperature.</p><p class="chem-small">Type a number.</p><details class="chem-q-key"><summary>Show the answer</summary><p>x = 0.0200 M, so [NO] = 2x = 0.0400 M, [Cl₂] = 0.0200 M, [NOCl] = 0.250 − 0.0400 = 0.210 M. K<sub>c</sub> = [NO]²[Cl₂] / [NOCl]² = (0.0400)²(0.0200) / (0.210)² = 7.26 × 10<sup>−4</sup>.</p><ul><li>Answer: 7.26 × 10<sup>-4</sup></li></ul></details></div><div class="chem-q" data-qid="chem-calculating-k-8"><p class="chem-q-stem"><span class="chem-q-n">5.</span> Put the steps for finding K<sub>c</sub> in this experiment in order.</p><ol class="chem-opts"><li>Convert the moles of NOCl and of Cl<sub>2</sub> to molarities.</li><li>Write the ICE table with the change row as −2x, +2x and +x.</li><li>Set x equal to the equilibrium [Cl<sub>2</sub>] and fill in the equilibrium row.</li><li>Substitute the equilibrium concentrations into the expression for K<sub>c</sub>.</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Concentrations first; then the ICE table links the one measured value to every other species through the coefficients; then substitute.</p><ul><li>Correct order: 1. Convert the moles of NOCl and of Cl<sub>2</sub> to molarities. 2. Write the ICE table with the change row as −2x, +2x and +x. 3. Set x equal to the equilibrium [Cl<sub>2</sub>] and fill in the equilibrium row. 4. Substitute the equilibrium concentrations into the expression for K<sub>c</sub>.</li></ul></details></div></div><div class="chem-q" data-qid="chem-calculating-k-10"><p class="chem-q-stem"><span class="chem-q-n">6.</span> Solid NH<sub>4</sub>HS is sealed in an evacuated flask: NH<sub>4</sub>HS(s) ⇌ NH<sub>3</sub>(g) + H<sub>2</sub>S(g). At equilibrium, [NH<sub>3</sub>] = [H<sub>2</sub>S] = 0.0150 M, and 2.00 g of solid remains. Calculate K<sub>c</sub>.</p><p class="chem-small">Type a number.</p><details class="chem-q-key"><summary>Show the answer</summary><p>The solid is left out: K<sub>c</sub> = [NH₃][H₂S] = (0.0150)(0.0150) = 2.25 × 10⁻⁴.</p><ul><li>Answer: 2.25 × 10<sup>-4</sup></li></ul></details></div><div class="chem-q" data-qid="chem-calculating-k-15"><p class="chem-q-stem"><span class="chem-q-n">7.</span> For A(g) ⇌ 2 B(g), a flask starts with 0.40 M A. At equilibrium [B] = 0.20 M. Which ICE table row is correct for the equilibrium concentrations?</p><ol class="chem-opts"><li>[A] = 0.30 M, [B] = 0.20 M</li><li>[A] = 0.20 M, [B] = 0.20 M</li><li>[A] = 0.00 M, [B] = 0.20 M</li><li>[A] = 0.40 M, [B] = 0.20 M</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Change row: A −x, B +2x. 2x = 0.20 M gives x = 0.10 M. Equilibrium [A] = 0.40 − 0.10 = 0.30 M.</p><ul><li><b>Correct:</b> [A] = 0.30 M, [B] = 0.20 M: Right: B rose by 2x = 0.20 M, so x = 0.10 M and A fell to 0.40 − 0.10 = 0.30 M.</li><li>[A] = 0.20 M, [B] = 0.20 M: This subtracts the change in B directly from A. A falls by x, which is half of B’s rise.</li><li>[A] = 0.00 M, [B] = 0.20 M: A reversible reaction does not use up its reactant; A remains at equilibrium.</li><li>[A] = 0.40 M, [B] = 0.20 M: A cannot stay at its starting value while B forms; B is made from A.</li></ul></details></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="summary" aria-labelledby="h-summary">
+    <p class="chem-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="chem-step-body">To calculate K, substitute equilibrium concentrations (or <a class="gl" href="../notes/ideal-gas-law.html" data-c="partial-pressure">partial pressures</a> for K<sub>p</sub>) into the expression; every equilibrium mixture at one temperature gives the same value. Pure solids and liquids stay out of K even in a <a class="gl" href="../notes/mixture-composition.html" data-c="heterogeneous-mixture">heterogeneous</a> equilibrium. When only starting amounts and one equilibrium value are known, an ICE table writes each change as x times its coefficient, the measured value fixes x, and the equilibrium row goes into K.</div>
+  </section>
+  <section class="chem-part chem-step" id="next" aria-labelledby="h-next">
+    <p class="chem-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="k-magnitude.html">Magnitude of the Equilibrium Constant &rarr;</a></p></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="connections" aria-labelledby="h-connections">
+    <p class="chem-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="chem-step-body"><ul class="chem-links chem-nav-ref"><li><a href="../notes/q-and-k.html">Back: writing K and Q (7.3)</a></li><li><a href="../notes/stoichiometry.html">Back: mole ratios (4.5)</a></li><li><a href="../notes/equilibrium-concentrations.html">Ahead: ICE tables to find concentrations from K (7.7)</a></li></ul></div>
+  </section>
+    <div class="chem-ls-actions chem-nav-ref"><button type="button" class="chem-ls-back">&larr; Previous</button><button type="button" class="chem-ls-go">Continue &rarr;</button><a class="chem-ls-go" hidden href="k-magnitude.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.chem-ls'),p=s&&s.querySelectorAll('.chem-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.chem-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apchem_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="chem-foot xshell">
+  <p class="chem-accuracy-note"><span class="chem-beta chem-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Chemistry teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="chem-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="lesson:calculating-k">Report a problem</button></span></p>
+  <p class="chem-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="chem-page-data">{"topic":"calculating-k","unit":"unit-7","free":false,"prereq":[{"id":"calculating-k-pre-1","type":"single","unit":"unit-7","topic":"calculating-k","q":"What is K\u003csub>c\u003c/sub> for N\u003csub>2\u003c/sub>O\u003csub>4\u003c/sub>(g) ⇌ 2 NO\u003csub>2\u003c/sub>(g)?","options":["[NO\u003csub>2\u003c/sub>]\u003csup>2\u003c/sup> / [N\u003csub>2\u003c/sub>O\u003csub>4\u003c/sub>]","2[NO\u003csub>2\u003c/sub>] / [N\u003csub>2\u003c/sub>O\u003csub>4\u003c/sub>]","[N\u003csub>2\u003c/sub>O\u003csub>4\u003c/sub>] / [NO\u003csub>2\u003c/sub>]\u003csup>2\u003c/sup>","[NO\u003csub>2\u003c/sub>] / [N\u003csub>2\u003c/sub>O\u003csub>4\u003c/sub>]"],"correct":0,"why":{"correct":"Products over reactants, each raised to its coefficient.","options":["","","",""]},"reviewHref":"../notes/q-and-k.html","reviewTitle":"Reaction Quotient and Equilibrium Constant"},{"id":"calculating-k-pre-2","type":"single","unit":"unit-7","topic":"calculating-k","q":"In 2 H\u003csub>2\u003c/sub> + O\u003csub>2\u003c/sub> → 2 H\u003csub>2\u003c/sub>O, if 0.30 mol O\u003csub>2\u003c/sub> reacts, how much H\u003csub>2\u003c/sub> reacts?","options":["0.60 mol","0.30 mol","0.15 mol","0.90 mol"],"correct":0,"why":{"correct":"The mole ratio is 2 H₂ : 1 O₂.","options":["","","",""]},"reviewHref":"../notes/stoichiometry.html","reviewTitle":"Stoichiometry"},{"id":"calculating-k-pre-3","type":"single","unit":"unit-7","topic":"calculating-k","q":"What is the molarity of 0.40 mol of solute in 2.0 L of solution?","options":["0.20 M","0.80 M","5.0 M","0.40 M"],"correct":0,"why":{"correct":"Molarity = moles / liters = 0.40 / 2.0.","options":["","","",""]},"reviewHref":"../notes/solutions.html","reviewTitle":"Solutions and Mixtures"}],"check":[{"id":"chem-calculating-k-1","type":"numeric","unit":"unit-7","topic":"calculating-k","practice":"5.F","level":"apply","diff":1,"stimulus":"calculating-k-s1","q":"Calculate K\u003csub>c\u003c/sub> from the data for trial 1.","numeric":{"answer":50.2,"tol":0.1,"unit":"","sigfigs":3,"mistakes":[{"value":1920,"rel":0.02,"why":"Value: [HI] is squared in K, because its coefficient is 2."},{"value":3830,"rel":0.02,"why":"Value: you doubled [HI] instead of squaring it. Coefficients become exponents."},{"value":0.0199,"rel":0.02,"why":"Value: you inverted K. Products go on top."}]},"why":{"correct":"K\u003csub>c\u003c/sub> = [HI]² / ([H₂][I₂]) = (0.0262)² / (0.0114 × 0.00120) = 50.2."}},{"id":"chem-calculating-k-3","type":"single","unit":"unit-7","topic":"calculating-k","practice":"6.B","level":"analyze","diff":2,"stimulus":"calculating-k-s1","q":"What do the three trials show about K\u003csub>c\u003c/sub>?","options":["K\u003csub>c\u003c/sub> is about the same in each trial.","K\u003csub>c\u003c/sub> is largest in the trial with the most HI.","K\u003csub>c\u003c/sub> depends on which substances were put into the flask first.","K\u003csub>c\u003c/sub> is the same because [H\u003csub>2\u003c/sub>] equals [I\u003csub>2\u003c/sub>] in each trial."],"correct":0,"why":{"correct":"At one temperature, every equilibrium mixture of the same reaction gives the same value of K, whatever amounts it started with. Small differences come from measurement precision.","options":["Right: K comes out at about 50 every time (50.2, 49.9, 50.0), though the mixtures look nothing alike.","K is a ratio. Trial 3 has the most HI but also by far the most I₂, so the ratio [HI]² / ([H₂][I₂]) comes out about the same.","All three started differently, yet K is about the same. At a fixed temperature, K does not depend on the starting mixture.","[H₂] equals [I₂] only in trial 2. K is constant anyway."]}},{"id":"chem-calculating-k-6","type":"numeric","unit":"unit-7","topic":"calculating-k","practice":"5.F","level":"apply","diff":2,"stimulus":"calculating-k-s2","q":"Calculate [NOCl] at equilibrium.","numeric":{"answer":0.21,"tol":0.001,"unit":"M","askUnit":true,"sigfigs":3,"mistakes":[{"value":0.23,"rel":0.02,"why":"Value: NOCl falls by 2x, not x. Two NOCl react for every Cl₂ that forms."},{"value":0.42,"rel":0.02,"why":"Value: that is the amount in moles. Divide by the 2.00 L volume to get molarity."}]},"why":{"correct":"[Cl₂]eq = 0.0400 mol / 2.00 L = 0.0200 M, so x = 0.0200 M. NOCl changes by −2x: 0.250 M − 2(0.0200 M) = 0.210 M."}},{"id":"chem-calculating-k-7","type":"numeric","unit":"unit-7","topic":"calculating-k","practice":"5.F","level":"apply","diff":3,"stimulus":"calculating-k-s2","q":"Use your equilibrium concentrations to calculate K\u003csub>c\u003c/sub> for the decomposition of NOCl at this temperature.","numeric":{"answer":0.000726,"tol":0.000001,"unit":"","sigfigs":3,"mistakes":[{"value":0.00145,"rel":0.02,"why":"Value: you used moles instead of concentrations. Divide each amount by 2.00 L first."},{"value":0.00381,"rel":0.02,"why":"Value: [NO] and [NOCl] must be squared, because both have the coefficient 2."},{"value":0.000151,"rel":0.02,"why":"Value: check the changes. NO rises by 2x and NOCl falls by 2x, where x = [Cl₂]; using x for both gives [NO] = 0.0200 M and [NOCl] = 0.230 M."}]},"why":{"correct":"x = 0.0200 M, so [NO] = 2x = 0.0400 M, [Cl₂] = 0.0200 M, [NOCl] = 0.250 − 0.0400 = 0.210 M. K\u003csub>c\u003c/sub> = [NO]²[Cl₂] / [NOCl]² = (0.0400)²(0.0200) / (0.210)² = 7.26 × 10\u003csup>−4\u003c/sup>."}},{"id":"chem-calculating-k-8","type":"order","unit":"unit-7","topic":"calculating-k","practice":"5.F","level":"apply","diff":2,"stimulus":"calculating-k-s2","q":"Put the steps for finding K\u003csub>c\u003c/sub> in this experiment in order.","options":["Convert the moles of NOCl and of Cl\u003csub>2\u003c/sub> to molarities.","Write the ICE table with the change row as −2x, +2x and +x.","Set x equal to the equilibrium [Cl\u003csub>2\u003c/sub>] and fill in the equilibrium row.","Substitute the equilibrium concentrations into the expression for K\u003csub>c\u003c/sub>."],"why":{"correct":"Concentrations first; then the ICE table links the one measured value to every other species through the coefficients; then substitute."}},{"id":"chem-calculating-k-10","type":"numeric","unit":"unit-7","topic":"calculating-k","practice":"5.F","level":"apply","diff":2,"q":"Solid NH\u003csub>4\u003c/sub>HS is sealed in an evacuated flask: NH\u003csub>4\u003c/sub>HS(s) ⇌ NH\u003csub>3\u003c/sub>(g) + H\u003csub>2\u003c/sub>S(g). At equilibrium, [NH\u003csub>3\u003c/sub>] = [H\u003csub>2\u003c/sub>S] = 0.0150 M, and 2.00 g of solid remains. Calculate K\u003csub>c\u003c/sub>.","numeric":{"answer":0.000225,"tol":0.000001,"unit":"","sigfigs":3,"mistakes":[{"value":0.000112,"rel":0.02,"why":"Value: the solid does not belong in K. Its mass (or amount) never enters the expression."},{"value":0.015,"rel":0.02,"why":"Value: K is the product of both gas concentrations: [NH₃][H₂S]."}]},"why":{"correct":"The solid is left out: K\u003csub>c\u003c/sub> = [NH₃][H₂S] = (0.0150)(0.0150) = 2.25 × 10⁻⁴."}},{"id":"chem-calculating-k-15","type":"single","unit":"unit-7","topic":"calculating-k","practice":"5.F","level":"apply","diff":2,"q":"For A(g) ⇌ 2 B(g), a flask starts with 0.40 M A. At equilibrium [B] = 0.20 M. Which ICE table row is correct for the equilibrium concentrations?","options":["[A] = 0.30 M, [B] = 0.20 M","[A] = 0.20 M, [B] = 0.20 M","[A] = 0.00 M, [B] = 0.20 M","[A] = 0.40 M, [B] = 0.20 M"],"correct":0,"why":{"correct":"Change row: A −x, B +2x. 2x = 0.20 M gives x = 0.10 M. Equilibrium [A] = 0.40 − 0.10 = 0.30 M.","options":["Right: B rose by 2x = 0.20 M, so x = 0.10 M and A fell to 0.40 − 0.10 = 0.30 M.","This subtracts the change in B directly from A. A falls by x, which is half of B’s rise.","A reversible reaction does not use up its reactant; A remains at equilibrium.","A cannot stay at its starting value while B forms; B is made from A."]}}],"stimuli":{"calculating-k-s1":{"kind":"table","title":"Three equilibrium mixtures of H₂, I₂ and HI","html":"\u003cdiv class=\"chem-stim-text\">\u003cp>Three sealed flasks at 450 °C each start with different amounts of H\u003csub>2\u003c/sub>, I\u003csub>2\u003c/sub> and HI and are left to reach equilibrium: H\u003csub>2\u003c/sub>(g) + I\u003csub>2\u003c/sub>(g) ⇌ 2 HI(g). The table gives the equilibrium concentrations.\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Equilibrium concentrations at 450 °C\">\u003ctable class=\"chem-data\">\u003ccaption>Equilibrium concentrations at 450 °C\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Trial\u003c/th>\u003cth scope=\"col\">[H\u003csub>2\u003c/sub>] (M)\u003c/th>\u003cth scope=\"col\">[I\u003csub>2\u003c/sub>] (M)\u003c/th>\u003cth scope=\"col\">[HI] (M)\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">1\u003c/th>\u003ctd>0.0114\u003c/td>\u003ctd>0.00120\u003c/td>\u003ctd>0.0262\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">2\u003c/th>\u003ctd>0.00456\u003c/td>\u003ctd>0.00456\u003c/td>\u003ctd>0.0322\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">3\u003c/th>\u003ctd>0.00353\u003c/td>\u003ctd>0.0148\u003c/td>\u003ctd>0.0511\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"},"calculating-k-s2":{"kind":"setup","title":"Nitrosyl chloride decomposing","html":"\u003cdiv class=\"chem-stim-text\">\u003cp>A student puts 0.500 mol of NOCl gas into an empty, sealed 2.00 L flask and holds it at a constant temperature: 2 NOCl(g) ⇌ 2 NO(g) + Cl\u003csub>2\u003c/sub>(g). When equilibrium is reached, the flask contains 0.0400 mol of Cl\u003csub>2\u003c/sub>.\u003c/p>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApChemSection = 'learn'; window.ApChemBase = '../';</script>
+<script src="../assets/chem-curriculum.js" defer></script>
+<script src="../assets/chem-core.js" defer></script>
+<script src="../assets/chem-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/chem-questions.js" defer></script>
+<script src="../assets/chem-lesson.js" defer></script>
+</body>
+</html>

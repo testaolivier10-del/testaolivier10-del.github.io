@@ -203,20 +203,20 @@
    "stimulus": "solutions-s2",
    "q": "If the solution in beaker 1 is 0.40 M, what is the molarity in beaker 2?",
    "options": [
+    "0.10 M",
     "0.20 M",
-    "0.80 M",
     "0.40 M",
-    "0.10 M"
+    "0.80 M"
    ],
-   "correct": 0,
+   "correct": 1,
    "fixed": true,
    "why": {
     "correct": "M₂ = M₁V₁/V₂ = 0.40 M × 100 mL / 200 mL = 0.20 M. Same moles, twice the volume.",
     "options": [
+     "This quarters the concentration; the volume only doubled.",
      "Right: half the concentration.",
-     "This doubles the concentration; adding water lowers it.",
      "This ignores the change in volume.",
-     "This quarters the concentration; the volume only doubled."
+     "This doubles the concentration; adding water lowers it."
     ]
    }
   },
