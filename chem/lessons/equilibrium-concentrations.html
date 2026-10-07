@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculating Equilibrium Concentrations — AP® Chemistry</title>
+<meta name="description" content="Calculating Equilibrium Concentrations: a chemistry lesson taught from scratch, step by step, with exam-style practice questions.">
+<link rel="canonical" href="https://levlprep.com/chem/lessons/equilibrium-concentrations.html">
+<meta property="og:title" content="Calculating Equilibrium Concentrations — AP® Chemistry">
+<meta property="og:description" content="Calculating Equilibrium Concentrations: a chemistry lesson taught from scratch, step by step, with exam-style practice questions.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/chem/lessons/equilibrium-concentrations.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/chem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/chem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/chem/lessons/equilibrium-concentrations.html#lesson",
+      "name": "Calculating Equilibrium Concentrations",
+      "url": "https://levlprep.com/chem/lessons/equilibrium-concentrations.html",
+      "description": "Calculating Equilibrium Concentrations: a chemistry lesson taught from scratch, step by step, with exam-style practice questions.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".chem-ls-card"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "small-x approximation"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/chem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Chemistry",
+          "item": "https://levlprep.com/chem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Equilibrium",
+          "item": "https://levlprep.com/chem/units/unit-7.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Calculating Equilibrium Concentrations",
+          "item": "https://levlprep.com/chem/lessons/equilibrium-concentrations.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="chem" data-topic="equilibrium-concentrations" data-unit="unit-7">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="chem-crumb chem-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-7.html">Equilibrium</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Calculating Equilibrium Concentrations</span></nav></div>
+<div class="xshell chem-ls chem-stepped">
+  <aside class="chem-ls-rail chem-nav-ref" aria-label="Lesson parts">
+    <p class="chem-ls-k">Unit 7 · Equilibrium</p>
+    <p class="chem-ls-links"><a href="../units/unit-7.html">&larr; Back to the unit</a><a href="../notes/equilibrium-concentrations.html">Read the notes</a></p>
+    <div class="chem-ls-prog"><div class="chem-ls-track"><div class="chem-ls-fill"></div></div><span class="chem-ls-count">Step 1 / 11</span></div>
+    <ol class="chem-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="chem-ls-main chem-lesson">
+  <header class="chem-ls-hero">
+    <div class="eyebrow">Unit 7 · Topic 7.7 <span class="chem-beta chem-nav-ref">Beta</span></div>
+    <h1>Calculating Equilibrium Concentrations</h1>
+    <p class="lede">To find equilibrium concentrations from K, compare Q with K to get the direction, build an ICE table with changes of ±x times each coefficient, substitute the Equilibrium row into K and solve for x.</p>
+    <p class="chem-tags chem-nav-ref"><span class="chem-tag">Practice 5: Mathematical Routines</span></p>
+    <div class="chem-share chem-nav-ref" role="group" aria-label="Share or print this lesson"><a class="chem-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fchem%2Flessons%2Fequilibrium-concentrations.html&amp;title=Calculating%20Equilibrium%20Concentrations%3A%20chemistry%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="chem-share-btn" data-copy="https://levlprep.com/chem/lessons/equilibrium-concentrations.html">Copy link</button><button type="button" class="chem-share-btn" data-print>Print</button></div>
+    <p class="chem-small chem-nav-ref"><a href="../practice.html?topic=equilibrium-concentrations">Question set for this topic</a></p>
+  </header>
+  <div class="chem-ls-card">
+  <section class="chem-part chem-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="chem-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="chem-step-body chem-hook">A factory making ammonia needs to know how much product it will get from a tank of nitrogen and hydrogen before it builds the reactor. Nobody can wait for the <a class="gl" href="../notes/phases-of-matter.html" data-c="states-of-matter">gases</a> to settle and measure. Instead, engineers take the <a class="gl" href="../notes/q-and-k.html" data-c="equilibrium-constant">equilibrium constant</a>, the starting amounts and a three-row table, and calculate exactly what the <a class="gl" href="../notes/mixture-composition.html" data-c="mixture">mixture</a> will hold at equilibrium.</div>
+  </section>
+  <section class="chem-part chem-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="chem-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Earlier topics"><ul class="chem-links"><li><a href="../notes/calculating-k.html">Calculating the Equilibrium Constant</a></li></ul></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="chem-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="chem-step-body"><div class="chem-qs" data-set="prereq"><div class="chem-q" data-qid="equilibrium-concentrations-pre-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> In an ICE table for A ⇌ 2 B, if A changes by −x, what is the change in B?</p><ol class="chem-opts"><li>+2x</li><li>+x</li><li>−2x</li><li>+x/2</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Changes follow the coefficients: 1 A used makes 2 B.</p><ul><li><b>Correct:</b> +2x: </li><li>+x: </li><li>−2x: </li><li>+x/2: </li></ul></details></div><div class="chem-q" data-qid="equilibrium-concentrations-pre-2"><p class="chem-q-stem"><span class="chem-q-n">2.</span> A mixture has Q &gt; K. Which way does the net reaction go?</p><ol class="chem-opts"><li>In reverse, toward reactants</li><li>Forward, toward products</li><li>Neither; it is at equilibrium</li><li>It depends on the temperature only</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Q > K means too much product, so the reaction runs in reverse until Q = K.</p><ul><li><b>Correct:</b> In reverse, toward reactants: </li><li>Forward, toward products: </li><li>Neither; it is at equilibrium: </li><li>It depends on the temperature only: </li></ul></details></div><div class="chem-q" data-qid="equilibrium-concentrations-pre-3"><p class="chem-q-stem"><span class="chem-q-n">3.</span> For a reaction with K = 1 × 10<sup>−8</sup>, starting from reactants, how much reactant is left at equilibrium?</p><ol class="chem-opts"><li>Almost all of it</li><li>About half</li><li>Almost none</li><li>Exactly none</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>A tiny K means a reactant-favored equilibrium: very little reacts.</p><ul><li><b>Correct:</b> Almost all of it: </li><li>About half: </li><li>Almost none: </li><li>Exactly none: </li></ul></details></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="figure" aria-labelledby="h-figure">
+    <p class="chem-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="chem-step-body"><figure class="chem-figure chem-lesson-fig"><div class="chem-figimg" data-fig="ice-solve-flow"><img src="../figures/ice-solve-flow.svg" alt="A flow chart. Step 1, compare Q with K to find the direction. Step 2, write an ICE table with each change equal to plus or minus x times the coefficient. Step 3, substitute the equilibrium row into the K expression. Then choose a way to solve: if both sides are perfect squares, take the square root; if K is small compared with the starting concentration, drop x from the initial minus x terms; otherwise use the quadratic formula. Step 4, check: x should be under 5% of the starting concentration if the approximation was used, and the answers should give Q = K." width="760" height="330" loading="lazy" decoding="async"></div><figcaption>Direction, <a class="gl" href="../notes/calculating-k.html" data-c="ice-table">ICE table</a>, substitute, then solve by <a class="gl" href="../notes/math-exponents.html" data-c="exponent-rules">square root</a>, <span class="gl" tabindex="0" data-c="small-x">small-x approximation</span> or the quadratic formula, and check. <span class="chem-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="chem-part chem-step" id="chain" aria-labelledby="h-chain">
+    <p class="chem-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="chem-step-body"><ol class="chem-chain"><li><span class="chem-cause">Q is compared with K for the starting mixture</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">you know which side is used up and which forms</span></li><li><span class="chem-cause">The ICE table writes each change as ±x times a coefficient</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">every <a class="gl" href="../notes/phases-of-matter.html" data-c="dynamic-equilibrium">equilibrium</a> concentration is written with one unknown</span></li><li><span class="chem-cause">The Equilibrium row is substituted into the K expression</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">you get one equation in x</span></li><li><span class="chem-cause">K is small compared with the starting concentration</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">x can be dropped from (initial − x), and a 5% check confirms it</span></li><li><span class="chem-cause">x is solved and checked</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">every equilibrium concentration follows from Initial + Change</span></li></ol></div>
+  </section>
+  <section class="chem-part chem-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="chem-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="chem-step-body"><ul class="chem-ideas"><li>Always find the direction first by comparing Q with K; it sets the signs in the Change row.</li><li>Changes are ±x × coefficient. Equilibrium = Initial + Change. Use molarities.</li><li>Perfect square: take the square root of both sides. Small K: drop x only from (initial − x), never x standing alone.</li><li>Check the <b>small-x approximation</b>: the change must be under about 5% of the starting value; otherwise solve exactly.</li></ul></div>
+  </section>
+  <section class="chem-part chem-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="chem-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="chem-step-body chem-misconception"><p class="chem-wrong"><b>The wrong idea:</b> If K is small, x is small, so every x in the equation can be set to zero.</p><p class="chem-right"><b>What actually happens:</b> Only x that is added to or subtracted from a larger number can be dropped: 0.50 − 2x ≈ 0.50. The x terms standing alone on top of the expression stay, or there is nothing left to solve. Then check the 5% rule.</p></div>
+  </section>
+  <section class="chem-part chem-step" id="check" aria-labelledby="h-check">
+    <p class="chem-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="chem-step-body"><p class="chem-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="chem-qs" data-set="check"><div class="chem-set"><section class="chem-stim" data-stim="equilibrium-concentrations-s1" aria-labelledby="stim-equilibrium-concentrations-s1"><p class="chem-stim-k">Data table</p><h3 id="stim-equilibrium-concentrations-s1">An ICE table for ammonia</h3><div class="chem-stim-text"><p>A sealed 1.00 L vessel starts with 0.500 M N<sub>2</sub> and 0.800 M H<sub>2</sub> at a high temperature: N<sub>2</sub>(g) + 3 H<sub>2</sub>(g) ⇌ 2 NH<sub>3</sub>(g). At equilibrium, [NH<sub>3</sub>] = 0.150 M. A student starts an ICE table.</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Partly completed ICE table (concentrations in M)"><table class="chem-data"><caption>Partly completed ICE table (concentrations in M)</caption><thead><tr><th scope="col"></th><th scope="col">[N<sub>2</sub>]</th><th scope="col">[H<sub>2</sub>]</th><th scope="col">[NH<sub>3</sub>]</th></tr></thead><tbody><tr><th scope="row">Initial</th><td>0.500</td><td>0.800</td><td>0</td></tr><tr><th scope="row">Change</th><td>−x</td><td>?</td><td>+2x</td></tr><tr><th scope="row">Equilibrium</th><td>0.500 − x</td><td>?</td><td>0.150</td></tr></tbody></table></div></section><div class="chem-q" data-qid="chem-equilibrium-concentrations-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> What belongs in the Change row for H<sub>2</sub>?</p><ol class="chem-opts"><li>−3x</li><li>−x</li><li>+3x</li><li>−x/3</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>The Change row is x times each coefficient, negative for species used up. H₂ has coefficient 3: −3x.</p><ul><li><b>Correct:</b> −3x: Right: three H₂ react for every N₂, so H₂ falls three times as fast.</li><li>−x: This ignores the coefficient 3 on H₂.</li><li>+3x: H₂ is a reactant in a net forward reaction, so it is used up: the sign is negative.</li><li>−x/3: The coefficient multiplies x; it does not divide it.</li></ul></details></div><div class="chem-q" data-qid="chem-equilibrium-concentrations-2"><p class="chem-q-stem"><span class="chem-q-n">2.</span> Calculate [H<sub>2</sub>] at equilibrium.</p><p class="chem-small">Type a number and its unit.</p><details class="chem-q-key"><summary>Show the answer</summary><p>2x = 0.150 M, so x = 0.0750 M. [H₂] = 0.800 − 3(0.0750) = 0.800 − 0.225 = 0.575 M.</p><ul><li>Answer: 0.575 M</li></ul></details></div></div><div class="chem-set"><section class="chem-stim" data-stim="equilibrium-concentrations-s2" aria-labelledby="stim-equilibrium-concentrations-s2"><p class="chem-stim-k">Experimental setup</p><h3 id="stim-equilibrium-concentrations-s2">When x is not small</h3><div class="chem-stim-text"><p>PCl<sub>5</sub> decomposes on heating: PCl<sub>5</sub>(g) ⇌ PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g), K<sub>c</sub> = 0.040 at a certain temperature. A sealed flask starts with 0.200 M PCl<sub>5</sub> and nothing else. A student writes x<sup>2</sup> / (0.200 − x) = 0.040, assumes x is small compared with 0.200, and gets x = 0.089 M.</p></div></section><div class="chem-q" data-qid="chem-equilibrium-concentrations-5"><p class="chem-q-stem"><span class="chem-q-n">3.</span> Is the student’s small-x approximation valid?</p><ol class="chem-opts"><li>No: 0.089 M is about 45% of 0.200 M, far more than 5%.</li><li>Yes: x comes out less than 0.200 M.</li><li>Yes: K = 0.040 is less than 1.</li><li>No: the approximation is not used when the products start at zero.</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Check the approximation: x / [initial] × 100% = 0.089 / 0.200 × 100% ≈ 45%. Over about 5%, x cannot be dropped and the equation must be solved exactly.</p><ul><li><b>Correct:</b> No: 0.089 M is about 45% of 0.200 M, far more than 5%.: Right: the approximation is only safe when x is a few percent of the starting concentration or less.</li><li>Yes: x comes out less than 0.200 M.: Being smaller than 0.200 is not enough; x must be negligible next to it (under about 5%).</li><li>Yes: K = 0.040 is less than 1.: K < 1 alone does not guarantee x is small. Here K is only moderately small compared with the concentration.</li><li>No: the approximation is not used when the products start at zero.: Starting with no products is the usual case for the approximation. It fails here because K is not small enough.</li></ul></details></div><div class="chem-q" data-qid="chem-equilibrium-concentrations-6"><p class="chem-q-stem"><span class="chem-q-n">4.</span> Solve x<sup>2</sup> / (0.200 − x) = 0.040 exactly (with the quadratic formula) and give [Cl<sub>2</sub>] at equilibrium.</p><p class="chem-small">Type a number and its unit.</p><details class="chem-q-key"><summary>Show the answer</summary><p>Rearrange: x² = 0.040(0.200 − x), so x² + 0.040x − 0.0080 = 0. x = [−0.040 + √((0.040)² + 4(0.0080))] / 2 = (−0.040 + √0.0336) / 2 = 0.0717 M ≈ 0.072 M.</p><ul><li>Answer: 0.072 M</li></ul></details></div></div><div class="chem-q" data-qid="chem-equilibrium-concentrations-13"><p class="chem-q-stem"><span class="chem-q-n">5.</span> For H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g), K<sub>c</sub> = 50.0 at 450 °C. A flask starts with 0.100 M H<sub>2</sub> and 0.100 M I<sub>2</sub>. Calculate [HI] at equilibrium.</p><p class="chem-small">Type a number and its unit.</p><details class="chem-q-key"><summary>Show the answer</summary><p>(2x)² / (0.100 − x)² = 50.0. Both sides are perfect squares: 2x / (0.100 − x) = √50.0 = 7.071. So 2x = 0.7071 − 7.071x, 9.071x = 0.7071, x = 0.0780 M. [HI] = 2x = 0.156 M.</p><ul><li>Answer: 0.156 M</li></ul></details></div><div class="chem-q" data-qid="chem-equilibrium-concentrations-14"><p class="chem-q-stem"><span class="chem-q-n">6.</span> For 2 NOCl(g) ⇌ 2 NO(g) + Cl<sub>2</sub>(g), K<sub>c</sub> = 1.6 × 10<sup>−5</sup>. A flask starts with 0.50 M NOCl. Using the small-x approximation, calculate [Cl<sub>2</sub>] at equilibrium.</p><p class="chem-small">Type a number and its unit.</p><details class="chem-q-key"><summary>Show the answer</summary><p>(2x)²(x) / (0.50)² = 1.6 × 10⁻⁵ → 4x³ = 4.0 × 10⁻⁶ → x³ = 1.0 × 10⁻⁶ → x = 0.010 M. Check: 2x = 0.020 M is 4% of 0.50 M, under 5%. [Cl₂] = 0.010 M.</p><ul><li>Answer: 0.010 M</li></ul></details></div><div class="chem-q" data-qid="chem-equilibrium-concentrations-15"><p class="chem-q-stem"><span class="chem-q-n">7.</span> For CO(g) + H<sub>2</sub>O(g) ⇌ CO<sub>2</sub>(g) + H<sub>2</sub>(g), K<sub>c</sub> = 1.56. A flask starts with 0.0500 M CO, 0.0500 M H<sub>2</sub>O, 0.200 M CO<sub>2</sub> and 0.200 M H<sub>2</sub>. How should the Change row be written?</p><ol class="chem-opts"><li>+x for CO, H<sub>2</sub>O; −x for CO<sub>2</sub>, H<sub>2</sub></li><li>−x for CO, H<sub>2</sub>O; +x for CO<sub>2</sub>, H<sub>2</sub></li><li>−x for each of the four species</li><li>0 for each species, since the four start at nonzero values</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Compare Q with K before writing the Change row. Q > K means net reverse: the reactant side gains +x and the product side loses −x.</p><ul><li><b>Correct:</b> +x for CO, H<sub>2</sub>O; −x for CO<sub>2</sub>, H<sub>2</sub>: Right: Q = (0.200)² / (0.0500)² = 16.0 > K, so the net reaction goes in reverse: reactants form, products are used.</li><li>−x for CO, H<sub>2</sub>O; +x for CO<sub>2</sub>, H<sub>2</sub>: This assumes a forward reaction. Check Q first: Q = 16.0 is greater than K, so the reaction runs in reverse.</li><li>−x for each of the four species: Every species cannot decrease; atoms must go somewhere. One side forms while the other is used.</li><li>0 for each species, since the four start at nonzero values: Having all species present does not mean equilibrium. Q = 16.0 ≠ K = 1.56.</li></ul></details></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="summary" aria-labelledby="h-summary">
+    <p class="chem-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="chem-step-body">To find <a class="gl" href="../notes/equilibrium-intro.html" data-c="chemical-equilibrium">equilibrium concentrations</a> from K, compare Q with K to get the direction, build an ICE table with changes of ±x times each coefficient, substitute the Equilibrium row into K and solve for x. A perfect-square expression is solved by a square root. When K is small compared with the starting concentration, x can be dropped from (initial − x) but never set to zero elsewhere, and the result must pass the 5% check; otherwise use the quadratic formula.</div>
+  </section>
+  <section class="chem-part chem-step" id="next" aria-labelledby="h-next">
+    <p class="chem-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="equilibrium-representations.html">Representations of Equilibrium &rarr;</a></p></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="connections" aria-labelledby="h-connections">
+    <p class="chem-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="chem-step-body"><ul class="chem-links chem-nav-ref"><li><a href="../notes/calculating-k.html">Back: ICE tables to find K (7.4)</a></li><li><a href="../notes/k-magnitude.html">Back: why a small K means a small change (7.5)</a></li><li><a href="../notes/equilibrium-representations.html">Next: particle diagrams and graphs of equilibrium (7.8)</a></li></ul></div>
+  </section>
+    <div class="chem-ls-actions chem-nav-ref"><button type="button" class="chem-ls-back">&larr; Previous</button><button type="button" class="chem-ls-go">Continue &rarr;</button><a class="chem-ls-go" hidden href="equilibrium-representations.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.chem-ls'),p=s&&s.querySelectorAll('.chem-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.chem-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apchem_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="chem-foot xshell">
+  <p class="chem-accuracy-note"><span class="chem-beta chem-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Chemistry teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="chem-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="lesson:equilibrium-concentrations">Report a problem</button></span></p>
+  <p class="chem-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="chem-page-data">{"topic":"equilibrium-concentrations","unit":"unit-7","free":false,"prereq":[{"id":"equilibrium-concentrations-pre-1","type":"single","unit":"unit-7","topic":"equilibrium-concentrations","q":"In an ICE table for A ⇌ 2 B, if A changes by −x, what is the change in B?","options":["+2x","+x","−2x","+x/2"],"correct":0,"why":{"correct":"Changes follow the coefficients: 1 A used makes 2 B.","options":["","","",""]},"reviewHref":"../notes/calculating-k.html","reviewTitle":"Calculating the Equilibrium Constant"},{"id":"equilibrium-concentrations-pre-2","type":"single","unit":"unit-7","topic":"equilibrium-concentrations","q":"A mixture has Q &gt; K. Which way does the net reaction go?","options":["In reverse, toward reactants","Forward, toward products","Neither; it is at equilibrium","It depends on the temperature only"],"correct":0,"why":{"correct":"Q > K means too much product, so the reaction runs in reverse until Q = K.","options":["","","",""]},"reviewHref":"../notes/q-and-k.html","reviewTitle":"Reaction Quotient and Equilibrium Constant"},{"id":"equilibrium-concentrations-pre-3","type":"single","unit":"unit-7","topic":"equilibrium-concentrations","q":"For a reaction with K = 1 × 10\u003csup>−8\u003c/sup>, starting from reactants, how much reactant is left at equilibrium?","options":["Almost all of it","About half","Almost none","Exactly none"],"correct":0,"why":{"correct":"A tiny K means a reactant-favored equilibrium: very little reacts.","options":["","","",""]},"reviewHref":"../notes/k-magnitude.html","reviewTitle":"Magnitude of the Equilibrium Constant"}],"check":[{"id":"chem-equilibrium-concentrations-1","type":"single","unit":"unit-7","topic":"equilibrium-concentrations","practice":"5.E","level":"apply","diff":1,"stimulus":"equilibrium-concentrations-s1","q":"What belongs in the Change row for H\u003csub>2\u003c/sub>?","options":["−3x","−x","+3x","−x/3"],"correct":0,"why":{"correct":"The Change row is x times each coefficient, negative for species used up. H₂ has coefficient 3: −3x.","options":["Right: three H₂ react for every N₂, so H₂ falls three times as fast.","This ignores the coefficient 3 on H₂.","H₂ is a reactant in a net forward reaction, so it is used up: the sign is negative.","The coefficient multiplies x; it does not divide it."]}},{"id":"chem-equilibrium-concentrations-2","type":"numeric","unit":"unit-7","topic":"equilibrium-concentrations","practice":"5.F","level":"apply","diff":2,"stimulus":"equilibrium-concentrations-s1","q":"Calculate [H\u003csub>2\u003c/sub>] at equilibrium.","numeric":{"answer":0.575,"tol":0.001,"unit":"M","askUnit":true,"sigfigs":3,"mistakes":[{"value":0.65,"rel":0.02,"why":"Value: you subtracted [NH₃] directly. 2x = 0.150 M gives x = 0.0750 M, and H₂ falls by 3x."},{"value":0.725,"rel":0.02,"why":"Value: H₂ falls by 3x, not x. Its coefficient is 3."},{"value":0.35,"rel":0.02,"why":"Value: x is half of [NH₃], because NH₃ rises by 2x. Use x = 0.0750 M."}]},"why":{"correct":"2x = 0.150 M, so x = 0.0750 M. [H₂] = 0.800 − 3(0.0750) = 0.800 − 0.225 = 0.575 M."}},{"id":"chem-equilibrium-concentrations-5","type":"single","unit":"unit-7","topic":"equilibrium-concentrations","practice":"5.A","level":"analyze","diff":2,"stimulus":"equilibrium-concentrations-s2","q":"Is the student’s small-x approximation valid?","options":["No: 0.089 M is about 45% of 0.200 M, far more than 5%.","Yes: x comes out less than 0.200 M.","Yes: K = 0.040 is less than 1.","No: the approximation is not used when the products start at zero."],"correct":0,"why":{"correct":"Check the approximation: x / [initial] × 100% = 0.089 / 0.200 × 100% ≈ 45%. Over about 5%, x cannot be dropped and the equation must be solved exactly.","options":["Right: the approximation is only safe when x is a few percent of the starting concentration or less.","Being smaller than 0.200 is not enough; x must be negligible next to it (under about 5%).","K \u003c 1 alone does not guarantee x is small. Here K is only moderately small compared with the concentration.","Starting with no products is the usual case for the approximation. It fails here because K is not small enough."]}},{"id":"chem-equilibrium-concentrations-6","type":"numeric","unit":"unit-7","topic":"equilibrium-concentrations","practice":"5.F","level":"apply","diff":3,"stimulus":"equilibrium-concentrations-s2","q":"Solve x\u003csup>2\u003c/sup> / (0.200 − x) = 0.040 exactly (with the quadratic formula) and give [Cl\u003csub>2\u003c/sub>] at equilibrium.","numeric":{"answer":0.072,"tol":0.001,"unit":"M","askUnit":true,"sigfigs":2,"mistakes":[{"value":0.0894,"rel":0.02,"why":"Value: that is the small-x answer, which is invalid here (45% of 0.200). Solve x² + 0.040x − 0.0080 = 0 exactly."},{"value":-0.112,"rel":0.02,"why":"Value: you took the negative root. A concentration cannot be negative; use the positive root."}]},"why":{"correct":"Rearrange: x² = 0.040(0.200 − x), so x² + 0.040x − 0.0080 = 0. x = [−0.040 + √((0.040)² + 4(0.0080))] / 2 = (−0.040 + √0.0336) / 2 = 0.0717 M ≈ 0.072 M."}},{"id":"chem-equilibrium-concentrations-13","type":"numeric","unit":"unit-7","topic":"equilibrium-concentrations","practice":"5.F","level":"apply","diff":2,"q":"For H\u003csub>2\u003c/sub>(g) + I\u003csub>2\u003c/sub>(g) ⇌ 2 HI(g), K\u003csub>c\u003c/sub> = 50.0 at 450 °C. A flask starts with 0.100 M H\u003csub>2\u003c/sub> and 0.100 M I\u003csub>2\u003c/sub>. Calculate [HI] at equilibrium.","numeric":{"answer":0.156,"tol":0.001,"unit":"M","askUnit":true,"sigfigs":3,"mistakes":[{"value":0.078,"rel":0.02,"why":"Value: that is x. [HI] = 2x."},{"value":0.707,"rel":0.02,"why":"Value: you dropped x from 0.100 − x. K is not small here, so take the square root of both sides instead: 2x / (0.100 − x) = √50.0."},{"value":0.022,"rel":0.02,"why":"Value: that is [H₂] (0.100 − x), not [HI]."}]},"why":{"correct":"(2x)² / (0.100 − x)² = 50.0. Both sides are perfect squares: 2x / (0.100 − x) = √50.0 = 7.071. So 2x = 0.7071 − 7.071x, 9.071x = 0.7071, x = 0.0780 M. [HI] = 2x = 0.156 M."}},{"id":"chem-equilibrium-concentrations-14","type":"numeric","unit":"unit-7","topic":"equilibrium-concentrations","practice":"5.F","level":"apply","diff":2,"q":"For 2 NOCl(g) ⇌ 2 NO(g) + Cl\u003csub>2\u003c/sub>(g), K\u003csub>c\u003c/sub> = 1.6 × 10\u003csup>−5\u003c/sup>. A flask starts with 0.50 M NOCl. Using the small-x approximation, calculate [Cl\u003csub>2\u003c/sub>] at equilibrium.","numeric":{"answer":0.01,"tol":0.001,"unit":"M","askUnit":true,"sigfigs":2,"mistakes":[{"value":0.0159,"rel":0.02,"why":"Value: (2x)²x = 4x³. Divide by 4 before taking the cube root."},{"value":0.02,"rel":0.02,"why":"Value: that is [NO] = 2x. [Cl₂] = x."},{"value":0.001,"rel":0.02,"why":"Value: the top is 4x³, so take a cube root."}]},"why":{"correct":"(2x)²(x) / (0.50)² = 1.6 × 10⁻⁵ → 4x³ = 4.0 × 10⁻⁶ → x³ = 1.0 × 10⁻⁶ → x = 0.010 M. Check: 2x = 0.020 M is 4% of 0.50 M, under 5%. [Cl₂] = 0.010 M."}},{"id":"chem-equilibrium-concentrations-15","type":"single","unit":"unit-7","topic":"equilibrium-concentrations","practice":"6.D","level":"analyze","diff":2,"q":"For CO(g) + H\u003csub>2\u003c/sub>O(g) ⇌ CO\u003csub>2\u003c/sub>(g) + H\u003csub>2\u003c/sub>(g), K\u003csub>c\u003c/sub> = 1.56. A flask starts with 0.0500 M CO, 0.0500 M H\u003csub>2\u003c/sub>O, 0.200 M CO\u003csub>2\u003c/sub> and 0.200 M H\u003csub>2\u003c/sub>. How should the Change row be written?","options":["+x for CO, H\u003csub>2\u003c/sub>O; −x for CO\u003csub>2\u003c/sub>, H\u003csub>2\u003c/sub>","−x for CO, H\u003csub>2\u003c/sub>O; +x for CO\u003csub>2\u003c/sub>, H\u003csub>2\u003c/sub>","−x for each of the four species","0 for each species, since the four start at nonzero values"],"correct":0,"why":{"correct":"Compare Q with K before writing the Change row. Q > K means net reverse: the reactant side gains +x and the product side loses −x.","options":["Right: Q = (0.200)² / (0.0500)² = 16.0 > K, so the net reaction goes in reverse: reactants form, products are used.","This assumes a forward reaction. Check Q first: Q = 16.0 is greater than K, so the reaction runs in reverse.","Every species cannot decrease; atoms must go somewhere. One side forms while the other is used.","Having all species present does not mean equilibrium. Q = 16.0 ≠ K = 1.56."]}}],"stimuli":{"equilibrium-concentrations-s1":{"kind":"table","title":"An ICE table for ammonia","html":"\u003cdiv class=\"chem-stim-text\">\u003cp>A sealed 1.00 L vessel starts with 0.500 M N\u003csub>2\u003c/sub> and 0.800 M H\u003csub>2\u003c/sub> at a high temperature: N\u003csub>2\u003c/sub>(g) + 3 H\u003csub>2\u003c/sub>(g) ⇌ 2 NH\u003csub>3\u003c/sub>(g). At equilibrium, [NH\u003csub>3\u003c/sub>] = 0.150 M. A student starts an ICE table.\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Partly completed ICE table (concentrations in M)\">\u003ctable class=\"chem-data\">\u003ccaption>Partly completed ICE table (concentrations in M)\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">\u003c/th>\u003cth scope=\"col\">[N\u003csub>2\u003c/sub>]\u003c/th>\u003cth scope=\"col\">[H\u003csub>2\u003c/sub>]\u003c/th>\u003cth scope=\"col\">[NH\u003csub>3\u003c/sub>]\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">Initial\u003c/th>\u003ctd>0.500\u003c/td>\u003ctd>0.800\u003c/td>\u003ctd>0\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Change\u003c/th>\u003ctd>−x\u003c/td>\u003ctd>?\u003c/td>\u003ctd>+2x\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Equilibrium\u003c/th>\u003ctd>0.500 − x\u003c/td>\u003ctd>?\u003c/td>\u003ctd>0.150\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"},"equilibrium-concentrations-s2":{"kind":"setup","title":"When x is not small","html":"\u003cdiv class=\"chem-stim-text\">\u003cp>PCl\u003csub>5\u003c/sub> decomposes on heating: PCl\u003csub>5\u003c/sub>(g) ⇌ PCl\u003csub>3\u003c/sub>(g) + Cl\u003csub>2\u003c/sub>(g), K\u003csub>c\u003c/sub> = 0.040 at a certain temperature. A sealed flask starts with 0.200 M PCl\u003csub>5\u003c/sub> and nothing else. A student writes x\u003csup>2\u003c/sup> / (0.200 − x) = 0.040, assumes x is small compared with 0.200, and gets x = 0.089 M.\u003c/p>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApChemSection = 'learn'; window.ApChemBase = '../';</script>
+<script src="../assets/chem-curriculum.js" defer></script>
+<script src="../assets/chem-core.js" defer></script>
+<script src="../assets/chem-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/chem-questions.js" defer></script>
+<script src="../assets/chem-lesson.js" defer></script>
+</body>
+</html>

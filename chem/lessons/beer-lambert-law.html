@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beer-Lambert Law — AP® Chemistry Lesson | LevlPrep</title>
+<meta name="description" content="A spectrophotometer measures how much light of one wavelength a solution absorbs.">
+<link rel="canonical" href="https://levlprep.com/chem/lessons/beer-lambert-law.html">
+<meta property="og:title" content="Beer-Lambert Law — AP® Chemistry Lesson | LevlPrep">
+<meta property="og:description" content="A spectrophotometer measures how much light of one wavelength a solution absorbs.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/chem/lessons/beer-lambert-law.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/chem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/chem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/chem/lessons/beer-lambert-law.html#lesson",
+      "name": "Beer-Lambert Law",
+      "url": "https://levlprep.com/chem/lessons/beer-lambert-law.html",
+      "description": "A spectrophotometer measures how much light of one wavelength a solution absorbs.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".chem-ls-card"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "absorbance"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Beer-Lambert law"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "spectrophotometer"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/chem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Chemistry",
+          "item": "https://levlprep.com/chem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Properties of Substances and Mixtures",
+          "item": "https://levlprep.com/chem/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Beer-Lambert Law",
+          "item": "https://levlprep.com/chem/lessons/beer-lambert-law.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="chem" data-topic="beer-lambert-law" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="chem-crumb chem-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Properties of Substances and Mixtures</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Beer-Lambert Law</span></nav></div>
+<div class="xshell chem-ls chem-stepped">
+  <aside class="chem-ls-rail chem-nav-ref" aria-label="Lesson parts">
+    <p class="chem-ls-k">Unit 3 · Properties of Substances and Mixtures</p>
+    <p class="chem-ls-links"><a href="../units/unit-3.html">&larr; Back to the unit</a><a href="../notes/beer-lambert-law.html">Read the notes</a></p>
+    <div class="chem-ls-prog"><div class="chem-ls-track"><div class="chem-ls-fill"></div></div><span class="chem-ls-count">Step 1 / 11</span></div>
+    <ol class="chem-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="chem-ls-main chem-lesson">
+  <header class="chem-ls-hero">
+    <div class="eyebrow">Unit 3 · Topic 3.13 <span class="chem-beta chem-nav-ref">Beta</span></div>
+    <h1>Beer-Lambert Law</h1>
+    <p class="lede">A spectrophotometer measures how much light of one wavelength a solution absorbs.</p>
+    <p class="chem-tags chem-nav-ref"><span class="chem-tag">Practice 2: Question and Method</span><span class="chem-tag">Practice 5: Mathematical Routines</span></p>
+    <div class="chem-share chem-nav-ref" role="group" aria-label="Share or print this lesson"><a class="chem-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fchem%2Flessons%2Fbeer-lambert-law.html&amp;title=Beer-Lambert%20Law%3A%20chemistry%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="chem-share-btn" data-copy="https://levlprep.com/chem/lessons/beer-lambert-law.html">Copy link</button><button type="button" class="chem-share-btn" data-print>Print</button></div>
+    <p class="chem-small chem-nav-ref"><a href="../practice.html?topic=beer-lambert-law">Question set for this topic</a></p>
+  </header>
+  <div class="chem-ls-card">
+  <section class="chem-part chem-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="chem-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="chem-step-body chem-hook">Hospitals measure blood glucose, water labs measure nitrate, and food scientists check the dye in sports drinks by shining one color of light through a sample. The more of the colored substance there is, the more light it absorbs, in exact proportion.</div>
+  </section>
+  <section class="chem-part chem-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="chem-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Earlier topics"><ul class="chem-links"><li><a href="../notes/solutions.html">Solutions and Mixtures</a></li><li><a href="../notes/electromagnetic-spectrum.html">Spectroscopy and the Electromagnetic Spectrum</a></li></ul></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="chem-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="chem-step-body"><div class="chem-qs" data-set="prereq"><div class="chem-q" data-qid="beer-lambert-law-pre-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> What is the molarity of 0.0200 mol of solute in 0.500 L of solution?</p><ol class="chem-opts"><li>0.0400 M</li><li>0.0100 M</li><li>25.0 M</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>0.0200 mol ÷ 0.500 L = 0.0400 M.</p><ul><li><b>Correct:</b> 0.0400 M: </li><li>0.0100 M: </li><li>25.0 M: </li></ul></details></div><div class="chem-q" data-qid="beer-lambert-law-pre-2"><p class="chem-q-stem"><span class="chem-q-n">2.</span> A solution looks blue. Which light does it absorb most?</p><ol class="chem-opts"><li>Orange-red</li><li>Blue</li><li>None</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>We see the light that is not absorbed.</p><ul><li><b>Correct:</b> Orange-red: </li><li>Blue: </li><li>None: </li></ul></details></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="figure" aria-labelledby="h-figure">
+    <p class="chem-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="chem-step-body"><figure class="chem-figure chem-lesson-fig"><div class="chem-figimg" data-fig="spectrophotometer"><img src="../figures/spectrophotometer.svg" alt="A spectrophotometer: light from a lamp passes through a wavelength selector, then through a cuvette of path length b holding the sample, and a detector measures how much gets through. The instrument reports absorbance, A = εbc." width="700" height="220" loading="lazy" decoding="async"></div><figcaption>Light of one <a class="gl" href="../notes/electromagnetic-spectrum.html" data-c="wavelength">wavelength</a> passes through the sample; the instrument reports <span class="gl" tabindex="0" data-c="absorbance">absorbance</span>. <span class="chem-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="chem-part chem-step" id="chain" aria-labelledby="h-chain">
+    <p class="chem-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="chem-step-body"><ol class="chem-chain"><li><span class="chem-cause">Each absorbing particle in the beam can absorb a <a class="gl" href="../notes/photoelectron-spectroscopy.html" data-c="photon">photon</a> of matching energy</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">more particles in the path absorb more light</span></li><li><span class="chem-cause">Doubling the concentration or the <span class="gl" tabindex="0" data-c="beer-lambert">path length</span> doubles the particles in the beam</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">absorbance is proportional to both: A = εbc</span></li><li><span class="chem-cause">ε is largest at <span class="gl" tabindex="0" data-c="spectrophotometer">λmax</span></span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">measurements there are most sensitive to concentration</span></li><li><span class="chem-cause">Standards of known concentration fall on a straight line of A against c</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">an unknown's absorbance on that line gives its concentration</span></li></ol></div>
+  </section>
+  <section class="chem-part chem-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="chem-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="chem-step-body"><ul class="chem-ideas"><li>A = εbc: A unitless, ε in L/(<a class="gl" href="../notes/moles-molar-mass.html" data-c="mole">mol</a>·cm), b in cm, c in <a class="gl" href="../notes/solutions.html" data-c="molarity">mol/L</a>.</li><li>Measure at λmax, the wavelength of maximum absorbance.</li><li>Calibration curve: A against c is a straight line through the origin with slope εb.</li><li>Errors that add absorbance (fingerprints, no blank) make the concentration too high.</li></ul></div>
+  </section>
+  <section class="chem-part chem-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="chem-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="chem-step-body chem-misconception"><p class="chem-wrong"><b>The wrong idea:</b> A <a class="gl" href="../notes/solutions.html" data-c="solution">solution</a> that absorbs more light must have a larger molar absorptivity.</p><p class="chem-right"><b>What actually happens:</b> ε is fixed for a substance at one wavelength. More absorbance at the same wavelength and path length means a higher concentration.</p></div>
+  </section>
+  <section class="chem-part chem-step" id="check" aria-labelledby="h-check">
+    <p class="chem-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="chem-step-body"><p class="chem-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="chem-qs" data-set="check"><div class="chem-set"><section class="chem-stim" data-stim="beer-lambert-law-s1" aria-labelledby="stim-beer-lambert-law-s1"><p class="chem-stim-k">Graph</p><h3 id="stim-beer-lambert-law-s1">Calibration curve for a blue food dye</h3><div class="chem-stim-text"><p>A student measures five standard solutions of a blue dye at 630 nm in 1.00 cm cuvettes after zeroing the instrument with water. A diluted sports drink gives an absorbance of 0.565.</p></div><div class="chem-chart"><svg class="chem-svg" viewBox="0 0 560 320" role="img" aria-label="Calibration curve for a blue food dye: line graph of Absorbance against Dye concentration. The data table follows."><line class="axis" x1="64" y1="262" x2="542" y2="262"/><line class="axis" x1="64" y1="18" x2="64" y2="262"/><line class="grid" x1="64" y1="262.0" x2="542" y2="262.0"/><text class="tick" x="56" y="266.0" text-anchor="end">0</text><line class="grid" x1="64" y1="221.3" x2="542" y2="221.3"/><text class="tick" x="56" y="225.3" text-anchor="end">0.2</text><line class="grid" x1="64" y1="180.7" x2="542" y2="180.7"/><text class="tick" x="56" y="184.7" text-anchor="end">0.4</text><line class="grid" x1="64" y1="140.0" x2="542" y2="140.0"/><text class="tick" x="56" y="144.0" text-anchor="end">0.6</text><line class="grid" x1="64" y1="99.3" x2="542" y2="99.3"/><text class="tick" x="56" y="103.3" text-anchor="end">0.8</text><line class="grid" x1="64" y1="58.7" x2="542" y2="58.7"/><text class="tick" x="56" y="62.7" text-anchor="end">1</text><line class="grid" x1="64" y1="18.0" x2="542" y2="18.0"/><text class="tick" x="56" y="22.0" text-anchor="end">1.2</text><text class="tick" x="64.0" y="280" text-anchor="middle">0</text><text class="tick" x="159.6" y="280" text-anchor="middle">2</text><text class="tick" x="255.2" y="280" text-anchor="middle">4</text><text class="tick" x="350.8" y="280" text-anchor="middle">6</text><text class="tick" x="446.4" y="280" text-anchor="middle">8</text><text class="tick" x="542.0" y="280" text-anchor="middle">10</text><polyline class="series s1" points="64.0,262.0 159.6,215.4 255.2,170.5 350.8,123.5 446.4,78.6 542.0,32.0"/><circle class="pt s1" cx="64.0" cy="262.0" r="4.5"/><circle class="pt s1" cx="159.6" cy="215.4" r="4.5"/><circle class="pt s1" cx="255.2" cy="170.5" r="4.5"/><circle class="pt s1" cx="350.8" cy="123.5" r="4.5"/><circle class="pt s1" cx="446.4" cy="78.6" r="4.5"/><circle class="pt s1" cx="542.0" cy="32.0" r="4.5"/><text class="lbl" x="303" y="308" text-anchor="middle">Dye concentration (× 10⁻⁵ M)</text><text class="lbl" transform="translate(16 140) rotate(-90)" text-anchor="middle">Absorbance</text></svg><details class="chem-chart-data"><summary>Data table</summary><div class="table-wrap" tabindex="0" role="region" aria-label="Data table"><table><thead><tr><th scope="col">Dye concentration (× 10⁻⁵ M)</th><th scope="col">Standards</th></tr></thead><tbody><tr><th scope="row">0</th><td>0</td></tr><tr><th scope="row">2</th><td>0.229</td></tr><tr><th scope="row">4</th><td>0.45</td></tr><tr><th scope="row">6</th><td>0.681</td></tr><tr><th scope="row">8</th><td>0.902</td></tr><tr><th scope="row">10</th><td>1.131</td></tr></tbody></table></div></details></div></section><div class="chem-q" data-qid="chem-beer-lambert-law-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> Use the calibration curve to find the dye concentration in the diluted drink, in units of 10⁻⁵ M (for example, 3.00 means 3.00 × 10⁻⁵ M).</p><p class="chem-small">Type a number in × 10⁻⁵ M.</p><details class="chem-q-key"><summary>Show the answer</summary><p>The line passes through the origin with slope 1.131 / 10.0 = 0.1131 per 10⁻⁵ M. c = 0.565 / 0.1131 = 4.996, so 5.00 × 10⁻⁵ M.</p><ul><li>Answer: 5.00 × 10⁻⁵ M</li></ul></details></div><div class="chem-q" data-qid="chem-beer-lambert-law-2"><p class="chem-q-stem"><span class="chem-q-n">2.</span> The slope of the line equals εb. With b = 1.00 cm, what is the molar absorptivity of the dye?</p><p class="chem-small">Type a number in L/(mol·cm).</p><details class="chem-q-key"><summary>Show the answer</summary><p>Slope = ΔA/Δc = 1.131 / (1.00 × 10⁻⁴ M) = 11,310 M⁻¹. ε = slope / b = 11,310 M⁻¹ / 1.00 cm = 1.13 × 10⁴ L/(mol·cm).</p><ul><li>Answer: 1.13e+4 L/(mol·cm)</li></ul></details></div><div class="chem-q" data-qid="chem-beer-lambert-law-3"><p class="chem-q-stem"><span class="chem-q-n">3.</span> Before measuring the drink, the student touches the clear faces of its cuvette, leaving fingerprints. How does this affect the concentration she reports?</p><ol class="chem-opts"><li>Too high, because the fingerprints absorb or scatter light and raise the absorbance.</li><li>Too low, because the fingerprints let more light reach the detector.</li><li>No effect, because the fingerprints are outside the cuvette and not in the solution.</li><li>Too low, because fingerprints raise the path length b of the cuvette.</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Any light lost at the cuvette walls is counted as absorbed by the sample. A higher absorbance read on the calibration line gives a higher concentration.</p><ul><li><b>Correct:</b> Too high, because the fingerprints absorb or scatter light and raise the absorbance.: Right: extra absorbance, higher concentration.</li><li>Too low, because the fingerprints let more light reach the detector.: Fingerprints block or scatter light; they do not let more through.</li><li>No effect, because the fingerprints are outside the cuvette and not in the solution.: The beam passes through the walls, so anything on them affects the reading.</li><li>Too low, because fingerprints raise the path length b of the cuvette.: Path length is the inside width, which does not change.</li></ul></details></div><div class="chem-q" data-qid="chem-beer-lambert-law-5"><p class="chem-q-stem"><span class="chem-q-n">4.</span> The drink was diluted by mixing 10.0 mL of it with water to a total of 50.0 mL. What was the dye concentration in the undiluted drink?</p><ol class="chem-opts"><li>1.00 × 10⁻⁵ M</li><li>5.00 × 10⁻⁵ M</li><li>6.25 × 10⁻⁵ M</li><li>2.50 × 10⁻⁴ M</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>The diluted solution is 5.00 × 10⁻⁵ M. The dilution factor is 50.0 / 10.0 = 5.00, so the original is 5.00 × 5.00 × 10⁻⁵ M = 2.50 × 10⁻⁴ M (M₁V₁ = M₂V₂).</p><ul><li>1.00 × 10⁻⁵ M: This divides by the dilution factor instead of multiplying.</li><li>5.00 × 10⁻⁵ M: This is the diluted concentration, not the original.</li><li>6.25 × 10⁻⁵ M: This used the 40.0 mL of water added as V₁ (50.0/40.0); the volume of drink taken was 10.0 mL.</li><li><b>Correct:</b> 2.50 × 10⁻⁴ M: Right: multiply back by the dilution factor.</li></ul></details></div></div><div class="chem-set"><section class="chem-stim" data-stim="beer-lambert-law-s2" aria-labelledby="stim-beer-lambert-law-s2"><p class="chem-stim-k">Data table</p><h3 id="stim-beer-lambert-law-s2">Measuring copper(II) ions</h3><div class="chem-stim-text"><p>Copper(II) solutions absorb strongly at 810 nm. A student measures three samples with a spectrophotometer.</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Absorbance at 810 nm"><table class="chem-data"><caption>Absorbance at 810 nm</caption><thead><tr><th scope="col">Sample</th><th scope="col">Concentration (M)</th><th scope="col">Path length (cm)</th><th scope="col">Absorbance</th></tr></thead><tbody><tr><th scope="row">1</th><td>0.0500</td><td>1.00</td><td>0.592</td></tr><tr><th scope="row">2</th><td>0.1000</td><td>1.00</td><td>?</td></tr><tr><th scope="row">3</th><td>0.0500</td><td>2.00</td><td>?</td></tr></tbody></table></div></section><div class="chem-q" data-qid="chem-beer-lambert-law-7"><p class="chem-q-stem"><span class="chem-q-n">5.</span> What absorbance should sample 2 give?</p><ol class="chem-opts"><li>0.296</li><li>0.592</li><li>1.18</li><li>2.37</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>A is proportional to c. Doubling c from 0.0500 to 0.1000 M doubles A: 2 × 0.592 = 1.184, so 1.18.</p><ul><li>0.296: This halves instead of doubling.</li><li>0.592: This ignores the change in concentration.</li><li><b>Correct:</b> 1.18: Right: twice the concentration, twice the absorbance.</li><li>2.37: This quadruples; A is proportional to c, not c².</li></ul></details></div><div class="chem-q" data-qid="chem-beer-lambert-law-8"><p class="chem-q-stem"><span class="chem-q-n">6.</span> What absorbance should sample 3 give?</p><ol class="chem-opts"><li>0.0592</li><li>0.296</li><li>0.592</li><li>1.18</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>A is proportional to the path length b. Same concentration as sample 1 but twice the path: 2 × 0.592 = 1.18.</p><ul><li>0.0592: This divides by 10 for no reason.</li><li>0.296: A longer path increases A; it does not halve it.</li><li>0.592: A longer path passes more absorbing ions, so A rises.</li><li><b>Correct:</b> 1.18: Right: twice the path, twice the absorbance.</li></ul></details></div></div><div class="chem-q" data-qid="chem-beer-lambert-law-11"><p class="chem-q-stem"><span class="chem-q-n">7.</span> In A = εbc, what does b stand for?</p><ol class="chem-opts"><li>The path length of light through the sample</li><li>The molar absorptivity of the substance</li><li>The concentration in mol/L</li><li>The wavelength of the light used</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>b is the path length, the distance light travels through the solution, usually 1.00 cm.</p><ul><li><b>Correct:</b> The path length of light through the sample: Right: usually 1.00 cm.</li><li>The molar absorptivity of the substance: That is ε.</li><li>The concentration in mol/L: That is c.</li><li>The wavelength of the light used: The wavelength is chosen (λmax) but is not a variable in the equation.</li></ul></details></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="summary" aria-labelledby="h-summary">
+    <p class="chem-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="chem-step-body">A spectrophotometer measures how much light of one wavelength a solution absorbs. The Beer-Lambert law, A = εbc, makes absorbance proportional to concentration and path length. Measurements are made at λmax, and a calibration curve of standards gives an unknown's concentration; anything that adds absorbance, such as fingerprints or a missed blank, makes it read too high.</div>
+  </section>
+  <section class="chem-part chem-step" id="next" aria-labelledby="h-next">
+    <p class="chem-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="reactions-intro.html">Introduction for Reactions &rarr;</a></p></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="connections" aria-labelledby="h-connections">
+    <p class="chem-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="chem-step-body"><ul class="chem-links chem-nav-ref"><li><a href="../notes/photons.html">Photon energy and absorption (Properties of Photons)</a></li><li><a href="../notes/solutions.html">Molarity and dilution (Solutions and Mixtures)</a></li></ul></div>
+  </section>
+    <div class="chem-ls-actions chem-nav-ref"><button type="button" class="chem-ls-back">&larr; Previous</button><button type="button" class="chem-ls-go">Continue &rarr;</button><a class="chem-ls-go" hidden href="reactions-intro.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.chem-ls'),p=s&&s.querySelectorAll('.chem-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.chem-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apchem_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="chem-foot xshell">
+  <p class="chem-accuracy-note"><span class="chem-beta chem-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Chemistry teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="chem-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="lesson:beer-lambert-law">Report a problem</button></span></p>
+  <p class="chem-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="chem-page-data">{"topic":"beer-lambert-law","unit":"unit-3","free":false,"prereq":[{"id":"beer-lambert-law-pre-1","type":"single","unit":"unit-3","topic":"beer-lambert-law","q":"What is the molarity of 0.0200 mol of solute in 0.500 L of solution?","options":["0.0400 M","0.0100 M","25.0 M"],"correct":0,"why":{"correct":"0.0200 mol ÷ 0.500 L = 0.0400 M.","options":["","",""]},"reviewHref":"../notes/solutions.html","reviewTitle":"Solutions and Mixtures"},{"id":"beer-lambert-law-pre-2","type":"single","unit":"unit-3","topic":"beer-lambert-law","q":"A solution looks blue. Which light does it absorb most?","options":["Orange-red","Blue","None"],"correct":0,"why":{"correct":"We see the light that is not absorbed.","options":["","",""]},"reviewHref":"../notes/electromagnetic-spectrum.html","reviewTitle":"Spectroscopy and the Electromagnetic Spectrum"}],"check":[{"id":"chem-beer-lambert-law-1","type":"numeric","unit":"unit-3","topic":"beer-lambert-law","practice":"5.D","level":"apply","diff":2,"stimulus":"beer-lambert-law-s1","q":"Use the calibration curve to find the dye concentration in the diluted drink, in units of 10⁻⁵ M (for example, 3.00 means 3.00 × 10⁻⁵ M).","numeric":{"answer":5,"tol":0.02,"unit":"× 10⁻⁵ M","sigfigs":3,"mistakes":[{"value":0.0639,"rel":0.02,"why":"Value: you multiplied the absorbance by the slope. Concentration is A ÷ slope."}]},"why":{"correct":"The line passes through the origin with slope 1.131 / 10.0 = 0.1131 per 10⁻⁵ M. c = 0.565 / 0.1131 = 4.996, so 5.00 × 10⁻⁵ M."}},{"id":"chem-beer-lambert-law-2","type":"numeric","unit":"unit-3","topic":"beer-lambert-law","practice":"5.F","level":"apply","diff":2,"stimulus":"beer-lambert-law-s1","q":"The slope of the line equals εb. With b = 1.00 cm, what is the molar absorptivity of the dye?","numeric":{"answer":11300,"tol":200,"unit":"L/(mol·cm)","units":["L mol^-1 cm^-1","M^-1 cm^-1","/M/cm","L/mol/cm"],"sigfigs":3,"mistakes":[{"value":0.00008842,"rel":0.02,"why":"Value: you divided concentration by absorbance. The slope is ΔA ÷ Δc."}]},"why":{"correct":"Slope = ΔA/Δc = 1.131 / (1.00 × 10⁻⁴ M) = 11,310 M⁻¹. ε = slope / b = 11,310 M⁻¹ / 1.00 cm = 1.13 × 10⁴ L/(mol·cm)."}},{"id":"chem-beer-lambert-law-3","type":"single","unit":"unit-3","topic":"beer-lambert-law","practice":"2.F","level":"analyze","diff":3,"stimulus":"beer-lambert-law-s1","q":"Before measuring the drink, the student touches the clear faces of its cuvette, leaving fingerprints. How does this affect the concentration she reports?","options":["Too high, because the fingerprints absorb or scatter light and raise the absorbance.","Too low, because the fingerprints let more light reach the detector.","No effect, because the fingerprints are outside the cuvette and not in the solution.","Too low, because fingerprints raise the path length b of the cuvette."],"correct":0,"why":{"correct":"Any light lost at the cuvette walls is counted as absorbed by the sample. A higher absorbance read on the calibration line gives a higher concentration.","options":["Right: extra absorbance, higher concentration.","Fingerprints block or scatter light; they do not let more through.","The beam passes through the walls, so anything on them affects the reading.","Path length is the inside width, which does not change."]}},{"id":"chem-beer-lambert-law-5","type":"single","unit":"unit-3","topic":"beer-lambert-law","practice":"5.C","level":"analyze","diff":2,"stimulus":"beer-lambert-law-s1","fixed":true,"q":"The drink was diluted by mixing 10.0 mL of it with water to a total of 50.0 mL. What was the dye concentration in the undiluted drink?","options":["1.00 × 10⁻⁵ M","5.00 × 10⁻⁵ M","6.25 × 10⁻⁵ M","2.50 × 10⁻⁴ M"],"correct":3,"why":{"correct":"The diluted solution is 5.00 × 10⁻⁵ M. The dilution factor is 50.0 / 10.0 = 5.00, so the original is 5.00 × 5.00 × 10⁻⁵ M = 2.50 × 10⁻⁴ M (M₁V₁ = M₂V₂).","options":["This divides by the dilution factor instead of multiplying.","This is the diluted concentration, not the original.","This used the 40.0 mL of water added as V₁ (50.0/40.0); the volume of drink taken was 10.0 mL.","Right: multiply back by the dilution factor."]}},{"id":"chem-beer-lambert-law-7","type":"single","unit":"unit-3","topic":"beer-lambert-law","practice":"5.C","level":"apply","diff":1,"stimulus":"beer-lambert-law-s2","fixed":true,"q":"What absorbance should sample 2 give?","options":["0.296","0.592","1.18","2.37"],"correct":2,"why":{"correct":"A is proportional to c. Doubling c from 0.0500 to 0.1000 M doubles A: 2 × 0.592 = 1.184, so 1.18.","options":["This halves instead of doubling.","This ignores the change in concentration.","Right: twice the concentration, twice the absorbance.","This quadruples; A is proportional to c, not c²."]}},{"id":"chem-beer-lambert-law-8","type":"single","unit":"unit-3","topic":"beer-lambert-law","practice":"5.C","level":"apply","diff":2,"stimulus":"beer-lambert-law-s2","fixed":true,"q":"What absorbance should sample 3 give?","options":["0.0592","0.296","0.592","1.18"],"correct":3,"why":{"correct":"A is proportional to the path length b. Same concentration as sample 1 but twice the path: 2 × 0.592 = 1.18.","options":["This divides by 10 for no reason.","A longer path increases A; it does not halve it.","A longer path passes more absorbing ions, so A rises.","Right: twice the path, twice the absorbance."]}},{"id":"chem-beer-lambert-law-11","type":"single","unit":"unit-3","topic":"beer-lambert-law","practice":"4.A","level":"recall","diff":1,"q":"In A = εbc, what does b stand for?","options":["The path length of light through the sample","The molar absorptivity of the substance","The concentration in mol/L","The wavelength of the light used"],"correct":0,"why":{"correct":"b is the path length, the distance light travels through the solution, usually 1.00 cm.","options":["Right: usually 1.00 cm.","That is ε.","That is c.","The wavelength is chosen (λmax) but is not a variable in the equation."]}}],"stimuli":{"beer-lambert-law-s1":{"kind":"graph","title":"Calibration curve for a blue food dye","html":"\u003cdiv class=\"chem-stim-text\">\u003cp>A student measures five standard solutions of a blue dye at 630 nm in 1.00 cm cuvettes after zeroing the instrument with water. A diluted sports drink gives an absorbance of 0.565.\u003c/p>\u003c/div>\u003cdiv class=\"chem-chart\">\u003csvg class=\"chem-svg\" viewBox=\"0 0 560 320\" role=\"img\" aria-label=\"Calibration curve for a blue food dye: line graph of Absorbance against Dye concentration. The data table follows.\">\u003cline class=\"axis\" x1=\"64\" y1=\"262\" x2=\"542\" y2=\"262\"/>\u003cline class=\"axis\" x1=\"64\" y1=\"18\" x2=\"64\" y2=\"262\"/>\u003cline class=\"grid\" x1=\"64\" y1=\"262.0\" x2=\"542\" y2=\"262.0\"/>\u003ctext class=\"tick\" x=\"56\" y=\"266.0\" text-anchor=\"end\">0\u003c/text>\u003cline class=\"grid\" x1=\"64\" y1=\"221.3\" x2=\"542\" y2=\"221.3\"/>\u003ctext class=\"tick\" x=\"56\" y=\"225.3\" text-anchor=\"end\">0.2\u003c/text>\u003cline class=\"grid\" x1=\"64\" y1=\"180.7\" x2=\"542\" y2=\"180.7\"/>\u003ctext class=\"tick\" x=\"56\" y=\"184.7\" text-anchor=\"end\">0.4\u003c/text>\u003cline class=\"grid\" x1=\"64\" y1=\"140.0\" x2=\"542\" y2=\"140.0\"/>\u003ctext class=\"tick\" x=\"56\" y=\"144.0\" text-anchor=\"end\">0.6\u003c/text>\u003cline class=\"grid\" x1=\"64\" y1=\"99.3\" x2=\"542\" y2=\"99.3\"/>\u003ctext class=\"tick\" x=\"56\" y=\"103.3\" text-anchor=\"end\">0.8\u003c/text>\u003cline class=\"grid\" x1=\"64\" y1=\"58.7\" x2=\"542\" y2=\"58.7\"/>\u003ctext class=\"tick\" x=\"56\" y=\"62.7\" text-anchor=\"end\">1\u003c/text>\u003cline class=\"grid\" x1=\"64\" y1=\"18.0\" x2=\"542\" y2=\"18.0\"/>\u003ctext class=\"tick\" x=\"56\" y=\"22.0\" text-anchor=\"end\">1.2\u003c/text>\u003ctext class=\"tick\" x=\"64.0\" y=\"280\" text-anchor=\"middle\">0\u003c/text>\u003ctext class=\"tick\" x=\"159.6\" y=\"280\" text-anchor=\"middle\">2\u003c/text>\u003ctext class=\"tick\" x=\"255.2\" y=\"280\" text-anchor=\"middle\">4\u003c/text>\u003ctext class=\"tick\" x=\"350.8\" y=\"280\" text-anchor=\"middle\">6\u003c/text>\u003ctext class=\"tick\" x=\"446.4\" y=\"280\" text-anchor=\"middle\">8\u003c/text>\u003ctext class=\"tick\" x=\"542.0\" y=\"280\" text-anchor=\"middle\">10\u003c/text>\u003cpolyline class=\"series s1\" points=\"64.0,262.0 159.6,215.4 255.2,170.5 350.8,123.5 446.4,78.6 542.0,32.0\"/>\u003ccircle class=\"pt s1\" cx=\"64.0\" cy=\"262.0\" r=\"4.5\"/>\u003ccircle class=\"pt s1\" cx=\"159.6\" cy=\"215.4\" r=\"4.5\"/>\u003ccircle class=\"pt s1\" cx=\"255.2\" cy=\"170.5\" r=\"4.5\"/>\u003ccircle class=\"pt s1\" cx=\"350.8\" cy=\"123.5\" r=\"4.5\"/>\u003ccircle class=\"pt s1\" cx=\"446.4\" cy=\"78.6\" r=\"4.5\"/>\u003ccircle class=\"pt s1\" cx=\"542.0\" cy=\"32.0\" r=\"4.5\"/>\u003ctext class=\"lbl\" x=\"303\" y=\"308\" text-anchor=\"middle\">Dye concentration (× 10⁻⁵ M)\u003c/text>\u003ctext class=\"lbl\" transform=\"translate(16 140) rotate(-90)\" text-anchor=\"middle\">Absorbance\u003c/text>\u003c/svg>\u003cdetails class=\"chem-chart-data\">\u003csummary>Data table\u003c/summary>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Data table\">\u003ctable>\u003cthead>\u003ctr>\u003cth scope=\"col\">Dye concentration (× 10⁻⁵ M)\u003c/th>\u003cth scope=\"col\">Standards\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">0\u003c/th>\u003ctd>0\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">2\u003c/th>\u003ctd>0.229\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">4\u003c/th>\u003ctd>0.45\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">6\u003c/th>\u003ctd>0.681\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">8\u003c/th>\u003ctd>0.902\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">10\u003c/th>\u003ctd>1.131\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003c/details>\u003c/div>"},"beer-lambert-law-s2":{"kind":"table","title":"Measuring copper(II) ions","html":"\u003cdiv class=\"chem-stim-text\">\u003cp>Copper(II) solutions absorb strongly at 810 nm. A student measures three samples with a spectrophotometer.\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Absorbance at 810 nm\">\u003ctable class=\"chem-data\">\u003ccaption>Absorbance at 810 nm\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Sample\u003c/th>\u003cth scope=\"col\">Concentration (M)\u003c/th>\u003cth scope=\"col\">Path length (cm)\u003c/th>\u003cth scope=\"col\">Absorbance\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">1\u003c/th>\u003ctd>0.0500\u003c/td>\u003ctd>1.00\u003c/td>\u003ctd>0.592\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">2\u003c/th>\u003ctd>0.1000\u003c/td>\u003ctd>1.00\u003c/td>\u003ctd>?\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">3\u003c/th>\u003ctd>0.0500\u003c/td>\u003ctd>2.00\u003c/td>\u003ctd>?\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApChemSection = 'learn'; window.ApChemBase = '../';</script>
+<script src="../assets/chem-curriculum.js" defer></script>
+<script src="../assets/chem-core.js" defer></script>
+<script src="../assets/chem-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/chem-questions.js" defer></script>
+<script src="../assets/chem-lesson.js" defer></script>
+</body>
+</html>

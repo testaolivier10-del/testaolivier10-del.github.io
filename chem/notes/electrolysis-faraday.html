@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electrolysis and Faraday's Law — AP® Chemistry Notes</title>
+<meta name="description" content="Topic 9.8 introduced the electrolytic cell: an outside power supply pushes electrons to drive a redox reaction that would not go on its own.">
+<link rel="canonical" href="https://levlprep.com/chem/notes/electrolysis-faraday.html">
+<meta property="og:title" content="Electrolysis and Faraday's Law — AP® Chemistry Notes">
+<meta property="og:description" content="Topic 9.8 introduced the electrolytic cell: an outside power supply pushes electrons to drive a redox reaction that would not go on its own.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/chem/notes/electrolysis-faraday.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/chem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/chem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/chem/notes/electrolysis-faraday.html#reading",
+      "name": "Electrolysis and Faraday's Law",
+      "url": "https://levlprep.com/chem/notes/electrolysis-faraday.html",
+      "description": "Topic 9.8 introduced the electrolytic cell: an outside power supply pushes electrons to drive a redox reaction that would not go on its own.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "electrolysis and Faraday's law calculations",
+      "isPartOf": {
+        "@id": "https://levlprep.com/chem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Chemistry",
+          "item": "https://levlprep.com/chem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Thermodynamics and Electrochemistry",
+          "item": "https://levlprep.com/chem/units/unit-9.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Electrolysis and Faraday's Law: notes",
+          "item": "https://levlprep.com/chem/notes/electrolysis-faraday.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="chem" data-topic="electrolysis-faraday" data-unit="unit-9">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="chem-rail" aria-expanded="false">&#9776; Unit 9 contents</button>
+  <aside class="tb-rail chem-nav-ref bk-rail" id="chem-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Acids and Bases</a>
+    <a class="bk-toc-chap" href="../units/unit-9.html"><span class="bk-toc-chap-n">9</span><span><b>Thermodynamics and Electrochemistry</b><small>11 topics</small></span></a>
+    <div class="chem-toc-prog" data-toc-prog="unit-9"><div class="tb-progress-row"><span><b>0</b> of 11 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="entropy-intro"><a href="entropy-intro.html"><span class="bk-toc-n">9.1</span>Introduction to Entropy</a></li><li data-toc-t="entropy-change"><a href="entropy-change.html"><span class="bk-toc-n">9.2</span>Absolute Entropy and Entropy Change</a></li><li data-toc-t="gibbs-free-energy"><a href="gibbs-free-energy.html"><span class="bk-toc-n">9.3</span>Gibbs Free Energy and Thermodynamic Favorability</a></li><li data-toc-t="kinetic-control"><a href="kinetic-control.html"><span class="bk-toc-n">9.4</span>Thermodynamic and Kinetic Control</a></li><li data-toc-t="free-energy-equilibrium"><a href="free-energy-equilibrium.html"><span class="bk-toc-n">9.5</span>Free Energy and Equilibrium</a></li><li data-toc-t="dissolution-free-energy"><a href="dissolution-free-energy.html"><span class="bk-toc-n">9.6</span>Free Energy of Dissolution</a></li><li data-toc-t="coupled-reactions"><a href="coupled-reactions.html"><span class="bk-toc-n">9.7</span>Coupled Reactions</a></li><li data-toc-t="electrochemical-cells"><a href="electrochemical-cells.html"><span class="bk-toc-n">9.8</span>Galvanic (Voltaic) and Electrolytic Cells</a></li><li data-toc-t="cell-potential"><a href="cell-potential.html"><span class="bk-toc-n">9.9</span>Cell Potential and Free Energy</a></li><li data-toc-t="nernst-equation"><a href="nernst-equation.html"><span class="bk-toc-n">9.10</span>Cell Potential Under Nonstandard Conditions</a></li><li class="current" data-toc-t="electrolysis-faraday"><a href="#main" aria-current="page"><span class="bk-toc-n">9.11</span>Electrolysis and Faraday's Law</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-electrolysis-does">What electrolysis does</a><a href="#current-charge-and-moles-of-electrons">Current, charge and moles of electrons</a><a href="#the-faraday-chain">The Faraday chain</a><a href="#running-the-chain-backward">Running the chain backward</a><a href="#cells-in-series">Cells in series</a><a href="#when-the-numbers-do-not-match">When the numbers do not match</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="chem-crumb chem-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-9.html">Thermodynamics and Electrochemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Electrolysis and Faraday's Law: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/electrolysis-faraday.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 9 &middot; Topic 9.11 <span class="chem-beta chem-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Electrolysis and Faraday's Law</h1>
+      <p class="bk-meta chem-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="electrolysis-faraday">Not practiced</span></p>
+      <div class="bk-actions chem-share chem-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fchem%2Fnotes%2Felectrolysis-faraday.html&amp;title=Electrolysis%20and%20Faraday's%20Law%3A%20chemistry%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/chem/notes/electrolysis-faraday.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="chem-prose bk-prose">
+<p>Topic 9.8 introduced the <a class="gl" href="../notes/electrochemical-cells.html" data-c="electrolytic-cell">electrolytic cell</a>: an outside power supply pushes <a class="gl" href="../notes/mass-spectra.html" data-c="electron">electrons</a> to drive a <a class="gl" href="../notes/redox-reactions.html" data-c="redox">redox reaction</a> that would not go on its own. This page is about using one, <b><span class="gl" tabindex="0" data-c="electrolysis">electrolysis</span></b>, and about answering the question every electrolysis problem asks: how much product does a given current make in a given time?</p>
+
+<h2 id="what-electrolysis-does">What electrolysis does</h2>
+<p>Electrolysis is used wherever a <a class="gl" href="../notes/periodic-trends.html" data-c="metal">metal</a> or <a class="gl" href="../notes/moles-molar-mass.html" data-c="element">element</a> has to be pulled out of a stable <a class="gl" href="../notes/moles-molar-mass.html" data-c="compound">compound</a> or laid down as a coating:</p>
+<ul>
+<li><b>Electroplating</b>: coating an object with a thin layer of metal (copper, silver, chromium, gold). The object is the <a class="gl" href="../notes/electrochemical-cells.html" data-c="electrode">cathode</a>, because the metal forms by reduction of its <a class="gl" href="../notes/mass-spectra.html" data-c="ion">ions</a>.</li>
+<li><b>Producing reactive metals</b>: aluminum from molten Al<sub>2</sub>O<sub>3</sub>, sodium from molten NaCl. These metals are so easily oxidized that no chemical <a class="gl" href="../notes/redox-reactions.html" data-c="oxidizing-agent">reducing agent</a> is practical.</li>
+<li><b>Splitting water</b> into H<sub>2</sub> and O<sub>2</sub>, a reaction with <a class="gl" href="../notes/gibbs-free-energy.html" data-c="gibbs">ΔG°</a> = +474.2 kJ/<a class="gl" href="../notes/moles-molar-mass.html" data-c="mole">mol</a>.</li>
+</ul>
+<figure id="fig-plating"  class="chem-figure"><div class="chem-figimg" data-fig="electrolysis-plating"><img src="../figures/electrolysis-plating.svg" alt="A beaker of copper(II) sulfate with a copper anode and a key as the cathode, joined to a power supply that moves electrons from the anode to the key. Copper dissolves at the anode and plates onto the key. Below, a chain: current times time gives charge; divide by F for moles of electrons; divide by 2 for moles of copper; multiply by 63.55 for grams of copper." width="760" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Copper plating, and the chain of conversions from current to mass. <span class="chem-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>In <a class="figref" href="#fig-plating">Figure 1</a>, the power supply pulls electrons out of the copper anode, where Cu → Cu<sup>2+</sup> + 2e<sup>−</sup>, and pushes them into the key, where Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu. Oxidation is still at the anode and reduction at the cathode, as in every cell.</p>
+
+<h2 id="current-charge-and-moles-of-electrons">Current, charge and moles of electrons</h2>
+<p>Electric <b>current</b>, I, is the rate at which charge flows, measured in <span class="gl" tabindex="0" data-c="faraday-law">amperes</span>: 1 A = 1 coulomb per second. So the charge that passes is</p>
+<p style="text-align:center"><b>q = It</b> &nbsp;&nbsp; (coulombs = amperes × seconds)</p>
+<p>and, since one mole of electrons carries F = 96,485 C (the <a class="gl" href="../notes/cell-potential.html" data-c="faraday-constant">Faraday constant</a>, topic 9.9),</p>
+<p style="text-align:center"><b>moles of electrons = q / F</b></p>
+<p>The <a class="gl" href="../notes/redox-reactions.html" data-c="half-reaction">half-reaction</a> then turns moles of electrons into moles of product. This chain is <b>Faraday's law</b>: the amount of product is proportional to the charge passed.</p>
+
+<h2 id="the-faraday-chain">The Faraday chain</h2>
+<div class="worked">
+<p><b>Worked example.</b> A key is copper-plated from CuSO<sub>4</sub>(aq) with a steady current of 2.50 A for 30.0 minutes. What mass of copper plates onto the key? (Cu = 63.55 <a class="gl" href="../notes/moles-molar-mass.html" data-c="molar-mass">g/mol</a>)</p>
+<p>1. Time in seconds: 30.0 min × 60 s/min = 1800 s.</p>
+<p>2. Charge: q = It = (2.50 C/s)(1800 s) = 4.50 × 10<sup>3</sup> C.</p>
+<p>3. Moles of electrons: 4.50 × 10<sup>3</sup> C × (1 mol e<sup>−</sup> / 96,485 C) = 0.04664 mol e<sup>−</sup>.</p>
+<p>4. Moles of copper, from Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu: 0.04664 mol e<sup>−</sup> × (1 mol Cu / 2 mol e<sup>−</sup>) = 0.02332 mol Cu.</p>
+<p>5. Mass: 0.02332 mol × 63.55 g/mol = 1.48 g Cu.</p>
+<p>Units cancel at every step, and the answer has three <a class="gl" href="../notes/math-sig-figs.html" data-c="significant-figures">significant figures</a>, like the current and the time.</p>
+</div>
+<p>The step most often missed is step 4. One mole of electrons makes 1 mol of Ag (Ag<sup>+</sup> + e<sup>−</sup>), but only ½ mol of Cu (Cu<sup>2+</sup> + 2e<sup>−</sup>) and ⅓ mol of Al (Al<sup>3+</sup> + 3e<sup>−</sup>).</p>
+
+<h2 id="running-the-chain-backward">Running the chain backward</h2>
+<p>To find the time or current needed for a given mass, start at the other end.</p>
+<div class="worked">
+<p><b>Worked example.</b> How long does it take to plate 2.00 g of copper at 2.50 A?</p>
+<p>2.00 g ÷ 63.55 g/mol = 0.03147 mol Cu; × 2 mol e<sup>−</sup>/mol Cu = 0.06294 mol e<sup>−</sup>; × 96,485 C/mol e<sup>−</sup> = 6073 C.</p>
+<p>t = q/I = 6073 C ÷ 2.50 A = 2429 s = 40.5 min.</p>
+</div>
+
+<h2 id="cells-in-series">Cells in series</h2>
+<p>When cells are wired one after another, the same current flows through each, so the same moles of electrons pass through each. Different metals still form in different amounts. With 1.93 × 10<sup>4</sup> C (0.200 mol e<sup>−</sup>):</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="The same charge through three cells"><table class="compare">
+<caption>The same charge through three cells</caption>
+<thead><tr><th scope="col">Half-reaction</th><th scope="col">mol metal</th><th scope="col">mass</th></tr></thead>
+<tbody>
+<tr><td>Ag<sup>+</sup> + e<sup>−</sup> → Ag</td><td>0.200</td><td>21.6 g</td></tr>
+<tr><td>Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu</td><td>0.100</td><td>6.36 g</td></tr>
+<tr><td>Al<sup>3+</sup> + 3e<sup>−</sup> → Al</td><td>0.0667</td><td>1.80 g</td></tr>
+</tbody>
+</table></div>
+<p>A mass comparison needs both the electrons per ion and the molar mass; comparing masses without the molar mass is a common slip.</p>
+
+<h2 id="when-the-numbers-do-not-match">When the numbers do not match</h2>
+<p>Faraday's law assumes every electron reduces the intended ion. In a real cell, some current may go into a side reaction (such as reducing water to H<sub>2</sub> at the cathode), so less metal forms than calculated. The ratio of actual to predicted mass is the cell's current efficiency.</p>
+
+    </article>
+    <p class="chem-report-page chem-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="notes:electrolysis-faraday">Report a problem</button></p>
+    <nav class="tb-chapter-nav chem-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="nernst-equation.html"><span>&larr; Previous</span><b>Cell Potential Under Nonstandard Conditions</b></a></nav>
+  </main>
+</div>
+<footer class="chem-foot xshell">
+  <p class="chem-accuracy-note"><span class="chem-beta chem-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Chemistry teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="chem-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="notes:electrolysis-faraday">Report a problem</button></span></p>
+  <p class="chem-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApChemSection = 'learn'; window.ApChemBase = '../';</script>
+<script src="../assets/chem-curriculum.js" defer></script>
+<script src="../assets/chem-core.js" defer></script>
+<script src="../assets/chem-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/chem-toc.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Henderson-Hasselbalch Equation — AP® Chemistry | LevlPrep</title>
+<meta name="description" content="The Henderson-Hasselbalch equation, pH = pKa + log([A⁻]/[HA]), is the Ka expression in log form.">
+<link rel="canonical" href="https://levlprep.com/chem/lessons/henderson-hasselbalch.html">
+<meta property="og:title" content="Henderson-Hasselbalch Equation — AP® Chemistry | LevlPrep">
+<meta property="og:description" content="The Henderson-Hasselbalch equation, pH = pKa + log([A⁻]/[HA]), is the Ka expression in log form.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/chem/lessons/henderson-hasselbalch.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/chem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/chem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/chem/lessons/henderson-hasselbalch.html#lesson",
+      "name": "Henderson-Hasselbalch Equation",
+      "url": "https://levlprep.com/chem/lessons/henderson-hasselbalch.html",
+      "description": "The Henderson-Hasselbalch equation, pH = pKa + log([A⁻]/[HA]), is the Ka expression in log form.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".chem-ls-card"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Henderson-Hasselbalch equation"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/chem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Chemistry",
+          "item": "https://levlprep.com/chem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Acids and Bases",
+          "item": "https://levlprep.com/chem/units/unit-8.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Henderson-Hasselbalch Equation",
+          "item": "https://levlprep.com/chem/lessons/henderson-hasselbalch.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="chem" data-topic="henderson-hasselbalch" data-unit="unit-8">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="chem-crumb chem-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-8.html">Acids and Bases</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Henderson-Hasselbalch Equation</span></nav></div>
+<div class="xshell chem-ls chem-stepped">
+  <aside class="chem-ls-rail chem-nav-ref" aria-label="Lesson parts">
+    <p class="chem-ls-k">Unit 8 · Acids and Bases</p>
+    <p class="chem-ls-links"><a href="../units/unit-8.html">&larr; Back to the unit</a><a href="../notes/henderson-hasselbalch.html">Read the notes</a></p>
+    <div class="chem-ls-prog"><div class="chem-ls-track"><div class="chem-ls-fill"></div></div><span class="chem-ls-count">Step 1 / 11</span></div>
+    <ol class="chem-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="chem-ls-main chem-lesson">
+  <header class="chem-ls-hero">
+    <div class="eyebrow">Unit 8 · Topic 8.9 <span class="chem-beta chem-nav-ref">Beta</span></div>
+    <h1>Henderson-Hasselbalch Equation</h1>
+    <p class="lede">The Henderson-Hasselbalch equation, pH = pKa + log([A⁻]/[HA]), is the Ka expression in log form.</p>
+    <p class="chem-tags chem-nav-ref"><span class="chem-tag">Practice 5: Mathematical Routines</span></p>
+    <div class="chem-share chem-nav-ref" role="group" aria-label="Share or print this lesson"><a class="chem-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fchem%2Flessons%2Fhenderson-hasselbalch.html&amp;title=Henderson-Hasselbalch%20Equation%3A%20chemistry%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="chem-share-btn" data-copy="https://levlprep.com/chem/lessons/henderson-hasselbalch.html">Copy link</button><button type="button" class="chem-share-btn" data-print>Print</button></div>
+    <p class="chem-small chem-nav-ref"><a href="../practice.html?topic=henderson-hasselbalch">Question set for this topic</a></p>
+  </header>
+  <div class="chem-ls-card">
+  <section class="chem-part chem-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="chem-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="chem-step-body chem-hook">A biology lab needs a phosphate <a class="gl" href="../notes/buffers-intro.html" data-c="buffer">buffer</a> at exactly <a class="gl" href="../notes/acids-bases-intro.html" data-c="ph">pH</a> 7.40 for an <a class="gl" href="../notes/catalysis.html" data-c="catalyst">enzyme</a> that stops working outside a narrow range. Nobody finds that pH by trial and error. One line of algebra, the <span class="gl" tabindex="0" data-c="henderson-hasselbalch">Henderson-Hasselbalch equation</span>, tells you which <a class="gl" href="../notes/acid-base-reactions-intro.html" data-c="bronsted-lowry">acid</a> to use and how much of each component to weigh out.</div>
+  </section>
+  <section class="chem-part chem-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="chem-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Earlier topics"><ul class="chem-links"><li><a href="../notes/math-logs.html">Logarithms</a></li><li><a href="../notes/weak-acids-bases.html">Weak Acid and Base Equilibria</a></li><li><a href="../notes/buffers-intro.html">Acid-Base Reactions and Buffers</a></li></ul></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="chem-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="chem-step-body"><div class="chem-qs" data-set="prereq"><div class="chem-q" data-qid="henderson-hasselbalch-pre-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> What is log(2.0)?</p><ol class="chem-opts"><li>0.30</li><li>0.69</li><li>2.0</li><li>−0.30</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>log(2.0) = 0.301. (0.69 is ln 2.)</p><ul><li><b>Correct:</b> 0.30: </li><li>0.69: </li><li>2.0: </li><li>−0.30: </li></ul></details></div><div class="chem-q" data-qid="henderson-hasselbalch-pre-2"><p class="chem-q-stem"><span class="chem-q-n">2.</span> In a buffer, the pH depends on what?</p><ol class="chem-opts"><li>The ratio [A⁻]/[HA]</li><li>The total concentration of acid only</li><li>The volume of the solution</li><li>The amount of water</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>[H₃O⁺] = Ka × [HA]/[A⁻]: only the ratio matters.</p><ul><li><b>Correct:</b> The ratio [A⁻]/[HA]: </li><li>The total concentration of acid only: </li><li>The volume of the solution: </li><li>The amount of water: </li></ul></details></div><div class="chem-q" data-qid="henderson-hasselbalch-pre-3"><p class="chem-q-stem"><span class="chem-q-n">3.</span> Which form predominates at a pH one unit below pKa?</p><ol class="chem-opts"><li>HA</li><li>A⁻</li><li>Equal amounts</li><li>Neither</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Below pKa, the protonated form wins, by 10 : 1 at one unit below.</p><ul><li><b>Correct:</b> HA: </li><li>A⁻: </li><li>Equal amounts: </li><li>Neither: </li></ul></details></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="figure" aria-labelledby="h-figure">
+    <p class="chem-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="chem-step-body"><figure class="chem-figure chem-lesson-fig"><div class="chem-figimg" data-fig="hh-ratio-line"><img src="../figures/hh-ratio-line.svg" alt="pH against log([A⁻]/[HA]) for pKa 4.74: a straight line of slope 1 through (0, 4.74), (1, 5.74) and (−1, 3.74). The shaded band is ratios from 0.1 to 10. A note: use the base-10 log; ln would give pKa + 2.30 for a 10:1 ratio." width="760" height="380" loading="lazy" decoding="async"></div><figcaption>pH against <a class="gl" href="../notes/math-logs.html" data-c="logarithm">log</a>([A⁻]/[HA]): a line of slope 1 that crosses <a class="gl" href="../notes/weak-acids-bases.html" data-c="ka">pKa</a> where the ratio is 1. <span class="chem-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="chem-part chem-step" id="chain" aria-labelledby="h-chain">
+    <p class="chem-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="chem-step-body"><ol class="chem-chain"><li><span class="chem-cause">Ka = [<a class="gl" href="../notes/acid-base-reactions-intro.html" data-c="hydronium">H₃O⁺</a>][A⁻]/[HA] holds in a buffer</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">taking −log of both sides gives pH = pKa + log([A⁻]/[HA])</span></li><li><span class="chem-cause">The ratio is 1 when the two components are equal</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">log 1 = 0, so pH = pKa</span></li><li><span class="chem-cause">Every tenfold change in the ratio</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">moves the pH by exactly one unit (base-10 log)</span></li><li><span class="chem-cause">A useful buffer needs both components in real amounts</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">pick an acid whose pKa is within about 1 of the target pH, then set the ratio</span></li></ol></div>
+  </section>
+  <section class="chem-part chem-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="chem-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="chem-step-body"><ul class="chem-ideas"><li><b>pH = pKa + log([A⁻]/[HA])</b>, base on top, base-10 log (never <a class="gl" href="../notes/math-logs.html" data-c="natural-log">ln</a>).</li><li><a class="gl" href="../notes/moles-molar-mass.html" data-c="mole">Moles</a> can replace concentrations: both share one volume, which cancels.</li><li><a class="gl" href="../notes/weak-acids-bases.html" data-c="weak-acid">Weak base</a> buffer (NH₃/NH₄⁺): use pKa of the <a class="gl" href="../notes/acid-base-reactions-intro.html" data-c="conjugate-pair">conjugate acid</a>, 14.00 − pKb.</li><li>To make a buffer: choose pKa ≈ target pH, find the ratio 10^(pH − pKa), then the amounts (or the volume of NaOH for partial <a class="gl" href="../notes/acid-base-reactions-intro.html" data-c="neutralization">neutralization</a>).</li></ul></div>
+  </section>
+  <section class="chem-part chem-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="chem-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="chem-step-body chem-misconception"><p class="chem-wrong"><b>The wrong idea:</b> The Henderson-Hasselbalch equation uses the natural log, like the <a class="gl" href="../notes/concentration-time.html" data-c="integrated-rate-law">integrated rate law</a> for a <a class="gl" href="../notes/rate-laws.html" data-c="reaction-order">first-order</a> reaction.</p><p class="chem-right"><b>What actually happens:</b> It is the base-10 log, because pH and pKa are base-10 logs. Using ln moves the answer by a factor of 2.303 in the log term, a frequent point lost on recent exams.</p></div>
+  </section>
+  <section class="chem-part chem-step" id="check" aria-labelledby="h-check">
+    <p class="chem-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="chem-step-body"><p class="chem-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="chem-qs" data-set="check"><div class="chem-set"><section class="chem-stim" data-stim="henderson-hasselbalch-s1" aria-labelledby="stim-henderson-hasselbalch-s1"><p class="chem-stim-k">Data table</p><h3 id="stim-henderson-hasselbalch-s1">Weak acids for making buffers</h3><div class="chem-stim-text"><p>A lab stocks each weak acid below and a sodium salt of its conjugate base (for NH₄⁺, the stock is NH₃ and NH₄Cl).</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Ka and pKa at 25 °C"><table class="chem-data"><caption>Ka and pKa at 25 °C</caption><thead><tr><th scope="col">Weak acid</th><th scope="col">Formula</th><th scope="col">Ka</th><th scope="col">pKa</th></tr></thead><tbody><tr><th scope="row">Formic acid</th><td>HCOOH</td><td>1.8 × 10⁻⁴</td><td>3.74</td></tr><tr><th scope="row">Acetic acid</th><td>CH₃COOH</td><td>1.8 × 10⁻⁵</td><td>4.74</td></tr><tr><th scope="row">Dihydrogen phosphate</th><td>H₂PO₄⁻</td><td>6.2 × 10⁻⁸</td><td>7.21</td></tr><tr><th scope="row">Ammonium ion</th><td>NH₄⁺</td><td>5.6 × 10⁻¹⁰</td><td>9.25</td></tr></tbody></table></div></section><div class="chem-q" data-qid="chem-henderson-hasselbalch-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> A student needs a buffer at pH 7.40. Which acid and conjugate base pair is the best choice?</p><ol class="chem-opts"><li>H₂PO₄⁻ and HPO₄²⁻</li><li>CH₃COOH and CH₃COO⁻</li><li>NH₄⁺ and NH₃</li><li>HCOOH and HCOO⁻</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Choose the acid whose pKa is closest to the target pH: H₂PO₄⁻ has pKa 7.21, within 0.2 of 7.40, so the ratio needed is near 1.</p><ul><li><b>Correct:</b> H₂PO₄⁻ and HPO₄²⁻: Right: pKa 7.21, closest to 7.40.</li><li>CH₃COOH and CH₃COO⁻: pKa 4.74 is 2.7 units away; the ratio would need to be about 450 : 1, a poor buffer.</li><li>NH₄⁺ and NH₃: pKa 9.25 is 1.85 units above the target; the ratio would be about 1 : 70.</li><li>HCOOH and HCOO⁻: pKa 3.74 is far too low.</li></ul></details></div><div class="chem-q" data-qid="chem-henderson-hasselbalch-2"><p class="chem-q-stem"><span class="chem-q-n">2.</span> What is the pH of a buffer that is 0.25 M HCOOH and 0.15 M HCOONa?</p><p class="chem-small">Type a number.</p><details class="chem-q-key"><summary>Show the answer</summary><p>pH = pKa + log([HCOO⁻]/[HCOOH]) = 3.74 + log(0.15/0.25) = 3.74 − 0.22 = 3.52. More acid than base, so the pH is below pKa, as it should be.</p><ul><li>Answer: 3.52</li></ul></details></div><div class="chem-q" data-qid="chem-henderson-hasselbalch-3"><p class="chem-q-stem"><span class="chem-q-n">3.</span> What is the pH of a buffer that is 0.30 M NH₃ and 0.20 M NH₄Cl?</p><p class="chem-small">Type a number.</p><details class="chem-q-key"><summary>Show the answer</summary><p>The acid of the pair is NH₄⁺ (pKa 9.25) and the base is NH₃. pH = 9.25 + log(0.30/0.20) = 9.25 + 0.18 = 9.43.</p><ul><li>Answer: 9.43</li></ul></details></div><div class="chem-q" data-qid="chem-henderson-hasselbalch-4"><p class="chem-q-stem"><span class="chem-q-n">4.</span> For an acetic acid / sodium acetate buffer at pH 5.00, what ratio [CH₃COO⁻]/[CH₃COOH] is needed?</p><p class="chem-small">Type a number.</p><details class="chem-q-key"><summary>Show the answer</summary><p>log([A⁻]/[HA]) = pH − pKa = 5.00 − 4.74 = 0.26; [A⁻]/[HA] = 10^0.26 = 1.8.</p><ul><li>Answer: 1.8</li></ul></details></div><div class="chem-q" data-qid="chem-henderson-hasselbalch-5"><p class="chem-q-stem"><span class="chem-q-n">5.</span> How many grams of NH₄Cl (53.49 g/mol) must be dissolved in 0.500 L of 0.200 M NH₃ to make a buffer at pH 9.00? Include the unit.</p><p class="chem-small">Type a number and its unit.</p><details class="chem-q-key"><summary>Show the answer</summary><p>pH = pKa + log([NH₃]/[NH₄⁺]): 9.00 = 9.25 + log(ratio), so [NH₃]/[NH₄⁺] = 10^−0.25 = 0.562. mol NH₃ = 0.500 L × 0.200 M = 0.100 mol, so mol NH₄⁺ = 0.100/0.562 = 0.178 mol. Mass = 0.178 mol × 53.49 g/mol = 9.51 g.</p><ul><li>Answer: 9.51 g</li></ul></details></div></div><div class="chem-set"><section class="chem-stim" data-stim="henderson-hasselbalch-s2" aria-labelledby="stim-henderson-hasselbalch-s2"><p class="chem-stim-k">Experimental setup</p><h3 id="stim-henderson-hasselbalch-s2">Making a buffer from one acid and NaOH</h3><div class="chem-stim-text"><p>A student must make a buffer of pH 5.04 from 50.0 mL of 0.200 M acetic acid (pKa = 4.74) and 0.100 M NaOH. The plan is to add NaOH from a buret to the acid in a beaker, then transfer to a 250.0 mL volumetric flask and dilute to the mark with distilled water.</p></div></section><div class="chem-q" data-qid="chem-henderson-hasselbalch-6"><p class="chem-q-stem"><span class="chem-q-n">6.</span> How many mL of 0.100 M NaOH should be added? Include the unit.</p><p class="chem-small">Type a number and its unit.</p><details class="chem-q-key"><summary>Show the answer</summary><p>Ratio needed: [A⁻]/[HA] = 10^(5.04 − 4.74) = 10^0.30 = 2. With x mol OH⁻: x/(0.0100 − x) = 2, so x = 0.00666 mol. Volume = 0.00666 mol ÷ 0.100 mol/L = 0.0666 L = 66.6 mL.</p><ul><li>Answer: 66.6 mL</li></ul></details></div></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="summary" aria-labelledby="h-summary">
+    <p class="chem-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="chem-step-body">The Henderson-Hasselbalch equation, pH = pKa + log([A⁻]/[HA]), is the Ka expression in log form. It gives a buffer's pH from its ratio, and works backwards to design a buffer: pick an acid with pKa near the target, find the ratio 10^(pH − pKa), and turn it into amounts. Use base-10 log, and pKa of the conjugate acid for a weak base buffer.</div>
+  </section>
+  <section class="chem-part chem-step" id="next" aria-labelledby="h-next">
+    <p class="chem-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="buffer-limits.html">Buffer Capacity &rarr;</a></p></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="connections" aria-labelledby="h-connections">
+    <p class="chem-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="chem-step-body"><ul class="chem-links chem-nav-ref"><li><a href="../notes/buffer-properties.html">Back: why buffers resist pH change (8.8)</a></li><li><a href="../notes/buffer-limits.html">Next: buffer capacity (8.10)</a></li><li><a href="../notes/math-logs.html">Review: logarithms (math)</a></li></ul></div>
+  </section>
+    <div class="chem-ls-actions chem-nav-ref"><button type="button" class="chem-ls-back">&larr; Previous</button><button type="button" class="chem-ls-go">Continue &rarr;</button><a class="chem-ls-go" hidden href="buffer-limits.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.chem-ls'),p=s&&s.querySelectorAll('.chem-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.chem-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apchem_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="chem-foot xshell">
+  <p class="chem-accuracy-note"><span class="chem-beta chem-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Chemistry teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="chem-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="lesson:henderson-hasselbalch">Report a problem</button></span></p>
+  <p class="chem-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="chem-page-data">{"topic":"henderson-hasselbalch","unit":"unit-8","free":false,"prereq":[{"id":"henderson-hasselbalch-pre-1","type":"single","unit":"unit-8","topic":"henderson-hasselbalch","q":"What is log(2.0)?","options":["0.30","0.69","2.0","−0.30"],"correct":0,"why":{"correct":"log(2.0) = 0.301. (0.69 is ln 2.)","options":["","","",""]},"reviewHref":"../notes/math-logs.html","reviewTitle":"Logarithms"},{"id":"henderson-hasselbalch-pre-2","type":"single","unit":"unit-8","topic":"henderson-hasselbalch","q":"In a buffer, the pH depends on what?","options":["The ratio [A⁻]/[HA]","The total concentration of acid only","The volume of the solution","The amount of water"],"correct":0,"why":{"correct":"[H₃O⁺] = Ka × [HA]/[A⁻]: only the ratio matters.","options":["","","",""]},"reviewHref":"../notes/buffer-properties.html","reviewTitle":"Properties of Buffers"},{"id":"henderson-hasselbalch-pre-3","type":"single","unit":"unit-8","topic":"henderson-hasselbalch","q":"Which form predominates at a pH one unit below pKa?","options":["HA","A⁻","Equal amounts","Neither"],"correct":0,"why":{"correct":"Below pKa, the protonated form wins, by 10 : 1 at one unit below.","options":["","","",""]},"reviewHref":"../notes/ph-and-pka.html","reviewTitle":"pH and pKa"}],"check":[{"id":"chem-henderson-hasselbalch-1","type":"single","unit":"unit-8","topic":"henderson-hasselbalch","practice":"4.A","level":"apply","diff":1,"stimulus":"henderson-hasselbalch-s1","q":"A student needs a buffer at pH 7.40. Which acid and conjugate base pair is the best choice?","options":["H₂PO₄⁻ and HPO₄²⁻","CH₃COOH and CH₃COO⁻","NH₄⁺ and NH₃","HCOOH and HCOO⁻"],"correct":0,"why":{"correct":"Choose the acid whose pKa is closest to the target pH: H₂PO₄⁻ has pKa 7.21, within 0.2 of 7.40, so the ratio needed is near 1.","options":["Right: pKa 7.21, closest to 7.40.","pKa 4.74 is 2.7 units away; the ratio would need to be about 450 : 1, a poor buffer.","pKa 9.25 is 1.85 units above the target; the ratio would be about 1 : 70.","pKa 3.74 is far too low."]}},{"id":"chem-henderson-hasselbalch-2","type":"numeric","unit":"unit-8","topic":"henderson-hasselbalch","practice":"5.F","level":"apply","diff":1,"stimulus":"henderson-hasselbalch-s1","q":"What is the pH of a buffer that is 0.25 M HCOOH and 0.15 M HCOONa?","numeric":{"answer":3.52,"tol":0.01,"unit":"","places":2,"mistakes":[{"value":3.96,"why":"Value: the ratio is upside down. pH = pKa + log([A⁻]/[HA]): base on top.","tol":0.02},{"value":3.23,"why":"Value: you used ln instead of log in the Henderson-Hasselbalch equation. It is the base-10 log.","tol":0.02}]},"why":{"correct":"pH = pKa + log([HCOO⁻]/[HCOOH]) = 3.74 + log(0.15/0.25) = 3.74 − 0.22 = 3.52. More acid than base, so the pH is below pKa, as it should be."}},{"id":"chem-henderson-hasselbalch-3","type":"numeric","unit":"unit-8","topic":"henderson-hasselbalch","practice":"5.F","level":"apply","diff":2,"stimulus":"henderson-hasselbalch-s1","q":"What is the pH of a buffer that is 0.30 M NH₃ and 0.20 M NH₄Cl?","numeric":{"answer":9.43,"tol":0.01,"unit":"","places":2,"mistakes":[{"value":4.92,"why":"Value: you used pKb of NH₃ (4.74). The Henderson-Hasselbalch equation needs pKa of the acid of the pair, NH₄⁺: 9.25.","tol":0.02},{"value":9.07,"why":"Value: the base, NH₃, goes on top of the ratio: log([NH₃]/[NH₄⁺]).","tol":0.02}]},"why":{"correct":"The acid of the pair is NH₄⁺ (pKa 9.25) and the base is NH₃. pH = 9.25 + log(0.30/0.20) = 9.25 + 0.18 = 9.43."}},{"id":"chem-henderson-hasselbalch-4","type":"numeric","unit":"unit-8","topic":"henderson-hasselbalch","practice":"5.F","level":"apply","diff":2,"stimulus":"henderson-hasselbalch-s1","q":"For an acetic acid / sodium acetate buffer at pH 5.00, what ratio [CH₃COO⁻]/[CH₃COOH] is needed?","numeric":{"answer":1.8,"tol":0.1,"unit":"","sigfigs":2,"mistakes":[{"value":0.56,"why":"Value: that is [CH₃COOH]/[CH₃COO⁻]. pH 5.00 is above pKa, so the base must be in the majority.","rel":0.02},{"value":1.3,"why":"Value: you undid an ln instead of a log. The ratio is 10^(pH − pKa).","rel":0.02}]},"why":{"correct":"log([A⁻]/[HA]) = pH − pKa = 5.00 − 4.74 = 0.26; [A⁻]/[HA] = 10^0.26 = 1.8."}},{"id":"chem-henderson-hasselbalch-5","type":"numeric","unit":"unit-8","topic":"henderson-hasselbalch","practice":"5.F","level":"analyze","diff":3,"stimulus":"henderson-hasselbalch-s1","q":"How many grams of NH₄Cl (53.49 g/mol) must be dissolved in 0.500 L of 0.200 M NH₃ to make a buffer at pH 9.00? Include the unit.","numeric":{"answer":9.51,"tol":0.01,"unit":"g","askUnit":true,"sigfigs":3,"mistakes":[{"value":3.01,"why":"Value: the ratio is inverted. pH 9.00 is below pKa 9.25, so NH₄⁺ must outnumber NH₃: mol NH₄⁺ = mol NH₃ / 10^(pH − pKa).","rel":0.02},{"value":0.000294,"why":"Value: you used pKb (4.74) in place of pKa of NH₄⁺ (9.25).","rel":0.02}]},"why":{"correct":"pH = pKa + log([NH₃]/[NH₄⁺]): 9.00 = 9.25 + log(ratio), so [NH₃]/[NH₄⁺] = 10^−0.25 = 0.562. mol NH₃ = 0.500 L × 0.200 M = 0.100 mol, so mol NH₄⁺ = 0.100/0.562 = 0.178 mol. Mass = 0.178 mol × 53.49 g/mol = 9.51 g."}},{"id":"chem-henderson-hasselbalch-6","type":"numeric","unit":"unit-8","topic":"henderson-hasselbalch","practice":"5.F","level":"analyze","diff":3,"stimulus":"henderson-hasselbalch-s2","q":"How many mL of 0.100 M NaOH should be added? Include the unit.","numeric":{"answer":66.6,"tol":0.1,"unit":"mL","units":["milliliters"],"askUnit":true,"sigfigs":3,"mistakes":[{"value":50,"why":"Value: that gives a 1 : 1 ratio, pH 4.74. For pH 5.04 the ratio [A⁻]/[HA] must be 10^0.30 = 2.0, so more base is needed.","rel":0.02},{"value":200,"why":"Value: x mol OH⁻ makes x mol A⁻ and leaves (0.0100 − x) mol HA, so solve x/(0.0100 − x) = 2.0, not x = 2.0 × 0.0100.","rel":0.02}]},"why":{"correct":"Ratio needed: [A⁻]/[HA] = 10^(5.04 − 4.74) = 10^0.30 = 2. With x mol OH⁻: x/(0.0100 − x) = 2, so x = 0.00666 mol. Volume = 0.00666 mol ÷ 0.100 mol/L = 0.0666 L = 66.6 mL."}}],"stimuli":{"henderson-hasselbalch-s1":{"kind":"table","title":"Weak acids for making buffers","html":"\u003cdiv class=\"chem-stim-text\">\u003cp>A lab stocks each weak acid below and a sodium salt of its conjugate base (for NH₄⁺, the stock is NH₃ and NH₄Cl).\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Ka and pKa at 25 °C\">\u003ctable class=\"chem-data\">\u003ccaption>Ka and pKa at 25 °C\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Weak acid\u003c/th>\u003cth scope=\"col\">Formula\u003c/th>\u003cth scope=\"col\">Ka\u003c/th>\u003cth scope=\"col\">pKa\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">Formic acid\u003c/th>\u003ctd>HCOOH\u003c/td>\u003ctd>1.8 × 10⁻⁴\u003c/td>\u003ctd>3.74\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Acetic acid\u003c/th>\u003ctd>CH₃COOH\u003c/td>\u003ctd>1.8 × 10⁻⁵\u003c/td>\u003ctd>4.74\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Dihydrogen phosphate\u003c/th>\u003ctd>H₂PO₄⁻\u003c/td>\u003ctd>6.2 × 10⁻⁸\u003c/td>\u003ctd>7.21\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Ammonium ion\u003c/th>\u003ctd>NH₄⁺\u003c/td>\u003ctd>5.6 × 10⁻¹⁰\u003c/td>\u003ctd>9.25\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"},"henderson-hasselbalch-s2":{"kind":"setup","title":"Making a buffer from one acid and NaOH","html":"\u003cdiv class=\"chem-stim-text\">\u003cp>A student must make a buffer of pH 5.04 from 50.0 mL of 0.200 M acetic acid (pKa = 4.74) and 0.100 M NaOH. The plan is to add NaOH from a buret to the acid in a beaker, then transfer to a 250.0 mL volumetric flask and dilute to the mark with distilled water.\u003c/p>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApChemSection = 'learn'; window.ApChemBase = '../';</script>
+<script src="../assets/chem-curriculum.js" defer></script>
+<script src="../assets/chem-core.js" defer></script>
+<script src="../assets/chem-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/chem-questions.js" defer></script>
+<script src="../assets/chem-lesson.js" defer></script>
+</body>
+</html>
