@@ -148,20 +148,20 @@
    "stimulus": "solubility-s1",
    "q": "Based on the trend, how would 1-octanol (8 carbons) dissolve in water?",
    "options": [
-    "Less than 0.17 g per 100 g water",
-    "Between 0.17 and 0.59 g per 100 g water",
+    "It would be miscible with water",
     "About 7.7 g per 100 g water",
-    "It would be miscible with water"
+    "Between 0.17 and 0.59 g per 100 g water",
+    "Less than 0.17 g per 100 g water"
    ],
-   "correct": 0,
+   "correct": 3,
    "fixed": true,
    "why": {
     "correct": "Each added carbon lowers the solubility; 1-octanol should fall below 1-heptanol's 0.17 g. (Its measured value is about 0.05 g per 100 g water.)",
     "options": [
-     "Right: below the 7-carbon value.",
-     "That range lies between the 6- and 7-carbon values; 8 carbons should be lower still.",
+     "Miscibility belongs to the shortest alcohols, up to 3 carbons.",
      "That is the 4-carbon value.",
-     "Miscibility belongs to the shortest alcohols, up to 3 carbons."
+     "That range lies between the 6- and 7-carbon values; 8 carbons should be lower still.",
+     "Right: below the 7-carbon value."
     ]
    }
   },
@@ -203,18 +203,18 @@
    "stimulus": "solubility-s2",
    "q": "How does the solubility of O₂ in water change as the temperature rises?",
    "options": [
-    "It decreases.",
     "It increases.",
+    "It decreases.",
     "It stays the same.",
     "It increases, then decreases."
    ],
-   "correct": 0,
+   "correct": 1,
    "fixed": true,
    "why": {
     "correct": "The dissolved O₂ falls from 14.6 mg/L at 0 °C to 6.4 mg/L at 40 °C.",
     "options": [
-     "Right: lower at each higher temperature.",
      "This reverses the trend in the table.",
+     "Right: lower at each higher temperature.",
      "The values change by more than half.",
      "Every value is lower than the one before."
     ]
@@ -317,7 +317,6 @@
     "Methanol, CH₃OH"
    ],
    "correct": 0,
-   "fixed": true,
    "why": {
     "correct": "Hexane is nonpolar. I₂ is nonpolar too, so dispersion attractions between them are comparable to those each loses.",
     "options": [

@@ -204,7 +204,6 @@
     "CO₂"
    ],
    "correct": 0,
-   "fixed": true,
    "why": {
     "correct": "Helium’s curve starts at 1 and only rises. Its atoms attract each other so weakly that only the volume effect shows, and it grows with pressure.",
     "options": [
@@ -280,20 +279,20 @@
    "stimulus": "real-gases-s1",
    "q": "At 1 atm, by about what percent does CO₂ differ from ideal behavior?",
    "options": [
-    "About 0.3%",
+    "About 90%",
     "About 34%",
     "About 16%",
-    "About 90%"
+    "About 0.3%"
    ],
-   "correct": 0,
+   "correct": 3,
    "fixed": true,
    "why": {
     "correct": "At 1 atm, PV/nRT for CO₂ is 0.997, which is 0.3% below 1. That is why the ideal gas law works well at ordinary pressures.",
     "options": [
-     "Right: a small deviation at low pressure.",
+     "No gas in the graph deviates that much at any pressure shown.",
      "That is the deviation at 100 atm, not at 1 atm.",
      "That is the deviation at 50 atm, not at 1 atm.",
-     "No gas in the graph deviates that much at any pressure shown."
+     "Right: a small deviation at low pressure."
     ]
    }
   },
@@ -449,7 +448,6 @@
     "High temperature and high pressure"
    ],
    "correct": 0,
-   "fixed": true,
    "why": {
     "correct": "Fast particles (high T) are barely affected by attractions, and particles far apart (low P) have negligible volume and few neighbors.",
     "options": [
@@ -577,19 +575,19 @@
    "diff": 2,
    "q": "A real gas has PV/nRT = 0.92 under certain conditions. If its pressure at those conditions is measured as 46.0 atm, what pressure would an ideal gas have?",
    "options": [
-    "50.0 atm",
     "42.3 atm",
     "46.0 atm",
+    "50.0 atm",
     "92.0 atm"
    ],
-   "correct": 0,
+   "correct": 2,
    "fixed": true,
    "why": {
     "correct": "PV/nRT = P(real)/P(ideal) at the same n, V and T, so P(ideal) = 46.0 / 0.92 = 50.0 atm. The real gas pushes less because of attractions.",
     "options": [
-     "Right: 46.0 ÷ 0.92.",
      "This multiplies by 0.92 instead of dividing.",
      "The ratio is not 1, so the pressures differ.",
+     "Right: 46.0 ÷ 0.92.",
      "This multiplies by 2 for no reason."
     ]
    }

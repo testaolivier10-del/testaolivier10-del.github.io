@@ -63,18 +63,18 @@
    "stimulus": "solids-properties-s1",
    "q": "Which solid is most likely a molecular solid?",
    "options": [
-    "X",
     "W",
+    "X",
     "Y",
     "Z"
    ],
-   "correct": 0,
+   "correct": 1,
    "fixed": true,
    "why": {
     "correct": "X melts low (114 °C), is soft and conducts in neither state. Low melting means only weak intermolecular forces hold the particles together, and no conduction means no ions or free electrons.",
     "options": [
-     "Right: low melting point, soft, no conduction.",
      "W conducts only when melted, the signature of an ionic solid whose ions become free to move.",
+     "Right: low melting point, soft, no conduction.",
      "Y melts at 1,710 °C, far too high for a solid held by intermolecular forces.",
      "Z conducts as a solid and bends, which marks a metal."
     ]
@@ -202,20 +202,20 @@
    "stimulus": "solids-properties-s2",
    "q": "Which box shows a solid that conducts electricity as a solid?",
    "options": [
-    "Box 4",
+    "Box 1",
     "Box 2",
     "Box 3",
-    "Box 1"
+    "Box 4"
    ],
-   "correct": 0,
+   "correct": 3,
    "fixed": true,
    "why": {
     "correct": "Box 4 shows metal cations among delocalized electrons. Those electrons move freely, so the solid conducts.",
     "options": [
-     "Right: mobile electrons carry the current.",
+     "Neutral molecules carry no charge and there are no free electrons.",
      "The ions in an ionic lattice are fixed, so box 2 conducts only when melted or dissolved.",
      "In a covalent network every electron is in a bond, so nothing carries a charge.",
-     "Neutral molecules carry no charge and there are no free electrons."
+     "Right: mobile electrons carry the current."
     ]
    }
   },

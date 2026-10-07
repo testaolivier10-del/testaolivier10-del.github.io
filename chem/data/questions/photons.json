@@ -193,20 +193,20 @@
    "stimulus": "photons-s1",
    "q": "Which line comes from the largest drop in energy between two levels?",
    "options": [
-    "D, 410.2 nm",
     "A, 656.3 nm",
     "B, 486.1 nm",
-    "C, 434.0 nm"
+    "C, 434.0 nm",
+    "D, 410.2 nm"
    ],
-   "correct": 0,
+   "correct": 3,
    "fixed": true,
    "why": {
     "correct": "E = hc/λ, so the shortest wavelength carries the most energy. Line D, at 410.2 nm, comes from the largest energy drop.",
     "options": [
-     "Right: shortest wavelength, most energy.",
      "Line A has the longest wavelength, so the smallest energy drop of the four.",
      "Line B, at 486.1 nm, is a longer wavelength than two of the other lines.",
-     "Line C, at 434.0 nm, is longer than the 410.2 nm line."
+     "Line C, at 434.0 nm, is longer than the 410.2 nm line.",
+     "Right: shortest wavelength, most energy."
     ]
    }
   },
@@ -285,7 +285,6 @@
     "Energy per photon does not depend on wavelength."
    ],
    "correct": 0,
-   "fixed": true,
    "why": {
     "correct": "Doubling the wavelength from 300 nm to 600 nm halves the energy, from 6.62 to 3.31 × 10⁻¹⁹ J. E = hc/λ.",
     "options": [
@@ -339,18 +338,18 @@
    "stimulus": "photons-s2",
    "q": "An electronic transition in a molecule requires 4.97 × 10⁻¹⁹ J. Which wavelength of light could cause it?",
    "options": [
-    "About 400 nm",
     "About 200 nm",
+    "About 400 nm",
     "About 600 nm",
     "About 800 nm"
    ],
-   "correct": 0,
+   "correct": 1,
    "fixed": true,
    "why": {
     "correct": "λ = hc/E = (6.626 × 10⁻³⁴ × 2.998 × 10⁸) / 4.97 × 10⁻¹⁹ = 400 nm. The graph shows 4.97 × 10⁻¹⁹ J at about 400 nm.",
     "options": [
-     "Right: the photon energy matches the gap.",
      "A 200 nm photon carries about twice the energy needed.",
+     "Right: the photon energy matches the gap.",
      "A 600 nm photon carries only about two thirds of the energy needed.",
      "An 800 nm photon carries about half the energy needed."
     ]
@@ -492,7 +491,6 @@
     "c = λν"
    ],
    "correct": 0,
-   "fixed": true,
    "why": {
     "correct": "The energy of a photon is Planck's constant times its frequency.",
     "options": [
@@ -519,7 +517,6 @@
     "Frequency doubles; energy halves."
    ],
    "correct": 0,
-   "fixed": true,
    "why": {
     "correct": "c = λν with c fixed, so doubling λ halves ν. E = hν, so the energy halves too.",
     "options": [

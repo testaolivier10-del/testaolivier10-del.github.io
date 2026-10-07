@@ -192,7 +192,6 @@
     "H toward both ions, because hydrogen bonds to both."
    ],
    "correct": 0,
-   "fixed": true,
    "why": {
     "correct": "Opposite charges face each other: water's δ− oxygen toward the cation, and its δ+ hydrogens toward the negatively charged sulfate ion (whose outer O atoms carry the negative charge).",
     "options": [
@@ -249,20 +248,20 @@
    "diff": 2,
    "q": "Which ion attracts the water molecules around it most strongly?",
    "options": [
-    "Mg²⁺ (radius 72 pm)",
-    "Na⁺ (radius 102 pm)",
     "K⁺ (radius 138 pm)",
-    "Ca²⁺ (radius 100 pm)"
+    "Na⁺ (radius 102 pm)",
+    "Ca²⁺ (radius 100 pm)",
+    "Mg²⁺ (radius 72 pm)"
    ],
-   "correct": 0,
+   "correct": 3,
    "fixed": true,
    "why": {
     "correct": "By Coulomb's law the attraction grows with charge and falls with distance. Mg²⁺ has the larger charge (2+) and the smallest radius, so water molecules can get closest to the most charge.",
     "options": [
-     "Right: high charge, small radius.",
-     "Na⁺ has only a 1+ charge and a larger radius than Mg²⁺.",
      "K⁺ has a 1+ charge and the largest radius.",
-     "Ca²⁺ has the same charge as Mg²⁺ but a larger radius, so water sits farther away."
+     "Na⁺ has only a 1+ charge and a larger radius than Mg²⁺.",
+     "Ca²⁺ has the same charge as Mg²⁺ but a larger radius, so water sits farther away.",
+     "Right: high charge, small radius."
     ]
    }
   },
@@ -362,20 +361,20 @@
    "diff": 2,
    "q": "Each box below represents equal volumes of 0.20 M solutions. Which solution has the most solute particles in the box?",
    "options": [
-    "0.20 M AlCl₃",
+    "0.20 M sucrose",
     "0.20 M NaCl",
     "0.20 M MgSO₄",
-    "0.20 M sucrose"
+    "0.20 M AlCl₃"
    ],
-   "correct": 0,
+   "correct": 3,
    "fixed": true,
    "why": {
     "correct": "AlCl₃ → Al³⁺ + 3 Cl⁻ gives 4 ions per formula unit (0.80 M of particles). NaCl and MgSO₄ give 2 each (0.40 M), and sucrose gives 1 molecule (0.20 M).",
     "options": [
-     "Right: four ions per formula unit.",
+     "Sucrose stays as whole molecules: one particle each.",
      "Two ions per formula unit.",
      "Mg²⁺ and SO₄²⁻: two ions per formula unit.",
-     "Sucrose stays as whole molecules: one particle each."
+     "Right: four ions per formula unit."
     ]
    }
   },
