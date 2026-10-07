@@ -1,6 +1,6 @@
 {
  "topic": "common-ion-effect",
- "hook": "Lead(II) chloride is fairly soluble in pure water for a \"slightly soluble\" salt, about four grams per liter. Pour in some table salt, and almost all of that lead chloride falls out as a white solid. Nothing about lead chloride has changed. The solution simply already had one of its ions, and that changes the balance.",
+ "hook": "Lead(II) chloride is fairly soluble in pure water for a \"slightly soluble\" salt, about four and a half grams per liter. Pour in some table salt, and almost all of that lead chloride falls out as a white solid. Nothing about lead chloride has changed. The solution simply already had one of its ions, and that changes the balance.",
  "prereq": [
   {
    "q": "For PbCl<sub>2</sub>, what is the K<sub>sp</sub> expression?",
