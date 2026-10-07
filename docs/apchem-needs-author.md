@@ -38,7 +38,19 @@ AP® Biology frees one simulator and all skills tools (apbio decision 9). Propos
 Chemistry: the particle-diagram trainer free, the other trainers and drills Premium. Owner to
 confirm before the first trainer ships.
 
-## unit-1-data-values: verify reference data used in Unit 1 items (open, 2026-10-06)
+## unit-1-data-values: verify reference data used in Unit 1 items (resolved, 2026-10-06)
+
+Resolved in the Unit 1 review (`docs/apchem-reviews/u1.md`). Isotope masses and abundances for
+Mg, Cl, Ga, B and Cu match the NIST atomic weights and isotopic compositions table to every digit
+shown. First ionization energies (Na 496 … Cl 1251 kJ/mol), Al successive ionization energies
+(577.5, 1816.7, 2744.8, 11,577, 14,842), Pauling electronegativities (0.93 … 3.16) and the period 3
+radii (186 … 99 pm) are the standard CRC/textbook values. PES binding energies: Ne 84.0/4.68/2.08
+match gas-phase values (870.2/48.5/21.6 eV); Na, Mg and Si agree with X-ray binding energies within
+the few percent expected between solid- and gas-phase references, so they are realistic rounded
+values, and every item states the values it uses. One inconsistency fixed: the PES item stimulus
+gave Mg 3s as 0.74 while the notes and FRQ give 0.738; now 0.738 everywhere.
+
+Original entry:
 
 Unit 1 items and FRQs use rounded literature values written from memory, not looked up: PES binding
 energies (Ne 84.0/4.68/2.08; Na 104/6.84/3.67/0.496; Mg 126/9.07/5.31/0.738; Si 178/15.1/10.3/1.46/0.79
@@ -53,6 +65,13 @@ during the Unit 1 accuracy review. Where: `chem/data/questions/{photoelectron-sp
 The periodic-trends notes explain the P → S ionization-energy dip by repulsion between paired 3p
 electrons, and mention electron affinity qualitatively. Confirm both are within what the CED expects
 for 1.7, or trim to a going-further aside.
+
+Unit 1 review note (2026-10-06, still open): electron affinity is listed with ionization energy, radii and
+electronegativity among the 1.7 periodic properties (2019 CED as recalled, and every study guide
+checked), so the qualitative mention stays. The paired-electron
+explanation of the P → S dip appears in the notes and lesson ideas only; no item or FRQ tests it
+(chem-periodic-trends-9 cites the dip as data only). The CED text for 1.7 could not be fetched
+verbatim, so the owner should still decide whether that explanation stays in the main text.
 ## unit2-data: values chosen for Unit 2 items (open, 2026-10-06)
 
 Unit 2 items use typical textbook values, rounded, which differ slightly between sources. An

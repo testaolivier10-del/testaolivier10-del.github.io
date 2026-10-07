@@ -388,21 +388,21 @@
    "practice": "4.A",
    "level": "apply",
    "diff": 2,
-   "q": "Which list is in order of increasing radius?",
+   "q": "How does each ion's radius compare with the radius of its own atom?",
    "options": [
-    "Na < Na⁺ < Cl⁻ < Cl",
-    "Cl⁻ < Cl < Na < Na⁺",
-    "Na⁺ < Cl⁻ < Na < Cl",
-    "Na⁺ < Na < Cl < Cl⁻"
+    "Na⁺ is larger than Na, and Cl⁻ is smaller than Cl",
+    "Na⁺ is larger than Na, and Cl⁻ is larger than Cl",
+    "Na⁺ is smaller than Na, and Cl⁻ is smaller than Cl",
+    "Na⁺ is smaller than Na, and Cl⁻ is larger than Cl"
    ],
    "correct": 3,
    "why": {
-    "correct": "Na⁺ has lost its whole 3rd shell (very small); Na (186 pm) is larger than Cl (99 pm); Cl⁻ has an extra electron and more repulsion, so it is larger than Cl.",
+    "correct": "Na⁺ has lost its only shell-3 electron, so its outermost electrons are in shell 2 and it is much smaller than Na. Cl⁻ has one more electron than Cl with the same 17 protons; the extra electron-electron repulsion spreads the cloud, so Cl⁻ is larger than Cl.",
     "options": [
-     "A cation is smaller than its atom, and an anion larger than its atom.",
-     "This is the reverse order.",
-     "Cl⁻ is larger than the Cl atom, not smaller than Na.",
-     "Right: removing electrons shrinks an atom; adding them expands it."
+     "This is the reverse of both changes: losing electrons shrinks a particle and gaining them expands it.",
+     "Losing the whole third shell makes Na⁺ smaller than Na, not larger.",
+     "Gaining an electron adds repulsion with no added protons, so Cl⁻ is larger than Cl.",
+     "Right: a cation is smaller than its atom and an anion larger than its atom."
     ]
    }
   },
@@ -504,7 +504,7 @@
     "On the left and in the middle",
     "In the top right corner of the table",
     "In group 18, the last column",
-    "Along the bottom two rows"
+    "Along the staircase line"
    ],
    "correct": 0,
    "why": {
@@ -513,7 +513,7 @@
      "Right: metals have few valence electrons that are held loosely.",
      "The upper right holds the nonmetals.",
      "Group 18 is the noble gases, which are nonmetals.",
-     "Metals fill most of the table, from the left side through the middle."
+     "The staircase holds the metalloids, which are in between; metals fill most of the table to its left."
     ]
    }
   }

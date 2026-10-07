@@ -297,7 +297,7 @@
      {
       "value": 1e-13,
       "rel": 0.01,
-      "why": "Value: you treated −4 as +4 or subtracted 7. Multiplying adds: −4 + 7 = 3."
+      "why": "Value: you subtracted 7 instead of adding it. Multiplying adds the exponents: −4 + 7 = 3."
      }
     ]
    },

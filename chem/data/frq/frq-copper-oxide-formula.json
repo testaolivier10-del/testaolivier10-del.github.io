@@ -145,7 +145,7 @@
   },
   {
    "label": "g",
-   "prompt": "In Trial 2, the student uses the same mass of copper but heats it longer at a higher temperature. The crucible and product now have a mass of 22.895 g. <b>Determine</b> the empirical formula of the Trial 2 product, and <b>explain</b> how the results of the two trials are consistent with the law of definite proportions.",
+   "prompt": "In Trial 2, the student uses the same mass of copper but heats it much longer, stirring it, in a stream of pure oxygen. The crucible and product now have a mass of 22.895 g. <b>Determine</b> the empirical formula of the Trial 2 product, and <b>explain</b> how the results of the two trials are consistent with the law of definite proportions.",
    "points": 2,
    "rubric": [
     {

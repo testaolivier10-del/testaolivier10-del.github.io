@@ -211,7 +211,7 @@
      "Sample size does not change the percent of a pure compound.",
      "Right: too little oxygen gained makes the product too light, and the Mg share comes out too high.",
      "Extra water would add mass and lower the Mg percent, not raise it.",
-     "A balance error of 0.05 g in both masses changes the percent by well under 1%, not 6%."
+     "A balance that reads every mass 0.05 g high moves the percent by only about 1 to 2 percentage points for these samples, not 6."
     ]
    }
   },
@@ -408,7 +408,7 @@
     "Round 1.33 to 1, so XY is correct",
     "Multiply both by 3 to get 3 : 4, so X₃Y₄",
     "Multiply both by 2 to get 2 : 2.66, so X₂Y₃",
-    "Divide both by 1.33 to get 0.75 : 1, so X₃Y₄"
+    "Divide both by 1.33 to get 0.75 : 1, then round to XY"
    ],
    "correct": 1,
    "why": {
@@ -417,7 +417,7 @@
      "A ratio 0.33 from a whole number is a real fraction, not rounding error.",
      "Right: 1.33 is 4/3; multiplying by 3 clears the fraction.",
      "2.66 is not close to a whole number; multiply by 3.",
-     "Dividing gives 0.75 : 1, still not whole; the correct move is to multiply by 3."
+     "Dividing gives 0.75 : 1, and 0.75 is a real fraction, not rounding error; rounding it away loses the true ratio of 3 : 4."
     ]
    }
   },

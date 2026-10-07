@@ -121,13 +121,13 @@
    "diff": 1,
    "q": "Normal body temperature is 37.0 °C. What is it in kelvin?",
    "numeric": {
-    "answer": 310.1,
+    "answer": 310.2,
     "tol": 0.1,
     "unit": "K",
     "decimals": 1,
     "mistakes": [
      {
-      "value": -236.1,
+      "value": -236.2,
       "rel": 0.01,
       "why": "Value: you subtracted 273.15. To go from °C to K, add 273.15."
      }

@@ -195,7 +195,7 @@
      "How the atoms are packed changes the volume, not the mass per atom.",
      "Right: 63.55 ÷ 26.98 = 2.36, and 9.41 ÷ 2.36 = 3.99.",
      "Every mole holds 6.022 × 10²³ particles, whatever the element.",
-     "Significant figures limit how precisely you report the count; they do not change it by a factor of two."
+     "Significant figures limit how precisely you report the count; they cannot change it by a factor of more than two."
     ]
    }
   },
