@@ -131,10 +131,10 @@ All on one branch, `claude/apchem` (decision 5), one PR at the end.
 | 0 | CED topic map (own words, 91 topics), dependency map, fork generator and runtime, checks, registration (registry, Premium pass, Worker, SQL migration, hub/pricing hidden until published, search, sitemap, OG card, budgets, theme colour) | **done 2026-10-06** (decisions 6-12): `docs/apchem-ced-map.json`, `docs/apchem-dependency-map.json` (96 topics, 285 concepts; `docs/apchem-phase0.md`), `scripts/build-apchem.mjs`, `check-apchem-map.mjs`, `check-apchem-content.mjs`, runtime `chem/assets/`, formats in `docs/apchem-architecture.md`, rules in `docs/apchem-authoring-guide.md` |
 | 1 | Units 1-3 with the math refresher (`skills-math`, 5 topics), notes, lessons, banks, FRQs, particle-diagram practice | **done 2026-10-06**; independent accuracy check per unit: `docs/apchem-reviews/u1.md`, `u2.md`, `u3.md` |
 | 2 | Units 4-9, with the drills and titration reader | **done 2026-10-06**: all units written (96 topics, 1,565 bank items, 38 FRQs, figures in `chem/figures/`); accuracy checks `docs/apchem-reviews/u4.md`-`u9.md` (decisions 13-14) |
-| 2b | Trainers and drills: particle diagrams, ICE tables, Q vs K, buffers, titration curve reader, units and sig figs | **done 2026-10-06** (decision 15); seeded generators with independent validators |
-| 3 | Justification trainer (37 prompts), two fixed practice exams (32 exam-only items), equations-sheet page, score calculator, 9 unit practice tests, cram kit | **built 2026-10-06** (decision 15, Phase 3); exams and justification prompts under review by a separate pass (needs-author `phase3-findings`) |
-| Launch review | Phase 3 content findings fixed, 36 fixed-order items no longer show the key first, published, continuity pass, full CI | **done 2026-10-06** (decision 16). **Published**: `chem/data/published.json` lists `skills-math` and `unit-1`…`unit-9`; Beta badge and "not yet reviewed by an AP® teacher" note stay; Premium stays `onSale: false` until section 8 is done |
-| 4 | Second accuracy pass on the whole course (incl. exam-only items and justify prompts); PR to owner | open; Units 4-6 done 2026-10-07 (`docs/apchem-reviews/second-pass/u4-6.md`) |
+| 2b | Trainers and drills: particle diagrams, ICE tables, Q vs K, buffers, titration curve reader, units and sig figs | **done 2026-10-06** (decision 16); seeded generators with independent validators |
+| 3 | Justification trainer (37 prompts), two fixed practice exams (32 exam-only items), equations-sheet page, score calculator, 9 unit practice tests, cram kit | **done 2026-10-06** (decision 17); reviewed: `docs/apchem-reviews/tools-exams.md` (score cut-offs 72/58/42/27, labelled estimates) |
+| Launch review | Phase 3 content findings fixed, 36 fixed-order items no longer show the key first, published, continuity pass, full CI | **done 2026-10-06** (decision 18). **Published**: `chem/data/published.json` lists `skills-math` and `unit-1`…`unit-9`; Beta badge and "not yet reviewed by an AP® teacher" note stay; Premium stays `onSale: false` until section 8 is done |
+| 4 | Second accuracy pass on the whole course (incl. exam-only items and justify prompts); PR to owner | **done 2026-10-07**: `docs/apchem-reviews/second-pass/u1-3.md`, `u4-6.md`, `u7-9.md` (12 fixes, 2 keys changed); plain-text helper keeps bare `<`/`>`; full CI with browser checks passes; PR opened |
 
 Quality bar per unit: AP® Biology authoring guide rules (original items only, never adapted from
 released exams; at least 60% apply/analyze; stimulus sets; per-option explanations; key-length
@@ -204,7 +204,7 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    `chem-ph-and-pka-5` now one correct option, `chem-acid-strength-structure-5` multi → single), three
    figures re-laid out; `unit8-values` partly resolved.
 
-13. (2026-10-06, Unit 7) **Unit 7 content and two shared fixes.** Map: "Q < K", "Q > K", "Q = K" moved to
+14. (2026-10-06, Unit 7) **Unit 7 content and two shared fixes.** Map: "Q < K", "Q > K", "Q = K" moved to
    `reaction-quotient` (7.3, where the CED teaches the comparison; `q-vs-k` in 7.10 keeps the justification
    terms) and `ice-table` moved to `calculating-k` (7.4 uses ICE tables before 7.7). Grader: the numeric
    floating-point slack in `chem-questions.js` (and the matching check in `check-apchem-content.mjs`) is now
@@ -212,13 +212,13 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    Five FRQs: long `frq-iron-thiocyanate` (lab, Beer's law, Q vs K) and `frq-hydrogen-iodide-particles`;
    short `frq-methanol-shift`, `frq-strontium-fluoride`, `frq-phosgene-ice`. Open points: needs-author
    `unit7-data`, `unit7-small-x`.
-14. (2026-10-06, Unit 9 review) **Unit 9 accuracy-checked** (`docs/apchem-reviews/u9.md`): 11 topics,
+15. (2026-10-06, Unit 9 review) **Unit 9 accuracy-checked** (`docs/apchem-reviews/u9.md`): 11 topics,
    173 items, 5 FRQs, 11 lesson figures and 9 stimulus drawings. Every numeric key and mistake recomputed
    in code: no key changed. Fixes were wording, sig figs in explanations, one mistake value, ΔG° labels
    on the ATP set, S° > 0 limited to pure substances, and one stem lengthened to clear a near-duplicate.
    Needs-author `unit9-data` and `unit9-atp` resolved; `unit9-exclusions-applied` partly (9.8
    exclusion confirmed in the CED; 9.10 page not fully read).
-15. (2026-10-06) **Trainers and drills built** (differentiators 2-4; formats in `docs/apchem-architecture.md`,
+16. (2026-10-06) **Trainers and drills built** (differentiators 2-4; formats in `docs/apchem-architecture.md`,
    "Tools"): `particle-diagrams` (Units 3, 4, 7, 8), `ice-table-drills` and `q-vs-k` (Unit 7),
    `buffer-drills` and `titration-curve-reader` (Unit 8), `units-sig-figs` (math chapter, then Units 3, 6,
    8). Every number comes from seeded generators in `chem-tool-math.js` (`ApChemMath.ice`, `qk`, `buffer`,
@@ -230,7 +230,7 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    `ice-table-drills` (Unit 7), `titration-curve-reader` (Unit 8), `units-sig-figs`; `q-vs-k` and
    `buffer-drills` are Premium (`tools`). Owner to confirm (needs-author `tools-premium`).
 
-15. (2026-10-06, Phase 3) **Exams, trainer and entry pages.** Formats and rules in
+17. (2026-10-06, Phase 3) **Exams, trainer and entry pages.** Formats and rules in
    `docs/apchem-architecture.md` ("Practice exams", "Justification trainer", "Exams and entry pages").
    - Two **fixed practice exams** (`chem/data/exams/forms.json`), the same for every student, offered
      before the mixed exam the bank assembles: 60 four-option MCQ (Unit 3: 13, Unit 8: 9,
@@ -258,7 +258,7 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
      Henderson-Hasselbalch is within 0.02 of the exact pH, score cut-offs 72/58/42/27.
    - Inline stimulus SVGs shrink to the column (`.chem-stim-html svg`; one was 806 px at 360 px).
 
-16. (2026-10-06, launch review) **Published, Premium not on sale.** All nine units and `skills-math`
+18. (2026-10-06, launch review) **Published, Premium not on sale.** All nine units and `skills-math`
    are in `published.json`; generators rerun (course, courses, pricing, OG tags, sitemap, crumbs,
    Worker). Hub and 404 cards say "All 96 published topics" once every map topic is out
    (`CHEM_ALL` in `build-pricing.mjs`); site search gained the AP course tints and noscript links;
