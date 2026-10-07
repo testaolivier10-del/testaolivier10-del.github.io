@@ -27,6 +27,8 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ROOT, loadMap, ALLOWED_LICENSES, hasApToken, trademarkProblems } from './lib/apchem-build.mjs';
+import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers } from './lib/apchem-exams.mjs';
+import { scanPage } from './lib/apchem-map.mjs';
 export { trademarkProblems };
 
 const DATA = process.env.APCHEM_DATA || join(ROOT, 'chem', 'data');
@@ -178,9 +180,9 @@ export function numericProblems(N) {
   return out;
 }
 
-export function checkItem(q, { topic, map, stimuli, err }) {
+export function checkItem(q, { topic, map, stimuli, err, idRe }) {
   const w = `item ${q.id || '(no id)'}`;
-  if (!q.id || !new RegExp(`^chem-${topic.id}-\\d+$`).test(q.id)) err(`${w}: id must be chem-${topic.id}-<n>`);
+  if (!q.id || !(idRe || new RegExp(`^chem-${topic.id}-\\d+$`)).test(q.id)) err(`${w}: id must be ${idRe ? 'chem-exam-<form>-<nn>' : `chem-${topic.id}-<n>`}`);
   if (!TYPES.includes(q.type)) err(`${w}: type must be one of ${TYPES.join(', ')}`);
   // Unit, topic and practice are required and never inferred (spec section 1).
   if (!q.unit) err(`${w}: "unit" is required`); else if (q.unit !== topic.chapter) err(`${w}: unit "${q.unit}" is not this topic's chapter "${topic.chapter}"`);
@@ -488,7 +490,7 @@ if (isMain) {
   for (const a of pages.apps || []) {
     if (/\bAP\b/.test(a.desc || '')) { console.log(`pages.json ${a.slug}: FAIL: no "AP" in desc (it is the meta description)`); metaFails++; }
     for (const k of ['h1', 'title', 'lede', 'card']) for (const p of trademarkProblems(a[k])) { console.log(`pages.json ${a.slug}.${k}: FAIL: ${p}`); metaFails++; }
-    for (const k of ['slug', 'script', 'css']) if (a[k] && hasApToken(a[k])) { console.log(`pages.json ${a.slug}: FAIL: ${k} "${a[k]}" contains the token "ap"`); metaFails++; }
+    for (const k of ['slug', 'script', 'css']) if (a[k] && [].concat(a[k]).some(hasApToken)) { console.log(`pages.json ${a.slug}: FAIL: ${k} "${a[k]}" contains the token "ap"`); metaFails++; }
   }
   for (const t of pages.tools || []) {
     const bad = m => { console.log(`pages.json tool ${t.slug}: FAIL: ${m}`); metaFails++; };
@@ -509,7 +511,43 @@ if (isMain) {
     const errs = check(readJson(join(toolDir, f)), map) || [];
     if (errs.length) { toolFails++; console.log(`tool ${slug}: FAIL`); for (const e of errs) console.log(`  FAIL: ${e}`); }
   }
-  const bad = failed + bankErr.length + frqFails + metaFails + toolFails;
-  console.log(`AP Chemistry content: ${ids.length} topics, ${total} items, ${failed} failing${draft ? ` (+${draft} in unpublished chapters)` : ''}; bank ${bankErr.length}, FRQ ${frqFails}, meta ${metaFails}, tools ${toolFails} failing.`);
+  // Practice exams and the justification trainer (docs/apchem-architecture.md,
+  // "Practice exams", "Justification trainer"): exam-only items in the bank
+  // item format, the two fixed forms, the prompts, and every number recomputed.
+  let examFails = 0;
+  // Only where the data has them (the test fixture has neither).
+  if (map && (exists(join(DATA, 'exams')) || exists(join(DATA, 'justify')))) {
+    const ex = loadExams(DATA), prompts = loadJustify(DATA, map);
+    const bad2 = m => { console.log(`exams: FAIL: ${m}`); examFails++; };
+    const examItems = new Map(ex.items.map(q => [q.id, q]));
+    const orderOf = {};
+    for (const t of map.topics) { const p = join(DATA, 'questions', `${t.id}.json`); if (exists(p)) readJson(p).items.forEach((q, i) => { orderOf[q.id] = i; }); }
+    ex.items.forEach((q, i) => { orderOf[q.id] = i; });
+    for (const [sid, s] of Object.entries(ex.stimuli)) { if (!/^exam-\d+-s\d+$/.test(sid)) bad2(`stimulus ${sid}: id must be exam-<form>-s<n>`); checkStimulus(sid, s, figuresAll(), bad2); }
+    for (const q of ex.items) {
+      const topic = map.topicById(q.topic);
+      if (!topic) { bad2(`${q.id}: unknown topic "${q.topic}"`); continue; }
+      if (q.type !== 'single') bad2(`${q.id}: exam-only items are four-option single-answer questions`);
+      checkItem(q, { topic, map, stimuli: ex.stimuli, err: bad2, idRe: /^chem-exam-\d+-\d{2}$/ });
+      // The ordering rule: a full practice exam is taken after the whole course,
+      // so nothing outside the course's terms (scanned from its last topic).
+      const last = map.topics.filter(t => t.chapter.startsWith('unit-')).pop();
+      for (const p of scanPage(map, `<p>${textOfItem(q)}</p>`, last.id)) bad2(`${q.id}: ORDER: ${p}`);
+      for (const p of trademarkProblems(textOfItem(q))) bad2(`${q.id}: trademark: ${p}`);
+    }
+    if (ex.items.length) { const lt = lengthTell(ex.items); if (lt) bad2(`exam-only items: ${lt}`); }
+    for (const e of [...testWise(ex.items), ...duplicates([...allItems, ...ex.items.map(q => ({ ...q, topic: `exam:${q.topic}` }))]).filter(e => /chem-exam-/.test(e))]) bad2(e);
+    const frqs = {};
+    for (const f of exists(frqDir) ? readdirSync(frqDir).filter(f => f.endsWith('.json')) : []) { const d = readJson(join(frqDir, f)); frqs[d.id] = d; }
+    const bank = new Map(allItems.map(q => [q.id, q]));
+    for (const e of checkForms(ex.forms, { map, bank, examItems, frqs, orderOf: id => orderOf[id] })) bad2(e);
+    for (const e of checkJustify(prompts, { map, trademarkProblems, scanPage })) bad2(e);
+    if (prompts.length < 30) bad2(`the justification trainer has ${prompts.length} prompts; it needs at least 30`);
+    for (const u of map.chapters.filter(c => c.part === 'course')) if (!prompts.some(p => p.unit === u.id)) bad2(`no justification prompt for ${u.id}`);
+    for (const e of checkNumbers(examItems, prompts)) bad2(e);
+    console.log(`AP Chemistry exams: ${ex.forms.length} practice exams, ${ex.items.length} exam-only items, ${prompts.length} justification prompts, ${examFails} failing.`);
+  }
+  const bad = failed + bankErr.length + frqFails + metaFails + toolFails + examFails;
+  console.log(`AP Chemistry content: ${ids.length} topics, ${total} items, ${failed} failing${draft ? ` (+${draft} in unpublished chapters)` : ''}; bank ${bankErr.length}, FRQ ${frqFails}, meta ${metaFails}, tools ${toolFails}, exams ${examFails} failing.`);
   if (args.includes('--check') && bad) process.exit(1);
 }

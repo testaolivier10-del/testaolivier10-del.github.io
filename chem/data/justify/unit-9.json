@@ -1,0 +1,120 @@
+{
+ "about": "Justification trainer prompts for Unit 9 (docs/apchem-architecture.md, \"Justification trainer\"). Numbers recomputed in scripts/lib/apchem-exam-checks.mjs (JUSTIFY_NUMBERS).",
+ "prompts": [
+  {
+   "id": "u9-entropy-gas-moles",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "6.D",
+   "skill": "entropy",
+   "title": "The sign of ΔS for a decomposition",
+   "context": "<p>2 NH₃(g) → N₂(g) + 3 H₂(g)</p>",
+   "prompt": "<b>Predict</b> the sign of ΔS° for this reaction and <b>justify</b> your prediction at the particle level.",
+   "checklist": [
+    "Claims that ΔS° for the reaction is positive (an increase in entropy)",
+    "Counts gas particles: 2 mol of gas become 4 mol of gas",
+    "Says more gas particles can be arranged in more ways (more microstates), so matter and energy are more dispersed; does not rely on the word \"disorder\""
+   ],
+   "earns": {
+    "answer": "ΔS° is positive. Two moles of gas molecules become four moles of gas molecules. With more independent particles moving through the container, there are many more ways to arrange the particles and share out their energy (more microstates), so matter and energy are more dispersed in the products.",
+    "why": "It counts the gas particles on each side and explains entropy as dispersal and microstates."
+   },
+   "misses": {
+    "answer": "ΔS is positive because the products are more disordered.",
+    "why": "\"Disorder\" is the word the readers say does not earn the point. The answer needs the particle-level reason: more gas particles, more ways to arrange them and their energy."
+   }
+  },
+  {
+   "id": "u9-temperature-favorability",
+   "unit": "unit-9",
+   "topic": "gibbs-free-energy",
+   "practice": "6.E",
+   "skill": "entropy",
+   "title": "When does limestone decompose?",
+   "context": "<p>CaCO₃(s) → CaO(s) + CO₂(g); ΔH° = +178.3 kJ/mol, ΔS° = +160.5 J/(mol·K). Assume they do not change with temperature.</p>",
+   "prompt": "<b>Justify</b> whether this reaction is thermodynamically favored at 298 K, and at what temperatures it becomes favored.",
+   "checklist": [
+    "Uses ΔG° = ΔH° − TΔS° with ΔS° in kJ: 0.1605 kJ/(mol·K)",
+    "At 298 K, ΔG° = 178.3 − 298(0.1605) = +130.5 kJ/mol > 0, so not favored",
+    "Both ΔH° and ΔS° are positive, so it becomes favored above T = ΔH°/ΔS° ≈ 1,110 K, where the TΔS° term outweighs ΔH°"
+   ],
+   "earns": {
+    "answer": "At 298 K, ΔG° = ΔH° − TΔS° = 178.3 kJ/mol − (298 K)(0.1605 kJ/(mol·K)) = +130.5 kJ/mol. ΔG° is positive, so the reaction is not thermodynamically favored at 298 K. Because ΔH° and ΔS° are both positive, ΔG° turns negative only when TΔS° is larger than ΔH°, which happens above T = 178.3/0.1605 ≈ 1,110 K.",
+    "why": "It converts J to kJ, shows the calculation, and reasons from the signs of ΔH° and ΔS° to the temperature range."
+   },
+   "misses": {
+    "answer": "The reaction is endothermic, so it is never favored.",
+    "why": "An endothermic reaction can be favored if ΔS° is positive and T is high enough. The answer never uses ΔG° = ΔH° − TΔS°."
+   }
+  },
+  {
+   "id": "u9-e-intensive",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "5.F",
+   "skill": "electrochem",
+   "title": "Why E° is not multiplied by 2",
+   "context": "<p>Ag⁺ + e⁻ → Ag, E° = +0.80 V. Cu²⁺ + 2 e⁻ → Cu, E° = +0.34 V. Overall: Cu(s) + 2 Ag⁺(aq) → Cu²⁺(aq) + 2 Ag(s).</p>",
+   "prompt": "<b>Calculate</b> E°cell and <b>justify</b> why the silver half-reaction's potential is not doubled even though its equation is.",
+   "checklist": [
+    "E°cell = E°(cathode, Ag⁺/Ag) − E°(anode, Cu²⁺/Cu) = 0.80 − 0.34 = +0.46 V",
+    "Says E° is an intensive property: it is energy per unit charge (1 V = 1 J/C), which does not depend on how many electrons are transferred",
+    "Says the electron count enters only through ΔG° = −nFE° (n = 2 here), not through E°"
+   ],
+   "earns": {
+    "answer": "E°cell = 0.80 V − 0.34 V = +0.46 V. A potential is energy per coulomb of charge (1 V = 1 J/C), so it does not depend on how many electrons move; it is intensive. Doubling the silver equation doubles the electrons and the energy, but not the energy per coulomb, so E° stays 0.80 V. The number of electrons appears in ΔG° = −nFE°, with n = 2.",
+    "why": "It gets the value and gives the reason E° is not scaled, pointing to where n does enter."
+   },
+   "misses": {
+    "answer": "E°cell = 2(0.80) − 0.34 = 1.26 V, because the silver equation is multiplied by 2.",
+    "why": "Multiplying E° by a coefficient is the error the readers report every year. E° is intensive."
+   }
+  },
+  {
+   "id": "u9-electrolytic-negative",
+   "unit": "unit-9",
+   "topic": "electrochemical-cells",
+   "practice": "6.D",
+   "skill": "electrochem",
+   "title": "A cell with a negative potential",
+   "context": "<p>Zn²⁺ + 2 e⁻ → Zn, E° = −0.76 V. Cu²⁺ + 2 e⁻ → Cu, E° = +0.34 V. A student wants to plate zinc onto a copper strip: Cu(s) + Zn²⁺(aq) → Cu²⁺(aq) + Zn(s).</p>",
+   "prompt": "<b>Justify</b> whether this reaction can run on its own as a galvanic cell, and what is needed to make it happen.",
+   "checklist": [
+    "E°cell = −0.76 − 0.34 = −1.10 V for the reaction as written",
+    "A negative E°cell means ΔG° = −nFE° is positive, so the reaction is not thermodynamically favored and cannot run as a galvanic cell",
+    "It can be driven as an electrolytic cell by an external power source applying more than 1.10 V"
+   ],
+   "earns": {
+    "answer": "For the reaction as written, Zn²⁺ is reduced (cathode) and Cu is oxidized (anode): E°cell = −0.76 V − 0.34 V = −1.10 V. A negative E°cell makes ΔG° = −nFE° positive, so the reaction is not thermodynamically favored and will not run on its own. It can be forced as an electrolytic cell by connecting a power supply that applies more than 1.10 V.",
+    "why": "It calculates E°cell for the reaction as written, links the sign to ΔG°, and names what an electrolytic cell needs."
+   },
+   "misses": {
+    "answer": "E°cell = 0.34 − (−0.76) = 1.10 V, so the reaction will run on its own.",
+    "why": "That is the reverse reaction (zinc dissolving and copper plating). The answer reversed the half-reactions instead of using the reaction asked about."
+   }
+  },
+  {
+   "id": "u9-faraday-chain",
+   "unit": "unit-9",
+   "topic": "electrolysis-faraday",
+   "practice": "5.F",
+   "skill": "electrochem",
+   "title": "How much copper plates out",
+   "context": "<p>A current of 2.00 A passes through a Cu²⁺ solution for 965 s. F = 96,485 C/mol e⁻; Cu 63.55 g/mol.</p>",
+   "prompt": "<b>Calculate</b> the mass of copper deposited, showing how you use the electrons per copper atom.",
+   "checklist": [
+    "q = It = (2.00 A)(965 s) = 1,930 C",
+    "mol e⁻ = 1,930 C ÷ 96,485 C/mol e⁻ = 0.0200 mol e⁻",
+    "Uses 2 mol e⁻ per mol Cu (Cu²⁺ + 2 e⁻ → Cu): 0.0100 mol Cu × 63.55 g/mol = 0.636 g"
+   ],
+   "earns": {
+    "answer": "q = It = (2.00 A)(965 s) = 1,930 C. mol e⁻ = 1,930 C ÷ 96,485 C/mol e⁻ = 0.0200 mol e⁻. Each Cu²⁺ gains 2 electrons, so mol Cu = 0.0200 ÷ 2 = 0.0100 mol. Mass = 0.0100 mol × 63.55 g/mol = 0.636 g Cu.",
+    "why": "Every step carries its unit, and the electrons-per-atom ratio from the half-reaction is used explicitly."
+   },
+   "misses": {
+    "answer": "1,930 C ÷ 96,485 = 0.0200 mol Cu, so the mass is 0.0200 × 63.55 = 1.27 g.",
+    "why": "It treats moles of electrons as moles of copper. Each Cu²⁺ needs two electrons, so the moles of copper are half the moles of electrons."
+   }
+  }
+ ]
+}

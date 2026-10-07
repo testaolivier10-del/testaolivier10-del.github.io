@@ -109,7 +109,8 @@ export function normalize(s) {
 /* Acronyms and symbols (ATP, pH, G1) match case-sensitively; a single
    capital letter as a word ("A site", "meiosis I") is part of the name. */
 export function isCaseSensitive(t) {
-  return /[A-Z]/.test(t.slice(1)) || /^[A-Z]{2,}/.test(t) || /[0-9]/.test(t) || /^[A-Z][\s-]/.test(t);
+  // Two-letter symbols (Ka, Kb, Ea, Rf) too: K<sub>A</sub>, a label, is not Ka.
+  return /[A-Z]/.test(t.slice(1)) || /^[A-Z]{2,}/.test(t) || /[0-9]/.test(t) || /^[A-Z][\s-]/.test(t) || /^[A-Z][a-z]$/.test(t);
 }
 
 const regexCache = new Map();

@@ -227,17 +227,20 @@
       li.push(d.topics.length ? '<li>Your weakest topics here:<ul class="chem-cr-topics">' + topicLinks(d.topics, d.topics) + '</ul></li>'
         : '<li>' + (p.personal ? 'The topics you missed in the practice exams' : 'The units worth the most on the exam') + ': ' + link('practice.html?mode=missed', 'practice your misses') + ' or ' + link('practice.html?mode=weak', 'your weakest topics') + '</li>');
       li.push('<li>' + setLink(d.set) + '</li>', '<li>' + frqLink(d.frq) + '</li>');
+      li.push('<li>' + link('justify.html' + (d.units[0] ? '?unit=' + d.units[0] : ''), 'Two justification prompts') + ': write, then check against the rubric.</li>');
     } else if(d.kind === 'exam'){
-      li.push('<li>' + link('exams.html?mode=full', 'Practice exam ' + d.exam + ': 60 multiple-choice questions in 90 min, then 7 free-response questions in 105 min') + '</li>');
+      // The two fixed practice exams (assets/exams/forms.json): exam day 1 takes form 1, day 2 form 2.
+      li.push('<li>' + link('exams.html?mode=full&form=' + d.exam, 'Practice exam ' + d.exam + ': 60 multiple-choice questions in 90 min, then 7 free-response questions in 105 min') + '</li>');
       li.push('<li>' + (d.exam === 1 ? 'Take it as a baseline, under exam conditions, even if you have not reviewed every unit yet.' : 'Same time of day as the real exam if you can. Then score Section II with the rubrics.') + '</li>');
     } else if(d.kind === 'review'){
       li.push('<li>Go through every question you missed in practice exam ' + d.exam + ', with its explanation: ' + link('review.html', 'your review queue') + ' and ' + link('practice.html?mode=missed', 'practice your misses') + '.</li>');
       li.push('<li>Check which units and science practices pulled your score down on ' + link('dashboard.html', 'your dashboard') + '; ' + (d.exam === 1 ? 'the plan’s weak-spot days use it.' : 'the last days go there.') + '</li>');
+      li.push('<li>Put your two section scores into the ' + link('score-calculator.html', 'score calculator') + ' to see which section has more room to grow.</li>');
     } else if(d.kind === 'rest'){
       li.push('<li>No new questions today. If you want something, ten minutes of ' + link('flashcards.html', 'flashcards') + '.</li>');
     } else if(d.kind === 'eve'){
       li.push('<li>Skim two unit sheets: ' + d.units.map(sheet).join(' and ') + '.</li>');
-      li.push('<li>A few ' + link('flashcards.html', 'flashcards') + ' and the formula sheet. No timed sets. Sleep.</li>');
+      li.push('<li>A few ' + link('flashcards.html', 'flashcards') + ' and ' + link('equations-sheet.html', 'the equations sheet, explained') + '. No timed sets. Sleep.</li>');
     }
     return '<ul class="chem-cr-todo">' + li.join('') + '</ul>';
   }

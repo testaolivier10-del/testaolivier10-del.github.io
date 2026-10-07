@@ -1,0 +1,72 @@
+{
+ "about": "Justification trainer prompts for Unit 6 (docs/apchem-architecture.md, \"Justification trainer\"). Numbers recomputed in scripts/lib/apchem-exam-checks.mjs (JUSTIFY_NUMBERS).",
+ "prompts": [
+  {
+   "id": "u6-specific-heat",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "6.D",
+   "skill": "particle",
+   "title": "Same heat, different temperature change",
+   "context": "<p>1.00 kJ of energy is added to 100.0 g of copper (c = 0.385 J/(g·°C)) and, separately, to 100.0 g of water (c = 4.18 J/(g·°C)). The copper warms by 26.0 °C; the water warms by 2.39 °C.</p>",
+   "prompt": "<b>Explain</b> why the same amount of energy raises the temperature of the copper much more than the water.",
+   "checklist": [
+    "Distinguishes heat (energy transferred, the same 1.00 kJ for both) from temperature (a measure of average kinetic energy of the particles)",
+    "Uses q = mcΔT with the data: same q and m, so ΔT is inversely proportional to c; water's c is about 11 times copper's",
+    "Gives a particle-level reason: in water much of the added energy goes into motions other than the translational motion that temperature measures (and into stretching hydrogen bonds), so less goes into raising the temperature"
+   ],
+   "earns": {
+    "answer": "Both samples receive the same heat, 1.00 kJ, and have the same mass, so by q = mcΔT the temperature change is inversely proportional to the specific heat. Water's specific heat (4.18 J/(g·°C)) is about 11 times copper's (0.385), so its temperature rises about 11 times less: 2.39 °C against 26.0 °C. At the particle level, much of the energy added to water goes into molecular rotations and vibrations and into stretching hydrogen bonds, so less of it raises the average kinetic energy that temperature measures.",
+    "why": "It keeps heat and temperature apart, uses the equation with the given numbers, and adds a particle-level reason."
+   },
+   "misses": {
+    "answer": "Copper is a metal, so it conducts heat better and gets hotter.",
+    "why": "Conductivity changes how fast heat spreads, not how much the temperature rises for a given amount of energy. The answer never uses specific heat or q = mcΔT."
+   }
+  },
+  {
+   "id": "u6-bond-enthalpy-sign",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "6.D",
+   "skill": "particle",
+   "title": "Why making HCl releases energy",
+   "context": "<p>H₂(g) + Cl₂(g) → 2 HCl(g). Bond enthalpies (kJ/mol): H–H 436; Cl–Cl 242; H–Cl 431. Estimated ΔH = (436 + 242) − 2(431) = −184 kJ/mol.</p>",
+   "prompt": "<b>Explain</b>, in terms of bonds broken and formed, why this reaction is exothermic.",
+   "checklist": [
+    "Says breaking bonds requires energy (436 + 242 = 678 kJ per mole of reaction) and forming bonds releases energy (2 × 431 = 862 kJ)",
+    "Says more energy is released forming the two H–Cl bonds than is absorbed breaking the H–H and Cl–Cl bonds, so ΔH is negative"
+   ],
+   "earns": {
+    "answer": "Breaking one mole of H–H bonds and one mole of Cl–Cl bonds absorbs 436 + 242 = 678 kJ. Forming two moles of H–Cl bonds releases 2 × 431 = 862 kJ. More energy is released by the bonds formed than is absorbed by the bonds broken, so the reaction releases a net 184 kJ per mole of reaction and is exothermic.",
+    "why": "It says which step absorbs energy and which releases it, with the numbers, and compares them."
+   },
+   "misses": {
+    "answer": "The reaction is exothermic because breaking the bonds in H₂ and Cl₂ releases energy.",
+    "why": "Breaking bonds always absorbs energy. Energy is released when bonds form, and the answer gets this backwards."
+   }
+  },
+  {
+   "id": "u6-calorimeter-loss",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "2.E",
+   "skill": "procedure",
+   "title": "A calorimeter without a lid",
+   "context": "<p>A student measures the enthalpy of neutralization of HCl and NaOH in a foam cup. The cup has no lid, so some heat escapes to the room during the reaction.</p>",
+   "prompt": "<b>Justify</b> whether the magnitude of the calculated ΔH (in kJ/mol) will be larger than, smaller than or equal to the true value.",
+   "checklist": [
+    "Says heat lost to the room makes the measured temperature rise of the solution smaller than it should be",
+    "Says q = mcΔT is then too small, so the magnitude of ΔH (q per mole) is smaller than the true value"
+   ],
+   "earns": {
+    "answer": "Smaller. Some of the heat released by the reaction escapes to the room instead of warming the solution, so the measured ΔT is smaller than it should be. The calculated q = mcΔT is therefore too small, and dividing by the same moles gives a ΔH whose magnitude is smaller than the true value.",
+    "why": "It gives the direction and traces the error through ΔT and q to ΔH."
+   },
+   "misses": {
+    "answer": "The heat that escapes makes the reaction release less energy.",
+    "why": "The reaction releases the same energy; less of it is measured. The answer also never says whether the calculated ΔH is too large or too small."
+   }
+  }
+ ]
+}
