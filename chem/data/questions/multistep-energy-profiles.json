@@ -181,7 +181,6 @@
     "answer": 30,
     "tol": 1,
     "unit": "kJ/mol",
-    "sigfigs": 2,
     "mistakes": [
      {
       "value": 60,
@@ -191,7 +190,8 @@
       "value": 110,
       "why": "Value: that is the energy of the second transition state. Subtract the level step 2 starts from."
      }
-    ]
+    ],
+    "decimals": 0
    },
    "why": {
     "correct": "Step 2 starts at the intermediate (80 kJ/mol) and climbs to the second transition state (110 kJ/mol): Ea = 110 − 80 = 30 kJ/mol."
@@ -265,7 +265,6 @@
     "answer": -30,
     "tol": 1,
     "unit": "kJ/mol",
-    "sigfigs": 2,
     "mistakes": [
      {
       "value": 30,
@@ -275,7 +274,8 @@
       "value": -60,
       "why": "Value: compare the products with the reactants, not with the intermediate: 20 − 50."
      }
-    ]
+    ],
+    "decimals": 0
    },
    "why": {
     "correct": "Energy change = E(products) − E(reactants) = 20 − 50 = −30 kJ/mol. The intermediate and transition states do not affect it."
@@ -322,17 +322,17 @@
    "stimulus": "multistep-energy-profiles-s2",
    "q": "Which step is rate-determining?",
    "options": [
-    "Step 2 (Ea = 75 kJ/mol)",
     "Step 1 (Ea = 45 kJ/mol)",
+    "Step 2 (Ea = 75 kJ/mol)",
     "Step 3 (Ea = 50 kJ/mol)",
     "Step 3, since it releases the most energy"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "Barriers: step 1, 45 − 0 = 45; step 2, 95 − 20 = 75; step 3, 40 − (−10) = 50 kJ/mol. Step 2 has the largest barrier, and its transition state is also the highest point on the profile, so it is the slow step.",
     "options": [
-     "Right: the largest barrier and the highest transition state.",
      "Step 1 has the smallest barrier.",
+     "Right: the largest barrier and the highest transition state.",
      "Step 3's barrier is 50 kJ/mol, smaller than step 2's.",
      "Releasing energy does not make a step slow; the barrier does."
     ]
@@ -350,19 +350,19 @@
    "stimulus": "multistep-energy-profiles-s2",
    "q": "How many intermediates does this mechanism have, and how many transition states?",
    "options": [
+    "2 intermediates and 2 transition states",
     "2 intermediates and 3 transition states",
     "3 intermediates and 2 transition states",
-    "3 intermediates and 3 transition states",
-    "2 intermediates and 2 transition states"
+    "3 intermediates and 3 transition states"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "Three elementary steps give three peaks (transition states) and two valleys between them (intermediates).",
     "options": [
+     "Each of the three steps has its own peak.",
      "Right: n steps, n peaks, n − 1 valleys.",
      "This swaps the counts: peaks are transition states.",
-     "The valleys sit between peaks, so there is one fewer of them.",
-     "Each of the three steps has its own peak."
+     "The valleys sit between peaks, so there is one fewer of them."
     ]
    },
    "fixed": true
@@ -381,7 +381,6 @@
     "answer": -60,
     "tol": 1,
     "unit": "kJ/mol",
-    "sigfigs": 2,
     "mistakes": [
      {
       "value": 60,
@@ -389,9 +388,10 @@
      },
      {
       "value": -50,
-      "why": "Value: the overall change is products minus reactants: −60 − 0."
+      "why": "Value: you compared the products with intermediate 2 (−60 − (−10)). The overall change is products minus reactants: −60 − 0."
      }
-    ]
+    ],
+    "decimals": 0
    },
    "why": {
     "correct": "Overall change = E(products) − E(reactants) = −60 − 0 = −60 kJ/mol."
@@ -431,7 +431,7 @@
    "practice": "6.D",
    "level": "analyze",
    "diff": 3,
-   "q": "A two-step profile shows a deep valley (very stable intermediate) and a second peak higher than the first. A student says, \"Step 1 is first, so it must be the slow step.\" Which response is best?",
+   "q": "A two-step profile shows a deep valley below the reactant level (a very stable intermediate) and a second peak higher than the first. A student says, \"Step 1 is first, so it must be the slow step.\" Which response is best?",
    "options": [
     "Step 2 has the larger climb from its valley, so it is slower",
     "The student is right; the first step is the slow one",
@@ -459,19 +459,19 @@
    "diff": 2,
    "q": "For a two-step reaction, step 1 has Ea = 60 kJ/mol and step 2 has Ea = 25 kJ/mol. The reactants are at 0 kJ/mol and the intermediate at 35 kJ/mol. What is the energy of the second transition state?",
    "options": [
-    "60 kJ/mol",
     "25 kJ/mol",
-    "85 kJ/mol",
-    "35 kJ/mol"
+    "35 kJ/mol",
+    "60 kJ/mol",
+    "85 kJ/mol"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Step 2 starts at the intermediate (35 kJ/mol) and climbs 25 kJ/mol: 35 + 25 = 60 kJ/mol. (The first transition state is also at 0 + 60 = 60 kJ/mol.)",
     "options": [
-     "Right: intermediate plus the step 2 barrier.",
      "That is the barrier of step 2, not the level of its peak.",
-     "That adds both barriers but ignores that step 2 starts from the intermediate, not from step 1's peak.",
-     "That is the level of the intermediate."
+     "That is the level of the intermediate.",
+     "Right: intermediate plus the step 2 barrier.",
+     "That adds both barriers but ignores that step 2 starts from the intermediate, not from step 1's peak."
     ]
    },
    "fixed": true
@@ -516,18 +516,18 @@
    "diff": 2,
    "q": "A three-step reaction profile is drawn. How many valleys lie between the reactant and product plateaus?",
    "options": [
+    "1",
     "2",
     "3",
-    "1",
     "4"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "There is one valley between each pair of neighbouring peaks: three peaks give two valleys, one for each intermediate.",
     "options": [
+     "One valley would mean two steps.",
      "Right: two intermediates.",
      "Three is the number of peaks.",
-     "One valley would mean two steps.",
      "Four would mean five steps."
     ]
    },

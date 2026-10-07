@@ -51,19 +51,19 @@
    "stimulus": "elementary-reactions-s1",
    "q": "How does the initial rate in Box 2 compare with Box 1?",
    "options": [
-    "Twice as fast",
+    "Half as fast",
     "The same",
-    "Four times as fast",
-    "Half as fast"
+    "Twice as fast",
+    "Four times as fast"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Box 2 has twice as many A molecules and the same number of B. With rate = k[A][B], doubling [A] doubles the rate: there are twice as many possible A–B pairs to collide.",
     "options": [
-     "Right: [A] doubles, [B] stays the same.",
+     "Box 2 has more molecules, not fewer.",
      "More A molecules means more A–B collisions per second.",
-     "Four times would need both [A] and [B] doubled, as in Box 3.",
-     "Box 2 has more molecules, not fewer."
+     "Right: [A] doubles, [B] stays the same.",
+     "Four times would need both [A] and [B] doubled, as in Box 3."
     ]
    },
    "fixed": true
@@ -79,19 +79,19 @@
    "stimulus": "elementary-reactions-s1",
    "q": "How does the initial rate in Box 3 compare with Box 1?",
    "options": [
-    "Four times as fast",
+    "The same",
     "Twice as fast",
-    "Eight times as fast",
-    "The same"
+    "Four times as fast",
+    "Eight times as fast"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Both [A] and [B] double: rate × 2 × 2 = 4. Box 1 has 2 × 2 = 4 possible A–B pairs; Box 3 has 4 × 4 = 16.",
     "options": [
-     "Right: 2 × 2 = 4.",
+     "More molecules of both kinds means more collisions.",
      "That counts only the doubling of one reactant.",
-     "That would be a third-order step.",
-     "More molecules of both kinds means more collisions."
+     "Right: 2 × 2 = 4.",
+     "That would be a third-order step."
     ]
    },
    "fixed": true
@@ -107,19 +107,19 @@
    "stimulus": "elementary-reactions-s1",
    "q": "What is the molecularity of A + B → AB?",
    "options": [
-    "Bimolecular",
+    "Zero-molecular",
     "Unimolecular",
-    "Termolecular",
-    "Zero-molecular"
+    "Bimolecular",
+    "Termolecular"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Molecularity counts the reactant particles that come together in the step: one A and one B, two particles.",
     "options": [
-     "Right: two particles collide.",
+     "Every elementary step involves at least one particle.",
      "Unimolecular is one particle changing on its own.",
-     "Termolecular needs three particles colliding at once.",
-     "Every elementary step involves at least one particle."
+     "Right: two particles collide.",
+     "Termolecular needs three particles colliding at once."
     ]
    },
    "fixed": true
@@ -162,19 +162,19 @@
    "stimulus": "elementary-reactions-s2",
    "q": "Which step is termolecular?",
    "options": [
-    "Step 4",
     "Step 1",
     "Step 2",
-    "Step 3"
+    "Step 3",
+    "Step 4"
    ],
-   "correct": 0,
+   "correct": 3,
    "why": {
     "correct": "Step 4 needs two NO molecules and one O₂ to meet at once: three particles.",
     "options": [
-     "Right: 2 NO + O₂ is three particles.",
      "Step 1 is one O₃ breaking apart: unimolecular.",
      "Step 2 is NO meeting O₃: bimolecular.",
-     "Step 3 is two NO₂ meeting: bimolecular."
+     "Step 3 is two NO₂ meeting: bimolecular.",
+     "Right: 2 NO + O₂ is three particles."
     ]
    },
    "fixed": true
@@ -217,18 +217,18 @@
    "stimulus": "elementary-reactions-s2",
    "q": "If [O₃] in step 1 is tripled, by what factor does the rate of step 1 change?",
    "options": [
+    "1",
     "3",
     "9",
-    "1",
     "27"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "Step 1 is unimolecular: rate = k[O₃]. Tripling [O₃] triples the rate.",
     "options": [
+     "The rate of a unimolecular step depends on how many molecules are there.",
      "Right: first order in O₃.",
      "9 would need the step to be second order in O₃.",
-     "The rate of a unimolecular step depends on how many molecules are there.",
      "27 would need third order."
     ]
    },
@@ -299,8 +299,8 @@
    "diff": 2,
    "q": "The elementary step NO + O₃ → NO₂ + O₂ has k = 1.8 × 10⁷ M⁻¹ s⁻¹ at a certain temperature. What is the rate, in M/s, when [NO] = 2.0 × 10⁻⁸ M and [O₃] = 5.0 × 10⁻⁷ M?",
    "numeric": {
-    "answer": 1.8e-7,
-    "tol": 1e-8,
+    "answer": 1.8e-07,
+    "tol": 1e-08,
     "unit": "M/s",
     "sigfigs": 2,
     "mistakes": [
@@ -384,18 +384,18 @@
    "diff": 2,
    "q": "In the gas phase, the elementary step H + Cl₂ → HCl + Cl is run in a container whose volume is then halved at constant temperature (no reaction during the squeeze). How does the rate of the step change?",
    "options": [
-    "It becomes 4 times as fast",
-    "It becomes 2 times as fast",
     "It stays the same",
+    "It becomes 2 times as fast",
+    "It becomes 4 times as fast",
     "It becomes 8 times as fast"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Halving the volume doubles every concentration. The step is bimolecular, rate = k[H][Cl₂], so the rate changes by 2 × 2 = 4: each H atom meets Cl₂ molecules twice as often, and there are twice as many H atoms per liter.",
     "options": [
-     "Right: both concentrations double.",
-     "That counts only one of the two concentrations.",
      "The same molecules in less space collide more often.",
+     "That counts only one of the two concentrations.",
+     "Right: both concentrations double.",
      "Eight would need a termolecular step."
     ]
    },

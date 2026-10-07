@@ -973,7 +973,9 @@
       "The activation energy is the rise from reactants to the transition state; the overall energy change is products minus reactants.",
       "A larger activation energy gives a smaller rate constant at the same temperature."
      ],
-     "exclusions": []
+     "exclusions": [
+      "Calculations with the Arrhenius equation are not tested."
+     ]
     },
     {
      "id": "5.7",
@@ -1962,6 +1964,9 @@
    "1.7 electron configurations of aufbau exceptions",
    "2.3 specific crystal structures",
    "2.7 hybrid orbital derivation, d-orbital hybridization, molecular orbital theory"
+  ],
+  "verifiedUnit5": [
+   "5.6 calculations involving the Arrhenius equation (CED exclusion statement, read 2026-10-06)"
   ],
   "unverifiedUnits3to9": [
    "3.7 molality, percent by mass and by volume of solutions; colligative properties",

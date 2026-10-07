@@ -80,17 +80,17 @@
    "stimulus": "mechanisms-intro-s1",
    "q": "What is the molecularity of step 2?",
    "options": [
-    "Bimolecular",
     "Unimolecular",
+    "Bimolecular",
     "Termolecular",
     "Tetramolecular"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "Step 2 is one N₂O₂ colliding with one H₂: two particles.",
     "options": [
-     "Right: two reactant particles.",
      "One particle would be unimolecular; this step has two.",
+     "Right: two reactant particles.",
      "Three particles would be termolecular.",
      "Four particles never collide at once in an elementary step."
     ]
@@ -204,8 +204,7 @@
      "A product is made and not used; O is used in step 2.",
      "A transition state is the top of one step's energy barrier, not a species made in one step and used in the next."
     ]
-   },
-   "fixed": true
+   }
   },
   {
    "id": "chem-mechanisms-intro-8",

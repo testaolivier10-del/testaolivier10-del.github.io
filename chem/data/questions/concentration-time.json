@@ -205,7 +205,7 @@
    "q": "Use the first and last rows to find the rate constant k. Include units.",
    "numeric": {
     "answer": 0.0006,
-    "tol": 0.00001,
+    "tol": 1e-05,
     "unit": "s^-1",
     "askUnit": true,
     "units": [
@@ -354,7 +354,7 @@
      },
      {
       "value": 1,
-      "why": "Value: read two points from the line and divide the rise by the run: (75 − 25) M⁻¹ ÷ 100 s."
+      "why": "Value: the run is the whole time interval, 100 s − 0 s = 100 s. Slope = (75 − 25) M⁻¹ ÷ 100 s."
      }
     ]
    },
@@ -458,7 +458,7 @@
    "q": "What is the rate constant k, from the slope of the line? Include units.",
    "numeric": {
     "answer": 0.00025,
-    "tol": 0.00001,
+    "tol": 1e-05,
     "unit": "M/s",
     "askUnit": true,
     "units": [
@@ -496,7 +496,7 @@
    "q": "While [NH₃] falls at 2.5 × 10⁻⁴ M/s, at what rate does H₂ form, in M/s?",
    "numeric": {
     "answer": 0.00038,
-    "tol": 0.00001,
+    "tol": 1e-05,
     "unit": "M/s",
     "sigfigs": 2,
     "mistakes": [

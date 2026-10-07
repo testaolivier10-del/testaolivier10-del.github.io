@@ -81,18 +81,18 @@
    "stimulus": "rate-laws-s1",
    "q": "What is the order of the reaction with respect to NO?",
    "options": [
-    "Second order",
-    "First order",
     "Zero order",
+    "First order",
+    "Second order",
     "Third order"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Compare trials 1 and 2, where only [NO] changes: [NO] doubles and the rate goes from 1.80 × 10⁻⁴ to 7.20 × 10⁻⁴ M/s, a factor of 4. Since 2ᵐ = 4, m = 2.",
     "options": [
-     "Right: doubling [NO] multiplies the rate by 4 = 2².",
-     "First order would double the rate when [NO] doubles; here it quadruples.",
      "Zero order would leave the rate unchanged when [NO] changes.",
+     "First order would double the rate when [NO] doubles; here it quadruples.",
+     "Right: doubling [NO] multiplies the rate by 4 = 2².",
      "Third order would multiply the rate by 2³ = 8."
     ]
    },
@@ -109,19 +109,19 @@
    "stimulus": "rate-laws-s1",
    "q": "What is the order of the reaction with respect to Cl₂?",
    "options": [
-    "First order",
-    "Second order",
     "Zero order",
-    "Half order"
+    "Half order",
+    "First order",
+    "Second order"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Compare trials 1 and 3, where only [Cl₂] changes: it doubles and the rate doubles (1.80 → 3.60 × 10⁻⁴ M/s). 2ⁿ = 2 gives n = 1.",
     "options": [
-     "Right: the rate changes by the same factor as [Cl₂].",
-     "Second order would quadruple the rate when [Cl₂] doubles.",
      "Zero order would leave the rate unchanged; it doubled.",
-     "Half order would multiply the rate by about 1.4, not 2."
+     "Half order would multiply the rate by about 1.4, not 2.",
+     "Right: the rate changes by the same factor as [Cl₂].",
+     "Second order would quadruple the rate when [Cl₂] doubles."
     ]
    },
    "fixed": true
@@ -178,7 +178,7 @@
    "q": "Predict the initial rate, in M/s, of a fourth trial with [NO] = 0.0300 M and [Cl₂] = 0.0050 M.",
    "numeric": {
     "answer": 0.00081,
-    "tol": 0.00001,
+    "tol": 1e-05,
     "unit": "M/s",
     "sigfigs": 2,
     "mistakes": [
@@ -289,7 +289,7 @@
    "q": "Using the data for X, what is the first-order rate constant? Include units.",
    "numeric": {
     "answer": 0.00016,
-    "tol": 0.00001,
+    "tol": 1e-05,
     "unit": "s^-1",
     "askUnit": true,
     "units": [
@@ -321,8 +321,8 @@
    "stimulus": "rate-laws-s2",
    "q": "Predict the initial rate, in M/s, when [X] = 0.45 M and [Y] = 0.30 M.",
    "numeric": {
-    "answer": 0.000072,
-    "tol": 0.000001,
+    "answer": 7.2e-05,
+    "tol": 1e-06,
     "unit": "M/s",
     "sigfigs": 2,
     "mistakes": [
@@ -346,19 +346,19 @@
    "diff": 2,
    "q": "For rate = k[A][B]², what are the units of k when concentrations are in M and time in s?",
    "options": [
-    "M⁻² s⁻¹",
-    "M⁻¹ s⁻¹",
+    "M s⁻¹",
     "s⁻¹",
-    "M s⁻¹"
+    "M⁻¹ s⁻¹",
+    "M⁻² s⁻¹"
    ],
-   "correct": 0,
+   "correct": 3,
    "why": {
     "correct": "The overall order is 1 + 2 = 3. k = rate/([A][B]²) has units (M/s)/M³ = M⁻² s⁻¹.",
     "options": [
-     "Right: third order overall gives M⁻² s⁻¹.",
-     "These are the units for a second-order rate law.",
+     "These are the units of a rate, which is also the units of k for zero order.",
      "These are the units for a first-order rate law.",
-     "These are the units of a rate, which is also the units of k for zero order."
+     "These are the units for a second-order rate law.",
+     "Right: third order overall gives M⁻² s⁻¹."
     ]
    },
    "fixed": true
@@ -373,19 +373,19 @@
    "diff": 3,
    "q": "For A + B → C, the rate is first order in B. When [A] and [B] are both doubled at the same time, the initial rate becomes 8 times larger. What is the order in A?",
    "options": [
-    "Second order",
+    "Zero order",
     "First order",
-    "Third order",
-    "Zero order"
+    "Second order",
+    "Third order"
    ],
-   "correct": 0,
+   "correct": 2,
    "why": {
     "correct": "Doubling [B] alone doubles the rate (first order). The rest of the factor of 8 comes from A: 8 ÷ 2 = 4 = 2², so the order in A is 2.",
     "options": [
-     "Right: 2ᵐ × 2¹ = 8 gives m = 2.",
+     "Zero order in A would make the total change only 2.",
      "First order in both would give 2 × 2 = 4, not 8.",
-     "This puts the whole factor of 8 on A and forgets the doubling from B.",
-     "Zero order in A would make the total change only 2."
+     "Right: 2ᵐ × 2¹ = 8 gives m = 2.",
+     "This puts the whole factor of 8 on A and forgets the doubling from B."
     ]
    },
    "fixed": true
@@ -459,7 +459,7 @@
    "q": "A reaction has rate = k[A]² with k = 0.62 M⁻¹ s⁻¹. What is the rate, in M/s, when [A] = 0.040 M?",
    "numeric": {
     "answer": 0.00099,
-    "tol": 0.00001,
+    "tol": 1e-05,
     "unit": "M/s",
     "sigfigs": 2,
     "mistakes": [
