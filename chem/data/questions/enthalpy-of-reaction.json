@@ -77,7 +77,7 @@
     ]
    },
    "why": {
-    "correct": "n(C₃H₈) = 11.0 g ÷ 44.10 g/mol = 0.2494 mol. One mole of reaction burns 1 mol of C₃H₈, so q = 0.2494 mol × (−2220 kJ/mol) = -553.7 → -554.0 kJ. Negative: the system releases energy."
+    "correct": "n(C₃H₈) = 11.0 g ÷ 44.10 g/mol = 0.2494 mol. One mole of reaction burns 1 mol of C₃H₈, so q = 0.2494 mol × (−2220 kJ/mol) = −553.7 → −554 kJ (three significant figures, from 11.0 g). Negative: the system releases energy."
    }
   },
   {
@@ -203,7 +203,7 @@
     ]
    },
    "why": {
-    "correct": "n(O₂) = 4.00 g ÷ 32.00 g/mol = 0.125 mol. One mole of reaction makes 1 mol of O₂ and absorbs 181.6 kJ, so q = 0.125 mol × 181.6 kJ/mol = 22.7 kJ → 22.7 kJ."
+    "correct": "n(O₂) = 4.00 g ÷ 32.00 g/mol = 0.125 mol. One mole of reaction makes 1 mol of O₂ and absorbs 181.6 kJ, so q = 0.125 mol × 181.6 kJ/mol = 22.7 kJ absorbed."
    }
   },
   {
@@ -543,12 +543,12 @@
    "practice": "4.A",
    "level": "apply",
    "diff": 1,
-   "q": "In a sealed flask, N₂(g) + 3 H₂(g) → 2 NH₃(g), ΔH = −92.2 kJ/mol, runs once as written. What is q for the surroundings?",
+   "q": "In an open vessel at constant pressure, N₂(g) + 3 H₂(g) → 2 NH₃(g), ΔH = −92.2 kJ/mol, runs once as written. What is q for the surroundings?",
    "options": [
     "+92.2 kJ",
     "−92.2 kJ",
     "+46.1 kJ",
-    "0 kJ, because the flask is sealed"
+    "0 kJ, because the energy stays in the reacting gases"
    ],
    "correct": 0,
    "why": {
@@ -557,7 +557,7 @@
      "Right: the reaction releases 92.2 kJ and the surroundings absorb it.",
      "That is q for the reaction. The surroundings have the opposite sign.",
      "The reaction runs once as written, making 2 mol of NH₃, so all 92.2 kJ is transferred.",
-     "Sealing keeps matter in, not energy; the flask still warms."
+     "Energy crosses the boundary between the reacting gases and everything around them, so the surroundings warm."
     ]
    }
   }

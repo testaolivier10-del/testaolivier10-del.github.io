@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-labelledby="t d">
 <title id="t">Heating curve of water</title>
-<desc id="d">Temperature on the vertical axis against energy added on the horizontal axis, not to scale. The curve rises through ice warming to 0 degrees Celsius, stays flat while ice melts, rises while liquid water warms to 100 degrees, stays flat for a much longer stretch while water boils, then rises again as steam warms. Sloped parts are labelled q equals m c delta T; the flat parts are labelled q equals n times delta H of fusion and q equals n times delta H of vaporization.</desc>
+<desc id="d">Temperature on the vertical axis against energy added on the horizontal axis, not to scale. The curve rises through ice warming to 0 degrees Celsius, stays flat while ice melts, rises while liquid water warms to 100 degrees, stays flat for a much longer stretch while water boils, then rises again as steam warms. The ice and steam slopes are steeper than the liquid slope, because ice and steam have about half the specific heat of liquid water. Sloped parts are labelled q equals m c delta T; the flat parts are labelled q equals n times delta H of fusion and q equals n times delta H of vaporization.</desc>
 <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#C2410C"/></marker><marker id="ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1D44A6"/></marker></defs>
 <rect width="760" height="400" fill="#ffffff"/>
 <g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
@@ -10,15 +10,15 @@
 <line x1="74" y1="270" x2="80" y2="270" stroke="#1F2A28"/><text x="68" y="275" font-size="13" text-anchor="end" font-weight="normal" fill="#1F2A28">0</text>
 <line x1="74" y1="120" x2="80" y2="120" stroke="#1F2A28"/><text x="68" y="125" font-size="13" text-anchor="end" font-weight="normal" fill="#1F2A28">100</text>
 <line x1="80" y1="270" x2="730" y2="270" stroke="#ccc" stroke-dasharray="3 5"/><line x1="80" y1="120" x2="730" y2="120" stroke="#ccc" stroke-dasharray="3 5"/>
-<polyline points="90,320 130,270 210,270 330,120 600,120 650,70" fill="none" stroke="#C2410C" stroke-width="4"/>
-<text x="118" y="318" font-size="13" text-anchor="start" font-weight="normal" fill="#1F2A28">ice warms</text>
+<polyline points="110,320 130,270 210,270 330,120 600,120 620,70" fill="none" stroke="#C2410C" stroke-width="4"/>
+<text x="136" y="318" font-size="13" text-anchor="start" font-weight="normal" fill="#1F2A28">ice warms</text>
 <text x="170" y="258" font-size="14" text-anchor="middle" font-weight="bold" fill="#1F2A28">melting</text>
 <text x="170" y="292" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">q = n·ΔHfus</text>
 <text x="282" y="230" font-size="13" text-anchor="start" font-weight="normal" fill="#1F2A28">liquid warms</text>
 <text x="282" y="247" font-size="13" text-anchor="start" font-weight="normal" fill="#1F2A28">q = m·c·ΔT</text>
 <text x="475" y="108" font-size="14" text-anchor="middle" font-weight="bold" fill="#1F2A28">boiling (liquid + gas)</text>
 <text x="475" y="142" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">q = n·ΔHvap: the longest flat part</text>
-<text x="640" y="60" font-size="13" text-anchor="end" font-weight="normal" fill="#1F2A28">steam warms</text>
+<text x="632" y="66" font-size="13" text-anchor="start" font-weight="normal" fill="#1F2A28">steam warms</text>
 <text x="405" y="40" font-size="13" text-anchor="middle" font-weight="normal" fill="#1F2A28">Flat parts: temperature constant, energy goes into overcoming attractions between molecules</text>
 </g>
 </svg>
