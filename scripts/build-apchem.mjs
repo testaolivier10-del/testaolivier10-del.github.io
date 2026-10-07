@@ -39,6 +39,7 @@ import {
   termIndex, glossify, figureImg, credit, renderFigures, stimulusBody, stimulusPanel, questionForPage, questionHtml,
   groupSets, hasApToken, stripMark, STIM_KIND,
 } from './lib/apchem-build.mjs';
+import { entryPages } from './lib/apchem-entry.mjs';
 
 const args = process.argv.slice(2);
 const CHECK = args.includes('--check');
@@ -133,6 +134,16 @@ function build() {
   }).join('');
 
   /* ------------------------------------------------------------ lesson */
+  /* A lesson's Connections: the authored list, or, when it has none, the
+     topics it builds on and the next one, from the map. They name other
+     topics, so the list is navigation (chem-nav-ref), not teaching. */
+  function connections(id, L) {
+    if ((L.connections || []).length) return L.connections;
+    const label = t => `${t.title}${t.ced ? ` (${t.ced})` : ''}`;
+    const back = buildsOn(id).slice(-2).map(x => map.topicById(x)).map(t => ({ href: `../notes/${t.id}.html`, label: `Back: ${label(t)}` }));
+    const nx = nextBuilt(id);
+    return [...back, ...(nx ? [{ href: `../notes/${nx.id}.html`, label: `Next: ${label(nx)}` }] : [])];
+  }
   const STEP_FIRST_PAINT = `<script>(function(){var s=document.querySelector('.chem-ls'),p=s&&s.querySelectorAll('.chem-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.chem-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apchem_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>`;
 
   function lessonPage(id) {
@@ -165,7 +176,7 @@ function build() {
       { id: 'check', kind: 'Check yourself', nav: 'Check yourself', h: 'Check yourself', html: `<p class="chem-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="chem-qs" data-set="check">${staticQuestions(check, stimuli, depth)}</div>` },
       { id: 'summary', kind: 'Summary', nav: 'Summary', h: 'Summary', html: g(L.summary) },
       { id: 'next', kind: 'Up next', nav: 'What comes next', h: 'What comes next', html: nx ? `<nav class="chem-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="${nx.id}.html">${esc(nx.title)} &rarr;</a></p></nav>` : '<p>This is the last topic in the course.</p>' },
-      (L.connections || []).length && { id: 'connections', kind: 'Connections', nav: 'Connections', h: 'Connections', html: `<ul class="chem-links">${L.connections.map(c => `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ul>` },
+      connections(id, L).length && { id: 'connections', kind: 'Connections', nav: 'Connections', h: 'Connections', html: `<ul class="chem-links chem-nav-ref">${connections(id, L).map(c => `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`).join('')}</ul>` },
     ].filter(Boolean);
     const jsonld = { '@context': 'https://schema.org', '@graph': [
       { '@type': 'LearningResource', '@id': `${url}#lesson`, name: t.title, url, description: desc, learningResourceType: 'Lesson', educationalLevel: 'High school', inLanguage: 'en', ...freeLd(t),
@@ -709,7 +720,10 @@ ${homeSample(depth)}
     <div class="section-head"><h2 id="h-go">Practice and study</h2></div>
     <ul class="chem-cards">${(C.pages.apps || []).filter(a => a.card).map(a => `<li><a href="${a.slug}.html"><b>${esc(a.h1)}</b><span>${esc(a.card)}</span></a></li>`).join('')}
       <li><a href="glossary.html"><b>Glossary</b><span>Every term, with a plain definition and where it is taught.</span></a></li>
-    </ul>
+      <li><a href="equations-sheet.html"><b>Equations sheet, explained</b><span>What each equation and constant is for, and what the sheet leaves out.</span></a></li>
+      <li><a href="score-calculator.html"><b>Score calculator</b><span>An estimated score from your multiple-choice and free-response results.</span></a></li>
+${units.filter(chapterBuilt).length ? `      <li><a href="unit-tests/${units.filter(chapterBuilt)[0].id}.html"><b>Free unit practice tests</b><span>A free sample test for every unit, with every option explained.</span></a></li>
+` : ''}    </ul>
   </section>
 
   <section class="xsection" aria-label="About LevlPrep">
@@ -769,7 +783,8 @@ ${tail({ depth, section: 'home', extra: ['chem-home.js'] })}
   function appShell(a) {
     const depth = '', path = `${a.slug}.html`, url = `${SITE}${BASE}${path}`;
     const scriptOk = a.script && existsSync(join(ROOT, 'chem', 'assets', a.script));
-    const cssOk = a.css && existsSync(join(ROOT, 'chem', 'assets', a.css));
+    // css: one file, or a list (a page that adds its own sheet on top of pages.css).
+    const cssList = [].concat(a.css || []).filter(f => existsSync(join(ROOT, 'chem', 'assets', f)));
     const hub = HUB_PAGES.has(a.slug);
     // Practice, Review, Flashcards and Exams: the shared study shell
     // (docs/course-shell.md, W-C), as in the other three courses.
@@ -791,7 +806,7 @@ ${bodyOpen(` data-app="${a.slug}"`)}
     : `<p class="chem-soon">This page arrives with the first published unit. Meanwhile, read the <a href="learn.html">free notes</a>.</p>`}</div>
 </main>
 ${footer(depth, `page:${a.slug}`)}
-${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<script src="../assets/course/hub.js" defer></script>\n' : ''}${cssOk ? `<link rel="stylesheet" href="assets/${a.css}">\n` : ''}${tail({ depth, section: a.section, extra: ['chem-questions.js', ...(scriptOk ? [a.script] : [])], premium: true, site: [...(study ? ['course/study.js'] : []), ...(a.siteScripts || [])] })}
+${hub ? '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<script src="../assets/course/hub.js" defer></script>\n' : ''}${cssList.map(f => `<link rel="stylesheet" href="assets/${f}">\n`).join('')}${tail({ depth, section: a.section, extra: ['chem-questions.js', ...(scriptOk ? [a.script] : [])], premium: true, site: [...(study ? ['course/study.js'] : []), ...(a.siteScripts || [])] })}
 </body>
 </html>
 `;
@@ -1097,12 +1112,18 @@ window.ApChemCurriculum = ${JSON.stringify(data)};
     put(`assets/bank/${ch}-why.json`, JSON.stringify(b.why));
   }
   put('assets/bank/index.json', bankIndex());
+  /* The free search-entry pages, the practice exams' data and the
+     justification trainer's prompts (scripts/lib/apchem-entry.mjs). */
+  const entry = entryPages({ map, C, head, tail, footer, crumbNav, crumbs, orgCrumbs, esc, text, SITE, BASE, COURSE_ID, COURSE_NAME, COURSE_HTML, BETA_PILL, LABEL,
+    courseTitle, clampDesc, noindex, bodyOpen, questionHtml, questionForPage, groupSets, stimulusPanel, stimulusBody, isFreeTopic, frqs });
+  for (const [rel, content] of Object.entries(entry.pages)) put(rel, content);
 }
 
 /* Generated places hold nothing else. With no map, every generated file
    left behind is stale. */
-const OWNED_DIRS = ['lessons', 'notes', 'units', 'unit-sheets', 'assets/bank', 'frq', 'assets/frq', 'tools', 'assets/tool-data'];
+const OWNED_DIRS = ['lessons', 'notes', 'units', 'unit-sheets', 'assets/bank', 'frq', 'assets/frq', 'tools', 'assets/tool-data', 'unit-tests', 'assets/exams'];
 const OWNED_FILES = ['index.html', 'learn.html', 'glossary.html', 'assets/chem-curriculum.js', 'assets/glossary.json', 'assets/notes-index.json', 'assets/summaries.json',
+  'equations-sheet.html', 'score-calculator.html', 'assets/justify.json',
   ...(C.pages.apps || []).map(a => `${a.slug}.html`)];
 const stale = [];
 for (const d of OWNED_DIRS) {

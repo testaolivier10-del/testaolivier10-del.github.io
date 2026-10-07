@@ -139,7 +139,7 @@ All on one branch, `claude/apchem` (decision 5), one PR at the end.
 | 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 7 content written 2026-10-06 (decision 13): 12 topics, 200 items, 13 figures, 5 FRQs; not yet accuracy-checked or published; ICE and Q-vs-K trainers not built |
 | 2 | Unit 5 accuracy check | **done 2026-10-06**: `docs/apchem-reviews/u5.md` (171 items, 3 FRQs, 11 figures; 31 items fixed, no key wrong in substance); needs-author `unit5-kinetics-scope` resolved (Arrhenius calculations excluded per the CED; the rest kept) |
 | 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 7 content written 2026-10-06 (decision 13): 12 topics, 200 items, 13 figures, 5 FRQs; accuracy-checked 2026-10-06 (`docs/apchem-reviews/u7.md`), not yet published; ICE and Q-vs-K trainers not built |
-| 3 | Justification trainer, full practice exams, equations-sheet page, score calculator, cram kit | |
+| 3 | Justification trainer, full practice exams, equations-sheet page, score calculator, cram kit | **built 2026-10-06** (decision 15): 37 prompts over 9 units; 2 fixed practice exams (60 + 7 each, 32 exam-only items); equations-sheet walkthrough, score calculator, 9 unit practice tests; cram kit wired to the forms. Not yet accuracy-checked (Phase 4). Drill trainers built separately |
 | 4 | Second accuracy pass on the whole course; PR to owner | |
 
 Quality bar per unit: AP® Biology authoring guide rules (original items only, never adapted from
@@ -220,6 +220,30 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    on the ATP set, S° > 0 limited to pure substances, and one stem lengthened to clear a near-duplicate.
    Needs-author `unit9-data` and `unit9-atp` resolved; `unit9-exclusions-applied` partly (9.8
    exclusion confirmed in the CED; 9.10 page not fully read).
+
+15. (2026-10-06, Phase 3) **Exams, trainer and entry pages.** Formats and rules in
+   `docs/apchem-architecture.md` ("Practice exams", "Justification trainer", "Exams and entry pages").
+   - Two **fixed practice exams** (`chem/data/exams/forms.json`), the same for every student, offered
+     before the mixed exam the bank assembles: 60 four-option MCQ (Unit 3: 13, Unit 8: 9,
+     others 5-6, inside every CED range), 11-12 stimulus sets each (38-41 items in sets), then 3 long + 4 short FRQs from
+     the existing set, no question shared. 44 bank items per form (mostly not lesson-check items)
+     + 16 **exam-only items** each (`items.json`: a gas-over-water and a buffer set in form 1, a
+     Beer's-law and a galvanic-cell set in form 2, plus discrete calculations); exam-only items
+     count in the score only, never in practice or on a free page. Every keyed number is recomputed
+     in `scripts/lib/apchem-exams.mjs` (`EXAM_NUMBERS`).
+   - **Score estimate**: 50/50 by section (MCQ ÷ 60, FRQ ÷ 46), bands at 75/60/45/30 — the readiness
+     band's existing cut-offs, now shared with the calculator (test). Our guess, labelled so;
+     needs-author `score-cutoffs`.
+   - **Justification trainer** `justify.html`: 37 prompts (3-6 per unit) on the reader-report misses;
+     write, tick the rubric checklist, compare an answer that earns the point with one that does
+     not. First 3 in course order free (`FREE_JUSTIFY`), the rest Premium (feature `justify`;
+     unlocked while `onSale: false`). An app page in `pages.json` (`css` may now be a list).
+   - **Entry pages** (free, indexable once published): `equations-sheet.html`,
+     `score-calculator.html`, `unit-tests/unit-N.html` (12 fixed questions per unit).
+   - Lessons without authored connections get them from the map (navigation, `chem-nav-ref`).
+   - The map's case rule treats two-letter symbols (Ka, Kb, Ea, Rf, Kc) as case-sensitive, so a
+     label like K<sub>A</sub> is not read as Ka (fixed a false ordering failure in 7.6).
+   - Inline stimulus SVGs shrink to the column (`.chem-stim-html svg`; one was 806 px at 360 px).
 
 ## 8. Open items for the owner
 

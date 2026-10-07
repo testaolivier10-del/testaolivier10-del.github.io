@@ -433,3 +433,26 @@ the 9.8 handling is confirmed (the notes' aside now says so). For 9.10, EKs 9.10
 qualitative (direction and size of E relative to E° from Q, E = 0 at Q = K, concentration cells);
 the rest of the 9.10 page (any EK or exclusion on algorithmic Nernst calculations) could not be
 extracted, so the qualitative-only choice stays until someone reads that page.
+
+## score-cutoffs: the composite cut-offs for the estimated score (open, 2026-10-06)
+
+The score calculator and the practice exam's readiness band turn a 50/50 composite (out of 100) into
+1-5 at 75 / 60 / 45 / 30. These are our estimate: the College Board does not publish the real
+conversion, and third-party calculators use other numbers (for example 72 / 58 / 42 / 27). Both pages
+say it is an estimate. If you have a better source (a released scoring worksheet you trust, or
+teacher experience), change `CUTS` in `chem/assets/pages/score.js` and `band()` in
+`chem/assets/pages/exams.js` together; `scripts/test/apchem-exams.test.mjs` holds them equal.
+
+## phase3-findings: unit content issues seen while building Phase 3 (open, 2026-10-06)
+
+Not fixed (unit content files were out of scope); for the unit owners:
+- `check-apchem-map.mjs --check` with every unit published fails on
+  `chem-ionic-solids-*` explanation text: "toward the electrodes" (2.3) uses `electrode`, taught in 9.8.
+- `check-site.mjs` with every unit published reports "neighbours"/"neighbouring" (British spelling)
+  in real-gases, solids-properties and the Unit 3 and 5 sheets, four notes meta descriptions that
+  point back or end mid-sentence (bond-enthalpies, electron-configuration, equilibrium-intro,
+  heat-transfer), and two FRQ titles too long for the title pattern (frq-dye-fading,
+  frq-phosgene-ice). They also show up on the Unit 3 practice test page, which reuses bank items.
+- Accuracy check (Phase 4) should cover `chem/data/exams/items.json` (32 items) and
+  `chem/data/justify/*.json` (37 prompts).
+

@@ -52,6 +52,8 @@ body.chem{--ctint:#E3EAFA;--cink:#1D44A6;}
 
 /* SVG vocabulary. Fill classes color a shape; add .line for a stroke only. */
 .chem-fig svg, svg.chem-svg{max-width:100%;height:auto;overflow:visible;}
+/* Inline stimulus drawings (particle views) carry a fixed width; they shrink to the column on a phone. */
+.chem-stim-html svg{max-width:100%;height:auto;}
 .chem-fig .shape{fill:var(--chem-shape-fill);stroke:var(--chem-shape);stroke-width:2;}
 .chem-fig .o2{fill:var(--chem-o2-fill);stroke:var(--chem-o2);stroke-width:2;}
 .chem-fig .deo2{fill:var(--chem-deo2-fill);stroke:var(--chem-deo2);stroke-width:2;}

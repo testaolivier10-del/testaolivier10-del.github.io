@@ -1,0 +1,73 @@
+{
+ "about": "Justification trainer prompts for Unit 4 (docs/apchem-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u4-buret-rinse",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "2.E",
+   "skill": "procedure",
+   "title": "A buret rinsed only with water",
+   "context": "<p>A student titrates a measured volume of vinegar with standardized NaOH. The buret was rinsed with distilled water but not with the NaOH solution before it was filled.</p>",
+   "prompt": "<b>Justify</b> whether the calculated concentration of acetic acid in the vinegar will be too high, too low or unaffected.",
+   "checklist": [
+    "Says water left in the buret dilutes the NaOH, so its real concentration is lower than the value used in the calculation",
+    "Says a larger volume of the diluted NaOH is needed to reach the end point",
+    "Concludes the calculated moles of NaOH (labeled molarity × larger volume) are too large, so the acid concentration is too high"
+   ],
+   "earns": {
+    "answer": "Too high. The water left in the buret dilutes the NaOH, so it is less concentrated than its label. More volume is needed to deliver the moles of OH⁻ that react with the acid. The student multiplies the labeled molarity by this larger volume, which overstates the moles of NaOH, and therefore the moles and concentration of acetic acid.",
+    "why": "It follows the error through each quantity in the calculation to a direction, and names the correct practice implicitly (rinse with titrant)."
+   },
+   "misses": {
+    "answer": "The result is unaffected because water does not react with NaOH or with vinegar.",
+    "why": "Water does not react, but it changes the concentration of the NaOH in the buret, which the calculation assumes. The answer misses the dilution."
+   }
+  },
+  {
+   "id": "u4-dissolving-physical-chemical",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "6.D",
+   "skill": "particle",
+   "title": "Boiling water is a physical change",
+   "context": "<p>Boiling 1 mol of water at 100 °C takes about 41 kJ. Breaking all the O–H bonds in 1 mol of water vapor takes about 926 kJ.</p>",
+   "prompt": "<b>Justify</b> the claim that boiling water is a physical change, using the energies given.",
+   "checklist": [
+    "Says boiling overcomes the attractions between water molecules (hydrogen bonds and other intermolecular forces), so each H₂O molecule stays intact",
+    "Uses the data: the energy to boil (41 kJ/mol) is far smaller than the energy to break the covalent O–H bonds (926 kJ/mol), so boiling cannot be breaking those bonds",
+    "Says no new substance forms: the vapor is still H₂O"
+   ],
+   "earns": {
+    "answer": "When water boils, the molecules separate from each other but each stays H₂O: only the intermolecular attractions (mainly hydrogen bonds) are overcome. The data support this: boiling takes about 41 kJ/mol, more than twenty times less than the 926 kJ/mol needed to break the O–H bonds. No new substance forms, so boiling is a physical change.",
+    "why": "It makes the claim, cites the two numbers as evidence and gives the particle-level reasoning."
+   },
+   "misses": {
+    "answer": "Boiling is physical because the water can be condensed back into liquid.",
+    "why": "Some chemical changes can be undone too, so that is not the test. The answer ignores the energies and what happens to the molecules."
+   }
+  },
+  {
+   "id": "u4-net-ionic-spectator",
+   "unit": "unit-4",
+   "topic": "net-ionic-equations",
+   "practice": "6.D",
+   "skill": "particle",
+   "title": "Why sodium and nitrate ions are left out",
+   "context": "<p>When solutions of AgNO₃ and NaCl are mixed, a white solid forms. The net ionic equation is Ag⁺(aq) + Cl⁻(aq) → AgCl(s).</p>",
+   "prompt": "<b>Justify</b> why Na⁺ and NO₃⁻ do not appear in the net ionic equation.",
+   "checklist": [
+    "Says Na⁺ and NO₃⁻ are dissolved before mixing and stay dissolved, unchanged, after mixing (spectator ions)",
+    "Says only Ag⁺ and Cl⁻ change: they leave the solution to form the solid AgCl"
+   ],
+   "earns": {
+    "answer": "Na⁺ and NO₃⁻ are separate, dissolved ions both before and after the solutions are mixed; they take no part in the change, so they are spectator ions. Only Ag⁺ and Cl⁻ change, leaving the solution to form solid AgCl, so only they appear in the net ionic equation.",
+    "why": "It says what each ion is doing before and after, which is the evidence for leaving it out."
+   },
+   "misses": {
+    "answer": "NaNO₃ is soluble, so it is not written in the equation.",
+    "why": "It treats NaNO₃ as a product that forms, and does not say that its ions were present, unchanged, the whole time."
+   }
+  }
+ ]
+}

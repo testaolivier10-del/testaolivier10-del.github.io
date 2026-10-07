@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 5 (docs/apchem-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u5-name-the-linear-plot",
+   "unit": "unit-5",
+   "topic": "concentration-time",
+   "practice": "6.D",
+   "skill": "kinetics",
+   "title": "Which plot is a straight line",
+   "context": "<p>A student follows the decomposition of compound A and makes three plots of the data against time: [A], ln[A] and 1/[A]. Only the plot of 1/[A] against time is a straight line, with a positive slope of 0.45 M⁻¹ s⁻¹.</p>",
+   "prompt": "<b>Determine</b> the order of the reaction with respect to A and <b>justify</b> your answer.",
+   "checklist": [
+    "Claims the reaction is second order with respect to A",
+    "Names the plot: 1/[A] against time is linear (and says the other two plots are not)",
+    "Links the linear plot to the order: 1/[A]t = 1/[A]0 + kt is the second-order integrated rate law, and the slope is k"
+   ],
+   "earns": {
+    "answer": "The reaction is second order in A. The plot of 1/[A] against time is a straight line, while [A] against time and ln[A] against time are not. The second-order integrated rate law, 1/[A]t = 1/[A]0 + kt, is the equation of a straight line in 1/[A] against t, with slope k = 0.45 M⁻¹ s⁻¹.",
+    "why": "It names the linear plot, not just \"the graph is linear\", and ties it to the integrated rate law it comes from."
+   },
+   "misses": {
+    "answer": "It is second order because the graph is linear.",
+    "why": "Three graphs were made, so \"the graph\" does not say which one. The readers give the point only when the linear plot (1/[A] against t) is named."
+   }
+  },
+  {
+   "id": "u5-catalyst-or-intermediate",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "practice": "6.D",
+   "skill": "kinetics",
+   "title": "Catalyst or intermediate",
+   "context": "<p>A proposed mechanism for the decomposition of ozone:</p><p>Step 1: O₃ + Cl → ClO + O₂<br>Step 2: ClO + O → Cl + O₂</p><p>Overall: O₃ + O → 2 O₂</p>",
+   "prompt": "<b>Identify</b> the catalyst and the intermediate in this mechanism, and <b>justify</b> each choice.",
+   "checklist": [
+    "Cl is the catalyst: it is used up in step 1 and made again in step 2, so it is present at the start and the end and is not in the overall equation",
+    "ClO is the intermediate: it is made in step 1 and used up in step 2, so it is not present at the start or the end",
+    "Distinguishes the two by the order: catalyst consumed then regenerated; intermediate formed then consumed"
+   ],
+   "earns": {
+    "answer": "Cl is the catalyst: it is consumed in step 1 and regenerated in step 2, so the same amount is there at the end as at the start, and it does not appear in the overall equation. ClO is the intermediate: it is produced in step 1 and consumed in step 2, so it exists only partway through the reaction and also does not appear in the overall equation.",
+    "why": "Both species cancel from the overall equation, so the answer uses the order of appearance to tell them apart, which is the point the readers look for."
+   },
+   "misses": {
+    "answer": "Cl and ClO are both catalysts, because neither appears in the overall equation.",
+    "why": "Cancelling out of the overall equation is true of both a catalyst and an intermediate. The answer needs which one is there first (catalyst) and which forms first (intermediate)."
+   }
+  },
+  {
+   "id": "u5-temperature-collisions",
+   "unit": "unit-5",
+   "topic": "collision-model",
+   "practice": "6.E",
+   "skill": "kinetics",
+   "title": "Why warming speeds a reaction",
+   "context": "<p>A reaction with an activation energy of 75 kJ/mol goes about three times faster at 35 °C than at 25 °C.</p>",
+   "prompt": "<b>Explain</b>, using the collision model, why the rate increases when the temperature is raised.",
+   "checklist": [
+    "Says higher temperature raises the average kinetic energy of the molecules",
+    "Says a larger fraction of collisions now have energy at least equal to the activation energy (the main effect)",
+    "Says more effective collisions per second means a faster rate (collision frequency rises only slightly)"
+   ],
+   "earns": {
+    "answer": "At the higher temperature the molecules have a higher average kinetic energy, so the energy distribution shifts and a larger fraction of collisions have at least 75 kJ/mol, the activation energy. More collisions each second are effective, so the reaction is faster. Molecules also collide a little more often, but that is a much smaller effect than the larger fraction with enough energy.",
+    "why": "It says why more collisions succeed (fraction above Ea), which is what explains a rate tripling for a 10 °C change."
+   },
+   "misses": {
+    "answer": "At higher temperature the molecules move faster, so they collide more often and react faster.",
+    "why": "More frequent collisions alone cannot explain a threefold rise; the answer leaves out the activation energy and the fraction of collisions with enough energy."
+   }
+  },
+  {
+   "id": "u5-rate-law-not-coefficients",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "practice": "6.D",
+   "skill": "kinetics",
+   "title": "Why the rate law comes from data",
+   "context": "<p>For 2 NO₂(g) + F₂(g) → 2 NO₂F(g), initial-rate experiments give rate = k[NO₂][F₂].</p>",
+   "prompt": "A student predicted rate = k[NO₂]²[F₂] from the balanced equation. <b>Explain</b> why the student's prediction is not justified.",
+   "checklist": [
+    "Says exponents in a rate law come from experiment, not from the coefficients of the overall equation",
+    "Says the overall reaction may go through several steps (a mechanism), and the slowest step sets the rate law",
+    "Uses the data: the measured rate is first order in NO₂, not second"
+   ],
+   "earns": {
+    "answer": "The coefficients of an overall equation do not give the rate law, because the reaction need not happen in one step. The rate law depends on the steps the reaction actually goes through, especially the slowest one, and must be found from experiment. Here the data show the rate is first order in NO₂, not second, so the overall equation's coefficient of 2 does not appear as an exponent.",
+    "why": "It gives the reason the coefficients do not work (the reaction goes through steps, and the slowest sets the rate) and cites the measured order as evidence."
+   },
+   "misses": {
+    "answer": "The student is wrong because the exponent for NO₂ should be 1.",
+    "why": "That restates the data. It does not say why coefficients cannot be used, which is what the question asks."
+   }
+  }
+ ]
+}

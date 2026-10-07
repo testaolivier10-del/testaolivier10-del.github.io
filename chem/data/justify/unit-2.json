@@ -1,0 +1,95 @@
+{
+ "about": "Justification trainer prompts for Unit 2 (docs/apchem-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u2-lattice-mgo-nacl",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "6.D",
+   "skill": "coulomb",
+   "title": "Why magnesium oxide has a much larger lattice energy than sodium chloride",
+   "context": "<p>Lattice energies (the energy to separate one mole of an ionic solid into its gaseous ions): MgO about 3,800 kJ/mol; NaCl about 790 kJ/mol. Ionic radii: Mg²⁺ 72 pm, O²⁻ 140 pm, Na⁺ 102 pm, Cl⁻ 181 pm.</p>",
+   "prompt": "<b>Explain</b>, in terms of Coulombic attraction, why the lattice energy of MgO is much larger than that of NaCl.",
+   "checklist": [
+    "Compares the charges of both ions in each compound: 2+ and 2− in MgO, 1+ and 1− in NaCl",
+    "Compares the distance between ion centers: the ions in MgO are smaller, so they are closer together",
+    "Links the stronger attraction to more energy needed to separate the ions, which is the lattice energy"
+   ],
+   "earns": {
+    "answer": "In MgO the ions are Mg²⁺ and O²⁻, so the product of the charges is four times that of Na⁺ and Cl⁻. Both ions in MgO are also smaller, so their centers are closer (212 pm against 283 pm). Larger charges and a smaller distance give a much stronger Coulombic attraction between the ions in MgO, so far more energy is needed to pull them apart: its lattice energy is about five times that of NaCl.",
+    "why": "It names both ions' charges and both distances, which is what \"both species\" means for an ionic solid, and links the attraction to the energy needed to separate the ions."
+   },
+   "misses": {
+    "answer": "MgO has the larger lattice energy because Mg²⁺ has a bigger charge than Na⁺.",
+    "why": "It looks at one ion only. The anion's charge (O²⁻ against Cl⁻) and the distance between the ions are left out, so the comparison is half made."
+   }
+  },
+  {
+   "id": "u2-bond-length-hydrogen-chlorine",
+   "unit": "unit-2",
+   "topic": "bond-potential-energy",
+   "practice": "6.D",
+   "skill": "coulomb",
+   "title": "Why the Cl–Cl bond is longer than the H–H bond",
+   "context": "<p>Bond lengths: H–H 74 pm; Cl–Cl 199 pm.</p>",
+   "prompt": "<b>Explain</b> why the Cl–Cl bond is much longer than the H–H bond.",
+   "checklist": [
+    "Says the bonding electrons in Cl₂ are valence electrons in the third shell, while H uses its first-shell 1s electron",
+    "Says the larger atoms reach their lowest potential energy (where attraction and repulsion balance) at a larger distance between nuclei"
+   ],
+   "earns": {
+    "answer": "Hydrogen shares its 1s electron, in the first shell, close to its nucleus. The electrons chlorine shares are in the third shell, much farther from its nucleus, so a chlorine atom is larger. The two Cl nuclei reach the distance of lowest potential energy, where attractions and repulsions balance, much farther apart than two H nuclei do.",
+    "why": "It explains length through the shell the bonding electrons occupy and the potential energy minimum, the model the course uses for bond length."
+   },
+   "misses": {
+    "answer": "Cl₂ is much heavier than H₂, so its bond is longer.",
+    "why": "Mass does not set bond length. The answer gives no particle-level cause: no shells, no atomic size, no potential energy minimum."
+   }
+  },
+  {
+   "id": "u2-carbonate-resonance",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "6.D",
+   "skill": "particle",
+   "title": "Why all three bonds in carbonate are the same",
+   "context": "<p>In the carbonate ion, CO₃²⁻, every C–O bond is 129 pm long. A typical C–O single bond is 143 pm and a C=O double bond is 123 pm.</p>",
+   "prompt": "<b>Explain</b> why all three C–O bonds in carbonate have the same length, between a single and a double bond.",
+   "checklist": [
+    "Says carbonate has three equivalent resonance structures, each with the double bond to a different O",
+    "Says the real ion is one structure, an average of the three, with the electrons spread over all three bonds",
+    "Gives the bond order of about 1⅓, so the length falls between single and double"
+   ],
+   "earns": {
+    "answer": "Carbonate can be drawn as three equivalent resonance structures, each with the double bond to a different oxygen. The real ion is not any one of them: the electrons of the double bond are spread over all three C–O bonds. Each bond has a bond order of about 1⅓, so all three are the same length, between a single (143 pm) and a double bond (123 pm).",
+    "why": "It treats resonance as a description of one real structure with delocalized electrons and uses bond order to explain the length."
+   },
+   "misses": {
+    "answer": "The double bond keeps moving from one oxygen to the next very fast, so on average the three bonds look the same length.",
+    "why": "Resonance structures are not forms the ion flips between. The ion always has the same delocalized structure; nothing moves back and forth."
+   }
+  },
+  {
+   "id": "u2-polarity-co2-so2",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "6.D",
+   "skill": "particle",
+   "title": "Polar bonds, but only one polar molecule",
+   "context": "<p>Electronegativities: C 2.55, S 2.58, O 3.44. CO₂ has no dipole moment; SO₂ has one.</p>",
+   "prompt": "Both CO₂ and SO₂ contain polar bonds. <b>Explain</b> why SO₂ is a polar molecule and CO₂ is not.",
+   "checklist": [
+    "Gives the shape of each molecule from its electron domains: CO₂ linear (two domains, no lone pair on C); SO₂ bent (a lone pair on S)",
+    "Says the two equal bond dipoles cancel in the linear molecule but not in the bent one"
+   ],
+   "earns": {
+    "answer": "Carbon in CO₂ has two electron domains and no lone pairs, so the molecule is linear and its two equal C=O bond dipoles point in opposite directions and cancel. Sulfur in SO₂ has a lone pair as well as its two bonds, so the molecule is bent; its two S–O bond dipoles do not cancel, leaving a net dipole.",
+    "why": "It reasons from electron domains to shape and from shape to whether the bond dipoles cancel, in both molecules."
+   },
+   "misses": {
+    "answer": "SO₂ is polar because sulfur is less electronegative than oxygen. In CO₂, carbon and oxygen share electrons equally.",
+    "why": "The C=O bond is polar too (2.55 against 3.44). The difference between the molecules is their shape, which the answer never mentions."
+   }
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 8 (docs/apchem-architecture.md, \"Justification trainer\"). Numbers recomputed in scripts/lib/apchem-exam-checks.mjs (JUSTIFY_NUMBERS).",
+ "prompts": [
+  {
+   "id": "u8-half-equivalence",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "6.D",
+   "skill": "titration",
+   "title": "Reading pKa from a titration curve",
+   "context": "<p>25.00 mL of a weak acid HA is titrated with 0.100 M NaOH. The equivalence point is at 18.40 mL, where the pH is 8.85. At 9.20 mL of NaOH the pH is 4.62.</p>",
+   "prompt": "<b>Determine</b> the pKa of HA and <b>justify</b> your answer.",
+   "checklist": [
+    "Identifies 9.20 mL as the half-equivalence point (half of 18.40 mL), not the equivalence point",
+    "Says half the HA has been converted to A⁻ there, so [HA] = [A⁻]",
+    "Uses Henderson-Hasselbalch (or Ka = [H₃O⁺][A⁻]/[HA]): when [A⁻]/[HA] = 1, log 1 = 0, so pH = pKa = 4.62"
+   ],
+   "earns": {
+    "answer": "pKa = 4.62. 9.20 mL is half of the equivalence volume, 18.40 mL, so half of the HA has reacted to form A⁻ and [HA] = [A⁻]. In pH = pKa + log([A⁻]/[HA]) the log term is log 1 = 0, so the pH at this point, 4.62, equals the pKa.",
+    "why": "It picks the half-equivalence point, says why the ratio is 1 there, and shows that the log term vanishes."
+   },
+   "misses": {
+    "answer": "pKa = 8.85, because at the equivalence point all the acid has reacted.",
+    "why": "That confuses equivalence with half-equivalence. At equivalence no HA is left; the pH there is set by A⁻ acting as a base."
+   }
+  },
+  {
+   "id": "u8-buffer-ratio",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "6.E",
+   "skill": "titration",
+   "title": "Diluting a buffer",
+   "context": "<p>A buffer is 0.20 M CH₃COOH and 0.20 M CH₃COONa (pKa 4.74). A student dilutes it with an equal volume of water.</p>",
+   "prompt": "<b>Justify</b> whether the pH of the buffer changes on dilution.",
+   "checklist": [
+    "Uses pH = pKa + log([A⁻]/[HA]): the pH depends on the ratio of the two concentrations",
+    "Says dilution halves both concentrations, so the ratio stays 1 and the pH stays 4.74",
+    "Notes that the buffer capacity (how much acid or base it can absorb) does fall, because there are fewer moles per liter"
+   ],
+   "earns": {
+    "answer": "The pH stays at 4.74. In pH = pKa + log([A⁻]/[HA]), only the ratio of the concentrations matters. Adding an equal volume of water halves both [CH₃COO⁻] and [CH₃COOH], to 0.10 M each, so the ratio is still 1 and the log term is still 0. What does change is the buffer capacity: the diluted buffer can neutralize less added acid or base per liter.",
+    "why": "It reasons from the ratio, which is the idea the readers find missing, and separates pH from capacity."
+   },
+   "misses": {
+    "answer": "Adding water lowers the concentration of the acid, so the pH rises.",
+    "why": "It looks at one species. The conjugate base is diluted by the same factor, so the ratio, and the pH, do not change."
+   }
+  },
+  {
+   "id": "u8-weak-acid-meaning",
+   "unit": "unit-8",
+   "topic": "weak-acids-bases",
+   "practice": "6.D",
+   "skill": "particle",
+   "title": "What a small Ka tells you about the particles",
+   "context": "<p>0.10 M acetic acid, CH₃COOH (Ka = 1.8 × 10⁻⁵), has pH 2.87. A 0.10 M solution of HCl, a strong acid, has pH 1.00.</p>",
+   "prompt": "<b>Explain</b> at the particle level why the acetic acid solution has a higher pH than the HCl solution of the same concentration.",
+   "checklist": [
+    "Says HCl ionizes completely, so [H₃O⁺] = 0.10 M",
+    "Says acetic acid is weak: Ka ≪ 1, so at equilibrium most molecules stay as CH₃COOH; only about 1% are ionized",
+    "Concludes [H₃O⁺] is much lower (about 1.3 × 10⁻³ M), so the pH is higher"
+   ],
+   "earns": {
+    "answer": "HCl ionizes completely in water, so a 0.10 M solution has [H₃O⁺] = 0.10 M and pH 1.00. Acetic acid is weak: its Ka, 1.8 × 10⁻⁵, is much less than 1, so at equilibrium most of it stays as CH₃COOH molecules and only about 1.3% ionizes. [H₃O⁺] is only about 1.3 × 10⁻³ M, so the pH is higher, 2.87.",
+    "why": "It describes what the solution contains (mostly un-ionized molecules) and uses the size of Ka as evidence, not just the word \"weak\"."
+   },
+   "misses": {
+    "answer": "Acetic acid has a higher pH because it is a weak acid and HCl is a strong acid.",
+    "why": "\"Weak acid\" restates the claim. The readers want what weak means for the particles: most molecules stay un-ionized because Ka is small."
+   }
+  },
+  {
+   "id": "u8-conjugate-base-hh",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "5.F",
+   "skill": "titration",
+   "title": "An ammonia buffer and the right pKa",
+   "context": "<p>A buffer contains 0.30 M NH₃ and 0.30 M NH₄Cl. For NH₃, Kb = 1.8 × 10⁻⁵ (pKb 4.74). Kw = 1.0 × 10⁻¹⁴.</p>",
+   "prompt": "<b>Determine</b> the pH of the buffer and <b>justify</b> the pKa you use.",
+   "checklist": [
+    "Identifies the weak acid as NH₄⁺ and its conjugate base as NH₃, so Henderson-Hasselbalch needs the pKa of NH₄⁺",
+    "Finds pKa = 14.00 − 4.74 = 9.26 (from pKa + pKb = pKw, or Ka = Kw/Kb = 5.6 × 10⁻¹⁰)",
+    "pH = 9.26 + log(0.30/0.30) = 9.26"
+   ],
+   "earns": {
+    "answer": "In this buffer the acid is NH₄⁺ and the base is NH₃, so the Henderson-Hasselbalch equation needs the pKa of NH₄⁺, not the pKb of NH₃. pKa = pKw − pKb = 14.00 − 4.74 = 9.26. pH = 9.26 + log(0.30/0.30) = 9.26.",
+    "why": "It identifies the conjugate acid and converts pKb to pKa before using the equation."
+   },
+   "misses": {
+    "answer": "The buffer is basic, so I use pKb: pH = pKb + log(0.30/0.30) = 4.74.",
+    "why": "Putting Kb (or pKb) into Henderson-Hasselbalch gives a pH below 7 for a basic buffer. The equation needs the pKa of the conjugate acid, NH₄⁺."
+   }
+  }
+ ]
+}

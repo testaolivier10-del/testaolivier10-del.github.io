@@ -29,6 +29,14 @@
    (1-5) labelled "Not calibrated". History goes to apchem_prefs_v1
    .examHistory (the dashboard reads it).
 
+     Fixed exams     two complete practice exams written to the real format
+                     (assets/exams/forms.json, docs/apchem-architecture.md,
+                     "Practice exams"): the same 60 questions in a set order,
+                     weighted by unit, and the same 7 free-response questions,
+                     for every student, so a score can be compared with a
+                     friend's or a second try. Some questions appear only in
+                     these exams (assets/exams/items.json). ?mode=full&form=1.
+
      Mixed timed set the cram kit's timed sets (spec decision 26): 10, 20 or
                      30 questions from every published unit by the midpoint
                      of its exam weight (as Section I), sets whole, at the
@@ -76,7 +84,9 @@
   function setPref(k, v){ try{ var p = prefs(); p[k] = v; localStorage.setItem(PREFS, JSON.stringify(p)); }catch(e){} }
 
   var bank = null, blocks = null, frqList = [], K = null, run = null;
-  var cfg = { kind: 'full', unit: '', len: 25, n: 20, timing: 'std' };
+  var FORMS = [], OWN = { items: [], stimuli: {} };
+  var cfg = { kind: 'full', unit: '', len: 25, n: 20, timing: 'std', form: '' };
+  function formById(id){ return FORMS.filter(function(f){ return f.id === id; })[0] || null; }
   var MIXED = [10, 20, 30];
   function cramOk(){ return !Core.allowed || Core.allowed('cram'); }
 
@@ -213,7 +223,18 @@
         '<div class="cx-note chem-ex-note"><p><b>How this test is split.</b> Every published topic in the unit gets an equal share; stimulus sets stay whole.</p><ul class="chem-ex-alloc">' +
           p.topics.map(function(t){ return '<li><span>' + esc((t.ced ? t.ced + ' ' : '') + t.title) + '</span><b>' + (p.alloc[t.id] || 0) + '</b></li>'; }).join('') + '</ul></div>';
     }
-    var plan = examPlan(), t = timing();
+    var t = timing();
+    var formPick = FORMS.length ? '<fieldset class="cx-group"><legend>Which exam</legend><div class="cx-pills">' +
+      FORMS.map(function(f){ return '<label class="cx-pill"><input type="radio" name="form" value="' + f.id + '"' + (cfg.form === f.id ? ' checked' : '') + '><span>' + esc(f.title) + '</span></label>'; }).join('') +
+      '<label class="cx-pill"><input type="radio" name="form" value=""' + (cfg.form ? '' : ' checked') + '><span>New mixed exam</span></label></div></fieldset>' : '';
+    var fm = formById(cfg.form);
+    if(fm){
+      var fu = {}; fm.mcq.forEach(function(b){ b.forEach(function(id){ var q = byIdQ(id); if(q) fu[q.unit] = (fu[q.unit] || 0) + 1; }); });
+      return formPick + '<div class="cx-note chem-ex-note"><p><b>' + esc(fm.title) + ': a complete exam in the real format.</b> Section I: ' + MCQ_TOTAL + ' multiple-choice questions in ' + minutes(MCQ_TOTAL * MCQ_SEC) + ', in a set order, with stimulus sets kept whole. Section II: 7 free-response questions in 105 min (3 long at 10 points, then 4 short at 4 points), then you score them with the rubrics. Everyone gets the same questions, so you can compare a second try.</p>' +
+        '<h2 class="chem-ex-h3">Section I, by unit</h2><ul class="chem-ex-areas">' + courseUnits().map(function(u){ return '<li class="is-on"><span>' + esc(unitName(u.id)) + (Array.isArray(u.weight) ? ' <span class="chem-small">(' + u.weight[0] + '–' + u.weight[1] + '%)</span>' : '') + '</span><b>' + (fu[u.id] || 0) + '</b></li>'; }).join('') + '</ul></div>' +
+        timingField() + '<p class="chem-small">' + (t.k ? 'Section I: ' + minutes(MCQ_TOTAL * MCQ_SEC * t.k) + '. Section II: ' + minutes(frqSec(FRQ_SLOTS) * t.k) + (t.k > 1 ? ', with extra time' : '') + '.' : 'Untimed: the clock counts up instead of down.') + '</p>';
+    }
+    var plan = examPlan();
     var unitRows = plan.units.map(function(u){
       var ok = plan.have[u.id] >= plan.need[u.id];
       return '<li class="' + (plan.have[u.id] ? 'is-on' : 'is-off') + '"><span>' + esc(unitName(u.id)) + (Array.isArray(u.weight) ? ' <span class="chem-small">(' + u.weight[0] + '–' + u.weight[1] + '%)</span>' : '') + '</span><b>' +
@@ -223,7 +244,7 @@
       var have = (plan.types[ty] || []).length, need = plan.need7[ty] || 0;
       return '<li class="' + (have ? 'is-on' : 'is-off') + '"><span>' + esc(K ? K.TYPES[ty] : ty) + ' <span class="chem-small">(' + need + ' &times; ' + FRQ_POINTS[ty] + ' points)</span></span><b>' + (have >= need ? 'ready' : have + ' of ' + need + ' written') + '</b></li>';
     }).join('');
-    return '<div class="cx-note chem-ex-note">' +
+    return formPick + '<div class="cx-note chem-ex-note">' +
       (plan.full ? '<p><b>The full hybrid format.</b> Section I: ' + MCQ_TOTAL + ' multiple-choice questions in ' + minutes(MCQ_TOTAL * MCQ_SEC) + ', drawn from each unit by the midpoint of its exam weight, with stimulus sets kept whole. Section II: 7 free-response questions in 105 min (3 long at 10 points, then 4 short at 4 points), then you score them with the rubrics.</p>'
         : '<p><b>Not enough questions for a full practice exam yet.</b> A full exam needs ' + MCQ_TOTAL + ' multiple-choice questions spread over ' + (plan.units.length === 1 ? 'the course\'s one unit' : 'all ' + plan.units.length + ' units') + ' by exam weight, and 7 free-response questions: 3 long and 4 short. ' +
           'Today the bank can give a <b>shorter exam</b>: ' + plural(plan.mcqN, 'multiple-choice question') + (plan.frqs.length ? ' and ' + plural(plan.frqs.length, 'free-response question') : ' and no free-response section') + ', each unit keeping the share it would have in a full exam. Units with no questions yet are left out, not filled in from other units.</p>') +
@@ -235,6 +256,7 @@
   function summary(){
     if(cfg.kind === 'mixed'){ if(!cramOk()) return 'Mixed timed sets are part of Premium.'; var m = mixedPlan(cfg.n); return m.n ? 'Mixed timed set: about ' + plural(m.n, 'question') + (timing().k ? ', ' + minutes(m.n * MCQ_SEC * timing().k) : ', untimed') + '.' : 'No questions are published yet.'; }
     if(cfg.kind === 'unit'){ var p = unitPlan(cfg.unit, cfg.len); return p.n ? plural(p.n, 'question') + (timing().k ? ', ' + minutes(p.n * MCQ_SEC * timing().k) : ', untimed') + '.' : 'No questions are published for this unit yet.'; }
+    if(formById(cfg.form)) return formById(cfg.form).title + ': 60 multiple-choice questions + 7 free-response questions.';
     var plan = examPlan();
     if(!plan.mcqN) return 'No questions are published yet.';
     return (plan.full ? 'Full practice exam: ' : 'Shorter practice exam: ') + plural(plan.mcqN, 'multiple-choice question') + (plan.frqs.length ? ' + ' + plural(plan.frqs.length, 'free-response question') : '') + '.';
@@ -283,7 +305,7 @@
       el.textContent = s;
       var btn = app.querySelector('.chem-pr-start');
       btn.disabled = (cfg.kind === 'mixed' ? !cramOk() : !fe.available) || /^No /.test(s);
-      btn.textContent = cfg.kind === 'mixed' ? 'Start the timed set' : cfg.kind === 'unit' ? 'Start the unit test' : (examPlan().full ? 'Start the practice exam' : 'Start the shorter exam');
+      btn.textContent = cfg.kind === 'mixed' ? 'Start the timed set' : cfg.kind === 'unit' ? 'Start the unit test' : formById(cfg.form) ? 'Start ' + formById(cfg.form).title.toLowerCase() : (examPlan().full ? 'Start the practice exam' : 'Start the shorter exam');
     }
     form.addEventListener('change', function(e){
       var n = e.target.name, v = e.target.value;
@@ -291,8 +313,9 @@
       if(n === 'unit') cfg.unit = v;
       if(n === 'len') cfg.len = +v;
       if(n === 'n') cfg.n = +v;
+      if(n === 'form') cfg.form = v;
       if(n === 'timing'){ cfg.timing = v; setPref('examTiming', v); }
-      if(n === 'kind' || n === 'unit' || n === 'len' || n === 'n' || n === 'timing'){
+      if(n === 'kind' || n === 'unit' || n === 'len' || n === 'n' || n === 'timing' || n === 'form'){
         app.querySelector('.chem-ex-panel').innerHTML = panelHtml();
         var again = form.querySelector('[name="' + n + '"]' + (e.target.type === 'radio' ? '[value="' + v + '"]' : '')); if(again) again.focus();
       }
@@ -312,8 +335,38 @@
 
   /* ------------------------------------------------------ building */
 
+  /* A question of a fixed exam, as a stub: from the bank index, or exam-only. */
+  function byIdQ(id){
+    for(var i = 0; i < bank.length; i++) if(bank[i].id === id) return bank[i];
+    for(var j = 0; j < OWN.items.length; j++) if(OWN.items[j].id === id) return OWN.items[j];
+    return null;
+  }
+  function beginForm(f){
+    var ids = []; f.mcq.forEach(function(b){ b.forEach(function(id){ ids.push(id); }); });
+    var own = {}; OWN.items.forEach(function(q){ own[q.id] = q; });
+    var btn = app.querySelector('.chem-pr-start');
+    if(btn){ btn.disabled = true; btn.textContent = 'Loading questions…'; }
+    var fromBank = ids.filter(function(id){ return !own[id]; }).map(function(id){ return byIdQ(id) || id; });
+    Promise.all([Core.loadQuestions(BASE, fromBank), Promise.all(f.frq.map(function(id){ return K.load(BASE, id); }))]).then(function(r){
+      var by = {}; r[0].forEach(function(q){ by[q.id] = q; });
+      var qs = ids.map(function(id){
+        if(by[id]) return by[id];
+        var q = own[id]; if(!q) return null;
+        q = JSON.parse(JSON.stringify(q)); q.own = true;
+        if(q.stimulus && OWN.stimuli[q.stimulus]) q.stim = OWN.stimuli[q.stimulus];
+        return q;
+      });
+      if(qs.some(function(q){ return !q; })) throw new Error('missing questions');
+      if(Core.freeExam && !Core.freeExam().use()){ renderSetup(); return; }
+      startSectionOne(qs, r[1], f.title, { kind: 'full', form: f.id }, timing().k);
+    }).catch(function(){
+      if(btn){ btn.disabled = false; btn.textContent = 'Start'; }
+      var msg = app.querySelector('.chem-pr-avail'); if(msg) msg.textContent = 'The exam questions did not load. Check your connection and try again.';
+    });
+  }
   function begin(){
     var picked = [], label, meta = { kind: cfg.kind }, frqTypes = [];
+    if(cfg.kind === 'full' && formById(cfg.form)) return beginForm(formById(cfg.form));
     if(cfg.kind === 'unit'){
       var up = unitPlan(cfg.unit, cfg.len);
       up.topics.forEach(function(t){ picked = picked.concat(fill(blocks.filter(function(b){ return b.topic === t.id; }), up.alloc[t.id] || 0)); });
@@ -568,7 +621,8 @@
     window.removeEventListener('beforeunload', guard);
     var rows = run.rows || run.qs.map(function(q){ return { q: q, r: run.res[q.id] || { correct: false, score: 0, pick: null, skipped: true } }; });
     // Recorded now, at the end (A&P decision 42); unanswered counts as a miss.
-    rows.forEach(function(x){ Core.record(x.q.id, !!x.r.correct, { topic: x.q.topic, unit: x.q.unit, practice: x.q.practice, level: x.q.level, diff: x.q.diff, src: 'q' }); });
+    // Exam-only questions (fixed exams) count in the score, not in practice or review.
+    rows.forEach(function(x){ if(!x.q.own) Core.record(x.q.id, !!x.r.correct, { topic: x.q.topic, unit: x.q.unit, practice: x.q.practice, level: x.q.level, diff: x.q.diff, src: 'q' }); });
     var right = rows.filter(function(x){ return x.r.correct; }).length, total = rows.length;
     var fg = 0, fo = 0; (run.frqScores || []).forEach(function(s){ fg += s.got; fo += s.of; });
     // Each section is half the exam score (docs/apchem-research/framework.md, section 2).
@@ -576,7 +630,7 @@
     var isExam = run.meta.kind === 'full';
     var b = isExam ? band(composite) : 0;
     var hist = prefs().examHistory || [];
-    hist.push({ ts: Date.now(), kind: run.meta.kind, label: run.label, unit: run.meta.unit || null, mcq: { c: right, n: total }, frq: fo ? { got: fg, of: fo } : null, band: b || null, partial: !!run.meta.partial });
+    hist.push({ ts: Date.now(), kind: run.meta.kind, label: run.label, unit: run.meta.unit || null, form: run.meta.form || null, mcq: { c: right, n: total }, frq: fo ? { got: fg, of: fo } : null, band: b || null, partial: !!run.meta.partial });
     setPref('examHistory', hist.slice(-30));
     // Each FRQ's self-score also counts as an attempt on the FRQ page.
     (run.frqScores || []).forEach(function(s, i){ var f = run.frqs[i]; K.saveScore(f.id, { got: s.got, of: s.of, parts: s.parts, title: f.title, type: f.type, units: f.units, exam: true }); });
@@ -614,8 +668,8 @@
       (k === 'full' ? '<section class="chem-ex-band" aria-labelledby="chem-ex-band-h"><h2 id="chem-ex-band-h">Readiness estimate: band ' + b + ' of 5</h2>' +
         '<p class="chem-ex-band-warn"><b>' + NOT_CALIBRATED + '</b></p>' +
         '<p class="chem-small">How it is worked out: multiple choice and free response count half each, as the two sections do on the exam, giving ' + composite + '%; then 75% and up is band 5, 60% band 4, 45% band 3, 30% band 2, below that band 1. These cut-offs are our guess, not the College Board\'s scale' +
-        (run.meta.partial ? ', and this was a shorter exam that leaves out units with no questions yet' : '') + '.</p></section>' : '') +
-      (missedN ? '<p>' + plural(missedN, 'missed question') + ' went to your <a href="' + BASE + 'review.html">review queue</a>.</p>' : '<p>Every multiple-choice question right.</p>') +
+        (run.meta.partial ? ', and this was a shorter exam that leaves out units with no questions yet' : '') + '. The <a href="' + BASE + 'score-calculator.html">score calculator</a> explains the method.</p></section>' : '') +
+      (missedN ? '<p>' + plural(rows.filter(function(x){ return !x.r.correct && !x.q.own; }).length, 'missed question') + ' went to your <a href="' + BASE + 'review.html">review queue</a>' + (rows.some(function(x){ return !x.r.correct && x.q.own; }) ? ' (questions written only for this exam stay here, in the review below)' : '') + '.</p>' : '<p>Every multiple-choice question right.</p>') +
       (weak.length ? '<h2>Study next</h2><ul class="chem-pr-next-list">' + weak.map(function(x){
         return '<li><div><b>' + esc(TOPIC[x.key] ? TOPIC[x.key].title : x.key) + '</b><span class="chem-small">' + x.c + ' of ' + x.n + ' right</span></div><a class="btn-outline" href="' + BASE + 'lessons/' + x.key + '.html">Lesson</a><a class="btn-outline" href="' + BASE + 'notes/' + x.key + '.html">Notes</a></li>';
       }).join('') + '</ul>' : '') +
@@ -686,7 +740,12 @@
       K = r[1];
       bank = r[0].filter(function(q){ return TOPIC[q.topic] && TOPIC[q.topic].built; });
       blocks = makeBlocks(bank);
-      return K ? K.index(BASE).then(function(l){ frqList = l || []; }, function(){ frqList = []; }) : null;
+      var getJ = function(u){ return fetch(BASE + u).then(function(x){ if(!x.ok) throw new Error(u); return x.json(); }); };
+      return Promise.all([
+        K ? K.index(BASE).then(function(l){ frqList = l || []; }, function(){ frqList = []; }) : null,
+        getJ('assets/exams/forms.json').then(function(f){ FORMS = f || []; }, function(){ FORMS = []; }),
+        getJ('assets/exams/items.json').then(function(o){ OWN = o || OWN; }, function(){})
+      ]);
     }).then(function(){
       if(!bank.length){ app.innerHTML = '<p>No exam questions are published yet. Meanwhile, read the <a href="' + BASE + 'learn.html">free notes</a>.</p>'; return; }
       var p = new URLSearchParams(location.search), saved = prefs().examTiming;
@@ -694,6 +753,8 @@
       if(builtUnits().some(function(u){ return u.id === p.get('unit'); })){ cfg.unit = p.get('unit'); cfg.kind = 'unit'; }
       if(p.get('mode') === 'unit' || p.get('mode') === 'full' || p.get('mode') === 'mixed') cfg.kind = p.get('mode');
       if(MIXED.indexOf(+p.get('n')) > -1) cfg.n = +p.get('n');
+      if(formById('form-' + p.get('form'))){ cfg.form = 'form-' + p.get('form'); cfg.kind = 'full'; }
+      else if(cfg.kind === 'full' && FORMS.length && !p.get('form')) cfg.form = FORMS[0].id;
       renderSetup();
       if(p.toString()){ var s = app.querySelector('.chem-pr-start'); if(s && !s.disabled) s.focus(); }
     }).catch(function(){ app.innerHTML = '<p>The question bank did not load. Check your connection and reload.</p>'; });

@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 1 (docs/apchem-architecture.md, \"Justification trainer\"). Original prompts aimed at the readers' recurring misses; every number is checked in scripts/lib/apchem-exam-checks.mjs where one is computed.",
+ "prompts": [
+  {
+   "id": "u1-ionization-sodium-magnesium",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "6.D",
+   "skill": "coulomb",
+   "title": "Why magnesium holds its outer electron more tightly than sodium",
+   "context": "<p>First ionization energies: sodium (11 protons, [Ne] 3s¹) 496 kJ/mol; magnesium (12 protons, [Ne] 3s²) 738 kJ/mol.</p>",
+   "prompt": "<b>Explain</b>, using Coulomb's law, why the first ionization energy of magnesium is greater than that of sodium.",
+   "checklist": [
+    "Says the electron removed is a 3s electron in both atoms, in the same shell, with the same 10 core electrons shielding it, so the distance from the nucleus is similar",
+    "Compares the nuclear charge of both atoms: 12 protons in Mg, 11 in Na",
+    "Links the larger attraction to more energy needed to remove the electron"
+   ],
+   "earns": {
+    "answer": "In both atoms the electron removed is a 3s electron, in the third shell and shielded by the same 10 core electrons, so it is about the same distance from the nucleus. Magnesium's nucleus has 12 protons and sodium's has 11, so the Coulombic attraction on magnesium's 3s electron is stronger, and more energy is needed to remove it.",
+    "why": "It compares both atoms on both parts of Coulomb's law: charge (12 vs 11 protons) and distance (same shell, same shielding). Then it connects the stronger attraction to the larger energy."
+   },
+   "misses": {
+    "answer": "Magnesium is smaller than sodium and has more electrons, so it holds on to them more tightly.",
+    "why": "\"Smaller\" is a result of the stronger pull, not its cause, and \"more electrons\" is not why the attraction is stronger. It never names the number of protons or the shell the electron is in."
+   }
+  },
+  {
+   "id": "u1-ionization-potassium-sodium",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "6.A",
+   "skill": "coulomb",
+   "title": "Why potassium loses an electron more easily than sodium",
+   "context": "<p>First ionization energies: sodium (11 protons, [Ne] 3s¹) 496 kJ/mol; potassium (19 protons, [Ar] 4s¹) 419 kJ/mol.</p>",
+   "prompt": "Potassium has more protons than sodium, yet its first ionization energy is lower. <b>Explain</b> why.",
+   "checklist": [
+    "Says potassium's valence electron is in the fourth shell, one shell farther from the nucleus than sodium's third-shell electron",
+    "Mentions the extra shielding from potassium's larger core (18 core electrons against 10)",
+    "Concludes the greater distance outweighs the extra protons, so the attraction is weaker and less energy is needed"
+   ],
+   "earns": {
+    "answer": "Potassium's valence electron is in the fourth shell, while sodium's is in the third. It is farther from the nucleus and shielded by 18 core electrons instead of 10. Even though potassium has more protons, the greater distance makes the Coulombic attraction on that electron weaker, so less energy is needed to remove it.",
+    "why": "It deals with the apparent contradiction head-on: more protons, but a larger distance and more shielding, and it says which effect wins."
+   },
+   "misses": {
+    "answer": "Potassium is heavier than sodium, so its outer electron is easier to knock off.",
+    "why": "Mass does not set ionization energy; Coulombic attraction does. The answer never mentions shells, distance or shielding."
+   }
+  },
+  {
+   "id": "u1-pes-core-peak",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "6.A",
+   "skill": "coulomb",
+   "title": "Reading where a photoelectron peak sits",
+   "context": "<p>In the photoelectron spectra of sodium and magnesium, the 1s peak of sodium is at 104 MJ/mol and the 1s peak of magnesium is at 126 MJ/mol. Both 1s peaks have the same height.</p>",
+   "prompt": "<b>Explain</b> why the 1s peak of magnesium is at a higher binding energy than the 1s peak of sodium.",
+   "checklist": [
+    "Says the position of a peak shows how much energy it takes to remove those electrons (binding energy), not how many electrons there are",
+    "Says the 1s electrons are in the first shell in both atoms, at a similar distance",
+    "Compares nuclear charge: 12 protons pull on magnesium's 1s electrons, 11 on sodium's"
+   ],
+   "earns": {
+    "answer": "A peak's position is the energy needed to remove those electrons. The 1s electrons of both atoms are in the first shell, closest to the nucleus. Magnesium's nucleus has 12 protons and sodium's 11, so magnesium's 1s electrons are attracted more strongly and need more energy to remove.",
+    "why": "It separates what a peak's position means from what its height means, and compares the nuclear charge acting on electrons in the same shell."
+   },
+   "misses": {
+    "answer": "Magnesium has two 3s electrons and sodium has only one, so magnesium's peaks are higher.",
+    "why": "It mixes up peak height (the number of electrons in a subshell) with peak position (binding energy). The number of 3s electrons does not explain the 1s binding energy."
+   }
+  },
+  {
+   "id": "u1-isoelectronic-size",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "6.D",
+   "skill": "coulomb",
+   "title": "Two ions with the same electrons, different sizes",
+   "context": "<p>Ionic radii: Na⁺ 102 pm; F⁻ 133 pm. Both ions have 10 electrons, arranged 1s² 2s² 2p⁶.</p>",
+   "prompt": "<b>Explain</b> why Na⁺ is smaller than F⁻, even though the two ions have the same number of electrons.",
+   "checklist": [
+    "Says both ions have the same electron configuration, so the same number of occupied shells and the same shielding",
+    "Compares the nuclear charge: 11 protons in Na⁺, 9 in F⁻",
+    "Concludes the larger nuclear charge pulls the same electrons closer, making Na⁺ smaller"
+   ],
+   "earns": {
+    "answer": "Na⁺ and F⁻ both have 10 electrons in the same two shells, so their shielding is the same. Na⁺ has 11 protons and F⁻ has 9, so the nucleus of Na⁺ attracts the same set of electrons more strongly and holds them closer, which makes the ion smaller.",
+    "why": "With the electrons identical, the only difference is the number of protons; the answer says so and connects it to size through the attraction."
+   },
+   "misses": {
+    "answer": "Na⁺ is smaller because sodium lost an electron, and F⁻ is bigger because fluorine gained one.",
+    "why": "That describes how the ions formed, not why these two ions, which now have the same electrons, differ in size. It never compares the protons acting on those electrons."
+   }
+  }
+ ]
+}

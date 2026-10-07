@@ -46,6 +46,21 @@
    "css": "pages/pages.css"
   },
   {
+   "slug": "justify",
+   "premium": "justify",
+   "section": "exams",
+   "h1": "Justification trainer",
+   "title": "Justification trainer",
+   "desc": "Chemistry explain and justify practice: write an answer, check it against a rubric, and compare an answer that earns the point with one that does not.",
+   "lede": "Free-response points are lost on vague reasons. Write your answer, check it against the rubric, then see one answer that earns the point and one that sounds right but does not, and why.",
+   "card": "Explain and justify prompts with a rubric checklist and two model answers.",
+   "script": "pages/justify.js",
+   "css": [
+    "pages/pages.css",
+    "pages/entry.css"
+   ]
+  },
+  {
    "slug": "cram",
    "section": "exams",
    "siteScripts": [
