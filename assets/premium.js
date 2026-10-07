@@ -164,10 +164,6 @@
     apchem: {
       name: 'AP® Chemistry',
       dailyFree: 15,
-      // Not on sale yet: no Polar product exists (docs/apchem-spec.md, owner
-      // checklist). While false the course behaves as before launch: nothing
-      // locked, "Premium coming soon" (decision 21 of docs/apbio-spec.md).
-      onSale: false,
       // As AP® Biology: Units 1 and 2 open, and every math-skills lesson
       // (topic.free in chem-curriculum.js, isFreeTopic in scripts/lib/apchem-build.mjs).
       freeChapters: ['unit-1', 'unit-2'],
