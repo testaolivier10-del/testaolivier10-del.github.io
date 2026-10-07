@@ -125,7 +125,7 @@
     ]
    },
    "why": {
-    "correct": "Before: 0.0100 mol CH₃COOH and 0.0100 mol CH₃COO⁻. After H₃O⁺ + CH₃COO⁻ → CH₃COOH: 0.0110 mol acid, 0.0090 mol acetate. [H₃O⁺] = Ka × 0.0110/0.0090 = 2.2 × 10⁻⁵ M; pH = 4.65."
+    "correct": "Before: 0.0100 mol CH₃COOH and 0.0100 mol CH₃COO⁻. After H₃O⁺ + CH₃COO⁻ → CH₃COOH: 0.0110 mol acid, 0.0090 mol acetate. Ka = 10^−4.74 = 1.82 × 10⁻⁵. [H₃O⁺] = Ka × 0.0110/0.0090 = 2.22 × 10⁻⁵ M; pH = 4.65."
    }
   },
   {
@@ -242,7 +242,7 @@
     ]
    },
    "why": {
-    "correct": "[H₃O⁺] = Ka × [HA]/[A⁻] = 1.8 × 10⁻⁵ × 7/3 = 4.2 × 10⁻⁵ M; pH = 4.37. The volume cancels, so particle counts can be used directly."
+    "correct": "Ka = 10^−4.74 = 1.82 × 10⁻⁵. [H₃O⁺] = Ka × [HA]/[A⁻] = 1.82 × 10⁻⁵ × 7/3 = 4.25 × 10⁻⁵ M; pH = 4.37. The volume cancels, so particle counts can be used directly."
    }
   },
   {

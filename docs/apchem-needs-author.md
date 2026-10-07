@@ -359,7 +359,16 @@ Keep the current treatment: the quadratic is taught as a fallback (one worked ex
 was rechecked against the exact solution: NOCl x = 0.0100 vs 0.0097 exact (4% check), phosgene 0.0200
 vs 0.0196, H₂S 1.36 × 10⁻³ vs 1.33 × 10⁻³, A ⇌ B + C 6.3 × 10⁻³ vs 6.1 × 10⁻³ (6.3%, correctly flagged
 as over 5%), PbCl₂ in 0.25 M NaCl 2.7 × 10⁻⁴ (exact 2.71 × 10⁻⁴).
-## unit8-values: Unit 8 conventions to confirm (open, 2026-10-06)
+## unit8-values: Unit 8 conventions to confirm (partly resolved 2026-10-06, Unit 8 review)
+
+Review (`docs/apchem-reviews/u8.md`): every Ka/Kb below is within the usual spread of 25 °C tables
+(LibreTexts E1 lists HNO₂ 5.6 × 10⁻⁴, HF 6.3 × 10⁻⁴, HOCl 4.0 × 10⁻⁸, HOBr 2.8 × 10⁻⁹, HOI
+3.2 × 10⁻¹¹, dichloroacetic 4.5 × 10⁻², trifluoroacetic 0.30; the rest match to two figures). Each item
+states the value it uses, so no change. Indicator pKa values match supplier tables (phenolphthalein
+9.3-9.4, methyl orange 3.4-3.5, thymol blue 8.9). **Resolved:** values, indicators, 8.11 kept
+qualitative, grader fix. **Still open:** the pH decimal-place convention (house rule kept) and whether
+the 2024 CED limits polyprotic titrations (the items stay qualitative, so no change either way).
+
 
 Written for Unit 8 (`chem/data/*/` for topics 8.1-8.11); please confirm or correct:
 

@@ -348,7 +348,7 @@
     ]
    },
    "why": {
-    "correct": "In pure water [H₃O⁺] = [OH⁻] = x, so x² = Kw and x = √(5.5 × 10⁻¹⁴) = 2.35 × 10⁻⁷ M. pH = −log(2.3 × 10⁻⁷) = 6.630, or 6.63."
+    "correct": "In pure water [H₃O⁺] = [OH⁻] = x, so x² = Kw and x = √(5.5 × 10⁻¹⁴) = 2.35 × 10⁻⁷ M. pH = −log(2.35 × 10⁻⁷) = 6.630, or 6.63."
    }
   },
   {

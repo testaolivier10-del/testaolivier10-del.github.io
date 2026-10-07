@@ -1,6 +1,6 @@
 {
  "topic": "acid-strength-structure",
- "hook": "Vinegar is an acid, but ethanol, which has the same O–H group, is not acidic enough to change pH at all. Swap one hydrogen in vinegar's acid for chlorine and the acid becomes a hundred times stronger. The reason sits in the structure of the ion left behind after the proton leaves.",
+ "hook": "Vinegar is an acid, but ethanol, which has the same O–H group, is not acidic enough to change pH at all. Swap one hydrogen in vinegar's acid for chlorine and the acid becomes about eighty times stronger. The reason sits in the structure of the ion left behind after the proton leaves.",
  "prereq": [
   {
    "q": "Which atom is most electronegative?",

@@ -80,7 +80,7 @@
    "stimulus": "buffers-intro-s1",
    "q": "What is the pH in Flask 2?",
    "numeric": {
-    "answer": 4.75,
+    "answer": 4.74,
     "tol": 0.01,
     "unit": "",
     "places": 2,
@@ -98,7 +98,7 @@
     ]
    },
    "why": {
-    "correct": "After reaction: 2.50 × 10⁻³ mol CH₃COOH and 2.50 × 10⁻³ mol CH₃COO⁻. In Ka = [H₃O⁺][A⁻]/[HA], the volume cancels, so [H₃O⁺] = Ka × (2.50 × 10⁻³)/(2.50 × 10⁻³) = 1.8 × 10⁻⁵ M and pH = 4.75."
+    "correct": "After reaction: 2.50 × 10⁻³ mol CH₃COOH and 2.50 × 10⁻³ mol CH₃COO⁻. In Ka = [H₃O⁺][A⁻]/[HA], the volume cancels, so [H₃O⁺] = Ka × (2.50 × 10⁻³)/(2.50 × 10⁻³) = 1.8 × 10⁻⁵ M and pH = −log(1.8 × 10⁻⁵) = 4.74, which is pKa."
    }
   },
   {
@@ -469,7 +469,7 @@
       "tol": 0.02
      },
      {
-      "value": 1.97,
+      "value": 1.96,
       "why": "Value: you ignored the NO₂⁻. It is already present at 0.20 M, so use [H₃O⁺] = Ka × [HNO₂]/[NO₂⁻].",
       "tol": 0.02
      }
@@ -531,7 +531,7 @@
     ]
    },
    "why": {
-    "correct": "H₃O⁺ + NH₃ → NH₄⁺ leaves 0.010 mol NH₃ and 0.010 mol NH₄⁺. For NH₄⁺, Ka = Kw/Kb = 5.6 × 10⁻¹⁰. [H₃O⁺] = Ka × [NH₄⁺]/[NH₃] = 5.6 × 10⁻¹⁰ × 1 → pH = 9.26."
+    "correct": "H₃O⁺ + NH₃ → NH₄⁺ leaves 0.010 mol NH₃ and 0.010 mol NH₄⁺. For NH₄⁺, Ka = Kw/Kb = 5.6 × 10⁻¹⁰. [H₃O⁺] = Ka × [NH₄⁺]/[NH₃] = 5.56 × 10⁻¹⁰ × 1 = 5.56 × 10⁻¹⁰ M → pH = 9.26 (rounding Ka to 5.6 × 10⁻¹⁰ first gives 9.25, also accepted)."
    }
   },
   {

@@ -209,7 +209,7 @@
     "Box 2",
     "Box 1",
     "Box 3",
-    "Box 3, which has the fewest acid molecules"
+    "A pH reading of each box is needed to tell"
    ],
    "correct": 0,
    "why": {
@@ -218,7 +218,7 @@
      "Right: only ions, no whole molecules.",
      "Box 1 is mostly whole HA molecules: a weak acid.",
      "Box 3 still has whole HA molecules: a weak acid.",
-     "Fewer acid molecules means a more dilute solution, not a stronger acid; Box 3 still holds whole HA molecules."
+     "The particle view is enough: a strong acid leaves no whole HA molecules, and only Box 2 has none."
     ]
    }
   },
@@ -353,13 +353,13 @@
    "stimulus": "weak-acids-bases-s3",
    "q": "What is the pH of the ammonia cleaning solution?",
    "numeric": {
-    "answer": 11.21,
+    "answer": 11.22,
     "tol": 0.01,
     "unit": "",
     "places": 2,
     "mistakes": [
      {
-      "value": 2.79,
+      "value": 2.78,
       "why": "Value: that is the pOH. The solution is basic: pH = 14.00 − pOH.",
       "tol": 0.02
      },
@@ -371,7 +371,7 @@
     ]
    },
    "why": {
-    "correct": "pOH = −log(1.6 × 10⁻³) = 2.784; pH = 14.00 − 2.78 = 11.21."
+    "correct": "pOH = −log(1.64 × 10⁻³) = 2.784; pH = 14.00 − 2.784 = 11.216, which is 11.22 (two significant figures in 0.15 M, two decimal places). Solving the quadratic gives 11.21; both are accepted."
    }
   },
   {

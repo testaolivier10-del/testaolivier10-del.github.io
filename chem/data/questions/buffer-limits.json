@@ -266,11 +266,6 @@
     "places": 2,
     "mistakes": [
      {
-      "value": 0.72,
-      "why": "Value: the Henderson-Hasselbalch equation needs both components. All 0.10 mol acetate is used up, so 0.05 mol H₃O⁺ is left free and sets the pH.",
-      "tol": 0.02
-     },
-     {
       "value": 0.82,
       "why": "Value: 0.10 mol of the HCl was taken up by acetate; only the excess, 0.05 mol, stays as H₃O⁺.",
       "tol": 0.02
@@ -441,7 +436,7 @@
     "X and Y",
     "Y and Z",
     "X and Z",
-    "Y and Z, which have the most HA"
+    "Each box has a different pH, because each holds a different number of particles"
    ],
    "correct": 0,
    "why": {
@@ -450,7 +445,7 @@
      "Right: same ratio.",
      "Y is 1 : 1 and Z is 5 : 1 acid to base.",
      "X is 1 : 1, Z is 5 : 1.",
-     "Y and Z have different ratios (1 : 1 and 5 : 1), so different pH values."
+     "The pH depends on the ratio, not the count: X and Y share a 1 : 1 ratio."
     ]
    }
   },
@@ -537,7 +532,7 @@
     ]
    },
    "why": {
-    "correct": "OH⁻ + HA → A⁻ + H₂O: 10 − 3 = 7 HA, 2 + 3 = 5 A⁻. pH = 4.74 + log(5/7) = 4.74 + (-0.15) = 4.59. Particle counts work as moles because the volume cancels."
+    "correct": "OH⁻ + HA → A⁻ + H₂O: 10 − 3 = 7 HA, 2 + 3 = 5 A⁻. pH = 4.74 + log(5/7) = 4.74 − 0.15 = 4.59. Particle counts work as moles because the volume cancels."
    }
   },
   {

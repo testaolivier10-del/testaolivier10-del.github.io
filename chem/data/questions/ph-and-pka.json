@@ -102,7 +102,7 @@
      "Right: pKa close to the equivalence pH.",
      "Phenolphthalein changes near pH 9, in the buffer region of this titration, long before equivalence.",
      "It changes near pH 7, before equivalence in this titration of a weak base.",
-     "Its range ends near 4.5, below the equivalence pH; it would change late, after the steep drop."
+     "Its pKa (3.5) is below the equivalence pH, so it changes near the bottom of the steep drop, slightly after equivalence. Bromocresol green's pKa is closer to 5.28."
     ]
    }
   },
@@ -169,7 +169,7 @@
    "level": "analyze",
    "diff": 2,
    "stimulus": "ph-and-pka-s1",
-   "q": "A strong acid is titrated with a strong base (equivalence at pH 7.00, with a very steep rise from about pH 4 to 10). Which indicators would give an accurate end point? Select all that apply.",
+   "q": "A 0.0010 M strong acid is titrated with 0.0010 M strong base. Because the solutions are so dilute, the steep rise near equivalence (pH 7.00) runs only from about pH 6 to 8. Which indicators would give an accurate end point? Select all that apply.",
    "options": [
     "Bromothymol blue",
     "Phenolphthalein",
@@ -177,16 +177,15 @@
     "Methyl orange"
    ],
    "correct": [
-    0,
-    1
+    0
    ],
    "why": {
-    "correct": "Near the equivalence point of a strong-strong titration, one drop moves the pH across several units, so any indicator whose range lies inside the steep part works. Bromothymol blue (about 6 to 8) and phenolphthalein (about 8 to 10) do.",
+    "correct": "An indicator marks the end point accurately only if its color change (about pKa ± 1) falls on the steep part of the curve. Here that part is short, pH 6 to 8, and only bromothymol blue (about 6.1 to 8.1) changes inside it. With 0.10 M solutions the rise would span about pH 4 to 10 and several indicators would work.",
     "options": [
-     "Right: centered on pH 7.",
-     "Right: within the steep rise; the volume error is a fraction of a drop.",
-     "Its range starts near pH 3.7, below the steep part, so it would change slightly early.",
-     "It changes near pH 3 to 4.5, before the steep rise."
+     "Right: its range, about 6.1 to 8.1, sits on the steep part around pH 7.",
+     "Its range, about 8.3 to 10.3, lies above the steep part, so in these dilute solutions it turns pink only after extra base: a late end point.",
+     "Its range, about 3.7 to 5.7, lies below the steep part, so it changes color before equivalence.",
+     "It changes near pH 3 to 4.5, long before the steep rise."
     ]
    }
   },
@@ -204,7 +203,7 @@
     "Box 3",
     "Box 1",
     "Box 2",
-    "Box 2, which has equal amounts"
+    "The volume of each box is needed to tell"
    ],
    "correct": 0,
    "why": {
@@ -213,7 +212,7 @@
      "Right: pH > pKa, mostly deprotonated.",
      "Box 1 is mostly HA, which fits pH 5.0, below pKa.",
      "Box 2 has equal amounts, which fits pH = pKa = 6.0.",
-     "Equal amounts mean pH = pKa = 6.0, not 7.0."
+     "The ratio [A⁻]/[HA] needs no volume: it is set by pH − pKa, and 9 : 1 fits pH 7.0."
     ]
    }
   },

@@ -155,7 +155,7 @@
      {
       "value": 1.93,
       "why": "Value: the small-x shortcut gives x as 12% of 0.10, over the 5% limit. Solve x² + Ka·x − Ka·C = 0.",
-      "tol": 0.02
+      "tol": 0.005
      },
      {
       "value": 1,
@@ -197,23 +197,21 @@
   },
   {
    "id": "chem-acid-strength-structure-5",
-   "type": "multi",
+   "type": "single",
    "unit": "unit-8",
    "topic": "acid-strength-structure",
    "practice": "6.E",
    "level": "apply",
    "diff": 2,
    "stimulus": "acid-strength-structure-s1",
-   "q": "Which conjugate base is the strongest base? Select one.",
+   "q": "Which conjugate base is the strongest base?",
    "options": [
     "CH₃COO⁻",
     "ClCH₂COO⁻",
     "Cl₂CHCOO⁻",
     "FCH₂COO⁻"
    ],
-   "correct": [
-    0
-   ],
+   "correct": 0,
    "why": {
     "correct": "Kb = Kw/Ka, so the weakest acid (acetic acid, smallest Ka) has the strongest conjugate base. Its negative charge is the least stabilized, so it holds a proton most readily.",
     "options": [
@@ -410,7 +408,7 @@
      {
       "value": 11.67,
       "why": "Value: the small-x estimate is 9% of 0.050, over 5%. Solve the quadratic for [OH⁻].",
-      "tol": 0.02
+      "tol": 0.005
      },
      {
       "value": 2.35,

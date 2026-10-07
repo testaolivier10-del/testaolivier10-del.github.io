@@ -211,7 +211,7 @@
     ]
    },
    "why": {
-    "correct": "HCl: 0.0250 L × 0.120 mol/L = 0.00300 mol H₃O⁺. NaOH: 0.0150 L × 0.150 mol/L = 0.00225 mol OH⁻. They react 1:1, leaving 0.00300 − 0.00225 = 7.5 × 10⁻⁴ mol H₃O⁺. The subtraction leaves the thousandths-of-a-millimole place, so two significant figures."
+    "correct": "HCl: 0.0250 L × 0.120 mol/L = 0.00300 mol H₃O⁺. NaOH: 0.0150 L × 0.150 mol/L = 0.00225 mol OH⁻. They react 1:1, leaving 0.00300 − 0.00225 = 7.5 × 10⁻⁴ mol H₃O⁺. Both amounts are known to the 0.00001 mol place, so the difference, 0.00075 mol, has two significant figures."
    }
   },
   {
@@ -243,7 +243,7 @@
     ]
    },
    "why": {
-    "correct": "[H₃O⁺] = 7.5 × 10⁻⁴ mol / 0.0400 L = 0.0188 M. pH = −log(0.019) = 1.727, which is 1.73 (two significant figures in the leftover moles)."
+    "correct": "[H₃O⁺] = 7.5 × 10⁻⁴ mol / 0.0400 L = 0.0188 M. pH = −log(0.0188) = 1.727, which is 1.73 (two significant figures in the leftover moles)."
    }
   },
   {

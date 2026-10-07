@@ -204,7 +204,11 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    `frq-buffer-preparation`, `frq-acid-strength-structure`, `frq-strong-weak-acid`,
    `frq-ph-solubility` short). 8.11 is qualitative only. Every numeric key and authored mistake was
    graded by the runtime grader; that found and fixed a small-key bug in `near()`
-   (needs-author `unit8-values`). Next: the independent accuracy check (section 6).
+   (needs-author `unit8-values`). **Accuracy-checked 2026-10-06** (`docs/apchem-reviews/u8.md`): every
+   numeric key, mistake and plotted curve point recomputed in code, all 11 figures rendered; 5 keys
+   changed (`chem-weak-acids-bases-11` 11.21 → 11.22, `chem-buffers-intro-2` 4.75 → 4.74,
+   `chem-ph-and-pka-5` now one correct option, `chem-acid-strength-structure-5` multi → single), three
+   figures re-laid out; `unit8-values` partly resolved.
 
 13. (2026-10-06, Unit 7) **Unit 7 content and two shared fixes.** Map: "Q < K", "Q > K", "Q = K" moved to
    `reaction-quotient` (7.3, where the CED teaches the comparison; `q-vs-k` in 7.10 keeps the justification
