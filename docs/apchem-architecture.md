@@ -261,7 +261,7 @@ point; a sample for every part; `stimulus` an object or a stimulus id from a que
   (reduction potentials, solubility rules, Arrhenius, the zero-order law, strong acids, structure
   rules). Our own words; the equations are the standard ones (`EQ` in `apchem-entry.mjs`).
 - `score-calculator.html` + `pages/score.js`: composite = 50 × (MCQ right ÷ 60) + 50 × (FRQ points ÷
-  46); bands at 75 / 60 / 45 / 30, the same cut-offs as the practice exam's readiness band (a test
+  46); bands at 72 / 58 / 42 / 27 (the 2014 exam's reported cut-offs), the same cut-offs as the practice exam's readiness band (a test
   holds them equal). Labelled an estimate; the page explains the method and why the real cut-offs
   are unknown.
 - `unit-tests/<unit>.html`: a fixed 12-question sample per published unit (`unitSample`: up to two

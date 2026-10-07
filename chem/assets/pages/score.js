@@ -7,7 +7,9 @@
    Each section is half the exam score (docs/apchem-research/framework.md,
    section 2): 60 four-option questions, then 7 free-response questions worth
    3 × 10 + 4 × 4 = 46 points. The bands below are the practice exam's
-   (75, 60, 45 and 30 out of 100): our estimate, not the College Board's scale,
+   (72, 58, 42 and 27 out of 100): the cut-offs reported for the 2014 exam (the first in the current
+   format, also scored 50/50 out of 100) and used by the common third-party
+   calculators; an estimate, not this year's scale,
    which is set after each exam and not published.
 
      ApChemScore.composite(mcq, frq, opts)  { mcqPct, frqPct, composite, band, next }
@@ -16,7 +18,7 @@
 (function(){
   var MCQ = 60, FRQ = [10, 10, 10, 4, 4, 4, 4];
   var FRQ_TOTAL = FRQ.reduce(function(a, b){ return a + b; }, 0);
-  var CUTS = [75, 60, 45, 30];   // band 5, 4, 3, 2 from these composites up; below is 1
+  var CUTS = [72, 58, 42, 27];   // band 5, 4, 3, 2 from these composites up; below is 1
 
   function clamp(x, lo, hi){ x = Number(x); if(!isFinite(x)) x = 0; return Math.max(lo, Math.min(hi, x)); }
   function band(c){ return c >= CUTS[0] ? 5 : c >= CUTS[1] ? 4 : c >= CUTS[2] ? 3 : c >= CUTS[3] ? 2 : 1; }

@@ -48,7 +48,11 @@ Still open for the owner.
 Also for a reviewer: the indicator ranges in the titration reader (methyl orange 3.1–4.4, methyl red
 4.4–6.2, bromothymol blue 6.0–7.6, phenolphthalein 8.2–10.0, alizarin yellow R 10.1–12.0) are common
 textbook values; sources differ by a few tenths, and the generator only draws curves whose
-equivalence pH falls in exactly one range.
+equivalence pH falls in exactly one range. **Checked 2026-10-06** (`docs/apchem-reviews/tools-exams.md`):
+they match the Wikipedia/CRC table to 0.1 (phenolphthalein 8.2 or 8.3, alizarin yellow R 10.1 or
+10.2). For HCl with NaOH the jump is so steep that methyl red and phenolphthalein also change within
+0.1 mL of equivalence; the feedback for those two now says "not the best match" instead of "too
+early/too late". The tools-premium choice stays with the owner.
 
 ## unit-1-data-values: verify reference data used in Unit 1 items (resolved, 2026-10-06)
 
@@ -454,14 +458,18 @@ qualitative (direction and size of E relative to E° from Q, E = 0 at Q = K, con
 the rest of the 9.10 page (any EK or exclusion on algorithmic Nernst calculations) could not be
 extracted, so the qualitative-only choice stays until someone reads that page.
 
-## score-cutoffs: the composite cut-offs for the estimated score (open, 2026-10-06)
+## score-cutoffs: the composite cut-offs for the estimated score (resolved, 2026-10-06, tools-exams review)
 
-The score calculator and the practice exam's readiness band turn a 50/50 composite (out of 100) into
-1-5 at 75 / 60 / 45 / 30. These are our estimate: the College Board does not publish the real
-conversion, and third-party calculators use other numbers (for example 72 / 58 / 42 / 27). Both pages
-say it is an estimate. If you have a better source (a released scoring worksheet you trust, or
-teacher experience), change `CUTS` in `chem/assets/pages/score.js` and `band()` in
-`chem/assets/pages/exams.js` together; `scripts/test/apchem-exams.test.mjs` holds them equal.
+Was 75 / 60 / 45 / 30, our own guess. Now **72 / 58 / 42 / 27** out of 100 (5, 4, 3, 2; below 27 is 1),
+in `CUTS` (`chem/assets/pages/score.js`) and `band()` (`chem/assets/pages/exams.js`), held equal by
+`scripts/test/apchem-exams.test.mjs`. Sources: the cut-offs reported for the 2014 exam, the first in
+the current format, which is also scored 50/50 to a composite of 100 (a "2014 AP Chemistry Exam
+Results" handout on studylib.net: 5 = 72, 4 = 58, 3 = 42, 2 = 27); the same numbers are used by Omni,
+Test Ninjas and num8ers (which attributes them to 2025). Other calculators run lower (RemNote 65 /
+53 / 40 / 27, everycalculators 70 / 60 / 48 / 35). Recent score distributions (College Board,
+2022-2025: 15-18% 5s, 75-78% 3+) give more 5s than 2014 (about 10%), so the real 5 line is probably
+at or a little below 72; the page says so and still calls the result an estimate. Revisit if the
+College Board releases a newer scoring worksheet.
 
 ## phase3-findings: unit content issues seen while building Phase 3 (open, 2026-10-06)
 

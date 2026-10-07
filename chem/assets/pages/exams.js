@@ -613,7 +613,7 @@
 
   /* ------------------------------------------------------ results */
 
-  function band(p){ return p >= 75 ? 5 : p >= 60 ? 4 : p >= 45 ? 3 : p >= 30 ? 2 : 1; }
+  function band(p){ return p >= 72 ? 5 : p >= 58 ? 4 : p >= 42 ? 3 : p >= 27 ? 2 : 1; }
   function finish(){
     if(!run || run.done) return;
     run.done = true;
@@ -667,7 +667,7 @@
       (fo ? '<div class="chem-pr-score chem-ex-fsum"><span class="chem-pr-score-big">' + fg + '<small>/' + fo + '</small></span><span><b>Free response (your self-score): ' + pctOf(fg, fo) + '%</b><span class="chem-small">' + plural(run.frqs.length, 'question') + ' scored with the rubrics' + (run.timeUp2 ? ' · time ran out in Section II' : '') + '</span></span></div>' : '') +
       (k === 'full' ? '<section class="chem-ex-band" aria-labelledby="chem-ex-band-h"><h2 id="chem-ex-band-h">Readiness estimate: band ' + b + ' of 5</h2>' +
         '<p class="chem-ex-band-warn"><b>' + NOT_CALIBRATED + '</b></p>' +
-        '<p class="chem-small">How it is worked out: multiple choice and free response count half each, as the two sections do on the exam, giving ' + composite + '%; then 75% and up is band 5, 60% band 4, 45% band 3, 30% band 2, below that band 1. These cut-offs are our guess, not the College Board\'s scale' +
+        '<p class="chem-small">How it is worked out: multiple choice and free response count half each, as the two sections do on the exam, giving ' + composite + '%; then 72% and up is band 5, 58% band 4, 42% band 3, 27% band 2, below that band 1. These cut-offs are the ones reported for the 2014 exam, an estimate: each year\'s real scale differs a little' +
         (run.meta.partial ? ', and this was a shorter exam that leaves out units with no questions yet' : '') + '. The <a href="' + BASE + 'score-calculator.html">score calculator</a> explains the method.</p></section>' : '') +
       (missedN ? '<p>' + plural(rows.filter(function(x){ return !x.r.correct && !x.q.own; }).length, 'missed question') + ' went to your <a href="' + BASE + 'review.html">review queue</a>' + (rows.some(function(x){ return !x.r.correct && x.q.own; }) ? ' (questions written only for this exam stay here, in the review below)' : '') + '.</p>' : '<p>Every multiple-choice question right.</p>') +
       (weak.length ? '<h2>Study next</h2><ul class="chem-pr-next-list">' + weak.map(function(x){

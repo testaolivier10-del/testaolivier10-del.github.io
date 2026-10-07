@@ -48,8 +48,8 @@ test('score: inputs are clamped and rounded', () => {
   assert.equal(S.composite(40.6, 20).mcq, 41);
 });
 
-test('score: bands at 75, 60, 45 and 30, the same as the practice exam', () => {
-  const cases = [[100, 5], [75, 5], [74.9, 4], [60, 4], [59.9, 3], [45, 3], [44.9, 2], [30, 2], [29.9, 1], [0, 1]];
+test('score: bands at 72, 58, 42 and 27, the same as the practice exam', () => {
+  const cases = [[100, 5], [72, 5], [71.9, 4], [58, 4], [57.9, 3], [42, 3], [41.9, 2], [27, 2], [26.9, 1], [0, 1]];
   for (const [c, b] of cases) assert.equal(S.band(c), b, `composite ${c}`);
   const ex = readFileSync('chem/assets/pages/exams.js', 'utf8');
   const m = /function band\(p\)\{ return p >= (\d+) \? 5 : p >= (\d+) \? 4 : p >= (\d+) \? 3 : p >= (\d+) \? 2 : 1; \}/.exec(ex);
@@ -62,18 +62,18 @@ test('score: what it takes to reach the next band', () => {
   const r = S.composite(36, 20);   // 30 + 21.74 = 51.7, band 3
   assert.equal(r.band, 3);
   assert.equal(r.next.band, 4);
-  assert.equal(r.next.at, 60);
-  // 8.26 composite points: 10 more MCQ (50/60 each) or 8 more FRQ points (50/46 each).
-  assert.equal(r.next.mcq, 10);
-  assert.equal(r.next.frq, 8);
+  assert.equal(r.next.at, 58);
+  // 6.26 composite points: 8 more MCQ (50/60 each) or 6 more FRQ points (50/46 each).
+  assert.equal(r.next.mcq, 8);
+  assert.equal(r.next.frq, 6);
   assert.ok(S.composite(36 + r.next.mcq, 20).band >= 4);
   assert.ok(S.composite(36 + r.next.mcq - 1, 20).band < 4);
   assert.ok(S.composite(36, 20 + r.next.frq).band >= 4);
   assert.ok(S.composite(36, 20 + r.next.frq - 1).band < 4);
   assert.equal(S.composite(60, 46).next, null, 'nothing above band 5');
-  const close = S.composite(58, 10);  // 48.3 + 10.9 = 59.2: one more question (50.0 + 10.9) reaches 60
+  const close = S.composite(56, 10);  // 46.7 + 10.9 = 57.5: one more question (47.5 + 10.9) reaches 58
   assert.equal(close.next.mcq, 1);
-  const capped = S.composite(5, 46);  // 4.2 + 50 = 54.2, needs 5.8 more: FRQ is full
+  const capped = S.composite(5, 46);  // 4.2 + 50 = 54.2, needs 3.8 more: FRQ is full
   assert.equal(capped.next.frq, null, 'no FRQ route when the section is full');
 });
 

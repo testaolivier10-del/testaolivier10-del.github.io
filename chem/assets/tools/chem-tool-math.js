@@ -356,7 +356,9 @@
       equation: eqHtml(sp), expr: exprHtml(sp, Kp), counts: counts, c: c, per: ctx.per || null, Q: q, K: K, dir: dir,
       text: '<p class="bt-eq">' + eqHtml(sp) + ' &nbsp; ' + Kname + ' = ' + ks + '</p><p>' + mix + '</p>',
       steps: [
-        { key: 'Q', kind: 'num', label: 'Calculate Q = ' + exprHtml(sp, Kp), hint: (parts ? 'Concentration = count × ' + fmt(ctx.per, 2) + ' ' + u + '. ' : '') + (others.length ? 'Leave solids and liquids out.' : 'Same form as K, with the amounts right now.'), cell: cell(q, 0.03, qm), unit: '', practice: '5.F' },
+        // Within 5%: the amounts are given to 2 significant figures, and a Q
+        // rounded to 2 figures can sit up to 5% from the exact value.
+        { key: 'Q', kind: 'num', label: 'Calculate Q = ' + exprHtml(sp, Kp), hint: (parts ? 'Concentration = count × ' + fmt(ctx.per, 2) + ' ' + u + '. ' : '') + (others.length ? 'Leave solids and liquids out.' : 'Same form as K, with the amounts right now.'), cell: cell(q, 0.05, qm), unit: '', practice: '5.F' },
         { key: 'cmp', kind: 'choice', label: 'Compare Q with K', options: ['Q < K', 'Q > K', 'Q = K'], correct: cmp, fixed: true, practice: '6.D', why: ['Q is ' + qs + ', K is ' + ks + '.', 'Q is ' + qs + ', K is ' + ks + '.', 'Q is ' + qs + ', K is ' + ks + '.'] },
         { key: 'dir', kind: 'choice', label: 'Which way does the reaction go?', options: ['Forward, toward products', 'In reverse, toward reactants', 'No net change: already at equilibrium'], correct: cmp, fixed: true, practice: '6.D',
           why: ['Q < K: products form, raising Q to K.', 'Q > K: reactants form, lowering Q to K.', 'Q = K: the mixture is at equilibrium.'] },
@@ -389,7 +391,7 @@
     var steps = [], sol = [], text;
     if(type === 'ph'){
       var cA = between(r, ctx.c[0], ctx.c[1], 3), cH = between(r, ctx.c[0], ctx.c[1], 3), ratio = cA / cH;
-      if(Math.abs(Math.log10(ratio)) < 0.12) return null;
+      if(Math.abs(Math.log10(ratio)) < 0.12 || !hhOk(Ka, cA, cH)) return null;
       var pH = pKa + Math.log10(ratio);
       text = lead + '<p>A buffer is ' + fmt(cH, 3) + ' M ' + HA + ' and ' + fmt(cA, 3) + ' M ' + A + '. Find its pH.</p>';
       var ms = [
@@ -407,11 +409,13 @@
       var off = (r() < 0.5 ? -1 : 1) * (0.15 + 0.8 * r()), target = M.round(pKa + off, 2), rat = Math.pow(10, target - pKa);
       if(Math.abs(target - pKa) < 0.12) return null;
       text = lead + '<p>You need a buffer at pH ' + F(target, 2) + ' made from ' + HA + ' and ' + A + '. What ratio [' + A + '] / [' + HA + '] do you need?</p>';
+      // Within 5%, plus 0.006 so a ratio worked from the two-decimal pKa and
+      // rounded to two decimal places (as the answer is shown) still counts.
       steps.push(pkaStep, { key: 'ratio', kind: 'num', label: 'Ratio [' + A + '] / [' + HA + ']', hint: 'Rearrange: log([' + A + '] / [' + HA + ']) = pH − pK<sub>a</sub>.', d: 2, practice: '5.F', cell: cell(rat, 0.05, [
         { value: 1 / rat, why: 'That is [' + HA + '] / [' + A + ']: upside down. A pH ' + (target > pKa ? 'above' : 'below') + ' pK<sub>a</sub> needs ' + (target > pKa ? 'more base than acid' : 'more acid than base') + '.' },
         { value: Math.exp(target - pKa), why: 'Undo a base-10 log with 10<sup>x</sup>, not e<sup>x</sup>.' },
         { value: target - pKa, why: 'That is the log of the ratio. Raise 10 to that power.' }
-      ]) });
+      ], 0.006) });
       steps.push({ key: 'more', kind: 'choice', label: 'Which form must be present in the larger amount?', options: [A + ' (the base form)', HA + ' (the acid form)'], correct: target > pKa ? 0 : 1, fixed: true, practice: '6.D',
         why: ['pH above pK<sub>a</sub> means [base] > [acid].', 'pH below pK<sub>a</sub> means [acid] > [base].'] });
       sol.push('pK<sub>a</sub> = ' + F(pKa, 2) + '.');
@@ -426,7 +430,7 @@
       var nAdd = M.sig(cap * (0.15 + 0.55 * r()), 2);
       var nA2 = acidAdded ? nA - nAdd : nA + nAdd, nH2 = acidAdded ? nH + nAdd : nH - nAdd;
       var pH0 = pKa + Math.log10(nA / nH), pH1 = pKa + Math.log10(nA2 / nH2);
-      if(Math.abs(pH1 - pH0) < 0.08) return null;
+      if(Math.abs(pH1 - pH0) < 0.08 || !hhOk(Ka, cA2, cH2) || !hhOk(Ka, nA2 / Vb, nH2 / Vb)) return null;
       var who = acidAdded ? 'HCl' : 'NaOH', wA = acidAdded ? nA + nAdd : nA - nAdd, wH = acidAdded ? nH - nAdd : nH + nAdd;
       text = lead + '<p>' + vol + ' of a buffer is ' + fmt(cH2, 3) + ' M ' + HA + ' and ' + fmt(cA2, 3) + ' M ' + A + '. You add ' + fmt(nAdd, 2) + ' mol of ' + who + ' (no volume change). Find the new pH.</p>';
       steps.push({ key: 'nA', kind: 'num', label: 'Moles of ' + A + ' after the reaction', unit: 'mol', practice: '5.F',
@@ -470,6 +474,16 @@
     sol.push('It neutralizes up to ' + fmt(vsAcid ? high.cA : high.cH, 3) + ' M × ' + fmt(Vb, 3) + ' L = ' + fmt(capMol, 3) + ' mol of strong ' + (vsAcid ? 'acid' : 'base') + ', when its ' + form + ' runs out.');
     return bufOut(ctx, type, text, steps, sol, { pKa: pKa, cap: capMol, high: firstHigh ? 1 : 2, b1: X1, b2: X2, L: Vb, vsAcid: vsAcid });
   }
+  /* The exact pH of a buffer (charge balance with water), to keep only
+     problems where Henderson-Hasselbalch, the method the exam expects, is
+     within 0.02 of the truth: neither component so dilute next to [H₃O⁺] or
+     [OH⁻] that the ratio shifts. */
+  function bufExactPH(Ka, cA, cH){
+    var lo = -14, hi = 0, Kw = M.C.Kw;
+    for(var i = 0; i < 100; i++){ var m = (lo + hi) / 2, h = Math.pow(10, m), oh = Kw / h; if(h * (cA + h - oh) - Ka * (cH - h + oh) > 0) hi = m; else lo = m; }
+    return -(lo + hi) / 2;
+  }
+  function hhOk(Ka, cA, cH){ var r = cA / cH; return r >= 0.1 && r <= 10 && Math.abs(bufExactPH(Ka, cA, cH) - (-Math.log10(Ka) + Math.log10(r))) <= 0.02; }
   function bufOut(ctx, type, text, steps, sol, v){ return { kind: 'buffer', type: type, ctx: ctx.id, topic: BUF_TOPIC[type], text: text, steps: steps, solution: sol, values: v }; }
 
   /* ------------------------------------------------ 4. Titration curves */
@@ -573,8 +587,24 @@
     if(di) S.push({ key: 'pKa2', kind: 'num', label: 'Read pK<sub>a2</sub> from the curve', hint: 'Halfway between the two equivalence points, [' + ctx.HA1 + '] = [' + ctx.A + '].', d: 2, practice: '5.D',
       cell: cell(p.phHalf2, 0, [{ value: p.phHalf, why: 'That is pK<sub>a1</sub>. pK<sub>a2</sub> is the pH halfway between the two equivalence points.' }, { value: p.phEqs[0], why: 'That is the pH at the first equivalence point.' }], 0.15) });
     var ind = INDICATORS[p.indicator], last = e[e.length - 1];
-    S.push({ key: 'indicator', kind: 'choice', label: 'Which indicator fits ' + (di ? 'the second equivalence point' : 'this titration') + '? Use the table of color-change ranges.', options: INDICATORS.map(function(d){ return d.name + ' (pH ' + F(d.lo, 1) + '–' + F(d.hi, 1) + ')'; }), correct: p.indicator, fixed: true, practice: '2.B',
-      why: INDICATORS.map(function(d, i){ return i === p.indicator ? 'Its range, pH ' + F(d.lo, 1) + '–' + F(d.hi, 1) + ', contains the pH at the equivalence point (' + F(p.phEq, 2) + '), so it changes color on the steep part.' : 'Its range, pH ' + F(d.lo, 1) + '–' + F(d.hi, 1) + ', does not contain the pH at the equivalence point (' + F(p.phEq, 2) + '): it would change color ' + (d.hi < p.phEq ? 'too early' : 'too late') + '.'; }) });
+    // Volume at which the curve crosses a pH near the last equivalence point
+    // (the curve rises for an acid analyte, falls for a base).
+    var crossAt = function(ph){
+      var lo = Math.max(0, last - 0.25 * last), hi = last + 0.25 * last, up = !wb;
+      for(var j = 0; j < 60; j++){ var m = (lo + hi) / 2, y = titrationPH(sys, m); if(up ? y < ph : y > ph) lo = m; else hi = m; }
+      return (lo + hi) / 2;
+    };
+    // An indicator whose whole range sits on the steep jump changes color
+    // within a drop or two (0.1 mL) of equivalence: not the best match, but not
+    // wrong in practice, and the feedback says so.
+    var inJump = function(d){ return Math.max(Math.abs(crossAt(d.lo) - last), Math.abs(crossAt(d.hi) - last)) <= 0.1; };
+    S.push({ key: 'indicator', kind: 'choice', label: 'Which indicator fits ' + (di ? 'the second equivalence point' : 'this titration') + ' best? Use the table of color-change ranges.', options: INDICATORS.map(function(d){ return d.name + ' (pH ' + F(d.lo, 1) + '–' + F(d.hi, 1) + ')'; }), correct: p.indicator, fixed: true, practice: '2.B',
+      why: INDICATORS.map(function(d, i){
+        if(i === p.indicator) return 'Its range, pH ' + F(d.lo, 1) + '–' + F(d.hi, 1) + ', contains the pH at the equivalence point (' + F(p.phEq, 2) + '), so it changes color on the steep part.';
+        var base = 'Its range, pH ' + F(d.lo, 1) + '–' + F(d.hi, 1) + ', does not contain the pH at the equivalence point (' + F(p.phEq, 2) + ')';
+        return inJump(d) ? base + ', so it is not the best match. The jump here is so steep that it would still change color within a drop or two of the equivalence point, but the best choice is the indicator whose range contains the equivalence pH.'
+          : base + ': it would change color ' + ((wb ? d.lo > p.phEq : d.hi < p.phEq) ? 'too early' : 'too late') + '.';
+      }) });
     S.push({ key: 'species', kind: 'choice', label: 'The dot on the curve is at ' + F(p.point.v, 2) + ' mL. Which species are present in the largest amounts there?', options: p.point.options, correct: p.point.correct, fixed: true, practice: '1.B', why: p.point.why });
     sol.push('Equivalence: moles of titrant = moles of ' + (wb ? 'base' : 'acid') + (di ? ' (per proton)' : '') + ': V = ' + fmt(sys.Ca, 3) + ' M × ' + fmt(sys.Va, 3) + ' mL ÷ ' + fmt(sys.Ct, 3) + ' M = ' + F(e[0], 1) + ' mL' + (di ? '; the second at ' + F(e[1], 1) + ' mL' : '') + '.');
     if(p.half != null) sol.push('Half-equivalence at ' + F(p.half, 1) + ' mL, where pH = ' + F(p.phHalf, 2) + ' = pK<sub>a</sub>' + (di ? '1' : '') + (wb ? ' of ' + ctx.BH + ' (pK<sub>b</sub> = 14.00 − ' + F(p.phHalf, 2) + ' = ' + F(14 - p.phHalf, 2) + ')' : '') + '.');

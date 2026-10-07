@@ -100,11 +100,11 @@
    "practice": "6.E",
    "skill": "imf",
    "title": "Why a real gas falls short of the ideal pressure",
-   "context": "<p>At 300 K and moderate pressure, 1.00 mol of NH₃ in a 1.00 L container exerts a measured pressure lower than the ideal gas law predicts.</p>",
+   "context": "<p>At 500 K, 1.00 mol of NH₃ gas in a 1.00 L container exerts a measured pressure lower than the ideal gas law predicts.</p>",
    "prompt": "<b>Explain</b> at the particle level why the measured pressure of NH₃ is lower than the ideal gas law predicts.",
    "checklist": [
     "Says the ideal gas law assumes no attractions between gas particles",
-    "Says NH₃ molecules are polar and hydrogen bond, so they attract each other noticeably at this crowding",
+    "Says NH₃ molecules are polar and hydrogen bond, so they attract each other noticeably when crowded this closely",
     "Says attractions pull molecules back as they approach the wall, so they hit the walls less often or with less force, lowering the pressure"
    ],
    "earns": {

@@ -285,7 +285,7 @@
      "Right: the coefficient 2 becomes the exponent on [HI].",
      "This leaves [HI] unsquared. Each concentration is raised to the power of its coefficient.",
      "This is reactants over products, 1/K.",
-     "This adds the reactant concentrations instead of multiplying them."
+     "This adds the reactant concentrations instead of multiplying them, and leaves [HI] unsquared: 0.156/(0.0220 + 0.0220)."
     ]
    }
   },

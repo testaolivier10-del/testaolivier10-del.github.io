@@ -13,10 +13,10 @@
    "checklist": [
     "Distinguishes heat (energy transferred, the same 1.00 kJ for both) from temperature (a measure of average kinetic energy of the particles)",
     "Uses q = mcΔT with the data: same q and m, so ΔT is inversely proportional to c; water's c is about 11 times copper's",
-    "Gives a particle-level reason: in water much of the added energy goes into motions other than the translational motion that temperature measures (and into stretching hydrogen bonds), so less goes into raising the temperature"
+    "Gives a particle-level reason: 100 g of water holds about 3.5 times as many particles as 100 g of copper (5.55 mol of molecules against 1.57 mol of atoms), and in water some of the energy also goes into rotations and into stretching hydrogen bonds, so less goes into the average kinetic energy that temperature measures"
    ],
    "earns": {
-    "answer": "Both samples receive the same heat, 1.00 kJ, and have the same mass, so by q = mcΔT the temperature change is inversely proportional to the specific heat. Water's specific heat (4.18 J/(g·°C)) is about 11 times copper's (0.385), so its temperature rises about 11 times less: 2.39 °C against 26.0 °C. At the particle level, much of the energy added to water goes into molecular rotations and vibrations and into stretching hydrogen bonds, so less of it raises the average kinetic energy that temperature measures.",
+    "answer": "Both samples receive the same heat, 1.00 kJ, and have the same mass, so by q = mcΔT the temperature change is inversely proportional to the specific heat. Water's specific heat (4.18 J/(g·°C)) is about 11 times copper's (0.385), so its temperature rises about 11 times less: 2.39 °C against 26.0 °C. At the particle level, 100 g of water is about 5.55 mol of molecules but 100 g of copper is only 1.57 mol of atoms, so in water the energy is shared among about 3.5 times as many particles; water molecules also take up energy in rotations and in stretching their hydrogen bonds. Less energy per particle goes into the average kinetic energy that temperature measures.",
     "why": "It keeps heat and temperature apart, uses the equation with the given numbers, and adds a particle-level reason."
    },
    "misses": {

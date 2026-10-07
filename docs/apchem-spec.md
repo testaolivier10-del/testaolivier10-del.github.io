@@ -248,9 +248,9 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
      Beer's-law and a galvanic-cell set in form 2, plus discrete calculations); exam-only items
      count in the score only, never in practice or on a free page. Every keyed number is recomputed
      in `scripts/lib/apchem-exams.mjs` (`EXAM_NUMBERS`).
-   - **Score estimate**: 50/50 by section (MCQ ÷ 60, FRQ ÷ 46), bands at 75/60/45/30 — the readiness
-     band's existing cut-offs, now shared with the calculator (test). Our guess, labelled so;
-     needs-author `score-cutoffs`.
+   - **Score estimate**: 50/50 by section (MCQ ÷ 60, FRQ ÷ 46), bands at 72/58/42/27 (the cut-offs reported for the
+     2014 exam, the current format; tools-exams review), shared with the readiness band (test).
+     Labelled an estimate; needs-author `score-cutoffs` (resolved).
    - **Justification trainer** `justify.html`: 37 prompts (3-6 per unit) on the reader-report misses;
      write, tick the rubric checklist, compare an answer that earns the point with one that does
      not. First 3 in course order free (`FREE_JUSTIFY`), the rest Premium (feature `justify`;
@@ -260,6 +260,10 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    - Lessons without authored connections get them from the map (navigation, `chem-nav-ref`).
    - The map's case rule treats two-letter symbols (Ka, Kb, Ea, Rf, Kc) as case-sensitive, so a
      label like K<sub>A</sub> is not read as Ka (fixed a false ordering failure in 7.6).
+   - **Accuracy-checked 2026-10-06** (`docs/apchem-reviews/tools-exams.md`): the six trainers, 32
+     exam-only items, both forms, 37 prompts, the equations sheet, the score calculator and the unit
+     tests. No exam key changed; Q tolerance 3% → 5%, buffer generators keep only problems where
+     Henderson-Hasselbalch is within 0.02 of the exact pH, score cut-offs 72/58/42/27.
    - Inline stimulus SVGs shrink to the column (`.chem-stim-html svg`; one was 806 px at 360 px).
 
 ## 8. Open items for the owner
