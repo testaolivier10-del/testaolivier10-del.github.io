@@ -529,8 +529,8 @@
       "why": "Value: that is the net rate for N₂O₄. Each N₂O₄ that splits makes two NO₂ (and two NO₂ re-form each N₂O₄), so double it."
      },
      {
-      "value": 0.00017,
-      "rel": 0.02,
+      "value": 0.000175,
+      "rel": 0.03,
       "why": "Value: you halved the net rate. The coefficient 2 is on NO₂, so NO₂ changes twice as fast as N₂O₄."
      }
     ]

@@ -126,7 +126,7 @@
     "correct": "At one temperature, every equilibrium mixture of the same reaction gives the same value of K, whatever amounts it started with. Small differences come from measurement precision.",
     "options": [
      "Right: K comes out at about 50 every time (50.2, 49.9, 50.0), though the mixtures look nothing alike.",
-     "K is a ratio. Trial 3 has the most HI but also more H₂ and I₂ in the right proportions, so K is about the same.",
+     "K is a ratio. Trial 3 has the most HI but also by far the most I₂, so the ratio [HI]² / ([H₂][I₂]) comes out about the same.",
      "All three started differently, yet K is about the same. At a fixed temperature, K does not depend on the starting mixture.",
      "[H₂] equals [I₂] only in trial 2. K is constant anyway."
     ]
@@ -247,9 +247,9 @@
       "why": "Value: [NO] and [NOCl] must be squared, because both have the coefficient 2."
      },
      {
-      "value": 0.00756,
+      "value": 0.000151,
       "rel": 0.02,
-      "why": "Value: check the changes. NO rises by 2x and NOCl falls by 2x, where x = [Cl₂]."
+      "why": "Value: check the changes. NO rises by 2x and NOCl falls by 2x, where x = [Cl₂]; using x for both gives [NO] = 0.0200 M and [NOCl] = 0.230 M."
      }
     ]
    },

@@ -137,27 +137,27 @@
    "level": "apply",
    "diff": 2,
    "stimulus": "q-and-le-chatelier-s1",
-   "q": "Calculate Q<sub>c</sub> right after change A.",
+   "q": "In another experiment, starting from the original equilibrium mixture, some NO<sub>2</sub> is removed so that [NO<sub>2</sub>] = 0.0100 M while [N<sub>2</sub>O<sub>4</sub>] stays 0.0400 M. Calculate Q<sub>c</sub> right after the change.",
    "numeric": {
-    "answer": 0.022,
-    "tol": 0.001,
+    "answer": 0.0025,
+    "tol": 0.00002,
     "unit": "",
-    "sigfigs": 2,
+    "sigfigs": 3,
     "mistakes": [
      {
-      "value": 0.75,
+      "value": 0.25,
       "rel": 0.02,
       "why": "Value: [NO₂] must be squared, because its coefficient is 2."
      },
      {
-      "value": 44.4,
+      "value": 400,
       "rel": 0.02,
       "why": "Value: you inverted Q. Products go on top."
      }
     ]
    },
    "why": {
-    "correct": "Q<sub>c</sub> = [NO₂]² / [N₂O₄] = (0.0300)² / 0.0400 = 0.0225 ≈ 2.3 × 10⁻²."
+    "correct": "Q<sub>c</sub> = [NO₂]² / [N₂O₄] = (0.0100)² / 0.0400 = 2.50 × 10⁻³. That is less than K = 4.6 × 10⁻³, so the net reaction goes forward, replacing some of the removed NO₂."
    }
   },
   {

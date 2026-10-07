@@ -138,6 +138,7 @@ All on one branch, `claude/apchem` (decision 5), one PR at the end.
 | 1 | Units 1-3 (where students are now) with the math refresher, notes, lessons, banks, FRQs, particle-diagram practice; independent accuracy check per unit; Beta | next |
 | 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 7 content written 2026-10-06 (decision 13): 12 topics, 200 items, 13 figures, 5 FRQs; not yet accuracy-checked or published; ICE and Q-vs-K trainers not built |
 | 2 | Unit 5 accuracy check | **done 2026-10-06**: `docs/apchem-reviews/u5.md` (171 items, 3 FRQs, 11 figures; 31 items fixed, no key wrong in substance); needs-author `unit5-kinetics-scope` resolved (Arrhenius calculations excluded per the CED; the rest kept) |
+| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 7 content written 2026-10-06 (decision 13): 12 topics, 200 items, 13 figures, 5 FRQs; accuracy-checked 2026-10-06 (`docs/apchem-reviews/u7.md`), not yet published; ICE and Q-vs-K trainers not built |
 | 3 | Justification trainer, full practice exams, equations-sheet page, score calculator, cram kit | |
 | 4 | Second accuracy pass on the whole course; PR to owner | |
 

@@ -498,7 +498,7 @@
    "practice": "6.E",
    "level": "apply",
    "diff": 3,
-   "q": "For H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g) at equilibrium in a sealed rigid container, predict the effect on the amount of HI.",
+   "q": "For H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g) at equilibrium in a sealed container fitted with a movable piston, predict the effect on the amount of HI.",
    "variables": [
     {
      "name": "The volume is doubled at constant temperature",
