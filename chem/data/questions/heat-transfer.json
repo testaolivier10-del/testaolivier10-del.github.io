@@ -1,0 +1,543 @@
+{
+ "stimuli": {
+  "heat-transfer-s1": {
+   "kind": "graph",
+   "title": "A hot metal block in cool water",
+   "text": "<p>A 120 g aluminum block is heated to 95.0 °C and placed in 200.0 g of water at 21.0 °C in an insulated container. Probes record the temperature of the block and of the water.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Time",
+     "unit": "s"
+    },
+    "y": {
+     "label": "Temperature",
+     "unit": "°C"
+    },
+    "series": [
+     {
+      "name": "Aluminum block",
+      "points": [
+       [
+        0,
+        95.0
+       ],
+       [
+        30,
+        48.2
+       ],
+       [
+        60,
+        34.8
+       ],
+       [
+        90,
+        31.0
+       ],
+       [
+        120,
+        29.9
+       ],
+       [
+        180,
+        29.5
+       ],
+       [
+        240,
+        29.4
+       ],
+       [
+        300,
+        29.4
+       ]
+      ]
+     },
+     {
+      "name": "Water",
+      "points": [
+       [
+        0,
+        21.0
+       ],
+       [
+        30,
+        27.0
+       ],
+       [
+        60,
+        28.8
+       ],
+       [
+        90,
+        29.2
+       ],
+       [
+        120,
+        29.4
+       ],
+       [
+        180,
+        29.4
+       ],
+       [
+        240,
+        29.4
+       ],
+       [
+        300,
+        29.4
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "heat-transfer-s2": {
+   "kind": "particle",
+   "title": "Two gases separated by a metal wall",
+   "html": "<svg viewBox=\"0 0 420 210\" width=\"420\" height=\"210\" role=\"img\" aria-label=\"Two chambers of gas side by side, separated by a thin metal wall. Left chamber, gas A: eight particles with long motion lines, meaning fast. Right chamber, gas B: eight particles with short motion lines, meaning slow.\"><rect x=\"4\" y=\"4\" width=\"200\" height=\"190\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><rect x=\"212\" y=\"4\" width=\"200\" height=\"190\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><rect x=\"203\" y=\"4\" width=\"10\" height=\"190\" fill=\"#999\"/><circle cx=\"34\" cy=\"40\" r=\"8\" fill=\"#C2410C\"/><line x1=\"34\" y1=\"40\" x2=\"3\" y2=\"31\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"94\" cy=\"60\" r=\"8\" fill=\"#C2410C\"/><line x1=\"94\" y1=\"60\" x2=\"67\" y2=\"40\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"154\" cy=\"40\" r=\"8\" fill=\"#C2410C\"/><line x1=\"154\" y1=\"40\" x2=\"187\" y2=\"55\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"44\" cy=\"110\" r=\"8\" fill=\"#C2410C\"/><line x1=\"44\" y1=\"110\" x2=\"60\" y2=\"84\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"114\" cy=\"120\" r=\"8\" fill=\"#C2410C\"/><line x1=\"114\" y1=\"120\" x2=\"117\" y2=\"152\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"164\" cy=\"100\" r=\"8\" fill=\"#C2410C\"/><line x1=\"164\" y1=\"100\" x2=\"125\" y2=\"107\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"64\" cy=\"160\" r=\"8\" fill=\"#C2410C\"/><line x1=\"64\" y1=\"160\" x2=\"26\" y2=\"166\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"144\" cy=\"170\" r=\"8\" fill=\"#C2410C\"/><line x1=\"144\" y1=\"170\" x2=\"165\" y2=\"200\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"242\" cy=\"40\" r=\"8\" fill=\"#1D44A6\"/><line x1=\"242\" y1=\"40\" x2=\"250\" y2=\"31\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"302\" cy=\"60\" r=\"8\" fill=\"#1D44A6\"/><line x1=\"302\" y1=\"60\" x2=\"301\" y2=\"49\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"362\" cy=\"40\" r=\"8\" fill=\"#1D44A6\"/><line x1=\"362\" y1=\"40\" x2=\"373\" y2=\"45\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"252\" cy=\"110\" r=\"8\" fill=\"#1D44A6\"/><line x1=\"252\" y1=\"110\" x2=\"241\" y2=\"103\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"322\" cy=\"120\" r=\"8\" fill=\"#1D44A6\"/><line x1=\"322\" y1=\"120\" x2=\"332\" y2=\"122\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"372\" cy=\"100\" r=\"8\" fill=\"#1D44A6\"/><line x1=\"372\" y1=\"100\" x2=\"359\" y2=\"102\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"272\" cy=\"160\" r=\"8\" fill=\"#1D44A6\"/><line x1=\"272\" y1=\"160\" x2=\"281\" y2=\"151\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"352\" cy=\"170\" r=\"8\" fill=\"#1D44A6\"/><line x1=\"352\" y1=\"170\" x2=\"363\" y2=\"164\" stroke=\"#1F2A28\" stroke-width=\"2\"/></svg><p>Key: each circle is a gas particle; the line shows its speed and direction (longer line, faster). The gray strip is a thin metal wall that lets energy through but not particles. The chambers are otherwise insulated.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-heat-transfer-1",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "heat-transfer-s1",
+   "q": "At what time do the block and the water first reach thermal equilibrium?",
+   "options": [
+    "At about 240 s, when both read 29.4 °C",
+    "At 0 s, when the block is placed in the water",
+    "At about 90 s, when the block's temperature stops falling quickly",
+    "At about 120 s, when the water reaches 29.4 °C"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Thermal equilibrium means equal temperatures, so no net energy flows. Both read 29.4 °C from 240 s onward.",
+    "options": [
+     "Right: from 240 s on, both curves are flat at the same temperature.",
+     "At 0 s the temperatures differ by 74 °C, so energy is flowing fast.",
+     "At 90 s the block is still 1.8 °C warmer than the water, so energy still flows.",
+     "At 120 s the block (29.9 °C) is still warmer than the water (29.4 °C)."
+    ]
+   }
+  },
+  {
+   "id": "chem-heat-transfer-2",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "heat-transfer-s1",
+   "q": "Why does the block's temperature fall fastest in the first 30 s?",
+   "options": [
+    "The water is coldest then, so it releases cold into the block fastest.",
+    "The temperature difference is largest then, so energy moves from block to water fastest.",
+    "The block holds the most thermal energy at the start, so it gives most of it away in the first seconds.",
+    "The block is still being heated during the first 30 s."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Energy transfer is fastest when the temperature difference is largest, here at the start (74.0 °C apart at 0 s); it slows as the temperatures approach each other.",
+    "options": [
+     "Cold does not flow. Energy flows from the block to the water.",
+     "Right: the larger the gap, the larger the difference in particle speeds at the boundary and the faster energy moves.",
+     "The rate depends on the temperature difference between the two objects, not on the block alone.",
+     "The block was removed from the heat at 0 s; its temperature only falls."
+    ]
+   }
+  },
+  {
+   "id": "chem-heat-transfer-3",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "heat-transfer-s1",
+   "q": "The block's temperature drops by 65.6 °C, while the water's rises by only 8.4 °C. Which statement explains this, assuming no energy leaves the container?",
+   "options": [
+    "The block loses much more energy than the water gains, since its temperature changes more.",
+    "The water gains energy from the container, so it needs less from the block.",
+    "The block loses exactly the energy the water gains, but that energy changes the water's temperature less.",
+    "Some of the block's energy is destroyed as it cools, so the water gains less."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Energy is conserved: q(lost by block) = q(gained by water). A temperature change depends on the energy and on what absorbs it; the same energy warms 200 g of water by far fewer degrees than it cools 120 g of aluminum.",
+    "options": [
+     "In an insulated container, energy lost by the block equals energy gained by the water.",
+     "The container is insulated; the water's energy came from the block.",
+     "Right: equal energy, different temperature changes. The 200 g of water needs far more energy per degree than the 120 g block does.",
+     "Energy is conserved: it moves but is not destroyed."
+    ]
+   }
+  },
+  {
+   "id": "chem-heat-transfer-4",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "heat-transfer-s1",
+   "q": "Later calculations show that the block lost 7.06 kJ of energy between 0 s and 300 s. How much energy, in kJ, did the water gain, if no energy left the container?",
+   "numeric": {
+    "answer": 7.06,
+    "tol": 0.01,
+    "unit": "kJ",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": -7.057,
+      "rel": 0.02,
+      "why": "Sign: the water gained energy, so its energy change is positive. The block's change is −7.06 kJ."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Energy is conserved in an insulated container: energy gained by the water = energy lost by the block = 7.06 kJ."
+   }
+  },
+  {
+   "id": "chem-heat-transfer-5",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "heat-transfer-s2",
+   "q": "Which gas is at the higher temperature at the moment shown?",
+   "options": [
+    "Gas A, because its particles have the greater average speed",
+    "Gas B, because its particles are slower and so hold more energy",
+    "They are at the same temperature, because each chamber has eight particles",
+    "Gas B, because it is on the side that will receive energy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Temperature is set by the average kinetic energy of the particles. The longer motion lines in A show faster particles, so A is hotter.",
+    "options": [
+     "Right: temperature measures the average kinetic energy of the particles, and A's are faster.",
+     "Slower particles have less kinetic energy, so B is cooler.",
+     "The number of particles does not set temperature; their average speed does.",
+     "The side that receives energy is the cooler one, which is B."
+    ]
+   }
+  },
+  {
+   "id": "chem-heat-transfer-6",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "heat-transfer-s2",
+   "q": "How does energy pass from one gas to the other through the wall?",
+   "options": [
+    "Particles of A pass through tiny gaps in the wall and mix with gas B, carrying their extra kinetic energy along with them.",
+    "Fast particles of A hit the wall and make its atoms vibrate more, which then speed up the particles of B that hit it.",
+    "Slow particles of B pass their cold through the wall to A.",
+    "The wall releases its own stored energy into both gases equally."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Heat transfer is energy passed by collisions: A's fast particles speed up the wall's atoms, and those speed up B's particles.",
+    "options": [
+     "The key says the wall stops particles; only energy gets through.",
+     "Right: energy passes collision by collision, from faster particles to slower ones, through the wall's atoms.",
+     "There is no flow of cold. Energy flows from A to B.",
+     "The wall passes energy along; it does not add its own."
+    ]
+   }
+  },
+  {
+   "id": "chem-heat-transfer-7",
+   "type": "predict",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "heat-transfer-s2",
+   "q": "Predict how each quantity changes after a long time, once the gases reach thermal equilibrium.",
+   "variables": [
+    {
+     "name": "Average speed of the particles of A",
+     "answer": "down",
+     "why": "Gas A loses energy through the wall, so its particles slow down."
+    },
+    {
+     "name": "Average speed of the particles of B",
+     "answer": "up",
+     "why": "Gas B gains that energy, so its particles speed up."
+    },
+    {
+     "name": "Number of particles in each chamber",
+     "answer": "none",
+     "why": "The wall lets energy through but not particles."
+    },
+    {
+     "name": "Total energy of the two gases together",
+     "answer": "none",
+     "why": "The chambers are insulated, so the energy lost by A equals the energy gained by B."
+    }
+   ],
+   "why": {
+    "correct": "Energy flows from A to B until both have the same average kinetic energy (the same temperature). Particles and total energy are conserved."
+   }
+  },
+  {
+   "id": "chem-heat-transfer-8",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "heat-transfer-s2",
+   "q": "Once the gases reach thermal equilibrium, which statement is true at the particle level?",
+   "options": [
+    "Each particle in both gases now moves at the same speed as the particles next to it, with no spread of speeds left.",
+    "Particles stop colliding with the wall, so no energy moves.",
+    "Energy keeps flowing from A to B, but more slowly.",
+    "Particles still collide with the wall, but energy passes in both directions at equal rates."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At thermal equilibrium the average kinetic energies match. Individual collisions still pass energy, but as much goes each way, so the net flow is zero.",
+    "options": [
+     "Particles keep a spread of speeds; it is the average that becomes equal.",
+     "Particles keep moving and colliding at any temperature above absolute zero.",
+     "At equal temperatures there is no net flow in either direction.",
+     "Right: equilibrium is dynamic. Collisions continue; there is just no net flow of energy."
+    ]
+   }
+  },
+  {
+   "id": "chem-heat-transfer-9",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "1.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "A spoon at 22 °C is put into a cup of tea at 80 °C. Which describes what happens?",
+   "options": [
+    "Energy flows from the tea to the spoon until both reach the same temperature.",
+    "Cold flows from the spoon into the tea until both reach the same temperature.",
+    "Energy flows from the spoon to the tea until the spoon reaches 80 °C.",
+    "No energy flows, because a metal and a liquid do not exchange energy."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Energy moves by collisions from the hotter tea to the cooler spoon. The spoon warms, the tea cools a little, and both end at one temperature between 22 °C and 80 °C.",
+    "options": [
+     "Right: energy flows from the warmer object to the cooler one until thermal equilibrium.",
+     "Only energy moves; the tea cools because it loses energy to the spoon.",
+     "Energy flows from hot to cold, and the final temperature is between 22 °C and 80 °C.",
+     "Any two objects in contact at different temperatures exchange energy."
+    ]
+   }
+  },
+  {
+   "id": "chem-heat-transfer-10",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which is the best definition of heat in chemistry?",
+   "options": [
+    "The total kinetic energy of the particles that make up a hot object or sample",
+    "Energy transferred between objects because of a difference in temperature",
+    "A measure of how fast the particles in an object are moving",
+    "A substance that flows out of hot objects into cold ones"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Heat is energy transferred because of a temperature difference. Objects contain thermal energy; they exchange heat.",
+    "options": [
+     "That is thermal energy. Heat is the energy that moves from one object to another.",
+     "Right: heat is energy in transit, not something an object contains.",
+     "That describes temperature (average kinetic energy).",
+     "Heat is not a substance; it is energy passed by particle collisions."
+    ]
+   }
+  },
+  {
+   "id": "chem-heat-transfer-11",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "On a cold morning, a metal bench feels colder than a wooden bench, though both are at 2 °C. Which explanation is correct?",
+   "options": [
+    "The metal is at a lower temperature than the wood.",
+    "The metal gives off cold more quickly than the wood does.",
+    "Metal transfers energy away from your skin faster than wood does.",
+    "The wood is warming your skin, while the metal is not."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Touch senses how fast your skin loses energy, not the object's temperature. Metal conducts energy away faster.",
+    "options": [
+     "Both have been outside all night at the same temperature.",
+     "Nothing gives off cold; energy moves from your hand into the bench.",
+     "Right: both are at 2 °C, but metal carries energy away from your warmer skin more quickly, so your skin cools faster.",
+     "The wood is colder than your skin, so it also takes energy from you, just more slowly."
+    ]
+   }
+  },
+  {
+   "id": "chem-heat-transfer-12",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "In an insulated container, a warm copper block loses 1.85 kJ of energy to cool water. The water ends at the same temperature as the block. How much energy, in J, did the water gain?",
+   "numeric": {
+    "answer": 1850.0,
+    "tol": 10.0,
+    "unit": "J",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 1.85,
+      "rel": 0.02,
+      "why": "Units: 1.85 is the energy in kJ. The question asks for joules: multiply by 1000 J/kJ."
+     },
+     {
+      "value": -1850.0,
+      "rel": 0.02,
+      "why": "Sign: the water gained energy, so its value is positive. The copper's change is −1850 J."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Energy lost by the block = energy gained by the water = 1.85 kJ × 1000 J/kJ = 1.85 × 10³ J (1850 J, three significant figures)."
+   }
+  },
+  {
+   "id": "chem-heat-transfer-13",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "In an insulated cup, 100 g of water at 60 °C is mixed with 100 g of water at 20 °C. What is the final temperature?",
+   "options": [
+    "40 °C",
+    "80 °C",
+    "20 °C",
+    "60 °C"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Energy lost by the hot water equals energy gained by the cold water. With equal masses of the same substance, each changes by the same number of degrees, 20 °C, to meet at 40 °C.",
+    "options": [
+     "Right: equal masses of the same substance, so the hot water loses as many degrees as the cold water gains: 60 − 20 = 40, split evenly.",
+     "Temperatures do not add. Energy flows from the hot water to the cold water until they meet in between.",
+     "The cold water cannot stay at 20 °C while energy flows into it.",
+     "The hot water loses energy, so it cannot stay at 60 °C."
+    ]
+   }
+  },
+  {
+   "id": "chem-heat-transfer-14",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A hot iron nail and a cool block of the same mass of iron are placed in contact in an insulated box. Which final temperature is possible if the nail started at 90 °C and the block at 30 °C?",
+   "options": [
+    "30 °C",
+    "60 °C",
+    "90 °C",
+    "25 °C"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The final temperature lies between the two starting temperatures. With equal masses of the same material it is the average, (90 + 30) / 2 = 60 °C.",
+    "options": [
+     "The block receives energy, so it must warm above 30 °C.",
+     "Right: same substance, same mass, so the hot one drops as much as the cold one rises, meeting halfway.",
+     "The nail loses energy, so it must cool below 90 °C.",
+     "A final temperature below both starting values would need energy to leave the insulated box."
+    ]
+   }
+  },
+  {
+   "id": "chem-heat-transfer-15",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says, \"When ice cools a drink, the ice is giving cold to the drink.\" Which statement corrects this at the particle level?",
+   "options": [
+    "The ice's slow particles collide with the drink and pass their slowness to it.",
+    "The drink cools because the ice removes particles from the drink.",
+    "The drink's faster particles collide with the ice and lose energy to it, so the drink cools.",
+    "The drink cools because the ice makes the cup lose energy to the room."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Energy flows from the warmer drink to the cooler ice through collisions. The drink's particles slow down, so its temperature falls.",
+    "options": [
+     "Slowness is not passed along; energy is, from the faster particles to the slower ones.",
+     "Particles are not removed; the drink loses energy, not matter.",
+     "Right: energy moves from the drink into the ice, slowing the drink's particles.",
+     "The main flow is from the drink into the ice, which is in contact with it."
+    ]
+   }
+  },
+  {
+   "id": "chem-heat-transfer-16",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "heat-transfer",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Two objects are in thermal equilibrium with each other. What must be true?",
+   "options": [
+    "They contain the same amount of thermal energy.",
+    "They are made of the same substance.",
+    "Their particles have the same mass.",
+    "They are at the same temperature, so there is no net energy flow between them."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Thermal equilibrium means equal temperature, which means equal average kinetic energy and no net energy transfer.",
+    "options": [
+     "A bathtub and a cup can be at the same temperature with very different amounts of thermal energy.",
+     "Any two substances can reach the same temperature.",
+     "Particle mass does not matter; average kinetic energy does.",
+     "Right: equal temperatures mean energy passes equally both ways."
+    ]
+   }
+  }
+ ]
+}

@@ -129,6 +129,7 @@
     { key: 'ochem', short: 'Ochem', dir: 'ochem' },
     { key: 'anp', short: 'A&P', dir: 'anatomy-physiology' },
     { key: 'apbio', short: 'Biology', dir: 'bio' },
+    { key: 'apchem', short: 'Chemistry', dir: 'chem' },
   ];
   // courses:end
   var COURSE_SHORT = {};

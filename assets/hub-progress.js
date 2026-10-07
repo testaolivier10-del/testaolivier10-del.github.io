@@ -119,6 +119,15 @@
       { min: 20, title: 'Evolution Expert' },
       { min: 30, title: 'Biology Legend' },
     ],
+    apchem: [
+      { min: 1,  title: 'Mole Counter' },
+      { min: 3,  title: 'Bond Builder' },
+      { min: 6,  title: 'Gas Wrangler' },
+      { min: 10, title: 'Rate Tracker' },
+      { min: 15, title: 'Equilibrium Keeper' },
+      { min: 20, title: 'Buffer Master' },
+      { min: 30, title: 'Chemistry Legend' },
+    ],
   };
 
   // Each course names its ranks differently, so a rank shown on its own says
@@ -129,6 +138,7 @@
     { key: 'ochem', rankLabel: 'Ochem rank' },
     { key: 'anp', rankLabel: 'A&P rank' },
     { key: 'apbio', rankLabel: 'Biology rank' },
+    { key: 'apchem', rankLabel: 'Chemistry rank' },
   ];
   // courses:end
   var COURSE_RANK_LABEL = { hub: 'LevlPrep rank' };

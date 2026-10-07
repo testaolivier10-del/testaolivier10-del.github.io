@@ -45,7 +45,7 @@ function walk(dir, out = []) {
     const full = join(dir, name);
     // anatomy-physiology/data holds the A&P sources (notes are HTML
     // fragments); build-anp.mjs turns them into the pages listed here.
-    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data'))) walk(full, out); }
+    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data')) && !full.endsWith(join('chem', 'data'))) walk(full, out); }
     else if (name.endsWith('.html') && !SKIP_FILES.test(name)) out.push(full);
   }
   return out;
@@ -67,10 +67,10 @@ function priorityFor(path) {
   if (path === '/') return '1.0';
   if (COURSE_HOME.test(path)) return '0.9';
   if (COURSE_NAMED.test(path)) return '0.8';
-  if (/^\/(ochem\/notes|anatomy-physiology\/(notes|chapters)|bio\/(notes|units))\//.test(path)) return '0.7';
+  if (/^\/(ochem\/notes|anatomy-physiology\/(notes|chapters)|bio\/(notes|units)|chem\/(notes|units))\//.test(path)) return '0.7';
   if (/^\/nremt\/[^/]+\.html$/.test(path)) return '0.7';
-  if (/^\/(ochem\/(lessons|mechanisms)|anatomy-physiology\/(lessons|concepts)|bio\/(lessons|unit-sheets|frq))\//.test(path)) return '0.6';
-  if (/^\/(ochem|anatomy-physiology|bio)\/tools\//.test(path)) return '0.5';
+  if (/^\/(ochem\/(lessons|mechanisms)|anatomy-physiology\/(lessons|concepts)|bio\/(lessons|unit-sheets|frq)|chem\/(lessons|unit-sheets|frq))\//.test(path)) return '0.6';
+  if (/^\/(ochem|anatomy-physiology|bio|chem)\/tools\//.test(path)) return '0.5';
   if (/^\/(privacy|terms|changelog|sources)\.html$|credits\.html$/.test(path)) return '0.3';
   return '0.5';
 }

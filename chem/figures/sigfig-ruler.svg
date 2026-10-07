@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 240" width="680" height="240" role="img" aria-labelledby="t d">
+<title id="t">Reading a ruler to the right number of digits</title>
+<desc id="d">A ruler from 3.0 to 4.0 centimeters with marks every 0.1 centimeter. A bar's edge falls between the 3.4 and 3.5 marks, about seven tenths of the way. The reading is 3.47 centimeters: 3 and 4 are certain digits, read from the marks, and 7 is the estimated digit.</desc>
+<rect width="680" height="240" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1B2440">
+  <rect x="0" y="40" width="323" height="34" fill="#9DB4EC" stroke="#1D44A6" stroke-width="2"/>
+  <text x="180" y="63" font-size="16">object</text>
+  <rect x="40" y="80" width="600" height="60" fill="#F6F1E3" stroke="#555" stroke-width="2"/>
+  <g stroke="#333" stroke-width="2">
+    <line x1="60" y1="80" x2="60" y2="118"/><line x1="116" y1="80" x2="116" y2="100"/><line x1="172" y1="80" x2="172" y2="100"/><line x1="228" y1="80" x2="228" y2="100"/>
+    <line x1="284" y1="80" x2="284" y2="100"/><line x1="340" y1="80" x2="340" y2="110"/><line x1="396" y1="80" x2="396" y2="100"/><line x1="452" y1="80" x2="452" y2="100"/>
+    <line x1="508" y1="80" x2="508" y2="100"/><line x1="564" y1="80" x2="564" y2="100"/><line x1="620" y1="80" x2="620" y2="118"/>
+  </g>
+  <g font-size="15" text-anchor="middle">
+    <text x="60" y="134">3.0</text><text x="340" y="128">3.5</text><text x="620" y="134">4.0</text>
+    <text x="284" y="116">3.4</text>
+  </g>
+  <line x1="323" y1="30" x2="323" y2="150" stroke="#C2410C" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="300" y="186" font-size="30">3.4</text>
+  <text x="344" y="186" font-size="30" font-weight="bold" fill="#C2410C">7</text>
+  <text x="366" y="186" font-size="30"> cm</text>
+  <text x="120" y="222" font-size="15">3 and 4: certain, read from the marks</text>
+  <text x="430" y="222" font-size="15" fill="#C2410C">7: estimated between 3.4 and 3.5</text>
+</g>
+</svg>

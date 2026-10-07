@@ -1,0 +1,585 @@
+{
+ "stimuli": {
+  "strong-acids-bases-s1": {
+   "kind": "table",
+   "title": "Four stock solutions",
+   "text": "<p>A prep room stocks these solutions at 25 °C. Each solute is a strong acid or a strong base.</p>",
+   "table": {
+    "caption": "Solute and concentration",
+    "cols": [
+     "Bottle",
+     "Solute",
+     "Concentration (M)"
+    ],
+    "rows": [
+     [
+      "1",
+      "HNO₃",
+      "0.0250"
+     ],
+     [
+      "2",
+      "Ba(OH)₂",
+      "0.0150"
+     ],
+     [
+      "3",
+      "KOH",
+      "0.0040"
+     ],
+     [
+      "4",
+      "HCl",
+      "1.0 × 10⁻⁸"
+     ]
+    ]
+   }
+  },
+  "strong-acids-bases-s2": {
+   "kind": "setup",
+   "title": "Mixing an acid and a base",
+   "text": "<p>A student adds 15.0 mL of 0.150 M NaOH to 25.0 mL of 0.120 M HCl in a flask and swirls. Assume the volumes add and the temperature is 25 °C.</p>"
+  },
+  "strong-acids-bases-s3": {
+   "kind": "particle",
+   "title": "Four mixtures of HCl and NaOH",
+   "html": "<svg viewBox=\"0 0 760 230\" width=\"760\" height=\"230\" role=\"img\" aria-label=\"Four boxes showing ions after HCl and NaOH solutions are mixed. Box W: 2 hydronium, 0 hydroxide, 3 sodium, 5 chloride. Box X: 0 hydronium, 0 hydroxide, 4 sodium, 4 chloride. Box Y: 0 hydronium, 2 hydroxide, 5 sodium, 3 chloride. Box Z: 2 hydronium, 2 hydroxide, 4 sodium, 4 chloride.\"><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect x=\"5\" y=\"5\" width=\"180\" height=\"220\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"95\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">W</text><circle cx=\"30.2\" cy=\"55.3\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"30.2\" y=\"59.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"90.2\" cy=\"55.3\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"90.2\" y=\"59.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"150.2\" cy=\"55.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"150.2\" y=\"59.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"42.2\" cy=\"103.8\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"42.2\" y=\"107.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"102.2\" cy=\"103.8\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"102.2\" y=\"107.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"162.2\" cy=\"103.8\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"162.2\" y=\"107.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"30.2\" cy=\"152.3\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"30.2\" y=\"156.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"90.2\" cy=\"152.3\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"90.2\" y=\"156.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"150.2\" cy=\"152.3\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"150.2\" y=\"156.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"42.2\" cy=\"200.8\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"42.2\" y=\"204.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><rect x=\"195\" y=\"5\" width=\"180\" height=\"220\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"285\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">X</text><circle cx=\"220.2\" cy=\"63.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"220.2\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"280.2\" cy=\"63.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"280.2\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"340.2\" cy=\"63.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"340.2\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"232.2\" cy=\"128.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"232.2\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"292.2\" cy=\"128.0\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"292.2\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"352.2\" cy=\"128.0\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"352.2\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"220.2\" cy=\"192.7\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"220.2\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"280.2\" cy=\"192.7\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"280.2\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><rect x=\"385\" y=\"5\" width=\"180\" height=\"220\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"475\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Y</text><circle cx=\"410.2\" cy=\"55.3\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"410.2\" y=\"59.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text><circle cx=\"470.2\" cy=\"55.3\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"470.2\" y=\"59.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text><circle cx=\"530.2\" cy=\"55.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"530.2\" y=\"59.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"422.2\" cy=\"103.8\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"422.2\" y=\"107.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"482.2\" cy=\"103.8\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"482.2\" y=\"107.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"542.2\" cy=\"103.8\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"542.2\" y=\"107.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"410.2\" cy=\"152.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"410.2\" y=\"156.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"470.2\" cy=\"152.3\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"470.2\" y=\"156.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"530.2\" cy=\"152.3\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"530.2\" y=\"156.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"422.2\" cy=\"200.8\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"422.2\" y=\"204.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><rect x=\"575\" y=\"5\" width=\"180\" height=\"220\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"665\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Z</text><circle cx=\"593.9\" cy=\"63.3\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"593.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"638.9\" cy=\"63.3\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"638.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"683.9\" cy=\"63.3\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"683.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text><circle cx=\"728.9\" cy=\"63.3\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"728.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text><circle cx=\"602.9\" cy=\"128.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"602.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"647.9\" cy=\"128.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"647.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"692.9\" cy=\"128.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"692.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"737.9\" cy=\"128.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"737.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"593.9\" cy=\"192.7\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"593.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"638.9\" cy=\"192.7\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"638.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"683.9\" cy=\"192.7\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"683.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"728.9\" cy=\"192.7\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"728.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text></g></svg><p>Key: H₃O⁺ hydronium; OH⁻ hydroxide; Na⁺ sodium ion; Cl⁻ chloride ion. Water molecules are not drawn; at this scale the H₃O⁺ and OH⁻ from water itself are too few to show.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-strong-acids-bases-1",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "strong-acids-bases-s1",
+   "q": "What is the pH of Bottle 1?",
+   "numeric": {
+    "answer": 1.602,
+    "tol": 0.001,
+    "unit": "",
+    "places": 3,
+    "mistakes": [
+     {
+      "value": 12.398,
+      "why": "Value: that is the pOH. HNO₃ gives H₃O⁺ directly, so pH = −log(0.0250).",
+      "tol": 0.002
+     }
+    ]
+   },
+   "why": {
+    "correct": "HNO₃ ionizes fully, so [H₃O⁺] = 0.0250 M. pH = −log(0.0250) = 1.6021, which is 1.602: three significant figures in the concentration give three decimal places."
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-2",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "strong-acids-bases-s1",
+   "q": "What is the pH of Bottle 2?",
+   "numeric": {
+    "answer": 12.477,
+    "tol": 0.001,
+    "unit": "",
+    "places": 3,
+    "mistakes": [
+     {
+      "value": 12.176,
+      "why": "Value: each Ba(OH)₂ gives two OH⁻ ions, so [OH⁻] = 2 × 0.0150 = 0.0300 M.",
+      "tol": 0.002
+     },
+     {
+      "value": 1.523,
+      "why": "Value: that is the pOH. Subtract it from 14.00 to get the pH.",
+      "tol": 0.002
+     }
+    ]
+   },
+   "why": {
+    "correct": "Ba(OH)₂ → Ba²⁺ + 2 OH⁻, so [OH⁻] = 2 × 0.0150 = 0.0300 M. pOH = −log(0.0300) = 1.5229; pH = 14.000 − 1.523 = 12.477."
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-3",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "strong-acids-bases-s1",
+   "q": "Which bottle has the highest pH?",
+   "options": [
+    "Bottle 2",
+    "Bottle 3",
+    "Bottle 4",
+    "Bottle 1"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The highest pH goes with the highest [OH⁻]. Bottle 2 has 0.0300 M OH⁻ (pH 12.48); Bottle 3 has 0.0040 M (pH 11.60).",
+    "options": [
+     "Right: two OH⁻ per formula unit makes its [OH⁻] the largest.",
+     "KOH gives one OH⁻ per formula unit, so [OH⁻] = 0.0040 M, less than Bottle 2's 0.0300 M.",
+     "A very dilute HCl solution is still slightly acidic; its pH is just under 7, not 8.",
+     "Bottle 1 is an acid, so its pH is the lowest of the four."
+    ]
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-4",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "strong-acids-bases-s1",
+   "q": "What is the pH of Bottle 4? (Hint: water itself also supplies H₃O⁺.)",
+   "numeric": {
+    "answer": 6.98,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 8,
+      "why": "Value: an acid cannot make water basic. At 1.0 × 10⁻⁸ M the acid adds less H₃O⁺ than water already has, so the pH stays just below 7.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "Water supplies H₃O⁺ too. With x = [OH⁻] from water: [H₃O⁺] = 1.0 × 10⁻⁸ + x and (1.0 × 10⁻⁸ + x)(x) = 1.0 × 10⁻¹⁴. Solving the quadratic gives [H₃O⁺] = 1.05 × 10⁻⁷ M, so pH = 6.98, slightly acidic as an acid solution must be."
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-5",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "strong-acids-bases-s1",
+   "q": "A student dilutes 10.0 mL of Bottle 1 to 100.0 mL with water. What happens to the pH?",
+   "options": [
+    "It rises by 1.00 unit",
+    "It falls by 1.00 unit",
+    "It rises by 10 units",
+    "It stays the same, because the moles of acid are unchanged"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Diluting tenfold makes [H₃O⁺] ten times smaller, 0.00250 M, so the pH goes from 1.602 to 2.602: up by exactly log 10 = 1.00.",
+    "options": [
+     "Right: one factor of ten is one pH unit.",
+     "Less H₃O⁺ per liter means a higher pH, not a lower one.",
+     "A factor of 10 in concentration is one pH unit, because pH is a log scale.",
+     "pH depends on concentration, not on the number of moles; the same moles in more water give a lower [H₃O⁺]."
+    ]
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-6",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "strong-acids-bases-s2",
+   "q": "How many moles of H₃O⁺ are left over after the reaction?",
+   "numeric": {
+    "answer": 0.00075,
+    "tol": 0.00001,
+    "unit": "mol",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.003,
+      "why": "Value: that is the H₃O⁺ before mixing. The 0.00225 mol of OH⁻ added reacts with it one to one; subtract.",
+      "rel": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "HCl: 0.0250 L × 0.120 mol/L = 0.00300 mol H₃O⁺. NaOH: 0.0150 L × 0.150 mol/L = 0.00225 mol OH⁻. They react 1:1, leaving 0.00300 − 0.00225 = 7.5 × 10⁻⁴ mol H₃O⁺. Both amounts are known to the 0.00001 mol place, so the difference, 0.00075 mol, has two significant figures."
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-7",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "strong-acids-bases-s2",
+   "q": "What is the pH of the mixture?",
+   "numeric": {
+    "answer": 1.73,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 1.52,
+      "why": "Value: you divided by the acid volume only. After mixing, the H₃O⁺ is spread through the total volume, 40.0 mL.",
+      "tol": 0.02
+     },
+     {
+      "value": 1.12,
+      "why": "Value: you skipped the neutralization. Subtract the moles of OH⁻ added before finding [H₃O⁺].",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "[H₃O⁺] = 7.5 × 10⁻⁴ mol / 0.0400 L = 0.0188 M. pH = −log(0.0188) = 1.727, which is 1.73 (two significant figures in the leftover moles)."
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-8",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "strong-acids-bases-s2",
+   "q": "What total volume of 0.150 M NaOH would have to be added to the original HCl to reach the equivalence point?",
+   "options": [
+    "20.0 mL",
+    "15.0 mL",
+    "25.0 mL",
+    "31.3 mL"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Moles OH⁻ needed = moles HCl = 0.00300 mol; 0.00300 mol ÷ 0.150 mol/L = 0.0200 L = 20.0 mL.",
+    "options": [
+     "Right: equal moles of OH⁻ and H₃O⁺.",
+     "That is the volume already added; it leaves acid over.",
+     "Equal volumes would be right only if the two concentrations were equal.",
+     "This multiplies by the ratio of concentrations the wrong way round: 25.0 × 0.150 / 0.120."
+    ]
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-9",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "strong-acids-bases-s2",
+   "q": "At the equivalence point of this mixture, what is the pH and why?",
+   "options": [
+    "7.00, because Na⁺ and Cl⁻ do not react with water",
+    "Below 7, because HCl was in the flask first",
+    "Above 7, because NaOH was added last",
+    "7.00, because no ions are left in the flask"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At equivalence the flask holds water, Na⁺ and Cl⁻. Neither ion takes a proton from water or gives one to it, so [H₃O⁺] = [OH⁻] and the pH is 7.00 at 25 °C.",
+    "options": [
+     "Right: both are spectator ions, so the solution is neutral.",
+     "The order of mixing does not matter: equal moles of H₃O⁺ and OH⁻ have canceled.",
+     "At equivalence there is no excess NaOH, whatever was added last.",
+     "Na⁺ and Cl⁻ are still dissolved; they just do not change the pH."
+    ]
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-10",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "strong-acids-bases-s3",
+   "q": "Five HCl and three NaOH formula units were mixed. Which box shows the result?",
+   "options": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Five HCl give 5 H₃O⁺ and 5 Cl⁻; three NaOH give 3 Na⁺ and 3 OH⁻. Three H₃O⁺ react with the three OH⁻, leaving 2 H₃O⁺, 5 Cl⁻ and 3 Na⁺: Box W.",
+    "options": [
+     "Right: 2 H₃O⁺ left over, and the spectator ions keep their counts.",
+     "Box X is the equivalence point: equal numbers of acid and base.",
+     "Box Y has excess OH⁻, which needs more NaOH than HCl.",
+     "H₃O⁺ and OH⁻ cannot stay side by side in these amounts: they react until one is used up."
+    ]
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-11",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "strong-acids-bases-s3",
+   "q": "Which box cannot represent a real mixture, and why?",
+   "options": [
+    "Z, because H₃O⁺ and OH⁻ would react until one of them was nearly gone",
+    "X, because a solution needs H₃O⁺ ions to conduct electricity",
+    "Y, because there are more Na⁺ ions than Cl⁻ ions",
+    "W, because there are more Cl⁻ ions than Na⁺ ions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Kw = [H₃O⁺][OH⁻] = 1.0 × 10⁻¹⁴ is tiny, so large amounts of both ions cannot coexist. They react to make water until the product falls to Kw.",
+    "options": [
+     "Right: neutralization goes essentially to completion.",
+     "Na⁺ and Cl⁻ conduct electricity on their own; X is a neutral salt solution.",
+     "Excess NaOH gives more Na⁺ than Cl⁻; Y is a real mixture with base left over.",
+     "Excess HCl gives more Cl⁻ than Na⁺; W is a real mixture with acid left over."
+    ]
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-12",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "strong-acids-bases-s3",
+   "q": "Which box has the highest pH?",
+   "options": [
+    "Y",
+    "X",
+    "W",
+    "Z"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only Y has excess OH⁻, so it is basic, with the highest pH.",
+    "options": [
+     "Right: excess hydroxide makes it basic.",
+     "X is neutral, pH 7 at 25 °C.",
+     "W has excess H₃O⁺, so it is acidic.",
+     "Z is not a possible mixture."
+    ]
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-13",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "strong-acids-bases-s3",
+   "q": "Each ion drawn in Box Y stands for 1.0 × 10⁻³ mol, and the box holds 0.50 L. What is the pH of the mixture?",
+   "numeric": {
+    "answer": 11.6,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 2.4,
+      "why": "Value: that is the pOH. Box Y is basic, so pH = 14.00 − pOH.",
+      "tol": 0.02
+     },
+     {
+      "value": 11.3,
+      "why": "Value: you used moles as if they were molarity. Divide 2.0 × 10⁻³ mol by 0.50 L first.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "Excess OH⁻ = 2 × 1.0 × 10⁻³ = 2.0 × 10⁻³ mol in 0.50 L, so [OH⁻] = 4.0 × 10⁻³ M. pOH = 2.398; pH = 14.00 − 2.40 = 11.60."
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-14",
+   "type": "multi",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which of these are strong acids in water? Select all that apply.",
+   "options": [
+    "HBr",
+    "HF",
+    "HNO₂",
+    "H₂CO₃",
+    "CH₃COOH"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Only HBr is on the list of common strong acids (HCl, HBr, HI, HNO₃, HClO₄, H₂SO₄ for its first proton). Select-all items can have a single answer.",
+    "options": [
+     "Right: a hydrohalic strong acid.",
+     "HF is the one hydrohalic acid that does not ionize fully in water.",
+     "Nitrous acid, HNO₂, is weak; it is nitric acid, HNO₃, that is strong.",
+     "Carbonic acid ionizes only slightly.",
+     "Acetic acid (vinegar) ionizes only slightly."
+    ]
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-15",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the pH of 2.5 × 10⁻⁴ M Sr(OH)₂ at 25 °C?",
+   "numeric": {
+    "answer": 10.7,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 10.4,
+      "why": "Value: Sr(OH)₂ gives two OH⁻ per formula unit; double the concentration.",
+      "tol": 0.02
+     },
+     {
+      "value": 3.3,
+      "why": "Value: that is the pOH; subtract from 14.00.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "[OH⁻] = 2 × 2.5 × 10⁻⁴ = 5.0 × 10⁻⁴ M; pOH = 3.301; pH = 14.00 − 3.30 = 10.70."
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-16",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A student pipets 35.0 mL of 0.200 M HCl into a 500.0 mL volumetric flask and dilutes to the mark. What is the pH of the diluted solution?",
+   "numeric": {
+    "answer": 1.854,
+    "tol": 0.001,
+    "unit": "",
+    "places": 3,
+    "mistakes": [
+     {
+      "value": 0.699,
+      "why": "Value: that is the pH before dilution. Find the new concentration with M₁V₁ = M₂V₂ first.",
+      "tol": 0.002
+     },
+     {
+      "value": 1.883,
+      "why": "Value: \"dilute to the mark\" makes the total volume 500.0 mL; do not add the 35.0 mL on top.",
+      "tol": 0.002
+     }
+    ]
+   },
+   "why": {
+    "correct": "M₂ = (0.200 M × 35.0 mL) / 500.0 mL = 0.0140 M = [H₃O⁺]. pH = −log(0.0140) = 1.8539 → 1.854."
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-17",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Solutions of 0.10 M HCl and 0.10 M HNO₃ have the same pH, even though the acids are different. Which explanation is best?",
+   "options": [
+    "Both ionize fully, so each gives 0.10 M H₃O⁺",
+    "Both have the same molar mass, so equal moles dissolve",
+    "Cl and N have the same electronegativity, so the H–X bonds are alike",
+    "Both are diatomic, so they release the same number of protons"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For a strong acid, [H₃O⁺] equals the acid concentration, whatever the acid. The anion (Cl⁻ or NO₃⁻) is a spectator.",
+    "options": [
+     "Right: full ionization makes the pH depend on concentration alone.",
+     "The molar masses differ (36.46 and 63.01 g/mol); the solutions are compared in mol/L anyway.",
+     "The two electronegativities are close but the structures differ. What matters here is that both ionize fully.",
+     "HNO₃ is not diatomic. Each acid gives one proton per molecule, but that alone does not explain equal pH unless both ionize fully."
+    ]
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-18",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "What is the pH after 30.0 mL of 0.0800 M KOH is added to 20.0 mL of 0.100 M HBr?",
+   "numeric": {
+    "answer": 11.9,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 2.1,
+      "why": "Value: that is the pOH. The base is in excess, so pH = 14.00 − pOH.",
+      "tol": 0.02
+     },
+     {
+      "value": 12.12,
+      "why": "Value: divide the leftover OH⁻ by the total volume, 50.0 mL, not the base volume.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "OH⁻: 0.0300 L × 0.0800 M = 2.40 × 10⁻³ mol. H₃O⁺: 0.0200 L × 0.100 M = 2.00 × 10⁻³ mol. Excess OH⁻ = 4.0 × 10⁻⁴ mol in 0.0500 L = 8.0 × 10⁻³ M. pOH = 2.097; pH = 11.90."
+   }
+  },
+  {
+   "id": "chem-strong-acids-bases-19",
+   "type": "order",
+   "unit": "unit-8",
+   "topic": "strong-acids-bases",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for finding the pH after mixing a strong acid with a strong base in order.",
+   "options": [
+    "Find the moles of H₃O⁺ and of OH⁻ from volume × molarity",
+    "Subtract: the smaller amount is used up, the excess remains",
+    "Divide the excess by the total volume of the mixture",
+    "Convert to pH (through pOH if OH⁻ is in excess)"
+   ],
+   "why": {
+    "correct": "Moles first, because acid and base react by moles, not by concentration. Then the excess, then the total volume, then the log."
+   }
+  }
+ ]
+}

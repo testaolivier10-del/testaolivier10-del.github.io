@@ -1,0 +1,346 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "chem-math-units-1",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "5.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "You want to change a volume from milliliters to liters. Which conversion factor do you multiply by?",
+   "options": [
+    "1000 mL / 1 L",
+    "1 L / 100 mL",
+    "1 L / 1000 mL",
+    "1000 L / 1 mL"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The unit you want goes on top and the unit you have goes on the bottom: 1 L / 1000 mL.",
+    "options": [
+     "This factor is upside down: mL would end up squared instead of canceling.",
+     "Milli means one thousandth, not one hundredth; 100 belongs to centi.",
+     "Right: liters on top, milliliters on the bottom, so mL cancels and L is left.",
+     "A liter is larger than a milliliter, so 1000 L can never equal 1 mL."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-units-2",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "A hiking trail is 2.45 km long. How long is it in meters?",
+   "numeric": {
+    "answer": 2450,
+    "tol": 1,
+    "unit": "m",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 0.00245,
+      "rel": 0.01,
+      "why": "Value: you divided by 1000. A meter is smaller than a kilometer, so the number of meters must be larger."
+     }
+    ]
+   },
+   "why": {
+    "correct": "2.45 km × (1000 m / 1 km) = 2450 m. Kilo means 1000, so the number gets 1000 times larger as the unit gets 1000 times smaller."
+   }
+  },
+  {
+   "id": "chem-math-units-3",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A metal block has a mass of 12.6 g and a volume of 4.65 cm³. What is its density? Include the unit.",
+   "numeric": {
+    "answer": 2.71,
+    "tol": 0.01,
+    "unit": "g/cm³",
+    "units": [
+     "g/mL",
+     "g cm^-3",
+     "g/cm3"
+    ],
+    "askUnit": true,
+    "decimals": 2,
+    "mistakes": [
+     {
+      "value": 0.369,
+      "rel": 0.01,
+      "why": "Value: you divided volume by mass. Density is mass divided by volume, in g/cm³."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Density = mass ÷ volume = 12.6 g ÷ 4.65 cm³ = 2.71 g/cm³. The unit comes straight from the division: grams per cubic centimeter."
+   }
+  },
+  {
+   "id": "chem-math-units-4",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Ethanol has a density of 0.789 g/mL. What is the mass of 250.0 mL of ethanol, in grams?",
+   "numeric": {
+    "answer": 197,
+    "tol": 1,
+    "unit": "g",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 316.9,
+      "rel": 0.01,
+      "why": "Value: you divided by the density, which leaves mL²/g. Multiply by g/mL so that mL cancels."
+     }
+    ]
+   },
+   "why": {
+    "correct": "250.0 mL × (0.789 g / 1 mL) = 197 g. The density works as a conversion factor: mL cancels, g is left."
+   }
+  },
+  {
+   "id": "chem-math-units-5",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "Normal body temperature is 37.0 °C. What is it in kelvin?",
+   "numeric": {
+    "answer": 310.2,
+    "tol": 0.1,
+    "unit": "K",
+    "decimals": 1,
+    "mistakes": [
+     {
+      "value": -236.2,
+      "rel": 0.01,
+      "why": "Value: you subtracted 273.15. To go from °C to K, add 273.15."
+     }
+    ]
+   },
+   "why": {
+    "correct": "K = °C + 273.15 = 37.0 + 273.15 = 310.2 K. A kelvin is the same size as a Celsius degree; the scale just starts at absolute zero."
+   }
+  },
+  {
+   "id": "chem-math-units-6",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which setup converts 3.5 hours into seconds?",
+   "options": [
+    "3.5 h × (1 h / 60 min) × (1 min / 60 s)",
+    "3.5 h × (60 min / 1 h) × (1 min / 60 s)",
+    "3.5 h × (60 s / 1 h)",
+    "3.5 h × (60 min / 1 h) × (60 s / 1 min)"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Chain one factor per step, each with the unit you have on the bottom: h → min → s. 3.5 × 60 × 60 = 12,600 s.",
+    "options": [
+     "Both factors are upside down: the units multiply into h²/s instead of canceling.",
+     "The first factor works, but the second puts seconds on the bottom, giving min²/s.",
+     "There are 3600 seconds in an hour, not 60, so this answer is 60 times too small.",
+     "Right: hours cancel, then minutes cancel, and seconds are left."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-units-7",
+   "type": "order",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for solving a unit conversion with dimensional analysis in order.",
+   "options": [
+    "Write the given quantity with its unit",
+    "Choose a factor with the given unit on the bottom",
+    "Add factors until only the wanted unit is left",
+    "Multiply the numbers and cancel the units",
+    "Check that the size of the answer makes sense"
+   ],
+   "why": {
+    "correct": "Start from the given quantity, build the chain of factors, cancel units, then do the arithmetic and check the answer with a quick estimate."
+   }
+  },
+  {
+   "id": "chem-math-units-8",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student converts 4250 mg to kilograms and reports 4,250,000,000 kg. What went wrong?",
+   "options": [
+    "The student used 100 mg per gram in place of 1000 mg per gram",
+    "Milligrams and kilograms measure different things",
+    "Both factors were upside down, so the number grew instead of shrinking",
+    "The student should have added 1000 instead of multiplying"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The right answer is 4250 mg × (1 g / 1000 mg) × (1 kg / 1000 g) = 0.00425 kg. A kilogram is a million times larger than a milligram, so the number must shrink.",
+    "options": [
+     "A wrong 100 would give a different error; the reported answer comes from correct factors of 1000 used upside down.",
+     "Both measure mass, and any mass unit can be converted to any other with the right factors.",
+     "Right: mg → g and g → kg each make the number smaller. Flipping both makes it a million times larger instead of smaller.",
+     "Unit conversions multiply or divide by a factor; adding a number changes the quantity itself."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-units-9",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A medicine dose is 15 mg per kilogram of body mass. How many grams does a 42 kg patient receive?",
+   "numeric": {
+    "answer": 0.63,
+    "tol": 0.01,
+    "unit": "g",
+    "decimals": 2,
+    "mistakes": [
+     {
+      "value": 2.8,
+      "rel": 0.01,
+      "why": "Value: you divided body mass by the dose. Multiply: kg cancels against \"per kg\", leaving mg, then change mg to g."
+     }
+    ]
+   },
+   "why": {
+    "correct": "42 kg × (15 mg / 1 kg) × (1 g / 1000 mg) = 0.63 g. The dose rate is a conversion factor from body mass to medicine mass."
+   }
+  },
+  {
+   "id": "chem-math-units-10",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Why can a temperature in kelvin not be negative?",
+   "options": [
+    "Zero kelvin is absolute zero, the coldest temperature possible",
+    "The kelvin scale counts in steps that are smaller than the degrees of the Celsius scale",
+    "Scientists agreed to drop the negative half of the Celsius scale",
+    "Kelvin is used for gases, which stop existing below zero"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The kelvin scale starts at absolute zero (−273.15 °C), the coldest possible temperature, so every real temperature in kelvin is positive.",
+    "options": [
+     "Right: the kelvin scale starts at absolute zero, so nothing can be colder than 0 K.",
+     "A kelvin and a Celsius degree are the same size; only the starting point differs.",
+     "The zero point is set by nature, at the coldest possible temperature, not by an agreement to drop numbers.",
+     "The scale applies to any substance; it starts at absolute zero, not at a property of gases."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-units-11",
+   "type": "multi",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which of these are SI base units? Select all that apply.",
+   "options": [
+    "kilogram (kg)",
+    "liter (L)",
+    "kelvin (K)",
+    "degree Celsius (°C)"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "The kilogram and the kelvin are base units. The liter is built from the meter, and Celsius is a scale shifted from kelvin.",
+    "options": [
+     "Right: the SI base unit of mass is the kilogram, not the gram.",
+     "The liter is a common volume unit, but it is defined from the meter (1 L = 1 dm³), so it is not a base unit.",
+     "Right: the kelvin is the SI base unit of temperature.",
+     "Celsius is a common scale, but the SI base unit of temperature is the kelvin."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-units-12",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Water has a density of 1.00 g/mL. A 30.0 g plastic bead takes up 25.0 mL. Will the bead float or sink in water, and why?",
+   "options": [
+    "Float: its density, 0.833 g/mL, is less than that of water",
+    "Sink: its density, 1.20 g/mL, is greater than that of water",
+    "Sink: its mass, 30.0 g, is greater than 1.00 g",
+    "Float: its volume, 25.0 mL, is greater than 1.00 mL"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Density = 30.0 g ÷ 25.0 mL = 1.20 g/mL. An object denser than water sinks.",
+    "options": [
+     "This divides volume by mass. Density is mass ÷ volume.",
+     "Right: 30.0 g ÷ 25.0 mL = 1.20 g/mL, which is more than 1.00 g/mL.",
+     "Floating depends on mass per volume, not on mass alone; a heavy wooden beam still floats.",
+     "A large volume alone does not decide it; you need mass divided by volume."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-units-13",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-units",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A runner covers 5.0 km in 25 min. Which setup gives the speed in meters per second?",
+   "options": [
+    "(5.0 km / 25 min) × (1 km / 1000 m) × (60 s / 1 min)",
+    "(5.0 km / 25 min) × (1000 m / 1 km) × (1 min / 60 s)",
+    "(25 min / 5.0 km) × (1000 m / 1 km) × (60 s / 1 min)",
+    "(5.0 km / 25 min) × (1000 m / 1 km) × (60 s / 1 min)"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "5.0 km/25 min × 1000 m/km × 1 min/60 s = 3.3 m/s. A unit on the bottom (min) needs a factor with that unit on top to cancel.",
+    "options": [
+     "Both factors are upside down: the units come out as km²·s/(m·min²).",
+     "Right: km cancels to leave m on top, and min cancels to leave s on the bottom.",
+     "This starts from minutes per kilometer, the inverse of a speed.",
+     "The meters are right, but seconds end up on top, giving m·s/min²."
+    ]
+   }
+  }
+ ]
+}

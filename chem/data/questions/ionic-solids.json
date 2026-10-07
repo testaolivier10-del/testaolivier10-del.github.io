@@ -1,0 +1,490 @@
+{
+ "stimuli": {
+  "ionic-solids-s1": {
+   "kind": "table",
+   "title": "Five ionic compounds",
+   "text": "<p>Ionic radii, the distance between neighboring ion centers in the solid, and melting temperatures for five ionic compounds.</p>",
+   "table": {
+    "caption": "Ions, ion spacing and melting temperatures",
+    "cols": [
+     "Compound",
+     "Cation (radius, pm)",
+     "Anion (radius, pm)",
+     "Cation–anion distance (pm)",
+     "Melting temperature (°C)"
+    ],
+    "rows": [
+     [
+      "NaF",
+      "Na⁺ (102)",
+      "F⁻ (133)",
+      "231",
+      "993"
+     ],
+     [
+      "NaCl",
+      "Na⁺ (102)",
+      "Cl⁻ (181)",
+      "282",
+      "801"
+     ],
+     [
+      "KCl",
+      "K⁺ (138)",
+      "Cl⁻ (181)",
+      "315",
+      "770"
+     ],
+     [
+      "MgO",
+      "Mg²⁺ (72)",
+      "O²⁻ (140)",
+      "210",
+      "2852"
+     ],
+     [
+      "CaO",
+      "Ca²⁺ (100)",
+      "O²⁻ (140)",
+      "240",
+      "2613"
+     ]
+    ]
+   }
+  },
+  "ionic-solids-s2": {
+   "kind": "particle",
+   "title": "Sodium chloride in three states",
+   "html": "<svg viewBox=\"0 0 660 232\" width=\"660\" height=\"232\" role=\"img\" aria-label=\"Box 1: sodium and chloride ions alternating in a regular grid, every ion touching ions of opposite charge. Box 2: the same ions spread out irregularly with gaps between them. Box 3: five separate pairs, each one sodium ion stuck to one chloride ion.\" style=\"max-width:100%;height:auto\"><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect x=\"10\" y=\"10\" width=\"200\" height=\"160\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#5B6670\" stroke-width=\"1.5\"/><text x=\"110\" y=\"190\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Box 1</text><rect x=\"230\" y=\"10\" width=\"200\" height=\"160\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#5B6670\" stroke-width=\"1.5\"/><text x=\"330\" y=\"190\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Box 2</text><rect x=\"450\" y=\"10\" width=\"200\" height=\"160\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#5B6670\" stroke-width=\"1.5\"/><text x=\"550\" y=\"190\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Box 3</text><circle cx=\"34\" cy=\"34\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"34\" y=\"38.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"72\" cy=\"34\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"72\" y=\"38.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"110\" cy=\"34\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"110\" y=\"38.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"148\" cy=\"34\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"148\" y=\"38.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"186\" cy=\"34\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"186\" y=\"38.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"34\" cy=\"72\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"34\" y=\"76.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"72\" cy=\"72\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"72\" y=\"76.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"110\" cy=\"72\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"110\" y=\"76.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"148\" cy=\"72\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"148\" y=\"76.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"186\" cy=\"72\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"186\" y=\"76.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"34\" cy=\"110\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"34\" y=\"114.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"72\" cy=\"110\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"72\" y=\"114.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"110\" cy=\"110\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"110\" y=\"114.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"148\" cy=\"110\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"148\" y=\"114.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"186\" cy=\"110\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"186\" y=\"114.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"34\" cy=\"148\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"34\" y=\"152.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"72\" cy=\"148\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"72\" y=\"152.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"110\" cy=\"148\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"110\" y=\"152.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"148\" cy=\"148\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"148\" y=\"152.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"186\" cy=\"148\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"186\" y=\"152.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"262\" cy=\"40\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"262\" y=\"44.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"330\" cy=\"36\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"330\" y=\"40.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"398\" cy=\"52\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"398\" y=\"56.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"286\" cy=\"96\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"286\" y=\"100.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"356\" cy=\"88\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"356\" y=\"92.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"404\" cy=\"124\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"404\" y=\"128.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"256\" cy=\"146\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"256\" y=\"150.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"318\" cy=\"142\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"318\" y=\"146.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"374\" cy=\"156\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"374\" y=\"160.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"300\" cy=\"58\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"300\" y=\"62.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"477\" cy=\"44\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"477\" y=\"48.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"504\" cy=\"44\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"504\" y=\"48.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"577\" cy=\"50\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"577\" y=\"54.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"604\" cy=\"50\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"604\" y=\"54.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"487\" cy=\"110\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"487\" y=\"114.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"514\" cy=\"110\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"514\" y=\"114.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"587\" cy=\"120\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"587\" y=\"124.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"614\" cy=\"120\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"614\" y=\"124.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"537\" cy=\"152\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"537\" y=\"156.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"564\" cy=\"152\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"564\" y=\"156.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><text x=\"330\" y=\"222\" font-size=\"12.5\" text-anchor=\"middle\" fill=\"#5B6670\">Key: blue + = Na⁺, yellow − = Cl⁻</text></g></svg>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-ionic-solids-1",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ionic-solids-s1",
+   "q": "Which statement best explains why NaF melts at a higher temperature than NaCl?",
+   "options": [
+    "F is more electronegative than Cl, so it holds the shared electrons more tightly",
+    "F⁻ is smaller than Cl⁻, so the ions are closer and attract more strongly",
+    "NaF has a smaller molar mass, and lighter compounds have higher melting temperatures",
+    "F⁻ has a larger charge than Cl⁻, so its attraction to each Na⁺ ion is stronger"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Both compounds have ions of charge 1+ and 1−. F⁻ (133 pm) is smaller than Cl⁻ (181 pm), so the ion centers are closer (231 against 282 pm). By Coulomb's law the attraction is stronger, the lattice energy is larger, and more energy is needed to melt the solid.",
+    "options": [
+     "NaF is ionic: no electrons are shared between Na and F. Compare the ions' charges and the distance between them.",
+     "Right: same charges, shorter distance, stronger attraction.",
+     "Mass does not set melting temperatures of ionic solids; the Coulombic attraction between the ions does. MgO is lighter than CaO and also higher-melting, but because of distance, not mass.",
+     "F⁻ and Cl⁻ have the same charge, 1−. The difference is size."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-solids-2",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ionic-solids-s1",
+   "q": "MgO and NaF have ions about the same distance apart, yet MgO melts about 1900 °C higher. Which explanation is best?",
+   "options": [
+    "MgO has more ions per formula unit than NaF, so there are more bonds to break",
+    "Mg²⁺ is smaller than Na⁺, so the MgO ions are much closer together than the NaF ions",
+    "O is less electronegative than F, so MgO is a more ionic compound overall than NaF",
+    "Mg²⁺ and O²⁻ have twice the charges of Na⁺ and F⁻, so they attract far more strongly"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The distances are close (210 and 231 pm), so the main difference is charge: 2+ and 2− against 1+ and 1−. The product of the charges is 4 against 1, so by Coulomb's law the attraction, and the lattice energy, are several times larger.",
+    "options": [
+     "Both have two ions per formula unit (Mg²⁺ + O²⁻, Na⁺ + F⁻).",
+     "Mg²⁺ is smaller, but the distances differ only by about 10% (210 against 231 pm); that cannot explain a 1900 °C difference on its own. The doubled charges do.",
+     "A smaller electronegativity difference would make a bond less ionic, not more. The difference comes from the ions' charges.",
+     "Right: the charge product (4 against 1) dominates."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-solids-3",
+   "type": "order",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ionic-solids-s1",
+   "q": "Using charges and distances only, put these compounds in order of lattice energy, from smallest to largest.",
+   "options": [
+    "KCl",
+    "NaCl",
+    "CaO",
+    "MgO"
+   ],
+   "why": {
+    "correct": "The 1+/1− compounds come first, with the longer distance weaker: KCl (315 pm) < NaCl (282 pm). The 2+/2− compounds are far larger: CaO (240 pm) < MgO (210 pm). The melting temperatures follow the same order."
+   }
+  },
+  {
+   "id": "chem-ionic-solids-4",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "ionic-solids-s1",
+   "q": "A student says KCl melts lower than NaCl \"because K⁺ is bigger.\" Which version of this claim would earn full credit on a free-response answer?",
+   "options": [
+    "Same charges (1+, 1−), but K⁺ is larger than Na⁺, so K⁺ and Cl⁻ are farther apart and attract less",
+    "K is a bigger atom than Na, so KCl is a bigger compound and is held together less tightly",
+    "K⁺ is bigger than Na⁺, so it has more electrons, which repel the Cl⁻ ions and weaken the bonds",
+    "K is lower in group 1 than Na, so KCl is made of molecules held by weaker forces than NaCl"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A full-credit Coulomb's-law argument compares both species: the same charges, a larger cation, a greater distance between ion centers (315 against 282 pm), and so a weaker attraction and a lower melting temperature.",
+    "options": [
+     "Right: it names the charges, the sizes for both ions and the effect on attraction.",
+     "\"Bigger compound\" is vague. It does not name the ion distance or the attraction, which a reader needs to see.",
+     "The extra electrons are inner shells around K's own nucleus; the reason is the larger distance between ion centers.",
+     "An ionic solid is not made of molecules. The attraction is between ions throughout the lattice."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-solids-5",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "ionic-solids-s2",
+   "q": "Which box represents solid sodium chloride?",
+   "options": [
+    "Box 3",
+    "Box 2",
+    "Box 1",
+    "Box 1 and Box 3"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In the solid the ions sit in a repeating three-dimensional array, each ion surrounded by ions of opposite charge. Box 1 shows one layer of that.",
+    "options": [
+     "Box 3 shows separate Na–Cl pairs, as if NaCl were made of molecules. An ionic solid has no separate pairs: each ion attracts all its neighbors.",
+     "Box 2 shows ions spread out without a regular pattern, which is the melted (liquid) salt.",
+     "Right: alternating ions in a regular array.",
+     "Box 3 is not a correct model of an ionic solid; only Box 1 is."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-solids-6",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ionic-solids-s2",
+   "q": "The substance in Box 2 conducts electricity but the substance in Box 1 does not. Which explanation is correct?",
+   "options": [
+    "Box 2 has more ions than Box 1, so it can carry a much larger current",
+    "In Box 2 the electrons are free to move, as in a metal, but in Box 1 they are not",
+    "In Box 2 the ions can move and carry charge; in Box 1 they are held in place",
+    "Box 1 is made of neutral atoms, while Box 2 is made of charged ions"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Charge is carried in an ionic compound by moving ions. When the solid melts (Box 2) the ions can move past each other toward the oppositely charged ends of the circuit. In the solid (Box 1) the same ions are locked in the lattice.",
+    "options": [
+     "Box 2 in fact shows fewer ions than Box 1. The number of ions is not the issue; whether they can move is.",
+     "Melted salt does not contain free electrons; the moving charges are the Na⁺ and Cl⁻ ions themselves.",
+     "Right: mobile ions carry the current.",
+     "Box 1 also contains ions. They just cannot move."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-solids-7",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ionic-solids-s2",
+   "q": "What is wrong with Box 3 as a model of solid sodium chloride?",
+   "options": [
+    "It shows separate pairs, but each ion attracts several opposite-charge neighbors",
+    "It shows the wrong ratio of ions: solid sodium chloride has two Cl⁻ ions per Na⁺ ion",
+    "The ions should be drawn the same size, because Na⁺ and Cl⁻ have the same number of electrons",
+    "Nothing is wrong: an ionic compound is made of molecules, each one cation and one anion"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "NaCl is a lattice, not a collection of molecules. Each Na⁺ is surrounded by several Cl⁻ ions (and each Cl⁻ by several Na⁺), all attracting it; no Cl⁻ belongs to one particular Na⁺. The formula NaCl gives the 1 : 1 ratio, not a molecule.",
+    "options": [
+     "Right: the attraction extends through the whole array.",
+     "The ratio in Box 3 is 1 : 1, which is correct for NaCl; the problem is the isolated pairs.",
+     "Na⁺ has 10 electrons and Cl⁻ has 18, and Cl⁻ is in fact larger. The drawing gets the sizes right.",
+     "This is the misconception the item targets: ionic compounds do not form discrete molecules."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-solids-8",
+   "type": "numeric",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "ionic-solids-s2",
+   "q": "In Box 1, how many Cl⁻ ions are nearest neighbors of the Na⁺ ion in the second row, second column?",
+   "numeric": {
+    "answer": 4,
+    "tol": 0,
+    "unit": "ions",
+    "decimals": 0
+   },
+   "why": {
+    "correct": "Its four nearest neighbors in the layer are all Cl⁻. In the real three-dimensional solid there is also one above and one below the layer, so each Na⁺ in NaCl has six Cl⁻ neighbors; the diagram shows one layer."
+   }
+  },
+  {
+   "id": "chem-ionic-solids-9",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A crystal of salt shatters when struck with a hammer. Which explanation is best?",
+   "options": [
+    "Salt is held together by weak forces that are easily overcome by a sharp force",
+    "The blow breaks the covalent bonds between the sodium and chlorine atoms",
+    "The blow knocks electrons off the ions, so the crystal is no longer held together",
+    "The blow shifts a layer of ions so that like charges line up and repel"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In the crystal each ion has opposite-charge neighbors. A small shift of one layer brings cations beside cations and anions beside anions; the repulsion pushes the layers apart and the crystal splits. This is why ionic solids are brittle.",
+    "options": [
+     "The attractions in an ionic solid are strong: salt melts at 801 °C. It is brittle because shifting a layer creates repulsion, not because the forces are weak.",
+     "NaCl is held by ionic bonds between ions, not by covalent bonds.",
+     "The ions keep their electrons; the crystal splits because of how the ions are rearranged.",
+     "Right: like charges line up and repel."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-solids-10",
+   "type": "multi",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Calcium bromide, CaBr₂, is an ionic compound. Which samples conduct electricity? Select all that apply.",
+   "options": [
+    "Solid CaBr₂ at room temperature",
+    "Molten (melted) CaBr₂",
+    "CaBr₂ dissolved in water",
+    "A dry crystal of CaBr₂ after it is ground to powder"
+   ],
+   "correct": [
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Ions carry the charge, so the compound conducts only when its ions are free to move: melted, or dissolved in water.",
+    "options": [
+     "In the solid the ions are locked in the lattice, so no charge can flow.",
+     "Right: melting frees the ions to move.",
+     "Right: in water the ions separate and move independently.",
+     "A powder is still made of tiny solid crystals; the ions are still fixed."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-solids-11",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which description fits an ionic solid?",
+   "options": [
+    "Separate molecules, each one made of a single cation stuck to one anion",
+    "A repeating 3-D array of cations and anions, each next to opposite charges",
+    "Metal cations in a sea of electrons that move through the whole solid",
+    "Atoms joined by shared pairs of electrons into a single large molecule"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An ionic solid is a lattice of alternating cations and anions held by Coulombic attraction throughout.",
+    "options": [
+     "Ionic compounds do not form discrete molecules; the formula only gives the ratio of ions.",
+     "Right: the definition of an ionic solid.",
+     "That describes a metal.",
+     "That describes a solid held together by covalent bonds, a different kind of solid."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-solids-12",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which compound is expected to have the largest lattice energy?",
+   "options": [
+    "MgCl₂",
+    "Al₂O₃",
+    "NaBr",
+    "KI"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Al³⁺ (3+) and O²⁻ (2−) give the largest charge product, and both ions are small. Coulomb's law predicts the strongest attraction; aluminum oxide melts above 2000 °C.",
+    "options": [
+     "Mg²⁺ has a 2+ charge, but Cl⁻ is only 1− and larger than O²⁻.",
+     "Right: the highest charges with small ions.",
+     "Both ions are singly charged, and Br⁻ is large.",
+     "Both ions are singly charged and both are large, so KI has the smallest lattice energy of the four."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-solids-13",
+   "type": "predict",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Compare lithium fluoride (LiF) with cesium fluoride (CsF). Going from LiF to CsF, predict the change in each quantity.",
+   "variables": [
+    {
+     "name": "Distance between cation and anion centers",
+     "answer": "up",
+     "why": "Cs⁺ has its outermost electrons in the fifth shell, Li⁺ in the first, so Cs⁺ is far larger and the ion centers sit farther apart."
+    },
+    {
+     "name": "Lattice energy",
+     "answer": "down",
+     "why": "Same charges, larger distance: by Coulomb's law the attraction, and so the lattice energy, decrease."
+    },
+    {
+     "name": "Charge on the cation",
+     "answer": "none",
+     "why": "Li and Cs are both in group 1 and form 1+ ions."
+    }
+   ],
+   "why": {
+    "correct": "Going down group 1 the cation grows while its charge stays 1+, so the attraction to F⁻ weakens. LiF melts at about 850 °C, CsF at about 680 °C."
+   }
+  },
+  {
+   "id": "chem-ionic-solids-14",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does an ionic solid such as NaCl have a high melting temperature?",
+   "options": [
+    "Ionic solids are dense, and a denser solid needs more heat to melt",
+    "Each Na–Cl molecule is held together by a very strong covalent bond",
+    "The electrons moving through the solid hold the ions firmly in place",
+    "Each ion is held by many oppositely charged neighbors at once"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "To melt, ions must leave their fixed places. Each ion is held by strong Coulombic attraction to several neighbors throughout the lattice, so a lot of energy is needed.",
+    "options": [
+     "Density does not explain melting temperature; the strength of the attraction between the particles does.",
+     "NaCl has ionic bonds between ions in a lattice, not covalent bonds within molecules.",
+     "Free-moving electrons describe a metal; the electrons in NaCl stay on their ions.",
+     "Right: many strong attractions in every direction."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-solids-15",
+   "type": "numeric",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 3,
+   "q": "Use Coulomb's law (F ∝ q₁q₂/r²) to find how many times stronger the attraction between neighboring ions is in CaO (centers 240 pm apart) than in KCl (centers 315 pm apart).",
+   "numeric": {
+    "answer": 6.89,
+    "tol": 0.02,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 5.25,
+      "tol": 0.02,
+      "why": "Value: you divided by r instead of r². The force falls with the square of the distance."
+     },
+     {
+      "value": 4,
+      "tol": 0.02,
+      "why": "Value: you compared the charges only. The CaO ions are also closer, which makes the attraction stronger still."
+     },
+     {
+      "value": 2.32,
+      "tol": 0.02,
+      "why": "Value: the distance ratio is upside down. The closer pair (CaO) attracts more, so use (315/240)²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Ratio = (2 × 2 / 240²) ÷ (1 × 1 / 315²) = 4 × (315/240)² = 4 × 1.7227 = 6.89."
+   }
+  },
+  {
+   "id": "chem-ionic-solids-16",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "ionic-solids",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which property is expected for solid potassium iodide, KI?",
+   "options": [
+    "It is hard and brittle and does not conduct as a solid",
+    "It bends without breaking and conducts electricity as a solid",
+    "It is soft and it melts at a temperature below 25 °C",
+    "It conducts electricity as a solid but not when melted"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "KI is ionic: strong attractions make it hard with a high melting temperature, a shifted layer makes it brittle, and fixed ions mean no conduction until it melts or dissolves.",
+    "options": [
+     "Right: the typical ionic-solid properties.",
+     "Bending and conducting as a solid are properties of metals.",
+     "Strong attractions between ions give ionic solids high melting temperatures (KI melts at 681 °C).",
+     "It is the other way round: the melted salt conducts because its ions can move."
+    ]
+   }
+  }
+ ]
+}

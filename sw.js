@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v58';
+const CACHE_NAME = 'levlprep-v60';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -194,6 +194,21 @@ COURSE_URLS.bio = [
   'bio/assets/bio-questions.js',
   'bio/assets/bio-nav.js',
   'bio/assets/glossary.json',
+];
+COURSE_URLS.chem = [
+  // The AP® Chemistry shell (key apchem, folder chem), the same files as Biology.
+  'chem/index.html',
+  'chem/learn.html',
+  'chem/search.html',
+  'chem/tools.html',
+  'chem/dashboard.html',
+  'chem/manifest.json',
+  'chem/assets/chem.css',
+  'chem/assets/chem-curriculum.js',
+  'chem/assets/chem-core.js',
+  'chem/assets/chem-questions.js',
+  'chem/assets/chem-nav.js',
+  'chem/assets/glossary.json',
 ];
 
 // The question bank is 2.3 MB across its two files — an order of magnitude

@@ -1,0 +1,85 @@
+{
+ "topic": "periodic-trends",
+ "hook": "The periodic table looks like a grid of boxes, but it is really a map of how strongly atoms hold their electrons. Read it left to right or top to bottom and sizes, ionization energies and reactivity change in steady, predictable patterns. One law, Coulomb's, explains every one of them.",
+ "prereq": [
+  {
+   "q": "How many valence electrons does chlorine, [Ne] 3s² 3p⁵, have?",
+   "options": [
+    "7",
+    "5",
+    "17",
+    "2"
+   ],
+   "correct": 0,
+   "why": "Valence electrons are in the outermost shell, n = 3: 2 + 5 = 7.",
+   "review": "electron-configuration"
+  },
+  {
+   "q": "How do core electrons affect the attraction a valence electron feels?",
+   "options": [
+    "They shield it, so it feels less of the nuclear charge",
+    "They add to the nuclear charge",
+    "They have no effect",
+    "They pull the valence electron inward"
+   ],
+   "correct": 0,
+   "why": "Core electrons repel the valence electron and partly cancel the nucleus's pull.",
+   "review": "electron-configuration"
+  },
+  {
+   "q": "In photoelectron spectroscopy, which peak belongs to the valence electrons?",
+   "options": [
+    "The one with the lowest binding energy",
+    "The tallest one",
+    "The one with the highest binding energy",
+    "The first one to appear"
+   ],
+   "correct": 0,
+   "why": "Valence electrons are held most loosely, so they have the lowest binding energy.",
+   "review": "photoelectron-spectroscopy"
+  }
+ ],
+ "figure": {
+  "figure": "periodic-trends-arrows",
+  "caption": "Across a period, atoms shrink and hold electrons more tightly; down a group, they grow and hold valence electrons less tightly."
+ },
+ "chain": [
+  {
+   "cause": "Across a period, protons are added while the core electrons stay the same",
+   "effect": "the effective nuclear charge on the valence electrons rises"
+  },
+  {
+   "cause": "A larger effective nuclear charge at about the same shell",
+   "effect": "pulls the valence electrons closer: smaller radius, higher ionization energy and electronegativity"
+  },
+  {
+   "cause": "Down a group, each element adds a shell",
+   "effect": "valence electrons are farther out and behind more core electrons"
+  },
+  {
+   "cause": "Greater distance and more shielding outweigh the added protons",
+   "effect": "radius rises and ionization energy and electronegativity fall"
+  }
+ ],
+ "ideas": [
+  "<b>Effective nuclear charge</b>: the pull a valence electron feels, about protons minus core electrons. It rises across a <b>period</b> and stays similar down a <b>group</b>.",
+  "<b>Atomic radius</b> falls across a period and rises down a group. Cations are smaller than their atoms; anions larger (<b>ionic radius</b>).",
+  "<b>Ionization energy</b> and <b>electronegativity</b> rise across and fall down. Dips: Mg → Al (new 3p subshell), P → S (paired 3p electrons repel).",
+  "<b>Electron affinity</b> is the energy change when an atom gains an electron. <b>Metals</b> (left, middle) hold valence electrons loosely; nonmetals (upper right) tightly."
+ ],
+ "misconception": {
+  "wrong": "Atoms get bigger across a period because they have more protons, electrons and mass.",
+  "right": "Across a period atoms get smaller. The added protons raise the effective nuclear charge while the electrons stay in the same shell, so they are pulled closer. Mass plays no part."
+ },
+ "check": [
+  "chem-periodic-trends-1",
+  "chem-periodic-trends-2",
+  "chem-periodic-trends-3",
+  "chem-periodic-trends-6",
+  "chem-periodic-trends-7",
+  "chem-periodic-trends-8",
+  "chem-periodic-trends-11"
+ ],
+ "summary": "Periodic trends follow from Coulomb's law and shielding. Across a period, rising effective nuclear charge pulls valence electrons closer, so radius falls and ionization energy, electronegativity and electron affinity rise. Down a group, added shells increase distance and shielding, reversing these trends. Explanations name protons, shells and core electrons for both atoms.",
+ "connections": []
+}

@@ -1,0 +1,103 @@
+{
+ "topic": "bond-enthalpies",
+ "hook": "Why does burning methane release so much energy, while splitting water takes so much? You can predict it with a pencil: count the bonds that break, count the bonds that form, and look up how strong each one is. The answer comes out within a few percent of what a calorimeter measures.",
+ "prereq": [
+  {
+   "q": "The bond energy of a covalent bond is",
+   "options": [
+    "the energy needed to break it",
+    "the energy released when it breaks",
+    "the mass of the bond",
+    "the length of the bond"
+   ],
+   "correct": 0,
+   "why": "It is the depth of the potential energy well: the energy needed to pull the bonded atoms apart.",
+   "review": "bond-potential-energy"
+  },
+  {
+   "q": "How many bonds are in one CO₂ molecule (O=C=O)?",
+   "options": [
+    "Two C=O double bonds",
+    "Two C–O single bonds",
+    "One C=O double bond",
+    "Three bonds"
+   ],
+   "correct": 0,
+   "why": "The Lewis structure has carbon double-bonded to each oxygen.",
+   "review": "lewis-diagrams"
+  },
+  {
+   "q": "ΔH for a thermochemical equation is per",
+   "options": [
+    "mole of reaction as written",
+    "gram of product",
+    "molecule",
+    "mole of each substance"
+   ],
+   "correct": 0,
+   "why": "It goes with the coefficients exactly as written.",
+   "review": "enthalpy-of-reaction"
+  }
+ ],
+ "figure": {
+  "figure": "bond-enthalpy-ladder",
+  "caption": "Breaking the reactant bonds absorbs energy (up); forming the product bonds releases energy (down). The net change is ΔH."
+ },
+ "chain": [
+  {
+   "cause": "Bonded atoms attract each other",
+   "effect": "breaking a bond absorbs energy, its bond enthalpy (always positive)"
+  },
+  {
+   "cause": "Separate atoms are pulled together into a bond",
+   "effect": "forming the bond releases the same amount of energy"
+  },
+  {
+   "cause": "A reaction breaks the reactant bonds and forms the product bonds",
+   "effect": "ΔH ≈ Σ(bonds broken) − Σ(bonds formed)"
+  },
+  {
+   "cause": "Strong bonds form from weak ones",
+   "effect": "more energy is released than absorbed: exothermic"
+  },
+  {
+   "cause": "Table values are averages over many molecules",
+   "effect": "the result is an estimate, close to but not equal to the measured ΔH"
+  }
+ ],
+ "ideas": [
+  "A <b>bond enthalpy</b> is the energy needed to break 1 mol of a bond in gas-phase molecules; it is always positive.",
+  "ΔH ≈ Σ(bonds broken) − Σ(bonds formed). Broken first; this is not \"products minus reactants\".",
+  "Draw the structures and count every bond, including coefficients: 2 O₂ means 2 O=O.",
+  "Multiple bonds are stronger than single bonds between the same atoms.",
+  "Average values make the answer an estimate; it is meant for gas-phase reactions."
+ ],
+ "misconception": {
+  "wrong": "Energy is stored in chemical bonds and released when the bonds break.",
+  "right": "Breaking a bond always absorbs energy. Energy is released when bonds form; a reaction is exothermic when the bonds formed are stronger overall than those broken."
+ },
+ "check": [
+  "chem-bond-enthalpies-1",
+  "chem-bond-enthalpies-2",
+  "chem-bond-enthalpies-3",
+  "chem-bond-enthalpies-4",
+  "chem-bond-enthalpies-10",
+  "chem-bond-enthalpies-14",
+  "chem-bond-enthalpies-15"
+ ],
+ "summary": "Bond enthalpies give an estimate of ΔH: add the bond enthalpies of the bonds broken, then subtract those of the bonds formed. Breaking bonds absorbs energy and forming them releases it, so a reaction that forms stronger bonds than it breaks is exothermic.",
+ "connections": [
+  {
+   "href": "../notes/bond-potential-energy.html",
+   "label": "Back: bond energy and the potential energy curve (2.2)"
+  },
+  {
+   "href": "../notes/lewis-diagrams.html",
+   "label": "Back: counting bonds in Lewis diagrams (2.5)"
+  },
+  {
+   "href": "../notes/enthalpy-of-formation.html",
+   "label": "Next: ΔH from enthalpies of formation (6.8)"
+  }
+ ]
+}

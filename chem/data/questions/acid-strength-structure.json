@@ -1,0 +1,551 @@
+{
+ "stimuli": {
+  "acid-strength-structure-s1": {
+   "kind": "table",
+   "title": "Acetic acid and three substituted versions",
+   "text": "<p>Each acid loses the H on its –COOH group. In the substituted acids, one or two H atoms on the CH₃ carbon are replaced by halogen atoms.</p>",
+   "table": {
+    "caption": "Ka at 25 °C",
+    "cols": [
+     "Acid",
+     "Condensed formula",
+     "Ka"
+    ],
+    "rows": [
+     [
+      "Acetic acid",
+      "CH₃COOH",
+      "1.8 × 10⁻⁵"
+     ],
+     [
+      "Chloroacetic acid",
+      "ClCH₂COOH",
+      "1.4 × 10⁻³"
+     ],
+     [
+      "Dichloroacetic acid",
+      "Cl₂CHCOOH",
+      "5.5 × 10⁻²"
+     ],
+     [
+      "Fluoroacetic acid",
+      "FCH₂COOH",
+      "2.6 × 10⁻³"
+     ]
+    ]
+   }
+  },
+  "acid-strength-structure-s2": {
+   "kind": "table",
+   "title": "Oxyacids of chlorine and the halogens",
+   "text": "<p>In every acid below the acidic H is bonded to an O atom, and that O is bonded to the central atom (H–O–X). Electronegativity values are on the Pauling scale.</p>",
+   "table": {
+    "caption": "Structure, electronegativity of the central atom, and Ka at 25 °C",
+    "cols": [
+     "Acid",
+     "Structure",
+     "Central atom electronegativity",
+     "Ka"
+    ],
+    "rows": [
+     [
+      "HOCl",
+      "H–O–Cl",
+      "3.2",
+      "3.0 × 10⁻⁸"
+     ],
+     [
+      "HOClO",
+      "H–O–Cl–O",
+      "3.2",
+      "1.1 × 10⁻²"
+     ],
+     [
+      "HOBr",
+      "H–O–Br",
+      "3.0",
+      "2.0 × 10⁻⁹"
+     ],
+     [
+      "HOI",
+      "H–O–I",
+      "2.7",
+      "2.3 × 10⁻¹¹"
+     ]
+    ]
+   }
+  },
+  "acid-strength-structure-s3": {
+   "kind": "model",
+   "title": "Three organic molecules",
+   "html": "<p>Ethanol, CH₃CH₂–O–H: Ka ≈ 1 × 10⁻¹⁶.</p><p>Acetic acid, CH₃–C(=O)–O–H: Ka = 1.8 × 10⁻⁵.</p><p>Methylamine, CH₃–NH₂ (N has one lone pair): Kb = 4.4 × 10⁻⁴.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-acid-strength-structure-1",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acid-strength-structure-s1",
+   "q": "Why is chloroacetic acid a stronger acid than acetic acid?",
+   "options": [
+    "Electronegative Cl draws electron density away and stabilizes the conjugate base",
+    "The Cl atom gives the molecule a second acidic hydrogen atom that can ionize too",
+    "Chloroacetic acid has a larger molar mass, so its O–H bond is longer",
+    "The Cl atom makes the C=O bond into a single bond, which releases the proton"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An electron-withdrawing Cl two carbons away draws electron density from the –COO⁻ group, so the negative charge of ClCH₂COO⁻ is less concentrated and the ion is more stable. A more stable conjugate base means a larger Ka.",
+    "options": [
+     "Right: electron withdrawal stabilizes the conjugate base.",
+     "The acidic H is still the one on –COOH; Cl replaces a C–H hydrogen, which is not acidic.",
+     "Molar mass does not set acid strength; the effect comes from electronegativity.",
+     "The C=O bond is still there; Cl changes electron density, not the bonding pattern."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-2",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-strength-structure-s1",
+   "q": "Fluoroacetic acid has a larger Ka than chloroacetic acid. What does this show?",
+   "options": [
+    "A more electronegative substituent gives a stronger acid",
+    "A larger halogen atom in the same position gives a stronger acid",
+    "The H–F bond in fluoroacetic acid ionizes",
+    "Fluorine adds extra resonance structures to the conjugate base"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "F (electronegativity 4.0) pulls harder than Cl (3.2), so FCH₂COO⁻ is more stabilized and FCH₂COOH ionizes more.",
+    "options": [
+     "Right: the stronger the pull, the more stable the anion.",
+     "F is smaller than Cl, yet its acid is stronger, so size is not the cause here.",
+     "There is no H–F bond: F is bonded to carbon, and the acidic H is on –COOH.",
+     "F does not create new resonance forms of the carboxylate; its effect is a pull through the bonds."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-3",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "acid-strength-structure-s1",
+   "q": "What is the pH of 0.10 M chloroacetic acid? (Check the small-x assumption.)",
+   "numeric": {
+    "answer": 1.95,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 1.93,
+      "why": "Value: the small-x shortcut gives x as 12% of 0.10, over the 5% limit. Solve x² + Ka·x − Ka·C = 0.",
+      "tol": 0.005
+     },
+     {
+      "value": 1,
+      "why": "Value: chloroacetic acid is stronger than acetic acid but still weak (Ka ≪ 1); it does not ionize fully.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "Small x: √(1.4 × 10⁻³ × 0.10) = 1.2 × 10⁻² M, 12% of 0.10, too large. Quadratic: x² + (1.4 × 10⁻³)x − 1.4 × 10⁻⁴ = 0 gives x = 1.12 × 10⁻² M; pH = 1.95."
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-4",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-strength-structure-s1",
+   "q": "Trichloroacetic acid, Cl₃CCOOH, is not in the table. Which Ka is most consistent with the trend?",
+   "options": [
+    "2.2 × 10⁻¹",
+    "5.5 × 10⁻²",
+    "1.4 × 10⁻³",
+    "1.8 × 10⁻⁷"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each Cl added pulls more electron density from the carboxylate, so Ka rises with every substitution: 1.8 × 10⁻⁵ → 1.4 × 10⁻³ → 5.5 × 10⁻² → larger still for three.",
+    "options": [
+     "Right: three Cl atoms, the largest Ka of the series.",
+     "That is the value for two Cl atoms; a third Cl should increase it.",
+     "That is the value for one Cl atom.",
+     "This would make it weaker than acetic acid, against the trend."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-5",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acid-strength-structure-s1",
+   "q": "Which conjugate base is the strongest base?",
+   "options": [
+    "CH₃COO⁻",
+    "ClCH₂COO⁻",
+    "Cl₂CHCOO⁻",
+    "FCH₂COO⁻"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Kb = Kw/Ka, so the weakest acid (acetic acid, smallest Ka) has the strongest conjugate base. Its negative charge is the least stabilized, so it holds a proton most readily.",
+    "options": [
+     "Right: smallest Ka, largest Kb.",
+     "Chloroacetate is stabilized by the Cl, so it is a weaker base than acetate.",
+     "With two Cl atoms its charge is the most spread out: the weakest base here.",
+     "Fluoroacetate is stabilized even more than chloroacetate."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-6",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acid-strength-structure-s2",
+   "q": "Which two acids in the table isolate the effect of the central atom's electronegativity?",
+   "options": [
+    "HOCl and HOBr",
+    "HOCl and HOClO",
+    "HOClO and HOI",
+    "HOBr and HOClO"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "HOCl and HOBr have the same structure (H–O–X, no extra O), so the only difference is the central atom.",
+    "options": [
+     "Right: same structure, different central atom.",
+     "These share the central atom; they isolate the number of O atoms.",
+     "These differ in both the central atom and the number of O atoms.",
+     "These differ in both the central atom and the number of O atoms."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-7",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-strength-structure-s2",
+   "q": "Why is HOClO a much stronger acid than HOCl?",
+   "options": [
+    "In ClO₂⁻ the negative charge is spread over two O atoms",
+    "HOClO has two acidic hydrogen atoms that can both ionize",
+    "The extra O atom makes the O–H bond shorter and stronger",
+    "Cl has a higher electronegativity in HOClO than in HOCl"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In ClO₂⁻ the negative charge is shared between two O atoms (two resonance forms), and the extra O pulls electron density from the O–H bond. Both make the conjugate base more stable and the acid stronger.",
+    "options": [
+     "Right: more O, a more stable conjugate base.",
+     "HOClO has one H, bonded to O; it is monoprotic.",
+     "The extra O weakens the O–H bond by pulling electron density away from it.",
+     "Electronegativity is a property of the element; Cl is the same atom in both."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-8",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-strength-structure-s2",
+   "q": "Based on the table, how does acid strength change from HOCl to HOBr to HOI, and why?",
+   "options": [
+    "It decreases, because a less electronegative central atom pulls less electron density from the O–H bond",
+    "It increases, because larger atoms hold the H more weakly",
+    "It decreases, because the O–H bond gets shorter",
+    "It stays the same, because each acid has one O atom"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ka falls from 3.0 × 10⁻⁸ to 2.0 × 10⁻⁹ to 2.3 × 10⁻¹¹ as the central atom's electronegativity falls from 3.2 to 2.7. A weaker pull leaves more electron density in the O–H bond and on the O of the anion, so the anion is less stable.",
+    "options": [
+     "Right: the Ka data match the electronegativity order.",
+     "In oxyacids the H is on O, not on the halogen, so the halogen's size is not the deciding factor; the data show the acids getting weaker.",
+     "The O–H bond length barely changes; the trend follows electronegativity.",
+     "The Ka values span three powers of ten, so strength is not the same."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-9",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "acid-strength-structure-s2",
+   "q": "What is the pH of 0.20 M NaOBr?",
+   "numeric": {
+    "answer": 11,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 4.7,
+      "why": "Value: OBr⁻ is a base. Use Kb = Kw/Ka of HOBr to find [OH⁻].",
+      "tol": 0.02
+     },
+     {
+      "value": 3,
+      "why": "Value: that is the pOH; subtract from 14.00.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "OBr⁻ + H₂O ⇌ HOBr + OH⁻; Kb = 1.0 × 10⁻¹⁴ / 2.0 × 10⁻⁹ = 5.0 × 10⁻⁶. [OH⁻] = √(5.0 × 10⁻⁶ × 0.20) = 1.0 × 10⁻³ M; pOH = 3.00; pH = 11.00."
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-10",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-strength-structure-s3",
+   "q": "Both ethanol and acetic acid have an O–H group. Why is acetic acid about 10¹¹ times stronger?",
+   "options": [
+    "Resonance spreads the charge of acetate over two O atoms",
+    "Acetic acid has more hydrogen atoms",
+    "Ethanol is a liquid at room temperature, so its O–H bond holds",
+    "Ethanol forms hydrogen bonds with water and acetic acid does not"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "CH₃COO⁻ has two equivalent resonance structures, each O carrying the charge half the time. CH₃CH₂O⁻ has no such spreading, so it is far less stable and ethanol barely ionizes.",
+    "options": [
+     "Right: resonance delocalizes the charge of the carboxylate.",
+     "Only one H, on the –COOH group, is acidic; the C–H hydrogens are not.",
+     "Acetic acid is also a liquid at room temperature; the state is not the cause.",
+     "Both molecules hydrogen-bond with water."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-11",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acid-strength-structure-s3",
+   "q": "When methylamine acts as a base in water, which atom accepts the proton?",
+   "options": [
+    "The N atom, using its lone pair",
+    "The C atom, which has four bonds",
+    "An H atom on the N",
+    "The C atom, using a lone pair"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A Brønsted-Lowry base needs a lone pair to bond to H⁺. The N lone pair forms the new N–H bond: CH₃NH₂ + H₂O ⇌ CH₃NH₃⁺ + OH⁻.",
+    "options": [
+     "Right: the nitrogen lone pair.",
+     "Carbon has four bonds and no lone pair, so it cannot accept a proton here.",
+     "An H atom cannot accept another proton; the new bond forms to N.",
+     "The carbon in methylamine has no lone pair."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-12",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "acid-strength-structure-s3",
+   "q": "What is the pH of 0.050 M methylamine?",
+   "numeric": {
+    "answer": 11.65,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 11.67,
+      "why": "Value: the small-x estimate is 9% of 0.050, over 5%. Solve the quadratic for [OH⁻].",
+      "tol": 0.005
+     },
+     {
+      "value": 2.35,
+      "why": "Value: that is the pOH; subtract from 14.00.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "Kb = x²/(0.050 − x) = 4.4 × 10⁻⁴. Small x gives 4.7 × 10⁻³ M, 9% of 0.050, so solve x² + (4.4 × 10⁻⁴)x − 2.2 × 10⁻⁵ = 0: x = [OH⁻] = 4.48 × 10⁻³ M. pOH = 2.349; pH = 11.65."
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-13",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acid-strength-structure-s3",
+   "q": "A molecule has both a –COOH group and an –NH₂ group. In a strongly acidic solution, where is the extra proton most likely to be found?",
+   "options": [
+    "On the N of the –NH₂ group, giving –NH₃⁺",
+    "On the C=O carbon of the –COOH group",
+    "On a C–H carbon",
+    "On the O–H oxygen, which then loses water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The amine N has a lone pair and is the basic site, so in strong acid it becomes –NH₃⁺. The –COOH group stays un-ionized.",
+    "options": [
+     "Right: the amine nitrogen is the basic site.",
+     "A carbon with four bonds has no lone pair to accept H⁺.",
+     "Carbon atoms with C–H bonds have no lone pairs.",
+     "The –COOH oxygen is not the basic site here; the amine N, with its lone pair, is a far stronger base and takes the proton."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-14",
+   "type": "order",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Rank these acids from weakest to strongest: H₂O, H₂S, H₂Se. (Bond enthalpies: O–H 463, S–H 363, Se–H 276 kJ/mol.)",
+   "options": [
+    "H₂O",
+    "H₂S",
+    "H₂Se"
+   ],
+   "why": {
+    "correct": "Down a group, the central atom gets larger, the bond to H gets longer and weaker, and the negative charge of the anion is spread over a larger volume. So H₂Se gives up H⁺ most readily. (Here bond strength wins over electronegativity, which falls down the group.)"
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-15",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "HCl, HBr and HI are all strong in water, but HF is weak. Which factor best explains why HF holds its proton?",
+   "options": [
+    "The H–F bond is short and strong, and F⁻ is small",
+    "F is the least electronegative halogen",
+    "HF molecules are nonpolar",
+    "F⁻ is the conjugate base of a strong acid, so it holds H⁺"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "F is a small atom, so the H–F bond is short and strong (567 kJ/mol), and F⁻ holds its charge in a tiny volume. Both oppose giving up H⁺, so HF is the one weak hydrohalic acid.",
+    "options": [
+     "Right: bond strength and the small anion.",
+     "F is the most electronegative element.",
+     "H–F is very polar; polarity alone would suggest a strong acid, which is why bond strength matters here.",
+     "F⁻ is the conjugate base of a weak acid; that is the point to explain."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-16",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Across period 2, the acidity of CH₄, NH₃, H₂O and HF increases. Which property explains this trend?",
+   "options": [
+    "The electronegativity of the atom bonded to H",
+    "The number of H atoms in each molecule",
+    "The size of the central atom",
+    "The molar mass of each compound"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Across a period the atoms are similar in size, so electronegativity wins: a more electronegative atom makes the X–H bond more polar and holds the negative charge of X⁻ more easily.",
+    "options": [
+     "Right: electronegativity rises from C to F.",
+     "Fewer H atoms do not cause a stronger acid; this is a coincidence of these formulas.",
+     "Across a period, atoms get slightly smaller, not larger.",
+     "Molar mass barely changes and is not the cause."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-strength-structure-17",
+   "type": "multi",
+   "unit": "unit-8",
+   "topic": "acid-strength-structure",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which changes make an acid HA stronger? Select all that apply.",
+   "options": [
+    "Adding resonance structures that spread the charge of A⁻",
+    "Placing an electronegative atom near the acidic H",
+    "Replacing the O–H with a C–H at the same position",
+    "Making the conjugate base less stable"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Anything that stabilizes A⁻ (spreading its charge by resonance or pulling electron density with an electronegative atom) shifts HA + H₂O ⇌ H₃O⁺ + A⁻ to the right.",
+    "options": [
+     "Right: delocalized charge, a more stable anion.",
+     "Right: electron withdrawal stabilizes A⁻.",
+     "C is less electronegative than O; C–H bonds are far less acidic.",
+     "A less stable conjugate base means a weaker acid."
+    ]
+   }
+  }
+ ]
+}

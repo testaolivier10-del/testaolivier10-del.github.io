@@ -1,0 +1,5 @@
+{
+ "hess-law": {
+  "def": "Because enthalpy is a state function (it depends only on the start and end states, not the route), the ΔH of a reaction equals the sum of the ΔH values of any steps that add up to it."
+ }
+}

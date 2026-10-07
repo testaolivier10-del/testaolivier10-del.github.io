@@ -1,0 +1,12 @@
+{
+ "weak-acid-titration-curve": {
+  "file": "figures/weak-acid-titration-curve.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Titration curve for 25.00 mL of 0.100 M weak acid (Ka = 1.8 × 10⁻⁵) with 0.100 M NaOH. pH starts at 2.88, rises slowly through the shaded buffer region, equals pKa 4.74 at the half-equivalence point (12.50 mL), jumps steeply to the equivalence point at 25.00 mL (pH 8.72, above 7) and levels off near 12.5 with excess hydroxide."
+ }
+}

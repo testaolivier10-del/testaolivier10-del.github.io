@@ -1,0 +1,533 @@
+{
+ "stimuli": {
+  "q-and-k-s1": {
+   "kind": "table",
+   "title": "Four mixtures of SO₂, O₂ and SO₃",
+   "text": "<p>For 2 SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2 SO<sub>3</sub>(g), K<sub>c</sub> = 2.80 × 10<sup>2</sup> at a certain temperature. Four sealed flasks are prepared at that temperature with the starting concentrations below.</p>",
+   "table": {
+    "caption": "Starting concentrations in each flask",
+    "cols": [
+     "Flask",
+     "[SO<sub>2</sub>] (M)",
+     "[O<sub>2</sub>] (M)",
+     "[SO<sub>3</sub>] (M)"
+    ],
+    "rows": [
+     [
+      "1",
+      "0.100",
+      "0.0500",
+      "0.200"
+     ],
+     [
+      "2",
+      "0.0200",
+      "0.0400",
+      "0.0800"
+     ],
+     [
+      "3",
+      "0.0500",
+      "0.0200",
+      "0.118"
+     ],
+     [
+      "4",
+      "0.300",
+      "0.100",
+      "0"
+     ]
+    ]
+   }
+  },
+  "q-and-k-s2": {
+   "kind": "setup",
+   "title": "Making ammonia at high pressure",
+   "text": "<p>Ammonia forms from nitrogen and hydrogen: N<sub>2</sub>(g) + 3 H<sub>2</sub>(g) ⇌ 2 NH<sub>3</sub>(g). At the temperature of a reactor, K<sub>p</sub> = 1.5 × 10<sup>−5</sup>. At one moment the gas in the reactor has these partial pressures: N<sub>2</sub>, 10.0 atm; H<sub>2</sub>, 30.0 atm; NH<sub>3</sub>, 1.50 atm.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-q-and-k-1",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "q-and-k-s1",
+   "q": "Calculate the reaction quotient, Q<sub>c</sub>, for flask 1.",
+   "numeric": {
+    "answer": 80,
+    "tol": 0.1,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 40,
+      "rel": 0.02,
+      "why": "Value: you left out the exponents. Each concentration is raised to the power of its coefficient: [SO₃]² and [SO₂]²."
+     },
+     {
+      "value": 0.0125,
+      "rel": 0.02,
+      "why": "Value: you put the reactants on top. Q is products over reactants, just like K."
+     },
+     {
+      "value": 8,
+      "rel": 0.02,
+      "why": "Value: you squared [SO₃] but not [SO₂]. Its coefficient is also 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Q<sub>c</sub> = [SO₃]² / ([SO₂]²[O₂]) = (0.200)² / ((0.100)² × 0.0500) = 0.0400 / 0.000500 = 80.0."
+   }
+  },
+  {
+   "id": "chem-q-and-k-2",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "q-and-k-s1",
+   "q": "For flask 2, Q<sub>c</sub> = 400. Which way does the net reaction go as flask 2 approaches equilibrium?",
+   "options": [
+    "In reverse, because Q &gt; K: there is too much product for equilibrium.",
+    "Forward, because Q &gt; K means the forward reaction is faster.",
+    "Forward, because flask 2 holds more SO<sub>3</sub> than SO<sub>2</sub>.",
+    "No net reaction, because Q and K are both greater than 1."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Compare Q with K. If Q > K, the mixture has too many products relative to reactants, so the net reaction goes in reverse, lowering Q until Q = K.",
+    "options": [
+     "Right: Q = 400 > K = 280. To lower Q, products must turn back into reactants until Q = K.",
+     "This flips the rule. Q > K means the ratio of products to reactants is already too high, so the net reaction runs in reverse.",
+     "Direction comes from comparing Q with K, not from comparing amounts in the flask.",
+     "Being on the same side of 1 means nothing. The flask is at equilibrium only when Q equals K."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-k-3",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "single",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "q-and-k-s1",
+   "q": "Which flask is already at equilibrium when it is prepared?",
+   "options": [
+    "Flask 3",
+    "Flask 1",
+    "Flask 2",
+    "Flask 4"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A mixture is at equilibrium when Q = K. Only flask 3 has Q ≈ 280.",
+    "options": [
+     "Right: Q = (0.118)² / ((0.0500)² × 0.0200) = 278, equal to K = 280 within the precision of the data.",
+     "Q = 80.0 for flask 1, well below K, so it will react forward.",
+     "Q = 400 for flask 2, above K, so it will react in reverse.",
+     "Flask 4 has no SO₃, so Q = 0. It can only react forward."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-k-4",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "single",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 1,
+   "stimulus": "q-and-k-s1",
+   "q": "What happens in flask 4 after it is prepared?",
+   "options": [
+    "SO<sub>3</sub> forms, because Q = 0 is less than K.",
+    "Nothing, because there is no SO<sub>3</sub> to react.",
+    "SO<sub>2</sub> forms, because Q is less than K.",
+    "Q is undefined, because [SO<sub>3</sub>] is zero."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A mixture with reactants and no products has Q = 0, which is smaller than any K, so it reacts forward.",
+    "options": [
+     "Right: with no product, Q = 0 < K, so the net reaction must go forward.",
+     "The forward reaction needs SO₂ and O₂, which are present. Only the reverse reaction lacks a reactant.",
+     "Q < K means net forward, which uses SO₂. It cannot form SO₂.",
+     "Q can be calculated: zero on top gives Q = 0. Only a zero on the bottom would be a problem."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-k-5",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "q-and-k-s1",
+   "q": "A student says flask 1 will react in reverse because it contains the most SO<sub>3</sub>. Which response is best?",
+   "options": [
+    "Disagree: Q = 80.0 is less than K, so flask 1 reacts forward and makes more SO<sub>3</sub>.",
+    "Agree: the flask with the most product reacts in reverse.",
+    "Disagree: flask 1 is at equilibrium because it has more SO<sub>3</sub> than SO<sub>2</sub>.",
+    "Agree: Q = 80.0 is greater than 1, so the net reaction goes in reverse."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The ratio, not a single concentration, decides direction. Flask 1 has Q = 80.0 < K = 280, so more SO₃ forms until Q = K.",
+    "options": [
+     "Right: the comparison that matters is Q with K, and Q is below K.",
+     "The amount of product alone does not decide direction. What matters is the whole ratio Q compared with K.",
+     "Q = 80.0 is not 280, so flask 1 is not at equilibrium.",
+     "Q is compared with K, not with 1. Here Q < K, so the net reaction goes forward."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-k-6",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "q-and-k-s2",
+   "q": "Which expression is K<sub>p</sub> for this reaction?",
+   "options": [
+    "P<sub>NH₃</sub><sup>2</sup> / (P<sub>N₂</sub> × P<sub>H₂</sub><sup>3</sup>)",
+    "[NH<sub>3</sub>]<sup>2</sup> / ([N<sub>2</sub>][H<sub>2</sub>]<sup>3</sup>)",
+    "2 P<sub>NH₃</sub> / (P<sub>N₂</sub> × 3 P<sub>H₂</sub>)",
+    "(P<sub>N₂</sub> × P<sub>H₂</sub><sup>3</sup>) / P<sub>NH₃</sub><sup>2</sup>"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K<sub>p</sub> has the same form as K<sub>c</sub>, with partial pressures in place of concentrations: products over reactants, each to the power of its coefficient.",
+    "options": [
+     "Right: partial pressures of products over reactants, each raised to its coefficient.",
+     "This is K<sub>c</sub>. Square brackets mean molar concentrations; K<sub>p</sub> uses partial pressures.",
+     "Coefficients become exponents, not multipliers.",
+     "This is upside down: products go on top."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-k-7",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "q-and-k-s2",
+   "q": "Calculate Q<sub>p</sub> for the gas in the reactor at that moment.",
+   "numeric": {
+    "answer": 0.00000833,
+    "tol": 1e-8,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.0075,
+      "rel": 0.02,
+      "why": "Value: you did not cube the pressure of H₂. Its coefficient is 3."
+     },
+     {
+      "value": 0.005,
+      "rel": 0.02,
+      "why": "Value: you left out the exponents. Raise each pressure to the power of its coefficient."
+     },
+     {
+      "value": 120000,
+      "rel": 0.02,
+      "why": "Value: you inverted the expression. Products go on top."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Q<sub>p</sub> = P<sub>NH₃</sub>² / (P<sub>N₂</sub> × P<sub>H₂</sub>³) = (1.50)² / (10.0 × (30.0)³) = 2.25 / 270,000 = 8.33 × 10<sup>−6</sup>."
+   }
+  },
+  {
+   "id": "chem-q-and-k-8",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "q-and-k-s2",
+   "q": "Q<sub>p</sub> for the reactor gas is 8.33 × 10<sup>−6</sup>. What happens to the partial pressure of NH<sub>3</sub> as the gas approaches equilibrium?",
+   "options": [
+    "It increases, because Q<sub>p</sub> &lt; K<sub>p</sub>.",
+    "It decreases, because Q<sub>p</sub> &lt; K<sub>p</sub>.",
+    "It stays the same, because both values are much less than 1.",
+    "It decreases, because there is far more H<sub>2</sub> than NH<sub>3</sub>."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Q<sub>p</sub> < K<sub>p</sub> means too little product for equilibrium, so the net reaction goes forward and P<sub>NH₃</sub> rises until Q<sub>p</sub> = K<sub>p</sub>.",
+    "options": [
+     "Right: 8.33 × 10⁻⁶ < 1.5 × 10⁻⁵, so the net reaction goes forward and makes NH₃.",
+     "Q < K means net forward, which makes NH₃. This mixes up the rule.",
+     "Q and K are compared with each other, not with 1. They differ by almost a factor of 2.",
+     "Direction comes from comparing Q with K, not from which gas has the higher pressure."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-k-9",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "single",
+   "practice": "5.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "q-and-k-s2",
+   "q": "A student calculates Q<sub>p</sub> using the moles of each gas in the reactor in place of the partial pressures. What is wrong with this approach?",
+   "options": [
+    "K<sub>p</sub> uses partial pressures, so Q<sub>p</sub> has to as well.",
+    "Moles are fine, because Q<sub>p</sub> depends on the ratio and not the quantity used.",
+    "Moles are fine, as long as the student uses the coefficients as exponents.",
+    "Q<sub>p</sub> should use the concentrations in brackets, as K<sub>c</sub> does."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Q is only meaningful next to the K of the same form: Q<sub>c</sub> with K<sub>c</sub> (molarities), Q<sub>p</sub> with K<sub>p</sub> (partial pressures in atm).",
+    "options": [
+     "Right: Q and K can only be compared if they are built from the same kind of quantity.",
+     "With exponents that do not cancel (2 on top, 4 in total on the bottom), changing the quantity changes the value of Q.",
+     "The exponents are right, but moles are not pressures. The result cannot be compared with K<sub>p</sub>.",
+     "Concentrations belong in Q<sub>c</sub>, compared with K<sub>c</sub>. For K<sub>p</sub>, use partial pressures without brackets."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-k-10",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is the equilibrium constant expression for CaCO<sub>3</sub>(s) ⇌ CaO(s) + CO<sub>2</sub>(g)?",
+   "options": [
+    "K<sub>c</sub> = [CO<sub>2</sub>]",
+    "K<sub>c</sub> = [CaO][CO<sub>2</sub>] / [CaCO<sub>3</sub>]",
+    "K<sub>c</sub> = [CaO] / [CaCO<sub>3</sub>]",
+    "K<sub>c</sub> = 1 / [CO<sub>2</sub>]"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Pure solids and pure liquids do not appear in K or Q, because their concentration is fixed by their density. Only gases and dissolved species are included.",
+    "options": [
+     "Right: the two pure solids are left out, leaving only the gas.",
+     "Pure solids are left out of K: their \"concentration\" does not change however much solid is present.",
+     "This keeps the two solids and drops the gas, the opposite of the rule.",
+     "CO₂ is a product, so it goes on top."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-k-11",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "multi",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "For Zn(s) + Cu<sup>2+</sup>(aq) ⇌ Zn<sup>2+</sup>(aq) + Cu(s), which species appear in the denominator of the expression for K<sub>c</sub>? Select all that apply.",
+   "options": [
+    "Cu<sup>2+</sup>(aq)",
+    "Zn<sup>2+</sup>(aq)",
+    "Zn(s)",
+    "Cu(s)"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "K<sub>c</sub> = [Zn²⁺] / [Cu²⁺]. Only Cu²⁺ is in the denominator; the solid metals are left out.",
+    "options": [
+     "Right: a dissolved reactant, so it is in the denominator.",
+     "Zn²⁺ is a dissolved product, so it is in the numerator, not the denominator.",
+     "Zn is a reactant, but a pure solid is left out of K entirely.",
+     "A pure solid is left out of K."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-k-12",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is the expression for K<sub>c</sub> for CH<sub>3</sub>COOH(aq) + H<sub>2</sub>O(l) ⇌ CH<sub>3</sub>COO<sup>−</sup>(aq) + H<sub>3</sub>O<sup>+</sup>(aq)?",
+   "options": [
+    "[CH<sub>3</sub>COO<sup>−</sup>][H<sub>3</sub>O<sup>+</sup>] / [CH<sub>3</sub>COOH]",
+    "[CH<sub>3</sub>COO<sup>−</sup>][H<sub>3</sub>O<sup>+</sup>] / ([CH<sub>3</sub>COOH][H<sub>2</sub>O])",
+    "[CH<sub>3</sub>COOH] / ([CH<sub>3</sub>COO<sup>−</sup>][H<sub>3</sub>O<sup>+</sup>])",
+    "[CH<sub>3</sub>COO<sup>−</sup>] + [H<sub>3</sub>O<sup>+</sup>] − [CH<sub>3</sub>COOH]"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Write products over reactants and leave out pure liquids such as the solvent water.",
+    "options": [
+     "Right: water is the liquid solvent, so it is left out.",
+     "Liquid water is the solvent; its concentration barely changes, so it is left out of K.",
+     "This is upside down. Products go in the numerator.",
+     "Concentrations in K are multiplied and divided, never added or subtracted."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-k-13",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "For H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g), a mixture holds [H<sub>2</sub>] = 0.0150 M, [I<sub>2</sub>] = 0.0300 M and [HI] = 0.0900 M. Calculate Q<sub>c</sub>.",
+   "numeric": {
+    "answer": 18,
+    "tol": 0.1,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 200,
+      "rel": 0.02,
+      "why": "Value: [HI] must be squared, because its coefficient is 2."
+     },
+     {
+      "value": 400,
+      "rel": 0.02,
+      "why": "Value: you multiplied [HI] by 2. The coefficient is an exponent: square [HI]."
+     },
+     {
+      "value": 0.0556,
+      "rel": 0.02,
+      "why": "Value: you inverted the expression. Products go on top."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Q<sub>c</sub> = [HI]² / ([H₂][I₂]) = (0.0900)² / (0.0150 × 0.0300) = 0.00810 / 0.000450 = 18.0."
+   }
+  },
+  {
+   "id": "chem-q-and-k-14",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "single",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a reaction, K = 4.0 × 10<sup>3</sup>. A mixture has Q = 2.5 × 10<sup>4</sup>. Which statement is correct?",
+   "options": [
+    "Q &gt; K, so reactants form until Q falls to K.",
+    "Q &gt; K, so products form until Q rises to K.",
+    "Q &lt; K, so products form until Q rises to K.",
+    "The mixture is at equilibrium, because Q and K are both large."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Q > K: the mixture holds too much product. The net reaction runs in reverse, which lowers Q, until Q = K.",
+    "options": [
+     "Right: 25,000 > 4,000. The net reverse reaction lowers the product-to-reactant ratio until Q = K.",
+     "Making more product would raise Q further from K. The net reaction must go the other way.",
+     "Compare the powers of ten: 10⁴ is larger than 10³, so Q > K.",
+     "At equilibrium Q equals K. Here Q is more than six times K."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-k-15",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "order",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for predicting which way a mixture will react in order.",
+   "options": [
+    "Write the expression for Q from the balanced equation, leaving out pure solids and liquids.",
+    "Substitute the concentrations (or partial pressures) present right now.",
+    "Compare the value of Q with the value of K at the same temperature.",
+    "Conclude: Q &lt; K net forward; Q &gt; K net reverse; Q = K at equilibrium."
+   ],
+   "why": {
+    "correct": "Q has the same form as K but uses the current amounts. Comparing the two tells you which way the system must go to reach equilibrium."
+   }
+  },
+  {
+   "id": "chem-q-and-k-16",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "What is the difference between Q and K for the same reaction at the same temperature?",
+   "options": [
+    "Q uses the amounts present at any moment; K uses the amounts at equilibrium.",
+    "Q uses reactants over products; K uses products over reactants.",
+    "Q is used for gases; K is used for solutions.",
+    "Q includes solids and liquids; K leaves them out."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Q and K have identical expressions. K is the value at equilibrium, which is fixed at a given temperature; Q is the value right now, which changes as the reaction runs.",
+    "options": [
+     "Right: same expression, but K is the special value Q takes at equilibrium.",
+     "Both are products over reactants. Only the moment at which the amounts are measured differs.",
+     "Either can be written for gases (K<sub>p</sub>, Q<sub>p</sub> with pressures) or solutions (K<sub>c</sub>, Q<sub>c</sub>).",
+     "Solids and pure liquids are left out of both, so the two can be compared."
+    ]
+   }
+  },
+  {
+   "id": "chem-q-and-k-17",
+   "unit": "unit-7",
+   "topic": "q-and-k",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For 2 NO(g) + Cl<sub>2</sub>(g) ⇌ 2 NOCl(g), K<sub>c</sub> = 4.6 × 10<sup>4</sup> at a certain temperature. A mixture at that temperature has [NO] = 0.020 M and [Cl<sub>2</sub>] = 0.010 M. Calculate the [NOCl] for which this mixture would be at equilibrium.",
+   "numeric": {
+    "answer": 0.43,
+    "tol": 0.01,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.184,
+      "rel": 0.02,
+      "why": "Value: you found [NOCl]² but did not take the square root. [NOCl] is squared in the expression, so finish with a square root."
+     },
+     {
+      "value": 3.03,
+      "rel": 0.02,
+      "why": "Value: [NO] must be squared, because its coefficient is 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At equilibrium Q = K: [NOCl]² / ([NO]²[Cl₂]) = 4.6 × 10⁴. So [NOCl]² = 4.6 × 10⁴ × (0.020)² × 0.010 = 0.184, and [NOCl] = √0.184 = 0.43 M."
+   }
+  }
+ ]
+}

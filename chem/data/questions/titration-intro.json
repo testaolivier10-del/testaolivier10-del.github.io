@@ -1,0 +1,554 @@
+{
+ "stimuli": {
+  "titration-intro-s1": {
+   "kind": "table",
+   "title": "Titrating vinegar",
+   "text": "<p>A student uses a volumetric pipet to transfer 5.00 mL of vinegar into an Erlenmeyer flask, adds about 20 mL of distilled water and three drops of phenolphthalein, and titrates with 0.1050 M NaOH from a 50 mL buret until a faint pink color lasts for 30 seconds. The reaction is CH₃COOH(aq) + OH⁻(aq) → CH₃COO⁻(aq) + H₂O(l).</p>",
+   "table": {
+    "caption": "Buret readings",
+    "cols": [
+     "Trial",
+     "Initial reading (mL)",
+     "Final reading (mL)",
+     "Volume of NaOH added (mL)"
+    ],
+    "rows": [
+     [
+      "Rough",
+      "0.15",
+      "40.60",
+      "40.45"
+     ],
+     [
+      "1",
+      "0.50",
+      "40.17",
+      "39.67"
+     ],
+     [
+      "2",
+      "1.22",
+      "40.90",
+      "39.68"
+     ],
+     [
+      "3",
+      "0.85",
+      "40.51",
+      "39.66"
+     ]
+    ]
+   }
+  },
+  "titration-intro-s2": {
+   "kind": "setup",
+   "title": "Reading a buret",
+   "html": "<svg viewBox=\"0 0 420 290\" width=\"420\" height=\"290\" role=\"img\" aria-label=\"Two close-up views of a buret scale, numbers increasing downward, with marks every 0.1 mL. Before the titration the scale runs from 3 to 4 mL and the bottom of the curved liquid surface sits between the 3.4 and 3.5 marks, a little past halfway. After the titration the scale runs from 27 to 28 mL and the bottom of the curved surface sits just below the 27.8 mark, about a tenth of the way from 27.8 to 27.9.\"><rect x=\"40\" y=\"20\" width=\"60\" height=\"220\" fill=\"#EEF4FB\" stroke=\"#555\" stroke-width=\"2\"/><path d=\"M41,113 Q70,131 99,113 L99,239 L41,239 Z\" fill=\"#9CC3E6\" opacity=\"0.85\"/><path d=\"M41,113 Q70,131 99,113\" fill=\"none\" stroke=\"#1D44A6\" stroke-width=\"2\"/><line x1=\"40\" y1=\"30\" x2=\"74\" y2=\"30\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text font-family=\"Arial,Helvetica,sans-serif\" x=\"122\" y=\"35\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">3</text><line x1=\"40\" y1=\"50\" x2=\"58\" y2=\"50\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"40\" y1=\"70\" x2=\"58\" y2=\"70\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"40\" y1=\"90\" x2=\"58\" y2=\"90\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"40\" y1=\"110\" x2=\"58\" y2=\"110\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"40\" y1=\"130\" x2=\"66\" y2=\"130\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"40\" y1=\"150\" x2=\"58\" y2=\"150\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"40\" y1=\"170\" x2=\"58\" y2=\"170\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"40\" y1=\"190\" x2=\"58\" y2=\"190\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"40\" y1=\"210\" x2=\"58\" y2=\"210\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"40\" y1=\"230\" x2=\"74\" y2=\"230\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text font-family=\"Arial,Helvetica,sans-serif\" x=\"122\" y=\"235\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">4</text><text font-family=\"Arial,Helvetica,sans-serif\" x=\"70\" y=\"270\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">Before</text><rect x=\"260\" y=\"20\" width=\"60\" height=\"220\" fill=\"#EEF4FB\" stroke=\"#555\" stroke-width=\"2\"/><path d=\"M261,182.99999999999974 Q290,200.99999999999974 319,182.99999999999974 L319,239 L261,239 Z\" fill=\"#9CC3E6\" opacity=\"0.85\"/><path d=\"M261,182.99999999999974 Q290,200.99999999999974 319,182.99999999999974\" fill=\"none\" stroke=\"#1D44A6\" stroke-width=\"2\"/><line x1=\"260\" y1=\"30\" x2=\"294\" y2=\"30\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text font-family=\"Arial,Helvetica,sans-serif\" x=\"342\" y=\"35\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">27</text><line x1=\"260\" y1=\"50\" x2=\"278\" y2=\"50\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"260\" y1=\"70\" x2=\"278\" y2=\"70\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"260\" y1=\"90\" x2=\"278\" y2=\"90\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"260\" y1=\"110\" x2=\"278\" y2=\"110\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"260\" y1=\"130\" x2=\"286\" y2=\"130\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"260\" y1=\"150\" x2=\"278\" y2=\"150\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"260\" y1=\"170\" x2=\"278\" y2=\"170\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"260\" y1=\"190\" x2=\"278\" y2=\"190\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"260\" y1=\"210\" x2=\"278\" y2=\"210\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><line x1=\"260\" y1=\"230\" x2=\"294\" y2=\"230\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text font-family=\"Arial,Helvetica,sans-serif\" x=\"342\" y=\"235\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">28</text><text font-family=\"Arial,Helvetica,sans-serif\" x=\"290\" y=\"270\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">After</text></svg><p>Close-ups of a 50 mL buret before and after a titration. The scale is marked every 0.1 mL; numbers increase downward. The liquid surface curves down in the middle.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-titration-intro-1",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "titration-intro-s1",
+   "q": "What volume of NaOH should the student use in the calculation?",
+   "numeric": {
+    "answer": 39.67,
+    "tol": 0.01,
+    "unit": "mL",
+    "units": [
+     "cm3",
+     "cm³"
+    ],
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 39.87,
+      "rel": 0.0005,
+      "why": "Value: you averaged in the rough trial. The rough trial overshot the end point (40.45 mL, far from the others); average trials 1-3, which agree within 0.02 mL."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The rough trial is a quick first run that overshoots; it is not used. Trials 1-3 agree closely: (39.67 + 39.68 + 39.66) mL ÷ 3 = 39.67 mL."
+   }
+  },
+  {
+   "id": "chem-titration-intro-2",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "titration-intro-s1",
+   "q": "What is the molarity of acetic acid in the vinegar?",
+   "numeric": {
+    "answer": 0.833,
+    "tol": 0.001,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.167,
+      "rel": 0.01,
+      "why": "Value: you divided by the volume after adding water (25 mL). The water does not change the moles of acid; divide by the 5.00 mL of vinegar pipetted."
+     },
+     {
+      "value": 0.00417,
+      "rel": 0.01,
+      "why": "Value: that is the moles of NaOH (and of acid). Divide by the vinegar volume in liters, 0.00500 L, to get molarity."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Moles NaOH = 0.1050 mol/L × 0.03967 L = 0.004165 mol. Mole ratio 1 : 1, so 0.004165 mol CH₃COOH. Molarity = 0.004165 mol ÷ 0.00500 L = 0.833 M (three significant figures, from 5.00 mL)."
+   }
+  },
+  {
+   "id": "chem-titration-intro-3",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "titration-intro-s1",
+   "q": "Why does adding about 20 mL of distilled water to the flask not affect the result?",
+   "options": [
+    "It does not change the moles of acid that the NaOH reacts with",
+    "The water evaporates before the end point is reached",
+    "Water reacts with NaOH in a 1 : 1 ratio, which cancels out",
+    "Its volume is added to the 5.00 mL of vinegar in the calculation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The NaOH needed depends on the moles of acid present, and adding water does not change that number. Only the volume of vinegar pipetted (5.00 mL) enters the calculation, so the water need not be measured precisely.",
+    "options": [
+     "Right: dilution changes concentration, not moles of acid.",
+     "The water stays in the flask; it does not need to evaporate to have no effect.",
+     "Water does not use up hydroxide; if it did, the extra water would change the result.",
+     "The water is not used in the calculation at all; that is why \"about 20 mL\" is fine."
+    ]
+   }
+  },
+  {
+   "id": "chem-titration-intro-4",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "titration-intro-s1",
+   "q": "Suppose the student had rinsed the buret with distilled water but not with the NaOH solution before filling it. How would the calculated acid molarity compare with the true value?",
+   "options": [
+    "Too high, since more of the diluted NaOH is needed",
+    "Too low, because the diluted NaOH reacts with less of the acid",
+    "No change, because the moles of NaOH in the buret stay the same",
+    "Too low, because water from the buret dilutes the acid in the flask"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Water left in the buret dilutes the titrant, so its real concentration is below 0.1050 M. More volume is needed for the same moles of acid. The calculation still uses 0.1050 M, so it counts too many moles of NaOH and the acid molarity comes out too high.",
+    "options": [
+     "Right: a larger volume times the labeled molarity overstates the moles of base.",
+     "The diluted base still reacts with all the acid; it just takes more volume, which raises the calculated result.",
+     "The concentration of the solution in the buret drops, so more volume is used; the calculation uses the label concentration and the larger volume.",
+     "The water in the buret mixes with the NaOH, not the acid; the effect is a larger titrant volume."
+    ]
+   }
+  },
+  {
+   "id": "chem-titration-intro-5",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "titration-intro-s1",
+   "q": "In the rough trial the solution turned dark pink. What does this observation indicate?",
+   "options": [
+    "The end point was overshot, with excess NaOH added",
+    "The vinegar in that trial was more concentrated than in the others",
+    "The indicator was added too late to change color in time",
+    "The equivalence point was reached exactly, with no excess"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A faint pink that lasts shows the first slight excess of NaOH. Dark pink means many drops of excess base were added past that point, which is why the rough trial used 40.45 mL instead of about 39.67 mL.",
+    "options": [
+     "Right: the deep color shows a large excess of base.",
+     "All trials used the same vinegar, measured with the same pipet.",
+     "The indicator was in the flask from the start; it changed color strongly because of the excess base.",
+     "At the end point the color is faint; dark pink means it went well past."
+    ]
+   }
+  },
+  {
+   "id": "chem-titration-intro-6",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "titration-intro-s2",
+   "q": "What is the initial buret reading? Read to the correct precision.",
+   "numeric": {
+    "answer": 3.46,
+    "tol": 0.02,
+    "unit": "mL",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 3.54,
+      "rel": 0.004,
+      "why": "Value: buret numbers increase downward. The meniscus is a little past 3.4 going down, so the reading is about 3.46 mL, not 3.54 mL."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Read at the bottom of the meniscus, at eye level. It sits a little more than halfway from 3.4 to 3.5, so 3.46 mL, with the last digit estimated."
+   }
+  },
+  {
+   "id": "chem-titration-intro-7",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "titration-intro-s2",
+   "q": "What volume of titrant was delivered?",
+   "numeric": {
+    "answer": 24.35,
+    "tol": 0.02,
+    "unit": "mL",
+    "units": [
+     "cm3",
+     "cm³"
+    ],
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 27.81,
+      "rel": 0.001,
+      "why": "Value: that is the final reading. Subtract the initial reading, because the buret did not start at zero."
+     },
+     {
+      "value": 31.27,
+      "rel": 0.002,
+      "why": "Value: you added the readings. The volume delivered is final minus initial."
+     }
+    ]
+   },
+   "why": {
+    "correct": "27.81 mL − 3.46 mL = 24.35 mL. Both readings carry two decimal places, so the volume does too."
+   }
+  },
+  {
+   "id": "chem-titration-intro-8",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "titration-intro-s2",
+   "q": "Why is each buret reading recorded to two decimal places?",
+   "options": [
+    "Marks are every 0.1 mL, and one more digit is estimated",
+    "A buret is accurate to exactly 0.01 mL, so nothing is estimated",
+    "Two decimal places are needed to match the molarity of the titrant",
+    "The meniscus is 0.01 mL thick, so the reading is rounded to it"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A measurement records every certain digit plus one estimated digit. The 0.1 mL marks make the tenths certain; the hundredths are estimated by eye.",
+    "options": [
+     "Right: certain digits plus one estimated digit.",
+     "The last digit is an estimate, which is why it carries some uncertainty.",
+     "The precision of a reading depends on the instrument, not on the other values in the calculation.",
+     "The meniscus is a curved surface, not a layer of a set thickness; you read its lowest point."
+    ]
+   }
+  },
+  {
+   "id": "chem-titration-intro-9",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "titration-intro-s2",
+   "q": "A student reads the top edge of the curved surface instead of the bottom, for both readings. How does this affect the volume delivered?",
+   "options": [
+    "Very little, since equal shifts in both readings cancel out",
+    "Much too large, because the top edge reads lower on the scale",
+    "Much too small, because the top edge sits above the liquid",
+    "It doubles the volume, since the edge is counted in both readings"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Reading the edge shifts each reading by the same small amount (the meniscus has the same shape both times). The volume is a difference, so a constant shift cancels. The habit is still wrong: reading the bottom of the meniscus at eye level avoids errors when the shapes differ.",
+    "options": [
+     "Right: a constant offset in both readings cancels in final minus initial.",
+     "The top edge reads a slightly smaller number for both readings, so the difference barely changes.",
+     "Each reading shifts the same way, so the volume, a difference, is nearly unchanged.",
+     "Each reading is taken once; the error is a small shift, not a doubling."
+    ]
+   }
+  },
+  {
+   "id": "chem-titration-intro-10",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "titration-intro-s2",
+   "q": "The titrant was 0.0985 M HCl and the analyte was 20.00 mL of a sodium hydroxide solution. Using the volume delivered, find the molarity of the NaOH. H⁺(aq) + OH⁻(aq) → H₂O(l).",
+   "numeric": {
+    "answer": 0.12,
+    "tol": 0.0002,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.0809,
+      "rel": 0.01,
+      "why": "Value: you swapped the volumes. Moles of HCl come from the HCl volume (24.35 mL); divide by the NaOH volume (20.00 mL)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Moles HCl = 0.0985 mol/L × 0.02435 L = 0.002398 mol = moles OH⁻ (1 : 1). Molarity NaOH = 0.002398 mol ÷ 0.02000 L = 0.120 M, three significant figures from 0.0985 M."
+   }
+  },
+  {
+   "id": "chem-titration-intro-11",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "A 25.00 mL sample of sulfuric acid is titrated with 0.1000 M NaOH. The end point is reached after 31.20 mL. H₂SO₄(aq) + 2NaOH(aq) → Na₂SO₄(aq) + 2H₂O(l). What is the molarity of the H₂SO₄?",
+   "numeric": {
+    "answer": 0.0624,
+    "tol": 1e-05,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 0.1248,
+      "rel": 0.002,
+      "why": "Value: you used a 1 : 1 ratio. Each H₂SO₄ reacts with two NaOH, so divide the moles of NaOH by 2."
+     },
+     {
+      "value": 0.2496,
+      "rel": 0.002,
+      "why": "Value: you inverted the mole ratio, multiplying by 2. There are half as many moles of H₂SO₄ as of NaOH."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Moles NaOH = 0.1000 mol/L × 0.03120 L = 0.003120 mol. × (1 mol H₂SO₄ / 2 mol NaOH) = 0.001560 mol H₂SO₄. ÷ 0.02500 L = 0.06240 M."
+   }
+  },
+  {
+   "id": "chem-titration-intro-12",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "To find the exact molarity of a NaOH solution, a student dissolves 0.5106 g of potassium hydrogen phthalate, KHC₈H₄O₄ (204.22 g/mol), in water and titrates it. It reacts 1 : 1 with NaOH and needs 24.87 mL. What is the molarity of the NaOH?",
+   "numeric": {
+    "answer": 0.1005,
+    "tol": 0.0002,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 0.0025,
+      "rel": 0.002,
+      "why": "Value: that is the moles of the solid. Divide by the NaOH volume in liters (0.02487 L) to get molarity."
+     }
+    ]
+   },
+   "why": {
+    "correct": "0.5106 g ÷ 204.22 g/mol = 0.002500 mol, which is also the moles of NaOH (1 : 1). 0.002500 mol ÷ 0.02487 L = 0.1005 M."
+   }
+  },
+  {
+   "id": "chem-titration-intro-13",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 20.00 mL sample of salt water is titrated with 0.0500 M AgNO₃ until all the chloride has precipitated, which takes 18.36 mL. Ag⁺(aq) + Cl⁻(aq) → AgCl(s). What is the molarity of chloride in the sample?",
+   "numeric": {
+    "answer": 0.0459,
+    "tol": 0.0002,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.0545,
+      "rel": 0.01,
+      "why": "Value: you swapped the volumes. The AgNO₃ volume gives moles of Ag⁺; divide by the salt-water volume."
+     }
+    ]
+   },
+   "why": {
+    "correct": "0.0500 mol/L × 0.01836 L = 0.000918 mol Ag⁺ = 0.000918 mol Cl⁻ (1 : 1). 0.000918 mol ÷ 0.02000 L = 0.0459 M."
+   }
+  },
+  {
+   "id": "chem-titration-intro-14",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the difference between the equivalence point and the end point of a titration?",
+   "options": [
+    "Equivalence: reacted in the mole ratio. End point: the indicator changes",
+    "They are two names for the moment the buret runs empty",
+    "The end point is reached well before the equivalence point",
+    "Equivalence: the indicator changes. End point: the titrant runs out"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At the equivalence point the moles of titrant added match the analyte by the mole ratio. The end point is what you see, the indicator's color change. A well-chosen indicator makes them nearly the same.",
+    "options": [
+     "Right: one is a stoichiometric point, the other an observation.",
+     "Neither depends on emptying the buret; titrations often use a fraction of it.",
+     "With a good indicator they nearly coincide, within about a drop.",
+     "Swaps the definitions: the color change is the end point."
+    ]
+   }
+  },
+  {
+   "id": "chem-titration-intro-15",
+   "type": "order",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A flask of analyte with indicator is already under the buret. Put the steps for preparing the buret and running the titration in order.",
+   "options": [
+    "Rinse the buret with a few mL of titrant and drain it",
+    "Fill the buret with titrant and run some out to clear air from the tip",
+    "Record the initial reading at the bottom of the meniscus",
+    "Add titrant while swirling, then dropwise near the end point",
+    "Record the final reading when the color change lasts"
+   ],
+   "why": {
+    "correct": "Rinse with titrant so it is not diluted, fill and clear the tip so trapped air is not counted as volume, read the starting volume, titrate slowly near the end, then read again."
+   }
+  },
+  {
+   "id": "chem-titration-intro-16",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which practices improve the accuracy of a titration? Select all that apply.",
+   "options": [
+    "Removing the air bubble from the buret tip before the first reading",
+    "Rinsing the buret with distilled water as the last step before filling",
+    "Rinsing the inside of the flask wall with distilled water near the end point",
+    "Reading the buret from above the liquid level"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "An air bubble that escapes during the titration would be counted as delivered liquid. Washing drops of titrant from the flask wall into the solution with distilled water adds no moles and lets all the titrant react.",
+    "options": [
+     "Right: a bubble that leaves the tip during the run would add false volume.",
+     "Water left in the buret dilutes the titrant; the last rinse should be with titrant.",
+     "Right: distilled water adds no acid or base, and it washes stray drops into the reaction.",
+     "Reading from above gives a parallax error; read at eye level."
+    ]
+   }
+  },
+  {
+   "id": "chem-titration-intro-17",
+   "type": "predict",
+   "unit": "unit-4",
+   "topic": "titration-intro",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student repeats the vinegar titration exactly, but uses 0.2100 M NaOH instead of 0.1050 M. Predict how each quantity changes compared with the first titration.",
+   "variables": [
+    {
+     "name": "Volume of NaOH needed to reach the end point",
+     "answer": "down",
+     "why": "The more concentrated base delivers the same moles in half the volume."
+    },
+    {
+     "name": "Moles of NaOH needed to reach the end point",
+     "answer": "none",
+     "why": "The moles of acid are unchanged, so the same moles of base are needed (1 : 1)."
+    },
+    {
+     "name": "Calculated molarity of acetic acid",
+     "answer": "none",
+     "why": "Half the volume times twice the molarity gives the same moles, so the result is the same."
+    },
+    {
+     "name": "Moles of acetic acid in the 5.00 mL sample",
+     "answer": "none",
+     "why": "The sample is the same vinegar and the same pipetted volume."
+    }
+   ],
+   "why": {
+    "correct": "The titrant's concentration changes the volume needed, not the moles. The answer for the acid stays the same."
+   }
+  }
+ ]
+}

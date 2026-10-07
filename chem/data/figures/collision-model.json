@@ -1,0 +1,12 @@
+{
+ "mb-activation": {
+  "file": "figures/mb-activation.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Number of molecules on the vertical axis, kinetic energy on the horizontal axis. Two curves: the lower temperature curve has a tall, narrow peak at low energy; the higher temperature curve is lower, broader and shifted to higher energy. A dashed vertical line marks the activation energy. The area under each curve to the right of that line is shaded: it is the fraction of molecules with enough energy to react, and it is much larger at the higher temperature. The activation energy itself is the same at both temperatures."
+ }
+}

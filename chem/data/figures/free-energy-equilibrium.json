@@ -1,0 +1,12 @@
+{
+ "dg-k-scale": {
+  "file": "figures/dg-k-scale.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two matched scales. Negative ΔG° on the left lines up with K greater than 1, products favored; positive ΔG° on the right lines up with K less than 1, reactants favored; ΔG° of zero lines up with K equal to 1. At 298 K, −20 kJ/mol gives K about 3 × 10³ and +20 kJ/mol gives K about 3 × 10⁻⁴."
+ }
+}

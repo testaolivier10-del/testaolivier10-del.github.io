@@ -1,0 +1,77 @@
+{
+ "topic": "mechanisms-intro",
+ "hook": "A recipe on a cereal box says \"flour, eggs, sugar, milk → pancakes\", but nobody makes pancakes by throwing everything into the pan at once. There is an order of small steps, and some half-finished mixtures along the way. Chemical reactions are the same: the balanced equation is the recipe, and the mechanism is the step-by-step method.",
+ "prereq": [
+  {
+   "q": "What is the rate law for the elementary step NO + O₃ → NO₂ + O₂?",
+   "options": [
+    "rate = k[NO][O₃]",
+    "rate = k[NO₂][O₂]",
+    "rate = k[NO]²",
+    "It must be measured"
+   ],
+   "correct": 0,
+   "why": "For an elementary step, the coefficients are the orders.",
+   "review": "elementary-reactions"
+  },
+  {
+   "q": "Which elementary step is least likely to happen?",
+   "options": [
+    "One with four particles colliding at once",
+    "One with two particles colliding",
+    "One particle breaking apart",
+    "One with a small activation energy"
+   ],
+   "correct": 0,
+   "why": "Four particles meeting in the same instant essentially never happens.",
+   "review": "elementary-reactions"
+  }
+ ],
+ "figure": {
+  "figure": "mechanism-sum",
+  "caption": "The steps of a mechanism add up to the overall equation; species made and then used cancel."
+ },
+ "chain": [
+  {
+   "cause": "Many-particle collisions are too improbable",
+   "effect": "most reactions happen in a series of one- and two-particle elementary steps"
+  },
+  {
+   "cause": "Some species are made in one step and used in a later one",
+   "effect": "they cancel when the steps are added: they are intermediates"
+  },
+  {
+   "cause": "The steps must add up to the overall equation",
+   "effect": "this sum test rules out some proposed mechanisms"
+  },
+  {
+   "cause": "Several mechanisms can pass the sum test",
+   "effect": "a mechanism is only consistent with the evidence, never proved by it"
+  }
+ ],
+ "ideas": [
+  "A <b>reaction mechanism</b> is a series of elementary steps that adds up to the overall equation.",
+  "An <b>intermediate</b> is made in one step and used in a later step; it does not appear in the overall equation.",
+  "Add the steps and cancel species that appear on both sides to check a mechanism.",
+  "A mechanism that passes the tests is consistent with the evidence, not proven."
+ ],
+ "misconception": {
+  "wrong": "An intermediate is the same thing as a transition state.",
+  "right": "An intermediate is a real species made in one step and used in another; it sits in a valley between steps. A transition state is the peak of a single step and cannot be isolated."
+ },
+ "check": [
+  "chem-mechanisms-intro-1",
+  "chem-mechanisms-intro-2",
+  "chem-mechanisms-intro-3",
+  "chem-mechanisms-intro-6",
+  "chem-mechanisms-intro-7",
+  "chem-mechanisms-intro-11"
+ ],
+ "summary": "A reaction mechanism is a sequence of elementary steps that adds up to the overall balanced equation. Intermediates are made in one step and used in a later one, so they cancel from the sum. A mechanism must sum correctly and use reasonable steps, and it is a proposed explanation, consistent with the evidence rather than proven.",
+ "connections": [
+  {
+   "href": "../notes/elementary-reactions.html",
+   "label": "Back: elementary steps and molecularity (5.4)"
+  }
+ ]
+}

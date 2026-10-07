@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" width="680" height="320" role="img" aria-labelledby="t d">
+<title id="t">How a mass spectrometer works</title>
+<desc id="d">Left to right: a sample enters an ionizing chamber where atoms lose one electron each to become 1+ ions. An accelerating field speeds them into a beam. A magnet bends the beam into a curve; three paths separate, with the lightest ions bending most and the heaviest least. A detector at the end counts the ions at each mass. A small spectrum on the right shows three peaks: a tall one at mass 24 and two shorter ones at 25 and 26.</desc>
+<rect width="680" height="320" fill="#ffffff"/>
+<defs><marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1B2440"/></marker></defs>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1B2440">
+  <rect x="20" y="200" width="90" height="60" rx="6" fill="#E3EAFA" stroke="#1D44A6" stroke-width="2"/>
+  <text x="65" y="225" font-size="14" text-anchor="middle">1 Ionize</text>
+  <text x="65" y="245" font-size="12" text-anchor="middle">atom → ion⁺ + e⁻</text>
+  <rect x="125" y="200" width="80" height="60" rx="6" fill="#E3EAFA" stroke="#1D44A6" stroke-width="2"/>
+  <text x="165" y="225" font-size="14" text-anchor="middle">2 Speed</text>
+  <text x="165" y="245" font-size="12" text-anchor="middle">up the ions</text>
+  <path d="M205 230 H250" stroke="#1B2440" stroke-width="2.5" marker-end="url(#m)"/>
+  <path d="M250 120 h170 v170 h-170 z" fill="#F3E1D3" stroke="#C2410C" stroke-width="2"/>
+  <text x="230" y="312" font-size="13" fill="#C2410C">3 Magnet bends the beam: lightest ions bend most</text>
+  <path d="M250 230 Q 330 230 345 100" fill="none" stroke="#0072B2" stroke-width="2.5"/>
+  <path d="M250 230 Q 345 230 375 100" fill="none" stroke="#009E73" stroke-width="2.5"/>
+  <path d="M250 230 Q 360 230 405 100" fill="none" stroke="#CC79A7" stroke-width="2.5"/>
+  
+  
+  <rect x="325" y="66" width="100" height="34" rx="4" fill="#1B2440"/>
+  <text x="375" y="88" font-size="13" text-anchor="middle" fill="#ffffff">4 Detector</text>
+  <g transform="translate(470 40)">
+    <line x1="20" y1="200" x2="180" y2="200" stroke="#1B2440" stroke-width="2"/>
+    <line x1="20" y1="200" x2="20" y2="20" stroke="#1B2440" stroke-width="2"/>
+    <rect x="50" y="58" width="16" height="142" fill="#1D44A6"/>
+    <rect x="96" y="182" width="16" height="18" fill="#1D44A6"/>
+    <rect x="142" y="180" width="16" height="20" fill="#1D44A6"/>
+    <text x="58" y="218" font-size="13" text-anchor="middle">24</text>
+    <text x="104" y="218" font-size="13" text-anchor="middle">25</text>
+    <text x="150" y="218" font-size="13" text-anchor="middle">26</text>
+    <text x="100" y="238" font-size="13" text-anchor="middle">m/z</text>
+    <text x="12" y="14" font-size="12">abundance</text>
+  </g>
+</g>
+</svg>

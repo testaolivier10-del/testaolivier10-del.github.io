@@ -1,0 +1,91 @@
+{
+ "topic": "solution-particle-models",
+ "hook": "Stir table salt into water and it seems to vanish. It is still there, split into ions, each wrapped in a shell of water molecules all turned the same way. Drawing that shell the wrong way round is one of the most common errors on the exam.",
+ "prereq": [
+  {
+   "q": "Which end of a water molecule carries a partial negative charge?",
+   "options": [
+    "The oxygen end",
+    "The hydrogen end",
+    "Neither; water is nonpolar"
+   ],
+   "correct": 0,
+   "why": "Oxygen is more electronegative and pulls the shared electrons toward itself.",
+   "review": "bond-types"
+  },
+  {
+   "q": "What is an ion-dipole force?",
+   "options": [
+    "An ion attracting the oppositely charged end of a polar molecule",
+    "A covalent bond between an ion and water",
+    "The attraction between two ions"
+   ],
+   "correct": 0,
+   "why": "An ion attracts the opposite partial charge of a polar molecule.",
+   "review": "intermolecular-forces"
+  },
+  {
+   "q": "What is the molarity of Cl⁻ in 0.10 M CaCl₂?",
+   "options": [
+    "0.20 M",
+    "0.10 M",
+    "0.30 M"
+   ],
+   "correct": 0,
+   "why": "Each CaCl₂ gives two Cl⁻ ions.",
+   "review": "solutions"
+  }
+ ],
+ "figure": {
+  "figure": "hydrated-ions",
+  "caption": "Hydrated ions: water's oxygen faces a cation; a hydrogen faces an anion."
+ },
+ "chain": [
+  {
+   "cause": "Water molecules are polar, with δ− O and δ+ H",
+   "effect": "they attract the ions at the surface of an ionic crystal"
+  },
+  {
+   "cause": "Ion-dipole attractions pull ions out of the lattice",
+   "effect": "the solid dissociates into separate ions"
+  },
+  {
+   "cause": "Opposite charges attract",
+   "effect": "water points O toward cations and H toward anions, forming a hydration shell"
+  },
+  {
+   "cause": "Each formula unit gives a fixed set of ions",
+   "effect": "a correct diagram keeps the formula ratio and a total charge of zero"
+  }
+ ],
+ "ideas": [
+  "Dissolved ionic compounds are separate, hydrated ions; molecular solutes stay as whole molecules.",
+  "Water orientation: O (δ−) toward cations, H (δ+) toward anions.",
+  "Keep the formula ratio (CaCl₂: 1 Ca²⁺ to 2 Cl⁻) and keep polyatomic ions whole.",
+  "Spread solute particles evenly: a solution is homogeneous."
+ ],
+ "misconception": {
+  "wrong": "Water always points its oxygen toward a dissolved ion, because oxygen is the part of water that attracts things.",
+  "right": "Water turns its δ− oxygen toward a cation but its δ+ hydrogens toward an anion. Like charges facing each other would repel."
+ },
+ "check": [
+  "chem-solution-particle-models-1",
+  "chem-solution-particle-models-2",
+  "chem-solution-particle-models-3",
+  "chem-solution-particle-models-5",
+  "chem-solution-particle-models-6",
+  "chem-solution-particle-models-7",
+  "chem-solution-particle-models-12"
+ ],
+ "summary": "When an ionic compound dissolves, ion-dipole attractions pull it apart into separate ions, and each is hydrated: water's oxygen faces cations and its hydrogens face anions. A correct particle diagram shows separate ions in the formula ratio, whole polyatomic ions, an even spread and zero total charge; molecular solutes stay as whole molecules.",
+ "connections": [
+  {
+   "href": "../notes/solutions.html",
+   "label": "Molarity and ion concentrations (Solutions and Mixtures)"
+  },
+  {
+   "href": "../notes/intermolecular-forces.html",
+   "label": "Ion-dipole forces (Intermolecular Forces)"
+  }
+ ]
+}

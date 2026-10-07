@@ -1,0 +1,5 @@
+{
+ "resonance": { "def": "The description of a species by two or more Lewis diagrams that differ only in where electrons are placed; the real species is a single hybrid of them." },
+ "formal-charge": { "def": "A bookkeeping charge for an atom in a Lewis diagram: valence electrons minus lone-pair electrons minus half the bonding electrons." },
+ "bond-order": { "def": "The number of bonding pairs between two atoms (1, 2 or 3); in a resonance hybrid it can be a fraction, such as 4/3 in nitrate." }
+}

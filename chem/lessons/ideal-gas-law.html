@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ideal Gas Law — AP® Chemistry Lesson | LevlPrep</title>
+<meta name="description" content="The ideal gas law, PV = nRT, links pressure, volume, kelvin temperature and moles of a gas; R must match the units.">
+<link rel="canonical" href="https://levlprep.com/chem/lessons/ideal-gas-law.html">
+<meta property="og:title" content="Ideal Gas Law — AP® Chemistry Lesson | LevlPrep">
+<meta property="og:description" content="The ideal gas law, PV = nRT, links pressure, volume, kelvin temperature and moles of a gas; R must match the units.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/chem/lessons/ideal-gas-law.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/chem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/chem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/chem/lessons/ideal-gas-law.html#lesson",
+      "name": "Ideal Gas Law",
+      "url": "https://levlprep.com/chem/lessons/ideal-gas-law.html",
+      "description": "The ideal gas law, PV = nRT, links pressure, volume, kelvin temperature and moles of a gas; R must match the units.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".chem-ls-card"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "ideal gas law"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "gas constant"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "combined gas law"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "STP"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "partial pressure"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "mole fraction"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/chem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Chemistry",
+          "item": "https://levlprep.com/chem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Properties of Substances and Mixtures",
+          "item": "https://levlprep.com/chem/units/unit-3.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Ideal Gas Law",
+          "item": "https://levlprep.com/chem/lessons/ideal-gas-law.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="chem" data-topic="ideal-gas-law" data-unit="unit-3">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="chem-crumb chem-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-3.html">Properties of Substances and Mixtures</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Ideal Gas Law</span></nav></div>
+<div class="xshell chem-ls chem-stepped">
+  <aside class="chem-ls-rail chem-nav-ref" aria-label="Lesson parts">
+    <p class="chem-ls-k">Unit 3 · Properties of Substances and Mixtures</p>
+    <p class="chem-ls-links"><a href="../units/unit-3.html">&larr; Back to the unit</a><a href="../notes/ideal-gas-law.html">Read the notes</a></p>
+    <div class="chem-ls-prog"><div class="chem-ls-track"><div class="chem-ls-fill"></div></div><span class="chem-ls-count">Step 1 / 11</span></div>
+    <ol class="chem-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="chem-ls-main chem-lesson">
+  <header class="chem-ls-hero">
+    <div class="eyebrow">Unit 3 · Topic 3.4 <span class="chem-beta chem-nav-ref">Beta</span></div>
+    <h1>Ideal Gas Law</h1>
+    <p class="lede">The ideal gas law, PV = nRT, links pressure, volume, kelvin temperature and moles of a gas; R must match the units.</p>
+    <p class="chem-tags chem-nav-ref"><span class="chem-tag">Practice 5: Mathematical Routines</span></p>
+    <div class="chem-share chem-nav-ref" role="group" aria-label="Share or print this lesson"><a class="chem-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fchem%2Flessons%2Fideal-gas-law.html&amp;title=Ideal%20Gas%20Law%3A%20chemistry%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="chem-share-btn" data-copy="https://levlprep.com/chem/lessons/ideal-gas-law.html">Copy link</button><button type="button" class="chem-share-btn" data-print>Print</button></div>
+    <p class="chem-small chem-nav-ref"><a href="../practice.html?topic=ideal-gas-law">Question set for this topic</a></p>
+  </header>
+  <div class="chem-ls-card">
+  <section class="chem-part chem-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="chem-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="chem-step-body chem-hook">A party balloon shrinks in a cold car and swells in the sun, and a bike tire that was firm last night feels soft on a frosty morning. These are not separate facts. Every <a class="gl" href="../notes/phases-of-matter.html" data-c="states-of-matter">gas</a>, whatever its <a class="gl" href="../notes/moles-molar-mass.html" data-c="molecule">molecules</a>, follows one equation linking <a class="gl" href="../notes/phases-of-matter.html" data-c="pressure">pressure</a>, volume, temperature and amount.</div>
+  </section>
+  <section class="chem-part chem-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="chem-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Earlier topics"><ul class="chem-links"><li><a href="../notes/math-units.html">Units and Dimensional Analysis</a></li><li><a href="../notes/moles-molar-mass.html">Moles and Molar Mass</a></li><li><a href="../notes/phases-of-matter.html">Solids, Liquids, and Gases</a></li></ul></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="chem-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="chem-step-body"><div class="chem-qs" data-set="prereq"><div class="chem-q" data-qid="ideal-gas-law-pre-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> What is 25 °C in kelvin?</p><ol class="chem-opts"><li>298.15 K</li><li>248.15 K</li><li>25 K</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>K = °C + 273.15.</p><ul><li><b>Correct:</b> 298.15 K: </li><li>248.15 K: </li><li>25 K: </li></ul></details></div><div class="chem-q" data-qid="ideal-gas-law-pre-2"><p class="chem-q-stem"><span class="chem-q-n">2.</span> How many torr are in 1 atm?</p><ol class="chem-opts"><li>760</li><li>101.325</li><li>1,000</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>1 atm = 760 torr = 101.325 kPa.</p><ul><li><b>Correct:</b> 760: </li><li>101.325: </li><li>1,000: </li></ul></details></div><div class="chem-q" data-qid="ideal-gas-law-pre-3"><p class="chem-q-stem"><span class="chem-q-n">3.</span> How many moles are in 8.00 g of O₂ (32.00 g/mol)?</p><ol class="chem-opts"><li>0.250 mol</li><li>4.00 mol</li><li>256 mol</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>8.00 g ÷ 32.00 g/mol = 0.250 mol.</p><ul><li><b>Correct:</b> 0.250 mol: </li><li>4.00 mol: </li><li>256 mol: </li></ul></details></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="figure" aria-labelledby="h-figure">
+    <p class="chem-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="chem-step-body"><figure class="chem-figure chem-lesson-fig"><div class="chem-figimg" data-fig="partial-pressures"><img src="../figures/partial-pressures.svg" alt="Three containers of equal volume at the same temperature: 6 molecules of gas A exert 0.60 atm, 3 molecules of gas B exert 0.30 atm, and the mixture of both exerts 0.90 atm, the sum of the partial pressures." width="560" height="262" loading="lazy" decoding="async"></div><figcaption>Gases in a <a class="gl" href="../notes/mixture-composition.html" data-c="mixture">mixture</a> each exert their own <span class="gl" tabindex="0" data-c="partial-pressure">partial pressure</span>; the total is the sum. <span class="chem-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="chem-part chem-step" id="chain" aria-labelledby="h-chain">
+    <p class="chem-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="chem-step-body"><ol class="chem-chain"><li><span class="chem-cause">Gas pressure comes from particles hitting the walls</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">more particles (n) or faster particles (higher T) raise the pressure</span></li><li><span class="chem-cause">Squeezing the same particles into less volume makes them hit the walls more often</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">pressure and volume are inversely proportional at fixed n and T</span></li><li><span class="chem-cause">These proportions combine into <span class="gl" tabindex="0" data-c="ideal-gas">PV = nRT</span></span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">knowing three variables gives the fourth, with T in <a class="gl" href="../notes/math-units.html" data-c="kelvin">kelvin</a> and R matched to the units</span></li><li><span class="chem-cause">Each gas in a mixture hits the walls independently</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">partial pressures add, and each equals its <span class="gl" tabindex="0" data-c="mole-fraction">mole fraction</span> times the total</span></li></ol></div>
+  </section>
+  <section class="chem-part chem-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="chem-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="chem-step-body"><ul class="chem-ideas"><li>PV = nRT. T in kelvin; with atm and L, R = 0.08206 L·atm/(<a class="gl" href="../notes/moles-molar-mass.html" data-c="mole">mol</a>·K).</li><li>For one sample under new conditions: P₁V₁/T₁ = P₂V₂/T₂.</li><li>At <span class="gl" tabindex="0" data-c="stp">STP</span> (0 °C, 1 atm) one mole of gas fills 22.4 L. <a class="gl" href="../notes/moles-molar-mass.html" data-c="molar-mass">Molar mass</a> from gas data: M = mRT/PV = dRT/P.</li><li>P(total) = P(A) + P(B) + …; P(A) = X(A) × P(total).</li></ul></div>
+  </section>
+  <section class="chem-part chem-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="chem-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="chem-step-body chem-misconception"><p class="chem-wrong"><b>The wrong idea:</b> Doubling the temperature from 20 °C to 40 °C doubles the pressure of a sealed gas.</p><p class="chem-right"><b>What actually happens:</b> Pressure is proportional to kelvin temperature. 20 °C to 40 °C is 293.15 K to 313.15 K, a rise of only about 7%.</p></div>
+  </section>
+  <section class="chem-part chem-step" id="check" aria-labelledby="h-check">
+    <p class="chem-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="chem-step-body"><p class="chem-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="chem-qs" data-set="check"><div class="chem-set"><section class="chem-stim" data-stim="ideal-gas-law-s1" aria-labelledby="stim-ideal-gas-law-s1"><p class="chem-stim-k">Data table</p><h3 id="stim-ideal-gas-law-s1">Molar mass of a volatile liquid</h3><div class="chem-stim-text"><p>A student puts a few milliliters of an unknown liquid in a flask, covers it with foil pierced by a pinhole, and heats it in boiling water until all the liquid has vaporized and the excess has escaped. The flask, now full of the vapor at the bath temperature and room pressure, is cooled and weighed. The vapor condenses, and its mass is found by difference.</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Data"><table class="chem-data"><caption>Data</caption><thead><tr><th scope="col">Quantity</th><th scope="col">Value</th></tr></thead><tbody><tr><th scope="row">Volume of flask</th><td>248.0 mL</td></tr><tr><th scope="row">Temperature of water bath</th><td>98.6 °C</td></tr><tr><th scope="row">Barometric pressure</th><td>742.0 torr</td></tr><tr><th scope="row">Mass of condensed vapor</th><td>0.4625 g</td></tr></tbody></table></div></section><div class="chem-q" data-qid="chem-ideal-gas-law-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> How many moles of vapor filled the flask?</p><p class="chem-small">Type a number and its unit.</p><details class="chem-q-key"><summary>Show the answer</summary><p>T = 98.6 + 273.15 = 371.75 K; P = 742.0 torr × (1 atm / 760 torr) = 0.97632 atm; V = 0.2480 L. n = PV/RT = (0.97632 atm × 0.2480 L) / (0.08206 L·atm/(mol·K) × 371.75 K) = 0.0079371 mol, which is 0.007937 mol. (98.6 °C is known to the tenths place, so the sum is 371.8 K, four significant figures; report four.)</p><ul><li>Answer: 0.007937 mol</li></ul></details></div><div class="chem-q" data-qid="chem-ideal-gas-law-2"><p class="chem-q-stem"><span class="chem-q-n">2.</span> What is the molar mass of the unknown liquid, in g/mol?</p><p class="chem-small">Type a number in g/mol.</p><details class="chem-q-key"><summary>Show the answer</summary><p>M = mass / moles = 0.4625 g / 0.007937 mol = 58.271 g/mol, which is 58.27 g/mol to four significant figures.</p><ul><li>Answer: 58.27 g/mol</li></ul></details></div></div><div class="chem-set"><section class="chem-stim" data-stim="ideal-gas-law-s2" aria-labelledby="stim-ideal-gas-law-s2"><p class="chem-stim-k">Experimental setup</p><h3 id="stim-ideal-gas-law-s2">A three-gas mixture</h3><div class="chem-stim-text"><p>A rigid 4.00 L container at 27.0 °C holds 0.150 mol N₂, 0.0400 mol O₂ and 0.0100 mol Ar. The gases do not react.</p></div></section><div class="chem-q" data-qid="chem-ideal-gas-law-5"><p class="chem-q-stem"><span class="chem-q-n">3.</span> What is the total pressure in the container, in atm?</p><p class="chem-small">Type a number and its unit.</p><details class="chem-q-key"><summary>Show the answer</summary><p>Total moles = 0.150 + 0.0400 + 0.0100 = 0.200 mol; T = 300.15 K. P = nRT/V = (0.200 mol × 0.08206 L·atm/(mol·K) × 300.15 K) / 4.00 L = 1.23152 atm, which is 1.23 atm.</p><ul><li>Answer: 1.23 atm</li></ul></details></div><div class="chem-q" data-qid="chem-ideal-gas-law-6"><p class="chem-q-stem"><span class="chem-q-n">4.</span> What is the partial pressure of O₂, in atm?</p><p class="chem-small">Type a number and its unit.</p><details class="chem-q-key"><summary>Show the answer</summary><p>X(O₂) = 0.0400 / 0.200 = 0.200. P(O₂) = 0.200 × 1.2315 atm = 0.24630 atm, which is 0.246 atm. (Or P = nRT/V with 0.0400 mol.)</p><ul><li>Answer: 0.246 atm</li></ul></details></div></div><div class="chem-q" data-qid="chem-ideal-gas-law-13"><p class="chem-q-stem"><span class="chem-q-n">5.</span> A 2.50 L sample of gas at 1.00 atm and 25.0 °C is compressed and heated to 3.20 atm and 75.0 °C. What is its new volume?</p><p class="chem-small">Type a number and its unit.</p><details class="chem-q-key"><summary>Show the answer</summary><p>V₂ = V₁ × (P₁/P₂) × (T₂/T₁) = 2.50 L × (1.00/3.20) × (348.15 K / 298.15 K) = 0.91227 L, which is 0.912 L.</p><ul><li>Answer: 0.912 L</li></ul></details></div><div class="chem-q" data-qid="chem-ideal-gas-law-15"><p class="chem-q-stem"><span class="chem-q-n">6.</span> A gas has a density of 1.96 g/L at 0.0 °C and 1.00 atm. What is its molar mass?</p><p class="chem-small">Type a number and its unit.</p><details class="chem-q-key"><summary>Show the answer</summary><p>M = dRT/P = (1.96 g/L × 0.08206 L·atm/(mol·K) × 273.15 K) / 1.00 atm = 43.933 g/mol, which is 43.9 g/mol (CO₂ is 44.01 g/mol).</p><ul><li>Answer: 43.9 g/mol</li></ul></details></div><div class="chem-q" data-qid="chem-ideal-gas-law-17"><p class="chem-q-stem"><span class="chem-q-n">7.</span> Equal volumes of H₂ and CO₂ are at the same temperature and pressure. Which statement is true?</p><ol class="chem-opts"><li>They contain equal numbers of molecules, but the CO₂ sample has the greater mass.</li><li>They have equal masses, but the H₂ sample contains more molecules.</li><li>The CO₂ sample contains more molecules, because CO₂ molecules are larger.</li><li>They contain equal masses and equal numbers of molecules.</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>With P, V and T equal, n = PV/RT is equal, so the numbers of molecules match. Each CO₂ molecule (44.01 g/mol) is heavier than each H₂ molecule (2.016 g/mol), so the CO₂ sample has more mass.</p><ul><li><b>Correct:</b> They contain equal numbers of molecules, but the CO₂ sample has the greater mass.: Right: same n, different molar masses.</li><li>They have equal masses, but the H₂ sample contains more molecules.: Equal n means equal numbers of molecules, and different molar masses mean different masses.</li><li>The CO₂ sample contains more molecules, because CO₂ molecules are larger.: For an ideal gas the size of the molecules does not affect how many fit in a volume.</li><li>They contain equal masses and equal numbers of molecules.: The numbers match, but the masses differ by a factor of about 22.</li></ul></details></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="summary" aria-labelledby="h-summary">
+    <p class="chem-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="chem-step-body">The ideal gas law, PV = nRT, links pressure, volume, kelvin temperature and moles of a gas; R must match the units. The <span class="gl" tabindex="0" data-c="combined-gas-law">combined gas law</span> follows one sample through a change. The law also gives molar mass and <a class="gl" href="../notes/math-units.html" data-c="density">density</a>, and in a mixture each gas has a partial pressure equal to its mole fraction times the total.</div>
+  </section>
+  <section class="chem-part chem-step" id="next" aria-labelledby="h-next">
+    <p class="chem-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="kinetic-molecular-theory.html">Kinetic Molecular Theory &rarr;</a></p></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="connections" aria-labelledby="h-connections">
+    <p class="chem-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="chem-step-body"><ul class="chem-links chem-nav-ref"><li><a href="../notes/phases-of-matter.html">Pressure and its units (Solids, Liquids, and Gases)</a></li><li><a href="../notes/kinetic-molecular-theory.html">Next: why gases behave this way (Kinetic Molecular Theory)</a></li></ul></div>
+  </section>
+    <div class="chem-ls-actions chem-nav-ref"><button type="button" class="chem-ls-back">&larr; Previous</button><button type="button" class="chem-ls-go">Continue &rarr;</button><a class="chem-ls-go" hidden href="kinetic-molecular-theory.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.chem-ls'),p=s&&s.querySelectorAll('.chem-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.chem-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apchem_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="chem-foot xshell">
+  <p class="chem-accuracy-note"><span class="chem-beta chem-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Chemistry teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="chem-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="lesson:ideal-gas-law">Report a problem</button></span></p>
+  <p class="chem-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="chem-page-data">{"topic":"ideal-gas-law","unit":"unit-3","free":false,"prereq":[{"id":"ideal-gas-law-pre-1","type":"single","unit":"unit-3","topic":"ideal-gas-law","q":"What is 25 °C in kelvin?","options":["298.15 K","248.15 K","25 K"],"correct":0,"why":{"correct":"K = °C + 273.15.","options":["","",""]},"reviewHref":"../notes/math-units.html","reviewTitle":"Units and Dimensional Analysis"},{"id":"ideal-gas-law-pre-2","type":"single","unit":"unit-3","topic":"ideal-gas-law","q":"How many torr are in 1 atm?","options":["760","101.325","1,000"],"correct":0,"why":{"correct":"1 atm = 760 torr = 101.325 kPa.","options":["","",""]},"reviewHref":"../notes/phases-of-matter.html","reviewTitle":"Solids, Liquids, and Gases"},{"id":"ideal-gas-law-pre-3","type":"single","unit":"unit-3","topic":"ideal-gas-law","q":"How many moles are in 8.00 g of O₂ (32.00 g/mol)?","options":["0.250 mol","4.00 mol","256 mol"],"correct":0,"why":{"correct":"8.00 g ÷ 32.00 g/mol = 0.250 mol.","options":["","",""]},"reviewHref":"../notes/moles-molar-mass.html","reviewTitle":"Moles and Molar Mass"}],"check":[{"id":"chem-ideal-gas-law-1","type":"numeric","unit":"unit-3","topic":"ideal-gas-law","practice":"5.F","level":"apply","diff":2,"stimulus":"ideal-gas-law-s1","q":"How many moles of vapor filled the flask?","numeric":{"answer":0.007937,"tol":0.000002,"unit":"mol","askUnit":true,"sigfigs":4,"mistakes":[{"value":0.02992,"rel":0.02,"why":"Value: you used the temperature in °C. Gas laws need kelvin: 98.6 + 273.15 = 371.75 K."},{"value":6.032,"rel":0.02,"why":"Value: you used the pressure in torr with R in L·atm/(mol·K). Convert to atm first: 742.0 / 760."},{"value":7.937,"rel":0.02,"why":"Value: you used the volume in mL. R in L·atm/(mol·K) needs liters: 248.0 mL = 0.2480 L."},{"value":0.00007834,"rel":0.02,"why":"Value: you used R = 8.314 J/(mol·K). With atm and liters, use R = 0.08206 L·atm/(mol·K)."}]},"why":{"correct":"T = 98.6 + 273.15 = 371.75 K; P = 742.0 torr × (1 atm / 760 torr) = 0.97632 atm; V = 0.2480 L. n = PV/RT = (0.97632 atm × 0.2480 L) / (0.08206 L·atm/(mol·K) × 371.75 K) = 0.0079371 mol, which is 0.007937 mol. (98.6 °C is known to the tenths place, so the sum is 371.8 K, four significant figures; report four.)"}},{"id":"chem-ideal-gas-law-2","type":"numeric","unit":"unit-3","topic":"ideal-gas-law","practice":"5.F","level":"apply","diff":2,"stimulus":"ideal-gas-law-s1","q":"What is the molar mass of the unknown liquid, in g/mol?","numeric":{"answer":58.27,"tol":0.02,"unit":"g/mol","sigfigs":4,"mistakes":[{"value":0.01716,"rel":0.02,"why":"Value: you divided moles by mass. Molar mass is grams per mole: mass ÷ moles."},{"value":15.46,"rel":0.02,"why":"Value: this comes from using the temperature in °C. Convert to kelvin first."}]},"why":{"correct":"M = mass / moles = 0.4625 g / 0.007937 mol = 58.271 g/mol, which is 58.27 g/mol to four significant figures."}},{"id":"chem-ideal-gas-law-5","type":"numeric","unit":"unit-3","topic":"ideal-gas-law","practice":"5.F","level":"apply","diff":2,"stimulus":"ideal-gas-law-s2","q":"What is the total pressure in the container, in atm?","numeric":{"answer":1.23,"tol":0.01,"unit":"atm","askUnit":true,"sigfigs":3,"mistakes":[{"value":0.1108,"rel":0.02,"why":"Value: you used 27.0 °C. Convert to kelvin: 27.0 + 273.15 = 300.15 K."},{"value":124.8,"rel":0.02,"why":"Value: you used R = 8.314 J/(mol·K). For atm and liters, R = 0.08206 L·atm/(mol·K)."},{"value":0.9236,"rel":0.02,"why":"Value: that is the partial pressure of N₂ alone. The total uses all 0.200 mol of gas."}]},"why":{"correct":"Total moles = 0.150 + 0.0400 + 0.0100 = 0.200 mol; T = 300.15 K. P = nRT/V = (0.200 mol × 0.08206 L·atm/(mol·K) × 300.15 K) / 4.00 L = 1.23152 atm, which is 1.23 atm."}},{"id":"chem-ideal-gas-law-6","type":"numeric","unit":"unit-3","topic":"ideal-gas-law","practice":"5.F","level":"apply","diff":2,"stimulus":"ideal-gas-law-s2","q":"What is the partial pressure of O₂, in atm?","numeric":{"answer":0.246,"tol":0.001,"unit":"atm","askUnit":true,"sigfigs":3,"mistakes":[{"value":0.4105,"rel":0.02,"why":"Value: you split the pressure equally among three gases. Each gas's share follows its mole fraction, not the number of gases."}]},"why":{"correct":"X(O₂) = 0.0400 / 0.200 = 0.200. P(O₂) = 0.200 × 1.2315 atm = 0.24630 atm, which is 0.246 atm. (Or P = nRT/V with 0.0400 mol.)"}},{"id":"chem-ideal-gas-law-13","type":"numeric","unit":"unit-3","topic":"ideal-gas-law","practice":"5.F","level":"apply","diff":2,"q":"A 2.50 L sample of gas at 1.00 atm and 25.0 °C is compressed and heated to 3.20 atm and 75.0 °C. What is its new volume?","numeric":{"answer":0.912,"tol":0.001,"unit":"L","askUnit":true,"sigfigs":3,"mistakes":[{"value":2.344,"rel":0.02,"why":"Value: you used °C. The ratio 75.0/25.0 triples the volume; in kelvin the ratio is 348.15/298.15."},{"value":9.342,"rel":0.02,"why":"Value: you inverted the pressure ratio. Higher pressure makes the volume smaller: multiply by P₁/P₂."}]},"why":{"correct":"V₂ = V₁ × (P₁/P₂) × (T₂/T₁) = 2.50 L × (1.00/3.20) × (348.15 K / 298.15 K) = 0.91227 L, which is 0.912 L."}},{"id":"chem-ideal-gas-law-15","type":"numeric","unit":"unit-3","topic":"ideal-gas-law","practice":"5.F","level":"apply","diff":2,"q":"A gas has a density of 1.96 g/L at 0.0 °C and 1.00 atm. What is its molar mass?","numeric":{"answer":43.9,"tol":0.1,"unit":"g/mol","askUnit":true,"sigfigs":3,"mistakes":[{"value":0.08744,"rel":0.02,"why":"Value: you calculated dP/RT. Rearranging PV = (m/M)RT gives M = dRT/P."}]},"why":{"correct":"M = dRT/P = (1.96 g/L × 0.08206 L·atm/(mol·K) × 273.15 K) / 1.00 atm = 43.933 g/mol, which is 43.9 g/mol (CO₂ is 44.01 g/mol)."}},{"id":"chem-ideal-gas-law-17","type":"single","unit":"unit-3","topic":"ideal-gas-law","practice":"6.D","level":"apply","diff":2,"q":"Equal volumes of H₂ and CO₂ are at the same temperature and pressure. Which statement is true?","options":["They contain equal numbers of molecules, but the CO₂ sample has the greater mass.","They have equal masses, but the H₂ sample contains more molecules.","The CO₂ sample contains more molecules, because CO₂ molecules are larger.","They contain equal masses and equal numbers of molecules."],"correct":0,"why":{"correct":"With P, V and T equal, n = PV/RT is equal, so the numbers of molecules match. Each CO₂ molecule (44.01 g/mol) is heavier than each H₂ molecule (2.016 g/mol), so the CO₂ sample has more mass.","options":["Right: same n, different molar masses.","Equal n means equal numbers of molecules, and different molar masses mean different masses.","For an ideal gas the size of the molecules does not affect how many fit in a volume.","The numbers match, but the masses differ by a factor of about 22."]}}],"stimuli":{"ideal-gas-law-s1":{"kind":"table","title":"Molar mass of a volatile liquid","html":"\u003cdiv class=\"chem-stim-text\">\u003cp>A student puts a few milliliters of an unknown liquid in a flask, covers it with foil pierced by a pinhole, and heats it in boiling water until all the liquid has vaporized and the excess has escaped. The flask, now full of the vapor at the bath temperature and room pressure, is cooled and weighed. The vapor condenses, and its mass is found by difference.\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Data\">\u003ctable class=\"chem-data\">\u003ccaption>Data\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Quantity\u003c/th>\u003cth scope=\"col\">Value\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">Volume of flask\u003c/th>\u003ctd>248.0 mL\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Temperature of water bath\u003c/th>\u003ctd>98.6 °C\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Barometric pressure\u003c/th>\u003ctd>742.0 torr\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Mass of condensed vapor\u003c/th>\u003ctd>0.4625 g\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"},"ideal-gas-law-s2":{"kind":"setup","title":"A three-gas mixture","html":"\u003cdiv class=\"chem-stim-text\">\u003cp>A rigid 4.00 L container at 27.0 °C holds 0.150 mol N₂, 0.0400 mol O₂ and 0.0100 mol Ar. The gases do not react.\u003c/p>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApChemSection = 'learn'; window.ApChemBase = '../';</script>
+<script src="../assets/chem-curriculum.js" defer></script>
+<script src="../assets/chem-core.js" defer></script>
+<script src="../assets/chem-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/chem-questions.js" defer></script>
+<script src="../assets/chem-lesson.js" defer></script>
+</body>
+</html>

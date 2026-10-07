@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" width="760" height="460" role="img" aria-labelledby="t d">
+<title id="t">A zinc-copper galvanic cell</title>
+<desc id="d">Two beakers joined by a wire through a voltmeter and by a salt bridge of potassium nitrate. Left beaker: a zinc strip in zinc nitrate solution; this is the anode, where zinc atoms are oxidized to zinc ions. Right beaker: a copper strip in copper(II) nitrate solution; this is the cathode, where copper(II) ions are reduced to copper atoms. Electrons flow through the wire from the zinc anode to the copper cathode. In the salt bridge, nitrate ions move toward the anode beaker and potassium ions move toward the cathode beaker. The zinc strip loses mass and the copper strip gains mass.</desc>
+<defs><marker id="gc-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#D55E00"/></marker>
+<marker id="gc-b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="460" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<!-- wire and voltmeter -->
+<path d="M175,170 L175,60 L345,60 M415,60 L585,60 L585,170" fill="none" stroke="#1F2A28" stroke-width="3"/>
+<circle cx="380" cy="60" r="34" fill="#F4F6F6" stroke="#1F2A28" stroke-width="3"/><text x="380" y="66" font-size="18" text-anchor="middle" font-weight="700">V</text>
+<text x="380" y="18" font-size="13" text-anchor="middle">voltmeter</text>
+<line x1="225" y1="40" x2="320" y2="40" stroke="#D55E00" stroke-width="3" marker-end="url(#gc-a)"/>
+<line x1="440" y1="40" x2="535" y2="40" stroke="#D55E00" stroke-width="3" marker-end="url(#gc-a)"/>
+<text x="272" y="30" font-size="14" text-anchor="middle" fill="#D55E00" font-weight="700">e⁻</text><text x="488" y="30" font-size="14" text-anchor="middle" fill="#D55E00" font-weight="700">e⁻</text>
+<!-- beakers -->
+<path d="M80,160 L80,370 Q80,385 95,385 L265,385 Q280,385 280,370 L280,160" fill="none" stroke="#5D6B69" stroke-width="3"/>
+<path d="M480,160 L480,370 Q480,385 495,385 L665,385 Q680,385 680,370 L680,160" fill="none" stroke="#5D6B69" stroke-width="3"/>
+<rect x="82" y="215" width="196" height="168" fill="#E8EEF2"/>
+<rect x="482" y="215" width="196" height="168" fill="#C9E1F4"/>
+<!-- electrodes -->
+<rect x="160" y="170" width="30" height="170" fill="#9AA3A8" stroke="#4A5257" stroke-width="2"/>
+<rect x="570" y="170" width="30" height="170" fill="#C8783C" stroke="#7A421A" stroke-width="2"/>
+<!-- salt bridge -->
+<path d="M240,300 L240,135 Q240,110 265,110 L495,110 Q520,110 520,135 L520,300" fill="none" stroke="#7A8A88" stroke-width="30" stroke-linejoin="round"/>
+<path d="M240,300 L240,135 Q240,110 265,110 L495,110 Q520,110 520,135 L520,300" fill="none" stroke="#F1F3E6" stroke-width="24" stroke-linejoin="round"/>
+<text x="380" y="150" font-size="13" text-anchor="middle">salt bridge, KNO₃(aq)</text>
+<line x1="335" y1="110" x2="272" y2="110" stroke="#1F2A28" stroke-width="2" marker-end="url(#gc-b)"/><text x="340" y="115" font-size="13">NO₃⁻</text>
+<line x1="425" y1="110" x2="488" y2="110" stroke="#1F2A28" stroke-width="2" marker-end="url(#gc-b)"/><text x="402" y="115" font-size="13">K⁺</text>
+<!-- labels -->
+<g font-size="14" text-anchor="middle">
+<text x="175" y="405" font-weight="700">Anode: Zn(s) in Zn(NO₃)₂(aq)</text>
+<text x="585" y="405" font-weight="700">Cathode: Cu(s) in Cu(NO₃)₂(aq)</text>
+</g>
+<g font-size="14" text-anchor="middle">
+<text x="175" y="427">oxidation: Zn → Zn²⁺ + 2e⁻</text><text x="175" y="448">the Zn strip loses mass</text>
+<text x="585" y="427">reduction: Cu²⁺ + 2e⁻ → Cu</text><text x="585" y="448">the Cu strip gains mass</text>
+</g>
+</g></svg>

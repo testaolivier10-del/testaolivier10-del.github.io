@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 270" width="760" height="270" role="img" aria-labelledby="ksp-molar-solubility-t ksp-molar-solubility-d">
+<title id="ksp-molar-solubility-t">Ksp and molar solubility</title>
+<desc id="ksp-molar-solubility-d">Three panels. A 1 to 1 salt, AgCl, dissolves to Ag+ and Cl−, each at concentration s, so Ksp = s squared and s is the square root of Ksp, 1.3 times 10 to the minus 5 M. A 1 to 2 salt, CaF2, dissolves to Ca2+ at s and F− at 2s, so Ksp = s times (2s) squared = 4s cubed and s is the cube root of Ksp over 4, 2.1 times 10 to the minus 4 M. A warning panel: square the whole 2s, compare Ksp values only for salts with the same ion ratio, and never include the solid. CaF2 has the smaller Ksp but the larger molar solubility.</desc>
+<rect width="760" height="270" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<text x="380" y="24" font-size="15" font-weight="700" text-anchor="middle">From K<tspan font-size="11" dy="4">sp</tspan><tspan dy="-4"> to molar solubility, s</tspan></text>
+<rect x="15" y="40" width="235" height="190" rx="10" fill="#F4F7FD" stroke="#1D44A6" stroke-width="2"/>
+<text x="132" y="66" font-size="15" font-weight="700" text-anchor="middle">1 : 1 salt (AgCl)</text>
+<text x="132" y="96" font-size="13" text-anchor="middle">AgCl(s) ⇌ Ag⁺ + Cl⁻</text>
+<text x="132" y="122" font-size="13" text-anchor="middle">s &#160; &#160; &#160; &#160; s</text>
+<text x="132" y="152" font-size="14" font-weight="700" text-anchor="middle">K<tspan font-size="9" dy="3">sp</tspan><tspan dy="-3"></tspan> = s · s = s²</text>
+<text x="132" y="182" font-size="13" text-anchor="middle">s = √K<tspan font-size="9" dy="3">sp</tspan><tspan dy="-3"></tspan></text>
+<text x="132" y="210" font-size="12" text-anchor="middle">= 1.3 × 10<tspan dy="-5" font-size="9">−5</tspan><tspan dy="5"> </tspan>M</text>
+<rect x="262" y="40" width="235" height="190" rx="10" fill="#FBE9DD" stroke="#B5541B" stroke-width="2"/>
+<text x="380" y="66" font-size="15" font-weight="700" text-anchor="middle">1 : 2 salt (CaF₂)</text>
+<text x="380" y="96" font-size="13" text-anchor="middle">CaF₂(s) ⇌ Ca²⁺ + 2 F⁻</text>
+<text x="380" y="122" font-size="13" text-anchor="middle">s &#160; &#160; &#160; &#160; 2s</text>
+<text x="380" y="152" font-size="14" font-weight="700" text-anchor="middle">K<tspan font-size="9" dy="3">sp</tspan><tspan dy="-3"></tspan> = s(2s)² = 4s³</text>
+<text x="380" y="182" font-size="13" text-anchor="middle">s = ∛(K<tspan font-size="9" dy="3">sp</tspan><tspan dy="-3"></tspan>/4)</text>
+<text x="380" y="210" font-size="12" text-anchor="middle">= 2.1 × 10<tspan dy="-5" font-size="9">−4</tspan><tspan dy="5"> </tspan>M</text>
+<rect x="509" y="40" width="235" height="190" rx="10" fill="#FFF4D6" stroke="#7A5200" stroke-width="2"/>
+<text x="626" y="66" font-size="15" font-weight="700" text-anchor="middle">Watch out</text>
+<text x="626" y="96" font-size="12" text-anchor="middle">Square the whole 2s: (2s)² = 4s²,</text>
+<text x="626" y="114" font-size="12" text-anchor="middle">not 2s².</text>
+<text x="626" y="144" font-size="12" text-anchor="middle">Compare K<tspan font-size="9" dy="3">sp</tspan><tspan dy="-3"></tspan> values only for salts</text>
+<text x="626" y="162" font-size="12" text-anchor="middle">with the same ion ratio.</text>
+<text x="626" y="192" font-size="12" text-anchor="middle">The solid is never in K<tspan font-size="9" dy="3">sp</tspan><tspan dy="-3"></tspan>.</text>
+<text x="380" y="256" font-size="13" text-anchor="middle">At 25 °C: K<tspan font-size="9" dy="3">sp</tspan><tspan dy="-3"></tspan>(AgCl) = 1.8 × 10<tspan dy="-5" font-size="9">−10</tspan><tspan dy="5"> </tspan>, K<tspan font-size="9" dy="3">sp</tspan><tspan dy="-3"></tspan>(CaF₂) = 3.9 × 10<tspan dy="-5" font-size="9">−11</tspan><tspan dy="5"> </tspan>. CaF₂ has the smaller K<tspan font-size="9" dy="3">sp</tspan><tspan dy="-3"></tspan> but the larger s.</text>
+</g>
+</svg>

@@ -1,0 +1,12 @@
+{
+ "dg-k-e-triangle": {
+  "file": "figures/dg-k-e-triangle.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A triangle linking ΔG° at the top to K at the bottom left by ΔG° = −RT ln K and to E°cell at the bottom right by ΔG° = −nFE°cell. A table below: favored reactions have ΔG° below zero, K above 1 and E°cell above zero; unfavored ones have the opposite signs."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "molecularity": {
+  "file": "figures/molecularity.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three particle pictures. Unimolecular: a single molecule of two atoms falls apart into two atoms; its rate law is rate equals k times the concentration of A. Bimolecular: two particles collide and rearrange; rate equals k times the concentration of A times the concentration of B. Termolecular: three particles must meet at the same moment, which is rare; rate equals k times the concentration of A squared times the concentration of B."
+ }
+}

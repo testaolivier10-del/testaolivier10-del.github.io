@@ -1,0 +1,142 @@
+{
+ "about": "Justification trainer prompts for Unit 3 (docs/apchem-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u3-boiling-halogens",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.D",
+   "skill": "imf",
+   "title": "Why iodine boils higher than chlorine",
+   "context": "<p>Boiling points: Cl₂ −34 °C (34 electrons); Br₂ 59 °C (70 electrons); I₂ 184 °C (106 electrons). All three are nonpolar.</p>",
+   "prompt": "<b>Explain</b> the trend in boiling points from Cl₂ to I₂ in terms of intermolecular forces.",
+   "checklist": [
+    "Names the force: all three are nonpolar, so the only intermolecular forces are London dispersion forces",
+    "Gives the cause: more electrons and a larger electron cloud make the molecule more polarizable, so its temporary dipoles are larger",
+    "Says that boiling separates whole molecules (overcomes intermolecular forces); no covalent bond breaks"
+   ],
+   "earns": {
+    "answer": "All three halogens are nonpolar, so the only forces between their molecules are London dispersion forces. Going from Cl₂ (34 electrons) to I₂ (106 electrons), the electron cloud is larger and more easily distorted (more polarizable), so the temporary dipoles are larger and the dispersion forces stronger. More energy is needed to separate the molecules from each other in the liquid, so the boiling point rises.",
+    "why": "It names the force in all three substances and explains its strength by electron count and polarizability, the reason the readers ask for."
+   },
+   "misses": {
+    "answer": "I₂ has the largest molar mass, so it has the strongest bonds and the highest boiling point.",
+    "why": "Molar mass alone is not a reason, and \"bonds\" suggests covalent bonds break on boiling. It never names dispersion forces or polarizability."
+   }
+  },
+  {
+   "id": "u3-boiling-same-mass",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.D",
+   "skill": "imf",
+   "title": "Two liquids of nearly equal molar mass",
+   "context": "<p>Ethanol, CH₃CH₂OH (46.07 g/mol), boils at 78 °C. Dimethyl ether, CH₃OCH₃ (46.07 g/mol), boils at −24 °C.</p>",
+   "prompt": "The two compounds have the same molar mass. <b>Explain</b> why ethanol boils about 100 °C higher than dimethyl ether.",
+   "checklist": [
+    "Names the forces in both: both have dispersion forces and dipole-dipole forces; only ethanol has an H bonded to O",
+    "Says ethanol molecules form hydrogen bonds with each other (H on O of one molecule to a lone pair on O of another); dimethyl ether cannot, since its H atoms are bonded to C",
+    "Says the dispersion forces are similar (same atoms, same number of electrons), so the hydrogen bonds make the difference"
+   ],
+   "earns": {
+    "answer": "Both molecules have the same atoms and electrons, so their dispersion forces are about the same, and both are polar. Only ethanol has an H atom bonded to O, so ethanol molecules hydrogen bond to each other; in dimethyl ether every H is bonded to C, so it cannot. The extra hydrogen bonding in ethanol takes more energy to overcome, so it boils higher.",
+    "why": "It names every force in both substances, rules out dispersion as the difference, and gives the structural reason one has hydrogen bonds."
+   },
+   "misses": {
+    "answer": "Ethanol has hydrogen bonding because it contains hydrogen and oxygen.",
+    "why": "Dimethyl ether also contains H and O. Hydrogen bonding needs H bonded directly to N, O or F, and the answer never compares the two liquids."
+   }
+  },
+  {
+   "id": "u3-vapor-pressure",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "6.D",
+   "skill": "imf",
+   "title": "Which liquid evaporates more readily",
+   "context": "<p>At 20 °C the vapor pressure of acetone, CH₃COCH₃, is 185 torr and that of water is 17.5 torr.</p>",
+   "prompt": "<b>Explain</b> at the particle level why acetone has a much higher vapor pressure than water at the same temperature.",
+   "checklist": [
+    "Compares the intermolecular forces: water molecules hydrogen bond to each other; acetone (no H on O) has dipole-dipole and dispersion forces only",
+    "At the same temperature the molecules have the same distribution of kinetic energies, so a larger fraction of acetone molecules have enough energy to escape the weaker attractions",
+    "Connects more escaping molecules to a higher vapor pressure at equilibrium"
+   ],
+   "earns": {
+    "answer": "Water molecules hydrogen bond to each other, while acetone has no H on its O and only has dipole-dipole and dispersion forces, which are weaker overall. At 20 °C a larger fraction of acetone molecules at the surface have enough kinetic energy to overcome the attractions and escape, so more molecules are in the vapor when evaporation and condensation balance. That gives acetone the higher vapor pressure.",
+    "why": "It compares both liquids' forces and links them to the fraction of molecules able to escape, which sets vapor pressure."
+   },
+   "misses": {
+    "answer": "Acetone has a lower boiling point, so it has a higher vapor pressure.",
+    "why": "That restates the data instead of explaining it. Both properties come from the intermolecular forces, which the answer never compares."
+   }
+  },
+  {
+   "id": "u3-ion-dipole-size",
+   "unit": "unit-3",
+   "topic": "solution-particle-models",
+   "practice": "6.D",
+   "skill": "coulomb",
+   "title": "Which ion holds water molecules more tightly",
+   "context": "<p>In water, Li⁺ (radius 76 pm) and K⁺ (radius 138 pm) are each surrounded by water molecules.</p>",
+   "prompt": "<b>Explain</b> why water molecules are attracted more strongly to Li⁺ than to K⁺. Say how the water molecules are oriented around each ion.",
+   "checklist": [
+    "Orientation: the partially negative O end of each water molecule points toward the cation",
+    "Same charge (1+) on both ions; Li⁺ is smaller, so the water's O can get closer to the center of the ion",
+    "Coulomb's law: the smaller distance gives a stronger ion-dipole attraction"
+   ],
+   "earns": {
+    "answer": "Around each cation, the water molecules point their partially negative oxygen ends toward the ion. Li⁺ and K⁺ have the same charge, 1+, but Li⁺ is much smaller (76 pm against 138 pm), so the oxygen of each water molecule gets closer to the center of the ion. By Coulomb's law the shorter distance gives a stronger ion-dipole attraction for Li⁺.",
+    "why": "It gets the dipole orientation right and compares the two ions on charge and distance."
+   },
+   "misses": {
+    "answer": "The hydrogen atoms of water point toward Li⁺ and form hydrogen bonds, which are stronger because lithium is small.",
+    "why": "The orientation is backwards (H points toward anions, O toward cations), and the attraction is ion-dipole, not hydrogen bonding."
+   }
+  },
+  {
+   "id": "u3-real-gas-attractions",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "6.E",
+   "skill": "imf",
+   "title": "Why a real gas falls short of the ideal pressure",
+   "context": "<p>At 500 K, 1.00 mol of NH₃ gas in a 1.00 L container exerts a measured pressure lower than the ideal gas law predicts.</p>",
+   "prompt": "<b>Explain</b> at the particle level why the measured pressure of NH₃ is lower than the ideal gas law predicts.",
+   "checklist": [
+    "Says the ideal gas law assumes no attractions between gas particles",
+    "Says NH₃ molecules are polar and hydrogen bond, so they attract each other noticeably when crowded this closely",
+    "Says attractions pull molecules back as they approach the wall, so they hit the walls less often or with less force, lowering the pressure"
+   ],
+   "earns": {
+    "answer": "The ideal gas law assumes gas particles do not attract each other. NH₃ molecules are polar and can hydrogen bond, and at 1.00 mol in 1.00 L they are close enough for these attractions to matter. A molecule about to hit the wall is pulled back by its neighbors, so collisions with the wall are less forceful and less frequent, and the measured pressure is lower than predicted.",
+    "why": "It names the ideal-gas assumption that fails, why it fails for this gas, and how that changes the wall collisions that make pressure."
+   },
+   "misses": {
+    "answer": "Real gas molecules take up space, so the pressure is lower than ideal.",
+    "why": "The volume of the molecules makes the real pressure higher, not lower. A lower pressure comes from attractions, which the answer does not mention."
+   }
+  },
+  {
+   "id": "u3-beer-dilution",
+   "unit": "unit-3",
+   "topic": "beer-lambert-law",
+   "practice": "6.E",
+   "skill": "procedure",
+   "title": "What a fingerprint on the cuvette does",
+   "context": "<p>A student makes a calibration line from standards, then measures an unknown. Before measuring the unknown, the student leaves a fingerprint on the clear face of its cuvette, which absorbs some light.</p>",
+   "prompt": "<b>Justify</b> whether the student's calculated concentration of the unknown will be too high, too low or unaffected.",
+   "checklist": [
+    "Says the fingerprint absorbs or scatters light, so the measured absorbance is higher than the solution's true absorbance",
+    "Uses A = εbc (or the calibration line): a higher absorbance gives a higher calculated concentration, so the result is too high"
+   ],
+   "earns": {
+    "answer": "Too high. The fingerprint absorbs or scatters some of the light, so less light reaches the detector and the measured absorbance is higher than the solution's own. The concentration is read from the calibration line (A = εbc, with ε and b fixed), so a higher absorbance gives a calculated concentration that is too high.",
+    "why": "It states the direction, then traces the error through the measured quantity and the equation to the result."
+   },
+   "misses": {
+    "answer": "The result will be inaccurate because the fingerprint interferes with the light.",
+    "why": "A justification of an error needs a direction (too high or too low) and the reason through A = εbc. \"Inaccurate\" earns nothing."
+   }
+  }
+ ]
+}

@@ -1,0 +1,545 @@
+{
+ "stimuli": {
+  "free-energy-equilibrium-s1": {
+   "kind": "table",
+   "title": "Five reactions at 298 K",
+   "text": "<p>Standard free energy changes for five reactions, A to E, all at 298 K. R = 8.314 J/(mol·K).</p>",
+   "table": {
+    "caption": "ΔG° of five reactions at 298 K",
+    "cols": [
+     "Reaction",
+     "ΔG° (kJ/mol)"
+    ],
+    "rows": [
+     [
+      "A",
+      "−20.0"
+     ],
+     [
+      "B",
+      "−5.0"
+     ],
+     [
+      "C",
+      "0.0"
+     ],
+     [
+      "D",
+      "+5.0"
+     ],
+     [
+      "E",
+      "+20.0"
+     ]
+    ]
+   }
+  },
+  "free-energy-equilibrium-s2": {
+   "kind": "table",
+   "title": "Equilibrium constants",
+   "text": "<p>Equilibrium constants at 298 K. R = 8.314 J/(mol·K).</p>",
+   "table": {
+    "caption": "Three equilibria and their K values at 298 K",
+    "cols": [
+     "Equilibrium",
+     "K at 298 K"
+    ],
+    "rows": [
+     [
+      "HC₂H₃O₂(aq) + H₂O(l) ⇌ H₃O⁺(aq) + C₂H₃O₂⁻(aq)",
+      "1.8 × 10⁻⁵"
+     ],
+     [
+      "N₂(g) + 3 H₂(g) ⇌ 2 NH₃(g)",
+      "6.6 × 10⁵"
+     ],
+     [
+      "N₂O₄(g) ⇌ 2 NO₂(g)",
+      "0.15"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-free-energy-equilibrium-1",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "free-energy-equilibrium-s1",
+   "q": "For which reaction is K closest to 1?",
+   "options": [
+    "A",
+    "C",
+    "E",
+    "B"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "ΔG° = −RT ln K. When ΔG° = 0, ln K = 0 and K = 1.",
+    "options": [
+     "ΔG° = −20.0 kJ/mol gives K of about 3 × 10³, far above 1.",
+     "Right: ΔG° = 0 gives ln K = 0, so K = 1.",
+     "ΔG° = +20.0 kJ/mol gives K of about 3 × 10⁻⁴, far below 1.",
+     "ΔG° = −5.0 kJ/mol gives K of about 7.5: close-ish, but not as close as reaction C."
+    ]
+   }
+  },
+  {
+   "id": "chem-free-energy-equilibrium-2",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "free-energy-equilibrium-s1",
+   "q": "Calculate K for reaction A at 298 K.",
+   "numeric": {
+    "answer": 3200,
+    "rel": 0.02,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1.0081050891135046,
+      "rel": 0.01,
+      "why": "Value: you used ΔG° in kJ with R in J. Convert −20.0 kJ/mol to −20,000 J/mol."
+     },
+     {
+      "value": 118146072.18687986,
+      "rel": 0.05,
+      "why": "Value: you raised 10 to the power instead of e. ΔG° = −RT ln K uses the natural log, so K = e^(−ΔG°/RT)."
+     },
+     {
+      "value": 0.00031,
+      "rel": 0.03,
+      "why": "Sign: −ΔG°/RT = −(−20,000)/(8.314 × 298) = +8.07, a positive exponent, so K > 1."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ln K = −ΔG°/RT = −(−20,000 J/mol)/[(8.314 J/(mol·K))(298 K)] = 8.072. K = e^8.072 = 3.2 × 10³ (two significant figures). K > 1, as expected for ΔG° < 0."
+   }
+  },
+  {
+   "id": "chem-free-energy-equilibrium-3",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "free-energy-equilibrium-s1",
+   "q": "At equilibrium, which reaction has mostly reactants and very little product?",
+   "options": [
+    "A",
+    "C",
+    "D",
+    "E"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The more positive ΔG°, the smaller K, and the more the equilibrium mixture is reactants.",
+    "options": [
+     "ΔG° < 0 gives K > 1: products are favored.",
+     "K = 1: neither side is strongly favored, so both are present in large amounts.",
+     "K ≈ 0.13: reactants are favored, but much less strongly than in reaction E.",
+     "Right: ΔG° = +20.0 kJ/mol gives K ≈ 3 × 10⁻⁴, so reactants are favored."
+    ]
+   }
+  },
+  {
+   "id": "chem-free-energy-equilibrium-4",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "free-energy-equilibrium-s1",
+   "q": "A student says reaction D, with ΔG° = +5.0 kJ/mol, \"cannot happen at all.\" Which reply is best?",
+   "options": [
+    "K ≈ 0.13, so from pure reactants some product forms until Q = K.",
+    "The student is right, because a reaction with ΔG° > 0 makes no product.",
+    "The reaction goes to completion, because ΔG° is so close to zero.",
+    "The reaction happens once a catalyst is added, which makes ΔG° negative."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "ΔG° refers to standard conditions. A positive value means K < 1: reactants are favored at equilibrium, but some product is still present.",
+    "options": [
+     "Right: a positive ΔG° means K < 1, not K = 0. An equilibrium mixture still contains product.",
+     "ΔG° > 0 means K < 1. Starting from reactants, Q = 0 < K, so the net reaction goes forward a little.",
+     "Close to zero means K is close to 1, not that the reaction goes to completion.",
+     "A catalyst does not change ΔG° or K."
+    ]
+   }
+  },
+  {
+   "id": "chem-free-energy-equilibrium-5",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "free-energy-equilibrium-s2",
+   "q": "Calculate ΔG° for the ionization of acetic acid at 298 K.",
+   "numeric": {
+    "answer": 27,
+    "tol": 1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1",
+     "kJ·mol⁻¹"
+    ],
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 11.8,
+      "tol": 0.25,
+      "why": "Value: you used log instead of ln. ΔG° = −RT ln K uses the natural log."
+     },
+     {
+      "value": -27,
+      "tol": 1,
+      "why": "Sign: ln(1.8 × 10⁻⁵) is negative, so −RT ln K is positive."
+     },
+     {
+      "value": 27000,
+      "rel": 0.03,
+      "unit": "kJ/mol",
+      "why": "Units: R in J/(mol·K) gives J/mol. Divide by 1000 to report kJ/mol."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔG° = −RT ln K = −(8.314 J/(mol·K))(298 K) ln(1.8 × 10⁻⁵) = −(2477.6)(−10.925) = 2.71 × 10⁴ J/mol = 27 kJ/mol (two significant figures, from K)."
+   }
+  },
+  {
+   "id": "chem-free-energy-equilibrium-6",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "free-energy-equilibrium-s2",
+   "q": "Which equilibrium has a negative ΔG°?",
+   "options": [
+    "The ionization of acetic acid",
+    "The dissociation of N₂O₄",
+    "The formation of NH₃",
+    "No equilibrium in the table, since at equilibrium ΔG° = 0"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "K > 1 ⇔ ΔG° < 0. Only the ammonia synthesis has K > 1.",
+    "options": [
+     "K = 1.8 × 10⁻⁵ < 1, so ΔG° > 0.",
+     "K = 0.15 < 1, so ΔG° > 0 (about +4.7 kJ/mol).",
+     "Right: K = 6.6 × 10⁵ > 1, so ln K > 0 and ΔG° < 0.",
+     "At equilibrium ΔG (not ΔG°) is zero. ΔG° is a fixed value set by K."
+    ]
+   }
+  },
+  {
+   "id": "chem-free-energy-equilibrium-7",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "free-energy-equilibrium-s2",
+   "q": "Using the K value in the table, calculate ΔG° at 298 K for the reverse of the N₂O₄ dissociation: 2 NO₂(g) ⇌ N₂O₄(g).",
+   "numeric": {
+    "answer": -4.7,
+    "tol": 0.1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1",
+     "kJ·mol⁻¹"
+    ],
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 4.7,
+      "tol": 0.1,
+      "why": "Sign: this is the reverse of the reaction in the table, so K = 1/0.15 = 6.7 and ΔG° is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Reversing the reaction inverts K: K = 1/0.15 = 6.67. ΔG° = −(8.314)(298) ln(6.67) = −4.70 × 10³ J/mol = −4.7 kJ/mol. (Equivalently, flip the sign of ΔG° for the forward reaction.)"
+   }
+  },
+  {
+   "id": "chem-free-energy-equilibrium-8",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "free-energy-equilibrium-s2",
+   "q": "A flask of N₂O₄ and NO₂ at 298 K has Q = 0.010. Which statement is correct?",
+   "options": [
+    "ΔG° is positive, so NO₂ can form after the flask is heated, not before.",
+    "Q < K, so the net reaction forms more N₂O₄ until Q rises to K.",
+    "Q < K, so ΔG is negative now and the net reaction forms more NO₂.",
+    "K changes to 0.010 to match the flask, so there is no net reaction."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Whether a mixture reacts forward depends on Q compared with K. Q = 0.010 < K = 0.15, so the net reaction goes forward even though ΔG° > 0.",
+    "options": [
+     "ΔG° describes standard conditions. Here Q < K, so the net forward reaction is favored now.",
+     "Forming N₂O₄ would lower Q further. To raise Q, NO₂ must form.",
+     "Right: ΔG = ΔG° + RT ln Q is negative when Q < K, so the mixture moves toward products.",
+     "K changes only with temperature; it stays 0.15 here."
+    ]
+   }
+  },
+  {
+   "id": "chem-free-energy-equilibrium-9",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "For N₂(g) + 3 H₂(g) ⇌ 2 NH₃(g), ΔG° = −33.2 kJ/mol at 298 K. Calculate K. (R = 8.314 J/(mol·K))",
+   "numeric": {
+    "answer": 660000,
+    "rel": 0.02,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1.013490401296435,
+      "rel": 0.01,
+      "why": "Value: ΔG° must be in J/mol to match R: −33,200 J/mol."
+     },
+     {
+      "value": 0.0000015,
+      "rel": 0.03,
+      "why": "Sign: −ΔG°/RT = +13.4, so K is large, not small."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ln K = −ΔG°/RT = 33,200 J/mol ÷ [(8.314 J/(mol·K))(298 K)] = 13.40. K = e^13.40 = 6.6 × 10⁵ (two significant figures). The large K matches the strongly negative ΔG°."
+   }
+  },
+  {
+   "id": "chem-free-energy-equilibrium-10",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A gas-phase reaction has K = 20.2 at 400. K. Calculate ΔG° at 400. K, in kJ/mol.",
+   "numeric": {
+    "answer": -10,
+    "tol": 0.02,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1",
+     "kJ·mol⁻¹"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": -7.45,
+      "tol": 0.02,
+      "why": "Value: you used 298 K. Use the temperature at which K was measured: 400. K."
+     },
+     {
+      "value": -3.17,
+      "tol": 0.02,
+      "why": "Value: 400. K is already in kelvin; do not subtract 273."
+     },
+     {
+      "value": -4.34,
+      "tol": 0.02,
+      "why": "Value: use ln, not log, in ΔG° = −RT ln K."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔG° = −RT ln K = −(8.314 J/(mol·K))(400. K) ln(20.2) = −(3325.6)(3.006) = −9996 J/mol = −10.0 kJ/mol (three significant figures, from K = 20.2)."
+   }
+  },
+  {
+   "id": "chem-free-energy-equilibrium-11",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "If ΔG° for a reaction is large and negative, what is true of K?",
+   "options": [
+    "K is much greater than 1, so products are favored at equilibrium.",
+    "K is much less than 1, so reactants are favored at equilibrium.",
+    "K is equal to 1, so equal amounts of reactants and products are present.",
+    "K is negative, because ΔG° is negative."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K = e^(−ΔG°/RT). A large negative ΔG° gives a large positive exponent and K ≫ 1.",
+    "options": [
+     "Right: ln K = −ΔG°/RT is large and positive.",
+     "That is the case for a large positive ΔG°.",
+     "K = 1 goes with ΔG° = 0.",
+     "K is an exponential, e^(−ΔG°/RT), so it is positive whatever the sign of ΔG°."
+    ]
+   }
+  },
+  {
+   "id": "chem-free-energy-equilibrium-12",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 3,
+   "q": "Reaction 1 has ΔG° = −5.70 kJ/mol and K₁ = 9.98 at 298 K. Reaction 2 is reaction 1 multiplied by 2. What are ΔG° and K for reaction 2?",
+   "options": [
+    "ΔG° = −11.4 kJ/mol and K = 20.0",
+    "ΔG° = −5.70 kJ/mol and K = 99.6",
+    "ΔG° = −2.85 kJ/mol and K = 3.16",
+    "ΔG° = −11.4 kJ/mol and K = 99.6"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "ΔG° scales with the coefficients; since ΔG° = −RT ln K, doubling ΔG° doubles ln K, which squares K.",
+    "options": [
+     "Doubling the reaction squares K; it does not double it. Check: −RT ln K must equal −11.4 kJ/mol.",
+     "ΔG° is extensive: twice the reaction releases twice the free energy.",
+     "That halves the reaction. Multiplying by 2 doubles ΔG°.",
+     "Right: doubling a reaction doubles ΔG° and squares K (9.98² = 99.6)."
+    ]
+   }
+  },
+  {
+   "id": "chem-free-energy-equilibrium-13",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A reaction mixture is at equilibrium. Which statement is correct?",
+   "options": [
+    "ΔG° is zero, because nothing in the mixture is changing.",
+    "ΔG for the system is zero, while ΔG° keeps its fixed value set by K.",
+    "ΔG is negative, because the forward reaction is still running.",
+    "K equals zero, because the reaction has stopped."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "ΔG measures the drive under the actual conditions; it is zero at equilibrium. ΔG° refers to standard conditions and is fixed for a given T.",
+    "options": [
+     "ΔG° is the standard value and equals −RT ln K; it is zero only when K = 1.",
+     "Right: at equilibrium Q = K and ΔG = 0; ΔG° = −RT ln K does not change.",
+     "Forward and reverse rates are equal, so there is no net drive in either direction: ΔG = 0.",
+     "The reaction has not stopped (it is dynamic), and K is a fixed positive number."
+    ]
+   }
+  },
+  {
+   "id": "chem-free-energy-equilibrium-14",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For a reaction at 298 K, ΔG° = +0.5 kJ/mol. Which description of the equilibrium mixture is best?",
+   "options": [
+    "K ≈ 0.8, close to 1, so both reactants and products are abundant.",
+    "K is very small, so the mixture is nearly pure reactants.",
+    "K is very large, so the reaction goes nearly to completion.",
+    "K is 0.5, the same number as ΔG° in kJ/mol."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When ΔG° is near zero, K is near 1 and reactants and products are both present in significant amounts.",
+    "options": [
+     "Right: e^(−500/2477.6) = 0.82. With ΔG° near zero, neither side dominates.",
+     "A small positive ΔG° gives K slightly below 1, not a very small K.",
+     "A large K needs a large negative ΔG°.",
+     "K comes from e^(−ΔG°/RT), not from ΔG° itself."
+    ]
+   }
+  },
+  {
+   "id": "chem-free-energy-equilibrium-15",
+   "type": "predict",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A reaction has ΔH° < 0 and ΔS° < 0, so ΔG° becomes less negative as T rises. The temperature is raised from 300 K to 400 K. Predict the change in each quantity.",
+   "variables": [
+    {
+     "name": "ΔG° of the reaction",
+     "answer": "up",
+     "why": "ΔG° = ΔH° − TΔS°; with ΔS° < 0, −TΔS° is positive and grows with T, so ΔG° rises (becomes less negative)."
+    },
+    {
+     "name": "K of the reaction",
+     "answer": "down",
+     "why": "A less negative ΔG° gives a smaller −ΔG°/RT, so K falls; this matches Le Châtelier for an exothermic reaction."
+    },
+    {
+     "name": "The value of R used in ΔG° = −RT ln K",
+     "answer": "none",
+     "why": "R is a constant, 8.314 J/(mol·K), at every temperature."
+    }
+   ],
+   "why": {
+    "correct": "For an exothermic reaction with ΔS° < 0, heating raises ΔG° and lowers K."
+   }
+  },
+  {
+   "id": "chem-free-energy-equilibrium-16",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "free-energy-equilibrium",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which set of units makes ΔG° = −RT ln K come out in J/mol?",
+   "options": [
+    "R = 0.08206 L·atm/(mol·K) and T in K",
+    "R = 8.314 J/(mol·K) and T in °C",
+    "R = 8.314 J/(mol·K) and T in K",
+    "R = 8.314 kJ/(mol·K) and T in K"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Use the energy form of R, 8.314 J/(mol·K), with T in kelvin. Divide by 1000 for kJ/mol.",
+    "options": [
+     "That R is for gas laws; it gives L·atm/mol, not J/mol.",
+     "Temperature must be in kelvin.",
+     "Right: J/(mol·K) × K = J/mol; ln K has no units.",
+     "R is 8.314 J/(mol·K); in kJ it is 0.008314 kJ/(mol·K)."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,340 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "chem-math-scientific-notation-1",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which number is written in correct scientific notation?",
+   "options": [
+    "47 × 10⁻⁴",
+    "0.47 × 10⁻²",
+    "4.7 × 10⁻³",
+    "4.7 × 3⁻³"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In scientific notation the coefficient is at least 1 and less than 10: 4.7 × 10⁻³ = 0.0047.",
+    "options": [
+     "Same value, but the coefficient 47 is 10 or more, so it is not in standard form.",
+     "Same value, but the coefficient 0.47 is less than 1.",
+     "Right: the coefficient is between 1 and 10, times a power of ten.",
+     "Scientific notation uses powers of ten, not powers of 3."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-scientific-notation-2",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "A fine smoke particle is 0.000000650 m across. Write it in scientific notation (type it as, for example, 6.50e-7) in meters.",
+   "numeric": {
+    "answer": 6.5e-7,
+    "tol": 1e-9,
+    "unit": "m",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 65000000,
+      "rel": 0.01,
+      "why": "Value: the exponent sign is backwards. A number smaller than 1 has a negative exponent: 6.50 × 10⁻⁷."
+     },
+     {
+      "value": 0.0000065,
+      "rel": 0.01,
+      "why": "Value: count the places again. The decimal point moves 7 places to reach 6.50."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Move the decimal point right until one nonzero digit is in front: 7 places, so the exponent is −7. 6.50 × 10⁻⁷ m. Moving right for a small number gives a negative exponent."
+   }
+  },
+  {
+   "id": "chem-math-scientific-notation-3",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "The distance from Earth to the Sun is about 149,600,000 km. Write it in scientific notation in kilometers, keeping four digits in the coefficient.",
+   "numeric": {
+    "answer": 149600000,
+    "tol": 100000,
+    "unit": "km",
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 1.496e-8,
+      "rel": 0.01,
+      "why": "Value: a number larger than 1 has a positive exponent. The point moved left, so the exponent is +8."
+     },
+     {
+      "value": 14960000,
+      "rel": 0.01,
+      "why": "Value: count the places again: 149,600,000 needs 8 moves to become 1.496."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Move the decimal point left 8 places to get 1.496, so the exponent is +8: 1.496 × 10⁸ km."
+   }
+  },
+  {
+   "id": "chem-math-scientific-notation-4",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Calculate (3.0 × 10⁴) × (2.0 × 10⁻⁶).",
+   "numeric": {
+    "answer": 0.06,
+    "tol": 0.001,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 60000000000,
+      "rel": 0.01,
+      "why": "Value: you subtracted the exponents. Multiplying adds them: 4 + (−6) = −2."
+     },
+     {
+      "value": 0.05,
+      "rel": 0.01,
+      "why": "Value: you added the coefficients. In a product, multiply them: 3.0 × 2.0 = 6.0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Multiply the coefficients: 3.0 × 2.0 = 6.0. Add the exponents: 4 + (−6) = −2. The answer is 6.0 × 10⁻²."
+   }
+  },
+  {
+   "id": "chem-math-scientific-notation-5",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Calculate (8.4 × 10⁶) ÷ (2.1 × 10⁻³).",
+   "numeric": {
+    "answer": 4000000000,
+    "tol": 100000000,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 4000,
+      "rel": 0.01,
+      "why": "Value: subtracting a negative exponent adds it: 6 − (−3) = 9, not 3."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Divide the coefficients: 8.4 ÷ 2.1 = 4.0. Subtract the exponents: 6 − (−3) = 9. The answer is 4.0 × 10⁹."
+   }
+  },
+  {
+   "id": "chem-math-scientific-notation-6",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A calculation gives 52 × 10⁵. What is this in correct scientific notation?",
+   "options": [
+    "5.2 × 10⁴",
+    "52 × 10⁵",
+    "0.52 × 10⁷",
+    "5.2 × 10⁶"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "52 × 10⁵ = 5.2 × 10¹ × 10⁵ = 5.2 × 10⁶. When the coefficient shrinks, the exponent grows to keep the value the same.",
+    "options": [
+     "The coefficient got 10 times smaller, so the exponent must go up by one, not down.",
+     "The value is right, but a coefficient of 52 is not between 1 and 10.",
+     "The value is right, but a coefficient of 0.52 is less than 1.",
+     "Right: dividing the coefficient by 10 means multiplying the power of ten by 10."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-scientific-notation-7",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is (6.0 × 10³) + (4.0 × 10²)?",
+   "options": [
+    "6.4 × 10³",
+    "10.0 × 10⁵",
+    "1.0 × 10⁴",
+    "2.4 × 10⁶"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "6000 + 400 = 6400 = 6.4 × 10³. To add or subtract, first give both numbers the same exponent.",
+    "options": [
+     "Right: rewrite 4.0 × 10² as 0.40 × 10³, then add the coefficients: 6.0 + 0.40 = 6.4.",
+     "Adding does not add exponents; that rule is for multiplying.",
+     "This adds 6.0 and 4.0 as if both had the same exponent.",
+     "This multiplies the two numbers instead of adding them."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-scientific-notation-8",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which list is in order from smallest to largest?",
+   "options": [
+    "8 × 10⁻⁴, 3 × 10⁻⁵, 2 × 10⁻², 1 × 10³",
+    "1 × 10³, 2 × 10⁻², 8 × 10⁻⁴, 3 × 10⁻⁵",
+    "3 × 10⁻⁵, 8 × 10⁻⁴, 2 × 10⁻², 1 × 10³",
+    "2 × 10⁻², 8 × 10⁻⁴, 3 × 10⁻⁵, 1 × 10³"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "3 × 10⁻⁵ = 0.00003, 8 × 10⁻⁴ = 0.0008, 2 × 10⁻² = 0.02 and 1 × 10³ = 1000. With the coefficient between 1 and 10, the exponent decides the order.",
+    "options": [
+     "This sorts by coefficient first. A larger coefficient does not beat a more negative exponent: 0.0008 is more than 0.00003.",
+     "This is largest to smallest, the reverse order.",
+     "Right: compare exponents first; the most negative exponent is the smallest number.",
+     "This treats −2 as smaller than −5. On the number line, 10⁻⁵ is far smaller than 10⁻²."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-scientific-notation-9",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A bacterium is about 2 × 10⁻⁶ m long and a cell in your body about 2 × 10⁻⁵ m. By how many orders of magnitude do they differ?",
+   "options": [
+    "Eleven: the exponents add to −11",
+    "They do not differ, since both coefficients are 2",
+    "One: the body cell is about 10 times longer",
+    "Five: the larger exponent is −5"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "(2 × 10⁻⁵) ÷ (2 × 10⁻⁶) = 10¹. One order of magnitude is one factor of ten.",
+    "options": [
+     "Comparing sizes divides them, which subtracts exponents; it does not add them.",
+     "Equal coefficients only mean the ratio is exactly a power of ten.",
+     "Right: the exponents differ by 1, which is one factor of ten.",
+     "An order of magnitude is the difference in exponents, not the exponent itself."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-scientific-notation-10",
+   "type": "multi",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these are equal to 0.00560? Select all that apply.",
+   "options": [
+    "5.60 × 10⁻³",
+    "56.0 × 10⁻⁴",
+    "5.60 × 10³",
+    "5.60 × 10⁻²"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Both 5.60 × 10⁻³ and 56.0 × 10⁻⁴ equal 0.00560; only the first is in standard scientific notation.",
+    "options": [
+     "Right: the decimal point moved 3 places right.",
+     "Right in value (not standard form): 56.0 × 0.0001 = 0.00560.",
+     "This is 5600: the exponent sign is wrong.",
+     "This is 0.0560, ten times too big."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-scientific-notation-11",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student types 3.2 × 10^-5 into a calculator as 3.2 × 10 EE −5 and gets 3.2 × 10⁻⁴. What went wrong?",
+   "options": [
+    "The calculator rounds tiny numbers up by a factor of ten",
+    "The negative sign should have been typed with the subtraction key",
+    "Scientific notation has to be typed as an ordinary decimal",
+    "The EE key already means \"× 10 to the\", so the extra × 10 made the answer ten times too large"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Type 3.2, then EE (or EXP), then (−)5. The EE key stands for \"× 10^\", so do not type × 10 as well.",
+    "options": [
+     "Calculators keep about 10 digits for such numbers; the extra keystroke is the problem.",
+     "Using the subtraction key usually gives a syntax error; it does not explain a factor of ten.",
+     "Scientific calculators have an EE or EXP key for entering it directly.",
+     "Right: 3.2 EE −5 is the whole number; the extra × 10 multiplied it by 10."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-scientific-notation-12",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-scientific-notation",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "A sample contains 1.5 × 10²¹ molecules, and each molecule has a mass of 3.0 × 10⁻²³ g. What is the total mass in grams?",
+   "numeric": {
+    "answer": 0.045,
+    "tol": 0.001,
+    "unit": "g",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 5e+43,
+      "rel": 0.01,
+      "why": "Value: you divided the number of molecules by the mass of one molecule. Total mass = number × mass of each."
+     },
+     {
+      "value": 4.5e+44,
+      "rel": 0.01,
+      "why": "Value: you subtracted the exponents. In a product they add: 21 + (−23) = −2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "(1.5 × 10²¹) × (3.0 × 10⁻²³ g) = 4.5 × 10⁻² g = 0.045 g. Coefficients multiply (1.5 × 3.0 = 4.5) and exponents add (21 − 23 = −2)."
+   }
+  }
+ ]
+}

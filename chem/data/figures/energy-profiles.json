@@ -1,0 +1,12 @@
+{
+ "energy-profile": {
+  "file": "figures/energy-profile.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Potential energy on the vertical axis, reaction progress on the horizontal axis. The curve starts at the reactant level, rises to a peak labeled transition state, and falls to a product level lower than the reactants. A double arrow from the reactant level to the peak is the activation energy. A double arrow from the reactant level down to the product level is the energy change of the reaction; here energy is released because the products are lower."
+ }
+}

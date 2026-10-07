@@ -1,0 +1,335 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "chem-math-logs-1",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-logs",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is log 1000?",
+   "options": [
+    "1000",
+    "0.001",
+    "3",
+    "30"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A logarithm answers \"10 to what power?\". 10³ = 1000, so log 1000 = 3.",
+    "options": [
+     "The log is the exponent, not the number itself.",
+     "That is 10⁻³, the reciprocal of 1000.",
+     "Right: 10³ = 1000, so the base-10 logarithm of 1000 is 3.",
+     "log 1000 asks \"10 to what power gives 1000?\", which is 3."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-logs-2",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-logs",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is log (1 × 10⁻⁵)?",
+   "options": [
+    "−5",
+    "5",
+    "−0.00001",
+    "0"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "log (10⁻⁵) = −5. Any number between 0 and 1 has a negative logarithm.",
+    "options": [
+     "Right: the log of a power of ten is its exponent.",
+     "The sign is lost: 10⁻⁵ is less than 1, so its log is negative.",
+     "That is the number written out with a minus sign, not its logarithm.",
+     "log 1 is 0; 10⁻⁵ is much smaller than 1, so its log is negative."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-logs-3",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-logs",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Calculate log (3.2 × 10⁻⁴). Give the right number of decimal places.",
+   "numeric": {
+    "answer": -3.49,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": -8.047,
+      "rel": 0.01,
+      "why": "Value: you used ln (natural log) instead of log (base 10). Use the LOG key."
+     },
+     {
+      "value": 3.49,
+      "rel": 0.01,
+      "why": "Value: the sign is wrong. A number smaller than 1 has a negative log."
+     }
+    ]
+   },
+   "why": {
+    "correct": "log (3.2 × 10⁻⁴) = log 3.2 + log 10⁻⁴ = 0.505 − 4 = −3.49. The coefficient 3.2 has two significant figures, so the log has two decimal places."
+   }
+  },
+  {
+   "id": "chem-math-logs-4",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-logs",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Calculate ln (0.50). Give the right number of decimal places.",
+   "numeric": {
+    "answer": -0.69,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": -0.301,
+      "rel": 0.01,
+      "why": "Value: you used log (base 10). ln is the natural logarithm, base e; use the LN key."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ln (0.50) = −0.693, written −0.69: two significant figures in 0.50 give two decimal places."
+   }
+  },
+  {
+   "id": "chem-math-logs-5",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-logs",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find x if log x = 2.45. Give x with the right number of significant figures.",
+   "numeric": {
+    "answer": 280,
+    "tol": 10,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 11.59,
+      "rel": 0.01,
+      "why": "Value: you used eˣ, the antilog of ln. The antilog of log is 10ˣ."
+     },
+     {
+      "value": 0.3892,
+      "rel": 0.01,
+      "why": "Value: you took the log again. To undo a log, raise 10 to that power."
+     }
+    ]
+   },
+   "why": {
+    "correct": "x = 10^2.45 = 281.8…, written 2.8 × 10². The two decimal places in 2.45 give two significant figures in x."
+   }
+  },
+  {
+   "id": "chem-math-logs-6",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-logs",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find y if ln y = −0.25. Give y to two significant figures.",
+   "numeric": {
+    "answer": 0.78,
+    "tol": 0.01,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.5623,
+      "rel": 0.01,
+      "why": "Value: you used 10ˣ. The inverse of ln is eˣ."
+     }
+    ]
+   },
+   "why": {
+    "correct": "y = e^(−0.25) = 0.7788, written 0.78."
+   }
+  },
+  {
+   "id": "chem-math-logs-7",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-logs",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which expression equals log (A × B)?",
+   "options": [
+    "log A + log B",
+    "log A × log B",
+    "log A − log B",
+    "B × log A"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "log (A × B) = log A + log B, the logarithm version of \"multiplying powers adds exponents\".",
+    "options": [
+     "Right: multiplying numbers adds their exponents, so it adds their logs.",
+     "Logs turn multiplication into addition, not into multiplication of logs.",
+     "Subtracting logs gives the log of a quotient, A ÷ B.",
+     "An exponent comes out front as a multiplier: that is log (Aᴮ)."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-logs-8",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-logs",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "log 2 = 0.301. What is log 200?",
+   "options": [
+    "0.602",
+    "60.2",
+    "2.301",
+    "200.301"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Split 200 into 2 × 10². Then log 200 = 0.301 + 2 = 2.301.",
+    "options": [
+     "This is log 4 (2 × log 2). 200 is 2 × 100, not 2².",
+     "This multiplies log 2 by 200. The log of a product adds, it does not multiply.",
+     "Right: log (2 × 10²) = log 2 + log 10² = 0.301 + 2.",
+     "Add log 100, which is 2, not 200."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-logs-9",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-logs",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "One quantity is 1000 times as large as another. How do their base-10 logs compare?",
+   "options": [
+    "The larger one's log is 1000 times as large",
+    "The larger one's log is 1000 more",
+    "The larger one's log is 3 more",
+    "Their logs are the same"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Each factor of ten adds 1 to the log. A factor of 1000 (three factors of ten) adds 3. This is why a log scale squeezes huge ranges into small ones.",
+    "options": [
+     "Logs add for a product; they do not multiply.",
+     "The log of 1000 is 3, so the logs differ by 3.",
+     "Right: log (1000 × x) = log 1000 + log x = 3 + log x.",
+     "Different numbers have different logs; a factor of 1000 adds 3."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-logs-10",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-logs",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 3,
+   "q": "Solve ln (A/B) = −kt for A.",
+   "options": [
+    "A = B × e^(−kt)",
+    "A = B × 10^(−kt)",
+    "A = B − kt",
+    "A = −kt × B"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "e^(ln(A/B)) = A/B, so A/B = e^(−kt) and A = B e^(−kt).",
+    "options": [
+     "Right: raise e to both sides, then multiply by B.",
+     "The inverse of ln is eˣ, not 10ˣ.",
+     "A log of a ratio is a difference of logs, ln A − ln B; the ln does not just disappear.",
+     "You must undo the ln with eˣ before multiplying by B."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-logs-11",
+   "type": "multi",
+   "unit": "skills-math",
+   "topic": "math-logs",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statements are true? Select all that apply.",
+   "options": [
+    "log 1 = 0",
+    "ln x = 2.303 log x",
+    "log (−10) = −1",
+    "log (x²) = 2 log x",
+    "ln e = 10",
+    "log 0.1 = 0.1"
+   ],
+   "correct": [
+    0,
+    1,
+    3
+   ],
+   "why": {
+    "correct": "log 1 = 0, ln = 2.303 log, and log of a power brings the exponent down. Logs of zero or negative numbers are undefined.",
+    "options": [
+     "Right: 10⁰ = 1.",
+     "Right: ln x is about 2.303 times log x, because ln 10 = 2.303.",
+     "The log of a negative number is undefined; 10 to any power is positive.",
+     "Right: an exponent inside comes out front as a multiplier.",
+     "ln e = 1, since e¹ = e.",
+     "log 0.1 = −1, since 10⁻¹ = 0.1."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-logs-12",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-logs",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student needs log (4.7 × 10⁻³) but presses LN and gets −5.36. How far off is the answer, and what is the fix?",
+   "options": [
+    "It is correct, since ln and log are two names for one function",
+    "It is 2.303 times too large in size; press LOG to get −2.33",
+    "It is off by 10; divide −5.36 by 10",
+    "It has the wrong sign; the answer is +5.36"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "log (4.7 × 10⁻³) = −2.33. The 2.303 factor between ln and log is a slip the exam readers see every year.",
+    "options": [
+     "They use different bases (e and 10) and give different numbers.",
+     "Right: ln x = 2.303 log x, so −5.36 ÷ 2.303 = −2.33.",
+     "The logs differ by a factor of 2.303 (ln 10), not 10.",
+     "Numbers below 1 have negative logs in both bases; the sign is right."
+    ]
+   }
+  }
+ ]
+}

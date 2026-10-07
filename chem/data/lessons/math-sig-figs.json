@@ -1,0 +1,74 @@
+{
+ "topic": "math-sig-figs",
+ "hook": "Ask a bathroom scale and a lab balance to weigh the same apple and you get 150 g and 151.37 g. Both are honest. The number of digits in a measurement tells you how carefully it was made, and on the exam, reporting the wrong number of digits is the most common way to lose a calculation point.",
+ "prereq": [
+  {
+   "q": "Which is 0.00450 in scientific notation?",
+   "options": [
+    "4.50 × 10⁻³",
+    "4.50 × 10³",
+    "45.0 × 10⁻⁴",
+    "4.5 × 10⁻²"
+   ],
+   "correct": 0,
+   "why": "Move the point 3 places right to get 4.50; a small number has a negative exponent.",
+   "review": "math-scientific-notation"
+  },
+  {
+   "q": "What is the density of an object with a mass of 20 g and a volume of 5 mL?",
+   "options": [
+    "4 g/mL",
+    "0.25 g/mL",
+    "100 g/mL",
+    "25 g/mL"
+   ],
+   "correct": 0,
+   "why": "Density = mass ÷ volume = 20 g ÷ 5 mL = 4 g/mL.",
+   "review": "math-units"
+  }
+ ],
+ "figure": {
+  "figure": "sigfig-ruler",
+  "caption": "Reading a scale: every digit you are sure of, plus one estimated digit between the marks."
+ },
+ "chain": [
+  {
+   "cause": "Every instrument can only be read so finely",
+   "effect": "the last recorded digit of a measurement is an estimate"
+  },
+  {
+   "cause": "The significant figures are the certain digits plus that one estimated digit",
+   "effect": "they show how precise the measurement is"
+  },
+  {
+   "cause": "A calculated answer cannot be more precise than the data it came from",
+   "effect": "it is rounded to match the least precise measurement"
+  },
+  {
+   "cause": "Multiplying and adding spread uncertainty differently",
+   "effect": "products keep the fewest significant figures, and sums keep the fewest decimal places"
+  }
+ ],
+ "ideas": [
+  "Count <b>significant figures</b>: all nonzero digits; zeros between them; trailing zeros after a decimal point. Leading zeros never count. 0.004050 has four.",
+  "Multiply or divide: keep the fewest <b>significant figures</b>. Add or subtract: keep the fewest <b>decimal places</b>.",
+  "<b>Exact numbers</b> (counts, defined equalities like 1 kg = 1000 g) never limit an answer.",
+  "<b>Precision</b> is how closely repeated readings agree; <b>accuracy</b> is how close they are to the true value. Round once, at the end."
+ ],
+ "misconception": {
+  "wrong": "Writing more digits makes an answer more accurate, so copy everything the calculator shows.",
+  "right": "Extra digits claim a precision the measurements do not have. 23.45 g ÷ 12.0 mL is 1.95 g/mL, not 1.954166667 g/mL: the volume was only known to three significant figures."
+ },
+ "check": [
+  "chem-math-sig-figs-1",
+  "chem-math-sig-figs-3",
+  "chem-math-sig-figs-4",
+  "chem-math-sig-figs-6",
+  "chem-math-sig-figs-8",
+  "chem-math-sig-figs-9",
+  "chem-math-sig-figs-10",
+  "chem-math-sig-figs-11"
+ ],
+ "summary": "A measurement records every certain digit plus one estimated digit; these are its significant figures. Leading zeros never count. Products and quotients keep the fewest significant figures, sums and differences the fewest decimal places, and exact numbers never limit. Precision is agreement between readings; accuracy is closeness to the true value.",
+ "connections": []
+}

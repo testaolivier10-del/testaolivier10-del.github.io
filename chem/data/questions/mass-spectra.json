@@ -1,0 +1,535 @@
+{
+ "stimuli": {
+  "mass-spectra-s1": {
+   "kind": "graph",
+   "title": "Mass spectrum of a pure element",
+   "text": "<p>A sample of a pure element is turned into singly charged positive ions (each atom loses one electron) and passed through a mass spectrometer. The isotope masses are 23.985, 24.986 and 25.983 amu.</p>",
+   "chart": {
+    "type": "bar",
+    "x": {
+     "label": "Mass-to-charge ratio, m/z",
+     "categories": [
+      "24",
+      "25",
+      "26"
+     ]
+    },
+    "y": {
+     "label": "Relative abundance",
+     "unit": "%",
+     "min": 0,
+     "max": 100,
+     "step": 20
+    },
+    "series": [
+     {
+      "name": "Element sample",
+      "points": [
+       [
+        "24",
+        78.99
+       ],
+       [
+        "25",
+        10
+       ],
+       [
+        "26",
+        11.01
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "mass-spectra-s2": {
+   "kind": "table",
+   "title": "Isotopes of three elements",
+   "text": "<p>The table lists isotope masses and natural abundances.</p>",
+   "table": {
+    "caption": "Isotope data",
+    "cols": [
+     "Element",
+     "Isotope",
+     "Isotope mass (amu)",
+     "Abundance (%)"
+    ],
+    "rows": [
+     [
+      "Chlorine",
+      "³⁵Cl",
+      "34.969",
+      "75.76"
+     ],
+     [
+      "Chlorine",
+      "³⁷Cl",
+      "36.966",
+      "24.24"
+     ],
+     [
+      "Gallium",
+      "⁶⁹Ga",
+      "68.926",
+      "60.11"
+     ],
+     [
+      "Gallium",
+      "⁷¹Ga",
+      "70.925",
+      "39.89"
+     ],
+     [
+      "Boron",
+      "¹⁰B",
+      "10.013",
+      "not given"
+     ],
+     [
+      "Boron",
+      "¹¹B",
+      "11.009",
+      "not given"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-mass-spectra-1",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What do all atoms of one element have in common?",
+   "options": [
+    "The same number of neutrons",
+    "The same mass number",
+    "The same number of protons",
+    "The same mass, to the nearest 0.001 amu"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "The atomic number (number of protons) identifies the element. Neutrons, and so mass, can vary.",
+    "options": [
+     "Atoms of one element can differ in neutrons; those are isotopes.",
+     "Isotopes of one element have different mass numbers.",
+     "Right: the number of protons, the atomic number, defines the element.",
+     "Different isotopes have different masses."
+    ]
+   }
+  },
+  {
+   "id": "chem-mass-spectra-2",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "An atom of chlorine has 17 protons and 20 neutrons. What is its mass number?",
+   "options": [
+    "37",
+    "17",
+    "20",
+    "3"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Mass number = protons + neutrons = 37. This atom is chlorine-37, written ³⁷Cl.",
+    "options": [
+     "Right: mass number = protons + neutrons = 17 + 20.",
+     "That is the atomic number, the protons alone.",
+     "That is the number of neutrons alone.",
+     "Subtracting gives no standard quantity; the mass number adds the two."
+    ]
+   }
+  },
+  {
+   "id": "chem-mass-spectra-3",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "How many neutrons are in an atom of iron-56? Iron has atomic number 26.",
+   "numeric": {
+    "answer": 30,
+    "tol": 0,
+    "unit": "neutrons",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 82,
+      "rel": 0.01,
+      "why": "Value: you added the numbers. The mass number already includes the protons, so subtract: 56 − 26."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Neutrons = mass number − atomic number = 56 − 26 = 30."
+   }
+  },
+  {
+   "id": "chem-mass-spectra-4",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "mass-spectra-s1",
+   "q": "How many isotopes of this element does the spectrum show?",
+   "options": [
+    "One, since the sample is a pure element",
+    "Three",
+    "Twenty-five, the middle mass",
+    "Two, since the smaller peaks count as one"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "One peak per isotope: three peaks, three isotopes, with mass numbers 24, 25 and 26.",
+    "options": [
+     "A pure element can still be a mix of isotopes; each peak is one.",
+     "Right: each peak is ions of one isotope, and there are three peaks.",
+     "The m/z values are masses, not a count of isotopes.",
+     "The peaks at 25 and 26 have different masses, so they are different isotopes."
+    ]
+   }
+  },
+  {
+   "id": "chem-mass-spectra-5",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "mass-spectra-s1",
+   "q": "Calculate the average atomic mass of the element from the spectrum.",
+   "numeric": {
+    "answer": 24.31,
+    "tol": 0.01,
+    "unit": "amu",
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 24.98,
+      "rel": 0.01,
+      "why": "Value: you took a simple average of the three masses. Weight each mass by its abundance: most atoms are the light isotope."
+     },
+     {
+      "value": 2431,
+      "rel": 0.01,
+      "why": "Value: you used percents, not fractions. Divide each abundance by 100 (78.99% is 0.7899)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "(0.7899)(23.985) + (0.1000)(24.986) + (0.1101)(25.983) = 18.946 + 2.499 + 2.861 = 24.31 amu. Each mass is weighted by its fraction."
+   }
+  },
+  {
+   "id": "chem-mass-spectra-6",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "mass-spectra-s1",
+   "q": "Which element is this, and what evidence supports the claim?",
+   "options": [
+    "Sodium, because the tallest peak is near 23",
+    "Chromium, because three isotopes add to a mass near 75",
+    "Aluminum, because 24 + 25 + 26 is close to 27 times 3",
+    "Magnesium, whose atomic mass on the periodic table is 24.31"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The abundance-weighted average, 24.31 amu, is the atomic mass of magnesium. An element is identified by matching its average atomic mass (and, with more data, its atomic number).",
+    "options": [
+     "The tallest peak is at 24, and sodium's average is 22.99, which does not match 24.31.",
+     "Atomic mass is a weighted average of the isotopes, not their sum.",
+     "A simple average of the mass numbers is 25, and aluminum's is 26.98: neither matches.",
+     "Right: the weighted average, 24.31 amu, matches magnesium."
+    ]
+   }
+  },
+  {
+   "id": "chem-mass-spectra-7",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "mass-spectra-s1",
+   "q": "Why is the average atomic mass much closer to 24 than to 25?",
+   "options": [
+    "About 79% of the atoms are the isotope of mass 24",
+    "The isotope of mass 24 has the most protons",
+    "Heavier isotopes are not counted in the average",
+    "The spectrometer detects lighter ions more easily"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A weighted average sits nearest the most abundant isotope. Here 78.99% of the atoms have mass about 24.",
+    "options": [
+     "Right: the most abundant isotope pulls the weighted average toward its mass.",
+     "Isotopes of one element have the same number of protons.",
+     "All isotopes count, each weighted by its abundance.",
+     "The peak heights reflect how many atoms of each isotope are present, not a detector bias."
+    ]
+   }
+  },
+  {
+   "id": "chem-mass-spectra-8",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "mass-spectra-s1",
+   "q": "How do the atoms that make the peak at m/z = 26 differ from those at m/z = 24?",
+   "options": [
+    "They have two more protons",
+    "They have two more electrons",
+    "They have two more neutrons",
+    "They carry a charge of 2+ instead of 1+"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Isotopes differ only in neutrons. Mass 26 vs 24: two extra neutrons, same 12 protons.",
+    "options": [
+     "Two more protons would make a different element.",
+     "Electrons barely change the mass, and every ion here has lost one electron.",
+     "Right: same element (same protons), mass two units higher, so two more neutrons.",
+     "Every ion in this spectrum is singly charged, so m/z equals the mass."
+    ]
+   }
+  },
+  {
+   "id": "chem-mass-spectra-9",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "mass-spectra-s2",
+   "q": "Calculate the average atomic mass of gallium from the table.",
+   "numeric": {
+    "answer": 69.72,
+    "tol": 0.01,
+    "unit": "amu",
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 69.93,
+      "rel": 0.01,
+      "why": "Value: that is a simple average. Gallium-69 is more common, so weight each mass by its abundance."
+     }
+    ]
+   },
+   "why": {
+    "correct": "(0.6011)(68.926) + (0.3989)(70.925) = 41.431 + 28.292 = 69.72 amu."
+   }
+  },
+  {
+   "id": "chem-mass-spectra-10",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "mass-spectra-s2",
+   "q": "Boron's average atomic mass is 10.81 amu. Using the table, what percentage of boron atoms are boron-11?",
+   "numeric": {
+    "answer": 80,
+    "tol": 0.1,
+    "unit": "%",
+    "units": [
+     "percent"
+    ],
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 19.98,
+      "rel": 0.01,
+      "why": "Value: that is the boron-10 share. The average (10.81) is closer to 11, so most atoms are boron-11."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Let x be the fraction of ¹¹B. 10.013(1 − x) + 11.009x = 10.81, so 0.996x = 0.797 and x = 0.800, or 80.0%."
+   }
+  },
+  {
+   "id": "chem-mass-spectra-11",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "mass-spectra-s2",
+   "q": "A student says chlorine's mass spectrum would show one peak at 35.45, the atomic mass on the periodic table. Which response is correct?",
+   "options": [
+    "Yes, because the spectrometer reports the average mass of the atoms in the sample",
+    "No; the spectrum shows peaks at 35 and 37 of equal height",
+    "No; it shows one peak at 36, halfway between the isotopes",
+    "No; it shows peaks near 35 and 37, the first about three times taller"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The periodic-table value is a weighted average of real isotopes. The spectrum shows each isotope: a tall peak at 35 and one about a third as tall at 37.",
+    "options": [
+     "A mass spectrometer separates the isotopes and shows each one as a peak.",
+     "The heights follow the abundances, 75.76% and 24.24%, about 3 to 1.",
+     "No chlorine atom has mass 36 in this data; the peaks are at each isotope's mass.",
+     "Right: 35.45 is an average. Each peak is a real isotope, and the heights follow 75.76% and 24.24%."
+    ]
+   }
+  },
+  {
+   "id": "chem-mass-spectra-12",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "mass-spectra-s2",
+   "q": "Gallium's average atomic mass, 69.72 amu, falls between its two isotope masses. Which claim about the data is supported?",
+   "options": [
+    "A third gallium isotope with a mass near 69.7 is likely",
+    "The average is nearer 69 because gallium-69 is the more common isotope",
+    "Gallium-71 has more protons than gallium-69",
+    "The abundances are probably wrong, since the mass is below the midpoint"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The midpoint of 68.926 and 70.925 is 69.93. The real average, 69.72, sits closer to 69 because the lighter isotope is the majority.",
+    "options": [
+     "A weighted average of two isotopes always falls between them; no third isotope is needed.",
+     "Right: 60.11% of atoms are gallium-69, which pulls the average below the midpoint of 69.93.",
+     "Isotopes of one element have the same number of protons; gallium-71 has two more neutrons.",
+     "An average below the midpoint is what you expect when the lighter isotope is more common."
+    ]
+   }
+  },
+  {
+   "id": "chem-mass-spectra-13",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "An atom of oxygen gains two electrons. What does it become?",
+   "options": [
+    "A cation with a 2+ charge",
+    "An anion with a 2− charge",
+    "An isotope of oxygen with a mass two units higher",
+    "An atom of neon, which has two more electrons"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "O has 8 protons. With 10 electrons the charge is 8 − 10 = 2−: the oxide anion, O²⁻.",
+    "options": [
+     "Gaining electrons adds negative charge; a cation forms when electrons are lost.",
+     "Right: two extra electrons give two more negative charges than positive ones.",
+     "Electrons barely change the mass, and isotopes differ in neutrons, not electrons.",
+     "The element depends on protons; oxygen keeps its 8 protons."
+    ]
+   }
+  },
+  {
+   "id": "chem-mass-spectra-14",
+   "type": "multi",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which particles have more protons than electrons? Select all that apply.",
+   "options": [
+    "Na⁺",
+    "Cl⁻",
+    "O²⁻",
+    "Ne"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "A cation (positive ion) has more protons than electrons. Na⁺ is the only cation here; Cl⁻ and O²⁻ are anions and Ne is neutral.",
+    "options": [
+     "Right: 11 protons, 10 electrons.",
+     "Chloride has 17 protons and 18 electrons: more electrons.",
+     "Oxide has 8 protons and 10 electrons: more electrons.",
+     "A neutral atom has equal numbers: 10 and 10."
+    ]
+   }
+  },
+  {
+   "id": "chem-mass-spectra-15",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a mass spectrometer, why are the atoms first turned into ions?",
+   "options": [
+    "The fields that steer and sort particles act on charged particles",
+    "Removing an electron makes each atom lighter, so the peaks spread out",
+    "Ions of different isotopes differ in protons, which the detector counts",
+    "Neutral atoms of one element share one mass, so they need no sorting"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The spectrometer sorts particles by mass using fields that act only on charge. For the singly charged ions in this course, m/z equals the mass.",
+    "options": [
+     "Right: the fields push on charged particles; a neutral atom would fly straight through unsorted.",
+     "An electron is about 1/1800 of a proton's mass, so removing one barely changes the mass.",
+     "Isotopes of one element have the same number of protons.",
+     "Neutral atoms of one element can still differ in mass; they just cannot be steered."
+    ]
+   }
+  },
+  {
+   "id": "chem-mass-spectra-16",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "mass-spectra",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pair are isotopes of each other?",
+   "options": [
+    "⁴⁰Ar and ⁴⁰Ca",
+    "¹⁶O and ¹⁶O²⁻",
+    "²⁸Si and ³⁰Si",
+    "¹²C and ¹⁴N"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Isotopes: same element (same atomic number), different mass numbers.",
+    "options": [
+     "Same mass number but different elements (18 and 20 protons).",
+     "Same isotope; one has gained electrons to become an ion.",
+     "Right: both are silicon (14 protons) with different neutron counts.",
+     "Different elements, with 6 and 7 protons."
+    ]
+   }
+  }
+ ]
+}

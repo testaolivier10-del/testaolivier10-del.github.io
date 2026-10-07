@@ -1,0 +1,12 @@
+{
+ "buffer-addition-bars": {
+  "file": "figures/buffer-addition-bars.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 340,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Bars for a 1.00 L buffer: 0.100 mol HA and 0.100 mol A⁻ before (pH 4.74); after adding 0.010 mol OH⁻, 0.090 mol HA and 0.110 mol A⁻ (pH 4.83). The same hydroxide in 1.00 L of pure water raises the pH from 7.00 to 12.00."
+ }
+}

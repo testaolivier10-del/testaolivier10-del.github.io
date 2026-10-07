@@ -1,0 +1,7 @@
+{
+ "periodic-trends-arrows": {
+  "file": "figures/periodic-trends-arrows.svg", "ext": "svg", "w": 680, "h": 340,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Atoms of periods 2 to 4 drawn to relative size: they shrink across a period (radius down, ionization energy and electronegativity up) and grow down a group (radius up, ionization energy and electronegativity down)."
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "ion-formation": {
+  "file": "figures/ion-formation.svg", "ext": "svg", "w": 680, "h": 300,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Na (1s² 2s² 2p⁶ 3s¹) loses one electron to become the smaller Na⁺, like neon; Cl ([Ne] 3s² 3p⁵) gains one to become the larger Cl⁻, like argon; one of each makes neutral NaCl."
+ }
+}

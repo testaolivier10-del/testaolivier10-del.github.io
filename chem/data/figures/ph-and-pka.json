@@ -1,0 +1,12 @@
+{
+ "pka-ladder": {
+  "file": "figures/pka-ladder.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A pH axis for an acid with pKa 4.7: below pH 4.7 the protonated form HA predominates, above it the deprotonated form A⁻ predominates, and at pH 4.7 they are equal. The ratio [A⁻]:[HA] is 1:10 one unit below pKa and 10:1 one unit above. An indicator with pKa 9.3 changes color from about pH 8.3 to 10.3."
+ }
+}

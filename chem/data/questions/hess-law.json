@@ -1,0 +1,521 @@
+{
+ "stimuli": {
+  "hess-law-s1": {
+   "kind": "table",
+   "title": "Three combustion reactions",
+   "text": "<p>A student wants ΔH° for C(graphite) + 2 H₂(g) → CH₄(g), which cannot be measured directly because carbon and hydrogen do not react cleanly to give only methane. She uses these measured reactions.</p>",
+   "table": {
+    "caption": "Measured reactions at 25 °C",
+    "cols": [
+     "Reaction",
+     "Equation",
+     "ΔH° (kJ/mol)"
+    ],
+    "rows": [
+     [
+      "1",
+      "C(graphite) + O₂(g) → CO₂(g)",
+      "−393.5"
+     ],
+     [
+      "2",
+      "2 H₂(g) + O₂(g) → 2 H₂O(l)",
+      "−571.6"
+     ],
+     [
+      "3",
+      "CH₄(g) + 2 O₂(g) → CO₂(g) + 2 H₂O(l)",
+      "−890.3"
+     ]
+    ]
+   }
+  },
+  "hess-law-s2": {
+   "kind": "model",
+   "title": "Two routes from N₂ and O₂ to NO₂",
+   "html": "<p>Two routes connect the same starting substances and the same final substances.</p><p><b>Route A (one step):</b> N₂(g) + 2 O₂(g) → 2 NO₂(g) &nbsp; ΔH = ?</p><p><b>Route B (two steps):</b></p><p>Step 1: N₂(g) + O₂(g) → 2 NO(g) &nbsp; ΔH₁ = +180.6 kJ/mol</p><p>Step 2: 2 NO(g) + O₂(g) → 2 NO₂(g) &nbsp; ΔH₂ = −114.2 kJ/mol</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-hess-law-1",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "hess-law-s1",
+   "q": "What must the student do with Reaction 3 to use it toward the target?",
+   "options": [
+    "Reverse it, so CH₄ appears as a product; ΔH becomes +890.3 kJ/mol.",
+    "Reverse it, so CH₄ appears as a product; ΔH stays −890.3 kJ/mol.",
+    "Keep it exactly as written, since CH₄ already appears in Reaction 3.",
+    "Multiply it by 2, since the target has 2 H₂."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Match each target substance to the side it is on. CH₄ is a product in the target, so Reaction 3 is reversed: +890.3 kJ/mol.",
+    "options": [
+     "Right: the target has CH₄ on the product side, and reversing flips the sign.",
+     "Reversing a reaction always changes the sign of its ΔH; changing the equation but not its ΔH is a common slip.",
+     "As written, CH₄ is a reactant; the target makes CH₄.",
+     "The target needs 1 mol of CH₄, the same as Reaction 3; it only needs reversing."
+    ]
+   }
+  },
+  {
+   "id": "chem-hess-law-2",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "hess-law-s1",
+   "q": "Use Hess's law to calculate ΔH° for C(graphite) + 2 H₂(g) → CH₄(g), in kJ/mol.",
+   "numeric": {
+    "answer": -74.8,
+    "tol": 0.1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": -1855.0,
+      "rel": 0.02,
+      "why": "Sign: Reaction 3 must be reversed, so its ΔH becomes +890.3 kJ/mol, not −890.3."
+     },
+     {
+      "value": 211.0,
+      "rel": 0.02,
+      "why": "Value: Reaction 2 already has 2 H₂, as the target does; use it as written, without halving."
+     },
+     {
+      "value": 74.8,
+      "rel": 0.02,
+      "why": "Sign: you reversed the wrong reactions. Keep 1 and 2 as written (C and H₂ are reactants in the target) and reverse 3."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Reaction 1 as written (−393.5) + Reaction 2 as written (−571.6) + Reaction 3 reversed (+890.3). The 2 O₂, CO₂ and 2 H₂O cancel. ΔH° = −393.5 − 571.6 + 890.3 = −74.8 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-hess-law-3",
+   "type": "multi",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "hess-law-s1",
+   "q": "Which substances cancel when the three adjusted reactions are added? Select all that apply.",
+   "options": [
+    "O₂(g)",
+    "CO₂(g)",
+    "H₂O(l)",
+    "H₂(g)",
+    "CH₄(g)",
+    "C(graphite)"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Everything that is not in the target must cancel: O₂, CO₂ and H₂O. What remains is C + 2 H₂ → CH₄.",
+    "options": [
+     "1 O₂ + 1 O₂ on the left and 2 O₂ on the right (from reversed 3) cancel.",
+     "Made in Reaction 1 and used up in reversed Reaction 3.",
+     "2 H₂O made in Reaction 2 and used in reversed Reaction 3.",
+     "H₂ stays: it is a reactant in the target.",
+     "CH₄ stays: it is the product of the target.",
+     "Carbon stays: it is a reactant in the target."
+    ]
+   }
+  },
+  {
+   "id": "chem-hess-law-4",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "hess-law-s1",
+   "q": "Why is the answer the same as the standard enthalpy of formation of CH₄(g)?",
+   "options": [
+    "Any answer found with Hess's law is the enthalpy of formation of the last product.",
+    "CH₄ is an element, so its ΔH°f is the value of any reaction it is in.",
+    "The three measured reactions are each formation reactions.",
+    "The target makes 1 mol of CH₄ from its elements in their standard states."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "C(graphite) + 2 H₂(g) → CH₄(g) is the formation reaction of methane, so its ΔH° is ΔH°f(CH₄) = −74.8 kJ/mol.",
+    "options": [
+     "Hess's law gives ΔH for whatever target you choose.",
+     "CH₄ is a compound of carbon and hydrogen.",
+     "Reactions 2 and 3 are not: 2 makes 2 mol of water, and 3 starts from a compound.",
+     "Right: that is exactly the definition of ΔH°f."
+    ]
+   }
+  },
+  {
+   "id": "chem-hess-law-5",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "hess-law-s2",
+   "q": "What is ΔH for Route A, in kJ/mol?",
+   "numeric": {
+    "answer": 66.4,
+    "tol": 0.1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 294.8,
+      "rel": 0.02,
+      "why": "Sign: ΔH₂ is −114.2 kJ/mol; add it with its sign."
+     },
+     {
+      "value": -66.4,
+      "rel": 0.02,
+      "why": "Sign: you reversed the steps. Both are used as written, since they already lead from N₂ + O₂ to NO₂."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Steps 1 and 2 add to N₂ + 2 O₂ → 2 NO₂ (the 2 NO cancel). ΔH = +180.6 + (−114.2) = +66.4 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-hess-law-6",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "hess-law-s2",
+   "q": "Which statement explains why Route A and Route B must have the same overall ΔH?",
+   "options": [
+    "Both routes involve the same number of steps, so they have the same ΔH.",
+    "Enthalpy is a state function: its change depends only on the starting and final states.",
+    "Energy is created in Step 1 and then destroyed in Step 2, so the two routes balance out.",
+    "Both routes happen at the same speed, so they release the same energy."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Like the height difference between two places on a map, ΔH depends only on where you start and finish, not on the path.",
+    "options": [
+     "Route A has one step and Route B has two.",
+     "Right: both routes start at N₂ + 2 O₂ and end at 2 NO₂, so ΔH is the same.",
+     "Energy is never created or destroyed; it is transferred.",
+     "Speed is about activation energy, not ΔH."
+    ]
+   }
+  },
+  {
+   "id": "chem-hess-law-7",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "hess-law-s2",
+   "q": "What is ΔH for 2 NO₂(g) → N₂(g) + 2 O₂(g)?",
+   "options": [
+    "+66.4 kJ/mol",
+    "−33.2 kJ/mol",
+    "−66.4 kJ/mol",
+    "−180.6 kJ/mol"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Reverse Route A: ΔH = −(+66.4) = −66.4 kJ/mol.",
+    "options": [
+     "Reversing the reaction flips the sign of ΔH.",
+     "The coefficients are the same as Route A, so the size does not change.",
+     "Right: the reverse of Route A, so ΔH changes sign.",
+     "That reverses Step 1 alone; Step 2 must be reversed too."
+    ]
+   }
+  },
+  {
+   "id": "chem-hess-law-8",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "hess-law-s2",
+   "q": "What is ΔH, in kJ/mol, for NO(g) + ½ O₂(g) → NO₂(g)?",
+   "numeric": {
+    "answer": -57.1,
+    "tol": 0.1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": -114.2,
+      "rel": 0.02,
+      "why": "Value: Step 2 makes 2 mol of NO₂. Halving the equation halves ΔH."
+     },
+     {
+      "value": 57.1,
+      "rel": 0.02,
+      "why": "Sign: halving does not change the sign; only reversing does."
+     }
+    ]
+   },
+   "why": {
+    "correct": "This is Step 2 multiplied by ½: ΔH = ½ × (−114.2 kJ/mol) = −57.1 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-hess-law-9",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statement is Hess's law?",
+   "options": [
+    "If a reaction is the sum of steps, its ΔH is the sum of the steps' ΔH values.",
+    "ΔH of a reaction equals the activation energy of its slowest step.",
+    "ΔH of a multistep reaction is the same as the ΔH of its first step alone.",
+    "ΔH doubles each time a reaction is split into two separate steps."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Hess's law: when equations add to give a target equation, their ΔH values add to give the target's ΔH.",
+    "options": [
+     "Right: because enthalpy is a state function.",
+     "Activation energy and ΔH are different quantities.",
+     "Each step contributes; the total is their sum.",
+     "Splitting a reaction into steps does not change its overall ΔH."
+    ]
+   }
+  },
+  {
+   "id": "chem-hess-law-10",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Given 4 Al(s) + 3 O₂(g) → 2 Al₂O₃(s), ΔH = −3351.4 kJ/mol, what is ΔH for 2 Al(s) + 3/2 O₂(g) → Al₂O₃(s)?",
+   "options": [
+    "−3351.4 kJ/mol",
+    "−1675.7 kJ/mol",
+    "+1675.7 kJ/mol",
+    "−6702.8 kJ/mol"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Multiply ΔH by the same factor as the equation: ½ × (−3351.4) = −1675.7 kJ/mol.",
+    "options": [
+     "The equation was halved, so ΔH must be halved too.",
+     "Right: the target is the given equation × ½, so ΔH × ½.",
+     "Halving does not reverse the reaction, so the sign stays negative.",
+     "That doubles ΔH; the coefficients were halved."
+    ]
+   }
+  },
+  {
+   "id": "chem-hess-law-11",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Given S(s) + O₂(g) → SO₂(g), ΔH = −296.8 kJ/mol, and S(s) + 3/2 O₂(g) → SO₃(g), ΔH = −395.7 kJ/mol, find ΔH for SO₂(g) + ½ O₂(g) → SO₃(g), in kJ/mol.",
+   "numeric": {
+    "answer": -98.9,
+    "tol": 0.1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": -692.5,
+      "rel": 0.02,
+      "why": "Sign: SO₂ is a reactant in the target, so reverse the first equation (+296.8 kJ/mol)."
+     },
+     {
+      "value": 98.9,
+      "rel": 0.02,
+      "why": "Sign: you reversed the wrong equation. SO₃ is a product in the target, so keep the second as written."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Reverse the first (+296.8) and keep the second (−395.7). Adding: SO₂ + S + 3/2 O₂ → S + O₂ + SO₃; cancel S and one O₂: SO₂ + ½ O₂ → SO₃. ΔH = +296.8 − 395.7 = −98.9 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-hess-law-12",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Use Hess's law to find ΔH for 2 C(graphite) + H₂(g) → C₂H₂(g), given: (1) C₂H₂(g) + 5/2 O₂(g) → 2 CO₂(g) + H₂O(l), ΔH = −1300.0 kJ/mol; (2) C(graphite) + O₂(g) → CO₂(g), ΔH = −393.5 kJ/mol; (3) H₂(g) + ½ O₂(g) → H₂O(l), ΔH = −285.8 kJ/mol.",
+   "numeric": {
+    "answer": 227.2,
+    "tol": 0.1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 620.7,
+      "rel": 0.02,
+      "why": "Value: the target has 2 C, so multiply equation (2) and its ΔH by 2."
+     },
+     {
+      "value": -2373.0,
+      "rel": 0.02,
+      "why": "Sign: C₂H₂ is a product in the target, so reverse equation (1): +1300.0 kJ/mol."
+     },
+     {
+      "value": -227.2,
+      "rel": 0.02,
+      "why": "Sign: check which equations to reverse. Only (1) is reversed."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Reverse (1): +1300.0. Use (2) × 2: −787.0. Use (3) as written: −285.8. Sum = 1300.0 − 787.0 − 285.8 = +227.2 kJ/mol. The 5/2 O₂, 2 CO₂ and H₂O cancel."
+   }
+  },
+  {
+   "id": "chem-hess-law-13",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A student reverses an equation for a Hess's law problem and multiplies it by 2, then uses ΔH = −2 × (+150 kJ/mol). What did the student get, and is it right?",
+   "options": [
+    "−300 kJ/mol, which is right: reversing flips the sign and doubling doubles the size.",
+    "+300 kJ/mol, which is right: reversing and doubling cancel each other's effect on the sign.",
+    "−150 kJ/mol, which is wrong: the reversal alone should change ΔH.",
+    "+150 kJ/mol, which is wrong: ΔH stays the same when an equation is rearranged."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Apply each change to ΔH: reversing gives −150; doubling gives −300 kJ/mol. A common FRQ slip is adjusting only one of the two.",
+    "options": [
+     "Right: both changes apply to ΔH.",
+     "Doubling does not change a sign; only reversing does.",
+     "The multiplication by 2 must be applied to ΔH too.",
+     "Every change to the equation must be applied to ΔH."
+    ]
+   }
+  },
+  {
+   "id": "chem-hess-law-14",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which quantity is a state function?",
+   "options": [
+    "The distance a hiker walks to the top of a hill",
+    "The enthalpy of a system",
+    "The total energy a stove burns while cooking a meal",
+    "The number of steps in a reaction mechanism"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A state function depends only on the state, like the altitude of a place. Enthalpy is one, so ΔH depends only on the start and end states.",
+    "options": [
+     "Distance walked depends on the trail chosen, so it is a path quantity.",
+     "Right: H depends only on the current state (substances, amounts, temperature, pressure), not on how the system got there.",
+     "That depends on how the meal is cooked, not only on the start and finish.",
+     "Different mechanisms can connect the same reactants and products."
+    ]
+   }
+  },
+  {
+   "id": "chem-hess-law-15",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Three methods give ΔH for one reaction: a coffee-cup measurement (−52.0 kJ/mol), Hess's law from tabulated reactions (−56.0 kJ/mol), and bond enthalpies (−61 kJ/mol). Which explanation of the differences is best?",
+   "options": [
+    "Hess's law gives a different ΔH, because routing through other reactions changes the total energy.",
+    "The bond-enthalpy value is the most exact, because it counts the actual bonds broken and formed.",
+    "Energy lost from the cup makes the measurement low, and average bond enthalpies make that estimate least exact.",
+    "The three should agree exactly, so any difference between them means a calculation mistake was made."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Calorimetry loses some energy to the room (|ΔH| too small); Hess's law with accurate tabulated data is most reliable; bond enthalpies are average values.",
+    "options": [
+     "Enthalpy is a state function, so the route does not change ΔH.",
+     "Bond enthalpies are averages, which makes them the least exact.",
+     "Right: each method has its own known limitation.",
+     "Real measurements lose energy and bond enthalpies are averages, so small differences are expected."
+    ]
+   }
+  },
+  {
+   "id": "chem-hess-law-16",
+   "type": "order",
+   "unit": "unit-6",
+   "topic": "hess-law",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for solving a Hess's law problem in order.",
+   "options": [
+    "Write the target equation and note the side and amount of each substance.",
+    "Reverse or multiply each given equation to match the target, and change its ΔH the same way.",
+    "Add the adjusted equations and check that everything not in the target cancels.",
+    "Once only the target is left, add the adjusted ΔH values to get its ΔH."
+   ],
+   "why": {
+    "correct": "Target first; then adjust each given equation (reverse, multiply or both, in either order) with its ΔH; then add the equations and check that only the target is left; then add the ΔH values."
+   }
+  }
+ ]
+}

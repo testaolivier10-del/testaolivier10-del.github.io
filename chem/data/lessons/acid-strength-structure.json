@@ -1,0 +1,103 @@
+{
+ "topic": "acid-strength-structure",
+ "hook": "Vinegar is an acid, but ethanol, which has the same O–H group, is not acidic enough to change pH at all. Swap one hydrogen in vinegar's acid for chlorine and the acid becomes about eighty times stronger. The reason sits in the structure of the ion left behind after the proton leaves.",
+ "prereq": [
+  {
+   "q": "Which atom is most electronegative?",
+   "options": [
+    "F",
+    "Cl",
+    "O",
+    "N"
+   ],
+   "correct": 0,
+   "why": "Fluorine has the highest electronegativity of all elements (4.0).",
+   "review": "periodic-trends"
+  },
+  {
+   "q": "What do the two resonance structures of the acetate ion, CH₃COO⁻, show?",
+   "options": [
+    "The negative charge is shared between the two O atoms",
+    "The ion switches back and forth between two shapes",
+    "One O atom always carries the charge",
+    "The C atom carries the negative charge"
+   ],
+   "correct": 0,
+   "why": "Resonance structures describe one real ion in which the charge is delocalized over both O atoms.",
+   "review": "resonance-formal-charge"
+  },
+  {
+   "q": "HA has Ka = 1 × 10⁻⁴ and HB has Ka = 1 × 10⁻⁸. Which is the stronger acid?",
+   "options": [
+    "HA",
+    "HB",
+    "They are equal",
+    "It depends on concentration"
+   ],
+   "correct": 0,
+   "why": "A larger Ka means the acid ionizes more.",
+   "review": "weak-acids-bases"
+  }
+ ],
+ "figure": {
+  "figure": "oxyacid-series",
+  "caption": "Each extra oxygen, or a more electronegative central atom, stabilizes the conjugate base and strengthens the acid."
+ },
+ "chain": [
+  {
+   "cause": "An acid HA gives up H⁺ and leaves A⁻ behind",
+   "effect": "the more stable A⁻ is, the further HA + H₂O ⇌ H₃O⁺ + A⁻ lies to the right"
+  },
+  {
+   "cause": "Electronegative atoms near the acidic group pull electron density toward themselves",
+   "effect": "the negative charge of A⁻ is less concentrated, so A⁻ is more stable and Ka is larger"
+  },
+  {
+   "cause": "Resonance spreads the charge of A⁻ over several atoms",
+   "effect": "carboxylic acids are far stronger than alcohols, and oxyacids with more O are stronger"
+  },
+  {
+   "cause": "Down a group, the bond to H gets longer and weaker",
+   "effect": "HF < HCl < HBr < HI and H₂O < H₂S < H₂Se in acid strength"
+  },
+  {
+   "cause": "An amine N has a lone pair",
+   "effect": "amines are weak bases that accept a proton on nitrogen"
+  }
+ ],
+ "ideas": [
+  "<b>Acid strength</b> follows conjugate base stability. Stabilize A⁻ and Ka goes up.",
+  "Oxyacids: more O atoms, or a more electronegative central atom, means a stronger acid (HOI &lt; HOBr &lt; HOCl &lt; HOClO).",
+  "Carboxylic acids: the carboxylate is stabilized by resonance; electron-withdrawing groups (Cl, F) nearby make the acid stronger.",
+  "Binary acids: across a period electronegativity rules (CH₄ &lt; NH₃ &lt; H₂O &lt; HF); down a group bond strength rules (HF &lt; HCl &lt; HBr &lt; HI).",
+  "Amines (–NH₂) are weak bases: the proton goes on the N lone pair."
+ ],
+ "misconception": {
+  "wrong": "More hydrogen atoms in a formula make a stronger acid.",
+  "right": "Only hydrogens that can leave as H⁺ count, and strength depends on how stable the conjugate base is. CH₄ has four H atoms and is not acidic; HCl has one and is strong."
+ },
+ "check": [
+  "chem-acid-strength-structure-1",
+  "chem-acid-strength-structure-2",
+  "chem-acid-strength-structure-3",
+  "chem-acid-strength-structure-4",
+  "chem-acid-strength-structure-7",
+  "chem-acid-strength-structure-8",
+  "chem-acid-strength-structure-11"
+ ],
+ "summary": "An acid is strong when the ion it leaves behind is stable. Electronegative atoms pull electron density from the acidic group, resonance spreads the charge of the conjugate base, and a large atom holds charge over a larger volume; each makes Ka larger. Amines are weak bases that accept a proton on the nitrogen lone pair.",
+ "connections": [
+  {
+   "href": "../notes/weak-acids-bases.html",
+   "label": "Back: Ka, Kb and conjugate pairs (8.3)"
+  },
+  {
+   "href": "../notes/resonance-formal-charge.html",
+   "label": "Back: resonance (2.6)"
+  },
+  {
+   "href": "../notes/ph-and-pka.html",
+   "label": "Next: pH and pKa (8.7)"
+  }
+ ]
+}

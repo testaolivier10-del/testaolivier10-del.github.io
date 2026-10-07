@@ -1,0 +1,14 @@
+{
+ "rate-law": {
+  "def": "An equation, found by experiment, that gives the rate of a reaction in terms of reactant concentrations: rate = k[A]^m[B]^n."
+ },
+ "rate-constant": {
+  "def": "The constant k in a rate law. It is fixed for a reaction at a given temperature, rises with temperature, and has units that depend on the overall order."
+ },
+ "reaction-order": {
+  "def": "The exponent on a concentration in a rate law (0, 1 or 2 in this course). The overall order is the sum of the exponents."
+ },
+ "initial-rates": {
+  "def": "Finding the orders of a rate law by comparing the initial rates of trials in which only one starting concentration changes."
+ }
+}

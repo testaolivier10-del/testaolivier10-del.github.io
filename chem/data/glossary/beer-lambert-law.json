@@ -1,0 +1,11 @@
+{
+ "absorbance": {
+  "def": "A unitless measure of how much light of one wavelength a sample absorbs; 0 means none. Transmittance is the fraction of light that passes through."
+ },
+ "beer-lambert": {
+  "def": "A = εbc: absorbance equals the molar absorptivity ε (L/(mol·cm)) times the path length b (cm) times the concentration c (mol/L)."
+ },
+ "spectrophotometer": {
+  "def": "An instrument that passes light of a chosen wavelength through a sample in a cuvette and measures its absorbance. Measurements are made at λmax, and a calibration curve of standards gives an unknown's concentration."
+ }
+}

@@ -1,0 +1,79 @@
+{
+ "topic": "real-gases",
+ "hook": "Propane tanks at a barbecue hold liquid propane at about 9 atm. At that pressure the ideal gas law badly mispredicts how much fuel is inside, because propane molecules are so close together that they pull on each other and finally condense. Real gases follow PV = nRT only when their molecules are far apart and fast.",
+ "prereq": [
+  {
+   "q": "Which assumption of the kinetic molecular theory concerns attractions?",
+   "options": [
+    "Particles do not attract or repel each other",
+    "Particles move in straight lines",
+    "Average KE is proportional to T"
+   ],
+   "correct": 0,
+   "why": "The ideal model ignores attractions between particles.",
+   "review": "kinetic-molecular-theory"
+  },
+  {
+   "q": "Which has the strongest attractions between its molecules?",
+   "options": [
+    "NH₃",
+    "CH₄",
+    "Ne"
+   ],
+   "correct": 0,
+   "why": "NH₃ hydrogen-bonds; CH₄ and Ne have dispersion forces only.",
+   "review": "intermolecular-forces"
+  }
+ ],
+ "figure": {
+  "figure": "real-gas-causes",
+  "caption": "Attractions lower the pressure below ideal; particle volume raises the volume above ideal."
+ },
+ "chain": [
+  {
+   "cause": "Real particles attract each other",
+   "effect": "a particle near the wall is pulled back, so the measured pressure is lower than ideal"
+  },
+  {
+   "cause": "Attractions matter more when particles are close and slow",
+   "effect": "deviations grow at high pressure and low temperature"
+  },
+  {
+   "cause": "Real particles take up space",
+   "effect": "at very high pressure the real volume is larger than ideal"
+  },
+  {
+   "cause": "High temperature and low pressure make both effects small",
+   "effect": "real gases behave most ideally there, especially small, weakly attracting ones like He"
+  }
+ ],
+ "ideas": [
+  "Ideal gas: PV/nRT = 1. Below 1, attractions dominate; above 1, particle volume dominates.",
+  "Attractions lower the pressure: worst for polar or polarizable molecules, at low T and high P.",
+  "Particle volume raises the volume: worst at very high P and for large molecules.",
+  "Most ideal: high temperature, low pressure, small particles with weak attractions."
+ ],
+ "misconception": {
+  "wrong": "A real gas deviates from ideal behavior only because its molecules take up space.",
+  "right": "At ordinary high pressures the bigger effect is usually attraction, which makes the pressure lower than ideal. Particle volume only takes over at very high pressure."
+ },
+ "check": [
+  "chem-real-gases-1",
+  "chem-real-gases-2",
+  "chem-real-gases-3",
+  "chem-real-gases-10",
+  "chem-real-gases-11",
+  "chem-real-gases-14"
+ ],
+ "summary": "Real gases depart from PV = nRT because their particles attract each other, which lowers the pressure, and take up space, which raises the volume at very high pressure. Deviations are largest at high pressure and low temperature and for particles with strong intermolecular forces; gases are most ideal at high temperature and low pressure.",
+ "connections": [
+  {
+   "href": "../notes/kinetic-molecular-theory.html",
+   "label": "The ideal model (Kinetic Molecular Theory)"
+  },
+  {
+   "href": "../notes/intermolecular-forces.html",
+   "label": "The attractions behind the deviations (Intermolecular Forces)"
+  }
+ ]
+}

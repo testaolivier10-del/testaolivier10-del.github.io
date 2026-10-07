@@ -1,0 +1,214 @@
+{
+ "id": "frq-dye-fading",
+ "type": "long",
+ "points": 10,
+ "title": "Tracking a fading dye by absorbance",
+ "units": [
+  "unit-5"
+ ],
+ "topics": [
+  "reaction-rates",
+  "rate-laws",
+  "concentration-time"
+ ],
+ "practices": [
+  "2.F",
+  "3.A",
+  "5.F",
+  "6.D",
+  "6.G"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Absorbance of a fading dye",
+  "text": "<p>A purple dye, D, reacts with hydroxide ions to form a colorless product:</p><p>D(aq) + OH⁻(aq) → DOH(aq)</p><p>A student mixes a dilute solution of D with a sodium hydroxide solution so that the starting concentrations are [D] = 1.00 × 10⁻⁵ M and [OH⁻] = 0.050 M. Because OH⁻ is present in a far larger amount than D, [OH⁻] stays essentially constant at 0.050 M during the run. The student places the mixture in a cuvette with a path length of 1.00 cm and measures the absorbance at 590 nm, where only D absorbs. The molar absorptivity of D at 590 nm is 9.00 × 10⁴ M⁻¹ cm⁻¹. The student also calculates ln(A) and 1/A for each reading.</p>",
+  "table": {
+   "caption": "Absorbance of the reaction mixture at 590 nm over time",
+   "cols": [
+    "Time (s)",
+    "Absorbance, A",
+    "ln(A)",
+    "1/A"
+   ],
+   "rows": [
+    [
+     "0",
+     "0.900",
+     "−0.105",
+     "1.11"
+    ],
+    [
+     "100",
+     "0.708",
+     "−0.345",
+     "1.41"
+    ],
+    [
+     "200",
+     "0.557",
+     "−0.585",
+     "1.80"
+    ],
+    [
+     "300",
+     "0.438",
+     "−0.826",
+     "2.28"
+    ],
+    [
+     "400",
+     "0.345",
+     "−1.064",
+     "2.90"
+    ],
+    [
+     "500",
+     "0.271",
+     "−1.306",
+     "3.69"
+    ]
+   ]
+  }
+ },
+ "graphSpec": {
+  "type": "line",
+  "x": {
+   "label": "Time",
+   "unit": "s",
+   "min": 0,
+   "max": 500,
+   "step": 100
+  },
+  "y": {
+   "label": "ln(A)",
+   "min": -1.4,
+   "max": 0,
+   "step": 0.2
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the concentration of D in the cuvette at 200 s.",
+   "rubric": [
+    {
+     "point": "Correct use of A = εbc with the 200 s reading: [D] = 0.557 / ((9.00 × 10⁴ M⁻¹ cm⁻¹)(1.00 cm)) = 6.19 × 10⁻⁶ M",
+     "accept": [
+      "6.19 × 10⁻⁶ M",
+      "6.2 × 10⁻⁶ M with the setup shown"
+     ]
+    }
+   ],
+   "sample": "By the Beer-Lambert law, A = εbc, so c = A/(εb) = 0.557 / ((9.00 × 10⁴ M⁻¹ cm⁻¹)(1.00 cm)) = 6.19 × 10⁻⁶ M."
+  },
+  {
+   "label": "b",
+   "points": 1,
+   "prompt": "On the grid provided, <b>plot</b> ln(A) against time for the six readings and draw the best-fit line.",
+   "rubric": [
+    {
+     "point": "All six points plotted correctly on labeled axes, with a single straight best-fit line through them",
+     "accept": [
+      "points within half a grid square of the table values, joined by one straight line"
+     ]
+    }
+   ],
+   "sample": "Points at (0, −0.105), (100, −0.345), (200, −0.585), (300, −0.826), (400, −1.064) and (500, −1.306), with one straight line drawn through all of them."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Determine</b> the order of the reaction with respect to D. <b>Justify</b> your answer using the data.",
+   "rubric": [
+    {
+     "point": "First order with respect to D",
+     "accept": [
+      "first order",
+      "order 1"
+     ]
+    },
+    {
+     "point": "Justification names the linear plot: ln(A) (or ln[D]) against time is linear; may cite the steady change of about −0.24 per 100 s, or that 1/A against time is not linear",
+     "accept": [
+      "ln(A) vs t is a straight line, and A is proportional to [D]",
+      "ln(A) falls by about 0.24 every 100 s"
+     ]
+    }
+   ],
+   "sample": "First order in D. Absorbance is proportional to [D] (A = εbc), so ln(A) behaves like ln[D]. ln(A) falls by about the same amount, 0.24, in every 100 s interval, so the plot of ln(A) against time is linear, which is the signature of a first-order reaction. The plot of 1/A against time is not linear (1/A rises by 0.30, then 0.39, 0.48, ...)."
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "<b>Calculate</b> the rate constant for the disappearance of D under these conditions. Include units.",
+   "rubric": [
+    {
+     "point": "Slope of ln(A) against time used: k = −slope, with a correct setup from two points or the line",
+     "accept": [
+      "(−1.306 − (−0.105))/(500 s − 0 s)"
+     ]
+    },
+    {
+     "point": "k = 2.40 × 10⁻³ s⁻¹, with units of s⁻¹",
+     "accept": [
+      "2.40 × 10⁻³ s⁻¹",
+      "2.4 × 10⁻³ s⁻¹",
+      "0.00240 s⁻¹"
+     ]
+    }
+   ],
+   "sample": "For a first-order reaction, ln[D] = −kt + ln[D]₀, and ln(A) differs from ln[D] only by a constant (ln εb), so the slope of ln(A) vs t is −k. Slope = (−1.306 − (−0.105))/(500 s − 0 s) = −1.200/500 s = −2.40 × 10⁻³ s⁻¹. So k = 2.40 × 10⁻³ s⁻¹."
+  },
+  {
+   "label": "e",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the half-life of D under these conditions.",
+   "rubric": [
+    {
+     "point": "t½ = 0.693/k = 289 s, consistent with part (d)",
+     "accept": [
+      "289 s",
+      "2.9 × 10² s"
+     ]
+    }
+   ],
+   "sample": "t½ = 0.693/k = 0.693 / (2.40 × 10⁻³ s⁻¹) = 289 s. Check: the absorbance falls from 0.900 to 0.450 between 200 s (0.557) and 300 s (0.438)."
+  },
+  {
+   "label": "f",
+   "points": 2,
+   "prompt": "The student repeats the experiment with [OH⁻] = 0.100 M and the same starting [D]. The rate constant found from the ln(A) plot is 4.80 × 10⁻³ s⁻¹. (i) <b>Write</b> the rate law for the reaction. (ii) <b>Calculate</b> the value of the rate constant k in that rate law, with units.",
+   "rubric": [
+    {
+     "point": "rate = k[D][OH⁻]: doubling [OH⁻] doubles the observed rate constant, so first order in OH⁻",
+     "accept": [
+      "rate = k[D][OH⁻]"
+     ]
+    },
+    {
+     "point": "k = (2.40 × 10⁻³ s⁻¹)/(0.050 M) = 0.048 M⁻¹ s⁻¹ (or from the second run, 4.80 × 10⁻³ s⁻¹ / 0.100 M)",
+     "accept": [
+      "0.048 M⁻¹ s⁻¹",
+      "4.8 × 10⁻² M⁻¹ s⁻¹"
+     ]
+    }
+   ],
+   "sample": "(i) Doubling [OH⁻] from 0.050 M to 0.100 M doubled the rate constant measured for D (2.40 × 10⁻³ to 4.80 × 10⁻³ s⁻¹), so the reaction is first order in OH⁻. With part (c): rate = k[D][OH⁻]. (ii) In the first run, the measured constant equals k[OH⁻], so k = (2.40 × 10⁻³ s⁻¹)/(0.050 M) = 0.048 M⁻¹ s⁻¹."
+  },
+  {
+   "label": "g",
+   "points": 1,
+   "prompt": "Another student accidentally sets the spectrophotometer to 560 nm, where the molar absorptivity of D is lower, and repeats the first run. Every absorbance reading is smaller. Would that student's value of the rate constant from part (d) be greater than, less than or equal to the value found at 590 nm? <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "Equal: every absorbance is smaller by the same factor (A = εbc with a smaller ε), so ln(A) is shifted down by a constant and the slope, −k, is unchanged",
+     "accept": [
+      "the same; the ln(A) line moves down but keeps the same slope"
+     ]
+    }
+   ],
+   "sample": "Equal. At 560 nm every reading is multiplied by the same factor (the ratio of the two molar absorptivities), so ln(A) is lowered by the same constant at every time. The ln(A) plot moves down but keeps the same slope, and k = −slope is unchanged."
+  }
+ ]
+}

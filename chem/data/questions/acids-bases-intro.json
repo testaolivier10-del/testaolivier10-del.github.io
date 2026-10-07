@@ -1,0 +1,603 @@
+{
+ "stimuli": {
+  "acids-bases-intro-s1": {
+   "kind": "table",
+   "title": "Four solutions at 25 °C",
+   "text": "<p>A student records one measured quantity for each of four aqueous solutions, all at 25 °C.</p>",
+   "table": {
+    "caption": "One known quantity per solution",
+    "cols": [
+     "Solution",
+     "Quantity measured",
+     "Value"
+    ],
+    "rows": [
+     [
+      "A",
+      "[H₃O⁺]",
+      "3.2 × 10⁻⁴ M"
+     ],
+     [
+      "B",
+      "[OH⁻]",
+      "2.5 × 10⁻³ M"
+     ],
+     [
+      "C",
+      "pH",
+      "9.15"
+     ],
+     [
+      "D",
+      "pOH",
+      "11.62"
+     ]
+    ]
+   }
+  },
+  "acids-bases-intro-s2": {
+   "kind": "particle",
+   "title": "Ions in four samples of water",
+   "html": "<svg viewBox=\"0 0 760 210\" width=\"760\" height=\"210\" role=\"img\" aria-label=\"Four boxes of equal volume showing only hydronium and hydroxide ions. Box 1: 2 hydronium and 2 hydroxide. Box 2: 4 hydronium and 1 hydroxide. Box 3: 1 hydronium and 4 hydroxide. Box 4: 3 hydronium and 3 hydroxide.\"><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect x=\"5\" y=\"5\" width=\"180\" height=\"200\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"95\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Box 1</text><circle cx=\"30.2\" cy=\"74.5\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"30.2\" y=\"78.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"90.2\" cy=\"74.5\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"90.2\" y=\"78.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"150.2\" cy=\"74.5\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"150.2\" y=\"78.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text><circle cx=\"42.2\" cy=\"161.5\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"42.2\" y=\"165.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text><rect x=\"195\" y=\"5\" width=\"180\" height=\"200\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"285\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Box 2</text><circle cx=\"220.2\" cy=\"74.5\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"220.2\" y=\"78.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"280.2\" cy=\"74.5\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"280.2\" y=\"78.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"340.2\" cy=\"74.5\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"340.2\" y=\"78.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"232.2\" cy=\"161.5\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"232.2\" y=\"165.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"292.2\" cy=\"161.5\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"292.2\" y=\"165.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text><rect x=\"385\" y=\"5\" width=\"180\" height=\"200\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"475\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Box 3</text><circle cx=\"410.2\" cy=\"74.5\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"410.2\" y=\"78.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"470.2\" cy=\"74.5\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"470.2\" y=\"78.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text><circle cx=\"530.2\" cy=\"74.5\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"530.2\" y=\"78.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text><circle cx=\"422.2\" cy=\"161.5\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"422.2\" y=\"165.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text><circle cx=\"482.2\" cy=\"161.5\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"482.2\" y=\"165.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text><rect x=\"575\" y=\"5\" width=\"180\" height=\"200\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"665\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Box 4</text><circle cx=\"600.2\" cy=\"74.5\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"600.2\" y=\"78.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"660.2\" cy=\"74.5\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"660.2\" y=\"78.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"720.2\" cy=\"74.5\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"720.2\" y=\"78.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"612.2\" cy=\"161.5\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"612.2\" y=\"165.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text><circle cx=\"672.2\" cy=\"161.5\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"672.2\" y=\"165.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text><circle cx=\"732.2\" cy=\"161.5\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"732.2\" y=\"165.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text></g></svg><p>Key: H₃O⁺ hydronium ion; OH⁻ hydroxide ion. Water molecules and any other ions are not drawn. Boxes 1, 2 and 3 are at the same temperature; Box 4 is pure water at a different temperature.</p>"
+  },
+  "acids-bases-intro-s3": {
+   "kind": "table",
+   "title": "Kw at three temperatures",
+   "text": "<p>The ion product of water, measured for pure water.</p>",
+   "table": {
+    "caption": "Kw of pure water",
+    "cols": [
+     "Temperature (°C)",
+     "Kw"
+    ],
+    "rows": [
+     [
+      "0",
+      "1.1 × 10⁻¹⁵"
+     ],
+     [
+      "25",
+      "1.0 × 10⁻¹⁴"
+     ],
+     [
+      "50",
+      "5.5 × 10⁻¹⁴"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-acids-bases-intro-1",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "acids-bases-intro-s1",
+   "q": "Find the pH of Solution A from its measured hydronium concentration.",
+   "numeric": {
+    "answer": 3.49,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 10.51,
+      "why": "Value: that is the pOH. pH = −log[H₃O⁺] uses the hydronium concentration you were given directly.",
+      "tol": 0.02
+     },
+     {
+      "value": 8.05,
+      "why": "Value: you used ln. pH is defined with the base-10 log: pH = −log[H₃O⁺].",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "pH = −log(3.2 × 10⁻⁴) = 3.495. The concentration has two significant figures, so the pH gets two decimal places: 3.49."
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-2",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acids-bases-intro-s1",
+   "q": "What is the pH of Solution B?",
+   "numeric": {
+    "answer": 11.4,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 2.6,
+      "why": "Value: that is the pOH, −log[OH⁻]. Subtract it from 14.00 to get the pH.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "pOH = −log(2.5 × 10⁻³) = 2.602; pH = 14.00 − 2.60 = 11.40. Two significant figures in [OH⁻] give two decimal places."
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-3",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acids-bases-intro-s1",
+   "q": "What is [H₃O⁺] in Solution C, in mol/L? Give your answer in scientific notation.",
+   "numeric": {
+    "answer": 7.1e-10,
+    "tol": 1e-11,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.000014,
+      "why": "Value: that is [OH⁻], 10^−pOH. For hydronium use [H₃O⁺] = 10^−pH = 10^−9.15.",
+      "rel": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "[H₃O⁺] = 10^−pH = 10^−9.15 = 7.08 × 10⁻¹⁰ M, which is 7.1 × 10⁻¹⁰ M: a pH with two decimal places gives two significant figures."
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-4",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acids-bases-intro-s1",
+   "q": "Which solution has the highest concentration of H₃O⁺?",
+   "options": [
+    "Solution D, with a pOH of 11.62",
+    "Solution A, with [H₃O⁺] = 3.2 × 10⁻⁴ M",
+    "Solution B, with [OH⁻] = 2.5 × 10⁻³ M",
+    "Solution C, with a pH of 9.15"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Convert each to pH: A 3.49, B 11.40, C 9.15, D 14.00 − 11.62 = 2.38. The lowest pH, D, has the most H₃O⁺.",
+    "options": [
+     "Right: a large pOH means little OH⁻, so pH = 2.38, the lowest of the four.",
+     "Solution A is acidic (pH 3.49), but D's pH of 2.38 is lower, so D has more H₃O⁺. A was the only one stated as [H₃O⁺], which is not the same as having the most.",
+     "This reads [OH⁻] as if it were [H₃O⁺]. A large [OH⁻] means a basic solution, pH 11.40, with very little H₃O⁺.",
+     "A larger pH number means less H₃O⁺, not more: pH 9.15 is basic."
+    ]
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-5",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "acids-bases-intro-s1",
+   "q": "About how many times greater is [H₃O⁺] in Solution D than in Solution A?",
+   "options": [
+    "About 13 times",
+    "About 1.5 times",
+    "About 1.1 times",
+    "About 129 times"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The pH values differ by 3.49 − 2.38 = 1.11, and each pH unit is a factor of 10, so the ratio is 10^1.11 ≈ 13.",
+    "options": [
+     "Right: a pH difference of 1.11 is a factor of 10^1.11 in [H₃O⁺].",
+     "Dividing one pH by the other treats pH as a concentration. pH is a logarithm, so differences, not ratios, carry the meaning.",
+     "This is the pH difference itself. The difference is an exponent: raise 10 to it.",
+     "That would be a pH difference of about 2.1, one unit too many."
+    ]
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-6",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "acids-bases-intro-s2",
+   "q": "Which box represents a basic solution?",
+   "options": [
+    "Box 3",
+    "Box 1",
+    "Box 2",
+    "Box 4"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A solution is basic when [OH⁻] > [H₃O⁺]. Only Box 3 has more hydroxide (4) than hydronium (1).",
+    "options": [
+     "Right: 4 OH⁻ to 1 H₃O⁺.",
+     "Box 1 has equal numbers of the two ions, so it is neutral.",
+     "Box 2 has more H₃O⁺ than OH⁻, so it is acidic.",
+     "Box 4 has equal numbers of the two ions, so it is neutral even though it holds more ions than Box 1."
+    ]
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-7",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acids-bases-intro-s2",
+   "q": "In Boxes 1, 2 and 3 the product (number of H₃O⁺) × (number of OH⁻) is the same. What does this show?",
+   "options": [
+    "[H₃O⁺][OH⁻] is fixed at a given temperature, so raising one lowers the other",
+    "Each solution contains the same total number of ions",
+    "Adding acid to water adds OH⁻ ions as well as H₃O⁺ ions",
+    "The pH of each of the three solutions is the same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each box has 2 × 2 = 4 × 1 = 1 × 4 = 4. This mirrors Kw = [H₃O⁺][OH⁻], which has one value at a given temperature: more H₃O⁺ means less OH⁻.",
+    "options": [
+     "Right: the product is the model of Kw.",
+     "The totals differ: 4, 5 and 5 ions. It is the product that stays the same.",
+     "Box 2 has fewer OH⁻ than Box 1. Added H₃O⁺ reacts with OH⁻, which lowers [OH⁻].",
+     "The boxes have different [H₃O⁺], so different pH values; only the product is the same."
+    ]
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-8",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "acids-bases-intro-s2",
+   "q": "Box 1 and Box 4 are both pure water. Which statement about Box 4 is best supported?",
+   "options": [
+    "It is warmer than Box 1, because the ionization of water is endothermic",
+    "It is cooler than Box 1, because cold water holds more ions",
+    "It is acidic, because it contains more H₃O⁺ than Box 1",
+    "It has a higher pH than Box 1, because it contains more OH⁻"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Box 4 has a larger ion product (3 × 3 = 9 vs 2 × 2 = 4), so Kw is larger there. 2 H₂O ⇌ H₃O⁺ + OH⁻ absorbs heat, so a higher temperature shifts it toward the ions and raises Kw.",
+    "options": [
+     "Right: Kw grows with temperature because ionization is endothermic.",
+     "The reverse: raising the temperature favors the endothermic ionization, so warmer water has more ions.",
+     "Box 4 has equal H₃O⁺ and OH⁻, so it is neutral. Acidic means [H₃O⁺] > [OH⁻], not \"more H₃O⁺ than another sample\".",
+     "Box 4 also has more H₃O⁺, so its pH is lower than Box 1, not higher."
+    ]
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-9",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "acids-bases-intro-s2",
+   "q": "Suppose Box 1 is pure water at 25 °C, so [H₃O⁺] = 1.0 × 10⁻⁷ M. Box 2 has the same volume. What is the pH of Box 2?",
+   "numeric": {
+    "answer": 6.7,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 6.4,
+      "why": "Value: Box 2 has 4 hydronium ions, but Box 1 already has 2. The concentration is twice Box 1, not four times.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "Box 2 has twice as many H₃O⁺ ions as Box 1 in the same volume, so [H₃O⁺] = 2 × 1.0 × 10⁻⁷ = 2.0 × 10⁻⁷ M. pH = −log(2.0 × 10⁻⁷) = 6.699, or 6.70."
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-10",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acids-bases-intro-s3",
+   "q": "What is the pH of pure water at 50 °C?",
+   "numeric": {
+    "answer": 6.63,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "Value: 7.00 is neutral only at 25 °C. At 50 °C, [H₃O⁺] = √Kw, and Kw is larger.",
+      "tol": 0.02
+     },
+     {
+      "value": 13.26,
+      "why": "Value: you took −log Kw. In pure water [H₃O⁺] = [OH⁻], so [H₃O⁺] = √Kw: take the square root first.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "In pure water [H₃O⁺] = [OH⁻] = x, so x² = Kw and x = √(5.5 × 10⁻¹⁴) = 2.35 × 10⁻⁷ M. pH = −log(2.35 × 10⁻⁷) = 6.630, or 6.63."
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-11",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acids-bases-intro-s3",
+   "q": "A student measures pure water at 50 °C and reads pH 6.63. Which claim is correct?",
+   "options": [
+    "The water is neutral, because [H₃O⁺] still equals [OH⁻]",
+    "The water is acidic, because its pH is below 7",
+    "The water is acidic, because heating drives off the OH⁻ ions",
+    "The pH meter is faulty, because pure water reads 7.00"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Neutral means [H₃O⁺] = [OH⁻]. Pure water makes the two ions one for one, so it is neutral at every temperature; only at 25 °C does neutral fall at pH 7.00.",
+    "options": [
+     "Right: the definition is about the two concentrations, not the number 7.",
+     "pH 7 marks neutral only at 25 °C. At 50 °C Kw is larger, so neutral water has a lower pH.",
+     "Each ionization makes one H₃O⁺ and one OH⁻, so heating raises both equally.",
+     "A reading of 6.63 matches √Kw at 50 °C; the meter is behaving correctly."
+    ]
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-12",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acids-bases-intro-s3",
+   "q": "What does the trend in Kw with temperature show about the reaction 2 H₂O(l) ⇌ H₃O⁺(aq) + OH⁻(aq)?",
+   "options": [
+    "It is endothermic: heating favors the forward reaction",
+    "It is exothermic: heating favors the forward reaction",
+    "It is endothermic: heating favors the reverse reaction",
+    "It goes to completion at 50 °C"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K grows with temperature, so heating shifts the equilibrium toward the ions. By Le Châtelier's principle, heating favors the endothermic direction, so the forward reaction absorbs heat.",
+    "options": [
+     "Right: larger K at higher T means the forward direction absorbs heat.",
+     "Heating favors the endothermic direction; if the forward reaction released heat, K would fall as the water warms.",
+     "If heating favored the reverse reaction, Kw would fall with temperature; it rises.",
+     "Kw is still tiny at 50 °C: only a minute fraction of water molecules are ionized."
+    ]
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-13",
+   "type": "predict",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acids-bases-intro-s3",
+   "q": "A sample of pure water is cooled from 25 °C to 0 °C. Predict the change in each quantity.",
+   "variables": [
+    {
+     "name": "[H₃O⁺]",
+     "answer": "down",
+     "why": "Kw falls from 1.0 × 10⁻¹⁴ to 1.1 × 10⁻¹⁵, so fewer water molecules are ionized."
+    },
+    {
+     "name": "pH",
+     "answer": "up",
+     "why": "Less H₃O⁺ means a higher pH: neutral water at 0 °C has a pH near 7.5."
+    },
+    {
+     "name": "The ratio [H₃O⁺] / [OH⁻]",
+     "answer": "none",
+     "why": "Each ionization makes one of each ion, so in pure water the ratio stays 1 at every temperature."
+    },
+    {
+     "name": "[OH⁻]",
+     "answer": "down",
+     "why": "Hydroxide falls along with hydronium; they are made together."
+    }
+   ],
+   "why": {
+    "correct": "Cooling favors the exothermic reverse reaction, so both ion concentrations fall together and the water stays neutral at a higher pH."
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-14",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "A solution at 25 °C has [H₃O⁺] = 4.0 × 10⁻³ M. What is [OH⁻]? Include the unit.",
+   "numeric": {
+    "answer": 2.5e-12,
+    "tol": 1e-13,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 400000000000,
+      "why": "Value: you divided [H₃O⁺] by Kw. Rearrange Kw = [H₃O⁺][OH⁻] to [OH⁻] = Kw / [H₃O⁺].",
+      "rel": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "[OH⁻] = Kw / [H₃O⁺] = (1.0 × 10⁻¹⁴) / (4.0 × 10⁻³) = 2.5 × 10⁻¹² M."
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-15",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Solution P has pH 4.0 and Solution Q has pH 6.0. How does [H₃O⁺] in P compare with Q?",
+   "options": [
+    "100 times greater in P",
+    "2 times greater in P",
+    "1.5 times greater in P",
+    "100 times smaller in P"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two pH units apart is a factor of 10² = 100, and the lower pH has more H₃O⁺.",
+    "options": [
+     "Right: each pH unit is a factor of ten.",
+     "This subtracts the pH values and treats the result as a ratio. The difference is an exponent: 10².",
+     "This divides 6 by 4. pH values are logarithms, so their ratio has no meaning.",
+     "The direction is reversed: a lower pH means more H₃O⁺."
+    ]
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-16",
+   "type": "order",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for finding the pH of a 25 °C solution from its [OH⁻] in order.",
+   "options": [
+    "Take −log[OH⁻] to get the pOH",
+    "Subtract the pOH from 14.00",
+    "Round the pH to as many decimal places as [OH⁻] has significant figures",
+    "Check: a basic solution should give a pH above 7"
+   ],
+   "why": {
+    "correct": "pOH first, then pH = 14.00 − pOH, then round once, then sanity-check the side of 7. (Kw / [OH⁻] then −log works too.)"
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-17",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A solution has [H₃O⁺] = 0.0050 M. How should its pH be reported?",
+   "options": [
+    "2.30",
+    "2.3",
+    "2.301",
+    "2.3010"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "0.0050 has two significant figures, so the pH gets two decimal places: −log(0.0050) = 2.3010 → 2.30. The digits before the decimal point only give the power of ten.",
+    "options": [
+     "Right: two significant figures, two decimal places.",
+     "One decimal place throws away a measured digit: 0.0050 has two significant figures.",
+     "Three decimal places claim more precision than the two significant figures measured.",
+     "Four decimal places treat the trailing zero of 2.3010 as measured, which it is not."
+    ]
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-18",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "A solution at 25 °C has pH 8.25. What is its pOH?",
+   "numeric": {
+    "answer": 5.75,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 22.25,
+      "why": "Value: you added the pH to 14.00. pH + pOH = 14.00, so pOH = 14.00 − pH.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "pH + pOH = 14.00 at 25 °C, so pOH = 14.00 − 8.25 = 5.75."
+   }
+  },
+  {
+   "id": "chem-acids-bases-intro-19",
+   "type": "multi",
+   "unit": "unit-8",
+   "topic": "acids-bases-intro",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statements are true for every aqueous solution at 25 °C? Select all that apply.",
+   "options": [
+    "[H₃O⁺][OH⁻] = 1.0 × 10⁻¹⁴",
+    "A solution with pH 9 contains no H₃O⁺ ions",
+    "pH + pOH = 14.00",
+    "Adding OH⁻ raises [H₃O⁺]",
+    "An acidic solution contains no OH⁻ ions"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Kw holds in every water solution at 25 °C, and taking −log of both sides gives pH + pOH = 14.00. Both ions are present in every solution, in small amounts if not large.",
+    "options": [
+     "Right: Kw applies to any water solution at 25 °C.",
+     "At pH 9, [H₃O⁺] = 1 × 10⁻⁹ M: small, but not zero.",
+     "Right: −log of Kw = 1.0 × 10⁻¹⁴ gives 14.00.",
+     "Added OH⁻ reacts with H₃O⁺, so [H₃O⁺] falls.",
+     "An acidic solution still has some OH⁻: [OH⁻] = Kw / [H₃O⁺]."
+    ]
+   }
+  }
+ ]
+}

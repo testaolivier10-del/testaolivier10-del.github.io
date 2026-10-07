@@ -1,0 +1,17 @@
+{
+ "solution": {
+  "def": "A homogeneous mixture: a solute (the dissolved substance) spread evenly through a solvent. In an aqueous solution, the solvent is water."
+ },
+ "molarity": {
+  "def": "Concentration in moles of solute per liter of solution (mol/L, written M)."
+ },
+ "dilution": {
+  "def": "Making a solution weaker by adding solvent. The moles of solute stay the same, so M₁V₁ = M₂V₂, where V₂ is the final total volume."
+ },
+ "volumetric-flask": {
+  "def": "A flask made to hold one exact volume, marked by a line on its neck; used with an analytical balance to prepare solutions of known molarity."
+ },
+ "electrolyte": {
+  "def": "A solute whose aqueous solution conducts electricity because it contains moving ions. Strong electrolytes give many ions, weak ones few, nonelectrolytes none."
+ }
+}

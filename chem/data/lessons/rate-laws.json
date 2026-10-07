@@ -1,0 +1,81 @@
+{
+ "topic": "rate-laws",
+ "hook": "Double the amount of bleach in a stain remover and it might work twice as fast, four times as fast, or no faster at all. Which one happens cannot be read from the label or from the balanced equation. Chemists find out by experiment, and they write the answer as a rate law.",
+ "prereq": [
+  {
+   "q": "If 2ᵐ = 4, what is m?",
+   "options": [
+    "2",
+    "4",
+    "1",
+    "8"
+   ],
+   "correct": 0,
+   "why": "2² = 4, so m = 2.",
+   "review": "math-exponents"
+  },
+  {
+   "q": "For 2 SO₂ + O₂ → 2 SO₃, SO₂ is used up at 0.40 M/s. How fast is O₂ used up?",
+   "options": [
+    "0.20 M/s",
+    "0.40 M/s",
+    "0.80 M/s",
+    "0.10 M/s"
+   ],
+   "correct": 0,
+   "why": "One O₂ reacts for every 2 SO₂, so O₂ is used half as fast: 0.20 M/s.",
+   "review": "reaction-rates"
+  }
+ ],
+ "figure": {
+  "figure": "rate-orders",
+  "caption": "Doubling a concentration leaves a zero-order rate unchanged, doubles a first-order rate and quadruples a second-order rate."
+ },
+ "chain": [
+  {
+   "cause": "Each trial changes only one starting concentration",
+   "effect": "any change in the initial rate is caused by that reactant alone"
+  },
+  {
+   "cause": "The rate changes by (concentration factor) raised to the order",
+   "effect": "comparing the two factors gives the order for that reactant"
+  },
+  {
+   "cause": "With every order known",
+   "effect": "any one trial gives the rate constant k, whose units follow from the overall order"
+  },
+  {
+   "cause": "k is fixed at a given temperature",
+   "effect": "the rate law predicts the rate for any new set of concentrations"
+  }
+ ],
+ "ideas": [
+  "A <b>rate law</b> has the form rate = k[A]<sup>m</sup>[B]<sup>n</sup>. The orders m and n come from experiment, not from the coefficients.",
+  "Order 0: rate unchanged when [A] changes. Order 1: rate changes by the same factor. Order 2: rate changes by the factor squared.",
+  "Method of initial rates: compare two trials where only one concentration changes.",
+  "k depends on the reaction and the temperature, not on concentration. Its units are M/s divided by M raised to the overall order."
+ ],
+ "misconception": {
+  "wrong": "The orders in a rate law are the coefficients of the balanced equation.",
+  "right": "Orders are measured. The balanced equation gives the total amounts that react, not how the rate depends on each concentration."
+ },
+ "check": [
+  "chem-rate-laws-1",
+  "chem-rate-laws-2",
+  "chem-rate-laws-3",
+  "chem-rate-laws-6",
+  "chem-rate-laws-10",
+  "chem-rate-laws-12"
+ ],
+ "summary": "A rate law, rate = k[A]^m[B]^n, gives how the rate depends on each reactant concentration. The orders come from initial-rate data by changing one concentration at a time. The rate constant k is fixed at a given temperature, and its units depend on the overall order.",
+ "connections": [
+  {
+   "href": "../notes/reaction-rates.html",
+   "label": "Back: what a reaction rate is (5.1)"
+  },
+  {
+   "href": "../notes/math-exponents.html",
+   "label": "Exponents refresher"
+  }
+ ]
+}

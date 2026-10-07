@@ -1,0 +1,58 @@
+<p>Topic 5.1 showed that a higher concentration usually speeds a reaction up. A <b>rate law</b> says by exactly how much. It is an equation, found by experiment, that links the rate to the concentration of each reactant.</p>
+
+<h2>The form of a rate law</h2>
+<p>For a reaction a A + b B → products, the rate law has the form</p>
+<p style="text-align:center"><b>rate = k[A]<sup>m</sup>[B]<sup>n</sup></b></p>
+<ul>
+<li>[A] and [B] are molar concentrations of reactants.</li>
+<li>m and n are the <b>orders</b> with respect to A and B. For this course they are 0, 1 or 2. The <b>overall order</b> is m + n.</li>
+<li>k is the <b>rate constant</b>. It is fixed for a given reaction at a given temperature. A higher temperature gives a larger k; changing a concentration does not change k.</li>
+</ul>
+<p><b>The orders come from data, not from the balanced equation.</b> The coefficients a and b tell you how much reacts overall. They do not tell you how the rate depends on each concentration. Sometimes the orders match the coefficients; often they do not.</p>
+
+<h2>What each order means</h2>
+<figure id="fig-orders" data-fig="rate-orders"><figcaption>Figure 1. How the rate responds when one reactant concentration is doubled, for each order.</figcaption></figure>
+<table class="compare">
+<caption>The effect of changing one concentration</caption>
+<thead><tr><th>Order in A</th><th>[A] doubles</th><th>[A] triples</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>rate × 1 (no change)</td><td>rate × 1</td></tr>
+<tr><td>1</td><td>rate × 2</td><td>rate × 3</td></tr>
+<tr><td>2</td><td>rate × 4</td><td>rate × 9</td></tr>
+</tbody></table>
+<p>The pattern is: (factor the concentration changes by)<sup>order</sup> = factor the rate changes by. A zero-order reactant can still be used up; its concentration simply does not set the rate.</p>
+
+<h2>The method of initial rates</h2>
+<p>To find the orders, chemists run several trials that start with different concentrations and measure the rate at the very start of each, the initial rate. Then:</p>
+<ol>
+<li>Pick two trials where only one concentration changes.</li>
+<li>Find the factor that concentration changes by, and the factor the rate changes by.</li>
+<li>Solve (concentration factor)<sup>order</sup> = rate factor.</li>
+<li>Repeat for each reactant, then find k from any one trial.</li>
+</ol>
+
+<div class="worked"><h3>Worked example: a rate law from initial-rate data</h3>
+<p>For 2 A + B → C at 30 °C:</p>
+<table class="compare"><thead><tr><th>Trial</th><th>[A] (M)</th><th>[B] (M)</th><th>Initial rate (M/s)</th></tr></thead>
+<tbody><tr><td>1</td><td>0.10</td><td>0.10</td><td>2.0 × 10⁻³</td></tr><tr><td>2</td><td>0.20</td><td>0.10</td><td>8.0 × 10⁻³</td></tr><tr><td>3</td><td>0.10</td><td>0.30</td><td>6.0 × 10⁻³</td></tr></tbody></table>
+<p><b>Order in A</b> (trials 1 and 2, B constant): [A] × 2, rate × 4. 2<sup>m</sup> = 4, so m = 2.</p>
+<p><b>Order in B</b> (trials 1 and 3, A constant): [B] × 3, rate × 3. 3<sup>n</sup> = 3, so n = 1.</p>
+<p><b>Rate law:</b> rate = k[A]²[B]; overall third order.</p>
+<p><b>k from trial 1:</b> k = rate / ([A]²[B]) = (2.0 × 10⁻³ M/s) / ((0.10 M)²(0.10 M)) = (2.0 × 10⁻³ M/s) / (1.0 × 10⁻³ M³) = 2.0 M⁻² s⁻¹.</p>
+<p>Check with trial 2: (2.0)(0.20)²(0.10) = 8.0 × 10⁻³ M/s, which matches.</p></div>
+
+<h2>Units of the rate constant</h2>
+<p>A rate is always in M/s, so k must have whatever units make the rate law come out in M/s. Divide M/s by M raised to the overall order:</p>
+<table class="compare">
+<caption>Units of k by overall order</caption>
+<thead><tr><th>Overall order</th><th>Rate law example</th><th>Units of k</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>rate = k</td><td>M s⁻¹</td></tr>
+<tr><td>1</td><td>rate = k[A]</td><td>s⁻¹</td></tr>
+<tr><td>2</td><td>rate = k[A]² or k[A][B]</td><td>M⁻¹ s⁻¹</td></tr>
+<tr><td>3</td><td>rate = k[A]²[B]</td><td>M⁻² s⁻¹</td></tr>
+</tbody></table>
+<p>The units of k are a quick way to read the overall order from a table of constants.</p>
+
+<h2>When two concentrations change at once</h2>
+<p>If a trial changes two concentrations, the rate factor is the product of both effects. Suppose rate = k[A]²[B] and both [A] and [B] double: the rate changes by 2² × 2 = 8. If you already know one order, you can use such a trial to find the other: divide out the known effect, and what is left belongs to the other reactant.</p>

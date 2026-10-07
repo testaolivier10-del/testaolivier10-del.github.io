@@ -1,0 +1,523 @@
+{
+ "stimuli": {
+  "reactions-intro-s1": {
+   "kind": "particle",
+   "title": "Before and after a reaction",
+   "html": "<svg viewBox=\"0 0 458 180\" width=\"458\" height=\"180\" role=\"img\" aria-label=\"Left box, before the reaction: two nitrogen molecules, each two N atoms joined, and six hydrogen molecules, each two H atoms joined. Right box, after the reaction: four ammonia molecules, each one N atom joined to three H atoms. Nothing else is in either box.\"><rect x=\"4\" y=\"4\" width=\"200\" height=\"150\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"23\" cy=\"50\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"23\" y=\"52.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"35\" cy=\"50\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"35\" y=\"52.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"73\" cy=\"41\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"73\" y=\"43.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"85\" cy=\"41\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"85\" y=\"43.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"120\" cy=\"47\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"120\" y=\"50.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"138\" cy=\"47\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"138\" y=\"50.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"174\" cy=\"38\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"174\" y=\"40.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"186\" cy=\"38\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"186\" y=\"40.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"22\" cy=\"113\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"22\" y=\"115.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"34\" cy=\"113\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"34\" y=\"115.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"73\" cy=\"108\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"73\" y=\"110.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"85\" cy=\"108\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"85\" y=\"110.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"119\" cy=\"125\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"119\" y=\"128.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"137\" cy=\"125\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"137\" y=\"128.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"172\" cy=\"117\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"172\" y=\"119.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"184\" cy=\"117\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"184\" y=\"119.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><text x=\"104\" y=\"172\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Before</text><line x1=\"212\" y1=\"79\" x2=\"240\" y2=\"79\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><path d=\"M238,73 L248,79 L238,85 Z\" fill=\"#1F2A28\"/><rect x=\"254\" y=\"4\" width=\"200\" height=\"150\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"299\" cy=\"37\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"299\" y=\"40.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"287\" cy=\"44\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"287\" y=\"46.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"311\" cy=\"44\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"311\" y=\"46.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"299\" cy=\"24\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"299\" y=\"26.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"392\" cy=\"52\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"392\" y=\"55.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"380\" cy=\"59\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"380\" y=\"61.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"404\" cy=\"59\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"404\" y=\"61.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"392\" cy=\"39\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"392\" y=\"41.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"286\" cy=\"105\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"286\" y=\"108.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"274\" cy=\"112\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"274\" y=\"114.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"298\" cy=\"112\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"298\" y=\"114.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"286\" cy=\"92\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"286\" y=\"94.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"420\" cy=\"128\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"420\" y=\"131.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"408\" cy=\"135\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"408\" y=\"137.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"432\" cy=\"135\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"432\" y=\"137.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"420\" cy=\"115\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"420\" y=\"117.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><text x=\"354\" y=\"172\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">After</text></svg><p>Key: large blue circle labeled N, nitrogen atom; small white circle labeled H, hydrogen atom.</p>"
+  },
+  "reactions-intro-s2": {
+   "kind": "table",
+   "title": "Weighing a reaction",
+   "text": "<p>A student mixes 2.00 g of solid sodium hydrogen carbonate, NaHCO₃, with 50.0 mL of vinegar on an electronic balance. Bubbles form and the container feels slightly cold. Trial 1 uses an open flask. In Trial 2 the solid sits in a small cup inside a stiff plastic bottle; the bottle is capped tightly, weighed, and then tipped so the solid falls into the vinegar.</p>",
+   "table": {
+    "caption": "Mass of container and contents",
+    "cols": [
+     "Trial",
+     "Container",
+     "Mass before mixing (g)",
+     "Mass after bubbling stops (g)"
+    ],
+    "rows": [
+     [
+      "1",
+      "Open",
+      "148.62",
+      "147.58"
+     ],
+     [
+      "2",
+      "Capped bottle",
+      "151.07",
+      "151.07"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-reactions-intro-1",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reactions-intro-s1",
+   "q": "Which balanced equation matches the change shown in the two boxes?",
+   "options": [
+    "N₂ + 3H₂ → 2NH₃",
+    "N₂ + H₂ → NH₃",
+    "2N₂ + 6H₂ → 4NH₆",
+    "N + 3H → NH₃"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The boxes show 2 N₂ and 6 H₂ becoming 4 NH₃. Dividing by 2 gives the smallest whole-number ratio, 1 : 3 : 2, so N₂ + 3H₂ → 2NH₃. Each side has 2 N and 6 H.",
+    "options": [
+     "Right: 2 N and 6 H on each side, in the smallest whole-number ratio.",
+     "Unbalanced: 2 N and 2 H on the left but 1 N and 3 H on the right, so atoms would appear and vanish.",
+     "Changes the formula of ammonia to NH₆ to make the atoms fit. Subscripts are fixed by what the substance is; only coefficients may change.",
+     "Writes nitrogen and hydrogen as single atoms, but the diagram shows them as two-atom molecules, N₂ and H₂."
+    ]
+   }
+  },
+  {
+   "id": "chem-reactions-intro-2",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "reactions-intro-s1",
+   "q": "Count the hydrogen atoms in the After box.",
+   "numeric": {
+    "answer": 12,
+    "tol": 0,
+    "unit": "atoms",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 4,
+      "rel": 0.01,
+      "why": "Value: you counted ammonia molecules, not hydrogen atoms. Each NH₃ molecule holds three H atoms."
+     },
+     {
+      "value": 6,
+      "rel": 0.01,
+      "why": "Value: you counted H₂ molecules from the Before box. Count atoms, not molecules: 6 H₂ hold 12 H atoms."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Four NH₃ molecules × 3 H atoms each = 12 H atoms, the same as the 6 H₂ × 2 = 12 H atoms before. Atoms are conserved."
+   }
+  },
+  {
+   "id": "chem-reactions-intro-3",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reactions-intro-s1",
+   "q": "Which quantities are the same in the Before box and the After box? Select all that apply.",
+   "options": [
+    "The number of nitrogen atoms",
+    "The total number of molecules",
+    "The total mass of the contents",
+    "The kinds of molecules present"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Atoms are rearranged, not created or destroyed, so the number of each kind of atom and the total mass stay the same. The molecules themselves change, and so does their count (8 before, 4 after).",
+    "options": [
+     "Right: 4 N atoms before and 4 after.",
+     "There are 8 molecules before and 4 after. Molecules are not conserved; atoms are.",
+     "Right: the same atoms are present, so the mass is the same.",
+     "N₂ and H₂ are replaced by NH₃: new substances form, which is what makes this a reaction."
+    ]
+   }
+  },
+  {
+   "id": "chem-reactions-intro-4",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reactions-intro-s1",
+   "q": "A student says the reaction must have destroyed matter, because the After box holds fewer particles. What is the best reply?",
+   "options": [
+    "All 16 atoms are still present, now joined into fewer, larger molecules",
+    "Matter is lost as energy, which is why the After box has fewer particles",
+    "Half the hydrogen escaped as a gas, which the diagram leaves out",
+    "The student is right, because each molecule counts as one unit of matter"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Count atoms, not molecules: 4 N + 12 H = 16 atoms before and 16 after. The atoms regrouped into four larger molecules.",
+    "options": [
+     "Right: the same 16 atoms are there in fewer, larger molecules.",
+     "Ordinary reactions do not turn measurable mass into energy; every atom is still in the box.",
+     "Every hydrogen atom from the Before box is inside an NH₃ molecule after; none is missing.",
+     "Molecules are not the unit that is conserved; atoms are, and their number is unchanged."
+    ]
+   }
+  },
+  {
+   "id": "chem-reactions-intro-5",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "reactions-intro-s2",
+   "q": "What mass of gas left the open flask in Trial 1?",
+   "numeric": {
+    "answer": 1.04,
+    "tol": 0.01,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 3
+   },
+   "why": {
+    "correct": "148.62 g − 147.58 g = 1.04 g. When you subtract, keep the decimal places of the measurements (two here), which gives three significant figures."
+   }
+  },
+  {
+   "id": "chem-reactions-intro-6",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reactions-intro-s2",
+   "q": "Which claim do the two trials best support?",
+   "options": [
+    "Mass is conserved; the open flask lost mass because a gas product escaped",
+    "The reaction destroys about 1 g of matter whenever the flask is left open",
+    "The cap added mass to Trial 2, which hid a loss of mass",
+    "The reactants weigh more than the products, as Trial 1 shows"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In the capped bottle, nothing could leave and the mass did not change. The open flask lost 1.04 g because the gas product (carbon dioxide) left the flask. Both trials agree with conservation of mass once every product is counted.",
+    "options": [
+     "Right: the capped trial shows no change; the open trial lost only the escaping gas.",
+     "Whether a flask is open cannot change whether matter is conserved; it changes whether a product can leave the balance.",
+     "The cap was on the bottle for both weighings in Trial 2, so it adds the same mass before and after.",
+     "Trial 1 did not weigh all the products: the gas left. Trial 2, which kept everything, shows no difference."
+    ]
+   }
+  },
+  {
+   "id": "chem-reactions-intro-7",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reactions-intro-s2",
+   "q": "Which observations in this experiment are evidence that a chemical reaction occurred? Select all that apply.",
+   "options": [
+    "Bubbles of gas formed at room temperature",
+    "The vinegar smelled sour before mixing",
+    "The solid disappeared into the liquid",
+    "The liquid stayed colorless"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "A gas forming without boiling suggests a new substance is being made. A smell noticed before mixing describes a reactant, a solid disappearing into a liquid can be just dissolving, and an unchanged color is not evidence of anything.",
+    "options": [
+     "Right: gas forms at room temperature, so it is not boiling; a new substance is being made.",
+     "That describes the vinegar before anything happened, so it says nothing about a change.",
+     "Sugar also disappears into water without forming anything new; dissolving alone does not show a reaction.",
+     "No change in color is not evidence of a reaction."
+    ]
+   }
+  },
+  {
+   "id": "chem-reactions-intro-8",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "reactions-intro-s2",
+   "q": "In a repeat of Trial 2 the cap is not screwed on tightly, and gas hisses out slowly. How does this affect the mass recorded after bubbling stops, compared with the mass before tipping?",
+   "options": [
+    "It reads lower, because some gas product escapes before the reading",
+    "It reads higher, because air enters the bottle to replace the gas",
+    "It is unchanged, because a gas has too little mass to register",
+    "It reads lower, because the leak lets the reaction use up matter"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A leak lets some carbon dioxide out, so the balance no longer weighs every product and the reading drops below the true total.",
+    "options": [
+     "Right: the gas that leaks out is no longer weighed.",
+     "The gas inside is under higher pressure than the air outside, so gas flows out, not in; the escaping gas lowers the reading.",
+     "Trial 1 shows that the escaping gas weighs about 1 g, which a balance reading to 0.01 g detects easily.",
+     "A reaction rearranges atoms; it does not use up matter. The drop comes from gas leaving."
+    ]
+   }
+  },
+  {
+   "id": "chem-reactions-intro-9",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Balance this equation with the smallest whole numbers: __Al + __O₂ → __Al₂O₃. What are the coefficients, in order?",
+   "options": [
+    "4, 3, 2",
+    "2, 3, 1",
+    "2, 1, 1",
+    "4, 6, 2"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Oxygen comes in pairs on the left and threes on the right, so make 6 O on each side: 3 O₂ and 2 Al₂O₃. Then 2 Al₂O₃ holds 4 Al, so 4 Al. Check: 4 Al, 6 O on both sides.",
+    "options": [
+     "Right: 4 Al and 6 O on each side.",
+     "Gives 2 Al and 6 O on the left but 2 Al and 3 O on the right; oxygen does not balance.",
+     "Gives 2 O on the left and 3 O on the right; oxygen does not balance.",
+     "Balances, but every coefficient can be halved; equations use the smallest whole-number ratio."
+    ]
+   }
+  },
+  {
+   "id": "chem-reactions-intro-10",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Propane burns in oxygen: C₃H₈ + __O₂ → 3CO₂ + 4H₂O. What coefficient balances O₂?",
+   "options": [
+    "5",
+    "7",
+    "10",
+    "3"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The right side has 3 × 2 = 6 O in CO₂ and 4 × 1 = 4 O in H₂O, 10 O in all. Ten O atoms are 5 O₂ molecules.",
+    "options": [
+     "Right: 10 O atoms on the right, so 5 O₂.",
+     "Adds the coefficients 3 + 4; the oxygen atoms in each formula must be counted.",
+     "That is the number of O atoms needed; O₂ carries two per molecule, so half as many molecules.",
+     "Counts only the oxygen in CO₂ molecules, not their atoms, and ignores the water."
+    ]
+   }
+  },
+  {
+   "id": "chem-reactions-intro-11",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A student balances H₂ + O₂ → H₂O by writing H₂ + O₂ → H₂O₂. What is wrong with this?",
+   "options": [
+    "It turns water into hydrogen peroxide; write 2H₂ and 2H₂O instead",
+    "Nothing is wrong, since both sides now have 2 H and 2 O",
+    "It should add an O atom to the left side instead",
+    "Subscripts may be changed on the reactant side to make atoms fit"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A subscript is part of what the substance is: H₂O is water and H₂O₂ is hydrogen peroxide. Balance with coefficients: 2H₂ + O₂ → 2H₂O.",
+    "options": [
+     "Right: changing a subscript changes the substance; 2H₂ + O₂ → 2H₂O is the balanced equation.",
+     "The atoms do balance, but the equation now describes making hydrogen peroxide, not water.",
+     "Oxygen exists as O₂ molecules; writing a lone O atom changes the reactant.",
+     "Changing a subscript on either side changes the substance, so it is not allowed anywhere."
+    ]
+   }
+  },
+  {
+   "id": "chem-reactions-intro-12",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "In 2H₂ + O₂ → 2H₂O, what do the coefficients tell you?",
+   "options": [
+    "2 molecules (or 2 mol) of H₂ react per 1 molecule (or 1 mol) of O₂",
+    "The mass of hydrogen used is twice the mass of oxygen used",
+    "2 g of hydrogen reacts with each 1 g of oxygen used up",
+    "2 hydrogen atoms react with each oxygen molecule"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Coefficients count particles, so they also count moles (a mole is just a fixed number of particles). They do not give masses: 2 mol H₂ is 4.03 g and 1 mol O₂ is 32.00 g.",
+    "options": [
+     "Right: coefficients are counts of particles, and so of moles.",
+     "Coefficients are not mass ratios; 2 mol of H₂ (4.03 g) is far lighter than 1 mol of O₂ (32.00 g).",
+     "Coefficients are not grams; molar masses differ.",
+     "The coefficient 2 counts H₂ molecules, not H atoms: 2 H₂ hold 4 H atoms, so 4 H atoms react with each O₂ molecule."
+    ]
+   }
+  },
+  {
+   "id": "chem-reactions-intro-13",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "In a sealed container, 4.86 g of magnesium reacts with exactly 3.20 g of oxygen gas, and nothing is left over: 2Mg + O₂ → 2MgO. What mass of magnesium oxide forms?",
+   "numeric": {
+    "answer": 8.06,
+    "tol": 0.01,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 1.66,
+      "rel": 0.01,
+      "why": "Value: you subtracted the masses. Every atom of both reactants ends up in the product, so add them."
+     },
+     {
+      "value": 16.12,
+      "rel": 0.01,
+      "why": "Value: you doubled the product mass because of the coefficient 2. The coefficients count particles, not grams; the total mass simply carries over."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Mass is conserved: 4.86 g + 3.20 g = 8.06 g of MgO. Adding keeps two decimal places."
+   }
+  },
+  {
+   "id": "chem-reactions-intro-14",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which observation, on its own, is the weakest evidence that a chemical reaction happened?",
+   "options": [
+    "Water bubbles when it is heated to 100 °C",
+    "A blue solution turns green when a metal is added",
+    "Mixing two clear solutions forms a yellow solid",
+    "A gas with a new smell forms when two liquids mix"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Bubbles in boiling water are water vapor, the same substance in another state. No new substance forms. The other three point to a new substance with new properties.",
+    "options": [
+     "Right: boiling makes bubbles of water vapor, not a new substance.",
+     "A color change when a metal is added suggests a new substance forms, so it is stronger evidence.",
+     "A new solid forming from two solutions is strong evidence of a new substance.",
+     "A new smell suggests a new substance, so it is stronger evidence than boiling."
+    ]
+   }
+  },
+  {
+   "id": "chem-reactions-intro-15",
+   "type": "order",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for balancing a chemical equation in order.",
+   "options": [
+    "Write the correct formula of every reactant and product",
+    "Count each kind of atom on both sides",
+    "Change coefficients, never subscripts, until every atom balances",
+    "Reduce the coefficients to the smallest whole-number ratio and recount"
+   ],
+   "why": {
+    "correct": "Formulas first (they are fixed), then count, then adjust coefficients, then simplify and check the count once more."
+   }
+  },
+  {
+   "id": "chem-reactions-intro-16",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Balance __Fe + __Cl₂ → __FeCl₃ with the smallest whole numbers. What is the sum of the three coefficients?",
+   "numeric": {
+    "answer": 7,
+    "tol": 0,
+    "unit": "",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 3,
+      "rel": 0.01,
+      "why": "Value: 1 + 1 + 1 leaves 2 Cl on the left and 3 Cl on the right. Make 6 Cl on each side first."
+     },
+     {
+      "value": 14,
+      "rel": 0.01,
+      "why": "Value: your coefficients balance but can all be halved. Use the smallest whole numbers."
+     }
+    ]
+   },
+   "why": {
+    "correct": "2Fe + 3Cl₂ → 2FeCl₃: chlorine comes in twos and threes, so make 6 Cl on each side (3 Cl₂ and 2 FeCl₃), then 2 Fe. The sum is 2 + 3 + 2 = 7."
+   }
+  },
+  {
+   "id": "chem-reactions-intro-17",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which balanced equation keeps the nitrate ion together as a unit and shows the reaction between lead(II) nitrate and potassium iodide correctly?",
+   "options": [
+    "Pb(NO₃)₂ + 2KI → PbI₂ + 2KNO₃",
+    "Pb(NO₃)₂ + KI → PbI₂ + KNO₃",
+    "PbNO₃ + KI → PbI + KNO₃",
+    "Pb(NO₃)₂ + 2KI → PbI₂ + K₂(NO₃)₂"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Pb²⁺ needs two NO₃⁻ and two I⁻, and K⁺ pairs with one NO₃⁻. Treat NO₃ as one unit: 1 Pb, 2 NO₃, 2 K, 2 I on each side.",
+    "options": [
+     "Right: every unit balances, and each formula matches the ion charges.",
+     "Leaves 1 K and 1 I on the left but 2 I on the right, and 2 NO₃ on the left but 1 on the right.",
+     "Writes formulas that do not match the charges: lead here is Pb²⁺, so it pairs with two nitrates and two iodides.",
+     "K₂(NO₃)₂ is not a formula unit; potassium nitrate is KNO₃, and balancing uses a coefficient."
+    ]
+   }
+  },
+  {
+   "id": "chem-reactions-intro-18",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reactions-intro",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "When 2.0 g of an ionic solid dissolves in water, the solution gets warmer. Why is this observation alone not enough to show a chemical reaction?",
+   "options": [
+    "Dissolving can change the temperature without forming a new substance",
+    "A temperature change is a reliable sign that a new substance formed",
+    "A solid has to melt before it can take part in a reaction",
+    "The temperature change is too small to measure accurately"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dissolving breaks attractions between ions and forms ion-dipole attractions with water, which can warm or cool the water, yet the ions are the same before and after. Proof of a reaction is a new substance.",
+    "options": [
+     "Right: dissolving alone can warm or cool water.",
+     "Dissolving and phase changes also change temperature, so a temperature change is not reliable proof by itself.",
+     "Many reactions involve solids in water without melting, such as a metal dissolving in acid.",
+     "A thermometer can measure the change; the problem is what the change means, not its size."
+    ]
+   }
+  }
+ ]
+}

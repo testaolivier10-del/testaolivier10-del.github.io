@@ -1,0 +1,470 @@
+{
+ "stimuli": {
+  "dissolution-free-energy-s1": {
+   "kind": "table",
+   "title": "Dissolving four salts",
+   "text": "<p>Standard enthalpy and entropy of solution for four ionic solids in water. Assume the values do not change with temperature.</p>",
+   "table": {
+    "caption": "ΔH°soln and ΔS°soln for four salts",
+    "cols": [
+     "Salt",
+     "ΔH°soln (kJ/mol)",
+     "ΔS°soln (J/(mol·K))"
+    ],
+    "rows": [
+     [
+      "NH₄NO₃",
+      "+25.7",
+      "+108.7"
+     ],
+     [
+      "NaCl",
+      "+3.9",
+      "+43.4"
+     ],
+     [
+      "CaCl₂",
+      "−81.3",
+      "−44.7"
+     ],
+     [
+      "Salt Z (M²⁺X²⁻)",
+      "−9.0",
+      "−120.0"
+     ]
+    ]
+   }
+  },
+  "dissolution-free-energy-s2": {
+   "kind": "particle",
+   "title": "Ions in water",
+   "text": "<p>A student draws one cation (M⁺) and one anion (X⁻) surrounded by water molecules after a salt dissolves. In each water molecule the oxygen end is partly negative and the hydrogen ends are partly positive.</p>",
+   "html": "<svg viewBox=\"0 0 520 220\" width=\"520\" height=\"220\" role=\"img\" aria-label=\"Two panels. Left: a cation M plus with four water molecules around it, each with its oxygen atom pointing toward the cation and its hydrogen atoms pointing away. Right: an anion X minus with four water molecules around it, each with one hydrogen atom pointing toward the anion and the oxygen pointing away.\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect width=\"520\" height=\"220\" fill=\"#fff\"/><text x=\"130\" y=\"20\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\">Cation</text><text x=\"390\" y=\"20\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\">Anion</text><circle cx=\"130\" cy=\"115\" r=\"18\" fill=\"#1D44A6\"/><text x=\"130\" y=\"120\" font-size=\"13\" fill=\"#fff\" text-anchor=\"middle\">M⁺</text><g><circle cx=\"130\" cy=\"63\" r=\"11\" fill=\"#D55E00\"/><circle cx=\"118\" cy=\"47\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/><circle cx=\"142\" cy=\"47\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/><circle cx=\"130\" cy=\"167\" r=\"11\" fill=\"#D55E00\"/><circle cx=\"118\" cy=\"183\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/><circle cx=\"142\" cy=\"183\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/><circle cx=\"78\" cy=\"115\" r=\"11\" fill=\"#D55E00\"/><circle cx=\"62\" cy=\"103\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/><circle cx=\"62\" cy=\"127\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/><circle cx=\"182\" cy=\"115\" r=\"11\" fill=\"#D55E00\"/><circle cx=\"198\" cy=\"103\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/><circle cx=\"198\" cy=\"127\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/></g><circle cx=\"390\" cy=\"115\" r=\"24\" fill=\"#009E73\"/><text x=\"390\" y=\"120\" font-size=\"13\" fill=\"#fff\" text-anchor=\"middle\">X⁻</text><g><circle cx=\"390\" cy=\"81\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/><circle cx=\"390\" cy=\"62\" r=\"11\" fill=\"#D55E00\"/><circle cx=\"404\" cy=\"52\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/><circle cx=\"390\" cy=\"149\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/><circle cx=\"390\" cy=\"168\" r=\"11\" fill=\"#D55E00\"/><circle cx=\"376\" cy=\"178\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/><circle cx=\"356\" cy=\"115\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/><circle cx=\"337\" cy=\"115\" r=\"11\" fill=\"#D55E00\"/><circle cx=\"327\" cy=\"129\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/><circle cx=\"424\" cy=\"115\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/><circle cx=\"443\" cy=\"115\" r=\"11\" fill=\"#D55E00\"/><circle cx=\"453\" cy=\"101\" r=\"6\" fill=\"#fff\" stroke=\"#333\"/></g></svg><p>Key: dark circle with label, an ion; mid-size orange circle, oxygen atom; small white circle, hydrogen atom.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-dissolution-free-energy-1",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "dissolution-free-energy-s1",
+   "q": "Calculate ΔG°soln for NH₄NO₃ at 298 K.",
+   "numeric": {
+    "answer": -6.7,
+    "tol": 0.2,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1",
+     "kJ·mol⁻¹"
+    ],
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": -32366.9,
+      "rel": 0.01,
+      "unit": "kJ/mol",
+      "why": "Value: convert ΔS° to 0.1087 kJ/(mol·K) before multiplying by T."
+     },
+     {
+      "value": 23,
+      "tol": 0.2,
+      "why": "Value: T must be in kelvin, 298 K, not 25."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔG° = ΔH° − TΔS° = 25.7 − (298)(0.1087) = 25.7 − 32.39 = −6.7 kJ/mol. The subtraction leaves the tenths place, so −6.7 kJ/mol (two significant figures)."
+   }
+  },
+  {
+   "id": "chem-dissolution-free-energy-2",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "dissolution-free-energy-s1",
+   "q": "NH₄NO₃ dissolves readily in water and the water gets colder. Which statement explains both observations?",
+   "options": [
+    "The ions release energy as water molecules surround them, which makes ΔH° negative and ΔG° negative.",
+    "ΔH°soln > 0, so the water cools, but the ions spreading out makes TΔS° > ΔH°.",
+    "The water gets colder because ΔS° is negative, and a negative ΔS° makes ΔG° negative.",
+    "Dissolving is a physical change, so ΔG° does not apply and the salt dissolves because it is ionic."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Endothermic (the water cools) but entropy-driven: TΔS° = 32.4 kJ/mol outweighs ΔH° = 25.7 kJ/mol.",
+    "options": [
+     "If ΔH° were negative, the water would warm up. The cooling shows ΔH° > 0.",
+     "Right: ΔH°soln > 0 (the water cools), yet ΔG°soln < 0 because the entropy term wins.",
+     "ΔS° is positive here, and a negative ΔS° would make ΔG° less negative, not more.",
+     "ΔG° applies to physical changes too. Many ionic solids barely dissolve."
+    ]
+   }
+  },
+  {
+   "id": "chem-dissolution-free-energy-3",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "dissolution-free-energy-s1",
+   "q": "Which salt’s dissolving is favored mainly because of the enthalpy change, even though the entropy change works against it?",
+   "options": [
+    "NH₄NO₃",
+    "NaCl",
+    "Salt Z",
+    "CaCl₂"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "CaCl₂: ΔG° = −81.3 − 298(−0.0447) = −68.0 kJ/mol. The enthalpy term drives it.",
+    "options": [
+     "Its ΔH° is positive (unfavorable); it dissolves because of the entropy term.",
+     "Both ΔH° (+3.9) and the entropy term matter, but ΔH° is unfavorable here.",
+     "Its ΔG° is positive at 298 K, so its dissolving is not favored.",
+     "Right: ΔH° = −81.3 kJ/mol is strongly favorable and outweighs the unfavorable −TΔS° = +13.3 kJ/mol."
+    ]
+   }
+  },
+  {
+   "id": "chem-dissolution-free-energy-4",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "dissolution-free-energy-s1",
+   "q": "Salt Z has small, doubly charged ions. Which explanation of its negative ΔS°soln is best?",
+   "options": [
+    "Each small, highly charged ion holds water tightly; that water’s lost freedom outweighs the ions’ spreading.",
+    "The ions of Salt Z stay in the crystal, so they do not disperse through the water.",
+    "The solution is more disordered than the solid, which makes ΔS° negative.",
+    "Dissolving Salt Z releases heat, and releasing heat lowers the entropy of the solution."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two effects compete: ions dispersing (S up) and water held in hydration shells (S down). For small, highly charged ions the second wins.",
+    "options": [
+     "Right: strong ion-dipole attractions order the water; that loss of microstates is larger than the ions’ gain.",
+     "Some Z does dissolve; the ions that dissolve do spread out. The water ordering is what makes ΔS° negative.",
+     "This argument would give a positive sign, and \"disorder\" is not a particle-level reason.",
+     "ΔH° and ΔS° are separate quantities; the cause here is the ordering of water around the ions."
+    ]
+   }
+  },
+  {
+   "id": "chem-dissolution-free-energy-5",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "dissolution-free-energy-s1",
+   "q": "Calculate ΔG°soln for Salt Z at 298 K.",
+   "numeric": {
+    "answer": 26.8,
+    "tol": 0.2,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1",
+     "kJ·mol⁻¹"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": -44.8,
+      "tol": 0.2,
+      "why": "Sign: ΔS° is negative, so −TΔS° = −(298)(−0.1200) = +35.8 kJ/mol."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔG° = −9.0 − (298)(−0.1200) = −9.0 + 35.76 = 26.8 kJ/mol. Positive, so Salt Z is only slightly soluble (Ksp = e^(−ΔG°/RT) is about 2 × 10⁻⁵)."
+   }
+  },
+  {
+   "id": "chem-dissolution-free-energy-6",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "dissolution-free-energy-s2",
+   "q": "Is the orientation of the water molecules in the drawing correct?",
+   "options": [
+    "No: the oxygen should face the anion, because both are electron-rich.",
+    "No: the hydrogens should face the cation, because hydrogen bonds form to cations.",
+    "Yes: δ− oxygen faces the cation and a δ+ hydrogen faces the anion.",
+    "Yes, because water molecules point the same way around any ion."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In ion-dipole attraction, oxygen (δ−) points toward cations and hydrogen (δ+) points toward anions.",
+    "options": [
+     "Like charges repel; the partly negative oxygen is attracted to the cation, not the anion.",
+     "Partly positive hydrogens are repelled by a cation. They point toward anions.",
+     "Right: opposite partial charges attract, so this is the ion-dipole orientation.",
+     "The drawing shows different orientations around the two ions, which is what makes it right."
+    ]
+   }
+  },
+  {
+   "id": "chem-dissolution-free-energy-7",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "dissolution-free-energy-s2",
+   "q": "Forming the attractions shown in the drawing has which energy effect?",
+   "options": [
+    "It absorbs energy, because water has to be pulled toward the ions.",
+    "It has no energy effect, because no chemical bonds form.",
+    "It releases energy, as opposite partial charges come together.",
+    "It absorbs energy, because the ions break apart from the crystal at that moment."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Dissolving has three steps: separating solute particles (absorbs), separating solvent particles (absorbs) and forming solute-solvent attractions (releases).",
+    "options": [
+     "Attractions forming release energy; separating particles is what absorbs it.",
+     "Ion-dipole attractions are intermolecular, but forming them still releases energy.",
+     "Right: forming any attraction lowers the potential energy and releases energy (the third step of dissolving).",
+     "Separating the ions from the crystal is a different step, and that one absorbs energy."
+    ]
+   }
+  },
+  {
+   "id": "chem-dissolution-free-energy-8",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "dissolution-free-energy-s2",
+   "q": "The ion-dipole attractions in the drawing are stronger for Mg²⁺ than for Na⁺. Which is the best explanation?",
+   "options": [
+    "Mg²⁺ has a larger charge and smaller radius, so its Coulombic attraction is greater.",
+    "Mg²⁺ has a larger molar mass, so it attracts water more strongly.",
+    "Mg²⁺ has more electrons than Na⁺, so it is more polarizable.",
+    "Mg²⁺ forms covalent bonds with water, while Na⁺ forms ionic bonds."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Coulombic attraction grows with charge and falls with distance. Mg²⁺ (2+, smaller) beats Na⁺ (1+, larger).",
+    "options": [
+     "Right: both the charge and the distance favor Mg²⁺.",
+     "Mass does not set the strength of an electrostatic attraction; charge and distance do.",
+     "Mg²⁺ and Na⁺ have the same number of electrons (10), and the key is charge and size.",
+     "Both form ion-dipole attractions with water; the strength differs because of charge and size."
+    ]
+   }
+  },
+  {
+   "id": "chem-dissolution-free-energy-9",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "dissolution-free-energy-s2",
+   "q": "How does the ordering of water shown in the drawing affect ΔS°soln?",
+   "options": [
+    "It raises ΔS°soln, because water molecules move in closer to the ions.",
+    "It has no effect on ΔS°soln, because the water was already a liquid.",
+    "It raises ΔS°soln, because ion-dipole attractions release heat.",
+    "It lowers ΔS°soln: water held around ions has fewer arrangements."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Hydration orders the water (S down) while the ions disperse (S up). The net sign depends on which is larger.",
+    "options": [
+     "Being held close to an ion restricts the water molecules, which lowers their entropy.",
+     "The water molecules in the shells lose freedom compared with bulk liquid, so the entropy changes.",
+     "Releasing heat affects ΔH°, and through the surroundings, not the ordering effect asked about here.",
+     "Right: hydration shells reduce the freedom of the water, an entropy decrease that offsets the ions dispersing."
+    ]
+   }
+  },
+  {
+   "id": "chem-dissolution-free-energy-10",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "4.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which step in dissolving an ionic solid releases energy?",
+   "options": [
+    "Separating the ions of the crystal from one another",
+    "Water molecules surrounding the separated ions",
+    "Separating water molecules to make room for the ions",
+    "Heating the water before the solid is added"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Separating particles absorbs energy; forming attractions releases it.",
+    "options": [
+     "Pulling apart oppositely charged ions absorbs energy.",
+     "Right: forming ion-dipole attractions releases energy.",
+     "Breaking hydrogen bonds between water molecules absorbs energy.",
+     "Heating is not one of the energy steps of dissolving."
+    ]
+   }
+  },
+  {
+   "id": "chem-dissolution-free-energy-11",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "When salt Q dissolves in water, the solution warms up. Which conclusion about the steps of dissolving is supported?",
+   "options": [
+    "Forming ion-dipole attractions releases more energy than separating ions and water absorbs.",
+    "Separating the ions releases more energy than forming ion-dipole attractions absorbs.",
+    "No energy is absorbed in any step, because the solution warms up.",
+    "ΔS°soln is negative, which is why the solution gets warmer."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Warming means exothermic overall: the energy released (solute-solvent attractions) exceeds the energy absorbed (solute-solute and solvent-solvent separation).",
+    "options": [
+     "Right: a warmer solution means ΔH°soln < 0, so the releasing step outweighs the absorbing steps.",
+     "This reverses the signs: separating ions absorbs energy and forming attractions releases it.",
+     "The separating steps still absorb energy; they are simply outweighed.",
+     "Temperature change tells you the sign of ΔH°, not of ΔS°."
+    ]
+   }
+  },
+  {
+   "id": "chem-dissolution-free-energy-12",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For a salt, ΔH°soln = +15 kJ/mol and ΔS°soln = +40 J/(mol·K). How does its solubility change as the water is heated from 298 K to 373 K?",
+   "options": [
+    "It decreases: ΔH°soln is positive, so heating pushes the salt out of solution.",
+    "It does not change: solubility depends on the salt, not on temperature.",
+    "It increases: TΔS° grows, so ΔG°soln falls from +3.1 to +0.1 kJ/mol.",
+    "It increases: heating makes ΔH°soln negative."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "ΔG° = 15 − T(0.040): +3.08 kJ/mol at 298 K, +0.08 kJ/mol at 373 K. Less positive ΔG° means larger K, so more salt dissolves.",
+    "options": [
+     "For an endothermic dissolution, heating favors dissolving (Le Châtelier agrees).",
+     "Ksp depends on temperature through ΔG° = −RT ln K.",
+     "Right: for ΔH° > 0 and ΔS° > 0, raising T makes ΔG° less positive, so Ksp grows.",
+     "ΔH° stays about the same; it is the −TΔS° term that changes with T."
+    ]
+   }
+  },
+  {
+   "id": "chem-dissolution-free-energy-13",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "A slightly soluble salt has ΔG°soln = +30.0 kJ/mol at 298 K. Calculate its Ksp. (R = 8.314 J/(mol·K))",
+   "numeric": {
+    "answer": 0.0000055,
+    "rel": 0.02,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.9879643855166808,
+      "rel": 0.01,
+      "why": "Value: convert ΔG° to 30,000 J/mol so the units match R."
+     },
+     {
+      "value": 7.787016019426042e-13,
+      "rel": 0.05,
+      "why": "Value: Ksp = e^(−ΔG°/RT), not 10^(−ΔG°/RT)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ln Ksp = −ΔG°/RT = −30,000 ÷ (8.314 × 298) = −12.11. Ksp = e^−12.11 = 5.5 × 10⁻⁶."
+   }
+  },
+  {
+   "id": "chem-dissolution-free-energy-14",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student claims: \"A salt dissolves only if dissolving releases heat.\" Which example disproves the claim?",
+   "options": [
+    "Calcium chloride dissolving while the water warms",
+    "Ammonium nitrate dissolving while the water cools",
+    "Silver chloride barely dissolving in water",
+    "Sugar dissolving faster in hot tea than in iced tea"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Favorability depends on ΔG°, not ΔH° alone. NH₄NO₃ dissolves even though ΔH°soln > 0.",
+    "options": [
+     "This fits the claim; it does not disprove it.",
+     "Right: endothermic, yet favored, because ΔS° is large enough that TΔS° > ΔH°.",
+     "A salt that barely dissolves does not test whether heat release is required.",
+     "This is about rate, not whether dissolving is favored."
+    ]
+   }
+  },
+  {
+   "id": "chem-dissolution-free-energy-15",
+   "type": "multi",
+   "unit": "unit-9",
+   "topic": "dissolution-free-energy",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which changes would make ΔH°soln of an ionic solid more negative (more exothermic)? Select ALL that apply.",
+   "options": [
+    "Stronger ion-dipole attractions between ions and water",
+    "Weaker attractions between the ions in the crystal",
+    "Stronger attractions between the ions in the crystal",
+    "A higher temperature of the water"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "ΔH°soln = (energy to separate ions) + (energy to separate water) − (energy released by ion-dipole attractions). Weaker lattice or stronger hydration makes it more negative.",
+    "options": [
+     "More energy released in the third step.",
+     "Less energy absorbed to separate the ions.",
+     "More energy absorbed to separate the ions: ΔH°soln becomes less negative.",
+     "ΔH°soln barely depends on temperature; the attractions decide it."
+    ]
+   }
+  }
+ ]
+}

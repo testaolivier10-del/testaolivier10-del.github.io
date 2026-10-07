@@ -1,0 +1,94 @@
+{
+ "id": "frq-amine-boiling-points",
+ "type": "short",
+ "points": 4,
+ "title": "Two amines with the same formula",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "intermolecular-forces",
+  "phases-of-matter"
+ ],
+ "practices": [
+  "4.A",
+  "6.D",
+  "6.E"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Two isomers of C₃H₉N",
+  "text": "<p>Propylamine and trimethylamine have the same molecular formula, C₃H₉N, and molar mass 59.11 g/mol. In propylamine two H atoms are bonded to the N atom; in trimethylamine the N atom is bonded to three carbon atoms and to no H.</p>",
+  "table": {
+   "caption": "Normal boiling points",
+   "cols": [
+    "Compound",
+    "Structure",
+    "Boiling point (°C)"
+   ],
+   "rows": [
+    [
+     "Propylamine",
+     "CH₃CH₂CH₂NH₂",
+     "48"
+    ],
+    [
+     "Trimethylamine",
+     "(CH₃)₃N",
+     "3"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Identify</b> all the types of intermolecular force between molecules of liquid propylamine.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "London dispersion forces, dipole-dipole forces and hydrogen bonds (all three).",
+     "accept": [
+      "dispersion, dipole-dipole and hydrogen bonding"
+     ]
+    }
+   ],
+   "sample": "London dispersion forces, dipole-dipole forces and hydrogen bonds."
+  },
+  {
+   "label": "b",
+   "prompt": "<b>Explain</b> why propylamine has the higher boiling point. Your answer must refer to both compounds.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Propylamine has H bonded to N, so its molecules form hydrogen bonds to the N lone pair of neighboring molecules; trimethylamine has no N–H and cannot hydrogen-bond to itself.",
+     "accept": [
+      "N–H in propylamine but none in trimethylamine"
+     ]
+    },
+    {
+     "point": "Because the dispersion forces are similar (same formula, same number of electrons), the extra hydrogen bonding makes the attractions between propylamine molecules stronger, so more energy is needed to separate them.",
+     "accept": [
+      "stronger attractions need more energy to overcome",
+      "not because of molar mass, which is the same"
+     ]
+    }
+   ],
+   "sample": "Propylamine has two H atoms on N, so each molecule can hydrogen-bond to the lone pair on the N of a neighbor. Trimethylamine has no H on N, so its molecules attract only by dispersion and dipole-dipole forces. The two have the same formula and number of electrons, so their dispersion forces are similar; propylamine's additional hydrogen bonds make its attractions stronger, so more energy is needed to separate its molecules and it boils higher."
+  },
+  {
+   "label": "c",
+   "prompt": "At 25 °C, which liquid has the higher vapor pressure? <b>Justify</b> your answer.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Trimethylamine, because its weaker intermolecular forces let more molecules escape the liquid (it is above its boiling point at 1 atm).",
+     "accept": [
+      "trimethylamine, weaker attractions"
+     ]
+    }
+   ],
+   "sample": "Trimethylamine. Its molecules attract each other more weakly, so at the same temperature more of them escape the liquid surface; its vapor pressure is already above 1 atm at 25 °C, since it boils at 3 °C."
+  }
+ ]
+}

@@ -1,0 +1,477 @@
+{
+ "stimuli": {
+  "ph-and-solubility-s1": {
+   "kind": "table",
+   "title": "Five slightly soluble salts",
+   "text": "<p>Each salt dissolves only slightly in pure water at 25 °C. Ka values are given for the conjugate acid of each anion; \"strong\" means the conjugate acid is a strong acid.</p>",
+   "table": {
+    "caption": "Salts and the acid each anion comes from",
+    "cols": [
+     "Salt",
+     "Anion",
+     "Conjugate acid of the anion",
+     "Ka of that acid"
+    ],
+    "rows": [
+     [
+      "CaF₂",
+      "F⁻",
+      "HF",
+      "6.8 × 10⁻⁴"
+     ],
+     [
+      "AgCl",
+      "Cl⁻",
+      "HCl",
+      "strong"
+     ],
+     [
+      "BaCO₃",
+      "CO₃²⁻",
+      "HCO₃⁻",
+      "4.7 × 10⁻¹¹"
+     ],
+     [
+      "PbI₂",
+      "I⁻",
+      "HI",
+      "strong"
+     ],
+     [
+      "Mg(OH)₂",
+      "OH⁻",
+      "H₂O",
+      "(OH⁻ reacts with H₃O⁺ to make water)"
+     ]
+    ]
+   }
+  },
+  "ph-and-solubility-s2": {
+   "kind": "particle",
+   "title": "Calcium fluoride in water and in acid",
+   "html": "<svg viewBox=\"0 0 760 240\" width=\"760\" height=\"240\" role=\"img\" aria-label=\"Solutions above solid calcium fluoride. Box 1, saturated in pure water: 1 calcium ion and 2 fluoride ions. Box 2: 4 calcium ions, 1 fluoride ion and 7 HF molecules. Box 3: 4 calcium ions and 8 fluoride ions. Box 4: 1 calcium ion, 2 HF molecules and 4 hydronium ions, with no fluoride ions.\"><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect x=\"5\" y=\"5\" width=\"180\" height=\"230\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"95\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Box 1 (water)</text><circle cx=\"30.2\" cy=\"82.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"30.2\" y=\"86.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Ca²⁺</text><circle cx=\"90.2\" cy=\"82.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"90.2\" y=\"86.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"150.2\" cy=\"82.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"150.2\" y=\"86.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><rect x=\"195\" y=\"5\" width=\"180\" height=\"230\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"285\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Box 2</text><circle cx=\"213.9\" cy=\"65.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"213.9\" y=\"69.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Ca²⁺</text><circle cx=\"258.9\" cy=\"65.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"258.9\" y=\"69.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Ca²⁺</text><circle cx=\"303.9\" cy=\"65.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"303.9\" y=\"69.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Ca²⁺</text><circle cx=\"348.9\" cy=\"65.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"348.9\" y=\"69.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Ca²⁺</text><circle cx=\"222.9\" cy=\"133.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"222.9\" y=\"137.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"267.9\" cy=\"133.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"267.9\" y=\"137.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"312.9\" cy=\"133.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"312.9\" y=\"137.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"357.9\" cy=\"133.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"357.9\" y=\"137.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"213.9\" cy=\"201.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"213.9\" y=\"205.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"258.9\" cy=\"201.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"258.9\" y=\"205.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"303.9\" cy=\"201.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"303.9\" y=\"205.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"348.9\" cy=\"201.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"348.9\" y=\"205.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><rect x=\"385\" y=\"5\" width=\"180\" height=\"230\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"475\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Box 3</text><circle cx=\"403.9\" cy=\"65.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"403.9\" y=\"69.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Ca²⁺</text><circle cx=\"448.9\" cy=\"65.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"448.9\" y=\"69.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Ca²⁺</text><circle cx=\"493.9\" cy=\"65.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"493.9\" y=\"69.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Ca²⁺</text><circle cx=\"538.9\" cy=\"65.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"538.9\" y=\"69.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Ca²⁺</text><circle cx=\"412.9\" cy=\"133.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"412.9\" y=\"137.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"457.9\" cy=\"133.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"457.9\" y=\"137.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"502.9\" cy=\"133.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"502.9\" y=\"137.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"547.9\" cy=\"133.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"547.9\" y=\"137.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"403.9\" cy=\"201.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"403.9\" y=\"205.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"448.9\" cy=\"201.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"448.9\" y=\"205.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"493.9\" cy=\"201.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"493.9\" y=\"205.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"538.9\" cy=\"201.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"538.9\" y=\"205.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><rect x=\"575\" y=\"5\" width=\"180\" height=\"230\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"665\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Box 4</text><circle cx=\"600.2\" cy=\"65.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"600.2\" y=\"69.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Ca²⁺</text><circle cx=\"660.2\" cy=\"65.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"660.2\" y=\"69.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"720.2\" cy=\"65.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"720.2\" y=\"69.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"612.2\" cy=\"133.0\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"612.2\" y=\"137.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"672.2\" cy=\"133.0\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"672.2\" y=\"137.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"732.2\" cy=\"133.0\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"732.2\" y=\"137.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"600.2\" cy=\"201.0\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"600.2\" y=\"205.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text></g></svg><p>Key: Ca²⁺ calcium ion; F⁻ fluoride; HF hydrogen fluoride molecule; H₃O⁺ hydronium. Each box is the solution above undissolved CaF₂(s), not drawn, at the same temperature. Water and the anions of the added acid are not drawn.</p>"
+  },
+  "ph-and-solubility-s3": {
+   "kind": "setup",
+   "title": "Dissolving a hydroxide",
+   "text": "<p>Three test tubes each contain 0.10 g of solid Mg(OH)₂ in 10 mL of liquid: Tube A, distilled water; Tube B, 1.0 M HCl; Tube C, 1.0 M NaOH. The tubes are shaken and left to settle.</p><p>Mg(OH)₂(s) ⇌ Mg²⁺(aq) + 2 OH⁻(aq)</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-ph-and-solubility-1",
+   "type": "multi",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ph-and-solubility-s1",
+   "q": "Which salts become more soluble when the solution is made more acidic? Select all that apply.",
+   "options": [
+    "CaF₂",
+    "AgCl",
+    "BaCO₃",
+    "PbI₂",
+    "Mg(OH)₂"
+   ],
+   "correct": [
+    0,
+    2,
+    4
+   ],
+   "why": {
+    "correct": "Each of these anions is a base: H₃O⁺ converts F⁻ to HF, CO₃²⁻ to HCO₃⁻ (and on to H₂CO₃ and CO₂), and OH⁻ to water. Removing the anion makes Q < Ksp, so more solid dissolves.",
+    "options": [
+     "Right: F⁻ is the conjugate base of the weak acid HF.",
+     "Cl⁻ comes from a strong acid and does not react with H₃O⁺.",
+     "Right: carbonate is a fairly strong base.",
+     "I⁻ comes from a strong acid and does not react with H₃O⁺.",
+     "Right: H₃O⁺ + OH⁻ → 2 H₂O removes hydroxide."
+    ]
+   }
+  },
+  {
+   "id": "chem-ph-and-solubility-2",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ph-and-solubility-s1",
+   "q": "Which explanation correctly says why adding HNO₃ dissolves more CaF₂(s)?",
+   "options": [
+    "H₃O⁺ turns F⁻ into HF, so Q < Ksp",
+    "HNO₃ increases the Ksp of the CaF₂ solid",
+    "NO₃⁻ ions react with Ca²⁺ to form a soluble compound",
+    "The H₃O⁺ ions attack the solid and break its covalent bonds"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The answer names the reaction (F⁻ + H₃O⁺ → HF + H₂O), its effect on Q, and the shift: the reasoning readers look for.",
+    "options": [
+     "Right: Q vs Ksp with the specific reaction.",
+     "Ksp depends only on temperature; it is Q that changes.",
+     "Calcium nitrate is soluble, but NO₃⁻ was not needed to remove Ca²⁺; the effect comes from removing F⁻.",
+     "CaF₂ is an ionic solid; dissolving separates ions rather than breaking covalent bonds."
+    ]
+   }
+  },
+  {
+   "id": "chem-ph-and-solubility-3",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ph-and-solubility-s1",
+   "q": "How does adding HNO₃ change the solubility of AgCl?",
+   "options": [
+    "Very little: Cl⁻ does not react with H₃O⁺",
+    "It increases, because H₃O⁺ reacts with Cl⁻ to form HCl",
+    "It decreases, because NO₃⁻ is a common ion",
+    "It increases, because salts dissolve better in acid"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "HCl is a strong acid, so Cl⁻ has essentially no tendency to take a proton. [Cl⁻] stays the same, Q is unchanged, and the solubility is unchanged.",
+    "options": [
+     "Right: no reaction with the anion, no shift.",
+     "HCl would immediately ionize again; Cl⁻ is not removed.",
+     "NO₃⁻ is not in AgCl, so it is not a common ion.",
+     "Only salts whose anions are bases dissolve better in acid."
+    ]
+   }
+  },
+  {
+   "id": "chem-ph-and-solubility-4",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "ph-and-solubility-s1",
+   "q": "Of CaF₂ and BaCO₃, whose solubility rises more sharply as pH is lowered from 7 to 5, and why?",
+   "options": [
+    "BaCO₃: CO₃²⁻ is the stronger base",
+    "CaF₂, because HF has the larger Ka",
+    "Both equally, because both anions are bases",
+    "CaF₂, because it releases two anions per formula unit"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The Ka of HCO₃⁻ (4.7 × 10⁻¹¹) is far smaller than that of HF (6.8 × 10⁻⁴), so CO₃²⁻ is a far stronger base: at pH 5–7 nearly all of it is protonated, while F⁻ (pKa 3.17) is still mostly unprotonated at pH 5.",
+    "options": [
+     "Right: the weaker the conjugate acid, the stronger the base and the bigger the pH effect.",
+     "A larger Ka means F⁻ is the weaker base, so it is protonated less.",
+     "Both are bases, but of very different strength.",
+     "The number of anions matters for Ksp, but the pH effect depends on how readily the anion takes a proton."
+    ]
+   }
+  },
+  {
+   "id": "chem-ph-and-solubility-5",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ph-and-solubility-s2",
+   "q": "Which box best represents the solution after a strong acid is added to Box 1 and equilibrium is restored?",
+   "options": [
+    "Box 2",
+    "Box 3",
+    "Box 4",
+    "Box 1, unchanged"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "More CaF₂ dissolved (4 Ca²⁺ instead of 1), and most of its fluoride became HF. F atoms are conserved (1 F⁻ + 7 HF = 8 = 2 × 4 Ca²⁺), and the free-ion product [Ca²⁺][F⁻]² is 4 × 1² = 4, the same as Box 1 (1 × 2² = 4), as Ksp requires.",
+    "options": [
+     "Right: more dissolved, fluoride mostly protonated, ion product back at Ksp.",
+     "Box 3 shows more dissolved with no HF: its ion product (4 × 8² = 256) is far above Ksp, so it is not at equilibrium.",
+     "Box 4 has no free F⁻, so Q = 0 < Ksp: more solid would still dissolve. It is not at equilibrium.",
+     "Adding acid removes F⁻, so the solution cannot stay the same."
+    ]
+   }
+  },
+  {
+   "id": "chem-ph-and-solubility-6",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ph-and-solubility-s2",
+   "q": "In every box, the total number of F atoms (in F⁻ and HF) should be twice the number of Ca²⁺ ions. Why?",
+   "options": [
+    "Both come from CaF₂, with two F per Ca",
+    "Ca²⁺ has a 2+ charge, so it attracts two water molecules",
+    "HF molecules contain two atoms",
+    "Ksp has [F⁻] squared"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dissolving CaF₂ releases one Ca²⁺ and two F⁻; protonating F⁻ to HF does not change the number of F atoms.",
+    "options": [
+     "Right: the formula sets the ratio.",
+     "The ratio comes from the formula of the salt, not from hydration.",
+     "The number of atoms in HF does not set the Ca : F ratio.",
+     "The square in Ksp follows from the same formula; it is a consequence, not the cause."
+    ]
+   }
+  },
+  {
+   "id": "chem-ph-and-solubility-7",
+   "type": "predict",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ph-and-solubility-s2",
+   "q": "A strong acid is added to the saturated CaF₂ solution with solid present. Predict the change in each once equilibrium is restored.",
+   "variables": [
+    {
+     "name": "Mass of CaF₂(s) remaining",
+     "answer": "down",
+     "why": "Removing F⁻ makes Q < Ksp, so more solid dissolves."
+    },
+    {
+     "name": "[Ca²⁺]",
+     "answer": "up",
+     "why": "More CaF₂ dissolves, releasing more Ca²⁺."
+    },
+    {
+     "name": "Ksp of CaF₂",
+     "answer": "none",
+     "why": "Ksp depends only on temperature."
+    },
+    {
+     "name": "[HF]",
+     "answer": "up",
+     "why": "H₃O⁺ converts F⁻ to HF."
+    }
+   ],
+   "why": {
+    "correct": "The acid removes the basic anion, and the dissolving equilibrium shifts right to replace it."
+   }
+  },
+  {
+   "id": "chem-ph-and-solubility-8",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "ph-and-solubility-s2",
+   "q": "A student claims, \"Adding acid dissolves CaF₂ because the acid raises Ksp.\" Which evidence from Boxes 1 and 2 contradicts the claim?",
+   "options": [
+    "[Ca²⁺][F⁻]² is equal in both boxes",
+    "Box 2 contains more Ca²⁺ than Box 1",
+    "Box 2 contains HF molecules",
+    "Box 1 contains no H₃O⁺ ions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Box 1: 1 × 2² = 4; Box 2: 4 × 1² = 4. The free-ion product, which equals Ksp at equilibrium, did not change. More salt dissolved because acid hid most of the fluoride as HF.",
+    "options": [
+     "Right: Ksp is unchanged; the extra dissolving comes from removing F⁻.",
+     "More Ca²⁺ shows that more salt dissolved, which fits either explanation.",
+     "HF shows that F⁻ reacted, but on its own does not test the claim about Ksp.",
+     "This describes the starting state, not the effect of the acid."
+    ]
+   }
+  },
+  {
+   "id": "chem-ph-and-solubility-9",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "ph-and-solubility-s3",
+   "q": "In which tube does the most Mg(OH)₂ dissolve?",
+   "options": [
+    "Tube B",
+    "Tube A",
+    "Tube C",
+    "The same amount in each"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "H₃O⁺ in HCl reacts with OH⁻ (H₃O⁺ + OH⁻ → 2 H₂O), driving [OH⁻] down, so the dissolving equilibrium shifts right until the solid dissolves.",
+    "options": [
+     "Right: acid removes OH⁻.",
+     "Water dissolves only a trace of Mg(OH)₂.",
+     "Added OH⁻ is a common ion; it pushes the equilibrium left.",
+     "The liquids affect [OH⁻] very differently."
+    ]
+   }
+  },
+  {
+   "id": "chem-ph-and-solubility-10",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ph-and-solubility-s3",
+   "q": "Why does even less Mg(OH)₂ dissolve in Tube C than in Tube A?",
+   "options": [
+    "OH⁻ is a common ion, so Q reaches Ksp sooner",
+    "NaOH reacts with Mg(OH)₂ to form a new solid",
+    "Na⁺ ions lower Ksp",
+    "NaOH raises the temperature"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The large [OH⁻] makes Q = [Mg²⁺][OH⁻]² exceed Ksp at a tiny [Mg²⁺], so the dissolving stops much earlier.",
+    "options": [
+     "Right: the common-ion effect.",
+     "No new solid is involved; the effect is on Q.",
+     "Ksp does not change with added ions.",
+     "Dissolving a little NaOH in 10 mL does warm it slightly, but that is not why the solubility falls."
+    ]
+   }
+  },
+  {
+   "id": "chem-ph-and-solubility-11",
+   "type": "order",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ph-and-solubility-s3",
+   "q": "Put the steps of the explanation for Tube B in order.",
+   "options": [
+    "HCl supplies H₃O⁺",
+    "H₃O⁺ reacts with OH⁻ to form water",
+    "[OH⁻] falls, so Q = [Mg²⁺][OH⁻]² < Ksp",
+    "The net dissolving reaction proceeds until Q = Ksp again, so more solid dissolves"
+   ],
+   "why": {
+    "correct": "Source of acid, the reaction that removes the anion, the effect on Q compared with Ksp, then the shift. This is the claim-evidence-reasoning chain readers want."
+   }
+  },
+  {
+   "id": "chem-ph-and-solubility-12",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ph-and-solubility-s3",
+   "q": "A student repeats Tube B with 1.0 M NaCl instead of 1.0 M HCl. What result is expected?",
+   "options": [
+    "About as little as in water: NaCl adds no H₃O⁺",
+    "As much dissolves as in HCl, because both contain Cl⁻",
+    "More dissolves than in HCl, because Na⁺ reacts with OH⁻",
+    "Nothing dissolves, because Cl⁻ is a common ion"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The effect in Tube B came from H₃O⁺. NaCl solution is neutral, and neither Na⁺ nor Cl⁻ reacts with Mg²⁺ or OH⁻, so the result is like water. This control shows the acid, not the chloride, was responsible.",
+    "options": [
+     "Right: it isolates H₃O⁺ as the cause.",
+     "Cl⁻ was a spectator in Tube B.",
+     "NaOH is soluble; Na⁺ does not remove OH⁻.",
+     "Cl⁻ is not part of Mg(OH)₂, so it is not a common ion."
+    ]
+   }
+  },
+  {
+   "id": "chem-ph-and-solubility-13",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Tooth enamel is mostly hydroxyapatite, Ca₅(PO₄)₃OH. Why do acidic drinks wear it away?",
+   "options": [
+    "H₃O⁺ removes its OH⁻ and PO₄³⁻ ions",
+    "Acid raises the Ksp of hydroxyapatite",
+    "Acid adds Ca²⁺, a common ion, to the enamel",
+    "Acid makes the phosphate ions larger and looser"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "OH⁻ and PO₄³⁻ are both bases. H₃O⁺ removes them, Q drops below Ksp, and enamel dissolves.",
+    "options": [
+     "Right: basic anions are removed by acid.",
+     "Ksp changes only with temperature.",
+     "Drinks do not add Ca²⁺ in this explanation, and a common ion would lower solubility.",
+     "Ion size is not changed by acid."
+    ]
+   }
+  },
+  {
+   "id": "chem-ph-and-solubility-14",
+   "type": "multi",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For which salts would adding NaOH (raising the pH) have little effect on solubility through acid-base reactions? Select all that apply.",
+   "options": [
+    "AgBr",
+    "Ca₃(PO₄)₂",
+    "BaSO₄",
+    "ZnCO₃",
+    "Fe(OH)₂"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Raising the pH removes nothing from salts whose ions do not react with OH⁻. Br⁻ and SO₄²⁻ are very weak bases and do not react with OH⁻ either. (Phosphate and carbonate salts become, if anything, less soluble as pH rises, because their anions stay unprotonated.)",
+    "options": [
+     "Right: Br⁻ is the conjugate base of a strong acid.",
+     "Phosphate salts are strongly affected by pH: they dissolve in acid, and raising the pH reverses that.",
+     "Right: SO₄²⁻ is a very weak base, so its salts are hardly affected by pH.",
+     "Carbonate salts are strongly pH dependent.",
+     "Adding OH⁻ to a hydroxide salt is a common-ion effect: it lowers the solubility."
+    ]
+   }
+  },
+  {
+   "id": "chem-ph-and-solubility-15",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "ph-and-solubility",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which claim about pH and solubility is correct?",
+   "options": [
+    "A salt with a basic anion dissolves more at lower pH",
+    "Any salt dissolves more as pH decreases",
+    "A salt becomes more soluble as pH decreases because acid increases Ksp",
+    "A salt with a strong-acid anion becomes more soluble as pH increases"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only basic anions (F⁻, CO₃²⁻, PO₄³⁻, OH⁻, S²⁻ and similar) react with H₃O⁺; that reaction is what shifts the dissolving equilibrium.",
+    "options": [
+     "Right: the anion must be a base.",
+     "Salts of Cl⁻, Br⁻, I⁻ and NO₃⁻ are unaffected by pH.",
+     "Ksp does not change; Q does.",
+     "Anions from strong acids are unaffected by pH in either direction."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,636 @@
+{
+ "stimuli": {
+  "le-chatelier-s1": {
+   "kind": "graph",
+   "title": "Disturbing a PCl₅ equilibrium",
+   "text": "<p>A sealed 1.00 L flask holds PCl<sub>5</sub>, PCl<sub>3</sub> and Cl<sub>2</sub> at equilibrium at constant temperature: PCl<sub>5</sub>(g) ⇌ PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g), K<sub>c</sub> = 0.040. At 50 s, one change is made to the flask. The graph shows the three concentrations.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Time",
+     "unit": "s"
+    },
+    "y": {
+     "label": "Concentration",
+     "unit": "M",
+     "min": 0,
+     "max": 0.25
+    },
+    "series": [
+     {
+      "name": "PCl₅",
+      "points": [
+       [
+        0,
+        0.128
+       ],
+       [
+        25,
+        0.128
+       ],
+       [
+        50,
+        0.128
+       ],
+       [
+        50,
+        0.128
+       ],
+       [
+        60,
+        0.149
+       ],
+       [
+        70,
+        0.157
+       ],
+       [
+        80,
+        0.16
+       ],
+       [
+        100,
+        0.161
+       ],
+       [
+        125,
+        0.161
+       ],
+       [
+        150,
+        0.161
+       ]
+      ]
+     },
+     {
+      "name": "PCl₃",
+      "points": [
+       [
+        0,
+        0.072
+       ],
+       [
+        25,
+        0.072
+       ],
+       [
+        50,
+        0.072
+       ],
+       [
+        50,
+        0.072
+       ],
+       [
+        60,
+        0.051
+       ],
+       [
+        70,
+        0.043
+       ],
+       [
+        80,
+        0.04
+       ],
+       [
+        100,
+        0.039
+       ],
+       [
+        125,
+        0.039
+       ],
+       [
+        150,
+        0.039
+       ]
+      ]
+     },
+     {
+      "name": "Cl₂",
+      "points": [
+       [
+        0,
+        0.072
+       ],
+       [
+        25,
+        0.072
+       ],
+       [
+        50,
+        0.072
+       ],
+       [
+        50,
+        0.2
+       ],
+       [
+        60,
+        0.179
+       ],
+       [
+        70,
+        0.171
+       ],
+       [
+        80,
+        0.169
+       ],
+       [
+        100,
+        0.167
+       ],
+       [
+        125,
+        0.167
+       ],
+       [
+        150,
+        0.167
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "le-chatelier-s2": {
+   "kind": "table",
+   "title": "The pink and blue cobalt equilibrium",
+   "text": "<p>In water, cobalt(II) ions take part in this equilibrium:</p><p style=\"text-align:center\">Co(H<sub>2</sub>O)<sub>6</sub><sup>2+</sup>(aq) + 4 Cl<sup>−</sup>(aq) ⇌ CoCl<sub>4</sub><sup>2−</sup>(aq) + 6 H<sub>2</sub>O(l)<br>pink &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; blue</p><p>A student starts with a purple solution (both ions present) in five test tubes and makes one change to each.</p>",
+   "table": {
+    "caption": "Observations",
+    "cols": [
+     "Tube",
+     "Change",
+     "Color afterward"
+    ],
+    "rows": [
+     [
+      "1",
+      "none (control)",
+      "purple"
+     ],
+     [
+      "2",
+      "placed in a hot-water bath",
+      "blue"
+     ],
+     [
+      "3",
+      "placed in an ice bath",
+      "pink"
+     ],
+     [
+      "4",
+      "a few drops of concentrated HCl(aq), a source of Cl<sup>−</sup>, added",
+      "blue"
+     ],
+     [
+      "5",
+      "AgNO<sub>3</sub>(aq) added; a white solid forms",
+      "pink"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-le-chatelier-1",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "le-chatelier-s1",
+   "q": "What change was made at 50 s?",
+   "options": [
+    "Cl<sub>2</sub> was added.",
+    "PCl<sub>5</sub> was added.",
+    "The temperature was raised.",
+    "The volume was halved."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A sudden vertical jump in one curve means that substance was added (or removed, for a drop). Gradual changes afterward are the system’s response.",
+    "options": [
+     "Right: [Cl₂] jumps straight up at 50 s while the other two do not jump.",
+     "Added PCl₅ would make the PCl₅ curve jump. It rises gradually, as a result of the shift.",
+     "A temperature change does not make one concentration jump; the curves would bend smoothly to new values.",
+     "Halving the volume would make all three concentrations jump at once."
+    ]
+   }
+  },
+  {
+   "id": "chem-le-chatelier-2",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "le-chatelier-s1",
+   "q": "Which statement describes the response after 50 s?",
+   "options": [
+    "The net reaction runs in reverse, using some of the added Cl<sub>2</sub>.",
+    "The net reaction runs forward, making more Cl<sub>2</sub>.",
+    "There is no net reaction, because K has not changed.",
+    "The net reaction runs in reverse until [Cl<sub>2</sub>] is back to its old value."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Adding a product makes the system shift toward reactants, partly using up what was added. It does not undo the change completely.",
+    "options": [
+     "Right: [Cl₂] and [PCl₃] fall while [PCl₅] rises, the reverse direction, which partly uses up the added Cl₂.",
+     "More Cl₂ forming would push [Cl₂] even higher. It falls after the jump.",
+     "K is unchanged, but Q has changed, so the system must react until Q = K again.",
+     "The shift only partly counteracts the change: [Cl₂] ends above its old value."
+    ]
+   }
+  },
+  {
+   "id": "chem-le-chatelier-3",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "le-chatelier-s1",
+   "q": "At the new equilibrium, [PCl<sub>3</sub>] = 0.039 M. Calculate the new [PCl<sub>5</sub>].",
+   "numeric": {
+    "answer": 0.161,
+    "tol": 0.001,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.0953,
+      "rel": 0.02,
+      "why": "Value: the reverse reaction makes PCl₅, so [PCl₅] goes up by the same amount [PCl₃] goes down."
+     },
+     {
+      "value": 0.128,
+      "rel": 0.02,
+      "why": "Value: [PCl₅] changes during the shift. Add the amount of PCl₃ that reacted."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Before the change: [PCl₃] = 0.072 M, [PCl₅] = 0.128 M. PCl₃ fell by 0.033 M, and the coefficients are 1 : 1, so PCl₅ rose by the same: 0.128 + 0.033 = 0.161 M."
+   }
+  },
+  {
+   "id": "chem-le-chatelier-4",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "le-chatelier-s1",
+   "q": "How does K<sub>c</sub> after 100 s compare with K<sub>c</sub> before 50 s?",
+   "options": [
+    "It is the same, 0.040.",
+    "It is larger, because more Cl<sub>2</sub> is present.",
+    "It is smaller, because the reaction shifted in reverse.",
+    "It is undefined until the added Cl<sub>2</sub> is used up."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K depends only on temperature. A concentration change shifts the equilibrium position, not the constant.",
+    "options": [
+     "Right: the temperature did not change, so K did not change. The concentrations rearranged to fit the same K.",
+     "Adding Cl₂ changed Q, not K. The system shifted until Q equaled the original K.",
+     "A shift changes concentrations, not K.",
+     "The added Cl₂ is never all used up, and K is defined at any equilibrium."
+    ]
+   }
+  },
+  {
+   "id": "chem-le-chatelier-5",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "predict",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "le-chatelier-s1",
+   "q": "Compare the new equilibrium (after 100 s) with the original equilibrium (before 50 s).",
+   "variables": [
+    {
+     "name": "[PCl<sub>5</sub>]",
+     "answer": "up",
+     "why": "The reverse shift made more PCl₅."
+    },
+    {
+     "name": "[PCl<sub>3</sub>]",
+     "answer": "down",
+     "why": "The reverse shift used some PCl₃."
+    },
+    {
+     "name": "[Cl<sub>2</sub>]",
+     "answer": "up",
+     "why": "The shift used only part of the added Cl₂, so it ends higher than before."
+    },
+    {
+     "name": "K<sub>c</sub>",
+     "answer": "none",
+     "why": "Same temperature, same K."
+    }
+   ],
+   "why": {
+    "correct": "Adding a product shifts the equilibrium toward reactants. The added species ends higher than before, the other product lower, the reactant higher; K is unchanged."
+   }
+  },
+  {
+   "id": "chem-le-chatelier-6",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "single",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "le-chatelier-s2",
+   "q": "What do tubes 2 and 3 show about the forward reaction?",
+   "options": [
+    "It is endothermic.",
+    "It is exothermic.",
+    "It is faster when cold.",
+    "It does not depend on temperature."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For an endothermic reaction, heat acts like a reactant: adding heat shifts the equilibrium forward (blue), removing heat shifts it back (pink).",
+    "options": [
+     "Right: heating shifts the equilibrium toward the blue product, so the forward reaction absorbs heat.",
+     "If it were exothermic, heating would shift toward the reactants and turn the tube pink. It turned blue.",
+     "The colors show where equilibrium lies, not how fast it is reached.",
+     "The color changed with temperature, so the equilibrium position did."
+    ]
+   }
+  },
+  {
+   "id": "chem-le-chatelier-7",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "le-chatelier-s2",
+   "q": "Why does tube 5 turn pink?",
+   "options": [
+    "Ag<sup>+</sup> removes Cl<sup>−</sup> as AgCl(s).",
+    "Ag<sup>+</sup> adds to the blue ion, turning it pink.",
+    "Adding a solution dilutes the tube, which turns it pink.",
+    "NO<sub>3</sub><sup>−</sup> reacts with the pink ion."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ag⁺(aq) + Cl⁻(aq) → AgCl(s) removes a reactant. The equilibrium shifts toward the side that makes Cl⁻: the pink side.",
+    "options": [
+     "Right: lowering [Cl⁻], a reactant, makes the system shift in reverse to replace some of it.",
+     "The white solid is AgCl. The color change comes from the shift, not from silver joining a cobalt ion.",
+     "A few drops of solution barely dilute it. The precipitate shows Cl⁻ is being removed.",
+     "Nitrate is a spectator ion here; Ag⁺ is the active ion."
+    ]
+   }
+  },
+  {
+   "id": "chem-le-chatelier-8",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "le-chatelier-s2",
+   "q": "How does K<sub>c</sub> in tube 2 compare with K<sub>c</sub> in tube 1?",
+   "options": [
+    "Greater: higher T, endothermic forward reaction.",
+    "The same, because no substance was added.",
+    "Smaller, because the reaction shifted toward the products.",
+    "The same, because K is a constant."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Temperature is the one change that alters K. For an endothermic forward reaction, a higher temperature means a larger K.",
+    "options": [
+     "Right: raising the temperature of an endothermic reaction increases K, which is why the mixture shifts toward the blue product.",
+     "K stays the same for concentration changes, but a temperature change alters K itself.",
+     "A shift toward products at higher temperature means K got larger, not smaller.",
+     "K is constant only at a fixed temperature."
+    ]
+   }
+  },
+  {
+   "id": "chem-le-chatelier-9",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "le-chatelier-s2",
+   "q": "In tube 4, why does the solution turn blue?",
+   "options": [
+    "Added Cl<sup>−</sup> shifts the equilibrium forward.",
+    "HCl raises the temperature of the solution.",
+    "Added Cl<sup>−</sup> increases K.",
+    "HCl removes water, the product."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Adding a reactant shifts the equilibrium toward the products, partly using up what was added.",
+    "options": [
+     "Right: the system uses some of the added Cl⁻, making more blue CoCl₄²⁻.",
+     "A few drops at room temperature have little heating effect; tube 4 is not in a bath.",
+     "Adding a reactant changes Q, not K.",
+     "The drops add a little water, if anything. The key change is the added Cl⁻."
+    ]
+   }
+  },
+  {
+   "id": "chem-le-chatelier-10",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "predict",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "For N<sub>2</sub>(g) + 3 H<sub>2</sub>(g) ⇌ 2 NH<sub>3</sub>(g), ΔH° = −92 kJ/mol<sub>rxn</sub>, at equilibrium in a sealed container. Predict how the amount of NH<sub>3</sub> at the new equilibrium compares with before each change.",
+   "variables": [
+    {
+     "name": "The volume of the container is halved",
+     "answer": "up",
+     "why": "Smaller volume favors the side with fewer gas molecules: 2 NH₃ versus 4 reactant molecules."
+    },
+    {
+     "name": "The temperature is raised",
+     "answer": "down",
+     "why": "The forward reaction is exothermic, so heat acts as a product; adding heat shifts the equilibrium in reverse."
+    },
+    {
+     "name": "A catalyst is added",
+     "answer": "none",
+     "why": "A catalyst speeds both directions equally; the equilibrium amounts do not change."
+    },
+    {
+     "name": "Some H<sub>2</sub> is removed",
+     "answer": "down",
+     "why": "Removing a reactant shifts the equilibrium in reverse to replace some of it."
+    }
+   ],
+   "why": {
+    "correct": "Le Châtelier’s principle: a change in concentration, volume or temperature makes the equilibrium shift to partly counteract it. A catalyst causes no shift."
+   }
+  },
+  {
+   "id": "chem-le-chatelier-11",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "predict",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "For H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g) at equilibrium in a sealed container fitted with a movable piston, predict the effect on the amount of HI.",
+   "variables": [
+    {
+     "name": "The volume is doubled at constant temperature",
+     "answer": "none",
+     "why": "Both sides have 2 mol of gas, so a volume change affects reactants and products equally and causes no shift."
+    },
+    {
+     "name": "Argon is added at constant volume",
+     "answer": "none",
+     "why": "An inert gas at constant volume changes no partial pressure or concentration of the reacting gases."
+    },
+    {
+     "name": "More I<sub>2</sub> is added",
+     "answer": "up",
+     "why": "Adding a reactant shifts the equilibrium forward."
+    },
+    {
+     "name": "Some HI is removed",
+     "answer": "down",
+     "why": "The shift replaces only part of the HI that was removed, so the amount of HI ends lower than before."
+    }
+   ],
+   "why": {
+    "correct": "Volume changes shift an equilibrium only when the gas moles differ on the two sides. Inert gases at constant volume and catalysts cause no shift."
+   }
+  },
+  {
+   "id": "chem-le-chatelier-12",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "For 2 SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2 SO<sub>3</sub>(g), ΔH° = −198 kJ/mol<sub>rxn</sub>, which change increases the value of K?",
+   "options": [
+    "Cooling the mixture",
+    "Adding more O<sub>2</sub>",
+    "Decreasing the volume",
+    "Adding a catalyst"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only temperature changes K. For an exothermic reaction (heat is a product), lowering the temperature increases K.",
+    "options": [
+     "Right: for an exothermic reaction, cooling favors the products and increases K.",
+     "This shifts the equilibrium forward but does not change K.",
+     "This shifts toward fewer gas moles (products), but K stays the same.",
+     "A catalyst changes neither K nor the equilibrium position."
+    ]
+   }
+  },
+  {
+   "id": "chem-le-chatelier-13",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2 NO<sub>2</sub>(g), the volume of an equilibrium mixture is suddenly halved at constant temperature. What happens to the brown color?",
+   "options": [
+    "It darkens at once, then fades partway.",
+    "It fades at once, because the system shifts toward N<sub>2</sub>O<sub>4</sub>.",
+    "It darkens and stays at that darker shade.",
+    "It does not change, because K does not change."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Compression doubles every concentration first. Then the equilibrium shifts toward the side with fewer gas molecules, partly counteracting the change. [NO₂] ends higher than before the change but lower than right after it.",
+    "options": [
+     "Right: halving the volume doubles [NO₂] instantly; the shift toward fewer gas molecules then lowers it partway.",
+     "The first effect is compression, which doubles [NO₂]. The shift comes after and only partly undoes it.",
+     "The system responds: it shifts toward N₂O₄ (fewer gas molecules), lowering [NO₂] somewhat.",
+     "K is unchanged, but the concentrations are not."
+    ]
+   }
+  },
+  {
+   "id": "chem-le-chatelier-14",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "multi",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "For C(s) + H<sub>2</sub>O(g) ⇌ CO(g) + H<sub>2</sub>(g), ΔH° = +131 kJ/mol<sub>rxn</sub>, which changes shift the equilibrium toward the products? Select all that apply.",
+   "options": [
+    "Raising the temperature",
+    "Increasing the volume",
+    "Adding more C(s)",
+    "Adding a catalyst"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Count only gas moles for volume changes (the solid does not count), and treat heat as a reactant for an endothermic reaction.",
+    "options": [
+     "Right: the forward reaction is endothermic, so heat acts as a reactant.",
+     "Right: products have 2 mol gas, reactants 1 mol gas, so more room favors the products.",
+     "A pure solid does not appear in Q, so adding it causes no shift.",
+     "A catalyst causes no shift."
+    ]
+   }
+  },
+  {
+   "id": "chem-le-chatelier-15",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "type": "single",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student explains: \"Adding more N<sub>2</sub> to the ammonia equilibrium makes K bigger, so more NH<sub>3</sub> forms.\" What is wrong with this explanation?",
+   "options": [
+    "K is unchanged; the added N<sub>2</sub> upsets the equilibrium.",
+    "Nothing is wrong; adding a reactant raises K.",
+    "Adding N<sub>2</sub> makes K smaller, so less NH<sub>3</sub> forms.",
+    "Adding N<sub>2</sub> has no effect, because N<sub>2</sub> is unreactive."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K depends only on temperature. Adding a reactant disturbs the equilibrium (topic 7.10 shows how to state this with Q), and the system shifts forward.",
+    "options": [
+     "Right: the shift happens because the mixture is out of balance with the same K, not because K changed.",
+     "Concentration changes never change K. Only temperature does.",
+     "K is unchanged, and adding a reactant shifts toward products.",
+     "N₂ is a reactant here; adding it does shift the equilibrium."
+    ]
+   }
+  }
+ ]
+}

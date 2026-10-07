@@ -1,0 +1,10 @@
+{
+ "chemical-bond": { "def": "An attraction that holds two or more atoms or ions together, caused by nuclei attracting electrons." },
+ "covalent-bond": { "def": "A bond in which two atoms share a pair of electrons that both nuclei attract." },
+ "polar-covalent": { "def": "A covalent bond in which the shared electrons are pulled closer to the more electronegative atom; if the atoms are identical the sharing is equal and the bond is nonpolar." },
+ "partial-charge": { "def": "A charge smaller than one full electron charge, written δ+ or δ−, on the atoms of a polar bond." },
+ "dipole": { "def": "A separation of positive and negative charge, such as the δ+ and δ− ends of a polar bond; drawn as an arrow pointing toward the negative end." },
+ "ionic-bond": { "def": "The Coulombic attraction between oppositely charged ions, usually formed when a metal gives electrons to a nonmetal." },
+ "metallic-bond": { "def": "The attraction between metal cations and the sea of delocalized valence electrons around them." },
+ "delocalization": { "def": "Describes electrons that are not held between one pair of atoms but spread over several or many atoms, as in a metal." }
+}

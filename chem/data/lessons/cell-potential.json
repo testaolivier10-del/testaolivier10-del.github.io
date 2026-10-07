@@ -1,0 +1,87 @@
+{
+ "topic": "cell-potential",
+ "hook": "Stack two different metals with a damp salty paper between them and you can measure a voltage, the way the first battery was made in 1800. Which pair gives the most voltage? A table of standard reduction potentials answers that for any pair, and the voltage tells you ΔG° and K as well.",
+ "prereq": [
+  {
+   "q": "In a galvanic cell, where does reduction happen?",
+   "options": [
+    "At the cathode",
+    "At the anode",
+    "In the salt bridge",
+    "In the wire"
+   ],
+   "correct": 0,
+   "why": "Reduction at the cathode, oxidation at the anode.",
+   "review": "electrochemical-cells"
+  },
+  {
+   "q": "If ΔG° < 0, what is true of K?",
+   "options": [
+    "K > 1",
+    "K < 1",
+    "K = 1",
+    "K = 0"
+   ],
+   "correct": 0,
+   "why": "ΔG° = −RT ln K: negative ΔG° gives K > 1.",
+   "review": "free-energy-equilibrium"
+  }
+ ],
+ "figure": {
+  "figure": "dg-k-e-triangle",
+  "caption": "ΔG°, K and E°cell all describe how far a reaction goes, so each can be found from the others."
+ },
+ "chain": [
+  {
+   "cause": "Each half-reaction has a tendency to gain electrons, measured by its standard reduction potential E°",
+   "effect": "the half-reaction with the more positive E° is reduced at the cathode"
+  },
+  {
+   "cause": "The other half-reaction runs in reverse as the oxidation at the anode",
+   "effect": "E°cell = E°(cathode) − E°(anode), positive for a galvanic cell"
+  },
+  {
+   "cause": "E° is energy per unit charge, an intensive property",
+   "effect": "balancing electrons never multiplies an E°"
+  },
+  {
+   "cause": "Total electrical work is charge × voltage",
+   "effect": "ΔG° = −nFE°, so a positive E°cell means ΔG° < 0 and K > 1"
+  }
+ ],
+ "ideas": [
+  "A <b>standard reduction potential</b> E° measures how readily a species gains electrons. More positive: stronger oxidizing agent.",
+  "<b>E°cell = E°(cathode) − E°(anode)</b>, using both values as reduction potentials. Positive E°cell: favored (galvanic).",
+  "<b>E° is intensive</b>: never multiply it by a coefficient when you balance electrons.",
+  "<b>ΔG° = −nFE°</b>, with n the mol e⁻ transferred in the balanced equation and F = 96,485 C/mol e⁻ (1 J = 1 C·V).",
+  "E° &gt; 0 ⇔ ΔG° &lt; 0 ⇔ K &gt; 1. A negative E°cell means the reaction needs an electrolytic cell."
+ ],
+ "misconception": {
+  "wrong": "When a half-reaction is multiplied by 2 to balance electrons, its E° is multiplied by 2 too.",
+  "right": "E° is energy per coulomb, an intensive property, like temperature. Multiplying a half-reaction changes the number of electrons (n), which changes ΔG° = −nFE°, but E° stays the same."
+ },
+ "check": [
+  "chem-cell-potential-1",
+  "chem-cell-potential-2",
+  "chem-cell-potential-3",
+  "chem-cell-potential-6",
+  "chem-cell-potential-7",
+  "chem-cell-potential-9",
+  "chem-cell-potential-11"
+ ],
+ "summary": "Standard reduction potentials rank how readily species gain electrons. In a galvanic cell the half-reaction with the more positive E° is the cathode, and E°cell = E°(cathode) − E°(anode). E° is intensive and is never multiplied by coefficients. ΔG° = −nFE°, so a positive E°cell means a favored reaction with K > 1.",
+ "connections": [
+  {
+   "href": "../notes/electrochemical-cells.html",
+   "label": "Back: galvanic and electrolytic cells (9.8)"
+  },
+  {
+   "href": "../notes/free-energy-equilibrium.html",
+   "label": "Back: ΔG° = −RT ln K (9.5)"
+  },
+  {
+   "href": "../notes/nernst-equation.html",
+   "label": "Next: cells away from standard conditions (9.10)"
+  }
+ ]
+}

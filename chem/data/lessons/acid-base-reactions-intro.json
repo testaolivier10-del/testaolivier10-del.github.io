@@ -1,0 +1,93 @@
+{
+ "topic": "acid-base-reactions-intro",
+ "hook": "Lemon juice, vinegar and stomach acid all hand out the same thing: hydrogen ions, which are bare protons. Baking soda, ammonia and soap take them in. Seeing an acid-base reaction as a single proton moving from one particle to another explains reactions that the old \"acids have H, bases have OH\" rule cannot.",
+ "prereq": [
+  {
+   "q": "What is left when a hydrogen atom loses its electron?",
+   "options": [
+    "A proton",
+    "A neutron",
+    "An electron",
+    "A hydride ion"
+   ],
+   "correct": 0,
+   "why": "A hydrogen atom is one proton and one electron, so H⁺ is just a proton.",
+   "review": "mass-spectra"
+  },
+  {
+   "q": "Which part of a water molecule carries a partial negative charge and lone pairs?",
+   "options": [
+    "The oxygen atom",
+    "The hydrogen atoms",
+    "The O–H bonds equally",
+    "Neither part"
+   ],
+   "correct": 0,
+   "why": "Oxygen is more electronegative and has two lone pairs.",
+   "review": "lewis-diagrams"
+  },
+  {
+   "q": "In H⁺(aq) + OH⁻(aq) → H₂O(l), what kind of reaction is shown?",
+   "options": [
+    "Acid-base",
+    "Precipitation",
+    "Combustion",
+    "Decomposition"
+   ],
+   "correct": 0,
+   "why": "An H⁺ moves to OH⁻ to form water.",
+   "review": "reaction-types"
+  }
+ ],
+ "figure": {
+  "figure": "proton-transfer",
+  "caption": "A proton transfer. HF gives an H⁺ to a water molecule. Each reactant and the product it becomes form a conjugate pair, differing by one H⁺."
+ },
+ "chain": [
+  {
+   "cause": "A Brønsted-Lowry acid gives up an H⁺ (a proton)",
+   "effect": "what remains is its conjugate base, with one less H and one less + charge"
+  },
+  {
+   "cause": "A Brønsted-Lowry base uses a lone pair to accept the H⁺",
+   "effect": "it becomes its conjugate acid, with one more H and one more + charge"
+  },
+  {
+   "cause": "Water has both O–H bonds and lone pairs on oxygen",
+   "effect": "it can act as an acid or a base: it is amphoteric"
+  },
+  {
+   "cause": "A bare proton bonds at once to a water molecule",
+   "effect": "acid in water gives hydronium ions, H₃O⁺"
+  }
+ ],
+ "ideas": [
+  "A <b>Brønsted-Lowry acid</b> is a proton donor; a Brønsted-Lowry base is a proton acceptor (it needs a lone pair).",
+  "A <b>conjugate acid-base pair</b> differs by exactly one H⁺: HF/F⁻, NH₄⁺/NH₃, H₂O/OH⁻, H₃O⁺/H₂O.",
+  "<b>Amphoteric</b> species such as H₂O and HCO₃⁻ can donate or accept a proton.",
+  "In water, H⁺ is carried as <b>hydronium</b>, H₃O⁺. <b>Neutralization</b>: H⁺ + OH⁻ → H₂O."
+ ],
+ "misconception": {
+  "wrong": "An acid is anything with H in its formula, and a base is anything with OH.",
+  "right": "Acid and base describe what a particle does in a reaction. Methane has H but gives up no protons; ammonia has no OH but accepts a proton. Look for the H⁺ that moves."
+ },
+ "check": [
+  "chem-acid-base-reactions-intro-1",
+  "chem-acid-base-reactions-intro-2",
+  "chem-acid-base-reactions-intro-3",
+  "chem-acid-base-reactions-intro-4",
+  "chem-acid-base-reactions-intro-5",
+  "chem-acid-base-reactions-intro-6"
+ ],
+ "summary": "In a Brønsted-Lowry acid-base reaction, a proton (H⁺) moves from the acid to the base. The acid becomes its conjugate base and the base becomes its conjugate acid; each pair differs by one H⁺. Water is amphoteric, and in water a proton is carried as hydronium, H₃O⁺.",
+ "connections": [
+  {
+   "href": "../notes/reaction-types.html",
+   "label": "Back: acid-base among the reaction types (4.7)"
+  },
+  {
+   "href": "../notes/redox-reactions.html",
+   "label": "Next: electron transfer (4.9)"
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 7 (docs/apchem-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u7-q-vs-k-add-reactant",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "practice": "6.D",
+   "skill": "q-vs-k",
+   "title": "Adding hydrogen to an equilibrium mixture",
+   "context": "<p>N₂(g) + 3 H₂(g) ⇌ 2 NH₃(g) is at equilibrium in a rigid container at constant temperature. More H₂ is injected.</p>",
+   "prompt": "<b>Justify</b> the direction the net reaction goes after the H₂ is added, using Q and K.",
+   "checklist": [
+    "Writes or describes Q = [NH₃]² / ([N₂][H₂]³) and says adding H₂ increases the denominator, so Q falls below K",
+    "Says K does not change, because the temperature does not change",
+    "Concludes that Q < K, so the net reaction goes forward (making NH₃) until Q = K again"
+   ],
+   "earns": {
+    "answer": "Right after the H₂ is added, Q = [NH₃]²/([N₂][H₂]³) is smaller than K, because [H₂] in the denominator has increased. K stays the same because the temperature has not changed. Since Q < K, the net reaction goes forward, using N₂ and H₂ and forming NH₃, until Q rises to equal K.",
+    "why": "It compares Q with K, says why K is unchanged, and gives the direction that restores Q = K. That is the reasoning the readers reward."
+   },
+   "misses": {
+    "answer": "Adding H₂ increases the rate of the forward reaction, so the equilibrium shifts right and K increases.",
+    "why": "Rate language alone does not earn the point, and K does not change with concentration; only temperature changes K. There is no comparison of Q with K."
+   }
+  },
+  {
+   "id": "u7-volume-change",
+   "unit": "unit-7",
+   "topic": "q-and-le-chatelier",
+   "practice": "6.D",
+   "skill": "q-vs-k",
+   "title": "Halving the volume of a gas equilibrium",
+   "context": "<p>N₂O₄(g) ⇌ 2 NO₂(g) is at equilibrium at constant temperature. The volume of the container is suddenly halved, which doubles every concentration.</p>",
+   "prompt": "<b>Justify</b> which way the net reaction goes after the volume is halved, using Q and K.",
+   "checklist": [
+    "Writes Q = [NO₂]² / [N₂O₄] and says that doubling both concentrations multiplies Q by 2²/2 = 2, so Q > K",
+    "Says K is unchanged at constant temperature",
+    "Concludes Q > K, so the net reaction goes in reverse (toward N₂O₄, fewer gas molecules) until Q = K"
+   ],
+   "earns": {
+    "answer": "Q = [NO₂]²/[N₂O₄]. Halving the volume doubles both concentrations, so the numerator becomes 4 times larger and the denominator 2 times larger: Q doubles and is now greater than K. K has not changed because the temperature is the same. Since Q > K, the net reaction goes in reverse, forming N₂O₄, until Q falls back to K.",
+    "why": "It shows why Q changes (the squared term) instead of only saying \"fewer moles of gas\", and compares Q with an unchanged K."
+   },
+   "misses": {
+    "answer": "The pressure increases, so the reaction shifts to the side with fewer moles of gas to relieve the stress.",
+    "why": "The direction is right, but this is Le Châtelier's rule of thumb without the Q vs K argument the question asks for."
+   }
+  },
+  {
+   "id": "u7-catalyst-equilibrium",
+   "unit": "unit-7",
+   "topic": "le-chatelier",
+   "practice": "6.E",
+   "skill": "q-vs-k",
+   "title": "Adding a catalyst at equilibrium",
+   "context": "<p>A mixture of SO₂, O₂ and SO₃ is at equilibrium: 2 SO₂(g) + O₂(g) ⇌ 2 SO₃(g). A catalyst is added at constant temperature.</p>",
+   "prompt": "A student claims the catalyst will produce more SO₃. <b>Justify</b> whether the claim is correct.",
+   "checklist": [
+    "Says the catalyst lowers the activation energy of both the forward and the reverse reaction, speeding both by the same factor",
+    "Says the concentrations do not change when the catalyst is added, so Q is still equal to K, and K is unchanged at constant temperature",
+    "Concludes there is no net change: the amount of SO₃ stays the same"
+   ],
+   "earns": {
+    "answer": "The claim is wrong. A catalyst gives a lower-energy pathway for both the forward and reverse reactions, so both rates increase by the same factor and remain equal. Adding it changes no concentration, so Q still equals K, and K is unchanged at constant temperature. There is no net reaction, so the amount of SO₃ stays the same; a catalyst only helps a system reach equilibrium sooner.",
+    "why": "It uses both arguments: equal effect on both directions, and Q = K with K unchanged."
+   },
+   "misses": {
+    "answer": "The catalyst speeds up the forward reaction, so more SO₃ forms.",
+    "why": "A catalyst speeds both directions. The claim the answer agrees with is the misconception the readers list."
+   }
+  },
+  {
+   "id": "u7-ksp-common-ion",
+   "unit": "unit-7",
+   "topic": "common-ion-effect",
+   "practice": "6.D",
+   "skill": "q-vs-k",
+   "title": "Less silver chloride dissolves in salt water",
+   "context": "<p>AgCl(s) ⇌ Ag⁺(aq) + Cl⁻(aq), Ksp = 1.8 × 10⁻¹⁰ at 25 °C. The molar solubility of AgCl is lower in 0.10 M NaCl than in pure water.</p>",
+   "prompt": "<b>Explain</b>, using Q and Ksp, why AgCl is less soluble in 0.10 M NaCl than in pure water.",
+   "checklist": [
+    "Says the NaCl already supplies Cl⁻, so Q = [Ag⁺][Cl⁻] reaches Ksp at a much lower [Ag⁺]",
+    "Says Ksp itself is unchanged at 25 °C",
+    "Concludes that less AgCl dissolves before Q = Ksp, so the molar solubility (equal to [Ag⁺] from AgCl) is lower"
+   ],
+   "earns": {
+    "answer": "In 0.10 M NaCl, [Cl⁻] is already 0.10 M before any AgCl dissolves. AgCl dissolves only until Q = [Ag⁺][Cl⁻] equals Ksp, which is still 1.8 × 10⁻¹⁰ at 25 °C. With [Cl⁻] so large, Q reaches Ksp when [Ag⁺] is tiny (about 1.8 × 10⁻⁹ M), far less than in pure water, so much less AgCl dissolves.",
+    "why": "It keeps Ksp constant and explains the lower solubility through Q reaching Ksp sooner, with a number to show the size of the effect."
+   },
+   "misses": {
+    "answer": "The Cl⁻ from NaCl lowers the Ksp of AgCl, so less of it dissolves.",
+    "why": "Ksp depends only on temperature. Saying the common ion changes Ksp is the error the readers report every year."
+   }
+  }
+ ]
+}

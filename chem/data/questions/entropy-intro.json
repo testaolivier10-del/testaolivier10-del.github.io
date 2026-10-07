@@ -1,0 +1,489 @@
+{
+ "stimuli": {
+  "entropy-intro-s1": {
+   "kind": "particle",
+   "title": "One gas, three snapshots",
+   "text": "<p>A rigid container at constant temperature holds a gas of A atoms. In Box X a barrier keeps the atoms in the left half. In Box Y the barrier has been removed. In Box Z the same atoms have joined in pairs to form A₂ molecules.</p>",
+   "html": "<svg viewBox=\"0 0 490 175\" width=\"490\" height=\"175\" role=\"img\" aria-label=\"Three boxes of the same size. Box X: eight single A atoms crowded into the left half, behind a vertical barrier. Box Y: the barrier is gone and the eight single A atoms are spread through the whole box. Box Z: the same atoms joined as four A2 molecules spread through the whole box.\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect width=\"490\" height=\"175\" fill=\"#fff\"/><text x=\"80\" y=\"20\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">Box X</text><rect x=\"10\" y=\"30\" width=\"140\" height=\"120\" rx=\"6\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><line x1=\"80\" y1=\"30\" x2=\"80\" y2=\"150\" stroke=\"#555\" stroke-width=\"4\"/><circle cx=\"28\" cy=\"50\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"55\" cy=\"60\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"35\" cy=\"85\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"62\" cy=\"92\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"30\" cy=\"120\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"58\" cy=\"130\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"45\" cy=\"108\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"68\" cy=\"45\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><text x=\"240\" y=\"20\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">Box Y</text><rect x=\"170\" y=\"30\" width=\"140\" height=\"120\" rx=\"6\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"190\" cy=\"50\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"250\" cy=\"55\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"290\" cy=\"70\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"215\" cy=\"90\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"270\" cy=\"105\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"190\" cy=\"130\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"240\" cy=\"130\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"295\" cy=\"135\" r=\"8\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><text x=\"400\" y=\"20\" font-size=\"15\" font-weight=\"700\" text-anchor=\"middle\">Box Z</text><rect x=\"330\" y=\"30\" width=\"140\" height=\"120\" rx=\"6\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"354\" cy=\"55\" r=\"7\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"366\" cy=\"55\" r=\"7\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"429\" cy=\"65\" r=\"7\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"441\" cy=\"65\" r=\"7\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"369\" cy=\"120\" r=\"7\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"381\" cy=\"120\" r=\"7\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"434\" cy=\"128\" r=\"7\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/><circle cx=\"446\" cy=\"128\" r=\"7\" fill=\"#1D44A6\" stroke=\"#0B2263\" stroke-width=\"1.5\"/></svg><p>Key: dark circle, one A atom; two touching dark circles, one A₂ molecule; thick line in Box X, a barrier.</p>"
+  },
+  "entropy-intro-s2": {
+   "kind": "table",
+   "title": "Five processes",
+   "text": "<p>A student lists five processes, all at constant temperature.</p>",
+   "table": {
+    "caption": "Five physical and chemical changes",
+    "cols": [
+     "Process",
+     "Equation"
+    ],
+    "rows": [
+     [
+      "P1",
+      "H₂O(s) → H₂O(l), at 0 °C"
+     ],
+     [
+      "P2",
+      "CaCO₃(s) → CaO(s) + CO₂(g)"
+     ],
+     [
+      "P3",
+      "2 H₂(g) + O₂(g) → 2 H₂O(l)"
+     ],
+     [
+      "P4",
+      "N₂(g) + 3 H₂(g) → 2 NH₃(g)"
+     ],
+     [
+      "P5",
+      "NaCl(s) → Na⁺(aq) + Cl⁻(aq)"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-entropy-intro-1",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "entropy-intro-s1",
+   "q": "When the barrier is removed, the gas changes from Box X to Box Y. Which statement correctly gives the sign of the change in entropy and the particle-level reason?",
+   "options": [
+    "ΔS > 0: the atoms look messier once the barrier is gone, and a messier gas is a more disordered gas.",
+    "ΔS > 0: each atom can now be anywhere in twice the volume, so there are more possible arrangements (microstates).",
+    "ΔS < 0: the atoms are farther apart in Box Y, so they attract each other less and hold less energy.",
+    "ΔS = 0: no bonds form or break and the temperature stays constant, so nothing about the gas has changed at the particle level."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Entropy measures the number of microstates. Removing the barrier doubles the volume each atom can explore, so the number of ways to arrange the atoms rises and ΔS is positive.",
+    "options": [
+     "The sign is right, but \"messier\" and \"disorder\" describe a picture, not a cause. The reason the exam rewards is dispersal: more volume gives more possible arrangements.",
+     "Right: the matter disperses into a larger volume, so the number of microstates rises and entropy increases.",
+     "Spreading out does not lower the entropy; it gives the atoms more places to be. Attractions between gas atoms are tiny here and do not decide the sign.",
+     "A change in entropy does not need a reaction or a temperature change. The volume available to the atoms doubled, and that alone raises the entropy."
+    ]
+   }
+  },
+  {
+   "id": "chem-entropy-intro-2",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "entropy-intro-s1",
+   "q": "The atoms in Box Y combine to form the molecules in Box Z, at the same temperature and volume. What is the sign of the change in entropy?",
+   "options": [
+    "Positive: each A₂ molecule is larger than an atom and so takes up more of the space.",
+    "Zero: the number of A atoms is the same in both boxes, so the entropy of the gas is the same too.",
+    "Positive: forming bonds releases energy, and the released energy spreads into the surroundings.",
+    "Negative: eight independent particles become four, so there are fewer ways to arrange them."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Fewer gas particles means fewer ways to place them. 8 A(g) → 4 A₂(g) has ΔS < 0.",
+    "options": [
+     "Larger particles do not raise entropy here; the count of independent gas particles drops from eight to four, which lowers it.",
+     "Atoms are conserved, but the atoms are now tied together in pairs and move as four particles instead of eight, so there are fewer arrangements.",
+     "Energy released to the surroundings is a separate matter from the entropy of the gas itself. For the gas, fewer particles means fewer microstates.",
+     "Right: 8 A → 4 A₂ halves the number of gas particles, so the number of possible arrangements falls."
+    ]
+   }
+  },
+  {
+   "id": "chem-entropy-intro-3",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "entropy-intro-s1",
+   "q": "The gas in Box Y is heated from 300 K to 400 K at constant volume. What happens to its entropy, and why?",
+   "options": [
+    "It increases: the atoms have a wider range of speeds, so the energy can be shared in more ways.",
+    "It stays the same: the volume and the number of atoms do not change, and those two alone decide entropy.",
+    "It decreases: faster atoms spend less time in each spot, so each atom has fewer positions on average.",
+    "It increases: the heated atoms expand, so each atom becomes bigger and fills more of the box."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Raising the temperature widens the Maxwell-Boltzmann distribution of speeds. Energy can then be distributed among the atoms in more ways, so entropy increases.",
+    "options": [
+     "Right: a higher temperature spreads the kinetic energy over a wider range of speeds, so energy is dispersed over more microstates.",
+     "Volume and particle count matter, but so does energy. At a higher temperature there are more ways to share out the energy.",
+     "Speed does not remove positions. Faster atoms with a wider spread of speeds give more, not fewer, possible microstates.",
+     "Atoms do not grow when heated. The entropy rises because the energy is spread over a wider range of speeds."
+    ]
+   }
+  },
+  {
+   "id": "chem-entropy-intro-4",
+   "type": "multi",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "6.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "entropy-intro-s1",
+   "q": "Which changes to the gas in Box Y would increase its entropy? Select ALL that apply.",
+   "options": [
+    "Letting it expand into a container twice as large at the same temperature",
+    "Warming it from 300 K to 350 K in the same container",
+    "Compressing it into half the volume at the same temperature",
+    "Cooling it from 300 K to 250 K in the same container",
+    "Letting the atoms pair up to form A₂ molecules, as in Box Z"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Entropy goes up when matter spreads into more volume or energy spreads over a wider range of speeds; it goes down when the gas is squeezed, cooled or combined into fewer particles.",
+    "options": [
+     "Increases: more volume, more possible positions for each atom.",
+     "Increases: energy is spread over a wider range of speeds.",
+     "Decreases: each atom has fewer positions available.",
+     "Decreases: the narrower range of speeds gives fewer ways to share the energy.",
+     "Decreases: fewer independent gas particles to arrange."
+    ]
+   }
+  },
+  {
+   "id": "chem-entropy-intro-5",
+   "type": "multi",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "entropy-intro-s2",
+   "q": "For which processes is the change in entropy of the system negative? Select ALL that apply.",
+   "options": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5"
+   ],
+   "correct": [
+    2,
+    3
+   ],
+   "why": {
+    "correct": "Look first at the moles of gas. P3 and P4 both reduce the number of gas particles, so their ΔS is negative.",
+    "options": [
+     "Positive: in the liquid the molecules leave their fixed lattice positions and can slide past one another.",
+     "Positive: a gas forms from a solid, so matter disperses into a much larger volume.",
+     "Negative: 3 mol of gas become 2 mol of liquid, so there are fewer particles and they are confined to a small volume.",
+     "Negative: 4 mol of gas become 2 mol of gas, so there are fewer gas particles to arrange.",
+     "Positive: the ions leave the fixed crystal and spread through the solution."
+    ]
+   }
+  },
+  {
+   "id": "chem-entropy-intro-6",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "entropy-intro-s2",
+   "q": "Which is the best justification for the sign of the change in entropy in P2?",
+   "options": [
+    "It is positive: the reaction breaks one compound into two, and breaking things apart makes a system more disordered.",
+    "It is negative: CaO(s) is a more compact solid than CaCO₃(s), so its ions have fewer places to be in the crystal.",
+    "It is positive: a mole of gas forms from a solid, and gas particles move freely through a far larger volume.",
+    "It is positive: the reaction absorbs heat, and any reaction that absorbs heat gains entropy."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Gas particles move through the whole container, so making a gas from a solid gives many more microstates. ΔS > 0.",
+    "options": [
+     "Breaking into more pieces is part of the story, but the deciding change is that one product is a gas. \"Disorder\" does not explain anything at the particle level.",
+     "The solids matter little. The CO₂ gas dominates, and a gas raises the entropy a great deal.",
+     "Right: the claim (positive) is supported by the particle-level reason, the dispersal of matter as a gas forms.",
+     "Absorbing heat (an endothermic ΔH) does not set the sign of ΔS for the system; the formation of a gas does."
+    ]
+   }
+  },
+  {
+   "id": "chem-entropy-intro-7",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "entropy-intro-s2",
+   "q": "In P1, ice melts at 0 °C. Which statement describes what happens to the water molecules?",
+   "options": [
+    "They speed up a great deal, because the temperature of the water rises while the ice melts.",
+    "They break their O–H covalent bonds, so each molecule comes apart into separate atoms.",
+    "They leave fixed positions in the crystal and can slide past one another.",
+    "They end up farther apart than in steam, which spreads the matter out even more."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Solid → liquid lets the molecules move past one another; more arrangements means higher entropy.",
+    "options": [
+     "The temperature stays at 0 °C while ice melts. The energy goes into freeing the molecules, not into speeding them up.",
+     "Melting breaks hydrogen bonds between molecules, not the covalent bonds inside them. The molecules stay intact.",
+     "Right: melting frees the molecules from fixed lattice positions, so entropy increases.",
+     "Liquid water molecules are still touching, much closer together than in steam. The liquid has more entropy than ice but much less than steam."
+    ]
+   }
+  },
+  {
+   "id": "chem-entropy-intro-8",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "entropy-intro-s2",
+   "q": "A student says P5 must lower the entropy, because water molecules line up around each ion. Which reply is best?",
+   "options": [
+    "Water is held around the ions, but the ions spreading through the solution has the larger effect, so ΔS > 0.",
+    "Water molecules are not attracted to ions, so the ions spread out freely and the entropy of the water stays unchanged.",
+    "Dissolving is a physical change rather than a chemical reaction, so the entropy of the system stays the same.",
+    "The student is right: the lining up of water molecules around the ions outweighs the spreading of the ions."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two effects compete. The ions disperse (entropy up) and some water molecules are held in place around them (entropy down). For NaCl the first effect wins: ΔS > 0.",
+    "options": [
+     "Right: for NaCl the dispersal of the ions outweighs the ordering of water. (For small, highly charged ions the balance can tip the other way, as topic 9.6 shows.)",
+     "Water molecules do cluster around ions through ion-dipole attractions. The question is which effect is larger.",
+     "Melting, boiling and dissolving are all physical changes, and all change entropy.",
+     "For NaCl the ions spreading out wins, so the entropy rises when it dissolves."
+    ]
+   }
+  },
+  {
+   "id": "chem-entropy-intro-9",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does the entropy of a system measure?",
+   "options": [
+    "How much heat it releases when it reacts with oxygen",
+    "How messy the system looks in a particle drawing of its contents",
+    "The average kinetic energy of its particles",
+    "The number of ways its particles and energy can be arranged"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Entropy is a measure of the number of microstates: the ways the particles and their energy can be arranged.",
+    "options": [
+     "Heat released is an enthalpy change. Entropy is about how many arrangements are possible.",
+     "A drawing that \"looks messy\" is not a measurement. Entropy counts arrangements, which is why it is explained with microstates and dispersal.",
+     "Average kinetic energy is what temperature measures. Entropy is about how many ways the energy and particles can be arranged.",
+     "Right: entropy grows with the number of microstates, the arrangements of matter and energy that fit what we observe."
+    ]
+   }
+  },
+  {
+   "id": "chem-entropy-intro-10",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which has the greater entropy: 1 mol of liquid water at 100 °C or 1 mol of steam at 100 °C?",
+   "options": [
+    "The liquid, because its molecules are packed closely and collide more often",
+    "The steam, because its molecules spread through the whole container",
+    "They are equal, because the substance, amount and temperature are the same",
+    "The liquid, because hydrogen bonds hold more energy than a gas does"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A gas has far more entropy than its liquid: its particles spread through the whole volume.",
+    "options": [
+     "More collisions do not mean more arrangements. The gas has far more room, and so far more microstates.",
+     "Right: same substance and temperature, but the gas spreads over a much larger volume, so there are many more arrangements.",
+     "The phase differs. A gas has much more entropy than its liquid at the same temperature.",
+     "Hydrogen bonds hold the liquid molecules close, which limits their arrangements and keeps the entropy lower."
+    ]
+   }
+  },
+  {
+   "id": "chem-entropy-intro-11",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "On a cold morning, water vapor condenses into droplets on a window. Which other process has the same sign of change in entropy for the substance involved?",
+   "options": [
+    "Liquid bromine freezing to a solid",
+    "Dry ice, solid CO₂, turning straight to gas",
+    "Sugar dissolving in a cup of tea",
+    "A puddle of water evaporating"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Condensation (gas → liquid) lowers the entropy of the water. Freezing (liquid → solid) is the only other change here that lowers entropy.",
+    "options": [
+     "Right: freezing, like condensing, moves the particles to a phase where they have fewer arrangements, so ΔS < 0.",
+     "Solid to gas (sublimation) spreads the particles out, so ΔS > 0, the opposite sign.",
+     "Dissolving spreads the sugar molecules through the liquid, so ΔS > 0.",
+     "Liquid to gas spreads the molecules out, so ΔS > 0, the opposite of condensing."
+    ]
+   }
+  },
+  {
+   "id": "chem-entropy-intro-12",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which reaction has a positive change in entropy?",
+   "options": [
+    "2 NO(g) + O₂(g) → 2 NO₂(g)",
+    "2 NO₂(g) → N₂O₄(g)",
+    "2 NO₂(g) → 2 NO(g) + O₂(g)",
+    "NH₃(g) + HCl(g) → NH₄Cl(s)"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Count moles of gas on each side. Only the decomposition of NO₂ increases the number of gas particles.",
+    "options": [
+     "This is the reverse: 3 mol of gas become 2 mol, so ΔS is negative.",
+     "2 mol of gas become 1 mol, so ΔS is negative.",
+     "Right: 2 mol of gas become 3 mol of gas, so there are more particles to arrange.",
+     "Two gases become a solid, so ΔS is strongly negative."
+    ]
+   }
+  },
+  {
+   "id": "chem-entropy-intro-13",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "At the same temperature and pressure, 1 mol of argon gas has less entropy than 1 mol of propane gas, C₃H₈. Which is the best explanation?",
+   "options": [
+    "Propane has the larger molar mass, and the entropy of a gas is set by the mass of each mole of it.",
+    "A propane molecule has more atoms, so it can store energy in more ways by rotating and vibrating.",
+    "Argon atoms are more disordered than propane molecules because each argon atom is much smaller.",
+    "Propane molecules attract one another more strongly, so they spread out through more of the space."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Both are gases in the same volume, so the difference is energy dispersal: a molecule with more atoms has more ways to rotate and vibrate.",
+    "options": [
+     "Entropy is not a mass. The larger number of atoms matters because it adds ways to store energy.",
+     "Right: more atoms per molecule means more ways to store energy (rotation and vibration), so more microstates.",
+     "Size and \"disorder\" do not explain it. The difference comes from the extra ways a many-atom molecule can hold energy.",
+     "Attractions pull particles together; they do not spread them out. Both are gases spread through the same volume."
+    ]
+   }
+  },
+  {
+   "id": "chem-entropy-intro-14",
+   "type": "predict",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Predict how the entropy of the system changes in each case.",
+   "variables": [
+    {
+     "name": "A sealed flask of helium is connected to an empty flask of the same size at the same temperature",
+     "answer": "up",
+     "why": "The helium spreads through twice the volume, so each atom has more possible positions."
+    },
+    {
+     "name": "A cup of hot coffee cools from 70 °C to 40 °C (entropy of the coffee)",
+     "answer": "down",
+     "why": "Lower temperature, narrower range of molecular speeds, fewer ways to share the energy."
+    },
+    {
+     "name": "A copper block at 25 °C is moved from one shelf to another at 25 °C",
+     "answer": "none",
+     "why": "Its temperature, phase and amount are unchanged, so its microstates are unchanged."
+    },
+    {
+     "name": "Solid iodine sublimes to iodine gas",
+     "answer": "up",
+     "why": "Solid to gas: the molecules leave fixed positions and spread through the container."
+    }
+   ],
+   "why": {
+    "correct": "Ask what happens to the space the particles can occupy and to the spread of their energy. Moving an object without changing its temperature or state changes neither."
+   }
+  },
+  {
+   "id": "chem-entropy-intro-15",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two students explain why the entropy of water decreases when it freezes. Student 1: \"The ice is more ordered.\" Student 2: \"In ice the molecules are held in fixed positions in a lattice, so there are fewer arrangements of the molecules and their energy.\" Which evaluation is correct?",
+   "options": [
+    "Student 1 alone is right, because entropy is defined as the amount of disorder in a system.",
+    "Both are wrong, because the entropy of the water increases when the liquid freezes into a solid lattice.",
+    "Both are equally complete, since \"ordered\" and \"fewer arrangements\" mean the same thing.",
+    "Both give the right sign; Student 2 also gives the particle-level reason (fewer arrangements)."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A full justification names the particle-level cause: the number of possible arrangements of matter and energy.",
+    "options": [
+     "Entropy is defined through microstates. \"Disorder\" is a loose picture that readers do not accept as reasoning.",
+     "Freezing locks the molecules in place, so the entropy of the water decreases.",
+     "They are not equally complete: only Student 2 gives the particle-level cause the exam asks for.",
+     "Right: Student 2 links the change to microstates. \"More ordered\" names a picture without explaining it."
+    ]
+   }
+  },
+  {
+   "id": "chem-entropy-intro-16",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "entropy-intro",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A drop of food coloring spreads through a glass of still water over an hour, at constant temperature. What happens to the entropy of the dye molecules?",
+   "options": [
+    "It decreases, because the dye becomes harder to see once it spreads",
+    "It stays the same, because no heat is added and the temperature is constant",
+    "It decreases, because the water molecules push the dye molecules apart",
+    "It increases, because each dye molecule can now be anywhere in the glass"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Spreading of matter into a larger volume is the classic entropy increase.",
+    "options": [
+     "How visible the dye is does not matter. The molecules have more places to be, so entropy rises.",
+     "Entropy can change with no heat added: here the matter disperses.",
+     "Spreading apart is exactly what raises the entropy; it does not lower it.",
+     "Right: the dye disperses through a larger volume, so it has many more possible positions."
+    ]
+   }
+  }
+ ]
+}

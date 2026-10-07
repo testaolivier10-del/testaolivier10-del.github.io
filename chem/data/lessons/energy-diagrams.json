@@ -1,0 +1,87 @@
+{
+ "topic": "energy-diagrams",
+ "hook": "A hiking map shows the trail's ups and downs; an energy diagram does the same for a reaction. Where the trail starts and ends tells you whether energy is released or absorbed overall. The hill in between tells you how hard it is to get going. Both readings come from one picture.",
+ "prereq": [
+  {
+   "q": "On a reaction energy profile, what is the activation energy?",
+   "options": [
+    "The climb from the reactants to the top of the hump",
+    "The drop from the hump to the products",
+    "The difference between reactants and products",
+    "The height of the products above the axis"
+   ],
+   "correct": 0,
+   "why": "Ea is the minimum energy the colliding particles need: the climb from the reactant level to the transition state.",
+   "review": "energy-profiles"
+  },
+  {
+   "q": "In an exothermic process, energy moves",
+   "options": [
+    "from the system to the surroundings",
+    "from the surroundings to the system",
+    "in neither direction",
+    "only as light"
+   ],
+   "correct": 0,
+   "why": "Exothermic means energy leaves the system, so ΔH is negative.",
+   "review": "endo-exothermic"
+  }
+ ],
+ "figure": {
+  "figure": "enthalpy-diagram-pair",
+  "caption": "Read the end levels for ΔH and the hump for the activation energy. Products lower: exothermic; products higher: endothermic."
+ },
+ "chain": [
+  {
+   "cause": "Each substance has an enthalpy set by its bonds and attractions",
+   "effect": "reactants and products sit at definite levels on the diagram"
+  },
+  {
+   "cause": "ΔH = H(products) − H(reactants)",
+   "effect": "products below reactants give a negative ΔH (exothermic); products above give a positive ΔH (endothermic)"
+  },
+  {
+   "cause": "Bonds must partly break before new ones form",
+   "effect": "a hump between the levels marks the activation energy"
+  },
+  {
+   "cause": "Running the reaction backward reads the same diagram right to left",
+   "effect": "ΔH flips sign and the activation energy is measured from the other side"
+  }
+ ],
+ "ideas": [
+  "An <b>energy diagram</b> plots enthalpy against the progress of the reaction.",
+  "ΔH = H(products) − H(reactants): products lower means exothermic (ΔH &lt; 0); products higher means endothermic (ΔH &gt; 0).",
+  "The hump gives the activation energy, the climb from the starting level to the top. It controls speed, not ΔH.",
+  "Reverse reaction: same picture read backward; ΔH changes sign and Ea(reverse) = Ea(forward) − ΔH.",
+  "A catalyst lowers the hump and leaves both end levels, and ΔH, unchanged."
+ ],
+ "misconception": {
+  "wrong": "A reaction with a tall hump must be endothermic, because it takes a lot of energy.",
+  "right": "The hump is the activation energy. Whether a reaction is endothermic depends only on whether the products end above the reactants."
+ },
+ "check": [
+  "chem-energy-diagrams-1",
+  "chem-energy-diagrams-2",
+  "chem-energy-diagrams-3",
+  "chem-energy-diagrams-4",
+  "chem-energy-diagrams-10",
+  "chem-energy-diagrams-11",
+  "chem-energy-diagrams-13"
+ ],
+ "summary": "An energy diagram shows reactants and products at their enthalpy levels. The vertical gap between the ends is ΔH, negative when products are lower (exothermic) and positive when higher (endothermic). The hump between them is the activation energy, which a catalyst lowers without changing ΔH.",
+ "connections": [
+  {
+   "href": "../notes/energy-profiles.html",
+   "label": "Back: reaction energy profiles and activation energy (5.6)"
+  },
+  {
+   "href": "../notes/endo-exothermic.html",
+   "label": "Back: exothermic and endothermic processes (6.1)"
+  },
+  {
+   "href": "../notes/heat-transfer.html",
+   "label": "Next: how energy moves between objects (6.3)"
+  }
+ ]
+}

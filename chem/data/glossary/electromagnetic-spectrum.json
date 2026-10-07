@@ -1,0 +1,14 @@
+{
+ "electromagnetic-spectrum": {
+  "def": "The full range of electromagnetic radiation, from long-wavelength radio waves through microwaves, infrared, visible and ultraviolet light to short-wavelength X-rays."
+ },
+ "wavelength": {
+  "def": "The distance between neighboring crests of a wave (λ). Frequency (ν) is the number of crests passing a point per second; shorter wavelength means higher frequency and more energy per photon."
+ },
+ "molecular-motion": {
+  "def": "Energy held in a molecule's bond vibrations or rotation. Infrared light changes vibrational energy; microwaves change rotational energy."
+ },
+ "electronic-transition": {
+  "def": "The move of an electron between energy levels, such as from the ground state to an excited state, caused by absorbing a visible or ultraviolet photon of matching energy."
+ }
+}

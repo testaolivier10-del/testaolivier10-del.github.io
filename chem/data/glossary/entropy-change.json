@@ -1,0 +1,5 @@
+{
+ "standard-entropy": {
+  "def": "The entropy of one mole of a substance in its standard state, S°, in J/(mol·K); it is positive for every pure substance above 0 K. ΔS° of a reaction is Σ nS°(products) − Σ nS°(reactants)."
+ }
+}

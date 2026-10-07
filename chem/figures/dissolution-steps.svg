@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" role="img" aria-labelledby="t d">
+<title id="t">Three energy steps of dissolving an ionic solid</title>
+<desc id="d">An enthalpy ladder for dissolving an ionic solid in water. Starting level: solid plus water. Step 1 goes up: separating the ions of the solid absorbs energy to overcome the Coulombic attractions between ions. Step 2 goes up a little more: separating water molecules absorbs energy to break some hydrogen bonds. Step 3 goes down a long way: ion-dipole attractions form as water surrounds each ion, releasing energy. The final level, the solution, ends close to the start; the small difference is the enthalpy of solution, which can be slightly positive or negative.</desc>
+<defs><marker id="ds-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="380" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<line x1="50" y1="350" x2="50" y2="20" stroke="#1F2A28" stroke-width="2" marker-end="url(#ds-a)"/>
+<text transform="translate(30 190) rotate(-90)" font-size="14" text-anchor="middle">enthalpy</text>
+<g stroke-width="4"><line x1="80" y1="300" x2="220" y2="300" stroke="#0072B2"/><line x1="250" y1="110" x2="390" y2="110" stroke="#5D6B69"/><line x1="420" y1="60" x2="560" y2="60" stroke="#5D6B69"/><line x1="590" y1="290" x2="730" y2="290" stroke="#009E73"/></g>
+<g font-size="14" text-anchor="middle"><text x="150" y="325">solid + water</text><text x="300" y="100">separated ions + water</text><text x="490" y="50">separated ions + separated water</text><text x="660" y="315">solution</text></g>
+<g stroke="#1F2A28" stroke-width="2.5" fill="none"><line x1="200" y1="296" x2="265" y2="116" marker-end="url(#ds-a)"/><line x1="392" y1="108" x2="435" y2="68" marker-end="url(#ds-a)"/><line x1="545" y1="66" x2="610" y2="284" marker-end="url(#ds-a)"/></g>
+<g font-size="13"><text x="120" y="190">1. pull ions apart</text><text x="120" y="207">absorbs energy</text>
+<text x="400" y="140">2. push water apart</text><text x="400" y="157">absorbs energy</text>
+<text x="600" y="160">3. water surrounds ions</text><text x="600" y="177">(ion-dipole)</text><text x="600" y="194">releases energy</text></g>
+<line x1="230" y1="300" x2="740" y2="300" stroke="#0072B2" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="740" y="345" font-size="13" text-anchor="end" fill="#3D4A66">small net ΔH: the enthalpy of solution</text>
+</g></svg>

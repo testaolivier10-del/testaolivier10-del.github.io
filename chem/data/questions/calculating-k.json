@@ -1,0 +1,478 @@
+{
+ "stimuli": {
+  "calculating-k-s1": {
+   "kind": "table",
+   "title": "Three equilibrium mixtures of H₂, I₂ and HI",
+   "text": "<p>Three sealed flasks at 450 °C each start with different amounts of H<sub>2</sub>, I<sub>2</sub> and HI and are left to reach equilibrium: H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g). The table gives the equilibrium concentrations.</p>",
+   "table": {
+    "caption": "Equilibrium concentrations at 450 °C",
+    "cols": [
+     "Trial",
+     "[H<sub>2</sub>] (M)",
+     "[I<sub>2</sub>] (M)",
+     "[HI] (M)"
+    ],
+    "rows": [
+     [
+      "1",
+      "0.0114",
+      "0.00120",
+      "0.0262"
+     ],
+     [
+      "2",
+      "0.00456",
+      "0.00456",
+      "0.0322"
+     ],
+     [
+      "3",
+      "0.00353",
+      "0.0148",
+      "0.0511"
+     ]
+    ]
+   }
+  },
+  "calculating-k-s2": {
+   "kind": "setup",
+   "title": "Nitrosyl chloride decomposing",
+   "text": "<p>A student puts 0.500 mol of NOCl gas into an empty, sealed 2.00 L flask and holds it at a constant temperature: 2 NOCl(g) ⇌ 2 NO(g) + Cl<sub>2</sub>(g). When equilibrium is reached, the flask contains 0.0400 mol of Cl<sub>2</sub>.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-calculating-k-1",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "calculating-k-s1",
+   "q": "Calculate K<sub>c</sub> from the data for trial 1.",
+   "numeric": {
+    "answer": 50.2,
+    "tol": 0.1,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 1920,
+      "rel": 0.02,
+      "why": "Value: [HI] is squared in K, because its coefficient is 2."
+     },
+     {
+      "value": 3830,
+      "rel": 0.02,
+      "why": "Value: you doubled [HI] instead of squaring it. Coefficients become exponents."
+     },
+     {
+      "value": 0.0199,
+      "rel": 0.02,
+      "why": "Value: you inverted K. Products go on top."
+     }
+    ]
+   },
+   "why": {
+    "correct": "K<sub>c</sub> = [HI]² / ([H₂][I₂]) = (0.0262)² / (0.0114 × 0.00120) = 50.2."
+   }
+  },
+  {
+   "id": "chem-calculating-k-2",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "calculating-k-s1",
+   "q": "Calculate K<sub>c</sub> from the data for trial 3.",
+   "numeric": {
+    "answer": 50,
+    "tol": 0.1,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 978,
+      "rel": 0.02,
+      "why": "Value: [HI] must be squared, because its coefficient is 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "K<sub>c</sub> = (0.0511)² / (0.00353 × 0.0148) = 50.0."
+   }
+  },
+  {
+   "id": "chem-calculating-k-3",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "single",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "calculating-k-s1",
+   "q": "What do the three trials show about K<sub>c</sub>?",
+   "options": [
+    "K<sub>c</sub> is about the same in each trial.",
+    "K<sub>c</sub> is largest in the trial with the most HI.",
+    "K<sub>c</sub> depends on which substances were put into the flask first.",
+    "K<sub>c</sub> is the same because [H<sub>2</sub>] equals [I<sub>2</sub>] in each trial."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At one temperature, every equilibrium mixture of the same reaction gives the same value of K, whatever amounts it started with. Small differences come from measurement precision.",
+    "options": [
+     "Right: K comes out at about 50 every time (50.2, 49.9, 50.0), though the mixtures look nothing alike.",
+     "K is a ratio. Trial 3 has the most HI but also by far the most I₂, so the ratio [HI]² / ([H₂][I₂]) comes out about the same.",
+     "All three started differently, yet K is about the same. At a fixed temperature, K does not depend on the starting mixture.",
+     "[H₂] equals [I₂] only in trial 2. K is constant anyway."
+    ]
+   }
+  },
+  {
+   "id": "chem-calculating-k-4",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "calculating-k-s1",
+   "q": "A fourth flask at 450 °C has [H<sub>2</sub>] = 0.0050 M, [I<sub>2</sub>] = 0.0050 M and [HI] = 0.0500 M. Based on the trials, what will happen?",
+   "options": [
+    "HI breaks down, because Q = 100 is greater than K.",
+    "More HI forms, because Q = 100 is greater than K.",
+    "Nothing, because K changes to match the new mixture.",
+    "More HI forms, because [HI] is ten times [H<sub>2</sub>]."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Use K from the trials (about 50.0). Q = 100 > K, so the net reverse reaction makes H₂ and I₂ until Q = K.",
+    "options": [
+     "Right: Q = (0.0500)² / (0.0050 × 0.0050) = 100, twice K (about 50), so the net reaction goes in reverse.",
+     "Q > K means too much product, so HI must break down, not form.",
+     "K is fixed at a given temperature; the mixture changes to match K.",
+     "Direction comes from comparing Q with K. A large [HI] relative to [H₂] actually makes Q large."
+    ]
+   }
+  },
+  {
+   "id": "chem-calculating-k-5",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "calculating-k-s2",
+   "q": "Calculate the initial concentration of NOCl.",
+   "numeric": {
+    "answer": 0.25,
+    "tol": 0.001,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 1,
+      "rel": 0.02,
+      "why": "Value: you multiplied moles by volume. Molarity is moles divided by liters."
+     }
+    ]
+   },
+   "why": {
+    "correct": "[NOCl]₀ = 0.500 mol / 2.00 L = 0.250 M."
+   }
+  },
+  {
+   "id": "chem-calculating-k-6",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "calculating-k-s2",
+   "q": "Calculate [NOCl] at equilibrium.",
+   "numeric": {
+    "answer": 0.21,
+    "tol": 0.001,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.23,
+      "rel": 0.02,
+      "why": "Value: NOCl falls by 2x, not x. Two NOCl react for every Cl₂ that forms."
+     },
+     {
+      "value": 0.42,
+      "rel": 0.02,
+      "why": "Value: that is the amount in moles. Divide by the 2.00 L volume to get molarity."
+     }
+    ]
+   },
+   "why": {
+    "correct": "[Cl₂]eq = 0.0400 mol / 2.00 L = 0.0200 M, so x = 0.0200 M. NOCl changes by −2x: 0.250 M − 2(0.0200 M) = 0.210 M."
+   }
+  },
+  {
+   "id": "chem-calculating-k-7",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "calculating-k-s2",
+   "q": "Use your equilibrium concentrations to calculate K<sub>c</sub> for the decomposition of NOCl at this temperature.",
+   "numeric": {
+    "answer": 0.000726,
+    "tol": 0.000001,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.00145,
+      "rel": 0.02,
+      "why": "Value: you used moles instead of concentrations. Divide each amount by 2.00 L first."
+     },
+     {
+      "value": 0.00381,
+      "rel": 0.02,
+      "why": "Value: [NO] and [NOCl] must be squared, because both have the coefficient 2."
+     },
+     {
+      "value": 0.000151,
+      "rel": 0.02,
+      "why": "Value: check the changes. NO rises by 2x and NOCl falls by 2x, where x = [Cl₂]; using x for both gives [NO] = 0.0200 M and [NOCl] = 0.230 M."
+     }
+    ]
+   },
+   "why": {
+    "correct": "x = 0.0200 M, so [NO] = 2x = 0.0400 M, [Cl₂] = 0.0200 M, [NOCl] = 0.250 − 0.0400 = 0.210 M. K<sub>c</sub> = [NO]²[Cl₂] / [NOCl]² = (0.0400)²(0.0200) / (0.210)² = 7.26 × 10<sup>−4</sup>."
+   }
+  },
+  {
+   "id": "chem-calculating-k-8",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "order",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "calculating-k-s2",
+   "q": "Put the steps for finding K<sub>c</sub> in this experiment in order.",
+   "options": [
+    "Convert the moles of NOCl and of Cl<sub>2</sub> to molarities.",
+    "Write the ICE table with the change row as −2x, +2x and +x.",
+    "Set x equal to the equilibrium [Cl<sub>2</sub>] and fill in the equilibrium row.",
+    "Substitute the equilibrium concentrations into the expression for K<sub>c</sub>."
+   ],
+   "why": {
+    "correct": "Concentrations first; then the ICE table links the one measured value to every other species through the coefficients; then substitute."
+   }
+  },
+  {
+   "id": "chem-calculating-k-9",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "For N<sub>2</sub>(g) + 3 H<sub>2</sub>(g) ⇌ 2 NH<sub>3</sub>(g) at a certain temperature, the equilibrium partial pressures are N<sub>2</sub> 0.50 atm, H<sub>2</sub> 1.5 atm and NH<sub>3</sub> 0.12 atm. Calculate K<sub>p</sub>.",
+   "numeric": {
+    "answer": 0.0085,
+    "tol": 0.0001,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.0192,
+      "rel": 0.02,
+      "why": "Value: P(H₂) must be cubed, because its coefficient is 3."
+     },
+     {
+      "value": 0.16,
+      "rel": 0.02,
+      "why": "Value: raise each pressure to the power of its coefficient."
+     }
+    ]
+   },
+   "why": {
+    "correct": "K<sub>p</sub> = P<sub>NH₃</sub>² / (P<sub>N₂</sub> × P<sub>H₂</sub>³) = (0.12)² / (0.50 × (1.5)³) = 0.0144 / 1.6875 = 8.5 × 10<sup>−3</sup>."
+   }
+  },
+  {
+   "id": "chem-calculating-k-10",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Solid NH<sub>4</sub>HS is sealed in an evacuated flask: NH<sub>4</sub>HS(s) ⇌ NH<sub>3</sub>(g) + H<sub>2</sub>S(g). At equilibrium, [NH<sub>3</sub>] = [H<sub>2</sub>S] = 0.0150 M, and 2.00 g of solid remains. Calculate K<sub>c</sub>.",
+   "numeric": {
+    "answer": 0.000225,
+    "tol": 0.000001,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.000112,
+      "rel": 0.02,
+      "why": "Value: the solid does not belong in K. Its mass (or amount) never enters the expression."
+     },
+     {
+      "value": 0.015,
+      "rel": 0.02,
+      "why": "Value: K is the product of both gas concentrations: [NH₃][H₂S]."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The solid is left out: K<sub>c</sub> = [NH₃][H₂S] = (0.0150)(0.0150) = 2.25 × 10⁻⁴."
+   }
+  },
+  {
+   "id": "chem-calculating-k-11",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In the NH<sub>4</sub>HS flask, more solid NH<sub>4</sub>HS is added at constant temperature. What happens to [NH<sub>3</sub>]?",
+   "options": [
+    "It stays the same: the solid is not in Q or K.",
+    "It increases, because there is more solid to decompose.",
+    "It decreases, because the solid absorbs some NH<sub>3</sub>.",
+    "It increases until the gas pressure equals the mass of solid."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Pure solids are left out of K and Q because their concentration is fixed. As long as some solid is present, the gas concentrations at equilibrium do not depend on how much solid there is.",
+    "options": [
+     "Right: adding solid leaves Q = [NH₃][H₂S] unchanged, so Q still equals K and there is no shift.",
+     "The amount of a pure solid does not change its \"concentration\", so it does not change Q. Nothing shifts.",
+     "The reverse reaction is set by [NH₃][H₂S], which have not changed, so there is no net reaction.",
+     "Pressure and mass are not compared like this. The gas concentrations are fixed by K alone."
+    ]
+   }
+  },
+  {
+   "id": "chem-calculating-k-12",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which reaction is a heterogeneous equilibrium?",
+   "options": [
+    "C(s) + H<sub>2</sub>O(g) ⇌ CO(g) + H<sub>2</sub>(g)",
+    "N<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2 NO(g)",
+    "2 SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2 SO<sub>3</sub>(g)",
+    "Fe<sup>3+</sup>(aq) + SCN<sup>−</sup>(aq) ⇌ FeSCN<sup>2+</sup>(aq)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A heterogeneous equilibrium involves species in more than one phase, such as a solid and gases. Its K leaves out the solid.",
+    "options": [
+     "Right: a solid and gases, two phases.",
+     "All gases: one phase, a homogeneous equilibrium.",
+     "All gases: homogeneous.",
+     "All dissolved in one solution: homogeneous."
+    ]
+   }
+  },
+  {
+   "id": "chem-calculating-k-13",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A 1.00 L flask starts with 0.200 M CO and 0.200 M H<sub>2</sub>O: CO(g) + H<sub>2</sub>O(g) ⇌ CO<sub>2</sub>(g) + H<sub>2</sub>(g). At equilibrium, [CO<sub>2</sub>] = 0.120 M. Calculate K<sub>c</sub>.",
+   "numeric": {
+    "answer": 2.25,
+    "tol": 0.01,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.36,
+      "rel": 0.02,
+      "why": "Value: you used the initial concentrations of CO and H₂O. Use the equilibrium ones: 0.200 − 0.120 = 0.080 M."
+     },
+     {
+      "value": 1.5,
+      "rel": 0.02,
+      "why": "Value: K needs every species: [CO₂][H₂] / ([CO][H₂O])."
+     }
+    ]
+   },
+   "why": {
+    "correct": "x = 0.120 M. Equilibrium: [CO] = [H₂O] = 0.200 − 0.120 = 0.080 M; [CO₂] = [H₂] = 0.120 M. K<sub>c</sub> = (0.120)(0.120) / ((0.080)(0.080)) = 2.25."
+   }
+  },
+  {
+   "id": "chem-calculating-k-14",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "single",
+   "practice": "5.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student finds K<sub>c</sub> from the initial concentrations of a reaction mixture instead of the equilibrium ones. Why is the result wrong?",
+   "options": [
+    "K needs equilibrium values; initial ones give Q.",
+    "Initial concentrations have too few significant figures.",
+    "K needs moles, and concentrations are in molarity.",
+    "The initial concentrations should be squared before they are used."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K is defined for the equilibrium mixture. Starting concentrations give the value of Q at time zero; the system then changes until Q = K.",
+    "options": [
+     "Right: only equilibrium values give the constant. Starting values give the reaction quotient at the start.",
+     "Precision is not the issue. Initial values describe a different state of the system.",
+     "K<sub>c</sub> is defined with molar concentrations, so molarity is correct.",
+     "Exponents come from coefficients and apply to equilibrium values. Squaring initial values does not fix the problem."
+    ]
+   }
+  },
+  {
+   "id": "chem-calculating-k-15",
+   "unit": "unit-7",
+   "topic": "calculating-k",
+   "type": "single",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "For A(g) ⇌ 2 B(g), a flask starts with 0.40 M A. At equilibrium [B] = 0.20 M. Which ICE table row is correct for the equilibrium concentrations?",
+   "options": [
+    "[A] = 0.30 M, [B] = 0.20 M",
+    "[A] = 0.20 M, [B] = 0.20 M",
+    "[A] = 0.00 M, [B] = 0.20 M",
+    "[A] = 0.40 M, [B] = 0.20 M"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Change row: A −x, B +2x. 2x = 0.20 M gives x = 0.10 M. Equilibrium [A] = 0.40 − 0.10 = 0.30 M.",
+    "options": [
+     "Right: B rose by 2x = 0.20 M, so x = 0.10 M and A fell to 0.40 − 0.10 = 0.30 M.",
+     "This subtracts the change in B directly from A. A falls by x, which is half of B’s rise.",
+     "A reversible reaction does not use up its reactant; A remains at equilibrium.",
+     "A cannot stay at its starting value while B forms; B is made from A."
+    ]
+   }
+  }
+ ]
+}

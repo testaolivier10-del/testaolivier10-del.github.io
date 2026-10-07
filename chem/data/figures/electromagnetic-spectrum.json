@@ -1,0 +1,12 @@
+{
+ "em-spectrum": {
+  "file": "figures/em-spectrum.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 230,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The electromagnetic spectrum from radio to X-rays, with energy per photon rising toward short wavelengths. Microwaves make molecules rotate, infrared makes bonds vibrate, visible and ultraviolet light move valence electrons to higher levels, and X-rays can remove inner electrons."
+ }
+}

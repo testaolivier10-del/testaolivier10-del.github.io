@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" width="680" height="300" role="img" aria-labelledby="t d">
+<title id="t">Forming sodium and chloride ions</title>
+<desc id="d">Top row: a sodium atom, 1s2 2s2 2p6 3s1, loses its single 3s electron and becomes Na+, 1s2 2s2 2p6, the configuration of neon. The ion is drawn smaller than the atom. Middle row: a chlorine atom, neon core 3s2 3p5, gains one electron and becomes Cl minus, neon core 3s2 3p6, the configuration of argon. The ion is drawn larger than the atom. Bottom: one Na+ and one Cl minus combine as NaCl; plus 1 and minus 1 add to zero.</desc>
+<rect width="680" height="300" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1B2440"/></marker></defs>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1B2440">
+  <circle cx="70" cy="60" r="36" fill="#E3EAFA" stroke="#1D44A6" stroke-width="2"/><text x="70" y="66" font-size="18" text-anchor="middle">Na</text>
+  <text x="125" y="44" font-size="14">1s² 2s² 2p⁶ 3s¹</text>
+  <path d="M245 60 H330" stroke="#1B2440" stroke-width="2" marker-end="url(#a)"/>
+  <text x="250" y="48" font-size="13">loses 1 e⁻</text>
+  <circle cx="380" cy="60" r="22" fill="#9DB4EC" stroke="#1D44A6" stroke-width="2"/><text x="380" y="66" font-size="16" text-anchor="middle">Na⁺</text>
+  <text x="415" y="56" font-size="14">1s² 2s² 2p⁶</text><text x="415" y="76" font-size="13" fill="#3A4560">like neon, smaller</text>
+  <circle cx="70" cy="160" r="26" fill="#DDF3EA" stroke="#00573f" stroke-width="2"/><text x="70" y="166" font-size="18" text-anchor="middle">Cl</text>
+  <text x="125" y="144" font-size="14">[Ne] 3s² 3p⁵</text>
+  <path d="M245 160 H330" stroke="#1B2440" stroke-width="2" marker-end="url(#a)"/>
+  <text x="250" y="148" font-size="13">gains 1 e⁻</text>
+  <circle cx="380" cy="160" r="32" fill="#9BD9C2" stroke="#00573f" stroke-width="2"/><text x="380" y="166" font-size="16" text-anchor="middle">Cl⁻</text>
+  <text x="425" y="156" font-size="14">[Ne] 3s² 3p⁶</text><text x="425" y="176" font-size="13" fill="#3A4560">like argon, larger</text>
+  <rect x="150" y="215" width="380" height="70" rx="10" fill="#F3E1D3" stroke="#C2410C" stroke-width="2"/>
+  <circle cx="200" cy="250" r="16" fill="#9DB4EC" stroke="#1D44A6" stroke-width="1.5"/><text x="200" y="255" font-size="12" text-anchor="middle">+</text>
+  <circle cx="240" cy="250" r="24" fill="#9BD9C2" stroke="#00573f" stroke-width="1.5"/><text x="240" y="255" font-size="12" text-anchor="middle">−</text>
+  <text x="290" y="245" font-size="15">Na⁺ + Cl⁻ → NaCl</text>
+  <text x="290" y="267" font-size="14" fill="#3A4560">(+1) + (−1) = 0: neutral</text>
+</g>
+</svg>

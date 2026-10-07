@@ -1,0 +1,8 @@
+{
+ "predominant-form": {
+  "def": "Which form of an acid is in the majority: the protonated form (HA) when pH < pKa, the deprotonated form (A⁻) when pH > pKa, equal amounts when pH = pKa. Each pH unit away from pKa is a tenfold ratio."
+ },
+ "indicator-choice": {
+  "def": "An acid-base indicator is a weak acid, HIn, whose two forms differ in color; it changes color over about pKa ± 1. Choose one whose pKa is close to the equivalence-point pH."
+ }
+}

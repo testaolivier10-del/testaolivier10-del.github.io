@@ -1,0 +1,8 @@
+{
+ "collision-model": {
+  "def": "The idea that particles react only when they collide with at least the activation energy and a suitable orientation; such collisions are effective collisions."
+ },
+ "activation-energy": {
+  "def": "The minimum energy a collision must have for the colliding particles to react. It is set by the reaction pathway, not by the temperature."
+ }
+}

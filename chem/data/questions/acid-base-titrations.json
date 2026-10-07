@@ -1,0 +1,1342 @@
+{
+ "stimuli": {
+  "acid-base-titrations-s1": {
+   "kind": "graph",
+   "title": "Titration of an unknown acid",
+   "text": "<p>A student titrates 25.00 mL of a monoprotic weak acid, HA, of unknown concentration with 0.100 M NaOH, recording the pH with a calibrated meter. The steepest rise is centered at 20.00 mL.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Volume of NaOH added",
+     "unit": "mL",
+     "min": 0,
+     "max": 35,
+     "step": 5
+    },
+    "y": {
+     "label": "pH",
+     "min": 0,
+     "max": 14,
+     "step": 2
+    },
+    "series": [
+     {
+      "name": "pH",
+      "points": [
+       [
+        0,
+        2.65
+       ],
+       [
+        2,
+        3.28
+       ],
+       [
+        4,
+        3.61
+       ],
+       [
+        6,
+        3.84
+       ],
+       [
+        8,
+        4.03
+       ],
+       [
+        10,
+        4.2
+       ],
+       [
+        12,
+        4.38
+       ],
+       [
+        14,
+        4.57
+       ],
+       [
+        16,
+        4.8
+       ],
+       [
+        18,
+        5.15
+       ],
+       [
+        19,
+        5.48
+       ],
+       [
+        19.5,
+        5.79
+       ],
+       [
+        20,
+        8.42
+       ],
+       [
+        20.5,
+        11.04
+       ],
+       [
+        21,
+        11.34
+       ],
+       [
+        22,
+        11.63
+       ],
+       [
+        24,
+        11.91
+       ],
+       [
+        26,
+        12.07
+       ],
+       [
+        30,
+        12.26
+       ],
+       [
+        35,
+        12.4
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "acid-base-titrations-s2": {
+   "kind": "particle",
+   "title": "Four snapshots of a titration",
+   "html": "<svg viewBox=\"0 0 760 250\" width=\"760\" height=\"250\" role=\"img\" aria-label=\"Four boxes showing solute particles during the titration of a weak acid HA with sodium hydroxide. Box W: 3 HA, 3 A minus, 3 sodium ions. Box X: 6 HA and no other solute particles. Box Y: 6 A minus, 2 hydroxide, 8 sodium ions. Box Z: 6 A minus and 6 sodium ions.\"><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect x=\"5\" y=\"5\" width=\"180\" height=\"240\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"95\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">W</text><circle cx=\"30.2\" cy=\"66.7\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"30.2\" y=\"70.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"90.2\" cy=\"66.7\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"90.2\" y=\"70.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"150.2\" cy=\"66.7\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"150.2\" y=\"70.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"42.2\" cy=\"138.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"42.2\" y=\"142.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"102.2\" cy=\"138.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"102.2\" y=\"142.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"162.2\" cy=\"138.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"162.2\" y=\"142.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"30.2\" cy=\"209.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"30.2\" y=\"213.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"90.2\" cy=\"209.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"90.2\" y=\"213.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"150.2\" cy=\"209.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"150.2\" y=\"213.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><rect x=\"195\" y=\"5\" width=\"180\" height=\"240\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"285\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">X</text><circle cx=\"220.2\" cy=\"84.5\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"220.2\" y=\"88.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"280.2\" cy=\"84.5\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"280.2\" y=\"88.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"340.2\" cy=\"84.5\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"340.2\" y=\"88.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"232.2\" cy=\"191.5\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"232.2\" y=\"195.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"292.2\" cy=\"191.5\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"292.2\" y=\"195.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"352.2\" cy=\"191.5\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"352.2\" y=\"195.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><rect x=\"385\" y=\"5\" width=\"180\" height=\"240\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"475\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Y</text><circle cx=\"403.9\" cy=\"57.8\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"403.9\" y=\"61.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"448.9\" cy=\"57.8\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"448.9\" y=\"61.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"493.9\" cy=\"57.8\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"493.9\" y=\"61.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"538.9\" cy=\"57.8\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"538.9\" y=\"61.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"412.9\" cy=\"111.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"412.9\" y=\"115.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"457.9\" cy=\"111.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"457.9\" y=\"115.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"502.9\" cy=\"111.3\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"502.9\" y=\"115.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text><circle cx=\"547.9\" cy=\"111.3\" r=\"15\" fill=\"#92C5DE\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"547.9\" y=\"115.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">OH⁻</text><circle cx=\"403.9\" cy=\"164.8\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"403.9\" y=\"168.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"448.9\" cy=\"164.8\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"448.9\" y=\"168.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"493.9\" cy=\"164.8\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"493.9\" y=\"168.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"538.9\" cy=\"164.8\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"538.9\" y=\"168.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"412.9\" cy=\"218.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"412.9\" y=\"222.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"457.9\" cy=\"218.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"457.9\" y=\"222.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"502.9\" cy=\"218.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"502.9\" y=\"222.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"547.9\" cy=\"218.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"547.9\" y=\"222.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><rect x=\"575\" y=\"5\" width=\"180\" height=\"240\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"665\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Z</text><circle cx=\"600.2\" cy=\"57.8\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"600.2\" y=\"61.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"660.2\" cy=\"57.8\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"660.2\" y=\"61.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"720.2\" cy=\"57.8\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"720.2\" y=\"61.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"612.2\" cy=\"111.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"612.2\" y=\"115.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"672.2\" cy=\"111.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"672.2\" y=\"115.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"732.2\" cy=\"111.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"732.2\" y=\"115.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"600.2\" cy=\"164.8\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"600.2\" y=\"168.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"660.2\" cy=\"164.8\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"660.2\" y=\"168.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"720.2\" cy=\"164.8\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"720.2\" y=\"168.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"612.2\" cy=\"218.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"612.2\" y=\"222.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"672.2\" cy=\"218.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"672.2\" y=\"222.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"732.2\" cy=\"218.3\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"732.2\" y=\"222.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text></g></svg><p>Key: HA weak acid molecule; A⁻ its conjugate base; Na⁺ sodium ion; OH⁻ hydroxide. Water and the very few H₃O⁺ and OH⁻ ions made by the equilibria are not drawn. All four boxes come from the same titration, at different volumes of NaOH.</p>"
+  },
+  "acid-base-titrations-s3": {
+   "kind": "graph",
+   "title": "Two acids, one base",
+   "text": "<p>25.0 mL of 0.100 M HCl and 25.0 mL of 0.100 M acetic acid (Ka = 1.8 × 10⁻⁵) are each titrated with 0.100 M NaOH.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Volume of NaOH added",
+     "unit": "mL",
+     "min": 0,
+     "max": 40,
+     "step": 5
+    },
+    "y": {
+     "label": "pH",
+     "min": 0,
+     "max": 14,
+     "step": 2
+    },
+    "series": [
+     {
+      "name": "Acid 1",
+      "points": [
+       [
+        0,
+        1
+       ],
+       [
+        2.5,
+        1.09
+       ],
+       [
+        5,
+        1.18
+       ],
+       [
+        7.5,
+        1.27
+       ],
+       [
+        10,
+        1.37
+       ],
+       [
+        12.5,
+        1.48
+       ],
+       [
+        15,
+        1.6
+       ],
+       [
+        17.5,
+        1.75
+       ],
+       [
+        20,
+        1.95
+       ],
+       [
+        22.5,
+        2.28
+       ],
+       [
+        24,
+        2.69
+       ],
+       [
+        24.5,
+        3
+       ],
+       [
+        25,
+        7
+       ],
+       [
+        25.5,
+        11
+       ],
+       [
+        26,
+        11.29
+       ],
+       [
+        27.5,
+        11.68
+       ],
+       [
+        30,
+        11.96
+       ],
+       [
+        35,
+        12.22
+       ],
+       [
+        40,
+        12.36
+       ]
+      ]
+     },
+     {
+      "name": "Acid 2",
+      "points": [
+       [
+        0,
+        2.88
+       ],
+       [
+        2.5,
+        3.8
+       ],
+       [
+        5,
+        4.14
+       ],
+       [
+        7.5,
+        4.38
+       ],
+       [
+        10,
+        4.57
+       ],
+       [
+        12.5,
+        4.75
+       ],
+       [
+        15,
+        4.92
+       ],
+       [
+        17.5,
+        5.11
+       ],
+       [
+        20,
+        5.35
+       ],
+       [
+        22.5,
+        5.7
+       ],
+       [
+        24,
+        6.13
+       ],
+       [
+        24.5,
+        6.44
+       ],
+       [
+        25,
+        8.72
+       ],
+       [
+        25.5,
+        11
+       ],
+       [
+        26,
+        11.29
+       ],
+       [
+        27.5,
+        11.68
+       ],
+       [
+        30,
+        11.96
+       ],
+       [
+        35,
+        12.22
+       ],
+       [
+        40,
+        12.36
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "acid-base-titrations-s4": {
+   "kind": "graph",
+   "title": "Titrating a weak base",
+   "text": "<p>25.0 mL of 0.100 M aqueous ammonia, NH₃ (Kb = 1.8 × 10⁻⁵), is titrated with 0.100 M HCl.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Volume of HCl added",
+     "unit": "mL",
+     "min": 0,
+     "max": 40,
+     "step": 5
+    },
+    "y": {
+     "label": "pH",
+     "min": 0,
+     "max": 14,
+     "step": 2
+    },
+    "series": [
+     {
+      "name": "pH",
+      "points": [
+       [
+        0,
+        11.12
+       ],
+       [
+        2.5,
+        10.2
+       ],
+       [
+        5,
+        9.86
+       ],
+       [
+        7.5,
+        9.62
+       ],
+       [
+        10,
+        9.43
+       ],
+       [
+        12.5,
+        9.25
+       ],
+       [
+        15,
+        9.08
+       ],
+       [
+        17.5,
+        8.89
+       ],
+       [
+        20,
+        8.65
+       ],
+       [
+        22.5,
+        8.3
+       ],
+       [
+        24,
+        7.87
+       ],
+       [
+        24.5,
+        7.56
+       ],
+       [
+        25,
+        5.28
+       ],
+       [
+        25.5,
+        3
+       ],
+       [
+        26,
+        2.71
+       ],
+       [
+        27.5,
+        2.32
+       ],
+       [
+        30,
+        2.04
+       ],
+       [
+        35,
+        1.78
+       ],
+       [
+        40,
+        1.64
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "acid-base-titrations-s5": {
+   "kind": "graph",
+   "title": "A titration with two steep rises",
+   "text": "<p>20.0 mL of 0.100 M of an acid, H₂A, is titrated with 0.100 M NaOH.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Volume of NaOH added",
+     "unit": "mL",
+     "min": 0,
+     "max": 50,
+     "step": 5
+    },
+    "y": {
+     "label": "pH",
+     "min": 0,
+     "max": 14,
+     "step": 2
+    },
+    "series": [
+     {
+      "name": "pH",
+      "points": [
+       [
+        0,
+        2.51
+       ],
+       [
+        2.5,
+        3.18
+       ],
+       [
+        5,
+        3.53
+       ],
+       [
+        7.5,
+        3.78
+       ],
+       [
+        10,
+        4
+       ],
+       [
+        12.5,
+        4.22
+       ],
+       [
+        15,
+        4.48
+       ],
+       [
+        17.5,
+        4.85
+       ],
+       [
+        19,
+        5.27
+       ],
+       [
+        20,
+        6.25
+       ],
+       [
+        21,
+        7.23
+       ],
+       [
+        22.5,
+        7.66
+       ],
+       [
+        25,
+        8.02
+       ],
+       [
+        27.5,
+        8.28
+       ],
+       [
+        30,
+        8.5
+       ],
+       [
+        32.5,
+        8.72
+       ],
+       [
+        35,
+        8.98
+       ],
+       [
+        37.5,
+        9.34
+       ],
+       [
+        39,
+        9.76
+       ],
+       [
+        40,
+        10.51
+       ],
+       [
+        41,
+        11.23
+       ],
+       [
+        42.5,
+        11.6
+       ],
+       [
+        45,
+        11.89
+       ],
+       [
+        50,
+        12.16
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-acid-base-titrations-1",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acid-base-titrations-s1",
+   "q": "What is the concentration of HA in the original solution? Include the unit.",
+   "numeric": {
+    "answer": 0.08,
+    "tol": 0.0001,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.14,
+      "why": "Value: you used the last volume on the graph. Use the equivalence volume, at the center of the steep rise: 20.00 mL.",
+      "rel": 0.02
+     },
+     {
+      "value": 0.04,
+      "why": "Value: 10.00 mL is the half-equivalence point. The moles of base equal the moles of acid at 20.00 mL.",
+      "rel": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "At equivalence, mol OH⁻ = mol HA: 0.02000 L × 0.100 mol/L = 2.00 × 10⁻³ mol. [HA] = 2.00 × 10⁻³ mol / 0.02500 L = 0.0800 M."
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-2",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-base-titrations-s1",
+   "q": "Which reading from the curve gives the pKa of HA?",
+   "options": [
+    "The pH at 10.00 mL, 4.20",
+    "The pH at 20.00 mL, 8.42",
+    "The pH at 0 mL, 2.65",
+    "The pH at 30.00 mL, 12.26"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At the half-equivalence point (half of 20.00 mL), half the HA has become A⁻, so [HA] = [A⁻]. In Ka = [H₃O⁺][A⁻]/[HA] the two cancel: Ka = [H₃O⁺], so pH = pKa.",
+    "options": [
+     "Right: half-equivalence, where [HA] = [A⁻].",
+     "This is the equivalence point, where no HA is left; its pH is set by A⁻ acting as a base. Confusing equivalence with half-equivalence is the most common titration error.",
+     "At the start no A⁻ has been made, so [HA] ≠ [A⁻].",
+     "Past equivalence the pH is set by excess OH⁻."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-3",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acid-base-titrations-s1",
+   "q": "Use the curve to find Ka of HA. Give your answer in scientific notation.",
+   "numeric": {
+    "answer": 0.000063,
+    "tol": 0.000001,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 3.8e-9,
+      "why": "Value: you used the pH at the equivalence point. Read the pH at half the equivalence volume (10.00 mL), where pH = pKa.",
+      "rel": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "pH at 10.00 mL = 4.20 = pKa, so Ka = 10^−4.20 = 6.3 × 10⁻⁵."
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-4",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "acid-base-titrations-s1",
+   "q": "Calculate the pH at the equivalence point. (Use Ka = 6.3 × 10⁻⁵.)",
+   "numeric": {
+    "answer": 8.42,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "Value: pH 7.00 is the equivalence point only for a strong acid with a strong base. Here A⁻, a weak base, is left.",
+      "tol": 0.02
+     },
+     {
+      "value": 8.55,
+      "why": "Value: the volume is now 45.00 mL, so [A⁻] = 2.00 × 10⁻³ mol / 0.04500 L = 0.0444 M.",
+      "tol": 0.02
+     },
+     {
+      "value": 5.58,
+      "why": "Value: that is the pOH. Subtract from 14.00.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "All 2.00 × 10⁻³ mol HA is now A⁻ in 45.00 mL: [A⁻] = 0.0444 M. Kb = Kw/Ka = 1.0 × 10⁻¹⁴ / 6.3 × 10⁻⁵ = 1.6 × 10⁻¹⁰. [OH⁻] = √(1.6 × 10⁻¹⁰ × 0.0444) = 2.7 × 10⁻⁶ M; pOH = 5.58; pH = 8.42."
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-5",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-base-titrations-s1",
+   "q": "A second student repeats the titration with 25.00 mL of the same acid diluted to 50.00 mL with water first. Which change to the curve is expected?",
+   "options": [
+    "The equivalence point stays at 20.00 mL, and the pH at 10.00 mL stays about the same",
+    "The equivalence point moves to 40.00 mL, because the volume doubled",
+    "The equivalence point moves to 10.00 mL, because the acid is more dilute",
+    "The pH at 10.00 mL drops, because there is more water to ionize"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Adding water does not change the moles of HA, so the same 2.00 × 10⁻³ mol of OH⁻ (20.00 mL) reaches equivalence. At half-equivalence [HA] = [A⁻] still, so pH = pKa again.",
+    "options": [
+     "Right: moles of acid set the equivalence volume; the ratio at half-equivalence is unchanged.",
+     "The equivalence volume depends on moles of acid, not on the volume the acid is dissolved in.",
+     "The moles of acid are the same, so the base needed is the same.",
+     "pH = pKa at half-equivalence whatever the dilution, because [HA]/[A⁻] = 1."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-6",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "acid-base-titrations-s2",
+   "q": "Which box shows the solution at the equivalence point?",
+   "options": [
+    "Z",
+    "W",
+    "X",
+    "Y"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At equivalence, base added equals acid present: all 6 HA became 6 A⁻, with 6 Na⁺ from the 6 NaOH, and no OH⁻ left over.",
+    "options": [
+     "Right: only A⁻ and Na⁺.",
+     "Box W is the half-equivalence point: half the HA has been converted.",
+     "Box X is the start: no base added yet.",
+     "Box Y is past equivalence: 2 extra OH⁻."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-7",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acid-base-titrations-s2",
+   "q": "At which box does pH = pKa of HA?",
+   "options": [
+    "W",
+    "Z",
+    "X",
+    "Y"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "[HA] = [A⁻] (3 and 3), so in Ka = [H₃O⁺][A⁻]/[HA] the ratio is 1 and [H₃O⁺] = Ka.",
+    "options": [
+     "Right: equal amounts of the acid and its conjugate base.",
+     "Box Z has no HA left; it is the equivalence point, not the half-equivalence point.",
+     "At the start there is no A⁻, so the ratio is not 1.",
+     "Past equivalence, excess OH⁻ sets the pH."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-8",
+   "type": "order",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "acid-base-titrations-s2",
+   "q": "Put the boxes in the order they occur during the titration.",
+   "options": [
+    "X",
+    "W",
+    "Z",
+    "Y"
+   ],
+   "why": {
+    "correct": "Start (only HA), half-equivalence (equal HA and A⁻), equivalence (only A⁻), then past equivalence (A⁻ plus excess OH⁻). Na⁺ rises as NaOH is added: 0, 3, 6, 8."
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-9",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-base-titrations-s2",
+   "q": "Which statement about Box Z is correct?",
+   "options": [
+    "Its pH is above 7, because A⁻ takes protons from water",
+    "Its pH is 7, because equal moles of acid and base have reacted",
+    "Its pH equals pKa, because no HA remains",
+    "Its pH is below 7, because HA was the starting acid"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A⁻ is a weak base: A⁻ + H₂O ⇌ HA + OH⁻. With no HA or strong acid left, that small amount of OH⁻ makes the solution basic.",
+    "options": [
+     "Right: the conjugate base of a weak acid gives a basic equivalence point.",
+     "Equal moles give pH 7 only for strong acid with strong base.",
+     "pH = pKa needs equal HA and A⁻; Z has no HA.",
+     "All the HA has been converted; the acid is gone."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-10",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "acid-base-titrations-s2",
+   "q": "Suppose each particle drawn stands for 5.00 × 10⁻⁴ mol, the NaOH is 0.100 M, and the HA has pKa 4.74. How many mL of NaOH had been added at Box Y?",
+   "numeric": {
+    "answer": 40,
+    "tol": 0.1,
+    "unit": "mL",
+    "units": [
+     "milliliters"
+    ],
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 30,
+      "why": "Value: that is the equivalence volume. Box Y has 8 Na⁺, so 8 NaOH units were added.",
+      "rel": 0.02
+     },
+     {
+      "value": 10,
+      "why": "Value: count the Na⁺ ions, not the excess OH⁻: each NaOH added one Na⁺.",
+      "rel": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "Na⁺ counts the NaOH added: 8 × 5.00 × 10⁻⁴ mol = 4.00 × 10⁻³ mol. Volume = 4.00 × 10⁻³ mol ÷ 0.100 mol/L = 0.0400 L = 40.0 mL. (The pKa is not needed.)"
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-11",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "acid-base-titrations-s3",
+   "q": "Which curve belongs to acetic acid, and what shows it?",
+   "options": [
+    "Acid 2: it starts at a higher pH and its equivalence point is above pH 7",
+    "Acid 1: it starts at a lower pH, so it has fewer H₃O⁺ ions",
+    "Acid 2: it needs more NaOH to reach equivalence",
+    "Acid 1: its equivalence point is at pH 7, which shows a partly ionized acid"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Acetic acid is mostly un-ionized, so its starting pH (2.88) is higher than HCl's (1.00), and at equivalence acetate makes the solution basic (pH 8.72).",
+    "options": [
+     "Right: higher start, basic equivalence point.",
+     "A lower pH means more H₃O⁺, not fewer; Acid 1 is the strong acid.",
+     "Both need 25.0 mL: equal moles of acid need equal moles of base, whatever their strength.",
+     "pH 7 at equivalence is the mark of a strong acid with a strong base."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-12",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-base-titrations-s3",
+   "q": "Why do both acids reach equivalence at the same volume of NaOH?",
+   "options": [
+    "They contain the same moles of acid, and OH⁻ reacts with each to completion",
+    "They have the same pH at the start",
+    "Both acids ionize fully once NaOH is added",
+    "The NaOH is a strong base, so it reaches equivalence at 25.0 mL with any acid"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each flask holds 2.50 × 10⁻³ mol of acid. OH⁻ removes HCl's H₃O⁺ and also takes the proton from acetic acid molecules directly (K = 1.8 × 10⁹), so each needs 2.50 × 10⁻³ mol OH⁻.",
+    "options": [
+     "Right: equivalence counts total acid, ionized or not.",
+     "Their starting pH values differ by almost two units.",
+     "Before equivalence, acetic acid is still mostly molecules; what matters is that OH⁻ reacts with those molecules.",
+     "The equivalence volume depends on the moles of acid present, not only on the base."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-13",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acid-base-titrations-s3",
+   "q": "Calculate the pH of the HCl flask after 10.0 mL of NaOH has been added.",
+   "numeric": {
+    "answer": 1.37,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 1.22,
+      "why": "Value: divide by the total volume, 35.0 mL, not the 25.0 mL of acid.",
+      "tol": 0.02
+     },
+     {
+      "value": 1,
+      "why": "Value: that is the starting pH. Subtract the 1.00 × 10⁻³ mol OH⁻ added first.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "H₃O⁺: 2.50 × 10⁻³ mol − 1.00 × 10⁻³ mol OH⁻ = 1.50 × 10⁻³ mol in 0.0350 L = 0.0429 M. pH = −log(0.0429) = 1.37."
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-14",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "acid-base-titrations-s3",
+   "q": "Calculate the pH of the acetic acid flask after 10.0 mL of NaOH has been added.",
+   "numeric": {
+    "answer": 4.57,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 1.37,
+      "why": "Value: that treats acetic acid as strong. After the reaction you have a mixture of CH₃COOH and CH₃COO⁻: use [H₃O⁺] = Ka × [HA]/[A⁻].",
+      "tol": 0.02
+     },
+     {
+      "value": 4.92,
+      "why": "Value: the ratio is upside down. [H₃O⁺] = Ka × [HA]/[A⁻] = Ka × 1.50/1.00.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "OH⁻ converts 1.00 × 10⁻³ mol acid to acetate, leaving 1.50 × 10⁻³ mol CH₃COOH. [H₃O⁺] = Ka × [HA]/[A⁻] = 1.8 × 10⁻⁵ × 1.50/1.00 = 2.7 × 10⁻⁵ M; pH = 4.57."
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-15",
+   "type": "predict",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "acid-base-titrations-s3",
+   "q": "The acetic acid titration is repeated with 25.0 mL of 0.200 M acetic acid (same 0.100 M NaOH). Predict the change in each.",
+   "variables": [
+    {
+     "name": "Volume of NaOH at the equivalence point",
+     "answer": "up",
+     "why": "Twice the moles of acid need twice the moles of OH⁻: 50.0 mL."
+    },
+    {
+     "name": "pH at the half-equivalence point",
+     "answer": "none",
+     "why": "At half-equivalence [HA] = [A⁻] for any starting amount, so pH = pKa = 4.74 again."
+    },
+    {
+     "name": "Starting pH",
+     "answer": "down",
+     "why": "A more concentrated weak acid makes more H₃O⁺: √(Ka·C) grows with C."
+    },
+    {
+     "name": "Ka of acetic acid",
+     "answer": "none",
+     "why": "Ka depends only on temperature."
+    }
+   ],
+   "why": {
+    "correct": "The equivalence volume tracks the moles of acid; the half-equivalence pH tracks the acid itself."
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-16",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-base-titrations-s4",
+   "q": "What is the pH at 12.5 mL of HCl (half-equivalence), and what does it equal?",
+   "options": [
+    "9.26, the pKa of NH₄⁺",
+    "4.74, the pKb of NH₃",
+    "5.28, the pKa of NH₄⁺",
+    "7.00, because half the base is neutralized"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At half-equivalence [NH₃] = [NH₄⁺]. For the acid of this pair, Ka = [H₃O⁺][NH₃]/[NH₄⁺] = [H₃O⁺], so pH = pKa of NH₄⁺ = 14.00 − pKb = 9.26.",
+    "options": [
+     "Right: half-equivalence gives pKa of the conjugate acid.",
+     "pKb is the pOH at half-equivalence, not the pH. Using pKb where pKa of the conjugate acid belongs is a frequent error with weak bases.",
+     "That is the pH at equivalence, 25.0 mL.",
+     "Half-neutralized ammonia is a basic mixture of NH₃ and NH₄⁺, not a neutral one."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-17",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "acid-base-titrations-s4",
+   "q": "Calculate the pH at the equivalence point.",
+   "numeric": {
+    "answer": 5.28,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "Value: NH₄⁺, the conjugate acid of a weak base, is left at equivalence, so the pH is below 7.",
+      "tol": 0.02
+     },
+     {
+      "value": 5.13,
+      "why": "Value: the volume doubled to 50.0 mL, so [NH₄⁺] = 0.0500 M.",
+      "tol": 0.02
+     },
+     {
+      "value": 3.02,
+      "why": "Value: you used Kb. NH₄⁺ is an acid: Ka = Kw/Kb = 5.6 × 10⁻¹⁰.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "All 2.50 × 10⁻³ mol NH₃ became NH₄⁺ in 50.0 mL: 0.0500 M. Ka = Kw/Kb = 5.6 × 10⁻¹⁰. [H₃O⁺] = √(5.6 × 10⁻¹⁰ × 0.0500) = 5.3 × 10⁻⁶ M; pH = 5.28."
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-18",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acid-base-titrations-s4",
+   "q": "Apart from water and Cl⁻, which species is present in the greatest amount at 25.0 mL?",
+   "options": [
+    "NH₄⁺",
+    "NH₃",
+    "H₃O⁺",
+    "OH⁻"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At equivalence every NH₃ has been converted to NH₄⁺. A small fraction of NH₄⁺ gives a proton to water, which is why the pH is below 7.",
+    "options": [
+     "Right: the conjugate acid is what remains.",
+     "Only a trace of NH₃ re-forms from NH₄⁺.",
+     "H₃O⁺ is about 5 × 10⁻⁶ M, far below the 0.0500 M NH₄⁺.",
+     "The solution is acidic, so OH⁻ is scarce."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-19",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-base-titrations-s4",
+   "q": "How does this curve differ from the acetic acid curve in the previous set, and why?",
+   "options": [
+    "It falls instead of rising, because acid is added to a base; its equivalence pH is below 7",
+    "It rises like the acetic acid curve, because both titrations end with excess titrant",
+    "It has the same equivalence pH, because Ka of acetic acid equals Kb of ammonia",
+    "It falls, because ammonia is a strong base"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Adding HCl lowers the pH, so the curve runs downhill. The equivalence point holds NH₄⁺, a weak acid, so its pH is about 5.3, a mirror of acetate's 8.7.",
+    "options": [
+     "Right: downhill, with an acidic equivalence point.",
+     "Excess HCl makes the end of this curve acidic, not basic: the curve goes down.",
+     "The two K values match, but one equivalence point holds a weak acid (NH₄⁺) and the other a weak base (CH₃COO⁻).",
+     "Ammonia is a weak base, which is why the curve has a buffer region and an acidic equivalence point."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-20",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "acid-base-titrations-s5",
+   "q": "What do the two steep rises, at 20.0 mL and 40.0 mL, show?",
+   "options": [
+    "H₂A gives up two protons, one at a time",
+    "The solution contains two different acids",
+    "The NaOH ran out halfway and was refilled",
+    "The first rise is the half-equivalence point and the second the equivalence point"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A diprotic acid has one equivalence point per proton: H₂A → HA⁻ (first 20.0 mL), then HA⁻ → A²⁻ (next 20.0 mL). Equal volumes, because each step removes the same moles of protons.",
+    "options": [
+     "Right: one equivalence point per ionizable proton.",
+     "Two acids could also give two rises, but the equal 20.0 mL steps fit one diprotic acid with 2.00 × 10⁻³ mol of each proton.",
+     "A titration curve plots the pH of the flask; refilling a buret does not show up.",
+     "A half-equivalence point lies in a flat buffer region, not at a steep rise."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-21",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-base-titrations-s5",
+   "q": "Which reading gives pKa₂, the pKa of HA⁻?",
+   "options": [
+    "pH at 30.0 mL, 8.50",
+    "pH at 40.0 mL, 10.51",
+    "pH at 10.0 mL, 4.00",
+    "pH at 20.0 mL, 6.25"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Between the first equivalence point (20.0 mL) and the second (40.0 mL), OH⁻ converts HA⁻ to A²⁻. Halfway, at 30.0 mL, [HA⁻] = [A²⁻], so pH = pKa₂.",
+    "options": [
+     "Right: the second half-equivalence point.",
+     "That is the second equivalence point, where all HA⁻ has become A²⁻.",
+     "That is pKa₁, halfway to the first equivalence point.",
+     "That is the first equivalence point, where HA⁻ is the main species."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-22",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "acid-base-titrations-s5",
+   "q": "Apart from Na⁺ and water, which species is present in the greatest amount at 20.0 mL?",
+   "options": [
+    "HA⁻",
+    "H₂A",
+    "A²⁻",
+    "OH⁻"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At the first equivalence point exactly one proton per H₂A has been removed: all 2.00 × 10⁻³ mol H₂A has become HA⁻.",
+    "options": [
+     "Right: the first equivalence point holds HA⁻.",
+     "H₂A is used up at the first equivalence point.",
+     "A²⁻ forms only after 20.0 mL.",
+     "No excess OH⁻ is present until after 40.0 mL."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-23",
+   "type": "multi",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "acid-base-titrations-s5",
+   "q": "Which statements are supported by the curve? Select all that apply.",
+   "options": [
+    "pKa₁ of H₂A is about 4.0",
+    "Ka₂ is larger than Ka₁",
+    "Three times as much NaOH is needed to reach the second equivalence point as the first",
+    "At 10.0 mL, [H₂A] is about equal to [HA⁻]",
+    "H₂A is a strong acid"
+   ],
+   "correct": [
+    0,
+    3
+   ],
+   "why": {
+    "correct": "At 10.0 mL (first half-equivalence) [H₂A] ≈ [HA⁻] and pH ≈ pKa₁ = 4.0; the second equivalence point is at 40.0 mL, twice (not three times) 20.0 mL.",
+    "options": [
+     "Right: read at 10.0 mL.",
+     "pKa₂ (8.5) is larger than pKa₁ (4.0), so Ka₂ is smaller: the second proton comes off a negative ion and is held more tightly.",
+     "40.0 mL is twice 20.0 mL: each proton needs the same moles of OH⁻, so the second equivalence point needs twice the NaOH of the first.",
+     "Right: half of H₂A converted to HA⁻.",
+     "A strong acid would start near pH 1.0 and show no flat region before the first rise."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-24",
+   "type": "order",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a weak acid titrated with NaOH, put the regions of the curve in order and match each to what sets its pH.",
+   "options": [
+    "Start: the weak acid alone (Ka equilibrium)",
+    "Before equivalence: HA and A⁻ together, [H₃O⁺] = Ka × [HA]/[A⁻]",
+    "Half-equivalence: [HA] = [A⁻], so pH = pKa",
+    "Equivalence: A⁻ alone (Kb = Kw/Ka), pH above 7",
+    "After equivalence: excess OH⁻"
+   ],
+   "why": {
+    "correct": "Each region has one equilibrium that controls it. Find which species are left after the neutralization, then pick the matching method."
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-25",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 25.00 mL sample of 0.1200 M HNO₂ is titrated with 0.1500 M KOH. What volume of KOH reaches the equivalence point?",
+   "numeric": {
+    "answer": 20,
+    "tol": 0.01,
+    "unit": "mL",
+    "units": [
+     "milliliters"
+    ],
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 31.25,
+      "why": "Value: you inverted the ratio of concentrations. V(KOH) = mol HNO₂ / M(KOH) = (0.02500 L × 0.1200 M) / 0.1500 M.",
+      "rel": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "mol HNO₂ = 0.02500 L × 0.1200 mol/L = 3.000 × 10⁻³ mol = mol KOH needed. V = 3.000 × 10⁻³ mol ÷ 0.1500 mol/L = 0.02000 L = 20.00 mL."
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-26",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Before filling a buret with NaOH titrant, a student rinses it with distilled water and does not rinse it with the NaOH. How does this affect the calculated concentration of the acid?",
+   "options": [
+    "Too high, because the diluted NaOH needs a larger volume to reach equivalence",
+    "Too low, because the NaOH is diluted",
+    "No effect, because water is neutral",
+    "Too low, because less NaOH is needed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Water left in the buret dilutes the NaOH, so more volume is delivered to supply the same moles of OH⁻. The student multiplies that larger volume by the labeled molarity and overestimates the acid.",
+    "options": [
+     "Right: larger volume × assumed molarity = too many moles.",
+     "The NaOH is diluted, but the calculation uses the labeled molarity, so the error runs the other way.",
+     "Water does not change the moles of acid, but it lowers the molarity of the titrant actually used.",
+     "Diluted titrant means more volume is needed, not less."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-27",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student claims, \"At the equivalence point of any titration, the pH is 7.\" Which evidence best refutes the claim?",
+   "options": [
+    "A titration of 0.10 M NH₃ with HCl reaches equivalence near pH 5",
+    "A titration of 0.10 M HCl with NaOH reaches equivalence at pH 7.00",
+    "Equivalence is reached when moles of titrant equal moles of analyte",
+    "The steep rise in a titration curve is centered on the equivalence point"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "One counterexample refutes \"any\". At the equivalence point of NH₃ with HCl, the flask holds NH₄⁺, a weak acid, so the pH is below 7.",
+    "options": [
+     "Right: a concrete case with a non-7 equivalence pH.",
+     "This case agrees with the claim, so it cannot refute it.",
+     "True, but it says nothing about the pH.",
+     "True, but it does not say what that pH is."
+    ]
+   }
+  },
+  {
+   "id": "chem-acid-base-titrations-28",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "acid-base-titrations",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "On a titration curve of a weak acid with NaOH, the steep rise is centered at 32.40 mL. At what volume of NaOH does pH = pKa?",
+   "numeric": {
+    "answer": 16.2,
+    "tol": 0.01,
+    "unit": "mL",
+    "units": [
+     "milliliters"
+    ],
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 32.4,
+      "why": "Value: that is the equivalence volume. pH = pKa at half of it, where [HA] = [A⁻].",
+      "rel": 0.02
+     },
+     {
+      "value": 64.8,
+      "why": "Value: pH = pKa comes before the equivalence point, at half its volume, not double.",
+      "rel": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "Half-equivalence is half the equivalence volume: 32.40 mL ÷ 2 = 16.20 mL. There half the acid has become A⁻, so [HA] = [A⁻] and pH = pKa."
+   }
+  }
+ ]
+}

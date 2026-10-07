@@ -1,0 +1,8 @@
+{
+ "ksp": {
+  "def": "Ksp: the equilibrium constant for a slightly soluble salt dissolving, equal to the product of its ion concentrations in a saturated solution, each raised to its coefficient. The solid is left out."
+ },
+ "molar-solubility": {
+  "def": "The number of moles of a salt that dissolve per liter of saturated solution (mol/L), often written s."
+ }
+}

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Significant Figures — AP® Chemistry Lesson | LevlPrep</title>
+<meta name="description" content="A measurement records every certain digit plus one estimated digit; these are its significant figures. Leading zeros never count.">
+<link rel="canonical" href="https://levlprep.com/chem/lessons/math-sig-figs.html">
+<meta property="og:title" content="Significant Figures — AP® Chemistry Lesson | LevlPrep">
+<meta property="og:description" content="A measurement records every certain digit plus one estimated digit; these are its significant figures. Leading zeros never count.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/chem/lessons/math-sig-figs.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/chem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/chem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/chem/lessons/math-sig-figs.html#lesson",
+      "name": "Significant Figures",
+      "url": "https://levlprep.com/chem/lessons/math-sig-figs.html",
+      "description": "A measurement records every certain digit plus one estimated digit; these are its significant figures. Leading zeros never count.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "significant figures"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "measurement uncertainty"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "precision"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "exact number"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/chem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Chemistry",
+          "item": "https://levlprep.com/chem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Math you need",
+          "item": "https://levlprep.com/chem/units/skills-math.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Significant Figures",
+          "item": "https://levlprep.com/chem/lessons/math-sig-figs.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="chem" data-topic="math-sig-figs" data-unit="skills-math">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="chem-crumb chem-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-math.html">Math you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Significant Figures</span></nav></div>
+<div class="xshell chem-ls chem-stepped">
+  <aside class="chem-ls-rail chem-nav-ref" aria-label="Lesson parts">
+    <p class="chem-ls-k">Skills · Math you need</p>
+    <p class="chem-ls-links"><a href="../units/skills-math.html">&larr; Back to the unit</a><a href="../notes/math-sig-figs.html">Read the notes</a></p>
+    <div class="chem-ls-prog"><div class="chem-ls-track"><div class="chem-ls-fill"></div></div><span class="chem-ls-count">Step 1 / 11</span></div>
+    <ol class="chem-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="chem-ls-main chem-lesson">
+  <header class="chem-ls-hero">
+    <div class="eyebrow">Skills <span class="chem-beta chem-nav-ref">Beta</span></div>
+    <h1>Significant Figures</h1>
+    <p class="lede">A measurement records every certain digit plus one estimated digit; these are its significant figures.</p>
+    <p class="chem-tags chem-nav-ref"><span class="chem-tag">Practice 5: Mathematical Routines</span></p>
+    <div class="chem-share chem-nav-ref" role="group" aria-label="Share or print this lesson"><a class="chem-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fchem%2Flessons%2Fmath-sig-figs.html&amp;title=Significant%20Figures%3A%20chemistry%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="chem-share-btn" data-copy="https://levlprep.com/chem/lessons/math-sig-figs.html">Copy link</button><button type="button" class="chem-share-btn" data-print>Print</button></div>
+    <p class="chem-small chem-nav-ref"><a href="../practice.html?topic=math-sig-figs">Question set for this topic</a></p>
+  </header>
+  <div class="chem-ls-card">
+  <section class="chem-part chem-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="chem-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="chem-step-body chem-hook">Ask a bathroom scale and a lab balance to weigh the same apple and you get 150 g and 151.37 g. Both are honest. The number of digits in a measurement tells you how carefully it was made, and on the exam, reporting the wrong number of digits is the most common way to lose a calculation point.</div>
+  </section>
+  <section class="chem-part chem-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="chem-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Earlier topics"><ul class="chem-links"><li><a href="../notes/math-scientific-notation.html">Scientific Notation</a></li></ul></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="chem-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="chem-step-body"><div class="chem-qs" data-set="prereq"><div class="chem-q" data-qid="math-sig-figs-pre-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> Which is 0.00450 in scientific notation?</p><ol class="chem-opts"><li>4.50 × 10⁻³</li><li>4.50 × 10³</li><li>45.0 × 10⁻⁴</li><li>4.5 × 10⁻²</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Move the point 3 places right to get 4.50; a small number has a negative exponent.</p><ul><li><b>Correct:</b> 4.50 × 10⁻³: </li><li>4.50 × 10³: </li><li>45.0 × 10⁻⁴: </li><li>4.5 × 10⁻²: </li></ul></details></div><div class="chem-q" data-qid="math-sig-figs-pre-2"><p class="chem-q-stem"><span class="chem-q-n">2.</span> What is the density of an object with a mass of 20 g and a volume of 5 mL?</p><ol class="chem-opts"><li>4 g/mL</li><li>0.25 g/mL</li><li>100 g/mL</li><li>25 g/mL</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Density = mass ÷ volume = 20 g ÷ 5 mL = 4 g/mL.</p><ul><li><b>Correct:</b> 4 g/mL: </li><li>0.25 g/mL: </li><li>100 g/mL: </li><li>25 g/mL: </li></ul></details></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="figure" aria-labelledby="h-figure">
+    <p class="chem-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="chem-step-body"><figure class="chem-figure chem-lesson-fig"><div class="chem-figimg" data-fig="sigfig-ruler"><img src="../figures/sigfig-ruler.svg" alt="A ruler marked every 0.1 cm; an object's edge falls about seven tenths of the way from 3.4 to 3.5 cm, so the reading is 3.47 cm, with 7 the estimated digit." width="680" height="240" loading="lazy" decoding="async"></div><figcaption>Reading a scale: every digit you are sure of, plus one <span class="gl" tabindex="0" data-c="measurement-uncertainty">estimated digit</span> between the marks. <span class="chem-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="chem-part chem-step" id="chain" aria-labelledby="h-chain">
+    <p class="chem-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="chem-step-body"><ol class="chem-chain"><li><span class="chem-cause">Every instrument can only be read so finely</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">the last recorded digit of a measurement is an estimate</span></li><li><span class="chem-cause">The <span class="gl" tabindex="0" data-c="significant-figures">significant figures</span> are the certain digits plus that one estimated digit</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">they show how <span class="gl" tabindex="0" data-c="precision">precise</span> the measurement is</span></li><li><span class="chem-cause">A calculated answer cannot be more precise than the data it came from</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">it is rounded to match the least precise measurement</span></li><li><span class="chem-cause">Multiplying and adding spread uncertainty differently</span><span class="chem-arrow" aria-hidden="true">→</span><span class="chem-effect">products keep the fewest significant figures, and sums keep the fewest decimal places</span></li></ol></div>
+  </section>
+  <section class="chem-part chem-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="chem-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="chem-step-body"><ul class="chem-ideas"><li>Count <b>significant figures</b>: all nonzero digits; zeros between them; trailing zeros after a decimal point. Leading zeros never count. 0.004050 has four.</li><li>Multiply or divide: keep the fewest <b>significant figures</b>. Add or subtract: keep the fewest <b>decimal places</b>.</li><li><b><span class="gl" tabindex="0" data-c="exact-number">Exact numbers</span></b> (counts, defined equalities like 1 kg = 1000 g) never limit an answer.</li><li><b>Precision</b> is how closely repeated readings agree; <b>accuracy</b> is how close they are to the true value. Round once, at the end.</li></ul></div>
+  </section>
+  <section class="chem-part chem-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="chem-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="chem-step-body chem-misconception"><p class="chem-wrong"><b>The wrong idea:</b> Writing more digits makes an answer more accurate, so copy everything the calculator shows.</p><p class="chem-right"><b>What actually happens:</b> Extra digits claim a precision the measurements do not have. 23.45 g ÷ 12.0 mL is 1.95 g/mL, not 1.954166667 g/mL: the volume was only known to three significant figures.</p></div>
+  </section>
+  <section class="chem-part chem-step" id="check" aria-labelledby="h-check">
+    <p class="chem-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="chem-step-body"><p class="chem-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="chem-qs" data-set="check"><div class="chem-q" data-qid="chem-math-sig-figs-1"><p class="chem-q-stem"><span class="chem-q-n">1.</span> How many significant figures does 0.004050 g have?</p><ol class="chem-opts"><li>7</li><li>3</li><li>4</li><li>2</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Write it as 4.050 × 10⁻³ g: four significant figures. Leading zeros are placeholders; the captive zero and the trailing zero after the decimal point are measured.</p><ul><li>7: This counts every digit, but leading zeros only place the decimal point.</li><li>3: The final zero comes after a decimal point, so it was measured and counts.</li><li><b>Correct:</b> 4: Right: leading zeros do not count; 4, 0, 5 and the trailing 0 after the decimal point do.</li><li>2: Zeros between nonzero digits (the 0 in 405) always count, and so does the trailing zero here.</li></ul></details></div><div class="chem-q" data-qid="chem-math-sig-figs-3"><p class="chem-q-stem"><span class="chem-q-n">2.</span> Calculate 23.45 g ÷ 12.0 mL and report the density with the correct significant figures.</p><p class="chem-small">Type a number in g/mL.</p><details class="chem-q-key"><summary>Show the answer</summary><p>23.45 ÷ 12.0 = 1.954… The least precise value, 12.0 mL, has three significant figures, so the answer is 1.95 g/mL.</p><ul><li>Answer: 1.95 g/mL</li></ul></details></div><div class="chem-q" data-qid="chem-math-sig-figs-4"><p class="chem-q-stem"><span class="chem-q-n">3.</span> Add 12.52 g + 3.1 g + 0.247 g and report the total with the correct precision.</p><p class="chem-small">Type a number in g.</p><details class="chem-q-key"><summary>Show the answer</summary><p>12.52 + 3.1 + 0.247 = 15.867. In addition the answer keeps the fewest decimal places: 3.1 has one, so the sum is 15.9 g.</p><ul><li>Answer: 15.9 g</li></ul></details></div><div class="chem-q" data-qid="chem-math-sig-figs-6"><p class="chem-q-stem"><span class="chem-q-n">4.</span> A student measures 3 identical bolts as 2.157 g each and reports the total of the 3 bolts as 6.5 g "because 3 has one significant figure." What is wrong?</p><ol class="chem-opts"><li>The total should be rounded further, to 7 g, to match the one digit in 3</li><li>Adding the three masses keeps two decimal places, so 6.47 g</li><li>Multiplying a mass by a count of objects gives the wrong unit</li><li>The 3 is an exact count, so it does not limit the answer: 6.471 g</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Exact numbers, from counting or definitions such as 1 kg = 1000 g, never limit precision. 3 × 2.157 g = 6.471 g, four significant figures like the measurement.</p><ul><li>The total should be rounded further, to 7 g, to match the one digit in 3: This makes the same mistake more strongly: the count of 3 is exact.</li><li>Adding the three masses keeps two decimal places, so 6.47 g: Adding 2.157 three times gives 6.471, which keeps three decimal places, not two.</li><li>Multiplying a mass by a count of objects gives the wrong unit: The unit stays grams, and multiplying the mass of one by the number of identical bolts is exactly how to get the total.</li><li><b>Correct:</b> The 3 is an exact count, so it does not limit the answer: 6.471 g: Right: counted numbers are exact and have unlimited significant figures.</li></ul></details></div><div class="chem-set"><section class="chem-stim" data-stim="math-sig-figs-s1" aria-labelledby="stim-math-sig-figs-s1"><p class="chem-stim-k">Data table</p><h3 id="stim-math-sig-figs-s1">Three students weigh a 50.00 g standard mass</h3><div class="chem-stim-text"><p>Three students each weigh the same certified 50.00 g mass four times on different balances.</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Four readings by each student, in grams"><table class="chem-data"><caption>Four readings by each student, in grams</caption><thead><tr><th scope="col">Student</th><th scope="col">Reading 1 (g)</th><th scope="col">Reading 2 (g)</th><th scope="col">Reading 3 (g)</th><th scope="col">Reading 4 (g)</th></tr></thead><tbody><tr><th scope="row">Ana</th><td>49.12</td><td>49.13</td><td>49.11</td><td>49.12</td></tr><tr><th scope="row">Ben</th><td>50.31</td><td>49.62</td><td>50.08</td><td>49.95</td></tr><tr><th scope="row">Cai</th><td>50.01</td><td>49.99</td><td>50.00</td><td>50.00</td></tr></tbody></table></div></section><div class="chem-q" data-qid="chem-math-sig-figs-8"><p class="chem-q-stem"><span class="chem-q-n">5.</span> Which student's readings are precise but not accurate?</p><ol class="chem-opts"><li>Ben</li><li>Cai</li><li>Ana</li><li>Cai, because readings that agree to 0.01 g are precise</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Precision is how closely repeated readings agree; accuracy is how close they are to the true value. Ana is precise but off by about 0.88 g.</p><ul><li>Ben: Ben's readings spread over 0.69 g, so they are not precise; their average happens to land near 50.00 g.</li><li>Cai: Cai's readings are both close together and close to 50.00 g: precise and accurate.</li><li><b>Correct:</b> Ana: Right: Ana's readings agree within 0.02 g, but all are about 0.88 g below the true 50.00 g.</li><li>Cai, because readings that agree to 0.01 g are precise: Cai is precise, but also accurate: the readings sit right at 50.00 g.</li></ul></details></div><div class="chem-q" data-qid="chem-math-sig-figs-9"><p class="chem-q-stem"><span class="chem-q-n">6.</span> Ana's results suggest which kind of error?</p><ol class="chem-opts"><li>A random error from the student reading the display inconsistently</li><li>A significant-figures error from recording too many digits</li><li>A systematic error, such as a balance that reads about 0.9 g low</li><li>No error, since the readings are so close together</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>A consistent shift in one direction points to a systematic error, such as a balance that was not zeroed. Averaging more readings will not fix it.</p><ul><li>A random error from the student reading the display inconsistently: Random errors scatter readings in both directions; Ana's are tightly grouped.</li><li>A significant-figures error from recording too many digits: Four-digit readings on a 0.01 g balance are recorded correctly.</li><li><b>Correct:</b> A systematic error, such as a balance that reads about 0.9 g low: Right: every reading is shifted the same way by about the same amount.</li><li>No error, since the readings are so close together: Close agreement shows precision, not accuracy; the true mass is 50.00 g.</li></ul></details></div><div class="chem-q" data-qid="chem-math-sig-figs-10"><p class="chem-q-stem"><span class="chem-q-n">7.</span> What is the average of Ben's four readings, reported to the correct precision?</p><p class="chem-small">Type a number in g.</p><details class="chem-q-key"><summary>Show the answer</summary><p>(50.31 + 49.62 + 50.08 + 49.95) ÷ 4 = 199.96 ÷ 4 = 49.99 g. The sum keeps two decimal places; dividing by the exact count 4 keeps four significant figures.</p><ul><li>Answer: 49.99 g</li></ul></details></div><div class="chem-q" data-qid="chem-math-sig-figs-11"><p class="chem-q-stem"><span class="chem-q-n">8.</span> Why does Cai's balance report readings to 0.01 g but not to 0.001 g?</p><ol class="chem-opts"><li>The standard mass has four significant figures, so the balance shows four</li><li>A third decimal place would be zero for this mass, so it is left off</li><li>Balances round to two decimal places to make averaging easier</li><li>Its last digit is already estimated; a further digit would not be measured</li></ol><details class="chem-q-key"><summary>Show the answer</summary><p>Every measurement has an uncertainty in its last digit. Reporting more digits than the instrument resolves would claim a precision that was not measured.</p><ul><li>The standard mass has four significant figures, so the balance shows four: The display depends on the balance, not on the object being weighed.</li><li>A third decimal place would be zero for this mass, so it is left off: The third decimal place is unknown, not zero; writing a zero would claim it was measured.</li><li>Balances round to two decimal places to make averaging easier: The number of places reflects the balance's uncertainty, not convenience.</li><li><b>Correct:</b> Its last digit is already estimated; a further digit would not be measured: Right: a measurement keeps its certain digits plus one uncertain digit.</li></ul></details></div></div></div></div>
+  </section>
+  <section class="chem-part chem-step" id="summary" aria-labelledby="h-summary">
+    <p class="chem-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="chem-step-body">A measurement records every certain digit plus one estimated digit; these are its significant figures. Leading zeros never count. Products and quotients keep the fewest significant figures, sums and differences the fewest decimal places, and exact numbers never limit. Precision is agreement between readings; accuracy is closeness to the true value.</div>
+  </section>
+  <section class="chem-part chem-step" id="next" aria-labelledby="h-next">
+    <p class="chem-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="chem-step-body"><nav class="chem-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="moles-molar-mass.html">Moles and Molar Mass &rarr;</a></p></nav></div>
+  </section>
+  <section class="chem-part chem-step" id="connections" aria-labelledby="h-connections">
+    <p class="chem-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="chem-step-body"><ul class="chem-links chem-nav-ref"><li><a href="../notes/math-scientific-notation.html">Back: Scientific Notation</a></li><li><a href="../notes/moles-molar-mass.html">Next: Moles and Molar Mass (1.1)</a></li></ul></div>
+  </section>
+    <div class="chem-ls-actions chem-nav-ref"><button type="button" class="chem-ls-back">&larr; Previous</button><button type="button" class="chem-ls-go">Continue &rarr;</button><a class="chem-ls-go" hidden href="moles-molar-mass.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.chem-ls'),p=s&&s.querySelectorAll('.chem-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.chem-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apchem_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="chem-foot xshell">
+  <p class="chem-accuracy-note"><span class="chem-beta chem-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Chemistry teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="chem-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="lesson:math-sig-figs">Report a problem</button></span></p>
+  <p class="chem-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="chem-page-data">{"topic":"math-sig-figs","unit":"skills-math","free":true,"prereq":[{"id":"math-sig-figs-pre-1","type":"single","unit":"skills-math","topic":"math-sig-figs","q":"Which is 0.00450 in scientific notation?","options":["4.50 × 10⁻³","4.50 × 10³","45.0 × 10⁻⁴","4.5 × 10⁻²"],"correct":0,"why":{"correct":"Move the point 3 places right to get 4.50; a small number has a negative exponent.","options":["","","",""]},"reviewHref":"../notes/math-scientific-notation.html","reviewTitle":"Scientific Notation"},{"id":"math-sig-figs-pre-2","type":"single","unit":"skills-math","topic":"math-sig-figs","q":"What is the density of an object with a mass of 20 g and a volume of 5 mL?","options":["4 g/mL","0.25 g/mL","100 g/mL","25 g/mL"],"correct":0,"why":{"correct":"Density = mass ÷ volume = 20 g ÷ 5 mL = 4 g/mL.","options":["","","",""]},"reviewHref":"../notes/math-units.html","reviewTitle":"Units and Dimensional Analysis"}],"check":[{"id":"chem-math-sig-figs-1","type":"single","unit":"skills-math","topic":"math-sig-figs","practice":"5.A","level":"recall","diff":1,"q":"How many significant figures does 0.004050 g have?","options":["7","3","4","2"],"correct":2,"why":{"correct":"Write it as 4.050 × 10⁻³ g: four significant figures. Leading zeros are placeholders; the captive zero and the trailing zero after the decimal point are measured.","options":["This counts every digit, but leading zeros only place the decimal point.","The final zero comes after a decimal point, so it was measured and counts.","Right: leading zeros do not count; 4, 0, 5 and the trailing 0 after the decimal point do.","Zeros between nonzero digits (the 0 in 405) always count, and so does the trailing zero here."]}},{"id":"chem-math-sig-figs-3","type":"numeric","unit":"skills-math","topic":"math-sig-figs","practice":"5.F","level":"apply","diff":2,"q":"Calculate 23.45 g ÷ 12.0 mL and report the density with the correct significant figures.","numeric":{"answer":1.95,"tol":0.01,"unit":"g/mL","sigfigs":3,"mistakes":[{"value":0.5117,"rel":0.01,"why":"Value: density is mass divided by volume, not volume divided by mass."}]},"why":{"correct":"23.45 ÷ 12.0 = 1.954… The least precise value, 12.0 mL, has three significant figures, so the answer is 1.95 g/mL."}},{"id":"chem-math-sig-figs-4","type":"numeric","unit":"skills-math","topic":"math-sig-figs","practice":"5.F","level":"apply","diff":2,"q":"Add 12.52 g + 3.1 g + 0.247 g and report the total with the correct precision.","numeric":{"answer":15.9,"tol":0.1,"unit":"g","sigfigs":3},"why":{"correct":"12.52 + 3.1 + 0.247 = 15.867. In addition the answer keeps the fewest decimal places: 3.1 has one, so the sum is 15.9 g."}},{"id":"chem-math-sig-figs-6","type":"single","unit":"skills-math","topic":"math-sig-figs","practice":"6.G","level":"analyze","diff":2,"q":"A student measures 3 identical bolts as 2.157 g each and reports the total of the 3 bolts as 6.5 g \"because 3 has one significant figure.\" What is wrong?","options":["The total should be rounded further, to 7 g, to match the one digit in 3","Adding the three masses keeps two decimal places, so 6.47 g","Multiplying a mass by a count of objects gives the wrong unit","The 3 is an exact count, so it does not limit the answer: 6.471 g"],"correct":3,"why":{"correct":"Exact numbers, from counting or definitions such as 1 kg = 1000 g, never limit precision. 3 × 2.157 g = 6.471 g, four significant figures like the measurement.","options":["This makes the same mistake more strongly: the count of 3 is exact.","Adding 2.157 three times gives 6.471, which keeps three decimal places, not two.","The unit stays grams, and multiplying the mass of one by the number of identical bolts is exactly how to get the total.","Right: counted numbers are exact and have unlimited significant figures."]}},{"id":"chem-math-sig-figs-8","type":"single","unit":"skills-math","topic":"math-sig-figs","practice":"2.E","level":"analyze","diff":2,"stimulus":"math-sig-figs-s1","q":"Which student's readings are precise but not accurate?","options":["Ben","Cai","Ana","Cai, because readings that agree to 0.01 g are precise"],"correct":2,"why":{"correct":"Precision is how closely repeated readings agree; accuracy is how close they are to the true value. Ana is precise but off by about 0.88 g.","options":["Ben's readings spread over 0.69 g, so they are not precise; their average happens to land near 50.00 g.","Cai's readings are both close together and close to 50.00 g: precise and accurate.","Right: Ana's readings agree within 0.02 g, but all are about 0.88 g below the true 50.00 g.","Cai is precise, but also accurate: the readings sit right at 50.00 g."]}},{"id":"chem-math-sig-figs-9","type":"single","unit":"skills-math","topic":"math-sig-figs","practice":"2.E","level":"analyze","diff":3,"stimulus":"math-sig-figs-s1","q":"Ana's results suggest which kind of error?","options":["A random error from the student reading the display inconsistently","A significant-figures error from recording too many digits","A systematic error, such as a balance that reads about 0.9 g low","No error, since the readings are so close together"],"correct":2,"why":{"correct":"A consistent shift in one direction points to a systematic error, such as a balance that was not zeroed. Averaging more readings will not fix it.","options":["Random errors scatter readings in both directions; Ana's are tightly grouped.","Four-digit readings on a 0.01 g balance are recorded correctly.","Right: every reading is shifted the same way by about the same amount.","Close agreement shows precision, not accuracy; the true mass is 50.00 g."]}},{"id":"chem-math-sig-figs-10","type":"numeric","unit":"skills-math","topic":"math-sig-figs","practice":"5.F","level":"apply","diff":2,"stimulus":"math-sig-figs-s1","q":"What is the average of Ben's four readings, reported to the correct precision?","numeric":{"answer":49.99,"tol":0.01,"unit":"g","sigfigs":4,"mistakes":[{"value":200,"rel":0.01,"why":"Value: that is the sum. Divide it by the number of readings, 4."}]},"why":{"correct":"(50.31 + 49.62 + 50.08 + 49.95) ÷ 4 = 199.96 ÷ 4 = 49.99 g. The sum keeps two decimal places; dividing by the exact count 4 keeps four significant figures."}},{"id":"chem-math-sig-figs-11","type":"single","unit":"skills-math","topic":"math-sig-figs","practice":"4.A","level":"analyze","diff":2,"stimulus":"math-sig-figs-s1","q":"Why does Cai's balance report readings to 0.01 g but not to 0.001 g?","options":["The standard mass has four significant figures, so the balance shows four","A third decimal place would be zero for this mass, so it is left off","Balances round to two decimal places to make averaging easier","Its last digit is already estimated; a further digit would not be measured"],"correct":3,"why":{"correct":"Every measurement has an uncertainty in its last digit. Reporting more digits than the instrument resolves would claim a precision that was not measured.","options":["The display depends on the balance, not on the object being weighed.","The third decimal place is unknown, not zero; writing a zero would claim it was measured.","The number of places reflects the balance's uncertainty, not convenience.","Right: a measurement keeps its certain digits plus one uncertain digit."]}}],"stimuli":{"math-sig-figs-s1":{"kind":"table","title":"Three students weigh a 50.00 g standard mass","html":"\u003cdiv class=\"chem-stim-text\">\u003cp>Three students each weigh the same certified 50.00 g mass four times on different balances.\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Four readings by each student, in grams\">\u003ctable class=\"chem-data\">\u003ccaption>Four readings by each student, in grams\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Student\u003c/th>\u003cth scope=\"col\">Reading 1 (g)\u003c/th>\u003cth scope=\"col\">Reading 2 (g)\u003c/th>\u003cth scope=\"col\">Reading 3 (g)\u003c/th>\u003cth scope=\"col\">Reading 4 (g)\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">Ana\u003c/th>\u003ctd>49.12\u003c/td>\u003ctd>49.13\u003c/td>\u003ctd>49.11\u003c/td>\u003ctd>49.12\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Ben\u003c/th>\u003ctd>50.31\u003c/td>\u003ctd>49.62\u003c/td>\u003ctd>50.08\u003c/td>\u003ctd>49.95\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Cai\u003c/th>\u003ctd>50.01\u003c/td>\u003ctd>49.99\u003c/td>\u003ctd>50.00\u003c/td>\u003ctd>50.00\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApChemSection = 'learn'; window.ApChemBase = '../';</script>
+<script src="../assets/chem-curriculum.js" defer></script>
+<script src="../assets/chem-core.js" defer></script>
+<script src="../assets/chem-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/chem-questions.js" defer></script>
+<script src="../assets/chem-lesson.js" defer></script>
+</body>
+</html>

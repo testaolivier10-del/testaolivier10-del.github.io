@@ -1,0 +1,50 @@
+<p>Le Châtelier's principle (topic 7.9) predicts which way a disturbed equilibrium shifts. On the free-response section, though, "it shifts to relieve the stress" earns nothing. Readers want the reason in terms of <b>Q and K</b>. This page shows how to turn every Le Châtelier prediction into a <b>Q vs K</b> justification, and why that comparison is the real reason the system shifts.</p>
+
+<h2>The idea</h2>
+<figure id="fig-qkpath" data-fig="disturbance-q-k-path"><figcaption>Figure 1. A disturbance makes Q ≠ K; the system reacts until Q = K again.</figcaption></figure>
+<p>At equilibrium, Q = K. A disturbance breaks that equality in one of two ways:</p>
+<ul>
+<li><b>Concentration, pressure or volume changes move Q; K stays the same.</b></li>
+<li><b>A temperature change moves K; Q stays the same at that instant.</b></li>
+</ul>
+<p>Either way, Q ≠ K afterward, and the rule from topic 7.3 takes over: Q &lt; K means net forward, Q &gt; K means net reverse, until Q = K again.</p>
+
+<h2>Concentration changes</h2>
+<div class="worked">
+<p><b>Worked example.</b> N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2 NO<sub>2</sub>(g), K<sub>c</sub> = 4.6 × 10<sup>−3</sup>, is at equilibrium with [N<sub>2</sub>O<sub>4</sub>] = 0.0400 M and [NO<sub>2</sub>] = 0.0136 M. NO<sub>2</sub> is added to make [NO<sub>2</sub>] = 0.0300 M. Justify the shift.</p>
+<p>1. New Q: Q = (0.0300)<sup>2</sup> / 0.0400 = 2.3 × 10<sup>−2</sup>.</p>
+<p>2. Compare: 2.3 × 10<sup>−2</sup> &gt; 4.6 × 10<sup>−3</sup>, so Q &gt; K.</p>
+<p>3. Justification: <i>"Adding NO<sub>2</sub> increases Q above K, so the net reaction proceeds in reverse, forming N<sub>2</sub>O<sub>4</sub>, until Q again equals K."</i></p>
+</div>
+<p>You often do not need numbers. Adding a product raises the top of Q, so Q &gt; K; removing a reactant lowers the bottom, so again Q &gt; K. Adding a reactant or removing a product makes Q &lt; K.</p>
+
+<h2>Volume changes</h2>
+<p>Changing the volume changes every gas concentration by the same factor. Whether Q changes depends on the exponents. For N<sub>2</sub>O<sub>4</sub> ⇌ 2 NO<sub>2</sub>, doubling the volume halves both concentrations:</p>
+<p style="text-align:center">Q<sub>new</sub> = (½[NO<sub>2</sub>])<sup>2</sup> / (½[N<sub>2</sub>O<sub>4</sub>]) = ¼/½ × Q<sub>old</sub> = ½ Q<sub>old</sub></p>
+<p>So Q falls below K and the net reaction goes forward, toward the side with more gas molecules, exactly as Le Châtelier predicts. When the gas coefficients are equal on both sides, the factors cancel, Q is unchanged and there is no shift.</p>
+<div class="worked">
+<p><b>Worked example.</b> N<sub>2</sub>(g) + 3 H<sub>2</sub>(g) ⇌ 2 NH<sub>3</sub>(g) is at equilibrium. The volume is halved. By what factor does Q change, and which way does the system shift?</p>
+<p>1. Every concentration doubles. Top: (2)<sup>2</sup> = 4. Bottom: (2)(2)<sup>3</sup> = 16.</p>
+<p>2. Q<sub>new</sub> = 4/16 × Q<sub>old</sub> = <b>0.25 Q<sub>old</sub></b>, so Q &lt; K.</p>
+<p>3. The net reaction goes forward, making NH<sub>3</sub> (2 mol gas from 4), until Q = K.</p>
+</div>
+<p>An inert gas added at constant volume changes no concentration in Q, so Q = K still and nothing shifts.</p>
+
+<h2>Temperature changes</h2>
+<p>Heating or cooling does not change the concentrations at the moment it happens, so Q is unchanged. What changes is K. For an endothermic forward reaction, K increases with temperature; for an exothermic one, K decreases.</p>
+<div class="worked">
+<p><b>Worked example.</b> N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2 NO<sub>2</sub>(g) is endothermic. An equilibrium mixture is heated. Justify the color change (NO<sub>2</sub> is brown).</p>
+<p><i>"The forward reaction is endothermic, so raising the temperature increases K. The concentrations have not yet changed, so Q is now less than the new K. The net reaction proceeds forward, producing more brown NO<sub>2</sub>, until Q equals the new K."</i></p>
+</div>
+
+<h2>What earns the point, and what does not</h2>
+<table class="compare">
+<thead><tr><th scope="col">Answer</th><th scope="col">Credit?</th><th scope="col">Why</th></tr></thead>
+<tbody>
+<tr><th scope="row">"Adding H<sub>2</sub> makes Q &lt; K, so the net reaction proceeds forward until Q = K."</th><td>Yes</td><td>Names the change in Q and compares it with K</td></tr>
+<tr><th scope="row">"Adding H<sub>2</sub> increases K."</th><td>No</td><td>K does not change with concentration</td></tr>
+<tr><th scope="row">"The forward rate increases, so it shifts right."</th><td>Usually no</td><td>Rate language alone; the question asks for Q vs K</td></tr>
+<tr><th scope="row">"It shifts right to relieve the stress."</th><td>No</td><td>Restates the principle without reasoning</td></tr>
+<tr><th scope="row">"Heating increases K for this endothermic reaction, so Q &lt; K and it shifts forward."</th><td>Yes</td><td>Correctly says K, not Q, changes</td></tr>
+</tbody></table>
+<aside class="going-further"><p><b>For your exam:</b> write three things: what changed (Q or K), the comparison (Q &lt; K or Q &gt; K), and the direction until Q = K. If numbers are given, calculate Q and show it.</p></aside>

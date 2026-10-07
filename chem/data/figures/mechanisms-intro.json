@@ -1,0 +1,12 @@
+{
+ "mechanism-sum": {
+  "file": "figures/mechanism-sum.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two elementary steps stacked and added. Step 1: two nitrogen dioxide molecules form NO3 and NO. Step 2: NO3 and carbon monoxide form nitrogen dioxide and carbon dioxide. NO3 is formed in step 1 and used in step 2, so it cancels: it is an intermediate. One NO2 on each side also cancels. The sum is the overall equation, NO2 plus CO gives NO plus CO2."
+ }
+}

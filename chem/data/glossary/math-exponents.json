@@ -1,0 +1,8 @@
+{
+ "exponent": {
+  "def": "The small raised number that says how many times a base is multiplied by itself; 10³ = 10 × 10 × 10 = 1000."
+ },
+ "exponent-rules": {
+  "def": "Multiplying powers of the same base adds the exponents, dividing subtracts them, a power of a power multiplies them, 10⁰ = 1, 10⁻ⁿ = 1/10ⁿ, and a square root halves the exponent."
+ }
+}

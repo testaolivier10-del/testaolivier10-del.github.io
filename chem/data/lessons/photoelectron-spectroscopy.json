@@ -1,0 +1,72 @@
+{
+ "topic": "photoelectron-spectroscopy",
+ "hook": "You cannot see an electron, but you can knock one out and measure how hard it was to remove. Do that for every electron in an atom and you get a fingerprint of its electron configuration. Photoelectron spectroscopy is how chemists know that shells and subshells are real, not just a bookkeeping trick.",
+ "prereq": [
+  {
+   "q": "What is the electron configuration of magnesium (12 electrons)?",
+   "options": [
+    "1s² 2s² 2p⁶ 3s²",
+    "1s² 2s² 2p⁸",
+    "1s² 2s² 2p⁶ 3p²",
+    "1s² 2s⁶ 2p⁴"
+   ],
+   "correct": 0,
+   "why": "Fill 1s, 2s, 2p, then 3s: 2 + 2 + 6 + 2 = 12.",
+   "review": "electron-configuration"
+  },
+  {
+   "q": "According to Coulomb's law, what happens to the attraction between two opposite charges as they move farther apart?",
+   "options": [
+    "It weakens",
+    "It strengthens",
+    "It stays the same",
+    "It becomes a repulsion"
+   ],
+   "correct": 0,
+   "why": "F ∝ q₁q₂/r²: a larger distance gives a weaker force.",
+   "review": "electron-configuration"
+  }
+ ],
+ "figure": {
+  "figure": "pes-neon",
+  "caption": "The photoelectron spectrum of neon. Three peaks for three subshells; the heights (2, 2, 6) count electrons; the 1s peak is far to the left because those electrons are held most tightly."
+ },
+ "chain": [
+  {
+   "cause": "High-energy light hits an atom",
+   "effect": "each photon can knock out one electron if it carries enough energy"
+  },
+  {
+   "cause": "The energy the light supplies minus the energy the electron leaves with",
+   "effect": "gives the binding energy, how tightly that electron was held"
+  },
+  {
+   "cause": "Electrons in one subshell all have the same binding energy",
+   "effect": "they form one peak, whose height counts the electrons"
+  },
+  {
+   "cause": "Closer, less shielded electrons, and more protons, mean stronger Coulombic attraction",
+   "effect": "inner subshells and heavier elements have peaks at higher binding energy"
+  }
+ ],
+ "ideas": [
+  "A <b>photon</b> is a packet of light energy. In <b>photoelectron spectroscopy</b> (PES), high-energy photons eject electrons and the energy each needed is measured.",
+  "That energy is the <b>binding energy</b>. One peak per subshell; position = binding energy; height = number of electrons.",
+  "Highest binding energy (left) is 1s; lowest (right) is the valence subshell. Within a shell, s is above p.",
+  "More protons shift every matching peak to higher energy (Coulomb's law). A new subshell adds a new peak at the low-energy end."
+ ],
+ "misconception": {
+  "wrong": "The tallest peak in a photoelectron spectrum is the most tightly held subshell.",
+  "right": "Height counts electrons; position shows how tightly they are held. In silicon the 2p peak is tallest (6 electrons), but the 1s peak, short and far to the left, is held most tightly."
+ },
+ "check": [
+  "chem-photoelectron-spectroscopy-1",
+  "chem-photoelectron-spectroscopy-2",
+  "chem-photoelectron-spectroscopy-3",
+  "chem-photoelectron-spectroscopy-5",
+  "chem-photoelectron-spectroscopy-6",
+  "chem-photoelectron-spectroscopy-10"
+ ],
+ "summary": "Photoelectron spectroscopy ejects electrons with high-energy light and measures each one's binding energy. Each subshell gives one peak: its position shows how tightly the electrons are held and its height how many there are. Inner subshells and higher nuclear charge give higher binding energies, as Coulomb's law predicts.",
+ "connections": []
+}

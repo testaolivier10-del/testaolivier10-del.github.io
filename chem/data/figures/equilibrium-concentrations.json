@@ -1,0 +1,12 @@
+{
+ "ice-solve-flow": {
+  "file": "figures/ice-solve-flow.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A flow chart. Step 1, compare Q with K to find the direction. Step 2, write an ICE table with each change equal to plus or minus x times the coefficient. Step 3, substitute the equilibrium row into the K expression. Then choose a way to solve: if both sides are perfect squares, take the square root; if K is small compared with the starting concentration, drop x from the initial minus x terms; otherwise use the quadratic formula. Step 4, check: x should be under 5% of the starting concentration if the approximation was used, and the answers should give Q = K."
+ }
+}

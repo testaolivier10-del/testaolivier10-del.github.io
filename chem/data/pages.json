@@ -1,0 +1,181 @@
+{
+ "about": "The AP Chemistry app pages. scripts/build-apchem.mjs writes each page's shell (head, header, footer, a <div id=\"app\"> mount) from this file; the page's behavior is its script in chem/assets/<script>, which mounts into #app. Until that script exists the shell says the page arrives with the first published unit. \"static\": true marks a generated page that is not an app (teachers.html). premium names the Premium feature (ApChemCore gates it); card is the line on the course home. No path may contain the token \"ap\" (docs/apchem-spec.md decision 2). tools[] are the trainers, skills tools and drills: page chem/tools/<slug>.html, script chem/assets/tools/<slug>.js, content chem/data/tools/<slug>.json (docs/apchem-architecture.md, Tools). Free or Premium per tool: the first tool of each unit (in the map's order) and every skills tool are free, as in AP® Biology; the rest carry \"premium\": \"tools\" (docs/apchem-spec.md decision 15).",
+ "apps": [
+  {
+   "slug": "practice",
+   "premium": "question-bank",
+   "section": "practice",
+   "h1": "Practice",
+   "title": "Practice questions",
+   "desc": "Chemistry practice by unit, topic or skill: stimulus sets and calculations graded on value, units and significant figures, with every option explained.",
+   "card": "Drill a unit, a topic or a science practice, with stimulus sets.",
+   "script": "pages/practice.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "review",
+   "premium": "review",
+   "section": "review",
+   "h1": "Review",
+   "title": "Spaced review",
+   "desc": "Your chemistry spaced review queue: every question you missed comes back just before you would forget it.",
+   "card": "Missed questions come back when you are about to forget them.",
+   "script": "pages/review.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "exams",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Exams",
+   "title": "Unit tests and practice exams",
+   "desc": "Timed chemistry unit tests and full practice exams in the real format: 60 multiple-choice questions in 90 minutes, then 7 free-response questions.",
+   "card": "Unit tests and full timed practice exams in the real 60 + 7 format.",
+   "script": "pages/exams.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "frq",
+   "premium": "exams",
+   "section": "exams",
+   "h1": "Free-response practice",
+   "title": "Free-response practice",
+   "desc": "Chemistry free-response practice, long and short questions, each with a point-by-point rubric, a full-credit sample answer and a printable answer sheet.",
+   "card": "Long and short free-response questions, with rubrics and sample answers.",
+   "script": "pages/frq.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "justify",
+   "premium": "justify",
+   "section": "exams",
+   "h1": "Justification trainer",
+   "title": "Justification trainer",
+   "desc": "Chemistry explain and justify practice: write an answer, check it against a rubric, and compare an answer that earns the point with one that does not.",
+   "lede": "Free-response points are lost on vague reasons. Write your answer, check it against the rubric, then see one answer that earns the point and one that sounds right but does not, and why.",
+   "card": "Explain and justify prompts with a rubric checklist and two model answers.",
+   "script": "pages/justify.js",
+   "css": [
+    "pages/pages.css",
+    "pages/entry.css"
+   ]
+  },
+  {
+   "slug": "cram",
+   "section": "exams",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Cram kit",
+   "title": "Cram kit",
+   "desc": "Chemistry cram plans counted back from your exam date: three or two weeks, day by day, weighted by unit, with unit sheets, timed mixed sets and practice exams.",
+   "lede": "A 3-week or 2-week plan counted back from your exam date, day by day: unit sheets and notes, a timed mixed set and one free-response question each study day, two full practice exams and rest days. Print it and tick the days off.",
+   "card": "3-week and 2-week plans to exam day, and timed mixed sets.",
+   "script": "pages/cram.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "flashcards",
+   "section": "practice",
+   "h1": "Flashcards",
+   "title": "Flashcards",
+   "desc": "Spaced-repetition chemistry flashcards built from the glossary, by unit and topic.",
+   "card": "Spaced-repetition cards from the glossary.",
+   "script": "pages/flashcards.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "tools",
+   "section": "tools",
+   "h1": "Tools",
+   "title": "Trainers and drills",
+   "desc": "Chemistry trainers and drills: justifications, particle diagrams, equilibrium and buffer drills, titration curves, each followed by questions.",
+   "card": "Trainers and drills, then the questions about what you did.",
+   "script": "pages/tools.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "dashboard",
+   "section": "dashboard",
+   "siteScripts": [
+    "exam-date.js"
+   ],
+   "h1": "Dashboard",
+   "title": "Your dashboard",
+   "desc": "Your chemistry mastery by unit, topic and science practice, with every miss linked to the lesson that teaches it.",
+   "card": "Mastery by unit, topic and science practice.",
+   "script": "pages/dashboard.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "search",
+   "section": "",
+   "h1": "Search",
+   "title": "Search the course",
+   "desc": "Search every chemistry lesson, notes page, glossary term and tool in the course.",
+   "script": "pages/search.js",
+   "css": "pages/pages.css"
+  },
+  {
+   "slug": "teachers",
+   "section": "",
+   "h1": "For teachers",
+   "title": "For teachers",
+   "desc": "For chemistry teachers: stable share links, printable notes and unit sheets, and sharing pages to Google Classroom, with no new student data collected.",
+   "lede": "Share any notes page, lesson or unit sheet with a stable link. Students need no account, and nothing they do leaves their device unless they choose to sign in.",
+   "static": true
+  }
+ ],
+ "tools": [
+  {
+   "slug": "particle-diagrams",
+   "kind": "simulator",
+   "name": "Particle diagrams",
+   "title": "Particle diagram trainer",
+   "desc": "Choose the right particle picture: water around ions, limiting reactants, equilibrium counts, and strong against weak acids, with feedback on each wrong one.",
+   "blurb": "Water around ions, limiting reactants, equilibrium counts and acid strength, drawn particle by particle."
+  },
+  {
+   "slug": "ice-table-drills",
+   "kind": "drill",
+   "name": "ICE table drills",
+   "title": "ICE table drills",
+   "desc": "Unlimited ICE table problems: find K, find equilibrium amounts with small x and the 5% check, and perfect squares, checked row by row.",
+   "blurb": "Build the I, C and E rows step by step; every slip gets its own feedback."
+  },
+  {
+   "slug": "q-vs-k",
+   "kind": "simulator",
+   "premium": "tools",
+   "name": "Q vs K",
+   "title": "Q vs K trainer",
+   "desc": "Calculate Q from concentrations, pressures or a particle picture, compare it with K, predict the shift and pick the justification that earns the point.",
+   "blurb": "Q from numbers or particles, the direction of the shift, and the wording that earns the point."
+  },
+  {
+   "slug": "titration-curve-reader",
+   "kind": "simulator",
+   "name": "Titration curve reader",
+   "title": "Titration curve reader",
+   "desc": "Read titration curves computed from the equilibrium math: equivalence and half-equivalence points, pKa, indicator choice and the species present.",
+   "blurb": "Equivalence, half-equivalence and pKa, indicator choice and the species at each point."
+  },
+  {
+   "slug": "buffer-drills",
+   "kind": "drill",
+   "premium": "tools",
+   "name": "Buffer and Henderson-Hasselbalch drills",
+   "title": "Buffer and Henderson-Hasselbalch drills",
+   "desc": "Unlimited buffer problems: Henderson-Hasselbalch pH, the ratio for a target pH, added strong acid or base, and capacity, with feedback on ln and log.",
+   "blurb": "Buffer pH, target ratios, added acid or base and capacity, checked step by step."
+  },
+  {
+   "slug": "units-sig-figs",
+   "kind": "skill",
+   "name": "Units and significant figures",
+   "title": "Units and significant figures checker",
+   "desc": "Calculation habits graded on value, units and significant figures: J and kJ, Celsius and kelvin, the right R, and the rules for multiplying and adding.",
+   "blurb": "Value, unit and significant figures graded separately, with a note on every slip."
+  }
+ ]
+}

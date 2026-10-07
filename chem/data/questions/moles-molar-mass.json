@@ -1,0 +1,564 @@
+{
+ "stimuli": {
+  "moles-molar-mass-s1": {
+   "kind": "table",
+   "title": "Five samples on a balance",
+   "text": "<p>A student weighs five pure samples and looks up each molar mass.</p>",
+   "table": {
+    "caption": "Mass and molar mass of each sample",
+    "cols": [
+     "Sample",
+     "Substance",
+     "Formula",
+     "Mass (g)",
+     "Molar mass (g/mol)"
+    ],
+    "rows": [
+     [
+      "1",
+      "Aluminum foil",
+      "Al",
+      "13.5",
+      "26.98"
+     ],
+     [
+      "2",
+      "Copper wire",
+      "Cu",
+      "127",
+      "63.55"
+     ],
+     [
+      "3",
+      "Water",
+      "H₂O",
+      "45.0",
+      "18.02"
+     ],
+     [
+      "4",
+      "Ethanol",
+      "C₂H₆O",
+      "23.0",
+      "46.07"
+     ],
+     [
+      "5",
+      "Table sugar (sucrose)",
+      "C₁₂H₂₂O₁₁",
+      "85.6",
+      "342.30"
+     ]
+    ]
+   }
+  },
+  "moles-molar-mass-s2": {
+   "kind": "particle",
+   "title": "Three boxes of gas particles",
+   "html": "<svg viewBox=\"0 0 740 260\" width=\"740\" height=\"260\" role=\"img\" aria-label=\"Three boxes. Box A holds 6 water molecules, each one oxygen atom with two hydrogen atoms. Box B holds 6 single neon atoms. Box C holds 3 carbon dioxide molecules, each one carbon atom between two oxygen atoms.\"><rect x=\"20\" y=\"10\" width=\"220\" height=\"210\" rx=\"8\" fill=\"#ffffff\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"60\" cy=\"50\" r=\"11\" fill=\"#D55E00\" stroke=\"#7a3300\" stroke-width=\"1.5\"/><circle cx=\"48\" cy=\"59\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"72\" cy=\"59\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"130\" cy=\"45\" r=\"11\" fill=\"#D55E00\" stroke=\"#7a3300\" stroke-width=\"1.5\"/><circle cx=\"118\" cy=\"54\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"142\" cy=\"54\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"195\" cy=\"60\" r=\"11\" fill=\"#D55E00\" stroke=\"#7a3300\" stroke-width=\"1.5\"/><circle cx=\"183\" cy=\"69\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"207\" cy=\"69\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"75\" cy=\"115\" r=\"11\" fill=\"#D55E00\" stroke=\"#7a3300\" stroke-width=\"1.5\"/><circle cx=\"63\" cy=\"124\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"87\" cy=\"124\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"145\" cy=\"110\" r=\"11\" fill=\"#D55E00\" stroke=\"#7a3300\" stroke-width=\"1.5\"/><circle cx=\"133\" cy=\"119\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"157\" cy=\"119\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"205\" cy=\"130\" r=\"11\" fill=\"#D55E00\" stroke=\"#7a3300\" stroke-width=\"1.5\"/><circle cx=\"193\" cy=\"139\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"217\" cy=\"139\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"130\" y=\"242\" text-anchor=\"middle\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"16\" fill=\"#1B2440\">Box A</text><rect x=\"260\" y=\"10\" width=\"220\" height=\"210\" rx=\"8\" fill=\"#ffffff\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"300\" cy=\"50\" r=\"10\" fill=\"#56B4E9\" stroke=\"#1d5f86\" stroke-width=\"1.5\"/><circle cx=\"370\" cy=\"45\" r=\"10\" fill=\"#56B4E9\" stroke=\"#1d5f86\" stroke-width=\"1.5\"/><circle cx=\"435\" cy=\"60\" r=\"10\" fill=\"#56B4E9\" stroke=\"#1d5f86\" stroke-width=\"1.5\"/><circle cx=\"315\" cy=\"115\" r=\"10\" fill=\"#56B4E9\" stroke=\"#1d5f86\" stroke-width=\"1.5\"/><circle cx=\"385\" cy=\"110\" r=\"10\" fill=\"#56B4E9\" stroke=\"#1d5f86\" stroke-width=\"1.5\"/><circle cx=\"445\" cy=\"130\" r=\"10\" fill=\"#56B4E9\" stroke=\"#1d5f86\" stroke-width=\"1.5\"/><text x=\"370\" y=\"242\" text-anchor=\"middle\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"16\" fill=\"#1B2440\">Box B</text><rect x=\"500\" y=\"10\" width=\"220\" height=\"210\" rx=\"8\" fill=\"#ffffff\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"521\" cy=\"50\" r=\"11\" fill=\"#D55E00\" stroke=\"#7a3300\" stroke-width=\"1.5\"/><circle cx=\"540\" cy=\"50\" r=\"11\" fill=\"#333333\" stroke=\"#111\" stroke-width=\"1.5\"/><circle cx=\"559\" cy=\"50\" r=\"11\" fill=\"#D55E00\" stroke=\"#7a3300\" stroke-width=\"1.5\"/><circle cx=\"591\" cy=\"45\" r=\"11\" fill=\"#D55E00\" stroke=\"#7a3300\" stroke-width=\"1.5\"/><circle cx=\"610\" cy=\"45\" r=\"11\" fill=\"#333333\" stroke=\"#111\" stroke-width=\"1.5\"/><circle cx=\"629\" cy=\"45\" r=\"11\" fill=\"#D55E00\" stroke=\"#7a3300\" stroke-width=\"1.5\"/><circle cx=\"656\" cy=\"60\" r=\"11\" fill=\"#D55E00\" stroke=\"#7a3300\" stroke-width=\"1.5\"/><circle cx=\"675\" cy=\"60\" r=\"11\" fill=\"#333333\" stroke=\"#111\" stroke-width=\"1.5\"/><circle cx=\"694\" cy=\"60\" r=\"11\" fill=\"#D55E00\" stroke=\"#7a3300\" stroke-width=\"1.5\"/><text x=\"610\" y=\"242\" text-anchor=\"middle\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"16\" fill=\"#1B2440\">Box C</text></svg><p>Key: small white circle, hydrogen atom; orange circle, oxygen atom; dark gray circle, carbon atom; light blue circle, neon atom. Molar masses: H₂O 18.02 g/mol, Ne 20.18 g/mol, CO₂ 44.01 g/mol.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-moles-molar-mass-1",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does one mole of a substance contain?",
+   "options": [
+    "One gram of the substance, whatever it is made of",
+    "The number of atoms in one molecule of the substance",
+    "6.022 × 10²³ of the particles named, such as atoms or molecules",
+    "Enough of the substance to fill a 1-liter container"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "One mole is Avogadro's number, 6.022 × 10²³, of whatever particles you name.",
+    "options": [
+     "A mole is a count, not a mass. One mole of different substances has different masses.",
+     "That number is in the formula and is usually small, such as 3 for water.",
+     "Right: a mole is a counting unit, like a dozen, for 6.022 × 10²³ things.",
+     "A mole is a count of particles, not a volume."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-2",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "moles-molar-mass-s1",
+   "q": "How many moles of aluminum atoms are in Sample 1?",
+   "numeric": {
+    "answer": 0.5,
+    "tol": 0.001,
+    "unit": "mol",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 364.2,
+      "rel": 0.01,
+      "why": "Value: you multiplied the mass by the molar mass. Divide, so that grams cancel and moles are left."
+     }
+    ]
+   },
+   "why": {
+    "correct": "13.5 g × (1 mol / 26.98 g) = 0.5004 mol, which is 0.500 mol to the three significant figures of the mass."
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-3",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "moles-molar-mass-s1",
+   "q": "Which sample contains the greatest number of atoms in total?",
+   "options": [
+    "Sample 3, the water",
+    "Sample 2, the copper",
+    "Sample 4, the ethanol",
+    "Sample 5, the sucrose"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Moles of atoms = moles of particles × atoms per particle. Sucrose: 0.250 × 45 = 11.3 mol; water 2.50 × 3 = 7.49 mol; copper 2.00 mol; ethanol 4.49 mol; aluminum 0.500 mol.",
+    "options": [
+     "Water has the most molecules (2.50 mol), but only 3 atoms each, so 7.49 mol of atoms.",
+     "The largest mass, but copper atoms are heavy: 127 g ÷ 63.55 g/mol = 2.00 mol of atoms.",
+     "0.499 mol of molecules × 9 atoms each = 4.49 mol of atoms, less than sucrose or water.",
+     "Right: 85.6 g ÷ 342.30 g/mol = 0.250 mol of molecules, and each molecule has 45 atoms, so 11.3 mol of atoms."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-4",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "moles-molar-mass-s1",
+   "q": "How many hydrogen atoms are in Sample 4?",
+   "numeric": {
+    "answer": 1.8e+24,
+    "tol": 1e+22,
+    "unit": "hydrogen atoms",
+    "units": [
+     "atoms",
+     "H atoms",
+     "atoms of hydrogen"
+    ],
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 3.006e+23,
+      "rel": 0.01,
+      "why": "Value: that is the number of ethanol molecules. Each molecule has 6 hydrogen atoms, so multiply by 6."
+     }
+    ]
+   },
+   "why": {
+    "correct": "23.0 g ÷ 46.07 g/mol = 0.4992 mol of ethanol molecules. Each has 6 H atoms: 0.4992 × 6 = 2.995 mol of H atoms. × 6.022 × 10²³ = 1.80 × 10²⁴ H atoms."
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-5",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "moles-molar-mass-s1",
+   "q": "Sample 2 has about 9.4 times the mass of Sample 1 but only about 4.0 times as many atoms. Which statement explains this?",
+   "options": [
+    "Copper atoms are packed closer together, so more fit in the sample",
+    "Each copper atom has about 2.4 times the mass of an aluminum atom",
+    "A mole of copper contains more atoms than a mole of aluminum",
+    "The copper mass has fewer significant figures, which lowers its count"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Mass = number of atoms × mass of each atom. Copper atoms are 63.55 / 26.98 = 2.36 times heavier, so 9.41 times the mass holds only 9.41 / 2.36 = 3.99 times the atoms.",
+    "options": [
+     "How the atoms are packed changes the volume, not the mass per atom.",
+     "Right: 63.55 ÷ 26.98 = 2.36, and 9.41 ÷ 2.36 = 3.99.",
+     "Every mole holds 6.022 × 10²³ particles, whatever the element.",
+     "Significant figures limit how precisely you report the count; they cannot change it by a factor of more than two."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-6",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "moles-molar-mass-s2",
+   "q": "Which box holds the greatest mass of gas?",
+   "options": [
+    "Box A, because its particles contain the most atoms",
+    "Box B, because it holds as many particles as Box A and each is heavier",
+    "The three boxes have equal masses",
+    "Box C, with 3 carbon dioxide molecules"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Total mass = number of particles × mass of each. A: 6 × 18.02 = 108.1 amu; B: 6 × 20.18 = 121.1 amu; C: 3 × 44.01 = 132.0 amu.",
+    "options": [
+     "Box A has the most atoms (18), but they are light hydrogen and oxygen atoms: 108.1 amu in all.",
+     "Box B outweighs Box A, but Box C is heavier still.",
+     "The boxes hold different numbers of particles with different masses, so the totals differ.",
+     "Right: 3 × 44.01 = 132.0 amu, more than 6 × 20.18 = 121.1 amu or 6 × 18.02 = 108.1 amu."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-7",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "moles-molar-mass-s2",
+   "q": "Boxes A and B hold the same number of particles. How do their masses compare, and why?",
+   "options": [
+    "Box B is heavier, because a neon atom has more mass than a water molecule",
+    "They have equal masses, because they hold equal numbers of particles",
+    "Box A is heavier, because each water molecule has three atoms",
+    "Box A is heavier, because water is a compound and neon is an element"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Same number of particles, so the box whose particles are heavier is heavier: 20.18 amu (Ne) > 18.02 amu (H₂O).",
+    "options": [
+     "Right: 20.18 amu per neon atom against 18.02 amu per water molecule.",
+     "Equal numbers of particles have equal masses only if the particles have the same mass.",
+     "Counting atoms is not enough: one neon atom outweighs one O atom plus two light H atoms.",
+     "Being a compound says nothing about mass; the mass of each particle decides."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-8",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "moles-molar-mass-s2",
+   "q": "Which box contains the greatest number of atoms?",
+   "options": [
+    "Box B",
+    "Box C",
+    "Box A",
+    "Boxes A and B, which tie"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Count atoms, not particles: A has 18, B has 6, C has 9.",
+    "options": [
+     "Box B has 6 particles, but each is a single atom: 6 atoms.",
+     "3 molecules × 3 atoms = 9 atoms.",
+     "Right: 6 molecules × 3 atoms = 18 atoms.",
+     "They tie on particles (6 each), not on atoms (18 against 6)."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-9",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "moles-molar-mass-s2",
+   "q": "Suppose each particle drawn stands for 0.100 mol of that substance. What mass of carbon dioxide does Box C represent?",
+   "numeric": {
+    "answer": 13.2,
+    "tol": 0.1,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 4.401,
+      "rel": 0.01,
+      "why": "Value: that is one particle's worth. Box C has 3 particles, so 0.300 mol."
+     },
+     {
+      "value": 0.006817,
+      "rel": 0.01,
+      "why": "Value: you divided moles by molar mass. Multiply: mol × g/mol = g."
+     },
+     {
+      "value": 39.61,
+      "rel": 0.01,
+      "why": "Value: you counted atoms (9) instead of molecules (3). Each CO₂ molecule is one particle of carbon dioxide."
+     }
+    ]
+   },
+   "why": {
+    "correct": "3 particles × 0.100 mol = 0.300 mol of CO₂. 0.300 mol × 44.01 g/mol = 13.2 g."
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-10",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the molar mass of calcium carbonate, CaCO₃? Use Ca 40.08, C 12.01, O 16.00.",
+   "numeric": {
+    "answer": 100.09,
+    "tol": 0.01,
+    "unit": "g/mol",
+    "units": [
+     "g mol^-1",
+     "g·mol⁻¹"
+    ],
+    "askUnit": true,
+    "sigfigs": 5,
+    "mistakes": [
+     {
+      "value": 68.09,
+      "rel": 0.01,
+      "why": "Value: the subscript 3 applies to oxygen. Count three O atoms: 3 × 16.00 = 48.00."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Add the atomic masses of every atom in one formula: 40.08 + 12.01 + 3(16.00) = 100.09 g/mol."
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-11",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the mass of 0.0250 mol of glucose, C₆H₁₂O₆ (molar mass 180.16 g/mol)?",
+   "numeric": {
+    "answer": 4.5,
+    "tol": 0.01,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.0001388,
+      "rel": 0.01,
+      "why": "Value: you divided by the molar mass. From moles to grams, multiply by g/mol."
+     }
+    ]
+   },
+   "why": {
+    "correct": "0.0250 mol × (180.16 g / 1 mol) = 4.504 g, which is 4.50 g to three significant figures."
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-12",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "What is the mass, in grams, of a single water molecule (18.02 g/mol)?",
+   "numeric": {
+    "answer": 2.992e-23,
+    "tol": 1e-26,
+    "unit": "g",
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 1.085e+25,
+      "rel": 0.01,
+      "why": "Value: you multiplied by Avogadro's number. One molecule is a tiny fraction of a mole, so divide."
+     }
+    ]
+   },
+   "why": {
+    "correct": "18.02 g/mol ÷ 6.022 × 10²³ molecules/mol = 2.992 × 10⁻²³ g per molecule. A tiny number, as one molecule should be."
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-13",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A flask holds 1.0 g of hydrogen gas, H₂, and another holds 1.0 g of oxygen gas, O₂. Which statement is correct?",
+   "options": [
+    "Both flasks hold the same number of molecules, since the masses match",
+    "The hydrogen flask holds about 16 times as many molecules",
+    "The oxygen flask holds more molecules, since oxygen atoms are larger",
+    "The flasks need their volumes before they can be compared"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Moles = mass ÷ molar mass: H₂ 0.50 mol, O₂ 0.031 mol. The lighter the molecule, the more molecules in a gram.",
+    "options": [
+     "Equal masses hold equal numbers only when the particles have the same mass.",
+     "Right: 1.0/2.016 = 0.50 mol of H₂ against 1.0/32.00 = 0.031 mol of O₂, a ratio of about 16.",
+     "Heavier molecules mean fewer of them in the same mass, not more.",
+     "Mass and molar mass are enough to find moles, and moles count molecules."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-14",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "One molecule of ethanol has a mass of 46.07 amu. What is the mass of one mole of ethanol molecules?",
+   "options": [
+    "46.07 amu",
+    "46.07 × 6.022 × 10²³ g",
+    "46.07 ÷ 6.022 × 10²³ g",
+    "46.07 g"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The number is the same at both scales: 46.07 amu per molecule and 46.07 g per mole. That is why the mole was defined as it was.",
+    "options": [
+     "That is the mass of one molecule, not of 6.022 × 10²³ of them.",
+     "This multiplies twice: the g/mol number already counts a whole mole.",
+     "Dividing gives the mass of one molecule in grams, not of a mole.",
+     "Right: the mole is defined so that amu per particle equals grams per mole."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-15",
+   "type": "multi",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which samples contain 1.00 mol of the particles named? Select all that apply.",
+   "options": [
+    "55.85 g of iron atoms (Fe, 55.85 g/mol)",
+    "1.00 g of hydrogen gas, counted as H₂ molecules",
+    "16.00 g of oxygen gas, counted as O₂ molecules",
+    "32.00 g of oxygen gas, counted as O₂ molecules",
+    "6.022 × 10²² water molecules"
+   ],
+   "correct": [
+    0,
+    3
+   ],
+   "why": {
+    "correct": "One mole is the molar mass in grams, or 6.022 × 10²³ particles. Watch whether the particles are atoms or molecules.",
+    "options": [
+     "Right: the molar mass in grams is one mole.",
+     "H₂ has a molar mass of 2.016 g/mol, so 1.00 g is 0.496 mol of molecules.",
+     "O₂ has a molar mass of 32.00 g/mol, so 16.00 g is 0.500 mol of molecules.",
+     "Right: 32.00 g ÷ 32.00 g/mol = 1.00 mol of O₂ molecules.",
+     "That is one tenth of Avogadro's number, 0.100 mol."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-16",
+   "type": "order",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Four flasks each hold 1.0 g of a gas. Put them in order from the fewest moles to the most.",
+   "options": [
+    "CO₂ (44.01 g/mol)",
+    "O₂ (32.00 g/mol)",
+    "CH₄ (16.04 g/mol)",
+    "H₂ (2.016 g/mol)"
+   ],
+   "why": {
+    "correct": "With the same mass, moles = 1.0 g ÷ molar mass, so the heaviest molecule gives the fewest moles: CO₂ 0.023, O₂ 0.031, CH₄ 0.062, H₂ 0.50 mol."
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-17",
+   "type": "predict",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 50.0 g sample of water (18.02 g/mol) is replaced by 50.0 g of methane, CH₄ (16.04 g/mol). Predict how each quantity changes.",
+   "variables": [
+    {
+     "name": "Number of molecules",
+     "answer": "up",
+     "why": "Methane molecules are lighter, so 50.0 g holds more of them: 3.12 mol against 2.77 mol."
+    },
+    {
+     "name": "Mass of the sample",
+     "answer": "none",
+     "why": "Both samples are 50.0 g by design."
+    },
+    {
+     "name": "Total number of atoms",
+     "answer": "up",
+     "why": "More molecules, and 5 atoms each instead of 3: 15.6 mol of atoms against 8.32 mol."
+    }
+   ],
+   "why": {
+    "correct": "Same mass, lighter molecules: more molecules. Each methane molecule also has more atoms, so the atom count rises even more."
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-18",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student reports that 2.0 g of helium (4.003 g/mol) contains 4.8 × 10²⁴ atoms. Which quick check shows the answer is wrong?",
+   "options": [
+    "2.0 g is about half a mole, so it should be about 3 × 10²³ atoms",
+    "Helium is a gas, so it has fewer atoms than a solid of the same mass",
+    "A count of atoms is at most 6.022 × 10²³, one mole",
+    "The answer should have units of grams, not atoms"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "2.0 g × (1 mol / 4.003 g) × 6.022 × 10²³ = 3.0 × 10²³ atoms. The student multiplied by the molar mass (2.0 × 4.003 × 6.022 × 10²³ = 4.8 × 10²⁴).",
+    "options": [
+     "Right: 2.0 ÷ 4.0 ≈ 0.5 mol, and half of 6 × 10²³ is 3 × 10²³. The reported answer is 16 times too big.",
+     "Being a gas changes how spread out the atoms are, not how many are in 2.0 g.",
+     "Samples larger than a mole hold more than 6.022 × 10²³ particles.",
+     "A count of atoms has no mass unit; the question asks for a number of atoms."
+    ]
+   }
+  }
+ ]
+}

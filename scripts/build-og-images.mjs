@@ -1,4 +1,4 @@
-/* Renders the link-preview cards (site, NREMT, ochem, A&P, AP® Biology).
+/* Renders the link-preview cards (site, NREMT, ochem, A&P, AP® Biology, AP® Chemistry).
 
    These are the 1200x630 images an unfurler shows when a LevlPrep link is
    pasted into a chat. There were two of them, both hand-made and both wrong by
@@ -103,7 +103,18 @@ const CARDS = [
     title: 'Biology for the May exam, from scratch',
     sub: 'Free notes for every topic, data-heavy practice like the real exam, and the statistics skills, step by step.',
   },
+  /* AP® Chemistry (folder chem/), on the same rules as Biology's: no mark, no
+     counts (docs/apchem-spec.md decision 2). */
+  {
+    out: 'chem/assets/og-image.png',
+    badge: 'Beta · Free notes',
+    brand: 'LevlPrep',
+    title: 'Chemistry for the May exam, one particle at a time',
+    sub: 'Free notes for every topic, practice that checks units and significant figures, and justifications that earn the point.',
+  },
 ];
+// ONLY=<out path> renders just that card (adding a course need not re-render the others).
+if (process.env.ONLY) CARDS.splice(0, CARDS.length, ...CARDS.filter((c) => c.out === process.env.ONLY));
 
 const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
 

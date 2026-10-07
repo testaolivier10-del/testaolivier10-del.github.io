@@ -60,6 +60,13 @@
       path: '/bio/', dir: 'bio', storagePrefix: 'apbio_', rankLabel: 'Biology rank',
       searchLabel: 'Biology', aliases: ['bio', 'biology'], paid: true, status: 'beta', order: 4,
     },
+    {
+      // As AP® Biology (docs/apchem-spec.md decision 2): the mark only in the
+      // full names, never in a URL; the key travels as its folder, "chem".
+      key: 'apchem', short: 'Chemistry', name: 'AP® Chemistry', productName: 'AP® Chemistry',
+      path: '/chem/', dir: 'chem', storagePrefix: 'apchem_', rankLabel: 'Chemistry rank',
+      searchLabel: 'Chemistry', aliases: ['chem', 'chemistry'], paid: true, status: 'beta', order: 5,
+    },
   ];
 
   var list = LIST.slice().sort(function (a, b) { return a.order - b.order; });

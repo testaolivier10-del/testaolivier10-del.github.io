@@ -1,0 +1,12 @@
+{
+ "partial-pressures": {
+  "file": "figures/partial-pressures.svg",
+  "ext": "svg",
+  "w": 560,
+  "h": 262,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three containers of equal volume at the same temperature: 6 molecules of gas A exert 0.60 atm, 3 molecules of gas B exert 0.30 atm, and the mixture of both exerts 0.90 atm, the sum of the partial pressures."
+ }
+}

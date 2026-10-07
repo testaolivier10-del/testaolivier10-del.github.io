@@ -1,0 +1,12 @@
+{
+ "bond-types-continuum": {
+  "file": "figures/bond-types-continuum.svg", "ext": "svg", "w": 760, "h": 330,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "An arrow labeled electronegativity difference runs from small to large over three panels. Nonpolar covalent: two Cl atoms with a shared electron pair midway between them. Polar covalent: H and Cl share a pair that sits closer to Cl; H is marked delta plus and Cl delta minus, with a dipole arrow pointing toward Cl. Ionic: an electron moves from Na to Cl, giving a small Na+ cation and a larger Cl- anion."
+ },
+ "metallic-bond-sea": {
+  "file": "figures/metallic-bond-sea.svg", "ext": "svg", "w": 360, "h": 258,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "A grid of 24 metal cations, each marked plus, with many small electron dots scattered between them throughout the box, labeled metal cations in a sea of delocalized valence electrons."
+ }
+}

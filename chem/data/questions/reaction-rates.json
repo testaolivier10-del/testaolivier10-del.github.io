@@ -1,0 +1,626 @@
+{
+ "stimuli": {
+  "reaction-rates-s1": {
+   "kind": "table",
+   "title": "Breaking down dinitrogen pentoxide",
+   "text": "<p>Dinitrogen pentoxide gas breaks down in a sealed flask at constant temperature:</p><p>2 N₂O₅(g) → 4 NO₂(g) + O₂(g)</p><p>A student measures the concentration of N₂O₅ every 100 seconds.</p>",
+   "table": {
+    "caption": "Concentration of N₂O₅ over time",
+    "cols": [
+     "Time (s)",
+     "[N₂O₅] (M)"
+    ],
+    "rows": [
+     [
+      "0",
+      "0.200"
+     ],
+     [
+      "100",
+      "0.164"
+     ],
+     [
+      "200",
+      "0.134"
+     ],
+     [
+      "300",
+      "0.110"
+     ],
+     [
+      "400",
+      "0.0899"
+     ]
+    ]
+   }
+  },
+  "reaction-rates-s2": {
+   "kind": "graph",
+   "title": "Marble chips and marble powder in acid",
+   "text": "<p>A student drops 0.33 g of calcium carbonate into 50.0 mL of 1.0 M hydrochloric acid, which is in excess, and collects the carbon dioxide gas formed:</p><p>CaCO₃(s) + 2 HCl(aq) → CaCl₂(aq) + H₂O(l) + CO₂(g)</p><p>Trial 1 uses a few large marble chips; trial 2 uses the same mass of powdered marble. Everything else is the same.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Time",
+     "unit": "s",
+     "min": 0,
+     "max": 300,
+     "step": 60
+    },
+    "y": {
+     "label": "Volume of CO₂ collected",
+     "unit": "mL",
+     "min": 0,
+     "max": 100,
+     "step": 20
+    },
+    "series": [
+     {
+      "name": "Trial 1: chips",
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        15,
+        25
+       ],
+       [
+        30,
+        42
+       ],
+       [
+        60,
+        62
+       ],
+       [
+        90,
+        72
+       ],
+       [
+        120,
+        76
+       ],
+       [
+        180,
+        79
+       ],
+       [
+        240,
+        80
+       ],
+       [
+        300,
+        80
+       ]
+      ]
+     },
+     {
+      "name": "Trial 2: powder",
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        15,
+        57
+       ],
+       [
+        30,
+        73
+       ],
+       [
+        60,
+        79
+       ],
+       [
+        90,
+        80
+       ],
+       [
+        120,
+        80
+       ],
+       [
+        180,
+        80
+       ],
+       [
+        240,
+        80
+       ],
+       [
+        300,
+        80
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-reaction-rates-1",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "reaction-rates-s1",
+   "q": "What is the average rate of disappearance of N₂O₅ from 0 s to 200 s? Include units.",
+   "numeric": {
+    "answer": 0.00033,
+    "tol": 1e-05,
+    "unit": "M/s",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.066,
+      "why": "Value: that is the change in concentration. A rate is that change divided by the time: 0.066 M / 200 s."
+     },
+     {
+      "value": 0.00066,
+      "why": "Value: that is the rate of appearance of NO₂. The question asks how fast N₂O₅ disappears, so do not use the 4 : 2 ratio here."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Average rate = −Δ[N₂O₅]/Δt = −(0.134 M − 0.200 M)/(200 s − 0 s) = 0.066 M / 200 s = 3.3 × 10⁻⁴ M/s. The difference 0.066 M has two significant figures, so the rate does too."
+   }
+  },
+  {
+   "id": "chem-reaction-rates-2",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reaction-rates-s1",
+   "q": "Over the same interval, 0 s to 200 s, what is the average rate of appearance of NO₂? Include units.",
+   "numeric": {
+    "answer": 0.00066,
+    "tol": 1e-05,
+    "unit": "M/s",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.00033,
+      "why": "Value: that is the rate for N₂O₅. Use the coefficients: 4 NO₂ form for every 2 N₂O₅ used, so NO₂ appears twice as fast."
+     },
+     {
+      "value": 0.000165,
+      "why": "Value: you divided by 2 instead of multiplying. NO₂ has the larger coefficient (4 vs 2), so it appears faster than N₂O₅ disappears."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Each 2 mol of N₂O₅ that react make 4 mol of NO₂, so NO₂ appears 4/2 = 2 times as fast as N₂O₅ disappears: 2 × 3.3 × 10⁻⁴ M/s = 6.6 × 10⁻⁴ M/s."
+   }
+  },
+  {
+   "id": "chem-reaction-rates-3",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-rates-s1",
+   "q": "The average rate of disappearance of N₂O₅ from 200 s to 400 s is smaller than from 0 s to 200 s. Which statement best explains this?",
+   "options": [
+    "Less N₂O₅ is left per liter, so fewer molecules react each second",
+    "The NO₂ that forms slows the reaction by soaking up the remaining heat in the flask",
+    "The temperature of the flask falls as the reaction goes on",
+    "The flask is sealed, so the pressure stops more molecules from reacting"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The data show the concentration falling, and the drop per 100 s shrinking (0.036 M, then 0.030 M, 0.024 M, 0.020 M). With fewer N₂O₅ molecules per liter, fewer react each second, so the rate falls as the reactant is used up.",
+    "options": [
+     "Right: the rate depends on how much reactant is present, and the concentration of N₂O₅ keeps falling.",
+     "Products do not \"use up heat\", and the stem says the temperature is constant. This invents a cause the data do not show.",
+     "The stem says the temperature is constant, so a temperature change cannot explain the data.",
+     "A sealed flask keeps the gas in; it does not stop molecules from reacting. The rate falls because the reactant concentration falls."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-rates-4",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reaction-rates-s1",
+   "q": "At the moment N₂O₅ is disappearing at 2.4 × 10⁻⁴ M/s, how fast is O₂ appearing?",
+   "options": [
+    "1.2 × 10⁻⁴ M/s",
+    "2.4 × 10⁻⁴ M/s",
+    "4.8 × 10⁻⁴ M/s",
+    "9.6 × 10⁻⁴ M/s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "One O₂ forms for every 2 N₂O₅ used, so O₂ appears half as fast: 2.4 × 10⁻⁴ M/s ÷ 2 = 1.2 × 10⁻⁴ M/s.",
+    "options": [
+     "Right: the 1 : 2 ratio of the coefficients halves the rate.",
+     "This treats every species as changing at the same rate, ignoring the coefficients.",
+     "This multiplies by 2, as if O₂ had the larger coefficient. It has the smaller one (1 vs 2).",
+     "This is the rate for NO₂ (4 per 2 N₂O₅), not for O₂."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-reaction-rates-5",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 1,
+   "stimulus": "reaction-rates-s2",
+   "q": "Which claim about the two trials is supported by the graph and the setup?",
+   "options": [
+    "The powder reacts faster at first: more of its surface touches the acid",
+    "The chips react faster at first, because large pieces carry many more particles into the acid",
+    "The powder reacts faster at the start, because powdered marble is a different compound",
+    "Both trials start at the same rate, because they use the same mass of marble"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The powder curve is much steeper near t = 0 (about 57 mL in the first 15 s against about 25 mL for the chips). Powder exposes far more surface, so more CaCO₃ particles meet acid particles each second.",
+    "options": [
+     "Right: steeper initial slope, explained by surface area.",
+     "Only particles at the surface of a solid can meet the acid. Big chips hide most of their particles inside.",
+     "Grinding is a physical change; powdered marble is still CaCO₃.",
+     "Equal masses give equal amounts of product in the end, not equal rates. The slopes at the start are clearly different."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-rates-6",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "single",
+   "practice": "6.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-rates-s2",
+   "q": "Both trials end at the same volume of CO₂. Which statement best explains why?",
+   "options": [
+    "The same mass of CaCO₃, the limiting reactant, reacted in each trial",
+    "The acid ran out at the same moment in both trials",
+    "The powder reacted faster, so it should have made more gas, but some gas escaped",
+    "The rate of a reaction and the amount of product it makes are the same thing"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The acid is in excess, so CaCO₃ is the limiting reactant. 0.33 g of CaCO₃ (about 0.0033 mol) makes the same amount of CO₂ however fast it reacts. Rate is how fast product forms; the amount is set by stoichiometry.",
+    "options": [
+     "Right: rate changes how quickly you get there, not how much you get.",
+     "The stem says the acid is in excess, so it does not run out; the marble does.",
+     "A faster reaction does not make more product. Nothing in the data shows gas escaping.",
+     "This is the mix-up the question targets: rate is amount per unit time; the final amount is set by the limiting reactant."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-rates-7",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "numeric",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reaction-rates-s2",
+   "q": "Using the graph, what is the average rate of CO₂ production in trial 1 (chips) from 0 s to 60 s? Give your answer in mL/s.",
+   "numeric": {
+    "answer": 1,
+    "tol": 0.1,
+    "unit": "mL/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2.07,
+      "why": "Value: the time interval is 60 s − 0 s = 60 s. Divide the volume collected by 60 s."
+     },
+     {
+      "value": 1.32,
+      "why": "Value: you read the powder curve. Trial 1 is the chips."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At 60 s the chips curve reads 62 mL; at 0 s it reads 0 mL. Average rate = (62 mL − 0 mL)/(60 s − 0 s) = 1.0 mL/s. A reading a millilitre or two either way still rounds to about 1.0 mL/s."
+   }
+  },
+  {
+   "id": "chem-reaction-rates-8",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "single",
+   "practice": "2.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reaction-rates-s2",
+   "q": "Which change to trial 1 would make the CO₂ come off faster at the start without changing the final volume of CO₂?",
+   "options": [
+    "Use 2.0 M HCl instead of 1.0 M HCl",
+    "Use 0.66 g of marble chips instead of 0.33 g",
+    "Use the same mass of marble in one single large lump",
+    "Add 50 mL of water to the acid before adding the chips"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "More concentrated acid puts more acid particles next to the marble surface, so more react each second. The marble is still the limiting reactant, so the final volume is unchanged.",
+    "options": [
+     "Right: higher concentration raises the rate; the amount of marble, which sets the yield, stays the same.",
+     "More marble would raise the final volume, since marble is the limiting reactant.",
+     "One lump has less surface than several chips, so it would react more slowly.",
+     "Water dilutes the acid, which lowers the rate."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-rates-9",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "In the reaction N₂(g) + 3 H₂(g) → 2 NH₃(g), hydrogen is used up at 0.090 M/s. At what rate, in M/s, does ammonia form?",
+   "numeric": {
+    "answer": 0.06,
+    "tol": 0.001,
+    "unit": "M/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.135,
+      "why": "Value: you inverted the ratio. 2 NH₃ form for every 3 H₂ used, so multiply by 2/3, not 3/2."
+     },
+     {
+      "value": 0.18,
+      "why": "Value: you used the coefficient of NH₃ alone. Compare it with the coefficient of H₂: the ratio is 2 : 3."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Δ[NH₃]/Δt = (2 mol NH₃ / 3 mol H₂) × 0.090 M/s = 0.060 M/s."
+   }
+  },
+  {
+   "id": "chem-reaction-rates-10",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "A reaction rate is reported as 3.0 × 10⁻³ M/s. What does this number describe?",
+   "options": [
+    "The change in molarity of a substance each second",
+    "The number of moles of product made by the time the reaction is over",
+    "The energy given off per second by the reacting mixture",
+    "The time the reaction needs to reach completion"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "M/s is (mol/L) per second: how much a concentration changes each second.",
+    "options": [
+     "Right: rate is concentration change per unit time.",
+     "That is an amount of product, set by stoichiometry, not a rate.",
+     "Energy per second would be in J/s, not M/s.",
+     "A time would be in seconds alone, not M/s."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-rates-11",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For 2 N₂O(g) → 2 N₂(g) + O₂(g), which expression gives the same rate whichever substance is measured?",
+   "options": [
+    "−½ Δ[N₂O]/Δt = ½ Δ[N₂]/Δt = Δ[O₂]/Δt",
+    "−2 Δ[N₂O]/Δt = 2 Δ[N₂]/Δt = Δ[O₂]/Δt",
+    "Δ[N₂O]/Δt = Δ[N₂]/Δt = Δ[O₂]/Δt",
+    "−½ Δ[N₂O]/Δt = −½ Δ[N₂]/Δt = Δ[O₂]/Δt"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Divide each rate by its coefficient, and put a minus sign on reactants so the rate is positive: −½ Δ[N₂O]/Δt = ½ Δ[N₂]/Δt = Δ[O₂]/Δt.",
+    "options": [
+     "Right: each change divided by its coefficient, with a minus sign for the reactant.",
+     "Multiplying by the coefficients makes the fastest-changing species look even faster; you divide instead.",
+     "This ignores the coefficients and the sign: N₂O falls while the others rise, and O₂ changes half as fast.",
+     "N₂ is a product, so its concentration rises; a minus sign would make its rate negative."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-rates-12",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "predict",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A student reacts 1.0 g of zinc granules with excess hydrochloric acid, then repeats the experiment with 1.0 g of zinc powder. Predict how each quantity changes in the second run.",
+   "variables": [
+    {
+     "name": "Initial rate of hydrogen production",
+     "answer": "up",
+     "why": "Powder has much more surface touching the acid, so more zinc atoms react each second."
+    },
+    {
+     "name": "Total volume of hydrogen made",
+     "answer": "none",
+     "why": "The same mass of zinc (the limiting reactant) reacts, so the same amount of hydrogen forms."
+    },
+    {
+     "name": "Time for all the zinc to dissolve",
+     "answer": "down",
+     "why": "A faster rate uses up the same amount of zinc sooner."
+    },
+    {
+     "name": "Mass of zinc that reacts",
+     "answer": "none",
+     "why": "All 1.0 g reacts in both cases because the acid is in excess."
+    }
+   ],
+   "why": {
+    "correct": "Surface area changes how fast the zinc reacts, not how much reacts: the rate goes up and the time goes down, while the amounts stay the same."
+   }
+  },
+  {
+   "id": "chem-reaction-rates-13",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "multi",
+   "practice": "2.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A strip of magnesium reacts with hydrochloric acid. Which changes would increase the rate of the reaction? Select all that apply.",
+   "options": [
+    "Warming the acid before adding the magnesium",
+    "Using more concentrated hydrochloric acid",
+    "Pouring the same acid into a wider beaker",
+    "Adding water to the acid"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Warmer particles move faster and collide harder and more often; more concentrated acid puts more acid particles at the metal surface. A wider beaker changes neither; water dilutes the acid.",
+    "options": [
+     "Right: a higher temperature raises the rate.",
+     "Right: a higher concentration raises the rate.",
+     "The concentration and the metal surface are the same, so the rate is unchanged.",
+     "Diluting lowers the concentration of acid, which slows the reaction."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-rates-14",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "single",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "On a graph of [reactant] against time, how do you find the instantaneous rate at t = 50 s?",
+   "options": [
+    "Take the negative of the slope of the tangent at 50 s",
+    "Divide the concentration at 50 s by 50 s",
+    "Join the first and last points and take the slope of that line",
+    "Read the concentration at 50 s; that value is the rate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The instantaneous rate is the slope of the curve at one moment, which is the slope of the tangent line there. The reactant falls, so the slope is negative and the rate is its negative.",
+    "options": [
+     "Right: the slope of the tangent at that time, made positive for a reactant.",
+     "A rate is a change divided by a time, not a concentration divided by a time.",
+     "That gives the average rate over the whole run, not the rate at 50 s.",
+     "A concentration is not a rate; the rate is how fast the concentration changes."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-rates-15",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A colored reactant fades as it reacts, and a spectrophotometer records absorbance every 10 s. The absorbance falls by 0.080 in the first 10 s and by 0.030 between 60 s and 70 s. What can you conclude?",
+   "options": [
+    "Faster at the start: absorbance is proportional to concentration",
+    "Faster near 60 s, because the solution is much less colored by then",
+    "The rates are not comparable, because absorbance is not a concentration",
+    "The rate is the same throughout, because the same solution is measured"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "By the Beer-Lambert law, absorbance is proportional to concentration at a fixed wavelength and path length. A larger drop in absorbance in the same 10 s means a larger drop in concentration, so the rate is greater at the start.",
+    "options": [
+     "Right: A = εbc lets absorbance stand in for concentration.",
+     "The smaller drop near 60 s means a smaller change per second, which is a slower rate.",
+     "Absorbance is proportional to concentration (A = εbc), so its changes track the rate.",
+     "Different drops in equal times mean different rates."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-rates-16",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Two students run the same reaction. Student X uses 0.10 M reactant and collects 25 mL of gas in 50 s. Student Y uses 0.20 M reactant and collects 50 mL of gas in 50 s. Student Y concludes, \"My reaction made twice as much gas, so twice as much reactant reacted, but the rates are equal.\" What is the error?",
+   "options": [
+    "Twice the gas in the same time is twice the rate",
+    "Y should have measured for twice as long before comparing",
+    "Gas volumes from different concentrations are not comparable",
+    "There is no error; the two rates are in fact equal to each other"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rate = amount formed ÷ time. X: 25 mL ÷ 50 s = 0.50 mL/s. Y: 50 mL ÷ 50 s = 1.0 mL/s. The higher concentration doubled the rate.",
+    "options": [
+     "Right: equal times, double the gas, double the rate.",
+     "Measuring for different times would make the comparison harder, not fix it.",
+     "Gas volumes measured the same way can be compared directly; that is how the rate is found.",
+     "The rates are 0.50 mL/s and 1.0 mL/s, which are not equal."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-rates-17",
+   "unit": "unit-5",
+   "topic": "reaction-rates",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 0.250 L solution starts with 0.0800 mol of a dye. After 40.0 s, 0.0560 mol of the dye remains. What is the average rate of disappearance of the dye, in M/s?",
+   "numeric": {
+    "answer": 0.0024,
+    "tol": 1e-05,
+    "unit": "M/s",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.0006,
+      "why": "Value: you used moles, not molarity. Divide the moles by 0.250 L first, then by the time."
+     },
+     {
+      "value": 0.0056,
+      "why": "Value: use the change in concentration, not the amount left at the end."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Change in moles = 0.0800 − 0.0560 = 0.0240 mol; change in concentration = 0.0240 mol / 0.250 L = 0.0960 M. Rate = 0.0960 M / 40.0 s = 2.40 × 10⁻³ M/s. The subtraction leaves 0.0240 (three significant figures), so the answer has three."
+   }
+  }
+ ]
+}

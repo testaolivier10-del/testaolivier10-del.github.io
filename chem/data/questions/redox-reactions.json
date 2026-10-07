@@ -1,0 +1,507 @@
+{
+ "stimuli": {
+  "redox-reactions-s1": {
+   "kind": "table",
+   "title": "Metals in metal-ion solutions",
+   "text": "<p>A student places a clean strip of each metal into 1 M solutions of the nitrates of the other metals and watches for a coating or other change after 10 minutes. Nitrate ions take no part in any of the reactions.</p>",
+   "table": {
+    "caption": "Observations (✓ = coating forms and metal strip slowly dissolves; – = no change)",
+    "cols": [
+     "Metal strip",
+     "Cu²⁺(aq)",
+     "Zn²⁺(aq)",
+     "Ag⁺(aq)",
+     "Mg²⁺(aq)"
+    ],
+    "rows": [
+     [
+      "Cu",
+      "",
+      "–",
+      "✓ (silver-gray)",
+      "–"
+     ],
+     [
+      "Zn",
+      "✓ (red-brown)",
+      "",
+      "✓ (silver-gray)",
+      "–"
+     ],
+     [
+      "Ag",
+      "–",
+      "–",
+      "",
+      "–"
+     ],
+     [
+      "Mg",
+      "✓ (red-brown)",
+      "✓ (gray)",
+      "✓ (silver-gray)",
+      ""
+     ]
+    ]
+   }
+  },
+  "redox-reactions-s2": {
+   "kind": "table",
+   "title": "A redox titration",
+   "text": "<p>A student pipets 25.00 mL of an acidified Fe²⁺ solution into a flask and titrates it with 0.02000 M KMnO₄. The purple MnO₄⁻ ion is reduced to nearly colorless Mn²⁺, so the first lasting pale pink color marks the end point; no separate indicator is needed. The balanced net ionic equation is</p><p>MnO₄⁻(aq) + 5Fe²⁺(aq) + 8H⁺(aq) → Mn²⁺(aq) + 5Fe³⁺(aq) + 4H₂O(l)</p>",
+   "table": {
+    "caption": "Volume of KMnO₄ needed",
+    "cols": [
+     "Trial",
+     "Volume of 0.02000 M KMnO₄ (mL)"
+    ],
+    "rows": [
+     [
+      "1",
+      "21.63"
+     ],
+     [
+      "2",
+      "21.66"
+     ],
+     [
+      "3",
+      "21.61"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-redox-reactions-1",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "redox-reactions-s1",
+   "q": "Which balanced net ionic equation describes the copper strip in the Ag⁺ solution?",
+   "options": [
+    "Cu(s) + 2Ag⁺(aq) → Cu²⁺(aq) + 2Ag(s)",
+    "Cu(s) + Ag⁺(aq) → Cu²⁺(aq) + Ag(s)",
+    "Cu²⁺(aq) + 2Ag(s) → Cu(s) + 2Ag⁺(aq)",
+    "Cu(s) + 2Ag⁺(aq) → Cu²⁺(aq) + Ag₂(s)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Copper atoms lose 2 electrons each (Cu → Cu²⁺ + 2e⁻) and each Ag⁺ gains 1 (Ag⁺ + e⁻ → Ag). Two Ag⁺ are needed per Cu so electrons lost equal electrons gained; charge is +2 on both sides.",
+    "options": [
+     "Right: 2 electrons lost and 2 gained; atoms and charge balance.",
+     "Atoms balance, but charge does not (+1 left, +2 right): electrons lost (2) do not equal electrons gained (1).",
+     "This is the reverse; the table shows silver metal does not react with Cu²⁺.",
+     "Silver metal is written as Ag(s); it does not form Ag₂ units."
+    ]
+   }
+  },
+  {
+   "id": "chem-redox-reactions-2",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "redox-reactions-s1",
+   "q": "Based on the table, which metal loses electrons most readily?",
+   "options": [
+    "Mg",
+    "Zn",
+    "Cu",
+    "Ag"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Magnesium reacts with every other metal ion, so it gives electrons to all of them. Silver reacts with none, so it gives up electrons least readily. Order: Mg > Zn > Cu > Ag.",
+    "options": [
+     "Right: Mg gives electrons to Cu²⁺, Zn²⁺ and Ag⁺.",
+     "Zinc reacts with Cu²⁺ and Ag⁺ but not Mg²⁺, so magnesium gives up electrons more readily.",
+     "Copper reacts only with Ag⁺.",
+     "Silver reacts with none of the solutions, so it loses electrons least readily."
+    ]
+   }
+  },
+  {
+   "id": "chem-redox-reactions-3",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "redox-reactions-s1",
+   "q": "In the reaction of zinc metal with Cu²⁺(aq), which species is the oxidizing agent?",
+   "options": [
+    "Cu²⁺",
+    "Zn",
+    "Zn²⁺",
+    "Cu"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cu²⁺ gains electrons (it is reduced to Cu), and by taking electrons it causes zinc to be oxidized. The species that is reduced is the oxidizing agent.",
+    "options": [
+     "Right: Cu²⁺ is reduced, so it is the oxidizing agent.",
+     "Zinc loses electrons; it is oxidized, so it is the reducing agent.",
+     "Zn²⁺ is a product, formed when zinc is oxidized.",
+     "Copper metal is a product, formed when Cu²⁺ is reduced."
+    ]
+   }
+  },
+  {
+   "id": "chem-redox-reactions-4",
+   "type": "predict",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "redox-reactions-s1",
+   "q": "A zinc strip sits in blue Cu²⁺(aq) until the reaction stops, and the zinc is still present at the end. Predict how each quantity changes.",
+   "variables": [
+    {
+     "name": "Mass of the zinc strip, not counting the copper coating",
+     "answer": "down",
+     "why": "Zinc atoms are oxidized to Zn²⁺ ions and leave the strip."
+    },
+    {
+     "name": "Intensity of the blue color of the solution",
+     "answer": "down",
+     "why": "Blue Cu²⁺ ions are reduced to copper metal and leave the solution."
+    },
+    {
+     "name": "Number of nitrate ions in solution",
+     "answer": "none",
+     "why": "Nitrate is a spectator ion; it does not react."
+    },
+    {
+     "name": "Number of Zn²⁺ ions in solution",
+     "answer": "up",
+     "why": "Each zinc atom oxidized adds one Zn²⁺ ion."
+    }
+   ],
+   "why": {
+    "correct": "Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s): zinc dissolves, copper ions leave the solution as metal, and nitrate stays put."
+   }
+  },
+  {
+   "id": "chem-redox-reactions-5",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "redox-reactions-s2",
+   "q": "What is the oxidation number of manganese in MnO₄⁻?",
+   "numeric": {
+    "answer": 7,
+    "tol": 0,
+    "unit": "",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 8,
+      "rel": 0.01,
+      "why": "Value: four O at −2 total −8, but the ion has a charge of 1−, not 0. Mn + (−8) = −1, so Mn is +7."
+     },
+     {
+      "value": -1,
+      "rel": 0.01,
+      "why": "Value: that is the charge of the whole ion. Find Mn from Mn + 4(−2) = −1."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Oxygen is −2, so 4 O contribute −8. The sum must equal the ion's charge, −1: Mn + (−8) = −1, so Mn = +7."
+   }
+  },
+  {
+   "id": "chem-redox-reactions-6",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "redox-reactions-s2",
+   "q": "How many electrons does each MnO₄⁻ ion gain in this reaction?",
+   "options": [
+    "5, because Mn goes from +7 to +2",
+    "7, because Mn starts at +7",
+    "2, because Mn ends as Mn²⁺",
+    "1, because the ion has a 1− charge"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The oxidation number of Mn falls from +7 to +2, a gain of 5 electrons. That matches the 5 Fe²⁺ each losing 1 electron (Fe²⁺ → Fe³⁺).",
+    "options": [
+     "Right: +7 to +2 is a change of 5.",
+     "Uses the starting oxidation number alone; the change is what counts.",
+     "Uses the final oxidation number alone; the change is 7 − 2.",
+     "The charge of the ion is not the number of electrons transferred."
+    ]
+   }
+  },
+  {
+   "id": "chem-redox-reactions-7",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "redox-reactions-s2",
+   "q": "Using the average of the three trials, what is the molarity of Fe²⁺ in the sample?",
+   "numeric": {
+    "answer": 0.08652,
+    "tol": 0.00002,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 0.0173,
+      "rel": 0.002,
+      "why": "Value: you used a 1 : 1 ratio. Each MnO₄⁻ reacts with 5 Fe²⁺, so multiply the moles of MnO₄⁻ by 5."
+     },
+     {
+      "value": 0.003461,
+      "rel": 0.002,
+      "why": "Value: you inverted the mole ratio. There are 5 Fe²⁺ per MnO₄⁻, so moles of Fe²⁺ are five times larger, not smaller."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Average volume = (21.63 + 21.66 + 21.61) mL ÷ 3 = 21.63 mL. Moles MnO₄⁻ = 0.02000 mol/L × 0.02163 L = 4.326 × 10⁻⁴ mol. Moles Fe²⁺ = 5 × 4.326 × 10⁻⁴ = 2.163 × 10⁻³ mol. Molarity = 2.163 × 10⁻³ mol ÷ 0.02500 L = 0.08652 M."
+   }
+  },
+  {
+   "id": "chem-redox-reactions-8",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "redox-reactions-s2",
+   "q": "Why does this titration need no added indicator?",
+   "options": [
+    "The purple titrant shows pink at the first excess",
+    "The Fe³⁺ ions formed turn the solution bright purple",
+    "Redox reactions give off light when they finish",
+    "The acid in the flask changes color at the end point"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Before the end point every drop of purple MnO₄⁻ is reduced to almost colorless Mn²⁺. Once all the Fe²⁺ is used, the next drop of MnO₄⁻ stays, coloring the solution pale pink.",
+    "options": [
+     "Right: the titrant acts as its own indicator.",
+     "Fe³⁺ is pale yellow in this solution, not purple; the color at the end comes from unreacted MnO₄⁻.",
+     "These reactions do not glow; the color change is from leftover titrant.",
+     "The acid is there to supply H⁺ for the reaction; it does not change color."
+    ]
+   }
+  },
+  {
+   "id": "chem-redox-reactions-9",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "redox-reactions-s2",
+   "q": "Which statement about this reaction is correct?",
+   "options": [
+    "Fe²⁺ is the reducing agent, as it is oxidized",
+    "MnO₄⁻ is the reducing agent, because it becomes Mn²⁺",
+    "H⁺ is oxidized, because it ends up in water",
+    "Oxygen is reduced, because it ends up in water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fe²⁺ → Fe³⁺ raises iron's oxidation number by one: iron loses an electron and is oxidized, so Fe²⁺ is the reducing agent. Manganese is reduced; H and O keep their oxidation numbers (+1 and −2).",
+    "options": [
+     "Right: the species oxidized is the reducing agent.",
+     "MnO₄⁻ gains electrons (Mn +7 → +2), so it is reduced and is the oxidizing agent.",
+     "Hydrogen is +1 in H⁺ and +1 in H₂O; its oxidation number does not change.",
+     "Oxygen is −2 in MnO₄⁻ and −2 in H₂O; it is neither oxidized nor reduced."
+    ]
+   }
+  },
+  {
+   "id": "chem-redox-reactions-10",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is the oxidation number of sulfur in H₂SO₄?",
+   "options": [
+    "+6",
+    "+4",
+    "−2",
+    "+8"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "2 H at +1 give +2; 4 O at −2 give −8. The compound is neutral: 2 + S − 8 = 0, so S = +6.",
+    "options": [
+     "Right: +2 + S − 8 = 0.",
+     "That is sulfur in H₂SO₃ or SO₂, which hold less oxygen; in H₂SO₄ the four O at −2 give −8, so S is +6.",
+     "That is sulfur in a sulfide ion or H₂S, where S is bonded to no oxygen.",
+     "Ignores the hydrogens: S − 8 = 0 would mean no H atoms."
+    ]
+   }
+  },
+  {
+   "id": "chem-redox-reactions-11",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which reactions are redox reactions? Select all that apply.",
+   "options": [
+    "2H₂(g) + O₂(g) → 2H₂O(l)",
+    "NaCl(aq) + AgNO₃(aq) → AgCl(s) + NaNO₃(aq)",
+    "Fe₂O₃(s) + 3CO(g) → 2Fe(s) + 3CO₂(g)",
+    "HCl(aq) + NaOH(aq) → NaCl(aq) + H₂O(l)"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "In the first, H goes from 0 to +1 and O from 0 to −2. In the third, Fe goes from +3 to 0 and C from +2 to +4. In the precipitation and acid-base reactions no oxidation number changes.",
+    "options": [
+     "Right: both elements change oxidation number.",
+     "Every ion keeps its charge; ions only change partners, so no electrons move.",
+     "Right: iron is reduced and carbon is oxidized.",
+     "An H⁺ moves, not electrons; all oxidation numbers stay the same."
+    ]
+   }
+  },
+  {
+   "id": "chem-redox-reactions-12",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 3,
+   "q": "Combine the half-reactions Al → Al³⁺ + 3e⁻ and Cu²⁺ + 2e⁻ → Cu into a balanced equation.",
+   "options": [
+    "2Al + 3Cu²⁺ → 2Al³⁺ + 3Cu",
+    "Al + Cu²⁺ → Al³⁺ + Cu",
+    "3Al + 2Cu²⁺ → 3Al³⁺ + 2Cu",
+    "Al + Cu²⁺ + e⁻ → Al³⁺ + Cu"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Make electrons lost equal electrons gained: the least common multiple of 3 and 2 is 6. Double the aluminum half-reaction (6e⁻ lost) and triple the copper one (6e⁻ gained), then add; the electrons cancel. Charge: +6 on each side.",
+    "options": [
+     "Right: 6 electrons lost and 6 gained.",
+     "Atoms balance but charge does not (+2 left, +3 right); 3 electrons lost but 2 gained.",
+     "Swaps the multipliers: 9 electrons lost but 4 gained, and charge +4 left, +9 right.",
+     "Electrons never appear in the final equation; they must cancel."
+    ]
+   }
+  },
+  {
+   "id": "chem-redox-reactions-13",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says \"in a redox reaction, the oxidizing agent is the substance that gets oxidized.\" Which reply is correct?",
+   "options": [
+    "No: it takes electrons from another substance, so it is reduced",
+    "Yes: its name says that it is the one oxidized",
+    "No: the oxidizing agent is the oxygen atom in the reaction",
+    "Yes, when oxygen gas is one of the reactants"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An agent causes the change in something else. The oxidizing agent oxidizes another substance by taking its electrons, so the agent gains electrons and is reduced.",
+    "options": [
+     "Right: the oxidizing agent is reduced.",
+     "The name describes what it does to the other reactant, not what happens to it.",
+     "Many redox reactions have no oxygen, such as Zn + Cu²⁺; the oxidizing agent there is Cu²⁺.",
+     "With or without oxygen gas, the oxidizing agent is the species reduced."
+    ]
+   }
+  },
+  {
+   "id": "chem-redox-reactions-14",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the oxidation number of chromium in the dichromate ion, Cr₂O₇²⁻?",
+   "numeric": {
+    "answer": 6,
+    "tol": 0,
+    "unit": "",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 12,
+      "rel": 0.01,
+      "why": "Value: +12 is the total for both chromium atoms. Divide by 2: each Cr is +6."
+     },
+     {
+      "value": 7,
+      "rel": 0.01,
+      "why": "Value: 7 O at −2 give −14, and the sum must be −2, not 0. 2Cr − 14 = −2, so Cr = +6."
+     }
+    ]
+   },
+   "why": {
+    "correct": "7 O at −2 give −14. The sum equals the ion's charge: 2Cr + (−14) = −2, so 2Cr = +12 and each Cr = +6."
+   }
+  },
+  {
+   "id": "chem-redox-reactions-15",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "redox-reactions",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student adds a strip of nickel metal to Cu²⁺(aq) and sees a red-brown coating form. A nickel strip in Zn²⁺(aq) shows no change. Using the ranking Mg > Zn > Cu > Ag for losing electrons, where does nickel fit?",
+   "options": [
+    "Between Zn and Cu",
+    "Above Mg",
+    "Between Cu and Ag",
+    "Below Ag"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Nickel gives electrons to Cu²⁺, so it loses electrons more readily than copper. It does not give electrons to Zn²⁺, so it loses them less readily than zinc. It fits between Zn and Cu.",
+    "options": [
+     "Right: more readily than Cu, less readily than Zn.",
+     "If nickel were above magnesium, it would also reduce Zn²⁺, which it does not.",
+     "If nickel were below copper, it could not reduce Cu²⁺, but it does.",
+     "A metal below silver would not reduce Cu²⁺; nickel does."
+    ]
+   }
+  }
+ ]
+}

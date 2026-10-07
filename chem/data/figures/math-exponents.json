@@ -1,0 +1,7 @@
+{
+ "exponent-rules": {
+  "file": "figures/exponent-rules.svg", "ext": "svg", "w": 680, "h": 300,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Four exponent rules: 10² × 10³ = 10⁵ (add), 10⁵ ÷ 10² = 10³ (subtract), (10²)³ = 10⁶ (multiply), and 10⁻³ = 1/1000 = 0.001 (reciprocal)."
+ }
+}

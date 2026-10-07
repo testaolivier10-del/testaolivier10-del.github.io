@@ -1,0 +1,91 @@
+{
+ "topic": "solutions",
+ "hook": "IV saline is 0.154 M sodium chloride. Make it much stronger or weaker and it damages the blood cells it touches. A solution is only useful at the right concentration, so chemists need an exact way to state it and an exact way to make it.",
+ "prereq": [
+  {
+   "q": "What is a homogeneous mixture?",
+   "options": [
+    "A mixture with the same composition throughout",
+    "A pure substance made of one element",
+    "A mixture with visible layers"
+   ],
+   "correct": 0,
+   "why": "Homogeneous means uniform all the way through, down to the particles.",
+   "review": "mixture-composition"
+  },
+  {
+   "q": "How many moles are in 5.844 g of NaCl (58.44 g/mol)?",
+   "options": [
+    "0.1000 mol",
+    "10.00 mol",
+    "341.5 mol"
+   ],
+   "correct": 0,
+   "why": "5.844 g ÷ 58.44 g/mol = 0.1000 mol.",
+   "review": "moles-molar-mass"
+  },
+  {
+   "q": "How many liters are in 250.0 mL?",
+   "options": [
+    "0.2500 L",
+    "2.500 L",
+    "250,000 L"
+   ],
+   "correct": 0,
+   "why": "250.0 mL × (1 L / 1000 mL) = 0.2500 L.",
+   "review": "math-units"
+  }
+ ],
+ "figure": {
+  "figure": "volumetric-flask-steps",
+  "caption": "Weigh, dissolve, dilute to the mark, invert: how to make a solution of known molarity."
+ },
+ "chain": [
+  {
+   "cause": "A solution is a mixture, so its composition can vary",
+   "effect": "we state its concentration as molarity, moles of solute per liter of solution"
+  },
+  {
+   "cause": "Molarity depends on the final volume of solution",
+   "effect": "solutions are made up to the mark of a volumetric flask, not by adding a volume of water"
+  },
+  {
+   "cause": "Adding water adds no solute",
+   "effect": "moles stay the same on dilution, so M₁V₁ = M₂V₂ with V₂ the total volume"
+  },
+  {
+   "cause": "Ionic solutes give moving ions in water",
+   "effect": "their solutions conduct electricity: they are electrolytes"
+  }
+ ],
+ "ideas": [
+  "M = mol solute / L solution. Convert mL to L first.",
+  "Prepare: analytical balance, volumetric flask, dissolve, dilute to the mark, invert.",
+  "Dilution: M₁V₁ = M₂V₂; V₂ is the total final volume.",
+  "Electrolytes give ions in water and conduct; count each ion: 0.10 M CaCl₂ is 0.20 M Cl⁻."
+ ],
+ "misconception": {
+  "wrong": "To make 1.00 L of 0.200 M solution, dissolve 0.200 mol of solute in 1.00 L of water.",
+  "right": "Molarity uses the volume of solution. Dissolve the solute in less water, then dilute to a total of 1.00 L in a volumetric flask."
+ },
+ "check": [
+  "chem-solutions-1",
+  "chem-solutions-2",
+  "chem-solutions-3",
+  "chem-solutions-4",
+  "chem-solutions-11",
+  "chem-solutions-12",
+  "chem-solutions-16"
+ ],
+ "summary": "A solution is a homogeneous mixture of a solute in a solvent. Molarity is moles of solute per liter of solution, made precisely with an analytical balance and a volumetric flask filled to the mark. Diluting keeps the moles of solute, so M₁V₁ = M₂V₂ with V₂ the total volume. Ionic solutes give ions, so their solutions conduct.",
+ "connections": [
+  {
+   "href": "../notes/mixture-composition.html",
+   "label": "Mixtures and pure substances (Elemental Composition of Mixtures)"
+  },
+  {
+   "href": "../notes/solution-particle-models.html",
+   "label": "Next: what the particles in a solution look like (Representations of Solutions)"
+  }
+ ]
+}

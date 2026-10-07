@@ -16,7 +16,7 @@
 
 /* ---- Shell: the tb-* frame in the course tint --------------------------- */
 .bk{--accent:var(--cink);--tint-accent:var(--ctint);--accent-text:var(--cink);}
-.bk .tb-main > .cx-crumb,.bk .tb-main > .anp-crumb,.bk .tb-main > .bio-crumb{margin:0 0 14px;}
+.bk .tb-main > .cx-crumb,.bk .tb-main > .anp-crumb,.bk .tb-main > .bio-crumb,.bk .tb-main > .chem-crumb{margin:0 0 14px;}
 .bk .tb-toc-btn{justify-self:start;}
 .bk .tb-toc-topic{align-items:flex-start;line-height:1.35;}
 .bk .tb-toc-topic .tb-toc-tick{margin-top:2px;}

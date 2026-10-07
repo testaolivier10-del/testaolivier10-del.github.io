@@ -1,0 +1,609 @@
+{
+ "stimuli": {
+  "buffers-intro-s1": {
+   "kind": "table",
+   "title": "Four mixtures of acetic acid and sodium hydroxide",
+   "text": "<p>Each flask starts with 50.0 mL of 0.100 M acetic acid, CH₃COOH (Ka = 1.8 × 10⁻⁵). A different volume of 0.100 M NaOH is added to each. Temperature 25 °C.</p>",
+   "table": {
+    "caption": "Volume of NaOH added",
+    "cols": [
+     "Flask",
+     "Volume of 0.100 M NaOH added (mL)"
+    ],
+    "rows": [
+     [
+      "1",
+      "0.0"
+     ],
+     [
+      "2",
+      "25.0"
+     ],
+     [
+      "3",
+      "50.0"
+     ],
+     [
+      "4",
+      "60.0"
+     ]
+    ]
+   }
+  },
+  "buffers-intro-s2": {
+   "kind": "particle",
+   "title": "Four solutions",
+   "html": "<svg viewBox=\"0 0 760 230\" width=\"760\" height=\"230\" role=\"img\" aria-label=\"Four boxes. Box P: four HF molecules and four F minus ions with four sodium ions. Box Q: four hydronium ions and six chloride ions with two sodium ions. Box R: six F minus ions and six sodium ions. Box S: six HF molecules and no other solute particles.\"><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect x=\"5\" y=\"5\" width=\"180\" height=\"220\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"95\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">P</text><circle cx=\"23.9\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"23.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"68.9\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"68.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"113.9\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"113.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"158.9\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"158.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"32.9\" cy=\"128.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"32.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"77.9\" cy=\"128.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"77.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"122.9\" cy=\"128.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"122.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"167.9\" cy=\"128.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"167.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"23.9\" cy=\"192.7\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"23.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"68.9\" cy=\"192.7\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"68.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"113.9\" cy=\"192.7\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"113.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"158.9\" cy=\"192.7\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"158.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><rect x=\"195\" y=\"5\" width=\"180\" height=\"220\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"285\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Q</text><circle cx=\"213.9\" cy=\"63.3\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"213.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"258.9\" cy=\"63.3\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"258.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"303.9\" cy=\"63.3\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"303.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"348.9\" cy=\"63.3\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"348.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"222.9\" cy=\"128.0\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"222.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"267.9\" cy=\"128.0\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"267.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"312.9\" cy=\"128.0\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"312.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"357.9\" cy=\"128.0\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"357.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"213.9\" cy=\"192.7\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"213.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"258.9\" cy=\"192.7\" r=\"15\" fill=\"#CC79A7\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"258.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Cl⁻</text><circle cx=\"303.9\" cy=\"192.7\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"303.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"348.9\" cy=\"192.7\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"348.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><rect x=\"385\" y=\"5\" width=\"180\" height=\"220\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"475\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">R</text><circle cx=\"403.9\" cy=\"63.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"403.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"448.9\" cy=\"63.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"448.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"493.9\" cy=\"63.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"493.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"538.9\" cy=\"63.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"538.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"412.9\" cy=\"128.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"412.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"457.9\" cy=\"128.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"457.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">F⁻</text><circle cx=\"502.9\" cy=\"128.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"502.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"547.9\" cy=\"128.0\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"547.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"403.9\" cy=\"192.7\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"403.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"448.9\" cy=\"192.7\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"448.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"493.9\" cy=\"192.7\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"493.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><circle cx=\"538.9\" cy=\"192.7\" r=\"15\" fill=\"#DDDDDD\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"538.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">Na⁺</text><rect x=\"575\" y=\"5\" width=\"180\" height=\"220\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"665\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">S</text><circle cx=\"600.2\" cy=\"79.5\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"600.2\" y=\"83.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"660.2\" cy=\"79.5\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"660.2\" y=\"83.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"720.2\" cy=\"79.5\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"720.2\" y=\"83.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"612.2\" cy=\"176.5\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"612.2\" y=\"180.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"672.2\" cy=\"176.5\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"672.2\" y=\"180.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text><circle cx=\"732.2\" cy=\"176.5\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"732.2\" y=\"180.5\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HF</text></g></svg><p>Key: HF hydrofluoric acid molecule; F⁻ fluoride; H₃O⁺ hydronium; Na⁺ sodium ion; Cl⁻ chloride. Water is not drawn, nor the few H₃O⁺ and F⁻ ions made when HF ionizes.</p>"
+  },
+  "buffers-intro-s3": {
+   "kind": "setup",
+   "title": "Two acid-base reactions",
+   "text": "<p>Reaction I: aqueous HF (Ka = 6.8 × 10⁻⁴) is mixed with aqueous NaOH.</p><p>Reaction II: aqueous NH₃ (Kb = 1.8 × 10⁻⁵) is mixed with aqueous HCl.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-buffers-intro-1",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffers-intro-s1",
+   "q": "Which flask contains a buffer?",
+   "options": [
+    "Flask 2",
+    "Flask 1",
+    "Flask 3",
+    "Flask 4"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Flask 2 has 5.00 × 10⁻³ mol acetic acid and 2.50 × 10⁻³ mol NaOH. The OH⁻ converts half the acid to acetate, leaving equal amounts of CH₃COOH and CH₃COO⁻: a weak acid with its conjugate base.",
+    "options": [
+     "Right: weak acid and conjugate base in similar amounts.",
+     "Flask 1 holds only acetic acid; there is no conjugate base to react with added acid.",
+     "Flask 3 is exactly neutralized: all the acid became acetate, so there is no weak acid left.",
+     "Flask 4 has excess NaOH and no acetic acid left; its pH is set by the strong base."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffers-intro-2",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffers-intro-s1",
+   "q": "What is the pH in Flask 2?",
+   "numeric": {
+    "answer": 4.74,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 2.88,
+      "why": "Value: that is the pH of the acid alone. Let the 2.50 × 10⁻³ mol OH⁻ react with the acid first.",
+      "tol": 0.02
+     },
+     {
+      "value": 9.25,
+      "why": "Value: that is the pOH. [H₃O⁺] = Ka × [HA]/[A⁻] gives the pH directly.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "After reaction: 2.50 × 10⁻³ mol CH₃COOH and 2.50 × 10⁻³ mol CH₃COO⁻. In Ka = [H₃O⁺][A⁻]/[HA], the volume cancels, so [H₃O⁺] = Ka × (2.50 × 10⁻³)/(2.50 × 10⁻³) = 1.8 × 10⁻⁵ M and pH = −log(1.8 × 10⁻⁵) = 4.74, which is pKa."
+   }
+  },
+  {
+   "id": "chem-buffers-intro-3",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "buffers-intro-s1",
+   "q": "What is the pH in Flask 3?",
+   "numeric": {
+    "answer": 8.72,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 7,
+      "why": "Value: 7.00 is the equivalence pH only for a strong acid with a strong base. Here acetate, a weak base, is left in solution.",
+      "tol": 0.02
+     },
+     {
+      "value": 8.87,
+      "why": "Value: the volume doubled to 100.0 mL, so [CH₃COO⁻] = 0.0500 M, not 0.100 M.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "All 5.00 × 10⁻³ mol acid became acetate, now in 100.0 mL: [CH₃COO⁻] = 0.0500 M. Kb = Kw/Ka = 5.56 × 10⁻¹⁰. [OH⁻] = √(5.56 × 10⁻¹⁰ × 0.0500) = 5.27 × 10⁻⁶ M; pOH = 5.278; pH = 8.72."
+   }
+  },
+  {
+   "id": "chem-buffers-intro-4",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffers-intro-s1",
+   "q": "What is the pH in Flask 4?",
+   "numeric": {
+    "answer": 11.96,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 12.22,
+      "why": "Value: divide the excess OH⁻ by the total volume, 110.0 mL, not the 60.0 mL of base.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "OH⁻ added: 6.00 × 10⁻³ mol; acid: 5.00 × 10⁻³ mol. Excess OH⁻ = 1.00 × 10⁻³ mol in 0.1100 L = 0.00909 M. The acetate adds very little OH⁻ beside this. pOH = 2.041; pH = 11.96."
+   }
+  },
+  {
+   "id": "chem-buffers-intro-5",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffers-intro-s1",
+   "q": "Apart from water and Na⁺, which species is present in the greatest amount in Flask 3?",
+   "options": [
+    "CH₃COO⁻",
+    "CH₃COOH",
+    "OH⁻",
+    "H₃O⁺"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Every acetic acid molecule reacted with OH⁻, so the flask holds 5.00 × 10⁻³ mol CH₃COO⁻. Only a tiny amount of it takes a proton back from water.",
+    "options": [
+     "Right: the conjugate base is what remains at equivalence.",
+     "Only a trace of CH₃COOH re-forms, about 5 × 10⁻⁶ M.",
+     "OH⁻ is present at about 5 × 10⁻⁶ M, made by acetate reacting with water; far less than the acetate.",
+     "The solution is basic, so H₃O⁺ is the scarcest of these."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffers-intro-6",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "buffers-intro-s2",
+   "q": "Which box represents a buffer?",
+   "options": [
+    "P",
+    "Q",
+    "R",
+    "S"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Box P has a weak acid (HF) and its conjugate base (F⁻) in equal amounts. Added H₃O⁺ reacts with F⁻; added OH⁻ reacts with HF.",
+    "options": [
+     "Right: weak acid plus conjugate base.",
+     "Box Q is a strong acid solution with spare Cl⁻. Cl⁻ is too weak a base to remove added H₃O⁺.",
+     "Box R has the base F⁻ but no HF to react with added OH⁻.",
+     "Box S has the weak acid but no F⁻ to react with added H₃O⁺."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffers-intro-7",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "buffers-intro-s2",
+   "q": "Box Q contains Cl⁻, the conjugate base of HCl. Why is it not a buffer?",
+   "options": [
+    "Cl⁻ is the conjugate base of a strong acid, so it does not take H⁺ from added H₃O⁺",
+    "It has more Cl⁻ than H₃O⁺, and a buffer needs equal amounts",
+    "Na⁺ ions react with added OH⁻ and use it up",
+    "A buffer is a solution with no H₃O⁺ ions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "HCl ionizes fully, so its conjugate base has a negligible Kb: Cl⁻ does not pick protons back up. Added acid would stay as free H₃O⁺, and the pH would drop sharply.",
+    "options": [
+     "Right: a buffer needs a conjugate base strong enough to react with added acid.",
+     "Buffers work over a range of ratios; unequal amounts are not the problem here.",
+     "Na⁺ is a spectator ion; it does not react with OH⁻.",
+     "Every water solution has some H₃O⁺, buffers included."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffers-intro-8",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "buffers-intro-s2",
+   "q": "Which box has the highest pH?",
+   "options": [
+    "R",
+    "P",
+    "Q",
+    "S"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Box R holds only F⁻, a weak base: F⁻ + H₂O ⇌ HF + OH⁻ makes the solution slightly basic. Every other box contains an acid.",
+    "options": [
+     "Right: the conjugate base alone gives a basic solution.",
+     "Box P is a buffer at pH = pKa of HF, about 3.2: acidic.",
+     "Box Q is a strong acid solution, the lowest pH of the four.",
+     "Box S is HF alone, a weak acid: acidic."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffers-intro-9",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffers-intro-s2",
+   "q": "Two OH⁻ ions (from NaOH) are added to Box P. Which shows the solutes after reaction?",
+   "options": [
+    "2 HF, 6 F⁻, 6 Na⁺",
+    "4 HF, 4 F⁻, 6 Na⁺, 2 OH⁻",
+    "6 HF, 2 F⁻, 6 Na⁺",
+    "2 HF, 4 F⁻, 4 Na⁺, 2 H₂O"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "OH⁻ + HF → F⁻ + H₂O goes to completion: two HF become two F⁻, and the two Na⁺ added with the OH⁻ stay as spectators.",
+    "options": [
+     "Right: two HF used, two F⁻ made, six Na⁺ in all.",
+     "The OH⁻ cannot stay free beside HF: it reacts with the weak acid.",
+     "The change goes the wrong way: OH⁻ removes HF and makes F⁻.",
+     "This loses two F⁻ and the Na⁺ added with the base; ions are not destroyed."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffers-intro-10",
+   "type": "multi",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which mixtures, dissolved in 1.0 L of water, make a buffer? Select all that apply.",
+   "options": [
+    "0.20 mol HNO₂ and 0.15 mol NaNO₂",
+    "0.20 mol HNO₃ and 0.15 mol NaNO₃",
+    "0.20 mol NH₃ and 0.10 mol HCl",
+    "0.20 mol NH₃ and 0.20 mol HCl",
+    "0.20 mol NaOH and 0.10 mol HCl"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "A buffer needs a weak acid and its conjugate base (or a weak base and its conjugate acid) together. HNO₂/NO₂⁻ qualifies directly; NH₃ + half as much HCl leaves 0.10 mol NH₃ and 0.10 mol NH₄⁺.",
+    "options": [
+     "Right: weak acid and conjugate base.",
+     "HNO₃ is strong; NO₃⁻ cannot remove added acid.",
+     "Right: partial neutralization of a weak base makes NH₃/NH₄⁺.",
+     "Equal moles convert all NH₃ to NH₄⁺; no weak base remains.",
+     "Strong base and strong acid leave only excess NaOH."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffers-intro-11",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffers-intro-s3",
+   "q": "Which is the net ionic equation for Reaction I?",
+   "options": [
+    "HF(aq) + OH⁻(aq) → F⁻(aq) + H₂O(l)",
+    "H₃O⁺(aq) + OH⁻(aq) → 2 H₂O(l)",
+    "HF(aq) + NaOH(aq) → NaF(aq) + H₂O(l)",
+    "H⁺(aq) + F⁻(aq) + OH⁻(aq) → F⁻(aq) + H₂O(l)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "HF is weak, so it is mostly molecules and is written whole. NaOH is a strong electrolyte, so it appears as OH⁻ with Na⁺ canceled as a spectator.",
+    "options": [
+     "Right: weak acid written as a molecule.",
+     "This is the net equation for a strong acid; HF is not ionized enough to write it as H₃O⁺.",
+     "This is the molecular equation; it still shows the spectator Na⁺ inside NaOH and NaF.",
+     "This splits HF into ions as if it were strong."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffers-intro-12",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "buffers-intro-s3",
+   "q": "What is K for the net reaction HF(aq) + OH⁻(aq) ⇌ F⁻(aq) + H₂O(l)? Give your answer in scientific notation.",
+   "numeric": {
+    "answer": 68000000000,
+    "tol": 1000000000,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 6.8e-18,
+      "why": "Value: this reaction is HF ionizing (Ka) plus the reverse of water ionizing (1/Kw). Multiply Ka by 1/Kw: K = Ka / Kw.",
+      "rel": 0.02
+     },
+     {
+      "value": 1.5e-11,
+      "why": "Value: that is Kb of F⁻, the reverse of this reaction. Here K = Ka / Kw = 1/Kb.",
+      "rel": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "HF + H₂O ⇌ H₃O⁺ + F⁻ (Ka) plus H₃O⁺ + OH⁻ ⇌ 2 H₂O (1/Kw) gives the net reaction, so K = Ka/Kw = (6.8 × 10⁻⁴)/(1.0 × 10⁻¹⁴) = 6.8 × 10¹⁰. So large that the reaction goes essentially to completion."
+   }
+  },
+  {
+   "id": "chem-buffers-intro-13",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "buffers-intro-s3",
+   "q": "Equal moles of NH₃ and HCl react in Reaction II. Which describes the final solution?",
+   "options": [
+    "Acidic, because NH₄⁺ gives protons to water",
+    "Neutral, because equal moles of acid and base reacted",
+    "Basic, because NH₃ is a base",
+    "Neutral, because Cl⁻ is a spectator ion"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The product NH₄⁺ is the conjugate acid of a weak base: NH₄⁺ + H₂O ⇌ NH₃ + H₃O⁺ (Ka = Kw/Kb = 5.6 × 10⁻¹⁰), so the solution is slightly acidic.",
+    "options": [
+     "Right: the conjugate acid of a weak base is a weak acid.",
+     "Equal moles give a neutral solution only for strong acid with strong base.",
+     "All the NH₃ was converted to NH₄⁺; no base is left.",
+     "Cl⁻ is a spectator, but NH₄⁺ is not: it reacts with water."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffers-intro-14",
+   "type": "predict",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffers-intro-s3",
+   "q": "In Reaction II, a small amount of HCl (less than the moles of NH₃) is added to an NH₃ solution. Predict the change in each quantity.",
+   "variables": [
+    {
+     "name": "Moles of NH₃",
+     "answer": "down",
+     "why": "H₃O⁺ + NH₃ → NH₄⁺ + H₂O uses up ammonia, one for one with the acid added."
+    },
+    {
+     "name": "Moles of NH₄⁺",
+     "answer": "up",
+     "why": "Each H₃O⁺ that reacts makes one NH₄⁺."
+    },
+    {
+     "name": "Kb of NH₃",
+     "answer": "none",
+     "why": "Kb is an equilibrium constant and changes only with temperature, not with what is added."
+    },
+    {
+     "name": "pH",
+     "answer": "down",
+     "why": "Less base and more of its conjugate acid: the pH falls, though only a little once NH₄⁺ is present."
+    }
+   ],
+   "why": {
+    "correct": "Added acid converts the weak base into its conjugate acid; the mixture of NH₃ and NH₄⁺ is a buffer."
+   }
+  },
+  {
+   "id": "chem-buffers-intro-15",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A solution contains 0.30 M HNO₂ and 0.20 M NaNO₂ (Ka of HNO₂ = 4.0 × 10⁻⁴). What is its pH?",
+   "numeric": {
+    "answer": 3.22,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 3.57,
+      "why": "Value: the ratio is upside down. [H₃O⁺] = Ka × [HA]/[A⁻], with the acid on top.",
+      "tol": 0.02
+     },
+     {
+      "value": 1.96,
+      "why": "Value: you ignored the NO₂⁻. It is already present at 0.20 M, so use [H₃O⁺] = Ka × [HNO₂]/[NO₂⁻].",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "Rearrange Ka = [H₃O⁺][NO₂⁻]/[HNO₂]: [H₃O⁺] = 4.0 × 10⁻⁴ × 0.30/0.20 = 6.0 × 10⁻⁴ M. pH = −log(6.0 × 10⁻⁴) = 3.22. Both amounts barely change, because the NO₂⁻ already present pushes the ionization of HNO₂ even further left."
+   }
+  },
+  {
+   "id": "chem-buffers-intro-16",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A flask holds 0.0400 mol of acetic acid. What volume of 0.500 M NaOH, in mL, converts exactly half of it to acetate?",
+   "numeric": {
+    "answer": 40,
+    "tol": 0.1,
+    "unit": "mL",
+    "units": [
+     "milliliters"
+    ],
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 80,
+      "why": "Value: that converts all of the acid. Half the acid needs 0.0200 mol OH⁻.",
+      "rel": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "Half of 0.0400 mol is 0.0200 mol; 0.0200 mol ÷ 0.500 mol/L = 0.0400 L = 40.0 mL. The flask then holds 0.0200 mol each of acid and acetate."
+   }
+  },
+  {
+   "id": "chem-buffers-intro-17",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student mixes 0.020 mol NH₃ and 0.010 mol HCl in water to make 0.500 L of solution. Kb of NH₃ = 1.8 × 10⁻⁵. What is the pH?",
+   "numeric": {
+    "answer": 9.26,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 4.74,
+      "why": "Value: that is pKb, so it is really the pOH. For a base buffer use the Ka of NH₄⁺ (Kw/Kb) for pH, or subtract the pOH from 14.00.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "H₃O⁺ + NH₃ → NH₄⁺ leaves 0.010 mol NH₃ and 0.010 mol NH₄⁺. For NH₄⁺, Ka = Kw/Kb = 5.6 × 10⁻¹⁰. [H₃O⁺] = Ka × [NH₄⁺]/[NH₃] = 5.56 × 10⁻¹⁰ × 1 = 5.56 × 10⁻¹⁰ M → pH = 9.26 (rounding Ka to 5.6 × 10⁻¹⁰ first gives 9.25, also accepted)."
+   }
+  },
+  {
+   "id": "chem-buffers-intro-18",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Equal moles of HCN (Ka = 6.2 × 10⁻¹⁰) and KOH are mixed. How does the final pH compare with 7?",
+   "options": [
+    "Above 7, because CN⁻ takes protons from water",
+    "Equal to 7, because the acid and base were in equal moles",
+    "Below 7, because HCN is an acid",
+    "Equal to 7, because K⁺ is a spectator ion"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "All the HCN becomes CN⁻, the conjugate base of a very weak acid. CN⁻ + H₂O ⇌ HCN + OH⁻ (Kb = 1.6 × 10⁻⁵) makes the solution basic.",
+    "options": [
+     "Right: a weak acid neutralized by a strong base leaves a basic solution.",
+     "Equal moles give pH 7 only when both are strong.",
+     "No HCN remains after it reacts with an equal amount of KOH.",
+     "K⁺ is a spectator, but CN⁻ is not."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffers-intro-19",
+   "type": "order",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for finding the pH after a strong base is added to a weak acid in order.",
+   "options": [
+    "Find the moles of weak acid and of OH⁻ added",
+    "Let OH⁻ react with the weak acid to completion; record what is left",
+    "Decide the case: acid and conjugate base left (a buffer), only conjugate base left, or excess OH⁻",
+    "Use the matching equation: Ka ratio, Kb of the conjugate base, or excess OH⁻ over total volume"
+   ],
+   "why": {
+    "correct": "The neutralization runs first because its K is huge. What remains decides which equilibrium sets the pH."
+   }
+  },
+  {
+   "id": "chem-buffers-intro-20",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffers-intro",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A buffer contains 0.20 mol NH₃ and 0.20 mol NH₄Cl. A student adds 0.050 mol of HCl. Which reaction takes place?",
+   "options": [
+    "NH₃ + H₃O⁺ → NH₄⁺ + H₂O",
+    "NH₄⁺ + H₃O⁺ → NH₅²⁺ + H₂O",
+    "NH₄⁺ + OH⁻ → NH₃ + H₂O",
+    "Cl⁻ + H₃O⁺ → HCl + H₂O"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Added acid is taken up by the base of the pair, NH₃, which becomes NH₄⁺. Free H₃O⁺ stays low.",
+    "options": [
+     "Right: the weak base removes the added acid.",
+     "NH₄⁺ already carries a positive charge and has no lone pair to accept another proton.",
+     "This is how the buffer handles added base, not added acid.",
+     "Cl⁻ is the conjugate base of a strong acid and does not take protons."
+    ]
+   }
+  }
+ ]
+}

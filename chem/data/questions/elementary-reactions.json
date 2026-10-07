@@ -1,0 +1,431 @@
+{
+ "stimuli": {
+  "elementary-reactions-s1": {
+   "kind": "particle",
+   "title": "Three boxes of the same gas mixture",
+   "text": "<p>The elementary reaction A + B → AB happens in one collision between an A molecule and a B molecule. Three identical containers at the same temperature hold the mixtures shown.</p>",
+   "html": "<svg viewBox=\"0 0 516 180\" width=\"516\" height=\"180\" role=\"img\" aria-label=\"Three equal boxes. Box 1 holds 2 molecules of A and 2 of B. Box 2 holds 4 of A and 2 of B. Box 3 holds 4 of A and 4 of B.\"><rect x=\"4\" y=\"4\" width=\"160\" height=\"150\" rx=\"8\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"36\" cy=\"38\" r=\"10\" fill=\"#1D44A6\"/><circle cx=\"100\" cy=\"74\" r=\"10\" fill=\"#1D44A6\"/><circle cx=\"60\" cy=\"116\" r=\"10\" fill=\"#FFFFFF\" stroke=\"#D55E00\" stroke-width=\"3\"/><circle cx=\"126\" cy=\"34\" r=\"10\" fill=\"#FFFFFF\" stroke=\"#D55E00\" stroke-width=\"3\"/><text x=\"84\" y=\"174\" font-size=\"15\" text-anchor=\"middle\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\">Box 1</text><rect x=\"178\" y=\"4\" width=\"160\" height=\"150\" rx=\"8\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"210\" cy=\"38\" r=\"10\" fill=\"#1D44A6\"/><circle cx=\"274\" cy=\"74\" r=\"10\" fill=\"#1D44A6\"/><circle cx=\"234\" cy=\"116\" r=\"10\" fill=\"#1D44A6\"/><circle cx=\"300\" cy=\"34\" r=\"10\" fill=\"#1D44A6\"/><circle cx=\"212\" cy=\"82\" r=\"10\" fill=\"#FFFFFF\" stroke=\"#D55E00\" stroke-width=\"3\"/><circle cx=\"282\" cy=\"122\" r=\"10\" fill=\"#FFFFFF\" stroke=\"#D55E00\" stroke-width=\"3\"/><text x=\"258\" y=\"174\" font-size=\"15\" text-anchor=\"middle\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\">Box 2</text><rect x=\"352\" y=\"4\" width=\"160\" height=\"150\" rx=\"8\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"384\" cy=\"38\" r=\"10\" fill=\"#1D44A6\"/><circle cx=\"448\" cy=\"74\" r=\"10\" fill=\"#1D44A6\"/><circle cx=\"408\" cy=\"116\" r=\"10\" fill=\"#1D44A6\"/><circle cx=\"474\" cy=\"34\" r=\"10\" fill=\"#1D44A6\"/><circle cx=\"386\" cy=\"82\" r=\"10\" fill=\"#FFFFFF\" stroke=\"#D55E00\" stroke-width=\"3\"/><circle cx=\"456\" cy=\"122\" r=\"10\" fill=\"#FFFFFF\" stroke=\"#D55E00\" stroke-width=\"3\"/><circle cx=\"426\" cy=\"44\" r=\"10\" fill=\"#FFFFFF\" stroke=\"#D55E00\" stroke-width=\"3\"/><circle cx=\"484\" cy=\"86\" r=\"10\" fill=\"#FFFFFF\" stroke=\"#D55E00\" stroke-width=\"3\"/><text x=\"432\" y=\"174\" font-size=\"15\" text-anchor=\"middle\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\">Box 3</text></svg><p>Key: dark filled circle, a molecule of A; light ringed circle, a molecule of B.</p>"
+  },
+  "elementary-reactions-s2": {
+   "kind": "model",
+   "title": "Four elementary steps",
+   "html": "<p>Each equation below is an elementary step, one single event at the particle level:</p><ol><li>O₃ → O₂ + O</li><li>NO + O₃ → NO₂ + O₂</li><li>2 NO₂ → NO₃ + NO</li><li>2 NO + O₂ → 2 NO₂</li></ol>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-elementary-reactions-1",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "elementary-reactions-s1",
+   "q": "What is the rate law for this elementary step?",
+   "options": [
+    "rate = k[A][B]",
+    "rate = k[AB]",
+    "rate = k[A]²",
+    "rate = k[A] + k[B]"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For an elementary step the rate law comes straight from the step: one A and one B collide, so rate = k[A][B].",
+    "options": [
+     "Right: first order in each of the two colliding reactants.",
+     "AB is the product; a rate law uses the reactants.",
+     "That would describe two A molecules colliding.",
+     "Rate laws multiply concentrations; they are not sums."
+    ]
+   }
+  },
+  {
+   "id": "chem-elementary-reactions-2",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "elementary-reactions-s1",
+   "q": "How does the initial rate in Box 2 compare with Box 1?",
+   "options": [
+    "Half as fast",
+    "The same",
+    "Twice as fast",
+    "Four times as fast"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Box 2 has twice as many A molecules and the same number of B. With rate = k[A][B], doubling [A] doubles the rate: there are twice as many possible A–B pairs to collide.",
+    "options": [
+     "Box 2 has more molecules, not fewer.",
+     "More A molecules means more A–B collisions per second.",
+     "Right: [A] doubles, [B] stays the same.",
+     "Four times would need both [A] and [B] doubled, as in Box 3."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-elementary-reactions-3",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "elementary-reactions-s1",
+   "q": "How does the initial rate in Box 3 compare with Box 1?",
+   "options": [
+    "The same",
+    "Twice as fast",
+    "Four times as fast",
+    "Eight times as fast"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Both [A] and [B] double: rate × 2 × 2 = 4. Box 1 has 2 × 2 = 4 possible A–B pairs; Box 3 has 4 × 4 = 16.",
+    "options": [
+     "More molecules of both kinds means more collisions.",
+     "That counts only the doubling of one reactant.",
+     "Right: 2 × 2 = 4.",
+     "That would be a third-order step."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-elementary-reactions-4",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "single",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "elementary-reactions-s1",
+   "q": "What is the molecularity of A + B → AB?",
+   "options": [
+    "Zero-molecular",
+    "Unimolecular",
+    "Bimolecular",
+    "Termolecular"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Molecularity counts the reactant particles that come together in the step: one A and one B, two particles.",
+    "options": [
+     "Every elementary step involves at least one particle.",
+     "Unimolecular is one particle changing on its own.",
+     "Right: two particles collide.",
+     "Termolecular needs three particles colliding at once."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-elementary-reactions-5",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "elementary-reactions-s2",
+   "q": "What is the rate law for step 3, 2 NO₂ → NO₃ + NO?",
+   "options": [
+    "rate = k[NO₂]²",
+    "rate = k[NO₂]",
+    "rate = k[NO₃][NO]",
+    "rate = 2k[NO₂]"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two NO₂ molecules collide in this step, so the rate is proportional to [NO₂] × [NO₂] = [NO₂]².",
+    "options": [
+     "Right: the coefficient 2 becomes the exponent for an elementary step.",
+     "That would be a single NO₂ falling apart.",
+     "Those are the products; a forward rate law uses reactants.",
+     "The coefficient goes in the exponent, not in front of k."
+    ]
+   }
+  },
+  {
+   "id": "chem-elementary-reactions-6",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "elementary-reactions-s2",
+   "q": "Which step is termolecular?",
+   "options": [
+    "Step 1",
+    "Step 2",
+    "Step 3",
+    "Step 4"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Step 4 needs two NO molecules and one O₂ to meet at once: three particles.",
+    "options": [
+     "Step 1 is one O₃ breaking apart: unimolecular.",
+     "Step 2 is NO meeting O₃: bimolecular.",
+     "Step 3 is two NO₂ meeting: bimolecular.",
+     "Right: 2 NO + O₂ is three particles."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-elementary-reactions-7",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "elementary-reactions-s2",
+   "q": "Why are termolecular steps like step 4 much less common than bimolecular steps?",
+   "options": [
+    "Three particles rarely meet at the same instant",
+    "Three particles carry too much energy to stick together",
+    "Termolecular steps happen just in solids",
+    "Three particles are unable to line up in the right orientation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A collision of two particles is common; having a third arrive at exactly the same moment is far less likely, so steps with three particles are rare.",
+    "options": [
+     "Right: a three-body collision is improbable.",
+     "Energy is not the reason; the meeting itself is unlikely.",
+     "Step 4 is a gas-phase step; molecularity is not about the state.",
+     "Orientation is a separate issue; the main problem is getting three together at once."
+    ]
+   }
+  },
+  {
+   "id": "chem-elementary-reactions-8",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "elementary-reactions-s2",
+   "q": "If [O₃] in step 1 is tripled, by what factor does the rate of step 1 change?",
+   "options": [
+    "1",
+    "3",
+    "9",
+    "27"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Step 1 is unimolecular: rate = k[O₃]. Tripling [O₃] triples the rate.",
+    "options": [
+     "The rate of a unimolecular step depends on how many molecules are there.",
+     "Right: first order in O₃.",
+     "9 would need the step to be second order in O₃.",
+     "27 would need third order."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-elementary-reactions-9",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The overall reaction 2 H₂ + 2 NO → N₂ + 2 H₂O has the measured rate law rate = k[H₂][NO]². What can you conclude?",
+   "options": [
+    "It is not one step: the orders differ from the coefficients",
+    "The reaction is a single step in which four molecules collide at once",
+    "The measured rate law is wrong, since the order in H₂ should be 2",
+    "Rate laws for overall reactions follow their coefficients"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "If the overall equation were one elementary step, the rate law would be k[H₂]²[NO]². The measured order in H₂ is 1, so the reaction happens in more than one step (a mechanism, topic 5.7).",
+    "options": [
+     "Right: an elementary rate law follows its coefficients, and this one does not.",
+     "Four particles meeting at once is essentially impossible; the data also rule it out.",
+     "Measured orders are the facts; it is the \"single step\" idea that fails.",
+     "This is the misconception: only elementary steps follow their coefficients."
+    ]
+   }
+  },
+  {
+   "id": "chem-elementary-reactions-10",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "multi",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statements about elementary reactions are true? Select all that apply.",
+   "options": [
+    "An elementary reaction happens in a single collision or event",
+    "The rate law of an elementary reaction follows from its coefficients",
+    "The rate law of an overall balanced equation follows from its coefficients",
+    "Most elementary reactions involve four or more particles"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "An elementary reaction is one event, so its rate law can be written from its coefficients. An overall equation is often several steps, and steps of four or more particles do not happen.",
+    "options": [
+     "Right: one event at the particle level.",
+     "Right: for a single event, the coefficients give the orders.",
+     "Only elementary steps can be read this way; overall rate laws must be measured.",
+     "Almost all elementary steps are uni- or bimolecular; three is rare and four essentially unknown."
+    ]
+   }
+  },
+  {
+   "id": "chem-elementary-reactions-11",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "The elementary step NO + O₃ → NO₂ + O₂ has k = 1.8 × 10⁷ M⁻¹ s⁻¹ at a certain temperature. What is the rate, in M/s, when [NO] = 2.0 × 10⁻⁸ M and [O₃] = 5.0 × 10⁻⁷ M?",
+   "numeric": {
+    "answer": 1.8e-07,
+    "tol": 1e-08,
+    "unit": "M/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.36,
+      "why": "Value: include [O₃] too: rate = k[NO][O₃]."
+     },
+     {
+      "value": 3.6e-15,
+      "why": "Value: NO has coefficient 1, so it is first order here; do not square it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "rate = k[NO][O₃] = (1.8 × 10⁷ M⁻¹ s⁻¹)(2.0 × 10⁻⁸ M)(5.0 × 10⁻⁷ M) = 1.8 × 10⁻⁷ M/s."
+   }
+  },
+  {
+   "id": "chem-elementary-reactions-12",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "An elementary step has the rate law rate = k[X]². Which equation could be that step?",
+   "options": [
+    "2 X → X₂",
+    "X → 2 Y",
+    "X + Y → XY",
+    "X₂ → 2 X"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Second order in X with nothing else means two X particles collide: 2 X → products.",
+    "options": [
+     "Right: two X collide.",
+     "One X breaking apart is first order in X.",
+     "That step would be first order in X and first order in Y.",
+     "One X₂ breaking apart would be first order in X₂."
+    ]
+   }
+  },
+  {
+   "id": "chem-elementary-reactions-13",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "predict",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the elementary step 2 NO₂ → NO₃ + NO, [NO₂] is halved at constant temperature. Predict each change.",
+   "variables": [
+    {
+     "name": "Rate of the step",
+     "answer": "down",
+     "why": "rate = k[NO₂]², so halving [NO₂] cuts the rate to (½)² = ¼."
+    },
+    {
+     "name": "Rate constant k",
+     "answer": "none",
+     "why": "k depends on temperature, not on concentration."
+    },
+    {
+     "name": "Molecularity of the step",
+     "answer": "none",
+     "why": "The step still involves two NO₂ molecules colliding; molecularity is a property of the step."
+    }
+   ],
+   "why": {
+    "correct": "Fewer NO₂ molecules means fewer NO₂–NO₂ collisions: the rate drops to a quarter. k and the molecularity are unchanged."
+   }
+  },
+  {
+   "id": "chem-elementary-reactions-14",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In the gas phase, the elementary step H + Cl₂ → HCl + Cl is run in a container whose volume is then halved at constant temperature (no reaction during the squeeze). How does the rate of the step change?",
+   "options": [
+    "It stays the same",
+    "It becomes 2 times as fast",
+    "It becomes 4 times as fast",
+    "It becomes 8 times as fast"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Halving the volume doubles every concentration. The step is bimolecular, rate = k[H][Cl₂], so the rate changes by 2 × 2 = 4: each H atom meets Cl₂ molecules twice as often, and there are twice as many H atoms per liter.",
+    "options": [
+     "The same molecules in less space collide more often.",
+     "That counts only one of the two concentrations.",
+     "Right: both concentrations double.",
+     "Eight would need a termolecular step."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-elementary-reactions-15",
+   "unit": "unit-5",
+   "topic": "elementary-reactions",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which elementary step has the rate law rate = k[NO][Cl₂]?",
+   "options": [
+    "NO + Cl₂ → NOCl + Cl",
+    "2 NO + Cl₂ → 2 NOCl",
+    "NOCl + Cl → NO + Cl₂",
+    "2 NOCl → 2 NO + Cl₂"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "One NO and one Cl₂ collide, so each is first order: rate = k[NO][Cl₂].",
+    "options": [
+     "Right: one of each reactant.",
+     "With 2 NO the rate law would be k[NO]²[Cl₂].",
+     "Its reactants are NOCl and Cl, so its rate law is k[NOCl][Cl].",
+     "Its rate law would be k[NOCl]²."
+    ]
+   }
+  }
+ ]
+}

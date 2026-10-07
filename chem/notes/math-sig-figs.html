@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Significant Figures — AP® Chemistry Notes | LevlPrep</title>
+<meta name="description" content="When you read a ruler, a graduated cylinder or a thermometer, you read the marks you can see, then estimate one more digit between them ( Figure 1 ).">
+<link rel="canonical" href="https://levlprep.com/chem/notes/math-sig-figs.html">
+<meta property="og:title" content="Significant Figures — AP® Chemistry Notes | LevlPrep">
+<meta property="og:description" content="When you read a ruler, a graduated cylinder or a thermometer, you read the marks you can see, then estimate one more digit between them ( Figure 1 ).">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/chem/notes/math-sig-figs.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/chem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/chem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/chem/notes/math-sig-figs.html#reading",
+      "name": "Significant Figures",
+      "url": "https://levlprep.com/chem/notes/math-sig-figs.html",
+      "description": "When you read a ruler, a graduated cylinder or a thermometer, you read the marks you can see, then estimate one more digit between them ( Figure 1 ).",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "significant figures rules for chemistry calculations",
+      "isPartOf": {
+        "@id": "https://levlprep.com/chem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Chemistry",
+          "item": "https://levlprep.com/chem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Math you need",
+          "item": "https://levlprep.com/chem/units/skills-math.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Significant Figures: notes",
+          "item": "https://levlprep.com/chem/notes/math-sig-figs.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="chem" data-topic="math-sig-figs" data-unit="skills-math">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="chem-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail chem-nav-ref bk-rail" id="chem-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-9.html"><span class="bk-toc-n">9</span>Thermodynamics and Electrochemistry</a>
+    <a class="bk-toc-chap" href="../units/skills-math.html"><span class="bk-toc-chap-n">S</span><span><b>Math you need</b><small>5 topics</small></span></a>
+    <div class="chem-toc-prog" data-toc-prog="skills-math"><div class="tb-progress-row"><span><b>0</b> of 5 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="math-units"><a href="math-units.html"><span class="bk-toc-n">S</span>Units and Dimensional Analysis</a></li><li data-toc-t="math-exponents"><a href="math-exponents.html"><span class="bk-toc-n">S</span>Exponents</a></li><li data-toc-t="math-scientific-notation"><a href="math-scientific-notation.html"><span class="bk-toc-n">S</span>Scientific Notation</a></li><li class="current" data-toc-t="math-sig-figs"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Significant Figures</a><div class="bk-toc-onpage"><p>On this page</p><a href="#every-measurement-has-an-estimated-digit">Every measurement has an estimated digit</a><a href="#counting-significant-figures">Counting significant figures</a><a href="#exact-numbers">Exact numbers</a><a href="#multiplying-and-dividing">Multiplying and dividing</a><a href="#adding-and-subtracting">Adding and subtracting</a><a href="#rounding-once-at-the-end">Rounding once, at the end</a><a href="#precision-and-accuracy">Precision and accuracy</a></div></li><li data-toc-t="math-logs"><a href="math-logs.html"><span class="bk-toc-n">S</span>Logarithms</a></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="chem-crumb chem-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-math.html">Math you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Significant Figures: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/math-sig-figs.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Skills <span class="chem-beta chem-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Significant Figures</h1>
+      <p class="bk-meta chem-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="math-sig-figs">Not practiced</span></p>
+      <div class="bk-actions chem-share chem-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fchem%2Fnotes%2Fmath-sig-figs.html&amp;title=Significant%20Figures%3A%20chemistry%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/chem/notes/math-sig-figs.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="chem-prose bk-prose">
+<h2 id="every-measurement-has-an-estimated-digit">Every measurement has an estimated digit</h2>
+<p>No instrument is perfect. When you read a ruler, a graduated cylinder or a thermometer, you read the marks you can see, then estimate one more digit between them (<a class="figref" href="#fig-ruler">Figure 1</a>). That last digit is uncertain, but it still carries information, so you write it down. This doubt in the last digit is called <b><span class="gl" tabindex="0" data-c="measurement-uncertainty">measurement uncertainty</span></b>.</p>
+<figure id="fig-ruler"  class="chem-figure"><div class="chem-figimg" data-fig="sigfig-ruler"><img src="../figures/sigfig-ruler.svg" alt="A ruler marked every 0.1 cm; an object's edge falls about seven tenths of the way from 3.4 to 3.5 cm, so the reading is 3.47 cm, with 7 the estimated digit." width="680" height="240" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> An object's edge between the 3.4 cm and 3.5 cm marks. The reading 3.47 cm has two certain digits (3 and 4) and one estimated digit (7). <span class="chem-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>The <b><span class="gl" tabindex="0" data-c="significant-figures">significant figures</span></b> of a measurement are its certain digits plus that one estimated digit. A balance that reads 151.37 g gives five significant figures; a bathroom scale that reads 150 g gives two or three. More significant figures mean a more finely made measurement.</p>
+
+<h2 id="counting-significant-figures">Counting significant figures</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Which digits count"><table class="compare">
+<caption>Which digits count</caption>
+<thead><tr><th scope="col">Kind of digit</th><th scope="col">Counts?</th><th scope="col">Example</th><th scope="col">Significant figures</th></tr></thead>
+<tbody>
+<tr><th scope="row">Nonzero digits</th><td>always</td><td>4.36</td><td>3</td></tr>
+<tr><th scope="row">Zeros between nonzero digits</th><td>yes</td><td>4005</td><td>4</td></tr>
+<tr><th scope="row">Leading zeros (in front)</th><td>no, they only place the point</td><td>0.0045</td><td>2</td></tr>
+<tr><th scope="row">Trailing zeros after a decimal point</th><td>yes, they were measured</td><td>4.50</td><td>3</td></tr>
+<tr><th scope="row">Trailing zeros with no decimal point</th><td>unclear; treat as not counting</td><td>2500</td><td>2</td></tr>
+</tbody>
+</table></div>
+<p><a class="gl" href="../notes/math-scientific-notation.html" data-c="scientific-notation">Scientific notation</a> removes the doubt: 2.5 × 10³ has two significant figures, 2.50 × 10³ has three and 2.500 × 10³ has four. A decimal point at the end, as in 2500., also means all four digits count.</p>
+<p>Converting a measurement to scientific notation is a quick way to count: 0.004050 g = 4.050 × 10⁻³ g, four significant figures.</p>
+
+<h2 id="exact-numbers">Exact numbers</h2>
+<p>Some numbers are not measured at all. A count of objects ("3 bolts") and a defined equality ("1 kg = 1000 g", "1 mL = 1 cm³") are <b><span class="gl" tabindex="0" data-c="exact-number">exact numbers</span></b>. They have no uncertainty, so they never limit the significant figures of an answer. Only measured values do.</p>
+
+<h2 id="multiplying-and-dividing">Multiplying and dividing</h2>
+<p>The answer keeps as many significant figures as the measurement with the <i>fewest</i> significant figures.</p>
+<div class="worked">
+<p><b>Worked example.</b> A <a class="gl" href="../notes/phases-of-matter.html" data-c="states-of-matter">liquid</a> sample has a mass of 23.45 g and a volume of 12.0 mL. What is its <a class="gl" href="../notes/math-units.html" data-c="density">density</a>?</p>
+<p>d = 23.45 g ÷ 12.0 mL = 1.954166… g/mL</p>
+<p>23.45 has four significant figures; 12.0 has three. The answer keeps three: <b>1.95 g/mL</b>.</p>
+</div>
+
+<h2 id="adding-and-subtracting">Adding and subtracting</h2>
+<p>Here the rule is about decimal places, not significant figures. The answer keeps as many decimal places as the value with the <i>fewest</i> decimal places, because that value's uncertainty is the largest.</p>
+<div class="worked">
+<p><b>Worked example.</b> Add 12.52 g + 3.1 g + 0.247 g.</p>
+<p>12.52 + 3.1 + 0.247 = 15.867 g</p>
+<p>3.1 is known only to the tenths place, so the sum is too: <b>15.9 g</b>. Note that the answer has three significant figures even though 0.247 also has three and 12.52 has four: in addition, the decimal places decide.</p>
+</div>
+<p>The exam's readers report mixing up these two rules as one of the most common calculation errors.</p>
+
+<h2 id="rounding-once-at-the-end">Rounding once, at the end</h2>
+<p>In a calculation with several steps, keep one or two extra digits in every intermediate result and round only the final answer. Rounding at each step lets small errors build up and can change the last digit. Track how many significant figures each step allows, but do not throw digits away until the end.</p>
+<div class="worked">
+<p><b>Worked example.</b> Four readings, 50.31 g, 49.62 g, 50.08 g and 49.95 g, are averaged.</p>
+<p>Sum: 199.96 g (two decimal places, so five significant figures here). Divide by the exact count 4: 199.96 ÷ 4 = 49.99 g.</p>
+<p>The count does not limit the answer, so the average keeps the two decimal places of the data: <b>49.99 g</b>.</p>
+</div>
+
+<h2 id="precision-and-accuracy">Precision and accuracy</h2>
+<p>These words mean different things. <b><span class="gl" tabindex="0" data-c="precision">Precision</span></b> is how closely repeated measurements agree with each other. <b>Accuracy</b> is how close they are to the true value. A balance that is not zeroed can give readings that agree to 0.01 g but are all 0.9 g too low: precise, not accurate. That kind of consistent shift is a <i>systematic error</i>, and averaging more readings does not remove it. Readings that scatter in both directions show <i>random error</i>, which averaging does reduce.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Precision vs accuracy"><table class="compare">
+<caption>Precision vs accuracy</caption>
+<thead><tr><th scope="col">Readings of a true 50.00 g mass</th><th scope="col">Precise?</th><th scope="col">Accurate?</th></tr></thead>
+<tbody>
+<tr><th scope="row">49.12, 49.13, 49.11, 49.12</th><td>yes</td><td>no (all low)</td></tr>
+<tr><th scope="row">50.31, 49.62, 50.08, 49.95</th><td>no</td><td>average close, single readings not</td></tr>
+<tr><th scope="row">50.01, 49.99, 50.00, 50.00</th><td>yes</td><td>yes</td></tr>
+</tbody>
+</table></div>
+
+    </article>
+    <p class="chem-report-page chem-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="notes:math-sig-figs">Report a problem</button></p>
+    <nav class="tb-chapter-nav chem-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="math-scientific-notation.html"><span>&larr; Previous</span><b>Scientific Notation</b></a><a class="tb-chapter-link next" href="moles-molar-mass.html"><span>Next &rarr;</span><b>Moles and Molar Mass</b></a></nav>
+  </main>
+</div>
+<footer class="chem-foot xshell">
+  <p class="chem-accuracy-note"><span class="chem-beta chem-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Chemistry teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="chem-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="notes:math-sig-figs">Report a problem</button></span></p>
+  <p class="chem-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApChemSection = 'learn'; window.ApChemBase = '../';</script>
+<script src="../assets/chem-curriculum.js" defer></script>
+<script src="../assets/chem-core.js" defer></script>
+<script src="../assets/chem-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/chem-toc.js" defer></script>
+</body>
+</html>

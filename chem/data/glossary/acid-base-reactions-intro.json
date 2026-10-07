@@ -1,0 +1,17 @@
+{
+ "bronsted-lowry": {
+  "def": "A Brønsted-Lowry acid is a proton (H⁺) donor; a Brønsted-Lowry base is a proton acceptor, using a lone pair to bond to the H⁺."
+ },
+ "conjugate-pair": {
+  "def": "Two species that differ by exactly one H⁺. When an acid gives up a proton it becomes its conjugate base; when a base accepts a proton it becomes its conjugate acid."
+ },
+ "hydronium": {
+  "def": "The ion H₃O⁺, a water molecule bonded to an extra proton. Acids in water give hydronium ions; H⁺(aq) is shorthand for it."
+ },
+ "amphoteric": {
+  "def": "Able to act as either an acid or a base, depending on what it reacts with; water and HCO₃⁻ are examples (also called amphiprotic)."
+ },
+ "neutralization": {
+  "def": "A reaction between an acid and a base; for hydroxide bases the net change is H⁺(aq) + OH⁻(aq) → H₂O(l)."
+ }
+}

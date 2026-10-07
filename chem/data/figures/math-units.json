@@ -1,0 +1,7 @@
+{
+ "unit-cancel-chain": {
+  "file": "figures/unit-cancel-chain.svg", "ext": "svg", "w": 680, "h": 260,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "3.5 hours times 60 minutes per hour times 60 seconds per minute equals 12,600 seconds; hours cancel, then minutes cancel, leaving seconds."
+ }
+}

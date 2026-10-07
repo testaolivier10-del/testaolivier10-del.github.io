@@ -1,0 +1,704 @@
+{
+ "stimuli": {
+  "reaction-direction-s1": {
+   "kind": "table",
+   "title": "Butane and isobutane in a sealed vessel",
+   "text": "<p>Butane and isobutane have the same formula, C<sub>4</sub>H<sub>10</sub>, but different shapes. With a catalyst present, each turns into the other: butane(g) ⇌ isobutane(g). A sealed vessel at constant temperature starts with 0.010 M butane and 0.040 M isobutane. The table gives the rate of the forward reaction (butane → isobutane) and of the reverse reaction (isobutane → butane) at several times.</p>",
+   "table": {
+    "caption": "Forward and reverse rates over time",
+    "cols": [
+     "Time (s)",
+     "Forward rate (× 10<sup>−4</sup> M/s)",
+     "Reverse rate (× 10<sup>−4</sup> M/s)"
+    ],
+    "rows": [
+     [
+      "0",
+      "3.0",
+      "4.8"
+     ],
+     [
+      "20",
+      "3.7",
+      "4.5"
+     ],
+     [
+      "40",
+      "4.0",
+      "4.4"
+     ],
+     [
+      "80",
+      "4.2",
+      "4.3"
+     ],
+     [
+      "150",
+      "4.3",
+      "4.3"
+     ],
+     [
+      "200",
+      "4.3",
+      "4.3"
+     ]
+    ]
+   }
+  },
+  "reaction-direction-s2": {
+   "kind": "graph",
+   "title": "Adding hydrogen to an equilibrium mixture",
+   "text": "<p>A sealed 1.00 L flask holds H<sub>2</sub>, I<sub>2</sub> and HI at equilibrium at constant temperature: H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g). At 100 s, extra H<sub>2</sub> is injected, raising [H<sub>2</sub>] to 0.0600 M at once. The flask then settles again; at the new equilibrium, [I<sub>2</sub>] = 0.0103 M.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Time",
+     "unit": "s"
+    },
+    "y": {
+     "label": "Concentration",
+     "unit": "M",
+     "min": 0,
+     "max": 0.2
+    },
+    "series": [
+     {
+      "name": "HI",
+      "points": [
+       [
+        0,
+        0.14
+       ],
+       [
+        25,
+        0.14
+       ],
+       [
+        50,
+        0.14
+       ],
+       [
+        75,
+        0.14
+       ],
+       [
+        100,
+        0.14
+       ],
+       [
+        100,
+        0.14
+       ],
+       [
+        110,
+        0.1507
+       ],
+       [
+        120,
+        0.1555
+       ],
+       [
+        135,
+        0.1582
+       ],
+       [
+        150,
+        0.159
+       ],
+       [
+        175,
+        0.1593
+       ],
+       [
+        200,
+        0.1594
+       ]
+      ]
+     },
+     {
+      "name": "H₂",
+      "points": [
+       [
+        0,
+        0.02
+       ],
+       [
+        25,
+        0.02
+       ],
+       [
+        50,
+        0.02
+       ],
+       [
+        75,
+        0.02
+       ],
+       [
+        100,
+        0.02
+       ],
+       [
+        100,
+        0.06
+       ],
+       [
+        110,
+        0.0547
+       ],
+       [
+        120,
+        0.0523
+       ],
+       [
+        135,
+        0.0509
+       ],
+       [
+        150,
+        0.0505
+       ],
+       [
+        175,
+        0.0503
+       ],
+       [
+        200,
+        0.0503
+       ]
+      ]
+     },
+     {
+      "name": "I₂",
+      "points": [
+       [
+        0,
+        0.02
+       ],
+       [
+        25,
+        0.02
+       ],
+       [
+        50,
+        0.02
+       ],
+       [
+        75,
+        0.02
+       ],
+       [
+        100,
+        0.02
+       ],
+       [
+        100,
+        0.02
+       ],
+       [
+        110,
+        0.0147
+       ],
+       [
+        120,
+        0.0123
+       ],
+       [
+        135,
+        0.0109
+       ],
+       [
+        150,
+        0.0105
+       ],
+       [
+        175,
+        0.0103
+       ],
+       [
+        200,
+        0.0103
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-reaction-direction-1",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "single",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-direction-s1",
+   "q": "Which statement describes the vessel at 0 s?",
+   "options": [
+    "The net reaction goes in reverse: isobutane is turning into butane overall.",
+    "The net reaction goes forward, because the forward reaction is written first.",
+    "The system is at equilibrium, because both reactions are happening.",
+    "The net reaction goes forward, because more isobutane is present than butane."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Compare the two rates. When the reverse rate is larger, the net reaction runs in reverse: products turn into reactants faster than reactants turn into products.",
+    "options": [
+     "Right: the reverse rate (4.8) is greater than the forward rate (3.0), so isobutane is used faster than it forms.",
+     "The way an equation is written does not set the direction. The faster of the two reactions does.",
+     "Both reactions happen at every moment once both substances are present. Equilibrium needs the two rates to be equal; 3.0 and 4.8 are not.",
+     "More isobutane makes the reverse reaction faster, not the forward one, so the net change is toward butane."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-direction-2",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-direction-s1",
+   "q": "What happens to the concentration of butane between 0 s and 80 s, and why?",
+   "options": [
+    "It rises: the reverse reaction makes butane faster than the forward reaction uses it.",
+    "It falls, because the forward reaction uses butane up.",
+    "It stays the same, because the total amount of C<sub>4</sub>H<sub>10</sub> gas in the vessel is constant.",
+    "It rises, because the forward rate increases over the same time."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A species builds up whenever the reaction that makes it is faster than the reaction that uses it. Here isobutane → butane outpaces butane → isobutane until 150 s.",
+    "options": [
+     "Right: the reverse rate exceeds the forward rate over this whole stretch, so butane accumulates.",
+     "The forward reaction does use butane, but the reverse reaction makes it faster still. The net change is an increase.",
+     "The total C₄H₁₀ is constant, but the split between the two shapes changes until the rates are equal.",
+     "The rising forward rate is a result of rising [butane], not its cause. Butane rises because the reverse reaction is faster."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-direction-3",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "single",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "reaction-direction-s1",
+   "q": "Of the times in the table, which is the first at which the system is at equilibrium?",
+   "options": [
+    "150 s",
+    "80 s",
+    "200 s",
+    "0 s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Equilibrium is reached when the forward and reverse rates are equal. The first row in which they match is 150 s.",
+    "options": [
+     "Right: at 150 s both rates are 4.3 × 10⁻⁴ M/s, and they stay equal at 200 s.",
+     "At 80 s the rates are close but not equal (4.2 and 4.3), so there is still a small net reverse reaction.",
+     "The system is at equilibrium at 200 s, but the rates were already equal at 150 s.",
+     "At 0 s the rates are 3.0 and 4.8, the farthest apart they ever are."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-direction-4",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "single",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-direction-s1",
+   "q": "Which particle-level explanation accounts for the rise in the forward rate over time?",
+   "options": [
+    "More butane per liter means more butane reacts each second.",
+    "Isobutane molecules collide with butane and push it to react.",
+    "The molecules speed up as the reaction continues.",
+    "The catalyst is used up, so the forward reaction takes over."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A rate depends on the concentration of the species that reacts. The forward reaction uses butane, so as [butane] goes up, so does the forward rate; for the same reason the reverse rate falls as [isobutane] goes down.",
+    "options": [
+     "Right: the forward rate depends on [butane], and [butane] rises as the net reverse reaction runs.",
+     "The forward reaction is butane changing shape on the catalyst; isobutane does not drive it. Its rate depends on how much butane there is.",
+     "The temperature is constant, so the average speed of the molecules does not change.",
+     "A catalyst is not used up, and it speeds the forward and reverse reactions alike."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-direction-5",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reaction-direction-s1",
+   "q": "Calculate the net rate at which butane forms at 0 s.",
+   "numeric": {
+    "answer": 0.00018,
+    "tol": 0.00001,
+    "unit": "M/s",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.00078,
+      "rel": 0.02,
+      "why": "Value: you added the two rates. Butane forms by the reverse reaction and is used by the forward reaction, so subtract."
+     },
+     {
+      "value": -0.00018,
+      "rel": 0.02,
+      "why": "Value: the sign is reversed. Butane is being formed overall, so its net rate of formation is positive."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Butane is made by the reverse reaction and used by the forward reaction: net rate = 4.8 × 10⁻⁴ M/s − 3.0 × 10⁻⁴ M/s = 1.8 × 10⁻⁴ M/s."
+   }
+  },
+  {
+   "id": "chem-reaction-direction-6",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-direction-s2",
+   "q": "Right after the H<sub>2</sub> is injected at 100 s, how do the two rates compare?",
+   "options": [
+    "The forward rate is now greater than the reverse rate.",
+    "The reverse rate is now greater than the forward rate.",
+    "Both rates increase by the same amount, so they stay equal.",
+    "Both rates stay the same, because the temperature did not change."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Adding a reactant changes the forward rate first. With the forward rate now larger, the net reaction goes forward until the rates are equal again.",
+    "options": [
+     "Right: more H₂ means more H₂-I₂ collisions each second, so the forward rate jumps while the reverse rate, set by [HI], has not yet changed.",
+     "The reverse reaction uses HI, and [HI] did not change at the moment of injection. It is the forward reaction that speeds up.",
+     "Only the forward reaction uses H₂. Adding H₂ speeds up that reaction alone, so the rates become unequal.",
+     "Rates depend on concentrations as well as temperature. Raising [H₂] raises the rate of the reaction that uses H₂."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-direction-7",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "single",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-direction-s2",
+   "q": "Which evidence from the graph shows that the net reaction runs forward after 100 s?",
+   "options": [
+    "[HI] rises while [I<sub>2</sub>] falls.",
+    "[H<sub>2</sub>] jumps up at 100 s.",
+    "[H<sub>2</sub>] ends higher than it was before 100 s.",
+    "The three curves are flat before 100 s."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The direction of a net reaction shows up in which concentrations rise and which fall. After 100 s, HI (product) rises and I₂ (reactant) falls.",
+    "options": [
+     "Right: a product building up while a reactant is used is what a net forward reaction looks like.",
+     "The jump is the injection itself, not a reaction. The evidence of reaction is what happens to the concentrations afterward.",
+     "That shows H₂ was added, but it does not show a direction; H₂ is higher because only part of the added H₂ reacts.",
+     "Flat curves before 100 s show the first equilibrium. They say nothing about what happens after the injection."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-direction-8",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "reaction-direction-s2",
+   "q": "Use the information given to calculate [HI] at the new equilibrium.",
+   "numeric": {
+    "answer": 0.159,
+    "tol": 0.001,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.15,
+      "rel": 0.02,
+      "why": "Value: HI rises by twice as much as I₂ falls, because of the coefficient 2 on HI. Double the change in [I₂]."
+     },
+     {
+      "value": 0.121,
+      "rel": 0.02,
+      "why": "Value: HI is a product of the net forward reaction, so its concentration goes up, not down."
+     }
+    ]
+   },
+   "why": {
+    "correct": "I₂ fell by 0.0200 M − 0.0103 M = 0.0097 M. Each I₂ that reacts makes 2 HI, so HI rose by 2 × 0.0097 M = 0.0194 M. [HI] = 0.140 M + 0.0194 M = 0.159 M."
+   }
+  },
+  {
+   "id": "chem-reaction-direction-9",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "reaction-direction-s2",
+   "q": "Compare the forward rate at 200 s with the forward rate at 50 s.",
+   "options": [
+    "It is higher at 200 s, and the reverse rate is just as high.",
+    "It is the same, because both times are at equilibrium.",
+    "It is higher at 200 s, and the reverse rate is lower.",
+    "It is lower at 200 s, because some H<sub>2</sub> has been used up."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At both times forward = reverse. The reverse rate depends on [HI], which is higher at 200 s, so both rates are higher at the new equilibrium.",
+    "options": [
+     "Right: at 200 s [HI] is higher than at 50 s, so the reverse rate is higher; at equilibrium the forward rate equals it.",
+     "Both times are at equilibrium, but equilibrium only means forward = reverse. The rates themselves can settle at new values.",
+     "At 200 s the system is back at equilibrium, so the two rates are equal again, and [HI] is higher, so the reverse rate has gone up.",
+     "Some of the added H₂ reacted, but [H₂] at 200 s is still well above 0.0200 M, and the reverse rate, set by the larger [HI], is higher too."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-direction-10",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "single",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "In a sealed flask, the forward rate of 2 SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2 SO<sub>3</sub>(g) is 5.0 × 10<sup>−3</sup> M/s and the reverse rate is 2.0 × 10<sup>−3</sup> M/s. Which statement is correct?",
+   "options": [
+    "[SO<sub>3</sub>] is increasing.",
+    "[SO<sub>3</sub>] is decreasing.",
+    "[SO<sub>3</sub>] is constant.",
+    "[O<sub>2</sub>] is increasing."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When the forward rate is greater, the net reaction goes forward: reactants decrease and products increase.",
+    "options": [
+     "Right: the forward reaction, which makes SO₃, is faster than the reverse reaction, which uses it.",
+     "That would need the reverse reaction to be faster. Here the forward rate is the larger one.",
+     "Constant concentrations need equal rates. 5.0 × 10⁻³ and 2.0 × 10⁻³ M/s are not equal.",
+     "O₂ is used by the faster forward reaction, so it is decreasing."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-direction-11",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2 NO<sub>2</sub>(g), the rate of each reaction is given per N<sub>2</sub>O<sub>4</sub> molecule: N<sub>2</sub>O<sub>4</sub> splits at 6.0 × 10<sup>−4</sup> M/s and re-forms at 2.5 × 10<sup>−4</sup> M/s. Calculate the net rate at which [NO<sub>2</sub>] increases.",
+   "numeric": {
+    "answer": 0.0007,
+    "tol": 0.00001,
+    "unit": "M/s",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.00035,
+      "rel": 0.02,
+      "why": "Value: that is the net rate for N₂O₄. Each N₂O₄ that splits makes two NO₂ (and two NO₂ re-form each N₂O₄), so double it."
+     },
+     {
+      "value": 0.000175,
+      "rel": 0.03,
+      "why": "Value: you halved the net rate. The coefficient 2 is on NO₂, so NO₂ changes twice as fast as N₂O₄."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Net change in N₂O₄: 6.0 × 10⁻⁴ − 2.5 × 10⁻⁴ = 3.5 × 10⁻⁴ M/s, used up. Two NO₂ form per N₂O₄: 2 × 3.5 × 10⁻⁴ = 7.0 × 10⁻⁴ M/s."
+   }
+  },
+  {
+   "id": "chem-reaction-direction-12",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "predict",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g) is at equilibrium in a sealed flask. Some HI is suddenly removed. Predict each quantity.",
+   "variables": [
+    {
+     "name": "Forward rate, at the moment HI is removed",
+     "answer": "none",
+     "why": "The forward rate depends on [H₂] and [I₂], which have not changed at that moment."
+    },
+    {
+     "name": "Reverse rate, at the moment HI is removed",
+     "answer": "down",
+     "why": "Fewer HI molecules per liter means fewer HI-HI collisions each second."
+    },
+    {
+     "name": "[HI] over the next minute",
+     "answer": "up",
+     "why": "With forward faster than reverse, the net reaction goes forward and makes HI back."
+    },
+    {
+     "name": "[H<sub>2</sub>] over the next minute",
+     "answer": "down",
+     "why": "The net forward reaction uses H₂."
+    }
+   ],
+   "why": {
+    "correct": "Removing a product slows the reverse reaction first. The forward reaction is then faster, so the net reaction goes forward until the rates are equal again."
+   }
+  },
+  {
+   "id": "chem-reaction-direction-13",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "order",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A system A(g) ⇌ B(g) is at equilibrium. More A is added. Put the events in order.",
+   "options": [
+    "[A] increases at constant temperature.",
+    "The forward rate increases, so it is now greater than the reverse rate.",
+    "A net forward reaction uses A and makes B.",
+    "The forward rate falls and the reverse rate rises until they are equal again."
+   ],
+   "why": {
+    "correct": "Adding A changes the forward rate first. The net forward reaction then lowers [A] and raises [B], which pulls the two rates back together at a new equilibrium."
+   }
+  },
+  {
+   "id": "chem-reaction-direction-14",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "multi",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "The system 2 NO<sub>2</sub>(g) ⇌ N<sub>2</sub>O<sub>4</sub>(g) is at equilibrium. Which changes, made at constant temperature, would make the reverse rate greater than the forward rate for a while? Select all that apply.",
+   "options": [
+    "Adding N<sub>2</sub>O<sub>4</sub>",
+    "Removing some NO<sub>2</sub>",
+    "Adding NO<sub>2</sub>",
+    "Removing some N<sub>2</sub>O<sub>4</sub>"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "The reverse rate wins when either its reactant (N₂O₄) is added or the forward reaction's reactant (NO₂) is taken away.",
+    "options": [
+     "Right: the reverse reaction uses N₂O₄, so it speeds up first.",
+     "Right: the forward reaction uses NO₂, so it slows first, leaving the reverse reaction faster.",
+     "More NO₂ speeds up the forward reaction, not the reverse.",
+     "Less N₂O₄ slows the reverse reaction, so the forward reaction becomes faster."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-direction-15",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A catalyst is added to a system that is already at equilibrium. What happens?",
+   "options": [
+    "Both rates increase by the same factor, so there is no net reaction.",
+    "The forward rate increases more, so more product forms.",
+    "The reverse rate increases more, so more reactant forms.",
+    "Both rates decrease, because the catalyst takes up reactant particles."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At equilibrium forward = reverse. A catalyst speeds both reactions by the same factor, so they stay equal and the composition does not change. It only helps a system reach equilibrium sooner.",
+    "options": [
+     "Right: a catalyst lowers the activation energy for the forward and reverse reactions alike, so the rates stay equal.",
+     "A catalyst offers a new pathway for the reaction in both directions. The reverse reaction runs over the same lowered barrier.",
+     "The lowered barrier helps both directions equally; neither reaction gains on the other.",
+     "A catalyst speeds reactions and is regenerated. It does not remove reactants from the mixture."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-direction-16",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In a flask at constant temperature, [CO<sub>2</sub>] is falling for CO(g) + H<sub>2</sub>O(g) ⇌ CO<sub>2</sub>(g) + H<sub>2</sub>(g). Which statement must be true at this moment?",
+   "options": [
+    "The reverse rate is greater than the forward rate.",
+    "The forward rate is greater than the reverse rate.",
+    "The forward reaction has stopped.",
+    "[H<sub>2</sub>] is rising."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A product concentration falls only when the reverse reaction outpaces the forward reaction, so the net reaction runs in reverse.",
+    "options": [
+     "Right: CO₂ is made by the forward reaction and used by the reverse one. Falling CO₂ means the reverse reaction is faster.",
+     "A faster forward reaction would make CO₂ faster than it is used, so [CO₂] would rise.",
+     "The forward reaction runs as long as CO and H₂O are present. It just runs more slowly than the reverse.",
+     "H₂ is a product like CO₂, so the net reverse reaction uses it up too: [H₂] is falling."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-direction-17",
+   "unit": "unit-7",
+   "topic": "reaction-direction",
+   "type": "single",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For A(g) ⇌ B(g) in a sealed flask, B is removed as fast as it forms. Which statement describes the system?",
+   "options": [
+    "It does not reach equilibrium; the reverse rate stays low.",
+    "It reaches equilibrium faster, because B is out of the way of the A molecules.",
+    "It reaches equilibrium when [A] equals [B].",
+    "It stops reacting once half of the A is gone."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Removing a product as it forms keeps the reverse rate low, so the net reaction keeps going forward. Chemists use this to push reactions toward products.",
+    "options": [
+     "Right: with B constantly removed, the reverse reaction has almost no B to work with, so it cannot catch up.",
+     "Equilibrium needs the reverse rate to rise to meet the forward rate. Removing B keeps the reverse rate low.",
+     "Equilibrium is set by equal rates, not equal concentrations, and here the rates cannot become equal.",
+     "The forward reaction keeps going while A remains. Removing B lets it run until A is nearly used up."
+    ]
+   }
+  }
+ ]
+}

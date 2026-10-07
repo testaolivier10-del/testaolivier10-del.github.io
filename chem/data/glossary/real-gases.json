@@ -1,0 +1,5 @@
+{
+ "real-gas": {
+  "def": "A gas whose particles have volume and attract each other, so it departs from PV = nRT. Deviations are largest at high pressure and low temperature and for particles with strong attractions."
+ }
+}

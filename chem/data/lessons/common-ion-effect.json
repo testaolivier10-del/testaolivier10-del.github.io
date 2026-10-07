@@ -1,0 +1,98 @@
+{
+ "topic": "common-ion-effect",
+ "hook": "Lead(II) chloride is fairly soluble in pure water for a \"slightly soluble\" salt, about four and a half grams per liter. Pour in some table salt, and almost all of that lead chloride falls out as a white solid. Nothing about lead chloride has changed. The solution simply already had one of its ions, and that changes the balance.",
+ "prereq": [
+  {
+   "q": "For PbCl<sub>2</sub>, what is the K<sub>sp</sub> expression?",
+   "options": [
+    "[Pb<sup>2+</sup>][Cl<sup>−</sup>]<sup>2</sup>",
+    "[Pb<sup>2+</sup>][Cl<sup>−</sup>]",
+    "[Pb<sup>2+</sup>]2[Cl<sup>−</sup>]",
+    "[PbCl<sub>2</sub>] / ([Pb<sup>2+</sup>][Cl<sup>−</sup>]<sup>2</sup>)"
+   ],
+   "correct": 0,
+   "why": "Ion concentrations, each to its coefficient; the solid is left out.",
+   "review": "solubility-equilibria"
+  },
+  {
+   "q": "Adding a product to a system at equilibrium makes it shift",
+   "options": [
+    "toward reactants",
+    "toward products",
+    "nowhere",
+    "only if the temperature changes"
+   ],
+   "correct": 0,
+   "why": "Le Châtelier: it partly uses up what was added.",
+   "review": "le-chatelier"
+  },
+  {
+   "q": "When should you check the small-x approximation?",
+   "options": [
+    "Every time you use it",
+    "Only when K is large",
+    "Never; it always works",
+    "Only for gases"
+   ],
+   "correct": 0,
+   "why": "The 5% check confirms the dropped term really is small.",
+   "review": "equilibrium-concentrations"
+  }
+ ],
+ "figure": {
+  "figure": "common-ion-shift",
+  "caption": "More Cl<sup>−</sup> from NaCl means less PbCl<sub>2</sub> dissolves. K<sub>sp</sub> does not change; Q does."
+ },
+ "chain": [
+  {
+   "cause": "A soluble salt adds an ion that is also in a solubility equilibrium",
+   "effect": "Q rises above K<sub>sp</sub>"
+  },
+  {
+   "cause": "Q is greater than K<sub>sp</sub>",
+   "effect": "the slightly soluble salt precipitates until Q = K<sub>sp</sub>"
+  },
+  {
+   "cause": "The equilibrium is restored with the common ion present",
+   "effect": "less of the salt is dissolved: its molar solubility is lower"
+  },
+  {
+   "cause": "The temperature has not changed",
+   "effect": "K<sub>sp</sub> is the same; only the solubility changed"
+  }
+ ],
+ "ideas": [
+  "The <b>common-ion effect</b>: an ion already in solution lowers the solubility of a salt that contains it.",
+  "Justify it with Q: the common ion raises Q above K<sub>sp</sub>, so solid forms until Q = K<sub>sp</sub>. K<sub>sp</sub> does not change.",
+  "In calculations, the shared ion is (common ion + coefficient × s) ≈ common ion. Count ions per formula unit; check the 5% rule.",
+  "An ion that is squared in K<sub>sp</sub> has a larger effect."
+ ],
+ "misconception": {
+  "wrong": "Adding NaCl lowers the K<sub>sp</sub> of PbCl₂, so less dissolves.",
+  "right": "K<sub>sp</sub> depends only on temperature. Added Cl⁻ raises Q above K<sub>sp</sub>, so PbCl₂ precipitates until Q = K<sub>sp</sub>; the solubility falls, the constant does not."
+ },
+ "check": [
+  "chem-common-ion-effect-1",
+  "chem-common-ion-effect-2",
+  "chem-common-ion-effect-3",
+  "chem-common-ion-effect-10",
+  "chem-common-ion-effect-12",
+  "chem-common-ion-effect-13",
+  "chem-common-ion-effect-15"
+ ],
+ "summary": "The common-ion effect: a salt is less soluble in a solution that already contains one of its ions. The common ion raises Q above K<sub>sp</sub>, so the salt precipitates until Q = K<sub>sp</sub> again; K<sub>sp</sub> is unchanged and only the solubility drops. To calculate the new solubility, write the shared ion as common ion plus a small term, drop the small term, solve K<sub>sp</sub> for s and check the 5% rule.",
+ "connections": [
+  {
+   "href": "../notes/solubility-equilibria.html",
+   "label": "Back: Ksp and molar solubility (7.11)"
+  },
+  {
+   "href": "../notes/q-and-le-chatelier.html",
+   "label": "Back: justifying shifts with Q and K (7.10)"
+  },
+  {
+   "href": "../notes/equilibrium-concentrations.html",
+   "label": "Back: the small-x approximation (7.7)"
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "dissolution-steps": {
+  "file": "figures/dissolution-steps.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An enthalpy ladder for dissolving an ionic solid. From solid plus water, step 1 goes up as the ions are pulled apart, step 2 goes up a little more as water molecules are pushed apart, and step 3 goes down a long way as water surrounds the ions through ion-dipole attractions. The solution ends close to the starting level; the small difference is the enthalpy of solution."
+ }
+}

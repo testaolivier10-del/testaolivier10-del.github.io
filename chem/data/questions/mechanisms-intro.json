@@ -1,0 +1,423 @@
+{
+ "stimuli": {
+  "mechanisms-intro-s1": {
+   "kind": "model",
+   "title": "A proposed mechanism for making water from NO and H₂",
+   "html": "<p>The overall reaction 2 NO(g) + 2 H₂(g) → N₂(g) + 2 H₂O(g) is proposed to happen in three elementary steps:</p><ol><li>2 NO → N₂O₂</li><li>N₂O₂ + H₂ → N₂O + H₂O</li><li>N₂O + H₂ → N₂ + H₂O</li></ol>"
+  },
+  "mechanisms-intro-s2": {
+   "kind": "model",
+   "title": "Two mechanisms proposed for one reaction",
+   "html": "<p>The overall reaction is 2 O₃(g) → 3 O₂(g). Two students propose mechanisms. In each, every step occurs once each time the overall reaction occurs.</p><p><b>Mechanism X</b></p><ol><li>O₃ → O₂ + O</li><li>O + O₃ → 2 O₂</li></ol><p><b>Mechanism Y</b></p><ol><li>O₃ → O₂ + O</li><li>O + O → O₂</li></ol>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-mechanisms-intro-1",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "multi",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "mechanisms-intro-s1",
+   "q": "Which species are intermediates in this mechanism? Select all that apply.",
+   "options": [
+    "N₂O₂",
+    "N₂O",
+    "H₂",
+    "H₂O"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "N₂O₂ forms in step 1 and is used in step 2; N₂O forms in step 2 and is used in step 3. Neither appears in the overall equation. H₂ is a reactant and H₂O a product.",
+    "options": [
+     "Right: made in step 1, used in step 2.",
+     "Right: made in step 2, used in step 3.",
+     "H₂ is used in steps 2 and 3 and never made: it is a reactant.",
+     "H₂O is made in steps 2 and 3 and never used: it is a product."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanisms-intro-2",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "single",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "mechanisms-intro-s1",
+   "q": "Does the mechanism add up to the overall reaction?",
+   "options": [
+    "Yes: the intermediates cancel and the sum matches",
+    "No: the steps make just one H₂O in total",
+    "No: N₂O₂ is left over at the end",
+    "Yes, provided step 1 is written twice"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Add the steps: 2 NO + N₂O₂ + H₂ + N₂O + H₂ → N₂O₂ + N₂O + H₂O + N₂ + H₂O. Cancel N₂O₂ and N₂O from both sides: 2 NO + 2 H₂ → N₂ + 2 H₂O.",
+    "options": [
+     "Right: the sum matches the overall equation.",
+     "Steps 2 and 3 each make one H₂O, two in total.",
+     "N₂O₂ is made in step 1 and used in step 2, so it cancels.",
+     "Each step is used once; writing step 1 twice would give 4 NO."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanisms-intro-3",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "mechanisms-intro-s1",
+   "q": "What is the molecularity of step 2?",
+   "options": [
+    "Unimolecular",
+    "Bimolecular",
+    "Termolecular",
+    "Tetramolecular"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Step 2 is one N₂O₂ colliding with one H₂: two particles.",
+    "options": [
+     "One particle would be unimolecular; this step has two.",
+     "Right: two reactant particles.",
+     "Three particles would be termolecular.",
+     "Four particles never collide at once in an elementary step."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-mechanisms-intro-4",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "mechanisms-intro-s1",
+   "q": "Why is the overall reaction proposed to go by these steps rather than in one step?",
+   "options": [
+    "One step would need four molecules to collide at once",
+    "One step would make different products",
+    "One step would have no activation energy",
+    "One step would use up the intermediates"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The overall equation has 2 NO + 2 H₂, four particles on the left. Four particles meeting in the same instant essentially never happens, so the reaction must go through steps of one, two (or rarely three) particles.",
+    "options": [
+     "Right: a four-particle collision is too improbable.",
+     "The overall products are fixed by the equation, however many steps there are.",
+     "Every elementary step has an activation energy.",
+     "A single step would have no intermediates at all."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanisms-intro-5",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "single",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "mechanisms-intro-s1",
+   "q": "In the lab, a chemist detects N₂O in the reaction flask partway through, but not at the end. How does this relate to the mechanism?",
+   "options": [
+    "It supports the mechanism: N₂O is an intermediate made and then used",
+    "It disproves the mechanism: N₂O is not in the overall equation",
+    "It shows N₂O is a product that later escapes the flask",
+    "It shows N₂O is a reactant that was left over"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An intermediate builds up and then is consumed, so it can be detected during the reaction but not at the end. Detecting it supports (though it does not prove) the proposed mechanism.",
+    "options": [
+     "Right: detecting a predicted intermediate is evidence for the mechanism.",
+     "Intermediates are exactly the species missing from the overall equation, so finding one is expected.",
+     "A product would still be there at the end.",
+     "N₂O was not added at the start; it formed during the reaction."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanisms-intro-6",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "mechanisms-intro-s2",
+   "q": "Which mechanism adds up to the overall reaction?",
+   "options": [
+    "Mechanism X",
+    "Mechanism Y",
+    "Both mechanisms",
+    "Neither mechanism"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "X: O₃ + O + O₃ → O₂ + O + 2 O₂; cancel O: 2 O₃ → 3 O₂. ✓. Y: O₃ + O + O → O₂ + O + O₂; cancel one O: O₃ + O → 2 O₂, which is not the overall equation.",
+    "options": [
+     "Right: X sums correctly and Y does not.",
+     "Y sums to O₃ + O → 2 O₂, which is not the overall reaction.",
+     "Y fails the sum test.",
+     "X passes the sum test."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-mechanisms-intro-7",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "single",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "mechanisms-intro-s2",
+   "q": "In mechanism X, what is the oxygen atom, O?",
+   "options": [
+    "An intermediate",
+    "A reactant",
+    "A product",
+    "A transition state"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "O is made in step 1 and used in step 2, and it does not appear in the overall equation: an intermediate.",
+    "options": [
+     "Right: formed, then consumed.",
+     "A reactant is used and not made; O is made first.",
+     "A product is made and not used; O is used in step 2.",
+     "A transition state is the top of one step's energy barrier, not a species made in one step and used in the next."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanisms-intro-8",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "mechanisms-intro-s2",
+   "q": "Mechanism Y also needs two O atoms to meet. Why is that step unlikely to be important in this reaction?",
+   "options": [
+    "O atoms are scarce, so two rarely meet",
+    "O atoms do not form a bond with each other",
+    "Two O atoms would make O₃, not O₂",
+    "The step is termolecular, which is rare"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An intermediate like O is present only at a tiny concentration because it reacts quickly. A step needing two of them to collide is far rarer than O hitting an O₃ molecule, which is plentiful.",
+    "options": [
+     "Right: two scarce intermediates rarely meet.",
+     "Two O atoms can bond to form O₂; the problem is how rarely they meet.",
+     "O + O → O₂ is balanced; it does not make O₃.",
+     "O + O is two particles, bimolecular."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanisms-intro-9",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "mechanisms-intro-s2",
+   "q": "A third student proposes the one-step mechanism 2 O₃ → 3 O₂. Which statement is true?",
+   "options": [
+    "It sums correctly; data are needed to decide",
+    "It is wrong, since a mechanism has two or more steps",
+    "It is right, since it matches the overall equation exactly",
+    "It is wrong, since it has no intermediate"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Summing to the overall equation is necessary for any mechanism but not enough to prove it. A single bimolecular step is allowed; whether it is the real path must be decided by experiment (topic 5.8 compares predicted and measured rate laws).",
+    "options": [
+     "Right: passing the sum test is necessary, not sufficient.",
+     "One-step reactions exist; a mechanism can be a single elementary step.",
+     "Matching the overall equation does not prove a mechanism; several could match.",
+     "Having no intermediate is allowed for a one-step mechanism."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanisms-intro-10",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "multi",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A mechanism has the steps: (1) Br₂ → 2 Br; (2) Br + H₂ → HBr + H; (3) H + Br₂ → HBr + Br. Which species are intermediates? Select all that apply.",
+   "options": [
+    "Br",
+    "H",
+    "H₂",
+    "HBr"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Br is made in step 1 and used in step 2 (and is also remade in step 3). H is made in step 2 and used in step 3. H₂ is a reactant and HBr a product.",
+    "options": [
+     "Right: made and used within the mechanism.",
+     "Right: made in step 2, used in step 3.",
+     "H₂ is only used, never made: a reactant.",
+     "HBr is only made, never used: a product."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanisms-intro-11",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The mechanism (1) A + B → C; (2) C + B → D is proposed. What is the overall reaction?",
+   "options": [
+    "A + 2 B → D",
+    "A + B → D",
+    "A + B + C → C + D",
+    "C + B → D"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Add the steps: A + B + C + B → C + D. Cancel C: A + 2 B → D.",
+    "options": [
+     "Right: C cancels; B appears twice.",
+     "This forgets that B is used in both steps.",
+     "C must be canceled, because it appears on both sides.",
+     "That is only step 2."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanisms-intro-12",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statement about a reaction mechanism is correct?",
+   "options": [
+    "A series of elementary steps that sums to the overall reaction",
+    "The balanced overall equation, written out with state symbols",
+    "The list of the products, in the order in which they form",
+    "The rate law of the reaction, as measured in the lab"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A reaction mechanism is the series of elementary steps by which a reaction happens. Its steps must add up to the overall balanced equation.",
+    "options": [
+     "Right: the step-by-step path.",
+     "The overall equation is the sum of the mechanism, not the mechanism itself.",
+     "A mechanism describes the steps, not just the products.",
+     "A rate law is measured; a mechanism is a proposed explanation for it."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanisms-intro-13",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A proposed mechanism for 2 NO₂Cl → 2 NO₂ + Cl₂ is: (1) NO₂Cl → NO₂ + Cl; (2) ? Each step occurs once each time the overall reaction occurs. Which second step completes it?",
+   "options": [
+    "NO₂Cl + Cl → NO₂ + Cl₂",
+    "Cl + Cl → Cl₂",
+    "NO₂ + Cl → NO₂Cl",
+    "NO₂Cl → NO₂ + Cl"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Step 1 + (NO₂Cl + Cl → NO₂ + Cl₂) gives 2 NO₂Cl + Cl → 2 NO₂ + Cl + Cl₂; Cl cancels, leaving 2 NO₂Cl → 2 NO₂ + Cl₂.",
+    "options": [
+     "Right: the Cl intermediate cancels and the sum matches.",
+     "With step 1 written once, this sums to NO₂Cl + Cl → NO₂ + Cl₂, not the overall equation.",
+     "This just undoes step 1.",
+     "Repeating step 1 gives two Cl atoms but no Cl₂."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanisms-intro-14",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why are intermediates hard to collect from a reaction mixture?",
+   "options": [
+    "They react in a later step soon after they form",
+    "They are the same as the transition states",
+    "They form after the reaction is over",
+    "They are present in larger amounts than the products"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An intermediate is a real species in a valley between steps, but it is usually used up quickly by the next step, so its concentration stays low.",
+    "options": [
+     "Right: consumed soon after it forms.",
+     "A transition state is the peak of a single step; an intermediate is a species between steps.",
+     "Intermediates form during the reaction, not after it.",
+     "Intermediates are usually present at small concentrations."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanisms-intro-15",
+   "unit": "unit-5",
+   "topic": "mechanisms-intro",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says, \"N₂O₂ appears in the mechanism, so it should appear in the overall equation too.\" Which response is best?",
+   "options": [
+    "N₂O₂ is made and then used, so it cancels from the sum",
+    "The student is right; the overall equation is missing N₂O₂",
+    "N₂O₂ is a transition state, which is left out of equations",
+    "N₂O₂ is left out because it is a gas"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Adding the steps puts N₂O₂ on the right (made in step 1) and on the left (used in step 2). It cancels, which is exactly what makes it an intermediate.",
+    "options": [
+     "Right: intermediates cancel from the sum.",
+     "The overall equation is the sum of the steps, and N₂O₂ cancels out of it.",
+     "N₂O₂ is a species made in one step and used in another, not the top of a barrier.",
+     "Gases appear in equations all the time; that is not the reason."
+    ]
+   }
+  }
+ ]
+}

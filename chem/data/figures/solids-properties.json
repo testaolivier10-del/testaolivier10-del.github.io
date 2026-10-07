@@ -1,0 +1,12 @@
+{
+ "solid-types": {
+  "file": "figures/solid-types.svg",
+  "ext": "svg",
+  "w": 740,
+  "h": 290,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four kinds of solid drawn at the particle level: an ionic solid as a grid of alternating cations and anions; a molecular solid as separate two-atom molecules packed side by side; a covalent network solid as atoms joined by covalent bonds in one continuous web; and a metallic solid as metal cations in a sea of delocalized electrons."
+ }
+}

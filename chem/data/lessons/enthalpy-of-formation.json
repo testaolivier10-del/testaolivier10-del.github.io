@@ -1,0 +1,83 @@
+{
+ "topic": "enthalpy-of-formation",
+ "hook": "Chemists have measured the enthalpy of maybe a few thousand reactions directly, yet you can find ΔH for millions. The trick: measure one number per compound, the energy of making it from its elements, and let every reaction pass through the elements on paper.",
+ "prereq": [
+  {
+   "q": "Reversing a thermochemical equation",
+   "options": [
+    "changes the sign of ΔH",
+    "doubles ΔH",
+    "leaves ΔH unchanged",
+    "makes ΔH zero"
+   ],
+   "correct": 0,
+   "why": "The energy flows the other way, so ΔH has the same size and opposite sign.",
+   "review": "enthalpy-of-reaction"
+  },
+  {
+   "q": "Which is an element?",
+   "options": [
+    "O₂",
+    "H₂O",
+    "CO₂",
+    "NH₃"
+   ],
+   "correct": 0,
+   "why": "O₂ contains only oxygen atoms.",
+   "review": "moles-molar-mass"
+  }
+ ],
+ "figure": {
+  "figure": "formation-pathway",
+  "caption": "Every reaction can be routed through the elements: take the reactants apart, then build the products. Only ΔH°f values are needed."
+ },
+ "chain": [
+  {
+   "cause": "ΔH°f is the enthalpy change to make 1 mol of a compound from its elements in their standard states",
+   "effect": "each compound gets one tabulated number; elements in their standard states get zero"
+  },
+  {
+   "cause": "A reaction can be imagined as reactants → elements → products",
+   "effect": "taking reactants apart costs −Σ ΔH°f(reactants); building products costs +Σ ΔH°f(products)"
+  },
+  {
+   "cause": "The route does not change the overall enthalpy change",
+   "effect": "ΔH°rxn = Σ n ΔH°f(products) − Σ n ΔH°f(reactants)"
+  },
+  {
+   "cause": "ΔH°f values are measured for each substance and state",
+   "effect": "the result is more exact than a bond-enthalpy estimate"
+  }
+ ],
+ "ideas": [
+  "The <b>standard enthalpy of formation</b>, ΔH°f, is ΔH for making 1 mol of a compound from its elements in their <b>standard states</b> (most stable form at 1 atm, usually 25 °C).",
+  "ΔH°f = 0 for an element in its standard state: O₂(g), H₂(g), C(graphite), Br₂(l), Fe(s).",
+  "ΔH°rxn = Σ n ΔH°f(products) − Σ n ΔH°f(reactants): products minus reactants, each times its coefficient.",
+  "States matter: H₂O(l) −285.8 and H₂O(g) −241.8 kJ/mol.",
+  "Bond enthalpies: broken − formed. Formation: products − reactants. Do not mix them up."
+ ],
+ "misconception": {
+  "wrong": "Every pure substance made of one element, like O₃ or O atoms, has ΔH°f = 0.",
+  "right": "Only the standard state, the most stable form at 1 atm and 25 °C, has ΔH°f = 0. O₂(g) is zero; O₃(g) and O(g) are positive."
+ },
+ "check": [
+  "chem-enthalpy-of-formation-1",
+  "chem-enthalpy-of-formation-2",
+  "chem-enthalpy-of-formation-3",
+  "chem-enthalpy-of-formation-4",
+  "chem-enthalpy-of-formation-6",
+  "chem-enthalpy-of-formation-7",
+  "chem-enthalpy-of-formation-12"
+ ],
+ "summary": "A standard enthalpy of formation is ΔH for making 1 mol of a compound from its elements in their standard states; elements in their standard states have ΔH°f = 0. Any reaction's ΔH° is the sum of ΔH°f of the products minus the sum for the reactants, each multiplied by its coefficient.",
+ "connections": [
+  {
+   "href": "../notes/bond-enthalpies.html",
+   "label": "Back: estimating ΔH from bonds (6.7)"
+  },
+  {
+   "href": "../notes/hess-law.html",
+   "label": "Next: why the route does not matter (6.9)"
+  }
+ ]
+}

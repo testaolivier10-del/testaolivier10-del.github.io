@@ -1,0 +1,435 @@
+{
+ "stimuli": {
+  "moles-molar-mass-s1": {
+   "kind": "table",
+   "title": "Four weighed samples",
+   "text": "<p>A student weighs four pure samples.</p>",
+   "table": {
+    "caption": "Mass and molar mass of each sample",
+    "cols": [
+     "Sample",
+     "Substance",
+     "Mass (g)",
+     "Molar mass (g/mol)"
+    ],
+    "rows": [
+     [
+      "1",
+      "Water",
+      "36.0",
+      "18.02"
+     ],
+     [
+      "2",
+      "Carbon dioxide",
+      "22.0",
+      "44.01"
+     ],
+     [
+      "3",
+      "Methane",
+      "8.00",
+      "16.04"
+     ],
+     [
+      "4",
+      "Glucose",
+      "90.0",
+      "180.16"
+     ]
+    ]
+   }
+  },
+  "moles-molar-mass-s2": {
+   "kind": "particle",
+   "title": "A box of molecules",
+   "html": "<svg viewBox=\"0 0 260 190\" width=\"260\" height=\"190\" role=\"img\" aria-label=\"A closed box holding six identical molecules. Each molecule is one large oxygen atom bonded to two small hydrogen atoms.\"><rect x=\"4\" y=\"4\" width=\"252\" height=\"182\" rx=\"8\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"50\" cy=\"50\" r=\"11\" fill=\"#D55E00\"/><circle cx=\"38\" cy=\"59\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"62\" cy=\"59\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"120\" cy=\"45\" r=\"11\" fill=\"#D55E00\"/><circle cx=\"108\" cy=\"54\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"132\" cy=\"54\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"190\" cy=\"60\" r=\"11\" fill=\"#D55E00\"/><circle cx=\"178\" cy=\"69\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"202\" cy=\"69\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"70\" cy=\"125\" r=\"11\" fill=\"#D55E00\"/><circle cx=\"58\" cy=\"134\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"82\" cy=\"134\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"145\" cy=\"120\" r=\"11\" fill=\"#D55E00\"/><circle cx=\"133\" cy=\"129\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"157\" cy=\"129\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"205\" cy=\"140\" r=\"11\" fill=\"#D55E00\"/><circle cx=\"193\" cy=\"149\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"217\" cy=\"149\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/></svg><p>Key: large dark circle, oxygen atom; small light circle, hydrogen atom.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-moles-molar-mass-1",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "moles-molar-mass-s1",
+   "q": "How many moles of carbon dioxide are in Sample 2?",
+   "numeric": {
+    "answer": 0.5,
+    "tol": 0.001,
+    "unit": "mol",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 968,
+      "rel": 0.005,
+      "why": "Value: you multiplied the mass by the molar mass. Divide instead, so grams cancel and moles are left."
+     }
+    ]
+   },
+   "why": {
+    "correct": "22.0 g × (1 mol / 44.01 g) = 0.49989 mol, which is 0.500 mol to the three significant figures of the mass."
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-2",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "moles-molar-mass-s1",
+   "q": "Which sample contains the greatest number of molecules?",
+   "options": [
+    "Sample 1, the water",
+    "Sample 2, the carbon dioxide",
+    "Sample 3, the methane",
+    "Sample 4, the glucose"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The number of molecules follows the number of moles. Sample 1 holds 36.0 / 18.02 = 2.00 mol; the other three hold about 0.500 mol each.",
+    "options": [
+     "Right: 2.00 mol of water, four times the amount in each other sample.",
+     "About 0.500 mol: a larger mass than the methane, but a heavier molecule.",
+     "About 0.499 mol: the smallest mass, but also the lightest molecule, so it is close to the others.",
+     "The largest mass, but each molecule is heavy, so it is only about 0.500 mol."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-3",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "moles-molar-mass-s1",
+   "q": "Samples 2 and 4 hold nearly the same amount in moles, yet Sample 4 has about four times the mass. Which statement explains this?",
+   "options": [
+    "Each glucose molecule has about four times the mass of a carbon dioxide molecule.",
+    "Glucose molecules are packed more tightly, so more of them fit in the sample.",
+    "Carbon dioxide molecules lose some mass when they are weighed as a gas.",
+    "A mole of glucose holds four times as many molecules as a mole of carbon dioxide."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Equal moles means equal numbers of molecules. The mass ratio then comes from the mass of one molecule: 180.16 / 44.01 is about 4.1.",
+    "options": [
+     "Right: same number of molecules, each about 4.1 times heavier.",
+     "Packing changes the volume a sample takes up, not its mass per molecule or the count per mole.",
+     "Mass does not depend on how the substance is held; a weighed gas has its full mass.",
+     "Every mole holds 6.022 × 10²³ particles, whatever the substance."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-4",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "moles-molar-mass-s1",
+   "q": "How many molecules of methane are in Sample 3? Give your answer in scientific notation.",
+   "numeric": {
+    "answer": 3e+23,
+    "rel": 0.003,
+    "unit": "molecules",
+    "sigfigs": 3
+   },
+   "why": {
+    "correct": "8.00 g × (1 mol / 16.04 g) = 0.4988 mol; 0.4988 mol × 6.022 × 10²³ molecules/mol = 3.00 × 10²³ molecules."
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-5",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "type": "numeric",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "moles-molar-mass-s2",
+   "q": "How many atoms are shown in the box?",
+   "numeric": {
+    "answer": 18,
+    "tol": 0,
+    "unit": "atoms",
+    "decimals": 0
+   },
+   "why": {
+    "correct": "Six molecules, each made of three atoms (one oxygen, two hydrogen): 6 × 3 = 18 atoms."
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-6",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "moles-molar-mass-s2",
+   "q": "Which statement describes what the box holds?",
+   "options": [
+    "One compound: every molecule has the same two elements in the same ratio.",
+    "One element: each particle in the box is made of the same atom.",
+    "Two elements mixed together: oxygen atoms and separate hydrogen atoms.",
+    "Two compounds: the oxygen atoms and hydrogen atoms form different substances."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "All six molecules are identical, and each joins two different elements in a fixed 2 : 1 ratio, so the box holds one compound.",
+    "options": [
+     "Right: one kind of molecule, two elements, fixed ratio.",
+     "Each molecule holds two kinds of atom, so the substance is not an element.",
+     "The hydrogen atoms are bonded to oxygen inside each molecule, not loose beside it.",
+     "Every molecule is the same, so there is only one substance in the box."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-7",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "moles-molar-mass-s2",
+   "q": "Suppose each molecule drawn stood for 1.00 mol of molecules. What would the mass of the sample be?",
+   "numeric": {
+    "answer": 108,
+    "tol": 1,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.333,
+      "rel": 0.01,
+      "why": "Value: you divided the moles by the molar mass. Moles times grams per mole gives grams."
+     }
+    ]
+   },
+   "why": {
+    "correct": "6.00 mol × 18.02 g/mol = 108.12 g, which is 108 g to three significant figures."
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-8",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "type": "single",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "moles-molar-mass-s2",
+   "q": "How many moles of hydrogen atoms are in one mole of the substance in the box?",
+   "options": [
+    "1 mol",
+    "2 mol",
+    "3 mol",
+    "6 mol"
+   ],
+   "correct": 1,
+   "fixed": true,
+   "why": {
+    "correct": "Each molecule holds two hydrogen atoms, so one mole of molecules holds two moles of hydrogen atoms.",
+    "options": [
+     "One is the number of oxygen atoms in each molecule.",
+     "Right: two hydrogen atoms in every molecule.",
+     "Three is the number of atoms of both kinds in each molecule.",
+     "Six is the number of molecules drawn, not a count per molecule."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-9",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does the molar mass of a substance tell you?",
+   "options": [
+    "The mass of one mole of it, in grams",
+    "The number of atoms in one molecule of it",
+    "The mass of one molecule of it, in grams",
+    "The number of moles in one gram of it"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Molar mass is grams per mole: the mass of 6.022 × 10²³ particles.",
+    "options": [
+     "Right: grams per mole.",
+     "That is a count of atoms, which the molecular picture gives.",
+     "One molecule weighs about 10⁻²³ g; the molar mass is the mass of a whole mole.",
+     "That is the inverse, moles per gram."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-10",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "type": "single",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "Nitrogen has an atomic mass of 14.01 and hydrogen 1.008. What is the molar mass of a molecule with one nitrogen atom and three hydrogen atoms?",
+   "options": [
+    "15.02 g/mol",
+    "17.03 g/mol",
+    "43.04 g/mol",
+    "45.05 g/mol"
+   ],
+   "correct": 1,
+   "fixed": true,
+   "why": {
+    "correct": "Add the atomic mass of every atom: 14.01 + 3(1.008) = 17.03 g/mol.",
+    "options": [
+     "This counts only one hydrogen atom.",
+     "Right: one nitrogen and three hydrogens.",
+     "This counts three nitrogen atoms and one hydrogen atom.",
+     "This counts three of each atom."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-11",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the mass of 0.0450 mol of water (molar mass 18.02 g/mol)?",
+   "numeric": {
+    "answer": 0.811,
+    "tol": 0.001,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.0025,
+      "rel": 0.01,
+      "why": "Value: you divided by the molar mass. To go from moles to grams, multiply by grams per mole."
+     }
+    ]
+   },
+   "why": {
+    "correct": "0.0450 mol × 18.02 g/mol = 0.8109 g, which is 0.811 g to three significant figures."
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-12",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "type": "multi",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which quantities are equal to one mole of water molecules?",
+   "options": [
+    "6.022 × 10²³ water molecules",
+    "18.02 g of water",
+    "1.008 g of water",
+    "6.022 × 10²³ atoms of hydrogen and oxygen"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A mole is 6.022 × 10²³ particles, and its mass in grams is the molar mass, 18.02 g for water.",
+    "options": [
+     "Right: the definition of a mole of molecules.",
+     "Right: the molar mass of water.",
+     "That is the atomic mass of hydrogen, not the molar mass of water.",
+     "Each molecule has three atoms, so a mole of molecules holds three moles of atoms."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-13",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "type": "order",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for finding the number of molecules in a weighed sample in order.",
+   "options": [
+    "Write down the measured mass in grams",
+    "Divide by the molar mass to get moles",
+    "Multiply by Avogadro's number to get molecules",
+    "Round to the significant figures of the mass"
+   ],
+   "why": {
+    "correct": "Grams to moles with the molar mass, moles to molecules with Avogadro's number, then round once at the end."
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-14",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is Avogadro's number?",
+   "options": [
+    "The number of particles in one mole",
+    "The mass of one mole of carbon atoms",
+    "The number of atoms in one molecule",
+    "The mass of one atom in grams"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Avogadro's number, 6.022 × 10²³, is how many particles make one mole.",
+    "options": [
+     "Right: 6.022 × 10²³ particles per mole.",
+     "That is the molar mass of carbon, 12.01 g.",
+     "Atoms per molecule depends on the molecule.",
+     "Atoms weigh about 10⁻²³ g each; this number is a count, not a mass."
+    ]
+   }
+  },
+  {
+   "id": "chem-moles-molar-mass-15",
+   "unit": "unit-1",
+   "topic": "moles-molar-mass",
+   "type": "single",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student reports that 36.0 g of water is 649 mol. Which error best explains this result?",
+   "options": [
+    "The mass was multiplied by the molar mass.",
+    "The mass was divided by Avogadro's number.",
+    "The molar mass was rounded to 18.0 g/mol.",
+    "The mass was recorded with too few digits."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "36.0 × 18.02 = 649. Dividing gives the right answer, 2.00 mol; an estimate (36 g is about twice 18 g) catches the slip.",
+    "options": [
+     "Right: 36.0 × 18.02 = 649.",
+     "That would give a tiny number, about 6 × 10⁻²³.",
+     "Rounding the molar mass changes the answer in the third digit, not by a factor of 300.",
+     "Too few digits changes the precision, not the size, of the answer."
+    ]
+   }
+  }
+ ]
+}

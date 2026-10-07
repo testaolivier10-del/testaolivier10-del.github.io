@@ -1,0 +1,43 @@
+<p>Every E° in topic 9.9 assumed standard conditions: every dissolved species at 1 M. Real batteries are almost never like that, and their concentrations change as they run. This page explains how the cell potential, E, depends on concentration, and why a battery eventually goes dead.</p>
+
+<h2>The idea: Q decides the drive</h2>
+<p>From Unit 7 you know that a reaction mixture moves in the direction that brings Q toward K. The further Q is from K, the stronger the drive. A cell's voltage measures that drive, so it changes with Q in the same way ΔG does:</p>
+<ul>
+<li><b>Q &lt; 1</b> (less product or more reactant than standard): the reaction is pushed harder forward, so <b>E &gt; E°</b>.</li>
+<li><b>Q = 1</b> (standard concentrations): <b>E = E°</b>.</li>
+<li><b>Q &gt; 1</b> (more product or less reactant): the drive is weaker, so <b>E &lt; E°</b>.</li>
+<li><b>Q = K</b> (equilibrium): there is no net drive, so <b>E = 0</b>.</li>
+</ul>
+<figure id="fig-q" data-fig="nernst-q-line"><figcaption>Figure 1. Cell potential against Q.</figcaption></figure>
+<p><a class="figref" href="#fig-q">Figure 1</a> shows the pattern. Q is written from the balanced equation in the usual way, with only aqueous species and gases; solid electrodes and spectator ions in the salt bridge never appear in it.</p>
+
+<h2>The Nernst equation</h2>
+<p>The exact relation is on the equations sheet:</p>
+<p style="text-align:center"><b>E = E° − (RT/nF) ln Q</b></p>
+<p>When Q = 1, ln Q = 0 and E = E°. When Q &lt; 1, ln Q is negative, so the subtracted term makes E larger. When Q &gt; 1, ln Q is positive and E is smaller. The exam mainly asks you to reason about the <i>direction</i> of the change, as in the example below.</p>
+<div class="worked">
+<p><b>Worked example (reasoning).</b> A cell runs Zn(s) + Cu<sup>2+</sup>(aq) → Zn<sup>2+</sup>(aq) + Cu(s), E° = 1.10 V. The zinc half-cell has [Zn<sup>2+</sup>] = 0.10 M and the copper half-cell has [Cu<sup>2+</sup>] = 1.0 M. Is E greater or less than 1.10 V?</p>
+<p>Write Q from the balanced equation, leaving out the solids: Q = [Zn<sup>2+</sup>]/[Cu<sup>2+</sup>] = 0.10/1.0 = 0.10.</p>
+<p>Q &lt; 1, so the reaction is further from equilibrium than at standard conditions and E &gt; E°. (The measured value is about 1.13 V.)</p>
+<p>Notice it is the <i>ratio</i> that counts. A cell with [Zn<sup>2+</sup>] = 0.50 M and [Cu<sup>2+</sup>] = 0.050 M has Q = 10 &gt; 1, so E &lt; E°, even though both concentrations are below 1 M.</p>
+</div>
+
+<h2>Why batteries die</h2>
+<p>As a galvanic cell runs, reactants are used and products form, so Q rises. The voltage falls slowly, then the cell reaches Q = K, where E = 0 and no current flows. A "dead" battery has not run out of electrons; its reaction has reached equilibrium, often with plenty of reactant left. Recharging uses an outside power supply (an electrolytic process) to push Q back down.</p>
+
+<h2>Concentration cells</h2>
+<p>A <b>concentration cell</b> uses the same half-reaction in both half-cells, at different concentrations: for example, Cu in 0.010 M Cu<sup>2+</sup> and Cu in 1.0 M Cu<sup>2+</sup>. Since the half-reactions are identical, E°cell = E°(cathode) − E°(anode) = 0. Yet it gives a voltage, because the concentrations differ.</p>
+<p>Which way does it run? Toward equal concentrations. Copper is oxidized in the <b>dilute</b> beaker (the anode), adding Cu<sup>2+</sup> there, and Cu<sup>2+</sup> is reduced in the <b>concentrated</b> beaker (the cathode), removing Cu<sup>2+</sup>. For this cell Q = [Cu<sup>2+</sup>]<sub>dilute</sub>/[Cu<sup>2+</sup>]<sub>concentrated</sub> = 0.010, which is less than 1, so E &gt; 0. The cell runs until the two concentrations are equal (Q = 1 = K) and E = 0. A larger concentration difference gives a larger starting voltage. Nerve cells use the same principle: ion concentration differences across a membrane produce a voltage.</p>
+
+<h2>Predicting changes</h2>
+<table class="compare">
+<caption>Effects on E for Ni(s) + 2 Ag<sup>+</sup>(aq) → Ni<sup>2+</sup>(aq) + 2 Ag(s)</caption>
+<thead><tr><th scope="col">Change</th><th scope="col">Effect on Q</th><th scope="col">Effect on E</th></tr></thead>
+<tbody>
+<tr><td>Add AgNO<sub>3</sub> to the silver half-cell</td><td>falls</td><td>rises</td></tr>
+<tr><td>Add Ni(NO<sub>3</sub>)<sub>2</sub> to the nickel half-cell</td><td>rises</td><td>falls</td></tr>
+<tr><td>Use a bigger nickel strip</td><td>none (solid)</td><td>none</td></tr>
+<tr><td>Let the cell run</td><td>rises</td><td>falls toward 0</td></tr>
+</tbody>
+</table>
+<aside class="going-further"><p><b>Going further.</b> At 25 °C, RT/F = 0.0257 V, so for the zinc-copper cell above E = 1.10 − (0.0257/2) ln(0.10) = 1.10 + 0.030 = 1.13 V. Quantitative Nernst calculations are reported as de-emphasized on the exam, so this course does not test them.</p></aside>

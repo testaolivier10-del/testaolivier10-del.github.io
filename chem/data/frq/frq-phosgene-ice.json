@@ -1,0 +1,82 @@
+{
+ "id": "frq-phosgene-ice",
+ "type": "short",
+ "points": 4,
+ "title": "Equilibrium in a decomposing gas",
+ "units": [
+  "unit-7"
+ ],
+ "topics": [
+  "equilibrium-concentrations",
+  "q-and-k"
+ ],
+ "practices": [
+  "5.F",
+  "5.A",
+  "6.D"
+ ],
+ "stimulus": {
+  "kind": "setup",
+  "title": "Phosgene decomposing in a sealed flask",
+  "text": "<p>Phosgene decomposes on heating: COCl<sub>2</sub>(g) ⇌ CO(g) + Cl<sub>2</sub>(g). At a certain high temperature, K<sub>c</sub> = 8.0 × 10<sup>−4</sup>. A sealed 1.00 L flask initially contains 0.50 M COCl<sub>2</sub> and no CO or Cl<sub>2</sub>, and is held at that temperature.</p>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 1,
+   "prompt": "<b>Write</b> the equilibrium concentration of each species in terms of x, where x is the amount of COCl<sub>2</sub> that reacts (in M).",
+   "rubric": [
+    {
+     "point": "[COCl₂] = 0.50 − x, [CO] = x, [Cl₂] = x.",
+     "accept": [
+      "an ICE table with these entries"
+     ]
+    }
+   ],
+   "sample": "Initial: 0.50, 0, 0. Change: −x, +x, +x. Equilibrium: [COCl<sub>2</sub>] = 0.50 − x, [CO] = x, [Cl<sub>2</sub>] = x."
+  },
+  {
+   "label": "b",
+   "points": 1,
+   "prompt": "<b>Calculate</b> [Cl<sub>2</sub>] at equilibrium.",
+   "rubric": [
+    {
+     "point": "x² / (0.50 − x) = 8.0 × 10⁻⁴; with 0.50 − x ≈ 0.50, x² = 4.0 × 10⁻⁴, x = 0.020 M.",
+     "accept": [
+      "0.020 M",
+      "exact solution 0.020 M"
+     ]
+    }
+   ],
+   "sample": "K<sub>c</sub> = x<sup>2</sup> / (0.50 − x) = 8.0 × 10<sup>−4</sup>. Because K is small, 0.50 − x ≈ 0.50, so x<sup>2</sup> = (8.0 × 10<sup>−4</sup>)(0.50) = 4.0 × 10<sup>−4</sup> and x = [Cl<sub>2</sub>] = 0.020 M."
+  },
+  {
+   "label": "c",
+   "points": 1,
+   "prompt": "<b>Justify</b> the approximation you used in part (b), or explain why none was needed.",
+   "rubric": [
+    {
+     "point": "x = 0.020 M is 4% of 0.50 M, which is under 5%, so neglecting x in 0.50 − x is justified.",
+     "accept": [
+      "0.020/0.50 × 100% = 4.0% < 5%"
+     ]
+    }
+   ],
+   "sample": "x = 0.020 M is (0.020 / 0.50) × 100% = 4.0% of the initial concentration. That is under 5%, so treating 0.50 − x as 0.50 introduces a negligible error."
+  },
+  {
+   "label": "d",
+   "points": 1,
+   "prompt": "Extra CO is injected into the equilibrium mixture at constant temperature. <b>Determine</b> whether [COCl<sub>2</sub>] increases, decreases or stays the same, and <b>justify</b> your answer in terms of Q and K.",
+   "rubric": [
+    {
+     "point": "[COCl₂] increases: added CO increases Q = [CO][Cl₂]/[COCl₂] above K, so the net reaction proceeds in reverse, forming COCl₂ until Q = K.",
+     "accept": [
+      "Q > K, net reverse"
+     ]
+    }
+   ],
+   "sample": "[COCl<sub>2</sub>] increases. Adding CO increases the numerator of Q = [CO][Cl<sub>2</sub>] / [COCl<sub>2</sub>], so Q &gt; K. The net reaction proceeds in reverse, consuming CO and Cl<sub>2</sub> and forming COCl<sub>2</sub>, until Q = K."
+  }
+ ]
+}

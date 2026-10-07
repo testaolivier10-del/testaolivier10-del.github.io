@@ -1,0 +1,448 @@
+{
+ "stimuli": {
+  "physical-chemical-changes-s1": {
+   "kind": "particle",
+   "title": "Three changes",
+   "html": "<svg viewBox=\"0 0 716 400\" width=\"716\" height=\"400\" role=\"img\" aria-label=\"Three before-and-after pairs of boxes. Change P: six water molecules become six hydrogen molecules, H₂, and three oxygen molecules, O₂. Change Q: six bromine molecules, Br₂, packed close together at the bottom of the first box are the same six Br₂ molecules spread far apart through the second box. Change R: six nitrogen dioxide molecules, NO₂, become six nitrogen monoxide molecules, NO, and three oxygen molecules, O₂.\"><rect x=\"70\" y=\"4\" width=\"280\" height=\"110\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"98\" cy=\"28\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"98\" y=\"31.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"87\" cy=\"36\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"87\" y=\"38.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"109\" cy=\"36\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"109\" y=\"38.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"205\" cy=\"37\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"205\" y=\"40.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"194\" cy=\"45\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"194\" y=\"47.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"216\" cy=\"45\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"216\" y=\"47.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"300\" cy=\"35\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"300\" y=\"38.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"289\" cy=\"43\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"289\" y=\"45.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"311\" cy=\"43\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"311\" y=\"45.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"123\" cy=\"91\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"123\" y=\"94.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"112\" cy=\"99\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"112\" y=\"101.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"134\" cy=\"99\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"134\" y=\"101.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"205\" cy=\"88\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"205\" y=\"91.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"194\" cy=\"96\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"194\" y=\"98.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"216\" cy=\"96\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"216\" y=\"98.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"322\" cy=\"92\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"322\" y=\"95.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"311\" cy=\"100\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"311\" y=\"102.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"333\" cy=\"100\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"333\" y=\"102.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><line x1=\"358\" y1=\"59\" x2=\"414\" y2=\"59\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><path d=\"M412,53 L422,59 L412,65 Z\" fill=\"#1F2A28\"/><rect x=\"430\" y=\"4\" width=\"280\" height=\"110\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"456\" cy=\"36\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"456\" y=\"38.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"468\" cy=\"36\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"468\" y=\"38.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"508\" cy=\"33\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"508\" y=\"35.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"520\" cy=\"33\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"520\" y=\"35.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"564\" cy=\"33\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"564\" y=\"36.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"582\" cy=\"33\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"582\" y=\"36.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"617\" cy=\"27\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"617\" y=\"29.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"629\" cy=\"27\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"629\" y=\"29.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"680\" cy=\"37\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"680\" y=\"39.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"692\" cy=\"37\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"692\" y=\"39.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"455\" cy=\"87\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"455\" y=\"89.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"467\" cy=\"87\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"467\" y=\"89.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"502\" cy=\"87\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"502\" y=\"90.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"520\" cy=\"87\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"520\" y=\"90.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"562\" cy=\"92\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"562\" y=\"94.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"574\" cy=\"92\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"574\" y=\"94.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"620\" cy=\"82\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"620\" y=\"85.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"638\" cy=\"82\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"638\" y=\"85.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><text x=\"34\" y=\"66\" font-size=\"22\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">P</text><rect x=\"70\" y=\"138\" width=\"280\" height=\"110\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"100\" cy=\"226\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"100\" y=\"229.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"120\" cy=\"226\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"120\" y=\"229.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"150\" cy=\"222\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"150\" y=\"225.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"170\" cy=\"222\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"170\" y=\"225.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"200\" cy=\"226\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"200\" y=\"229.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"220\" cy=\"226\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"220\" y=\"229.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"124\" cy=\"202\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"124\" y=\"205.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"144\" cy=\"202\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"144\" y=\"205.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"176\" cy=\"200\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"176\" y=\"203.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"196\" cy=\"200\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"196\" y=\"203.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"226\" cy=\"205\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"226\" y=\"208.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"246\" cy=\"205\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"246\" y=\"208.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><line x1=\"358\" y1=\"193\" x2=\"414\" y2=\"193\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><path d=\"M412,187 L422,193 L412,199 Z\" fill=\"#1F2A28\"/><rect x=\"430\" y=\"138\" width=\"280\" height=\"110\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"459\" cy=\"171\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"459\" y=\"174.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"479\" cy=\"171\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"479\" y=\"174.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"575\" cy=\"161\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"575\" y=\"164.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"595\" cy=\"161\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"595\" y=\"164.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"663\" cy=\"170\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"663\" y=\"173.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"683\" cy=\"170\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"683\" y=\"173.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"470\" cy=\"224\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"470\" y=\"227.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"490\" cy=\"224\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"490\" y=\"227.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"543\" cy=\"215\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"543\" y=\"218.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"563\" cy=\"215\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"563\" y=\"218.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"651\" cy=\"226\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"651\" y=\"229.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><circle cx=\"671\" cy=\"226\" r=\"12\" fill=\"#8B3A1E\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"671\" y=\"229.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Br</text><text x=\"34\" y=\"200\" font-size=\"22\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Q</text><rect x=\"70\" y=\"272\" width=\"280\" height=\"110\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"126\" cy=\"304\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"126\" y=\"307.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"111\" cy=\"311\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"111\" y=\"314.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"141\" cy=\"311\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"141\" y=\"314.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"206\" cy=\"296\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"206\" y=\"299.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"191\" cy=\"303\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"191\" y=\"306.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"221\" cy=\"303\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"221\" y=\"306.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"293\" cy=\"300\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"293\" y=\"303.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"278\" cy=\"307\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"278\" y=\"310.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"308\" cy=\"307\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"308\" y=\"310.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"119\" cy=\"357\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"119\" y=\"360.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"104\" cy=\"364\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"104\" y=\"367.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"134\" cy=\"364\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"134\" y=\"367.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"202\" cy=\"354\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"202\" y=\"357.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"187\" cy=\"361\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"187\" y=\"364.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"217\" cy=\"361\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"217\" y=\"364.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"307\" cy=\"360\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"307\" y=\"363.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"292\" cy=\"367\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"292\" y=\"370.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"322\" cy=\"367\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"322\" y=\"370.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><line x1=\"358\" y1=\"327\" x2=\"414\" y2=\"327\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><path d=\"M412,321 L422,327 L412,333 Z\" fill=\"#1F2A28\"/><rect x=\"430\" y=\"272\" width=\"280\" height=\"110\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"447\" cy=\"302\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"447\" y=\"305.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"465\" cy=\"302\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"465\" y=\"305.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"503\" cy=\"300\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"503\" y=\"303.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"521\" cy=\"300\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"521\" y=\"303.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"562\" cy=\"300\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"562\" y=\"303.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"580\" cy=\"300\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"580\" y=\"303.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"621\" cy=\"303\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"621\" y=\"306.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"639\" cy=\"303\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"639\" y=\"306.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"669\" cy=\"295\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"669\" y=\"298.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"687\" cy=\"295\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"687\" y=\"298.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"448\" cy=\"352\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"448\" y=\"355.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"466\" cy=\"352\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"466\" y=\"355.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"504\" cy=\"351\" r=\"11\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"504\" y=\"354.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">N</text><circle cx=\"522\" cy=\"351\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"522\" y=\"354.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"561\" cy=\"353\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"561\" y=\"356.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"579\" cy=\"353\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"579\" y=\"356.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"618\" cy=\"355\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"618\" y=\"358.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"636\" cy=\"355\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"636\" y=\"358.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><text x=\"34\" y=\"334\" font-size=\"22\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">R</text></svg><p>Key: red O, oxygen atom; white H, hydrogen atom; brown Br, bromine atom; blue N, nitrogen atom. Each pair shows the same sample before and after.</p>"
+  },
+  "physical-chemical-changes-s2": {
+   "kind": "table",
+   "title": "Energy to pull particles apart",
+   "text": "<p>The table gives the energy needed for two processes involving water, per mole of water.</p>",
+   "table": {
+    "caption": "Energy needed per mole of H₂O",
+    "cols": [
+     "Process",
+     "What is separated",
+     "Energy needed (kJ per mol H₂O)"
+    ],
+    "rows": [
+     [
+      "Boiling water at 100 °C",
+      "Whole water molecules from each other",
+      "41"
+     ],
+     [
+      "Breaking water vapor into atoms",
+      "H and O atoms within each molecule (two O–H bonds)",
+      "927"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-physical-chemical-changes-1",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "physical-chemical-changes-s1",
+   "q": "Which of the changes shown are chemical changes?",
+   "options": [
+    "P and R",
+    "Q alone",
+    "P, Q and R",
+    "R alone"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In P and R the molecules after are different from the molecules before: bonds broke and new ones formed. In Q every Br₂ molecule is intact; only the arrangement of the molecules changed.",
+    "options": [
+     "Right: new substances form in P and R.",
+     "Q is the one change in which every molecule stays the same, so it is the physical change.",
+     "Q keeps the same Br₂ molecules, so it is not a chemical change.",
+     "P also makes new substances (H₂ and O₂ from water)."
+    ]
+   }
+  },
+  {
+   "id": "chem-physical-chemical-changes-2",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "physical-chemical-changes-s1",
+   "q": "Which description of change Q matches the diagram?",
+   "options": [
+    "Bromine evaporating: Br₂ molecules move apart, each staying whole",
+    "Bromine splitting into atoms as Br–Br bonds break on heating",
+    "Bromine reacting to form a new compound with a higher boiling point",
+    "Bromine dissolving as Br₂ molecules break into Br⁺ and Br⁻ ions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The molecules end up far apart but each is still Br₂. Only the forces between molecules were overcome: a phase change, which is physical.",
+    "options": [
+     "Right: the molecules separate, but each molecule stays whole.",
+     "The second box still shows Br₂ pairs, so no Br–Br bond broke.",
+     "No new compound appears; every particle is still Br₂.",
+     "No ions appear in the diagram, and there is no water to dissolve in."
+    ]
+   }
+  },
+  {
+   "id": "chem-physical-chemical-changes-3",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "physical-chemical-changes-s1",
+   "q": "In change R, how many oxygen atoms are in the After box?",
+   "numeric": {
+    "answer": 12,
+    "tol": 0,
+    "unit": "atoms",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 6,
+      "rel": 0.01,
+      "why": "Value: you counted only the oxygen atoms in the O₂ molecules or only those in NO. Count both: 6 in NO and 6 in the three O₂."
+     }
+    ]
+   },
+   "why": {
+    "correct": "6 NO hold 6 O atoms and 3 O₂ hold 6 O atoms: 12 in all, matching the 6 NO₂ × 2 = 12 O atoms before."
+   }
+  },
+  {
+   "id": "chem-physical-chemical-changes-4",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "physical-chemical-changes-s1",
+   "q": "A student claims that change P is physical because water and the gases H₂ and O₂ are all made of the same atoms. Which response best corrects the claim?",
+   "options": [
+    "P is chemical: O–H bonds break, and new H–H and O=O bonds form",
+    "P is physical, since it involves just the atoms already present",
+    "P is physical, because burning the two gases would undo it again",
+    "P is chemical, because water becomes a gas, which is a new state"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Every reaction keeps the same atoms, so \"same atoms\" cannot tell physical from chemical. What matters is whether bonds within particles break and new ones form. In P they do.",
+    "options": [
+     "Right: bonds inside the particles change, so new substances form.",
+     "Atoms are present before and after any change; that alone does not make a change physical.",
+     "Whether a change can be undone does not decide it; many chemical changes can be undone by another reaction.",
+     "A change of state alone is physical; P is chemical because new substances form, not because a gas appears."
+    ]
+   }
+  },
+  {
+   "id": "chem-physical-chemical-changes-5",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "physical-chemical-changes-s2",
+   "q": "Which claim do the data in the table support?",
+   "options": [
+    "Boiling overcomes forces between molecules, far weaker than O–H bonds",
+    "Boiling at 100 °C breaks about 4% of the O–H bonds in the water",
+    "Splitting water into atoms is a physical change, since it needs energy",
+    "Hydrogen bonds between molecules are stronger than O–H bonds within them"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Boiling needs about 41 kJ/mol, while breaking the O–H bonds needs about 927 kJ/mol, over 20 times more. Boiling separates whole molecules; it does not break covalent bonds.",
+    "options": [
+     "Right: the intermolecular attractions overcome in boiling are much weaker than covalent bonds.",
+     "Boiling separates whole molecules; no O–H bond breaks. 41 ÷ 927 is a ratio of energies, not a share of bonds broken.",
+     "Both processes need energy; that does not decide physical or chemical. Making H and O atoms from water is chemical, since new substances form.",
+     "The data show the opposite: 41 kJ/mol to separate molecules versus 927 kJ/mol to break bonds."
+    ]
+   }
+  },
+  {
+   "id": "chem-physical-chemical-changes-6",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "physical-chemical-changes-s2",
+   "q": "Using the table, how many times more energy does breaking water into atoms need than boiling the same amount of water? Give two significant figures.",
+   "numeric": {
+    "answer": 23,
+    "tol": 1,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.044,
+      "rel": 0.05,
+      "why": "Value: you divided the smaller number by the larger. The question asks how many times larger 927 is than 41."
+     }
+    ]
+   },
+   "why": {
+    "correct": "927 kJ/mol ÷ 41 kJ/mol = 22.6, which is 23 to the two significant figures of 41."
+   }
+  },
+  {
+   "id": "chem-physical-chemical-changes-7",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "physical-chemical-changes-s2",
+   "q": "Water vapor at 100 °C is cooled and condenses back to liquid. Based on the table, which statement is correct?",
+   "options": [
+    "About 41 kJ/mol is released as attractions between molecules re-form",
+    "About 927 kJ/mol is released as the broken O–H bonds re-form",
+    "No energy change occurs, because condensing is a physical change",
+    "Energy is absorbed, because the molecules move closer together"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Condensing is the reverse of boiling: the same attractions between molecules form again, so the same 41 kJ/mol is released. No O–H bonds broke on boiling, so none re-form.",
+    "options": [
+     "Right: forming intermolecular attractions releases the energy boiling took in.",
+     "No O–H bonds broke when the water boiled, so none re-form on condensing.",
+     "Physical changes involve energy too; boiling and condensing are examples.",
+     "Particles moving closer as attractions form release energy; separating them is what takes energy."
+    ]
+   }
+  },
+  {
+   "id": "chem-physical-chemical-changes-8",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "physical-chemical-changes-s2",
+   "q": "Solid sodium chloride dissolves in water. Using the ideas behind the table, why is dissolving an ionic solid hard to classify?",
+   "options": [
+    "Strong ionic attractions break and new ones form, yet no new substance forms",
+    "Na–Cl covalent bonds break, and the ions are destroyed in the process",
+    "It involves no energy change, unlike melting or boiling",
+    "The salt becomes sodium metal and chlorine gas, which is chemical"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dissolving breaks the strong attractions between Na⁺ and Cl⁻ ions in the crystal, like breaking bonds, and forms ion-dipole attractions with water. Yet the ions are unchanged and evaporating the water returns the solid salt. It has features of both kinds of change.",
+    "options": [
+     "Right: strong attractions break and new ones form, but the ions themselves are unchanged.",
+     "NaCl is held by ionic, not covalent, bonds, and the Na⁺ and Cl⁻ ions survive in the solution.",
+     "Dissolving does involve energy, like melting or boiling; the water can warm or cool as salt dissolves.",
+     "Dissolved salt is Na⁺ and Cl⁻ ions in water, not sodium metal and chlorine gas."
+    ]
+   }
+  },
+  {
+   "id": "chem-physical-chemical-changes-9",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which are chemical changes? Select all that apply.",
+   "options": [
+    "A copper roof turning green over many years",
+    "Dry ice turning straight into carbon dioxide gas",
+    "Bread dough rising as yeast makes carbon dioxide from sugar",
+    "Sugar dissolving in tea"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Copper turning green forms new copper compounds; yeast converts sugar into carbon dioxide and ethanol. Dry ice subliming and sugar dissolving keep the same molecules.",
+    "options": [
+     "Right: new copper compounds form on the surface.",
+     "Sublimation keeps CO₂ molecules whole; only their state changes.",
+     "Right: sugar molecules are turned into new substances.",
+     "Sugar molecules separate and mix with water but are still sugar molecules."
+    ]
+   }
+  },
+  {
+   "id": "chem-physical-chemical-changes-10",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "When liquid water boils, what is inside the bubbles?",
+   "options": [
+    "Water molecules, H₂O, in the gas state",
+    "Hydrogen gas and oxygen gas",
+    "Air that was dissolved in the water",
+    "Nothing; the bubbles are empty space"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Boiling is a physical change: water molecules escape the liquid as vapor. No O–H bonds break, so no H₂ or O₂ forms.",
+    "options": [
+     "Right: the bubbles are water vapor.",
+     "Making H₂ and O₂ would need O–H bonds to break, a chemical change that takes far more energy than boiling.",
+     "A little dissolved air comes out when water is first heated, but the bubbles of a rolling boil are water vapor.",
+     "The bubbles hold water vapor at about 1 atm, pushing back on the liquid."
+    ]
+   }
+  },
+  {
+   "id": "chem-physical-chemical-changes-11",
+   "type": "predict",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A sample of liquid ethanol evaporates completely in a sealed container. Predict how each quantity changes.",
+   "variables": [
+    {
+     "name": "Number of ethanol molecules",
+     "answer": "none",
+     "why": "Evaporation is physical: every ethanol molecule leaves the liquid intact, so the count is unchanged."
+    },
+    {
+     "name": "Average distance between ethanol molecules",
+     "answer": "up",
+     "why": "Molecules in a gas are far apart, much farther than in the liquid."
+    },
+    {
+     "name": "Total mass in the container",
+     "answer": "none",
+     "why": "Nothing enters or leaves the sealed container, so mass is unchanged."
+    },
+    {
+     "name": "Number of C–O bonds",
+     "answer": "none",
+     "why": "No bonds within the molecules break in a phase change."
+    }
+   ],
+   "why": {
+    "correct": "In a phase change the particles are unchanged; only the distance between them and the attractions they feel change."
+   }
+  },
+  {
+   "id": "chem-physical-chemical-changes-12",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student heats blue copper(II) sulfate crystals, and they turn white as water vapor is driven off. Adding water to the white powder turns it blue again and makes it warm. Which conclusion is best supported?",
+   "options": [
+    "Chemical: water bonded in the crystal left, forming a new compound",
+    "Physical, because the color change can be undone by adding water",
+    "Physical, because water was the one thing that left the solid",
+    "No change happened, since the same atoms are present at the end"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The water in the blue crystals is bonded into the solid in a fixed ratio; removing it gives a different compound with a different color. That the reaction can be run backward does not make it physical.",
+    "options": [
+     "Right: a compound of fixed composition lost a component and became a new substance.",
+     "Being able to undo a change does not make it physical; this is a chemical change run in both directions.",
+     "The water leaving was bonded into the crystal, so its loss makes a new substance with new properties.",
+     "Atoms are the same in every change; the substance present changed."
+    ]
+   }
+  },
+  {
+   "id": "chem-physical-chemical-changes-13",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which observations show that a new substance has formed? Select all that apply.",
+   "options": [
+    "Heating a white solid gives a gas that turns limewater cloudy and leaves a different white solid",
+    "An iodine crystal gives off purple vapor when warmed",
+    "Ice cubes shrink in a freezer over several weeks",
+    "Sugar crystals form as a hot syrup cools"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Heating the white solid makes a gas and a solid with properties the starting material lacks. Iodine vapor and shrinking ice are the same substances changing state, and sugar crystallizing from syrup is sugar coming out of solution.",
+    "options": [
+     "Right: a new gas and a new solid form.",
+     "Purple iodine vapor is I₂ molecules, the same as in the crystal.",
+     "Ice slowly turns directly to water vapor in a freezer; the molecules stay H₂O.",
+     "The crystals are the same sugar molecules that were dissolved; they come out of solution as it cools."
+    ]
+   }
+  },
+  {
+   "id": "chem-physical-chemical-changes-14",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Iodine sublimes at room temperature, but it does not form iodine atoms. What does this tell you about the forces involved?",
+   "options": [
+    "Forces between I₂ molecules are weaker than the I–I bond",
+    "The I–I bond is weaker than the forces between I₂ molecules",
+    "Sublimation breaks the I–I bond, and the atoms re-form I₂ in the gas",
+    "Iodine molecules feel no attraction to each other, so iodine sublimes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sublimation separates whole molecules; the covalent I–I bond stays intact because it is far stronger than the dispersion forces between molecules.",
+    "options": [
+     "Right: intermolecular forces are overcome; the covalent bond is not.",
+     "If the bond were weaker, warming would split molecules into atoms before they left the solid.",
+     "A phase change does not break covalent bonds; the gas is I₂ molecules from the start.",
+     "Iodine is a solid at room temperature, so attractions between its molecules do hold it together."
+    ]
+   }
+  },
+  {
+   "id": "chem-physical-chemical-changes-15",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "physical-chemical-changes",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two samples of a white solid are heated. Sample 1 melts at 146 °C and, after cooling, melts again at 146 °C. Sample 2 gives off a gas at 146 °C and, after cooling, the solid left melts at 290 °C. Which conclusion is best supported?",
+   "options": [
+    "Sample 2 underwent a chemical change; sample 1 did not",
+    "Both samples underwent chemical changes, since both were heated",
+    "Sample 1 underwent a chemical change, since its solid melted",
+    "Neither sample changed chemically, since both remained white"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A pure substance keeps its melting point, so sample 1 is the same substance after melting and refreezing. Sample 2 released a gas and left a solid with a different melting point, so new substances formed.",
+    "options": [
+     "Right: a new gas and a solid with a new melting point show new substances.",
+     "Heating can cause either kind of change; only sample 2 shows new substances.",
+     "Melting is a phase change; the unchanged melting point shows it is the same substance.",
+     "Color alone does not decide; the different melting point and the gas show sample 2 changed."
+    ]
+   }
+  }
+ ]
+}

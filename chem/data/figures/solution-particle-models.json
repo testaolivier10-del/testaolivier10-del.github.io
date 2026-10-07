@@ -1,0 +1,12 @@
+{
+ "hydrated-ions": {
+  "file": "figures/hydrated-ions.svg",
+  "ext": "svg",
+  "w": 560,
+  "h": 250,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A sodium ion ringed by six water molecules with their oxygen atoms pointing toward it, and a chloride ion ringed by six water molecules with a hydrogen atom of each pointing toward it."
+ }
+}

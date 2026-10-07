@@ -1,0 +1,12 @@
+{
+ "catalysis-profile": {
+  "file": "figures/catalysis-profile.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Potential energy against reaction progress. Without a catalyst the curve climbs one tall hump. With a catalyst the reaction follows a different path with two smaller humps and a valley between them, where an intermediate sits. Both paths start at the same reactant level and end at the same product level, so the energy change of the reaction is unchanged; only the highest barrier is lower."
+ }
+}

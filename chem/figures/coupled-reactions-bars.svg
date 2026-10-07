@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" width="760" height="390" role="img" aria-labelledby="t d">
+<title id="t">Adding ΔG° values of two coupled reactions</title>
+<desc id="d">A bar chart of ΔG° in kilojoules per mole. Reaction 1, the unfavored step, has a bar going up to plus 86 kilojoules per mole. Reaction 2, the favored step, has a bar going down to minus 300 kilojoules per mole. The overall coupled reaction, the sum of the two, has a bar going down to minus 214 kilojoules per mole, so the coupled process is thermodynamically favored.</desc>
+<rect width="760" height="390" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<line x1="90" y1="110" x2="720" y2="110" stroke="#1F2A28" stroke-width="2"/>
+<line x1="90" y1="20" x2="90" y2="360" stroke="#1F2A28" stroke-width="2"/>
+<g font-size="12" text-anchor="end"><text x="82" y="34">+100</text><text x="82" y="114">0</text><text x="82" y="194">−100</text><text x="82" y="274">−200</text><text x="82" y="354">−300</text></g>
+<g stroke="#D7DCDB"><line x1="90" y1="30" x2="720" y2="30"/><line x1="90" y1="190" x2="720" y2="190"/><line x1="90" y1="270" x2="720" y2="270"/><line x1="90" y1="350" x2="720" y2="350"/></g>
+<text transform="translate(28 175) rotate(-90)" font-size="13" text-anchor="middle">ΔG° (kJ/mol)</text>
+<rect x="140" y="41.2" width="110" height="68.8" fill="#D55E00"/>
+<rect x="330" y="110" width="110" height="240" fill="#009E73"/>
+<rect x="520" y="110" width="110" height="171.2" fill="#0072B2"/>
+<g font-size="14" font-weight="700" text-anchor="middle"><text x="195" y="34">+86</text><text x="385" y="345" fill="#ffffff">−300</text><text x="575" y="300">−214</text></g>
+<g font-size="14" text-anchor="middle"><text x="195" y="130">step 1: unfavored</text><text x="385" y="98">step 2: favored</text><text x="575" y="98">sum: favored</text></g>
+<g font-size="22" font-weight="700" text-anchor="middle"><text x="290" y="200">+</text><text x="480" y="200">=</text></g>
+</g></svg>

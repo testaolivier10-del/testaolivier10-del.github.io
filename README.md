@@ -816,7 +816,7 @@ To add a course: add its entry to `assets/courses.js`, run `node scripts/build-c
 - Pricing copy in `scripts/build-pricing.mjs` (each manifest's description, the 404 card) and the `// count:<key>` line in `premium.js`; the bank count in `scripts/lib/premium-data.mjs`.
 - Content keyed by course that no table holds: the hub's course cards in `index.html` and `404.html`, the noscript links in `search.html`, `scripts/lib/app-pages.mjs` (noindex app pages), `scripts/build-og-tags.mjs` (card image), page budgets in `scripts/check-weight.mjs`, sample pages in `check-a11y.mjs`, the tutor's question bank (`BANKS` in `tutor.js`), and `scripts/sql/pageviews.sql`.
 - Bump `CACHE_NAME` in `sw.js`.
-- A course published chapter by chapter (`<dir>/data/published.json`, AP® Biology) is registered at once but stays off the hub, the 404 page, premium.html, the FAQ and the sitemap until a chapter is listed (`isOpen()` in `scripts/lib/courses.mjs`; `<KEY>_PUBLISHED=…` previews it). A course key containing the token "ap" (`apbio`) never goes into a URL: links and the Polar return use its folder (`bio`).
+- A course published chapter by chapter (`<dir>/data/published.json`, AP® Biology) is registered at once but stays off the hub, the 404 page, premium.html, the FAQ and the sitemap until a chapter is listed (`isOpen()` in `scripts/lib/courses.mjs`; `<KEY>_PUBLISHED=…` previews it). A course key containing the token "ap" (`apbio`, `apchem`) never goes into a URL: links and the Polar return use its folder (`bio`, `chem`). AP® Chemistry (`docs/apchem-spec.md`) was registered this way as a fork of AP® Biology; its commit is a worked example of every step.
 
 ## CI
 

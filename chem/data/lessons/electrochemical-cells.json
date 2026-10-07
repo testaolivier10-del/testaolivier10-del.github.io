@@ -1,0 +1,99 @@
+{
+ "topic": "electrochemical-cells",
+ "hook": "A phone battery, a flashlight cell and the battery in an electric car all do the same thing: they run a redox reaction with the oxidation and the reduction kept apart, so the electrons have to travel through your device to get from one to the other. Recharging pushes the reaction backward with outside energy.",
+ "prereq": [
+  {
+   "q": "In Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s), which species is reduced?",
+   "options": [
+    "Cu²⁺",
+    "Zn",
+    "Zn²⁺",
+    "Cu"
+   ],
+   "correct": 0,
+   "why": "Cu²⁺ gains two electrons and its oxidation number falls from +2 to 0.",
+   "review": "redox-reactions"
+  },
+  {
+   "q": "What is a half-reaction?",
+   "options": [
+    "The oxidation or the reduction part of a redox reaction, shown with electrons",
+    "A reaction that goes halfway to completion",
+    "A reaction with half the usual coefficients",
+    "A reaction between two ions"
+   ],
+   "correct": 0,
+   "why": "A half-reaction shows the electrons lost (oxidation) or gained (reduction).",
+   "review": "redox-reactions"
+  },
+  {
+   "q": "What can drive a process that has ΔG° > 0?",
+   "options": [
+    "Outside energy such as an electric current",
+    "A catalyst",
+    "Waiting longer",
+    "Lowering the temperature"
+   ],
+   "correct": 0,
+   "why": "An unfavored process needs a free energy source: a coupled reaction or outside energy.",
+   "review": "coupled-reactions"
+  }
+ ],
+ "figure": {
+  "figure": "galvanic-cell",
+  "caption": "A zinc-copper galvanic cell: zinc is oxidized at the anode, Cu²⁺ is reduced at the cathode, electrons flow through the wire and ions through the salt bridge."
+ },
+ "chain": [
+  {
+   "cause": "A favored redox reaction is split into two half-cells joined by a wire",
+   "effect": "electrons released by oxidation at the anode must travel through the wire to the cathode"
+  },
+  {
+   "cause": "The anode compartment gains cations and the cathode compartment loses them",
+   "effect": "ions move through the salt bridge to keep each compartment neutral"
+  },
+  {
+   "cause": "Electrons flow through the external circuit",
+   "effect": "the free energy of the reaction does electrical work: a galvanic cell"
+  },
+  {
+   "cause": "An outside power supply pushes electrons the other way",
+   "effect": "an unfavored reaction is driven: an electrolytic cell"
+  }
+ ],
+ "ideas": [
+  "<b>Oxidation at the anode, reduction at the cathode</b>, in every cell. Electrons flow through the wire from anode to cathode.",
+  "A <b>galvanic</b> (voltaic) cell runs a thermodynamically favored reaction and produces a current.",
+  "An <b>electrolytic cell</b> uses an outside power supply to drive a reaction that is not favored.",
+  "The <b>salt bridge</b> carries ions, not electrons: anions toward the anode, cations toward the cathode, keeping each side neutral.",
+  "Evidence from a cell: the anode metal loses mass; metal plates onto the cathode."
+ ],
+ "misconception": {
+  "wrong": "Electrons travel through the salt bridge from one beaker to the other.",
+  "right": "Electrons travel only through the wire, from anode to cathode. The salt bridge carries ions: anions move toward the anode compartment and cations toward the cathode compartment, which keeps both electrically neutral."
+ },
+ "check": [
+  "chem-electrochemical-cells-1",
+  "chem-electrochemical-cells-2",
+  "chem-electrochemical-cells-3",
+  "chem-electrochemical-cells-4",
+  "chem-electrochemical-cells-5",
+  "chem-electrochemical-cells-11",
+  "chem-electrochemical-cells-12"
+ ],
+ "summary": "An electrochemical cell separates oxidation (at the anode) from reduction (at the cathode), so electrons flow through a wire from anode to cathode while ions move through a salt bridge. A galvanic cell runs a favored reaction and produces a current; an electrolytic cell uses an outside power supply to drive an unfavored one.",
+ "connections": [
+  {
+   "href": "../notes/redox-reactions.html",
+   "label": "Back: oxidation, reduction and half-reactions (4.9)"
+  },
+  {
+   "href": "../notes/coupled-reactions.html",
+   "label": "Back: driving an unfavored reaction (9.7)"
+  },
+  {
+   "href": "../notes/cell-potential.html",
+   "label": "Next: how big is the voltage? (9.9)"
+  }
+ ]
+}

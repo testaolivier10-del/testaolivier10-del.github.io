@@ -1,0 +1,515 @@
+{
+ "stimuli": {
+  "reaction-types-s1": {
+   "kind": "table",
+   "title": "Five reactions",
+   "text": "<p>A student lists five reactions seen in lab.</p>",
+   "table": {
+    "caption": "Balanced equations",
+    "cols": [
+     "Reaction",
+     "Equation"
+    ],
+    "rows": [
+     [
+      "1",
+      "Pb(NO₃)₂(aq) + 2NaCl(aq) → PbCl₂(s) + 2NaNO₃(aq)"
+     ],
+     [
+      "2",
+      "Mg(s) + 2HCl(aq) → MgCl₂(aq) + H₂(g)"
+     ],
+     [
+      "3",
+      "HNO₃(aq) + KOH(aq) → KNO₃(aq) + H₂O(l)"
+     ],
+     [
+      "4",
+      "C₂H₅OH(l) + 3O₂(g) → 2CO₂(g) + 3H₂O(g)"
+     ],
+     [
+      "5",
+      "2H₂O₂(aq) → 2H₂O(l) + O₂(g)"
+     ]
+    ]
+   }
+  },
+  "reaction-types-s2": {
+   "kind": "table",
+   "title": "Burning an unknown hydrocarbon",
+   "text": "<p>A 0.8617 g sample of a liquid hydrocarbon is burned completely in excess oxygen. The carbon dioxide and water produced are trapped and weighed. Molar masses: CO₂ 44.01 g/mol; H₂O 18.02 g/mol; C 12.01 g/mol; H 1.008 g/mol.</p>",
+   "table": {
+    "caption": "Combustion products",
+    "cols": [
+     "Product",
+     "Mass collected (g)"
+    ],
+    "rows": [
+     [
+      "CO₂",
+      "2.641"
+     ],
+     [
+      "H₂O",
+      "1.261"
+     ]
+    ]
+   }
+  },
+  "reaction-types-s3": {
+   "kind": "particle",
+   "title": "Magnesium in hydrochloric acid",
+   "html": "<svg viewBox=\"0 0 520 210\" width=\"520\" height=\"210\" role=\"img\" aria-label=\"Before box: a solid strip of three magnesium atoms on the bottom, with four H+ ions and four Cl− ions dissolved in the water above it. After box: one magnesium atom remains in the strip; the water now holds two Mg2+ ions and four Cl− ions, and two H₂ molecules have formed.\"><rect x=\"4\" y=\"4\" width=\"220\" height=\"170\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"34\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"40\" y=\"37.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"52\" y=\"27\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"100\" cy=\"30\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"100\" y=\"33.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"112\" y=\"23\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"170\" cy=\"36\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"170\" y=\"38.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><text x=\"178.25\" y=\"32.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"62\" cy=\"78\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"62\" y=\"81.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"74\" y=\"71\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"132\" cy=\"74\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"132\" y=\"76.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><text x=\"140.25\" y=\"70.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"196\" cy=\"84\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"196\" y=\"87.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"208\" y=\"77\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"36\" cy=\"116\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"36\" y=\"118.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><text x=\"44.25\" y=\"112.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><circle cx=\"180\" cy=\"122\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"180\" y=\"124.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><text x=\"188.25\" y=\"118.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">+</text><text x=\"114\" y=\"192\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Before</text><rect x=\"62\" y=\"146\" width=\"102\" height=\"28\" rx=\"3\" fill=\"#CFE3D6\" stroke=\"#555\"/><circle cx=\"89\" cy=\"160\" r=\"11\" fill=\"#9AD0A8\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"89\" y=\"163.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Mg</text><circle cx=\"113\" cy=\"160\" r=\"11\" fill=\"#9AD0A8\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"113\" y=\"163.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Mg</text><circle cx=\"137\" cy=\"160\" r=\"11\" fill=\"#9AD0A8\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"137\" y=\"163.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Mg</text><line x1=\"232\" y1=\"90\" x2=\"282\" y2=\"90\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><path d=\"M280,84 L290,90 L280,96 Z\" fill=\"#1F2A28\"/><rect x=\"296\" y=\"4\" width=\"220\" height=\"170\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"334\" cy=\"34\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"334\" y=\"36.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"346\" cy=\"34\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"346\" y=\"36.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"410\" cy=\"30\" r=\"11\" fill=\"#9AD0A8\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"410\" y=\"33.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Mg</text><text x=\"421.25\" y=\"23.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">2+</text><circle cx=\"480\" cy=\"38\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"480\" y=\"41.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"492\" y=\"31\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"324\" cy=\"80\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"324\" y=\"82.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"336\" cy=\"80\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"336\" y=\"82.52\" font-size=\"7\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">H</text><circle cx=\"400\" cy=\"76\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"400\" y=\"79.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"412\" y=\"69\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"470\" cy=\"84\" r=\"11\" fill=\"#9AD0A8\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"470\" y=\"87.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Mg</text><text x=\"481.25\" y=\"77.75\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">2+</text><circle cx=\"346\" cy=\"122\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"346\" y=\"125.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"358\" y=\"115\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><circle cx=\"478\" cy=\"122\" r=\"12\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"478\" y=\"125.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Cl</text><text x=\"490\" y=\"115\" font-size=\"12\" font-weight=\"700\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">−</text><text x=\"406\" y=\"192\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">After</text><rect x=\"378\" y=\"146\" width=\"56\" height=\"28\" rx=\"3\" fill=\"#CFE3D6\" stroke=\"#555\"/><circle cx=\"406\" cy=\"160\" r=\"11\" fill=\"#9AD0A8\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"406\" y=\"163.24\" font-size=\"9\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Mg</text></svg><p>Key: green Mg, magnesium atom (in the strip) or Mg²⁺ ion (labeled 2+); small white H with +, H⁺ ion; green Cl with −, chloride ion; two joined white H, H₂ molecule. Water molecules are not drawn.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-reaction-types-1",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "reaction-types-s1",
+   "q": "Which reaction is a precipitation reaction?",
+   "options": [
+    "Reaction 1",
+    "Reaction 2",
+    "Reaction 3",
+    "Reaction 5"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In reaction 1 two solutions are mixed and an insoluble solid, PbCl₂(s), forms from ions that were dissolved.",
+    "options": [
+     "Right: two solutions give an insoluble solid.",
+     "Reaction 2 makes a gas from a metal and acid; no solid forms from the solutions.",
+     "Reaction 3 makes water and a soluble salt; every product stays dissolved or is liquid water.",
+     "Reaction 5 is one substance breaking into two; no solid forms."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-types-2",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-types-s1",
+   "q": "In which reactions are electrons transferred? Select all that apply. (Hint: look for an element that is uncombined on one side and part of a compound on the other.)",
+   "options": [
+    "Reaction 1",
+    "Reaction 2",
+    "Reaction 3",
+    "Reaction 5"
+   ],
+   "correct": [
+    1,
+    3
+   ],
+   "why": {
+    "correct": "Reaction 2: Mg metal becomes Mg²⁺ and H⁺ becomes H₂. Reaction 5: oxygen in H₂O₂ ends up partly as O₂. In reactions 1 and 3, every ion keeps its charge; ions change partners or an H⁺ moves. (Reaction 4, a combustion, also transfers electrons.)",
+    "options": [
+     "In reaction 1 the ions Pb²⁺, NO₃⁻, Na⁺ and Cl⁻ keep their charges; they only change partners, so no electrons move.",
+     "Right: neutral Mg atoms become Mg²⁺ ions and H⁺ ions become neutral H₂.",
+     "In reaction 3 an H⁺ moves from HNO₃ to OH⁻; no element changes from uncombined to combined, so no electrons move.",
+     "Right: some oxygen leaves the compound as the element O₂."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-types-3",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reaction-types-s1",
+   "q": "Which is the net ionic equation for reaction 3?",
+   "options": [
+    "H⁺(aq) + OH⁻(aq) → H₂O(l)",
+    "K⁺(aq) + NO₃⁻(aq) → KNO₃(aq)",
+    "HNO₃(aq) + OH⁻(aq) → NO₃⁻(aq) + H₂O(l) + K⁺(aq)",
+    "H⁺(aq) + KOH(aq) → K⁺(aq) + H₂O(l)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "HNO₃ and KOH are fully ionized in water, and K⁺ and NO₃⁻ are spectators. What changes is an H⁺ joining an OH⁻ to make water: the acid-base reaction in its simplest form.",
+    "options": [
+     "Right: only H⁺ and OH⁻ change.",
+     "KNO₃(aq) is just the spectator ions dissolved; nothing changes there.",
+     "Unbalanced (K⁺ appears from nowhere) and it keeps a spectator.",
+     "KOH is a soluble ionic compound, so it is written as K⁺ and OH⁻, and K⁺ is a spectator."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-types-4",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-types-s1",
+   "q": "Reaction 4 is a combustion. Which statement best explains why it is also an electron-transfer reaction?",
+   "options": [
+    "O₂, an uncombined element, ends up combined in CO₂ and H₂O",
+    "It gives off heat and light, which shows that electrons moved",
+    "It produces gases, which carry electrons away from the flame",
+    "Ethanol already holds oxygen, which passes to the CO₂ formed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Use the clue for electron transfer: an element uncombined on one side and combined on the other. Oxygen is the free element O₂ before and part of the compounds CO₂ and H₂O after, so electrons have moved. That is true of every combustion.",
+    "options": [
+     "Right: oxygen goes from the free element to compounds, so electrons move.",
+     "Many processes give off heat without electron transfer, such as an acid neutralizing a base; heat and light are not the test.",
+     "Forming a gas says nothing about electrons; reaction 2 makes a gas by electron transfer, but boiling makes gas with none.",
+     "Oxygen already in ethanol stays combined; the clue is the O₂ that starts uncombined."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-types-5",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reaction-types-s2",
+   "q": "How many moles of hydrogen atoms were in the sample?",
+   "numeric": {
+    "answer": 0.14,
+    "tol": 0.0002,
+    "unit": "mol",
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 0.06998,
+      "rel": 0.002,
+      "why": "Value: that is the moles of H₂O. Each water molecule holds two H atoms, so double it."
+     },
+     {
+      "value": 1.251,
+      "rel": 0.002,
+      "why": "Value: you divided the mass of water by the molar mass of hydrogen. Convert the water to moles of H₂O first, then use 2 mol H per mol H₂O."
+     }
+    ]
+   },
+   "why": {
+    "correct": "1.261 g H₂O × (1 mol H₂O / 18.02 g) × (2 mol H / 1 mol H₂O) = 0.1400 mol H. All the hydrogen in the water came from the hydrocarbon."
+   }
+  },
+  {
+   "id": "chem-reaction-types-6",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "reaction-types-s2",
+   "q": "The sample held 0.06001 mol of carbon atoms. What is the empirical formula of the hydrocarbon?",
+   "options": [
+    "C₃H₇",
+    "CH₂",
+    "C₆H₇",
+    "C₃H₈"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ratio H : C = 0.1400 ÷ 0.06001 = 2.333, which is 7/3. So the smallest whole-number ratio is C₃H₇ (multiply 1 : 2.333 by 3).",
+    "options": [
+     "Right: H : C = 2.333 = 7 : 3.",
+     "Rounds 2.333 down to 2; a ratio this far from a whole number has to be multiplied, not rounded.",
+     "Uses moles of water (0.0700) instead of moles of H atoms, so the hydrogen count is halved.",
+     "C₃H₈ would need H : C = 2.667, which the data do not give."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-types-7",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-types-s2",
+   "q": "Use the moles of C (0.06001 mol) and of H to find the total mass of carbon and hydrogen in the products. (This checks that the compound contains no oxygen.)",
+   "numeric": {
+    "answer": 0.8618,
+    "tol": 0.0002,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 3.902,
+      "rel": 0.002,
+      "why": "Value: you added the product masses. Those include oxygen from the air; count only the carbon and hydrogen."
+     }
+    ]
+   },
+   "why": {
+    "correct": "0.06001 mol × 12.01 g/mol = 0.7207 g C; 0.1400 mol × 1.008 g/mol = 0.1411 g H. Total 0.8618 g, which matches the 0.8617 g sample within rounding, so all the mass is C and H."
+   }
+  },
+  {
+   "id": "chem-reaction-types-8",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-types-s2",
+   "q": "The molar mass of the hydrocarbon is found to be about 86 g/mol. Which balanced equation describes its combustion?",
+   "options": [
+    "2C₆H₁₄ + 19O₂ → 12CO₂ + 14H₂O",
+    "C₃H₇ + 5O₂ → 3CO₂ + 4H₂O",
+    "C₆H₁₄ + 19O₂ → 6CO₂ + 7H₂O",
+    "2C₆H₁₄ + 13O₂ → 12CO + 14H₂O"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "C₃H₇ has a formula mass of about 43 g/mol, so the molecule is twice that: C₆H₁₄. 2C₆H₁₄ gives 12 CO₂ and 14 H₂O, which hold 24 + 14 = 38 O, so 19 O₂.",
+    "options": [
+     "Right: the molecular formula is C₆H₁₄ and every atom balances.",
+     "Uses the empirical formula as if it were the molecule (43 g/mol, not 86 g/mol), and hydrogen does not balance: 7 H on the left, 8 on the right.",
+     "Carbon and hydrogen balance, but oxygen does not: 38 O on the left and 6 × 2 + 7 = 19 O on the right. 19 O₂ goes with two C₆H₁₄.",
+     "Gives carbon monoxide, which forms only when oxygen is short; with excess oxygen the product is CO₂."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-types-9",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-types-s3",
+   "q": "Which net ionic equation matches the diagram?",
+   "options": [
+    "Mg(s) + 2H⁺(aq) → Mg²⁺(aq) + H₂(g)",
+    "Mg(s) + 2HCl(aq) → MgCl₂(aq) + H₂(g)",
+    "Mg(s) + H⁺(aq) → Mg²⁺(aq) + H(g)",
+    "Mg²⁺(aq) + 2Cl⁻(aq) → MgCl₂(s)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two Mg atoms and four H⁺ ions were used; two Mg²⁺ ions and two H₂ molecules formed. That is a 1 : 2 : 1 : 1 ratio. Cl⁻ is unchanged (4 before, 4 after), so it is a spectator.",
+    "options": [
+     "Right: atoms and charge balance (+2 each side) and Cl⁻ is left out.",
+     "This is the molecular equation; it keeps the spectator chloride ions.",
+     "Unbalanced in atoms and charge, and hydrogen forms H₂ molecules, not single atoms.",
+     "No solid MgCl₂ forms; the Mg²⁺ and Cl⁻ ions stay dissolved in the After box."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-types-10",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reaction-types-s3",
+   "q": "Which reactant was limiting in this mixture?",
+   "options": [
+    "H⁺, because none is left while some magnesium remains",
+    "Mg, because there were fewer Mg atoms than H⁺ ions",
+    "Cl⁻, because it does not appear in the equation",
+    "Mg, because one atom remains in the strip"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "H⁺ ran out (4 before, 0 after). One Mg atom is left, so magnesium was in excess.",
+    "options": [
+     "Right: the reactant used up is H⁺.",
+     "Fewer particles does not mean limiting: each Mg needs two H⁺, and H⁺ ran out first.",
+     "A spectator ion is not a reactant, so it cannot be limiting.",
+     "A reactant that is left over is in excess, not limiting."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-types-11",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reaction-types-s3",
+   "q": "How many electrons were transferred from magnesium to hydrogen in the change shown?",
+   "numeric": {
+    "answer": 4,
+    "tol": 0,
+    "unit": "electrons",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 2,
+      "rel": 0.01,
+      "why": "Value: two Mg atoms reacted, but each lost two electrons to become Mg²⁺: 2 × 2 = 4."
+     },
+     {
+      "value": 6,
+      "rel": 0.01,
+      "why": "Value: only two of the three Mg atoms reacted; the third is still in the strip."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Two Mg atoms each lost two electrons (Mg → Mg²⁺): 4 electrons. Four H⁺ ions each gained one electron to form two H₂: 4 electrons. Electrons lost equal electrons gained."
+   }
+  },
+  {
+   "id": "chem-reaction-types-12",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-types-s3",
+   "q": "Which descriptions fit the reaction in the diagram? Select all that apply.",
+   "options": [
+    "Acid-base (proton transfer)",
+    "Electron transfer",
+    "Precipitation",
+    "Combustion"
+   ],
+   "correct": [
+    1
+   ],
+   "why": {
+    "correct": "Electrons pass from Mg atoms to H⁺ ions: magnesium becomes Mg²⁺ and the hydrogen ions become H₂. No proton is handed to a base, no solid forms from solution and nothing burns in oxygen.",
+    "options": [
+     "H⁺ is not passed to a base that keeps it; each H⁺ gains an electron from magnesium and leaves as H₂ gas.",
+     "Right: neutral Mg becomes Mg²⁺ and H⁺ becomes neutral H₂.",
+     "No insoluble solid forms; magnesium dissolves rather than precipitates.",
+     "Combustion is a reaction with O₂; there is no oxygen gas here."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-types-13",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Butane, C₄H₁₀, burns completely in excess oxygen. In the balanced equation with the smallest whole numbers, what is the coefficient of O₂?",
+   "options": [
+    "13",
+    "6.5",
+    "9",
+    "26"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "2C₄H₁₀ + 13O₂ → 8CO₂ + 10H₂O. The right side has 16 + 10 = 26 O atoms, so 13 O₂. Doubling the butane avoids the fraction 13/2.",
+    "options": [
+     "Right: 2C₄H₁₀ + 13O₂ → 8CO₂ + 10H₂O.",
+     "Balances 1 C₄H₁₀ but leaves a fraction; equations use whole numbers, so double everything.",
+     "Adds the product coefficients for one butane (4 CO₂ + 5 H₂O = 9); count oxygen atoms, not molecules, and clear the fraction.",
+     "That is the number of O atoms, not O₂ molecules."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-types-14",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A gas furnace with a blocked air vent produces a toxic gas. Which equation best explains this?",
+   "options": [
+    "2CH₄ + 3O₂ → 2CO + 4H₂O",
+    "CH₄ + 2O₂ → CO₂ + 2H₂O",
+    "CH₄ → C + 2H₂",
+    "2CH₄ + O₂ → 2CH₃OH"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With too little oxygen, carbon ends up as carbon monoxide instead of carbon dioxide: incomplete combustion. CO is colorless, odorless and toxic.",
+    "options": [
+     "Right: incomplete combustion, with too little O₂, makes CO.",
+     "This is complete combustion, which needs plenty of oxygen; its products are not the toxic gas.",
+     "Methane does not simply break apart in a furnace flame without oxygen being involved.",
+     "Making methanol needs special conditions and is not what happens in a furnace."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-types-15",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Solutions of K₂CO₃ and CaCl₂ are mixed. Calcium carbonate is insoluble; potassium chloride is soluble. Which statement is correct?",
+   "options": [
+    "A precipitate forms: Ca²⁺(aq) + CO₃²⁻(aq) → CaCO₃(s)",
+    "No reaction occurs, because both starting compounds are soluble",
+    "A precipitate of KCl forms, because it is the other product",
+    "A gas forms, because carbonate releases CO₂ in water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The new combination Ca²⁺ with CO₃²⁻ is insoluble, so it precipitates. K⁺ and Cl⁻ stay dissolved as spectators.",
+    "options": [
+     "Right: the insoluble combination precipitates.",
+     "Soluble starting compounds can still make an insoluble product when their ions meet new partners.",
+     "Potassium chloride is soluble, so its ions stay dissolved.",
+     "Carbonate gives off CO₂ when an acid is added, not in plain water with calcium ions."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-types-16",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "reaction-types",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which of these reactions involve electron transfer? Select all that apply. (Hint: look for an element that is uncombined on one side and part of a compound on the other.)",
+   "options": [
+    "CaCO₃(s) → CaO(s) + CO₂(g)",
+    "2KClO₃(s) → 2KCl(s) + 3O₂(g)",
+    "2Na(s) + Cl₂(g) → 2NaCl(s)",
+    "AgNO₃(aq) + NaCl(aq) → AgCl(s) + NaNO₃(aq)"
+   ],
+   "correct": [
+    1,
+    2
+   ],
+   "why": {
+    "correct": "Electrons move when an element goes from uncombined to combined or the reverse. Oxygen leaves KClO₃ as the element O₂; sodium and chlorine start as elements and end as Na⁺ and Cl⁻ ions in NaCl. Breaking CaCO₃ into two compounds and a precipitation keep every ion's charge.",
+    "options": [
+     "One compound breaks into two compounds. No element is uncombined on either side: calcium stays Ca²⁺ and carbon stays bonded to oxygen, so no electrons move.",
+     "Right: oxygen in the compound KClO₃ becomes the free element O₂.",
+     "Right: neutral Na atoms become Na⁺ and Cl₂ becomes Cl⁻.",
+     "The ions only change partners and keep their charges, so this precipitation moves no electrons."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,335 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "chem-math-exponents-1",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "5.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is 10³ × 10⁴?",
+   "options": [
+    "10¹²",
+    "100⁷",
+    "10⁷",
+    "10¹"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "10³ × 10⁴ = (10 × 10 × 10) × (10 × 10 × 10 × 10) = 10⁷: seven tens multiplied together.",
+    "options": [
+     "This multiplies the exponents. When you multiply powers of the same base, you add them.",
+     "The base stays 10; only the exponent changes.",
+     "Right: same base, so add the exponents: 3 + 4 = 7.",
+     "This subtracts the exponents, which is the rule for dividing."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-exponents-2",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "What is 10⁵ ÷ 10⁸?",
+   "options": [
+    "10⁻³",
+    "10³",
+    "10¹³",
+    "10⁴⁰"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dividing powers of the same base subtracts the exponents: 10⁵⁻⁸ = 10⁻³ = 0.001.",
+    "options": [
+     "Right: subtract the exponents, 5 − 8 = −3.",
+     "The sign is backwards: the bottom exponent is larger, so the result is less than 1.",
+     "This adds the exponents, the rule for multiplying, not dividing.",
+     "This multiplies the exponents, which is the rule for raising a power to a power."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-exponents-3",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is (10⁻²)³?",
+   "options": [
+    "10¹",
+    "10⁻⁸",
+    "10⁶",
+    "10⁻⁶"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "(10⁻²)³ = 10⁻² × 10⁻² × 10⁻² = 10⁻⁶.",
+    "options": [
+     "This adds −2 and 3. Raising a power to a power multiplies the exponents.",
+     "This raises 2 to the third power. The rule is to multiply the exponents.",
+     "The size is right but the sign is lost: −2 × 3 is −6.",
+     "Right: a power of a power multiplies the exponents, −2 × 3 = −6."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-exponents-4",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does a negative exponent mean, as in 10⁻⁴?",
+   "options": [
+    "A negative number, −10,000",
+    "One divided by 10⁴, which is 0.0001",
+    "10 multiplied by −4, which is −40",
+    "The number 10 with its digits reversed, four times"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "10⁻⁴ = 1 / 10⁴ = 1/10,000 = 0.0001. A negative exponent gives a small positive number.",
+    "options": [
+     "A negative exponent never makes the number negative; 10⁻⁴ is a small positive number.",
+     "Right: a negative exponent means the reciprocal: 1/10⁴.",
+     "An exponent counts how many times the base is multiplied, not a number to multiply by.",
+     "Exponents are about repeated multiplication, not digit order."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-exponents-5",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "Write 10⁻³ as an ordinary decimal number.",
+   "numeric": {
+    "answer": 0.001,
+    "tol": 0,
+    "unit": "",
+    "decimals": 3,
+    "mistakes": [
+     {
+      "value": 1000,
+      "rel": 0.01,
+      "why": "Value: 1000 is 10³. A negative exponent means divide: 10⁻³ = 1/1000."
+     },
+     {
+      "value": -1000,
+      "rel": 0.01,
+      "why": "Value: a negative exponent does not make the number negative. 10⁻³ = 1/1000 = 0.001."
+     }
+    ]
+   },
+   "why": {
+    "correct": "10⁻³ = 1 / 10³ = 1/1000 = 0.001. Count the places: the 1 lands in the third place after the decimal point."
+   }
+  },
+  {
+   "id": "chem-math-exponents-6",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the square root of 10⁸?",
+   "options": [
+    "10⁶",
+    "10¹⁶",
+    "3.16 × 10⁸",
+    "10⁴"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "√(10⁸) = (10⁸)^(1/2) = 10⁴, because 10⁴ × 10⁴ = 10⁸.",
+    "options": [
+     "This subtracts 2 from the exponent. A square root halves the exponent.",
+     "Doubling the exponent squares the number, the opposite of a square root.",
+     "This takes the square root of 10 but leaves the exponent unchanged.",
+     "Right: a square root is the power 1/2, so halve the exponent: 8 ÷ 2 = 4."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-exponents-7",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which expression equals 1?",
+   "options": [
+    "10⁰",
+    "10¹",
+    "0¹⁰",
+    "10⁻¹"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dividing a number by itself gives 1, and in exponents that is 10ⁿ⁻ⁿ = 10⁰. So 10⁰ = 1.",
+    "options": [
+     "Right: any nonzero number to the zero power is 1. For example 10³ ÷ 10³ = 10⁰ = 1.",
+     "10¹ is just 10.",
+     "Zero multiplied by itself is still zero.",
+     "10⁻¹ is 1/10, or 0.1."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-exponents-8",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is 2³ × 2⁻⁵?",
+   "options": [
+    "4",
+    "1/32768",
+    "1/4",
+    "−4"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "2³ × 2⁻⁵ = 2⁻² = 1/4 = 0.25. The rules work for any base, not only 10.",
+    "options": [
+     "The size is right but the exponent is −2, so the result is the reciprocal of 4.",
+     "This multiplies the exponents (3 × −5 = −15). Multiplying powers adds the exponents.",
+     "Right: add the exponents, 3 + (−5) = −2, and 2⁻² = 1/2² = 1/4.",
+     "A negative exponent gives a reciprocal, never a negative number."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-exponents-9",
+   "type": "multi",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which expressions equal 10⁶? Select all that apply.",
+   "options": [
+    "10² × 10⁴",
+    "(10³)²",
+    "10¹² ÷ 10²",
+    "10³ + 10³",
+    "10⁹ × 10⁻³",
+    "10⁶ × 10⁶"
+   ],
+   "correct": [
+    0,
+    1,
+    4
+   ],
+   "why": {
+    "correct": "Multiplying adds exponents, dividing subtracts them, a power of a power multiplies them, and adding numbers does not combine exponents at all.",
+    "options": [
+     "Right: 2 + 4 = 6.",
+     "Right: 3 × 2 = 6.",
+     "This is 10¹⁰: subtracting 12 − 2 gives 10, not 6.",
+     "Adding is not multiplying: 1000 + 1000 = 2000, which is 2 × 10³.",
+     "Right: 9 + (−3) = 6.",
+     "This is 10¹²: the exponents add."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-exponents-10",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes 10⁴ + 10⁴ = 10⁸. What is the error?",
+   "options": [
+    "The exponent rules apply to multiplying, not adding; the sum is 20,000",
+    "The exponents should have been multiplied to give 10¹⁶",
+    "The answer should be 10⁴, because the exponents are equal",
+    "The student made no error; adding exponents is the rule here"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "10⁴ + 10⁴ = 2 × 10⁴ = 20,000. Exponent rules only combine exponents in multiplication and division.",
+    "options": [
+     "Right: 10,000 + 10,000 = 20,000, which is 2 × 10⁴, not 10⁸.",
+     "Multiplying exponents is for a power raised to a power, and this is a sum.",
+     "10⁴ + 10⁴ is twice 10⁴, not 10⁴ itself.",
+     "Adding exponents is the rule for multiplying powers, and this problem adds them."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-exponents-11",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Evaluate (10⁻⁴ × 10⁷) ÷ 10². Give the answer as an ordinary number.",
+   "numeric": {
+    "answer": 10,
+    "tol": 1,
+    "unit": "",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 100000,
+      "rel": 0.01,
+      "why": "Value: you added the bottom exponent instead of subtracting it. Dividing by 10² subtracts 2."
+     },
+     {
+      "value": 1e-13,
+      "rel": 0.01,
+      "why": "Value: you subtracted 7 instead of adding it. Multiplying adds the exponents: −4 + 7 = 3."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Top: 10⁻⁴⁺⁷ = 10³. Then 10³ ÷ 10² = 10¹ = 10."
+   }
+  },
+  {
+   "id": "chem-math-exponents-12",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-exponents",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cube is 10⁻² m on each side. What is its volume?",
+   "options": [
+    "10⁻⁶ m",
+    "10⁻⁶ m³",
+    "10¹ m³",
+    "3 × 10⁻² m³"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "V = (10⁻² m)³ = 10⁻⁶ m³. The unit is cubed along with the number.",
+    "options": [
+     "The number is right, but a volume has units of m³.",
+     "Right: volume = side³ = (10⁻²)³ = 10⁻⁶, and m × m × m = m³.",
+     "This adds −2 and 3. A power of a power multiplies the exponents.",
+     "Cubing means multiplying by itself three times, not multiplying by 3."
+    ]
+   }
+  }
+ ]
+}

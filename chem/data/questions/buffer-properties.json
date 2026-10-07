@@ -1,0 +1,505 @@
+{
+ "stimuli": {
+  "buffer-properties-s1": {
+   "kind": "table",
+   "title": "Adding acid to three solutions",
+   "text": "<p>A student adds 1.0 mL of 1.0 M HCl (1.0 × 10⁻³ mol) to 100.0 mL of each solution below and records the pH before and after. The buffer uses acetic acid (pKa = 4.74).</p>",
+   "table": {
+    "caption": "pH before and after adding 1.0 × 10⁻³ mol HCl",
+    "cols": [
+     "Solution (100.0 mL)",
+     "pH before",
+     "pH after"
+    ],
+    "rows": [
+     [
+      "Pure water",
+      "7.00",
+      "2.00"
+     ],
+     [
+      "0.10 M CH₃COOH + 0.10 M CH₃COONa",
+      "4.74",
+      "4.65"
+     ],
+     [
+      "0.10 M NaCl",
+      "7.00",
+      "2.00"
+     ]
+    ]
+   }
+  },
+  "buffer-properties-s2": {
+   "kind": "particle",
+   "title": "A buffer before and after an addition",
+   "html": "<svg viewBox=\"0 0 760 230\" width=\"760\" height=\"230\" role=\"img\" aria-label=\"Box 1, before: 5 HA and 5 A minus. Box 2: 7 HA and 3 A minus. Box 3: 3 HA and 7 A minus. Box 4: 5 HA, 5 A minus and 2 hydronium ions.\"><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect x=\"5\" y=\"5\" width=\"180\" height=\"220\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"95\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Box 1 (before)</text><circle cx=\"30.2\" cy=\"55.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"30.2\" y=\"59.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"90.2\" cy=\"55.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"90.2\" y=\"59.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"150.2\" cy=\"55.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"150.2\" y=\"59.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"42.2\" cy=\"103.8\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"42.2\" y=\"107.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"102.2\" cy=\"103.8\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"102.2\" y=\"107.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"162.2\" cy=\"103.8\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"162.2\" y=\"107.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"30.2\" cy=\"152.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"30.2\" y=\"156.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"90.2\" cy=\"152.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"90.2\" y=\"156.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"150.2\" cy=\"152.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"150.2\" y=\"156.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"42.2\" cy=\"200.8\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"42.2\" y=\"204.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><rect x=\"195\" y=\"5\" width=\"180\" height=\"220\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"285\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Box 2</text><circle cx=\"220.2\" cy=\"55.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"220.2\" y=\"59.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"280.2\" cy=\"55.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"280.2\" y=\"59.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"340.2\" cy=\"55.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"340.2\" y=\"59.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"232.2\" cy=\"103.8\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"232.2\" y=\"107.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"292.2\" cy=\"103.8\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"292.2\" y=\"107.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"352.2\" cy=\"103.8\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"352.2\" y=\"107.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"220.2\" cy=\"152.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"220.2\" y=\"156.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"280.2\" cy=\"152.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"280.2\" y=\"156.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"340.2\" cy=\"152.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"340.2\" y=\"156.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"232.2\" cy=\"200.8\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"232.2\" y=\"204.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><rect x=\"385\" y=\"5\" width=\"180\" height=\"220\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"475\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Box 3</text><circle cx=\"410.2\" cy=\"55.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"410.2\" y=\"59.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"470.2\" cy=\"55.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"470.2\" y=\"59.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"530.2\" cy=\"55.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"530.2\" y=\"59.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"422.2\" cy=\"103.8\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"422.2\" y=\"107.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"482.2\" cy=\"103.8\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"482.2\" y=\"107.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"542.2\" cy=\"103.8\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"542.2\" y=\"107.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"410.2\" cy=\"152.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"410.2\" y=\"156.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"470.2\" cy=\"152.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"470.2\" y=\"156.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"530.2\" cy=\"152.3\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"530.2\" y=\"156.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"422.2\" cy=\"200.8\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"422.2\" y=\"204.8\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><rect x=\"575\" y=\"5\" width=\"180\" height=\"220\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"665\" y=\"23\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\">Box 4</text><circle cx=\"593.9\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"593.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"638.9\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"638.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"683.9\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"683.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"728.9\" cy=\"63.3\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"728.9\" y=\"67.3\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"602.9\" cy=\"128.0\" r=\"15\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"602.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">HA</text><circle cx=\"647.9\" cy=\"128.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"647.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"692.9\" cy=\"128.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"692.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"737.9\" cy=\"128.0\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"737.9\" y=\"132.0\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"593.9\" cy=\"192.7\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"593.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"638.9\" cy=\"192.7\" r=\"15\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"638.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">A⁻</text><circle cx=\"683.9\" cy=\"192.7\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"683.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text><circle cx=\"728.9\" cy=\"192.7\" r=\"15\" fill=\"#F4A582\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"728.9\" y=\"196.7\" font-size=\"10.5\" font-weight=\"700\" text-anchor=\"middle\">H₃O⁺</text></g></svg><p>Key: HA weak acid; A⁻ conjugate base; H₃O⁺ hydronium. Spectator ions and water are not drawn.</p>"
+  },
+  "buffer-properties-s3": {
+   "kind": "setup",
+   "title": "The buffer in blood",
+   "text": "<p>Blood plasma is buffered mainly by carbonic acid and hydrogen carbonate: H₂CO₃(aq) + H₂O(l) ⇌ H₃O⁺(aq) + HCO₃⁻(aq), with pKa = 6.1 at body temperature. Normal blood has pH 7.4 and contains about 20 times as much HCO₃⁻ as H₂CO₃.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-buffer-properties-1",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffer-properties-s1",
+   "q": "Which claim do the data support?",
+   "options": [
+    "The acetic acid / acetate mixture resists a pH change",
+    "The three solutions resist a change in pH to the same extent",
+    "NaCl solution is a buffer because it contains ions",
+    "Water resists a change in pH better than the mixture"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The mixture's pH moved by 0.09 units; water and NaCl solution each dropped by about 5.0.",
+    "options": [
+     "Right: the weak acid/conjugate base pair absorbed the H₃O⁺.",
+     "The pH changes differ by a factor of about 50.",
+     "Na⁺ and Cl⁻ do not react with H₃O⁺, so NaCl solution behaves like water.",
+     "Water changed by about 5 pH units, far more than the buffer."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-properties-2",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffer-properties-s1",
+   "q": "Which equation shows how the mixture removes the added acid?",
+   "options": [
+    "H₃O⁺ + CH₃COO⁻ → CH₃COOH + H₂O",
+    "H₃O⁺ + OH⁻ → H₂O + H₂O (with OH⁻ from water)",
+    "H₃O⁺ + Cl⁻ → HCl + H₂O",
+    "CH₃COOH + H₂O → CH₃COO⁻ + H₃O⁺"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The added H₃O⁺ is taken up by the base of the pair, acetate, which becomes acetic acid.",
+    "options": [
+     "Right: the conjugate base consumes added acid.",
+     "There is very little OH⁻ in an acidic buffer; the acetate does the work.",
+     "Cl⁻, the conjugate base of a strong acid, does not take protons.",
+     "This is the ionization of acetic acid, which would add H₃O⁺, not remove it."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-properties-3",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "buffer-properties-s1",
+   "q": "Show how the \"pH after\" for the mixture was calculated: find the pH after the HCl is added.",
+   "numeric": {
+    "answer": 4.65,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 4.83,
+      "why": "Value: the changes run the wrong way. Added H₃O⁺ uses up acetate (0.010 → 0.009 mol) and makes acetic acid (0.010 → 0.011 mol).",
+      "tol": 0.02
+     },
+     {
+      "value": 2,
+      "why": "Value: that ignores the buffer. The H₃O⁺ reacts with acetate first.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "Before: 0.0100 mol CH₃COOH and 0.0100 mol CH₃COO⁻. After H₃O⁺ + CH₃COO⁻ → CH₃COOH: 0.0110 mol acid, 0.0090 mol acetate. Ka = 10^−4.74 = 1.82 × 10⁻⁵. [H₃O⁺] = Ka × 0.0110/0.0090 = 2.22 × 10⁻⁵ M; pH = 4.65."
+   }
+  },
+  {
+   "id": "chem-buffer-properties-4",
+   "type": "predict",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffer-properties-s1",
+   "q": "After the HCl is added to the buffer, predict the change in each compared with before.",
+   "variables": [
+    {
+     "name": "Moles of CH₃COO⁻",
+     "answer": "down",
+     "why": "Acetate reacts with the added H₃O⁺ to make acetic acid."
+    },
+    {
+     "name": "Moles of CH₃COOH",
+     "answer": "up",
+     "why": "Each acetate that takes a proton becomes an acetic acid molecule."
+    },
+    {
+     "name": "Ka of acetic acid",
+     "answer": "none",
+     "why": "Ka changes only with temperature."
+    },
+    {
+     "name": "pH",
+     "answer": "down",
+     "why": "The ratio [CH₃COO⁻]/[CH₃COOH] falls a little, so the pH falls a little."
+    }
+   ],
+   "why": {
+    "correct": "The buffer turns the added strong acid into weak acid, so the pH drops only slightly."
+   }
+  },
+  {
+   "id": "chem-buffer-properties-5",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffer-properties-s2",
+   "q": "Two OH⁻ ions are added to Box 1. Which box shows the result?",
+   "options": [
+    "Box 3",
+    "Box 2",
+    "Box 4",
+    "Box 1, unchanged"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "OH⁻ + HA → A⁻ + H₂O: two HA become two A⁻, giving 3 HA and 7 A⁻.",
+    "options": [
+     "Right: base removes HA and makes A⁻.",
+     "Box 2 is what two added H₃O⁺ ions would produce.",
+     "Box 4 shows free H₃O⁺ that has not reacted, which a buffer does not allow.",
+     "The particles change: the buffer works by reacting with what is added."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-properties-6",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "buffer-properties-s2",
+   "q": "A student adds two H₃O⁺ ions to Box 1 and draws Box 4 as the result. What is wrong with the drawing?",
+   "options": [
+    "The H₃O⁺ should have reacted with A⁻, giving 7 HA and 3 A⁻",
+    "The H₃O⁺ should have reacted with HA, giving 3 HA and 7 A⁻",
+    "Nothing is wrong: added ions stay free in a buffer",
+    "The H₃O⁺ should have become two OH⁻ ions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Added H₃O⁺ reacts with A⁻ essentially to completion (H₃O⁺ + A⁻ → HA + H₂O), so it cannot sit beside 5 unreacted A⁻ ions. The correct drawing is Box 2.",
+    "options": [
+     "Right: the conjugate base consumes the added acid.",
+     "H₃O⁺ is an acid; it reacts with the base of the pair, A⁻, not with HA.",
+     "If added ions stayed free, the mixture would not be a buffer.",
+     "An acid does not turn into a base; it gives its proton to A⁻."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-properties-7",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "buffer-properties-s2",
+   "q": "The weak acid has pKa 4.74. What is the pH of the solution shown in Box 2?",
+   "numeric": {
+    "answer": 4.37,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 5.11,
+      "why": "Value: the ratio is inverted. [H₃O⁺] = Ka × [HA]/[A⁻] = Ka × 7/3.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "Ka = 10^−4.74 = 1.82 × 10⁻⁵. [H₃O⁺] = Ka × [HA]/[A⁻] = 1.82 × 10⁻⁵ × 7/3 = 4.25 × 10⁻⁵ M; pH = 4.37. The volume cancels, so particle counts can be used directly."
+   }
+  },
+  {
+   "id": "chem-buffer-properties-8",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "buffer-properties-s2",
+   "q": "Box 1 is diluted with water to twice its volume. How does its pH change?",
+   "options": [
+    "It stays about the same, because the ratio [A⁻]/[HA] is unchanged",
+    "It rises by about 0.30, because the concentrations are halved",
+    "It falls, because water is added",
+    "It rises to 7, because the buffer is diluted"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both [HA] and [A⁻] are halved, so their ratio stays 1 and [H₃O⁺] = Ka × 1. The pH depends on the ratio, not on the absolute concentrations.",
+    "options": [
+     "Right: dilution leaves the ratio alone.",
+     "Halving both concentrations cancels in the ratio; the pH does not shift by log 2.",
+     "Water does not add H₃O⁺ to a buffer in any amount that matters.",
+     "A diluted buffer keeps its pH until it is so dilute that water's own ions matter."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-properties-9",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "buffer-properties-s3",
+   "q": "During hard exercise, lactic acid enters the blood. Which reaction keeps the pH from dropping sharply?",
+   "options": [
+    "H₃O⁺ + HCO₃⁻ → H₂CO₃ + H₂O",
+    "H₂CO₃ + OH⁻ → HCO₃⁻ + H₂O",
+    "H₃O⁺ + OH⁻ → 2 H₂O",
+    "HCO₃⁻ + H₂O → CO₃²⁻ + H₃O⁺"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The added acid is taken up by the base of the pair, HCO₃⁻.",
+    "options": [
+     "Right: hydrogen carbonate consumes added acid.",
+     "This is how the buffer handles added base.",
+     "At pH 7.4 blood holds well under 10⁻⁶ M OH⁻, far too little to absorb the acid.",
+     "This adds H₃O⁺; it would lower the pH further."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-properties-10",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "buffer-properties-s3",
+   "q": "Taking pKa = 6.10, what is [HCO₃⁻]/[H₂CO₃] in blood at pH 7.35, the low end of the normal range?",
+   "numeric": {
+    "answer": 18,
+    "tol": 1,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.056,
+      "why": "Value: that is [H₂CO₃]/[HCO₃⁻]. pH is above pKa, so the base form is in the majority.",
+      "rel": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "[HCO₃⁻]/[H₂CO₃] = 10^(pH − pKa) = 10^(7.35 − 6.10) = 10^1.25 = 17.8, which is 18 to two significant figures (two decimal places in the exponent). A little below the 20 : 1 of pH 7.40."
+   }
+  },
+  {
+   "id": "chem-buffer-properties-11",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "buffer-properties-s3",
+   "q": "Based on its 20 : 1 ratio, the blood buffer is better at neutralizing which kind of addition?",
+   "options": [
+    "Added acid, because there is much more HCO₃⁻ than H₂CO₃",
+    "Added base, because there is much more HCO₃⁻ than H₂CO₃",
+    "Both equally, because it is a buffer",
+    "Neither, because pH 7.4 is far from pKa"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Added acid is removed by HCO₃⁻, which is plentiful. Added base must be removed by H₂CO₃, which is scarce. This suits the body, which produces more acid than base in metabolism.",
+    "options": [
+     "Right: the plentiful component handles acid.",
+     "Added base reacts with H₂CO₃, the minor component.",
+     "A buffer with unequal amounts resists one direction better than the other.",
+     "It still buffers: both components are present in large amounts."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-properties-12",
+   "type": "predict",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "buffer-properties-s3",
+   "q": "A person hyperventilates (breathes fast), removing CO₂, which lowers [H₂CO₃] in the blood. Predict the change in each.",
+   "variables": [
+    {
+     "name": "[H₂CO₃]",
+     "answer": "down",
+     "why": "Breathing out CO₂ removes it, and CO₂ + H₂O ⇌ H₂CO₃ shifts left."
+    },
+    {
+     "name": "Ratio [HCO₃⁻]/[H₂CO₃]",
+     "answer": "up",
+     "why": "The denominator falls, so the ratio rises."
+    },
+    {
+     "name": "Blood pH",
+     "answer": "up",
+     "why": "A larger base-to-acid ratio means a higher pH."
+    },
+    {
+     "name": "pKa of carbonic acid",
+     "answer": "none",
+     "why": "pKa depends only on temperature."
+    }
+   ],
+   "why": {
+    "correct": "Removing the acid of the buffer pair raises the ratio and the pH: this is why hyperventilating makes blood more basic."
+   }
+  },
+  {
+   "id": "chem-buffer-properties-13",
+   "type": "multi",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two buffers are made with the same weak acid: Buffer A has 0.10 M HA and 0.10 M A⁻; Buffer B has 1.0 M HA and 1.0 M A⁻. Which statements are true? Select all that apply.",
+   "options": [
+    "They have the same pH",
+    "Buffer B can absorb more added acid before its pH changes much",
+    "Buffer B has a lower pH, because it has more acid",
+    "Buffer A has a higher pH, because it is more dilute"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Same ratio, same pH. Buffer B holds ten times as much of each component, so it can take ten times as much added acid or base.",
+    "options": [
+     "Right: pH depends on the ratio, which is 1 in both.",
+     "Right: more moles of A⁻ available to react with added acid.",
+     "It also has more A⁻; only the ratio matters for pH.",
+     "Dilution with the same ratio leaves the pH unchanged."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-properties-14",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does a buffer contain a weak acid and its conjugate base, rather than a strong acid and its conjugate base?",
+   "options": [
+    "The conjugate base of a weak acid is a strong enough base to react with added H₃O⁺",
+    "Strong acids evaporate from solution",
+    "Strong acids have no conjugate base",
+    "Weak acids make H₃O⁺ faster than strong acids"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A⁻ from a weak acid takes protons from H₃O⁺ essentially completely. Cl⁻ from HCl has a negligible Kb and leaves added H₃O⁺ free.",
+    "options": [
+     "Right: the conjugate base must react with added acid.",
+     "Most strong acids are not volatile in solution; this is not the reason.",
+     "Every acid has a conjugate base; Cl⁻ is HCl's.",
+     "The speed of proton transfer is not the issue; the extent of reaction is."
+    ]
+   }
+  },
+  {
+   "id": "chem-buffer-properties-15",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 1.00 L buffer contains 0.250 mol CH₃COOH and 0.250 mol CH₃COONa (pKa 4.74). What is the pH after 0.050 mol of NaOH is added (no volume change)?",
+   "numeric": {
+    "answer": 4.92,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 4.56,
+      "why": "Value: added OH⁻ converts HA to A⁻, so the acid goes down (0.200 mol) and the conjugate base goes up (0.300 mol).",
+      "tol": 0.02
+     },
+     {
+      "value": 12.7,
+      "why": "Value: that treats the NaOH as if no buffer were present. It reacts with the acetic acid first.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "OH⁻ + CH₃COOH → CH₃COO⁻ + H₂O: acid 0.250 − 0.050 = 0.200 mol; acetate 0.250 + 0.050 = 0.300 mol. [H₃O⁺] = Ka × 0.200/0.300 = 1.2 × 10⁻⁵ M; pH = 4.92, up only 0.18."
+   }
+  },
+  {
+   "id": "chem-buffer-properties-16",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "buffer-properties",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes: \"A buffer keeps its pH constant no matter what is added.\" Which correction is best?",
+   "options": [
+    "A buffer limits the change; the ratio [A⁻]/[HA] still shifts a little",
+    "A buffer keeps its pH constant for added base but not for acid",
+    "A buffer works by changing its Ka to match whatever is added",
+    "A buffer keeps its pH constant until it is heated"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each addition converts some of one component into the other, so the ratio and pH change slightly. A buffer reduces the change; it does not remove it.",
+    "options": [
+     "Right: resists, does not prevent.",
+     "A buffer handles both acid and base, and neither leaves the pH exactly constant.",
+     "Ka is fixed at a given temperature.",
+     "Even without heating, additions change the pH slightly."
+    ]
+   }
+  }
+ ]
+}

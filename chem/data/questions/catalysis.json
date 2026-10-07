@@ -1,0 +1,625 @@
+{
+ "stimuli": {
+  "catalysis-s1": {
+   "kind": "model",
+   "title": "Hydrogen peroxide with iodide ions",
+   "html": "<p>Hydrogen peroxide breaks down slowly on its own: 2 H₂O₂(aq) → 2 H₂O(l) + O₂(g). Adding a little potassium iodide makes it fizz quickly. A proposed mechanism:</p><ol><li>H₂O₂ + I⁻ → H₂O + IO⁻ (slow)</li><li>H₂O₂ + IO⁻ → H₂O + O₂ + I⁻ (fast)</li></ol>"
+  },
+  "catalysis-s2": {
+   "kind": "graph",
+   "title": "With and without a catalyst",
+   "text": "<p>Energy profiles for the same reaction by two pathways at the same temperature. Reaction progress has no units.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Reaction progress",
+     "min": 0,
+     "max": 16,
+     "step": 2
+    },
+    "y": {
+     "label": "Potential energy",
+     "unit": "kJ/mol",
+     "min": 0,
+     "max": 200,
+     "step": 25
+    },
+    "series": [
+     {
+      "name": "Uncatalyzed",
+      "points": [
+       [
+        0,
+        60
+       ],
+       [
+        1,
+        60
+       ],
+       [
+        2,
+        60
+       ],
+       [
+        3,
+        68.4
+       ],
+       [
+        4,
+        91.3
+       ],
+       [
+        5,
+        122.5
+       ],
+       [
+        6,
+        153.8
+       ],
+       [
+        7,
+        176.6
+       ],
+       [
+        8,
+        185
+       ],
+       [
+        9,
+        174.3
+       ],
+       [
+        10,
+        145
+       ],
+       [
+        11,
+        105
+       ],
+       [
+        12,
+        65
+       ],
+       [
+        13,
+        35.7
+       ],
+       [
+        14,
+        25
+       ],
+       [
+        15,
+        25
+       ],
+       [
+        16,
+        25
+       ]
+      ]
+     },
+     {
+      "name": "Catalyzed",
+      "points": [
+       [
+        0,
+        60
+       ],
+       [
+        1,
+        60
+       ],
+       [
+        2,
+        60
+       ],
+       [
+        3,
+        76.3
+       ],
+       [
+        4,
+        108.8
+       ],
+       [
+        5,
+        125
+       ],
+       [
+        6,
+        117.5
+       ],
+       [
+        7,
+        102.5
+       ],
+       [
+        8,
+        95
+       ],
+       [
+        9,
+        105
+       ],
+       [
+        10,
+        125
+       ],
+       [
+        11,
+        135
+       ],
+       [
+        12,
+        107.5
+       ],
+       [
+        13,
+        52.5
+       ],
+       [
+        14,
+        25
+       ],
+       [
+        15,
+        25
+       ],
+       [
+        16,
+        25
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-catalysis-1",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "single",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "catalysis-s1",
+   "q": "In this mechanism, what is the role of I⁻?",
+   "options": [
+    "A catalyst: used in step 1 and remade in step 2",
+    "An intermediate: made in step 1 and used in step 2",
+    "A reactant: used up as the reaction goes",
+    "A product: made in step 2"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "I⁻ is a reactant in step 1 and a product in step 2, so it is consumed and then regenerated, and it does not appear in the overall equation: a catalyst.",
+    "options": [
+     "Right: consumed first, regenerated later.",
+     "This is the classic mix-up. An intermediate is made first and then used; I⁻ is used first and then made.",
+     "I⁻ is regenerated in step 2, so it is not used up.",
+     "I⁻ is also used in step 1, so it is not just a product; it was there at the start."
+    ]
+   }
+  },
+  {
+   "id": "chem-catalysis-2",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "single",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "catalysis-s1",
+   "q": "Which species is an intermediate?",
+   "options": [
+    "IO⁻",
+    "I⁻",
+    "H₂O₂",
+    "O₂"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "IO⁻ is made in step 1 and used in step 2, and it was not present at the start.",
+    "options": [
+     "Right: made, then used.",
+     "I⁻ is used, then remade: the catalyst.",
+     "H₂O₂ is the reactant, used in both steps.",
+     "O₂ is a product."
+    ]
+   }
+  },
+  {
+   "id": "chem-catalysis-3",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "catalysis-s1",
+   "q": "What rate law does the mechanism predict?",
+   "options": [
+    "rate = k[H₂O₂][I⁻]",
+    "rate = k[H₂O₂]²",
+    "rate = k[H₂O₂][IO⁻]",
+    "rate = k[H₂O₂]"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The slow first step sets the rate: rate = k[H₂O₂][I⁻]. A catalyst can appear in a rate law, because its concentration is set by the experimenter.",
+    "options": [
+     "Right: from the slow step, catalyst included.",
+     "That would match the overall coefficients, which is not how rate laws are found.",
+     "IO⁻ is an intermediate and is in the fast step.",
+     "I⁻ is a reactant in the slow step, so it must appear."
+    ]
+   }
+  },
+  {
+   "id": "chem-catalysis-4",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "predict",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "catalysis-s1",
+   "q": "A student doubles the amount of KI added (same H₂O₂). Predict each change.",
+   "variables": [
+    {
+     "name": "Initial rate of O₂ production",
+     "answer": "up",
+     "why": "The rate law includes [I⁻], so doubling it doubles the rate."
+    },
+    {
+     "name": "Total volume of O₂ collected at the end",
+     "answer": "none",
+     "why": "The amount of H₂O₂ sets the amount of O₂; the catalyst is not used up."
+    },
+    {
+     "name": "Amount of I⁻ in solution at the end",
+     "answer": "up",
+     "why": "More I⁻ was added, and all of it is regenerated, so more is present at the end too."
+    },
+    {
+     "name": "Overall energy change of the reaction",
+     "answer": "none",
+     "why": "A catalyst does not change the reactant or product energy levels."
+    }
+   ],
+   "why": {
+    "correct": "More catalyst means more of the fast pathway in use, so a faster rate, but the same amount of product and the same overall energy change."
+   }
+  },
+  {
+   "id": "chem-catalysis-5",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "catalysis-s1",
+   "q": "A student says, \"I⁻ is in the rate law, so it must be a reactant that is used up.\" Which evidence refutes this?",
+   "options": [
+    "The two steps sum to an equation without I⁻; it is remade",
+    "IO⁻ does not appear in the rate law",
+    "The reaction fizzes more when KI is added",
+    "The rate law is first order in H₂O₂"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Adding the steps gives 2 H₂O₂ → 2 H₂O + O₂; I⁻ cancels because it is used in step 1 and remade in step 2. Being in the rate law only means the slow step involves it.",
+    "options": [
+     "Right: I⁻ cancels from the sum, so it is not consumed.",
+     "That is about the intermediate, not about I⁻.",
+     "That shows I⁻ speeds the reaction, not whether it is used up.",
+     "The order in H₂O₂ says nothing about whether I⁻ is consumed."
+    ]
+   }
+  },
+  {
+   "id": "chem-catalysis-6",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "numeric",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "catalysis-s2",
+   "q": "By how much, in kJ/mol, does the catalyst lower the highest point that the reacting particles must pass?",
+   "numeric": {
+    "answer": 50,
+    "tol": 1,
+    "unit": "kJ/mol",
+    "mistakes": [
+     {
+      "value": 60,
+      "why": "Value: compare the highest peak on each path: 185 (uncatalyzed) and 135 (catalyzed, second peak), not the first catalyzed peak."
+     },
+     {
+      "value": 35,
+      "why": "Value: the overall energy change (25 − 60) is the same for both paths; compare the peaks instead."
+     }
+    ],
+    "decimals": 0
+   },
+   "why": {
+    "correct": "Uncatalyzed peak: 185 kJ/mol. The catalyzed path's highest peak is the second one, at 135 kJ/mol. 185 − 135 = 50 kJ/mol lower."
+   }
+  },
+  {
+   "id": "chem-catalysis-7",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "catalysis-s2",
+   "q": "Which statement about the two pathways is supported by the graph?",
+   "options": [
+    "Both release 35 kJ/mol; the catalyzed path has two steps",
+    "The catalyzed path releases more energy than the uncatalyzed one",
+    "The catalyst raises the energy of the products",
+    "Both pathways have one step and one transition state"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both start at 60 and end at 25 kJ/mol: −35 kJ/mol either way. The catalyzed path has two peaks with a valley between them, so two steps with an intermediate.",
+    "options": [
+     "Right: same start, same end, new two-step path.",
+     "Both end at the same product level, so the energy released is the same.",
+     "The product level (25 kJ/mol) is the same on both curves.",
+     "The catalyzed curve has two peaks, so two steps."
+    ]
+   }
+  },
+  {
+   "id": "chem-catalysis-8",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "catalysis-s2",
+   "q": "Why is the catalyzed reaction faster at the same temperature?",
+   "options": [
+    "Its highest barrier is lower, so more collisions succeed",
+    "The catalyst gives the molecules extra kinetic energy",
+    "The catalyst makes the products more stable",
+    "The catalyzed path has more steps, and more steps are faster"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The catalyst opens a new mechanism whose barriers are lower than the single tall barrier. At the same temperature a larger fraction of collisions has enough energy, so the rate constant is larger.",
+    "options": [
+     "Right: a lower-barrier pathway.",
+     "A catalyst does not add energy; the energy distribution depends on temperature.",
+     "The product level is unchanged.",
+     "More steps do not make a reaction faster; lower barriers do."
+    ]
+   }
+  },
+  {
+   "id": "chem-catalysis-9",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "numeric",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "catalysis-s2",
+   "q": "What is the activation energy of the first step of the catalyzed path, in kJ/mol?",
+   "numeric": {
+    "answer": 65,
+    "tol": 1,
+    "unit": "kJ/mol",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 125,
+      "why": "Value: that is the peak's energy. Subtract the starting level (60 kJ/mol)."
+     },
+     {
+      "value": 40,
+      "why": "Value: that is the second step (135 − 95). The first step climbs from the reactants at 60 to the first peak at 125."
+     }
+    ]
+   },
+   "why": {
+    "correct": "First catalyzed step: from the reactants (60) to the first peak (125): 125 − 60 = 65 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-catalysis-10",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "multi",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statements about a catalyst are correct? Select all that apply.",
+   "options": [
+    "It is regenerated by the end of the reaction",
+    "It changes the energy difference between reactants and products",
+    "It raises the kinetic energy of the reacting molecules",
+    "It is a reactant that appears in the overall equation"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "A catalyst is consumed in one step and remade in a later one, so it cancels from the overall equation. It changes neither the overall energy change nor the energies of the molecules.",
+    "options": [
+     "Right: not used up overall.",
+     "The reactant and product levels are unchanged.",
+     "Kinetic energy depends on temperature, not on the catalyst.",
+     "A catalyst cancels when the steps are added, so it is not in the overall equation."
+    ]
+   }
+  },
+  {
+   "id": "chem-catalysis-11",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "single",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In the mechanism (1) A + Q → AQ; (2) AQ + B → AB + Q, which is the catalyst and which is the intermediate?",
+   "options": [
+    "Catalyst Q; intermediate AQ",
+    "Catalyst AQ; intermediate Q",
+    "Catalyst B; intermediate AB",
+    "Catalyst A; intermediate Q"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Q is used in step 1 and remade in step 2 (catalyst). AQ is made in step 1 and used in step 2 (intermediate). Overall: A + B → AB.",
+    "options": [
+     "Right: Q first used then remade; AQ first made then used.",
+     "Reversed: the catalyst is present at the start, the intermediate is not.",
+     "B is a reactant and AB the product.",
+     "A is a reactant, used up and never remade."
+    ]
+   }
+  },
+  {
+   "id": "chem-catalysis-12",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In a car's catalytic converter, harmful gases react on the surface of solid platinum. Which statement explains how the metal speeds the reaction?",
+   "options": [
+    "Gas molecules stick to the metal, which weakens their bonds and lowers the barrier",
+    "The metal reacts with the gases and is gradually used up",
+    "The hot metal gives each molecule enough energy to react",
+    "The metal absorbs the products so the reaction can go further"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "This is heterogeneous catalysis: reactant molecules attach to the surface, their bonds weaken, and they react through a lower-energy path. The metal is not used up.",
+    "options": [
+     "Right: a surface pathway with a lower barrier.",
+     "A catalyst is regenerated, not consumed (the converter lasts years).",
+     "Temperature affects the energy distribution; the catalyst works by lowering the barrier, not by heating.",
+     "The products leave the surface; trapping them would block the catalyst."
+    ]
+   }
+  },
+  {
+   "id": "chem-catalysis-13",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student claims, \"A catalyst speeds up only the forward reaction, so it makes more product.\" Which response is best?",
+   "options": [
+    "It lowers the barrier both ways; the product amount is unchanged",
+    "Correct: a catalyst speeds up the forward reaction and gives a higher yield",
+    "A catalyst slows the reverse reaction, which is why more product forms",
+    "A catalyst speeds up just the reverse reaction"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Forward and reverse paths share the same transition states, so a lower barrier helps both directions. A catalyst gets the mixture to its final state sooner but does not change how much product forms there.",
+    "options": [
+     "Right: same new path in both directions.",
+     "This is the misconception: a catalyst changes rate, not yield.",
+     "Lowering the barrier cannot slow the reverse reaction; it speeds it up.",
+     "It lowers the barrier for both directions, not one."
+    ]
+   }
+  },
+  {
+   "id": "chem-catalysis-14",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A reaction's activation energy is 132 kJ/mol without a catalyst and 87 kJ/mol with one. By what percentage does the catalyst lower the activation energy?",
+   "numeric": {
+    "answer": 34,
+    "tol": 1,
+    "unit": "%",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 51.7,
+      "why": "Value: divide the drop by the original barrier (132), not by the new one."
+     },
+     {
+      "value": 65.9,
+      "why": "Value: that is the new barrier as a percentage of the old one. Subtract it from 100% to get the decrease."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Decrease = 132 − 87 = 45 kJ/mol. Percentage = 45/132 × 100% = 34%. The difference, 45, has two significant figures."
+   }
+  },
+  {
+   "id": "chem-catalysis-15",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Enzymes are protein catalysts. Why does a small amount of enzyme speed up the reaction of a large amount of reactant?",
+   "options": [
+    "Each enzyme molecule is regenerated and reused many times",
+    "Each enzyme molecule reacts with the whole sample at once",
+    "The enzyme is used up, but it releases energy as it reacts",
+    "The enzyme raises the temperature of the mixture"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Like any catalyst, an enzyme binds a reactant, helps it react through a lower-barrier path, releases the product and is free to do it again, thousands of times per second.",
+    "options": [
+     "Right: the catalyst is recycled.",
+     "An enzyme acts on one or a few reactant molecules at a time.",
+     "A catalyst is not used up overall.",
+     "Catalysts do not work by heating the mixture."
+    ]
+   }
+  },
+  {
+   "id": "chem-catalysis-16",
+   "unit": "unit-5",
+   "topic": "catalysis",
+   "type": "single",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which observation would show that a substance added to a reaction is a catalyst rather than a reactant?",
+   "options": [
+    "Its amount is the same at the end as at the start",
+    "The reaction mixture changes color when it is added",
+    "It appears in the measured rate law",
+    "The reaction gives off more heat when it is added"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A catalyst is regenerated, so the same amount can be recovered at the end. Appearing in the rate law, a color change, or a change in heat do not by themselves show that a substance is not consumed.",
+    "options": [
+     "Right: recovered unchanged.",
+     "A color change can come from an intermediate or a reactant.",
+     "Catalysts and reactants can both appear in a rate law.",
+     "A catalyst does not change the overall energy released."
+    ]
+   }
+  }
+ ]
+}

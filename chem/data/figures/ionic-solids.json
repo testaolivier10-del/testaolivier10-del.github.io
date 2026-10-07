@@ -1,0 +1,7 @@
+{
+ "ionic-layer-brittle": {
+  "file": "figures/ionic-layer-brittle.svg", "ext": "svg", "w": 740, "h": 300,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Left: one layer of an ionic solid, small positive ions and larger negative ions alternating in rows and columns so each ion is surrounded by opposite charges. An arrow labeled a force shifts a layer. Right: the bottom two rows have moved one place sideways, so positive ions sit above positive ions and negative above negative; red arrows show the like charges repelling along the dashed line where the crystal splits."
+ }
+}

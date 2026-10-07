@@ -1,0 +1,70 @@
+{
+ "topic": "moles-molar-mass",
+ "hook": "A bakery buys eggs by the dozen because counting them one at a time is slow. Atoms are far too small to count at all: a single drop of water holds more molecules than there are stars in the visible universe. Chemists count them by weighing, using a counting unit called the mole.",
+ "prereq": [
+  {
+   "q": "Which conversion factor turns grams into kilograms?",
+   "options": [
+    "1 kg / 1000 g",
+    "1000 g / 1 kg",
+    "1 kg / 100 g",
+    "100 g / 1 kg"
+   ],
+   "correct": 0,
+   "why": "The unit you want goes on top, so grams cancel: 1 kg / 1000 g.",
+   "review": "math-units"
+  },
+  {
+   "q": "How many significant figures does 0.0450 have?",
+   "options": [
+    "3",
+    "4",
+    "5",
+    "2"
+   ],
+   "correct": 0,
+   "why": "Leading zeros never count; the trailing zero after a decimal point does: 4, 5, 0.",
+   "review": "math-sig-figs"
+  }
+ ],
+ "figure": null,
+ "chain": [
+  {
+   "cause": "Atoms are too small to count one by one",
+   "effect": "chemists count them in groups of 6.022 × 10²³, called a mole"
+  },
+  {
+   "cause": "The mole is defined so that 12 amu per atom matches 12 g per mole",
+   "effect": "the atomic mass in amu equals the molar mass in g/mol"
+  },
+  {
+   "cause": "A balance measures grams, and molar mass is grams per mole",
+   "effect": "dividing a mass by the molar mass gives moles"
+  },
+  {
+   "cause": "Each mole holds Avogadro's number of particles",
+   "effect": "multiplying moles by 6.022 × 10²³ gives the number of particles"
+  }
+ ],
+ "ideas": [
+  "One mole is 6.022 × 10²³ particles; say which particles you mean.",
+  "Molar mass (g/mol) is the sum of the atomic masses in one particle.",
+  "Mass ↔ moles uses molar mass; moles ↔ particles uses Avogadro's number.",
+  "Report the answer with the significant figures of the least precise measurement."
+ ],
+ "misconception": {
+  "wrong": "Equal masses of two substances hold equal numbers of molecules.",
+  "right": "Molecules of different substances have different masses, so equal masses usually hold different numbers of molecules. Compare amounts in moles."
+ },
+ "check": [
+  "chem-moles-molar-mass-1",
+  "chem-moles-molar-mass-2",
+  "chem-moles-molar-mass-3",
+  "chem-moles-molar-mass-5",
+  "chem-moles-molar-mass-6",
+  "chem-moles-molar-mass-7",
+  "chem-moles-molar-mass-15"
+ ],
+ "summary": "Chemists count atoms and molecules in moles of 6.022 × 10²³ particles. The molar mass, in grams per mole, links a measured mass to an amount in moles, and Avogadro's number links moles to particles.",
+ "connections": []
+}

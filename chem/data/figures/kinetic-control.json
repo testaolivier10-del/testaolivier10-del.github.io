@@ -1,0 +1,12 @@
+{
+ "kinetic-control-profile": {
+  "file": "figures/kinetic-control-profile.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 350,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "An energy profile: reactants on the left sit higher than products on the right, so ΔG° is negative, but a very tall hump labeled large Ea lies between them, so few collisions get over it and the reaction is too slow to observe."
+ }
+}

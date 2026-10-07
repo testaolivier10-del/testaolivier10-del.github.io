@@ -1,0 +1,29 @@
+{
+ "imf": {
+  "def": "An attraction between separate particles (molecules, atoms or ions), as opposed to a bond inside one particle. Intermolecular forces are much weaker than covalent bonds."
+ },
+ "polarizability": {
+  "def": "How easily a particle's electron cloud is distorted. More electrons, held farther from the nucleus, make a particle more polarizable."
+ },
+ "london-dispersion": {
+  "def": "The attraction between momentary dipoles in neighboring particles. It acts between all particles and grows with polarizability and contact area."
+ },
+ "dipole-dipole": {
+  "def": "The attraction between the δ+ end of one polar molecule and the δ− end of another."
+ },
+ "dipole-induced": {
+  "def": "The attraction between a polar molecule and the dipole it creates in a nearby nonpolar particle."
+ },
+ "hydrogen-bond": {
+  "def": "A strong dipole-dipole attraction between an H atom bonded to N, O or F and a lone pair on an N, O or F atom of another molecule."
+ },
+ "ion-dipole": {
+  "def": "The attraction between an ion and the oppositely charged end of a polar molecule, such as Na⁺ and the oxygen end of water."
+ },
+ "boiling-point": {
+  "def": "The temperature at which a liquid boils. The normal boiling point is at sea-level air pressure; stronger attractions between particles raise it."
+ },
+ "melting-point": {
+  "def": "The temperature at which a solid turns to liquid. Stronger attractions between particles raise it."
+ }
+}

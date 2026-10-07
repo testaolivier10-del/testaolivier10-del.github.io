@@ -1,0 +1,104 @@
+/* AP® Chemistry course home, loaded by chem/index.html only. A fork of
+   anatomy-physiology/assets/anp-home.css (spec decisions 1 and 27): the same
+   layout, components and shared theme.css pieces (level ring, XP track, qopt,
+   trust pills), with the class prefix chem- and the course tint. chem-home.js
+   fills the level card, the three "now" cards and the path from the runtime;
+   the markup stands without it. */
+.chem-home-hero{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,5vw,52px);align-items:center;}
+.chem-home-hero h1{max-width:18ch;}
+.chem-home-hero .chem-review-note{margin:0 0 20px;}
+.chem-level-card,.chem-now-card,.chem-qcard{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--lift-lg);}
+.chem-level-card{border-radius:22px;padding:26px 26px 22px;}
+.chem-level-top{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.chem-level-chip{display:flex;align-items:center;gap:12px;flex:1;min-width:0;}
+.chem-level-chip .t b{display:block;font-weight:900;font-size:16px;}
+.chem-level-chip .t span{font-size:12.5px;color:var(--muted);font-weight:700;}
+.chem-level-card .level-ring{border-color:var(--cink);color:var(--cink);background:var(--ctint);}
+.chem-part-bars{margin-top:14px;}
+.chem-part-bars .mini-domain-row span:first-child{min-width:92px;}
+.chem-now-row{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:18px;}
+.chem-now-card{padding:22px 24px;}
+.chem-now-card.due{box-shadow:var(--lift-lg),inset 0 0 0 2px var(--amber);}
+.chem-now-card .k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.chem-now-card h2{margin:0 0 6px;font-size:19px;}
+.chem-now-card p{margin:0 0 16px;font-size:13.5px;font-weight:700;color:var(--muted);}
+.chem-now-card .xp-track{height:10px;margin:0 0 14px;}
+
+/* The path: a real ordered list of unit links, placed as a snake (left to
+   right, then right to left) by the --r/--c pairs the generator writes for 5,
+   4 and 3 columns, so it needs no script to lay out. One column on a phone.
+   chem-home.js only draws the line through the rings. */
+.chem-path-legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0 26px;}
+.chem-path-legend span{display:inline-flex;align-items:center;gap:8px;font:800 12.5px var(--font-ui);color:var(--muted);background:var(--white);padding:6px 12px;border-radius:999px;box-shadow:var(--lift-sm);}
+.chem-path-legend i{width:10px;height:10px;border-radius:50%;background:var(--c);}
+.chem-path{position:relative;max-width:1000px;margin:0 auto;container-type:inline-size;}
+.chem-path .path-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;}
+.chem-path .path-track,.chem-path .path-fill{fill:none;stroke:var(--line);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;}
+.chem-path .path-fill{stroke:var(--cink);}
+.chem-path-list{list-style:none;margin:0;padding:14px 0 6px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:40px 10px;}
+.chem-path .node{position:relative;z-index:1;grid-row:var(--r5);grid-column:var(--c5);display:flex;justify-content:center;}
+.chem-path .node > *{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;text-decoration:none;color:inherit;border-radius:12px;}
+.chem-path .ring{position:relative;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;background:conic-gradient(var(--cink) calc(var(--p,0) * 1%),var(--line) 0);transition:transform .18s ease;}
+.chem-path .ring::before{content:"";position:absolute;inset:-8px;border-radius:50%;background:var(--pc);opacity:.18;z-index:-1;}
+.chem-path .n{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--white);box-shadow:var(--lift-sm);font:900 15px var(--font-mono);color:var(--muted);}
+.chem-path a:hover .ring,.chem-path a:focus-visible .ring{transform:translateY(-3px);}
+.chem-path .label{display:flex;flex-direction:column;gap:2px;max-width:170px;padding:2px 6px;border-radius:8px;background:var(--paper);}
+.chem-path .label b{font-size:13.5px;font-weight:900;line-height:1.25;text-wrap:balance;}
+.chem-path .label small{font:700 12px var(--font-ui);color:var(--muted);}
+.chem-path .part{align-self:center;margin-bottom:4px;font:900 10px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--pcd);padding:2px 8px;border-radius:999px;}
+.chem-path .current .ring{width:68px;height:68px;box-shadow:0 0 0 6px var(--ctint);}
+.chem-path .current .ring::before{inset:-14px;background:var(--ctint);opacity:.9;}
+.chem-path .current .n{width:54px;height:54px;color:var(--cink);font-size:17px;}
+.chem-path .current .label b,.chem-path .current .label small{color:var(--cink);}
+@container (max-width:899px){.chem-path-list{grid-template-columns:repeat(4,minmax(0,1fr));} .chem-path .node{grid-row:var(--r4);grid-column:var(--c4);}}
+@container (max-width:759px){.chem-path-list{grid-template-columns:repeat(3,minmax(0,1fr));} .chem-path .node{grid-row:var(--r3);grid-column:var(--c3);}}
+@container (max-width:479px){
+  .chem-path-list{grid-template-columns:1fr;gap:18px;}
+  .chem-path .node{grid-row:auto;grid-column:1;justify-content:flex-start;}
+  .chem-path .node > *{flex-direction:row;text-align:left;gap:16px;}
+  .chem-path .ring,.chem-path .current .ring{width:60px;height:60px;}
+  .chem-path .current .n{width:48px;height:48px;}
+  .chem-path .label{max-width:none;}
+  .chem-path .part{align-self:flex-start;}
+}
+@media (prefers-reduced-motion:reduce){.chem-path .ring{transition:none;}}
+
+/* Dark tools panel, sample question, about, trust. */
+.chem-feature{background:var(--navy);border-radius:22px;padding:36px clamp(20px,4vw,44px);display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;color:#fff;}
+.chem-feature h2{font-weight:900;font-size:clamp(22px,2.8vw,28px);margin:0 0 12px;color:#fff;}
+.chem-feature p{color:var(--muted-on-dark);font-size:15px;font-weight:600;margin:0 0 20px;max-width:42ch;}
+:root[data-theme="dark"] .chem-feature p{color:#D0DED9;} /* 5.3:1 on the dark theme navy; --muted-on-dark was 3.7:1 */
+.chem-feature .icon-circle{width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;margin:0 auto;}
+.chem-feature .icon-circle svg{width:170px;height:170px;}
+.chem-tool-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
+.chem-tool-chips a{font:800 12px var(--font-ui);color:#fff;text-decoration:none;background:rgba(255,255,255,.14);border-radius:var(--radius-pill);padding:6px 12px;}
+.chem-tool-chips a:hover{background:rgba(255,255,255,.26);color:#fff;}
+.chem-sample-row,.chem-home-about{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,48px);align-items:center;}
+.chem-sample-row h2{margin-top:0;}
+.chem-sample-row .section-lede{margin:0 0 24px;text-align:left;}
+.chem-sample-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+.chem-sample-list li{display:flex;align-items:center;gap:12px;font-weight:800;font-size:14.5px;padding:12px 16px;background:var(--white);border:var(--bw) solid var(--line);border-radius:14px;}
+.chem-sample-list .n{width:26px;height:26px;border-radius:8px;background:var(--ctint);color:var(--cink);display:flex;align-items:center;justify-content:center;font:900 12px var(--font-mono);flex-shrink:0;}
+.chem-qcard{padding:26px;}
+.chem-qcard .qtext{font-weight:800;font-size:16px;margin:14px 0 18px;line-height:1.5;}
+.chem-qcard .qopt{font-size:14.5px;padding:13px 16px;box-shadow:var(--lift-sm);}
+.chem-qcard .why{margin:4px 0 0;padding:12px 14px;border-radius:12px;background:var(--ctint);font:600 13.5px/1.55 var(--font-ui);}
+.chem-qcard .why:empty{display:none;}
+.chem-qcard .why b{color:var(--cink);}
+.chem-sample-key summary{cursor:pointer;font-weight:800;color:var(--cink);}
+.chem-sample-key p{font:600 13.5px/1.55 var(--font-ui);}
+.js .chem-sample-key{display:none;}
+.chem-sample-more{margin:14px 0 0;}
+.chem-home-about{align-items:start;}
+.chem-home-about h2{font-size:22px;margin:0 0 12px;}
+.chem-home-about p{font-weight:600;line-height:1.7;}
+.chem-how li{align-items:flex-start;font-weight:600;line-height:1.5;}
+.chem-home-legal{max-width:none;text-align:center;margin:18px auto 0;}
+@media (max-width:1000px){.chem-now-row{grid-template-columns:1fr;}}
+@media (max-width:900px){
+  .chem-home-hero,.chem-feature,.chem-sample-row,.chem-home-about{grid-template-columns:1fr;}
+  .chem-feature{text-align:center;}
+  .chem-feature p{margin-left:auto;margin-right:auto;}
+  .chem-tool-chips{justify-content:center;}
+}
+@media (max-width:560px){.chem-feature .icon-circle,.chem-feature .icon-circle svg{width:120px;height:120px;}}

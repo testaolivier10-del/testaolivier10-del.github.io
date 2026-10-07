@@ -1,0 +1,20 @@
+{
+ "ideal-gas": {
+  "def": "PV = nRT: the equation linking the pressure, volume, kelvin temperature and moles of a gas that behaves ideally."
+ },
+ "gas-constant": {
+  "def": "R in PV = nRT: 0.08206 L·atm/(mol·K) with atm and liters, or 8.314 J/(mol·K) in SI units."
+ },
+ "combined-gas-law": {
+  "def": "P₁V₁/T₁ = P₂V₂/T₂, for one sample of gas changing conditions; temperatures in kelvin."
+ },
+ "stp": {
+  "def": "Standard temperature and pressure: 0 °C (273.15 K) and 1 atm. One mole of an ideal gas occupies 22.4 L at STP."
+ },
+ "partial-pressure": {
+  "def": "The pressure one gas in a mixture would exert alone in the same container. The partial pressures add up to the total pressure (Dalton's law)."
+ },
+ "mole-fraction": {
+  "def": "The moles of one component divided by the total moles of a mixture. In a gas mixture, P(A) = X(A) × P(total)."
+ }
+}

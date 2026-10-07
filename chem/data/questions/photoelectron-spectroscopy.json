@@ -1,0 +1,420 @@
+{
+ "stimuli": {
+  "photoelectron-spectroscopy-s1": {
+   "kind": "graph",
+   "title": "Photoelectron spectrum of an unknown element",
+   "text": "<p>The spectrum of a neutral atom of an unknown element. Peak heights are proportional to the number of electrons; the numbers above the peaks are binding energies in MJ/mol.</p>",
+   "html": "<svg viewBox=\"0 0 640 220\" width=\"640\" height=\"220\" role=\"img\" aria-label=\"Photoelectron spectrum with five peaks. From highest to lowest binding energy: 178 MJ/mol, relative height 2; 15.1 MJ/mol, height 2; 10.3 MJ/mol, height 6; 1.46 MJ/mol, height 2; 0.79 MJ/mol, height 2.\"><g font-family=\"Arial,Helvetica,sans-serif\"><line x1=\"50\" y1=\"160\" x2=\"620\" y2=\"160\" stroke=\"#1B2440\" stroke-width=\"2\"/><text x=\"50\" y=\"55\" font-size=\"16\" font-weight=\"bold\" fill=\"#1B2440\">Unknown element</text><rect x=\"109.1\" y=\"126.7\" width=\"10\" height=\"33.3\" fill=\"#1D44A6\"/><text x=\"114.1\" y=\"120.7\" text-anchor=\"middle\" font-size=\"13\" fill=\"#1B2440\">178</text><rect x=\"304.6\" y=\"126.7\" width=\"10\" height=\"33.3\" fill=\"#1D44A6\"/><text x=\"309.6\" y=\"120.7\" text-anchor=\"middle\" font-size=\"13\" fill=\"#1B2440\">15.1</text><rect x=\"334.9\" y=\"60.0\" width=\"10\" height=\"100.0\" fill=\"#1D44A6\"/><text x=\"339.9\" y=\"54.0\" text-anchor=\"middle\" font-size=\"13\" fill=\"#1B2440\">10.3</text><rect x=\"489.6\" y=\"126.7\" width=\"10\" height=\"33.3\" fill=\"#1D44A6\"/><text x=\"494.6\" y=\"120.7\" text-anchor=\"middle\" font-size=\"13\" fill=\"#1B2440\">1.46</text><rect x=\"538.3\" y=\"126.7\" width=\"10\" height=\"33.3\" fill=\"#1D44A6\"/><text x=\"543.3\" y=\"120.7\" text-anchor=\"middle\" font-size=\"13\" fill=\"#1B2440\">0.79</text><line x1=\"72.8\" y1=\"160\" x2=\"72.8\" y2=\"166\" stroke=\"#1B2440\"/><text x=\"72.8\" y=\"180\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">300</text><line x1=\"159.8\" y1=\"160\" x2=\"159.8\" y2=\"166\" stroke=\"#1B2440\"/><text x=\"159.8\" y=\"180\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">100</text><line x1=\"255.2\" y1=\"160\" x2=\"255.2\" y2=\"166\" stroke=\"#1B2440\"/><text x=\"255.2\" y=\"180\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">30</text><line x1=\"342.2\" y1=\"160\" x2=\"342.2\" y2=\"166\" stroke=\"#1B2440\"/><text x=\"342.2\" y=\"180\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">10</text><line x1=\"437.6\" y1=\"160\" x2=\"437.6\" y2=\"166\" stroke=\"#1B2440\"/><text x=\"437.6\" y=\"180\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">3</text><line x1=\"524.6\" y1=\"160\" x2=\"524.6\" y2=\"166\" stroke=\"#1B2440\"/><text x=\"524.6\" y=\"180\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">1</text><line x1=\"620.0\" y1=\"160\" x2=\"620.0\" y2=\"166\" stroke=\"#1B2440\"/><text x=\"620.0\" y=\"180\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">0.3</text><text x=\"335\" y=\"212\" text-anchor=\"middle\" font-size=\"14\" fill=\"#1B2440\">Binding energy (MJ/mol), stretched scale, decreasing to the right</text></g></svg>"
+  },
+  "photoelectron-spectroscopy-s2": {
+   "kind": "graph",
+   "title": "Spectra of two neighboring elements",
+   "text": "<p>Photoelectron spectra of neutral sodium (11 protons) and magnesium (12 protons). Numbers above the peaks are binding energies in MJ/mol.</p>",
+   "html": "<svg viewBox=\"0 0 640 370\" width=\"640\" height=\"370\" role=\"img\" aria-label=\"Two photoelectron spectra. Sodium: peaks at 104 (height 2), 6.84 (2), 3.67 (6) and 0.496 MJ/mol (1). Magnesium: peaks at 126 (2), 9.07 (2), 5.31 (6) and 0.738 MJ/mol (2).\"><g font-family=\"Arial,Helvetica,sans-serif\"><line x1=\"50\" y1=\"160\" x2=\"620\" y2=\"160\" stroke=\"#1B2440\" stroke-width=\"2\"/><text x=\"50\" y=\"55\" font-size=\"16\" font-weight=\"bold\" fill=\"#1B2440\">Sodium</text><rect x=\"151.7\" y=\"126.7\" width=\"10\" height=\"33.3\" fill=\"#1D44A6\"/><text x=\"156.7\" y=\"120.7\" text-anchor=\"middle\" font-size=\"13\" fill=\"#1B2440\">104</text><rect x=\"367.3\" y=\"126.7\" width=\"10\" height=\"33.3\" fill=\"#1D44A6\"/><text x=\"372.3\" y=\"120.7\" text-anchor=\"middle\" font-size=\"13\" fill=\"#1B2440\">6.84</text><rect x=\"416.6\" y=\"60.0\" width=\"10\" height=\"100.0\" fill=\"#1D44A6\"/><text x=\"421.6\" y=\"54.0\" text-anchor=\"middle\" font-size=\"13\" fill=\"#1B2440\">3.67</text><rect x=\"575.2\" y=\"143.3\" width=\"10\" height=\"16.7\" fill=\"#1D44A6\"/><text x=\"580.2\" y=\"137.3\" text-anchor=\"middle\" font-size=\"13\" fill=\"#1B2440\">0.496</text><line x1=\"72.8\" y1=\"160\" x2=\"72.8\" y2=\"166\" stroke=\"#1B2440\"/><text x=\"72.8\" y=\"180\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">300</text><line x1=\"159.8\" y1=\"160\" x2=\"159.8\" y2=\"166\" stroke=\"#1B2440\"/><text x=\"159.8\" y=\"180\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">100</text><line x1=\"255.2\" y1=\"160\" x2=\"255.2\" y2=\"166\" stroke=\"#1B2440\"/><text x=\"255.2\" y=\"180\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">30</text><line x1=\"342.2\" y1=\"160\" x2=\"342.2\" y2=\"166\" stroke=\"#1B2440\"/><text x=\"342.2\" y=\"180\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">10</text><line x1=\"437.6\" y1=\"160\" x2=\"437.6\" y2=\"166\" stroke=\"#1B2440\"/><text x=\"437.6\" y=\"180\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">3</text><line x1=\"524.6\" y1=\"160\" x2=\"524.6\" y2=\"166\" stroke=\"#1B2440\"/><text x=\"524.6\" y=\"180\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">1</text><line x1=\"620.0\" y1=\"160\" x2=\"620.0\" y2=\"166\" stroke=\"#1B2440\"/><text x=\"620.0\" y=\"180\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">0.3</text><line x1=\"50\" y1=\"310\" x2=\"620\" y2=\"310\" stroke=\"#1B2440\" stroke-width=\"2\"/><text x=\"50\" y=\"205\" font-size=\"16\" font-weight=\"bold\" fill=\"#1B2440\">Magnesium</text><rect x=\"136.5\" y=\"276.7\" width=\"10\" height=\"33.3\" fill=\"#1D44A6\"/><text x=\"141.5\" y=\"270.7\" text-anchor=\"middle\" font-size=\"13\" fill=\"#1B2440\">126</text><rect x=\"345.0\" y=\"276.7\" width=\"10\" height=\"33.3\" fill=\"#1D44A6\"/><text x=\"350.0\" y=\"270.7\" text-anchor=\"middle\" font-size=\"13\" fill=\"#1B2440\">9.07</text><rect x=\"387.4\" y=\"210.0\" width=\"10\" height=\"100.0\" fill=\"#1D44A6\"/><text x=\"392.4\" y=\"204.0\" text-anchor=\"middle\" font-size=\"13\" fill=\"#1B2440\">5.31</text><rect x=\"543.5\" y=\"276.7\" width=\"10\" height=\"33.3\" fill=\"#1D44A6\"/><text x=\"548.5\" y=\"270.7\" text-anchor=\"middle\" font-size=\"13\" fill=\"#1B2440\">0.738</text><line x1=\"72.8\" y1=\"310\" x2=\"72.8\" y2=\"316\" stroke=\"#1B2440\"/><text x=\"72.8\" y=\"330\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">300</text><line x1=\"159.8\" y1=\"310\" x2=\"159.8\" y2=\"316\" stroke=\"#1B2440\"/><text x=\"159.8\" y=\"330\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">100</text><line x1=\"255.2\" y1=\"310\" x2=\"255.2\" y2=\"316\" stroke=\"#1B2440\"/><text x=\"255.2\" y=\"330\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">30</text><line x1=\"342.2\" y1=\"310\" x2=\"342.2\" y2=\"316\" stroke=\"#1B2440\"/><text x=\"342.2\" y=\"330\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">10</text><line x1=\"437.6\" y1=\"310\" x2=\"437.6\" y2=\"316\" stroke=\"#1B2440\"/><text x=\"437.6\" y=\"330\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">3</text><line x1=\"524.6\" y1=\"310\" x2=\"524.6\" y2=\"316\" stroke=\"#1B2440\"/><text x=\"524.6\" y=\"330\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">1</text><line x1=\"620.0\" y1=\"310\" x2=\"620.0\" y2=\"316\" stroke=\"#1B2440\"/><text x=\"620.0\" y=\"330\" text-anchor=\"middle\" font-size=\"12\" fill=\"#3A4560\">0.3</text><text x=\"335\" y=\"362\" text-anchor=\"middle\" font-size=\"14\" fill=\"#1B2440\">Binding energy (MJ/mol), stretched scale, decreasing to the right</text></g></svg>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-photoelectron-spectroscopy-1",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "photoelectron-spectroscopy-s1",
+   "q": "Which element produced this spectrum?",
+   "options": [
+    "Magnesium, 1s² 2s² 2p⁶ 3s²",
+    "Sulfur, 1s² 2s² 2p⁶ 3s² 3p⁴",
+    "Silicon, [Ne] 3s² 3p²",
+    "Carbon, 1s² 2s² 2p²"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "One peak per subshell, with height = number of electrons: 2 + 2 + 6 + 2 + 2 = 14 electrons, silicon.",
+    "options": [
+     "Magnesium has four subshells, so four peaks; this spectrum has five.",
+     "Sulfur's lowest-energy peak would be 4 electrons tall, twice the 3s peak.",
+     "Right: peak heights 2, 2, 6, 2, 2 add to 14 electrons.",
+     "Carbon has three peaks; this spectrum has five."
+    ]
+   }
+  },
+  {
+   "id": "chem-photoelectron-spectroscopy-2",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "photoelectron-spectroscopy-s1",
+   "q": "Which subshell gives the peak at 10.3 MJ/mol?",
+   "options": [
+    "2p",
+    "2s",
+    "3p",
+    "1s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read from high to low binding energy in filling order: 1s (178), 2s (15.1), 2p (10.3), 3s (1.46), 3p (0.79). The 6-electron height also marks a p subshell.",
+    "options": [
+     "Right: it is the tallest peak (6 electrons) and the third from the left, after 1s and 2s.",
+     "2s holds 2 electrons; the peak at 15.1 MJ/mol is 2s.",
+     "3p is the outermost subshell, at the lowest energy (0.79 MJ/mol).",
+     "1s is closest to the nucleus, with by far the highest energy, 178 MJ/mol."
+    ]
+   }
+  },
+  {
+   "id": "chem-photoelectron-spectroscopy-3",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "photoelectron-spectroscopy-s1",
+   "q": "Why is the 1s peak at a far higher binding energy than any other peak?",
+   "options": [
+    "1s electrons have more charge than the other electrons",
+    "The 1s subshell holds the fewest electrons, so each is held more tightly",
+    "1s electrons are the valence electrons, which are the most tightly held",
+    "They are closest to the nucleus, with no shielding electrons"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Binding energy reflects Coulombic attraction. The 1s electrons are nearest the nucleus and are not shielded, so they feel nearly all 14 protons.",
+    "options": [
+     "Every electron has the same charge, −1.",
+     "Peak height (number of electrons) does not set the binding energy; distance and shielding do.",
+     "The 1s electrons are core electrons; valence electrons are the most loosely held.",
+     "Right: least distance and no shielding give the strongest Coulombic attraction."
+    ]
+   }
+  },
+  {
+   "id": "chem-photoelectron-spectroscopy-4",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "photoelectron-spectroscopy-s1",
+   "q": "Which electrons in this atom are its valence electrons?",
+   "options": [
+    "The electrons in the tallest peak",
+    "Those in the two lowest-energy peaks",
+    "The electrons in the peak with the highest binding energy",
+    "The six electrons at 10.3 MJ/mol and the two at 15.1 MJ/mol"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Valence electrons are in the outermost shell (n = 3 for silicon): the 3s and 3p peaks, 4 electrons in all.",
+    "options": [
+     "The tallest peak is 2p, a core subshell; height shows the number of electrons, not their role.",
+     "Right: the 3s and 3p electrons are in the outermost shell, the most loosely held.",
+     "Those are the 1s core electrons, the most tightly held.",
+     "Those are the 2s and 2p core electrons in shell 2."
+    ]
+   }
+  },
+  {
+   "id": "chem-photoelectron-spectroscopy-5",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "photoelectron-spectroscopy-s2",
+   "q": "Every peak in magnesium's spectrum is at a higher binding energy than the matching peak for sodium. Which explanation is best?",
+   "options": [
+    "Magnesium has more electrons, which pull each other closer to the nucleus",
+    "Its extra proton pulls harder on each subshell",
+    "Magnesium atoms are larger, so their electrons are held more tightly",
+    "Magnesium's electrons are in higher shells than sodium's"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Coulomb's law: more protons (12 vs 11) pull harder on electrons in the same subshell, so every binding energy rises.",
+    "options": [
+     "Electrons repel each other; the extra pull comes from the extra proton.",
+     "Right: same subshells and similar distances, but a larger nuclear charge.",
+     "Larger distance would mean weaker attraction; and magnesium is in fact smaller.",
+     "Both atoms fill the same shells, 1 to 3."
+    ]
+   }
+  },
+  {
+   "id": "chem-photoelectron-spectroscopy-6",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "photoelectron-spectroscopy-s2",
+   "q": "How do the lowest-energy peaks of the two spectra differ in height?",
+   "options": [
+    "They are the same height, since both are 3s peaks",
+    "Sodium's is taller, since sodium loses its electron more easily",
+    "Magnesium's is six times as tall, like its 2p peak",
+    "Magnesium's is twice as tall: 3s² against 3s¹"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Peak height is proportional to the number of electrons in the subshell: 1 for Na 3s, 2 for Mg 3s.",
+    "options": [
+     "Same subshell, but height counts the electrons in it.",
+     "Height shows the number of electrons, not how easily they are removed.",
+     "Only the 2p peak is 6 electrons tall.",
+     "Right: Na 3s¹, Mg 3s²."
+    ]
+   }
+  },
+  {
+   "id": "chem-photoelectron-spectroscopy-7",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "photoelectron-spectroscopy-s2",
+   "q": "Using the spectrum, what is the minimum energy needed to remove one electron from one mole of gaseous sodium atoms, in kJ/mol?",
+   "numeric": {
+    "answer": 496,
+    "tol": 1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 104000,
+      "rel": 0.01,
+      "why": "Value: that is the 1s electron, the hardest to remove. The minimum energy removes the outermost (3s) electron."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The most loosely held electron is the 3s electron, with a binding energy of 0.496 MJ/mol. 0.496 MJ/mol × 1000 kJ/MJ = 496 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-photoelectron-spectroscopy-8",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "photoelectron-spectroscopy-s2",
+   "q": "A student predicts that aluminum (13 protons, [Ne] 3s² 3p¹) will have a new small peak at a binding energy just above magnesium's 3s peak. What is wrong with the prediction?",
+   "options": [
+    "Aluminum should have no new peak, since it fills the same subshells as magnesium",
+    "The new peak should be 6 electrons tall, since it is a p subshell",
+    "The new 3p peak belongs below aluminum's 3s peak, at lower binding energy",
+    "The new peak should be at a higher energy than aluminum's 1s peak"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Aluminum keeps magnesium's four peaks (all shifted to slightly higher energy) and adds a 3p peak of height 1 at the lowest binding energy, below its own 3s peak.",
+    "options": [
+     "Aluminum adds a 3p electron, a new subshell, so a new peak appears.",
+     "Height counts electrons present: aluminum has one 3p electron.",
+     "Right: a new p subshell appears at the far right, at the lowest binding energy.",
+     "1s is always the most tightly held; a 3p electron is far less so."
+    ]
+   }
+  },
+  {
+   "id": "chem-photoelectron-spectroscopy-9",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In photoelectron spectroscopy, what does the height of a peak tell you?",
+   "options": [
+    "How tightly those electrons are held",
+    "The number of protons in the atom",
+    "The number of electrons in the subshell",
+    "Which shell the electrons are in"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Position = binding energy (how tightly held); relative height = number of electrons in the subshell.",
+    "options": [
+     "That is the peak's position along the energy axis.",
+     "The atom's protons shift every peak; height counts electrons.",
+     "Right: more electrons ejected at that energy give a taller peak.",
+     "The shell is read from the position and order of peaks."
+    ]
+   }
+  },
+  {
+   "id": "chem-photoelectron-spectroscopy-10",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A spectrum has three peaks with relative heights 2, 2 and 5. Which element is it?",
+   "options": [
+    "Fluorine",
+    "Phosphorus",
+    "Boron",
+    "Neon"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Add the heights for the total: 9 electrons, fluorine.",
+    "options": [
+     "Right: 2 + 2 + 5 = 9 electrons in 1s, 2s and 2p.",
+     "Phosphorus has five subshells, so five peaks.",
+     "Boron is 1s² 2s² 2p¹, with peak heights 2, 2, 1.",
+     "Neon's 2p peak would be 6 electrons tall."
+    ]
+   }
+  },
+  {
+   "id": "chem-photoelectron-spectroscopy-11",
+   "type": "multi",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statements about photoelectron spectra are correct? Select all that apply.",
+   "options": [
+    "Each peak corresponds to one subshell",
+    "A larger nuclear charge shifts matching peaks to lower binding energy",
+    "Electrons in a 2p subshell have a higher binding energy than those in 2s",
+    "The peak with the lowest binding energy belongs to a core electron"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Peaks map to subshells; more protons raise every peak. 2s lies above 2p in binding energy, and the lowest peak is always valence.",
+    "options": [
+     "Right: all electrons in one subshell share one binding energy.",
+     "More protons pull harder on every subshell, so matching peaks move to higher binding energy.",
+     "In one atom, 2p electrons are held a little less tightly than 2s: lower binding energy.",
+     "It belongs to the outermost (valence) electrons."
+    ]
+   }
+  },
+  {
+   "id": "chem-photoelectron-spectroscopy-12",
+   "type": "order",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the subshells of argon (1s² 2s² 2p⁶ 3s² 3p⁶) in order of binding energy, highest first.",
+   "options": [
+    "1s",
+    "2s",
+    "2p",
+    "3s",
+    "3p"
+   ],
+   "why": {
+    "correct": "Binding energy falls as electrons are farther out and more shielded: 1s > 2s > 2p > 3s > 3p."
+   }
+  },
+  {
+   "id": "chem-photoelectron-spectroscopy-13",
+   "type": "predict",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Compare the spectrum of potassium (19 protons, [Ar] 4s¹) with that of argon (18 protons). Predict the change from argon to potassium.",
+   "variables": [
+    {
+     "name": "Binding energy of the 1s peak",
+     "answer": "up",
+     "why": "One more proton pulls the 1s electrons harder."
+    },
+    {
+     "name": "Number of peaks",
+     "answer": "up",
+     "why": "Potassium adds a 4s subshell: six peaks instead of five."
+    },
+    {
+     "name": "Height of the 3p peak",
+     "answer": "none",
+     "why": "Both atoms have 6 electrons in 3p."
+    }
+   ],
+   "why": {
+    "correct": "One more proton raises every matching peak; the new 4s electron adds a new peak of height 1 at very low binding energy."
+   }
+  },
+  {
+   "id": "chem-photoelectron-spectroscopy-14",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a photoelectron spectrometer, how is the binding energy of an electron found?",
+   "options": [
+    "By weighing the atom before and after the electron leaves",
+    "By counting how many electrons leave each second",
+    "From the size of the atom measured under a microscope",
+    "Light energy minus the ejected electron's energy of motion"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The light supplies a known energy. Part of it frees the electron (the binding energy); the rest becomes the electron's motion, which is measured. Subtracting gives the binding energy.",
+    "options": [
+     "An electron is too light for its loss to be weighed this way, and mass is not energy here.",
+     "The count gives peak height, not binding energy.",
+     "Atoms are far too small for that, and size does not give the energy directly.",
+     "Right: whatever energy is not used to free the electron stays with it as motion."
+    ]
+   }
+  },
+  {
+   "id": "chem-photoelectron-spectroscopy-15",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "photoelectron-spectroscopy",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two peaks in one atom's spectrum are at 1.46 MJ/mol and 0.79 MJ/mol, with equal heights. Which statement is supported?",
+   "options": [
+    "The electrons at 1.46 MJ/mol are held more tightly",
+    "The electrons at 0.79 MJ/mol are closer to the nucleus",
+    "The peak at 0.79 MJ/mol has more electrons",
+    "Both peaks belong to one subshell"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Binding energy measures how tightly an electron is held: 1.46 MJ/mol is held more tightly than 0.79 MJ/mol. Equal heights mean equal numbers of electrons.",
+    "options": [
+     "Right: a higher binding energy means more energy is needed to remove them.",
+     "Closer electrons are held more tightly and have the higher binding energy.",
+     "The heights are equal, so the numbers of electrons are equal.",
+     "One subshell gives one peak; two positions mean two subshells."
+    ]
+   }
+  }
+ ]
+}

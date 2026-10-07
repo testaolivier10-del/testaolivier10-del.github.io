@@ -1,0 +1,468 @@
+{
+ "stimuli": {
+  "solutions-s1": {
+   "kind": "setup",
+   "title": "A copper(II) sulfate stock solution",
+   "text": "<p>A student weighs 3.991 g of anhydrous copper(II) sulfate, CuSO₄ (159.61 g/mol), on an analytical balance, transfers it to a 250.0 mL volumetric flask, dissolves it, and dilutes to the mark. She then uses a 10.00 mL volumetric pipet to transfer 10.00 mL of this stock into a 100.0 mL volumetric flask and dilutes to the mark.</p>"
+  },
+  "solutions-s2": {
+   "kind": "particle",
+   "title": "Before and after adding water",
+   "html": "<svg viewBox=\"0 0 330 170\" width=\"330\" height=\"170\" role=\"img\" aria-label=\"Two beakers. Beaker 1 holds 100 mL of solution with 8 solute particles. Beaker 2 holds the same 8 solute particles spread through 200 mL of solution after water was added.\"><path d=\"M20,30 L20,140 Q20,150 30,150 L130,150 Q140,150 140,140 L140,30\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><rect x=\"21\" y=\"95\" width=\"118\" height=\"54\" fill=\"#D7E6F7\"/><path d=\"M180,30 L180,140 Q180,150 190,150 L290,150 Q300,150 300,140 L300,30\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\"/><rect x=\"181\" y=\"45\" width=\"118\" height=\"104\" fill=\"#D7E6F7\"/><circle cx=\"35\" cy=\"108\" r=\"6\" fill=\"#7B5EA7\"/><circle cx=\"62\" cy=\"118\" r=\"6\" fill=\"#7B5EA7\"/><circle cx=\"90\" cy=\"106\" r=\"6\" fill=\"#7B5EA7\"/><circle cx=\"118\" cy=\"120\" r=\"6\" fill=\"#7B5EA7\"/><circle cx=\"45\" cy=\"136\" r=\"6\" fill=\"#7B5EA7\"/><circle cx=\"75\" cy=\"140\" r=\"6\" fill=\"#7B5EA7\"/><circle cx=\"103\" cy=\"134\" r=\"6\" fill=\"#7B5EA7\"/><circle cx=\"128\" cy=\"140\" r=\"6\" fill=\"#7B5EA7\"/><circle cx=\"198\" cy=\"60\" r=\"6\" fill=\"#7B5EA7\"/><circle cx=\"250\" cy=\"72\" r=\"6\" fill=\"#7B5EA7\"/><circle cx=\"282\" cy=\"58\" r=\"6\" fill=\"#7B5EA7\"/><circle cx=\"215\" cy=\"98\" r=\"6\" fill=\"#7B5EA7\"/><circle cx=\"268\" cy=\"106\" r=\"6\" fill=\"#7B5EA7\"/><circle cx=\"196\" cy=\"132\" r=\"6\" fill=\"#7B5EA7\"/><circle cx=\"238\" cy=\"138\" r=\"6\" fill=\"#7B5EA7\"/><circle cx=\"285\" cy=\"135\" r=\"6\" fill=\"#7B5EA7\"/><text x=\"80\" y=\"166\" font-size=\"12\" text-anchor=\"middle\" fill=\"#1F2A28\">1: 100 mL</text><text x=\"240\" y=\"166\" font-size=\"12\" text-anchor=\"middle\" fill=\"#1F2A28\">2: 200 mL</text></svg><p>Key: purple dot, one solute particle (water molecules not shown); shading, the solution.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-solutions-1",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solutions-s1",
+   "q": "What is the molarity of the stock solution?",
+   "numeric": {
+    "answer": 0.1,
+    "tol": 0.0001,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 0.0001,
+      "rel": 0.02,
+      "why": "Value: you divided by 250.0 mL. Molarity is moles per liter: 250.0 mL = 0.2500 L."
+     },
+     {
+      "value": 15.96,
+      "rel": 0.02,
+      "why": "Value: you divided grams by liters. Convert the mass to moles first with the molar mass."
+     }
+    ]
+   },
+   "why": {
+    "correct": "moles = 3.991 g ÷ 159.61 g/mol = 0.025005 mol. V = 250.0 mL = 0.2500 L. M = 0.025005 mol ÷ 0.2500 L = 0.100019 M, which is 0.1000 M."
+   }
+  },
+  {
+   "id": "chem-solutions-2",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solutions-s1",
+   "q": "What is the molarity of the diluted solution?",
+   "numeric": {
+    "answer": 0.01,
+    "tol": 1e-05,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 0.01111,
+      "rel": 0.02,
+      "why": "Value: you used 90.0 mL, the water added, as V₂. V₂ is the total final volume, 100.0 mL."
+     },
+     {
+      "value": 1.0,
+      "rel": 0.02,
+      "why": "Value: you multiplied by V₂/V₁. Diluting makes a solution weaker, so multiply by V₁/V₂."
+     }
+    ]
+   },
+   "why": {
+    "correct": "M₂ = M₁V₁/V₂ = 0.10002 M × 10.00 mL / 100.0 mL = 0.010002 M, which is 0.01000 M."
+   }
+  },
+  {
+   "id": "chem-solutions-3",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solutions-s1",
+   "q": "Why does the student use a volumetric flask rather than a beaker to make the stock solution?",
+   "options": [
+    "It holds one volume precisely, so the molarity is known to four significant figures.",
+    "A volumetric flask dissolves the solid faster, because its narrow neck keeps the solution warm.",
+    "A beaker would react with copper(II) sulfate, while the glass of a volumetric flask does not.",
+    "A 250 mL beaker is too small to hold 250 mL of solution, so a larger container is needed."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Molarity needs the final volume of solution. A volumetric flask is accurate to about ±0.1 mL at its mark; a beaker's markings are only within about 5%.",
+    "options": [
+     "Right: precision of the final volume.",
+     "The neck exists to make the volume precise, not to keep heat in.",
+     "Both are glass; neither reacts with the solution.",
+     "Beakers of 250 mL and larger are common; the issue is precision."
+    ]
+   }
+  },
+  {
+   "id": "chem-solutions-4",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "2.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "solutions-s1",
+   "q": "While making the stock, the student adds water until the top of the curved liquid surface, rather than the bottom, touches the mark. How does this affect the molarity she calculates for the stock?",
+   "options": [
+    "Her calculated value is too low, because the actual volume is smaller than 250.0 mL.",
+    "Her calculated value is too high, because the actual volume is smaller than 250.0 mL.",
+    "Her calculated value is too low, because the actual volume is larger than 250.0 mL.",
+    "Her calculated value is unchanged, because the mass of solute was measured correctly."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Water curves up where it meets the glass, so the top of the curved surface is at the edges and the bottom is in the middle. Stopping when the edges reach the mark leaves the bottom below it, so the flask holds a little less than 250.0 mL. The same moles in less volume make the true molarity higher than the value she calculates with 250.0 mL, so her value is too low.",
+    "options": [
+     "Right: less volume, higher true concentration, so the value calculated with 250.0 mL understates it.",
+     "The volume is smaller, which makes the true concentration higher; a value calculated with 250.0 mL is therefore too low, not too high.",
+     "Stopping at the top of the curve leaves the bottom below the mark, so the volume is smaller, not larger.",
+     "Molarity also depends on the volume, which is wrong here."
+    ]
+   }
+  },
+  {
+   "id": "chem-solutions-5",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solutions-s1",
+   "q": "Which instruction gives the correct way to complete the dilution step?",
+   "options": [
+    "Add water to the 100.0 mL flask until the bottom of the curved surface is on the mark, then invert.",
+    "Add exactly 100.0 mL of deionized water to the 10.00 mL of stock in a beaker and stir.",
+    "Add exactly 90.0 mL of deionized water from a graduated cylinder, then swirl the flask.",
+    "Pour the 10.00 mL of stock into 100.0 mL of water already in the flask, then invert."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dilute to the mark: the total volume must be 100.0 mL, measured by the flask. Volumes of liquids do not always add exactly, and a graduated cylinder is less precise than the flask.",
+    "options": [
+     "Right: dilute to the mark, then mix.",
+     "Adding 100.0 mL of water makes the total about 110 mL, not 100.0 mL.",
+     "A graduated cylinder is less precise, and volumes do not add exactly.",
+     "That gives about 110 mL, overfilling the flask."
+    ]
+   }
+  },
+  {
+   "id": "chem-solutions-6",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "solutions-s2",
+   "q": "What stayed the same when water was added to beaker 1 to make beaker 2?",
+   "options": [
+    "The number of moles of solute",
+    "The molarity of the solution",
+    "The volume of the solution",
+    "The number of particles per milliliter"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both beakers show 8 solute particles: adding water adds no solute. The volume doubled, so the concentration halved.",
+    "options": [
+     "Right: 8 particles in each.",
+     "The same particles in twice the volume means half the molarity.",
+     "The volume went from 100 mL to 200 mL.",
+     "Particles per milliliter halved, from 8/100 to 8/200."
+    ]
+   }
+  },
+  {
+   "id": "chem-solutions-7",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solutions-s2",
+   "q": "If the solution in beaker 1 is 0.40 M, what is the molarity in beaker 2?",
+   "options": [
+    "0.10 M",
+    "0.20 M",
+    "0.40 M",
+    "0.80 M"
+   ],
+   "correct": 1,
+   "fixed": true,
+   "why": {
+    "correct": "M₂ = M₁V₁/V₂ = 0.40 M × 100 mL / 200 mL = 0.20 M. Same moles, twice the volume.",
+    "options": [
+     "This quarters the concentration; the volume only doubled.",
+     "Right: half the concentration.",
+     "This ignores the change in volume.",
+     "This doubles the concentration; adding water lowers it."
+    ]
+   }
+  },
+  {
+   "id": "chem-solutions-8",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "solutions-s2",
+   "q": "Which drawing would show 100 mL of the beaker 1 solution diluted to 400 mL?",
+   "options": [
+    "8 particles spread through 400 mL of solution",
+    "32 particles spread through 400 mL of solution",
+    "2 particles spread through 400 mL of solution",
+    "8 particles in 100 mL with 300 mL of clear water above"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dilution keeps the solute: 8 particles, now in 400 mL, spread evenly because a solution is homogeneous.",
+    "options": [
+     "Right: same particles, four times the volume, evenly spread.",
+     "This adds solute; only water was added.",
+     "Solute particles cannot disappear when water is added.",
+     "A solution is homogeneous, so the particles spread through the whole volume."
+    ]
+   }
+  },
+  {
+   "id": "chem-solutions-9",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "solutions-s2",
+   "q": "A student says beaker 2 has \"less solute\" than beaker 1 because it looks paler. Which response is best?",
+   "options": [
+    "It has the same amount of solute in a larger volume, so it is less concentrated.",
+    "It has less solute, because some solute particles are lost when water is added to a solution.",
+    "It has more solute, because the larger volume of solution can hold more solute particles.",
+    "It has less solute, because the water molecules break the solute particles into smaller pieces."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Color intensity follows concentration, not total amount. Beaker 2 holds all 8 particles but in twice the volume.",
+    "options": [
+     "Right: same moles, lower concentration.",
+     "No solute is lost; the particle count is 8 in both.",
+     "No solute was added; the count is unchanged.",
+     "Adding water does not break up solute particles."
+    ]
+   }
+  },
+  {
+   "id": "chem-solutions-10",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many grams of glucose, C₆H₁₂O₆ (180.16 g/mol), are needed to make 500.0 mL of a 0.2500 M solution?",
+   "numeric": {
+    "answer": 22.52,
+    "tol": 0.01,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 22520.0,
+      "rel": 0.02,
+      "why": "Value: you used 500.0 mL as liters. Convert first: 500.0 mL = 0.5000 L."
+     },
+     {
+      "value": 0.0006938,
+      "rel": 0.02,
+      "why": "Value: you divided by the molar mass. To get grams from moles, multiply by g/mol."
+     }
+    ]
+   },
+   "why": {
+    "correct": "0.2500 mol/L × 0.5000 L = 0.1250 mol; 0.1250 mol × 180.16 g/mol = 22.52 g."
+   }
+  },
+  {
+   "id": "chem-solutions-11",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "What volume of 12.0 M HCl stock is needed to prepare 250. mL of 0.600 M HCl?",
+   "numeric": {
+    "answer": 12.5,
+    "tol": 0.1,
+    "unit": "mL",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 5000.0,
+      "rel": 0.02,
+      "why": "Value: you inverted the ratio. The stock is stronger, so you need a small volume of it: V₁ = M₂V₂/M₁."
+     }
+    ]
+   },
+   "why": {
+    "correct": "V₁ = M₂V₂/M₁ = (0.600 M × 250. mL) / 12.0 M = 12.5 mL of stock, diluted to a total of 250. mL."
+   }
+  },
+  {
+   "id": "chem-solutions-12",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the molarity of chloride ions in a solution made by dissolving 0.0450 mol of CaCl₂ in water to a total volume of 0.300 L?",
+   "numeric": {
+    "answer": 0.3,
+    "tol": 0.001,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.15,
+      "rel": 0.02,
+      "why": "Value: that is the molarity of CaCl₂. Each formula unit gives two Cl⁻ ions, so double it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "M(CaCl₂) = 0.0450 mol / 0.300 L = 0.150 M. Each CaCl₂ gives two Cl⁻ ions, so [Cl⁻] = 2 × 0.150 M = 0.300 M."
+   }
+  },
+  {
+   "id": "chem-solutions-13",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which aqueous solutions conduct electricity well? Select all that apply.",
+   "options": [
+    "0.10 M KNO₃",
+    "0.10 M glucose, C₆H₁₂O₆",
+    "0.10 M MgCl₂",
+    "0.10 M ethanol, C₂H₅OH"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Ionic compounds give moving ions in water, so their solutions conduct. Glucose and ethanol stay as whole, neutral molecules: nonelectrolytes.",
+    "options": [
+     "Right: K⁺ and NO₃⁻ ions carry current.",
+     "Glucose molecules stay whole and carry no charge.",
+     "Right: Mg²⁺ and Cl⁻ ions carry current.",
+     "Ethanol molecules stay whole and carry no charge."
+    ]
+   }
+  },
+  {
+   "id": "chem-solutions-14",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does molarity measure?",
+   "options": [
+    "Moles of solute per liter of solution",
+    "Moles of solute per liter of solvent",
+    "Grams of solute per liter of solution",
+    "Moles of solute per kilogram of solvent"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Molarity, M, is mol of solute ÷ L of the whole solution.",
+    "options": [
+     "Right: per liter of the finished solution.",
+     "The volume is the finished solution, not the solvent alone.",
+     "Molarity counts moles, not grams.",
+     "That is molality, which this course does not use."
+    ]
+   }
+  },
+  {
+   "id": "chem-solutions-15",
+   "type": "order",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for preparing 100.0 mL of 0.500 M NaCl in order.",
+   "options": [
+    "Calculate the mass needed: 0.0500 mol × 58.44 g/mol",
+    "Weigh 2.922 g of NaCl on an analytical balance",
+    "Transfer the solid to a 100.0 mL volumetric flask with some deionized water and swirl to dissolve",
+    "Add deionized water until the bottom of the curved liquid surface is on the mark",
+    "Stopper and invert the flask to mix"
+   ],
+   "why": {
+    "correct": "Calculate, weigh, dissolve in part of the water, dilute to the mark, then mix."
+   }
+  },
+  {
+   "id": "chem-solutions-16",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solutions",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student dissolves 0.200 mol of NaOH in 1.00 L of water and labels the result \"0.200 M NaOH.\" Why is the label not exactly right?",
+   "options": [
+    "Molarity uses the final volume of solution, which is not exactly 1.00 L.",
+    "Molarity is grams of solute per liter, so the moles have to be converted to grams.",
+    "The label is exactly right, because the solvent volume is what molarity is based on.",
+    "The NaOH should have been weighed in milliliters, so the moles are not known exactly."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dissolving a solute changes the volume, so 1.00 L of water plus NaOH is not exactly 1.00 L of solution. The right method dissolves the solid and dilutes to 1.00 L in a volumetric flask.",
+    "options": [
+     "Right: liters of solution, not of solvent.",
+     "Molarity is moles per liter.",
+     "Molarity is based on the solution's volume.",
+     "Solids are weighed in grams; the moles are fine."
+    ]
+   }
+  }
+ ]
+}

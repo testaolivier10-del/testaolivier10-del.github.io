@@ -1,0 +1,8 @@
+{
+ "noble-gas-configuration": {
+  "def": "An electron configuration with the same arrangement as a noble gas, such as Na⁺ and F⁻ (both like neon). Particles with the same number of electrons are isoelectronic."
+ },
+ "ionic-compound": {
+  "def": "A compound made of cations and anions held together by their opposite charges, in the ratio that makes it neutral; its simplest unit (such as one NaCl) is a formula unit."
+ }
+}

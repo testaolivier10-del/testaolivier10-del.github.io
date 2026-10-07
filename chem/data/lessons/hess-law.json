@@ -1,0 +1,87 @@
+{
+ "topic": "hess-law",
+ "hook": "You can climb a mountain by the steep trail or by the long switchbacks; at the top you are the same height above the parking lot either way. Enthalpy works the same way. That lets chemists find ΔH for reactions nobody can run cleanly, like turning carbon and hydrogen straight into methane, by adding up reactions they can run.",
+ "prereq": [
+  {
+   "q": "If N₂ + 3 H₂ → 2 NH₃ has ΔH = −92.2 kJ/mol, what is ΔH for 4 NH₃ → 2 N₂ + 6 H₂?",
+   "options": [
+    "+184.4 kJ/mol",
+    "−184.4 kJ/mol",
+    "+92.2 kJ/mol",
+    "−46.1 kJ/mol"
+   ],
+   "correct": 0,
+   "why": "Reversed (sign flips) and doubled (size doubles): +184.4 kJ/mol.",
+   "review": "enthalpy-of-reaction"
+  },
+  {
+   "q": "ΔH°f of O₂(g) is",
+   "options": [
+    "0",
+    "−495 kJ/mol",
+    "+495 kJ/mol",
+    "−285.8 kJ/mol"
+   ],
+   "correct": 0,
+   "why": "O₂(g) is an element in its standard state.",
+   "review": "enthalpy-of-formation"
+  }
+ ],
+ "figure": {
+  "figure": "hess-carbon-routes",
+  "caption": "One step or two, the enthalpy change from C + O₂ to CO₂ is −393.5 kJ."
+ },
+ "chain": [
+  {
+   "cause": "Enthalpy depends only on the state of a system, not its history",
+   "effect": "it is a state function"
+  },
+  {
+   "cause": "Two routes connect the same reactants and products",
+   "effect": "they have the same overall ΔH"
+  },
+  {
+   "cause": "A target equation can be written as the sum of known equations",
+   "effect": "its ΔH is the sum of their ΔH values (Hess's law)"
+  },
+  {
+   "cause": "A known equation must be reversed or scaled to fit",
+   "effect": "its ΔH is reversed in sign or scaled by the same factor"
+  },
+  {
+   "cause": "Substances that appear on both sides after adding",
+   "effect": "cancel, leaving exactly the target equation"
+  }
+ ],
+ "ideas": [
+  "Enthalpy is a <b>state function</b>: ΔH depends only on the start and end, not the route.",
+  "<b>Hess's law</b>: if equations add up to the target, their ΔH values add up to the target's ΔH.",
+  "Reverse an equation, change the sign of ΔH. Multiply an equation, multiply ΔH by the same factor. Do both when needed.",
+  "Work substance by substance: put each target substance on the correct side in the correct amount, then check that everything else cancels.",
+  "Formation (6.8) is Hess's law with a route through the elements."
+ ],
+ "misconception": {
+  "wrong": "When I reverse an equation and multiply it by 3, I reverse the sign of ΔH and I'm done.",
+  "right": "Every change to the equation applies to ΔH. Reversed and tripled means ΔH × (−3)."
+ },
+ "check": [
+  "chem-hess-law-1",
+  "chem-hess-law-2",
+  "chem-hess-law-3",
+  "chem-hess-law-4",
+  "chem-hess-law-10",
+  "chem-hess-law-14",
+  "chem-hess-law-16"
+ ],
+ "summary": "Because enthalpy is a state function, the ΔH of a reaction is the same whatever route connects its reactants and products. Hess's law adds known reactions, reversed or scaled as needed, to build a target reaction, and adds their ΔH values, adjusted the same way, to get its ΔH.",
+ "connections": [
+  {
+   "href": "../notes/enthalpy-of-formation.html",
+   "label": "Back: ΔH from enthalpies of formation (6.8)"
+  },
+  {
+   "href": "../notes/enthalpy-of-reaction.html",
+   "label": "Back: scaling and reversing ΔH (6.6)"
+  }
+ ]
+}

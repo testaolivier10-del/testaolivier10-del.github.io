@@ -1,0 +1,97 @@
+{
+ "topic": "henderson-hasselbalch",
+ "hook": "A biology lab needs a phosphate buffer at exactly pH 7.40 for an enzyme that stops working outside a narrow range. Nobody finds that pH by trial and error. One line of algebra, the Henderson-Hasselbalch equation, tells you which acid to use and how much of each component to weigh out.",
+ "prereq": [
+  {
+   "q": "What is log(2.0)?",
+   "options": [
+    "0.30",
+    "0.69",
+    "2.0",
+    "−0.30"
+   ],
+   "correct": 0,
+   "why": "log(2.0) = 0.301. (0.69 is ln 2.)",
+   "review": "math-logs"
+  },
+  {
+   "q": "In a buffer, the pH depends on what?",
+   "options": [
+    "The ratio [A⁻]/[HA]",
+    "The total concentration of acid only",
+    "The volume of the solution",
+    "The amount of water"
+   ],
+   "correct": 0,
+   "why": "[H₃O⁺] = Ka × [HA]/[A⁻]: only the ratio matters.",
+   "review": "buffer-properties"
+  },
+  {
+   "q": "Which form predominates at a pH one unit below pKa?",
+   "options": [
+    "HA",
+    "A⁻",
+    "Equal amounts",
+    "Neither"
+   ],
+   "correct": 0,
+   "why": "Below pKa, the protonated form wins, by 10 : 1 at one unit below.",
+   "review": "ph-and-pka"
+  }
+ ],
+ "figure": {
+  "figure": "hh-ratio-line",
+  "caption": "pH against log([A⁻]/[HA]): a line of slope 1 that crosses pKa where the ratio is 1."
+ },
+ "chain": [
+  {
+   "cause": "Ka = [H₃O⁺][A⁻]/[HA] holds in a buffer",
+   "effect": "taking −log of both sides gives pH = pKa + log([A⁻]/[HA])"
+  },
+  {
+   "cause": "The ratio is 1 when the two components are equal",
+   "effect": "log 1 = 0, so pH = pKa"
+  },
+  {
+   "cause": "Every tenfold change in the ratio",
+   "effect": "moves the pH by exactly one unit (base-10 log)"
+  },
+  {
+   "cause": "A useful buffer needs both components in real amounts",
+   "effect": "pick an acid whose pKa is within about 1 of the target pH, then set the ratio"
+  }
+ ],
+ "ideas": [
+  "<b>pH = pKa + log([A⁻]/[HA])</b>, base on top, base-10 log (never ln).",
+  "Moles can replace concentrations: both share one volume, which cancels.",
+  "Weak base buffer (NH₃/NH₄⁺): use pKa of the conjugate acid, 14.00 − pKb.",
+  "To make a buffer: choose pKa ≈ target pH, find the ratio 10^(pH − pKa), then the amounts (or the volume of NaOH for partial neutralization)."
+ ],
+ "misconception": {
+  "wrong": "The Henderson-Hasselbalch equation uses the natural log, like the integrated rate law for a first-order reaction.",
+  "right": "It is the base-10 log, because pH and pKa are base-10 logs. Using ln moves the answer by a factor of 2.303 in the log term, a frequent point lost on recent exams."
+ },
+ "check": [
+  "chem-henderson-hasselbalch-1",
+  "chem-henderson-hasselbalch-2",
+  "chem-henderson-hasselbalch-3",
+  "chem-henderson-hasselbalch-4",
+  "chem-henderson-hasselbalch-5",
+  "chem-henderson-hasselbalch-6"
+ ],
+ "summary": "The Henderson-Hasselbalch equation, pH = pKa + log([A⁻]/[HA]), is the Ka expression in log form. It gives a buffer's pH from its ratio, and works backwards to design a buffer: pick an acid with pKa near the target, find the ratio 10^(pH − pKa), and turn it into amounts. Use base-10 log, and pKa of the conjugate acid for a weak base buffer.",
+ "connections": [
+  {
+   "href": "../notes/buffer-properties.html",
+   "label": "Back: why buffers resist pH change (8.8)"
+  },
+  {
+   "href": "../notes/buffer-limits.html",
+   "label": "Next: buffer capacity (8.10)"
+  },
+  {
+   "href": "../notes/math-logs.html",
+   "label": "Review: logarithms (math)"
+  }
+ ]
+}

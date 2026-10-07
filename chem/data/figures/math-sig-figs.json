@@ -1,0 +1,7 @@
+{
+ "sigfig-ruler": {
+  "file": "figures/sigfig-ruler.svg", "ext": "svg", "w": 680, "h": 240,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "A ruler marked every 0.1 cm; an object's edge falls about seven tenths of the way from 3.4 to 3.5 cm, so the reading is 3.47 cm, with 7 the estimated digit."
+ }
+}

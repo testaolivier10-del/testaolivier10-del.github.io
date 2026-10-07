@@ -1,0 +1,9 @@
+{
+ "lewis-diagram": { "def": "A drawing of a molecule or ion that shows every valence electron, with bonding pairs as lines and lone pairs as pairs of dots." },
+ "central-atom": { "def": "The atom in a molecule or ion that is bonded to two or more other atoms; it is drawn in the middle of a Lewis diagram." },
+ "lone-pair": { "def": "A pair of valence electrons on one atom that is not shared in a bond; also called a nonbonding pair." },
+ "bonding-pair": { "def": "A pair of electrons shared between two atoms in a covalent bond, drawn as a line in a Lewis diagram." },
+ "octet-rule": { "def": "The pattern that atoms of period 2 in stable molecules end up with eight valence electrons around them (hydrogen with two)." },
+ "octet-exception": { "def": "A species that does not follow the octet rule: an incomplete octet (B in BF₃), an odd-electron species or free radical (NO), or an expanded octet from period 3 on (S in SF₆)." },
+ "polyatomic-ion": { "def": "A charged group of atoms held together by covalent bonds, such as NH₄⁺ or SO₄²⁻." }
+}

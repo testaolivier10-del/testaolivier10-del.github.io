@@ -1,0 +1,14 @@
+{
+ "titration": {
+  "def": "A method for finding the amount of a substance (the analyte) by adding a solution of known concentration (the titrant) from a buret until the two have reacted in the mole ratio of the balanced equation."
+ },
+ "equivalence-point": {
+  "def": "The point in a titration where the moles of titrant added have reacted exactly, by the mole ratio, with the analyte. The end point is where the indicator changes color, which should be very close to it."
+ },
+ "buret": {
+  "def": "A long graduated glass tube with a stopcock, used to deliver a measured volume of titrant. It is read at the bottom of the meniscus (the curved liquid surface) to 0.01 mL."
+ },
+ "indicator": {
+  "def": "A substance added in small amounts to the analyte that changes color when the first slight excess of titrant is present, marking the end point of a titration."
+ }
+}

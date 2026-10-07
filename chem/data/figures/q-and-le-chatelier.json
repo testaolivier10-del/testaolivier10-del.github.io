@@ -1,0 +1,12 @@
+{
+ "disturbance-q-k-path": {
+  "file": "figures/disturbance-q-k-path.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 260,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Four boxes in a row joined by arrows. At equilibrium, Q equals K. A disturbance makes Q not equal to K. Compare Q with K: if Q is less than K the net reaction goes forward, if greater it goes in reverse. New equilibrium: Q equals K again with new amounts. A note says a concentration or volume change moves Q while K stays fixed, and a temperature change moves K while Q stays fixed. A model justification reads: adding H2 makes Q less than K, so the net reaction proceeds forward until Q equals K."
+ }
+}

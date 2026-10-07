@@ -1,0 +1,85 @@
+{
+ "topic": "physical-chemical-changes",
+ "hook": "Melt an ice cube and you still have water; pass electricity through that water and you get two gases that can explode together. Both start with the same molecules. The difference is what happens to the bonds inside them, and that is how chemists tell a physical change from a chemical one.",
+ "prereq": [
+  {
+   "q": "When water boils, which attractions are overcome?",
+   "options": [
+    "Attractions between water molecules",
+    "Covalent O–H bonds within each molecule",
+    "Ionic bonds between H⁺ and O²⁻",
+    "Bonds between protons and neutrons"
+   ],
+   "correct": 0,
+   "why": "A phase change separates whole molecules by overcoming intermolecular forces.",
+   "review": "intermolecular-forces"
+  },
+  {
+   "q": "In a balanced equation, what is conserved?",
+   "options": [
+    "The number of each kind of atom",
+    "The number of molecules",
+    "The state of each substance",
+    "The number of substances"
+   ],
+   "correct": 0,
+   "why": "Atoms are rearranged, never created or destroyed.",
+   "review": "reactions-intro"
+  }
+ ],
+ "figure": {
+  "figure": "physical-vs-chemical",
+  "caption": "Physical change (left): water molecules separate when water boils, and every molecule stays H₂O. Chemical change (right): O–H bonds break and H–H and O=O bonds form, so new substances appear."
+ },
+ "chain": [
+  {
+   "cause": "A physical change overcomes or forms attractions between particles",
+   "effect": "the particles themselves stay the same, so no new substance forms"
+  },
+  {
+   "cause": "A chemical change breaks and forms bonds within particles",
+   "effect": "new particles, and so new substances, form"
+  },
+  {
+   "cause": "Covalent bonds are much stronger than attractions between molecules",
+   "effect": "phase changes need far less energy than breaking molecules apart"
+  },
+  {
+   "cause": "Dissolving an ionic solid breaks strong ionic attractions and forms ion-dipole attractions",
+   "effect": "it has features of both kinds of change"
+  }
+ ],
+ "ideas": [
+  "A <b>physical change</b> (melting, boiling, dissolving, mixing) changes how particles are arranged, not what they are.",
+  "A <b>chemical change</b> breaks and forms bonds within particles, so new substances with new properties form.",
+  "Decide at the particle level: are the particles after the same as the particles before?",
+  "Dissolving salt breaks strong ionic attractions yet makes no new substance, so it sits between the two."
+ ],
+ "misconception": {
+  "wrong": "A change that can be undone is physical, and one that cannot be undone is chemical.",
+  "right": "Whether a change can be undone does not decide it. Many chemical changes can be run backward, and some physical changes are hard to undo. Ask whether new substances, with new bonds, formed."
+ },
+ "check": [
+  "chem-physical-chemical-changes-1",
+  "chem-physical-chemical-changes-2",
+  "chem-physical-chemical-changes-3",
+  "chem-physical-chemical-changes-4",
+  "chem-physical-chemical-changes-5",
+  "chem-physical-chemical-changes-7"
+ ],
+ "summary": "A physical change rearranges particles without changing them; a chemical change breaks and forms bonds and makes new substances. Phase changes overcome attractions between molecules, which are much weaker than covalent bonds; dissolving an ionic solid breaks strong attractions but makes no new substance.",
+ "connections": [
+  {
+   "href": "../notes/intermolecular-forces.html",
+   "label": "Back: forces between particles (3.1)"
+  },
+  {
+   "href": "../notes/phases-of-matter.html",
+   "label": "Back: phase changes (3.3)"
+  },
+  {
+   "href": "../notes/stoichiometry.html",
+   "label": "Next: amounts in reactions (4.5)"
+  }
+ ]
+}

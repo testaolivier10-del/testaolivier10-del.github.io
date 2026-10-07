@@ -1,0 +1,476 @@
+{
+ "stimuli": {
+  "lewis-diagrams-s1": {
+   "kind": "model",
+   "title": "Four student-drawn Lewis diagrams",
+   "text": "<p>A student drew these Lewis diagrams. Lines are bonding pairs; dot pairs are lone pairs.</p>",
+   "html": "<svg viewBox=\"0 0 680 200\" width=\"680\" height=\"200\" role=\"img\" aria-label=\"Diagram 1, HCN: H single-bonded to C, C triple-bonded to N, one lone pair on N. Diagram 2, H2CO: C double-bonded to O and single-bonded to two H atoms, two lone pairs on O. Diagram 3, N2: two N atoms joined by a double bond, two lone pairs on each N. Diagram 4, BF3: B single-bonded to three F atoms, three lone pairs on each F, no lone pairs on B.\" style=\"max-width:100%;height:auto\"><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><text x=\"40\" y=\"97.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">H</text><text x=\"90\" y=\"97.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">C</text><text x=\"140\" y=\"97.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">N</text><line x1=\"54\" y1=\"90\" x2=\"76\" y2=\"90\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"104\" y1=\"82.35\" x2=\"126\" y2=\"82.35\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"104\" y1=\"90\" x2=\"126\" y2=\"90\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"104\" y1=\"97.65\" x2=\"126\" y2=\"97.65\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><circle cx=\"159\" cy=\"94.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"159\" cy=\"85.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><text x=\"90\" y=\"168\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Diagram 1</text><text x=\"90\" y=\"188\" font-size=\"13\" text-anchor=\"middle\" fill=\"#5B6670\">HCN</text><text x=\"260\" y=\"107.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">C</text><text x=\"260\" y=\"53.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">O</text><text x=\"218\" y=\"135.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">H</text><text x=\"302\" y=\"135.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">H</text><line x1=\"255.5\" y1=\"86\" x2=\"255.5\" y2=\"60\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"264.5\" y1=\"86\" x2=\"264.5\" y2=\"60\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"248.35\" y1=\"107.77\" x2=\"229.65\" y2=\"120.23\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"271.65\" y1=\"107.77\" x2=\"290.35\" y2=\"120.23\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><circle cx=\"245.85\" cy=\"32.52\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"241.25\" cy=\"40.48\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"278.75\" cy=\"40.48\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"274.15\" cy=\"32.52\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><text x=\"260\" y=\"168\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Diagram 2</text><text x=\"260\" y=\"188\" font-size=\"13\" text-anchor=\"middle\" fill=\"#5B6670\">H<tspan font-size=\"10\" dy=\"3\">2</tspan><tspan dy=\"-3\"></tspan>CO</text><text x=\"405\" y=\"97.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">N</text><text x=\"465\" y=\"97.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">N</text><line x1=\"419\" y1=\"85.5\" x2=\"451\" y2=\"85.5\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"419\" y1=\"94.5\" x2=\"451\" y2=\"94.5\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><circle cx=\"396.31\" cy=\"72.49\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"389.26\" cy=\"78.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"389.26\" cy=\"101.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"396.31\" cy=\"107.51\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"480.74\" cy=\"78.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"473.69\" cy=\"72.49\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"473.69\" cy=\"107.51\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"480.74\" cy=\"101.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><text x=\"435\" y=\"168\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Diagram 3</text><text x=\"435\" y=\"188\" font-size=\"13\" text-anchor=\"middle\" fill=\"#5B6670\">N<tspan font-size=\"10\" dy=\"3\">2</tspan><tspan dy=\"-3\"></tspan></text><text x=\"600\" y=\"103.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">B</text><text x=\"600\" y=\"51.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">F</text><line x1=\"600\" y1=\"82\" x2=\"600\" y2=\"58\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"555\" y=\"129.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">F</text><line x1=\"587.88\" y1=\"103\" x2=\"567.12\" y2=\"115\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"645\" y=\"129.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">F</text><line x1=\"612.12\" y1=\"103\" x2=\"632.88\" y2=\"115\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><circle cx=\"604.6\" cy=\"25\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"595.4\" cy=\"25\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"581\" cy=\"39.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"581\" cy=\"48.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"619\" cy=\"48.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"619\" cy=\"39.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"550.4\" cy=\"141\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"559.6\" cy=\"141\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"536\" cy=\"117.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"536\" cy=\"126.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"540.85\" cy=\"108.52\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"536.25\" cy=\"116.48\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"640.4\" cy=\"141\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"649.6\" cy=\"141\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"664\" cy=\"126.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"664\" cy=\"117.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"663.75\" cy=\"116.48\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"659.15\" cy=\"108.52\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><text x=\"600\" y=\"168\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Diagram 4</text><text x=\"600\" y=\"188\" font-size=\"13\" text-anchor=\"middle\" fill=\"#5B6670\">BF<tspan font-size=\"10\" dy=\"3\">3</tspan><tspan dy=\"-3\"></tspan></text></g></svg>"
+  },
+  "lewis-diagrams-s2": {
+   "kind": "table",
+   "title": "Valence electron counts",
+   "text": "<p>A student records the valence electrons for several species before drawing their Lewis diagrams.</p>",
+   "table": {
+    "caption": "Species and their atoms",
+    "cols": [
+     "Species",
+     "Atoms",
+     "Group of each atom",
+     "Overall charge"
+    ],
+    "rows": [
+     [
+      "PCl₃",
+      "1 P, 3 Cl",
+      "P 15, Cl 17",
+      "0"
+     ],
+     [
+      "SO₄²⁻",
+      "1 S, 4 O",
+      "S 16, O 16",
+      "2−"
+     ],
+     [
+      "NO",
+      "1 N, 1 O",
+      "N 15, O 16",
+      "0"
+     ],
+     [
+      "SF₆",
+      "1 S, 6 F",
+      "S 16, F 17",
+      "0"
+     ],
+     [
+      "BH₄⁻",
+      "4 H, 1 B",
+      "H 1, B 13",
+      "1−"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-lewis-diagrams-1",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "lewis-diagrams-s1",
+   "q": "Which diagram shows the wrong total number of valence electrons for its formula?",
+   "options": [
+    "Diagram 1",
+    "Diagram 3",
+    "Diagram 2",
+    "Diagram 4"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "N₂ has 2 × 5 = 10 valence electrons. Diagram 3 shows a double bond (4) and four lone pairs (8), which is 12. The correct diagram is a triple bond with one lone pair on each N: 6 + 4 = 10.",
+    "options": [
+     "HCN has 1 + 4 + 5 = 10: one single bond (2), a triple bond (6) and one lone pair (2). It is correct.",
+     "Right: 12 electrons drawn for a 10-electron molecule.",
+     "H₂CO has 2 + 4 + 6 = 12: two C–H bonds (4), a C=O bond (4) and two lone pairs (4). It is correct.",
+     "BF₃ has 3 + 21 = 24: three bonds (6) and nine lone pairs (18). It is correct, with an incomplete octet on B."
+    ]
+   }
+  },
+  {
+   "id": "chem-lewis-diagrams-2",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "lewis-diagrams-s1",
+   "q": "In Diagram 4, how many electrons surround the boron atom, and what does this show?",
+   "options": [
+    "Ten, an expanded octet, because B is in period 2",
+    "Eight, because each atom in a molecule has an octet",
+    "Six, so the diagram has to be wrong",
+    "Six, an incomplete octet, which boron can have"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "B has three bonds and no lone pairs: 3 × 2 = 6 electrons. Boron has only three valence electrons, so in BF₃ it ends with six, an incomplete octet. This is one of the known exceptions to the octet rule.",
+    "options": [
+     "Period 2 atoms such as B cannot have more than eight electrons; expanded octets start in period 3.",
+     "Not every atom has an octet: H has 2, and B commonly has 6.",
+     "Six around B is allowed; the diagram uses exactly 24 electrons and each F has an octet.",
+     "Right: three bonding pairs, six electrons."
+    ]
+   }
+  },
+  {
+   "id": "chem-lewis-diagrams-3",
+   "type": "numeric",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "lewis-diagrams-s1",
+   "q": "In Diagram 2 (H₂CO), how many lone pairs are on the whole molecule?",
+   "numeric": {
+    "answer": 2,
+    "tol": 0,
+    "unit": "lone pairs",
+    "decimals": 0
+   },
+   "why": {
+    "correct": "Only O carries lone pairs: two of them. C has four bonding pairs (two to H and a double bond to O) and no lone pairs."
+   }
+  },
+  {
+   "id": "chem-lewis-diagrams-4",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "lewis-diagrams-s1",
+   "q": "How does the C atom in Diagram 1 (HCN) reach an octet?",
+   "options": [
+    "A single bond to H and a triple bond to N: 2 + 6 = 8",
+    "It has two lone pairs plus two single bonds to H and N",
+    "It has one lone pair, a single bond and a double bond",
+    "It does not reach an octet; carbon has an incomplete octet in HCN"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Count every bonding electron around C: H–C contributes 2 and C≡N contributes 6. 2 + 6 = 8, an octet, with no lone pairs on C.",
+    "options": [
+     "Right: two bonding electrons plus six.",
+     "The diagram shows no lone pairs on C and a triple bond to N.",
+     "The C–N bond is triple, not double, and C has no lone pair.",
+     "C has eight electrons around it; incomplete octets are typical of B, not C."
+    ]
+   }
+  },
+  {
+   "id": "chem-lewis-diagrams-5",
+   "type": "numeric",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "lewis-diagrams-s2",
+   "q": "How many valence electrons must the Lewis diagram of the sulfate ion, SO₄²⁻, show?",
+   "numeric": {
+    "answer": 32,
+    "tol": 0,
+    "unit": "electrons",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 30,
+      "tol": 0,
+      "why": "Value: you left out the charge. A 2− charge means two extra electrons: add 2 to the atoms' 30."
+     },
+     {
+      "value": 28,
+      "tol": 0,
+      "why": "Value: you subtracted 2 for the charge. A 2− ion has gained two electrons: add 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "S 6 + 4 × O 6 = 30, plus 2 for the 2− charge = 32 electrons."
+   }
+  },
+  {
+   "id": "chem-lewis-diagrams-6",
+   "type": "numeric",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "lewis-diagrams-s2",
+   "q": "How many valence electrons must the Lewis diagram of the borohydride ion, BH₄⁻, show?",
+   "numeric": {
+    "answer": 8,
+    "tol": 0,
+    "unit": "electrons",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 6,
+      "tol": 0,
+      "why": "Value: you subtracted an electron for the 1− charge. A negative ion has gained an electron: add 1."
+     }
+    ]
+   },
+   "why": {
+    "correct": "B 3 + 4 × H 1 = 7, plus 1 for the 1− charge = 8 electrons. Four B–H bonds use all 8, giving B an octet."
+   }
+  },
+  {
+   "id": "chem-lewis-diagrams-7",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "lewis-diagrams-s2",
+   "q": "Which species in the table cannot have every atom with an octet in its Lewis diagram?",
+   "options": [
+    "BH₄⁻",
+    "PCl₃",
+    "NO",
+    "SO₄²⁻"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "NO has 5 + 6 = 11 valence electrons, an odd number. Electrons in a Lewis diagram come in pairs, so one electron is left unpaired and one atom has fewer than eight. NO is an odd-electron species (a free radical).",
+    "options": [
+     "BH₄⁻ has 8 electrons: four B–H bonds give B an octet, and each H has its 2.",
+     "PCl₃ has 26 electrons: three P–Cl bonds, a lone pair on P and three on each Cl gives every atom an octet.",
+     "Right: an odd total cannot be all pairs.",
+     "SO₄²⁻ has 32 electrons and can be drawn with an octet on every atom (four S–O single bonds)."
+    ]
+   }
+  },
+  {
+   "id": "chem-lewis-diagrams-8",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "lewis-diagrams-s2",
+   "q": "In SF₆, sulfur forms six bonds. Which statement is correct?",
+   "options": [
+    "SF₆ is not a real compound, as S would break the octet rule",
+    "S has 8 electrons, because each bond counts as one electron for S",
+    "S has 12 electrons, an expanded octet, possible in period 3",
+    "S has 12 electrons, and each F has an expanded octet too"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Six bonding pairs put 12 electrons around S. Atoms in period 3 and below can hold more than eight valence electrons (an expanded octet). Each F has one bond and three lone pairs: an ordinary octet.",
+    "options": [
+     "SF₆ is a real, stable gas; period 3 atoms can exceed the octet.",
+     "Both electrons of a bonding pair count for each atom it joins.",
+     "Right: six bonds, 12 electrons, period 3.",
+     "Each F has exactly 8 (one bond, three lone pairs); F is in period 2 and cannot expand."
+    ]
+   }
+  },
+  {
+   "id": "chem-lewis-diagrams-9",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In a Lewis diagram, what does a lone pair represent?",
+   "options": [
+    "Two valence electrons on one atom, not shared",
+    "Two electrons shared between two atoms in a bond",
+    "Two core electrons held close to the nucleus",
+    "A single unpaired electron on one atom"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A lone pair (nonbonding pair) is a pair of valence electrons that belongs to one atom and is not shared.",
+    "options": [
+     "Right: an unshared pair of valence electrons.",
+     "Two shared electrons are a bonding pair, drawn as a line.",
+     "Lewis diagrams show valence electrons only; core electrons are left out.",
+     "An unpaired electron is a single dot, found in odd-electron species."
+    ]
+   }
+  },
+  {
+   "id": "chem-lewis-diagrams-10",
+   "type": "order",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for drawing a Lewis diagram in order.",
+   "options": [
+    "Count the valence electrons, adjusting for any charge",
+    "Place the central atom and connect each outer atom with a single bond",
+    "Complete the octets of the outer atoms with lone pairs",
+    "Put any electrons left over on the central atom",
+    "If the central atom lacks an octet, turn outer lone pairs into double or triple bonds"
+   ],
+   "why": {
+    "correct": "Count, skeleton, outer octets, leftovers on the center, then multiple bonds if the center is short. Check at the end that the diagram uses exactly the counted number of electrons."
+   }
+  },
+  {
+   "id": "chem-lewis-diagrams-11",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the correct Lewis diagram for carbon dioxide, CO₂?",
+   "options": [
+    "O≡C–O, with one lone pair on the triple-bonded O and two on the other",
+    "O–C–O, with three lone pairs on each O and no lone pair on C",
+    "O–C–O, with three lone pairs on each O and two on C",
+    "O=C=O, with two lone pairs on each O"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "CO₂ has 4 + 2 × 6 = 16 electrons. Two double bonds (8) and two lone pairs on each O (8) use all 16, and every atom has an octet.",
+    "options": [
+     "That uses 8 + 2 + 4 = 14 electrons and leaves the single-bonded O short of an octet.",
+     "That uses 4 + 12 = 16 electrons but leaves C with only four electrons; lone pairs on O must become double bonds.",
+     "That uses 4 + 12 + 4 = 20 electrons, four more than CO₂ has.",
+     "Right: 16 electrons, octets everywhere."
+    ]
+   }
+  },
+  {
+   "id": "chem-lewis-diagrams-12",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student drew the ammonium ion, NH₄⁺, as N bonded to four H atoms with one lone pair on N. What is wrong?",
+   "options": [
+    "It has too few electrons; N needs two lone pairs",
+    "It shows 10 electrons; NH₄⁺ has 8, so no lone pair",
+    "Nothing is wrong; N keeps its one lone pair",
+    "H atoms need lone pairs to complete their octets"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "NH₄⁺ has 5 + 4 − 1 = 8 electrons. Four N–H bonds use all 8, so there is no lone pair. The student added an electron for the charge instead of removing one.",
+    "options": [
+     "Two lone pairs would make the count even larger, 12 electrons.",
+     "Right: the 1+ charge removes an electron.",
+     "In NH₃ nitrogen has a lone pair, but in NH₄⁺ that pair has become the fourth N–H bond.",
+     "H holds two electrons, one bonding pair; it never needs eight."
+    ]
+   }
+  },
+  {
+   "id": "chem-lewis-diagrams-13",
+   "type": "multi",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these molecules has a central atom with an expanded octet in its Lewis diagram? Select all that apply.",
+   "options": [
+    "PCl₅",
+    "CCl₄",
+    "NF₃",
+    "BCl₃"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "P in PCl₅ makes five bonds: 10 electrons around a period 3 atom. The others have eight or fewer around the central atom.",
+    "options": [
+     "Right: five bonding pairs, 10 electrons.",
+     "C has four bonds, exactly an octet.",
+     "N has three bonds and a lone pair, exactly an octet; period 2 atoms cannot expand.",
+     "B has three bonds and no lone pair: six electrons, an incomplete octet, not an expanded one."
+    ]
+   }
+  },
+  {
+   "id": "chem-lewis-diagrams-14",
+   "type": "numeric",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Draw the Lewis diagram of nitrogen trichloride, NCl₃. How many lone pairs does the whole molecule have?",
+   "numeric": {
+    "answer": 10,
+    "tol": 0,
+    "unit": "lone pairs",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 9,
+      "tol": 0,
+      "why": "Value: you counted the chlorine lone pairs only. N also keeps one lone pair: 26 electrons − 6 in bonds = 20 = 10 pairs."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Valence electrons: 5 + 3 × 7 = 26. Three N–Cl bonds use 6, leaving 20 electrons = 10 lone pairs: three on each Cl (9) and one on N."
+   }
+  },
+  {
+   "id": "chem-lewis-diagrams-15",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which is the correct skeleton (arrangement of atoms) for the hypochlorous acid molecule, HOCl?",
+   "options": [
+    "H–Cl–O, with Cl as the central atom",
+    "H–O–Cl, with O as the central atom",
+    "O–H–Cl, with H as the central atom",
+    "Cl–O and H unbonded beside them"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "H forms only one bond, so it sits on the outside. In acids that contain oxygen, the H is attached to an O, and O (which forms two bonds) links H to Cl. The skeleton is H–O–Cl.",
+    "options": [
+     "In acids that contain oxygen, the H is bonded to O, and H–O–Cl gives every atom an octet without any charges.",
+     "Right: O in the middle, H on the end.",
+     "H holds two electrons, one bond, so it cannot be a central atom.",
+     "Every atom in a molecule is connected; an unbonded H would make it two separate species."
+    ]
+   }
+  },
+  {
+   "id": "chem-lewis-diagrams-16",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "lewis-diagrams",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which is the correct Lewis diagram for the cyanide ion, CN⁻?",
+   "options": [
+    "[C–N]⁻ with three lone pairs on each atom",
+    "[C≡N]⁻ with no lone pairs on either atom",
+    "[C=N]⁻ with two lone pairs on each atom",
+    "[C≡N]⁻ with one lone pair on each atom"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "CN⁻ has 4 + 5 + 1 = 10 electrons. A triple bond (6) and one lone pair on each atom (4) use 10, and both atoms have octets.",
+    "options": [
+     "That uses 2 + 12 = 14 electrons, four more than the ion has.",
+     "That uses only 6 electrons and leaves both atoms short.",
+     "That uses 4 + 8 = 12 electrons, two more than the ion has.",
+     "Right: 10 electrons, two octets."
+    ]
+   }
+  }
+ ]
+}

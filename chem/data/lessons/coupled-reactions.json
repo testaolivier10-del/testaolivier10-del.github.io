@@ -1,0 +1,87 @@
+{
+ "topic": "coupled-reactions",
+ "hook": "Your muscles build proteins, pump ions and contract, and almost every one of those jobs is thermodynamically unfavored on its own. The cell gets them done by pairing each one with a reaction that is strongly favored, most often the breakdown of ATP. Smelters use the same trick to get copper out of ore.",
+ "prereq": [
+  {
+   "q": "When two reactions are added, what happens to their K values?",
+   "options": [
+    "They multiply",
+    "They add",
+    "They subtract",
+    "The larger one is kept"
+   ],
+   "correct": 0,
+   "why": "Adding reactions multiplies equilibrium constants (topic 7.6).",
+   "review": "k-properties"
+  },
+  {
+   "q": "A reaction has ΔG° = +40 kJ/mol. Is it favored?",
+   "options": [
+    "No, because ΔG° > 0",
+    "Yes, because ΔG° is large",
+    "Yes, at every temperature",
+    "It cannot be known"
+   ],
+   "correct": 0,
+   "why": "A process is favored when ΔG° < 0.",
+   "review": "gibbs-free-energy"
+  }
+ ],
+ "figure": {
+  "figure": "coupled-reactions-bars",
+  "caption": "An unfavored step (+86 kJ/mol) and a favored step (−300 kJ/mol) add to an overall ΔG° of −214 kJ/mol."
+ },
+ "chain": [
+  {
+   "cause": "An unfavored reaction has ΔG° > 0",
+   "effect": "it does not proceed to a useful extent on its own"
+  },
+  {
+   "cause": "A second reaction consumes a product of the first (a shared intermediate)",
+   "effect": "the two reactions add into one overall process"
+  },
+  {
+   "cause": "ΔG° is a state function",
+   "effect": "the ΔG° values add, and the K values multiply"
+  },
+  {
+   "cause": "The driving reaction is more favored than the driven one is unfavored",
+   "effect": "the overall ΔG° is negative and the coupled process is favored"
+  }
+ ],
+ "ideas": [
+  "A <b>coupled reaction</b> pairs an unfavored reaction (ΔG° &gt; 0) with a favored one (ΔG° &lt; 0) through a <b>shared intermediate</b>.",
+  "When reactions add, their ΔG° values add and their K values multiply.",
+  "The overall process is favored if ΔG°(total) &lt; 0. Neither step’s own ΔG° changes.",
+  "Examples: Cu₂S + O₂ (smelting), ATP hydrolysis driving cell reactions.",
+  "External energy (electric current, light) can also drive a process with ΔG° &gt; 0."
+ ],
+ "misconception": {
+  "wrong": "Coupling a favored reaction to an unfavored one changes the unfavored reaction’s ΔG° to a negative value.",
+  "right": "Each reaction keeps its own ΔG°. Coupling makes them act as one overall process, and it is the sum, ΔG°₁ + ΔG°₂, that is negative."
+ },
+ "check": [
+  "chem-coupled-reactions-1",
+  "chem-coupled-reactions-2",
+  "chem-coupled-reactions-3",
+  "chem-coupled-reactions-5",
+  "chem-coupled-reactions-6",
+  "chem-coupled-reactions-8",
+  "chem-coupled-reactions-12"
+ ],
+ "summary": "An unfavored reaction can be made to proceed by coupling it to a strongly favored one through a shared intermediate. The ΔG° values add (and K values multiply), so the overall process is favored if the total ΔG° is negative. External energy such as electricity or light can also drive an unfavored process.",
+ "connections": [
+  {
+   "href": "../notes/k-properties.html",
+   "label": "Back: adding reactions multiplies K (7.6)"
+  },
+  {
+   "href": "../notes/free-energy-equilibrium.html",
+   "label": "Back: ΔG° = −RT ln K (9.5)"
+  },
+  {
+   "href": "../notes/electrochemical-cells.html",
+   "label": "Next: electricity from redox reactions (9.8)"
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "strong-ionization": {
+  "file": "figures/strong-ionization.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: four HCl molecules put in water become four hydronium ions and four chloride ions, with no HCl molecules left, because a strong acid ionizes completely. Right: mixing 0.0050 mol hydronium with 0.0030 mol hydroxide leaves 0.0020 mol hydronium in 0.0500 L, 0.040 M, pH 1.40."
+ }
+}

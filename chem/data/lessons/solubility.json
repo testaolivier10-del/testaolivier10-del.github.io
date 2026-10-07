@@ -1,0 +1,83 @@
+{
+ "topic": "solubility",
+ "hook": "Sugar vanishes into tea, but oil and vinegar separate however hard you shake the bottle. Grease will not wash off with water but comes off with soap. Whether something dissolves is decided by the attractions between particles.",
+ "prereq": [
+  {
+   "q": "Which molecule can hydrogen-bond to water?",
+   "options": [
+    "CH₃OH",
+    "CH₄",
+    "CCl₄"
+   ],
+   "correct": 0,
+   "why": "Methanol has an O–H group and lone pairs on O.",
+   "review": "intermolecular-forces"
+  },
+  {
+   "q": "In a dissolved ionic compound, which end of water faces a cation?",
+   "options": [
+    "The oxygen end",
+    "A hydrogen end",
+    "Neither end"
+   ],
+   "correct": 0,
+   "why": "Water's δ− oxygen is attracted to a positive ion.",
+   "review": "solution-particle-models"
+  }
+ ],
+ "figure": {
+  "figure": "dissolving-balance",
+  "caption": "Dissolving overcomes solute-solute and solvent-solvent attractions and forms solute-solvent attractions."
+ },
+ "chain": [
+  {
+   "cause": "Dissolving overcomes solute–solute and solvent–solvent attractions",
+   "effect": "it must form solute–solvent attractions of comparable strength to proceed"
+  },
+  {
+   "cause": "Polar and ionic solutes form hydrogen bonds or ion-dipole forces with water",
+   "effect": "many of them dissolve well in water"
+  },
+  {
+   "cause": "Nonpolar solutes attract water only weakly, and fitting them in costs water–water hydrogen bonds",
+   "effect": "they do not dissolve well in water but do in nonpolar solvents"
+  },
+  {
+   "cause": "Dissolved gas molecules escape more easily when they move faster",
+   "effect": "gases dissolve less as temperature rises, and more as their partial pressure rises"
+  }
+ ],
+ "ideas": [
+  "Dissolving trades attractions: overcome solute–solute and solvent–solvent, form solute–solvent.",
+  "Like dissolves like: polar and ionic in polar, nonpolar in nonpolar.",
+  "Oil and water separate because water attracts itself far more strongly, not because they repel.",
+  "Gas solubility in water rises with partial pressure and falls with temperature."
+ ],
+ "misconception": {
+  "wrong": "Nonpolar molecules do not dissolve in water because they repel water molecules.",
+  "right": "They attract water weakly. Dissolving them would cost water many hydrogen bonds and give back much weaker attractions, so the water molecules stay together."
+ },
+ "check": [
+  "chem-solubility-1",
+  "chem-solubility-2",
+  "chem-solubility-4",
+  "chem-solubility-5",
+  "chem-solubility-6",
+  "chem-solubility-12"
+ ],
+ "summary": "A substance dissolves when the attractions it forms with the solvent are comparable to the solute–solute and solvent–solvent attractions it replaces, so like dissolves like. Long nonpolar chains lower solubility in water. Gases dissolve more at higher partial pressure and less at higher temperature.",
+ "connections": [
+  {
+   "href": "../notes/intermolecular-forces.html",
+   "label": "The forces being traded (Intermolecular Forces)"
+  },
+  {
+   "href": "../notes/solution-particle-models.html",
+   "label": "Ions in water (Representations of Solutions)"
+  },
+  {
+   "href": "../notes/electromagnetic-spectrum.html",
+   "label": "Next: how light reveals what is in a solution (Spectroscopy)"
+  }
+ ]
+}

@@ -1,0 +1,91 @@
+{
+ "topic": "enthalpy-of-reaction",
+ "hook": "A propane grill tank holds about 9 kg of fuel. How long will it cook? To answer, you need to know how much energy each mole of propane releases and then do the same mole arithmetic you already use for grams. A thermochemical equation is just a balanced equation that also lists its energy.",
+ "prereq": [
+  {
+   "q": "In 2 H₂ + O₂ → 2 H₂O, how many moles of H₂O form from 3.0 mol of O₂?",
+   "options": [
+    "6.0 mol",
+    "3.0 mol",
+    "1.5 mol",
+    "2.0 mol"
+   ],
+   "correct": 0,
+   "why": "Mole ratio 2 H₂O : 1 O₂, so 3.0 mol O₂ × 2 = 6.0 mol H₂O.",
+   "review": "stoichiometry"
+  },
+  {
+   "q": "If the surroundings gain 50 kJ from a reaction, q for the reaction is",
+   "options": [
+    "−50 kJ",
+    "+50 kJ",
+    "0 kJ",
+    "+100 kJ"
+   ],
+   "correct": 0,
+   "why": "Energy gained by the surroundings is lost by the system: opposite sign.",
+   "review": "calorimetry"
+  }
+ ],
+ "figure": {
+  "figure": "thermochemical-scaling",
+  "caption": "ΔH belongs to the equation as written. Scale it with the coefficients; flip its sign when you reverse the equation."
+ },
+ "chain": [
+  {
+   "cause": "A thermochemical equation lists ΔH for the reaction as written",
+   "effect": "ΔH is per mole of reaction: the mole amounts the coefficients give"
+  },
+  {
+   "cause": "Twice as much reacts",
+   "effect": "twice the energy is transferred, so ΔH scales with the coefficients"
+  },
+  {
+   "cause": "The reaction is run backward",
+   "effect": "the energy flows the other way, so ΔH changes sign"
+  },
+  {
+   "cause": "A given amount of a substance reacts",
+   "effect": "q = moles × (ΔH ÷ that substance's coefficient), using the limiting reactant"
+  },
+  {
+   "cause": "The system and surroundings exchange that energy",
+   "effect": "q(surroundings) = −q(reaction)"
+  }
+ ],
+ "ideas": [
+  "A <b>thermochemical equation</b> is a balanced equation with states and the <b>enthalpy of reaction</b>, ΔH, per mole of reaction as written.",
+  "Multiply the equation, multiply ΔH; reverse it, change the sign of ΔH.",
+  "Energy for an amount: convert to moles, then use ΔH ÷ coefficient as a conversion factor (kJ per mol of that substance).",
+  "Base the energy on the limiting reactant.",
+  "States matter: forming H₂O(g) instead of H₂O(l) releases less energy."
+ ],
+ "misconception": {
+  "wrong": "If the equation has ΔH = −92.2 kJ/mol, forming 1 mol of NH₃ releases 92.2 kJ.",
+  "right": "The −92.2 kJ belongs to the equation as written, which forms 2 mol of NH₃. One mole of NH₃ releases half, 46.1 kJ."
+ },
+ "check": [
+  "chem-enthalpy-of-reaction-1",
+  "chem-enthalpy-of-reaction-2",
+  "chem-enthalpy-of-reaction-3",
+  "chem-enthalpy-of-reaction-4",
+  "chem-enthalpy-of-reaction-5",
+  "chem-enthalpy-of-reaction-12",
+  "chem-enthalpy-of-reaction-17"
+ ],
+ "summary": "The enthalpy of reaction, ΔH, is the energy change for a reaction exactly as written, per mole of reaction. It scales with the coefficients and changes sign when the reaction is reversed. Combined with stoichiometry, it gives the energy released or absorbed by any amount of reactant.",
+ "connections": [
+  {
+   "href": "../notes/stoichiometry.html",
+   "label": "Back: mole ratios and limiting reactants (4.5)"
+  },
+  {
+   "href": "../notes/calorimetry.html",
+   "label": "Back: measuring ΔH in a calorimeter (6.4)"
+  },
+  {
+   "href": "../notes/bond-enthalpies.html",
+   "label": "Next: estimating ΔH from bonds (6.7)"
+  }
+ ]
+}

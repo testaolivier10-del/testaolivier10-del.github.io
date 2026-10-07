@@ -1,0 +1,54 @@
+<p>Unit 7 described equilibrium with K, and topic 9.3 described favorability with ΔG°. These are two views of the same thing. A reaction with a strongly negative ΔG° runs far toward products before it settles, so its K is large. This page gives the exact link and shows how to use it.</p>
+
+<h2>The equation</h2>
+<p style="text-align:center"><b>ΔG° = −RT ln K</b></p>
+<ul>
+<li>ΔG° is the standard free energy change in <b>J/mol</b> (convert from kJ/mol by multiplying by 1000).</li>
+<li>R = <b>8.314 J/(mol·K)</b>, the energy form of the gas constant, not 0.08206 L·atm/(mol·K).</li>
+<li>T is in <b>kelvin</b>.</li>
+<li>ln is the <b>natural</b> logarithm (from the logarithms lesson before topic 5.3), not log.</li>
+</ul>
+
+<h2>Reading the signs</h2>
+<figure id="fig-scale" data-fig="dg-k-scale"><figcaption>Figure 1. The sign of ΔG° sets which side of 1 K is on.</figcaption></figure>
+<p>Since ln K is positive when K &gt; 1 and negative when K &lt; 1, the minus sign in the equation lines them up as in <a class="figref" href="#fig-scale">Figure 1</a>:</p>
+<table class="compare">
+<caption>ΔG° and K</caption>
+<thead><tr><th scope="col">ΔG°</th><th scope="col">ln K</th><th scope="col">K</th><th scope="col">At equilibrium</th></tr></thead>
+<tbody>
+<tr><td>negative</td><td>positive</td><td>&gt; 1</td><td>products favored</td></tr>
+<tr><td>0</td><td>0</td><td>= 1</td><td>neither side strongly favored</td></tr>
+<tr><td>positive</td><td>negative</td><td>&lt; 1</td><td>reactants favored</td></tr>
+</tbody>
+</table>
+<p>Because K depends on ΔG° exponentially, small changes in ΔG° make big changes in K. At 298 K, RT = 2.48 kJ/mol, so each 5.7 kJ/mol of ΔG° changes K by a factor of 10. A ΔG° within a few kJ/mol of zero gives K between about 0.1 and 10: <b>both reactants and products are present in large amounts</b>. A ΔG° of −40 kJ/mol already gives K ≈ 10<sup>7</sup>.</p>
+<p>A positive ΔG° does not mean "no reaction". It means K &lt; 1: some product still forms, but reactants dominate the equilibrium mixture.</p>
+
+<h2>From ΔG° to K</h2>
+<p>Rearrange: ln K = −ΔG°/RT, so K = e<sup>−ΔG°/RT</sup>.</p>
+<div class="worked">
+<p><b>Worked example.</b> For N<sub>2</sub>(g) + 3 H<sub>2</sub>(g) ⇌ 2 NH<sub>3</sub>(g), ΔG° = −33.2 kJ/mol at 298 K. Find K.</p>
+<p>Units first: ΔG° = −33.2 kJ/mol × 1000 J/kJ = −33,200 J/mol.</p>
+<p>ln K = −ΔG°/RT = −(−33,200 J/mol) ÷ [(8.314 J/(mol·K))(298 K)] = 33,200 ÷ 2477.6 = 13.40.</p>
+<p>K = e<sup>13.40</sup> = 6.6 × 10<sup>5</sup>.</p>
+<p>Check: ΔG° &lt; 0, so K &gt; 1. It is. (ΔG° has three significant figures, which leaves about two in K after the exponential.)</p>
+</div>
+
+<h2>From K to ΔG°</h2>
+<div class="worked">
+<p><b>Worked example.</b> Acetic acid has K<sub>a</sub> = 1.8 × 10<sup>−5</sup> at 298 K. Find ΔG° for its ionization.</p>
+<p>ΔG° = −RT ln K = −(8.314 J/(mol·K))(298 K) × ln(1.8 × 10<sup>−5</sup>)</p>
+<p>ln(1.8 × 10<sup>−5</sup>) = −10.93, so ΔG° = −(2477.6 J/mol)(−10.93) = +2.7 × 10<sup>4</sup> J/mol = +27 kJ/mol.</p>
+<p>Check: K &lt; 1, so ΔG° &gt; 0. A weak acid is mostly un-ionized at equilibrium, which fits.</p>
+</div>
+
+<h2>Changing the equation changes both</h2>
+<ul>
+<li><b>Reverse</b> the reaction: ΔG° changes sign and K becomes 1/K.</li>
+<li><b>Multiply</b> the coefficients by n: ΔG° is multiplied by n and K is raised to the power n.</li>
+<li><b>Add</b> two reactions: their ΔG° values add and their K values multiply (topic 7.6, and topic 9.7).</li>
+</ul>
+
+<h2>ΔG versus ΔG°</h2>
+<p>ΔG° describes the reaction with every species at standard conditions. A real mixture is usually not standard; its drive is ΔG, which depends on Q. You can predict the direction from Q and K alone: if Q &lt; K, ΔG &lt; 0 and the net reaction goes forward; if Q &gt; K, it goes in reverse; if Q = K, the mixture is at equilibrium and ΔG = 0. ΔG° itself never changes at a given temperature. So "at equilibrium ΔG° = 0" is wrong: at equilibrium ΔG = 0, and ΔG° = −RT ln K.</p>
+<aside class="going-further"><p><b>Going further.</b> The full relation is ΔG = ΔG° + RT ln Q. Setting ΔG = 0 and Q = K at equilibrium gives ΔG° = −RT ln K.</p></aside>

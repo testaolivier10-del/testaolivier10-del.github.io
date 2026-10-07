@@ -1,0 +1,45 @@
+{
+ "topic": "resonance-formal-charge",
+ "hook": "Draw the nitrate ion and you must choose which of three oxygen atoms gets the double bond. Measure the real ion and all three bonds are the same length. The diagrams are not wrong, just incomplete: the truth is a blend of all of them.",
+ "prereq": [
+  {
+   "q": "How many valence electrons does the Lewis diagram of the nitrate ion, NO₃⁻, show?",
+   "options": ["24", "23", "22", "30"],
+   "correct": 0,
+   "why": "N 5 + 3 × O 6 = 23, plus 1 for the 1− charge = 24.",
+   "review": "lewis-diagrams"
+  },
+  {
+   "q": "Compared with a single bond between the same two atoms, a double bond is",
+   "options": ["shorter and stronger", "longer and stronger", "shorter and weaker", "the same length"],
+   "correct": 0,
+   "why": "More shared electrons attract both nuclei more strongly.",
+   "review": "bond-potential-energy"
+  }
+ ],
+ "figure": { "figure": "nitrate-resonance", "caption": "The three resonance structures of nitrate differ only in which O has the double bond (formal charges in red). The real ion is the hybrid on the right, with three identical N–O bonds of bond order 4/3." },
+ "chain": [
+  { "cause": "Several valid Lewis diagrams place the atoms the same way but the electrons differently", "effect": "they are resonance structures, linked by a double-headed arrow" },
+  { "cause": "No single diagram matches the measured, equal bond lengths", "effect": "the real species is one resonance hybrid with delocalized electrons" },
+  { "cause": "The bonding pairs are shared over several equivalent bonds", "effect": "each bond has a fractional bond order and an in-between length" },
+  { "cause": "Diagrams that are not equivalent assign electrons differently to each atom", "effect": "formal charge (valence − lone-pair electrons − ½ bonding electrons) compares them" },
+  { "cause": "Separating charge costs energy, and electronegative atoms hold extra electrons best", "effect": "the best diagram has formal charges nearest zero, with negative charge on the more electronegative atom" }
+ ],
+ "ideas": [
+  "<b>Resonance</b> structures have the same atom positions and differ only in where electrons are drawn.",
+  "The real species is one <b>resonance hybrid</b> with <b>delocalized electrons</b>; it does not flip between diagrams.",
+  "<b>Bond order</b> in a hybrid = bonding pairs ÷ number of bonds sharing them (nitrate 4/3, ozone 3/2). Equal, in-between lengths are the evidence.",
+  "<b>Formal charge</b> = valence electrons − lone-pair electrons − ½ bonding electrons; the formal charges add up to the overall charge.",
+  "Best diagram: formal charges closest to zero, and any negative one on the more electronegative atom."
+ ],
+ "misconception": {
+  "wrong": "Ozone switches back and forth between its two Lewis diagrams, so its bonds are sometimes single and sometimes double.",
+  "right": "Ozone has one real structure, the hybrid, in which both O–O bonds are identical with bond order 1.5 at every moment. The two diagrams are partial pictures of that one structure."
+ },
+ "check": ["chem-resonance-formal-charge-1", "chem-resonance-formal-charge-2", "chem-resonance-formal-charge-3", "chem-resonance-formal-charge-6", "chem-resonance-formal-charge-7", "chem-resonance-formal-charge-10"],
+ "summary": "When several valid Lewis diagrams differ only in where electrons are placed, they are resonance structures, and the real species is a single hybrid with delocalized electrons. Bonds shared in resonance are identical, with fractional bond orders and lengths between single and double bonds. Formal charge, valence electrons minus lone-pair electrons minus half the bonding electrons, compares diagrams: the best one has formal charges nearest zero, with any negative charge on the more electronegative atom.",
+ "connections": [
+  { "href": "../notes/lewis-diagrams.html", "label": "Back: drawing Lewis diagrams (2.5)" },
+  { "href": "../notes/vsepr-hybridization.html", "label": "Next: VSEPR and hybridization (2.7)" }
+ ]
+}

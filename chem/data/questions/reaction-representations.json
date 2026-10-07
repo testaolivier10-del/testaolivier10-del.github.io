@@ -1,0 +1,432 @@
+{
+ "stimuli": {
+  "reaction-representations-s1": {
+   "kind": "particle",
+   "title": "Carbon monoxide burning",
+   "html": "<svg viewBox=\"0 0 458 180\" width=\"458\" height=\"180\" role=\"img\" aria-label=\"Before box: four carbon monoxide molecules, each one C atom joined to one O atom, and three oxygen molecules, each two O atoms joined. After box: four carbon dioxide molecules, each one C atom between two O atoms, and one oxygen molecule left over.\"><rect x=\"4\" y=\"4\" width=\"200\" height=\"150\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"19\" cy=\"29\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"19\" y=\"32.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"37\" cy=\"29\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"37\" y=\"32.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"72\" cy=\"55\" r=\"11\" fill=\"#3A3A3A\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"72\" y=\"58.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">C</text><circle cx=\"90\" cy=\"55\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"90\" y=\"58.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"120\" cy=\"40\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"120\" y=\"43.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"138\" cy=\"40\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"138\" y=\"43.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"170\" cy=\"44\" r=\"11\" fill=\"#3A3A3A\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"170\" y=\"47.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">C</text><circle cx=\"188\" cy=\"44\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"188\" y=\"47.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"21\" cy=\"124\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"21\" y=\"127.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"39\" cy=\"124\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"39\" y=\"127.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"70\" cy=\"116\" r=\"11\" fill=\"#3A3A3A\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"70\" y=\"119.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">C</text><circle cx=\"88\" cy=\"116\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"88\" y=\"119.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"121\" cy=\"113\" r=\"11\" fill=\"#3A3A3A\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"121\" y=\"116.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">C</text><circle cx=\"139\" cy=\"113\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"139\" y=\"116.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><text x=\"104\" y=\"172\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Before</text><line x1=\"212\" y1=\"79\" x2=\"240\" y2=\"79\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><path d=\"M238,73 L248,79 L238,85 Z\" fill=\"#1F2A28\"/><rect x=\"254\" y=\"4\" width=\"200\" height=\"150\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"290\" cy=\"29\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"290\" y=\"32.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"308\" cy=\"29\" r=\"11\" fill=\"#3A3A3A\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"308\" y=\"32.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">C</text><circle cx=\"326\" cy=\"29\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"326\" y=\"32.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"392\" cy=\"30\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"392\" y=\"33.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"410\" cy=\"30\" r=\"11\" fill=\"#3A3A3A\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"410\" y=\"33.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">C</text><circle cx=\"428\" cy=\"30\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"428\" y=\"33.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"276\" cy=\"77\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"276\" y=\"80.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"294\" cy=\"77\" r=\"11\" fill=\"#3A3A3A\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"294\" y=\"80.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">C</text><circle cx=\"312\" cy=\"77\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"312\" y=\"80.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"406\" cy=\"78\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"406\" y=\"81.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"424\" cy=\"78\" r=\"11\" fill=\"#3A3A3A\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"424\" y=\"81.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">C</text><circle cx=\"442\" cy=\"78\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"442\" y=\"81.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"287\" cy=\"131\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"287\" y=\"134.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><circle cx=\"305\" cy=\"131\" r=\"11\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"305\" y=\"134.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#FFFFFF\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">O</text><text x=\"354\" y=\"172\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">After</text></svg><p>Key: dark circle labeled C, carbon atom; red circle labeled O, oxygen atom. All species are gases.</p>"
+  },
+  "reaction-representations-s2": {
+   "kind": "particle",
+   "title": "Two elements combine",
+   "html": "<svg viewBox=\"0 0 458 180\" width=\"458\" height=\"180\" role=\"img\" aria-label=\"Before box: three X₂ molecules, each two blue X atoms joined, and six Y₂ molecules, each two orange Y atoms joined. After box: four XY₃ molecules, each one blue X atom joined to three orange Y atoms, and one X₂ molecule left over.\"><rect x=\"4\" y=\"4\" width=\"200\" height=\"150\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"20\" cy=\"30\" r=\"11\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"20\" y=\"33.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">X</text><circle cx=\"38\" cy=\"30\" r=\"11\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"38\" y=\"33.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">X</text><circle cx=\"68\" cy=\"27\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"68\" y=\"30.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"86\" cy=\"27\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"86\" y=\"30.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"119\" cy=\"28\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"119\" y=\"31.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"137\" cy=\"28\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"137\" y=\"31.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"170\" cy=\"25\" r=\"11\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"170\" y=\"28.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">X</text><circle cx=\"188\" cy=\"25\" r=\"11\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"188\" y=\"28.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">X</text><circle cx=\"20\" cy=\"82\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"20\" y=\"85.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"38\" cy=\"82\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"38\" y=\"85.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"71\" cy=\"82\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"71\" y=\"85.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"89\" cy=\"82\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"89\" y=\"85.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"122\" cy=\"79\" r=\"11\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"122\" y=\"82.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">X</text><circle cx=\"140\" cy=\"79\" r=\"11\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"140\" y=\"82.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">X</text><circle cx=\"169\" cy=\"81\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"169\" y=\"84.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"187\" cy=\"81\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"187\" y=\"84.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"21\" cy=\"133\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"21\" y=\"136.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"39\" cy=\"133\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"39\" y=\"136.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><text x=\"104\" y=\"172\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Before</text><line x1=\"212\" y1=\"79\" x2=\"240\" y2=\"79\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><path d=\"M238,73 L248,79 L238,85 Z\" fill=\"#1F2A28\"/><rect x=\"254\" y=\"4\" width=\"200\" height=\"150\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"293\" cy=\"45\" r=\"11\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"293\" y=\"48.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">X</text><circle cx=\"274\" cy=\"54\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"274\" y=\"57.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"312\" cy=\"54\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"312\" y=\"57.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"293\" cy=\"25\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"293\" y=\"28.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"343\" cy=\"28\" r=\"11\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"343\" y=\"31.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">X</text><circle cx=\"361\" cy=\"28\" r=\"11\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"361\" y=\"31.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">X</text><circle cx=\"425\" cy=\"32\" r=\"11\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"425\" y=\"35.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">X</text><circle cx=\"406\" cy=\"41\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"406\" y=\"44.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"444\" cy=\"41\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"444\" y=\"44.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"425\" cy=\"12\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"425\" y=\"15.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"292\" cy=\"118\" r=\"11\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"292\" y=\"121.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">X</text><circle cx=\"273\" cy=\"127\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"273\" y=\"130.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"311\" cy=\"127\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"311\" y=\"130.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"292\" cy=\"98\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"292\" y=\"101.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"358\" cy=\"122\" r=\"11\" fill=\"#56B4E9\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"358\" y=\"125.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">X</text><circle cx=\"339\" cy=\"131\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"339\" y=\"134.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"377\" cy=\"131\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"377\" y=\"134.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><circle cx=\"358\" cy=\"102\" r=\"11\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.3\"/><text x=\"358\" y=\"105.6\" font-size=\"10\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"700\">Y</text><text x=\"354\" y=\"172\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">After</text></svg><p>Key: blue circle X, an atom of element X; orange circle Y, an atom of element Y. Every species is a gas.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-reaction-representations-1",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-representations-s1",
+   "q": "Which balanced equation is shown by the diagram?",
+   "options": [
+    "2CO(g) + O₂(g) → 2CO₂(g)",
+    "4CO(g) + 3O₂(g) → 4CO₂(g) + O₂(g)",
+    "CO(g) + O₂(g) → CO₂(g)",
+    "CO(g) + O(g) → CO₂(g)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two O₂ molecules were used (3 before, 1 after) to turn 4 CO into 4 CO₂, a 4 : 2 : 4 ratio, which is 2 : 1 : 2. The leftover O₂ did not react, so it is not part of the equation.",
+    "options": [
+     "Right: the ratio of what reacted, in smallest whole numbers.",
+     "Puts the unreacted O₂ on both sides. An equation shows what reacts in what ratio, not the leftover amount in one particular mixture.",
+     "Unbalanced: 3 O atoms on the left and 2 on the right.",
+     "Oxygen gas exists as O₂ molecules, as the diagram shows, not as single O atoms."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-representations-2",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "reaction-representations-s1",
+   "q": "Which reactant is in excess in this mixture?",
+   "options": [
+    "O₂, because one O₂ molecule is left after all the CO has reacted",
+    "CO, because there are more CO molecules than O₂ molecules to start",
+    "CO₂, because it is the most plentiful species after the reaction",
+    "Neither, since each atom in the Before box is also in the After box"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The reactant left over is the one in excess. All four CO molecules were used; one O₂ remains.",
+    "options": [
+     "Right: some O₂ is left unreacted.",
+     "Starting with more particles does not make a reactant the excess one; what matters is the ratio needed. Each O₂ handles two CO, so 3 O₂ could handle 6 CO.",
+     "CO₂ is a product, not a reactant.",
+     "Atoms are always conserved, but that does not mean both reactants were used up."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-representations-3",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reaction-representations-s1",
+   "q": "How many more CO molecules would need to be added to the Before box so that both reactants are used up completely?",
+   "numeric": {
+    "answer": 2,
+    "tol": 0,
+    "unit": "molecules",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 1,
+      "rel": 0.01,
+      "why": "Value: one O₂ is left, and each O₂ reacts with two CO (2CO + O₂). It needs two more CO molecules."
+     },
+     {
+      "value": 6,
+      "rel": 0.01,
+      "why": "Value: that is the total CO needed for 3 O₂, not the number to add. Four are already there."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Three O₂ need 3 × 2 = 6 CO. The box has 4, so add 2 more. Equivalently, the one leftover O₂ needs 2 CO."
+   }
+  },
+  {
+   "id": "chem-reaction-representations-4",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-representations-s1",
+   "q": "If this reaction were carried out in a sealed, rigid container, how would the total number of gas molecules change, and why?",
+   "options": [
+    "It falls from 7 to 5, since 3 reactant molecules make 2 product ones",
+    "It stays at 7, since atoms are conserved in a reaction",
+    "It increases, because CO₂ molecules are larger than CO molecules",
+    "It decreases, because some atoms combine into the solid walls"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Count: 4 CO + 3 O₂ = 7 molecules before; 4 CO₂ + 1 O₂ = 5 after. The equation 2CO + O₂ → 2CO₂ turns 3 gas molecules into 2.",
+    "options": [
+     "Right: 7 molecules become 5.",
+     "Atoms are conserved, but molecules are not; atoms regroup into fewer, larger molecules.",
+     "The number of molecules, not their size, is what is counted, and that number goes down.",
+     "All atoms stay in gas molecules, as the After box shows; none leave the gas."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-representations-5",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reaction-representations-s2",
+   "q": "Which equation describes the reaction in the diagram?",
+   "options": [
+    "X₂(g) + 3Y₂(g) → 2XY₃(g)",
+    "3X₂(g) + 6Y₂(g) → 4XY₃(g) + X₂(g)",
+    "X(g) + 3Y(g) → XY₃(g)",
+    "2X₂(g) + 6Y₂(g) → 4XY₃(g)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Used: 2 X₂ (3 before, 1 after) and 6 Y₂, making 4 XY₃. The ratio 2 : 6 : 4 reduces to 1 : 3 : 2.",
+    "options": [
+     "Right: the reacting ratio in smallest whole numbers.",
+     "Includes the leftover X₂ on both sides; leave unreacted particles out of the equation.",
+     "The elements are drawn as two-atom molecules, X₂ and Y₂.",
+     "Balanced, and the right ratio, but every coefficient can be halved."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-representations-6",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reaction-representations-s2",
+   "q": "Which reactant limits the amount of XY₃ that forms?",
+   "options": [
+    "Y₂, because all six Y₂ molecules are used up",
+    "X₂, because there are fewer X₂ molecules than Y₂ molecules",
+    "X₂, because one X₂ molecule is left over",
+    "Neither, because the box contains equal numbers of X and Y atoms"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The limiting reactant is the one that runs out. No Y₂ remains, while one X₂ does; Y₂ ran out first.",
+    "options": [
+     "Right: Y₂ is used up, so it sets how much product forms.",
+     "Fewer particles does not mean limiting; each X₂ needs three Y₂, so X₂ goes further.",
+     "A leftover reactant is the one in excess, the opposite of limiting.",
+     "There are 6 X atoms and 12 Y atoms, which are not equal; in any case the ratio needed (1 : 3), not equality, decides."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-representations-7",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reaction-representations-s2",
+   "q": "A new box starts with 5 X₂ and 9 Y₂ molecules. How many XY₃ molecules can form?",
+   "numeric": {
+    "answer": 6,
+    "tol": 0,
+    "unit": "molecules",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 10,
+      "rel": 0.01,
+      "why": "Value: that is how many XY₃ the X₂ could make if Y₂ were plentiful. 9 Y₂ is not enough for 5 X₂ (that needs 15 Y₂), so Y₂ limits."
+     },
+     {
+      "value": 3,
+      "rel": 0.01,
+      "why": "Value: 9 Y₂ react with 3 X₂, but each X₂ gives two XY₃. Use the 3 : 2 ratio of Y₂ to XY₃."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For 5 X₂ you would need 15 Y₂; there are only 9, so Y₂ limits. 9 Y₂ × (2 XY₃ / 3 Y₂) = 6 XY₃. Check atoms: 6 XY₃ hold 6 X and 18 Y; 3 X₂ are used and 2 X₂ are left."
+   }
+  },
+  {
+   "id": "chem-reaction-representations-8",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reaction-representations-s2",
+   "q": "Which feature of a correct reaction particle diagram does the After box show?",
+   "options": [
+    "The same number of each kind of atom as the Before box",
+    "The same number of molecules as the Before box",
+    "One product particle for each reactant particle",
+    "Equal numbers of reactant and product molecules"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "There are 6 X and 12 Y atoms in each box. The molecules regroup (9 before, 5 after), so molecule counts need not match; atom counts must.",
+    "options": [
+     "Right: atoms are conserved, so each kind of atom is counted the same in both boxes.",
+     "There are 9 molecules before and 5 after; molecules are not conserved.",
+     "Particles do not pair off one-to-one; here 1 X₂ and 3 Y₂ make 2 XY₃, as the coefficients say.",
+     "The coefficients, not a rule of equality, set how many of each appear."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-representations-9",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Table salt is heated above its melting point, 801 °C, until it is completely melted. Which formula with a state symbol describes it?",
+   "options": [
+    "NaCl(l)",
+    "NaCl(aq)",
+    "NaCl(s)",
+    "NaCl(g)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Melted salt is a pure liquid, so (l). (aq) would mean dissolved in water, and there is no water here.",
+    "options": [
+     "Right: a melted pure substance is a liquid.",
+     "(aq) means dissolved in water; melted salt contains no water.",
+     "(s) is the salt before it melts.",
+     "Salt does not boil until far above its melting point; at this stage it is a liquid."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-representations-10",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In the equation 2H₂(g) + O₂(g) → 2H₂O(l), what does changing (l) to (g) for water describe?",
+   "options": [
+    "The same reaction, with the water formed as vapor rather than liquid",
+    "A different reaction that uses different reactants",
+    "A reaction that forms more molecules of water",
+    "Nothing; state symbols are just labels and change no meaning"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The state symbol tells how the product exists. The atoms and coefficients are unchanged; the water is gas instead of liquid, which matters later for energy.",
+    "options": [
+     "Right: same atoms and ratio; water as vapor.",
+     "The reactants are unchanged; only the state of the product differs.",
+     "The coefficients, not the state symbol, set how many molecules form.",
+     "State symbols carry meaning: liquid water and water vapor are different states of the same substance."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-representations-11",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student draws a particle diagram for 2Na(s) + Cl₂(g) → 2NaCl(s). Which drawing of the product is best?",
+   "options": [
+    "A packed, alternating array of Na⁺ and Cl⁻ ions",
+    "Separate NaCl molecules spread through the box",
+    "Na atoms and Cl atoms mixed at random, not touching",
+    "Na⁺ and Cl⁻ ions spread apart, each surrounded by water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "NaCl(s) is an ionic solid: a lattice of alternating cations and anions packed close together. There are no separate molecules.",
+    "options": [
+     "Right: an ionic solid is an extended array of alternating ions.",
+     "Ionic compounds do not form discrete molecules; the formula NaCl is a ratio of ions.",
+     "In the product the elements are ions held together, not separate neutral atoms.",
+     "That shows NaCl(aq); the equation says (s) and there is no water."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-representations-12",
+   "type": "numeric",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A box holds 6 N₂ and 12 H₂ molecules. They react by N₂ + 3H₂ → 2NH₃ until one reactant is used up. How many reactant molecules are left over?",
+   "numeric": {
+    "answer": 2,
+    "tol": 0,
+    "unit": "molecules",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 4,
+      "rel": 0.01,
+      "why": "Value: you used 4 N₂ instead of counting what is left. 12 H₂ react with 4 N₂, so 6 − 4 = 2 N₂ remain."
+     },
+     {
+      "value": 8,
+      "rel": 0.01,
+      "why": "Value: 8 is the number of NH₃ formed, not the leftover reactant."
+     }
+    ]
+   },
+   "why": {
+    "correct": "12 H₂ need 12 ÷ 3 = 4 N₂. There are 6 N₂, so H₂ runs out first and 6 − 4 = 2 N₂ molecules are left. 8 NH₃ form."
+   }
+  },
+  {
+   "id": "chem-reaction-representations-13",
+   "type": "multi",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student draws the reaction 2SO₂(g) + O₂(g) → 2SO₃(g). Before: 4 SO₂ and 2 O₂. After: 4 SO₃ and 1 O₂. Which errors does the drawing contain? Select all that apply.",
+   "options": [
+    "It has more oxygen atoms after than before",
+    "The After box should hold no O₂ at all, since the starting amounts match the 2 : 1 ratio",
+    "It shows the wrong number of SO₃ molecules",
+    "It shows sulfur atoms being created"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "4 SO₂ + 2 O₂ = 4 S and 12 O before. 4 SO₃ + 1 O₂ = 4 S and 14 O after: two oxygen atoms appeared. 4 SO₂ and 2 O₂ are in the exact 2 : 1 ratio, so both should be used up, giving 4 SO₃ and nothing else.",
+    "options": [
+     "Right: 12 O atoms before, 14 after.",
+     "Right: the reactants are in the exact ratio, so no O₂ should remain.",
+     "4 SO₂ make 4 SO₃, which is the right number.",
+     "There are 4 S atoms in each box."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-representations-14",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A diagram shows 6 molecules of AB₂ before a reaction and, after it, 6 molecules of AB plus 3 molecules of B₂. Which equation fits?",
+   "options": [
+    "2AB₂ → 2AB + B₂",
+    "AB₂ → AB + B",
+    "6AB₂ → 6AB + 3B₂ + AB₂",
+    "AB₂ → A + B₂"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ratio 6 : 6 : 3 reduces to 2 : 2 : 1. Check: 2 A and 4 B on each side.",
+    "options": [
+     "Right: the counts reduce to 2 : 2 : 1 and atoms balance.",
+     "The diagram shows B leaving as B₂ molecules, not single atoms.",
+     "Adds a molecule that is not in the diagram and keeps the large counts.",
+     "The diagram shows AB molecules, not separate A atoms, as a product."
+    ]
+   }
+  },
+  {
+   "id": "chem-reaction-representations-15",
+   "type": "single",
+   "unit": "unit-4",
+   "topic": "reaction-representations",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A sealed box holds 3 CH₄ and 4 O₂ molecules. They react by CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g) until one reactant runs out. Which list gives the contents of the box afterward?",
+   "options": [
+    "1 CH₄, 2 CO₂ and 4 H₂O",
+    "3 CO₂ and 6 H₂O",
+    "2 CO₂, 4 H₂O and 1 O₂",
+    "1 CH₄, 2 CO₂ and 2 H₂O"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Three CH₄ would need 6 O₂; there are only 4, so O₂ is limiting. 4 O₂ react with 2 CH₄ and make 2 CO₂ and 4 H₂O; 1 CH₄ is left. Atom check: 3 C, 12 H and 8 O in both lists.",
+    "options": [
+     "Right: O₂ runs out, leaving one CH₄; atoms balance.",
+     "Uses all the CH₄ as if O₂ were plentiful; that would need 6 O₂ and creates oxygen atoms.",
+     "Treats CH₄ as limiting, but 4 O₂ are not enough for 3 CH₄; this list also has too few carbon atoms.",
+     "Forgets the coefficient 2 on water: each CH₄ gives two H₂O, so hydrogen atoms go missing."
+    ]
+   }
+  }
+ ]
+}

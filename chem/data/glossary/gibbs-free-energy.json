@@ -1,0 +1,8 @@
+{
+ "gibbs": {
+  "def": "Gibbs free energy, G; its change ΔG = ΔH − TΔS combines enthalpy and entropy into one test of whether a process is favored. ΔG° is the value under standard conditions."
+ },
+ "favorability": {
+  "def": "A process is thermodynamically favored when ΔG < 0: it can proceed on its own, without a continuous input of energy, though possibly very slowly."
+ }
+}

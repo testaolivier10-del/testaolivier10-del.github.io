@@ -1,0 +1,12 @@
+{
+ "net-reaction-arrows": {
+  "file": "figures/net-reaction-arrows.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 260,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three panels, each with a forward arrow pointing right and a reverse arrow pointing left; arrow length shows rate. Net forward: the forward arrow is long and the reverse arrow short, so reactants turn into products overall. At equilibrium: the two arrows are the same length, so there is no net change. Net reverse: the reverse arrow is long and the forward arrow short, so products turn into reactants overall."
+ }
+}

@@ -1,0 +1,765 @@
+{
+ "stimuli": {
+  "kinetic-molecular-theory-s1": {
+   "kind": "graph",
+   "title": "Speeds of three gases",
+   "text": "<p>Speed distributions for three gas samples, X, Y and Z. Two are at 300 K; one is at a different temperature. Samples X and Z are the same gas.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Molecular speed",
+     "unit": "m/s",
+     "min": 0,
+     "max": 2000,
+     "step": 400
+    },
+    "y": {
+     "label": "Fraction of molecules",
+     "unit": "per 1,000 m/s",
+     "min": 0
+    },
+    "series": [
+     {
+      "name": "X: O₂ at 300 K",
+      "points": [
+       [
+        0,
+        0.0
+       ],
+       [
+        100,
+        0.344
+       ],
+       [
+        200,
+        1.135
+       ],
+       [
+        300,
+        1.853
+       ],
+       [
+        400,
+        2.102
+       ],
+       [
+        500,
+        1.844
+       ],
+       [
+        600,
+        1.311
+       ],
+       [
+        700,
+        0.775
+       ],
+       [
+        800,
+        0.387
+       ],
+       [
+        900,
+        0.164
+       ],
+       [
+        1000,
+        0.06
+       ],
+       [
+        1100,
+        0.019
+       ],
+       [
+        1200,
+        0.005
+       ],
+       [
+        1300,
+        0.001
+       ],
+       [
+        1400,
+        0.0
+       ],
+       [
+        1500,
+        0.0
+       ],
+       [
+        1600,
+        0.0
+       ],
+       [
+        1700,
+        0.0
+       ],
+       [
+        1800,
+        0.0
+       ],
+       [
+        1900,
+        0.0
+       ],
+       [
+        2000,
+        0.0
+       ]
+      ]
+     },
+     {
+      "name": "Y: He at 300 K",
+      "points": [
+       [
+        0,
+        0.0
+       ],
+       [
+        100,
+        0.016
+       ],
+       [
+        200,
+        0.063
+       ],
+       [
+        300,
+        0.136
+       ],
+       [
+        400,
+        0.228
+       ],
+       [
+        500,
+        0.332
+       ],
+       [
+        600,
+        0.437
+       ],
+       [
+        700,
+        0.536
+       ],
+       [
+        800,
+        0.621
+       ],
+       [
+        900,
+        0.686
+       ],
+       [
+        1000,
+        0.727
+       ],
+       [
+        1100,
+        0.743
+       ],
+       [
+        1200,
+        0.736
+       ],
+       [
+        1300,
+        0.706
+       ],
+       [
+        1400,
+        0.66
+       ],
+       [
+        1500,
+        0.6
+       ],
+       [
+        1600,
+        0.532
+       ],
+       [
+        1700,
+        0.461
+       ],
+       [
+        1800,
+        0.39
+       ],
+       [
+        1900,
+        0.323
+       ],
+       [
+        2000,
+        0.262
+       ]
+      ]
+     },
+     {
+      "name": "Z: O₂ at another temperature",
+      "points": [
+       [
+        0,
+        0.0
+       ],
+       [
+        100,
+        0.069
+       ],
+       [
+        200,
+        0.259
+       ],
+       [
+        300,
+        0.524
+       ],
+       [
+        400,
+        0.802
+       ],
+       [
+        500,
+        1.034
+       ],
+       [
+        600,
+        1.176
+       ],
+       [
+        700,
+        1.213
+       ],
+       [
+        800,
+        1.149
+       ],
+       [
+        900,
+        1.011
+       ],
+       [
+        1000,
+        0.832
+       ],
+       [
+        1100,
+        0.642
+       ],
+       [
+        1200,
+        0.467
+       ],
+       [
+        1300,
+        0.321
+       ],
+       [
+        1400,
+        0.209
+       ],
+       [
+        1500,
+        0.129
+       ],
+       [
+        1600,
+        0.076
+       ],
+       [
+        1700,
+        0.042
+       ],
+       [
+        1800,
+        0.022
+       ],
+       [
+        1900,
+        0.011
+       ],
+       [
+        2000,
+        0.005
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "kinetic-molecular-theory-s2": {
+   "kind": "particle",
+   "title": "Two gas samples",
+   "html": "<svg viewBox=\"0 0 330 160\" width=\"330\" height=\"160\" role=\"img\" aria-label=\"Two boxes of equal size. Box 1 holds six gas particles, each with a short arrow showing slow motion. Box 2 holds six of the same particles, each with a long arrow showing fast motion.\"><defs><marker id=\"kar\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"5\" markerHeight=\"5\" orient=\"auto\"><path d=\"M0,0 L10,5 L0,10 Z\" fill=\"#1F2A28\"/></marker></defs><rect x=\"6\" y=\"6\" width=\"154\" height=\"144\" rx=\"6\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"83\" y=\"158\" font-size=\"12\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">1</text><line x1=\"39.0\" y1=\"30.0\" x2=\"49.0\" y2=\"30.0\" stroke=\"#1F2A28\" stroke-width=\"2\" marker-end=\"url(#kar)\"/><circle cx=\"31\" cy=\"30\" r=\"7\" fill=\"#009E73\"/><line x1=\"111.0\" y1=\"36.0\" x2=\"111.0\" y2=\"46.0\" stroke=\"#1F2A28\" stroke-width=\"2\" marker-end=\"url(#kar)\"/><circle cx=\"111\" cy=\"28\" r=\"7\" fill=\"#009E73\"/><line x1=\"36.0\" y1=\"83.0\" x2=\"36.0\" y2=\"93.0\" stroke=\"#1F2A28\" stroke-width=\"2\" marker-end=\"url(#kar)\"/><circle cx=\"36\" cy=\"75\" r=\"7\" fill=\"#009E73\"/><line x1=\"108.0\" y1=\"80.0\" x2=\"98.0\" y2=\"80.0\" stroke=\"#1F2A28\" stroke-width=\"2\" marker-end=\"url(#kar)\"/><circle cx=\"116\" cy=\"80\" r=\"7\" fill=\"#009E73\"/><line x1=\"39.0\" y1=\"125.0\" x2=\"49.0\" y2=\"125.0\" stroke=\"#1F2A28\" stroke-width=\"2\" marker-end=\"url(#kar)\"/><circle cx=\"31\" cy=\"125\" r=\"7\" fill=\"#009E73\"/><line x1=\"126.0\" y1=\"117.0\" x2=\"126.0\" y2=\"107.0\" stroke=\"#1F2A28\" stroke-width=\"2\" marker-end=\"url(#kar)\"/><circle cx=\"126\" cy=\"125\" r=\"7\" fill=\"#009E73\"/><rect x=\"168\" y=\"6\" width=\"154\" height=\"144\" rx=\"6\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"245\" y=\"158\" font-size=\"12\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">2</text><line x1=\"201.0\" y1=\"30.0\" x2=\"227.0\" y2=\"30.0\" stroke=\"#1F2A28\" stroke-width=\"2\" marker-end=\"url(#kar)\"/><circle cx=\"193\" cy=\"30\" r=\"7\" fill=\"#009E73\"/><line x1=\"273.0\" y1=\"36.0\" x2=\"273.0\" y2=\"62.0\" stroke=\"#1F2A28\" stroke-width=\"2\" marker-end=\"url(#kar)\"/><circle cx=\"273\" cy=\"28\" r=\"7\" fill=\"#009E73\"/><line x1=\"198.0\" y1=\"83.0\" x2=\"198.0\" y2=\"109.0\" stroke=\"#1F2A28\" stroke-width=\"2\" marker-end=\"url(#kar)\"/><circle cx=\"198\" cy=\"75\" r=\"7\" fill=\"#009E73\"/><line x1=\"270.0\" y1=\"80.0\" x2=\"244.0\" y2=\"80.0\" stroke=\"#1F2A28\" stroke-width=\"2\" marker-end=\"url(#kar)\"/><circle cx=\"278\" cy=\"80\" r=\"7\" fill=\"#009E73\"/><line x1=\"201.0\" y1=\"125.0\" x2=\"227.0\" y2=\"125.0\" stroke=\"#1F2A28\" stroke-width=\"2\" marker-end=\"url(#kar)\"/><circle cx=\"193\" cy=\"125\" r=\"7\" fill=\"#009E73\"/><line x1=\"288.0\" y1=\"117.0\" x2=\"288.0\" y2=\"91.0\" stroke=\"#1F2A28\" stroke-width=\"2\" marker-end=\"url(#kar)\"/><circle cx=\"288\" cy=\"125\" r=\"7\" fill=\"#009E73\"/></svg><p>Key: green circle, one gas particle (same gas in both boxes); arrow length, the particle's speed.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-kinetic-molecular-theory-1",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "kinetic-molecular-theory-s1",
+   "q": "Compared with sample X, what does sample Z's curve show about its temperature?",
+   "options": [
+    "It is higher, because the peak is at a higher speed and the curve is flatter.",
+    "It is lower, because the peak of the curve is lower and the curve is flatter.",
+    "It is the same, because X and Z are samples of the same gas.",
+    "It is unknowable, because the two curves cover different total areas."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Same gas, so a faster, wider distribution means a higher average kinetic energy and a higher temperature. Z's peak is near 684 m/s, against 395 m/s for X.",
+    "options": [
+     "Right: the same gas moving faster is hotter.",
+     "A lower peak means the speeds are spread out, not that the gas is colder; the peak moved right.",
+     "Being the same gas does not fix the temperature; the curves differ, so the temperatures do.",
+     "Both curves enclose the same area, which stands for all the molecules."
+    ]
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-2",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "kinetic-molecular-theory-s1",
+   "q": "Samples X and Y are both at 300 K. Which statement about their particles is correct?",
+   "options": [
+    "They have the same average kinetic energy, but He atoms move faster on average.",
+    "He atoms have the greater average kinetic energy, because they move faster.",
+    "O₂ molecules have the greater average kinetic energy, because they are heavier.",
+    "They have the same average speed, because they are at the same temperature."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Average kinetic energy depends only on kelvin temperature, so X and Y match. With the same ½mv², the lighter He atoms must move faster.",
+    "options": [
+     "Right: same temperature, same average KE; lighter means faster.",
+     "Faster He atoms are lighter, so their kinetic energy is the same as that of O₂.",
+     "Heavier O₂ molecules move more slowly, so their kinetic energy is the same.",
+     "Temperature sets the average kinetic energy, not the average speed."
+    ]
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-3",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "kinetic-molecular-theory-s1",
+   "q": "By what factor is the average speed of the He atoms (4.003 g/mol) greater than that of the O₂ molecules (32.00 g/mol) at 300 K?",
+   "numeric": {
+    "answer": 2.83,
+    "tol": 0.01,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 7.994,
+      "rel": 0.02,
+      "why": "Value: you used the mass ratio without the square root. Kinetic energy depends on v², so the speeds differ by the square root of the mass ratio."
+     },
+     {
+      "value": 0.3537,
+      "rel": 0.02,
+      "why": "Value: you inverted the ratio. The lighter atom moves faster, so the factor is above 1."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Equal average kinetic energies: ½m(He)v(He)² = ½m(O₂)v(O₂)². So v(He)/v(O₂) = √(32.00/4.003) = √7.994 = 2.8274, which is 2.83."
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-4",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "kinetic-molecular-theory-s1",
+   "q": "Why are the areas under the three curves equal?",
+   "options": [
+    "Each curve accounts for all the molecules in its sample, so each totals 100%.",
+    "The three gases share one molar mass, so they have the same total speed.",
+    "Each sample is at the same pressure, so the same energy is under each curve.",
+    "The areas are equal because each gas has the same average speed."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The vertical axis is the fraction of molecules at each speed. Adding up the fractions over every speed gives the whole sample, 1 (or 100%), whatever the gas or temperature.",
+    "options": [
+     "Right: the total fraction is 1.",
+     "He (4.003 g/mol) and O₂ (32.00 g/mol) have very different molar masses.",
+     "The curves show speeds, not energy, and no pressure is given.",
+     "The curves peak at different speeds, so the average speeds differ."
+    ]
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-5",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "kinetic-molecular-theory-s1",
+   "q": "Sample X is warmed from 300 K to 400 K. Which change in its curve would you expect?",
+   "options": [
+    "The peak shifts to a higher speed and becomes lower; the curve spreads out.",
+    "The peak shifts to a lower speed and becomes taller; the curve narrows.",
+    "The curve keeps its shape but becomes taller everywhere, as more energy is added.",
+    "The curve does not change, because the gas is still O₂."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Higher temperature means higher average kinetic energy, so the speeds shift up and spread out. The area must stay the same, so the curve gets lower as it widens.",
+    "options": [
+     "Right: faster and broader, same area.",
+     "That is the change on cooling.",
+     "A curve taller everywhere would enclose more area, but the fractions of the same sample must still add up to 1.",
+     "The identity of the gas does not fix the speeds; temperature changes them."
+    ]
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-6",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "kinetic-molecular-theory-s2",
+   "q": "The two boxes have the same volume. Which box is at the higher temperature?",
+   "options": [
+    "Box 1",
+    "Box 2",
+    "They are at the same temperature",
+    "The pressure is needed to decide"
+   ],
+   "correct": 1,
+   "fixed": true,
+   "why": {
+    "correct": "Same gas, same number of particles. Longer arrows mean faster particles, a higher average kinetic energy, and so a higher temperature.",
+    "options": [
+     "Box 1's particles are slower, so it is cooler.",
+     "Right: faster particles of the same gas mean a higher temperature.",
+     "The arrows differ in length, so the average kinetic energies differ.",
+     "The particle speeds alone show the temperature for the same gas."
+    ]
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-7",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "kinetic-molecular-theory-s2",
+   "q": "Which box has the higher pressure, and why?",
+   "options": [
+    "Box 2, because its faster particles hit the walls more often and with more force.",
+    "Box 1, because its slower particles spend more time pressing against the walls.",
+    "Neither, because both boxes hold the same number of particles in the same volume.",
+    "Box 2, because its particles are larger and take up more of the space in the box."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With n and V the same, P rises with T. At the particle level, faster particles collide with the walls more frequently and push harder in each collision.",
+    "options": [
+     "Right: more frequent and harder collisions.",
+     "Pressure comes from collisions; slower particles hit less often and less hard.",
+     "Same n and V, but different T, so the pressure differs.",
+     "The particles are the same gas and the same size in both boxes."
+    ]
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-8",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "kinetic-molecular-theory-s2",
+   "q": "Box 1 is heated until its particles match those in box 2. Which assumption of the kinetic molecular theory connects the change in speed to the change in temperature?",
+   "options": [
+    "The average kinetic energy of the particles is proportional to the kelvin temperature.",
+    "The particles take up negligible volume compared with the volume of the container.",
+    "The particles do not attract or repel each other except during collisions.",
+    "Collisions between the particles and the walls are elastic, so no energy is lost."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "This assumption ties particle motion to temperature: raising the kelvin temperature raises the average kinetic energy, so the particles speed up.",
+    "options": [
+     "Right: temperature measures average kinetic energy.",
+     "True of an ideal gas, but it says nothing about speed and temperature.",
+     "True of an ideal gas, but it explains why partial pressures add, not why heating speeds particles up.",
+     "Elastic collisions keep the total energy constant; they do not link energy to temperature."
+    ]
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-9",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "kinetic-molecular-theory-s2",
+   "q": "Box 2 is now squeezed to half its volume at constant temperature. What happens to the average speed of its particles, and to the pressure?",
+   "options": [
+    "The average speed is unchanged and the pressure doubles.",
+    "The average speed doubles and the pressure doubles.",
+    "The average speed is unchanged and the pressure is unchanged.",
+    "The average speed halves and the pressure doubles."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Constant temperature means constant average kinetic energy, so the speeds are unchanged. In half the volume the particles reach the walls twice as often, so the pressure doubles (P ∝ 1/V).",
+    "options": [
+     "Right: speed follows temperature; pressure follows collision frequency.",
+     "Squeezing at constant temperature does not change the speeds.",
+     "The particles hit the walls more often in less volume, so the pressure rises.",
+     "Temperature, not volume, sets the average speed."
+    ]
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-10",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which is an assumption of the kinetic molecular theory for an ideal gas?",
+   "options": [
+    "Gas particles do not attract or repel each other.",
+    "Gas particles lose energy in each collision with a wall.",
+    "Gas particles take up most of the volume of the container.",
+    "Gas particles move at one shared speed at a given temperature."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The model treats particles as point-like, with no attractions, elastic collisions, and a spread of speeds whose average kinetic energy follows temperature.",
+    "options": [
+     "Right: point-like particles with no attractions.",
+     "Collisions are elastic in the model; no energy is lost overall.",
+     "Particle volume is negligible compared with the container.",
+     "Particles have a spread of speeds, described by the Maxwell-Boltzmann distribution."
+    ]
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-11",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A sealed, rigid can of gas is heated. Which particle-level explanation accounts for the rise in pressure?",
+   "options": [
+    "The particles move faster, so they hit the walls more often and harder.",
+    "The particles expand as they warm, so they push harder on the walls.",
+    "More particles form as the heat breaks the gas into smaller pieces.",
+    "The particles attract the walls more strongly at a higher temperature."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Heating raises the average kinetic energy. Faster particles collide with the walls more often and transfer more momentum per collision.",
+    "options": [
+     "Right: faster particles, more and harder collisions.",
+     "Particles do not grow when heated; the space between them is what can change.",
+     "The number of gas particles is fixed in a sealed can of a stable gas.",
+     "Ideal gas particles do not attract each other or the walls."
+    ]
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-12",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "At 25 °C, by what factor is the average speed of H₂ (2.016 g/mol) greater than that of CO₂ (44.01 g/mol)?",
+   "numeric": {
+    "answer": 4.67,
+    "tol": 0.01,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 21.83,
+      "rel": 0.02,
+      "why": "Value: you used the mass ratio itself. Speeds go as the square root of the mass ratio, because KE = ½mv²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Equal kinetic energies at the same temperature give v(H₂)/v(CO₂) = √(44.01/2.016) = √21.83 = 4.6723, which is 4.67."
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-13",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A gas is heated from 27 °C to 177 °C. By what factor does the average kinetic energy of its particles increase?",
+   "numeric": {
+    "answer": 1.5,
+    "tol": 0.01,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 6.556,
+      "rel": 0.02,
+      "why": "Value: you divided the Celsius temperatures. Kinetic energy is proportional to kelvin temperature: 450.15 K / 300.15 K."
+     },
+     {
+      "value": 1.225,
+      "rel": 0.02,
+      "why": "Value: that is the factor for the speed. Kinetic energy itself is proportional to T, so the factor is 450.15/300.15."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Average kinetic energy is proportional to kelvin temperature: (177 + 273.15) K / (27 + 273.15) K = 450.15 / 300.15 = 1.4998, a factor of 1.50. (The average speed rises by only √1.50 = 1.22.)"
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-14",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says: \"When a gas is heated from 10 °C to 20 °C, the average kinetic energy of its particles doubles.\" What is wrong?",
+   "options": [
+    "Kinetic energy is proportional to kelvin temperature, and 283 K to 293 K is a rise of only about 3.5%.",
+    "Heating a gas leaves the kinetic energy unchanged; it increases the potential energy of the particles.",
+    "The kinetic energy is halved, because hotter particles spread out and collide with each other less.",
+    "The statement is correct, because 20 is twice 10, so the energy doubles as the temperature doubles."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The proportionality is to the kelvin temperature. 10 °C = 283.15 K and 20 °C = 293.15 K; 293.15/283.15 = 1.035, so the average kinetic energy rises by 3.5%.",
+    "options": [
+     "Right: use kelvin for every proportion.",
+     "Heating a gas speeds up its particles, so the kinetic energy does rise.",
+     "Hotter particles move faster, so their kinetic energy rises.",
+     "Celsius is not an absolute scale; the ratio 20/10 has no physical meaning here."
+    ]
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-15",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which changes shift a gas's Maxwell-Boltzmann speed distribution toward higher speeds? Select all that apply.",
+   "options": [
+    "Raising the temperature",
+    "Replacing the gas with a lighter gas at the same temperature",
+    "Adding more of the same gas at the same temperature",
+    "Compressing the gas at constant temperature"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Speeds rise with kinetic energy (temperature) and with lower particle mass. The amount of gas and the volume change how often particles collide, not how fast they move.",
+    "options": [
+     "Right: higher average kinetic energy.",
+     "Right: same kinetic energy, lighter particles, faster speeds.",
+     "More particles do not change the fraction at each speed; speeds depend only on temperature and particle mass.",
+     "Speed depends on temperature, which is constant here."
+    ]
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-16",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Containers of He and of Ar have the same volume, temperature and number of atoms. Ar atoms are about ten times heavier and hit the walls harder. Why are the two pressures nonetheless equal?",
+   "options": [
+    "The lighter He atoms move faster, so they hit the walls more often, which makes up for each hit being gentler.",
+    "The heavier Ar atoms move faster, so they hit the walls both more often and harder than the He atoms do.",
+    "The pressures differ in fact, because heavier particles push harder on the walls of a container.",
+    "He atoms attract the walls more strongly than Ar atoms, which adds to the force of each collision."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At the same temperature the average kinetic energies match. Lighter He atoms move faster: each hit transfers less momentum, but there are more hits per second, and the two effects cancel, as PV = nRT says (P depends on n, V and T only).",
+    "options": [
+     "Right: frequency and force of collisions trade off.",
+     "Heavier atoms move more slowly at the same temperature, not faster.",
+     "PV = nRT has no molar mass in it: equal n, V and T give equal pressure for any ideal gas.",
+     "Ideal gas particles do not attract the walls; pressure comes from collisions alone."
+    ]
+   }
+  },
+  {
+   "id": "chem-kinetic-molecular-theory-17",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "kinetic-molecular-theory",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement about a Maxwell-Boltzmann distribution is correct?",
+   "options": [
+    "A few particles move much faster than the most probable speed, giving the curve a long tail.",
+    "Each particle in the sample moves at the speed marked by the peak of the curve.",
+    "The curve is symmetric, so as many particles are faster than the peak speed as slower.",
+    "Raising the temperature makes the peak taller, because more particles move at one speed."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Collisions give a spread of speeds. The curve rises from zero, peaks at the most probable speed, then falls slowly through a long high-speed tail.",
+    "options": [
+     "Right: the high-speed tail is a key feature.",
+     "The peak marks the most common speed; many particles are faster or slower.",
+     "The tail on the high-speed side makes the curve lopsided, not symmetric.",
+     "Heating spreads the speeds out, so the peak gets lower, not taller."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "topic": "stoichiometry",
+ "hook": "A pharmaceutical plant mixes tonnes of starting materials to make a medicine. Order too little of one and the batch stops short; order too much and money is wasted. Every one of those orders comes from the same short calculation: grams to moles, moles to moles with the equation, and moles back to grams.",
+ "prereq": [
+  {
+   "q": "How many moles are in 9.01 g of water (18.02 g/mol)?",
+   "options": [
+    "0.500 mol",
+    "162 mol",
+    "2.00 mol",
+    "0.0500 mol"
+   ],
+   "correct": 0,
+   "why": "9.01 g ÷ 18.02 g/mol = 0.500 mol.",
+   "review": "moles-molar-mass"
+  },
+  {
+   "q": "How many moles of solute are in 0.0250 L of 0.200 M solution?",
+   "options": [
+    "0.00500 mol",
+    "8.00 mol",
+    "0.125 mol",
+    "0.200 mol"
+   ],
+   "correct": 0,
+   "why": "Moles = M × V = 0.200 mol/L × 0.0250 L = 0.00500 mol.",
+   "review": "solutions"
+  },
+  {
+   "q": "A Before box has 3 X₂ and 6 Y₂; they react by X₂ + 3Y₂ → 2XY₃. What is left over?",
+   "options": [
+    "1 X₂",
+    "3 Y₂",
+    "Nothing",
+    "2 X₂"
+   ],
+   "correct": 0,
+   "why": "6 Y₂ use 2 X₂, so 1 X₂ is left in excess.",
+   "review": "reaction-representations"
+  }
+ ],
+ "figure": {
+  "figure": "stoich-roadmap",
+  "caption": "The stoichiometry road map. Coefficients relate moles, so every route between two substances passes through moles: grams or liters of solution in, mole ratio, then out again."
+ },
+ "chain": [
+  {
+   "cause": "Coefficients count particles, and so moles",
+   "effect": "a mole ratio from the equation converts moles of one substance into moles of another"
+  },
+  {
+   "cause": "Balances measure grams and glassware measures volumes",
+   "effect": "you convert to moles first with molar mass or molarity"
+  },
+  {
+   "cause": "One reactant runs out first",
+   "effect": "it alone sets the theoretical yield; the other is left in excess"
+  },
+  {
+   "cause": "Real products are lost, wet or impure",
+   "effect": "actual yield differs from theoretical, measured as percent yield"
+  }
+ ],
+ "ideas": [
+  "<b>Stoichiometry</b>: grams → moles (÷ molar mass) → <b>mole ratio</b> from coefficients → moles → grams (× molar mass).",
+  "For a solution, moles = molarity × volume in liters.",
+  "Limiting reactant: find how much product <i>each</i> reactant could make; the smaller amount wins. Never compare grams.",
+  "<b>Percent yield</b> = actual ÷ theoretical × 100. <b>Gravimetric analysis</b> weighs a dried precipitate to find how much of an ion was present."
+ ],
+ "misconception": {
+  "wrong": "The reactant with the smaller mass, or the smaller number of moles, is the limiting reactant.",
+  "right": "The limiting reactant is the one that makes less product. Convert each reactant to moles and use the mole ratio: a reactant with more moles can still run out first if the equation needs more of it."
+ },
+ "check": [
+  "chem-stoichiometry-5",
+  "chem-stoichiometry-6",
+  "chem-stoichiometry-7",
+  "chem-stoichiometry-8",
+  "chem-stoichiometry-14",
+  "chem-stoichiometry-15"
+ ],
+ "summary": "Coefficients relate moles, so every stoichiometry problem converts to moles, uses a mole ratio from the balanced equation, and converts back. The limiting reactant is the one that makes the least product; it sets the theoretical yield, and percent yield compares what was collected with that maximum.",
+ "connections": [
+  {
+   "href": "../notes/moles-molar-mass.html",
+   "label": "Back: moles and molar mass (1.1)"
+  },
+  {
+   "href": "../notes/reaction-representations.html",
+   "label": "Back: limiting reactant as particles (4.3)"
+  },
+  {
+   "href": "../notes/titration-intro.html",
+   "label": "Next: finding a concentration by reaction (4.6)"
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 350" width="760" height="350" role="img" aria-labelledby="balanced-equation-anatomy-t balanced-equation-anatomy-d">
+<title id="balanced-equation-anatomy-t">The parts of a balanced equation</title>
+<desc id="balanced-equation-anatomy-d">The equation N₂(g) + 3H₂(g) → 2NH₃(g). Labels point to the coefficients 3 and 2 (how many particles or moles; change these to balance), to a subscript (never change it) and to a formula (it names the substance). Reactants are on the left and the product on the right. The atom count is 2 N and 6 H on each side, so mass is conserved.</desc>
+<rect width="760" height="350" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<text x="380" y="34" font-size="18" font-weight="700" text-anchor="middle" fill="#1F2A28">Reading a balanced equation</text>
+<text x="150" y="120" font-size="34" font-weight="700" text-anchor="middle" fill="#1F2A28">N₂(g)</text>
+<text x="240" y="120" font-size="34" text-anchor="middle" fill="#1F2A28">+</text>
+<text x="305" y="120" font-size="34" font-weight="700" text-anchor="middle" fill="#1D44A6">3</text>
+<text x="370" y="120" font-size="34" font-weight="700" text-anchor="middle" fill="#1F2A28">H₂(g)</text>
+<text x="460" y="120" font-size="34" text-anchor="middle" fill="#1F2A28">→</text>
+<text x="525" y="120" font-size="34" font-weight="700" text-anchor="middle" fill="#1D44A6">2</text>
+<text x="600" y="120" font-size="34" font-weight="700" text-anchor="middle" fill="#1F2A28">NH₃(g)</text>
+<line x1="305" y1="160" x2="305" y2="132" stroke="#1F2A28" stroke-width="2"/><path d="M309.3,141.0 L305,132 L300.7,141.0 Z" fill="#1F2A28"/>
+<line x1="525" y1="160" x2="525" y2="132" stroke="#1F2A28" stroke-width="2"/><path d="M529.3,141.0 L525,132 L520.7,141.0 Z" fill="#1F2A28"/>
+<rect x="220" y="162" width="390" height="52" rx="10" fill="#E3EAFA" stroke="#1D44A6" stroke-width="2"/>
+<text x="415" y="184" font-size="14" font-weight="700" text-anchor="middle" fill="#1F2A28">Coefficients: how many particles (or moles).</text>
+<text x="415" y="204" font-size="14" text-anchor="middle" fill="#1F2A28">Change these to balance.</text>
+<line x1="620" y1="60" x2="618" y2="96" stroke="#1F2A28" stroke-width="2"/><path d="M614.2,86.8 L618,96 L622.8,87.3 Z" fill="#1F2A28"/>
+<rect x="560" y="26" width="190" height="40" rx="10" fill="#FCE9DC" stroke="#D55E00" stroke-width="2"/>
+<text x="655" y="51" font-size="13" font-weight="700" text-anchor="middle" fill="#1F2A28">Subscript: never change</text>
+<line x1="120" y1="60" x2="145" y2="92" stroke="#1F2A28" stroke-width="2"/><path d="M136.0,87.6 L145,92 L142.9,82.2 Z" fill="#1F2A28"/>
+<rect x="20" y="26" width="180" height="40" rx="10" fill="#FCE9DC" stroke="#D55E00" stroke-width="2"/>
+<text x="110" y="51" font-size="13" font-weight="700" text-anchor="middle" fill="#1F2A28">Formula = the substance</text>
+<text x="150" y="262" font-size="15" font-weight="700" text-anchor="middle" fill="#1F2A28">Reactants</text>
+<text x="600" y="262" font-size="15" font-weight="700" text-anchor="middle" fill="#1F2A28">Product</text>
+<text x="380" y="300" font-size="14" text-anchor="middle" fill="#1F2A28">Atom count, left: 2 N, 3 × 2 = 6 H   |   right: 2 × 1 = 2 N, 2 × 3 = 6 H</text>
+<text x="380" y="326" font-size="14" font-weight="700" text-anchor="middle" fill="#1D44A6">Equal counts on both sides, so mass is conserved.</text>
+</g>
+</svg>

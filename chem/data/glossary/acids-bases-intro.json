@@ -1,0 +1,11 @@
+{
+ "kw": {
+  "def": "The ion product of water, Kw = [H₃O⁺][OH⁻]. It equals 1.0 × 10⁻¹⁴ at 25 °C and rises with temperature, because water's self-ionization, 2 H₂O ⇌ H₃O⁺ + OH⁻, absorbs heat."
+ },
+ "ph": {
+  "def": "pH = −log[H₃O⁺], a base-10 logarithm scale of hydronium concentration; pOH = −log[OH⁻]. At 25 °C, pH + pOH = 14.00. One pH unit is a factor of ten in [H₃O⁺]."
+ },
+ "acidic-basic": {
+  "def": "A solution is acidic when [H₃O⁺] > [OH⁻], basic when [OH⁻] > [H₃O⁺], and neutral when they are equal. Neutral is pH 7.00 only at 25 °C."
+ }
+}

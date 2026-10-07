@@ -1,0 +1,35 @@
+{
+ "coulombs-law": {
+  "def": "The force between two charges is proportional to the product of the charges divided by the square of the distance between them (F ∝ q₁q₂/r²): opposite charges attract, like charges repel."
+ },
+ "potential-energy": {
+  "def": "Stored energy due to position. For two opposite charges it is lower (more negative) the larger the charges and the closer they are, so separating them takes energy."
+ },
+ "electron-shell": {
+  "def": "A main energy level of electrons in an atom, numbered n = 1, 2, 3…; higher shells are on average farther from the nucleus."
+ },
+ "subshell": {
+  "def": "A part of an electron shell with its own energy, labeled s, p or d, holding at most 2, 6 or 10 electrons."
+ },
+ "orbital": {
+  "def": "A region around the nucleus where an electron is likely to be found; each holds at most two electrons. An s subshell has 1 orbital, p has 3 and d has 5."
+ },
+ "aufbau": {
+  "def": "The rule that electrons fill the lowest-energy open subshell first: 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, and so on."
+ },
+ "electron-configuration": {
+  "def": "A list of an atom's occupied subshells with the number of electrons in each, such as 1s² 2s² 2p⁶ 3s¹ for sodium, or [Ne] 3s¹ in noble gas notation."
+ },
+ "valence-electron": {
+  "def": "An electron in the outermost occupied shell of an atom; valence electrons take part in chemical reactions."
+ },
+ "core-electron": {
+  "def": "An electron in an inner, filled shell of an atom, closer to the nucleus than the valence electrons."
+ },
+ "shielding": {
+  "def": "The way inner electrons partly cancel the nucleus's pull on outer electrons by repelling them, so outer electrons feel less attraction."
+ },
+ "ionization-energy": {
+  "def": "The energy needed to remove an electron from an atom or ion in the gas phase; the first ionization energy removes the most loosely held electron."
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "water-heating-curve": {
+  "file": "figures/water-heating-curve.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Heating curve of water, temperature against energy added (not to scale): ice warms to 0 °C, a flat part while ice melts (q = n·ΔHfus), liquid warms to 100 °C (q = m·c·ΔT), a much longer flat part while water boils (q = n·ΔHvap), then steam warms. Ice and steam warm along steeper slopes than the liquid, since their specific heats are about half of liquid water's. On the flat parts the temperature is constant and the energy overcomes attractions between molecules."
+ }
+}

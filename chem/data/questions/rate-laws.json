@@ -1,0 +1,533 @@
+{
+ "stimuli": {
+  "rate-laws-s1": {
+   "kind": "table",
+   "title": "Initial rates for making nitrosyl chloride",
+   "text": "<p>Nitrogen monoxide and chlorine react at a fixed temperature:</p><p>2 NO(g) + Cl₂(g) → 2 NOCl(g)</p><p>Three trials start with different concentrations, and the initial rate of formation of NOCl is measured in each.</p>",
+   "table": {
+    "caption": "Initial concentrations and initial rates",
+    "cols": [
+     "Trial",
+     "[NO] (M)",
+     "[Cl₂] (M)",
+     "Initial rate (M/s)"
+    ],
+    "rows": [
+     [
+      "1",
+      "0.0100",
+      "0.0100",
+      "1.80 × 10⁻⁴"
+     ],
+     [
+      "2",
+      "0.0200",
+      "0.0100",
+      "7.20 × 10⁻⁴"
+     ],
+     [
+      "3",
+      "0.0100",
+      "0.0200",
+      "3.60 × 10⁻⁴"
+     ]
+    ]
+   }
+  },
+  "rate-laws-s2": {
+   "kind": "table",
+   "title": "A reaction that ignores one reactant",
+   "text": "<p>Two dissolved reactants, X and Y, react at 25 °C. Initial rates of disappearance of X are measured.</p>",
+   "table": {
+    "caption": "Initial concentrations and rates for X + Y → products",
+    "cols": [
+     "Trial",
+     "[X] (M)",
+     "[Y] (M)",
+     "Initial rate (M/s)"
+    ],
+    "rows": [
+     [
+      "1",
+      "0.15",
+      "0.15",
+      "2.4 × 10⁻⁵"
+     ],
+     [
+      "2",
+      "0.30",
+      "0.15",
+      "4.8 × 10⁻⁵"
+     ],
+     [
+      "3",
+      "0.15",
+      "0.45",
+      "2.4 × 10⁻⁵"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-rate-laws-1",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rate-laws-s1",
+   "q": "What is the order of the reaction with respect to NO?",
+   "options": [
+    "Zero order",
+    "First order",
+    "Second order",
+    "Third order"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Compare trials 1 and 2, where only [NO] changes: [NO] doubles and the rate goes from 1.80 × 10⁻⁴ to 7.20 × 10⁻⁴ M/s, a factor of 4. Since 2ᵐ = 4, m = 2.",
+    "options": [
+     "Zero order would leave the rate unchanged when [NO] changes.",
+     "First order would double the rate when [NO] doubles; here it quadruples.",
+     "Right: doubling [NO] multiplies the rate by 4 = 2².",
+     "Third order would multiply the rate by 2³ = 8."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-rate-laws-2",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "rate-laws-s1",
+   "q": "What is the order of the reaction with respect to Cl₂?",
+   "options": [
+    "Zero order",
+    "Half order",
+    "First order",
+    "Second order"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Compare trials 1 and 3, where only [Cl₂] changes: it doubles and the rate doubles (1.80 → 3.60 × 10⁻⁴ M/s). 2ⁿ = 2 gives n = 1.",
+    "options": [
+     "Zero order would leave the rate unchanged; it doubled.",
+     "Half order would multiply the rate by about 1.4, not 2.",
+     "Right: the rate changes by the same factor as [Cl₂].",
+     "Second order would quadruple the rate when [Cl₂] doubles."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-rate-laws-3",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rate-laws-s1",
+   "q": "Using trial 1, calculate the rate constant k. Include units.",
+   "numeric": {
+    "answer": 180,
+    "tol": 1,
+    "unit": "M^-2 s^-1",
+    "askUnit": true,
+    "units": [
+     "M^-2 s^-1",
+     "M-2 s-1",
+     "1/(M^2 s)",
+     "L^2/(mol^2 s)",
+     "L2 mol-2 s-1",
+     "M⁻² s⁻¹",
+     "L²/(mol²·s)"
+    ],
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 1.8,
+      "why": "Value: you used [NO] to the first power. The rate law is second order in NO, so square it: (0.0100 M)²."
+     },
+     {
+      "value": 90,
+      "why": "Value: no factor of 2 belongs here. The rate law and k come from the measured rate directly, not from the coefficient of NOCl."
+     }
+    ]
+   },
+   "why": {
+    "correct": "rate = k[NO]²[Cl₂], so k = rate / ([NO]²[Cl₂]) = (1.80 × 10⁻⁴ M/s) / ((0.0100 M)²(0.0100 M)) = (1.80 × 10⁻⁴ M/s) / (1.00 × 10⁻⁶ M³) = 1.80 × 10² M⁻² s⁻¹. The units are M/s ÷ M³ = M⁻² s⁻¹."
+   }
+  },
+  {
+   "id": "chem-rate-laws-4",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rate-laws-s1",
+   "q": "Predict the initial rate, in M/s, of a fourth trial with [NO] = 0.0300 M and [Cl₂] = 0.0050 M.",
+   "numeric": {
+    "answer": 0.00081,
+    "tol": 1e-05,
+    "unit": "M/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.027,
+      "why": "Value: [NO] must be squared. The rate law is second order in NO."
+     },
+     {
+      "value": 0.00027,
+      "why": "Value: tripling [NO] multiplies the rate by 3² = 9, not 3."
+     }
+    ]
+   },
+   "why": {
+    "correct": "rate = k[NO]²[Cl₂] = (180 M⁻² s⁻¹)(0.0300 M)²(0.0050 M) = (180)(9.00 × 10⁻⁴)(0.0050) M/s = 8.1 × 10⁻⁴ M/s. By ratios: [NO] ×3 gives ×9, [Cl₂] ×½ gives ×½, and 1.80 × 10⁻⁴ × 4.5 = 8.1 × 10⁻⁴ M/s. Two significant figures, from 0.0050 M."
+   }
+  },
+  {
+   "id": "chem-rate-laws-5",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rate-laws-s1",
+   "q": "A student says, \"The coefficient of NO is 2 and of Cl₂ is 1, so I could have written the rate law without doing the experiment.\" Which response is best?",
+   "options": [
+    "Orders come from data; here they happen to match the coefficients",
+    "The student is right: rate-law orders are the coefficients of the balanced equation",
+    "The orders match the coefficients of the products, not those of the reactants",
+    "For gas reactions like this one, coefficients give the orders"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The balanced equation shows how much reacts in total, not how the rate depends on each concentration. Here the measured orders (2 and 1) happen to equal the coefficients; for many reactions they do not, so the orders must come from experiment.",
+    "options": [
+     "Right: orders are measured; a match with coefficients is a coincidence for an overall equation.",
+     "This is the misconception: the overall equation does not tell you the orders.",
+     "Product coefficients do not set the orders either; orders are found by experiment.",
+     "Being gases makes no difference; orders still come from data."
+    ]
+   }
+  },
+  {
+   "id": "chem-rate-laws-6",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rate-laws-s2",
+   "q": "Which rate law agrees with the data?",
+   "options": [
+    "rate = k[X]",
+    "rate = k[X][Y]",
+    "rate = k[Y]",
+    "rate = k[X]²"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Trials 1 and 2: [X] doubles, rate doubles, so first order in X. Trials 1 and 3: [Y] triples, rate is unchanged, so zero order in Y ([Y]⁰ = 1). rate = k[X].",
+    "options": [
+     "Right: first order in X, zero order in Y.",
+     "Tripling [Y] would triple the rate; the data show no change.",
+     "The rate does not change with [Y] but does change with [X].",
+     "Doubling [X] would quadruple the rate; it only doubles."
+    ]
+   }
+  },
+  {
+   "id": "chem-rate-laws-7",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rate-laws-s2",
+   "q": "Y is still used up as the reaction goes. Which statement about Y is consistent with the data?",
+   "options": [
+    "Y is used up, but its concentration does not set the rate",
+    "Y is not consumed by the reaction",
+    "Y is a product of the reaction, not a reactant",
+    "Y is a solid, so it has no concentration"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Zero order in Y means changing [Y] does not change the rate. Y can still be consumed; it simply is not involved in whatever controls the speed (topic 5.8 explains how a mechanism can leave a reactant out of the rate law).",
+    "options": [
+     "Right: zero order means the rate does not depend on [Y], not that Y is not used.",
+     "Y is listed as a reactant and is consumed; zero order only means its concentration does not set the rate.",
+     "Y is on the reactant side of the equation.",
+     "The stem says Y is dissolved; its concentration was varied from 0.15 M to 0.45 M."
+    ]
+   }
+  },
+  {
+   "id": "chem-rate-laws-8",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rate-laws-s2",
+   "q": "Using the data for X, what is the first-order rate constant? Include units.",
+   "numeric": {
+    "answer": 0.00016,
+    "tol": 1e-05,
+    "unit": "s^-1",
+    "askUnit": true,
+    "units": [
+     "s-1",
+     "1/s",
+     "s⁻¹",
+     "/s"
+    ],
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.00107,
+      "why": "Value: you divided by [X][Y]. The rate law is rate = k[X], so divide by [X] only."
+     }
+    ]
+   },
+   "why": {
+    "correct": "k = rate / [X] = (2.4 × 10⁻⁵ M/s) / (0.15 M) = 1.6 × 10⁻⁴ s⁻¹. For a first-order rate law the units are M/s ÷ M = s⁻¹."
+   }
+  },
+  {
+   "id": "chem-rate-laws-9",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rate-laws-s2",
+   "q": "Predict the initial rate, in M/s, when [X] = 0.45 M and [Y] = 0.30 M.",
+   "numeric": {
+    "answer": 7.2e-05,
+    "tol": 1e-06,
+    "unit": "M/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.000144,
+      "why": "Value: [Y] does not appear in the rate law, so doubling [Y] does not change the rate."
+     }
+    ]
+   },
+   "why": {
+    "correct": "rate = k[X] = (1.6 × 10⁻⁴ s⁻¹)(0.45 M) = 7.2 × 10⁻⁵ M/s. [Y] is zero order, so its value does not matter."
+   }
+  },
+  {
+   "id": "chem-rate-laws-10",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For rate = k[A][B]², what are the units of k when concentrations are in M and time in s?",
+   "options": [
+    "M s⁻¹",
+    "s⁻¹",
+    "M⁻¹ s⁻¹",
+    "M⁻² s⁻¹"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The overall order is 1 + 2 = 3. k = rate/([A][B]²) has units (M/s)/M³ = M⁻² s⁻¹.",
+    "options": [
+     "These are the units of a rate, which is also the units of k for zero order.",
+     "These are the units for a first-order rate law.",
+     "These are the units for a second-order rate law.",
+     "Right: third order overall gives M⁻² s⁻¹."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-rate-laws-11",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For A + B → C, the rate is first order in B. When [A] and [B] are both doubled at the same time, the initial rate becomes 8 times larger. What is the order in A?",
+   "options": [
+    "Zero order",
+    "First order",
+    "Second order",
+    "Third order"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Doubling [B] alone doubles the rate (first order). The rest of the factor of 8 comes from A: 8 ÷ 2 = 4 = 2², so the order in A is 2.",
+    "options": [
+     "Zero order in A would make the total change only 2.",
+     "First order in both would give 2 × 2 = 4, not 8.",
+     "Right: 2ᵐ × 2¹ = 8 gives m = 2.",
+     "This puts the whole factor of 8 on A and forgets the doubling from B."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-rate-laws-12",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "predict",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the rate law rate = k[NO₂]², the concentration of NO₂ is doubled at constant temperature. Predict each change.",
+   "variables": [
+    {
+     "name": "Initial rate",
+     "answer": "up",
+     "why": "The rate depends on [NO₂]², so doubling [NO₂] multiplies the rate by 4."
+    },
+    {
+     "name": "Rate constant k",
+     "answer": "none",
+     "why": "k depends on temperature and the reaction, not on concentration."
+    },
+    {
+     "name": "Overall order of the reaction",
+     "answer": "none",
+     "why": "The order is a property of the rate law (2 here); it does not change with concentration."
+    }
+   ],
+   "why": {
+    "correct": "The rate goes up by 2² = 4. The rate constant and the order stay the same: k changes only with temperature (or a new pathway)."
+   }
+  },
+  {
+   "id": "chem-rate-laws-13",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "multi",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statements about a rate law are correct? Select all that apply.",
+   "options": [
+    "The rate constant k changes when the temperature changes",
+    "The rate constant k changes when a concentration changes",
+    "The orders equal the coefficients in the overall balanced equation",
+    "The units of k are the same for each rate law"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "k depends on temperature. Changing a concentration changes the rate, not k; orders need not match overall coefficients; and the units of k depend on the overall order.",
+    "options": [
+     "Right: k is a constant at one temperature only.",
+     "Concentration changes the rate; k stays the same at a given temperature.",
+     "Orders often differ from the overall coefficients; they must be measured.",
+     "The units of k depend on the overall order: s⁻¹ for first order, M⁻¹ s⁻¹ for second order."
+    ]
+   }
+  },
+  {
+   "id": "chem-rate-laws-14",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A reaction has rate = k[A]² with k = 0.62 M⁻¹ s⁻¹. What is the rate, in M/s, when [A] = 0.040 M?",
+   "numeric": {
+    "answer": 0.00099,
+    "tol": 1e-05,
+    "unit": "M/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.0248,
+      "why": "Value: square the concentration. The rate law is second order in A."
+     },
+     {
+      "value": 0.0496,
+      "why": "Value: you doubled [A] instead of squaring it. (0.040)² = 0.0016, not 0.080."
+     }
+    ]
+   },
+   "why": {
+    "correct": "rate = (0.62 M⁻¹ s⁻¹)(0.040 M)² = (0.62)(1.6 × 10⁻³) M/s = 9.9 × 10⁻⁴ M/s."
+   }
+  },
+  {
+   "id": "chem-rate-laws-15",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A reaction is zero order in its only reactant. Which statement describes it?",
+   "options": [
+    "Its rate stays the same as the reactant is used",
+    "Its rate doubles when the reactant concentration doubles",
+    "It does not start until a second reactant is added",
+    "Its rate constant has the units s⁻¹"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Zero order: rate = k[A]⁰ = k. The rate does not depend on [A], so it stays constant until the reactant runs out. k then has the units of a rate, M/s.",
+    "options": [
+     "Right: a zero-order rate is independent of concentration.",
+     "That describes a first-order reactant.",
+     "Zero order does not mean \"does not react\"; it means the rate does not depend on [A].",
+     "s⁻¹ is the unit of a first-order k; a zero-order k is in M/s."
+    ]
+   }
+  },
+  {
+   "id": "chem-rate-laws-16",
+   "unit": "unit-5",
+   "topic": "rate-laws",
+   "type": "single",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A student wants to find the order in B for A + B → products. Which plan would work?",
+   "options": [
+    "Vary [B] while holding [A] and temperature constant; compare initial rates",
+    "Run a single trial and read the order from the coefficient of B in the equation",
+    "Run trials that change both [A] and [B] together by the same factor",
+    "Run trials at several temperatures, keeping the same [A] and [B]"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "To isolate one order, change only that concentration and hold everything else constant. The ratio of initial rates then depends only on [B].",
+    "options": [
+     "Right: one variable at a time.",
+     "The coefficient does not give the order; it must be measured.",
+     "Changing both at once mixes their effects (unless one order is already known).",
+     "Changing temperature changes k, which says nothing about the order in B."
+    ]
+   }
+  }
+ ]
+}

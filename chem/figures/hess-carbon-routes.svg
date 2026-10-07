@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-labelledby="t d">
+<title id="t">Two routes from carbon to carbon dioxide</title>
+<desc id="d">Enthalpy ladder with three levels. Top: carbon plus oxygen. Middle: carbon monoxide plus half an oxygen, 110.5 kilojoules lower. Bottom: carbon dioxide, 393.5 kilojoules below the top. One route goes straight down, delta H minus 393.5 kilojoules. The other goes down in two steps, minus 110.5 then minus 283.0, which add up to the same minus 393.5 kilojoules.</desc>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#C2410C"/></marker><marker id="ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1D44A6"/></marker></defs>
+<rect width="760" height="400" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<line x1="60" y1="380" x2="60" y2="30" stroke="#1F2A28" stroke-width="2" marker-end="url(#ak)"/><text transform="translate(40,200) rotate(-90)" font-size="15" text-anchor="middle">Enthalpy</text>
+<line x1="120" y1="70" x2="640" y2="70" stroke="#1F2A28" stroke-width="4"/><text x="380" y="58" font-size="16" text-anchor="middle" font-weight="bold" fill="#1F2A28">C(s) + O₂(g)</text>
+<line x1="440" y1="145" x2="680" y2="145" stroke="#1F2A28" stroke-width="4"/><text x="600" y="135" font-size="16" text-anchor="middle" font-weight="bold" fill="#1F2A28">CO(g) + ½ O₂(g)</text>
+<line x1="120" y1="340" x2="680" y2="340" stroke="#1F2A28" stroke-width="4"/><text x="400" y="366" font-size="16" text-anchor="middle" font-weight="bold" fill="#1F2A28">CO₂(g)</text>
+<line x1="200" y1="73" x2="200" y2="335" stroke="#C2410C" stroke-width="4" marker-end="url(#ah)"/>
+<text x="212" y="220" font-size="15" text-anchor="start" font-weight="bold" fill="#C2410C">one step:</text>
+<text x="212" y="242" font-size="15" text-anchor="start" font-weight="normal" fill="#C2410C">ΔH = −393.5 kJ</text>
+<line x1="470" y1="73" x2="470" y2="140" stroke="#1D44A6" stroke-width="4" marker-end="url(#ac)"/>
+<text x="462" y="112" font-size="15" text-anchor="end" font-weight="bold" fill="#1D44A6">−110.5 kJ</text>
+<line x1="560" y1="148" x2="560" y2="335" stroke="#1D44A6" stroke-width="4" marker-end="url(#ac)"/>
+<text x="570" y="250" font-size="15" text-anchor="start" font-weight="bold" fill="#1D44A6">−283.0 kJ</text>
+<text x="400" y="390" font-size="15" text-anchor="middle" font-weight="bold" fill="#1F2A28">Two steps: −110.5 + (−283.0) = −393.5 kJ, the same as one step</text>
+</g>
+</svg>

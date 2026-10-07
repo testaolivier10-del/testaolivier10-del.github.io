@@ -1,0 +1,595 @@
+{
+ "stimuli": {
+  "henderson-hasselbalch-s1": {
+   "kind": "table",
+   "title": "Weak acids for making buffers",
+   "text": "<p>A lab stocks each weak acid below and a sodium salt of its conjugate base (for NH₄⁺, the stock is NH₃ and NH₄Cl).</p>",
+   "table": {
+    "caption": "Ka and pKa at 25 °C",
+    "cols": [
+     "Weak acid",
+     "Formula",
+     "Ka",
+     "pKa"
+    ],
+    "rows": [
+     [
+      "Formic acid",
+      "HCOOH",
+      "1.8 × 10⁻⁴",
+      "3.74"
+     ],
+     [
+      "Acetic acid",
+      "CH₃COOH",
+      "1.8 × 10⁻⁵",
+      "4.74"
+     ],
+     [
+      "Dihydrogen phosphate",
+      "H₂PO₄⁻",
+      "6.2 × 10⁻⁸",
+      "7.21"
+     ],
+     [
+      "Ammonium ion",
+      "NH₄⁺",
+      "5.6 × 10⁻¹⁰",
+      "9.25"
+     ]
+    ]
+   }
+  },
+  "henderson-hasselbalch-s2": {
+   "kind": "setup",
+   "title": "Making a buffer from one acid and NaOH",
+   "text": "<p>A student must make a buffer of pH 5.04 from 50.0 mL of 0.200 M acetic acid (pKa = 4.74) and 0.100 M NaOH. The plan is to add NaOH from a buret to the acid in a beaker, then transfer to a 250.0 mL volumetric flask and dilute to the mark with distilled water.</p>"
+  },
+  "henderson-hasselbalch-s3": {
+   "kind": "graph",
+   "title": "pH against the log of the ratio",
+   "text": "<p>A student makes five buffers from the same weak acid HA and its sodium salt, with different ratios, and measures each pH.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "log([A⁻]/[HA])",
+     "min": -1,
+     "max": 1,
+     "step": 0.5
+    },
+    "y": {
+     "label": "pH",
+     "min": 6,
+     "max": 9,
+     "step": 0.5
+    },
+    "series": [
+     {
+      "name": "Measured pH",
+      "points": [
+       [
+        -1,
+        6.52
+       ],
+       [
+        -0.5,
+        7.02
+       ],
+       [
+        0,
+        7.52
+       ],
+       [
+        0.5,
+        8.02
+       ],
+       [
+        1,
+        8.52
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-henderson-hasselbalch-1",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "henderson-hasselbalch-s1",
+   "q": "A student needs a buffer at pH 7.40. Which acid and conjugate base pair is the best choice?",
+   "options": [
+    "H₂PO₄⁻ and HPO₄²⁻",
+    "CH₃COOH and CH₃COO⁻",
+    "NH₄⁺ and NH₃",
+    "HCOOH and HCOO⁻"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Choose the acid whose pKa is closest to the target pH: H₂PO₄⁻ has pKa 7.21, within 0.2 of 7.40, so the ratio needed is near 1.",
+    "options": [
+     "Right: pKa 7.21, closest to 7.40.",
+     "pKa 4.74 is 2.7 units away; the ratio would need to be about 450 : 1, a poor buffer.",
+     "pKa 9.25 is 1.85 units above the target; the ratio would be about 1 : 70.",
+     "pKa 3.74 is far too low."
+    ]
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-2",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "henderson-hasselbalch-s1",
+   "q": "What is the pH of a buffer that is 0.25 M HCOOH and 0.15 M HCOONa?",
+   "numeric": {
+    "answer": 3.52,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 3.96,
+      "why": "Value: the ratio is upside down. pH = pKa + log([A⁻]/[HA]): base on top.",
+      "tol": 0.02
+     },
+     {
+      "value": 3.23,
+      "why": "Value: you used ln instead of log in the Henderson-Hasselbalch equation. It is the base-10 log.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "pH = pKa + log([HCOO⁻]/[HCOOH]) = 3.74 + log(0.15/0.25) = 3.74 − 0.22 = 3.52. More acid than base, so the pH is below pKa, as it should be."
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-3",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "henderson-hasselbalch-s1",
+   "q": "What is the pH of a buffer that is 0.30 M NH₃ and 0.20 M NH₄Cl?",
+   "numeric": {
+    "answer": 9.43,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 4.92,
+      "why": "Value: you used pKb of NH₃ (4.74). The Henderson-Hasselbalch equation needs pKa of the acid of the pair, NH₄⁺: 9.25.",
+      "tol": 0.02
+     },
+     {
+      "value": 9.07,
+      "why": "Value: the base, NH₃, goes on top of the ratio: log([NH₃]/[NH₄⁺]).",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "The acid of the pair is NH₄⁺ (pKa 9.25) and the base is NH₃. pH = 9.25 + log(0.30/0.20) = 9.25 + 0.18 = 9.43."
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-4",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "henderson-hasselbalch-s1",
+   "q": "For an acetic acid / sodium acetate buffer at pH 5.00, what ratio [CH₃COO⁻]/[CH₃COOH] is needed?",
+   "numeric": {
+    "answer": 1.8,
+    "tol": 0.1,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.56,
+      "why": "Value: that is [CH₃COOH]/[CH₃COO⁻]. pH 5.00 is above pKa, so the base must be in the majority.",
+      "rel": 0.02
+     },
+     {
+      "value": 1.3,
+      "why": "Value: you undid an ln instead of a log. The ratio is 10^(pH − pKa).",
+      "rel": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "log([A⁻]/[HA]) = pH − pKa = 5.00 − 4.74 = 0.26; [A⁻]/[HA] = 10^0.26 = 1.8."
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-5",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "henderson-hasselbalch-s1",
+   "q": "How many grams of NH₄Cl (53.49 g/mol) must be dissolved in 0.500 L of 0.200 M NH₃ to make a buffer at pH 9.00? Include the unit.",
+   "numeric": {
+    "answer": 9.51,
+    "tol": 0.01,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 3.01,
+      "why": "Value: the ratio is inverted. pH 9.00 is below pKa 9.25, so NH₄⁺ must outnumber NH₃: mol NH₄⁺ = mol NH₃ / 10^(pH − pKa).",
+      "rel": 0.02
+     },
+     {
+      "value": 0.000294,
+      "why": "Value: you used pKb (4.74) in place of pKa of NH₄⁺ (9.25).",
+      "rel": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "pH = pKa + log([NH₃]/[NH₄⁺]): 9.00 = 9.25 + log(ratio), so [NH₃]/[NH₄⁺] = 10^−0.25 = 0.562. mol NH₃ = 0.500 L × 0.200 M = 0.100 mol, so mol NH₄⁺ = 0.100/0.562 = 0.178 mol. Mass = 0.178 mol × 53.49 g/mol = 9.51 g."
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-6",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "henderson-hasselbalch-s2",
+   "q": "How many mL of 0.100 M NaOH should be added? Include the unit.",
+   "numeric": {
+    "answer": 66.6,
+    "tol": 0.1,
+    "unit": "mL",
+    "units": [
+     "milliliters"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 50,
+      "why": "Value: that gives a 1 : 1 ratio, pH 4.74. For pH 5.04 the ratio [A⁻]/[HA] must be 10^0.30 = 2.0, so more base is needed.",
+      "rel": 0.02
+     },
+     {
+      "value": 200,
+      "why": "Value: x mol OH⁻ makes x mol A⁻ and leaves (0.0100 − x) mol HA, so solve x/(0.0100 − x) = 2.0, not x = 2.0 × 0.0100.",
+      "rel": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "Ratio needed: [A⁻]/[HA] = 10^(5.04 − 4.74) = 10^0.30 = 2. With x mol OH⁻: x/(0.0100 − x) = 2, so x = 0.00666 mol. Volume = 0.00666 mol ÷ 0.100 mol/L = 0.0666 L = 66.6 mL."
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-7",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "henderson-hasselbalch-s2",
+   "q": "Diluting the mixture to 250.0 mL in the volumetric flask changes which quantity?",
+   "options": [
+    "Both concentrations, but not the pH",
+    "The pH, because the acid becomes more dilute in the flask",
+    "The ratio [A⁻]/[HA], because water is a base",
+    "The pKa, because the volume changes"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Dilution lowers both concentrations by the same factor, so the ratio, and the pH from the Henderson-Hasselbalch equation, stays the same.",
+    "options": [
+     "Right: same ratio, same pH.",
+     "Both components are diluted together, so log([A⁻]/[HA]) is unchanged.",
+     "Water does not convert acetic acid to acetate to any meaningful extent here.",
+     "pKa depends on temperature only."
+    ]
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-8",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "henderson-hasselbalch-s2",
+   "q": "Which step would best confirm that the buffer was made correctly?",
+   "options": [
+    "Measure its pH with a calibrated meter",
+    "Check that the final solution is clear and colorless",
+    "Weigh the volumetric flask before and after filling",
+    "Add phenolphthalein and check that it stays colorless"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A calibrated meter measures the pH directly to about ±0.01, which tests the prepared buffer against the target.",
+    "options": [
+     "Right: measure the property you designed for.",
+     "Both acetic acid and acetate are colorless; color says nothing about pH.",
+     "The mass shows how much solution there is, not its pH.",
+     "Phenolphthalein is colorless at any pH below about 8.3, so it cannot tell 5.04 from 4.0 or 6.0."
+    ]
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-9",
+   "type": "order",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "henderson-hasselbalch-s2",
+   "q": "Put the steps of the buffer preparation in order.",
+   "options": [
+    "Rinse a buret with 0.100 M NaOH, then fill it",
+    "Pipet 50.0 mL of 0.200 M acetic acid into a beaker",
+    "Add the calculated volume of NaOH from the buret and swirl",
+    "Transfer to a 250.0 mL volumetric flask, rinsing the beaker into it",
+    "Dilute to the mark with distilled water, stopper and invert to mix"
+   ],
+   "why": {
+    "correct": "Rinse and fill the buret, measure the acid precisely, add the base, transfer quantitatively, then dilute to the mark and mix. Naming the glassware and \"dilute to the mark\" are what readers look for."
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-10",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "henderson-hasselbalch-s3",
+   "q": "Use the graph to find the pKa of HA.",
+   "numeric": {
+    "answer": 7.52,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 8.52,
+      "why": "Value: read the pH where log([A⁻]/[HA]) = 0 (ratio 1), not where it equals 1.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "At log([A⁻]/[HA]) = 0, the ratio is 1 and pH = pKa + 0. The graph reads pH 7.52 there."
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-11",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "henderson-hasselbalch-s3",
+   "q": "What is the slope of the line, and what does it confirm?",
+   "options": [
+    "1, as predicted with a base-10 log",
+    "2.303, because the equation uses the natural log",
+    "−1, because more base lowers the pH",
+    "pKa, because the line passes through it"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The pH rises 2.00 units across 2.0 units of log ratio: slope 1. pH = pKa + 1 × log([A⁻]/[HA]) is a straight line of slope 1.",
+    "options": [
+     "Right: pH = pKa + log(ratio).",
+     "A slope of 2.303 would appear only if the equation used ln on this axis; the data show slope 1, which confirms log.",
+     "More base raises the pH; the line slopes upward.",
+     "pKa is the intercept, not the slope."
+    ]
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-12",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "henderson-hasselbalch-s3",
+   "q": "A student plots the same data with ln([A⁻]/[HA]) on the x-axis instead. What changes?",
+   "options": [
+    "The slope falls to 0.434; the intercept stays",
+    "The slope becomes 2.303 and the intercept moves",
+    "Nothing changes, because ln and log are the same",
+    "The line becomes curved"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "ln x = 2.303 log x, so each x value is 2.303 times larger. pH rises by the same amount over a 2.303-times-longer axis: slope 1/2.303 = 0.434. At ratio 1 both logs are 0, so the intercept is unchanged.",
+    "options": [
+     "Right: the log-to-ln factor appears in the slope.",
+     "Stretching the x-axis lowers the slope, and ln 1 = log 1 = 0 keeps the intercept.",
+     "ln and log differ by a factor of 2.303.",
+     "Scaling an axis by a constant keeps a straight line straight."
+    ]
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-13",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "henderson-hasselbalch-s3",
+   "q": "Predict the pH of a buffer of this acid with [A⁻]/[HA] = 0.40.",
+   "numeric": {
+    "answer": 7.12,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 6.6,
+      "why": "Value: you used ln. The Henderson-Hasselbalch equation uses the base-10 log: pH = 7.52 + log(0.40).",
+      "tol": 0.02
+     },
+     {
+      "value": 7.92,
+      "why": "Value: the sign is reversed. log(0.40) is negative, so the pH is below pKa.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "pH = 7.52 + log(0.40) = 7.52 − 0.40 = 7.12."
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-14",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "A buffer contains 0.0200 mol CH₃COOH and 0.0200 mol CH₃COO⁻ (pKa 4.74). What is the pH after 0.0050 mol HCl is added?",
+   "numeric": {
+    "answer": 4.52,
+    "tol": 0.01,
+    "unit": "",
+    "places": 2,
+    "mistakes": [
+     {
+      "value": 4.96,
+      "why": "Value: added acid uses up acetate and makes acetic acid; the base goes down to 0.0150 mol, the acid up to 0.0250 mol.",
+      "tol": 0.02
+     },
+     {
+      "value": 4.23,
+      "why": "Value: you used ln instead of log.",
+      "tol": 0.02
+     }
+    ]
+   },
+   "why": {
+    "correct": "H₃O⁺ + CH₃COO⁻ → CH₃COOH: base 0.0200 − 0.0050 = 0.0150 mol; acid 0.0200 + 0.0050 = 0.0250 mol. pH = 4.74 + log(0.0150/0.0250) = 4.74 − 0.22 = 4.52."
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-15",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A buffer has [A⁻]/[HA] = 1.0 × 10⁻². How far is its pH from pKa?",
+   "options": [
+    "2.0 units below pKa",
+    "2.0 units above pKa",
+    "0.010 unit below pKa",
+    "4.6 units below pKa"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "pH − pKa = log(1.0 × 10⁻²) = −2.0.",
+    "options": [
+     "Right: log of 10⁻² is −2.",
+     "A ratio below 1 has a negative log: the pH is below pKa.",
+     "This uses the ratio itself instead of its log.",
+     "This is ln(0.010) = −4.6; the equation uses base-10 log."
+    ]
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-16",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student makes an ammonia buffer and calculates its pH as 4.92 using pH = pKb + log([NH₃]/[NH₄⁺]). What is the error?",
+   "options": [
+    "It needs pKa of NH₄⁺, 14.00 − pKb",
+    "The ratio should be [NH₄⁺]/[NH₃]",
+    "The equation should use ln for a base",
+    "Nothing: ammonia buffers are acidic solutions"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Henderson-Hasselbalch uses pKa of the acid of the pair. For NH₄⁺, pKa = 14.00 − 4.74 = 9.26, so this buffer has pH 9.44, basic as an ammonia buffer must be.",
+    "options": [
+     "Right: use pKa of the conjugate acid.",
+     "With pKa, the base goes on top; the ratio was written correctly.",
+     "The equation always uses the base-10 log.",
+     "NH₃/NH₄⁺ buffers sit near pH 9."
+    ]
+   }
+  },
+  {
+   "id": "chem-henderson-hasselbalch-17",
+   "type": "multi",
+   "unit": "unit-8",
+   "topic": "henderson-hasselbalch",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which expressions give the pH of a buffer of HA and A⁻? Select all that apply.",
+   "options": [
+    "pKa + log([A⁻]/[HA])",
+    "pKa − log([HA]/[A⁻])",
+    "pKa + ln([A⁻]/[HA])",
+    "−log(Ka × [HA]/[A⁻])",
+    "pKa + log([HA]/[A⁻])",
+    "log([A⁻]/[HA])"
+   ],
+   "correct": [
+    0,
+    1,
+    3
+   ],
+   "why": {
+    "correct": "All three correct forms say the same thing: −log([HA]/[A⁻]) = +log([A⁻]/[HA]), and −log(Ka × [HA]/[A⁻]) is the Ka expression rearranged.",
+    "options": [
+     "Right: the standard form.",
+     "Right: flipping the ratio flips the sign of its log.",
+     "This uses ln; it would be off by a factor of 2.303 in the log term.",
+     "Right: −log of [H₃O⁺] from the Ka expression.",
+     "The ratio is upside down without a sign change.",
+     "This would hold only if Ka were 1; the pKa term is missing."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,101 @@
+{
+ "topic": "intermolecular-forces",
+ "hook": "Water boils at 100 °C, but methane, a molecule of nearly the same mass, boils at −162 °C. Nitrogen is a gas, bromine a liquid and iodine a solid at room temperature. The difference is not in the molecules themselves but in how strongly each one tugs on its neighbors.",
+ "prereq": [
+  {
+   "q": "Which molecule is polar?",
+   "options": [
+    "NH₃",
+    "CO₂",
+    "CH₄",
+    "BF₃"
+   ],
+   "correct": 0,
+   "why": "NH₃ is trigonal pyramidal with a lone pair, so its N–H bond dipoles do not cancel. The other three are symmetric and their bond dipoles cancel.",
+   "review": "vsepr-hybridization"
+  },
+  {
+   "q": "Which bond is the most polar?",
+   "options": [
+    "O–H",
+    "C–H",
+    "C–C",
+    "Cl–Cl"
+   ],
+   "correct": 0,
+   "why": "O and H differ most in electronegativity, so the shared electrons sit closest to O.",
+   "review": "periodic-trends"
+  },
+  {
+   "q": "By Coulomb's law, how does the attraction between two opposite charges change as they move closer?",
+   "options": [
+    "It increases",
+    "It decreases",
+    "It stays the same"
+   ],
+   "correct": 0,
+   "why": "The force grows as the distance between the charges shrinks.",
+   "review": "electron-configuration"
+  }
+ ],
+ "figure": {
+  "figure": "imf-four-kinds",
+  "caption": "London dispersion, dipole-dipole, hydrogen bond and ion-dipole attractions. Each dashed line joins separate particles."
+ },
+ "chain": [
+  {
+   "cause": "Electrons in every particle shift from moment to moment",
+   "effect": "momentary dipoles attract their neighbors: London dispersion forces act in every substance"
+  },
+  {
+   "cause": "More electrons, farther from the nucleus, make an electron cloud easier to distort",
+   "effect": "dispersion forces grow with polarizability, so boiling points rise down a group"
+  },
+  {
+   "cause": "A polar molecule has a permanent δ+ end and δ− end",
+   "effect": "neighbors line up and add dipole-dipole forces"
+  },
+  {
+   "cause": "H bonded to N, O or F carries a large, exposed δ+",
+   "effect": "it attracts a lone pair on N, O or F of another molecule: a hydrogen bond"
+  },
+  {
+   "cause": "Stronger attractions hold particles together",
+   "effect": "more energy is needed to separate them, so melting and boiling points rise"
+  }
+ ],
+ "ideas": [
+  "Intermolecular forces act <b>between</b> particles; covalent bonds act inside them. Boiling and melting never break covalent bonds.",
+  "Dispersion forces act in all substances and grow with the number of electrons and contact area, not with mass as such.",
+  "Hydrogen bonds need H on N, O or F in one molecule and a lone pair on N, O or F in another.",
+  "To compare boiling points, name every force in both substances, then decide which attraction is larger."
+ ],
+ "misconception": {
+  "wrong": "The heavier substance always boils higher, because heavier molecules are harder to move.",
+  "right": "Mass is not the cause. Butane, acetone and 1-propanol have nearly the same molar mass but boil at −0.5, 56 and 97 °C, because acetone adds dipole-dipole forces and 1-propanol adds hydrogen bonds."
+ },
+ "check": [
+  "chem-intermolecular-forces-1",
+  "chem-intermolecular-forces-2",
+  "chem-intermolecular-forces-6",
+  "chem-intermolecular-forces-10",
+  "chem-intermolecular-forces-11",
+  "chem-intermolecular-forces-12",
+  "chem-intermolecular-forces-19"
+ ],
+ "summary": "Particles attract each other by London dispersion forces (all particles, stronger with more electrons), dipole-dipole forces (polar molecules), hydrogen bonds (H on N, O or F to a lone pair on N, O or F) and ion-dipole forces. These forces, not covalent bonds, are overcome when a substance melts or boils, so stronger forces mean higher melting and boiling points.",
+ "connections": [
+  {
+   "href": "../notes/vsepr-hybridization.html",
+   "label": "Molecular polarity (VSEPR and Hybridization)"
+  },
+  {
+   "href": "../notes/bond-types.html",
+   "label": "Polar bonds and partial charges (Types of Chemical Bonds)"
+  },
+  {
+   "href": "../notes/solids-properties.html",
+   "label": "Next: how these forces shape solids (Properties of Solids)"
+  }
+ ]
+}

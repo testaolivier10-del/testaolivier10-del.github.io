@@ -1,0 +1,12 @@
+{
+ "hess-carbon-routes": {
+  "file": "figures/hess-carbon-routes.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Enthalpy ladder with two routes from C(s) + O₂(g) to CO₂(g). Straight down in one step: ΔH = −393.5 kJ. In two steps, first to CO(g) + ½ O₂(g) (−110.5 kJ), then to CO₂ (−283.0 kJ): −110.5 + (−283.0) = −393.5 kJ, the same overall change."
+ }
+}

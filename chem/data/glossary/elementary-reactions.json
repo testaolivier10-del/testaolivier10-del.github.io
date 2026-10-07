@@ -1,0 +1,8 @@
+{
+ "elementary-reaction": {
+  "def": "A reaction that happens in a single event at the particle level: one collision, or one particle breaking apart. Its rate law follows from its coefficients."
+ },
+ "molecularity": {
+  "def": "The number of reactant particles that come together in an elementary step: unimolecular (one), bimolecular (two) or termolecular (three, rare)."
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "metallic-solid": { "def": "A solid held together by metallic bonding: metal cations in a sea of delocalized valence electrons." },
+ "malleability": { "def": "The ability of a solid to be hammered or bent into a new shape without breaking (ductile: drawn into wire); metals have it because their layers slide while the electron sea holds them." },
+ "alloy": { "def": "A mixture of a metal with one or more other elements that keeps metallic bonding and metallic properties." },
+ "interstitial-alloy": { "def": "An alloy in which much smaller atoms fill the gaps between the host metal's atoms, making it harder and less malleable (steel: carbon in iron)." },
+ "substitutional-alloy": { "def": "An alloy in which atoms of similar size take the places of some host metal atoms (brass: zinc in copper)." }
+}

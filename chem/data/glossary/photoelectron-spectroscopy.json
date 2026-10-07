@@ -1,0 +1,11 @@
+{
+ "photon": {
+  "def": "A single packet of light energy. Higher-energy photons can knock electrons out of atoms."
+ },
+ "photoelectron-spectroscopy": {
+  "def": "A method that uses high-energy light to eject electrons from atoms and measures the energy needed to remove each one, giving one peak per subshell."
+ },
+ "binding-energy": {
+  "def": "The energy needed to remove an electron from a particular subshell of an atom, a measure of how strongly the nucleus holds it."
+ }
+}

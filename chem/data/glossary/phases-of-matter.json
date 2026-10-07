@@ -1,0 +1,17 @@
+{
+ "states-of-matter": {
+  "def": "Solid, liquid or gas: the arrangement and motion of a substance's particles. Solid particles vibrate in place, liquid particles slide past each other, gas particles fly freely far apart."
+ },
+ "pressure": {
+  "def": "The force per unit area from gas particles hitting a surface. 1 atm = 760 torr = 760 mm Hg = 101.325 kPa."
+ },
+ "phase-change": {
+  "def": "A change of state (melting, freezing, vaporization, condensation, sublimation, deposition) that rearranges particles but does not change what they are."
+ },
+ "dynamic-equilibrium": {
+  "def": "A state in which two opposite processes run at equal rates, so nothing changes overall, such as evaporation and condensation in a sealed container."
+ },
+ "vapor-pressure": {
+  "def": "The pressure of a substance's vapor in equilibrium with its liquid (or solid) in a closed container. It rises with temperature and is higher for liquids with weaker intermolecular forces."
+ }
+}

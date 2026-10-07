@@ -1,0 +1,545 @@
+{
+ "stimuli": {
+  "cell-potential-s1": {
+   "kind": "table",
+   "title": "Standard reduction potentials",
+   "text": "<p>Standard reduction potentials at 25 °C. F = 96,485 C/mol e⁻.</p>",
+   "table": {
+    "caption": "Standard reduction potentials, E°, at 25 °C",
+    "cols": [
+     "Half-reaction",
+     "E° (V)"
+    ],
+    "rows": [
+     [
+      "Ag⁺(aq) + e⁻ → Ag(s)",
+      "+0.80"
+     ],
+     [
+      "Cu²⁺(aq) + 2e⁻ → Cu(s)",
+      "+0.34"
+     ],
+     [
+      "Pb²⁺(aq) + 2e⁻ → Pb(s)",
+      "−0.13"
+     ],
+     [
+      "Ni²⁺(aq) + 2e⁻ → Ni(s)",
+      "−0.25"
+     ],
+     [
+      "Fe²⁺(aq) + 2e⁻ → Fe(s)",
+      "−0.44"
+     ],
+     [
+      "Zn²⁺(aq) + 2e⁻ → Zn(s)",
+      "−0.76"
+     ],
+     [
+      "Al³⁺(aq) + 3e⁻ → Al(s)",
+      "−1.66"
+     ],
+     [
+      "Mg²⁺(aq) + 2e⁻ → Mg(s)",
+      "−2.37"
+     ]
+    ]
+   }
+  },
+  "cell-potential-s2": {
+   "kind": "model",
+   "title": "An aluminum-copper cell",
+   "text": "<p>A galvanic cell is built under standard conditions from an Al strip in 1.0 M Al(NO₃)₃ and a Cu strip in 1.0 M Cu(NO₃)₂. Standard reduction potentials: Al³⁺(aq) + 3e⁻ → Al(s), E° = −1.66 V; Cu²⁺(aq) + 2e⁻ → Cu(s), E° = +0.34 V. F = 96,485 C/mol e⁻.</p>",
+   "html": "<svg viewBox=\"0 0 760 330\" width=\"760\" height=\"330\" role=\"img\" aria-label=\"Two beakers joined by a wire through a voltmeter and by a potassium nitrate salt bridge. Beaker 1 on the left has an aluminum strip in 1.0 molar aluminum nitrate. Beaker 2 on the right has a copper strip in 1.0 molar copper(II) nitrate. The electrodes are not labeled.\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect width=\"760\" height=\"330\" fill=\"#fff\"/><path d=\"M175,140 L175,38 L356,38 M404,38 L585,38 L585,140\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"3\"/><circle cx=\"380\" cy=\"38\" r=\"24\" fill=\"#F4F6F6\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><text x=\"380\" y=\"44\" font-size=\"16\" text-anchor=\"middle\" font-weight=\"700\">V</text><path d=\"M80,130 L80,290 Q80,302 92,302 L268,302 Q280,302 280,290 L280,130\" fill=\"none\" stroke=\"#5D6B69\" stroke-width=\"3\"/><path d=\"M480,130 L480,290 Q480,302 492,302 L668,302 Q680,302 680,290 L680,130\" fill=\"none\" stroke=\"#5D6B69\" stroke-width=\"3\"/><rect x=\"82\" y=\"170\" width=\"196\" height=\"130\" fill=\"#DCE8F2\"/><rect x=\"482\" y=\"170\" width=\"196\" height=\"130\" fill=\"#DCE8F2\"/><rect x=\"160\" y=\"140\" width=\"30\" height=\"130\" fill=\"#9AA3A8\" stroke=\"#4A5257\" stroke-width=\"2\"/><rect x=\"570\" y=\"140\" width=\"30\" height=\"130\" fill=\"#C8783C\" stroke=\"#4A5257\" stroke-width=\"2\"/><path d=\"M240,250 L240,110 Q240,90 260,90 L500,90 Q520,90 520,110 L520,250\" fill=\"none\" stroke=\"#7A8A88\" stroke-width=\"26\" stroke-linejoin=\"round\"/><path d=\"M240,250 L240,110 Q240,90 260,90 L500,90 Q520,90 520,110 L520,250\" fill=\"none\" stroke=\"#F1F3E6\" stroke-width=\"20\" stroke-linejoin=\"round\"/><text x=\"380\" y=\"125\" font-size=\"13\" text-anchor=\"middle\">salt bridge, KNO₃(aq)</text><text x=\"175\" y=\"322\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Al(s) in 1.0 M Al(NO₃)₃</text><text x=\"585\" y=\"322\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Cu(s) in 1.0 M Cu(NO₃)₂</text><text x=\"130\" y=\"160\" font-size=\"13\" text-anchor=\"middle\">Beaker 1</text><text x=\"630\" y=\"160\" font-size=\"13\" text-anchor=\"middle\">Beaker 2</text></svg>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-cell-potential-1",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "cell-potential-s1",
+   "q": "A galvanic cell is built from a Ni/Ni²⁺ half-cell and an Ag/Ag⁺ half-cell under standard conditions. Calculate E°cell.",
+   "numeric": {
+    "answer": 1.05,
+    "tol": 0.01,
+    "unit": "V",
+    "units": [
+     "volts",
+     "volt"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 1.85,
+      "tol": 0.01,
+      "why": "Value: you doubled E° for silver because its half-reaction is doubled. E° is intensive: balancing electrons never changes it."
+     },
+     {
+      "value": 0.55,
+      "tol": 0.01,
+      "why": "Value: you added the two reduction potentials. Use E°cell = E°(cathode) − E°(anode)."
+     },
+     {
+      "value": -1.05,
+      "tol": 0.01,
+      "why": "Sign: in a galvanic cell the cathode is the half-reaction with the more positive E°, so E°cell is positive."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Silver has the more positive E°, so Ag⁺ is reduced (cathode) and Ni is oxidized (anode). E°cell = E°(cathode) − E°(anode) = 0.80 V − (−0.25 V) = 1.05 V."
+   }
+  },
+  {
+   "id": "chem-cell-potential-2",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "cell-potential-s1",
+   "q": "Which is the balanced overall reaction for the Ni/Ag galvanic cell?",
+   "options": [
+    "Ni²⁺(aq) + 2 Ag(s) → Ni(s) + 2 Ag⁺(aq)",
+    "Ni(s) + 2 Ag⁺(aq) → Ni²⁺(aq) + 2 Ag(s)",
+    "Ni(s) + Ag⁺(aq) → Ni²⁺(aq) + Ag(s)",
+    "Ni(s) + 2 Ag(s) → Ni²⁺(aq) + 2 Ag⁺(aq)"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Oxidation Ni → Ni²⁺ + 2e⁻; reduction 2 Ag⁺ + 2e⁻ → 2 Ag; overall Ni + 2 Ag⁺ → Ni²⁺ + 2 Ag.",
+    "options": [
+     "This is the reverse, with E° = −1.05 V: not favored, so it is not what the galvanic cell runs.",
+     "Right: nickel is oxidized, silver ions are reduced, and two Ag⁺ take the two electrons from each Ni.",
+     "Atoms balance but charge does not (+1 vs +2). Two electrons need two Ag⁺.",
+     "Both metals are oxidized here; a redox reaction needs one species reduced."
+    ]
+   }
+  },
+  {
+   "id": "chem-cell-potential-3",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "cell-potential-s1",
+   "q": "Calculate ΔG° for the reaction in the Ni/Ag cell, Ni(s) + 2 Ag⁺(aq) → Ni²⁺(aq) + 2 Ag(s).",
+   "numeric": {
+    "answer": -203,
+    "tol": 1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1",
+     "kJ·mol⁻¹"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": -101,
+      "tol": 1,
+      "why": "Value: n is the moles of electrons transferred in the balanced equation: 2, not 1."
+     },
+     {
+      "value": 203,
+      "tol": 1,
+      "why": "Sign: ΔG° = −nFE°. A positive E°cell gives a negative ΔG°."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔG° = −nFE° = −(2 mol e⁻)(96,485 C/mol e⁻)(1.05 V) = −2.026 × 10⁵ J/mol = −203 kJ/mol (1 J = 1 C·V)."
+   }
+  },
+  {
+   "id": "chem-cell-potential-4",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "cell-potential-s1",
+   "q": "Which pair of half-cells from the table would give the largest E°cell?",
+   "options": [
+    "Al/Al³⁺ and Cu/Cu²⁺",
+    "Zn/Zn²⁺ and Ag/Ag⁺",
+    "Pb/Pb²⁺ and Mg/Mg²⁺",
+    "Mg/Mg²⁺ and Ag/Ag⁺"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "E°cell is largest when the cathode has the most positive E° and the anode the most negative.",
+    "options": [
+     "E°cell = 0.34 − (−1.66) = 2.00 V, less than the Mg/Ag cell.",
+     "E°cell = 0.80 − (−0.76) = 1.56 V.",
+     "E°cell = −0.13 − (−2.37) = 2.24 V, less than with silver as the cathode.",
+     "Right: the most positive (+0.80) minus the most negative (−2.37) gives 3.17 V."
+    ]
+   }
+  },
+  {
+   "id": "chem-cell-potential-5",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "cell-potential-s1",
+   "q": "Which species in the table is the strongest reducing agent?",
+   "options": [
+    "Mg(s)",
+    "Ag⁺(aq)",
+    "Mg²⁺(aq)",
+    "Ag(s)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A reducing agent is oxidized. The metal whose ion has the most negative E° is oxidized most readily.",
+    "options": [
+     "Right: its reduction potential is the most negative, so the reverse, Mg → Mg²⁺ + 2e⁻, is the most favored oxidation.",
+     "Ag⁺ is the strongest oxidizing agent: it is the most easily reduced.",
+     "Mg²⁺ is very hard to reduce; it is the weakest oxidizing agent, not a reducing agent.",
+     "Silver is the hardest metal in the table to oxidize, so it is the weakest reducing agent."
+    ]
+   }
+  },
+  {
+   "id": "chem-cell-potential-6",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "cell-potential-s2",
+   "q": "Calculate E°cell for the cell.",
+   "numeric": {
+    "answer": 2,
+    "tol": 0.01,
+    "unit": "V",
+    "units": [
+     "volts",
+     "volt"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 4.34,
+      "tol": 0.01,
+      "why": "Value: you multiplied each E° by its coefficient (3 Cu²⁺, 2 Al). E° is intensive and is never multiplied."
+     },
+     {
+      "value": -1.32,
+      "tol": 0.01,
+      "why": "Value: you added the reduction potentials. Subtract the anode’s E° from the cathode’s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Cu²⁺ has the more positive E°, so it is reduced; Al is oxidized. E°cell = 0.34 V − (−1.66 V) = 2.00 V. The coefficients 2 and 3 used to balance electrons do not change any E°."
+   }
+  },
+  {
+   "id": "chem-cell-potential-7",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "cell-potential-s2",
+   "q": "How many moles of electrons, n, are transferred in the balanced equation 2 Al(s) + 3 Cu²⁺(aq) → 2 Al³⁺(aq) + 3 Cu(s)?",
+   "options": [
+    "3",
+    "2",
+    "6",
+    "5"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "n is the least common multiple of the electrons in the two half-reactions: 2 × 3 = 6.",
+    "options": [
+     "That is the electrons for one Al atom. The equation has two Al atoms.",
+     "That is the electrons for one Cu²⁺ ion. The equation has three of them.",
+     "Right: 2 Al each lose 3 electrons and 3 Cu²⁺ each gain 2: six electrons.",
+     "Adding 3 and 2 does not count electrons. Multiply electrons per atom by atoms: 2 × 3 = 3 × 2 = 6."
+    ]
+   }
+  },
+  {
+   "id": "chem-cell-potential-8",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "cell-potential-s2",
+   "q": "Calculate ΔG° for 2 Al(s) + 3 Cu²⁺(aq) → 2 Al³⁺(aq) + 3 Cu(s).",
+   "numeric": {
+    "answer": -1160,
+    "rel": 0.005,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1",
+     "kJ·mol⁻¹"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": -386,
+      "rel": 0.005,
+      "why": "Value: n = 6 mol e⁻ for this equation (2 Al × 3e⁻), not 2."
+     },
+     {
+      "value": -579,
+      "rel": 0.005,
+      "why": "Value: n = 6 mol e⁻ for this equation (3 Cu²⁺ × 2e⁻), not 3."
+     },
+     {
+      "value": -2510,
+      "rel": 0.005,
+      "why": "Value: you used an E° multiplied by coefficients (4.34 V). Use E°cell = 2.00 V; the coefficients enter only through n."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔG° = −nFE° = −(6 mol e⁻)(96,485 C/mol e⁻)(2.00 V) = −1.158 × 10⁶ J/mol = −1.16 × 10³ kJ/mol."
+   }
+  },
+  {
+   "id": "chem-cell-potential-9",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "cell-potential-s2",
+   "q": "A student writes E°cell = 3(+0.34) − 2(−1.66) = 4.34 V \"because the equation has 3 Cu²⁺ and 2 Al.\" Which correction is best?",
+   "options": [
+    "The coefficients should be divided, not multiplied, giving 0.34/3 + 1.66/2.",
+    "The student is right; the coefficients belong in E° and in n as well.",
+    "E° is intensive, like temperature, so coefficients never change it: E°cell = 2.00 V.",
+    "The anode’s E° alone should be multiplied, because electrons are released there."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "E° is energy per coulomb. Balancing electrons changes the total energy (through n in ΔG° = −nFE°) but not the energy per coulomb.",
+    "options": [
+     "Coefficients do not enter E° at all, whether multiplied or divided.",
+     "The coefficients affect n (and so ΔG°), but never E°.",
+     "Right: potential is energy per unit charge; doubling the reaction doubles both, leaving E° unchanged.",
+     "Neither E° is multiplied."
+    ]
+   }
+  },
+  {
+   "id": "chem-cell-potential-10",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "4.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "For a redox reaction at standard conditions, which set of signs goes together?",
+   "options": [
+    "E°cell > 0, ΔG° < 0, K > 1",
+    "E°cell > 0, ΔG° > 0, K < 1",
+    "E°cell < 0, ΔG° < 0, K > 1",
+    "E°cell > 0, ΔG° < 0, K < 1"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "ΔG° = −nFE° and ΔG° = −RT ln K, so E° > 0 ⇔ ΔG° < 0 ⇔ K > 1.",
+    "options": [
+     "Right: a positive cell potential means a favored reaction with products favored at equilibrium.",
+     "ΔG° = −nFE°: positive E° gives negative ΔG°.",
+     "A negative E°cell gives a positive ΔG° and K < 1.",
+     "A negative ΔG° gives K > 1 (ΔG° = −RT ln K)."
+    ]
+   }
+  },
+  {
+   "id": "chem-cell-potential-11",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For Cu(s) + Zn²⁺(aq) → Cu²⁺(aq) + Zn(s), E° = −1.10 V. What does this tell you?",
+   "options": [
+    "The reaction is favored but slow, so it needs a catalyst.",
+    "The cell will run with electrons flowing from Zn to Cu, so it is still galvanic.",
+    "The reaction is at equilibrium, because E° is negative.",
+    "It is not favored; it needs an electrolytic cell with a power supply."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A negative E°cell means ΔG° = −nFE° > 0. The reaction can be driven by a power supply, which is an electrolytic cell.",
+    "options": [
+     "A negative E° means not favored; a catalyst cannot change that.",
+     "For this reaction as written, copper would be oxidized; with E° < 0 that does not happen on its own.",
+     "At equilibrium the cell potential E is zero, not E°.",
+     "Right: a negative E°cell means ΔG° > 0, so the reaction must be driven."
+    ]
+   }
+  },
+  {
+   "id": "chem-cell-potential-12",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "For Cu(s) + 2 Ag⁺(aq) → Cu²⁺(aq) + 2 Ag(s), E° = +0.46 V at 298 K. Calculate K. (F = 96,485 C/mol e⁻; R = 8.314 J/(mol·K))",
+   "numeric": {
+    "answer": 3600000000000000,
+    "rel": 0.02,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 60000000,
+      "rel": 0.03,
+      "why": "Value: n = 2 mol e⁻ for this equation (one Cu gives two electrons)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔG° = −nFE° = −(2)(96,485)(0.46) = −8.88 × 10⁴ J/mol. ln K = −ΔG°/RT = 88,766 ÷ (8.314 × 298) = 35.83. K = e^35.83 = 3.6 × 10¹⁵."
+   }
+  },
+  {
+   "id": "chem-cell-potential-13",
+   "type": "numeric",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A galvanic cell made from a metal M in 1.0 M M²⁺ and Cu in 1.0 M Cu²⁺ has E°cell = 0.74 V. M is the anode. E° for Cu²⁺/Cu is +0.34 V. Calculate the standard reduction potential of M²⁺/M.",
+   "numeric": {
+    "answer": -0.4,
+    "tol": 0.01,
+    "unit": "V",
+    "units": [
+     "volts",
+     "volt"
+    ],
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1.08,
+      "tol": 0.01,
+      "why": "Value: E°cell = E°(cathode) − E°(anode), so E°(anode) = 0.34 − 0.74, not 0.34 + 0.74."
+     },
+     {
+      "value": 0.4,
+      "tol": 0.01,
+      "why": "Sign: M is the anode, so its reduction potential is lower than copper’s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "E°cell = E°(cathode) − E°(anode): 0.74 = 0.34 − E°(M²⁺/M), so E°(M²⁺/M) = 0.34 − 0.74 = −0.40 V."
+   }
+  },
+  {
+   "id": "chem-cell-potential-14",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Reaction 1 is Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s), with E° = 1.10 V and ΔG° = −212 kJ/mol. Reaction 2 is the same reaction with every coefficient doubled. What are E° and ΔG° for Reaction 2?",
+   "options": [
+    "E° = 2.20 V; ΔG° = −424 kJ/mol",
+    "E° = 1.10 V; ΔG° = −424 kJ/mol",
+    "E° = 2.20 V; ΔG° = −848 kJ/mol",
+    "E° = 1.10 V; ΔG° = −212 kJ/mol"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "ΔG° = −nFE°: doubling the equation doubles n (2 → 4) but not E°, so ΔG° doubles.",
+    "options": [
+     "E° does not double when the equation is doubled.",
+     "Right: E° is intensive and stays the same; ΔG° is extensive (n doubles from 2 to 4) and doubles.",
+     "Doubling both E° and n would quadruple ΔG°. Neither is right: E° stays 1.10 V.",
+     "ΔG° depends on the amount of reaction: twice the equation, twice the free energy."
+    ]
+   }
+  },
+  {
+   "id": "chem-cell-potential-15",
+   "type": "multi",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use these standard reduction potentials: Ag⁺/Ag +0.80 V, Cu²⁺/Cu +0.34 V, Ni²⁺/Ni −0.25 V, Zn²⁺/Zn −0.76 V. Which reactions are thermodynamically favored under standard conditions? Select ALL that apply.",
+   "options": [
+    "Zn(s) + Ni²⁺(aq) → Zn²⁺(aq) + Ni(s)",
+    "Cu(s) + Ni²⁺(aq) → Cu²⁺(aq) + Ni(s)",
+    "Cu(s) + Zn²⁺(aq) → Cu²⁺(aq) + Zn(s)",
+    "2 Ag(s) + Zn²⁺(aq) → 2 Ag⁺(aq) + Zn(s)"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "For each reaction, E° = E°(species reduced) − E°(species oxidized). Only the zinc-nickel reaction gives a positive value.",
+    "options": [
+     "E° = −0.25 − (−0.76) = +0.51 V > 0.",
+     "E° = −0.25 − 0.34 = −0.59 V < 0.",
+     "E° = −0.76 − 0.34 = −1.10 V < 0.",
+     "E° = −0.76 − 0.80 = −1.56 V < 0."
+    ]
+   }
+  },
+  {
+   "id": "chem-cell-potential-16",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "cell-potential",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In ΔG° = −nFE°, what does n stand for?",
+   "options": [
+    "The moles of electrons transferred in the balanced overall equation",
+    "The number of moles of metal that plate out at the cathode",
+    "The number of half-reactions in the cell, which is 2",
+    "The charge on the cation formed at the anode"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "n is the moles of electrons transferred per mole of reaction as written.",
+    "options": [
+     "Right: n counts electrons in the reaction as written, so ΔG° scales with the equation.",
+     "This equals n only when each ion gains one electron; n counts electrons, not atoms.",
+     "n is a count of electrons transferred, which can be 1, 2, 6 or more.",
+     "This equals n only if one anode atom reacts; for 2 Al → 2 Al³⁺, n = 6."
+    ]
+   }
+  }
+ ]
+}

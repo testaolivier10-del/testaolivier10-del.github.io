@@ -1,0 +1,453 @@
+{
+ "stimuli": {
+  "ionic-compounds-valence-s1": {
+   "kind": "particle",
+   "title": "Ions in three solid samples",
+   "html": "<svg viewBox=\"0 0 660 215\" width=\"660\" height=\"215\" role=\"img\" aria-label=\"Three boxes of ions. Box 1 holds 4 small blue ions marked 2+ and 8 large green ions marked minus, a 1 to 2 ratio. Box 2 holds 6 small blue ions marked plus and 6 large green ions marked minus, a 1 to 1 ratio. Box 3 holds 6 small blue ions marked 2+ and 6 orange ions marked 2 minus, a 1 to 1 ratio.\"><rect x=\"10\" y=\"10\" width=\"200\" height=\"170\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"42\" r=\"11\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"40\" y=\"47\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2+</text><circle cx=\"87\" cy=\"42\" r=\"19\" fill=\"#9BD9C2\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"87\" y=\"47\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">−</text><circle cx=\"134\" cy=\"42\" r=\"19\" fill=\"#9BD9C2\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"134\" y=\"47\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">−</text><circle cx=\"181\" cy=\"42\" r=\"11\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"181\" y=\"47\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2+</text><circle cx=\"40\" cy=\"94\" r=\"19\" fill=\"#9BD9C2\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"40\" y=\"99\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">−</text><circle cx=\"87\" cy=\"94\" r=\"19\" fill=\"#9BD9C2\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"87\" y=\"99\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">−</text><circle cx=\"134\" cy=\"94\" r=\"11\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"134\" y=\"99\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2+</text><circle cx=\"181\" cy=\"94\" r=\"19\" fill=\"#9BD9C2\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"181\" y=\"99\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">−</text><circle cx=\"40\" cy=\"146\" r=\"19\" fill=\"#9BD9C2\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"40\" y=\"151\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">−</text><circle cx=\"87\" cy=\"146\" r=\"11\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"87\" y=\"151\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2+</text><circle cx=\"134\" cy=\"146\" r=\"19\" fill=\"#9BD9C2\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"134\" y=\"151\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">−</text><circle cx=\"181\" cy=\"146\" r=\"19\" fill=\"#9BD9C2\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"181\" y=\"151\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">−</text><text x=\"110\" y=\"202\" text-anchor=\"middle\" font-size=\"15\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1B2440\">Box 1</text><rect x=\"230\" y=\"10\" width=\"200\" height=\"170\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"260\" cy=\"42\" r=\"10\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"260\" y=\"47\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">+</text><circle cx=\"307\" cy=\"42\" r=\"19\" fill=\"#9BD9C2\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"307\" y=\"47\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">−</text><circle cx=\"354\" cy=\"42\" r=\"10\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"354\" y=\"47\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">+</text><circle cx=\"401\" cy=\"42\" r=\"19\" fill=\"#9BD9C2\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"401\" y=\"47\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">−</text><circle cx=\"260\" cy=\"94\" r=\"19\" fill=\"#9BD9C2\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"260\" y=\"99\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">−</text><circle cx=\"307\" cy=\"94\" r=\"10\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"307\" y=\"99\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">+</text><circle cx=\"354\" cy=\"94\" r=\"19\" fill=\"#9BD9C2\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"354\" y=\"99\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">−</text><circle cx=\"401\" cy=\"94\" r=\"10\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"401\" y=\"99\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">+</text><circle cx=\"260\" cy=\"146\" r=\"10\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"260\" y=\"151\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">+</text><circle cx=\"307\" cy=\"146\" r=\"19\" fill=\"#9BD9C2\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"307\" y=\"151\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">−</text><circle cx=\"354\" cy=\"146\" r=\"10\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"354\" y=\"151\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">+</text><circle cx=\"401\" cy=\"146\" r=\"19\" fill=\"#9BD9C2\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"401\" y=\"151\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">−</text><text x=\"330\" y=\"202\" text-anchor=\"middle\" font-size=\"15\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1B2440\">Box 2</text><rect x=\"450\" y=\"10\" width=\"200\" height=\"170\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"480\" cy=\"42\" r=\"11\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"480\" y=\"47\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2+</text><circle cx=\"527\" cy=\"42\" r=\"17\" fill=\"#F2B48C\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"527\" y=\"47\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2−</text><circle cx=\"574\" cy=\"42\" r=\"11\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"574\" y=\"47\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2+</text><circle cx=\"621\" cy=\"42\" r=\"17\" fill=\"#F2B48C\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"621\" y=\"47\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2−</text><circle cx=\"480\" cy=\"94\" r=\"17\" fill=\"#F2B48C\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"480\" y=\"99\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2−</text><circle cx=\"527\" cy=\"94\" r=\"11\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"527\" y=\"99\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2+</text><circle cx=\"574\" cy=\"94\" r=\"17\" fill=\"#F2B48C\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"574\" y=\"99\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2−</text><circle cx=\"621\" cy=\"94\" r=\"11\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"621\" y=\"99\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2+</text><circle cx=\"480\" cy=\"146\" r=\"11\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"480\" y=\"151\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2+</text><circle cx=\"527\" cy=\"146\" r=\"17\" fill=\"#F2B48C\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"527\" y=\"151\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2−</text><circle cx=\"574\" cy=\"146\" r=\"11\" fill=\"#9DB4EC\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"574\" y=\"151\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2+</text><circle cx=\"621\" cy=\"146\" r=\"17\" fill=\"#F2B48C\" stroke=\"#333\" stroke-width=\"1.5\"/><text x=\"621\" y=\"151\" text-anchor=\"middle\" font-size=\"13\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#111\">2−</text><text x=\"550\" y=\"202\" text-anchor=\"middle\" font-size=\"15\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1B2440\">Box 3</text></svg><p>Key: small blue circle, cation (charge shown); larger green or orange circle, anion (charge shown). Each box is a small piece of a much larger solid.</p>"
+  },
+  "ionic-compounds-valence-s2": {
+   "kind": "table",
+   "title": "Five main-group elements",
+   "text": "<p>Electron configurations of five atoms.</p>",
+   "table": {
+    "caption": "Electron configurations",
+    "cols": [
+     "Element",
+     "Group",
+     "Electron configuration"
+    ],
+    "rows": [
+     [
+      "Lithium",
+      "1",
+      "1s² 2s¹"
+     ],
+     [
+      "Calcium",
+      "2",
+      "[Ar] 4s²"
+     ],
+     [
+      "Aluminum",
+      "13",
+      "[Ne] 3s² 3p¹"
+     ],
+     [
+      "Sulfur",
+      "16",
+      "[Ne] 3s² 3p⁴"
+     ],
+     [
+      "Bromine",
+      "17",
+      "[Ar] 4s² 3d¹⁰ 4p⁵"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-ionic-compounds-valence-1",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ionic-compounds-valence-s1",
+   "q": "Which box could represent magnesium chloride?",
+   "options": [
+    "Box 2",
+    "Box 3",
+    "Box 1",
+    "Boxes 1 and 3 both could"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Magnesium (group 2) forms Mg²⁺; chlorine (group 17) forms Cl⁻. Two Cl⁻ balance one Mg²⁺: MgCl₂, the ratio in Box 1.",
+    "options": [
+     "Box 2 has 1+ cations, but magnesium forms 2+ ions.",
+     "Chloride is 1−, not 2−.",
+     "Right: Mg²⁺ and Cl⁻ in a 1 : 2 ratio, so the charges cancel: MgCl₂.",
+     "Box 3 has 2− anions, and chloride is 1−. Box 1 matches: 2+ cations and 1− anions in a 1 : 2 ratio."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-compounds-valence-2",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "ionic-compounds-valence-s1",
+   "q": "Which formula matches Box 3?",
+   "options": [
+    "MgO: a 2+ cation and a 2− anion, 1 : 1",
+    "Mg₂O₂: two of each ion in each formula",
+    "NaCl: a 1+ cation and a 1− anion, 1 : 1",
+    "MgCl₂: twice as many anions as cations"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Equal numbers of 2+ and 2− ions: a 1 : 1 ratio, like MgO.",
+    "options": [
+     "Right: +2 and −2 cancel one for one.",
+     "A formula gives the simplest ratio; 2 : 2 reduces to 1 : 1.",
+     "Box 3's ions carry charges of 2+ and 2−.",
+     "Box 3 has equal numbers of cations and anions."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-compounds-valence-3",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ionic-compounds-valence-s1",
+   "q": "Why does every box contain cations and anions in the ratio it does?",
+   "options": [
+    "Each cation can touch two anions at a time",
+    "Larger ions are outnumbered by smaller ones",
+    "The ions are counted by mass, so heavier ions appear less often",
+    "The charges cancel, so each solid is neutral"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "An ionic compound is electrically neutral. Box 1: 4(+2) + 8(−1) = 0; Box 2: 6(+1) + 6(−1) = 0; Box 3: 6(+2) + 6(−2) = 0.",
+    "options": [
+     "How ions touch is about packing, not about the formula ratio.",
+     "In Boxes 2 and 3 the numbers are equal; the charges decide the ratio.",
+     "The ratio counts ions, not masses.",
+     "Right: the ratio is set by the charges, so the whole solid has no net charge."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-compounds-valence-4",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "ionic-compounds-valence-s1",
+   "q": "A student draws calcium nitride (Ca²⁺ and N³⁻) as a box with equal numbers of each ion. What is wrong with the drawing?",
+   "options": [
+    "Nitrogen forms no ions, so it does not belong in the box",
+    "Its charges do not cancel; Ca₃N₂ has 3 Ca²⁺ per 2 N³⁻",
+    "The ratio should be 2 Ca²⁺ to 3 N³⁻, Ca₂N₃",
+    "Calcium ions should carry a 1+ charge"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Find the smallest numbers that make the charges cancel: 3 × (+2) = +6 and 2 × (−3) = −6. Ca₃N₂.",
+    "options": [
+     "Nitrogen, in group 15, gains 3 electrons to form N³⁻.",
+     "Right: 3(+2) + 2(−3) = 0.",
+     "That gives 2(+2) + 3(−3) = −5: not neutral.",
+     "Calcium is in group 2 and forms Ca²⁺."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-compounds-valence-5",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "5.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ionic-compounds-valence-s1",
+   "q": "A piece of the Box 1 solid contains 3.0 × 10²² cations. How many anions does it contain?",
+   "numeric": {
+    "answer": 6e+22,
+    "tol": 1e+21,
+    "unit": "anions",
+    "units": [
+     "ions",
+     "chloride ions"
+    ],
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1.5e+22,
+      "rel": 0.01,
+      "why": "Value: there are twice as many anions as cations, not half as many."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The ratio of cations to anions is 1 : 2, so 2 × 3.0 × 10²² = 6.0 × 10²² anions."
+   }
+  },
+  {
+   "id": "chem-ionic-compounds-valence-6",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "ionic-compounds-valence-s2",
+   "q": "What ion does sulfur most commonly form?",
+   "options": [
+    "S⁶⁺",
+    "S²⁺",
+    "S⁻",
+    "S²⁻"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Sulfur has 6 valence electrons. Gaining 2 reaches the noble gas configuration of argon: S²⁻.",
+    "options": [
+     "Losing 6 valence electrons would take far more energy than gaining 2.",
+     "Nonmetals at the right of the table gain electrons rather than lose them.",
+     "One electron leaves sulfur one short of argon's configuration.",
+     "Right: gaining 2 electrons gives [Ne] 3s² 3p⁶, the configuration of argon."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-compounds-valence-7",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ionic-compounds-valence-s2",
+   "q": "Why does aluminum form Al³⁺ and not Al⁴⁺?",
+   "options": [
+    "A 4th electron would come from the core, costing far more energy",
+    "Aluminum has three electrons in total",
+    "A 4+ charge is too large for any ion to carry",
+    "Aluminum wants to have exactly three electrons fewer than before"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Al: [Ne] 3s² 3p¹. Losing the 3 valence electrons is affordable; a 4th would come from the 2p core, close to the nucleus and poorly shielded.",
+    "options": [
+     "Right: after 3 electrons, Al³⁺ has neon's configuration; the next is a tightly held core electron.",
+     "Aluminum has 13 electrons; 3 of them are valence electrons.",
+     "The limit comes from the energy to remove core electrons, not from a fixed maximum charge.",
+     "Atoms do not want things; the energy cost of removing each electron sets the charge."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-compounds-valence-8",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ionic-compounds-valence-s2",
+   "q": "Which pair of ions from these elements has the same electron configuration as argon?",
+   "options": [
+    "Li⁺ and Br⁻",
+    "Al³⁺ and S²⁻",
+    "Ca²⁺ and S²⁻",
+    "Ca²⁺ and Br⁻"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Argon has 18 electrons. Ca²⁺ (20 − 2) and S²⁻ (16 + 2) both have 18: they are isoelectronic with argon.",
+    "options": [
+     "Li⁺ matches helium (2 electrons) and Br⁻ matches krypton (36).",
+     "Al³⁺ has 10 electrons, like neon.",
+     "Right: Ca loses 2 (20 → 18 electrons) and S gains 2 (16 → 18).",
+     "Br⁻ has 36 electrons, like krypton."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-compounds-valence-9",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ionic-compounds-valence-s2",
+   "q": "What is the formula of the compound formed by aluminum and bromine?",
+   "options": [
+    "Al₃Br",
+    "AlBr",
+    "AlBr₃",
+    "Al₂Br₃"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Al³⁺ + 3 Br⁻: +3 − 3 = 0. AlBr₃.",
+    "options": [
+     "This puts the 3 on the wrong ion: 3(+3) + (−1) = +8.",
+     "One Br⁻ would leave the compound with a 2+ charge.",
+     "Right: Al³⁺ and Br⁻; three Br⁻ balance one Al³⁺.",
+     "That would need Al with a charge of 3/2, which does not exist."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-compounds-valence-10",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Sodium and potassium both react with water in similar ways. Which explanation is best?",
+   "options": [
+    "Both have one loosely held s valence electron",
+    "They have similar masses",
+    "They have the same number of protons",
+    "They have the same number of shells"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Elements in a group share the same valence configuration (here ns¹), so they gain or lose electrons in the same way and react alike.",
+    "options": [
+     "Right: same group, same number of valence electrons, so similar chemistry.",
+     "Potassium is much heavier than sodium; mass is not the reason.",
+     "Na has 11 and K has 19.",
+     "K has four occupied shells and Na three."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-compounds-valence-11",
+   "type": "multi",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which formulas are correct for compounds of the ions shown? Select all that apply.",
+   "options": [
+    "K₂O (K⁺, O²⁻)",
+    "CaF (Ca²⁺, F⁻)",
+    "Na₂N (Na⁺, N³⁻)",
+    "MgO₂ (Mg²⁺, O²⁻)"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Choose the smallest whole numbers of each ion that make the total charge zero.",
+    "options": [
+     "Right: 2(+1) + (−2) = 0.",
+     "This leaves a 1+ charge; the formula is CaF₂.",
+     "This gives 2(+1) − 3 = −1; the formula is Na₃N.",
+     "This gives +2 − 4 = −2; the formula is MgO."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-compounds-valence-12",
+   "type": "predict",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A sodium atom becomes a Na⁺ ion. Predict how each quantity changes.",
+   "variables": [
+    {
+     "name": "Number of protons",
+     "answer": "none",
+     "why": "Losing an electron does not change the nucleus."
+    },
+    {
+     "name": "Radius",
+     "answer": "down",
+     "why": "Na⁺ has lost its only shell-3 electron, so its outermost electrons are in shell 2."
+    },
+    {
+     "name": "Number of electrons in the outermost occupied shell",
+     "answer": "up",
+     "why": "The outermost occupied shell is now shell 2, with 8 electrons, instead of shell 3 with 1."
+    }
+   ],
+   "why": {
+    "correct": "Na (1s² 2s² 2p⁶ 3s¹) → Na⁺ (1s² 2s² 2p⁶): same protons, a smaller particle, and a filled outer shell of 8."
+   }
+  },
+  {
+   "id": "chem-ionic-compounds-valence-13",
+   "type": "order",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for writing the formula of an ionic compound in order.",
+   "options": [
+    "Find each element's group to get its valence electrons",
+    "Write the charge each ion forms",
+    "Choose the smallest numbers of ions whose charges add to zero",
+    "Write the cation first, then the anion, with those numbers as subscripts"
+   ],
+   "why": {
+    "correct": "Valence electrons → ion charges → balance the charges → write cation then anion, e.g. Ca²⁺ and Cl⁻ → CaCl₂."
+   }
+  },
+  {
+   "id": "chem-ionic-compounds-valence-14",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student writes the formula of the compound of magnesium and nitrogen as MgN. Which reasoning shows the error?",
+   "options": [
+    "Magnesium and nitrogen form a molecule, not ions",
+    "The formula should list nitrogen first, since it is the anion",
+    "Mg forms Mg³⁺ to match N³⁻, so MgN is right",
+    "Mg²⁺ and N³⁻ give a net −1; Mg₃N₂ is neutral"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Write the charges, then balance them: Mg²⁺ × 3 = +6 and N³⁻ × 2 = −6, Mg₃N₂.",
+    "options": [
+     "A metal from group 2 and a nonmetal from group 15 form ions.",
+     "The cation is written first.",
+     "Magnesium, in group 2, forms Mg²⁺.",
+     "Right: 3(+2) + 2(−3) = 0."
+    ]
+   }
+  },
+  {
+   "id": "chem-ionic-compounds-valence-15",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "ionic-compounds-valence",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which ion is isoelectronic with (has the same number of electrons as) neon?",
+   "options": [
+    "Mg²⁺",
+    "Ca²⁺",
+    "Cl⁻",
+    "K⁺"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Neon has 10 electrons. Mg (12) minus 2 gives 10.",
+    "options": [
+     "Right: 12 − 2 = 10 electrons, like neon.",
+     "Ca²⁺ has 18 electrons, like argon.",
+     "Cl⁻ has 18 electrons, like argon.",
+     "K⁺ has 18 electrons, like argon."
+    ]
+   }
+  }
+ ]
+}

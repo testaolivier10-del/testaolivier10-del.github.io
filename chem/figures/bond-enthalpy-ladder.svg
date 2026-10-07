@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-labelledby="t d">
+<title id="t">Bonds broken and bonds formed for hydrogen chloride</title>
+<desc id="d">Enthalpy ladder for H2 plus Cl2 giving 2 HCl. From the reactants level, an upward arrow labelled break bonds, plus 436 plus 242 equals plus 678 kilojoules, reaches a high level of separate atoms, 2 H plus 2 Cl. From there a longer downward arrow labelled form bonds, minus 2 times 431 equals minus 862 kilojoules, reaches the products level, 2 HCl, which is below the reactants. The difference, delta H, is minus 184 kilojoules.</desc>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#C2410C"/></marker><marker id="ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1D44A6"/></marker></defs>
+<rect width="760" height="400" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<line x1="60" y1="370" x2="60" y2="30" stroke="#1F2A28" stroke-width="2" marker-end="url(#ak)"/><text transform="translate(40,200) rotate(-90)" font-size="15" text-anchor="middle">Enthalpy</text>
+<line x1="120" y1="250" x2="300" y2="250" stroke="#1F2A28" stroke-width="4"/><text x="210" y="275" font-size="16" text-anchor="middle" font-weight="bold" fill="#1F2A28">H₂(g) + Cl₂(g)</text>
+<line x1="260" y1="70" x2="520" y2="70" stroke="#1F2A28" stroke-width="4"/><text x="390" y="58" font-size="16" text-anchor="middle" font-weight="bold" fill="#1F2A28">separate atoms: 2 H + 2 Cl</text>
+<line x1="480" y1="330" x2="680" y2="330" stroke="#1F2A28" stroke-width="4"/><text x="580" y="355" font-size="16" text-anchor="middle" font-weight="bold" fill="#1F2A28">2 HCl(g)</text>
+<line x1="280" y1="246" x2="280" y2="76" stroke="#1D44A6" stroke-width="4" marker-end="url(#ac)"/>
+<text x="290" y="150" font-size="15" text-anchor="start" font-weight="bold" fill="#1D44A6">break bonds (absorb):</text>
+<text x="290" y="172" font-size="15" text-anchor="start" font-weight="normal" fill="#1D44A6">+436 + 242 = +678 kJ</text>
+<line x1="500" y1="74" x2="500" y2="324" stroke="#C2410C" stroke-width="4" marker-end="url(#ah)"/>
+<text x="510" y="200" font-size="15" text-anchor="start" font-weight="bold" fill="#C2410C">form bonds (release):</text>
+<text x="510" y="222" font-size="15" text-anchor="start" font-weight="normal" fill="#C2410C">−2(431) = −862 kJ</text>
+<line x1="300" y1="250" x2="480" y2="250" stroke="#5D6B69" stroke-dasharray="5 5"/><line x1="400" y1="252" x2="400" y2="326" stroke="#1F2A28" stroke-width="3" marker-end="url(#ak)"/>
+<text x="395" y="300" font-size="15" text-anchor="end" font-weight="bold" fill="#1F2A28">ΔH ≈ 678 − 862 = −184 kJ</text>
+</g>
+</svg>

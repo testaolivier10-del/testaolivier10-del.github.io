@@ -1,0 +1,5 @@
+{
+ "henderson-hasselbalch": {
+  "def": "pH = pKa + log([A⁻]/[HA]), the Ka expression in log form, for a buffer of a weak acid HA and its conjugate base A⁻. The log is base 10; for a weak base buffer, use pKa of its conjugate acid."
+ }
+}

@@ -46,7 +46,8 @@
   }
   // Per-course defaults, keyed by course key (the `subject`).
   var DEFAULTS = {
-    apbio: { date: '2027-05-03', label: 'AP® Biology exam (Mon, May 3, 2027)' }
+    apbio: { date: '2027-05-03', label: 'AP® Biology exam (Mon, May 3, 2027)' },
+    apchem: { date: '2027-05-06', label: 'AP® Chemistry exam (Thu, May 6, 2027)' }
   };
   function key(subject){ return (subject || 'levl') + '_exam_date'; }
   function stored(subject){

@@ -1,0 +1,631 @@
+{
+ "stimuli": {
+  "solubility-equilibria-s1": {
+   "kind": "table",
+   "title": "Solubility products of four salts",
+   "text": "<p>A student looks up K<sub>sp</sub> values (approximate, at 25 °C) for four slightly soluble salts.</p>",
+   "table": {
+    "caption": "K<sub>sp</sub> at 25 °C",
+    "cols": [
+     "Salt",
+     "Ions formed per formula unit",
+     "K<sub>sp</sub>"
+    ],
+    "rows": [
+     [
+      "AgCl",
+      "1 Ag<sup>+</sup>, 1 Cl<sup>−</sup>",
+      "1.8 × 10<sup>−10</sup>"
+     ],
+     [
+      "AgBr",
+      "1 Ag<sup>+</sup>, 1 Br<sup>−</sup>",
+      "5.0 × 10<sup>−13</sup>"
+     ],
+     [
+      "Ag<sub>2</sub>CrO<sub>4</sub>",
+      "2 Ag<sup>+</sup>, 1 CrO<sub>4</sub><sup>2−</sup>",
+      "1.1 × 10<sup>−12</sup>"
+     ],
+     [
+      "CaF<sub>2</sub>",
+      "1 Ca<sup>2+</sup>, 2 F<sup>−</sup>",
+      "3.9 × 10<sup>−11</sup>"
+     ]
+    ]
+   }
+  },
+  "solubility-equilibria-s2": {
+   "kind": "particle",
+   "title": "A saturated solution of a salt",
+   "html": "<svg viewBox=\"0 0 336 242\" width=\"336\" height=\"242\" role=\"img\" aria-label=\"A beaker of a saturated solution with undissolved solid at the bottom. Dissolved in the water above the solid are 3 cations and 6 anions. Water molecules are not shown.\" style=\"max-width:100%;height:auto\"><text x=\"168\" y=\"32\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Saturated solution, 25 °C</text><rect x=\"18\" y=\"40\" width=\"300\" height=\"190\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><rect x=\"20\" y=\"200\" width=\"296\" height=\"28\" fill=\"#EEE\" stroke=\"none\"/><circle cx=\"28\" cy=\"207\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"28\" cy=\"220\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"41\" cy=\"207\" r=\"5\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1\"/><circle cx=\"41\" cy=\"220\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"54\" cy=\"207\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"54\" cy=\"220\" r=\"5\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1\"/><circle cx=\"67\" cy=\"207\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"67\" cy=\"220\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"80\" cy=\"207\" r=\"5\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1\"/><circle cx=\"80\" cy=\"220\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"93\" cy=\"207\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"93\" cy=\"220\" r=\"5\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1\"/><circle cx=\"106\" cy=\"207\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"106\" cy=\"220\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"119\" cy=\"207\" r=\"5\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1\"/><circle cx=\"119\" cy=\"220\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"132\" cy=\"207\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"132\" cy=\"220\" r=\"5\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1\"/><circle cx=\"145\" cy=\"207\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"145\" cy=\"220\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"158\" cy=\"207\" r=\"5\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1\"/><circle cx=\"158\" cy=\"220\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"171\" cy=\"207\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"171\" cy=\"220\" r=\"5\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1\"/><circle cx=\"184\" cy=\"207\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"184\" cy=\"220\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"197\" cy=\"207\" r=\"5\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1\"/><circle cx=\"197\" cy=\"220\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"210\" cy=\"207\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"210\" cy=\"220\" r=\"5\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1\"/><circle cx=\"223\" cy=\"207\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"223\" cy=\"220\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"236\" cy=\"207\" r=\"5\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1\"/><circle cx=\"236\" cy=\"220\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"249\" cy=\"207\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"249\" cy=\"220\" r=\"5\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1\"/><circle cx=\"262\" cy=\"207\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"262\" cy=\"220\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"275\" cy=\"207\" r=\"5\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1\"/><circle cx=\"275\" cy=\"220\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"288\" cy=\"207\" r=\"6\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1\"/><circle cx=\"288\" cy=\"220\" r=\"5\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1\"/><circle cx=\"260.3\" cy=\"171.2\" r=\"9\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1.5\"/><circle cx=\"155.1\" cy=\"170.5\" r=\"8\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1.5\"/><circle cx=\"72.1\" cy=\"136.5\" r=\"8\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1.5\"/><circle cx=\"73.9\" cy=\"171.5\" r=\"9\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1.5\"/><circle cx=\"109.1\" cy=\"99.2\" r=\"9\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1.5\"/><circle cx=\"226.1\" cy=\"64.0\" r=\"9\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1.5\"/><circle cx=\"222.2\" cy=\"135.9\" r=\"9\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1.5\"/><circle cx=\"40.3\" cy=\"143.4\" r=\"9\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1.5\"/><circle cx=\"116.9\" cy=\"176.3\" r=\"8\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1.5\"/></svg><p class=\"chem-small\">Key: <span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"24\" height=\"24\" aria-hidden=\"true\"><circle cx=\"12.0\" cy=\"12.0\" r=\"8\" fill=\"#CC79A7\" stroke=\"#6B2E55\" stroke-width=\"1.5\"/></svg>metal cation, M<sup>2+</sup></span><span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"26\" height=\"26\" aria-hidden=\"true\"><circle cx=\"13.0\" cy=\"13.0\" r=\"9\" fill=\"#56B4E9\" stroke=\"#1F5F86\" stroke-width=\"1.5\"/></svg>anion, X<sup>−</sup></span></p><p>The diagram shows the dissolved ions above the undissolved solid in a saturated solution of a salt of M<sup>2+</sup> and X<sup>−</sup> at 25 °C. Water molecules are not shown. Each ion drawn stands for 2.0 × 10<sup>−4</sup> mol of ions per liter of solution.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-solubility-equilibria-1",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solubility-equilibria-s1",
+   "q": "Calculate the molar solubility of AgCl in pure water at 25 °C.",
+   "numeric": {
+    "answer": 0.000013,
+    "tol": 0.000001,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 9e-11,
+      "rel": 0.02,
+      "why": "Value: s² = K<sub>sp</sub>, so take the square root; do not divide by 2."
+     },
+     {
+      "value": 0.000356,
+      "rel": 0.02,
+      "why": "Value: AgCl gives one ion of each kind, so K<sub>sp</sub> = s², not 4s³."
+     }
+    ]
+   },
+   "why": {
+    "correct": "AgCl(s) ⇌ Ag⁺ + Cl⁻; [Ag⁺] = [Cl⁻] = s. K<sub>sp</sub> = s² = 1.8 × 10⁻¹⁰, so s = √(1.8 × 10⁻¹⁰) = 1.3 × 10<sup>−5</sup> M."
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-2",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "solubility-equilibria-s1",
+   "q": "Calculate the molar solubility of Ag<sub>2</sub>CrO<sub>4</sub> in pure water at 25 °C.",
+   "numeric": {
+    "answer": 0.000065,
+    "tol": 0.000001,
+    "unit": "M",
+    "units": [
+     "mol/L"
+    ],
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.00000105,
+      "rel": 0.02,
+      "why": "Value: Ag₂CrO₄ gives 2 Ag⁺ per formula unit. K<sub>sp</sub> = (2s)²(s) = 4s³; take a cube root."
+     },
+     {
+      "value": 0.0000819,
+      "rel": 0.02,
+      "why": "Value: you wrote 2s² × s. The silver concentration 2s must be squared as a whole: (2s)² = 4s²."
+     },
+     {
+      "value": 0.000103,
+      "rel": 0.02,
+      "why": "Value: (2s)² = 4s², so K<sub>sp</sub> = 4s³. Divide by 4 before the cube root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Ag₂CrO₄(s) ⇌ 2 Ag⁺ + CrO₄²⁻; [Ag⁺] = 2s, [CrO₄²⁻] = s. K<sub>sp</sub> = (2s)²(s) = 4s³ = 1.1 × 10⁻¹², so s³ = 2.75 × 10⁻¹³ and s = 6.5 × 10<sup>−5</sup> M."
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-3",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "solubility-equilibria-s1",
+   "q": "Ag<sub>2</sub>CrO<sub>4</sub> has a smaller K<sub>sp</sub> than AgCl. Which salt has the greater molar solubility in water?",
+   "options": [
+    "Ag<sub>2</sub>CrO<sub>4</sub>",
+    "AgCl",
+    "They are equally soluble, because both are silver salts.",
+    "It is undecided without the masses of the salts."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ranking by K<sub>sp</sub> works only for salts with the same ion ratio. Otherwise, calculate the molar solubility of each.",
+    "options": [
+     "Right: 6.5 × 10<sup>−5</sup> M versus 1.3 × 10<sup>−5</sup> M. With different ion ratios, the K<sub>sp</sub> expressions have different forms, so K<sub>sp</sub> alone cannot be compared.",
+     "AgCl has the larger K<sub>sp</sub>, but the expressions differ (s² vs 4s³). Calculate s for each.",
+     "Sharing a cation does not make solubilities equal.",
+     "It can: solve each K<sub>sp</sub> expression for s."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-4",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "single",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solubility-equilibria-s1",
+   "q": "Which pair of salts can be ranked by solubility just by comparing their K<sub>sp</sub> values?",
+   "options": [
+    "AgCl and AgBr",
+    "AgCl and Ag<sub>2</sub>CrO<sub>4</sub>",
+    "AgBr and CaF<sub>2</sub>",
+    "Ag<sub>2</sub>CrO<sub>4</sub> and AgBr"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When two salts produce the same number and ratio of ions, their K<sub>sp</sub> expressions have the same form, so K<sub>sp</sub> ranks solubility directly.",
+    "options": [
+     "Right: both are 1 : 1, so K<sub>sp</sub> = s² for each and a larger K<sub>sp</sub> means a larger s.",
+     "These have different ion ratios (1 : 1 and 2 : 1), so their expressions differ.",
+     "Different ion ratios: s² versus 4s³.",
+     "Different ion ratios: 4s³ versus s²."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-5",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "solubility-equilibria-s1",
+   "q": "Calculate [F<sup>−</sup>] in a saturated solution of CaF<sub>2</sub> in water at 25 °C.",
+   "numeric": {
+    "answer": 0.00043,
+    "tol": 0.00001,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.000214,
+      "rel": 0.02,
+      "why": "Value: that is s, the molar solubility. Each CaF₂ gives two F⁻, so [F⁻] = 2s."
+     },
+     {
+      "value": 0.00000624,
+      "rel": 0.02,
+      "why": "Value: CaF₂ gives 1 Ca²⁺ and 2 F⁻, so K<sub>sp</sub> = s(2s)² = 4s³."
+     }
+    ]
+   },
+   "why": {
+    "correct": "K<sub>sp</sub> = [Ca²⁺][F⁻]² = s(2s)² = 4s³ = 3.9 × 10⁻¹¹ → s = 2.1 × 10<sup>−4</sup> M. [F⁻] = 2s = 4.3 × 10<sup>−4</sup> M."
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-6",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "solubility-equilibria-s2",
+   "q": "What is the formula of the salt?",
+   "options": [
+    "MX<sub>2</sub>",
+    "MX",
+    "M<sub>2</sub>X",
+    "M<sub>3</sub>X<sub>6</sub>"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ions dissolve in the ratio of the formula: 3 M²⁺ to 6 X⁻ is 1 : 2, matching the charges: MX₂.",
+    "options": [
+     "Right: the solution holds twice as many X⁻ as M²⁺, and the charges balance as 2+ and 2(1−).",
+     "MX would give equal numbers of each ion and leave a 1+ charge per formula unit.",
+     "This would give more cations than anions, the opposite of the diagram.",
+     "This is the count in the picture, not the simplest formula of the salt."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-7",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solubility-equilibria-s2",
+   "q": "Use the diagram to calculate K<sub>sp</sub> for the salt.",
+   "numeric": {
+    "answer": 8.6e-10,
+    "tol": 1e-11,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 7.2e-7,
+      "rel": 0.02,
+      "why": "Value: [X⁻] is squared, because each MX₂ gives two X⁻ (coefficient 2)."
+     },
+     {
+      "value": 0.00000144,
+      "rel": 0.02,
+      "why": "Value: square [X⁻] rather than doubling it."
+     },
+     {
+      "value": 108,
+      "rel": 0.02,
+      "why": "Value: you used particle counts. Convert each count to a concentration first (× 2.0 × 10⁻⁴ M)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "[M²⁺] = 3 × 2.0 × 10⁻⁴ = 6.0 × 10⁻⁴ M; [X⁻] = 6 × 2.0 × 10⁻⁴ = 1.2 × 10⁻³ M. K<sub>sp</sub> = [M²⁺][X⁻]² = (6.0 × 10⁻⁴)(1.2 × 10⁻³)² = 8.6 × 10<sup>−10</sup>."
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-8",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "solubility-equilibria-s2",
+   "q": "More solid MX<sub>2</sub> is added to the beaker and stirred at 25 °C. What happens to the number of dissolved ions?",
+   "options": [
+    "It stays the same, because the solution is already saturated and the solid is not in K<sub>sp</sub>.",
+    "It increases, because more solid is available to dissolve.",
+    "It decreases, because the extra solid pulls ions out of solution.",
+    "It doubles, because the amount of solid doubled."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A saturated solution is an equilibrium between solid and ions. Adding solid leaves Q = K<sub>sp</sub>, so the dissolved concentrations stay the same.",
+    "options": [
+     "Right: the solid is left out of Q and K<sub>sp</sub>, so adding it does not change Q; the ion concentrations are already at their equilibrium values.",
+     "The dissolving rate and the precipitation rate are already equal. More solid does not change the ion concentrations at equilibrium.",
+     "Q still equals K<sub>sp</sub>; there is no net precipitation.",
+     "The amount of a pure solid does not enter K<sub>sp</sub>."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-9",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "single",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "solubility-equilibria-s2",
+   "q": "Which statement describes the particles in this beaker?",
+   "options": [
+    "Ions leave the solid and ions return to it at equal rates.",
+    "No more ions dissolve, because the solution is full.",
+    "Ions dissolve, but ions no longer return to the solid.",
+    "The solid and the ions no longer interact."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Like any equilibrium, a saturated solution is dynamic: dissolving and precipitation continue at equal rates.",
+    "options": [
+     "Right: a saturated solution is a dynamic equilibrium between dissolving and precipitation.",
+     "Ions keep dissolving; just as many rejoin the solid each second.",
+     "Then the concentrations would keep rising and the solid would disappear.",
+     "Dissolved ions keep colliding with the solid surface and sticking to it."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-10",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "q": "A saturated solution of PbI<sub>2</sub> (molar mass 461.0 g/mol) contains 0.62 g of dissolved PbI<sub>2</sub> per liter at 25 °C. Calculate K<sub>sp</sub>.",
+   "numeric": {
+    "answer": 9.7e-9,
+    "tol": 1e-10,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.00000181,
+      "rel": 0.02,
+      "why": "Value: PbI₂ gives two I⁻, so K<sub>sp</sub> = s(2s)² = 4s³."
+     },
+     {
+      "value": 0.00000362,
+      "rel": 0.02,
+      "why": "Value: square the whole [I⁻] = 2s: (2s)² = 4s²."
+     },
+     {
+      "value": 0.953,
+      "rel": 0.02,
+      "why": "Value: convert grams per liter to moles per liter first, using the molar mass."
+     }
+    ]
+   },
+   "why": {
+    "correct": "s = 0.62 g/L ÷ 461.0 g/mol = 1.34 × 10<sup>−3</sup> M. [Pb²⁺] = s, [I⁻] = 2s. K<sub>sp</sub> = s(2s)² = 4s³ = 4(1.34 × 10<sup>−3</sup>)³ = 9.7 × 10<sup>−9</sup>."
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-11",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "The molar solubility of Mg(OH)<sub>2</sub> in water at 25 °C is 1.1 × 10<sup>−4</sup> M. Calculate K<sub>sp</sub>.",
+   "numeric": {
+    "answer": 5.3e-12,
+    "tol": 1e-13,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2.42e-8,
+      "rel": 0.02,
+      "why": "Value: you did not square [OH⁻]. K<sub>sp</sub> = [Mg²⁺][OH⁻]² = s(2s)²."
+     },
+     {
+      "value": 1.33e-12,
+      "rel": 0.02,
+      "why": "Value: [OH⁻] is 2s, not s. Each Mg(OH)₂ gives two OH⁻."
+     },
+     {
+      "value": 1.21e-8,
+      "rel": 0.02,
+      "why": "Value: Mg(OH)₂ is not a 1 : 1 salt. Use [OH⁻] = 2s and square it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "[Mg²⁺] = 1.1 × 10⁻⁴ M; [OH⁻] = 2(1.1 × 10⁻⁴) = 2.2 × 10⁻⁴ M. K<sub>sp</sub> = (1.1 × 10⁻⁴)(2.2 × 10⁻⁴)² = 5.3 × 10<sup>−12</sup>."
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-12",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "single",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which is the K<sub>sp</sub> expression for Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>(s) ⇌ 3 Ca<sup>2+</sup>(aq) + 2 PO<sub>4</sub><sup>3−</sup>(aq)?",
+   "options": [
+    "[Ca<sup>2+</sup>]<sup>3</sup>[PO<sub>4</sub><sup>3−</sup>]<sup>2</sup>",
+    "[Ca<sup>2+</sup>]<sup>3</sup>[PO<sub>4</sub><sup>3−</sup>]<sup>2</sup> / [Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>]",
+    "3[Ca<sup>2+</sup>] × 2[PO<sub>4</sub><sup>3−</sup>]",
+    "[Ca<sup>2+</sup>][PO<sub>4</sub><sup>3−</sup>]"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K<sub>sp</sub> is the product of the ion concentrations, each raised to its coefficient; the solid is left out.",
+    "options": [
+     "Right: the solid is left out, and each ion is raised to its coefficient.",
+     "The solid is a pure solid, so it does not appear in K<sub>sp</sub>.",
+     "Coefficients are exponents, not multipliers.",
+     "Each concentration must be raised to its coefficient."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-13",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Equal volumes of 2.0 × 10<sup>−4</sup> M AgNO<sub>3</sub> and 2.0 × 10<sup>−4</sup> M NaCl are mixed. K<sub>sp</sub> of AgCl is 1.8 × 10<sup>−10</sup>. Does AgCl precipitate?",
+   "options": [
+    "Yes: Q = 1.0 × 10<sup>−8</sup> &gt; K<sub>sp</sub>.",
+    "No: Q = 1.0 × 10<sup>−8</sup> &lt; K<sub>sp</sub>.",
+    "Yes: Q = 4.0 × 10<sup>−8</sup> &gt; K<sub>sp</sub>.",
+    "No: both solutions are too dilute to form a solid."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Compare the ion product Q with K<sub>sp</sub>. After mixing, [Ag⁺] = [Cl⁻] = 1.0 × 10⁻⁴ M; Q = 1.0 × 10⁻⁸ > K<sub>sp</sub>, so solid AgCl forms until Q = K<sub>sp</sub>.",
+    "options": [
+     "Right: mixing equal volumes halves each concentration to 1.0 × 10⁻⁴ M, and Q = (1.0 × 10⁻⁴)² = 1.0 × 10⁻⁸ > 1.8 × 10⁻¹⁰.",
+     "Compare powers of ten: 10⁻⁸ is larger than 10⁻¹⁰.",
+     "The conclusion is right but Q is wrong: mixing equal volumes halves each concentration before you multiply.",
+     "Dilution matters only through Q; here Q is still far above K<sub>sp</sub>."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-14",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "order",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for finding molar solubility from K<sub>sp</sub> in order.",
+   "options": [
+    "Write the dissolving equation, with the ions in the ratio of the formula.",
+    "Let s be the molar solubility and write each ion concentration as s times its coefficient.",
+    "Write K<sub>sp</sub> with each ion concentration raised to its coefficient, e.g. s(2s)<sup>2</sup> = 4s<sup>3</sup>.",
+    "Solve for s and report it in mol/L."
+   ],
+   "why": {
+    "correct": "Equation, ion concentrations in terms of s, K<sub>sp</sub> expression with exponents, solve."
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-15",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The dissolving of a salt in water is endothermic. A saturated solution with excess solid is warmed. What happens?",
+   "options": [
+    "More solid dissolves, because K<sub>sp</sub> increases.",
+    "Solid precipitates, because K<sub>sp</sub> increases.",
+    "Nothing, because K<sub>sp</sub> is a constant.",
+    "More solid dissolves, because Q increases."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K<sub>sp</sub> is an equilibrium constant, so it changes with temperature. For endothermic dissolving, heating increases K<sub>sp</sub> and the solubility.",
+    "options": [
+     "Right: for an endothermic dissolving process, K<sub>sp</sub> rises with temperature, so Q < K<sub>sp</sub> and more solid dissolves.",
+     "A larger K<sub>sp</sub> means more ions can be in solution, so solid dissolves rather than precipitates.",
+     "K<sub>sp</sub> is constant only at a fixed temperature.",
+     "Warming does not change the ion concentrations at once, so Q does not change. K<sub>sp</sub> does."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-16",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "K<sub>sp</sub> of Ca(OH)<sub>2</sub> is 5.0 × 10<sup>−6</sup> at 25 °C. Calculate [OH<sup>−</sup>] in a saturated solution.",
+   "numeric": {
+    "answer": 0.022,
+    "tol": 0.001,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.0108,
+      "rel": 0.02,
+      "why": "Value: that is s, the molar solubility. Each Ca(OH)₂ gives two OH⁻, so [OH⁻] = 2s."
+     },
+     {
+      "value": 0.00447,
+      "rel": 0.02,
+      "why": "Value: Ca(OH)₂ gives three ions, so K<sub>sp</sub> = s(2s)² = 4s³; use a cube root."
+     },
+     {
+      "value": 0.0271,
+      "rel": 0.02,
+      "why": "Value: (2s)² = 4s², so K<sub>sp</sub> = 4s³, not 2s³."
+     }
+    ]
+   },
+   "why": {
+    "correct": "K<sub>sp</sub> = s(2s)² = 4s³ = 5.0 × 10⁻⁶ → s³ = 1.25 × 10⁻⁶ → s = 1.08 × 10<sup>−2</sup> M. [OH⁻] = 2s = 2.2 × 10<sup>−2</sup> M."
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-17",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The molar solubility of Ag<sub>3</sub>PO<sub>4</sub> in water is 4.3 × 10<sup>−5</sup> M at 25 °C. Calculate K<sub>sp</sub>.",
+   "numeric": {
+    "answer": 9.2e-17,
+    "tol": 1e-18,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1.03e-17,
+      "rel": 0.02,
+      "why": "Value: [Ag⁺] = 3s must be cubed as a whole: (3s)³ = 27s³."
+     },
+     {
+      "value": 3.42e-18,
+      "rel": 0.02,
+      "why": "Value: [Ag⁺] is 3s, not s. K<sub>sp</sub> = (3s)³(s) = 27s⁴."
+     },
+     {
+      "value": 5.55e-9,
+      "rel": 0.02,
+      "why": "Value: raise [Ag⁺] = 3s to the power 3, its coefficient: K<sub>sp</sub> = (3s)³(s)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Ag₃PO₄(s) ⇌ 3 Ag⁺ + PO₄³⁻. [Ag⁺] = 3s, [PO₄³⁻] = s. K<sub>sp</sub> = (3s)³(s) = 27s⁴ = 27(4.3 × 10⁻⁵)⁴ = 9.2 × 10<sup>−17</sup>."
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-18",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "K<sub>sp</sub> of BaSO<sub>4</sub> (molar mass 233.39 g/mol) is 1.1 × 10<sup>−10</sup> at 25 °C. Calculate the mass of BaSO<sub>4</sub> that dissolves in 1.00 L of water.",
+   "numeric": {
+    "answer": 0.0024,
+    "tol": 0.0001,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.0000105,
+      "rel": 0.02,
+      "why": "Value: that is the molar solubility in mol/L. Multiply by 1.00 L and by the molar mass to get grams."
+     },
+     {
+      "value": 2.57e-8,
+      "rel": 0.02,
+      "why": "Value: take the square root of K<sub>sp</sub> first; K<sub>sp</sub> = s² for a 1 : 1 salt."
+     }
+    ]
+   },
+   "why": {
+    "correct": "s = √(1.1 × 10⁻¹⁰) = 1.05 × 10<sup>−5</sup> mol/L. Mass = 1.05 × 10<sup>−5</sup> mol/L × 1.00 L × 233.39 g/mol = 2.4 × 10<sup>−3</sup> g."
+   }
+  },
+  {
+   "id": "chem-solubility-equilibria-19",
+   "unit": "unit-7",
+   "topic": "solubility-equilibria",
+   "type": "multi",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A saturated solution of AgCl is in contact with excess solid at 25 °C. Which statements are true? Select all that apply.",
+   "options": [
+    "[Ag<sup>+</sup>] = [Cl<sup>−</sup>] if no other source of either ion is present.",
+    "Adding more water and stirring dissolves more solid, but [Ag<sup>+</sup>] ends up the same.",
+    "K<sub>sp</sub> is larger when more solid is present.",
+    "No AgCl dissolves once the solution is saturated."
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "In a saturated solution the ion concentrations are fixed by K<sub>sp</sub> at a given temperature. More water dissolves more solid in total, but the concentrations come back to the same values.",
+    "options": [
+     "Right: each AgCl that dissolves gives one of each ion.",
+     "Right: once saturated again, the concentrations return to the values set by K<sub>sp</sub>.",
+     "The solid is not in K<sub>sp</sub>; its amount does not matter.",
+     "Dissolving continues, balanced by precipitation at the same rate."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "mixture": {
+  "def": "Two or more substances together but not bonded into one kind of particle, in proportions that can vary."
+ },
+ "homogeneous-mixture": {
+  "def": "A mixture with the same composition all the way through, such as salt water or air."
+ },
+ "heterogeneous-mixture": {
+  "def": "A mixture whose composition differs from place to place, such as sand in water."
+ },
+ "purity": {
+  "def": "The share of a sample, by mass, that is the substance you want: mass of that substance ÷ mass of the sample × 100."
+ },
+ "elemental-analysis": {
+  "def": "Measuring how much of an element a sample contains, to identify a compound or to work out how pure a sample is."
+ },
+ "particulate-diagram": {
+  "def": "A drawing of a substance at the level of its particles (atoms, molecules, ions), with a key to the symbols."
+ },
+ "macroscopic": {
+  "def": "The scale of things you can see, touch and measure in bulk, such as color, mass or volume, as opposed to the particle level."
+ }
+}

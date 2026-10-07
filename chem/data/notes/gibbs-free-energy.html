@@ -1,0 +1,41 @@
+<p>Two things push a process to happen on its own. Releasing heat (a negative ΔH, topic 6.1) spreads energy into the surroundings. Spreading out the system's own matter and energy (a positive ΔS, topics 9.1 and 9.2) gives the system more microstates. Often both point the same way; sometimes they fight. <b>Gibbs free energy</b> is the single quantity that settles the fight.</p>
+
+<h2>Thermodynamically favored</h2>
+<p>A process is <b>thermodynamically favored</b> if it can proceed on its own, without a continuous supply of energy from outside. (Older books say "spontaneous", but that word suggests "fast", and favorability says nothing about speed; see topic 9.4.) Iron rusting, ice melting in a warm room and a cold pack dissolving are all favored. Water running uphill or salt un-dissolving from seawater is not.</p>
+<p>The test is the change in <b>Gibbs free energy</b>, ΔG:</p>
+<p style="text-align:center"><b>ΔG° = ΔH° − TΔS°</b></p>
+<p>A process is thermodynamically favored when <b>ΔG° &lt; 0</b>. If ΔG° &gt; 0 it is not favored, and the reverse process is. The ° means standard conditions (1 bar for gases, 1 M for solutions); T is in kelvin.</p>
+
+<h2>Getting the units right</h2>
+<p>This is where most points are lost. ΔH° tables are in <b>kJ/mol</b>; ΔS° tables are in <b>J/(mol·K)</b>. Before you subtract, convert one of them: divide ΔS° by 1000 to get kJ/(mol·K). And T must be in kelvin: K = °C + 273.15.</p>
+<div class="worked">
+<p><b>Worked example.</b> For N<sub>2</sub>(g) + 3 H<sub>2</sub>(g) → 2 NH<sub>3</sub>(g), ΔH° = −92.2 kJ/mol and ΔS° = −198.1 J/(mol·K). Is the reaction favored at 25 °C?</p>
+<p>Convert: T = 25 + 273 = 298 K; ΔS° = −198.1 J/(mol·K) × (1 kJ / 1000 J) = −0.1981 kJ/(mol·K).</p>
+<p>ΔG° = ΔH° − TΔS° = −92.2 kJ/mol − (298 K)(−0.1981 kJ/(mol·K)) = −92.2 kJ/mol + 59.03 kJ/mol = −33.2 kJ/mol.</p>
+<p>ΔG° &lt; 0, so the reaction is favored at 298 K. The answer is rounded once, at the end, to the tenths place of ΔH°.</p>
+</div>
+
+<h2>Four sign combinations</h2>
+<figure id="fig-signs" data-fig="gibbs-signs"><figcaption>Figure 1. How the signs of ΔH° and ΔS° decide favorability.</figcaption></figure>
+<p>Because the entropy term is multiplied by T, temperature decides the winner whenever ΔH° and ΔS° disagree. <a class="figref" href="#fig-signs">Figure 1</a> sums it up:</p>
+<ul>
+<li><b>ΔH° &lt; 0, ΔS° &gt; 0:</b> both terms are negative, so ΔG° &lt; 0 at every temperature. Example: the combustion of a fuel that makes more moles of gas.</li>
+<li><b>ΔH° &gt; 0, ΔS° &lt; 0:</b> both terms are positive, so ΔG° &gt; 0 at every temperature. The process is not favored at any temperature; its reverse is favored at all temperatures.</li>
+<li><b>ΔH° &lt; 0, ΔS° &lt; 0:</b> favored at low T, where ΔH° dominates. Example: water freezing, favored below 273 K.</li>
+<li><b>ΔH° &gt; 0, ΔS° &gt; 0:</b> favored at high T, where TΔS° dominates. Example: ice melting, favored above 273 K.</li>
+</ul>
+
+<h2>The crossover temperature</h2>
+<p>When the signs agree, the switch happens where ΔG° = 0, so ΔH° = TΔS°, or <b>T = ΔH°/ΔS°</b>. (This assumes ΔH° and ΔS° change little with temperature, which is close enough for the exam.)</p>
+<div class="worked">
+<p><b>Worked example.</b> CaCO<sub>3</sub>(s) → CaO(s) + CO<sub>2</sub>(g) has ΔH° = +178.3 kJ/mol and ΔS° = +160.2 J/(mol·K). Above what temperature is it favored?</p>
+<p>Convert ΔH° to joules so the units cancel: 178.3 kJ/mol = 178,300 J/mol.</p>
+<p>T = ΔH°/ΔS° = (178,300 J/mol) / (160.2 J/(mol·K)) = 1113 K.</p>
+<p>Above 1113 K, TΔS° &gt; ΔH° and ΔG° &lt; 0. That is why lime kilns run hot, and why limestone buildings do not crumble at room temperature.</p>
+</div>
+
+<h2>ΔG° from free energies of formation</h2>
+<p>Tables also list the standard free energy of formation, ΔG°f, for many compounds. It works exactly like ΔH°f: ΔG°<sub>rxn</sub> = Σ nΔG°f(products) − Σ nΔG°f(reactants), and ΔG°f is zero for an element in its standard state. Use this method when ΔG°f values are given; use ΔH° − TΔS° when ΔH° and ΔS° are given or when the temperature is not 298 K.</p>
+
+<h2>Explaining favorability in words</h2>
+<p>A full answer names both terms and says which wins. For a cold pack (NH<sub>4</sub>NO<sub>3</sub> dissolving): "Dissolving absorbs heat, so ΔH° &gt; 0, which works against favorability. But the ions spread out through the solution, so ΔS° &gt; 0. At room temperature TΔS° is larger than ΔH°, so ΔG° = ΔH° − TΔS° &lt; 0 and the process is favored." Saying "it is favored because it is endothermic" or "because entropy increases", with nothing about the other term, does not earn the point.</p>

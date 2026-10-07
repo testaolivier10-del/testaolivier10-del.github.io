@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" role="img" aria-labelledby="t d">
+<title id="t">ΔG°, K and E°cell: one triangle</title>
+<desc id="d">A triangle with ΔG° at the top, K at the bottom left and E°cell at the bottom right. The side from ΔG° to K is labeled ΔG° = −RT ln K. The side from ΔG° to E°cell is labeled ΔG° = −nFE°cell. The bottom side links K and E°cell. Beneath, a sign table: a favored reaction has ΔG° negative, K greater than 1 and E°cell positive; an unfavored reaction has ΔG° positive, K less than 1 and E°cell negative.</desc>
+<rect width="760" height="380" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<path d="M380,50 L190,230 L570,230 Z" fill="#E3EAFA" stroke="#1D44A6" stroke-width="3"/>
+<g font-size="20" font-weight="700" text-anchor="middle">
+<circle cx="380" cy="50" r="32" fill="#ffffff" stroke="#1D44A6" stroke-width="3"/><text x="380" y="57">ΔG°</text>
+<circle cx="190" cy="230" r="32" fill="#ffffff" stroke="#1D44A6" stroke-width="3"/><text x="190" y="237">K</text>
+<circle cx="570" cy="230" r="32" fill="#ffffff" stroke="#1D44A6" stroke-width="3"/><text x="570" y="237">E°cell</text>
+</g>
+<g font-size="15" font-weight="700"><text x="150" y="130" text-anchor="end">ΔG° = −RT ln K</text><text x="610" y="130">ΔG° = −nFE°cell</text></g>
+<text x="380" y="255" font-size="14" text-anchor="middle">both depend on how far the reaction goes</text>
+<g font-size="14">
+<rect x="110" y="285" width="540" height="80" fill="#F4F6F6" stroke="#5D6B69"/>
+<text x="130" y="315" font-weight="700">favored:</text><text x="250" y="315">ΔG° &lt; 0</text><text x="390" y="315">K &gt; 1</text><text x="510" y="315">E°cell &gt; 0</text>
+<text x="130" y="348" font-weight="700">not favored:</text><text x="250" y="348">ΔG° &gt; 0</text><text x="390" y="348">K &lt; 1</text><text x="510" y="348">E°cell &lt; 0</text>
+</g>
+</g></svg>

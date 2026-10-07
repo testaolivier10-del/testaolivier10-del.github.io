@@ -1,0 +1,80 @@
+{
+ "topic": "separating-mixtures",
+ "hook": "Forensic chemists can tell which pen wrote a note by separating the dyes in its ink. Refineries split crude oil into gasoline and diesel. Each separation works because the parts of a mixture are held by different forces.",
+ "prereq": [
+  {
+   "q": "Which liquid has the higher vapor pressure at 25 °C?",
+   "options": [
+    "The one with weaker intermolecular forces",
+    "The one with stronger intermolecular forces",
+    "The one with more mass"
+   ],
+   "correct": 0,
+   "why": "Weaker attractions let more molecules escape.",
+   "review": "phases-of-matter"
+  },
+  {
+   "q": "Which molecule can hydrogen-bond to an –OH group?",
+   "options": [
+    "CH₃OH",
+    "CH₄",
+    "C₆H₁₄"
+   ],
+   "correct": 0,
+   "why": "Methanol has an O–H group and lone pairs on O.",
+   "review": "intermolecular-forces"
+  }
+ ],
+ "figure": {
+  "figure": "chromatogram-rf",
+  "caption": "Rf compares how far each spot traveled with how far the solvent traveled."
+ },
+ "chain": [
+  {
+   "cause": "Components of a mixture differ in size, attractions or volatility",
+   "effect": "physical methods can separate them without changing them"
+  },
+  {
+   "cause": "In chromatography each component is pulled by a stationary and a mobile phase",
+   "effect": "the one held more by the stationary phase moves more slowly and has a smaller Rf"
+  },
+  {
+   "cause": "In distillation the component with weaker intermolecular forces has the higher vapor pressure",
+   "effect": "it boils off first and is collected first"
+  },
+  {
+   "cause": "Undissolved solids are larger than filter pores; dissolved particles are not",
+   "effect": "filtration removes solids but cannot separate a solution"
+  }
+ ],
+ "ideas": [
+  "Filtration: undissolved solid from liquid, by size.",
+  "Chromatography: stronger attraction to the stationary phase means slower movement. Rf = spot distance ÷ solvent distance.",
+  "Paper is polar: polar components lag; a more polar solvent carries them farther.",
+  "Distillation: weaker intermolecular forces, higher vapor pressure, vaporizes first."
+ ],
+ "misconception": {
+  "wrong": "In chromatography, heavier molecules move more slowly because they are harder to carry.",
+  "right": "Separation follows attractions, not mass. A component held more strongly by the stationary phase moves more slowly, whatever its mass."
+ },
+ "check": [
+  "chem-separating-mixtures-1",
+  "chem-separating-mixtures-2",
+  "chem-separating-mixtures-3",
+  "chem-separating-mixtures-6",
+  "chem-separating-mixtures-7",
+  "chem-separating-mixtures-11",
+  "chem-separating-mixtures-13"
+ ],
+ "summary": "Mixtures are separated by physical properties that trace back to particle forces. Filtration removes undissolved solids by size. Chromatography separates components by their attraction to a stationary phase versus a mobile phase, measured by Rf. Distillation separates liquids by vapor pressure: weaker intermolecular forces vaporize first.",
+ "connections": [
+  {
+   "href": "../notes/phases-of-matter.html",
+   "label": "Vapor pressure and boiling (Solids, Liquids, and Gases)"
+  },
+  {
+   "href": "../notes/solubility.html",
+   "label": "Next: why some substances dissolve and others do not (Solubility)"
+  }
+ ]
+}

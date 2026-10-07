@@ -1,0 +1,40 @@
+<p>Topic 7.11 calculated how much of a slightly soluble salt dissolves in pure water. Real water is rarely pure: seawater, blood and lab solutions already contain ions. If the solution already holds one of the ions the salt releases, the salt dissolves <i>less</i>. This is the <b>common-ion effect</b>, and it is Le Châtelier's principle (topic 7.9) applied to a solubility equilibrium.</p>
+
+<h2>Why a common ion lowers solubility</h2>
+<figure id="fig-cie" data-fig="common-ion-shift"><figcaption>Figure 1. The molar solubility of PbCl<sub>2</sub> drops as [Cl<sup>−</sup>] from NaCl rises.</figcaption></figure>
+<p>Take a saturated solution of lead(II) chloride: PbCl<sub>2</sub>(s) ⇌ Pb<sup>2+</sup>(aq) + 2 Cl<sup>−</sup>(aq), with Q = K<sub>sp</sub>. Now dissolve some NaCl, which supplies Cl<sup>−</sup>, a <b>common ion</b>.</p>
+<ul>
+<li><b>Q vs K<sub>sp</sub>:</b> [Cl<sup>−</sup>] goes up, so Q = [Pb<sup>2+</sup>][Cl<sup>−</sup>]<sup>2</sup> rises above K<sub>sp</sub>. The net reaction runs in reverse: PbCl<sub>2</sub> precipitates until Q = K<sub>sp</sub> again.</li>
+<li><b>Particles:</b> more Cl<sup>−</sup> ions in solution meet Pb<sup>2+</sup> ions at the surface of the solid more often, so ions rejoin the crystal faster. The dissolving and precipitation rates balance with less salt dissolved.</li>
+<li><b>K<sub>sp</sub> does not change.</b> Only temperature changes it. What changes is the <i>solubility</i>: how much of the salt dissolves.</li>
+</ul>
+<p>Only an ion that appears in the solubility equilibrium counts. KNO<sub>3</sub> does nothing to PbCl<sub>2</sub>; NaCl or Pb(NO<sub>3</sub>)<sub>2</sub> both lower its solubility.</p>
+
+<h2>Calculating solubility with a common ion</h2>
+<p>The shared ion's concentration is (common ion) + (amount from the dissolving salt). Because the salt is only slightly soluble, and even less so now, the second term is usually tiny and can be dropped, exactly like the small-x approximation of topic 7.7.</p>
+<div class="worked">
+<p><b>Worked example.</b> K<sub>sp</sub> of PbCl<sub>2</sub> is 1.7 × 10<sup>−5</sup> at 25 °C. Find its molar solubility in 0.25 M NaCl.</p>
+<p>1. Dissolving equation: PbCl<sub>2</sub>(s) ⇌ Pb<sup>2+</sup> + 2 Cl<sup>−</sup>.</p>
+<table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">[Pb<sup>2+</sup>] (M)</th><th scope="col">[Cl<sup>−</sup>] (M)</th></tr></thead>
+<tbody>
+<tr><th scope="row">Initial</th><td>0</td><td>0.25 (from NaCl)</td></tr>
+<tr><th scope="row">Change</th><td>+s</td><td>+2s</td></tr>
+<tr><th scope="row">Equilibrium</th><td>s</td><td>0.25 + 2s ≈ 0.25</td></tr>
+</tbody></table>
+<p>2. K<sub>sp</sub> = s(0.25 + 2s)<sup>2</sup> ≈ s(0.25)<sup>2</sup> = 0.0625 s.</p>
+<p>3. s = 1.7 × 10<sup>−5</sup> / 0.0625 = <b>2.7 × 10<sup>−4</sup> M</b>.</p>
+<p>4. Check: 2s = 5.4 × 10<sup>−4</sup> M, which is 0.2% of 0.25 M. Well under 5%, so the approximation holds. (Because [Cl<sup>−</sup>] is squared, the error in s is about twice that percentage, so a small check value matters here.)</p>
+<p>Compare with pure water: 4s<sup>3</sup> = 1.7 × 10<sup>−5</sup> gives s = 1.6 × 10<sup>−2</sup> M. The NaCl cut the solubility by a factor of about 60.</p>
+</div>
+<div class="worked">
+<p><b>Worked example.</b> K<sub>sp</sub> of Ag<sub>2</sub>CrO<sub>4</sub> is 1.1 × 10<sup>−12</sup>. Find its molar solubility in 0.050 M AgNO<sub>3</sub>.</p>
+<p>1. [Ag<sup>+</sup>] = 0.050 + 2s ≈ 0.050 M; [CrO<sub>4</sub><sup>2−</sup>] = s.</p>
+<p>2. K<sub>sp</sub> = [Ag<sup>+</sup>]<sup>2</sup>[CrO<sub>4</sub><sup>2−</sup>] ≈ (0.050)<sup>2</sup>s = 0.0025 s.</p>
+<p>3. s = 1.1 × 10<sup>−12</sup> / 0.0025 = <b>4.4 × 10<sup>−10</sup> M</b>. Note: the 0.050 M is squared because Ag<sup>+</sup> has the coefficient 2, but it is <i>not</i> doubled; it is the actual concentration of Ag<sup>+</sup> from AgNO<sub>3</sub>.</p>
+</div>
+<p>Two more slips to watch: count the ions the soluble salt supplies (0.020 M CaCl<sub>2</sub> gives 0.040 M Cl<sup>−</sup>), and check the approximation. In 0.010 M NaCl, the approximation for PbCl<sub>2</sub> gives s = 0.17 M, larger than in pure water, which is impossible; 2s is far more than 5% of 0.010 M, so the full expression is needed there.</p>
+
+<h2>Where it matters</h2>
+<p>Chemists use the common-ion effect to make sure a precipitate forms completely, for example adding extra sulfate so that nearly every Ba<sup>2+</sup> ion leaves solution as BaSO<sub>4</sub> in a gravimetric analysis (topic 4.6). It is also why the solubility of a salt quoted in a table, measured in pure water, can be far too high for a real solution.</p>
+<aside class="going-further"><p><b>For your exam:</b> justify a common-ion question with Q and K<sub>sp</sub>: "Adding Cl<sup>−</sup> increases Q above K<sub>sp</sub>, so PbCl<sub>2</sub> precipitates until Q = K<sub>sp</sub>; the molar solubility decreases." Never say K<sub>sp</sub> decreased.</p></aside>

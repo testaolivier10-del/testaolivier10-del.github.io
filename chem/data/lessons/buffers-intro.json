@@ -1,0 +1,98 @@
+{
+ "topic": "buffers-intro",
+ "hook": "Your blood stays between pH 7.35 and 7.45 even after a sprint floods it with lactic acid. Pure water would swing by several pH units with the same acid. The difference is a buffer: a weak acid and its conjugate base side by side, each ready to soak up whatever is added.",
+ "prereq": [
+  {
+   "q": "What is the conjugate base of H₂CO₃?",
+   "options": [
+    "HCO₃⁻",
+    "CO₃²⁻",
+    "H₃CO₃⁺",
+    "CO₂"
+   ],
+   "correct": 0,
+   "why": "Remove one proton: H₂CO₃ → HCO₃⁻.",
+   "review": "acid-base-reactions-intro"
+  },
+  {
+   "q": "Ka of HF is 6.8 × 10⁻⁴. What is Kb of F⁻?",
+   "options": [
+    "1.5 × 10⁻¹¹",
+    "6.8 × 10⁻⁴",
+    "1.5 × 10³",
+    "6.8 × 10⁻¹⁸"
+   ],
+   "correct": 0,
+   "why": "Kb = Kw / Ka = 1.0 × 10⁻¹⁴ / 6.8 × 10⁻⁴ = 1.5 × 10⁻¹¹.",
+   "review": "weak-acids-bases"
+  },
+  {
+   "q": "30.0 mL of 0.100 M NaOH is added to 20.0 mL of 0.100 M HCl. What is left over?",
+   "options": [
+    "1.00 × 10⁻³ mol OH⁻",
+    "1.00 × 10⁻³ mol H₃O⁺",
+    "Nothing: the solution is neutral",
+    "5.00 × 10⁻³ mol OH⁻"
+   ],
+   "correct": 0,
+   "why": "3.00 × 10⁻³ mol OH⁻ − 2.00 × 10⁻³ mol H₃O⁺ = 1.00 × 10⁻³ mol OH⁻ in excess.",
+   "review": "strong-acids-bases"
+  }
+ ],
+ "figure": {
+  "figure": "buffer-reactions",
+  "caption": "A buffer holds both members of a conjugate pair. Each takes care of one kind of addition."
+ },
+ "chain": [
+  {
+   "cause": "A strong acid or base reacting with a weak partner has a huge K",
+   "effect": "the reaction goes essentially to completion: do it first, with moles"
+  },
+  {
+   "cause": "Partly neutralizing a weak acid leaves both HA and A⁻",
+   "effect": "the mixture is a buffer, and [H₃O⁺] = Ka × [HA]/[A⁻]"
+  },
+  {
+   "cause": "Fully neutralizing a weak acid leaves only its conjugate base",
+   "effect": "the solution is basic at equivalence, not neutral"
+  },
+  {
+   "cause": "Added H₃O⁺ meets A⁻ and added OH⁻ meets HA in a buffer",
+   "effect": "the added ions are used up and the pH changes only a little"
+  }
+ ],
+ "ideas": [
+  "Strong + weak acid-base reactions go to completion (K = Ka/Kw or Kb/Kw, huge). Use moles, react first, then find the pH.",
+  "At equivalence: strong acid + strong base gives pH 7; weak acid + strong base gives a basic solution; weak base + strong acid an acidic one.",
+  "A <b>buffer</b> is a weak acid with its conjugate base (or a weak base with its conjugate acid) in similar amounts.",
+  "Make a buffer by mixing HA with a salt of A⁻, or by adding strong base to a weak acid (less than one mole of base per mole of acid)."
+ ],
+ "misconception": {
+  "wrong": "Equal moles of acid and base always give a neutral solution.",
+  "right": "Only for a strong acid with a strong base. A weak acid neutralized by a strong base leaves its conjugate base, which makes the solution basic; a weak base with a strong acid leaves an acidic solution."
+ },
+ "check": [
+  "chem-buffers-intro-1",
+  "chem-buffers-intro-2",
+  "chem-buffers-intro-3",
+  "chem-buffers-intro-4",
+  "chem-buffers-intro-6",
+  "chem-buffers-intro-7",
+  "chem-buffers-intro-13"
+ ],
+ "summary": "When a strong acid or base meets a weak one, the reaction goes to completion, so you react the moles first and then ask what is left. Leftover weak acid plus its conjugate base is a buffer, with [H₃O⁺] = Ka × [HA]/[A⁻]; only the conjugate base left means a basic solution; excess strong base sets the pH by itself.",
+ "connections": [
+  {
+   "href": "../notes/weak-acids-bases.html",
+   "label": "Back: weak acids, Ka and Kb (8.3)"
+  },
+  {
+   "href": "../notes/acid-base-titrations.html",
+   "label": "Next: titrations (8.5)"
+  },
+  {
+   "href": "../notes/net-ionic-equations.html",
+   "label": "Back: net ionic equations (4.2)"
+  }
+ ]
+}

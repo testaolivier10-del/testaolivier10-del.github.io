@@ -1,0 +1,12 @@
+{
+ "formation-pathway": {
+  "file": "figures/formation-pathway.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Enthalpy ladder for CH₄ + 2 O₂ → CO₂ + 2 H₂O(l). A dashed reference line marks the elements in their standard states (ΔH°f = 0). The reactants lie 74.8 kJ below it and the products 965.1 kJ below it. Step 1 takes the reactants apart into elements (+74.8 kJ); step 2 builds the products from elements (−965.1 kJ); overall ΔH° = −890.3 kJ."
+ }
+}

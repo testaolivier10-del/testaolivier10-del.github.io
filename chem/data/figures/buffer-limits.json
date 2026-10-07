@@ -1,0 +1,12 @@
+{
+ "buffer-limits-curves": {
+  "file": "figures/buffer-limits-curves.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "pH against moles of NaOH added to two 1.00 L buffers with pKa 4.74, both starting at pH 4.74. The dilute buffer (0.0200 mol each of HA and A⁻, dashed) fails after about 0.02 mol of base; the concentrated buffer (0.100 mol each, solid) holds until about 0.10 mol."
+ }
+}

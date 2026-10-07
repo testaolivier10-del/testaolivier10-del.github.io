@@ -1,0 +1,494 @@
+{
+ "stimuli": {
+  "solubility-s1": {
+   "kind": "graph",
+   "title": "How much alcohol dissolves in water",
+   "text": "<p>Solubility at 20 °C of straight-chain alcohols with one –OH group, plotted against the number of carbon atoms. Methanol, ethanol and 1-propanol mix with water in all proportions and are not plotted.</p>",
+   "chart": {
+    "type": "bar",
+    "x": {
+     "label": "Carbon atoms per molecule",
+     "categories": [
+      "4",
+      "5",
+      "6",
+      "7"
+     ]
+    },
+    "y": {
+     "label": "Solubility",
+     "unit": "g per 100 g water",
+     "min": 0,
+     "max": 9,
+     "step": 1.5
+    },
+    "series": [
+     {
+      "name": "Solubility",
+      "points": [
+       [
+        "4",
+        7.7
+       ],
+       [
+        "5",
+        2.2
+       ],
+       [
+        "6",
+        0.59
+       ],
+       [
+        "7",
+        0.17
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "solubility-s2": {
+   "kind": "table",
+   "title": "Oxygen dissolved in water",
+   "text": "<p>The concentration of O₂ dissolved in water that is in contact with air (O₂ partial pressure 0.21 atm) at several temperatures.</p>",
+   "table": {
+    "caption": "Dissolved oxygen in water under air",
+    "cols": [
+     "Water temperature (°C)",
+     "Dissolved O₂ (mg/L)"
+    ],
+    "rows": [
+     [
+      "0",
+      "14.6"
+     ],
+     [
+      "10",
+      "11.3"
+     ],
+     [
+      "20",
+      "9.1"
+     ],
+     [
+      "30",
+      "7.6"
+     ],
+     [
+      "40",
+      "6.4"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-solubility-1",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "solubility-s1",
+   "q": "Which statement describes the trend in the graph?",
+   "options": [
+    "Solubility in water falls as the carbon chain gets longer.",
+    "Solubility in water rises as the carbon chain gets longer.",
+    "Solubility in water is about the same for each alcohol.",
+    "Solubility rises to a maximum at 6 carbons, then falls."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From 4 to 7 carbons the solubility drops from 7.7 to 0.17 g per 100 g water, each bar lower than the one before.",
+    "options": [
+     "Right: a steady fall.",
+     "This reverses the trend.",
+     "The values span a factor of about 45.",
+     "The 6-carbon bar is lower than the 4- and 5-carbon bars."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-2",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "solubility-s1",
+   "q": "Which explanation accounts for the trend?",
+   "options": [
+    "A longer nonpolar chain costs more water–water hydrogen bonds; the one –OH adds the same.",
+    "Longer alcohols have more –OH groups, which repel the water molecules around them.",
+    "Longer alcohols are heavier, and heavier molecules sink rather than dissolving.",
+    "Longer chains are more polar, so they are attracted to water too strongly to dissolve."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each alcohol has one –OH that hydrogen-bonds to water. The growing carbon–hydrogen part attracts water only weakly, and fitting it in costs water–water hydrogen bonds, so solubility falls.",
+    "options": [
+     "Right: the nonpolar part grows; the polar part does not.",
+     "Each of these alcohols has one –OH group, and –OH attracts water.",
+     "Dissolving depends on attractions, not on whether a molecule is heavy.",
+     "Carbon–hydrogen chains are nonpolar; longer chains make the molecule less polar overall."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-3",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solubility-s1",
+   "q": "Based on the trend, how would 1-octanol (8 carbons) dissolve in water?",
+   "options": [
+    "It would be miscible with water",
+    "About 7.7 g per 100 g water",
+    "Between 0.17 and 0.59 g per 100 g water",
+    "Less than 0.17 g per 100 g water"
+   ],
+   "correct": 3,
+   "fixed": true,
+   "why": {
+    "correct": "Each added carbon lowers the solubility; 1-octanol should fall below 1-heptanol's 0.17 g. (Its measured value is about 0.05 g per 100 g water.)",
+    "options": [
+     "Miscibility belongs to the shortest alcohols, up to 3 carbons.",
+     "That is the 4-carbon value.",
+     "That range lies between the 6- and 7-carbon values; 8 carbons should be lower still.",
+     "Right: below the 7-carbon value."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-4",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "solubility-s1",
+   "q": "1-Hexanol dissolves only slightly in water, but it mixes completely with hexane (C₆H₁₄). Which explanation is best?",
+   "options": [
+    "Its chain attracts hexane by dispersion forces like those hexane loses; in water it costs hydrogen bonds.",
+    "Hexane hydrogen-bonds to the –OH group of 1-hexanol more strongly than water can.",
+    "1-Hexanol becomes nonpolar when mixed with hexane, because its –OH group breaks off.",
+    "Hexane molecules repel water, so they push 1-hexanol out of the water and into the hexane."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Like dissolves like: hexane is nonpolar, and the long chain of 1-hexanol interacts with it by dispersion forces of similar strength to those it replaces. In water the same chain disrupts strong hydrogen bonds.",
+    "options": [
+     "Right: comparable attractions in hexane; a poor trade in water.",
+     "Hexane has no H on N, O or F and cannot hydrogen-bond.",
+     "Mixing does not break covalent bonds; the –OH stays on the molecule.",
+     "Water and hexane do not repel; water molecules just attract each other much more."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-5",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "solubility-s2",
+   "q": "How does the solubility of O₂ in water change as the temperature rises?",
+   "options": [
+    "It increases.",
+    "It decreases.",
+    "It stays the same.",
+    "It increases, then decreases."
+   ],
+   "correct": 1,
+   "fixed": true,
+   "why": {
+    "correct": "The dissolved O₂ falls from 14.6 mg/L at 0 °C to 6.4 mg/L at 40 °C.",
+    "options": [
+     "This reverses the trend in the table.",
+     "Right: lower at each higher temperature.",
+     "The values change by more than half.",
+     "Every value is lower than the one before."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-6",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "solubility-s2",
+   "q": "Which particle-level explanation accounts for the trend?",
+   "options": [
+    "Faster dissolved O₂ molecules escape their weak attractions to water more easily.",
+    "At higher temperature, water molecules hydrogen-bond more strongly to O₂ and pull it apart into atoms.",
+    "At higher temperature, O₂ molecules become polar and are repelled by the polar water molecules.",
+    "At higher temperature, the air contains less oxygen, so less of it can dissolve in the water."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "O₂ is held in water only by weak dipole-induced dipole and dispersion forces. Faster-moving molecules break away and escape into the air more readily.",
+    "options": [
+     "Right: more kinetic energy, more escape.",
+     "O₂ cannot hydrogen-bond, and dissolving does not break the O=O bond.",
+     "O₂ is nonpolar at any temperature.",
+     "The O₂ partial pressure in air is 0.21 atm throughout."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-7",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solubility-s2",
+   "q": "A power plant releases warm water into a river. Which consequence follows from the data?",
+   "options": [
+    "The warmer water holds less dissolved oxygen, which can stress fish.",
+    "The warmer water holds more dissolved oxygen, which helps fish.",
+    "The dissolved oxygen is unchanged, because the air above is unchanged.",
+    "The dissolved oxygen is driven out at once at 40 °C."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From 20 °C to 30 °C, dissolved O₂ falls from 9.1 to 7.6 mg/L. Warmer water holds less oxygen.",
+    "options": [
+     "Right: less oxygen in warmer water.",
+     "Warmer water holds less oxygen, not more.",
+     "Temperature changes the amount dissolved, even with the same air.",
+     "At 40 °C the water still holds 6.4 mg/L."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-8",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "solubility-s2",
+   "q": "At 20 °C, how would the dissolved O₂ change if the water were in contact with pure O₂ at 1.00 atm instead of air?",
+   "options": [
+    "It would increase, because a higher O₂ pressure drives more O₂ in.",
+    "It would decrease, because pure O₂ pushes on the water and squeezes the dissolved gas out.",
+    "It would stay at 9.1 mg/L, because the solubility of O₂ is set by temperature.",
+    "It would fall to zero, because pure O₂ would react with the water to form a new compound."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Raising the partial pressure from 0.21 atm to 1.00 atm makes O₂ molecules strike and enter the surface more often, so more dissolves (roughly 1.00/0.21 ≈ 4.8 times as much).",
+    "options": [
+     "Right: higher partial pressure, more gas dissolved.",
+     "Pressure pushes gas into the liquid, not out.",
+     "Gas solubility depends on both temperature and pressure.",
+     "O₂ does not react with water."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-9",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which substance is most likely to dissolve well in hexane, C₆H₁₄?",
+   "options": [
+    "Iodine, I₂",
+    "Sodium chloride, NaCl",
+    "Sucrose, C₁₂H₂₂O₁₁",
+    "Methanol, CH₃OH"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Hexane is nonpolar. I₂ is nonpolar too, so dispersion attractions between them are comparable to those each loses.",
+    "options": [
+     "Right: like dissolves like.",
+     "Hexane cannot form ion-dipole attractions to replace NaCl's ionic bonds.",
+     "Sucrose's many –OH groups hydrogen-bond to each other; hexane offers nothing comparable.",
+     "Methanol hydrogen-bonds to itself; hexane cannot replace those attractions, though they do mix partly."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-10",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Why does ethanol, CH₃CH₂OH, mix with water in all proportions?",
+   "options": [
+    "Its –OH group hydrogen-bonds to water and its chain is short.",
+    "It is an ionic compound that separates into ions surrounded by water molecules.",
+    "It has the same molar mass as water, so the two liquids have equal densities.",
+    "Its molecules are nonpolar, so they fit between water molecules without any attraction."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ethanol's –OH group forms hydrogen bonds with water about as strong as the ethanol–ethanol and water–water hydrogen bonds it replaces, and its two-carbon chain is too short to disrupt much.",
+    "options": [
+     "Right: comparable hydrogen bonds formed.",
+     "Ethanol is a molecular compound and forms no ions.",
+     "Ethanol (46.07 g/mol) is much heavier than water (18.02 g/mol), and mass is not the cause.",
+     "Ethanol is polar, with an O–H group."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-11",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says, \"Oil and water separate because oil molecules and water molecules repel each other.\" Which is the best correction?",
+   "options": [
+    "They attract weakly; water molecules attract each other much more.",
+    "They attract strongly, but oil molecules are too large to fit into the spaces between water molecules.",
+    "They repel because both are polar, and like charges on polar molecules push each other away.",
+    "They separate because oil is denser than water and sinks below it, which keeps the layers apart."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Oil and water molecules attract by weak dispersion and dipole-induced dipole forces. Dissolving oil would cost water–water hydrogen bonds and give back much weaker attractions, so the water keeps to itself.",
+    "options": [
+     "Right: a poor trade of attractions, not repulsion.",
+     "The attraction is weak, not strong; and size is not the main reason.",
+     "Oil is nonpolar, and polar molecules attract each other.",
+     "Oil is less dense and floats; density decides which layer is on top, not whether they mix."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-12",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pairs of liquids are likely to mix completely? Select all that apply.",
+   "options": [
+    "Water and methanol, CH₃OH",
+    "Hexane and octane, C₈H₁₈",
+    "Water and hexane",
+    "Water and carbon tetrachloride, CCl₄"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Like dissolves like. Water and methanol both hydrogen-bond. Hexane and octane are both nonpolar. Water with nonpolar hexane or CCl₄ separates into layers.",
+    "options": [
+     "Right: both hydrogen-bond.",
+     "Right: both nonpolar, attracting by dispersion.",
+     "Hexane would cost water its hydrogen bonds.",
+     "CCl₄ is symmetric and nonpolar."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-13",
+   "type": "predict",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A sealed bottle of soda is at 5 °C under CO₂ at 3.5 atm. Predict how the amount of CO₂ dissolved changes after each change.",
+   "variables": [
+    {
+     "name": "The bottle is opened, so the CO₂ pressure above the soda falls to about 0.0004 atm",
+     "answer": "down",
+     "why": "Lower partial pressure of CO₂ means fewer molecules enter the liquid per second than leave, so CO₂ comes out as bubbles."
+    },
+    {
+     "name": "The sealed bottle warms to 25 °C",
+     "answer": "down",
+     "why": "Warmer dissolved CO₂ molecules have more kinetic energy and escape the liquid more easily, so less stays dissolved."
+    },
+    {
+     "name": "The sealed bottle is gently turned upside down and back at 5 °C",
+     "answer": "none",
+     "why": "Turning the bottle changes neither the temperature nor the CO₂ pressure, so the amount dissolved at equilibrium is unchanged."
+    }
+   ],
+   "why": {
+    "correct": "Gas solubility rises with the gas's partial pressure and falls as temperature rises."
+   }
+  },
+  {
+   "id": "chem-solubility-14",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does \"like dissolves like\" mean?",
+   "options": [
+    "Substances with similar kinds of intermolecular forces tend to dissolve in each other.",
+    "Substances with similar molar masses tend to dissolve in each other.",
+    "Substances of the same color tend to dissolve in each other.",
+    "Substances in the same state of matter tend to dissolve in each other."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Polar or ionic solutes dissolve in polar solvents, and nonpolar in nonpolar, because the attractions formed match those broken.",
+    "options": [
+     "Right: similar attractions.",
+     "Molar mass does not decide solubility.",
+     "Color has nothing to do with solubility.",
+     "Solids and gases dissolve in liquids all the time."
+    ]
+   }
+  },
+  {
+   "id": "chem-solubility-15",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solubility",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Vitamin C has several –OH groups; vitamin A is mostly a long carbon–hydrogen chain with one –OH. Which statement is best supported?",
+   "options": [
+    "Vitamin C dissolves well in water; vitamin A dissolves better in oils.",
+    "Vitamin A dissolves well in water; vitamin C dissolves better in fats and oils.",
+    "Both dissolve equally well in water, because each has at least one –OH group.",
+    "Neither dissolves in water, because both are molecular compounds."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Vitamin C's many –OH groups hydrogen-bond to water. Vitamin A's long nonpolar chain dominates its single –OH, so it dissolves in nonpolar fats instead.",
+    "options": [
+     "Right: many polar groups versus a long nonpolar chain.",
+     "This reverses the two.",
+     "One –OH on a long chain is not enough, as the alcohol series shows.",
+     "Many molecular compounds, such as sugar, dissolve well in water."
+    ]
+   }
+  }
+ ]
+}

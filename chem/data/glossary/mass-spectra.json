@@ -1,0 +1,44 @@
+{
+ "proton": {
+  "def": "A positively charged particle in the nucleus of an atom; the number of protons decides which element an atom is."
+ },
+ "neutron": {
+  "def": "A particle with no charge in the nucleus of an atom, with almost the same mass as a proton."
+ },
+ "electron": {
+  "def": "A tiny negatively charged particle outside the nucleus; it has about 1/1800 of the mass of a proton."
+ },
+ "nucleus": {
+  "def": "The small, dense center of an atom, made of protons and neutrons, which holds almost all of the atom's mass."
+ },
+ "atomic-number": {
+  "def": "The number of protons in an atom's nucleus, which identifies the element (carbon is 6, oxygen 8)."
+ },
+ "mass-number": {
+  "def": "The number of protons plus neutrons in an atom's nucleus, written as in carbon-14 or ¹⁴C."
+ },
+ "isotope": {
+  "def": "Atoms of the same element (same number of protons) with different numbers of neutrons, and so different masses."
+ },
+ "ion": {
+  "def": "An atom or group of atoms with an electric charge, because it has gained or lost electrons."
+ },
+ "cation": {
+  "def": "A positive ion: it has fewer electrons than protons, such as Na⁺."
+ },
+ "anion": {
+  "def": "A negative ion: it has more electrons than protons, such as Cl⁻."
+ },
+ "relative-abundance": {
+  "def": "The share of an element's atoms that are one particular isotope, usually given as a percent."
+ },
+ "mass-spectrum": {
+  "def": "A graph from a mass spectrometer showing the masses of the ions in a sample and how many of each there are; for an element, one peak per isotope."
+ },
+ "mass-to-charge": {
+  "def": "The mass of an ion divided by its charge (m/z), the quantity a mass spectrometer sorts by; for a 1+ ion it equals the mass."
+ },
+ "average-atomic-mass": {
+  "def": "The mean mass of an element's atoms, weighting each isotope's mass by its relative abundance; the value on the periodic table."
+ }
+}

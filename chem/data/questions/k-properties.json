@@ -1,0 +1,523 @@
+{
+ "stimuli": {
+  "k-properties-s1": {
+   "kind": "table",
+   "title": "Two reactions of nitrogen oxides",
+   "text": "<p>A student is given K<sub>c</sub> values for two reactions at 25 °C and wants K<sub>c</sub> for related reactions at 25 °C.</p>",
+   "table": {
+    "caption": "Given reactions",
+    "cols": [
+     "Reaction",
+     "Equation",
+     "K<sub>c</sub>"
+    ],
+    "rows": [
+     [
+      "A",
+      "N<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2 NO(g)",
+      "4.5 × 10<sup>−31</sup>"
+     ],
+     [
+      "B",
+      "2 NO(g) + O<sub>2</sub>(g) ⇌ 2 NO<sub>2</sub>(g)",
+      "6.0 × 10<sup>13</sup>"
+     ]
+    ]
+   }
+  },
+  "k-properties-s2": {
+   "kind": "table",
+   "title": "K at different temperatures",
+   "text": "<p>K<sub>c</sub> for N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2 NO<sub>2</sub>(g) is measured at four temperatures.</p>",
+   "table": {
+    "caption": "K<sub>c</sub> for N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2 NO<sub>2</sub>(g)",
+    "cols": [
+     "Temperature (K)",
+     "K<sub>c</sub>"
+    ],
+    "rows": [
+     [
+      "298",
+      "4.6 × 10<sup>−3</sup>"
+     ],
+     [
+      "350",
+      "0.13"
+     ],
+     [
+      "400",
+      "1.5"
+     ],
+     [
+      "450",
+      "10."
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-k-properties-1",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "k-properties-s1",
+   "q": "Calculate K<sub>c</sub> for 2 NO<sub>2</sub>(g) ⇌ 2 NO(g) + O<sub>2</sub>(g).",
+   "numeric": {
+    "answer": 1.7e-14,
+    "tol": 1e-15,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": -60000000000000,
+      "rel": 0.02,
+      "why": "Value: reversing a reaction does not change the sign of K. Take the reciprocal: 1/K."
+     },
+     {
+      "value": 1.29e-7,
+      "rel": 0.02,
+      "why": "Value: you took a square root. The coefficients are unchanged; only the direction is reversed, so use 1/K."
+     }
+    ]
+   },
+   "why": {
+    "correct": "This is reaction B reversed, so K = 1/K<sub>B</sub> = 1 / (6.0 × 10¹³) = 1.7 × 10<sup>−14</sup>."
+   }
+  },
+  {
+   "id": "chem-k-properties-2",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "k-properties-s1",
+   "q": "Calculate K<sub>c</sub> for NO(g) + ½ O<sub>2</sub>(g) ⇌ NO<sub>2</sub>(g).",
+   "numeric": {
+    "answer": 7700000,
+    "tol": 100000,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 30000000000000,
+      "rel": 0.02,
+      "why": "Value: halving the coefficients does not halve K. It raises K to the power ½: take the square root."
+     },
+     {
+      "value": 3.6e+27,
+      "rel": 0.02,
+      "why": "Value: you squared K. Halving the coefficients takes the square root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Reaction B with every coefficient halved: K = (K<sub>B</sub>)<sup>1/2</sup> = √(6.0 × 10¹³) = 7.7 × 10<sup>6</sup>."
+   }
+  },
+  {
+   "id": "chem-k-properties-3",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "k-properties-s1",
+   "q": "Reactions A and B can be combined to describe nitrogen dioxide forming directly from the elements. Use the table to calculate K<sub>c</sub> at 25 °C for N<sub>2</sub>(g) + 2 O<sub>2</sub>(g) ⇌ 2 NO<sub>2</sub>(g).",
+   "numeric": {
+    "answer": 2.7e-17,
+    "tol": 1e-18,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 60000000000000,
+      "rel": 0.02,
+      "why": "Value: you added the K values. When reactions are added, their K values are multiplied."
+     },
+     {
+      "value": 1.33e+44,
+      "rel": 0.02,
+      "why": "Value: you divided. Adding reaction A to reaction B means multiplying K<sub>A</sub> by K<sub>B</sub>."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Add reaction A to reaction B: 2 NO cancels, leaving N₂ + 2 O₂ ⇌ 2 NO₂. K = K<sub>A</sub> × K<sub>B</sub> = (4.5 × 10⁻³¹)(6.0 × 10¹³) = 2.7 × 10<sup>−17</sup>."
+   }
+  },
+  {
+   "id": "chem-k-properties-4",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "k-properties-s1",
+   "q": "Which operation gives K<sub>c</sub> for 4 NO(g) ⇌ 2 N<sub>2</sub>(g) + 2 O<sub>2</sub>(g)?",
+   "options": [
+    "(1/K<sub>A</sub>)<sup>2</sup>",
+    "2/(K<sub>A</sub>)",
+    "(K<sub>A</sub>)<sup>2</sup>",
+    "−2K<sub>A</sub>"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Reversing gives the reciprocal; multiplying all coefficients by n raises K to the n. Together: (1/K<sub>A</sub>)².",
+    "options": [
+     "Right: reverse reaction A (1/K<sub>A</sub>), then double every coefficient (square it).",
+     "Doubling the equation squares K; it does not multiply K by 2.",
+     "This doubles reaction A but does not reverse it. The new reaction has NO as the reactant.",
+     "Neither reversing nor doubling makes K negative or multiplies it by 2."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-properties-5",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "k-properties-s1",
+   "q": "Using the values in the table, is N<sub>2</sub>(g) + 2 O<sub>2</sub>(g) ⇌ 2 NO<sub>2</sub>(g) product-favored at this temperature?",
+   "options": [
+    "No: K = 2.7 × 10<sup>−17</sup>, far below 1.",
+    "Yes: reaction B has a large K, so the overall reaction does too.",
+    "Yes: K = 6.0 × 10<sup>13</sup> + 4.5 × 10<sup>−31</sup>, which is large.",
+    "It is undecided, because K<sub>A</sub> and K<sub>B</sub> point in opposite directions."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K(overall) = K<sub>A</sub>K<sub>B</sub> = 2.7 × 10<sup>−17</sup> ≪ 1, so the overall reaction is reactant-favored.",
+    "options": [
+     "Right: the tiny K of reaction A outweighs the large K of reaction B when they are multiplied.",
+     "The overall K is the product of both K values. 10⁻³¹ × 10¹³ is still very small.",
+     "K values of added reactions are multiplied, not added.",
+     "It can: multiply them. The result is far below 1."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-properties-6",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "k-properties-s2",
+   "q": "A flask at 350 K holds an equilibrium mixture. More N<sub>2</sub>O<sub>4</sub> is injected and the flask is held at 350 K. What is K<sub>c</sub> once equilibrium is restored?",
+   "options": [
+    "0.13",
+    "Greater than 0.13, because more N<sub>2</sub>O<sub>4</sub> reacts.",
+    "Less than 0.13, because there is more reactant on the bottom of the expression.",
+    "1.5, because the system shifts to the next K in the table."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At a fixed temperature, K is a constant. Adding N₂O₄ lowers Q below K, and the net forward reaction restores Q = K = 0.13.",
+    "options": [
+     "Right: K depends only on temperature. Adding a reactant changes Q and the concentrations, not K.",
+     "More N₂O₄ reacts, but the new concentrations still satisfy the same K. K itself does not move.",
+     "Right after the injection, Q is below 0.13. The system then reacts forward until Q is back at 0.13.",
+     "K changes only if the temperature changes. Here it stays at 350 K."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-properties-7",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "single",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "k-properties-s2",
+   "q": "What does the table show about this reaction as the temperature rises?",
+   "options": [
+    "It becomes more product-favored.",
+    "It becomes more reactant-favored.",
+    "It reaches equilibrium more slowly.",
+    "Its K stays the same, but its Q increases."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A larger K means more product at equilibrium. Here K rises with temperature, so the equilibrium mixture holds more NO₂ at higher temperatures.",
+    "options": [
+     "Right: K grows from 4.6 × 10⁻³ to 10. as the temperature goes from 298 K to 450 K.",
+     "K is rising, which means more NO₂ relative to N₂O₄ at equilibrium.",
+     "The table gives K, which says nothing about speed.",
+     "K is clearly changing in the table. Q depends on the mixture, not on the temperature alone."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-properties-8",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "k-properties-s2",
+   "q": "Calculate K<sub>c</sub> for 2 NO<sub>2</sub>(g) ⇌ N<sub>2</sub>O<sub>4</sub>(g) at 400 K.",
+   "numeric": {
+    "answer": 0.67,
+    "tol": 0.01,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1.5,
+      "rel": 0.02,
+      "why": "Value: this is K for the forward direction. Reversing a reaction gives 1/K."
+     },
+     {
+      "value": -1.5,
+      "rel": 0.02,
+      "why": "Value: reversing does not make K negative. Take the reciprocal."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Reversed reaction: K = 1/1.5 = 0.67."
+   }
+  },
+  {
+   "id": "chem-k-properties-9",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "k-properties-s2",
+   "q": "A student says K<sub>c</sub> increased from 298 K to 450 K because more N<sub>2</sub>O<sub>4</sub> was added in the hotter trials. Which response is best?",
+   "options": [
+    "Wrong: K changed because the temperature changed.",
+    "Right: K grows when there is more reactant to react.",
+    "Right: at higher temperatures there are more molecules, so K rises.",
+    "Wrong: K is a fixed number, so the table contains an error."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For a given reaction, K changes only with temperature. Changing amounts changes Q, and the system shifts to restore the same K.",
+    "options": [
+     "Right: K depends on temperature alone for a given reaction. Concentrations shift to fit K, never the other way.",
+     "More reactant changes Q, and the system then re-establishes the same K.",
+     "Heating a sealed flask does not add molecules. The K values differ because the temperatures differ.",
+     "K does change, but only when the temperature does. The table is fine."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-properties-10",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "single",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "For 2 SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2 SO<sub>3</sub>(g), K<sub>c</sub> = K. What is K<sub>c</sub> for SO<sub>2</sub>(g) + ½ O<sub>2</sub>(g) ⇌ SO<sub>3</sub>(g)?",
+   "options": [
+    "K<sup>1/2</sup>",
+    "K ÷ 2",
+    "2K",
+    "1/K"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Multiplying an equation by n raises K to the n. Here n = ½, so K becomes √K.",
+    "options": [
+     "Right: halving every coefficient raises K to the power ½.",
+     "Coefficients are exponents in K, so halving them takes a square root, not half.",
+     "This would follow from treating coefficients as multipliers, which they are not.",
+     "That is the reversed reaction, not the halved one."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-properties-11",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "For H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g), K<sub>c</sub> = 50.0 at 450 °C. Calculate K<sub>c</sub> for HI(g) ⇌ ½ H<sub>2</sub>(g) + ½ I<sub>2</sub>(g) at 450 °C.",
+   "numeric": {
+    "answer": 0.141,
+    "tol": 0.001,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.02,
+      "rel": 0.02,
+      "why": "Value: reversing gives 1/50.0, but you also halved the equation. Take the square root as well."
+     },
+     {
+      "value": 0.01,
+      "rel": 0.02,
+      "why": "Value: halving an equation takes a square root; it does not divide K by 2."
+     },
+     {
+      "value": 7.07,
+      "rel": 0.02,
+      "why": "Value: you halved the equation but did not reverse it. Take the reciprocal too."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Reverse (1/50.0 = 0.0200), then halve (square root): K = (0.0200)<sup>1/2</sup> = 0.141."
+   }
+  },
+  {
+   "id": "chem-k-properties-12",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Given: (1) A(g) ⇌ B(g), K<sub>1</sub> = 1.4 × 10<sup>−2</sup>; (2) B(g) ⇌ 2 C(g), K<sub>2</sub> = 6.0 × 10<sup>−5</sup>. Calculate K for A(g) ⇌ 2 C(g).",
+   "numeric": {
+    "answer": 8.4e-7,
+    "tol": 1e-8,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.0141,
+      "rel": 0.02,
+      "why": "Value: when reactions add, their K values multiply."
+     },
+     {
+      "value": 233,
+      "rel": 0.02,
+      "why": "Value: neither reaction is reversed, so multiply the K values rather than dividing."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Adding (1) and (2) cancels B: A ⇌ 2 C. K = K₁K₂ = (1.4 × 10⁻²)(6.0 × 10⁻⁵) = 8.4 × 10<sup>−7</sup>."
+   }
+  },
+  {
+   "id": "chem-k-properties-13",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "single",
+   "practice": "5.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Given: CO(g) + H<sub>2</sub>O(g) ⇌ CO<sub>2</sub>(g) + H<sub>2</sub>(g), K<sub>1</sub>; and CH<sub>4</sub>(g) + H<sub>2</sub>O(g) ⇌ CO(g) + 3 H<sub>2</sub>(g), K<sub>2</sub>. Which gives K for CH<sub>4</sub>(g) + 2 H<sub>2</sub>O(g) ⇌ CO<sub>2</sub>(g) + 4 H<sub>2</sub>(g)?",
+   "options": [
+    "K<sub>1</sub>K<sub>2</sub>",
+    "K<sub>1</sub> + K<sub>2</sub>",
+    "K<sub>2</sub> / K<sub>1</sub>",
+    "(K<sub>1</sub> × K<sub>2</sub>)<sup>2</sup>"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Adding the two equations as written cancels CO and combines the H₂O (1 + 1 = 2) and H₂ (3 + 1 = 4), giving the target exactly. Equations added, K values multiplied.",
+    "options": [
+     "Right: the two equations add directly (CO cancels) to give the target, so multiply.",
+     "Adding equations multiplies K values; adding K values matches the ΔH rule for Hess’s law, not K.",
+     "Dividing would mean one reaction was reversed. Here both are used as written.",
+     "No coefficients were doubled, so no exponent is needed."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-properties-14",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "single",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Hess’s law (topic 6.9) says ΔH values add when equations add. Why are K values multiplied instead?",
+   "options": [
+    "K is a product of terms, so shared terms cancel.",
+    "K values are larger in size than ΔH values are.",
+    "K depends on temperature and ΔH does not.",
+    "Multiplying is used so the units of K cancel."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K is products over reactants, a product of terms. Writing K₁ × K₂ cancels any species that appears on top of one and bottom of the other, leaving exactly the expression for the summed reaction.",
+    "options": [
+     "Right: multiplying the two expressions cancels the shared species and gives the expression for the overall reaction.",
+     "Size has nothing to do with it. The rule comes from how K is built.",
+     "Both depend on temperature to some extent; that is not why the rules differ.",
+     "K has no units on the exam. The rule comes from the form of the expression."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-properties-15",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "For N<sub>2</sub>(g) + 3 H<sub>2</sub>(g) ⇌ 2 NH<sub>3</sub>(g), K<sub>c</sub> = 0.50 at a certain temperature. Calculate K<sub>c</sub> for 2 N<sub>2</sub>(g) + 6 H<sub>2</sub>(g) ⇌ 4 NH<sub>3</sub>(g).",
+   "numeric": {
+    "answer": 0.25,
+    "tol": 0.01,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1,
+      "rel": 0.02,
+      "why": "Value: doubling the equation squares K; it does not double it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Every coefficient doubled: K = (0.50)² = 0.25."
+   }
+  },
+  {
+   "id": "chem-k-properties-16",
+   "unit": "unit-7",
+   "topic": "k-properties",
+   "type": "multi",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which changes alter the value of K<sub>c</sub> for a given reaction equation? Select all that apply.",
+   "options": [
+    "Changing the temperature",
+    "Adding more of a reactant",
+    "Changing the volume of the container",
+    "Adding a catalyst"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "For a given equation, K changes only with temperature. Writing the equation differently (reversed, scaled) gives a different K, but that is a different equation.",
+    "options": [
+     "Right: K depends on temperature.",
+     "This changes Q and the concentrations, not K.",
+     "Volume changes concentrations (and Q), not K.",
+     "A catalyst speeds both directions equally and leaves K unchanged."
+    ]
+   }
+  }
+ ]
+}

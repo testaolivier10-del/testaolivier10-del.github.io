@@ -1,0 +1,11 @@
+{
+ "specific-heat": {
+  "def": "The energy needed to raise the temperature of 1 g of a substance by 1 °C; for liquid water, 4.18 J/(g·°C). It appears in q = mcΔT."
+ },
+ "heat-capacity": {
+  "def": "The energy needed to raise the temperature of a whole object by 1 °C, in J/°C; for one substance, mass × specific heat."
+ },
+ "calorimeter": {
+  "def": "Measuring the energy of a process from the temperature change of a known mass of material, usually water, in an insulated container (a calorimeter); q(process) = −q(water)."
+ }
+}

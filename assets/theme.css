@@ -222,6 +222,10 @@ body[data-course="anp"]{--ctint:#FBE9E4;--cink:#A33B26;}
 /* AP Biology: a leaf green. */
 body[data-course="bio"]{--ctint:#E4F1DD;--cink:#2D6A1F;}
 :root[data-theme="dark"] body[data-course="bio"]{--ctint:rgba(140,200,110,0.08);--cink:#B6E2A2;}
+/* AP Chemistry: a cobalt blue (not ochem's lilac, Biology's green, A&P's coral
+   or NREMT's mint). --cink on --ctint: 7.2:1 light, 8.7:1 dark. */
+body[data-course="apchem"]{--ctint:#E3EAFA;--cink:#1D44A6;}
+:root[data-theme="dark"] body[data-course="apchem"]{--ctint:rgba(90,130,230,0.12);--cink:#B3C8F7;}
 
 /* ==========================================================================
    2. Base

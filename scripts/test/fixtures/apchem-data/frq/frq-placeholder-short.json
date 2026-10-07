@@ -1,0 +1,72 @@
+{
+ "id": "frq-placeholder-short",
+ "type": "short",
+ "points": 4,
+ "placeholder": true,
+ "title": "Placeholder: moles in a weighed sample",
+ "units": [
+  "unit-1"
+ ],
+ "topics": [
+  "moles-molar-mass"
+ ],
+ "practices": [
+  "5.F",
+  "6.G"
+ ],
+ "stimulus": {
+  "kind": "setup",
+  "title": "A weighed sample",
+  "text": "<p>A student weighs 22.0 g of carbon dioxide (molar mass 44.01 g/mol).</p>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Calculate</b> the number of moles of carbon dioxide in the sample.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Correct moles with setup",
+     "accept": [
+      "22.0 g × (1 mol / 44.01 g) = 0.500 mol"
+     ]
+    }
+   ],
+   "sample": "22.0 g × (1 mol / 44.01 g) = 0.500 mol of carbon dioxide."
+  },
+  {
+   "label": "b",
+   "prompt": "<b>Calculate</b> the number of molecules in the sample.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Correct molecules, consistent with part (a)",
+     "accept": [
+      "0.500 mol × 6.022 × 10²³ = 3.01 × 10²³ molecules"
+     ]
+    }
+   ],
+   "sample": "0.500 mol × 6.022 × 10²³ molecules/mol = 3.01 × 10²³ molecules."
+  },
+  {
+   "label": "c",
+   "prompt": "A second student reports 968 mol. <b>Explain</b> the error and how an estimate would have caught it.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Names the error: multiplied by the molar mass instead of dividing",
+     "accept": [
+      "multiplied 22.0 by 44.01"
+     ]
+    },
+    {
+     "point": "Estimate: 22 g is about half of 44 g, so about 0.5 mol",
+     "accept": [
+      "about half a mole"
+     ]
+    }
+   ],
+   "sample": "The student multiplied the mass by the molar mass (22.0 × 44.01 = 968). The sample weighs about half of 44 g, so it should be about half a mole, which shows 968 is far too large."
+  }
+ ]
+}

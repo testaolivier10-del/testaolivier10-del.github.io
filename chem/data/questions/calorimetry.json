@@ -1,0 +1,712 @@
+{
+ "stimuli": {
+  "calorimetry-s1": {
+   "kind": "table",
+   "title": "Neutralization in a coffee-cup calorimeter",
+   "text": "<p>A student pours 50.0 mL of 1.00 M HCl(aq) and 50.0 mL of 1.00 M NaOH(aq), both at the same starting temperature, into a coffee-cup calorimeter, stirs, and records the highest temperature reached. The reaction is H⁺(aq) + OH⁻(aq) → H₂O(l).</p>",
+   "table": {
+    "caption": "Data for one trial",
+    "cols": [
+     "Quantity",
+     "Value"
+    ],
+    "rows": [
+     [
+      "Volume of 1.00 M HCl",
+      "50.0 mL"
+     ],
+     [
+      "Volume of 1.00 M NaOH",
+      "50.0 mL"
+     ],
+     [
+      "Mass of combined solution",
+      "100.0 g"
+     ],
+     [
+      "Starting temperature",
+      "21.48 °C"
+     ],
+     [
+      "Highest temperature",
+      "28.15 °C"
+     ],
+     [
+      "Specific heat of the solution",
+      "4.18 J/(g·°C)"
+     ]
+    ]
+   }
+  },
+  "calorimetry-s2": {
+   "kind": "graph",
+   "title": "Temperature while a salt dissolves",
+   "text": "<p>A student adds 5.35 g of ammonium chloride, NH₄Cl (molar mass 53.49 g/mol), to 100.0 g of water in a coffee-cup calorimeter at 60 s and stirs. Take the specific heat of the solution as 4.18 J/(g·°C) and its mass as the water plus the solid.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Time",
+     "unit": "s"
+    },
+    "y": {
+     "label": "Temperature",
+     "unit": "°C"
+    },
+    "series": [
+     {
+      "name": "Solution",
+      "points": [
+       [
+        0,
+        22.4
+       ],
+       [
+        30,
+        22.4
+       ],
+       [
+        60,
+        22.4
+       ],
+       [
+        75,
+        21.3
+       ],
+       [
+        90,
+        20.2
+       ],
+       [
+        105,
+        19.55
+       ],
+       [
+        120,
+        19.22
+       ],
+       [
+        135,
+        19.07
+       ],
+       [
+        150,
+        19.04
+       ],
+       [
+        180,
+        19.09
+       ],
+       [
+        240,
+        19.18
+       ],
+       [
+        300,
+        19.27
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-calorimetry-1",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "calorimetry-s1",
+   "q": "Calculate the energy, in kJ, gained by the solution in the calorimeter.",
+   "numeric": {
+    "answer": 2.79,
+    "tol": 0.01,
+    "unit": "kJ",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 1.394,
+      "rel": 0.02,
+      "why": "Value: you used the mass of one solution (50.0 g). Both solutions are in the cup and both warm up, so use the combined 100.0 g."
+     },
+     {
+      "value": 11.77,
+      "rel": 0.02,
+      "why": "Value: you used the final temperature instead of the change. ΔT = highest temperature − starting temperature."
+     }
+    ]
+   },
+   "why": {
+    "correct": "q = m × c × ΔT = 100.0 g × 4.18 J/(g·°C) × (28.15 − 21.48) °C = 100.0 × 4.18 × 6.67 = 2788.1 J = 2.79 kJ (three significant figures, set by 4.18 and 6.67)."
+   }
+  },
+  {
+   "id": "chem-calorimetry-2",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "calorimetry-s1",
+   "q": "How many moles of water are formed in the reaction?",
+   "numeric": {
+    "answer": 0.05,
+    "tol": 0.0001,
+    "unit": "mol",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.1,
+      "rel": 0.02,
+      "why": "Value: you added the moles of acid and base. They react 1 : 1, so 0.0500 mol of each makes 0.0500 mol of water."
+     },
+     {
+      "value": 50.0,
+      "rel": 0.02,
+      "why": "Value: convert mL to L before multiplying by the molarity (mol/L)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "50.0 mL × (1 L / 1000 mL) × 1.00 mol/L = 0.0500 mol of H⁺, and the same amount of OH⁻. They react 1 : 1, so 0.0500 mol of H₂O forms."
+   }
+  },
+  {
+   "id": "chem-calorimetry-3",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "calorimetry-s1",
+   "q": "Calculate ΔH for the reaction, in kJ per mole of water formed.",
+   "numeric": {
+    "answer": -55.8,
+    "tol": 0.1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 55.76,
+      "rel": 0.02,
+      "why": "Sign: the solution warmed, so the reaction released energy. ΔH of the reaction is negative: q(reaction) = −q(solution)."
+     },
+     {
+      "value": -27.88,
+      "rel": 0.02,
+      "why": "Value: you divided by 0.100 mol, the moles of acid plus base. Divide by the moles of water formed, 0.0500 mol."
+     },
+     {
+      "value": -2.788,
+      "rel": 0.02,
+      "why": "Value: that is the energy for this sample. ΔH per mole means dividing by the moles of water formed, 0.0500 mol."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The solution gained 2.788 kJ, so the reaction released it: q(reaction) = −2.788 kJ. ΔH = −2.788 kJ / 0.0500 mol = −55.76 kJ/mol → −55.8 kJ/mol. The sign is negative because the reaction is exothermic."
+   }
+  },
+  {
+   "id": "chem-calorimetry-4",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "calorimetry-s1",
+   "q": "The student repeats the trial in a single uncovered cup, so some energy escapes to the room. How does the calculated ΔH compare with the first result?",
+   "options": [
+    "More negative, because the reaction releases more energy in an open cup",
+    "Unchanged, because the same amounts of acid and base react",
+    "Positive, because energy now flows from the cup into the room",
+    "Less negative, because the measured temperature rise is smaller"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The calculation assumes every joule released warms the solution. Losses to the room lower the highest temperature, so the calculated q and |ΔH| come out too small: ΔH is less negative than the true value.",
+    "options": [
+     "The reaction releases the same energy per mole; less of it is caught by the solution.",
+     "The same energy is released, but less is measured; the calculation uses the measured ΔT.",
+     "The reaction is still exothermic. Only the size of the calculated value changes.",
+     "Right: energy lost to the room never shows up as a temperature rise, so q looks smaller and so does |ΔH|."
+    ]
+   }
+  },
+  {
+   "id": "chem-calorimetry-5",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "calorimetry-s1",
+   "q": "The student then mixes 100.0 mL of each 1.00 M solution instead of 50.0 mL. Which prediction is correct?",
+   "options": [
+    "The temperature rise is about the same, and so is ΔH per mole of water.",
+    "The temperature rise doubles, but ΔH per mole of water stays the same.",
+    "The temperature rise doubles, and ΔH per mole of water doubles too.",
+    "The temperature rise halves, because the energy spreads through more solution."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "q doubles (twice the moles react) and m doubles, so ΔT = q / (m c) is unchanged. ΔH per mole is q / n, and both double, so it is unchanged too.",
+    "options": [
+     "Right: twice the energy is released into twice the mass of solution, so ΔT and the per-mole value do not change.",
+     "Twice the energy goes into twice the mass, so each gram warms by the same amount.",
+     "ΔH per mole is a property of the reaction; it does not change with the amount used.",
+     "There is twice as much reaction as well as twice as much solution, so the rise stays the same."
+    ]
+   }
+  },
+  {
+   "id": "chem-calorimetry-6",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "calorimetry-s2",
+   "q": "Which value should the student use for ΔT of the solution?",
+   "options": [
+    "−3.13 °C, from 22.40 °C to the last reading, 19.27 °C",
+    "−3.36 °C, from 22.40 °C to the lowest point, 19.04 °C",
+    "19.04 °C, the lowest temperature reached",
+    "−1.10 °C, the drop in the first 15 s after adding the solid"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "ΔT = T(lowest) − T(start) = 19.04 − 22.40 = −3.36 °C. The lowest point is where the dissolving stops absorbing energy.",
+    "options": [
+     "The slow rise after 150 s is energy leaking in from the room, not part of the dissolving.",
+     "Right: the lowest temperature marks the end of the dissolving; after that, the room warms the cup.",
+     "That is a temperature, not a change. ΔT = final − initial.",
+     "The temperature keeps falling until about 150 s, when the dissolving is complete."
+    ]
+   }
+  },
+  {
+   "id": "chem-calorimetry-7",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "calorimetry-s2",
+   "q": "Calculate the energy, in kJ, that the solution lost while the solid dissolved.",
+   "numeric": {
+    "answer": 1.48,
+    "tol": 0.01,
+    "unit": "kJ",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 1.404,
+      "rel": 0.02,
+      "why": "Value: you used 100.0 g of water alone. The dissolved solid is part of the solution that cooled, so the mass is 100.0 g + 5.35 g."
+     }
+    ]
+   },
+   "why": {
+    "correct": "m = 100.0 g + 5.35 g = 105.35 g. q = m × c × |ΔT| = 105.35 g × 4.18 J/(g·°C) × 3.36 °C = 1480 J = 1.48 kJ."
+   }
+  },
+  {
+   "id": "chem-calorimetry-8",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "calorimetry-s2",
+   "q": "Calculate ΔH for dissolving NH₄Cl, in kJ per mole of NH₄Cl.",
+   "numeric": {
+    "answer": 14.8,
+    "tol": 0.1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": -14.79,
+      "rel": 0.02,
+      "why": "Sign: the solution cooled, so the dissolving absorbed energy. ΔH is positive: q(dissolving) = −q(solution)."
+     },
+     {
+      "value": 0.2766,
+      "rel": 0.02,
+      "why": "Value: you divided by the mass in grams. ΔH per mole needs the moles of NH₄Cl: mass ÷ molar mass."
+     }
+    ]
+   },
+   "why": {
+    "correct": "n = 5.35 g ÷ 53.49 g/mol = 0.1000 mol. The solution lost 1.480 kJ, so the dissolving absorbed it: q = +1.480 kJ. ΔH = +1.480 kJ ÷ 0.1000 mol = +14.79 → +14.8 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-calorimetry-9",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "calorimetry-s2",
+   "q": "Which statement gives the correct signs for this experiment?",
+   "options": [
+    "q for the solution is negative and q for the dissolving is positive.",
+    "q for the solution is positive and q for the dissolving is negative.",
+    "Both are negative, because the temperature went down.",
+    "Both are positive, because energy was transferred."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "q(dissolving) = −q(solution). The solution's temperature fell, so q(solution) < 0 and q(dissolving) > 0: endothermic.",
+    "options": [
+     "Right: the solution lost energy (negative) and the dissolving gained the same energy (positive).",
+     "This would fit a temperature rise. Here the solution cooled.",
+     "Energy lost by one is gained by the other, so the signs are opposite.",
+     "Transfer means one side loses (negative) and one side gains (positive)."
+    ]
+   }
+  },
+  {
+   "id": "chem-calorimetry-10",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "calorimetry-s2",
+   "q": "After 150 s, the temperature slowly rises. Which explanation fits the data?",
+   "options": [
+    "The dissolved NH₄Cl starts releasing the energy it absorbed earlier.",
+    "Energy from the warmer room leaks into the cold solution through the cup.",
+    "The solid begins to dissolve faster, which warms the solution.",
+    "The thermometer warms the solution because of its own heat capacity."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A foam cup slows energy exchange but does not stop it. A solution colder than the room slowly gains energy, which is why the lowest point, not the last reading, gives ΔT.",
+    "options": [
+     "Dissolving does not reverse by itself while the salt stays in solution.",
+     "Right: once the dissolving is done, the solution is colder than the room, so energy flows in.",
+     "Dissolving NH₄Cl absorbs energy, so faster dissolving would cool the solution.",
+     "The thermometer is at the solution's temperature; the rise comes from outside the cup."
+    ]
+   }
+  },
+  {
+   "id": "chem-calorimetry-11",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does it mean that liquid water has a specific heat capacity of 4.18 J/(g·°C)?",
+   "options": [
+    "It takes 4.18 J to raise the temperature of 1 mol of water by 1 °C.",
+    "1 g of water at 4.18 °C has 1 J of energy.",
+    "It takes 4.18 J to raise the temperature of 1 g of water by 1 °C.",
+    "Water boils after it absorbs 4.18 J per gram."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Specific heat capacity, c, is the energy needed to raise 1 g of a substance by 1 °C (or 1 K, the same size step).",
+    "options": [
+     "Specific heat is per gram. Per mole would be about 75.3 J/(mol·°C).",
+     "Specific heat describes a change in temperature, not an amount of energy at one temperature.",
+     "Right: specific heat is the energy per gram per degree.",
+     "Specific heat applies while the temperature changes, not to boiling."
+    ]
+   }
+  },
+  {
+   "id": "chem-calorimetry-12",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "How much energy, in kJ, is needed to heat 250.0 g of water from 20.0 °C to 85.0 °C?",
+   "numeric": {
+    "answer": 67.9,
+    "tol": 0.1,
+    "unit": "kJ",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 88.83,
+      "rel": 0.02,
+      "why": "Value: you used the final temperature instead of the change. ΔT = 85.0 − 20.0 = 65.0 °C."
+     }
+    ]
+   },
+   "why": {
+    "correct": "q = m × c × ΔT = 250.0 g × 4.18 J/(g·°C) × (85.0 − 20.0) °C = 250.0 × 4.18 × 65.0 = 67925 J = 67.9 kJ."
+   }
+  },
+  {
+   "id": "chem-calorimetry-13",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A 52.5 g piece of metal at 99.20 °C is placed in 75.0 g of water at 21.30 °C in a calorimeter. Both end at 26.48 °C. Assuming all the energy lost by the metal is gained by the water, find the specific heat of the metal, in J/(g·°C).",
+   "numeric": {
+    "answer": 0.425,
+    "tol": 0.001,
+    "unit": "J/(g·°C)",
+    "units": [
+     "J g^-1 °C^-1",
+     "J/(g·K)",
+     "J/(g K)"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 5.971,
+      "rel": 0.02,
+      "why": "Value: you used the water's temperature change for the metal. The metal cooled from 99.20 °C to 26.48 °C."
+     },
+     {
+      "value": -0.4254,
+      "rel": 0.02,
+      "why": "Sign: a specific heat is a property of the metal and is positive. Use the size of the energy lost and of the temperature drop."
+     },
+     {
+      "value": 1.168,
+      "rel": 0.02,
+      "why": "Value: you used the final temperature as ΔT. ΔT for the metal is final − initial."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Water: q = 75.0 g × 4.18 J/(g·°C) × (26.48 − 21.30) °C = 1623.9 J gained. Metal: lost 1623.9 J over ΔT = 26.48 − 99.20 = −72.72 °C. c = 1623.9 J ÷ (52.5 g × 72.72 °C) = 0.4254 → 0.425 J/(g·°C)."
+   }
+  },
+  {
+   "id": "chem-calorimetry-14",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "On a sunny day, dry sand and the water of a lake receive the same energy per gram. The sand gets much hotter. Which statement explains this?",
+   "options": [
+    "Sand has a higher specific heat than water, so it holds on to more of the energy.",
+    "Sand has a lower specific heat than water, so the same energy per gram raises its temperature more.",
+    "Sand absorbs energy and water does not, so the water stays cool.",
+    "Sand particles are larger than water molecules, so they move faster when heated."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "For equal energy per gram, ΔT is inversely related to c. Water's specific heat, 4.18 J/(g·°C), is about five times that of sand, so water warms far less.",
+    "options": [
+     "A higher specific heat would mean a smaller temperature rise, not a larger one.",
+     "Right: ΔT = q / (m c); a smaller c means a larger ΔT for the same energy per gram.",
+     "Both absorb energy; the same energy changes the water's temperature less.",
+     "Particle size does not set this; the energy needed per gram per degree does."
+    ]
+   }
+  },
+  {
+   "id": "chem-calorimetry-15",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statement correctly compares heat capacity with specific heat capacity?",
+   "options": [
+    "They are two names for the same quantity, measured in J/(g·°C).",
+    "Heat capacity is per gram; specific heat capacity is for a whole object.",
+    "Heat capacity is for a whole object, in J/°C; specific heat capacity is per gram, in J/(g·°C).",
+    "Heat capacity is measured in J; specific heat capacity is measured in °C."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Heat capacity, C = m × c, is the energy to warm a whole object by 1 °C. A swimming pool and a cup of water have the same specific heat but very different heat capacities.",
+    "options": [
+     "They differ by the mass: one is per gram, the other for the whole object.",
+     "This swaps them. \"Specific\" means per gram.",
+     "Right: heat capacity = mass × specific heat.",
+     "Both describe energy per degree; neither is just J or just °C."
+    ]
+   }
+  },
+  {
+   "id": "chem-calorimetry-16",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A calorimeter has a heat capacity of 32.5 J/°C and holds 150.0 g of water. A reaction warms the water and the calorimeter together from 18.50 °C to 24.66 °C. How much energy, in kJ, did the reaction release?",
+   "numeric": {
+    "answer": 4.06,
+    "tol": 0.01,
+    "unit": "kJ",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 3.862,
+      "rel": 0.02,
+      "why": "Value: you counted only the water. The calorimeter also warmed by 6.16 °C and absorbed 32.5 J for each degree."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Water: 150.0 g × 4.18 J/(g·°C) × 6.16 °C = 3862.3 J. Calorimeter: 32.5 J/°C × 6.16 °C = 200.2 J. Total = 4062.5 J = 4.06 kJ released by the reaction."
+   }
+  },
+  {
+   "id": "chem-calorimetry-17",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student mixes 50.0 mL of 1.00 M HCl with 25.0 mL of 1.00 M NaOH in a calorimeter. The solution gains 1.39 kJ. Which value is ΔH per mole of water formed?",
+   "options": [
+    "−55.6 kJ/mol, dividing by 0.0250 mol of water",
+    "−27.8 kJ/mol, dividing by 0.0500 mol of HCl",
+    "−18.5 kJ/mol, dividing by 0.0750 mol of acid and base",
+    "+55.6 kJ/mol, because the solution gained energy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Moles of water = moles of the limiting reactant, NaOH: 0.0250 L × 1.00 mol/L = 0.0250 mol. ΔH = −1.39 kJ ÷ 0.0250 mol = −55.6 kJ/mol.",
+    "options": [
+     "Right: NaOH (0.0250 mol) is the limiting reactant, so 0.0250 mol of water forms: −1.39 kJ / 0.0250 mol = −55.6 kJ/mol.",
+     "HCl is in excess; half of it does not react. Divide by the moles that actually react.",
+     "Adding the moles of both reactants double-counts each reaction event and includes excess acid.",
+     "The solution gained energy, so the reaction lost it: ΔH is negative."
+    ]
+   }
+  },
+  {
+   "id": "chem-calorimetry-18",
+   "type": "multi",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 3,
+   "q": "In a coffee-cup calorimeter, an exothermic reaction is run to find ΔH per mole. Which errors would make the calculated ΔH less negative than the true value? Select all that apply.",
+   "options": [
+    "Energy escapes through the open top of the cup",
+    "The thermometer is read before the solution reaches its highest temperature",
+    "The mass of the solution is recorded as larger than it really is",
+    "The moles of the limiting reactant are recorded as smaller than they really are",
+    "The initial temperature is recorded as lower than it really was",
+    "Part of the limiting reactant spills before it is added"
+   ],
+   "correct": [
+    0,
+    1,
+    5
+   ],
+   "why": {
+    "correct": "Anything that makes the measured q too small, or the moles used in the division too large, makes the calculated ΔH less negative.",
+    "options": [
+     "Lost energy does not raise the temperature, so the measured q is too small.",
+     "ΔT is too small, so q is too small.",
+     "A larger m makes the calculated q larger, so ΔH comes out more negative.",
+     "Dividing the same q by fewer moles makes |ΔH| larger, more negative.",
+     "A lower starting value makes ΔT larger, so |ΔH| comes out larger.",
+     "Less reacts, so less energy is released, but the calculation still divides by the full amount."
+    ]
+   }
+  },
+  {
+   "id": "chem-calorimetry-19",
+   "type": "predict",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "An exothermic reaction is run twice in a coffee-cup calorimeter with the same amounts of reactants. The second time, the solution is diluted with extra water (so its mass doubles) before the reaction. Predict how each quantity in the second run compares with the first.",
+   "variables": [
+    {
+     "name": "Energy released by the reaction",
+     "answer": "none",
+     "why": "The same moles react, so the same energy is released."
+    },
+    {
+     "name": "Temperature rise of the solution",
+     "answer": "down",
+     "why": "The same energy spreads through twice the mass, so ΔT is about half."
+    },
+    {
+     "name": "Calculated ΔH per mole of limiting reactant",
+     "answer": "none",
+     "why": "q = m c ΔT is the same (twice m, half ΔT) and so are the moles, so ΔH is unchanged."
+    }
+   ],
+   "why": {
+    "correct": "Energy released depends on the moles that react; ΔT depends on that energy and the mass it warms; ΔH per mole depends only on the reaction."
+   }
+  },
+  {
+   "id": "chem-calorimetry-20",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "calorimetry",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "In an insulated cup, 50.0 g of water at 80.0 °C is mixed with 100.0 g of water at 20.0 °C. What is the final temperature, in °C?",
+   "numeric": {
+    "answer": 40.0,
+    "tol": 0.1,
+    "unit": "°C",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 50.0,
+      "rel": 0.02,
+      "why": "Value: you averaged the two temperatures. The colder water has twice the mass, so the final temperature is closer to 20.0 °C."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Energy lost by hot water = energy gained by cold water: 50.0 × 4.18 × (80.0 − T) = 100.0 × 4.18 × (T − 20.0). So 4000 − 50.0 T = 100.0 T − 2000, 150.0 T = 6000, T = 40.0 °C."
+   }
+  }
+ ]
+}

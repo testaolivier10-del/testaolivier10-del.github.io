@@ -1,0 +1,81 @@
+{
+ "topic": "catalysis",
+ "hook": "A bottle of hydrogen peroxide can sit in a cupboard for months, slowly turning into water and oxygen. Pour it on a cut and it foams within seconds, because an enzyme in your blood speeds the same reaction up enormously. The enzyme is not used up: the same molecule does the job again and again.",
+ "prereq": [
+  {
+   "q": "In a mechanism, an intermediate is:",
+   "options": [
+    "made in one step and used in a later step",
+    "used in one step and made in a later step",
+    "a reactant in the overall equation",
+    "the top of an energy barrier"
+   ],
+   "correct": 0,
+   "why": "An intermediate is formed, then consumed.",
+   "review": "mechanisms-intro"
+  },
+  {
+   "q": "A lower activation energy at the same temperature means:",
+   "options": [
+    "more collisions succeed, so the reaction is faster",
+    "fewer collisions happen",
+    "the products are lower in energy",
+    "the molecules move faster"
+   ],
+   "correct": 0,
+   "why": "More molecules have at least Ea, so more collisions are effective.",
+   "review": "collision-model"
+  }
+ ],
+ "figure": {
+  "figure": "catalysis-profile",
+  "caption": "A catalyst opens a new pathway with lower barriers; the start and end levels do not change."
+ },
+ "chain": [
+  {
+   "cause": "A catalyst takes part in an early step of a new mechanism",
+   "effect": "the reaction goes by a different set of elementary steps"
+  },
+  {
+   "cause": "The new steps have lower barriers than the uncatalyzed step",
+   "effect": "more collisions succeed at the same temperature, so the rate rises"
+  },
+  {
+   "cause": "The catalyst is remade in a later step",
+   "effect": "it is not used up and cancels from the overall equation"
+  },
+  {
+   "cause": "The reactant and product levels are unchanged",
+   "effect": "the overall energy change and the final amount of product stay the same"
+  }
+ ],
+ "ideas": [
+  "A <b>catalyst</b> speeds a reaction by providing a new mechanism with lower barriers. It is used in one step and remade in a later step.",
+  "Catalyst: used, then remade. Intermediate: made, then used.",
+  "A catalyst does not change the overall energy change or the final amount of product, and it speeds the forward and reverse reactions alike.",
+  "Kinds: homogeneous, heterogeneous (surface), acid-base and enzymes."
+ ],
+ "misconception": {
+  "wrong": "A catalyst and an intermediate are the same thing, since both cancel out of the overall equation.",
+  "right": "A catalyst is there at the start, is used in an early step and is remade later. An intermediate is not there at the start: it is made in an early step and used later."
+ },
+ "check": [
+  "chem-catalysis-1",
+  "chem-catalysis-2",
+  "chem-catalysis-3",
+  "chem-catalysis-5",
+  "chem-catalysis-8",
+  "chem-catalysis-11"
+ ],
+ "summary": "A catalyst speeds a reaction by providing a different mechanism with lower activation energies. It is consumed in one step and regenerated in a later one, unlike an intermediate, which is made and then used. A catalyst leaves the overall energy change and the final amount of product unchanged.",
+ "connections": [
+  {
+   "href": "../notes/multistep-energy-profiles.html",
+   "label": "Back: multistep energy profiles (5.10)"
+  },
+  {
+   "href": "../notes/mechanisms-intro.html",
+   "label": "Intermediates (5.7)"
+  }
+ ]
+}

@@ -1,0 +1,620 @@
+{
+ "stimuli": {
+  "phases-of-matter-s1": {
+   "kind": "graph",
+   "title": "Vapor pressure of three liquids",
+   "text": "<p>Measured vapor pressures of diethyl ether, ethanol and water at several temperatures. 760 torr is 1 atm.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Temperature",
+     "unit": "°C",
+     "min": 0,
+     "max": 100,
+     "step": 20
+    },
+    "y": {
+     "label": "Vapor pressure",
+     "unit": "torr",
+     "min": 0,
+     "max": 900,
+     "step": 150
+    },
+    "series": [
+     {
+      "name": "Diethyl ether",
+      "points": [
+       [
+        0,
+        185
+       ],
+       [
+        10,
+        292
+       ],
+       [
+        20,
+        442
+       ],
+       [
+        30,
+        647
+       ],
+       [
+        34.6,
+        760
+       ]
+      ]
+     },
+     {
+      "name": "Ethanol",
+      "points": [
+       [
+        0,
+        12
+       ],
+       [
+        20,
+        44
+       ],
+       [
+        40,
+        134
+       ],
+       [
+        60,
+        353
+       ],
+       [
+        78.4,
+        760
+       ]
+      ]
+     },
+     {
+      "name": "Water",
+      "points": [
+       [
+        0,
+        4.6
+       ],
+       [
+        20,
+        17.5
+       ],
+       [
+        40,
+        55.3
+       ],
+       [
+        60,
+        149
+       ],
+       [
+        80,
+        355
+       ],
+       [
+        100,
+        760
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "phases-of-matter-s2": {
+   "kind": "particle",
+   "title": "One substance in three states",
+   "html": "<svg viewBox=\"0 0 390 150\" width=\"390\" height=\"150\" role=\"img\" aria-label=\"Three boxes of the same molecules. Box P: molecules far apart, scattered through the whole box. Box Q: molecules touching, in a regular grid. Box R: molecules touching, jumbled and filling the bottom of the box.\"><rect x=\"6\" y=\"6\" width=\"120\" height=\"120\" rx=\"6\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"66\" y=\"144\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">P</text><rect x=\"134\" y=\"6\" width=\"120\" height=\"120\" rx=\"6\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"194\" y=\"144\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">Q</text><rect x=\"262\" y=\"6\" width=\"120\" height=\"120\" rx=\"6\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"322\" y=\"144\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">R</text><circle cx=\"28\" cy=\"26\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"90\" cy=\"34\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"55\" cy=\"70\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"110\" cy=\"92\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"24\" cy=\"106\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"78\" cy=\"112\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"100\" cy=\"60\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"148\" cy=\"86\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"148\" cy=\"103\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"148\" cy=\"120\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"165\" cy=\"86\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"165\" cy=\"103\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"165\" cy=\"120\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"182\" cy=\"86\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"182\" cy=\"103\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"182\" cy=\"120\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"199\" cy=\"86\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"199\" cy=\"103\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"199\" cy=\"120\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"216\" cy=\"86\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"216\" cy=\"103\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"216\" cy=\"120\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"233\" cy=\"86\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"233\" cy=\"103\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"233\" cy=\"120\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"274\" cy=\"118\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"291\" cy=\"116\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"308\" cy=\"119\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"326\" cy=\"117\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"343\" cy=\"118\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"360\" cy=\"116\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"281\" cy=\"101\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"298\" cy=\"100\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"317\" cy=\"102\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"334\" cy=\"99\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"352\" cy=\"103\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"290\" cy=\"84\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"309\" cy=\"86\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"342\" cy=\"85\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"325\" cy=\"86\" r=\"8\" fill=\"#0072B2\"/><circle cx=\"272\" cy=\"89\" r=\"8\" fill=\"#0072B2\"/></svg><p>Key: each blue circle is one molecule of the same substance.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-phases-of-matter-1",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "phases-of-matter-s1",
+   "q": "Which liquid has the strongest intermolecular forces?",
+   "options": [
+    "Diethyl ether",
+    "Ethanol",
+    "Water",
+    "The three are about equal"
+   ],
+   "correct": 2,
+   "fixed": true,
+   "why": {
+    "correct": "At every temperature water has the lowest vapor pressure, so the fewest molecules escape: its molecules attract each other most strongly.",
+    "options": [
+     "Ether has the highest vapor pressure, so its attractions are the weakest of the three.",
+     "Ethanol's vapor pressure is higher than water's at every temperature shown, so its attractions are weaker.",
+     "Right: lowest vapor pressure at every temperature.",
+     "The three curves are far apart, so the attractions clearly differ."
+    ]
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-2",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "phases-of-matter-s1",
+   "q": "From the graph, what is the normal boiling point of diethyl ether, in °C?",
+   "numeric": {
+    "answer": 34.6,
+    "tol": 0.1,
+    "unit": "°C",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 20.0,
+      "rel": 0.02,
+      "why": "Value: 20 °C is where ether's vapor pressure is 442 torr. The normal boiling point is where it reaches 760 torr."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The normal boiling point is where the vapor pressure reaches 760 torr (1 atm). The ether curve reaches 760 torr at 34.6 °C."
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-3",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "phases-of-matter-s1",
+   "q": "On a mountain the air pressure is 355 torr. At about what temperature would water boil there?",
+   "options": [
+    "60 °C",
+    "80 °C",
+    "100 °C",
+    "120 °C"
+   ],
+   "correct": 1,
+   "fixed": true,
+   "why": {
+    "correct": "A liquid boils when its vapor pressure equals the pressure above it. Water's vapor pressure reaches 355 torr at 80 °C.",
+    "options": [
+     "At 60 °C water's vapor pressure is 149 torr, still below 355 torr.",
+     "Right: the vapor pressure equals the 355 torr air pressure at 80 °C.",
+     "100 °C is the boiling point at 760 torr, sea-level pressure.",
+     "Lower air pressure lowers the boiling point; it does not raise it."
+    ]
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-4",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "phases-of-matter-s1",
+   "q": "Which statement best explains why ethanol's vapor pressure is higher than water's at 40 °C?",
+   "options": [
+    "Ethanol molecules attract each other less strongly, so more of them escape the surface.",
+    "Ethanol molecules are heavier than water molecules, so they move faster and escape.",
+    "Ethanol has no hydrogen bonds, while water has strong ones between its molecules.",
+    "Ethanol's covalent bonds break at a lower temperature, producing more gas particles."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both liquids hydrogen-bond, but water forms more hydrogen bonds per molecule (two H on O and two lone pairs) than ethanol (one H on O). Weaker overall attractions let more ethanol molecules escape, so its vapor pressure is higher.",
+    "options": [
+     "Right: weaker attractions, more escape, higher vapor pressure.",
+     "Heavier molecules at the same temperature move more slowly, not faster; and mass is not the cause here.",
+     "Ethanol has an O–H group, so it does hydrogen-bond; it just forms fewer per molecule than water.",
+     "Evaporation leaves molecules whole; no covalent bonds break."
+    ]
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-5",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "phases-of-matter-s1",
+   "q": "Which statement correctly describes all three curves?",
+   "options": [
+    "Vapor pressure rises with temperature, and it rises faster at higher temperatures.",
+    "Vapor pressure rises by the same number of torr for each 10 °C increase in temperature.",
+    "Vapor pressure is zero below 20 °C, so the liquids do not evaporate in a cold room.",
+    "Vapor pressure rises with temperature until it reaches 760 torr, then it stays constant."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each curve bends upward: water rises 37.8 torr from 20 °C to 40 °C but 206 torr from 60 °C to 80 °C. Above the normal boiling point the vapor pressure keeps rising (that is why a pressure cooker works).",
+    "options": [
+     "Right: rising and curving upward.",
+     "Water rises 37.8 torr from 20 to 40 °C but 206 torr from 60 to 80 °C, so the rise is not even.",
+     "Every curve is above zero at 0 °C; liquids have a vapor pressure at every temperature.",
+     "Vapor pressure keeps rising above 760 torr in a sealed container; 760 torr is just where an open liquid boils."
+    ]
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-6",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "phases-of-matter-s2",
+   "q": "Which box shows the substance as a liquid?",
+   "options": [
+    "P",
+    "Q",
+    "R",
+    "Q and R both"
+   ],
+   "correct": 2,
+   "fixed": true,
+   "why": {
+    "correct": "In a liquid the molecules touch but are jumbled, and they settle into the bottom of the container: box R.",
+    "options": [
+     "P shows molecules far apart throughout the box: a gas.",
+     "Q shows molecules touching in a regular pattern: a solid.",
+     "Right: touching and disordered, taking the container's shape.",
+     "Q is ordered like a solid, so only R fits a liquid."
+    ]
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-7",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "phases-of-matter-s2",
+   "q": "Which change is shown going from box Q to box P?",
+   "options": [
+    "Sublimation",
+    "Melting",
+    "Condensation",
+    "Deposition"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Q is a solid and P is a gas. Solid directly to gas is sublimation.",
+    "options": [
+     "Right: solid to gas.",
+     "Melting turns a solid (Q) into a liquid (R), not a gas.",
+     "Condensation turns a gas into a liquid.",
+     "Deposition is the reverse change, gas to solid."
+    ]
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-8",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "phases-of-matter-s2",
+   "q": "Why can the sample in box P be compressed into a much smaller volume, while the samples in Q and R can hardly be compressed?",
+   "options": [
+    "In P the molecules are far apart; in Q and R they already touch.",
+    "The molecules in P are smaller than the molecules in Q and R, so more of them fit in a space.",
+    "The molecules in P have no attractions to each other, while those in Q and R are bonded together covalently.",
+    "The molecules in P are moving slowly, so they are easy to push closer, while those in Q and R move fast."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Squeezing a gas removes empty space between molecules. In a solid or liquid the molecules already touch, so there is almost no empty space to remove.",
+    "options": [
+     "Right: gases are mostly empty space.",
+     "They are the same molecules in all three boxes, and the same size.",
+     "Molecules in solids and liquids are held by intermolecular forces, not covalent bonds to each other.",
+     "How fast the molecules move is not what makes a gas compressible, and slow-moving gas molecules are not easier to push together. The empty space between gas molecules is what can be squeezed out."
+    ]
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-9",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "phases-of-matter-s2",
+   "q": "When the substance changes from box R to box P, what happens to its molecules?",
+   "options": [
+    "Attractions between molecules are overcome; each molecule stays intact.",
+    "Covalent bonds within each molecule break and the atoms separate.",
+    "The molecules expand to fill the larger volume they now occupy.",
+    "New attractions form between the molecules, releasing energy."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Vaporization separates molecules from each other by overcoming intermolecular forces. The molecules themselves are unchanged in size and composition.",
+    "options": [
+     "Right: the molecules separate but are not changed.",
+     "Covalent bonds do not break in vaporization; the gas is the same substance.",
+     "The molecules stay the same size; the space between them grows.",
+     "Vaporization needs energy to overcome attractions; it does not form them."
+    ]
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-10",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A barometer reads 742 torr. What is this pressure in atmospheres?",
+   "numeric": {
+    "answer": 0.976,
+    "tol": 0.001,
+    "unit": "atm",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 563900.0,
+      "rel": 0.02,
+      "why": "Value: you multiplied by 760. Torr cancels only when 760 torr is on the bottom of the conversion factor."
+     },
+     {
+      "value": 7.323,
+      "rel": 0.02,
+      "why": "Value: you divided by 101.325, the kPa-to-atm factor. For torr, use 760 torr = 1 atm."
+     }
+    ]
+   },
+   "why": {
+    "correct": "742 torr × (1 atm / 760 torr) = 0.97632 atm, which is 0.976 atm to three significant figures."
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-11",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A tire gauge reads 2.35 atm. What is this pressure in kilopascals?",
+   "numeric": {
+    "answer": 238.0,
+    "tol": 1.0,
+    "unit": "kPa",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.02319,
+      "rel": 0.02,
+      "why": "Value: you divided by 101.325. To go from atm to kPa, multiply: there are 101.325 kPa in each atm."
+     },
+     {
+      "value": 1786.0,
+      "rel": 0.02,
+      "why": "Value: you used 760, the torr conversion. 1 atm = 101.325 kPa."
+     }
+    ]
+   },
+   "why": {
+    "correct": "2.35 atm × (101.325 kPa / 1 atm) = 238.11 kPa, which is 238 kPa to three significant figures."
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-12",
+   "type": "predict",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Water sits in a sealed flask at 25 °C with liquid and vapor at equilibrium. Predict how the vapor pressure changes after each change, once equilibrium is restored.",
+   "variables": [
+    {
+     "name": "Raise the temperature to 40 °C",
+     "answer": "up",
+     "why": "More molecules move fast enough to escape, so more are in the gas at equilibrium: 23.8 torr at 25 °C rises to 55.3 torr at 40 °C."
+    },
+    {
+     "name": "Add more liquid water at 25 °C",
+     "answer": "none",
+     "why": "Vapor pressure depends on the liquid and the temperature, not on the amount of liquid. Escape and return balance at the same gas pressure."
+    },
+    {
+     "name": "Move all of it, still at 25 °C, into a larger sealed flask with liquid left over",
+     "answer": "none",
+     "why": "More water evaporates to fill the larger space, but at equilibrium the pressure of the vapor returns to the same value at the same temperature."
+    }
+   ],
+   "why": {
+    "correct": "Only temperature (and the identity of the liquid) changes a vapor pressure. The amount of liquid and the container size do not, as long as some liquid remains."
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-13",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says, \"Water at 25 °C has no vapor pressure because it is below its boiling point.\" Which is the best correction?",
+   "options": [
+    "Some surface molecules escape at any temperature; water's vapor pressure at 25 °C is 23.8 torr.",
+    "Water has a vapor pressure at 25 °C once it has first been heated to 100 °C and then cooled back down.",
+    "The statement is correct; evaporation below the boiling point comes from dissolved air, not from water.",
+    "Water at 25 °C has a vapor pressure of 760 torr, the same as at its boiling point."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Molecules in a liquid have a range of speeds. At any temperature, some at the surface can escape, so every liquid has a vapor pressure. Boiling only requires that this vapor pressure reach the outside pressure.",
+    "options": [
+     "Right: liquids have a vapor pressure at every temperature.",
+     "A liquid's vapor pressure depends only on its present temperature, not its history.",
+     "Puddles dry at room temperature because water molecules themselves escape.",
+     "760 torr is the vapor pressure only at the normal boiling point, 100 °C."
+    ]
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-14",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Pentane (C₅H₁₂) and hexane (C₆H₁₄) are both nonpolar. At 25 °C, which has the higher vapor pressure, and why?",
+   "options": [
+    "Pentane, because fewer electrons give weaker dispersion forces.",
+    "Hexane, because its heavier molecules move faster and escape the surface of the liquid more often.",
+    "Pentane, because it can form hydrogen bonds that pull its molecules up and out of the liquid.",
+    "They are the same, because both are nonpolar and so neither one has attractions between its molecules."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Pentane has 42 electrons and hexane 50. Pentane's weaker dispersion forces let more molecules escape, so its vapor pressure is higher (about 512 torr against 151 torr).",
+    "options": [
+     "Right: weaker attractions, higher vapor pressure.",
+     "Heavier molecules at the same temperature move more slowly, and hexane's stronger dispersion forces hold it back.",
+     "Pentane has no H on N, O or F, so it cannot hydrogen-bond; and attractions hold molecules in, not push them out.",
+     "Nonpolar molecules still attract by dispersion forces, and those differ."
+    ]
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-15",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is a liquid's normal boiling point?",
+   "options": [
+    "The temperature at which its vapor pressure equals 1 atm",
+    "The temperature at which it first starts to evaporate",
+    "The temperature at which its vapor pressure is zero",
+    "The highest temperature the liquid can ever reach"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A liquid boils when its vapor pressure matches the pressure above it; the normal boiling point uses 1 atm.",
+    "options": [
+     "Right: vapor pressure matches 1 atm of outside pressure.",
+     "Liquids evaporate at every temperature, far below the boiling point.",
+     "A liquid's vapor pressure is above zero at every temperature.",
+     "Under higher pressure, as in a pressure cooker, a liquid stays liquid above its normal boiling point."
+    ]
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-16",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which phase changes require energy to be added to the substance? Select all that apply.",
+   "options": [
+    "Melting",
+    "Condensation",
+    "Sublimation",
+    "Freezing",
+    "Evaporation",
+    "Deposition"
+   ],
+   "correct": [
+    0,
+    2,
+    4
+   ],
+   "why": {
+    "correct": "Melting, sublimation and evaporation overcome attractions between particles, so they need energy. Condensation, freezing and deposition form attractions and release energy.",
+    "options": [
+     "Right: attractions in the solid are overcome.",
+     "Gas particles are captured by attractions, which releases energy.",
+     "Right: solid to gas overcomes attractions.",
+     "Particles settle into fixed positions, releasing energy.",
+     "Right: molecules must overcome their neighbors' attractions to escape.",
+     "Gas to solid releases energy as attractions form."
+    ]
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-17",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Two sealed flasks hold liquid bromine (Br₂) and liquid water at the same temperature, 20 °C. Bromine's vapor pressure is 175 torr and water's is 17.5 torr, yet a Br₂ molecule has about nine times the mass of an H₂O molecule. Which claim best fits the data?",
+   "options": [
+    "Water molecules attract more strongly: they hydrogen-bond, while Br₂ has dispersion forces alone.",
+    "The data are wrong, because heavier molecules have lower vapor pressures than lighter ones.",
+    "Bromine molecules move faster than water molecules at the same temperature, because they are heavier.",
+    "Bromine's Br–Br bonds break easily, so the flask fills with Br atoms, which raises the pressure."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Vapor pressure follows the strength of attractions, not mass. Water's hydrogen bonds hold its molecules more tightly than Br₂'s dispersion forces, so fewer water molecules escape.",
+    "options": [
+     "Right: name the forces in both substances.",
+     "Mass does not set vapor pressure; the attractions do, and here they favor water.",
+     "At the same temperature heavier molecules move more slowly, not faster.",
+     "Evaporation leaves Br₂ molecules whole; bromine vapor is Br₂."
+    ]
+   }
+  },
+  {
+   "id": "chem-phases-of-matter-18",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "phases-of-matter",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Water and its vapor are at equilibrium in a sealed flask at 25 °C. Which changes would raise the vapor pressure of the water? Select all that apply.",
+   "options": [
+    "Raising the temperature to 35 °C",
+    "Adding more liquid water at 25 °C",
+    "Moving the water to a larger sealed flask at 25 °C",
+    "Adding nitrogen gas to the flask at 25 °C"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Vapor pressure depends only on the liquid and its temperature. More molecules escape at a higher temperature; the amount of liquid, the flask size and other gases do not change the equilibrium pressure of the water vapor.",
+    "options": [
+     "Right: faster molecules escape more often.",
+     "The vapor pressure does not depend on the amount of liquid.",
+     "More water evaporates, but the vapor pressure returns to the same value.",
+     "Nitrogen adds to the pressure in the flask, but the water's vapor pressure is unchanged."
+    ]
+   }
+  }
+ ]
+}

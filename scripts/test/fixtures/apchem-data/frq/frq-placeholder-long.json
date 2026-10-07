@@ -1,0 +1,112 @@
+{
+ "id": "frq-placeholder-long",
+ "type": "long",
+ "points": 10,
+ "placeholder": true,
+ "title": "Placeholder: comparing weighed samples",
+ "units": [
+  "unit-1"
+ ],
+ "topics": [
+  "moles-molar-mass"
+ ],
+ "practices": [
+  "5.F",
+  "6.D"
+ ],
+ "stimulus": "moles-molar-mass-s1",
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Calculate</b> the moles in each of the four samples.",
+   "points": 4,
+   "rubric": [
+    {
+     "point": "Sample 1 correct",
+     "accept": [
+      "2.00 mol"
+     ]
+    },
+    {
+     "point": "Sample 2 correct",
+     "accept": [
+      "0.500 mol"
+     ]
+    },
+    {
+     "point": "Sample 3 correct",
+     "accept": [
+      "0.499 mol"
+     ]
+    },
+    {
+     "point": "Sample 4 correct",
+     "accept": [
+      "0.500 mol"
+     ]
+    }
+   ],
+   "sample": "Sample 1: 2.00 mol. Sample 2: 0.500 mol. Sample 3: 0.499 mol. Sample 4: 0.500 mol."
+  },
+  {
+   "label": "b",
+   "prompt": "<b>Identify</b> the sample with the most molecules and <b>justify</b> your answer.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Sample 1",
+     "accept": [
+      "the water"
+     ]
+    },
+    {
+     "point": "Justification: most moles, so most molecules",
+     "accept": [
+      "moles are proportional to molecules"
+     ]
+    }
+   ],
+   "sample": "Sample 1, the water. It has the most moles, 2.00 mol, and the number of molecules is proportional to moles."
+  },
+  {
+   "label": "c",
+   "prompt": "<b>Calculate</b> the number of molecules in Sample 3.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Setup with Avogadro's number",
+     "accept": [
+      "0.499 mol × 6.022 × 10²³"
+     ]
+    },
+    {
+     "point": "Answer with three significant figures",
+     "accept": [
+      "3.00 × 10²³ molecules"
+     ]
+    }
+   ],
+   "sample": "0.4988 mol × 6.022 × 10²³ molecules/mol = 3.00 × 10²³ molecules."
+  },
+  {
+   "label": "d",
+   "prompt": "<b>Explain</b> why Samples 2 and 4 have similar amounts in moles but very different masses.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Same number of molecules",
+     "accept": [
+      "equal moles, equal molecules"
+     ]
+    },
+    {
+     "point": "Glucose molecules are about four times heavier",
+     "accept": [
+      "180.16 / 44.01 ≈ 4.1"
+     ]
+    }
+   ],
+   "sample": "Both hold about 0.500 mol, so the same number of molecules, but each glucose molecule has about 4.1 times the mass of a carbon dioxide molecule."
+  }
+ ]
+}

@@ -1,0 +1,85 @@
+<p>A titration adds a solution of known concentration (the titrant, in a buret) to a measured sample (the analyte) until they have reacted exactly. Topic 4.6 used titrations to count moles. Here we watch the pH while it happens. The result, a <b>titration curve</b>, is one of the most-tested pictures on the exam, and every part of it comes from ideas you already have: complete neutralization first, then the equilibrium of whatever is left.</p>
+
+<h2>The four regions of a weak acid titration</h2>
+<p><a class="figref" href="#fig-curve">The figure</a> is the curve for 25.00 mL of 0.100 M acetic acid (Ka = 1.8 × 10⁻⁵) titrated with 0.100 M NaOH. Read it left to right.</p>
+<figure id="fig-curve" data-fig="weak-acid-titration-curve"><figcaption>A weak acid titrated with a strong base. The half-equivalence point gives pKa; the equivalence point is above pH 7.</figcaption></figure>
+<table class="compare">
+<thead><tr><th scope="col">Region</th><th scope="col">What is in the flask</th><th scope="col">How the pH is found</th><th scope="col">pH here</th></tr></thead>
+<tbody>
+<tr><td>Start (0 mL)</td><td>HA only</td><td>Weak acid: [H₃O⁺] ≈ √(Ka·C)</td><td>2.88</td></tr>
+<tr><td>Buffer region (0 to 25 mL)</td><td>HA and A⁻</td><td>[H₃O⁺] = Ka × [HA]/[A⁻]</td><td>slow rise</td></tr>
+<tr><td>Half-equivalence (12.50 mL)</td><td>[HA] = [A⁻]</td><td>pH = pKa</td><td>4.74 (4.75 measured)</td></tr>
+<tr><td>Equivalence (25.00 mL)</td><td>A⁻ only</td><td>Weak base: Kb = Kw/Ka</td><td>8.72</td></tr>
+<tr><td>After equivalence</td><td>A⁻ and excess OH⁻</td><td>[OH⁻] from the excess</td><td>levels off near 12.5</td></tr>
+</tbody></table>
+<p>Why is there a cliff? In the buffer region, each drop of OH⁻ is used up converting HA to A⁻, so free OH⁻ stays low and the ratio [HA]/[A⁻] changes slowly. Near equivalence, almost no HA is left to absorb the next drop, so the pH jumps several units within a fraction of a milliliter. The <b>equivalence point</b> sits at the center of that steep rise.</p>
+
+<h2>Reading the curve: equivalence and half-equivalence</h2>
+<p>Two readings answer most curve questions.</p>
+<p><b>The equivalence volume gives the amount of analyte.</b> At equivalence, moles of OH⁻ added = moles of acid at the start.</p>
+<p><b>Half the equivalence volume gives pKa.</b> At that point half the HA has become A⁻, so [HA] = [A⁻]. Put that in the Ka expression:</p>
+<p style="text-align:center">Ka = [H₃O⁺][A⁻]/[HA] = [H₃O⁺] × 1, so <b>pH = pKa at the half-equivalence point</b>.</p>
+<p>The exam's most common error in this unit is swapping these two points. pH = pKa is <i>half-way</i> to equivalence, in the flat buffer region, never at the cliff.</p>
+<div class="worked">
+<p><b>Worked example 1: concentration and Ka from a curve.</b> A 20.00 mL sample of a weak acid is titrated with 0.1250 M NaOH. The steep rise is centered at 24.00 mL, and the pH at 12.00 mL is 3.86. Find the acid concentration and Ka.</p>
+<p><b>Step 1.</b> mol OH⁻ at equivalence = 0.02400 L × 0.1250 mol/L = 3.000 × 10⁻³ mol = mol HA.</p>
+<p><b>Step 2.</b> [HA] = 3.000 × 10⁻³ mol / 0.02000 L = <b>0.1500 M</b>.</p>
+<p><b>Step 3.</b> 12.00 mL is half of 24.00 mL, the half-equivalence point, so pKa = 3.86 and Ka = 10^−3.86 = <b>1.4 × 10⁻⁴</b>.</p>
+</div>
+
+<h2>Calculating the pH at any point</h2>
+<p>Every point on the curve uses the two-stage method from topic 8.4: react the moles, then find the pH of what is left.</p>
+<div class="worked">
+<p><b>Worked example 2: in the buffer region.</b> 25.00 mL of 0.100 M acetic acid, after 10.00 mL of 0.100 M NaOH.</p>
+<p><b>Step 1.</b> 2.50 × 10⁻³ mol HA − 1.00 × 10⁻³ mol OH⁻ → 1.50 × 10⁻³ mol HA and 1.00 × 10⁻³ mol A⁻.</p>
+<p><b>Step 2.</b> [H₃O⁺] = Ka × [HA]/[A⁻] = 1.8 × 10⁻⁵ × 1.50/1.00 = 2.7 × 10⁻⁵ M (the volume cancels).</p>
+<p><b>Step 3.</b> pH = <b>4.57</b>.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3: at the equivalence point.</b> Same titration at 25.00 mL.</p>
+<p><b>Step 1.</b> All 2.50 × 10⁻³ mol HA is now A⁻, in 50.00 mL: [A⁻] = 0.0500 M.</p>
+<p><b>Step 2.</b> Kb = Kw/Ka = 5.6 × 10⁻¹⁰; [OH⁻] = √(5.6 × 10⁻¹⁰ × 0.0500) = 5.3 × 10⁻⁶ M.</p>
+<p><b>Step 3.</b> pOH = 5.28, so pH = <b>8.72</b>. Notice the total volume (50.00 mL, not 25.00 mL) in Step 1.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 4: after equivalence.</b> Same titration at 30.00 mL. Excess OH⁻ = 3.00 × 10⁻³ − 2.50 × 10⁻³ = 5.0 × 10⁻⁴ mol in 55.00 mL: [OH⁻] = 0.0091 M, pOH = 2.04, pH = <b>11.96</b>.</p>
+</div>
+
+<h2>Strong acid, weak acid, weak base</h2>
+<table class="compare">
+<thead><tr><th scope="col">Titration</th><th scope="col">Start</th><th scope="col">Before equivalence</th><th scope="col">Equivalence pH</th></tr></thead>
+<tbody>
+<tr><td>Strong acid + strong base (HCl + NaOH)</td><td>low (1.00 for 0.100 M)</td><td>rises slowly, no buffer region</td><td>7.00</td></tr>
+<tr><td>Weak acid + strong base (CH₃COOH + NaOH)</td><td>higher (2.88)</td><td>buffer region; pH = pKa halfway</td><td>above 7 (A⁻ is a base)</td></tr>
+<tr><td>Weak base + strong acid (NH₃ + HCl)</td><td>high, the curve falls</td><td>buffer region; pH = pKa of BH⁺ halfway</td><td>below 7 (BH⁺ is an acid)</td></tr>
+</tbody></table>
+<p>The equivalence <i>volume</i> does not depend on strength: 0.100 M HCl and 0.100 M acetic acid of the same volume need the same NaOH, because OH⁻ takes protons from acetic acid molecules as completely as it removes H₃O⁺.</p>
+<p>For a weak base such as NH₃, the half-equivalence point has [NH₃] = [NH₄⁺], so pH equals the pKa of the conjugate acid NH₄⁺: 14.00 − pKb = 14.00 − 4.74 = 9.26. Writing pKb (4.74) there is a frequent slip.</p>
+
+<h2>Polyprotic acids</h2>
+<p>A <b>polyprotic acid</b> has more than one ionizable proton and gives them up one at a time: H₂A ⇌ H⁺ + HA⁻ (Ka₁), then HA⁻ ⇌ H⁺ + A²⁻ (Ka₂). The second proton leaves a negative ion, which holds it more tightly, so Ka₂ is smaller than Ka₁. When the two pKa values are far apart, the titration curve shows two steep rises:</p>
+<ul>
+<li>The first equivalence point (H₂A all converted to HA⁻) and the second (HA⁻ all converted to A²⁻) are equally spaced: if the first is at 20.0 mL, the second is at 40.0 mL.</li>
+<li>pH = pKa₁ halfway to the first equivalence point; pH = pKa₂ halfway between the first and second.</li>
+</ul>
+<p>A triprotic acid such as H₃PO₄ can show up to three; in practice its third rise is too small to see in water.</p>
+
+<h2>Particle views of the titration</h2>
+<p>The exam also asks you to draw or choose the particles present at a point on a curve. For HA titrated with NaOH, ignoring water and the trace ions made by the equilibria:</p>
+<ul>
+<li>Start: HA only.</li>
+<li>Half-equivalence: equal numbers of HA and A⁻, plus Na⁺ equal to the number of A⁻.</li>
+<li>Equivalence: A⁻ and Na⁺ in equal numbers, no HA.</li>
+<li>After equivalence: A⁻, extra OH⁻, and Na⁺ equal to all the NaOH added.</li>
+</ul>
+<p>Na⁺ is a spectator, but it still has to be in the drawing, in the right number.</p>
+
+<h2>Where students lose points</h2>
+<ul>
+<li>Confusing equivalence and half-equivalence: pH = pKa at <b>half</b> the equivalence volume.</li>
+<li>Reading the last volume on the axis, or the total volume of the flask, instead of the equivalence volume.</li>
+<li>Saying every equivalence point is pH 7.</li>
+<li>Forgetting that the volume at equivalence is the sum of both solutions.</li>
+<li>Using pKb for the half-equivalence pH of a weak base.</li>
+<li>Not rinsing the buret with titrant (it dilutes the titrant, so the volume used is too large and the calculated analyte concentration too high).</li>
+</ul>

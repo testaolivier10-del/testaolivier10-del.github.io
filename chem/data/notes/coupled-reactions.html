@@ -1,0 +1,36 @@
+<p>Some of the most useful reactions in industry and in living cells have a positive ΔG°: on their own they are not thermodynamically favored. They still happen, because something supplies the free energy they need. This page shows the most common way: coupling them to a reaction that is strongly favored.</p>
+
+<h2>An unfavored reaction we want</h2>
+<p>Copper metal can be made from the ore chalcocite, Cu<sub>2</sub>S. The simplest route would be to decompose it:</p>
+<p style="text-align:center">Cu<sub>2</sub>S(s) → 2 Cu(s) + S(s) &nbsp;&nbsp; ΔG° = +86.2 kJ/mol</p>
+<p>With ΔG° &gt; 0, this is not favored (its K at 298 K is about 8 × 10<sup>−16</sup>). Heating the ore by itself gives almost no copper.</p>
+
+<h2>Coupling through a shared intermediate</h2>
+<p>Now look for a reaction that uses up one of the products and is strongly favored. Sulfur burns in oxygen:</p>
+<p style="text-align:center">S(s) + O<sub>2</sub>(g) → SO<sub>2</sub>(g) &nbsp;&nbsp; ΔG° = −300.1 kJ/mol</p>
+<p>Sulfur is made by the first reaction and consumed by the second. A species like this, shared between two reactions, is what links them. Add the two equations and the sulfur cancels:</p>
+<p style="text-align:center">Cu<sub>2</sub>S(s) + O<sub>2</sub>(g) → 2 Cu(s) + SO<sub>2</sub>(g)</p>
+<p>Because ΔG° is a state function, the free energy change of the overall reaction is the sum of the steps (the same idea as Hess's law for ΔH°, topic 6.9).</p>
+<figure id="fig-bars" data-fig="coupled-reactions-bars"><figcaption>Figure 1. Adding the ΔG° values of two coupled reactions.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example.</b> Find ΔG° and K at 298 K for Cu<sub>2</sub>S(s) + O<sub>2</sub>(g) → 2 Cu(s) + SO<sub>2</sub>(g).</p>
+<p>ΔG°(overall) = ΔG°<sub>1</sub> + ΔG°<sub>2</sub> = (+86.2 kJ/mol) + (−300.1 kJ/mol) = −213.9 kJ/mol.</p>
+<p>K = e<sup>−ΔG°/RT</sup> = e<sup>213,900 / (8.314 × 298)</sup> = e<sup>86.3</sup> ≈ 3 × 10<sup>37</sup>.</p>
+<p>The overall reaction is strongly favored (<a class="figref" href="#fig-bars">Figure 1</a>). Equivalently, K(overall) = K<sub>1</sub> × K<sub>2</sub> = (8 × 10<sup>−16</sup>)(4 × 10<sup>52</sup>) ≈ 3 × 10<sup>37</sup>: adding reactions multiplies their K values, as in topic 7.6.</p>
+</div>
+<p>Notice what coupling does <i>not</i> do: it does not change ΔG° of the first reaction. Cu<sub>2</sub>S → 2 Cu + S still has ΔG° = +86.2 kJ/mol. What is favored is the overall process, because the favored step more than pays for the unfavored one.</p>
+
+<h2>Coupling in living cells</h2>
+<p>Cells use the same strategy constantly. Their main "driving" reaction is the breakdown of ATP:</p>
+<p style="text-align:center">ATP + H<sub>2</sub>O → ADP + phosphate &nbsp;&nbsp; ΔG° = −30.5 kJ/mol (standard value at pH 7)</p>
+<p>The first step in using glucose attaches a phosphate group to it, which has ΔG° = +13.8 kJ/mol on its own. An enzyme couples the two so the phosphate group passes from ATP to glucose; the overall reaction, glucose + ATP → glucose-6-phosphate + ADP, has ΔG° = 13.8 − 30.5 = −16.7 kJ/mol and is favored. (These are standard values at pH 7, the standard biochemists use; at the real concentrations in a cell, ATP hydrolysis releases even more free energy.) The enzyme makes the coupled reaction fast; the coupling makes it favored.</p>
+
+<h2>Rules for coupling</h2>
+<ul>
+<li>The reactions must share an intermediate, so that they add into one overall equation.</li>
+<li>ΔG° values add; K values multiply.</li>
+<li>The coupled process is favored only if the total ΔG° is negative. A favored reaction with ΔG° = −10 kJ/mol cannot drive one with ΔG° = +13.8 kJ/mol.</li>
+</ul>
+
+<h2>Driving reactions with outside energy</h2>
+<p>Coupling to another reaction is not the only way. A process with ΔG° &gt; 0 can also be driven by a continuous supply of energy from outside the system. Passing an electric current through water splits it into H<sub>2</sub> and O<sub>2</sub>, a reaction with ΔG° = +474.2 kJ/mol. Plants use the energy of absorbed light to build glucose from CO<sub>2</sub> and water. Take the energy supply away and the process stops. You will see electrical driving again in the next three topics.</p>

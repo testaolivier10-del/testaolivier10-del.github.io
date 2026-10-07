@@ -1,0 +1,82 @@
+{
+ "topic": "reaction-rates",
+ "hook": "A sugar cube dropped in tea dissolves in a minute; the same sugar ground to powder dissolves in seconds. A firework explodes in a blink, while a nail takes months to rust. Chemists put numbers on \"fast\" and \"slow\" by measuring how quickly concentrations change, and that number is the reaction rate.",
+ "prereq": [
+  {
+   "q": "In 2 H₂ + O₂ → 2 H₂O, how many moles of water form from 3.0 mol of O₂ with excess H₂?",
+   "options": [
+    "6.0 mol",
+    "3.0 mol",
+    "1.5 mol",
+    "9.0 mol"
+   ],
+   "correct": 0,
+   "why": "The mole ratio is 2 mol H₂O per 1 mol O₂: 3.0 mol × 2 = 6.0 mol.",
+   "review": "stoichiometry"
+  },
+  {
+   "q": "What is the molarity of 0.50 mol of solute in 0.250 L of solution?",
+   "options": [
+    "2.0 M",
+    "0.13 M",
+    "0.50 M",
+    "0.25 M"
+   ],
+   "correct": 0,
+   "why": "Molarity = moles ÷ liters = 0.50 mol ÷ 0.250 L = 2.0 M.",
+   "review": "solutions"
+  }
+ ],
+ "figure": {
+  "figure": "rate-curves",
+  "caption": "Reactant falls, product rises. The average rate is the slope between two points; the initial rate is the slope of the tangent at time zero."
+ },
+ "chain": [
+  {
+   "cause": "Reactant particles are used up as the reaction runs",
+   "effect": "the reactant concentration falls and the product concentration rises"
+  },
+  {
+   "cause": "Fewer reactant particles remain in each liter",
+   "effect": "fewer react each second, so the curve flattens and the rate falls"
+  },
+  {
+   "cause": "The balanced equation fixes how many of each particle react together",
+   "effect": "the rates of different substances are linked by their coefficients"
+  },
+  {
+   "cause": "Higher concentration, temperature or surface area make particles meet more often or with more energy",
+   "effect": "the reaction goes faster, but the amount of product is still set by the limiting reactant"
+  }
+ ],
+ "ideas": [
+  "A <b>reaction rate</b> is the change in concentration per unit time, in M/s. Reactant rates carry a minus sign so they come out positive.",
+  "Average rate is the slope between two points; instantaneous rate is the slope of the tangent at one time; initial rate is the tangent at t = 0.",
+  "Divide each substance's rate by its coefficient to get one rate for the reaction.",
+  "Rate is how fast product forms. The amount of product is set by the limiting reactant.",
+  "Higher concentration, higher temperature and more surface area make a reaction faster."
+ ],
+ "misconception": {
+  "wrong": "A faster reaction makes more product.",
+  "right": "A faster reaction reaches the end sooner. The amount of product is fixed by the limiting reactant and the balanced equation."
+ },
+ "check": [
+  "chem-reaction-rates-1",
+  "chem-reaction-rates-2",
+  "chem-reaction-rates-4",
+  "chem-reaction-rates-6",
+  "chem-reaction-rates-9",
+  "chem-reaction-rates-11"
+ ],
+ "summary": "A reaction rate is the change in concentration of a reactant or product per unit time, in M/s. Rates of different substances are linked by their coefficients. Concentration, temperature and surface area change the rate, while the limiting reactant sets how much product forms.",
+ "connections": [
+  {
+   "href": "../notes/stoichiometry.html",
+   "label": "Back: mole ratios from a balanced equation (4.5)"
+  },
+  {
+   "href": "../notes/beer-lambert-law.html",
+   "label": "Absorbance tracks concentration (3.13)"
+  }
+ ]
+}

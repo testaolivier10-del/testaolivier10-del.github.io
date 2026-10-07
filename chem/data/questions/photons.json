@@ -1,0 +1,579 @@
+{
+ "stimuli": {
+  "photons-s1": {
+   "kind": "table",
+   "title": "Emission lines of a gas discharge tube",
+   "text": "<p>A student views the light from a tube of hot hydrogen gas through a spectroscope and records four bright lines in the visible region.</p>",
+   "table": {
+    "caption": "Visible emission lines",
+    "cols": [
+     "Line",
+     "Wavelength (nm)",
+     "Color"
+    ],
+    "rows": [
+     [
+      "A",
+      "656.3",
+      "red"
+     ],
+     [
+      "B",
+      "486.1",
+      "blue-green"
+     ],
+     [
+      "C",
+      "434.0",
+      "blue-violet"
+     ],
+     [
+      "D",
+      "410.2",
+      "violet"
+     ]
+    ]
+   }
+  },
+  "photons-s2": {
+   "kind": "graph",
+   "title": "Photon energy and wavelength",
+   "text": "<p>The energy of one photon calculated for several wavelengths of light.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Wavelength",
+     "unit": "nm",
+     "min": 200,
+     "max": 800,
+     "step": 100
+    },
+    "y": {
+     "label": "Energy per photon",
+     "unit": "× 10⁻¹⁹ J",
+     "min": 0,
+     "max": 10,
+     "step": 2
+    },
+    "series": [
+     {
+      "name": "E = hc/λ",
+      "points": [
+       [
+        200,
+        9.93
+       ],
+       [
+        250,
+        7.95
+       ],
+       [
+        300,
+        6.62
+       ],
+       [
+        350,
+        5.68
+       ],
+       [
+        400,
+        4.97
+       ],
+       [
+        450,
+        4.41
+       ],
+       [
+        500,
+        3.97
+       ],
+       [
+        550,
+        3.61
+       ],
+       [
+        600,
+        3.31
+       ],
+       [
+        650,
+        3.06
+       ],
+       [
+        700,
+        2.84
+       ],
+       [
+        750,
+        2.65
+       ],
+       [
+        800,
+        2.48
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-photons-1",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "photons-s1",
+   "q": "What is the frequency of line A?",
+   "numeric": {
+    "answer": 456800000000000.0,
+    "tol": 100000000000.0,
+    "unit": "s⁻¹",
+    "units": [
+     "Hz",
+     "/s",
+     "s^-1"
+    ],
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 456800.0,
+      "rel": 0.02,
+      "why": "Value: you used the wavelength in nm. Convert to meters first: 656.3 nm = 6.563 × 10⁻⁷ m."
+     },
+     {
+      "value": 2.189e-15,
+      "rel": 0.02,
+      "why": "Value: you divided λ by c. Frequency is ν = c/λ."
+     }
+    ]
+   },
+   "why": {
+    "correct": "λ = 656.3 nm = 6.563 × 10⁻⁷ m. ν = c/λ = (2.998 × 10⁸ m/s) / (6.563 × 10⁻⁷ m) = 4.56803 × 10¹⁴ s⁻¹, which is 4.568 × 10¹⁴ s⁻¹."
+   }
+  },
+  {
+   "id": "chem-photons-2",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "photons-s1",
+   "q": "What is the energy of one photon of line A?",
+   "options": [
+    "3.03 × 10⁻¹⁹ J",
+    "4.35 × 10⁻⁴⁰ J",
+    "1.82 × 10⁵ J/mol",
+    "3.03 × 10⁻²⁸ J"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "E = hc/λ = (6.626 × 10⁻³⁴ J·s)(2.998 × 10⁸ m/s) / (6.563 × 10⁻⁷ m) = 3.03 × 10⁻¹⁹ J.",
+    "options": [
+     "Right: E = hc/λ with λ in meters.",
+     "This is hλ. Energy is E = hν = hc/λ, which falls as λ rises.",
+     "This is the energy of a mole of photons; one photon is 6.022 × 10²³ times smaller.",
+     "This used λ in nm. Convert first: 656.3 nm = 6.563 × 10⁻⁷ m."
+    ]
+   }
+  },
+  {
+   "id": "chem-photons-3",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "photons-s1",
+   "q": "Which line comes from the largest drop in energy between two levels?",
+   "options": [
+    "A, 656.3 nm",
+    "B, 486.1 nm",
+    "C, 434.0 nm",
+    "D, 410.2 nm"
+   ],
+   "correct": 3,
+   "fixed": true,
+   "why": {
+    "correct": "E = hc/λ, so the shortest wavelength carries the most energy. Line D, at 410.2 nm, comes from the largest energy drop.",
+    "options": [
+     "Line A has the longest wavelength, so the smallest energy drop of the four.",
+     "Line B, at 486.1 nm, is a longer wavelength than two of the other lines.",
+     "Line C, at 434.0 nm, is longer than the 410.2 nm line.",
+     "Right: shortest wavelength, most energy."
+    ]
+   }
+  },
+  {
+   "id": "chem-photons-4",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "photons-s1",
+   "q": "Why does hydrogen emit only these particular wavelengths rather than a continuous rainbow?",
+   "options": [
+    "Its electron energies are quantized, so only photons matching the gaps between levels are emitted.",
+    "Its electrons can sit at any energy, but the spectroscope filters out the other wavelengths.",
+    "Hydrogen atoms are too small to emit light of any other color than these four.",
+    "Hot hydrogen gas reflects these four colors from the light in the room."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Electrons in an atom occupy fixed levels. A drop from one level to another emits a photon whose energy, and so wavelength, equals that gap exactly. A few gaps give a few lines.",
+    "options": [
+     "Right: fixed levels, fixed photon energies.",
+     "A spectroscope spreads light out; it would show a continuous spectrum if one were emitted.",
+     "Atom size does not pick the colors; the gaps between levels do.",
+     "The light is emitted by the hot gas, not reflected."
+    ]
+   }
+  },
+  {
+   "id": "chem-photons-5",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "photons-s1",
+   "q": "What is the energy of one mole of line D photons, in kJ/mol?",
+   "numeric": {
+    "answer": 292.0,
+    "tol": 1.0,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 4.843e-19,
+      "rel": 0.02,
+      "why": "Value: that is one photon. Multiply by Avogadro's number for a mole of photons."
+     }
+    ]
+   },
+   "why": {
+    "correct": "E(one photon) = hc/λ = (6.626 × 10⁻³⁴)(2.998 × 10⁸) / (4.102 × 10⁻⁷ m) = 4.8427 × 10⁻¹⁹ J. Per mole: × 6.022 × 10²³ mol⁻¹ = 2.9163 × 10⁵ J/mol = 291.6 kJ/mol, which is 292 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-photons-6",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "photons-s2",
+   "q": "Which relationship does the graph show?",
+   "options": [
+    "Energy per photon is inversely proportional to wavelength.",
+    "Energy per photon is directly proportional to wavelength.",
+    "Energy per photon falls by the same amount for each 100 nm.",
+    "Energy per photon does not depend on wavelength."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Doubling the wavelength from 300 nm to 600 nm halves the energy, from 6.62 to 3.31 × 10⁻¹⁹ J. E = hc/λ.",
+    "options": [
+     "Right: E × λ is constant.",
+     "Energy falls as wavelength rises.",
+     "The drop gets smaller at longer wavelengths, so it is not linear.",
+     "The curve changes by a factor of four across the graph."
+    ]
+   }
+  },
+  {
+   "id": "chem-photons-7",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "photons-s2",
+   "q": "By what factor is the energy of a 250 nm photon greater than that of a 750 nm photon?",
+   "numeric": {
+    "answer": 3,
+    "tol": 0,
+    "unit": "",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 0.3333,
+      "rel": 0.02,
+      "why": "Value: you inverted the ratio. The shorter wavelength has the greater energy."
+     },
+     {
+      "value": 9,
+      "rel": 0.02,
+      "why": "Value: E depends on 1/λ, not 1/λ²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "E is proportional to 1/λ, so E(250)/E(750) = 750/250 = 3. No constants are needed."
+   }
+  },
+  {
+   "id": "chem-photons-8",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "photons-s2",
+   "q": "An electronic transition in a molecule requires 4.97 × 10⁻¹⁹ J. Which wavelength of light could cause it?",
+   "options": [
+    "About 200 nm",
+    "About 400 nm",
+    "About 600 nm",
+    "About 800 nm"
+   ],
+   "correct": 1,
+   "fixed": true,
+   "why": {
+    "correct": "λ = hc/E = (6.626 × 10⁻³⁴ × 2.998 × 10⁸) / 4.97 × 10⁻¹⁹ = 400 nm. The graph shows 4.97 × 10⁻¹⁹ J at about 400 nm.",
+    "options": [
+     "A 200 nm photon carries about twice the energy needed.",
+     "Right: the photon energy matches the gap.",
+     "A 600 nm photon carries only about two thirds of the energy needed.",
+     "An 800 nm photon carries about half the energy needed."
+    ]
+   }
+  },
+  {
+   "id": "chem-photons-9",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "photons-s2",
+   "q": "A student says that a very bright red lamp (700 nm) can cause the transition in the previous question if it is bright enough. Which response is best?",
+   "options": [
+    "No: each red photon has about 2.8 × 10⁻¹⁹ J, less than the gap, and brighter light only adds more such photons.",
+    "Yes: a brighter lamp has more energy in total, so it is able to supply the 4.97 × 10⁻¹⁹ J needed.",
+    "Yes: bright light has a shorter wavelength than dim light, so it carries more energy per photon.",
+    "No: red light has more energy per photon than the gap, so it passes through without being absorbed."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A transition is caused by one photon of matching energy. A 700 nm photon carries hc/λ = 2.84 × 10⁻¹⁹ J. Brightness changes the number of photons, not the energy of each.",
+    "options": [
+     "Right: energy per photon decides.",
+     "Total energy is not what matters; each photon must match the gap.",
+     "Brightness does not change wavelength.",
+     "Red photons have less energy than the gap, not more."
+    ]
+   }
+  },
+  {
+   "id": "chem-photons-10",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A microwave oven uses radiation with a frequency of 2.45 × 10⁹ s⁻¹. What is its wavelength, in meters?",
+   "numeric": {
+    "answer": 0.122,
+    "tol": 0.001,
+    "unit": "m",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 8.172,
+      "rel": 0.02,
+      "why": "Value: you divided ν by c. Wavelength is λ = c/ν."
+     },
+     {
+      "value": 7.345e+17,
+      "rel": 0.02,
+      "why": "Value: you multiplied c by ν. Wavelength is λ = c/ν."
+     }
+    ]
+   },
+   "why": {
+    "correct": "λ = c/ν = (2.998 × 10⁸ m/s) / (2.45 × 10⁹ s⁻¹) = 0.12237 m, which is 0.122 m (12.2 cm)."
+   }
+  },
+  {
+   "id": "chem-photons-11",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Sodium street lamps emit yellow light at 589 nm. What is the energy of one photon of this light?",
+   "options": [
+    "3.37 × 10⁻¹⁹ J",
+    "3.37 × 10⁻²⁸ J",
+    "3.90 × 10⁻⁴⁰ J",
+    "2.03 × 10⁵ J/mol"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "E = hc/λ = (6.626 × 10⁻³⁴ J·s)(2.998 × 10⁸ m/s) / (5.89 × 10⁻⁷ m) = 3.37 × 10⁻¹⁹ J.",
+    "options": [
+     "Right: E = hc/λ with λ in meters.",
+     "This used λ in nm. Convert first: 589 nm = 5.89 × 10⁻⁷ m.",
+     "This is hλ. Energy is E = hc/λ.",
+     "This is a mole of photons, not one photon."
+    ]
+   }
+  },
+  {
+   "id": "chem-photons-12",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "What is the energy of one mole of 589 nm photons, in kJ/mol?",
+   "numeric": {
+    "answer": 203.0,
+    "tol": 1.0,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 203100.0,
+      "rel": 0.02,
+      "why": "Units: that is J/mol. Divide by 1000 to give kJ/mol."
+     },
+     {
+      "value": 2.031e-07,
+      "rel": 0.02,
+      "why": "Value: you used 589 nm as if it were meters. Convert: 5.89 × 10⁻⁷ m."
+     }
+    ]
+   },
+   "why": {
+    "correct": "E(one photon) = hc/λ = 3.3726 × 10⁻¹⁹ J. Per mole: × 6.022 × 10²³ mol⁻¹ = 2.0310 × 10⁵ J/mol = 203.1 kJ/mol, which is 203 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-photons-13",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which equation gives the energy of one photon from its frequency?",
+   "options": [
+    "E = hν",
+    "E = hλ",
+    "E = mc²",
+    "c = λν"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The energy of a photon is Planck's constant times its frequency.",
+    "options": [
+     "Right: Planck's constant times frequency.",
+     "Energy falls as wavelength rises, so E is not proportional to λ.",
+     "That relates mass and energy; it is not on the equations sheet for this course.",
+     "This links wavelength and frequency, not energy."
+    ]
+   }
+  },
+  {
+   "id": "chem-photons-14",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "When the wavelength of light is doubled, what happens to its frequency and to the energy of each photon?",
+   "options": [
+    "Both are halved.",
+    "Both are doubled.",
+    "Frequency halves; energy doubles.",
+    "Frequency doubles; energy halves."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "c = λν with c fixed, so doubling λ halves ν. E = hν, so the energy halves too.",
+    "options": [
+     "Right: c fixed, E ∝ ν.",
+     "Longer waves have lower frequency and less energy.",
+     "E is proportional to ν, so they change together.",
+     "Doubling λ lowers ν, not raises it."
+    ]
+   }
+  },
+  {
+   "id": "chem-photons-15",
+   "type": "order",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for finding the energy of one mole of photons from a wavelength in nm in order.",
+   "options": [
+    "Convert the wavelength from nm to m",
+    "Calculate the frequency, ν = c/λ",
+    "Calculate the energy of one photon, E = hν",
+    "Multiply by Avogadro's number to get J/mol",
+    "Convert J/mol to kJ/mol"
+   ],
+   "why": {
+    "correct": "Units first, then frequency, then energy per photon, then per mole, then kJ."
+   }
+  },
+  {
+   "id": "chem-photons-16",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "photons",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "An atom has two levels 3.03 × 10⁻¹⁹ J apart. Which photons could it absorb to move an electron between exactly these two levels? Select all that apply.",
+   "options": [
+    "656 nm",
+    "486 nm",
+    "1,312 nm",
+    "328 nm"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "λ = hc/E = (6.626 × 10⁻³⁴ × 2.998 × 10⁸) / 3.03 × 10⁻¹⁹ = 6.56 × 10⁻⁷ m = 656 nm. Only a photon of that energy matches the gap; photons of other energies are not absorbed for this transition.",
+    "options": [
+     "Right: its energy equals the gap.",
+     "A 486 nm photon carries 4.09 × 10⁻¹⁹ J, more than the gap.",
+     "A 1,312 nm photon carries half the energy needed.",
+     "A 328 nm photon carries twice the energy needed."
+    ]
+   }
+  }
+ ]
+}

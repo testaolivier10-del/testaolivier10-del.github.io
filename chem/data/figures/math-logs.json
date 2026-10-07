@@ -1,0 +1,7 @@
+{
+ "log-scale": {
+  "file": "figures/log-scale.svg", "ext": "svg", "w": 680, "h": 200,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "A number line from 0.0001 to 10,000 in powers of ten, with logs −4 to 4 underneath: each factor of 10 adds 1 to the log, and numbers below 1 have negative logs."
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "id": "frq-nickel-plating",
+ "type": "short",
+ "points": 4,
+ "title": "Nickel plating a bracket",
+ "units": [
+  "unit-9"
+ ],
+ "topics": [
+  "electrolysis-faraday",
+  "electrochemical-cells"
+ ],
+ "practices": [
+  "4.A",
+  "5.F"
+ ],
+ "stimulus": {
+  "kind": "setup",
+  "title": "Electroplating with nickel",
+  "text": "<p>A steel bracket is coated with 0.500 g of nickel in an electrolytic cell containing NiSO₄(aq). A steady current of 1.75 A is used. Ni²⁺(aq) + 2e⁻ → Ni(s). Molar masses: Ni 58.69 g/mol, Ag 107.87 g/mol. F = 96,485 C/mol e⁻.</p>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Identify</b> whether the bracket is the anode or the cathode, and <b>justify</b> your answer.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "The cathode, because nickel is deposited by reduction (Ni²⁺ + 2e⁻ → Ni), and reduction occurs at the cathode",
+     "accept": [
+      "cathode: Ni²⁺ gains electrons there"
+     ]
+    }
+   ],
+   "sample": "The bracket is the cathode. Nickel forms on it when Ni²⁺ ions gain electrons (Ni²⁺ + 2e⁻ → Ni), which is reduction, and reduction occurs at the cathode."
+  },
+  {
+   "label": "b",
+   "prompt": "<b>Calculate</b> the number of moles of electrons needed to deposit the nickel.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "0.500 g ÷ 58.69 g/mol = 0.008519 mol Ni; × 2 = 0.0170 mol e⁻",
+     "accept": [
+      "0.0170 mol e⁻",
+      "1.70 × 10⁻² mol e⁻"
+     ]
+    }
+   ],
+   "sample": "0.500 g ÷ 58.69 g/mol = 0.008519 mol Ni. Each Ni²⁺ needs 2 electrons: 0.008519 × 2 = 0.0170 mol e⁻."
+  },
+  {
+   "label": "c",
+   "prompt": "<b>Calculate</b> the time, in minutes, needed to deposit the nickel.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "q = 0.01704 mol × 96,485 C/mol = 1644 C; t = q/I = 1644 C ÷ 1.75 A = 939 s = 15.7 min",
+     "accept": [
+      "15.7 min",
+      "15.6–15.7 min",
+      "consistent with part (b)"
+     ]
+    }
+   ],
+   "sample": "q = 0.01704 mol e⁻ × 96,485 C/mol e⁻ = 1644 C. t = q/I = 1644 C ÷ 1.75 A = 939 s = 15.7 min."
+  },
+  {
+   "label": "d",
+   "prompt": "A second cell containing AgNO₃(aq) is connected in series, so the same charge passes through it. <b>Calculate</b> the mass of silver deposited in that cell.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Same mol e⁻; 1 e⁻ per Ag⁺: 0.01704 mol Ag × 107.87 g/mol = 1.84 g Ag",
+     "accept": [
+      "1.84 g",
+      "consistent with part (b)"
+     ]
+    }
+   ],
+   "sample": "The same 0.01704 mol e⁻ passes. Ag⁺ + e⁻ → Ag, so 0.01704 mol Ag forms: 0.01704 × 107.87 g/mol = 1.84 g Ag."
+  }
+ ]
+}

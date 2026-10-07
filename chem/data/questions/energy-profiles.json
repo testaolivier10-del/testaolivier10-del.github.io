@@ -1,0 +1,618 @@
+{
+ "stimuli": {
+  "energy-profiles-s1": {
+   "kind": "graph",
+   "title": "Energy profile for a one-step reaction",
+   "text": "<p>The graph is the energy profile for a one-step (elementary) gas reaction, A + BC → AB + C. Reaction progress has no units.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Reaction progress",
+     "min": 0,
+     "max": 10,
+     "step": 1
+    },
+    "y": {
+     "label": "Potential energy",
+     "unit": "kJ/mol",
+     "min": 0,
+     "max": 175,
+     "step": 25
+    },
+    "series": [
+     {
+      "name": "Energy",
+      "points": [
+       [
+        0,
+        40
+       ],
+       [
+        1,
+        40
+       ],
+       [
+        2,
+        40
+       ],
+       [
+        3,
+        67.5
+       ],
+       [
+        4,
+        122.5
+       ],
+       [
+        5,
+        150
+       ],
+       [
+        6,
+        115
+       ],
+       [
+        7,
+        45
+       ],
+       [
+        8,
+        10
+       ],
+       [
+        9,
+        10
+       ],
+       [
+        10,
+        10
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "energy-profiles-s2": {
+   "kind": "graph",
+   "title": "Two reactions at the same temperature",
+   "text": "<p>Energy profiles for two different one-step reactions, P and Q, run at the same temperature with the same starting concentrations. Assume their orientation needs are similar.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Reaction progress",
+     "min": 0,
+     "max": 10,
+     "step": 1
+    },
+    "y": {
+     "label": "Potential energy",
+     "unit": "kJ/mol",
+     "min": 0,
+     "max": 175,
+     "step": 25
+    },
+    "series": [
+     {
+      "name": "Reaction P",
+      "points": [
+       [
+        0,
+        50
+       ],
+       [
+        1,
+        50
+       ],
+       [
+        2,
+        50
+       ],
+       [
+        3,
+        62.5
+       ],
+       [
+        4,
+        87.5
+       ],
+       [
+        5,
+        100
+       ],
+       [
+        6,
+        93.8
+       ],
+       [
+        7,
+        81.3
+       ],
+       [
+        8,
+        75
+       ],
+       [
+        9,
+        75
+       ],
+       [
+        10,
+        75
+       ]
+      ]
+     },
+     {
+      "name": "Reaction Q",
+      "points": [
+       [
+        0,
+        50
+       ],
+       [
+        1,
+        50
+       ],
+       [
+        2,
+        50
+       ],
+       [
+        3,
+        77.5
+       ],
+       [
+        4,
+        132.5
+       ],
+       [
+        5,
+        160
+       ],
+       [
+        6,
+        125
+       ],
+       [
+        7,
+        55
+       ],
+       [
+        8,
+        20
+       ],
+       [
+        9,
+        20
+       ],
+       [
+        10,
+        20
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-energy-profiles-1",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "numeric",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "energy-profiles-s1",
+   "q": "What is the activation energy of the reaction as written, in kJ/mol?",
+   "numeric": {
+    "answer": 110,
+    "tol": 1,
+    "unit": "kJ/mol",
+    "mistakes": [
+     {
+      "value": 150,
+      "why": "Value: that is the energy of the transition state itself. Ea is the climb from the reactants: 150 − 40."
+     },
+     {
+      "value": 140,
+      "why": "Value: you measured from the products. The forward Ea is measured from the reactants (40 kJ/mol)."
+     }
+    ],
+    "decimals": 0
+   },
+   "why": {
+    "correct": "Ea (forward) = E(transition state) − E(reactants) = 150 kJ/mol − 40 kJ/mol = 110 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-energy-profiles-2",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "numeric",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "energy-profiles-s1",
+   "q": "What is the energy change for the reaction (products minus reactants), in kJ/mol?",
+   "numeric": {
+    "answer": -30,
+    "tol": 1,
+    "unit": "kJ/mol",
+    "mistakes": [
+     {
+      "value": 30,
+      "why": "Sign: the products are lower than the reactants, so energy is released and the change is negative."
+     },
+     {
+      "value": 110,
+      "why": "Value: that is the activation energy. The overall change compares the products with the reactants."
+     }
+    ],
+    "decimals": 0
+   },
+   "why": {
+    "correct": "Energy change = E(products) − E(reactants) = 10 kJ/mol − 40 kJ/mol = −30 kJ/mol. The negative sign means the reacting particles give off energy."
+   }
+  },
+  {
+   "id": "chem-energy-profiles-3",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "numeric",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "energy-profiles-s1",
+   "q": "What is the activation energy for the reaction run in reverse, AB + C → A + BC, in kJ/mol?",
+   "numeric": {
+    "answer": 140,
+    "tol": 1,
+    "unit": "kJ/mol",
+    "mistakes": [
+     {
+      "value": 110,
+      "why": "Value: that is the forward Ea. Run in reverse, the reaction starts from the products (10 kJ/mol)."
+     },
+     {
+      "value": -140,
+      "why": "Sign: an activation energy is a climb, so it is positive."
+     }
+    ],
+    "decimals": 0
+   },
+   "why": {
+    "correct": "Run in reverse, the reaction starts at the products and climbs to the same transition state: Ea (reverse) = 150 − 10 = 140 kJ/mol. Check: Ea(reverse) − Ea(forward) = 140 − 110 = 30, the size of the energy released."
+   }
+  },
+  {
+   "id": "chem-energy-profiles-4",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "energy-profiles-s1",
+   "q": "What does the highest point of the curve represent?",
+   "options": [
+    "The transition state, with bonds half broken and half formed",
+    "A stable molecule that can be collected",
+    "The products, which have the most energy",
+    "The average energy of the reactant molecules"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The peak is the transition state, the highest-energy arrangement along the path. It lasts for about one molecular vibration and cannot be isolated.",
+    "options": [
+     "Right: the unstable arrangement at the top of the barrier.",
+     "Nothing can be collected at the peak; it is the least stable point on the path.",
+     "The products are at the right-hand end, here at 10 kJ/mol.",
+     "The reactants are the left-hand plateau, not the peak."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-profiles-5",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "energy-profiles-s2",
+   "q": "Which reaction is faster, and why?",
+   "options": [
+    "P, because its activation energy is smaller",
+    "Q, because it releases more energy",
+    "Q, because its products are lower in energy",
+    "They are equally fast, because they start at the same energy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "P has Ea = 100 − 50 = 50 kJ/mol; Q has Ea = 160 − 50 = 110 kJ/mol. At the same temperature, a larger fraction of collisions clears the smaller barrier, so P is faster. How much energy a reaction releases does not set its rate.",
+    "options": [
+     "Right: the barrier height controls the rate.",
+     "Releasing more energy says nothing about how fast the reaction starts; Q has the much higher barrier.",
+     "The product level sets the overall energy change, not the rate.",
+     "Equal starting energies do not mean equal barriers."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-profiles-6",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "energy-profiles-s2",
+   "q": "Which statement describes the overall energy change of each reaction?",
+   "options": [
+    "P absorbs energy (+25 kJ/mol); Q releases energy (−30 kJ/mol)",
+    "P releases energy (−25 kJ/mol); Q absorbs energy (+30 kJ/mol)",
+    "P absorbs 50 kJ/mol; Q absorbs 110 kJ/mol",
+    "Both release energy, since both start at 50 kJ/mol"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "P: 75 − 50 = +25 kJ/mol, products higher, energy absorbed. Q: 20 − 50 = −30 kJ/mol, products lower, energy released.",
+    "options": [
+     "Right: products minus reactants for each.",
+     "The signs are reversed: P's products are higher than its reactants.",
+     "Those are the activation energies, not the overall changes.",
+     "Where a reaction starts does not tell you whether it releases energy; compare the product level."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-profiles-7",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "energy-profiles-s2",
+   "q": "A student claims, \"Q releases energy, so it must be the faster reaction.\" Which evidence from the graph best refutes this?",
+   "options": [
+    "Q's barrier is 110 kJ/mol, more than double P's 50 kJ/mol",
+    "Q's products are at 20 kJ/mol",
+    "P's products are at 75 kJ/mol",
+    "Both reactions start at 50 kJ/mol"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rate depends on the activation energy, not on the overall energy change. Q has the larger barrier, so fewer collisions succeed and it is slower, even though it releases energy.",
+    "options": [
+     "Right: compares the barriers, which set the rates.",
+     "This is the product level, which sets the energy change, not the rate.",
+     "P's product level is also about the energy change, not the rate.",
+     "Equal starting points do not compare the barriers."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-profiles-8",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "predict",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "energy-profiles-s2",
+   "q": "Reaction P is warmed by 10 °C. Predict each change.",
+   "variables": [
+    {
+     "name": "Rate constant of reaction P",
+     "answer": "up",
+     "why": "A larger fraction of collisions has at least the activation energy."
+    },
+    {
+     "name": "Activation energy of reaction P",
+     "answer": "none",
+     "why": "The barrier height is a property of the pathway, not of the temperature."
+    },
+    {
+     "name": "Energy change of reaction P",
+     "answer": "none",
+     "why": "The reactant and product levels do not move with temperature on this model."
+    }
+   ],
+   "why": {
+    "correct": "Warming speeds the reaction by putting more molecules over the same barrier. The profile itself does not change."
+   }
+  },
+  {
+   "id": "chem-energy-profiles-9",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "On an energy profile, the reactants are at 120 kJ/mol, the transition state at 185 kJ/mol and the products at 160 kJ/mol. Which statement is correct?",
+   "options": [
+    "Ea = 65 kJ/mol; it absorbs 40 kJ/mol",
+    "Ea = 185 kJ/mol; it releases 40 kJ/mol",
+    "Ea = 25 kJ/mol; it absorbs 40 kJ/mol",
+    "Ea = 65 kJ/mol; it releases 40 kJ/mol"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ea = 185 − 120 = 65 kJ/mol. Energy change = 160 − 120 = +40 kJ/mol: the products are higher, so energy is absorbed.",
+    "options": [
+     "Right: both values from differences in level.",
+     "The transition state energy is not the activation energy, and the products are higher, not lower.",
+     "25 kJ/mol is the reverse activation energy (185 − 160).",
+     "The products are higher than the reactants, so energy is absorbed."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-profiles-10",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A one-step reaction releases 85 kJ/mol overall. Run in reverse, it has an activation energy of 210 kJ/mol. What is the activation energy of the reaction as written, in kJ/mol?",
+   "numeric": {
+    "answer": 125,
+    "tol": 1,
+    "unit": "kJ/mol",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 295,
+      "why": "Value: the forward barrier is smaller when the reaction releases energy. Ea(forward) = Ea(reverse) − 85."
+     },
+     {
+      "value": 210,
+      "why": "Value: that is the reverse barrier, climbed from the products."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The products sit 85 kJ/mol below the reactants. The reverse climb from the products is 210 kJ/mol, so the forward climb from the reactants is 210 − 85 = 125 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-energy-profiles-11",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "multi",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statements about a reaction energy profile are correct? Select all that apply.",
+   "options": [
+    "The activation energy is measured from the reactants up to the peak",
+    "The activation energy is measured from the products up to the peak",
+    "The peak is a stable substance that can be isolated",
+    "The vertical axis shows time"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "An energy profile plots potential energy (vertical) against reaction progress (horizontal). Ea for the reaction as written is the rise from the reactants to the transition state, which is too unstable to isolate.",
+    "options": [
+     "Right: Ea is the climb from where the reaction starts.",
+     "Measuring from the products gives the barrier for the reaction run in reverse.",
+     "The transition state exists for an instant; it is not a substance you can collect.",
+     "The vertical axis is energy; the horizontal axis is progress, not clock time."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-profiles-12",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why does a reaction with a very small activation energy usually happen quickly at room temperature?",
+   "options": [
+    "Many collisions already have enough energy",
+    "Its products have less energy than its reactants",
+    "Its molecules collide more often than other molecules",
+    "Its transition state is lower than its products"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With a low barrier, many molecules in the room-temperature energy distribution are above Ea, so many collisions are effective.",
+    "options": [
+     "Right: a low barrier, many effective collisions.",
+     "Releasing energy does not by itself make a reaction fast.",
+     "The barrier, not the collision frequency, is what is small here.",
+     "A transition state is the highest point on its step; it is never below the products."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-profiles-13",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a one-step reaction, the forward activation energy is 48 kJ/mol and the reverse activation energy is 75 kJ/mol. What is the overall energy change, products minus reactants, in kJ/mol?",
+   "numeric": {
+    "answer": -27,
+    "tol": 1,
+    "unit": "kJ/mol",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 27,
+      "why": "Sign: the reverse barrier is larger, so the products are lower than the reactants and the change is negative."
+     },
+     {
+      "value": 123,
+      "why": "Value: subtract the barriers, do not add them: 48 − 75."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Energy change = Ea(forward) − Ea(reverse) = 48 − 75 = −27 kJ/mol. The products lie 27 kJ/mol below the reactants."
+   }
+  },
+  {
+   "id": "chem-energy-profiles-14",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A reaction releases a lot of energy but does not happen when its reactants are mixed at room temperature. Which explanation is consistent with its energy profile?",
+   "options": [
+    "Its Ea is large, so few collisions react",
+    "Its products are higher in energy than its reactants",
+    "Its transition state is lower than its reactants",
+    "It has no activation energy, so it does not start"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Releasing energy means the products are lower. A high barrier between them means almost no collisions at room temperature have enough energy, so the reaction does not get going until energy is supplied (a spark, heating).",
+    "options": [
+     "Right: a high barrier blocks the start.",
+     "If the reaction releases energy, its products are lower, not higher.",
+     "The transition state is always above the reactants.",
+     "With no barrier the reaction would happen at once."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-profiles-15",
+   "unit": "unit-5",
+   "topic": "energy-profiles",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two one-step reactions have the same energy change, −40 kJ/mol. Reaction 1 has Ea = 30 kJ/mol and reaction 2 has Ea = 90 kJ/mol. How do their transition states compare?",
+   "options": [
+    "Reaction 2's transition state is 60 kJ/mol higher above its reactants",
+    "They are at the same height, since the energy changes are equal",
+    "Reaction 1's transition state is higher, since its Ea is smaller",
+    "Neither reaction has a transition state, since both release energy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The height of the transition state above the reactants is the activation energy: 30 vs 90 kJ/mol, a difference of 60 kJ/mol. The equal energy changes only say the product levels sit 40 kJ/mol below the reactants in both.",
+    "options": [
+     "Right: Ea is the height of the peak above the reactants.",
+     "Equal energy changes say nothing about the peaks.",
+     "A smaller Ea means a lower peak, not a higher one.",
+     "Every elementary reaction passes through a transition state, whichever way the energy goes."
+    ]
+   }
+  }
+ ]
+}

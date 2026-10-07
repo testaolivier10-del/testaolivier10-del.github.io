@@ -210,7 +210,7 @@ with f as (
 )
 select c.course, f.hit_limit, f.opened_dialog, f.started_checkout, f.paid_in_page,
        s.sales, s.refunds, s.net_revenue, s.active_now
-from (values ('nremt'), ('ochem'), ('anp'), ('apbio')) as c(course)
+from (values ('nremt'), ('ochem'), ('anp'), ('apbio'), ('apchem')) as c(course)
 left join f using (course)
 left join s using (course)
 order by c.course;
@@ -219,7 +219,7 @@ order by c.course;
 -- Premium in every course (docs/premium.md, "Existing users"). Run once.
 -- insert into public.premium_passes (user_id, course, pass, expires_at)
 -- select u.id, c.course, 'grant', now() + interval '30 days'
--- from auth.users u cross join (values ('nremt'), ('ochem'), ('anp'), ('apbio')) as c(course);
+-- from auth.users u cross join (values ('nremt'), ('ochem'), ('anp'), ('apbio'), ('apchem')) as c(course);
 
 -- Pass-or-extend (NREMT): extend a student who failed until they pass.
 -- insert into public.premium_passes (user_id, course, pass, expires_at)

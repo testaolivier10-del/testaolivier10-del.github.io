@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculating the Equilibrium Constant — AP® Chemistry Notes</title>
+<meta name="description" content="Topic 7.3 showed how to write the expression for K. This page is about getting its value from data.">
+<link rel="canonical" href="https://levlprep.com/chem/notes/calculating-k.html">
+<meta property="og:title" content="Calculating the Equilibrium Constant — AP® Chemistry Notes">
+<meta property="og:description" content="Topic 7.3 showed how to write the expression for K. This page is about getting its value from data.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/chem/notes/calculating-k.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/chem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/chem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/chem/notes/calculating-k.html#reading",
+      "name": "Calculating the Equilibrium Constant",
+      "url": "https://levlprep.com/chem/notes/calculating-k.html",
+      "description": "Topic 7.3 showed how to write the expression for K. This page is about getting its value from data.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "calculating the equilibrium constant",
+      "isPartOf": {
+        "@id": "https://levlprep.com/chem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Chemistry",
+          "item": "https://levlprep.com/chem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Equilibrium",
+          "item": "https://levlprep.com/chem/units/unit-7.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Calculating the Equilibrium Constant: notes",
+          "item": "https://levlprep.com/chem/notes/calculating-k.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="chem" data-topic="calculating-k" data-unit="unit-7">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="chem-rail" aria-expanded="false">&#9776; Unit 7 contents</button>
+  <aside class="tb-rail chem-nav-ref bk-rail" id="chem-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Thermochemistry</a>
+    <a class="bk-toc-chap" href="../units/unit-7.html"><span class="bk-toc-chap-n">7</span><span><b>Equilibrium</b><small>12 topics</small></span></a>
+    <div class="chem-toc-prog" data-toc-prog="unit-7"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="equilibrium-intro"><a href="equilibrium-intro.html"><span class="bk-toc-n">7.1</span>Introduction to Equilibrium</a></li><li data-toc-t="reaction-direction"><a href="reaction-direction.html"><span class="bk-toc-n">7.2</span>Direction of Reversible Reactions</a></li><li data-toc-t="q-and-k"><a href="q-and-k.html"><span class="bk-toc-n">7.3</span>Reaction Quotient and Equilibrium Constant</a></li><li class="current" data-toc-t="calculating-k"><a href="#main" aria-current="page"><span class="bk-toc-n">7.4</span>Calculating the Equilibrium Constant</a><div class="bk-toc-onpage"><p>On this page</p><a href="#when-every-equilibrium-value-is-given">When every equilibrium value is given</a><a href="#heterogeneous-equilibria">Heterogeneous equilibria</a><a href="#when-only-one-equilibrium-value-is">When only one equilibrium value is given: the ICE table</a><a href="#common-mistakes">Common mistakes</a></div></li><li data-toc-t="k-magnitude"><a href="k-magnitude.html"><span class="bk-toc-n">7.5</span>Magnitude of the Equilibrium Constant</a></li><li data-toc-t="k-properties"><a href="k-properties.html"><span class="bk-toc-n">7.6</span>Properties of the Equilibrium Constant</a></li><li data-toc-t="equilibrium-concentrations"><a href="equilibrium-concentrations.html"><span class="bk-toc-n">7.7</span>Calculating Equilibrium Concentrations</a></li><li data-toc-t="equilibrium-representations"><a href="equilibrium-representations.html"><span class="bk-toc-n">7.8</span>Representations of Equilibrium</a></li><li data-toc-t="le-chatelier"><a href="le-chatelier.html"><span class="bk-toc-n">7.9</span>Introduction to Le Châtelier's Principle</a></li><li data-toc-t="q-and-le-chatelier"><a href="q-and-le-chatelier.html"><span class="bk-toc-n">7.10</span>Reaction Quotient and Le Châtelier's Principle</a></li><li data-toc-t="solubility-equilibria"><a href="solubility-equilibria.html"><span class="bk-toc-n">7.11</span>Introduction to Solubility Equilibria</a></li><li data-toc-t="common-ion-effect"><a href="common-ion-effect.html"><span class="bk-toc-n">7.12</span>Common-Ion Effect</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Acids and Bases</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="chem-crumb chem-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-7.html">Equilibrium</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Calculating the Equilibrium Constant: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/calculating-k.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 7 &middot; Topic 7.4 <span class="chem-beta chem-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Calculating the Equilibrium Constant</h1>
+      <p class="bk-meta chem-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="calculating-k">Not practiced</span></p>
+      <div class="bk-actions chem-share chem-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fchem%2Fnotes%2Fcalculating-k.html&amp;title=Calculating%20the%20Equilibrium%20Constant%3A%20chemistry%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/chem/notes/calculating-k.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="chem-prose bk-prose">
+<p>Topic 7.3 showed how to write the expression for K. This page is about getting its value from data. Sometimes you are handed every <a class="gl" href="../notes/phases-of-matter.html" data-c="dynamic-equilibrium">equilibrium</a> concentration and just substitute. More often you are told how a reaction started and only one equilibrium amount; then an <b><span class="gl" tabindex="0" data-c="ice-table">ICE table</span></b> fills in the rest.</p>
+
+<h2 id="when-every-equilibrium-value-is-given">When every equilibrium value is given</h2>
+<p>Write the expression, substitute the <a class="gl" href="../notes/equilibrium-intro.html" data-c="chemical-equilibrium">equilibrium concentrations</a> (or <a class="gl" href="../notes/ideal-gas-law.html" data-c="partial-pressure">partial pressures</a> for K<sub>p</sub>), and calculate.</p>
+<div class="worked">
+<p><b>Worked example.</b> At 450 °C, an equilibrium <a class="gl" href="../notes/mixture-composition.html" data-c="mixture">mixture</a> of H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2 HI(g) has [H<sub>2</sub>] = 0.0114 M, [I<sub>2</sub>] = 0.00120 M and [HI] = 0.0262 M. Find K<sub>c</sub>.</p>
+<p>1. Expression: K<sub>c</sub> = [HI]<sup>2</sup> / ([H<sub>2</sub>][I<sub>2</sub>]).</p>
+<p>2. Substitute: K<sub>c</sub> = (0.0262)<sup>2</sup> / (0.0114 × 0.00120) = 6.864 × 10<sup>−4</sup> / 1.368 × 10<sup>−5</sup> = <b>50.2</b>.</p>
+<p>Repeat with other equilibrium mixtures at 450 °C and you get 50.0 within rounding every time, even though the concentrations are very different. That is what makes K a constant.</p>
+</div>
+<p>K has no units on the exam. Keep the <a class="gl" href="../notes/math-sig-figs.html" data-c="significant-figures">significant figures</a> of the data (here three).</p>
+
+<h2 id="heterogeneous-equilibria">Heterogeneous equilibria</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="heterogeneous-equilibrium">heterogeneous equilibrium</span></b> has species in more than one phase, such as a <a class="gl" href="../notes/phases-of-matter.html" data-c="states-of-matter">solid</a> and a gas. A <b><a class="gl" href="../notes/mixture-composition.html" data-c="homogeneous-mixture">homogeneous</a> equilibrium</b> has everything in one phase (all gases, or all dissolved). In a <a class="gl" href="../notes/mixture-composition.html" data-c="heterogeneous-mixture">heterogeneous</a> equilibrium, the pure solids and liquids still drop out of K (topic 7.3). So for NH<sub>4</sub>HS(s) ⇌ NH<sub>3</sub>(g) + H<sub>2</sub>S(g), K<sub>c</sub> = [NH<sub>3</sub>][H<sub>2</sub>S]. If the equilibrium gas concentrations are both 0.0150 M, K<sub>c</sub> = (0.0150)(0.0150) = 2.25 × 10<sup>−4</sup>, whether 2 g or 200 g of solid remain. Adding more solid changes nothing, as long as some solid is present.</p>
+
+<h2 id="when-only-one-equilibrium-value-is">When only one equilibrium value is given: the ICE table</h2>
+<figure id="fig-ice"  class="chem-figure"><div class="chem-figimg" data-fig="ice-table-layout"><img src="../figures/ice-table-layout.svg" alt="An ICE table for 2 NOCl forming 2 NO and Cl2. Columns are NOCl, NO and Cl2; rows are Initial, Change and Equilibrium. Initial: 0.250, 0, 0. Change: minus 2x, plus 2x, plus x, following the coefficients 2, 2 and 1. Equilibrium: 0.250 minus 2x, 2x, and x, where x equals the measured 0.0200 M Cl2. This gives NO = 0.0400 M and NOCl = 0.210 M, and Kc = 7.26 times 10 to the minus 4." width="760" height="300" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> An ICE table links one measured equilibrium amount to every species through the coefficients. <span class="chem-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>An <b>ICE table</b> is a grid with a column for each species (leave out solids and liquids) and three rows:</p>
+<ul>
+<li><b>I</b>nitial: the concentrations at the start.</li>
+<li><b>C</b>hange: how each concentration changes on the way to equilibrium. Write it with one unknown, x, times each species' coefficient: minus for the side that is used up, plus for the side that forms.</li>
+<li><b>E</b>quilibrium: Initial + Change.</li>
+</ul>
+<p>The change row is just <a class="gl" href="../notes/stoichiometry.html" data-c="stoichiometry">stoichiometry</a> (topic 4.5): species change in the ratio of their coefficients. One measured equilibrium value tells you x, and x gives you every other concentration.</p>
+<div class="worked">
+<p><b>Worked example.</b> 0.500 <a class="gl" href="../notes/moles-molar-mass.html" data-c="mole">mol</a> NOCl is put into an empty 2.00 L flask: 2 NOCl(g) ⇌ 2 NO(g) + Cl<sub>2</sub>(g). At equilibrium the flask holds 0.0400 mol Cl<sub>2</sub>. Find K<sub>c</sub>.</p>
+<p>1. Convert to <a class="gl" href="../notes/solutions.html" data-c="molarity">molarity</a>: [NOCl]<sub>0</sub> = 0.500 mol / 2.00 L = 0.250 M; [Cl<sub>2</sub>]<sub>eq</sub> = 0.0400 mol / 2.00 L = 0.0200 M.</p>
+<p>2. Direction: only NOCl is present, so the reaction must go forward (Q = 0 &lt; K).</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: [NOCl] (M), [NO] (M), [Cl 2 ] (M)"><table class="compare">
+<thead><tr><th scope="col"></th><th scope="col">[NOCl] (M)</th><th scope="col">[NO] (M)</th><th scope="col">[Cl<sub>2</sub>] (M)</th></tr></thead>
+<tbody>
+<tr><th scope="row">Initial</th><td>0.250</td><td>0</td><td>0</td></tr>
+<tr><th scope="row">Change</th><td>−2x</td><td>+2x</td><td>+x</td></tr>
+<tr><th scope="row">Equilibrium</th><td>0.250 − 2x</td><td>2x</td><td>x</td></tr>
+</tbody></table></div>
+<p>3. Use the measured value: x = [Cl<sub>2</sub>]<sub>eq</sub> = 0.0200 M. So [NO] = 2x = 0.0400 M and [NOCl] = 0.250 − 2(0.0200) = 0.210 M.</p>
+<p>4. Substitute: K<sub>c</sub> = [NO]<sup>2</sup>[Cl<sub>2</sub>] / [NOCl]<sup>2</sup> = (0.0400)<sup>2</sup>(0.0200) / (0.210)<sup>2</sup> = <b>7.26 × 10<sup>−4</sup></b>.</p>
+<p>Two slips to avoid: using moles instead of molarity (the volume is not 1 L here), and writing the change for NOCl as −x instead of −2x.</p>
+</div>
+
+<h2 id="common-mistakes">Common mistakes</h2>
+<ul>
+<li><b>Initial values in K.</b> K uses equilibrium concentrations only. Plugging in starting values gives Q at the start.</li>
+<li><b>Coefficients as multipliers.</b> A coefficient of 2 squares the concentration; it does not double it.</li>
+<li><b>Solids in K.</b> Leave them out, however much solid is present.</li>
+<li><b>Brackets in K<sub>p</sub>.</b> K<sub>p</sub> uses partial pressures in <a class="gl" href="../notes/phases-of-matter.html" data-c="pressure">atm</a>, written as P, not concentrations in brackets.</li>
+</ul>
+<aside class="going-further"><p><b>For your exam:</b> show the ICE table or say in words how each concentration changed, write the K expression, then substitute. A setup with numbers in it can earn credit even if a later arithmetic slip costs the final answer.</p></aside>
+
+    </article>
+    <p class="chem-report-page chem-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="notes:calculating-k">Report a problem</button></p>
+    <nav class="tb-chapter-nav chem-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="q-and-k.html"><span>&larr; Previous</span><b>Reaction Quotient and Equilibrium Constant</b></a><a class="tb-chapter-link next" href="k-magnitude.html"><span>Next &rarr;</span><b>Magnitude of the Equilibrium Constant</b></a></nav>
+  </main>
+</div>
+<footer class="chem-foot xshell">
+  <p class="chem-accuracy-note"><span class="chem-beta chem-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Chemistry teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="chem-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apchem" data-report-question="notes:calculating-k">Report a problem</button></span></p>
+  <p class="chem-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApChemSection = 'learn'; window.ApChemBase = '../';</script>
+<script src="../assets/chem-curriculum.js" defer></script>
+<script src="../assets/chem-core.js" defer></script>
+<script src="../assets/chem-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/chem-toc.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,624 @@
+{
+ "stimuli": {
+  "real-gases-s1": {
+   "kind": "graph",
+   "title": "PV/nRT for four gases at 350 K",
+   "text": "For each gas, PV/nRT at 350 K, calculated from reference equations of state fitted to measured data. An ideal gas would give exactly 1.",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Pressure",
+     "unit": "atm",
+     "min": 0,
+     "max": 300,
+     "step": 50
+    },
+    "y": {
+     "label": "PV/nRT",
+     "min": 0.4,
+     "max": 1.2,
+     "step": 0.2
+    },
+    "series": [
+     {
+      "name": "He",
+      "points": [
+       [
+        1,
+        1.0
+       ],
+       [
+        50,
+        1.02
+       ],
+       [
+        100,
+        1.04
+       ],
+       [
+        150,
+        1.06
+       ],
+       [
+        200,
+        1.079
+       ],
+       [
+        250,
+        1.099
+       ],
+       [
+        300,
+        1.118
+       ]
+      ]
+     },
+     {
+      "name": "Ar",
+      "points": [
+       [
+        1,
+        1.0
+       ],
+       [
+        50,
+        0.991
+       ],
+       [
+        100,
+        0.988
+       ],
+       [
+        150,
+        0.992
+       ],
+       [
+        200,
+        1.003
+       ],
+       [
+        250,
+        1.02
+       ],
+       [
+        300,
+        1.043
+       ]
+      ]
+     },
+     {
+      "name": "CH4",
+      "points": [
+       [
+        1,
+        0.999
+       ],
+       [
+        50,
+        0.959
+       ],
+       [
+        100,
+        0.93
+       ],
+       [
+        150,
+        0.918
+       ],
+       [
+        200,
+        0.924
+       ],
+       [
+        250,
+        0.947
+       ],
+       [
+        300,
+        0.982
+       ]
+      ]
+     },
+     {
+      "name": "CO2",
+      "points": [
+       [
+        1,
+        0.997
+       ],
+       [
+        50,
+        0.842
+       ],
+       [
+        100,
+        0.656
+       ],
+       [
+        150,
+        0.502
+       ],
+       [
+        200,
+        0.494
+       ],
+       [
+        250,
+        0.542
+       ],
+       [
+        300,
+        0.603
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "real-gases-s2": {
+   "kind": "table",
+   "title": "Ammonia in a steel cylinder",
+   "text": "<p>A student fills a rigid steel cylinder with ammonia and measures its pressure.</p>",
+   "table": {
+    "caption": "Measured data",
+    "cols": [
+     "Quantity",
+     "Value"
+    ],
+    "rows": [
+     [
+      "Amount of NH₃",
+      "2.000 mol"
+     ],
+     [
+      "Volume of cylinder",
+      "1.000 L"
+     ],
+     [
+      "Temperature",
+      "450.0 K"
+     ],
+     [
+      "Measured pressure",
+      "62.5 atm"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-real-gases-1",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "real-gases-s1",
+   "q": "Which gas never falls below PV/nRT = 1 at any pressure shown?",
+   "options": [
+    "He",
+    "Ar",
+    "CH₄",
+    "CO₂"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Helium’s curve starts at 1 and only rises. Its atoms attract each other so weakly that only the volume effect shows, and it grows with pressure.",
+    "options": [
+     "Right: above 1 throughout.",
+     "Ar dips just below 1 at moderate pressure before rising above it near 200 atm.",
+     "CH₄ dips below 1 at moderate pressure.",
+     "CO₂ falls well below 1."
+    ]
+   }
+  },
+  {
+   "id": "chem-real-gases-2",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "real-gases-s1",
+   "q": "Why does CO₂ show the largest dip below PV/nRT = 1?",
+   "options": [
+    "CO₂ molecules attract each other most strongly, lowering the pressure most.",
+    "CO₂ molecules are the smallest of the four, so they slip between the others and lower the pressure.",
+    "CO₂ molecules take up the most volume, which lowers the measured pressure below the ideal value.",
+    "CO₂ molecules move fastest at 350 K, so they collide with the walls less often than the others do."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A value below 1 means the pressure is lower than ideal, which is the effect of attractions. CO₂ has the most electrons (22) and polar bonds, so its attractions are the strongest of the four.",
+    "options": [
+     "Right: below 1 points to attractions.",
+     "CO₂ is one of the larger molecules here, not the smallest.",
+     "Particle volume makes PV/nRT larger than 1, not smaller.",
+     "CO₂ is the heaviest gas here, so it moves slowest at 350 K."
+    ]
+   }
+  },
+  {
+   "id": "chem-real-gases-3",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "real-gases-s1",
+   "q": "Above about 200 atm, Ar’s PV/nRT rises above 1, and it keeps rising. Which explanation fits?",
+   "options": [
+    "The molecules' own volume becomes a real share of the container, so real V exceeds ideal V.",
+    "At very high pressure the attractions between Ar atoms become repulsions, which push the walls outward.",
+    "At very high pressure the Ar atoms are squeezed smaller, so each one pushes harder on the walls.",
+    "At very high pressure the temperature of the gas rises, so the molecules hit the walls harder."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When the atoms are packed close, the space they cannot enter (their own volume) is no longer negligible. Real V is larger than ideal V, so PV/nRT exceeds 1.",
+    "options": [
+     "Right: particle volume dominates at very high pressure.",
+     "The effect is from the particles' own volume, not from attractions turning into repulsions at a distance.",
+     "Atoms are not squeezed smaller; their fixed size is exactly why the volume effect appears.",
+     "The data are all at 350 K, so the temperature is constant."
+    ]
+   }
+  },
+  {
+   "id": "chem-real-gases-4",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "real-gases-s1",
+   "q": "At 1 atm, by about what percent does CO₂ differ from ideal behavior?",
+   "options": [
+    "About 90%",
+    "About 34%",
+    "About 16%",
+    "About 0.3%"
+   ],
+   "correct": 3,
+   "fixed": true,
+   "why": {
+    "correct": "At 1 atm, PV/nRT for CO₂ is 0.997, which is 0.3% below 1. That is why the ideal gas law works well at ordinary pressures.",
+    "options": [
+     "No gas in the graph deviates that much at any pressure shown.",
+     "That is the deviation at 100 atm, not at 1 atm.",
+     "That is the deviation at 50 atm, not at 1 atm.",
+     "Right: a small deviation at low pressure."
+    ]
+   }
+  },
+  {
+   "id": "chem-real-gases-5",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "real-gases-s1",
+   "q": "The CO₂ measurements are repeated at 500 K instead of 350 K. How would the CO₂ curve most likely change?",
+   "options": [
+    "Closer to 1, because faster molecules are less affected by attractions.",
+    "Farther below 1, because hot molecules attract each other more strongly than cold ones.",
+    "Unchanged, because PV/nRT already includes T and so cancels out the change.",
+    "Far above 1, because hot molecules swell and take up more volume than cold ones."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At higher temperature molecules move faster, so the brief tug of a neighbor changes their motion less. Gases behave more ideally at high temperature.",
+    "options": [
+     "Right: high temperature favors ideal behavior.",
+     "The attractions themselves do not grow with temperature; their effect on fast molecules shrinks.",
+     "T in the denominator does not remove the effect of attractions on the measured P.",
+     "Molecules do not swell when heated."
+    ]
+   }
+  },
+  {
+   "id": "chem-real-gases-6",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "real-gases-s2",
+   "q": "What pressure does the ideal gas law predict for the ammonia?",
+   "numeric": {
+    "answer": 73.85,
+    "tol": 0.01,
+    "unit": "atm",
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 7483.0,
+      "rel": 0.02,
+      "why": "Value: you used R = 8.314 J/(mol·K). With liters and atm, use R = 0.08206 L·atm/(mol·K)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "P = nRT/V = (2.000 mol × 0.08206 L·atm/(mol·K) × 450.0 K) / 1.000 L = 73.854 atm, which is 73.85 atm."
+   }
+  },
+  {
+   "id": "chem-real-gases-7",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "real-gases-s2",
+   "q": "Calculate PV/nRT for the ammonia from the measured pressure.",
+   "numeric": {
+    "answer": 0.846,
+    "tol": 0.001,
+    "unit": "",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 1.182,
+      "rel": 0.02,
+      "why": "Value: you divided the ideal pressure by the measured one. PV/nRT puts the measured P on top."
+     }
+    ]
+   },
+   "why": {
+    "correct": "PV/nRT = P(measured) / P(ideal) = 62.5 atm / 73.854 atm = 0.8463, which is 0.846."
+   }
+  },
+  {
+   "id": "chem-real-gases-8",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "real-gases-s2",
+   "q": "Which claim about the ammonia is best supported by the data?",
+   "options": [
+    "Attractions dominate: hydrogen bonds between NH₃ molecules lower the pressure.",
+    "Particle volume dominates: the NH₃ molecules fill so much of the cylinder that the pressure is lower than the ideal value.",
+    "Ammonia behaves ideally, because the measured pressure is within a few atm of the ideal pressure.",
+    "Some NH₃ molecules decompose at 450 K, so fewer particles are present and the pressure is lower."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The measured pressure is 15% below ideal, the signature of attractions. NH₃ molecules hydrogen-bond (H on N to an N lone pair), strong attractions for a gas.",
+    "options": [
+     "Right: a lower-than-ideal pressure points to attractions.",
+     "Particle volume raises PV/nRT above 1; here it is below 1.",
+     "A 15% shortfall is a large deviation, not ideal behavior.",
+     "Ammonia is stable at 450 K; the evidence fits attractions, not decomposition."
+    ]
+   }
+  },
+  {
+   "id": "chem-real-gases-9",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "real-gases-s2",
+   "q": "The same 2.000 mol of gas at 450.0 K is put in a 100.0 L tank instead. How would PV/nRT for the ammonia compare with the value in the 1.000 L cylinder?",
+   "options": [
+    "Much closer to 1, because the molecules are far apart.",
+    "Farther from 1, because the molecules have more room to build up speed between collisions.",
+    "The same, because PV/nRT depends on the kind of gas and not on the conditions.",
+    "Farther below 1, because a larger tank lets more hydrogen bonds form between the molecules."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In 100 L the pressure is about 0.74 atm. The molecules are far apart, so they rarely feel each other's attractions and their volume is negligible: nearly ideal.",
+    "options": [
+     "Right: low pressure favors ideal behavior.",
+     "Speed depends on temperature, which is unchanged.",
+     "Deviations depend strongly on pressure and temperature.",
+     "Molecules far apart have fewer neighbors, so attractions matter less."
+    ]
+   }
+  },
+  {
+   "id": "chem-real-gases-10",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Under which conditions does a real gas behave most like an ideal gas?",
+   "options": [
+    "High temperature and low pressure",
+    "Low temperature and high pressure",
+    "Low temperature and low pressure",
+    "High temperature and high pressure"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Fast particles (high T) are barely affected by attractions, and particles far apart (low P) have negligible volume and few neighbors.",
+    "options": [
+     "Right: fast, far-apart particles.",
+     "These conditions make both deviations largest, near condensation.",
+     "Low temperature makes attractions matter.",
+     "High pressure makes particle volume and attractions matter."
+    ]
+   }
+  },
+  {
+   "id": "chem-real-gases-11",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "At the same temperature and pressure, which gas deviates most from ideal behavior?",
+   "options": [
+    "SO₂ (polar, 32 electrons)",
+    "Ne (nonpolar, 10 electrons)",
+    "H₂ (nonpolar, 2 electrons)",
+    "He (nonpolar, 2 electrons)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Deviations from attractions grow with intermolecular forces. SO₂ is polar with many electrons, so it attracts its neighbors most strongly.",
+    "options": [
+     "Right: polar and polarizable.",
+     "Ne has few electrons and weak dispersion forces.",
+     "H₂ has the weakest attractions of almost any gas.",
+     "He is the most nearly ideal real gas."
+    ]
+   }
+  },
+  {
+   "id": "chem-real-gases-12",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which statement explains why a real gas at moderate pressure usually has a lower pressure than the ideal gas law predicts?",
+   "options": [
+    "Attractions between particles reduce how hard they strike the walls.",
+    "The particles take up space, so they have less room and hit the walls more often.",
+    "The collisions between particles are perfectly elastic, so energy is lost to the walls.",
+    "The particles are moving more slowly than the kinetic molecular theory predicts."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A particle near the wall is pulled back by its neighbors, so the force on the wall is less than for an ideal gas.",
+    "options": [
+     "Right: neighbors pull particles back from the wall.",
+     "Particle volume raises the pressure (or volume) above ideal; it does not lower it.",
+     "Elastic collisions lose no energy; this is an ideal-gas assumption, not a deviation.",
+     "At a given temperature the average kinetic energy is set; the attractions are what differ."
+    ]
+   }
+  },
+  {
+   "id": "chem-real-gases-13",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which changes make a sample of CO₂ behave LESS ideally? Select all that apply.",
+   "options": [
+    "Cooling it toward its condensation temperature",
+    "Compressing it to a much higher pressure",
+    "Heating it at constant volume",
+    "Expanding it into a much larger container"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Cooling slows the molecules so attractions matter more; compressing crowds them so attractions and molecular volume matter more. Heating and expanding do the opposite.",
+    "options": [
+     "Right: slow molecules feel attractions more.",
+     "Right: crowded molecules feel attractions, and their volume counts.",
+     "Heating makes the gas more ideal.",
+     "Expanding lowers the pressure and makes the gas more ideal."
+    ]
+   }
+  },
+  {
+   "id": "chem-real-gases-14",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "At 300 K, PV/nRT for He is 1.005 at 10 atm. A student concludes that helium atoms repel each other. Which response is best?",
+   "options": [
+    "Above 1 comes from the atoms' own volume; helium's attractions are too weak to offset it.",
+    "The student is right: a value above 1 means the particles repel, so they push harder on the walls.",
+    "A value above 1 means helium has strong attractions, which makes its measured pressure higher.",
+    "The value is within error of 1, so helium is exactly ideal and no explanation is needed."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two departures compete: attractions lower PV/nRT, and particle volume raises it. Helium attracts so weakly that only the volume effect remains, giving a value slightly above 1.",
+    "options": [
+     "Right: volume, not repulsion, raises the value.",
+     "The volume effect raises the value; long-range repulsion is not needed to explain it.",
+     "Attractions push PV/nRT below 1, not above.",
+     "A steady deviation that grows with pressure is real, not error; it has a physical cause."
+    ]
+   }
+  },
+  {
+   "id": "chem-real-gases-15",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A real gas has PV/nRT = 0.92 under certain conditions. If its pressure at those conditions is measured as 46.0 atm, what pressure would an ideal gas have?",
+   "options": [
+    "42.3 atm",
+    "46.0 atm",
+    "50.0 atm",
+    "92.0 atm"
+   ],
+   "correct": 2,
+   "fixed": true,
+   "why": {
+    "correct": "PV/nRT = P(real)/P(ideal) at the same n, V and T, so P(ideal) = 46.0 / 0.92 = 50.0 atm. The real gas pushes less because of attractions.",
+    "options": [
+     "This multiplies by 0.92 instead of dividing.",
+     "The ratio is not 1, so the pressures differ.",
+     "Right: 46.0 ÷ 0.92.",
+     "This multiplies by 2 for no reason."
+    ]
+   }
+  },
+  {
+   "id": "chem-real-gases-16",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "real-gases",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "At 450 K and 50 atm, which gas would have PV/nRT farthest below 1? Select all that apply.",
+   "options": [
+    "NH₃ (polar, hydrogen-bonding)",
+    "He (2 electrons)",
+    "Ne (10 electrons)",
+    "H₂ (2 electrons)"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Attractions push PV/nRT below 1, and NH₃ attracts its neighbors by hydrogen bonds, far more strongly than the small, barely polarizable He, Ne or H₂.",
+    "options": [
+     "Right: the strongest attractions.",
+     "He has the weakest attractions of any gas; it sits slightly above 1.",
+     "Ne's dispersion forces are weak.",
+     "H₂'s dispersion forces are very weak."
+    ]
+   }
+  }
+ ]
+}

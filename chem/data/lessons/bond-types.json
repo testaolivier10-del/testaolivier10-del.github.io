@@ -1,0 +1,45 @@
+{
+ "topic": "bond-types",
+ "hook": "Table salt, a copper wire and the chlorine in a swimming pool are all made of atoms stuck together, yet salt shatters, copper bends and chlorine is a gas. The difference starts with how the electrons are held between the atoms: transferred, shared, or pooled.",
+ "prereq": [
+  {
+   "q": "Going across period 3 from Na to Cl, electronegativity",
+   "options": ["increases, because the nuclear charge grows while the shell stays the same", "decreases, because the atoms get larger", "stays the same, because the atoms are in the same period", "increases, because the atoms gain more shells"],
+   "correct": 0,
+   "why": "More protons pull on electrons in the same shell, so the attraction for shared electrons grows from left to right.",
+   "review": "periodic-trends"
+  },
+  {
+   "q": "A magnesium atom forms an ion by",
+   "options": ["losing its two valence electrons to become Mg²⁺", "gaining six electrons to become Mg⁶⁻", "losing one electron to become Mg⁺", "sharing its electrons to stay neutral"],
+   "correct": 0,
+   "why": "Mg has two valence electrons in the 3s subshell; losing them leaves the noble gas configuration of Ne.",
+   "review": "ionic-compounds-valence"
+  }
+ ],
+ "figure": { "figure": "bond-types-continuum", "caption": "As the electronegativity difference between two atoms grows, the shared electrons are pulled further toward one atom, until an electron is effectively transferred and two ions form." },
+ "chain": [
+  { "cause": "Two atoms come together and both nuclei attract the valence electrons", "effect": "the electrons end up between the nuclei, holding the atoms together: a chemical bond" },
+  { "cause": "Both atoms are nonmetals with the same electronegativity", "effect": "the shared pair is attracted equally: a nonpolar covalent bond" },
+  { "cause": "One nonmetal is more electronegative than the other", "effect": "the shared pair spends more time near it, giving partial charges δ− and δ+: a polar covalent bond" },
+  { "cause": "A metal with a low ionization energy meets a nonmetal that attracts electrons strongly", "effect": "an electron moves from the metal to the nonmetal, and the cation and anion attract: an ionic bond" },
+  { "cause": "Many metal atoms each release their valence electrons", "effect": "the cations sit in a sea of delocalized electrons that holds them together: metallic bonding" }
+ ],
+ "ideas": [
+  "A <b>covalent bond</b> is a pair of electrons shared between two atoms; both nuclei attract it.",
+  "Unequal sharing makes a <b>polar covalent bond</b>: the more electronegative atom gets a partial negative charge (δ−), the other δ+.",
+  "An <b>ionic bond</b> is the Coulombic attraction between a cation and an anion, usually a metal with a nonmetal.",
+  "In <b>metallic bonding</b>, cations sit in a sea of delocalized valence electrons.",
+  "Bond character is a continuum: the larger the electronegativity difference, the more polar and the more ionic the bond."
+ ],
+ "misconception": {
+  "wrong": "A bond is either covalent or ionic, with nothing in between.",
+  "right": "Bond character changes smoothly with the electronegativity difference. Cl–Cl shares equally, H–Cl shares unequally, and Na–Cl is so unequal that the electron is effectively transferred. Use the difference, and whether a metal is involved, to place a bond along that range."
+ },
+ "check": ["chem-bond-types-1", "chem-bond-types-3", "chem-bond-types-4", "chem-bond-types-5", "chem-bond-types-6", "chem-bond-types-10", "chem-bond-types-15"],
+ "summary": "Atoms bond because nuclei attract the valence electrons of neighboring atoms. Equal sharing gives a nonpolar covalent bond, unequal sharing a polar covalent bond with partial charges, and transfer from a metal to a nonmetal an ionic bond between oppositely charged ions. Metal atoms pool their valence electrons into a sea of delocalized electrons around the cations. The electronegativity difference sets where a bond falls on this continuum.",
+ "connections": [
+  { "href": "../notes/periodic-trends.html", "label": "Back: electronegativity and Coulomb's law (1.7)" },
+  { "href": "../notes/bond-potential-energy.html", "label": "Next: bond length and bond energy (2.2)" }
+ ]
+}

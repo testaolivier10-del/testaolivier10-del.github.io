@@ -1,0 +1,7 @@
+{
+ "pes-neon": {
+  "file": "figures/pes-neon.svg", "ext": "svg", "w": 640, "h": 220,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Photoelectron spectrum of neon on a log energy axis decreasing to the right: a 1s peak at 84.0 MJ/mol (height 2), a 2s peak at 4.68 MJ/mol (height 2) and a 2p peak at 2.08 MJ/mol (height 6)."
+ }
+}

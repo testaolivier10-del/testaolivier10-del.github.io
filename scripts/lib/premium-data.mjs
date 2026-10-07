@@ -115,11 +115,23 @@ export function counts() {
     }
   }
   const bioNotes = join(ROOT, 'bio', 'assets', 'notes-index.json');
+  // AP® Chemistry: the same, from scripts/build-apchem.mjs (chem/data/published.json).
+  const chemBank = join(ROOT, 'chem', 'assets', 'bank');
+  let apchem = 0;
+  if (existsSync(chemBank)) {
+    for (const f of readdirSync(chemBank)) {
+      if (!f.endsWith('.json') || f.endsWith('-why.json') || f === 'index.json') continue;
+      const d = read(join('chem', 'assets', 'bank', f));
+      apchem += Array.isArray(d.items) ? d.items.length : 0;
+    }
+  }
+  const chemNotes = join(ROOT, 'chem', 'assets', 'notes-index.json');
   countsCache = {
     nremt, ochem, anp,
     ochemChapters: modules.length, ochemTopics: topics, ochemMechanisms: mechanisms, ochemTools,
     anpChapters: anpMap.chapters.length, anpTopics: anpMap.topics.length,
     apbio, apbioTopics: existsSync(bioNotes) ? read('bio/assets/notes-index.json').length : 0,
+    apchem, apchemTopics: existsSync(chemNotes) ? read('chem/assets/notes-index.json').length : 0,
   };
   return countsCache;
 }

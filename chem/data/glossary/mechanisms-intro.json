@@ -1,0 +1,8 @@
+{
+ "reaction-mechanism": {
+  "def": "The series of elementary steps by which a reaction happens. The steps must add up to the overall balanced equation."
+ },
+ "intermediate": {
+  "def": "A species made in one step of a mechanism and used up in a later step. It does not appear in the overall equation."
+ }
+}

@@ -1,0 +1,498 @@
+{
+ "stimuli": {
+  "bond-types-s1": {
+   "kind": "table",
+   "title": "Electronegativity values",
+   "text": "<p>Electronegativity values on the Pauling scale, rounded to one decimal place.</p>",
+   "table": {
+    "caption": "Electronegativity of selected elements (Pauling scale, no unit)",
+    "cols": [
+     "Element",
+     "Electronegativity"
+    ],
+    "rows": [
+     [
+      "H",
+      "2.2"
+     ],
+     [
+      "C",
+      "2.6"
+     ],
+     [
+      "N",
+      "3.0"
+     ],
+     [
+      "O",
+      "3.4"
+     ],
+     [
+      "F",
+      "4.0"
+     ],
+     [
+      "Na",
+      "0.9"
+     ],
+     [
+      "Mg",
+      "1.3"
+     ],
+     [
+      "S",
+      "2.6"
+     ],
+     [
+      "Cl",
+      "3.2"
+     ],
+     [
+      "K",
+      "0.8"
+     ],
+     [
+      "Br",
+      "3.0"
+     ]
+    ]
+   }
+  },
+  "bond-types-s2": {
+   "kind": "particle",
+   "title": "Three samples at the particle level",
+   "html": "<svg viewBox=\"0 0 660 232\" width=\"660\" height=\"232\" role=\"img\" aria-label=\"Box 1: small positive and large negative ions alternating in a regular grid. Box 2: a grid of metal cations among scattered free electrons. Box 3: six separate units, each two identical nonmetal atoms joined together.\" style=\"max-width:100%;height:auto\"><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect x=\"10\" y=\"10\" width=\"200\" height=\"160\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#5B6670\" stroke-width=\"1.5\"/><text x=\"110\" y=\"190\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Box 1</text><rect x=\"230\" y=\"10\" width=\"200\" height=\"160\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#5B6670\" stroke-width=\"1.5\"/><text x=\"330\" y=\"190\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Box 2</text><rect x=\"450\" y=\"10\" width=\"200\" height=\"160\" rx=\"8\" fill=\"#FFFFFF\" stroke=\"#5B6670\" stroke-width=\"1.5\"/><text x=\"550\" y=\"190\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Box 3</text><circle cx=\"34\" cy=\"34\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"34\" y=\"38.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"72\" cy=\"34\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"72\" y=\"38.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"110\" cy=\"34\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"110\" y=\"38.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"148\" cy=\"34\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"148\" y=\"38.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"186\" cy=\"34\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"186\" y=\"38.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"34\" cy=\"72\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"34\" y=\"76.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"72\" cy=\"72\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"72\" y=\"76.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"110\" cy=\"72\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"110\" y=\"76.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"148\" cy=\"72\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"148\" y=\"76.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"186\" cy=\"72\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"186\" y=\"76.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"34\" cy=\"110\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"34\" y=\"114.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"72\" cy=\"110\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"72\" y=\"114.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"110\" cy=\"110\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"110\" y=\"114.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"148\" cy=\"110\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"148\" y=\"114.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"186\" cy=\"110\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"186\" y=\"114.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"34\" cy=\"148\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"34\" y=\"152.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"72\" cy=\"148\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"72\" y=\"152.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"110\" cy=\"148\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"110\" y=\"152.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"148\" cy=\"148\" r=\"11\" fill=\"#9DB8F2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"148\" y=\"152.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"186\" cy=\"148\" r=\"16\" fill=\"#F4C766\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"186\" y=\"152.68\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">−</text><circle cx=\"288.5\" cy=\"119.28\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"278.06\" cy=\"85.46\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"250.11\" cy=\"32.15\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"415.49\" cy=\"58.38\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"261.99\" cy=\"66.2\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"300.21\" cy=\"21.91\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"405.59\" cy=\"142.39\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"371.27\" cy=\"33.33\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"380.74\" cy=\"51.08\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"325.95\" cy=\"125.98\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"289.89\" cy=\"83.7\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"329.61\" cy=\"83.99\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"351.36\" cy=\"73.26\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"416.08\" cy=\"62.33\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"363.94\" cy=\"95.56\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"379.7\" cy=\"70.82\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"397.02\" cy=\"54.37\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"283.19\" cy=\"68.59\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"368\" cy=\"52.39\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"295.73\" cy=\"78.12\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"323.44\" cy=\"23.64\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"315.87\" cy=\"99.19\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"294.32\" cy=\"119.87\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"304.09\" cy=\"43.67\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"407.9\" cy=\"34.53\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"360.26\" cy=\"120.41\" r=\"2.8\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"256\" cy=\"34\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"256\" y=\"39.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"293\" cy=\"34\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"293\" y=\"39.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"330\" cy=\"34\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"330\" y=\"39.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"367\" cy=\"34\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"367\" y=\"39.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"404\" cy=\"34\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"404\" y=\"39.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"256\" cy=\"72\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"256\" y=\"77.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"293\" cy=\"72\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"293\" y=\"77.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"330\" cy=\"72\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"330\" y=\"77.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"367\" cy=\"72\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"367\" y=\"77.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"404\" cy=\"72\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"404\" y=\"77.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"256\" cy=\"110\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"256\" y=\"115.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"293\" cy=\"110\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"293\" y=\"115.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"330\" cy=\"110\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"330\" y=\"115.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"367\" cy=\"110\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"367\" y=\"115.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"404\" cy=\"110\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"404\" y=\"115.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"256\" cy=\"148\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"256\" y=\"153.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"293\" cy=\"148\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"293\" y=\"153.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"330\" cy=\"148\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"330\" y=\"153.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"367\" cy=\"148\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"367\" y=\"153.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"404\" cy=\"148\" r=\"13\" fill=\"#C9CED6\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"404\" y=\"153.04\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#1F2A28\">+</text><circle cx=\"478.72\" cy=\"45.9\" r=\"13\" fill=\"#B7E0C2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><circle cx=\"501.28\" cy=\"54.1\" r=\"13\" fill=\"#B7E0C2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><circle cx=\"569.61\" cy=\"46\" r=\"13\" fill=\"#B7E0C2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><circle cx=\"590.39\" cy=\"34\" r=\"13\" fill=\"#B7E0C2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><circle cx=\"515.9\" cy=\"100.72\" r=\"13\" fill=\"#B7E0C2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><circle cx=\"524.1\" cy=\"123.28\" r=\"13\" fill=\"#B7E0C2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><circle cx=\"598\" cy=\"105\" r=\"13\" fill=\"#B7E0C2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><circle cx=\"622\" cy=\"105\" r=\"13\" fill=\"#B7E0C2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><circle cx=\"468.18\" cy=\"152.08\" r=\"13\" fill=\"#B7E0C2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><circle cx=\"491.82\" cy=\"147.92\" r=\"13\" fill=\"#B7E0C2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><circle cx=\"580.81\" cy=\"144.29\" r=\"13\" fill=\"#B7E0C2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><circle cx=\"599.19\" cy=\"159.71\" r=\"13\" fill=\"#B7E0C2\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"330\" y=\"222\" font-size=\"12\" text-anchor=\"middle\" fill=\"#5B6670\">Key: blue + = cation, yellow − = anion, gray + = metal cation, blue dots = electrons, green = nonmetal atom</text></g></svg>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-bond-types-1",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "bond-types-s1",
+   "q": "Which of these bonds is the most polar?",
+   "options": [
+    "C–Cl",
+    "O–H",
+    "N–H",
+    "C–S"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The electronegativity differences are O–H 3.4 − 2.2 = 1.2, N–H 0.8, C–Cl 0.6 and C–S 0.0. The largest difference gives the most unequal sharing, so O–H is the most polar.",
+    "options": [
+     "Cl is very electronegative, but so is C compared with H: the C–Cl difference is only 3.2 − 2.6 = 0.6. Polarity depends on the difference, not on one atom.",
+     "Right: a difference of 1.2 is the largest of the four.",
+     "The N–H difference is 3.0 − 2.2 = 0.8, smaller than the O–H difference of 1.2.",
+     "C and S both have an electronegativity of 2.6, so this bond is the least polar of the four. Larger atoms do not make a bond more polar."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-types-2",
+   "type": "numeric",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "bond-types-s1",
+   "q": "What is the electronegativity difference between magnesium and oxygen?",
+   "numeric": {
+    "answer": 2.1,
+    "tol": 0.05,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 4.7,
+      "tol": 0.05,
+      "why": "Value: you added the two electronegativities. Subtract the smaller from the larger."
+     }
+    ]
+   },
+   "why": {
+    "correct": "3.4 − 1.3 = 2.1. A difference this large, between a metal and a nonmetal, means the bond is ionic."
+   }
+  },
+  {
+   "id": "chem-bond-types-3",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "bond-types-s1",
+   "q": "A bond between which two atoms has its electrons shared most equally?",
+   "options": [
+    "H and Br",
+    "N and O",
+    "H and C",
+    "C and S"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "C and S have the same electronegativity, 2.6, so neither nucleus pulls the shared electrons harder: the bond is nonpolar covalent.",
+    "options": [
+     "H and Br differ by 0.8, the largest difference of these four pairs.",
+     "N and O differ by 3.4 − 3.0 = 0.4, so O pulls the shared electrons a little harder. Two nonmetals next to each other in a period still differ.",
+     "H and C differ by 0.4, so the sharing is slightly unequal.",
+     "Right: a difference of 0.0 means equal sharing."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-types-4",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "bond-types-s1",
+   "q": "In a bond between sulfur and oxygen, which atom carries the partial negative charge, and why?",
+   "options": [
+    "O, because its larger electronegativity pulls the shared pair toward it",
+    "S, because it is the larger atom and holds more electrons in total",
+    "Neither, because a bond between two nonmetals has no polarity",
+    "S, because its lower electronegativity lets it keep more of the pair"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "O (3.4) is more electronegative than S (2.6). The shared electrons spend more time near O, so O is δ− and S is δ+.",
+    "options": [
+     "Right: the electron density shifts toward the more electronegative atom.",
+     "Total electron count does not decide where the shared pair sits; the pull of each nucleus on the bonding electrons does, and O pulls harder.",
+     "Two nonmetals share electrons, but they share them unequally unless their electronegativities match. S and O differ by 0.8.",
+     "Lower electronegativity means a weaker pull on shared electrons, so S ends up with less of the electron density, not more."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-types-5",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "bond-types-s2",
+   "q": "Which box best represents solid potassium chloride, KCl?",
+   "options": [
+    "Box 3",
+    "Box 2",
+    "Box 1",
+    "Box 2 or Box 3"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "KCl is a metal with a nonmetal, so it is ionic: K⁺ cations and Cl⁻ anions held in a regular pattern, each ion next to ions of opposite charge. That is Box 1.",
+    "options": [
+     "Box 3 shows separate units of two identical atoms sharing electrons, which is a covalent element such as Cl₂, not an ionic compound.",
+     "Box 2 shows identical metal cations among free electrons, which is a metal. KCl has no free electrons.",
+     "Right: alternating cations and anions.",
+     "Neither picture has both cations and anions; an ionic compound must show both kinds of ion."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-types-6",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "bond-types-s2",
+   "q": "Which box best represents a sample of solid sodium metal?",
+   "options": [
+    "Box 3",
+    "Box 1",
+    "Box 2",
+    "Box 1 or Box 2"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "In a metal, the atoms give up their valence electrons to a shared sea, leaving cations in a regular pattern with the electrons moving among them. Box 2 shows exactly that.",
+    "options": [
+     "Box 3 shows separate two-atom units of a nonmetal. Sodium atoms do not pair up into molecules.",
+     "Box 1 has anions as well as cations. Pure sodium has no anions, because every atom is the same element.",
+     "Right: metal cations in a sea of electrons.",
+     "Box 1 shows an ionic compound; only Box 2 fits a pure metal."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-types-7",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "bond-types-s2",
+   "q": "Box 3 represents chlorine gas, Cl₂. Which describes the bond inside each unit?",
+   "options": [
+    "Nonpolar covalent: identical nuclei share the pair equally",
+    "Ionic: one Cl atom gives one of its electrons to the other atom",
+    "Polar covalent: the electrons spend more time near one atom",
+    "Metallic: the valence electrons are spread over many atoms"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both atoms are Cl, so their electronegativity difference is zero. Each nucleus attracts the shared pair equally: a nonpolar covalent bond.",
+    "options": [
+     "Right: identical atoms share equally.",
+     "Transfer needs a large electronegativity difference. Two identical atoms have none, so neither can pull an electron away from the other.",
+     "Unequal sharing needs two atoms of different electronegativity; two Cl atoms are identical.",
+     "In Box 3 the electrons belong to separate two-atom units, not to a sea spread over the whole sample."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-types-8",
+   "type": "multi",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "bond-types-s2",
+   "q": "Which statements correctly describe the bonding shown in Box 2? Select all that apply.",
+   "options": [
+    "The valence electrons are delocalized over many cations.",
+    "Each electron is held between one particular pair of atoms.",
+    "The cations are held together by their attraction to the electrons around them.",
+    "Positive and negative ions alternate in fixed positions.",
+    "The bonding forms between atoms with a large electronegativity difference."
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Box 2 is metallic bonding: cations in a sea of delocalized electrons, held together by the attraction between the cations and that electron sea.",
+    "options": [
+     "Right: the electrons are not tied to one atom or one bond.",
+     "That describes a covalent bond. In a metal the electrons move among many cations.",
+     "Right: the Coulombic attraction between the cations and the electron sea is the metallic bond.",
+     "That describes an ionic compound such as Box 1. A metal has no anions.",
+     "A large difference describes ionic bonding. A metal is made of one element, so there is no difference at all."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-types-9",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statement describes a covalent bond?",
+   "options": [
+    "A pair of electrons held by one atom and not attracted by the other",
+    "The attraction between a cation and an anion after an electron moves",
+    "Cations held together by electrons that move through the whole sample",
+    "A pair of electrons shared by two atoms and attracted by both nuclei"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "In a covalent bond two atoms share a pair of electrons; both nuclei attract that pair, and that attraction holds the atoms together.",
+    "options": [
+     "An electron pair attracted by only one nucleus does not hold two atoms together, so it is not a bond.",
+     "That is an ionic bond: the attraction between oppositely charged ions.",
+     "That is metallic bonding, with delocalized electrons.",
+     "Right: a shared pair attracted by two nuclei."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-types-10",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which compound is held together by ionic bonds?",
+   "options": [
+    "NF₃",
+    "CaF₂",
+    "CS₂",
+    "SiCl₄"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Calcium is a metal and fluorine a nonmetal with a very different electronegativity, so Ca gives up electrons and the compound is made of Ca²⁺ and F⁻ ions.",
+    "options": [
+     "N and F are both nonmetals, so they share electrons in polar covalent bonds.",
+     "Right: a metal with a nonmetal.",
+     "C and S are both nonmetals with almost the same electronegativity; the bonds are covalent.",
+     "Si is a metalloid, not a metal, and Cl is a nonmetal; they share electrons, so SiCl₄ has polar covalent bonds."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-types-11",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "When sodium reacts with chlorine, an electron moves from Na to Cl. Which explanation is best?",
+   "options": [
+    "Na wants a full outer shell, so it chooses to give its single valence electron away to the nearest atom it meets",
+    "Na's valence electron is far from its nucleus and shielded, so it is held weakly; Cl's nucleus attracts one strongly",
+    "Cl already has more electrons than Na, so Cl has more electrons of its own with which to attract the extra one",
+    "Na is the larger atom, so it has more room to lose an electron than a small Cl atom has to lose one of its own"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Coulomb's law: Na's 3s electron sits in the third shell, shielded by 10 core electrons, so Na has a low ionization energy. Cl has a high effective nuclear charge for its valence shell, so it attracts an added electron strongly. Moving the electron gives Na⁺ and Cl⁻, which then attract each other.",
+    "options": [
+     "Atoms do not want or choose anything. The cause is the strength of the attractions, which this option leaves out.",
+     "Right: the explanation compares the attraction in both atoms.",
+     "Electrons repel each other; Cl attracts the added electron because of its nuclear charge and short distance, not because it already has many electrons.",
+     "Size matters because of distance from the nucleus, and this option skips that reasoning; 'room' is not a cause."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-types-12",
+   "type": "order",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Electronegativities: H 2.2, C 2.6, O 3.4, Na 0.9, F 4.0, Cl 3.2. Put these bonds in order from least to most ionic character.",
+   "options": [
+    "Cl–Cl",
+    "C–H",
+    "O–H",
+    "Na–F"
+   ],
+   "why": {
+    "correct": "Differences: Cl–Cl 0.0, C–H 0.4, O–H 1.2, Na–F 3.1. Bond character is a continuum: the larger the difference, the more ionic the bond."
+   }
+  },
+  {
+   "id": "chem-bond-types-13",
+   "type": "multi",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Electronegativities: H 2.2, C 2.6, O 3.4, Na 0.9, Cl 3.2. Which of these bonds are polar covalent? Select all that apply.",
+   "options": [
+    "H–Cl",
+    "C–O",
+    "Cl–Cl",
+    "Na–Cl"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "H–Cl (1.0) and C–O (0.8) join two nonmetals of different electronegativity, so the electrons are shared unequally.",
+    "options": [
+     "Right: two nonmetals that differ by 1.0.",
+     "Right: two nonmetals that differ by 0.8.",
+     "Identical atoms share equally, so Cl–Cl is nonpolar covalent.",
+     "Na is a metal and the difference is 2.3, so Na–Cl is ionic."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-types-14",
+   "type": "predict",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Compare the bonds H–F, H–Cl and H–Br, going down group 17 from F to Br. Predict how each quantity changes from H–F to H–Br.",
+   "variables": [
+    {
+     "name": "Electronegativity difference between H and the halogen",
+     "answer": "down",
+     "why": "Electronegativity falls down a group (F 4.0, Cl 3.2, Br 3.0), and H stays at 2.2, so the difference shrinks from 1.8 to 0.8."
+    },
+    {
+     "name": "Size of the partial positive charge on H",
+     "answer": "down",
+     "why": "A smaller electronegativity difference shifts less electron density away from H, so its δ+ is smaller."
+    },
+    {
+     "name": "Number of electrons shared between H and the halogen",
+     "answer": "none",
+     "why": "Each bond is one shared pair of two electrons; only how evenly the pair is shared changes."
+    }
+   ],
+   "why": {
+    "correct": "Down group 17 the halogen's valence electrons are in higher shells, farther from the nucleus, so it pulls on shared electrons less strongly. The bond stays one shared pair but becomes less polar."
+   }
+  },
+  {
+   "id": "chem-bond-types-15",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which description of the dipole arrow for an H–F bond is correct?",
+   "options": [
+    "The arrow points from F to H, because H gives up electron density",
+    "The arrow points from F to H, with the crossed tail at the F end",
+    "No arrow is drawn, because H and F are both nonmetals",
+    "The arrow points from H to F, with the crossed tail at the H end"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A dipole arrow points toward the more electronegative atom, where the electrons spend more time (δ−). The crossed tail, like a plus sign, sits at the δ+ end. F is far more electronegative than H.",
+    "options": [
+     "H does give up electron density, which is exactly why the arrow points away from it, toward F.",
+     "That drawing points toward H, which would mean H is δ−. F is the more electronegative atom.",
+     "Two different nonmetals still share unequally; H–F differs by 1.8, one of the most polar covalent bonds.",
+     "Right: toward F, plus-shaped tail at H."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-types-16",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "bond-types",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Magnesium oxide and copper are both solids. A student says both are held together by ionic bonds because both contain positive ions. Which response is correct?",
+   "options": [
+    "Copper is metallic: delocalized electrons hold its cations",
+    "The student is right: any solid that contains positive ions is ionic",
+    "Magnesium oxide is metallic, since magnesium is itself a metal",
+    "Both are covalent, since the atoms in each of them share electrons"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "MgO is ionic (Mg²⁺ and O²⁻ attract each other). Copper contains Cu cations too, but the negative charge holding them together is a sea of delocalized electrons, not anions: metallic bonding.",
+    "options": [
+     "Right: what balances the cations decides the bond type.",
+     "Positive ions appear in both ionic and metallic bonding; the difference is whether anions or delocalized electrons hold them.",
+     "Mg is a metal, but in MgO it has given its electrons to O, forming O²⁻ anions; that is ionic bonding.",
+     "In MgO electrons are transferred, and in copper they are delocalized; neither is a shared pair between two atoms."
+    ]
+   }
+  }
+ ]
+}

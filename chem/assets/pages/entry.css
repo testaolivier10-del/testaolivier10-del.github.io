@@ -1,0 +1,49 @@
+/* AP® Chemistry entry pages and trainer, on top of pages.css: the justification
+   trainer (pages/justify.js), the score calculator (pages/score.js), the
+   equations-sheet walkthrough and the unit practice tests
+   (scripts/lib/apchem-entry.mjs). Kept out of pages.css so the exams page
+   does not carry them. */
+.chem-js-how h2{margin:0 0 8px;font-size:18px;}
+.chem-js-steps{margin:0 0 8px;padding-left:22px;}
+.chem-js-steps li{margin:4px 0;}
+.chem-js-card .chem-js-title{margin:4px 0 12px;font-size:21px;}
+.chem-js-card .chem-js-title:focus{outline:none;}
+.chem-js-prompt{font-size:16px;margin:14px 0;}
+.chem-js-check{margin:18px 0 0;}
+.chem-js-check h2:focus{outline:none;}
+.chem-js-yours{margin:0 0 12px;padding:10px 12px;border-radius:10px;border:2px dashed var(--line);}
+.chem-js-yours p{margin:0;overflow-wrap:anywhere;}
+.chem-js-models{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin:14px 0;}
+.chem-js-model{padding:12px 14px;border-radius:12px;border:2px solid var(--line);background:var(--white);}
+.chem-js-model.is-earns{border-color:var(--cink);background:var(--ctint);}
+.chem-js-model p{margin:0 0 8px;}
+.chem-js-model .chem-js-why{margin:0;font-size:14px;}
+.chem-js-model .chem-fq-sample-k{font:900 11.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--cink);}
+.chem-js-model.is-misses .chem-fq-sample-k{color:var(--muted);}
+.chem-js-empty{color:var(--ink);}
+.chem-sc-form{display:grid;gap:16px;}
+.chem-sc-part{border:0;margin:0;padding:0;min-width:0;}
+.chem-sc-part legend{font:900 15px var(--font-ui);margin:0 0 8px;}
+.chem-sc-mcq,.chem-sc-q{display:flex;flex-direction:column;gap:4px;font:800 13.5px var(--font-ui);}
+.chem-sc-mcq input,.chem-sc-q input{min-height:44px;padding:8px 10px;font:700 16px var(--font-ui);border:2px solid var(--line);border-radius:10px;background:var(--white);color:var(--ink);max-width:100%;box-sizing:border-box;}
+.chem-sc-mcq input{max-width:140px;}
+.chem-sc-part input[type=range]{width:100%;min-height:44px;accent-color:var(--cink);}
+.chem-sc-frq{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;}
+.chem-sc-q small{font-weight:600;color:var(--muted);}
+.chem-sc-out{margin:16px 0;}
+.chem-sc-formula{padding:10px 12px;border-radius:10px;background:var(--ctint);overflow-wrap:anywhere;}
+.chem-eq{width:100%;border-collapse:collapse;font-size:14.5px;}
+.chem-eq th,.chem-eq td{text-align:left;vertical-align:top;padding:10px 8px;border-bottom:1px solid var(--line);}
+.chem-eq thead th{font:900 12.5px var(--font-ui);text-transform:uppercase;letter-spacing:.04em;color:var(--muted);}
+.chem-eq-f{font:700 15px var(--font-mono, monospace);white-space:normal;color:var(--cink);}
+.chem-eq tbody th{min-width:150px;}
+.chem-eq-not li{margin:8px 0;}
+.chem-entry .chem-qs{margin:16px 0;}
+.chem-cards-row{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 12px;}
+.chem-sample-done{margin:14px 0;}
+@media (max-width:560px){
+  .chem-eq thead{display:none;}
+  .chem-eq tr{display:block;padding:8px 0;border-bottom:1px solid var(--line);}
+  .chem-eq th,.chem-eq td{display:block;border:0;padding:3px 0;}
+  .chem-eq tbody th{min-width:0;}
+}

@@ -1,0 +1,72 @@
+{
+ "topic": "ionic-compounds-valence",
+ "hook": "Table salt is made of sodium, a soft metal that reacts violently with water, and chlorine, a poisonous green gas. Together they form a harmless white crystal you put on fries. The change comes from electrons: sodium gives one up and chlorine takes one, and the charges that result hold the solid together.",
+ "prereq": [
+  {
+   "q": "How many valence electrons does magnesium, [Ne] 3s², have?",
+   "options": [
+    "2",
+    "12",
+    "10",
+    "8"
+   ],
+   "correct": 0,
+   "why": "The outermost shell, n = 3, holds 3s²: 2 valence electrons.",
+   "review": "electron-configuration"
+  },
+  {
+   "q": "Across period 3, how does first ionization energy change in general?",
+   "options": [
+    "It increases",
+    "It decreases",
+    "It stays the same",
+    "It increases, then falls to zero"
+   ],
+   "correct": 0,
+   "why": "Effective nuclear charge rises across the period, so electrons are held more tightly.",
+   "review": "periodic-trends"
+  }
+ ],
+ "figure": {
+  "figure": "ion-formation",
+  "caption": "Sodium loses its single 3s electron and chlorine gains one, each reaching a noble gas configuration. Na⁺ and Cl⁻ combine 1 : 1 so the charges cancel."
+ },
+ "chain": [
+  {
+   "cause": "Metals hold their few valence electrons loosely (low ionization energy)",
+   "effect": "they lose them to form cations"
+  },
+  {
+   "cause": "Nonmetals have a high effective nuclear charge and attract added electrons",
+   "effect": "they gain electrons to form anions"
+  },
+  {
+   "cause": "Removing electrons past the valence shell, or adding them past the next noble gas, costs far more energy",
+   "effect": "main-group ions usually end up with a noble gas configuration"
+  },
+  {
+   "cause": "Cations and anions attract, and the compound must be neutral",
+   "effect": "they combine in the ratio that makes the charges cancel"
+  }
+ ],
+ "ideas": [
+  "Group 1 → 1+, group 2 → 2+, group 13 → 3+ (Al); group 15 → 3−, group 16 → 2−, group 17 → 1−. Each ion has a <b>noble gas configuration</b>.",
+  "An <b>ionic compound</b> is made of cations and anions in the ratio that makes the total charge zero: Ca²⁺ + 2 F⁻ → CaF₂.",
+  "Write the cation first; subscripts give the simplest ratio (a <b>formula unit</b>), never 2 : 2.",
+  "Elements in a group have the same number of valence electrons, so they form the same ions and react alike."
+ ],
+ "misconception": {
+  "wrong": "Atoms form ions because they want a full outer shell.",
+  "right": "Atoms do not want anything. A metal's valence electrons are loosely held, so little energy removes them; removing one more from the core would cost far more. A nonmetal attracts an added electron strongly. Energy and Coulombic attraction set the charge."
+ },
+ "check": [
+  "chem-ionic-compounds-valence-1",
+  "chem-ionic-compounds-valence-2",
+  "chem-ionic-compounds-valence-3",
+  "chem-ionic-compounds-valence-4",
+  "chem-ionic-compounds-valence-7",
+  "chem-ionic-compounds-valence-9"
+ ],
+ "summary": "Main-group metals lose their valence electrons to form cations, and nonmetals gain electrons to form anions, usually reaching a noble gas configuration. Ionic compounds combine cations and anions in the smallest whole-number ratio that makes the total charge zero. Elements in the same group form ions of the same charge and behave alike.",
+ "connections": []
+}

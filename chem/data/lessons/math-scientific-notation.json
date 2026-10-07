@@ -1,0 +1,73 @@
+{
+ "topic": "math-scientific-notation",
+ "hook": "The mass of one hydrogen atom is 0.000000000000000000000001674 g. Count those zeros twice and you may still get it wrong. Scientists write it as 1.674 × 10⁻²⁴ g instead: shorter, easier to compare, and easier to type into a calculator without slipping.",
+ "prereq": [
+  {
+   "q": "What is 10⁴ × 10⁻⁷?",
+   "options": [
+    "10⁻³",
+    "10¹¹",
+    "10⁻²⁸",
+    "10³"
+   ],
+   "correct": 0,
+   "why": "Multiplying powers of ten adds the exponents: 4 + (−7) = −3.",
+   "review": "math-exponents"
+  },
+  {
+   "q": "What is 10⁻² as a decimal?",
+   "options": [
+    "0.01",
+    "−100",
+    "0.1",
+    "−0.01"
+   ],
+   "correct": 0,
+   "why": "A negative exponent is a reciprocal: 1/10² = 1/100 = 0.01.",
+   "review": "math-exponents"
+  }
+ ],
+ "figure": {
+  "figure": "sci-notation-parts",
+  "caption": "Scientific notation: a coefficient from 1 to just under 10, times a power of ten that says how many places the decimal point moved."
+ },
+ "chain": [
+  {
+   "cause": "Very large and very small numbers carry many zeros",
+   "effect": "they are slow to write and easy to miscount"
+  },
+  {
+   "cause": "Any number can be split into a coefficient between 1 and 10 and a power of ten",
+   "effect": "the zeros move into the exponent"
+  },
+  {
+   "cause": "Moving the decimal point left makes the coefficient smaller",
+   "effect": "the exponent goes up by one for each place, so a large number gets a positive exponent"
+  },
+  {
+   "cause": "The exponent shows the size at a glance",
+   "effect": "comparing, multiplying and dividing become exponent arithmetic"
+  }
+ ],
+ "ideas": [
+  "<b>Scientific notation</b>: coefficient × 10ⁿ, with 1 ≤ coefficient &lt; 10. 0.00560 = 5.60 × 10⁻³; 149,600,000 = 1.496 × 10⁸.",
+  "Numbers above 10 get positive exponents; numbers below 1 get negative exponents.",
+  "Multiply: multiply coefficients, add exponents. Divide: divide coefficients, subtract exponents. Then fix the coefficient if it left the 1-10 range.",
+  "Add or subtract only after giving both numbers the same exponent. One <b>order of magnitude</b> is a factor of 10."
+ ],
+ "misconception": {
+  "wrong": "A larger coefficient always means a larger number, so 8 × 10⁻⁴ is bigger than 3 × 10⁻².",
+  "right": "Compare the exponents first. 8 × 10⁻⁴ = 0.0008 and 3 × 10⁻² = 0.03, so the second is about 40 times larger. The coefficient only decides between numbers with the same exponent."
+ },
+ "check": [
+  "chem-math-scientific-notation-1",
+  "chem-math-scientific-notation-2",
+  "chem-math-scientific-notation-4",
+  "chem-math-scientific-notation-5",
+  "chem-math-scientific-notation-6",
+  "chem-math-scientific-notation-8",
+  "chem-math-scientific-notation-12"
+ ],
+ "summary": "Scientific notation writes a number as a coefficient from 1 to just under 10 times a power of ten. Large numbers have positive exponents and small numbers negative ones. To multiply, multiply coefficients and add exponents; to divide, divide and subtract; to add, match exponents first. Each factor of ten is one order of magnitude.",
+ "connections": []
+}

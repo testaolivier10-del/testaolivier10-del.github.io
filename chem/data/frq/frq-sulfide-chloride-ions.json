@@ -1,0 +1,109 @@
+{
+ "id": "frq-sulfide-chloride-ions",
+ "type": "short",
+ "points": 4,
+ "title": "Sulfur, chlorine and their ions",
+ "units": [
+  "unit-1"
+ ],
+ "topics": [
+  "ionic-compounds-valence",
+  "periodic-trends",
+  "electron-configuration"
+ ],
+ "practices": [
+  "1.A",
+  "6.A",
+  "4.A"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Sulfur and chlorine",
+  "text": "<p>Data for two neighboring elements in period 3.</p>",
+  "table": {
+   "caption": "Properties of S and Cl",
+   "cols": [
+    "Element",
+    "Protons",
+    "Atomic radius (pm)",
+    "First ionization energy (kJ/mol)",
+    "Common ion"
+   ],
+   "rows": [
+    [
+     "S",
+     "16",
+     "103",
+     "1000",
+     "S²⁻"
+    ],
+    [
+     "Cl",
+     "17",
+     "99",
+     "1251",
+     "Cl⁻"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Write</b> the complete electron configuration of the sulfide ion, S²⁻.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "1s² 2s² 2p⁶ 3s² 3p⁶",
+     "accept": [
+      "[Ne] 3s² 3p⁶",
+      "[Ar]"
+     ]
+    }
+   ],
+   "sample": "S²⁻: 1s² 2s² 2p⁶ 3s² 3p⁶ (18 electrons, the same as argon)."
+  },
+  {
+   "label": "b",
+   "prompt": "S²⁻ and Cl⁻ have the same number of electrons. <b>Identify</b> the larger ion and <b>justify</b> your answer in terms of Coulombic attraction.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "S²⁻ is larger: both have 18 electrons in the same shells, but S²⁻ has fewer protons (16 vs 17), so its electrons are attracted less strongly and spread farther from the nucleus",
+     "accept": [
+      "S²⁻, fewer protons pulling on the same 18 electrons"
+     ]
+    }
+   ],
+   "sample": "S²⁻ is larger. Both ions have 18 electrons in the same arrangement, so shielding is the same, but S²⁻ has 16 protons and Cl⁻ has 17. With less nuclear charge pulling on the same electrons, the Coulombic attraction is weaker in S²⁻, so its electron cloud is larger."
+  },
+  {
+   "label": "c",
+   "prompt": "<b>Write</b> the formula of the ionic compound formed between aluminum and sulfur.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Al₂S₃",
+     "accept": [
+      "Al₂S₃ (2 Al³⁺ and 3 S²⁻: +6 − 6 = 0)"
+     ]
+    }
+   ],
+   "sample": "Al₂S₃. Aluminum forms Al³⁺ and sulfur forms S²⁻; 2(+3) + 3(−2) = 0."
+  },
+  {
+   "label": "d",
+   "prompt": "Using the data, <b>explain</b> why the first ionization energy of Cl is greater than that of S.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Cl has more protons (17 vs 16) with valence electrons in the same shell (n = 3) and the same core shielding, so its valence electrons are closer (99 vs 103 pm) and attracted more strongly",
+     "accept": [
+      "greater effective nuclear charge, same shell, smaller radius"
+     ]
+    }
+   ],
+   "sample": "Chlorine has 17 protons and sulfur 16, and both have their valence electrons in shell 3 behind the same 10 core electrons. Chlorine's larger effective nuclear charge pulls its valence electrons closer (radius 99 pm vs 103 pm) and holds them more strongly, so more energy is needed to remove one."
+  }
+ ]
+}

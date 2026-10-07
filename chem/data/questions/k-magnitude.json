@@ -1,0 +1,484 @@
+{
+ "stimuli": {
+  "k-magnitude-s1": {
+   "kind": "table",
+   "title": "Equilibrium constants for four reactions",
+   "text": "<p>A student looks up K<sub>c</sub> for four gas-phase reactions, each at 25 °C. Each reaction starts with only its reactants, at 1.0 M each.</p>",
+   "table": {
+    "caption": "K<sub>c</sub> at 25 °C",
+    "cols": [
+     "Reaction",
+     "Equation",
+     "K<sub>c</sub>"
+    ],
+    "rows": [
+     [
+      "1",
+      "N<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2 NO(g)",
+      "4.5 × 10<sup>−31</sup>"
+     ],
+     [
+      "2",
+      "H<sub>2</sub>(g) + Cl<sub>2</sub>(g) ⇌ 2 HCl(g)",
+      "2.5 × 10<sup>33</sup>"
+     ],
+     [
+      "3",
+      "CO(g) + H<sub>2</sub>O(g) ⇌ CO<sub>2</sub>(g) + H<sub>2</sub>(g)",
+      "1.0 × 10<sup>5</sup>"
+     ],
+     [
+      "4",
+      "N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2 NO<sub>2</sub>(g)",
+      "4.6 × 10<sup>−3</sup>"
+     ]
+    ]
+   }
+  },
+  "k-magnitude-s2": {
+   "kind": "particle",
+   "title": "Three reactions at equilibrium",
+   "html": "<svg viewBox=\"0 0 642 202\" width=\"642\" height=\"202\" role=\"img\" aria-label=\"Three equal-volume containers, each at equilibrium for a reaction of the form X2 plus Y2 forming 2 XY. Reaction I: 1 X2, 1 Y2 and 8 XY. Reaction II: 4 X2, 4 Y2 and 2 XY. Reaction III: 3 X2, 3 Y2 and 4 XY.\" style=\"max-width:100%;height:auto\"><text x=\"113\" y=\"32\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Reaction I</text><rect x=\"18\" y=\"40\" width=\"190\" height=\"150\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"177.5\" cy=\"163.9\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"189.5\" cy=\"163.9\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"126.7\" cy=\"70.9\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"141.7\" cy=\"70.9\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"40.6\" cy=\"116.8\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"55.6\" cy=\"116.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"128.3\" cy=\"114.6\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"143.3\" cy=\"114.6\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"40.2\" cy=\"158.1\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"55.2\" cy=\"158.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"84.2\" cy=\"160.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"99.2\" cy=\"160.3\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"38.9\" cy=\"69.7\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"53.9\" cy=\"69.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"83.2\" cy=\"69.9\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"98.2\" cy=\"69.9\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"126.3\" cy=\"159.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"142.3\" cy=\"159.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"173.3\" cy=\"113.4\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"188.3\" cy=\"113.4\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><text x=\"321\" y=\"32\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Reaction II</text><rect x=\"226\" y=\"40\" width=\"190\" height=\"150\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"339.5\" cy=\"162.4\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"351.5\" cy=\"162.4\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"296.7\" cy=\"73.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"308.7\" cy=\"73.1\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"249.1\" cy=\"159.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"261.1\" cy=\"159.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"334.2\" cy=\"71.7\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"350.2\" cy=\"71.7\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"379.5\" cy=\"116.2\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"391.5\" cy=\"116.2\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"249.6\" cy=\"71.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"264.6\" cy=\"71.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"379.1\" cy=\"70.8\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"395.1\" cy=\"70.8\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"290.9\" cy=\"114.9\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"306.9\" cy=\"114.9\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"292.7\" cy=\"159.7\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"307.7\" cy=\"159.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"379.1\" cy=\"159.8\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"395.1\" cy=\"159.8\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><text x=\"529\" y=\"32\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\" font-family=\"Arial,Helvetica,sans-serif\">Reaction III</text><rect x=\"434\" y=\"40\" width=\"190\" height=\"150\" rx=\"6\" fill=\"#FFFFFF\" stroke=\"#444\" stroke-width=\"2\"/><circle cx=\"499.1\" cy=\"115.4\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"515.1\" cy=\"115.4\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"544.3\" cy=\"116.8\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"559.3\" cy=\"116.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"542.7\" cy=\"158.4\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"558.7\" cy=\"158.4\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"500.5\" cy=\"70.4\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"515.5\" cy=\"70.4\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"541.5\" cy=\"75.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"553.5\" cy=\"75.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"454.5\" cy=\"67.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"466.5\" cy=\"67.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"457.3\" cy=\"115.7\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"472.3\" cy=\"115.7\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"587.2\" cy=\"115.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"603.2\" cy=\"115.3\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"586.8\" cy=\"71.8\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"601.8\" cy=\"71.8\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"455.1\" cy=\"161.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"467.1\" cy=\"161.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/></svg><p class=\"chem-small\">Key: <span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"42\" height=\"42\" aria-hidden=\"true\"><circle cx=\"13.0\" cy=\"21.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"29.0\" cy=\"21.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/></svg>X<sub>2</sub></span><span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"34\" height=\"34\" aria-hidden=\"true\"><circle cx=\"11.0\" cy=\"17.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/><circle cx=\"23.0\" cy=\"17.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/></svg>Y<sub>2</sub></span><span style=\"display:inline-flex;align-items:center;gap:6px;margin-right:14px\"><svg width=\"40\" height=\"40\" aria-hidden=\"true\"><circle cx=\"13.0\" cy=\"20.0\" r=\"9\" fill=\"#1D44A6\" stroke=\"#0B1F55\" stroke-width=\"1.5\"/><circle cx=\"28.0\" cy=\"20.0\" r=\"7\" fill=\"#E69F00\" stroke=\"#7A5200\" stroke-width=\"1.5\"/></svg>XY</span></p><p>Each container shows a different reaction of the form X<sub>2</sub>(g) + Y<sub>2</sub>(g) ⇌ 2 XY(g) at equilibrium. The containers have equal volumes and each started with 5 X<sub>2</sub> and 5 Y<sub>2</sub>.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-k-magnitude-1",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "k-magnitude-s1",
+   "q": "In which reaction does the equilibrium mixture contain almost nothing but reactants?",
+   "options": [
+    "Reaction 1",
+    "Reaction 2",
+    "Reaction 3",
+    "Reaction 4"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The smaller K is, the less product the equilibrium mixture contains. K = 10⁻³¹ means the reaction barely proceeds.",
+    "options": [
+     "Right: K = 4.5 × 10⁻³¹ is extremely small, so at equilibrium the product, NO, is present in a tiny amount.",
+     "K = 2.5 × 10³³ is huge: this reaction goes essentially to products.",
+     "K = 1.0 × 10⁵ is large, so products are favored.",
+     "K = 4.6 × 10⁻³ is small, so reactants are favored, but not nearly as strongly as in reaction 1."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-magnitude-2",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "k-magnitude-s1",
+   "q": "The student concludes that reaction 2 must reach equilibrium within seconds because its K is so large. Is the conclusion justified?",
+   "options": [
+    "No: K shows where equilibrium lies, not how fast it is reached.",
+    "Yes: a large K means a large rate constant for the forward reaction.",
+    "Yes: products form quickly whenever K is greater than 1.",
+    "No: a large K means the reaction is slow, because the reverse reaction is fast."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K describes the mixture once equilibrium is reached. How long that takes is kinetics (Unit 5). H₂ and Cl₂ can sit mixed in the dark for a long time, then react explosively in sunlight; K is the same either way.",
+    "options": [
+     "Right: K is about the composition at equilibrium. Speed depends on the activation energy and the rate law, which K does not tell you.",
+     "K compares forward and reverse at equilibrium; a large K is compatible with both reactions being very slow.",
+     "Being product-favored says how much product there will be, not when. Some product-favored reactions take years.",
+     "K does not set the speed in either direction, so it cannot tell you the reaction is slow either."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-magnitude-3",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "k-magnitude-s1",
+   "q": "Which reaction in the table is the most product-favored at equilibrium?",
+   "options": [
+    "Reaction 2",
+    "Reaction 3",
+    "Reaction 4",
+    "Reaction 1"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Compare exponents: the reaction with the largest K has the most product relative to reactant at equilibrium.",
+    "options": [
+     "Right: it has the largest K, 2.5 × 10³³.",
+     "K = 1.0 × 10⁵ is large, but 10³³ is far larger.",
+     "K = 4.6 × 10⁻³ is below 1, so reaction 4 favors reactants.",
+     "Reaction 1 has the smallest K in the table; it favors reactants overwhelmingly."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-magnitude-4",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "single",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "k-magnitude-s1",
+   "q": "For reaction 4, a student starts with 1.0 M N<sub>2</sub>O<sub>4</sub> and predicts that almost all of it will turn into NO<sub>2</sub>. Which response is best?",
+   "options": [
+    "The prediction is wrong: K &lt; 1, so most N<sub>2</sub>O<sub>4</sub> remains at equilibrium.",
+    "The prediction is right: N<sub>2</sub>O<sub>4</sub> is the one species present at the start.",
+    "The prediction is right: K is positive, so products are favored.",
+    "The prediction is wrong: no NO<sub>2</sub> forms, because K is less than 1."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K much less than 1 means reactants are favored: some product forms, but most of the reactant is still there at equilibrium.",
+    "options": [
+     "Right: K = 4.6 × 10⁻³. With [N₂O₄] near 1.0 M, [NO₂]² ≈ 4.6 × 10⁻³, so [NO₂] ≈ 0.068 M: a few percent reacts.",
+     "Starting with reactant only tells you the net reaction is forward (Q = 0 < K). It does not tell you how far it goes.",
+     "Every K is positive. What matters is whether K is much larger or much smaller than 1.",
+     "K < 1 does not mean zero product. Some NO₂ forms, just not much."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-magnitude-5",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "single",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "k-magnitude-s2",
+   "q": "Which reaction has the largest equilibrium constant?",
+   "options": [
+    "Reaction I",
+    "Reaction II",
+    "Reaction III",
+    "They are equal, because each started with the same amounts."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The equilibrium mixture with the most product relative to reactant has the largest K. Count: I has 8 XY to 1 + 1 reactant molecules.",
+    "options": [
+     "Right: K = 8² / (1 × 1) = 64, by far the most product per reactant.",
+     "K = 2² / (4 × 4) = 0.25, the smallest of the three.",
+     "K = 4² / (3 × 3) ≈ 1.8, in between.",
+     "Same starting amounts but different reactions settle at different mixtures, so the K values differ."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-magnitude-6",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "k-magnitude-s2",
+   "q": "Each particle in a container stands for 0.10 mol, and each container is 1.0 L. Calculate K<sub>c</sub> for reaction II.",
+   "numeric": {
+    "answer": 0.25,
+    "tol": 0.01,
+    "unit": "",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1.25,
+      "rel": 0.02,
+      "why": "Value: [XY] is squared, because its coefficient is 2."
+     },
+     {
+      "value": 4,
+      "rel": 0.02,
+      "why": "Value: you inverted K. Products go on top."
+     }
+    ]
+   },
+   "why": {
+    "correct": "[XY] = 2 × 0.10 = 0.20 M; [X₂] = [Y₂] = 4 × 0.10 = 0.40 M. K<sub>c</sub> = (0.20)² / (0.40 × 0.40) = 0.25."
+   }
+  },
+  {
+   "id": "chem-k-magnitude-7",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "k-magnitude-s2",
+   "q": "Which statement about reaction II is correct?",
+   "options": [
+    "Its K is less than 1, so reactants are favored.",
+    "Its K is greater than 1, because product is present.",
+    "It is not at equilibrium, because it has more reactant than product.",
+    "It will react further toward products, because K is small."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A small K describes an equilibrium mixture that is mostly reactants. It is still an equilibrium: no further net change.",
+    "options": [
+     "Right: K = 0.25, and the box holds 8 reactant molecules for every 2 product molecules.",
+     "Any equilibrium mixture contains some product. K > 1 needs products to outweigh reactants in the ratio, which they do not here.",
+     "The question says each container is at equilibrium. Mostly-reactant mixtures are common equilibria.",
+     "At equilibrium, Q = K and there is no net reaction, whatever the size of K."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-magnitude-8",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "single",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "k-magnitude-s2",
+   "q": "Reaction III is at equilibrium. Which statement compares its forward and reverse rates?",
+   "options": [
+    "They are equal, even though K is not 1.",
+    "The forward rate is larger, because K is greater than 1.",
+    "The reverse rate is larger, because there are more reactant molecules.",
+    "Both rates are zero, because the composition has stopped changing."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At equilibrium the forward and reverse rates are equal, whatever the value of K. K describes the composition; the equal rates describe the dynamics.",
+    "options": [
+     "Right: equal rates define equilibrium for every reaction; K > 1 or K < 1 only describes where the amounts end up.",
+     "K > 1 means more product at equilibrium, not a larger forward rate at equilibrium. At equilibrium the rates are equal.",
+     "If the reverse rate were larger, the composition would still be changing. It is at equilibrium.",
+     "Constant composition comes from equal rates, not zero rates."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-magnitude-9",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "For a reaction at 25 °C, K = 6.0 × 10<sup>−9</sup>. Which describes the equilibrium mixture?",
+   "options": [
+    "Mostly reactants, with a very small amount of products",
+    "Mostly products, with a very small amount of reactants",
+    "Equal amounts of reactants and products",
+    "No products whatsoever"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K ≪ 1: reactant-favored. Some product is present at equilibrium, but very little.",
+    "options": [
+     "Right: K far below 1 means the reaction barely goes forward before it reaches equilibrium.",
+     "That would need K far above 1.",
+     "K near 1 gives comparable amounts; 10⁻⁹ is very far from 1.",
+     "A small K still means some product forms. K is never zero."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-magnitude-10",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "multi",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a reaction, K = 3 × 10<sup>12</sup>. Which statements are justified? Select all that apply.",
+   "options": [
+    "At equilibrium, products are favored.",
+    "Starting from reactants, the reaction goes nearly to completion.",
+    "The reaction is fast.",
+    "At equilibrium, the forward rate is larger than the reverse rate."
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A large K means products dominate the equilibrium mixture. It does not tell you how fast equilibrium is reached, and at equilibrium the rates are always equal.",
+    "options": [
+     "Right: K far greater than 1.",
+     "Right: with K this large, very little reactant is left at equilibrium.",
+     "K says nothing about rate. A product-favored reaction can be very slow.",
+     "At equilibrium the two rates are equal, whatever K is."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-magnitude-11",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For A(g) ⇌ 2 B(g), K<sub>c</sub> = 1.0 × 10<sup>−5</sup>. Because K is so small, almost all of the A remains when equilibrium is reached from 0.10 M A. Using [A] ≈ 0.10 M at equilibrium, estimate [B].",
+   "numeric": {
+    "answer": 0.001,
+    "tol": 0.0001,
+    "unit": "M",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.000001,
+      "rel": 0.02,
+      "why": "Value: that is [B]². Take the square root to get [B]."
+     },
+     {
+      "value": 5e-7,
+      "rel": 0.02,
+      "why": "Value: set K = [B]² / [A] and solve for [B]; do not divide by the coefficient."
+     }
+    ]
+   },
+   "why": {
+    "correct": "K = [B]² / [A], so [B]² ≈ 1.0 × 10⁻⁵ × 0.10 = 1.0 × 10⁻⁶ and [B] ≈ 1.0 × 10⁻³ M. That is about 0.5% of the A reacting, which confirms [A] ≈ 0.10 M was a fair approximation."
+   }
+  },
+  {
+   "id": "chem-k-magnitude-12",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A cylinder of H<sub>2</sub> and O<sub>2</sub> gases can stand for years without forming water, though K for 2 H<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2 H<sub>2</sub>O(g) is enormous at room temperature. What explains this?",
+   "options": [
+    "The reaction has a high activation energy, so it is extremely slow at room temperature.",
+    "The mixture is already at equilibrium.",
+    "K is large, so the reverse reaction prevents water from forming.",
+    "K applies once some water has already formed."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Thermodynamics (the size of K) and kinetics (the rate) are separate. A large K tells you where the reaction would end, not that it will get there quickly.",
+    "options": [
+     "Right: K says water is overwhelmingly favored at equilibrium, but without a spark or catalyst very few collisions get over the energy barrier.",
+     "At equilibrium with K this large, there would be almost no H₂ and O₂ left. The cylinder is far from equilibrium.",
+     "A large K favors the forward reaction. The reverse reaction is negligible.",
+     "K applies to the reaction at any composition; Q = 0 here, so the net reaction should go forward. It just goes very slowly."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-magnitude-13",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which value of K describes a reaction in which significant amounts of both reactants and products are present at equilibrium?",
+   "options": [
+    "K = 2.4",
+    "K = 8 × 10<sup>15</sup>",
+    "K = 3 × 10<sup>−20</sup>",
+    "K = 5 × 10<sup>9</sup>"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "When K is near 1 (roughly between 10⁻³ and 10³ is a common guide), the equilibrium mixture holds appreciable amounts of both reactants and products.",
+    "options": [
+     "Right: K close to 1 means neither side dominates.",
+     "This K is huge: products dominate.",
+     "This K is tiny: reactants dominate.",
+     "Products dominate when K is billions."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-magnitude-14",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For reaction P, K = 1 × 10<sup>4</sup>; for reaction R, K = 1 × 10<sup>−4</sup>. Both start with only reactants. Which statement is correct?",
+   "options": [
+    "P ends with mostly products and R with mostly reactants.",
+    "P reaches equilibrium faster than R.",
+    "P ends with mostly reactants and R with mostly products.",
+    "Both end with equal amounts of reactants and products."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K above 1 means product-favored; K below 1 means reactant-favored. Speed is a separate question.",
+    "options": [
+     "Right: K far above 1 favors products; K far below 1 favors reactants.",
+     "K does not tell you which reaction is faster.",
+     "This reverses the meaning of K: a larger K means more product.",
+     "Only a K near 1 gives comparable amounts; these are 10⁴ and 10⁻⁴."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-magnitude-15",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "single",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A student writes: \"K for this reaction is 10<sup>−6</sup>, so no reaction occurs and there is nothing to study.\" Which response is best?",
+   "options": [
+    "Disagree: a little product forms before equilibrium.",
+    "Agree: a K below 10<sup>−3</sup> means the reaction does not happen.",
+    "Disagree: a small K means the reaction is fast, so it reaches equilibrium at once.",
+    "Agree: K is so small that the reverse reaction stops the forward one."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Every reversible reaction forms some product. A small K means the equilibrium mixture contains only a little of it.",
+    "options": [
+     "Right: K ≪ 1 means little product, not none. Small K reactions still reach a dynamic equilibrium.",
+     "There is no cutoff below which nothing reacts. The forward reaction runs until its rate equals the reverse rate.",
+     "K says nothing about speed.",
+     "The reverse reaction does not stop the forward reaction; at equilibrium both run at equal rates."
+    ]
+   }
+  },
+  {
+   "id": "chem-k-magnitude-16",
+   "unit": "unit-7",
+   "topic": "k-magnitude",
+   "type": "single",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "For the same reaction, which statement about K and Q is correct?",
+   "options": [
+    "K is fixed at a given temperature; Q changes as the mixture changes.",
+    "Q is fixed at a given temperature; K changes as the mixture changes.",
+    "Both change as the mixture changes.",
+    "Neither changes once the reactants are mixed."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "K depends only on temperature for a given reaction. Q depends on the amounts present at the moment.",
+    "options": [
+     "Right: Q tracks the current mixture and moves toward K.",
+     "This is reversed. K is the constant; Q varies.",
+     "K does not change with the mixture, only with temperature.",
+     "Q changes as the reaction runs, until it equals K."
+    ]
+   }
+  }
+ ]
+}

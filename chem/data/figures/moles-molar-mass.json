@@ -1,0 +1,7 @@
+{
+ "mole-pathway": {
+  "file": "figures/mole-pathway.svg", "ext": "svg", "w": 680, "h": 240,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Mass in grams, amount in moles and number of particles in a row: divide by the molar mass to go from grams to moles, multiply by 6.022 × 10²³ to go from moles to particles, and reverse each step to go back."
+ }
+}

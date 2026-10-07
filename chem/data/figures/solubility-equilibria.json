@@ -1,0 +1,12 @@
+{
+ "ksp-molar-solubility": {
+  "file": "figures/ksp-molar-solubility.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 270,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Three panels. A 1 to 1 salt, AgCl, dissolves to Ag+ and Cl−, each at concentration s, so Ksp = s squared and s is the square root of Ksp, 1.3 times 10 to the minus 5 M. A 1 to 2 salt, CaF2, dissolves to Ca2+ at s and F− at 2s, so Ksp = s times (2s) squared = 4s cubed and s is the cube root of Ksp over 4, 2.1 times 10 to the minus 4 M. A warning panel: square the whole 2s, compare Ksp values only for salts with the same ion ratio, and never include the solid. CaF2 has the smaller Ksp but the larger molar solubility."
+ }
+}

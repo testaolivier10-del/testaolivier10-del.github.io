@@ -1,0 +1,93 @@
+{
+ "topic": "reactions-intro",
+ "hook": "Strike a match and the head flares, smokes and leaves a black stub. The match is lighter afterward, yet not one atom has been destroyed. The atoms were rearranged into new substances, and some of them drifted away as gases. Every chemical equation you write in this unit is a record of that bookkeeping.",
+ "prereq": [
+  {
+   "q": "How many atoms are in one molecule of C₂H₆O?",
+   "options": [
+    "9",
+    "3",
+    "6",
+    "8"
+   ],
+   "correct": 0,
+   "why": "Add the subscripts: 2 C + 6 H + 1 O = 9 atoms.",
+   "review": "elemental-composition"
+  },
+  {
+   "q": "What is the molar mass of water, H₂O (H 1.008, O 16.00)?",
+   "options": [
+    "18.02 g/mol",
+    "17.01 g/mol",
+    "16.00 g/mol",
+    "34.02 g/mol"
+   ],
+   "correct": 0,
+   "why": "2(1.008) + 16.00 = 18.02 g/mol.",
+   "review": "moles-molar-mass"
+  },
+  {
+   "q": "What does the label (aq) after a formula mean?",
+   "options": [
+    "Dissolved in water",
+    "A pure liquid",
+    "A gas",
+    "A solid"
+   ],
+   "correct": 0,
+   "why": "Aqueous means dissolved in water.",
+   "review": "solutions"
+  }
+ ],
+ "figure": {
+  "figure": "balanced-equation-anatomy",
+  "caption": "The parts of a balanced equation. Coefficients count particles (and moles); subscripts are part of each formula and never change. Each side holds the same atoms: 2 N and 6 H."
+ },
+ "chain": [
+  {
+   "cause": "Bonds break in the reactants and new bonds form",
+   "effect": "the same atoms end up arranged into new substances"
+  },
+  {
+   "cause": "Atoms are rearranged, never created or destroyed",
+   "effect": "each kind of atom has the same count on both sides of the equation"
+  },
+  {
+   "cause": "Every atom keeps its mass",
+   "effect": "the total mass before a reaction equals the total mass after, if nothing escapes"
+  },
+  {
+   "cause": "Subscripts say what each substance is",
+   "effect": "you balance with coefficients only"
+  }
+ ],
+ "ideas": [
+  "In a <b>chemical reaction</b>, bonds break and form so the atoms of the <b>reactants</b> end up in new substances, the products.",
+  "Evidence (a gas, a new solid, a color or temperature change) suggests a reaction; only a new substance proves one.",
+  "A balanced <b>chemical equation</b> has the same number of each kind of atom on both sides. Change coefficients, never subscripts.",
+  "Coefficients count particles and moles, not grams. <b>Conservation of mass</b>: total mass is unchanged when nothing can escape."
+ ],
+ "misconception": {
+  "wrong": "If the products weigh less than the reactants, matter was destroyed.",
+  "right": "Matter is conserved in every reaction. A drop in measured mass means a product, usually a gas, left the container. Seal the container and the mass stays the same."
+ },
+ "check": [
+  "chem-reactions-intro-1",
+  "chem-reactions-intro-2",
+  "chem-reactions-intro-3",
+  "chem-reactions-intro-4",
+  "chem-reactions-intro-5",
+  "chem-reactions-intro-6"
+ ],
+ "summary": "A chemical reaction rearranges atoms into new substances. Because atoms are conserved, a balanced equation has the same atoms on both sides and the total mass does not change; balance with coefficients, which count particles and moles, never with subscripts.",
+ "connections": [
+  {
+   "href": "../notes/elemental-composition.html",
+   "label": "Back: chemical formulas and what subscripts mean (1.3)"
+  },
+  {
+   "href": "../notes/net-ionic-equations.html",
+   "label": "Next: equations for reactions in water (4.2)"
+  }
+ ]
+}

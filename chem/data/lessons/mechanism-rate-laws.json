@@ -1,0 +1,81 @@
+{
+ "topic": "mechanism-rate-laws",
+ "hook": "At a stadium exit, thousands of fans walk quickly down wide corridors and then squeeze through a single turnstile. How fast the crowd empties has nothing to do with how fast people walk in the corridors; it depends only on the turnstile. In a reaction mechanism, the slowest step is that turnstile.",
+ "prereq": [
+  {
+   "q": "In the mechanism (1) A + B → C; (2) C + D → E, what is C?",
+   "options": [
+    "An intermediate",
+    "A reactant",
+    "A product",
+    "A transition state"
+   ],
+   "correct": 0,
+   "why": "C is made in step 1 and used in step 2.",
+   "review": "mechanisms-intro"
+  },
+  {
+   "q": "What is the rate law of the elementary step 2 X + Y → Z?",
+   "options": [
+    "rate = k[X]²[Y]",
+    "rate = k[X][Y]",
+    "rate = k[Z]",
+    "It must be measured"
+   ],
+   "correct": 0,
+   "why": "An elementary step's coefficients are its orders.",
+   "review": "elementary-reactions"
+  }
+ ],
+ "figure": {
+  "figure": "slow-step",
+  "caption": "The overall rate equals the rate of the slow step."
+ },
+ "chain": [
+  {
+   "cause": "Each later step needs a product of the step before it",
+   "effect": "the reaction cannot run faster than its slowest step"
+  },
+  {
+   "cause": "When the first step is the slow one",
+   "effect": "the overall rate law is that step's rate law, written from its coefficients"
+  },
+  {
+   "cause": "Reactants used only in later fast steps do not change the rate",
+   "effect": "they do not appear in the rate law (zero order)"
+  },
+  {
+   "cause": "The predicted rate law is compared with the measured one",
+   "effect": "a mismatch rules a mechanism out; a match makes it consistent with the data"
+  }
+ ],
+ "ideas": [
+  "The <b>rate-determining step</b> is the slowest step; the overall rate cannot be faster than it.",
+  "If the first step is slow, the overall rate law is the rate law of that step.",
+  "Reactants that enter only after the slow step do not appear in the rate law.",
+  "A mechanism is consistent with data if its predicted rate law matches the measured one. It is never proven."
+ ],
+ "misconception": {
+  "wrong": "The rate law can be written from the overall equation's coefficients.",
+  "right": "Only an elementary step can be read that way. Write the rate law from the slow step of the mechanism and check it against the data."
+ },
+ "check": [
+  "chem-mechanism-rate-laws-1",
+  "chem-mechanism-rate-laws-2",
+  "chem-mechanism-rate-laws-3",
+  "chem-mechanism-rate-laws-5",
+  "chem-mechanism-rate-laws-7",
+  "chem-mechanism-rate-laws-12"
+ ],
+ "summary": "The slowest step of a mechanism is the rate-determining step. When the first step is slow, the overall rate law is that step's rate law, so reactants used only in later fast steps do not appear. A mechanism is consistent with experiment when the rate law it predicts matches the measured rate law.",
+ "connections": [
+  {
+   "href": "../notes/mechanisms-intro.html",
+   "label": "Back: mechanisms and intermediates (5.7)"
+  },
+  {
+   "href": "../notes/rate-laws.html",
+   "label": "Rate laws from data (5.2)"
+  }
+ ]
+}

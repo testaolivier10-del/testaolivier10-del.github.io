@@ -1,0 +1,472 @@
+{
+ "stimuli": {
+  "nernst-equation-s1": {
+   "kind": "table",
+   "title": "A zinc-copper cell at different concentrations",
+   "text": "<p>A student measures the voltage of the cell Zn(s) | Zn²⁺(aq) || Cu²⁺(aq) | Cu(s), which runs Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s) with E° = 1.10 V, at 25 °C with different starting concentrations.</p>",
+   "table": {
+    "caption": "Measured cell potential for five concentration pairs",
+    "cols": [
+     "Trial",
+     "[Zn²⁺] (M)",
+     "[Cu²⁺] (M)",
+     "E (V)"
+    ],
+    "rows": [
+     [
+      "1",
+      "1.0",
+      "1.0",
+      "1.100"
+     ],
+     [
+      "2",
+      "0.10",
+      "1.0",
+      "1.130"
+     ],
+     [
+      "3",
+      "0.010",
+      "1.0",
+      "1.159"
+     ],
+     [
+      "4",
+      "1.0",
+      "0.10",
+      "1.070"
+     ],
+     [
+      "5",
+      "1.0",
+      "0.010",
+      "1.041"
+     ]
+    ]
+   }
+  },
+  "nernst-equation-s2": {
+   "kind": "model",
+   "title": "A concentration cell",
+   "text": "<p>Both beakers contain a copper strip in Cu(NO₃)₂(aq), but at different concentrations: 0.010 M in Beaker 1 and 1.0 M in Beaker 2. The voltmeter reads a small positive voltage.</p>",
+   "html": "<svg viewBox=\"0 0 760 330\" width=\"760\" height=\"330\" role=\"img\" aria-label=\"Two beakers joined by a wire through a voltmeter and by a potassium nitrate salt bridge. Each has a copper strip. Beaker 1 on the left has 0.010 molar copper(II) nitrate; Beaker 2 on the right has 1.0 molar copper(II) nitrate.\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect width=\"760\" height=\"330\" fill=\"#fff\"/><path d=\"M175,140 L175,38 L356,38 M404,38 L585,38 L585,140\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"3\"/><circle cx=\"380\" cy=\"38\" r=\"24\" fill=\"#F4F6F6\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><text x=\"380\" y=\"44\" font-size=\"16\" text-anchor=\"middle\" font-weight=\"700\">V</text><path d=\"M80,130 L80,290 Q80,302 92,302 L268,302 Q280,302 280,290 L280,130\" fill=\"none\" stroke=\"#5D6B69\" stroke-width=\"3\"/><path d=\"M480,130 L480,290 Q480,302 492,302 L668,302 Q680,302 680,290 L680,130\" fill=\"none\" stroke=\"#5D6B69\" stroke-width=\"3\"/><rect x=\"82\" y=\"170\" width=\"196\" height=\"130\" fill=\"#DCE8F2\"/><rect x=\"482\" y=\"170\" width=\"196\" height=\"130\" fill=\"#DCE8F2\"/><rect x=\"160\" y=\"140\" width=\"30\" height=\"130\" fill=\"#C8783C\" stroke=\"#4A5257\" stroke-width=\"2\"/><rect x=\"570\" y=\"140\" width=\"30\" height=\"130\" fill=\"#C8783C\" stroke=\"#4A5257\" stroke-width=\"2\"/><path d=\"M240,250 L240,110 Q240,90 260,90 L500,90 Q520,90 520,110 L520,250\" fill=\"none\" stroke=\"#7A8A88\" stroke-width=\"26\" stroke-linejoin=\"round\"/><path d=\"M240,250 L240,110 Q240,90 260,90 L500,90 Q520,90 520,110 L520,250\" fill=\"none\" stroke=\"#F1F3E6\" stroke-width=\"20\" stroke-linejoin=\"round\"/><text x=\"380\" y=\"125\" font-size=\"13\" text-anchor=\"middle\">salt bridge, KNO₃(aq)</text><text x=\"175\" y=\"322\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Cu(s) in 0.010 M Cu(NO₃)₂</text><text x=\"585\" y=\"322\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Cu(s) in 1.0 M Cu(NO₃)₂</text><text x=\"130\" y=\"160\" font-size=\"13\" text-anchor=\"middle\">Beaker 1</text><text x=\"630\" y=\"160\" font-size=\"13\" text-anchor=\"middle\">Beaker 2</text></svg>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-nernst-equation-1",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "nernst-equation-s1",
+   "q": "In which trial is the cell at standard conditions, so that E = E°?",
+   "options": [
+    "Trial 3, where the voltage is highest",
+    "Trial 1, where both ions are 1.0 M and Q = 1",
+    "Trial 5, where the voltage is lowest",
+    "Each of the five trials, because each is at 25 °C"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Q = [Zn²⁺]/[Cu²⁺] = 1 only in Trial 1, so only there does E equal E°.",
+    "options": [
+     "The highest voltage comes from Q < 1, not from standard conditions.",
+     "Right: standard conditions mean 1 M for every dissolved species, so Q = 1 and E = E° = 1.100 V.",
+     "The lowest voltage comes from Q > 1, far from standard conditions.",
+     "Standard conditions also require 1 M concentrations, which only Trial 1 has."
+    ]
+   }
+  },
+  {
+   "id": "chem-nernst-equation-2",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "nernst-equation-s1",
+   "q": "Which statement explains why E is greater than E° in Trials 2 and 3?",
+   "options": [
+    "Less Zn²⁺ means fewer ions in solution, so the electrons meet less resistance in the wire.",
+    "E° itself increases when [Zn²⁺] decreases.",
+    "The reaction reaches equilibrium faster when [Zn²⁺] is low.",
+    "Q < 1, so the cell is further from equilibrium and its drive is greater."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "When Q < 1 the reaction has a larger drive to proceed (ΔG < ΔG°), so E > E°.",
+    "options": [
+     "Electrons in the wire do not depend on the ion concentration. The change in E comes from Q.",
+     "E° is fixed (1.10 V); E changes with concentration through Q.",
+     "At equilibrium E would be zero. The higher E shows the cell is further from equilibrium.",
+     "Right: a lower product concentration (Zn²⁺) or a higher reactant concentration makes Q < 1, raising E above E°."
+    ]
+   }
+  },
+  {
+   "id": "chem-nernst-equation-3",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "nernst-equation-s1",
+   "q": "A sixth trial uses [Zn²⁺] = 0.50 M and [Cu²⁺] = 0.050 M. How does its voltage compare with E°?",
+   "options": [
+    "Less than 1.10 V, because Q = 10 > 1",
+    "Greater than 1.10 V, because both concentrations are below 1 M",
+    "Equal to 1.10 V, because neither concentration is zero",
+    "Zero, because the concentrations are not equal"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Q > 1 means E < E°. The ratio, not the individual concentrations, decides it.",
+    "options": [
+     "Right: Q = 0.50/0.050 = 10, the same as Trial 4, so E ≈ 1.07 V.",
+     "What matters is the ratio Q = [Zn²⁺]/[Cu²⁺], here 10, not whether each is below 1 M.",
+     "E equals E° only when Q = 1.",
+     "E = 0 only at equilibrium, where Q = K (an enormous number here)."
+    ]
+   }
+  },
+  {
+   "id": "chem-nernst-equation-4",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "nernst-equation-s1",
+   "q": "The cell from Trial 1 is left running until it no longer lights a bulb. What are E and Q at that point?",
+   "options": [
+    "E = E° and Q = 1, because the reaction has stopped",
+    "E = 0 and Q = 0, because one reactant is used up",
+    "E = 0 and Q = K: the reaction is at equilibrium",
+    "E is negative and Q > K, because the reaction runs backward"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "As the cell runs, Q rises toward K and E falls toward 0. At equilibrium, Q = K and E = 0.",
+    "options": [
+     "E = E° only at Q = 1; as the cell runs, [Zn²⁺] rises and [Cu²⁺] falls, so Q grows.",
+     "Q = [Zn²⁺]/[Cu²⁺] grows, not shrinks, as the cell runs.",
+     "Right: a \"dead\" battery is at equilibrium: no net drive, so no voltage.",
+     "Left alone, a galvanic cell runs down to equilibrium; it does not overshoot."
+    ]
+   }
+  },
+  {
+   "id": "chem-nernst-equation-5",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "nernst-equation-s2",
+   "q": "What is E°cell for this concentration cell?",
+   "options": [
+    "0.34 V, the E° of the copper half-reaction",
+    "0.68 V, the copper E° added for both electrodes",
+    "0 V, since both electrodes share one half-reaction",
+    "It has to be looked up in a reduction potential table"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Both half-cells have the same half-reaction, so E°cell = 0; any voltage measured comes from Q ≠ 1.",
+    "options": [
+     "That is a reduction potential, not a cell potential; subtracting it from itself gives zero.",
+     "E°cell is a difference of reduction potentials, never a sum.",
+     "Right: E°(cathode) − E°(anode) = 0.34 − 0.34 = 0. The voltage comes only from the concentration difference.",
+     "No table is needed: identical half-reactions give E°cell = 0."
+    ]
+   }
+  },
+  {
+   "id": "chem-nernst-equation-6",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "nernst-equation-s2",
+   "q": "In which beaker is copper metal oxidized?",
+   "options": [
+    "Beaker 1, the dilute side, where [Cu²⁺] then rises",
+    "Beaker 2, the concentrated solution, so Cu²⁺ is produced there",
+    "Both beakers equally, so the voltage is zero",
+    "Neither, because a cell with one metal has no anode"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cu(s) → Cu²⁺(dilute) at the anode, Cu²⁺(concentrated) → Cu(s) at the cathode. Q = [Cu²⁺]dilute/[Cu²⁺]conc = 0.010 < 1, so E > 0.",
+    "options": [
+     "Right: the cell runs to even out the concentrations, so Cu dissolves into the dilute side and Cu²⁺ plates out of the concentrated side.",
+     "Making even more Cu²⁺ in the concentrated beaker would widen the difference, raising Q; the cell runs to lower it.",
+     "The voltmeter reads a positive voltage, so a net reaction is running.",
+     "Each copper strip is an electrode; one is oxidized (anode) and one is reduced (cathode)."
+    ]
+   }
+  },
+  {
+   "id": "chem-nernst-equation-7",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "nernst-equation-s2",
+   "q": "What happens to the voltage of the concentration cell as it runs for a long time?",
+   "options": [
+    "It rises, because more Cu²⁺ ions are made.",
+    "It stays constant, because E°cell is constant.",
+    "It becomes negative once Beaker 1 has more Cu²⁺ than Beaker 2.",
+    "It falls toward zero as the two concentrations become equal."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "For a concentration cell K = 1. The cell runs until Q = 1, where E = 0.",
+    "options": [
+     "The total Cu²⁺ does not rise; it moves from one side to the other, shrinking the difference.",
+     "E°cell is constant (zero), but E depends on Q, which changes as the cell runs.",
+     "The cell stops when the concentrations are equal; it does not overshoot.",
+     "Right: as the dilute side gets more concentrated and the concentrated side more dilute, Q → 1 = K and E → 0."
+    ]
+   }
+  },
+  {
+   "id": "chem-nernst-equation-8",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "nernst-equation-s2",
+   "q": "If Beaker 1 were made even more dilute, 0.0010 M, how would the initial voltage change?",
+   "options": [
+    "It would decrease, because there are fewer ions to carry charge",
+    "It would increase, because Q = 0.0010 is further below 1",
+    "It would stay the same, because E°cell is still zero",
+    "It would become zero, because the solution is too dilute to react"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Lower Q (further below 1) gives a larger E.",
+    "options": [
+     "The voltage depends on Q, not on how many ions are available.",
+     "Right: the larger the concentration difference, the further Q is from 1 and the larger E.",
+     "E°cell stays zero, but E depends on Q, which changes.",
+     "Dilute solutions still react; a bigger difference gives a bigger voltage."
+    ]
+   }
+  },
+  {
+   "id": "chem-nernst-equation-9",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "4.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "For a galvanic cell, how does E compare with E° when Q > 1?",
+   "options": [
+    "E is smaller than E°",
+    "E is larger than E°",
+    "E equals E°",
+    "E is zero"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Q < 1: E > E°. Q = 1: E = E°. Q > 1: E < E°. Q = K: E = 0.",
+    "options": [
+     "Right: more products (or fewer reactants) than standard lowers the drive, so E < E°.",
+     "That is the case for Q < 1.",
+     "That is the case only for Q = 1.",
+     "That is the case only at equilibrium, Q = K."
+    ]
+   }
+  },
+  {
+   "id": "chem-nernst-equation-10",
+   "type": "predict",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "A galvanic cell runs Ni(s) + 2 Ag⁺(aq) → Ni²⁺(aq) + 2 Ag(s), starting at standard conditions. Predict the effect of each change on the measured cell potential, E.",
+   "variables": [
+    {
+     "name": "Adding solid AgNO₃ to the silver half-cell, raising [Ag⁺]",
+     "answer": "up",
+     "why": "More reactant lowers Q, so E rises above E°."
+    },
+    {
+     "name": "Adding solid Ni(NO₃)₂ to the nickel half-cell, raising [Ni²⁺]",
+     "answer": "down",
+     "why": "More product raises Q, so E falls below E°."
+    },
+    {
+     "name": "Using a larger nickel strip of the same metal",
+     "answer": "none",
+     "why": "Solids do not appear in Q, so the size of the strip does not change E."
+    },
+    {
+     "name": "Letting the cell run for an hour",
+     "answer": "down",
+     "why": "As the cell runs, Ag⁺ is used and Ni²⁺ forms, so Q rises and E falls."
+    },
+    {
+     "name": "Replacing the KNO₃ salt bridge with a NaNO₃ salt bridge",
+     "answer": "none",
+     "why": "The salt bridge ions are spectators; they do not appear in Q."
+    }
+   ],
+   "why": {
+    "correct": "E depends on Q = [Ni²⁺]/[Ag⁺]². Raising reactants lowers Q and raises E; raising products does the opposite. Solids and spectator ions do not appear in Q."
+   }
+  },
+  {
+   "id": "chem-nernst-equation-11",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says a battery goes \"dead\" because it runs out of electrons. Which explanation is accurate?",
+   "options": [
+    "The salt bridge runs out of ions, so the current stops while E stays the same.",
+    "E° slowly falls to zero as the metal electrodes wear down.",
+    "The reaction reaches equilibrium: Q = K, so E = 0.",
+    "The student is right: each electrode holds a fixed number of electrons."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A galvanic cell does work until Q = K. Then E = 0 and the cell is \"dead\".",
+    "options": [
+     "Salt bridge ions can run low, but the basic reason a cell runs down is that Q approaches K.",
+     "E° is a fixed property of the half-reactions; it does not change as the cell runs.",
+     "Right: there is no longer any net drive, so no current flows, even though reactants may remain.",
+     "Electrons come from the oxidation reaction; the cell stops when that reaction reaches equilibrium."
+    ]
+   }
+  },
+  {
+   "id": "chem-nernst-equation-12",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "5.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The Nernst equation is E = E° − (RT/nF) ln Q. For a cell with E° > 0, which situation gives E = E°?",
+   "options": [
+    "Q = 0, so the second term is zero",
+    "Q = 1, which makes ln Q = 0",
+    "Q = K, so the reaction is at equilibrium",
+    "T = 0 K, so RT/nF is zero"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "ln 1 = 0, so at Q = 1 (standard concentrations) E = E°.",
+    "options": [
+     "ln 0 is not defined; Q = 0 does not make the term zero.",
+     "Right: the second term vanishes when ln Q = 0.",
+     "At Q = K, E = 0, not E°.",
+     "Cells do not run at absolute zero, and E = E° comes from ln Q = 0, not from the temperature."
+    ]
+   }
+  },
+  {
+   "id": "chem-nernst-equation-13",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s), which change raises the cell potential the most?",
+   "options": [
+    "Lowering [Cu²⁺] to 0.010 M while keeping [Zn²⁺] at 1.0 M",
+    "Lowering both concentrations to 0.010 M",
+    "Using a zinc strip twice as large",
+    "Lowering [Zn²⁺] to 0.010 M, with [Cu²⁺] at 1.0 M"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "E is largest when Q = [Zn²⁺]/[Cu²⁺] is smallest.",
+    "options": [
+     "Q = 100: E falls below E° to about 1.04 V.",
+     "Q = 1, so E = E° = 1.10 V: no change.",
+     "Solids do not appear in Q, so E is unchanged.",
+     "Right: Q = 0.010, the smallest Q of the choices, so E is the largest (about 1.16 V)."
+    ]
+   }
+  },
+  {
+   "id": "chem-nernst-equation-14",
+   "type": "multi",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "For a galvanic cell with E° > 0, which statements are true? Select ALL that apply.",
+   "options": [
+    "When Q < 1, E > E°.",
+    "When the reaction reaches equilibrium, E = E°.",
+    "E° changes as concentrations change.",
+    "When Q > 1, E is negative."
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "E° is a fixed standard value; E depends on Q. Q < 1 raises E above E°, Q > 1 lowers it, and E = 0 (not E°) at Q = K.",
+    "options": [
+     "Less product than standard raises the drive.",
+     "At equilibrium E = 0; E = E° only at Q = 1.",
+     "E° is fixed; E changes.",
+     "E is smaller than E° when Q > 1, but it stays positive until Q passes K."
+    ]
+   }
+  },
+  {
+   "id": "chem-nernst-equation-15",
+   "type": "single",
+   "unit": "unit-9",
+   "topic": "nernst-equation",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Two Zn/Cu cells are built. Cell X has [Zn²⁺] = 0.10 M and [Cu²⁺] = 1.0 M. Cell Y has [Zn²⁺] = 1.0 M and [Cu²⁺] = 0.10 M. Which statement compares them correctly?",
+   "options": [
+    "Cell Y has the larger voltage, because it has more Zn²⁺ to carry charge.",
+    "They have equal voltages, because each has one ion at 0.10 M.",
+    "They have equal voltages, because E° is the same for both.",
+    "Cell X has the larger voltage, because its Q is smaller."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "E depends on Q = [Zn²⁺]/[Cu²⁺]. The smaller Q (Cell X) gives the larger E.",
+    "options": [
+     "More product raises Q and lowers E; the number of ions does not set the voltage.",
+     "The ratio Q = [Zn²⁺]/[Cu²⁺] differs: 0.10 in X, 10 in Y.",
+     "E° is the same, but E depends on Q, which differs.",
+     "Right: Q(X) = 0.10 and Q(Y) = 10, so E(X) > E° > E(Y)."
+    ]
+   }
+  }
+ ]
+}

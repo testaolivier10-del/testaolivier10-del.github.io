@@ -1,0 +1,12 @@
+{
+ "pre-equilibrium": {
+  "file": "figures/pre-equilibrium.svg",
+  "ext": "svg",
+  "w": 680,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Step 1 is drawn with a pair of arrows: A plus B forms the intermediate I at rate k1 times [A] times [B], and I falls back to A plus B at rate k-1 times [I]. Both are fast and equal. Step 2, slow: I plus C forms products at rate k2 times [I] times [C]. Below, setting the two step 1 rates equal gives [I] equal to k1 over k-1 times [A][B]; substituting into the slow step gives rate equals k2 k1 over k-1 times [A][B][C]."
+ }
+}

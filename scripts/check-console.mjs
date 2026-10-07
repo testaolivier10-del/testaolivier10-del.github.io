@@ -86,7 +86,7 @@ function walk(dir, out = []) {
     if (name.startsWith('.') || name === 'node_modules' || name === 'scripts') continue; // .git, .claude (agent worktrees)
     const full = join(dir, name);
     // anatomy-physiology/data holds A&P sources (notes are HTML fragments).
-    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data'))) walk(full, out); }
+    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data')) && !full.endsWith(join('chem', 'data'))) walk(full, out); }
     else if (extname(name) === '.html') out.push(full);
   }
   return out;
@@ -331,6 +331,35 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
       const check = page.locator('.bio-pr-stage .bio-q .bio-check').first();
       if (await check.count() && await check.isVisible()) await check.click();
       await page.waitForSelector('.bio-q-feedback .bio-verdict', { timeout: 15000 });
+      if (!bank.includes('index.json')) problems.push(`the bank index was not loaded first: ${bank.join(', ')}`);
+    }));
+  }
+}
+/* AP® Chemistry Practice, once a unit is published: the first published topic's
+   set loads the bank index, then that unit's file, and explanations only
+   after an answer. Nothing to run before then (chem/assets/notes-index.json
+   is empty), so the flow is data-driven like the course itself. */
+{
+  const idx = join(ROOT, 'chem', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const topic = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    results.push(await anpFlow('/chem/practice.html (flow)', async (page, bank, problems) => {
+      await page.goto(ORIGIN + '/chem/practice.html?topic=' + topic, { waitUntil: 'load', timeout: 30000 });
+      await page.waitForSelector('.chem-pr-start:not([disabled])', { timeout: 15000 });
+      await page.click('.chem-pr-start');
+      await page.waitForSelector('.chem-pr-stage .chem-q', { timeout: 15000 });
+      if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
+      // Whatever kind comes first: an option, a number, a prediction table
+      // (one choice per row) or an order (checked as it stands).
+      const q = page.locator('.chem-pr-stage .chem-q').first();
+      const opt = q.locator('.chem-opt').first();
+      if (await opt.count()) await opt.click();
+      else if (await q.locator('.chem-num input, input[inputmode]').count()) await q.locator('.chem-num input, input[inputmode]').first().fill('1');
+      else for (const g of await q.locator('.chem-dir').all()) await g.locator('button, [role="radio"]').first().click();
+      const check = page.locator('.chem-pr-stage .chem-q .chem-check').first();
+      if (await check.count() && await check.isVisible()) await check.click();
+      await page.waitForSelector('.chem-q-feedback .chem-verdict', { timeout: 15000 });
       if (!bank.includes('index.json')) problems.push(`the bank index was not loaded first: ${bank.join(', ')}`);
     }));
   }

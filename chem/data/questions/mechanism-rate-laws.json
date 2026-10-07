@@ -1,0 +1,463 @@
+{
+ "stimuli": {
+  "mechanism-rate-laws-s1": {
+   "kind": "table",
+   "title": "Rate data and two proposed mechanisms",
+   "text": "<p>For NO₂(g) + CO(g) → NO(g) + CO₂(g) at a fixed temperature, a student measures initial rates:</p><p><b>Mechanism 1</b> (one step): NO₂ + CO → NO + CO₂</p><p><b>Mechanism 2</b>: step 1 (slow): NO₂ + NO₂ → NO₃ + NO; step 2 (fast): NO₃ + CO → NO₂ + CO₂</p>",
+   "table": {
+    "caption": "Initial concentrations and initial rates",
+    "cols": [
+     "Trial",
+     "[NO₂] (M)",
+     "[CO] (M)",
+     "Initial rate (M/s)"
+    ],
+    "rows": [
+     [
+      "1",
+      "0.10",
+      "0.10",
+      "0.0050"
+     ],
+     [
+      "2",
+      "0.20",
+      "0.10",
+      "0.0200"
+     ],
+     [
+      "3",
+      "0.10",
+      "0.20",
+      "0.0050"
+     ]
+    ]
+   }
+  },
+  "mechanism-rate-laws-s2": {
+   "kind": "model",
+   "title": "A two-step mechanism for making NOBr",
+   "html": "<p>One proposed mechanism for 2 NO(g) + Br₂(g) → 2 NOBr(g):</p><ol><li>NO + Br₂ → NOBr₂ (slow)</li><li>NOBr₂ + NO → 2 NOBr (fast)</li></ol>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-mechanism-rate-laws-1",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "mechanism-rate-laws-s1",
+   "q": "What is the experimental rate law?",
+   "options": [
+    "rate = k[NO₂]²",
+    "rate = k[NO₂][CO]",
+    "rate = k[NO₂]",
+    "rate = k[NO₂]²[CO]"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Trials 1 → 2: [NO₂] doubles, rate × 4, so second order in NO₂. Trials 1 → 3: [CO] doubles, rate unchanged, so zero order in CO. rate = k[NO₂]².",
+    "options": [
+     "Right: second order in NO₂, zero order in CO.",
+     "Doubling [CO] does not change the rate, so CO is not in the rate law.",
+     "Doubling [NO₂] quadruples the rate, which is second order, not first.",
+     "CO is zero order, so it does not appear."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanism-rate-laws-2",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "mechanism-rate-laws-s1",
+   "q": "Which mechanism is consistent with the data, and why?",
+   "options": [
+    "Mechanism 2: its slow step gives k[NO₂]²",
+    "Mechanism 1: it is the same as the overall equation",
+    "Mechanism 1: a one-step path is simpler than two",
+    "Both: they each add up to the overall equation"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Mechanism 1 is a single elementary step, so it predicts rate = k[NO₂][CO], which does not match. In mechanism 2 the slow first step sets the rate: rate = k[NO₂]², which matches the data.",
+    "options": [
+     "Right: its predicted rate law matches the measured one.",
+     "Summing to the overall equation is necessary, but its predicted rate law k[NO₂][CO] does not match the data.",
+     "Simplicity is not evidence; the predicted rate law must match.",
+     "Both pass the sum test, but only one predicts the measured rate law."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanism-rate-laws-3",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "single",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "mechanism-rate-laws-s1",
+   "q": "In mechanism 2, why does [CO] not appear in the rate law?",
+   "options": [
+    "CO reacts in the fast step, after the slow one",
+    "CO is an intermediate that cancels out",
+    "CO is a product of the slow step",
+    "CO is present in a large excess in the trials"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The overall rate is set by the slow step, NO₂ + NO₂ → NO₃ + NO. CO is used only in step 2, which waits on NO₃ from step 1, so speeding up step 2 by adding CO cannot speed up the overall reaction.",
+    "options": [
+     "Right: CO enters after the bottleneck.",
+     "CO is a reactant in the overall equation, not an intermediate.",
+     "The slow step makes NO₃ and NO, not CO.",
+     "The trials change [CO]; it is not held in excess."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanism-rate-laws-4",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "mechanism-rate-laws-s1",
+   "q": "From trial 2 and the rate law consistent with mechanism 2, what is the value of k for the NO₂ + CO reaction? Include units.",
+   "numeric": {
+    "answer": 0.5,
+    "tol": 0.01,
+    "unit": "M^-1 s^-1",
+    "askUnit": true,
+    "units": [
+     "M-1 s-1",
+     "1/(M s)",
+     "L/(mol s)",
+     "L mol-1 s-1",
+     "M⁻¹ s⁻¹",
+     "L/(mol·s)"
+    ],
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.1,
+      "why": "Value: square [NO₂]. The rate law is second order in NO₂: k = rate/[NO₂]²."
+     },
+     {
+      "value": 5,
+      "why": "Value: CO is zero order, so leave [CO] out when you solve for k."
+     }
+    ]
+   },
+   "why": {
+    "correct": "k = rate / [NO₂]² = 0.0200 M/s ÷ (0.20 M)² = 0.0200 M/s ÷ 0.040 M² = 0.50 M⁻¹ s⁻¹."
+   }
+  },
+  {
+   "id": "chem-mechanism-rate-laws-5",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "mechanism-rate-laws-s2",
+   "q": "What rate law does this mechanism predict?",
+   "options": [
+    "rate = k[NO][Br₂]",
+    "rate = k[NO]²[Br₂]",
+    "rate = k[NOBr₂][NO]",
+    "rate = k[NO]²"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The first step is slow, so it is the rate-determining step. Its rate law, written from its coefficients, is the overall rate law: rate = k[NO][Br₂].",
+    "options": [
+     "Right: the slow first step sets the rate.",
+     "That is the rate law from the overall equation, which is not an elementary step.",
+     "That is the rate law of the fast step, and it includes an intermediate.",
+     "Br₂ is a reactant in the slow step, so it must appear."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanism-rate-laws-6",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "single",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "mechanism-rate-laws-s2",
+   "q": "Which species is the intermediate in this mechanism?",
+   "options": [
+    "NOBr₂",
+    "NO",
+    "Br₂",
+    "NOBr"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "NOBr₂ is made in step 1 and used in step 2.",
+    "options": [
+     "Right: made, then used.",
+     "NO is a reactant in both steps and never made.",
+     "Br₂ is a reactant, used in step 1.",
+     "NOBr is the product, made in step 2 and never used."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanism-rate-laws-7",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "mechanism-rate-laws-s2",
+   "q": "Experiments show rate = k[NO]²[Br₂]. What does this tell you about the mechanism above?",
+   "options": [
+    "It is not consistent with the data",
+    "It is consistent, since it sums to the overall equation",
+    "It is consistent, since it has a slow step",
+    "The data are wrong, since they match the overall coefficients"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The mechanism predicts rate = k[NO][Br₂], first order in NO. The measured order in NO is 2, so the mechanism does not account for the data.",
+    "options": [
+     "Right: predicted and measured rate laws disagree.",
+     "Summing correctly is needed but not enough.",
+     "Having a slow step is not enough; its rate law must match the data.",
+     "A measured rate law can match the coefficients by chance; the data are the evidence."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanism-rate-laws-8",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "predict",
+   "practice": "6.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "mechanism-rate-laws-s2",
+   "q": "Suppose this mechanism is correct. Predict how each change affects the overall rate.",
+   "variables": [
+    {
+     "name": "Overall rate when [Br₂] is doubled",
+     "answer": "up",
+     "why": "Br₂ is a reactant in the slow step, so doubling it doubles the overall rate."
+    },
+    {
+     "name": "Overall rate if step 2 were made ten times faster",
+     "answer": "none",
+     "why": "Step 2 is already fast; the slow step still limits how quickly NOBr₂ is made."
+    },
+    {
+     "name": "Overall rate when [NO] is doubled",
+     "answer": "up",
+     "why": "NO is a reactant in the slow step (first order), so the rate doubles."
+    }
+   ],
+   "why": {
+    "correct": "Only changes that speed up the slow step speed up the overall reaction."
+   }
+  },
+  {
+   "id": "chem-mechanism-rate-laws-9",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "single",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is the rate-determining step of a mechanism?",
+   "options": [
+    "The slowest step, which limits the overall rate",
+    "The first step of a mechanism, whatever its speed",
+    "The step with the greatest number of reactant molecules",
+    "The step in which the final product is made"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The overall reaction cannot go faster than its slowest step, so that step determines the rate.",
+    "options": [
+     "Right: the bottleneck.",
+     "The slow step is often first, but not by definition.",
+     "The number of molecules does not decide which step is slowest.",
+     "The last step can be fast; making the product is not what limits the rate."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanism-rate-laws-10",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "single",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A mechanism is: (1) 2 A → A₂ (slow); (2) A₂ + B → A₂B (fast). What is the predicted rate law?",
+   "options": [
+    "rate = k[A]²",
+    "rate = k[A]²[B]",
+    "rate = k[A₂][B]",
+    "rate = k[A][B]"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The slow first step is rate-determining: two A collide, so rate = k[A]². B reacts only in the fast step.",
+    "options": [
+     "Right: from the slow step.",
+     "B is in the fast step, after the bottleneck.",
+     "That is the fast step, and A₂ is an intermediate.",
+     "Step 1 is a collision of two A particles; B is not in it."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanism-rate-laws-11",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "single",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The overall reaction X + 2 Y → Z has the measured rate law rate = k[X]. Which statement about its mechanism is most reasonable?",
+   "options": [
+    "A slow first step uses X alone; Y reacts in later fast steps",
+    "The mechanism is one step in which X and two Y collide",
+    "Y is an intermediate, so it is left out of the rate law",
+    "The slowest step uses two Y and no X"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A rate law of k[X] matches a slow first step whose only reactant is X, such as X → W. Y can be used later in fast steps, so it does not appear.",
+    "options": [
+     "Right: the slow step contains X and nothing else.",
+     "A single step X + 2 Y would give rate = k[X][Y]², and it would be termolecular.",
+     "Y is a reactant in the overall equation, so it is not an intermediate.",
+     "That slow step would give rate = k[Y]², not k[X]."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanism-rate-laws-12",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "single",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "In a mechanism, step 1 is slow and step 2 is fast. A chemist finds a way to make step 2 twice as fast. What happens to the overall rate?",
+   "options": [
+    "It halves",
+    "It stays about the same",
+    "It doubles",
+    "It becomes four times as fast"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Step 2 already uses its intermediate as fast as step 1 supplies it. The slow first step still limits the overall rate, so it barely changes.",
+    "options": [
+     "Making a step faster cannot slow the reaction down.",
+     "Right: the bottleneck is unchanged.",
+     "Only speeding up the slow step would raise the overall rate.",
+     "Nothing about step 2 controls the overall rate here."
+    ]
+   },
+   "fixed": true
+  },
+  {
+   "id": "chem-mechanism-rate-laws-13",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "single",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two mechanisms both sum to the overall equation and both predict the measured rate law. What can you conclude?",
+   "options": [
+    "Both are consistent with the data; more evidence is needed",
+    "The one with fewer steps is the correct mechanism",
+    "Both are proven correct at the same time",
+    "Neither can be correct, since mechanisms are unique"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Rate data can rule a mechanism out but cannot prove one. When two pass the same tests, other evidence (such as detecting an intermediate) is needed to tell them apart.",
+    "options": [
+     "Right: consistent, not proven.",
+     "Fewer steps is not evidence.",
+     "Data never prove a mechanism.",
+     "Several mechanisms can match the same data; that does not rule them both out."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanism-rate-laws-14",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "single",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Measured: rate = k[H₂][ICl] for H₂ + 2 ICl → I₂ + 2 HCl. Which mechanism is consistent?",
+   "options": [
+    "(1) H₂ + ICl → HI + HCl, slow; (2) HI + ICl → I₂ + HCl, fast",
+    "(1) H₂ + ICl → HI + HCl, fast; (2) HI + ICl → I₂ + HCl, slow",
+    "One step: H₂ + 2 ICl → I₂ + 2 HCl",
+    "(1) 2 ICl → I₂ + Cl₂, slow; (2) H₂ + Cl₂ → 2 HCl, fast"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With the first step slow, rate = k[H₂][ICl], which matches. Both two-step options sum to the overall equation, but the one with a slow second step would include the intermediate HI, and a single step would be k[H₂][ICl]².",
+    "options": [
+     "Right: the slow step's rate law matches the data.",
+     "With the second step slow, the rate law would involve HI, an intermediate, and would not match as written.",
+     "A single elementary step would give rate = k[H₂][ICl]².",
+     "That slow step gives rate = k[ICl]², with no H₂."
+    ]
+   }
+  },
+  {
+   "id": "chem-mechanism-rate-laws-15",
+   "unit": "unit-5",
+   "topic": "mechanism-rate-laws",
+   "type": "numeric",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A mechanism's slow first step is A + B → C, with k = 3.2 × 10⁻² M⁻¹ s⁻¹. What is the predicted overall rate, in M/s, when [A] = 0.25 M and [B] = 0.40 M?",
+   "numeric": {
+    "answer": 0.0032,
+    "tol": 0.0001,
+    "unit": "M/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.008,
+      "why": "Value: the slow step is bimolecular, so include [B]: rate = k[A][B]."
+     },
+     {
+      "value": 0.0008,
+      "why": "Value: A has coefficient 1 in the slow step, so it is first order; do not square [A]."
+     }
+    ]
+   },
+   "why": {
+    "correct": "rate = k[A][B] = (3.2 × 10⁻² M⁻¹ s⁻¹)(0.25 M)(0.40 M) = 3.2 × 10⁻³ M/s."
+   }
+  }
+ ]
+}
