@@ -132,13 +132,13 @@
    "stimulus": "solution-particle-models-s2",
    "q": "How many solute particles (ions) are shown in the box?",
    "numeric": {
-    "answer": 9.0,
-    "tol": 1.0,
+    "answer": 9,
+    "tol": 0,
     "unit": "ions",
-    "sigfigs": 1,
+    "decimals": 0,
     "mistakes": [
      {
-      "value": 21.0,
+      "value": 21,
       "rel": 0.02,
       "why": "Value: you counted each sulfur and oxygen atom separately. A sulfate ion is one particle; its covalent bonds do not break."
      }
@@ -389,18 +389,18 @@
    "diff": 2,
    "q": "A box representing a solution of FeCl₃ shows 12 chloride ions. How many iron(III) ions should it show?",
    "numeric": {
-    "answer": 4.0,
-    "tol": 1.0,
+    "answer": 4,
+    "tol": 0,
     "unit": "ions",
-    "sigfigs": 1,
+    "decimals": 0,
     "mistakes": [
      {
-      "value": 36.0,
+      "value": 36,
       "rel": 0.02,
       "why": "Value: you multiplied by 3. There are three Cl⁻ for each Fe³⁺, so divide."
      },
      {
-      "value": 12.0,
+      "value": 12,
       "rel": 0.02,
       "why": "Value: the ratio is not 1 : 1. FeCl₃ gives three Cl⁻ per Fe³⁺."
      }

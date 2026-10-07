@@ -216,7 +216,7 @@
     "2.50 × 10⁻⁴ M",
     "1.00 × 10⁻⁵ M",
     "5.00 × 10⁻⁵ M",
-    "6.25 × 10⁻⁴ M"
+    "6.25 × 10⁻⁵ M"
    ],
    "correct": 0,
    "fixed": true,
@@ -226,7 +226,7 @@
      "Right: multiply back by the dilution factor.",
      "This divides by the dilution factor instead of multiplying.",
      "This is the diluted concentration, not the original.",
-     "This used 40.0 mL of water added as the factor instead of the total volume."
+     "This used the 40.0 mL of water added as V₁ (50.0/40.0); the volume of drink taken was 10.0 mL."
     ]
    }
   },

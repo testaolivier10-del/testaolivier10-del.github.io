@@ -154,14 +154,15 @@
    "points": 1,
    "rubric": [
     {
-     "point": "Uses the slope (about 11.8 M⁻¹) or the graph to find c = A ÷ slope = 0.0350 M.",
+     "point": "Uses the slope (about 11.8 M⁻¹) or the graph to find c = A ÷ slope = 0.0349 M.",
      "accept": [
-      "0.0350 M",
-      "0.035 M"
+      "0.0349 M",
+      "0.035 M",
+      "any value from 0.0345 M to 0.0355 M read from a drawn best-fit line"
      ]
     }
    ],
-   "sample": "Slope = about 0.592 / 0.0500 M = 11.8 M⁻¹ (best fit 11.82 M⁻¹). c = 0.413 / 11.82 M⁻¹ = 0.0349 M, so 0.0350 M."
+   "sample": "Slope = about 0.592 / 0.0500 M = 11.8 M⁻¹ (best fit through the origin 11.82 M⁻¹). c = 0.413 / 11.82 M⁻¹ = 0.03494 M, which is 0.0349 M."
   },
   {
    "label": "g",

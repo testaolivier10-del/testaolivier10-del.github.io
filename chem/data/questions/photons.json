@@ -307,10 +307,10 @@
    "stimulus": "photons-s2",
    "q": "By what factor is the energy of a 250 nm photon greater than that of a 750 nm photon?",
    "numeric": {
-    "answer": 3.0,
-    "tol": 1.0,
+    "answer": 3,
+    "tol": 0,
     "unit": "",
-    "sigfigs": 1,
+    "decimals": 0,
     "mistakes": [
      {
       "value": 0.3333,
@@ -318,7 +318,7 @@
       "why": "Value: you inverted the ratio. The shorter wavelength has the greater energy."
      },
      {
-      "value": 9.0,
+      "value": 9,
       "rel": 0.02,
       "why": "Value: E depends on 1/λ, not 1/λ²."
      }
@@ -543,8 +543,8 @@
     "Convert the wavelength from nm to m",
     "Calculate the frequency, ν = c/λ",
     "Calculate the energy of one photon, E = hν",
-    "Multiply by Avogadro's number",
-    "Divide by 1000 to give kJ/mol"
+    "Multiply by Avogadro's number to get J/mol",
+    "Convert J/mol to kJ/mol"
    ],
    "why": {
     "correct": "Units first, then frequency, then energy per photon, then per mole, then kJ."

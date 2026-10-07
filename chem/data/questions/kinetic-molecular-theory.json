@@ -431,7 +431,7 @@
     "options": [
      "Right: faster and broader, same area.",
      "That is the change on cooling.",
-     "A taller curve everywhere would mean more molecules, but the sample is the same.",
+     "A curve taller everywhere would enclose more area, but the fractions of the same sample must still add up to 1.",
      "The identity of the gas does not fix the speeds; temperature changes them."
     ]
    }
@@ -705,7 +705,7 @@
     "options": [
      "Right: higher average kinetic energy.",
      "Right: same kinetic energy, lighter particles, faster speeds.",
-     "More particles change the height of the count, not the speeds.",
+     "More particles do not change the fraction at each speed; speeds depend only on temperature and particle mass.",
      "Speed depends on temperature, which is constant here."
     ]
    }
