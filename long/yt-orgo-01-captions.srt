@@ -1,0 +1,1357 @@
+1
+00:00:00,400 --> 00:00:03,214
+Every reaction you'll ever
+see in organic chemistry...
+
+2
+00:00:03,264 --> 00:00:06,960
+is just electrons moving
+from one place to another.
+
+3
+00:00:07,010 --> 00:00:12,763
+That's it. So before anything else,
+we need to answer two questions.
+
+4
+00:00:12,813 --> 00:00:14,370
+Where are the electrons?
+
+5
+00:00:14,420 --> 00:00:16,200
+And which ones actually matter?
+
+6
+00:00:16,700 --> 00:00:20,789
+By the end of this video, you'll be able
+to look at an atom, count the electrons
+
+7
+00:00:20,839 --> 00:00:23,697
+that matter, and predict how
+many bonds it's going to make.
+
+8
+00:00:23,747 --> 00:00:28,327
+And you'll see why carbon, the star of
+this whole course, shares its electrons
+
+9
+00:00:28,377 --> 00:00:29,647
+instead of giving them away.
+
+10
+00:00:30,147 --> 00:00:34,397
+Now, this topic usually gets rushed in
+class, because it feels like review.
+
+11
+00:00:34,447 --> 00:00:35,686
+But here's the thing.
+
+12
+00:00:35,736 --> 00:00:40,924
+Almost every mistake later on, in Lewis
+structures, in formal charge, even
+
+13
+00:00:40,974 --> 00:00:44,057
+in mechanisms, comes back
+to miscounting electrons.
+
+14
+00:00:44,107 --> 00:00:46,625
+And the one idea that fixes it is this.
+
+15
+00:00:46,675 --> 00:00:49,121
+Only the outer electrons do chemistry.
+
+16
+00:00:49,171 --> 00:00:51,667
+Hold onto that. Let's build up to it.
+
+17
+00:00:54,717 --> 00:00:57,014
+Okay, let's take a carbon atom apart.
+
+18
+00:00:57,064 --> 00:00:58,747
+At the center is the nucleus.
+
+19
+00:00:58,797 --> 00:01:02,607
+It's tiny, it's dense, and
+it holds six protons...
+
+20
+00:01:02,657 --> 00:01:07,227
+and six neutrons. Around
+it move six electrons.
+
+21
+00:01:07,277 --> 00:01:10,437
+And those three particles
+build every atom there is.
+
+22
+00:01:10,937 --> 00:01:13,739
+Each one has a charge and a mass.
+
+23
+00:01:13,789 --> 00:01:15,759
+A proton is plus one.
+
+24
+00:01:15,809 --> 00:01:17,826
+A neutron has no charge at all.
+
+25
+00:01:17,876 --> 00:01:20,159
+It's neutral, that's
+where the name comes from.
+
+26
+00:01:20,209 --> 00:01:22,439
+And an electron is minus one.
+
+27
+00:01:22,489 --> 00:01:27,759
+For mass, chemists use the atomic mass
+unit, sized so a proton weighs about
+
+28
+00:01:27,809 --> 00:01:30,599
+one. A neutron weighs about one too.
+
+29
+00:01:30,649 --> 00:01:34,172
+And an electron? About
+one eighteen hundredth.
+
+30
+00:01:34,222 --> 00:01:39,009
+It's so light that an atom's mass is
+basically just its protons and neutrons.
+
+31
+00:01:39,509 --> 00:01:42,699
+Now here's the number that
+matters most in this chapter.
+
+32
+00:01:42,749 --> 00:01:46,979
+The number of protons is the
+atomic number, written Z.
+
+33
+00:01:47,029 --> 00:01:48,816
+And it's the atom's identity.
+
+34
+00:01:48,866 --> 00:01:55,459
+Carbon has six. Every carbon atom,
+everywhere, has exactly six protons.
+
+35
+00:01:55,509 --> 00:01:57,419
+Add one more proton...
+
+36
+00:01:57,469 --> 00:01:58,812
+and it's not carbon anymore.
+
+37
+00:01:58,862 --> 00:01:59,809
+It's nitrogen.
+
+38
+00:02:00,309 --> 00:02:02,499
+So think of the proton
+count like an ID number.
+
+39
+00:02:02,549 --> 00:02:04,688
+You can change an atom's charge.
+
+40
+00:02:04,738 --> 00:02:06,966
+You can change how reactive it is.
+
+41
+00:02:07,016 --> 00:02:12,479
+Organic chemistry does that constantly,
+moving electrons on and off carbon.
+
+42
+00:02:12,529 --> 00:02:15,152
+But none of that touches the protons...
+
+43
+00:02:15,202 --> 00:02:16,509
+so carbon stays carbon.
+
+44
+00:02:19,559 --> 00:02:20,869
+So what about neutrons?
+
+45
+00:02:20,919 --> 00:02:22,909
+Most carbon atoms have six.
+
+46
+00:02:22,959 --> 00:02:25,077
+But about one in a hundred has seven.
+
+47
+00:02:25,127 --> 00:02:28,656
+Both are still carbon,
+because both have six protons.
+
+48
+00:02:28,706 --> 00:02:32,085
+Atoms of the same element with
+different numbers of neutrons are called
+
+49
+00:02:32,135 --> 00:02:33,039
+isotopes.
+
+50
+00:02:33,539 --> 00:02:36,721
+To tell them apart, we
+use the mass number, A.
+
+51
+00:02:36,771 --> 00:02:39,189
+That's just protons plus neutrons.
+
+52
+00:02:39,239 --> 00:02:41,089
+Six plus six, twelve.
+
+53
+00:02:41,139 --> 00:02:44,449
+Carbon twelve. Six plus seven, thirteen.
+
+54
+00:02:44,499 --> 00:02:47,969
+Carbon thirteen. Every sample
+you'll handle has both.
+
+55
+00:02:48,019 --> 00:02:52,506
+About ninety eight point nine percent
+carbon twelve, and one point one percent
+
+56
+00:02:52,556 --> 00:02:53,659
+carbon thirteen.
+
+57
+00:02:54,159 --> 00:02:55,589
+And now notice something.
+
+58
+00:02:55,639 --> 00:02:58,489
+Carbon thirteen is about
+eight percent heavier.
+
+59
+00:02:58,539 --> 00:03:00,245
+But look at the electrons.
+
+60
+00:03:00,295 --> 00:03:02,336
+Same number, same arrangement.
+
+61
+00:03:02,386 --> 00:03:07,317
+So the two form the same bonds,
+at almost exactly the same rates.
+
+62
+00:03:07,367 --> 00:03:08,613
+That's our first big clue.
+
+63
+00:03:08,663 --> 00:03:11,242
+Bonding isn't about the neutrons.
+
+64
+00:03:11,292 --> 00:03:13,049
+It's about the electrons.
+
+65
+00:03:13,099 --> 00:03:17,199
+The protons only matter because they
+set how many electrons there are.
+
+66
+00:03:17,699 --> 00:03:22,164
+Quick check. An atom has seven
+protons and eight neutrons.
+
+67
+00:03:22,214 --> 00:03:24,606
+What element is it, and
+what's its mass number?
+
+68
+00:03:29,106 --> 00:03:31,439
+Seven protons makes it nitrogen.
+
+69
+00:03:31,489 --> 00:03:34,629
+And seven plus eight gives
+a mass number of fifteen.
+
+70
+00:03:34,679 --> 00:03:36,639
+So it's nitrogen fifteen.
+
+71
+00:03:39,689 --> 00:03:41,239
+Okay, so let's look at the electrons.
+
+72
+00:03:41,289 --> 00:03:43,879
+Carbon's six electrons aren't all alike.
+
+73
+00:03:43,929 --> 00:03:45,979
+Two sit close to the nucleus.
+
+74
+00:03:46,029 --> 00:03:48,039
+The other four sit farther out.
+
+75
+00:03:48,089 --> 00:03:51,102
+Chemists describe this with shells.
+
+76
+00:03:51,152 --> 00:03:54,769
+Layers of electrons at increasing
+distance from the nucleus.
+
+77
+00:03:55,269 --> 00:04:00,039
+The innermost shell, called K,
+holds at most two electrons.
+
+78
+00:04:00,089 --> 00:04:03,219
+The next one, L, holds at most eight.
+
+79
+00:04:03,269 --> 00:04:07,759
+Electrons fill the inner shell first,
+because it's closer to the nucleus
+
+80
+00:04:07,809 --> 00:04:12,067
+and lower in energy. So
+carbon goes two in K...
+
+81
+00:04:12,117 --> 00:04:16,189
+then four in L. We
+write that as two, four.
+
+82
+00:04:16,689 --> 00:04:18,299
+Now here's the key word.
+
+83
+00:04:18,349 --> 00:04:22,439
+The electrons in the outermost
+shell are the valence electrons.
+
+84
+00:04:22,489 --> 00:04:25,433
+They're the only ones
+that take part in bonding.
+
+85
+00:04:25,483 --> 00:04:31,212
+Carbon has four. The inner ones are
+called core electrons, and the nucleus
+
+86
+00:04:31,262 --> 00:04:34,572
+holds them way too tightly
+for them to do any chemistry.
+
+87
+00:04:34,622 --> 00:04:35,671
+It's kind of like money.
+
+88
+00:04:35,721 --> 00:04:38,569
+Core electrons are locked
+in a savings account.
+
+89
+00:04:38,619 --> 00:04:41,239
+Valence electrons are
+the cash in your pocket.
+
+90
+00:04:41,289 --> 00:04:43,809
+They're the only ones you actually spend.
+
+91
+00:04:44,309 --> 00:04:45,659
+Let's try one together.
+
+92
+00:04:45,709 --> 00:04:51,779
+Nitrogen. Z is seven, so a neutral
+nitrogen atom has seven electrons.
+
+93
+00:04:51,829 --> 00:04:53,479
+Two fill the K shell.
+
+94
+00:04:53,529 --> 00:04:55,346
+The other five go into L.
+
+95
+00:04:55,396 --> 00:04:58,559
+So nitrogen has five valence electrons.
+
+96
+00:04:58,609 --> 00:05:01,372
+And the L shell has room for eight...
+
+97
+00:05:01,422 --> 00:05:04,546
+so it's three short. Hold
+onto that number three.
+
+98
+00:05:04,596 --> 00:05:05,969
+It's about to predict something.
+
+99
+00:05:06,469 --> 00:05:09,559
+But you don't have to fill
+shells by hand every time.
+
+100
+00:05:09,609 --> 00:05:11,579
+The periodic table does it for you.
+
+101
+00:05:11,629 --> 00:05:13,909
+Its columns are called groups.
+
+102
+00:05:13,959 --> 00:05:18,199
+And in the main groups, every element
+in a column has the same number of
+
+103
+00:05:18,249 --> 00:05:21,559
+valence electrons. Helium
+is the one exception.
+
+104
+00:05:21,609 --> 00:05:24,626
+In groups one and two, the
+group number is the count.
+
+105
+00:05:24,676 --> 00:05:29,673
+Hydrogen has one. In groups
+thirteen to eighteen, subtract ten.
+
+106
+00:05:29,723 --> 00:05:33,623
+Carbon is in group fourteen,
+so fourteen minus ten...
+
+107
+00:05:33,673 --> 00:05:38,239
+four. That ten comes from the ten
+transition metal columns in the middle,
+
+108
+00:05:38,289 --> 00:05:40,689
+which organic chemistry rarely needs.
+
+109
+00:05:41,189 --> 00:05:44,152
+So here are the numbers
+you'll use all course long.
+
+110
+00:05:44,202 --> 00:05:47,959
+Hydrogen, one. Carbon, four.
+
+111
+00:05:48,009 --> 00:05:51,839
+Nitrogen, five. Oxygen, six.
+
+112
+00:05:51,889 --> 00:05:56,886
+And the halogens, fluorine,
+chlorine, bromine and iodine...
+
+113
+00:05:56,936 --> 00:05:57,736
+seven.
+
+114
+00:05:57,889 --> 00:06:01,649
+Quick check. How many valence
+electrons does oxygen have?
+
+115
+00:06:05,649 --> 00:06:07,665
+Oxygen is in group sixteen.
+
+116
+00:06:07,715 --> 00:06:11,525
+Sixteen minus ten...
+six valence electrons.
+
+117
+00:06:11,575 --> 00:06:15,735
+Not eight. Eight is its total,
+and two of those are core.
+
+118
+00:06:18,785 --> 00:06:21,391
+So why do valence
+electrons matter so much?
+
+119
+00:06:21,441 --> 00:06:24,955
+Look at neon. Its electrons go two, eight.
+
+120
+00:06:25,005 --> 00:06:27,695
+The outer shell is completely full.
+
+121
+00:06:27,745 --> 00:06:31,082
+And neon forms no compounds
+under ordinary conditions.
+
+122
+00:06:31,132 --> 00:06:33,375
+It just... doesn't react.
+
+123
+00:06:33,425 --> 00:06:37,145
+Helium, with its one shell
+full at two, is the same.
+
+124
+00:06:37,645 --> 00:06:40,888
+Now remember nitrogen,
+three electrons short?
+
+125
+00:06:40,938 --> 00:06:46,403
+In ammonia, nitrogen shares one pair of
+electrons with each of three hydrogens.
+
+126
+00:06:46,453 --> 00:06:50,875
+Each shared pair has one electron
+from nitrogen and one from hydrogen.
+
+127
+00:06:50,925 --> 00:06:51,875
+And here's the trick.
+
+128
+00:06:51,925 --> 00:06:54,531
+Both atoms count the whole pair.
+
+129
+00:06:54,581 --> 00:06:57,435
+Each shared pair is one bond.
+
+130
+00:06:57,485 --> 00:07:01,187
+Nitrogen also keeps one pair to
+itself that it doesn't share.
+
+131
+00:07:01,237 --> 00:07:03,165
+That's called a lone pair.
+
+132
+00:07:03,665 --> 00:07:05,475
+Now count around nitrogen.
+
+133
+00:07:05,525 --> 00:07:09,543
+Two, four, six from the shared pairs...
+
+134
+00:07:09,593 --> 00:07:11,388
+plus two from the lone pair.
+
+135
+00:07:11,438 --> 00:07:15,555
+Eight. And each hydrogen
+counts its one shared pair.
+
+136
+00:07:15,605 --> 00:07:18,465
+Two electrons, which fills its only shell.
+
+137
+00:07:18,965 --> 00:07:23,208
+Carbon in methane does the same
+thing with four shared pairs.
+
+138
+00:07:23,258 --> 00:07:26,975
+Eight around carbon. Two
+around each hydrogen.
+
+139
+00:07:27,025 --> 00:07:29,315
+And that's the octet rule.
+
+140
+00:07:29,365 --> 00:07:34,155
+An atom is most stable, lowest in
+energy, with a full outer shell.
+
+141
+00:07:34,205 --> 00:07:39,375
+For carbon, nitrogen, oxygen and
+the halogens, full means eight.
+
+142
+00:07:39,425 --> 00:07:42,445
+For hydrogen, full means two.
+
+143
+00:07:42,945 --> 00:07:44,695
+And now the counting pays off.
+
+144
+00:07:44,745 --> 00:07:48,948
+Carbon has four, needs eight,
+so it forms four bonds.
+
+145
+00:07:48,998 --> 00:07:52,162
+Nitrogen has five, so three bonds.
+
+146
+00:07:52,212 --> 00:07:55,042
+Oxygen has six, two bonds.
+
+147
+00:07:55,092 --> 00:07:58,755
+A halogen has seven, one bond.
+
+148
+00:07:58,805 --> 00:08:02,999
+And hydrogen just needs one
+more to reach two, so one bond.
+
+149
+00:08:03,049 --> 00:08:06,855
+Four, three, two, one, one.
+
+150
+00:08:06,905 --> 00:08:10,785
+You'll see this pattern in almost
+every neutral molecule from here on.
+
+151
+00:08:11,285 --> 00:08:12,895
+One common slip, though.
+
+152
+00:08:12,945 --> 00:08:16,451
+The octet rule counts
+electrons, not neighbors.
+
+153
+00:08:16,501 --> 00:08:20,075
+Look at ethene. Each carbon
+only has three neighbors.
+
+154
+00:08:20,125 --> 00:08:22,195
+Two hydrogens and the other carbon.
+
+155
+00:08:22,245 --> 00:08:24,795
+But the two carbons share two pairs.
+
+156
+00:08:24,845 --> 00:08:29,155
+A double bond. Count the electrons,
+and each carbon still has eight.
+
+157
+00:08:29,205 --> 00:08:32,975
+So if you count neighbors instead, the
+first double bond you meet will fool
+
+158
+00:08:33,025 --> 00:08:33,805
+you.
+
+159
+00:08:33,825 --> 00:08:38,131
+And if you ever see a carbon with
+only three bonds and nothing else...
+
+160
+00:08:38,181 --> 00:08:42,168
+that's not a typo. That atom is the
+interesting part of the molecule, and
+
+161
+00:08:42,218 --> 00:08:43,715
+it usually carries a charge.
+
+162
+00:08:43,765 --> 00:08:47,288
+The other possibility, called a
+radical, comes later in the course.
+
+163
+00:08:47,338 --> 00:08:49,935
+We'll see the charged case
+at the end of this video.
+
+164
+00:08:49,985 --> 00:08:53,165
+But first, we need to know
+what charge even means here.
+
+165
+00:08:56,215 --> 00:09:01,429
+Take sodium. Z is eleven, so its
+electrons go two, eight, one.
+
+166
+00:09:01,479 --> 00:09:06,325
+That single outer electron is far
+from the nucleus and loosely held.
+
+167
+00:09:06,375 --> 00:09:08,112
+If sodium loses it...
+
+168
+00:09:08,162 --> 00:09:10,045
+it's left with two, eight.
+
+169
+00:09:10,095 --> 00:09:14,415
+A full outer shell. That's why sodium
+gives that electron up so easily.
+
+170
+00:09:14,915 --> 00:09:16,585
+But now count the charge.
+
+171
+00:09:16,635 --> 00:09:18,538
+Still eleven protons.
+
+172
+00:09:18,588 --> 00:09:21,608
+Those never changed.
+But only ten electrons.
+
+173
+00:09:21,658 --> 00:09:24,412
+Eleven minus ten is plus one.
+
+174
+00:09:24,462 --> 00:09:28,945
+An atom with more protons than
+electrons is positive, and it's called a
+
+175
+00:09:28,995 --> 00:09:31,305
+cation. Here's a memory trick.
+
+176
+00:09:31,355 --> 00:09:33,995
+A cation is pawsitive.
+
+177
+00:09:34,495 --> 00:09:36,458
+Fluorine goes the other way.
+
+178
+00:09:36,508 --> 00:09:39,738
+It's two, seven. One electron short.
+
+179
+00:09:39,788 --> 00:09:42,709
+So it gains one, and reaches two, eight.
+
+180
+00:09:42,759 --> 00:09:47,578
+Nine protons, ten electrons,
+so the charge is minus one.
+
+181
+00:09:47,628 --> 00:09:52,655
+An atom with more electrons than protons
+is negative, and that's an anion.
+
+182
+00:09:53,155 --> 00:09:55,375
+So here's the rule for any ion.
+
+183
+00:09:55,425 --> 00:09:58,858
+Charge equals protons minus electrons.
+
+184
+00:09:58,908 --> 00:10:00,790
+The nucleus never changes.
+
+185
+00:10:00,840 --> 00:10:02,608
+Only the electrons move.
+
+186
+00:10:05,658 --> 00:10:07,868
+So there are two ways to get a full shell.
+
+187
+00:10:07,918 --> 00:10:12,028
+Put sodium next to chlorine,
+which is two, eight, seven.
+
+188
+00:10:12,078 --> 00:10:16,598
+One short. Sodium's outer electron
+moves over to chlorine completely.
+
+189
+00:10:16,648 --> 00:10:21,592
+Now we have a sodium ion and a chloride
+ion, and opposite charges attract.
+
+190
+00:10:21,642 --> 00:10:24,093
+That attraction is an ionic bond.
+
+191
+00:10:24,143 --> 00:10:25,138
+Nothing is shared.
+
+192
+00:10:25,638 --> 00:10:27,876
+Now take two hydrogen atoms.
+
+193
+00:10:27,926 --> 00:10:30,648
+Each has one electron and wants two.
+
+194
+00:10:30,698 --> 00:10:32,921
+Neither will hand its electron away.
+
+195
+00:10:32,971 --> 00:10:37,892
+So they share. The two electrons sit
+between the nuclei as one pair, and
+
+196
+00:10:37,942 --> 00:10:40,028
+each atom counts both.
+
+197
+00:10:40,078 --> 00:10:44,078
+A shared pair holding two atoms
+together is a covalent bond.
+
+198
+00:10:44,578 --> 00:10:47,008
+So which way does an atom go?
+
+199
+00:10:47,058 --> 00:10:51,653
+An ionic bond needs a giver, like
+sodium, with an electron or two past a
+
+200
+00:10:51,703 --> 00:10:56,921
+full shell. And a taker, like
+chlorine, an electron or two short.
+
+201
+00:10:56,971 --> 00:10:58,528
+But now think about carbon.
+
+202
+00:10:58,578 --> 00:11:01,061
+It has four, and it needs eight.
+
+203
+00:11:01,111 --> 00:11:02,351
+It's right in the middle.
+
+204
+00:11:02,851 --> 00:11:05,969
+To give away four, it would become C4+.
+
+205
+00:11:06,019 --> 00:11:11,018
+Pulling four electrons off a small
+atom costs a huge amount of energy.
+
+206
+00:11:11,068 --> 00:11:14,225
+Taking on four makes C4−.
+
+207
+00:11:14,275 --> 00:11:17,908
+Four extra negative
+charges on one small atom.
+
+208
+00:11:17,958 --> 00:11:22,308
+Just as costly. So carbon
+does the smart thing.
+
+209
+00:11:22,358 --> 00:11:28,521
+It shares. Each shared pair counts for
+both atoms, so everyone gets to eight,
+
+210
+00:11:28,571 --> 00:11:30,411
+and nobody takes on a full charge.
+
+211
+00:11:30,911 --> 00:11:35,674
+And nitrogen, oxygen and the halogens
+hold their own electrons tightly,
+
+212
+00:11:35,724 --> 00:11:36,961
+so they're not givers.
+
+213
+00:11:37,011 --> 00:11:40,768
+And carbon and hydrogen don't
+hand their electrons over either.
+
+214
+00:11:40,818 --> 00:11:44,928
+So when these atoms bond to each
+other, there's no giver in the pair.
+
+215
+00:11:44,978 --> 00:11:49,328
+So they share too. And that's why
+organic molecules are held together by
+
+216
+00:11:49,378 --> 00:11:50,671
+covalent bonds.
+
+217
+00:11:51,171 --> 00:11:56,490
+One more thing. When two different
+atoms share a pair, one usually pulls
+
+218
+00:11:56,540 --> 00:11:59,445
+harder, and the pair
+sits closer to that atom.
+
+219
+00:11:59,495 --> 00:12:02,261
+That's a polar covalent bond.
+
+220
+00:12:02,311 --> 00:12:04,128
+Shared, but unequally.
+
+221
+00:12:04,178 --> 00:12:09,301
+Bonds from carbon to oxygen, nitrogen,
+fluorine or chlorine are clearly
+
+222
+00:12:09,351 --> 00:12:14,074
+polar. Carbon to carbon and carbon
+to hydrogen are close to nonpolar.
+
+223
+00:12:14,124 --> 00:12:17,151
+We'll put numbers on that in
+the electronegativity video.
+
+224
+00:12:20,201 --> 00:12:23,551
+Okay. Now let's go back to that
+carbon with only three bonds.
+
+225
+00:12:23,601 --> 00:12:28,231
+Start with a carbon bonded to three
+carbon groups, which we write as R,
+
+226
+00:12:28,281 --> 00:12:33,324
+and a chlorine. Now say the carbon
+chlorine bond breaks, and the chlorine
+
+227
+00:12:33,374 --> 00:12:35,978
+takes both electrons of that pair with it.
+
+228
+00:12:36,028 --> 00:12:39,731
+Chlorine leaves as chloride, minus one.
+
+229
+00:12:39,781 --> 00:12:43,751
+And carbon is left with three
+bonds and a positive charge.
+
+230
+00:12:43,801 --> 00:12:45,681
+That's a carbocation.
+
+231
+00:12:46,181 --> 00:12:47,464
+Here's where it gets interesting.
+
+232
+00:12:47,514 --> 00:12:53,078
+There are two different ways to count
+carbon's electrons, and both are right.
+
+233
+00:12:53,128 --> 00:12:56,691
+First, count around carbon, for the octet.
+
+234
+00:12:56,741 --> 00:12:59,104
+Before, it had four pairs.
+
+235
+00:12:59,154 --> 00:13:03,011
+Eight electrons. Now it has three pairs.
+
+236
+00:13:03,061 --> 00:13:07,961
+Just six. So it's two short of an
+octet, and that leaves it with an empty
+
+237
+00:13:08,011 --> 00:13:11,981
+orbital. Room for a pair,
+but no electrons in it.
+
+238
+00:13:12,481 --> 00:13:17,117
+Second, count carbon's own
+electrons, for the charge.
+
+239
+00:13:17,167 --> 00:13:21,986
+In a shared pair, one
+electron belongs to each atom.
+
+240
+00:13:22,036 --> 00:13:25,977
+Before, carbon owned one
+from each of four bonds.
+
+241
+00:13:26,027 --> 00:13:28,824
+Four. The same as a neutral carbon atom.
+
+242
+00:13:28,874 --> 00:13:33,937
+Now it owns three. One short
+of neutral, so plus one.
+
+243
+00:13:33,987 --> 00:13:39,933
+And that gap, six instead of eight,
+is exactly why a carbocation reacts
+
+244
+00:13:39,983 --> 00:13:43,104
+so readily with anything
+that can give it a pair.
+
+245
+00:13:43,154 --> 00:13:46,647
+You'll meet these again
+in SN1 and E1 reactions.
+
+246
+00:13:47,147 --> 00:13:52,293
+Now flip it around. Say a strong
+base pulls off a hydrogen as H+.
+
+247
+00:13:52,343 --> 00:13:55,069
+A bare proton, no electrons.
+
+248
+00:13:55,119 --> 00:13:58,997
+The pair stays behind on
+carbon as a lone pair.
+
+249
+00:13:59,047 --> 00:14:03,890
+Count around carbon. Three
+bonds plus a lone pair.
+
+250
+00:14:03,940 --> 00:14:06,904
+Still eight. Count what it owns.
+
+251
+00:14:06,954 --> 00:14:10,217
+Three, plus two... five.
+
+252
+00:14:10,267 --> 00:14:13,301
+One more than neutral, so minus one.
+
+253
+00:14:13,351 --> 00:14:19,087
+That's a carbanion. A full
+octet, plus a spare pair to give.
+
+254
+00:14:22,137 --> 00:14:23,687
+So let's put it all in one picture.
+
+255
+00:14:23,737 --> 00:14:25,827
+Protons set the element.
+
+256
+00:14:25,877 --> 00:14:29,687
+Valence electrons, straight from
+the group number, set the chemistry.
+
+257
+00:14:29,737 --> 00:14:32,634
+Atoms want a full outer shell.
+
+258
+00:14:32,684 --> 00:14:36,367
+Eight for carbon, nitrogen,
+oxygen and the halogens.
+
+259
+00:14:36,417 --> 00:14:42,987
+Two for hydrogen. So carbon makes four
+bonds, nitrogen three, oxygen two,
+
+260
+00:14:43,037 --> 00:14:45,424
+and hydrogen and the halogens one.
+
+261
+00:14:45,474 --> 00:14:47,847
+Carbon doesn't give or take.
+
+262
+00:14:47,897 --> 00:14:52,430
+It shares. And when a carbon has
+only three bonds, count twice.
+
+263
+00:14:52,480 --> 00:14:54,547
+Around it, for the octet.
+
+264
+00:14:54,597 --> 00:14:57,057
+And what it owns, for the charge.
+
+265
+00:15:00,107 --> 00:15:01,084
+Alright, practice time.
+
+266
+00:15:01,134 --> 00:15:03,967
+Pause the video, try each one,
+then I'll walk you through it.
+
+267
+00:15:04,017 --> 00:15:07,517
+Problem one. Chlorine
+is in group seventeen.
+
+268
+00:15:07,567 --> 00:15:11,497
+How many valence electrons does it
+have, and how many bonds does it usually
+
+269
+00:15:11,547 --> 00:15:12,347
+form?
+
+270
+00:15:16,487 --> 00:15:18,730
+Group seventeen, so subtract ten.
+
+271
+00:15:18,780 --> 00:15:20,717
+Seven valence electrons.
+
+272
+00:15:20,767 --> 00:15:25,637
+Seven needs one more to reach eight,
+so chlorine forms one bond, like in
+
+273
+00:15:25,687 --> 00:15:27,869
+HCl. And the trap answer
+here is seventeen.
+
+274
+00:15:27,919 --> 00:15:31,603
+That's the group number,
+not the valence count.
+
+275
+00:15:31,653 --> 00:15:32,847
+Always subtract the ten.
+
+276
+00:15:33,347 --> 00:15:38,133
+Problem two. A particle has
+eight protons and ten electrons.
+
+277
+00:15:38,183 --> 00:15:42,687
+What element is it, what's its charge,
+and is it a cation or an anion?
+
+278
+00:15:47,187 --> 00:15:49,517
+Eight protons, so it's oxygen.
+
+279
+00:15:49,567 --> 00:15:52,811
+The protons decide the
+element, not the electrons.
+
+280
+00:15:52,861 --> 00:15:55,897
+Charge is protons minus electrons.
+
+281
+00:15:55,947 --> 00:15:58,553
+Eight minus ten... minus two.
+
+282
+00:15:58,603 --> 00:16:01,737
+More electrons than
+protons, so it's an anion.
+
+283
+00:16:01,787 --> 00:16:04,160
+The oxide ion. The trap?
+
+284
+00:16:04,210 --> 00:16:07,033
+Seeing ten electrons and saying neon.
+
+285
+00:16:07,083 --> 00:16:09,033
+Neon has ten protons.
+
+286
+00:16:09,083 --> 00:16:10,227
+This has eight.
+
+287
+00:16:10,727 --> 00:16:15,045
+Last one. A carbon has three
+bonds and one lone pair.
+
+288
+00:16:15,095 --> 00:16:18,698
+How many electrons are around it,
+what's its charge, and what do we call
+
+289
+00:16:18,748 --> 00:16:19,548
+it?
+
+290
+00:16:23,475 --> 00:16:25,005
+Count around it first.
+
+291
+00:16:25,055 --> 00:16:28,118
+Three bonds is six, plus
+a lone pair is eight.
+
+292
+00:16:28,168 --> 00:16:31,058
+A full octet. Now count what it owns.
+
+293
+00:16:31,108 --> 00:16:35,462
+One from each bond, that's three,
+plus both lone pair electrons, two.
+
+294
+00:16:35,512 --> 00:16:39,771
+Five. A neutral carbon owns
+four, so this one is minus one.
+
+295
+00:16:39,821 --> 00:16:45,278
+It's a carbanion. The trap is seeing
+three bonds and saying carbocation.
+
+296
+00:16:45,328 --> 00:16:48,918
+A carbocation has three
+bonds and no lone pair.
+
+297
+00:16:48,968 --> 00:16:50,928
+So always check for that lone pair.
+
+298
+00:16:53,978 --> 00:16:56,568
+And that's atomic structure
+for organic chemistry.
+
+299
+00:16:56,618 --> 00:17:00,608
+If you want more practice on this, there
+are free questions on levlprep.com.
+
+300
+00:17:00,658 --> 00:17:07,475
+Next up, orbitals. Where these valence
+electrons actually are, and why that
+
+301
+00:17:07,525 --> 00:17:09,568
+gives molecules their shapes.
+
+302
+00:17:09,618 --> 00:17:10,418
+I'll see you there.
