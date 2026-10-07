@@ -35,7 +35,7 @@ export const MAP_PATH = join(ROOT, 'docs', 'apchem-dependency-map.json');
 export const STUB_PATH = join(ROOT, 'scripts', 'test', 'fixtures', 'apchem-map-stub.json');
 
 export const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-export const text = html => String(html ?? '').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&reg;/g, '®').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/\s+/g, ' ').trim();
+export const text = html => String(html ?? '').replace(/<\/?[A-Za-z!][^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&reg;/g, '®').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/\s+/g, ' ').trim();
 const readJson = p => JSON.parse(readFileSync(p, 'utf8'));
 
 /* The token rule (spec decision 2): no "ap" or "apchem" token in a served path. */
@@ -46,7 +46,7 @@ export const hasApToken = s => String(s).toLowerCase().split(/[^a-z0-9]+/).some(
    possessive. Returns problems found in a piece of authored text. */
 export function trademarkProblems(s) {
   // The disclaimer is the one sentence where the mark is the subject.
-  const t = String(s ?? '').replace(/&reg;/g, '®').replace(/<[^>]+>/g, ' ').split(DISCLAIMER).join(' ');
+  const t = String(s ?? '').replace(/&reg;/g, '®').replace(/<\/?[A-Za-z!][^>]*>/g, ' ').split(DISCLAIMER).join(' ');
   const out = [];
   for (const m of t.matchAll(/\bAP\b(®?)(\S*)/g)) {
     const [all, reg, after] = m;

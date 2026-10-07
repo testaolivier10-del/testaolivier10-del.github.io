@@ -15,7 +15,7 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const readJson = p => JSON.parse(readFileSync(p, 'utf8'));
-const strip = s => String(s ?? '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+const strip = s => String(s ?? '').replace(/<\/?[A-Za-z!][^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 
 export const MCQ_TOTAL = 60;
 // Section II as the exam: three long questions, then four short ones.

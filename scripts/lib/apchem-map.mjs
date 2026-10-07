@@ -444,7 +444,7 @@ export function stripForScan(html) {
   s = removeClassBlocks(s, 'chem-nav-ref');
   // Subscripts and superscripts belong to the word they follow.
   s = s.replace(/<\/?(sub|sup|tspan)\b[^>]*>/gi, '');
-  return normalize(s.replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&'));
+  return normalize(s.replace(/<\/?[A-Za-z!][^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&'));
 }
 
 function removeClassBlocks(html, cls) {
