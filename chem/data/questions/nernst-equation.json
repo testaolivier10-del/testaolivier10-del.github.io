@@ -384,7 +384,7 @@
      "ln 0 is not defined; Q = 0 does not make the term zero.",
      "Right: the second term vanishes when ln Q = 0.",
      "At Q = K, E = 0, not E°.",
-     "Cells do not run at absolute zero, and standard conditions are at 25 °C."
+     "Cells do not run at absolute zero, and E = E° comes from ln Q = 0, not from the temperature."
     ]
    }
   },

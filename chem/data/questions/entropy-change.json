@@ -173,7 +173,7 @@
     ]
    },
    "why": {
-    "correct": "ΔS° = Σ nS°(products) − Σ nS°(reactants) = 2(192.8) − [191.6 + 3(130.7)] = 385.6 − 583.7 = -198.1 J/(mol·K). Each value is known to 0.1, so the answer keeps one decimal place. The sign fits the prediction: 4 mol of gas become 2 mol."
+    "correct": "ΔS° = Σ nS°(products) − Σ nS°(reactants) = 2(192.8) − [191.6 + 3(130.7)] = 385.6 − 583.7 = −198.1 J/(mol·K). Each value is known to 0.1, so the answer keeps one decimal place. The sign fits the prediction: 4 mol of gas become 2 mol."
    }
   },
   {
@@ -214,7 +214,7 @@
     ]
    },
    "why": {
-    "correct": "ΔS° = [213.8 + 2(69.9)] − [186.3 + 2(205.2)] = 353.6 − 596.7 = -243.1 J/(mol·K). Three moles of gas become one mole of gas plus a liquid, so the large negative value makes sense."
+    "correct": "ΔS° = [213.8 + 2(69.9)] − [186.3 + 2(205.2)] = 353.6 − 596.7 = −243.1 J/(mol·K). Three moles of gas become one mole of gas plus a liquid, so the large negative value makes sense."
    }
   },
   {
@@ -226,7 +226,7 @@
    "level": "analyze",
    "diff": 2,
    "stimulus": "entropy-change-s1",
-   "q": "If the water in the combustion of methane were formed as a gas instead of a liquid, ΔS° would be -5.3 J/(mol·K) instead of -243.1 J/(mol·K). Which statement explains the difference?",
+   "q": "If the water in the combustion of methane were formed as a gas instead of a liquid, ΔS° would be −5.3 J/(mol·K) instead of −243.1 J/(mol·K). Which statement explains the difference?",
    "options": [
     "Making a gas releases less heat, and less heat released means more entropy for the products.",
     "Gaseous water molecules spread through the whole container, so H₂O(g) has far more microstates.",
@@ -311,7 +311,7 @@
     ]
    },
    "why": {
-    "correct": "This is the original reaction reversed (sign flips) and doubled (value doubles): ΔS° = −2 × (-198.1) = 396.2 J/(mol·K)."
+    "correct": "This is the original reaction reversed (sign flips) and doubled (value doubles): ΔS° = −2 × (−198.1) = 396.2 J/(mol·K)."
    }
   },
   {
@@ -448,12 +448,12 @@
    "options": [
     "Elements in their standard states have S° = 0, just as they have ΔH°f = 0.",
     "Solids have negative S° values, liquids have zero, and gases have positive S° values.",
-    "Every substance, elements in their standard states included, has S° &gt; 0.",
+    "Every pure substance, elements in their standard states included, has S° &gt; 0.",
     "S° is given in kJ/mol, the same energy unit as ΔH°f values are."
    ],
    "correct": 2,
    "why": {
-    "correct": "S° is an absolute value measured up from zero at 0 K, so it is positive for every substance at 298 K, elements included.",
+    "correct": "S° is an absolute value measured up from zero at 0 K, so it is positive for every pure substance at 298 K, elements included.",
     "options": [
      "This confuses S° with ΔH°f. ΔH°f of an element is zero by definition; S° is measured from 0 K and is positive.",
      "S° values are measured from a perfect crystal at 0 K, so they are all positive; solids are simply the smallest.",
@@ -672,7 +672,7 @@
      "Right: divide joules by 1000 to get kilojoules.",
      "Converting J to kJ means dividing by 1000, not multiplying.",
      "That divides by 100. One kilojoule is 1000 joules.",
-     "That adds 273 to the value, as if converting a temperature. Only the energy unit changes."
+     "That subtracts 273 from the value, as if converting a temperature. Only the energy unit changes."
     ]
    }
   }

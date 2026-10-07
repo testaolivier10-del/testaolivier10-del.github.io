@@ -202,8 +202,8 @@
     "sigfigs": 2,
     "mistakes": [
      {
-      "value": 12,
-      "tol": 0.2,
+      "value": 11.8,
+      "tol": 0.25,
       "why": "Value: you used log instead of ln. ΔG° = −RT ln K uses the natural log."
      },
      {
@@ -259,7 +259,7 @@
    "level": "apply",
    "diff": 3,
    "stimulus": "free-energy-equilibrium-s2",
-   "q": "Calculate ΔG° at 298 K for 2 NO₂(g) ⇌ N₂O₄(g).",
+   "q": "Using the K value in the table, calculate ΔG° at 298 K for the reverse of the N₂O₄ dissociation: 2 NO₂(g) ⇌ N₂O₄(g).",
    "numeric": {
     "answer": -4.7,
     "tol": 0.1,
@@ -279,7 +279,7 @@
     ]
    },
    "why": {
-    "correct": "Reversing the reaction inverts K: K = 1/0.15 = 6.67. ΔG° = −(8.314)(298) ln(6.67) = −4.70 × 10³ J/mol = -4.7 kJ/mol. (Equivalently, flip the sign of ΔG° for the forward reaction.)"
+    "correct": "Reversing the reaction inverts K: K = 1/0.15 = 6.67. ΔG° = −(8.314)(298) ln(6.67) = −4.70 × 10³ J/mol = −4.7 kJ/mol. (Equivalently, flip the sign of ΔG° for the forward reaction.)"
    }
   },
   {
@@ -378,7 +378,7 @@
     ]
    },
    "why": {
-    "correct": "ΔG° = −RT ln K = −(8.314 J/(mol·K))(400. K) ln(20.2) = −(3325.6)(3.006) = −9996 J/mol = -10 kJ/mol."
+    "correct": "ΔG° = −RT ln K = −(8.314 J/(mol·K))(400. K) ln(20.2) = −(3325.6)(3.006) = −9996 J/mol = −10.0 kJ/mol (three significant figures, from K = 20.2)."
    }
   },
   {

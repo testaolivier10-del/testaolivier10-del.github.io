@@ -157,7 +157,7 @@
     ]
    },
    "why": {
-    "correct": "ΔG° = −nFE° = −(2 mol e⁻)(96,485 C/mol e⁻)(1.05 V) = −2.026 × 10⁵ J/mol = -203 kJ/mol (1 J = 1 C·V)."
+    "correct": "ΔG° = −nFE° = −(2 mol e⁻)(96,485 C/mol e⁻)(1.05 V) = −2.026 × 10⁵ J/mol = −203 kJ/mol (1 J = 1 C·V)."
    }
   },
   {
@@ -317,7 +317,7 @@
     ]
    },
    "why": {
-    "correct": "ΔG° = −nFE° = −(6 mol e⁻)(96,485 C/mol e⁻)(2.00 V) = −1.158 × 10⁶ J/mol = -1.16 × 10³ kJ/mol."
+    "correct": "ΔG° = −nFE° = −(6 mol e⁻)(96,485 C/mol e⁻)(2.00 V) = −1.158 × 10⁶ J/mol = −1.16 × 10³ kJ/mol."
    }
   },
   {
@@ -458,7 +458,7 @@
     ]
    },
    "why": {
-    "correct": "E°cell = E°(cathode) − E°(anode): 0.74 = 0.34 − E°(M²⁺/M), so E°(M²⁺/M) = 0.34 − 0.74 = -0.40 V."
+    "correct": "E°cell = E°(cathode) − E°(anode): 0.74 = 0.34 − E°(M²⁺/M), so E°(M²⁺/M) = 0.34 − 0.74 = −0.40 V."
    }
   },
   {

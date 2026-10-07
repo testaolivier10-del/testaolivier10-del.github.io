@@ -32,7 +32,7 @@
      ],
      [
       "3",
-      "Al₂(SO₄)₃ in a molten mixture",
+      "Al₂O₃ dissolved in molten cryolite",
       "Al³⁺ + 3e⁻ → Al",
       "26.98"
      ]
@@ -247,7 +247,7 @@
     ]
    },
    "why": {
-    "correct": "0.2000 mol e⁻ × (1 mol Al / 3 mol e⁻) × 26.98 g/mol = 1.8 g Al."
+    "correct": "0.2000 mol e⁻ × (1 mol Al / 3 mol e⁻) × 26.98 g/mol = 1.80 g Al."
    }
   },
   {

@@ -214,6 +214,12 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    Five FRQs: long `frq-iron-thiocyanate` (lab, Beer's law, Q vs K) and `frq-hydrogen-iodide-particles`;
    short `frq-methanol-shift`, `frq-strontium-fluoride`, `frq-phosgene-ice`. Open points: needs-author
    `unit7-data`, `unit7-small-x`.
+14. (2026-10-06, Unit 9 review) **Unit 9 accuracy-checked** (`docs/apchem-reviews/u9.md`): 11 topics,
+   173 items, 5 FRQs, 11 lesson figures and 9 stimulus drawings. Every numeric key and mistake recomputed
+   in code: no key changed. Fixes were wording, sig figs in explanations, one mistake value, ΔG° labels
+   on the ATP set, S° > 0 limited to pure substances, and one stem lengthened to clear a near-duplicate.
+   Needs-author `unit9-data` and `unit9-atp` resolved; `unit9-exclusions-applied` partly (9.8
+   exclusion confirmed in the CED; 9.10 page not fully read).
 
 ## 8. Open items for the owner
 

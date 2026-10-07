@@ -28,8 +28,8 @@
   "coupled-reactions-s2": {
    "kind": "model",
    "title": "Using ATP in a cell",
-   "text": "<p>Cells store energy in ATP. The first step of breaking down glucose attaches a phosphate group to glucose. Free energy changes at 37 °C (310 K) and pH 7, the conditions inside a cell:</p><p>Step A: glucose + phosphate → glucose-6-phosphate + H₂O; ΔG = +13.8 kJ/mol<br>Step B: ATP + H₂O → ADP + phosphate; ΔG = −30.5 kJ/mol<br>Overall: glucose + ATP → glucose-6-phosphate + ADP</p>",
-   "html": "<svg viewBox=\"0 0 600 220\" width=\"600\" height=\"220\" role=\"img\" aria-label=\"Two linked arrows. Step A, glucose plus phosphate to glucose-6-phosphate, goes uphill by 13.8 kilojoules per mole. Step B, ATP to ADP plus phosphate, goes downhill by 30.5 kilojoules per mole. The phosphate made in step B is used in step A, shown by a dashed arrow joining them.\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect width=\"600\" height=\"220\" fill=\"#fff\"/><defs><marker id=\"atp-a\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto\"><path d=\"M0,0 L10,5 L0,10 Z\" fill=\"#1F2A28\"/></marker></defs><text x=\"20\" y=\"150\" font-size=\"14\">glucose + phosphate</text><line x1=\"90\" y1=\"132\" x2=\"200\" y2=\"62\" stroke=\"#D55E00\" stroke-width=\"4\" marker-end=\"url(#atp-a)\"/><text x=\"150\" y=\"45\" font-size=\"14\">glucose-6-phosphate</text><text x=\"60\" y=\"95\" font-size=\"14\" fill=\"#D55E00\" font-weight=\"700\">A: +13.8</text><text x=\"380\" y=\"45\" font-size=\"14\">ATP</text><line x1=\"400\" y1=\"58\" x2=\"490\" y2=\"128\" stroke=\"#009E73\" stroke-width=\"4\" marker-end=\"url(#atp-a)\"/><text x=\"450\" y=\"150\" font-size=\"14\">ADP + phosphate</text><text x=\"458\" y=\"85\" font-size=\"14\" fill=\"#009E73\" font-weight=\"700\">B: −30.5</text><path d=\"M520,160 Q330,215 110,160\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-dasharray=\"5 4\" marker-end=\"url(#atp-a)\"/><text x=\"315\" y=\"208\" font-size=\"13\" text-anchor=\"middle\">phosphate passed on</text></svg><p>Key: arrows show each step; the number on each is ΔG in kJ/mol.</p>"
+   "text": "<p>Cells store energy in ATP. The first step of breaking down glucose attaches a phosphate group to glucose. Standard free energy changes at pH 7 (the standard state biochemists use), taken here for 37 °C (310 K):</p><p>Step A: glucose + phosphate → glucose-6-phosphate + H₂O; ΔG° = +13.8 kJ/mol<br>Step B: ATP + H₂O → ADP + phosphate; ΔG° = −30.5 kJ/mol<br>Overall: glucose + ATP → glucose-6-phosphate + ADP</p>",
+   "html": "<svg viewBox=\"0 0 600 220\" width=\"600\" height=\"220\" role=\"img\" aria-label=\"Two linked arrows. Step A, glucose plus phosphate to glucose-6-phosphate, goes uphill by 13.8 kilojoules per mole. Step B, ATP to ADP plus phosphate, goes downhill by 30.5 kilojoules per mole. The phosphate made in step B is used in step A, shown by a dashed arrow joining them.\" font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect width=\"600\" height=\"220\" fill=\"#fff\"/><defs><marker id=\"atp-a\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto\"><path d=\"M0,0 L10,5 L0,10 Z\" fill=\"#1F2A28\"/></marker></defs><text x=\"20\" y=\"150\" font-size=\"14\">glucose + phosphate</text><line x1=\"90\" y1=\"132\" x2=\"200\" y2=\"62\" stroke=\"#D55E00\" stroke-width=\"4\" marker-end=\"url(#atp-a)\"/><text x=\"150\" y=\"45\" font-size=\"14\">glucose-6-phosphate</text><text x=\"60\" y=\"95\" font-size=\"14\" fill=\"#D55E00\" font-weight=\"700\">A: +13.8</text><text x=\"380\" y=\"45\" font-size=\"14\">ATP</text><line x1=\"400\" y1=\"58\" x2=\"490\" y2=\"128\" stroke=\"#009E73\" stroke-width=\"4\" marker-end=\"url(#atp-a)\"/><text x=\"450\" y=\"150\" font-size=\"14\">ADP + phosphate</text><text x=\"458\" y=\"85\" font-size=\"14\" fill=\"#009E73\" font-weight=\"700\">B: −30.5</text><path d=\"M520,160 Q330,215 110,160\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-dasharray=\"5 4\" marker-end=\"url(#atp-a)\"/><text x=\"315\" y=\"208\" font-size=\"13\" text-anchor=\"middle\">phosphate passed on</text></svg><p>Key: arrows show each step; the number on each is ΔG° in kJ/mol.</p>"
   }
  },
  "items": [
@@ -94,7 +94,7 @@
     ]
    },
    "why": {
-    "correct": "Adding Reaction 1 and Reaction 2 cancels S(s), the shared intermediate. ΔG° adds: +86.2 + (−300.1) = -213.9 kJ/mol."
+    "correct": "Adding Reaction 1 and Reaction 2 cancels S(s), the shared intermediate. ΔG° adds: +86.2 + (−300.1) = −213.9 kJ/mol."
    }
   },
   {
@@ -160,7 +160,7 @@
    "level": "apply",
    "diff": 1,
    "stimulus": "coupled-reactions-s2",
-   "q": "Calculate ΔG for the overall coupled reaction, glucose + ATP → glucose-6-phosphate + ADP.",
+   "q": "Calculate ΔG° for the overall coupled reaction, glucose + ATP → glucose-6-phosphate + ADP.",
    "numeric": {
     "answer": -16.7,
     "tol": 0.2,
@@ -175,12 +175,12 @@
      {
       "value": 44.3,
       "tol": 0.2,
-      "why": "Sign: Step B has ΔG = −30.5 kJ/mol; add it with its sign."
+      "why": "Sign: Step B has ΔG° = −30.5 kJ/mol; add it with its sign."
      }
     ]
    },
    "why": {
-    "correct": "ΔG(overall) = ΔG of Step A + ΔG of Step B = +13.8 + (−30.5) = -16.7 kJ/mol. The water and phosphate cancel when the steps are added."
+    "correct": "ΔG°(overall) = ΔG° of Step A + ΔG° of Step B = +13.8 + (−30.5) = −16.7 kJ/mol. The water and phosphate cancel when the steps are added."
    }
   },
   {
@@ -194,18 +194,18 @@
    "stimulus": "coupled-reactions-s2",
    "q": "Which statement best explains how the cell makes Step A happen?",
    "options": [
-    "It adds an enzyme that makes ΔG for Step A negative.",
+    "It adds an enzyme that makes ΔG° for Step A negative.",
     "It raises the temperature to 37 °C, which makes Step A favored on its own.",
-    "It couples Step A to ATP hydrolysis, so the overall ΔG is negative.",
+    "It couples Step A to ATP hydrolysis, so the overall ΔG° is negative.",
     "It removes glucose-6-phosphate, so ΔG for Step A becomes zero."
    ],
    "correct": 2,
    "why": {
     "correct": "An unfavored step is driven by pairing it with a strongly favored one through a common intermediate (here, the phosphate group).",
     "options": [
-     "Enzymes speed reactions but cannot change ΔG. The coupling is what makes the overall process favored.",
-     "Step A has ΔG = +13.8 kJ/mol at 37 °C; it is still not favored alone.",
-     "Right: the coupled process has ΔG = −16.7 kJ/mol, so it is favored.",
+     "Enzymes speed reactions but cannot change ΔG°. The coupling is what makes the overall process favored.",
+     "Step A has ΔG° = +13.8 kJ/mol at 37 °C; it is still not favored alone.",
+     "Right: the coupled process has ΔG° = −16.7 kJ/mol, so it is favored.",
      "Lowering the product concentration helps a little, but the main driver here is coupling to ATP."
     ]
    }
@@ -229,7 +229,7 @@
      {
       "value": 0.0047,
       "rel": 0.03,
-      "why": "Value: that is K for Step A alone. Use the overall ΔG, −16.7 kJ/mol."
+      "why": "Value: that is K for Step A alone. Use the overall ΔG°, −16.7 kJ/mol."
      },
      {
       "value": 850,
@@ -239,7 +239,7 @@
     ]
    },
    "why": {
-    "correct": "ln K = −ΔG/RT = 16,700 ÷ (8.314 × 310) = 6.48, so K = e^6.48 = 650, about 6.5 × 10². Step A alone has K ≈ 0.0047, so coupling raises K by a factor of about 10⁵."
+    "correct": "ln K = −ΔG°/RT = 16,700 ÷ (8.314 × 310) = 6.48, so K = e^6.48 = 650, about 6.5 × 10². Step A alone has K ≈ 0.0047, so coupling raises K by a factor of about 10⁵."
    }
   },
   {
@@ -251,19 +251,19 @@
    "level": "apply",
    "diff": 2,
    "stimulus": "coupled-reactions-s2",
-   "q": "If a cell paired Step A with a reaction that had ΔG = −10.0 kJ/mol instead of ATP hydrolysis (with a suitable shared species), would the overall process be favored?",
+   "q": "If a cell paired Step A with a reaction that had ΔG° = −10.0 kJ/mol instead of ATP hydrolysis (with a suitable shared species), would the overall process be favored?",
    "options": [
     "Yes: any favored reaction can drive any unfavored one.",
-    "Yes: the two ΔG values multiply to a negative number.",
+    "Yes: the two ΔG° values multiply to a negative number.",
     "No: +13.8 + (−10.0) = +3.8 kJ/mol, still positive.",
     "No: coupled reactions need ΔG values of exactly equal size."
    ],
    "correct": 2,
    "why": {
-    "correct": "Coupling works only if ΔG(driving) + ΔG(driven) < 0.",
+    "correct": "Coupling works only if ΔG°(driving) + ΔG°(driven) < 0.",
     "options": [
-     "The sum of ΔG values must be negative. Here it is positive.",
-     "ΔG values add when reactions are coupled; K values multiply.",
+     "The sum of ΔG° values must be negative. Here it is positive.",
+     "ΔG° values add when reactions are coupled; K values multiply.",
      "Right: the driving reaction must be more favored than the driven one is unfavored.",
      "They need not be equal; the driving reaction just has to outweigh the driven one."
     ]
@@ -375,7 +375,7 @@
     ]
    },
    "why": {
-    "correct": "Y is made in reaction 1 and used in reaction 2, so the reactions add to X → Z. ΔG° = +25.0 + (−40.0) = -15 kJ/mol."
+    "correct": "Y is made in reaction 1 and used in reaction 2, so the reactions add to X → Z. ΔG° = +25.0 + (−40.0) = −15.0 kJ/mol."
    }
   },
   {

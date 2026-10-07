@@ -140,8 +140,8 @@
    "why": {
     "correct": "Convert ΔS° to kJ/(mol·K) and compute ΔG° = ΔH° − TΔS° at 298 K for each process; only P and Q give negative values.",
     "options": [
-     "ΔG° = −85.0 − 298(0.0420) = -97.5 kJ/mol < 0.",
-     "ΔG° = −118.6 − 298(−0.1540) = -72.7 kJ/mol < 0.",
+     "ΔG° = −85.0 − 298(0.0420) = −97.5 kJ/mol < 0.",
+     "ΔG° = −118.6 − 298(−0.1540) = −72.7 kJ/mol < 0.",
      "ΔG° = 58.4 − 298(0.152) = 13.1 kJ/mol > 0: 298 K is below the temperature where R becomes favored.",
      "ΔG° = 40.0 − 298(−0.0250) = 47.5 kJ/mol > 0."
     ]
@@ -223,7 +223,7 @@
     ]
    },
    "why": {
-    "correct": "ΔG° = ΔH° − TΔS° = 58.4 kJ/mol − (500. K)(0.152 kJ/(mol·K)) = 58.4 − 76.0 = -17.6 kJ/mol. Negative, so R is favored at 500. K, as expected above 384 K."
+    "correct": "ΔG° = ΔH° − TΔS° = 58.4 kJ/mol − (500. K)(0.152 kJ/(mol·K)) = 58.4 − 76.0 = −17.6 kJ/mol. Negative, so R is favored at 500. K, as expected above 384 K."
    }
   },
   {
@@ -421,7 +421,7 @@
     ]
    },
    "why": {
-    "correct": "ΔG° = ΔH° − TΔS° = −92.2 kJ/mol − (298 K)(−0.1981 kJ/(mol·K)) = −92.2 + 59.03 = -33.2 kJ/mol. Rounded to tenths, matching ΔH°."
+    "correct": "ΔG° = ΔH° − TΔS° = −92.2 kJ/mol − (298 K)(−0.1981 kJ/(mol·K)) = −92.2 + 59.03 = −33.2 kJ/mol. Rounded to tenths, matching ΔH°."
    }
   },
   {
@@ -486,7 +486,7 @@
     ]
    },
    "why": {
-    "correct": "ΔG° = Σ nΔG°f(products) − Σ nΔG°f(reactants) = [2(−394.4) + 3(−237.1)] − [−174.8 + 3(0)] = −1500.1 + 174.8 = -1325.3 kJ/mol. ΔG°f of O₂(g), an element in its standard state, is zero."
+    "correct": "ΔG° = Σ nΔG°f(products) − Σ nΔG°f(reactants) = [2(−394.4) + 3(−237.1)] − [−174.8 + 3(0)] = −1500.1 + 174.8 = −1325.3 kJ/mol. ΔG°f of O₂(g), an element in its standard state, is zero."
    }
   },
   {
