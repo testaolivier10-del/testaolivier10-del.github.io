@@ -213,8 +213,7 @@
      "Br₂ is a reactant, used in step 1.",
      "NOBr is the product, made in step 2 and never used."
     ]
-   },
-   "fixed": true
+   }
   },
   {
    "id": "chem-mechanism-rate-laws-7",
@@ -362,18 +361,18 @@
    "diff": 2,
    "q": "In a mechanism, step 1 is slow and step 2 is fast. A chemist finds a way to make step 2 twice as fast. What happens to the overall rate?",
    "options": [
+    "It halves",
     "It stays about the same",
     "It doubles",
-    "It halves",
     "It becomes four times as fast"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "Step 2 already uses its intermediate as fast as step 1 supplies it. The slow first step still limits the overall rate, so it barely changes.",
     "options": [
+     "Making a step faster cannot slow the reaction down.",
      "Right: the bottleneck is unchanged.",
      "Only speeding up the slow step would raise the overall rate.",
-     "Making a step faster cannot slow the reaction down.",
      "Nothing about step 2 controls the overall rate here."
     ]
    },

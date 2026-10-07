@@ -228,8 +228,7 @@
      "H₂O₂ is the reactant, used in both steps.",
      "O₂ is a product."
     ]
-   },
-   "fixed": true
+   }
   },
   {
    "id": "chem-catalysis-3",
@@ -335,7 +334,6 @@
     "answer": 50,
     "tol": 1,
     "unit": "kJ/mol",
-    "sigfigs": 2,
     "mistakes": [
      {
       "value": 60,
@@ -345,7 +343,8 @@
       "value": 35,
       "why": "Value: the overall energy change (25 − 60) is the same for both paths; compare the peaks instead."
      }
-    ]
+    ],
+    "decimals": 0
    },
    "why": {
     "correct": "Uncatalyzed peak: 185 kJ/mol. The catalyzed path's highest peak is the second one, at 135 kJ/mol. 185 − 135 = 50 kJ/mol lower."

@@ -3,7 +3,7 @@
   "energy-profiles-s1": {
    "kind": "graph",
    "title": "Energy profile for a one-step reaction",
-   "text": "<p>The graph is the energy profile for the elementary reaction NO₂(g) + CO(g) → NO(g) + CO₂(g) at a certain temperature. Reaction progress has no units.</p>",
+   "text": "<p>The graph is the energy profile for a one-step (elementary) gas reaction, A + BC → AB + C. Reaction progress has no units.</p>",
    "chart": {
     "type": "line",
     "x": {
@@ -209,7 +209,6 @@
     "answer": 110,
     "tol": 1,
     "unit": "kJ/mol",
-    "sigfigs": 3,
     "mistakes": [
      {
       "value": 150,
@@ -219,7 +218,8 @@
       "value": 140,
       "why": "Value: you measured from the products. The forward Ea is measured from the reactants (40 kJ/mol)."
      }
-    ]
+    ],
+    "decimals": 0
    },
    "why": {
     "correct": "Ea (forward) = E(transition state) − E(reactants) = 150 kJ/mol − 40 kJ/mol = 110 kJ/mol."
@@ -239,7 +239,6 @@
     "answer": -30,
     "tol": 1,
     "unit": "kJ/mol",
-    "sigfigs": 2,
     "mistakes": [
      {
       "value": 30,
@@ -249,7 +248,8 @@
       "value": 110,
       "why": "Value: that is the activation energy. The overall change compares the products with the reactants."
      }
-    ]
+    ],
+    "decimals": 0
    },
    "why": {
     "correct": "Energy change = E(products) − E(reactants) = 10 kJ/mol − 40 kJ/mol = −30 kJ/mol. The negative sign means the reacting particles give off energy."
@@ -264,12 +264,11 @@
    "level": "apply",
    "diff": 2,
    "stimulus": "energy-profiles-s1",
-   "q": "What is the activation energy for the reaction run in reverse, NO + CO₂ → NO₂ + CO, in kJ/mol?",
+   "q": "What is the activation energy for the reaction run in reverse, AB + C → A + BC, in kJ/mol?",
    "numeric": {
     "answer": 140,
     "tol": 1,
     "unit": "kJ/mol",
-    "sigfigs": 3,
     "mistakes": [
      {
       "value": 110,
@@ -279,7 +278,8 @@
       "value": -140,
       "why": "Sign: an activation energy is a climb, so it is positive."
      }
-    ]
+    ],
+    "decimals": 0
    },
    "why": {
     "correct": "Run in reverse, the reaction starts at the products and climbs to the same transition state: Ea (reverse) = 150 − 10 = 140 kJ/mol. Check: Ea(reverse) − Ea(forward) = 140 − 110 = 30, the size of the energy released."

@@ -387,8 +387,8 @@
    "diff": 2,
    "q": "In the fast reversible step NO + NO ⇌ N₂O₂, k₁ = 2.0 × 10³ M⁻¹ s⁻¹ and k₋₁ = 5.0 × 10⁴ s⁻¹. What is [N₂O₂], in M, when [NO] = 0.010 M?",
    "numeric": {
-    "answer": 0.000004,
-    "tol": 1e-7,
+    "answer": 4e-06,
+    "tol": 1e-07,
     "unit": "M",
     "sigfigs": 2,
     "mistakes": [
@@ -414,7 +414,7 @@
    "practice": "6.D",
    "level": "analyze",
    "diff": 2,
-   "q": "A student writes the rate law for a mechanism with a fast reversible first step as rate = k₂[I][H₂]... and stops. What is missing?",
+   "q": "A student writes the rate law for a mechanism with a fast reversible first step as rate = k₂[H₂][I]² and stops. What is missing?",
    "options": [
     "Replacing [I] using the balanced fast step",
     "Adding the coefficients of the overall equation as exponents",
@@ -442,17 +442,17 @@
    "diff": 2,
    "q": "In a mechanism with a fast reversible first step and a slow second step, which step is rate-determining?",
    "options": [
-    "The slow second step",
     "The fast first step, since it comes first",
+    "The slow second step",
     "Both steps equally",
     "Neither; a reversible step has no rate"
    ],
-   "correct": 0,
+   "correct": 1,
    "why": {
     "correct": "The slow step limits the overall rate wherever it sits. The fast reversible step only sets how much intermediate is available to it.",
     "options": [
-     "Right: the slowest step limits the rate.",
      "Coming first does not make a step rate-determining; being slowest does.",
+     "Right: the slowest step limits the rate.",
      "One step, the slowest, limits the rate.",
      "Each direction of a reversible step has its own rate."
     ]

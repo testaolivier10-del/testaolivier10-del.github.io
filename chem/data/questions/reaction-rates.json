@@ -154,7 +154,7 @@
    "q": "What is the average rate of disappearance of N₂O₅ from 0 s to 200 s? Include units.",
    "numeric": {
     "answer": 0.00033,
-    "tol": 0.00001,
+    "tol": 1e-05,
     "unit": "M/s",
     "askUnit": true,
     "sigfigs": 2,
@@ -185,7 +185,7 @@
    "q": "Over the same interval, 0 s to 200 s, what is the average rate of appearance of NO₂? Include units.",
    "numeric": {
     "answer": 0.00066,
-    "tol": 0.00001,
+    "tol": 1e-05,
     "unit": "M/s",
     "askUnit": true,
     "sigfigs": 2,
@@ -355,7 +355,7 @@
    "q": "Which change to trial 1 would make the CO₂ come off faster at the start without changing the final volume of CO₂?",
    "options": [
     "Use 2.0 M HCl instead of 1.0 M HCl",
-    "Use 0.72 g of marble chips instead of 0.36 g",
+    "Use 0.66 g of marble chips instead of 0.33 g",
     "Use the same mass of marble in one single large lump",
     "Add 50 mL of water to the acid before adding the chips"
    ],
@@ -604,7 +604,7 @@
    "q": "A 0.250 L solution starts with 0.0800 mol of a dye. After 40.0 s, 0.0560 mol of the dye remains. What is the average rate of disappearance of the dye, in M/s?",
    "numeric": {
     "answer": 0.0024,
-    "tol": 0.00001,
+    "tol": 1e-05,
     "unit": "M/s",
     "sigfigs": 3,
     "mistakes": [

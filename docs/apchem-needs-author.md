@@ -149,7 +149,37 @@ particle diagram, so the `limiting-reactant` concept (aliases include "in excess
 `stoichiometry` to 4.3 `reaction-representations` in `docs/apchem-dependency-map.json`, depending
 on `reaction-diagram`; `yield` (4.5) now depends on both `limiting-reactant` and `stoichiometry`.
 4.3 teaches it with particles; 4.5 does the gram calculations. Confirm or revert.
-## unit5-kinetics-scope: Unit 5 choices to confirm (open, 2026-10-06)
+## unit5-kinetics-scope: Unit 5 choices to confirm (resolved, 2026-10-06)
+
+**Resolved 2026-10-06 (Unit 5 accuracy review, `docs/apchem-reviews/u5.md`).** Evidence: the
+current CED PDF (apcentral, read through a text extractor) and the equations sheet
+(`docs/apchem-research/framework.md`, section 2). Unit 5 has one exclusion statement, at 5.6:
+"Calculations involving the Arrhenius equation will not be assessed on the AP Exam." No other
+Unit 5 exclusion was found. Answers, point by point:
+
+- **Arrhenius:** confirmed excluded from calculation. Keep it qualitative (as now: a
+  `going-further` aside in 5.5, no item calculates with it). Added to `docs/apchem-ced-map.json`
+  (5.6 `exclusions`, `exclusionsSummary.verifiedUnit5`).
+- **Zero order:** keep. 5.3's learning objective covers zero-, first- and second-order
+  concentration-time graphs; the sheet omits the zero-order law because it is just a straight
+  line ([A] vs t, slope −k). Finding k from that slope (the NH₃ set) is in scope.
+- **Half-lives:** keep as is. The sheet gives only t½ = 0.693/k (first order). Second- and
+  zero-order half-lives stay reasoning-only.
+- **Fractional orders:** keep 0, 1, 2 only. Nothing in the CED or sheet calls for fractional
+  orders, and the A ⇌ 2 B pre-equilibrium stays out.
+- **Pre-equilibrium numeric item:** keep. 5.9 asks students to derive the rate law by setting the
+  fast step's forward and reverse rates equal; combining k₁k₂/k₋₁ numerically (one item, worked
+  in the notes first) is a direct use of that algebra, not a new skill. "Forward and reverse
+  rates equal" needs only dynamic equilibrium (taught in 3.3), not a Unit 7 equilibrium constant.
+- Not verified verbatim: the 5.2, 5.3 and 5.9 essential knowledge text (the extractor returned
+  only the 5.6 exclusion). The answers above rest on the sheet, the CED topic list and the
+  absence of any other Unit 5 exclusion; a person may still want to read those pages.
+- **Pseudo-first-order (`frq-dye-fading`):** keep. The stem says [OH⁻] stays essentially
+  constant, and part (f) reasons from data (doubling [OH⁻] doubles the measured constant), so no
+  named concept is required; the crystal-violet fading lab in the CED's lab list uses the same
+  idea.
+
+Original questions, kept for the record:
 
 Written for Unit 5 (`chem/data/*/` for the 11 kinetics topics); check against the CED:
 
