@@ -53,14 +53,14 @@
    "prompt": "<b>Calculate</b> the value of ΔH for the reaction using the bond enthalpies in the table.",
    "rubric": [
     {
-     "point": "Broken (C–H + Cl–Cl = 655 kJ) minus formed (C–Cl + H–Cl = 759 kJ) = -104 kJ/mol",
+     "point": "Broken (C–H + Cl–Cl = 655 kJ) minus formed (C–Cl + H–Cl = 759 kJ) = −104 kJ/mol",
      "accept": [
-      "-104 kJ/mol",
+      "−104 kJ/mol",
       "−104 kJ/mol"
      ]
     }
    ],
-   "sample": "One C–H bond and the Cl–Cl bond break: 413 + 242 = 655 kJ. One C–Cl bond and one H–Cl bond form: 328 + 431 = 759 kJ. ΔH ≈ 655 − 759 = -104 kJ/mol. (The other three C–H bonds are unchanged.)"
+   "sample": "One C–H bond and the Cl–Cl bond break: 413 + 242 = 655 kJ. One C–Cl bond and one H–Cl bond form: 328 + 431 = 759 kJ. ΔH ≈ 655 − 759 = −104 kJ/mol. (The other three C–H bonds are unchanged.)"
   },
   {
    "label": "b",
@@ -80,7 +80,7 @@
   {
    "label": "c",
    "points": 1,
-   "prompt": "Using enthalpies of formation, ΔH° for the reaction is -99.4 kJ/mol. <b>Explain</b> why the value from part (a) differs from this value.",
+   "prompt": "Using enthalpies of formation, ΔH° for the reaction is −99.4 kJ/mol. <b>Explain</b> why the value from part (a) differs from this value.",
    "rubric": [
     {
      "point": "Bond enthalpies are averages over many compounds, so the actual C–H, C–Cl bonds in these molecules differ slightly from the table values",

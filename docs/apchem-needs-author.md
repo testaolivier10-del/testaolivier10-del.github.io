@@ -170,7 +170,18 @@ Written for Unit 5 (`chem/data/*/` for the 11 kinetics topics); check against th
   before Unit 7 introduces equilibrium.
 - **Pseudo-first-order.** The long FRQ `frq-dye-fading` uses a large excess of OH⁻ and asks for
   k = k_obs/[OH⁻] without naming "pseudo-first-order". Confirm this is fair at this level.
-## unit6-data-values: reference values used in Unit 6 (open, 2026-10-06)
+## unit6-data-values: reference values used in Unit 6 (resolved 2026-10-06)
+
+**Resolved 2026-10-06 (Unit 6 accuracy review, `docs/apchem-reviews/u6.md`):** the set is accepted.
+Each ΔH°f matches the NBS/CODATA-based textbook tables to within 1 kJ/mol (checked against an
+open textbook appendix and the NIST WebBook: Al₂O₃ −1675.7, Fe₂O₃ −824.2, CO −110.5, CO₂ −393.5,
+H₂O(l) −285.8, H₂O(g) −241.8, NO₂ +33.2, glucose −1273.3, O₃ +142.7, C₂H₄ +52.4, SO₂ −296.8,
+SO₃ −395.7 exact; CH₄ −74.8 vs −74.6, C₂H₅OH −277.7 vs −277.6, NH₃ −46.1 vs −45.9 (NIST CODATA
+−45.94), NO +90.3 vs +91.3 in the newer table, +90.25 in NBS 1982). The bond enthalpies are the
+common general-chemistry average set; water/ice values and ΔHfus/ΔHvap are standard. Compound Q in
+`phase-change-energy` (94.10 g/mol, mp 41 °C, bp 182 °C, ΔHfus 11.3 kJ/mol) is phenol's real
+data (NIST ΔfusH 11.5 kJ/mol), so it is realistic. Every item gives its values, so no key depends on
+the choice of table. Original note:
 
 Unit 6 uses one set of common textbook values throughout (checked for internal consistency by
 code, not against one cited data source): ΔH°f (kJ/mol) CH₄ −74.8, C₂H₅OH(l) −277.7, CO −110.5,
@@ -184,7 +195,14 @@ preferred table. Also: the combustion ΔH of ethyne in `hess-law` uses −1300.0
 ΔH°f +227.2, matching tables); KClO₃ decomposition is given as −78.0 kJ/mol (sources range about
 −78 to −90 depending on data set; only used qualitatively).
 
-## unit6-figures-review: Unit 6 figures not yet checked by a person (open, 2026-10-06)
+## unit6-figures-review: Unit 6 figures not yet checked by a person (resolved 2026-10-06)
+
+**Resolved 2026-10-06 (Unit 6 accuracy review):** all nine rendered and checked: arrow directions and
+signs, level order, every printed number (678 − 862 = −184; −74.8 / −965.1 / −890.3; −110.5 + −283.0
+= −393.5; ×2, ×½, reverse on −92.2). One fix: `water-heating-curve` drew the ice and steam slopes
+shallower than the liquid slope, which is backward for energy on the x-axis (ice 2.09 and steam
+about 2.0 J/(g·°C) vs 4.18), so those segments are now steeper and the alt/desc say why. Original
+note:
 
 Nine new SVGs in `chem/figures/` (endo-exo-energy-flow, enthalpy-diagram-pair,
 thermal-contact-particles, coffee-cup-calorimeter, water-heating-curve, thermochemical-scaling,

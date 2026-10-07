@@ -198,7 +198,7 @@
      "This copies the forward values. Reversing the direction flips the sign of ΔH and changes which side the climb starts from.",
      "The sign is right, but the reverse climb starts at the products, 38 kJ, not at the reactants.",
      "Right: going backward climbs from 38 kJ to 214 kJ, then ends at 125 kJ, higher than it started.",
-     "Every elementary reaction has a hump to climb; the reverse hump is the tallest one here."
+     "The reverse reaction passes over the same hump; climbing it from 38 kJ to 214 kJ takes 176 kJ/mol."
     ]
    }
   },
@@ -528,7 +528,7 @@
      "That is true for an endothermic reaction, where the reactants are lower.",
      "Same hump, different starting levels, so different climbs.",
      "Right: the reverse climb starts from the lower product level, so it is longer by |ΔH|.",
-     "The reverse still has to climb the hump; its Ea is the largest of the two."
+     "The reverse still has to climb the hump; its Ea is the larger of the two."
     ]
    }
   }

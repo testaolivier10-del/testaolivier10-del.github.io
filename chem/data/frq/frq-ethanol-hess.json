@@ -72,14 +72,14 @@
      ]
     },
     {
-     "point": "Correct answer with units: -277.7 kJ/mol",
+     "point": "Correct answer with units: −277.7 kJ/mol",
      "accept": [
       "−277.7 kJ/mol",
       "−278 kJ/mol"
      ]
     }
    ],
-   "sample": "2 × Reaction 1: 2 C + 2 O₂ → 2 CO₂, ΔH = −787.0 kJ. 3 × Reaction 2: 3 H₂ + 3/2 O₂ → 3 H₂O, ΔH = −857.4 kJ. Reaction 3 reversed: 2 CO₂ + 3 H₂O → C₂H₅OH + 3 O₂, ΔH = +1366.7 kJ. Adding, 2 CO₂, 3 H₂O and 3 O₂ cancel (leaving ½ O₂ on the left): ΔH° = −787.0 − 857.4 + 1366.7 = -277.7 kJ/mol."
+   "sample": "2 × Reaction 1: 2 C + 2 O₂ → 2 CO₂, ΔH = −787.0 kJ. 3 × Reaction 2: 3 H₂ + 3/2 O₂ → 3 H₂O, ΔH = −857.4 kJ. Reaction 3 reversed: 2 CO₂ + 3 H₂O → C₂H₅OH + 3 O₂, ΔH = +1366.7 kJ. Adding, 2 CO₂, 3 H₂O and 3 O₂ cancel (leaving ½ O₂ on the left): ΔH° = −787.0 − 857.4 + 1366.7 = −277.7 kJ/mol."
   },
   {
    "label": "c",

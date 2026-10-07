@@ -98,7 +98,7 @@
     ]
    },
    "why": {
-    "correct": "Broken: 4 C–H + 2 O=O = 4(413) + 2(495) = 2642 kJ. Formed: 2 C=O + 4 O–H = 2(799) + 4(463) = 3450 kJ. ΔH ≈ broken − formed = 2642 − 3450 = -808 kJ/mol."
+    "correct": "Broken: 4 C–H + 2 O=O = 4(413) + 2(495) = 2642 kJ. Formed: 2 C=O + 4 O–H = 2(799) + 4(463) = 3450 kJ. ΔH ≈ broken − formed = 2642 − 3450 = −808 kJ/mol."
    }
   },
   {
@@ -134,7 +134,7 @@
     ]
    },
    "why": {
-    "correct": "Only the changed bonds matter (the four C–H bonds of ethene stay). Broken: C=C + H–H = 614 + 436 = 1050 kJ. Formed: C–C + 2 C–H = 348 + 2(413) = 1174 kJ. ΔH ≈ 1050 − 1174 = -124 kJ/mol."
+    "correct": "Only the changed bonds matter (the four C–H bonds of ethene stay). Broken: C=C + H–H = 614 + 436 = 1050 kJ. Formed: C–C + 2 C–H = 348 + 2(413) = 1174 kJ. ΔH ≈ 1050 − 1174 = −124 kJ/mol."
    }
   },
   {
@@ -170,7 +170,7 @@
     ]
    },
    "why": {
-    "correct": "Broken: N≡N + 3 H–H = 941 + 3(436) = 2249 kJ. Formed: 2 NH₃ have 6 N–H = 6(391) = 2346 kJ. ΔH ≈ 2249 − 2346 = -97 kJ/mol."
+    "correct": "Broken: N≡N + 3 H–H = 941 + 3(436) = 2249 kJ. Formed: 2 NH₃ have 6 N–H = 6(391) = 2346 kJ. ΔH ≈ 2249 − 2346 = −97 kJ/mol."
    }
   },
   {
@@ -474,7 +474,7 @@
    ],
    "correct": 1,
    "why": {
-    "correct": "Energy is released when bonds form. Combustion is exothermic because 2 C=O and 4 O–H bonds formed (per CH₄) outweigh the C–H and O=O bonds broken.",
+    "correct": "Energy is released when bonds form. Burning a fuel is exothermic because the C=O and O–H bonds formed in CO₂ and H₂O release more energy than breaking the fuel's bonds and the O=O bonds absorbs; for methane, 2 C=O and 4 O–H formed outweigh 4 C–H and 2 O=O broken.",
     "options": [
      "Breaking bonds absorbs energy at any temperature.",
      "Right: the energy comes from the difference, with strong product bonds forming.",
@@ -494,17 +494,17 @@
    "q": "Using H–H 436, O=O 495 and O–H 463 kJ/mol, what is the estimated ΔH for 2 H₂(g) + O₂(g) → 2 H₂O(g)?",
    "options": [
     "+485 kJ/mol",
-    "5 kJ/mol",
-    "-485 kJ/mol",
-    "441 kJ/mol"
+    "+5 kJ/mol",
+    "−485 kJ/mol",
+    "+441 kJ/mol"
    ],
    "correct": 2,
    "why": {
-    "correct": "Count every bond: 2 H–H and 1 O=O broken; 2 × 2 = 4 O–H formed. ΔH ≈ 1367 − 1852 = -485 kJ/mol.",
+    "correct": "Count every bond: 2 H–H and 1 O=O broken; 2 × 2 = 4 O–H formed. ΔH ≈ 1367 − 1852 = −485 kJ/mol.",
     "options": [
      "Size right, sign wrong: you subtracted broken from formed.",
      "You counted one H–H bond and two O–H bonds; two H₂ react and two H₂O (four O–H) form.",
-     "Right: broken 2(436) + 495 = 1367; formed 4(463) = 1852; ΔH ≈ 1367 − 1852 = -485 kJ/mol.",
+     "Right: broken 2(436) + 495 = 1367; formed 4(463) = 1852; ΔH ≈ 1367 − 1852 = −485 kJ/mol.",
      "Each water molecule has two O–H bonds, so four O–H bonds form."
     ]
    }

@@ -91,7 +91,7 @@
     ]
    },
    "why": {
-    "correct": "ΔH° = Σ ΔH°f(products) − Σ ΔH°f(reactants) = [2(−393.5) + 3(−285.8)] − [(−277.7) + 3(0)] = (−787.0 − 857.4) + 277.7 = -1366.7 kJ/mol. O₂ is an element in its standard state, so its ΔH°f is 0."
+    "correct": "ΔH° = Σ ΔH°f(products) − Σ ΔH°f(reactants) = [2(−393.5) + 3(−285.8)] − [(−277.7) + 3(0)] = (−787.0 − 857.4) + 277.7 = −1366.7 kJ/mol. O₂ is an element in its standard state, so its ΔH°f is 0."
    }
   },
   {
@@ -132,7 +132,7 @@
     ]
    },
    "why": {
-    "correct": "ΔH° = [4(+90.3) + 6(−241.8)] − [4(−46.1) + 5(0)] = (361.2 − 1450.8) − (−184.4) = -905.2 kJ/mol."
+    "correct": "ΔH° = [4(+90.3) + 6(−241.8)] − [4(−46.1) + 5(0)] = (361.2 − 1450.8) − (−184.4) = −905.2 kJ/mol."
    }
   },
   {
@@ -163,7 +163,7 @@
     ]
    },
    "why": {
-    "correct": "Al(s) and Fe(s) are elements in their standard states (ΔH°f = 0). ΔH° = [(−1675.7) + 2(0)] − [2(0) + (−824.2)] = -851.5 kJ/mol."
+    "correct": "Al(s) and Fe(s) are elements in their standard states (ΔH°f = 0). ΔH° = [(−1675.7) + 2(0)] − [2(0) + (−824.2)] = −851.5 kJ/mol."
    }
   },
   {
@@ -415,7 +415,7 @@
     ]
    },
    "why": {
-    "correct": "ΔH° = [6(−393.5) + 6(−285.8)] − [(−1273.3) + 6(0)] = (−2361.0 − 1714.8) + 1273.3 = -2802.5 kJ/mol."
+    "correct": "ΔH° = [6(−393.5) + 6(−285.8)] − [(−1273.3) + 6(0)] = (−2361.0 − 1714.8) + 1273.3 = −2802.5 kJ/mol."
    }
   },
   {

@@ -58,7 +58,7 @@
     "correct": "Match each target substance to the side it is on. CH₄ is a product in the target, so Reaction 3 is reversed: +890.3 kJ/mol.",
     "options": [
      "Right: the target has CH₄ on the product side, and reversing flips the sign.",
-     "Reversing a reaction always changes the sign of its ΔH; this is the one-ΔH-not-adjusted slip.",
+     "Reversing a reaction always changes the sign of its ΔH; changing the equation but not its ΔH is a common slip.",
      "As written, CH₄ is a reactant; the target makes CH₄.",
      "The target needs 1 mol of CH₄, the same as Reaction 3; it only needs reversing."
     ]
@@ -102,7 +102,7 @@
     ]
    },
    "why": {
-    "correct": "Reaction 1 as written (−393.5) + Reaction 2 as written (−571.6) + Reaction 3 reversed (+890.3). The 2 O₂, CO₂ and 2 H₂O cancel. ΔH° = −393.5 − 571.6 + 890.3 = -74.8 kJ/mol."
+    "correct": "Reaction 1 as written (−393.5) + Reaction 2 as written (−571.6) + Reaction 3 reversed (+890.3). The 2 O₂, CO₂ and 2 H₂O cancel. ΔH° = −393.5 − 571.6 + 890.3 = −74.8 kJ/mol."
    }
   },
   {
@@ -377,7 +377,7 @@
     ]
    },
    "why": {
-    "correct": "Reverse the first (+296.8) and keep the second (−395.7). Adding: SO₂ + S + 3/2 O₂ → S + O₂ + SO₃; cancel S and one O₂: SO₂ + ½ O₂ → SO₃. ΔH = +296.8 − 395.7 = -98.9 kJ/mol."
+    "correct": "Reverse the first (+296.8) and keep the second (−395.7). Adding: SO₂ + S + 3/2 O₂ → S + O₂ + SO₃; cancel S and one O₂: SO₂ + ½ O₂ → SO₃. ΔH = +296.8 − 395.7 = −98.9 kJ/mol."
    }
   },
   {

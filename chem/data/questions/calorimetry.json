@@ -215,7 +215,7 @@
     ]
    },
    "why": {
-    "correct": "The solution gained 2.788 kJ, so the reaction released it: q(reaction) = −2.788 kJ. ΔH = −2.788 kJ / 0.0500 mol = -55.76 kJ/mol → -55.8 kJ/mol. The sign is negative because the reaction is exothermic."
+    "correct": "The solution gained 2.788 kJ, so the reaction released it: q(reaction) = −2.788 kJ. ΔH = −2.788 kJ / 0.0500 mol = −55.76 kJ/mol → −55.8 kJ/mol. The sign is negative because the reaction is exothermic."
    }
   },
   {
@@ -283,14 +283,14 @@
    "stimulus": "calorimetry-s2",
    "q": "Which value should the student use for ΔT of the solution?",
    "options": [
-    "-3.13 °C, from 22.40 °C to the last reading, 19.27 °C",
-    "-3.36 °C, from 22.40 °C to the lowest point, 19.04 °C",
+    "−3.13 °C, from 22.40 °C to the last reading, 19.27 °C",
+    "−3.36 °C, from 22.40 °C to the lowest point, 19.04 °C",
     "19.04 °C, the lowest temperature reached",
-    "-1.10 °C, the drop in the first 15 s after adding the solid"
+    "−1.10 °C, the drop in the first 15 s after adding the solid"
    ],
    "correct": 1,
    "why": {
-    "correct": "ΔT = T(lowest) − T(start) = 19.04 − 22.40 = -3.36 °C. The lowest point is where the dissolving stops absorbing energy.",
+    "correct": "ΔT = T(lowest) − T(start) = 19.04 − 22.40 = −3.36 °C. The lowest point is where the dissolving stops absorbing energy.",
     "options": [
      "The slow rise after 150 s is energy leaking in from the room, not part of the dissolving.",
      "Right: the lowest temperature marks the end of the dissolving; after that, the room warms the cup.",
