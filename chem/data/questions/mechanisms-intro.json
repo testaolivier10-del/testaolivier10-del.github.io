@@ -8,7 +8,7 @@
   "mechanisms-intro-s2": {
    "kind": "model",
    "title": "Two mechanisms proposed for one reaction",
-   "html": "<p>The overall reaction is 2 O₃(g) → 3 O₂(g). Two students propose mechanisms.</p><p><b>Mechanism X</b></p><ol><li>O₃ → O₂ + O</li><li>O + O₃ → 2 O₂</li></ol><p><b>Mechanism Y</b></p><ol><li>O₃ → O₂ + O</li><li>O + O → O₂</li></ol>"
+   "html": "<p>The overall reaction is 2 O₃(g) → 3 O₂(g). Two students propose mechanisms. In each, every step occurs once each time the overall reaction occurs.</p><p><b>Mechanism X</b></p><ol><li>O₃ → O₂ + O</li><li>O + O₃ → 2 O₂</li></ol><p><b>Mechanism Y</b></p><ol><li>O₃ → O₂ + O</li><li>O + O → O₂</li></ol>"
   }
  },
  "items": [
@@ -349,7 +349,7 @@
    "practice": "4.C",
    "level": "analyze",
    "diff": 3,
-   "q": "A proposed mechanism for 2 NO₂Cl → 2 NO₂ + Cl₂ is: (1) NO₂Cl → NO₂ + Cl; (2) ? Which second step completes it?",
+   "q": "A proposed mechanism for 2 NO₂Cl → 2 NO₂ + Cl₂ is: (1) NO₂Cl → NO₂ + Cl; (2) ? Each step occurs once each time the overall reaction occurs. Which second step completes it?",
    "options": [
     "NO₂Cl + Cl → NO₂ + Cl₂",
     "Cl + Cl → Cl₂",

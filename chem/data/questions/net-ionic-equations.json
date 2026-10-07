@@ -368,9 +368,9 @@
     "decimals": 0,
     "mistakes": [
      {
-      "value": 6,
+      "value": 7,
       "rel": 0.01,
-      "why": "Value: you counted every ion on the left. Ag⁺ and Cl⁻ form the solid; only Ca²⁺ and the two NO₃⁻ are spectators."
+      "why": "Value: you counted every ion on the left (2 Ag⁺, 2 NO₃⁻, 1 Ca²⁺, 2 Cl⁻). Ag⁺ and Cl⁻ form the solid; only Ca²⁺ and the two NO₃⁻ are spectators."
      },
      {
       "value": 2,

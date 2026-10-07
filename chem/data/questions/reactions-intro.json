@@ -346,7 +346,7 @@
     "2 molecules (or 2 mol) of H₂ react per 1 molecule (or 1 mol) of O₂",
     "The mass of hydrogen used is twice the mass of oxygen used",
     "2 g of hydrogen reacts with each 1 g of oxygen used up",
-    "Hydrogen and oxygen react in a 2 : 1 ratio of atoms"
+    "2 hydrogen atoms react with each oxygen molecule"
    ],
    "correct": 0,
    "why": {
@@ -355,7 +355,7 @@
      "Right: coefficients are counts of particles, and so of moles.",
      "Coefficients are not mass ratios; 2 mol of H₂ (4.03 g) is far lighter than 1 mol of O₂ (32.00 g).",
      "Coefficients are not grams; molar masses differ.",
-     "The ratio is of molecules: 2 H₂ to 1 O₂ means 4 H atoms to 2 O atoms."
+     "The coefficient 2 counts H₂ molecules, not H atoms: 2 H₂ hold 4 H atoms, so 4 H atoms react with each O₂ molecule."
     ]
    }
   },

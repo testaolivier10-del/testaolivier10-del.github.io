@@ -54,11 +54,11 @@
   },
   {
    "cause": "If forming releases more than breaking absorbs",
-   "effect": "energy leaves the system: exothermic, ΔH < 0, and the surroundings warm"
+   "effect": "energy leaves the system: exothermic, ΔH &lt; 0, and the surroundings warm"
   },
   {
    "cause": "If breaking absorbs more than forming releases",
-   "effect": "energy enters the system: endothermic, ΔH > 0, and the surroundings cool"
+   "effect": "energy enters the system: endothermic, ΔH &gt; 0, and the surroundings cool"
   },
   {
    "cause": "A thermometer in the water measures the surroundings",
@@ -85,7 +85,7 @@
   "chem-endo-exothermic-13",
   "chem-endo-exothermic-14"
  ],
- "summary": "Every process moves energy between a system and its surroundings. Exothermic processes release energy (ΔH < 0, surroundings warm); endothermic processes absorb it (ΔH > 0, surroundings cool). At the particle level, breaking bonds or attractions absorbs energy and forming them releases it.",
+ "summary": "Every process moves energy between a system and its surroundings. Exothermic processes release energy (ΔH &lt; 0, surroundings warm); endothermic processes absorb it (ΔH &gt; 0, surroundings cool). At the particle level, breaking bonds or attractions absorbs energy and forming them releases it.",
  "connections": [
   {
    "href": "../notes/bond-potential-energy.html",
