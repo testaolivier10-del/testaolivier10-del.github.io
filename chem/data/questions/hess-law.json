@@ -508,14 +508,13 @@
    "diff": 1,
    "q": "Put the steps for solving a Hess's law problem in order.",
    "options": [
-    "Write the target equation and note which side each substance is on.",
-    "Reverse any given equation whose substance is on the wrong side, and change the sign of its ΔH.",
-    "Multiply equations so the amounts match the target, and multiply each ΔH by the same factor.",
+    "Write the target equation and note the side and amount of each substance.",
+    "Reverse or multiply each given equation to match the target, and change its ΔH the same way.",
     "Add the adjusted equations and check that everything not in the target cancels.",
-    "Add the adjusted ΔH values to get ΔH of the target."
+    "Once only the target is left, add the adjusted ΔH values to get its ΔH."
    ],
    "why": {
-    "correct": "Target first, then direction, then amount, then add and check, then add the ΔH values."
+    "correct": "Target first; then adjust each given equation (reverse, multiply or both, in either order) with its ΔH; then add the equations and check that only the target is left; then add the ΔH values."
    }
   }
  ]

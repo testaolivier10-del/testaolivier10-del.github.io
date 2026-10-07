@@ -134,7 +134,7 @@ All on one branch, `claude/apchem` (decision 5), one PR at the end.
 | 2b | Trainers and drills: particle diagrams, ICE tables, Q vs K, buffers, titration curve reader, units and sig figs | **done 2026-10-06** (decision 15); seeded generators with independent validators |
 | 3 | Justification trainer (37 prompts), two fixed practice exams (32 exam-only items), equations-sheet page, score calculator, 9 unit practice tests, cram kit | **built 2026-10-06** (decision 15, Phase 3); exams and justification prompts under review by a separate pass (needs-author `phase3-findings`) |
 | Launch review | Phase 3 content findings fixed, 36 fixed-order items no longer show the key first, published, continuity pass, full CI | **done 2026-10-06** (decision 16). **Published**: `chem/data/published.json` lists `skills-math` and `unit-1`…`unit-9`; Beta badge and "not yet reviewed by an AP® teacher" note stay; Premium stays `onSale: false` until section 8 is done |
-| 4 | Second accuracy pass on the whole course (incl. exam-only items and justify prompts); PR to owner | open |
+| 4 | Second accuracy pass on the whole course (incl. exam-only items and justify prompts); PR to owner | open; Units 4-6 done 2026-10-07 (`docs/apchem-reviews/second-pass/u4-6.md`) |
 
 Quality bar per unit: AP® Biology authoring guide rules (original items only, never adapted from
 released exams; at least 60% apply/analyze; stimulus sets; per-option explanations; key-length
