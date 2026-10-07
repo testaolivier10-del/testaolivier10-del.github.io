@@ -417,7 +417,7 @@
     "K₃ = 2.5 × 10⁹; yes, because the larger K wins",
     "K₃ = 6.3 × 10¹⁴; yes, because K₂ ÷ K₁ is large",
     "K₃ = 1.0 × 10⁴; yes, because K₃ > 1",
-    "K₃ = 1.6 × 10⁻³; no, because K₁ ÷ K₂ is small"
+    "K₃ = 1.6 × 10⁻¹⁵; no, because K₁ ÷ K₂ is small"
    ],
    "correct": 2,
    "why": {
