@@ -73,6 +73,13 @@ explanation of the P → S dip appears in the notes and lesson ideas only; no it
 (chem-periodic-trends-9 cites the dip as data only). The CED text for 1.7 could not be fetched
 verbatim, so the owner should still decide whether that explanation stays in the main text.
 ## unit2-data: values chosen for Unit 2 items (open, 2026-10-06)
+## unit2-data: values chosen for Unit 2 items (resolved by the u2 review, 2026-10-06)
+
+Resolved: checked against standard tables (Wikipedia data pages, which compile CRC and
+WebElements; Shannon radii). All values are acceptable for teaching. Two differ between sources
+without changing any answer: MgO melts at 2852 °C in some tables and 2825 °C in CRC, and tin's
+metallic radius is listed anywhere from 140.5 to 162 pm (151 is inside that range; every value is
+well above Cu 128 and Zn 134, so the bronze reasoning holds). See `docs/apchem-reviews/u2.md`.
 
 Unit 2 items use typical textbook values, rounded, which differ slightly between sources. An
 accuracy reviewer should confirm they are acceptable for teaching (none is a released-exam value):
@@ -89,7 +96,12 @@ accuracy reviewer should confirm they are acceptable for teaching (none is a rel
 - Measured angles: NH₃ 107°, H₂O 104.5°, SO₂ about 119°, SCl₂ about 103°; ClO₂⁻ O–Cl–O about
   111°; Cl–O lengths ClO₂⁻ 156 pm, ClO₃⁻ 149 pm, typical single bond about 170 pm.
 
-## unit2-chlorite: VSEPR angle for ClO₂⁻ in the long FRQ (open, 2026-10-06)
+## unit2-chlorite: VSEPR angle for ClO₂⁻ in the long FRQ (resolved by the u2 review, 2026-10-06)
+
+Resolved: keep ClO₂⁻. The measured angle (111°, Cl–O 156 pm) is confirmed. The exam asks for
+VSEPR estimates with domain reasoning, so a rubric that accepts 100° to 115° with the four-domain
+argument is fair and keeps the ion's real data honest. The rubric's accept list was made consistent
+with that range (it had said 105° to 112°).
 
 `frq-chlorite-ion-structure` part (f) asks for the O–Cl–O angle in ClO₂⁻ (bent, four domains).
 VSEPR's lone-pair argument predicts "slightly less than 109.5°", but the measured angle is about
@@ -97,7 +109,16 @@ VSEPR's lone-pair argument predicts "slightly less than 109.5°", but the measur
 sample notes the measured value. Decide whether to keep this ion or switch to a species whose
 measured angle follows the simple rule (for example SCl₂, about 103°).
 
-## unit2-expanded-octet: preferred diagrams for ClO₂⁻ and sulfate (open, 2026-10-06)
+## unit2-expanded-octet: preferred diagrams for ClO₂⁻ and sulfate (resolved by the u2 review, 2026-10-06)
+
+Resolved: the CED (2.6) gives the octet rule and formal charge as the criteria for choosing a
+diagram, and recent scoring accepts either an all-octet or an expanded-octet diagram for period 3
+oxyanions when a question does not name a criterion. The course follows that: the 2.6 notes say
+both are accepted, and the FRQ part (d) now asks why "the formal-charge criterion favors" the
+expanded diagram (not that it is simply "preferred"), its sample says both diagrams are valid, and
+the expanded-octet remark is no longer required for the reasoning point. Part (b) still asks for
+the all-octet diagram explicitly. A teacher reviewer may still confirm against the newest scoring
+guidelines (teacher-review).
 
 The course follows the formal-charge rule (formal charges nearest zero, with an expanded octet
 allowed from period 3 on), so the long FRQ prefers ClO₂⁻ drawn with one Cl=O bond, and the 2.6

@@ -41,13 +41,13 @@
   },
   {
    "label": "d",
-   "prompt": "A student proposes a second diagram for ClO₂⁻ with one Cl=O double bond and one Cl–O single bond, in which Cl has two lone pairs. <b>Justify</b>, using formal charges, why this diagram is preferred over the diagram in part (b).",
+   "prompt": "A student proposes a second diagram for ClO₂⁻ with one Cl=O double bond and one Cl–O single bond, in which Cl has two lone pairs. <b>Justify</b>, using formal charges, why the formal-charge criterion favors this diagram over the diagram in part (b).",
    "points": 2,
    "rubric": [
     { "point": "Correct formal charges in the proposed diagram: Cl 0, double-bonded O 0, single-bonded O −1 (compared with Cl +1 and both O −1 in part b)", "accept": ["Cl 7 − 4 − 3 = 0; O(=) 6 − 4 − 2 = 0; O(–) 6 − 6 − 1 = −1"] },
-    { "point": "Reasoning: the proposed diagram has formal charges closer to zero (fewer charged atoms, no charge separation between Cl and O), with the remaining −1 on O, the more electronegative atom; Cl (period 3) can hold more than eight electrons", "accept": ["formal charges nearer zero are preferred", "negative formal charge on the more electronegative O", "Cl can have an expanded octet because it is in period 3"] }
+    { "point": "Reasoning: the proposed diagram has formal charges closer to zero (fewer charged atoms, no charge separation between Cl and O), with the remaining −1 on O, the more electronegative atom (noting that Cl, in period 3, can hold more than eight electrons is good but not required for the point)", "accept": ["formal charges nearer zero are preferred", "negative formal charge on the more electronegative O", "Cl can have an expanded octet because it is in period 3"] }
    ],
-   "sample": "In the proposed diagram, Cl has 7 − 4 − ½(6) = 0, the double-bonded O has 6 − 4 − ½(4) = 0 and the single-bonded O has 6 − 6 − ½(2) = −1. In the octet diagram Cl is +1 and both O atoms are −1. The proposed diagram has formal charges closer to zero, and its only negative formal charge is on O, which is more electronegative than Cl (3.4 vs 3.2). Cl is in period 3, so it can hold 10 electrons, an expanded octet."
+   "sample": "In the proposed diagram, Cl has 7 − 4 − ½(6) = 0, the double-bonded O has 6 − 4 − ½(4) = 0 and the single-bonded O has 6 − 6 − ½(2) = −1. In the octet diagram Cl is +1 and both O atoms are −1. The proposed diagram has formal charges closer to zero, and its only negative formal charge is on O, which is more electronegative than Cl (3.4 vs 3.2). Cl is in period 3, so it can hold 10 electrons, an expanded octet. (Both diagrams are valid Lewis diagrams; the formal-charge criterion is what selects the expanded-octet one.)"
   },
   {
    "label": "e",
@@ -65,7 +65,7 @@
    "points": 2,
    "rubric": [
     { "point": "Bent geometry", "accept": ["bent", "angular", "V-shaped"] },
-    { "point": "Justification: Cl has four electron domains (two bonding domains and two lone pairs, counting each bond once), arranged tetrahedrally, so the angle is near 109.5°; accept any estimate from 100° to 115° with this reasoning (VSEPR's lone-pair argument suggests slightly less than 109.5°; the measured angle is about 111°)", "accept": ["4 domains, 2 lone pairs, about 109.5°", "slightly less than 109.5° because lone pairs repel more", "about 105° to 112°"] }
+    { "point": "Justification: Cl has four electron domains (two bonding domains and two lone pairs, counting each bond once), arranged tetrahedrally, so the angle is near 109.5°; accept any estimate from 100° to 115° with this reasoning (VSEPR's lone-pair argument suggests slightly less than 109.5°; the measured angle is about 111°)", "accept": ["4 domains, 2 lone pairs, about 109.5°", "slightly less than 109.5° because lone pairs repel more", "any estimate from 100° to 115° with the four-domain reasoning"] }
    ],
    "sample": "Cl has four electron domains: two bonds to O (a double bond counts as one domain) and two lone pairs. The domains are arranged tetrahedrally; with two of the positions taken by lone pairs, the atoms form a bent shape. The O–Cl–O angle is therefore close to the tetrahedral 109.5° (VSEPR's lone-pair argument suggests a little less; the measured angle is about 111°)."
   },
