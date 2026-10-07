@@ -315,9 +315,9 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "At higher temperature molecules move faster, so the brief tug of a neighbour changes their motion less. Gases behave more ideally at high temperature.",
+    "correct": "At higher temperature molecules move faster, so the brief tug of a neighbor changes their motion less. Gases behave more ideally at high temperature.",
     "options": [
-     "Right: high temperature favours ideal behavior.",
+     "Right: high temperature favors ideal behavior.",
      "The attractions themselves do not grow with temperature; their effect on fast molecules shrinks.",
      "T in the denominator does not remove the effect of attractions on the measured P.",
      "Molecules do not swell when heated."
@@ -426,10 +426,10 @@
    "why": {
     "correct": "In 100 L the pressure is about 0.74 atm. The molecules are far apart, so they rarely feel each other's attractions and their volume is negligible: nearly ideal.",
     "options": [
-     "Right: low pressure favours ideal behavior.",
+     "Right: low pressure favors ideal behavior.",
      "Speed depends on temperature, which is unchanged.",
      "Deviations depend strongly on pressure and temperature.",
-     "Molecules far apart have fewer neighbours, so attractions matter less."
+     "Molecules far apart have fewer neighbors, so attractions matter less."
     ]
    }
   },
@@ -451,7 +451,7 @@
    "correct": 0,
    "fixed": true,
    "why": {
-    "correct": "Fast particles (high T) are barely affected by attractions, and particles far apart (low P) have negligible volume and few neighbours.",
+    "correct": "Fast particles (high T) are barely affected by attractions, and particles far apart (low P) have negligible volume and few neighbors.",
     "options": [
      "Right: fast, far-apart particles.",
      "These conditions make both deviations largest, near condensation.",
@@ -477,7 +477,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "Deviations from attractions grow with intermolecular forces. SO₂ is polar with many electrons, so it attracts its neighbours most strongly.",
+    "correct": "Deviations from attractions grow with intermolecular forces. SO₂ is polar with many electrons, so it attracts its neighbors most strongly.",
     "options": [
      "Right: polar and polarizable.",
      "Ne has few electrons and weak dispersion forces.",
@@ -503,9 +503,9 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "A particle near the wall is pulled back by its neighbours, so the force on the wall is less than for an ideal gas.",
+    "correct": "A particle near the wall is pulled back by its neighbors, so the force on the wall is less than for an ideal gas.",
     "options": [
-     "Right: neighbours pull particles back from the wall.",
+     "Right: neighbors pull particles back from the wall.",
      "Particle volume raises the pressure (or volume) above ideal; it does not lower it.",
      "Elastic collisions lose no energy; this is an ideal-gas assumption, not a deviation.",
      "At a given temperature the average kinetic energy is set; the attractions are what differ."
@@ -613,7 +613,7 @@
     0
    ],
    "why": {
-    "correct": "Attractions push PV/nRT below 1, and NH₃ attracts its neighbours by hydrogen bonds, far more strongly than the small, barely polarizable He, Ne or H₂.",
+    "correct": "Attractions push PV/nRT below 1, and NH₃ attracts its neighbors by hydrogen bonds, far more strongly than the small, barely polarizable He, Ne or H₂.",
     "options": [
      "Right: the strongest attractions.",
      "He has the weakest attractions of any gas; it sits slightly above 1.",

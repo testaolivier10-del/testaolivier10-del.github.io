@@ -61,7 +61,7 @@
    "points": 2,
    "rubric": [
     {
-     "point": "Propylamine has H bonded to N, so its molecules form hydrogen bonds to the N lone pair of neighbouring molecules; trimethylamine has no N–H and cannot hydrogen-bond to itself.",
+     "point": "Propylamine has H bonded to N, so its molecules form hydrogen bonds to the N lone pair of neighboring molecules; trimethylamine has no N–H and cannot hydrogen-bond to itself.",
      "accept": [
       "N–H in propylamine but none in trimethylamine"
      ]
@@ -74,7 +74,7 @@
      ]
     }
    ],
-   "sample": "Propylamine has two H atoms on N, so each molecule can hydrogen-bond to the lone pair on the N of a neighbour. Trimethylamine has no H on N, so its molecules attract only by dispersion and dipole-dipole forces. The two have the same formula and number of electrons, so their dispersion forces are similar; propylamine's additional hydrogen bonds make its attractions stronger, so more energy is needed to separate its molecules and it boils higher."
+   "sample": "Propylamine has two H atoms on N, so each molecule can hydrogen-bond to the lone pair on the N of a neighbor. Trimethylamine has no H on N, so its molecules attract only by dispersion and dipole-dipole forces. The two have the same formula and number of electrons, so their dispersion forces are similar; propylamine's additional hydrogen bonds make its attractions stronger, so more energy is needed to separate its molecules and it boils higher."
   },
   {
    "label": "c",

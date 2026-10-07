@@ -558,7 +558,7 @@
      "Gas particles are captured by attractions, which releases energy.",
      "Right: solid to gas overcomes attractions.",
      "Particles settle into fixed positions, releasing energy.",
-     "Right: molecules must overcome their neighbours' attractions to escape.",
+     "Right: molecules must overcome their neighbors' attractions to escape.",
      "Gas to solid releases energy as attractions form."
     ]
    }
@@ -583,7 +583,7 @@
     "correct": "Vapor pressure follows the strength of attractions, not mass. Water's hydrogen bonds hold its molecules more tightly than Br₂'s dispersion forces, so fewer water molecules escape.",
     "options": [
      "Right: name the forces in both substances.",
-     "Mass does not set vapor pressure; the attractions do, and here they favour water.",
+     "Mass does not set vapor pressure; the attractions do, and here they favor water.",
      "At the same temperature heavier molecules move more slowly, not faster.",
      "Evaporation leaves Br₂ molecules whole; bromine vapor is Br₂."
     ]

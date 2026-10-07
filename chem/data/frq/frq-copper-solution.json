@@ -140,7 +140,7 @@
    "points": 1,
    "rubric": [
     {
-     "point": "Five points correctly plotted with labelled axes and a straight best-fit line through or near the origin.",
+     "point": "Five points correctly plotted with labeled axes and a straight best-fit line through or near the origin.",
      "accept": [
       "straight line through the points and the origin"
      ]

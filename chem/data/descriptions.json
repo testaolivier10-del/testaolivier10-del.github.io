@@ -1,6 +1,11 @@
 {
  "about": "Hand-written meta descriptions for pages whose opening text has no whole sentence short enough to be one. Shaped { lessons: {topic: text}, notes: {topic: text}, units: {chapter: text} }. Never use the mark here: no \"AP\" in any meta description (docs/apchem-spec.md decision 2).",
  "lessons": {},
- "notes": {},
+ "notes": {
+  "bond-enthalpies": "Estimate a reaction's enthalpy change from average bond enthalpies: energy goes in to break bonds and comes out when bonds form, with a worked example.",
+  "electron-configuration": "Coulomb's law, shells, subshells and orbitals, electron configurations, valence electrons and ionization energy, explained from scratch.",
+  "equilibrium-intro": "Dynamic equilibrium explained: why many reactions stop short of completion and keep running both ways at equal rates.",
+  "heat-transfer": "Temperature, thermal energy and heat, how energy moves by collisions, and why energy lost by one object equals energy gained by another."
+ },
  "units": {}
 }

@@ -7,6 +7,6 @@
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
-  "alt": "Two causes of non-ideal behavior. Attractions: a particle near the wall is pulled back by its neighbours, so it strikes the wall less hard and the pressure is lower than ideal. Particle volume: when gas is squeezed, the particles take up a real share of the container, so the volume is larger than the ideal prediction."
+  "alt": "Two causes of non-ideal behavior. Attractions: a particle near the wall is pulled back by its neighbors, so it strikes the wall less hard and the pressure is lower than ideal. Particle volume: when gas is squeezed, the particles take up a real share of the container, so the volume is larger than the ideal prediction."
  }
 }
