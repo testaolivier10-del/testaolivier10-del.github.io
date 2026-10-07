@@ -39,6 +39,17 @@ AP® Biology frees one simulator and all skills tools (apbio decision 9). Propos
 Chemistry: the particle-diagram trainer free, the other trainers and drills Premium. Owner to
 confirm before the first trainer ships.
 
+**Built 2026-10-06 (spec decision 15) with the first tool of each unit free**, as the brief for the
+tools asked: free `particle-diagrams` (Unit 3), `ice-table-drills` (Unit 7), `titration-curve-reader`
+(Unit 8) and the skills tool `units-sig-figs`; Premium `q-vs-k` and `buffer-drills`. To make a tool
+Premium or free, add or remove `"premium": "tools"` on its `chem/data/pages.json` entry and rebuild.
+Still open for the owner.
+
+Also for a reviewer: the indicator ranges in the titration reader (methyl orange 3.1–4.4, methyl red
+4.4–6.2, bromothymol blue 6.0–7.6, phenolphthalein 8.2–10.0, alizarin yellow R 10.1–12.0) are common
+textbook values; sources differ by a few tenths, and the generator only draws curves whose
+equivalence pH falls in exactly one range.
+
 ## unit-1-data-values: verify reference data used in Unit 1 items (resolved, 2026-10-06)
 
 Resolved in the Unit 1 review (`docs/apchem-reviews/u1.md`). Isotope masses and abundances for

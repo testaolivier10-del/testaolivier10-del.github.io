@@ -136,9 +136,9 @@ All on one branch, `claude/apchem` (decision 5), one PR at the end.
 | 1 | Units 1-3 (where students are now) with the math refresher, notes, lessons, banks, FRQs, particle-diagram practice; independent accuracy check per unit; Beta | next |
 | 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 4 drafted 2026-10-06 (9 topics, 147 items, 4 FRQs: `frq-oxalic-acid-titration` long, `frq-ammonia-limiting`, `frq-metal-displacement`, `frq-sulfate-precipitate` short; 9 figures); not published. **Accuracy check done 2026-10-06** (`docs/apchem-reviews/u4.md`: 7 items and 1 FRQ fixed, no numeric key changed; all four `unit4-*` needs-author entries resolved, `limiting-reactant` in 4.3 confirmed) |
 | 1 | Units 1-3 (where students are now) with the math refresher, notes, lessons, banks, FRQs, particle-diagram practice; independent accuracy check per unit; Beta | next |
-| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 7 content written 2026-10-06 (decision 13): 12 topics, 200 items, 13 figures, 5 FRQs; not yet accuracy-checked or published; ICE and Q-vs-K trainers not built |
+| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 7 content written 2026-10-06 (decision 13): 12 topics, 200 items, 13 figures, 5 FRQs; not yet accuracy-checked or published; ICE and Q-vs-K trainers built (decision 15) |
 | 2 | Unit 5 accuracy check | **done 2026-10-06**: `docs/apchem-reviews/u5.md` (171 items, 3 FRQs, 11 figures; 31 items fixed, no key wrong in substance); needs-author `unit5-kinetics-scope` resolved (Arrhenius calculations excluded per the CED; the rest kept) |
-| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 7 content written 2026-10-06 (decision 13): 12 topics, 200 items, 13 figures, 5 FRQs; accuracy-checked 2026-10-06 (`docs/apchem-reviews/u7.md`), not yet published; ICE and Q-vs-K trainers not built |
+| 2 | Units 4-6, then 7-8 with the drills and titration reader, then 9; accuracy check per unit | Unit 7 content written 2026-10-06 (decision 13): 12 topics, 200 items, 13 figures, 5 FRQs; accuracy-checked 2026-10-06 (`docs/apchem-reviews/u7.md`), not yet published; ICE and Q-vs-K trainers built (decision 15) |
 | 3 | Justification trainer, full practice exams, equations-sheet page, score calculator, cram kit | |
 | 4 | Second accuracy pass on the whole course; PR to owner | |
 
@@ -224,6 +224,17 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    on the ATP set, S° > 0 limited to pure substances, and one stem lengthened to clear a near-duplicate.
    Needs-author `unit9-data` and `unit9-atp` resolved; `unit9-exclusions-applied` partly (9.8
    exclusion confirmed in the CED; 9.10 page not fully read).
+15. (2026-10-06) **Trainers and drills built** (differentiators 2-4; formats in `docs/apchem-architecture.md`,
+   "Tools"): `particle-diagrams` (Units 3, 4, 7, 8), `ice-table-drills` and `q-vs-k` (Unit 7),
+   `buffer-drills` and `titration-curve-reader` (Unit 8), `units-sig-figs` (math chapter, then Units 3, 6,
+   8). Every number comes from seeded generators in `chem-tool-math.js` (`ApChemMath.ice`, `qk`, `buffer`,
+   `titration`, `particles`, `units`); each tool's validator regenerates 300 problems per context and
+   recomputes them independently; tests in `scripts/test/apchem-tools.test.mjs`. Titration curves are
+   solved from the exact charge balance, not sketched. Content is served per context topic, so each
+   picture or problem kind unlocks with its unit. **Free or Premium:** as AP® Biology (apbio decision 9),
+   the first tool of each unit in map order and every skills tool are free: `particle-diagrams` (Unit 3),
+   `ice-table-drills` (Unit 7), `titration-curve-reader` (Unit 8), `units-sig-figs`; `q-vs-k` and
+   `buffer-drills` are Premium (`tools`). Owner to confirm (needs-author `tools-premium`).
 
 ## 8. Open items for the owner
 

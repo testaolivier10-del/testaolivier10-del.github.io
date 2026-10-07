@@ -21,6 +21,8 @@
      Skills problems:
        skillTool(app, data, { slug, kind, decorate })  practice (seeded) and
          authored problems; auto-checked parts; worked solution after Check
+     Step drills (seeded, checked step by step with targeted feedback):
+       drill(app, data, { slug, generate, types, extra, onVol })
      Recording: record(slug, items) -> ApChemCore.toolResult, so every item
        (id "<tool>:<content>:<item>") reaches mastery and the review queue. */
 (function(){
@@ -345,10 +347,178 @@
     draw(false);
   }
 
+  /* ------------------------------------------------- step drills */
+  /* drill(app, data, o): the shared page for the seeded step drills (ICE
+     tables, Q vs K, buffers, titration curves, particle pictures). Every
+     problem comes from o.generate(rng, context, type), a pure ApChemMath
+     generator, so the validator and the page run the same numbers. A
+     problem is { ctx, topic, text, steps: [...], solution: [...] }; a step
+     is one of
+       num    { cell, unit?, d? }          a number, graded by ApChemMath.diagnose
+       vol    { cell, max }                a volume read off a graph (number + slider)
+       row    { row, cells: [cell...] }    one row of an ICE table, a cell per species
+       coef   { row, cells: [cell...] }    the change row, typed as −x, +2x, 0
+       choice { options, optionsHtml?, correct, fixed?, why: [...] }
+     Each step is checked on its own; a wrong answer gets the feedback for
+     the specific slip it matches, and the student can try again or show the
+     answer. The first try is what is recorded, as "<slug>:<context>:<step>".
+     o: { slug, generate, types?: [{ value, label }], typeLabel?, contexts?,
+     extra(host, problem, api)?, onVol(v, step, api)?, onStep(step, right, api)?,
+     title(problem)?, newLabel? } */
+  var parseCoef = M.parseCoef, coefText = M.coefText;
+  function numOf(raw){ return Q.parseNumber(String(raw || '').replace(/%\s*$/, '')); }
+  function shownNum(c, d){ return d != null ? F(c.answer, d) : M.fmt(c.answer, 3); }
+  function drill(app, data, o){
+    var slug = o.slug, gid = nid('dr'), contexts = data.contexts || [];
+    var type = '', seed = seedFromUrl() || freshSeed();
+    app.insertAdjacentHTML('beforeend',
+      (data.intro ? '<div class="bt-intro">' + data.intro + '</div>' : '') +
+      (data.howItWorks ? box(data.howItWorksTitle || 'How this drill works', data.howItWorks) : '') +
+      '<div class="bt-controls cd-pick"></div>' +
+      '<section class="bt-problem cd-problem" aria-labelledby="' + gid + '-h"></section>');
+    var area = app.querySelector('.cd-problem');
+    // Only the kinds this page has content for (contexts unlock with their units).
+    var kinds = (o.types || []).filter(function(t){ type = t.value; var n = pickable().length; type = ''; return n > 0; });
+    if(kinds.length > 1){
+      var sel = choiceSelect({ label: o.typeLabel || 'Problem type', options: [{ value: '', label: 'Mixed: any kind' }].concat(kinds), value: '', onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
+      app.querySelector('.cd-pick').appendChild(sel.el);
+    }
+    function pickable(){ return contexts.filter(function(c){ return !type || (c.types ? c.types.indexOf(type) > -1 : c.mode ? c.mode === type : c.kind === type); }); }
+    function pickCtx(r){ var ok = pickable(); return r.pick(ok.length ? ok : contexts); }
+    function draw(focus){
+      var r = M.rng(seed), ctx = pickCtx(r), p = o.generate(r, ctx, type || undefined), results = [];
+      area.innerHTML = '<div class="bt-prob-head"><h2 id="' + gid + '-h" tabindex="-1">' + esc(o.title ? o.title(p) : 'Practice problem') + '</h2><p class="bt-code">Problem code <b>' + seed + '</b> <a href="?seed=' + seed + '">Link to this problem</a></p></div>' +
+        '<div class="bt-context">' + p.text + '</div><div class="cd-extra"></div><div class="cd-steps"></div>' +
+        '<div class="bt-solution" hidden></div><div class="bt-next"></div>';
+      var api = { area: area, problem: p };
+      if(o.extra) o.extra(area.querySelector('.cd-extra'), p, api);
+      var host = area.querySelector('.cd-steps');
+      function step(i){
+        if(i >= p.steps.length) return finish();
+        var s = p.steps[i], sid = gid + '-s' + i, tries = 0, done = false;
+        var el = document.createElement('form');
+        el.className = 'bt-part cd-step';
+        el.setAttribute('novalidate', '');
+        el.setAttribute('aria-labelledby', sid + '-l');
+        var head = '<p class="cd-label" id="' + sid + '-l"><span class="cd-n">Step ' + (i + 1) + ' of ' + p.steps.length + '</span> ' + s.label + '</p>' + (s.hint ? '<p class="bt-small" id="' + sid + '-h">' + s.hint + '</p>' : '');
+        var body = '';
+        if(s.kind === 'num' || s.kind === 'vol'){
+          body = '<div class="bt-num-row cd-num"><label class="sr-only" for="' + sid + '-i">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</label><input type="text" id="' + sid + '-i" inputmode="decimal" autocomplete="off" spellcheck="false"' + (s.hint ? ' aria-describedby="' + sid + '-h"' : '') + '>' + (s.unit ? '<span class="bt-unit">' + esc(s.unit) + '</span>' : '') + '</div>';
+          if(s.kind === 'vol') body += '<div class="cd-vol"><label for="' + sid + '-r">Move the marker along the curve</label><input type="range" id="' + sid + '-r" min="0" max="' + s.max + '" step="0.1" value="' + M.round(s.max / 4, 1) + '"></div>';
+        } else if(s.kind === 'choice'){
+          var order = s.fixed ? s.options.map(function(x, k){ return k; }) : Q.shuffle(s.options.map(function(x, k){ return k; }));
+          body = '<fieldset class="cd-opts' + (s.optionsHtml ? ' cd-pics' : '') + '"><legend class="sr-only">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</legend>' + order.map(function(k, n){
+            var id = sid + '-o' + k;
+            return '<div class="bt-radio cd-opt" data-k="' + k + '"><input type="radio" name="' + sid + '" id="' + id + '" value="' + k + '"><label for="' + id + '">' + (s.optionsHtml ? '<span class="cd-pic-n">Picture ' + (n + 1) + '</span>' + s.optionsHtml[k] : s.options[k]) + '</label></div>';
+          }).join('') + '</fieldset>';
+        } else {
+          body = '<p class="bt-small cd-rowhint">Type each value in the ' + esc(s.row) + ' row of the table.</p>';
+        }
+        el.innerHTML = head + body + '<div class="bt-actions"><button type="submit" class="btn-press sm">Check</button></div><div class="cd-fb" role="status" aria-live="polite"></div>';
+        host.appendChild(el);
+        var rowInputs = [];
+        if(s.kind === 'row' || s.kind === 'coef'){
+          area.querySelectorAll('[data-row="' + s.row + '"] [data-i]').forEach(function(td){
+            var k = +td.getAttribute('data-i');
+            td.innerHTML = '<input type="text" class="cd-cell" autocomplete="off" spellcheck="false"' + (s.kind === 'num' ? '' : ' inputmode="' + (s.kind === 'coef' ? 'text' : 'decimal') + '"') + ' aria-label="' + esc(td.getAttribute('data-label')) + '">';
+            rowInputs[k] = td.querySelector('input');
+            rowInputs[k].addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); check(); } });
+          });
+          area.querySelector('[data-row="' + s.row + '"]').classList.add('is-active');
+        }
+        var fb = el.querySelector('.cd-fb'), input = el.querySelector('.cd-num input'), range = el.querySelector('.cd-vol input');
+        if(range){
+          var sync = function(v){ if(o.onVol) o.onVol(v, s, api); };
+          range.addEventListener('input', function(){ input.value = M.fixed(+range.value, 1); sync(+range.value); });
+          input.addEventListener('input', function(){ var x = numOf(input.value); if(isFinite(x)){ range.value = String(x); sync(x); } });
+          api.setVol = function(v){ if(done) return; v = Math.max(0, Math.min(s.max, M.round(v, 1))); range.value = String(v); input.value = M.fixed(v, 1); sync(v); };
+          sync(+range.value);
+        } else api.setVol = null;
+        el.addEventListener('submit', function(e){ e.preventDefault(); check(); });
+        function lock(){
+          done = true;
+          el.querySelectorAll('input').forEach(function(x){ if(x.type === 'radio' || x.type === 'range') x.disabled = true; else x.readOnly = true; });
+          rowInputs.forEach(function(x){ if(x) x.readOnly = true; });
+          if(s.row) area.querySelector('[data-row="' + s.row + '"]').classList.remove('is-active');
+        }
+        function next(right){
+          results.push({ id: slug + ':' + p.ctx + ':' + s.key, correct: right, topic: (data.partTopics && data.partTopics[s.key]) || p.topic, practice: s.practice, level: s.level || 'apply', diff: 2, group: s.key });
+          el.querySelector('.bt-actions').innerHTML = '';
+          if(o.onStep) o.onStep(s, right, api);
+          step(i + 1);
+          var nx = host.lastElementChild;
+          if(nx && nx !== el){ var f = nx.querySelector('input:not([readonly]):not([disabled])') || area.querySelector('tr.is-active input'); if(f) f.focus(); }
+        }
+        function reveal(){
+          if(s.kind === 'num' || s.kind === 'vol'){ input.value = shownNum(s.cell, s.d); if(range){ range.value = String(s.cell.answer); if(o.onVol) o.onVol(s.cell.answer, s, api); } }
+          else if(s.kind === 'row') s.cells.forEach(function(c, k){ if(rowInputs[k]) rowInputs[k].value = M.fmt(c.answer, 3); });
+          else if(s.kind === 'coef') s.cells.forEach(function(c, k){ if(rowInputs[k]) rowInputs[k].value = coefText(c.answer); });
+          else { var c = el.querySelector('input[value="' + s.correct + '"]'); if(c) c.checked = true; }
+          el.classList.add('is-shown');
+          fb.innerHTML = '<span class="chem-mark no">Shown</span> The answer is filled in. ' + (s.kind === 'choice' ? s.why[s.correct] : '');
+          lock(); next(false);
+        }
+        function check(){
+          if(done) return;
+          // blank: nothing entered yet, so the try does not count.
+          var ok = true, notes = [], blank = false;
+          if(s.kind === 'num' || s.kind === 'vol'){
+            var rawN = input.value.trim(), g = M.diagnose(s.cell, numOf(rawN));
+            if(!rawN) blank = true;
+            else if(g.blank){ fb.innerHTML = '<span class="bt-small">Type a number, for example 0.25 or 1.8e-5.</span>'; return; }
+            ok = g.ok; if(!ok && g.why) notes.push(g.why);
+            input.classList.toggle('is-wrong', !blank && !ok); input.classList.toggle('is-right', ok);
+          } else if(s.kind === 'row' || s.kind === 'coef'){
+            s.cells.forEach(function(c, k){
+              var raw = rowInputs[k].value.trim(), x = s.kind === 'coef' ? parseCoef(raw) : numOf(raw);
+              var g = M.diagnose(c, x), who = rowInputs[k].getAttribute('aria-label');
+              if(!raw){ blank = true; ok = false; }
+              else if(g.blank){ ok = false; notes.push('<b>' + esc(who) + ':</b> ' + (s.kind === 'coef' ? 'Write the change in terms of x, such as −x, +2x or 0.' : 'Type a number, for example 0.25 or 1.8e-5.')); }
+              else if(!g.ok){ ok = false; notes.push('<b>' + esc(who) + ':</b> ' + (g.why || (s.kind === 'coef' ? 'Write the change as a multiple of x, from the coefficient: −x, +2x.' : 'Not this value. Recheck the arithmetic.'))); }
+              rowInputs[k].classList.toggle('is-wrong', !!raw && !g.ok); rowInputs[k].classList.toggle('is-right', !!g.ok);
+            });
+          } else {
+            var c = el.querySelector('input:checked');
+            if(!c) blank = true;
+            else { var pick = +c.value; ok = pick === s.correct; notes.push(s.why[pick]); }
+          }
+          if(blank){ fb.innerHTML = '<span class="bt-small">' + (s.kind === 'choice' ? 'Choose an answer first.' : s.kind === 'coef' ? 'Fill every cell of the row' + (s.kind === 'coef' ? ': write 0, −x, +2x and so on.' : '.') : 'Type a number first, for example 0.25 or 1.8e-5.') + '</span>'; return; }
+          tries++;
+          if(ok){
+            el.classList.add('is-right');
+            fb.innerHTML = '<span class="chem-mark ok">Correct</span> ' + (s.kind === 'choice' ? notes[0] : '');
+            lock(); next(tries === 1);
+            return;
+          }
+          el.classList.add('is-wrong');
+          fb.innerHTML = '<span class="chem-mark no">Not yet</span>' + (notes.length ? '<ul class="cd-notes">' + notes.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul>' : s.kind === 'vol' ? ' That is not where this point is. Look at the shape of the curve again.' : ' Recheck the arithmetic.') +
+            '<div class="bt-actions"><button type="button" class="bt-btn cd-show">Show the answer</button></div>';
+          fb.querySelector('.cd-show').addEventListener('click', reveal);
+        }
+      }
+      function finish(){
+        var sol = area.querySelector('.bt-solution');
+        sol.hidden = false;
+        sol.innerHTML = '<h3 tabindex="-1">Worked solution</h3><ol class="bt-steps">' + p.solution.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ol>';
+        var right = results.filter(function(x){ return x.correct; }).length;
+        record(slug, results);
+        event('apchem-drill-check', { tool: slug, correct: right, total: results.length });
+        var nx = area.querySelector('.bt-next');
+        nx.innerHTML = '<p class="bt-result" role="status">' + right + ' of ' + results.length + ' steps right the first time.</p><div class="bt-actions"><button type="button" class="btn-press sm cd-again">' + esc(o.newLabel || 'New problem') + '</button>' + report(slug + ':' + p.ctx) + '</div>';
+        nx.querySelector('.cd-again').addEventListener('click', function(){ seed = freshSeed(); draw(true); });
+        sol.querySelector('h3').focus();
+      }
+      step(0);
+      if(focus) area.querySelector('h2').focus();
+    }
+    draw(false);
+  }
+
   window.ApChemTools = {
     esc: esc, F: F, nid: nid, mount: mount, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,
     record: record, report: report, event: event, questions: questions, frq: frq, skillTool: skillTool,
-    gradePart: gradePart, partHtml: partHtml, unitOf: unitOf
+    gradePart: gradePart, partHtml: partHtml, unitOf: unitOf,
+    drill: drill, parseCoef: parseCoef, coefText: coefText
   };
 })();
