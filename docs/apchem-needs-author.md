@@ -94,16 +94,18 @@ recent scoring; confirm the course's wording against the current CED and scoring
 - "shared pair" removed as an alias of `bonding-pair` (2.5): 2.1 defines a covalent bond as a
   shared pair of electrons, which the ordering check flagged as a use of a later term.
 - "melting point" stays a 3.1 concept; Unit 2 says "melting temperature" or "melts at".
-## unit3-real-gas-data: model-generated PV/nRT values (open, 2026-10-06)
+## unit3-real-gas-data: model-generated PV/nRT values (resolved, 2026-10-06)
 
-The PV/nRT values in `real-gases` (notes table at 300 K, stimulus graph at 400 K) and the
-measured NH₃ pressure (62.9 atm, 2.000 mol in 1.000 L at 450.0 K) were generated from the van
-der Waals equation with textbook a and b constants, not from tabulated experimental data. The
-stimulus says "estimated from a model fitted to measured data". Trends and signs are right, but
-the exact values (especially CO₂ near 100-200 atm at 300 K, close to its critical point) may
-differ from measured compressibility factors. Check against a data table or relabel.
+Resolved by the Unit 3 review (`docs/apchem-reviews/u3.md`). The van der Waals values were
+checked against CoolProp's reference multiparameter equations of state (the NIST REFPROP
+formulations fitted to measured data) and several were wrong: at 300 K the notes had CO₂ 0.718 at
+50 atm (reference 0.681) and N₂ 0.972 (0.997); at 400 K the stimulus had N₂ dipping below 1
+(the reference never does at 400 K) and CO₂ 0.761 at 100 atm (0.817); NH₃ at 2.000 mol/L and
+450.0 K is 62.5 atm, not 62.9. The notes table, the worked example (CO₂ 38.2 atm, 0.776), the
+stimulus graph (now He, Ar, CH₄, CO₂ at 350 K, where Ar shows the dip then rise that the items
+need) and the NH₃ cylinder (62.5 atm, PV/nRT 0.846) now use reference values to three decimals.
 
-## unit3-scope-checks: Unit 3 scope choices to confirm (open, 2026-10-06)
+## unit3-scope-checks: Unit 3 scope choices to confirm (open, 2026-10-06; reviewed 2026-10-06)
 
 - 3.7: molality, percent by mass/volume and colligative properties are only named in a
   `going-further` aside; no item uses them (per `ced-exclusions`).
@@ -118,6 +120,13 @@ differ from measured compressibility factors. Check against a data table or rela
 - Particle diagrams: water around an anion is drawn with one O–H pointing at the ion (the other
   H away), around a cation with O toward the ion. Confirm this matches the CED's expected
   depiction (the CED only requires correct dipole orientation).
+- Review 2026-10-06 (`docs/apchem-reviews/u3.md`): every point above was confirmed as written in
+  the content (no item uses molality, percent by mass/volume, colligative properties, solid
+  solubility vs temperature, a logarithm or transmittance; IR ranges are given in the stimulus;
+  every water molecule in the particle diagrams faces the ion with the opposite partial charge).
+  The CED's own Unit 3 exclusion text still could not be read (the PDF extraction stops at 3.1),
+  so the CED-wording questions stay open with `ced-exclusions`.
+
 ## unit4-dissolving: is dissolving an ionic solid physical or chemical? (open, 2026-10-06)
 
 Topic 4.4 (`physical-chemical-changes`) teaches that dissolving an ionic solid has features of both

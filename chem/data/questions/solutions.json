@@ -45,7 +45,7 @@
     ]
    },
    "why": {
-    "correct": "moles = 3.991 g ÷ 159.61 g/mol = 0.025005 mol. V = 250.0 mL = 0.2500 L. M = 0.025005 mol ÷ 0.2500 L = 0.100019 M, which is 0.1 M."
+    "correct": "moles = 3.991 g ÷ 159.61 g/mol = 0.025005 mol. V = 250.0 mL = 0.2500 L. M = 0.025005 mol ÷ 0.2500 L = 0.100019 M, which is 0.1000 M."
    }
   },
   {
@@ -81,7 +81,7 @@
     ]
    },
    "why": {
-    "correct": "M₂ = M₁V₁/V₂ = 0.10002 M × 10.00 mL / 100.0 mL = 0.010002 M, which is 0.01 M."
+    "correct": "M₂ = M₁V₁/V₂ = 0.10002 M × 10.00 mL / 100.0 mL = 0.010002 M, which is 0.01000 M."
    }
   },
   {
@@ -122,18 +122,18 @@
    "stimulus": "solutions-s1",
    "q": "While making the stock, the student adds water until the top of the curved liquid surface, rather than the bottom, touches the mark. How does this affect the molarity she calculates for the stock?",
    "options": [
-    "Her calculated value is too high, because the actual volume is larger than 250.0 mL.",
-    "Her calculated value is too low, because the actual volume is larger than 250.0 mL.",
+    "Her calculated value is too low, because the actual volume is smaller than 250.0 mL.",
     "Her calculated value is too high, because the actual volume is smaller than 250.0 mL.",
+    "Her calculated value is too low, because the actual volume is larger than 250.0 mL.",
     "Her calculated value is unchanged, because the mass of solute was measured correctly."
    ],
    "correct": 0,
    "why": {
-    "correct": "Filling to the top of the curved surface puts the bottom of the curve above the mark, so the true volume is a little more than 250.0 mL. The true molarity is lower than the value she calculates with 250.0 mL, so her value is too high.",
+    "correct": "Water curves up where it meets the glass, so the top of the curved surface is at the edges and the bottom is in the middle. Stopping when the edges reach the mark leaves the bottom below it, so the flask holds a little less than 250.0 mL. The same moles in less volume make the true molarity higher than the value she calculates with 250.0 mL, so her value is too low.",
     "options": [
-     "Right: more volume, lower true concentration, so 250.0 mL overstates it.",
-     "The calculated value uses 250.0 mL, so it overstates the concentration rather than understating it.",
-     "Filling past the mark makes the volume larger, not smaller.",
+     "Right: less volume, higher true concentration, so the value calculated with 250.0 mL understates it.",
+     "The volume is smaller, which makes the true concentration higher; a value calculated with 250.0 mL is therefore too low, not too high.",
+     "Stopping at the top of the curve leaves the bottom below the mark, so the volume is smaller, not larger.",
      "Molarity also depends on the volume, which is wrong here."
     ]
    }

@@ -126,7 +126,7 @@
     ]
    },
    "why": {
-    "correct": "T = 98.6 + 273.15 = 371.75 K; P = 742.0 torr × (1 atm / 760 torr) = 0.97632 atm; V = 0.2480 L. n = PV/RT = (0.97632 atm × 0.2480 L) / (0.08206 L·atm/(mol·K) × 371.75 K) = 0.007937 mol, which is 0.007937 mol. (The temperature 98.6 °C has three significant figures, but 371.75 K carries four in the sum; report four.)"
+    "correct": "T = 98.6 + 273.15 = 371.75 K; P = 742.0 torr × (1 atm / 760 torr) = 0.97632 atm; V = 0.2480 L. n = PV/RT = (0.97632 atm × 0.2480 L) / (0.08206 L·atm/(mol·K) × 371.75 K) = 0.0079371 mol, which is 0.007937 mol. (98.6 °C is known to the tenths place, so the sum is 371.8 K, four significant figures; report four.)"
    }
   },
   {
@@ -170,7 +170,7 @@
    "level": "analyze",
    "diff": 3,
    "stimulus": "ideal-gas-law-s1",
-   "q": "Some vapor condensed on the outside of the flask before it was weighed, but the student did not notice. How does this affect the calculated molar mass?",
+   "q": "Some water from the bath was left on the outside of the flask when it was weighed, but the student did not notice. How does this affect the calculated molar mass?",
    "options": [
     "Too high, because the measured mass of vapor is too large while the calculated moles are unchanged.",
     "Too low, because extra liquid on the outside means the flask held fewer moles of vapor than it did.",
@@ -596,14 +596,13 @@
    "diff": 1,
    "q": "Put the steps for finding the moles of gas in a container in order.",
    "options": [
-    "Convert the temperature to kelvin",
-    "Convert pressure to atm and volume to liters",
-    "Rearrange PV = nRT to n = PV/RT",
-    "Substitute with R = 0.08206 L·atm/(mol·K)",
-    "Round to the least number of significant figures in the data"
+    "Convert P to atm, V to liters and T to kelvin, to match R",
+    "Substitute the converted values into n = PV/RT",
+    "Calculate n, keeping extra digits",
+    "Round n once, to the fewest significant figures in the data"
    ],
    "why": {
-    "correct": "Put every quantity in units that match R, then rearrange and substitute, and round once at the end."
+    "correct": "Each step uses the result of the one before: units that match R = 0.08206 L·atm/(mol·K), then substitution, then the calculation, and one rounding at the end."
    }
   },
   {
