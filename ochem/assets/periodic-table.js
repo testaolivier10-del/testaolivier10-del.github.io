@@ -13,8 +13,14 @@
    `orgo` note just get a generic "not common in organic chemistry" line
    in the detail panel — most of the table (transition metals, lanthanides,
    actinides, noble gases) genuinely doesn't come up in an intro course.
+
+   AP® Chemistry pages load this same file with data-course="chem" on the
+   script tag (scripts/lib/apchem-build.mjs, tail()): the organic-chemistry
+   notes are swapped for group and period.
 */
 (function(){
+  var me = document.currentScript;
+  var CHEM = !!(me && me.getAttribute('data-course') === 'chem');
   var EN = {}; // filled below per-element for readability; merged into ELEMENTS at the end
   var ELEMENTS = [
     { z:1,  s:'H',  n:'Hydrogen',      g:1,  p:1, cat:'nonmetal',       en:2.20, orgo:'The most common atom in organic molecules by count. Forms exactly one bond.' },
@@ -180,7 +186,10 @@
         '<div><div class="pt-detail-name">' + el.n + '</div><div class="pt-detail-sub">Atomic number ' + el.z + ' &middot; ' + CATEGORY_LABEL[el.cat] + '</div></div>' +
       '</div>' +
       '<div class="pt-detail-row"><span class="k">Electronegativity</span><span class="v">' + enText + '</span></div>' +
-      '<div class="pt-detail-row"><span class="k">In organic chemistry</span><span class="v">' + (el.orgo || 'Not common in organic chemistry — mostly relevant to inorganic/materials contexts.') + '</span></div>' +
+      (CHEM
+        ? '<div class="pt-detail-row"><span class="k">Group</span><span class="v">' + (el.g === null ? 'Not numbered (shown in the rows below the main table)' : el.g) + '</span></div>' +
+          '<div class="pt-detail-row"><span class="k">Period</span><span class="v">' + el.p + '</span></div>'
+        : '<div class="pt-detail-row"><span class="k">In organic chemistry</span><span class="v">' + (el.orgo || 'Not common in organic chemistry — mostly relevant to inorganic/materials contexts.') + '</span></div>') +
     '</div>';
   }
 
@@ -200,7 +209,7 @@
         '<div class="pt-modal__head">' +
           '<div>' +
             '<div class="pt-modal__title">Periodic table</div>' +
-            '<div class="pt-modal__sub">Click any element for electronegativity and its role in organic chemistry.</div>' +
+            '<div class="pt-modal__sub">' + (CHEM ? 'Click any element for its electronegativity, group and period.' : 'Click any element for electronegativity and its role in organic chemistry.') + '</div>' +
           '</div>' +
           '<button type="button" class="pt-close" aria-label="Close">&times;</button>' +
         '</div>' +
