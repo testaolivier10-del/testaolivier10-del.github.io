@@ -22,6 +22,8 @@ import { glossaryJson as sharedGlossaryJson, glossaryMain, glossaryScript } from
 import { APP_STATE_PAGES, NOINDEX } from './lib/app-pages.mjs';
 /* Course labels for page titles, longest first (scripts/lib/page-title.mjs). */
 const AP_LABELS = ['Anatomy & Physiology', 'A&P'];
+/* Searchers type "anatomy and physiology", not "A&P": keep the full name, dropping the brand first. */
+const FULL = { keepFirstLabel: true };
 import {
   SITE, BASE, COURSE_NAME, COURSE_ID, TEAS_DISCLAIMER, esc, text, loadCourse, clampDesc,
   head, tail, crumbs, orgCrumbs, crumbNav, footer, termIndex, glossify, teachHref, figureImg, credit, attribution, fixSvg, BETA_PILL,
@@ -138,7 +140,7 @@ function lessonPage(id) {
   const check = (L.check || []).map(qid => byId.get(qid)).filter(Boolean);
   // "{Topic} — {Course} | LevlPrep" (scripts/lib/page-title.mjs); the kind
   // stays in the course label, so a lesson and its notes never share a title.
-  const title = courseTitle(t.title, AP_LABELS.map(l => `${l} Lesson`));
+  const title = courseTitle(t.title, AP_LABELS.map(l => `${l} Lesson`), FULL);
   const desc = DESCRIPTIONS.lessons?.[id] || clampDesc(`${text(L.summary)}`, `${t.title}: an anatomy and physiology lesson that builds the mechanism step by step, with practice questions.`);
   const url = `${SITE}${BASE}lessons/${id}.html`;
   /* Free in the Foundations chapters (premium.js COURSES.anp.freeChapters);
@@ -344,7 +346,7 @@ function notesPage(id) {
   // The opening two paragraphs: the first is often a one-line hook.
   const firstP = [...C.notes[id].matchAll(/<p>([\s\S]*?)<\/p>/g)].slice(0, 2).map(m => m[1]).join(' ') || t.title;
   const minutes = Math.max(1, Math.round(text(C.notes[id]).split(' ').length / 200));
-  const title = courseTitle(t.title, AP_LABELS.map(l => `${l} Notes`));
+  const title = courseTitle(t.title, AP_LABELS.map(l => `${l} Notes`), FULL);
   const desc = DESCRIPTIONS.notes?.[id] || clampDesc(firstP, `${t.title} explained in plain language: anatomy and physiology study notes with labeled figures, free to read.`);
   const url = `${SITE}${BASE}notes/${id}.html`;
   const pv = prevTopic(id), nx = nextTopic(id);
@@ -412,7 +414,7 @@ function chapterPage(chId) {
   const kinds = TOOL_KINDS.filter(([k]) => (tools[k] || []).length);
   const toolGroups = kinds.map(([k, label]) => `<section class="bk-toolset"><h3>${label} <small>${tools[k].length}</small></h3><ul>${tools[k].map(it => `<li>${it.level ? `<span class="bk-tag">Level ${it.level}</span> ` : ''}${esc(it.title)}</li>`).join('')}</ul></section>`).join('');
   const toolSummary = kinds.map(([k, , few]) => `${tools[k].length} ${few}`).slice(0, 3).join(', ');
-  const title = courseTitle(ch.title, AP_LABELS);
+  const title = courseTitle(ch.title, AP_LABELS, FULL);
   const desc = DESCRIPTIONS.chapters?.[chId] || clampDesc(`${ch.title}: ${ts.length} topics, from ${ts[0].title.toLowerCase()} to ${ts[ts.length - 1].title.toLowerCase()}, with lessons, notes, practice questions and study tools.`, `${ch.title} in ${ts.length} topics: anatomy and physiology lessons, notes, practice questions and study tools.`);
   const url = `${SITE}${BASE}chapters/${chId}.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -470,7 +472,7 @@ function corePage(coreId) {
   const tagged = map.topics.filter(t => t.coreConcepts.includes(coreId));
   const byCh = new Map();
   for (const t of tagged) { if (!byCh.has(t.chapter)) byCh.set(t.chapter, []); byCh.get(t.chapter).push(t); }
-  const title = courseTitle(cc.name, ['A&P Core Concept']);
+  const title = courseTitle(cc.name, ['Anatomy & Physiology Core Concept', 'A&P Core Concept'], FULL);
   const desc = clampDesc(`${cc.summary} See where it appears in every body system.`);
   const url = `${SITE}${BASE}concepts/${coreId}.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -508,7 +510,7 @@ ${tail({ depth, section: 'learn', extra: ['anp-chapter.js'] })}
 
 function coreIndexPage() {
   const depth = '../';
-  const title = courseTitle('Core concepts of physiology', AP_LABELS);
+  const title = courseTitle('Core concepts of physiology', AP_LABELS, FULL);
   const desc = 'Eight ideas that explain every body system, from homeostasis to flow down gradients, with every place each one appears in the course.';
   const url = `${SITE}${BASE}concepts/index.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -545,7 +547,7 @@ function creditsPage() {
     if (!existsSync(p)) continue;
     for (const [id, f] of Object.entries(JSON.parse(readFileSync(p, 'utf8')))) if (f.source === 'openstax') rows.push({ id, f, t });
   }
-  const title = courseTitle('Figure credits', AP_LABELS);
+  const title = courseTitle('Figure credits', AP_LABELS, FULL);
   const desc = clampDesc(`The source and license of every figure in the ${COURSE_NAME} course. OpenStax figures are used under CC BY 4.0.`);
   const url = `${SITE}${BASE}credits.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -581,7 +583,7 @@ ${tail({ depth, section: 'credits' })}
 function glossaryPage() {
   const depth = '';
   const terms = glossaryTerms();
-  const title = courseTitle('Glossary: terms and word roots', AP_LABELS);
+  const title = courseTitle('Glossary: terms and word roots', AP_LABELS, FULL);
   const desc = clampDesc(`${terms.length.toLocaleString('en-US')} anatomy and physiology terms with plain definitions, word roots and pronunciation, each linked to the page that teaches it.`);
   const url = `${SITE}${BASE}glossary.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -622,7 +624,7 @@ ${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', 
    table of contents linking to every notes page. */
 function learnPage() {
   const depth = '';
-  const title = courseTitle('All chapters and topics', AP_LABELS);
+  const title = courseTitle('All chapters and topics', AP_LABELS, FULL);
   const desc = clampDesc(`Every chapter of the course in order: ${map.chapters.length} chapters and ${map.topics.length} topics, from orientation to the body through development and inheritance.`);
   const url = `${SITE}${BASE}learn.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -908,7 +910,7 @@ ${[...(study ? ['course/study.js'] : []), ...(entry.siteScripts || [])].map(f =>
   // Dashboard, review and search show the visitor's own state: noindex, and
   // left out of the sitemap (scripts/lib/app-pages.mjs).
   const meta = APP_STATE_PAGES.includes(`anatomy-physiology/${path}`) ? `${NOINDEX}\n` : '';
-  const page = head({ title: courseTitle(entry.title, AP_LABELS), desc: entry.desc, path, depth, ogType: 'website', jsonld, meta }) + body;
+  const page = head({ title: courseTitle(entry.title, AP_LABELS, FULL), desc: entry.desc, path, depth, ogType: 'website', jsonld, meta }) + body;
   return study ? page.replace(`<link rel="stylesheet" href="${depth}assets/anp.css">`,
     `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/study.css">\n<link rel="stylesheet" href="${depth}assets/anp.css">`) : page;
 }

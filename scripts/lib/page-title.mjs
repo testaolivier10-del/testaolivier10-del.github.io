@@ -10,7 +10,11 @@
    first that fits. A long topic name matters more to a searcher than the
    brand, so next the shortest label is tried without " | LevlPrep"; only if
    that still does not fit is the topic cut at a word and ended with "…". The
-   label always stays, so a lesson and its notes page never share a title. */
+   label always stays, so a lesson and its notes page never share a title.
+
+   { keepFirstLabel: true } is for a course whose short label searchers don't
+   type ("A&P"): the full first label is tried without the brand before any
+   shorter label is tried. */
 export const BRAND = 'LevlPrep';
 export const TITLE_MAX = 60;
 
@@ -22,11 +26,12 @@ export const decode = (s) => String(s)
 
 export const titleLength = (s) => decode(s).length;
 
-export function courseTitle(topic, labels) {
+export function courseTitle(topic, labels, { keepFirstLabel = false } = {}) {
   const list = Array.isArray(labels) ? labels : [labels];
   for (const label of list) {
     const t = `${topic} — ${label} | ${BRAND}`;
     if (titleLength(t) <= TITLE_MAX) return t;
+    if (keepFirstLabel && label === list[0] && titleLength(`${topic} — ${label}`) <= TITLE_MAX) return `${topic} — ${label}`;
   }
   const label = list[list.length - 1];
   const bare = `${topic} — ${label}`;
