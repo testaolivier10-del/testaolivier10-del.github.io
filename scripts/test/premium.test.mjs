@@ -234,3 +234,17 @@ test('a finished exam is recorded by the database, only when signed in', async (
   assert.equal(await premium.recordExam('nremt', 100), true);
   assert.deepEqual(JSON.parse(JSON.stringify(calls)), [['record_exam_completion', { p_course: 'nremt', p_questions: 100 }]]);
 });
+
+test('the daily-limit card shows today\'s score, and only that card', () => {
+  const { premium, hooks } = fresh();
+  hooks.setLaunched(true);
+  assert.ok(!/premium-card__score/.test(premium.gate('nremt', 'daily-limit', 'quiz')), 'no score line before any answer');
+  premium.noteAnswer('nremt', true);
+  premium.noteAnswer('nremt', false);
+  premium.noteAnswer('nremt', true);
+  premium.noteAnswer('nosuchcourse', true);
+  assert.deepEqual({ ...premium.todayScore('nremt') }, { right: 2, total: 3 });
+  assert.match(premium.gate('nremt', 'daily-limit', 'quiz'), /You got <strong>2 of 3<\/strong> right today/);
+  assert.ok(!/premium-card__score/.test(premium.gate('nremt', 'exam', 'results')), 'the exam card has no daily score');
+  assert.deepEqual({ ...premium.todayScore('ochem') }, { right: 0, total: 0 });
+});

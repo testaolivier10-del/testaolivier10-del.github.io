@@ -49,3 +49,11 @@ test('the email button carries ref=email', () => {
   assert.equal(withRef('https://levlprep.com/ochem/review.html?a=1', 'email'), 'https://levlprep.com/ochem/review.html?a=1&ref=email');
   assert.equal(withRef('not a url', 'email'), 'not a url');
 });
+
+test('a video tag (tt-/yt-<topic>) is reported, and a malformed one is not', () => {
+  const { b, sent } = landOn('http://localhost/ochem/?ref=tt-sn2-vs-sn1');
+  assert.deepEqual({ ...sent.find(e => e.name === 'ref-open').data }, { ref: 'tt-sn2-vs-sn1', course: 'ochem' });
+  assert.equal(b.window.location.search, '');
+  const bad = landOn('http://localhost/ochem/?ref=tt-SN2!').sent;
+  assert.equal(bad.find(e => e.name === 'ref-open'), undefined);
+});

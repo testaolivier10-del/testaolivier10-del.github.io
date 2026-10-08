@@ -1792,6 +1792,8 @@ function updateAdaptiveDifficulty(q, correct){
 
 function recordAdaptiveAnswer(qIdx, correct){
   const q = QUESTIONS[qIdx];
+  // Today's score, which the daily-limit card shows (assets/premium.js).
+  if(window.LevlPremium && window.LevlPremium.noteAnswer) window.LevlPremium.noteAnswer('nremt', correct);
   updateMastery(qIdx, correct);
   if(!adaptiveState.sessionDomainStats[q.system]) adaptiveState.sessionDomainStats[q.system] = {correct:0, total:0};
   adaptiveState.sessionDomainStats[q.system].total++;

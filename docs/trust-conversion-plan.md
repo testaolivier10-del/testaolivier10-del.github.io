@@ -22,47 +22,41 @@ Leaks, biggest first: checkout (4 → 0), signup (6,700 → 4), gate (644 → 10
 - UC San Diego pre-med.
 - Why: tired of textbooks that just throw information at you; wanted interactive lessons that actually build
   on each other.
-- Link the LevlPrep TikTok and YouTube. **Handles/URLs still needed from the owner.**
+- Link the LevlPrep TikTok and YouTube. **URLs still needed from the owner.**
 - Not anonymous any more: reverses PR #45 (`claude/anonymize-operator`).
 
 Wording rule (FTC): the NREMT story is the founder's own result. Say it as that ("I passed…"), never as
 typical ("students pass…").
 
-## Plan
+## Plan and status (owner decisions 2026-10-08)
 
-### A. Trust (build)
-1. Revert PR #45: name back in `privacy.html` (data controller), `terms.html`, `LICENSE`, `index.html` schema
-   (add a `Person` founder), `sw.js` CACHE bump.
-2. `about.html`: who (EMT, NREMT at 70, UCSD pre-med), why (the textbook line), how content is checked
-   (accuracy reviews, Beta label, `docs/*-needs-author.md` review promise), contact, TikTok/YouTube links.
-   Linked from the footer, `premium.html` and the Premium dialog.
-3. Founder line in the Premium dialog and on `premium.html`: first name, one sentence, "7-day full refund,
-   one click" next to the buy button.
-4. NREMT course: "Built by an EMT who passed at 70 questions" near the start (founder's result, not a claim
-   about others).
+| # | Item | Status |
+|---|---|---|
+| 1 | Founder named again (reverts #45): privacy, terms (dated 8 Oct), LICENSE, schema `founder` | **done** |
+| 2 | `about.html` + About link in every footer and footer generator; Sources "who makes this" names the founder | **done** |
+| 3 | Founder line + refund line next to the buy button in the Premium dialog | **on hold** (owner unsure) |
+| 4 | NREMT home: "Made by Olivier Testa, an EMT who studied with this course and passed…" (`.hero-founder`) | **done** |
+| 5 | "Ask a parent to pay" link | **dropped** (owner: teens buy online themselves; terms keep the parent-permission rule, which is Polar's) |
+| 6 | Paywall shows the student's score: daily-limit card says "You got X of Y right today" (`noteAnswer`/`todayScore` in `assets/premium.js`, called from every course's answer check) | **done** |
+| 7 | Account prompt after a finished session: account.js `promptToSave` (already in NREMT and ochem) now also after AP® Bio, AP® Chem and A&P practice sets (8+) and exams (10+) | **done** |
+| 8 | Email capture with a free cram sheet | waiting on `POSTAL_ADDRESS` (CAN-SPAM) |
+| 9 | Video tags: `?ref=tt-<topic>` / `yt-` / `ig-` accepted by `assets/analytics.js`, reported on `ref-open` and `visit` in Umami | **done** |
+| 10 | `premium.html`: "$25 to $49, about one or two hours with a private tutor" (Care.com ~$26/h, `TUTOR_HOUR` in `scripts/build-pricing.mjs`) + 7-day refund line | **done** |
 
-### B. Conversion (build)
-5. **Ask a parent to pay**: on AP® courses, a button that makes a shareable link to a parent page (what the
-   pass is, price, 7-day refund, who runs the site, checkout). Biggest lever for under-18 buyers.
-6. Later gate: let a student finish one full practice exam or unit free, then show the gate with their score
-   and the goal ("5 more exams like this").
-7. Account prompt at the right moment: after the first finished quiz, "Save your progress and streak across
-   devices."
-8. Email capture without an account (free cram sheet per course). Needs `POSTAL_ADDRESS` first (CAN-SPAM).
-9. Video links: `?ref=<platform>-<topic>` deep links to the matching lesson; record `ref` in Umami so each
-   video's signups show.
-10. Price anchor on `premium.html`: $25 for the year vs typical tutoring/prep-book cost (sourced, no made-up
-    competitor prices).
+Not done yet:
+- TikTok and YouTube links on the About page: their sites are blocked from the build container and a web search
+  found nothing, so the owner must paste the URLs.
 
-### C. Owner only
+How to tag video links: `https://levlprep.com/ochem/lessons/<topic>.html?ref=tt-sn2` (lowercase letters, digits and
+hyphens after `tt-`, `yt-` or `ig-`, up to 40 characters). Umami → Events → `ref-open` → filter by `ref`.
+
+### Owner only
 - Test-buy `bio-2027` and `chem-2027` with a 100% code, then refund (rules out a broken checkout). Check Polar
   for abandoned/failed checkouts on the 4 starts.
-- Send the TikTok and YouTube URLs.
-- Where you live now decides the business filings: Minnesota assumed name if you're a Minnesota resident;
-  if you live in California, a fictitious business name (San Diego County) and California tax instead. The
-  privacy page says Minnesota, so fix it if that's wrong.
+- Residence: Minnesota (living in California for school), so the Minnesota assumed-name filing stands. Ask a tax
+  preparer whether income from work done while in California counts as California-source income.
 - Later: real student quotes with permission; a teacher/clinical reviewer to name on the About page.
 
 ## Progress log
 
-- 2026-10-08: plan written; nothing built yet.
+- 2026-10-08: plan written; items 1, 2, 4, 6, 7, 9, 10 built, full CI green (with browser checks).

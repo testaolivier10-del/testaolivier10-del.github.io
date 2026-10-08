@@ -47,6 +47,7 @@
   var STORE_KEY = 'levlprep_waitlist_v1';
   var ACCESS_KEY = 'levlprep_premium_v1';
   var QUOTA_KEY = 'levlprep_quota_v1';
+  var SCORE_KEY = 'levlprep_today_score_v1';
 
   /* Founding-member offer: shown in the dialog, applied at checkout by the
      Worker (its FOUNDING_DISCOUNT_ID). Set `until` to null to end it. */
@@ -364,6 +365,24 @@
     };
   }
 
+  /* Today's score per course, so the daily-limit card can show the student
+     what they did before asking them to pay (trust plan, 2026-10-08). Every
+     course's answer check calls noteAnswer; it is kept in this browser only
+     and reset at local midnight. */
+  function noteAnswer(course, correct) {
+    if (!COURSES[course]) return;
+    var s = readJson(SCORE_KEY);
+    var t = s[course] && s[course].day === today() ? s[course] : { day: today(), right: 0, total: 0 };
+    t.total++;
+    if (correct) t.right++;
+    s[course] = t;
+    writeJson(SCORE_KEY, s);
+  }
+  function todayScore(course) {
+    var t = readJson(SCORE_KEY)[course];
+    return t && t.day === today() ? { right: t.right, total: t.total } : { right: 0, total: 0 };
+  }
+
   /* The Premium funnel: Umami gets the event as before, and an anonymous
      daily count goes to the database (count_premium_step in
      scripts/sql/schema.sql), so the funnel can be read back without Umami:
@@ -452,10 +471,18 @@
     return '<div class="premium-card premium-lock" data-premium-feature="' + esc(feature || '') + '">' +
       '<span class="premium-card__tag">Premium</span>' +
       '<b>' + esc(lockTitle(feature)) + '</b>' +
+      scoreLine(course, feature) +
       '<p>' + esc(c.premium.slice(0, 3).join(' · ')) + '.</p>' +
       '<span class="premium-card__price">From ' + fromPrice(c) + ' for ' + passLength(c) + ', one-time. No subscription.</span>' +
       '<button type="button" class="btn-press sm"' + openAttrs(course, source || feature) + '>See Premium</button>' +
     '</div>';
+  }
+
+  function scoreLine(course, feature) {
+    if (feature !== 'daily-limit') return '';
+    var t = todayScore(course);
+    if (!t.total) return '';
+    return '<p class="premium-card__score">You got <strong>' + t.right + ' of ' + t.total + '</strong> right today. Keep going with unlimited practice.</p>';
   }
 
   function lockTitle(feature) {
@@ -938,6 +965,8 @@
     card: card,
     open: open,
     quota: quota,
+    noteAnswer: noteAnswer,
+    todayScore: todayScore,
     freeExam: freeExam,
     onChange: onChange,
     refresh: refresh,
