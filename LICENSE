@@ -40,7 +40,7 @@ The non-commercial term is the point of it. LevlPrep itself charges for
 Premium: a one-time pass that adds unlimited practice, exams, analytics and
 some interactive tools on top of the free teaching material (notes, textbook
 sections, glossaries, flashcards and each course's free allowance). The
-teaching material stays free on the site. Only LevlPrep, as the copyright
+teaching material stays free on the site. Only LevlPrep (Olivier Testa), as the copyright
 holder, may use the material commercially; this licence does not let anyone
 else repackage or sell it, or put it behind their own paywall. Using it to
 teach (in a classroom, a study group, or a course you do not charge for) is
@@ -56,7 +56,7 @@ files listed above and the vendored three.js in section 3), the build and
 check scripts under scripts/, the service worker, the Cloudflare Worker under
 worker/, and the CSS and page scaffolding.
 
-Copyright (c) 2026 LevlPrep
+Copyright (c) 2026 Olivier Testa (LevlPrep)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -34,9 +34,7 @@ export default function ({ ROOT, fail, htmlFiles }) {
       }
       if (rel === 'index.html') {
         const org = (ld['@graph'] || [ld]).find((n) => n['@type'] === 'Organization');
-        // No founder on purpose: the operator stays anonymous (2026-10-06). A contact is still required.
-        if (org && !org.contactPoint) fail('jsonld-logo-raster: index.html Organization needs a contactPoint (scripts/build-pricing.mjs).');
-        if (org && org.founder) fail('jsonld-logo-raster: index.html Organization must not name a founder; the operator stays anonymous.');
+        if (org && !(org.founder && org.contactPoint)) fail('jsonld-logo-raster: index.html Organization needs founder and contactPoint (scripts/build-pricing.mjs).');
         if (!(ld['@graph'] || []).some((n) => n['@type'] === 'FAQPage')) fail('jsonld-logo-raster: index.html lost its FAQPage (scripts/build-pricing.mjs).');
       }
     }

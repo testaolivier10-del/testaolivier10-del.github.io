@@ -211,7 +211,7 @@ ${ORDER.map(courseSection).join('\n')}
 <div class="xshell narrow">
   <footer>
 ${MARK ? `    ${TM_HTML}
-` : ''}    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+` : ''}    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 
@@ -299,7 +299,8 @@ function hubLd() {
         // Raster, 112 px or more: Google does not take an SVG logo (audit 2026-10).
         logo: { '@type': 'ImageObject', url: `${ORIGIN}/assets/icon-512.png`, width: 512, height: 512 },
         description: `Exam prep tools and interactive courses. ${FREE_SENTENCE} No ads.`,
-        // How to reach the site, as terms.html and privacy.html say. No founder name: the operator stays anonymous.
+        // Who runs it and how to reach them, as terms.html and privacy.html say.
+        founder: { '@type': 'Person', name: 'Olivier Testa' },
         contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: CONTACT_EMAIL, url: `${ORIGIN}/terms.html` },
       },
       { '@type': 'WebSite', '@id': `${ORIGIN}/#website`, name: 'LevlPrep', url: `${ORIGIN}/`, publisher: { '@id': `${ORIGIN}/#org` }, inLanguage: 'en' },
