@@ -241,6 +241,7 @@ ${book ? `<link rel="stylesheet" href="${up}assets/course/base.css">
 <link rel="stylesheet" href="${up}assets/course/book.css">
 ` : ''}<link rel="stylesheet" href="${depth}assets/chem.css">
 <link rel="stylesheet" href="${up}assets/fonts/fonts.css">
+<link rel="stylesheet" href="${up}ochem/assets/periodic-table.css">
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
 ${JSON.stringify(jsonld, null, 2)}
@@ -257,6 +258,8 @@ export function tail({ depth, section, extra = [], premium = false, site = [] })
     ...(premium ? [`<script src="${depth}../assets/premium.js" defer></script>`] : []),
     `<script>window.ApChemSection = '${section}'; window.ApChemBase = '${depth}';</script>`,
     s('chem-curriculum.js'), s('chem-core.js'), s('chem-nav.js'),
+    // The ochem periodic table, with AP wording (see the file's header).
+    `<script src="${depth}../ochem/assets/periodic-table.js" data-course="chem" defer></script>`,
     `<script src="${depth}../assets/course/glossary-tip.js" data-glossary="${depth}assets/glossary.json" data-course-root="${depth}" defer></script>`,
     ...extra.map(s),
   ].join('\n');

@@ -13,8 +13,15 @@
    `orgo` note just get a generic "not common in organic chemistry" line
    in the detail panel — most of the table (transition metals, lanthanides,
    actinides, noble gases) genuinely doesn't come up in an intro course.
+
+   AP® Chemistry pages load this same file with data-course="chem" on the
+   script tag (scripts/lib/apchem-build.mjs, tail()): the organic-chemistry
+   notes are swapped for group and period, and each cell shows atomic mass
+   instead of electronegativity (as on the AP exam's table).
 */
 (function(){
+  var me = document.currentScript;
+  var CHEM = !!(me && me.getAttribute('data-course') === 'chem');
   var EN = {}; // filled below per-element for readability; merged into ELEMENTS at the end
   var ELEMENTS = [
     { z:1,  s:'H',  n:'Hydrogen',      g:1,  p:1, cat:'nonmetal',       en:2.20, orgo:'The most common atom in organic molecules by count. Forms exactly one bond.' },
@@ -137,6 +144,26 @@
     { z:118,s:'Og', n:'Oganesson',     g:18, p:7, cat:'unknown',        en:null }
   ];
 
+  /* Atomic masses (u), indexed by atomic number - 1: IUPAC standard atomic
+     weights, abridged (conventional values where IUPAC gives an interval).
+     [n] = mass number of the longest-lived isotope, for elements with no
+     stable isotopes. Strings keep trailing zeros. */
+  var MASS = [
+    '1.008', '4.0026', '6.94', '9.0122', '10.81', '12.011', '14.007', '15.999', '18.998', '20.180',
+    '22.990', '24.305', '26.982', '28.085', '30.974', '32.06', '35.45', '39.95', '39.098', '40.078',
+    '44.956', '47.867', '50.942', '51.996', '54.938', '55.845', '58.933', '58.693', '63.546', '65.38',
+    '69.723', '72.630', '74.922', '78.971', '79.904', '83.798', '85.468', '87.62', '88.906', '91.222',
+    '92.906', '95.95', '[98]', '101.07', '102.91', '106.42', '107.87', '112.41', '114.82', '118.71',
+    '121.76', '127.60', '126.90', '131.29', '132.91', '137.33', '138.91', '140.12', '140.91', '144.24',
+    '[145]', '150.36', '151.96', '157.25', '158.93', '162.50', '164.93', '167.26', '168.93', '173.05',
+    '174.97', '178.49', '180.95', '183.84', '186.21', '190.23', '192.22', '195.08', '196.97', '200.59',
+    '204.38', '207.2', '208.98', '[209]', '[210]', '[222]', '[223]', '[226]', '[227]', '232.04',
+    '231.04', '238.03', '[237]', '[244]', '[243]', '[247]', '[247]', '[251]', '[252]', '[257]',
+    '[258]', '[259]', '[266]', '[267]', '[268]', '[269]', '[270]', '[269]', '[278]', '[281]',
+    '[282]', '[285]', '[286]', '[289]', '[290]', '[293]', '[294]', '[294]'
+  ];
+  ELEMENTS.forEach(function(el){ el.m = MASS[el.z - 1]; });
+
   var CATEGORY_LABEL = {
     'alkali':'Alkali metal', 'alkaline-earth':'Alkaline earth metal', 'transition':'Transition metal',
     'post-transition':'Post-transition metal', 'metalloid':'Metalloid', 'nonmetal':'Reactive nonmetal',
@@ -144,8 +171,8 @@
   };
 
   function elCell(el){
-    var enText = el.en === null ? '—' : el.en.toFixed(2);
-    return '<button type="button" class="pt-cell cat-' + el.cat + '" data-z="' + el.z + '" title="' + el.n + '">' +
+    var enText = CHEM ? el.m : (el.en === null ? '—' : el.en.toFixed(2));
+    return '<button type="button" class="pt-cell cat-' + el.cat + '" data-z="' + el.z + '" title="' + el.n + ', ' + el.m + ' u">' +
       '<span class="pt-z">' + el.z + '</span>' +
       '<span class="pt-sym">' + el.s + '</span>' +
       '<span class="pt-en">' + enText + '</span>' +
@@ -179,8 +206,12 @@
         '<span class="pt-detail-sym cat-' + el.cat + '">' + el.s + '</span>' +
         '<div><div class="pt-detail-name">' + el.n + '</div><div class="pt-detail-sub">Atomic number ' + el.z + ' &middot; ' + CATEGORY_LABEL[el.cat] + '</div></div>' +
       '</div>' +
+      '<div class="pt-detail-row"><span class="k">Atomic mass</span><span class="v">' + el.m + ' u' + (el.m.charAt(0) === '[' ? ' (mass number of the longest-lived isotope; no stable isotopes)' : '') + '</span></div>' +
       '<div class="pt-detail-row"><span class="k">Electronegativity</span><span class="v">' + enText + '</span></div>' +
-      '<div class="pt-detail-row"><span class="k">In organic chemistry</span><span class="v">' + (el.orgo || 'Not common in organic chemistry — mostly relevant to inorganic/materials contexts.') + '</span></div>' +
+      (CHEM
+        ? '<div class="pt-detail-row"><span class="k">Group</span><span class="v">' + (el.g === null ? 'Not numbered (shown in the rows below the main table)' : el.g) + '</span></div>' +
+          '<div class="pt-detail-row"><span class="k">Period</span><span class="v">' + el.p + '</span></div>'
+        : '<div class="pt-detail-row"><span class="k">In organic chemistry</span><span class="v">' + (el.orgo || 'Not common in organic chemistry — mostly relevant to inorganic/materials contexts.') + '</span></div>') +
     '</div>';
   }
 
@@ -200,7 +231,7 @@
         '<div class="pt-modal__head">' +
           '<div>' +
             '<div class="pt-modal__title">Periodic table</div>' +
-            '<div class="pt-modal__sub">Click any element for electronegativity and its role in organic chemistry.</div>' +
+            '<div class="pt-modal__sub">' + (CHEM ? 'Click any element for atomic mass, electronegativity, group and period.' : 'Click any element for atomic mass, electronegativity and its role in organic chemistry.') + '</div>' +
           '</div>' +
           '<button type="button" class="pt-close" aria-label="Close">&times;</button>' +
         '</div>' +

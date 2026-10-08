@@ -224,7 +224,8 @@ const SHELL_BUDGETS = [
      lesson rail and reserved card space (ochem.css), rail labels from step
      titles (step-back.js). Measured 109.9 KB. */
   /* 110.5 -> 111: shared classes in session-runner.js and the free line (W-C). */
-  ['ochem', 111],
+  /* 111 -> 112: atomic masses in periodic-table.js (also loaded by AP Chemistry). */
+  ['ochem', 112],
   /* The A&P course runtime (anp-core, questions, nav, glossary tooltips,
      anp.css) plus whichever app or tool script the page loads. Measured
      37.3 KB at the Phase 1 pilot. 44 -> 46 (audit 2026-10): the lazy bank

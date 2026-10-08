@@ -266,6 +266,13 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    answer text unchanged), 14 unfixed so they shuffle (as `u5.md`). Continuity pass (chem vs bio
    screenshots, every shared page, 1280/360, light/dark): two shared-layer gaps fixed, the doubled
    answer chip (`study.css` knew only `.bio-mark`) and the notes crumb spacing (`book.css`).
+19. (2026-10-08) **Periodic table popup, shared with ochem.** Every AP page loads
+   `ochem/assets/periodic-table.{css,js}` (head and `tail()` in `scripts/lib/apchem-build.mjs`); the
+   script tag carries `data-course="chem"`, which swaps the organic-chemistry notes for group and
+   period, and the cells show atomic mass (as on the exam's table) instead of electronegativity. One
+   file serves both courses. Masses: IUPAC abridged standard atomic weights (Zr 91.222 per the 2024
+   revision); [n] for no stable isotope. Checked from memory only (no web access that session), so
+   worth a spot-check against the CIAAW table; Tc [98] vs [97] and superheavy mass numbers vary by source.
 
 ## 8. Open items for the owner
 
