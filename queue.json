@@ -2,6 +2,18 @@
   "note": "LevlPrep posting queue. status: pending (waiting for Olivier's OK in chat) -> approved (OK given in chat) -> scheduled (added to Buffer for TikTok on 'date' at 6:00pm PT) -> posted (uploaded to YouTube on 'date' at 6:02pm PT). Videos live in videos/<id>.mp4, YouTube thumbnails in thumbs/<id>.png on this same branch.",
   "items": [
     {
+      "id": "b2-05-ap-pulmonary-artery",
+      "status": "posted",
+      "date": "2026-10-06",
+      "tiktok_caption": "Send this to a friend who thinks they know the answer. Free A&P practice at levlprep.com #anatomy #physiology #premed #nursingstudent #studytok",
+      "yt_title": "True or false? Arteries always carry oxygen rich blood",
+      "buffer": "6abd5a0059b8e27764eb7d92",
+      "yt_buffer": "6ac70a855632f7b74bd8bf29",
+      "youtube_id": null,
+      "shorts_thumb": null,
+      "note": "Earlier batch (b2). TikTok Oct 6; YouTube posted late on Oct 7 at Olivier's request."
+    },
+    {
       "id": "b2-04-orgo-markovnikov",
       "status": "posted",
       "date": "2026-10-07",
