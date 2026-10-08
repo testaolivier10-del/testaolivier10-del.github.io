@@ -25,7 +25,7 @@ Leaks, biggest first: checkout (4 → 0), signup (6,700 → 4), gate (644 → 10
 - Channels: YouTube https://www.youtube.com/@levlprep, TikTok https://www.tiktok.com/@levl.prep (on about.html and in the index.html schema `sameAs`).
 - Not anonymous any more: reverses PR #45 (`claude/anonymize-operator`).
 
-Wording rule (FTC): the NREMT story is the founder's own result. Say it as that ("I passed…"), never as
+Wording rule: no person other than the owner has reviewed any content; the second checks are AI passes and scripts, and the site must say so (never "a reviewer"). (FTC): the NREMT story is the founder's own result. Say it as that ("I passed…"), never as
 typical ("students pass…").
 
 ## Plan and status (owner decisions 2026-10-08)
