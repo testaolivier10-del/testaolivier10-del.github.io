@@ -56,3 +56,6 @@ hyphens after `tt-`, `yt-` or `ig-`, up to 40 characters). Umami → Events → 
 ## Progress log
 
 - 2026-10-08: plan written; items 1, 2, 4, 6, 7, 9, 10 built, full CI green (with browser checks).
+- 2026-10-08: search titles. Homepage title/description now name Anatomy & Physiology and the AP® courses.
+  A&P titles keep "Anatomy & Physiology" and drop " | LevlPrep" first (`keepFirstLabel` in
+  `scripts/lib/page-title.mjs`); 128 topics with long names still fall back to "A&P" to stay under 60 characters.
