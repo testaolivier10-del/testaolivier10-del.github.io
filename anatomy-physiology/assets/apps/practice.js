@@ -398,6 +398,11 @@
     var res = session.results, right = res.filter(function(r){ return r.correct; }).length;
     if(res.length && Core) Core.event('anp-session-finish', { mode: session.mode === 'retry' ? 'missed' : session.mode, answered: res.length, correct: right });
     if(!res.length){ renderSetup(); return; }
+    /* Offer to save the progress, the way NREMT and ochem do after a session
+       (account.js promptToSave decides whether to show anything). */
+    if(window.StudyHubAccount && window.StudyHubAccount.promptToSave && res.length >= 8){
+      setTimeout(function(){ window.StudyHubAccount.promptToSave('Session finished \u2014 ' + res.length + ' questions', { kind: 'session', answered: res.length }); }, 2600);
+    }
 
     var byTopic = {}, topicOrder = [], coreMiss = {};
     res.forEach(function(r){

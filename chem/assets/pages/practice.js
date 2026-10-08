@@ -440,6 +440,11 @@
     var res = session.results, right = res.filter(function(r){ return r.correct; }).length;
     if(res.length && Core) Core.event('apchem-session-finish', { mode: session.mode === 'retry' ? 'missed' : session.mode, answered: res.length, correct: right });
     if(!res.length){ renderSetup(); return; }
+    /* Offer to save the progress, the way NREMT and ochem do after a session
+       (account.js promptToSave decides whether to show anything). */
+    if(window.StudyHubAccount && window.StudyHubAccount.promptToSave && res.length >= 8){
+      setTimeout(function(){ window.StudyHubAccount.promptToSave('Session finished \u2014 ' + res.length + ' questions', { kind: 'session', answered: res.length }); }, 2600);
+    }
     var byTopic = tally(res, function(q){ return q.topic; });
     var byPractice = tally(res, function(q){ return String(q.practice || '').split('.')[0]; }).sort(function(a, b){ return a.key - b.key; });
     var stillWrong = [];

@@ -618,6 +618,9 @@
       return { q: q, r: r };
     });
     var right = rows.filter(function(x){ return x.r.correct; }).length, total = rows.length;
+    if(window.StudyHubAccount && window.StudyHubAccount.promptToSave && total >= 10){
+      setTimeout(function(){ window.StudyHubAccount.promptToSave('Exam finished \u2014 ' + right + '/' + total, { kind: 'exam', score: right, total: total, missed: total - right }); }, 2600);
+    }
     var answered = rows.filter(function(x){ return !x.r.skipped; }).length;
     var k = run.meta.kind;
     Core.event('anp-session-finish', { mode: k === 'final' ? 'final' : k, answered: answered, correct: right });

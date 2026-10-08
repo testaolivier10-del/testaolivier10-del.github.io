@@ -214,8 +214,11 @@
 
   /* ?ref= on the links the site sends students back on (sw.js push,
      worker email, share.js): none of the three carries a usable referrer.
-     Read once, reported only if known, stripped from the address bar. */
+     Read once, reported only if known, stripped from the address bar.
+     Video links carry their own tag, <platform>-<topic> (tt-sn2, yt-nremt-cardiac),
+     so Umami can tell which TikTok or YouTube video a visit came from. */
   var REFS = { push: 1, email: 1, share: 1 };
+  var VIDEO_REF = /^(tt|yt|ig)-[a-z0-9-]{1,40}$/;
   var landedRef = takeRef();
 
   function takeRef(){
@@ -225,7 +228,7 @@
       if(ref === null) return null;
       url.searchParams.delete('ref');
       if(history.replaceState) history.replaceState(history.state, '', url.pathname + url.search + url.hash);
-      return REFS[ref] ? ref : null;
+      return REFS[ref] || VIDEO_REF.test(ref) ? ref : null;
     } catch(e){ return null; }
   }
 

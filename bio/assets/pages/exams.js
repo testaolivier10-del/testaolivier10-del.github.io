@@ -559,6 +559,9 @@
     // Recorded now, at the end (A&P decision 42); unanswered counts as a miss.
     rows.forEach(function(x){ Core.record(x.q.id, !!x.r.correct, { topic: x.q.topic, unit: x.q.unit, practice: x.q.practice, level: x.q.level, diff: x.q.diff, src: 'q' }); });
     var right = rows.filter(function(x){ return x.r.correct; }).length, total = rows.length;
+    if(window.StudyHubAccount && window.StudyHubAccount.promptToSave && total >= 10){
+      setTimeout(function(){ window.StudyHubAccount.promptToSave('Exam finished \u2014 ' + right + '/' + total, { kind: 'exam', score: right, total: total, missed: total - right }); }, 2600);
+    }
     var fg = 0, fo = 0; (run.frqScores || []).forEach(function(s){ fg += s.got; fo += s.of; });
     var mcqP = pctOf(right, total), composite = fo ? Math.round(0.6 * mcqP + 0.4 * (fg / fo * 100)) : mcqP;
     var isExam = run.meta.kind === 'full';

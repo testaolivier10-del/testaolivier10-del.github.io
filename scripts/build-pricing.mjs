@@ -58,6 +58,16 @@ function between(src, start, end, inner, rel) {
 // publishes by chapter (AP® Biology) before its first chapter is out.
 const COURSE_URL = Object.fromEntries(PAID.map((c) => [c.key, c.path]));
 const ORDER = PAID.filter((c) => isOpen(c)).map((c) => c.key);
+
+/* The price next to something a student already knows (trust plan, 2026-10-08):
+   a private tutor's hour. Care.com's national figure for a tutor's starting
+   rate was about $26 an hour in October 2026; update the number and the date
+   together if it moves. */
+const TUTOR_HOUR = { rate: 26, source: 'https://www.care.com/cost/private-tutors/boston-ma', checked: 'October 2026' };
+const PRICES = ORDER.flatMap((k) => COURSES[k].passes.map((x) => x.price));
+const LOW = Math.min(...PRICES), HIGH = Math.max(...PRICES);
+const HOURS = (n) => { const h = Math.max(1, Math.round(n / TUTOR_HOUR.rate)); return h === 1 ? 'one hour' : h === 2 ? 'two hours' : h + ' hours'; };
+const tutorSpan = HOURS(LOW) === HOURS(HIGH) ? HOURS(LOW) : HOURS(LOW).replace(/ hours?$/, '') + ' or ' + HOURS(HIGH);
 const BIO = ORDER.includes('apbio');
 const CHEM = ORDER.includes('apchem');
 /* Once every topic in the map is published the card stops promising more.
@@ -144,6 +154,7 @@ function premiumPage() {
 <link rel="stylesheet" href="assets/theme.css">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
+  .hero .pp-anchor{margin:14px 0 0;max-width:60ch;font-size:14.5px;font-weight:700;color:var(--muted);line-height:1.6;}
   .pp p,.pp li{font-size:15.5px;font-weight:600;color:var(--muted);line-height:1.6;max-width:66ch;}
   .pp strong{color:var(--ink);font-weight:800;}
   .pp h2{font-size:21px;margin:0 0 10px;}
@@ -180,6 +191,7 @@ ${JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/')}
     <div class="eyebrow">Free vs Premium</div>
     <h1>What&rsquo;s free, and what Premium adds.</h1>
     <p class="lede">${esc(FREE_SENTENCE)} Premium is a one-time pass for one course: no subscription, nothing renews.${founding ? ` <span data-founding-until="${founding.until}">Founding-member price: ${FOUNDING.off}% off every pass until ${longDate(founding.until)}.</span>` : ''}</p>
+    <p class="pp-anchor">A pass costs $${LOW} to $${HIGH}, about what ${tutorSpan} with a private tutor costs (<a href="${TUTOR_HOUR.source}" rel="noopener">Care.com</a> puts a US tutor&rsquo;s average starting rate near $${TUTOR_HOUR.rate} an hour, ${TUTOR_HOUR.checked}). If it isn&rsquo;t what you expected, you can refund it yourself, in full, within 7 days (once per account, <a href="terms.html">terms</a>).</p>
   </div>
 
   <div class="xsection">
@@ -211,7 +223,7 @@ ${ORDER.map(courseSection).join('\n')}
 <div class="xshell narrow">
   <footer>
 ${MARK ? `    ${TM_HTML}
-` : ''}    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+` : ''}    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 
@@ -299,7 +311,10 @@ function hubLd() {
         // Raster, 112 px or more: Google does not take an SVG logo (audit 2026-10).
         logo: { '@type': 'ImageObject', url: `${ORIGIN}/assets/icon-512.png`, width: 512, height: 512 },
         description: `Exam prep tools and interactive courses. ${FREE_SENTENCE} No ads.`,
-        // How to reach the site, as terms.html and privacy.html say. No founder name: the operator stays anonymous.
+        // Who runs it and how to reach them, as terms.html and privacy.html say.
+        founder: { '@type': 'Person', name: 'Olivier Testa' },
+        // The official channels, listed on about.html too.
+        sameAs: ['https://www.youtube.com/@levlprep', 'https://www.tiktok.com/@levl.prep'],
         contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: CONTACT_EMAIL, url: `${ORIGIN}/terms.html` },
       },
       { '@type': 'WebSite', '@id': `${ORIGIN}/#website`, name: 'LevlPrep', url: `${ORIGIN}/`, publisher: { '@id': `${ORIGIN}/#org` }, inLanguage: 'en' },

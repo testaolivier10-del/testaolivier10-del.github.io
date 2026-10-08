@@ -283,7 +283,8 @@ const BUDGETS = [
      course home has (docs/course-shell.md, W-D): its first-visit markup and
      the script that fills it from the practice-engine records. Measured
      10.3 KB. */
-  ['nremt/index.html', 10.4],
+  /* nremt/index.html 10.4 -> 10.6 (2026-10-08, trust plan): the founder line under the hero. */
+  ['nremt/index.html', 10.6],
   /* 10 -> 11. The home page lists every chapter's topics, so it grows by a
      line of markup each time the course gains a section; the generated list
      crossed 10 KB gzipped when the reactivity chapter gained its energy-

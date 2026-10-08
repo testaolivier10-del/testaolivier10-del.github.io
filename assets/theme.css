@@ -379,6 +379,7 @@ strong,b{font-weight:900;}
 .hero h1{margin:0 0 16px;max-width:17ch;}
 .hero .lede{margin:0 0 28px;max-width:48ch;}
 .hero .lede:last-child,.hero > :last-child{margin-bottom:0;}
+.hero-founder{margin:18px 0 0;font-size:14px;font-weight:700;color:var(--muted);max-width:52ch;}
 .hero .eyebrow{color:var(--cink);}
 .hero-ctas{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
 /* A course home's main button reads "Continue: <topic>" for a returning

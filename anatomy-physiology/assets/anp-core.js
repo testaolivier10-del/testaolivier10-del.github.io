@@ -52,6 +52,8 @@
   /* Record one answer. meta: { topic, core: [], level, diff, src } */
   function record(id, correct, meta){
     meta = meta || {};
+    // Today's score, which the daily-limit card shows (assets/premium.js).
+    if(window.LevlPremium && window.LevlPremium.noteAnswer) window.LevlPremium.noteAnswer('anp', correct);
     var d = load();
     var r = d.q[id] || { t: meta.topic, k: meta.core || [], l: levelKey(meta.level), d: meta.diff || 1, n: 0, c: 0, right: 0, seen: 0, due: 0, ivl: 0, ease: 2.3, lapses: 0, src: meta.src || 'q' };
     if(meta.topic) r.t = meta.topic;
