@@ -2,6 +2,18 @@
   "note": "LevlPrep posting queue. status: pending (waiting for Olivier's OK in chat) -> approved (OK given in chat) -> scheduled (added to Buffer for TikTok on 'date' at 6:00pm PT) -> posted (uploaded to YouTube on 'date' at 6:02pm PT). Videos live in videos/<id>.mp4, YouTube thumbnails in thumbs/<id>.png on this same branch.",
   "items": [
     {
+      "id": "b2-04-orgo-markovnikov",
+      "status": "posted",
+      "date": "2026-10-07",
+      "tiktok_caption": "Markovnikov's rule in 3 steps. Save this for your orgo exam. levlprep.com #orgo #organicchemistry #premed #studytips",
+      "yt_title": "Markovnikov's rule in 3 steps",
+      "buffer": "6abd5c046bed9240f18e5c16",
+      "yt_buffer": "6ac70a1457f9bd074d257dd0",
+      "youtube_id": null,
+      "shorts_thumb": null,
+      "note": "Earlier batch (b2). TikTok Oct 7; YouTube posted late on Oct 7 at Olivier's request."
+    },
+    {
       "id": "b3-01-stroke-scale",
       "status": "posted",
       "approved_on": "2026-10-05",
