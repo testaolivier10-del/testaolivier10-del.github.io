@@ -1,0 +1,22 @@
+LevlPrep automation diagnostic - 2026-10-08 (cloud session)
+
+1. Projects tool: OK
+   - project_info: OK (project "LevlPrep", 50 docs)
+   - project_read claude/levlprep-ops-daily.md: OK
+
+2. Device tools:
+   - get_device_info: OK (win32 arm64, device laptop-6ovg6sl9, app 2.26454.2, connectedFolders: [] (empty), localMcpServers: [])
+   - device_bash: ERROR "No folders are connected to this device for the current session. Call device_request_folder_access with the folder you need (the user is asked to approve), or ask the user to add one with the "Add folder" button in the Claude desktop app on this device; then retry."
+
+3. Claude in Chrome: OK (tool loaded and responded). tabs_context_mcp: "No tab group exists for this session. Use createIfEmpty: true to create one."
+
+4. MCP tool prefixes available:
+   mcp__Claude_Docs__, mcp__claude-code-remote__ (create/delete/fire/list/update_trigger, send_later; no add_repo/list_repos),
+   mcp__claude-in-chrome__, mcp__Cloudflare_Developer_Platform__, mcp__Composio__, mcp__CourtListener__,
+   mcp__Figma__, mcp__Firecrawl__, mcp__github__, mcp__Gmail__, mcp__Google_Calendar__, mcp__Google_Drive__,
+   mcp__Legal_Data_Hunter__, mcp__memory__, mcp__remote-devices__ (incl. Claude_Browser__ and computer_*),
+   mcp__Resend__, mcp__serena__, mcp__Supabase__, mcp__Vercel__, mcp__Zapier__
+   Needing authorization (no tools): Linear, Sentry, Stripe
+   PushNotification: exists
+
+5. add_repo: NOT AVAILABLE as a tool in this session (ToolSearch finds no add_repo/list_repos). The repo was already in session scope; clone and push done without it.
