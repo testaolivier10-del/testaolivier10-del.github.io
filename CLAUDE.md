@@ -37,6 +37,10 @@ and can also appear in its lesson (see the header of `scripts/build-ochem-figure
 open items. Per-finding notes are in `docs/site-audit-notes/w1.md`–`w9.md`. `scripts/ci-local.sh` runs every CI job
 locally (`BROWSER=1` adds the browser checks). New check-site rules go in `scripts/site-rules/`.
 
+## Trust and conversion
+
+`docs/trust-conversion-plan.md` is the status file (funnel numbers, owner facts for the About page, plan).
+
 ## Usage rules (save tokens, keep quality)
 
 Quality wins: if a rule would hurt quality on a task, follow quality and say why in one line.
