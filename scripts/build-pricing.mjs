@@ -313,6 +313,8 @@ function hubLd() {
         description: `Exam prep tools and interactive courses. ${FREE_SENTENCE} No ads.`,
         // Who runs it and how to reach them, as terms.html and privacy.html say.
         founder: { '@type': 'Person', name: 'Olivier Testa' },
+        // The official channels, listed on about.html too.
+        sameAs: ['https://www.youtube.com/@levlprep', 'https://www.tiktok.com/@levl.prep'],
         contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: CONTACT_EMAIL, url: `${ORIGIN}/terms.html` },
       },
       { '@type': 'WebSite', '@id': `${ORIGIN}/#website`, name: 'LevlPrep', url: `${ORIGIN}/`, publisher: { '@id': `${ORIGIN}/#org` }, inLanguage: 'en' },

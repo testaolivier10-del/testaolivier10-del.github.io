@@ -22,7 +22,7 @@ Leaks, biggest first: checkout (4 → 0), signup (6,700 → 4), gate (644 → 10
 - UC San Diego pre-med.
 - Why: tired of textbooks that just throw information at you; wanted interactive lessons that actually build
   on each other.
-- Link the LevlPrep TikTok and YouTube. **URLs still needed from the owner.**
+- Channels: YouTube https://www.youtube.com/@levlprep, TikTok https://www.tiktok.com/@levl.prep (on about.html and in the index.html schema `sameAs`).
 - Not anonymous any more: reverses PR #45 (`claude/anonymize-operator`).
 
 Wording rule (FTC): the NREMT story is the founder's own result. Say it as that ("I passed…"), never as
@@ -42,10 +42,6 @@ typical ("students pass…").
 | 8 | Email capture with a free cram sheet | waiting on `POSTAL_ADDRESS` (CAN-SPAM) |
 | 9 | Video tags: `?ref=tt-<topic>` / `yt-` / `ig-` accepted by `assets/analytics.js`, reported on `ref-open` and `visit` in Umami | **done** |
 | 10 | `premium.html`: "$25 to $49, about one or two hours with a private tutor" (Care.com ~$26/h, `TUTOR_HOUR` in `scripts/build-pricing.mjs`) + 7-day refund line | **done** |
-
-Not done yet:
-- TikTok and YouTube links on the About page: their sites are blocked from the build container and a web search
-  found nothing, so the owner must paste the URLs.
 
 How to tag video links: `https://levlprep.com/ochem/lessons/<topic>.html?ref=tt-sn2` (lowercase letters, digits and
 hyphens after `tt-`, `yt-` or `ig-`, up to 40 characters). Umami → Events → `ref-open` → filter by `ref`.
