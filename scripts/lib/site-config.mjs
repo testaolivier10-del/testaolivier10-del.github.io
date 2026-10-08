@@ -48,6 +48,9 @@ export const SCRIPT_PINS = [supabaseSdkUrl(), polarEmbedUrl()];
 /* The policy of an ordinary page. Pages that need more (the body map's WASM,
    the sound trainer's Wikimedia audio) keep their extra sources: see
    normalizeCsp. */
+/* Course videos are embedded from YouTube's privacy-enhanced domain only. */
+export const YOUTUBE_EMBED_ORIGIN = 'https://www.youtube-nocookie.com';
+
 export const CSP = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline' ${SCRIPT_PINS.join(' ')}`,
@@ -60,8 +63,9 @@ export const CSP = [
   "object-src 'none'",
   "form-action 'self'",
   // 'self' for the "/" search overlay, which is search.html?embed=1 in an
-  // iframe (site-chrome.js, audit 2026-10 UX row).
-  "frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh",
+  // iframe (site-chrome.js, audit 2026-10 UX row). youtube-nocookie.com for
+  // the course videos embedded on topic pages (privacy-enhanced embeds only).
+  `frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh ${YOUTUBE_EMBED_ORIGIN}`,
 ].join('; ');
 
 /* A redirect stub: one inline location.replace() and nothing else. */
@@ -90,6 +94,7 @@ export function normalizeCsp(content) {
       if (hadCdn) d.vals.push(...SCRIPT_PINS);
     }
     if (d.name === 'frame-src' && !d.vals.includes("'self'")) d.vals.unshift("'self'");
+    if (d.name === 'frame-src' && !d.vals.includes(YOUTUBE_EMBED_ORIGIN)) d.vals.push(YOUTUBE_EMBED_ORIGIN);
     if (d.name === 'connect-src') {
       const hadWorker = d.vals.some((v) => /workers\.dev|^https:\/\/api\./.test(v)) || d.vals.includes(API_ORIGIN);
       const hadUmami = d.vals.includes(UMAMI_ORIGIN);
