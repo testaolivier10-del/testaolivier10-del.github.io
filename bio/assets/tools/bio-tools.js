@@ -5,8 +5,23 @@
    filtered copy at assets/tool-data/<slug>.json (only items whose topic is
    published) and points #app[data-src] at it.
 
-     ApBioTools.mount(slug, fn)   load the data; fn(app, data) when the tool
-                                  is live, else say which unit it arrives with
+     ApBioTools.mount(slug, fn, opts)  load the data; fn(app, data, ctx) when
+                                  the tool is live, else say which unit it
+                                  arrives with. Then the intro and "How this
+                                  model works" fold into one "About this tool"
+                                  disclosure placed after the tool (tidyAbout).
+     The stage slot (docs/tools-upgrade.md, contracts): opts.stage(host, state)
+       draws the tool's live visual into host, a div.bt-stage-slot that is the
+       first thing in #app, above every control. ctx = { stage: host,
+       redraw(state) }: the tool calls ctx.redraw(state) from its update with
+       its current state (by convention { inputs, result }); the engine also
+       redraws with the last state after any input or change event in #app.
+       Draws are coalesced to one per animation frame. Before the first
+       redraw, state is { slug, data }.
+     Keep going strip: after every recorded answer (record) and every
+       simulator run, the card the student just used gets a strip linking
+       the lesson and notes for the item's topic, up to three glossary terms
+       of that topic (those named in the card first) and, after a miss, Review.
      Controls (real form elements, 44 px targets, visible values):
        slider({ id, label, min, max, step, value, unit, decimals, onInput })
          <input type=range> with its value shown and -/+ buttons
@@ -19,8 +34,15 @@
        questions(host, items, stimuli, slug)  ApBioQuestions, recorded here
        frq(host, frq, slug)                   rubric self-score + sample answer
      Skills problems:
-       skillTool(app, data, { slug, kind, decorate })  practice (seeded) and
-         authored problems; auto-checked parts; worked solution after Check
+       skillTool(app, data, { slug, kind, decorate, chart, stage })  practice
+         (seeded) and authored problems; auto-checked parts; worked solution
+         after Check. stage(host, state) draws above the problem text, inside
+         the problem card, on every new problem, every typed answer and after
+         Check; state = { slug, kind, mode, code, index, cid, topic, input, sol,
+         answers: { partKey: number | option index | null }, graded: null |
+         { partKey: { correct, answered } }, phase: 'new' | 'input' | 'checked' }.
+         chart(spec, input) (confidence intervals) is the stage when no stage
+         is given: it draws sol.chart.
      Recording: record(slug, items) -> ApBioCore.toolResult, so every item
        (id "<tool>:<content>:<item>") reaches mastery and the review queue. */
 (function(){
@@ -33,10 +55,15 @@
   function core(){ return window.ApBioCore; }
   function base(){ return window.ApBioBase || '../'; }
   function report(id){ return window.LevlReport ? '<span class="bt-report">' + window.LevlReport.button('apbio', id) + '</span>' : ''; }
-  function event(name, data){ try{ core() && core().event(name, data); }catch(e){} }
+  function event(name, data){
+    try{ core() && core().event(name, data); }catch(e){}
+    if(name === 'apbio-sim-run' && tool.data) keepGoing(usedCard(), { topic: tool.data.topic });
+  }
 
   /* ------------------------------------------------------- mounting */
-  function mount(slug, fn){
+  var tool = { slug: '', data: null }, lastHit = { card: null, q: null, form: null };
+  function mount(slug, fn, opts){
+    opts = opts || {};
     var app = document.getElementById('app');
     if(!app) return;
     var src = app.getAttribute('data-src');
@@ -49,11 +76,153 @@
       }
       app.innerHTML = '';
       unitMap = data.units || {};
+      tool = { slug: slug, data: data };
+      // Which card the student last used: the Keep going strip goes there.
+      // (Remembered at event time: grading may replace the clicked button.)
+      ['click', 'submit', 'change'].forEach(function(t){ app.addEventListener(t, function(e){
+        var x = e.target;
+        if(!x || !x.closest) return;
+        lastHit = { card: x.closest('.bt-frq, .bt-problem, .bt-card'), q: x.closest('.bio-q'), form: x.closest('form') };
+      }, true); });
       if(data.status === 'placeholder') app.insertAdjacentHTML('beforeend', '<p class="bt-draft"><b>Draft content.</b> These scenarios are waiting for review by a biology teacher. Spot a problem? Use Report a problem.</p>');
-      fn(app, data);
-    }).catch(function(){
+      var st = opts.stage ? stageSlot(opts.stage, { slug: slug, data: data }) : null;
+      if(st){ app.appendChild(st.host); ['input', 'change'].forEach(function(t){ app.addEventListener(t, function(){ st.redraw(); }); }); }
+      fn(app, data, { stage: st ? st.host : null, redraw: st ? st.redraw : function(){} });
+      if(st) st.redraw();
+      figureFirst(app);
+      tidyAbout(app);
+    }).catch(function(e){
+      if(window.console) console.error(e);
       app.innerHTML = '<p class="bio-soon" role="alert">The tool could not load. Check your connection and reload the page.</p>';
     });
+  }
+  /* The stage slot: a host div and a redraw(state) that draws at most once
+     an animation frame with the latest state. */
+  function stageSlot(draw, state){
+    var host = document.createElement('div'), queued = false;
+    host.className = 'bt-stage-slot';
+    function now(){ queued = false; try{ draw(host, state); }catch(e){ if(window.console) console.error(e); } }
+    return { host: host, redraw: function(s){
+      if(s !== undefined) state = s;
+      if(queued) return;
+      queued = true;
+      if(window.requestAnimationFrame) requestAnimationFrame(now); else setTimeout(now, 16);
+    } };
+  }
+  /* A simulator's picture and graph (its .bt-stage) move up to just under
+     the card's heading, above the controls that drive them, so on a phone
+     the visual is on the first screen. A short key right after the stage
+     (p.bt-small) moves with it. DOM order, so reading and tab order match. */
+  function figureFirst(app){
+    app.querySelectorAll('.bt-card').forEach(function(card){
+      var stage = null, ctl = null;
+      Array.prototype.forEach.call(card.children, function(k){
+        if(!stage && k.classList.contains('bt-stage')) stage = k;
+        if(!stage && !ctl && /\b(bt-controls|bt-modes|bt-ctl)\b/.test(k.className)) ctl = k;
+      });
+      if(!stage || !ctl) return;
+      var key = stage.nextElementSibling;
+      card.insertBefore(stage, ctl);
+      if(key && key.tagName === 'P' && key.classList.contains('bt-small') && !key.classList.contains('bt-runnote')) card.insertBefore(key, ctl);
+    });
+  }
+  /* The intro and the "How this model works" box, folded into one closed
+     disclosure after the tool and before its questions, so a phone opens on
+     the tool itself. The text is moved, not copied. */
+  function tidyAbout(app){
+    var kids = Array.prototype.slice.call(app.children);
+    var intro = kids.filter(function(k){ return k.classList.contains('bt-intro'); })[0];
+    var how = kids.filter(function(k){ return k.tagName === 'DETAILS' && k.classList.contains('bt-how'); })[0];
+    if(!intro && !how) return;
+    var title = how ? how.querySelector('summary').textContent : '';
+    var d = document.createElement('details');
+    d.className = 'bt-how bt-about';
+    d.innerHTML = '<summary>About this tool' + (title ? ', and ' + esc(title.charAt(0).toLowerCase() + title.slice(1)) : '') + '</summary><div class="bt-how-body"></div>';
+    var body = d.querySelector('.bt-how-body');
+    if(intro){ intro.parentNode.removeChild(intro); body.appendChild(intro); }
+    if(how){
+      var h = document.createElement('h3'); h.className = 'bt-about-h'; h.textContent = title; body.appendChild(h);
+      var hb = how.querySelector('.bt-how-body');
+      while(hb && hb.firstChild) body.appendChild(hb.firstChild);
+      how.parentNode.removeChild(how);
+    }
+    // Before the questions and the mini FRQ; for a skills tool right after
+    // the problem; else at the end.
+    var kids2 = Array.prototype.slice.call(app.children);
+    var before = kids2.filter(function(k){ return k.classList.contains('bt-frq') || !!k.querySelector('.bt-qs'); })[0];
+    var prob = kids2.filter(function(k){ return k.classList.contains('bt-problem'); })[0];
+    app.insertBefore(d, before || (prob && prob.nextSibling) || null);
+  }
+
+  /* ------------------------------------------------ Keep going strip */
+  function curriculumTopic(id){
+    var c = window.ApBioCurriculum;
+    return c && c.topics ? c.topics.filter(function(t){ return t.id === id; })[0] : null;
+  }
+  var glossary = null;
+  function glossaryTerms(){
+    if(!glossary){
+      glossary = (window.LevlGlossary && window.LevlGlossary.load ? window.LevlGlossary.load() : fetch(base() + 'assets/glossary.json').then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }))
+        .then(function(d){ return d.terms || []; }, function(){ glossary = null; return []; });
+    }
+    return glossary;
+  }
+  /* Up to three terms the topic teaches: those named in text first (in the
+     order they appear), else the first ones listed. */
+  function pickTerms(all, topic, text){
+    var low = String(text || '').toLowerCase(), mine = all.filter(function(t){ return t.topic === topic; });
+    var at = function(t){
+      var best = -1;
+      [t.term].concat(t.aka || []).forEach(function(k){
+        if(!k || k.length < 3) return;
+        var i = low.indexOf(k.toLowerCase().replace(/\s*\([^)]*\)/g, ''));
+        if(i > -1 && (best < 0 || i < best)) best = i;
+      });
+      return best;
+    };
+    var hits = mine.map(function(t){ return { t: t, i: at(t) }; }).filter(function(x){ return x.i > -1; }).sort(function(a, b){ return a.i - b.i; }).map(function(x){ return x.t; });
+    return (hits.length ? hits : mine).slice(0, 3);
+  }
+  /* One strip per card, placed after what the student just did: the
+     question answered, the worked solution, or the run note; else at the end
+     of the card. A card can send it elsewhere with data-keep-host="<selector>"
+     (graph builder: its feedback card). */
+  function keepGoing(card, o){
+    if(!card || !o.topic) return;
+    var app = document.getElementById('app'), to = card.getAttribute('data-keep-host');
+    if(to && app && app.querySelector(to)) card = app.querySelector(to);
+    var el = card.querySelector('.bt-keep');
+    var q = lastHit.q, f = lastHit.form;
+    var res = f && card.contains(f) && f.nextElementSibling && f.nextElementSibling.classList.contains('bt-result') ? f.nextElementSibling : null;
+    var sol = card.querySelector('.bt-solution:not([hidden])');
+    var anchor = (q && card.contains(q) && q) || sol || res || card.querySelector('.bt-runnote');
+    var text = (q || card).textContent;
+    if(!el){ el = document.createElement('div'); el.className = 'bt-keep'; }
+    if(anchor && anchor.parentNode) anchor.parentNode.insertBefore(el, anchor.nextSibling); else card.appendChild(el);
+    var t = curriculumTopic(o.topic), b = base(), kid = nid('keep');
+    var name = t ? t.title : '';
+    el.setAttribute('role', 'group');
+    el.setAttribute('aria-labelledby', kid);
+    el.setAttribute('data-topic', o.topic);
+    el.innerHTML = '<p class="bt-keep-h" id="' + kid + '">Keep going</p><ul class="bt-keep-list">' +
+      (t && t.built ? '<li><a href="' + b + 'lessons/' + esc(o.topic) + '.html"><span class="bt-keep-k">Lesson</span> ' + esc(name) + '</a></li>' +
+        '<li><a href="' + b + 'notes/' + esc(o.topic) + '.html"><span class="bt-keep-k">Notes</span> ' + esc(name) + '</a></li>' : '') +
+      '<li class="bt-keep-gl" hidden></li>' +
+      (o.missed ? '<li><a href="' + b + 'review.html"><span class="bt-keep-k">Review</span> What you missed</a></li>' : '') + '</ul>';
+    glossaryTerms().then(function(all){
+      var li = el.querySelector('.bt-keep-gl');
+      if(!li || el.getAttribute('data-topic') !== o.topic) return;
+      var terms = pickTerms(all, o.topic, text);
+      if(!terms.length) return;
+      li.innerHTML = '<span class="bt-keep-k">Glossary</span> ' + terms.map(function(g){ return '<a href="' + b + 'glossary.html#t-' + esc(g.id) + '">' + esc(g.term) + '</a>'; }).join(' ');
+      li.hidden = false;
+    });
+  }
+  /* The card the student just used (where the strip goes). */
+  function usedCard(){
+    var app = document.getElementById('app');
+    var c = lastHit.card;
+    return c && app && app.contains(c) ? c : null;
   }
 
   /* ------------------------------------------------------- controls */
@@ -167,6 +336,8 @@
      curriculum lists the topic. */
   function unitOf(it){ return it.unit || unitMap[it.topic] || (core() && core().unitOf ? core().unitOf(it.topic) : ''); }
   function record(slug, items, extra){
+    var miss = items.filter(function(it){ return !it.correct; })[0];
+    keepGoing(usedCard(), { topic: (miss || items[0] || {}).topic || (tool.data && tool.data.topic), missed: !!miss });
     var c = core();
     if(!c || !c.toolResult) return;
     c.toolResult(slug, items.map(function(it){
@@ -290,6 +461,9 @@
         (problems.length ? '<div class="bt-radio"><input type="radio" name="' + gid + '-m" id="' + gid + '-ms" value="set"' + (mode === 'set' ? ' checked' : '') + '><label for="' + gid + '-ms">Worked set: ' + problems.length + ' fixed problem' + (problems.length === 1 ? '' : 's') + '</label></div>' : '') +
       '</fieldset><section class="bt-problem" aria-labelledby="' + gid + '-h"></section>');
     var area = app.querySelector('.bt-problem');
+    // The stage (docs/tools-upgrade.md): o.stage, or the older o.chart hook
+    // drawing sol.chart (confidence intervals).
+    var stageFn = o.stage || (o.chart ? function(host, s){ host.innerHTML = s.sol.chart ? '<div class="bt-chart">' + o.chart(s.sol.chart, s.input) + '</div>' : ''; } : null);
     app.querySelectorAll('.bt-modes input').forEach(function(r){ r.addEventListener('change', function(){ mode = r.value; at = 0; draw(true); }); });
 
     function current(){
@@ -301,13 +475,28 @@
       var cur = current(), sol = P.solve[kind](cur.input), done = false;
       area.innerHTML = '<div class="bt-prob-head"><h2 id="' + gid + '-h">' + esc(cur.title) + '</h2>' + (cur.code ? '<p class="bt-code">Problem code <b>' + cur.code + '</b> <a href="?seed=' + cur.code + '">Link to this problem</a></p>' : '') + '</div>' +
         '<div class="bt-context">' + (cur.text || '') + '</div>' + (sol.table ? wrapTables(sol.table) : '') +
-        (sol.chart && o.chart ? '<div class="bt-chart">' + o.chart(sol.chart, cur.input) + '</div>' : '') +
         '<form class="bt-parts" novalidate>' + sol.parts.map(function(p, i){ return partHtml(p, gid + '-p' + i); }).join('') +
         '<div class="bt-actions"><button type="submit" class="btn-press sm">Check answers</button></div></form>' +
         '<div class="bt-result" role="status" aria-live="polite"></div><div class="bt-solution" hidden></div>' +
         '<div class="bt-next"></div>';
+      var form = area.querySelector('form'), stage = null;
+      if(stageFn){
+        var state = { slug: slug, kind: kind, mode: mode, code: cur.code || null, index: mode === 'set' ? at : null, cid: cur.cid, topic: cur.topic, input: cur.input, sol: sol, answers: {}, graded: null, phase: 'new' };
+        stage = stageSlot(stageFn, state);
+        area.insertBefore(stage.host, area.querySelector('.bt-context'));
+        var answers = function(){
+          var a = {};
+          sol.parts.forEach(function(p){
+            var el = form.querySelector('[data-key="' + p.key + '"]');
+            if(p.type === 'choice'){ var c = el.querySelector('input:checked'); a[p.key] = c ? +c.value : null; }
+            else { var x = Q.parseNumber(el.querySelector('input').value); a[p.key] = isNaN(x) ? null : x; }
+          });
+          return a;
+        };
+        ['input', 'change'].forEach(function(t){ form.addEventListener(t, function(){ if(state.phase === 'checked') return; state.answers = answers(); state.phase = 'input'; stage.redraw(state); }); });
+        stage.redraw(state);
+      }
       if(o.decorate) o.decorate(area, cur.input, sol);
-      var form = area.querySelector('form');
       form.addEventListener('submit', function(e){
         e.preventDefault();
         if(done) return;
@@ -328,6 +517,11 @@
         solEl.hidden = false;
         solEl.innerHTML = '<h3>Worked solution</h3><ol class="bt-steps">' + sol.steps.map(function(s){ return '<li>' + wrapTables(s) + '</li>'; }).join('') + '</ol>';
         area.querySelector('.bt-result').textContent = right + ' of ' + sol.parts.length + ' parts right. The worked solution follows.';
+        if(stage){
+          var g = {};
+          sol.parts.forEach(function(p, i){ g[p.key] = { correct: res[i].correct, answered: res[i].answered }; });
+          state.answers = answers(); state.graded = g; state.phase = 'checked'; stage.redraw(state);
+        }
         record(slug, sol.parts.map(function(p, i){
           return { id: slug + ':' + cur.cid + ':' + p.key, correct: res[i].correct, topic: (data.partTopics && data.partTopics[p.key]) || cur.topic, practice: p.practice, level: 'apply', diff: 2, group: p.key };
         }));

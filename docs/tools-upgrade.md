@@ -57,15 +57,13 @@ basic: a dropdown, typed answers, a Check button. Bring every tool up to the bod
 | P1-NREMT | Open on the tool (phone); tool results hook wired into body map hunt, sound trainer, flow drill, formulary drill, scenario debrief; body viewer module; `?focus=` deep link | pending |
 | P1-Ochem | `tool-shell.js`: tool first on phones, sibling chips compact below; keep handoff and quiz | done: opener is back link + share on one row, name, lede (compact on phones, tool starts ~265px down at 390); sibling chips moved into a generated Keep going strip under the tool (lessons from registry `topic`, glossary from new registry `terms`, Practice `?topic=`, other tools), written by `build-tool-pages.mjs` between `tool-foot` markers; each quiz answer links its own lesson and term (`q.topic`/`q.term`), missed items link their lesson |
 | P1-A&P | Open on a default item instead of the long chooser (compact picker); Keep going strip; 3D body link for anatomical items | pending |
-| P1-Bio | Stage slot in `bio-tools.js`; phone layout (stage first, intro collapsed); Keep going strip from each tool's `topic` | pending |
+| P1-Bio | Stage slot in `bio-tools.js`; phone layout (stage first, intro collapsed); Keep going strip from each tool's `topic` | done (branch `claude/tools-shared-bio`). **Stage API:** simulators `ApBioTools.mount(slug, fn, { stage(host, state) })`; `fn(app, data, ctx)` with `ctx = { stage: host, redraw(state) }`; `host` is `div.bt-stage-slot`, first child of `#app` (above controls). Called once after `fn` with the last state (initially `{ slug, data }`), whenever the tool calls `ctx.redraw(state)` (convention `{ inputs, result }`), and after any `input`/`change` in `#app` (last state); coalesced to one draw per animation frame; errors logged, not thrown. Skills: `skillTool(app, data, { slug, kind, stage(host, state), chart?, decorate? })`; host sits in the problem card above the problem text, redrawn on each new problem, each typed/picked answer and after Check, with `state = { slug, kind, mode: 'practice'\|'set', code (seed or null), index (set position or null), cid, topic, input, sol (from ApBioProblems.solve: parts, steps, table?, chart?), answers: { partKey: number\|option index\|null }, graded: null\|{ partKey: { correct, answered } }, phase: 'new'\|'input'\|'checked' }`; the old `chart(spec, input)` hook is the default stage (confidence intervals). **Phone:** tool pages get a slim hero at ≤640 px (bio.css, `body[data-app^="tool-"]`); `tidyAbout` moves intro + model box into one closed `details.bt-how.bt-about` after the tool; `figureFirst` moves a simulator card's `.bt-stage` (and a short key) above its first control. **Strip:** `keepGoing` runs from `record()` and `event('apbio-sim-run')`, in the card just used, after the answered question / worked solution / drill result / run note (`data-keep-host` redirects: graph builder to its feedback card): lesson + notes for the item's topic (if built), up to 3 glossary terms of that topic (`glossary.html#t-<id>`, terms named in the card first), Review after a miss. Phase 2 tools pass `stage` and call `ctx.redraw`. |
 | P1-Chem | Phone layout (problem first, intro collapsed); Keep going strip; `live-beaker.js` | **done 2026-10-09**: `ApChemTools.frame`/`kindPicker` (picker row, problem, "About this ..." folded below; compact opener under 640 px) in all 6 trainers; `keepGoing` strip after each graded problem (lesson, notes, lessons for missed steps' topics, glossary terms); Justify opens on the next unchecked prompt (`?list=1` for the list, `?p=` kept); equations sheet links each row to its trainers; beaker API below. Notes in `docs/apchem-spec.md` decision 20 |
 
 ### Chem live beaker API (built in P1-Chem)
-
 `chem/assets/tools/live-beaker.js`, loaded after `chem-tool-math.js` (and `chem-tools.js` if the page has it,
 for its announcer). No page loads it yet: add it to the tool's `extra` list in `toolShell()` (build-apchem.mjs).
 CSS is in `chem-tools.css` (`.lb-*`).
-
 ```js
 var b = ApChemBeaker.mount(el, {
   species: [{ key, label, mol?, name?, tone? }], // mol: an ApChemMath.particles template (A, B, A2, B2, AB,
@@ -79,7 +77,6 @@ b.update({ counts: { HA: 6, 'A-': 4 }, pH: 4.57, note: 'Added 2 OH⁻.' });   //
 b.update({ counts: { A2: 5, B2: 5, AB: 4 }, Q: 0.64, K: 4 });               // readout 'qk'
 b.destroy();
 ```
-
 - Counts are particles, not moles: the caller maps concentration to a count (keep ratios honest).
 - Between updates particles keep their place and id; a species that grows takes the places another just
   gave up (HA turns into A⁻ where it was), new ones fade in, lost ones fade out, the pH or Q marker slides.
