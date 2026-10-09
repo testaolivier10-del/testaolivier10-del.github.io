@@ -571,6 +571,7 @@
           var hybs = ['sp', 'sp²', 'sp³', 'sp³d', 'sp³d²'];
           return {
             id: pick.id + ':hyb',
+            term: 'hybridization', topic: 'hybridization',
             options: hybs.map(function(h){ return { id:h, label:h, correct: h === a.shape.hyb }; }),
             prompt: 'What is the hybridization of the ' + esc(a.el) + ' in <b>' +
                     esc(pick.name) + '</b>?',
@@ -595,6 +596,7 @@
 
         return {
           id: pick.id + ':shape',
+          term: 'vsepr-theory', topic: 'molecular-geometry',
           prompt: 'What is the <b>molecular shape</b> at the ' + esc(a.el) +
                   ' of <b>' + esc(pick.name) + '</b>' +
                   (pick.formula ? ' (<span class="tformula">' + esc(pick.formula) + '</span>)' : '') + '?',

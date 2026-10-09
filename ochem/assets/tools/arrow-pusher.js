@@ -629,6 +629,7 @@
             });
             return {
               id: m.id + ':fc:' + key,
+              term: 'formal-charge', topic: 'formal-charge',
               prompt: 'In <b>' + esc(m.name) + '</b>' +
                       (m.formula ? ' (<span class="tformula">' + esc(m.formula) + '</span>)' : '') +
                       ', the ' + esc(el) + ' has ' + C.totalBonds(m.st, key) + ' bond' +
@@ -652,6 +653,7 @@
           });
           return {
             id: m.id + ':ec:' + key,
+            term: 'octet-rule', topic: 'lewis-structures',
             prompt: 'How many electrons surround the <b>' + esc(el) + '</b> in <b>' + esc(m.name) +
                     '</b>, counting both electrons of every bond it makes?',
             options: ecOpts.map(function(v){

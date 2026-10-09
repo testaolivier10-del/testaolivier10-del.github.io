@@ -80,6 +80,51 @@
     }
   }
 
+  /* Where to go after an answer. The Keep going strip under the tool
+     (written by build-tool-pages.mjs) already holds the tool's lessons and
+     glossary terms with resolved names and hrefs, so the quiz reads them from
+     there rather than carrying a second copy. A question may name the term it
+     tests (q.term, one of the registry's `terms`) and the topic it belongs to
+     (q.topic, any curriculum topic); the lesson is q.topic's, else the term's,
+     else the tool's first. */
+  function keepGoing(q){
+    var foot = document.getElementById('tool-foot');
+    var pick = function(sel){ return foot ? foot.querySelector(sel) : null; };
+    var lesson = null, term = null;
+
+    var termA = q.term ? pick('a[data-term="' + q.term + '"]') : null;
+    if(termA) term = { href: termA.getAttribute('href'), name: termA.textContent };
+
+    if(q.topic){
+      var topA = pick('a[data-topic="' + q.topic + '"]');
+      var C = window.OchemCurriculum;
+      var t = !topA && C && C.findTopic ? C.findTopic(q.topic) : null;
+      if(topA) lesson = { href: topA.getAttribute('href'), name: topA.textContent };
+      else if(t && t.href) lesson = { href: '../' + t.href, name: t.title };
+    }
+    if(!lesson && termA && termA.getAttribute('data-lesson')){
+      lesson = { href: termA.getAttribute('data-lesson'), name: termA.getAttribute('data-lesson-title') };
+    }
+    if(!lesson){
+      var first = pick('a[data-topic]');
+      if(first) lesson = { href: first.getAttribute('href'), name: first.textContent };
+    }
+    if(!term && !q.topic){
+      var firstTerm = pick('a[data-term]');
+      if(firstTerm) term = { href: firstTerm.getAttribute('href'), name: firstTerm.textContent };
+    }
+    return { lesson: lesson, term: term };
+  }
+
+  function keepGoingHtml(q){
+    var k = keepGoing(q);
+    if(!k.lesson && !k.term) return '';
+    return '<p class="tquiz__next"><span class="tquiz__next-k">Keep going</span>' +
+      (k.lesson ? '<a href="' + esc(k.lesson.href) + '">Lesson: ' + esc(k.lesson.name) + '</a>' : '') +
+      (k.term ? '<a href="' + esc(k.term.href) + '">Glossary: ' + esc(k.term.name) + '</a>' : '') +
+    '</p>';
+  }
+
   /* ---------------------------------------------------------------------- */
 
   /* mount(el, cfg)
@@ -93,10 +138,11 @@
                         pool is genuinely exhausted).
 
      A question is:
-       { id, prompt, options:[{ id, label, correct }], explain }
+       { id, prompt, options:[{ id, label, correct }], explain, term?, topic? }
      where `explain` is HTML shown after answering — the reasoning, which is
      the part worth reading, and the reason the quiz reveals it whether you
-     were right or wrong. */
+     were right or wrong. `term` and `topic` pick the lesson and glossary
+     links shown under it (see keepGoing). */
   function mount(el, cfg){
     if(!el || !cfg || typeof cfg.make !== 'function') return null;
 
@@ -171,7 +217,7 @@
     function answer(chosen, options, btn){
       state.answered = true;
       var correct = !!chosen.correct;
-      state.results.push({ id: state.q.id, correct: correct, prompt: state.q.prompt });
+      state.results.push({ id: state.q.id, correct: correct, prompt: state.q.prompt, next: keepGoing(state.q) });
 
       /* Every option is marked, not just the one picked: seeing which of the
          others was right is most of the teaching in a multiple-choice item,
@@ -189,6 +235,7 @@
           '<span class="tnote__k">' + (correct ? 'Right' : 'Not quite') + '</span>' +
           state.q.explain +
         '</div>' +
+        keepGoingHtml(state.q) +
         '<button type="button" class="btn-press" id="tqNext">' +
           (state.i + 1 >= rounds ? 'See what to review' : 'Next question') +
         '</button>';
@@ -216,7 +263,12 @@
           (missed.length
             ? '<p class="tquiz__fine">Worth another look:</p>' +
               '<ul class="tquiz__missed">' +
-                missed.map(function(r){ return '<li>' + r.prompt + '</li>'; }).join('') +
+                missed.map(function(r){
+                  var l = r.next && r.next.lesson;
+                  return '<li>' + r.prompt +
+                    (l ? ' <a class="tquiz__missed-go" href="' + esc(l.href) + '">' + esc(l.name) + ' lesson</a>' : '') +
+                    '</li>';
+                }).join('') +
               '</ul>'
             : '<p class="tquiz__fine">Nothing missed. Back to the tool.</p>') +
           '<div class="trow">' +

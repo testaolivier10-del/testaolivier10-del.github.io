@@ -1,11 +1,12 @@
 /* Shared chrome for a tool page.
 
-   Every tool page is the same three things above the tool itself — a way back
-   to the hub, the tool's own name and one-line promise, and a row that
-   switches to any other tool without going back to the hub first. Rendering
-   them from tools-registry.js rather than pasting them into seven files means
-   a renamed tool is renamed everywhere, and a new tool appears in all six
-   other switchers the moment it is added to the list.
+   Above the tool: a way back to the hub, the tool's own name and one-line
+   promise, and the share control, kept short so that on a phone the tool
+   itself is on the first screen. Under it: the Keep going strip (lessons,
+   glossary terms, Practice, the other tools), which build-tool-pages.mjs
+   writes into the page from tools-registry.js, curriculum.js and the
+   glossary. Rendering them from the registry rather than pasting them into
+   eight files means a renamed tool is renamed everywhere.
 
    The page sets window.OCHEM_TOOL to its slug; everything else is looked up. */
 (function(){
@@ -23,20 +24,18 @@
     });
   }
 
+  /* Same markup as topHtml() in build-tool-pages.mjs, which writes it into
+     the page first; change both together. */
   mount.innerHTML =
-    '<a class="tool-back" href="../tools.html">&larr; All tools</a>' +
+    '<div class="tool-topbar">' +
+      '<a class="tool-back" href="../tools.html">&larr; All tools</a>' +
+      '<div class="tool-share" id="tool-share"></div>' +
+    '</div>' +
     '<div class="tool-title">' +
       '<span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true">' + tool.icon + '</svg></span>' +
       '<h1>' + esc(tool.name) + '</h1>' +
     '</div>' +
-    '<p class="tool-lede">' + esc(tool.blurb) + '</p>' +
-    '<div class="tool-share" id="tool-share"></div>' +
-    '<nav class="tool-switch" aria-label="Other tools">' +
-      T.ALL.map(function(t){
-        return '<a href="' + esc(t.slug) + '.html"' + (t.slug === slug ? ' class="on" aria-current="page"' : '') +
-               '>' + esc(t.name) + '</a>';
-      }).join('') +
-    '</nav>';
+    '<p class="tool-lede">' + esc(tool.blurb) + '</p>';
 
   /* Premium tools (all but OchemPremium.FREE_TOOLS): a badge by the name,
      and once Premium launches, the gate in place of the tool for anyone
@@ -63,19 +62,8 @@
     window.OchemToolState.mountShare(document.getElementById('tool-share'));
   }
 
-  /* The tool is not the end of the road: each one has a lesson behind it, and
-     a student who has just watched an octet blow up is exactly the person who
-     should be offered the lesson that explains why. Rendered only where the
-     page leaves a slot for it. */
-  var foot = document.getElementById('tool-foot');
-  if(foot){
-    foot.className = 'tool-foot';
-    foot.innerHTML =
-      '<p>Tools are for playing with. When you want the same chemistry with a right answer attached, ' +
-      'that is what Practice is for.</p>' +
-      '<div class="trow">' +
-        '<a class="btn-press" href="../practice.html">Go to Practice</a>' +
-        '<a class="link-quiet" href="../learn.html">Browse the textbook &rarr;</a>' +
-      '</div>';
-  }
+  /* The Keep going strip (#tool-foot) is static markup from
+     build-tool-pages.mjs, so it reads and links without JavaScript;
+     tool-quiz.js points each answered question at its own lesson and term
+     from the same links. */
 })();
