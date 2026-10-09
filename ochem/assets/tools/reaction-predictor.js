@@ -775,6 +775,7 @@
 
         return {
           id: pick._id,
+          term: res.major.toLowerCase() + '-reaction', topic: res.major.toLowerCase(),
           prompt: '<span class="tformula">' + esc(pick.sub.formula) + '</span> + <b>' +
                   esc(pick.rgt.name) + '</b>, in ' + esc(pick.solvent.name.toLowerCase()) +
                   ' solvent' + (pick.heat ? ', heated' : ', at room temperature') +

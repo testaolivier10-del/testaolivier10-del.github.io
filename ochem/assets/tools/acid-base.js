@@ -761,6 +761,7 @@
 
         return {
           id: a.id + '/' + b.id,
+          term: 'pka', topic: 'acidity-factors',
           prompt: 'Which is the <b>stronger acid</b>: <span class="tformula">' + esc(a.formula) +
                   '</span> or <span class="tformula">' + esc(b.formula) + '</span>?',
           options: [

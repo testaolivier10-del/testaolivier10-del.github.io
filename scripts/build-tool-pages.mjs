@@ -27,6 +27,7 @@
 
      <!-- tool-top:start -->  ... static shell ...  <!-- tool-top:end -->
      <!-- tool-ld:start -->   ... JSON-LD ...       <!-- tool-ld:end -->
+     <!-- tool-foot:start --> ... Keep going strip  <!-- tool-foot:end -->
 
    The registry is the one place a tool's name and blurb are written, so
    renaming a tool still means one edit, and a tool added to the registry
@@ -55,6 +56,8 @@ const ORIGIN = 'https://levlprep.com';
 
 const TOP_START = '<!-- tool-top:start -->';
 const TOP_END = '<!-- tool-top:end -->';
+const FOOT_START = '<!-- tool-foot:start -->';
+const FOOT_END = '<!-- tool-foot:end -->';
 const LD_START = '<!-- tool-ld:start -->';
 const LD_END = '<!-- tool-ld:end -->';
 
@@ -81,20 +84,68 @@ function loadTools() {
 
 /* Mirrors tool-shell.js exactly. If the two ever disagree the page would flicker
    from one layout to another as the script lands, which is worse than either
-   one alone — so this is the markup to change when that one changes. */
-function topHtml(tool, all) {
-  const switcher = all.map((t) => (
-    `<a href="${esc(t.slug)}.html"${t.slug === tool.slug ? ' class="on" aria-current="page"' : ''}>${esc(t.name)}</a>`
-  )).join('');
+   one alone — so this is the markup to change when that one changes.
 
-  return `<a class="tool-back" href="../tools.html">&larr; All tools</a>` +
+   The opener is only the way back, the name, the one-line promise and the
+   share control: on a 390px phone the tool itself has to be on the first
+   screen (docs/tools-upgrade.md, point 6), so the switcher to the other tools
+   lives in the Keep going strip under the tool instead. */
+function topHtml(tool) {
+  return `<div class="tool-topbar">` +
+      `<a class="tool-back" href="../tools.html">&larr; All tools</a>` +
+      `<div class="tool-share" id="tool-share"></div>` +
+    `</div>` +
     `<div class="tool-title">` +
       `<span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true">${tool.icon}</svg></span>` +
       `<h1>${esc(tool.name)}</h1>` +
     `</div>` +
-    `<p class="tool-lede">${esc(tool.blurb)}</p>` +
-    `<div class="tool-share" id="tool-share"></div>` +
-    `<nav class="tool-switch" aria-label="Other tools">${switcher}</nav>`;
+    `<p class="tool-lede">${esc(tool.blurb)}</p>`;
+}
+
+/* The Keep going strip under the tool (docs/tools-upgrade.md, "Related
+   strip"): the lessons for the registry's topics, the glossary entries in its
+   `terms`, Practice on the first topic, and the other tools. Written into the
+   page so it links without JavaScript; tool-quiz.js reads its links
+   (data-topic, data-term) to point each answered question at its own lesson
+   and term, so the names and hrefs are resolved once, here. */
+function footHtml(tool, all) {
+  const topics = tool.topic.map((id) => {
+    const t = TOPICS.get(id);
+    if (!t) throw new Error(`${tool.slug}: topic "${id}" is not in curriculum.js`);
+    return t;
+  });
+  const terms = (tool.terms || []).map((id) => {
+    const g = TERMS.get(id);
+    if (!g) throw new Error(`${tool.slug}: term "${id}" is not in ochem/assets/glossary.json`);
+    const lesson = TOPICS.get(g.topic);
+    return { id, name: g.term, lesson };
+  });
+  const lessonLinks = topics.map((t) => (
+    `<li><a href="../${esc(t.href)}" data-topic="${esc(t.id)}">${esc(t.title)}</a></li>`
+  )).join('');
+  const termLinks = terms.map((g) => (
+    `<li><a href="../glossary.html#t-${esc(g.id)}" data-term="${esc(g.id)}"` +
+    (g.lesson ? ` data-lesson="../${esc(g.lesson.href)}" data-lesson-title="${esc(g.lesson.title)}"` : '') +
+    `>${esc(g.name)}</a></li>`
+  )).join('');
+  const others = all.filter((t) => t.slug !== tool.slug).map((t) => (
+    `<a href="${esc(t.slug)}.html">${esc(t.name)}</a>`
+  )).join('');
+  return `<section class="tool-foot" aria-labelledby="tool-foot-h">` +
+    `<h2 class="tool-foot__h" id="tool-foot-h">Keep going</h2>` +
+    `<div class="tool-foot__cols">` +
+      `<div class="tool-foot__col"><p class="tool-foot__k" id="tool-foot-l">Read the lesson</p>` +
+        `<ul class="tool-foot__list" aria-labelledby="tool-foot-l">${lessonLinks}</ul></div>` +
+      (termLinks ? `<div class="tool-foot__col"><p class="tool-foot__k" id="tool-foot-g">In the glossary</p>` +
+        `<ul class="tool-foot__list" aria-labelledby="tool-foot-g">${termLinks}</ul></div>` : '') +
+    `</div>` +
+    `<div class="trow">` +
+      `<a class="btn-press" href="../practice.html?topic=${esc(topics[0].id)}">Practice ${esc(topics[0].title)}</a>` +
+      `<a class="link-quiet" href="../learn.html">Browse the textbook &rarr;</a>` +
+    `</div>` +
+    `<nav class="tool-switch" aria-labelledby="tool-switch-h"><p class="tool-foot__k" id="tool-switch-h">Other tools</p>` +
+      `<div class="tool-switch__row">${others}</div></nav>` +
+  `</section>`;
 }
 
 /* A tool is a thing you use, not a thing you read, so it is a WebApplication
@@ -157,6 +208,20 @@ function splice(html, start, end, body, anchor) {
   return html.slice(0, at + anchor.length) + '\n' + block + html.slice(at + anchor.length);
 }
 
+/* Topic titles and hrefs from curriculum.js, and glossary names from the
+   course glossary, for the Keep going strip. */
+function loadTopics() {
+  const sandbox = { window: {}, localStorage: { getItem: () => null, setItem: () => {} }, document: {} };
+  vm.createContext(sandbox);
+  vm.runInContext(readFileSync(join(ROOT, 'ochem', 'assets', 'curriculum.js'), 'utf8') +
+    '\nthis.M = window.OchemCurriculum.MODULES;', sandbox);
+  const map = new Map();
+  for (const m of sandbox.M) for (const t of m.topics) map.set(t.id, { id: t.id, title: t.title, href: t.href });
+  return map;
+}
+const TOPICS = loadTopics();
+const TERMS = new Map(JSON.parse(readFileSync(join(ROOT, 'ochem', 'assets', 'glossary.json'), 'utf8')).terms.map((t) => [t.id, t]));
+
 const tools = loadTools();
 const stale = [];
 const broken = [];
@@ -171,8 +236,11 @@ for (const tool of tools) {
   let next = splice(current, LD_START, LD_END, ldBlock, FONTS_LINK);
   if (next === null) { broken.push(`${tool.slug}: no place to put the structured data`); continue; }
 
-  next = splice(next, TOP_START, TOP_END, topHtml(tool, tools), '<div class="tool-top" id="tool-top">');
+  next = splice(next, TOP_START, TOP_END, topHtml(tool), '<div class="tool-top" id="tool-top">');
   if (next === null) { broken.push(`${tool.slug}: no <div id="tool-top">`); continue; }
+
+  next = splice(next, FOOT_START, FOOT_END, footHtml(tool, tools), '<div id="tool-foot">');
+  if (next === null) { broken.push(`${tool.slug}: no <div id="tool-foot">`); continue; }
 
   if (next === current) continue;
   if (check) { stale.push(tool.slug); continue; }

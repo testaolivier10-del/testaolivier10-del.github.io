@@ -680,6 +680,7 @@
 
         return {
           id: pick.id,
+          term: 'resonance-structures', topic: 'resonance',
           prompt: 'How many contributing <b>resonance forms</b> does <b>' + esc(pick.label) +
                   '</b> have?',
           options: opts.map(function(v){
