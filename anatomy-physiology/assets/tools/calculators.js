@@ -168,10 +168,34 @@
   function mount(){
     app.innerHTML =
       '<div class="calc">' +
-        '<nav class="calc-pick" aria-label="Choose a calculator"></nav>' +
+        '<div class="calc-pickhost"></div>' +
         '<section class="calc-card" aria-live="off"></section>' +
       '</div>';
-    var pick = app.querySelector('.calc-pick');
+    var want = (location.hash || '').replace(/^#/, '');
+    var last = null; try{ last = localStorage.getItem(PREF); }catch(e){}
+    var first = byId(want) ? want : byId(last) ? last : DATA.calculators[0].id;
+    select(first, false);
+    window.addEventListener('hashchange', function(){ var h = location.hash.replace(/^#/, ''); if(byId(h) && (!current || current.id !== h)) select(h, false); });
+  }
+  /* The chooser: every calculator by group, in the shared compact picker
+     (AnpToolKit.picker), so the open calculator is on the first screen. The
+     old chip grid is the fallback if the kit is missing. */
+  function renderPicker(){
+    var host = app.querySelector('.calc-pickhost');
+    host.innerHTML = '';
+    if(window.AnpToolKit){
+      window.AnpToolKit.picker(host, {
+        label: 'Calculator', noun: 'calculators', current: current.id,
+        groups: DATA.groups.map(function(g){ return { title: g.title, items: DATA.calculators.filter(function(c){ return c.group === g.id; }).map(function(c){
+          return { id: c.id, title: c.title, meta: c.short.replace(/<[^>]+>/g, '') };
+        }) }; }),
+        onPick: function(id){ select(id, true); }
+      });
+      return;
+    }
+    var pick = document.createElement('nav');
+    pick.className = 'calc-pick'; pick.setAttribute('aria-label', 'Choose a calculator');
+    host.appendChild(pick);
     pick.innerHTML = DATA.groups.map(function(g){
       var cs = DATA.calculators.filter(function(c){ return c.group === g.id; });
       if(!cs.length) return '';
@@ -184,11 +208,7 @@
       if(!b) return;
       select(b.getAttribute('data-id'), true);
     });
-    var want = (location.hash || '').replace(/^#/, '');
-    var last = null; try{ last = localStorage.getItem(PREF); }catch(e){}
-    var first = byId(want) ? want : byId(last) ? last : DATA.calculators[0].id;
-    select(first, false);
-    window.addEventListener('hashchange', function(){ var h = location.hash.replace(/^#/, ''); if(byId(h) && (!current || current.id !== h)) select(h, false); });
+    app.querySelectorAll('.calc-chip').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-id') === current.id ? 'true' : 'false'); });
   }
   function byId(id){ if(!id) return null; for(var i = 0; i < DATA.calculators.length; i++) if(DATA.calculators[i].id === id) return DATA.calculators[i]; return null; }
 
@@ -196,7 +216,7 @@
     current = byId(id); mode = 'calc'; problem = null;
     values = {};
     current.inputs.forEach(function(inp){ values[inp.key] = inp['default']; });
-    app.querySelectorAll('.calc-chip').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-id') === id ? 'true' : 'false'); });
+    renderPicker();
     try{ localStorage.setItem(PREF, id); }catch(e){}
     if(location.hash.replace(/^#/, '') !== id && window.history && history.replaceState) try{ history.replaceState(null, '', '#' + id); }catch(e){}
     renderCard();
@@ -264,6 +284,7 @@
       el.addEventListener('input', function(){ update(); });
     });
     update();
+    if(window.AnpToolKit) window.AnpToolKit.strip(body, { topic: c.topic, text: c.title + ' ' + c.intro });
   }
 
   function readInputs(){
@@ -418,6 +439,7 @@
       '</div>' +
       solutionHtml(c, p.env, 'Worked solution') +
       '<div class="calc-report">' + (window.LevlReport ? window.LevlReport.button('anp', id) : '') + '</div>';
+    if(window.AnpToolKit) window.AnpToolKit.strip(body.querySelector('.calc-feedback'), { topic: c.topic, text: c.title + ' ' + c.intro });
     var s = window.AnpCore ? window.AnpCore.toolStats(KIND) : null, mine = s && s.by ? s.by[c.id] : null;
     if(mine) body.querySelector('.calc-record').textContent = 'Your practice record here: ' + mine.c + ' of ' + mine.n + ' correct.';
     body.querySelector('.calc-check').focus();

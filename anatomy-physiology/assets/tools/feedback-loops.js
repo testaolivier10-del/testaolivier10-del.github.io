@@ -17,7 +17,10 @@
    feedback-loops:<loop>:kind and feedback-loops:<loop>:failure. A finished
    loop sends the anp-loop-complete event.
 
-   URL: ?chapter=<id> or ?topic=<id> filter the list; ?id=<loop> opens one. */
+   URL: ?chapter=<id> or ?topic=<id> filter the list; ?id=<loop> opens one.
+   With no ?id the page opens on the next loop not yet built right (in the
+   filtered list), with the whole list one tap away in a compact picker
+   (AnpToolKit.picker); "Next loop" walks on through the list. */
 (function(){
   'use strict';
   var app = document.getElementById('app');
@@ -25,7 +28,7 @@
   var KIND = 'feedback-loops';
   var SLOTS = ['stimulus', 'sensor', 'afferent', 'control', 'efferent', 'effector', 'response'];
   var LABELS = { stimulus: 'Stimulus', sensor: 'Receptor (sensor)', afferent: 'Afferent pathway', control: 'Control center', efferent: 'Efferent pathway', effector: 'Effector', response: 'Response' };
-  var DATA = null, filterCh = '', filterTopic = '', queue = [], qi = 0, uid = 0;
+  var DATA = null, filterCh = '', filterTopic = '', queue = [], qi = 0, uid = 0, booted = false;
 
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function core(){ return window.AnpCore || null; }
@@ -56,7 +59,14 @@
     if(tp && DATA.loops.some(function(l){ return l.topic === tp; })){ filterTopic = tp; filterCh = topicOf(tp).chapter; }
     else if(ch && DATA.loops.some(function(l){ return l.chapter === ch; })) filterCh = ch;
     var direct = one && DATA.loops.filter(function(l){ return l.id === one; })[0];
-    if(direct){ queue = [direct]; qi = 0; renderLoop(); } else renderList();
+    if(direct){ queue = [direct]; qi = 0; renderLoop(); return; }
+    queue = visible(); qi = nextUnfinished(queue);
+    if(queue.length) renderLoop(); else renderList();
+  }
+  // The first loop in the list not yet built fully right, else the first.
+  function nextUnfinished(list){
+    for(var i = 0; i < list.length; i++){ var last = lastScore(list[i]); if(!last || last.right < last.total) return i; }
+    return 0;
   }
 
   function visible(){
@@ -106,6 +116,26 @@
     });
     app.querySelector('.fl-all').addEventListener('click', function(){ queue = visible(); qi = 0; renderLoop(); });
   }
+  function kit(){ return window.AnpToolKit || null; }
+  function addPicker(l){
+    var K = kit(), host = app.querySelector('.fl-pickhost');
+    if(!K || !host) return;
+    var chs = [];
+    DATA.loops.forEach(function(x){ if(chs.indexOf(x.chapter) < 0) chs.push(x.chapter); });
+    K.picker(host, {
+      label: 'Loop', noun: 'loops', current: l.id, allLabel: 'All loops by chapter, and the seven slots',
+      groups: chs.map(function(c){ return { title: chapterOf(c).title, items: DATA.loops.filter(function(x){ return x.chapter === c; }).map(function(x){
+        var last = lastScore(x);
+        return { id: x.id, title: x.title, meta: topicOf(x.topic).title, done: !!(last && last.right === last.total) };
+      }) }; }),
+      onPick: function(id){
+        var k = -1; queue.forEach(function(x, i){ if(x.id === id) k = i; });
+        if(k < 0){ queue = DATA.loops.filter(function(x){ return x.id === id; }); k = 0; }
+        qi = k; renderLoop(); focusEl(app.querySelector('.fl-title'));
+      },
+      onAll: function(){ renderList(); focusEl(app.querySelector('#fl-list-h')); }
+    });
+  }
 
   /* ------------------------------------------------------------ one loop */
   function renderLoop(){
@@ -119,6 +149,7 @@
     var p = 'fl' + (++uid);
     var topicLink = t.built ? '<a class="fl-tag" href="' + esc(base() + 'lessons/' + t.id + '.html') + '">' + esc(t.title) + '</a>' : '<span class="fl-tag">' + esc(t.title) + '</span>';
     app.innerHTML =
+      '<div class="fl-pickhost"></div>' +
       '<div class="fl-progress"><span class="anp-small">' + (n > 1 ? 'Loop ' + (qi + 1) + ' of ' + n : 'Feedback loop') + '</span>' +
         '<div class="track thin" aria-hidden="true"><i style="width:' + Math.round(100 * qi / n) + '%"></i></div>' +
         '<button type="button" class="link-quiet fl-back">All loops</button></div>' +
@@ -149,6 +180,7 @@
     var build = app.querySelector('.fl-build'), pool = app.querySelector('.fl-pool'), live = app.querySelector('.fl-live');
     var checkBtn = app.querySelector('.fl-check');
     app.querySelector('.fl-back').addEventListener('click', renderList);
+    addPicker(l);
 
     function cardById(id){ for(var i = 0; i < cards.length; i++) if(cards[i].id === id) return cards[i]; return null; }
     function used(id){ for(var k in placed) if(placed[k] === id) return true; return false; }
@@ -196,7 +228,8 @@
     });
     app.querySelector('.fl-reset').addEventListener('click', function(){ placed = {}; active = 0; live.textContent = 'All slots emptied.'; paint(); });
     paint();
-    focusEl(app.querySelector('.fl-title'));
+    if(booted) focusEl(app.querySelector('.fl-title'));
+    booted = true;
 
     checkBtn.addEventListener('click', function(){
       build.classList.add('is-done');
@@ -298,6 +331,7 @@
           '<button type="button" class="' + (more ? 'link-quiet' : 'btn-press sm') + ' fl-list-btn">All loops</button>' +
         '</div>';
       sec.hidden = false;
+      if(kit()) kit().strip(sec, { topic: l.topic, text: l.title + ' ' + l.scenario + ' ' + SLOTS.map(function(k){ return l.slots[k].text; }).join(' ') });
       var nx = sec.querySelector('.fl-next');
       if(nx) nx.addEventListener('click', function(){ qi++; renderLoop(); window.scrollTo(0, 0); });
       sec.querySelector('.fl-again').addEventListener('click', function(){ renderLoop(); window.scrollTo(0, 0); });

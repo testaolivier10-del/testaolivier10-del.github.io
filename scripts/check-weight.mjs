@@ -235,7 +235,11 @@ const SHELL_BUDGETS = [
   /* 46 -> 46.5 (audit 2026-10, W8): anp-questions.js wraps a figure
      question's image in <picture> with its AVIF copies (0.2 KB gzipped), which
      saves a phone roughly 60% of each figure's bytes. */
-  ['anatomy-physiology', 46.5],
+  /* 46.5 -> 47.5 (tools upgrade P1-A&P, 2026-10): every tool page loads the
+     shared tools/tool-kit.js and .css (item picker, Keep going strip, body
+     map label list), about 4 KB gzipped; the lab practical page, the
+     heaviest, measured 46.8 KB. */
+  ['anatomy-physiology', 47.5],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).

@@ -186,6 +186,8 @@
     cnt.textContent = cnt.textContent.replace(/ This session:.*$/, '') + ' This session: ' + state.session.c + ' of ' + state.session.n + ' right.';
   }
   function wireNext(card){
+    var t = state.cur, fb = card.querySelector('.wr-fb');
+    if(t && fb && window.AnpToolKit) window.AnpToolKit.strip(fb, { topic: t.topic, terms: t.concept && GLOSS[t.concept] ? [t.concept] : [], text: t.term, max: 2, structures: [t.term] });
     var nb = card.querySelector('.wr-next');
     if(nb){ nb.addEventListener('click', function(){ start(); var h = app.querySelector('.wr-card h2'); if(h){ h.setAttribute('tabindex', '-1'); h.focus(); } }); nb.focus(); }
   }

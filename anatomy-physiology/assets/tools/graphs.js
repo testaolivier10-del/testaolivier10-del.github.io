@@ -63,7 +63,8 @@
       var k = 0;
       if(h[1]) g.questions.forEach(function(q, i){ if(q.id === h[1]) k = i; });
       showGraph(g, k);
-    } else showList();
+    } else if(h[0] === 'all') showList();
+    else { var d = defaultItem(); if(d) showGraph(d, firstOpen(d)); else showList(); }
   }
 
   /* -------------------------------------------------------------- list view */
@@ -111,6 +112,43 @@
     var sel = app.querySelector('#pw-chsel');
     if(sel) sel.addEventListener('change', function(){ listFilter = sel.value; showList(); var ns = app.querySelector('#pw-chsel'); if(ns) ns.focus(); });
   }
+
+  /* Open on an item, not the list (docs/tools-upgrade.md, P1-A&P): the
+     first graphs in list order, within ?chapter= / ?topic=, with something
+     not yet answered right; #all is the full list. The picker above the item
+     reaches every graphs. */
+  function ordered(){
+    var q = params(), want = q.chapter || (q.topic && topicInfo(q.topic) ? topicInfo(q.topic).chapter : '');
+    var order = cur().chapters.map(function(c){ return c.id; }), topicOrder = cur().topics.map(function(t){ return t.id; });
+    var all = DATA.graphs.slice().sort(function(a, b){
+      return order.indexOf(chapterOf(a)) - order.indexOf(chapterOf(b)) || topicOrder.indexOf(a.topic) - topicOrder.indexOf(b.topic);
+    });
+    var inCh = all.filter(function(x){ return chapterOf(x) === want; });
+    return inCh.length ? inCh : all;
+  }
+  function defaultItem(){
+    var list = ordered(), q = params();
+    if(q.topic){ var t = list.filter(function(x){ return x.topic === q.topic; }); if(t.length) list = t.concat(list.filter(function(x){ return t.indexOf(x) < 0; })); }
+    for(var i = 0; i < list.length; i++) if(list[i].questions.some(function(q){ return status(itemId(list[i], q)) !== 'right'; })) return list[i];
+    return list[0] || null;
+  }
+  function addPicker(g){
+    var host = app.querySelector('.pw-pickhost'), K = window.AnpToolKit;
+    if(!host || !K) return;
+    var chapters = [];
+    var all = DATA.graphs.slice(), order = cur().chapters.map(function(c){ return c.id; }), topicOrder = cur().topics.map(function(t){ return t.id; });
+    all.sort(function(a, b){ return order.indexOf(chapterOf(a)) - order.indexOf(chapterOf(b)) || topicOrder.indexOf(a.topic) - topicOrder.indexOf(b.topic); });
+    all.forEach(function(x){ var c = chapterOf(x); if(chapters.indexOf(c) < 0) chapters.push(c); });
+    K.picker(host, {
+      label: 'Graph', noun: 'graphs', current: g.id, allHref: '#all', allLabel: 'All graphs by chapter',
+      groups: chapters.map(function(c){ var ch = chapterInfo(c); return { title: ch ? ch.title : c, items: all.filter(function(x){ return chapterOf(x) === c; }).map(function(x){
+        var t = topicInfo(x.topic);
+        return { id: x.id, title: x.title, meta: t ? t.title : '', href: '#' + x.id, done: x.questions.every(function(q){ return status(itemId(x, q)) === 'right'; }) };
+      }) }; })
+    });
+  }
+
+  function firstOpen(g){ for(var i = 0; i < g.questions.length; i++) if(status(itemId(g, g.questions[i])) !== 'right') return i; return 0; }
 
   /* ----------------------------------------------------------------- drawing */
   function el(name, attrs, text){
@@ -279,7 +317,7 @@
     var next = DATA.graphs[(idx + 1) % DATA.graphs.length];
     var hasRegions = (g.regions || []).some(function(r){ return !r.show && r.x1 - r.x0 > 0; });
     app.innerHTML = '<div class="pw gr gr-view">' +
-      '<p class="pw-back"><a href="#">← All graphs</a></p>' +
+      '<div class="pw-pickhost"></div>' +
       '<h2 class="pw-title" tabindex="-1">' + esc(g.title) + '</h2>' +
       '<p class="anp-small pw-meta">Topic: ' + topicLink(g.topic) + ' · ' + g.questions.length + ' questions</p>' +
       '<p class="pw-intro">' + html(g.intro) + '</p>' +
@@ -287,6 +325,7 @@
       (hasRegions ? '<p class="gr-tools"><button type="button" class="btn-outline gr-toggle" aria-pressed="false">Show phases and regions</button></p>' : '') +
       '</div><div class="gr-qcol"><div class="gr-qnav" role="group" aria-label="Questions"></div><div class="gr-q"></div></div></div>' +
       '<p class="pw-next"><a class="btn-outline" href="#' + esc(next.id) + '">Next graph: ' + esc(next.title) + ' →</a></p></div>';
+    addPicker(g);
     var c = chart(g);
     app.querySelector('.gr-fig').appendChild(c.svg);
     var showAll = false;
@@ -323,6 +362,7 @@
         var first = score(g, q, correct);
         paintNav(i);
         actions.innerHTML = (i < g.questions.length - 1 ? '<button type="button" class="btn-press sm gr-next">Next question →</button>' : '<a class="btn-press sm" href="#' + esc(next.id) + '">Next graph →</a>') + report(itemId(g, q));
+        if(window.AnpToolKit) window.AnpToolKit.strip(box, { topic: q.topic || g.topic, text: g.title + ' ' + g.intro + ' ' + q.q });
         var nb = actions.querySelector('.gr-next');
         if(nb) nb.addEventListener('click', function(){ ask(i + 1, true); });
         return first;

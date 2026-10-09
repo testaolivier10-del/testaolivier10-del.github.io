@@ -894,16 +894,16 @@ function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts
     ? `<header class="page-head"><div class="eyebrow">${esc(eyebrow)} <span class="cx-beta">Beta</span></div><h1>${esc(study && hero ? hero.h1 : h1)}</h1><p class="lede">${hero ? hero.ledeHtml : esc(lede)}</p></header>`
     : hero
     ? `<header class="hero anp-hero ${hero.cls}"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(hero.h1)}</h1><p class="lede">${hero.ledeHtml}</p></header>`
-    : `<header class="hero anp-hero"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(h1)}</h1><p class="lede">${esc(lede)}</p></header>`}${
+    : `<header class="hero anp-hero${isTool ? ' anp-tool-hero' : ''}"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(h1)}</h1><p class="lede">${esc(lede)}</p></header>`}${
   // Where site-chrome.js puts a cross-course suggestion (assets/cross-course.js).
   entry.slug === 'dashboard' ? '\n  <div data-levl-cross="anp"></div>' : ''}
   <div id="app" class="anp-app-mount${study ? ' cx-study' : ''}" data-slug="${entry.slug}"${entry.premium ? ` data-premium="${entry.premium}"` : ''}${entry.data ? ` data-src="${depth}assets/tool-data/${entry.data}"` : ''}>${mount || `<noscript><p>This ${isTool ? 'tool' : 'page'} needs JavaScript. The lessons and notes pages work without it.</p></noscript>`}</div>
   ${teas ? `<p class="anp-disclaimer">${esc(TEAS_DISCLAIMER)}</p>` : ''}
 </main>
 ${footer(depth)}
-${HUB_PAGES.has(entry.slug) && !isTool ? `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/hub.css">\n<script src="${depth}../assets/course/hub.js" defer></script>\n` : ''}<link rel="stylesheet" href="${depth}assets/${entry.css}">
+${HUB_PAGES.has(entry.slug) && !isTool ? `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/hub.css">\n<script src="${depth}../assets/course/hub.js" defer></script>\n` : ''}${isTool ? `<link rel="stylesheet" href="${depth}assets/tools/tool-kit.css">\n` : ''}<link rel="stylesheet" href="${depth}assets/${entry.css}">
 <script src="${depth}../assets/report-question.js" defer></script>
-${[...(study ? ['course/study.js'] : []), ...(entry.siteScripts || [])].map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), entry.script], premium: true })}
+${[...(study ? ['course/study.js'] : []), ...(entry.siteScripts || [])].map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), ...(isTool ? ['tools/tool-kit.js'] : []), entry.script], premium: true })}
 </body>
 </html>
 `;

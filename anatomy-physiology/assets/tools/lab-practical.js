@@ -308,7 +308,13 @@
      #<mode>                 set list for that mode
      #<mode>/<set>[/<n>]     a set in explore, study or quiz (n = station)
      #practical              build a timed practical
-     #review                 quiz the structures you missed */
+     #review                 quiz the structures you missed
+     (no hash)               straight into a set: the last one opened if it
+                             still has structures to learn, else the first
+                             such set (in ?chapter= or the saved chapter), in
+                             the saved mode; the timed practical keeps its
+                             setup screen. The set list is one tap away
+                             (a picker, and "All image sets"). */
   function route(){
     var h = decodeURIComponent((location.hash || '').replace(/^#/, '')).split('/');
     var mode = /^(explore|study|quiz|practical|review)$/.test(h[0]) ? h[0] : '';
@@ -321,7 +327,48 @@
       if(mode === 'study') return showExplore(s, n, 'study');
       return startQuiz(s, null);
     }
+    if(!mode && !h[0]){
+      var m = pref('mode', 'explore');
+      if(m === 'practical') return showSetup();
+      var d = defaultSet();
+      if(d){
+        try{ history.replaceState(null, '', location.pathname + location.search + '#' + (m === 'quiz' ? 'quiz' : m) + '/' + d.id); }catch(e){}
+        if(m === 'study') return showExplore(d, 0, 'study');
+        if(m === 'quiz') return startQuiz(d, null);
+        return showExplore(d, 0, 'explore');
+      }
+    }
     showHome(mode || pref('mode', 'explore'));
+  }
+  function unfinished(s){ return setItems(s).some(function(it){ return status(it.id) !== 'right'; }); }
+  function defaultSet(){
+    var q = (location.search.match(/[?&]chapter=([\w-]+)/) || [])[1];
+    var ch = q && chaptersInData().indexOf(q) > -1 ? q : pref('chapter', '');
+    var list = DATA.sets.filter(function(s){ return !ch || s.chapter === ch; });
+    if(!list.length) list = DATA.sets;
+    var last = SETS[pref('lastSet', '')];
+    if(last && list.indexOf(last) > -1 && unfinished(last)) return last;
+    for(var i = 0; i < list.length; i++) if(unfinished(list[i])) return list[i];
+    return list[0] || null;
+  }
+  /* Every image set, by chapter, in the shared compact picker. */
+  function setPicker(s, mode){
+    var host = app.querySelector('.lp-pickhost'), K = window.AnpToolKit;
+    if(!host || !K) return;
+    K.picker(host, {
+      label: 'Image set', noun: 'image sets', current: s.id, allHref: '#' + mode, allLabel: 'All image sets by chapter',
+      groups: chaptersInData().map(function(c){ return { title: chapterTitle(c), items: DATA.sets.filter(function(x){ return x.chapter === c; }).map(function(x){
+        var t = topicInfo(x.topic);
+        return { id: x.id, title: x.title, meta: (x.histology ? 'Histology · ' : '') + (t ? t.title : ''), href: '#' + mode + '/' + x.id, done: !unfinished(x) };
+      }) }; })
+    });
+  }
+  /* The Keep going strip for one structure: its lesson and notes, its
+     glossary entry, and the 3D body when the body map has it by name. */
+  function keepGoing(host, lab, st){
+    if(!host || !window.AnpToolKit) return;
+    window.AnpToolKit.strip(host, { topic: lab.taught || st.topic, terms: lab.concept ? [lab.concept] : [], max: 1,
+      structures: [lab.name] });   // the label's own name only: an accepted synonym can name a different structure
   }
 
   /* ------------------------------------------------------------------ home */
@@ -363,7 +410,8 @@
   }
 
   function setHeader(s, mode){
-    return '<p class="lp-back"><a href="#' + mode + '">&larr; All image sets</a></p>' +
+    setPref('lastSet', s.id);
+    return '<div class="lp-pickhost"></div>' +
       '<h2 class="lp-title" tabindex="-1">' + esc(s.title) + '</h2>' +
       '<p class="lp-meta anp-small">' + esc(chapterTitle(s.chapter)) + (topicInfo(s.topic) ? ' · Taught in ' + topicLink(s.topic) : '') + '</p>' +
       modeTabs(mode, s.id);
@@ -378,7 +426,7 @@
     var t = lab.taught && topicInfo(lab.taught);
     return '<p class="lp-info-name">' + esc(lab.name) + '</p>' +
       (lab.fn ? '<p class="lp-info-fn">' + lab.fn + '</p>' : '') +
-      (t ? '<p class="anp-small">Taught in ' + topicLink(lab.taught) + '</p>' : '');
+      (t && !window.AnpToolKit ? '<p class="anp-small">Taught in ' + topicLink(lab.taught) + '</p>' : '');
   }
 
   /* --------------------------------------------------------- explore, study */
@@ -395,6 +443,8 @@
         '<div class="lp-info" aria-live="polite">' + (pick ? infoHtml(pick, st) : '<p class="anp-small">' + (mode === 'explore' ? 'Select a label on the figure.' : 'Revealed labels are explained here.') + '</p>') + '</div></div>' +
         (n + 1 < s.stations.length ? '<p class="lp-next"><a class="btn-outline" href="#' + mode + '/' + s.id + '/' + (n + 2) + '">Next figure &rarr;</a></p>' : '');
       paint(body);
+      setPicker(s, mode);
+      if(pick) keepGoing(app.querySelector('.lp-info'), pick, st);
       wireZoom(app, function(){ return z; }, function(v){ z = v; draw(); });
       app.querySelectorAll('.lp-box').forEach(function(b){
         b.addEventListener('click', function(){
@@ -501,6 +551,8 @@
           (!answered ? body : '') +
           '<div class="lp-feedback" aria-live="polite">' + fb + '</div>');
         wireSettings();
+        if(s) setPicker(s, 'quiz');
+        if(answered) keepGoing(app.querySelector('.lp-feedback'), it.lab, st);
         wireZoom(app, function(){ return z; }, function(v){ z = v; draw(); if(r.kind === 'name') scrollToBox(app, it.lab); });
         if(r.kind === 'name') scrollToBox(app, it.lab);
         var form = app.querySelector('.lp-answer');
@@ -554,7 +606,7 @@
         v = '<p class="lp-verdict no" tabindex="-1"><b>Not quite.</b> It is <b>' + esc(lab.name) + '</b>.' + why + '</p>';
       }
       return v + (lab.fn ? '<p class="lp-fn">' + lab.fn + '</p>' : '') +
-        (lab.taught && topicInfo(lab.taught) ? '<p class="anp-small">Taught in ' + topicLink(lab.taught) + '</p>' : '') +
+        (lab.taught && topicInfo(lab.taught) && !window.AnpToolKit ? '<p class="anp-small">Taught in ' + topicLink(lab.taught) + '</p>' : '') +
         (!g.ok || g.hinted ? '<p class="anp-small">Added to your review queue.</p>' : '') +
         (lab.follow && p.follow ? '<div class="lp-follow" data-follow></div>' : '') +
         '<div class="lp-actions"><button type="button" class="btn-press sm lp-nextbtn">' + (k + 1 < run.length ? 'Next' : 'See results') + '</button>' + report(it.id) + '</div>';

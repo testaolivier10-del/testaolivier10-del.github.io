@@ -56,7 +56,7 @@ basic: a dropdown, typed answers, a Check button. Bring every tool up to the bod
 |---|---|---|
 | P1-NREMT | Open on the tool (phone); tool results hook wired into body map hunt, sound trainer, flow drill, formulary drill, scenario debrief; body viewer module; `?focus=` deep link | pending |
 | P1-Ochem | `tool-shell.js`: tool first on phones, sibling chips compact below; keep handoff and quiz | pending |
-| P1-A&P | Open on a default item instead of the long chooser (compact picker); Keep going strip; 3D body link for anatomical items | pending |
+| P1-A&P | Open on a default item instead of the long chooser (compact picker); Keep going strip; 3D body link for anatomical items | done: `anatomy-physiology/assets/tools/tool-kit.js` + `.css` (loaded on every tool page by build-anp.mjs): `AnpToolKit.picker` (search disclosure over every item), `AnpToolKit.strip(host, {topic, terms, text, structures})` (Lesson, Notes, glossary terms, "See it on the 3D body" only for exact body map labels plus a few plural/spelling aliases; label list pinned by `scripts/test/anp-tool-kit.test.mjs`). Each tool opens on the next unfinished item (loops, graphs, pathways, scenarios as a session, lab set in the saved mode; calculators keep last-used); full lists at `#all` (graphs, pathways), `#<mode>` (lab), "All loops"/setup (loops, predict). Phone opener drops the crumb and lede. A&P runtime budget 46.5 -> 47.5 KB |
 | P1-Bio | Stage slot in `bio-tools.js`; phone layout (stage first, intro collapsed); Keep going strip from each tool's `topic` | pending |
 | P1-Chem | Phone layout (problem first, intro collapsed); Keep going strip; `live-beaker.js` | pending |
 
