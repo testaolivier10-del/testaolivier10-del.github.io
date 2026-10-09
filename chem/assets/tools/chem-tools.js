@@ -24,7 +24,13 @@
      Step drills (seeded, checked step by step with targeted feedback):
        drill(app, data, { slug, generate, types, extra, onVol })
      Recording: record(slug, items) -> ApChemCore.toolResult, so every item
-       (id "<tool>:<content>:<item>") reaches mastery and the review queue. */
+       (id "<tool>:<content>:<item>") reaches mastery and the review queue.
+     Page frame (phone first): frame(app, data, { noun, howTitle }) -> { pick,
+       area }: a compact picker row, the problem, then "About this <noun>"
+       (intro and how it works) folded below it, open on wide screens.
+     keepGoing(host, { topic, also }) -> the "Keep going" strip after a graded
+       problem: the topic's lesson and notes, its glossary terms (from
+       assets/glossary.json), and lessons for any other topic missed. */
 (function(){
   'use strict';
   var M = window.ApChemMath, Q = window.ApChemQuestions;
@@ -163,6 +169,73 @@
     return '<details class="bt-how"' + (open ? ' open' : '') + '><summary>' + esc(title) + '</summary><div class="bt-how-body">' + wrapTables(html) + '</div></details>';
   }
 
+  /* ----------------------------------------------------- page frame */
+  /* The interactive piece comes first, so on a phone the problem is on the
+     first screen: a one-line picker, the problem, then the intro and the
+     how-it-works text in one disclosure below (open from 900 px up). */
+  function aboutHtml(data, o){
+    if(!data.intro && !data.howItWorks) return '';
+    return '<details class="bt-about"><summary>About this ' + esc(o.noun || 'tool') + '</summary><div class="bt-about-body">' +
+      (data.intro ? '<div class="bt-intro">' + data.intro + '</div>' : '') +
+      (data.howItWorks ? '<h3 class="bt-about-h">' + esc(o.howTitle || 'How it works') + '</h3><div class="bt-how-body">' + wrapTables(data.howItWorks) + '</div>' : '') + '</div></details>';
+  }
+  function frame(app, data, o){
+    o = o || {};
+    app.insertAdjacentHTML('beforeend', '<div class="bt-pick cd-pick"></div>' + (o.before || '') +
+      '<section class="bt-problem cd-problem"' + (o.hid ? ' aria-labelledby="' + o.hid + '"' : '') + '></section>' + aboutHtml(data, o));
+    var about = app.querySelector('.bt-about');
+    try{ if(about && window.matchMedia('(min-width: 900px)').matches) about.open = true; }catch(e){}
+    return { pick: app.querySelector('.bt-pick'), area: app.querySelector('.cd-problem') };
+  }
+  /* A compact "Kind" picker for the frame's pick row: a label and a select
+     on one line. */
+  function kindPicker(host, o){
+    var sel = choiceSelect({ label: o.label || 'Problem type', options: [{ value: '', label: o.mixed || 'Any kind' }].concat(o.options), value: o.value || '', onChange: o.onChange });
+    sel.el.classList.add('bt-inline');
+    host.appendChild(sel.el);
+    return sel;
+  }
+
+  /* --------------------------------------------------- keep going */
+  /* After a graded problem: where to learn the topic, and its words. Links
+     only to built pages (ApChemCurriculum topic.built); glossary terms are the
+     ones the topic teaches, linked to glossary.html#t-<id>. */
+  var glossP = null;
+  function glossary(){
+    if(!glossP) glossP = (window.LevlGlossary && window.LevlGlossary.load ? window.LevlGlossary.load()
+      : fetch(base() + 'assets/glossary.json').then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }));
+    return glossP;
+  }
+  function topicOf(id){
+    var C = window.ApChemCurriculum;
+    return C && C.topics ? C.topics.filter(function(t){ return t.id === id; })[0] || null : null;
+  }
+  function keepGoing(host, o){
+    if(!host || !o || !o.topic) return null;
+    var t = topicOf(o.topic);
+    if(!t || !t.built) return null;
+    var B = base(), kid = nid('kg');
+    var also = (o.also || []).filter(function(x, i, a){ return x && x !== o.topic && a.indexOf(x) === i; }).map(topicOf).filter(function(x){ return x && x.built; });
+    var el = document.createElement('aside');
+    el.className = 'bt-keep';
+    el.setAttribute('aria-labelledby', kid);
+    el.innerHTML = '<h3 id="' + kid + '">Keep going</h3><ul class="bt-keep-links">' +
+      '<li><a href="' + B + 'lessons/' + t.id + '.html"><span class="bt-keep-k">Lesson</span>' + esc(t.title) + '</a></li>' +
+      '<li><a href="' + B + 'notes/' + t.id + '.html"><span class="bt-keep-k">Notes</span>' + esc(t.title) + '</a></li>' +
+      also.map(function(a){ return '<li><a href="' + B + 'lessons/' + a.id + '.html"><span class="bt-keep-k">You missed a step on</span>' + esc(a.title) + '</a></li>'; }).join('') +
+      '</ul><div class="bt-keep-terms" hidden></div>';
+    host.appendChild(el);
+    glossary().then(function(d){
+      var ids = [o.topic].concat(also.map(function(a){ return a.id; }));
+      var terms = (d.terms || []).filter(function(g){ return ids.indexOf(g.topic) > -1; }).slice(0, 5);
+      if(!terms.length || !el.isConnected) return;
+      var box = el.querySelector('.bt-keep-terms');
+      box.innerHTML = '<p class="bt-keep-k">Glossary</p><ul>' + terms.map(function(g){ return '<li><a href="' + B + 'glossary.html#t-' + encodeURIComponent(g.id) + '">' + esc(g.term) + '</a></li>'; }).join('') + '</ul>';
+      box.hidden = false;
+    }).catch(function(){});
+    return el;
+  }
+
   /* ------------------------------------------------------ recording */
   /* The generator writes data.units (topic -> unit or skills chapter) into
      every served tool file, so a record carries its unit even before the
@@ -284,14 +357,12 @@
     var contexts = data.contexts || [], problems = data.problems || [];
     var mode = contexts.length ? 'practice' : 'set', seed = seedFromUrl() || freshSeed(), at = 0;
     var gid = nid('sk');
-    app.insertAdjacentHTML('beforeend',
-      (data.intro ? '<div class="bt-intro">' + data.intro + '</div>' : '') +
-      (data.howItWorks ? box(data.howItWorksTitle || 'The formulas and how this tool checks you', data.howItWorks) : '') +
-      '<fieldset class="bt-modes"><legend>Problems</legend>' +
-        (contexts.length ? '<div class="bt-radio"><input type="radio" name="' + gid + '-m" id="' + gid + '-mp" value="practice"' + (mode === 'practice' ? ' checked' : '') + '><label for="' + gid + '-mp">Practice: new numbers every time</label></div>' : '') +
-        (problems.length ? '<div class="bt-radio"><input type="radio" name="' + gid + '-m" id="' + gid + '-ms" value="set"' + (mode === 'set' ? ' checked' : '') + '><label for="' + gid + '-ms">Worked set: ' + problems.length + ' fixed problem' + (problems.length === 1 ? '' : 's') + '</label></div>' : '') +
-      '</fieldset><section class="bt-problem" aria-labelledby="' + gid + '-h"></section>');
-    var area = app.querySelector('.bt-problem');
+    var fr = frame(app, data, { noun: 'tool', hid: gid + '-h', howTitle: data.howItWorksTitle || 'The formulas and how this tool checks you',
+      before: contexts.length && problems.length ? '<fieldset class="bt-modes"><legend>Problems</legend>' +
+        '<div class="bt-radio"><input type="radio" name="' + gid + '-m" id="' + gid + '-mp" value="practice"' + (mode === 'practice' ? ' checked' : '') + '><label for="' + gid + '-mp">Practice: new numbers every time</label></div>' +
+        '<div class="bt-radio"><input type="radio" name="' + gid + '-m" id="' + gid + '-ms" value="set"' + (mode === 'set' ? ' checked' : '') + '><label for="' + gid + '-ms">Worked set: ' + problems.length + ' fixed problem' + (problems.length === 1 ? '' : 's') + '</label></div>' +
+      '</fieldset>' : '' });
+    var area = fr.area;
     app.querySelectorAll('.bt-modes input').forEach(function(r){ r.addEventListener('change', function(){ mode = r.value; at = 0; draw(true); }); });
 
     function current(){
@@ -339,6 +410,7 @@
           : (at < problems.length - 1 ? '<button type="button" class="btn-press sm bt-again">Next problem</button>' : '<p>That is the whole set. Switch to Practice for new numbers.</p>');
         var again = nx.querySelector('.bt-again');
         if(again) again.addEventListener('click', function(){ if(mode === 'practice') seed = freshSeed(); else at++; draw(true); });
+        keepGoing(nx, { topic: cur.topic, also: sol.parts.filter(function(p, i){ return !res[i].correct; }).map(function(p){ return data.partTopics && data.partTopics[p.key]; }) });
         solEl.querySelector('h3').setAttribute('tabindex', '-1');
         solEl.querySelector('h3').focus();
       });
@@ -371,17 +443,12 @@
   function drill(app, data, o){
     var slug = o.slug, gid = nid('dr'), contexts = data.contexts || [];
     var type = '', seed = seedFromUrl() || freshSeed();
-    app.insertAdjacentHTML('beforeend',
-      (data.intro ? '<div class="bt-intro">' + data.intro + '</div>' : '') +
-      (data.howItWorks ? box(data.howItWorksTitle || 'How this drill works', data.howItWorks) : '') +
-      '<div class="bt-controls cd-pick"></div>' +
-      '<section class="bt-problem cd-problem" aria-labelledby="' + gid + '-h"></section>');
-    var area = app.querySelector('.cd-problem');
+    var fr = frame(app, data, { noun: o.noun || 'drill', hid: gid + '-h', howTitle: data.howItWorksTitle || 'How this drill works' });
+    var area = fr.area;
     // Only the kinds this page has content for (contexts unlock with their units).
     var kinds = (o.types || []).filter(function(t){ type = t.value; var n = pickable().length; type = ''; return n > 0; });
     if(kinds.length > 1){
-      var sel = choiceSelect({ label: o.typeLabel || 'Problem type', options: [{ value: '', label: 'Mixed: any kind' }].concat(kinds), value: '', onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
-      app.querySelector('.cd-pick').appendChild(sel.el);
+      kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
     }
     function pickable(){ return contexts.filter(function(c){ return !type || (c.types ? c.types.indexOf(type) > -1 : c.mode ? c.mode === type : c.kind === type); }); }
     function pickCtx(r){ var ok = pickable(); return r.pick(ok.length ? ok : contexts); }
@@ -506,6 +573,7 @@
         var nx = area.querySelector('.bt-next');
         nx.innerHTML = '<p class="bt-result" role="status">' + right + ' of ' + results.length + ' steps right the first time.</p><div class="bt-actions"><button type="button" class="btn-press sm cd-again">' + esc(o.newLabel || 'New problem') + '</button>' + report(slug + ':' + p.ctx) + '</div>';
         nx.querySelector('.cd-again').addEventListener('click', function(){ seed = freshSeed(); draw(true); });
+        keepGoing(nx, { topic: p.topic, also: results.filter(function(x){ return !x.correct; }).map(function(x){ return x.topic; }) });
         sol.querySelector('h3').focus();
       }
       step(0);
@@ -515,7 +583,7 @@
   }
 
   window.ApChemTools = {
-    esc: esc, F: F, nid: nid, mount: mount, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
+    esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,
     record: record, report: report, event: event, questions: questions, frq: frq, skillTool: skillTool,
     gradePart: gradePart, partHtml: partHtml, unitOf: unitOf,

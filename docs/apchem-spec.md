@@ -273,6 +273,20 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    file serves both courses. Masses: IUPAC abridged standard atomic weights (Zr 91.222 per the 2024
    revision); [n] for no stable isotope. Checked from memory only (no web access that session), so
    worth a spot-check against the CIAAW table; Tc [98] vs [97] and superheavy mass numbers vary by source.
+20. (2026-10-09, tools upgrade P1-Chem; `docs/tools-upgrade.md`) **Problem first on phones.**
+   `ApChemTools.frame` lays out every trainer: a one-line kind picker ("Kind of problem: Any kind",
+   `kindPicker`), the problem, then "About this drill/tool" (intro and how it works) folded below it
+   (open from 900 px). Under 640 px the tool opener drops its lede and shrinks to the title. After a
+   graded problem `ApChemTools.keepGoing` adds a "Keep going" strip: the topic's lesson and notes, the
+   lessons of other topics a missed step belongs to (`partTopics`), and up to five glossary terms
+   taught in those topics (`glossary.html#t-<id>`). Only built topics are linked. Problem codes,
+   item ids and `toolResult` records are unchanged. **Justification trainer** opens on the first
+   prompt in course order not yet self-checked (and open to the student), with "All N prompts"
+   above it; the list is `justify.html?list=1` (or `?unit=`/`?skill=`); `?p=<id>` is unchanged; How it
+   works is a disclosure below the work. **Equations sheet**: a row's sixth field names the trainers
+   that practice it ("Practice it:" links, live tools only). **Live beaker**
+   `chem/assets/tools/live-beaker.js` (`ApChemBeaker`, not loaded by any page yet; API in
+   `docs/tools-upgrade.md`), tests in `scripts/test/apchem-beaker.test.mjs`.
 
 ## 8. Open items for the owner
 

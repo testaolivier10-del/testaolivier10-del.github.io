@@ -59,7 +59,9 @@ export function unitSample(ch, ctx) {
 }
 
 /* The equations-sheet walkthrough. Our own words; the equations are the
-   standard ones; the grouping and order are ours, not the sheet's. */
+   standard ones; the grouping and order are ours, not the sheet's. A row's
+   sixth field lists the trainers (tools/<slug>.html) that practice it; only
+   live ones are linked. */
 const EQ = [
   { h: 'Particles, light and charge', id: 'atoms', rows: [
     ['F ∝ q₁q₂ / r²', 'Coulomb\'s law: the attraction between two charges grows with the charges and falls with the square of the distance.', 'Every "why is this ionization energy, radius, lattice energy or boiling point bigger" argument. You rarely calculate with it; you compare both species\' charges and distances.', 'Units 1, 2, 3', 'periodic-trends'],
@@ -68,10 +70,10 @@ const EQ = [
     ['N_A = 6.022 × 10²³ mol⁻¹', 'Avogadro\'s number: particles in one mole.', 'Moving between a count of particles and moles; per-photon energy to per-mole energy.', 'Unit 1', 'moles-molar-mass'],
   ] },
   { h: 'Gases, liquids and solutions', id: 'gases', rows: [
-    ['PV = nRT', 'The ideal gas law.', 'Moles, molar mass or density of a gas from its pressure, volume and temperature. Temperature in kelvins, and pick the R that matches your units.', 'Unit 3', 'ideal-gas-law'],
+    ['PV = nRT', 'The ideal gas law.', 'Moles, molar mass or density of a gas from its pressure, volume and temperature. Temperature in kelvins, and pick the R that matches your units.', 'Unit 3', 'ideal-gas-law', ['units-sig-figs']],
     ['P₁V₁/T₁ = P₂V₂/T₂', 'The combined gas law, for a fixed amount of gas.', 'The same gas before and after a change in conditions. Again kelvins only.', 'Unit 3', 'ideal-gas-law'],
     ['P_total = P_A + P_B + …;  P_A = X_A × P_total', 'Dalton\'s law and mole fraction.', 'Gas mixtures, and gas collected over water (subtract the water\'s vapor pressure).', 'Unit 3', 'ideal-gas-law'],
-    ['R = 8.314 J/(mol·K) = 0.08206 L·atm/(mol·K)', 'The gas constant in two sets of units.', '0.08206 with liters and atmospheres (gas law problems); 8.314 with joules (ΔG° = −RT ln K, the Nernst equation, kinetic energy).', 'Units 3, 9', 'ideal-gas-law'],
+    ['R = 8.314 J/(mol·K) = 0.08206 L·atm/(mol·K)', 'The gas constant in two sets of units.', '0.08206 with liters and atmospheres (gas law problems); 8.314 with joules (ΔG° = −RT ln K, the Nernst equation, kinetic energy).', 'Units 3, 9', 'ideal-gas-law', ['units-sig-figs']],
     ['STP: 273.15 K and 1.0 atm; 22.4 L/mol', 'Standard temperature and pressure, and the molar volume of an ideal gas there.', 'A shortcut only at STP. At any other conditions use PV = nRT.', 'Unit 3', 'ideal-gas-law'],
     ['KE = ½mv²', 'Kinetic energy of a moving particle.', 'Kinetic molecular theory: at the same temperature, lighter particles move faster on average.', 'Unit 3', 'kinetic-molecular-theory'],
     ['M = n_solute / L of solution', 'Molarity.', 'Every solution calculation: dilution, titration, stoichiometry in solution. Liters of solution, not of solvent.', 'Units 3, 4', 'solutions'],
@@ -84,14 +86,14 @@ const EQ = [
     ['t½ = 0.693/k', 'The half-life of a first-order reaction.', 'Only for first order: its half-life does not depend on concentration (radioactive decay, many decompositions).', 'Unit 5', 'concentration-time'],
   ] },
   { h: 'Equilibrium, acids and bases', id: 'equilibrium', rows: [
-    ['Kc = [C]^c[D]^d / ([A]^a[B]^b);  Kp the same with partial pressures', 'The equilibrium constant for aA + bB ⇌ cC + dD.', 'Every equilibrium question; Q has the same form with the current values. Leave out pure solids and liquids.', 'Unit 7', 'q-and-k'],
-    ['Kw = [H₃O⁺][OH⁻] = 1.0 × 10⁻¹⁴ at 25 °C;  pH + pOH = 14.00', 'The ionization of water.', 'Converting between [H₃O⁺] and [OH⁻], or pH and pOH, at 25 °C.', 'Unit 8', 'acids-bases-intro'],
-    ['pH = −log[H₃O⁺];  pOH = −log[OH⁻];  pKa = −log Ka', 'Logarithmic scales for acidity and acid strength.', 'Base-10 log, never ln. Keep as many decimal places as the concentration has significant figures.', 'Unit 8', 'acids-bases-intro'],
-    ['Kw = Ka × Kb;  pKa + pKb = pKw', 'The link between a conjugate acid and base.', 'Getting Ka of NH₄⁺ from Kb of NH₃ (or the reverse) before a buffer or salt calculation.', 'Unit 8', 'weak-acids-bases'],
-    ['pH = pKa + log([A⁻]/[HA])', 'The Henderson-Hasselbalch equation.', 'Buffer pH from the ratio of conjugate base to weak acid. At half-equivalence the ratio is 1, so pH = pKa. For a basic buffer, use the pKa of the conjugate acid.', 'Unit 8', 'henderson-hasselbalch'],
+    ['Kc = [C]^c[D]^d / ([A]^a[B]^b);  Kp the same with partial pressures', 'The equilibrium constant for aA + bB ⇌ cC + dD.', 'Every equilibrium question; Q has the same form with the current values. Leave out pure solids and liquids.', 'Unit 7', 'q-and-k', ['q-vs-k', 'ice-table-drills']],
+    ['Kw = [H₃O⁺][OH⁻] = 1.0 × 10⁻¹⁴ at 25 °C;  pH + pOH = 14.00', 'The ionization of water.', 'Converting between [H₃O⁺] and [OH⁻], or pH and pOH, at 25 °C.', 'Unit 8', 'acids-bases-intro', ['titration-curve-reader']],
+    ['pH = −log[H₃O⁺];  pOH = −log[OH⁻];  pKa = −log Ka', 'Logarithmic scales for acidity and acid strength.', 'Base-10 log, never ln. Keep as many decimal places as the concentration has significant figures.', 'Unit 8', 'acids-bases-intro', ['units-sig-figs', 'titration-curve-reader']],
+    ['Kw = Ka × Kb;  pKa + pKb = pKw', 'The link between a conjugate acid and base.', 'Getting Ka of NH₄⁺ from Kb of NH₃ (or the reverse) before a buffer or salt calculation.', 'Unit 8', 'weak-acids-bases', ['buffer-drills']],
+    ['pH = pKa + log([A⁻]/[HA])', 'The Henderson-Hasselbalch equation.', 'Buffer pH from the ratio of conjugate base to weak acid. At half-equivalence the ratio is 1, so pH = pKa. For a basic buffer, use the pKa of the conjugate acid.', 'Unit 8', 'henderson-hasselbalch', ['buffer-drills', 'titration-curve-reader']],
   ] },
   { h: 'Thermodynamics and electrochemistry', id: 'thermo', rows: [
-    ['q = mcΔT', 'Heat absorbed or released when a substance changes temperature.', 'Calorimetry: q of the solution, then ΔH per mole with the opposite sign.', 'Unit 6', 'calorimetry'],
+    ['q = mcΔT', 'Heat absorbed or released when a substance changes temperature.', 'Calorimetry: q of the solution, then ΔH per mole with the opposite sign.', 'Unit 6', 'calorimetry', ['units-sig-figs']],
     ['ΔH°rxn = Σ ΔH°f(products) − Σ ΔH°f(reactants)', 'Enthalpy of reaction from enthalpies of formation. ΔS° and ΔG° from tables work the same way.', 'Each value times its coefficient; an element in its standard state has ΔH°f = 0 (but not S° = 0).', 'Units 6, 9', 'enthalpy-of-formation'],
     ['ΔG° = ΔH° − TΔS°', 'Gibbs free energy from enthalpy and entropy.', 'Whether a process is thermodynamically favored, and at what temperatures. Convert ΔS° from J to kJ first.', 'Unit 9', 'gibbs-free-energy'],
     ['ΔG° = −RT ln K', 'The link between free energy and the equilibrium constant.', 'K from ΔG° or the reverse. R = 8.314 J/(mol·K), so ΔG° in joules. Natural log here.', 'Unit 9', 'free-energy-equilibrium'],
@@ -110,11 +112,16 @@ const NOT_ON = [
 ];
 
 export function entryPages(ctx) {
-  const { map, C, put, head, tail, footer, crumbNav, crumbs, orgCrumbs, esc, text, SITE, BASE, COURSE_ID, COURSE_NAME, COURSE_HTML, BETA_PILL, LABEL, courseTitle, clampDesc, noindex, bodyOpen, questionHtml, questionForPage, groupSets, stimulusPanel, stimulusBody, isFreeTopic, frqs } = ctx;
+  const { map, C, put, head, tail, footer, crumbNav, crumbs, orgCrumbs, esc, text, SITE, BASE, COURSE_ID, COURSE_NAME, COURSE_HTML, BETA_PILL, LABEL, courseTitle, clampDesc, noindex, bodyOpen, questionHtml, questionForPage, groupSets, stimulusPanel, stimulusBody, isFreeTopic, frqs, liveTools } = ctx;
   const units = map.chapters.filter(c => c.part === 'course');
   const built = ch => map.topics.some(t => t.chapter === ch.id && C.built.has(t.id));
   const topicLink = (id, depth) => C.built.has(id) ? `<a href="${depth}notes/${id}.html">${esc(map.topicById(id).title)}</a>` : esc((map.topicById(id) || {}).title || id);
   const out = {};
+  // Live trainers that practice an equation (EQ rows' sixth field), as links.
+  const trainers = slugs => {
+    const live = (slugs || []).map(sl => (liveTools || []).find(t => t.slug === sl)).filter(Boolean);
+    return live.length ? `<span class="chem-eq-tools"><span class="chem-small">Practice it:</span> ${live.map(t => `<a href="tools/${t.slug}.html">${esc(t.name)}</a>`).join(', ')}</span>` : '';
+  };
   // The first unit with a practice test, or none yet (no link to a page that is not built).
   const firstTest = units.find(built);
   const testLink = (depth, label) => firstTest ? `<a href="${depth}unit-tests/${firstTest.id}.html">${label}</a>` : '';
@@ -129,7 +136,7 @@ export function entryPages(ctx) {
       crumbs(orgCrumbs([{ name: 'Equations sheet, explained', url }])),
     ] };
     const sections = EQ.map(s => `<section class="xsection chem-eq-sec" aria-labelledby="eq-${s.id}"><h2 id="eq-${s.id}">${esc(s.h)}</h2>
-    <div class="table-wrap" tabindex="0" role="region" aria-label="${esc(s.h)}: equations"><table class="chem-eq"><thead><tr><th scope="col">Equation</th><th scope="col">What it is</th><th scope="col">When you use it</th><th scope="col">Learn it in</th></tr></thead><tbody>${s.rows.map(r => `<tr><th scope="row"><span class="chem-eq-f">${esc(r[0])}</span></th><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}<br>${topicLink(r[4], depth)}</td></tr>`).join('')}</tbody></table></div></section>`).join('\n  ');
+    <div class="table-wrap" tabindex="0" role="region" aria-label="${esc(s.h)}: equations"><table class="chem-eq"><thead><tr><th scope="col">Equation</th><th scope="col">What it is</th><th scope="col">When you use it</th><th scope="col">Learn it in</th></tr></thead><tbody>${s.rows.map(r => `<tr><th scope="row"><span class="chem-eq-f">${esc(r[0])}</span></th><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}<br>${topicLink(r[4], depth)}${trainers(r[5])}</td></tr>`).join('')}</tbody></table></div></section>`).join('\n  ');
     const body = `
 ${bodyOpen(' data-app="equations-sheet"')}
 <main id="main" class="xshell chem-app chem-entry">
