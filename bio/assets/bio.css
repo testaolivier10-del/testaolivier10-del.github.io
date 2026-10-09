@@ -82,6 +82,14 @@ body.bio{--ctint:#E4F1DD;--cink:#2D6A1F;}
 .bio-crumb a:hover{color:var(--ink);text-decoration:underline;}
 .bio-hero{padding-top:22px;}
 .bio-hero h1{max-width:24ch;}
+/* Tool pages on a phone: a slim opener, so the tool is on the first screen. */
+@media (max-width:640px){
+  body[data-app^="tool-"] .bio-hero{margin-top:10px;padding:14px 16px;border-radius:16px;}
+  body[data-app^="tool-"] .bio-hero .eyebrow{margin-bottom:6px;}
+  body[data-app^="tool-"] .bio-hero h1{font-size:24px;line-height:1.15;margin:0 0 4px;}
+  body[data-app^="tool-"] .bio-hero .lede{font-size:14.5px;line-height:1.4;}
+  body[data-app^="tool-"] .bio-crumb{margin-top:10px;}
+}
 .bio-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;}
 .bio-tag{display:inline-block;padding:4px 11px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12.5px var(--font-ui);text-decoration:none;}
 a.bio-tag:hover{text-decoration:underline;}

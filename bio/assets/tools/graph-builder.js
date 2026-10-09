@@ -21,7 +21,7 @@
     var ds, st, checked;
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('What a full-credit graph needs', data.howItWorks) +
       '<section class="bt-card" aria-labelledby="' + gid + '-dh"><h2 id="' + gid + '-dh">The data</h2><div class="gb-pick"></div><div class="gb-data"></div></section>' +
-      '<form class="bt-card gb-steps" novalidate aria-labelledby="' + gid + '-bh"><h2 id="' + gid + '-bh">Build the graph</h2><div class="gb-body"></div>' +
+      '<form class="bt-card gb-steps" data-keep-host=".gb-feedback" novalidate aria-labelledby="' + gid + '-bh"><h2 id="' + gid + '-bh">Build the graph</h2><div class="gb-body"></div>' +
       '<div class="bt-actions"><button type="submit" class="btn-press sm">Check my graph</button></div></form>' +
       '<section class="bt-card gb-feedback" aria-labelledby="' + gid + '-fh" hidden><h2 id="' + gid + '-fh" tabindex="-1">How your graph did</h2><div class="gb-fb" role="status" aria-live="polite"></div></section>');
     var pick = T.choiceSelect({ label: 'Data set', options: data.datasets.map(function(d){ return { value: d.id, label: d.title }; }), value: data.datasets[0].id, onChange: function(v){ load(v); } });
