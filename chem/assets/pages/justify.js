@@ -9,8 +9,10 @@
    No AI grading: the student ticks what their own answer says, as on the
    free-response pages.
 
-     list     every published prompt, filtered by unit and by skill, each
-              with its last self-check
+     list     ?list=1 (or ?unit= / ?skill=): every published prompt, filtered
+              by unit and by skill, each with its last self-check
+     start    no parameters: opens straight on the next prompt not yet
+              self-checked (in course order), with "All prompts" one tap away
      one      ?p=<id>: context, prompt, a textarea (saved on this device in
               apchem_frq_drafts_v1 under "justify:<id>", as FRQ drafts are),
               then the checklist and the two model answers
@@ -46,6 +48,13 @@
   function locked(p){ return !p.free && Core && Core.locked && Core.locked(); }
   function unitLabel(u){ var c = UNIT[u]; return c ? (c.part === 'course' ? 'Unit ' + c.n : c.title) : u; }
   function view(name){ app.setAttribute('data-view', name); }
+  var LIST = BASE + 'justify.html?list=1';
+  // How it works: below the work, folded (open on wide screens).
+  var HOW = '<details class="cx-card chem-js-how"><summary>How it works</summary><ol class="chem-js-steps">' +
+    '<li><b>Write</b> your answer in full sentences: a claim, the evidence, and the reason at the particle level.</li>' +
+    '<li><b>Check</b> it against the rubric, ticking only the points your answer actually makes.</li>' +
+    '<li><b>Compare</b> two model answers: one that earns the point, and one that sounds right but does not.</li></ol></details>';
+  function openWide(){ try{ var d = app.querySelector('.chem-js-how'); if(d && matchMedia('(min-width: 900px)').matches) d.open = true; }catch(e){} }
 
   /* -------------------------------------------------------------- list */
   function list(){
@@ -55,15 +64,11 @@
     var skills = []; ps.forEach(function(p){ if(skills.indexOf(p.skill) < 0) skills.push(p.skill); });
     function opt(v, label, cur){ return '<option value="' + esc(v) + '"' + (v === cur ? ' selected' : '') + '>' + esc(label) + '</option>'; }
     var done = ps.filter(function(p){ return sc[p.id]; }).length;
-    app.innerHTML = '<div class="cx-card chem-js-how"><h2>How it works</h2><ol class="chem-js-steps">' +
-        '<li><b>Write</b> your answer in full sentences: a claim, the evidence, and the reason at the particle level.</li>' +
-        '<li><b>Check</b> it against the rubric, ticking only the points your answer actually makes.</li>' +
-        '<li><b>Compare</b> two model answers: one that earns the point, and one that sounds right but does not.</li></ol>' +
-        '<p class="chem-small">' + plural(ps.length, 'prompt') + ' across the units, each on a point the exam readers say students miss. ' + (done ? 'You have checked ' + done + ' of them.' : '') + '</p></div>' +
+    app.innerHTML = '<p class="chem-small">' + plural(ps.length, 'prompt') + ' across the units, each on a point the exam readers say students miss. ' + (done ? 'You have checked ' + done + ' of them.' : '') + '</p>' +
       '<form class="chem-fq-filters" aria-label="Filter prompts">' +
         '<label class="chem-pr-field"><span>Unit</span><select id="chem-js-unit">' + opt('', 'Every unit', filter.unit) + units.map(function(u){ return opt(u, unitLabel(u) + (UNIT[u] ? ': ' + UNIT[u].title : ''), filter.unit); }).join('') + '</select></label>' +
         '<label class="chem-pr-field"><span>Skill</span><select id="chem-js-skill">' + opt('', 'Every skill', filter.skill) + skills.map(function(k){ return opt(k, DATA.skills[k] || k, filter.skill); }).join('') + '</select></label>' +
-      '</form><p class="chem-small" id="chem-js-count" role="status" aria-live="polite"></p><ul class="chem-fq-list chem-js-list"></ul>';
+      '</form><p class="chem-small" id="chem-js-count" role="status" aria-live="polite"></p><ul class="chem-fq-list chem-js-list"></ul>' + HOW;
     function paint(){
       var shown = ps.filter(function(p){ return (!filter.unit || p.unit === filter.unit) && (!filter.skill || p.skill === filter.skill); });
       app.querySelector('#chem-js-count').textContent = plural(shown.length, 'prompt') + (filter.unit || filter.skill ? ' match.' : '.');
@@ -72,18 +77,20 @@
         return '<li><a class="chem-fq-card" href="?p=' + encodeURIComponent(p.id) + '"><span class="chem-fq-card-k">' + esc(unitLabel(p.unit)) + ' &middot; ' + esc(DATA.skills[p.skill] || p.skill) + (p.free ? ' &middot; free' : '') + '</span>' +
           '<b>' + esc(p.title) + '</b><span class="chem-small">' + esc(TOPIC[p.topic] ? TOPIC[p.topic].title : '') + (s ? ' &middot; your best: ' + s.best + ' of ' + s.of : '') + (locked(p) ? ' &middot; Premium' : '') + '</span></a></li>';
       }).join('');
-      try{ var q = new URLSearchParams(); if(filter.unit) q.set('unit', filter.unit); if(filter.skill) q.set('skill', filter.skill); history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '')); }catch(e){}
+      try{ var q = new URLSearchParams(); q.set('list', '1'); if(filter.unit) q.set('unit', filter.unit); if(filter.skill) q.set('skill', filter.skill); history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '')); }catch(e){}
     }
     app.querySelector('form').addEventListener('change', function(e){ if(e.target.id === 'chem-js-unit') filter.unit = e.target.value; else filter.skill = e.target.value; paint(); });
     app.querySelector('form').addEventListener('submit', function(e){ e.preventDefault(); });
     paint();
+    openWide();
   }
 
   /* --------------------------------------------------------- one prompt */
-  function one(p){
+  function one(p, auto){
     view('one');
     var i = DATA.prompts.indexOf(p), next = DATA.prompts[i + 1];
-    var head = '<p class="chem-small"><a href="' + BASE + 'justify.html">&larr; All prompts</a></p>' +
+    var sc = scores(), left = DATA.prompts.filter(function(x){ return !sc[x.id]; }).length;
+    var head = '<p class="chem-small chem-js-nav"><a href="' + LIST + '">&larr; All ' + DATA.prompts.length + ' prompts</a>' + (auto ? ' <span>&middot; ' + (left ? 'Your next unchecked prompt (' + left + ' to go)' : 'You have checked every prompt; here is the first again') + '</span>' : '') + '</p>' +
       '<div class="cx-card chem-js-card"><p class="chem-fq-k">' + esc(unitLabel(p.unit)) + ' &middot; ' + esc(TOPIC[p.topic] ? TOPIC[p.topic].title : '') + ' &middot; Practice ' + esc(p.practice) + '</p>' +
       '<h2 class="chem-js-title" tabindex="-1">' + esc(p.title) + '</h2>' +
       (p.context ? '<section class="chem-stim" aria-label="The situation"><p class="chem-stim-k">The situation</p>' + p.context + '</section>' : '') +
@@ -98,7 +105,8 @@
       '<textarea id="chem-js-a" class="chem-fq-answer" rows="6" aria-describedby="chem-js-prompt" spellcheck="true">' + esc(draft(p.id)) + '</textarea>' +
       '<p class="chem-small">Saved on this device as you type. It is never sent anywhere.</p>' +
       '<div class="chem-pr-actions"><button type="button" class="btn-press" data-act="check">Check my answer</button></div></div>' +
-      '<section class="chem-js-check" hidden aria-labelledby="chem-js-ch"></section>';
+      '<section class="chem-js-check" hidden aria-labelledby="chem-js-ch"></section>' + HOW;
+    openWide();
     var ta = app.querySelector('#chem-js-a'), timer = 0;
     ta.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(function(){ saveDraft(p.id, ta.value); }, 300); });
     app.querySelector('[data-act="check"]').addEventListener('click', function(){
@@ -124,7 +132,7 @@
         '</div>' +
         '<div class="chem-pr-actions"><button type="button" class="btn-press" data-act="save">Save my check</button>' +
           '<button type="button" class="btn-outline" data-act="again">Rewrite my answer</button>' +
-          (next ? '<a class="btn-outline" href="?p=' + encodeURIComponent(next.id) + '">Next prompt</a>' : '<a class="btn-outline" href="' + BASE + 'justify.html">All prompts</a>') + '</div>' +
+          (next ? '<a class="btn-outline" href="?p=' + encodeURIComponent(next.id) + '">Next prompt</a>' : '<a class="btn-outline" href="' + LIST + '">All prompts</a>') + '</div>' +
         '<p class="chem-small">More practice on this topic: <a href="' + BASE + 'notes/' + p.topic + '.html">the notes</a> &middot; <a href="' + BASE + 'frq.html?unit=' + p.unit + '">free-response questions for ' + esc(unitLabel(p.unit)) + '</a>.</p>';
       function total(){ var n = box.querySelectorAll('.chem-fq-point input:checked').length; box.querySelector('.chem-fq-total').textContent = 'Your answer makes ' + n + ' of ' + p.checklist.length + ' points.'; return n; }
       box.addEventListener('change', total); total();
@@ -145,7 +153,12 @@
     var p = id && DATA.prompts.filter(function(x){ return x.id === id; })[0];
     if(UNIT[q.get('unit')]) filter.unit = q.get('unit');
     if(DATA.skills[q.get('skill')]) filter.skill = q.get('skill');
-    if(p) one(p); else list();
+    if(p) return one(p);
+    if(q.get('list') || filter.unit || filter.skill) return list();
+    // Straight to work: the first prompt (course order) not yet self-checked
+    // and open to this student, else the first prompt.
+    var sc = scores(), open = DATA.prompts.filter(function(x){ return !locked(x); });
+    one(open.filter(function(x){ return !sc[x.id]; })[0] || open[0] || DATA.prompts[0], true);
   }
 
   app.innerHTML = '<p class="chem-small">Loading the prompts…</p>';

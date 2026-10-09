@@ -58,7 +58,39 @@ basic: a dropdown, typed answers, a Check button. Bring every tool up to the bod
 | P1-Ochem | `tool-shell.js`: tool first on phones, sibling chips compact below; keep handoff and quiz | pending |
 | P1-A&P | Open on a default item instead of the long chooser (compact picker); Keep going strip; 3D body link for anatomical items | pending |
 | P1-Bio | Stage slot in `bio-tools.js`; phone layout (stage first, intro collapsed); Keep going strip from each tool's `topic` | pending |
-| P1-Chem | Phone layout (problem first, intro collapsed); Keep going strip; `live-beaker.js` | pending |
+| P1-Chem | Phone layout (problem first, intro collapsed); Keep going strip; `live-beaker.js` | **done 2026-10-09**: `ApChemTools.frame`/`kindPicker` (picker row, problem, "About this ..." folded below; compact opener under 640 px) in all 6 trainers; `keepGoing` strip after each graded problem (lesson, notes, lessons for missed steps' topics, glossary terms); Justify opens on the next unchecked prompt (`?list=1` for the list, `?p=` kept); equations sheet links each row to its trainers; beaker API below. Notes in `docs/apchem-spec.md` decision 20 |
+
+### Chem live beaker API (built in P1-Chem)
+
+`chem/assets/tools/live-beaker.js`, loaded after `chem-tool-math.js` (and `chem-tools.js` if the page has it,
+for its announcer). No page loads it yet: add it to the tool's `extra` list in `toolShell()` (build-apchem.mjs).
+CSS is in `chem-tools.css` (`.lb-*`).
+
+```js
+var b = ApChemBeaker.mount(el, {
+  species: [{ key, label, mol?, name?, tone? }], // mol: an ApChemMath.particles template (A, B, A2, B2, AB,
+                                                 // HA, 'A-', 'H3O+', H2O, NH3, CO2 ...); else a disc, tone 1-6
+  readout: 'pH' | 'qk' | 'none',                 // default 'pH'
+  title: 'Acetic acid buffer',                   // starts the text description
+  max: 30,                                       // most particles drawn; larger counts scale down together
+  seed: 7                                        // particle layout
+});
+b.update({ counts: { HA: 6, 'A-': 4 }, pH: 4.57, note: 'Added 2 OH⁻.' });   // readout 'pH'
+b.update({ counts: { A2: 5, B2: 5, AB: 4 }, Q: 0.64, K: 4 });               // readout 'qk'
+b.destroy();
+```
+
+- Counts are particles, not moles: the caller maps concentration to a count (keep ratios honest).
+- Between updates particles keep their place and id; a species that grows takes the places another just
+  gave up (HA turns into A⁻ where it was), new ones fade in, lost ones fade out, the pH or Q marker slides.
+  `prefers-reduced-motion` (or `LevlMotion.reduced()`): end state at once.
+- Readouts: pH value + acidic/neutral/basic + a 0-14 scale; Q vs K: both values, `<`/`=`/`>` (equal within
+  1%), a log scale centred on K (two decades each way) and "Forward →" / "← Reverse" / "At equilibrium".
+- Accessibility: the SVG is `role="img"` labelled by the caption; the caption is a polite live region
+  (`ApChemTools.announcer`, debounced) with the counts by name, the readout and the direction in words.
+  Atoms carry their symbols, so color is never the only cue. Colors come from tokens (dark mode follows).
+- `ApChemBeaker.pure` = `{ slots, scale, assign, phWord, qk, describe }` (no DOM; tested in
+  `scripts/test/apchem-beaker.test.mjs`). `ApChemBeaker.demo(el)`: a buffer taking base in three steps.
 
 ## Phases 2 and 3: tool upgrades (PR 2)
 

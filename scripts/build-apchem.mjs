@@ -1115,7 +1115,7 @@ window.ApChemCurriculum = ${JSON.stringify(data)};
   /* The free search-entry pages, the practice exams' data and the
      justification trainer's prompts (scripts/lib/apchem-entry.mjs). */
   const entry = entryPages({ map, C, head, tail, footer, crumbNav, crumbs, orgCrumbs, esc, text, SITE, BASE, COURSE_ID, COURSE_NAME, COURSE_HTML, BETA_PILL, LABEL,
-    courseTitle, clampDesc, noindex, bodyOpen, questionHtml, questionForPage, groupSets, stimulusPanel, stimulusBody, isFreeTopic, frqs });
+    courseTitle, clampDesc, noindex, bodyOpen, questionHtml, questionForPage, groupSets, stimulusPanel, stimulusBody, isFreeTopic, frqs, liveTools: (C.pages.tools || []).filter(toolLive).map(t => ({ slug: t.slug, name: t.name })) });
   for (const [rel, content] of Object.entries(entry.pages)) put(rel, content);
 }
 

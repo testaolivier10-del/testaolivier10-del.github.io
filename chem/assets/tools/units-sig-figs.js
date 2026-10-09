@@ -13,13 +13,10 @@
   T.mount('units-sig-figs', function(app, data){
     var M = window.ApChemMath, Q = window.ApChemQuestions, esc = T.esc;
     var ctxs = data.contexts, gid = T.nid('us'), only = '', seed = 0;
-    app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box(data.howItWorksTitle, data.howItWorks) +
-      '<div class="bt-controls cd-pick"></div><section class="bt-problem" aria-labelledby="' + gid + '-h"></section>');
-    var area = app.querySelector('.bt-problem');
+    var fr = T.frame(app, data, { noun: 'tool', hid: gid + '-h', howTitle: data.howItWorksTitle }), area = fr.area;
     var kinds = ctxs.map(function(c){ return c.kind; }).filter(function(k, i, a){ return a.indexOf(k) === i; });
     if(kinds.length > 1){
-      var sel = T.choiceSelect({ label: 'Habit to practice', options: [{ value: '', label: 'Mixed: any habit' }].concat(kinds.map(function(k){ return { value: k, label: KIND[k] }; })), value: '', onChange: function(v){ only = v; draw(true, true); } });
-      app.querySelector('.cd-pick').appendChild(sel.el);
+      T.kindPicker(fr.pick, { label: 'Habit', mixed: 'Any habit', options: kinds.map(function(k){ return { value: k, label: KIND[k] }; }), onChange: function(v){ only = v; draw(true, true); } });
     }
     function fresh(){ return 10000 + Math.floor(Math.random() * 89999); }
     try{ var m = /[?&#]seed=(\d+)/.exec(location.search + location.hash); seed = m ? +m[1] : fresh(); }catch(e){ seed = fresh(); }
@@ -33,6 +30,7 @@
         var nx = area.querySelector('.bt-next');
         nx.innerHTML = '<div class="bt-actions"><button type="button" class="btn-press sm us-again">New problem</button></div>';
         nx.querySelector('.us-again').addEventListener('click', function(){ draw(true, true); });
+        T.keepGoing(nx, { topic: item.topic });
       });
       if(focus) area.querySelector('h2').focus();
     }
