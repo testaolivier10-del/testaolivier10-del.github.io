@@ -110,7 +110,17 @@
     margin:0 0 clamp(28px,4vw,40px);padding:14px 16px;border-left:3px solid var(--accent);
     font-size:14px;line-height:1.6;color:var(--muted);
   }
-  #drillBox{margin-top:clamp(40px,6vw,64px);}
+  #drillBox{margin:clamp(20px,3vw,28px) 0 0;max-width:760px;}
+  #drillBox h2{margin:0 0 4px;}
+  #drillBox .section-sub{font:700 13px var(--font-ui);color:var(--muted);margin:0 0 12px;}
+  #drillBox .drug{background:var(--white);}
+  .ref-h{margin:clamp(36px,5vw,52px) 0 16px;}
+  .formulary-note{margin-top:clamp(28px,4vw,40px);}
+  @media (max-width:640px){
+    .hero{padding:20px;}
+    .hero h1{font-size:26px;margin-bottom:8px;}
+    .hero .lede{font-size:14.5px;line-height:1.5;}
+  }
 </style>
 </head>
 <body>
@@ -128,8 +138,9 @@
     <p class="lede">An EMT carries a very short formulary. Knowing it cold is cheap marks on the exam and the difference between helping and harming on the truck. The contraindications matter more than the indications — the exam tests what stops you, not what starts you.</p>
   </div>
 
-  <p class="formulary-note"><strong>Scope varies.</strong> Which of these you may give, which you may only assist a patient with, and which need online medical direction, is set by your state and your medical director &mdash; not by this page. Where a drug is commonly &ldquo;assisted&rdquo; rather than administered, it is marked. The national scope model also lets EMTs give oral over-the-counter pain and fever relievers such as acetaminophen or ibuprofen, and some protocols still carry activated charcoal; those are not covered here. Doses are the usual adult figures taught to the national standard; <strong>your protocol is the authority</strong>.</p>
+  <div id="drillBox"></div>
 
+  <h2 class="ref-h">The seven drugs</h2>
   <div class="drug-grid">
 
     <div class="drug">
@@ -288,7 +299,8 @@
 
   </div>
 
-  <div id="drillBox"></div>
+
+  <p class="formulary-note"><strong>Scope varies.</strong> Which of these you may give, which you may only assist a patient with, and which need online medical direction, is set by your state and your medical director &mdash; not by this page. Where a drug is commonly &ldquo;assisted&rdquo; rather than administered, it is marked. The national scope model also lets EMTs give oral over-the-counter pain and fever relievers such as acetaminophen or ibuprofen, and some protocols still carry activated charcoal; those are not covered here. Doses are the usual adult figures taught to the national standard; <strong>your protocol is the authority</strong>.</p>
 
   <footer>
     <p>Doses and contraindications are the usual figures taught to the national standard. Your protocol and medical direction are the authority.</p>
@@ -296,6 +308,7 @@
   </footer>
 </div>
 <script src="assets/nav.js" defer></script>
+<script src="assets/tool-results.js" defer></script>
 <script src="assets/formulary-drill.js" defer></script>
 </body>
 </html>

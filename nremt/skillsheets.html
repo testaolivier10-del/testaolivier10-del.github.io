@@ -53,6 +53,15 @@
 
   /* ---- Run a station ----------------------------------------------------- */
 
+  .run-top__h{margin:24px 0 12px;}
+  .warning--after{margin:28px 0 8px;}
+  .guide-h{margin-top:32px;}
+  @media (max-width:640px){
+    .page-head{padding:18px 20px;}
+    .page-head h1{font-size:24px;margin-bottom:4px;}
+    .page-head .lede{font-size:14px;}
+    .run-top__h{margin-top:18px;}
+  }
   .mode-switch{display:inline-flex;border:2px solid var(--line);border-radius:22px;overflow:hidden;background:var(--white);margin-bottom:22px;}
   .mode-switch button{font:700 13px inherit;padding:9px 18px;border:0;background:transparent;color:var(--muted);cursor:pointer;}
   .mode-switch button.on{background:var(--navy);color:var(--on-accent);}
@@ -129,7 +138,7 @@
 
   /* ---- Print ------------------------------------------------------------- */
   @media print{
-    .mode-switch,#stationRun,.site-nav-fallback,#site-header,.privacy-link{display:none !important;}
+    .run-top,.mode-switch,#stationRun,.site-nav-fallback,#site-header,.privacy-link{display:none !important;}
     .skill-card,.general-tips{break-inside:avoid;page-break-inside:avoid;box-shadow:none;border-color:#999;}
     h2,h3{break-after:avoid;page-break-after:avoid;}
     .wrap{max-width:none;padding:0;}
@@ -198,10 +207,21 @@
   <p class="lede">The psychomotor skill stations, structurally.</p>
   </div>
 
-  <div class="warning">
+  <!-- The page states three things — examiners score what you say, critical
+       criteria fail a station on their own, and the clock is enforced. The
+       timed run comes first so it is the first thing on a phone; it reads the
+       station cards further down (assets/station-run.js). -->
+  <section class="run-top" aria-labelledby="runH">
+    <h2 id="runH" class="run-top__h">Run a station, out loud</h2>
+    <div id="stationRun"></div>
+  </section>
+
+  <div class="warning warning--after">
     <b>General structure, not exact scored step order.</b> Verify the sequence against your program's official skill sheets and current NREMT documents.
   </div>
 
+
+  <h2 class="guide-h">Reading guide</h2>
   <div class="general-tips">
     <h2 style="margin-top:0;">General patterns across most skill sheets</h2>
     <ul>
@@ -261,15 +281,6 @@
 
   <h2>The skill stations</h2>
 
-  <!-- The page states three things — examiners score what you say, critical
-       criteria fail a station on their own, and the clock is enforced — and
-       gave no way to meet any of them. The run reads these same cards. -->
-  <div class="mode-switch" id="stationMode" role="group" aria-label="How to use this page">
-    <button type="button" data-mode="read" class="on" aria-pressed="true">Read the stations</button>
-    <button type="button" data-mode="run" aria-pressed="false">Run one, out loud</button>
-  </div>
-
-  <div id="stationRun" hidden></div>
 
   <div id="stationCards">
   <div class="skill-card">

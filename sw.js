@@ -124,6 +124,10 @@ COURSE_URLS.nremt = [
   'nremt/assets/flow-drill.js',
   'nremt/assets/station-run.js',
   'nremt/assets/sound-bank.js',
+  // The shared tool layer: misses into Review, and the 3D body (its model and
+  // three.js stay runtime-cached, as before).
+  'nremt/assets/tool-results.js',
+  'nremt/assets/body-viewer.js',
 ];
 
 COURSE_URLS.ochem = [

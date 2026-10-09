@@ -35,6 +35,7 @@
 <!-- Resolves a sound to a playable source, and generates the heart sounds.
      Blocking, because the inline script below calls it while rendering. -->
 <script src="assets/sound-bank.js" defer></script>
+<script src="assets/tool-results.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
   body{line-height:1.65;}
@@ -45,6 +46,17 @@
     font-size:13.5px;color:#7A4A30;margin-bottom:28px;
   }
   .notice strong{color:#5E3822;}
+  .notice--after{margin:8px 0 28px;}
+  [data-theme="dark"] .notice{background:rgba(232,201,184,.10);border-color:rgba(232,201,184,.35);color:#F0CDB4;}
+  [data-theme="dark"] .notice strong{color:#F7DCC9;}
+  .sound-card.is-target{border-color:var(--accent);box-shadow:0 0 0 3px var(--tint-accent),var(--lift);}
+  .sound-card:focus{outline:none;}
+  @media (max-width:640px){
+    #quizSection{margin-top:20px;}
+    .page-head{padding:18px 20px;}
+    .page-head h1{font-size:24px;margin-bottom:4px;}
+    .page-head .lede{font-size:14px;}
+  }
 
   section{margin-bottom:40px;}
   h2{font-size:19px;font-weight:600;margin:0 0 6px;}
@@ -74,7 +86,9 @@
     text-decoration:none;transition:border-color .15s,color .15s;
   }
   .link-out-btn:hover{border-color:var(--accent);color:var(--accent);}
-  .sound-card.unavailable{opacity:0.5;}
+  /* No clip yet: the card reads as inactive through its frame and button, not
+     faded text (opacity took the text below WCAG contrast). */
+  .sound-card.unavailable{background:var(--surface2);border-style:dashed;box-shadow:none;}
   .sound-card.unavailable .play-btn{background:var(--line);color:var(--muted);}
   .audio-error{font-size:12px;color:var(--bad-text);margin-top:8px;display:none;}
   .credit-line{font-size:10.5px;color:var(--muted);margin-top:10px;}
@@ -230,9 +244,12 @@
   <p class="lede">Recorded breath sounds, generated heart sounds, then a quiz that brings back what you miss.</p>
   </div>
 
-  <div class="notice">
-    <strong>A note on these recordings:</strong> the wheeze, crackles and stridor clips are real auscultation recordings from Wikimedia Commons, each individually credited and licensed CC BY-SA. Normal breath sounds and rhonchi have no clip yet: we have not found a recording we are free to use. Snoring, gurgling and diminished breath sounds are described below without a clip for the same reason — the descriptions are there, the audio is not, and a synthesized substitute would be worse than silence.
-  </div>
+
+  <section id="quizSection">
+    <h2>Quiz Mode</h2>
+    <p class="section-sub">A clip plays. You name it. You find out why.</p>
+    <div class="quiz-box" id="quizBox"></div>
+  </section>
 
   <section id="listenSection">
     <h2>Listen &amp; Compare</h2>
@@ -240,11 +257,9 @@
     <div class="sound-grid" id="soundGrid"></div>
   </section>
 
-  <section id="quizSection">
-    <h2>Quiz Mode</h2>
-    <p class="section-sub">A clip plays. You name it. You find out why.</p>
-    <div class="quiz-box" id="quizBox"></div>
-  </section>
+  <div class="notice notice--after">
+    <strong>A note on these recordings:</strong> the wheeze, crackles and stridor clips are real auscultation recordings from Wikimedia Commons, each individually credited and licensed CC BY-SA. Normal breath sounds and rhonchi have no clip yet: we have not found a recording we are free to use. Snoring, gurgling and diminished breath sounds are described below without a clip for the same reason — the descriptions are there, the audio is not, and a synthesized substitute would be worse than silence.
+  </div>
 
   <footer>
     <p>Audio credits: the wheeze, crackles and stridor recordings are by James Heilman, MD (the stridor clip processed by Natural Philo), from Wikimedia Commons under CC BY-SA 3.0, with individual credits shown next to each clip above. This trainer is a supplementary study aid; it is not a substitute for hands-on stethoscope practice with an instructor.</p>
@@ -403,7 +418,7 @@ function renderListenSection(){
       <p class="sound-group__note">${g.note}</p>
     </div>
     ` + SOUNDS.filter(x => x.group === g.key).map(s => `
-    <div class="sound-card${s.available ? '' : ' unavailable'}" data-id="${s.id}">
+    <div class="sound-card${s.available ? '' : ' unavailable'}" data-id="${s.id}" id="snd-${s.id}" tabindex="-1">
       <h3>${s.label}${window.LevlSoundBank.isSynthetic(s) ? ' <span class="synth-tag">generated</span>' : ''}</h3>
       <p>${s.description}</p>
       <p class="section-sub" style="margin-bottom:10px;">${s.clinical}</p>
@@ -625,6 +640,12 @@ function submitAnswer(chosenId, round){
   if(window.LevlAnnounce){
     window.LevlAnnounce.answer(correct, `That was ${round.label}. ${round.clinical}`);
   }
+  // A miss goes to Review, linking back to this sound's card; naming it right later clears it.
+  if(window.NremtToolResults) window.NremtToolResults.record({
+    tool: 'sound-trainer', id: round.id, correct,
+    label: 'Name the sound: ' + round.label,
+    href: 'sound-trainer.html#snd-' + round.id
+  });
   fb.innerHTML = `
     <div class="feedback-verdict ${correct ? 'correct' : 'incorrect'}">${correct ? 'Correct — that\'s ' + round.label + '.' : 'Not quite — that was ' + round.label + '.'}</div>
     <p>${round.clinical}</p>
@@ -705,6 +726,11 @@ function wireMissedReview(){
 
 renderListenSection();
 renderQuizRound();
+// From Review: sound-trainer.html#snd-<id> lands on that sound's card.
+if(location.hash.indexOf('#snd-') === 0){
+  const card = document.getElementById(location.hash.slice(1));
+  if(card){ card.classList.add('is-target'); card.scrollIntoView({ block: 'center' }); card.focus({ preventScroll: true }); }
+}
 });
 </script>
 <script src="assets/nav.js" defer></script>
