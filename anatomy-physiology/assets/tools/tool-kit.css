@@ -1,0 +1,61 @@
+/* Shared pieces for the A&P tools (assets/tools/tool-kit.js): the compact
+   tool opener on phones, the item picker (.kp) and the Keep going strip
+   (.kg). Theme tokens only, so dark mode follows the theme. */
+
+
+/* ---- picker ---- */
+.kp{margin:12px 0 14px;background:var(--white);border-radius:16px;box-shadow:var(--lift-sm);}
+.kp-sum{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:11px 16px;cursor:pointer;list-style:none;border-radius:16px;font-family:var(--font-ui);}
+.kp-sum::-webkit-details-marker{display:none;}
+.kp-sum::after{content:"";width:8px;height:8px;margin-left:auto;align-self:center;border:solid var(--muted);border-width:0 2px 2px 0;transform:rotate(45deg);}
+.kp[open] .kp-sum::after{transform:rotate(-135deg);}
+.kp-sum:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.kp-label{flex:none;white-space:nowrap;font:900 12px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--cink);}
+.kp-cur{font:800 14.5px/1.3 var(--font-ui);color:var(--ink);min-width:0;}
+.kp-n{font:700 12.5px var(--font-ui);color:var(--muted);}
+.kp-body{padding:0 16px 14px;}
+.kp-search{display:block;margin:0 0 10px;}
+.kp-search input{width:100%;min-height:44px;}
+.kp-list{max-height:min(56vh,480px);overflow:auto;overscroll-behavior:contain;padding-right:2px;}
+.kp-group + .kp-group{margin-top:10px;}
+.kp .kp-gh{font:900 11.5px/1.3 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;}
+.kp-list ul{list-style:none;margin:0;padding:0;display:grid;gap:4px;}
+.kp-item{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;width:100%;min-height:44px;padding:8px 12px;border:0;border-radius:11px;
+  background:var(--paper);color:var(--ink);text-align:left;text-decoration:none;cursor:pointer;font:800 14px/1.35 var(--font-ui);}
+.kp-item:hover{box-shadow:inset 0 0 0 2px var(--cink);}
+.kp-item:focus-visible{outline:3px solid var(--accent);outline-offset:1px;}
+.kp-item[aria-current="true"]{background:var(--ctint);color:var(--cink);}
+.kp-t{flex:1 1 12em;min-width:0;}
+.kp-m{font:700 12px var(--font-ui);color:var(--muted);}
+.kp-done{font-weight:900;color:var(--good-text);}
+.kp-none{margin:8px 0 0;font:700 13px var(--font-ui);color:var(--muted);}
+.kp-all{margin:10px 0 0;font:800 13.5px var(--font-ui);}
+.kp-all a{color:var(--cink);}
+
+/* ---- Keep going strip ---- */
+.kg{margin:16px 0 0;padding:12px 14px;border-radius:14px;background:var(--ctint);}
+.kg-h{margin:0 0 8px;font:900 12px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--cink);}
+.kg-row{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;}
+.kg-link,.kg-term{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 12px;border-radius:var(--radius-pill);
+  background:var(--white);color:var(--ink);text-decoration:none;font:800 13px/1.3 var(--font-ui);box-shadow:var(--lift-sm);max-width:100%;}
+.kg-link:hover,.kg-term:hover{box-shadow:var(--lift-sm), inset 0 0 0 2px var(--cink);}
+.kg-link:focus-visible,.kg-term:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.kg-k{font:900 10.5px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--cink);}
+.kg-terms{display:contents;}
+.kg-terms[hidden],.kg[hidden]{display:none;}
+.kg-gk{margin-left:4px;}
+.kg-term.gl{border-bottom:0;}
+
+/* Phone: tool pages open on an item, so the opener stays short and the item
+   is on the first screen. Last, so these beat the base rules above. */
+@media (max-width:600px){
+  .anp-tool-hero{margin-top:10px;padding:14px 18px;}
+  .anp-tool-hero .eyebrow{margin-bottom:4px;}
+  .anp-tool-hero h1{font-size:24px;margin:0 0 4px;}
+  .anp-tool-hero .lede{display:none;}
+  .anp-app:has(.anp-tool-hero) .anp-crumb{display:none;}
+  .kp-sum{flex-wrap:nowrap;padding:10px 14px;}
+  .kp-cur{flex:1 1 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .kp-n{display:none;}
+  .kp-sum::after{flex:none;margin-left:6px;}
+}

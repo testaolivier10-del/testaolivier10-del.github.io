@@ -15,7 +15,10 @@
    scenario sends the anp-prediction event.
 
    URL: ?chapter=<id>, ?topic=<id>, ?level=1..4 preset the filters;
-   ?id=<scenario> opens one scenario directly. */
+   ?id=<scenario> opens one scenario directly. Otherwise the page opens
+   straight on a session of the scenarios (matching those filters) not yet
+   predicted fully right, easier levels first; the setup screen and the
+   full list stay one tap away in a compact picker (AnpToolKit.picker). */
 (function(){
   'use strict';
   var app = document.getElementById('app');
@@ -30,7 +33,7 @@
   var DATA = null;
   var filters = { chapter: '', topic: '', level: 0, length: '8' };
   var session = null;
-  var uid = 0;
+  var uid = 0, booted = false;
 
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function core(){ return window.AnpCore || null; }
@@ -68,7 +71,25 @@
     else if(ch && chapters().indexOf(ch) > -1) filters.chapter = ch;
     if(lv >= 1 && lv <= 4) filters.level = lv;
     var direct = one && DATA.scenarios.filter(function(s){ return s.id === one; })[0];
-    if(direct) startSession([direct]); else renderSetup();
+    if(direct){ startSession([direct]); return; }
+    var list = matching();
+    if(!list.length){ renderSetup(); return; }
+    var todo = list.filter(function(s){ var l = lastScore(s); return !l || l.right < l.total; });
+    startSession(ordered(todo.length ? todo : list).slice(0, +filters.length || 8));
+  }
+  function kit(){ return window.AnpToolKit || null; }
+  function addPicker(s){
+    var K = kit(), host = app.querySelector('.pc-pickhost');
+    if(!K || !host) return;
+    K.picker(host, {
+      label: 'Scenario', noun: 'scenarios', current: s.id, allLabel: 'Set up a session: chapter, topic, level',
+      groups: chapters().map(function(c){ return { title: chapterOf(c).title, items: DATA.scenarios.filter(function(x){ return x.chapter === c; }).map(function(x){
+        var l = lastScore(x);
+        return { id: x.id, title: x.title, meta: 'Level ' + x.level + ' · ' + topicOf(x.topic).title, done: !!(l && l.right === l.total) };
+      }) }; }),
+      onPick: function(id){ startSession(DATA.scenarios.filter(function(x){ return x.id === id; })); focusEl(app.querySelector('#pc-title')); },
+      onAll: function(){ renderSetup(); focusEl(app.querySelector('#pc-setup-h')); }
+    });
   }
 
   function hasTopic(id){ return DATA.scenarios.some(function(s){ return s.topic === id; }); }
@@ -172,6 +193,7 @@
     var res = { id: s.id, title: s.title, level: s.level, right: 0, total: 0, missed: [] };
     session.results[session.i] = res;
     app.innerHTML =
+      '<div class="pc-pickhost"></div>' +
       '<div class="pc-progress"><span class="anp-small">Scenario ' + (session.i + 1) + ' of ' + n + '</span>' +
         '<div class="track thin" aria-hidden="true"><i style="width:' + Math.round(100 * session.i / n) + '%"></i></div>' +
         '<button type="button" class="link-quiet pc-quit">' + (n > 1 ? 'End session' : 'All scenarios') + '</button></div>' +
@@ -182,8 +204,10 @@
         '<div class="pc-stages"></div>' +
       '</article>';
     app.querySelector('.pc-quit').addEventListener('click', function(){ if(n > 1 && session.results.some(function(r){ return r && r.total; })) renderSummary(); else renderSetup(); });
+    addPicker(s);
     renderStage(s, 0, res);
-    focusEl(app.querySelector('#pc-title'));
+    if(booted) focusEl(app.querySelector('#pc-title'));
+    booted = true;
   }
 
   function renderStage(s, k, res){
@@ -281,6 +305,7 @@
         '<button type="button" class="btn-press sm pc-next">' + esc(nextLabel) + '</button></div>' +
         '<div class="anp-fig pc-tree" id="' + treeId + '" hidden>' + treeHtml(st, picks) + '</div>';
       after.hidden = false;
+      if(last && kit()) kit().strip(after, { topic: s.topic, text: s.title + ' ' + s.setup + ' ' + st.variables.map(function(v){ return v.name; }).join(' ') });
       var show = after.querySelector('.pc-show'), tree = after.querySelector('.pc-tree');
       show.addEventListener('click', function(){
         var open = tree.hidden;
