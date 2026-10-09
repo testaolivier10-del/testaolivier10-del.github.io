@@ -54,7 +54,7 @@ basic: a dropdown, typed answers, a Check button. Bring every tool up to the bod
 
 | Workstream | Scope | Status |
 |---|---|---|
-| P1-NREMT | Open on the tool (phone); tool results hook wired into body map hunt, sound trainer, flow drill, formulary drill, scenario debrief; body viewer module; `?focus=` deep link | pending |
+| P1-NREMT | Open on the tool (phone); tool results hook wired into body map hunt, sound trainer, flow drill, formulary drill, scenario debrief; body viewer module; `?focus=` deep link | done: `LevlBodyViewer.mount(el,{list,info,focus,systems,skin,autoload,onSelect,onPick,pickSelects})` returns `select/find/highlight/clear/reset/setSystems/setSkin/info/structures/on/hunt.start({panel,live,first,onAnswer})`; `?focus=` and `?hunt=` (Review link back). `NremtToolResults.record` puts bank questions (formulary, `qid`) in `nremt_mastery`; other misses in synced `nremt_tool_review`, listed on Review as "From the tools" with a Try it again link, cleared by a later right answer; right answers 4 XP (60/day cap) + daily activity. Scenario debrief: a fork's consequence choice where a no-consequence one existed is a miss. |
 | P1-Ochem | `tool-shell.js`: tool first on phones, sibling chips compact below; keep handoff and quiz | pending |
 | P1-A&P | Open on a default item instead of the long chooser (compact picker); Keep going strip; 3D body link for anatomical items | pending |
 | P1-Bio | Stage slot in `bio-tools.js`; phone layout (stage first, intro collapsed); Keep going strip from each tool's `topic` | pending |

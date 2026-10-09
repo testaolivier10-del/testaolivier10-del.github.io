@@ -134,7 +134,10 @@
     // Premium: whether this learner's one free timed exam has been used
     // (assets/premium-gates.js). Synced so it is one per learner, not per
     // browser; once spent on any device it stays spent.
-    'nremt_free_exam_v1'
+    'nremt_free_exam_v1',
+    // Misses from the interactive tools, which Review lists under the
+    // question queue (assets/tool-results.js). Items merge key by key.
+    'nremt_tool_review'
   ];
   // Deliberately left out of sync: nremt_inprogress_exam (an in-progress
   // attempt is device-local to avoid two devices racing on the same quiz),

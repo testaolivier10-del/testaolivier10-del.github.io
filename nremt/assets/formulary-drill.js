@@ -65,14 +65,22 @@
 
   function answer(correct, q){
     if(correct) right++;
+    // A bank question: it goes into the same Review queue as Practice
+    // (nremt_mastery, by question id), so a miss here comes back there.
+    if(window.NremtToolResults) window.NremtToolResults.record({
+      tool: 'formulary', id: q.id, qid: q.id, correct: correct,
+      label: q.q, href: 'practice.html?q=' + q.id
+    });
     Array.prototype.forEach.call(document.querySelectorAll('#drillOpts button'), function(b){ b.disabled = true; });
     var fb = document.getElementById('drillFb');
     fb.innerHTML =
-      '<p style="font-weight:800;margin:0 0 6px;color:' + (correct ? 'var(--good)' : 'var(--coral)') + '">' +
+      '<p role="status" style="font-weight:800;margin:0 0 6px;color:' + (correct ? 'var(--good-text)' : 'var(--bad-text)') + '">' +
         (correct ? 'Correct.' : 'Not quite.') + '</p>' +
       '<p style="font-size:13.5px;line-height:1.6;margin:0 0 12px;color:var(--muted)">' + esc(q.explain || '') + '</p>' +
       '<button type="button" class="btn-press" id="drillNext">Next</button>';
-    document.getElementById('drillNext').addEventListener('click', function(){ at++; render(); });
+    var next = document.getElementById('drillNext');
+    next.addEventListener('click', function(){ at++; render(); });
+    next.focus({ preventScroll: true });
   }
 
   mount.innerHTML = '<h2>Drill</h2><p class="section-sub">Loading the question bank&hellip;</p>';
