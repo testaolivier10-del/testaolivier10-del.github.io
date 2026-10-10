@@ -1004,3 +1004,21 @@ confirm it.
     equatorial; no reaction temperatures are given. The Claisen rearrangement is "effectively
     irreversible" because a C=O replaces a C=C.
   - Woodward and Hoffmann, 1965; Hoffmann shared the 1981 Nobel Prize in Chemistry (with Fukui).
+
+## Tools upgrade (2026-10, U-Ochem)
+
+### tools-u-ochem: positions the upgraded tools take
+- **Status:** pending review. Full list with file pointers in `docs/tools-upgrade-notes/ochem.md` under
+  "For accuracy review".
+- **Positions taken:**
+  - Reaction Predictor meter: each factor's existing "argues for" line is drawn as a pull on SN1/SN2/E1/E2
+    (full weight, half for "mildly"/"either", quarter for room temperature's "slightly"); the product
+    shares are the existing rounded bands. A pathway the substrate rules out (no beta H, no backside, no
+    cation) is drawn struck through with that reason. The E2 arrows take the H from the most substituted
+    beta carbon, or the least with a bulky base (Zaitsev/Hofmann as the tool already states).
+  - Resonance overlay: the charge shown is a plain average over the forms found, said so on screen; real
+    weighting favors major contributors, and the tool has no energies to weight them by.
+  - Conformations: the A-values and the 1.6 kcal/mol extra 1,3-diaxial term are the tool's existing table,
+    now also drawn as a bar; the challenge relies on them to say which chair is more stable.
+  - 3D viewer "Predict the shape" asks a bond angle only where the model's geometry is the textbook value
+    (CH₄ 109.5, NH₃ 107, H₂O 104.5, BF₃/ethene/formaldehyde/CH₃⁺ 120, linear 180, PCl₅/SF₆ smallest 90).
