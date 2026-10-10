@@ -2,6 +2,16 @@
    tool opener on phones, the item picker (.kp) and the Keep going strip
    (.kg). Theme tokens only, so dark mode follows the theme. */
 
+/* Tool pages scroll long interactive content under the sticky site chrome.
+   The chrome's translucent background (theme --header-bg, 82%) let the
+   picker, titles and figures show through it, so text read doubled; on tool
+   pages both rows are opaque. */
+#site-header,.course-nav{background:var(--paper);}
+
+/* The opener is a title, not a banner: the name and one sentence. */
+.anp-tool-hero{padding:18px 26px;}
+.anp-tool-hero h1{font-size:clamp(26px,3vw,34px);margin:0 0 6px;max-width:none;}
+.anp-tool-hero .lede{margin:0;font-size:16px;max-width:60ch;}
 
 /* ---- picker ---- */
 .kp{margin:12px 0 14px;background:var(--white);border-radius:16px;box-shadow:var(--lift-sm);}
