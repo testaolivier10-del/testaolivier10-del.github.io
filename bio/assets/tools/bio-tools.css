@@ -494,4 +494,15 @@
 .ci-off{fill:var(--bad-text);}
 .ci-verdict{display:grid;gap:10px;}
 .ci-more{padding:0 12px;}
+/* Water potential: two compartments on one ψ scale */
+.wp-tank{fill:var(--paper);stroke:var(--bio-shape);stroke-width:2;}
+.wp-tank.cell{stroke:var(--bio-memb);stroke-width:3;}
+.wp-water{fill:var(--bio-eff-fill);}
+.wp-surf{stroke:var(--bio-deo2);stroke-width:3;}
+.wp-surf.mine{stroke-dasharray:6 4;}
+.wp-v{fill:var(--ink);font:900 12.5px var(--font-mono);}
+.wp-arrow{stroke:var(--bio-deo2);stroke-width:4;}
+.wp-head{fill:var(--bio-deo2);}
+.wp-arrow.mine{stroke:var(--muted);stroke-dasharray:6 4;}
+.wp-head.mine{fill:var(--muted);}
 /* ===== Skills tools: end ===== */
