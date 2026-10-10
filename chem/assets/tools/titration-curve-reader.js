@@ -33,7 +33,8 @@
 
   T.mount('titration-curve-reader', function(app, data){
     var M = window.ApChemMath;
-    T.modes(app, { slug: 'titration-curve-reader', labels: ['Explore the titration', 'Test yourself'], explore: function(host){ explore(host, data, M); }, quiz: function(host){ quiz(host, data, M); } });
+    var ex = null;
+    T.modes(app, { slug: 'titration-curve-reader', labels: ['Explore the titration', 'Test yourself'], explore: function(host){ ex = explore(host, data, M); }, quiz: function(host){ quiz(host, data, M); }, onShow: function(m){ if(m !== 'explore' && ex) ex.stop(); } });
   });
 
   /* ------------------------------------------------------------ explore */
@@ -203,6 +204,7 @@
       return { head: W[0], text: W[1] + ' <span class="tx-at">' + at + '</span>', short: (W[0] + ' ' + W[1]).replace(/<[^>]+>/g, '') };
     }
     build();
+    return { stop: stop };
   }
 
   /* --------------------------------------------------------------- quiz */
