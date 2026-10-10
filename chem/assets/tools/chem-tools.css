@@ -47,7 +47,19 @@
 .bt-stage{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;}
 @media (min-width:900px){.bt-stage.two{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);}}
 .bt-fig svg{width:100%;height:auto;max-height:340px;display:block;}
+/* Publication-style plots (ApChemTools.plot): a quiet grid, a firm axis
+   with outward ticks, round-jointed 3px series and haloed points. */
 .bt-plot{max-width:100%;}
+.bt-plot .grid{stroke:var(--line);stroke-width:1;}
+.bt-plot .axis{stroke:var(--ink);stroke-width:1.6;stroke-linecap:square;}
+.bt-plot .atick{stroke:var(--ink);stroke-width:1.4;}
+.bt-plot .tick{fill:var(--muted);font:700 11.5px var(--font-ui);font-variant-numeric:tabular-nums;}
+.bt-plot .lbl{fill:var(--ink);font:800 13px var(--font-ui);}
+.bt-plot .series{stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
+.bt-plot .pt{stroke:var(--white);stroke-width:2.2;}
+.bt-plot .pt.s2{filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.25));}
+.bt-plot .area{stroke:none;opacity:.12;}
+.bt-plot .area.s1{fill:var(--chem-s1);}
 .bt-plot .zero{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 3;}
 .bt-plot .vline{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 4;}
 .bt-plot .series.dashed{stroke-dasharray:7 5;stroke-width:2;}
@@ -361,13 +373,23 @@
    second cue only. Fills are light in both themes so the black symbol reads. */
 .pt-box{width:100%;height:auto;display:block;}
 .pt-frame{fill:var(--paper);stroke:var(--line);stroke-width:2;}
-.pt-atom circle{stroke:#1d1d1f;stroke-width:1.2;}
-.pt-atom text{fill:#111;font-family:var(--font-ui);font-weight:800;pointer-events:none;}
-.pt-atom.pa circle{fill:#9CC8F0;} .pt-atom.pb circle{fill:#F4B58A;}
-.pt-atom.ph circle{fill:#FFFFFF;} .pt-atom.po circle{fill:#F2A0A0;}
-.pt-atom.pn circle{fill:#B6B8F2;} .pt-atom.pcl circle{fill:#A8E0A0;} .pt-atom.pc circle{fill:#C9C9C9;}
-.pt-atom.pcat circle{fill:#F7D774;} .pt-atom.pani circle{fill:#B9E3E8;}
-:root[data-theme="dark"] .pt-atom circle{stroke:#0b0b0c;}
+/* Space-filling atoms (ApChemMath.particles): CPK-style element colors
+   (H white, O red, N blue, Cl green, C charcoal; A and B a clear blue and
+   amber), a crescent of shade on the lower right and a highlight on the
+   upper left so each reads as a sphere. Every atom keeps its symbol. */
+.pt-atom circle{stroke:rgba(20,28,30,.55);stroke-width:.9;}
+.pt-atom .pt-shade{fill:#0b1a24;opacity:.2;pointer-events:none;}
+.pt-atom .pt-hi{fill:#fff;opacity:.75;pointer-events:none;}
+.pt-atom text{fill:#10161a;font-family:var(--font-ui);font-weight:800;pointer-events:none;}
+.pt-atom.pa circle{fill:#7DB8EE;} .pt-atom.pb circle{fill:#F2A65E;}
+.pt-atom.ph circle{fill:#F4F6F8;} .pt-atom.po circle{fill:#EE5A4F;}
+.pt-atom.pn circle{fill:#5677E0;} .pt-atom.pcl circle{fill:#6CCB5F;} .pt-atom.pc circle{fill:#5A6268;}
+.pt-atom.pcat circle{fill:#F5CF4E;} .pt-atom.pani circle{fill:#8FD6DF;}
+.pt-atom.pi circle{fill:#8E4FB8;} .pt-atom.ps circle{fill:#F1D348;} .pt-atom.pp circle{fill:#F08A3C;}
+.pt-atom.po text,.pt-atom.pn text,.pt-atom.pc text,.pt-atom.pi text{fill:#fff;}
+.pt-atom.ph .pt-shade{opacity:.13;}
+:root[data-theme="dark"] .pt-atom circle{stroke:rgba(0,0,0,.6);}
+:root[data-theme="dark"] .pt-atom .pt-shade{opacity:.28;}
 
 /* Page frame (ApChemTools.frame): the problem first. The picker is one row,
    the intro and how-it-works fold into "About this ..." below the problem,
@@ -402,39 +424,92 @@
 .bt-keep-terms a{flex-direction:row;align-items:center;}
 @media print{.bt-keep,.bt-about{display:none;}}
 
-/* Live beaker (live-beaker.js, ApChemBeaker). Token colors, so dark mode
-   follows the theme; particles move by CSS transition, which the site-wide
-   reduced-motion rule cuts to nothing (and the script skips the fades). */
+/* Live beaker (live-beaker.js, ApChemBeaker). Lab glassware drawn in token
+   colors: a pale glass body with a crisp edge and two highlight streaks, the
+   liquid with its meniscus, printed graduations. Dark mode gets its own glass
+   and liquid tones (not an inversion). Particles move by CSS transition, which
+   the site-wide reduced-motion rule cuts to nothing (the script skips fades). */
+.lb{--lb-glass:#6F8A99;--lb-glass-fill:rgba(214,234,244,.35);--lb-water:rgba(150,200,230,.32);--lb-shine:#fff;
+  --lb-steel:#8C979E;--lb-steel-d:#5E6970;--lb-stopper:#9AA5AB;--lb-grad:#41535D;}
+:root[data-theme="dark"] .lb{--lb-glass:#9FB9C6;--lb-glass-fill:rgba(160,200,220,.07);--lb-water:rgba(110,170,215,.18);--lb-shine:#d9f0ff;
+  --lb-steel:#6E7A81;--lb-steel-d:#4D575D;--lb-stopper:#56636A;--lb-grad:#B9CBD3;}
 .lb-fig{margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-items:start;}
 @media (min-width:560px){.lb-fig{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);}.lb-desc{grid-column:1/-1;}}
-.lb-svg{width:100%;max-width:340px;height:auto;display:block;margin:0 auto;}
-.lb-glass{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;opacity:.75;}
-.lb-liquid{fill:var(--chem-eff-fill);opacity:.7;}
+.lb-svg{width:100%;max-width:340px;height:auto;display:block;margin:0 auto;overflow:visible;}
+.lb-glass-fill{fill:var(--lb-glass-fill);}
+.lb-glass{fill:none;stroke:var(--lb-glass);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;}
+.lb-glass-edge{fill:none;stroke:var(--lb-glass);stroke-width:2.6;stroke-linecap:round;}
+.lb-shine{fill:none;stroke:var(--lb-shine);stroke-width:4;stroke-linecap:round;opacity:.65;}
+.lb-shine2{stroke-width:2.5;opacity:.45;}
+.lb-water{fill:var(--lb-water);}
+.lb-liquid{fill:var(--chem-eff-fill);opacity:.55;}
+.lb-meniscus{fill:none;stroke:var(--lb-glass);stroke-width:1.6;opacity:.8;}
+.lb-gas{fill:var(--chem-eff-fill);opacity:.28;}
+.lb-stopper{fill:var(--lb-stopper);}
+.lb-grad path{stroke:var(--lb-grad);stroke-width:1.6;opacity:.7;}
+.lb-grad text{fill:var(--lb-grad);font:700 10px var(--font-ui);opacity:.8;}
+.lb-grad .lb-cap{font-size:10px;}
 .lb-ticks path{stroke:var(--ink);stroke-width:2;opacity:.45;}
+/* The titration flask view: ring stand, burette, Erlenmeyer, magnifier. */
+.lb-stand{fill:var(--lb-steel);}
+.lb-clamp{fill:var(--lb-steel-d);}
+.lb-titrant{fill:var(--lb-water);stroke:none;transition:y .3s linear,height .3s linear;}
+.lb-bgrad path{stroke-width:1;}
+.lb-cock{fill:var(--lb-steel-d);} .lb-cock-h{fill:var(--lb-steel);}
+.lb-drop{fill:var(--lb-glass);opacity:0;}
+.lb-drop.is-dripping{animation:lb-drip .55s ease-in 1;}
+@keyframes lb-drip{0%{opacity:.9;transform:translateY(0);}85%{opacity:.9;}100%{opacity:0;transform:translateY(80px);}}
+.lb-lip{fill:var(--lb-glass-fill);}
+.lb-lead{stroke:var(--lb-glass);stroke-width:1.4;stroke-dasharray:4 4;fill:none;opacity:.7;}
+.lb-loupe{fill:none;stroke:var(--ink);stroke-width:2;}
+.lb-lens-bg{fill:var(--white);}
+.lb-lens-tint{opacity:.42;}
+.lb-lens-ring{fill:none;stroke:var(--lb-glass);stroke-width:5;}
+.lb-lens-shine{fill:none;stroke:var(--lb-shine);stroke-width:5;stroke-linecap:round;opacity:.6;}
+.lb-lens-cap{font:800 13px var(--font-ui);fill:var(--muted);}
 .lb-p{transition:transform .6s cubic-bezier(.3,.7,.2,1),opacity .45s ease;}
 .lb-p.is-in,.lb-p.is-out{opacity:0;}
-.lb-disc circle{stroke:var(--ink);stroke-width:1.2;}
-.lb-disc text{fill:#111;font-family:var(--font-ui);font-weight:800;}
-.lb-t1 circle{fill:#9CC8F0;} .lb-t2 circle{fill:#F4B58A;} .lb-t3 circle{fill:#A8E0A0;}
-.lb-t4 circle{fill:#F7D774;} .lb-t5 circle{fill:#B6B8F2;} .lb-t6 circle{fill:#F2A0A0;}
-.lb-side{display:grid;gap:10px;align-content:start;}
-.lb-read{display:grid;gap:8px;}
-.lb-big{margin:0;font:800 16px var(--font-ui);color:var(--ink);}
-.lb-big b{font-size:24px;font-variant-numeric:tabular-nums;}
-.lb-big span{color:var(--muted);font-size:14px;}
-.lb-scale{position:relative;height:40px;}
-.lb-scale-bar{position:absolute;left:0;right:0;top:6px;height:12px;border-radius:6px;background:linear-gradient(90deg,#E5484D,#F2A33A,#E9D84A,#57B65F,#3F8FD8,#6D5BD0);}
-.lb-qk .lb-scale-bar{background:var(--line);}
-.lb-mark{position:absolute;top:0;width:4px;height:24px;margin-left:-2px;border-radius:2px;background:var(--ink);box-shadow:0 0 0 2px var(--white);transition:left .6s cubic-bezier(.3,.7,.2,1);}
-.lb-k{position:absolute;top:2px;width:2px;height:20px;margin-left:-1px;background:var(--cink);}
-.lb-scale-l,.lb-scale-m,.lb-scale-r{position:absolute;top:24px;font:700 12px var(--font-ui);color:var(--muted);}
-.lb-scale-l{left:0;} .lb-scale-r{right:0;} .lb-scale-m{left:50%;transform:translateX(-50%);}
+.lb-disc circle{stroke:rgba(20,28,30,.55);stroke-width:.9;}
+.lb-disc .lb-shade{fill:#0b1a24;opacity:.2;}
+.lb-disc .lb-hi{fill:#fff;opacity:.75;}
+.lb-disc text{fill:#10161a;font-family:var(--font-ui);font-weight:800;}
+.lb-t1 circle{fill:#7DB8EE;} .lb-t2 circle{fill:#F2A65E;} .lb-t3 circle{fill:#7CCB86;}
+.lb-t4 circle{fill:#F5CF4E;} .lb-t5 circle{fill:#9C95EC;} .lb-t6 circle{fill:#EE8B8B;}
+.lb-side{display:grid;gap:12px;align-content:start;}
+.lb-read{display:grid;gap:10px;}
+/* The meter: an instrument display, a dark window with a lit readout. */
+.lb-meter{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px;padding:10px 14px;border-radius:14px;background:#14211F;color:#E9F6F2;
+  box-shadow:inset 0 0 0 2px #2C3E3A,inset 0 6px 14px rgba(0,0,0,.35),0 1px 0 var(--line);width:max-content;max-width:100%;}
+.lb-meter-k{font:800 14px var(--font-ui);color:#9FBDB5;}
+.lb-meter-v{font:700 28px/1 var(--font-mono);font-variant-numeric:tabular-nums;letter-spacing:.02em;color:#7FF0CD;}
+.lb-meter-sign{font:900 20px var(--font-mono);color:#E9F6F2;}
+.lb-meter-w{margin-left:4px;padding:2px 8px;border-radius:999px;font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;background:#2C3E3A;color:#E9F6F2;align-self:center;}
+.lb-w-acidic{background:#5B2422;color:#FFD4CF;} .lb-w-basic{background:#2B2F60;color:#D6D9FF;} .lb-w-neutral{background:#22482F;color:#CFF5D9;}
+.lb-meter-qk .lb-meter-v{font-size:22px;}
+.lb-scale{position:relative;height:46px;margin:0 6px;}
+.lb-scale-bar{position:absolute;left:0;right:0;top:8px;height:12px;border-radius:6px;background:linear-gradient(90deg,#D93A3F,#EE7D2F,#EFC93E,#7DC15A,#2E9E8F,#3B78D0,#6B4FC8);box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);}
+.lb-tks i{position:absolute;top:21px;width:1px;height:4px;margin-left:-.5px;background:var(--muted);opacity:.6;}
+.lb-tks i.lb-tk7{height:7px;width:2px;margin-left:-1px;opacity:1;}
+.lb-tks em{position:absolute;top:28px;transform:translateX(-50%);font:700 10.5px var(--font-ui);font-style:normal;color:var(--muted);white-space:nowrap;}
+.lb-qk .lb-scale-bar{background:linear-gradient(90deg,var(--chem-s2) 0,var(--line) 46%,var(--line) 54%,var(--chem-s3) 100%);opacity:.75;}
+.lb-mark{position:absolute;top:2px;width:14px;height:24px;margin-left:-7px;transition:left .6s cubic-bezier(.3,.7,.2,1);}
+.lb-mark::before{content:"";position:absolute;left:3px;top:0;width:8px;height:24px;border-radius:4px;background:var(--ink);box-shadow:0 0 0 2px var(--white),0 2px 4px rgba(0,0,0,.25);}
+.lb-mark b,.lb-k b{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:1px;font:900 11px var(--font-ui);color:var(--ink);}
+.lb-qk .lb-mark{top:-2px;height:28px;}
+.lb-qk .lb-mark::before{top:4px;height:24px;}
+.lb-qk{margin-top:14px;}
+.lb-k{position:absolute;top:2px;width:3px;height:24px;margin-left:-1.5px;background:var(--cink);border-radius:2px;}
+.lb-k b{color:var(--cink);bottom:auto;top:100%;margin:5px 0 0;}
+.lb-tks em.lb-e0{transform:none;} .lb-tks em.lb-e4{transform:translateX(-100%);}
+.lb-scale-l,.lb-scale-m,.lb-scale-r{position:absolute;top:28px;font:700 11.5px var(--font-ui);color:var(--muted);}
+.lb-scale-l{left:-6px;} .lb-scale-r{right:-6px;} .lb-scale-m{left:50%;transform:translateX(-50%);}
 .lb-dir{margin:0;font:900 14px var(--font-ui);color:var(--cink);}
 .lb-legend{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px;}
 .lb-legend li{display:flex;align-items:center;gap:6px;font:800 14px var(--font-ui);}
 .lb-legend b{font-variant-numeric:tabular-nums;}
-.lb-key{width:28px;height:28px;}
+.lb-key{width:30px;height:30px;}
 .lb-desc{font:700 13px/1.45 var(--font-ui);color:var(--muted);}
+@media (prefers-reduced-motion:reduce){.lb-drop.is-dripping{animation:none;}.lb-titrant{transition:none;}}
 
 /* Explore | Test yourself (ApChemTools.modes) */
 .bt-modebar{display:flex;gap:6px;padding:4px;border-radius:14px;background:var(--paper);border:var(--bw,2px) solid var(--line);width:max-content;max-width:100%;}
@@ -455,17 +530,20 @@
 .tx-stage{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;}
 .tx-graph{margin:0 -6px;}
 .tx-plot svg{width:100%;height:auto;display:block;cursor:crosshair;}
-.tx-band{fill:var(--cink);opacity:.09;}
+.tx-band{fill:var(--cink);opacity:.1;}
+.tx-band-e{stroke:var(--cink);stroke-width:1;stroke-dasharray:3 3;opacity:.45;}
+.tx-eqv{stroke:var(--muted);stroke-width:1.2;stroke-dasharray:4 4;}
 .tx-band-t{font:800 11px var(--font-ui);fill:var(--muted);}
-.tx-lm{font:900 12px var(--font-ui);fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.tx-lm{font:900 12px var(--font-ui);fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
 .tx-ctl .bt-slider label{font-size:13px;}
 .tx-btns{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;}
 .tx-btns .bt-btn{padding:6px 4px;font-size:13px;}
 .tx-run[aria-pressed="true"]{background:var(--ctint);border-color:var(--cink);}
-.tx-beaker .lb-fig{grid-template-columns:minmax(0,.9fr) minmax(0,1fr);align-items:center;}
-.tx-beaker .lb-svg{max-width:220px;}
+.tx-beaker .lb-fig{grid-template-columns:minmax(0,1fr);align-items:center;}
+.tx-beaker .lb-svg{max-width:420px;}
 .tx-beaker .lb-desc{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
 .tx-beaker .lb-liquid{transition:fill .35s ease;opacity:1;}
+.tx-beaker .lb-lens-tint{opacity:.5;}
 .tx-beaker .lb-legend li{font-size:13px;}
 .tx-meaning{min-height:4.5em;}
 .tx-where{margin:0;padding:10px 14px;border-radius:12px;background:var(--ctint);border-left:4px solid var(--cink);font:700 15px/1.5 var(--font-ui);}
@@ -477,8 +555,7 @@
 @media (min-width:900px){
   .tx-stage{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-areas:"g b" "c b";column-gap:20px;}
   .tx-graph{grid-area:g;} .tx-ctl{grid-area:c;} .tx-beaker{grid-area:b;}
-  .tx-beaker .lb-fig{grid-template-columns:minmax(0,1fr);}
-  .tx-beaker .lb-svg{max-width:300px;}
+  .tx-beaker .lb-svg{max-width:400px;}
 }
 @media (prefers-reduced-motion:reduce){.tx-beaker .lb-liquid{transition:none;}}
 
@@ -519,8 +596,8 @@
 .qk-eq{margin:0;font-size:16px;}
 .qk-stage{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;}
 .qk-beaker .lb-fig{grid-template-columns:minmax(0,1fr);}
-.qk-beaker .lb-svg{max-width:200px;}
-@media (max-width:899px){.qk-beaker .lb-fig{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;}.qk-beaker .lb-big b{font-size:19px;}}
+.qk-beaker .lb-svg{max-width:240px;}
+@media (max-width:899px){.qk-beaker .lb-fig{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;}.qk-beaker .lb-meter{padding:8px 10px;}.qk-beaker .lb-meter-v{font-size:17px;}.qk-beaker .lb-meter-sign{font-size:15px;}.qk-beaker .lb-dir{font-size:13px;}}
 .qk-beaker .lb-desc,.ic-beaker .lb-desc{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
 .qk-side{display:grid;gap:10px;align-content:start;}
 .qk-amts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;}
@@ -537,19 +614,22 @@
 .ic-live{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:8px;align-items:start;}
 .ic-bars{margin:0;}
 .ic-svg{width:100%;height:auto;display:block;}
-.ic-svg .ic-bi{fill:var(--chem-s1);opacity:.35;}
+.ic-svg .ic-bi{fill:var(--chem-s1);opacity:.3;}
 .ic-svg .ic-be{fill:var(--chem-s1);}
+.ic-svg .ic-bi,.ic-svg .ic-be{rx:4px;}
+.ic-svg .grid{stroke:var(--line);}
+.ic-svg .tick{font:700 11px var(--font-ui);font-variant-numeric:tabular-nums;}
 .ic-svg .is-typed{opacity:.55;stroke:var(--chem-s1);stroke-width:1.5;stroke-dasharray:4 3;}
 .ic-svg .ic-bi.is-typed{opacity:.25;}
 .ic-svg .ic-arrow{font:900 12px var(--font-ui);}
 .ic-svg .ic-arrow.up{fill:var(--chem-s3);} .ic-svg .ic-arrow.down{fill:var(--chem-s2);}
 .ic-svg rect{transition:y .35s ease,height .35s ease;}
 .ic-beaker .lb-fig{grid-template-columns:minmax(0,1fr);}
-.ic-beaker .lb-svg{max-width:170px;}
+.ic-beaker .lb-svg{max-width:230px;}
 .ic-beaker .lb-legend{display:none;}
 .ic-beaker .lb-big{font-size:13px;} .ic-beaker .lb-big b{font-size:16px;}
 .ic-cap{margin-top:4px;}
-@media (max-width:520px){.ic-live{grid-template-columns:minmax(0,1fr);}.ic-beaker .lb-fig{grid-template-columns:minmax(0,.8fr) minmax(0,1fr);align-items:center;}}
+@media (max-width:520px){.ic-live{grid-template-columns:minmax(0,1fr);}.ic-beaker .lb-fig{grid-template-columns:minmax(0,1fr);}.ic-beaker .lb-svg{max-width:220px;}}
 @media (min-width:900px){.ic-wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;}}
 @media (prefers-reduced-motion:reduce){.ic-svg rect{transition:none;}}
 .ic-ex{display:grid;gap:12px;}
@@ -612,8 +692,10 @@
 .us-num,.us-den{display:flex;flex-direction:column;align-items:center;gap:4px;}
 .us-vals{font:700 14px var(--font-mono);color:var(--muted);}
 .us-chips{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;}
-.us-chip{display:inline-block;padding:3px 9px;border-radius:999px;background:var(--ctint);color:var(--ink);font:800 14px var(--font-mono);transition:opacity .3s ease,background .3s ease;}
-.us-chip.is-cancel{text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--chem-s2);opacity:.55;background:var(--paper);}
+.us-chip{position:relative;display:inline-block;padding:3px 10px;border-radius:8px;background:var(--white);color:var(--cink);border:1.5px solid color-mix(in srgb,var(--cink) 45%,transparent);box-shadow:0 1px 0 color-mix(in srgb,var(--cink) 25%,transparent);font:800 14px var(--font-mono);transition:opacity .3s ease,background .3s ease,color .3s ease;}
+.us-chip.is-cancel{--pc:var(--chem-s2);color:var(--muted);border-color:color-mix(in srgb,var(--pc) 55%,transparent);background:color-mix(in srgb,var(--pc) 9%,var(--white));box-shadow:none;}
+.us-chip.is-cancel::after{content:"";position:absolute;left:4px;right:4px;top:50%;height:2.5px;margin-top:-1px;border-radius:2px;background:var(--pc);transform:rotate(-24deg);}
+.us-p2{--pc:var(--chem-s1)!important;} .us-p3{--pc:var(--chem-s3)!important;} .us-p4{--pc:var(--chem-s4)!important;}
 .us-chip.is-one{background:transparent;}
 .us-bar{height:2px;background:var(--ink);}
 .us-ok{border-left-color:var(--chem-s3);}
