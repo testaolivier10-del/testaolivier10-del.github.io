@@ -422,7 +422,7 @@
     var n = p.steps.length;
     var cur = shuffle(p.steps.map(function(s, i){ return i; }));
     if(cur.every(function(v, k){ return v === k; })) cur.reverse();
-    panel.innerHTML = '<p class="pw-task">Put the steps in order, first at the top. Use the arrow buttons to move a step.' + (p.cycle ? ' This pathway is a cycle: start with the step the scenario gives you.' : '') + '</p>' +
+    panel.innerHTML = '<p class="pw-task">Put the steps in order, first at the top. Drag a step by its grip, or use its arrow buttons.' + (p.cycle ? ' This pathway is a cycle: start with the step the scenario gives you.' : '') + '</p>' +
       '<ol class="anp-order pw-order"></ol>' +
       '<div class="pw-actions"><button type="button" class="btn-press sm pw-check">Check order</button></div>' +
       '<div class="pw-result" aria-live="polite"></div>';
@@ -433,7 +433,7 @@
         var s = p.steps[i];
         var cls = checked ? (i === k ? 'pos-ok' : 'pos-no') : '';
         var mark = checked ? (i === k ? '<span class="pw-pos ok" aria-label="right position">✓</span>' : '<span class="pw-pos no">belongs at ' + (i + 1) + '</span>') : '';
-        return '<li class="' + cls + '"><span class="pw-n" aria-hidden="true">' + (k + 1) + '</span><span class="anp-order-text">' + html(s.text) + mark + '</span>' +
+        return '<li class="' + cls + '" data-pos="' + k + '">' + (checked ? '' : '<span class="pw-grip" aria-hidden="true" title="Drag to move"></span>') + '<span class="pw-n" aria-hidden="true">' + (k + 1) + '</span><span class="anp-order-text">' + html(s.text) + mark + '</span>' +
           (checked ? '' : '<span class="pw-move"><button type="button" data-k="' + k + '" data-d="-1" aria-label="Move up: ' + esc(plain(s.label)) + '"' + (k === 0 ? ' disabled' : '') + '>↑</button>' +
           '<button type="button" data-k="' + k + '" data-d="1" aria-label="Move down: ' + esc(plain(s.label)) + '"' + (k === n - 1 ? ' disabled' : '') + '>↓</button></span>') + '</li>';
       }).join('');
@@ -445,10 +445,59 @@
           paint(j, d);
         });
       });
+      dragSort();
       if(focusK !== undefined){
         var again = list.querySelector('button[data-k="' + focusK + '"][data-d="' + focusD + '"]:not([disabled])') || list.querySelector('button[data-k="' + focusK + '"]:not([disabled])');
         if(again) again.focus();
       }
+    }
+    /* Drag a step by its body to a new place (touch or mouse); the arrow
+       buttons stay for keyboard and fine adjustment. The row follows the
+       pointer and the others close up around it, then the order is redrawn. */
+    function dragSort(){
+      list.querySelectorAll('li[data-pos]').forEach(function(li){
+        var from = +li.getAttribute('data-pos'), y0 = 0, dragging = false, pid = null, rows = null, to = from;
+        li.addEventListener('pointerdown', function(e){
+          if(e.button > 0 || e.target.closest('button')) return;
+          /* On touch only the grip starts a drag, so swiping a step still scrolls the page. */
+          if(e.pointerType !== 'mouse' && !e.target.closest('.pw-grip')) return;
+          pid = e.pointerId; y0 = e.clientY; dragging = false; to = from;
+        });
+        li.addEventListener('pointermove', function(e){
+          if(pid !== e.pointerId) return;
+          var dy = e.clientY - y0;
+          if(!dragging){
+            if(Math.abs(dy) < 8) return;
+            dragging = true;
+            try{ li.setPointerCapture(pid); }catch(err){}
+            rows = Array.prototype.map.call(list.children, function(r){ var b = r.getBoundingClientRect(); return { el: r, mid: b.top + b.height / 2, h: b.height }; });
+            li.classList.add('is-dragging');
+          }
+          e.preventDefault();
+          li.style.transform = 'translateY(' + dy + 'px)';
+          var y = rows[from].mid + dy, h = rows[from].h + 8;
+          to = from;
+          rows.forEach(function(r, k){
+            if(k === from) return;
+            var shift = 0;
+            if(k > from && y > r.mid){ shift = -h; to = Math.max(to, k); }
+            if(k < from && y < r.mid){ shift = h; to = Math.min(to, k); }
+            r.el.style.transform = shift ? 'translateY(' + shift + 'px)' : '';
+          });
+        });
+        function end(e){
+          if(pid !== e.pointerId) return;
+          pid = null;
+          if(!dragging) return;
+          dragging = false;
+          Array.prototype.forEach.call(list.children, function(r){ r.style.transform = ''; });
+          li.classList.remove('is-dragging');
+          if(to !== from){ var v = cur.splice(from, 1)[0]; cur.splice(to, 0, v); }
+          paint();
+        }
+        li.addEventListener('pointerup', end);
+        li.addEventListener('pointercancel', end);
+      });
     }
     paint();
     panel.querySelector('.pw-check').addEventListener('click', function(){
