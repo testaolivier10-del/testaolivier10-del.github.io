@@ -462,5 +462,12 @@
     T.questions(app.querySelector('.bt-qs'), data.questions, data.stimuli, SLUG);
     if(data.frq) T.frq(app, data.frq, SLUG);
     if(/^#make/.test(location.hash)) setMode('make');
-  });
+  }, {
+    // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
+    studio: { sim: true, modeLabels: { make: 'Challenge' }, stage: ['.mei-stagefig'], live: '.mei-steptext',
+      why: ['.mei-stephead', '.mei-taphint'], dock: ['.os-chal', '.mei-stepper', '@primary'], primarySel: ':scope > :nth-child(2), :scope > :nth-child(3)',
+      hint: { target: '[data-a=next]', text: 'Press Next step' },
+      caption: function(g){ var t = g.$('.mei-steptitle'); return (t && t.textContent ? '<b>' + T.esc(t.textContent) + '.</b> ' : '') + T.esc(T.firstSentence(g.live)); },
+      pills: function(g){ return [{ k: 'Chromosomes per cell', html: g.ro(1), tone: 'readout' }]; },
+      pillsR: function(g){ return [{ html: 'Gametes ' + g.ro(3), tone: 'ghost' }]; } } });
 })();
