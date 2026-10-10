@@ -77,6 +77,53 @@
     window.OchemStudio = studio;
   }
 
+  /* Small helpers the ochem tools share when they arrange themselves in the
+     studio (each tool's "Tool Studio" block uses them).
+       seg(seg, attr)    adopt the tool's own .tseg as the mode switch; its
+                         buttons' [attr] values are the mode names, and a
+                         click switches the studio's mode-only parts. Returns
+                         a function giving the mode now showing.
+       builder(box)      a mounted molecule builder made calm: the type row
+                         and its quick picks first, the canvas, palette and
+                         atom tools behind "Draw it yourself".
+       scrollChips(el)   every .tchips row inside el becomes one scrolling
+                         row on a phone; group labels become .ls-lbl. */
+  window.OchemStudioKit = {
+    seg: function(seg, attr){
+      if(!studio || !seg) return function(){ return null; };
+      function now(){ var b = seg.querySelector('button.on') || seg.querySelector('button'); return b ? b.getAttribute(attr) : null; }
+      seg.classList.add('ls-seg');
+      studio.modes({ el: seg, value: now() });
+      seg.addEventListener('click', function(e){
+        if(e.target.closest('button')) studio.mode(now());
+      });
+      return now;
+    },
+    builder: function(box){
+      var mb = box && box.querySelector('.mb');
+      if(!mb || mb.getAttribute('data-ls')) return;
+      mb.setAttribute('data-ls', '1');
+      var d = document.createElement('details');
+      d.className = 'tool-more mb-ls-draw';
+      d.innerHTML = '<summary>Draw it yourself</summary>';
+      ['.mb__canvaswrap', '.mb__tools'].forEach(function(s){ var e = mb.querySelector(s); if(e) d.appendChild(e); });
+      // The checker's report goes in there too; a structure it cannot read
+      // opens the drawer, so the reason is never hidden.
+      var st = mb.querySelector('.mb__status');
+      mb.appendChild(d);
+      if(st){
+        d.appendChild(st);
+        if(window.MutationObserver) new MutationObserver(function(){ if(st.querySelector('.tnote--bad')) d.open = true; }).observe(st, { childList: true, subtree: true });
+      }
+      var q = mb.querySelector('.mb__quick'); if(q) q.classList.add('ls-scroll');
+    },
+    scrollChips: function(el){
+      if(!el) return;
+      el.querySelectorAll('.tchips').forEach(function(c){ c.classList.add('ls-scroll'); });
+      el.querySelectorAll('.ap-group__label').forEach(function(l){ l.classList.add('ls-lbl'); });
+    }
+  };
+
   if(G && !G.toolFree(slug) && studio){
     // The gate replaces the whole studio and gives the page its chrome back.
     G.lock({

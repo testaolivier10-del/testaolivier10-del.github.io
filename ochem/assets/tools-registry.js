@@ -64,7 +64,8 @@
       blurb: 'Draw curved arrows on a molecule and see the product they make.',
       teaches: 'Curved arrows, formal charge, octets',
       topic: ['curved-arrows', 'sn2', 'formal-charge'],
-      terms: ['curved-arrow', 'formal-charge', 'octet-rule']
+      terms: ['curved-arrow', 'formal-charge', 'octet-rule'],
+      studio: true
     },
     {
       slug: 'resonance',
