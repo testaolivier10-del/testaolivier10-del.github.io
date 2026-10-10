@@ -121,7 +121,8 @@
 @media (max-width:600px){.pw-chips{display:none;}.pw-chsel{display:flex;}}
 
 /* Explore and Quiz (tools upgrade 2026-10) */
-.gr-modes{display:flex;gap:6px;margin:0 0 12px;border-bottom:2px solid var(--line);}
+.gr-modes{display:flex;gap:6px;margin:0 0 12px;border-bottom:2px solid var(--line);}   /* overridden by .kt-seg */
+.gr-view > .kt-about{margin:0 0 10px;}
 .gr-mode{padding:9px 16px;border:0;border-bottom:3px solid transparent;margin-bottom:-2px;background:none;color:var(--ink);font:800 15px var(--font-ui);cursor:pointer;border-radius:10px 10px 0 0;}
 .gr-mode:hover{color:var(--ink);}
 .gr-mode[aria-selected="true"]{color:var(--cink);border-bottom-color:var(--cink);background:var(--ctint);}

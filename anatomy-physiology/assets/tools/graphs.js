@@ -478,14 +478,15 @@
       '<div class="pw-pickhost"></div>' +
       '<h2 class="pw-title" tabindex="-1">' + esc(g.title) + '</h2>' +
       '<p class="anp-small pw-meta">Topic: ' + topicLink(g.topic) + ' · ' + g.questions.length + ' questions</p>' +
-      '<p class="pw-intro">' + html(g.intro) + '</p>' +
-      '<div class="gr-modes" role="tablist" aria-label="Mode">' +
+      (K() ? K().about('<p>' + html(g.intro) + '</p>', 'About this graph') : '<p class="pw-intro">' + html(g.intro) + '</p>') +
+      '<div class="gr-modes kt-seg" role="tablist" aria-label="Mode">' +
         '<button type="button" role="tab" class="gr-mode" id="gr-tab-explore" aria-controls="gr-panel" data-m="explore">Explore</button>' +
         '<button type="button" role="tab" class="gr-mode" id="gr-tab-quiz" aria-controls="gr-panel" data-m="quiz">Quiz <span class="gr-mode-n">' + nRight + '/' + g.questions.length + '</span></button>' +
       '</div>' +
+      '<p class="kt-first gr-first"></p>' +
       '<div class="gr-layout"><div class="gr-figcol"><figure class="anp-fig gr-fig"></figure>' +
       '<div class="gr-scrub"><label class="gr-scrub-l" for="gr-x">' + esc(g.x.label) + '</label><input type="range" id="gr-x" class="gr-range"></div>' +
-      (hasRegions ? '<p class="gr-tools"><button type="button" class="btn-outline gr-toggle" aria-pressed="false">Show phases and regions</button></p>' : '') +
+      (hasRegions ? (K() ? K().more('<p class="gr-tools"><button type="button" class="btn-outline gr-toggle" aria-pressed="false">Show phases and regions</button></p>') : '<p class="gr-tools"><button type="button" class="btn-outline gr-toggle" aria-pressed="false">Show phases and regions</button></p>') : '') +
       '</div><div class="gr-qcol" id="gr-panel" role="tabpanel"></div></div>' +
       '<p class="pw-next"><a class="btn-outline" href="#' + esc(next.id) + '">Next graph: ' + esc(next.title) + ' →</a></p></div>';
     addPicker(g);
@@ -598,6 +599,9 @@
       mode = m;
       tabs.forEach(function(b){ var on = b.getAttribute('data-m') === m; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; if(on && focus) b.focus(); });
       panelEl.setAttribute('aria-labelledby', 'gr-tab-' + m);
+      app.querySelector('.gr-first').textContent = m === 'explore'
+        ? 'Drag along the graph to read every curve' + (conditions(g).length ? ', then tap a What if to shift it.' : '.')
+        : 'Answer the question beside the graph.';
       fig.classList.toggle('is-explore', m === 'explore');
       c.clear(); clearCond(true);
       if(m === 'explore') explore(); else { cursorOn = false; drawCursor(); quiz(); }
@@ -670,7 +674,6 @@
     function explore(){
       var conds = conditions(g);
       panelEl.innerHTML = '<div class="gr-ex">' +
-        '<p class="gr-kind">Explore · drag along the graph</p>' +
         '<div class="gr-read" aria-live="polite"></div>' +
         (conds.length ? '<h3 class="gr-ex-h">What if…</h3><div class="gr-conds" role="group" aria-label="Conditions that shift the curve">' + conds.map(function(q, i){
           return '<button type="button" class="gr-cond-b" aria-pressed="false" data-i="' + i + '">' + esc(condLabel(q)) + '</button>';
@@ -720,7 +723,7 @@
             showCond(q);
             var at = keyX(q);
             if(at != null) setCursor(at); else readout(cursorX);
-            whyEl.innerHTML = '<p class="gr-why-q">' + html(q.q) + '</p><p>' + html(q.why.correct) + '</p>';
+            whyEl.innerHTML = '<p class="gr-why-q">' + html(q.q) + '</p>' + (K() ? K().why('<p>' + html(q.why.correct) + '</p>') : '<p>' + html(q.why.correct) + '</p>');
           } else { clearCond(); readout(cursorX); whyEl.innerHTML = ''; }
         });
       });
@@ -806,7 +809,7 @@
           input.classList.add(ok ? 'is-right' : 'is-wrong');
           var first = after(ok);
           fb.innerHTML = verdict(ok, first) + '<p>' + (ok ? 'You read ' + fmt(v) + unitText(q.unit) + '; the graph reads about ' : 'You read ' + fmt(v) + unitText(q.unit) + '. The graph reads about ') +
-            '<b>' + fmt(q.answer) + unitText(q.unit) + '</b> (anything within ' + fmt(q.tol) + ' counts). ' + html(q.why) + '</p>';
+            '<b>' + fmt(q.answer) + unitText(q.unit) + '</b> (anything within ' + fmt(q.tol) + ' counts).</p>' + whyBox(q.why);
           if(q.show){
             var k = q.show.panel || 0, x = c.sx(q.show.x), y = c.sy(k, q.show.y);
             var base = c.tops[k] + c.hs[k];
@@ -836,7 +839,7 @@
         });
         body.querySelectorAll('.gr-place button').forEach(function(x){ x.disabled = true; });
         var first = after(ok);
-        fb.innerHTML = verdict(ok, first) + (how ? '<p class="gr-how">' + how + '</p>' : '') + '<p>' + html(q.why.correct) + '</p>';
+        fb.innerHTML = verdict(ok, first) + (how ? '<p class="gr-how">' + how + '</p>' : '') + whyBox(q.why.correct);
         if(q.type === 'phase') highlight(q.highlight);
         else if(place) settleGhost(place, q);
         else overlay(q.overlay);
@@ -959,6 +962,9 @@
     if(booted){ var h = app.querySelector('.pw-title'); if(h) h.focus(); }
   }
 
+  function K(){ return window.AnpToolKit && window.AnpToolKit.why ? window.AnpToolKit : null; }
+  // the explanation after an answer: one tap away under "Why?"
+  function whyBox(h){ return K() ? K().why('<p>' + html(h) + '</p>') : '<p>' + html(h) + '</p>'; }
   function verdict(ok, first){
     return '<p class="pw-verdict ' + (ok ? 'ok' : 'no') + '"><b>' + (ok ? 'Correct.' : 'Not quite.') + '</b> ' +
       (first ? (ok ? '' : 'Added to your review queue.') : '<span class="anp-small">Already scored this visit.</span>') + '</p>';
