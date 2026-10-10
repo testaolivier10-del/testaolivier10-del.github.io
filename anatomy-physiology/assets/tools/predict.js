@@ -444,6 +444,9 @@
       });
     }
     function step(n){
+      // The student moved on (picker, End session) while the chain played:
+      // stop, and do not finish a scenario that is no longer on the page.
+      if(!box.isConnected) return;
       if(n >= order.length){
         settle();
         box.classList.remove('is-running');
