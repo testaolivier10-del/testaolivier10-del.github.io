@@ -300,7 +300,7 @@
 
 /* Tree reading */
 .tr-figwrap{overflow-x:auto;}
-.bt-fig svg.tr-fig{max-height:none;min-width:460px;max-width:600px;}
+.bt-fig svg.tr-fig{max-height:none;min-width:320px;max-width:600px;}
 .tr-fig .tr-edge{fill:none;stroke:var(--ink);stroke-width:2.5;}
 .tr-fig .tr-node circle{fill:var(--white);stroke:var(--ink);stroke-width:1.5;}
 .tr-fig .tr-node text{fill:var(--ink);font:800 11px var(--font-ui);}

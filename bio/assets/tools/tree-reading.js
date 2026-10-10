@@ -77,7 +77,7 @@
     var lastPos = {};
     function drawTree(tree, root, o){
       o = o || {};
-      var leaves = P.leaves(root), rowH = 36, top = 26, L = 14, labelW = 150, W = 600, plotW = W - L - 24 - labelW, dna = tree.kind === 'dna';
+      var leaves = P.leaves(root), rowH = 36, top = 26, L = 14, W = o.w || 600, labelW = W < 460 ? 132 : 150, plotW = W - L - 24 - labelW, dna = tree.kind === 'dna';
       var maxD = Math.max.apply(null, leaves.map(function(n){ return dna ? n.dist : n.depth; })) || 1;
       var H = top + leaves.length * rowH + (dna ? 40 : 4);
       var pos = new Map();
@@ -145,7 +145,9 @@
       return out;
     }
     function figure(glide){
-      var t = tree(), s = st.show, o = { marks: marks(), sel: st.sel, drop: !!t.characters && !st.checked[t.id], hot: dragHot };
+      // Drawn at the space it has (down to 320 units) so a phone sees the whole tree, tip names included, without scrolling sideways.
+      var fwW = fw0() ? fw0().clientWidth : 0;
+      var t = tree(), s = st.show, o = { marks: marks(), sel: st.sel, drop: !!t.characters && !st.checked[t.id], hot: dragHot, w: fwW && fwW < 600 ? Math.max(320, Math.round(fwW)) : 600 };
       if(s){ var m = P.find(st.root, s.mrca); o.mrca = s.kind === 'mrca' ? m : null; o.bracket = s.bracket; o.miss = s.miss; }
       else if(st.sel.length >= 2){ var lm = P.mrca(st.root, st.sel); o.mrca = lm; o.bracket = lm.tips; }
       var before = glide ? Object.assign({}, lastPos) : null;
@@ -173,7 +175,8 @@
       extra();
       figure();
     }
-    var refocus = null, dragHot = null;
+    var refocus = null, dragHot = null, lastW = 0;
+    window.addEventListener('resize', function(){ var w = fw0() ? fw0().clientWidth : 0; if(w && Math.abs(w - lastW) > 30 && w < 640){ lastW = w; figure(); } });
     function fw0(){ return rc.querySelector('.tr-figwrap'); }
     function reducedM(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
     function toggleTip(id){
@@ -188,7 +191,13 @@
     }
     var fw = rc.querySelector('.tr-figwrap');
     fw.addEventListener('click', function(e){
-      var g = e.target.closest && e.target.closest('[data-rot],[data-tip],[data-br]'); if(!g) return;
+      var g = e.target.closest && e.target.closest('[data-rot],[data-tip],[data-br]');
+      // With a character picked up, a tap on a branch places it even where a node's tap area overlaps that branch (tight on a phone).
+      if(armed && (!g || !g.hasAttribute('data-br'))){
+        var hit = Array.prototype.filter.call(fw.querySelectorAll('[data-br]'), function(r){ var b = r.getBoundingClientRect(); return e.clientX >= b.left && e.clientX <= b.right && e.clientY >= b.top && e.clientY <= b.bottom; })[0];
+        if(hit) g = hit;
+      }
+      if(!g) return;
       if(g.hasAttribute('data-rot')) rotate(+g.getAttribute('data-rot'));
       else if(g.hasAttribute('data-tip')) toggleTip(g.getAttribute('data-tip'));
       else if(g.hasAttribute('data-br') && armed) placeChar(armed, g.getAttribute('data-br'));
@@ -381,7 +390,7 @@
         }
         status.textContent = ok ? 'Right: your tree has exactly the clades the table supports.' : 'Not quite: compare your clades with the table below the drawing.';
         bc.querySelector('.tb-out').innerHTML = '<h3>' + (ok ? 'Your tree matches the table' : 'Your tree differs from the one the table supports') + '</h3><ul class="tr-fb">' + rows.join('') + '</ul>' +
-          '<div class="bt-fig tr-figwrap" tabindex="0" role="region" aria-label="Your tree (scrolls sideways on a small screen)">' + drawTree(t, mine, {}) + '</div>' + describe(t, mine).replace('Text description of this tree', 'Text description of your tree') +
+          '<div class="bt-fig tr-figwrap" tabindex="0" role="region" aria-label="Your tree (scrolls sideways on a small screen)">' + drawTree(t, mine, { w: fw0() && fw0().clientWidth && fw0().clientWidth < 600 ? Math.max(320, Math.round(fw0().clientWidth)) : 600 }) + '</div>' + describe(t, mine).replace('Text description of this tree', 'Text description of your tree') +
           (ok ? '' : '<p class="bt-small">Only your first check of each table is recorded. Undo or start over and try again.</p>') + T.report(SLUG + ':build-' + t.id + ':tree');
       }
     }
