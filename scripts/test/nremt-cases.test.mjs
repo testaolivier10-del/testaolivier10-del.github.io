@@ -61,6 +61,10 @@ test('age bands and flags', () => {
   assert.equal(p.judge('sbp', 82, 336), 'low');
   assert.equal(p.judge('spo2', 93, 336), 'low');
   assert.equal(p.judge('spo2', 94, 336), 'normal');
+  // Past 10 the 70 + 2 x age floor has reached 90; the school-age row's 82-90 means 90 at 11.
+  assert.equal(p.sbpLow(120), 90, '10 years: 70 + 2 x 10');
+  assert.equal(p.sbpLow(132), 90, '11 years: not the row\'s 82');
+  assert.equal(p.judge('sbp', 85, 132), 'low');
 });
 
 test('every scenario node vitals line parses, and every case has an age', () => {
@@ -130,6 +134,12 @@ test('formulary give/withhold cards quote their drug card', () => {
     assert.equal(typeof c.give, 'boolean');
   }
   assert.ok(cards.some((c) => c.give) && cards.some((c) => !c.give));
+  // A withhold for low pressure must actually be below every published floor (100, or 90 in some protocols).
+  const sbp = cards.find((c) => c.id === 'ntg-sbp');
+  assert.ok(+sbp.vitals.match(/BP (\d+)/)[1] < 90, 'ntg-sbp: below 90, so no protocol would give it');
+  // Skin-only allergic reaction: withhold now, but the card must say to keep the injector ready and reassess.
+  const skin = cards.find((c) => c.id === 'epi-skin');
+  assert.match(skin.note || '', /reassess/i);
 });
 
 test('mnemonic self-check accepts recall, not just spelling', () => {
@@ -152,4 +162,26 @@ test('every mnemonic scenario link points at a case that uses it', () => {
   const links = [...html.matchAll(/data-scenario="(s\d+)"/g)].map((m) => m[1]);
   assert.ok(links.length >= 10);
   for(const id of links) assert.ok(ids.has(id), `${id} is not a scenario`);
+});
+
+/* A box that ends several arms (START's "IMMEDIATE (red)") is explained
+   against the arm of the same question, and the reason says it has other homes. */
+test('flowchart build reasons handle a box that sits in several places', () => {
+  const s = sandbox();
+  vm.runInContext(read('nremt/assets/flow-build.js'), s);
+  const { reason } = s.NremtFlowBuild;
+  const br1 = { type: 'branch' }, br2 = { type: 'branch' };
+  const a = (label) => ({ label });
+  const slots = [
+    { id: 'x:0', text: 'Breathing?', kind: 'decision' },
+    { id: 'x:1', text: 'DECEASED (black)', kind: 'terminal', item: br1, arm: a('Still not breathing'), from: 'Breathing?' },
+    { id: 'x:2', text: 'IMMEDIATE (red)', kind: 'terminal', item: br1, arm: a('Breathing only after repositioning'), from: 'Breathing?' },
+    { id: 'x:3', text: 'Follows commands?', kind: 'decision' },
+    { id: 'x:4', text: 'IMMEDIATE (red)', kind: 'terminal', item: br2, arm: a('No'), from: 'Follows commands?' },
+    { id: 'x:5', text: 'DELAYED (yellow)', kind: 'terminal', item: br2, arm: a('Yes'), from: 'Follows commands?' }
+  ];
+  const d = { title: 'START', slots };
+  const why = reason('IMMEDIATE (red)', slots[5], d, [d]);
+  assert.match(why, /if no, not if yes/, 'explained against the same question\'s arm');
+  assert.match(why, /ends 2 different arms/);
 });

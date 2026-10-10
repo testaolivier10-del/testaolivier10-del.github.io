@@ -76,7 +76,14 @@
       var other = all.filter(function(x){ return x !== d && x.slots.some(function(s){ return s.text === tileText; }); })[0];
       return 'Not part of this protocol' + (other ? ': that box is from “' + other.title + '”.' : '.');
     }
-    var h = home[0];
+    /* A box can sit in several places ("IMMEDIATE (red)" ends four arms of
+       START). Explain against the copy that answers the same question as the
+       slot when there is one, and say when it has other homes, so the reason
+       never implies its first place is its only one. */
+    var h = home.filter(function(x){ return slot.arm && x.item === slot.item; })[0] || home[0];
+    var also = home.length > 1 ? ' (It ends ' + home.length + ' different arms of this chart; that is one of them.)' : '';
+    return because(h) + also;
+    function because(h){
     if(slot.arm){
       if(h.arm && h.item === slot.item){
         return 'That is the other answer. “' + short(h.text) + '” is what you do if ' + h.arm.label.toLowerCase().replace(/—/g, '-') + ', not if ' + slot.arm.label.toLowerCase().replace(/—/g, '-') + '.';
@@ -88,6 +95,7 @@
     var hi = d.slots.indexOf(h), si = d.slots.indexOf(slot);
     if(h.kind === 'decision' && slot.kind !== 'decision') return 'That is a question you ask, not something you do: it goes in a diamond' + (h.prev ? ', after “' + short(h.prev) + '”.' : '.');
     return (hi > si ? 'Too early. ' : 'Too late. ') + (h.prev ? 'It comes straight after “' + short(h.prev) + '”.' : 'It is the very first step.');
+    }
   }
 
   /* ---- The board ------------------------------------------------------------ */

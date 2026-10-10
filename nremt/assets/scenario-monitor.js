@@ -52,6 +52,9 @@
     var r = refFor(months);
     if(!r) return null;
     if(months >= 12 && months < 132) return 70 + 2 * Math.floor(months / 12);
+    /* Past 10 the floor stays at 90 (PALS); the school-age row's 82–90 means
+       90 at its older end. */
+    if(months >= 132 && r.key !== 'adult' && r.sbp.length > 1) return r.sbp[r.sbp.length - 1];
     return r.sbp[0];
   }
 

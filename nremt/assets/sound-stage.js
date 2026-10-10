@@ -386,7 +386,7 @@
     { id:'edema', ask:'Early pulmonary edema: where do crackles show up first?', sound:'crackles', ok:['lung-rl','lung-ll','back-ll','back-rl'],
       why:'Fluid settles at the lung bases first, so listen low: the bases at the sides and below the shoulder blades.' },
     { id:'apices', ask:'Checking breath sounds: tap one of the lung apices.', sound:'wheeze', ok:['lung-ru','lung-lu','back-lu','back-ru'],
-      why:'The apices are the tops of the lungs: just below the clavicles in front, or between the shoulder blades and the spine behind. Compare right with left.' }
+      why:'The apices are the tops of the lungs: listened to just below the clavicles in front, or high on the back, between the top of the shoulder blade and the spine. Compare right with left.' }
   ];
 
   /* ---- Timing questions -------------------------------------------------- */

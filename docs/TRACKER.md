@@ -629,6 +629,9 @@ clinician, and that is the gap no amount of tooling closes.
 | Whether the state tests supine/seated spinal immobilization stations | Varies by state; needs the local office of EMS. |
 | Three openly licensed recordings: snoring, gurgling, diminished/absent breath sounds | Entries and teaching are on the page; only the audio is missing. Must be openly licensed — not synthesised. |
 | Two recordings licensed for commercial use: rhonchi and normal breath sounds | The Hawaii COPD Coalition clips (licence never established) were removed 2026-10-01 because the site now sells passes. Re-add with public domain, CC0, CC BY or CC BY-SA audio, credited with title, author, licence and source. |
+| Burns tool child chart (body-map Burns mode, mnemonics, notes ch. 30, Q533) | One chart, head 18% / leg 13.5%, is the infant version; some texts add an older-child chart (head ~12-14%, leg ~16%) or use Lund-Browder. Tool now says so on screen. Decide whether one chart is enough. |
+| Give/withhold "hives alone, has an auto-injector" = withhold | Matches current teaching (skin-only is not anaphylaxis; 2025 JACI consensus) and the formulary card; some local protocols let a patient with prior anaphylaxis use the injector after a known exposure. Answer now says withhold for now, reassess, follow her action plan or protocol. Confirm. |
+| Skill-sheet limits for the four random skills (seated spinal 10, long bone 5, joint 5, bleeding 10) | The NREMT EMT exam guide gives only "5-10 minutes" for these; some states use 10 for all. Table now says so. Confirm the figures your state uses. |
 | Whether drag-to-order items appear on the **EMT** cognitive exam | The 2024 technology-enhanced item changes are documented for AEMT and Paramedic. Could not confirm for EMT from here, so the claim is softened rather than asserted. |
 
 ---

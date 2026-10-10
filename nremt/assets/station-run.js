@@ -53,7 +53,8 @@
   ];
 
   /* The page's own table of the official sheets ("The official sheets at a
-     glance"): its time column is the limit printed on each sheet, and its
+     glance"): its time column is each station's limit (the Registry's exam
+     guide; the sheets themselves mostly only record start and end times), and its
      last column paraphrases the critical criteria. Where a station matches a
      row, that is what the clock and the critical list use. */
   var ROW_KEYS = [/trauma/i, /medical/i, /cardiac|aed/i, /bvm/i, /non-rebreather|oxygen/i, /long bone/i, /joint/i, /supine/i, /seated/i, /bleeding/i];
@@ -263,7 +264,7 @@
               '<input type="number" id="runTarget" min="1" max="60" value="' + targetMin + '"> min' +
             '</label>' +
             '<div class="run-hearsay">' + (station.official
-              ? 'The time printed on the official sheet, from the table below. Change it if your program differs.'
+              ? 'The station limit from the table below (the Registry’s exam guide). Change it if your program differs.'
               : 'Commonly published for this station — confirm against your own program’s sheet.') + '</div>' +
             '<a class="run-badge" id="runCritBadge" href="#runCrit" hidden></a>' +
           '</div>' +
@@ -285,7 +286,7 @@
         (station.criteria.length
           ? '<div class="run-crit" id="runCrit">' +
               '<div class="run-crit-h">Critical criteria <span id="runCritN">none yet</span></div>' +
-              '<p class="run-crit-sub">Any one fails the station. They light up when the run shows one (BSI skipped, time limit passed); tap any you know you did.</p>' +
+              '<p class="run-crit-sub">Any one fails the station. Two light up by themselves: No PPE, if you tick a later phase before BSI (this tool’s reading of it; the sheet fails a candidate who never takes or voices PPE), and the time limit once it passes. Tap any other you know you did.</p>' +
               '<ul>' + station.criteria.map(function(c, i){
                 return '<li><button type="button" class="run-cbtn" data-c="' + i + '" aria-pressed="false">' + esc(c) + '</button></li>';
               }).join('') + '</ul>' +

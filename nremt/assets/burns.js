@@ -298,7 +298,7 @@
       if(st.quiz) return;
       st.child = b.dataset.age === 'child'; var t = paint();
       info.innerHTML = '<p>' + (st.child
-        ? '<b>Child chart.</b> Only two regions change: the head and neck becomes 18% and each leg 13.5%. Everything else is counted as in an adult.'
+        ? '<b>Child chart.</b> Only two regions change: the head and neck becomes 18% and each leg 13.5%. Everything else is counted as in an adult. These are the infant and small-child figures; as a child grows the head’s share shrinks and the legs’ grows toward the adult chart, and many protocols use a Lund-Browder chart for children.'
         : '<b>Adult Rule of Nines.</b> Head and neck 9%, each arm 9%, front of trunk 18%, back of trunk 18%, each leg 18%, genitals 1%.') + '</p>';
       say((st.child ? 'Child chart. ' : 'Adult chart. ') + 'Total ' + fmt(t) + ' percent.');
     }); });
