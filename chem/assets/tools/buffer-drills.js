@@ -24,7 +24,9 @@
   var TITLE = { ph: 'pH of a buffer', ratio: 'The ratio for a target pH', add: 'Adding strong acid or base', capacity: 'Buffer capacity' };
   T.mount('buffer-drills', function(app, data){
     var M = window.ApChemMath;
-    T.modes(app, { slug: 'buffer-drills', labels: ['Explore the buffer', 'Test yourself'], explore: function(h){ explore(h, data, M); }, quiz: function(h){ quiz(h, data, M); } });
+    var ex = null;
+    T.modes(app, { slug: 'buffer-drills', labels: ['Explore the buffer', 'Test yourself'], explore: function(h){ ex = explore(h, data, M); }, quiz: function(h){ quiz(h, data, M); },
+      studio: { explore: function(pane, s){ ex.studio(pane, s); } } });
   });
 
   function names(ctx){
@@ -40,31 +42,36 @@
   /* ------------------------------------------------------------ explore */
   function explore(host, data, M){
     var F = T.F, esc = T.esc, ctxs = data.contexts || [];
+    // Lookups reach the Tool Studio too, where these parts move (studio()).
+    var LS = null, SP = null;
+    function $(sel){ return host.querySelector(sel) || (LS ? LS.root.querySelector(sel) : null); }
     var V = 0.100, ci = 0, size = 10, b = 0, hist = [], beaker = null, n;
     host.innerHTML = '<section class="bt-problem bf-card" aria-labelledby="bf-h"><div class="tx-head"><h2 id="bf-h" class="bf-title"></h2><p class="bt-small bf-setup"></p></div>' +
       '<div class="bf-stage"><div class="bf-beaker"></div>' +
       '<div class="bf-side"><div class="bf-btns"><button type="button" class="bf-add bf-oh" data-d="1">+ OH⁻<span class="bf-u">NaOH</span></button><button type="button" class="bf-add bf-h" data-d="-1">+ H₃O⁺<span class="bf-u">HCl</span></button></div>' +
       '<div class="bf-why"></div><div class="bf-plot"></div></div></div>' +
       T.moreHtml('<div class="bt-pick bf-pick"></div><p class="bt-small bf-scale"><span class="bf-per"></span> Na⁺, Cl⁻ and water are not drawn. The meter shows the exact pH (water\'s own ions included); the line under "Why?" is the method the exam expects.</p>', 'another buffer, amounts, start over') + '</section>';
-    var pick = host.querySelector('.bf-pick'), start = T.cue('Tap + OH⁻ or + H₃O⁺ to add a little strong base or acid.');
-    host.querySelector('.bf-side').insertBefore(start.el, host.querySelector('.bf-btns'));
+    var pick = $('.bf-pick'), start = T.cue('Tap + OH⁻ or + H₃O⁺ to add a little strong base or acid.');
+    host.querySelector('.bf-side').insertBefore(start.el, $('.bf-btns'));
+    var resetBtn = null;
     function inline(s){ s.el.classList.add('bt-inline'); return s.el; }
     pick.appendChild(inline(T.choiceSelect({ label: 'Buffer', options: ctxs.map(function(c, i){ return { value: i, label: names(c).name }; }), value: 0, onChange: function(v){ ci = +v; reset(); } })));
     pick.appendChild(inline(T.choiceSelect({ label: 'Amount of each form', options: [{ value: 5, label: '5 mmol (0.050 M)' }, { value: 10, label: '10 mmol (0.10 M)' }, { value: 20, label: '20 mmol (0.20 M)' }], value: 10, onChange: function(v){ size = +v; reset(); } })));
     pick.insertAdjacentHTML('beforeend', '<button type="button" class="bt-btn bf-reset">Start over</button>');
-    pick.querySelector('.bf-reset').addEventListener('click', reset);
-    host.querySelectorAll('.bf-add').forEach(function(btn){ btn.addEventListener('click', function(){ b = M.round(b + (+btn.getAttribute('data-d')) * step(), 7); hist.push(b); draw(true); }); });
+    resetBtn = pick.querySelector('.bf-reset');
+    resetBtn.addEventListener('click', reset);
+    [].slice.call(host.querySelectorAll('.bf-add')).forEach(function(btn){ btn.addEventListener('click', function(){ b = M.round(b + (+btn.getAttribute('data-d')) * step(), 7); hist.push(b); draw(true); }); });
 
     function step(){ return size / 10 / 1000; }
     function reset(){
       n = names(ctxs[ci]); b = 0; hist = [0];
       var u = M.fmt(size / 10, 2) + ' mmol ';
-      host.querySelector('.bf-oh .bf-u').textContent = u + 'NaOH'; host.querySelector('.bf-h .bf-u').textContent = u + 'HCl';
-      host.querySelector('.bf-per').textContent = 'Each particle is ' + u + 'in 100 mL; each tap adds one particle\'s worth.';
-      host.querySelector('.bf-title').textContent = n.name + ' buffer';
-      host.querySelector('.bf-setup').innerHTML = '100 mL with ' + size + ' mmol ' + esc(n.HA) + ' and ' + size + ' mmol ' + esc(n.A) + '. pK<sub>a</sub> of ' + esc(n.HA) + ' = ' + F(-Math.log10(n.Ka), 2) + '.';
+      $('.bf-oh .bf-u').textContent = u + 'NaOH'; $('.bf-h .bf-u').textContent = u + 'HCl';
+      $('.bf-per').textContent = 'Each particle is ' + u + 'in 100 mL; each tap adds one particle\'s worth.';
+      $('.bf-title').textContent = n.name + ' buffer';
+      $('.bf-setup').innerHTML = '100 mL with ' + size + ' mmol ' + esc(n.HA) + ' and ' + size + ' mmol ' + esc(n.A) + '. pK<sub>a</sub> of ' + esc(n.HA) + ' = ' + F(-Math.log10(n.Ka), 2) + '.';
       if(beaker) beaker.destroy();
-      beaker = window.ApChemBeaker.mount(host.querySelector('.bf-beaker'), { species: species(n).concat([{ key: 'OH', label: 'OH⁻', name: 'leftover OH⁻', tone: 5 }, { key: 'H3O', label: 'H₃O⁺', mol: 'H3O+', name: 'leftover H₃O⁺' }]), readout: 'pH', title: 'The buffer', max: 28, seed: 11 + ci });
+      beaker = window.ApChemBeaker.mount($('.bf-beaker'), { species: species(n).concat([{ key: 'OH', label: 'OH⁻', name: 'leftover OH⁻', tone: 5 }, { key: 'H3O', label: 'H₃O⁺', mol: 'H3O+', name: 'leftover H₃O⁺' }]), readout: 'pH', title: 'The buffer', max: 28, seed: 11 + ci });
       draw(false);
     }
     function st(x){ return M.bufferState({ Ka: n.Ka, nHA: size / 1000, nA: size / 1000, V: V, b: x }); }
@@ -76,11 +83,12 @@
       beaker.update({ counts: counts, pH: s.pH, note: acted ? (d >= 0 ? 'pH rose by ' : 'pH fell by ') + F(Math.abs(d), 2) + '.' : '' });
       if(acted) start.done();
       var w = why(s, d, acted, what);
-      T.explain(host.querySelector('.bf-why'), w.head, w.body);
+      T.explain($('.bf-why'), w.head, w.body);
       plot(s);
       var lim = 16 * step() - 1e-9;
-      host.querySelector('.bf-oh').disabled = b >= lim;
-      host.querySelector('.bf-h').disabled = b <= -lim;
+      $('.bf-oh').disabled = b >= lim;
+      $('.bf-h').disabled = b <= -lim;
+      if(LS) studioDraw(s, d, w);
     }
     function why(s, d, acted, what){
       var pKa = -Math.log10(n.Ka), HA = esc(n.HA), A = esc(n.A), nH = mm(s.nHA), nA = mm(s.nA), out = '', head = '', calc = '';
@@ -116,14 +124,54 @@
         y: { label: 'pH', min: 0, max: 14, step: 2 },
         curves: [{ cls: 's3', points: water, dashed: true }, { cls: 's1', points: path }],
         points: [{ x: now, y: s.pH, cls: 's2' }], vline: { x: 0 } });
-      host.querySelector('.bf-plot').innerHTML = svg + '<p class="bt-small bf-key"><span class="bf-k1"></span>this buffer <span class="bf-k2"></span>pure water, same additions</p>';
+      $('.bf-plot').innerHTML = svg + '<p class="bt-small bf-key"><span class="bf-k1"></span>this buffer <span class="bf-k2"></span>pure water, same additions</p>';
+    }
+    /* Tool Studio: pH and how the buffer is holding as pills on the stage,
+       the one-line verdict as the caption, the numbers in Details. */
+    function studioDraw(s, d, w){
+      var tone = s.method === 'hh' ? { html: 'Buffered', tone: 'good' } : s.method === 'hh-edge' ? { html: 'Nearly spent', tone: 'warn' }
+        : s.method === 'weak-base' || s.method === 'weak-acid' ? { html: 'Capacity reached', tone: 'warn' } : { html: 'Past capacity', tone: 'bad' };
+      var k = 1 / step(), sp = species(n);
+      LS.pills([{ k: 'pH', html: F(s.pH, 2), tone: 'readout' }, tone], 'left', 'explore');
+      LS.pills([{ html: sp[0].label + ' ' + Math.round(s.nHA * k) + ' · ' + sp[1].label + ' ' + Math.round(s.nA * k), tone: 'ghost' }], 'right', 'explore');
+      LS.caption(w.head, 'explore');
+      SP.setup(n.name + ' buffer');
+      SP.open();
+      var side = LS.root.querySelector('.chem-ls-stage .lb-side'), parts = LS.root.querySelector('.bf-ls-parts');
+      if(side && parts){ parts.innerHTML = '<h3 class="ls-h">Particles in the beaker</h3>'; parts.appendChild(side); }
+      var nums = LS.root.querySelector('.bf-ls-nums');
+      if(nums){
+        var row = function(a, v, hl){ return '<tr' + (hl ? ' class="hl"' : '') + '><th scope="row">' + a + '</th><td class="r">' + v + '</td></tr>'; };
+        var added = Math.round(Math.abs(b) * 1e6) / 1e3;
+        nums.innerHTML = '<h3 class="ls-title-l">The numbers</h3><table class="ls-tbl"><caption class="sr-only">The buffer in numbers</caption><tbody>' +
+          row('Buffer', '100 mL, ' + size + ' mmol ' + esc(n.HA) + ' and ' + size + ' mmol ' + esc(n.A)) +
+          row('pK<sub>a</sub> of ' + esc(n.HA), F(-Math.log10(n.Ka), 2)) +
+          row('Added', b > 0 ? added + ' mmol OH⁻' : b < 0 ? added + ' mmol H₃O⁺' : 'nothing yet') +
+          row('Pure water, same additions', 'pH ' + F(s.water, 2)) +
+          row('Now', 'pH ' + F(s.pH, 2), true) + '</tbody></table>';
+      }
+    }
+    /* Tool Studio arrangement (modes({ studio })): the beaker over the graph
+       on the stage; + OH⁻, + H₃O⁺ and Start over in the dock; the reasoning
+       in Why; the numbers, the particles, the buffer and the amounts in
+       Details. */
+    function studio(pane, s){
+      LS = s;
+      var nums = document.createElement('div'), parts = document.createElement('div');
+      nums.className = 'bf-ls-nums'; parts.className = 'bf-ls-parts';
+      resetBtn.classList.add('bf-ls-reset');
+      SP = T.studioPane(pane, s, { stage: [$('.bf-beaker'), $('.bf-plot')], dock: [$('.bf-btns'), resetBtn], setup: 'Buffer', moreLabel: 'Another buffer, amounts',
+        why: [$('.bf-why')], details: [nums, parts] });
+      draw(false);
+      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.bf-oh'), text: 'Tap to add a little strong base' });
     }
     reset();
+    return { studio: studio };
   }
 
   /* --------------------------------------------------------------- quiz */
   function quiz(app, data, M){
-    var beaker = null, cur = null;
+    var beaker = null, cur = null, qnote = null;   // the figure moves to the stage in the Tool Studio: keep references
     function mountB(host, ctx, title){ return window.ApChemBeaker.mount(host, { species: species(names(ctx)), readout: 'none', title: title, max: 24, seed: 5 }); }
     function counts(nH, nA){ return { HA: Math.round(nH * 1e6), A: Math.round(nA * 1e6) }; }
     T.drill(app, data, {
@@ -133,7 +181,7 @@
       typeLabel: 'Kind of problem',
       title: function(p){ return TITLE[p.type]; },
       extra: function(host, p){
-        cur = p; beaker = null;
+        cur = p; beaker = null; qnote = null;
         var v = p.values, n = names(p.context);
         if(p.type === 'capacity'){
           host.innerHTML = '<div class="bf-two"><div class="bf-b1"></div><div class="bf-b2"></div></div><p class="bt-small">Same ratio in both; buffer ' + v.high + ' has more of each form. Both beakers use one scale.</p>';
@@ -145,14 +193,14 @@
         }
         host.innerHTML = '<div class="bf-qb"></div><p class="bt-small bf-qnote"></p>';
         beaker = mountB(host.querySelector('.bf-qb'), p.context, 'The buffer');
-        var note = host.querySelector('.bf-qnote');
+        var note = qnote = host.querySelector('.bf-qnote');
         if(p.type === 'ph'){ beaker.update({ counts: counts(v.cH, v.cA) }); note.textContent = 'Drawn in the ratio of the concentrations given: ' + n.A + ' : ' + n.HA + ' = ' + M.fmt(v.cA / v.cH, 3) + '.'; }
         else if(p.type === 'add'){ beaker.update({ counts: counts(v.cH * v.L, v.cA * v.L) }); note.textContent = 'Before the ' + (v.acidAdded ? 'HCl' : 'NaOH') + ' goes in. Do the stoichiometry, then watch the beaker change.'; }
         else { beaker.update({ counts: { HA: 6, A: 6 } }); note.textContent = 'Equal amounts: pH = pKa. Find the ratio the target pH needs.'; }
       },
       onStep: function(s){
         if(!beaker || !cur) return;
-        var v = cur.values, n = names(cur.context), nt = app.querySelector('.bf-qnote');
+        var v = cur.values, n = names(cur.context), nt = qnote;
         if(cur.type === 'add' && s.key === 'nH'){
           beaker.update({ counts: counts(v.nH, v.nA), note: 'After the reaction: ' + (v.acidAdded ? 'H₃O⁺ turned ' + n.A + ' into ' + n.HA : 'OH⁻ turned ' + n.HA + ' into ' + n.A) + '.' });
           if(nt) nt.textContent = 'After the reaction: the strong ' + (v.acidAdded ? 'acid' : 'base') + ' is used up; only the ratio changed.';

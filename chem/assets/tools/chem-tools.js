@@ -64,7 +64,7 @@
       var studio = app.getAttribute('data-studio') && window.LevlStudio ? studioFrame(app, slug) : null;
       fn(app, data);
       if(studio) studioRest(app, studio);
-    }).catch(function(){
+    }).catch(function(e){ try{ console.error(e); }catch(x){}
       app.innerHTML = '<p class="chem-soon" role="alert">The tool could not load. Check your connection and reload the page.</p>';
     });
   }
@@ -495,7 +495,7 @@
     if(kinds.length > 1){
       kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
     }
-    var sd = studioDrill(app, area);
+    var sd = studioDrill(app, area, o);
     function pickable(){ return contexts.filter(function(c){ return !type || (c.types ? c.types.indexOf(type) > -1 : c.mode ? c.mode === type : c.kind === type); }); }
     function pickCtx(r){ var ok = pickable(); return r.pick(ok.length ? ok : contexts); }
     function draw(focus){
@@ -503,8 +503,12 @@
       area.innerHTML = '<div class="bt-prob-head"><h2 id="' + gid + '-h" tabindex="-1">' + esc(o.title ? o.title(p) : 'Practice problem') + '</h2><p class="bt-code">Problem code <b>' + seed + '</b> <a href="?seed=' + seed + '">Link to this problem</a></p></div>' +
         '<div class="bt-context">' + p.text + '</div><div class="cd-extra"></div><div class="cd-steps"></div>' +
         '<div class="bt-solution" hidden></div><div class="bt-next"></div>';
-      var api = { area: area, problem: p };
-      if(o.extra) o.extra(area.querySelector('.cd-extra'), p, api);
+      var api = { area: area, problem: p }, exEl = area.querySelector('.cd-extra');
+      // The table rows to fill live in the figure, which the Tool Studio
+      // moves to the stage: reach them through it, not through the area.
+      function rowsAll(sel){ return exEl.querySelectorAll(sel).length ? exEl.querySelectorAll(sel) : area.querySelectorAll(sel); }
+      function row1(sel){ return exEl.querySelector(sel) || area.querySelector(sel); }
+      if(o.extra) o.extra(exEl, p, api);
       var host = area.querySelector('.cd-steps');
       function step(i){
         if(i >= p.steps.length) return finish();
@@ -531,13 +535,13 @@
         host.appendChild(el);
         var rowInputs = [];
         if(s.kind === 'row' || s.kind === 'coef'){
-          area.querySelectorAll('[data-row="' + s.row + '"] [data-i]').forEach(function(td){
+          rowsAll('[data-row="' + s.row + '"] [data-i]').forEach(function(td){
             var k = +td.getAttribute('data-i');
             td.innerHTML = '<input type="text" class="cd-cell" autocomplete="off" spellcheck="false"' + (s.kind === 'num' ? '' : ' inputmode="' + (s.kind === 'coef' ? 'text' : 'decimal') + '"') + ' aria-label="' + esc(td.getAttribute('data-label')) + '">';
             rowInputs[k] = td.querySelector('input');
             rowInputs[k].addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); check(); } });
           });
-          area.querySelector('[data-row="' + s.row + '"]').classList.add('is-active');
+          row1('[data-row="' + s.row + '"]').classList.add('is-active');
         }
         var fb = el.querySelector('.cd-fb'), input = el.querySelector('.cd-num input'), range = el.querySelector('.cd-vol input');
         if(range){
@@ -552,7 +556,7 @@
           done = true;
           el.querySelectorAll('input').forEach(function(x){ if(x.type === 'radio' || x.type === 'range') x.disabled = true; else x.readOnly = true; });
           rowInputs.forEach(function(x){ if(x) x.readOnly = true; });
-          if(s.row) area.querySelector('[data-row="' + s.row + '"]').classList.remove('is-active');
+          if(s.row) row1('[data-row="' + s.row + '"]').classList.remove('is-active');
         }
         function next(right){
           results.push({ id: slug + ':' + p.ctx + ':' + s.key, correct: right, topic: (data.partTopics && data.partTopics[s.key]) || p.topic, practice: s.practice, level: s.level || 'apply', diff: 2, group: s.key });
@@ -560,7 +564,7 @@
           if(o.onStep) o.onStep(s, right, api);
           step(i + 1);
           var nx = host.lastElementChild;
-          if(nx && nx !== el){ var f = nx.querySelector('input:not([readonly]):not([disabled])') || area.querySelector('tr.is-active input'); if(f) f.focus(); }
+          if(nx && nx !== el){ var f = nx.querySelector('input:not([readonly]):not([disabled])') || row1('tr.is-active input'); if(f) f.focus(); }
         }
         function reveal(){
           if(s.kind === 'num' || s.kind === 'vol'){ input.value = shownNum(s.cell, s.d); if(range){ range.value = String(s.cell.answer); if(o.onVol) o.onVol(s.cell.answer, s, api); } }
@@ -662,7 +666,6 @@
     bar.addEventListener('click', function(e){ var b = e.target.closest('.bt-mode'); if(b) show(b.getAttribute('data-m'), true); });
     var st = studioOf(app);
     o.explore(ex);
-    if(st && o.studio && o.studio.explore) o.studio.explore(ex, st);
     var start = 'explore';
     try{
       if(seedFromUrl() || /#quiz\b/.test(location.hash)) start = 'quiz';
@@ -672,6 +675,8 @@
       var eb = bar.querySelector('[data-m="explore"]');
       if(/^Explore\b/.test(eb.textContent)) eb.textContent = 'Explore';
       st.modes({ el: bar, value: start });
+      // After the switch, so the arrangement knows the mode it opens on.
+      if(o.studio && o.studio.explore) o.studio.explore(ex, st);
     }
     show(start, false);
     return { explore: ex, quiz: qz, show: show, bar: bar };
@@ -725,7 +730,8 @@
     if(draft) s.add('about', draft);
     app.hidden = true;
   }
-  function studioDrill(app, area){
+  function studioDrill(app, area, o){
+    o = o || {};
     var s = studioOf(app);
     if(!s) return null;
     var only = app.classList.contains('bt-pane-quiz') ? { mode: 'quiz' } : null, m = only && only.mode;
@@ -741,17 +747,32 @@
       fresh: function(p){
         stage.innerHTML = ''; det.innerHTML = '<h3 class="ls-title-l">This problem</h3>';
         why.innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
-        var extra = area.querySelector(':scope > .cd-extra');
-        if(extra && !extra.querySelector('[data-row]')) stage.appendChild(extra);
-        var ctx = area.querySelector(':scope > .bt-context'), text = ctx ? ctx.textContent.replace(/\s+/g, ' ').trim() : '';
-        if(ctx && !ctx.querySelector('[data-row], input')) det.appendChild(ctx);
+        var extra = area.querySelector(':scope > .cd-extra'), fig = extra && (extra.children.length || extra.textContent.trim());
+        var ctx = area.querySelector(':scope > .bt-context'), text = ctx ? Array.prototype.map.call(ctx.childNodes, function(n){ return n.textContent; }).join(' ').replace(/\s+/g, ' ').trim() : '';
+        // The problem is read on the stage when there is no figure, or when
+        // the drill asks (o.textOnStage: a long problem over a table to
+        // fill); otherwise it is the caption over the figure.
+        var onStage = ctx && (!fig || o.textOnStage);
+        if(onStage){ ctx.classList.add('ls-drill-text'); stage.appendChild(ctx); }
+        // The figure is the stage, table rows to fill included (drill()
+        // reaches them through the figure).
+        if(fig) stage.appendChild(extra);
+        if(ctx && !onStage && !ctx.querySelector('[data-row], input')) det.appendChild(ctx);
         Array.prototype.slice.call(area.querySelectorAll(':scope > details')).forEach(function(d){ det.appendChild(d); });
         var code = area.querySelector('.bt-code'); if(code) det.appendChild(code);
         var h2 = area.querySelector('.bt-prob-head h2'); if(h2) h2.classList.add('sr-only');
         var steps = area.querySelector(':scope > .cd-steps');
         if(steps) window.LevlStudio.stepper(steps, { items: ':scope > .cd-step', total: (p.steps || []).length,
           done: function(){ var nx = area.querySelector(':scope > .bt-next'); return !!(nx && nx.children.length); } });
-        s.caption(esc(text), m); s.pills([], 'left', m);
+        // o.studioAsk: a long problem over a figure is captioned by its
+        // equation and its question; the whole text is in Details.
+        if(!onStage && o.studioAsk && ctx){
+          var eq = ctx.querySelector('.bt-eq'), eqT = eq ? eq.textContent.replace(/\s+/g, ' ').trim() : '';
+          var rest = eqT ? text.replace(eqT, '').trim() : text, ss = rest.match(/[^.?!]+[.?!]+/g) || [rest];
+          var ask = ss.filter(function(x){ return /\?\s*$/.test(x); }).pop() || ss[ss.length - 1];
+          text = (eqT ? eqT.replace(/\s+K\s*=/, ', K =') + '. ' : '') + ask.trim();
+        }
+        s.caption(onStage ? esc(o.studioCaption || 'Answer one step at a time.') : esc(text), m); s.pills([], 'left', m);
       },
       done: function(right, total){
         var sol = area.querySelector(':scope > .bt-solution');
@@ -764,7 +785,61 @@
     };
   }
 
+  /* studioPane(pane, s, o): the usual arrangement of an explore view (the
+     titration reader's, written once for the other trainers). Every part is
+     MOVED, so the tool keeps its references:
+       o.stage    [els]  the picture, in a .chem-ls-stage column
+       o.dock     [els]  the 1 to 3 primary controls, in a .chem-ls-dock
+       o.setup    'Reaction'   a "Setup" row under them that opens Details on
+                  the tool's More options (its summary renamed to o.moreLabel)
+       o.why      [els]  what is happening (each "Why?" disclosure opened,
+                  its own summary hidden: the sheet is the Why)
+       o.details  [els]  numbers and settings; then More options, then
+                  whatever else is left in the pane
+       o.mode     'explore' (default)
+     Returns { setup(text), open() }: the Setup row's value, and reopening
+     the Why disclosures after a redraw. */
+  function studioPane(pane, s, o){
+    var only = { mode: o.mode || 'explore' }, q = function(sel){ return pane.querySelector(sel); };
+    function box(cls, els){ var d = document.createElement('div'); d.className = cls; (els || []).forEach(function(e){ if(e) d.appendChild(e); }); return d; }
+    s.add('stage', box('chem-ls-stage', o.stage), only);
+    var dock = [box('chem-ls-dock', o.dock)], row = null;
+    var more = q('details.bt-more');
+    if(o.setup && more){
+      row = document.createElement('button');
+      row.type = 'button'; row.className = 'ls-linkrow chem-ls-setup';
+      row.innerHTML = '<span><span class="ls-k">' + esc(o.setup) + '</span><span class="ls-v"></span></span>' + window.LevlStudio.icon('more');
+      row.setAttribute('aria-label', o.setup + ': ' + (o.moreLabel || 'more options') + ' (opens Details)');
+      row.addEventListener('click', function(){ s.open('details', more.querySelector('summary')); });
+      dock.push(row);
+    }
+    s.add('dock', dock, only);
+    // The "Start here" cue reads as the first line of Why.
+    var why = box('ls-sec chem-ls-why', [pane.querySelector('.bt-cue')].concat(o.why || []));
+    s.add('why', why, only);
+    var det = box('ls-sec chem-ls-det', o.details);
+    if(more){
+      more.classList.add('chem-ls-more'); more.open = true;
+      if(o.moreLabel) more.querySelector('summary').textContent = o.moreLabel;
+      det.appendChild(more);
+    }
+    Array.prototype.slice.call(pane.querySelectorAll(':scope > *, :scope > .bt-problem > *')).forEach(function(k){
+      if(k.classList.contains('bt-problem') || !k.textContent.trim() && !k.querySelector('svg, input, select, button')) return;
+      det.appendChild(k);
+    });
+    s.add('details', det, only);
+    function openAll(){ why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; }); }
+    openAll();
+    return {
+      setup: function(t){ if(row){ row.querySelector('.ls-v').textContent = t; row.setAttribute('aria-label', o.setup + ': ' + t + '. ' + (o.moreLabel || 'More options') + ' (opens Details)'); } },
+      open: openAll, why: why, details: det
+    };
+  }
+  /* The "head" line of an explain() box as plain caption html. */
+  function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }
+
   window.ApChemTools = {
+    studioOf: studioOf, studioPane: studioPane, sayHead: sayHead,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,

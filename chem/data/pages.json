@@ -168,7 +168,8 @@
    "name": "Buffer and Henderson-Hasselbalch drills",
    "title": "Buffer and Henderson-Hasselbalch drills",
    "desc": "Unlimited buffer problems: Henderson-Hasselbalch pH, the ratio for a target pH, added strong acid or base, and capacity, with feedback on ln and log.",
-   "blurb": "Buffer pH, target ratios, added acid or base and capacity, checked step by step.", "lede": "Add acid or base to a buffer and see why its pH barely moves."
+   "blurb": "Buffer pH, target ratios, added acid or base and capacity, checked step by step.", "lede": "Add acid or base to a buffer and see why its pH barely moves.",
+   "studio": true
   },
   {
    "slug": "units-sig-figs",

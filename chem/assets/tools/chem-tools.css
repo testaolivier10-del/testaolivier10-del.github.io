@@ -778,3 +778,162 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ls-root .tx-ls-parts:empty{display:none;}
 .ls-root .tx-ls-stage .lb-fig{flex:1;min-height:0;display:flex;margin:0;}
 .ls-root .tx-ls-stage .lb-svg{width:100%;height:100%;max-height:100%;}
+
+/* Tool Studio, the other trainers (chem-tools.js studioPane; docs/tools-calm-notes/chem.md):
+   the picture in .chem-ls-stage, the primary controls in .chem-ls-dock,
+   the reasoning in .chem-ls-why, the numbers and settings in .chem-ls-det. */
+.ls-root .chem-ls-stage{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;}
+.ls-root .chem-ls-stage > *{min-height:0;}
+.ls-root .chem-ls-stage .lb-fig{flex:1;min-height:0;display:flex;margin:0;}
+.ls-root .chem-ls-stage .lb-svg{width:100%;height:100%;max-height:100%;max-width:none;}
+.ls-root .chem-ls-stage .lb-desc{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.ls-root .chem-ls-dock{display:flex;flex-direction:column;gap:10px;}
+.ls-root .chem-ls-dock .bt-cue{display:none;}
+.ls-root .chem-ls-why .bt-cue{display:block;font:600 var(--ls-s)/1.45 var(--font-ui);color:var(--muted);}
+.ls-root .chem-ls-why .bt-cue-k{display:none;}
+.ls-root .chem-ls-why .tx-where,.ls-root .chem-ls-why .bt-say{margin:0;padding:0;background:none;border:0;box-shadow:none;font-size:var(--ls-m);}
+.ls-root .chem-ls-why details.bt-why > summary{display:none;}
+.ls-root .chem-ls-why .bt-why-b{font-size:var(--ls-m);}
+.ls-root .chem-ls-det .tx-head h2{font:900 var(--ls-m)/1.3 var(--font-ui);margin:0;}
+.ls-root .chem-ls-det .lb-side{display:flex;flex-direction:column;gap:10px;}
+.ls-root .chem-ls-det .bt-pick{flex-direction:column;align-items:stretch;}
+.ls-root .chem-ls-setup .ls-v{font-weight:700;}
+.ls-root .chem-ls-stage .bt-plot,.ls-root .chem-ls-stage .ic-svg{width:100%;height:100%;max-height:100%;}
+
+/* Buffer: the beaker over the graph; + OH⁻ and + H₃O⁺ side by side, Start over under them. */
+.ls-root .chem-ls-stage .bf-beaker{flex:1.1 1 0;display:flex;}
+.ls-root .chem-ls-stage .bf-plot{flex:1 1 0;display:flex;flex-direction:column;}
+.ls-root .chem-ls-stage .bf-plot svg{flex:1;min-height:0;}
+.ls-root .chem-ls-stage .bf-key{margin:0;justify-content:center;font-size:var(--ls-s);}
+.ls-root .chem-ls-dock .bf-add{min-height:56px;border-radius:18px;background:var(--surface2);font-size:var(--ls-l);}
+.ls-root .chem-ls-dock .bf-add span{font-size:var(--ls-s);}
+.ls-root .bf-ls-reset{width:100%;}
+
+/* Q vs K: the equation, then the vessel over its Q-K gauge (the meter and
+   the direction line are the stage's pills); the amounts in a compact grid. */
+.ls-root .chem-ls-stage .qk-eq{flex:none;text-align:center;font:800 var(--ls-m)/1.3 var(--font-ui);}
+.ls-root .chem-ls-stage .qk-beaker{flex:1;display:flex;}
+.ls-root .chem-ls-stage .qk-beaker .lb-fig,.ls-root .chem-ls-stage .ic-beaker .lb-fig{flex-direction:column;align-items:stretch;gap:4px;}
+.ls-root .chem-ls-stage .qk-beaker .lb-side,.ls-root .chem-ls-stage .ic-beaker .lb-side{flex:none;width:100%;max-width:420px;margin:0 auto;}
+.ls-root .chem-ls-stage .lb-side .lb-meter,.ls-root .chem-ls-stage .lb-side .lb-dir{display:none;}
+.ls-root .qk-amts{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:8px;}
+.ls-root .qk-amt{display:grid;grid-template-columns:44px 44px;grid-template-areas:"n c" "m p";justify-content:center;align-items:center;gap:4px 6px;padding:6px 4px;border-radius:16px;background:var(--surface2);}
+.ls-root .qk-amt .qk-n{grid-area:n;text-align:right;font-size:var(--ls-m);}
+.ls-root .qk-amt .qk-c{grid-area:c;text-align:left;font-size:var(--ls-m);}
+.ls-root .qk-amt [data-d="-1"]{grid-area:m;} .ls-root .qk-amt [data-d="1"]{grid-area:p;}
+.ls-root .qk-amt .bt-step{background:var(--white);}
+.ls-root .qk-run{width:100%;}
+
+/* ICE tables: the equation, then the bars beside the mixture (stacked on a
+   phone); in the drill the bars and mixture are the stage, the table stays
+   with the step being typed. */
+.ls-root .chem-ls-stage .ic-eqn{flex:none;margin:0;text-align:center;font:800 var(--ls-m)/1.3 var(--font-ui);}
+.ls-root .chem-ls-stage .ic-live{flex:1;min-height:0;display:flex;flex-direction:column;align-items:stretch;gap:6px;}
+.ls-root .ic-live .ic-bars{flex:1 1 0;min-height:0;display:flex;flex-direction:column;margin:0;}
+.ls-root .ic-live .ic-chart{flex:1;min-height:0;display:flex;}
+.ls-root .ic-live .ic-svg{width:100%;height:100%;max-height:100%;}
+.ls-root .ic-live .ic-cap{flex:none;margin:0;font-size:var(--ls-s);text-align:center;}
+.ls-root .ic-live .ic-beaker{flex:1.2 1 0;min-height:0;display:flex;}
+.ls-root .ic-live .ic-beaker .lb-fig{flex:1;min-height:0;display:flex;flex-direction:column;margin:0;}
+.ls-root .ic-live .ic-beaker .lb-svg{flex:1;min-height:0;width:100%;height:100%;max-width:none;}
+.ls-root .ic-live .ic-beaker .lb-side{flex:none;width:100%;max-width:420px;margin:0 auto;}
+.ls-root .ic-live .lb-meter,.ls-root .chem-ls-stage .ic-live .lb-dir{display:none;}
+/* The drill: the problem, the table (its rows are typed in place), then the
+   live bars and mixture; on a phone they sit side by side under the table
+   and the stage scrolls if it must. */
+.ls-root .ls-drill-text{flex:none;margin:0 0 8px;font:600 var(--ls-m)/1.5 var(--font-ui);color:var(--ink);}
+.ls-root .ls-drill-text .bt-eq{margin:0 0 6px;font-weight:800;}
+.ls-root .ls-drill-stage .ic-wrap{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;}
+.ls-root .ls-drill-stage .ic-wrap > .table-wrap{flex:none;margin:0;}
+.ls-root .ls-drill-stage .ic-live{flex:1 0 180px;min-height:180px;display:flex;flex-direction:row;align-items:stretch;gap:8px;}
+.ls-root .ls-drill-stage .ic-live .ic-beaker .lb-side{display:none;}
+.ls-root .cd-ice{font-size:var(--ls-s);}
+.ls-root .cd-ice th,.ls-root .cd-ice td{padding:6px 4px;}
+.ls-root .cd-ice caption{font:800 var(--ls-s) var(--font-ui);color:var(--muted);text-align:left;padding:0 0 6px;}
+.ls-root .cd-ice .cd-cell{width:100%;min-width:0;min-height:44px;font:600 var(--ls-m) var(--font-mono);}
+.ls-root .ic-solve{width:100%;}
+.ls-root .chem-ls-det .ic-tab .table-wrap{margin:0;}
+
+/* Particle diagrams (build): the equation over the before and after boxes;
+   each particle a cell with its count in the corner and − / + under it. */
+.ls-root .chem-ls-stage .pb-text{flex:none;text-align:center;}
+.ls-root .chem-ls-stage .pb-text .bt-eq{margin:0;font:800 var(--ls-m)/1.3 var(--font-ui);}
+.ls-root .chem-ls-stage .pb-text .bt-small{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.ls-root .chem-ls-stage .pb-boxes{flex:1;min-height:0;max-width:none;align-content:center;}
+.ls-root .chem-ls-stage .pb-fig figcaption{font:800 var(--ls-s) var(--font-ui);color:var(--muted);text-align:center;}
+.ls-root .pb-palette{grid-template-columns:repeat(auto-fit,minmax(96px,1fr));}
+.ls-root .pb-pal{position:relative;grid-template-columns:44px 44px;grid-template-areas:"c c" "m p";justify-content:center;gap:4px 6px;padding:6px 4px;border-radius:16px;background:var(--surface2);}
+.ls-root .pb-pal .pb-chip{grid-area:c;justify-content:center;border-radius:12px;font-size:var(--ls-m);}
+.ls-root .pb-pal .pb-minus{grid-area:m;} .ls-root .pb-pal .pb-plus{grid-area:p;}
+.ls-root .pb-pal .bt-step{background:var(--white);}
+.ls-root .pb-pal .pb-n{position:absolute;top:2px;right:6px;min-width:0;font-size:var(--ls-s);color:var(--cink);}
+.ls-root .pb-ls-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ls-root .pb-ls-show:empty{display:none;}
+.ls-root .pb-ls-show .ls-btn{width:100%;margin:0;}
+.ls-root .chem-ls-why .pb-fb{font:600 var(--ls-m)/1.5 var(--font-ui);}
+.ls-root .chem-ls-det .pb-tally-d > summary{min-height:0;cursor:default;pointer-events:none;color:var(--ink);}
+/* A phone stacks the two boxes (the stage is tall and narrow). */
+@media (max-width:599.98px){
+  .ls-root .chem-ls-stage .pb-boxes{display:flex;flex-direction:column;gap:6px;}
+  .ls-root .chem-ls-stage .pb-fig{flex:1 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;}
+  .ls-root .chem-ls-stage .pb-fig > div{flex:1;min-height:0;display:flex;justify-content:center;width:100%;}
+  .ls-root .chem-ls-stage .pb-fig svg{width:auto;height:100%;max-width:100%;}
+}
+.ls-root .pb-pal .pb-chip{padding-right:18px;}
+.ls-root .pb-pal .pb-n{top:8px;right:10px;}
+/* Pictures to pick from: two to a row, calm labels. */
+.ls-root .cd-pics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+.ls-root .cd-pics .bt-radio{margin:0;padding:6px;border:0;box-shadow:inset 0 0 0 1.5px var(--line);background:var(--surface2);}
+.ls-root .cd-pics .bt-radio:has(input:checked){box-shadow:inset 0 0 0 2px var(--cink);background:var(--ctint);}
+.ls-root .cd-pic-n{font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;}
+.ls-root .cd-pics svg{width:100%;height:auto;}
+.ls-root .cd-pics .bt-radio input{margin-top:4px;}
+.ls-root .cd-pics label{gap:2px;}
+.ls-root .ls-drill-stage .cd-fig{flex:1;min-height:0;display:flex;flex-direction:column;margin:0;align-items:stretch;}
+.ls-root .ls-drill-stage .cd-fig > svg{flex:1;min-height:0;width:100%;height:100%;}
+.ls-root .ls-drill-stage .cd-fig figcaption{flex:none;font:800 var(--ls-s) var(--font-ui);color:var(--muted);text-align:center;}
+.ls-root .cd-pics svg{max-height:84px;}
+/* Buffer drill: the beaker (or the two for capacity) fills the stage. */
+.ls-root .ls-drill-stage .bf-qb,.ls-root .ls-drill-stage .bf-two{flex:1;min-height:0;display:flex;gap:8px;}
+.ls-root .ls-drill-stage .bf-two > div{flex:1 1 0;min-width:0;min-height:0;display:flex;}
+.ls-root .ls-drill-stage .bf-qb .lb-fig,.ls-root .ls-drill-stage .bf-two .lb-fig{flex:1;min-height:0;display:flex;align-items:center;margin:0;}
+.ls-root .ls-drill-stage .bf-qb .lb-svg,.ls-root .ls-drill-stage .bf-two .lb-svg{flex:1;min-width:0;height:100%;max-height:100%;max-width:none;}
+.ls-root .ls-drill-stage .bf-two .lb-fig{flex-direction:column;}
+.ls-root .ls-drill-stage .bf-qb .lb-side{flex:none;}
+.ls-root .ls-drill-stage .bf-qnote,.ls-root .ls-drill-stage .bf-two + p{flex:none;margin:0;font-size:var(--ls-s);}
+.ls-root .ls-drill-stage .lb-desc{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.ls-root .ls-drill-stage .bf-qb .lb-fig{flex-direction:column;}
+.ls-root .ls-drill-stage .bf-qb .lb-svg{width:100%;}
+.ls-root .ls-drill-stage .bf-qb .lb-legend{display:flex;gap:6px 16px;flex-wrap:wrap;justify-content:center;}
+
+/* Units and sig figs: the question over the fraction; the quantities as
+   one row of tiles (scrolling sideways on a phone, a list on a desktop). */
+.ls-root .chem-ls-stage .us-stem{flex:none;margin:0;font:600 var(--ls-m)/1.5 var(--font-ui);}
+.ls-root .us-ls-stage{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:10px;}
+.ls-root .us-ls-stage .us-sticky{position:static;margin:0;padding:0;border:0;background:none;}
+.ls-root .us-ls-stage .us-frac{min-height:120px;align-items:center;}
+.ls-root .us-ls-stage .us-vals{font-size:var(--ls-m);}
+.ls-root .us-ls-stage .us-chip{font-size:var(--ls-m);padding:4px 12px;}
+.ls-root .us-ls-dock .us-tiles.ls-scroll{display:flex;}
+.ls-root .us-ls-dock .us-tile{flex:0 0 250px;margin:0;border:0;border-radius:16px;background:var(--surface2);padding:8px 10px;}
+.ls-root .us-ls-dock .us-seg label{border:0;box-shadow:inset 0 0 0 1.5px var(--line);border-radius:999px;}
+.ls-root .us-ls-dock .us-seg input:checked+label{box-shadow:inset 0 0 0 2px var(--cink);}
+@media (min-width:1000px){ .ls-root .us-ls-dock .us-tiles.ls-scroll{flex-direction:column;} .ls-root .us-ls-dock .us-tile{flex:none;} }
+.ls-root .us-ls-why .tx-where{margin:0;padding:0;background:none;border:0;font:600 var(--ls-m)/1.5 var(--font-ui);}
+.ls-root .us-ls-why .bt-cue-k{display:none;}
+.ls-root .us-ls-why .us-how{font:600 var(--ls-s)/1.45 var(--font-ui);color:var(--muted);}
+.ls-root .us-ls-q .chem-q-n{display:none;}
+.ls-root .us-ls-q{justify-content:center;}
+.ls-root .ls-drill .chem-num label{font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.ls-root .ls-drill .chem-num input{width:100%;min-height:52px;padding:0 16px;border:0;border-radius:14px;background:var(--white);box-shadow:inset 0 0 0 2px var(--line);color:var(--ink);font:600 var(--ls-l) var(--font-mono);}
+.ls-root .ls-drill .chem-q-actions .btn-press{width:100%;}
+.ls-root .chem-ls-stage .us-stem,.ls-root .us-ls-q .chem-q-stem{font:700 var(--ls-l)/1.4 var(--font-ui);letter-spacing:-.01em;}
+.ls-root .ls-drill .chem-q{margin:0;padding:0;background:none;border:0;box-shadow:none;border-radius:0;}
+.ls-root .us-ls-dock .us-seg label{min-height:44px;padding:0 4px;font-size:var(--ls-s);}
+.ls-root .us-tile{position:relative;} .ls-root .us-seg input{left:0;top:0;}
+.ls-root .us-ls-dock .us-seg{grid-template-rows:44px;align-items:center;} .ls-root .us-ls-dock .us-seg label{height:44px;}
+.ls-root .us-ls-dock .us-seg{height:44px;}
+.ls-root .ls-drill-stage > .ls-drill-text:only-child{margin:auto 0;font:600 var(--ls-l)/1.45 var(--font-ui);}
+.ls-root .ls-drill-stage > .ls-drill-text:only-child .bt-eq{font-size:var(--ls-m);}
+.ls-root .ls-drill-stage .cd-fig > svg{width:100% !important;height:100% !important;max-width:none !important;max-height:100% !important;}
+.ls-root .us-ls-dock .us-tile{display:block;} .ls-root .us-ls-dock .us-tile legend{float:left;width:100%;margin:0 0 8px;} .ls-root .us-ls-dock .us-seg{clear:both;}
