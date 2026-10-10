@@ -338,7 +338,7 @@
     function renderQ(result){
       var p = st.quiz;
       var head = '<span class="bn-k">' + (p.kind === 'estimate' ? 'Estimate the TBSA' : 'Paint it') + ' · ' + (p.q.child ? 'child' : 'adult') + '</span>' +
-        '<strong>' + esc(qText(p)) + '</strong><div class="bn-tally">' + st.tally[0] + ' of ' + st.tally[1] + ' right</div>';
+        '<strong>' + esc(qText(p)) + '</strong>' + (st.tally[1] ? '<div class="bn-tally">' + st.tally[0] + ' of ' + st.tally[1] + ' right</div>' : '');
       var body = '';
       if(p.kind === 'estimate'){
         body = '<div class="bn-choices">' + choices(p.q).map(function(v){ return '<button type="button" data-ans="' + v + '">' + fmt(v) + '%</button>'; }).join('') + '</div>';
@@ -380,6 +380,7 @@
       var why = breakdown(ids, q.child) + ' = <b>' + fmt(ans) + '%</b>.';
       var trap = !ok && Math.abs(v - alt) < 0.01 ? ' ' + fmt(v) + '% is the ' + (q.child ? 'adult' : 'child') + ' chart: ' + (q.child ? 'a child’s head is 18% and each leg 13.5%.' : 'in an adult the head is 9% and each leg 18%.') : '';
       if(!ok && !trap && Math.abs(v - ans / 2) < 0.01) trap = ' Half the answer: each limb counts front and back together.';
+      done(ok, 'Burn estimate: ' + q.text.replace(/\.$/, ''));
       renderQ('<div class="bn-verdict ' + (ok ? 'ok' : 'no') + '">' + (ok ? 'Right: ' : 'Not quite: ') + fmt(ans) + '%.</div><p>' + why + trap + '</p>' +
         '<div class="bn-actions"><button type="button" class="bn-next">Next question</button></div>');
       qpanel.querySelectorAll('[data-ans]').forEach(function(b){
@@ -389,7 +390,6 @@
       });
       paint();
       if(window.LevlAnnounce) window.LevlAnnounce.answer(ok, breakdown(ids, q.child).replace(/<[^>]+>/g, '') + ' equals ' + fmt(ans) + ' percent.');
-      done(ok, 'Burn estimate: ' + q.text.replace(/\.$/, ''));
       var n = qpanel.querySelector('.bn-next'); if(n) n.focus({ preventScroll:true });
     }
     function answerPaint(){
@@ -412,12 +412,12 @@
            a === 4.5 ? 'Half a nine: the front or back of an arm, or of an adult head.' :
            a === 1 ? 'That is the genitals.' : 'Adult regions come in 9s and 4.5s, plus the 1% genitals.');
       }
+      done(ok, 'Paint a ' + q.target + '% burn' + (q.child ? ' on a child' : ''));
       renderQ('<div class="bn-verdict ' + (ok ? 'ok' : 'no') + '">' + (ok ? 'Right: exactly ' + q.target + '%.' : 'You painted ' + fmt(t) + '%, not ' + q.target + '%.') + '</div>' +
         '<p>' + sum + ' = <b>' + fmt(t) + '%</b>.' + fix + (ok ? ' Many combinations work; what matters is knowing each region’s share.' : '') + '</p>' +
         '<div class="bn-actions"><button type="button" class="bn-next">Next question</button></div>');
       paint();
       if(window.LevlAnnounce) window.LevlAnnounce.answer(ok, 'You painted ' + fmt(t) + ' percent.' + fix);
-      done(ok, 'Paint a ' + q.target + '% burn' + (q.child ? ' on a child' : ''));
       var n = qpanel.querySelector('.bn-next'); if(n) n.focus({ preventScroll:true });
     }
 

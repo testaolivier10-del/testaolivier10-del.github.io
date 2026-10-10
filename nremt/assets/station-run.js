@@ -366,7 +366,7 @@
                 return '<li>' + esc(st.text) + (st.why ? '<small>' + esc(st.why) + '</small>' : '') + '</li>';
               }).join('') + '</ul>' +
             '</div>'
-          : '<div class="run-okbox">Both critical items ticked.</div>') +
+          : '<div class="run-okbox">' + (station.steps.filter(function(st){ return st.critical; }).length === 2 ? 'Both critical items ticked.' : 'Every critical item ticked.') + '</div>') +
 
         (flagged.some(Boolean)
           ? '<div class="run-flagbox"><b>Critical criteria that lit up:</b><ul>' +
@@ -387,6 +387,16 @@
 
     document.getElementById('runAgain').addEventListener('click', function(){ begin(station); });
     document.getElementById('runOther').addEventListener('click', picker);
+    /* The result is much shorter than the run it replaces, so without this the
+       page collapses under the student and they land in the reading guide. */
+    var card = mount.querySelector('.run-card');
+    if(card){
+      card.setAttribute('tabindex', '-1');
+      var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      try{ card.focus({ preventScroll: true }); }catch(e){}
+      var top = card.getBoundingClientRect().top;
+      if(top < 80 || top > window.innerHeight * 0.6) card.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
+    }
   }
 
   /* ---- Mode switch ------------------------------------------------------- */

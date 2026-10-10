@@ -106,7 +106,15 @@
 
   var deck = [], at = 0, right = 0, answered = false;
 
-  function start(){ deck = shuffle(CARDS).slice(0, 8); at = 0; right = 0; render(); }
+  /* formulary.html?gw=<card id> (Review's "Try it again") deals that card first. */
+  var firstId = (function(){ try{ return new URLSearchParams(location.search).get('gw'); }catch(e){ return null; } })();
+  function start(){
+    var first = firstId && CARDS.filter(function(c){ return c.id === firstId; })[0];
+    firstId = null;
+    deck = shuffle(CARDS.filter(function(c){ return c !== first; }));
+    if(first) deck.unshift(first);
+    deck = deck.slice(0, 8); at = 0; right = 0; render();
+  }
 
   function render(){
     if(at >= deck.length){
@@ -180,7 +188,7 @@
     });
     if(window.NremtToolResults) window.NremtToolResults.record({
       tool: 'formulary', id: 'gw:' + c.id, correct: ok,
-      label: c.drug + ': ' + c.pt, href: 'formulary.html#gw'
+      label: c.drug + ': ' + c.pt, href: 'formulary.html?gw=' + encodeURIComponent(c.id) + '#gw'
     });
     if(window.LevlAnnounce) window.LevlAnnounce.say((ok ? 'Right. ' : 'Not this time. ') + (c.give ? 'Give it. ' : 'Withhold it. ') + (line ? txt(line) : '') + (c.note ? ' ' + c.note : ''));
   }

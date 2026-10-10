@@ -298,13 +298,22 @@
     return shuffle(out);
   }
 
+  /* Some meanings use the term in an example ("as the cricoid cartilage
+     is"); in Build that prints the answer, so the term shows as a blank. */
+  function masked(t){
+    var term = String(t.term || '');
+    if(!term) return esc(t.meaning);
+    var re = new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+    return esc(t.meaning).replace(re, '<span class="wr-blank" aria-label="the term">____</span>');
+  }
+
   function renderBuild(){
     var t = state.cur, card = app.querySelector('.wr-card');
     var need = labeled(t).length;
     var cards = buildCards(t);
     card.innerHTML =
       '<p class="wr-eyebrow">Build</p>' +
-      '<h2 class="wr-prompt">Build the term that means: <span>' + esc(t.meaning) + '</span></h2>' +
+      '<h2 class="wr-prompt">Build the term that means: <span>' + masked(t) + '</span></h2>' +
       '<p class="wr-small">It has ' + need + ' parts. Place them in order, first to last; linking vowels are added for you.</p>' +
       '<div class="wr-slots" aria-label="Your term, in order" aria-live="polite"></div>' +
       '<p class="wr-small wr-bank-h">Word parts</p>' +

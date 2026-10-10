@@ -606,7 +606,7 @@
       else if(g.ok && g.exact) v = '<p class="lp-verdict ok" tabindex="-1"><b>Correct:</b> ' + esc(lab.name) + '.</p>';
       else if(g.ok) v = '<p class="lp-verdict ok" tabindex="-1"><b>Accepted.</b> Spelling: <b>' + esc(lab.name) + '</b>.</p>';
       else {
-        var why = g.gaveUp ? '' : g.side ? ' Right structure, but the side or position word is missing or wrong.' : g.near ? ' “' + esc(g.typed || '') + '” names a different structure: ' + esc(g.near.name) + '.' : g.pick ? ' That mask covers <b>' + esc(g.pick.name) + '</b>.' : '';
+        var why = g.gaveUp ? '' : g.side ? ' Right structure, but the side or position word is missing or wrong.' : g.near ? ' “' + esc(g.near.name) + '” is a different label on this figure.' : g.pick ? ' That mask covers <b>' + esc(g.pick.name) + '</b>.' : '';
         v = '<p class="lp-verdict no" tabindex="-1"><b>Not quite.</b> It is <b>' + esc(lab.name) + '</b>.' + why + '</p>';
       }
       return v + see3d(lab) + (lab.fn ? '<p class="lp-fn">' + lab.fn + '</p>' : '') +

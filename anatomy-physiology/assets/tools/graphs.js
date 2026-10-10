@@ -527,6 +527,18 @@
       var tag = el('text', { x: tx, y: c.plotBottom + (cats ? 0 : 0) - 6, 'text-anchor': px > W - MR - 50 ? 'end' : px < ML + 50 ? 'start' : 'middle', 'class': 'gr-cur-tag' }, xText(cursorX));
       L.appendChild(tag);
       L.appendChild(el('rect', { x: px - 9, y: MT - 12, width: 18, height: 12, rx: 6, 'class': 'gr-cur-grip' }));
+      /* The cursor's x readout sits on the same baseline as a region's name
+         ("normal blood pH"); where they would overlap, the region name steps
+         up a line so both stay readable. */
+      try{
+        var tb = tag.getBBox();
+        c.svg.querySelectorAll('.gr-rlabel').forEach(function(t){
+          t.removeAttribute('transform');
+          var b = t.getBBox();
+          var hit = b.x < tb.x + tb.width + 4 && tb.x < b.x + b.width + 4 && b.y < tb.y + tb.height && tb.y < b.y + b.height;
+          if(hit) t.setAttribute('transform', 'translate(0 -16)');
+        });
+      }catch(e){}
     }
     function setCursor(x, from){
       cursorX = snap(x); cursorOn = true;
@@ -753,7 +765,7 @@
           if(form.getAttribute('data-done')) return;
           var raw = input.value.replace(/[−–]/g, '-').replace(/,/g, '.').replace(/[^0-9.\-]/g, '');
           var v = parseFloat(raw);
-          if(!isFinite(v)){ body.querySelector('.gr-hint').textContent = 'Type a number, for example ' + fmt(q.answer > 0 ? Math.round(q.answer * 1.3) : q.answer - 5) + '.'; input.focus(); return; }
+          if(!isFinite(v)){ body.querySelector('.gr-hint').textContent = 'Type a number in the box, digits only' + (q.answer % 1 ? ', with a decimal point if you need one' : '') + '.'; input.focus(); return; }
           form.setAttribute('data-done', '1');
           input.disabled = true; form.querySelector('button').disabled = true;
           var ok = Math.abs(v - q.answer) <= q.tol + 1e-9;

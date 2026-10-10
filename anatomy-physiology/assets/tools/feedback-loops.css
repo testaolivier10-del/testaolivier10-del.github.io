@@ -174,5 +174,5 @@ a.fl-tag:hover{text-decoration:underline;}
 .fl-g-name{font-size:14px;}
 @media (max-width: 899px){
   .fl-ringfig .fl-ring{max-width:290px;}
-  .fl-livepanel .fl-push{font-size:13.5px;padding:8px 14px;}
+  .fl-livepanel .fl-push{font-size:13.5px;padding:8px 14px;min-height:42px;}
 }

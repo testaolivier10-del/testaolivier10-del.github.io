@@ -55,12 +55,12 @@
 
   .card h2{scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
   .mn-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px;}
-  .mn-test{font:800 12.5px var(--font-ui);padding:7px 13px;border-radius:999px;border:2px solid var(--accent);background:var(--white);color:var(--accent-text);cursor:pointer;}
+  .mn-test{font:800 12.5px var(--font-ui);padding:7px 14px;min-height:42px;border-radius:999px;border:2px solid var(--accent);background:var(--white);color:var(--accent-text);cursor:pointer;}
   .mn-test[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--on-accent);}
-  .mn-call{font:800 12.5px var(--font-ui);color:var(--accent-text);text-decoration:none;border-bottom:2px solid var(--tint-accent);}
+  .mn-call{font:800 12.5px var(--font-ui);color:var(--accent-text);text-decoration:none;border-bottom:2px solid var(--tint-accent);display:inline-block;padding:10px 0 4px;}
   .mn-call:hover{border-bottom-color:var(--accent);}
   .card.is-testing .row .mn-hide{display:none;}
-  .mn-in{flex:1;min-width:0;max-width:200px;font:700 14px var(--font-ui);padding:5px 8px;border:2px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);}
+  .mn-in{flex:1;min-width:0;max-width:260px;min-height:40px;font:700 15px var(--font-ui);padding:6px 10px;border:2px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);}
   .mn-in:focus{outline:none;border-color:var(--accent);}
   .mn-mark{flex:none;align-self:flex-start;font:800 11.5px var(--font-mono);padding:2px 8px;border-radius:999px;max-width:40%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .mn-mark.ok{background:var(--tint-good);color:var(--good-text);}
@@ -72,6 +72,13 @@
   .card:target{animation:mnFlash 1.6s ease;}
   @keyframes mnFlash{0%,40%{box-shadow:0 0 0 4px var(--accent);border-radius:12px}100%{box-shadow:none}}
   @media (prefers-reduced-motion:reduce){.card:target{animation:none;}}
+
+  /* Phones: a compact hero, so the interactive part starts on the first screen. */
+  @media (max-width:640px){
+    .hero{padding:20px;}
+    .hero h1{font-size:26px;margin-bottom:8px;}
+    .hero .lede{font-size:14.5px;line-height:1.5;}
+  }
 </style>
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
