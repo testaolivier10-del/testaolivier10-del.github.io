@@ -97,7 +97,7 @@
   .vc{border:2px solid var(--line);border-radius:14px;background:var(--white);padding:14px;margin:0 0 14px;}
   .vc-age{display:flex;justify-content:space-between;align-items:baseline;font:900 11px var(--font-ui);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
   .vc-age output{font:800 20px var(--font-ui);text-transform:none;letter-spacing:0;color:var(--ink);}
-  #vcAge{width:100%;margin:8px 0 2px;accent-color:var(--accent);height:28px;}
+  #vcAge{width:100%;margin:8px 0 2px;accent-color:var(--accent);height:40px;}
   .vc-ticks{position:relative;height:14px;margin:0 11px;font:600 10px var(--font-mono);color:var(--muted);}
   .vc-ticks span{position:absolute;transform:translateX(-50%);white-space:nowrap;}
   .vc-ticks span:first-child{transform:none;}
@@ -105,11 +105,12 @@
   .vc-row{font-size:13px;color:var(--muted);margin:8px 0 12px;line-height:1.5;}
   .vc-row b{color:var(--ink);}
   .vc-kind{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
-  .vc-kind button{font:800 12.5px var(--font-ui);padding:6px 11px;border-radius:999px;border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;}
+  .vc-kind button{font:800 12.5px var(--font-ui);padding:6px 12px;min-height:40px;border-radius:999px;border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;}
   .vc-kind button.on{background:var(--navy);border-color:var(--navy);color:var(--on-accent);}
   .vc-in{display:inline-flex;align-items:center;gap:8px;font:700 13px var(--font-mono);color:var(--muted);}
   .vc-in input{width:150px;font:800 20px var(--font-mono);padding:8px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);}
   .vc-in input:focus{outline:none;border-color:var(--accent);}
+  .vc-in input::placeholder{font:600 14px var(--font-ui);color:var(--muted);}
   .vc-gauge{position:relative;height:16px;border-radius:8px;background:var(--track);margin:16px 0 22px;}
   .vc-band{position:absolute;top:0;bottom:0;background:var(--tint-good);border:2px solid var(--good-text);border-radius:8px;transition:left .25s,right .25s;}
   .vc-lab{position:absolute;top:19px;transform:translateX(-50%);font:700 10.5px var(--font-mono);color:var(--muted);}
@@ -122,6 +123,16 @@
   #pedsVitals tbody tr.vc-on td{background:var(--tint-accent);}
   #pedsVitals tbody tr.vc-on td:first-child{box-shadow:inset 4px 0 0 var(--accent);font-weight:800;}
   @media (prefers-reduced-motion:reduce){.vc-band,.vc-pin,#pedsVitals tbody tr{transition:none;}}
+
+  /* Phones: a compact hero, so the interactive part starts on the first screen. */
+  @media (max-width:640px){
+    .hero{padding:20px;}
+    .hero h1{font-size:26px;margin-bottom:8px;}
+    .hero .lede{font-size:14.5px;line-height:1.5;}
+  }
+  .vc-in input{color-scheme:light dark;}
+  .vc-in input::-webkit-inner-spin-button,.vc-in input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
+  .vc-in input{-moz-appearance:textfield;}
 </style>
 </head>
 <body>
