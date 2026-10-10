@@ -495,7 +495,7 @@ if (isMain) {
   for (const t of pages.tools || []) {
     const bad = m => { console.log(`pages.json tool ${t.slug}: FAIL: ${m}`); metaFails++; };
     if (/\bAP\b/.test(t.desc || '')) bad('no "AP" in desc (it is the meta description)');
-    for (const k of ['name', 'title', 'blurb']) { if (!t[k]) bad(`"${k}" is required`); for (const p of trademarkProblems(t[k])) bad(`${k}: ${p}`); }
+    for (const k of ['name', 'title', 'blurb', 'lede']) { if (!t[k] && k !== 'lede') bad(`"${k}" is required`); for (const p of trademarkProblems(t[k])) bad(`${k}: ${p}`); }
     if (!t.slug || hasApToken(t.slug)) bad(`slug "${t.slug}" is missing or contains the token "ap"`);
     if (!['simulator', 'skill', 'drill'].includes(t.kind)) bad('kind must be simulator, skill or drill');
     if (!exists(join(DATA, 'tools', `${t.slug}.json`))) bad(`no content file chem/data/tools/${t.slug}.json`);

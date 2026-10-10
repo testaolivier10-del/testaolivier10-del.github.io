@@ -29,10 +29,11 @@
     if(!ctxs.length){ host.innerHTML = '<p class="chem-soon">The particle reactions arrive with their unit.</p>'; return; }
     var ci = 0, seed = 1 + Math.floor(Math.random() * 9999), ctx, sp, K, n, V = 1, beaker = null, busy = false, last = null;
     host.innerHTML = '<section class="bt-problem qk-card" aria-labelledby="qk-h"><div class="tx-head"><h2 id="qk-h" class="qk-eq bt-eq"></h2><p class="bt-small qk-setup"></p></div>' +
-      '<div class="qk-stage"><div class="qk-beaker"></div><div class="qk-side"><div class="qk-amts" role="group" aria-label="Change the amounts"></div><div class="qk-vol"></div>' +
-      '<div class="bt-buttons"><button type="button" class="btn-press sm qk-run">Let it react</button><button type="button" class="bt-btn qk-new">New mixture</button></div></div></div>' +
-      '<div class="qk-why" aria-hidden="true"></div><div class="bt-pick qk-pick"></div></section>';
-    var pick = host.querySelector('.qk-pick');
+      '<div class="qk-stage"><div class="qk-beaker"></div><div class="qk-side"><div class="qk-amts" role="group" aria-label="Change the amounts"></div>' +
+      '<div class="bt-buttons"><button type="button" class="btn-press sm qk-run">Let it react</button></div><div class="qk-why"></div></div></div>' +
+      T.moreHtml('<div class="qk-vol"></div><div class="bt-pick qk-pick"></div><div class="bt-buttons"><button type="button" class="bt-btn qk-new">New mixture</button></div>', 'volume of the vessel, another reaction, new mixture') + '</section>';
+    var pick = host.querySelector('.qk-pick'), start = T.cue('Tap + or − to add or remove particles, then press Let it react.');
+    host.querySelector('.qk-side').insertBefore(start.el, host.querySelector('.qk-amts'));
     if(ctxs.length > 1){
       var sel = T.choiceSelect({ label: 'Reaction', options: ctxs.map(function(c, i){ return { value: i, label: M.eqHtml(c.species).replace(/<[^>]+>/g, '') }; }), value: 0, onChange: function(v){ ci = +v; seed++; build(); } });
       sel.el.classList.add('bt-inline'); pick.appendChild(sel.el);
@@ -73,7 +74,9 @@
       host.querySelectorAll('.qk-amt .bt-step[data-d="1"]').forEach(function(b){ b.disabled = busy || c[sp[+b.getAttribute('data-i')].draw] >= 14; });
       beaker.update({ counts: c, Q: ok ? q : (sp.some(function(s, j){ return s.nu < 0 && n[j] <= 0; }) ? Infinity : 0), K: K, note: note });
       host.querySelector('.qk-run').disabled = busy;
-      host.querySelector('.qk-why').innerHTML = why(q, ok, note, i, d);
+      if(note) start.done();
+      var w = why(q, ok, note, i, d);
+      T.explain(host.querySelector('.qk-why'), w.head, w.body);
       last = q;
     }
     function why(q, ok, note, i, d){
@@ -81,8 +84,8 @@
         return '[' + s.html + '] = ' + (whole ? Math.round(c) + ' × ' + M.fmt(ctx.per, 2) + ' mol' : M.fmt(n[j], 3) + ' mol') + ' ÷ ' + F(V, 2) + ' L = ' + M.fmt(n[j] / V, 3) + ' M'; }).join('; ');
       if(!ok){
         var noR = sp.some(function(s, j){ return s.nu < 0 && M.inQ(s) && n[j] <= 0; }), noP = sp.some(function(s, j){ return s.nu > 0 && M.inQ(s) && n[j] <= 0; });
-        if(noR && noP) return '<p class="tx-where"><b>A reactant and a product are both at zero.</b> Q is not defined, and neither direction can run: each needs a species that is not there.</p>';
-        return '<p class="tx-where"><b>' + (noR ? 'A reactant is at zero.' : 'A product is at zero.') + '</b> ' + (noR ? 'Q has a zero on the bottom, so Q is larger than any K: only the reverse reaction can run.' : 'Q = 0, below any K: the forward reaction must run.') + '</p>';
+        if(noR && noP) return { head: '<b>A reactant and a product are both at zero.</b>', body: '<p>Q is not defined, and neither direction can run: each needs a species that is not there.</p>' };
+        return { head: '<b>' + (noR ? 'A reactant is at zero.' : 'A product is at zero.') + '</b>', body: '<p>' + (noR ? 'Q has a zero on the bottom, so Q is larger than any K: only the reverse reaction can run.' : 'Q = 0, below any K: the forward reaction must run.') + '</p>' };
       }
       var c = window.ApChemBeaker.pure.qk(q, K), g = dn();
       var head = c.dir === 'eq' ? 'Q = K: at equilibrium.' : c.dir === 'fwd' ? 'Q < K: it will run forward.' : 'Q > K: it will run in reverse.';
@@ -96,7 +99,7 @@
         var prod = sp[i].nu > 0, up = (d > 0) === prod;
         body += (d > 0 ? 'Adding ' : 'Removing ') + (prod ? 'a product' : 'a reactant') + (up ? ' raised Q. ' : ' lowered Q. ') + toK;
       } else body += toK;
-      return '<p class="tx-where"><b>' + head + '</b> ' + body + '<span class="bt-small qk-conc">' + conc + '.</span></p>';
+      return { head: '<b>' + head + '</b> ' + (c.dir === 'fwd' ? 'Q = ' + M.fmt(q, 3) + ' is below K.' : c.dir === 'rev' ? 'Q = ' + M.fmt(q, 3) + ' is above K.' : ''), body: '<p>' + body + '</p><p class="bt-small qk-conc">' + conc + '.</p>' };
     }
     function run(){
       if(busy) return;
@@ -113,8 +116,8 @@
         var c = counts(), ex = sp.map(function(s, j){ return s.html + ' ' + M.fmt(n[j], 3) + ' mol'; }).join(', ');
         var whole = sp.every(function(s, j){ return Math.abs(n[j] / ctx.per - Math.round(n[j] / ctx.per)) < 0.02; });
         draw('Reacted until Q = K.');
-        var w = host.querySelector('.qk-why');
-        w.insertAdjacentHTML('beforeend', '<p class="bt-small qk-ran">Equilibrium amounts: ' + ex + '.' + (whole ? '' : ' These are not whole particles, so the picture rounds to the nearest one; the readout uses the exact amounts.') + ' At equilibrium the reaction has not stopped: forward and reverse run at the same rate.</p>');
+        var w = host.querySelector('.qk-why .bt-why-b');
+        w.insertAdjacentHTML('afterbegin', '<p class="bt-small qk-ran">Equilibrium amounts: ' + ex + '.' + (whole ? '' : ' These are not whole particles, so the picture rounds to the nearest one; the readout uses the exact amounts.') + ' At equilibrium the reaction has not stopped: forward and reverse run at the same rate.</p>');
         n = target;
         void c;
       };

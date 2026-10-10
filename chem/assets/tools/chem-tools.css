@@ -537,7 +537,10 @@
 .tx-band-t{font:800 11px var(--font-ui);fill:var(--muted);}
 .tx-lm{font:900 12px var(--font-ui);fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
 .tx-ctl .bt-slider label{font-size:13px;}
-.tx-btns{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;}
+.tx-ctl{display:grid;gap:6px;}
+.tx-btns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;max-width:360px;}
+.tx-side{display:grid;gap:10px;align-content:start;}
+.tx-ind .tx-where{background:var(--paper);border-left-color:var(--line);font-size:14px;}
 .tx-btns .bt-btn{padding:6px 4px;font-size:13px;}
 .tx-run[aria-pressed="true"]{background:var(--ctint);border-color:var(--cink);}
 .tx-beaker .lb-fig{grid-template-columns:minmax(0,1fr);align-items:center;}
@@ -554,8 +557,8 @@
 .tx-scale{margin:0;}
 .tx-pick .bt-select{flex-direction:row;align-items:center;gap:8px;}
 @media (min-width:900px){
-  .tx-stage{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-areas:"g b" "c b";column-gap:20px;}
-  .tx-graph{grid-area:g;} .tx-ctl{grid-area:c;} .tx-beaker{grid-area:b;}
+  .tx-stage{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-areas:"c b" "g b";column-gap:20px;align-items:start;}
+  .tx-graph{grid-area:g;} .tx-ctl{grid-area:c;} .tx-side{grid-area:b;}
   .tx-beaker .lb-svg{max-width:400px;}
 }
 @media (prefers-reduced-motion:reduce){.tx-beaker .lb-liquid{transition:none;}}
@@ -685,7 +688,9 @@
 .us-seg label{display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:9px;border:2px solid var(--line);background:var(--white);font:800 13px var(--font-ui);cursor:pointer;text-align:center;}
 .us-seg input:checked+label{border-color:var(--cink);background:var(--ctint);color:var(--cink);}
 .us-seg input:focus-visible+label{outline:3px solid var(--cink);outline-offset:2px;}
-.us-sticky{position:sticky;top:calc(var(--site-header-h,64px) + 4px);z-index:2;background:var(--white);padding:8px 0;margin:0 0 8px;border-bottom:2px solid var(--line);display:grid;gap:8px;}
+.us-sticky{background:var(--white);padding:8px 0;margin:0 0 8px;border-bottom:2px solid var(--line);display:grid;gap:8px;}
+/* Pinned only on a phone, where the tiles run off the screen; on wide screens the whole setup fits and a pinned bar would cover the tiles. */
+@media (max-width:700px){.us-sticky{position:sticky;top:calc(var(--site-header-h,64px) + 4px);z-index:2;}}
 .us-frac{overflow-x:auto;min-height:44px;display:flex;justify-content:center;}
 .us-none{margin:0;align-self:center;}
 .us-sticky .tx-where{font-size:14px;padding:8px 12px;}
@@ -708,3 +713,29 @@
 .us-pad{color:var(--muted);}
 .us-sum{border-top:2px solid var(--ink);padding-top:2px;color:var(--cink);}
 @media (prefers-reduced-motion:reduce){.us-chip{transition:none;}}
+
+/* Simple first, depth on tap (2026-10 simplify pass): a compact header at
+   every width, one "Start here" cue next to the first control, extra
+   settings behind "More options", and each explanation as one line with
+   "Why?" for the reasoning. */
+body[data-app^="tool-"] .chem-hero{padding:18px 24px;margin-bottom:0;}
+body[data-app^="tool-"] .chem-hero h1{font-size:clamp(24px,3vw,34px);line-height:1.15;margin:0 0 6px;max-width:none;}
+body[data-app^="tool-"] .chem-hero .lede{margin:0;font-size:16px;}
+body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
+.bt-cue{margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font:800 15px/1.4 var(--font-ui);color:var(--ink);}
+.bt-cue-k{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--cink);color:var(--white);font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;}
+.bt-cue.is-done .bt-cue-k{background:var(--paper);color:var(--muted);border:1px solid var(--line);}
+.bt-cue.is-done{color:var(--muted);font-weight:700;}
+.bt-more{border-top:2px solid var(--line);padding-top:4px;}
+.bt-more>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font:900 14px var(--font-ui);color:var(--cink);}
+.bt-more-hint{font:700 13px var(--font-ui);color:var(--muted);}
+.bt-more-b{display:grid;gap:12px;padding:4px 0 8px;}
+.bt-more-b>*{min-width:0;}
+.bt-say{display:grid;gap:2px;}
+.bt-say-h{margin:0;}
+.bt-why>summary{cursor:pointer;display:inline-flex;align-items:center;min-height:40px;font:900 14px var(--font-ui);color:var(--cink);}
+.bt-why[hidden]{display:none;}
+.bt-why-b{font:600 14px/1.55 var(--font-ui);display:grid;gap:6px;padding-bottom:4px;}
+.bt-why-b p{margin:0;}
+.pb-tally-d>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:6px;font:900 14px var(--font-ui);color:var(--cink);}
+.pb-tally-s{font-weight:700;color:var(--muted);}

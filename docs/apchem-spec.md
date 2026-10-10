@@ -296,6 +296,15 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    (`titration.species/region/cross`, `bufferState`, `equilibrate`, `atomsOf`, unit cancelling,
    `units.generate().setup`) in `chem-tool-math.js`, tested in `scripts/test/apchem-explore.test.mjs`;
    listed for accuracy review in the notes file.
+22. (2026-10-10, simplify pass) **Simple first, depth on tap.** Tool header is the name plus one plain
+   sentence (`pages.json` tool `lede`, falling back to `blurb`; blurbs still feed the hub cards). Each
+   explorer leads with its picture and one "Start here" cue (`ApChemTools.cue`) next to the first control;
+   kind/reaction pickers, single-step buttons, volume, New numbers and scale notes go behind one "More
+   options" (`moreHtml`); each live explanation is one line with "Why?" for the reasoning and worked math
+   (`explain`, which keeps an open "Why?" open while dragging). Drills: the kind picker sits behind "More
+   options" under the problem; "About this drill" stays closed at every width. Titration: burette slider,
+   Run and Start over above the curve, flask and indicator beside it. Units tool: the cancelling bar is
+   sticky on phones only (it covered tiles on wide screens). No content, ids or recording changed.
 
 ## 8. Open items for the owner
 
