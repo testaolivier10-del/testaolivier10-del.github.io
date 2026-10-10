@@ -43,6 +43,8 @@
       var cs = getComputedStyle(host);
       col.font = (cs.getPropertyValue('--font-ui') || '').trim() || 'sans-serif';
       ['--bio-para', '--bio-para-fill', '--bio-aff', '--bio-aff-fill', '--bio-eff', '--bio-symp', '--bio-symp-fill', '--ink', '--muted', '--white', '--bio-s1', '--line'].forEach(function(k){ col[k] = (cs.getPropertyValue(k) || '').trim() || '#888'; });
+      // the molecule palette (bio-tools.css, .ez-stage): protein, substrate, inhibitor, each a light and a dark stop and an edge
+      ['protA', 'protB', 'protE', 'site', 'subA', 'subB', 'subE', 'inhA', 'inhB', 'inhE', 'shadow'].forEach(function(k){ col[k] = (cs.getPropertyValue('--ez-' + k) || '').trim() || '#888'; });
     }
     function layout(){
       var w = Math.max(280, host.clientWidth || 600);
@@ -117,7 +119,7 @@
         var site = siteOf(f.e), k = Math.min(1, f.t / 0.35);
         p.x = f.x0 + (site.x - f.x0) * k; p.y = f.y0 + (site.y - f.y0) * k;
         if(f.t > 0.65){
-          [-1, 1].forEach(function(sg){ PROD.push({ x: site.x, y: site.y, vx: Math.cos(f.e.angle + Math.PI) * 30 + sg * 22, vy: sg * 30, life: 1.6 }); });
+          [-1, 1].forEach(function(sg){ PROD.push({ x: site.x, y: site.y, vx: Math.cos(f.e.angle + Math.PI) * 30 + sg * 22, vy: sg * 30, life: 1.6, k: sg, a: f.e.angle + sg * 0.6 }); });
           made++; f.e.busy = 0; p.fly = null; var n = free(); p.x = n.x; p.y = n.y; // a new substrate drifts in elsewhere
           if(rnd() < 0.5){ p.x = rnd() < 0.5 ? 12 : W - 12; }
         }
@@ -125,44 +127,103 @@
       PROD = PROD.filter(function(q){ q.x += q.vx * dt; q.y += q.vy * dt; q.life -= dt; return q.life > 0; });
     }
     function siteOf(e){ var R = ENZ.R; return { x: e.x + Math.cos(e.angle) * R * 0.62, y: e.y + Math.sin(e.angle) * R * 0.62 }; }
-    /* Substrate: a wedge cut to fit the active-site notch (apex inward).
-       A competitive inhibitor is the same wedge (it looks like substrate)
-       with a bar across it. */
-    function wedgeShape(x, y, a, fill, stroke, bar){
-      var R = ENZ.R; g.save(); g.translate(x, y); g.rotate(a || 0); g.fillStyle = fill; g.strokeStyle = stroke; g.lineWidth = 1.6;
-      g.beginPath(); g.moveTo(-0.3 * R, 0); g.lineTo(0.32 * R, -0.36 * R); g.lineTo(0.32 * R, 0.36 * R); g.closePath(); g.fill(); g.stroke();
-      if(bar){ g.lineWidth = 2.4; g.beginPath(); g.moveTo(0.05 * R, -0.3 * R); g.lineTo(0.05 * R, 0.3 * R); g.stroke(); }
-      else { g.beginPath(); g.moveTo(0.06 * R, -0.2 * R); g.lineTo(0.06 * R, 0.2 * R); g.stroke(); }
+    /* Molecule shapes (local units of R, apex at -x so it points into the
+       active site). Substrate: a rounded wedge with the bond that breaks
+       drawn across it; its products are the two halves. A competitive
+       inhibitor has the same wedge (so it fits the site) with a ring hung
+       off its back; a noncompetitive one is a small hexagon that binds the
+       allosteric site on the back of the enzyme. */
+    function grad(x, y, r, a, b){ var gr = g.createRadialGradient(x - r * 0.35, y - r * 0.35, r * 0.1, x, y, r * 1.1); gr.addColorStop(0, a); gr.addColorStop(1, b); return gr; }
+    function wedgePath(R, part){
+      var ax = -0.3 * R, bx = 0.32 * R, h = 0.36 * R, mx = 0.06 * R, mh = h * (mx - ax) / (bx - ax);
+      g.beginPath();
+      if(part === 'tip'){ g.moveTo(ax, 0); g.lineTo(mx, -mh); g.lineTo(mx, mh); g.closePath(); return; }
+      if(part === 'base'){ g.moveTo(mx, -mh); g.lineTo(bx, -h); g.quadraticCurveTo(bx + 0.08 * R, 0, bx, h); g.lineTo(mx, mh); g.closePath(); return; }
+      g.moveTo(ax, 0); g.lineTo(bx, -h); g.quadraticCurveTo(bx + 0.08 * R, 0, bx, h); g.closePath();
+    }
+    function wedgeShape(x, y, a, kind, part){
+      var R = ENZ.R, inh = kind === 'inh';
+      g.save(); g.translate(x, y); g.rotate(a || 0); g.lineJoin = 'round'; g.lineWidth = 1.5;
+      if(inh){ // the extra ring that makes it a different molecule
+        g.fillStyle = grad(0.5 * R, 0, 0.2 * R, col.inhA, col.inhB); g.strokeStyle = col.inhE;
+        g.beginPath(); for(var k = 0; k < 6; k++){ var q = k / 6 * Math.PI * 2 + Math.PI / 6; g.lineTo(0.52 * R + Math.cos(q) * 0.17 * R, Math.sin(q) * 0.17 * R); } g.closePath(); g.fill(); g.stroke();
+      }
+      g.fillStyle = grad(0, 0, 0.36 * R, inh ? col.inhA : col.subA, inh ? col.inhB : col.subB); g.strokeStyle = inh ? col.inhE : col.subE;
+      wedgePath(R, part); g.fill(); g.stroke();
+      if(!part){ g.lineWidth = 1; g.globalAlpha = 0.7; g.beginPath(); g.moveTo(0.06 * R, -0.19 * R); g.lineTo(0.06 * R, 0.19 * R); g.stroke(); g.globalAlpha = 1; }
       g.restore();
     }
-    function sub(x, y, a, fill, stroke){ wedgeShape(x, y, a, fill, stroke, false); }
-    function wedge(x, y, a, fill, stroke){ wedgeShape(x, y, a, fill, stroke, true); }
+    function sub(x, y, a){ wedgeShape(x, y, a, 'sub'); }
+    function wedge(x, y, a){ wedgeShape(x, y, a, 'inh'); }
+    function hexInh(x, y, s){
+      s = s || 7.5; g.save(); g.translate(x, y); g.lineWidth = 1.5; g.lineJoin = 'round';
+      g.fillStyle = grad(0, 0, s, col.inhA, col.inhB); g.strokeStyle = col.inhE;
+      g.beginPath(); for(var k = 0; k < 6; k++){ var q = k / 6 * Math.PI * 2; g.lineTo(Math.cos(q) * s, Math.sin(q) * s); } g.closePath(); g.fill(); g.stroke();
+      g.fillStyle = col.inhE; g.beginPath(); g.arc(0, 0, s * 0.28, 0, Math.PI * 2); g.fill(); g.restore();
+    }
+    /* The enzyme: a lumpy globular protein (shaded, with faint helices
+       inside) and a pocket cut to the substrate's wedge. gap is how open the
+       pocket is: wide when active, pinched when the pH is wrong, twisted by an
+       allosteric inhibitor. */
+    function blob(R, gap, seed, twist){
+      var n = 48, pts = [];
+      for(var k = 0; k <= n; k++){
+        var th = gap + (Math.PI * 2 - 2 * gap) * k / n;
+        var r = R * (1 + 0.055 * Math.sin(3 * th + seed) + 0.035 * Math.sin(5 * th + seed * 1.7) + 0.02 * Math.sin(8 * th + seed * 2.3));
+        pts.push([Math.cos(th) * r, Math.sin(th) * r]);
+      }
+      g.beginPath(); g.moveTo(pts[0][0], pts[0][1]);
+      for(var i = 1; i < pts.length; i++){ var m = [(pts[i - 1][0] + pts[i][0]) / 2, (pts[i - 1][1] + pts[i][1]) / 2]; g.quadraticCurveTo(pts[i - 1][0], pts[i - 1][1], m[0], m[1]); }
+      var e = pts[pts.length - 1], pw = Math.min(0.38, gap) / 0.38;
+      // the pocket: rounded walls down to a floor shaped like the substrate's apex
+      g.lineTo(e[0], e[1]);
+      g.quadraticCurveTo(R * (0.66 - 0.05 * twist), -R * (0.34 * pw + 0.04) + twist * R * 0.1, R * 0.44, -R * 0.2 * pw + twist * R * 0.05);
+      g.quadraticCurveTo(R * 0.24, -R * 0.04, R * 0.26, 0);
+      g.quadraticCurveTo(R * 0.24, R * 0.04, R * 0.44, R * 0.2 * pw + twist * R * 0.05);
+      g.quadraticCurveTo(R * (0.66 + 0.05 * twist), R * (0.34 * pw + 0.04) + twist * R * 0.1, pts[0][0], pts[0][1]);
+      g.closePath();
+    }
+    function helices(R, seed){
+      g.save(); g.strokeStyle = col.protE; g.globalAlpha = 0.28; g.lineWidth = Math.max(1.2, R * 0.07); g.lineCap = 'round';
+      [[-0.45, -0.35, 0.9 + seed * 0.1], [-0.5, 0.3, -0.5], [0.0, 0.62, 0.15]].forEach(function(h){
+        g.save(); g.translate(h[0] * R, h[1] * R); g.rotate(h[2]); g.beginPath();
+        for(var k = 0; k <= 24; k++){ var u = k / 24, x = (u - 0.5) * R * 0.8, y = Math.sin(u * Math.PI * 6) * R * 0.08; if(k) g.lineTo(x, y); else g.moveTo(x, y); }
+        g.stroke(); g.restore();
+      });
+      g.globalAlpha = 0.22; g.lineWidth = Math.max(2, R * 0.12); g.beginPath(); g.moveTo(-0.1 * R, -0.75 * R); g.lineTo(0.25 * R, -0.62 * R); g.moveTo(-0.15 * R, -0.58 * R); g.lineTo(0.2 * R, -0.45 * R); g.stroke(); // a two-strand β sheet
+      g.restore();
+    }
     function enzyme(e, t){
-      var R = ENZ.R, a = e.angle;
+      var R = ENZ.R, a = e.angle, seed = e.u * 6.28;
       g.save(); g.translate(e.x, e.y);
-      g.lineWidth = 2.2; g.strokeStyle = col['--bio-para']; g.fillStyle = col['--bio-para-fill'];
-      if(e.role === 'unfolded'){
+      if(e.role === 'unfolded'){ // denatured: the chain has lost its fold, a loose tangle of the same polypeptide
+        g.lineWidth = Math.max(2.4, R * 0.13); g.lineCap = 'round'; g.lineJoin = 'round'; g.strokeStyle = col.protB;
         g.beginPath();
-        for(var k = 0; k <= 40; k++){ var u = k / 40, x = (u - 0.5) * R * 2.4, y = Math.sin(u * 14 + e.ph) * R * 0.32 + Math.sin(u * 5 + e.ph * 0.7) * R * 0.2; if(k) g.lineTo(x, y); else g.moveTo(x, y); }
-        g.stroke(); g.restore(); return;
+        for(var k = 0; k <= 60; k++){ var u = k / 60, x = (u - 0.5) * R * 2.5 + Math.sin(u * 9 + seed) * R * 0.25, y = Math.sin(u * 13 + e.ph) * R * 0.3 + Math.sin(u * 5 + e.ph * 0.7 + seed) * R * 0.25; if(k) g.lineTo(x, y); else g.moveTo(x, y); }
+        g.stroke(); g.strokeStyle = col.protE; g.lineWidth = 1.2; g.stroke(); g.restore(); return;
       }
       g.rotate(a);
-      var gap = e.role === 'closed' ? 0.06 : e.role === 'bent' ? 0.2 : 0.42;
-      g.beginPath(); g.arc(0, 0, R, gap, Math.PI * 2 - gap); g.lineTo(R * 0.3, 0); g.closePath(); g.fill(); g.stroke();
-      if(e.role === 'closed'){ g.fillStyle = col['--ink']; g.font = '800 ' + Math.round(R * 0.5) + 'px sans-serif'; g.textAlign = 'center'; g.fillText('±', -R * 0.35, R * 0.18); }
-      if(e.role === 'bent'){ g.save(); g.rotate(-a); wedgeCircle(-Math.cos(a) * R * 1.02, -Math.sin(a) * R * 1.02); g.restore(); }
-      if(e.role === 'blocked'){ wedge(R * 0.62, 0, 0, col['--bio-symp-fill'], col['--bio-symp']); }
-      if(e.role === 'ok' && e.busy && reduced()) sub(R * 0.62, 0, 0, col['--bio-aff-fill'], col['--bio-aff']);
+      var gap = e.role === 'closed' ? 0.1 : e.role === 'bent' ? 0.24 : 0.38, twist = e.role === 'bent' ? 1 : 0;
+      g.save(); g.shadowColor = col.shadow; g.shadowBlur = R * 0.25; g.shadowOffsetY = R * 0.08;
+      blob(R, gap, seed, twist); g.fillStyle = grad(0, 0, R, col.protA, col.protB); g.fill(); g.restore();
+      g.save(); blob(R, gap, seed, twist); g.clip(); helices(R, seed); g.restore();
+      blob(R, gap, seed, twist); g.lineWidth = 1.8; g.strokeStyle = col.protE; g.lineJoin = 'round'; g.stroke();
+      // the active site lining
+      var pw2 = Math.min(1, gap / 0.38); g.strokeStyle = col.site; g.lineWidth = 3; g.lineCap = 'round'; g.beginPath(); g.moveTo(R * 0.44, -R * 0.2 * pw2); g.quadraticCurveTo(R * 0.24, -R * 0.04, R * 0.26, 0); g.quadraticCurveTo(R * 0.24, R * 0.04, R * 0.44, R * 0.2 * pw2); g.stroke();
+      if(e.role === 'closed'){ g.fillStyle = col.protE; g.font = '800 ' + Math.round(R * 0.36) + 'px ' + col.font; g.textAlign = 'center'; g.fillText('+', R * 0.5, -R * 0.2); g.fillText('+', R * 0.5, R * 0.42); }
+      if(e.role === 'bent'){ hexInh(-R * 1.0, 0, Math.max(6, R * 0.24)); }
+      if(e.role === 'blocked'){ wedge(R * 0.62, 0, 0); }
+      if(e.role === 'ok' && e.busy && reduced()) sub(R * 0.62, 0, 0);
       g.restore();
     }
-    function wedgeCircle(x, y){ g.fillStyle = col['--bio-symp-fill']; g.strokeStyle = col['--bio-symp']; g.lineWidth = 1.8; g.beginPath(); g.arc(x, y, 7, 0, Math.PI * 2); g.fill(); g.stroke(); }
+    function wedgeCircle(x, y){ hexInh(x, y); }
     function draw(t){
       g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
       ENZ.forEach(function(e){ enzyme(e, t); });
       var comp = cfg.c.inhibitor === 'competitive';
-      INH.forEach(function(p){ if(comp) wedge(p.x, p.y, p.a, col['--bio-symp-fill'], col['--bio-symp']); else wedgeCircle(p.x, p.y); });
-      SUB.forEach(function(p){ sub(p.x, p.y, p.fly ? p.fly.e.angle : p.a, col['--bio-aff-fill'], col['--bio-aff']); });
-      PROD.forEach(function(q){ g.globalAlpha = Math.min(1, q.life); g.fillStyle = col['--bio-eff']; g.beginPath(); g.arc(q.x, q.y, 5, 0, Math.PI * 2); g.fill(); g.globalAlpha = 1; });
+      INH.forEach(function(p){ if(comp) wedge(p.x, p.y, p.a); else wedgeCircle(p.x, p.y); });
+      SUB.forEach(function(p){ sub(p.x, p.y, p.fly ? p.fly.e.angle : p.a); });
+      PROD.forEach(function(q){ g.globalAlpha = Math.min(1, q.life); wedgeShape(q.x, q.y, q.a, 'sub', q.k < 0 ? 'tip' : 'base'); g.globalAlpha = 1; });
       // rate meter and counter
       var y = H - 22, mw = W - 32, f = Math.min(1, cfg.rate / cfg.prof.Vmax);
       g.fillStyle = col['--line']; roundRect(16, y, mw, 14, 7); g.fill();
@@ -193,7 +254,7 @@
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
       '<section class="bt-card ez-card" aria-labelledby="ez-h"><h2 id="ez-h">The model</h2>' +
       '<div class="os-modes" role="group" aria-label="Mode"><button type="button" class="bt-btn" data-m="explore" aria-pressed="true">Explore</button><button type="button" class="bt-btn" data-m="predict" aria-pressed="false">Predict, then change</button></div>' +
-      '<div class="ez-bar"><button type="button" class="bt-btn ez-pause" aria-pressed="false">Pause</button><p class="bt-small ez-key"><span class="ez-k sub"></span>substrate <span class="ez-k prod"></span>product <span class="ez-k inh"></span>inhibitor</p></div>' +
+      '<div class="ez-bar"><button type="button" class="bt-btn ez-pause" aria-pressed="false">Pause</button><p class="bt-small ez-key"><span class="ez-k sub"></span>substrate <span class="ez-k prod"></span><span class="ez-k prod b"></span>products <span class="ez-k inh c"></span>competitive inhibitor <span class="ez-k inh"></span>allosteric inhibitor</p></div>' +
       '<div class="os-chal ez-chal" hidden></div>' +
       '<p class="os-why ez-why"></p>' +
       '<div class="bt-controls"></div>' +
