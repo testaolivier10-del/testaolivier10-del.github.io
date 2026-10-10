@@ -228,7 +228,7 @@
      in shaded. */
   /* W is the strip's drawing width, set to its real pixel width when it is
      made so labels stay their true size on a phone (no stretching). */
-  var W = 600, H = 132, PRE = 0.25;
+  var W = 600, H = 132, PRE = 0.25, GRAD_N = 0;
   function heartWindow(cycle){ return { from: -PRE, to: cycle - PRE }; }
   function tx(t, cycle){ var w = heartWindow(cycle); var u = t - w.from; u = ((u % cycle) + cycle) % cycle; return u / cycle * W; }
 
@@ -241,6 +241,7 @@
     var title = el('title', {}, svg);
     var layer = el('g', {}, svg);
     var head = el('line', { x1:0, x2:0, y1:14, y2:H - 18, class:'st-playhead' }, svg);
+    head.setAttribute('filter', 'drop-shadow(0 0 3px rgba(0,0,0,.25))');
     head.style.display = 'none';
     var marker = el('g', { class:'st-marker' }, svg); marker.style.display = 'none';
     el('line', { x1:0, x2:0, y1:14, y2:H - 18 }, marker);
@@ -265,12 +266,26 @@
       var t3 = el('text', { x:x1 / 2, y:H - 4, class:'st-phase' }, layer); t3.textContent = 'diastole';
       el('line', { x1:0, x2:W, y1:mid, y2:mid, class:'st-axis' }, layer);
       if(!hide){
-        var d = '';
+        /* A phonocardiogram (visual polish 2026-10): the same envelope, drawn as a
+           smooth mirrored shape with a gradient fill and a crisp outline. */
+        var top = [], bot = [];
         for(var i = 0; i < N; i++){
           var x = (i + .5) / N * W, h = Math.max(.6, env[i] / 0.82 * amp);
-          d += 'M' + x.toFixed(1) + ' ' + (mid - h).toFixed(1) + 'V' + (mid + h).toFixed(1);
+          top.push([x, mid - h]); bot.push([x, mid + h]);
         }
-        el('path', { d:d, class:'st-trace' }, layer);
+        function smooth(pts){
+          var d = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
+          for(var k = 1; k < pts.length; k++){ var a = pts[k - 1], b = pts[k], cx = (a[0] + b[0]) / 2; d += 'Q' + a[0].toFixed(1) + ' ' + a[1].toFixed(1) + ' ' + cx.toFixed(1) + ' ' + ((a[1] + b[1]) / 2).toFixed(1); }
+          return d + 'L' + pts[pts.length - 1][0].toFixed(1) + ' ' + pts[pts.length - 1][1].toFixed(1);
+        }
+        var gid = 'stg' + (++GRAD_N);
+        var defs = el('defs', {}, layer), lg = el('linearGradient', { id:gid, x1:0, x2:0, y1:0, y2:1 }, defs);
+        el('stop', { offset:'0', class:'st-g0' }, lg); el('stop', { offset:'.5', class:'st-g1' }, lg); el('stop', { offset:'1', class:'st-g0' }, lg);
+        var rev = bot.slice().reverse();
+        var outline = smooth(top) + 'L' + rev[0][0].toFixed(1) + ' ' + rev[0][1].toFixed(1) + smooth(rev).replace(/^M[^Q]*/, '') + 'Z';
+        el('path', { d:outline, fill:'url(#' + gid + ')', class:'st-trace-fill' }, layer);
+        el('path', { d:smooth(top), class:'st-trace' }, layer);
+        el('path', { d:smooth(bot), class:'st-trace' }, layer);
       }
       var names = [];
       ev.points.forEach(function(p){
@@ -279,7 +294,9 @@
         var x = tx(p.at, ev.cycle);
         el('line', { x1:x, x2:x, y1:12, y2:H - 18, class:'st-tick' + (/S1|S2|A2|P2/.test(p.key) ? '' : ' st-tick--x') }, layer);
         var label = hide && p.key === 'A2' ? 'S2' : p.key;
-        var t = el('text', { x:x + (p.key === 'P2' ? 9 : p.key === 'A2' && !hide ? -9 : 0), y:10, class:'st-evt' + (/S1|S2|A2|P2/.test(p.key) ? '' : ' st-evt--x') }, layer);
+        var lx = x + (p.key === 'P2' ? 11 : p.key === 'A2' && !hide ? -11 : 0), pw = label.length * 7 + 8;
+        el('rect', { x:lx - pw / 2, y:0, width:pw, height:13, rx:6.5, class:'st-evt-bg' + (/S1|S2|A2|P2/.test(p.key) ? '' : ' st-evt-bg--x') }, layer);
+        var t = el('text', { x:lx, y:10, class:'st-evt' + (/S1|S2|A2|P2/.test(p.key) ? '' : ' st-evt--x') }, layer);
         t.textContent = label;
         names.push(label);
       });
@@ -287,7 +304,7 @@
         var a = tx(sp.from, ev.cycle), b = tx(sp.to, ev.cycle);
         var segs = b > a ? [[a, b]] : [[a, W], [0, b]];
         segs.forEach(function(sg){ el('rect', { x:sg[0], y:H - 22, width:sg[1] - sg[0], height:4, rx:2, class:'st-span' }, layer); });
-        var t = el('text', { x:(segs[0][0] + segs[0][1]) / 2, y:H - 25, class:'st-evt st-evt--x' }, layer); t.textContent = 'murmur';
+        var t = el('text', { x:(segs[0][0] + segs[0][1]) / 2, y:H - 25, class:'st-evt st-evt--plain' }, layer); t.textContent = 'murmur';
         names.push('murmur');
       });
       title.textContent = hide
@@ -312,7 +329,7 @@
       el('line', { x1:xi, x2:xi, y1:12, y2:H - 18, class:'st-tick' }, layer);
       var a = el('text', { x:xi / 2, y:H - 4, class:'st-phase' }, layer); a.textContent = 'breathe in';
       var b = el('text', { x:(xi + W) / 2, y:H - 4, class:'st-phase' }, layer); b.textContent = 'breathe out';
-      var c = el('text', { x: ph === 'insp' ? xi / 2 : (xi + W) / 2, y:10, class:'st-evt st-evt--x' }, layer);
+      var c = el('text', { x: ph === 'insp' ? xi / 2 : (xi + W) / 2, y:10, class:'st-evt st-evt--plain' }, layer);
       c.textContent = sound.label.replace(/ \(.*\)/, '') + ' here';
       title.textContent = 'Schematic breath: ' + PHASE_TEXT[sound.id];
     };
