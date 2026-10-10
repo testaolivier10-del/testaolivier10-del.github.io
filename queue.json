@@ -226,18 +226,19 @@
     },
     {
       "id": "w1007-10-pretest",
-      "status": "approved",
+      "status": "scheduled",
       "added_on": "2026-10-06",
       "approved_on": "2026-10-06",
-      "date": null,
+      "date": "2026-10-19",
       "tiktok_caption": "Guessing before you study, even wrong, can help you remember more. Have you tried pretesting yourself? levlprep.com. #studytips #studytok",
       "yt_title": "Take the test before you study. Even if you fail it.",
       "yt_description": "Guessing before you study, even wrong, can help you remember more. Have you tried pretesting yourself? levlprep.com. #studytips #studytok",
       "badge": "STUDY TIP",
       "hook": "Take the test before you study.",
-      "buffer": null,
+      "buffer": "6ac9c876b07d37ac975fc77a",
       "youtube_id": null,
-      "thumbnail_set": null
+      "thumbnail_set": null,
+      "yt_buffer": null
     },
     {
       "id": "w1007-07-acid-resonance",
