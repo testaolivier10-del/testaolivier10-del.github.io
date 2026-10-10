@@ -15,6 +15,10 @@
   midclavicular line). The 3D model is bones/organs, 4 MB, lazy and rotatable; on a 390 px phone the five heart
   sites sit within about 2 cm and move with rotation. A flat front/back chest with ribs, sternum and MCL drawn is
   exact, instant and tappable.
+- **Figure (visual polish, 2026-10):** the chest is the same BodyParts3D model rendered flat by
+  `scripts/build-body-figures.mjs` (ribs, cartilages, sternum, clavicles, heart under the skin; back: scapulae and
+  spine), and every site is placed from landmarks measured on the skeleton (rib ends -> ICS, clavicle midpoints ->
+  MCL, 7th rib lateral point -> midaxillary line, scapulae -> posterior sites). Data: `assets/body-figs/chest.js`.
 - **Owner check:** sound-by-site is a teaching approximation (relative loudness, not measured); the lung strip is
   schematic because the Wikimedia clips carry no inspiration/expiration markers (the page says so).
 - Tests: `scripts/test/nremt-sound-stage.test.mjs`.
