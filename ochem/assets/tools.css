@@ -866,3 +866,4 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .rp-ls #rpOpts .tool-more__now{min-width:0;overflow:hidden;text-overflow:ellipsis;font-size:var(--ls-m);}
 .rp-ls .rp-bar i{background:var(--cink);}
 .rp-ls .rp-meters{font-size:var(--ls-s);}
+.ls-root.tool-root{--mol-bg:var(--white);}

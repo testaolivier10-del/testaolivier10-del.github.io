@@ -72,6 +72,8 @@
       details: [document.getElementById('tool-quiz'), document.getElementById('tool-foot')]
     });
     if(!document.querySelector('main')) studio.root.setAttribute('role', 'main');
+    // The tool's drawings are styled under .tool-root (tools.css).
+    studio.root.classList.add('tool-root');
     window.OchemStudio = studio;
   }
 
