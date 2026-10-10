@@ -411,3 +411,25 @@
   .ez-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
 }
 .ez-plots .bt-plotwrap,.os-graph .bt-plotwrap{max-width:720px;}
+
+/* ===== Cell cycle ring (tools upgrade U-Bio-sims) ===== */
+.cc-ringfig{background:var(--paper);border-radius:14px;padding:6px;}
+.bt-fig svg.cc-ring{max-width:520px;}
+.cc-ring .cc-cell{fill:var(--bio-aff);stroke:var(--white);stroke-width:1;}
+.cc-ring .cc-cell.held{fill:var(--bio-hi);}
+.cc-ring .cc-gatebtn{cursor:pointer;}
+.cc-ring .cc-hit{fill:transparent;}
+.cc-ring .cc-gatebtn:hover .cc-hit,.cc-ring .cc-gatebtn.sel .cc-hit{fill:var(--ctint);stroke:var(--cink);stroke-width:2;}
+.cc-ring .cc-gatebtn:focus{outline:none;}
+.cc-ring .cc-gatebtn:focus-visible .cc-hit{stroke:var(--ink);stroke-width:3;}
+.cc-ring .cc-glab{font:900 12.5px var(--font-ui);fill:var(--cink);}
+.cc-gate:empty{display:none;}
+.cc-plots{display:grid;gap:10px;}
+@media (min-width:1000px){
+  .cc-card{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:22px;}
+  .cc-card>*{grid-column:1 / -1;}
+  .cc-card>.cc-ringfig{grid-column:1;grid-row:3 / span 4;align-self:start;position:sticky;top:12px;}
+  .cc-card>.cc-tip,.cc-card>.cc-gate,.cc-card>.cc-chal,.cc-card>.bt-controls{grid-column:2;}
+  .cc-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
+}
+.cc-ring .cc-ph{font:800 12.5px var(--font-ui);}

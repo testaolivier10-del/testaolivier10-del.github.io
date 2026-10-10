@@ -5,13 +5,25 @@
    growth factor, DNA damage, mutations and a spindle poison, reads the dish
    at a chosen hour (the cycle figure, a readout and tables), plots any output
    over time, the DNA content histogram, or an output against growth factor,
-   and runs trials that land as points. */
+   and runs trials that land as points.
+
+   Job: see what each checkpoint checks, and what goes wrong when one fails.
+
+   Tools upgrade (U-Bio-sims): the cycle ring is the stage, above the
+   controls. Cells are dots flowing round the ring (dots per phase in
+   proportion to the model's counts; flow speed from its division rate),
+   held cells pile up beside their checkpoint, resting cells sit in G0. Each
+   checkpoint is a button on the ring: tap it to read what it checks and what
+   it is doing right now. "Find the broken checkpoint": a mystery dish (a
+   lost p53, a G1 checkpoint that ignores growth factor, a spindle poison, or
+   normal cells) runs on the ring; the student taps the checkpoint at fault
+   and picks what is wrong; recorded as cell-cycle-checkpoints:find-<case>:a. */
 (function(){
   'use strict';
   var SLUG = 'cell-cycle-checkpoints';
   var T = window.ApBioTools, M = window.ApBioMath;
   if(!T) return;
-  T.mount(SLUG, function(app, data){
+  T.mount(SLUG, function(app, data, ctx){
     var esc = T.esc, F = T.F, C = M.cellCycle, P = data.model;
     var view = 'time', runs = [];
     var st = { gf: data.growthFactor.value, damage: data.damage.value, readT: data.readTime.value, p53: false, rb: false, cycd: false, ras: false, spindle: false, out: 'pctG1' };
@@ -20,8 +32,12 @@
     var BIN_SHORT = ['2', '2–2.5', '2.5–3', '3–3.5', '3.5–4', '4'];
 
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
-      '<section class="bt-card" aria-labelledby="cc-h"><h2 id="cc-h">The model</h2><div class="bt-controls"></div>' +
-      '<div class="bt-stage two"><div class="bt-fig"></div><div><div class="bt-tabs" role="group" aria-label="Graph">' +
+      '<section class="bt-card cc-card" aria-labelledby="cc-h"><h2 id="cc-h">The model</h2>' +
+      '<div class="os-modes" role="group" aria-label="Mode"><button type="button" class="bt-btn" data-m="explore" aria-pressed="true">Explore</button><button type="button" class="bt-btn" data-m="find" aria-pressed="false">Find the broken checkpoint</button></div>' +
+      '<div class="bt-fig cc-ringfig"></div><p class="bt-small cc-tip">Tap a checkpoint on the ring to see what it checks.</p><div class="cc-gate os-why" role="status" aria-live="polite"></div>' +
+      '<div class="os-chal cc-chal" hidden></div>' +
+      '<div class="bt-controls"></div>' +
+      '<div class="cc-plots"><div><div class="bt-tabs" role="group" aria-label="Graph">' +
       '<button type="button" class="bt-btn" data-v="time" aria-pressed="true">Over time</button><button type="button" class="bt-btn" data-v="hist" aria-pressed="false">DNA content</button><button type="button" class="bt-btn" data-v="gf" aria-pressed="false">Against growth factor</button>' +
       '</div><div class="bt-plotwrap"></div></div></div>' +
       '<dl class="bt-readout"></dl><p class="bt-summary"></p>' +
@@ -30,6 +46,8 @@
       '<details class="bt-data"><summary>Data tables: your runs, the dish over time and the DNA content</summary><div class="bt-tables"></div></details></section>' +
       '<section class="bt-card" aria-labelledby="cc-q"><h2 id="cc-q">Questions about this model</h2><div class="bt-qs bio-qs"></div></section>');
     var card = app.querySelector('.bt-card'), ctl = card.querySelector('.bt-controls');
+    var fig = card.querySelector('.cc-ringfig'), gateBox = card.querySelector('.cc-gate'), chalBox = card.querySelector('.cc-chal');
+    var mode = 'explore', gateSel = null, last = null, find = null;
     var say = T.announcer(card.querySelector('.bt-summary'));
 
     var sGF = T.slider({ label: 'Growth factor', min: data.growthFactor.min, max: data.growthFactor.max, step: data.growthFactor.step, value: st.gf, unit: data.growthFactor.unit, decimals: 0, hint: '100% keeps every normal cell cycling.', onInput: function(v){ st.gf = v; update(); } });
@@ -97,36 +115,167 @@
       var p = function(a){ var t = (a - 90) * Math.PI / 180; return (cx + r * Math.cos(t)).toFixed(1) + ' ' + (cy + r * Math.sin(t)).toFixed(1); };
       return 'M' + p(a0) + ' A' + r + ' ' + r + ' 0 ' + (a1 - a0 > 180 ? 1 : 0) + ' 1 ' + p(a1);
     }
-    function figure(a){
-      var cx = 130, cy = 165, r = 95, tot = P.G1 + P.S + P.G2 + P.M, deg = function(h){ return 360 * h / tot; };
-      var g1e = deg(P.G1), se = g1e + deg(P.S), g2e = se + deg(P.G2);
-      var pct = function(x){ return F(100 * x / a.N, 1) + '%'; };
-      var parts = [
-        '<path class="ph g1" d="' + arc(cx, cy, r, 0, g1e - 1) + '"/>', '<path class="ph s" d="' + arc(cx, cy, r, g1e + 1, se - 1) + '"/>',
-        '<path class="ph g2" d="' + arc(cx, cy, r, se + 1, g2e - 1) + '"/>', '<path class="ph m" d="' + arc(cx, cy, r, g2e + 1, 359.5) + '"/>'
-      ];
-      var lab = function(ang, rr, txt){ var t = (ang - 90) * Math.PI / 180; return '<text x="' + (cx + rr * Math.cos(t)).toFixed(1) + '" y="' + (cy + rr * Math.sin(t) + 4).toFixed(1) + '" text-anchor="middle">' + txt + '</text>'; };
-      parts.push(lab(g1e / 2, 55, 'G1 ' + pct(a.G1)), lab((g1e + se) / 2, 55, 'S ' + pct(a.S)), lab((se + g2e) / 2, 58, 'G2 ' + pct(a.G2)), lab(355, 64, 'M ' + pct(a.M)));
-      var tick = function(ang, hold, name){ var t = (ang - 90) * Math.PI / 180, x1 = cx + (r - 16) * Math.cos(t), y1 = cy + (r - 16) * Math.sin(t), x2 = cx + (r + 16) * Math.cos(t), y2 = cy + (r + 16) * Math.sin(t);
-        return '<line class="ckp' + (hold ? ' hold' : '') + '" x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '"/>' + lab(ang, r + 28, name); };
-      parts.push(tick(g1e, a.held1 >= 0.5, 'G1 checkpoint'), tick(g2e, a.held2 >= 0.5, ''), tick(358, a.heldM >= 0.5, ''));
-      parts.push('<text x="' + (cx - 18) + '" y="' + (cy - r - 22) + '" text-anchor="end">G2 checkpoint</text><text x="' + (cx + 8) + '" y="' + (cy - r - 22) + '">M checkpoint</text>');
-      parts.push('<rect class="g0" x="252" y="70" width="96" height="44" rx="8"/><text x="300" y="88" text-anchor="middle">G0</text><text x="300" y="106" text-anchor="middle">' + pct(a.G0) + '</text>');
+    /* ------------------------------------------------ the ring */
+    var CX = 200, CY = 192, R = 118, TOT = P.G1 + P.S + P.G2 + P.M, NDOT = 72;
+    function deg(h){ return 360 * h / TOT; }
+    var A1 = deg(P.G1), AS = A1 + deg(P.S), A2 = AS + deg(P.G2);
+    var SEG = [['G1', 0, A1], ['S', A1, AS], ['G2', AS, A2], ['M', A2, 360]];
+    function pol(ang, r){ var t = (ang - 90) * Math.PI / 180; return [CX + r * Math.cos(t), CY + r * Math.sin(t)]; }
+    var GATES = { g1: { ang: A1, name: 'G1 checkpoint' }, g2: { ang: A2, name: 'G2 checkpoint' }, m: { ang: 358, name: 'M checkpoint' } };
+    /* What each gate checks and what it is doing now (from the model's counts). */
+    function gateText(k, a, o){
       var n = function(x){ return F(x, 0); };
-      var lines = [
-        'G1 checkpoint: ' + (a.held1 >= 0.5 ? 'holding ' + n(a.held1) + ' damaged cells' : 'no cells held'),
-        'G2 checkpoint: ' + (a.held2 >= 0.5 ? 'holding ' + n(a.held2) + ' damaged cells' : 'no cells held'),
-        'M checkpoint: ' + (a.heldM >= 0.5 ? 'holding ' + n(a.heldM) + ' cells (no spindle)' : 'no cells held')
-      ];
-      lines.forEach(function(l, i){ parts.push('<text class="note" x="10" y="' + (305 + i * 18) + '">' + esc(l) + '</text>'); });
-      parts.push('<text class="note" x="252" y="134">' + grp(a.N) + ' cells</text>');
-      var desc = 'The cell cycle at ' + st.readT + ' h, ' + setText(st) + ': ' + pct(a.G0) + ' of cells in G0, ' + pct(a.G1) + ' in G1, ' + pct(a.S) + ' in S, ' + pct(a.G2) + ' in G2 and ' + pct(a.M) + ' in M, out of ' + grp(a.N) + ' cells. ' + lines.join('. ') + '.';
-      card.querySelector('.bt-fig').innerHTML = '<svg class="cc-fig" viewBox="0 0 360 362" role="img" aria-label="' + esc(desc) + '">' + parts.join('') + '</svg>';
+      if(k === 'g1'){
+        var sig = o.rb || o.cycd || o.ras;
+        return 'G1 checkpoint: checks for DNA damage (p53) and for a growth signal (Rb holds the cycle until growth factor, through cyclin D–CDK, releases it). ' +
+          (o.p53 ? 'p53 is lost, so damaged cells are not stopped here. ' : a.held1 >= 0.5 ? 'Now holding ' + n(a.held1) + ' cells with damaged DNA while they repair or die by apoptosis. ' : 'No damaged cells to hold right now. ') +
+          (sig ? 'The growth-signal check is broken (' + setText({ rb: o.rb, cycd: o.cycd, ras: o.ras }) + '): cells pass whatever the growth factor, so none rest in G0.' : (F(100 * a.G0 / a.N, 0) + '% of cells rest in G0, waiting for growth factor.'));
+      }
+      if(k === 'g2') return 'G2 checkpoint: checks that DNA was copied completely and is undamaged before mitosis. ' + (a.held2 >= 0.5 ? 'Now holding ' + n(a.held2) + ' damaged cells' + (o.p53 ? '; without p53 the hold does not last, so some slip into M still damaged.' : '.') : 'No cells held right now.');
+      return 'M checkpoint (spindle checkpoint): checks that every chromosome is attached to the spindle before the chromatids separate. ' + (o.spindle ? 'The spindle poison stops a spindle forming, so the checkpoint is holding ' + n(a.heldM) + ' cells in M: it is working, and the cells cannot divide.' : 'Every chromosome attaches, so cells pass and divide.');
     }
+    function figure(a, o, hide){
+      o = o || st; last = { a: a, o: o, hide: hide };
+      var parts = [];
+      SEG.forEach(function(sg, i){ parts.push('<path class="ph ' + ['g1', 's', 'g2', 'm'][i] + '" d="' + arc(CX, CY, R, sg[1] + 1, sg[2] - 1) + '"/>'); });
+      var pct = function(x){ return F(100 * x / a.N, 0) + '%'; };
+      var lab = function(ang, rr, txt, cls){ var q = pol(ang, rr); return '<text' + (cls ? ' class="' + cls + '"' : '') + ' x="' + q[0].toFixed(1) + '" y="' + (q[1] + 4).toFixed(1) + '" text-anchor="middle">' + txt + '</text>'; };
+      parts.push(lab(A1 / 2, R + 30, 'G1 ' + pct(a.G1), 'cc-ph'), lab((A1 + AS) / 2, R + 30, 'S ' + pct(a.S), 'cc-ph'), lab((AS + A2) / 2, R + 34, 'G2 ' + pct(a.G2), 'cc-ph'), lab(344, R - 30, 'M ' + pct(a.M), 'cc-ph'));
+      parts.push('<g class="cc-dots"></g>');
+      // G0 pool
+      parts.push('<rect class="g0" x="' + (CX - 46) + '" y="' + (CY - 30) + '" width="92" height="64" rx="12"/><text x="' + CX + '" y="' + (CY - 12) + '" text-anchor="middle">G0 ' + pct(a.G0) + '</text><text class="note" x="' + CX + '" y="' + (CY + 2) + '" text-anchor="middle">resting</text><g class="cc-g0"></g>');
+      parts.push('<text class="note" x="' + CX + '" y="16" text-anchor="middle">' + grp(a.N) + ' cells' + (hide ? '' : ' · ' + F(a.divRate, 2) + ' divisions per 100 cells per h') + '</text>');
+      // gates as buttons
+      Object.keys(GATES).forEach(function(k){
+        var gt = GATES[k], held = k === 'g1' ? a.held1 : k === 'g2' ? a.held2 : a.heldM, p1 = pol(gt.ang, R - 18), p2 = pol(gt.ang, R + 18), lb = k === 'g1' ? pol(gt.ang + 4, R + 40) : pol(gt.ang + (k === 'm' ? 6 : -6), R + 30);
+        var on = held >= 0.5, sel = gateSel === k;
+        parts.push('<g class="cc-gatebtn' + (sel ? ' sel' : '') + '" data-g="' + k + '" role="button" tabindex="0" aria-pressed="' + sel + '" aria-label="' + esc(gt.name + (on ? ', holding ' + F(held, 0) + ' cells' : '')) + '">' +
+          '<circle class="cc-hit" cx="' + pol(gt.ang, R)[0].toFixed(1) + '" cy="' + pol(gt.ang, R)[1].toFixed(1) + '" r="24"/>' +
+          '<line class="ckp' + (on ? ' hold' : '') + '" x1="' + p1[0].toFixed(1) + '" y1="' + p1[1].toFixed(1) + '" x2="' + p2[0].toFixed(1) + '" y2="' + p2[1].toFixed(1) + '"/>' +
+          '<text class="cc-glab" x="' + lb[0].toFixed(1) + '" y="' + (lb[1] + 4).toFixed(1) + '" text-anchor="' + (k === 'g1' ? 'middle' : k === 'g2' ? 'end' : 'start') + '">' + gt.name.replace(' checkpoint', '') + ' check' + (on ? ': ' + F(held, 0) + ' held' : '') + '</text></g>');
+      });
+      var desc = (hide ? 'Mystery dish: ' : 'The cell cycle at ' + st.readT + ' h, ' + setText(o) + ': ') + pct(a.G0) + ' of cells in G0, ' + pct(a.G1) + ' in G1, ' + pct(a.S) + ' in S, ' + pct(a.G2) + ' in G2 and ' + pct(a.M) + ' in M, out of ' + grp(a.N) + ' cells. Held: ' + F(a.held1, 0) + ' at G1, ' + F(a.held2, 0) + ' at G2, ' + F(a.heldM, 0) + ' at M.';
+      fig.innerHTML = '<svg class="cc-fig cc-ring" viewBox="0 0 400 380" role="group" aria-label="' + esc(desc) + '">' + parts.join('') + '</svg>';
+      fig.querySelectorAll('.cc-gatebtn').forEach(function(g){
+        var go = function(){ pickGate(g.getAttribute('data-g')); };
+        g.addEventListener('click', go);
+        g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); } });
+      });
+      buildDots(a);
+      if(gateSel && mode === 'explore') gateBox.textContent = gateText(gateSel, a, o);
+    }
+    /* Dots: NDOT cells shared out by phase; held ones stack outside the ring
+       at their gate; G0 ones sit in the box. Positions move each frame. */
+    var dots = [], spin = 0, rafId = 0, visible = true;
+    function buildDots(a){
+      var share = function(x){ return Math.round(NDOT * x / a.N); };
+      var h1 = Math.min(10, share(a.held1)), h2 = Math.min(10, share(a.held2)), hm = Math.min(16, share(a.heldM));
+      var nG = { G1: share(a.G1 - a.held1), S: share(a.S), G2: share(a.G2 - a.held2), M: share(a.M - a.heldM) };
+      dots = [];
+      SEG.forEach(function(sg){ var n = nG[sg[0]]; for(var i = 0; i < n; i++) dots.push({ seg: sg, u: (i + 0.5) / n }); });
+      var pile = function(k, n){ for(var i = 0; i < n; i++) dots.push({ gate: k, i: i }); };
+      pile('g1', h1); pile('g2', h2); pile('m', hm);
+      var g0 = Math.min(14, share(a.G0)); for(var j = 0; j < g0; j++) dots.push({ g0: j });
+      spin = Math.max(0, Math.min(0.12, a.divRate / 2.7 * 0.06));
+      drawDots(0);
+      kick();
+    }
+    function drawDots(tm){
+      var g = fig.querySelector('.cc-dots'), g0 = fig.querySelector('.cc-g0');
+      if(!g) return;
+      var out = [], out0 = [];
+      dots.forEach(function(d){
+        var x, y;
+        if(d.seg){ var u = (d.u + tm * spin) % 1, ang = d.seg[1] + 2 + (d.seg[2] - d.seg[1] - 4) * u, q = pol(ang, R); x = q[0]; y = q[1]; }
+        else if(d.gate){ var gt = GATES[d.gate], row = Math.floor(d.i / 4), col = d.i % 4, q2 = pol(d.gate === 'm' ? 10 : d.gate === 'g2' ? gt.ang - 16 : gt.ang - 5, R - 30 - row * 9); x = q2[0] + (col - 1.5) * 9; y = q2[1]; }
+        else { x = CX - 30 + (d.g0 % 7) * 10; y = CY + 14 + Math.floor(d.g0 / 7) * 9; }
+        var c = '<circle class="cc-cell' + (d.gate ? ' held' : '') + '" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + (d.g0 != null ? 3 : 4) + '"/>';
+        if(d.g0 != null) out0.push(c); else out.push(c);
+      });
+      g.innerHTML = out.join(''); g0.innerHTML = out0.join('');
+    }
+    function reducedM(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
+    function kick(){
+      if(rafId || reducedM() || !visible || !window.requestAnimationFrame) return;
+      var t0 = performance.now();
+      var loop = function(ts){ rafId = 0; if(!visible) return; drawDots((ts - t0) / 1000); rafId = requestAnimationFrame(loop); };
+      rafId = requestAnimationFrame(loop);
+    }
+    if(window.IntersectionObserver) new IntersectionObserver(function(es){ visible = es[0].isIntersecting; if(visible) kick(); }).observe(fig);
+    function pickGate(k){
+      gateSel = gateSel === k && mode === 'explore' ? null : k;
+      if(mode === 'find'){ findPick(k); return; }
+      gateBox.textContent = gateSel ? gateText(gateSel, last.a, last.o) : '';
+      fig.querySelectorAll('.cc-gatebtn').forEach(function(g){ var on = g.getAttribute('data-g') === gateSel; g.classList.toggle('sel', on); g.setAttribute('aria-pressed', String(on)); });
+    }
+
+    /* --------------------------- find the broken checkpoint */
+    var CASES = [
+      { id: 'p53', gate: 'g1', fault: 'damage', set: function(g){ return { gf: 1, damage: g.pick([0.02, 0.03, 0.04]), p53: false, rb: false, cycd: false, ras: false, spindle: false }; } },
+      { id: 'growth', gate: 'g1', fault: 'signal', set: function(g){ var w = g.pick(['rb', 'cycd', 'ras']), c = { gf: g.pick([0, 0.1, 0.2]), damage: g.pick([0, 0.01]), p53: true, rb: false, cycd: false, ras: false, spindle: false }; c[w] = true; c.which = w; return c; } },
+      { id: 'spindle', gate: 'm', fault: 'working', set: function(g){ return { gf: 1, damage: 0, p53: true, rb: false, cycd: false, ras: false, spindle: true }; } },
+      { id: 'normal', gate: 'none', fault: 'none', set: function(g){ return { gf: g.pick([0.1, 0.2, 1]), damage: g.pick([0.01, 0.02]), p53: true, rb: false, cycd: false, ras: false, spindle: false }; } }
+    ];
+    var FAULTS = {
+      g1: [['damage', 'It lets cells with damaged DNA into S phase'], ['signal', 'It lets cells divide without growth factor'], ['ok', 'Nothing: it is working']],
+      g2: [['damage', 'It lets cells with damaged DNA into mitosis'], ['ok', 'Nothing: it is working']],
+      m: [['broken', 'It lets chromatids separate before every chromosome is attached'], ['working', 'Nothing: it is holding cells that have no spindle, which is its job']],
+      none: [['none', 'Every checkpoint is working normally']]
+    };
+    var findN = 0, findSeed = 1 + Math.floor(Math.random() * 99999);
+    function newFind(){
+      var g = M.rng(findSeed + 7919 * findN), cs = CASES[(findN + g.int(0, 3)) % 4]; findN++;
+      var c = cs.set(g), a = C.at(C.simulate(P, c), 24);
+      find = { cs: cs, c: c, a: a, gate: null, done: false };
+      gateSel = null;
+      figure(a, { p53: !c.p53, rb: c.rb, cycd: c.cycd, ras: c.ras, spindle: c.spindle }, true);
+      var clue = [['Growth factor', F(c.gf * 100, 0) + '%'], ['DNA damage', F(c.damage * 100, 1) + '% per h'], ['Cells after 24 h (from 1,000)', grp(a.N)], ['In G0', F(100 * a.G0 / a.N, 0) + '%'], ['Divisions by cells with damaged DNA', F(a.pctDivDam, 1) + '%'], ['Held at G1 / G2 / M', F(a.held1, 0) + ' / ' + F(a.held2, 0) + ' / ' + F(a.heldM, 0)]];
+      chalBox.innerHTML = '<p class="os-chal-q" tabindex="-1"><b>Mystery dish ' + findN + '.</b> Something may be wrong with these cells, read 24 h after plating. Tap the checkpoint at fault on the ring (or "All working"), then say what is wrong.</p>' +
+        '<dl class="bt-readout">' + clue.map(function(x){ return '<div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>'; }).join('') + '</dl>' +
+        '<div class="bt-actions"><button type="button" class="bt-btn cc-none">All working</button></div><div class="cc-find-q"></div><div class="os-chal-fb" role="status" aria-live="polite"></div>';
+      chalBox.querySelector('.cc-none').addEventListener('click', function(){ findPick('none'); });
+      gateBox.textContent = '';
+    }
+    function findPick(k){
+      if(!find || find.done) return;
+      find.gate = k; gateSel = k === 'none' ? null : k;
+      figure(find.a, last.o, true);
+      var q = chalBox.querySelector('.cc-find-q'), id = 'ccf' + findN;
+      q.innerHTML = '<fieldset class="os-ask"><legend>' + (k === 'none' ? 'All working' : esc(GATES[k].name)) + ': what is wrong?</legend>' + FAULTS[k].map(function(f, i){ return '<div class="bt-radio"><input type="radio" name="' + id + '" id="' + id + i + '" value="' + f[0] + '"><label for="' + id + i + '">' + esc(f[1]) + '</label></div>'; }).join('') + '</fieldset><div class="bt-actions"><button type="button" class="btn-press sm cc-check">Check</button></div>';
+      q.querySelector('.cc-check').addEventListener('click', function(){
+        var pick = q.querySelector('input:checked'), fb = chalBox.querySelector('.os-chal-fb');
+        if(!pick){ fb.textContent = 'Pick what is wrong first.'; return; }
+        find.done = true;
+        q.querySelectorAll('input,button').forEach(function(x){ x.disabled = true; });
+        var cs = find.cs, ok = (k === cs.gate || (cs.id === 'p53' && k === 'g2')) && pick.value === cs.fault;
+        var o = { p53: !find.c.p53, rb: find.c.rb, cycd: find.c.cycd, ras: find.c.ras, spindle: find.c.spindle };
+        var ans = cs.id === 'p53' ? 'p53 is lost. The G1 checkpoint no longer stops cells with damaged DNA (and the G2 hold does not last), so ' + F(find.a.pctDivDam, 0) + '% of divisions are by damaged cells and none die by apoptosis.'
+          : cs.id === 'growth' ? setText(o).replace(/^./, function(x){ return x.toUpperCase(); }) + '. The G1 checkpoint ignores the growth-factor signal, so with only ' + F(find.c.gf * 100, 0) + '% growth factor no cells rest in G0 and the dish keeps growing: the start of a tumor.'
+          : cs.id === 'spindle' ? 'A spindle poison. No checkpoint is broken: with no spindle no chromosome can attach, so the M checkpoint holds ' + F(find.a.heldM, 0) + ' cells in M and none divide. That is how such drugs stop cancer cells.'
+          : 'Normal cells. Damaged cells are held and repaired or removed, and cells without enough growth factor rest in G0.';
+        fb.innerHTML = '<p><span class="bio-mark ' + (ok ? 'ok">Right' : 'no">Not quite') + '</span> ' + esc(ans) + '</p><div class="bt-actions"><button type="button" class="btn-press sm os-next">Next dish</button>' + T.report(SLUG + ':find-' + cs.id) + '</div>';
+        gateSel = cs.gate === 'none' ? null : cs.gate;
+        figure(find.a, o, false);
+        if(gateSel) gateBox.textContent = gateText(gateSel, find.a, o);
+        fb.querySelector('.os-next').addEventListener('click', function(){ newFind(); chalBox.querySelector('.os-chal-q').focus(); });
+        T.record(SLUG, [{ id: SLUG + ':find-' + cs.id + ':a', correct: ok, topic: data.topic, level: 'analyze', diff: 2, group: 'find' }]);
+      });
+    }
+    function setMode(m){
+      if(m === mode) return;
+      mode = m;
+      card.querySelectorAll('[data-m]').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-m') === m)); });
+      var f = m === 'find';
+      chalBox.hidden = !f;
+      ['.bt-controls', '.cc-plots', '.bt-readout', '.bt-summary', '.bt-buttons', '.bt-data', '.bt-runnote', '.cc-tip'].forEach(function(sel){ card.querySelectorAll(sel).forEach(function(el){ if(!chalBox.contains(el)) el.hidden = f; }); });
+      gateSel = null; gateBox.textContent = '';
+      if(f) newFind(); else { find = null; update(true); }
+    }
+    card.querySelectorAll('[data-m]').forEach(function(b){ b.addEventListener('click', function(){ setMode(b.getAttribute('data-m')); }); });
     function sameSet(r){ return r.damage === st.damage && r.readT === st.readT && KEYS.every(function(k){ return r[k] === st[k]; }); }
     function update(now){
       var s = sim(), a = C.at(s, st.readT), ref = mutated() ? sim(NOMUT) : null, o = outOf(st.out), spec, title;
-      figure(a);
+      if(mode === 'explore') figure(a);
       var refWord = ref ? ' (solid) and normal cells under the same conditions (dashed)' : '';
       if(view === 'time'){
         var pts = function(x){ return x.map(function(e){ return [e.t, e[o.id]]; }); };
@@ -177,5 +326,6 @@
     update(true);
     T.questions(app.querySelector('.bt-qs'), data.questions, data.stimuli, SLUG);
     if(data.frq) T.frq(app, data.frq, SLUG);
+    if(/^#find/.test(location.hash)) setMode('find');
   });
 })();
