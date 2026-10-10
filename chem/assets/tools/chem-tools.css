@@ -548,3 +548,37 @@
 .ic-ex{display:grid;gap:12px;}
 .ic-ctl{display:grid;gap:10px;align-content:start;}
 .ic-ex .cd-ice td b{font-family:var(--font-mono);}
+
+/* Particle diagrams: build mode */
+.pb-card{display:grid;gap:12px;}
+.pb-text p{margin:0 0 4px;}
+.pb-boxes{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;max-width:720px;}
+.pb-palette,.pb-boxes{-webkit-user-select:none;user-select:none;}
+.pb-fig{margin:0;display:grid;gap:4px;grid-template-rows:auto 1fr;align-items:end;}
+.pb-fig svg{width:100%;height:auto;display:block;}
+.pb-hint{font-weight:600;}
+.pb-after{border-radius:12px;transition:box-shadow .2s;}
+.pb-after.is-over{box-shadow:0 0 0 3px var(--cink);}
+.pb-svg .pb-p{cursor:pointer;transition:opacity .3s ease;}
+.pb-svg .pb-p.is-in{opacity:0;}
+.pb-empty{font:700 13px var(--font-ui);fill:var(--muted);}
+.pb-palette{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:8px;}
+.pb-pal{display:grid;grid-template-columns:minmax(0,1fr) 44px 2.5ch 44px;align-items:center;gap:6px;padding:4px 6px;border-radius:12px;background:var(--paper);}
+.pb-chip{min-width:0;display:flex;align-items:center;gap:6px;min-height:44px;border:2px dashed var(--line);border-radius:10px;background:var(--white);color:var(--ink);font:900 15px var(--font-ui);cursor:grab;touch-action:none;padding:2px 6px;}
+.pb-chip:hover{border-color:var(--cink);}
+.pb-chip svg{width:36px;height:30px;}
+.pb-n{min-width:2ch;text-align:center;font:900 17px var(--font-mono);}
+.pb-ghost{position:fixed;z-index:9999;pointer-events:none;width:52px;height:44px;margin:-22px 0 0 -26px;}
+.pb-ghost svg{width:100%;height:100%;}
+.pb-tk{margin:0 0 4px;font:900 13px var(--font-ui);text-transform:uppercase;letter-spacing:.04em;color:var(--muted);}
+.pb-atoms{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;}
+.pb-atoms li{padding:4px 10px;border-radius:10px;font:700 14px var(--font-ui);background:var(--paper);}
+.pb-atoms li span{font-weight:800;}
+.pb-atoms li.ok span{color:var(--chem-s3);} .pb-atoms li.off span{color:var(--chem-s2);}
+.pb-q{margin:6px 0 0;}
+.pb-fb:empty{display:none;}
+.pb-fb{font:700 15px/1.5 var(--font-ui);}
+.pb-fb .bt-btn{margin-left:6px;}
+@media (max-width:420px){.pb-hint{display:none;}}
+@media (prefers-reduced-motion:reduce){.pb-svg .pb-p{transition:none;}}
+.pb-how{margin:0;}
