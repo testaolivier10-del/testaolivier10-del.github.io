@@ -381,6 +381,44 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
   .sp-link__mol .omol svg{max-height:160px;}
 }
 
+/* ---- Reagent Roadmap: synthesis puzzle ------------------------------------ */
+.rr-pzgrid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:0 16px;grid-template-areas:"map bench";align-items:start;}
+.rr-pz__map{grid-area:map;}
+.rr-pz__bench{grid-area:bench;position:sticky;top:calc(var(--site-header-h,64px) + 12px);}
+@media(max-width:900px){ .rr-pzgrid{grid-template-columns:minmax(0,1fr);grid-template-areas:"bench" "map";} .rr-pz__bench{position:static;} }
+.rr-pz__acts{gap:6px;flex-wrap:nowrap;}
+.rr-pz__goal{margin:0 0 8px;font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.6;}
+.rr-trail{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px;}
+.rr-trail__n{font:800 12.5px var(--font-ui);padding:5px 10px;border-radius:var(--radius-pill);background:var(--tint-accent);color:var(--accent-text);border:var(--bw) solid var(--accent);}
+.rr-trail__n.is-a,.rr-trail__n.is-b{background:var(--navy);border-color:var(--navy);color:var(--on-accent);}
+.rr-trail__n.is-dead{background:var(--tint-bad);border-color:var(--bad-text);color:var(--bad-text);}
+.rr-trail__n.is-new{animation:rr-in .35s ease-out;}
+.rr-trail__gap{font:900 13px var(--font-mono);color:var(--muted);padding:4px 10px;border:2px dashed var(--line);border-radius:var(--radius-pill);}
+.rr-trail__arrow{color:var(--muted);font-weight:900;}
+.rr-pz .rr-node:disabled{cursor:default;opacity:1;}
+.rr-pz .rr-node.is-here{box-shadow:0 0 0 3px var(--accent);}
+.rr-pz .rr-node.is-arrive{animation:rr-arrive .6s cubic-bezier(.2,.8,.2,1);}
+@keyframes rr-arrive{0%{transform:scale(.8);box-shadow:0 0 0 12px var(--tint-accent);}100%{transform:none;box-shadow:0 0 0 3px var(--accent);}}
+.rr-pz__ab{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:9px;
+  font:900 10px var(--font-mono);background:var(--accent);color:var(--on-accent-fill);vertical-align:1px;}
+.rr-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:12px;}
+.rr-tile{font:800 13px var(--font-ui);text-align:left;padding:11px 12px;min-height:48px;border-radius:var(--radius-sm);
+  border:var(--bw) solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;line-height:1.35;
+  box-shadow:0 2px 0 var(--line);transition:transform .08s ease,border-color .12s ease;}
+.rr-tile:hover{border-color:var(--accent);}
+.rr-tile:active{transform:translateY(2px);box-shadow:none;}
+.rr-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.rr-pz__steps{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:8px;}
+.rr-pz__step{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
+  font-size:13.2px;line-height:1.5;font-weight:700;background:var(--white);}
+.rr-pz__step.is-dead{border-color:var(--bad-text);background:var(--tint-bad);}
+.rr-pz__step.is-new{animation:rr-in .35s ease-out;}
+@keyframes rr-in{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+.rr-pz__n{flex:none;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--on-accent-fill);
+  display:flex;align-items:center;justify-content:center;font:900 11px var(--font-mono);}
+.rr-pz__rx{font-family:var(--font-mono);font-weight:700;font-size:12.5px;color:var(--ink);}
+@media(prefers-reduced-motion:reduce){ .rr-pz .rr-node.is-arrive,.rr-pz__step.is-new,.rr-trail__n.is-new{animation:none;} }
+
 /* ---- Both chairs at once (Conformation Lab) ------------------------------ */
 
 .cf-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;}

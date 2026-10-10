@@ -182,3 +182,35 @@ test('spectroscopy: a predicted spectrum reports which atoms make each signal', 
     }
   }
 });
+
+test('roadmap puzzle: decoys never react with the current group, and playing the engine route always arrives', () => {
+  const s = load('ochem/assets/curriculum.js', 'ochem/assets/tools/reagent-roadmap-data.js', 'ochem/assets/tools/reagent-roadmap.js');
+  const D = s.OchemRoadmap, E = s.OchemRoadmapEngine, Z = s.OchemRoadmapPuzzle;
+  let played = 0;
+  for(const a of D.NODES) for(const b of D.NODES){
+    if(a === b) continue;
+    const r = E.routes(a.id, b.id, { skeleton: true });
+    if(r.length < 2 || r.length > 4) continue;
+    assert.ok(Z.start(a.id, b.id));
+    for(let step = 0; step < 6 && !Z.state.done; step++){
+      const at = Z.state.at;
+      const tray = Z.tray();
+      const here = new Set(E.edgesFrom(at).flatMap(e => e.keys));
+      for(const t of tray){
+        if(!t.edges.length) assert.ok(!t.decoy.keys.some(k => here.has(k)), `${a.id}->${b.id} at ${at}: decoy "${t.k}" does react here`);
+      }
+      // the tray always offers a way forward
+      const next = E.routes(at, b.id, { skeleton: true, set: Z.state.set }).shortest[0];
+      assert.ok(next, `${a.id}->${b.id}: stuck at ${at}`);
+      const ks = next.hops[0].map(e => e.rx.join(' / '));
+      const i = tray.findIndex(t => t.edges.length && ks.includes(t.k));
+      assert.ok(i >= 0, `${a.id}->${b.id} at ${at}: no tile for the next step (${ks.join(' | ')})`);
+      Z.play(i);
+      assert.ok(!Z.state.steps[Z.state.steps.length - 1].dead, `${a.id}->${b.id}: the route step from ${at} was called a dead end`);
+    }
+    assert.ok(Z.state.done, `${a.id}->${b.id} never arrived`);
+    assert.equal(Z.state.steps.length, r.length, `${a.id}->${b.id}: took ${Z.state.steps.length}, shortest ${r.length}`);
+    played++;
+  }
+  assert.ok(played > 300, `only ${played} puzzles`);
+});
