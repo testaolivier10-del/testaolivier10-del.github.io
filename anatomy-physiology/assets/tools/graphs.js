@@ -12,10 +12,122 @@
      shift   predict how the curve changes; the shifted curve is then drawn
    The first answer to each question on a page visit is recorded through
    AnpCore.toolResult (XP, mastery, misses to review) and fires
-   anp-graph-answer. */
+   anp-graph-answer.
+
+   Two modes per graph (tools upgrade 2026-10, docs/tools-upgrade-notes/anp-rest.md):
+     Explore  drag a cursor along x (or use the slider under the chart) and
+              read every curve at that point, with the region it is in; tap a
+              "What if" condition (from the graph's shift questions) and the
+              curve moves to its shifted position, with the explanation and
+              the change at the cursor. Not scored.
+     Quiz     the questions above. A shift question whose answers are
+              directions (left, right, up, down, no change) can also be
+              answered by dragging a copy of the curve where it will go.
+   Readings come from the graph's own points, through the same monotone
+   curve the chart draws (AnpGraphMath below, tested in
+   scripts/test/anp-graphs.test.mjs); nothing between two data curves is
+   invented: a condition toggles between them, it does not blend them. */
+
+/* Pure helpers, no DOM (exported for scripts/test/anp-graphs.test.mjs). */
+(function(){
+  /* y(x) along a series exactly as pathD draws it: monotone cubic
+     (Fritsch–Carlson) for curve "smooth", straight segments otherwise. null
+     when x is outside the series or the series is a loop (x not rising). */
+  function curveFn(pts, smooth){
+    var n = pts ? pts.length : 0, i;
+    if(n < 2) return null;
+    for(i = 1; i < n; i++) if(pts[i][0] <= pts[i - 1][0]) return null;
+    var dx = [], m = [], t = [];
+    for(i = 0; i < n - 1; i++){ dx[i] = pts[i + 1][0] - pts[i][0]; m[i] = (pts[i + 1][1] - pts[i][1]) / dx[i]; }
+    var cubic = smooth && n >= 3;
+    if(cubic){
+      t[0] = m[0]; t[n - 1] = m[n - 2];
+      for(i = 1; i < n - 1; i++) t[i] = (m[i - 1] * m[i] <= 0) ? 0 : (m[i - 1] + m[i]) / 2;
+      for(i = 0; i < n - 1; i++){
+        if(m[i] === 0){ t[i] = 0; t[i + 1] = 0; continue; }
+        var a = t[i] / m[i], b = t[i + 1] / m[i], s = a * a + b * b;
+        if(s > 9){ var k = 3 / Math.sqrt(s); t[i] = k * a * m[i]; t[i + 1] = k * b * m[i]; }
+      }
+    }
+    return function(x){
+      if(x < pts[0][0] - 1e-9 || x > pts[n - 1][0] + 1e-9) return null;
+      var j = 0;
+      while(j < n - 2 && x > pts[j + 1][0]) j++;
+      var u = Math.min(1, Math.max(0, (x - pts[j][0]) / dx[j])), y0 = pts[j][1], y1 = pts[j + 1][1];
+      if(!cubic) return y0 + (y1 - y0) * u;
+      // The chart's Bezier has its control points at thirds of the step, so
+      // its x is linear in u and y is this cubic.
+      var h = dx[j] / 3, c0 = y0 + t[j] * h, c1 = y1 - t[j + 1] * h, v = 1 - u;
+      return v * v * v * y0 + 3 * v * v * u * c0 + 3 * v * u * u * c1 + u * u * u * y1;
+    };
+  }
+  function seriesFn(s){ return curveFn(s.pts, s.curve === 'smooth'); }
+
+  /* The base series an overlay series replaces: an explicit "from", else the
+     panel's series whose id starts the overlay's id (vm -> vm-hk), else the
+     panel's only series, else the closest one in shape. */
+  function pairOf(g, os){
+    var k = os.panel || 0, base = (g.panels[k] && g.panels[k].series) || [];
+    if(!base.length) return null;
+    var i;
+    if(os.from) for(i = 0; i < base.length; i++) if(base[i].id === os.from) return base[i];
+    for(i = 0; i < base.length; i++) if(os.id && os.id.indexOf(base[i].id + '-') === 0) return base[i];
+    if(base.length === 1) return base[0];
+    var fo = seriesFn(os), best = null, bd = Infinity;
+    base.forEach(function(b){
+      var fb = seriesFn(b), d = 0, c = 0;
+      if(fo && fb) os.pts.forEach(function(p){ var y = fb(p[0]); if(y != null){ d += Math.abs(y - p[1]); c++; } });
+      var score = c ? d / c : Infinity;
+      if(score < bd){ bd = score; best = b; }
+    });
+    return best;
+  }
+
+  /* The directions an answer option names for the curve: ['right'],
+     ['up','left'], ['none'], or [] when it is not a plain direction (a curve
+     that flattens, a point moving along a line). */
+  function dirsOf(text){
+    var t = String(text || '').replace(/<[^>]+>/g, '').toLowerCase().replace(/[:,.;].*$/, '').trim();
+    if(/\balong\b/.test(t)) return [];
+    if(/^(it\s+)?(does not (shift|change|move)|is unchanged|no change|nothing changes|exactly on)/.test(t)) return ['none'];
+    var m = t.match(/^(?:it\s+)?(?:shifts?\s+|moves?\s+|slides?\s+)?(?:to the\s+)?(left|right|up|down)(?:ward)?(?:\s+and\s+(left|right|up|down))?(?:\s+evenly\b.*)?$/);
+    if(!m) m = t.match(/^(?:it\s+)?(?:shifts?\s+|moves?\s+|slides?\s+)?(?:to the\s+)?(left|right|up|down)(?:ward)?(?:\s+and\s+(left|right|up|down))?\b/);
+    if(!m) return [];
+    return m[2] ? [m[1], m[2]] : [m[1]];
+  }
+
+  /* Can this shift question be answered by placing the curve? Returns
+     { k, base, over, dirs } or null: it needs one overlay series with a base
+     to move, a right answer that is a direction, and options whose
+     directions never overlap. */
+  function placeable(g, q){
+    if(!q || q.type !== 'shift' || !q.overlay || !q.overlay.series || q.overlay.series.length !== 1) return null;
+    var over = q.overlay.series[0], base = pairOf(g, over);
+    if(!base || !seriesFn(base) || !seriesFn(over)) return null;
+    var dirs = q.options.map(dirsOf), right = dirs[q.correct];
+    if(!right.length || right[0] === 'none') return null;
+    var seen = {}, ok = true;
+    dirs.forEach(function(ds){ ds.forEach(function(d){ if(seen[d]) ok = false; seen[d] = 1; }); });
+    if(!ok) return null;
+    return { k: over.panel || 0, base: base, over: over, dirs: dirs };
+  }
+
+  /* The option a drag of (dx, dy) screen pixels picks: the dominant axis
+     beyond min px, or 'none' inside it. -1 when no option says that. */
+  function pickByDrag(dirs, dx, dy, min){
+    var d = Math.max(Math.abs(dx), Math.abs(dy)) < (min || 14) ? 'none' :
+      Math.abs(dx) >= Math.abs(dy) ? (dx < 0 ? 'left' : 'right') : (dy < 0 ? 'up' : 'down');
+    for(var i = 0; i < dirs.length; i++) if(dirs[i].indexOf(d) > -1) return { i: i, dir: d };
+    return { i: -1, dir: d };
+  }
+
+  window.AnpGraphMath = { curveFn: curveFn, seriesFn: seriesFn, pairOf: pairOf, dirsOf: dirsOf, placeable: placeable, pickByDrag: pickByDrag };
+})();
+
 (function(){
   var app = document.getElementById('app');
   if(!app) return;
+  var GM = window.AnpGraphMath;
   var BASE = window.ANP_BASE || '../';
   var NS = 'http://www.w3.org/2000/svg';
   var W = 420, ML = 60, MR = 16, MT = 16, PANEL = 210, GAP = 18;
@@ -60,11 +172,12 @@
     var h = (location.hash || '').replace(/^#/, '').split('/');
     var g = h[0] ? find(decodeURIComponent(h[0])) : null;
     if(g){
-      var k = 0;
+      if(h[1] === 'explore') return showGraph(g, null, 'explore');
+      var k = null;
       if(h[1]) g.questions.forEach(function(q, i){ if(q.id === h[1]) k = i; });
       showGraph(g, k);
     } else if(h[0] === 'all') showList();
-    else { var d = defaultItem(); if(d) showGraph(d, firstOpen(d)); else showList(); }
+    else { var d = defaultItem(); if(d) showGraph(d, null); else showList(); }
   }
 
   /* -------------------------------------------------------------- list view */
@@ -202,7 +315,7 @@
     function sy(k, v){ var p = g.panels[k].y; return p.reverse ? tops[k] + (v - p.min) / (p.max - p.min) * hs[k] : tops[k] + hs[k] - (v - p.min) / (p.max - p.min) * hs[k]; }
     var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, role: 'img', 'aria-label': g.alt, 'class': 'gr-svg' });
     var L = {};
-    ['bg', 'regions', 'hl', 'axes', 'series', 'overlay', 'labels', 'marks'].forEach(function(n){ L[n] = el('g', { 'class': 'gr-' + n }); svg.appendChild(L[n]); });
+    ['bg', 'regions', 'hl', 'axes', 'series', 'overlay', 'labels', 'marks', 'cursor'].forEach(function(n){ L[n] = el('g', { 'class': 'gr-' + n }); svg.appendChild(L[n]); });
     var clipId = 'grclip-' + g.id;
     var defs = el('defs');
     g.panels.forEach(function(p, k){
@@ -285,8 +398,11 @@
 
     function series(into, labels, k, s){
       var pts = s.pts.map(function(p){ return [sx(p[0]), sy(k, p[1])]; });
-      into.appendChild(el('path', { d: pathD(pts, s.curve === 'smooth'), 'class': s.cls + ' line gr-line' + (s.dash ? ' gr-dash' : ''), 'clip-path': 'url(#' + clipId + '-' + k + ')' }));
-      if(s.label && s.labelAt) labels.appendChild(el('text', { x: sx(s.labelAt[0]), y: sy(k, s.labelAt[1]), 'text-anchor': s.anchor || 'start', 'class': 'gr-lbl gr-c-' + s.cls }, s.label));
+      var path = el('path', { d: pathD(pts, s.curve === 'smooth'), 'class': s.cls + ' line gr-line' + (s.dash ? ' gr-dash' : ''), 'clip-path': 'url(#' + clipId + '-' + k + ')', 'data-sid': k + ':' + s.id });
+      into.appendChild(path);
+      var lbl = null;
+      if(s.label && s.labelAt) labels.appendChild(lbl = el('text', { x: sx(s.labelAt[0]), y: sy(k, s.labelAt[1]), 'text-anchor': s.anchor || 'start', 'class': 'gr-lbl gr-c-' + s.cls, 'data-sid': k + ':' + s.id }, s.label));
+      return { path: path, label: lbl };
     }
     function hline(into, labels, k, l){
       var x0 = l.x0 != null ? l.x0 : (cats ? -0.5 : X.min), x1 = l.x1 != null ? l.x1 : (cats ? cats.length - 0.5 : X.max);
@@ -304,30 +420,71 @@
       if(r.label) labels.appendChild(el('text', { x: (x0 + x1) / 2, y: plotBottom - 6, 'text-anchor': 'middle', 'class': 'gr-rlabel' }, r.label));
     }
     return {
-      svg: svg, L: L, sx: sx, sy: sy, tops: tops, hs: hs, plotBottom: plotBottom,
+      svg: svg, L: L, sx: sx, sy: sy, tops: tops, hs: hs, plotBottom: plotBottom, H: H, xmin: xmin, xmax: xmax,
+      ix: function(px){ return xmin + (px - ML) / PW * (xmax - xmin); },
+      iy: function(k, py){ var p = g.panels[k].y, f = (py - tops[k]) / hs[k]; return p.reverse ? p.min + f * (p.max - p.min) : p.max - f * (p.max - p.min); },
       series: series, hline: hline, mark: mark, region: region,
+      pathD: pathD, clipId: clipId,
       clear: function(){ ['hl', 'overlay', 'marks'].forEach(function(n){ while(L[n].firstChild) L[n].removeChild(L[n].firstChild); }); (g.panels).forEach(function(p, k){ (p.marks || []).forEach(function(m){ mark(L.marks, k, m, 'gr-mark'); }); }); }
     };
   }
 
-  /* ------------------------------------------------------------- graph view */
-  function showGraph(g, qk){
-    var t = topicInfo(g.topic);
+  /* ------------------------------------------------------------- graph view
+     One chart, two modes beside it (stacked on a phone): Explore and Quiz.
+     #<graph> opens Explore on a graph not yet tried and the quiz otherwise;
+     #<graph>/explore and #<graph>/<question> open one or the other. */
+  function reduced(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
+  /* Every y where a series crosses x: one for a curve, two or more for a loop
+     (a loop is drawn with straight segments, so its crossings are exact). */
+  function readAt(s, x){
+    var f = GM.seriesFn(s);
+    if(f){ var y = f(x); return y == null ? [] : [y]; }
+    var out = [];
+    for(var i = 1; i < s.pts.length; i++){
+      var a = s.pts[i - 1], b = s.pts[i];
+      if((x - a[0]) * (x - b[0]) > 0 || a[0] === b[0]) continue;
+      var y2 = a[1] + (b[1] - a[1]) * (x - a[0]) / (b[0] - a[0]);
+      if(!out.some(function(v){ return Math.abs(v - y2) < 1e-6; })) out.push(y2);
+    }
+    return out.sort(function(p, q){ return q - p; });
+  }
+  function conditions(g){
+    return g.questions.filter(function(q){ return q.type === 'shift' && q.overlay && ((q.overlay.series || []).length || (q.overlay.marks || []).length || (q.overlay.hlines || []).length); });
+  }
+  function condLabel(q){
+    var o = q.overlay, names = [];
+    (o.series || []).forEach(function(s){ if(s.label && names.indexOf(s.label) < 0) names.push(s.label); });
+    if(!names.length) (o.hlines || []).forEach(function(l){ if(l.label && names.indexOf(l.label) < 0) names.push(l.label); });
+    if(!names.length) (o.marks || []).forEach(function(m){ if(m.label) names.push(m.label); });
+    var s = names.join(' · ');
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  function showGraph(g, qk, wantMode){
     var idx = DATA.graphs.indexOf(g);
     var next = DATA.graphs[(idx + 1) % DATA.graphs.length];
     var hasRegions = (g.regions || []).some(function(r){ return !r.show && r.x1 - r.x0 > 0; });
+    var tried = g.questions.some(function(q){ return status(itemId(g, q)) !== 'new'; });
+    var mode = wantMode || (qk != null || tried ? 'quiz' : 'explore');
+    var nRight = g.questions.filter(function(q){ return status(itemId(g, q)) === 'right'; }).length;
     app.innerHTML = '<div class="pw gr gr-view">' +
       '<div class="pw-pickhost"></div>' +
       '<h2 class="pw-title" tabindex="-1">' + esc(g.title) + '</h2>' +
       '<p class="anp-small pw-meta">Topic: ' + topicLink(g.topic) + ' · ' + g.questions.length + ' questions</p>' +
       '<p class="pw-intro">' + html(g.intro) + '</p>' +
+      '<div class="gr-modes" role="tablist" aria-label="Mode">' +
+        '<button type="button" role="tab" class="gr-mode" id="gr-tab-explore" aria-controls="gr-panel" data-m="explore">Explore</button>' +
+        '<button type="button" role="tab" class="gr-mode" id="gr-tab-quiz" aria-controls="gr-panel" data-m="quiz">Quiz <span class="gr-mode-n">' + nRight + '/' + g.questions.length + '</span></button>' +
+      '</div>' +
       '<div class="gr-layout"><div class="gr-figcol"><figure class="anp-fig gr-fig"></figure>' +
+      '<div class="gr-scrub"><label class="gr-scrub-l" for="gr-x">' + esc(g.x.label) + '</label><input type="range" id="gr-x" class="gr-range"></div>' +
       (hasRegions ? '<p class="gr-tools"><button type="button" class="btn-outline gr-toggle" aria-pressed="false">Show phases and regions</button></p>' : '') +
-      '</div><div class="gr-qcol"><div class="gr-qnav" role="group" aria-label="Questions"></div><div class="gr-q"></div></div></div>' +
+      '</div><div class="gr-qcol" id="gr-panel" role="tabpanel"></div></div>' +
       '<p class="pw-next"><a class="btn-outline" href="#' + esc(next.id) + '">Next graph: ' + esc(next.title) + ' →</a></p></div>';
     addPicker(g);
     var c = chart(g);
-    app.querySelector('.gr-fig').appendChild(c.svg);
+    var fig = app.querySelector('.gr-fig');
+    fig.appendChild(c.svg);
     var showAll = false;
     var toggle = app.querySelector('.gr-toggle');
     var allLayer = el('g', { 'class': 'gr-all' });
@@ -339,22 +496,236 @@
       while(allLayer.firstChild) allLayer.removeChild(allLayer.firstChild);
       if(showAll) g.regions.forEach(function(r, i){ if(!r.show) c.region(allLayer, allLayer, r, 'gr-region-all' + (i % 2 ? ' alt' : '')); });
     });
-    var nav = app.querySelector('.gr-qnav');
+    var panelEl = app.querySelector('#gr-panel');
+    var cats = g.x.cats, unitY = function(k){ return g.panels[k].y.unit || ''; };
+    function xText(x){ return cats ? cats[Math.round(x)] : fmt(x) + unitText(g.x.unit); }
+
+    /* ---- the cursor: drag on the chart, or the slider under it */
+    var range = app.querySelector('#gr-x'), cursorX = null, cursorOn = false, onCursor = null;
+    var span = c.xmax - c.xmin, stepX = cats ? 1 : niceStep(span / 200);
+    range.min = cats ? 0 : g.x.min; range.max = cats ? cats.length - 1 : g.x.max; range.step = stepX;
+    function niceStep(v){ var p = Math.pow(10, Math.floor(Math.log(v) / Math.LN10)), m = v / p; return (m < 1.5 ? 1 : m < 3.5 ? 2 : m < 7.5 ? 5 : 10) * p; }
+    function snap(x){ var lo = +range.min, hi = +range.max; x = Math.min(hi, Math.max(lo, x)); return cats ? Math.round(x) : Math.round((x - lo) / stepX) * stepX + lo; }
+    function drawCursor(){
+      var L = c.L.cursor;
+      while(L.firstChild) L.removeChild(L.firstChild);
+      if(!cursorOn || cursorX == null) return;
+      var px = c.sx(cursorX);
+      L.appendChild(el('line', { x1: px, x2: px, y1: MT - 4, y2: c.plotBottom, 'class': 'gr-cur-line' }));
+      g.panels.forEach(function(p, k){
+        visibleSeries(k).forEach(function(s){
+          readAt(s, cursorX).forEach(function(y){
+            if(y < Math.min(p.y.min, p.y.max) - 1e-9 || y > Math.max(p.y.min, p.y.max) + 1e-9) return;
+            L.appendChild(el('circle', { cx: px, cy: c.sy(k, y), r: 4.5, 'class': 'gr-cur-dot gr-dot-' + s.cls }));
+          });
+        });
+      });
+      var tx = Math.min(W - MR - 4, Math.max(ML + 4, px));
+      var tag = el('text', { x: tx, y: c.plotBottom + (cats ? 0 : 0) - 6, 'text-anchor': px > W - MR - 50 ? 'end' : px < ML + 50 ? 'start' : 'middle', 'class': 'gr-cur-tag' }, xText(cursorX));
+      L.appendChild(tag);
+      L.appendChild(el('rect', { x: px - 9, y: MT - 12, width: 18, height: 12, rx: 6, 'class': 'gr-cur-grip' }));
+    }
+    function setCursor(x, from){
+      cursorX = snap(x); cursorOn = true;
+      if(from !== 'range') range.value = cursorX;
+      range.setAttribute('aria-valuetext', xText(cursorX));
+      drawCursor();
+      if(onCursor) onCursor(cursorX);
+    }
+    range.addEventListener('input', function(){ setCursor(+range.value, 'range'); });
+    var dragging = false;
+    function evX(e){ var r = c.svg.getBoundingClientRect(); return c.ix((e.clientX - r.left) * (W / r.width)); }
+    c.svg.addEventListener('pointerdown', function(e){
+      if(mode !== 'explore' || e.target.closest('.gr-ghost-hit')) return;
+      dragging = true; try{ c.svg.setPointerCapture(e.pointerId); }catch(er){}
+      setCursor(evX(e));
+    });
+    c.svg.addEventListener('pointermove', function(e){ if(dragging) setCursor(evX(e)); });
+    ['pointerup', 'pointercancel'].forEach(function(n){ c.svg.addEventListener(n, function(){ dragging = false; }); });
+
+    /* ---- which series are drawn now (a condition swaps its base series) */
+    var active = null;   // the shift question shown as a condition in Explore
+    function visibleSeries(k){
+      var list = (g.panels[k].series || []).slice();
+      if(active){
+        (active.overlay.series || []).forEach(function(os){ if((os.panel || 0) === k) list.push(os); });
+      }
+      return list;
+    }
+
+    /* ---- tabs */
+    var tabs = app.querySelectorAll('.gr-mode');
+    function setMode(m, focus){
+      mode = m;
+      tabs.forEach(function(b){ var on = b.getAttribute('data-m') === m; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; if(on && focus) b.focus(); });
+      panelEl.setAttribute('aria-labelledby', 'gr-tab-' + m);
+      fig.classList.toggle('is-explore', m === 'explore');
+      c.clear(); clearCond(true);
+      if(m === 'explore') explore(); else { cursorOn = false; drawCursor(); quiz(); }
+    }
+    tabs.forEach(function(b, i){
+      b.addEventListener('click', function(){ if(b.getAttribute('data-m') !== mode){ history.replaceState(null, '', '#' + g.id + (b.getAttribute('data-m') === 'explore' ? '/explore' : '')); setMode(b.getAttribute('data-m')); } });
+      b.addEventListener('keydown', function(e){
+        if(e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        e.preventDefault(); var o = tabs[1 - i]; o.click(); o.focus();
+      });
+    });
+
+    /* ---- Explore */
+    var condLayer = null, animId = 0;
+    function clearCond(silent){
+      active = null; animId++;
+      if(condLayer && condLayer.parentNode) condLayer.parentNode.removeChild(condLayer);
+      condLayer = null;
+      c.svg.querySelectorAll('.gr-before').forEach(function(x){ x.classList.remove('gr-before'); });
+      if(!silent) drawCursor();
+    }
+    function showCond(q){
+      clearCond(true);
+      active = q;
+      condLayer = el('g', { 'class': 'gr-cond' });
+      c.svg.insertBefore(condLayer, c.L.labels);
+      var o = q.overlay, my = ++animId;
+      (o.hlines || []).forEach(function(l){ c.hline(condLayer, condLayer, l.panel || 0, l); });
+      (o.marks || []).forEach(function(m){ c.mark(condLayer, m.panel || 0, m, 'gr-qmark'); });
+      (o.series || []).forEach(function(os){
+        var k = os.panel || 0, base = GM.pairOf(g, os);
+        if(base) c.svg.querySelectorAll('[data-sid="' + k + ':' + base.id + '"]').forEach(function(x){ x.classList.add('gr-before'); });
+        morph(condLayer, k, base, os, my);
+      });
+      drawCursor();
+    }
+    /* The base curve slides into the shifted one: both are sampled on the x
+       range they share and blended over 0.7 s, then the real shifted curve
+       is drawn from its own points. Reduced motion: the end state at once. */
+    function morph(into, k, base, os, my){
+      var fb = base && GM.seriesFn(base), fo = GM.seriesFn(os);
+      function finish(tmp){ if(my !== animId) return; if(tmp && tmp.parentNode) tmp.parentNode.removeChild(tmp); var d = c.series(into, into, k, os); if(d.path) d.path.classList.add('gr-shifted'); }
+      if(!fb || !fo || reduced()) return finish(null);
+      var x0 = Math.max(base.pts[0][0], os.pts[0][0]), x1 = Math.min(base.pts[base.pts.length - 1][0], os.pts[os.pts.length - 1][0]);
+      if(!(x1 > x0)) return finish(null);
+      var N = 60, xs = [];
+      for(var i = 0; i <= N; i++) xs.push(x0 + (x1 - x0) * i / N);
+      var tmp = el('path', { 'class': os.cls + ' line gr-line gr-dash gr-moving', 'clip-path': 'url(#' + c.clipId + '-' + k + ')' });
+      into.appendChild(tmp);
+      var t0 = null;
+      function frame(ts){
+        if(my !== animId){ if(tmp.parentNode) tmp.parentNode.removeChild(tmp); return; }
+        if(t0 == null) t0 = ts;
+        var u = Math.min(1, (ts - t0) / 700), e = u < 0.5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+        tmp.setAttribute('d', c.pathD(xs.map(function(x){ return [c.sx(x), c.sy(k, fb(x) + (fo(x) - fb(x)) * e)]; }), false));
+        if(u < 1) requestAnimationFrame(frame); else finish(tmp);
+      }
+      requestAnimationFrame(frame);
+    }
+    function explore(){
+      var conds = conditions(g);
+      panelEl.innerHTML = '<div class="gr-ex">' +
+        '<p class="gr-kind">Explore · drag along the graph</p>' +
+        '<div class="gr-read" aria-live="polite"></div>' +
+        (conds.length ? '<h3 class="gr-ex-h">What if…</h3><div class="gr-conds" role="group" aria-label="Conditions that shift the curve">' + conds.map(function(q, i){
+          return '<button type="button" class="gr-cond-b" aria-pressed="false" data-i="' + i + '">' + esc(condLabel(q)) + '</button>';
+        }).join('') + '</div><div class="gr-cond-why" aria-live="polite"></div>' : '<p class="anp-small gr-ex-none">This graph has no shift conditions; read it along x, then try the quiz.</p>') +
+        '<p class="gr-ex-go"><button type="button" class="btn-press sm gr-to-quiz">Quiz me on this graph →</button></p>' +
+        '</div>';
+      var readEl = panelEl.querySelector('.gr-read'), whyEl = panelEl.querySelector('.gr-cond-why'), timer = 0;
+      function readout(x){
+        var rows = [];
+        g.panels.forEach(function(p, k){
+          var u = unitY(k);
+          visibleSeries(k).forEach(function(s){
+            if(active && (active.overlay.series || []).indexOf(s) > -1) return;
+            var ys = readAt(s, x), shifted = null;
+            if(active) (active.overlay.series || []).forEach(function(os){ if((os.panel || 0) === k && GM.pairOf(g, os) === s) shifted = os; });
+            var v = ys.length ? ys.map(function(y){ return fmt(y); }).join(' and ') + unitText(u) : '<span class="gr-na">not on the graph here</span>';
+            var row = '<li><span class="gr-sw gr-sw-' + esc(s.cls) + '" aria-hidden="true"></span><span class="gr-rl">' + esc(s.label || p.y.label) + '</span><b class="gr-rv">' + v + '</b>';
+            if(shifted){
+              var ns = readAt(shifted, x);
+              var nv = ns.length ? ns.map(function(y){ return fmt(y); }).join(' and ') + unitText(u) : '—';
+              var dl = ys.length === 1 && ns.length === 1 ? ns[0] - ys[0] : null;
+              row += '<span class="gr-rnew"><span class="gr-sw gr-sw-dash gr-sw-' + esc(shifted.cls) + '" aria-hidden="true"></span>' + esc(shifted.label) + ': <b>' + nv + '</b>' +
+                (dl != null && Math.abs(dl) > 1e-9 ? ' <span class="gr-delta ' + (dl > 0 ? 'up' : 'down') + '">' + (dl > 0 ? '+' : '') + fmt(dl) + '</span>' : '') + '</span>';
+            }
+            rows.push(row + '</li>');
+          });
+          if(active) (active.overlay.series || []).forEach(function(os){
+            if((os.panel || 0) !== k || GM.pairOf(g, os)) return;
+            var ns = readAt(os, x);
+            rows.push('<li><span class="gr-sw gr-sw-dash gr-sw-' + esc(os.cls) + '" aria-hidden="true"></span><span class="gr-rl">' + esc(os.label) + '</span><b class="gr-rv">' + (ns.length ? ns.map(function(y){ return fmt(y); }).join(' and ') + unitText(u) : '—') + '</b></li>');
+          });
+        });
+        var where = (g.regions || []).filter(function(r){ return r.label && x >= r.x0 - 1e-9 && x <= r.x1 + 1e-9; }).map(function(r){ return r.label; });
+        readEl.innerHTML = '<p class="gr-at"><span class="anp-small">At ' + esc(g.x.label) + '</span> <b>' + esc(xText(x)) + '</b>' +
+          (where.length ? ' <span class="gr-where">' + esc(where.join(' · ')) + '</span>' : '') + '</p><ul class="gr-rows">' + rows.join('') + '</ul>';
+        clearTimeout(timer);
+      }
+      onCursor = readout;
+      var start = startX();
+      setCursor(start);
+      panelEl.querySelectorAll('.gr-cond-b').forEach(function(b){
+        b.addEventListener('click', function(){
+          var q = conds[+b.getAttribute('data-i')], on = b.getAttribute('aria-pressed') !== 'true';
+          panelEl.querySelectorAll('.gr-cond-b').forEach(function(x){ x.setAttribute('aria-pressed', 'false'); });
+          if(on){
+            b.setAttribute('aria-pressed', 'true');
+            showCond(q);
+            var at = keyX(q);
+            if(at != null) setCursor(at); else readout(cursorX);
+            whyEl.innerHTML = '<p class="gr-why-q">' + html(q.q) + '</p><p>' + html(q.why.correct) + '</p>';
+          } else { clearCond(); readout(cursorX); whyEl.innerHTML = ''; }
+        });
+      });
+      panelEl.querySelector('.gr-to-quiz').addEventListener('click', function(){ history.replaceState(null, '', '#' + g.id); setMode('quiz', true); });
+    }
+    /* Where to park the cursor: the first value question's x (a reading the
+       graph is about), else the middle of the axis. */
+    function startX(){
+      for(var i = 0; i < g.questions.length; i++){ var s = g.questions[i].show; if(s && s.x != null) return s.x; }
+      var m = (g.panels[0].marks || [])[0]; if(m) return m.x;
+      return cats ? Math.floor((cats.length - 1) / 2) : (g.x.min + g.x.max) / 2;
+    }
+    /* For a condition, the x where the shift shows best: where base and
+       shifted curves differ most (sampled), so the readout shows the change. */
+    function keyX(q){
+      var best = null, bd = 0;
+      (q.overlay.series || []).forEach(function(os){
+        var b = GM.pairOf(g, os), fb = b && GM.seriesFn(b), fo = GM.seriesFn(os);
+        if(!fb || !fo) return;
+        var x0 = Math.max(b.pts[0][0], os.pts[0][0]), x1 = Math.min(b.pts[b.pts.length - 1][0], os.pts[os.pts.length - 1][0]);
+        var p = g.panels[os.panel || 0].y, scale = Math.abs(p.max - p.min) || 1;
+        for(var i = 0; i <= 40; i++){ var x = x0 + (x1 - x0) * i / 40, d = Math.abs(fo(x) - fb(x)) / scale; if(d > bd + 1e-9){ bd = d; best = x; } }
+      });
+      if(best == null){ var m = (q.overlay.marks || [])[0]; if(m) best = m.x; }
+      return best == null ? null : snap(best);
+    }
+
+    /* ---- Quiz */
+    var nav = null;
+    function quiz(){
+      panelEl.innerHTML = '<div class="gr-qnav" role="group" aria-label="Questions"></div><div class="gr-q"></div>';
+      nav = panelEl.querySelector('.gr-qnav');
+      onCursor = null;
+      ask(Math.min(qk != null ? qk : firstOpen(g), g.questions.length - 1), false);
+    }
     function paintNav(active){
       nav.innerHTML = g.questions.map(function(q, i){
         var s = status(itemId(g, q));
         return '<button type="button" class="gr-qbtn is-' + s + '" aria-current="' + (i === active ? 'step' : 'false') + '" data-i="' + i + '" aria-label="Question ' + (i + 1) + (s === 'right' ? ', answered right' : s === 'missed' ? ', missed' : '') + '">' + (i + 1) + '</button>';
       }).join('');
       nav.querySelectorAll('.gr-qbtn').forEach(function(b){ b.addEventListener('click', function(){ ask(+b.getAttribute('data-i'), true); }); });
+      var n = g.questions.filter(function(q){ return status(itemId(g, q)) === 'right'; }).length, t = app.querySelector('.gr-mode-n');
+      if(t) t.textContent = n + '/' + g.questions.length;
     }
     function ask(i, focus){
       var q = g.questions[i];
+      qk = i;
       history.replaceState(null, '', '#' + g.id + '/' + q.id);
       paintNav(i);
-      c.clear();
+      c.clear(); dropGhost();
       if(q.marker) c.mark(c.L.marks, q.marker.panel || 0, q.marker, 'gr-qmark');
-      var box = app.querySelector('.gr-q');
-      var kind = q.type === 'value' ? 'Read a value' : q.type === 'phase' ? 'Name the phase or region' : 'Predict the shift';
+      var box = panelEl.querySelector('.gr-q');
+      var place = GM.placeable(g, q);
+      var kind = q.type === 'value' ? 'Read a value' : q.type === 'phase' ? 'Name the phase or region' : place ? 'Place the shifted curve' : 'Predict the shift';
       box.innerHTML = '<p class="gr-kind">Question ' + (i + 1) + ' of ' + g.questions.length + ' · ' + kind + '</p>' +
         '<p class="gr-stem" tabindex="-1">' + html(q.q) + '</p><div class="gr-body"></div><div class="gr-feedback" aria-live="polite"></div><div class="pw-actions gr-actions"></div>';
       var body = box.querySelector('.gr-body'), fb = box.querySelector('.gr-feedback'), actions = box.querySelector('.gr-actions');
@@ -389,7 +760,6 @@
             '<b>' + fmt(q.answer) + unitText(q.unit) + '</b> (anything within ' + fmt(q.tol) + ' counts). ' + html(q.why) + '</p>';
           if(q.show){
             var k = q.show.panel || 0, x = c.sx(q.show.x), y = c.sy(k, q.show.y);
-            var pa = g.panels[k];
             var base = c.tops[k] + c.hs[k];
             c.L.hl.appendChild(el('path', { d: 'M' + x + ',' + base + ' L' + x + ',' + y + ' L' + ML + ',' + y, 'class': 'gr-guide' }));
             c.L.hl.appendChild(el('circle', { cx: x, cy: y, r: 5.5, 'class': 'gr-qmark' }));
@@ -400,29 +770,120 @@
           fb.setAttribute('tabindex', '-1'); fb.focus();
         });
         if(focus) input.focus();
-      } else {
-        var items = shuffle(q.options.map(function(o, j){ return { o: o, j: j }; }));
-        body.innerHTML = '<div class="anp-opt-btns" role="group" aria-label="Answer options">' + items.map(function(it){ return '<button type="button" class="anp-opt" data-j="' + it.j + '">' + html(it.o) + '</button>'; }).join('') + '</div>';
-        body.querySelectorAll('.anp-opt').forEach(function(b){
-          b.addEventListener('click', function(){
-            if(body.getAttribute('data-done')) return;
-            body.setAttribute('data-done', '1');
-            var pick = +b.getAttribute('data-j'), ok = pick === q.correct;
-            body.querySelectorAll('.anp-opt').forEach(function(x){
-              var j = +x.getAttribute('data-j');
-              x.disabled = true;
-              if(j === q.correct) x.classList.add('is-right'); else if(j === pick) x.classList.add('is-wrong');
-              if(q.why.options[j]) x.insertAdjacentHTML('beforeend', '<span class="anp-opt-why">' + html(q.why.options[j]) + '</span>');
-            });
-            var first = after(ok);
-            fb.innerHTML = verdict(ok, first) + '<p>' + html(q.why.correct) + '</p>';
-            if(q.type === 'phase') highlight(q.highlight);
-            else overlay(q.overlay);
-            fb.setAttribute('tabindex', '-1'); fb.focus();
-          });
-        });
-        if(focus){ var s = box.querySelector('.gr-stem'); if(s) s.focus(); }
+        return;
       }
+      var items = shuffle(q.options.map(function(o, j){ return { o: o, j: j }; }));
+      body.innerHTML = (place ? placeHtml(place) : '') +
+        '<div class="anp-opt-btns" role="group" aria-label="Answer options">' + items.map(function(it){ return '<button type="button" class="anp-opt" data-j="' + it.j + '">' + html(it.o) + '</button>'; }).join('') + '</div>';
+      function answer(pick, how){
+        if(body.getAttribute('data-done')) return;
+        body.setAttribute('data-done', '1');
+        var ok = pick === q.correct;
+        body.querySelectorAll('.anp-opt').forEach(function(x){
+          var j = +x.getAttribute('data-j');
+          x.disabled = true;
+          if(j === q.correct) x.classList.add('is-right'); else if(j === pick) x.classList.add('is-wrong');
+          if(q.why.options[j]) x.insertAdjacentHTML('beforeend', '<span class="anp-opt-why">' + html(q.why.options[j]) + '</span>');
+        });
+        body.querySelectorAll('.gr-place button').forEach(function(x){ x.disabled = true; });
+        var first = after(ok);
+        fb.innerHTML = verdict(ok, first) + (how ? '<p class="gr-how">' + how + '</p>' : '') + '<p>' + html(q.why.correct) + '</p>';
+        if(q.type === 'phase') highlight(q.highlight);
+        else if(place) settleGhost(place, q);
+        else overlay(q.overlay);
+        fb.setAttribute('tabindex', '-1'); fb.focus();
+      }
+      body.querySelectorAll('.anp-opt').forEach(function(b){
+        b.addEventListener('click', function(){ answer(+b.getAttribute('data-j')); });
+      });
+      if(place) wirePlace(place, body, function(d){
+        var r = GM.pickByDrag(place.dirs, d === 'left' ? -99 : d === 'right' ? 99 : 0, d === 'up' ? -99 : d === 'down' ? 99 : 0);
+        var said = d === 'none' ? 'You left the curve where it was.' : 'You moved the curve ' + d + '.';
+        if(r.i < 0) said += ' None of the answers moves it that way.';
+        answer(r.i, said);
+      });
+      if(focus){ var s = box.querySelector('.gr-stem'); if(s) s.focus(); }
+    }
+
+    /* ---- placing a curve: a dashed copy of the curve to drag (or arrow
+       buttons, or the keyboard). On release the drag's main direction is the
+       answer; then the copy glides to where the curve really goes. */
+    var ghost = null;
+    function dropGhost(){ if(ghost && ghost.g.parentNode) ghost.g.parentNode.removeChild(ghost.g); ghost = null; }
+    function placeHtml(pl){
+      var has = {}; pl.dirs.forEach(function(ds){ ds.forEach(function(d){ has[d] = 1; }); });
+      var b = function(d, sym, word){ return has[d] ? '<button type="button" class="gr-pbtn" data-d="' + d + '" aria-label="Move the curve ' + word + '">' + sym + '</button>' : ''; };
+      return '<div class="gr-place"><p class="gr-place-t"><b>Drag the dashed copy</b> of the curve where it will go, or use these:</p>' +
+        '<div class="gr-pbtns" role="group" aria-label="Move the curve">' + b('left', '←', 'left') + b('up', '↑', 'up') + b('down', '↓', 'down') + b('right', '→', 'right') +
+        (has.none ? '<button type="button" class="gr-pbtn gr-pnone" data-d="none">Stays put</button>' : '') + '</div>' +
+        '<p class="gr-or anp-small">or choose an answer:</p></div>';
+    }
+    function wirePlace(pl, body, done){
+      dropGhost();
+      var k = pl.k, s = pl.base;
+      var gg = el('g', { 'class': 'gr-ghost', 'clip-path': 'url(#' + c.clipId + '-' + k + ')' });
+      var pts = s.pts.map(function(p){ return [c.sx(p[0]), c.sy(k, p[1])]; });
+      var d = c.pathD(pts, s.curve === 'smooth');
+      var line = el('path', { d: d, 'class': 'gr-ghost-line' });
+      var hit = el('path', { d: d, 'class': 'gr-ghost-hit', tabindex: '0', role: 'button', 'aria-label': 'Copy of the curve. Drag it, or use the arrow keys, to show where the curve goes.' });
+      gg.appendChild(line); gg.appendChild(hit);
+      c.svg.insertBefore(gg, c.L.cursor);
+      ghost = { g: gg, line: line, hit: hit, dx: 0, dy: 0, done: false };
+      var start = null, scale = 1;
+      function move(dx, dy){ ghost.dx = dx; ghost.dy = dy; line.setAttribute('transform', 'translate(' + dx + ',' + dy + ')'); hit.setAttribute('transform', 'translate(' + dx + ',' + dy + ')'); }
+      function commit(){
+        if(ghost.done) return;
+        var r = GM.pickByDrag(pl.dirs, ghost.dx, ghost.dy, 14);
+        if(ghost.dx === 0 && ghost.dy === 0) return;
+        ghost.done = true;
+        done(r.dir);
+      }
+      hit.addEventListener('pointerdown', function(e){
+        if(ghost.done) return;
+        e.preventDefault();
+        var r = c.svg.getBoundingClientRect(); scale = W / r.width;
+        start = { x: e.clientX, y: e.clientY };
+        try{ hit.setPointerCapture(e.pointerId); }catch(er){}
+        gg.classList.add('is-drag');
+      });
+      hit.addEventListener('pointermove', function(e){ if(start) move((e.clientX - start.x) * scale, (e.clientY - start.y) * scale); });
+      hit.addEventListener('pointerup', function(){ if(!start) return; start = null; gg.classList.remove('is-drag'); if(Math.max(Math.abs(ghost.dx), Math.abs(ghost.dy)) < 14){ move(0, 0); return; } commit(); });
+      hit.addEventListener('pointercancel', function(){ start = null; move(0, 0); gg.classList.remove('is-drag'); });
+      hit.addEventListener('keydown', function(e){
+        var m = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down' }[e.key];
+        if(!m || ghost.done) return;
+        e.preventDefault(); nudge(m);
+      });
+      function nudge(dir){
+        if(dir === 'none'){ ghost.done = true; done('none'); return; }
+        move(dir === 'left' ? -28 : dir === 'right' ? 28 : 0, dir === 'up' ? -28 : dir === 'down' ? 28 : 0);
+        ghost.done = true; done(dir);
+      }
+      body.querySelectorAll('.gr-pbtn').forEach(function(b){ b.addEventListener('click', function(){ if(!ghost.done) nudge(b.getAttribute('data-d')); }); });
+    }
+    /* After the answer: the copy glides to the real shifted curve. */
+    function settleGhost(pl, q){
+      var os = pl.over, k = pl.k;
+      if(ghost){
+        ghost.hit.removeAttribute('tabindex');
+        var line = ghost.line, from = { dx: ghost.dx, dy: ghost.dy };
+        var fb = GM.seriesFn(pl.base), fo = GM.seriesFn(os);
+        var x0 = Math.max(pl.base.pts[0][0], os.pts[0][0]), x1 = Math.min(pl.base.pts[pl.base.pts.length - 1][0], os.pts[os.pts.length - 1][0]);
+        var N = 60, xs = [];
+        for(var i = 0; i <= N; i++) xs.push(x0 + (x1 - x0) * i / N);
+        var my = ++animId;
+        var end = function(){ if(ghost && ghost.g.parentNode) ghost.g.parentNode.removeChild(ghost.g); ghost = null; overlay(q.overlay); };
+        if(reduced() || !(x1 > x0)) return end();
+        var t0 = null;
+        requestAnimationFrame(function frame(ts){
+          if(my !== animId) return;
+          if(t0 == null) t0 = ts;
+          var u = Math.min(1, (ts - t0) / 750), e = u < 0.5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+          line.setAttribute('transform', 'translate(' + from.dx * (1 - e) + ',' + from.dy * (1 - e) + ')');
+          line.setAttribute('d', c.pathD(xs.map(function(x){ return [c.sx(x), c.sy(k, fb(x) + (fo(x) - fb(x)) * e)]; }), false));
+          if(u < 1) requestAnimationFrame(frame); else end();
+        });
+      } else overlay(q.overlay);
     }
     function highlight(h){
       if(!h) return;
@@ -445,7 +906,7 @@
       (o.hlines || []).forEach(function(l){ c.hline(c.L.overlay, c.L.overlay, l.panel || 0, l); });
       (o.marks || []).forEach(function(m){ c.mark(c.L.overlay, m.panel || 0, m, 'gr-qmark'); });
     }
-    ask(Math.min(qk || 0, g.questions.length - 1), false);
+    setMode(mode, false);
     if(booted){ var h = app.querySelector('.pw-title'); if(h) h.focus(); }
   }
 
