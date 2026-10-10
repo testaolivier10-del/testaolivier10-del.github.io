@@ -1,6 +1,6 @@
 /* "Give or withhold?": a stack of patients, one drug decision each.
 
-   ONE JOB: practise the decision the formulary page is about, which is what
+   ONE JOB: practice the decision the formulary page is about, which is what
    stops you, by meeting a patient and deciding.
 
    EVERY CARD IS TIED TO THE PAGE. `rule` is an exact phrase from that drug's

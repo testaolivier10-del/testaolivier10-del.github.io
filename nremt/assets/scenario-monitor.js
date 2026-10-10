@@ -14,7 +14,7 @@
    prints worse vitals. Only at those forks (HESITATE, below, checked by
    scripts/test/nremt-cases.test.mjs) does the monitor drift, slowly, from the
    current values toward that node's values while the student decides, and it
-   never goes past them. Labelled as simulated.
+   never goes past them. Labeled as simulated.
 
    FLAGS. A value is flagged against the site's own reference card for the
    patient's age (REF, the same numbers as reference-cards.html, pinned by the

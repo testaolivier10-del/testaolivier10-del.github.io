@@ -122,6 +122,8 @@ COURSE_URLS.nremt = [
   // flowcharts and skillsheets in particular are now drills rather than
   // documents, and a drill that will not start is worse than the document was.
   'nremt/assets/flow-drill.js',
+  'nremt/assets/flow-build.js',
+  'nremt/assets/scenario-monitor.js',
   'nremt/assets/station-run.js',
   'nremt/assets/sound-bank.js',
   // The shared tool layer: misses into Review, and the 3D body (its model and

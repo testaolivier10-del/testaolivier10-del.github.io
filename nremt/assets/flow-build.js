@@ -11,7 +11,7 @@
    question, or in which other protocol).
 
    Interaction: drag a tile onto a slot, or tap a tile then tap a slot (or
-   use Tab/Enter). Decision boxes are diamonds; their arms are labelled with
+   use Tab/Enter). Decision boxes are diamonds; their arms are labeled with
    the answer, so the student places what you do on "yes" and on "no". */
 (function(){
   'use strict';
@@ -154,7 +154,7 @@
       var total = d.slots.length, n = Object.keys(placed).length;
       el.innerHTML =
         '<div class="bd-card">' +
-          '<p class="bd-intro">Drag each step into the chart, or tap a step and then tap where it goes. Diamonds are questions; each arm is labelled with its answer. Two tiles are from other protocols.</p>' +
+          '<p class="bd-intro">Drag each step into the chart, or tap a step and then tap where it goes. Diamonds are questions; each arm is labeled with its answer. Two tiles are from other protocols.</p>' +
           pickerHtml() +
           '<div class="bd-board">' +
             '<div class="bd-chart" aria-label="' + esc(d.title) + ' chart">' + chartHtml() + '</div>' +
