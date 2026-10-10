@@ -120,8 +120,7 @@ a.pc-tag:hover{text-decoration:underline;color:var(--ink);}
   .pc-var{grid-template-columns:1fr;}
   .pc-dir{display:grid;grid-template-columns:repeat(3,1fr);}
   .pc-dir button{padding:7px 4px;white-space:normal;font-size:13px;}
-  .pc-progress{grid-template-columns:auto 1fr;}
-  .pc-progress .pc-quit{grid-column:1 / -1;justify-self:start;}
+  .pc-progress{gap:10px;}   /* "End session" stays on the progress row */
   .pc-title{font-size:19px;}
 }
 

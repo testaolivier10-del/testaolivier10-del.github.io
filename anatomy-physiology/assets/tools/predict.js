@@ -220,6 +220,7 @@
     box.innerHTML =
       (two ? '<h3 class="pc-stage-h" id="' + sid + '-h" tabindex="-1"><span class="pc-stage-n">Stage ' + (k + 1) + ' of 2</span> ' + esc(st.label) + '</h3><p class="pc-prompt">' + esc(st.prompt) + '</p>'
            : '<h3 class="pc-stage-h pc-sr" id="' + sid + '-h">Your predictions</h3>') +
+      (k === 0 ? '<p class="kt-first pc-first">Call each one: up, down or no change. Then press Run it.</p>' : '') +
       dashHtml(s, st, sid) +
       '<div class="pc-vars">' + st.variables.map(function(v, i){
         var nid = sid + '-v' + i;
@@ -295,8 +296,7 @@
         var ans = dirOf(v.answer);
         fb.innerHTML =
           '<p class="pc-verdict">' + (ok ? '<b class="ok">Right:</b> it ' + ans.word + '.' : '<b class="no">Not quite.</b> You said it ' + dirOf(picks[i]).word + '; it ' + ans.word + '.') + '</p>' +
-          chainHtml(st, v) +
-          '<p class="pc-why">' + esc(v.why) + '</p>' +
+          (kit() && kit().why ? kit().why(chainHtml(st, v) + '<p class="pc-why">' + esc(v.why) + '</p>') : chainHtml(st, v) + '<p class="pc-why">' + esc(v.why) + '</p>') +
           '<div class="pc-report">' + report(id) + '</div>';
       });
       res.right += right; res.total += st.variables.length;
