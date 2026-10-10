@@ -135,7 +135,8 @@ const SHELL_BUDGETS = [
      page the largest measure of this shell. The other new tool scripts
      (flow-build, formulary-cards, vitals-check, mnemonic-check) load only on
      their own pages and are smaller. */
-  ['nremt', 16.5],
+  /* 16.5 -> 17.5 (visual polish 2026-10): illustrated tool visuals, drawn inline (bedside monitor traces, drug icons, age pictograms, phonocardiogram); measured 17.2 KB. */
+  ['nremt', 17.5],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with
@@ -245,7 +246,8 @@ const SHELL_BUDGETS = [
      shared tools/tool-kit.js and .css (item picker, Keep going strip, body
      map label list), about 4 KB gzipped; the lab practical page, the
      heaviest, measured 46.8 KB. */
-  ['anatomy-physiology', 47.5],
+  /* 47.5 -> 48 (visual polish 2026-10): the 3D button's body icon and the shared illustration code; measured 47.7 KB. */
+  ['anatomy-physiology', 48],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).
@@ -341,7 +343,8 @@ const BUDGETS = [
   // again, move the data out of the page instead.
   // 50 -> 51.5 (tools upgrade): the monitor and patient panel styles and the
   // call layout, inline in the page. The case data is unchanged.
-  ['nremt/scenario-sim.html', 51.5],
+  /* 51.5 -> 52 (visual polish 2026-10): the bedside monitor's styles; measured 51.6 KB. */
+  ['nremt/scenario-sim.html', 52],
   // learn.html is a shell whose only real weight is the static table of
   // contents generated into it for readers without JavaScript — one line per
   // section. It crossed 3.0 KB when the IUPAC Nomenclature chapter added four
