@@ -248,7 +248,7 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .rp-axis--bot{bottom:4px;left:50%;transform:translateX(-50%);background:var(--paper);padding:0 6px;}
 .rp-cols{display:grid;grid-template-columns:1fr 1fr;max-width:420px;margin:0 auto 6px;text-align:center;
   font:900 10px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);line-height:1.3;}
-.rp-cols i{font-style:normal;font-weight:800;text-transform:none;letter-spacing:0;opacity:.85;}
+.rp-cols i{font-style:normal;font-weight:800;text-transform:none;letter-spacing:0;}
 /* Bonds a little darker than the lesson scenes: on this stage the eye has
    to find the beta carbon and the C-Br bond at a glance. */
 .rp-stage .omol line,.rp-product .omol line{stroke:var(--muted);}
@@ -418,6 +418,24 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
   display:flex;align-items:center;justify-content:center;font:900 11px var(--font-mono);}
 .rr-pz__rx{font-family:var(--font-mono);font-weight:700;font-size:12.5px;color:var(--ink);}
 @media(prefers-reduced-motion:reduce){ .rr-pz .rr-node.is-arrive,.rr-pz__step.is-new,.rr-trail__n.is-new{animation:none;} }
+
+/* ---- 3D viewer: predict the shape ----------------------------------------- */
+.v3-quiz{border:var(--bw) solid var(--accent);background:var(--tint-accent);border-radius:var(--radius);padding:12px 14px;margin:12px 0;}
+.is-predicting .v3-stage svg{max-height:52vh;}
+/* On a phone the model comes first and the molecule list after it: the
+   list is a way to change what you are looking at, not the thing itself. */
+@media(max-width:900px){ .v3-layout > .v3-pick{order:2;} }
+#v3Task button{white-space:nowrap;}
+.v3-quiz__q{margin:0 0 6px;font-size:14px;font-weight:800;color:var(--ink);line-height:1.5;}
+.v3-quiz__k{margin:10px 0 6px;font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+.v3-quiz .tchip{background:var(--white);}
+.v3-quiz .tchip.on{background:var(--accent);}
+.v3-quiz .tchip.is-right{border-color:var(--good-text);background:var(--tint-good);color:var(--ink);}
+.v3-quiz .tchip.is-right::after{content:" ✓";color:var(--good-text);}
+.v3-quiz .tchip.is-wrong{border-color:var(--bad-text);background:var(--tint-bad);color:var(--ink);}
+.v3-quiz .tchip.is-wrong::after{content:" ✕";color:var(--bad-text);}
+.v3-quiz .tchip:disabled{opacity:1;}
+.v3-quiz .tnote{margin:12px 0 0;}
 
 /* ---- Both chairs at once (Conformation Lab) ------------------------------ */
 

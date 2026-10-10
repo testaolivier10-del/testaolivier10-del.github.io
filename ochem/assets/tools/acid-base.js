@@ -467,7 +467,7 @@
     '<div id="abSite" hidden>' +
       '<div class="tpanel">' +
         '<div class="tpanel__head"><span>One molecule, several acidic hydrogens</span>' +
-          '<select class="tselect" id="abSiteSel"></select></div>' +
+          '<select class="tselect" id="abSiteSel" aria-label="Molecule"></select></div>' +
         '<div class="ab-site__formula" id="abSiteFormula"></div>' +
         '<p class="tmuted" id="abSiteNote"></p>' +
         '<div class="tpanel__head" style="margin-top:8px;">Which one comes off first? Tap it on the structure, or pick below</div>' +
@@ -504,6 +504,8 @@
       document.getElementById('abSite').hidden = m !== 'site';
       if(m === 'rank' && !rankPool.length) newRank();
       if(m === 'site') renderSite();
+      if(m === 'pair') renderPair();
+      sync();
     });
   });
 
@@ -822,7 +824,13 @@
 
   document.getElementById('abNewRank').addEventListener('click', newRank);
 
-  renderPair();
+  /* The address bar is read before the first render, which writes it: done
+     the other way round, ?mode=rank and ?mode=site links opened on Compare. */
+  var q0 = window.OchemToolState ? window.OchemToolState.read() : {};
+  if(q0.a) left = byId(q0.a);
+  if(q0.b) right = byId(q0.b);
+  elLeft.value = left.id; elRight.value = right.id;
+  if(q0.mode !== 'rank' && q0.mode !== 'site') renderPair();
   /* ---- Which proton comes off first --------------------------------------
 
      Not a comparison between molecules: a comparison between positions inside
@@ -950,7 +958,7 @@
   }
 
   if(window.OchemToolState){
-    var q = window.OchemToolState.read();
+    var q = q0;
     if(q.a) left = byId(q.a);
     if(q.b) right = byId(q.b);
     if(q.m) MULTI.forEach(function(x){ if(x.id === q.m) siteMol = x; });

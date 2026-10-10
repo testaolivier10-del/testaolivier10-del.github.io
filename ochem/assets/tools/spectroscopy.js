@@ -375,14 +375,15 @@
 
     var markers = c.ir.map(function(p, i){
       var on = highlight === i;
-      return '<g class="sp-peak' + (on ? ' is-on' : '') + '" data-peak="' + i + '" tabindex="0" role="button">' +
+      return '<g class="sp-peak' + (on ? ' is-on' : '') + '" data-peak="' + i + '" tabindex="0" role="button" aria-pressed="' + (on ? 'true' : 'false') + '"' +
+        ' aria-label="' + esc(p.cm + ' per centimetre, ' + p.label) + '">' +
         '<circle cx="' + irX(p.cm).toFixed(1) + '" cy="' + irY(100 - p.d).toFixed(1) + '" r="' + (on ? 7 : 5) + '" ' +
           'fill="' + (on ? 'var(--accent)' : 'var(--white)') + '" stroke="var(--accent)" stroke-width="2"/>' +
         '<title>' + esc(p.label) + '</title>' +
       '</g>';
     }).join('');
 
-    return '<svg viewBox="0 0 ' + IR_W + ' ' + IR_H + '" role="img" aria-label="Infrared spectrum of ' + esc(c.name) + '">' +
+    return '<svg viewBox="0 0 ' + IR_W + ' ' + IR_H + '" role="group" aria-label="Infrared spectrum of ' + esc(c.name) + '">' +
       grid +
       '<line x1="' + IR_L + '" y1="' + (IR_H - IR_B) + '" x2="' + (IR_W - 10) + '" y2="' + (IR_H - IR_B) + '" stroke="var(--line)" stroke-width="1.5"/>' +
       '<line x1="' + IR_L + '" y1="' + IR_T + '" x2="' + IR_L + '" y2="' + (IR_H - IR_B) + '" stroke="var(--line)" stroke-width="1.5"/>' +
@@ -696,7 +697,7 @@
     });
 
     document.getElementById('spIRNote').innerHTML =
-      '<div class="ttable-scroll"><table class="ttable"><thead><tr><th>cm⁻¹</th><th>Assignment</th><th>What it tells you</th></tr></thead><tbody>' +
+      '<div class="ttable-scroll" tabindex="0" role="region" aria-label="IR bands">' + '<table class="ttable"><thead><tr><th>cm⁻¹</th><th>Assignment</th><th>What it tells you</th></tr></thead><tbody>' +
       compound.ir.map(function(p, i){
         return '<tr class="' + (hlIR === i ? 'sp-row-on' : '') + '"><td class="num">' + p.cm + '</td>' +
           '<td style="white-space:nowrap;"><b>' + esc(p.label) + '</b></td><td>' + esc(p.note) + '</td></tr>';
@@ -757,7 +758,7 @@
 
     var totalH = compound.nmr.reduce(function(n, s){ return n + s.h; }, 0);
     document.getElementById('spNMRNote').innerHTML =
-      '<div class="ttable-scroll"><table class="ttable"><thead><tr><th>ppm</th><th>Integration</th><th>Shape</th><th>Assignment</th><th>Why</th></tr></thead><tbody>' +
+      '<div class="ttable-scroll" tabindex="0" role="region" aria-label="NMR signals">' + '<table class="ttable"><thead><tr><th>ppm</th><th>Integration</th><th>Shape</th><th>Assignment</th><th>Why</th></tr></thead><tbody>' +
       compound.nmr.slice().sort(function(a, b){ return a.ppm - b.ppm; }).map(function(s){
         var i = compound.nmr.indexOf(s);
         return '<tr class="' + (hlNMR === i ? 'sp-row-on' : '') + '"><td class="num">' + s.ppm.toFixed(2) + '</td>' +
