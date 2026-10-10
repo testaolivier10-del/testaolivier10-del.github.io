@@ -208,7 +208,7 @@
     if (opts.hint !== false) {
       const hint = document.createElement('div');
       hint.className = 'bv-hint';
-      hint.textContent = opts.hint || 'Click any part to select it';
+      hint.textContent = opts.hint || ((window.matchMedia && matchMedia('(pointer: coarse)').matches) ? 'Tap any part to select it' : 'Click any part to select it');
       el.insertBefore(hint, loading.nextSibling);
     }
     const listEl = opts.list || null;
@@ -387,11 +387,23 @@
       });
     }
 
+    /* The loop stops while the model is scrolled out of view, so reading the
+       cards below it does not keep the GPU (and a phone's battery) busy. */
+    let onScreen = true, viewIo = null;
     function animate(){
       if (destroyed) return;
+      if (!onScreen) { rafId = 0; return; }
       rafId = requestAnimationFrame(animate);
       controls.update();
       renderer.render(scene, camera);
+    }
+    function watchView(){
+      if (!('IntersectionObserver' in window)) return;
+      viewIo = new IntersectionObserver((entries) => {
+        onScreen = entries.some(e => e.isIntersecting);
+        if (onScreen && !rafId && !destroyed) animate();
+      });
+      viewIo.observe(canvas);
     }
 
     function start(){
@@ -406,6 +418,7 @@
         initScene();
         loadModel();
         animate();
+        watchView();
       }, (err) => {
         console.error(err);
         started = false;
@@ -689,7 +702,7 @@
           <strong>${t.content.name}</strong>
           <span class="hunt-sys">${SYSTEM_LABELS[t.content.system] || t.content.system}</span>
         </div>
-        <div class="hunt-tally">${hunt.total ? hunt.right + ' of ' + hunt.total : 'Click the structure on the model, or pick it from the list.'}</div>
+        <div class="hunt-tally">${hunt.total ? hunt.right + ' of ' + hunt.total : 'Find it on the model, or pick it from Browse by name.'}</div>
         <div class="hunt-after"></div>
         <div class="hunt-actions">
           <button type="button" class="hunt-skip" data-hunt="show">Show me</button>
@@ -825,6 +838,7 @@
       destroy(){
         destroyed = true;
         if (io) io.disconnect();
+        if (viewIo) viewIo.disconnect();
         themeWatch.disconnect();
         cancelAnimationFrame(rafId);
         window.removeEventListener('resize', onResize);

@@ -91,9 +91,33 @@ b.destroy();
 
 ## Phases 2 and 3: tool upgrades (PR 2)
 
-Flagship order: Sound trainer on the body, Scenario sim live monitor, Titration explorer, Chi-square, Osmosis,
-Feedback loops, Predict gauges, Reaction predictor, Enzymes, Body map burns. Then every other tool per the plan
-doc ("LevlPrep tool upgrade plan"). Status table is filled in when Phase 2 starts.
+Branch `claude/tools-upgrades` (base `claude/tools-shared`). Eight workstreams, each in its own worktree and
+branch `claude/tools-upgrades-<ws>`. Each writes its notes to `docs/tools-upgrade-notes/<ws>.md` (not this
+file, to avoid merge conflicts); this table is updated at merge.
+
+| Workstream | Tools | Status |
+|---|---|---|
+| U-NREMT-body | Sound trainer on the body (flagship 1), Body map burns / Rule of Nines mode (flagship 10) | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/nremt-body.md` |
+| U-NREMT-cases | Scenario sim live monitor + tap-to-assess (flagship 2), Flowcharts build-it, Formulary give/withhold, Skill sheets clock, Reference cards age slider, Mnemonics link into scenarios | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/nremt-cases.md` |
+| U-Ochem | Reaction predictor (flagship 8), Acid/base pKa line, Spectroscopy peak-hydrogen link, Reagent roadmap synthesis puzzle, 3D viewer predict-the-shape, Conformations chair flip, Resonance charge overlay, Arrow pusher mechanism challenge, fix `#v3Svg` a11y | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/ochem.md` |
+| U-AnP-loops | Feedback loops live loop (flagship 6), Predict gauge simulator (flagship 7) | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/anp-loops.md` |
+| U-AnP-rest | Graphs explore + live shifts, Pathways trace on figures, Calculators picture per formula, Lab practical and Word roots 3D link | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/anp-rest.md` |
+| U-Bio-sims | Osmosis (flagship 5, absorbs Water potential as quiz), Enzymes (flagship 9), Cell cycle, Meiosis, Operons, Signal transduction, Energy flow, Population growth, HW drift, Tree reading | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/bio-sims.md` |
+| U-Bio-skills | Chi-square (flagship 4), Hardy-Weinberg, Descriptive stats, Rates, Simpson, Confidence intervals, Water potential stage, Graph builder grid-first, Design drills tiles | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/bio-skills.md` |
+| U-Chem | Titration explorer (flagship 3), Buffers, Q vs K, ICE on the live beaker; Particle diagrams build mode; Units and sig figs cancellation | done 2026-10-10: built, accuracy reviewed, hands-on tested; notes `docs/tools-upgrade-notes/chem.md` |
+
+### Phase 2 status (2026-10-10)
+
+All eight workstreams merged into `claude/tools-upgrades`. Independent accuracy reviews fixed 32 errors and logged
+the judgment calls in each course's needs-author doc (NREMT: `docs/TRACKER.md`). Two hands-on student passes fixed
+the remaining layout and interaction issues. Full `BROWSER=1 scripts/ci-local.sh`: ALL PASS. `sw.js` CACHE v65.
+
+Owner decisions open: child burn chart (infant chart only vs. adding Lund-Browder), state time limits for the four
+random skill stations, Simpson form (course uses 1 − Σ(n/N)²; confirm against the printed formula sheet), dialysis bag
+NaCl simplification, flat 1.6 kcal/mol 1,3-diaxial term, hives-only epinephrine card wording.
+
+Known leftovers: the two floating site buttons cover the right edge of some phone readouts (site chrome); long
+breadcrumbs truncate on phones; the burns figure's 1% region is a small tap target (drag-paint and keyboard work).
 
 ## Verification
 

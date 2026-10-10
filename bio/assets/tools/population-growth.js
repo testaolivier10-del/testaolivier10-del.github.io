@@ -6,13 +6,24 @@
    (bio/data/tools/population-growth.json). The student sets the model and
    its numbers, reads N, dN/dt and the per-capita rate at any time (two
    graphs, a readout and a numbered explanation), and runs trials into a
-   data table. */
+   data table.
+
+   Job: see why a population grows fast, then slows as it nears K, and how a
+   disaster or a new K changes the course.
+
+   Tools upgrade (U-Bio-sims, lighter version): a field stage first in the
+   card: one dot per individual (one dot per 10, 100 ... above 600 dots, said
+   on the field), the carrying capacity as a dashed fence of space (the field
+   fills it as N approaches K), new births since the year before glowing, and
+   a flood that wipes the share it removes. Play runs the year from 0 to the
+   end; drag the year marker on the N graph (or use the slider) to scrub.
+   "Flood" and "Frost" toggle the data's events from the stage. */
 (function(){
   'use strict';
   var SLUG = 'population-growth';
   var T = window.ApBioTools, M = window.ApBioMath;
   if(!T) return;
-  T.mount(SLUG, function(app, data){
+  T.mount(SLUG, function(app, data, ctx){
     var esc = T.esc, F = T.F, Pop = M.population, D = data.defaults, RG = data.ranges;
     var st = { model: D.model, N0: D.N0, r: D.r, K: D.K, dt: D.dt, tEnd: D.tEnd, readT: D.readT, view: 'rate',
       events: data.events.map(function(e){ return { id: e.id, label: e.label, on: false, t: e.t, f: e.f }; }),
@@ -21,7 +32,9 @@
     var MODELS = [['log', 'Logistic: dN/dt = rmaxN(K − N)/K'], ['exp', 'Exponential: dN/dt = rmaxN']];
 
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
-      '<section class="bt-card" aria-labelledby="pg-h"><h2 id="pg-h">The model</h2>' +
+      '<section class="bt-card pg-card" aria-labelledby="pg-h"><h2 id="pg-h">The model</h2>' +
+      '<div class="bt-fig pg-field"></div>' +
+      '<div class="os-play pg-play"><button type="button" class="btn-press sm" data-a="play">Play the years</button><span class="pg-evbtns"></span><p class="os-clock pg-clock" aria-hidden="true"></p></div>' +
       '<fieldset class="bt-modes"><legend>Growth model</legend>' + MODELS.map(function(m){
         var id = 'pg-model-' + m[0];
         return '<div class="bt-radio"><input type="radio" name="pg-model" id="' + id + '" value="' + m[0] + '"' + (m[0] === st.model ? ' checked' : '') + '><label for="' + id + '">' + esc(m[1]) + '</label></div>';
@@ -29,7 +42,7 @@
       '<div class="bt-controls pg-main"></div>' +
       '<fieldset class="bt-ctl pg-events"><legend>Events (optional)</legend><div class="bt-controls pg-ev"></div></fieldset>' +
       '<div class="bt-controls pg-read"></div>' +
-      '<div class="bt-stage two"><div><h3 class="pg-gh">Population size over time</h3><div class="pg-plot-n"></div><p class="bt-small pg-key-n"></p></div>' +
+      '<div class="bt-stage two"><div><h3 class="pg-gh">Population size over time</h3><p class="bt-small">Drag across the graph to move the year.</p><div class="pg-plot-n"></div><p class="bt-small pg-key-n"></p></div>' +
       '<div><div class="bt-tabs" role="group" aria-label="Second graph">' +
       '<button type="button" class="bt-btn" data-v="rate" aria-pressed="true">dN/dt against N</button><button type="button" class="bt-btn" data-v="percap" aria-pressed="false">Per-capita rate against N</button>' +
       '</div><div class="pg-plot-r"></div><p class="bt-small pg-key-r"></p></div></div>' +
@@ -171,8 +184,77 @@
         : 'Trial ' + l.n + ': N = ' + n0(l.end) + ' at year ' + F(l.endT, 1) + '; fastest growth ' + F(l.top, 1) + ' per year at N = ' + n0(l.topN) + '.';
       update(true);
     }
+    /* ------------------------------------------------- the field */
+    var FW = 400, FH = 200, field = card.querySelector('.pg-field'), slots = null;
+    function slotList(){
+      if(slots) return slots;
+      var g = M.rng(9091), out = [];
+      for(var i = 0; i < 600; i++) out.push([g(), g(), g()]);
+      return (slots = out);
+    }
+    function drawField(sim, t){
+      var p = Pop.at(sim, t), prev = Pop.at(sim, Math.max(0, t - 1)), log = isLog();
+      var Kmax = log ? Math.max(st.K, st.kc.on ? st.kc.K : 0) : 0;
+      var big = Math.max(p.N, Kmax, 1), per = 1;
+      while(big / per > 600) per *= 10;
+      var nDots = Math.round(p.N / per), nPrev = Math.round(prev.N / per);
+      // the habitat: K takes the whole field when K is the larger capacity; N fills a share of it
+      var area = log ? Math.min(1, p.K / per / 600 * (600 / Math.max(1, Kmax / per))) : 1;
+      var fw = FW * Math.sqrt(log ? p.K / Math.max(1, Kmax) : 1), fh = FH * Math.sqrt(log ? p.K / Math.max(1, Kmax) : 1);
+      var spanDots = log ? Math.max(1, Kmax / per) : Math.max(nDots, 1), cap = log ? Math.round(p.K / per) : 600;
+      var sl = slotList(), out = [];
+      out.push('<rect class="pg-ground" x="0" y="0" width="' + FW + '" height="' + FH + '" rx="12"/>');
+      if(log) out.push('<rect class="pg-fence" x="' + ((FW - fw) / 2).toFixed(1) + '" y="' + ((FH - fh) / 2).toFixed(1) + '" width="' + fw.toFixed(1) + '" height="' + fh.toFixed(1) + '" rx="10"/><text class="pg-flab" x="' + ((FW + fw) / 2 - 6).toFixed(1) + '" y="' + ((FH - fh) / 2 + 14).toFixed(1) + '" text-anchor="end">K = ' + n0(p.K) + '</text>');
+      // dots: first nDots slots, placed inside the fence (or the whole field for exponential, scaled to what is drawn)
+      var bw = log ? fw : FW, bh = log ? fh : FH;
+      for(var i = 0; i < Math.min(600, nDots); i++){
+        var q = sl[i], x = (FW - bw) / 2 + 6 + q[0] * (bw - 12), y = (FH - bh) / 2 + 6 + q[1] * (bh - 12);
+        out.push('<circle class="pg-ind' + (i >= nPrev ? ' new' : '') + '" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + (per > 1 ? 3.4 : 2.8) + '"/>');
+      }
+      var hit = sim.points.filter(function(z){ return z.pre != null && z.t <= t + 1e-9 && z.t > t - 1.5; })[0];
+      if(hit) out.push('<rect class="pg-floodfx" x="0" y="0" width="' + FW + '" height="' + FH + '" rx="12"/><text class="pg-flab pg-hit" x="' + (FW / 2) + '" y="' + (FH / 2) + '" text-anchor="middle">' + esc(hit.hit.map(pct).join(' + ')) + ' lost</text>');
+      var lab = 'Year ' + F(t, 0) + ': N = ' + n0(p.N) + (log ? ' of K = ' + n0(p.K) + (p.N >= p.K * 0.95 ? ', the habitat is full' : p.N > p.K / 2 ? ', crowding slows growth' : ', plenty of room') : '') + (per > 1 ? '. One dot is ' + per + ' individuals.' : '.');
+      out.push('<text class="pg-flab" x="8" y="' + (FH - 8) + '">' + esc('Year ' + F(t, 0) + ' · N = ' + n0(p.N) + (per > 1 ? ' · 1 dot = ' + per : '')) + '</text>');
+      field.innerHTML = '<svg class="pg-fieldsvg" viewBox="0 0 ' + FW + ' ' + FH + '" role="img" aria-label="' + esc(lab) + '">' + out.join('') + '</svg>';
+      card.querySelector('.pg-clock').textContent = '';
+    }
+    function evButtons(){
+      var host = card.querySelector('.pg-evbtns');
+      host.innerHTML = st.events.map(function(e, i){ return '<button type="button" class="bt-btn pg-evb" data-ev="' + i + '" aria-pressed="' + e.on + '">' + esc(e.label) + ' at year ' + e.t + '</button>'; }).join('');
+    }
+    card.querySelector('.pg-evbtns').addEventListener('click', function(e){
+      var b = e.target.closest('.pg-evb'); if(!b) return;
+      var ev = st.events[+b.getAttribute('data-ev')], cb = card.querySelectorAll('.pg-ev .pg-evbox input[type=checkbox]')[+b.getAttribute('data-ev')];
+      if(cb){ cb.checked = !ev.on; cb.dispatchEvent(new Event('change', { bubbles: true })); }
+      var again = card.querySelector('.pg-evb[data-ev="' + b.getAttribute('data-ev') + '"]'); if(again) again.focus();
+    });
+    var playT = 0;
+    function reducedM(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
+    card.querySelector('[data-a="play"]').addEventListener('click', function(){
+      if(playT){ cancelAnimationFrame(playT); playT = 0; }
+      if(reducedM()){ ctl.read.set(st.tEnd, true); return; }
+      var sim = Pop.simulate(cond()), t0 = null, D = 5000;
+      var go = function(ts){ if(t0 == null) t0 = ts; var u = Math.min(1, (ts - t0) / D), t = Math.round(u * st.tEnd);
+        if(t !== st.readT){ ctl.read.set(t, true); } else drawField(sim, t);
+        if(u < 1) playT = requestAnimationFrame(go); else playT = 0; };
+      ctl.read.set(0, true);
+      playT = requestAnimationFrame(go);
+    });
+    /* Drag the year marker on the N graph (pointer); keyboard: the slider. */
+    var plotN = card.querySelector('.pg-plot-n'), dragging = false;
+    function yearAt(e){
+      var svg = plotN.querySelector('svg'); if(!svg) return null;
+      var b = svg.getBoundingClientRect(), x = (e.clientX - b.left) / b.width * 560, t = (x - 66) / (560 - 82) * st.tEnd;
+      return Math.max(0, Math.min(st.tEnd, Math.round(t)));
+    }
+    plotN.addEventListener('pointerdown', function(e){ var t = yearAt(e); if(t == null) return; dragging = true; try{ plotN.setPointerCapture(e.pointerId); }catch(er){} ctl.read.set(t, true); e.preventDefault(); });
+    plotN.addEventListener('pointermove', function(e){ if(!dragging) return; var t = yearAt(e); if(t != null && t !== st.readT) ctl.read.set(t, true); });
+    plotN.addEventListener('pointerup', function(){ dragging = false; });
+    plotN.addEventListener('pointercancel', function(){ dragging = false; });
+
     function update(now){
       var c = cond(), sim = Pop.simulate(c), p = Pop.at(sim, st.readT), ps = sim.points, log = isLog();
+      drawField(sim, st.readT); evButtons();
       // graph 1: N over time
       var curve = [];
       ps.forEach(function(q){ if(q.pre != null) curve.push([q.t, q.pre]); curve.push([q.t, q.N]); });

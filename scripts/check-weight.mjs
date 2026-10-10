@@ -129,7 +129,13 @@ const SHELL_BUDGETS = [
      the same place ochem's deck script is counted. No other NREMT page got
      heavier. */
   /* 11 -> 11.4: the flashcard deck's shared deck card and by-topic list (W-C). */
-  ['nremt', 11.4],
+  /* 11.4 -> 16.5 (tools upgrade, U-NREMT-cases): the scenario simulator's live
+     patient, nremt/assets/scenario-monitor.js (monitor, traces, tap-to-assess
+     body; ~5 KB gzipped), loads only on scenario-sim.html, which makes that
+     page the largest measure of this shell. The other new tool scripts
+     (flow-build, formulary-cards, vitals-check, mnemonic-check) load only on
+     their own pages and are smaller. */
+  ['nremt', 16.5],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with
@@ -333,7 +339,9 @@ const BUDGETS = [
   // budgeted at 50. Like study-notes.html, every case is inline and a reader
   // who opens one downloads all twenty-five; if this number needs to move
   // again, move the data out of the page instead.
-  ['nremt/scenario-sim.html', 50],
+  // 50 -> 51.5 (tools upgrade): the monitor and patient panel styles and the
+  // call layout, inline in the page. The case data is unchanged.
+  ['nremt/scenario-sim.html', 51.5],
   // learn.html is a shell whose only real weight is the static table of
   // contents generated into it for readers without JavaScript — one line per
   // section. It crossed 3.0 KB when the IUPAC Nomenclature chapter added four

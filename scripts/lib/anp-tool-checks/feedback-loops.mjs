@@ -16,6 +16,7 @@ const ID_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 export const SLOTS = ['stimulus', 'sensor', 'afferent', 'control', 'efferent', 'effector', 'response'];
 export const SLOT_LABELS = ['Stimulus', 'Receptor (sensor)', 'Afferent pathway', 'Control center', 'Efferent pathway', 'Effector', 'Response'];
 const KINDS = ['negative', 'positive'];
+export const LIVE_BROKEN = ['uncorrected', 'worse', 'partial', 'slower', 'corrected', 'stalls', 'reset', 'never', 'text'];
 const SHORT_MAX = 44; // the finished diagram fits two lines of about 22 characters
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
@@ -43,6 +44,17 @@ export function check(data, map) {
     if (!KINDS.includes(l.kind)) err(`${where}: kind must be negative or positive`);
     if (l.classify && l.kind && !l.classify.toLowerCase().includes(`${l.kind} feedback`)) err(`${where}: classify must explain why it is ${l.kind} feedback`);
 
+    // The live loop (assets/tools/feedback-loops.js, "Watch it work").
+    const lv = l.live;
+    if (!lv || !str(lv.variable)) err(`${where}: live.variable missing`);
+    else {
+      if (!['up', 'down'].includes(lv.dir)) err(`${where}: live.dir must be up or down`);
+      if (!LIVE_BROKEN.includes(lv.broken)) err(`${where}: live.broken must be one of ${LIVE_BROKEN.join(', ')}`);
+      if (l.kind === 'positive' && !str(lv.end)) err(`${where}: a positive loop's live.end must say what ends it`);
+      // Numbers on the gauge only where the loop's own text already gives them.
+      const own = [l.scenario, ...SLOTS.map(k => (l.slots && l.slots[k] && l.slots[k].text) || ''), (l.failure && l.failure.q) || ''].join(' ');
+      for (const v of [lv.setPoint, lv.shift && lv.shift.to].filter(Boolean)) for (const n of String(v).match(/\d+(\.\d+)?/g) || []) if (!own.includes(n)) err(`${where}: live value "${v}" has a number (${n}) the loop's text does not give`);
+    }
     const texts = [l.title, l.scenario, l.classify];
     const cards = new Set();
     const slots = l.slots || {};

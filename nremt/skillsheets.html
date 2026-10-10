@@ -63,10 +63,10 @@
     .run-top__h{margin-top:18px;}
   }
   .mode-switch{display:inline-flex;border:2px solid var(--line);border-radius:22px;overflow:hidden;background:var(--white);margin-bottom:22px;}
-  .mode-switch button{font:700 13px inherit;padding:9px 18px;border:0;background:transparent;color:var(--muted);cursor:pointer;}
+  .mode-switch button{font:700 13px var(--font-ui);padding:9px 18px;border:0;background:transparent;color:var(--muted);cursor:pointer;}
   .mode-switch button.on{background:var(--navy);color:var(--on-accent);}
 
-  .run-card{
+  .run-card{scroll-margin-top:calc(var(--site-header-h,112px) + 12px);outline:none;
     background:var(--white);border:2px solid var(--line);border-radius:var(--radius);
     box-shadow:var(--lift);padding:20px;max-width:660px;
   }
@@ -83,9 +83,9 @@
 
   .run-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:16px;flex-wrap:wrap;}
   .run-name{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:5px;text-wrap:pretty;}
-  .run-target{font:600 12px inherit;color:var(--muted);}
+  .run-target{font:600 12px var(--font-ui);color:var(--muted);}
   .run-target input{
-    width:56px;font:600 12px inherit;padding:3px 6px;margin:0 3px;
+    width:56px;font:600 12px var(--font-ui);padding:3px 6px;margin:0 3px;
     border:2px solid var(--line);border-radius:6px;background:var(--white);color:var(--ink);
   }
   /* The default is repeated hearsay, and a student preparing for an exam is
@@ -121,8 +121,8 @@
 
   .run-note{font-size:12.5px;color:var(--muted);line-height:1.6;margin:10px 0 0;max-width:62ch;text-wrap:pretty;}
   .run-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
-  .drill-next{font:700 13px inherit;padding:10px 20px;border:0;border-radius:20px;background:var(--navy);color:var(--on-accent);cursor:pointer;}
-  .run-quit{font:700 13px inherit;padding:10px 20px;border:2px solid var(--line);border-radius:20px;background:var(--white);color:var(--ink);cursor:pointer;}
+  .drill-next{font:700 13px var(--font-ui);padding:10px 20px;border:0;border-radius:20px;background:var(--navy);color:var(--on-accent);cursor:pointer;}
+  .run-quit{font:700 13px var(--font-ui);padding:10px 20px;border:2px solid var(--line);border-radius:20px;background:var(--white);color:var(--ink);cursor:pointer;}
 
   .run-result{margin:14px 0;}
   .run-result__row{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-soft);font-size:14px;}
@@ -135,6 +135,48 @@
   .run-flagbox li{margin-bottom:8px;line-height:1.55;text-wrap:pretty;}
   .run-flagbox small{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-top:3px;line-height:1.5;}
   .run-okbox{border:2px solid var(--good-text);background:var(--tint-good);border-radius:8px;padding:12px 15px;margin:14px 0;font-size:13.5px;font-weight:700;color:var(--good-text);}
+
+
+  /* ---- Live station: clock ring + critical criteria ---- */
+  .run-live{max-width:980px;}
+  .run-code{font:700 11px var(--font-mono);color:var(--muted);margin-left:6px;}
+  .run-top2{display:flex;align-items:center;gap:20px;margin:6px 0 16px;flex-wrap:wrap;}
+  .run-clockwrap{position:relative;width:150px;height:150px;flex:none;}
+  .run-ring{width:100%;height:100%;}
+  .run-ring-bg{fill:none;stroke:var(--track);stroke-width:10;}
+  .run-ring-fg{fill:none;stroke:var(--accent);stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset 1s linear,stroke .3s;}
+  .run-ring-fg.late{stroke:var(--amber);}
+  .run-ring-fg.over{stroke:var(--bad);}
+  .run-clockin{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .run-live .run-clock{font:800 36px var(--font-mono);font-variant-numeric:tabular-nums;color:var(--ink);}
+  .run-left{font:700 11.5px var(--font-mono);color:var(--muted);}
+  .run-clockwrap.late .run-left{color:var(--amber-text);}
+  .run-clockwrap.over .run-clock,.run-clockwrap.over .run-left{color:var(--bad-text);}
+  .run-meta{flex:1;min-width:150px;}
+  .run-badge{display:inline-block;margin-top:8px;font:800 12px var(--font-ui);color:var(--bad-text);background:var(--tint-bad);border:2px solid var(--bad-text);border-radius:999px;padding:4px 10px;text-decoration:none;}
+  .run-badge[hidden]{display:none;}
+  .run-cols{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:18px;align-items:start;}
+  .run-step.is-skipped{border-color:var(--bad-text);background:var(--tint-bad);}
+  .run-crit{border:2px solid var(--line);border-radius:10px;padding:12px;background:var(--paper);}
+  .run-crit-h{font:900 12px var(--font-ui);text-transform:uppercase;letter-spacing:.05em;color:var(--ink);display:flex;justify-content:space-between;gap:8px;}
+  .run-crit-h span{font:700 11px var(--font-mono);color:var(--muted);text-transform:none;letter-spacing:0;}
+  .run-crit-sub{font-size:12px;color:var(--muted);margin:4px 0 8px;line-height:1.5;}
+  .run-crit ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px;}
+  .run-cbtn{width:100%;text-align:left;font:600 12.5px/1.45 var(--font-ui);padding:7px 10px 7px 28px;border-radius:8px;border:2px solid var(--line);
+    background:var(--white);color:var(--ink);cursor:pointer;position:relative;transition:background .25s,border-color .25s;}
+  .run-cbtn::before{content:"";position:absolute;left:9px;top:11px;width:10px;height:10px;border-radius:50%;background:var(--line);transition:background .25s,box-shadow .25s;}
+  .run-crit li.lit .run-cbtn,.run-cbtn[aria-pressed="true"]{border-color:var(--bad-text);background:var(--tint-bad);font-weight:800;}
+  .run-crit li.lit .run-cbtn::before,.run-cbtn[aria-pressed="true"]::before{background:var(--bad);box-shadow:0 0 0 4px var(--tint-bad);}
+  .run-crit-src{font-size:11px;color:var(--muted);margin:8px 0 0;}
+  @media (max-width:760px){
+    .run-cols{grid-template-columns:1fr;}
+    .run-top2{gap:14px;margin-bottom:12px;}
+    .run-clockwrap{width:118px;height:118px;}
+    .run-top2{flex-wrap:nowrap;align-items:flex-start;}
+    .run-meta .run-hearsay{font-size:10.5px;}
+    .run-live .run-clock{font-size:28px;}
+  }
+  @media (prefers-reduced-motion:reduce){.run-ring-fg,.run-cbtn,.run-cbtn::before{transition:none;}}
 
   /* ---- Print ------------------------------------------------------------- */
   @media print{
@@ -261,14 +303,14 @@
 
   <div class="general-tips sheets-glance">
     <h2 style="margin-top:0;">The official sheets at a glance</h2>
-    <p style="font-size:14.5px;margin:0 0 10px;">The National Registry&rsquo;s EMT psychomotor sheets, linked from the source. Points are the total on each sheet; the time is the station limit printed on it; the last column paraphrases the critical criteria, any one of which fails the station however many points you score. Your state or program runs the EMT skills exam and may use its own version of a sheet, so practice with the one you will be tested on.</p>
+    <p style="font-size:14.5px;margin:0 0 10px;">The National Registry&rsquo;s EMT psychomotor sheets, linked from the source. Points are the total on each sheet; the time is the station limit from the Registry&rsquo;s EMT psychomotor exam guide (the sheets themselves only have &ldquo;time started&rdquo; and &ldquo;time ended&rdquo; boxes, except the two patient assessment sheets, which name their limit in a critical criterion; for the four randomly chosen skills, seated spinal, long bone, joint and bleeding control, the guide gives a 5 to 10 minute range and the time shown is the one commonly used); the last column paraphrases the critical criteria, any one of which fails the station however many points you score. Your state or program runs the EMT skills exam and may use its own version of a sheet, so practice with the one you will be tested on.</p>
     <div class="table-wrap"><table class="sheets-table">
       <thead><tr><th scope="col">Station and sheet</th><th scope="col">Points</th><th scope="col">Time</th><th scope="col">Critical criteria (summary)</th></tr></thead>
       <tbody>
       <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E201_NREMT.pdf" rel="noopener">Patient Assessment/Management &mdash; Trauma</a><span class="sheet-code">E201</span></th><td>42</td><td>10 min</td><td>No PPE; no scene safety check; no spinal protection when indicated; no high-concentration oxygen; misses or mismanages an airway, breathing, bleeding or shock problem; does other assessment before treating threats to airway, breathing and circulation; no transport call within the 10 minutes</td></tr>
       <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E202_NREMT.pdf" rel="noopener">Patient Assessment/Management &mdash; Medical</a><span class="sheet-code">E202</span></th><td>42</td><td>15 min</td><td>No PPE; no scene safety check; no high-concentration oxygen when needed; misses or mismanages a life threat; secondary exam before treating threats to airway, breathing and circulation; no medical direction or standing order for a medication; no transport call within the 15 minutes</td></tr>
       <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E215_NREMT.pdf" rel="noopener">Cardiac Arrest Management / AED</a><span class="sheet-code">E215</span></th><td>17</td><td>10 min</td><td>No PPE; responsiveness not checked, then breathing and pulse not checked together in no more than 10 seconds; compressions not begun as soon as pulselessness is confirmed; compressions not of acceptable quality; CPR interrupted for more than 10 seconds; AED attached or operated incorrectly; shock not delivered in a timely manner; anyone not clear during analysis or shock; compressions not resumed immediately after the shock</td></tr>
-      <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E203_NREMT.pdf" rel="noopener">BVM Ventilation of an Apneic Adult</a><span class="sheet-code">E203</span></th><td>16</td><td>5 min</td><td>No suctioning before ventilating, or suctioning too long; responsiveness, breathing and pulse not checked (no more than 10 seconds); high-concentration oxygen not voiced and given; inadequate volume per breath (more than 2 errors a minute); ventilation rate below 10 or above 12 a minute (one ventilation every 5&ndash;6 seconds); interruption of ventilation for more than 30 seconds</td></tr>
+      <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E203_NREMT.pdf" rel="noopener">BVM Ventilation of an Apneic Adult</a><span class="sheet-code">E203</span></th><td>16</td><td>5 min</td><td>No PPE; no suctioning before ventilating, or suctioning too long; responsiveness, breathing and pulse not checked (no more than 10 seconds); high-concentration oxygen not voiced and given; inadequate volume per breath (more than 2 errors a minute); ventilation rate below 10 or above 12 a minute (one ventilation every 5&ndash;6 seconds); interruption of ventilation for more than 30 seconds</td></tr>
       <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E204_NREMT.pdf" rel="noopener">Oxygen Administration by Non-Rebreather Mask</a><span class="sheet-code">E204</span></th><td>11</td><td>5 min</td><td>No PPE; tank and regulator assembled with leaks; reservoir not prefilled; flow below 10 L/min; mask not sealed to the face</td></tr>
       <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E212_NREMT.pdf" rel="noopener">Spinal Immobilization &mdash; Supine Patient</a><span class="sheet-code">E212</span></th><td>14</td><td>10 min</td><td>Manual stabilization not taken at once, or released before mechanical immobilization; collar not applied before release; excessive movement of the patient; head secured before the torso; head not neutral and in line at the end; distal motor, sensory and circulation not reassessed</td></tr>
       <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E211_NREMT.pdf" rel="noopener">Spinal Immobilization &mdash; Seated Patient</a><span class="sheet-code">E211</span></th><td>12</td><td>10 min</td><td>As for the supine station, plus the device moving excessively on the torso and the torso straps not tight enough</td></tr>

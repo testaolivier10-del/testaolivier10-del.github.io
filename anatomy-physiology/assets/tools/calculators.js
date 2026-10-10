@@ -249,7 +249,7 @@
     renderBody();
   }
 
-  function renderBody(){ if(mode === 'calc') renderCalc(); else renderPractice(); }
+  function renderBody(){ picAnim++; if(mode === 'calc') renderCalc(); else renderPractice(); }
 
   /* ------------------------------------------------------ calculate mode */
 
@@ -261,12 +261,14 @@
       ((c.presets || []).length ? '<div class="calc-presets" role="group" aria-label="Load an example"><span class="calc-presets-h">Try:</span>' + c.presets.map(function(p, i){
         return '<button type="button" class="calc-preset" data-i="' + i + '">' + esc(p.label) + '</button>';
       }).join('') + '</div>' : '') +
+      (c.picture ? '<figure class="calc-pic" aria-label="Live picture"></figure>' : '') +
       '<div class="calc-grid">' +
         '<form class="calc-inputs" novalidate onsubmit="return false">' + c.inputs.map(function(inp){
           return '<div class="calc-field">' +
             '<label for="' + inputId(inp.key) + '"><span class="calc-label">' + esc(inp.label) + '</span> <span class="calc-sym">' + inp.sym + '</span></label>' +
             '<div class="calc-input-row"><input id="' + inputId(inp.key) + '" type="number" inputmode="decimal" data-key="' + inp.key + '" value="' + esc(values[inp.key]) + '" step="' + (inp.step || 'any') + '" min="' + inp.min + '" max="' + inp.max + '"' + (inp.hint ? ' aria-describedby="' + inputId(inp.key) + '-h"' : '') + '>' +
             (inp.unit ? '<span class="calc-unit">' + esc(inp.unit) + '</span>' : '') + '</div>' +
+            (c.picture ? '<input type="range" class="calc-range" data-for="' + inp.key + '" min="' + inp.min + '" max="' + inp.max + '" step="' + (inp.step || 'any') + '" value="' + esc(values[inp.key]) + '" aria-label="' + esc(inp.label) + ' slider">' : '') +
             (inp.hint ? '<p class="calc-hint" id="' + inputId(inp.key) + '-h">' + esc(inp.hint) + '</p>' : '') +
           '</div>';
         }).join('') + '</form>' +
@@ -276,13 +278,18 @@
     body.querySelectorAll('.calc-preset').forEach(function(b){
       b.addEventListener('click', function(){
         var p = c.presets[+b.getAttribute('data-i')];
-        Object.keys(p.values).forEach(function(k){ values[k] = p.values[k]; var el = document.getElementById(inputId(k)); if(el) el.value = p.values[k]; });
+        Object.keys(p.values).forEach(function(k){ values[k] = p.values[k]; var el = document.getElementById(inputId(k)); if(el) el.value = p.values[k]; var r = body.querySelector('.calc-range[data-for="' + k + '"]'); if(r) r.value = p.values[k]; });
         update();
       });
     });
-    body.querySelectorAll('.calc-inputs input').forEach(function(el){
-      el.addEventListener('input', function(){ update(); });
+    body.querySelectorAll('.calc-inputs input:not(.calc-range)').forEach(function(el){
+      el.addEventListener('input', function(){ var r = body.querySelector('.calc-range[data-for="' + el.getAttribute('data-key') + '"]'); if(r && el.value !== '') r.value = el.value; update(); });
     });
+    body.querySelectorAll('.calc-range').forEach(function(r){
+      r.addEventListener('input', function(){ var el = document.getElementById(inputId(r.getAttribute('data-for'))); el.value = r.value; update(); });
+    });
+    baseEnv = null;
+    if(c.picture){ var dv = {}; c.inputs.forEach(function(inp){ dv[inp.key] = inp['default']; }); var b0 = compute(c, dv); if(!b0.invalid) baseEnv = b0.env; }
     update();
     if(window.AnpToolKit) window.AnpToolKit.strip(body, { topic: c.topic, text: c.title + ' ' + c.intro });
   }
@@ -308,12 +315,15 @@
     var problems = readInputs();
     var r = problems.length ? null : compute(c, values);
     if(problems.length || r.invalid){
+      picAnim++; var ph = app.querySelector('.calc-pic'); if(ph) ph.classList.add('is-stale');
       out.innerHTML = '<div class="calc-invalid" role="status"><b>Check the numbers.</b> ' + esc(problems.length ? problems[0] : r.invalid) + '</div>';
       work.innerHTML = '';
       return;
     }
     out.innerHTML = resultsHtml(c, r.env);
     work.innerHTML = solutionHtml(c, r.env, 'Every step');
+    var pc = app.querySelector('.calc-pic'); if(pc) pc.classList.remove('is-stale');
+    drawPicture(c, r.env);
   }
 
   function resultsHtml(c, env){
@@ -336,6 +346,201 @@
       '<div class="calc-meaning"><h3 class="calc-h">What it means</h3>' + meaningHtml(c, env) + '</div>' +
       (c.note ? '<aside class="calc-note"><p>' + fill(c, c.note, env) + '</p></aside>' : '') +
       (c.exam ? '<aside class="for-your-exam calc-exam"><p><b>For your exam:</b> ' + fill(c, c.exam, env) + '</p></aside>' : '');
+  }
+
+  /* ------------------------------------------------------ live picture
+     One small drawing per formula family (data/calc-pictures.json, merged
+     into each calculator as c.picture by build-anp.mjs). It is redrawn from
+     the same computed values the steps print, on every input, so dragging a
+     slider moves the picture and the numbers together. Families: tube (flow,
+     pressure gradient and radius), wave (arterial pressure), balance
+     (filtration pressures), pump (ventricle volumes, cardiac output), stack
+     (a whole split into its parts). */
+  var SVGNS = 'http://www.w3.org/2000/svg', picAnim = 0, baseEnv = null;
+  function reducedMotion(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
+  function S(name, attrs, text){ var e = document.createElementNS(SVGNS, name); for(var a in attrs) if(attrs[a] != null) e.setAttribute(a, attrs[a]); if(text != null) e.textContent = text; return e; }
+  function val(c, env, key){ return fmt(env[key], dpOf(c, key)); }
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+  function drawPicture(c, env){
+    var host = app.querySelector('.calc-pic');
+    if(!host || !c.picture) return;
+    picAnim++;
+    var pic = c.picture, svg, cap = '';
+    host.innerHTML = '';
+    if(pic.kind === 'tube') { var r = tube(c, env, pic); svg = r.svg; cap = r.cap; }
+    else if(pic.kind === 'wave') { var w = wave(c, env, pic); svg = w.svg; cap = w.cap; }
+    else if(pic.kind === 'balance') { var b = balance(c, env, pic); svg = b.svg; cap = b.cap; }
+    else if(pic.kind === 'pump') { var u = pump(c, env, pic); svg = u.svg; cap = u.cap; }
+    else if(pic.kind === 'stack') { var k = stack(c, env, pic); svg = k.svg; cap = k.cap; }
+    if(!svg) return;
+    svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', cap.replace(/<[^>]+>/g, ''));
+    svg.setAttribute('class', 'calc-svg');
+    host.appendChild(svg);
+    var p = document.createElement('p'); p.className = 'calc-pic-cap'; p.innerHTML = cap; host.appendChild(p);
+  }
+  function tube(c, env, pic){
+    var W = 360, H = 150, x0 = 46, x1 = 314, cy = 72, svg = S('svg', { viewBox: '0 0 ' + W + ' ' + H });
+    var be = baseEnv || env;
+    var rr = pic.r ? env[pic.r] : pic.rRes ? Math.pow(be[pic.rRes] / env[pic.rRes], 0.25) : 1;
+    var rr0 = 1;
+    rr = clamp(isFinite(rr) ? rr : 1, 0.08, 3);
+    var R0 = 22, rad = clamp(R0 * rr, 2.5, 50);
+    // normal outline for comparison
+    if(Math.abs(rr - 1) > 0.02) svg.appendChild(S('rect', { x: x0, y: cy - R0, width: x1 - x0, height: 2 * R0, rx: 4, 'class': 'cp-ghost' }));
+    svg.appendChild(S('rect', { x: x0, y: cy - rad, width: x1 - x0, height: 2 * rad, rx: Math.min(4, rad), 'class': 'cp-tube' }));
+    // a radius picture compares with the flow before the change (baseFlow), as its width does
+    var flow = env[pic.flow], bflow = (pic.r && pic.baseFlow ? env[pic.baseFlow] : be[pic.flow]) || 1;
+    // particle speed: velocity = flow / area, relative to the default
+    var speed = clamp((flow / bflow) / (rr * rr / (rr0 * rr0)), 0, 40);
+    var g = S('g', { 'clip-path': null }); svg.appendChild(g);
+    var n = Math.round(clamp(10 * rr, 3, 18)), dots = [];
+    for(var i = 0; i < n; i++){ var d = S('circle', { r: clamp(rad * 0.18, 1.6, 4), 'class': 'cp-dot' }); g.appendChild(d); dots.push({ el: d, x: x0 + (x1 - x0) * ((i * 0.618) % 1), y: cy + (((i * 0.37) % 1) - 0.5) * rad * 1.3 }); }
+    function place(){ dots.forEach(function(d){ d.el.setAttribute('cx', d.x.toFixed(1)); d.el.setAttribute('cy', d.y.toFixed(1)); }); }
+    place();
+    if(!reducedMotion() && speed > 0){
+      var my = picAnim, last = null;
+      requestAnimationFrame(function f(ts){
+        if(my !== picAnim) return;
+        var dt = last == null ? 0 : Math.min(50, ts - last); last = ts;
+        dots.forEach(function(d){ d.x += speed * 0.06 * dt; if(d.x > x1 - 3) d.x = x0 + 3 + (d.x - x1 + 3) % 20; });
+        place(); requestAnimationFrame(f);
+      });
+    }
+    // gauges
+    function gauge(x, key, label){
+      var v = env[key], a = clamp(v / 200, 0, 1) * Math.PI;
+      svg.appendChild(S('circle', { cx: x, cy: 22, r: 15, 'class': 'cp-gauge' }));
+      svg.appendChild(S('line', { x1: x, y1: 22, x2: x - 11 * Math.cos(a), y2: 22 - 11 * Math.sin(a), 'class': 'cp-needle' }));
+      svg.appendChild(S('line', { x1: x, y1: 37, x2: x, y2: cy - rad, 'class': 'cp-stem' }));
+      svg.appendChild(S('text', { x: x + (x < W / 2 ? -19 : 19), y: 20, 'text-anchor': x < W / 2 ? 'end' : 'start', 'class': 'cp-t' }, label));
+      svg.appendChild(S('text', { x: x + (x < W / 2 ? -19 : 19), y: 34, 'text-anchor': x < W / 2 ? 'end' : 'start', 'class': 'cp-v' }, val(c, env, key)));
+    }
+    if(pic.pin) gauge(x0 + 26, pic.pin, 'in');
+    if(pic.pout) gauge(x1 - 26, pic.pout, 'out');
+    svg.appendChild(S('path', { d: 'M' + (x1 + 6) + ',' + cy + ' l14,0 m-6,-6 l6,6 l-6,6', 'class': 'cp-arrow' }));
+    svg.appendChild(S('text', { x: (x0 + x1) / 2, y: H - 14, 'text-anchor': 'middle', 'class': 'cp-v cp-big' }, 'Flow ' + val(c, env, pic.flow) + ' ' + pic.flowUnit));
+    var rtxt = pic.r ? 'radius ' + Math.round(rr * 100) + '% of before' : pic.rRes ? 'resistance ' + val(c, env, pic.rRes) : '';
+    if(rtxt) svg.appendChild(S('text', { x: (x0 + x1) / 2, y: cy - Math.max(rad, R0) - 8, 'text-anchor': 'middle', 'class': 'cp-t' }, rtxt));
+    var cap = (pic.pin && pic.pout ? 'Pressure falls from ' + val(c, env, pic.pin) + ' to ' + val(c, env, pic.pout) + ' mm Hg along the tube. ' : '') +
+      (pic.r ? 'The radius is ' + Math.round(rr * 100) + '% of before, so resistance is ' + fmt(1 / Math.pow(rr, 4), 2) + ' times and flow ' + fmt(Math.pow(rr, 4), 2) + ' times what it was. ' : '') +
+      'Flow: <b>' + val(c, env, pic.flow) + ' ' + esc(pic.flowUnit) + '</b>. The dots move at flow ÷ cross-section, the average speed' + (Math.abs(speed - 1) > 0.02 ? ': ' + fmt(speed, 2) + ' times the starting speed. ' : '. ') +
+      'Narrowing a tube speeds up a flow that is held fixed, but with the pressure difference held, flow falls with r⁴ and the average speed falls with r².';
+    return { svg: svg, cap: cap };
+  }
+  function wave(c, env, pic){
+    var W = 360, H = 150, L = 44, R = 300, T = 14, B = 128, svg = S('svg', { viewBox: '0 0 ' + W + ' ' + H });
+    var sbp = env[pic.sbp], dbp = env[pic.dbp], top = Math.max(160, Math.ceil((sbp + 15) / 20) * 20);
+    function y(v){ return B - v / top * (B - T); }
+    for(var t = 0; t <= top; t += top > 200 ? 50 : 40){ svg.appendChild(S('line', { x1: L, x2: R, y1: y(t), y2: y(t), 'class': 'cp-grid' })); svg.appendChild(S('text', { x: L - 6, y: y(t) + 4, 'text-anchor': 'end', 'class': 'cp-tick' }, String(t))); }
+    // schematic arterial trace: fast upstroke, dicrotic notch, slow fall
+    function shape(u){ if(u < 0.13){ var a = u / 0.13; return a * a * (3 - 2 * a); } if(u < 0.34) return 1 - 0.38 * (u - 0.13) / 0.21; if(u < 0.38) return 0.62 - 0.06 * Math.sin((u - 0.34) / 0.04 * Math.PI); return 0.56 * Math.pow(1 - (u - 0.38) / 0.62, 1.4); }
+    var d = '';
+    for(var i = 0; i <= 200; i++){ var u = i / 100, ph = u % 1; d += (i ? ' L' : 'M') + (L + (R - L) * u / 2).toFixed(1) + ',' + y(dbp + (sbp - dbp) * Math.max(0, shape(ph))).toFixed(1); }
+    svg.appendChild(S('path', { d: d, 'class': 'cp-wave' }));
+    function hl(v, label, cls){ svg.appendChild(S('line', { x1: L, x2: R, y1: y(v), y2: y(v), 'class': 'cp-hl ' + cls })); svg.appendChild(S('text', { x: R + 4, y: y(v) + 4, 'class': 'cp-t ' + cls }, label + ' ' + fmt(v, 0))); }
+    hl(sbp, 'SBP', 'cp-sys'); hl(dbp, 'DBP', 'cp-dia');
+    if(pic.map) hl(env[pic.map], 'MAP', 'cp-map');
+    if(pic.avg) svg.appendChild(S('line', { x1: L, x2: R, y1: y(env[pic.avg]), y2: y(env[pic.avg]), 'class': 'cp-hl cp-avg' }));
+    if(pic.pp){ var px = L + (R - L) * 0.07; svg.appendChild(S('path', { d: 'M' + px + ',' + y(dbp) + ' L' + px + ',' + y(sbp), 'class': 'cp-span' })); svg.appendChild(S('text', { x: px + 6, y: (y(sbp) + y(dbp)) / 2 + 4, 'class': 'cp-v' }, 'PP ' + fmt(env[pic.pp], 0))); }
+    svg.appendChild(S('text', { x: 10, y: (T + B) / 2, 'text-anchor': 'middle', transform: 'rotate(-90 10 ' + (T + B) / 2 + ')', 'class': 'cp-tick' }, 'mm Hg'));
+    var cap = 'Two heartbeats of arterial pressure between ' + fmt(dbp, 0) + ' and ' + fmt(sbp, 0) + ' mm Hg (the trace shape is schematic). ' +
+      (pic.map ? 'MAP sits about a third of the way up, <b>' + fmt(env[pic.map], 0) + ' mm Hg</b>, below the plain average (dashed, ' + fmt(env[pic.avg], 0) + '), because the pressure spends most of each beat near diastolic.' : 'The pulse pressure, <b>' + fmt(env[pic.pp], 0) + ' mm Hg</b>, is the height of each pulse.');
+    return { svg: svg, cap: cap };
+  }
+  function balance(c, env, pic){
+    var W = 360, H = 190, cy = 96, svg = S('svg', { viewBox: '0 0 ' + W + ' ' + H });
+    svg.appendChild(S('rect', { x: 20, y: cy - 16, width: 230, height: 32, rx: 16, 'class': 'cp-cap' }));
+    svg.appendChild(S('text', { x: 135, y: cy + 5, 'text-anchor': 'middle', 'class': 'cp-t' }, pic.where === 'glomerulus' ? 'glomerular capillary' : 'capillary'));
+    var all = pic.out.concat(pic['in']), max = Math.max.apply(null, all.map(function(f){ return Math.abs(env[f.key]); }).concat([20]));
+    var sc = 46 / max;
+    function arrow(x, v, dir, label, cls, i){
+      var len = Math.abs(v) * sc, up = (dir === 'out') === (v >= 0);
+      var y0 = dir === 'out' ? cy - 18 : cy + 18;
+      // outward forces point away from the vessel (up), inward ones toward it
+      var ya, yb;
+      if(dir === 'out'){ ya = y0; yb = y0 - len; if(v < 0){ ya = y0 - len; yb = y0; } }
+      else { ya = y0 + len + 2; yb = y0 + 2; if(v < 0){ ya = y0 + 2; yb = y0 + len + 2; } }
+      if(len > 1) svg.appendChild(S('path', { d: 'M' + x + ',' + ya + ' L' + x + ',' + yb + ' m-5,' + (yb < ya ? 7 : -7) + ' l5,' + (yb < ya ? -7 : 7) + ' l5,' + (yb < ya ? 7 : -7), 'class': 'cp-force ' + cls }));
+      var ty = dir === 'out' ? Math.min(ya, yb) - 6 : Math.max(ya, yb) + 13;
+      svg.appendChild(S('text', { x: x, y: ty, 'text-anchor': 'middle', 'class': 'cp-v ' + cls }, label.split(' ')[0] + ' ' + fmt(v, 0)));
+    }
+    pic.out.forEach(function(f, i){ arrow(60 + i * 70, env[f.key], 'out', f.label, 'cp-out', i); });
+    pic['in'].forEach(function(f, i){ arrow(60 + i * 70 + (pic.out.length > 1 ? 35 : 70), env[f.key], 'in', f.label, 'cp-in', i); });
+    var net = env[pic.net], nl = clamp(Math.abs(net) * sc, 0, 60), nx = 300;
+    svg.appendChild(S('text', { x: nx, y: 20, 'text-anchor': 'middle', 'class': 'cp-t' }, 'net'));
+    if(nl > 1){ var a = net > 0 ? cy - 4 : cy - 4 - nl, b2 = net > 0 ? cy - 4 - nl : cy - 4; svg.appendChild(S('path', { d: 'M' + nx + ',' + a + ' L' + nx + ',' + b2 + ' m-7,' + (net > 0 ? 9 : -9) + ' l7,' + (net > 0 ? -9 : 9) + ' l7,' + (net > 0 ? 9 : -9), 'class': 'cp-force cp-net' + (net > 0 ? ' cp-out' : ' cp-in') })); }
+    svg.appendChild(S('text', { x: nx, y: cy + 26, 'text-anchor': 'middle', 'class': 'cp-v cp-big' }, fmt(net, 0) + ' mm Hg'));
+    svg.appendChild(S('text', { x: nx, y: cy + 42, 'text-anchor': 'middle', 'class': 'cp-t' }, net > 0 ? 'filtration (out)' : net < 0 ? 'reabsorption (in)' : 'no net movement'));
+    var cap = 'Arrows above the vessel are pressures moving fluid out; below, pressures moving it back in; length is size. Net: <b>' + fmt(net, 0) + ' mm Hg</b>, ' + (net > 0 ? 'so fluid filters out.' : net < 0 ? 'so fluid moves in.' : 'so there is no net movement.');
+    return { svg: svg, cap: cap };
+  }
+  function pump(c, env, pic){
+    var W = 360, H = 150, svg = S('svg', { viewBox: '0 0 ' + W + ' ' + H }), cap;
+    var my = picAnim, red = reducedMotion();
+    if(pic.edv){
+      var edv = env[pic.edv], esv = env[pic.esv], k = 52 / Math.sqrt(Math.max(edv, 160));
+      var rE = Math.sqrt(edv) * k, rS = Math.sqrt(Math.max(0, esv)) * k, cx = 100, cy = 78;
+      svg.appendChild(S('ellipse', { cx: cx, cy: cy, rx: rE * 0.8, ry: rE, 'class': 'cp-full' }));
+      var inner = S('ellipse', { cx: cx, cy: cy, rx: rS * 0.8, ry: rS, 'class': 'cp-blood' }); svg.appendChild(inner);
+      svg.appendChild(S('ellipse', { cx: cx, cy: cy, rx: rS * 0.8, ry: rS, 'class': 'cp-esv' }));
+      if(!red){ var t0 = null; requestAnimationFrame(function f(ts){ if(my !== picAnim) return; if(t0 == null) t0 = ts; var u = ((ts - t0) / 1100) % 1, e = u < 0.4 ? 1 - Math.sin(u / 0.4 * Math.PI / 2) : Math.sin((u - 0.4) / 0.6 * Math.PI / 2); var r = rS + (rE - rS) * e; inner.setAttribute('rx', (r * 0.8).toFixed(1)); inner.setAttribute('ry', r.toFixed(1)); requestAnimationFrame(f); }); }
+      else { inner.setAttribute('rx', rE * 0.8); inner.setAttribute('ry', rE); }
+      var bx = 210, bw = 120, by = 40;
+      svg.appendChild(S('text', { x: bx, y: by - 12, 'class': 'cp-t' }, 'Each beat'));
+      svg.appendChild(S('rect', { x: bx, y: by, width: bw, height: 18, rx: 4, 'class': 'cp-bar-bg' }));
+      svg.appendChild(S('rect', { x: bx, y: by, width: bw * clamp(env[pic.sv] / edv, 0, 1), height: 18, rx: 4, 'class': 'cp-seg tone-o2' }));
+      svg.appendChild(S('text', { x: bx, y: by + 34, 'class': 'cp-v' }, 'SV ' + val(c, env, pic.sv) + ' mL ejected'));
+      svg.appendChild(S('text', { x: bx, y: by + 52, 'class': 'cp-v' }, 'ESV ' + val(c, env, pic.esv) + ' mL stays'));
+      svg.appendChild(S('text', { x: bx, y: by + 78, 'class': 'cp-v cp-big' }, 'EF ' + val(c, env, pic.ef) + '%'));
+      cap = 'The ventricle fills to ' + val(c, env, pic.edv) + ' mL (outer outline) and squeezes down to ' + val(c, env, pic.esv) + ' mL (inner). It ejects <b>' + val(c, env, pic.sv) + ' mL</b>, <b>' + val(c, env, pic.ef) + '%</b> of what it held.';
+    } else {
+      var hr = env[pic.hr], sv = env[pic.sv], co = env[pic.co];
+      var heart = S('path', { d: 'M70,58 c0,-18 -24,-22 -30,-6 c-6,-16 -30,-12 -30,6 c0,20 30,34 30,42 c0,-8 30,-22 30,-42z', transform: 'translate(30,8) scale(1.15)', 'class': 'cp-heart' });
+      svg.appendChild(heart);
+      svg.appendChild(S('text', { x: 75, y: 140, 'text-anchor': 'middle', 'class': 'cp-v' }, fmt(hr, 0) + ' beats/min'));
+      var jx = 200, jy = 18, jw = 70, jh = 110, cap10 = Math.max(10, Math.ceil(co / 5) * 5);
+      svg.appendChild(S('rect', { x: jx, y: jy, width: jw, height: jh, rx: 6, 'class': 'cp-jug' }));
+      var lvl = S('rect', { x: jx + 2, width: jw - 4, rx: 4, 'class': 'cp-seg tone-o2' }); svg.appendChild(lvl);
+      for(var m = 5; m < cap10; m += 5){ var yy = jy + jh - jh * m / cap10; svg.appendChild(S('line', { x1: jx, x2: jx + 10, y1: yy, y2: yy, 'class': 'cp-stem' })); svg.appendChild(S('text', { x: jx - 4, y: yy + 4, 'text-anchor': 'end', 'class': 'cp-tick' }, m + ' L')); }
+      svg.appendChild(S('text', { x: jx + jw + 8, y: jy + 14, 'class': 'cp-t' }, 'in 1 min'));
+      svg.appendChild(S('text', { x: jx + jw + 8, y: jy + 32, 'class': 'cp-v cp-big' }, fmt(co, 2) + ' L'));
+      function setLvl(f){ var h = (jh - 4) * clamp(f * co / cap10, 0, 1); lvl.setAttribute('y', (jy + jh - 2 - h).toFixed(1)); lvl.setAttribute('height', h.toFixed(1)); }
+      if(!red && hr > 0){
+        var period = 60000 / hr, t1 = null;
+        requestAnimationFrame(function f(ts){ if(my !== picAnim) return; if(t1 == null) t1 = ts; var el = ts - t1, ph = (el % period) / period;
+          heart.setAttribute('transform', 'translate(30,8) scale(' + (1.15 * (1 + (ph < 0.15 ? 0.08 * Math.sin(ph / 0.15 * Math.PI) : 0))).toFixed(3) + ')');
+          // the jug shows one minute of output filling in 6 s (10x speed), a stroke volume per beat
+          var beats = Math.floor(el / (period / 10)); setLvl(Math.min(1, beats / hr)); if(beats >= hr + 6) t1 = ts; requestAnimationFrame(f); });
+      } else setLvl(1);
+      cap = 'Each beat adds one stroke volume (' + fmt(sv, 0) + ' mL); ' + fmt(hr, 0) + ' beats in a minute fill the jug to <b>' + fmt(co, 2) + ' L</b> (the jug runs at ten times speed).';
+    }
+    return { svg: svg, cap: cap };
+  }
+  function stack(c, env, pic){
+    var W = 360, rowH = 46, H = pic.bars.length * rowH + 10, L = 10, R = 350, svg = S('svg', { viewBox: '0 0 ' + W + ' ' + H });
+    function v(sg){ return sg.expr ? evaluate(sg.expr, env) : env[sg.key]; }
+    var max = 0;
+    pic.bars.forEach(function(b){ var t = 0; b.segs.forEach(function(sg){ t += Math.max(0, v(sg)); }); max = Math.max(max, t); });
+    if(!(max > 0)) max = 1;
+    var parts = [];
+    pic.bars.forEach(function(b, i){
+      var y = 6 + i * rowH, x = L, tot = 0;
+      svg.appendChild(S('text', { x: L, y: y + 11, 'class': 'cp-t' }, b.label));
+      b.segs.forEach(function(sg){
+        var w = Math.max(0, v(sg)) / max * (R - L);
+        tot += Math.max(0, v(sg));
+        svg.appendChild(S('rect', { x: x, y: y + 16, width: Math.max(0, w - 1), height: 22, rx: 3, 'class': 'cp-seg tone-' + sg.tone }));
+        var txt = sg.label + ' ' + fmt(v(sg), dpOf(c, sg.key));
+        if(w > txt.length * 6.2 + 8) svg.appendChild(S('text', { x: x + 5, y: y + 31, 'class': 'cp-in-t' }, txt));
+        else if(w > 34) svg.appendChild(S('text', { x: x + 4, y: y + 31, 'class': 'cp-in-t' }, fmt(v(sg), dpOf(c, sg.key))));
+        parts.push(sg.label + ' ' + fmt(v(sg), dpOf(c, sg.key)));
+        x += w;
+      });
+      if(b.segs.length > 1) svg.appendChild(S('text', { x: R, y: y + 11, 'text-anchor': 'end', 'class': 'cp-v' }, fmt(tot, dpOf(c, b.segs[0].key)) + ' ' + pic.unit));
+      else svg.appendChild(S('text', { x: R, y: y + 11, 'text-anchor': 'end', 'class': 'cp-v' }, fmt(tot, dpOf(c, b.segs[0].key)) + ' ' + pic.unit));
+    });
+    var key = '<span class="cp-key">' + pic.bars.map(function(b){ return b.segs.map(function(sg){ return '<span><i class="cp-sw tone-' + sg.tone + '"></i>' + esc(sg.label) + ' <b>' + fmt(v(sg), dpOf(c, sg.key)) + '</b></span>'; }).join(''); }).join('') + '</span>';
+    return { svg: svg, cap: 'Drawn to one scale, in ' + esc(pic.unit) + ': ' + key };
   }
 
   /* ------------------------------------------------------ practice mode */
@@ -437,8 +642,10 @@
         (sizeRight ? ' The size is right but the sign is not: check which pressures push fluid out and which pull it in.' : near ? ' That is close: check your rounding in the steps below.' : '') +
         (ok ? '' : ' It is in your review queue.') + '</p>' +
       '</div>' +
+      (c.picture ? '<figure class="calc-pic" aria-label="Live picture"></figure>' : '') +
       solutionHtml(c, p.env, 'Worked solution') +
       '<div class="calc-report">' + (window.LevlReport ? window.LevlReport.button('anp', id) : '') + '</div>';
+    if(c.picture){ baseEnv = null; var dv = {}; c.inputs.forEach(function(inp){ dv[inp.key] = inp['default']; }); var b0 = compute(c, dv); if(!b0.invalid) baseEnv = b0.env; drawPicture(c, p.env); }
     if(window.AnpToolKit) window.AnpToolKit.strip(body.querySelector('.calc-feedback'), { topic: c.topic, text: c.title + ' ' + c.intro });
     var s = window.AnpCore ? window.AnpCore.toolStats(KIND) : null, mine = s && s.by ? s.by[c.id] : null;
     if(mine) body.querySelector('.calc-record').textContent = 'Your practice record here: ' + mine.c + ' of ' + mine.n + ' correct.';

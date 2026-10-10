@@ -140,10 +140,110 @@
   .path-alts ul{margin:6px 0 0;padding-left:16px;}
   .path-alts li{margin-bottom:3px;font-size:12.5px;font-weight:600;color:var(--muted);line-height:1.5;}
   .rewind-btn{
-    margin-top:8px;font:700 12px inherit;padding:6px 13px;border:2px solid var(--line);
+    margin-top:8px;font:700 12px var(--font-ui);padding:8px 14px;min-height:40px;border:2px solid var(--line);
     border-radius:16px;background:var(--white);color:var(--ink);cursor:pointer;
   }
   .rewind-btn:hover{border-color:var(--accent);color:var(--accent);}
+
+
+  /* ---- The live call: monitor, patient, choices (assets/scenario-monitor.js) ---- */
+  .sim-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:22px;align-items:start;}
+  @media (max-width:860px){.sim-grid{grid-template-columns:1fr;}}
+  .sim-side{position:sticky;top:calc(var(--site-header-h,112px) + 12px);}
+  @media (max-width:860px){.sim-side{position:static;}}
+  .pt-jump{display:none;margin-top:12px;font:800 13px var(--font-ui);color:var(--accent-text);}
+  @media (max-width:860px){.pt-jump{display:inline-block;}}
+  .clock-note{font:800 12.5px var(--font-ui);color:var(--bad-text);margin:-10px 0 14px;}
+  .path-waited{font-size:12px;color:var(--amber-text);margin-top:3px;font-weight:700;}
+
+  .mon{background:#0E1714;color:#E7F1EE;border-radius:16px;padding:10px 12px 12px;margin-bottom:16px;
+    box-shadow:var(--lift);border:2px solid #22322D;transition:border-color .4s;}
+  .mon.is-drifting{border-color:#D1594A;}
+  .mon-top{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+  .mon-live{width:8px;height:8px;border-radius:50%;background:#3FC2A9;box-shadow:0 0 0 3px rgba(63,194,169,.18);}
+  .mon-title{font:800 11px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:#A8BDB6;}
+  .mon-sim{margin-left:auto;font:600 10.5px var(--font-mono);color:#A8BDB6;}
+  .mon-body{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:stretch;}
+  .mon-traces{display:flex;flex-direction:column;gap:4px;min-width:0;}
+  .mon-lane{position:relative;height:52px;border-bottom:1px solid #1E2E29;}
+  .mon-lane:last-child{border-bottom:0;height:40px;}
+  .mon-lane canvas{width:100%;height:100%;display:block;}
+  .mon-lane-l{position:absolute;left:0;top:0;font:700 9.5px var(--font-mono);color:#7F978F;letter-spacing:.05em;text-transform:uppercase;}
+  .mon-off{position:absolute;right:4px;top:50%;transform:translateY(-50%);font:700 11px var(--font-mono);color:#A8BDB6;}
+  .mon-tiles{display:grid;grid-template-columns:repeat(2,minmax(78px,auto));gap:6px;}
+  .mon-tile{position:relative;background:#16231F;border-radius:10px;padding:5px 9px 6px;min-width:78px;display:flex;flex-direction:column;}
+  .mon-k{font:800 10px var(--font-mono);letter-spacing:.06em;color:#A8BDB6;}
+  .mon-v{font:800 24px/1.1 var(--font-mono);font-variant-numeric:tabular-nums;color:#E7F1EE;white-space:nowrap;}
+  .mon-tile[data-k="hr"] .mon-v{color:#5FD8BF;}
+  .mon-tile[data-k="spo2"] .mon-v{color:#F2C46B;}
+  .mon-tile[data-k="bp"] .mon-v{font-size:19px;line-height:1.35;}
+  .mon-u{font:600 9.5px var(--font-mono);color:#7F978F;}
+  .mon-flag{position:absolute;right:6px;top:5px;font:800 9px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;}
+  .mon-tile.is-low,.mon-tile.is-high{box-shadow:inset 0 0 0 2px #E8776A;}
+  .mon-tile.is-low .mon-flag,.mon-tile.is-high .mon-flag{color:#F4A397;}
+  .mon-tile.is-low .mon-flag::before{content:"\25BC ";}
+  .mon-tile.is-high .mon-flag::before{content:"\25B2 ";}
+  .mon-tile.is-none .mon-v{color:#5E746D;}
+  .mon-notes{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+  .mon-notes[hidden]{display:none;}
+  .mon-note{font:700 11.5px var(--font-mono);background:#16231F;color:#DCE8E4;border-radius:999px;padding:3px 10px;}
+  .mon-drift{margin-top:8px;font:800 12px var(--font-ui);color:#F4A397;}
+  @media (max-width:560px){
+    .sim-box{padding:16px 14px;}
+    .mon{margin:0 -4px 14px;padding:8px 10px 10px;}
+    .mon-body{grid-template-columns:1fr;}
+    .mon-lane{height:40px;}
+    .mon-lane:last-child{height:30px;}
+    .mon-tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;}
+    .mon-tile{min-width:0;padding:4px 6px 5px;}
+    .mon-v{font-size:19px;}
+    .mon-tile[data-k="bp"] .mon-v{font-size:14px;line-height:1.4;}
+    .mon-sim{font-size:9.5px;}
+    .node-text{font-size:15px;margin-bottom:16px;}
+  }
+
+  .pt{background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:14px;}
+  .pt-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+  .pt-head h3{font:900 15px var(--font-ui);margin:0;padding:0;border:0;}
+  .pt-age{font:700 11px var(--font-mono);color:var(--muted);}
+  .pt-hint{font-size:12.5px;color:var(--muted);margin:4px 0 10px;line-height:1.5;}
+  .pt-survey{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
+  .pt-chip{font:800 12px var(--font-ui);padding:6px 11px;border-radius:999px;border:2px solid var(--line);
+    background:var(--white);color:var(--muted);cursor:pointer;min-height:32px;}
+  .pt-chip.has{color:var(--ink);border-color:var(--accent);}
+  .pt-chip.fresh::after{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--coral);margin-left:6px;vertical-align:1px;}
+  .pt-chip.on{background:var(--navy);border-color:var(--navy);color:var(--on-accent);}
+  .pt-wrap{position:relative;display:flex;justify-content:center;}
+  .pt-svg{width:100%;max-width:180px;max-height:300px;display:block;overflow:visible;}
+  .pt-part{cursor:pointer;outline:none;}
+  .pt-part > rect,.pt-part > circle:first-child{fill:var(--line);stroke:var(--white);stroke-width:2;transition:fill .15s;}
+  .pt-part.has > rect,.pt-part.has > circle:first-child{fill:var(--tint-accent);stroke:var(--accent);}
+  .pt-part:hover > rect,.pt-part:hover > circle:first-child,
+  .pt-part:focus-visible > rect,.pt-part:focus-visible > circle:first-child{fill:var(--accent-bright);}
+  .pt-part.on > rect,.pt-part.on > circle:first-child{fill:var(--accent);stroke:var(--accent);}
+  .pt-part:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+  .pt-dot{fill:transparent;pointer-events:none;}
+  .pt-part.fresh .pt-dot{fill:var(--coral);}
+  .pt-skin{position:absolute;right:0;bottom:0;}
+  .pt-out{margin-top:10px;font-size:13px;line-height:1.55;min-height:3em;}
+  .pt-out-h{font:900 11px var(--font-ui);text-transform:uppercase;letter-spacing:.05em;color:var(--accent-text);margin-bottom:4px;}
+  .pt-out ul{margin:0;padding-left:16px;}
+  .pt-out li{margin-bottom:5px;color:var(--muted);}
+  .pt-out li.now{color:var(--ink);font-weight:700;}
+  .pt-earlier{font:600 10px var(--font-mono);color:var(--muted);text-transform:uppercase;}
+  .pt-dcap{display:inline-block;font:800 10px var(--font-mono);background:var(--tint-amber);color:var(--amber-text);border-radius:6px;padding:1px 5px;margin-right:5px;}
+  .pt-none{margin:0;color:var(--muted);font-style:italic;}
+  .pt-note{font-size:11.5px;color:var(--muted);margin:6px 0 0;}
+  .pt-note a{color:var(--accent-text);}
+  @media (max-width:860px){
+    .pt-wrap{float:left;width:120px;margin-right:12px;}
+    .pt-svg{max-height:210px;}
+    .pt-skin{position:static;margin-top:6px;}
+    .pt-wrap{flex-direction:column;align-items:center;}
+    .pt-out{overflow:hidden;}
+    .pt::after{content:"";display:block;clear:both;}
+  }
+  @media (prefers-reduced-motion:reduce){.mon,.pt-part > *{transition:none;}}
 
   footer{margin-top:44px;font-size:12px;color:var(--muted);max-width:60ch;}
 </style>
@@ -2047,6 +2147,8 @@ function startScenario(id){
   currentScenario = SCENARIOS.find(s => s.id === id);
   currentNodeId = currentScenario.startNode;
   pathLog = [];
+  if(monitor){ monitor.destroy(); monitor = null; }
+  document.getElementById('simBox').innerHTML = '';
   if(window.LevlAnalytics) window.LevlAnalytics.event('scenario-start', { scenario: id });
   document.getElementById('pickerScreen').style.display = 'none';
   document.getElementById('simBox').classList.add('active');
@@ -2055,6 +2157,7 @@ function startScenario(id){
 
 function backToPicker(){
   currentScenario = null;
+  if(monitor){ monitor.destroy(); monitor = null; }
   document.getElementById('simBox').classList.remove('active');
   document.getElementById('pickerScreen').style.display = 'block';
   if(window.LevlMotion) window.LevlMotion.scrollToY(0);
@@ -2110,6 +2213,58 @@ function recordDebrief(){
   return missed;
 }
 
+/* The live patient (assets/scenario-monitor.js): a monitor fed by each node's
+   own vitals line, and a body to tap for what the case has said about it.
+   Both persist through a call so the numbers move rather than jump. */
+let monitor = null, patient = null, shownAt = 0;
+const SIM = window.NremtSim || null;
+
+function buildCallView(){
+  const box = document.getElementById('simBox');
+  if(monitor){ monitor.destroy(); monitor = null; }
+  const months = SIM ? SIM.pure.ageMonths(currentScenario.nodes[currentScenario.startNode].text) : null;
+  box.innerHTML = `
+    <div class="sim-header">
+      <span class="sim-domain">${currentScenario.domain}</span>
+      <button type="button" class="back-link" id="backBtn">&larr; All scenarios</button>
+    </div>
+    <div class="sim-grid">
+      <div class="sim-main">
+        <div id="monHost"></div>
+        <div id="nodeHost"></div>
+      </div>
+      <div class="sim-side" id="ptHost"></div>
+    </div>`;
+  document.getElementById('backBtn').addEventListener('click', backToPicker);
+  if(SIM){
+    monitor = new SIM.Monitor({ months });
+    document.getElementById('monHost').appendChild(monitor.el);
+    patient = new SIM.Patient({ months });
+    document.getElementById('ptHost').appendChild(patient.el);
+  }
+}
+
+/* Bring the call to the top of the screen, below the sticky site header, so
+   the monitor is never tucked under it. */
+function scrollToBox(box){
+  const head = document.getElementById('site-header');
+  const h = head ? Math.max(0, head.getBoundingClientRect().bottom) : 0;
+  const y = Math.max(0, box.getBoundingClientRect().top + window.scrollY - h - 10);
+  if(window.LevlMotion) window.LevlMotion.scrollToY(y);
+  else window.scrollTo({ top: y });
+}
+
+function seenNodes(){
+  const out = [];
+  const cur = currentScenario.nodes[currentNodeId];
+  out.push({ text: cur.text, vitals: cur.vitals, now: true });
+  for(let i = pathLog.length - 1; i >= 0; i--){
+    const n = currentScenario.nodes[pathLog[i].fromNode];
+    if(n) out.push({ text: n.text, vitals: n.vitals, now: false });
+  }
+  return out;
+}
+
 function renderNode(consequenceText){
   const node = currentScenario.nodes[currentNodeId];
   const box = document.getElementById('simBox');
@@ -2134,6 +2289,7 @@ function renderNode(consequenceText){
   }
 
   if (node.ending) {
+    if(monitor){ monitor.destroy(); monitor = null; }
     const missedSteps = recordDebrief();
     box.innerHTML = `
       <div class="sim-header">
@@ -2151,6 +2307,7 @@ function renderNode(consequenceText){
           ${pathLog.map((p, i) => `
             <li>
               <div class="path-choice">${p.text}</div>
+              ${p.waited ? `<div class="path-waited">You took ${p.waited} s at a time-critical decision; the monitor was trending toward what the case says waiting costs (simulated).</div>` : ''}
               ${p.consequence ? `<div class="path-conseq">${p.consequence}</div>` : ''}
               ${p.alternatives.length ? `
                 <details class="path-alts">
@@ -2167,28 +2324,31 @@ function renderNode(consequenceText){
     box.querySelectorAll('[data-rewind]').forEach(btn => {
       btn.addEventListener('click', () => rewindTo(parseInt(btn.dataset.rewind, 10)));
     });
-    if(window.LevlMotion) window.LevlMotion.scrollToY(box.offsetTop - 20);
-    else window.scrollTo({ top: box.offsetTop - 20, behavior: 'smooth' });
+    scrollToBox(box);
     return;
   }
 
-  box.innerHTML = `
-    <div class="sim-header">
-      <span class="sim-domain">${currentScenario.domain}</span>
-      <button type="button" class="back-link" id="backBtn">&larr; All scenarios</button>
-    </div>
-    ${node.vitals ? `<div class="vitals-bar">${node.vitals}</div>` : ''}
+  if(!box.querySelector('.sim-grid')) buildCallView();
+  const host = document.getElementById('nodeHost');
+  const hesitateTo = SIM && SIM.HESITATE[currentNodeId] ? currentScenario.nodes[SIM.HESITATE[currentNodeId]] : null;
+  host.innerHTML = `
+    ${!SIM && node.vitals ? `<div class="vitals-bar">${node.vitals}</div>` : ''}
     ${consequenceText ? `<div class="consequence-banner"><strong>What happened</strong>${consequenceText}</div>` : ''}
     <p class="node-text">${node.text}</p>
+    ${hesitateTo ? `<p class="clock-note"><span aria-hidden="true">&#9201;</span> Time-critical: this patient will not wait for you.</p>` : ''}
     <div class="choice-list">
       ${node.choices.map((c, i) => `<button type="button" class="choice-option" data-choice="${i}">${c.text}</button>`).join('')}
     </div>
+    ${SIM ? `<a class="pt-jump" href="#ptHost">Examine the patient &darr;</a>` : ''}
   `;
-  document.getElementById('backBtn').addEventListener('click', backToPicker);
-  box.querySelectorAll('[data-choice]').forEach(btn => {
+  if(monitor) monitor.show(node.vitals, hesitateTo ? hesitateTo.vitals : null);
+  if(patient) patient.update(seenNodes());
+  shownAt = Date.now();
+  host.querySelectorAll('[data-choice]').forEach(btn => {
     btn.addEventListener('click', () => {
       const idx = parseInt(btn.dataset.choice, 10);
       const choice = node.choices[idx];
+      const waitedMs = monitor && hesitateTo ? monitor.hesitation() : 0;
       /* The log records the FORK, not just the decision — which node it was
          taken from, and what else was on offer. That is what makes going back
          to a decision possible, and it is the thing the old flat list of
@@ -2199,14 +2359,14 @@ function renderNode(consequenceText){
         index: idx,
         text: choice.text,
         consequence: choice.consequence || '',
-        alternatives: node.choices.filter((c, i) => i !== idx).map(c => c.text)
+        alternatives: node.choices.filter((c, i) => i !== idx).map(c => c.text),
+        waited: SIM && waitedMs > SIM.pure.GRACE_MS ? Math.round(waitedMs / 1000) : 0
       });
       currentNodeId = choice.next;
       renderNode(choice.consequence);
     });
   });
-  if(window.LevlMotion) window.LevlMotion.scrollToY(box.offsetTop - 20);
-  else window.scrollTo({ top: box.offsetTop - 20, behavior: 'smooth' });
+  scrollToBox(box);
 }
 
 // Called now and whenever access changes. A run already under way when access
@@ -2220,6 +2380,7 @@ G.onChange(renderPicker);
 });
 </script>
 <script src="assets/tool-results.js" defer></script>
+<script src="assets/scenario-monitor.js" defer></script>
 <script src="assets/nav.js" defer></script>
 </body>
 </html>

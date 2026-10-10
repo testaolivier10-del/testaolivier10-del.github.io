@@ -52,6 +52,29 @@
     { match: /bleeding|shock/i,    minutes: 10 }
   ];
 
+  /* The page's own table of the official sheets ("The official sheets at a
+     glance"): its time column is each station's limit (the Registry's exam
+     guide; the sheets themselves mostly only record start and end times), and its
+     last column paraphrases the critical criteria. Where a station matches a
+     row, that is what the clock and the critical list use. */
+  var ROW_KEYS = [/trauma/i, /medical/i, /cardiac|aed/i, /bvm/i, /non-rebreather|oxygen/i, /long bone/i, /joint/i, /supine/i, /seated/i, /bleeding/i];
+  function sheetRow(name){
+    var key = ROW_KEYS.filter(function(r){ return r.test(name); })[0];
+    if(!key) return null;
+    var rows = document.querySelectorAll('.sheets-table tbody tr');
+    for(var i = 0; i < rows.length; i++){
+      var th = rows[i].querySelector('th'), tds = rows[i].querySelectorAll('td');
+      if(!th || tds.length < 3 || !key.test(text(th))) continue;
+      var min = parseInt(text(tds[1]), 10);
+      return {
+        code: text(th.querySelector('.sheet-code') || th).replace(/^.*\s(E\d+)$/, '$1'),
+        minutes: min > 0 ? min : null,
+        criteria: text(tds[2]).split(/;\s*/).filter(Boolean).map(function(c){ return c.charAt(0).toUpperCase() + c.slice(1); })
+      };
+    }
+    return null;
+  }
+
   function targetFor(name){
     for(var i = 0; i < COMMON_TARGET.length; i++){
       if(COMMON_TARGET[i].match.test(name)) return COMMON_TARGET[i].minutes;
@@ -95,7 +118,9 @@
         });
       }
 
-      out.push({ name: text(h3), steps: steps, target: targetFor(text(h3)) });
+      var row = sheetRow(text(h3));
+      out.push({ name: text(h3), steps: steps, target: (row && row.minutes) || targetFor(text(h3)),
+                 official: !!(row && row.minutes), code: row ? row.code : '', criteria: row ? row.criteria : [] });
     });
     return out;
   }
@@ -130,7 +155,7 @@
           STATIONS.map(function(s, i){
             return '<button type="button" class="run-station" data-i="' + i + '">' +
               '<span class="n">' + esc(s.name) + '</span>' +
-              '<span class="t">' + s.steps.length + ' phases · ' + s.target + ' min</span>' +
+              '<span class="t">' + s.steps.length + ' phases · ' + s.target + ' min' + (s.code ? ' · ' + esc(s.code) : '') + '</span>' +
             '</button>';
           }).join('') +
         '</div>' +
@@ -142,36 +167,110 @@
     });
   }
 
+  /* ---- The clock and the critical list ---------------------------------- */
+
+  /* Which official criteria the run can light by itself, from what happened:
+     PPE when a later phase was ticked before BSI; anything timed when the
+     clock passes the sheet's limit. The rest the student lights by tapping
+     ("I did this"), which is how a self-run is honestly scored. */
+  var RE_PPE = /\bPPE\b/i, RE_TIME = /within the \d+ minutes/i;
+  var flagged = [];   // per official criterion: '', 'auto', 'self'
+
+  function ring(frac, over){
+    var r = 52, c = 2 * Math.PI * r, f = Math.max(0, Math.min(1, frac));
+    return '<svg class="run-ring" viewBox="0 0 120 120" aria-hidden="true">' +
+      '<circle cx="60" cy="60" r="' + r + '" class="run-ring-bg"/>' +
+      '<circle cx="60" cy="60" r="' + r + '" class="run-ring-fg' + (over ? ' over' : frac > 0.8 ? ' late' : '') + '" ' +
+        'stroke-dasharray="' + c.toFixed(1) + '" stroke-dashoffset="' + (c * (1 - f)).toFixed(1) + '" transform="rotate(-90 60 60)"/>' +
+      '</svg>';
+  }
+
+  function bsiSkipped(){
+    // BSI is step 0; skipped once any later step is ticked without it.
+    return !done[0] && done.slice(1).some(Boolean);
+  }
+
+  function lightCriteria(sec){
+    if(!station.criteria.length) return;
+    var over = sec > targetMin * 60;
+    station.criteria.forEach(function(c, i){
+      if(flagged[i] === 'self') return;
+      var auto = (RE_PPE.test(c) && bsiSkipped()) || (RE_TIME.test(c) && over);
+      flagged[i] = auto ? 'auto' : '';
+    });
+    var box = document.getElementById('runCrit');
+    if(!box) return;
+    box.querySelectorAll('[data-c]').forEach(function(li){
+      var i = +li.getAttribute('data-c'), was = li.parentNode.classList.contains('lit');
+      li.parentNode.classList.toggle('lit', !!flagged[i]);
+      li.setAttribute('aria-pressed', flagged[i] ? 'true' : 'false');
+      if(flagged[i] === 'auto' && !was && window.LevlAnnounce) window.LevlAnnounce.say('Critical criterion: ' + station.criteria[i]);
+    });
+    var n = flagged.filter(Boolean).length;
+    var head = document.getElementById('runCritN');
+    if(head) head.textContent = n ? n + ' would fail the station' : 'none yet';
+    var badge = document.getElementById('runCritBadge');
+    if(badge){ badge.hidden = !n; badge.textContent = n + ' critical criteri' + (n === 1 ? 'on' : 'a') + ' lit \u2193'; }
+  }
+
+  function updateClock(){
+    var sec = elapsed(), lim = targetMin * 60, over = sec > lim;
+    var el = document.getElementById('runClock');
+    if(!el) return stop();
+    el.textContent = clockText(sec);
+    var wrap = document.getElementById('runClockWrap');
+    wrap.classList.toggle('over', over);
+    wrap.classList.toggle('late', !over && sec > lim * 0.8);
+    var fg = wrap.querySelector('.run-ring-fg');
+    if(fg){
+      var c = 2 * Math.PI * 52;
+      fg.setAttribute('stroke-dashoffset', (c * (1 - Math.min(1, sec / lim))).toFixed(1));
+      fg.setAttribute('class', 'run-ring-fg' + (over ? ' over' : sec > lim * 0.8 ? ' late' : ''));
+    }
+    var left = document.getElementById('runLeft');
+    if(left) left.textContent = over ? clockText(sec - lim) + ' over' : clockText(lim - sec) + ' left';
+    // A spoken heads-up at the two moments that matter, not every second.
+    if(window.LevlAnnounce){
+      if(!clockSaid.late && sec > lim * 0.8 && !over){ clockSaid.late = true; window.LevlAnnounce.say(clockText(lim - sec) + ' left on the station.'); }
+      if(!clockSaid.over && over){ clockSaid.over = true; window.LevlAnnounce.say('Time limit passed.'); }
+    }
+    lightCriteria(sec);
+  }
+  var clockSaid = {};
+
   function begin(s){
     station = s;
     targetMin = s.target;
     done = s.steps.map(function(){ return false; });
+    flagged = s.criteria.map(function(){ return ''; });
+    clockSaid = {};
     startedAt = Date.now();
     stop();
-    tick = setInterval(function(){
-      var el = document.getElementById('runClock');
-      if(!el) return stop();
-      var sec = elapsed();
-      el.textContent = clockText(sec);
-      el.classList.toggle('over', sec > targetMin * 60);
-    }, 1000);
+    tick = setInterval(updateClock, 1000);
     renderRun();
   }
 
   function renderRun(){
     mount.innerHTML =
-      '<div class="run-card">' +
-        '<div class="run-head">' +
-          '<div>' +
-            '<div class="run-name">' + esc(station.name) + '</div>' +
-            '<label class="run-target">Target ' +
+      '<div class="run-card run-live">' +
+        '<div class="run-name">' + esc(station.name) + (station.code ? ' <span class="run-code">' + esc(station.code) + '</span>' : '') + '</div>' +
+        '<div class="run-top2">' +
+          '<div class="run-clockwrap" id="runClockWrap">' + ring(0, false) +
+            '<div class="run-clockin"><div class="run-clock" id="runClock" role="timer" aria-live="off">0:00</div>' +
+            '<div class="run-left" id="runLeft">' + targetMin + ':00 left</div></div>' +
+          '</div>' +
+          '<div class="run-meta">' +
+            '<label class="run-target">Limit ' +
               '<input type="number" id="runTarget" min="1" max="60" value="' + targetMin + '"> min' +
             '</label>' +
-            '<div class="run-hearsay">Commonly published for this station — confirm against your own program’s sheet.</div>' +
+            '<div class="run-hearsay">' + (station.official
+              ? 'The station limit from the table below (the Registry’s exam guide). Change it if your program differs.'
+              : 'Commonly published for this station — confirm against your own program’s sheet.') + '</div>' +
+            '<a class="run-badge" id="runCritBadge" href="#runCrit" hidden></a>' +
           '</div>' +
-          '<div class="run-clock" id="runClock" role="timer" aria-live="off">0:00</div>' +
         '</div>' +
 
+        '<div class="run-cols">' +
         '<ol class="run-steps">' +
           station.steps.map(function(st, i){
             return '<li class="run-step' + (st.critical ? ' is-critical' : '') + (done[i] ? ' is-done' : '') + '">' +
@@ -183,6 +282,18 @@
             '</li>';
           }).join('') +
         '</ol>' +
+
+        (station.criteria.length
+          ? '<div class="run-crit" id="runCrit">' +
+              '<div class="run-crit-h">Critical criteria <span id="runCritN">none yet</span></div>' +
+              '<p class="run-crit-sub">Any one fails the station. Two light up by themselves: No PPE, if you tick a later phase before BSI (this tool’s reading of it; the sheet fails a candidate who never takes or voices PPE), and the time limit once it passes. Tap any other you know you did.</p>' +
+              '<ul>' + station.criteria.map(function(c, i){
+                return '<li><button type="button" class="run-cbtn" data-c="' + i + '" aria-pressed="false">' + esc(c) + '</button></li>';
+              }).join('') + '</ul>' +
+              '<p class="run-crit-src">Paraphrased from ' + esc(station.code || 'the official sheet') + ' in the table below.</p>' +
+            '</div>'
+          : '') +
+        '</div>' +
 
         '<p class="run-note">These are the phases this page lists, not an official scored step order. ' +
           'Verbalize each one as you would in the room — the examiner scores what you say and show.</p>' +
@@ -198,14 +309,25 @@
         var i = parseInt(box.getAttribute('data-i'), 10);
         done[i] = box.checked;
         box.closest('.run-step').classList.toggle('is-done', box.checked);
+        var li0 = mount.querySelector('.run-step');
+        if(li0) li0.classList.toggle('is-skipped', bsiSkipped());
+        lightCriteria(elapsed());
+      });
+    });
+    mount.querySelectorAll('.run-cbtn').forEach(function(b){
+      b.addEventListener('click', function(){
+        var i = +b.getAttribute('data-c');
+        flagged[i] = flagged[i] === 'self' ? '' : 'self';
+        lightCriteria(elapsed());
       });
     });
     document.getElementById('runTarget').addEventListener('change', function(e){
       var v = parseInt(e.target.value, 10);
-      if(v > 0) targetMin = v;
+      if(v > 0){ targetMin = v; clockSaid = {}; updateClock(); }
     });
     document.getElementById('runFinish').addEventListener('click', finish);
     document.getElementById('runQuit').addEventListener('click', picker);
+    updateClock();
   }
 
   function finish(){
@@ -244,8 +366,12 @@
                 return '<li>' + esc(st.text) + (st.why ? '<small>' + esc(st.why) + '</small>' : '') + '</li>';
               }).join('') + '</ul>' +
             '</div>'
-          : '<div class="run-okbox">Both critical items ticked.</div>') +
+          : '<div class="run-okbox">' + (station.steps.filter(function(st){ return st.critical; }).length === 2 ? 'Both critical items ticked.' : 'Every critical item ticked.') + '</div>') +
 
+        (flagged.some(Boolean)
+          ? '<div class="run-flagbox"><b>Critical criteria that lit up:</b><ul>' +
+              station.criteria.filter(function(c, i){ return flagged[i]; }).map(function(c){ return '<li>' + esc(c) + '</li>'; }).join('') +
+            '</ul></div>' : '') +
         (missedOther ? '<p class="run-note">' + missedOther + ' other phase' + (missedOther === 1 ? '' : 's') +
                        ' left unticked.</p>' : '') +
 
@@ -261,6 +387,16 @@
 
     document.getElementById('runAgain').addEventListener('click', function(){ begin(station); });
     document.getElementById('runOther').addEventListener('click', picker);
+    /* The result is much shorter than the run it replaces, so without this the
+       page collapses under the student and they land in the reading guide. */
+    var card = mount.querySelector('.run-card');
+    if(card){
+      card.setAttribute('tabindex', '-1');
+      var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      try{ card.focus({ preventScroll: true }); }catch(e){}
+      var top = card.getBoundingClientRect().top;
+      if(top < 80 || top > window.innerHeight * 0.6) card.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
+    }
   }
 
   /* ---- Mode switch ------------------------------------------------------- */

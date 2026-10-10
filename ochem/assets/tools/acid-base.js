@@ -327,6 +327,90 @@
     };
   }
 
+  /* ---- Drawn structures ---------------------------------------------------
+
+     Ranking acids is reading structures: which atom holds the charge, what
+     it can spread onto, what pulls on it. So every acid is drawn, parsed
+     from a condensed formula by mol-builder.js (a ring as a ring spec), and
+     the proton in question sits on the atom shown in bold. A formula the
+     reader cannot handle simply falls back to the text formula. */
+  var DRAWN = {
+    ethane:'CH3CH3', ethene:'CH2=CH2', ethyne:'HC#CH', ammonia:'NH3', methylamine:'CH3NH2', water:'H2O',
+    ethanol:'CH3CH2OH', tbuoh:'(CH3)3COH', phenol:{ n:6, aromatic:true, subs:{ 0:'OH' } },
+    pnitrophenol:{ n:6, aromatic:true, subs:{ 0:'OH', 3:'NO2' } }, acetic:'CH3C(=O)OH', formic:'HC(=O)OH',
+    benzoic:{ n:6, aromatic:true, subs:{ 0:'COOH' } }, chloroacetic:'ClCH2COOH', dichloroacetic:'ClCH(Cl)COOH',
+    trichloroacetic:'ClC(Cl)(Cl)COOH', tfa:'FC(F)(F)COOH', chloropropanoic:'ClCH2CH2COOH', hf:'HF', hcl:'HCl',
+    hbr:'HBr', h2s:'H2S', ethanethiol:'CH3CH2SH', hcn:'HC#N', acetone:'CH3C(=O)CH3',
+    malonate:'CH3CH2OC(=O)CH2C(=O)OCH2CH3', pentanedione:'CH3C(=O)CH2C(=O)CH3',
+    phenylacetic:{ n:6, aromatic:true, subs:{ 0:'CH2COOH' } }, cyanoacetic:'N#CCH2COOH', fluoroacetic:'FCH2COOH',
+    oxalic:'HOC(=O)C(=O)OH', benzenesulfonic:{ n:6, aromatic:true, subs:{ 0:'SO3H' } },
+    phenylammonium:{ n:6, aromatic:true, subs:{ 0:'NH3+' } }, ethylammonium:'CH3CH2NH3+',
+    cyclopentadiene:{ n:5, unsat:[[0,1],[2,3]] }, 'nitromethane-ab':'CH3NO2',
+    phenylacetylene:{ n:6, aromatic:true, subs:{ 0:'C#CH' } }, tfe:'FC(F)(F)CH2OH', 'hydrogen-peroxide':'HOOH'
+  };
+  /* Which proton site in a multi-site molecule sits on which drawn atom (keys
+     as the parser numbers them). A site with no atom is still in the ranking
+     but is not a tap target — malonic acid's second COOH only exists after
+     the first has gone. */
+  var MULTI_DRAWN = {
+    glycine:{ f:'NH3+CH2COOH', at:{ 'COOH':['a5'], '⁺NH₃':['a1'] } },
+    salicylic:{ f:{ n:6, aromatic:true, subs:{ 0:'COOH', 1:'OH' } }, at:{ 'COOH':['a9'], 'phenol OH':['a10'] } },
+    hydroxybenzoic:{ f:{ n:6, aromatic:true, subs:{ 0:'COOH', 3:'OH' } }, at:{ 'COOH':['a9'], 'phenol OH':['a10'] } },
+    cysteine:{ f:'NH3+CH(CH2SH)COOH', at:{ 'COOH':['a7'], 'SH':['a4'], '⁺NH₃':['a1'] } },
+    malonic:{ f:'HOC(=O)CH2C(=O)OH', at:{ 'first COOH':['a1','a7'], 'α C–H':['a4'] } },
+    acetoacetate:{ f:'CH3C(=O)CH2C(=O)OCH2CH3', at:{ 'central CH₂':['a4'], 'terminal CH₃':['a1'] } },
+    pentanedione2:{ f:'CH3C(=O)CH2C(=O)CH3', at:{ 'central CH₂':['a4'], 'terminal CH₃':['a1','a7'] } },
+    aceticmulti:{ f:'CH3C(=O)OH', at:{ 'O–H':['a4'], 'α C–H':['a1'] } }
+  };
+
+  var Bld = window.OchemBuilder, MolR = window.OchemMolecules, ChemC = window.OchemChem;
+  var SUBD = '₀₁₂₃₄₅₆₇₈₉';
+  function parseDrawn(f){
+    if(!Bld || !ChemC || !f) return null;
+    try{
+      var r = typeof f === 'string' ? Bld.parse(f) : Bld.parseRing(f);
+      if(!r || !r.st) return null;
+      Bld.centre(r.st);
+      return r.st;
+    }catch(e){ return null; }
+  }
+  /* Labels carry their hydrogens (OH, CH₂, NH₃⁺): the hydrogen is the thing
+     being asked about, and a skeletal C with no H on it hides it. */
+  function drawing(st){
+    var mol = ChemC.toMolecule(st);
+    Object.keys(st.atoms).forEach(function(k){
+      var a = st.atoms[k], m = mol.atoms[k];
+      if(!a.el || a.group) return;
+      var h = a.hFixed !== undefined ? a.hFixed : (a.hImplicit || 0);
+      var hs = h > 0 ? 'H' + (h > 1 ? SUBD[h] : '') : '';
+      // HF, HCl, H₂S read hydrogen-first; everything else element-first (OH, CH₂).
+      /* Hydrides read hydrogen-first (HF, H₂O, H₂S); in a bigger molecule
+         an atom reads element-first (OH, CH₂, NH₃). */
+      var heavy = Object.keys(st.atoms).filter(function(o){ return st.atoms[o].el !== 'H'; }).length;
+      m.label = /^(F|Cl|Br|I)$/.test(a.el) || (heavy === 1 && a.el !== 'N') ? hs + a.el : a.el + hs;
+      m.r = Math.max(m.r || 14, m.label.length > 2 ? 17 : 15);
+    });
+    /* Cropped to the atoms, so HCl and phenylacetic acid both fill their
+       card instead of sitting at one scale in a 320 by 170 field; never
+       narrower than 190 units, so a hydride is not blown up to a disc. */
+    // Spread the skeleton (atoms keep their size) so bonds between labelled atoms show.
+    Object.keys(mol.atoms).forEach(function(k){ var t = mol.atoms[k]; t.x = 160 + (t.x - 160) * 1.45; t.y = 85 + (t.y - 85) * 1.45; });
+    var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    Object.keys(mol.atoms).forEach(function(k){ var t = mol.atoms[k], pd = t.r + (t.lp ? 11 : 4);
+      x0 = Math.min(x0, t.x - pd); x1 = Math.max(x1, t.x + pd); y0 = Math.min(y0, t.y - pd); y1 = Math.max(y1, t.y + pd); });
+    var w = Math.max(220, x1 - x0), hgt = Math.max(110, y1 - y0), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+    mol.viewBox = Math.round(cx - w / 2) + ' ' + Math.round(cy - hgt / 2) + ' ' + Math.round(w) + ' ' + Math.round(hgt);
+    return mol;
+  }
+  function structSvg(f, label, opts){
+    var st = parseDrawn(f);
+    if(!st || !MolR) return '';
+    opts = opts || {};
+    opts.caption = '';
+    opts.label = label;
+    return MolR.svg(drawing(st), opts);
+  }
+
   /* ---- State ------------------------------------------------------------ */
 
   var left = ACIDS[10];   // acetic acid
@@ -370,10 +454,12 @@
 
     '<div id="abRank" hidden>' +
       '<div class="tpanel">' +
-        '<div class="tpanel__head"><span>Click them from most acidic to least</span>' +
+        '<div class="tpanel__head"><span>Line them up, most acidic first</span>' +
           '<button type="button" class="tchip" id="abNewRank">New set</button></div>' +
-        '<div class="tchips" id="abRankPool"></div>' +
-        '<div class="ab-order" id="abRankOrder"></div>' +
+        '<div id="abRankPool"></div>' +
+        '<div class="ab-rorder" id="abRankOrder"></div>' +
+        '<div class="trow ab-ract" id="abRankAct"></div>' +
+        '<div class="sr-only" aria-live="polite" id="abRankLive"></div>' +
         '<div aria-live="polite" id="abRankVerdict"></div>' +
       '</div>' +
     '</div>' +
@@ -381,10 +467,10 @@
     '<div id="abSite" hidden>' +
       '<div class="tpanel">' +
         '<div class="tpanel__head"><span>One molecule, several acidic hydrogens</span>' +
-          '<select class="tselect" id="abSiteSel"></select></div>' +
+          '<select class="tselect" id="abSiteSel" aria-label="Molecule"></select></div>' +
         '<div class="ab-site__formula" id="abSiteFormula"></div>' +
         '<p class="tmuted" id="abSiteNote"></p>' +
-        '<div class="tpanel__head" style="margin-top:8px;">Which one comes off first?</div>' +
+        '<div class="tpanel__head" style="margin-top:8px;">Which one comes off first? Tap it on the structure, or pick below</div>' +
         '<div class="tchips" id="abSiteGuess"></div>' +
         '<div aria-live="polite" id="abSiteVerdict" style="margin-top:14px;"></div>' +
       '</div>' +
@@ -418,6 +504,8 @@
       document.getElementById('abSite').hidden = m !== 'site';
       if(m === 'rank' && !rankPool.length) newRank();
       if(m === 'site') renderSite();
+      if(m === 'pair') renderPair();
+      sync();
     });
   });
 
@@ -445,6 +533,7 @@
     document.getElementById('abCards').innerHTML = [left, right].map(function(a){
       return '<div class="ab-card' + (revealed && a === analyse(left, right).truth ? ' ab-card--win' : '') + '">' +
         '<div class="ab-card__name">' + esc(a.name) + '</div>' +
+        (structSvg(DRAWN[a.id], a.name) || '') +
         '<div class="ab-card__formula">' + esc(a.formula) + '</div>' +
         '<div class="ab-card__row"><span>Acidic proton</span><b>' + esc(a.site) + '</b></div>' +
         '<div class="ab-card__row"><span>Conjugate base</span><b>' + esc(a.cbase) + '</b></div>' +
@@ -549,64 +638,199 @@
     return Math.round(r).toLocaleString();
   }
 
-  /* ---- Ranking mode ----------------------------------------------------- */
+  /* ---- Ranking mode: the pKa line ----------------------------------------
+
+     Four drawn acids in a row. Drag them (or tap one, then tap where it
+     goes, or use its arrow buttons) into order from most to least acidic,
+     then put them on the line: each card's marker slides to its measured pKa
+     and the gap to its neighbor is explained by analyse(), the same
+     atom-resonance-induction-orbital walk the Compare mode shows. */
+
+  var rankPick = -1;
 
   function newRank(){
     var pool = ACIDS.slice();
     rankPool = [];
-    for(var i=0;i<4;i++) rankPool.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
-    rankOrder = [];
+    /* Four acids at least a pKa unit apart, so the order is a fair thing to
+       ask for rather than something inside the measurements' own scatter. */
+    var tries = 0;
+    while(rankPool.length < 4 && tries++ < 400){
+      var c = pool[Math.floor(Math.random() * pool.length)];
+      if(rankPool.indexOf(c) >= 0) continue;
+      if(rankPool.some(function(x){ return Math.abs(x.pKa - c.pKa) < 1; })) continue;
+      rankPool.push(c);
+    }
+    rankOrder = rankPool.slice();
     rankChecked = false;
+    rankPick = -1;
     renderRank();
   }
 
-  function renderRank(){
-    document.getElementById('abRankPool').innerHTML = rankPool.map(function(a){
-      var placed = rankOrder.indexOf(a) !== -1;
-      return '<button type="button" class="tchip" data-id="' + esc(a.id) + '"' + (placed || rankChecked ? ' disabled' : '') + '>' +
-        esc(a.name) + ' <span class="tmuted">' + esc(a.formula) + '</span></button>';
-    }).join('');
-    document.getElementById('abRankPool').querySelectorAll('.tchip').forEach(function(b){
-      b.addEventListener('click', function(){
-        rankPool.forEach(function(a){ if(a.id === b.getAttribute('data-id') && rankOrder.indexOf(a) === -1) rankOrder.push(a); });
-        if(rankOrder.length === 4) rankChecked = true;
-        renderRank();
-      });
-    });
+  function moveRank(from, to){
+    if(rankChecked || from === to || to < 0 || to > 3) return;
+    var item = rankOrder.splice(from, 1)[0];
+    rankOrder.splice(to, 0, item);
+    rankPick = -1;
+    renderRank();
+    var live = document.getElementById('abRankLive');
+    if(live) live.textContent = item.name + ' moved to position ' + (to + 1) + '. Order: ' +
+      rankOrder.map(function(a){ return a.name; }).join(', ') + '.';
+    var btn = document.querySelector('#abRankOrder [data-i="' + to + '"] .ab-rcard__body');
+    if(btn) btn.focus();
+  }
 
+  /* Where on the line: linear over the four values with padding, because a
+     fixed -10 to 50 axis would put three carboxylic acids on one pixel. */
+  function lineX(v, lo, hi){ return 24 + (v - lo) / ((hi - lo) || 1) * 352; }
+
+  function renderRank(){
     var truth = rankPool.slice().sort(function(x, y){ return x.pKa - y.pKa; });
+    var lo = truth[0].pKa, hi = truth[3].pKa, pad = Math.max(1, (hi - lo) * 0.08);
+    lo -= pad; hi += pad;
+
+    var line = '<svg class="ab-line" viewBox="0 0 400 112" role="img" aria-label="' +
+      (rankChecked ? 'pKa line: ' + truth.map(function(a){ return a.name + ' ' + a.pKa; }).join(', ') : 'pKa line, hidden until you place them') + '">' +
+      '<line x1="14" y1="74" x2="386" y2="74" class="ab-line__axis"/>' +
+      '<text x="14" y="108" class="ab-line__end">← more acidic</text>' +
+      '<text x="386" y="108" text-anchor="end" class="ab-line__end">less acidic →</text>';
+    var step = (hi - lo) > 30 ? 10 : (hi - lo) > 12 ? 5 : (hi - lo) > 5 ? 2 : 1;
+    for(var t = Math.ceil(lo / step) * step; t <= hi; t += step){
+      var x = lineX(t, lo, hi);
+      line += '<line x1="' + x + '" y1="69" x2="' + x + '" y2="79" class="ab-line__tick"/>' +
+        (rankChecked ? '<text x="' + x + '" y="93" text-anchor="middle" class="ab-line__num">' + t + '</text>' : '');
+    }
+    rankOrder.forEach(function(a, i){
+      var ok = rankChecked && truth[i] === a;
+      var x = rankChecked ? lineX(a.pKa, lo, hi) : 40 + i * 106;
+      var anchor = x < 70 ? 'start' : x > 330 ? 'end' : 'middle';
+      line += '<g class="ab-line__pin' + (rankChecked ? (ok ? ' is-ok' : ' is-no') : ' is-wait') + '" style="transform:translate(' + x.toFixed(1) + 'px,0)">' +
+        '<line x1="0" y1="42" x2="0" y2="64" class="ab-line__stem"/>' +
+        '<circle cx="0" cy="74" r="10"/>' +
+        '<text x="' + (anchor === 'start' ? -8 : anchor === 'end' ? 8 : 0) + '" y="' + (i % 2 ? 36 : 14) + '" text-anchor="' + anchor + '" class="ab-line__lab">' +
+          esc(a.name.length > 18 ? a.name.slice(0, 17) + '…' : a.name) + (rankChecked ? ' ' + a.pKa : '') + '</text>' +
+        '<text x="0" y="78" text-anchor="middle" class="ab-line__n">' + (i + 1) + '</text></g>';
+    });
+    line += '</svg>';
+    document.getElementById('abRankPool').innerHTML = line;
 
     document.getElementById('abRankOrder').innerHTML = rankOrder.map(function(a, i){
       var ok = rankChecked && truth[i] === a;
-      return '<div class="ab-slot' + (rankChecked ? (ok ? ' ab-slot--ok' : ' ab-slot--no') : '') + '">' +
-        '<span class="ab-slot__n">' + (i + 1) + '</span>' +
-        '<span>' + esc(a.name) + '</span>' +
-        (rankChecked ? '<span class="ab-slot__pka">pKa ' + a.pKa + '</span>' : '') +
+      return '<div class="ab-rcard' + (rankPick === i ? ' is-pick' : '') + (rankChecked ? (ok ? ' is-ok' : ' is-no') : '') + '" data-i="' + i + '">' +
+        '<button type="button" class="ab-rcard__body" aria-label="' + esc((i + 1) + ': ' + a.name + (rankChecked ? ', pKa ' + a.pKa : '') +
+          (rankChecked ? '' : '. Tap, then tap another card to swap; or use the arrow buttons')) + '"' + (rankChecked ? ' disabled' : '') + '>' +
+          '<span class="ab-rcard__n">' + (i + 1) + '</span>' +
+          (structSvg(DRAWN[a.id], a.name) || '<span class="tformula">' + esc(a.formula) + '</span>') +
+          '<span class="ab-rcard__name">' + esc(a.name) + '</span>' +
+          (rankChecked ? '<span class="ab-rcard__pka">pK<sub>a</sub> ' + a.pKa + '</span>' : '') +
+        '</button>' +
+        (rankChecked ? '' :
+          '<span class="ab-rcard__move">' +
+            '<button type="button" class="tchip tchip--mini" data-mv="-1" aria-label="Move ' + esc(a.name) + ' earlier"' + (i === 0 ? ' disabled' : '') + '>&larr;</button>' +
+            '<button type="button" class="tchip tchip--mini" data-mv="1" aria-label="Move ' + esc(a.name) + ' later"' + (i === 3 ? ' disabled' : '') + '>&rarr;</button>' +
+          '</span>') +
       '</div>';
-    }).join('') || '<div class="tempty">Click the most acidic one first.</div>';
+    }).join('');
+
+    var act = document.getElementById('abRankAct');
+    act.innerHTML = rankChecked ? '' :
+      '<button type="button" class="btn-press" id="abRankCheck">Put them on the pK<sub>a</sub> line</button>' +
+      '<span class="tmuted">Most acidic first. Drag the cards, or tap one and then another to swap them.</span>';
+    var chk = document.getElementById('abRankCheck');
+    if(chk) chk.addEventListener('click', function(){
+      rankChecked = true;
+      score.total++;
+      if(rankOrder.every(function(a, i){ return truth[i] === a; })) score.right++;
+      document.getElementById('abScore').textContent = score.right + ' of ' + score.total + ' right';
+      renderRank();
+    });
 
     if(!rankChecked){ document.getElementById('abRankVerdict').innerHTML = ''; return; }
 
     var got = rankOrder.every(function(a, i){ return truth[i] === a; });
+    var placed = rankOrder.filter(function(a, i){ return truth[i] === a; }).length;
     document.getElementById('abRankVerdict').innerHTML =
       '<div class="tnote ' + (got ? 'tnote--good' : 'tnote--bad') + '" style="margin-top:14px;">' +
-        '<span class="tnote__k">' + (got ? 'All four in order' : 'Not the right order') + '</span>' +
-        'Most acidic to least: ' + truth.map(function(a){
-          return esc(a.name) + ' (' + a.pKa + ')';
-        }).join(' → ') + '.' +
+        '<span class="tnote__k">' + (got ? 'All four in order' : placed + ' of 4 in the right place') + '</span>' +
+        'Most acidic to least: ' + truth.map(function(a){ return esc(a.name) + ' (' + a.pKa + ')'; }).join(' → ') + '.' +
       '</div>' +
-      '<div class="ttable-scroll"><table class="ttable">' +
-        '<thead><tr><th>Acid</th><th>pK<sub>a</sub></th><th>Why</th></tr></thead><tbody>' +
-        truth.map(function(a){
-          return '<tr><td style="white-space:nowrap;"><b>' + esc(a.name) + '</b><br><span class="tmuted">' + esc(a.formula) + '</span></td>' +
-            '<td class="num">' + a.pKa + '</td><td>' + esc(a.why) + '</td></tr>';
-        }).join('') +
-      '</tbody></table></div>';
+      '<div class="ab-gaps">' +
+      truth.slice(0, 3).map(function(a, i){
+        var b = truth[i + 1], res = analyse(a, b), d = res.deciding;
+        var swapped = rankOrder.indexOf(a) > rankOrder.indexOf(b);
+        return '<div class="ab-gap' + (swapped ? ' is-no' : '') + '">' +
+          '<div class="ab-gap__h"><b>' + esc(a.name) + '</b> beats <b>' + esc(b.name) + '</b>' +
+          ' <span class="tmuted">by ' + (b.pKa - a.pKa).toFixed(1).replace(/\.0$/, '') + ' units, ' + factorWords(b.pKa - a.pKa) + '</span>' +
+          (swapped ? ' <span class="ab-gap__x">you had these the other way</span>' : '') + '</div>' +
+          (d && res.agrees ? '<span class="ab-ario">' + esc(d.factor) + '</span> ' + esc(d.text)
+            : d ? '<span class="ab-ario ab-ario--warn">Rules disagree</span> ' + esc(d.factor) + ' points at ' + esc(d.winner.name) +
+                  ', but the measurement says ' + esc(a.name) + '. ' + esc(a.why)
+            : '<span class="ab-ario ab-ario--warn">Beyond ARIO</span> Atom, resonance, induction and orbital, as this tool scores them, all tie; ' + esc(a.why)) +
+        '</div>';
+      }).join('') + '</div>' +
+      '<button type="button" class="tchip" id="abRankAgain" style="margin-top:12px;">New set of four</button>';
+    document.getElementById('abRankAgain').addEventListener('click', newRank);
   }
+
+  /* Drag, tap-to-swap and arrow buttons, all on the container so a re-render
+     never leaves a card without its handlers. */
+  (function(){
+    var box = document.getElementById('abRankOrder');
+    var drag = null;
+    box.addEventListener('click', function(e){
+      var mv = e.target.closest('[data-mv]');
+      var card = e.target.closest('.ab-rcard');
+      if(!card || rankChecked) return;
+      var i = parseInt(card.getAttribute('data-i'), 10);
+      if(mv){ moveRank(i, i + parseInt(mv.getAttribute('data-mv'), 10)); return; }
+      if(drag && drag.moved) return;
+      if(rankPick < 0){ rankPick = i; renderRank(); var b = box.querySelector('[data-i="' + i + '"] .ab-rcard__body'); if(b) b.focus(); return; }
+      if(rankPick === i){ rankPick = -1; renderRank(); return; }
+      var a = rankOrder[rankPick]; rankOrder[rankPick] = rankOrder[i]; rankOrder[i] = a;
+      rankPick = -1; renderRank();
+    });
+    box.addEventListener('pointerdown', function(e){
+      var card = e.target.closest('.ab-rcard');
+      if(!card || rankChecked || e.target.closest('[data-mv]') || e.button > 0) return;
+      drag = { el: card, i: parseInt(card.getAttribute('data-i'), 10), x: e.clientX, y: e.clientY, moved: false, id: e.pointerId };
+    });
+    box.addEventListener('pointermove', function(e){
+      if(!drag || e.pointerId !== drag.id) return;
+      var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if(!drag.moved && Math.abs(dx) + Math.abs(dy) < 8) return;
+      if(!drag.moved){ drag.moved = true; drag.el.classList.add('is-drag'); try{ box.setPointerCapture(e.pointerId); }catch(err){} }
+      e.preventDefault();
+      drag.el.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+      var best = drag.i, bestD = Infinity;
+      box.querySelectorAll('.ab-rcard').forEach(function(c){
+        var r = c.getBoundingClientRect();
+        var d = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2));
+        if(c !== drag.el && d < bestD){ bestD = d; best = parseInt(c.getAttribute('data-i'), 10); }
+        c.classList.remove('is-target');
+      });
+      drag.to = bestD < 140 ? best : drag.i;
+      var tgt = box.querySelector('[data-i="' + drag.to + '"]');
+      if(tgt && drag.to !== drag.i) tgt.classList.add('is-target');
+    });
+    function end(){
+      if(!drag) return;
+      var d = drag;
+      setTimeout(function(){ drag = null; }, 0);
+      if(d.moved){ d.el.style.transform = ''; d.el.classList.remove('is-drag');
+        if(d.to !== undefined && d.to !== d.i) moveRank(d.i, d.to); else renderRank(); }
+    }
+    box.addEventListener('pointerup', end);
+    box.addEventListener('pointercancel', end);
+  })();
 
   document.getElementById('abNewRank').addEventListener('click', newRank);
 
-  renderPair();
+  /* The address bar is read before the first render, which writes it: done
+     the other way round, ?mode=rank and ?mode=site links opened on Compare. */
+  var q0 = window.OchemToolState ? window.OchemToolState.read() : {};
+  if(q0.a) left = byId(q0.a);
+  if(q0.b) right = byId(q0.b);
+  elLeft.value = left.id; elRight.value = right.id;
+  if(q0.mode !== 'rank' && q0.mode !== 'site') renderPair();
   /* ---- Which proton comes off first --------------------------------------
 
      Not a comparison between molecules: a comparison between positions inside
@@ -630,7 +854,7 @@
   var SUP = { '0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹' };
   function factorWords(d){
     var n = Math.round(d);
-    if(n <= 3) return 'about ' + Math.round(Math.pow(10, d)).toLocaleString() + ' times';
+    if(n <= 3){ var f = Math.pow(10, d); return 'about ' + Number(f.toPrecision(f < 10 ? 2 : 1)).toLocaleString() + ' times'; }
     return 'about 10' + String(n).split('').map(function(c){ return SUP[c] || c; }).join('') + ' times';
   }
 
@@ -646,7 +870,34 @@
     };
 
     sync();
-    document.getElementById('abSiteFormula').textContent = siteMol.formula;
+    /* The molecule, drawn, with every candidate proton's atom tappable. The
+       chips below stay as the list (and the keyboard path for sites that
+       only exist on paper). */
+    var md = MULTI_DRAWN[siteMol.id];
+    var atomOf = {}, tap = [];
+    if(md) Object.keys(md.at).forEach(function(lbl){ md.at[lbl].forEach(function(k){ atomOf[k] = lbl; tap.push(k); }); });
+    var order0 = siteMol.sites.slice().sort(function(x, y){ return x.pKa - y.pKa; });
+    var guessLbl = siteGuess === null ? null : siteMol.sites[siteGuess].label;
+    var keysOf = function(lbl){ return md && md.at[lbl] ? md.at[lbl] : []; };
+    var svg = md ? structSvg(md.f, siteMol.name + (siteGuess === null ? ', tap the hydrogen that comes off first' : ''), siteGuess === null
+      ? { clickable: tap }
+      : { correct: keysOf(order0[0].label), wrong: guessLbl !== order0[0].label ? keysOf(guessLbl) : [] }) : '';
+    document.getElementById('abSiteFormula').innerHTML = svg
+      ? '<div class="ab-site__mol">' + svg + '</div><div class="ab-site__f">' + esc(siteMol.formula) + '</div>'
+      : esc(siteMol.formula);
+    document.getElementById('abSiteFormula').querySelectorAll('.atom[data-key]').forEach(function(g){
+      var k = g.getAttribute('data-key');
+      if(!atomOf[k]) return;
+      g.setAttribute('aria-label', atomOf[k] + ' proton');
+      function pick(){
+        if(siteGuess !== null) return;
+        siteMol.sites.forEach(function(st, i){ if(st.label === atomOf[k]) siteGuess = i; });
+        renderSite();
+        var v = document.getElementById('abSiteVerdict'); if(v && window.LevlMotion) window.LevlMotion.scrollIntoView(v, { block:'nearest' });
+      }
+      g.addEventListener('click', pick);
+      g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pick(); } });
+    });
     document.getElementById('abSiteNote').textContent = siteMol.note;
 
     document.getElementById('abSiteGuess').innerHTML = siteMol.sites.map(function(st, i){
@@ -663,8 +914,7 @@
 
     var v = document.getElementById('abSiteVerdict');
     if(siteGuess === null){
-      v.innerHTML = '<div class="tempty">Pick the site you think loses its proton first. ' +
-        'The measured numbers stay hidden until you have.</div>';
+      v.innerHTML = '<p class="tmuted" style="margin:0;">The measured numbers stay hidden until you have picked.</p>';
       return;
     }
 
@@ -708,7 +958,7 @@
   }
 
   if(window.OchemToolState){
-    var q = window.OchemToolState.read();
+    var q = q0;
     if(q.a) left = byId(q.a);
     if(q.b) right = byId(q.b);
     if(q.m) MULTI.forEach(function(x){ if(x.id === q.m) siteMol = x; });
@@ -718,6 +968,8 @@
       if(mb) mb.click();
     }
   }
+
+  window.OchemAcidBase = { ACIDS: ACIDS, MULTI: MULTI, DRAWN: DRAWN, MULTI_DRAWN: MULTI_DRAWN, parseDrawn: parseDrawn, analyse: analyse };
 
   /* ---- Check yourself ---------------------------------------------------
      The sandbox above hands you the answer the moment you pick two acids,

@@ -93,7 +93,7 @@
   .page-head + .mode-switch,.page-head + * + .mode-switch{margin-top:18px;}
   .mode-switch{display:inline-flex;border:2px solid var(--line);border-radius:22px;overflow:hidden;background:var(--white);margin-bottom:22px;}
   .mode-switch button{
-    font:700 13px inherit;padding:9px 18px;border:0;background:transparent;color:var(--muted);cursor:pointer;
+    font:700 13px var(--font-ui);padding:9px 18px;border:0;background:transparent;color:var(--muted);cursor:pointer;min-height:42px;
   }
   .mode-switch button.on{background:var(--navy);color:var(--on-accent);}
 
@@ -126,7 +126,7 @@
   .drill-lead{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:10px;}
   .drill-opts{display:flex;flex-direction:column;gap:8px;}
   .drill-opt{
-    text-align:left;font:600 13.5px inherit;padding:11px 14px;border:2px solid var(--line);
+    text-align:left;font:600 13.5px var(--font-ui);padding:11px 14px;border:2px solid var(--line);
     border-radius:8px;background:var(--white);color:var(--ink);cursor:pointer;text-wrap:pretty;
   }
   .drill-opt:hover:not(:disabled){border-color:var(--accent);}
@@ -144,15 +144,87 @@
   .drill-verdict.no{color:var(--bad-text);}
   .drill-see{display:inline-block;margin:0 12px 10px 0;font:800 13px var(--font-ui);color:var(--accent-text);}
   .drill-next{
-    font:700 13px inherit;padding:9px 20px;border:0;border-radius:20px;
+    font:700 13px var(--font-ui);padding:9px 20px;border:0;border-radius:20px;
     background:var(--navy);color:var(--on-accent);cursor:pointer;
   }
+
+
+  /* ---- Build it (assets/flow-build.js) ------------------------------------ */
+  .bd-card.is-dragging,.bd-card.is-dragging *{user-select:none;-webkit-user-select:none;cursor:grabbing;}
+  .bd-card{background:var(--white);border:2px solid var(--line);border-radius:var(--radius);box-shadow:var(--lift);padding:18px;}
+  .bd-intro{font-size:13.5px;color:var(--muted);margin:0 0 12px;line-height:1.55;max-width:70ch;}
+  .bd-pick{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin:0 -4px 12px;padding-left:4px;scrollbar-width:thin;}
+  .bd-proto{flex:none;font:800 12px var(--font-ui);padding:7px 12px;min-height:40px;border-radius:999px;border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;white-space:nowrap;}
+  .bd-proto.on{background:var(--navy);border-color:var(--navy);color:var(--on-accent);}
+  .bd-board{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:start;}
+  .bd-side{position:sticky;top:calc(var(--site-header-h,112px) + 10px);}
+  .bd-chart{display:flex;flex-direction:column;align-items:stretch;}
+  .bd-arrow{text-align:center;color:var(--muted);line-height:1.3;}
+  .bd-slot{display:block;width:100%;min-height:46px;border:2px dashed var(--accent);border-radius:10px;background:var(--tint-accent);
+    color:var(--ink);font:800 13px/1.45 var(--font-ui);padding:9px 12px;text-align:center;cursor:pointer;transition:background .15s,border-color .15s,transform .15s;}
+  .bd-slot .bd-q{color:var(--accent);font-size:16px;}
+  .bd-slot.k-decision{border-radius:4px;clip-path:polygon(4% 0,96% 0,100% 50%,96% 100%,4% 100%,0 50%);border-style:solid;border-color:transparent;background:var(--tint-accent);
+    box-shadow:inset 0 0 0 2px var(--accent);padding:10px 28px;}
+  .bd-slot.k-decision:not(.is-filled){background:repeating-linear-gradient(135deg,var(--tint-accent) 0 8px,var(--white) 8px 12px);}
+  .bd-slot.is-filled{border-style:solid;border-color:var(--navy);background:var(--paper);cursor:default;opacity:1;}
+  .bd-slot.k-decision.is-filled{background:var(--tint-accent);box-shadow:inset 0 0 0 2px var(--accent);}
+  .bd-slot.k-terminal.is-filled{border-style:dashed;}
+  .bd-slot.k-action.is-filled{font-weight:900;}
+  .bd-card.has-pick .bd-slot:not(:disabled),.bd-card.is-dragging .bd-slot:not(:disabled){border-color:var(--accent);background:var(--white);box-shadow:0 0 0 3px var(--tint-accent);}
+  .bd-card.has-pick .bd-slot.k-decision:not(:disabled){box-shadow:inset 0 0 0 2px var(--accent);}
+  .bd-slot.is-over{background:var(--accent-bright) !important;transform:scale(1.02);}
+  .bd-slot:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+  .bd-slot.pop{animation:bdPop .35s ease;}
+  .bd-slot.shake{animation:bdShake .35s ease;}
+  @keyframes bdPop{0%{transform:scale(.96)}60%{transform:scale(1.03)}100%{transform:none}}
+  @keyframes bdShake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+  .bd-branch{display:flex;gap:8px;margin:4px 0;}
+  .bd-arm{flex:1;min-width:0;border:2px solid var(--line-soft);border-radius:var(--radius-sm);padding:7px;}
+  .bd-label{font:700 10.5px var(--font-mono);color:var(--accent);text-align:center;text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px;}
+  .bd-end{text-align:center;margin-top:5px;font:700 10px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.05em;}
+  .bd-stop{color:var(--muted);}
+  .bd-note{margin:6px 0 2px;padding:7px 10px;border-left:3px solid var(--accent);font-size:12.5px;color:var(--muted);animation:bdPop .35s ease;}
+  .bd-status{display:flex;justify-content:space-between;font:700 12px var(--font-mono);color:var(--muted);margin-bottom:8px;}
+  .bd-miss{color:var(--bad-text);}
+  .bd-fb{min-height:2.6em;font-size:13.5px;line-height:1.5;margin-bottom:10px;padding:8px 10px;border-radius:8px;background:var(--paper);}
+  .bd-fb:empty{background:transparent;padding:0;}
+  .bd-fb.ok{background:var(--tint-good);color:var(--good-text);}
+  .bd-fb.no{background:var(--tint-bad);color:var(--ink);}
+  .bd-fb.no b{color:var(--bad-text);}
+  .bd-why{color:var(--muted);font-weight:600;}
+  .bd-tray{display:flex;flex-direction:column;gap:7px;}
+  .bd-tile{text-align:left;font:700 13px/1.45 var(--font-ui);padding:10px 12px;border:2px solid var(--line);border-radius:10px;background:var(--white);color:var(--ink);
+    cursor:grab;box-shadow:var(--lift-sm);touch-action:none;user-select:none;-webkit-user-select:none;}
+  .bd-tile:hover{border-color:var(--accent);}
+  .bd-tile.is-picked{border-color:var(--navy);background:var(--navy);color:var(--on-accent);}
+  .bd-tile.is-dragging{opacity:.35;}
+  .bd-ghost{position:fixed;z-index:100;pointer-events:none;box-shadow:var(--shadow-pop);margin:0;}
+  .bd-done{border:2px solid var(--good-text);background:var(--tint-good);border-radius:10px;padding:13px 14px;font-size:13.5px;}
+  .bd-done-h{font:900 16px var(--font-ui);color:var(--good-text);margin-bottom:6px;}
+  .bd-done ul{margin:4px 0 8px;padding-left:18px;}
+  .bd-small{font-size:12px;color:var(--muted);}
+  .bd-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px;}
+  .bd-actions .drill-see{margin:0;}
+  @media (max-width:760px){
+    .bd-board{grid-template-columns:minmax(0,1fr);}
+    .bd-side{position:sticky;bottom:calc(74px + env(safe-area-inset-bottom));top:auto;order:2;background:var(--white);
+      margin:0 -18px -18px;padding:10px 14px 12px;border-top:2px solid var(--line);border-radius:0 0 var(--radius) var(--radius);
+      box-shadow:0 -8px 18px rgba(20,40,35,.08);z-index:5;}
+    .bd-tray{flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:4px;scroll-snap-type:x proximity;}
+    .bd-tile{flex:none;width:180px;font-size:12px;line-height:1.35;padding:8px 10px;scroll-snap-align:start;}
+    .bd-fb{font-size:12.5px;padding:6px 9px;margin-bottom:8px;}
+    .bd-fb{min-height:0;}
+    .bd-card{padding:14px;}
+    .bd-side{margin:0 -14px -14px;}
+  }
+  @media (max-width:520px){.bd-branch{flex-direction:column;}}
+  @media (prefers-reduced-motion:reduce){.bd-slot.pop,.bd-slot.shake,.bd-note{animation:none;}}
 
   /* ---- Print ------------------------------------------------------------
      These are reference sheets people want next to them while they revise,
      and a diagram that breaks across a page is worse than useless. */
   @media print{
-    .mode-switch,#flowDrill,.site-nav-fallback,#site-header,.privacy-link{display:none !important;}
+    .mode-switch,#flowDrill,#flowBuild,.site-nav-fallback,#site-header,.privacy-link{display:none !important;}
     .diagram-card{break-inside:avoid;page-break-inside:avoid;box-shadow:none;border-color:#999;}
     .flow-box{break-inside:avoid;page-break-inside:avoid;}
     h2{break-after:avoid;page-break-after:avoid;}
@@ -226,10 +298,12 @@
        only the first one was on offer here. The drill reads these same diagrams
        out of the DOM rather than keeping a second copy of them. -->
   <div class="mode-switch" id="flowMode" role="group" aria-label="How to use this page">
-    <button type="button" data-mode="read" class="on" aria-pressed="true">Read the diagrams</button>
-    <button type="button" data-mode="drill" aria-pressed="false">Drill me on them</button>
+    <button type="button" data-mode="read" class="on" aria-pressed="true">Read</button>
+    <button type="button" data-mode="build" aria-pressed="false">Build it</button>
+    <button type="button" data-mode="drill" aria-pressed="false">Drill me</button>
   </div>
 
+  <div id="flowBuild" hidden></div>
   <div id="flowDrill" hidden></div>
 
   <div id="flowDiagrams">
@@ -674,6 +748,7 @@
 </div>
 <script src="assets/nav.js" defer></script>
 <script src="assets/tool-results.js" defer></script>
+<script src="assets/flow-build.js" defer></script>
 <script src="assets/flow-drill.js" defer></script>
 </body>
 </html>

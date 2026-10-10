@@ -55,10 +55,14 @@
       '<div id="v3Send"></div>' +
     '</div>' +
       '<div class="tpanel">' +
-        '<div class="tpanel__head"><span>Drag to turn it</span><span id="v3Name" class="tmuted"></span></div>' +
+        '<div class="tpanel__head"><div class="tseg" id="v3Task" role="group" aria-label="Mode">' +
+            '<button type="button" data-task="explore" class="on" aria-pressed="true">Explore</button>' +
+            '<button type="button" data-task="predict" aria-pressed="false">Predict shape</button>' +
+          '</div><span id="v3Name" class="tmuted"></span></div>' +
         '<div class="v3-stage" id="v3Stage">' +
-          '<svg id="v3Svg" viewBox="0 0 320 300" role="img" aria-label="3D molecule"></svg>' +
+          '<svg id="v3Svg" viewBox="0 0 320 300" role="group" aria-label="3D molecule: tab to an atom to read it, or use the arrow keys to turn the model"></svg>' +
         '</div>' +
+        '<div id="v3Quiz" class="v3-quiz" hidden></div>' +
         '<div class="trow" style="margin-top:12px;">' +
           '<div class="tseg" id="v3Modes">' +
             '<button type="button" data-mode="ball" class="on">Ball &amp; stick</button>' +
@@ -111,7 +115,11 @@
   }).join('');
 
   elPicker.querySelectorAll('.tchip').forEach(function(b){
-    b.addEventListener('click', function(){ select(LIB.get(b.getAttribute('data-id'))); });
+    b.addEventListener('click', function(){
+      select(LIB.get(b.getAttribute('data-id')));
+      // On a phone the list sits below the model: bring the model back into view so the pick is seen.
+      if(window.OchemShowWork) window.OchemShowWork(document.getElementById('v3Stage'));
+    });
   });
 
   function select(m){
@@ -124,6 +132,7 @@
       b.classList.toggle('on', b.getAttribute('data-id') === m.id);
     });
     elName.textContent = m.name + ' · ' + m.formula;
+    svg.setAttribute('aria-label', m.name + ', 3D model: tab to an atom to read it, or use the arrow keys to turn it');
     elNote.textContent = m.note || '';
     fit = fitScale(m);
     draw();
@@ -403,6 +412,11 @@
   /* ---- The readout ------------------------------------------------------ */
 
   function renderAnalysis(){
+    if(typeof task !== "undefined" && task && task.on && !task.done){
+      elAnal.innerHTML = '<div class="tempty">Hidden while you predict. Turn the model, look along the bonds, then answer above.</div>';
+      document.getElementById('v3Hint').textContent = '';
+      return;
+    }
     var a = M3.analyse(mol, selected);
     if(!a){ elAnal.innerHTML = '<div class="tempty">Click any atom.</div>'; return; }
 
@@ -523,6 +537,118 @@
     if(q.mol && LIB.get(q.mol)){ select(LIB.get(q.mol)); return true; }
     return false;
   }
+
+  /* ---- Predict the shape -------------------------------------------------
+
+     The readout names the shape the moment you click, which makes the
+     viewer a lookup. This mode hides it: a molecule loads with its central
+     atom ringed, labels and lone pairs off, and you turn it until you can
+     see what it is. Then name the shape and the bond angle; the readout
+     comes back with the measured angles, so the answer is checked against
+     the same coordinates you were looking at. Angles are only asked where
+     the library's geometry is the textbook value (the GEOMETRY_CLAIMS list
+     in tool-content.test.mjs, plus PCl₅ and SF₆ at their exact 90°); for
+     the rest the question is the shape alone. */
+  var TASK_POOL = ['methane', 'ammonia', 'water', 'boron-trifluoride', 'phosphorus-pentachloride', 'sulfur-hexafluoride',
+                   'ethene', 'ethyne', 'carbon-dioxide-3d', 'formaldehyde-3d', 'methyl-cation', 'methyl-anion',
+                   'hydronium', 'acetonitrile', 'dimethyl-ether'];
+  /* Formamide is left out: the model draws its nitrogen with the lone pair
+     delocalized (no lone pair on N), which is right for the shape and would
+     read as a wrong count in "N bonds and 0 lone pairs" feedback. */
+  var ANGLE_OK = { methane:109.5, ammonia:107, water:104.5, 'boron-trifluoride':120, 'phosphorus-pentachloride':90,
+                   'sulfur-hexafluoride':90, ethene:120, ethyne:180, 'carbon-dioxide-3d':180, 'formaldehyde-3d':120,
+                   'methyl-cation':120, acetonitrile:180, formamide:120 };
+  var ANGLES = [90, 104.5, 107, 109.5, 120, 180];
+  var task = { on:false, done:false, id:null, shape:null, angle:null, score:{ right:0, total:0 }, last:null, saved:null };
+
+  function taskSay(){
+    var el = document.getElementById('v3Quiz');
+    if(!task.on){ el.hidden = true; return; }
+    el.hidden = false;
+    var a = M3.analyse(mol, mol.focus === undefined ? 0 : mol.focus);
+    var shapes = [];
+    Object.keys(M3.SHAPES).forEach(function(k){ var n = M3.SHAPES[k].m; if(shapes.indexOf(n) < 0) shapes.push(n); });
+    var askAngle = ANGLE_OK[task.id] !== undefined;
+    var chip = function(kind, val, label, chosen, right){
+      var cls = 'tchip' + (chosen ? ' on' : '') + (task.done && right ? ' is-right' : '') + (task.done && chosen && !right ? ' is-wrong' : '');
+      return '<button type="button" class="' + cls + '" data-' + kind + '="' + esc(String(val)) + '" aria-pressed="' + (chosen ? 'true' : 'false') + '"' + (task.done ? ' disabled' : '') + '>' + label + '</button>';
+    };
+    var html = '<p class="v3-quiz__q">What shape is the ringed <b>' + esc(a.el) + '</b>' + (askAngle ? ', and its bond angle' : '') + '? Turn the model to see.' +
+      (task.score.total ? ' <span class="tmuted">' + task.score.right + ' of ' + task.score.total + '</span>' : '') + '</p>' +
+      '<p class="v3-quiz__k">Molecular shape</p><div class="tchips">' +
+        shapes.map(function(n){ return chip('shape', n, esc(n), task.shape === n, n === a.shape.m); }).join('') + '</div>' +
+      (askAngle ? '<p class="v3-quiz__k">' + (task.id === 'phosphorus-pentachloride' || task.id === 'sulfur-hexafluoride' ? 'Smallest bond angle' : 'Bond angle, about') + '</p><div class="tchips">' +
+        ANGLES.map(function(g){ return chip('angle', g, g + '°', task.angle === g, g === ANGLE_OK[task.id]); }).join('') + '</div>' : '') +
+      '<div class="trow" style="margin-top:12px;">' +
+        (task.done ? '<button type="button" class="btn-press" id="v3Next">Next molecule</button>'
+                   : '<button type="button" class="btn-press" id="v3Check"' + (task.shape && (!askAngle || task.angle !== null) ? '' : ' disabled') + '>Check</button>' +
+                     '<button type="button" class="tchip tchip--ghost" id="v3LpHint">' + (opts.lonePairs ? 'Hide' : 'Show') + ' lone pairs</button>') +
+      '</div>';
+    if(task.done){
+      var okS = task.shape === a.shape.m, okA = !askAngle || task.angle === ANGLE_OK[task.id];
+      var measured = a.angles.length ? a.angles[0].deg : null;
+      html += '<div class="tnote ' + (okS && okA ? 'tnote--good' : 'tnote--bad') + '" tabindex="-1" id="v3Verdict"><span class="tnote__k">' +
+        esc(mol.name) + ': ' + esc(a.shape.m) + (askAngle ? ', ' + ANGLE_OK[task.id] + '°' : '') + '</span>' +
+        a.bonds + ' bond' + (a.bonds === 1 ? '' : 's') + ' and ' + a.lonePairs + ' lone pair' + (a.lonePairs === 1 ? '' : 's') +
+        ' on the ' + esc(a.el) + ' make ' + a.steric + ' electron group' + (a.steric === 1 ? '' : 's') + ', arranged ' + esc(a.shape.e.toLowerCase()) + '. ' +
+        (a.lonePairs ? 'Name the shape from the atoms only: ' + esc(a.shape.m.toLowerCase()) + '. ' : '') +
+        (!okS && task.shape ? (task.shape === a.shape.e && a.lonePairs ? 'You named the electron geometry; the lone pair' + (a.lonePairs > 1 ? 's are' : ' is') + ' there but not part of the shape. '
+          : 'Count the electron groups again: every lone pair counts, and a double or triple bond counts as one. ') : '') +
+        (askAngle && measured !== null ? 'Measured on this model: ' + measured.toFixed(1) + '°' +
+          (a.lonePairs && ANGLE_OK[task.id] < 109.5 ? ', under 109.5° because lone pairs push the bonds together.' : '.') : '') +
+        '</div>';
+    }
+    el.innerHTML = html;
+    el.querySelectorAll('[data-shape]').forEach(function(b){ b.addEventListener('click', function(){ task.shape = b.getAttribute('data-shape'); taskSay(); var x = el.querySelector('[data-shape="' + task.shape + '"]'); if(x) x.focus(); }); });
+    el.querySelectorAll('[data-angle]').forEach(function(b){ b.addEventListener('click', function(){ task.angle = parseFloat(b.getAttribute('data-angle')); taskSay(); var x = el.querySelector('[data-angle="' + task.angle + '"]'); if(x) x.focus(); }); });
+    var chk = document.getElementById('v3Check');
+    if(chk) chk.addEventListener('click', function(){
+      task.done = true; task.score.total++;
+      if(task.shape === a.shape.m && (!askAngle || task.angle === ANGLE_OK[task.id])) task.score.right++;
+      opts.labels = true; opts.lonePairs = true;
+      document.getElementById('v3Labels').checked = true; document.getElementById('v3Lp').checked = true;
+      selected = mol.focus === undefined ? 0 : mol.focus;
+      draw(); taskSay();
+      var v = document.getElementById('v3Verdict'); if(v) v.focus({ preventScroll:true });
+    });
+    var nx = document.getElementById('v3Next'); if(nx) nx.addEventListener('click', function(){ nextTask(); var f = document.querySelector('#v3Quiz [data-shape]'); if(f) f.focus(); });
+    var lh = document.getElementById('v3LpHint'); if(lh) lh.addEventListener('click', function(){
+      opts.lonePairs = !opts.lonePairs; document.getElementById('v3Lp').checked = opts.lonePairs; draw(); taskSay();
+      var b2 = document.getElementById('v3LpHint'); if(b2) b2.focus(); });
+  }
+
+  function nextTask(){
+    var pool = TASK_POOL.filter(function(id){ return LIB.get(id) && id !== task.id; });
+    task.id = pool[Math.floor(Math.random() * pool.length)];
+    task.shape = null; task.angle = null; task.done = false;
+    opts.labels = false; opts.lonePairs = false;
+    document.getElementById('v3Labels').checked = false; document.getElementById('v3Lp').checked = false;
+    select(LIB.get(task.id));
+    /* A random start, so "edge-on" is something you find rather than get. */
+    rx = -0.2 - Math.random() * 0.7; ry = Math.random() * 6.28;
+    draw();
+    taskSay();
+  }
+
+  function setTask(on){
+    task.on = on;
+    document.getElementById('v3Task').querySelectorAll('button').forEach(function(b){
+      var m = (b.getAttribute('data-task') === 'predict') === on;
+      b.classList.toggle('on', m); b.setAttribute('aria-pressed', m ? 'true' : 'false');
+    });
+    root.classList.toggle('is-predicting', on);
+    if(on){ task.saved = { labels: opts.labels, lp: opts.lonePairs }; nextTask(); }
+    else {
+      if(task.saved){ opts.labels = task.saved.labels; opts.lonePairs = task.saved.lp;
+        document.getElementById('v3Labels').checked = opts.labels; document.getElementById('v3Lp').checked = opts.lonePairs; }
+      taskSay(); draw();
+    }
+  }
+  document.getElementById('v3Task').addEventListener('click', function(e){
+    var b = e.target.closest('[data-task]'); if(!b) return;
+    var on = b.getAttribute('data-task') === 'predict';
+    if(on !== task.on) setTask(on);
+  });
 
   if(!restore()) select(LIB.ALL[0]);
   /* ---- Check yourself ---------------------------------------------------

@@ -36,6 +36,7 @@
      Blocking, because the inline script below calls it while rendering. -->
 <script src="assets/sound-bank.js" defer></script>
 <script src="assets/tool-results.js" defer></script>
+<script src="assets/sound-stage.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
   body{line-height:1.65;}
@@ -72,7 +73,7 @@
   .sound-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
   .play-btn{
     display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:var(--on-accent);
-    border:none;border-radius:20px;padding:8px 16px;font-size:13px;font-family:inherit;
+    border:none;border-radius:20px;padding:8px 16px;font-size:13px;font-family:inherit;min-height:42px;
     cursor:pointer;transition:background .15s;
   }
   .play-btn:hover{background:var(--navy2);}
@@ -109,7 +110,7 @@
 
   .quiz-group{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:14px;}
   .quiz-group button{
-    font:600 12.5px inherit;padding:7px 14px;border:2px solid var(--line);border-radius:18px;
+    font:600 12.5px var(--font-ui);padding:7px 14px;border:2px solid var(--line);border-radius:18px;min-height:42px;
     background:var(--white);color:var(--ink);cursor:pointer;
   }
   .quiz-group button.on{background:var(--navy);border-color:var(--navy);color:var(--on-accent);}
@@ -180,6 +181,117 @@
   .results-breakdown .row:last-child{border-bottom:none;}
 
   footer{margin-top:44px;font-size:12px;color:var(--muted);max-width:60ch;}
+
+  /* ---- The stage: sounds on the chest (assets/sound-stage.js) ----------- */
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  #stage{margin-bottom:28px;}
+  .st-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:12px;}
+  .st-tabs{display:flex;flex-wrap:wrap;gap:6px;}
+  .st-tabs button,.st-views button{font:700 13px var(--font-ui);padding:8px 14px;border:2px solid var(--line);border-radius:18px;background:var(--white);color:var(--ink);cursor:pointer;min-height:42px;}
+  .st-tabs button[aria-pressed="true"],.st-views button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--on-accent);}
+  .st-vol{display:flex;align-items:center;gap:8px;}
+  .st-mute{display:inline-flex;align-items:center;gap:6px;font:700 12.5px var(--font-ui);padding:6px 12px;border:2px solid var(--line);border-radius:18px;background:var(--white);color:var(--ink);cursor:pointer;min-height:40px;}
+  .st-mute svg{width:18px;height:18px;fill:currentColor;}
+  .st-mute .st-x{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;}
+  .st-mute[aria-pressed="true"]{border-color:var(--bad-text);color:var(--bad-text);}
+  .st-range{width:110px;accent-color:var(--accent);height:40px;}
+  .st-main{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:20px;align-items:start;}
+  .st-main[hidden]{display:none;}
+  @media (max-width:760px){.st-main{grid-template-columns:1fr;gap:12px;}
+    /* Where to listen: the question sits above the chest on a phone, so it is on screen when the mode opens;
+       the verdict stays below, so answering does not shift the chest. */
+    .is-where .st-side{display:contents;}
+    .is-where .st-side>.st-q{order:-1;}}
+  .st-fig{position:relative;background:var(--white);border:2px solid var(--line);border-radius:var(--radius);box-shadow:var(--lift);padding:10px 10px 4px;}
+  .st-views{position:absolute;top:10px;right:10px;display:flex;gap:4px;z-index:1;}
+  .st-views button{padding:5px 12px;font-size:12.5px;min-height:40px;}
+  .st-body{display:block;width:100%;max-width:360px;margin:0 auto;height:auto;touch-action:manipulation;}
+  @media (max-width:760px){.st-body{max-height:44vh;}}
+  .st-skin{fill:var(--surface2);stroke:var(--line);stroke-width:2;}
+  .st-organ{fill:var(--ctint);opacity:.75;}
+  .st-heart{fill:#E7B9AE;opacity:.55;}
+  [data-theme="dark"] .st-heart{fill:#7A3B33;opacity:.6;}
+  .st-rib{fill:none;stroke:var(--muted);stroke-width:1.2;opacity:.28;}
+  .st-bone{fill:var(--paper);stroke:var(--muted);stroke-width:1.4;opacity:.75;}
+  .st-scap{fill:var(--paper);stroke:var(--muted);stroke-width:1.2;opacity:.55;}
+  .st-guide{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 4;opacity:.35;}
+  .st-ics{font:700 9px var(--font-mono);fill:var(--muted);text-anchor:middle;}
+  .st-cap{font:600 9px var(--font-mono);fill:var(--muted);text-anchor:middle;}
+  .st-rl{font:800 13px var(--font-ui);fill:var(--muted);text-anchor:middle;}
+  .st-site{cursor:pointer;outline:none;}
+  .st-hit{fill:transparent;}
+  .st-halo{fill:var(--accent);opacity:0;transition:r .25s,opacity .25s;}
+  .st-site--lung .st-halo,.st-site--airway .st-halo{fill:#3C7FC0;}
+  .st-dot{fill:var(--white);stroke:var(--accent);stroke-width:2.5;transition:stroke-width .15s;}
+  .st-site--lung .st-dot,.st-site--airway .st-dot{stroke:#3C7FC0;}
+  .st-core{fill:var(--accent);}
+  .st-site--lung .st-core,.st-site--airway .st-core{fill:#3C7FC0;}
+  .st-site.is-best .st-dot{stroke-width:4.5;}
+  .st-site.is-on .st-dot{fill:var(--accent);}
+  .st-site--lung.is-on .st-dot,.st-site--airway.is-on .st-dot{fill:#3C7FC0;}
+  .st-site:focus-visible .st-dot,.st-site:hover .st-dot{stroke:var(--ink);}
+  .st-site.is-playing .st-halo{animation:stPulse 1s ease-in-out infinite;}
+  @keyframes stPulse{50%{opacity:.15;}}
+  .st-site.is-right .st-dot{fill:var(--good);stroke:var(--good-text);stroke-width:4;}
+  .st-site.is-wrong .st-dot{fill:var(--bad);stroke:var(--bad-text);stroke-width:4;}
+  .st-side{min-width:0;}
+  .st-k{display:block;font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px;}
+  .st-row .st-k{margin:0;}
+  .st-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px;}
+  .st-gl{font:700 12px var(--font-ui);color:var(--muted);width:100%;}
+  .st-rec{font:700 9.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:2px 7px;margin-left:4px;}
+  .st-chips button{font:600 13px var(--font-ui);padding:6px 12px;border:2px solid var(--line);border-radius:16px;background:var(--white);color:var(--ink);cursor:pointer;min-height:40px;}
+  .st-chips button[aria-pressed="true"]{border-color:var(--accent);background:var(--tint-accent);color:var(--ink);box-shadow:inset 0 0 0 1px var(--accent);}
+  .st-site-card{background:var(--white);border:2px solid var(--line);border-radius:12px;padding:12px 14px;margin:6px 0 12px;}
+  .st-site-name{font-weight:800;color:var(--ink);font-size:15.5px;}
+  .st-site-where{font-size:13px;color:var(--muted);}
+  .st-here{font-size:13.5px;margin:8px 0 4px;color:var(--ink);line-height:1.55;}
+  .st-here.is-best b{color:var(--good-text);}
+  .st-sitenote{font-size:13px;color:var(--muted);margin:4px 0 0;line-height:1.55;}
+  .st-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0 6px;}
+  .st-play{display:inline-flex;align-items:center;gap:7px;background:var(--navy);color:var(--on-accent);border:0;border-radius:18px;padding:8px 16px;font:700 13px var(--font-ui);cursor:pointer;min-height:42px;white-space:nowrap;}
+  .st-play.playing{background:var(--accent);color:var(--on-accent-fill);}
+  .st-strip{background:var(--white);border:2px solid var(--line);border-radius:10px;padding:4px 6px;}
+  .st-strip-svg{display:block;width:100%;height:auto;}
+  .st-strip--tap{cursor:crosshair;outline:none;}
+  .st-strip--tap:focus-visible{border-color:var(--accent);}
+  .st-band{fill:var(--ctint);}
+  .st-axis{stroke:var(--line);stroke-width:1;}
+  .st-trace{stroke:var(--accent);stroke-width:2.6;stroke-linecap:round;}
+  .st-breath{fill:none;stroke:#3C7FC0;stroke-width:3;}
+  .st-tick{stroke:var(--muted);stroke-width:1;stroke-dasharray:2 3;}
+  .st-tick--x{stroke:var(--bad-text);}
+  .st-evt{font:800 11px var(--font-mono);fill:var(--ink);text-anchor:middle;}
+  .st-evt--x{fill:var(--bad-text);}
+  .st-phase{font:600 10.5px var(--font-ui);fill:var(--muted);text-anchor:middle;}
+  .st-span{fill:var(--bad-text);opacity:.7;}
+  .st-playhead{stroke:var(--ink);stroke-width:2;}
+  .st-marker{fill:var(--warn);stroke:var(--warn);stroke-width:2.5;}
+  .st-cap-line{font-size:13px;color:var(--muted);margin:6px 0 0;line-height:1.55;}
+  .st-muted{font-size:12px;}
+  .st-err{font-size:12.5px;color:var(--bad-text);margin-top:6px;}
+  .st-compare{display:flex;align-items:center;gap:8px;font:700 13px var(--font-ui);color:var(--ink);margin:10px 0 4px;cursor:pointer;min-height:42px;}
+  .st-compare input{width:18px;height:18px;accent-color:var(--accent);}
+  .st-q{border:2px solid var(--accent);background:var(--tint-accent);border-radius:12px;padding:12px 14px;margin-bottom:10px;}
+  .st-q strong{display:block;font-size:17px;color:var(--ink);line-height:1.35;text-wrap:pretty;}
+  .st-tally{font:600 12px var(--font-mono);color:var(--muted);margin-top:6px;}
+  .st-hint{font-size:13px;color:var(--muted);margin:6px 0;}
+  .st-verdict{font-weight:800;font-size:15px;margin:8px 0 4px;}
+  .st-verdict.ok{color:var(--good-text);}
+  .st-verdict.no{color:var(--bad-text);}
+  .st-side p,.st-timing p{font-size:14px;margin:0 0 6px;}
+  .st-actions{margin-top:12px;}
+  .st-next{font:700 13px var(--font-ui);padding:9px 20px;border:0;border-radius:18px;background:var(--navy);color:var(--on-accent);cursor:pointer;min-height:40px;}
+  .st-timing{max-width:720px;}
+  .fb-strip{margin:0 0 14px;}
+  @media (max-width:520px){
+    .st-top{gap:8px;}
+    .st-tabs{gap:4px;flex-wrap:nowrap;overflow-x:auto;}
+    .st-tabs button{font-size:12px;padding:6px 10px;min-height:42px;white-space:nowrap;}
+    .st-range{width:90px;}
+    .page-head .lede{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){.st-halo{transition:none;}.st-site.is-playing .st-halo{animation:none;}}
 </style>
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
@@ -241,19 +353,22 @@
   <div class="page-head">
   <div class="eyebrow">Tools</div>
   <h1>Auscultation Sound Trainer</h1>
-  <p class="lede">Recorded breath sounds, generated heart sounds, then a quiz that brings back what you miss.</p>
+  <p class="lede">Tap a spot on the chest to hear a sound where you would listen for it, and watch when it falls in the heartbeat or the breath.</p>
   </div>
 
+  <section id="stage" aria-label="Sounds on the chest">
+    <div id="stageRoot"><noscript><p class="section-sub">The chest map needs JavaScript. The sound descriptions below do not.</p></noscript></div>
+  </section>
 
-  <section id="quizSection">
-    <h2>Quiz Mode</h2>
+  <section id="quizSection" hidden>
+    <h2>Name the sound</h2>
     <p class="section-sub">A clip plays. You name it. You find out why.</p>
     <div class="quiz-box" id="quizBox"></div>
   </section>
 
   <section id="listenSection">
-    <h2>Listen &amp; Compare</h2>
-    <p class="section-sub">Click a card to play, again to stop. Play them back to back.</p>
+    <h2>Every sound, described</h2>
+    <p class="section-sub">Each card plays the sound as heard at its best spot. Click again to stop.</p>
     <div class="sound-grid" id="soundGrid"></div>
   </section>
 
@@ -467,6 +582,8 @@ function playClip(sound, onError){
   updatePlayButtons();
 
   window.LevlSoundBank.play(sound, {
+    // Cut off by the chest map starting another sound: show Play again.
+    onStop(){ if (nowPlaying === sound.id) { nowPlaying = null; updatePlayButtons(); } },
     onEnd(){ if (nowPlaying === sound.id) nowPlaying = null; updatePlayButtons(); },
     onError(msg){
       nowPlaying = null;
@@ -599,7 +716,7 @@ function renderQuizRound(){
   box.innerHTML = `
     <div class="quiz-progress">Round ${quizState.current + 1} of ${quizState.rounds.length}<span class="quiz-score">Score: ${quizState.score}/${quizState.current}</span></div>
     <button type="button" class="big-play-btn" id="quizPlayBtn">&#9658;</button>
-    <div class="quiz-hint">Click to play the clip (click again to stop), then pick what you hear</div>
+    <div class="quiz-hint">Play the clip (press again to stop), then pick what you hear</div>
     <div class="quiz-choices" id="quizChoices">
       ${SOUNDS.filter(s => s.group === round.group).map(s => `<button type="button" class="choice-btn" data-choice="${s.id}">${s.label}</button>`).join('')}
     </div>
@@ -622,6 +739,8 @@ function submitAnswer(chosenId, round){
   if (correct) quizState.score++;
   else misses[round.id] = (misses[round.id] || 0) + 1;
   quizState.log.push({ id: round.id, round: round.label, correct, chosen: chosenId });
+  const scoreEl = document.querySelector('#quizSection .quiz-score');
+  if (scoreEl) scoreEl.textContent = 'Score: ' + quizState.score + '/' + (quizState.current + 1);
 
   document.querySelectorAll('#quizChoices [data-choice]').forEach(btn => {
     btn.disabled = true;
@@ -649,8 +768,11 @@ function submitAnswer(chosenId, round){
   fb.innerHTML = `
     <div class="feedback-verdict ${correct ? 'correct' : 'incorrect'}">${correct ? 'Correct — that\'s ' + round.label + '.' : 'Not quite — that was ' + round.label + '.'}</div>
     <p>${round.clinical}</p>
+    <div class="fb-strip" id="fbStrip"></div>
     <button type="button" class="next-btn" id="nextRoundBtn">${quizState.current + 1 >= quizState.rounds.length ? 'See results' : 'Next clip'}</button>
   `;
+  // The answer, drawn: where its sounds fall in the beat or the breath.
+  if (stage) stage.strip(document.getElementById('fbStrip'), round);
   document.getElementById('nextRoundBtn').addEventListener('click', () => {
     quizState.current++;
     renderQuizRound();
@@ -726,6 +848,18 @@ function wireMissedReview(){
 
 renderListenSection();
 renderQuizRound();
+/* The chest map (assets/sound-stage.js). ?mode=explore|name|where|timing and
+   &q=<question id> open a mode or a question: Review's "Try it again" links
+   for where/timing misses use them. */
+const params = new URLSearchParams(location.search);
+const hashId = location.hash.indexOf('#snd-') === 0 ? location.hash.slice(5) : null;
+const stage = window.SoundStage ? window.SoundStage.mount(document.getElementById('stageRoot'), {
+  sounds: SOUNDS,
+  quizSection: document.getElementById('quizSection'),
+  mode: params.get('mode'), q: params.get('q'), finding: hashId,
+  record: r => { if (window.NremtToolResults) window.NremtToolResults.record(r); }
+}) : null;
+if (!stage) document.getElementById('quizSection').hidden = false;
 // From Review: sound-trainer.html#snd-<id> lands on that sound's card.
 if(location.hash.indexOf('#snd-') === 0){
   const card = document.getElementById(location.hash.slice(1));

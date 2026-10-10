@@ -586,6 +586,7 @@ a.mode-card{text-decoration:none;display:block;}
 }
 .med-btn:hover:not(:disabled){border-color:var(--accent);background:var(--tint-accent);}
 .med-btn:disabled{opacity:.4;cursor:default;}
+@media (pointer: coarse){ .med-btn{min-height:40px;} }
 .med-status{
   margin-top:8px;font:700 13px var(--font-ui);color:var(--amber-text);
 }

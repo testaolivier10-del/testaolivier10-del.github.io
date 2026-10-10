@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v64';
+const CACHE_NAME = 'levlprep-v65';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -122,12 +122,16 @@ COURSE_URLS.nremt = [
   // flowcharts and skillsheets in particular are now drills rather than
   // documents, and a drill that will not start is worse than the document was.
   'nremt/assets/flow-drill.js',
+  'nremt/assets/flow-build.js',
+  'nremt/assets/scenario-monitor.js',
   'nremt/assets/station-run.js',
   'nremt/assets/sound-bank.js',
+  'nremt/assets/sound-stage.js',
   // The shared tool layer: misses into Review, and the 3D body (its model and
   // three.js stay runtime-cached, as before).
   'nremt/assets/tool-results.js',
   'nremt/assets/body-viewer.js',
+  'nremt/assets/burns.js',
 ];
 
 COURSE_URLS.ochem = [

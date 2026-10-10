@@ -127,7 +127,7 @@
     app.innerHTML =
       '<section class="pc-panel" aria-labelledby="pc-setup-h">' +
         '<h2 id="pc-setup-h" class="pc-h2">Choose your scenarios</h2>' +
-        '<p class="pc-intro">Each scenario changes one thing in the body. Predict whether each variable <b>increases</b>, <b>decreases</b> or <b>does not change</b>. Then check, and follow the chain of causes behind every answer.</p>' +
+        '<p class="pc-intro">Each scenario changes one thing in the body. Predict whether each variable <b>increases</b>, <b>decreases</b> or <b>does not change</b>. Then run it: the gauges move as the chain of causes plays out, step by step. The steps follow cause to effect, not a clock: two branches can happen at the same time.</p>' +
         '<div class="pc-filters">' +
           '<label class="pc-field"><span>Chapter</span><select id="pc-chapter"><option value="">All chapters</option>' +
             chs.map(function(c){ return '<option value="' + esc(c) + '"' + (c === filters.chapter ? ' selected' : '') + '>' + esc(chapterOf(c).title) + '</option>'; }).join('') + '</select></label>' +
@@ -220,6 +220,7 @@
     box.innerHTML =
       (two ? '<h3 class="pc-stage-h" id="' + sid + '-h" tabindex="-1"><span class="pc-stage-n">Stage ' + (k + 1) + ' of 2</span> ' + esc(st.label) + '</h3><p class="pc-prompt">' + esc(st.prompt) + '</p>'
            : '<h3 class="pc-stage-h pc-sr" id="' + sid + '-h">Your predictions</h3>') +
+      dashHtml(s, st, sid) +
       '<div class="pc-vars">' + st.variables.map(function(v, i){
         var nid = sid + '-v' + i;
         return '<div class="pc-var" data-k="' + i + '">' +
@@ -230,14 +231,14 @@
           '<div class="pc-fb" hidden></div>' +
         '</div>';
       }).join('') + '</div>' +
-      '<div class="pc-actions"><button type="button" class="btn-press sm pc-check" disabled>Check predictions</button><span class="anp-small pc-left" aria-live="polite"></span></div>' +
+      '<div class="pc-actions"><button type="button" class="btn-press sm pc-check" disabled>Run it</button><span class="anp-small pc-left" aria-live="polite"></span></div>' +
       '<div class="pc-after" hidden></div>';
     app.querySelector('.pc-stages').appendChild(box);
     var check = box.querySelector('.pc-check'), left = box.querySelector('.pc-left');
     function updateLeft(){
       var remaining = st.variables.length - Object.keys(picks).length;
       check.disabled = remaining > 0;
-      left.textContent = remaining > 0 ? remaining + ' left to predict' : 'Ready to check';
+      left.textContent = remaining > 0 ? remaining + ' left to predict' : 'Ready: run it and watch the body';
     }
     updateLeft();
 
@@ -249,6 +250,7 @@
         b.setAttribute('aria-checked', 'true'); b.tabIndex = 0;
         if(focus) b.focus();
         picks[i] = b.getAttribute('data-v');
+        setGauge(box, i, picks[i], true);
         updateLeft();
       }
       btns.forEach(function(b, j){
@@ -262,10 +264,19 @@
       });
     });
 
+    box.querySelectorAll('.pc-gauge').forEach(function(g){
+      g.addEventListener('click', function(){
+        if(box.classList.contains('is-done')) return;
+        var i = +g.getAttribute('data-k'), order = ['up', 'down', 'none'];
+        var nx = order[(order.indexOf(picks[i]) + 1) % 3];
+        var b = box.querySelector('.pc-var[data-k="' + i + '"] [data-v="' + nx + '"]');
+        if(b) b.click();
+      });
+    });
     check.addEventListener('click', function(){
       if(box.classList.contains('is-done')) return;
       box.classList.add('is-done');
-      var items = [], right = 0;
+      var items = [], right = 0, reveals = [];
       st.variables.forEach(function(v, i){
         var ok = picks[i] === v.answer;
         if(ok) right++;
@@ -273,7 +284,7 @@
         items.push({ id: id, correct: ok, topic: s.topic, core: s.core, level: levelKey(s.level), diff: Math.min(3, s.level), group: 'Level ' + s.level });
         if(!ok) res.missed.push({ name: v.name, stage: two ? st.label : '', answer: v.answer });
         var row = box.querySelector('.pc-var[data-k="' + i + '"]');
-        row.classList.add(ok ? 'is-ok' : 'is-no');
+        reveals[i] = function(){ row.classList.add(ok ? 'is-ok' : 'is-no'); fb.hidden = false; setGauge(box, i, v.answer, false, ok); };
         row.querySelectorAll('button').forEach(function(b){
           b.disabled = true;
           var val = b.getAttribute('data-v');
@@ -287,13 +298,17 @@
           chainHtml(st, v) +
           '<p class="pc-why">' + esc(v.why) + '</p>' +
           '<div class="pc-report">' + report(id) + '</div>';
-        fb.hidden = false;
       });
       res.right += right; res.total += st.variables.length;
       if(core()) core().toolResult(KIND, items);
       if(window.LevlSound && window.LevlSound.answer) try{ window.LevlSound.answer(right === st.variables.length); }catch(e){}
       check.hidden = true;
       left.textContent = '';
+      box.querySelectorAll('.pc-dir button').forEach(function(b){ b.disabled = true; });
+      runChain(box, st, picks, reveals, function(){ afterRun(); });
+    });
+    function afterRun(){
+      var right = 0; st.variables.forEach(function(v, i){ if(picks[i] === v.answer) right++; });
       var last = k === s.stages.length - 1;
       if(last) core() && core().event('anp-prediction', { scenario: s.id, level: s.level, correct: res.right, total: res.total });
       var after = box.querySelector('.pc-after');
@@ -321,7 +336,121 @@
         window.scrollTo(0, 0);
       });
       focusEl(after.querySelector('.pc-score'));
+    }
+  }
+
+  /* ------------------------------------------------------------ the body dashboard
+     One dial per variable, needle in the middle at the stage's baseline (what
+     the stage's prompt compares against). Picking a direction draws a dashed
+     ghost needle: the student's call. Run plays the stage's causal chain one
+     step at a time in the feed beside the dials, in causal order (steps that
+     several variables share appear once); when a variable's last step
+     appears, its needle swings the way the data says and its row is marked.
+     Qualitative only: up, down or unchanged, never a number. */
+  var SHORT = {
+    'heart rate': 'HR', 'resting heart rate': 'Resting HR', 'stroke volume': 'SV', 'cardiac output': 'CO',
+    'mean arterial pressure': 'MAP', 'total peripheral resistance': 'TPR', 'end-diastolic volume': 'EDV',
+    'end-systolic volume': 'ESV', 'left ventricular end-diastolic volume': 'LV EDV', 'arterial pco2': 'PaCO2',
+    'arterial po2': 'PaO2', 'respiratory rate': 'RR', 'glomerular filtration rate': 'GFR', 'blood ph': 'Blood pH',
+    'plasma bicarbonate': 'Plasma HCO3-', 'adh in the blood': 'ADH', 'epo in the blood': 'EPO', 'renin release': 'Renin',
+    'angiotensin ii': 'Angiotensin II', 'plasma potassium': 'Plasma K+', 'plasma osmolality': 'Osmolality',
+    'plasma osmolarity': 'Osmolarity', 'mean arterial pressure (map)': 'MAP'
+  };
+  function shortName(n){ var k = String(n).toLowerCase(); return SHORT[k] || n; }
+  function dialSvg(){
+    // A half dial: lower on the left, higher on the right, baseline straight up.
+    return '<svg class="pc-dial" viewBox="0 0 84 50" aria-hidden="true" focusable="false">' +
+      '<path class="pc-dial-arc" d="M8 44 A34 34 0 0 1 76 44"/>' +
+      '<path class="pc-dial-lo" d="M8 44 A34 34 0 0 1 22 18"/><path class="pc-dial-hi" d="M62 18 A34 34 0 0 1 76 44"/>' +
+      '<path class="pc-dial-base" d="M42 8 V14"/>' +
+      '<g class="pc-ghost"><path d="M42 44 V16"/></g>' +
+      '<g class="pc-needle"><path d="M42 44 V14"/><circle cx="42" cy="44" r="4.5"/></g>' +
+      '<text x="6" y="49" class="pc-dial-t">↓</text><text x="78" y="49" text-anchor="end" class="pc-dial-t">↑</text>' +
+      '</svg>';
+  }
+  function dashHtml(s, st, sid){
+    return '<div class="pc-dash" aria-labelledby="' + sid + '-dh">' +
+      '<div class="pc-dash-top"><span class="pc-dash-h" id="' + sid + '-dh">The body</span><span class="pc-pert"><span class="pc-pert-k">Change:</span> ' + esc(st.start) + '</span></div>' +
+      '<div class="pc-dash-grid">' + st.variables.map(function(v, i){
+        return '<button type="button" class="pc-gauge" data-k="' + i + '" title="' + esc(v.name) + '" aria-label="' + esc(v.name) + ': no call yet. Tap to cycle increases, decreases, no change.">' + dialSvg() +
+          '<span class="pc-gauge-n">' + esc(shortName(v.name)) + '</span><span class="pc-gauge-s">Tap to call</span></button>';
+      }).join('') + '</div>' +
+      '<ol class="pc-feed" aria-label="The chain, step by step" hidden></ol>' +
+      '<p class="pc-sr pc-feed-live" role="status" aria-live="polite"></p>' +
+      '</div>';
+  }
+  var ANG = { up: 52, down: -52, none: 0 };
+  function setGauge(box, i, dir, ghost, ok){
+    var g = box.querySelector('.pc-gauge[data-k="' + i + '"]');
+    if(!g) return;
+    var d = dirOf(dir);
+    if(ghost){
+      g.querySelector('.pc-ghost').style.transform = 'rotate(' + ANG[dir] + 'deg)';
+      g.classList.add('has-call');
+      g.querySelector('.pc-gauge-s').textContent = 'Your call: ' + d.glyph;
+      g.setAttribute('aria-label', g.title + ': your call, ' + d.word + '. Tap to change.');
+      return;
+    }
+    g.querySelector('.pc-needle').style.transform = 'rotate(' + ANG[dir] + 'deg)';
+    g.setAttribute('aria-label', g.title + ' ' + d.word + (ok ? ', as you called it.' : ', not what you called.'));
+    g.classList.add('is-moved', ok ? 'is-ok' : 'is-no', 'm-' + dir);
+    g.querySelector('.pc-gauge-s').innerHTML = '<span class="pc-mark ' + (ok ? 'ok' : 'no') + '">' + (ok ? '✓' : '✗') + '</span> ' + d.glyph + ' ' + esc(d.label.toLowerCase());
+  }
+  function motionOff(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
+  /* The stage's steps in causal order: each variable's chain read from its
+     cause down, one variable after another (a step two chains share appears
+     once). The feed draws a "causes" arrow only where the line above really
+     is the cause; a step that branches from an earlier line names its cause
+     instead. The order is a chain of causes, not a timeline. */
+  function chainOrder(st){
+    var shown = {}, order = [], from = {};
+    st.variables.forEach(function(v){
+      v.chain.forEach(function(key, i){
+        if(!key || shown[key]) return;
+        shown[key] = 1; order.push(key); from[key] = i ? v.chain[i - 1] : '';
+      });
     });
+    return { keys: order, from: from };
+  }
+  function runChain(box, st, picks, reveals, done){
+    var feed = box.querySelector('.pc-feed'), live = box.querySelector('.pc-feed-live');
+    var co = chainOrder(st), order = co.keys, seen = {}, resolved = {}, quick = motionOff(), t = 0, gap = 750;
+    feed.hidden = false;
+    feed.innerHTML = '<li class="pc-f-root"><span class="pc-f-node pc-root">' + esc(st.start) + '</span></li>';
+    box.classList.add('is-running');
+    function settle(){
+      st.variables.forEach(function(v, i){
+        if(resolved[i]) return;
+        if(v.chain.every(function(k){ return seen[k]; })){
+          resolved[i] = 1;
+          reveals[i]();
+          var d = dirOf(v.answer), li = document.createElement('li');
+          li.className = 'pc-f-var ' + v.answer + (picks[i] === v.answer ? ' ok' : ' no');
+          li.innerHTML = '<span class="pc-f-arrow" aria-hidden="true">↳</span><b>' + esc(shortName(v.name)) + '</b> ' + d.glyph + ' ' + d.word + (picks[i] === v.answer ? '' : ' <span class="pc-f-miss">(you said ' + dirOf(picks[i]).glyph + ')</span>');
+          feed.appendChild(li);
+          if(!quick) live.textContent = v.name + ' ' + d.word + '.';
+        }
+      });
+    }
+    function step(n){
+      if(n >= order.length){
+        settle();
+        box.classList.remove('is-running');
+        live.textContent = 'The chain is done. ' + st.variables.map(function(v, i){ return v.name + ' ' + dirOf(v.answer).word + (picks[i] === v.answer ? ', as you said' : ', you said it ' + dirOf(picks[i]).word); }).join('. ') + '.';
+        done();
+        return;
+      }
+      var key = order[n], li = document.createElement('li');
+      seen[key] = 1;
+      li.className = 'pc-f-step';
+      var cause = co.from[key], prev = n ? order[n - 1] : '';
+      li.innerHTML = (cause === prev ? arrow() : '<span class="pc-f-from anp-small">From ' + esc(cause ? st.steps[cause] : st.start) + ':</span> ') + '<span class="pc-f-node">' + esc(st.steps[key]) + '</span>';
+      feed.appendChild(li);
+      if(!quick) live.textContent = st.steps[key] + '.';
+      settle();
+      if(quick) step(n + 1); else setTimeout(function(){ step(n + 1); }, gap);
+    }
+    if(quick) step(0); else setTimeout(function(){ step(0); }, 350);
   }
 
   /* One variable's chain: the stage's start, then each step, as boxes joined

@@ -56,6 +56,25 @@
     var chi2 = sum(terms);
     return { terms: terms, chi2: chi2, df: df, crit: CHI_CRIT['0.05'][df], reject: chi2 > CHI_CRIT['0.05'][df] };
   }
+  /* The χ² distribution's density, for drawing its curve (skills tools):
+     f(x; k) = x^(k/2 − 1) e^(−x/2) / (2^(k/2) Γ(k/2)), x > 0. Γ(k/2) for a
+     whole number k is exact: (k/2 − 1)! for even k, and from Γ(1/2) = √π by
+     Γ(s + 1) = sΓ(s) for odd k. 0 for x ≤ 0 (for k = 1 the density rises
+     without limit near 0; callers clamp what they draw). */
+  function gammaHalf(k){ var g = k % 2 ? Math.sqrt(Math.PI) : 1; for(var s = k % 2 ? 0.5 : 1; s < k / 2 - 1e-9; s += 1) g *= s; return g; }
+  function chiPdf(x, k){
+    if(!(x > 0) || !(k >= 1)) return 0;
+    return Math.exp((k / 2 - 1) * Math.log(x) - x / 2 - (k / 2) * Math.LN2) / gammaHalf(k);
+  }
+  /* Split a whole-number total into whole shares as close as possible to
+     fracs × total that still add up to total (largest remainder), for
+     drawing a population of individuals from frequencies. */
+  function apportion(fracs, total){
+    var raw = fracs.map(function(f){ return f * total; }), out = raw.map(Math.floor), left = total - sum(out);
+    raw.map(function(r, i){ return { i: i, r: r - Math.floor(r) }; }).sort(function(a, b){ return b.r - a.r || a.i - b.i; })
+      .slice(0, Math.max(0, left)).forEach(function(o){ out[o.i]++; });
+    return out;
+  }
 
   /* -------------------------------------------------- water potential */
   function kelvin(c){ return c + K0; }
@@ -128,8 +147,27 @@
     var k = enzymeParams(p, c), s = S == null ? c.S : S;
     return k.vmax * s / (k.km + s);
   }
+  /* For the animated figure: what fraction of enzyme molecules is in each
+     state at these conditions. folded = 1 / (1 + e^((T - Tm)/w)) (the
+     unfolding term of tempFactor); phOk = phFactor (fraction in the working
+     ionization state, relative to the best pH); motion = the Arrhenius term
+     relative to the optimum temperature (how fast collisions happen). With
+     substrate S and inhibitor I (Ki): competitive, the sites hold substrate
+     (S/Km) / (1 + S/Km + I/Ki) and inhibitor (I/Ki) / (1 + S/Km + I/Ki) of
+     the time; noncompetitive (pure), a fraction (I/Ki)/(1 + I/Ki) carries the
+     inhibitor (inactive) and sites hold substrate S/(Km + S). Turnover in
+     the figure is scaled to rate(p, c) itself, so these only pick which
+     molecules are drawn in which state. */
+  function enzymeStates(p, c){
+    var I = c.inhibitor && c.inhibitor !== 'none' ? (c.I || 0) : 0, s = c.S / p.Km, i = I / p.Ki, sub, inh, allo = 0;
+    if(c.inhibitor === 'competitive'){ sub = s / (1 + s + i); inh = i / (1 + s + i); }
+    else { sub = c.S / (p.Km + c.S); inh = 0; if(c.inhibitor === 'noncompetitive') allo = i / (1 + i); }
+    var arr = Math.exp(-p.Ea / R_KJ * (1 / (c.T + 273.15) - 1 / (p.Tm + 273.15))), at = peak(p, 't').at;
+    var arr0 = Math.exp(-p.Ea / R_KJ * (1 / (at + 273.15) - 1 / (p.Tm + 273.15)));
+    return { folded: 1 / (1 + Math.exp((c.T - p.Tm) / p.w)), phOk: phFactor(p, c.pH), motion: arr / arr0, substrate: sub, inhibitor: inh, allosteric: allo };
+  }
   var enzyme = {
-    params: enzymeParams, rate: enzymeRate, tempFactor: tempFactor, phFactor: phFactor,
+    params: enzymeParams, rate: enzymeRate, tempFactor: tempFactor, phFactor: phFactor, states: enzymeStates,
     optimumT: function(p){ return peak(p, 't').at; },
     optimumPH: function(p){ return peak(p, 'ph').at; }
   };
@@ -187,7 +225,36 @@
     var o = osmo(sys, c), st = psiParts(sys, o, 1);
     return -st.psi / ((c.outI || 1) * o.RT);
   }
-  var osmosis = { simulate: simulate, psiParts: function(sys, c, W){ return psiParts(sys, osmo(sys, c), W); }, isotonicC: isotonicC, mass: massOf };
+  /* The same integration as simulate, sampled at n + 1 evenly spaced times
+     from 0 to c.t (for the animated figure). Each sample: { t, W, lysed }.
+     The last sample equals simulate(sys, c) (tested). Once a cell lyses,
+     later samples stay lysed. */
+  function trajectory(sys, c, n){
+    n = n || 40;
+    var o = osmo(sys, c), W = 1, t = 0, end = c.t || 0, lysed = false, guard = 0, Wmin = 0.02;
+    var out = [{ t: 0, W: 1, lysed: false }], k = 1;
+    if(end <= 0){ for(; k <= n; k++) out.push({ t: 0, W: 1, lysed: false }); return out; }
+    var prevT = 0, prevW = 1;
+    while(t < end - 1e-9 && guard++ < 200000){
+      var pp = psiParts(sys, o, W);
+      var slope = (o.n ? o.n * o.RT / (W * W) : 0) + (sys.W0 && W > sys.W0 ? sys.eps / sys.W0 : 0);
+      var dt = Math.min(end - t, slope > 0 ? 0.05 / (sys.L * slope) : end / 400, end / 400);
+      prevT = t; prevW = W;
+      W = Math.max(Wmin, W + sys.L * (o.psiO - pp.psi) * dt);
+      t += dt;
+      if(sys.kind === 'animal' && sys.lyseAt && massOf(sys, W) >= sys.lyseAt){ lysed = true; W = (sys.lyseAt - sys.b) / (1 - sys.b); }
+      while(k <= n && (k * end / n <= t + 1e-9 || lysed)){
+        var tk = k * end / n, f = t > prevT ? Math.min(1, (tk - prevT) / (t - prevT)) : 1;
+        out.push({ t: tk, W: lysed ? W : prevW + (W - prevW) * f, lysed: lysed && tk >= t - 1e-9 });
+        k++;
+      }
+      if(lysed) break;
+    }
+    for(; k <= n; k++) out.push({ t: k * end / n, W: W, lysed: lysed });
+    out[n].W = W; out[n].lysed = lysed;
+    return out;
+  }
+  var osmosis = { simulate: simulate, trajectory: trajectory, psiParts: function(sys, c, W){ return psiParts(sys, osmo(sys, c), W); }, isotonicC: isotonicC, mass: massOf };
 
   /* ------------------------------------------- signal amplification */
   /* A G protein-coupled receptor pathway in a liver cell (epinephrine →
@@ -809,7 +876,7 @@
   root.ApBioMath = {
     R: R_BAR, K0: K0, round: round, fixed: fixed, sum: sum, mean: mean, median: median, range: range, sorted: sorted,
     sumSq: sumSq, sd: sd, se: se, seFrom: seFrom, ci95: ci95, overlap: overlap, rate: rate, percentChange: percentChange, tol: tol,
-    CHI_CRIT: CHI_CRIT, chiSquare: chiSquare, kelvin: kelvin, psiS: psiS, hwCounts: hwCounts, hwRecessive: hwRecessive,
+    CHI_CRIT: CHI_CRIT, chiSquare: chiSquare, chiPdf: chiPdf, apportion: apportion, kelvin: kelvin, psiS: psiS, hwCounts: hwCounts, hwRecessive: hwRecessive,
     simpson: simpson, rng: rng, enzyme: enzyme, osmosis: osmosis, signal: signal, cellCycle: cellCycle, meiosis: meiosis, operon: operon, popgen: popgen, phylo: phylo, graph: graph
   };
 

@@ -535,7 +535,8 @@
 
       signals.push({
         ppm: Math.round(Math.max(0, Math.min(12, ppm)) * 100) / 100,
-        h: g.h, mult: mult, j: j, label: label, note: note, exchangeable: exchangeable
+        h: g.h, mult: mult, j: j, label: label, note: note, exchangeable: exchangeable,
+        keys: g.keys.slice()     // the atoms whose hydrogens make this signal
       });
     });
 
@@ -575,7 +576,8 @@
         note:'The ring hydrogens, as one multiplet. They are not actually equivalent — ortho, meta and para each sit ' +
              'slightly differently, and the shift shown is their average — but on a teaching-scale spectrum they often ' +
              'overlap into one lump, and pulling them apart is what a higher-field instrument is for.',
-        exchangeable:false
+        exchangeable:false,
+        keys: aromatic.reduce(function(acc, x){ return acc.concat(x.keys || []); }, [])
       });
     }
 
@@ -598,6 +600,7 @@
 
   window.OchemSpectra = {
     predict: predict,
+    opened: opened,
     canonical: canonical,
     predictIR: predictIR,
     predictNMR: predictNMR,

@@ -634,3 +634,24 @@ Unit 8 (Ecology), raised by its author, 2026-10-03:
 - **polar-product-name** (open). The product name proposed in the launch checklist (spec section
   6) uses the mark as an adjective with the ®; receipts and Polar's pages then carry it. Confirm,
   or name it "LevlPrep Biology Premium (through June 30, 2027)" instead.
+
+## Tools upgrade accuracy review (2026-10-09)
+
+- **enzyme-reversible-denaturation** (logged). `ApBioMath.enzyme` makes the folded fraction a
+  function of temperature alone, so cooling a "denatured" enzyme restores its rate in the
+  simulator. Real heat denaturation is often irreversible (aggregation). The explore text says so
+  ("This model treats unfolding as set by the temperature alone; many real enzymes stay unfolded
+  after cooling"), and the predict mode never asks a hot-then-cool question. Defensible as is;
+  owner may want the howItWorks box to say it too.
+- **osmosis-bag-nacl** (logged). The dialysis bag model treats the tubing as impermeable to every
+  solute, including NaCl. Real dialysis tubing (MWCO ~12-14 kDa) passes Na⁺ and Cl⁻ quickly, so
+  a sucrose bag in NaCl would in reality end near the sucrose-only result. The explore mode still
+  allows NaCl outside the bag; the "why" text now says real tubing passes NaCl, and the
+  Predict challenges use sucrose only for the bag. Owner: drop NaCl from the bag system, or keep
+  it as a labeled idealization.
+- **simpson-formula-variant** (logged). The review brief described the College Board form as
+  1 − Σ n(n − 1)/N(N − 1). The AP Biology Equations and Formulas sheet (and the course's
+  architecture doc, tool and every cited study guide) uses D = 1 − Σ(n/N)². The tool keeps
+  (n/N)²; the n(n − 1)/N(N − 1) form is the finite-sample (unbiased) variant used in some ecology
+  texts and IB. Owner: confirm against the current printed formula sheet (the PDF could not be
+  fetched from this container).

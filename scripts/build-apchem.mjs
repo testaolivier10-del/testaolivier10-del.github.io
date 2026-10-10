@@ -995,6 +995,8 @@ ${tail({ depth, section: '' })}
     return out;
   }
   const toolLive = entry => existsSync(join(C.data, 'tools', `${entry.slug}.json`)) && toolData(entry).live;
+  // Tools that draw the live particle beaker (docs/tools-upgrade.md, "Chem live beaker API").
+  const BEAKER_TOOLS = new Set(['titration-curve-reader', 'buffer-drills', 'q-vs-k', 'ice-table-drills', 'particle-diagrams']);
   function toolShell(t) {
     const depth = '../', path = `tools/${t.slug}.html`, url = `${SITE}${BASE}${path}`;
     const scriptOk = existsSync(join(ROOT, 'chem', 'assets', 'tools', `${t.slug}.js`));
@@ -1006,7 +1008,7 @@ ${tail({ depth, section: '' })}
     // The shared tool math and seeded problem libraries arrive with the first
     // drill (docs/apchem-architecture.md, Tools); each is loaded once it exists.
     const lib = f => existsSync(join(ROOT, 'chem', 'assets', f)) ? [f] : [];
-    const extra = ['chem-questions.js', ...lib('tools/chem-tool-math.js'), ...(t.kind === 'skill' ? lib('tools/chem-skill-problems.js') : []), 'tools/chem-tools.js', ...(scriptOk ? [`tools/${t.slug}.js`] : [])];
+    const extra = ['chem-questions.js', ...lib('tools/chem-tool-math.js'), ...(t.kind === 'skill' ? lib('tools/chem-skill-problems.js') : []), 'tools/chem-tools.js', ...(BEAKER_TOOLS.has(t.slug) ? ['tools/live-beaker.js'] : []), ...(scriptOk ? [`tools/${t.slug}.js`] : [])];
     const body = `
 ${bodyOpen(` data-app="tool-${t.slug}"`)}
 <main id="main" class="xshell chem-app">
