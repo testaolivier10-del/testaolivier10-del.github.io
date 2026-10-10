@@ -149,3 +149,5 @@ body.ls-on .anp-crumb{display:none !important;}
 .ls-sheet .ls-sec > p,.ls-sheet .ls-sec > div > p{margin:0 0 8px;}
 .ls-sheet .ls-sec > p:last-child{margin-bottom:0;}
 .ls-root .report-btn{min-height:44px;display:inline-flex;align-items:center;}
+.ls-dock .kg{margin:0;padding:14px 0 0;border-top:1px solid var(--line-soft);border-radius:0;background:none;}
+.ls-dock .kg-link,.ls-dock .kg-term{background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);min-height:44px;}
