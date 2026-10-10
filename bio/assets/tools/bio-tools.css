@@ -212,12 +212,21 @@
 /* Meiosis and nondisjunction: maternal homologs solid orange-red (M),
    paternal blue with stripes (P), so origin never depends on colour alone. */
 .bt-fig svg.mei-fig{max-height:none;max-width:460px;margin:0 auto;}
+.mei-fig{--mei-cyto0:#FFF8EC;--mei-cyto1:#F6E6CF;--mei-memb:#C99A6A;--mei-fib:#7FA39A;}
+:root[data-theme="dark"] .mei-fig{--mei-cyto0:#2E2A22;--mei-cyto1:#241F19;--mei-memb:#B98D5E;--mei-fib:#7FA39A;}
+.mei-fig .mei-c0{stop-color:var(--mei-cyto0);} .mei-fig .mei-c1{stop-color:var(--mei-cyto1);}
 .mei-fig .mei-m{fill:var(--bio-o2);}
 .mei-fig .mei-pbg{fill:var(--bio-deo2);}
-.mei-fig .mei-pst{fill:var(--white);fill-opacity:.75;}
-.mei-fig .mei-out{fill:none;stroke:var(--ink);stroke-width:1;}
+.mei-fig .mei-pst{fill:var(--white);fill-opacity:.55;}
+.mei-fig .mei-out{fill:none;stroke:var(--ink);stroke-width:.9;stroke-linejoin:round;}
+.mei-fig .mei-band{fill:none;stroke:#000;stroke-opacity:.22;stroke-width:1;}
+.mei-fig .mei-shine{fill:none;stroke:#fff;stroke-opacity:.45;stroke-width:1.2;stroke-linecap:round;}
 .mei-fig .mei-cen{fill:var(--ink);}
-.mei-fig .mei-cell{fill:var(--bio-shape-fill);stroke:var(--bio-shape);stroke-width:1.5;}
+.mei-fig .mei-cell{fill:url(#mei-cyto);stroke:var(--mei-memb);stroke-width:1.6;}
+.mei-fig .mei-memb{fill:none;stroke:var(--mei-memb);stroke-opacity:.45;stroke-width:1;}
+.mei-fig .mei-fib{fill:none;stroke:var(--mei-fib);stroke-width:.9;stroke-opacity:.85;}
+.mei-fig .mei-aster{stroke:var(--mei-fib);stroke-width:.9;}
+.mei-fig .mei-pole-c rect{fill:var(--mei-fib);}
 .mei-fig .mei-plate{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 4;}
 .mei-fig text.mei-lab{font:800 10px var(--font-ui);}
 .mei-fig text.mei-ttl{font:800 11.5px var(--font-ui);}
