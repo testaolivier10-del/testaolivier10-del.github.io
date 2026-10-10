@@ -673,8 +673,27 @@
 /* ===== Cell cycle ring (tools upgrade U-Bio-sims) ===== */
 .cc-ringfig{background:var(--paper);border-radius:14px;padding:6px;}
 .bt-fig svg.cc-ring{max-width:520px;}
-.cc-ring .cc-cell{fill:var(--bio-aff);stroke:var(--white);stroke-width:1;}
-.cc-ring .cc-cell.held{fill:var(--bio-hi);}
+.cc-ring{--cc-cm:#FBE6D2;--cc-cme:#C98B5A;--cc-nu:#D9C6EC;--cc-nue:#7B59A6;--cc-chr:#7B3FA8;--cc-chr2:#C04E8F;--cc-sp:#6E8F86;}
+:root[data-theme="dark"] .cc-ring{--cc-cm:#4A3A2C;--cc-cme:#E2AE7E;--cc-nu:#463A5C;--cc-nue:#C8AEEA;--cc-chr:#D7B8F2;--cc-chr2:#F2A5CF;--cc-sp:#8FB3A9;}
+.cc-ring .ph{stroke-width:24;stroke-linecap:butt;}
+.cc-ring .cc-cell circle{fill:var(--cc-cm);stroke:var(--cc-cme);stroke-width:1;}
+.cc-ring .cc-cell .n{fill:var(--cc-nue);stroke:none;}
+.cc-ring .cc-cell.held circle{fill:var(--bio-hi-fill);stroke:var(--bio-hi);stroke-width:1.4;}
+.cc-ring .cc-cell.held .n{fill:var(--bio-hi);}
+.cc-ring .g0{fill:var(--bio-lo-fill);stroke:var(--bio-lo);stroke-width:1.2;stroke-dasharray:4 3;}
+.cc-ring .cc-cm{fill:var(--cc-cm);stroke:var(--cc-cme);stroke-width:1.6;}
+.cc-ring .cc-nu{fill:var(--cc-nu);stroke:var(--cc-nue);stroke-width:1.2;}
+.cc-ring .cc-nl{fill:var(--cc-nue);}
+.cc-ring .cc-chrt{fill:none;stroke:var(--cc-chr);stroke-width:.9;stroke-linecap:round;stroke-linejoin:round;}
+.cc-ring .cc-chrt.b{stroke:var(--cc-chr2);}
+.cc-ring .cc-chr path{fill:none;stroke:var(--cc-chr);stroke-width:2.6;stroke-linecap:round;}
+.cc-ring .cc-chr.b path{stroke:var(--cc-chr2);}
+.cc-ring .cc-chr circle{fill:var(--ink);}
+.cc-ring .cc-sp{fill:none;stroke:var(--cc-sp);stroke-width:.8;}
+.cc-ring .cc-cs{fill:var(--cc-sp);}
+.cc-ring .cc-cen rect{fill:var(--cc-sp);}
+.cc-ring .cc-sep{stroke:var(--line);stroke-width:1.5;}
+.cc-ring .cc-pcl{font:800 12px var(--font-ui);fill:var(--muted);}
 .cc-ring .cc-gatebtn{cursor:pointer;}
 .cc-ring .cc-hit{fill:transparent;}
 .cc-ring .cc-gatebtn:hover .cc-hit,.cc-ring .cc-gatebtn.sel .cc-hit{fill:var(--ctint);stroke:var(--cink);stroke-width:2;}
