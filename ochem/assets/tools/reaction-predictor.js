@@ -673,12 +673,12 @@
      is sticky: the two rows are aligned grid rows, so no panel can slide
      over another while scrolling. */
   root.innerHTML =
-    '<div class="rp-top">' +
+    '<div class="tool-modes">' +
       '<div class="tseg" id="rpMode" role="group" aria-label="Mode">' +
         '<button type="button" data-mode="explore" class="on" aria-pressed="true">Explore</button>' +
         '<button type="button" data-mode="predict" aria-pressed="false">Predict first</button>' +
       '</div>' +
-      '<p class="rp-step" id="rpStep"></p>' +
+      '<p class="tool-step" id="rpStep"></p>' +
     '</div>' +
     '<div class="rp-grid">' +
       '<div class="tpanel rp-flask">' +
@@ -693,7 +693,7 @@
           '<p class="rp-k" id="rpRgtK"><span class="rp-n">2</span>Reagent</p>' +
           '<div class="tchips rp-chips" id="rpRgt" role="group" aria-labelledby="rpRgtK"></div>' +
           '<p class="rp-rgtnote" id="rpRgtNote"></p>' +
-          '<details class="rp-opts" id="rpOpts"><summary><span class="rp-n">3</span>Solvent and heat <span class="rp-opts__now" id="rpOptsNow"></span></summary>' +
+          '<details class="tool-more" id="rpOpts"><summary><span class="rp-n">3</span>Solvent and heat <span class="tool-more__now" id="rpOptsNow"></span></summary>' +
             '<div class="rp-pair">' +
               '<div><p class="rp-k" id="rpSolvK">Solvent</p>' +
                 '<div class="tseg" id="rpSolv" role="group" aria-labelledby="rpSolvK"></div></div>' +
@@ -1059,7 +1059,7 @@
     }
 
     var why = mix && mix[2] && mix[2].why && mix[2].why.length ? mix[2].why.join(', and ') : null;
-    html += '<details class="rp-args"' + (state.mode === 'predict' && state.guess !== p.major ? ' open' : '') + '><summary>Why?</summary>' +
+    html += '<details class="tool-more tool-more--why"' + (state.mode === 'predict' && state.guess !== p.major ? ' open' : '') + '><summary>Why?</summary>' +
       '<p>' + esc(p.verdict) + '</p>' +
       (mix && mix.length > 1
         ? '<p class="tmuted"><b>Roughly what you get.</b> These are competitions, not switches: a real flask gives you both, and the useful question is how lopsided. ' +
