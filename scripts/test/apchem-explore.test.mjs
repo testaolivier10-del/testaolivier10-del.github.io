@@ -129,3 +129,22 @@ test('units cancel', () => {
   assert.ok(M.unitSame('L·atm/(mol·K)', 'atm·L/(K·mol)'));
   assert.ok(!M.unitSame('J/(mol·K)', 'L·atm/(mol·K)'));
 });
+
+test('units setup: the right placement cancels to the asked unit and reproduces the key', () => {
+  for (const kind of ['muldiv', 'gas', 'calorimetry']) for (let k = 1; k <= 30; k++) {
+    const p = M.units.generate(M.rng(k * 13), { id: 'x', topic: 'math-sig-figs', kind });
+    const S = p.setup, used = S.factors.filter(f => f.place);
+    assert.equal(M.unitText(M.unitMul(used.map(f => ({ u: f.u, p: f.place })))), S.target, `${kind} units`);
+    const val = used.reduce((x, f) => { const v = f.u === 'kJ/J' ? 1 / 1000 : +f.v; return f.place > 0 ? x * v : x / v; }, 1);
+    const key = p.item.numeric.answer;
+    close(S.sign ? -val : val, key, Math.abs(key) * 2e-4, `${kind} value`);
+    const minSf = Math.min(...used.filter(f => f.sf).map(f => f.sf));
+    assert.equal(minSf, p.item.numeric.sigfigs, `${kind} sig figs`);
+    for (const f of S.factors.filter(f => !f.place)) {
+      const swap = used.map(g => (g.label === f.label.replace(' in °C', '') || (g.label === 'R' && f.label === 'R')) ? { u: f.u, p: g.place } : { u: g.u, p: g.place });
+      assert.notEqual(M.unitText(M.unitMul(swap)), S.target, `${kind}: the distractor ${f.u} must not cancel`);
+    }
+  }
+  const a = M.units.generate(M.rng(5), { id: 'y', topic: 'math-sig-figs', kind: 'addsub' }).setup;
+  assert.equal(a.addsub.length, 2);
+});

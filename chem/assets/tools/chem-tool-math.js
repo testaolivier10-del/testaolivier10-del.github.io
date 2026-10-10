@@ -820,10 +820,15 @@
     throw new Error('units: no problem for ' + ctx.id);
   }
   function unTry(r, ctx){
-    var q, slug = ctx.slug || 'units-sig-figs';
+    var q, slug = ctx.slug || 'units-sig-figs', setup = null;
+    // setup (tools upgrade): the quantities a student multiplies or divides,
+    // as written in the stem, with units and significant figures, so the page
+    // can let them build the setup and cancel units. place: 1 on top, -1 below,
+    // 0 a distractor that belongs nowhere. sf null for exact numbers.
     if(ctx.kind === 'muldiv'){
       var m = meas(r, 10, 99, r.pick([1, 2, 3])), v = meas(r, 5, 49, r.pick([1, 2])), sf = Math.min(sfOf(m), sfOf(v)), ans = +m / +v;
       if(!clean(ans, sf)) return null;
+      setup = { target: 'g/mL', factors: [{ label: 'mass', v: m, u: 'g', place: 1, sf: sfOf(m) }, { label: 'volume', v: v, u: 'mL', place: -1, sf: sfOf(v) }] };
       q = { q: 'A metal sample has a mass of ' + m + ' g and a volume of ' + v + ' mL. What is its density?',
         numeric: { answer: ans, tol: ulp(ans, sf), unit: 'g/mL', units: ['g/cm^3'], askUnit: true, sigfigs: sf, mistakes: [{ value: +v / +m, why: 'Density is mass ÷ volume, not volume ÷ mass.' }] },
         why: { correct: 'd = m / V = ' + m + ' g ÷ ' + v + ' mL = ' + fmt(ans, sf) + ' g/mL. When you multiply or divide, keep the fewest significant figures in the data: ' + sfOf(m) + ' and ' + sfOf(v) + ', so ' + sf + '.' } };
@@ -832,12 +837,16 @@
       if(p1 === p2) return null;
       var tot = meas(r, 40, 99, p1), beak = meas(r, +tot - 9.5, +tot - 1.2, p2), dp = Math.min(p1, p2), ans2 = +tot - +beak, shown = M.fixed(ans2, dp), sf2 = sfOf(shown);
       if(Math.min(sfOf(tot), sfOf(beak)) === sf2) return null;
+      setup = { addsub: [tot, beak], places: [p1, p2], result: shown };
       q = { q: 'A beaker with a sample in it has a mass of ' + tot + ' g. The empty beaker is ' + beak + ' g. What is the mass of the sample?',
         numeric: { answer: ans2, tol: Math.pow(10, -dp) / 2, unit: 'g', askUnit: true, sigfigs: sf2, mistakes: [] },
         why: { correct: tot + ' g − ' + beak + ' g = ' + shown + ' g. When you add or subtract, keep the fewest decimal places (' + p1 + ' and ' + p2 + ', so ' + dp + '), not the fewest significant figures. Here that leaves ' + sf2 + ' significant figures.' } };
     } else if(ctx.kind === 'gas'){
       var n = meas(r, 0.1, 0.9, 3), T = meas(r, 15, 95, 1), V = meas(r, 1, 9, 2), Tk = +T + M.C.T0, P = +n * M.C.R_LATM * Tk / +V, sf3 = Math.min(sfOf(n), sfOf(V));
       if(!clean(P, sf3)) return null;
+      setup = { target: 'atm', factors: [{ label: 'n', v: n, u: 'mol', place: 1, sf: sfOf(n) }, { label: 'R', v: '0.08206', u: 'L·atm/(mol·K)', place: 1, sf: 4, constant: true },
+        { label: 'T', v: M.fixed(Tk, 2), u: 'K', place: 1, sf: 4, note: T + ' + 273.15' }, { label: 'V', v: V, u: 'L', place: -1, sf: sfOf(V) },
+        { label: 'T in °C', v: T, u: '°C', place: 0, sf: sfOf(T), why: 'Gas laws need kelvin; °C does not cancel the K in R.' }, { label: 'R', v: '8.314', u: 'J/(mol·K)', place: 0, sf: 4, constant: true, why: 'This R is in joules: with L and atm the units do not cancel to atm.' }] };
       q = { q: 'A ' + V + ' L flask holds ' + n + ' mol of an ideal gas at ' + T + ' °C. What is the pressure in atmospheres?',
         numeric: { answer: P, tol: ulp(P, sf3), unit: 'atm', askUnit: true, sigfigs: sf3, mistakes: [
           { value: +n * M.C.R_LATM * +T / +V, why: 'Gas laws need kelvin: T = ' + T + ' + 273.15 = ' + fmt(Tk, 4) + ' K. With degrees Celsius the pressure comes out wrong.' },
@@ -847,6 +856,8 @@
       var mass = meas(r, 50, 150, 1), dT = meas(r, 2, 9, 2), mol = meas(r, 0.02, 0.09, 4);
       var qJ = +mass * 4.18 * +dT, dH = -qJ / 1000 / +mol, sf4 = Math.min(sfOf(mass), sfOf(dT), sfOf(mol), 3);
       if(!clean(dH, sf4)) return null;
+      setup = { target: 'kJ/mol', sign: true, factors: [{ label: 'mass', v: mass, u: 'g', place: 1, sf: sfOf(mass) }, { label: 'c', v: '4.18', u: 'J/(g·°C)', place: 1, sf: 3 },
+        { label: 'ΔT', v: dT, u: '°C', place: 1, sf: sfOf(dT) }, { label: 'kJ per J', v: '1 kJ / 1000 J', u: 'kJ/J', place: 1, sf: null }, { label: 'moles', v: mol, u: 'mol', place: -1, sf: sfOf(mol) }] };
       q = { q: 'Dissolving ' + mol + ' mol of a salt in ' + mass + ' g of water raises the temperature by ' + dT + ' °C. Take c = 4.18 J/(g·°C) for the solution and ignore the heat absorbed by the cup. What is ΔH of dissolution in kJ/mol?',
         numeric: { answer: dH, tol: ulp(dH, sf4), unit: 'kJ/mol', askUnit: true, sigfigs: sf4, mistakes: [
           { value: -qJ / +mol, why: 'That is in J/mol. Divide by 1000 to report kJ/mol.' },
@@ -867,7 +878,7 @@
     q.id = slug + ':' + ctx.id + ':' + ctx.kind;
     q.type = q.type || 'numeric'; q.topic = ctx.topic; q.practice = ctx.kind === 'rchoice' ? '5.B' : '5.F'; q.level = 'apply'; q.diff = 2;
     if(q.numeric) q.numeric.mistakes = q.numeric.mistakes.filter(function(mk){ return Math.abs(mk.value - q.numeric.answer) > 2.5 * q.numeric.tol; });
-    return { kind: 'units', ctx: ctx.id, topic: ctx.topic, item: q };
+    return { kind: 'units', ctx: ctx.id, topic: ctx.topic, item: q, setup: setup };
   }
 
   /* A change-row entry typed by a student: "−2x", "+x", "x", "0" -> the
