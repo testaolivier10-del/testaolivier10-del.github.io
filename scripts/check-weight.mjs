@@ -351,7 +351,8 @@ const BUDGETS = [
   // 50 -> 51.5 (tools upgrade): the monitor and patient panel styles and the
   // call layout, inline in the page. The case data is unchanged.
   /* 51.5 -> 52 (visual polish 2026-10): the bedside monitor's styles; measured 51.6 KB. */
-  ['nremt/scenario-sim.html', 52],
+  // 52 -> 53 (simplify pass 2026-10): the pick-a-call cue and the short-window sticky rule; it sat 0.1 KB under.
+  ['nremt/scenario-sim.html', 53],
   // learn.html is a shell whose only real weight is the static table of
   // contents generated into it for readers without JavaScript — one line per
   // section. It crossed 3.0 KB when the IUPAC Nomenclature chapter added four

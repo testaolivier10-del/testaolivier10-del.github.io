@@ -152,8 +152,7 @@
   @media (max-width:860px){.sim-grid{grid-template-columns:1fr;}}
   .sim-side{position:sticky;top:calc(var(--site-header-h,112px) + 12px);}
   @media (max-width:860px){.sim-side{position:static;}}
-  /* The patient panel is about 730 px tall: on a shorter window a sticky panel would keep its lower part
-     (Back, Skin) out of reach while the call scrolls, so it scrolls with the page there. */
+  /* ~730 px tall: sticky only on windows tall enough to show all of it. */
   @media (max-height:880px){.sim-side{position:static;}}
   .pt-jump{display:none;margin-top:12px;font:800 13px var(--font-ui);color:var(--accent-text);}
   @media (max-width:860px){.pt-jump{display:inline-block;}}
@@ -2292,7 +2291,6 @@ function buildCallView(){
 function scrollToBox(box){
   const head = document.getElementById('site-header');
   const h = head ? Math.max(0, head.getBoundingClientRect().bottom) : 0;
-  // 24 px clear of the header: it is translucent, so text just under its edge is hard to read.
   const y = Math.max(0, box.getBoundingClientRect().top + window.scrollY - h - 24);
   if(window.LevlMotion) window.LevlMotion.scrollToY(y);
   else window.scrollTo({ top: y });

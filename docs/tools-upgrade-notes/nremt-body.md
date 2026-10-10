@@ -99,6 +99,32 @@ gap = > 15 dB down.
   measurements under "Why?". "Every sound, described" (12 cards and the recordings note) is one disclosure, opened
   automatically by `#snd-<id>`. All modes, deep links (`?mode=`, `&q=`, `#snd-`) and records unchanged.
 
+### Other NREMT tools (simplify pass 2026-10-10)
+What a new student sees first, per tool; nothing removed, every deep link kept.
+- **Body map (3D):** "Tap any part of the model. Drag to turn it." + Quiz me, then the model. Reset view, skin,
+  systems, gesture help and the not-to-scale note under More options; Browse by name and the two reference cards
+  (Rule of Nines in words, directional terms) are disclosures. Side panel no longer sticky. `?focus=`, `?hunt=` kept.
+- **Body map (Burns):** Adult | Child, Quiz me, "Tap a region to mark it burned, or drag across several." Brush
+  (Full/Half/Erase) and the palm rule under More options; Clear shows once something is marked. `?mode=burns&q=` kept.
+- **Scenario sim:** "Pick a call to start." above the cards; the call scrolls 24 px clear of the translucent header;
+  patient panel sticky only on windows 880 px tall or more (it is about 730 px). Budget 52 -> 53 KB (it sat 0.1 KB
+  under; the cue and the rule tipped it).
+- **Flowcharts:** Read | Build it | Drill me, then "Pick a sequence to read it." with one chip per diagram; Read
+  shows one diagram (Show all shows every one; print shows all). `#flow-<slug>`, `#build-<slug>` and the drill's
+  "See the whole diagram" open the right one.
+- **Skill sheets:** the timed run (pick a station) first; the reading guide, the official-sheet table and the 10
+  station cards are three disclosures; the run's text points to the table by name.
+- **Formulary:** compact header "EMT Drug Formulary", the give-or-withhold card first; the seven full drug cards and
+  the scope note in one disclosure, opened by "See the whole card".
+- **Reference cards:** compact header, a jump row (vitals, GCS, APGAR, triangle); each card's teaching notes behind
+  "N notes worth knowing". The vitals checker is the first thing on the page.
+- **Mnemonics:** compact header and "Read a card, then press Fill the letters to test yourself on it."
+- **Review, From the tools:** the newest three misses, the rest behind "Show N more"; one-line explanation.
+- Checks: check-site OK; check-weight OK (one budget raised, above); node --test 686 pass; axe (wcag2a/aa) no
+  serious or critical on all nine pages, light and dark, with every disclosure open; no horizontal scroll or
+  control under 40 px at 390/768/1280/1440/1680; no sticky element over content at 1440/1626/1680 (probe verified
+  with a planted sticky box); no page errors.
+
 ## For accuracy review
 
 Simplify pass (2026-10-10), sound trainer:
