@@ -148,7 +148,8 @@
       "desc": "Physiology calculators that show every step: cardiac output, mean arterial pressure, flow and resistance, filtration pressure and total peripheral resistance.",
       "script": "tools/calculators.js",
       "css": "tools/calculators.css",
-      "data": "calculators.json"
+      "data": "calculators.json",
+      "studio": true
     },
     {
       "slug": "word-roots",
