@@ -387,11 +387,18 @@
           var ex = terms.filter(function(t){ return t.segs.some(function(s){ return s[1] === p.id; }); }).slice(0, 4).map(function(t){ return glossLink(t); });
           return '<li class="wr-' + p.type + '" data-find="' + esc((p.form + ' ' + p.meaning).toLowerCase()) + '">' + partLine(p) + '<span class="wr-ex">e.g. ' + ex.join(', ') + '</span></li>';
         }).join('') + '</ul></section>';
-      }).join('');
+      }).join('') +
+      '<p class="wr-small wr-none" hidden>No word part matches. Try another spelling or meaning.</p>';
     var f = card.querySelector('#wr-find');
     f.addEventListener('input', function(){
-      var q = f.value.trim().toLowerCase();
-      card.querySelectorAll('.wr-banklist li').forEach(function(li){ li.hidden = !!q && li.getAttribute('data-find').indexOf(q) < 0; });
+      var q = f.value.trim().toLowerCase(), shown = 0;
+      // a heading whose parts are all filtered out goes too, and an empty search says so
+      card.querySelectorAll('.wr-bank-sec').forEach(function(sec){
+        var k = 0;
+        sec.querySelectorAll('.wr-banklist li').forEach(function(li){ li.hidden = !!q && li.getAttribute('data-find').indexOf(q) < 0; if(!li.hidden) k++; });
+        sec.hidden = !k; shown += k;
+      });
+      card.querySelector('.wr-none').hidden = shown > 0;
     });
   }
 
