@@ -133,7 +133,7 @@
     if(!list.length){ el.innerHTML = ''; return; }
     el.innerHTML =
       '<h2>From the tools <small class="cx-tq-n">' + list.length + ' to revisit</small></h2>' +
-      '<p class="cx-small">Missed in the body map, sound trainer, protocol flows or a scenario. Each one leaves this list when you get it right in its tool.</p>' +
+      '<p class="cx-small">Missed in the body map, sound trainer, protocol flows, formulary or a scenario. Each one leaves this list when you get it right in its tool.</p>' +
       '<ul class="cx-list cx-tq">' + list.map(function(it){
         var n = it.misses || 1;
         return '<li><div>' + esc(it.label) +
