@@ -37,3 +37,11 @@ One line per tool: stage / dock controls / what moved to Why and Details. Shared
   Acid B and the two answer buttons; Put them on the pKa line and New set; the molecule, its sites and Try another /
   Why = the verdict and the factor walk (gap as a ratio, why the base is stable, the rules-disagree notes, the factor
   table), the rank gaps explained, the site order with reasons / Details = Check yourself, Keep going.
+- **Spectroscopy lab**: stage = one spectrum at a time (Infrared, or the ¹H NMR beside its structure; tap a peak, a
+  signal or an atom; band or shift as a readout pill); Identify it: both spectra with formula, DoU and signal count as
+  pills; Reference: the band and zone charts (a reference view, scrolls inside the stage) / dock = Read a spectrum,
+  Identify it, Reference; Infrared or ¹H NMR, compound chips, More compounds or draw your own (Predict your own
+  builder); Choose from four or Draw it, New unknown; the formula box / Why = the tapped band or signal in words,
+  Predicted-not-measured note, the unknown's answer peak by peak, the draw check, the DoU working / Details = every
+  band and every signal as tables, degrees of unsaturation, the unknown's peak lists, Take this molecule to, Check
+  yourself, Keep going. Fixed on the way: `?mode=puzzle` and `?mode=ref` links now open those modes.

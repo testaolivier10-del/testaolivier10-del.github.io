@@ -1094,3 +1094,50 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ab-ls .ab-gap__x,.ab-ls .ab-ario{text-transform:none;letter-spacing:0;font-size:var(--ls-s);}
 .ls-root .ls-modes .ls-seg > button{white-space:normal;text-overflow:clip;line-height:1.15;}
 .ab-ls .ab-ls-again{width:100%;margin-top:10px;}
+
+/* ---- A details box that is always open in a sheet reads as a heading. */
+.ls-root details.ls-open-h{margin:0;border:0;padding:0;}
+.ls-root details.ls-open-h > summary{pointer-events:none;background:none;padding:0;min-height:0;font-weight:900 !important;}
+.ls-root details.ls-open-h > summary::after,.ls-root details.ls-open-h > summary::before{display:none;}
+
+/* ---- Spectroscopy lab in the Tool Studio: one spectrum at a time (the NMR
+   beside its structure); both spectra for an unknown; the reference charts
+   scroll inside the stage. */
+.sp-ls .sp-chart{margin:0;padding:6px 4px;border:0;border-radius:14px;background:var(--surface2);overflow:hidden;}
+.sp-ls .sp-chart svg{min-width:0;width:100%;height:100%;max-height:100%;}
+.sp-ls .sp-ls-pred{flex:1;min-height:0;display:flex;flex-direction:column;}
+.sp-ls .sp-ls-pred > #spIR{flex:1;min-height:0;display:flex;align-items:center;}
+.sp-ls .sp-ls-pred > .sp-link{display:none;flex:1;min-height:0;}
+.sp-ls.sp-ls-nmr .sp-ls-pred > #spIR{display:none;}
+.sp-ls.sp-ls-nmr .sp-ls-pred > .sp-link{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,.8fr) minmax(0,1.2fr);gap:8px;}
+.sp-ls .sp-link__mol,.sp-ls .sp-link > #spNMR{min-height:0;display:flex;align-items:center;justify-content:center;}
+.sp-ls .sp-link__mol .scene{width:100%;height:100%;margin:0;padding:0;display:flex;align-items:center;justify-content:center;}
+.sp-ls .sp-link__mol .omol svg{width:100%;height:100%;max-width:none;max-height:100%;}
+.sp-ls .ls-stage-body:has(.sp-link){container-type:inline-size;}
+@container (min-width:640px){ .sp-ls.sp-ls-nmr .sp-ls-pred > .sp-link{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);grid-template-rows:minmax(0,1fr);} }
+@container (max-width:560px){ .sp-ls #spIR .sp-axis,.sp-ls .sp-ls-puz .sp-axis{font-size:17px;} .sp-ls .sp-int{font-size:17px;} .sp-ls .sp-ls-irt{display:none;} .sp-ls .ls-stage .sp-ls-unit{display:block;} }
+.sp-ls-view .tseg{display:flex;width:100%;}
+.sp-ls-view .tseg button{flex:1;}
+.sp-ls #spMore{margin:0;border:0;padding:0;}
+.sp-ls #spMore > summary{font:700 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;}
+.sp-ls #spMore .tchips{margin-bottom:12px;}
+.sp-ls .sp-ls-peak .sp-linknote{margin:0 0 10px;min-height:0;font-size:var(--ls-m);}
+.sp-ls .sp-ls-puz{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px;}
+.sp-ls .sp-ls-puz > .sp-chart{flex:1;min-height:0;display:flex;align-items:center;}
+.sp-ls-ans{display:flex;flex-direction:column;gap:12px;}
+.sp-ls-ans .tseg{display:flex;width:100%;}
+.sp-ls-ans .tseg button{flex:1;}
+.sp-ls #spOptions{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.sp-ls #spOptions .tchip{min-height:48px;white-space:normal;font-family:var(--font-mono);font-size:var(--ls-s);}
+.sp-ls #spNew{align-self:flex-start;}
+.sp-ls .sp-ls-ref{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:8px;}
+.sp-ls .sp-ls-ref .ls-pane-k{margin-top:6px;}
+.sp-ls .sp-ls-ref .tnote{margin-top:16px !important;}
+.sp-ls .sp-band{min-height:22px;}
+.sp-ls-formula{display:flex;flex-direction:column;gap:8px;}
+.sp-ls-formula .ls-lbl{margin:0;}
+.sp-ls-formula #spFormula{max-width:none !important;min-height:48px;border-radius:14px;font:600 var(--ls-l) var(--font-mono);}
+.ls-root .tnote__k{text-transform:none;letter-spacing:0;font-size:var(--ls-s);}
+.sp-ls .sp-band__bar{background:var(--surface2);}
+.sp-ls .sp-ls-unit{display:none;flex:none;margin:2px 0 0;text-align:center;font:700 var(--ls-s) var(--font-mono);color:var(--muted);}
+.sp-ls.sp-ls-nmr .sp-ls-pred > .sp-ls-unit{display:none !important;}

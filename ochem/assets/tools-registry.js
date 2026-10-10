@@ -131,7 +131,8 @@
       blurb: 'Read IR and ¹H NMR spectra peak by peak, then name the compound.',
       teaches: 'IR, ¹H NMR, degrees of unsaturation',
       topic: ['ir', 'h-nmr', 'mass-spec'],
-      terms: ['wavenumber', 'fingerprint-region', 'chemical-shift', 'degree-of-unsaturation']
+      terms: ['wavenumber', 'fingerprint-region', 'chemical-shift', 'degree-of-unsaturation'],
+      studio: true
     },
     {
       slug: 'reagent-roadmap',
