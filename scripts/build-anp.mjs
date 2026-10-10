@@ -26,7 +26,7 @@ const AP_LABELS = ['Anatomy & Physiology', 'A&P'];
 const FULL = { keepFirstLabel: true };
 import {
   SITE, BASE, COURSE_NAME, COURSE_ID, TEAS_DISCLAIMER, esc, text, loadCourse, clampDesc,
-  head, tail, crumbs, orgCrumbs, crumbNav, footer, termIndex, glossify, teachHref, figureImg, credit, attribution, fixSvg, BETA_PILL,
+  head, tail, crumbs, orgCrumbs, crumbNav, footer, termIndex, glossify, teachHref, figureImg, credit, attribution, fixSvg, BETA_PILL, laterLabel, avifSrcset,
   renderFigures, questionForPage, questionHtml,
 } from './lib/anp-build.mjs';
 
@@ -1202,6 +1202,21 @@ function publishedTool(file) {
       f.attribution = attribution(C.figures[id], { adapted: true }).html;
       const fx = fixSvg(C.figures[id], C.figures[id].labels);
       if (fx) f.fixSvg = fx.replace('class="anp-fix"', 'class="lp-fix"');
+    }
+  }
+  /* Pathways traced on a real figure (data/pathway-traces.json, tools
+     upgrade 2026-10): the figure, the step points, and its label boxes (later
+     concepts covered for good, decision 30) ride along with the pathway. */
+  if (file === 'pathways.json') {
+    const T = JSON.parse(readFileSync(join(C.data, 'pathway-traces.json'), 'utf8')).traces;
+    for (const p of d.pathways) {
+      const t = T[p.id], f = t && C.figures[t.figure];
+      if (!f) continue;
+      const labs = (f.labels || []).filter(l => l.box);
+      const covered = labs.filter(l => laterLabel(C, l, p.topic));
+      p.trace = { ...t, src: `figures/${t.figure}.${f.ext || 'jpg'}`, srcset: (f.ext || 'jpg') === 'jpg' ? avifSrcset(t.figure, f.w, '../') : '',
+        w: f.w, h: f.h, alt: f.alt, attribution: attribution(f, { adapted: covered.length > 0 }).html,
+        boxes: labs.filter(l => !covered.includes(l)).map(l => ({ id: l.id, name: l.name, box: l.box })), covered: covered.map(l => l.box) };
     }
   }
   if (file === 'calculators.json') d.groups = d.groups.filter(g => d.calculators.some(c => c.group === g.id));

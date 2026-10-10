@@ -47,7 +47,8 @@
     if(!t) return esc(id);
     return t.built ? '<a href="' + esc(BASE + 'lessons/' + t.id + '.html') + '">' + esc(t.title) + '</a>' : esc(t.title);
   }
-  function stopPlayer(){ if(player){ player.stop(); player = null; } }
+  function stopPlayer(){ if(player){ player.stop(); player = null; } if(tracer){ tracer.stop(); tracer = null; } }
+  var tracer = null;          // the running figure trace, if any
 
   /* ---------------------------------------------------------------- routing */
   function route(){
@@ -170,6 +171,8 @@
       '<h2 class="pw-title" tabindex="-1">' + esc(p.title) + '</h2>' +
       '<p class="anp-small pw-meta">Topic: ' + topicLink(p.topic) + ' · ' + p.steps.length + ' steps</p>' +
       '<p class="pw-intro">' + html(p.intro) + '</p>' +
+      (p.trace ? '<section class="pt" aria-labelledby="pt-h"></section>' : '') +
+      (p.trace ? '<h3 class="pw-drill-h">Drills</h3>' : '') +
       '<div class="pw-tabs" role="tablist" aria-label="Ways to practice this pathway">' + VARIANTS.map(function(v){
         var s = status(itemId(p, v.key));
         return '<button type="button" role="tab" id="pw-tab-' + v.key + '" aria-controls="pw-panel" aria-selected="' + (v.key === variant) + '" tabindex="' + (v.key === variant ? '0' : '-1') + '" data-v="' + v.key + '" class="pw-tab">' +
@@ -179,9 +182,10 @@
       '<p class="pw-next"><a class="btn-outline" href="#' + esc(next.id) + '">Next pathway: ' + esc(next.title) + ' →</a></p>' +
       '</div>';
     addPicker(p);
+    if(p.trace) traceView(p, app.querySelector('.pt'));
     var tabs = app.querySelectorAll('.pw-tab');
     tabs.forEach(function(b, k){
-      b.addEventListener('click', function(){ go('#' + p.id + '/' + b.getAttribute('data-v')); });
+      b.addEventListener('click', function(){ if(player){ player.stop(); player = null; } go('#' + p.id + '/' + b.getAttribute('data-v')); });
       b.addEventListener('keydown', function(e){
         var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
         if(e.key === 'Home') d = -k; if(e.key === 'End') d = tabs.length - 1 - k;
@@ -199,6 +203,198 @@
     else errorVariant(p, panel);
     if(focusTab){ var tb = app.querySelector('#pw-tab-' + variant); if(tb) tb.focus(); }
     else if(booted){ var h = app.querySelector('.pw-title'); if(h) h.focus(); }
+  }
+
+  /* ------------------------------------------------------- trace on the figure
+     Where a pathway has a matching OpenStax figure (data/pathway-traces.json,
+     published as p.trace by build-anp.mjs), it plays on the real drawing:
+       Watch     a token (a drop of blood, an impulse, a drop of fluid, a bite
+                 of food) travels step to step, leaving its path; each step's
+                 caption says what happens there and why. Blood changes color
+                 where the data says it gains or gives up oxygen.
+       Trace it  the token waits; tap where it goes next (the structure or its
+                 printed label; labels are buttons for the keyboard). A wrong
+                 tap names what you tapped and shows where it really goes.
+                 Scored once a visit as pathways:<id>:trace (no wrong taps =
+                 right), so misses reach Review like the other drills. */
+  function traceView(p, host){
+    var T = p.trace, n = p.steps.length, W = T.w, H = T.h;
+    var R = Math.max(W, H) * 0.022, SW = Math.max(W, H) * 0.0075;
+    var reduce = function(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } };
+    var pct = function(v, of){ return (100 * v / of).toFixed(3) + '%'; };
+    var at = function(b){ return 'left:' + pct(b[0], W) + ';top:' + pct(b[1], H) + ';width:' + pct(b[2], W) + ';height:' + pct(b[3], H); };
+    var byId = {}; T.boxes.forEach(function(b){ byId[b.id] = b; });
+    var noun = { blood: 'drop of blood', impulse: 'impulse', fluid: 'drop of fluid', food: 'bite of food' }[T.token] || 'token';
+    var tid = itemId(p, 'trace');
+    var st = status(tid);
+    host.innerHTML = '<div class="pt-head"><h3 id="pt-h">On the figure</h3>' +
+      '<div class="pt-modes" role="group" aria-label="Figure mode"><button type="button" class="pt-mode" data-m="watch" aria-pressed="true">Watch</button>' +
+      '<button type="button" class="pt-mode" data-m="trace" aria-pressed="false">Trace it' + (st === 'right' ? ' <span class="pw-tick" aria-label="done">✓</span>' : st === 'missed' ? ' <span class="pw-miss" aria-label="missed last time">✗</span>' : '') + '</button></div></div>' +
+      '<div class="pt-stage"><div class="pt-fig" style="aspect-ratio:' + W + ' / ' + H + ';--pt-r:' + (W / H).toFixed(4) + '">' +
+        (T.srcset ? '<picture><source type="image/avif" srcset="' + esc(T.srcset) + '" sizes="(max-width: 760px) 100vw, 720px"><img src="' + esc(BASE + T.src) + '" alt="' + esc(T.alt) + '" width="' + W + '" height="' + H + '" decoding="async"></picture>'
+          : '<img src="' + esc(BASE + T.src) + '" alt="' + esc(T.alt) + '" width="' + W + '" height="' + H + '" decoding="async">') +
+        T.covered.map(function(b){ return '<span class="pt-cover" aria-hidden="true" style="' + at(b) + '"></span>'; }).join('') +
+        '<svg class="pt-svg" viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true" focusable="false"><g class="pt-trail"></g><g class="pt-hint"></g><g class="pt-hits"></g><circle class="pt-token tok-' + esc(T.token) + '" r="' + R + '" cx="-99" cy="-99"/></svg>' +
+        '<div class="pt-boxes"></div>' +
+      '</div></div>' +
+      '<div class="pt-bar"></div>' +
+      '<p class="pt-cap" aria-live="polite"></p>' +
+      '<p class="lp-credit pt-credit">' + T.attribution + '</p>';
+    var svg = host.querySelector('.pt-svg'), trail = host.querySelector('.pt-trail'), hint = host.querySelector('.pt-hint'), hits = host.querySelector('.pt-hits');
+    var token = host.querySelector('.pt-token'), bar = host.querySelector('.pt-bar'), cap = host.querySelector('.pt-cap'), boxes = host.querySelector('.pt-boxes');
+    var NS = 'http://www.w3.org/2000/svg';
+    function mk(name, attrs){ var e = document.createElementNS(NS, name); for(var a in attrs) e.setAttribute(a, attrs[a]); return e; }
+    var jump = T.jump || [];
+    var k = -1, timer = null, anim = 0, mode = 'watch';
+    function tone(i){ var b = p.steps[i] && p.steps[i].blood; return T.token === 'blood' ? (b === 'o2' ? 'o2' : b === 'deo2' ? 'deo2' : 'ex') : ''; }
+    function paintToken(i){ token.setAttribute('class', 'pt-token tok-' + T.token + (tone(i) ? ' tone-' + tone(i) : '')); }
+    function clearTrail(){ while(trail.firstChild) trail.removeChild(trail.firstChild); while(hint.firstChild) hint.removeChild(hint.firstChild); }
+    function seg(i){ // from step i-1 to step i
+      var a = T.pts[i - 1], b = T.pts[i];
+      if(a[0] === b[0] && a[1] === b[1]) return;
+      trail.appendChild(mk('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], 'class': 'pt-seg' + (jump.indexOf(i) > -1 ? ' is-jump' : '') + (tone(i) ? ' tone-' + tone(i) : ''), 'stroke-width': SW }));
+    }
+    function dot(i, cls){ trail.appendChild(mk('circle', { cx: T.pts[i][0], cy: T.pts[i][1], r: R * 0.42, 'class': 'pt-dot' + (cls ? ' ' + cls : '') })); }
+    function moveTo(i, done){
+      var my = ++anim, b = T.pts[i];
+      paintToken(i);
+      var x0 = +token.getAttribute('cx'), y0 = +token.getAttribute('cy');
+      if(reduce() || x0 < 0 || jump.indexOf(i) > -1){
+        token.setAttribute('cx', b[0]); token.setAttribute('cy', b[1]);
+        token.classList.remove('pop'); void token.getBBox(); token.classList.add('pop');
+        if(done) done(); return;
+      }
+      var dist = Math.hypot(b[0] - x0, b[1] - y0), dur = Math.min(900, 300 + dist * 0.9), t0 = null;
+      requestAnimationFrame(function f(ts){
+        if(my !== anim) return;
+        if(t0 == null) t0 = ts;
+        var u = Math.min(1, (ts - t0) / dur), e = u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+        token.setAttribute('cx', x0 + (b[0] - x0) * e); token.setAttribute('cy', y0 + (b[1] - y0) * e);
+        if(u < 1) requestAnimationFrame(f); else if(done) done();
+      });
+    }
+    function caption(i, extra){
+      var s = p.steps[i];
+      cap.innerHTML = (extra || '') + '<b>Step ' + (i + 1) + ' of ' + n + ':</b> ' + html(s.text) + ' <span class="pt-why">' + html(s.why) + '</span>';
+    }
+    function stop(){ if(timer){ clearTimeout(timer); timer = null; } var pb = bar.querySelector('.pt-play'); if(pb){ pb.textContent = '▶ Play'; pb.setAttribute('aria-pressed', 'false'); } }
+    /* ---- Watch */
+    function show(i){
+      k = i; clearTrail();
+      for(var j = 1; j <= i; j++) seg(j);
+      for(var j2 = 0; j2 < i; j2++) dot(j2);
+      moveTo(i); caption(i);
+      bar.querySelector('.pt-prev').disabled = i <= 0;
+      bar.querySelector('.pt-next').disabled = i >= n - 1;
+    }
+    function watch(){
+      mode = 'watch'; stop(); anim++; boxes.innerHTML = ''; while(hits.firstChild) hits.removeChild(hits.firstChild);
+      host.querySelector('.pt-fig').classList.remove('is-trace');
+      bar.innerHTML = '<button type="button" class="btn-press sm pt-play" aria-pressed="false">▶ Play</button>' +
+        '<button type="button" class="btn-outline pt-prev" aria-label="Previous step">←</button><button type="button" class="btn-outline pt-next" aria-label="Next step">→</button>' +
+        '<span class="pt-n anp-small"></span>';
+      var play = bar.querySelector('.pt-play');
+      function tick(){ if(k >= n - 1){ stop(); if(p.cycle) cap.insertAdjacentHTML('beforeend', ' <span class="pt-cycle">↻ and round again.</span>'); return; } show(k + 1); timer = setTimeout(tick, reduce() ? 4200 : 2600); }
+      play.addEventListener('click', function(){
+        if(timer){ stop(); return; }
+        if(k >= n - 1) k = -1;
+        play.textContent = '❚❚ Pause'; play.setAttribute('aria-pressed', 'true');
+        if(k < 0){ token.setAttribute('cx', -99); }
+        tick();
+      });
+      bar.querySelector('.pt-prev').addEventListener('click', function(){ stop(); show(Math.max(0, k - 1)); });
+      bar.querySelector('.pt-next').addEventListener('click', function(){ stop(); show(Math.min(n - 1, k + 1)); });
+      k = 0; clearTrail(); token.setAttribute('cx', -99); moveTo(0);
+      cap.innerHTML = '<span class="anp-small">Press Play to follow the ' + esc(noun) + ' through all ' + n + ' steps, or step with the arrows. Then try <b>Trace it</b>.</span>';
+      bar.querySelector('.pt-prev').disabled = true;
+    }
+    /* ---- Trace it */
+    function traceIt(){
+      mode = 'trace'; stop(); anim++;
+      host.querySelector('.pt-fig').classList.add('is-trace');
+      var misses = 0, done = false;
+      k = 0; clearTrail(); token.setAttribute('cx', -99); moveTo(0);
+      bar.innerHTML = '<span class="pt-score anp-small" aria-live="polite"></span><button type="button" class="btn-outline pt-restart">Start over</button>';
+      bar.querySelector('.pt-restart').addEventListener('click', traceIt);
+      // Hit areas: every printed label (a button) and a ring on every step point.
+      boxes.innerHTML = T.boxes.map(function(b){ return '<button type="button" class="pt-box" data-id="' + esc(b.id) + '" style="' + at(b.box) + '" aria-label="' + esc(b.name) + '"></button>'; }).join('');
+      while(hits.firstChild) hits.removeChild(hits.firstChild);
+      T.pts.forEach(function(pt, i){ hits.appendChild(mk('circle', { cx: pt[0], cy: pt[1], r: R * 2.1, 'class': 'pt-hit', 'data-i': i })); });
+      function score(){ bar.querySelector('.pt-score').textContent = (k + 1) + ' of ' + n + ' steps' + (misses ? ' · ' + misses + ' wrong ' + (misses === 1 ? 'tap' : 'taps') : ''); }
+      function ask(){
+        // A step at the same place as the one before (a pause, a delay) is
+        // passed through with its caption: there is nothing new to tap.
+        while(k < n - 1 && T.pts[k + 1][0] === T.pts[k][0] && T.pts[k + 1][1] === T.pts[k][1]){ k++; caption(k, '<span class="pt-same">Same place: </span>'); }
+        score();
+        if(k >= n - 1) return finish();
+        cap.innerHTML = (k === 0 ? '<b>Start:</b> ' + html(p.steps[0].text) + ' ' : '') + '<b class="pt-ask">Where does the ' + esc(noun) + ' go next? Tap it on the figure.</b>';
+      }
+      function finish(){
+        done = true;
+        var ok = misses === 0;
+        var first = score2(ok);
+        boxes.querySelectorAll('.pt-box').forEach(function(b){ b.disabled = true; });
+        cap.innerHTML = verdict(ok, ok, first).replace('Partly right.', 'Traced, with help.') + '<p>' + (ok ? 'Every step found on the figure.' : misses + ' wrong ' + (misses === 1 ? 'tap' : 'taps') + ' on the way; each one showed where it really goes.') + ' ' + html(p.summary) + '</p>';
+        bar.innerHTML = '<button type="button" class="btn-outline pt-restart">Trace it again</button>' + report(tid);
+        bar.querySelector('.pt-restart').addEventListener('click', traceIt);
+        var mt = host.querySelector('.pt-mode[data-m="trace"]'); if(mt) mt.innerHTML = 'Trace it ' + (ok ? '<span class="pw-tick" aria-label="done">✓</span>' : '<span class="pw-miss" aria-label="missed">✗</span>');
+      }
+      function score2(ok){
+        if(scored[tid]) return false;
+        scored[tid] = true;
+        if(window.AnpCore){
+          window.AnpCore.toolResult('pathways', [{ id: tid, correct: ok, topic: p.topic, core: p.core, level: 'apply', diff: p.diff, group: chapterOf(p) }]);
+          window.AnpCore.event('anp-pathway-complete', { pathway: p.id, variant: 'trace', correct: ok ? 1 : 0, total: 1 });
+        }
+        if(window.LevlSound && window.LevlSound.answer) try{ window.LevlSound.answer(ok); }catch(e){}
+        return true;
+      }
+      function nameOf(id){ return byId[id] ? byId[id].name : ''; }
+      function tapped(labelId, ptIndex){
+        if(done) return;
+        var want = k + 1, wantLab = T.labels[want];
+        var ok = labelId ? labelId === wantLab : ptIndex === want || (ptIndex != null && T.labels[ptIndex] === wantLab);
+        while(hint.firstChild) hint.removeChild(hint.firstChild);
+        if(ok){
+          seg(want); dot(k);
+          k = want;
+          moveTo(k, function(){});
+          caption(k, '<span class="pt-ok">✓</span> ');
+          if(window.LevlSound && window.LevlSound.tick) try{ window.LevlSound.tick(); }catch(e){}
+          if(k >= n - 1) return finish();
+          var c = cap.innerHTML;
+          ask();
+          if(!done) cap.innerHTML = c + '<br><b class="pt-ask">Next: where does it go from here?</b>';
+          return;
+        }
+        misses++;
+        var name = labelId ? nameOf(labelId) : ptIndex != null ? nameOf(T.labels[ptIndex]) : '';
+        var where = ptIndex != null && ptIndex <= k ? 'The ' + esc(noun) + ' has already been there' : name ? 'That is the <b>' + esc(name) + '</b>' + (ptIndex != null && ptIndex > want ? ', step ' + (ptIndex + 1) + ': later in the pathway' : labelId && T.labels.indexOf(labelId) < 0 ? ', which is not on this pathway' : '') : 'Nothing on the pathway there';
+        var b = T.pts[want], a = T.pts[k];
+        hint.appendChild(mk('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], 'class': 'pt-ghost', 'stroke-width': SW }));
+        hint.appendChild(mk('circle', { cx: b[0], cy: b[1], r: R * 1.5, 'class': 'pt-want' }));
+        cap.innerHTML = '<span class="pt-no">✗</span> ' + where + '. It goes to the ring: <b>' + html(p.steps[want].label) + '</b>. Tap it to go on.';
+        score();
+        if(window.LevlSound && window.LevlSound.answer) try{ window.LevlSound.answer(false); }catch(e){}
+      }
+      boxes.querySelectorAll('.pt-box').forEach(function(bt){ bt.addEventListener('click', function(e){ e.stopPropagation(); tapped(bt.getAttribute('data-id'), null); }); });
+      host.querySelector('.pt-fig').onclick = function(e){
+        if(mode !== 'trace' || e.target.closest('.pt-box')) return;
+        var r = svg.getBoundingClientRect(), x = (e.clientX - r.left) * W / r.width, y = (e.clientY - r.top) * H / r.height;
+        var best = -1, bd = Infinity;
+        T.pts.forEach(function(pt, i){ var d = Math.hypot(pt[0] - x, pt[1] - y); if(d < bd){ bd = d; best = i; } });
+        tapped(null, bd <= R * 2.6 ? best : null);
+      };
+      ask();
+    }
+    host.querySelectorAll('.pt-mode').forEach(function(b){
+      b.addEventListener('click', function(){
+        host.querySelectorAll('.pt-mode').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+        if(b.getAttribute('data-m') === 'trace') traceIt(); else watch();
+      });
+    });
+    watch();
+    tracer = { stop: function(){ stop(); anim++; } };
   }
 
   /* Record the first check of each variant on this visit. */
@@ -265,7 +461,7 @@
         '<p>' + right + ' of ' + n + ' steps in the right position.' + (correct ? '' : ' Each step in the wrong place shows where it belongs.') + '</p>';
       afterAnswer(p, panel, 'order', null);
       panel.querySelector('.pw-actions').innerHTML = '<button type="button" class="btn-outline pw-again">Shuffle and try again</button>' + report(itemId(p, 'order'));
-      panel.querySelector('.pw-again').addEventListener('click', function(){ stopPlayer(); orderVariant(p, panel); panel.querySelector('.pw-order button:not([disabled])').focus(); });
+      panel.querySelector('.pw-again').addEventListener('click', function(){ if(player){ player.stop(); player = null; } orderVariant(p, panel); panel.querySelector('.pw-order button:not([disabled])').focus(); });
       res.setAttribute('tabindex', '-1'); res.focus();
     });
   }
@@ -304,7 +500,7 @@
         res.innerHTML = verdict(pick.right, false, first) + '<p><b>Step ' + (at + 1) + ':</b> ' + html(p.steps[at].text) + ' ' + html(p.steps[at].why) + '</p>';
         afterAnswer(p, panel, 'missing', at);
         panel.querySelector('.pw-actions').innerHTML = '<button type="button" class="btn-outline pw-again">Try again</button>' + report(itemId(p, 'missing'));
-        panel.querySelector('.pw-again').addEventListener('click', function(){ stopPlayer(); missingVariant(p, panel); panel.querySelector('.pw-choices .anp-opt').focus(); });
+        panel.querySelector('.pw-again').addEventListener('click', function(){ if(player){ player.stop(); player = null; } missingVariant(p, panel); panel.querySelector('.pw-choices .anp-opt').focus(); });
         res.setAttribute('tabindex', '-1'); res.focus();
       });
     });
@@ -348,7 +544,7 @@
         '<p><b>The error was step ' + (at + 1) + '.</b> ' + html(e.why) + '</p>';
       afterAnswer(p, panel, 'error', at);
       panel.querySelector('.pw-actions').innerHTML = '<button type="button" class="btn-outline pw-again">Try again</button>' + report(itemId(p, 'error'));
-      panel.querySelector('.pw-again').addEventListener('click', function(){ stopPlayer(); errorVariant(p, panel); panel.querySelector('.pw-pick').focus(); });
+      panel.querySelector('.pw-again').addEventListener('click', function(){ if(player){ player.stop(); player = null; } errorVariant(p, panel); panel.querySelector('.pw-pick').focus(); });
       res.setAttribute('tabindex', '-1'); res.focus();
     });
   }
