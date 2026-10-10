@@ -56,6 +56,30 @@
     '<li><b>Compare</b> two model answers: one that earns the point, and one that sounds right but does not.</li></ol></details>';
   function openWide(){ try{ var d = app.querySelector('.chem-js-how'); if(d && matchMedia('(min-width: 900px)').matches) d.open = true; }catch(e){} }
 
+  /* Tool Studio (docs/tools-calm.md; pages.json studio: true puts
+     data-studio on #app). One prompt: the prompt and the answer box are the
+     stage, Check my answer is the dock; after the check, the rubric to tick,
+     Save my check and the two model answers are under Why, How it works and
+     the follow-up links under Details. The list: the prompts on the stage,
+     the two filters in the dock. */
+  var LS = null;
+  function studio(){
+    if(LS) return LS;
+    if(!app.getAttribute('data-studio') || !window.LevlStudio) return null;
+    var main = app.parentNode, h1 = main.querySelector('.chem-hero h1'), lede = main.querySelector('.chem-hero .lede');
+    main.classList.add('ls-host');
+    LS = window.LevlStudio.mount({ title: h1 ? h1.textContent : 'Justification trainer', course: 'AP® Chemistry', back: BASE + 'index.html', slug: 'apchem-justify', host: app,
+      menu: { copyLink: true, report: { course: 'apchem', id: 'page:justify' },
+        note: { label: 'Beta.', html: 'This course has not yet been reviewed by an AP® Chemistry teacher. <a href="' + BASE + '../sources.html">Sources</a>' } } });
+    // Back goes to the course home here, not to a tools page.
+    var back = LS.root.querySelector('.ls-back'); if(back) back.setAttribute('aria-label', 'Back to AP® Chemistry');
+    LS.root.querySelectorAll('.ls-menu a.ls-mi').forEach(function(a){ if(a.getAttribute('href') === BASE + 'index.html') a.querySelector('span').textContent = 'Course home'; });
+    if(lede){ var pp = document.createElement('p'); pp.textContent = lede.textContent; LS.add('about', pp); }
+    app.hidden = true;
+    return LS;
+  }
+  function lsBox(cls, els){ var d = document.createElement('div'); d.className = cls; (els || []).forEach(function(e){ if(e) d.appendChild(e); }); return d; }
+
   /* -------------------------------------------------------------- list */
   function list(){
     view('list');
@@ -69,20 +93,31 @@
         '<label class="chem-pr-field"><span>Unit</span><select id="chem-js-unit">' + opt('', 'Every unit', filter.unit) + units.map(function(u){ return opt(u, unitLabel(u) + (UNIT[u] ? ': ' + UNIT[u].title : ''), filter.unit); }).join('') + '</select></label>' +
         '<label class="chem-pr-field"><span>Skill</span><select id="chem-js-skill">' + opt('', 'Every skill', filter.skill) + skills.map(function(k){ return opt(k, DATA.skills[k] || k, filter.skill); }).join('') + '</select></label>' +
       '</form><p class="chem-small" id="chem-js-count" role="status" aria-live="polite"></p><ul class="chem-fq-list chem-js-list"></ul>' + HOW;
+    var form, countEl, listEl;
     function paint(){
       var shown = ps.filter(function(p){ return (!filter.unit || p.unit === filter.unit) && (!filter.skill || p.skill === filter.skill); });
-      app.querySelector('#chem-js-count').textContent = plural(shown.length, 'prompt') + (filter.unit || filter.skill ? ' match.' : '.');
-      app.querySelector('.chem-js-list').innerHTML = shown.map(function(p){
+      countEl.textContent = plural(shown.length, 'prompt') + (filter.unit || filter.skill ? ' match.' : '.');
+      listEl.innerHTML = shown.map(function(p){
         var s = sc[p.id];
         return '<li><a class="chem-fq-card" href="?p=' + encodeURIComponent(p.id) + '"><span class="chem-fq-card-k">' + esc(unitLabel(p.unit)) + ' &middot; ' + esc(DATA.skills[p.skill] || p.skill) + (p.free ? ' &middot; free' : '') + '</span>' +
           '<b>' + esc(p.title) + '</b><span class="chem-small">' + esc(TOPIC[p.topic] ? TOPIC[p.topic].title : '') + (s ? ' &middot; your best: ' + s.best + ' of ' + s.of : '') + (locked(p) ? ' &middot; Premium' : '') + '</span></a></li>';
       }).join('');
       try{ var q = new URLSearchParams(); q.set('list', '1'); if(filter.unit) q.set('unit', filter.unit); if(filter.skill) q.set('skill', filter.skill); history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '')); }catch(e){}
     }
-    app.querySelector('form').addEventListener('change', function(e){ if(e.target.id === 'chem-js-unit') filter.unit = e.target.value; else filter.skill = e.target.value; paint(); });
-    app.querySelector('form').addEventListener('submit', function(e){ e.preventDefault(); });
+    form = app.querySelector('form'); countEl = app.querySelector('#chem-js-count'); listEl = app.querySelector('.chem-js-list');
+    form.addEventListener('change', function(e){ if(e.target.id === 'chem-js-unit') filter.unit = e.target.value; else filter.skill = e.target.value; paint(); });
+    form.addEventListener('submit', function(e){ e.preventDefault(); });
     paint();
     openWide();
+    var S = studio();
+    if(S){
+      var how = app.querySelector('.chem-js-how'), intro = app.querySelector(':scope > p.chem-small');
+      S.add('stage', lsBox('chem-ls-jlist', [countEl, listEl]));
+      S.add('dock', form);
+      if(how){ how.open = true; S.add('why', how); }
+      if(intro) S.add('details', intro);
+      S.caption('Pick a prompt, write your answer, then check it against the rubric.');
+    }
   }
 
   /* --------------------------------------------------------- one prompt */
@@ -107,17 +142,34 @@
       '<div class="chem-pr-actions"><button type="button" class="btn-press" data-act="check">Check my answer</button></div></div>' +
       '<section class="chem-js-check" hidden aria-labelledby="chem-js-ch"></section>' + HOW;
     openWide();
-    var ta = app.querySelector('#chem-js-a'), timer = 0;
+    var ta = app.querySelector('#chem-js-a'), timer = 0, boxEl = app.querySelector('.chem-js-check'), after = null, checkBtn = app.querySelector('[data-act="check"]');
+    var S = studio();
+    if(S){
+      // The prompt and the answer box on the stage, Check in the dock.
+      var card = app.querySelector('.chem-js-card'), acts = card.querySelector('.chem-pr-actions'), nav = app.querySelector('.chem-js-nav'), kick = card.querySelector('.chem-fq-k'), how = app.querySelector('.chem-js-how');
+      card.classList.add('chem-ls-jcard');
+      after = lsBox('chem-ls-jafter');
+      if(nav) nav.classList.add('chem-ls-jnav');
+      S.add('stage', card);
+      S.add('dock', [acts, after, nav]);
+      acts.querySelector('[data-act="check"]').classList.add('ls-btn', 'ls-pri');
+      if(how){ how.open = true; }
+      S.add('why', [boxEl, how]);
+      if(kick) S.add('details', lsBox('ls-sec', [kick]));
+      S.pills([{ html: esc(unitLabel(p.unit)) + ' · ' + esc(DATA.skills[p.skill] || p.skill), tone: 'ghost' }], 'left');
+      S.caption(auto ? (left ? '<b>Your next prompt.</b> Write your answer, then check it.' : 'Write your answer, then check it against the rubric.') : 'Write your answer, then check it against the rubric.');
+      S.hint({ target: ta, text: 'Write your answer here', round: 14 });
+    }
     ta.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(function(){ saveDraft(p.id, ta.value); }, 300); });
-    app.querySelector('[data-act="check"]').addEventListener('click', function(){
-      var btn = this, box = app.querySelector('.chem-js-check');
+    checkBtn.addEventListener('click', function(){
+      var btn = this, box = boxEl;
       if(!ta.value.trim()){
         ta.setAttribute('aria-invalid', 'true');
-        if(!app.querySelector('.chem-js-empty')) ta.insertAdjacentHTML('afterend', '<p class="chem-small chem-js-empty" role="alert">Write your answer first: the checklist works only against something you wrote.</p>');
+        if(!ta.parentNode.querySelector('.chem-js-empty')) ta.insertAdjacentHTML('afterend', '<p class="chem-small chem-js-empty" role="alert">Write your answer first: the checklist works only against something you wrote.</p>');
         ta.focus(); return;
       }
       ta.removeAttribute('aria-invalid');
-      var e = app.querySelector('.chem-js-empty'); if(e) e.remove();
+      var e = ta.parentNode.querySelector('.chem-js-empty'); if(e) e.remove();
       saveDraft(p.id, ta.value);
       btn.hidden = true;
       box.hidden = false;
@@ -142,10 +194,26 @@
         if(Core) Core.event('apchem-justify-check', { prompt: p.id, got: got, of: p.checklist.length });
         this.textContent = 'Saved'; this.disabled = true;
       });
-      box.querySelector('[data-act="again"]').addEventListener('click', function(){ box.hidden = true; btn.hidden = false; ta.focus(); });
-      box.querySelector('#chem-js-ch').focus();
+      box.querySelector('[data-act="again"]').addEventListener('click', function(){
+        box.hidden = true; btn.hidden = false;
+        if(S){ S.close(); after.innerHTML = ''; S.pills([{ html: esc(unitLabel(p.unit)) + ' · ' + esc(DATA.skills[p.skill] || p.skill), tone: 'ghost' }], 'left'); S.caption('Rewrite your answer, then check it again.'); }
+        ta.focus();
+      });
+      if(S){
+        /* The verdict on the stage (a pill), the rubric to tick under Why;
+           Save my check stays with the ticks, Rewrite and Next go to the dock. */
+        var a2 = box.querySelector('.chem-pr-actions'), save = a2.querySelector('[data-act="save"]');
+        box.querySelector('.chem-fq-total').insertAdjacentElement('afterend', lsBox('chem-pr-actions', [save]));
+        after.innerHTML = ''; after.appendChild(a2);
+        [].slice.call(a2.querySelectorAll('.btn-outline')).forEach(function(b){ b.classList.add('ls-btn'); });
+        save.classList.add('ls-btn', 'ls-pri');
+        var pts = function(){ var n = box.querySelectorAll('.chem-fq-point input:checked').length; S.pills([{ html: n + ' of ' + p.checklist.length + ' points', tone: n === p.checklist.length ? 'good' : n ? 'warn' : 'ghost' }], 'left'); };
+        box.addEventListener('change', pts); pts();
+        S.caption('<b>Check your answer under Why.</b> Tick each point it makes, then save.');
+        S.open('why', box.querySelector('#chem-js-ch'));
+      } else box.querySelector('#chem-js-ch').focus();
     });
-    var t = app.querySelector('.chem-js-title'); if(t && location.search.indexOf('p=') > -1) t.focus();
+    var t = document.querySelector('.chem-js-title'); if(t && location.search.indexOf('p=') > -1) t.focus();
   }
 
   function route(){
@@ -166,5 +234,5 @@
     DATA = d;
     if(!d.prompts || !d.prompts.length){ app.innerHTML = '<p>No prompts are published yet. Meanwhile, read the <a href="' + BASE + 'learn.html">free notes</a>.</p>'; return; }
     route();
-  }).catch(function(){ app.innerHTML = '<p>The prompts did not load. Check your connection and reload.</p>'; });
+  }).catch(function(e){ try{ console.error(e); }catch(x){} if(LS){ LS.suspend(true); app.hidden = false; } app.innerHTML = '<p>The prompts did not load. Check your connection and reload.</p>'; });
 })();

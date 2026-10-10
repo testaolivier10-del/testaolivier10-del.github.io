@@ -55,6 +55,7 @@
    "lede": "Write an explain or justify answer, then check it against the rubric and two model answers.",
    "card": "Explain and justify prompts with a rubric checklist and two model answers.",
    "script": "pages/justify.js",
+   "studio": true,
    "css": [
     "pages/pages.css",
     "pages/entry.css"
