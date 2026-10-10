@@ -205,3 +205,9 @@
 .cp-key span{white-space:nowrap;}
 .cp-sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px;}
 .cp-sw.tone-o2{background:var(--anp-o2);} .cp-sw.tone-lo{background:var(--anp-lo);} .cp-sw.tone-hi{background:var(--anp-hi);} .cp-sw.tone-accent{background:var(--cink);} .cp-sw.tone-shape{background:var(--anp-shape);}
+
+/* simplify pass: formula and presets under "Formula and worked examples", steps under "Show every step" */
+.calc-more .calc-formula{margin:0 0 10px;}
+.calc-more .calc-presets{margin:0;}
+.calc-workd{margin-top:12px;}
+.calc-workd > .calc-work{padding-top:4px;}

@@ -231,9 +231,8 @@
         '<p class="calc-eyebrow">Topic ' + n + ' · ' + topicLink(c.topic) + '</p>' +
         '<h2>' + esc(c.title) + '</h2>' +
         '<p class="calc-intro">' + c.intro + '</p>' +
-        '<p class="calc-formula" aria-label="Formula">' + c.formula + '</p>' +
       '</header>' +
-      '<div class="calc-modes" role="group" aria-label="Mode">' +
+      '<div class="calc-modes kt-seg" role="group" aria-label="Mode">' +
         '<button type="button" class="calc-mode" data-mode="calc" aria-pressed="' + (mode === 'calc') + '">Calculate</button>' +
         '<button type="button" class="calc-mode" data-mode="practice" aria-pressed="' + (mode === 'practice') + '">Practice</button>' +
       '</div>' +
@@ -257,10 +256,12 @@
 
   function renderCalc(){
     var c = current, body = app.querySelector('.calc-body');
-    body.innerHTML =
-      ((c.presets || []).length ? '<div class="calc-presets" role="group" aria-label="Load an example"><span class="calc-presets-h">Try:</span>' + c.presets.map(function(p, i){
+    var presets = (c.presets || []).length ? '<div class="calc-presets" role="group" aria-label="Load an example"><span class="calc-presets-h">Try:</span>' + c.presets.map(function(p, i){
         return '<button type="button" class="calc-preset" data-i="' + i + '">' + esc(p.label) + '</button>';
-      }).join('') + '</div>' : '') +
+      }).join('') + '</div>' : '';
+    var K = window.AnpToolKit && window.AnpToolKit.more ? window.AnpToolKit : null;
+    body.innerHTML =
+      '<p class="kt-first calc-first">' + (c.picture ? 'Drag a slider or type a number, and watch the picture and the answer change.' : 'Type your numbers and the answer and every step update as you go.') + '</p>' +
       (c.picture ? '<figure class="calc-pic" aria-label="Live picture"></figure>' : '') +
       '<div class="calc-grid">' +
         '<form class="calc-inputs" novalidate onsubmit="return false">' + c.inputs.map(function(inp){
@@ -274,7 +275,8 @@
         }).join('') + '</form>' +
         '<div class="calc-out" aria-live="polite"></div>' +
       '</div>' +
-      '<div class="calc-work"></div>';
+      (K ? K.more('<p class="calc-formula" aria-label="Formula">' + c.formula + '</p>' + presets, { label: 'Formula and worked examples', cls: 'calc-more' }) : '<p class="calc-formula" aria-label="Formula">' + c.formula + '</p>' + presets) +
+      (K ? '<details class="kt-more calc-workd"><summary>Show every step</summary><div class="kt-more-b calc-work"></div></details>' : '<div class="calc-work"></div>');
     body.querySelectorAll('.calc-preset').forEach(function(b){
       b.addEventListener('click', function(){
         var p = c.presets[+b.getAttribute('data-i')];
@@ -734,7 +736,8 @@
     var st = window.AnpCore ? window.AnpCore.toolStats(KIND) : { by: {} };
     var mine = (st.by || {})[c.id];
     body.innerHTML =
-      '<p class="calc-record">' + (mine && mine.n ? 'Your practice record here: ' + mine.c + ' of ' + mine.n + ' correct.' : 'Answer, then see the full worked solution.') + '</p>' +
+      '<p class="kt-first calc-first">Work it out and type your answer.</p>' +
+      '<p class="calc-record">' + (mine && mine.n ? 'Your practice record here: ' + mine.c + ' of ' + mine.n + ' correct.' : 'Then see the full worked solution.') + '</p>' +
       '<div class="calc-problem">' +
         '<p class="calc-prompt">' + fill(c, ask.prompt, p.env) + '</p>' +
         '<form class="calc-answer" novalidate>' +
@@ -748,6 +751,7 @@
           '<p class="calc-msg" role="status" aria-live="polite"></p>' +
         '</form>' +
       '</div>' +
+      (window.AnpToolKit && window.AnpToolKit.more ? window.AnpToolKit.more('<p class="calc-formula" aria-label="Formula">' + c.formula + '</p>', { label: 'Show the formula', cls: 'calc-more' }) : '<p class="calc-formula" aria-label="Formula">' + c.formula + '</p>') +
       '<div class="calc-feedback" aria-live="polite"></div>';
     var form = body.querySelector('.calc-answer'), input = body.querySelector('#calc-ans');
     var sign = body.querySelector('.calc-sign');
