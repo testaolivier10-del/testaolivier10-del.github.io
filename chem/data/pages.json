@@ -158,7 +158,8 @@
    "name": "Titration curve reader",
    "title": "Titration curve reader",
    "desc": "Read titration curves computed from the equilibrium math: equivalence and half-equivalence points, pKa, indicator choice and the species present.",
-   "blurb": "Equivalence, half-equivalence and pKa, indicator choice and the species at each point.", "lede": "Add titrant from the burette and watch the pH curve and the flask change."
+   "blurb": "Equivalence, half-equivalence and pKa, indicator choice and the species at each point.", "lede": "Add titrant from the burette and watch the pH curve and the flask change.",
+   "studio": true
   },
   {
    "slug": "buffer-drills",

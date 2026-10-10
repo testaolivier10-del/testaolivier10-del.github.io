@@ -142,6 +142,14 @@
       out.innerHTML = S.readout([['Total N', String(r.N)], ['df', r.df + ' <small>(' + c.cats.length + ' − 1)</small>'], ['χ²', F(r.chi2, 2)], ['Critical, p = 0.05', F(r.crit, 2)]]) +
         '<p class="sk-decide">' + verdict(r.reject) + ' <span>' + (r.reject ? 'χ² is past the line: gaps this big would happen by chance less than 5% of the time if the null were true.' : 'χ² is short of the line: chance alone could easily give gaps this size.') + '</span></p>' +
         (low ? '<p class="sk-warn">An expected count is under 5: the test is not reliable with a sample this small.</p>' : '');
+      // Tool Studio: the result lands on the stage, one line in the caption.
+      var LS = window.LevlStudio && window.LevlStudio.get();
+      if(LS){
+        LS.pills([{ k: 'χ²', html: F(r.chi2, 2), tone: 'readout' }, r.chi2 < 0.005 ? null : { html: r.reject ? 'Reject the null' : 'Fail to reject', tone: r.reject ? 'bad' : 'good' }], 'left', 'explore');
+        LS.pills([{ html: 'df ' + r.df + ' · critical ' + F(r.crit, 2), tone: 'ghost' }], 'right', 'explore');
+        LS.caption(r.chi2 < 0.005 ? '<b>Observed matches expected,</b> so χ² is 0. Pull a bar away from its box.'
+          : '<b>χ² = ' + F(r.chi2, 2) + '</b>, ' + (r.reject ? 'past' : 'short of') + ' the critical value ' + F(r.crit, 2) + ': ' + (r.reject ? 'reject' : 'fail to reject') + ' the null.' + (low ? ' An expected count is under 5.' : ''), 'explore');
+      }
       return r;
     }
     function explain(i, r, flip){

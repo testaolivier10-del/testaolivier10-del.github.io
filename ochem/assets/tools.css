@@ -862,3 +862,7 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
   .rp-ls .rp-corner[data-path="E1"]{grid-area:3/2;} .rp-ls .rp-corner[data-path="E2"]{grid-area:3/3;}
   .rp-ls .rp-none{grid-area:4/2/5/4;}
 }
+.rp-ls #rpOpts > summary{flex-wrap:nowrap;white-space:nowrap;font-size:var(--ls-s);font-weight:800;color:var(--muted);}
+.rp-ls #rpOpts .tool-more__now{min-width:0;overflow:hidden;text-overflow:ellipsis;font-size:var(--ls-m);}
+.rp-ls .rp-bar i{background:var(--cink);}
+.rp-ls .rp-meters{font-size:var(--ls-s);}

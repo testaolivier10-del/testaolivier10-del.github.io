@@ -35,16 +35,21 @@
                 periodic: true (default when a .pt-fab exists),
                 items: [{ label, onClick | href }] }
      whyTitle 'Why' (tab label)      detailsTitle 'Details'
+     footer   selector               the site footer, moved to the end of About
+                                     (default: the page's footer elements)
    Methods (all return s unless noted):
      s.add(region, els, { mode })   move els into 'stage' | 'dock' | 'why' |
                                     'details' | 'about'; with mode, they show
                                     only in that mode ('explore', 'practice'...)
      s.mode(v)                      switch modes (shows/hides mode-only parts)
-     s.caption(html)                set the caption line (polite live region)
-     s.pills(list, side)            result pills on the stage: list of
+     s.modes(m)                     set up the mode switch after mount (as opts.modes)
+     s.caption(html, mode?)         set the caption line (polite live region)
+     s.pills(list, side?, mode?)    result pills on the stage: list of
                                     { html, tone: 'accent'|'good'|'bad'|'warn'|
                                     'ghost'|'readout', k } ; side 'left' (default)
-                                    or 'right'
+                                    or 'right'. Caption and pills are kept per
+                                    mode (given, or the one showing) and come
+                                    back when that mode does.
      s.open(tab, focusEl?)          open the sheet on 'why' | 'details' | 'about'
      s.close()
      s.hint({ target, text, key })  pulse + tooltip on target, once per tool
@@ -199,10 +204,12 @@
       mode = v;
       if(modeBtns) modeBtns.forEach(function(b){ var on = b.getAttribute('data-v') === v; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); });
       paintMode();
+      if(capEl){ showCap(); showPills(); }
       return s;
     };
     function setupModes(m){
-      if(!m) { modesEl.hidden = true; return; }
+      modesEl.hidden = !m;
+      if(!m) return;
       if(m.el){
         m.el.classList.add('ls-seg', 'ls-seg-adopted');
         modesEl.appendChild(m.el);
@@ -224,17 +231,30 @@
     }
 
     /* ---------------- caption and pills */
-    s.caption = function(html){ capEl.innerHTML = html || ''; q('.ls-cap').classList.toggle('is-empty', !html); return s; };
+    /* Caption and pills are kept per mode: s.caption(html, 'practice') sets
+       the practice caption even while Explore is showing, and switching modes
+       brings each mode's own back. Without a mode they belong to the mode
+       showing now (or to the page when there are no modes). */
+    var capBy = {}, pillBy = {};
+    function key(m){ return m || mode || '*'; }
+    function showCap(){ var h = capBy[key()]; if(h == null) h = capBy['*'] || ''; capEl.innerHTML = h; q('.ls-cap').classList.toggle('is-empty', !h); }
+    function showPills(){
+      ['left', 'right'].forEach(function(side){
+        var p = pillBy[key() + '|' + side]; if(p == null) p = pillBy['*|' + side] || '';
+        q(side === 'right' ? '.ls-pills-r' : '.ls-pills-l').innerHTML = p;
+      });
+    }
+    s.caption = function(html, m){ capBy[key(m)] = html || ''; if(key(m) === key() || key(m) === '*') showCap(); return s; };
     var TONES = { accent: 1, good: 1, bad: 1, warn: 1, ghost: 1, readout: 1 };
-    s.pills = function(items, side){
-      var box = q(side === 'right' ? '.ls-pills-r' : '.ls-pills-l');
-      box.innerHTML = (items || []).filter(Boolean).map(function(p){
+    s.pills = function(items, side, m){
+      pillBy[key(m) + '|' + (side === 'right' ? 'right' : 'left')] = (items || []).filter(Boolean).map(function(p){
         var tone = TONES[p.tone] ? p.tone : 'accent';
         return '<span class="ls-pill ls-pill-' + tone + '">' + (p.k ? '<span class="ls-pill-k">' + p.k + '</span> ' : '') + p.html + '</span>';
       }).join('');
+      if(key(m) === key() || key(m) === '*') showPills();
       return s;
     };
-    s.pill = function(html, tone, side){ return s.pills(html ? [{ html: html, tone: tone }] : [], side); };
+    s.pill = function(html, tone, side, m){ return s.pills(html ? [{ html: html, tone: tone }] : [], side, m); };
 
     /* ---------------- sheet (Why / Details) */
     function setTab(t){
@@ -323,6 +343,7 @@
     /* ---------------- menu */
     function say(t){ toast.textContent = t; toast.classList.add('show'); clearTimeout(say.t); say.t = setTimeout(function(){ toast.classList.remove('show'); toast.textContent = ''; }, 3200); }
     s.say = say;
+    s.modes = function(m){ setupModes(m); return s; };
     var acts = {};
     function item(key, ic, label, extra){ return '<button type="button" class="ls-mi" data-ls-act="' + key + '"' + (extra || '') + '>' + icon(ic) + '<span>' + label + '</span></button>'; }
     function buildMenu(){
@@ -402,6 +423,16 @@
 
     /* ---------------- hint */
     s.hint = function(o){ return hint(s, o, opts.slug); };
+
+    /* The site footer (legal links, the course's notes) goes to the end of
+       About, so the page is exactly one screen and nothing is lost. */
+    list(opts.footer || 'body > footer, body > .xshell > footer, body > .bio-foot, body > .chem-foot').forEach(function(f){
+      if(root.contains(f)) return;
+      var wrap = f.parentNode !== document.body && f.parentNode.children.length === 1 ? f.parentNode : f;
+      wrap.classList.add('ls-foot');
+      aboutB.appendChild(wrap);
+      aboutS.hidden = false;
+    });
 
     current = s;
     setupModes(opts.modes);

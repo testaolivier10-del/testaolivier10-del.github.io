@@ -857,8 +857,7 @@
     studio.add('why', [byId('rpVerdict'), byId('rpRead'), byId('rpDelta'), byId('rpLive')]);
     studio.details.insertBefore(det, studio.details.firstChild);
     // The tool's own mode switch goes to the top of the dock.
-    studio.root.querySelector('.ls-modes').appendChild(byId('rpMode'));
-    byId('rpMode').classList.add('ls-seg');
+    studio.modes({ el: byId('rpMode'), value: state.mode });
     root.hidden = true;
     ls = { next: next, det: det };
   }
@@ -874,7 +873,7 @@
     var result = none ? 'no reaction' : (p.minor ? 'mostly ' + p.major + ', some ' + p.minor : p.major);
     var head = '<b>' + esc(state.sub.name) + ' + ' + esc(state.rgt.name) + '.</b> ';
     var cls = CLS_SHORT[state.sub.cls] || '';
-    var kind = upper(esc(state.rgt.kind.toLowerCase()));
+    var kind = upper(esc(state.rgt.kind.split(',')[0].toLowerCase()));
     if(pred && !state.revealed){
       studio.caption(head + 'Which path wins? Tap the tile you think wins.');
       studio.pills([{ html: 'Your call', tone: 'ghost' }]);
@@ -885,7 +884,7 @@
       studio.pills([{ html: (right ? 'Correct: ' : 'It is ') + esc(p.major), tone: right ? 'good' : 'bad' },
         state.score.total ? { html: state.score.right + ' of ' + state.score.total + ' right', tone: 'ghost' } : null]);
     } else {
-      studio.caption(head + kind + (cls ? ' on a ' + cls + ' carbon' : '') + ': ' + esc(result) + '.');
+      studio.caption(head + kind + (cls ? ' on a ' + cls + ' carbon' : '') + ': ' + esc(none ? result : p.minor ? 'mostly ' + p.major : p.major) + '.');
       studio.pills(none ? [{ html: 'No reaction', tone: 'ghost' }]
         : [{ html: (p.minor ? 'Mostly ' : '') + esc(p.major) }, p.minor ? { html: 'some ' + esc(p.minor), tone: 'ghost' } : null]);
     }
@@ -1012,7 +1011,8 @@
       ? (state.revealed ? 'Change anything, or tap <b>Next flask</b>, to try another.'
                         : '<b>Read the flask, then tap the corner of the meter you think wins.</b>')
       : '<b>Pick a substrate and a reagent.</b> The meter shows which mechanism wins.';
-    document.getElementById('rpOptsNow').textContent = '· ' + state.solvent.name + ', ' + (state.heat ? 'heat' : 'room temp');
+    document.getElementById('rpOptsNow').textContent = ls ? state.solvent.name + ', ' + (state.heat ? 'heat' : '25 °C')
+      : '· ' + state.solvent.name + ', ' + (state.heat ? 'heat' : 'room temp');
 
     document.getElementById('rpScore').textContent =
       state.mode === 'predict' && state.score.total ? state.score.right + ' of ' + state.score.total + ' right' : '';
