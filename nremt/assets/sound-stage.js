@@ -5,13 +5,18 @@
    One job: hear each sound where it is actually listened for, and see when
    in the heartbeat or the breath it falls.
 
-   Why a 2D chest and not the 3D body (LevlBodyViewer): auscultation points
-   are defined by surface landmarks (the 2nd intercostal space at the right
-   sternal border, the 5th at the midclavicular line). The 3D model is bones
-   and organs, 4 MB, lazy-loaded, and rotates; on a 390 px phone five heart
-   sites sit within about 2 cm of each other on it and a rotated view moves
-   them. A flat front and back view with the ribs drawn puts each site at a
-   fixed, countable place, loads at once and is tappable on a phone.
+   Why a flat chest and not the live 3D body (LevlBodyViewer): auscultation
+   points are defined by surface landmarks (the 2nd intercostal space at the
+   right sternal border, the 5th at the midclavicular line). The 3D model is
+   4 MB, lazy-loaded, and rotates; on a 390 px phone five heart sites sit
+   within about 2 cm of each other on it and a rotated view moves them. So the
+   same model is rendered flat instead (scripts/build-body-figures.mjs): the
+   torso with its ribs, costal cartilages, sternum, clavicles and heart (back:
+   scapulae, spine and ribs) faintly under the skin, and every site placed from
+   the skeleton's own landmarks, measured in 3D and projected (the rib ends
+   give the intercostal spaces, the clavicles the midclavicular lines, the 7th
+   rib's lateral point the midaxillary line, the scapulae the posterior sites).
+   The drawing's x, y below are the fallback until that data loads.
 
    Modes: explore (pick a finding, tap a site, hear it there, see the strip,
    compare two side by side), where (tap where you would listen for X) and
@@ -31,50 +36,51 @@
   function say(t){ if(window.LevlAnnounce) window.LevlAnnounce.say(t); }
 
   /* ---- The sites ---------------------------------------------------------
-     x, y in a 300 x 330 drawing of the torso. Front view: the patient's right
+     x, y in the 600 x 660 chest figure (replaced by the measured landmarks
+     from body-figs/chest.js when it loads). Front view: the patient's right
      is on the viewer's left. Back view: the patient's left is on the viewer's
      left. */
   var SITES = [
-    { id:'trachea',  view:'front', x:150, y:22,  kind:'airway', name:'Over the trachea',
+    { id:'trachea',  view:'front', x:300, y:44,  kind:'airway', name:'Over the trachea',
       where:'Front of the neck, above the sternal notch.',
       note:'Stridor is made in the upper airway, so it is loudest here; often you can hear it without a stethoscope.' },
-    { id:'aortic',   view:'front', x:128, y:100, kind:'heart', name:'Aortic area',
+    { id:'aortic',   view:'front', x:256, y:200, kind:'heart', name:'Aortic area',
       where:'2nd intercostal space, right sternal border.',
       note:'The base of the heart: S2 is louder than S1 here. The murmur of aortic stenosis is loudest here and carries up into the neck.' },
-    { id:'pulmonic', view:'front', x:172, y:100, kind:'heart', name:'Pulmonic area',
+    { id:'pulmonic', view:'front', x:344, y:200, kind:'heart', name:'Pulmonic area',
       where:'2nd intercostal space, left sternal border.',
       note:'Also the base, so S2 is loud. The pulmonic part of S2 (P2) is soft and heard mainly here, which makes this the place to hear S2 split.' },
-    { id:'erb',      view:'front', x:172, y:126, kind:'heart', name:'Erb’s point',
+    { id:'erb',      view:'front', x:344, y:252, kind:'heart', name:'Erb’s point',
       where:'3rd intercostal space, left sternal border.',
       note:'Halfway between base and apex: S1 and S2 come through about equally. The diastolic murmur of aortic regurgitation is often loudest here.' },
-    { id:'tricuspid',view:'front', x:166, y:158, kind:'heart', name:'Tricuspid area',
+    { id:'tricuspid',view:'front', x:332, y:316, kind:'heart', name:'Tricuspid area',
       where:'4th to 5th intercostal space, lower left sternal border.',
       note:'Over the right ventricle. S1 is louder than S2 here.' },
-    { id:'mitral',   view:'front', x:212, y:170, kind:'heart', name:'Mitral area (apex)',
+    { id:'mitral',   view:'front', x:424, y:340, kind:'heart', name:'Mitral area (apex)',
       where:'5th intercostal space, left midclavicular line.',
       note:'The apex: S1 is loudest here. S3 and S4 are best heard here with the bell, with the patient rolled onto the left side.' },
-    { id:'lung-ru',  view:'front', x:86,  y:84,  kind:'lung', side:'right', level:'upper', name:'Right lung apex',
+    { id:'lung-ru',  view:'front', x:172, y:168,  kind:'lung', side:'right', level:'upper', name:'Right lung apex',
       where:'Just below the right clavicle, midclavicular line.',
       note:'Compare with the same spot on the left: a difference side to side is the finding.' },
-    { id:'lung-lu',  view:'front', x:214, y:76,  kind:'lung', side:'left', level:'upper', name:'Left lung apex',
+    { id:'lung-lu',  view:'front', x:428, y:152,  kind:'lung', side:'left', level:'upper', name:'Left lung apex',
       where:'Just below the left clavicle, midclavicular line.',
       note:'Compare with the same spot on the right.' },
-    { id:'lung-rl',  view:'front', x:52,  y:214, kind:'lung', side:'right', level:'lower', name:'Right lung base (side)',
+    { id:'lung-rl',  view:'front', x:104, y:428, kind:'lung', side:'right', level:'lower', name:'Right lung base (side)',
       where:'Right midaxillary line, lower ribs.',
       note:'The bases are where fluid settles, so the crackles of early pulmonary edema show up here first.' },
-    { id:'lung-ll',  view:'front', x:248, y:214, kind:'lung', side:'left', level:'lower', name:'Left lung base (side)',
+    { id:'lung-ll',  view:'front', x:496, y:428, kind:'lung', side:'left', level:'lower', name:'Left lung base (side)',
       where:'Left midaxillary line, lower ribs.',
       note:'Compare with the right base at the same level.' },
-    { id:'back-lu',  view:'back',  x:118, y:96,  kind:'lung', side:'left', level:'upper', name:'Left upper back',
+    { id:'back-lu',  view:'back',  x:236, y:192,  kind:'lung', side:'left', level:'upper', name:'Left upper back',
       where:'Between the left shoulder blade and the spine.',
       note:'Most lung tissue lies behind: the back is where breath sounds are easiest to compare side to side.' },
-    { id:'back-ru',  view:'back',  x:182, y:96,  kind:'lung', side:'right', level:'upper', name:'Right upper back',
+    { id:'back-ru',  view:'back',  x:364, y:192,  kind:'lung', side:'right', level:'upper', name:'Right upper back',
       where:'Between the right shoulder blade and the spine.',
       note:'Compare with the left at the same level.' },
-    { id:'back-ll',  view:'back',  x:104, y:226, kind:'lung', side:'left', level:'lower', name:'Left lower back (base)',
+    { id:'back-ll',  view:'back',  x:208, y:452, kind:'lung', side:'left', level:'lower', name:'Left lower back (base)',
       where:'Below the tip of the left shoulder blade.',
       note:'The lung bases are largely posterior. Crackles from fluid are heard here first, in a patient sitting up.' },
-    { id:'back-rl',  view:'back',  x:196, y:226, kind:'lung', side:'right', level:'lower', name:'Right lower back (base)',
+    { id:'back-rl',  view:'back',  x:392, y:452, kind:'lung', side:'right', level:'lower', name:'Right lower back (base)',
       where:'Below the tip of the right shoulder blade.',
       note:'Compare with the left base at the same level.' }
   ];
@@ -159,45 +165,37 @@
     if(parent) parent.appendChild(n);
     return n;
   }
-  var HALF = [[128,0],[128,34],[96,44],[62,52],[38,64],[26,90],[32,130],[38,180],[40,240],[46,290],[52,330]];
-  function torsoPath(){
-    var l = HALF.map(function(p){ return p[0] + ' ' + p[1]; });
-    var r = HALF.slice().reverse().map(function(p){ return (300 - p[0]) + ' ' + p[1]; });
-    return 'M' + l.join(' L') + ' L' + r.join(' L') + ' Z';
-  }
-  function drawBody(svg, view){
-    while(svg.firstChild) svg.removeChild(svg.firstChild);
-    var g = el('g', { 'aria-hidden':'true' }, svg);
-    el('path', { d: torsoPath(), class:'st-skin' }, g);
-    if(view === 'front'){
-      // lungs and heart, faint
-      el('path', { d:'M138 64 C110 60 70 80 60 140 C54 190 56 230 62 252 C90 246 120 238 136 232 Z', class:'st-organ' }, g);
-      el('path', { d:'M162 64 C190 60 230 80 240 140 C246 190 244 230 238 252 C214 246 200 240 196 236 C206 200 204 170 190 150 C180 120 168 100 162 64 Z', class:'st-organ' }, g);
-      el('path', { d:'M136 104 C150 96 176 100 190 116 C210 138 222 160 214 178 C200 190 170 184 150 172 C132 160 124 128 136 104 Z', class:'st-heart' }, g);
-      // ribs and intercostal spaces
-      for(var i = 0; i < 7; i++){
-        var y = 66 + i * 22 + (i ? 4 : 0);
-        el('path', { d:'M140 ' + y + ' Q100 ' + (y + 4) + ' ' + (58 - i) + ' ' + (y + 22), class:'st-rib' }, g);
-        el('path', { d:'M160 ' + y + ' Q200 ' + (y + 4) + ' ' + (242 + i) + ' ' + (y + 22), class:'st-rib' }, g);
-      }
-      el('path', { d:'M146 56 Q110 46 66 54 M154 56 Q190 46 234 54', class:'st-bone' }, g); // clavicles
-      el('rect', { x:141, y:56, width:18, height:136, rx:7, class:'st-bone st-sternum' }, g);
-      // landmark lines
-      el('line', { x1:86, y1:60, x2:86, y2:260, class:'st-guide' }, g);
-      el('line', { x1:214, y1:60, x2:214, y2:260, class:'st-guide' }, g);
-      ['2','3','4','5'].forEach(function(n, k){
-        var t = el('text', { x:150, y:104 + k * 24, class:'st-ics' }, g); t.textContent = n;
+  /* Site positions from the rendered figure's measured landmarks. */
+  function placeSites(F){
+    ['front', 'back'].forEach(function(v){
+      var f = F && F.figs['chest-' + v];
+      if(!f) return;
+      SITES.forEach(function(s){
+        var p = s.view === v && f.landmarks[s.id];
+        if(p){ s.x = p[0]; s.y = p[1]; }
       });
-      lab(g, 18, 18, 'R'); lab(g, 282, 18, 'L');
-      var cap = el('text', { x:86, y:274, class:'st-cap' }, g); cap.textContent = 'MCL';
-      var cap2 = el('text', { x:214, y:274, class:'st-cap' }, g); cap2.textContent = 'MCL';
+    });
+  }
+  function drawBody(svg, view, F){
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    var f = F && F.figs['chest-' + view];
+    svg.setAttribute('viewBox', '0 0 600 660');
+    var g = el('g', { 'aria-hidden':'true' }, svg);
+    if(!f) return;
+    el('image', { href: F.url(f), width: f.w, height: f.h, class:'st-img' }, g);
+    var L = f.landmarks;
+    if(view === 'front'){
+      // the midclavicular lines and the intercostal space numbers at the left sternal border
+      L.mclX.forEach(function(x){ el('line', { x1:x, y1:L.mclTop, x2:x, y2:L.mclBottom, class:'st-guide' }, g); });
+      var ex = L.sternumX - L.sternalHalfPx - 66;
+      [2, 3, 4, 5].forEach(function(n){
+        var t = el('text', { x: ex, y: L.icsY[n], class:'st-ics', dy:'0.35em' }, g); t.textContent = n;
+      });
+      var cap = el('text', { x: ex, y: L.icsY[5] + 36, class:'st-cap' }, g); cap.textContent = 'ICS';
+      L.mclX.forEach(function(x){ var c = el('text', { x:x, y:L.mclBottom + 22, class:'st-cap' }, g); c.textContent = 'MCL'; });
+      lab(g, 30, 40, 'R'); lab(g, 570, 40, 'L');
     } else {
-      el('path', { d:'M138 60 C110 56 66 80 58 150 C52 210 56 250 64 272 L138 272 Z', class:'st-organ' }, g);
-      el('path', { d:'M162 60 C190 56 234 80 242 150 C248 210 244 250 236 272 L162 272 Z', class:'st-organ' }, g);
-      for(var v = 0; v < 13; v++) el('rect', { x:144, y:40 + v * 19, width:12, height:13, rx:3, class:'st-bone' }, g);
-      el('path', { d:'M66 66 L132 70 L120 112 L94 178 Z', class:'st-scap' }, g);
-      el('path', { d:'M234 66 L168 70 L180 112 L206 178 Z', class:'st-scap' }, g);
-      lab(g, 18, 18, 'L'); lab(g, 282, 18, 'R');
+      lab(g, 30, 40, 'L'); lab(g, 570, 40, 'R');
     }
   }
   function lab(g, x, y, t){ var n = el('text', { x:x, y:y, class:'st-rl' }, g); n.textContent = t; }
@@ -207,10 +205,10 @@
     SITES.filter(function(s){ return s.view === view; }).forEach(function(s){
       var g = el('g', { class:'st-site st-site--' + s.kind, 'data-site': s.id, role:'button', tabindex:'0',
         'aria-label': s.name + ', ' + s.where }, svg);
-      el('circle', { cx:s.x, cy:s.y, r:22, class:'st-halo' }, g);
-      el('circle', { cx:s.x, cy:s.y, r:19, class:'st-hit' }, g);
-      el('circle', { cx:s.x, cy:s.y, r:10, class:'st-dot' }, g);
-      el('circle', { cx:s.x, cy:s.y, r:3.5, class:'st-core' }, g);
+      el('circle', { cx:s.x, cy:s.y, r:40, class:'st-halo' }, g);
+      el('circle', { cx:s.x, cy:s.y, r:34, class:'st-hit' }, g);
+      el('circle', { cx:s.x, cy:s.y, r:17, class:'st-dot' }, g);
+      el('circle', { cx:s.x, cy:s.y, r:6, class:'st-core' }, g);
       g.addEventListener('click', function(){ opts.onTap(s); });
       g.addEventListener('keydown', function(e){
         if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); opts.onTap(s); }
@@ -442,7 +440,8 @@
         '<div class="st-fig">' +
           '<div class="st-views" role="group" aria-label="Side of the body">' +
             '<button type="button" data-view="front">Front</button><button type="button" data-view="back">Back</button></div>' +
-          '<svg class="st-body" viewBox="0 0 300 330" aria-label="Chest, front view. Each listening spot is a button."></svg>' +
+          '<svg class="st-body" viewBox="0 0 600 660" aria-label="Chest, front view. Each listening spot is a button."></svg>' +
+          '<p class="st-credit">Figure rendered from <a href="https://lifesciencedb.jp/bp3d/" target="_blank" rel="noopener">BodyParts3D</a>, © 2008 Life Science Integrated Database Center, <a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en" target="_blank" rel="noopener">CC BY-SA 2.1 Japan</a>.</p>' +
         '</div>' +
         '<div class="st-side"></div>' +
       '</div>' +
@@ -454,7 +453,12 @@
     var main = root.querySelector('.st-main');
     var timingBox = root.querySelector('.st-timing');
     var quizSection = opts.quizSection;
-    var siteEls = {};
+    var siteEls = {}, figs = null;
+    if(window.LevlBodyFigs) window.LevlBodyFigs.load('chest', function(F){
+      if(!F) return;
+      figs = F; placeSites(F);
+      if(typeof st !== "undefined" && st && st.view) setView(st.view);
+    });
 
     /* volume */
     var mute = root.querySelector('.st-mute'), range = root.querySelector('.st-range');
@@ -487,7 +491,7 @@
       st.view = v;
       root.querySelectorAll('[data-view]').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.view === v ? 'true' : 'false'); });
       svg.setAttribute('aria-label', 'Chest, ' + (v === 'front' ? 'front' : 'back') + ' view. Each listening spot is a button.');
-      drawBody(svg, v);
+      drawBody(svg, v, figs);
       siteEls = drawSites(svg, v, { onTap: tapSite });
       paintSites();
       if(st.mode === 'where' && st.whereAnswered && st.where){
@@ -554,7 +558,7 @@
         var halo = g.querySelector('.st-halo');
         if(st.mode === 'explore' && sound){
           var k = strength(sound, s);
-          halo.setAttribute('r', (11 + 9 * k).toFixed(1));
+          halo.setAttribute('r', (20 + 18 * k).toFixed(1));
           halo.style.opacity = (0.06 + 0.34 * k).toFixed(2);
           g.classList.toggle('is-best', BEST[sound.id] && BEST[sound.id].at.indexOf(id) >= 0);
         } else {

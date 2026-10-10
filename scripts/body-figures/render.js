@@ -163,9 +163,10 @@ function renderMeshes(view, meshes, light){
   cam.up.set(0, 0, 1); cam.position.set(0, s * 3000, 0); cam.lookAt(0, 0, 0);
   scene.add(new THREE.HemisphereLight(light.sky || 0xfff6ee, light.ground || 0x6e5246, light.hemi || 1.45));
   // key from upper viewer-left, a cool rim from behind the other side, a low warm fill
-  const key = new THREE.DirectionalLight(0xffffff, light.key || 2.1); key.position.set(-700 * -s, s * 1400, 2300); scene.add(key);
-  const rim = new THREE.DirectionalLight(0xdfe9ff, light.rim || 1.1); rim.position.set(1100 * -s, -s * 900, 1500); scene.add(rim);
-  const fill = new THREE.DirectionalLight(0xffe6d6, light.fill || 0.55); fill.position.set(900 * -s, s * 1600, 300); scene.add(fill);
+  const sym = light.sym ? 0 : 1;
+  const key = new THREE.DirectionalLight(0xffffff, light.key || 2.1); key.position.set(sym * -700 * -s, s * 1400, 2300); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xdfe9ff, light.rim || 1.1); rim.position.set(sym * 1100 * -s, -s * 900, 1500); scene.add(rim);
+  const fill = new THREE.DirectionalLight(0xffe6d6, light.fill || 0.55); fill.position.set(sym * 900 * -s, s * 1600, 300); scene.add(fill);
   renderer.render(scene, cam);
   const c = document.createElement('canvas'); c.width = view.w; c.height = view.h;
   const x = c.getContext('2d'); x.imageSmoothingQuality = 'high';
@@ -447,11 +448,18 @@ window.renderFigures = async function(){
     const part = (names, mat) => names.filter(k => M[k]).map(k => new THREE.Mesh(partGeometry(M[k]), mat));
     for(const side of ['front', 'back']){
       const view = makeView(frame, side, pxPerMm);
-      const skin = renderMeshes(view, [new THREE.Mesh(geo, skinMat())], {});
+      // lit from straight ahead, so the two sides match and the mesh's one-sided flaps can be repaired from the mirror image
+      const skin = renderMeshes(view, [new THREE.Mesh(geo, skinMat())], { sym:true, key:2.3, rim:0.5 });
       const mask = cleanSilhouette(skin, { open: 3 });
-      { // symmetric, as in the full figures: the mesh has a flap on one shoulder
-        const w = view.w, h = view.h, c = new Uint8Array(mask), x2 = skin.getContext('2d'), im = x2.getImageData(0, 0, w, h);
-        for(let y = 0; y < h; y++) for(let x = 0; x < w; x++){ const i = y * w + x; mask[i] = c[i] && c[y*w + w - 1 - x]; if(!mask[i]) im.data[i*4+3] = 0; }
+      {
+        const w = view.w, h = view.h, c = new Uint8Array(mask), x2 = skin.getContext('2d'), im = x2.getImageData(0, 0, w, h), d = im.data, src = new Uint8ClampedArray(d);
+        const lum = i => 0.3 * src[i*4] + 0.59 * src[i*4+1] + 0.11 * src[i*4+2];
+        for(let y = 0; y < h; y++) for(let x = 0; x < w; x++){
+          const i = y * w + x, j = y * w + w - 1 - x;
+          mask[i] = c[i] && c[j];
+          if(!mask[i]){ d[i*4+3] = 0; continue; }
+          if(lum(i) < lum(j) * 0.9){ d[i*4] = src[j*4]; d[i*4+1] = src[j*4+1]; d[i*4+2] = src[j*4+2]; }
+        }
         x2.putImageData(im, 0, 0);
       }
       const bones = side === 'front'
