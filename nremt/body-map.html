@@ -46,23 +46,35 @@
   /* Model on the left, what you clicked on the right, reference cards below. */
   .bm-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start;}
   .bm-main{min-width:0;}
-  .bm-side{position:sticky;top:calc(var(--site-header-h,112px) + 16px);min-width:0;}
-  .bm-side h2{margin:18px 0 10px;}
-  .bm-side .landmark-list{max-height:calc(100vh - var(--site-header-h,112px) - 380px);min-height:120px;}
-  .bm-below{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start;}
-  .bm-below h2{margin-top:28px;}
-  .bm-main .hint{margin:10px 0 16px;}
+  /* Not sticky (simplify pass): the side column scrolls with the page, so it can never cover anything. */
+  .bm-side{min-width:0;}
+  .bm-below{display:grid;gap:4px;margin-top:22px;}
+  .bm-cue{flex:1 1 220px;margin:0;font:800 15px var(--font-ui);color:var(--ink);}
+  .bm-more,.bm-browse,.bm-ref{margin:0 0 6px;}
+  .bm-more summary,.bm-browse summary,.bm-ref summary,.bn-more summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:6px;min-height:42px;font:700 13.5px var(--font-ui);color:var(--accent-text);}
+  .bm-ref summary{font-size:15.5px;color:var(--ink);}
+  .bm-more summary::-webkit-details-marker,.bm-browse summary::-webkit-details-marker,.bm-ref summary::-webkit-details-marker,.bn-more summary::-webkit-details-marker{display:none;}
+  .bm-more summary::before,.bm-browse summary::before,.bm-ref summary::before,.bn-more summary::before{content:var(--disclose);display:inline-block;transition:transform .15s;}
+  .bm-more[open] summary::before,.bm-browse[open] summary::before,.bm-ref[open] summary::before,.bn-more[open] summary::before{transform:rotate(90deg);}
+  .bm-more-in{padding:6px 0 4px;}
+  .bm-viewrow{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px;}
+  .bm-more-in .hint{text-align:left;margin:0 0 10px;}
+  .bm-note{font-size:12.5px;color:var(--muted);margin:4px 0 0;}
+  .bm-ref[open] summary{margin-bottom:8px;}
+  .bn-more{margin:2px 0 0;}
+  .bn-more-in{padding:4px 0 6px;display:grid;gap:10px;}
+  .bn-cue{margin:0 0 10px;font:800 15px var(--font-ui);color:var(--ink);}
+  .bn-clear[hidden]{display:none;}
+
   @media (max-width:640px){
     .page-head{padding:18px 20px;}
     .page-head h1{font-size:24px;margin-bottom:4px;}
     .page-head .lede{font-size:14px;}
     .bv-canvas{height:min(58vh,440px);}
     .legend{font-size:10.5px;gap:4px 10px;padding:6px 8px;}
-    .bm-main .hint{display:none;}
   }
   @media (max-width:900px){
     .bm-grid,.bm-below{grid-template-columns:1fr;}
-    .bm-side{position:static;}
     .bm-side .landmark-list{max-height:300px;}
   }
   .view-btn{
@@ -300,12 +312,12 @@
   <div class="page-head">
   <div class="eyebrow">Tools</div>
   <h1>Interactive Patient Body Map</h1>
-  <p class="lede">A real 3D model. Drag to rotate, pinch or scroll to zoom, tap anything to learn what it does and what goes wrong with it.</p>
+  <p class="lede">Tap any part of the body to learn what it does and what goes wrong.</p>
   </div>
 
   <div class="bm-modes" role="group" aria-label="Mode">
     <button type="button" data-bm-mode="anatomy" aria-pressed="true">3D anatomy</button>
-    <button type="button" data-bm-mode="burns" aria-pressed="false">Burns: Rule of Nines</button>
+    <button type="button" data-bm-mode="burns" aria-pressed="false">Burns (Rule of Nines)</button>
   </div>
   <!-- Burns mode (assets/burns.js): paint burned regions on a front and back
        outline, with a running TBSA. body-map.html?mode=burns opens it; &q=<id>
@@ -315,11 +327,8 @@
   <div class="bm-grid" id="anatomyGrid">
     <div class="bm-main">
       <div class="controls">
-        <button type="button" class="hunt-toggle" id="huntToggle" aria-pressed="false">Quiz me &mdash; find it on the model</button>
-        <button class="view-btn reset-btn" id="resetBtn" type="button">Reset view</button>
-        <label class="view-btn skin-toggle">
-          <input type="checkbox" id="skinCb" checked> Show skin
-        </label>
+        <p class="bm-cue">Tap any part of the model. Drag to turn it.</p>
+        <button type="button" class="hunt-toggle" id="huntToggle" aria-pressed="false">Quiz me</button>
         <div class="hunt-live" id="huntLive" role="status" aria-live="polite"></div>
       </div>
       <!-- A model you can only look at teaches recognition and never recall. The
@@ -336,7 +345,16 @@
           <span><i style="background:#0F5C50;"></i>Selected</span>
         </div>
       </div>
-      <div class="hint">DRAG TO ROTATE &middot; SCROLL / PINCH TO ZOOM &middot; RIGHT-DRAG OR TWO-FINGER DRAG TO PAN</div>
+      <details class="bm-more">
+      <summary>More options</summary>
+      <div class="bm-more-in">
+      <div class="bm-viewrow">
+        <button class="view-btn reset-btn" id="resetBtn" type="button">Reset view</button>
+        <label class="view-btn skin-toggle">
+          <input type="checkbox" id="skinCb" checked> Show skin
+        </label>
+      </div>
+      <div class="hint">Drag to rotate &middot; scroll or pinch to zoom &middot; right-drag or two-finger drag to pan</div>
       <fieldset class="sys-filters" id="sysFilters">
         <legend>Body systems shown</legend>
         <label><input type="checkbox" class="sys-cb" value="resp" checked> Respiratory</label>
@@ -346,35 +364,36 @@
         <label><input type="checkbox" class="sys-cb" value="abd" checked> Abdominal / GI / GU</label>
         <label><input type="checkbox" class="sys-cb" value="skin" checked> Integumentary</label>
       </fieldset>
+      <p class="bm-note"><b>A real anatomical model, not to scale.</b> Verify exact anatomy against your course materials.</p>
+      </div>
+      </details>
     </div>
 
     <aside class="bm-side" aria-label="Selected structure">
       <div class="info-panel" id="infoPanel" aria-live="polite">
-        <p class="info-placeholder">Click any part of the model, or a name below.</p>
+        <p class="info-placeholder">Tap a part of the model and what it is shows here.</p>
       </div>
-      <h2>Browse by name</h2>
-      <div class="landmark-list" id="landmarkList" role="group" aria-label="Structures by name"></div>
+      <details class="bm-browse">
+        <summary>Or pick a part by name</summary>
+        <div class="landmark-list" id="landmarkList" role="group" aria-label="Structures by name"></div>
+      </details>
     </aside>
   </div>
 
-  <div class="warning">
-    <b>A real anatomical model, not to scale.</b> Verify exact anatomy against your course materials.
-  </div>
-
   <div class="bm-below">
-    <div>
-      <h2>Burn surface area &mdash; Rule of Nines</h2>
+    <details class="bm-ref">
+      <summary>Burn surface area: the Rule of Nines in words</summary>
       <div class="rule9-card">
 
     <p>The Rule of Nines is a quick field method for estimating total body surface area (TBSA) affected by a burn in an adult, dividing the body into regions that are each roughly 9% (or a multiple of 9%): head &amp; neck 9%, each arm 9%, the entire front torso 18%, the entire back torso 18%, each leg 18%, and the groin 1%.</p>
     <p>A rough estimate to guide severity and transport. A child&rsquo;s proportions differ: the head and neck is 18% and each leg 13.5%; the rest is counted as in an adult. For small or scattered burns, the patient&rsquo;s own palm (fingers included) is about 1%.</p>
     <p><a href="body-map.html?mode=burns" data-open-burns>Paint burns on the body &rarr;</a></p>
   </div>
-    </div>
-    <div>
-      <h2>Directional &amp; positional terms</h2>
+    </details>
+    <details class="bm-ref">
+      <summary>Directional and positional terms</summary>
       <div class="terms-card" id="termsCard"></div>
-    </div>
+    </details>
   </div>
 
   <footer>
@@ -447,12 +466,14 @@ document.addEventListener('DOMContentLoaded', function(){
     list: document.getElementById('landmarkList'),
     info: document.getElementById('infoPanel'),
     focus: params.get('focus'),
+    hint: false, // the cue above the model already says what to do
+    placeholder: '<p class="info-placeholder">Tap a part of the model and what it is shows here.</p>',
   });
 
   const toggle = document.getElementById('huntToggle');
   const panel = document.getElementById('huntPanel');
   function setToggle(on){
-    toggle.textContent = on ? 'Stop the quiz' : 'Quiz me — find it on the model';
+    toggle.textContent = on ? 'Stop the quiz' : 'Quiz me';
     toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
   }
   toggle.addEventListener('click', () => {

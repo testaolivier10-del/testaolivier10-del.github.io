@@ -202,11 +202,10 @@
       '<div class="bn-bar">' +
         '<div class="bn-seg" role="group" aria-label="Patient">' +
           '<button type="button" data-age="adult">Adult</button><button type="button" data-age="child">Child</button></div>' +
-        '<div class="bn-seg" role="group" aria-label="Brush">' +
-          '<button type="button" data-brush="1">Full</button><button type="button" data-brush="0.5">Half</button><button type="button" data-brush="0">Erase</button></div>' +
-        '<button type="button" class="bn-clear">Clear</button>' +
         '<button type="button" class="bn-quiz" aria-pressed="false">Quiz me</button>' +
+        '<button type="button" class="bn-clear" hidden>Clear</button>' +
       '</div>' +
+      '<p class="bn-cue">Tap a region to mark it burned, or drag across several.</p>' +
       '<div class="bn-grid">' +
         '<div class="bn-figs">' +
           '<figure class="bn-fig"><figcaption>Front</figcaption><svg class="bn-svg" data-view="front" aria-label="Body, front. Each region is a button."></svg></figure>' +
@@ -218,7 +217,11 @@
           '<div class="bn-total" aria-live="polite"><span class="bn-k">Total body surface area burned</span><span class="bn-num">0%</span><span class="bn-age"></span></div>' +
           '<div class="bn-info"></div>' +
           '<ul class="bn-list"></ul>' +
-          '<p class="bn-palm"><b>Palm rule.</b> The patient’s own palm, fingers included, is about 1% of their body surface. Use it for small or scattered burns the big regions do not fit.</p>' +
+          '<details class="bn-more"><summary>More options</summary><div class="bn-more-in">' +
+            '<div class="bn-seg" role="group" aria-label="Brush">' +
+              '<button type="button" data-brush="1">Full</button><button type="button" data-brush="0.5">Half</button><button type="button" data-brush="0">Erase</button></div>' +
+            '<p class="bn-palm"><b>Half</b> marks part of a region. <b>Palm rule.</b> The patient’s own palm, fingers included, is about 1% of their body surface. Use it for small or scattered burns the big regions do not fit.</p>' +
+          '</div></details>' +
         '</div>' +
       '</div>';
 
@@ -243,7 +246,7 @@
     }
     var total$ = root.querySelector('.bn-num'), age$ = root.querySelector('.bn-age');
     var info = root.querySelector('.bn-info'), list = root.querySelector('.bn-list');
-    var qpanel = root.querySelector('.bn-qpanel');
+    var qpanel = root.querySelector('.bn-qpanel'), clearBtn = root.querySelector('.bn-clear'), cue = root.querySelector('.bn-cue');
 
     function paint(){
       draw();
@@ -271,6 +274,7 @@
       root.querySelectorAll('[data-age]').forEach(function(b){ b.setAttribute('aria-pressed', (b.dataset.age === 'child') === st.child ? 'true' : 'false'); });
       root.querySelectorAll('[data-brush]').forEach(function(b){ b.setAttribute('aria-pressed', +b.dataset.brush === st.brush ? 'true' : 'false'); });
       var ids = REGIONS.filter(function(r){ return st.marks[r.id]; });
+      clearBtn.hidden = !ids.length || !!(st.quiz && (st.quiz.kind === 'estimate' || st.answered));
       list.innerHTML = ids.map(function(r){
         var m = st.marks[r.id];
         return '<li><span>' + esc(r.name) + (m === 0.5 ? ' <em>(half)</em>' : '') + '</span><b>' + fmt(pct(r.id, st.child) * m) + '%</b></li>';
@@ -349,7 +353,7 @@
     /* ---- quiz ---- */
     function lockAge(on){ root.querySelectorAll('[data-age]').forEach(function(b){ b.disabled = on; }); }
     function stopQuiz(){
-      st.quiz = null; st.answered = false; st.show = null; st.marks = {};
+      st.quiz = null; st.answered = false; st.show = null; st.marks = {}; cue.hidden = false;
       qpanel.hidden = true; quizBtn.setAttribute('aria-pressed', 'false'); quizBtn.textContent = 'Quiz me';
       lockAge(false); info.innerHTML = ''; paint();
     }
@@ -358,7 +362,7 @@
         .concat(PAINT.map(function(q){ return { id:q.id, kind:'paint', q:q }; }));
       var p = forceId ? pool.filter(function(x){ return x.id === forceId; })[0] : null;
       p = p || pick(pool, st.misses, st.quiz && st.quiz.id);
-      st.quiz = p; st.answered = false; st.show = null; st.marks = {};
+      st.quiz = p; st.answered = false; st.show = null; st.marks = {}; cue.hidden = true;
       st.child = p.q.child; lockAge(true);
       quizBtn.setAttribute('aria-pressed', 'true'); quizBtn.textContent = 'Stop the quiz';
       info.innerHTML = '';
@@ -460,7 +464,7 @@
     paint();
     // the figures' data is fetched on first use; paint again when it lands
     if(window.LevlBodyFigs) window.LevlBodyFigs.load('body', function(){ paint(); });
-    info.innerHTML = '<p>Tap a region to mark it burned, or drag across the body to paint. <b>Half</b> marks part of a region. Each number is that region’s share of the body.</p>';
+    info.innerHTML = '<p>Each number is that region’s share of the body.</p>';
     if(opts.q && (ESTIMATE.concat(PAINT)).some(function(x){ return x.id === opts.q; })) nextQ(opts.q);
     return { quiz: nextQ, stop: stopQuiz };
   }
