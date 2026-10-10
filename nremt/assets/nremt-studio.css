@@ -349,3 +349,60 @@
 .nx-flowcharts .fl-ls-drill .drill-verdict{font:700 var(--ls-s)/1.45 var(--font-ui);color:var(--ink);}
 .nx-flowcharts .fl-ls-drill .drill-verdict.ok,.nx-flowcharts .fl-ls-drill .drill-verdict.no{color:var(--ink);}
 .nx-flowcharts .bd-tile{min-height:44px;}
+
+/* ------------------------------------------------------------ station run */
+.nx-skillsheets #stationRun{flex:1;min-height:0;overflow:auto;margin:0 -14px -14px;padding:0 14px 14px;}
+.nx-skillsheets .run-card{margin:0;padding:0;border:0;box-shadow:none;background:none;max-width:none;}
+.nx-skillsheets .run-intro{display:none;}
+.nx-skillsheets .run-station{min-height:56px;align-items:center;border:0;border-radius:16px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);}
+.nx-skillsheets .run-station:hover{box-shadow:inset 0 0 0 2px var(--cink);}
+.nx-skillsheets .run-station .n{font:800 var(--ls-m)/1.3 var(--font-ui);}
+.nx-skillsheets .run-station .t{font:700 var(--ls-s) var(--font-ui);}
+.nx-skillsheets .run-name{font:900 var(--ls-l)/1.25 var(--font-ui);}
+.nx-skillsheets .run-code{font:700 var(--ls-s) var(--font-ui);}
+.nx-skillsheets .run-top2{margin:4px 0 12px;gap:16px;}
+.nx-skillsheets .run-hearsay{font-size:var(--ls-s);}
+.nx-skillsheets .run-target{font:800 var(--ls-s) var(--font-ui);}
+.nx-skillsheets .run-target input{min-height:44px;}
+.nx-skillsheets .run-cols{display:block;}
+.nx-skillsheets .run-crit-h{font:900 var(--ls-m) var(--font-ui);text-transform:none;letter-spacing:0;}
+.nx-skillsheets .run-crit-sub,.nx-skillsheets .run-crit-src{font-size:var(--ls-s);}
+.nx-skillsheets .run-cbtn{min-height:44px;font-size:var(--ls-s);}
+.nx-skillsheets .run-note{font-size:var(--ls-s);}
+.nx-skillsheets .run-result__row .k{font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;}
+/* dock: the phases, one at a time */
+.nx-skillsheets .sk-ls-dock{display:flex;flex-direction:column;gap:12px;}
+.nx-skillsheets .sk-ls-dock:empty{display:none;}
+.nx-skillsheets .run-steps{margin:0;}
+.nx-skillsheets .run-step{display:flex;align-items:center;gap:10px;margin:0;padding:0;border:0;background:none;}
+.nx-skillsheets .run-step label{align-items:center;gap:14px;min-height:64px;padding:12px 16px;border-radius:16px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);}
+.nx-skillsheets .run-step input{width:26px;height:26px;margin:0;accent-color:var(--cink);}
+.nx-skillsheets .run-step__text{font:800 var(--ls-m)/1.35 var(--font-ui);}
+.nx-skillsheets .run-step.is-done label{background:var(--tint-good);box-shadow:inset 0 0 0 2px var(--good-text);}
+.nx-skillsheets .run-step.is-critical label{box-shadow:inset 0 0 0 2px var(--warn);}
+.nx-skillsheets .run-step.is-critical.is-done label{box-shadow:inset 0 0 0 2px var(--good-text);}
+.nx-skillsheets .run-step.is-skipped label{box-shadow:inset 0 0 0 2px var(--bad-text);background:var(--tint-bad);}
+.nx-skillsheets .run-flag{flex:none;font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;}
+.nx-skillsheets .ls-stepper.is-review .run-step label{min-height:48px;}
+.nx-skillsheets .ls-stepper.is-review .run-steps{display:flex;flex-direction:column;gap:6px;}
+.nx-skillsheets .run-actions{margin:0;gap:10px;}
+.nx-skillsheets .run-actions > button{flex:1;min-height:44px;border-radius:999px;font:800 var(--ls-m) var(--font-ui);}
+.nx-skillsheets .run-actions .drill-next{border:0;background:var(--cink);color:var(--white);}
+.nx-skillsheets .run-quit{border:0;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--ink);}
+.nx-skillsheets .sk-ls-why{display:flex;flex-direction:column;gap:12px;}
+.nx-skillsheets .sk-ls-why p{margin:0;}
+.nx-skillsheets .ss-more{margin:0;}
+.nx-skillsheets .ss-more > summary::before{display:none;}
+.nx-skillsheets .ss-note{font-size:var(--ls-s);}
+.nx-skillsheets .general-tips,.nx-skillsheets .skill-card{margin:0 0 14px;padding:0;border:0;box-shadow:none;background:none;}
+.nx-skillsheets .general-tips h2{font:900 var(--ls-m) var(--font-ui);}
+@media (min-width:1000px){
+  .nx-skillsheets #stationRun{margin:0 -24px -24px;padding:0 24px 24px;}
+  .nx-skillsheets .run-pick{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+}
+.nx-skillsheets .run-hearsay,.nx-skillsheets .run-crit-sub{display:none;}
+.nx-skillsheets .run-badge{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-width:0;box-shadow:inset 0 0 0 2px var(--bad-text);}
+.nx-skillsheets .run-badge[hidden]{display:none;}
+.nx-skillsheets .run-actions > button{font-size:15px;line-height:1.2;padding:6px 12px;}
+.nx-skillsheets .run-badge{margin:8px 0 0 8px;}
+@media (min-width:1000px){ .nx-skillsheets .run-clockwrap{width:200px;height:200px;} .nx-skillsheets .run-live .run-clock{font-size:44px;} }
