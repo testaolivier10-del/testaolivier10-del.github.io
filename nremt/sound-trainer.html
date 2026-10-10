@@ -922,6 +922,7 @@ if (studio) (function(){
   });
   fig.appendChild(vol);
   studio.add('stage', [fig, timing, quiz]);
+  window.NremtStudio.scrollable([timing, quiz], 'Question');
   studio.add('dock', [pick, side]);
   const why = document.createElement('div'); why.className = 'st-ls-why';
   const live = q('.st-live');

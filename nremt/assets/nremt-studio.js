@@ -99,5 +99,15 @@
     return { bar: bar, wrap: wrap };
   }
 
-  window.NremtStudio = { mount: mount, slim: slim };
+  /* A part that scrolls inside the stage must be reachable by keyboard
+     (axe scrollable-region-focusable) when it holds nothing focusable. */
+  function scrollable(els, label){
+    list(els).forEach(function(el){
+      if(el.hasAttribute('tabindex')) return;
+      el.setAttribute('tabindex', '0');
+      if(!el.getAttribute('role')){ el.setAttribute('role', 'region'); el.setAttribute('aria-label', label || 'Scrollable area'); }
+    });
+  }
+
+  window.NremtStudio = { mount: mount, slim: slim, scrollable: scrollable };
 })();

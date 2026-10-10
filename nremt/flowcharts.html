@@ -859,6 +859,9 @@ document.addEventListener('DOMContentLoaded', function(){
   var mode = $('flowMode'), chips = $('flowChips'), host = $('flowDiagrams');
   var dock = document.createElement('div'); dock.id = 'flowDrillDock'; dock.className = 'fl-ls-drill';
   chips.classList.add('ls-scroll');
+  // The diagram scrolls inside the stage: reachable by keyboard.
+  window.NremtStudio.scrollable(host, 'Diagram');
+  window.NremtStudio.scrollable([$('flowBuild'), $('flowDrill')], 'Board');
   studio.add('stage', [host, $('flowBuild'), $('flowDrill')]);
   studio.add('dock', $('flowPick'), { mode: 'read' });
   studio.add('dock', dock, { mode: 'drill' });

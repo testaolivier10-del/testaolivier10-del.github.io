@@ -2203,6 +2203,8 @@ if (studio) {
   simDock = document.createElement('div'); simDock.className = 'sim-ls-dock';
   simWhy = document.createElement('div'); simWhy.className = 'sim-ls-why';
   studio.add('stage', [document.getElementById('pickerScreen'), document.getElementById('simBox')]);
+  window.NremtStudio.scrollable(document.getElementById('pickerScreen'), 'Calls');
+  window.NremtStudio.scrollable(document.getElementById('simBox'), 'The call');
   studio.add('dock', simDock);
   studio.add('why', simWhy);
   studio.root.setAttribute('data-sim', 'picker');

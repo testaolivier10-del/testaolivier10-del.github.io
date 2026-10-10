@@ -428,6 +428,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var gw = $('gwBox'), drill = $('drillBox'), ref = $('drugRef'), sw = $('fxMode');
   var dock = document.createElement('div'); dock.id = 'gwDock'; dock.className = 'fx-ls-dock';
   studio.add('stage', [gw, drill]);
+  window.NremtStudio.scrollable(gw, 'Patient card'); window.NremtStudio.scrollable(drill, 'Question');
   studio.add('dock', dock, { mode: 'gw' });
   var why = document.createElement('div'); why.className = 'fx-ls-why';
   studio.add('why', why);

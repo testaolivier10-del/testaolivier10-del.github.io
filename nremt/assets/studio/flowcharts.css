@@ -52,3 +52,4 @@
 .nx-flowcharts .fl-ls-drill .drill-verdict{font:700 var(--ls-s)/1.45 var(--font-ui);color:var(--ink);}
 .nx-flowcharts .fl-ls-drill .drill-verdict.ok,.nx-flowcharts .fl-ls-drill .drill-verdict.no{color:var(--ink);}
 .nx-flowcharts .bd-tile{min-height:44px;}
+.nx-flowcharts .bd-label span{background:var(--cink);color:var(--white);font:800 12px var(--font-ui);text-transform:none;letter-spacing:0;}
