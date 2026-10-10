@@ -258,7 +258,7 @@
           else out.push('<text class="mei-note" x="' + (x0 + gw / 2) + '" y="' + (y0 + gh / 2) + '" text-anchor="middle">no chromosomes</text>');
         });
       }
-      return '<svg class="mei-fig" viewBox="0 0 ' + W + ' ' + Math.round(H) + '" role="img" aria-label="' + esc(words(r).join(' ')) + '">' + defs + out.join('') + '</svg>';
+      return '<svg class="mei-fig" viewBox="0 0 ' + W + ' ' + Math.round(H) + '" role="group" aria-label="' + esc(words(r).join(' ')) + '">' + defs + out.join('') + '</svg>';
     }
     /* Every cell at this step in words: the figure's text twin. */
     function words(r){
