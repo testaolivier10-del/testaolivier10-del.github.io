@@ -58,22 +58,30 @@
      a gallery of structures you cannot read. Since the whole point is
      comparing forms against each other, the comparison gets the room and the
      drawing board keeps the split. */
+  /* Landing (owner brief 2026-10-09): mode switch and first step above the
+     tool, six starting species with the rest and Build your own behind one
+     disclosure. The averaged-charge picture is a disclosure in the progress
+     panel, so the first screen is the molecule and the count. */
   root.innerHTML =
-    '<div class="tpanel">' +
-      '<div class="tpanel__head">' +
-        '<span>Pick a delocalized species</span>' +
-        '<div class="tseg" id="resMode">' +
-          '<button type="button" data-mode="hunt" class="on">Find the forms</button>' +
-          '<button type="button" data-mode="compare">Compare two</button>' +
-        '</div>' +
+    '<div class="tool-modes">' +
+      '<div class="tseg" id="resMode" role="group" aria-label="Mode">' +
+        '<button type="button" data-mode="hunt" class="on">Find the forms</button>' +
+        '<button type="button" data-mode="compare">Compare two</button>' +
       '</div>' +
+      '<p class="tool-step" id="resStep"></p>' +
+    '</div>' +
+    '<div class="tpanel" id="resPickPanel">' +
+      '<div class="tpanel__head"><span>Pick a molecule or ion</span></div>' +
       '<div class="tchips" id="resPicker"></div>' +
-      '<div class="trow" style="margin-top:12px;">' +
-        '<button type="button" class="tchip tchip--ghost" id="resBuildToggle">Build your own &rarr;</button>' +
-      '</div>' +
-      '<div id="resBuilder" hidden></div>' +
-      '<div id="resBuildMsg"></div>' +
-      '<div id="resSend"></div>' +
+      '<details class="tool-more" id="resMore"><summary>More species, or build your own</summary>' +
+        '<div class="tchips" id="resPicker2"></div>' +
+        '<div class="trow" style="margin-top:12px;">' +
+          '<button type="button" class="tchip tchip--ghost" id="resBuildToggle">Build your own &rarr;</button>' +
+        '</div>' +
+        '<div id="resBuilder" hidden></div>' +
+        '<div id="resBuildMsg"></div>' +
+        '<div id="resSend"></div>' +
+      '</details>' +
     '</div>' +
     '<div id="resCompare" hidden></div>' +
     '<div id="resHunt">' +
@@ -90,11 +98,10 @@
           '<button type="button" class="tchip" id="resReveal">Show me one I’m missing</button>' +
           '<button type="button" class="tchip" id="resReset">Start over</button>' +
         '</div>' +
+        '<details class="tool-more" id="resChargeBox"><summary>Where the charge sits <span class="tool-more__now" id="resChargeK"></span></summary>' +
+          '<div id="resCharge"></div>' +
+        '</details>' +
       '</div>' +
-    '</div>' +
-    '<div class="tpanel">' +
-      '<div class="tpanel__head"><span>Where the charge sits</span><span class="tmuted" id="resChargeK"></span></div>' +
-      '<div id="resCharge"></div>' +
     '</div>' +
     '<div class="tpanel">' +
       '<div class="tpanel__head">Forms found</div>' +
@@ -111,10 +118,19 @@
   var elSummary = document.getElementById('resSummary');
   var elProgress = document.getElementById('resProgress');
 
-  elPicker.innerHTML = SPECIES.map(function(s){
+  function chip(s){
     return '<button type="button" class="tchip" data-id="' + esc(s.id) + '">' + esc(s.label) + '</button>';
-  }).join('');
-  elPicker.querySelectorAll('.tchip').forEach(function(b){
+  }
+  var FIRST = 6;
+  elPicker.innerHTML = SPECIES.slice(0, FIRST).map(chip).join('');
+  document.getElementById('resPicker2').innerHTML = SPECIES.slice(FIRST).map(chip).join('');
+  var STEP = {
+    hunt: '<b>Tap a lone pair or a π bond, then tap where it goes</b> to draw another resonance form.',
+    compare: '<b>Pick two species, then call which one resonance stabilizes more.</b>'
+  };
+  function setStep(m){ document.getElementById('resStep').innerHTML = STEP[m] || STEP.hunt; }
+  setStep('hunt');
+  document.getElementById('resPickPanel').querySelectorAll('[data-id]').forEach(function(b){
     b.addEventListener('click', function(){
       SPECIES.forEach(function(s){ if(s.id === b.getAttribute('data-id')) select(s); });
       // The drawing is below the picker: on a phone, take the student to it.
@@ -129,9 +145,10 @@
 
   function select(sp){
     current = sp;
-    elPicker.querySelectorAll('.tchip').forEach(function(b){
+    document.getElementById('resPickPanel').querySelectorAll('[data-id]').forEach(function(b){
       b.classList.toggle('on', b.getAttribute('data-id') === sp.id);
     });
+    if(document.querySelector('#resPicker2 [data-id="' + sp.id + '"]')) document.getElementById('resMore').open = true;
     var mol = Mol.get(sp.id);
     begin(C.fromMolecule(mol), mol.name);
   }
@@ -185,9 +202,9 @@
 
   function renderVerdict(v){
     if(!v){
-      elVerdict.innerHTML = '<div class="tnote"><span class="tnote__k">Waiting</span>' +
+      elVerdict.innerHTML = '<p class="tmuted" style="margin:6px 0 0;">' +
         'Every form shares this skeleton — same atoms, same connections. Only the pi electrons and the ' +
-        'lone pairs are allowed to move.</div>';
+        'lone pairs are allowed to move.</p>';
       return;
     }
 
@@ -321,7 +338,7 @@
     mol.viewBox = Math.round(x0) + ' ' + Math.round(y0) + ' ' + Math.round(x1 - x0) + ' ' + Math.round(y1 - y0);
     var svg = Mol.svg(mol, { caption:'', label: 'Average charge over ' + got.length + ' form' + (got.length === 1 ? '' : 's') + ': ' + (said.join(', ') || 'none') });
     svg = svg.replace('</svg>', labels + '</svg>');
-    document.getElementById('resChargeK').textContent = 'averaged over ' + got.length + ' of ' + target.length + ' forms';
+    document.getElementById('resChargeK').textContent = '· averaged over ' + got.length + ' of ' + target.length + ' forms';
     var spread = said.length;
     el.innerHTML = '<div class="tstage res-charge">' + svg + '</div>' +
       '<p class="tmuted" style="margin:10px 0 0;">' +
@@ -365,7 +382,8 @@
       }
     }
 
-    html += '<div class="ttable-scroll"><table class="ttable" style="margin-top:8px;">' +
+    html += '<details class="tool-more tool-more--why"><summary>Why? Every form, rule by rule</summary>' +
+      '<div class="ttable-scroll"><table class="ttable" style="margin-top:8px;">' +
       '<thead><tr><th>Form</th><th>Octets</th><th>Formal charges</th><th>Standing</th></tr></thead><tbody>' +
       target.map(function(f, i){
         var s = R.score(f), d = R.describe(f, target);
@@ -380,7 +398,7 @@
 
     html += '<p class="tmuted" style="margin-top:10px;">The rules, in the order they are applied: complete octets first, ' +
       'then fewest formal charges, then no like charges side by side, then negative charge on the most ' +
-      'electronegative atom available. Each one only gets consulted when the one above it ties.</p>';
+      'electronegative atom available. Each one only gets consulted when the one above it ties.</p></details>';
 
     html += '</div>';
     elSummary.innerHTML = html;
@@ -429,7 +447,7 @@
           elBuildMsg.innerHTML = '<div class="tnote tnote--good" style="margin-top:12px;">' +
             '<span class="tnote__k">' + forms.length + ' forms</span>' +
             'Loaded. Move a lone pair or a pi bond and see which of them you can find.</div>';
-          elPicker.querySelectorAll('.tchip').forEach(function(b){ b.classList.remove('on'); });
+          document.getElementById('resPickPanel').querySelectorAll('[data-id]').forEach(function(b){ b.classList.remove('on'); });
           begin(C.clone(st), st.name || rep.formula);
         }
       });
@@ -675,8 +693,8 @@
       });
       elHunt.hidden = (mode !== 'hunt');
       elCompare.hidden = (mode !== 'compare');
-      elPicker.hidden = (mode !== 'hunt');
-      document.getElementById('resBuildToggle').hidden = (mode !== 'hunt');
+      document.getElementById('resPickPanel').hidden = (mode !== 'hunt');
+      setStep(mode);
       if(mode === 'compare' && !cmpLeft){
         setSide('a', 'acetate-ion');
         setSide('b', 'enolate');
@@ -694,6 +712,7 @@
     if(q.build && window.OchemToolHandoff){
       var toggle = document.getElementById('resBuildToggle');
       if(toggle){
+        document.getElementById('resMore').open = true;
         toggle.click();
         if(builderApi) builderApi.build(q.build);
         handedOver = true;

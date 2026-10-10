@@ -541,28 +541,34 @@
 
   var score = { right:0, total:0 };
 
+  /* Landing (owner brief 2026-10-09): mode switch and a plain first step,
+     six compounds with the rest and Predict your own behind one disclosure,
+     the two spectra as the main event, and each band table, the
+     degrees-of-unsaturation working and the caveats on demand. */
   root.innerHTML =
-    '<div class="tpanel">' +
-      '<div class="tpanel__head">' +
-        '<div class="tseg" id="spMode">' +
-          '<button type="button" data-mode="predict" class="on">Read a spectrum</button>' +
-          '<button type="button" data-mode="puzzle">Identify it</button>' +
-          '<button type="button" data-mode="ref">Reference</button>' +
-        '</div>' +
-        '<span class="tmuted" id="spScore"></span>' +
+    '<div class="tool-modes">' +
+      '<div class="tseg" id="spMode" role="group" aria-label="Mode">' +
+        '<button type="button" data-mode="predict" class="on">Read a spectrum</button>' +
+        '<button type="button" data-mode="puzzle">Identify it</button>' +
+        '<button type="button" data-mode="ref">Reference</button>' +
       '</div>' +
+      '<p class="tool-step" id="spStep"></p>' +
+      '<span class="tmuted tool-meta" id="spScore"></span>' +
     '</div>' +
 
     '<div id="spPredict">' +
       '<div class="tpanel">' +
-        '<div class="tpanel__head">' +
-          '<span>Pick a compound</span>' +
-          '<button type="button" class="tchip tchip--ghost" id="spBuildToggle">Predict your own &rarr;</button>' +
-        '</div>' +
+        '<div class="tpanel__head"><span>Pick a compound</span></div>' +
         '<div class="tchips" id="spPicker"></div>' +
-        '<div id="spBuilder" hidden></div>' +
-        '<div id="spBuildMsg"></div>' +
-        '<div id="spSend"></div>' +
+        '<details class="tool-more" id="spMore"><summary>More compounds, or draw your own</summary>' +
+          '<div class="tchips" id="spPicker2"></div>' +
+          '<div class="trow" style="margin-top:12px;">' +
+            '<button type="button" class="tchip tchip--ghost" id="spBuildToggle">Predict your own &rarr;</button>' +
+          '</div>' +
+          '<div id="spBuilder" hidden></div>' +
+          '<div id="spBuildMsg"></div>' +
+          '<div id="spSend"></div>' +
+        '</details>' +
       '</div>' +
       '<div id="spPredicted"></div>' +
       '<div class="tpanel">' +
@@ -580,8 +586,9 @@
         '<div id="spNMRNote"></div>' +
       '</div>' +
       '<div class="tpanel">' +
-        '<div class="tpanel__head">Degrees of unsaturation</div>' +
-        '<div id="spDou"></div>' +
+        '<details class="tool-more tool-more--flush" id="spDouBox"><summary>Degrees of unsaturation</summary>' +
+          '<div id="spDou"></div>' +
+        '</details>' +
       '</div>' +
     '</div>' +
 
@@ -645,15 +652,25 @@
       // The packing depends on the chart's width, which is only known once the view is showing.
       if(m === 'ref') redrawRef();
       if(m === 'puzzle' && !puzzle) newPuzzle();
+      setStep(m);
     });
   });
 
   /* ---- Predict mode ------------------------------------------------------ */
 
-  document.getElementById('spPicker').innerHTML = COMPOUNDS.map(function(c){
+  function cchip(c){
     return '<button type="button" class="tchip" data-id="' + esc(c.id) + '">' + esc(c.name) + '</button>';
-  }).join('');
-  document.getElementById('spPicker').querySelectorAll('.tchip').forEach(function(b){
+  }
+  document.getElementById('spPicker').innerHTML = COMPOUNDS.slice(0, 6).map(cchip).join('');
+  document.getElementById('spPicker2').innerHTML = COMPOUNDS.slice(6).map(cchip).join('');
+  var STEP = {
+    predict: '<b>Tap a peak or a signal</b> to see which part of the molecule makes it.',
+    puzzle: '<b>Read the data, then name the compound.</b>',
+    ref: 'Where each kind of bond and hydrogen shows up. <b>Tap a band or a zone.</b>'
+  };
+  function setStep(m){ document.getElementById('spStep').innerHTML = STEP[m] || STEP.predict; }
+  setStep('predict');
+  document.querySelectorAll('#spPicker [data-id], #spPicker2 [data-id]').forEach(function(b){
     b.addEventListener('click', function(){
       COMPOUNDS.forEach(function(c){ if(c.id === b.getAttribute('data-id')) compound = c; });
       hlIR = null; hlNMR = null;
@@ -671,11 +688,13 @@
     });
   }
 
+  var spIROpen = false, spNMROpen = false;
   function renderPredict(){
     syncState();
-    document.getElementById('spPicker').querySelectorAll('.tchip').forEach(function(b){
+    document.querySelectorAll('#spPicker [data-id], #spPicker2 [data-id]').forEach(function(b){
       b.classList.toggle('on', b.getAttribute('data-id') === compound.id);
     });
+    if(document.querySelector('#spPicker2 [data-id="' + compound.id + '"]')) document.getElementById('spMore').open = true;
     document.getElementById('spName').textContent =
       (compound.structure ? compound.structure + ' · ' : '') + compound.formula;
 
@@ -683,11 +702,12 @@
     if(warn){
       warn.innerHTML = compound.predicted
         ? '<div class="tnote tnote--warn"><span class="tnote__k">Predicted, not measured</span>' +
-          'The IR bands are a lookup over the functional groups in what you drew, and at this level that is genuinely how an IR is read — ' +
+          'The NMR shifts are an estimate, usually within a few tenths of a ppm. ' +
+          '<details class="tool-more tool-more--why tool-more--flush"><summary>Why?</summary><p>The IR bands are a lookup over the functional groups in what you drew, and at this level that is genuinely how an IR is read — ' +
           'those positions are as trustworthy as the tabulated ones. The NMR shifts are an additive estimate: a base value for each ' +
           'CH₃, CH₂ or CH plus a contribution for everything attached to it or next to it. That is the model the course teaches and it ' +
           'lands within a few tenths of a ppm for ordinary compounds — but it is not a calculation, and it will be wrong about anything ' +
-          'unusual. Checked against the ten tabulated compounds here, it reproduces every one.</div>'
+          'unusual. Checked against the ten tabulated compounds here, it reproduces every one.</p></details></div>'
         : '';
     }
 
@@ -698,7 +718,11 @@
       g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pick(); } });
     });
 
+    var irPeak = hlIR !== null && compound.ir[hlIR];
     document.getElementById('spIRNote').innerHTML =
+      (irPeak ? '<p class="sp-linknote"><b>' + irPeak.cm + ' cm⁻¹ · ' + esc(irPeak.label) + '</b><span class="sp-linknote__why">' + esc(irPeak.note) + '</span></p>'
+              : '<p class="sp-linknote"><span class="tmuted">Tap a marker on the spectrum to see what that band means.</span></p>') +
+      '<details class="tool-more tool-more--why"' + (spIROpen ? ' open' : '') + ' id="spIRBox"><summary>Every band, in a table</summary>' +
       '<div class="ttable-scroll" tabindex="0" role="region" aria-label="IR bands">' + '<table class="ttable"><thead><tr><th>cm⁻¹</th><th>Assignment</th><th>What it tells you</th></tr></thead><tbody>' +
       compound.ir.map(function(p, i){
         return '<tr class="' + (hlIR === i ? 'sp-row-on' : '') + '"><td class="num">' + p.cm + '</td>' +
@@ -706,7 +730,8 @@
       }).join('') +
       '</tbody></table></div>' +
       '<p class="tmuted" style="margin-top:10px;">Click a marker on the spectrum to highlight its row. The curve is drawn from these ' +
-      'numbers, so the picture and the table cannot disagree.</p>';
+      'numbers, so the picture and the table cannot disagree.</p></details>';
+    document.getElementById('spIRBox').addEventListener('toggle', function(e){ spIROpen = e.target.open; });
 
     document.getElementById('spNMR').innerHTML = nmrSpectrum(compound, hlNMR);
     document.getElementById('spNMR').querySelectorAll('.sp-sig').forEach(function(g){
@@ -760,6 +785,7 @@
 
     var totalH = compound.nmr.reduce(function(n, s){ return n + s.h; }, 0);
     document.getElementById('spNMRNote').innerHTML =
+      '<details class="tool-more tool-more--why"' + (spNMROpen ? ' open' : '') + ' id="spNMRBox"><summary>Every signal, in a table</summary>' +
       '<div class="ttable-scroll" tabindex="0" role="region" aria-label="NMR signals">' + '<table class="ttable"><thead><tr><th>ppm</th><th>Integration</th><th>Shape</th><th>Assignment</th><th>Why</th></tr></thead><tbody>' +
       compound.nmr.slice().sort(function(a, b){ return a.ppm - b.ppm; }).map(function(s){
         var i = compound.nmr.indexOf(s);
@@ -772,7 +798,8 @@
       '</tbody></table></div>' +
       '<p class="tmuted" style="margin-top:10px;">' + compound.nmr.length + ' signal' + (compound.nmr.length === 1 ? '' : 's') +
       ' for ' + totalH + ' hydrogens. The number of signals counts distinct environments, not hydrogens — ' +
-      'symmetry is why those two numbers differ.</p>';
+      'symmetry is why those two numbers differ.</p></details>';
+    document.getElementById('spNMRBox').addEventListener('toggle', function(e){ spNMROpen = e.target.open; });
 
     renderDou(document.getElementById('spDou'), compound.formula, compound);
   }
@@ -1078,7 +1105,7 @@
           msg.innerHTML = '<div class="tnote tnote--good" style="margin-top:12px;">' +
             '<span class="tnote__k">Predicted</span>' + p.ir.length + ' IR band' + (p.ir.length === 1 ? '' : 's') +
             ' and ' + p.nmr.length + ' NMR signal' + (p.nmr.length === 1 ? '' : 's') + '. Both spectra are below.</div>';
-          document.getElementById('spPicker').querySelectorAll('.tchip').forEach(function(b){ b.classList.remove('on'); });
+          document.querySelectorAll('#spPicker [data-id], #spPicker2 [data-id]').forEach(function(b){ b.classList.remove('on'); });
           p._st = st;
           compound = p;
           hlIR = null; hlNMR = null;
@@ -1184,6 +1211,7 @@
 
     // A structure handed over from another tool: open the predictor on it.
     if(q.build && window.OchemToolHandoff){
+      document.getElementById('spMore').open = true;
       var spToggle = document.getElementById('spBuildToggle');
       if(spToggle){
         spToggle.click();
