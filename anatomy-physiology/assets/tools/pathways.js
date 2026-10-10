@@ -234,7 +234,16 @@
         (T.srcset ? '<picture><source type="image/avif" srcset="' + esc(T.srcset) + '" sizes="(max-width: 760px) 100vw, 720px"><img src="' + esc(BASE + T.src) + '" alt="' + esc(T.alt) + '" width="' + W + '" height="' + H + '" decoding="async"></picture>'
           : '<img src="' + esc(BASE + T.src) + '" alt="' + esc(T.alt) + '" width="' + W + '" height="' + H + '" decoding="async">') +
         T.covered.map(function(b){ return '<span class="pt-cover" aria-hidden="true" style="' + at(b) + '"></span>'; }).join('') +
-        '<svg class="pt-svg" viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true" focusable="false"><g class="pt-trail"></g><g class="pt-hint"></g><g class="pt-hits"></g><circle class="pt-token tok-' + esc(T.token) + '" r="' + R + '" cx="-99" cy="-99"/></svg>' +
+        '<svg class="pt-svg" viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true" focusable="false">' +
+          /* token art (visual polish 2026-10): a red cell with its pale centre, a glowing impulse, a fluid drop, a food bolus */
+          '<defs><radialGradient id="ptg-blood"><stop offset="0" stop-color="#F08A7C"/><stop offset=".42" stop-color="#E35B4B"/><stop offset=".7" stop-color="#C0281C"/><stop offset="1" stop-color="#7E1610"/></radialGradient>' +
+          '<radialGradient id="ptg-o2"><stop offset="0" stop-color="#FFB48A"/><stop offset=".42" stop-color="#F07A3A"/><stop offset=".7" stop-color="#D55E00"/><stop offset="1" stop-color="#8A3A00"/></radialGradient>' +
+          '<radialGradient id="ptg-deo2"><stop offset="0" stop-color="#9CC3EE"/><stop offset=".42" stop-color="#5C93D3"/><stop offset=".7" stop-color="#2B6CB0"/><stop offset="1" stop-color="#173E68"/></radialGradient>' +
+          '<radialGradient id="ptg-ex"><stop offset="0" stop-color="#C9A6E4"/><stop offset=".42" stop-color="#A27CC4"/><stop offset=".7" stop-color="#7A4E9C"/><stop offset="1" stop-color="#4A2C63"/></radialGradient>' +
+          '<radialGradient id="ptg-impulse"><stop offset="0" stop-color="#FFFBE0"/><stop offset=".35" stop-color="#FFE066"/><stop offset=".8" stop-color="#F2B400"/><stop offset="1" stop-color="#B07A00"/></radialGradient>' +
+          '<radialGradient id="ptg-fluid" cx=".38" cy=".32"><stop offset="0" stop-color="#E4F3FF"/><stop offset=".3" stop-color="#8CC6F5"/><stop offset="1" stop-color="#2F7FCC"/></radialGradient>' +
+          '<radialGradient id="ptg-food" cx=".38" cy=".32"><stop offset="0" stop-color="#E8C08C"/><stop offset=".5" stop-color="#B07A44"/><stop offset="1" stop-color="#6E4520"/></radialGradient></defs>' +
+          '<g class="pt-trail"></g><g class="pt-hint"></g><g class="pt-hits"></g><circle class="pt-token tok-' + esc(T.token) + '" r="' + R + '" cx="-99" cy="-99"/></svg>' +
         '<div class="pt-boxes"></div>' +
       '</div></div>' +
       '<div class="pt-bar"></div>' +
@@ -252,9 +261,19 @@
     function seg(i){ // from step i-1 to step i
       var a = T.pts[i - 1], b = T.pts[i];
       if(a[0] === b[0] && a[1] === b[1]) return;
-      trail.appendChild(mk('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], 'class': 'pt-seg' + (jump.indexOf(i) > -1 ? ' is-jump' : '') + (tone(i) ? ' tone-' + tone(i) : ''), 'stroke-width': SW }));
+      if(jump.indexOf(i) < 0) trail.appendChild(mk('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], 'class': 'pt-seg-under', 'stroke-width': SW * 1.9 }));
+      trail.appendChild(mk('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], 'class': 'pt-seg' + (jump.indexOf(i) > -1 ? ' is-jump' : '') + (tone(i) ? ' tone-' + tone(i) : ''), 'stroke-width': SW * 1.3 }));
+      // a chevron at the middle of the segment shows which way it runs
+      var len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+      if(len > R * 6 && jump.indexOf(i) < 0){
+        var ang = Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI, mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, c = SW * 2.4;
+        trail.appendChild(mk('path', { d: 'M' + (-c) + ' ' + (-c) + ' L' + c + ' 0 L' + (-c) + ' ' + c, transform: 'translate(' + mx.toFixed(1) + ' ' + my.toFixed(1) + ') rotate(' + ang.toFixed(1) + ')', 'class': 'pt-chev' + (tone(i) ? ' tone-' + tone(i) : ''), 'stroke-width': Math.max(1.5, SW * 0.7) }));
+      }
     }
-    function dot(i, cls){ trail.appendChild(mk('circle', { cx: T.pts[i][0], cy: T.pts[i][1], r: R * 0.42, 'class': 'pt-dot' + (cls ? ' ' + cls : '') })); }
+    function dot(i, cls){
+      trail.appendChild(mk('circle', { cx: T.pts[i][0], cy: T.pts[i][1], r: R * 0.5, 'class': 'pt-dot' + (cls ? ' ' + cls : '') + (tone(i) ? ' tone-' + tone(i) : '') }));
+      trail.appendChild(mk('circle', { cx: T.pts[i][0], cy: T.pts[i][1], r: R * 0.2, 'class': 'pt-dotc' + (tone(i) ? ' tone-' + tone(i) : '') }));
+    }
     function moveTo(i, done){
       var my = ++anim, b = T.pts[i];
       paintToken(i);
