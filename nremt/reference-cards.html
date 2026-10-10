@@ -93,6 +93,15 @@
   .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
   .refnote{margin-top:14px;padding:10px 12px;border-left:3px solid var(--accent);font-size:13px;line-height:1.6;color:var(--muted);}
   .refnote b{color:var(--ink);}
+  .ref-jump{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 4px;}
+  .ref-jump a{font:700 13px var(--font-ui);padding:8px 14px;min-height:40px;display:inline-flex;align-items:center;border:2px solid var(--line);border-radius:18px;background:var(--white);color:var(--ink);text-decoration:none;}
+  .ref-jump a:hover{border-color:var(--accent);}
+  .refcard{scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+  .ref-notes{margin-top:12px;}
+  .ref-notes>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:6px;min-height:40px;font:700 13.5px var(--font-ui);color:var(--accent-text);}
+  .ref-notes>summary::-webkit-details-marker{display:none;}
+  .ref-notes>summary::before{content:var(--disclose);display:inline-block;transition:transform .15s;}
+  .ref-notes[open]>summary::before{transform:rotate(90deg);}
 
   .vc{border:2px solid var(--line);border-radius:14px;background:var(--white);padding:14px;margin:0 0 14px;}
   .vc-age{display:flex;justify-content:space-between;align-items:baseline;font:900 11px var(--font-ui);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
@@ -144,9 +153,9 @@
 
   /* Phones: a compact hero, so the interactive part starts on the first screen. */
   @media (max-width:640px){
-    .hero{padding:20px;}
-    .hero h1{font-size:26px;margin-bottom:8px;}
-    .hero .lede{font-size:14.5px;line-height:1.5;}
+    .page-head{padding:18px 20px;}
+    .page-head h1{font-size:24px;margin-bottom:4px;}
+    .page-head .lede{font-size:14px;}
   }
   .vc-in input{color-scheme:light dark;}
   .vc-in input::-webkit-inner-spin-button,.vc-in input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
@@ -162,11 +171,15 @@
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="xshell narrow">
 
-  <div class="hero">
-    <div class="eyebrow">Reference cards</div>
-    <h1>The numbers you look up.</h1>
-    <p class="lede">Not everything is worth memorizing. These are the tables you want in front of you &mdash; on a call, or the night before the exam &mdash; rather than half-remembered.</p>
+  <div class="page-head">
+  <div class="eyebrow">Tools</div>
+  <h1>EMT Reference Cards</h1>
+  <p class="lede">The tables worth looking up rather than half-remembering: type a vital sign to check it.</p>
   </div>
+
+  <nav class="ref-jump" aria-label="Jump to a card">
+    <a href="#pedsVitals">Pediatric vitals</a><a href="#gcs">Glasgow Coma Scale</a><a href="#apgar">APGAR</a><a href="#pat">Pediatric triangle</a>
+  </nav>
 
   <div class="refcard" id="pedsVitals">
     <h2>Pediatric vital signs by age</h2>
@@ -186,11 +199,13 @@
       </tbody>
     </table>
     </div>
+    <details class="ref-notes"><summary>2 notes worth knowing</summary>
     <div class="refnote"><b>The formula worth knowing.</b> For a child aged 1 to 10, the lower limit of an acceptable systolic pressure is roughly <b>70 + (2 &times; age in years)</b>. A 4-year-old below about 78 is hypotensive. Published ranges differ between textbooks and protocols by a few beats either way; learn the set your program uses.</div>
     <div class="refnote"><b>And the thing the table cannot show you.</b> Children compensate extremely well and then fail suddenly. A normal blood pressure in a sick child is not reassurance &mdash; it is the last thing to go. Tachycardia, poor perfusion and a change in how the child behaves all arrive long before the pressure moves, and <b>bradycardia in a child is a pre-arrest sign</b>, usually from hypoxia.</div>
+    </details>
   </div>
 
-  <div class="refcard">
+  <div class="refcard" id="gcs">
     <h2>Glasgow Coma Scale</h2>
     <p class="sub">Three components, scored independently and summed. Minimum 3, maximum 15 &mdash; there is no zero, because a dead patient still scores 3.</p>
     <div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table">
@@ -206,12 +221,14 @@
       </tbody>
     </table>
     </div>
+    <details class="ref-notes"><summary>3 notes worth knowing</summary>
     <div class="refnote"><b>Report the parts, not just the total.</b> E4 V4 M5 and E4 V3 M6 both come to 13, but the first patient only localizes pain while the second obeys commands &mdash; and the motor score carries most of the prognostic weight. Two patients sharing a total can be in quite different trouble, so the components are what the receiving team wants.</div>
     <div class="refnote"><b>The trend beats the number.</b> One GCS is a data point; two, ten minutes apart, is information. A patient dropping from 14 to 11 is the finding, whatever the absolute figure. 8 or below is the classic threshold for an airway that will not protect itself.</div>
     <div class="refnote"><b>Flexion versus extension.</b> Decorticate flexion brings the arms in toward the <em>core</em>, which is the memory hook. Decerebrate extension straightens them and turns them inward, and is the worse of the two.</div>
+    </details>
   </div>
 
-  <div class="refcard">
+  <div class="refcard" id="apgar">
     <h2>APGAR</h2>
     <p class="sub">Scored at 1 minute and again at 5 minutes after birth. Five signs, each 0, 1 or 2, for a total out of 10.</p>
     <div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table">
@@ -226,11 +243,13 @@
       </tbody>
     </table>
     </div>
+    <details class="ref-notes"><summary>2 notes worth knowing</summary>
     <div class="refnote"><b>The trap.</b> Blue hands and feet with a pink body is <em>acrocyanosis</em>, and it is normal in the first minutes of life. It scores <b>1</b>, not 2. Scoring it as 2 is by far the most common reason an APGAR comes out one point too high.</div>
     <div class="refnote"><b>It never delays care.</b> APGAR is recorded, not acted on. A baby who needs drying, warming, stimulation or ventilation gets it immediately &mdash; you do not wait for the one-minute mark to decide, and you do not stop resuscitating to score.</div>
+    </details>
   </div>
 
-  <div class="refcard">
+  <div class="refcard" id="pat">
     <h2>Pediatric assessment triangle</h2>
     <p class="sub">An impression formed from the doorway, before you touch the child &mdash; which also buys you a calm child for the hands-on assessment that follows.</p>
     <div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table">
@@ -243,8 +262,10 @@
       </tbody>
     </table>
     </div>
+    <details class="ref-notes"><summary>2 notes worth knowing</summary>
     <div class="refnote"><b>Reading the combinations.</b> Appearance alone abnormal points at something systemic. Appearance plus breathing is respiratory failure. Appearance plus skin is shock. All three is cardiopulmonary failure &mdash; the child who is about to arrest. It gives you severity and a direction, never a diagnosis, and it supplements the hands-on assessment rather than replacing it.</div>
     <div class="refnote"><b>Appearance is the one that matters most.</b> A child who will not look at you, will not be consoled by a parent, or has gone quiet when they should be protesting is a sick child, whatever the numbers say.</div>
+    </details>
   </div>
 
   <footer>
