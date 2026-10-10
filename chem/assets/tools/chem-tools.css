@@ -435,7 +435,8 @@
   --lb-steel:#6E7A81;--lb-steel-d:#4D575D;--lb-stopper:#56636A;--lb-grad:#B9CBD3;}
 .lb-fig{margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-items:start;}
 @media (min-width:560px){.lb-fig{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);}.lb-desc{grid-column:1/-1;}}
-.lb-svg{width:100%;max-width:340px;height:auto;display:block;margin:0 auto;overflow:visible;}
+.lb-svg{width:100%;max-width:340px;height:auto;display:block;margin:0 auto;overflow:hidden;}
+.lb-v-flask{overflow:visible;}
 .lb-glass-fill{fill:var(--lb-glass-fill);}
 .lb-glass{fill:none;stroke:var(--lb-glass);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;}
 .lb-glass-edge{fill:none;stroke:var(--lb-glass);stroke-width:2.6;stroke-linecap:round;}

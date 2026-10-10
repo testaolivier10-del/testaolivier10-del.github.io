@@ -1173,10 +1173,7 @@
     return Object.keys(mol.atoms).filter(function(k){ return rolesOf(mol.atoms[k]).indexOf(role) !== -1; });
   }
 
-  /* Lone pairs go in the gaps between bonds, never on top of one. The four
-     compass slots (up, right, down, left) are ranked by how far each is from
-     the nearest bond direction and the pairs take the clearest ones; an atom
-     with no bonds keeps the old order, starting above and going clockwise. */
+  // Lone pairs take the directions farthest from bonds (and each other).
   function lonePairDots(a, dirs, bare){
     if(!a.lp) return '';
     var out = '', angles = [-90, 0, 90, 180];
@@ -1189,7 +1186,6 @@
         var best = null, bs = -1;
         cand.forEach(function(t){
           var sc = Math.min(clear(t), picked.length ? Math.min.apply(null, picked.map(function(q){ return Math.abs(((t - q) % 360 + 540) % 360 - 180); })) : 360);
-          // Prefer the compass directions a chemist would draw on a tie.
           sc += (t % 90 === 0 ? 4 : 0);
           if(sc > bs){ bs = sc; best = t; }
         });
@@ -1208,10 +1204,7 @@
     return out;
   }
 
-  /* How much room a label needs: the radius of a disc that just clears its
-     text. Bonds stop here rather than at the full atom disc, which only
-     matters where the disc is not drawn (the tools draw bare labels, the way
-     a textbook does); where it is drawn it covers the extra length anyway. */
+  // Radius that just clears a label; bonds stop there (bare-label tools).
   function labelR(a){
     if(!a.label) return 0;
     var fs = a.r > 15 ? 14.5 : (a.r > 12 ? 12.5 : 11);
@@ -1300,8 +1293,7 @@
       ' x1="' + a.x + '" y1="' + a.y + '" x2="' + c.x + '" y2="' + c.y + '"/>';
   }
 
-  /* The element a label starts with (CH₃ is C, OH is O, Cl⁻ is Cl), as a
-     class so a stage can color heteroatoms the way textbooks do. */
+  // Element of a label (CH₃ C, OH O), a class for heteroatom colors.
   function elOf(label){
     var m = /^[⁺⁻+\-]?([A-Z][a-z]?)/.exec(String(label || ''));
     return m ? m[1] : '';
@@ -1392,10 +1384,7 @@
        editor an arrow is a click target — you click one to erase it. The
        twin is stroke-only hit area; the group carries the index so the
        editor knows which arrow was hit without counting DOM order. */
-    /* The head is a drawn, slightly swept triangle whose tip sits exactly on
-       the end point, turned to the curve's tangent there (for a quadratic,
-       the direction from the control point to the end). The stroke stops at
-       the head's base so the line never pokes through the tip. */
+    // Swept head, tip on the end point, along the curve's end tangent.
     var tx = x2 - mx, ty = y2 - my, tl = Math.sqrt(tx*tx + ty*ty) || 1;
     tx /= tl; ty /= tl;
     var hs = 10, hw = 5, bx = x2 - tx*hs, by = y2 - ty*hs, px = -ty, py = tx;
@@ -1425,7 +1414,6 @@
     var mol = typeof molOrId === 'string' ? M[molOrId] : molOrId;
     if(!mol) return '';
     opts = opts || {};
-    // Bond directions at each atom, in degrees, for placing lone pairs.
     var dirs = {};
     mol.bonds.forEach(function(b){
       var p = mol.atoms[b.a], q = mol.atoms[b.b];
@@ -1433,9 +1421,7 @@
       (dirs[b.a] = dirs[b.a] || []).push(Math.atan2(q.y - p.y, q.x - p.x) * 180/Math.PI);
       (dirs[b.b] = dirs[b.b] || []).push(Math.atan2(p.y - q.y, p.x - q.x) * 180/Math.PI);
     });
-    /* The tool pages draw bare labels (tools.css hides the atom bubble), so
-       there lone pairs and arrow ends sit against the label instead of
-       outside a bubble that is not drawn. */
+    // Tool pages draw bare labels: lone pairs and arrow ends hug the label.
     var bare = opts.bare !== undefined ? !!opts.bare : !!(typeof document !== 'undefined' && document.querySelector && document.querySelector('.tool-root'));
     opts = Object.assign({}, opts, { _dirs: dirs, _bare: bare });
     var body = (mol.decor || '') +
