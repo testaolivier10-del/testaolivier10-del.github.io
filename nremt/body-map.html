@@ -187,23 +187,31 @@
     .bn-side{display:contents;}
     .bn-qpanel{order:-1;margin-bottom:0;}
     .bn-total,.bn-info,.bn-list,.bn-flag,.bn-palm{margin-bottom:0;}}
-  .bn-figs{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:var(--white);border:2px solid var(--line);border-radius:var(--radius);box-shadow:var(--lift);padding:10px;}
-  .bn-fig{margin:0;text-align:center;}
-  .bn-fig figcaption{font:800 11px var(--font-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px;}
-  .bn-svg{display:block;width:100%;max-height:62vh;touch-action:none;user-select:none;-webkit-user-select:none;}
+  .bn-figs{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;background:var(--white);border:2px solid var(--line);border-radius:var(--radius);box-shadow:var(--lift);padding:12px 10px 8px;
+    background-image:radial-gradient(ellipse 70% 55% at 50% 45%,var(--ctint,rgba(18,114,100,.06)),transparent 75%);}
+  .bn-fig{margin:0;text-align:center;min-width:0;}
+  .bn-fig figcaption{font:800 11px var(--font-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px;}
+  .bn-svg{display:block;width:100%;height:auto;max-height:64vh;margin:0 auto;touch-action:none;user-select:none;-webkit-user-select:none;overflow:visible;}
+  .bn-skin{filter:drop-shadow(0 6px 10px rgba(80,45,30,.16));}
+  .bn-outline{fill:none;stroke:rgba(110,62,42,.55);stroke-width:1.1;vector-effect:non-scaling-stroke;pointer-events:none;}
   .bn-reg{cursor:pointer;outline:none;}
-  .bn-shape{fill:var(--surface2);stroke:var(--muted);stroke-width:1.2;stroke-linejoin:round;transition:fill .15s;}
-  .bn-reg:hover .bn-shape,.bn-reg:focus-visible .bn-shape{stroke:var(--ink);stroke-width:2;}
-  .bn-reg.is-full .bn-shape{fill:#E0703F;stroke:#9B3A16;}
-  .bn-reg.is-shown .bn-shape{fill:#F2C9A8;stroke:#B5562D;stroke-dasharray:4 3;stroke-width:2;}
-  .bn-half-bg{fill:var(--surface2);}
-  .bn-half-st{fill:#E0703F;}
-  .bn-pct{font:800 13px var(--font-ui);fill:var(--ink);text-anchor:middle;pointer-events:none;}
-  .bn-pct--sm{font-size:10px;}
-  .bn-reg.is-full .bn-pct{fill:#fff;}
-  [data-theme="dark"] .bn-reg.is-full .bn-shape{fill:#C2562A;stroke:#F2A57C;}
-  [data-theme="dark"] .bn-reg.is-shown .bn-shape{fill:#6B3A22;stroke:#F2A57C;}
-  [data-theme="dark"] .bn-half-st{fill:#C2562A;}
+  .bn-hit{fill:transparent;pointer-events:all;}
+  .bn-reg:focus-visible .bn-hit{stroke:var(--accent);stroke-width:2.5;vector-effect:non-scaling-stroke;}
+  /* Regions: hairline boundaries on the skin; burned regions take a believable burn tint with a crisp edge. */
+  .bn-shape{fill:transparent;stroke:rgba(255,255,255,.75);stroke-width:1;stroke-dasharray:3 3;vector-effect:non-scaling-stroke;transition:fill .15s,fill-opacity .15s;pointer-events:none;}
+  .bn-shape.is-hot{fill:rgba(255,255,255,.28);stroke:#7A3A20;stroke-dasharray:none;stroke-width:1.6;}
+  .bn-shape.is-full{fill:#C2412A;fill-opacity:.62;stroke:#7E1E0C;stroke-width:1.6;stroke-dasharray:none;mix-blend-mode:multiply;}
+  .bn-shape.is-half{fill-opacity:.62;stroke:#7E1E0C;stroke-width:1.6;stroke-dasharray:none;mix-blend-mode:multiply;}
+  .bn-shape.is-shown{fill:#E7955F;fill-opacity:.5;stroke:#9B3A16;stroke-width:1.8;stroke-dasharray:5 3;mix-blend-mode:multiply;}
+  .bn-half-st{fill:#C2412A;}
+  .bn-pct{font:800 34px var(--font-ui);fill:#3B2216;text-anchor:middle;pointer-events:none;paint-order:stroke;stroke:rgba(255,244,236,.85);stroke-width:7px;stroke-linejoin:round;}
+  .bn-pct--sm{font-size:26px;text-anchor:start;}
+  .bn-pct.is-full,.bn-pct.is-half{fill:#fff;stroke:rgba(110,24,8,.75);}
+  .bn-leader{fill:none;stroke:#3B2216;stroke-width:1;vector-effect:non-scaling-stroke;}
+  .bn-credit{grid-column:1 / -1;margin:2px 0 0;font-size:10.5px;color:var(--muted);text-align:center;line-height:1.4;}
+  .bn-credit a{color:var(--muted);}
+  [data-theme="dark"] .bn-skin{filter:brightness(.9) drop-shadow(0 6px 12px rgba(0,0,0,.45));}
+  [data-theme="dark"] .bn-outline{stroke:rgba(0,0,0,.6);}
   .bn-side{min-width:0;}
   .bn-total{display:flex;flex-direction:column;background:var(--white);border:2px solid var(--line);border-radius:var(--radius);padding:12px 16px;margin-bottom:10px;}
   .bn-k{display:block;font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px;}
@@ -230,6 +238,7 @@
   .bn-qpanel p{font-size:14px;margin:0 0 6px;line-height:1.55;}
   .bn-next{font:700 13px var(--font-ui);padding:9px 20px;border:0;border-radius:18px;background:var(--navy);color:var(--on-accent);cursor:pointer;min-height:40px;margin-top:6px;}
   @media (prefers-reduced-motion: reduce){.bn-shape{transition:none;}}
+  @media (max-width:420px){.bn-figs{padding:10px 4px 6px;gap:4px;}}
 </style>
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
@@ -383,6 +392,7 @@
 </script>
 <script src="assets/tool-results.js" defer></script>
 <script src="assets/body-viewer.js" defer></script>
+<script src="assets/body-figures.js" defer></script>
 <script src="assets/burns.js" defer></script>
 <script>
 /* The model, picking, layers and the hunt live in assets/body-viewer.js

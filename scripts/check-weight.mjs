@@ -135,7 +135,13 @@ const SHELL_BUDGETS = [
      page the largest measure of this shell. The other new tool scripts
      (flow-build, formulary-cards, vitals-check, mnemonic-check) load only on
      their own pages and are smaller. */
-  ['nremt', 16.5],
+  /* 16.5 -> 19.5 (visual polish, body figures): the scenario sim's patient is
+     now the body map's own model, rendered flat (scripts/build-body-figures.mjs),
+     with callouts and a back view: scenario-monitor.js grew about 2.2 KB
+     gzipped, and the figure loader, body-figures.js, is 0.8 KB. The figures'
+     data (14 KB gzipped) and images are fetched on demand, not counted here.
+     Measured 19.1 KB on scenario-sim.html. */
+  ['nremt', 19.5],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with

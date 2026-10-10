@@ -158,6 +158,10 @@
     { key: 'legs',    label: 'Legs and feet', re: /\b(legs?|thighs?|knees?|hips?|ankles?|feet|foot)\b/i },
     { key: 'skin',    label: 'Skin', re: /\b(skin|pale|sweat|clammy|mottl|blotch|diaphore|hives|flush|cyan|blue|grey|gray|color|colour|hot|warm|cool|bruis)/i }
   ];
+  /* The back view's region. Not in REGIONS: it would change what the front
+     regions find (a "back blows" sentence is not a finding about the back of
+     the body), so it only matches the body's own back, buttocks and spine. */
+  var BACK = { key: 'back', label: 'Back and spine', re: /\b(back of (his|her|the) (body|trunk|chest)|across (his|her|the) (upper |lower )?back|on (his|her) back\b(?! seat)|upper back|lower back|spine|spinal|buttock)/i };
   var SURVEY = [
     { key: 'ms',   label: 'Mental status', re: /\b(alert|confused|unresponsive|responsive|drowsy|oriented|hard to wake|sleepy|agitated|awake|does not know|limp|floppy|answering|talking|quiet|seiz|shouting|wandering)/i },
     { key: 'air',  label: 'Airway', re: /\b(airway|chok|throat|stridor|drool|swallow|voice|noise on the way in|gurgl|bark|tight)/i },
@@ -183,13 +187,13 @@
      newest first. [{ text, vitals, now }] -> { head: [{ text, now, dcap }] } */
   function findings(seen){
     var out = {};
-    REGIONS.concat(SURVEY).forEach(function(r){ out[r.key] = []; });
+    REGIONS.concat(SURVEY, [BACK]).forEach(function(r){ out[r.key] = []; });
     var dupe = {};
     seen.forEach(function(n){
       var bits = sentences(n.text);
       parseVitals(n.vitals).notes.forEach(function(x){ bits.push(x.replace(/^Observed:\s*/i, '')); });
       bits.forEach(function(s){
-        REGIONS.concat(SURVEY).forEach(function(r){
+        REGIONS.concat(SURVEY, [BACK]).forEach(function(r){
           if(!r.re.test(s)) return;
           var k = r.key + '|' + s;
           if(dupe[k]) return;
@@ -426,43 +430,46 @@
     }
   };
 
-  /* ---- The patient ------------------------------------------------------------ */
-  /* Proportions only: a child's head is larger against the body. */
-  function figure(months){
-    var kid = months != null && months < 144, baby = months != null && months < 24;
-    var head = baby ? 30 : kid ? 25 : 20;
-    var cx = 80, top = 14;
-    var hy = top + head;
-    var neckY = hy + head + 2;
-    var torsoH = baby ? 70 : kid ? 82 : 96;
-    var chestH = torsoH * 0.48;
-    var shoulderW = baby ? 30 : kid ? 34 : 40;
-    var hipY = neckY + 10 + torsoH;
-    var legH = baby ? 70 : kid ? 100 : 130;
-    var armL = baby ? 66 : kid ? 82 : 100;
-    var H = hipY + legH + 14;
-    function rr(x, y, w, h, r){ return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="' + r + '"/>'; }
-    var parts = {
-      head: '<circle cx="' + cx + '" cy="' + hy + '" r="' + head + '"/>',
-      neck: rr(cx - 8, neckY - 6, 16, 18, 6),
-      chest: rr(cx - shoulderW, neckY + 10, shoulderW * 2, chestH, 14),
-      abdomen: rr(cx - shoulderW + 4, neckY + 10 + chestH + 3, shoulderW * 2 - 8, torsoH - chestH - 3, 12),
-      arms: rr(cx - shoulderW - 18, neckY + 12, 15, armL, 8) + rr(cx + shoulderW + 3, neckY + 12, 15, armL, 8),
-      legs: rr(cx - shoulderW + 6, hipY + 2, shoulderW - 9, legH, 9) + rr(cx + 3, hipY + 2, shoulderW - 9, legH, 9)
-    };
-    return { parts: parts, h: H };
+  /* ---- The patient ------------------------------------------------------------
+     The figure is the body map's own 3D model (BodyParts3D, CC BY-SA 2.1 JP),
+     rendered flat by scripts/build-body-figures.mjs; its region paths come
+     from the skeleton (neck line at the shoulders, arm lines down the axilla,
+     chest from abdomen at T12/L1, pelvis down to the groin). A child under 12
+     gets the child figure, with a child's larger head and shorter legs. Both
+     arms are one region and both legs another (findings name "arms" and
+     "legs", not sides); the back has its own view behind a flip, and shows
+     what the case says about the back, buttocks or spine. A region with
+     findings carries a small labelled callout at its own spot on the body. */
+  var VIEW_REGIONS = {
+    front: [['head', ['simHead']], ['neck', ['simNeck']], ['chest', ['upper']], ['abdomen', ['simAbdomen']],
+            ['arms', ['armL', 'armR']], ['legs', ['simLegL', 'simLegR']]],
+    back:  [['head', ['simHead']], ['neck', ['simNeck']], ['back', ['simBack']], ['arms', ['armL', 'armR']], ['legs', ['legL', 'legR']]]
+  };
+  var SHORT = { head:'Head', neck:'Neck', chest:'Chest', abdomen:'Abdomen', arms:'Arms', legs:'Legs', back:'Back' };
+  var NS = 'http://www.w3.org/2000/svg';
+  function svgEl(tag, attrs, parent){
+    var n = document.createElementNS(NS, tag);
+    for(var k in attrs) n.setAttribute(k, attrs[k]);
+    if(parent) parent.appendChild(n);
+    return n;
+  }
+  /* Where a region's callout points: the label anchor of its first path,
+     on the viewer's right-hand limb for arms and legs so callouts fan out. */
+  function anchorOf(f, key, paths){
+    var k = paths.length > 1 ? paths[1] : paths[0];
+    return f.anchors[k] || f.anchors[paths[0]];
   }
 
   function Patient(opts){
     var self = this;
     this.months = opts.months;
+    this.kid = this.months != null && this.months < 144;
     this.seen = [];
+    this.view = 'front';
     this.open = opts.open || null;
     this.el = document.createElement('section');
     this.el.className = 'pt';
     this.el.setAttribute('aria-labelledby', 'ptH');
-    var fig = figure(this.months);
-    var regionOrder = ['head', 'neck', 'chest', 'abdomen', 'arms', 'legs'];
     this.el.innerHTML =
       '<div class="pt-head"><h3 id="ptH">Assess the patient</h3><span class="pt-age">' + esc(ageWords(this.months)) + '</span></div>' +
       '<p class="pt-hint">Tap a part of the body, or a step of the primary survey, to see what this call has shown you so far.</p>' +
@@ -470,23 +477,18 @@
         SURVEY.map(function(s){ return '<button type="button" class="pt-chip" data-r="' + s.key + '">' + s.label + '</button>'; }).join('') +
       '</div>' +
       '<div class="pt-wrap">' +
-        '<svg class="pt-svg" viewBox="0 0 160 ' + fig.h + '" role="group" aria-label="Patient body, tap a region">' +
-          regionOrder.map(function(k){
-            var r = REGIONS.filter(function(x){ return x.key === k; })[0];
-            return '<g class="pt-part" data-r="' + k + '" tabindex="0" role="button" aria-label="' + r.label + '">' + fig.parts[k] + '<circle class="pt-dot" r="4"/></g>';
-          }).join('') +
-        '</svg>' +
-        '<button type="button" class="pt-chip pt-skin" data-r="skin">Skin</button>' +
+        '<div class="pt-stage"><svg class="pt-svg" role="group" aria-label="Patient body, front. Tap a region."></svg></div>' +
+        '<div class="pt-tools">' +
+          '<button type="button" class="pt-flip" aria-pressed="false" aria-label="Show the back">' +
+            '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.7-5.6M20 12a8 8 0 0 1-13.7 5.6"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><span>Back</span></button>' +
+          '<button type="button" class="pt-chip pt-skin" data-r="skin">Skin</button>' +
+        '</div>' +
       '</div>' +
-      '<div class="pt-out" aria-live="polite"></div>';
-    // Place each region's dot on its shape.
-    Array.prototype.forEach.call(this.el.querySelectorAll('.pt-part'), function(g){
-      var shape = g.firstElementChild, dot = g.querySelector('.pt-dot');
-      var x, y;
-      if(shape.tagName === 'circle'){ x = +shape.getAttribute('cx') + 10; y = +shape.getAttribute('cy') - 6; }
-      else { x = +shape.getAttribute('x') + +shape.getAttribute('width') / 2; y = +shape.getAttribute('y') + Math.min(16, +shape.getAttribute('height') / 2); }
-      dot.setAttribute('cx', x); dot.setAttribute('cy', y);
-    });
+      '<div class="pt-out" aria-live="polite"></div>' +
+      '<p class="pt-credit">Figure rendered from <a href="https://lifesciencedb.jp/bp3d/" target="_blank" rel="noopener">BodyParts3D</a>, © 2008 Life Science Integrated Database Center, <a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en" target="_blank" rel="noopener">CC BY-SA 2.1 Japan</a>.</p>';
+    this.svg = this.el.querySelector('.pt-svg');
+    this.flip = this.el.querySelector('.pt-flip');
+    this.flip.addEventListener('click', function(){ self.setView(self.view === 'front' ? 'back' : 'front'); });
     this.el.addEventListener('click', function(e){
       var t = e.target.closest('[data-r]');
       if(t) self.pick(t.getAttribute('data-r'));
@@ -495,30 +497,129 @@
       var t = e.target.closest('.pt-part');
       if(t && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); self.pick(t.getAttribute('data-r')); }
     });
+    if(window.LevlBodyFigs) window.LevlBodyFigs.load('body', function(F){ self.F = F; self.draw(); });
   }
+
+  Patient.prototype.setView = function(v){
+    this.view = v;
+    this.flip.setAttribute('aria-pressed', v === 'back' ? 'true' : 'false');
+    this.flip.setAttribute('aria-label', v === 'back' ? 'Show the front' : 'Show the back');
+    this.flip.querySelector('span').textContent = v === 'back' ? 'Front' : 'Back';
+    this.svg.setAttribute('aria-label', 'Patient body, ' + v + '. Tap a region.');
+    if(v === 'front' && this.current === 'back') this.current = null;
+    this.draw();
+    if(this.seen) this.update(this.seen);
+  };
+
+  Patient.prototype.draw = function(){
+    var F = this.F, svg = this.svg;
+    if(!F) return;
+    var f = F.figs[(this.kid ? 'child' : 'adult') + '-' + this.view];
+    if(!f) return;
+    this.fig = f;
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    // room either side for callouts
+    var padX = Math.round(f.w * 0.42);
+    svg.setAttribute('viewBox', (-padX) + ' 0 ' + (f.w + padX * 2) + ' ' + f.h);
+    var uid = 'pt' + Math.floor(Math.random() * 1e6);
+    var defs = svgEl('defs', {}, svg);
+    var clip = svgEl('clipPath', { id: uid + 'c' }, defs); svgEl('path', { d: f.outline }, clip);
+    var hit = svgEl('clipPath', { id: uid + 'h' }, defs); svgEl('path', { d: f.hitOutline }, hit);
+    svgEl('ellipse', { cx: f.w / 2, cy: f.h - 8, rx: f.w * 0.32, ry: 14, class: 'pt-floor' }, svg);
+    svgEl('image', { href: F.url(f), width: f.w, height: f.h, class: 'pt-skin-img', 'aria-hidden': 'true' }, svg);
+    var tint = svgEl('g', { 'clip-path': 'url(#' + uid + 'c)', 'aria-hidden': 'true' }, svg);
+    svgEl('path', { d: f.outline, class: 'pt-outline', 'aria-hidden': 'true' }, svg);
+    var parts = svgEl('g', {}, svg);
+    this.callouts = svgEl('g', { class: 'pt-callouts', 'aria-hidden': 'true' }, svg);
+    var self = this;
+    this.parts = {};
+    VIEW_REGIONS[this.view].forEach(function(r){
+      var key = r[0];
+      var t = svgEl('g', { class: 'pt-tint', 'data-tint': key }, tint);
+      r[1].forEach(function(p){ svgEl('path', { d: f.regions[p] }, t); });
+      var g = svgEl('g', { class: 'pt-part', 'data-r': key, tabindex: '0', role: 'button', 'clip-path': 'url(#' + uid + 'h)' }, parts);
+      r[1].forEach(function(p){ svgEl('path', { d: f.regions[p], class: 'pt-hit' }, g); });
+      var lab = (REGIONS.concat([BACK]).filter(function(x){ return x.key === key; })[0] || {}).label;
+      g.setAttribute('aria-label', lab);
+      self.parts[key] = { g: g, tint: t, at: anchorOf(f, key, r[1]), paths: r[1] };
+    });
+  };
+
+  /* A small labelled callout: a dot on the body, a leader out to the side, and
+     a pill with the region and how many findings. Fresh findings (this step)
+     are coral; older ones are the accent. */
+  Patient.prototype.drawCallouts = function(){
+    var c = this.callouts, f = this.fig, self = this;
+    if(!c || !f) return;
+    while(c.firstChild) c.removeChild(c.firstChild);
+    var items = [];
+    for(var key in this.parts){
+      var list = (this.f && this.f[key]) || [];
+      if(!list.length) continue;
+      var at = this.parts[key].at;
+      // a limb finding that names a side points at that limb (front view: the
+      // patient's right is on the viewer's left; back view: the reverse)
+      var pr = this.parts[key].paths;
+      if(pr.length > 1){
+        var txt = list.map(function(x){ return x.text; }).join(' ');
+        var R = /\bright\b/i.test(txt), L = /\bleft\b/i.test(txt);
+        if(R !== L){
+          var viewerLeft = (R === (this.view === 'front'));
+          at = f.anchors[pr[viewerLeft ? 0 : 1]] || at;
+        }
+      }
+      items.push({ key: key, n: list.length, fresh: list.some(function(x){ return x.now; }), x: at[0], y: at[1] });
+    }
+    // left column for anchors left of centre, right for the rest; spread so pills never overlap
+    var mid = f.w / 2, colGap = 76;
+    [[-1, items.filter(function(i){ return i.x < mid - 2; })],
+     [1, items.filter(function(i){ return i.x >= mid - 2; })]].forEach(function(side){
+      var s = side[0], col = side[1].sort(function(a, b){ return a.y - b.y; });
+      var lastY = -Infinity;
+      col.forEach(function(i){
+        i.ly = Math.max(i.y, lastY + colGap); lastY = i.ly;
+        var px = s < 0 ? -12 : f.w + 12;
+        var g = svgEl('g', { class: 'pt-co' + (i.fresh ? ' is-fresh' : '') + (self.current === i.key ? ' is-on' : '') }, c);
+        svgEl('path', { d: 'M' + i.x + ' ' + i.y + 'C' + (i.x + s * 40) + ' ' + i.y + ' ' + (px - s * 40) + ' ' + i.ly + ' ' + px + ' ' + i.ly, class: 'pt-co-line' }, g);
+        svgEl('circle', { cx: i.x, cy: i.y, r: 11, class: 'pt-co-dot' }, g);
+        var txt = SHORT[i.key] + ' · ' + i.n;
+        var wPill = 22 + txt.length * 17.5;
+        var x0 = s < 0 ? px - wPill : px;
+        svgEl('rect', { x: x0, y: i.ly - 25, width: wPill, height: 50, rx: 25, class: 'pt-co-pill' }, g);
+        var t = svgEl('text', { x: x0 + wPill / 2, y: i.ly, class: 'pt-co-t', dy: '0.35em' }, g);
+        t.textContent = txt;
+      });
+    });
+  };
 
   Patient.prototype.update = function(seen){
     this.seen = seen;
     this.f = findings(seen);
     var f = this.f;
-    Array.prototype.forEach.call(this.el.querySelectorAll('[data-r]'), function(b){
-      var list = f[b.getAttribute('data-r')] || [];
+    Array.prototype.forEach.call(this.el.querySelectorAll('[data-r], [data-tint]'), function(b){
+      var key = b.getAttribute('data-r') || b.getAttribute('data-tint');
+      var list = f[key] || [];
       var fresh = list.some(function(x){ return x.now; });
       b.classList.toggle('has', list.length > 0);
       b.classList.toggle('fresh', fresh);
-      var base = (REGIONS.concat(SURVEY).filter(function(r){ return r.key === b.getAttribute('data-r'); })[0] || {}).label;
-      if(b.tagName.toLowerCase() === 'g') b.setAttribute('aria-label', base + (list.length ? ', ' + list.length + ' finding' + (list.length === 1 ? '' : 's') : ', nothing reported'));
+      var base = (REGIONS.concat(SURVEY, [BACK]).filter(function(r){ return r.key === key; })[0] || {}).label;
+      if(b.tagName.toLowerCase() === 'g' && b.hasAttribute('data-r')) b.setAttribute('aria-label', base + (list.length ? ', ' + list.length + ' finding' + (list.length === 1 ? '' : 's') : ', nothing reported'));
     });
+    // the flip says when the back has something to show
+    var nb = (f.back || []).length;
+    this.flip.classList.toggle('has', nb > 0);
+    this.flip.classList.toggle('fresh', (f.back || []).some(function(x){ return x.now; }));
+    this.drawCallouts();
     if(this.current) this.pick(this.current, true);
   };
 
   Patient.prototype.pick = function(key, quiet){
     this.current = key;
-    var all = REGIONS.concat(SURVEY);
+    var all = REGIONS.concat(SURVEY, [BACK]);
     var def = all.filter(function(r){ return r.key === key; })[0];
     if(!def) return;
-    Array.prototype.forEach.call(this.el.querySelectorAll('[data-r]'), function(b){
-      var on = b.getAttribute('data-r') === key;
+    Array.prototype.forEach.call(this.el.querySelectorAll('[data-r], [data-tint]'), function(b){
+      var on = (b.getAttribute('data-r') || b.getAttribute('data-tint')) === key;
       b.classList.toggle('on', on);
       if(b.tagName.toLowerCase() === 'button') b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
@@ -533,6 +634,7 @@
         (key !== 'ms' && key !== 'air' && key !== 'brth' && key !== 'circ' && list.some(function(x){ return x.dcap.length; })
           ? '<p class="pt-note">Letters are <a href="mnemonics.html#m-dcap-btls">DCAP-BTLS</a> findings named in the case.</p>' : '')
       : '<p class="pt-none">The case has not told you anything about this yet. On a real call you would still look.</p>');
+    this.drawCallouts();
     if(!quiet && window.LevlAnnounce) window.LevlAnnounce.say(def.label + ': ' + (list.length ? list.map(function(x){ return x.text; }).join(' ') : 'nothing reported so far.'));
   };
 

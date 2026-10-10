@@ -36,6 +36,7 @@
      Blocking, because the inline script below calls it while rendering. -->
 <script src="assets/sound-bank.js" defer></script>
 <script src="assets/tool-results.js" defer></script>
+<script src="assets/body-figures.js" defer></script>
 <script src="assets/sound-stage.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
@@ -205,35 +206,32 @@
   .st-fig{position:relative;background:var(--white);border:2px solid var(--line);border-radius:var(--radius);box-shadow:var(--lift);padding:10px 10px 4px;}
   .st-views{position:absolute;top:10px;right:10px;display:flex;gap:4px;z-index:1;}
   .st-views button{padding:5px 12px;font-size:12.5px;min-height:40px;}
-  .st-body{display:block;width:100%;max-width:360px;margin:0 auto;height:auto;touch-action:manipulation;}
-  @media (max-width:760px){.st-body{max-height:44vh;}}
-  .st-skin{fill:var(--surface2);stroke:var(--line);stroke-width:2;}
-  .st-organ{fill:var(--ctint);opacity:.75;}
-  .st-heart{fill:#E7B9AE;opacity:.55;}
-  [data-theme="dark"] .st-heart{fill:#7A3B33;opacity:.6;}
-  .st-rib{fill:none;stroke:var(--muted);stroke-width:1.2;opacity:.28;}
-  .st-bone{fill:var(--paper);stroke:var(--muted);stroke-width:1.4;opacity:.75;}
-  .st-scap{fill:var(--paper);stroke:var(--muted);stroke-width:1.2;opacity:.55;}
-  .st-guide{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 4;opacity:.35;}
-  .st-ics{font:700 9px var(--font-mono);fill:var(--muted);text-anchor:middle;}
-  .st-cap{font:600 9px var(--font-mono);fill:var(--muted);text-anchor:middle;}
-  .st-rl{font:800 13px var(--font-ui);fill:var(--muted);text-anchor:middle;}
+  .st-body{display:block;width:100%;max-width:420px;margin:0 auto;height:auto;touch-action:manipulation;overflow:visible;}
+  @media (max-width:760px){.st-body{max-height:52vh;}}
+  .st-img{filter:drop-shadow(0 4px 10px rgba(80,45,30,.12));}
+  [data-theme="dark"] .st-img{filter:brightness(.88);}
+  .st-guide{stroke:#fff;stroke-width:1.4;stroke-dasharray:5 6;opacity:.8;vector-effect:non-scaling-stroke;}
+  .st-ics{font:800 19px var(--font-mono);fill:#5B3A2A;text-anchor:middle;paint-order:stroke;stroke:rgba(255,246,238,.85);stroke-width:5px;stroke-linejoin:round;}
+  .st-cap{font:700 16px var(--font-mono);fill:#5B3A2A;text-anchor:middle;letter-spacing:.04em;paint-order:stroke;stroke:rgba(255,246,238,.85);stroke-width:5px;stroke-linejoin:round;}
+  .st-rl{font:800 26px var(--font-ui);fill:var(--muted);text-anchor:middle;}
+  .st-credit{font-size:10.5px;color:var(--muted);text-align:center;margin:4px 0 2px;line-height:1.4;}
+  .st-credit a{color:var(--muted);}
   .st-site{cursor:pointer;outline:none;}
   .st-hit{fill:transparent;}
   .st-halo{fill:var(--accent);opacity:0;transition:r .25s,opacity .25s;}
   .st-site--lung .st-halo,.st-site--airway .st-halo{fill:#3C7FC0;}
-  .st-dot{fill:var(--white);stroke:var(--accent);stroke-width:2.5;transition:stroke-width .15s;}
+  .st-dot{fill:rgba(255,255,255,.92);stroke:var(--accent);stroke-width:4;transition:stroke-width .15s;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25));}
   .st-site--lung .st-dot,.st-site--airway .st-dot{stroke:#3C7FC0;}
   .st-core{fill:var(--accent);}
   .st-site--lung .st-core,.st-site--airway .st-core{fill:#3C7FC0;}
-  .st-site.is-best .st-dot{stroke-width:4.5;}
+  .st-site.is-best .st-dot{stroke-width:7;}
   .st-site.is-on .st-dot{fill:var(--accent);}
   .st-site--lung.is-on .st-dot,.st-site--airway.is-on .st-dot{fill:#3C7FC0;}
   .st-site:focus-visible .st-dot,.st-site:hover .st-dot{stroke:var(--ink);}
   .st-site.is-playing .st-halo{animation:stPulse 1s ease-in-out infinite;}
   @keyframes stPulse{50%{opacity:.15;}}
-  .st-site.is-right .st-dot{fill:var(--good);stroke:var(--good-text);stroke-width:4;}
-  .st-site.is-wrong .st-dot{fill:var(--bad);stroke:var(--bad-text);stroke-width:4;}
+  .st-site.is-right .st-dot{fill:var(--good);stroke:var(--good-text);stroke-width:6;}
+  .st-site.is-wrong .st-dot{fill:var(--bad);stroke:var(--bad-text);stroke-width:6;}
   .st-side{min-width:0;}
   .st-k{display:block;font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px;}
   .st-row .st-k{margin:0;}

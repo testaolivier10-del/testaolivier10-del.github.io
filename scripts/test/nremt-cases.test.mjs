@@ -114,6 +114,14 @@ test('findings quote the case, never invent', () => {
   assert.equal(f.head.length, 0);
 });
 
+test('the back view finds the body\'s back, not back blows', () => {
+  const p = loadSim().pure;
+  const f = p.findings([{ text: 'He has bruising of several different colors on his back. You deliver 5 back blows between her shoulder blades.', vitals: '', now: true }]);
+  assert.equal(f.back.length, 1);
+  assert.match(f.back[0].text, /bruising/);
+  assert.equal(p.findings([{ text: 'Lay her flat on her back seat.', vitals: '', now: true }]).back.length, 0);
+});
+
 /* Give or withhold: every deciding phrase is on that drug's own card. */
 test('formulary give/withhold cards quote their drug card', () => {
   const s = sandbox();
