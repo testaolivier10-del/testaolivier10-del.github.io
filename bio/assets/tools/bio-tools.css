@@ -564,3 +564,22 @@
 .hw-k.A{background:var(--bio-o2);}
 .hw-k.a{background:repeating-linear-gradient(45deg,var(--bio-deo2) 0 3px,var(--white) 3px 4.5px);}
 .hw-gplot .hw-dummy{display:none;}
+
+/* ===== Tree reading: tap the tree (tools upgrade U-Bio-sims) ===== */
+.tr-figwrap{background:var(--paper);border-radius:14px;padding:6px;}
+.tr-fig .tr-node{cursor:pointer;}
+.tr-fig .tr-node .tr-nhit{fill:transparent;stroke:none;}
+.tr-fig .tr-node:hover circle:not(.tr-nhit),.tr-fig .tr-node:focus-visible circle:not(.tr-nhit){stroke:var(--cink);stroke-width:3;}
+.tr-fig .tr-node:focus,.tr-fig .tr-tipg:focus{outline:none;}
+.tr-fig .tr-tipg{cursor:pointer;}
+.tr-fig .tr-thit{fill:transparent;}
+.tr-fig .tr-tipg:hover .tr-thit,.tr-fig .tr-tipg:focus-visible .tr-thit{fill:var(--ctint);stroke:var(--cink);stroke-width:1.5;}
+.tr-fig .tr-tipg.sel .tr-thit{fill:var(--bio-aff-fill);}
+.tr-fig .tr-drop{fill:transparent;stroke:transparent;}
+.tr-fig .tr-drop.hot{fill:var(--ctint);stroke:var(--cink);stroke-width:2;stroke-dasharray:4 3;}
+.tr-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.tr-chips .bt-small{flex:1 1 100%;}
+.tr-chip{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:4px 12px;border-radius:999px;border:2px dashed var(--bio-symp);background:var(--white);color:var(--ink);font:700 13.5px var(--font-ui);cursor:grab;touch-action:none;user-select:none;}
+.tr-chip b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--bio-symp);color:var(--white);font-size:12px;}
+.tr-chip.armed{border-style:solid;background:var(--ctint);border-color:var(--cink);}
+.tr-chip.placed{border-style:solid;opacity:.75;}
