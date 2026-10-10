@@ -643,7 +643,7 @@
      Four drawn acids in a row. Drag them (or tap one, then tap where it
      goes, or use its arrow buttons) into order from most to least acidic,
      then put them on the line: each card's marker slides to its measured pKa
-     and the gap to its neighbour is explained by analyse(), the same
+     and the gap to its neighbor is explained by analyse(), the same
      atom-resonance-induction-orbital walk the Compare mode shows. */
 
   var rankPick = -1;

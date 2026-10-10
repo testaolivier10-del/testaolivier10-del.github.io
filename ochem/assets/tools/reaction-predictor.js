@@ -155,7 +155,7 @@
       block('SN2', 'The quaternary carbon next door blocks the backside.');
       block('SN1', 'A primary cation will not form on its own.');
       block('E1', 'A primary cation will not form on its own.');
-      block('E2', 'No hydrogen on the neighbouring carbon.');
+      block('E2', 'No hydrogen on the neighboring carbon.');
     } else if(sub.cls === '2'){
       say('Substrate', 'either',
         'Secondary — the genuinely ambiguous case. It can be attacked from behind and it can ionize, so the substrate alone does not settle anything and the reagent has to.', { SN1:0.5, SN2:0.5, E1:0.5, E2:0.5 });
@@ -400,7 +400,7 @@
      a stored molecule, so the only thing keeping it to nine substrates was
      that nothing else offered one. Classifying a drawn structure is three
      questions: where is the leaving group, how many carbons are on the carbon
-     holding it, and is there a hydrogen on any neighbour. */
+     holding it, and is there a hydrogen on any neighbor. */
   var HALIDES = { F:1, Cl:1, Br:1, I:1 };
 
   function classifySubstrate(st){

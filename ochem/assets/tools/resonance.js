@@ -275,7 +275,7 @@
      the forms, labelled as a fraction. With one form found, the charge is
      all on one atom; each new form you find spreads it, which is the point
      of resonance made visible. It is a plain average of the forms on the
-     table, said so on screen: the real weighting favours major contributors,
+     table, said so on screen: the real weighting favors major contributors,
      and the tool has no energies to weight them by. */
   function fraction(x){
     var n = Math.abs(x);
