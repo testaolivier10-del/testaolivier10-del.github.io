@@ -135,5 +135,10 @@
   T.mount('simpson-diversity', function(app, data){
     explore(app, data);
     T.skillTool(app, data, { slug: 'simpson-diversity', kind: 'simpson', stage: stage });
-  });
+  }, {
+    // Tool Studio (docs/tools-calm.md; bio-tools.js studioArrange)
+    studio: { dock: ['.sd-rows'], hint: { target: '.sd-rows .bt-step', text: 'Add or remove trees' },
+      caption: function(g){ return g.live ? T.esc(T.firstSentence(g.live)) : '<b>D = ' + g.ro(3) + '.</b> Add or remove trees and watch how even the community is.'; },
+      pills: function(g){ return [{ k: 'D', html: g.ro(3), tone: 'readout' }]; },
+      pillsR: function(g){ return [{ html: g.ro(0) + ' species · N ' + g.ro(1), tone: 'ghost' }]; } } });
 })();
