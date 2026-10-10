@@ -255,10 +255,10 @@
       '<section class="bt-card ez-card" aria-labelledby="ez-h"><h2 id="ez-h">The model</h2>' +
       '<div class="os-modes" role="group" aria-label="Mode"><button type="button" class="bt-btn" data-m="explore" aria-pressed="true">Explore</button><button type="button" class="bt-btn" data-m="predict" aria-pressed="false">Predict, then change</button></div>' +
       '<div class="ez-bar"><button type="button" class="bt-btn ez-pause" aria-pressed="false">Pause</button><p class="bt-small ez-key"><span class="ez-k sub"></span>substrate <span class="ez-k prod"></span><span class="ez-k prod b"></span>products <span class="ez-k inh c"></span>competitive inhibitor <span class="ez-k inh"></span>allosteric inhibitor</p></div>' +
-      '<div class="os-chal ez-chal" hidden></div>' +
+      '<p class="bt-first">Slide the substrate concentration and watch the active sites fill.</p><div class="os-chal ez-chal" hidden></div>' +
       '<p class="os-why ez-why"></p>' +
-      '<div class="bt-controls"></div>' +
-      '<div class="ez-plots"><div><div class="bt-tabs" role="group" aria-label="Plot the rate against">' +
+      '<div class="bt-controls" data-primary="2"></div>' +
+      '<div class="ez-plots bt-num"><div><div class="bt-tabs" role="group" aria-label="Plot the rate against">' +
       Object.keys(VIEWS).map(function(k){ return '<button type="button" class="bt-btn" data-v="' + k + '" aria-pressed="' + (k === view) + '">Rate vs ' + esc(k === 'ph' ? 'pH' : VIEWS[k].label.toLowerCase()) + '</button>'; }).join('') +
       '</div><div class="bt-plotwrap"></div></div></div>' +
       '<dl class="bt-readout"></dl><p class="bt-summary"></p>' +
@@ -267,7 +267,7 @@
       '<details class="bt-data"><summary>Data table: your runs and the curve</summary><div class="bt-tables"></div></details></section>' +
       '<section class="bt-card" aria-labelledby="ez-q"><h2 id="ez-q">Questions about this model</h2><div class="bt-qs bio-qs"></div></section>');
     var card = app.querySelector('.bt-card'), ctl = card.querySelector('.bt-controls');
-    if(ctx.stage){ ctx.stage.classList.add('ez-stage'); card.insertBefore(ctx.stage, card.querySelector('.ez-bar')); }
+    if(ctx.stage){ ctx.stage.classList.add('ez-stage', 'bt-hero'); card.insertBefore(ctx.stage, card.querySelector('.ez-bar')); }
     var scene = window.ApBioEnzymeScene ? window.ApBioEnzymeScene(ctx.stage, M) : null;
     var pauseBtn = card.querySelector('.ez-pause');
     pauseBtn.addEventListener('click', function(){ var on = pauseBtn.getAttribute('aria-pressed') !== 'true'; pauseBtn.setAttribute('aria-pressed', String(on)); pauseBtn.textContent = on ? 'Resume' : 'Pause'; if(scene) scene.pause(on); });
@@ -284,7 +284,7 @@
     var sT = T.slider({ label: 'Temperature', min: 0, max: data.temperature.max, step: 1, value: st.T, unit: '°C', decimals: 0, onInput: function(v){ st.T = v; update(); } });
     var sPH = T.slider({ label: 'pH', min: 1, max: 13, step: 0.5, value: st.pH, decimals: 1, onInput: function(v){ st.pH = v; update(); } });
     var sI = T.slider({ label: 'Inhibitor concentration', min: 0, max: data.inhibitor.max, step: data.inhibitor.step, value: st.I, unit: data.inhibitor.unit, decimals: 2, onInput: function(v){ st.I = v; update(); } });
-    [enzymeSel, inhSel, sS, sT, sPH, sI].forEach(function(c){ ctl.appendChild(c.el); });
+    [sS, sT, enzymeSel, inhSel, sPH, sI].forEach(function(c){ ctl.appendChild(c.el); });
     sI.disable(true);
     var desc = document.createElement('p'); desc.className = 'bt-hint bt-prof'; ctl.appendChild(desc);
 
