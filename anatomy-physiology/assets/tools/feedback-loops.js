@@ -454,7 +454,7 @@
       '<text class="lbl-sm" x="' + GX0 + '" y="' + (GY + 30) + '">' + (pos ? 'less' : 'lower') + '</text>' +
       '<text class="lbl-sm" x="' + GX1 + '" y="' + (GY + 30) + '" text-anchor="end">' + (pos ? 'more' : 'higher') + '</text>' +
       '<g class="fl-g-sp"><path class="fl-g-spline" d="M' + GC + ' ' + (GY - 18) + ' V' + (GY + 18) + '"/><text class="fl-g-spt" x="' + GC + '" y="' + (GY + 34) + '" text-anchor="middle">' + esc(sp) + '</text></g>' +
-      (lv.shift ? '<g class="fl-g-sp0" opacity="0"><path class="fl-g-spline ghost" d="M' + GC + ' ' + (GY - 14) + ' V' + (GY + 14) + '"/><text class="lbl-sm" x="' + GC + '" y="' + (GY - 22) + '" text-anchor="middle">was ' + esc(lv.setPoint) + '</text></g>' : '') +
+      (lv.shift ? '<g class="fl-g-sp0" opacity="0"><path class="fl-g-spline ghost" d="M' + GC + ' ' + (GY - 14) + ' V' + (GY + 14) + '"/><text class="lbl-sm" x="' + GC + '" y="' + (GY + 34) + '" text-anchor="middle">was ' + esc(lv.setPoint) + '</text></g>' : '') +
       '<g class="fl-g-mk" tabindex="0" role="slider" aria-label="' + esc(lv.variable) + '" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">' +
         '<rect class="fl-g-hit" x="-22" y="' + (GY - 30) + '" width="44" height="60" fill="transparent"/>' +
         '<path class="fl-g-ptr" d="M0 ' + (GY - 22) + ' V' + (GY + 8) + '"/><circle class="fl-g-dot" cx="0" cy="' + GY + '" r="11"/>' +
