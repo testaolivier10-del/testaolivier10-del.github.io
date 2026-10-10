@@ -161,6 +161,8 @@
       var pick = null;
       ALL.forEach(function(p){ if(p.id === b.getAttribute('data-id')) pick = p; });
       if(pick) select(pick);
+      // The arrows panel is below the picker: on a phone, take the student to it.
+      if(pick && window.OchemShowWork) window.OchemShowWork(document.getElementById('apName').closest('.tpanel'));
     });
   });
 

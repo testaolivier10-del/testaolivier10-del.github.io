@@ -27,7 +27,7 @@
     var low = Math.min(-2, cPsi, sS, isFinite(mineC) ? Math.max(mineC, -40) : 0, isFinite(mineS) ? Math.max(mineS, -40) : 0);
     var lo = -T.niceMax(-low * 1.15), sy = function(v){ return TOP + (Math.min(0, Math.max(lo, v)) / lo) * (BOT - TOP); };
     var p = [], st = T.niceStep(-lo, 5);
-    for(var t = 0; t >= lo - 1e-9; t -= st) p.push('<line class="grid" x1="' + L + '" x2="' + (W - 12) + '" y1="' + sy(t).toFixed(1) + '" y2="' + sy(t).toFixed(1) + '"/><text class="tick" x="' + (L - 6) + '" y="' + (sy(t) + 4).toFixed(1) + '" text-anchor="end">' + F(M.round(t, 6), st < 1 ? 1 : 0) + '</text>');
+    for(var t = 0; t >= lo - 1e-9; t -= st) p.push('<line class="grid" x1="' + L + '" x2="' + (W - 12) + '" y1="' + sy(t).toFixed(1) + '" y2="' + sy(t).toFixed(1) + '"/><text class="tick" x="' + (L - 6) + '" y="' + (sy(t) + 4).toFixed(1) + '" text-anchor="end">' + F(M.round(t, 6), Math.max(0, Math.min(3, (String(M.round(st, 6)).split('.')[1] || '').length))) + '</text>');
     p.push('<text class="lbl" transform="translate(14 ' + ((TOP + BOT) / 2) + ') rotate(-90)" text-anchor="middle">ψ (bar)</text>');
     p.push('<text class="sk-ph" x="' + (L + 4) + '" y="' + (TOP - 14) + '">higher ψ (toward 0)</text>');
     var boxes = [{ x: L + 30, w: 120, v: vC, name: zero ? 'Tissue' : 'Cell', real: cPsi, cls: 'cell', mine: !chk }, { x: L + 210, w: 120, v: vS, name: 'Beaker (' + x.sol.name + ')', real: sS, cls: 'sol', mine: !chk }];
@@ -61,5 +61,7 @@
     S.redraw(host, '<div class="sk-fig">' + svg + '</div><p class="sk-cap">' + cap + ' <a href="osmosis.html">See it in the osmosis simulator</a>.</p>');
   }
 
-  T.mount('water-potential', function(app, data){ T.skillTool(app, data, { slug: 'water-potential', kind: 'wp', stage: stage }); });
+  T.mount('water-potential', function(app, data){
+    T.skillTool(app, data, { slug: 'water-potential', kind: 'wp', stage: function(host, s){ host.classList.add('wp-pin'); stage(host, s); } });
+  });
 })();

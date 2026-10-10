@@ -52,7 +52,9 @@
         p.push('<rect class="sk-exp' + (v.exp ? '' : ' mine') + '" x="' + (x - bw / 2 - 5).toFixed(1) + '" y="' + ey.toFixed(1) + '" width="' + (bw + 10).toFixed(1) + '" height="' + (BT + BH - ey).toFixed(1) + '"/>');
         if(Math.abs(top - ey) > 5) p.push('<line class="sk-gap" x1="' + (x + bw / 2 + 9).toFixed(1) + '" x2="' + (x + bw / 2 + 9).toFixed(1) + '" y1="' + top.toFixed(1) + '" y2="' + ey.toFixed(1) + '"/>');
       }
-      p.push('<text class="sk-val" x="' + x.toFixed(1) + '" y="' + (top - (v.drag ? 16 : 7)).toFixed(1) + '" text-anchor="middle">' + o + '</text>');
+      // Near the top of the scale the count would run into the caption, so it moves beside the bar.
+      var ly = top - (v.drag ? 16 : 7), side = ly < BT - 8;
+      p.push('<text class="sk-val" x="' + (side ? x - bw / 2 - 6 : x).toFixed(1) + '" y="' + (side ? top + 12 : ly).toFixed(1) + '" text-anchor="' + (side ? 'end' : 'middle') + '">' + o + '</text>');
       p.push('<text class="tick sk-cat" x="' + x.toFixed(1) + '" y="' + (BT + BH + 17) + '" text-anchor="middle">' + esc(c) + '</text>');
       if(v.drag) p.push('<circle class="sk-grip" data-k="' + i + '" tabindex="0" role="slider" aria-orientation="vertical" aria-label="' + esc(c + ' observed count') + '" aria-valuemin="0" aria-valuemax="' + v.ymax + '" aria-valuenow="' + o + '" aria-valuetext="' + esc(c + ': observed ' + o + ', expected ' + F(v.exp[i], 1)) + '" cx="' + x.toFixed(1) + '" cy="' + top.toFixed(1) + '" r="8"/>');
     });

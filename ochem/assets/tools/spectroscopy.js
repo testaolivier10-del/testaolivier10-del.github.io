@@ -642,6 +642,8 @@
       document.getElementById('spPredict').hidden = m !== 'predict';
       document.getElementById('spPuzzle').hidden = m !== 'puzzle';
       document.getElementById('spRef').hidden = m !== 'ref';
+      // The packing depends on the chart's width, which is only known once the view is showing.
+      if(m === 'ref') redrawRef();
       if(m === 'puzzle' && !puzzle) newPuzzle();
     });
   });
@@ -833,8 +835,14 @@
   // Roughly how much horizontal room a label needs, as a percentage of the
   // chart width. Approximate on purpose: it only has to be close enough to
   // keep two labels from sharing a row.
+  // The chart's real width in pixels, measured when the Reference view is drawn (phones are ~300px, not 900).
+  var refW = 900;
   function labelSpan(leftPct, widthPct, label){
-    var estPct = (label.length * 6.4 + 14) / 900 * 100;
+    var estPct = (label.length * 6.4 + 14) / refW * 100;
+    // A label that would run past the right end of the axis hangs left from its bar's end instead.
+    if(leftPct + Math.max(widthPct, estPct) > 100 && estPct > widthPct){
+      return { left: Math.max(0, leftPct + widthPct - estPct), right: leftPct + widthPct + 1, flip: true };
+    }
     return { left: leftPct, right: leftPct + Math.max(widthPct, estPct) + 1 };
   }
 
@@ -842,7 +850,7 @@
     var count = packRows(items, function(it){ return it.span; });
     return '<div class="sp-bands" style="height:' + (count * ROW_H + 4) + 'px;">' +
       items.map(function(it){
-        return '<button type="button" class="sp-band' + (it.variable ? ' sp-band--variable' : '') + '" ' +
+        return '<button type="button" class="sp-band' + (it.variable ? ' sp-band--variable' : '') + (it.span.flip ? ' sp-band--flip' : '') + '" ' +
           'data-idx="' + it.idx + '" style="left:' + it.left.toFixed(2) + '%;width:' + it.width.toFixed(2) + '%;' +
           'top:' + (it.row * ROW_H) + 'px;">' +
           '<span class="sp-band__bar"></span>' +
@@ -853,6 +861,10 @@
   }
 
   function renderRef(){
+    var host = document.getElementById('spRefIR');
+    var w = host && host.getBoundingClientRect().width;
+    if(w) refW = w;
+    renderRef.drawnAt = w || 0;
     var irItems = IR_BANDS.map(function(b, i){
       var left = (IR_MAX - b.hi) / (IR_MAX - IR_MIN) * 100;
       var width = Math.max((b.hi - b.lo) / (IR_MAX - IR_MIN) * 100, 1);
@@ -912,6 +924,13 @@
     input.addEventListener('input', update);
     update();
   }
+
+  function redrawRef(){
+    var host = document.getElementById('spRefIR');
+    var w = host && host.getBoundingClientRect().width;
+    if(w && Math.abs(w - (renderRef.drawnAt || 0)) > 20) renderRef();
+  }
+  if(window.addEventListener) window.addEventListener('resize', function(){ if(!document.getElementById('spRef').hidden) redrawRef(); });
 
   /* ---- Puzzle mode ------------------------------------------------------- */
 

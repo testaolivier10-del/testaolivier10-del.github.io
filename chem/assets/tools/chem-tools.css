@@ -350,6 +350,13 @@
 .tc-fig{margin:0;}
 .tc-plot svg{width:100%;height:auto;display:block;cursor:crosshair;touch-action:manipulation;}
 .tc-read{min-height:1.4em;}
+.tc-ind{margin:8px 0 0;}
+.tc-ind summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font:700 14px var(--font-ui);color:var(--cink);}
+/* On a phone the curve stays pinned while the student drags the marker in the step below it. */
+@media (max-width:700px){
+  .tc-pin{position:sticky;top:var(--site-header-h,64px);z-index:2;background:var(--white);padding:4px 0;border-bottom:2px solid var(--line);}
+  .tc-plot svg{max-height:32vh;width:auto;max-width:100%;margin:0 auto;}
+}
 /* Particle pictures: every atom carries its symbol, so these colors are a
    second cue only. Fills are light in both themes so the black symbol reads. */
 .pt-box{width:100%;height:auto;display:block;}

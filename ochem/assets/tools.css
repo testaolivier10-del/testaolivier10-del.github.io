@@ -706,3 +706,24 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 @media(max-width:640px){
   #tool-top{margin:10px 0 14px;padding:14px 16px 16px;}
 }
+
+/* Touch screens: every chip, segment button and mini chip is at least a 40px target
+   (they were 24 to 31px tall on a phone). Mouse layouts keep the compact size. */
+@media (pointer: coarse){
+  .tchip,.tseg button,.tool-share .tchip,.ab-rcard__move .tchip,.rp-chips .tchip,.rp-pair .tseg button{min-height:40px;}
+  .tchip--mini{min-height:40px;padding-top:6px;padding-bottom:6px;}
+  .tseg{align-items:stretch;}
+}
+
+/* Phones: a panel head that holds a segmented switch puts the switch on its own row, full
+   width, so labels like "Mechanism challenge" are not crushed into three-line stacks. */
+@media (max-width:560px){
+  .tpanel__head:has(> .tseg){flex-wrap:wrap;}
+  .tpanel__head > .tseg{flex:1 0 100%;display:flex;}
+  .tpanel__head > .tseg button{flex:1 1 0;padding-left:8px;padding-right:8px;}
+}
+
+/* Chips inside a white panel were white with no outline (--bw is 0), so they read as plain text
+   rather than buttons. Give unselected ones the page tint, as the Reaction Predictor's do. */
+.tpanel .tchip:not(.on){background:var(--paper);border-color:var(--line-soft);}
+.tpanel .tchip:not(.on):hover{background:var(--tint-accent);}

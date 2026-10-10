@@ -115,7 +115,11 @@
   }).join('');
 
   elPicker.querySelectorAll('.tchip').forEach(function(b){
-    b.addEventListener('click', function(){ select(LIB.get(b.getAttribute('data-id'))); });
+    b.addEventListener('click', function(){
+      select(LIB.get(b.getAttribute('data-id')));
+      // On a phone the list sits below the model: bring the model back into view so the pick is seen.
+      if(window.OchemShowWork) window.OchemShowWork(document.getElementById('v3Stage'));
+    });
   });
 
   function select(m){

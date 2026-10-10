@@ -239,8 +239,10 @@
       newLabel: 'New curve',
       extra: function(host, p, a){
         cur = p; marker = null; marks = []; api = a; p.showPoint = false;
-        host.innerHTML = '<figure class="tc-fig"><div class="tc-plot"></div><figcaption class="bt-small tc-read" aria-hidden="true"></figcaption></figure>' +
-          T.dataTable(['Indicator', 'Color change range (pH)'], M.titration.INDICATORS.map(function(d){ return [d.name, F(d.lo, 1) + ' to ' + F(d.hi, 1)]; }), 'Indicators');
+        host.innerHTML = '<figure class="tc-fig"><div class="tc-plot"></div><figcaption class="bt-small tc-read" aria-hidden="true"></figcaption></figure>';
+        host.classList.add('tc-pin');
+        // The ranges sit below the steps, behind a tap (each indicator choice repeats its range), so on a phone the pinned curve stays right above the step being answered.
+        a.area.querySelector('.cd-steps').insertAdjacentHTML('afterend', '<details class="tc-ind"><summary>Indicator color ranges</summary>' + T.dataTable(['Indicator', 'Color change range (pH)'], M.titration.INDICATORS.map(function(d){ return [d.name, F(d.lo, 1) + ' to ' + F(d.hi, 1)]; }), 'Indicators') + '</details>');
         draw();
       },
       onVol: function(v){ marker = v; draw(); },

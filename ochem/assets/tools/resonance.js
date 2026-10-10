@@ -117,6 +117,8 @@
   elPicker.querySelectorAll('.tchip').forEach(function(b){
     b.addEventListener('click', function(){
       SPECIES.forEach(function(s){ if(s.id === b.getAttribute('data-id')) select(s); });
+      // The drawing is below the picker: on a phone, take the student to it.
+      if(window.OchemShowWork) window.OchemShowWork(document.getElementById('resName').closest('.tpanel'));
     });
   });
 

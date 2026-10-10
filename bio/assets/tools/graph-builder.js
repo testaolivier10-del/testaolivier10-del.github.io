@@ -119,9 +119,9 @@
         ds.rows.map(function(r, k){ return '<option value="' + k + '"' + (k === st.active ? ' selected' : '') + '>' + esc(pointName(k)) + (st.pts[k].y == null ? ' (not placed)' : '') + '</option>'; }).join('') + '</select></div>';
       body.querySelector('#' + gid + '-act').addEventListener('change', function(){ st.active = +this.value; drawGrid(); });
     }
-    function adj(k, f, label, val){
+    function adj(k, f, label, val, colName){
       var id = gid + '-p' + k + f;
-      return '<td><span class="gb-adj"><button type="button" data-k="' + k + '" data-f="' + f + '" data-d="-1" aria-label="Decrease ' + esc(label) + '">−</button>' +
+      return '<td' + (colName ? ' data-col="' + esc(colName) + '"' : '') + '><span class="gb-adj"><button type="button" data-k="' + k + '" data-f="' + f + '" data-d="-1" aria-label="Decrease ' + esc(label) + '">−</button>' +
         '<input type="text" inputmode="decimal" id="' + id + '" data-k="' + k + '" data-f="' + f + '" value="' + (val == null ? '' : esc(String(M.round(val, 6)))) + '" aria-label="' + esc(label) + '">' +
         '<button type="button" data-k="' + k + '" data-f="' + f + '" data-d="1" aria-label="Increase ' + esc(label) + '">+</button></span></td>';
     }
@@ -131,7 +131,7 @@
       body.querySelector('.gb-table').innerHTML = '<div class="table-wrap" tabindex="0" role="region" aria-label="Points to plot"><table class="gb-pts"><thead><tr>' + head + '</tr></thead><tbody>' +
         ds.rows.map(function(r, k){
           var p = st.pts[k], nm = pointName(k);
-          return '<tr><th scope="row">' + esc(nm) + '</th>' + (bar() ? '' : adj(k, 'x', nm + ' x value', p.x)) + adj(k, 'y', nm + (bar() ? ' bar height' : ' y value'), p.y) + (ds.err ? adj(k, 'e', nm + ' error bar size', p.e) : '') + '</tr>';
+          return '<tr><th scope="row">' + esc(nm) + '</th>' + (bar() ? '' : adj(k, 'x', nm + ' x value', p.x, 'x')) + adj(k, 'y', nm + (bar() ? ' bar height' : ' y value'), p.y, bar() ? 'height' : 'y') + (ds.err ? adj(k, 'e', nm + ' error bar size', p.e, '± error') : '') + '</tr>';
         }).join('') + '</tbody></table></div>';
       body.querySelectorAll('.gb-pts input').forEach(function(i){
         i.addEventListener('change', function(){ var k = +i.getAttribute('data-k'), f = i.getAttribute('data-f'), v = num(i.value); st.pts[k][f] = isFinite(v) ? v : null; drawGrid(); drawPlaceSelect(); });
