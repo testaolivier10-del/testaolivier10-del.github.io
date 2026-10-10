@@ -227,3 +227,24 @@ test('conformations: the A-values the chair meter uses are the reviewed ones', (
   }
   assert.match(src, /total \+= 1\.6;/, 'the 1,3-diaxial surcharge changed');
 });
+
+test('resonance overlay: averaging every contributor conserves the charge, and equivalent forms share it evenly', () => {
+  const s = load(...CORE, 'ochem/assets/tool-molecules.js', 'ochem/assets/resonance-engine.js');
+  const R = s.OchemResonance, C = s.OchemChem, M = s.OchemMolecules;
+  for(const id of ['acetate-ion', 'formate', 'allyl-cation', 'allyl-anion', 'enolate', 'phenoxide', 'carbonate', 'nitrate', 'benzyl-cation']){
+    const st = C.fromMolecule(M.get(id));
+    const forms = R.contributors(st);
+    const sum = {};
+    for(const f of forms) for(const k of Object.keys(f.atoms)){ if(!f.atoms[k].el || f.atoms[k].group) continue; sum[k] = (sum[k] || 0) + C.formalCharge(f, k) / forms.length; }
+    const total = Object.values(sum).reduce((t, x) => t + x, 0);
+    const want = Object.keys(st.atoms).reduce((t, k) => t + (st.atoms[k].el && !st.atoms[k].group ? C.formalCharge(st, k) : 0), 0);
+    assert.ok(Math.abs(total - want) < 1e-9, `${id}: averaged charge ${total} vs ${want}`);
+  }
+  // acetate: two equivalent oxygens at -1/2 each
+  const ac = C.fromMolecule(M.get('acetate-ion')), fs = R.contributors(ac);
+  const os = Object.keys(ac.atoms).filter(k => ac.atoms[k].el === 'O');
+  for(const k of os){
+    const q = fs.reduce((t, f) => t + C.formalCharge(f, k), 0) / fs.length;
+    assert.ok(Math.abs(q + 0.5) < 1e-9, `acetate O ${k}: ${q}`);
+  }
+});

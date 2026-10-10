@@ -437,6 +437,16 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .v3-quiz .tchip:disabled{opacity:1;}
 .v3-quiz .tnote{margin:12px 0 0;}
 
+/* ---- Resonance: the averaged charge overlay ------------------------------ */
+.res-charge .omol svg{max-width:340px;max-height:260px;}
+.res-q{transition:r .4s cubic-bezier(.2,.8,.2,1);}
+.res-q--neg{fill:var(--tint-accent);stroke:var(--accent);stroke-width:1.5;stroke-dasharray:3 3;}
+.res-q--pos{fill:var(--tint-coral);stroke:var(--coral-text);stroke-width:1.5;stroke-dasharray:3 3;}
+.res-q__t{font:900 12px var(--font-mono);}
+.res-q__t--neg{fill:var(--accent-text);}
+.res-q__t--pos{fill:var(--coral-text);}
+@media(prefers-reduced-motion:reduce){ .res-q{transition:none;} }
+
 /* ---- Both chairs at once (Conformation Lab) ------------------------------ */
 
 .cf-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
