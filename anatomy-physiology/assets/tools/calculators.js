@@ -242,7 +242,7 @@
       b.addEventListener('click', function(){
         mode = b.getAttribute('data-mode');
         card.querySelectorAll('.calc-mode').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-        if(mode === 'practice' && !problem) newProblem();
+        if(mode === 'practice' && (!problem || problem.done)) newProblem();   // an answered problem is never shown as fresh
         renderBody();
       });
     });
@@ -740,7 +740,7 @@
         '<form class="calc-answer" novalidate>' +
           '<label for="calc-ans" class="calc-label">Your answer</label>' +
           '<div class="calc-input-row">' +
-            (ask.signed ? '<button type="button" class="calc-sign" aria-label="Sign: positive. Select to make it negative." data-sign="1">+</button>' : '') +
+            (ask.signed ? '<button type="button" class="calc-sign" aria-label="Sign: ' + (p.sign > 0 ? 'positive. Select to make it negative.' : 'negative. Select to make it positive.') + '" data-sign="' + p.sign + '">' + (p.sign > 0 ? '+' : '−') + '</button>' : '') +
             '<input id="calc-ans" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="calc-ans-u">' +
             '<span class="calc-unit" id="calc-ans-u">' + esc(ask.unit) + '</span>' +
           '</div>' +
