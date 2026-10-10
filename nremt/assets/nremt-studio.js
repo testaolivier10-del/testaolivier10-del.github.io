@@ -28,12 +28,15 @@
     var f = wrap.querySelector(':scope > footer');
     if(f) return f;
     var n = wrap.nextElementSibling;
-    return n && n.classList.contains('wrap') && n.querySelector(':scope > footer') ? n : null;
+    return n && (n.classList.contains('wrap') || n.classList.contains('xshell')) && n.querySelector(':scope > footer') ? n : null;
   }
+  /* The page's content wrapper: .wrap, or .xshell on the newer pages (not
+     the breadcrumb row, which is an .xshell too). */
+  function shell(){ return document.querySelector('body > .wrap, body > .xshell:not([data-crumb])'); }
 
   function mount(o){
     if(!window.LevlStudio || off()) return null;
-    var wrap = document.querySelector('.wrap');
+    var wrap = shell();
     var foot = footer(wrap);
     var head = wrap && wrap.querySelector(':scope > .page-head');
     var about = document.createElement('div');
@@ -68,7 +71,7 @@
   function slim(o){
     if(off()) return null;
     o = o || {};
-    var wrap = document.querySelector('.wrap');
+    var wrap = shell();
     if(!wrap) return null;
     document.body.classList.add('nx-slim-on');
     var bar = document.createElement('header');
