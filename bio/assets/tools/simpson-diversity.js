@@ -121,7 +121,7 @@
     var Dm = S.num(a.D);
     var svg = '<svg class="bio-svg" viewBox="0 0 400 290" role="img" aria-label="' + esc('Quadrat with ' + x.species.map(function(sp){ return sp.n + ' ' + sp.name; }).join(', ') + '.' + (chk ? ' D = ' + F(sim.D, 2) + '.' : '')) + '">' + quadrat(counts) + meter(counts, chk ? sim.D : null, isFinite(Dm) ? Dm : null) + '</svg>';
     var big = 0; counts.forEach(function(n, k){ if(n > counts[big]) big = k; });
-    var cap = chk ? 'The colored blocks on the meter are each species’ (n/N)²; D is the white part left over. ' + esc(x.species[big].name) + ' has the biggest block: the more one species dominates, the lower D.'
+    var cap = chk ? 'The colored blocks on the meter are each species’ (n/N)²; D is the outlined part left over. ' + esc(x.species[big].name) + ' has the biggest block: the more one species dominates, the lower D.'
       : isFinite(Dm) ? 'Your D is marked on the meter. Does it fit the picture? A quadrat dominated by one species should score low; an even mix of many species, high.'
       : 'One icon per organism counted (each species its own shape). Before you calculate: does this look diverse? Type D and it is marked on the meter.';
     var key = '<p class="sd-key">' + x.species.map(function(sp, k){ return '<span><svg class="sd-sw" viewBox="0 0 20 20" aria-hidden="true">' + icon(k, 10, 10, 6.5) + '</svg>' + esc(sp.name) + ' ' + sp.n + '</span>'; }).join('') + '</p>';
