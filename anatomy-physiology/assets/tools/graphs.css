@@ -133,8 +133,21 @@
 .gr-scrub-l{font:800 13px var(--font-ui);color:var(--muted);white-space:nowrap;}
 .gr-range{flex:1;min-width:0;accent-color:var(--cink);height:40px;}
 .gr-range:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.gr-svg{-webkit-user-select:none;user-select:none;}
 .gr-fig .gr-cur-line{stroke:var(--cink);stroke-width:1.6;}
-.gr-fig .gr-cur-grip{fill:var(--cink);}
+.gr-fig .gr-cur-guide{stroke:var(--cink);stroke-width:1;stroke-dasharray:2 3;opacity:.55;}
+.gr-fig .gr-cur-grip{fill:var(--cink);filter:drop-shadow(0 1px 2px rgba(0,0,0,.25));}
+.gr-fig .gr-cur-gripl{stroke:var(--paper);stroke-width:1.4;stroke-linecap:round;opacity:.85;}
+.gr-fig .gr-cur-halo{fill:var(--cink);opacity:.14;stroke:none;}
+.gr-fig .gr-cur-halo.gr-dot-o2{fill:var(--anp-o2);} .gr-fig .gr-cur-halo.gr-dot-deo2{fill:var(--anp-deo2);} .gr-fig .gr-cur-halo.gr-dot-hi{fill:var(--anp-hi);} .gr-fig .gr-cur-halo.gr-dot-lo{fill:var(--anp-lo);}
+.gr-fig .gr-cur-pill{fill:var(--cink);}
+.gr-fig .gr-cur-pill.gr-pill-o2{fill:var(--anp-o2);} .gr-fig .gr-cur-pill.gr-pill-deo2{fill:var(--anp-deo2);} .gr-fig .gr-cur-pill.gr-pill-hi{fill:var(--anp-hi);} .gr-fig .gr-cur-pill.gr-pill-lo{fill:var(--anp-lo);}
+.gr-fig .gr-cur-pill.gr-pill-shape{fill:var(--anp-shape);} .gr-fig .gr-cur-pill.gr-pill-symp{fill:var(--anp-symp);} .gr-fig .gr-cur-pill.gr-pill-para{fill:var(--anp-para);}
+.gr-fig .gr-cur-pillt{fill:#fff;font:900 11px var(--font-ui);}
+:root[data-theme="dark"] .gr-fig .gr-cur-pillt{fill:#141B19;}
+.gr-fig .gr-cur-shift{fill:none;stroke:var(--anp-causes);stroke-width:1.6;}
+.gr-fig .gr-shift-area{fill:var(--cink);opacity:.1;}
+.gr-fig .gr-shift-area.gr-sa-o2{fill:var(--anp-o2);} .gr-fig .gr-shift-area.gr-sa-hi{fill:var(--anp-hi);} .gr-fig .gr-shift-area.gr-sa-lo{fill:var(--anp-lo);} .gr-fig .gr-shift-area.gr-sa-deo2{fill:var(--anp-deo2);}
 .gr-fig .gr-cur-dot{fill:var(--white);stroke:var(--cink);stroke-width:2.5;}
 .gr-fig .gr-cur-dot.gr-dot-o2{stroke:var(--anp-o2);} .gr-fig .gr-cur-dot.gr-dot-deo2{stroke:var(--anp-deo2);}
 .gr-fig .gr-cur-dot.gr-dot-hi{stroke:var(--anp-hi);} .gr-fig .gr-cur-dot.gr-dot-lo{stroke:var(--anp-lo);}

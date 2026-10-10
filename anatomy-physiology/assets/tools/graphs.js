@@ -514,19 +514,39 @@
       while(L.firstChild) L.removeChild(L.firstChild);
       if(!cursorOn || cursorX == null) return;
       var px = c.sx(cursorX);
+      /* Cursor (visual polish 2026-10): a hairline with a drag handle on top,
+         a guide from each reading to the y axis, and a value pill per reading;
+         with a condition on, an arrow from the old reading to the new one. */
       L.appendChild(el('line', { x1: px, x2: px, y1: MT - 4, y2: c.plotBottom, 'class': 'gr-cur-line' }));
+      var pills = [], pts = [];
       g.panels.forEach(function(p, k){
+        var shiftedOf = {};
+        if(active) (active.overlay.series || []).forEach(function(os){ var b = GM.pairOf(g, os); if((os.panel || 0) === k && b) shiftedOf[b.id] = os; });
         visibleSeries(k).forEach(function(s){
           readAt(s, cursorX).forEach(function(y){
             if(y < Math.min(p.y.min, p.y.max) - 1e-9 || y > Math.max(p.y.min, p.y.max) + 1e-9) return;
-            L.appendChild(el('circle', { cx: px, cy: c.sy(k, y), r: 4.5, 'class': 'gr-cur-dot gr-dot-' + s.cls }));
+            var cy = c.sy(k, y);
+            L.appendChild(el('line', { x1: ML, x2: px, y1: cy, y2: cy, 'class': 'gr-cur-guide' }));
+            pts.push({ cy: cy, s: s, y: y, k: k });
+            var so = shiftedOf[s.id];
+            if(so){ var ny = readAt(so, cursorX); if(ny.length === 1 && Math.abs(c.sy(k, ny[0]) - cy) > 10) L.appendChild(el('path', { d: 'M' + (px + 7) + ' ' + cy + ' C' + (px + 18) + ' ' + cy + ' ' + (px + 18) + ' ' + c.sy(k, ny[0]) + ' ' + (px + 8) + ' ' + c.sy(k, ny[0]), 'class': 'gr-cur-shift', 'marker-end': 'url(#anp-head-causes)' })); }
           });
         });
       });
-      var tx = Math.min(W - MR - 4, Math.max(ML + 4, px));
-      var tag = el('text', { x: tx, y: c.plotBottom + (cats ? 0 : 0) - 6, 'text-anchor': px > W - MR - 50 ? 'end' : px < ML + 50 ? 'start' : 'middle', 'class': 'gr-cur-tag' }, xText(cursorX));
-      L.appendChild(tag);
-      L.appendChild(el('rect', { x: px - 9, y: MT - 12, width: 18, height: 12, rx: 6, 'class': 'gr-cur-grip' }));
+      pts.forEach(function(q){
+        L.appendChild(el('circle', { cx: px, cy: q.cy, r: 9, 'class': 'gr-cur-halo gr-dot-' + q.s.cls }));
+        L.appendChild(el('circle', { cx: px, cy: q.cy, r: 4.5, 'class': 'gr-cur-dot gr-dot-' + q.s.cls }));
+      });
+      // value pills, on the side with more room, nudged apart so they never overlap
+      var right = px < ML + (W - ML - MR) * 0.62;
+      pts.sort(function(a, b){ return a.cy - b.cy; });
+      var lastY = -1e9;
+      pts.forEach(function(q){
+        var txt = fmt(q.y) + unitText(unitY(q.k)), w = txt.length * 6.6 + 12, y = Math.max(q.cy, lastY + 20); lastY = y;
+        var x = right ? px + 12 : px - 12 - w;
+        L.appendChild(el('rect', { x: x, y: y - 9, width: w, height: 18, rx: 9, 'class': 'gr-cur-pill gr-pill-' + q.s.cls }));
+        L.appendChild(el('text', { x: x + w / 2, y: y + 4, 'text-anchor': 'middle', 'class': 'gr-cur-pillt' }, txt));
+      });
       /* The cursor's x readout sits on the same baseline as a region's name
          ("normal blood pH"); where they would overlap, the region name steps
          up a line so both stay readable. */
@@ -615,7 +635,17 @@
        is drawn from its own points. Reduced motion: the end state at once. */
     function morph(into, k, base, os, my){
       var fb = base && GM.seriesFn(base), fo = GM.seriesFn(os);
-      function finish(tmp){ if(my !== animId) return; if(tmp && tmp.parentNode) tmp.parentNode.removeChild(tmp); var d = c.series(into, into, k, os); if(d.path) d.path.classList.add('gr-shifted'); }
+      function finish(tmp){ if(my !== animId) return; if(tmp && tmp.parentNode) tmp.parentNode.removeChild(tmp); shade(); var d = c.series(into, into, k, os); if(d.path) d.path.classList.add('gr-shifted'); }
+      // the gap the shift opens between the two curves, lightly shaded
+      function shade(){
+        if(!fb || !fo) return;
+        var a = Math.max(base.pts[0][0], os.pts[0][0]), b = Math.min(base.pts[base.pts.length - 1][0], os.pts[os.pts.length - 1][0]);
+        if(!(b > a)) return;
+        var top = [], bot = [];
+        for(var i = 0; i <= 80; i++){ var x = a + (b - a) * i / 80; top.push([c.sx(x), c.sy(k, fb(x))]); bot.push([c.sx(x), c.sy(k, fo(x))]); }
+        var d = 'M' + top.map(function(q){ return q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join(' L') + ' L' + bot.reverse().map(function(q){ return q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join(' L') + 'Z';
+        into.insertBefore(el('path', { d: d, 'class': 'gr-shift-area gr-sa-' + os.cls, 'clip-path': 'url(#' + c.clipId + '-' + k + ')' }), into.firstChild);
+      }
       if(!fb || !fo || reduced()) return finish(null);
       var x0 = Math.max(base.pts[0][0], os.pts[0][0]), x1 = Math.min(base.pts[base.pts.length - 1][0], os.pts[os.pts.length - 1][0]);
       if(!(x1 > x0)) return finish(null);
