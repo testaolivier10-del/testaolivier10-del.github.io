@@ -301,5 +301,63 @@
       checked = true;
     }
     load(data.datasets[0].id);
-  });
+  }, { studio: { arrange: studio } });
+
+  /* Tool Studio (docs/tools-calm.md): the grid is the stage; the five
+     steps go one at a time in the dock (Check my graph on the last);
+     "Plot the data | Free plot" is the mode switch; the data table and,
+     after Check, the feedback are under Why; the data set choice is in
+     Details. Every render of the steps (a new data set) is re-arranged. */
+  function studio(app, s, slug){
+    var form = app.querySelector('form.gb-steps'), body = form.querySelector('.gb-body'), fb = app.querySelector('.gb-feedback');
+    Array.prototype.slice.call(app.children).forEach(function(k){ if(k.matches('.bt-intro')) s.add('about', k); if(k.matches('details.bt-how')){ k.open = true; s.add('about', k); } });
+    var stage = document.createElement('div'), data = document.createElement('div'), det = document.createElement('div');
+    stage.className = 'ls-gb-stage'; data.className = 'ls-sec ls-gb-data'; det.className = 'ls-sec';
+    var parts = [];
+    T.studioVirtual(body, function(){ return parts; });
+    T.studioVirtual(app, function(){ return [fb]; });
+    T.studioKeep(s);
+    s.add('stage', stage); s.add('why', fb); s.add('why', data); s.add('details', det);
+    det.appendChild(form.querySelector('.gb-pick'));
+    var h2 = form.querySelector(':scope > h2'); if(h2) h2.classList.add('sr-only');
+    s.add('dock', form);
+    s.modes({ items: [{ value: 'data', label: 'Plot the data' }, { value: 'free', label: 'Free plot' }], value: 'data', onChange: function(v){
+      var b = body.querySelector('.gb-mode [data-mode="' + v + '"]'); if(b) b.click();
+    } });
+    var st = window.LevlStudio.stepper(form, { items: '.gb-stepcol > .gb-step:first-child > .bt-part-choice, .gb-stepcol > .gb-step:not(:first-child)', submit: ':scope > .bt-actions', done: function(){ return false; } }); // done: works around the shared stepper's observer options without one
+    function arrange(){
+      var grid = body.querySelector('.gb-live');
+      if(!grid || !body.contains(grid)) return;
+      parts = [];
+      stage.innerHTML = ''; data.innerHTML = '';
+      ['.gb-grid', '.gb-note'].forEach(function(sel){ var x = grid.querySelector(sel); if(x){ parts.push(x); stage.appendChild(x); } });
+      var say = grid.querySelector('.gb-say'), dw = grid.querySelector('.gb-datawrap'), mode = grid.querySelector('.gb-mode');
+      if(say){ parts.push(say); data.appendChild(say); say.classList.add('sr-only'); }
+      if(dw){ parts.push(dw); dw.open = true; data.appendChild(dw); }
+      if(mode){ parts.push(mode); mode.hidden = true; det.appendChild(mode); var on = mode.querySelector('[aria-pressed="true"]'); s.mode(on && on.getAttribute('data-mode') === 'free' ? 'free' : 'data'); }
+      grid.remove();
+      st.go(0);
+      cap();
+    }
+    function cap(){
+      var note = stage.querySelector('.gb-note'), say = data.querySelector('.gb-say');
+      var t = (say && say.textContent) || 'Build the graph one step at a time: the grid redraws as you go. Check it on the last step.';
+      s.caption(T.esc(t));
+    }
+    if(window.MutationObserver){
+      new MutationObserver(arrange).observe(body, { childList: true });
+      new MutationObserver(cap).observe(stage, { childList: true, subtree: true, characterData: true });
+      new MutationObserver(cap).observe(data, { childList: true, subtree: true, characterData: true });
+      new MutationObserver(function(){
+        if(fb.hidden){ s.pills([]); return; }
+        var m = /(\d+) of (\d+)/.exec(fb.textContent);
+        if(m) s.pills([{ html: m[1] + ' of ' + m[2] + ' criteria met', tone: m[1] === m[2] ? 'good' : 'warn' }]);
+        s.caption((m ? '<b>' + m[1] + ' of ' + m[2] + ' criteria met.</b> ' : '') + 'What to fix is under Why.');
+        s.open('why', fb.querySelector('h2'));
+      }).observe(fb, { attributes: true, attributeFilter: ['hidden'], childList: true, subtree: true });
+    }
+    arrange();
+    app.hidden = true;
+    s.hint({ target: '.gb-step input[type=radio]', text: 'Start here: pick the graph type' });
+  }
 })();
