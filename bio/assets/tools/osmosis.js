@@ -35,20 +35,20 @@
       '<section class="bt-card os-card" aria-labelledby="os-h"><h2 id="os-h">The model</h2>' +
       '<div class="os-modes" role="group" aria-label="Mode"><button type="button" class="bt-btn" data-m="explore" aria-pressed="true">Explore</button><button type="button" class="bt-btn" data-m="predict" aria-pressed="false">Predict, then run</button>' +
       '<a class="os-calc" href="water-potential.html">Calculate it: ψ practice <span aria-hidden="true">→</span></a></div>' +
-      '<div class="os-chal" hidden></div>' +
+      '<p class="bt-first">Slide the beaker concentration and watch which way water moves.</p><div class="os-chal" hidden></div>' +
       '<div class="os-play"><button type="button" class="btn-press sm os-go" data-a="play">Play from the start</button><p class="os-clock" aria-hidden="true"></p></div>' +
       '<div class="os-pick bt-ctl"><span class="os-pick-h" id="os-pick-h">What goes in the beaker</span><div class="os-pick-row" role="group" aria-labelledby="os-pick-h">' +
         data.systems.map(function(s){ return '<button type="button" class="bt-btn" data-sys="' + esc(s.id) + '" aria-pressed="' + (s.id === sys.id) + '">' + esc(s.short) + '</button>'; }).join('') + '</div></div>' +
       '<p class="os-why" role="status" aria-live="polite"></p>' +
-      '<div class="bt-controls"></div>' +
+      '<div class="bt-controls" data-primary="1"></div>' +
       '<dl class="bt-readout"></dl><div class="bt-eqs"></div><p class="bt-summary"></p>' +
-      '<div class="os-graph"><h3 class="os-gh">Mass change against beaker concentration</h3><p class="bt-small">Tap the graph to set the beaker concentration.</p><div class="bt-plotwrap"></div></div>' +
+      '<div class="os-graph bt-num"><h3 class="os-gh">Mass change against beaker concentration</h3><p class="bt-small">Tap the graph to set the beaker concentration.</p><div class="bt-plotwrap"></div></div>' +
       '<div class="bt-buttons"><button type="button" class="btn-press sm" data-a="run">Run one trial</button><button type="button" class="btn-press sm alt" data-a="series">Run a concentration series</button><button type="button" class="bt-btn" data-a="clear">Clear runs</button></div>' +
       '<p class="bt-small bt-runnote" role="status" aria-live="polite"></p>' +
       '<details class="bt-data"><summary>Data table: your runs and the curve</summary><div class="bt-tables"></div></details></section>' +
       '<section class="bt-card" aria-labelledby="os-q"><h2 id="os-q">Questions about this model</h2><div class="bt-qs bio-qs"></div></section>');
     var card = app.querySelector('.os-card'), ctl = card.querySelector('.bt-controls');
-    if(ctx.stage){ ctx.stage.classList.add('os-stage'); card.insertBefore(ctx.stage, card.querySelector('.os-modes').nextSibling); }
+    if(ctx.stage){ ctx.stage.classList.add('os-stage', 'bt-hero'); card.insertBefore(ctx.stage, card.querySelector('.os-modes').nextSibling); }
     var say = T.announcer(card.querySelector('.bt-summary'));
     var whyEl = card.querySelector('.os-why'), clock = card.querySelector('.os-clock'), goBtn = card.querySelector('[data-a="play"]');
     function short(k){ return STATE[k].split(':')[0]; }
