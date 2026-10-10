@@ -868,6 +868,7 @@
      (the four arguments as numbered reasons, the product, the links) and
      Details (the split, a path table, the reagent). */
   function studioRender(p, sh, show){
+    studio.mode(state.mode);
     var mix = mixture(state, p), pred = state.mode === 'predict', none = p.major === 'No reaction';
     var share = function(m){ return sh && sh[m] ? '≈' + sh[m] + '%' : '—'; };
     var result = none ? 'no reaction' : (p.minor ? 'mostly ' + p.major + ', some ' + p.minor : p.major);
