@@ -165,6 +165,66 @@
   .term-pair span{color:var(--muted);}
 
   footer a{color:var(--muted);}
+
+  /* ---- Modes, and Burns (assets/burns.js) -------------------------------- */
+  .bm-modes{display:flex;gap:6px;margin:0 0 14px;flex-wrap:wrap;}
+  .bm-modes button{font:700 13.5px var(--font-ui);padding:9px 16px;border:2px solid var(--line);border-radius:20px;background:var(--white);color:var(--ink);cursor:pointer;min-height:42px;}
+  .bm-modes button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--on-accent);}
+  .bm-burns[hidden],.bm-grid[hidden]{display:none;}
+  .bn-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px;}
+  .bn-seg{display:inline-flex;border:2px solid var(--line);border-radius:20px;overflow:hidden;background:var(--white);}
+  .bn-seg button{font:700 13px var(--font-ui);padding:7px 13px;border:0;background:transparent;color:var(--ink);cursor:pointer;min-height:38px;}
+  .bn-seg button+button{border-left:2px solid var(--line);}
+  .bn-seg button[aria-pressed="true"]{background:var(--navy);color:var(--on-accent);}
+  .bn-seg button:disabled{opacity:.55;cursor:default;}
+  .bn-clear,.bn-quiz{font:700 13px var(--font-ui);padding:7px 14px;border:2px solid var(--line);border-radius:20px;background:var(--white);color:var(--ink);cursor:pointer;min-height:42px;}
+  .bn-quiz{border-color:var(--accent);color:var(--accent);}
+  .bn-quiz[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--on-accent);}
+  .bn-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:22px;align-items:start;}
+  @media (max-width:900px){.bn-grid{grid-template-columns:1fr;gap:12px;}}
+  .bn-figs{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:var(--white);border:2px solid var(--line);border-radius:var(--radius);box-shadow:var(--lift);padding:10px;}
+  .bn-fig{margin:0;text-align:center;}
+  .bn-fig figcaption{font:800 11px var(--font-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px;}
+  .bn-svg{display:block;width:100%;max-height:62vh;touch-action:none;user-select:none;-webkit-user-select:none;}
+  .bn-reg{cursor:pointer;outline:none;}
+  .bn-shape{fill:var(--surface2);stroke:var(--muted);stroke-width:1.2;stroke-linejoin:round;transition:fill .15s;}
+  .bn-reg:hover .bn-shape,.bn-reg:focus-visible .bn-shape{stroke:var(--ink);stroke-width:2;}
+  .bn-reg.is-full .bn-shape{fill:#E0703F;stroke:#9B3A16;}
+  .bn-reg.is-shown .bn-shape{fill:#F2C9A8;stroke:#B5562D;stroke-dasharray:4 3;stroke-width:2;}
+  .bn-half-bg{fill:var(--surface2);}
+  .bn-half-st{fill:#E0703F;}
+  .bn-pct{font:800 13px var(--font-ui);fill:var(--ink);text-anchor:middle;pointer-events:none;}
+  .bn-pct--sm{font-size:10px;}
+  .bn-reg.is-full .bn-pct{fill:#fff;}
+  [data-theme="dark"] .bn-reg.is-full .bn-shape{fill:#C2562A;stroke:#F2A57C;}
+  [data-theme="dark"] .bn-reg.is-shown .bn-shape{fill:#6B3A22;stroke:#F2A57C;}
+  [data-theme="dark"] .bn-half-st{fill:#C2562A;}
+  .bn-side{min-width:0;}
+  .bn-total{display:flex;flex-direction:column;background:var(--white);border:2px solid var(--line);border-radius:var(--radius);padding:12px 16px;margin-bottom:10px;}
+  .bn-k{display:block;font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px;}
+  .bn-num{font:800 40px var(--font-ui);color:var(--ink);line-height:1.1;font-variant-numeric:tabular-nums;}
+  .bn-age{font-size:12.5px;color:var(--muted);}
+  .bn-info p{font-size:14px;line-height:1.55;margin:0 0 10px;color:var(--ink);}
+  .bn-list{list-style:none;margin:0 0 10px;padding:0;font-size:13.5px;}
+  .bn-list li{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--line-soft);}
+  .bn-list em{color:var(--muted);font-style:normal;}
+  .bn-flag{font-size:13px;background:var(--tint-accent);border-radius:10px;padding:9px 12px;margin:0 0 10px;color:var(--ink);}
+  .bn-palm{font-size:13px;color:var(--muted);margin:0;line-height:1.55;}
+  .bn-qpanel{border:2px solid var(--accent);background:var(--tint-accent);border-radius:12px;padding:12px 14px;margin-bottom:10px;}
+  .bn-qpanel strong{display:block;font-size:16px;color:var(--ink);line-height:1.4;text-wrap:pretty;}
+  .bn-tally{font:600 12px var(--font-mono);color:var(--muted);margin:6px 0 4px;}
+  .bn-choices{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+  .bn-choices button,.bn-check{font:800 15px var(--font-ui);padding:10px;border:2px solid var(--line);border-radius:12px;background:var(--white);color:var(--ink);cursor:pointer;min-height:44px;}
+  .bn-check{background:var(--navy);border-color:var(--navy);color:var(--on-accent);padding:9px 22px;}
+  .bn-choices button.ok{border-color:var(--good-text);color:var(--good-text);background:rgba(46,125,79,.12);}
+  .bn-choices button.no{border-color:var(--bad-text);color:var(--bad-text);background:rgba(178,58,58,.1);}
+  .bn-hint{font-size:13px;color:var(--muted);margin:8px 0;}
+  .bn-verdict{font-weight:800;font-size:15px;margin:12px 0 4px;}
+  .bn-verdict.ok{color:var(--good-text);}
+  .bn-verdict.no{color:var(--bad-text);}
+  .bn-qpanel p{font-size:14px;margin:0 0 6px;line-height:1.55;}
+  .bn-next{font:700 13px var(--font-ui);padding:9px 20px;border:0;border-radius:18px;background:var(--navy);color:var(--on-accent);cursor:pointer;min-height:40px;margin-top:6px;}
+  @media (prefers-reduced-motion: reduce){.bn-shape{transition:none;}}
 </style>
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
@@ -229,7 +289,16 @@
   <p class="lede">A real 3D model. Drag to rotate, pinch or scroll to zoom, tap anything to learn what it does and what goes wrong with it.</p>
   </div>
 
-  <div class="bm-grid">
+  <div class="bm-modes" role="group" aria-label="Mode">
+    <button type="button" data-bm-mode="anatomy" aria-pressed="true">3D anatomy</button>
+    <button type="button" data-bm-mode="burns" aria-pressed="false">Burns: Rule of Nines</button>
+  </div>
+  <!-- Burns mode (assets/burns.js): paint burned regions on a front and back
+       outline, with a running TBSA. body-map.html?mode=burns opens it; &q=<id>
+       opens one quiz question (Review links). -->
+  <section class="bm-burns" id="burnsRoot" aria-label="Burns: Rule of Nines" hidden></section>
+
+  <div class="bm-grid" id="anatomyGrid">
     <div class="bm-main">
       <div class="controls">
         <button type="button" class="hunt-toggle" id="huntToggle" aria-pressed="false">Quiz me &mdash; find it on the model</button>
@@ -284,7 +353,8 @@
       <div class="rule9-card">
 
     <p>The Rule of Nines is a quick field method for estimating total body surface area (TBSA) affected by a burn in an adult, dividing the body into regions that are each roughly 9% (or a multiple of 9%): head &amp; neck 9%, each arm 9%, the entire front torso 18%, the entire back torso 18%, each leg 18%, and the groin 1%.</p>
-    <p>A rough estimate to guide severity and transport. Pediatric proportions differ.</p>
+    <p>A rough estimate to guide severity and transport. A child&rsquo;s proportions differ: the head and neck is 18% and each leg 13.5%; the rest is counted as in an adult. For small or scattered burns, the patient&rsquo;s own palm (fingers included) is about 1%.</p>
+    <p><a href="body-map.html?mode=burns" data-open-burns>Paint burns on the body &rarr;</a></p>
   </div>
     </div>
     <div>
@@ -308,6 +378,7 @@
 </script>
 <script src="assets/tool-results.js" defer></script>
 <script src="assets/body-viewer.js" defer></script>
+<script src="assets/burns.js" defer></script>
 <script>
 /* The model, picking, layers and the hunt live in assets/body-viewer.js
    (LevlBodyViewer); this page wires its own controls to it.
@@ -332,8 +403,31 @@ document.addEventListener('DOMContentLoaded', function(){
     `<div class="term-pair"><b>${term}</b><span>${def}</span></div>`
   ).join('');
 
-  if (!window.LevlBodyViewer) return;
   const params = new URLSearchParams(location.search);
+  /* Modes. Burns mounts on first use; the 3D viewer loads only when the
+     anatomy grid is on screen (body-viewer.js autoload: 'visible'). */
+  const burnsRoot = document.getElementById('burnsRoot');
+  const anatomyGrid = document.getElementById('anatomyGrid');
+  let burns = null;
+  function setBmMode(m, push){
+    const isBurns = m === 'burns';
+    burnsRoot.hidden = !isBurns;
+    anatomyGrid.hidden = isBurns;
+    document.querySelectorAll('[data-bm-mode]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.bmMode === m)));
+    if (isBurns && !burns && window.NremtBurns) {
+      burns = window.NremtBurns.mount(burnsRoot, {
+        q: params.get('q'),
+        record: r => { if (window.NremtToolResults) window.NremtToolResults.record(r); },
+      });
+    }
+    if (push) { try { const u = new URL(location.href); if (isBurns) u.searchParams.set('mode', 'burns'); else { u.searchParams.delete('mode'); u.searchParams.delete('q'); } history.replaceState(null, '', u); } catch (e) {} }
+  }
+  document.querySelectorAll('[data-bm-mode]').forEach(b => b.addEventListener('click', () => setBmMode(b.dataset.bmMode, true)));
+  const openBurns = document.querySelector('[data-open-burns]');
+  if (openBurns) openBurns.addEventListener('click', e => { e.preventDefault(); setBmMode('burns', true); burnsRoot.scrollIntoView({ block: 'start' }); });
+  if (params.get('mode') === 'burns') setBmMode('burns');
+
+  if (!window.LevlBodyViewer) return;
   const viewer = window.LevlBodyViewer.mount(document.getElementById('bodyViewer'), {
     list: document.getElementById('landmarkList'),
     info: document.getElementById('infoPanel'),
