@@ -337,13 +337,13 @@
     document.getElementById('cfAngleOut').textContent = Math.round(theta) + '°';
 
     document.getElementById('cfReadout').innerHTML =
+      '<div class="tnote ' + (e - min < 0.05 ? 'tnote--good' : (e - min > 2 ? 'tnote--bad' : 'tnote--warn')) + '">' +
+        '<span class="tnote__k">' + esc(d.name) + ' · ' + Math.round(theta) + '° · ' + (e - min).toFixed(1) + ' kcal/mol above the minimum</span>' + esc(d.detail) +
+      '</div>' +
+      '<details class="tool-more tool-more--why"><summary>Why?</summary>' +
       '<div class="tstat">' +
-        '<div><div class="k">Dihedral</div><div class="v">' + Math.round(theta) + '°</div></div>' +
         '<div><div class="k">Relative energy</div><div class="v">' + e.toFixed(1) + ' <small>kcal/mol</small></div></div>' +
         '<div><div class="k">Above the minimum</div><div class="v">' + (e - min).toFixed(1) + ' <small>kcal/mol</small></div></div>' +
-      '</div>' +
-      '<div class="tnote ' + (e - min < 0.05 ? 'tnote--good' : (e - min > 2 ? 'tnote--bad' : 'tnote--warn')) + '">' +
-        '<span class="tnote__k">' + esc(d.name) + '</span>' + esc(d.detail) +
       '</div>' +
       '<p class="tmuted" style="margin:0;">' + esc(tor.note) + '</p>' +
       /* The six values the curve passes through are the ones a textbook
@@ -354,7 +354,7 @@
       '<p class="tmuted" style="margin:10px 0 0;font-size:11.5px;">' +
         'The curve is pinned at the three eclipsed maxima and three staggered minima and interpolated smoothly ' +
         'between them. Those six points are the real numbers; a reading at 37° is the shape of the curve, not a measurement.' +
-      '</p>';
+      '</p></details>';
   }
 
   /* ====================================================================== */
@@ -700,6 +700,7 @@
       '</div>';
     }
 
+    html += '<details class="tool-more tool-more--why"><summary>Why? The strain, term by term</summary>';
     if(eHere.terms.length){
       html += '<div class="ttable-scroll"><table class="ttable">' +
         '<thead><tr><th>What this chair is paying for</th><th>kcal/mol</th></tr></thead><tbody>' +
@@ -728,7 +729,7 @@
       '</tbody></table></div>' +
       '<p class="tmuted" style="margin-top:10px;">A flip turns every axial group equatorial and every equatorial group axial — ' +
       'all six at once. It never moves a group from one face of the ring to the other, which is why cis stays cis: ' +
-      'that would take breaking a bond.</p>';
+      'that would take breaking a bond.</p></details>';
 
     document.getElementById('cfChairReadout').innerHTML = chal.on && !chal.done
       ? '<div class="tempty">Hidden until you commit. Flip the ring (tap any group) until the chair on the left is the one you think has less strain, then press the button.</div>'
@@ -781,13 +782,16 @@
   /* Page                                                                    */
   /* ====================================================================== */
 
+  /* Landing (owner brief 2026-10-09): the two kinds of conformation as the
+     one mode switch, with a plain first step beside it, then the tool. The
+     numbers and the note on how the curve is drawn sit behind Why?. */
   root.innerHTML =
-    '<div class="tpanel">' +
-      '<div class="tpanel__head">Two kinds of conformation</div>' +
-      '<div class="tseg" id="cfMode">' +
+    '<div class="tool-modes">' +
+      '<div class="tseg" id="cfMode" role="group" aria-label="Mode">' +
         '<button type="button" data-mode="newman" class="on">Newman &amp; torsion</button>' +
         '<button type="button" data-mode="chair">Cyclohexane chairs</button>' +
       '</div>' +
+      '<p class="tool-step" id="cfStep"></p>' +
     '</div>' +
 
     '<div id="cfNewman">' +
@@ -824,7 +828,7 @@
     '</div>' +
 
     '<div id="cfChair" hidden>' +
-      '<div class="tpanel"><div class="tpanel__head"><span>Start from a classic, or build your own</span>' +
+      '<div class="tpanel"><div class="tpanel__head"><span>Pick a ring</span>' +
           '<div class="tseg" id="cfChairTask" role="group" aria-label="Mode">' +
             '<button type="button" data-ctask="explore" class="on" aria-pressed="true">Explore</button>' +
             '<button type="button" data-ctask="chal" aria-pressed="false">Find the stable chair</button>' +
@@ -851,7 +855,9 @@
             '<button type="button" class="btn-press" id="cfFlip">Flip the ring</button>' +
             '<button type="button" class="tchip" id="cfClear">Clear all</button>' +
           '</div>' +
-          '<div id="cfRing" class="cf-ring"></div>' +
+          '<details class="tool-more" id="cfRingBox"><summary>Build your own: groups on C1 to C6</summary>' +
+            '<div id="cfRing" class="cf-ring"></div>' +
+          '</details>' +
         '</div>' +
         '<div class="tpanel">' +
           '<div class="tpanel__head">What it costs</div>' +
@@ -869,8 +875,15 @@
       });
       document.getElementById('cfNewman').hidden = mode !== 'newman';
       document.getElementById('cfChair').hidden = mode !== 'chair';
+      setStep(mode);
     });
   });
+  function setStep(mode){
+    document.getElementById('cfStep').innerHTML = mode === 'chair'
+      ? '<b>Pick a ring, then tap any group to flip the chair</b> and see which chair costs less.'
+      : '<b>Drag the slider to turn the bond</b> and watch the energy curve.';
+  }
+  setStep('newman');
 
   // --- newman wiring
   document.getElementById('cfTorPicker').innerHTML = TORSIONALS.map(function(t){
