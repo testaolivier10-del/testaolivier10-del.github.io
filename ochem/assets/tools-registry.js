@@ -120,7 +120,8 @@
       blurb: 'Find which acid gives up its proton more easily, and why.',
       teaches: 'pKa, conjugate base stability',
       topic: ['acidity-factors', 'pka', 'conjugate'],
-      terms: ['pka', 'ario', 'conjugate-acid-base-pair', 'inductive-effect']
+      terms: ['pka', 'ario', 'conjugate-acid-base-pair', 'inductive-effect'],
+      studio: true
     },
     {
       slug: 'spectroscopy',

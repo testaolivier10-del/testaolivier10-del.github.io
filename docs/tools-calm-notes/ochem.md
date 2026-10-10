@@ -31,3 +31,9 @@ One line per tool: stage / dock controls / what moved to Why and Details. Shared
   reading (conformer, energy, the molecule's note, how the curve is drawn), what a chair costs (split, verdict, the
   strain term by term, every group axial or equatorial), the challenge verdict / Details = groups on C1 to C6 (the
   ring builder), Check yourself, Keep going.
+- **Acid/base comparator**: stage = the two acids as cards (structure, formula, acidic proton, conjugate base, pKa ?
+  until you call it, the winner outlined); Rank four: the pKa line over the four drawn cards (drag, tap to swap, or the
+  arrows); Which proton: the molecule with tappable hydrogens / dock = Compare two, Rank four, Which proton?; Acid A vs
+  Acid B and the two answer buttons; Put them on the pKa line and New set; the molecule, its sites and Try another /
+  Why = the verdict and the factor walk (gap as a ratio, why the base is stable, the rules-disagree notes, the factor
+  table), the rank gaps explained, the site order with reasons / Details = Check yourself, Keep going.
