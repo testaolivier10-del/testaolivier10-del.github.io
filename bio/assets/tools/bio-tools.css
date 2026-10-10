@@ -432,14 +432,18 @@
   .sk-fig .sk-verdict{transition:color .2s;}
 }
 /* Hardy-Weinberg: genotypes differ in shape too (circle, dotted circle, square) */
-.hw-cell{stroke:var(--white);stroke-width:1.5;}
+.hw-cell{stroke:var(--white);stroke-width:2;}
+.hw-gam ellipse,.hw-gam circle{fill:var(--bio-aff-fill);stroke:var(--bio-aff);stroke-width:1.2;}
+.hw-gam .n{fill:var(--bio-aff);stroke:none;}
+.hw-gam.sperm ellipse{fill:var(--bio-eff-fill);stroke:var(--bio-eff);}
+.hw-gam path{fill:none;stroke:var(--bio-eff);stroke-width:1.2;stroke-linecap:round;}
 .hw-cell.g0,.hw-ind.g0,.hw-k.g0{fill:var(--bio-s1);background:var(--bio-s1);}
 .hw-cell.g1,.hw-ind.g1,.hw-k.g1{fill:var(--bio-s3);background:var(--bio-s3);}
 .hw-cell.g2,.hw-ind.g2,.hw-k.g2{fill:var(--bio-s2);background:var(--bio-s2);}
 .hw-ind.unk,.hw-k.unk{fill:var(--bio-s5);background:var(--bio-s5);fill-opacity:.55;}
 .hw-cell{fill-opacity:.85;}
 .hw-dot{fill:var(--white);}
-.hw-frame{fill:none;stroke:var(--ink);stroke-width:2;}
+.hw-frame{fill:none;stroke:var(--ink);stroke-width:1.5;rx:4;}
 .hw-frame.hw-empty{fill:var(--paper);stroke-dasharray:6 4;stroke:var(--muted);}
 .hw-split{stroke:var(--ink);stroke-width:2;stroke-dasharray:4 3;}
 .hw-cl{fill:#fff;font:900 14px var(--font-ui);}
