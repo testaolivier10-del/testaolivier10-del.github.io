@@ -190,6 +190,128 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .rp-mix__bar b{font:900 12.5px var(--font-mono);}
 .rp-mix__bar.is-major{background:var(--accent);color:var(--on-accent-fill);}
 
+/* ---- Reaction Predictor: the flask, the controls, the pull ---------------
+
+   Phone order is the flask, the meter, the controls, the verdict: the thing
+   you change and the thing that moves stay on one screen. On a desktop the
+   flask and controls stack on the left and the meter sits beside them. */
+.rp-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:0 16px;
+  grid-template-areas:"flask side" "ctl side" "out out";align-items:start;}
+.rp-flask{grid-area:flask;}
+.rp-ctl{grid-area:ctl;}
+.rp-side{grid-area:side;position:sticky;top:calc(var(--site-header-h,64px) + 12px);}
+.rp-out{grid-area:out;}
+@media(max-width:820px){
+  .rp-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"flask" "side" "ctl" "out";}
+  .rp-side{position:static;}
+}
+.rp-stage{position:relative;padding:4px 4px 0;}
+.rp-stage .scene{padding:4px 0 0;}
+.rp-stage .omol svg{max-width:460px;}
+.rp-stage .oarrow-line{animation:rp-draw .55s ease-out both;stroke-dasharray:240;}
+.rp-stage .oarrow:nth-of-type(2) .oarrow-line{animation-delay:.18s;}
+@keyframes rp-draw{from{stroke-dashoffset:240;}to{stroke-dashoffset:0;}}
+.rp-cond{display:flex;align-items:center;justify-content:center;gap:8px;padding:2px 0 8px;
+  font:800 11.5px var(--font-ui);color:var(--muted);}
+.rp-cond__arrow{width:46px;height:2px;background:var(--muted);position:relative;}
+.rp-cond__arrow::after{content:"";position:absolute;right:-1px;top:-4px;border:5px solid transparent;border-left:7px solid var(--muted);border-right:0;}
+.rp-read{margin:10px 2px 0;font-size:13.2px;line-height:1.55;font-weight:700;color:var(--ink);}
+.rp-read__arrows{display:block;margin-top:4px;color:var(--muted);}
+.rp-k{margin:12px 0 6px;font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+.rp-k:first-of-type{margin-top:0;}
+.rp-k2{text-transform:none;letter-spacing:0;font-weight:800;opacity:.85;}
+.rp-chips{gap:6px;}
+.rp-chips .tchip{min-height:36px;}
+.rp-chips .tchip:not(.on){background:var(--paper);border-color:var(--line-soft);}
+.rp-meters{display:grid;grid-template-columns:auto 1fr;gap:4px 8px;align-items:center;max-width:280px;margin:0 0 8px;
+  font:800 11px var(--font-ui);color:var(--muted);}
+.rp-bar{height:7px;border-radius:4px;background:var(--track);overflow:hidden;}
+.rp-bar i{display:block;height:100%;background:var(--accent);border-radius:4px;transition:width .3s ease;}
+.rp-rgtnote{margin:10px 0 0;font-size:12.5px;font-weight:700;color:var(--muted);line-height:1.5;}
+.rp-pair{display:flex;flex-wrap:wrap;gap:4px 18px;}
+.rp-pair .tseg button{min-height:36px;}
+.rp-more{margin-top:14px;}
+
+/* The meter: four corners, substitution on top and elimination below,
+   unimolecular left and bimolecular right, so a factor that pushes toward
+   "carbocation first" and one that pushes toward "elimination" are two
+   different directions on the same square. The puck sits at the
+   product-weighted centre of the corners. */
+.rp-meter{position:relative;height:clamp(290px,82vw,400px);max-width:420px;margin:0 auto;border-radius:var(--radius);
+  background:
+    linear-gradient(var(--line-soft),var(--line-soft)) center/2px 100% no-repeat,
+    linear-gradient(var(--line-soft),var(--line-soft)) center/100% 2px no-repeat,
+    var(--paper);
+  border:var(--bw) solid var(--line-soft);padding:0;}
+.rp-axis{position:absolute;font:900 9.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);pointer-events:none;}
+.rp-axis--top{top:4px;left:50%;transform:translateX(-50%);background:var(--paper);padding:0 6px;}
+.rp-axis--bot{bottom:4px;left:50%;transform:translateX(-50%);background:var(--paper);padding:0 6px;}
+.rp-cols{display:grid;grid-template-columns:1fr 1fr;max-width:420px;margin:0 auto 6px;text-align:center;
+  font:900 10px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);line-height:1.3;}
+.rp-cols i{font-style:normal;font-weight:800;text-transform:none;letter-spacing:0;opacity:.85;}
+/* Bonds a little darker than the lesson scenes: on this stage the eye has
+   to find the beta carbon and the C-Br bond at a glance. */
+.rp-stage .omol line,.rp-product .omol line{stroke:var(--muted);}
+/* molecules.js leaves atom text to the SVG default (black), which vanishes
+   on dark discs; tool stages set it from the theme. */
+.tool-root .atom text{fill:var(--ink);}
+.rp-corner{position:absolute;width:calc(50% - 10px);height:calc(50% - 26px);display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr auto;align-items:start;gap:3px 6px;
+  padding:9px 10px;border:var(--bw) solid var(--line);border-radius:var(--radius-sm);background:var(--white);color:var(--ink);
+  cursor:pointer;text-align:left;font:inherit;overflow:hidden;transition:border-color .2s ease,background .2s ease,opacity .2s ease;}
+.rp-corner::before{content:"";position:absolute;left:0;bottom:0;height:5px;width:calc(var(--pct,0) * 1%);background:var(--accent);transition:width .45s cubic-bezier(.2,.8,.2,1);}
+.rp-corner[data-path="SN1"]{left:6px;top:20px;}
+.rp-corner[data-path="SN2"]{right:6px;top:20px;}
+.rp-corner[data-path="E1"]{left:6px;bottom:20px;}
+.rp-corner[data-path="E2"]{right:6px;bottom:20px;}
+.rp-corner__name{font:900 17px var(--font-mono);}
+.rp-corner__pct{font:900 13px var(--font-mono);color:var(--muted);justify-self:end;}
+.rp-corner__why{grid-column:1/-1;grid-row:3;display:flex;flex-wrap:wrap;gap:3px;}
+.rp-pull{font:800 10px var(--font-ui);padding:2px 6px;border-radius:var(--radius-pill);background:var(--white);border:1px solid var(--accent-text);color:var(--accent-text);}
+.rp-pull.is-soft{background:transparent;border:1px dashed var(--accent-text);}
+.rp-x{font:700 11px/1.35 var(--font-ui);color:var(--muted);}
+.rp-corner:hover{border-color:var(--accent);}
+.rp-corner:focus-visible,.rp-none:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.rp-corner.is-win{border-color:var(--good-text);background:var(--tint-good);}
+.rp-corner.is-win .rp-corner__pct{color:var(--good-text);}
+.rp-corner.is-minor{border-color:var(--accent);}
+.rp-corner.is-blocked{background:transparent;border-style:dashed;border-color:var(--line-soft);}
+.rp-corner.is-blocked .rp-corner__name{text-decoration:line-through;color:var(--muted);}
+.rp-corner.is-focus{box-shadow:0 0 0 3px var(--accent);}
+.rp-corner.is-guess:not(.is-win){border-color:var(--bad-text);background:var(--tint-bad);}
+.rp-puck{position:absolute;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;background:var(--accent);
+  border:3px solid var(--white);box-shadow:0 0 0 2px var(--accent);pointer-events:none;z-index:2;
+  transition:left .5s cubic-bezier(.2,.8,.2,1),top .5s cubic-bezier(.2,.8,.2,1),opacity .2s;}
+.rp-puck.is-none{opacity:.35;}
+.rp-none{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;
+  font:900 11.5px var(--font-ui);padding:7px 12px;border-radius:var(--radius-pill);border:var(--bw) solid var(--line);
+  background:var(--white);color:var(--ink);cursor:pointer;min-height:34px;}
+.rp-none.is-win{border-color:var(--good-text);background:var(--tint-good);}
+.rp-none.is-guess:not(.is-win){border-color:var(--bad-text);background:var(--tint-bad);}
+.rp-cover{display:none;}
+.rp-meter.is-predict .rp-cover{display:block;position:absolute;left:0;right:0;bottom:-42px;text-align:center;
+  font:800 12.5px var(--font-ui);color:var(--ink);}
+.rp-meter.is-predict .rp-cover span{color:var(--muted);font-weight:700;}
+.rp-meter.is-predict{margin-bottom:46px;}
+.rp-meter.is-predict .rp-corner{border-style:solid;}
+.rp-meter.is-predict .rp-corner:hover{background:var(--tint-accent);}
+.rp-delta{min-height:20px;margin:12px 0 0;font-size:13px;font-weight:700;color:var(--muted);line-height:1.5;text-align:center;}
+.rp-delta b{color:var(--ink);}
+.rp-out{margin-bottom:16px;}
+.rp-out:empty{display:none;}
+.rp-product .scene{background:transparent;border:0;padding:4px 0;margin:2px 0 4px;}
+.rp-product .omol svg{max-width:340px;margin:0;}
+.rp-args{margin-top:4px;font-size:13.2px;line-height:1.6;font-weight:700;}
+.rp-args summary{cursor:pointer;font:900 12.5px var(--font-ui);color:var(--accent-text);min-height:32px;display:flex;align-items:center;}
+.rp-args p{margin:8px 0;}
+@media(max-width:430px){
+  .rp-corner{padding:7px 8px;}
+  .rp-corner__name{font-size:15px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .rp-stage .oarrow-line{animation:none;}
+  .rp-puck,.rp-corner::before{transition:none;}
+}
+
 /* ---- Both chairs at once (Conformation Lab) ------------------------------ */
 
 .cf-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;}

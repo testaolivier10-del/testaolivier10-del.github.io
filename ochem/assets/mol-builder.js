@@ -471,6 +471,17 @@
     return st;
   }
 
+  /* A ring with substituents, built the way parse() builds a named ring, for
+     callers that need a ring the name table does not list (the Reaction
+     Predictor's cyclohexyl and benzyl products). */
+  function parseRing(spec){
+    var rst = ringStructure(spec);
+    absorbExplicitH(rst);
+    layout(rst);
+    normalize(rst);
+    return { st: rst };
+  }
+
   function parse(text){
     var raw = String(text || '').trim();
     if(!raw) return { error:'Type a formula or a name.' };
@@ -933,6 +944,7 @@
     normalize: normalize,
     check: check,
     parse: parse,
+    parseRing: parseRing,
     layout: layout,
     centre: centre,
     spreadOut: spreadOut,
