@@ -180,7 +180,8 @@
    "name": "Units and significant figures",
    "title": "Units and significant figures checker",
    "desc": "Calculation habits graded on value, units and significant figures: J and kJ, Celsius and kelvin, the right R, and the rules for multiplying and adding.",
-   "blurb": "Value, unit and significant figures graded separately, with a note on every slip.", "lede": "Set up a calculation so the units cancel, then report the right significant figures."
+   "blurb": "Value, unit and significant figures graded separately, with a note on every slip.", "lede": "Set up a calculation so the units cancel, then report the right significant figures.",
+   "studio": true
   }
  ]
 }

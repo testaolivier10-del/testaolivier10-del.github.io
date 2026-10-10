@@ -30,40 +30,47 @@
     var M = window.ApChemMath;
     var can = data.contexts.filter(function(c){ return SETUP.indexOf(c.kind) > -1; });
     if(!can.length){ quiz(app, data, M); return; }
-    var modes = T.modes(app, { slug: 'units-sig-figs', labels: ['Set it up', 'Test yourself'], explore: function(h){ explore(h, can, M, function(){ modes.show('quiz', true); }); }, quiz: function(h){ quiz(h, data, M); } });
+    var ex = null;
+    var modes = T.modes(app, { slug: 'units-sig-figs', labels: ['Set it up', 'Test yourself'], explore: function(h){ ex = explore(h, can, M, function(){ modes.show('quiz', true); }); }, quiz: function(h){ quiz(h, data, M); },
+      studio: { explore: function(pane, s){ if(ex) ex.studio(pane, s); } } });
   });
 
   function explore(host, ctxs, M, toQuiz){
     var esc = T.esc, F = T.F, ci = 0, seed = 1 + Math.floor(Math.random() * 9999), p, place = [];
+    // Lookups reach the Tool Studio too, where these parts move (studio()).
+    var LS = null, SP = null, slot = {};
+    function $(sel){ return host.querySelector(sel) || (LS ? LS.root.querySelector(sel) : null); }
+    function $$(sel){ var a = [].slice.call(host.querySelectorAll(sel)); return LS ? a.concat([].slice.call(LS.root.querySelectorAll(sel))) : a; }
     ctxs = ctxs.slice().sort(function(a, b){ return SETUP.indexOf(a.kind) - SETUP.indexOf(b.kind); });
     host.innerHTML = '<section class="bt-problem us-card" aria-labelledby="usx-h"><div class="tx-head"><h2 id="usx-h" class="us-title"></h2></div><p class="us-stem"></p>' +
       '<div class="us-build"></div>' +
       '<div class="bt-buttons"><button type="button" class="btn-press sm us-go">Answer one for credit</button></div>' +
       T.moreHtml('<div class="bt-pick us-pick"></div><div class="bt-buttons"><button type="button" class="bt-btn us-new">New numbers</button></div>', 'another habit, new numbers') + '</section>';
-    var pick = host.querySelector('.us-pick');
+    var pick = $('.us-pick');
     if(ctxs.length > 1){ var sel = T.choiceSelect({ label: 'Habit', options: ctxs.map(function(c, i){ return { value: i, label: KIND[c.kind] }; }), value: 0, onChange: function(v){ ci = +v; fresh(); } }); sel.el.classList.add('bt-inline'); pick.appendChild(sel.el); }
-    host.querySelector('.us-new').addEventListener('click', function(){ seed++; fresh(); });
-    host.querySelector('.us-go').addEventListener('click', toQuiz);
+    $('.us-new').addEventListener('click', function(){ seed++; fresh(); });
+    $('.us-go').addEventListener('click', toQuiz);
 
     function fresh(){
       var ctx = ctxs[ci];
       p = M.units.generate(M.rng(seed), Object.assign({ slug: 'units-sig-figs' }, ctx));
-      host.querySelector('.us-title').textContent = KIND[ctx.kind];
-      host.querySelector('.us-stem').innerHTML = p.item.q;
+      $('.us-title').textContent = KIND[ctx.kind];
+      $('.us-stem').innerHTML = p.item.q;
       if(p.setup.addsub) return addsub();
       place = p.setup.factors.map(function(){ return 0; });
       // Tiles in a fixed shuffled order, so position gives nothing away.
       var order = p.setup.factors.map(function(f, i){ return i; }), r = M.rng(seed + 3);
       for(var i = order.length - 1; i > 0; i--){ var j = Math.floor(r() * (i + 1)), t = order[i]; order[i] = order[j]; order[j] = t; }
-      host.querySelector('.us-build').innerHTML = '<p class="bt-cue us-how"><span class="bt-cue-k">Start here</span> <span>Put each quantity on top (×) or on the bottom (÷), or leave it out. Units that cancel are struck through.</span></p><div class="us-tiles">' + order.map(function(i){
+      $('.us-build').innerHTML = '<p class="bt-cue us-how"><span class="bt-cue-k">Start here</span> <span>Put each quantity on top (×) or on the bottom (÷), or leave it out. Units that cancel are struck through.</span></p><div class="us-tiles">' + order.map(function(i){
         var f = p.setup.factors[i], nm = 'usx-' + seed + '-' + i;
         return '<fieldset class="us-tile" data-i="' + i + '"><legend><b>' + esc(f.v) + '</b> <span class="us-u">' + esc(f.u) + '</span><span class="bt-small"> ' + esc(f.label) + (f.note ? ' (' + esc(f.note) + ')' : '') + '</span></legend>' +
           '<div class="us-seg">' + [[1, '× top'], [-1, '÷ bottom'], [0, 'leave out']].map(function(o){
             return '<input type="radio" name="' + nm + '" id="' + nm + o[0] + '" value="' + o[0] + '"' + (o[0] === 0 ? ' checked' : '') + '><label for="' + nm + o[0] + '">' + o[1] + '</label>';
           }).join('') + '</div></fieldset>';
       }).join('') + '</div>';
-      host.querySelector('.us-build').insertAdjacentHTML('afterbegin', '<div class="us-sticky"><div class="us-frac" aria-hidden="true"></div><div class="us-live" role="status" aria-live="polite"></div></div>');
-      host.querySelectorAll('.us-tile input').forEach(function(inp){ inp.addEventListener('change', function(){ place[+inp.closest('.us-tile').getAttribute('data-i')] = +inp.value; host.querySelector('.us-how').classList.add('is-done'); draw(); }); });
+      $('.us-build').insertAdjacentHTML('afterbegin', '<div class="us-sticky"><div class="us-frac" aria-hidden="true"></div><div class="us-live" role="status" aria-live="polite"></div></div>');
+      $$('.us-tile input').forEach(function(inp){ inp.addEventListener('change', function(){ place[+inp.closest('.us-tile').getAttribute('data-i')] = +inp.value; $('.us-how').classList.add('is-done'); draw(); }); });
+      placeParts();
       draw();
     }
     function tokens(u, sign){
@@ -82,13 +89,13 @@
       // A cancelled pair shares a color and a slash, the way it is marked by hand.
       var chip = function(c){ return '<span class="us-chip' + (c.cancel ? ' is-cancel us-p' + c.pair : '') + '">' + esc(c.u) + '</span>'; };
       var valTop = used.filter(function(x){ return x.p > 0; }).map(function(x){ return esc(x.f.v); }), valBot = used.filter(function(x){ return x.p < 0; }).map(function(x){ return esc(x.f.v); });
-      host.querySelector('.us-frac').innerHTML = used.length ? '<div class="us-fr"><div class="us-num"><span class="us-vals">' + (valTop.join(' × ') || '1') + '</span><span class="us-chips">' + (top.map(chip).join('') || '<span class="us-chip is-one">1</span>') + '</span></div>' +
+      $('.us-frac').innerHTML = used.length ? '<div class="us-fr"><div class="us-num"><span class="us-vals">' + (valTop.join(' × ') || '1') + '</span><span class="us-chips">' + (top.map(chip).join('') || '<span class="us-chip is-one">1</span>') + '</span></div>' +
         (bot.length || valBot.length ? '<div class="us-bar"></div><div class="us-den"><span class="us-vals">' + valBot.join(' × ') + '</span><span class="us-chips">' + bot.map(chip).join('') + '</span></div>' : '') + '</div>' : '<p class="bt-small us-none">Your setup appears here.</p>';
       var left = M.unitText(M.unitMul(used.map(function(x){ return { u: x.f.u, p: x.p }; })));
       var val = used.reduce(function(v, x){ var n = x.f.u === 'kJ/J' ? 1 / 1000 : +x.f.v; return x.p > 0 ? v * n : v / n; }, 1);
       var bad = used.filter(function(x){ return !x.f.place || x.f.place !== x.p; });
       var meas = used.filter(function(x){ return x.f.sf; }), sf = meas.length ? Math.min.apply(null, meas.map(function(x){ return x.f.sf; })) : 0;
-      var live = host.querySelector('.us-live'), html;
+      var live = $('.us-live'), html;
       if(!used.length) html = '<p class="tx-where"><b>Goal: ' + esc(S.target) + '.</b> Place the quantities so everything else cancels.</p>';
       else if(left === S.target && !bad.length){
         var shown = (S.sign ? -1 : 1) * val;
@@ -101,18 +108,59 @@
         html = '<p class="tx-where"><b>Left over: ' + (left ? esc(left) : 'no units') + '.</b> ' + (left === S.target ? 'The units work, but ' + msg : msg ? msg : miss.length ? 'Not ' + esc(S.target) + ' yet: something is missing. ' : 'These units do not give ' + esc(S.target) + '. ') + ' Goal: ' + esc(S.target) + '.</p>';
       }
       live.innerHTML = html;
+      if(LS) studioDraw(left === S.target && !bad.length && used.length ? { ok: true, rep: M.fmt((S.sign ? -1 : 1) * val, sf) + ' ' + S.target } : { ok: false, used: used.length, left: left, msg: html.replace(/^<p[^>]*><b>[^<]*<\/b>\s*/, '').replace(/<\/p>$/, '') });
+    }
+    /* Tool Studio: the goal and the result as pills, the fraction (or the
+       column) on the stage, the tiles in one row in the dock, the full live
+       line in Why. fresh() rebuilds .us-build, so each draw re-places its
+       parts. */
+    function placeParts(){
+      if(!LS) return;
+      var b = slot.build;
+      slot.stage.innerHTML = '';
+      [].slice.call(b.querySelectorAll('.us-sticky, .us-col')).forEach(function(el){ slot.stage.appendChild(el); });
+      var tiles = b.querySelector('.us-tiles');
+      slot.dock.innerHTML = ''; if(tiles){ tiles.classList.add('ls-scroll'); slot.dock.appendChild(tiles); }
+      slot.why.innerHTML = ''; [].slice.call(b.querySelectorAll('.us-how, .us-live')).concat([].slice.call(slot.stage.querySelectorAll('.us-live'))).forEach(function(el){ el.removeAttribute('aria-live'); el.removeAttribute('role'); slot.why.appendChild(el); });
+    }
+    function studioDraw(r){
+      if(!LS || !SP) return;
+      var t = p.setup.target || 'g';
+      LS.pills([{ k: 'Goal', html: esc(t), tone: 'ghost' }], 'left', 'explore');
+      LS.pills([r.ok ? { html: 'Report ' + esc(r.rep), tone: 'good' } : r.used ? { html: 'Left over: ' + esc(r.left || 'no units'), tone: 'warn' } : null].filter(Boolean), 'right', 'explore');
+      LS.caption(r.ok ? '<b>Units cancel to ' + esc(t) + '.</b> Report ' + esc(r.rep) + '.' : r.used ? '<b>Left over: ' + esc(r.left || 'no units') + '.</b> ' + (r.msg || 'Goal: ' + esc(t) + '.') : 'Put each quantity on top (×) or on the bottom (÷), or leave it out.', 'explore');
+      SP.setup(KIND[ctxs[ci].kind]);
+      SP.open();
     }
     function addsub(){
       var a = p.setup.addsub, pl = p.setup.places, dp = Math.min(pl[0], pl[1]), w = Math.max(pl[0], pl[1]);
       var row = function(s, lab){ var d = s.split('.'), dec = (d[1] || ''), pad = w - dec.length;
         return '<div class="us-row"><span class="us-lab">' + lab + '</span><span class="us-int">' + d[0] + '</span><span class="us-dot">.</span><span class="us-dec">' + dec.split('').map(function(ch, k){ return '<span class="' + (k < dp ? 'us-k' : 'us-x') + '">' + ch + '</span>'; }).join('') + '<span class="us-pad">' + '0'.repeat(pad).replace(/0/g, '?') + '</span></span></div>'; };
       var res = p.setup.result.split('.');
-      host.querySelector('.us-build').innerHTML = '<p class="bt-small us-how">Line the numbers up on the decimal point. A place one of them does not report is unknown (?), so the answer stops at the last place both share.</p>' +
+      $('.us-build').innerHTML = '<p class="bt-small us-how">Line the numbers up on the decimal point. A place one of them does not report is unknown (?), so the answer stops at the last place both share.</p>' +
         '<div class="us-col" role="img" aria-label="' + esc(a[0] + ' grams minus ' + a[1] + ' grams; ' + a[0] + ' has ' + pl[0] + ' decimal places and ' + a[1] + ' has ' + pl[1] + ', so the difference keeps ' + dp + ': ' + p.setup.result + ' grams') + '">' + row(a[0], 'beaker + sample') + row(a[1], '− empty beaker') +
         '<div class="us-row us-sum"><span class="us-lab">= sample</span><span class="us-int">' + res[0] + '</span><span class="us-dot">' + (res[1] ? '.' : '') + '</span><span class="us-dec">' + (res[1] || '') + '</span></div></div><div class="us-live" role="status" aria-live="polite"></div>';
-      host.querySelector('.us-live').innerHTML = '<p class="tx-where us-ok"><b>' + p.setup.result + ' g, to ' + dp + ' decimal place' + (dp === 1 ? '' : 's') + '.</b> Adding and subtracting keeps the fewest decimal places (' + pl[0] + ' and ' + pl[1] + '), not the fewest significant figures; the answer has ' + M.units.sigFigsOf(p.setup.result) + ' significant figures.</p>';
+      var res0 = p.setup.result;
+      $('.us-live').innerHTML = '<p class="tx-where us-ok"><b>' + p.setup.result + ' g, to ' + dp + ' decimal place' + (dp === 1 ? '' : 's') + '.</b> Adding and subtracting keeps the fewest decimal places (' + pl[0] + ' and ' + pl[1] + '), not the fewest significant figures; the answer has ' + M.units.sigFigsOf(p.setup.result) + ' significant figures.</p>';
+      if(LS){ placeParts(); LS.pills([{ k: 'Goal', html: 'g', tone: 'ghost' }], 'left', 'explore'); LS.pills([{ html: 'Report ' + esc(res0) + ' g', tone: 'good' }], 'right', 'explore');
+        LS.caption('<b>' + esc(res0) + ' g, to ' + dp + ' decimal place' + (dp === 1 ? '' : 's') + '.</b> Adding and subtracting keeps the fewest decimal places.', 'explore'); SP.setup(KIND[ctxs[ci].kind]); }
+    }
+    /* Tool Studio arrangement: the question and the fraction on the stage;
+       the quantities in the dock; the live line in Why; another habit, new
+       numbers and "Answer one for credit" in Details. */
+    function studio(pane, s){
+      LS = s;
+      slot.build = $('.us-build'); slot.stem = $('.us-stem');
+      slot.stage = document.createElement('div'); slot.stage.className = 'us-ls-stage';
+      slot.dock = document.createElement('div'); slot.dock.className = 'us-ls-dock';
+      slot.why = document.createElement('div'); slot.why.className = 'us-ls-why';
+      var keep = document.createElement('div'); keep.className = 'us-ls-keep'; keep.hidden = true; keep.appendChild(slot.build);
+      SP = T.studioPane(pane, s, { stage: [slot.stem, slot.stage], dock: [slot.dock], setup: 'Habit', moreLabel: 'Another habit, new numbers', why: [slot.why], details: [$('.us-go'), keep] });
+      fresh();
+      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.us-tile'), text: 'Put each quantity on top, on the bottom, or leave it out', round: 16 });
     }
     fresh();
+    return { studio: studio };
   }
 
   function quiz(app, data, M){
@@ -124,6 +172,42 @@
       T.kindPicker(fr.pick, { label: 'Habit', mixed: 'Any habit', options: kinds.map(function(k){ return { value: k, label: KIND[k] }; }), onChange: function(v){ only = v; draw(true, true); } });
     }
     function fresh(){ return 10000 + Math.floor(Math.random() * 89999); }
+    var st = studioQuiz();
+    /* Tool Studio: the question on the stage; the answer box and Check in
+       the dock; the verdict as a pill and the caption, the full feedback in
+       Why; the problem code and the kind of habit in Details. */
+    function studioQuiz(){
+      var S = T.studioOf(app);
+      if(!S) return null;
+      var only = app.classList.contains('bt-pane-quiz') ? { mode: 'quiz' } : null, m = only && only.mode;
+      var stage = document.createElement('div'), why = document.createElement('div'), det = document.createElement('div');
+      stage.className = 'ls-drill-stage us-ls-q'; why.className = 'ls-sec ls-drill-why'; det.className = 'ls-sec ls-drill-det';
+      S.add('stage', stage, only); S.add('why', why, only); S.add('details', det, only);
+      var more = app.querySelector(':scope > .cd-more'), about = app.querySelector(':scope > .bt-about');
+      area.classList.add('ls-drill');
+      S.add('dock', area, only);
+      if(more) S.add('details', more, only);
+      if(about){ about.open = true; S.add('about', about, only); }
+      return {
+        fresh: function(){
+          stage.innerHTML = ''; det.innerHTML = '<h3 class="ls-title-l">This problem</h3>';
+          why.innerHTML = '<h3 class="ls-title-l">Feedback</h3><p class="ls-sub">It appears here once you check your answer.</p>';
+          var stem = area.querySelector('.chem-q-stem'); if(stem){ stem.classList.add('ls-drill-text'); stage.appendChild(stem); }
+          var code = area.querySelector('.bt-code'); if(code) det.appendChild(code);
+          var h2 = area.querySelector('.bt-prob-head h2'); if(h2) h2.classList.add('sr-only');
+          S.caption('Give the value with its units and the right significant figures.', m);
+          S.pills([{ html: esc(KIND[ctxs.filter(function(c){ return area.querySelector('[data-qid*=":' + c.id + ':"]'); }).map(function(c){ return c.kind; })[0]] || 'Units and significant figures'), tone: 'ghost' }], 'left', m);
+        },
+        done: function(r){
+          var fb = area.querySelector('.chem-q-feedback'), v = fb && fb.querySelector('.chem-verdict');
+          if(fb){ why.innerHTML = ''; fb.removeAttribute('aria-live'); why.appendChild(fb); }
+          var word = v ? v.textContent : r.correct ? 'Correct.' : 'Not quite.';
+          S.pills([{ html: esc(word.replace(/\.$/, '')), tone: r.correct ? 'good' : r.score > 0 ? 'warn' : 'bad' }], 'left', m);
+          S.caption('<b>' + esc(word) + '</b> ' + (r.correct ? 'The reasoning is under Why.' : 'What went wrong, and the answer, are under Why.'), m);
+          var again = area.querySelector('.us-again'); if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus(); }
+        }
+      };
+    }
     try{ var m = /[?&#]seed=(\d+)/.exec(location.search + location.hash); seed = m ? +m[1] : fresh(); }catch(e){ seed = fresh(); }
     function draw(focus, renew){
       if(renew) seed = fresh();
@@ -131,11 +215,13 @@
       var item = M.units.generate(r, Object.assign({ slug: 'units-sig-figs' }, ctx)).item;
       area.innerHTML = '<div class="bt-prob-head"><h2 id="' + gid + '-h" tabindex="-1">' + esc(KIND[ctx.kind]) + '</h2><p class="bt-code">Problem code <b>' + seed + '</b> <a href="?seed=' + seed + '">Link to this problem</a></p></div><div class="us-q"></div><div class="bt-next"></div>';
       T.questions(area.querySelector('.us-q'), [item], {}, 'units-sig-figs');
-      area.querySelector('.us-q').addEventListener('chem:answered', function(){
+      if(st) st.fresh();
+      area.querySelector('.us-q').addEventListener('chem:answered', function(e){
         var nx = area.querySelector('.bt-next');
         nx.innerHTML = '<div class="bt-actions"><button type="button" class="btn-press sm us-again">New problem</button></div>';
         nx.querySelector('.us-again').addEventListener('click', function(){ draw(true, true); });
         T.keepGoing(nx, { topic: item.topic });
+        if(st) st.done(e.detail || {});
       });
       if(focus) area.querySelector('h2').focus();
     }
