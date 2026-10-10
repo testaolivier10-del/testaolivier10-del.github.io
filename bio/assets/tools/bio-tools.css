@@ -873,10 +873,15 @@
 /* ===== Population field (tools upgrade U-Bio-sims) ===== */
 .pg-field{background:var(--paper);border-radius:14px;padding:6px;}
 .bt-fig svg.pg-fieldsvg{max-height:none;max-width:620px;margin:0 auto;}
-.pg-fieldsvg .pg-ground{fill:var(--bio-eff-fill);opacity:.45;}
-.pg-fieldsvg .pg-fence{fill:var(--white);fill-opacity:.35;stroke:var(--bio-para);stroke-width:2;stroke-dasharray:6 4;}
-.pg-fieldsvg .pg-ind{fill:var(--bio-s1);}
-.pg-fieldsvg .pg-ind.new{fill:var(--bio-aff);}
+.pg-fieldsvg .pg-ground{fill:#DCEBC9;}
+:root[data-theme="dark"] .pg-fieldsvg .pg-ground{fill:#1E2D1B;}
+.pg-fieldsvg .pg-tuft{fill:none;stroke:#7FAF5A;stroke-width:1.2;stroke-linecap:round;opacity:.8;}
+.pg-fieldsvg .pg-fence{fill:#EAF4DD;fill-opacity:.6;stroke:#8A6A3E;stroke-width:3;stroke-dasharray:2 5;stroke-linecap:round;}
+:root[data-theme="dark"] .pg-fieldsvg .pg-fence{fill:#26391F;stroke:#C9A36A;}
+.pg-fieldsvg .pg-ind{color:#A88C6E;fill:#A88C6E;}
+.pg-fieldsvg symbol .ba{color:inherit;}
+.pg-fieldsvg .pg-ind.new{color:var(--bio-aff);fill:var(--bio-aff);}
+:root[data-theme="dark"] .pg-fieldsvg .pg-ind{color:#D2BFA8;fill:#D2BFA8;}
 .pg-fieldsvg .pg-flab{font:800 12px var(--font-ui);fill:var(--ink);}
 .pg-fieldsvg .pg-hit{font:900 16px var(--font-ui);fill:var(--bio-symp);}
 .pg-fieldsvg .pg-floodfx{fill:var(--bio-deo2-fill);opacity:.5;}

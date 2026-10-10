@@ -203,18 +203,23 @@
       var fw = FW * Math.sqrt(log ? p.K / Math.max(1, Kmax) : 1), fh = FH * Math.sqrt(log ? p.K / Math.max(1, Kmax) : 1);
       var spanDots = log ? Math.max(1, Kmax / per) : Math.max(nDots, 1), cap = log ? Math.round(p.K / per) : 600;
       var sl = slotList(), out = [];
-      out.push('<rect class="pg-ground" x="0" y="0" width="' + FW + '" height="' + FH + '" rx="12"/>');
+      // one rabbit drawing (ApBioArt) reused for every individual; grass tufts on the field
+      var A = window.ApBioArt, sym = A ? '<defs><symbol id="pg-rab" viewBox="-12 -12 24 24" overflow="visible">' + A.icon('rabbit', 0, 0, 24, '') + '</symbol></defs>' : '';
+      out.push(sym + '<rect class="pg-ground" x="0" y="0" width="' + FW + '" height="' + FH + '" rx="12"/>');
+      if(A){ var tg = M.rng(77), tufts = ''; for(var tt = 0; tt < 26; tt++){ var tx = 8 + tg() * (FW - 16), ty = 10 + tg() * (FH - 20); tufts += 'M' + tx.toFixed(1) + ' ' + ty.toFixed(1) + 'l-2 -5M' + tx.toFixed(1) + ' ' + ty.toFixed(1) + 'l0 -6M' + tx.toFixed(1) + ' ' + ty.toFixed(1) + 'l2 -5'; } out.push('<path class="pg-tuft" d="' + tufts + '"/>'); }
       if(log) out.push('<rect class="pg-fence" x="' + ((FW - fw) / 2).toFixed(1) + '" y="' + ((FH - fh) / 2).toFixed(1) + '" width="' + fw.toFixed(1) + '" height="' + fh.toFixed(1) + '" rx="10"/><text class="pg-flab" x="' + ((FW + fw) / 2 - 6).toFixed(1) + '" y="' + ((FH - fh) / 2 + 14).toFixed(1) + '" text-anchor="end">K = ' + n0(p.K) + '</text>');
       // dots: first nDots slots, placed inside the fence (or the whole field for exponential, scaled to what is drawn)
       var bw = log ? fw : FW, bh = log ? fh : FH;
       for(var i = 0; i < Math.min(600, nDots); i++){
         var q = sl[i], x = (FW - bw) / 2 + 6 + q[0] * (bw - 12), y = (FH - bh) / 2 + 6 + q[1] * (bh - 12);
-        out.push('<circle class="pg-ind' + (i >= nPrev ? ' new' : '') + '" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + (per > 1 ? 3.4 : 2.8) + '"/>');
+        var rs = nDots > 300 ? 8 : nDots > 120 ? 10 : 13, flip = q[2] > 0.5;
+        out.push(A ? '<use href="#pg-rab" class="pg-ind' + (i >= nPrev ? ' new' : '') + '" x="' + (x - rs / 2).toFixed(1) + '" y="' + (y - rs / 2).toFixed(1) + '" width="' + rs + '" height="' + rs + '"' + (flip ? ' transform="translate(' + (2 * x).toFixed(1) + ' 0) scale(-1 1)"' : '') + '/>'
+          : '<circle class="pg-ind' + (i >= nPrev ? ' new' : '') + '" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + (per > 1 ? 3.4 : 2.8) + '"/>');
       }
       var hit = sim.points.filter(function(z){ return z.pre != null && z.t <= t + 1e-9 && z.t > t - 1.5; })[0];
       if(hit) out.push('<rect class="pg-floodfx" x="0" y="0" width="' + FW + '" height="' + FH + '" rx="12"/><text class="pg-flab pg-hit" x="' + (FW / 2) + '" y="' + (FH / 2) + '" text-anchor="middle">' + esc(hit.hit.map(pct).join(' + ')) + ' lost</text>');
-      var lab = 'Year ' + F(t, 0) + ': N = ' + n0(p.N) + (log ? ' of K = ' + n0(p.K) + (p.N >= p.K * 0.95 ? ', the habitat is full' : p.N > p.K / 2 ? ', crowding slows growth' : ', plenty of room') : '') + (per > 1 ? '. One dot is ' + per + ' individuals.' : '.');
-      out.push('<text class="pg-flab" x="8" y="' + (FH - 8) + '">' + esc('Year ' + F(t, 0) + ' · N = ' + n0(p.N) + (per > 1 ? ' · 1 dot = ' + per : '')) + '</text>');
+      var lab = 'Year ' + F(t, 0) + ': N = ' + n0(p.N) + (log ? ' of K = ' + n0(p.K) + (p.N >= p.K * 0.95 ? ', the habitat is full' : p.N > p.K / 2 ? ', crowding slows growth' : ', plenty of room') : '') + (per > 1 ? '. One rabbit drawn is ' + per + ' individuals.' : '.');
+      out.push('<text class="pg-flab" x="8" y="' + (FH - 8) + '">' + esc('Year ' + F(t, 0) + ' · N = ' + n0(p.N) + (per > 1 ? ' · 1 drawn = ' + per : '')) + '</text>');
       field.innerHTML = '<svg class="pg-fieldsvg" viewBox="0 0 ' + FW + ' ' + FH + '" role="img" aria-label="' + esc(lab) + '">' + out.join('') + '</svg>';
       card.querySelector('.pg-clock').textContent = '';
     }
