@@ -151,6 +151,24 @@ test('phylo model: parse, rotation, MRCA, clades, sisters, distances, trees from
   assert.equal(Ph.fromCharacters(['P', 'Q', 'R', 'S'], [{ id: 1, has: ['Q', 'R'] }, { id: 2, has: ['R', 'S'] }]).conflicts.length, 1);
 });
 
+test('chi-square density (for drawing) matches the table; apportion keeps the total', () => {
+  near(M.chiPdf(3, 2), 0.5 * Math.exp(-1.5));                       // df 2: e^(−x/2) / 2
+  near(M.chiPdf(1, 1), Math.exp(-0.5) / Math.sqrt(2 * Math.PI));    // df 1 at x = 1
+  near(M.chiPdf(2, 3), Math.exp(-1) / Math.sqrt(Math.PI));          // df 3: √x e^(−x/2) / (2^1.5 · √π/2)
+  near(M.chiPdf(4, 4), 4 * Math.exp(-2) / 4);                       // df 4: x e^(−x/2) / 4
+  assert.equal(M.chiPdf(0, 3), 0); assert.equal(M.chiPdf(-1, 2), 0);
+  // Simpson's rule: total area 1, and the area right of each critical value is p (the table is rounded to 2 dp).
+  const area = (k, a, b, n = 20000) => { const h = (b - a) / n; let s = M.chiPdf(a, k) + M.chiPdf(b, k); for (let i = 1; i < n; i++) s += (i % 2 ? 4 : 2) * M.chiPdf(a + i * h, k); return s * h / 3; };
+  for (let k = 2; k <= 8; k++) {
+    near(area(k, 1e-9, 200), 1, 1e-3);
+    near(area(k, M.CHI_CRIT['0.05'][k], 200), 0.05, 1e-3);
+    near(area(k, M.CHI_CRIT['0.01'][k], 200), 0.01, 3e-4);
+  }
+  assert.deepEqual(Array.from(M.apportion([0.36, 0.48, 0.16], 100)), [36, 48, 16]);
+  assert.deepEqual(Array.from(M.apportion([1 / 3, 1 / 3, 1 / 3], 100)), [34, 33, 33]);
+  for (const f of [[0.1225, 0.455, 0.4225], [0.01, 0.18, 0.81], [0.5, 0.5]]) assert.equal(M.apportion(f, 60).reduce((a, b) => a + b, 0), 60);
+});
+
 test('seeded problems repeat exactly', () => {
   const c = data('chi-square').contexts[0];
   assert.equal(JSON.stringify(P.generate.chi(M.rng(99), c)), JSON.stringify(P.generate.chi(M.rng(99), c)));

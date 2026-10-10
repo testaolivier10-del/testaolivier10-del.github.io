@@ -10,7 +10,14 @@
    buttons that move one grid step), click or tap the grid to place the
    point chosen in "Point to place", or focus a plotted point (or bar) and
    move it with the arrow keys, one grid step at a time (Shift: one
-   interval). Nothing needs dragging. */
+   interval). Nothing needs dragging.
+
+   Grid first (tools upgrade, U-Bio-skills): the grid is the first thing in
+   the builder (beside the steps on a wide screen) and is always drawn: a
+   faint placeholder grid until a scale is set, then the student's own axes,
+   labels and scale, redrawn on every keystroke. Free plot mode: tap to add
+   points anywhere on the student's axes, tap one again to remove it; a
+   sketchpad for trying a scale or a trend, never checked or recorded. */
 (function(){
   'use strict';
   var SLUG = 'graph-builder';
@@ -20,8 +27,7 @@
     var esc = T.esc, G = M.graph, gid = T.nid('gb');
     var ds, st, checked;
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('What a full-credit graph needs', data.howItWorks) +
-      '<section class="bt-card" aria-labelledby="' + gid + '-dh"><h2 id="' + gid + '-dh">The data</h2><div class="gb-pick"></div><div class="gb-data"></div></section>' +
-      '<form class="bt-card gb-steps" data-keep-host=".gb-feedback" novalidate aria-labelledby="' + gid + '-bh"><h2 id="' + gid + '-bh">Build the graph</h2><div class="gb-body"></div>' +
+      '<form class="bt-card gb-steps" data-keep-host=".gb-feedback" novalidate aria-labelledby="' + gid + '-bh"><h2 id="' + gid + '-bh">Build the graph</h2><div class="gb-pick"></div><div class="gb-body"></div>' +
       '<div class="bt-actions"><button type="submit" class="btn-press sm">Check my graph</button></div></form>' +
       '<section class="bt-card gb-feedback" aria-labelledby="' + gid + '-fh" hidden><h2 id="' + gid + '-fh" tabindex="-1">How your graph did</h2><div class="gb-fb" role="status" aria-live="polite"></div></section>');
     var pick = T.choiceSelect({ label: 'Data set', options: data.datasets.map(function(d){ return { value: d.id, label: d.title }; }), value: data.datasets[0].id, onChange: function(v){ load(v); } });
@@ -49,12 +55,13 @@
     function load(id){
       ds = data.datasets.filter(function(d){ return d.id === id; })[0];
       checked = false;
-      st = { type: '', just: -1, x: '', y: '', xl: '', yl: '', xs: { min: '', max: '', interval: '' }, ys: { min: '', max: '', interval: '' }, pts: ds.rows.map(function(){ return { x: null, y: null, e: null }; }), active: 0 };
+      st = { type: '', just: -1, x: '', y: '', xl: '', yl: '', xs: { min: '', max: '', interval: '' }, ys: { min: '', max: '', interval: '' }, pts: ds.rows.map(function(){ return { x: null, y: null, e: null }; }), active: 0, free: false, sketch: [] };
       var cols = ds.columns.map(function(c){ return esc(labelOf(c, c.unit)); });
       if(ds.err) cols.push('±2 SE (' + esc(col(ds.dv).unit) + ')');
-      app.querySelector('.gb-data').innerHTML = '<div class="bt-context">' + ds.text + '</div>' +
+      var dataHtml = '<div class="bt-context">' + ds.text + '</div>' +
         T.dataTable(cols, ds.rows.map(function(r, i){ var row = r.map(function(v){ return esc(typeof v === 'number' ? String(v) : v); }); if(ds.err) row.push(String(ds.err[i])); return row; }), esc(ds.caption));
       renderForm();
+      body.querySelector('.gb-data').innerHTML = dataHtml;
       fbCard.hidden = true;
     }
 
@@ -76,6 +83,7 @@
     function renderForm(){
       var colOpts = ds.columns.map(function(c){ return { value: c.id, label: c.name }; });
       body.innerHTML =
+        '<div class="gb-live"><div class="gb-mode" role="group" aria-label="Grid mode"><button type="button" class="bt-btn" data-mode="data" aria-pressed="' + !st.free + '">Plot the data</button><button type="button" class="bt-btn" data-mode="free" aria-pressed="' + !!st.free + '">Free plot (sketch)</button></div><div class="gb-grid"></div><p class="bt-small gb-note"></p><p class="bt-small gb-say" role="status" aria-live="polite"></p><details class="bt-how gb-datawrap" open><summary>The data</summary><div class="bt-how-body gb-data"></div></details></div><div class="gb-stepcol">' +
         '<div class="gb-step"><h3 class="bt-sec-h">1. Graph type</h3>' + radios('type', 'Which kind of graph fits these data?', data.types.map(function(t){ return { value: t.id, label: t.name }; }), st.type) +
         radios('just', 'Why?', data.justifications.map(function(j, i){ return { value: i, label: j }; }), st.just) + '</div>' +
         '<div class="gb-step"><h3 class="bt-sec-h">2. Variables on the axes</h3><div class="gb-row">' + sel('x', 'x-axis (horizontal)', colOpts, st.x) + sel('y', 'y-axis (vertical)', colOpts, st.y) + '</div></div>' +
@@ -85,7 +93,8 @@
           '<fieldset class="gb-axisset"><legend>y-axis scale</legend><div class="gb-row">' + numIn('ys', 'min', 'Minimum') + numIn('ys', 'max', 'Maximum') + numIn('ys', 'interval', 'Interval') + '</div></fieldset></div>' +
           '<p class="bt-hint gb-barnote" hidden>A bar graph’s x-axis shows categories, so it needs no number scale.</p></div>' +
         '<div class="gb-step"><h3 class="bt-sec-h">5. Plot the data</h3><p class="bt-hint">Type each value, use the −/+ buttons (one grid step), click or tap the grid to place the point chosen below, or focus a plotted point and use the arrow keys (Shift + arrow moves one interval).</p>' +
-          '<div class="gb-place"></div><div class="gb-grid"></div><p class="bt-small gb-say" role="status" aria-live="polite"></p><div class="gb-table"></div></div>';
+          '<div class="gb-place"></div><div class="gb-table"></div></div></div>';
+      body.querySelectorAll('.gb-mode button').forEach(function(b){ b.addEventListener('click', function(){ st.free = b.getAttribute('data-mode') === 'free'; body.querySelectorAll('.gb-mode button').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); }); drawGrid(); say(st.free ? 'Free plot: tap the grid to add a point, tap a point to remove it. Nothing here is checked.' : 'Back to plotting the data.'); }); });
       body.querySelectorAll('input[name="' + gid + '-type"]').forEach(function(r){ r.addEventListener('change', function(){ st.type = r.value; refresh(); }); });
       body.querySelectorAll('input[name="' + gid + '-just"]').forEach(function(r){ r.addEventListener('change', function(){ st.just = +r.value; }); });
       body.querySelectorAll('select[data-f]').forEach(function(s){ s.addEventListener('change', function(){ st[s.getAttribute('data-f')] = s.value; refresh(); }); });
@@ -146,11 +155,15 @@
     var W = 560, H = 380, L = 70, R = 16, TOP = 16, B = 62, pw = W - L - R, ph = H - TOP - B;
     function drawGrid(){
       var host = body.querySelector('.gb-grid'), ys = scaleOf('ys'), xs = scaleOf('xs');
-      var why = !st.y ? 'Choose the y-axis variable.' : !isNum(st.y) ? 'The y-axis variable has categories, not numbers. Put a number variable on the y-axis.' :
-        !ys.ok ? 'Enter a y-axis minimum, maximum and interval (the maximum larger than the minimum) to see the grid.' :
-        !bar() && (!st.x || !isNum(st.x)) ? (st.x ? 'This x-axis variable has categories, not numbers, so it cannot go on a number scale. A bar graph shows categories.' : 'Choose the x-axis variable.') :
-        !bar() && !xs.ok ? 'Enter an x-axis minimum, maximum and interval to see the grid.' : '';
-      if(why){ host.innerHTML = '<p class="bio-soon">' + esc(why) + '</p>'; return; }
+      var why = !st.y ? 'Choose the y-axis variable (step 2).' : !isNum(st.y) ? 'The y-axis variable has categories, not numbers. Put a number variable on the y-axis.' :
+        !ys.ok ? 'Enter a y-axis minimum, maximum and interval (step 4): the grid redraws as you type.' :
+        !bar() && (!st.x || !isNum(st.x)) ? (st.x ? 'This x-axis variable has categories, not numbers, so it cannot go on a number scale. A bar graph shows categories.' : 'Choose the x-axis variable (step 2).') :
+        !bar() && !xs.ok ? 'Enter an x-axis minimum, maximum and interval (step 4): the grid redraws as you type.' : '';
+      var ghostY = !ys.ok, ghostX = !bar() && !xs.ok;
+      if(ghostY) ys = { min: 0, max: 10, interval: 2, ok: true };
+      if(ghostX) xs = { min: 0, max: 10, interval: 2, ok: true };
+      var ghost = ghostY || ghostX || !!why;
+      body.querySelector('.gb-note').textContent = why ? why + (st.free ? '' : ' Points appear once the axes are set.') : (st.free ? 'Free plot: your axes, your points. Nothing here is checked.' : '');
       var sy = function(v){ return TOP + ph - (v - ys.min) / (ys.max - ys.min) * ph; };
       var n = ds.rows.length, sx = bar() ? function(k){ return L + pw * (k + 0.5) / n; } : function(v){ return L + (v - xs.min) / (xs.max - xs.min) * pw; };
       var p = [], my = minor(ys), mx = minor(xs);
@@ -163,7 +176,9 @@
       p.push('<line class="axis" x1="' + L + '" x2="' + (L + pw) + '" y1="' + zeroY.toFixed(1) + '" y2="' + zeroY.toFixed(1) + '"/><line class="axis" x1="' + L + '" x2="' + L + '" y1="' + TOP + '" y2="' + (TOP + ph) + '"/>');
       p.push('<rect class="hit" x="' + L + '" y="' + TOP + '" width="' + pw + '" height="' + ph + '"/>');
       var placed = [];
-      st.pts.forEach(function(q, k){ if(q.y != null && (bar() || q.x != null)) placed.push(k); });
+      if(!ghost && !st.free) st.pts.forEach(function(q, k){ if(q.y != null && (bar() || q.x != null)) placed.push(k); });
+      if(st.free && !ghost) st.sketch.forEach(function(q, k){ var X = bar() ? L + pw * (Math.min(n - 1, Math.max(0, q.k)) + 0.5) / n : sx(q.x); p.push('<circle class="gpt gsk" data-s="' + k + '" tabindex="0" role="button" aria-label="' + esc('Sketch point ' + (k + 1) + ': ' + (bar() ? '' : 'x ' + q.x + ', ') + 'y ' + q.y + '. Press Delete to remove it.') + '" cx="' + X.toFixed(1) + '" cy="' + sy(q.y).toFixed(1) + '" r="7"/>'); });
+      if(st.free && !ghost && st.sketch.length > 1 && !bar()){ var so = st.sketch.slice().sort(function(a, b){ return a.x - b.x; }); p.push('<polyline class="gline gsk-line" points="' + so.map(function(q){ return sx(q.x).toFixed(1) + ',' + sy(q.y).toFixed(1); }).join(' ') + '"/>'); }
       if(st.type === 'line' && placed.length > 1){
         var ord = placed.slice().sort(function(a, b){ return st.pts[a].x - st.pts[b].x; });
         p.push('<polyline class="gline" points="' + ord.map(function(k){ return sx(st.pts[k].x).toFixed(1) + ',' + sy(st.pts[k].y).toFixed(1); }).join(' ') + '"/>');
@@ -178,16 +193,27 @@
         if(!bar()) p.push('<circle class="gpt' + on + '" data-k="' + k + '" tabindex="0" role="button" aria-roledescription="movable point" aria-label="' + esc(pointName(k) + ': x ' + q.x + ', y ' + q.y + '. Arrow keys move it.') + '" cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="7"/>');
       });
       var xl = st.xl ? st.xl.split('|') : null, yl = st.yl ? st.yl.split('|') : null;
-      if(xl) p.push('<text class="lbl" x="' + (L + pw / 2) + '" y="' + (H - 12) + '" text-anchor="middle">' + esc(labelOf(col(xl[0]), xl[1])) + '</text>');
-      if(yl) p.push('<text class="lbl" transform="translate(16 ' + (TOP + ph / 2) + ') rotate(-90)" text-anchor="middle">' + esc(labelOf(col(yl[0]), yl[1])) + '</text>');
+      p.push('<text class="lbl' + (xl ? '' : ' gb-ph') + '" x="' + (L + pw / 2) + '" y="' + (H - 12) + '" text-anchor="middle">' + esc(xl ? labelOf(col(xl[0]), xl[1]) : st.x ? col(st.x).name + ': choose a label (step 3)' : 'x-axis') + '</text>');
+      p.push('<text class="lbl' + (yl ? '' : ' gb-ph') + '" transform="translate(16 ' + (TOP + ph / 2) + ') rotate(-90)" text-anchor="middle">' + esc(yl ? labelOf(col(yl[0]), yl[1]) : st.y ? col(st.y).name + ': label?' : 'y-axis') + '</text>');
       var label = 'Your graph: ' + (st.type ? st.type + ' graph' : 'graph') + ' with ' + placed.length + ' of ' + n + ' points plotted. The table below the grid lists every point’s values.';
-      host.innerHTML = '<svg class="bio-svg" viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="' + esc(label) + '">' + p.join('') + '</svg>';
+      if(st.free) label = 'Free plot sketch with ' + st.sketch.length + ' points. Not checked.';
+      host.innerHTML = '<svg class="bio-svg' + (ghost ? ' is-ghost' : '') + '" viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="' + esc(label) + '">' + p.join('') + '</svg>';
       var svg = host.querySelector('svg');
       svg.addEventListener('click', function(e){
         var t = e.target;
+        if(t.hasAttribute && t.hasAttribute('data-s')){ st.sketch.splice(+t.getAttribute('data-s'), 1); drawGrid(); say('Sketch point removed.'); return; }
         if(t.hasAttribute && t.hasAttribute('data-k')){ st.active = +t.getAttribute('data-k'); drawPlaceSelect(); drawGrid(); return; }
         var r = svg.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * W, y = (e.clientY - r.top) / r.height * H;
         if(x < L - 4 || x > L + pw + 4 || y < TOP - 4 || y > TOP + ph + 4) return;
+        if(ghost){ say(why || 'Set the axes first.'); return; }
+        if(st.free){
+          var fy = snap(ys.min + (TOP + ph - y) / ph * (ys.max - ys.min), ys.min, my);
+          var q2 = bar() ? { k: Math.max(0, Math.min(n - 1, Math.floor((x - L) / pw * n))), y: fy } : { x: snap(xs.min + (x - L) / pw * (xs.max - xs.min), xs.min, mx), y: fy };
+          if(st.sketch.length >= 40) st.sketch.shift();
+          st.sketch.push(q2); drawGrid();
+          say('Sketch point at ' + (bar() ? 'bar ' + (q2.k + 1) + ', ' : 'x ' + q2.x + ', ') + 'y ' + q2.y + '.');
+          return;
+        }
         var k = st.active, q = st.pts[k];
         q.y = snap(ys.min + (TOP + ph - y) / ph * (ys.max - ys.min), ys.min, my);
         if(!bar()) q.x = snap(xs.min + (x - L) / pw * (xs.max - xs.min), xs.min, mx);
@@ -195,6 +221,9 @@
         var nxt = st.pts.findIndex(function(o, j){ return j > k && o.y == null; });
         if(nxt > -1) st.active = nxt;
         drawTable(); drawPlaceSelect(); drawGrid();
+      });
+      svg.querySelectorAll('[data-s]').forEach(function(el){
+        el.addEventListener('keydown', function(e){ if(e.key === 'Delete' || e.key === 'Backspace' || e.key === 'Enter' || e.key === ' '){ e.preventDefault(); st.sketch.splice(+el.getAttribute('data-s'), 1); drawGrid(); say('Sketch point removed.'); } });
       });
       svg.querySelectorAll('[data-k]').forEach(function(el){
         el.addEventListener('keydown', function(e){
