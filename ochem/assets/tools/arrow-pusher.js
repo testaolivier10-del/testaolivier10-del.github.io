@@ -99,9 +99,11 @@
         '<div class="tseg" id="apSrc">' +
           '<button type="button" data-src="lib" class="on">Ready-made</button>' +
           '<button type="button" data-src="build">Build your own</button>' +
+          '<button type="button" data-src="chal">Mechanism challenge</button>' +
         '</div>' +
       '</div>' +
       '<div id="apPicker"></div>' +
+      '<div id="apChalPick" hidden></div>' +
       '<div id="apBuilder" hidden></div>' +
       '<div id="apBuildMsg"></div>' +
       '<div id="apSend"></div>' +
@@ -329,6 +331,9 @@
       });
       elPicker.hidden = (src !== 'lib');
       elBuilder.hidden = (src !== 'build');
+      document.getElementById('apChalPick').hidden = (src !== 'chal');
+      if(src === 'chal'){ elBuildMsg.innerHTML = ''; startChal(chal.def || CHALLENGES[0]); return; }
+      chal.on = false;
       if(src === 'build'){ openBuilder(); }
       else { elBuildMsg.innerHTML = ''; select(current); }
     });
@@ -337,6 +342,7 @@
   /* ---- The readout ------------------------------------------------------ */
 
   function update(){
+    if(chal.on){ renderChal(); renderBooks(); return; }
     if(!lastArrows.length){
       elResult.innerHTML =
         '<div class="tempty">Draw an arrow and the product appears here.<br>' +
@@ -557,8 +563,162 @@
     return null;
   }
 
+  /* ---- Mechanism challenge ------------------------------------------------
+
+     The start and the product are given; the arrows are not. Draw a step's
+     arrows and check it: the step is right when the structure your arrows
+     make is the structure the mechanism makes at that step (same bonds, same
+     lone pairs, atom for atom), which accepts any arrow set with the same
+     result. A wrong step says what your arrows did and names one move the
+     step needs that you have not made, or one you made that it does not.
+     The answer arrows below are the textbook ones and the product shown is
+     computed by applying them with chem-core.js, so the target can never
+     disagree with the arrows that make it. */
+  var CHALLENGES = [
+    { id:'sn2', label:'SN2', mol:'sn2-bromoethane', goal:'Make ethanol and bromide in one concerted step.',
+      steps:[ [['nucO','c1'], ['bond:c1-br','br']] ] },
+    { id:'acid-base', label:'Acid–base', mol:'acetic-acid-hydroxide', goal:'Hydroxide takes the acid proton.',
+      steps:[ [['nucO','h'], ['bond:o2-h','o2']] ] },
+    { id:'sn1', label:'SN1 step 1', mol:'sn1-secondary', goal:'Ionize: make the carbocation and bromide.',
+      steps:[ [['bond:c1-br','br']] ] },
+    { id:'protonate', label:'Protonate a C=O', mol:'fischer-protonation', goal:'Acid catalysis, step 1: put the proton on the carbonyl oxygen.',
+      steps:[ [['o1','ha'], ['bond:ac-ha','ac']] ] },
+    { id:'aldol', label:'Aldol addition', mol:'enolate-plus-acetone', goal:'The enolate carbon attacks the second carbonyl; give the alkoxide.',
+      steps:[ [['ca','c2'], ['bond:c2-o2','o2']] ] },
+    { id:'acyl', label:'Acyl substitution', mol:'acetyl-chloride-nu', goal:'Two steps: add methoxide to make the tetrahedral intermediate, then collapse it and expel chloride.',
+      steps:[ [['nuO','c'], ['bond:c-o1','o1']], [['o1','bond:c-o1'], ['bond:c-cl','cl']] ] },
+    { id:'claisen', label:'Claisen', mol:'enolate-plus-ester', goal:'Two steps: the enolate adds to the ester, then the intermediate collapses and expels ethoxide.',
+      steps:[ [['ca','c2'], ['bond:c2-o2','o2']], [['o2','bond:c2-o2'], ['bond:c2-o3','o3']] ] }
+  ];
+  var chal = { on:false, def:null, i:0, states:[], wrong:0, right:0, total:0, verdict:null, shown:0 };
+
+  function arrowsOf(list){ return list.map(function(a){ return { from:a[0], to:a[1] }; }); }
+
+  /* Same atoms, same bonds at the same orders, same lone pairs. */
+  function sameStructure(a, b){
+    var ka = Object.keys(a.atoms), kb = Object.keys(b.atoms);
+    if(ka.length !== kb.length) return false;
+    for(var i = 0; i < ka.length; i++){
+      var x = a.atoms[ka[i]], y = b.atoms[ka[i]];
+      if(!y || (x.lp || 0) !== (y.lp || 0)) return false;
+    }
+    function bonds(st){ var o = {}; st.bonds.forEach(function(bd){ if(bd.order > 0) o[[bd.a, bd.b].sort().join('|')] = bd.order; }); return o; }
+    var A = bonds(a), Bd = bonds(b);
+    var keys = Object.keys(A).concat(Object.keys(Bd));
+    return keys.every(function(k){ return A[k] === Bd[k]; });
+  }
+  function normKey(k){ var m = /^bond:(.+?)-(.+)$/.exec(k); return m ? 'bond:' + [m[1], m[2]].sort().join('-') : k; }
+  function sameArrow(a, b){ return normKey(a.from) === normKey(b.from) && normKey(a.to) === normKey(b.to); }
+
+  function startChal(def){
+    chal.on = true; chal.def = def; chal.i = 0; chal.wrong = 0; chal.verdict = null; chal.shown = 0;
+    var st0 = C.fromMolecule(Mol.get(def.mol));
+    chal.states = [st0];
+    def.steps.forEach(function(arr, i){ chal.states.push(C.apply(chal.states[i], arrowsOf(arr)).structure); });
+    var pick = document.getElementById('apChalPick');
+    pick.innerHTML = '<div class="tchips">' + CHALLENGES.map(function(c){
+      return '<button type="button" class="tchip' + (c === def ? ' on' : '') + '" data-chal="' + c.id + '" aria-pressed="' + (c === def) + '">' + esc(c.label) +
+        (c.steps.length > 1 ? ' <span class="tmuted">· ' + c.steps.length + ' steps</span>' : '') + '</button>';
+    }).join('') + '</div>';
+    pick.querySelectorAll('[data-chal]').forEach(function(b){
+      b.addEventListener('click', function(){ CHALLENGES.forEach(function(c){ if(c.id === b.getAttribute('data-chal')) startChal(c); }); });
+    });
+    history = [];
+    elHintBox.style.display = 'none';
+    startStep(C.clone(st0), Mol.get(def.mol).name);
+    if(window.OchemToolState) window.OchemToolState.write({ chal: def.id });
+    update();
+  }
+
+  function checkChal(){
+    var want = chal.def.steps[chal.i];
+    var res = C.apply(start, lastArrows);
+    var errs = res.issues.filter(function(x){ return x.level === 'error'; });
+    chal.total++;
+    if(!errs.length && sameStructure(res.structure, chal.states[chal.i + 1])){
+      chal.right++;
+      chal.verdict = { ok:true, step: chal.i };
+      history.push({ st: start, arrows: lastArrows.slice() });
+      chal.i++;
+      startStep(C.clone(chal.states[chal.i]));
+      update();
+      return;
+    }
+    chal.wrong++;
+    var drawn = lastArrows, need = arrowsOf(want);
+    var missing = need.filter(function(n){ return !drawn.some(function(d){ return sameArrow(d, n); }); });
+    var extra = drawn.filter(function(d){ return !need.some(function(n){ return sameArrow(d, n); }); });
+    var lines = [];
+    if(errs.length) lines.push(errs[0].text.charAt(0).toUpperCase() + errs[0].text.slice(1) + '.');
+    else if(res.steps.length) lines.push('Your arrows: ' + res.steps.join('; ') + '.');
+    if(extra.length) lines.push('Not part of this step: ' + C.deltaFor(start, extra[0]).text + '.');
+    if(missing.length) lines.push(missing.length === need.length && !drawn.length ? 'Start with the electron source.'
+      : 'Still needed: something to happen at ' + C.describeKey(start, missing[0].to) + '.');
+    chal.verdict = { ok:false, text: lines.join(' '), arrows: JSON.stringify(lastArrows) };
+    update();
+  }
+
+  function renderChal(){
+    var def = chal.def, done = chal.i >= def.steps.length;
+    var target = chal.states[chal.states.length - 1];
+    var html = '<div class="ap-chal">' +
+      '<p class="ap-chal__goal"><b>' + esc(def.label) + '.</b> ' + esc(def.goal) + '</p>' +
+      '<div class="ap-chal__k">Target</div>' +
+      '<div class="tstage">' + Mol.svg(C.toMolecule(target), { caption:'', label:'Target: ' + C.fragments(target).map(function(f){ return C.formula(target, f); }).join(' + ') }) + '</div>' +
+      '<div class="tfrags" style="margin:8px 0 12px;">' + C.fragments(target).map(function(f, i){
+        var f0 = C.formula(target, f); return (i ? '<span class="tplus">+</span>' : '') + '<span class="tfrag' + (/[⁺⁻]/.test(f0) ? ' tfrag--charged' : '') + '">' + esc(f0) + '</span>';
+      }).join('') + '</div>' +
+      '<div class="ap-chal__steps">' + def.steps.map(function(_, i){
+        return '<span class="ap-chal__dot' + (i < chal.i ? ' is-done' : (i === chal.i ? ' is-now' : '')) + '">' + (i < chal.i ? '✓' : i + 1) + '</span>';
+      }).join('<span class="ap-chal__line"></span>') + '<span class="tmuted">' + (done ? 'done' : 'step ' + (chal.i + 1) + ' of ' + def.steps.length) + '</span></div>';
+    // A wrong verdict describes the arrows it checked; once they change, it goes.
+    if(chal.verdict && !chal.verdict.ok && chal.verdict.arrows !== JSON.stringify(lastArrows)) chal.verdict = null;
+    if(chal.verdict){
+      html += chal.verdict.ok
+        ? '<div class="tnote tnote--good"><span class="tnote__k">Step ' + (chal.verdict.step + 1) + ' right</span>' +
+            (done ? 'That is the whole mechanism' + (chal.wrong ? ', with ' + chal.wrong + ' wrong check' + (chal.wrong > 1 ? 's' : '') + ' on the way.' : ', first time.') : 'The structure on the left is now the intermediate. Draw the next step on it.') + '</div>'
+        : '<div class="tnote tnote--bad" tabindex="-1" id="apChalSay"><span class="tnote__k">Not this step yet</span>' + esc(chal.verdict.text) + '</div>';
+    }
+    if(done){
+      html += '<div class="trow"><button type="button" class="btn-press" id="apChalNext">Next challenge</button>' +
+        '<button type="button" class="tchip" id="apChalAgain">Again</button></div>';
+    } else {
+      html += '<div class="trow">' +
+        '<button type="button" class="btn-press" id="apChalCheck"' + (lastArrows.length ? '' : ' disabled') + '>Check step ' + (chal.i + 1) + '</button>' +
+        '<button type="button" class="tchip tchip--ghost" id="apChalHint">Show one arrow</button></div>' +
+        (chal.shown ? '<p class="tmuted" style="margin:8px 0 0;">Hint: ' + esc(C.deltaFor(start, arrowsOf(def.steps[chal.i])[Math.min(chal.shown, def.steps[chal.i].length) - 1]).text) + '.</p>' : '');
+    }
+    html += '</div>';
+    elResult.innerHTML = html;
+    var ck = document.getElementById('apChalCheck');
+    if(ck) ck.addEventListener('click', function(){ checkChal(); var say = document.getElementById('apChalSay'); if(say) say.focus({ preventScroll:true }); });
+    var hn = document.getElementById('apChalHint');
+    if(hn) hn.addEventListener('click', function(){ chal.shown = Math.min(chal.shown + 1, def.steps[chal.i].length); renderChal(); });
+    var nx = document.getElementById('apChalNext');
+    if(nx) nx.addEventListener('click', function(){ var i = CHALLENGES.indexOf(def); startChal(CHALLENGES[(i + 1) % CHALLENGES.length]); });
+    var ag = document.getElementById('apChalAgain');
+    if(ag) ag.addEventListener('click', function(){ startChal(def); });
+  }
+
+  /* A step's arrows changed: the old verdict no longer describes them. */
+  var baseRemount = remount;
+  remount = function(){
+    baseRemount();
+    if(chal.on) chal.verdict = chal.verdict && chal.verdict.ok ? chal.verdict : null;
+  };
+
+  window.OchemArrowChallenge = { CHALLENGES: CHALLENGES, sameStructure: sameStructure };
+
   var fromLink = fromUrl();
+  // Read before select(), which rewrites the address bar.
+  var chalWanted = window.OchemToolState && window.OchemToolState.read().chal;
   select(fromLink || ALL[0]);
+  (function(){
+    var want = chalWanted;
+    if(!want) return;
+    CHALLENGES.forEach(function(c){ if(c.id === want) chal.def = c; });
+    if(chal.def){ var b = document.getElementById('apSrc').querySelector('[data-src="chal"]'); if(b) b.click(); }
+  })();
 
   // A link can also carry a molecule somebody typed rather than one on the list.
   if(window.OchemToolState){

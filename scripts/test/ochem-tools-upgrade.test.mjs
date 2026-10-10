@@ -31,7 +31,7 @@ export function load(...paths){
   for(const p of paths) vm.runInContext(readFileSync(p, 'utf8'), s, { filename: p });
   return s;
 }
-const CORE = ['ochem/assets/molecules.js', 'ochem/assets/chem-core.js', 'ochem/assets/mol3d.js', 'ochem/assets/mol-builder.js'];
+const CORE = ['ochem/assets/molecules.js', 'ochem/assets/chem-core.js', 'ochem/assets/mol3d.js', 'ochem/assets/mol-builder.js', 'ochem/assets/molecule-editor.js'];
 
 function combos(R){
   const out = [];
@@ -246,5 +246,32 @@ test('resonance overlay: averaging every contributor conserves the charge, and e
   for(const k of os){
     const q = fs.reduce((t, f) => t + C.formalCharge(f, k), 0) / fs.length;
     assert.ok(Math.abs(q + 0.5) < 1e-9, `acetate O ${k}: ${q}`);
+  }
+});
+
+test('arrow pusher challenges: every answer step applies cleanly and changes the structure', () => {
+  const s = load(...CORE, 'ochem/assets/tools/arrow-pusher.js');
+  const A = s.OchemArrowChallenge, C = s.OchemChem, M = s.OchemMolecules;
+  assert.ok(A && A.CHALLENGES.length >= 6);
+  for(const ch of A.CHALLENGES){
+    let st = C.fromMolecule(M.get(ch.mol));
+    for(const step of ch.steps){
+      const r = C.apply(st, step.map(([from, to]) => ({ from, to })));
+      const errs = r.issues.filter(i => i.level === 'error').map(i => i.text);
+      assert.equal(errs.length, 0, `${ch.id}: answer arrows rejected: ${errs.join(' | ')}`);
+      assert.ok(!A.sameStructure(st, r.structure), `${ch.id}: a step that changes nothing`);
+      // every atom keeps an octet (or a duet for H) after the step, except a carbocation the step is about
+      for(const k of Object.keys(r.structure.atoms)){
+        const a = r.structure.atoms[k]; if(!a.el || a.group) continue;
+        assert.ok(C.electronCount(r.structure, k) <= C.octetOf(r.structure, k) + (a.el === 'S' || a.el === 'P' ? 4 : 0), `${ch.id}: ${a.el} ${k} over its octet`);
+      }
+      st = r.structure;
+    }
+    // the same arrows in another order are the same step
+    if(ch.steps[0].length > 1){
+      const fwd = C.apply(C.fromMolecule(M.get(ch.mol)), ch.steps[0].map(([f, t]) => ({ from:f, to:t }))).structure;
+      const rev = C.apply(C.fromMolecule(M.get(ch.mol)), ch.steps[0].slice().reverse().map(([f, t]) => ({ from:f, to:t }))).structure;
+      assert.ok(A.sameStructure(fwd, rev), `${ch.id}: arrow order changed the product`);
+    }
   }
 });
