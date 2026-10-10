@@ -507,6 +507,15 @@
       '</div></details>' +
       '<div class="st-live sr-only" aria-live="polite"></div>';
 
+    /* Lookups after mount go through the parts, not root, so a host page can
+       move them (the Tool Studio puts the figure on its stage and the
+       controls in its dock). */
+    var parts = ['.st-top', '.st-vol', '.st-quizpick', '.st-main', '.st-fig', '.st-side', '.st-timing', '.st-more', '.st-more-in'].map(function(sel){ return root.querySelector(sel); });
+    function $$(sel){
+      var out = [];
+      parts.forEach(function(p){ if(p.matches(sel)) out.push(p); out.push.apply(out, p.querySelectorAll(sel)); });
+      return out.filter(function(el, i){ return out.indexOf(el) === i; });
+    }
     var svg = root.querySelector('.st-body');
     var side = root.querySelector('.st-side');
     var main = root.querySelector('.st-main');
@@ -555,7 +564,7 @@
 
     function setView(v){
       st.view = v;
-      root.querySelectorAll('[data-view]').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.view === v ? 'true' : 'false'); });
+      $$('[data-view]').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.view === v ? 'true' : 'false'); });
       svg.setAttribute('aria-label', 'Chest, ' + (v === 'front' ? 'front' : 'back') + ' view. Each listening spot is a button.');
       drawBody(svg, v, figs);
       siteEls = drawSites(svg, v, { onTap: tapSite });
@@ -569,11 +578,11 @@
     function setMode(m){
       stopAll();
       st.mode = m;
-      root.querySelectorAll('[data-mode]').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.mode === m ? 'true' : 'false'); });
+      $$('[data-mode]').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.mode === m ? 'true' : 'false'); });
       if(m !== 'explore') lastTest = m;
-      root.querySelectorAll('[data-top]').forEach(function(b){ b.setAttribute('aria-pressed', (b.dataset.top === 'explore') === (m === 'explore') ? 'true' : 'false'); });
+      $$('[data-top]').forEach(function(b){ b.setAttribute('aria-pressed', (b.dataset.top === 'explore') === (m === 'explore') ? 'true' : 'false'); });
       quizPick.hidden = m === 'explore';
-      root.querySelector('.st-compare').hidden = m !== 'explore';
+      $$('.st-compare')[0].hidden = m !== 'explore';
       main.hidden = !(m === 'explore' || m === 'where');
       timingBox.hidden = m !== 'timing';
       if(quizSection) quizSection.hidden = m !== 'name';
@@ -609,11 +618,11 @@
       Bank.play(sound, h);
     }
     function showError(msg){
-      var e = root.querySelector('.st-err');
+      var e = $$('.st-err')[0];
       if(e){ e.textContent = msg; e.hidden = !msg; }
     }
     function updatePlayButtons(){
-      root.querySelectorAll('[data-play-which]').forEach(function(b){
+      $$('[data-play-which]').forEach(function(b){
         var on = st.playing === b.dataset.playWhich;
         b.classList.toggle('playing', on);
         b.innerHTML = on ? '<span aria-hidden="true">&#9724;</span> Stop' : '<span aria-hidden="true">&#9658;</span> ' + esc(b.dataset.label);

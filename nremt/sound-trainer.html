@@ -39,6 +39,12 @@
 <script src="assets/body-figures.js" defer></script>
 <script src="assets/sound-stage.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
+<!-- tool-studio:start -->
+<link rel="stylesheet" href="../assets/course/tool-studio.css">
+<link rel="stylesheet" href="assets/nremt-studio.css">
+<script src="../assets/course/tool-studio.js" defer></script>
+<script src="assets/nremt-studio.js" defer></script>
+<!-- tool-studio:end -->
 <style>
   body{line-height:1.65;}
   .lede{color:var(--muted);font-size:15.5px;max-width:60ch;margin:0 0 20px;}
@@ -60,7 +66,7 @@
     .page-head .lede{font-size:14px;}
   }
 
-  section{margin-bottom:40px;}
+  .wrap section{margin-bottom:40px;}
   h2{font-size:19px;font-weight:600;margin:0 0 6px;}
   .section-sub{color:var(--muted);font-size:14px;margin:0 0 18px;}
 
@@ -896,8 +902,91 @@ const stage = window.SoundStage ? window.SoundStage.mount(document.getElementByI
   record: r => { if (window.NremtToolResults) window.NremtToolResults.record(r); }
 }) : null;
 if (!stage) document.getElementById('quizSection').hidden = false;
+
+/* ---- Tool Studio (docs/tools-calm.md; assets/nremt-studio.js) ------------
+   Explore: the chest on the stage, the sound chips, Play and the beat strip in
+   the dock, the caption says what you hear where. Test yourself: the kind of
+   test (name it, where, when) at the top of the dock and the question itself
+   on the stage. Why: why this spot (mirrored from the explore card) and the
+   sound's description. Details: volume, compare two sounds, every sound's card. */
+const studio = stage && window.NremtStudio ? window.NremtStudio.mount({ title: 'Sound trainer', slug: 'sound-trainer' }) : null;
+if (studio) (function(){
+  const R = document.getElementById('stageRoot'), q = sel => R.querySelector(sel);
+  const fig = q('.st-fig'), side = q('.st-side'), main = q('.st-main'), timing = q('.st-timing'), pick = q('.st-quizpick'), vol = q('.st-vol');
+  const quiz = document.getElementById('quizSection');
+  pick.classList.add('ls-seg');
+  // Short names so the three fit one row on a phone (the full name is the label).
+  [['name', 'Name it', 'Name the sound'], ['where', 'Where', 'Where to listen'], ['timing', 'When', 'When in the beat']].forEach(([m, t, full]) => {
+    const b = pick.querySelector('[data-mode="' + m + '"]'); if (b) { b.textContent = t; b.setAttribute('aria-label', full); }
+  });
+  fig.appendChild(vol);
+  studio.add('stage', [fig, timing, quiz]);
+  studio.add('dock', [pick, side]);
+  const why = document.createElement('div'); why.className = 'st-ls-why';
+  const live = q('.st-live');
+  studio.add('why', why);
+  const more = q('.st-more-in');
+  const settings = document.createElement('div'); settings.className = 'ls-sec';
+  settings.innerHTML = '<h3 class="ls-h">Settings</h3>'; settings.append(more);
+  const cards = document.getElementById('listenSection'), sndMore = document.getElementById('sndMore');
+  studio.add('details', [settings, cards]);
+  studio.add('dock', live);
+  // The fig and the side live and hide with the module's .st-main.
+  const sync = () => { fig.hidden = side.hidden = main.hidden; };
+  new MutationObserver(sync).observe(main, { attributes: true, attributeFilter: ['hidden'] }); sync();
+  const top = v => q('[data-top="' + v + '"]');
+  const CAP = {
+    name: 'Play the clip, then pick what you hear.',
+    where: 'Tap the spot on the chest where you would listen.',
+    timing: 'Play the beat, then tap the strip where the extra sound falls.'
+  };
+  const kind = () => { const b = pick.querySelector('[aria-pressed="true"]'); return b ? b.dataset.mode : 'name'; };
+  studio.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'test', label: 'Test yourself' }],
+    value: top('explore').getAttribute('aria-pressed') === 'true' ? 'explore' : 'test',
+    onChange: v => { top(v).click(); paint(); } });
+  q('.st-tabs').hidden = true;
+  /* The caption: in Explore, the sound and the spot with its verdict (the
+     card's own lines move here); in a test, what to do. Why gets the card's
+     "Why?" text and the sound's description. */
+  function paint(){
+    const exploring = top('explore').getAttribute('aria-pressed') === 'true';
+    studio.mode(exploring ? 'explore' : 'test');
+    if (!exploring) {
+      const k = kind(), box = k === 'where' ? side : k === 'timing' ? timing : quiz;
+      const v = box.querySelector('.st-verdict, .feedback-verdict');
+      studio.caption(v ? '<b>' + v.textContent + '</b> Why? has the reason.' : CAP[k] || '', 'test');
+      const ask = box.querySelector('.st-q strong');
+      why.innerHTML = v ? (ask && k === 'where' ? '<h3 class="ls-title-l">' + ask.textContent + '</h3>' : '') + '<p><b>' + v.textContent + '</b></p>' +
+        [...box.querySelectorAll('.st-side > p, .st-timing > p, .feedback > p')].filter(x => x.textContent.trim()).map(x => x.outerHTML).join('')
+        : '<p>' + (CAP[k] || '') + ' The reason appears here after you answer.</p>';
+      return;
+    }
+    const now = side.querySelector('.st-now'), here = side.querySelector('.st-here');
+    if (now) studio.caption(now.innerHTML.replace(/ <span class="st-muted">\(its best spot\)<\/span>/, '') + '. ' + (here ? here.innerHTML : ''), 'explore');
+    const w = side.querySelector('details.st-why');
+    const chip = side.querySelector('[data-finding][aria-pressed="true"]');
+    const snd = chip && SOUNDS.find(x => x.id === chip.dataset.finding);
+    why.innerHTML = (snd ? '<h3 class="ls-title-l">' + snd.label + '</h3><p>' + snd.description + '</p><p class="tmuted">' + snd.clinical + '</p>' : '') +
+      (w ? '<h3 class="ls-h">Why this spot</h3>' + [...w.children].filter(c => c.tagName !== 'SUMMARY').map(c => c.outerHTML).join('') : '');
+    if (here) studio.pills([{ html: here.textContent, tone: here.classList.contains('is-best') ? 'good' : here.classList.contains('is-faint') ? 'warn' : 'accent' }], 'right', 'explore');
+  }
+  pick.addEventListener('click', () => setTimeout(paint));
+  paint();
+  // Test answers land on the stage: the verdict as a pill.
+  const verdictPill = () => {
+    const v = (main.hidden ? (timing.hidden ? quiz : timing) : side).querySelector('.st-verdict, .feedback-verdict');
+    studio.pills(v ? [{ html: v.textContent.split(/[.:—]/)[0], tone: /\b(ok|correct)\b/.test(v.className) ? 'good' : 'bad' }] : [], 'left', 'test');
+  };
+  [side, timing, quiz].forEach(el => new MutationObserver(() => { verdictPill(); paint(); }).observe(el, { childList: true, subtree: true }));
+  studio.hint({ target: fig.querySelector('.st-site.is-on') || fig.querySelector('.st-body'), text: 'Tap the glowing spot to listen', round: 28 });
+  // From Review: #snd-<id> opens that sound's card in Details.
+  if (location.hash.indexOf('#snd-') === 0) {
+    const card = document.getElementById(location.hash.slice(1));
+    if (card) { sndMore.open = true; studio.open('details'); card.classList.add('is-target'); setTimeout(() => { card.scrollIntoView({ block: 'center' }); card.focus({ preventScroll: true }); }, 300); }
+  }
+})();
 // From Review: sound-trainer.html#snd-<id> lands on that sound's card.
-if(location.hash.indexOf('#snd-') === 0){
+if(!studio && location.hash.indexOf('#snd-') === 0){
   const card = document.getElementById(location.hash.slice(1));
   if(card) document.getElementById('sndMore').open = true;
   if(card){ card.classList.add('is-target'); card.scrollIntoView({ block: 'center' }); card.focus({ preventScroll: true }); }
