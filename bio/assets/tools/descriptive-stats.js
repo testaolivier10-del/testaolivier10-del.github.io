@@ -110,8 +110,8 @@
     spec.aria = v.length + ' values on a dot plot' + (chk ? ': mean ' + F(spec.mean, 2) + ', median ' + F(spec.median, 2) + ', SD ' + F(spec.sd, 2) + ', SE ' + F(spec.se, 2) : '') + '.';
     var typed = spec.mine && [spec.mine.mean, spec.mine.median, spec.mine.sd].some(isFinite);
     var cap = chk
-      ? 'About two thirds of the values lie within ±1 SD of the mean (the band). The SE bracket is narrower: it is SD / √' + v.length + ', how far this sample’s mean is likely to be from the true mean.' + (Math.abs(spec.mean - spec.median) > 0.25 * spec.sd ? ' The mean and median differ here: the ' + (spec.mean > spec.median ? 'high' : 'low') + ' values pull the mean their way.' : '')
-      : typed ? 'Your answers are drawn on the dot plot as you type. Does your mean sit at the balance point of the dots? Does about two thirds of the data fall inside your ±1 SD band?'
+      ? 'Here ' + v.filter(function(q){ return Math.abs(q - spec.mean) <= spec.sd; }).length + ' of ' + v.length + ' values lie within ±1 SD of the mean (the band); in roughly bell-shaped data about two thirds do. The SE bracket is narrower: it is SD / √' + v.length + ', about how far a sample mean typically falls from the true mean.' + (Math.abs(spec.mean - spec.median) > 0.25 * spec.sd ? ' The mean and median differ here: the ' + (spec.mean > spec.median ? 'high' : 'low') + ' values pull the mean their way.' : '')
+      : typed ? 'Your answers are drawn on the dot plot as you type. Does your mean sit at the balance point of the dots? Does roughly two thirds of the data fall inside your ±1 SD band?'
       : 'Each dot is one value from the table. Type the mean, median and SD and they are drawn here.';
     S.redraw(host, '<div class="sk-fig">' + draw(spec) + '</div><p class="sk-cap">' + cap + '</p>');
   }

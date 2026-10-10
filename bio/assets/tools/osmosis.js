@@ -253,12 +253,13 @@
       var body = '';
       if(r.lysed) body = 'With no wall, ψp stays 0, so only diluting the cytoplasm could raise its ψ. It would have to swell past ' + F(sy.lyseAt, 2) + '× its volume first, so the membrane tears: the cell lyses.';
       else if(sy.kind === 'plant'){
-        if(r.state === 'turgid') body = 'As the cell fills, the wall pushes back: ψp rises to ' + F(r.end.psiP, 2) + ' bar, which lifts ψ inside to ' + i1 + ' bar. The wall, not the solute, stops the intake, so the cell stays whole.';
+        if(r.state === 'turgid' && r.startDir === 'out') body = 'The cell loses a little water but stays pressed on its wall: ψp falls to ' + F(r.end.psiP, 2) + ' bar, which lowers ψ inside to ' + i1 + ' bar.';
+        else if(r.state === 'turgid') body = 'As the cell fills, the wall pushes back: ψp rises to ' + F(r.end.psiP, 2) + ' bar, which lifts ψ inside to ' + i1 + ' bar. The wall, not the solute, stops the intake, so the cell stays whole.';
         else if(r.state === 'plasmolyzed') body = 'The cell loses water, its push on the wall (ψp) falls to 0, and the membrane pulls away from the wall. The gap fills with the outside solution, because the wall lets it through.';
         else body = 'The cell barely changes: ψp is about 0, so the cell is flaccid, neither pressing on its wall nor pulled away.';
       } else if(sy.kind === 'animal') body = r.state === 'swollen' ? 'Water dilutes the cytoplasm until its ψs matches the outside. No wall pushes back, so the cell swells but has not burst.'
         : r.state === 'shriveled' ? 'Losing water concentrates the cytoplasm until its ψ matches the outside; the shrinking membrane crinkles (crenation).' : 'The cell keeps its normal shape: the solution is about isotonic.';
-      else body = r.startDir === 'none' ? 'The bag keeps its size.' : 'Sucrose cannot cross in this model, so only water moves: toward the side with more solute. ' + (r.end.psiP > 0.01 ? 'The bag fills until the tubing is tight and its pressure (ψp ' + F(r.end.psiP, 2) + ' bar) helps stop the intake.' : '');
+      else body = r.startDir === 'none' ? 'The bag keeps its size.' : (c.outI > 1 ? 'In this model no solute crosses the tubing (real dialysis tubing lets NaCl through, so a real bag would behave differently), so only water moves: toward the side with more dissolved particles. ' : 'Sucrose cannot cross in this model, so only water moves: toward the side with more solute. ') + (r.end.psiP > 0.01 ? 'The bag fills until the tubing is tight and its pressure (ψp ' + F(r.end.psiP, 2) + ' bar) helps stop the intake.' : '');
       var tail = !r.lysed && !r.equilibrium ? ' Not at equilibrium yet after ' + td(sy, c.t) + ' min: ψ still differs by ' + F(gap, 2) + ' bar, so the arrows have not thinned to nothing.' : (!r.lysed && r.startDir !== 'none' ? ' Now ψ inside equals ψ outside, so the arrows have thinned to nothing: no net flow.' : '');
       return head + body + tail;
     }
@@ -314,10 +315,11 @@
         var sy = (tries === 0 && sysById(want)) || data.systems[chalN % data.systems.length];
         var so = g.pick(data.solutes), C = M.round(g.int(0, Math.round(data.outside.max / data.outside.step)) * data.outside.step, 2);
         var inC = sy.kind === 'bag' ? M.round(g.int(2, Math.round(data.inside.max / data.inside.step)) * data.inside.step, 2) : st.inC;
-        if(sy.kind === 'bag' && g() < 0.3){ so = data.solutes[0]; C = inC; }
+        if(sy.kind === 'bag'){ so = data.solutes[0]; if(g() < 0.3) C = inC; } // real tubing lets NaCl through, so bag challenges use sucrose only
         var c = { outC: C, outI: so.i, inC: inC, inI: 1, T: sy.defaults.T, t: sy.time.value };
         var r = M.osmosis.simulate(sy, c), gap = Math.abs(r.psiO - r.start.psi);
         if(!(gap < 0.01 || gap > 1.2)) continue;
+        if(r.startDir !== 'none' && (r.state === 'unchanged' || r.state === 'normal' || r.state === 'flaccid')) continue; // water moves but the size barely changes: not clear-cut
         var ok = [-0.04, 0.04].every(function(d){ var c2 = Object.assign({}, c, { outC: Math.max(0, C + d) }); return M.osmosis.simulate(sy, c2).state === r.state; });
         if(!ok && gap >= 0.01) continue;
         return { sys: sy, solute: so, c: c, r: r };

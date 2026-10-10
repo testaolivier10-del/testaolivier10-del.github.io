@@ -365,7 +365,7 @@
         if(!a){ fb.textContent = 'Pick a strain first.'; return; }
         quizBox.querySelectorAll('input,button').forEach(function(x){ x.disabled = true; });
         var ok = a.value === pick[0];
-        var why = { wt: 'Normal control: on only with lactose; high only without glucose (CAP). The tiny level in glucose with no lactose is the leak past the repressor.',
+        var why = { wt: 'Normal control: on only with lactose; high only without glucose (CAP). The tiny level with no lactose is the leak past the repressor.',
           'lacI-': 'On even with no lactose: there is no repressor to block RNA polymerase. Glucose still lowers it (CAP still matters).',
           lacIs: 'Never on, even in lactose: the super-repressor cannot bind allolactose, so it never leaves the operator.',
           Oc: 'On even with no lactose, like lacI⁻: the repressor is made but cannot grip the changed operator. Only a merodiploid (going further) tells Oᶜ from lacI⁻ (cis against trans).',
@@ -374,7 +374,8 @@
           'trpR-': 'On even with tryptophan: no repressor, so nothing can block RNA polymerase.',
           'trp-Oc': 'On even with tryptophan: the repressor–tryptophan complex cannot bind the changed operator.' }[pick[0]];
         if(pick[0] === 'lacI-' || pick[0] === 'Oc') ok = a.value === 'lacI-' || a.value === 'Oc';
-        fb.innerHTML = '<p><span class="bio-mark ' + (ok ? 'ok">Right' : 'no">Not quite') + '</span> It is ' + esc(pick[1]) + '. ' + esc(why) + (pick[0] === 'lacI-' || pick[0] === 'Oc' ? ' (lacI⁻ and Oᶜ both count here: these levels cannot tell them apart.)' : '') + '</p><p class="bt-small">The figure now shows strain X: tap the chips to see it in each medium.</p><div class="bt-actions"><button type="button" class="btn-press sm os-next">Next strain</button>' + T.report(SLUG + ':mutant-' + pick[0]) + '</div>';
+        if(pick[0] === 'trpR-' || pick[0] === 'trp-Oc') ok = a.value === 'trpR-' || a.value === 'trp-Oc';
+        fb.innerHTML = '<p><span class="bio-mark ' + (ok ? 'ok">Right' : 'no">Not quite') + '</span> It is ' + esc(pick[1]) + '. ' + esc(why) + (pick[0] === 'lacI-' || pick[0] === 'Oc' ? ' (lacI⁻ and Oᶜ both count here: these levels cannot tell them apart.)' : pick[0] === 'trpR-' || pick[0] === 'trp-Oc' ? ' (trpR⁻ and Oᶜ both count here: these levels cannot tell them apart.)' : '') + '</p><p class="bt-small">The figure now shows strain X: tap the chips to see it in each medium.</p><div class="bt-actions"><button type="button" class="btn-press sm os-next">Next strain</button>' + T.report(SLUG + ':mutant-' + pick[0]) + '</div>';
         copies()[0] = Object.assign({}, pick[2]); qmodeShow(true);
         fb.querySelector('.os-next').addEventListener('click', function(){ qmodeShow(false); newQuiz(); quizBox.querySelector('.os-chal-q').focus(); });
         T.record(SLUG, [{ id: SLUG + ':mutant-' + pick[0] + ':a', correct: ok, topic: data.topic, level: 'analyze', diff: 2, group: 'mutant' }]);

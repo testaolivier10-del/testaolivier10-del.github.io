@@ -50,3 +50,23 @@ steps, problem codes (`?seed=`), worked sets, item ids and recording; the new vi
 - Water potential: the picture puts ψ = 0 at the top and draws water moving from the higher to the lower
   surface; pressure potential "raises the cell's surface" (ψ = ψs + ψp).
 - No new numbers in any problem, answer key or tolerance.
+
+## Accuracy review
+
+Independent review 2026-10-09 (branch `claude/tools-review-bio`). Sources: AP Biology Equations and Formulas sheet,
+OpenStax Introductory Statistics (ch. 2, 7, 11), OpenStax Biology 2e (19.1).
+
+| Item | Verdict | Note / source |
+|---|---|---|
+| `chiPdf` | correct | Closed forms match (df 1, 2); numeric tail right of every 0.05 critical value (df 1-8) = 0.0499-0.0500. |
+| `apportion` | correct | Largest remainder; sums to total. |
+| "About 1 in 20 chance samples cross the line"; tally "about 5%"; "type I error" | correct | Simulated 20,000 chance samples of 120 per context: 4.4-5.6%. |
+| "Doubling every count doubles χ²" | correct | Σ(2o − 2e)²/(2e) = 2Σ(o − e)²/e. |
+| "2pq is largest (0.5) at p = 0.5"; 16% recessive → q 0.4, p 0.6; "most copies of a rare allele are in carriers" | correct | d(2p(1 − p))/dp = 0 at 0.5; at q² ≤ 0.01, 2pq/(2pq + 2q²) ≥ 0.9. |
+| Descriptive stats "about two thirds within ±1 SD" stated as fact for each small sample | fixed | Now shows the actual count in the sample, then "in roughly bell-shaped data about two thirds do" (68%, OpenStax Intro Stats 2.7/6.1). SE wording made "about how far a sample mean typically falls". |
+| "To halve the error bar you need four times the n" | correct | SE = SD/√n. |
+| 95% CI ≈ x̄ ± 2 SE, overlap rule of thumb | correct | Course convention; howItWorks already says a formal test can differ. |
+| ψ diagram: 0 at top, more negative lower; water from higher to lower surface; ψp raises the cell surface | correct | |
+| Rates explore (seed 2024: 5.7, 3.6, 2.3, 1.3, 0.9 mL/min): "later slopes flatter… slows as substrate is used up"; percent change ghost bar start × (1 + %/100) | correct | |
+| Simpson D = 1 − Σ(n/N)² | correct (logged) | Matches the AP formula sheet; the brief's n(n − 1)/N(N − 1) form is not the CB form. Logged `simpson-formula-variant`. |
+| Design drills (null-hypothesis tiles, CER highlighter) | correct | Only set the existing radios; spot-checked keys (duckweed null and CER tags) are right. |

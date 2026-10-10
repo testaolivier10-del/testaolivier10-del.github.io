@@ -62,3 +62,25 @@ test('enzyme states agree with the rate model', () => {
     }
   }
 });
+
+test('operon mutant quiz: strains the quiz accepts as interchangeable give identical tables', () => {
+  const P = data('operons').model;
+  const lac = g => data('operons').lacStarts.map(m => { const s = M.operon.state(P, { mode: 'lac', glucose: m.glucose, lactose: m.lactose, copies: [g] }); return [s.m, s.e]; });
+  const trp = g => data('operons').trpStarts.map(m => M.operon.state(P, { mode: 'trp', trp: m.trp, copies: [g] }).m);
+  assert.deepEqual(lac({ I: '-', O: '+', Z: '+' }), lac({ I: '+', O: 'c', Z: '+' }));
+  // trpR⁻ and trp Oᶜ cannot be told apart from haploid levels, so the quiz accepts either
+  assert.deepEqual(trp({ R: '-', O: '+' }), trp({ R: '+', O: 'c' }));
+  assert.notDeepEqual(trp({ R: '+', O: '+' }), trp({ R: '-', O: '+' }));
+});
+
+test('HW drift Guess N: the SD cutoffs the quiz uses separate N = 100 from N = 1000', () => {
+  const sdOf = a => { const m = a.reduce((x, y) => x + y) / a.length; return Math.sqrt(a.reduce((x, y) => x + (y - m) ** 2, 0) / a.length); };
+  let ok100 = 0, ok1000 = 0;
+  for (let s = 1; s <= 20; s++) {
+    const run = N => sdOf(M.popgen.simulate({ p0: 0.5, N, gens: 60, reps: 8, seed: s, w: [1, 1, 1], u: 0, v: 0, m: 0, F: 0, event: null }).reps.map(r => r.p[60]));
+    if (run(100) > 0.15) ok100++;
+    if (run(1000) < 0.1) ok1000++;
+  }
+  // most draws pass (so the redraw loop ends fast), and the bands do not meet
+  assert.ok(ok100 >= 15 && ok1000 >= 15, `${ok100} ${ok1000}`);
+});

@@ -261,8 +261,17 @@
     var CHOICES = [10, 100, 1000];
     function newGuess(){
       var g = M.rng(gSeed + 7919 * gN); gN++;
-      var N = CHOICES[(gN + g.int(0, 2)) % 3], c = Object.assign(cfg(), { p0: 0.5, N: N, gens: 60, reps: 8, seed: g.int(1, 99999), w: [1, 1, 1], u: 0, v: 0, m: 0, F: 0, event: null });
-      var s2 = G.simulate(c);
+      var N = CHOICES[(gN + g.int(0, 2)) % 3], c, s2;
+      /* Only clear-cut draws: the spread of the 8 final p values (SD) for
+         N = 100 and N = 1000 overlaps in about 1-2% of draws, so redraw any
+         N = 100 set with SD under 0.15 or N = 1000 set with SD over 0.10
+         (N = 10 always has 5+ of 8 lost or fixed by generation 60). */
+      for(var tries = 0; tries < 50; tries++){
+        c = Object.assign(cfg(), { p0: 0.5, N: N, gens: 60, reps: 8, seed: g.int(1, 99999), w: [1, 1, 1], u: 0, v: 0, m: 0, F: 0, event: null });
+        s2 = G.simulate(c);
+        var ps = s2.reps.map(function(r){ return r.p[60]; }), mu = M.mean(ps), sdv = Math.sqrt(M.mean(ps.map(function(x){ return (x - mu) * (x - mu); })));
+        if(N === 10 || (N === 100 && sdv > 0.15) || (N === 1000 && sdv < 0.1)) break;
+      }
       var curves = s2.reps.map(function(r){ return { points: r.p.map(function(v, k){ return [k, v]; }), cls: 's1' }; });
       var id = 'hwg' + gN;
       chal.innerHTML = '<p class="os-chal-q" tabindex="-1"><b>Guess N (' + gN + ').</b> Eight populations all started at p = 0.50, with no selection, mutation or migration: only chance acts. How many adults does each population have?</p>' +
@@ -274,7 +283,7 @@
         if(!a){ fb.textContent = 'Pick a size first.'; return; }
         chal.querySelectorAll('input,button').forEach(function(x){ x.disabled = true; });
         var ok = +a.value === N, f = s2.fates;
-        var why = N === 10 ? 'With only 20 alleles a generation, chance swings p widely: ' + (f.fixed + f.lost) + ' of 8 populations already lost or fixed an allele.' : N === 100 ? 'With 200 alleles a generation the lines wander but most keep both alleles for 60 generations; they spread apart steadily.' : 'With 2,000 alleles a generation, chance nearly cancels out: the lines stay close to 0.50. Drift is weakest in large populations.';
+        var why = N === 10 ? 'With only 20 alleles a generation, chance swings p widely: ' + (f.fixed + f.lost) + ' of 8 populations already lost or fixed an allele.' : N === 100 ? 'With 200 alleles a generation the lines wander but most keep both alleles for 60 generations; they spread apart steadily.' : 'With 2,000 alleles a generation, chance mostly cancels out: the lines drift only a little from 0.50 and none lose an allele. Drift is weakest in large populations.';
         fb.innerHTML = '<p><span class="bio-mark ' + (ok ? 'ok">Right' : 'no">Not quite') + '</span> N = ' + N + '. ' + esc(why) + '</p><div class="bt-actions"><button type="button" class="btn-press sm os-next">Next population</button>' + T.report(SLUG + ':guess-n' + N) + '</div>';
         fb.querySelector('.os-next').addEventListener('click', function(){ newGuess(); chal.querySelector('.os-chal-q').focus(); });
         T.record(SLUG, [{ id: SLUG + ':guess-n' + N + ':a', correct: ok, topic: data.topic, level: 'analyze', diff: 2, group: 'guess' }]);
