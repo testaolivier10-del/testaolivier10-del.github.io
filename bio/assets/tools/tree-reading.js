@@ -11,7 +11,18 @@
      the check accepts any rotation and names each supported, unsupported or
      missing clade (recorded).
    Every action is a button, checkbox or list (no dragging), and every tree
-   has a written description next to the drawing. */
+   has a written description next to the drawing.
+
+   Job: read relationships from a tree's branching, not from the order of the
+   tips.
+
+   Tools upgrade (U-Bio-sims): the drawing is the control. Tap a node to
+   rotate it (the tips glide to their new rows; reduced motion: jump); tap a
+   tip to select it, and the most recent common ancestor of the selection
+   and its clade bracket light up live. On character trees, drag a numbered
+   character chip onto a branch, or tap a chip and then a branch, to place
+   it. The rotate buttons, checkboxes and selects stay as the keyboard path,
+   and answers are checked and recorded as before. */
 (function(){
   'use strict';
   var SLUG = 'tree-reading';
@@ -26,7 +37,8 @@
 
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
       '<section class="bt-card tr-read" aria-labelledby="tr-h"><h2 id="tr-h">Read a tree</h2><div class="tr-pick"></div><p class="tr-about"></p>' +
-      '<div class="bt-fig tr-figwrap" tabindex="0" role="region" aria-label="Tree drawing (scrolls sideways on a small screen)"></div>' +
+      '<div class="bt-fig tr-figwrap" role="region" aria-label="Tree drawing: tap a node to rotate it, tap a tip to select it (scrolls sideways on a small screen)"></div><p class="bt-small tr-hint">Tap a numbered node to rotate it. Tap tips to select them: their most recent common ancestor lights up.</p>' +
+      '<div class="tr-chips" hidden></div>' +
       '<div class="tr-desc"></div>' +
       '<fieldset class="bt-ctl tr-rotate"><legend>Rotate a node (swap the branches that come out of it)</legend><div class="bt-buttons"></div></fieldset>' +
       '<fieldset class="bt-ctl tr-tips"><legend>Select taxa, then ask a question about them</legend><div class="tr-checks"></div>' +
@@ -62,6 +74,7 @@
 
     /* ---------------------------------------------------------- drawing */
     /* o: { marks: { 'tip,tip': [label] }, sel: [tips], miss: [tips], mrca: node, bracket: [tips] } */
+    var lastPos = {};
     function drawTree(tree, root, o){
       o = o || {};
       var leaves = P.leaves(root), rowH = 36, top = 26, L = 14, labelW = 150, W = 600, plotW = W - L - 24 - labelW, dna = tree.kind === 'dna';
@@ -82,6 +95,7 @@
         n.kids.forEach(function(k){
           var b = pos.get(k);
           p.push('<path class="tr-edge" d="M' + a.x.toFixed(1) + ' ' + a.y.toFixed(1) + 'V' + b.y.toFixed(1) + 'H' + b.x.toFixed(1) + '"/>');
+          if(o.drop) p.push('<rect class="tr-drop' + (o.hot === k.tips.join(',') ? ' hot' : '') + '" data-br="' + k.tips.join(',') + '" x="' + a.x.toFixed(1) + '" y="' + (b.y - 14).toFixed(1) + '" width="' + Math.max(18, b.x - a.x).toFixed(1) + '" height="28" rx="6"/>');
           if(dna && b.x - a.x >= 36) p.push('<text class="tr-len" x="' + ((a.x + b.x) / 2).toFixed(1) + '" y="' + (b.y - 6).toFixed(1) + '" text-anchor="middle">' + F(k.len, 2) + '</text>');
           var ms = (o.marks || {})[k.tips.join(',')] || [];
           ms.forEach(function(lab, i){
@@ -96,19 +110,20 @@
       }
       P.internal(root).forEach(function(n){
         var a = pos.get(n), isM = o.mrca === n;
-        p.push('<g class="tr-node' + (isM ? ' mrca' : '') + '"><circle cx="' + a.x.toFixed(1) + '" cy="' + a.y.toFixed(1) + '" r="' + (isM ? 13 : 10) + '"/><text x="' + a.x.toFixed(1) + '" y="' + (a.y + 4).toFixed(1) + '" text-anchor="middle">' + n.id + '</text>' +
+        p.push('<g class="tr-node' + (isM ? ' mrca' : '') + '" data-rot="' + n.id + '" role="button" tabindex="0" aria-label="Node ' + n.id + (isM ? ', the most recent common ancestor of your selection' : '') + '. Rotate it."><circle class="tr-nhit" cx="' + a.x.toFixed(1) + '" cy="' + a.y.toFixed(1) + '" r="22"/><circle cx="' + a.x.toFixed(1) + '" cy="' + a.y.toFixed(1) + '" r="' + (isM ? 13 : 10) + '"/><text x="' + a.x.toFixed(1) + '" y="' + (a.y + 4).toFixed(1) + '" text-anchor="middle">' + n.id + '</text>' +
           (isM ? '<text class="tr-mlab" x="' + a.x.toFixed(1) + '" y="' + (a.y - 17).toFixed(1) + '" text-anchor="middle">MRCA</text>' : '') + '</g>');
       });
       leaves.forEach(function(n){
         var a = pos.get(n), s = (o.sel || []).indexOf(n.name) >= 0, m = (o.miss || []).indexOf(n.name) >= 0;
-        p.push('<text class="tr-tip' + (s ? ' sel' : '') + (m ? ' miss' : '') + '" x="' + (a.x + 8).toFixed(1) + '" y="' + (a.y + 5).toFixed(1) + '">' + (s ? '✓ ' : m ? '✗ ' : '') + esc(nameOf(tree, n.name)) + '</text>');
+        p.push('<g class="tr-tipg' + (s ? ' sel' : '') + '" data-tip="' + esc(n.name) + '" role="button" tabindex="0" aria-pressed="' + s + '" aria-label="' + esc(nameOf(tree, n.name)) + (s ? ', selected' : '') + '"><rect class="tr-thit" x="' + (a.x + 2).toFixed(1) + '" y="' + (a.y - 15).toFixed(1) + '" width="' + (W - a.x - 4).toFixed(1) + '" height="30" rx="8"/><text class="tr-tip' + (s ? ' sel' : '') + (m ? ' miss' : '') + '" x="' + (a.x + 8).toFixed(1) + '" y="' + (a.y + 5).toFixed(1) + '">' + (s ? '✓ ' : m ? '✗ ' : '') + esc(nameOf(tree, n.name)) + '</text></g>');
       });
       if(dna){
         var unitPx = plotW / maxD, sy = H - 14;
         p.push('<path class="tr-edge" d="M' + (L + 24) + ' ' + sy + 'H' + (L + 24 + unitPx).toFixed(1) + '"/><text class="tr-len" x="' + (L + 30 + unitPx).toFixed(1) + '" y="' + (sy + 4) + '">1 = 1% of DNA bases differ</text>');
       }
       var label = (dna ? 'Phylogenetic tree drawn to scale' : 'Cladogram') + ' of ' + leaves.length + ' taxa: ' + nested(tree, root) + '. Tips from top to bottom: ' + orderNames(tree, root).join(', ') + '. The text description follows the drawing.';
-      return '<svg class="tr-fig" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(label) + '">' + p.join('') + '</svg>';
+      lastPos = {}; leaves.forEach(function(n){ lastPos[n.name] = pos.get(n).y; });
+      return '<svg class="tr-fig" viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="' + esc(label) + '">' + p.join('') + '</svg>';
     }
 
     /* ---------------------------------------------------- reading a tree */
@@ -129,10 +144,17 @@
       });
       return out;
     }
-    function figure(){
-      var t = tree(), s = st.show, o = { marks: marks(), sel: st.sel };
+    function figure(glide){
+      var t = tree(), s = st.show, o = { marks: marks(), sel: st.sel, drop: !!t.characters && !st.checked[t.id], hot: dragHot };
       if(s){ var m = P.find(st.root, s.mrca); o.mrca = s.kind === 'mrca' ? m : null; o.bracket = s.bracket; o.miss = s.miss; }
+      else if(st.sel.length >= 2){ var lm = P.mrca(st.root, st.sel); o.mrca = lm; o.bracket = lm.tips; }
+      var before = glide ? Object.assign({}, lastPos) : null;
       rc.querySelector('.tr-figwrap').innerHTML = drawTree(t, st.root, o);
+      if(before && !reducedM()) rc.querySelectorAll('.tr-figwrap .tr-tipg').forEach(function(g){
+        var id = g.getAttribute('data-tip'), dy = (before[id] || 0) - (lastPos[id] || 0);
+        if(Math.abs(dy) > 1 && g.animate) g.animate([{ transform: 'translateY(' + dy + 'px)' }, { transform: 'none' }], { duration: 450, easing: 'ease-out' });
+      });
+      if(refocus){ var f = rc.querySelector('.tr-figwrap ' + refocus); refocus = null; if(f){ var sx = fw0().scrollLeft; try{ f.focus({ preventScroll: true }); }catch(er){ f.focus(); } fw0().scrollLeft = sx; } }
       rc.querySelector('.tr-desc').innerHTML = describe(t, st.root);
     }
     function readAll(){
@@ -151,11 +173,75 @@
       extra();
       figure();
     }
+    var refocus = null, dragHot = null;
+    function fw0(){ return rc.querySelector('.tr-figwrap'); }
+    function reducedM(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
+    function toggleTip(id){
+      var box = rc.querySelector('.tr-tips .tr-checks'), cb = Array.prototype.filter.call(box.querySelectorAll('input'), function(x){ return x.value === id; })[0];
+      if(cb){ cb.checked = !cb.checked; }
+      st.sel = Array.prototype.filter.call(box.querySelectorAll('input'), function(x){ return x.checked; }).map(function(x){ return x.value; });
+      st.show = null; refocus = '[data-tip="' + id + '"]'; figure();
+      var t = tree(), names = tipNames(t, st.sel);
+      if(st.sel.length >= 2){ var m = P.mrca(st.root, st.sel), c = P.classify(st.root, st.sel);
+        result.textContent = 'Selected ' + list(names) + '. Their most recent common ancestor is node ' + m.id + ' (highlighted); its clade is bracketed. ' + (c.kind === 'clade' ? 'Your selection is that whole clade.' : 'The clade also holds ' + list(tipNames(t, c.missing)) + ', so your selection alone is not a clade.'); }
+      else result.textContent = st.sel.length ? 'Selected ' + names[0] + '. Tap another tip to see their most recent common ancestor.' : 'Selection cleared.';
+    }
+    var fw = rc.querySelector('.tr-figwrap');
+    fw.addEventListener('click', function(e){
+      var g = e.target.closest && e.target.closest('[data-rot],[data-tip],[data-br]'); if(!g) return;
+      if(g.hasAttribute('data-rot')) rotate(+g.getAttribute('data-rot'));
+      else if(g.hasAttribute('data-tip')) toggleTip(g.getAttribute('data-tip'));
+      else if(g.hasAttribute('data-br') && armed) placeChar(armed, g.getAttribute('data-br'));
+    });
+    fw.addEventListener('keydown', function(e){
+      if(e.key !== 'Enter' && e.key !== ' ') return;
+      var g = e.target.closest && e.target.closest('[data-rot],[data-tip]'); if(!g) return;
+      e.preventDefault();
+      if(g.hasAttribute('data-rot')) rotate(+g.getAttribute('data-rot')); else toggleTip(g.getAttribute('data-tip'));
+    });
+    /* Character chips: drag onto a branch, or tap a chip then a branch. */
+    var armed = null, drag = null;
+    function placeChar(cid, br){
+      var t = tree(), place = st.place[t.id] = st.place[t.id] || {};
+      place[cid] = br; armed = null; dragHot = null;
+      var c = t.characters.filter(function(x){ return x.id === cid; })[0], n = P.find(st.root, br.split(','));
+      result.textContent = 'Placed ' + c.name + ' on the branch leading to ' + nodeLabel(t, n) + '. Check your placements when you are done.';
+      var sel = rc.querySelectorAll('.tr-place select')[t.characters.indexOf(c)]; if(sel) sel.value = br;
+      chips(); figure();
+    }
+    function chips(){
+      var t = tree(), host = rc.querySelector('.tr-chips');
+      if(!host) return;
+      if(!t.characters || st.checked[t.id]){ host.innerHTML = ''; host.hidden = true; return; }
+      host.hidden = false;
+      var place = st.place[t.id] || {};
+      host.innerHTML = '<span class="bt-small">Place the characters: drag one onto its branch in the tree above, or tap it and then tap a branch.</span>' + t.characters.map(function(c, i){ return '<button type="button" class="tr-chip' + (armed === c.id ? ' armed' : '') + (place[c.id] ? ' placed' : '') + '" data-ch="' + esc(c.id) + '" aria-pressed="' + (armed === c.id) + '"><b>' + (i + 1) + '</b> ' + esc(c.name) + '</button>'; }).join('');
+    }
+    rc.addEventListener('pointerdown', function(e){ var b = e.target.closest && e.target.closest('.tr-chip'); if(!b) return; drag = { id: b.getAttribute('data-ch'), x: e.clientX, y: e.clientY, moved: false, b: b }; });
+    window.addEventListener('pointermove', function(e){
+      if(!drag) return;
+      if(!drag.moved && Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) < 8) return;
+      if(!drag.moved){ drag.moved = true; drag.ghost = drag.b.cloneNode(true); drag.ghost.className += ' op-ghost'; document.body.appendChild(drag.ghost); }
+      drag.ghost.style.left = (e.clientX - 30) + 'px'; drag.ghost.style.top = (e.clientY - 20) + 'px';
+      drag.ghost.style.display = 'none'; var under = document.elementFromPoint(e.clientX, e.clientY); drag.ghost.style.display = '';
+      var br = under && under.closest && under.closest('[data-br]'), hot = br ? br.getAttribute('data-br') : null;
+      rc.querySelectorAll('.tr-drop').forEach(function(r){ r.classList.toggle('hot', r.getAttribute('data-br') === hot); });
+      drag.hot = hot; e.preventDefault();
+    }, { passive: false });
+    window.addEventListener('pointerup', function(){
+      if(!drag) return;
+      var d = drag; drag = null;
+      if(d.ghost) d.ghost.remove();
+      if(!d.moved){ armed = armed === d.id ? null : d.id; chips(); var b = rc.querySelector('.tr-chip[data-ch="' + d.id + '"]'); if(b) b.focus(); result.textContent = armed ? 'Now tap the branch where this character first appeared.' : ''; return; }
+      if(d.hot) placeChar(d.id, d.hot); else figure();
+    });
+    rc.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('.tr-chip'); if(b && e.detail === 0){ armed = armed === b.getAttribute('data-ch') ? null : b.getAttribute('data-ch'); chips(); result.textContent = armed ? 'Character picked. Use the select below to place it with the keyboard, or tap a branch.' : ''; } });
+
     function rotate(id){
       var t = tree(), before = P.clades(st.root).join('|'), key = P.key(st.root);
-      if(!id){ load(); figure(); result.textContent = 'Back to the first drawing. Tips from top to bottom: ' + orderNames(t, st.root).join(', ') + '.'; return; }
+      if(!id){ load(); figure(true); result.textContent = 'Back to the first drawing. Tips from top to bottom: ' + orderNames(t, st.root).join(', ') + '.'; return; }
       var n = P.internal(st.root).filter(function(x){ return x.id === id; })[0];
-      P.rotate(n); figure();
+      P.rotate(n); refocus = '[data-rot="' + id + '"]'; figure(true);
       var same = P.clades(st.root).join('|') === before && P.key(st.root) === key;
       result.textContent = 'Node ' + id + ' rotated: its branches swapped places. Tips from top to bottom now: ' + orderNames(t, st.root).join(', ') + '. ' +
         (same ? 'The tree has the same ' + P.internal(st.root).length + ' clades as before, every node keeps the same descendants, so the relationships have not changed.' : 'The clades changed.');
@@ -208,10 +294,11 @@
         '<div class="bt-controls tr-place"></div><div class="bt-buttons"><button type="button" class="btn-press sm" data-c="check">Check my placements</button></div><div class="tr-charfb" role="status" aria-live="polite"></div>';
       var pl = box.querySelector('.tr-place');
       t.characters.forEach(function(c, i){
-        var s = T.choiceSelect({ label: (i + 1) + '. ' + c.name, value: place[c.id] || '', options: branchOptions(t), onChange: function(v){ place[c.id] = v; figure(); } });
+        var s = T.choiceSelect({ label: (i + 1) + '. ' + c.name, value: place[c.id] || '', options: branchOptions(t), onChange: function(v){ place[c.id] = v; chips(); figure(); } });
         if(st.checked[t.id]) s.select.disabled = true;
         pl.appendChild(s.el);
       });
+      chips();
       var btn = box.querySelector('[data-c="check"]');
       if(st.checked[t.id]){ btn.disabled = true; feedback(t, box.querySelector('.tr-charfb')); }
       btn.addEventListener('click', function(){
@@ -223,7 +310,7 @@
           T.record(SLUG, items);
           T.event('apbio-tool-question', { tool: SLUG, correct: items.every(function(x){ return x.correct; }) });
         }
-        extra(); figure();
+        extra(); chips(); figure();
         box.querySelector('.tr-charfb h3').setAttribute('tabindex', '-1'); box.querySelector('.tr-charfb h3').focus();
       });
     }
@@ -236,7 +323,7 @@
       }).join('');
       el.innerHTML = '<h3>' + right + ' of ' + t.characters.length + ' placed on the right branch</h3><ul class="tr-fb">' + rows + '</ul><p class="bt-small">The tree now shows every character on its right branch. Only your first check of each tree is recorded.</p><div class="bt-buttons"><button type="button" class="bt-btn" data-c="again">Try again</button></div>' + T.report(SLUG + ':' + t.id + ':characters');
       el.querySelector('[data-c="again"]').addEventListener('click', function(){
-        st.checked[t.id] = false; st.place[t.id] = {}; extra(); figure();
+        st.checked[t.id] = false; st.place[t.id] = {}; extra(); chips(); figure();
         var first = rc.querySelector('.tr-place select'); if(first) first.focus();
       });
     }

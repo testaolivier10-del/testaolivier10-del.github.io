@@ -6,20 +6,32 @@
    model works" box, the questions and the mini FRQ are data
    (bio/data/tools/energy-flow.json). Two modes: energy and biomass, and
    biomagnification. Pyramids are drawn as labeled bars (every number is
-   written on the figure), with widths to scale or on a log scale. */
+   written on the figure), with widths to scale or on a log scale.
+
+   Job: see why so little energy reaches the top of a food chain.
+
+   Tools upgrade (U-Bio-sims, lighter version): a flow stage first in the
+   card. Each level is a box (width on a log scale of the energy it absorbs);
+   energy blocks travel up the arrows to the next level (arrow width and
+   block rate from the energy passed on), heat peels off each level to the
+   side, and what is never eaten drops to the decomposers. Tap a level (or
+   use its button) to see where its energy went: one 100% bar split into
+   heat, passed on and to decomposers, from ApBioMath.energyFlow. Reduced
+   motion: no moving blocks. */
 (function(){
   'use strict';
   var SLUG = 'energy-flow';
   var T = window.ApBioTools, M = window.ApBioMath;
   if(!T) return;
-  T.mount(SLUG, function(app, data){
+  T.mount(SLUG, function(app, data, ctx){
     var esc = T.esc, E = M.energyFlow, D = data.defaults, RG = data.ranges, NAMES = data.levelNames;
     var st = { mode: 'energy', eco: data.ecosystems[0].id, gpp: D.gpp, prodResp: D.prodResp, eff: D.eff, resp: D.resp, levels: D.levels, c0: D.c0, retain: D.retain, scale: 'log' };
     var runs = [], ctl = {};
     var MODES = [['energy', 'Energy and biomass'], ['toxin', 'Biomagnification of a persistent toxin (from Topic 8.7)']];
 
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
-      '<section class="bt-card" aria-labelledby="ef-h"><h2 id="ef-h">The model</h2>' +
+      '<section class="bt-card ef-card" aria-labelledby="ef-h"><h2 id="ef-h">The model</h2>' +
+      '<div class="bt-fig ef-flowfig"></div><p class="bt-small">Tap a level to see where its energy went.</p><div class="ef-where os-why" role="status" aria-live="polite"></div>' +
       '<fieldset class="bt-modes"><legend>Show</legend>' + MODES.map(function(m){
         var id = 'ef-mode-' + m[0];
         return '<div class="bt-radio"><input type="radio" name="ef-mode" id="' + id + '" value="' + m[0] + '"' + (m[0] === st.mode ? ' checked' : '') + '><label for="' + id + '">' + esc(m[1]) + '</label></div>';
@@ -125,6 +137,49 @@
       return '<svg class="ef-pyr" viewBox="0 0 320 ' + h + '" role="img" aria-label="' + esc(desc) + '">' + p.join('') + '</svg>';
     }
 
+    /* ------------------------------------------------------- the flow */
+    var pickLevel = null;
+    function flow(s){
+      var L = s.levels, n = L.length, rowH = 66, H = 40 + n * rowH, Wd = 400, cx = 170, p = [];
+      var lmax = Math.log10(Math.max.apply(null, L.map(function(x){ return x.inE; }))), lmin = Math.log10(Math.max(1e-3, Math.min.apply(null, L.map(function(x){ return x.inE; }))));
+      var bw = function(v){ var span = Math.max(1, lmax - lmin); return 70 + 110 * Math.max(0, (Math.log10(Math.max(v, 1e-3)) - lmin) / span); };
+      var aw = function(v){ return Math.max(1.5, Math.min(18, 2 + 3 * Math.log10(Math.max(1, v)))); };
+      p.push('<rect class="ef-dec" x="' + (Wd - 92) + '" y="' + (H - 54) + '" width="86" height="44" rx="10"/><text class="ef-lab" x="' + (Wd - 49) + '" y="' + (H - 36) + '" text-anchor="middle">decomposers</text><text class="ef-lab" x="' + (Wd - 49) + '" y="' + (H - 20) + '" text-anchor="middle">' + num(s.decomp) + '</text>');
+      p.push('<text class="ef-lab ef-sun" x="' + cx + '" y="' + (H - 6) + '" text-anchor="middle">☀ GPP ' + num(s.gpp) + ' kcal/m²/yr</text>');
+      L.forEach(function(x, i){
+        var y = H - 26 - (i + 1) * rowH + 14, w = bw(x.inE), sel = pickLevel === i;
+        // heat to the left, decomposers to the right-down, passed on upward
+        var hw = aw(x.heat);
+        p.push('<path class="ef-heat" stroke-width="' + hw.toFixed(1) + '" d="M' + (cx - w / 2) + ' ' + (y + 26) + ' c-10 -8 -14 8 -24 0 s-14 -8 -24 0 s-14 -8 -24 0"/>');
+        p.push('<text class="ef-heatlab" x="4" y="' + (y + 10) + '">heat ' + sig(x.heat) + '</text>');
+        if(x.decomp > 0){ var dw = aw(x.decomp); p.push('<path class="ef-down" stroke-width="' + dw.toFixed(1) + '" d="M' + (cx + w / 2) + ' ' + (y + 24) + ' L' + (Wd - 60) + ' ' + (H - 56) + '"/>'); }
+        if(i < n - 1){
+          var uw = aw(x.passed), y2 = y - rowH + 40;
+          p.push('<path class="ef-up" stroke-width="' + uw.toFixed(1) + '" d="M' + cx + ' ' + y + ' V' + (y2 + 2) + '"/>');
+          var nb = Math.max(1, Math.min(4, Math.round(1 + Math.log10(Math.max(1, x.passed)) / 1.5)));
+          for(var b = 0; b < nb; b++) p.push('<rect class="ef-block" x="' + (cx - 4) + '" y="' + (y - 8) + '" width="8" height="8" rx="2" style="--rise:' + (y2 - y + 8) + 'px;animation-delay:-' + (b * 1.6 / nb).toFixed(2) + 's"/>');
+          p.push('<text class="ef-heatlab ef-uplab" x="' + (cx + 10) + '" y="' + ((y + y2) / 2 + 4) + '">' + sig(x.passed) + ' eaten</text>');
+        }
+        p.push('<g class="ef-lvl' + (sel ? ' sel' : '') + '" data-lv="' + i + '" role="button" tabindex="0" aria-pressed="' + sel + '" aria-label="' + esc(lname(i) + ': absorbs ' + sig(x.inE) + ' kcal/m²/yr. Tap to see where it went.') + '"><rect class="ef-box" x="' + (cx - w / 2).toFixed(1) + '" y="' + y + '" width="' + w.toFixed(1) + '" height="40" rx="8"/>' +
+          '<text class="ef-lab" x="' + cx + '" y="' + (y + 17) + '" text-anchor="middle">' + esc(eco().organisms[i]) + '</text><text class="ef-num" x="' + cx + '" y="' + (y + 33) + '" text-anchor="middle">' + sig(x.inE) + (i ? ' in' : ' captured') + '</text></g>');
+      });
+      var desc = 'Energy flow, producers at the bottom: ' + L.map(function(x, i){ return eco().organisms[i] + ' take in ' + sig(x.inE) + ', lose ' + sig(x.heat) + ' as heat' + (i < n - 1 ? ', pass ' + sig(x.passed) + ' up' : '') + ', ' + sig(x.decomp) + ' to decomposers'; }).join('; ') + ' (kcal/m²/yr).';
+      var host = card.querySelector('.ef-flowfig');
+      host.innerHTML = '<svg class="ef-flow" viewBox="0 0 ' + Wd + ' ' + H + '" role="group" aria-label="' + esc(desc) + '">' + p.join('') + '</svg>';
+      where(s);
+    }
+    function where(s){
+      var box = card.querySelector('.ef-where');
+      if(pickLevel == null || pickLevel >= s.levels.length){ box.innerHTML = ''; return; }
+      var x = s.levels[pickLevel], tot = x.inE, parts = [['heat', 'Heat (respiration)', x.heat], ['up', pickLevel < s.levels.length - 1 ? 'Eaten by the next level' : 'Eaten by no one (top level)', x.passed], ['dec', 'To decomposers (never eaten or absorbed, wastes, dead bodies)', x.decomp]];
+      box.innerHTML = '<p class="ef-wh"><b>' + esc(lname(pickLevel)) + '</b> took in ' + sig(tot) + ' kcal/m²/yr. Where it went:</p><div class="ef-split" aria-hidden="true">' + parts.map(function(q){ var f = q[2] / tot; return f > 0.0005 ? '<span class="ef-sp ' + q[0] + '" style="flex:' + f.toFixed(4) + '">' + (f >= 0.12 ? pct(f) : '') + '</span>' : ''; }).join('') + '</div>' +
+        '<ul class="ef-whl">' + parts.map(function(q){ return '<li><span class="ef-k ' + q[0] + '"></span>' + esc(q[1]) + ': ' + sig(q[2]) + ' (' + pct(q[2] / tot, q[2] / tot < 0.01 ? 2 : 0) + ')</li>'; }).join('') + '</ul>' +
+        '<p class="bt-small">' + (pickLevel === 0 ? 'Producer respiration takes ' + pct(st.prodResp) + ' of GPP; what is left is NPP, the most any consumer could ever get.' : 'Only the part eaten by the next level moves up; respiration heat leaves the ecosystem for good, which is why energy flows one way and is not recycled.') + '</p>';
+    }
+    function tapLevel(i){ pickLevel = pickLevel === i ? null : i; update(true); var g = card.querySelector('.ef-flowfig [data-lv="' + i + '"]'); if(g) g.focus(); }
+    card.querySelector('.ef-flowfig').addEventListener('click', function(e){ var g = e.target.closest && e.target.closest('.ef-lvl'); if(g) tapLevel(+g.getAttribute('data-lv')); });
+    card.querySelector('.ef-flowfig').addEventListener('keydown', function(e){ var g = e.target.closest && e.target.closest('.ef-lvl'); if(g && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); tapLevel(+g.getAttribute('data-lv')); } });
+
     /* ------------------------------------------------------- explain */
     function explain(s){
       var L = s.levels, out = [], top = L[L.length - 1];
@@ -158,6 +213,7 @@
     function update(now){
       var s = E.simulate(cond()), L = s.levels, tox = st.mode === 'toxin';
       var labels = L.map(function(x, i){ return eco().organisms[i]; });
+      flow(s);
       card.querySelector('.ef-chain').innerHTML = L.map(function(x, i){ return '<li><b>' + esc(eco().organisms[i]) + '</b> <span class="bt-small">' + esc(NAMES[i].toLowerCase()) + '</span></li>'; }).join('');
       card.querySelector('.ef-chain').setAttribute('aria-label', 'Food chain: ' + labels.join(', eaten by ') + '.');
       var energy = pyramid('Energy stored (kcal/m²/yr)', 'kcal', 'en', L.map(function(x){ return x.stored; }), labels, L.map(function(x){ return 'heat ' + sig(x.heat); }));

@@ -6,13 +6,26 @@
    student sets the medium and the genes, reads where the repressor, CAP and
    RNA polymerase sit (figure, readout and a numbered explanation), follows
    mRNA and enzyme after the medium changes at 0 min, compares every medium,
-   and runs trials into a data table. */
+   and runs trials into a data table.
+
+   Job: see how the repressor, the inducer or corepressor, and CAP decide
+   whether the genes are read, and spot a mutant from what it does.
+
+   Tools upgrade (U-Bio-sims): the operon figure is the stage, first in the
+   card. A tray of sugar (or tryptophan) chips: drag one into the cell or tap
+   it to add or remove it. Tap a gene or the operator on the DNA to mutate
+   it (cycles through the data's options; the selects stay as the keyboard
+   path). The repressor slides on or off the operator and mRNA ribbons stream
+   off the genes at a rate set by the model (reduced motion: still). "Which
+   mutant is this?": a hidden strain's steady-state levels in every medium
+   (computed by ApBioMath.operon, like the strain tables in the questions);
+   the student picks the genotype; recorded as operons:mutant-<genotype>:a. */
 (function(){
   'use strict';
   var SLUG = 'operons';
   var T = window.ApBioTools, M = window.ApBioMath;
   if(!T) return;
-  T.mount(SLUG, function(app, data){
+  T.mount(SLUG, function(app, data, ctx){
     var esc = T.esc, F = T.F, O = M.operon, P = data.model;
     var WT_LAC = { I: '+', O: '+', Z: '+' }, WT_TRP = { R: '+', O: '+' };
     var st = { mode: 'lac', view: 'time', glucose: false, lactose: true, trp: true, startLac: 'gl', startTrp: 'notrp', readT: data.readTime.value,
@@ -23,13 +36,18 @@
 
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
       '<section class="bt-card" aria-labelledby="op-h"><h2 id="op-h">The model</h2>' +
+
+      '<div class="os-modes" role="group" aria-label="Mode"><button type="button" class="bt-btn" data-q="explore" aria-pressed="true">Explore</button><button type="button" class="bt-btn" data-q="quiz" aria-pressed="false">Which mutant is this?</button></div>' +
+      '<div class="op-further" hidden>' + data.goingFurther + '</div>' +
+      '<div class="op-tray" role="group" aria-label="In the medium"></div>' +
+      '<div class="bt-fig op-stagefig"></div><p class="bt-small op-taphint">Tap a gene or the operator to mutate it (the DNA scrolls sideways on a phone). Drag a chip into the cell, or tap it, to change the medium.</p>' +
       '<fieldset class="bt-modes"><legend>Operon</legend>' + MODES.map(function(m){
         var id = 'op-mode-' + m[0];
         return '<div class="bt-radio"><input type="radio" name="op-mode" id="' + id + '" value="' + m[0] + '"' + (m[0] === st.mode ? ' checked' : '') + '><label for="' + id + '">' + esc(m[1]) + '</label></div>';
       }).join('') + '</fieldset>' +
-      '<div class="op-further" hidden>' + data.goingFurther + '</div>' +
+      '<div class="os-chal op-chal" hidden></div>' +
       '<div class="bt-controls"></div>' +
-      '<div class="bt-stage two"><div class="bt-fig"></div><div><div class="bt-tabs" role="group" aria-label="Graph">' +
+      '<div class="op-lower"><div><div class="bt-tabs" role="group" aria-label="Graph">' +
       '<button type="button" class="bt-btn" data-v="time" aria-pressed="true">Time course</button><button type="button" class="bt-btn" data-v="media" aria-pressed="false">Every medium</button>' +
       '</div><div class="bt-plotwrap"></div><p class="bt-small op-key"></p></div></div>' +
       '<dl class="bt-readout op-read"></dl><div class="op-explain"><h3>What is happening</h3><ol></ol></div><p class="bt-summary"></p>' +
@@ -154,19 +172,23 @@
     /* -------------------------------------------------------- figure */
     function rowSvg(s, c, ci, y0){
       var p = [], y = y0 + 112, trp = c.mode === 'trp', k = c.copies[ci], x = s.copies[ci];
-      var box = function(x1, x2, cls, label, dashed){ return '<rect class="op-box ' + cls + (dashed ? ' mut' : '') + '" x="' + x1 + '" y="' + (y - 14) + '" width="' + (x2 - x1) + '" height="28" rx="4"/><text x="' + ((x1 + x2) / 2) + '" y="' + (y + 5) + '" text-anchor="middle">' + label + '</text>'; };
+      var box = function(x1, x2, cls, label, dashed, gene){
+        var b = '<rect class="op-box ' + cls + (dashed ? ' mut' : '') + '" x="' + x1 + '" y="' + (y - 14) + '" width="' + (x2 - x1) + '" height="28" rx="4"/><text x="' + ((x1 + x2) / 2) + '" y="' + (y + 5) + '" text-anchor="middle">' + label + '</text>';
+        if(!gene || qmode === 'quiz') return b;
+        return '<g class="op-tapg" data-gene="' + gene + '" data-ci="' + ci + '" role="button" tabindex="0" aria-label="' + esc(geneTapLabel(gene, k)) + '"><rect class="op-hit" x="' + (x1 - 2) + '" y="' + (y - 20) + '" width="' + (x2 - x1 + 4) + '" height="40" rx="6"/>' + b + '</g>';
+      };
       var title = trp ? 'trp operon' : st.mode === 'mero' ? COPY_NAMES[ci] : 'lac operon';
       p.push('<text class="op-ttl" x="8" y="' + (y0 + 18) + '">' + esc(title) + ': mRNA ' + F(x.rate, 0) + ' (' + lvl(x.rate) + ')</text>');
       p.push('<line class="op-dna" x1="6" y1="' + y + '" x2="594" y2="' + y + '"/>');
       var reg = trp ? (k.R === '-' ? 'trpR⁻' : 'trpR') : (k.I === '-' ? 'lacI⁻' : k.I === 's' ? 'lacIˢ' : 'lacI');
-      p.push(box(8, 84, 'gene reg', reg, trp ? k.R === '-' : k.I !== '+'));
+      p.push(box(8, 84, 'gene reg', reg, trp ? k.R === '-' : k.I !== '+', trp ? 'R' : 'I'));
       p.push('<text class="op-note" x="46" y="' + (y + 32) + '" text-anchor="middle">' + (trp ? (k.R === '-' ? 'no repressor' : 'repressor gene') : (k.I === '-' ? 'no repressor' : k.I === 's' ? 'super-repressor' : 'repressor gene')) + '</text>');
       var pr0 = trp ? 100 : 160, pr1 = trp ? 190 : 225, op1 = pr1 + 56, genes = trp ? ['trpE', 'trpD', 'trpC', 'trpB', 'trpA'] : ['lacZ', 'lacY', 'lacA'];
       if(!trp) p.push(box(100, 160, 'cap', 'CAP site'));
       p.push(box(pr0, pr1, 'prom', 'Promoter'));
-      p.push(box(pr1, op1, 'oper', k.O === 'c' ? 'Oᶜ' : 'Operator', k.O === 'c'));
+      p.push(box(pr1, op1, 'oper', k.O === 'c' ? 'Oᶜ' : 'Operator', k.O === 'c', 'O'));
       var gx = op1, gw = trp ? 60 : [110, 90, 80];
-      genes.forEach(function(g, i){ var w = trp ? gw : gw[i]; var mut = !trp && g === 'lacZ' && k.Z === '-'; p.push(box(gx, gx + w, 'gene', mut ? 'lacZ⁻' : g, mut)); gx += w; });
+      genes.forEach(function(g, i){ var w = trp ? gw : gw[i]; var mut = !trp && g === 'lacZ' && k.Z === '-'; p.push(box(gx, gx + w, 'gene', mut ? 'lacZ⁻' : g, mut, !trp && g === 'lacZ' ? 'Z' : '')); gx += w; });
       var ocx = (pr1 + op1) / 2, pcx = (pr0 + pr1) / 2;
       // CAP–cAMP
       if(!trp && s.cap) p.push('<rect class="op-cap" x="100" y="' + (y - 46) + '" width="60" height="28" rx="12"/><text class="op-tight" x="130" y="' + (y - 28) + '" text-anchor="middle">CAP–cAMP</text>');
@@ -182,11 +204,15 @@
         if(extra) r += '<circle class="op-small" cx="' + (cx + 40) + '" cy="' + (cy - 10) + '" r="9"/><text class="op-note" x="' + (cx + 52) + '" y="' + (cy - 6) + '">' + extra + '</text>';
         return r;
       };
-      var floatX = gx - 150, fy = y0 + 40;
-      if(x.rep === 'bound' || x.rep === 'super') p.push(repShape(ocx, y - 30, 'Repressor', trp ? 'Trp' : '') + (x.rep === 'super' ? '<text class="op-note" x="' + (op1 + 6) + '" y="' + (y - 26) + '">super-repressor: ignores allolactose</text>' : ''));
-      else if(x.rep === 'released') p.push(repShape(floatX, fy, 'Repressor', 'allolactose'));
-      else if(x.rep === 'inactive') p.push(repShape(floatX, fy, 'Repressor', '') + '<text class="op-note" x="' + (floatX + 40) + '" y="' + (fy + 4) + '">no Trp: cannot bind</text>');
-      else if(x.rep === 'cantbind') p.push(repShape(floatX, fy, 'Repressor', '') + '<text class="op-note" x="' + (floatX + 40) + '" y="' + (fy + 4) + '">cannot bind Oᶜ</text>');
+      var floatX = op1 + 40, fy = y0 + 46, onOp = x.rep === 'bound' || x.rep === 'super';
+      // the repressor slides between the operator and its floating spot
+      var prevOn = prevRep[ci], dxy = prevOn == null || prevOn === onOp || x.rep === 'none' ? null : onOp ? [floatX - ocx, fy - (y - 30)] : [ocx - floatX, (y - 30) - fy];
+      prevRep[ci] = x.rep === 'none' ? null : onOp;
+      var wrapRep = function(inner){ return '<g class="op-repg' + (dxy ? ' op-slide' : '') + '"' + (dxy ? ' style="--dx:' + dxy[0].toFixed(0) + 'px;--dy:' + dxy[1].toFixed(0) + 'px"' : '') + '>' + inner + '</g>'; };
+      if(onOp) p.push(wrapRep(repShape(ocx, y - 30, 'Repressor', trp ? 'Trp' : '')) + (x.rep === 'super' ? '<text class="op-note" x="' + (op1 + 6) + '" y="' + (y - 26) + '">super-repressor: ignores allolactose</text>' : ''));
+      else if(x.rep === 'released') p.push(wrapRep(repShape(floatX, fy, 'Repressor', 'allolactose')));
+      else if(x.rep === 'inactive') p.push(wrapRep(repShape(floatX, fy, 'Repressor', '')) + '<text class="op-note" x="' + (floatX + 40) + '" y="' + (fy + 4) + '">no Trp: cannot bind</text>');
+      else if(x.rep === 'cantbind') p.push(wrapRep(repShape(floatX, fy, 'Repressor', '')) + '<text class="op-note" x="' + (floatX + 40) + '" y="' + (fy + 4) + '">cannot bind Oᶜ</text>');
       else p.push('<text class="op-note" x="' + ocx + '" y="' + (y - 26) + '" text-anchor="middle">no repressor</text>');
       // mRNA
       var mx0 = op1, mx1 = gx;
@@ -194,6 +220,9 @@
         var d = 'M' + mx0 + ' ' + (y + 30), n = Math.floor((mx1 - mx0) / 20);
         for(var i = 0; i < n; i++) d += ' q5 -' + (x.rate >= 50 ? 7 : 4) + ' 10 0 t10 0';
         p.push('<path class="op-mrna' + (x.rate >= 50 ? ' hi' : '') + '" d="' + d + '"/>');
+        // ribbons peeling off: how many and how often from the model's rate
+        var nr = x.rate >= 50 ? 4 : 1, dur = x.rate >= 50 ? 2.4 : 4.8;
+        for(var j = 0; j < nr; j++) p.push('<path class="op-ribbon" style="animation-duration:' + dur + 's;animation-delay:-' + (j * dur / nr).toFixed(2) + 's" d="M' + (mx0 + 6) + ' ' + (y + 26) + ' q8 -6 16 0 t16 0 t16 0 t16 0"/>');
       } else p.push('<line class="op-mrna trickle" x1="' + mx0 + '" y1="' + (y + 30) + '" x2="' + (mx0 + 40) + '" y2="' + (y + 30) + '"/>');
       p.push('<text class="op-note" x="' + mx0 + '" y="' + (y + 52) + '">mRNA ' + F(x.rate, 0) + ' (' + lvl(x.rate) + ')' + (trp ? '' : k.Z === '-' ? ', no working enzyme' : '') + '</text>');
       return p.join('');
@@ -203,7 +232,8 @@
       c.copies.forEach(function(k, i){ svg += rowSvg(s, c, i, i * 180); });
       var desc = 'Diagram of the ' + (c.mode === 'trp' ? 'trp' : 'lac') + ' operon, ' + genoText() + ', in ' + mediumText(c) + '. ' +
         s.copies.map(function(x, i){ return (c.copies.length > 1 ? COPY_NAMES[i] + ': ' : '') + 'repressor ' + repWords(x.rep, c) + '; ' + (c.mode === 'lac' ? (x.cap ? 'CAP–cAMP bound; ' : 'no CAP bound; ') : '') + 'RNA polymerase ' + polWords(x.rnap) + '; mRNA ' + F(x.rate, 0) + ' (' + lvl(x.rate) + ')'; }).join('. ') + '.';
-      card.querySelector('.bt-fig').innerHTML = '<svg class="op-fig" viewBox="0 0 600 ' + h + '" role="img" aria-label="' + esc(desc) + '">' + svg + '</svg>';
+      card.querySelector('.op-stagefig').innerHTML = '<svg class="op-fig" viewBox="0 0 600 ' + h + '" role="group" aria-label="' + esc(desc) + '"><rect class="op-cellbg" x="1" y="1" width="598" height="' + (h - 2) + '" rx="22"/>' + svg + '</svg>';
+      tray();
     }
 
     /* -------------------------------------------------------- update */
@@ -259,9 +289,113 @@
         }), 'Your runs at steady state (' + runs.length + ')') : '<p class="bt-small">No runs yet. Use Run one trial or Run every medium.</p>') +
         T.dataTable(['Time (min)', 'mRNA (relative)', enzName + ' (relative)'], trows, 'Time course: ' + esc(genoText()) + ', ' + esc(mediumText(cond(startOf()))) + ' to ' + esc(mediumText(c)) + ' at 0 min');
     }
+    /* ------------------------------------- tray, taps and drags */
+    var prevRep = [], qmode = 'explore';
+    var trayEl = card.querySelector('.op-tray'), figEl = card.querySelector('.op-stagefig');
+    function geneTapLabel(g, k){
+      var defs = isTrp() ? data.trpGenes : data.lacGenes, def = defs.filter(function(x){ return x.id === g; })[0];
+      var cur = def.options.filter(function(o){ return o.value === k[g]; })[0];
+      return def.label + ': ' + cur.label + '. Tap to change.';
+    }
+    function cycleGene(g, ci){
+      var defs = isTrp() ? data.trpGenes : data.lacGenes, def = defs.filter(function(x){ return x.id === g; })[0], k = copies()[ci];
+      var i = def.options.map(function(o){ return o.value; }).indexOf(k[g]);
+      k[g] = def.options[(i + 1) % def.options.length].value;
+      controls(); update(true);
+      card.querySelector('.bt-runnote').textContent = (copies().length > 1 ? COPY_NAMES[ci] + ': ' : '') + def.options[(i + 1) % def.options.length].label + '.';
+      var again = figEl.querySelector('[data-gene="' + g + '"][data-ci="' + ci + '"]'); if(again) again.focus();
+    }
+    figEl.addEventListener('click', function(e){ var g = e.target.closest && e.target.closest('.op-tapg'); if(g) cycleGene(g.getAttribute('data-gene'), +g.getAttribute('data-ci')); });
+    figEl.addEventListener('keydown', function(e){ var g = e.target.closest && e.target.closest('.op-tapg'); if(g && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); cycleGene(g.getAttribute('data-gene'), +g.getAttribute('data-ci')); } });
+    function chips(){ return isTrp() ? [['trp', 'Tryptophan', 'Trp']] : [['lactose', 'Lactose', 'Lac'], ['glucose', 'Glucose', 'Glc']]; }
+    function tray(){
+      if(qmode === 'quiz'){ trayEl.hidden = true; return; }
+      trayEl.hidden = false;
+      trayEl.innerHTML = '<span class="op-tray-h">Medium:</span>' + chips().map(function(c){ return '<button type="button" class="op-chip' + (st[c[0]] ? ' in' : '') + '" data-chip="' + c[0] + '" aria-pressed="' + !!st[c[0]] + '"><span class="op-mol" aria-hidden="true">' + c[2] + '</span>' + c[1] + (st[c[0]] ? ' ✓' : '') + '</button>'; }).join('');
+    }
+    function setChip(k, on){
+      if(!!st[k] === on) return;
+      st[k] = on; controls(); update(true);
+      var c = chips().filter(function(x){ return x[0] === k; })[0];
+      card.querySelector('.bt-runnote').textContent = c[1] + (on ? ' added' : ' removed') + '. ' + card.querySelector('.op-explain li').textContent;
+    }
+    var drag = null;
+    trayEl.addEventListener('pointerdown', function(e){
+      var b = e.target.closest('.op-chip'); if(!b) return;
+      drag = { k: b.getAttribute('data-chip'), x: e.clientX, y: e.clientY, moved: false, ghost: null, b: b };
+    });
+    window.addEventListener('pointermove', function(e){
+      if(!drag) return;
+      if(!drag.moved && Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) < 8) return;
+      if(!drag.moved){ drag.moved = true; drag.ghost = drag.b.cloneNode(true); drag.ghost.className += ' op-ghost'; document.body.appendChild(drag.ghost); try{ drag.b.releasePointerCapture(e.pointerId); }catch(er){} }
+      drag.ghost.style.left = (e.clientX - 40) + 'px'; drag.ghost.style.top = (e.clientY - 22) + 'px';
+      var r = figEl.getBoundingClientRect(), over = e.clientX > r.left && e.clientX < r.right && e.clientY > r.top && e.clientY < r.bottom;
+      figEl.classList.toggle('op-dropok', over);
+      e.preventDefault();
+    }, { passive: false });
+    window.addEventListener('pointerup', function(e){
+      if(!drag) return;
+      var d = drag; drag = null;
+      figEl.classList.remove('op-dropok');
+      if(d.ghost) d.ghost.remove();
+      if(!d.moved){ setChip(d.k, !st[d.k]); return; }
+      var r = figEl.getBoundingClientRect(), over = e.clientX > r.left && e.clientX < r.right && e.clientY > r.top && e.clientY < r.bottom;
+      setChip(d.k, over);
+    });
+    trayEl.addEventListener('click', function(e){ var b = e.target.closest('.op-chip'); if(b && e.detail === 0) setChip(b.getAttribute('data-chip'), !st[b.getAttribute('data-chip')]); });
+
+    /* -------------------------------------- which mutant is this? */
+    var quizBox = card.querySelector('.op-chal'), qN = 0, qSeed = 1 + Math.floor(Math.random() * 99999), saveCopies = null;
+    var LAC_STRAINS = [['wt', 'Wild type', { I: '+', O: '+', Z: '+' }], ['lacI-', 'lacI⁻ (no working repressor)', { I: '-', O: '+', Z: '+' }], ['lacIs', 'lacIˢ (super-repressor)', { I: 's', O: '+', Z: '+' }], ['Oc', 'Oᶜ (operator cannot bind repressor)', { I: '+', O: 'c', Z: '+' }], ['lacZ-', 'lacZ⁻ (no working β-galactosidase)', { I: '+', O: '+', Z: '-' }]];
+    var TRP_STRAINS = [['trp-wt', 'Wild type', { R: '+', O: '+' }], ['trpR-', 'trpR⁻ (no repressor)', { R: '-', O: '+' }], ['trp-Oc', 'Oᶜ (operator cannot bind repressor)', { R: '+', O: 'c' }]];
+    function newQuiz(){
+      if(st.mode === 'mero'){ card.querySelector('#op-mode-lac').click(); return; }
+      var g = M.rng(qSeed + 7919 * qN), list = isTrp() ? TRP_STRAINS : LAC_STRAINS, pick = list[(qN + g.int(0, list.length - 1)) % list.length]; qN++;
+      var media = starts(), enzName = isTrp() ? 'trp mRNA' : 'β-galactosidase';
+      var vals = media.map(function(m){ var c = cond(m); c.copies = [pick[2]]; var s = O.state(P, c); return isTrp() ? { m: s.m, e: s.m } : { m: s.m, e: s.e }; });
+      var tbl = T.dataTable(['Medium', 'mRNA (relative)', enzName + ' (relative)'], media.map(function(m, i){ return [esc(m.label), F(vals[i].m, 0), F(vals[i].e, 0)]; }), 'Strain X at steady state (wild type fully on = 100)');
+      if(isTrp()) tbl = T.dataTable(['Medium', 'trp mRNA (relative)'], media.map(function(m, i){ return [esc(m.label), F(vals[i].m, 0)]; }), 'Strain X at steady state (wild type fully on = 100)');
+      var id = 'opq' + qN;
+      quizBox.innerHTML = '<p class="os-chal-q" tabindex="-1"><b>Strain X (' + qN + ').</b> Each medium was kept until the levels stopped changing. Which strain is it?</p>' + tbl +
+        '<fieldset class="os-ask"><legend>Strain X is…</legend>' + list.map(function(x, i){ return '<div class="bt-radio"><input type="radio" name="' + id + '" id="' + id + i + '" value="' + x[0] + '"><label for="' + id + i + '">' + esc(x[1]) + '</label></div>'; }).join('') + '</fieldset>' +
+        '<div class="bt-actions"><button type="button" class="btn-press sm op-qcheck">Check</button></div><div class="os-chal-fb" role="status" aria-live="polite"></div>';
+      // the stage is hidden until the answer, then shows strain X
+      quizBox.querySelector('.op-qcheck').addEventListener('click', function(){
+        var a = quizBox.querySelector('input:checked'), fb = quizBox.querySelector('.os-chal-fb');
+        if(!a){ fb.textContent = 'Pick a strain first.'; return; }
+        quizBox.querySelectorAll('input,button').forEach(function(x){ x.disabled = true; });
+        var ok = a.value === pick[0];
+        var why = { wt: 'Normal control: on only with lactose; high only without glucose (CAP). The tiny level in glucose with no lactose is the leak past the repressor.',
+          'lacI-': 'On even with no lactose: there is no repressor to block RNA polymerase. Glucose still lowers it (CAP still matters).',
+          lacIs: 'Never on, even in lactose: the super-repressor cannot bind allolactose, so it never leaves the operator.',
+          Oc: 'On even with no lactose, like lacI⁻: the repressor is made but cannot grip the changed operator. Only a merodiploid (going further) tells Oᶜ from lacI⁻ (cis against trans).',
+          'lacZ-': 'mRNA is made normally (switching works), but no working β-galactosidase: the mutation is in the enzyme gene, not the switch.',
+          'trp-wt': 'Normal: tryptophan binds the repressor as a corepressor, so it binds the operator and the operon goes off.',
+          'trpR-': 'On even with tryptophan: no repressor, so nothing can block RNA polymerase.',
+          'trp-Oc': 'On even with tryptophan: the repressor–tryptophan complex cannot bind the changed operator.' }[pick[0]];
+        if(pick[0] === 'lacI-' || pick[0] === 'Oc') ok = a.value === 'lacI-' || a.value === 'Oc';
+        fb.innerHTML = '<p><span class="bio-mark ' + (ok ? 'ok">Right' : 'no">Not quite') + '</span> It is ' + esc(pick[1]) + '. ' + esc(why) + (pick[0] === 'lacI-' || pick[0] === 'Oc' ? ' (lacI⁻ and Oᶜ both count here: these levels cannot tell them apart.)' : '') + '</p><p class="bt-small">The figure now shows strain X: tap the chips to see it in each medium.</p><div class="bt-actions"><button type="button" class="btn-press sm os-next">Next strain</button>' + T.report(SLUG + ':mutant-' + pick[0]) + '</div>';
+        copies()[0] = Object.assign({}, pick[2]); qmodeShow(true);
+        fb.querySelector('.os-next').addEventListener('click', function(){ qmodeShow(false); newQuiz(); quizBox.querySelector('.os-chal-q').focus(); });
+        T.record(SLUG, [{ id: SLUG + ':mutant-' + pick[0] + ':a', correct: ok, topic: data.topic, level: 'analyze', diff: 2, group: 'mutant' }]);
+      });
+      copies()[0] = Object.assign({}, isTrp() ? WT_TRP : WT_LAC); qmodeShow(false);
+    }
+    function qmodeShow(reveal){ qmode = reveal ? 'reveal' : 'quiz'; figEl.hidden = !reveal; controls(); update(true); if(reveal) tray(); }
+    function setQ(m){
+      card.querySelectorAll('[data-q]').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-q') === m)); });
+      var q = m === 'quiz';
+      quizBox.hidden = !q;
+      ['.bt-controls', '.op-lower', '.bt-readout', '.op-explain', '.bt-summary', '.bt-buttons', '.bt-data', '.bt-runnote', '.op-taphint'].forEach(function(sel){ var el = card.querySelector(sel); if(el) el.hidden = q; });
+      if(q){ saveCopies = { lac: st.lac.map(function(k){ return Object.assign({}, k); }), trpG: st.trpG.map(function(k){ return Object.assign({}, k); }) }; qmode = 'quiz'; newQuiz(); }
+      else { qmode = 'explore'; figEl.hidden = false; if(saveCopies){ st.lac = saveCopies.lac; st.trpG = saveCopies.trpG; } controls(); update(true); }
+    }
+    card.querySelectorAll('[data-q]').forEach(function(b){ b.addEventListener('click', function(){ if(b.getAttribute('aria-pressed') !== 'true') setQ(b.getAttribute('data-q')); }); });
+
     controls();
     update(true);
     T.questions(app.querySelector('.bt-qs'), data.questions, data.stimuli, SLUG);
     if(data.frq) T.frq(app, data.frq, SLUG);
+    if(/^#mutant/.test(location.hash)) setQ('quiz');
   });
 })();
