@@ -382,13 +382,14 @@
     var W = 360, H = 150, x0 = 46, x1 = 314, cy = 72, svg = S('svg', { viewBox: '0 0 ' + W + ' ' + H });
     var be = baseEnv || env;
     var rr = pic.r ? env[pic.r] : pic.rRes ? Math.pow(be[pic.rRes] / env[pic.rRes], 0.25) : 1;
-    var rr0 = pic.r ? 1 : 1;
+    var rr0 = 1;
     rr = clamp(isFinite(rr) ? rr : 1, 0.08, 3);
     var R0 = 22, rad = clamp(R0 * rr, 2.5, 50);
     // normal outline for comparison
     if(Math.abs(rr - 1) > 0.02) svg.appendChild(S('rect', { x: x0, y: cy - R0, width: x1 - x0, height: 2 * R0, rx: 4, 'class': 'cp-ghost' }));
     svg.appendChild(S('rect', { x: x0, y: cy - rad, width: x1 - x0, height: 2 * rad, rx: Math.min(4, rad), 'class': 'cp-tube' }));
-    var flow = env[pic.flow], bflow = be[pic.flow] || 1;
+    // a radius picture compares with the flow before the change (baseFlow), as its width does
+    var flow = env[pic.flow], bflow = (pic.r && pic.baseFlow ? env[pic.baseFlow] : be[pic.flow]) || 1;
     // particle speed: velocity = flow / area, relative to the default
     var speed = clamp((flow / bflow) / (rr * rr / (rr0 * rr0)), 0, 40);
     var g = S('g', { 'clip-path': null }); svg.appendChild(g);
@@ -422,7 +423,8 @@
     if(rtxt) svg.appendChild(S('text', { x: (x0 + x1) / 2, y: cy - Math.max(rad, R0) - 8, 'text-anchor': 'middle', 'class': 'cp-t' }, rtxt));
     var cap = (pic.pin && pic.pout ? 'Pressure falls from ' + val(c, env, pic.pin) + ' to ' + val(c, env, pic.pout) + ' mm Hg along the tube. ' : '') +
       (pic.r ? 'The radius is ' + Math.round(rr * 100) + '% of before, so resistance is ' + fmt(1 / Math.pow(rr, 4), 2) + ' times and flow ' + fmt(Math.pow(rr, 4), 2) + ' times what it was. ' : '') +
-      'Flow: <b>' + val(c, env, pic.flow) + ' ' + esc(pic.flowUnit) + '</b>. The dots move at flow ÷ cross-section, so a narrow tube carries its smaller flow faster through it.';
+      'Flow: <b>' + val(c, env, pic.flow) + ' ' + esc(pic.flowUnit) + '</b>. The dots move at flow ÷ cross-section, the average speed' + (Math.abs(speed - 1) > 0.02 ? ': ' + fmt(speed, 2) + ' times the starting speed. ' : '. ') +
+      'Narrowing a tube speeds up a flow that is held fixed, but with the pressure difference held, flow falls with r⁴ and the average speed falls with r².';
     return { svg: svg, cap: cap };
   }
   function wave(c, env, pic){

@@ -1536,6 +1536,7 @@
        },
        {
         "id": "ek-hk",
+        "from": "none",
         "cls": "lo",
         "dash": true,
         "curve": "smooth",
@@ -6705,6 +6706,7 @@
       "series": [
        {
         "id": "ipp-ptx",
+        "from": "intrapleural",
         "panel": 1,
         "cls": "hi",
         "dash": true,
@@ -7704,6 +7706,7 @@
       "series": [
        {
         "id": "albuterol",
+        "from": "patient-a",
         "cls": "shape",
         "dash": true,
         "curve": "smooth",
@@ -10064,6 +10067,7 @@
       "series": [
        {
         "id": "demy",
+        "from": "mid",
         "cls": "hi",
         "dash": true,
         "pts": [
@@ -11017,6 +11021,7 @@
       "series": [
        {
         "id": "cut",
+        "from": "stage",
         "cls": "hi",
         "dash": true,
         "pts": [
@@ -13038,6 +13043,7 @@
           "series": [
             {
               "id": "fluid",
+              "from": "healthy",
               "cls": "accent",
               "dash": true,
               "pts": [
@@ -15254,6 +15260,7 @@
       "series": [
        {
         "id": "new-igg",
+        "from": "igg",
         "cls": "hi",
         "dash": true,
         "curve": "smooth",
@@ -16814,6 +16821,7 @@
       "series": [
        {
         "id": "tablets",
+        "from": "low",
         "cls": "o2",
         "dash": true,
         "curve": "smooth",
@@ -16883,6 +16891,7 @@
       "series": [
        {
         "id": "antibiotic",
+        "from": "low",
         "cls": "o2",
         "dash": true,
         "curve": "smooth",
@@ -17204,6 +17213,7 @@
       "series": [
        {
         "id": "blocked",
+        "from": "with",
         "cls": "accent",
         "dash": true,
         "pts": [
@@ -17260,6 +17270,7 @@
       "series": [
        {
         "id": "symp",
+        "from": "with",
         "cls": "symp",
         "dash": true,
         "curve": "smooth",
@@ -17684,6 +17695,7 @@
        },
        {
         "id": "excr-drug",
+        "from": "excreted",
         "cls": "accent",
         "dash": true,
         "curve": "smooth",
@@ -18089,6 +18101,7 @@
       "series": [
        {
         "id": "low-urea",
+        "from": "high-adh",
         "cls": "accent",
         "dash": true,
         "pts": [
@@ -33492,6 +33505,7 @@
       "series": [
        {
         "id": "sm2",
+        "from": "sm",
         "cls": "hi",
         "dash": true,
         "pts": [

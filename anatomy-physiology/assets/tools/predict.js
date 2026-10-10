@@ -127,7 +127,7 @@
     app.innerHTML =
       '<section class="pc-panel" aria-labelledby="pc-setup-h">' +
         '<h2 id="pc-setup-h" class="pc-h2">Choose your scenarios</h2>' +
-        '<p class="pc-intro">Each scenario changes one thing in the body. Predict whether each variable <b>increases</b>, <b>decreases</b> or <b>does not change</b>. Then run it: the gauges move as the chain of causes plays out, step by step.</p>' +
+        '<p class="pc-intro">Each scenario changes one thing in the body. Predict whether each variable <b>increases</b>, <b>decreases</b> or <b>does not change</b>. Then run it: the gauges move as the chain of causes plays out, step by step. The steps follow cause to effect, not a clock: two branches can happen at the same time.</p>' +
         '<div class="pc-filters">' +
           '<label class="pc-field"><span>Chapter</span><select id="pc-chapter"><option value="">All chapters</option>' +
             chs.map(function(c){ return '<option value="' + esc(c) + '"' + (c === filters.chapter ? ' selected' : '') + '>' + esc(chapterOf(c).title) + '</option>'; }).join('') + '</select></label>' +
@@ -397,19 +397,24 @@
     g.querySelector('.pc-gauge-s').innerHTML = '<span class="pc-mark ' + (ok ? 'ok' : 'no') + '">' + (ok ? '✓' : '✗') + '</span> ' + d.glyph + ' ' + esc(d.label.toLowerCase());
   }
   function motionOff(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
-  /* The stage's steps in causal order: depth by depth through every chain. */
+  /* The stage's steps in causal order: each variable's chain read from its
+     cause down, one variable after another (a step two chains share appears
+     once). The feed draws a "causes" arrow only where the line above really
+     is the cause; a step that branches from an earlier line names its cause
+     instead. The order is a chain of causes, not a timeline. */
   function chainOrder(st){
-    var shown = {}, order = [], max = 0;
-    st.variables.forEach(function(v){ max = Math.max(max, v.chain.length); });
-    for(var d = 0; d < max; d++) st.variables.forEach(function(v){
-      var key = v.chain[d];
-      if(key && !shown[key]){ shown[key] = 1; order.push(key); }
+    var shown = {}, order = [], from = {};
+    st.variables.forEach(function(v){
+      v.chain.forEach(function(key, i){
+        if(!key || shown[key]) return;
+        shown[key] = 1; order.push(key); from[key] = i ? v.chain[i - 1] : '';
+      });
     });
-    return order;
+    return { keys: order, from: from };
   }
   function runChain(box, st, picks, reveals, done){
     var feed = box.querySelector('.pc-feed'), live = box.querySelector('.pc-feed-live');
-    var order = chainOrder(st), seen = {}, resolved = {}, quick = motionOff(), t = 0, gap = 750;
+    var co = chainOrder(st), order = co.keys, seen = {}, resolved = {}, quick = motionOff(), t = 0, gap = 750;
     feed.hidden = false;
     feed.innerHTML = '<li class="pc-f-root"><span class="pc-f-node pc-root">' + esc(st.start) + '</span></li>';
     box.classList.add('is-running');
@@ -438,7 +443,8 @@
       var key = order[n], li = document.createElement('li');
       seen[key] = 1;
       li.className = 'pc-f-step';
-      li.innerHTML = arrow() + '<span class="pc-f-node">' + esc(st.steps[key]) + '</span>';
+      var cause = co.from[key], prev = n ? order[n - 1] : '';
+      li.innerHTML = (cause === prev ? arrow() : '<span class="pc-f-from anp-small">From ' + esc(cause ? st.steps[cause] : st.start) + ':</span> ') + '<span class="pc-f-node">' + esc(st.steps[key]) + '</span>';
       feed.appendChild(li);
       if(!quick) live.textContent = st.steps[key] + '.';
       settle();

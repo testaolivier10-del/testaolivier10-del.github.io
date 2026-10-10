@@ -40,3 +40,15 @@ test('the published tool data carries the trace for built pathways', () => {
     assert.ok(p.trace && p.trace.src && p.trace.boxes.length, `${id}: published trace`);
   }
 });
+
+test('"also" labels are real labels on the figure, one list per step', () => {
+  for (const [id, t] of Object.entries(T)) {
+    if (!t.also) continue;
+    assert.equal(t.also.length, t.labels.length, `${id}: one also list per step`);
+    const labels = new Set(read(`anatomy-physiology/data/labels/${t.figure}.json`).labels.filter(l => !l.cover).map(l => l.id));
+    t.also.forEach((ls, i) => ls.forEach(l => {
+      assert.ok(labels.has(l), `${id}: ${l} is not a label on ${t.figure}`);
+      assert.ok(!t.labels.includes(l) || t.labels[i] === l, `${id}: ${l} is another step's own label`);
+    }));
+  }
+});

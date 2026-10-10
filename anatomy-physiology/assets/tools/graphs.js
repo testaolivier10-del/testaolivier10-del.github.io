@@ -70,7 +70,10 @@
     var k = os.panel || 0, base = (g.panels[k] && g.panels[k].series) || [];
     if(!base.length) return null;
     var i;
-    if(os.from) for(i = 0; i < base.length; i++) if(base[i].id === os.from) return base[i];
+    // An explicit "from" wins; "from": "none" (or an id not on the panel)
+    // means the overlay replaces no curve (a new line, such as a moved
+    // equilibrium potential), so it is read on its own row.
+    if(os.from){ for(i = 0; i < base.length; i++) if(base[i].id === os.from) return base[i]; return null; }
     for(i = 0; i < base.length; i++) if(os.id && os.id.indexOf(base[i].id + '-') === 0) return base[i];
     if(base.length === 1) return base[0];
     var fo = seriesFn(os), best = null, bd = Infinity;
