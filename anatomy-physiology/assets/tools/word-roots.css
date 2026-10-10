@@ -151,3 +151,5 @@
   --wr-root:var(--anp-aff, #E69F00);   --wr-root-fill:var(--anp-aff-fill, #F8E3B8);
   --wr-suffix:var(--anp-para, #009E73); --wr-suffix-fill:var(--anp-para-fill, #C4E8DC);}
 .wr-ls .ls-sheet .wr-filter select{min-height:44px;}
+.wr-ls .wr-seg-k{color:var(--ink);}
+.wr-ls .wr-ls-steps{display:flex;flex-direction:column;gap:12px;}

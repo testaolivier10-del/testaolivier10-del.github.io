@@ -450,7 +450,11 @@
     ST.put('dock', dock, { first: true });
     var ol = card.querySelector('.wr-steps') || ST.dock.querySelector('.wr-steps');
     if(ol){
-      steps = window.LevlStudio.stepper(ol, { items: '.wr-step', label: 'Step', submit: ST.dock.querySelector('.wr-actions'), done: function(){ return false; } });
+      // The stepper adds its own rows; they go in a wrapper so the list holds only its items.
+      var wrap = document.createElement('div');
+      wrap.className = 'wr-ls-steps';
+      wrap.appendChild(ol); ST.put('dock', wrap, { first: true });
+      steps = window.LevlStudio.stepper(wrap, { items: '.wr-step', label: 'Step', submit: ST.dock.querySelector('.wr-actions'), done: function(){ return false; } });
       ol.addEventListener('change', function(e){
         if(!e.target.matches('select') || state.done) return;
         var li = e.target.closest('.wr-step'), all = [].slice.call(ol.querySelectorAll('.wr-step')), k = all.indexOf(li);
