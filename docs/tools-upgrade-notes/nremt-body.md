@@ -20,7 +20,7 @@
   spine), and every site is placed from landmarks measured on the skeleton (rib ends -> ICS, clavicle midpoints ->
   MCL, 7th rib lateral point -> midaxillary line, scapulae -> posterior sites). Data: `assets/body-figs/chest.js`.
 - **Owner check:** sound-by-site is a teaching approximation (relative loudness, not measured); the lung strip is
-  schematic because the Wikimedia clips carry no inspiration/expiration markers (the page says so).
+  a static typical breath with no playhead (see Simplify pass 2026-10-10 for what each clip measured).
 - Tests: `scripts/test/nremt-sound-stage.test.mjs`.
 
 ## Body map: Burns / Rule of Nines (`nremt/body-map.html`, `assets/burns.js`)
@@ -43,7 +43,72 @@
 - Tests: `scripts/test/nremt-burns.test.mjs` (totals 100%, adult and child values, every quiz answer, every paint
   target reachable).
 
+## Simplify pass (2026-10-10): sound trainer accuracy
+
+### Sites: where each lung sound is played and what the page says elsewhere
+- Each finding now opens at its classic best site instead of at no site: stridor at the trachea; wheeze at the right
+  lung apex (heard over every lung field); crackles at the right posterior base (front/back view switches to it).
+  Heart findings open at their BEST site (mitral, or pulmonic for split S2, aortic for the systolic murmur, Erb for
+  the diastolic murmur).
+- `ASSESSED` lists where each lung finding is actually listened for (stridor: trachea only; wheeze and crackles:
+  the 8 lung-field sites; heart findings: the 5 heart sites). Tapping anywhere else says so plainly, e.g. "Stridor
+  is heard best over the trachea; here it is faint and transmitted." The strip no longer says "Stridor here"; it
+  says "usually breathing in".
+- Transmitted loudness lowered so it reads as transmitted (LUNG_GAIN): stridor heart sites .55 -> .4, upper fields
+  .6/.5 -> .4, lower .3 -> .2; wheeze heart sites .8 -> .6, trachea .6 -> .5; crackles heart sites .45 -> .3,
+  trachea .2 -> .15. Best sites unchanged (all still 1).
+- "Where to listen" keys checked against this: stridor = trachea; S1 = mitral, tricuspid; S2 = aortic, pulmonic;
+  S3, S4 = mitral; split = pulmonic; AS = aortic; edema = 4 bases; apices = 4 apex sites. All are sites where the
+  sound is assessed (new test). No key changed.
+
+### Lung recordings: what was measured, per clip
+Decoded with the Web Audio API in a browser (the container cannot reach Wikimedia), from
+`Special:FilePath/<file>`; envelope = RMS of the 150-1500 Hz band in 50 ms and 100 ms frames, plus per-frame
+spectral peak and flatness (tonal = flatness < 0.05). Listening check by the numbers: burst = tonal or loud run,
+gap = > 15 dB down.
+- **Stridor_NP_OGG_2.ogg** (15.37 s, 44.1 kHz mono): 0.0-0.55 s silent lead-in; tonal bursts (peak 300-520 Hz)
+  at 0.60-1.80, 2.45-3.85, 4.35-5.60, 5.90-6.50, 6.70-8.55, 8.90-10.15, 10.75-11.90, 12.15-13.35, 13.65-14.95 s;
+  gaps of 0.2-0.6 s (e.g. 1.80-2.40, 3.85-4.35). Envelope autocorrelation peak at 1.80 s, so about 33
+  breaths/min (a child's rate). Several bursts have a short dip mid-burst (1.20, 5.65, 12.45 s), which may be the
+  in/out turn, but it is not consistent and nothing in the audio says which side is inspiration.
+- **Wheeze2O.ogg** (8.46 s): tonal bursts (peak 345-410 Hz) at 0.10-0.80, 2.85-3.75, 5.15-6.20, 7.55-8.35 s,
+  between them quieter non-tonal breath noise; autocorrelation peak 2.5-2.6 s (about 24/min). Burst length about
+  0.7-1.0 s of a 2.5 s cycle.
+- **Crackles_pneumoniaO.ogg** (13.95 s): no clean silent gaps; louder crackle clusters at about 1.25-2.05,
+  3.40-4.15, 5.85-6.80, 8.70-9.50, 10.85-11.60, 13.30-13.85 s. The clip is a loop: the 100 ms envelope repeats
+  with a 7.5 s period (mean difference 2.8 dB, far below its 16 dB range), so it holds about 3 distinct cycles.
+- **Decision:** the cycles are measurable, but none of the clips has an airflow or phase marker, so mapping a burst
+  to inspiration or expiration would be a guess (the textbook rule would assign it, which is circular). So no clip
+  gets a synced playhead or a measured curve. The strip is a static typical breath, labelled "A typical breath,
+  not traced from this recording", with no moving line, and "Why?" states what was measured in that clip
+  (`timingNote` in `sound-trainer.html`). The old line sweeping a 4 s schematic breath over a clip with a 1.8 s or
+  2.5 s cycle is gone.
+
+### Heart sounds
+- Re-checked: `heartEvents()` is still the single timing table; `renderHeartData()` schedules from it and the strip
+  draws and labels from it (S1, S2 or A2/P2, S3, S4, murmur spans). New test: at every heart site's mix, every
+  event above 0.2 relative loudness has its peak right after its scheduled time in the audio buffer.
+- Fixed a mismatch: with no site chosen, Play used the mitral mix while the strip was drawn unmixed. Now both use
+  the same mix (a site's, or none). The name-it feedback strip is now drawn unmixed, as that quiz plays it (was
+  drawn at the mitral mix). Labels unchanged and correct (A2 before P2; S3 after S2; S4 before S1).
+
+### Layout
+- Landing: one sentence, then Explore | Test yourself, then the chest with "Tap a glowing spot to listen there";
+  each finding is preselected at its best site with Play next to it. Test yourself shows Name the sound / Where to
+  listen / When in the beat. Volume, Compare and credits are under More options; site notes, phase text and
+  measurements under "Why?". "Every sound, described" (12 cards and the recordings note) is one disclosure, opened
+  automatically by `#snd-<id>`. All modes, deep links (`?mode=`, `&q=`, `#snd-`) and records unchanged.
+
 ## For accuracy review
+
+Simplify pass (2026-10-10), sound trainer:
+- Default sites: stridor trachea, wheeze right apex, crackles right posterior base.
+- Sites where each lung sound is "assessed" (stridor: trachea only; wheeze, crackles: all lung fields) and the
+  sentence shown elsewhere ("Stridor is heard best over the trachea; here it is faint and transmitted").
+- Transmitted-loudness values lowered (listed above); best sites unchanged.
+- Per-clip measured breath rates (stridor about 33/min, wheeze about 24/min, crackles bursts every 2-2.8 s, clip
+  loops at 7.5 s) shown in Why?; no phase is claimed for any clip.
+
 
 Burns (all in `nremt/assets/burns.js`):
 - Adult: head and neck 9 (front 4.5, back 4.5); each arm 9 (4.5 front, 4.5 back); anterior trunk 18 (chest 9,
@@ -56,8 +121,6 @@ Burns (all in `nremt/assets/burns.js`):
 - Quiz answers: arm + anterior trunk 27; both arms 18; left leg + back 36; head + left arm 18; front of both legs 18;
   genitals + front of both legs 19; lower back + back of both legs 27; child head 18; child head + both legs 45;
   child right arm + anterior trunk 27; child right leg 13.5.
-
-Sound trainer:
 
 Sound trainer (all in `nremt/assets/sound-stage.js` unless noted):
 - Sites: aortic = 2nd ICS right sternal border; pulmonic = 2nd ICS left sternal border; Erb's point = 3rd ICS left
