@@ -160,7 +160,7 @@
       '<article class="fl-card" aria-labelledby="' + p + '-t">' +
         '<div class="fl-meta">' + topicLink + '</div>' +
         '<h2 class="fl-title" id="' + p + '-t" tabindex="-1">' + esc(l.title) + '</h2>' +
-        '<div class="fl-tabs" role="tablist" aria-label="Mode">' +
+        '<div class="fl-tabs kt-seg" role="tablist" aria-label="Mode">' +
           '<button type="button" role="tab" id="' + p + '-tab-live" aria-controls="' + p + '-live" aria-selected="true">Watch it work</button>' +
           '<button type="button" role="tab" id="' + p + '-tab-test" aria-controls="' + p + '-test" aria-selected="false" tabindex="-1">Test yourself</button>' +
         '</div>' +
@@ -170,7 +170,8 @@
         '<ol class="fl-stepper" aria-label="Steps"><li class="is-on" data-step="1">Build</li><li data-step="2">Classify</li><li data-step="3">Predict a failure</li></ol>' +
         '<section class="fl-build" aria-labelledby="' + p + '-b">' +
           '<h3 class="fl-h3" id="' + p + '-b">Step 1: build the loop</h3>' +
-          '<p class="anp-small fl-how">Choose a slot, then the card that belongs in it. The next empty slot is chosen for you. Some cards belong in no slot. Tap a filled slot to empty it.</p>' +
+          '<p class="kt-first fl-how">Tap a card to put it in the highlighted slot.</p>' +
+          (kit() ? kit().why('<p>Choose a slot, then the card that belongs in it. The next empty slot is chosen for you. Some cards belong in no slot. Tap a filled slot to empty it.</p>', { label: 'How it works' }) : '') +
           '<div class="fl-board">' +
             '<ol class="fl-slots">' + SLOTS.map(function(k, i){
               return '<li class="fl-slotrow" data-slot="' + k + '"><button type="button" class="fl-slot fl-s-' + k + '" data-i="' + i + '" aria-pressed="false">' +
@@ -293,6 +294,7 @@
       if(window.LevlSound && window.LevlSound.answer) try{ window.LevlSound.answer(right === SLOTS.length); }catch(e){}
       pool.parentNode.hidden = true;
       app.querySelector('.fl-how').hidden = true;
+      var hw = app.querySelector('.fl-build > .kt-why'); if(hw) hw.hidden = true;
       app.querySelector('.fl-actions').hidden = true;
       live.textContent = right + ' of 7 slots right.';
       live.classList.add('fl-live-score');
@@ -421,7 +423,7 @@
     var lv = l.live, pos = l.kind === 'positive';
     var cuts = ['sensor', 'afferent', 'control', 'efferent', 'effector'];
     if(cuts.indexOf(l.failure.part) < 0) cuts = (l.failure.part === 'stimulus' ? [l.failure.part] : []).concat(cuts).concat(l.failure.part === 'response' ? [l.failure.part] : []);
-    return '<p class="fl-live-how anp-small">' + (lv.shift ? 'Raise the set point, or drag' : 'Drag') + ' the marker off the ' + (pos ? 'starting level' : 'set point') + ' (or press the button) and watch each part of the loop answer.</p>' +
+    return '<p class="fl-live-how kt-first">' + (lv.shift ? esc(lv.shift.label) + ', or drag' : 'Drag') + ' the marker off the ' + (pos ? 'starting level' : 'set point') + ', or press Stimulus, and watch each part answer.</p>' +
       '<figure class="anp-fig fl-gaugefig">' + gaugeSvg(l, p) + '</figure>' +
       '<div class="fl-live-btns">' +
         (lv.shift ? '<button type="button" class="btn-press sm fl-shift">' + esc(lv.shift.label) + '</button>' : '') +
@@ -430,12 +432,12 @@
       '</div>' +
       '<p class="fl-now" aria-hidden="true"></p>' +
       '<figure class="anp-fig fl-ringfig">' + loopSvg(l, true) + '</figure>' +
-      '<div class="fl-cut"><h3 class="fl-h3" id="' + p + '-cut">Cut a part</h3>' +
+      '<details class="kt-more fl-cut"><summary id="' + p + '-cut">Cut a part: what if one breaks?</summary><div class="kt-more-b">' +
         '<p class="anp-small">Break one part, then push the variable again.</p>' +
         '<div class="fl-cutrow" role="group" aria-labelledby="' + p + '-cut">' +
           '<button type="button" class="fl-cutb" data-cut="" aria-pressed="true">Nothing cut</button>' +
           cuts.map(function(k){ return '<button type="button" class="fl-cutb fl-cutb-' + k + '" data-cut="' + k + '" aria-pressed="false">' + esc(LABELS[k]) + (k === l.failure.part ? ' <span class="fl-case">a case</span>' : '') + '</button>'; }).join('') +
-        '</div><div class="fl-cutfb" hidden></div></div>' +
+        '</div><div class="fl-cutfb" hidden></div>' + (partner(l) ? '<p class="anp-small fl-other">' + (lv.dir === 'up' ? 'A fall' : 'A rise') + ' is answered by another loop: <button type="button" class="link-quiet fl-otherb" data-id="' + esc(partner(l).id) + '">' + esc(partner(l).title) + '</button></p>' : '') + '</div></details>' +
       '<p class="fl-sr" role="status" aria-live="polite"></p>';
   }
   /* The gauge: a track with the set point in the middle. Only the half on the
@@ -445,7 +447,6 @@
     var lv = l.live, up = lv.dir === 'up', pos = l.kind === 'positive';
     var liveX = up ? GC : GX0, liveW = (GX1 - GX0) / 2;
     var sp = lv.setPoint ? lv.setPoint : (pos ? 'Starting level' : 'Set point');
-    var other = partner(l);
     var ticks = '';
     for(var i = 0; i <= 20; i++){ var tx = GX0 + 8 + (GX1 - GX0 - 16) * i / 20; ticks += '<path class="fl-g-tk' + (i % 5 ? '' : ' big') + '" d="M' + tx.toFixed(1) + ' ' + (GY + 11) + ' V' + (GY + (i % 5 ? 15 : 18)) + '"/>'; }
     var gid = p + '-gg';
@@ -468,8 +469,7 @@
         '<rect class="fl-g-hit" x="-22" y="' + (GY - 30) + '" width="44" height="60" fill="transparent"/>' +
         '<path class="fl-g-ptr" d="M0 ' + (GY - 24) + ' V' + (GY + 8) + '"/><circle class="fl-g-halo" cx="0" cy="' + GY + '" r="16"/><circle class="fl-g-dot" cx="0" cy="' + GY + '" r="11"/><path class="fl-g-grip" d="M-3 ' + (GY - 4) + ' V' + (GY + 4) + ' M0 ' + (GY - 4) + ' V' + (GY + 4) + ' M3 ' + (GY - 4) + ' V' + (GY + 4) + '"/>' +
       '</g>' +
-      '</svg>' +
-      (other ? '<p class="anp-small fl-other">' + (up ? 'A fall' : 'A rise') + ' is answered by another loop: <button type="button" class="link-quiet fl-otherb" data-id="' + esc(other.id) + '">' + esc(other.title) + '</button></p>' : '');
+      '</svg>';
   }
 
   function mountLive(l, panel, p){
@@ -500,7 +500,7 @@
       svg.classList.toggle('is-off', Math.abs(v - spOff) >= 0.04);
     }
     function clearRing(){ svg.classList.remove('is-na'); ring.querySelectorAll('.is-lit,.is-stop').forEach(function(x){ x.classList.remove('is-lit'); x.classList.remove('is-stop'); }); }
-    function stop(){ timers.forEach(clearTimeout); timers = []; if(raf) cancelAnimationFrame(raf); raf = 0; running = false; panel.classList.remove('is-running'); }
+    function stop(){ timers.forEach(clearTimeout); timers = []; clearTimeout(keyT); if(raf) cancelAnimationFrame(raf); raf = 0; running = false; panel.classList.remove('is-running'); }
     function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
     function tween(to, ms, done, which){
       if(raf) cancelAnimationFrame(raf);

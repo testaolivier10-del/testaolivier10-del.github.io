@@ -117,17 +117,13 @@ a.fl-tag:hover{text-decoration:underline;}
 }
 @media (max-width:620px){
   .fl-panel,.fl-card{padding:16px 14px;border-radius:var(--radius);}
-  .fl-progress{grid-template-columns:auto 1fr;}
-  .fl-progress .fl-back{grid-column:1 / -1;justify-self:start;}
+  .fl-progress{gap:10px;}   /* "All loops" stays on the progress row */
   .fl-title{font-size:19px;}
   .fl-slot-fb{margin-left:4px;}
 }
 
 /* ---- Watch it work: the live loop ---- */
-.fl-tabs{display:flex;gap:4px;margin:4px 0 14px;padding:4px;border-radius:var(--radius-pill);background:var(--paper);width:max-content;max-width:100%;}
-.fl-tabs [role="tab"]{min-height:40px;padding:7px 16px;border:0;border-radius:var(--radius-pill);background:none;color:var(--muted);font:800 14px var(--font-ui);cursor:pointer;}
-.fl-tabs [role="tab"][aria-selected="true"]{background:var(--cink);color:var(--paper);}
-.fl-tabs [role="tab"]:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+/* the Watch / Test switch is the shared segmented control (.kt-seg, tool-kit.css) */
 .fl-live-how{margin:0 0 6px;}
 .fl-gaugefig,.fl-ringfig{margin:0;}
 .fl-gauge{display:block;width:100%;max-width:560px;touch-action:none;user-select:none;-webkit-user-select:none;}
