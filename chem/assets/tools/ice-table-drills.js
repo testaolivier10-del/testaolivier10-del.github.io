@@ -79,8 +79,11 @@
         var cx = L + gw * (i + 0.5), bw = Math.min(30, gw * 0.3);
         g.push('<rect class="ic-bi" x="' + (cx - bw - 3).toFixed(1) + '" y="' + y(p.c0[i]).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + (Tp + ph - y(p.c0[i])).toFixed(1) + '"/>');
         g.push('<rect class="ic-be" x="' + (cx + 3).toFixed(1) + '" y="' + y(E[i]).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + (Tp + ph - y(E[i])).toFixed(1) + '"/>');
+        // The concentration at this x, read straight off the bar (the same value as the E row).
+        g.push('<text class="tick" x="' + (cx + 3 + bw / 2).toFixed(1) + '" y="' + (y(E[i]) - 4).toFixed(1) + '" text-anchor="middle">' + M.fmt(E[i], 3) + '</text>');
         g.push('<text class="lbl" x="' + cx.toFixed(1) + '" y="' + (H - 10) + '" text-anchor="middle">' + esc(plain(sp[i].html)) + '</text>');
       }
+      g.push('<rect class="ic-bi" x="' + L + '" y="2" width="10" height="10"/><text class="tick" x="' + (L + 14) + '" y="11">start</text><rect class="ic-be" x="' + (L + 52) + '" y="2" width="10" height="10"/><text class="tick" x="' + (L + 66) + '" y="11">at this x (M)</text>');
       host.querySelector('.ic-chart').innerHTML = '<svg class="chem-svg ic-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Bars: initial (faint) and at this x (solid): ' + esc(sp.map(function(s, i){ return plain(s.html) + ' ' + M.fmt(p.c0[i], 3) + ' to ' + M.fmt(E[i], 3); }).join('; ')) + '.">' + g.join('') + '</svg>';
       var counts = {}; E.forEach(function(v, i){ counts['s' + i] = Math.round(Math.max(0, v) / perP); });
       beaker.update(q > 0 ? { counts: counts, Q: q, K: p.K } : { counts: counts });
