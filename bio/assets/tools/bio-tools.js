@@ -85,10 +85,22 @@
         lastHit = { card: x.closest('.bt-frq, .bt-problem, .bt-card'), q: x.closest('.bio-q'), form: x.closest('form') };
       }, true); });
       if(data.status === 'placeholder') app.insertAdjacentHTML('beforeend', '<p class="bt-draft"><b>Draft content.</b> These scenarios are waiting for review by a biology teacher. Spot a problem? Use Report a problem.</p>');
+      // Tool Studio (docs/tools-calm.md): pages.json `studio: true` puts
+      // data-studio on #app; the frame is mounted before the tool builds, so
+      // its code can set the caption and the stage pills (ctx.studio). Its
+      // parts move out of #app, so the listeners above go on the studio too.
+      var studio = app.getAttribute('data-studio') && window.LevlStudio ? studioFrame(app, slug, data) : null;
+      var scopes = studio ? [app, studio.root] : [app];
+      if(studio) ['click', 'submit', 'change'].forEach(function(t){ studio.root.addEventListener(t, function(e){
+        var x = e.target;
+        if(!x || !x.closest) return;
+        lastHit = { card: x.closest('.bt-frq, .bt-problem, .bt-card'), q: x.closest('.bio-q'), form: x.closest('form') };
+      }, true); });
       var st = opts.stage ? stageSlot(opts.stage, { slug: slug, data: data }) : null;
-      if(st){ app.appendChild(st.host); ['input', 'change'].forEach(function(t){ app.addEventListener(t, function(){ st.redraw(); }); }); }
-      fn(app, data, { stage: st ? st.host : null, redraw: st ? st.redraw : function(){} });
+      if(st){ app.appendChild(st.host); scopes.forEach(function(sc){ ['input', 'change'].forEach(function(t){ sc.addEventListener(t, function(){ st.redraw(); }); }); }); }
+      fn(app, data, { stage: st ? st.host : null, redraw: st ? st.redraw : function(){}, studio: studio });
       if(st) st.redraw();
+      if(studio){ studioArrange(app, studio, slug, opts.studio || {}); return; }
       figureFirst(app);
       tidyAbout(app);
       simplify(app, slug);
@@ -647,6 +659,121 @@
       if(focus){ var h = area.querySelector('h2'); h.setAttribute('tabindex', '-1'); h.focus(); }
     }
     draw(false);
+  }
+
+  /* ------------------------------------------------ Tool Studio frame */
+  /* docs/tools-calm.md. studioFrame mounts the calm frame in place of the
+     hero (title, back to the tools hub, the Beta note and Report a problem in
+     the menu). studioArrange then moves what the tool built (never copies it):
+       Explore card (S.card): its figure (.sk-fig, .bt-stage, .bt-hero) to the
+         stage; .bt-controls and .bt-buttons to the dock; its heading, lead,
+         live explanation (.sk-say) and "Try this" goals to Why; readouts and
+         the rest to Details.
+       Practice (skillTool): each new problem's stage slot, text and tables to
+         the stage; the parts one at a time in the dock (LevlStudio.stepper);
+         after Check, the worked solution to Why and the score as a pill; the
+         problem code and the Practice / Worked set choice to Details.
+       Intro, "How this works" and the draft note to About; anything else
+       (the critical value table) to Details.
+     A tool sets the explore caption and pills itself (ctx.studio, or
+     LevlStudio.get()); o (T.mount's opts.studio) may name a hint:
+     { hint: { target: selector, text } }. */
+  function studioFrame(app, slug, data){
+    var main = app.parentNode, h1 = main.querySelector('.bio-hero h1'), lede = main.querySelector('.bio-hero .lede');
+    main.classList.add('ls-host');
+    var s = window.LevlStudio.mount({
+      title: h1 ? h1.textContent : slug, course: 'AP® Biology', back: base() + 'tools.html', home: base(), slug: 'apbio-' + slug,
+      host: app,
+      menu: {
+        copyLink: function(){
+          var code = s.mode() === 'practice' ? s.root.querySelector('.ls-prac-code .bt-code b') : null;
+          return code ? location.origin + location.pathname + '?seed=' + code.textContent : location.origin + location.pathname;
+        },
+        report: { course: 'apbio', id: 'tool:' + slug },
+        note: { label: 'Beta.', html: 'This course has not yet been reviewed by an AP® Biology teacher. <a href="' + base() + '../sources.html">Sources</a>' }
+      }
+    });
+    if(lede){ var p = document.createElement('p'); p.textContent = lede.textContent; s.add('about', p); }
+    return s;
+  }
+  function studioArrange(app, s, slug, o){
+    var kid = function(sel){ return Array.prototype.filter.call(app.children, function(k){ return k.matches(sel); })[0] || null; };
+    var explore = kid('.bt-card'), area = kid('.bt-problem'), modes = kid('.bt-modes');
+    ['.bt-draft', '.bt-intro'].forEach(function(sel){ var x = kid(sel); if(x) s.add('about', x); });
+    var how = kid('details.bt-how');
+    if(how){ how.open = true; s.add('about', how); }
+    if(explore && area){
+      var start = seedFromUrl() || /#practice\b/.test(location.hash) ? 'practice' : 'explore';
+      try{ if(start === 'explore' && localStorage.getItem('apbio_toolmode_' + slug) === 'practice') start = 'practice'; }catch(e){}
+      s.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'practice', label: 'Practice' }], value: start,
+        onChange: function(v){ try{ localStorage.setItem('apbio_toolmode_' + slug, v); }catch(e){} event('apbio-tool-mode', { tool: slug, mode: v }); } });
+    }
+    if(explore){
+      var only = area ? { mode: 'explore' } : null;
+      var ex = function(sel){ return explore.querySelector(':scope > ' + sel); };
+      var fig = ex('.sk-fig') || ex('.bt-stage') || ex('.bt-hero');
+      if(fig) s.add('stage', fig, only);
+      Array.prototype.slice.call(explore.querySelectorAll(':scope > .bt-controls, :scope > .bt-buttons')).forEach(function(c){
+        if(c.classList.contains('bt-buttons')) c.classList.add('ls-scroll');
+        s.add('dock', c, only);
+      });
+      var why = document.createElement('div'); why.className = 'ls-sec';
+      ['.sk-head', '.sk-say', '.sk-goals'].forEach(function(sel){ var x = ex(sel); if(x) why.appendChild(x); });
+      s.add('why', why, only);
+      var det = document.createElement('div'); det.className = 'ls-sec';
+      Array.prototype.slice.call(explore.children).forEach(function(k){ det.appendChild(k); });
+      if(det.children.length) s.add('details', det, only);
+      explore.remove();
+    }
+    if(area) studioPractice(s, area, modes, explore ? { mode: 'practice' } : null);
+    Array.prototype.slice.call(app.children).forEach(function(k){ if(!k.classList.contains('bt-loading')) s.add('details', k); });
+    app.hidden = true;
+    var h = o.hint || (explore ? { target: '.sk-grip', text: 'Drag a bar up or down' } : null);
+    if(h && s.mode() !== 'practice') s.hint(h);
+  }
+  function studioPractice(s, area, modes, only){
+    var stage = document.createElement('div'), why = document.createElement('div'), det = document.createElement('div');
+    stage.className = 'ls-prac-stage'; why.className = 'ls-sec ls-prac-why'; det.className = 'ls-sec ls-prac-code';
+    s.add('stage', stage, only); s.add('why', why, only); s.add('details', det, only);
+    if(modes){ modes.classList.add('ls-prac-set'); s.add('details', modes, only); }
+    area.classList.add('ls-prac');
+    s.add('dock', area, only);
+    var m = only && only.mode;
+    function fresh(){
+      var slot = area.querySelector(':scope > .bt-stage-slot');
+      if(!slot) return;
+      stage.innerHTML = '';
+      why.innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here after you check your answers.</p>';
+      stage.appendChild(slot);
+      // The problem text becomes the caption; the text itself, its tables and
+      // the problem code go to Details.
+      var ctxEl = area.querySelector(':scope > .bt-context');
+      var text = ctxEl ? ctxEl.textContent.replace(/\s+/g, ' ').trim() : '';
+      det.innerHTML = '<h3 class="ls-title-l">This problem</h3>';
+      Array.prototype.slice.call(area.querySelectorAll(':scope > .bt-context, :scope > .table-wrap')).forEach(function(x){ det.appendChild(x); });
+      var code = area.querySelector('.bt-code');
+      if(code) det.appendChild(code);
+      var h2 = area.querySelector('.bt-prob-head h2');
+      if(h2) h2.classList.add('sr-only');
+      var form = area.querySelector('form.bt-parts');
+      if(form) window.LevlStudio.stepper(form, { items: ':scope > .bt-part', submit: ':scope > .bt-actions',
+        done: function(){ return !!form.querySelector('.bt-part.is-right, .bt-part.is-wrong'); } });
+      s.caption(esc(text), m); s.pills([], 'left', m);
+    }
+    function checked(){
+      var sol = area.querySelector(':scope > .bt-solution'), res = area.querySelector('.bt-result'), t = res ? res.textContent : '';
+      if(!sol || sol.hidden){ if(t) s.caption(esc(t), m); return; }
+      why.innerHTML = '';
+      why.appendChild(sol);
+      var mm = /(\d+) of (\d+)/.exec(t);
+      if(mm) s.pills([{ html: mm[1] + ' of ' + mm[2] + ' right', tone: mm[1] === mm[2] ? 'good' : 'warn' }], 'left', m);
+      s.caption((mm ? '<b>' + mm[1] + ' of ' + mm[2] + ' parts right.</b> ' : '') + 'The worked solution is under Why.', m);
+      var nx = area.querySelector('.bt-next .btn-press');
+      if(nx) nx.classList.add('ls-btn', 'ls-pri');
+    }
+    if(window.MutationObserver) new MutationObserver(fresh).observe(area, { childList: true });
+    area.addEventListener('submit', function(){ setTimeout(checked, 0); });
+    fresh();
   }
 
   window.ApBioTools = {

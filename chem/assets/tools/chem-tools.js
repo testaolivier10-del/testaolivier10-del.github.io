@@ -58,7 +58,12 @@
       app.innerHTML = '';
       unitMap = data.units || {};
       if(data.status === 'placeholder') app.insertAdjacentHTML('beforeend', '<p class="bt-draft"><b>Draft content.</b> These scenarios are waiting for review by a chemistry teacher. Spot a problem? Use Report a problem.</p>');
+      // Tool Studio (docs/tools-calm.md): pages.json `studio: true` puts
+      // data-studio on #app. modes() and drill() then place their parts in
+      // the frame; a trainer's explore view places its own (o.studio).
+      var studio = app.getAttribute('data-studio') && window.LevlStudio ? studioFrame(app, slug) : null;
       fn(app, data);
+      if(studio) studioRest(app, studio);
     }).catch(function(){
       app.innerHTML = '<p class="chem-soon" role="alert">The tool could not load. Check your connection and reload the page.</p>';
     });
@@ -490,6 +495,7 @@
     if(kinds.length > 1){
       kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
     }
+    var sd = studioDrill(app, area);
     function pickable(){ return contexts.filter(function(c){ return !type || (c.types ? c.types.indexOf(type) > -1 : c.mode ? c.mode === type : c.kind === type); }); }
     function pickCtx(r){ var ok = pickable(); return r.pick(ok.length ? ok : contexts); }
     function draw(focus){
@@ -614,9 +620,11 @@
         nx.innerHTML = '<p class="bt-result" role="status">' + right + ' of ' + results.length + ' steps right the first time.</p><div class="bt-actions"><button type="button" class="btn-press sm cd-again">' + esc(o.newLabel || 'New problem') + '</button>' + report(slug + ':' + p.ctx) + '</div>';
         nx.querySelector('.cd-again').addEventListener('click', function(){ seed = freshSeed(); draw(true); });
         keepGoing(nx, { topic: p.topic, also: results.filter(function(x){ return !x.correct; }).map(function(x){ return x.topic; }) });
+        if(sd){ sd.done(right, results.length); return; }
         sol.querySelector('h3').focus();
       }
       step(0);
+      if(sd) sd.fresh(p);
       if(focus) area.querySelector('h2').focus();
     }
     draw(false);
@@ -646,23 +654,114 @@
       cur = m;
       if(m === 'quiz' && !built){ built = true; o.quiz(qz); }
       ex.hidden = m !== 'explore'; qz.hidden = m !== 'quiz';
+      if(st) st.mode(m);
       bar.querySelectorAll('.bt-mode').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-m') === m)); });
       if(user){ try{ localStorage.setItem(key, m); }catch(e){} event('apchem-tool-mode', { tool: o.slug, mode: m }); }
       if(o.onShow) o.onShow(m);
     }
     bar.addEventListener('click', function(e){ var b = e.target.closest('.bt-mode'); if(b) show(b.getAttribute('data-m'), true); });
+    var st = studioOf(app);
     o.explore(ex);
+    if(st && o.studio && o.studio.explore) o.studio.explore(ex, st);
     var start = 'explore';
     try{
       if(seedFromUrl() || /#quiz\b/.test(location.hash)) start = 'quiz';
       else if(localStorage.getItem(key) === 'quiz') start = 'quiz';
     }catch(e){}
+    if(st){
+      var eb = bar.querySelector('[data-m="explore"]');
+      if(/^Explore\b/.test(eb.textContent)) eb.textContent = 'Explore';
+      st.modes({ el: bar, value: start });
+    }
     show(start, false);
     return { explore: ex, quiz: qz, show: show, bar: bar };
   }
   /* Motion off? (site toggle or the OS setting) */
   function reduced(){
     try{ if(window.LevlMotion && window.LevlMotion.reduced) return !!window.LevlMotion.reduced(); return matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; }
+  }
+
+  /* ------------------------------------------------ Tool Studio frame */
+  /* docs/tools-calm.md. studioFrame mounts the calm frame in place of the
+     hero (title, back to the tools hub; the Beta note and Report a problem
+     in the menu). modes() hands its switch to the frame and keeps the
+     frame's mode in step; a trainer's explore view arranges itself through
+     modes({ studio: { explore(pane, s) } }); drill() arranges every problem:
+       stage   .cd-extra (the problem's figure), unless it holds table rows
+       dock    the steps, one at a time (LevlStudio.stepper), then the result,
+               New problem and Keep going
+       caption the problem text (.bt-context; it stays in the dock if it
+               holds table rows to fill)
+       Why     the worked solution, once every step is answered
+       Details the problem text and code, any extra disclosures, More options
+       About   "About this drill"
+     A drill's tool code must reach its figure through its own references
+     (not app.querySelector), since the figure moves to the stage. */
+  function studioOf(app){
+    var s = window.LevlStudio && window.LevlStudio.get();
+    var root = document.getElementById('app');
+    return s && root && root.getAttribute('data-studio') && root.contains(app) ? s : null;
+  }
+  function studioFrame(app, slug){
+    var main = app.parentNode, h1 = main.querySelector('.chem-hero h1'), lede = main.querySelector('.chem-hero .lede');
+    main.classList.add('ls-host');
+    var s = window.LevlStudio.mount({
+      title: h1 ? h1.textContent : slug, course: 'AP® Chemistry', back: base() + 'tools.html', home: base(), slug: 'apchem-' + slug,
+      host: app,
+      menu: {
+        copyLink: function(){
+          var code = s.mode() === 'quiz' ? s.root.querySelector('.ls-drill-det .bt-code b') : null;
+          return location.origin + location.pathname + (code ? '?seed=' + code.textContent : '');
+        },
+        report: { course: 'apchem', id: 'tool:' + slug },
+        note: { label: 'Beta.', html: 'This course has not yet been reviewed by an AP® Chemistry teacher. <a href="' + base() + '../sources.html">Sources</a>' }
+      }
+    });
+    if(lede){ var p = document.createElement('p'); p.textContent = lede.textContent; s.add('about', p); }
+    return s;
+  }
+  function studioRest(app, s){
+    var draft = app.querySelector(':scope > .bt-draft');
+    if(draft) s.add('about', draft);
+    app.hidden = true;
+  }
+  function studioDrill(app, area){
+    var s = studioOf(app);
+    if(!s) return null;
+    var only = app.classList.contains('bt-pane-quiz') ? { mode: 'quiz' } : null, m = only && only.mode;
+    var stage = document.createElement('div'), why = document.createElement('div'), det = document.createElement('div');
+    stage.className = 'ls-drill-stage'; why.className = 'ls-sec ls-drill-why'; det.className = 'ls-sec ls-drill-det';
+    s.add('stage', stage, only); s.add('why', why, only); s.add('details', det, only);
+    var more = app.querySelector(':scope > .cd-more'), about = app.querySelector(':scope > .bt-about');
+    area.classList.add('ls-drill');
+    s.add('dock', area, only);
+    if(more) s.add('details', more, only);
+    if(about){ about.open = true; s.add('about', about, only); }
+    return {
+      fresh: function(p){
+        stage.innerHTML = ''; det.innerHTML = '<h3 class="ls-title-l">This problem</h3>';
+        why.innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
+        var extra = area.querySelector(':scope > .cd-extra');
+        if(extra && !extra.querySelector('[data-row]')) stage.appendChild(extra);
+        var ctx = area.querySelector(':scope > .bt-context'), text = ctx ? ctx.textContent.replace(/\s+/g, ' ').trim() : '';
+        if(ctx && !ctx.querySelector('[data-row], input')) det.appendChild(ctx);
+        Array.prototype.slice.call(area.querySelectorAll(':scope > details')).forEach(function(d){ det.appendChild(d); });
+        var code = area.querySelector('.bt-code'); if(code) det.appendChild(code);
+        var h2 = area.querySelector('.bt-prob-head h2'); if(h2) h2.classList.add('sr-only');
+        var steps = area.querySelector(':scope > .cd-steps');
+        if(steps) window.LevlStudio.stepper(steps, { items: ':scope > .cd-step', total: (p.steps || []).length,
+          done: function(){ var nx = area.querySelector(':scope > .bt-next'); return !!(nx && nx.children.length); } });
+        s.caption(esc(text), m); s.pills([], 'left', m);
+      },
+      done: function(right, total){
+        var sol = area.querySelector(':scope > .bt-solution');
+        if(sol){ why.innerHTML = ''; why.appendChild(sol); }
+        s.pills([{ html: right + ' of ' + total + ' right', tone: right === total ? 'good' : 'warn' }], 'left', m);
+        s.caption('<b>' + right + ' of ' + total + ' steps right the first time.</b> The worked solution is under Why.', m);
+        var again = area.querySelector('.cd-again');
+        if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus(); }
+      }
+    };
   }
 
   window.ApChemTools = {
