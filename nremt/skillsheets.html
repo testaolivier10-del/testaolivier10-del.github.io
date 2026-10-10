@@ -56,6 +56,14 @@
   .run-top__h{margin:24px 0 12px;}
   .warning--after{margin:28px 0 8px;}
   .guide-h{margin-top:32px;}
+  .ss-note{font-size:12.5px;color:var(--muted);margin:14px 0 22px;max-width:70ch;}
+  .ss-more{margin:0 0 8px;}
+  .ss-more>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;min-height:44px;font:800 16px var(--font-ui);color:var(--ink);}
+  .ss-more>summary::-webkit-details-marker{display:none;}
+  .ss-more>summary::before{content:var(--disclose);display:inline-block;color:var(--accent-text);transition:transform .15s;}
+  .ss-more[open]>summary::before{transform:rotate(90deg);}
+  .ss-more[open]>summary{margin-bottom:10px;}
+  .run-card{scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
   @media (max-width:640px){
     .page-head{padding:18px 20px;}
     .page-head h1{font-size:24px;margin-bottom:4px;}
@@ -266,7 +274,7 @@
   <div class="page-head">
   <div class="eyebrow">Tools</div>
   <h1>Psychomotor Skills Study Guide</h1>
-  <p class="lede">The psychomotor skill stations, structurally.</p>
+  <p class="lede">Practise each psychomotor station out loud, against the clock.</p>
   </div>
 
   <!-- The page states three things — examiners score what you say, critical
@@ -278,12 +286,10 @@
     <div id="stationRun"></div>
   </section>
 
-  <div class="warning warning--after">
-    <b>General structure, not exact scored step order.</b> Verify the sequence against your program's official skill sheets and current NREMT documents.
-  </div>
+  <p class="ss-note"><b>General structure, not exact scored step order.</b> Verify the sequence against your program's official skill sheets and current NREMT documents.</p>
 
-
-  <h2 class="guide-h">Reading guide</h2>
+  <details class="ss-more">
+  <summary>How the stations are scored (reading guide)</summary>
   <div class="general-tips">
     <h2 style="margin-top:0;">General patterns across most skill sheets</h2>
     <ul>
@@ -321,6 +327,10 @@
     </ul>
   </div>
 
+  </details>
+
+  <details class="ss-more">
+  <summary>The official sheets at a glance (points, time, critical criteria)</summary>
   <div class="general-tips sheets-glance">
     <h2 style="margin-top:0;">The official sheets at a glance</h2>
     <p style="font-size:14.5px;margin:0 0 10px;">The National Registry&rsquo;s EMT psychomotor sheets, linked from the source. Points are the total on each sheet; the time is the station limit from the Registry&rsquo;s EMT psychomotor exam guide (the sheets themselves only have &ldquo;time started&rdquo; and &ldquo;time ended&rdquo; boxes, except the two patient assessment sheets, which name their limit in a critical criterion; for the four randomly chosen skills, seated spinal, long bone, joint and bleeding control, the guide gives a 5 to 10 minute range and the time shown is the one commonly used); the last column paraphrases the critical criteria, any one of which fails the station however many points you score. Your state or program runs the EMT skills exam and may use its own version of a sheet, so practice with the one you will be tested on.</p>
@@ -340,8 +350,10 @@
       </tbody>
     </table></div>
   </div>
+  </details>
 
-  <h2>The skill stations</h2>
+  <details class="ss-more">
+  <summary>Every station, step by step (10 cards)</summary>
 
 
   <div id="stationCards">
@@ -422,6 +434,7 @@
   </div>
 
   </div><!-- /stationCards -->
+  </details>
 
   <footer>
     <p>This page reflects general structural patterns across NREMT-EMT psychomotor stations and is not a substitute for your program's official skill sheets. Exact step order, wording, and critical-fail criteria should always be verified against your specific program's materials before your skills exam.</p>
