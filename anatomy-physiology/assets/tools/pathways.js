@@ -170,10 +170,10 @@
       '<div class="pw-pickhost"></div>' +
       '<h2 class="pw-title" tabindex="-1">' + esc(p.title) + '</h2>' +
       '<p class="anp-small pw-meta">Topic: ' + topicLink(p.topic) + ' · ' + p.steps.length + ' steps</p>' +
-      '<p class="pw-intro">' + html(p.intro) + '</p>' +
+      (K() ? K().about('<p>' + html(p.intro) + '</p>', 'About this pathway') : '<p class="pw-intro">' + html(p.intro) + '</p>') +
       (p.trace ? '<section class="pt" aria-labelledby="pt-h"></section>' : '') +
       (p.trace ? '<h3 class="pw-drill-h">Drills</h3>' : '') +
-      '<div class="pw-tabs" role="tablist" aria-label="Ways to practice this pathway">' + VARIANTS.map(function(v){
+      '<div class="pw-tabs kt-seg" role="tablist" aria-label="Ways to practice this pathway">' + VARIANTS.map(function(v){
         var s = status(itemId(p, v.key));
         return '<button type="button" role="tab" id="pw-tab-' + v.key + '" aria-controls="pw-panel" aria-selected="' + (v.key === variant) + '" tabindex="' + (v.key === variant ? '0' : '-1') + '" data-v="' + v.key + '" class="pw-tab">' +
           esc(v.tab) + (s === 'right' ? ' <span class="pw-tick" aria-label="done">✓</span>' : s === 'missed' ? ' <span class="pw-miss" aria-label="missed last time">✗</span>' : '') + '</button>';
@@ -235,7 +235,7 @@
     var tid = itemId(p, 'trace');
     var st = status(tid);
     host.innerHTML = '<div class="pt-head"><h3 id="pt-h">On the figure</h3>' +
-      '<div class="pt-modes" role="group" aria-label="Figure mode"><button type="button" class="pt-mode" data-m="watch" aria-pressed="true">Watch</button>' +
+      '<div class="pt-modes kt-seg" role="group" aria-label="Figure mode"><button type="button" class="pt-mode" data-m="watch" aria-pressed="true">Watch</button>' +
       '<button type="button" class="pt-mode" data-m="trace" aria-pressed="false">Trace it' + (st === 'right' ? ' <span class="pw-tick" aria-label="done">✓</span>' : st === 'missed' ? ' <span class="pw-miss" aria-label="missed last time">✗</span>' : '') + '</button></div></div>' +
       '<div class="pt-stage"><div class="pt-fig" style="aspect-ratio:' + W + ' / ' + H + ';--pt-r:' + (W / H).toFixed(4) + '">' +
         (T.srcset ? '<picture><source type="image/avif" srcset="' + esc(T.srcset) + '" sizes="(max-width: 760px) 100vw, 720px"><img src="' + esc(BASE + T.src) + '" alt="' + esc(T.alt) + '" width="' + W + '" height="' + H + '" decoding="async"></picture>'
@@ -331,7 +331,7 @@
       bar.querySelector('.pt-prev').addEventListener('click', function(){ stop(); show(Math.max(0, k - 1)); });
       bar.querySelector('.pt-next').addEventListener('click', function(){ stop(); show(Math.min(n - 1, k + 1)); });
       k = 0; clearTrail(); token.setAttribute('cx', -99); moveTo(0);
-      cap.innerHTML = '<span class="anp-small">Press Play to follow the ' + esc(noun) + ' through all ' + n + ' steps, or step with the arrows. Then try <b>Trace it</b>.</span>';
+      cap.innerHTML = '<span class="kt-first">Press Play to follow the ' + esc(noun) + ' through all ' + n + ' steps.</span>';
       bar.querySelector('.pt-prev').disabled = true;
     }
     /* ---- Trace it */
@@ -425,6 +425,7 @@
   }
 
   /* Record the first check of each variant on this visit. */
+  function K(){ return window.AnpToolKit && window.AnpToolKit.why ? window.AnpToolKit : null; }
   function score(p, variant, right, total){
     var id = itemId(p, variant);
     var correct = right === total;
@@ -448,7 +449,8 @@
     var n = p.steps.length;
     var cur = shuffle(p.steps.map(function(s, i){ return i; }));
     if(cur.every(function(v, k){ return v === k; })) cur.reverse();
-    panel.innerHTML = '<p class="pw-task">Put the steps in order, first at the top. Drag a step by its grip, or use its arrow buttons.' + (p.cycle ? ' This pathway is a cycle: start with the step the scenario gives you.' : '') + '</p>' +
+    panel.innerHTML = '<p class="kt-first pw-task">Put the steps in order, first at the top: drag a step or use its arrows.</p>' +
+      (p.cycle ? '<p class="anp-small pw-cyclenote">This pathway is a cycle: start with the step the scenario gives you.</p>' : '') +
       '<ol class="anp-order pw-order"></ol>' +
       '<div class="pw-actions"><button type="button" class="btn-press sm pw-check">Check order</button></div>' +
       '<div class="pw-result" aria-live="polite"></div>';
@@ -546,7 +548,7 @@
   function missingVariant(p, panel){
     var m = p.missing, at = m.at;
     var choices = shuffle([{ text: p.steps[at].text, why: p.steps[at].why, right: true }].concat(m.distractors.map(function(d){ return { text: d.text, why: d.why, right: false }; })));
-    panel.innerHTML = '<p class="pw-task">One step is missing. Choose the step that belongs in the gap.</p>' +
+    panel.innerHTML = '<p class="kt-first pw-task">One step is missing. Choose the step that fills the gap.</p>' +
       '<ol class="pw-steps">' + p.steps.map(function(s, k){
         return k === at ? '<li class="pw-gap"><span class="pw-n" aria-hidden="true">' + (k + 1) + '</span><span class="pw-gap-text">Missing step</span></li>'
           : '<li><span class="pw-n" aria-hidden="true">' + (k + 1) + '</span><span>' + html(s.text) + '</span></li>';
@@ -585,7 +587,7 @@
   /* Variant 3: one step has been replaced by a wrong one; find it. */
   function errorVariant(p, panel){
     var e = p.error, at = e.at, pick = -1;
-    panel.innerHTML = '<p class="pw-task">One step in this pathway is wrong. Select it, then check.</p>' +
+    panel.innerHTML = '<p class="kt-first pw-task">One step is wrong. Tap it, then check.</p>' +
       '<ol class="pw-steps pw-pickable" role="group" aria-label="Steps: select the wrong one">' + p.steps.map(function(s, k){
         return '<li><button type="button" class="pw-pick" aria-pressed="false" data-k="' + k + '"><span class="pw-n" aria-hidden="true">' + (k + 1) + '</span><span class="pw-pick-text">' + html(k === at ? e.text : s.text) + '</span></button></li>';
       }).join('') + '</ol>' +
@@ -630,7 +632,7 @@
     var res = panel.querySelector('.pw-result');
     var box = document.createElement('div');
     box.className = 'pw-after';
-    box.innerHTML = '<p class="pw-summary">' + html(p.summary) + '</p>' +
+    box.innerHTML = (K() ? K().why('<p>' + html(p.summary) + '</p>', { label: 'Why it runs this way' }) : '<p class="pw-summary">' + html(p.summary) + '</p>') +
       '<h3>Watch the pathway</h3>' +
       '<div class="anp-fig pw-fig"></div>' +
       '<div class="pw-player"><button type="button" class="btn-press sm pw-play">▶ Play</button>' +
