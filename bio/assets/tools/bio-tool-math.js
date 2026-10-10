@@ -56,6 +56,25 @@
     var chi2 = sum(terms);
     return { terms: terms, chi2: chi2, df: df, crit: CHI_CRIT['0.05'][df], reject: chi2 > CHI_CRIT['0.05'][df] };
   }
+  /* The χ² distribution's density, for drawing its curve (skills tools):
+     f(x; k) = x^(k/2 − 1) e^(−x/2) / (2^(k/2) Γ(k/2)), x > 0. Γ(k/2) for a
+     whole number k is exact: (k/2 − 1)! for even k, and from Γ(1/2) = √π by
+     Γ(s + 1) = sΓ(s) for odd k. 0 for x ≤ 0 (for k = 1 the density rises
+     without limit near 0; callers clamp what they draw). */
+  function gammaHalf(k){ var g = k % 2 ? Math.sqrt(Math.PI) : 1; for(var s = k % 2 ? 0.5 : 1; s < k / 2 - 1e-9; s += 1) g *= s; return g; }
+  function chiPdf(x, k){
+    if(!(x > 0) || !(k >= 1)) return 0;
+    return Math.exp((k / 2 - 1) * Math.log(x) - x / 2 - (k / 2) * Math.LN2) / gammaHalf(k);
+  }
+  /* Split a whole-number total into whole shares as close as possible to
+     fracs × total that still add up to total (largest remainder), for
+     drawing a population of individuals from frequencies. */
+  function apportion(fracs, total){
+    var raw = fracs.map(function(f){ return f * total; }), out = raw.map(Math.floor), left = total - sum(out);
+    raw.map(function(r, i){ return { i: i, r: r - Math.floor(r) }; }).sort(function(a, b){ return b.r - a.r || a.i - b.i; })
+      .slice(0, Math.max(0, left)).forEach(function(o){ out[o.i]++; });
+    return out;
+  }
 
   /* -------------------------------------------------- water potential */
   function kelvin(c){ return c + K0; }
@@ -809,7 +828,7 @@
   root.ApBioMath = {
     R: R_BAR, K0: K0, round: round, fixed: fixed, sum: sum, mean: mean, median: median, range: range, sorted: sorted,
     sumSq: sumSq, sd: sd, se: se, seFrom: seFrom, ci95: ci95, overlap: overlap, rate: rate, percentChange: percentChange, tol: tol,
-    CHI_CRIT: CHI_CRIT, chiSquare: chiSquare, kelvin: kelvin, psiS: psiS, hwCounts: hwCounts, hwRecessive: hwRecessive,
+    CHI_CRIT: CHI_CRIT, chiSquare: chiSquare, chiPdf: chiPdf, apportion: apportion, kelvin: kelvin, psiS: psiS, hwCounts: hwCounts, hwRecessive: hwRecessive,
     simpson: simpson, rng: rng, enzyme: enzyme, osmosis: osmosis, signal: signal, cellCycle: cellCycle, meiosis: meiosis, operon: operon, popgen: popgen, phylo: phylo, graph: graph
   };
 

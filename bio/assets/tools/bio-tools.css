@@ -327,3 +327,73 @@
 .tr-fb li.ok{box-shadow:inset 4px 0 0 var(--good-text);}
 .tr-fb li.no{box-shadow:inset 4px 0 0 var(--bad-text);}
 .hw-readout dt{text-transform:none;letter-spacing:0;font-size:13px;}
+
+/* ===== Skills tools: live stages and Explore cards (U-Bio-skills,
+   bio-skill-stage.js): begin ===== */
+.sk-explore{border-color:var(--cink);}
+.sk-head{display:grid;gap:4px;}
+.sk-kicker{margin:0;font:900 12px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--cink);}
+.sk-lead{margin:0;font:600 15px/1.55 var(--font-ui);}
+.sk-fig svg{width:100%;height:auto;display:block;max-width:620px;margin:0 auto;overflow:visible;}
+.sk-drag svg,.sk-drag{touch-action:none;}
+.sk-drag.is-dragging{cursor:grabbing;}
+.sk-cap{margin:6px 0 0;font:600 14.5px/1.55 var(--font-ui);}
+.sk-say{margin:0;min-height:2.9em;padding:8px 12px;border-radius:12px;background:var(--paper);font:700 14.5px/1.5 var(--font-ui);}
+.sk-say:empty{visibility:hidden;}
+.sk-read dd small{font:700 12px var(--font-ui);color:var(--muted);}
+.sk-decide{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font:600 14.5px/1.5 var(--font-ui);}
+.sk-verdict{display:inline-block;padding:4px 10px;border-radius:999px;font:900 14px var(--font-ui);border:2px solid currentColor;}
+.sk-verdict.rej{color:var(--bad-text);}
+.sk-verdict.keep{color:var(--good-text);}
+.sk-warn{margin:0;padding:8px 12px;border-radius:10px;background:var(--bio-aff-fill);font:700 14px/1.5 var(--font-ui);}
+.sk-goals{border-top:2px dashed var(--line);padding-top:10px;}
+.sk-goals-h{margin:0 0 6px;font:900 13px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);}
+.sk-goals ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;}
+.sk-goals li{display:flex;gap:10px;align-items:flex-start;font:600 14.5px/1.5 var(--font-ui);}
+.sk-tick{flex:0 0 auto;width:20px;height:20px;margin-top:2px;border-radius:6px;border:2px solid var(--line);box-sizing:border-box;}
+.sk-goals li.is-done .sk-tick{background:var(--good-text);border-color:var(--good-text);position:relative;}
+.sk-goals li.is-done .sk-tick::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border:solid var(--white);border-width:0 2.5px 2.5px 0;transform:rotate(45deg);}
+.sk-steppers{display:flex;flex-wrap:wrap;gap:8px 14px;}
+.sk-stp{display:inline-flex;align-items:center;gap:6px;font:800 14px var(--font-ui);}
+.sk-stp b{min-width:3ch;text-align:center;font:900 15px var(--font-mono);}
+.sk-sw{width:12px;height:12px;border-radius:3px;display:inline-block;}
+/* shared SVG marks */
+.sk-fig text{font-family:var(--font-ui);}
+.sk-ph{fill:var(--muted);font:800 11.5px var(--font-ui);}
+.sk-dim{fill:var(--muted);font-weight:700;}
+.sk-val{fill:var(--ink);font:900 12.5px var(--font-mono);}
+.sk-cat{font-size:11.5px;}
+.sk-col{fill:transparent;cursor:ns-resize;}
+.sk-grip{fill:var(--white);stroke:var(--ink);stroke-width:2.5;cursor:ns-resize;}
+.sk-grip:focus{outline:none;}
+.sk-grip:focus-visible,.sk-drag .sk-grip:hover{stroke:var(--cink);stroke-width:4;}
+.sk-exp{fill:none;stroke:var(--ink);stroke-width:2;stroke-dasharray:5 4;}
+.sk-exp.mine{stroke:var(--muted);}
+.sk-gap{stroke:var(--bad-text);stroke-width:2.5;}
+.sk-track{fill:var(--paper);stroke:var(--line);stroke-width:1;}
+.sk-seg{stroke:var(--white);stroke-width:1.2;}
+.sk-curve{fill:none;stroke:var(--ink);stroke-width:2;}
+.sk-tail{fill:var(--bio-symp-fill);}
+.sk-crit{stroke:var(--bio-symp);stroke-width:2.5;}
+.sk-crit.mine{stroke-dasharray:6 4;}
+.sk-critl{fill:var(--ink);font:800 12px var(--font-ui);}
+.sk-mark{stroke-width:3;}
+.sk-mark.real{stroke:var(--ink);}
+.sk-mark.mine{stroke:var(--muted);stroke-dasharray:4 3;}
+.sk-markl{font:900 12.5px var(--font-mono);fill:var(--ink);}
+.sk-markl.mine{fill:var(--muted);}
+/* category colors: the course's series colors, then the figure palette */
+.sk-obs.c1,.sk-seg.c1,.sk-sw.c1{fill:var(--bio-s1);background:var(--bio-s1);}
+.sk-obs.c2,.sk-seg.c2,.sk-sw.c2{fill:var(--bio-s2);background:var(--bio-s2);}
+.sk-obs.c3,.sk-seg.c3,.sk-sw.c3{fill:var(--bio-s3);background:var(--bio-s3);}
+.sk-obs.c4,.sk-seg.c4,.sk-sw.c4{fill:var(--bio-s4);background:var(--bio-s4);}
+.sk-obs.c5,.sk-seg.c5,.sk-sw.c5{fill:var(--bio-aff);background:var(--bio-aff);}
+.sk-obs.c6,.sk-seg.c6,.sk-sw.c6{fill:var(--bio-eff);background:var(--bio-eff);}
+.sk-obs.c7,.sk-seg.c7,.sk-sw.c7{fill:var(--bio-hi);background:var(--bio-hi);}
+.sk-obs.c8,.sk-seg.c8,.sk-sw.c8{fill:var(--bio-lo);background:var(--bio-lo);}
+.sk-obs.c9,.sk-seg.c9,.sk-sw.c9{fill:var(--bio-s5);background:var(--bio-s5);}
+.sk-obs{fill-opacity:.9;}
+@media (prefers-reduced-motion:no-preference){
+  .sk-fig .sk-verdict{transition:color .2s;}
+}
+/* ===== Skills tools: end ===== */
