@@ -561,22 +561,49 @@
 .os-calc{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--cink);}
 .os-stage{background:var(--paper);border-radius:14px;padding:6px;}
 .os-fig{width:100%;height:auto;display:block;max-height:420px;margin:0 auto;max-width:640px;}
-.os-fig .os-beaker{fill:none;stroke:var(--bio-shape);stroke-width:3;}
-.os-fig .os-sol{fill:var(--bio-deo2-fill);opacity:.55;}
+/* Osmosis stage art: glass beaker, potato parenchyma cell, red blood cell, dialysis tubing */
+.os-fig{--os-glass:#8FA6A1;--os-liq-a:#DCEEF7;--os-liq-b:#BCDDEE;--os-wall:#8DB86B;--os-wall-e:#5E8C3E;--os-cyto:#F4EBC8;--os-memb:#8A6A2E;--os-vac:#E9F4FA;--os-amy:#FFFDF4;--os-amy-e:#C9B88A;--os-nuc:#C9B3D9;--os-nuc-e:#7E5C99;
+  --os-rbc-a:#F07A6E;--os-rbc-b:#D33B33;--os-rbc-c:#A61F22;--os-pallor:#F6B3A8;--os-hb:rgba(211,59,51,.28);--os-tube:rgba(236,226,196,.62);--os-tube-e:#9C8857;--os-in:#7A5A12;}
+:root[data-theme="dark"] .os-fig{--os-glass:#6E8681;--os-liq-a:#173447;--os-liq-b:#12293A;--os-wall:#5F8F45;--os-wall-e:#9CCB79;--os-cyto:#4A4430;--os-memb:#D8B76A;--os-vac:#21394A;--os-amy:#6E6650;--os-amy-e:#C8B88A;--os-nuc:#5C4A72;--os-nuc-e:#C6A8E6;
+  --os-rbc-a:#E8786C;--os-rbc-b:#B83630;--os-rbc-c:#8C1D20;--os-pallor:#D98C82;--os-hb:rgba(232,120,108,.22);--os-tube:rgba(200,185,140,.22);--os-tube-e:#D3BF8A;--os-in:#F0C674;}
+.os-fig .os-liq0{stop-color:var(--os-liq-a);} .os-fig .os-liq1{stop-color:var(--os-liq-b);}
+.os-fig .os-glass{fill:none;stroke:var(--os-glass);stroke-width:3.5;stroke-linejoin:round;stroke-linecap:round;}
+.os-fig .os-sol{fill:url(#osLiq);}
+.os-fig .os-menis{fill:none;stroke:var(--bio-deo2);stroke-opacity:.45;stroke-width:1.5;}
+.os-fig .os-grad{stroke:var(--os-glass);stroke-width:1.5;}
+.os-fig .os-shine{stroke:#fff;stroke-opacity:.55;stroke-width:3;stroke-linecap:round;}
+:root[data-theme="dark"] .os-fig .os-shine{stroke-opacity:.12;}
 .os-fig .os-sd{fill:var(--bio-o2);}
 .os-fig .os-sd.ion{fill:var(--bio-para);}
-.os-fig .os-si{fill:var(--bio-o2);}
-.os-fig .os-gap{fill:var(--bio-deo2-fill);opacity:.6;}
-.os-fig .os-wall{fill:none;stroke:var(--bio-para);stroke-width:6;}
-.os-fig .os-wall.taut{stroke-width:7.5;}
-.os-fig .os-cyto{fill:var(--bio-eff-fill);stroke:var(--bio-memb);stroke-width:2.5;}
-.os-fig .os-vac{fill:var(--white);fill-opacity:.35;stroke:var(--bio-memb);stroke-width:1;stroke-dasharray:3 3;}
-.os-fig .os-rbc{fill:var(--bio-o2-fill);stroke:var(--bio-o2);stroke-width:2.5;}
-.os-fig .os-dimple{fill:none;stroke:var(--bio-o2);stroke-width:1.2;stroke-dasharray:3 3;}
-.os-fig .os-ghost{fill:none;stroke:var(--bio-o2);stroke-width:2.5;stroke-dasharray:7 6;}
-.os-fig .os-bag{fill:var(--bio-aff-fill);stroke:var(--bio-memb);stroke-width:2.5;}
-.os-fig .os-bag.taut{stroke-width:4;}
-.os-fig .os-string,.os-fig .os-knot{fill:none;stroke:var(--muted);stroke-width:2;}
+.os-fig .os-si{fill:var(--os-in);}
+.os-fig .os-wallband{fill:var(--os-wall);opacity:.85;}
+.os-fig .os-wallband.taut{opacity:1;}
+.os-fig .os-walledge{fill:none;stroke:var(--os-wall-e);stroke-width:1.6;}
+.os-fig .os-walledge.in{stroke-width:1;stroke-opacity:.7;}
+.os-fig .os-gap{fill:url(#osLiq);}
+.os-fig .os-strand{stroke:var(--os-memb);stroke-width:.9;stroke-opacity:.8;}
+.os-fig .os-cyto{fill:var(--os-cyto);stroke:var(--os-memb);stroke-width:2.2;}
+.os-fig .os-vac{fill:var(--os-vac);stroke:var(--os-memb);stroke-width:1;stroke-opacity:.6;}
+.os-fig .os-amy{fill:var(--os-amy);stroke:var(--os-amy-e);stroke-width:1.1;}
+.os-fig .os-amy-r{fill:none;stroke:var(--os-amy-e);stroke-width:.7;}
+.os-fig .os-nuc{fill:var(--os-nuc);stroke:var(--os-nuc-e);stroke-width:1.2;}
+.os-fig .os-nucl{fill:var(--os-nuc-e);}
+.os-fig .os-rbc0{stop-color:var(--os-rbc-a);} .os-fig .os-rbc1{stop-color:var(--os-rbc-b);} .os-fig .os-rbc2{stop-color:var(--os-rbc-c);}
+.os-fig .os-rbc{fill:url(#osRbc);stroke:var(--os-rbc-c);stroke-width:1.4;}
+.os-fig .os-pallor{fill:var(--os-pallor);filter:blur(5px);}
+.os-fig .os-sheen{fill:#fff;opacity:.35;}
+.os-fig .os-hb0{stop-color:var(--os-hb);} .os-fig .os-hb1{stop-color:transparent;stop-opacity:0;}
+.os-fig .os-hb{fill:url(#osHb);}
+.os-fig .os-ghost{fill:var(--os-hb);stroke:var(--os-rbc-c);stroke-width:1.6;stroke-opacity:.75;stroke-dasharray:none;}
+.os-fig .os-ghost.tear{fill:none;stroke-linecap:round;}
+.os-fig .os-bag{fill:var(--os-tube);stroke:var(--os-tube-e);stroke-width:2;stroke-linejoin:round;}
+.os-fig .os-bag.taut{stroke-width:2.6;}
+.os-fig .os-crease{fill:none;stroke:var(--os-tube-e);stroke-width:1;stroke-linecap:round;}
+.os-fig .os-bagsheen{fill:none;stroke:#fff;stroke-opacity:.6;stroke-width:2.5;stroke-linecap:round;}
+:root[data-theme="dark"] .os-fig .os-bagsheen{stroke-opacity:.15;}
+.os-fig .os-bagend{fill:var(--os-tube);stroke:var(--os-tube-e);stroke-width:1.4;stroke-linejoin:round;}
+.os-fig .os-knot{fill:var(--os-memb);}
+.os-fig .os-string{fill:none;stroke:var(--muted);stroke-width:1.5;}
 .os-fig .os-flow{fill:none;stroke:var(--bio-deo2);stroke-linecap:round;}
 .os-fig .os-flowhead{fill:var(--bio-deo2);}
 .os-fig .os-down{fill:none;stroke:var(--bio-deo2);stroke-width:3;}
