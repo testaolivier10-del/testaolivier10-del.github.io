@@ -127,5 +127,10 @@
   T.mount('hardy-weinberg', function(app, data){
     explore(app);
     T.skillTool(app, data, { slug: 'hardy-weinberg', kind: 'hw', stage: stage });
-  });
+  }, {
+    // Tool Studio (docs/tools-calm.md; bio-tools.js studioArrange)
+    studio: { dock: ['.hw-sl'], stageAlso: ['.hw-key'], hint: { target: '.sk-grip', text: 'Drag the corner' },
+      caption: function(g){ return g.live ? T.esc(T.firstSentence(g.live)) : '<b>p = ' + g.ro(0) + ', q = ' + g.ro(1) + '.</b> Each square’s area is a genotype’s frequency.'; },
+      pills: function(g){ return [{ k: 'p', html: g.ro(0), tone: 'readout' }]; },
+      pillsR: function(g){ return [{ html: 'AA ' + g.ro(2) + ' · Aa ' + g.ro(3) + ' · aa ' + g.ro(4), tone: 'ghost' }]; } } });
 })();
