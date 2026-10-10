@@ -109,3 +109,25 @@ test('findings quote the case, never invent', () => {
   assert.deepEqual([...f.legs[0].dcap], ['D', 'T']);
   assert.equal(f.head.length, 0);
 });
+
+/* Give or withhold: every deciding phrase is on that drug's own card. */
+test('formulary give/withhold cards quote their drug card', () => {
+  const s = sandbox();
+  s.document.getElementById = () => null;
+  vm.runInContext(read('nremt/assets/formulary-cards.js').replace("if(!mount) return;", "if(!mount){ window.NremtFormularyCards = { CARDS: CARDS }; return; }"), s);
+  const cards = s.NremtFormularyCards.CARDS;
+  assert.ok(cards.length >= 15);
+  const html = read('nremt/formulary.html');
+  const norm = (x) => x.replace(/<[^>]+>/g, '').replace(/&rsquo;|&lsquo;/g, "'").replace(/&ndash;/g, '–').replace(/&mdash;/g, '—')
+    .replace(/&#8322;/g, '₂').replace(/&amp;/g, '&').replace(/\s+/g, ' ');
+  const ids = new Set();
+  for(const c of cards){
+    assert.ok(!ids.has(c.id), `duplicate ${c.id}`); ids.add(c.id);
+    const at = html.indexOf('<h2>' + c.drug + '</h2>');
+    assert.ok(at > 0, `${c.id}: no card for ${c.drug}`);
+    const card = norm(html.slice(at, html.indexOf('<div class="drug">', at + 10) > 0 ? html.indexOf('<div class="drug">', at + 10) : html.indexOf('</div>\n\n\n', at)));
+    assert.ok(card.includes(c.rule.replace(/'/g, "'")), `${c.id}: "${c.rule}" is not on the ${c.drug} card`);
+    assert.equal(typeof c.give, 'boolean');
+  }
+  assert.ok(cards.some((c) => c.give) && cards.some((c) => !c.give));
+});
