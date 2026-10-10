@@ -1172,3 +1172,4 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .rr-ls .rr-pick{display:grid !important;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:end;}
 .rr-ls .rr-pick .tfield{margin:0;min-width:0;}
 .rr-ls .rr-reagent.tchip--mini{min-height:44px;}
+.ls-foot .ls-foot-c{margin:0;padding:0;font-size:var(--ls-s);line-height:1.5;}

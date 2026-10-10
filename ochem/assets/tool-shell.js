@@ -74,6 +74,18 @@
     if(!document.querySelector('main')) studio.root.setAttribute('role', 'main');
     // The tool's drawings are styled under .tool-root (tools.css).
     studio.root.classList.add('tool-root');
+    /* The site footer now lives at the end of About, inside the main
+       landmark, where a <footer> no longer means the page's contentinfo (and
+       check-a11y flags a footer inside main). Same links, same text, as a
+       plain group. Shared layer request filed. */
+    [].slice.call(studio.root.querySelectorAll('footer')).forEach(function(f){
+      var d = document.createElement('div');
+      d.className = (f.className ? f.className + ' ' : '') + 'ls-foot-c';
+      d.setAttribute('role', 'group'); d.setAttribute('aria-label', 'Site links');
+      while(f.firstChild) d.appendChild(f.firstChild);
+      f.parentNode.replaceChild(d, f);
+    });
+
     /* Focus trap in the phone sheet, for content the shared trap misreads:
        controls inside a closed <details> count as visible there (Chrome keeps
        their boxes), so Tab from the last real control left the sheet. This

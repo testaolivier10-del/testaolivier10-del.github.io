@@ -610,9 +610,9 @@
       '<div class="tpanel">' +
         '<div class="tpanel__head">Which is more stabilized by resonance?</div>' +
         '<div class="trow" style="gap:10px;flex-wrap:wrap;">' +
-          '<select class="mb__input" id="cmpA" style="max-width:220px;">' + options(cmpLeft && cmpLeft.id) + '</select>' +
+          '<select class="mb__input" id="cmpA" aria-label="First species" style="max-width:220px;">' + options(cmpLeft && cmpLeft.id) + '</select>' +
           '<span class="tmuted" style="font-weight:900;">vs</span>' +
-          '<select class="mb__input" id="cmpB" style="max-width:220px;">' + options(cmpRight && cmpRight.id) + '</select>' +
+          '<select class="mb__input" id="cmpB" aria-label="Second species" style="max-width:220px;">' + options(cmpRight && cmpRight.id) + '</select>' +
         '</div>' +
       '</div>' +
       '<div class="tsplit tsplit--wide">' +
