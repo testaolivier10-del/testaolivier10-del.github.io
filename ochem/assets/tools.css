@@ -63,7 +63,7 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 
    .tool-modes  the one segmented mode switch, with .tool-step beside it: one
                 plain sentence saying what to do first, rewritten per mode.
-   .tool-more   a disclosure for everything past the first few controls and
+   .tool-more   a disclosure (the site's one marker, var(--disclose)) for everything past the first few controls and
                 for the long explanations. Its summary says what is inside
                 (and, for settings, their current values), so nothing that
                 changes the answer is ever out of sight. */
@@ -75,14 +75,11 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .tool-more > summary{cursor:pointer;min-height:40px;display:flex;align-items:center;flex-wrap:wrap;gap:0 6px;
   font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);list-style:none;}
 .tool-more > summary::-webkit-details-marker{display:none;}
-.tool-more > summary::after{content:"Show";margin-left:auto;font:900 12px var(--font-ui);letter-spacing:0;text-transform:none;color:var(--accent-text);}
-.tool-more[open] > summary::after{content:"Hide";}
+.tool-more > summary::before{content:var(--disclose);display:inline-block;width:12px;margin-right:4px;font-size:15px;line-height:1;color:var(--accent-text);transition:transform .15s ease;}
+.tool-more[open] > summary::before{transform:rotate(90deg);}
 .tool-more > summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px;}
 .tool-more__now{text-transform:none;letter-spacing:0;font-weight:800;color:var(--ink);}
 .tool-more--why > summary{font-size:13px;letter-spacing:0;text-transform:none;color:var(--accent-text);}
-.tool-more--why > summary::after,.tool-more--why[open] > summary::after{content:none;}
-.tool-more--why > summary::before{content:"\203A";display:inline-block;margin-right:6px;transition:transform .15s ease;}
-.tool-more--why[open] > summary::before{transform:rotate(90deg);}
 .tool-more--flush{margin-top:0;border-top:0;padding-top:0;}
 @media (max-width:560px){
   .tool-modes > .tseg{flex:1 0 100%;display:flex;}
