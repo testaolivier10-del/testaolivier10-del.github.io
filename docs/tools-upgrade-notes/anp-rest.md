@@ -83,3 +83,45 @@ what the owner should check. Accuracy list at the end.
 4. **Calculator pictures:** tube width from resistance uses r = (R0/R)^(1/4) (Poiseuille, other factors equal) and
    particle speed = flow / r², relative to the defaults; the arterial wave is schematic (stated in its caption);
    the cardiac-output jug fills at 10x speed (stated). Every number shown is the calculator's own (tested).
+
+## Accuracy review
+Independent review 2026-10-09 (spec decision 87). Sources: OpenStax Anatomy and Physiology 2e (Fig 19.4, 19.18, 13.18,
+23.2, 25.10; 20.2 Poiseuille and blood flow; 20.2 MAP; 22.4 and 15.4 audiometry conventions), the graph data itself.
+1. **Graph readings (Explore):** values are read from the drawn curve (tests pass). **Correct.** But the "What if"
+   readout pairs each overlay with a base curve by shape when the panel has several curves, and 14 overlays were paired
+   with the wrong one, so the curve that "slides" and the readout's change were against the wrong line: audiogram fluid
+   vs age 70 (should be the healthy ear: +30 dB, not +20), pneumothorax vs alveolar, albuterol vs normal (should be
+   patient A), demyelination vs the 120 m/s axon (should be 50 m/s), hypnogram cut vs a REM bar, new-antigen IgG vs IgM,
+   lactase tablets / antibiotics vs the lactase-persistent curve (should be low lactase), GFR blocked / sympathetic vs
+   the dashed comparison line, SGLT2 excreted vs reabsorbed, low-urea vs the shared segment, second stretch vs skeletal
+   muscle, and the new K+ equilibrium line read as a change in membrane potential. **Fixed:** these overlays carry
+   `"from"` (graphs.js honours it strictly; `"none"` = a new line, read on its own row); test added in
+   scripts/test/anp-graphs.test.mjs. Single-curve panels pair correctly.
+2. **Place-the-curve (12):** frank-starling sympathetic (up) and weak muscle (down), O2–Hb acid/CO2/heat (right) and
+   fetal (left, P50 near 19), CO2 response with metabolic acid (up and left), protanomalous L (left toward M), audiogram
+   fluid (down on its reversed axis = higher dB HL = worse; a downward drag on screen is down on that chart),
+   urine volume 900 mOsm (up, 0.75 L = 900/1200), pH line at HCO3 12 (down about 0.3 = log 2), ADH after bleed (left
+   and steeper), infected wound (right), calcium sensitizer (left). Each key matches the axes and its overlay data.
+   **Correct.**
+3. **Pathway traces:** all 41 points overlaid on the five figures sit on the structure their step names (checked
+   visually). **Correct.** Blood token: blue (deoxygenated) through the pulmonary arteries, purple at the pulmonary
+   capillaries, orange from the pulmonary veins on; same at the systemic capillaries; nephron blood stays oxygenated
+   through the efferent arteriole. **Correct.** But Trace it marked a tap on another printed label of the same step
+   wrong and called it "not on this pathway" (Right pulmonary arteries for "Pulmonary arteries", Pulmonary trunk, Right
+   pulmonary veins, venae cavae, lower-body systemic vessels, Left atrium / Bachmann's bundle for "Atria depolarize",
+   Lateral aperture for "Median and lateral apertures", lateral ventricle for the choroid plexus step). **Fixed:**
+   `also` lists in pathway-traces.json count as right; the wording for other labels is now "not where the next step
+   happens"; test added.
+4. **Calculator pictures:** r = (R0/R)^(1/4) from R ∝ 1/r⁴ (Poiseuille). **Correct.** Speed = flow / r² **correct**,
+   but the radius calculators compared it with the default flow input rather than the flow before the change, and the
+   caption said "a narrow tube carries its smaller flow faster", which is false at a held pressure gradient (v ∝ ΔP·r²:
+   half the radius gives a quarter of the speed). **Fixed:** baseline is the flow before the change; the caption states
+   the computed speed ratio and when narrowing speeds or slows flow. Arterial wave labelled schematic; its drawn mean
+   (about 40% of the pulse pressure above DBP) is not shown as a number; MAP ≈ DBP + PP/3 is the calculator's own.
+   Jug at 10x speed stated. Balance arrows (Starling; glomerular NFP = GBHP − CHP − BCOP) and stacks add up (tested).
+   **Correct.**
+5. **3D links:** 55 lab names and 2 word-root terms map to body-map labels. Every one names the same structure, except
+   os-1-12 (regional terms), where "Femur" means the thigh region and "Patella" the knee region (the lab accepts
+   "thigh" / "kneecap" there), not the bones. **Fixed:** no 3D link for regional-term labels (Umbilicus on that figure loses its link too, a small cost). Others (Bladder → Urinary
+   bladder, Ureter → Ureters, Testes → Testis, lungs → Lung, Pulmonary semilunar valve → Pulmonary valve, Dorsalis pedis
+   artery) are the same structure. **Correct.**

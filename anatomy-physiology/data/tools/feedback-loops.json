@@ -1427,7 +1427,7 @@
       "live": {
         "variable": "Pressure in the large arteries",
         "dir": "down",
-        "broken": "partial"
+        "broken": "slower"
       },
       "scenario": "You stand up quickly after lying on a couch. Blood pools in the veins of your legs, less returns to your heart, and the pressure in your large arteries dips. Within a few heartbeats it is back to normal.",
       "slots": {
@@ -2274,7 +2274,7 @@
       "live": {
         "variable": "Plasma potassium",
         "dir": "up",
-        "broken": "uncorrected"
+        "broken": "slower"
       },
       "scenario": "After a large meal of bananas and potatoes, plasma potassium creeps up. Over the next hours the extra potassium leaves in the urine and the level settles.",
       "slots": {

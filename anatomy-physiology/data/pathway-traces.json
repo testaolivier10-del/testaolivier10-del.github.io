@@ -1,21 +1,24 @@
 {
-  "about": "Pathways traced on a real figure (tools upgrade 2026-10, docs/tools-upgrade-notes/anp-rest.md). Per pathway id: the figure, one point per step in image pixels (where that step happens on the drawing), the figure label each point stands on (null when the step is a region or event with no printed label of its own), the steps reached by a jump between two drawings of the same figure (0-based), and the token drawn (blood, impulse, fluid, food). Points were placed by eye on the figure and checked against an overlay; scripts/test/anp-pathway-traces.test.mjs checks their shape. A pathway is listed only when every step has a place on the figure.",
+  "about": "Pathways traced on a real figure (tools upgrade 2026-10, docs/tools-upgrade-notes/anp-rest.md). Per pathway id: the figure, one point per step in image pixels (where that step happens on the drawing), the figure label each point stands on (null when the step is a region or event with no printed label of its own), the steps reached by a jump between two drawings of the same figure (0-based), and the token drawn (blood, impulse, fluid, food). also (optional, one list per step) names other printed labels that are the same step, such as the right pulmonary arteries for Pulmonary arteries; a tap on one counts as right. Points were placed by eye on the figure and checked against an overlay; scripts/test/anp-pathway-traces.test.mjs checks their shape. A pathway is listed only when every step has a place on the figure.",
   "traces": {
     "blood-flow": {
       "figure": "os-19-4", "token": "blood",
       "pts": [[640,290],[688,366],[770,402],[742,207],[880,118],[268,795],[845,185],[835,262],[875,350],[790,246],[785,80],[372,642],[330,690]],
       "labels": ["right-atrium","tricuspid-valve","right-ventricle","pulmonary-semilunar-valve","left-pulmonary-arteries","pulmonary-capillaries","left-atrium","mitral-valve","left-ventricle","aortic-semilunar-valve","aorta","systemic-capillaries-upper-body","systemic-veins-upper-body"],
+      "also": [[], [], ["right-ventricle-loop"], [], ["right-pulmonary-arteries", "pulmonary-trunk", "pulmonary-trunk-loop"], [], ["pulmonary-veins", "right-pulmonary-veins", "left-atrium-loop"], [], ["left-ventricle-loop"], [], ["systemic-arteries-upper-body", "systemic-arteries-lower-body"], ["systemic-capillaries-lower-body"], ["systemic-veins-lower-body", "superior-vena-cava", "inferior-vena-cava"]],
       "jump": [5, 6, 11]
     },
     "conduction": {
       "figure": "os-19-18", "token": "impulse",
       "pts": [[465,300],[455,432],[495,382],[495,382],[600,408],[700,548],[752,652],[722,512]],
-      "labels": ["sinoatrial-node","right-atrium","atrioventricular-node","atrioventricular-node","av-bundle","bundle-branches","purkinje-fibers","left-ventricle"]
+      "labels": ["sinoatrial-node","right-atrium","atrioventricular-node","atrioventricular-node","av-bundle","bundle-branches","purkinje-fibers","left-ventricle"],
+      "also": [[], ["left-atrium", "bachmanns-bundle"], [], [], [], [], [], ["right-ventricle"]]
     },
     "csf-flow": {
       "figure": "os-13-18", "token": "fluid",
       "pts": [[465,292],[430,322],[460,346],[575,385],[610,442],[632,508],[745,175],[735,128]],
-      "labels": ["choroid-plexus","interventricular-foramen","third-ventricle","cerebral-aqueduct","fourth-ventricle","median-aperture","subarachnoid-space","arachnoid-granulation"]
+      "labels": ["choroid-plexus","interventricular-foramen","third-ventricle","cerebral-aqueduct","fourth-ventricle","median-aperture","subarachnoid-space","arachnoid-granulation"],
+      "also": [["lateral-ventricle"], [], [], [], [], ["lateral-aperture"], [], []]
     },
     "gi-food-route": {
       "figure": "os-23-2", "token": "food",

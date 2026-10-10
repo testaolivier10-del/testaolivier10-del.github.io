@@ -353,7 +353,8 @@
       function tapped(labelId, ptIndex){
         if(done) return;
         var want = k + 1, wantLab = T.labels[want];
-        var ok = labelId ? labelId === wantLab : ptIndex === want || (ptIndex != null && T.labels[ptIndex] === wantLab);
+        var alsoW = (T.also && T.also[want]) || [];
+        var ok = labelId ? labelId === wantLab || alsoW.indexOf(labelId) > -1 : ptIndex === want || (ptIndex != null && T.labels[ptIndex] === wantLab);
         while(hint.firstChild) hint.removeChild(hint.firstChild);
         if(ok){
           seg(want); dot(k);
@@ -369,7 +370,7 @@
         }
         misses++;
         var name = labelId ? nameOf(labelId) : ptIndex != null ? nameOf(T.labels[ptIndex]) : '';
-        var where = ptIndex != null && ptIndex <= k ? 'The ' + esc(noun) + ' has already been there' : name ? 'That is the <b>' + esc(name) + '</b>' + (ptIndex != null && ptIndex > want ? ', step ' + (ptIndex + 1) + ': later in the pathway' : labelId && T.labels.indexOf(labelId) < 0 ? ', which is not on this pathway' : '') : 'Nothing on the pathway there';
+        var where = ptIndex != null && ptIndex <= k ? 'The ' + esc(noun) + ' has already been there' : name ? 'That is the <b>' + esc(name) + '</b>' + (ptIndex != null && ptIndex > want ? ', step ' + (ptIndex + 1) + ': later in the pathway' : labelId && T.labels.indexOf(labelId) < 0 ? ', not where the next step happens' : '') : 'Nothing on the pathway there';
         var b = T.pts[want], a = T.pts[k];
         hint.appendChild(mk('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], 'class': 'pt-ghost', 'stroke-width': SW }));
         hint.appendChild(mk('circle', { cx: b[0], cy: b[1], r: R * 1.5, 'class': 'pt-want' }));

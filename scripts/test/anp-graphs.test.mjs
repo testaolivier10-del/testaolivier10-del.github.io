@@ -77,3 +77,19 @@ test('a small drag means "stays put"', () => {
   assert.deepEqual({ ...M.pickByDrag([['right'], ['left'], ['none']], 5, 3) }, { i: 2, dir: 'none' });
   assert.equal(M.pickByDrag([['right'], ['left']], 0, 40).i, -1);
 });
+
+test('a "What if" curve replaces the curve it is about (review 2026-10)', () => {
+  const M = math();
+  const want = {
+    'breath-pressures/ipp-ptx': 'intrapleural', 'forced-expiration/albuterol': 'patient-a', 'conduction-velocity/demy': 'mid',
+    'hypnogram/cut': 'stage', 'antibody-response/new-igg': 'igg', 'lactose-breath-test/tablets': 'low', 'lactose-breath-test/antibiotic': 'low',
+    'ur-gfr-autoregulation/blocked': 'with', 'ur-gfr-autoregulation/symp': 'with', 'ur-glucose-tm/excr-drug': 'excreted',
+    'ur-nephron-osmolarity/low-urea': 'high-adh', 'mt-stress-relaxation/sm2': 'sm', 'audiogram/fluid': 'healthy', 'membrane-potential/ek-hk': null
+  };
+  for (const g of DATA.graphs) for (const q of g.questions) for (const os of (q.overlay && q.overlay.series) || []) {
+    const panel = g.panels[os.panel || 0];
+    if (os.from) assert.ok(os.from === 'none' || panel.series.some(s => s.id === os.from), `${g.id}/${os.id}: from names no curve on its panel`);
+    const k = `${g.id}/${os.id}`;
+    if (k in want) { const b = M.pairOf(g, os); assert.equal(b ? b.id : null, want[k], k); }
+  }
+});

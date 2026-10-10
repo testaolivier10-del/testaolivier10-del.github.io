@@ -1913,6 +1913,27 @@ are about the notes pages or question explanations, which the pass did not edit.
   (spec decision 79; docs/site-audit-notes/w6.md lists every edit). An instructor may want to review
   the new false options, the added "no change" variables and the reworded distractors.
 
+## Tools accuracy review (2026-10-09): items for review
+
+Spec decision 87; details in docs/tools-upgrade-notes/anp-loops.md and anp-rest.md ("Accuracy review").
+
+- **loop-live-debatable-variables** (pending review). The live gauge names a single controlled
+  variable per loop. Five are judgment calls kept as the loop's own stimulus wording:
+  lung-inflation "Lung inflation" (Hering-Breuer: stretch, not a homeostatic set point),
+  stretch-reflex-posture "Calf muscle length", enterogastric-brake "Chyme in the small intestine",
+  rp-lh-surge "Estradiol" (positive loop; the surge also needs progesterone priming in some
+  accounts), bt-wolff-law "Strain in the bone" (mechanostat, not a classic set point).
+- **loop-generic-cut** (pending review). Cutting any part other than the case's part shows the
+  variable drifting uncorrected. That is a teaching simplification (calcium has three effector
+  arms; glucose, temperature and pressure have redundant routes); the message now says so.
+- **fever-numbers** (pending review). 36.6 to 39 degrees C come from the loop's own scenario. 36.6 is
+  a lower normal than the 37 used by the other temperature loops; both are within the normal range.
+- **loop-positive-endings** (pending review). rp-lh-surge's ending ("the LH turns the follicle into
+  a corpus luteum, estradiol falls") is the loop's own classify text; textbooks also cite
+  ovulation and a direct fall in follicular estradiol after the surge. Kept.
+- **predict-feed-order** (pending review). The feed lists causes before effects, one chain after
+  another; branches are labeled "From ..." and the intro says the order is causal, not a timeline.
+
 ## Decided at the Phase 0 reviews
 
 These are recorded in the spec's decisions log (section 19) and kept here so the history stays in

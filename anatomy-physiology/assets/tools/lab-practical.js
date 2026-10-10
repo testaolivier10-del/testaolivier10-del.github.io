@@ -365,7 +365,9 @@
   }
   /* The Keep going strip for one structure: its lesson and notes, its
      glossary entry, and the 3D body when the body map has it by name. */
-  function see3d(lab){ return window.AnpToolKit && window.AnpToolKit.body3d ? window.AnpToolKit.body3d(lab.name) : ''; }
+  // A body-region label (os-1-12: "Femur" is the thigh region, "Patella" the
+  // knee region) is not the bone the body map shows, so it gets no 3D link.
+  function see3d(lab){ return window.AnpToolKit && window.AnpToolKit.body3d && lab.concept !== 'regional-terms' ? window.AnpToolKit.body3d(lab.name) : ''; }
   function keepGoing(host, lab, st){
     if(!host || !window.AnpToolKit) return;
     // The 3D link sits beside the name (body3d), so the strip leaves it out.

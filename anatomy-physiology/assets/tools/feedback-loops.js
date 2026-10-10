@@ -592,7 +592,8 @@
       if(mode === 'cut'){
         msg = 'With the ' + lower(cut) + ' cut, the signal stops at ' + lowFirst(l.slots[cut].short) + '. Nothing reaches the effector, so ' +
           (pos ? 'the loop cannot build: ' + lowFirst(lv.variable) + ' gets no stronger.'
-               : 'nothing pushes ' + lowFirst(lv.variable) + ' back: it stays off the set point, and drifts further while the stimulus lasts.');
+               : 'nothing pushes ' + lowFirst(lv.variable) + ' back: it stays off the set point, and drifts further while the stimulus lasts.') +
+          ' (Simplified: in the body, other routes or loops may partly make up for a broken part.)';
         now.innerHTML = '<b class="no">Loop broken.</b> ' + esc(msg);
       } else if(mode){
         var o = f.options[f.correct];

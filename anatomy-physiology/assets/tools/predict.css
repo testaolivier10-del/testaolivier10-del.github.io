@@ -164,6 +164,7 @@ a.pc-tag:hover{text-decoration:underline;color:var(--ink);}
 .pc-f-var.up b{color:var(--anp-hi);} .pc-f-var.down b{color:var(--anp-lo);}
 .pc-f-var.no{color:var(--bad-text);}
 .pc-f-arrow{color:var(--muted);}
+.pc-feed li.pc-f-step{flex-wrap:wrap;} .pc-f-from{color:var(--muted);font-weight:600;}
 .pc-f-miss{font-weight:700;}
 @keyframes pc-in{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
 @media (prefers-reduced-motion: reduce){ .pc-needle,.pc-ghost{transition:none;} .pc-feed li{animation:none;} }
