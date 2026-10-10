@@ -482,7 +482,11 @@
 .rt-base{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:3 3;}
 .rt-ghost{fill:none;stroke:var(--bio-s2);stroke-width:2.5;stroke-dasharray:5 4;}
 /* Simpson: one icon per organism, each species its own color and shape */
-.sd-q{fill:var(--bio-para-fill);stroke:var(--bio-para);stroke-width:2;}
+.sd-q{fill:var(--sd-ground,#E3F0D8);stroke:#8A6A3E;stroke-width:3;}
+:root[data-theme="dark"] .sd-q{--sd-ground:#1F2E1C;stroke:#B9935E;}
+.sd-qgrid{fill:none;stroke:#8A6A3E;stroke-opacity:.35;stroke-width:1;stroke-dasharray:4 4;}
+.ba.sd-o.c1{color:var(--bio-s1);} .ba.sd-o.c2{color:var(--bio-s2);} .ba.sd-o.c3{color:var(--bio-s4);} .ba.sd-o.c4{color:var(--bio-aff);}
+.ba.sd-o.c5{color:var(--bio-hi);} .ba.sd-o.c6{color:var(--bio-eff);} .ba.sd-o.c7{color:var(--bio-lo);} .ba.sd-o.c8{color:var(--bio-s5);}
 .sd-i{stroke:var(--white);stroke-width:.8;}
 .sd-i.ring{fill:none !important;stroke-width:2.6;}
 .sd-i.c1{fill:var(--bio-s1);} .sd-i.c2{fill:var(--bio-s2);} .sd-i.c3{fill:var(--bio-s4);} .sd-i.c4{fill:var(--bio-aff);}
@@ -930,3 +934,20 @@
   .gb-pts .gb-adj button{min-width:40px;}
   .gb-pts input{width:6ch;}
 }
+
+/* ===== Organism icons (bio-art.js, ApBioArt.icon): body in the species
+   color (color: on the group), details in ink, shared by energy flow,
+   population growth and Simpson's quadrat ===== */
+.ba{color:var(--bio-para);}
+.ba .ba-b{fill:currentColor;stroke:var(--ba-edge,rgba(20,30,28,.55));stroke-width:.9;stroke-linejoin:round;}
+.ba .ba-d{fill:none;stroke:var(--ba-edge,rgba(20,30,28,.6));stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;}
+.ba .ba-d.thin{stroke-width:.7;}
+.ba .ba-f{fill:var(--ba-dark,#1B2A26);}
+.ba .ba-w{fill:var(--ba-light,rgba(255,255,255,.75));}
+.ba .ba-head{fill:var(--ba-dark,#1B2A26);}
+.ba .ba-shell{fill:var(--ba-shell,#C98B5A);stroke:var(--ba-edge,rgba(20,30,28,.6));stroke-width:1.1;stroke-linecap:round;}
+.ba .ba-trunk{fill:#8A6A3E;}
+.ba .ba-beak{fill:#E6B23C;}
+.ba-wings .ba-w,.ba .ba-w.wing{fill:var(--ba-wing,rgba(150,190,215,.55));stroke:var(--ba-edge,rgba(20,30,28,.45));stroke-width:.6;}
+.ba .ba-leaf{fill:#5FA64B;stroke:var(--ba-edge,rgba(20,30,28,.55));stroke-width:.8;}
+:root[data-theme="dark"] .ba{--ba-wing:rgba(190,220,240,.4);--ba-edge:rgba(0,0,0,.6);--ba-dark:#0D1412;--ba-light:rgba(255,255,255,.55);}
