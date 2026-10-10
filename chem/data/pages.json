@@ -141,7 +141,8 @@
    "name": "ICE table drills",
    "title": "ICE table drills",
    "desc": "Unlimited ICE table problems: find K, find equilibrium amounts with small x and the 5% check, and perfect squares, checked row by row.",
-   "blurb": "Build the I, C and E rows step by step; every slip gets its own feedback.", "lede": "Set up and solve ICE tables, and watch Q close in on K."
+   "blurb": "Build the I, C and E rows step by step; every slip gets its own feedback.", "lede": "Set up and solve ICE tables, and watch Q close in on K.",
+   "studio": true
   },
   {
    "slug": "q-vs-k",
