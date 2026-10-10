@@ -819,3 +819,17 @@
   .bt-stage-slot.wp-pin .sk-cap{font-size:13px;line-height:1.4;}
   .bt-stage-slot.wp-pin .wp-fig{max-height:30vh;width:auto;max-width:100%;display:block;margin:0 auto;}
 }
+
+/* Graph builder on a phone: each point's controls wrap under its name instead of running off
+   the right edge of a sideways-scrolling table. */
+@media (max-width:560px){
+  .gb-pts thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+  .gb-pts tr{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);}
+  .gb-pts th,.gb-pts td{border:0;padding:0;}
+  .gb-pts th[scope=row]{flex:1 0 100%;}
+  .gb-pts td{display:flex;align-items:center;gap:6px;}
+  .gb-pts td::before{content:attr(data-col);font:800 13px var(--font-ui);color:var(--muted);min-width:1ch;}
+  .gb-pts .gb-adj{gap:3px;}
+  .gb-pts .gb-adj button{min-width:40px;}
+  .gb-pts input{width:6ch;}
+}
