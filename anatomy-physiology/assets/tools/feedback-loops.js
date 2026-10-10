@@ -405,6 +405,7 @@
      cannot build). A part the loop does not have ("None: same cells") cannot
      be cut, and says why. */
   function reduced(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
+  function lowFirst(t){ t = String(t); return /^[A-Z][a-z]/.test(t) ? t.charAt(0).toLowerCase() + t.slice(1) : t; }
   function noPart(l, k){ return /^none\b/i.test(l.slots[k].short); }
   var BROKEN_CUT = { uncorrected: 1, worse: 1, stalls: 1, text: 1, never: 0, reset: 0, partial: 0, slower: 0, corrected: 0 };
   function partner(l){
@@ -589,9 +590,9 @@
       running = false; panel.classList.remove('is-running');
       var mode = brokenMode(), msg;
       if(mode === 'cut'){
-        msg = 'With the ' + lower(cut) + ' cut, the signal stops at ' + l.slots[cut].short.charAt(0).toLowerCase() + l.slots[cut].short.slice(1) + '. Nothing reaches the effector, so ' +
-          (pos ? 'the loop cannot build: ' + lv.variable.toLowerCase() + ' gets no stronger.'
-               : 'nothing pushes ' + lv.variable.toLowerCase() + ' back: it stays off the set point, and drifts further while the stimulus lasts.');
+        msg = 'With the ' + lower(cut) + ' cut, the signal stops at ' + lowFirst(l.slots[cut].short) + '. Nothing reaches the effector, so ' +
+          (pos ? 'the loop cannot build: ' + lowFirst(lv.variable) + ' gets no stronger.'
+               : 'nothing pushes ' + lowFirst(lv.variable) + ' back: it stays off the set point, and drifts further while the stimulus lasts.');
         now.innerHTML = '<b class="no">Loop broken.</b> ' + esc(msg);
       } else if(mode){
         var o = f.options[f.correct];
@@ -602,7 +603,7 @@
         now.innerHTML = '<b class="ok">Positive feedback.</b> ' + esc(msg);
         if(lv.end && !reduced()) later(function(){ tween(0, 1400); }, 2200);
       } else {
-        msg = 'The response opposed the stimulus and pulled ' + lv.variable.toLowerCase() + ' back to the ' + (spOff ? 'new ' : '') + 'set point: negative feedback. As the gap closed, the stimulus faded and the loop went quiet.';
+        msg = 'The response opposed the stimulus and pulled ' + lowFirst(lv.variable) + ' back to the ' + (spOff ? 'new ' : '') + 'set point: negative feedback. As the gap closed, the stimulus faded and the loop went quiet.';
         now.innerHTML = '<b class="ok">Back at the ' + (spOff ? 'new ' : '') + 'set point.</b> ' + esc(msg);
       }
       say(msg);
@@ -661,10 +662,10 @@
           panel.querySelectorAll('.fl-cutb').forEach(function(x){ x.setAttribute('aria-pressed', String(x.getAttribute('data-cut') === '')); });
           say(cutfb.textContent);
         } else if(cut === f.part){
-          cutfb.innerHTML = '<p><b>The case:</b> ' + esc(f.q) + '</p><p class="anp-small">Push ' + esc(lv.variable.toLowerCase()) + ' off again to see what happens.</p>';
+          cutfb.innerHTML = '<p><b>The case:</b> ' + esc(f.q) + '</p><p class="anp-small">Push ' + esc(lowFirst(lv.variable)) + ' off again to see what happens.</p>';
           cutfb.hidden = false; say('Case: ' + f.q);
         } else {
-          cutfb.innerHTML = '<p>' + esc(LABELS[cut]) + ' cut: ' + esc(l.slots[cut].short) + ' no longer works. Push ' + esc(lv.variable.toLowerCase()) + ' off again to see what happens.</p>';
+          cutfb.innerHTML = '<p>' + esc(LABELS[cut]) + ' cut: ' + esc(l.slots[cut].short) + ' no longer works. Push ' + esc(lowFirst(lv.variable)) + ' off again to see what happens.</p>';
           cutfb.hidden = false; say(cutfb.textContent);
         }
         v = 0; unshift(); draw(); now.textContent = '';
