@@ -320,7 +320,9 @@
 /* Tree reading */
 .tr-figwrap{overflow-x:auto;}
 .bt-fig svg.tr-fig{max-height:none;min-width:320px;max-width:600px;}
-.tr-fig .tr-edge{fill:none;stroke:var(--ink);stroke-width:2.5;}
+.tr-fig .tr-edge{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.tr-fig .ba.tr-o{color:#6FA36B;}
+.tr-fig .tr-tipg.sel .ba.tr-o{color:var(--bio-aff);}
 .tr-fig .tr-node circle{fill:var(--white);stroke:var(--ink);stroke-width:1.5;}
 .tr-fig .tr-node text{fill:var(--ink);font:800 11px var(--font-ui);}
 .tr-fig .tr-node.mrca circle{fill:var(--bio-aff-fill);stroke:var(--bio-aff);stroke-width:3.5;}
