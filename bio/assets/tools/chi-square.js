@@ -45,7 +45,7 @@
     v.cats.forEach(function(c, i){
       var x = cx(i), o = v.obs[i], top = by(o);
       if(v.drag) p.push('<rect class="sk-col" data-k="' + i + '" x="' + (x - pw / n / 2).toFixed(1) + '" y="' + BT + '" width="' + (pw / n).toFixed(1) + '" height="' + BH + '"/>');
-      p.push('<rect class="sk-obs ' + CLS[i] + '" x="' + (x - bw / 2).toFixed(1) + '" y="' + top.toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + (BT + BH - top).toFixed(1) + '"/>');
+      p.push('<path class="sk-obs ' + CLS[i] + '" d="' + T.barPath(x - bw / 2, top, bw, BT + BH - top) + '"/>');
       var e = v.exp ? v.exp[i] : v.expMine && isFinite(v.expMine[i]) ? v.expMine[i] : null;
       if(e != null){
         var ey = by(e);

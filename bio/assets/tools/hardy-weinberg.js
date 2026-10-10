@@ -20,7 +20,7 @@
   var F = T.F, esc = T.esc;
 
   /* The square: side Z at (X0, Y0), split at p. */
-  var Z = 200, X0 = 34, Y0 = 34, R = 7.2, GAP = 17, PX = 254, PY = 46;
+  var Z = 200, X0 = 34, Y0 = 38, R = 7.2, GAP = 17, PX = 254, PY = 46;
   function square(p, o){
     o = o || {};
     var q = 1 - p, s = Z * p, h = [], A = o.A || 'A', a = o.a || 'a';
@@ -33,8 +33,13 @@
     cell(X0, Y0 + s, s, Z - s, 'g1', A + a, p * q);
     cell(X0 + s, Y0 + s, Z - s, Z - s, 'g2', a + a, q * q);
     h.push('<rect class="hw-frame" x="' + X0 + '" y="' + Y0 + '" width="' + Z + '" height="' + Z + '"/>');
-    if(s > 24) h.push('<text class="sk-ph" x="' + (X0 + s / 2).toFixed(1) + '" y="' + (Y0 - 8) + '" text-anchor="middle">' + esc(A) + ': p</text>');
-    if(Z - s > 24) h.push('<text class="sk-ph" x="' + (X0 + s + (Z - s) / 2).toFixed(1) + '" y="' + (Y0 - 8) + '" text-anchor="middle">' + esc(a) + ': q</text>');
+    // gametes on the edges: an egg (round, with a nucleus) over each column, a sperm beside each row
+    var egg = function(x, y){ return '<g class="hw-gam egg"><circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="6"/><circle class="n" cx="' + (x + 1).toFixed(1) + '" cy="' + (y - 1).toFixed(1) + '" r="2"/></g>'; };
+    var sperm = function(x, y){ return '<g class="hw-gam sperm"><ellipse cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" rx="3.2" ry="4.4"/><path d="M' + x.toFixed(1) + ' ' + (y + 4.4).toFixed(1) + 'q-3 4 0 7t0 7"/></g>'; };
+    if(s > 24) h.push(egg(X0 + s / 2 - 22, Y0 - 12) + '<text class="sk-ph" x="' + (X0 + s / 2 + 4).toFixed(1) + '" y="' + (Y0 - 8) + '" text-anchor="middle">' + esc(A) + ': p</text>');
+    if(Z - s > 24) h.push((Z - s > 56 ? egg(X0 + s + (Z - s) / 2 - 22, Y0 - 12) : '') + '<text class="sk-ph" x="' + (X0 + s + (Z - s) / 2 + (Z - s > 56 ? 4 : 0)).toFixed(1) + '" y="' + (Y0 - 8) + '" text-anchor="middle">' + esc(a) + ': q</text>');
+    if(s > 50) h.push(sperm(X0 - 10, Y0 + s / 2 - 34));
+    if(Z - s > 50) h.push(sperm(X0 - 10, Y0 + s + (Z - s) / 2 - 34));
     if(s > 24) h.push('<text class="sk-ph" transform="translate(' + (X0 - 10) + ' ' + (Y0 + s / 2).toFixed(1) + ') rotate(-90)" text-anchor="middle">' + esc(A) + ': p</text>');
     if(Z - s > 24) h.push('<text class="sk-ph" transform="translate(' + (X0 - 10) + ' ' + (Y0 + s + (Z - s) / 2).toFixed(1) + ') rotate(-90)" text-anchor="middle">' + esc(a) + ': q</text>');
     h.push('<text class="sk-ph sk-dim" x="' + (X0 + Z / 2) + '" y="' + (Y0 + Z + 18) + '" text-anchor="middle">eggs across, sperm down</text>');

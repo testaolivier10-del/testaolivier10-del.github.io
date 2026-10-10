@@ -195,8 +195,12 @@
       var n = rep.n[t], total = n > 0 ? 2 * n : 100, nA = Math.round(p * total), W = 220, H = 230, out = [];
       if(!slots){ var g = M.rng(31337); slots = []; for(var i = 0; i < 400; i++) slots.push(g()); }
       var cols = total > 200 ? 20 : total > 100 ? 16 : total > 40 ? 12 : total > 12 ? 8 : 6, r = Math.min(9, (W - 40) / cols / 2 - 0.5), rows = Math.ceil(total / cols);
-      out.push('<defs><pattern id="hw-str" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="hw-bead-a" width="4" height="4"/><rect class="hw-bead-st" width="1.6" height="4"/></pattern></defs>');
-      out.push('<path class="hw-glass" d="M30 18 h160 v14 q14 8 14 26 v148 q0 18 -18 18 h-152 q-18 0 -18 -18 v-148 q0 -18 14 -26z"/>');
+      out.push('<defs><pattern id="hw-str" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="hw-bead-a" width="4" height="4"/><rect class="hw-bead-st" width="1.6" height="4"/></pattern>' +
+        '<radialGradient id="hw-gloss" cx=".35" cy=".3" r=".7"><stop offset="0" stop-color="#fff" stop-opacity=".75"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></radialGradient>' +
+        '<linearGradient id="hw-glassg" x1="0" x2="1"><stop offset="0" class="hw-g0"/><stop offset=".18" class="hw-g1"/><stop offset=".82" class="hw-g1"/><stop offset="1" class="hw-g0"/></linearGradient></defs>');
+      // a mason jar: screw lid, threads, shoulder, glass with an edge tint
+      out.push('<path class="hw-glass" d="M36 32 v6 q-16 8 -16 26 v142 q0 18 18 18 h144 q18 0 18 -18 v-142 q0 -18 -16 -26 v-6z"/>');
+      out.push('<path class="hw-thread" d="M38 36 h144M38 40 h144"/><rect class="hw-lid" x="30" y="16" width="160" height="16" rx="4"/><path class="hw-lidline" d="M30 21 h160M30 27 h160"/>');
       // order: shuffle positions by the seeded slots, so A and a mix; deterministic per generation
       var idx = []; for(var k = 0; k < total; k++) idx.push(k);
       var key = function(k){ return slots[(k * 7 + t * 13) % slots.length]; };
@@ -204,9 +208,10 @@
       var isA = {}; for(var j = 0; j < nA; j++) isA[idx[j]] = true;
       for(var b = 0; b < total; b++){
         var row = Math.floor(b / cols), col = b % cols, x = 34 + r + col * ((W - 68 - 2 * r) / Math.max(1, cols - 1)), y = 216 - r - row * (2 * r + 1.5);
-        out.push('<circle class="hw-bead ' + (isA[b] ? 'A' : 'a') + '" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r.toFixed(1) + '"' + (isA[b] ? '' : ' fill="url(#hw-str)"') + '/>');
+        out.push('<circle class="hw-bead ' + (isA[b] ? 'A' : 'a') + '" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r.toFixed(1) + '"' + (isA[b] ? '' : ' fill="url(#hw-str)"') + '/>' + (r > 3 ? '<circle class="hw-gl" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r.toFixed(1) + '"/>' : ''));
       }
-      out.push('<text class="hw-jlab" x="110" y="12" text-anchor="middle">' + (n > 0 ? 2 * n + ' alleles (' + n + ' adults)' : 'very large: 100 beads in proportion') + '</text>');
+      out.push('<path class="hw-shine" d="M30 70 V196 M40 62 V90"/>');
+      out.push('<text class="hw-jlab" x="110" y="10" text-anchor="middle">' + (n > 0 ? 2 * n + ' alleles (' + n + ' adults)' : 'very large: 100 beads in proportion') + '</text>');
       var lab = 'Gene pool of population ' + (st.rep + 1) + ' at generation ' + t + ': ' + nA + ' A and ' + (total - nA) + ' a beads of ' + total + (n > 0 ? '' : ' (in proportion)') + ', p = ' + F(p, 3) + '.';
       jarEl.innerHTML = '<svg class="hw-jarsvg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(lab) + '">' + out.join('') + '</svg>';
       card.querySelector('.hw-clock').textContent = 'Generation ' + t + ' · p = ' + F(p, 2);

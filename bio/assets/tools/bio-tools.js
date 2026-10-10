@@ -296,11 +296,11 @@
     if(cats) cats.forEach(function(c, i){ p.push('<text class="tick" x="' + sx(i).toFixed(1) + '" y="' + (T + ph + 18) + '" text-anchor="middle">' + esc(c) + '</text>'); });
     else ticks(s.x).forEach(function(v){ p.push('<line class="grid" y1="' + T + '" y2="' + (T + ph) + '" x1="' + sx(v).toFixed(1) + '" x2="' + sx(v).toFixed(1) + '"/><text class="tick" x="' + sx(v).toFixed(1) + '" y="' + (T + ph + 18) + '" text-anchor="middle">' + F(v, decimalsOf(s.x.step)) + '</text>'); });
     if(s.y.min < 0 && s.y.max > 0) p.push('<line class="zero" x1="' + L + '" x2="' + (L + pw) + '" y1="' + sy(0).toFixed(1) + '" y2="' + sy(0).toFixed(1) + '"/>');
-    p.push('<line class="axis" x1="' + L + '" y1="' + (T + ph) + '" x2="' + (L + pw) + '" y2="' + (T + ph) + '"/><line class="axis" x1="' + L + '" y1="' + T + '" x2="' + L + '" y2="' + (T + ph) + '"/>');
+    p.push('<line class="axis" x1="' + L + '" y1="' + (T + ph) + '" x2="' + (L + pw) + '" y2="' + (T + ph) + '"/><line class="axis y" x1="' + L + '" y1="' + T + '" x2="' + L + '" y2="' + (T + ph) + '"/>');
     if(s.vline) p.push('<line class="vline ' + (s.vline.cls || '') + '" x1="' + sx(s.vline.x).toFixed(1) + '" x2="' + sx(s.vline.x).toFixed(1) + '" y1="' + T + '" y2="' + (T + ph) + '"/>');
     (s.bars || []).forEach(function(b, i){
       var bw = Math.min(70, pw / cats.length * 0.55), x = sx(i) - bw / 2, y0 = sy(Math.max(0, s.y.min)), y1 = sy(b.value);
-      p.push('<rect class="bar ' + (b.cls || 's1') + '" x="' + x.toFixed(1) + '" y="' + Math.min(y0, y1).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + Math.abs(y1 - y0).toFixed(1) + '"/>');
+      p.push('<path class="bar ' + (b.cls || 's1') + '" d="' + barPath(x, Math.min(y0, y1), bw, Math.abs(y1 - y0), y1 <= y0) + '"/>');
       if(b.err) p.push(errBar(sx(i), clampY(b.value + b.err), clampY(b.value - b.err)));
     });
     (s.curves || []).forEach(function(c){
@@ -316,6 +316,12 @@
     p.push('<text class="lbl" x="' + (L + pw / 2) + '" y="' + (H - 10) + '" text-anchor="middle">' + lab(s.x) + '</text>');
     p.push('<text class="lbl" transform="translate(15 ' + (T + ph / 2) + ') rotate(-90)" text-anchor="middle">' + lab(s.y) + '</text>');
     return '<svg class="bio-svg bt-plot" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(s.title || 'Graph') + '">' + p.join('') + '</svg>';
+  }
+  /* A bar with rounded data-end (top for positive, bottom for negative) and a square base on the baseline. */
+  function barPath(x, y, w, h, up){
+    var r = Math.min(4, w / 2, Math.abs(h)); if(!(h > 0)) return 'M' + x.toFixed(1) + ' ' + y.toFixed(1) + 'h' + w.toFixed(1);
+    if(up === false) return 'M' + x.toFixed(1) + ' ' + y.toFixed(1) + 'h' + w.toFixed(1) + 'v' + (h - r).toFixed(1) + 'q0 ' + r + ' ' + (-r) + ' ' + r + 'h' + (-(w - 2 * r)).toFixed(1) + 'q' + (-r) + ' 0 ' + (-r) + ' ' + (-r) + 'z';
+    return 'M' + x.toFixed(1) + ' ' + (y + h).toFixed(1) + 'v' + (-(h - r)).toFixed(1) + 'q0 ' + (-r) + ' ' + r + ' ' + (-r) + 'h' + (w - 2 * r).toFixed(1) + 'q' + r + ' 0 ' + r + ' ' + r + 'v' + (h - r).toFixed(1) + 'z';
   }
   function errBar(x, y1, y2){ return '<path class="err" d="M' + x.toFixed(1) + ' ' + y1.toFixed(1) + 'V' + y2.toFixed(1) + 'M' + (x - 6).toFixed(1) + ' ' + y1.toFixed(1) + 'h12M' + (x - 6).toFixed(1) + ' ' + y2.toFixed(1) + 'h12"/>'; }
   function niceMax(v){ if(v <= 0) return 1; var p = Math.pow(10, Math.floor(Math.log10(v))); var ms = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10]; for(var i = 0; i < ms.length; i++) if(v <= ms[i] * p + 1e-9) return ms[i] * p; return 10 * p; }
@@ -541,7 +547,7 @@
 
   window.ApBioTools = {
     esc: esc, F: F, nid: nid, mount: mount, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
-    plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,
+    plot: plot, barPath: barPath, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,
     record: record, report: report, event: event, questions: questions, frq: frq, skillTool: skillTool,
     gradePart: gradePart, partHtml: partHtml, unitOf: unitOf
   };
