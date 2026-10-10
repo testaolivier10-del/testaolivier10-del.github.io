@@ -33,18 +33,18 @@
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
       '<section class="bt-card mei-card" aria-labelledby="mei-h"><h2 id="mei-h">The model</h2>' +
       '<div class="os-modes" role="group" aria-label="Mode"><button type="button" class="bt-btn" data-m="explore" aria-pressed="true">Explore</button><button type="button" class="bt-btn" data-m="make" aria-pressed="false">Make this gamete</button></div>' +
-      '<div class="os-chal mei-chal" hidden></div>' +
+      '<p class="bt-first">Press Next step to walk one cell through meiosis.</p><div class="os-chal mei-chal" hidden></div>' +
       '<div class="mei-stephead"><h3 class="mei-steptitle" tabindex="-1"></h3><p class="mei-steptext"></p></div>' +
-      '<div class="bt-fig mei-stagefig"></div><p class="bt-small mei-taphint"></p>' +
+      '<div class="bt-fig mei-stagefig bt-hero"></div><p class="bt-small mei-taphint"></p>' +
       '<div class="mei-stepper"><button type="button" class="bt-btn" data-a="back">Back</button><button type="button" class="btn-press sm" data-a="next">Next step</button><button type="button" class="btn-press sm alt" data-a="play">Play to gametes</button><div class="mei-stepsel"></div></div>' +
-      '<div class="bt-controls"></div>' +
-      '<div class="mei-lower"><div><div class="mei-words"></div></div><div><div class="bt-tabs" role="group" aria-label="Graph">' +
+      '<div class="bt-controls" data-primary="3"></div>' +
+      '<div class="mei-lower bt-num"><div><div class="mei-words"></div></div><div><div class="bt-tabs" role="group" aria-label="Graph">' +
       '<button type="button" class="bt-btn" data-v="count" aria-pressed="true">Chromosomes per cell</button><button type="button" class="bt-btn" data-v="dna" aria-pressed="false">DNA per cell</button>' +
       '</div><div class="bt-plotwrap"></div></div></div>' +
       '<dl class="bt-readout"></dl><p class="bt-summary"></p>' +
       '<div class="bt-buttons"><button type="button" class="btn-press sm" data-a="run">Record these gametes</button><button type="button" class="btn-press sm alt" data-a="series">Try every line-up</button><button type="button" class="bt-btn" data-a="clear">Clear runs</button></div>' +
       '<p class="bt-small bt-runnote" role="status" aria-live="polite"></p>' +
-      '<div class="mei-results"></div>' +
+      '<div class="mei-results bt-num"></div>' +
       '<details class="bt-data"><summary>Data tables: your runs and every cell at each step</summary><div class="bt-tables"></div></details></section>' +
       '<section class="bt-card" aria-labelledby="mei-q"><h2 id="mei-q">Questions about this model</h2><div class="bt-qs bio-qs"></div></section>');
     var card = app.querySelector('.bt-card'), ctl = card.querySelector('.bt-controls');
@@ -99,6 +99,8 @@
       ndPairWrap.innerHTML = ''; ndPairWrap.appendChild(s.el);
     }
     buildOrient(); buildNdPair();
+    // The two switches that change the gametes first; the rest under More options.
+    [cofs, ndSel.el, ndPairWrap, pairSel.el, orFs].forEach(function(x){ ctl.appendChild(x); });
 
     var stepSel = T.choiceSelect({ label: 'Go to step', value: 0, options: data.stages.map(function(s, i){ return { value: i, label: (i + 1) + '. ' + s.name }; }), onChange: function(v){ go(+v); } });
     card.querySelector('.mei-stepsel').appendChild(stepSel.el);
