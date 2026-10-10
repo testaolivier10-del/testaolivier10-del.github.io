@@ -62,7 +62,7 @@
       slider = T.slider({ label: 'x, the extent of reaction (' + p.unit + ')', min: 0, max: M.round(Math.floor(xhi / step) * step, 6), step: step, value: 0, decimals: Math.max(2, -Math.floor(Math.log10(step))), onInput: function(v){ x = v; draw(); } });
       xh.appendChild(slider.el);
       if(beaker) beaker.destroy();
-      beaker = window.ApChemBeaker.mount(host.querySelector('.ic-beaker'), { species: sp.map(function(s, i){ return { key: 's' + i, label: plain(s.html), name: plain(s.html), tone: i + 1 }; }), readout: 'qk', title: 'The mixture', max: 40, seed: 9 });
+      beaker = window.ApChemBeaker.mount(host.querySelector('.ic-beaker'), { species: sp.map(function(s, i){ return { key: 's' + i, label: plain(s.html), name: plain(s.html), tone: i + 1 }; }), readout: 'qk', title: 'The mixture', max: 40, seed: 9, vessel: 'gas' });
       draw();
     }
     function setX(v){ x = v; slider.set(v); draw(); }
@@ -130,7 +130,7 @@
     var perP = top / 12;
     var beaker = window.ApChemBeaker.mount(host.querySelector('.ic-beaker'), {
       species: p.species.map(function(s, i){ return { key: 's' + i, label: plain(s.html), name: plain(s.html), tone: i + 1 }; }),
-      readout: 'qk', title: 'The mixture', max: 40, seed: 3 });
+      readout: 'qk', title: 'The mixture', max: 40, seed: 3, vessel: 'gas' });
     function read(){
       ['I', 'C', 'E'].forEach(function(r){
         if(sure[r]) return;

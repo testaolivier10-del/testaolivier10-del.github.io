@@ -77,7 +77,7 @@
       }); });
       ctl.querySelector('.tx-run').addEventListener('click', function(){ timer ? stop() : run(); });
       if(beaker) beaker.destroy();
-      beaker = window.ApChemBeaker.mount(host.querySelector('.tx-beaker'), { species: speciesList(), readout: 'pH', title: 'The flask', max: 32, seed: seed });
+      beaker = window.ApChemBeaker.mount(host.querySelector('.tx-beaker'), { species: speciesList(), readout: 'pH', title: 'The flask', max: 32, seed: seed, vessel: 'flask' });
       var n0 = p.sys.Ca * p.sys.Va;
       host.querySelector('.tx-scale').innerHTML = 'Each particle stands for ' + M.fmt(n0 / per(), 2) + ' mmol. Not drawn: water and the spectator ' + (kind === 'sa' ? 'ions Na⁺ and Cl⁻' : kind === 'wb' ? 'ion Cl⁻' : 'ion Na⁺') + '. A species with less than half a particle\'s worth shows as 0.';
       draw();
@@ -130,7 +130,10 @@
         points: passed.map(function(m){ return { x: m.v, y: TT.pH(p.sys, m.v), cls: 's3', square: true }; }).concat([{ x: v, y: pH, cls: 's2' }]) });
       // Labels for the passed landmarks, and the indicator's range as a band.
       var d = TT.INDICATORS[ind], band = '<rect class="tx-band" x="' + L + '" width="' + PW + '" y="' + sy(d.hi).toFixed(1) + '" height="' + (sy(d.lo) - sy(d.hi)).toFixed(1) + '"/>' +
-        '<text class="tx-band-t" x="' + (L + PW - 6) + '" y="' + (sy(d.hi) + 13).toFixed(1) + '" text-anchor="end">' + esc(d.name) + '</text>';
+        '<path class="tx-band-e" d="M' + L + ' ' + sy(d.hi).toFixed(1) + 'h' + PW + 'M' + L + ' ' + sy(d.lo).toFixed(1) + 'h' + PW + '"/>' +
+        '<text class="tx-band-t" x="' + (L + PW - 6) + '" y="' + (sy(d.hi) + 13).toFixed(1) + '" text-anchor="end">' + esc(d.name) + '</text>' +
+        // A dashed drop line from each equivalence point once it is passed.
+        passed.filter(function(m){ return m.what.indexOf('equivalence') >= 0; }).map(function(m){ return '<line class="tx-eqv" x1="' + sx(m.v).toFixed(1) + '" x2="' + sx(m.v).toFixed(1) + '" y1="' + sy(TT.pH(p.sys, m.v)).toFixed(1) + '" y2="' + (PT + PH) + '"/>'; }).join('');
       var labs = passed.map(function(m){ var x = sx(m.v), y = sy(TT.pH(p.sys, m.v)), up = kind === 'wb' ? 1 : -1; return '<text class="tx-lm" x="' + (x + 8).toFixed(1) + '" y="' + (y + up * -14 + 4).toFixed(1) + '">' + m.label + '</text>'; }).join('');
       svg = svg.replace(/(<line class="axis")/, band + '$1').replace('</svg>', labs + '</svg>');
       var plot = host.querySelector('.tx-plot');
@@ -143,7 +146,7 @@
       var s = TT.species(p.sys, v), k = per() / (p.sys.Ca * p.sys.Va), counts = {};
       speciesList().forEach(function(sp){ counts[sp.key] = Math.round((s[sp.key] || 0) * k); });
       var reg = TT.region(p.sys, v), m = meaning(reg, pH, s);
-      beaker.update({ counts: counts, pH: pH, note: reg !== lastRegion ? m.short : '' });
+      beaker.update({ counts: counts, pH: pH, burette: v / p.vmax, note: reg !== lastRegion ? m.short : '' });
       lastRegion = reg;
       paint(pH);
       host.querySelector('.tx-meaning').innerHTML = '<p class="tx-where"><b>' + m.head + '</b> ' + m.text + '</p>';
@@ -151,8 +154,7 @@
     function paint(pH){
       var d = TT.INDICATORS[ind], c = COLORS[d.name], t = Math.max(0, Math.min(1, (pH - d.lo) / (d.hi - d.lo)));
       var mix = c.a.map(function(x, i){ return x + (c.b[i] - x) * t; });
-      var liq = host.querySelector('.lb-liquid');
-      if(liq) liq.style.fill = 'rgba(' + Math.round(mix[0]) + ',' + Math.round(mix[1]) + ',' + Math.round(mix[2]) + ',' + (0.85 * mix[3]).toFixed(2) + ')';
+      host.querySelectorAll('.tx-beaker .lb-liquid').forEach(function(liq){ liq.style.fill = 'rgba(' + Math.round(mix[0]) + ',' + Math.round(mix[1]) + ',' + Math.round(mix[2]) + ',' + (0.8 * mix[3]).toFixed(2) + ')'; });
       var word = t <= 0 ? c.words[0] : t >= 1 ? c.words[2] : c.words[1];
       var lo = TT.cross(p.sys, kind === 'wb' ? d.hi : d.lo, p.vmax), hi = TT.cross(p.sys, kind === 'wb' ? d.lo : d.hi, p.vmax), last = p.eqs[p.eqs.length - 1];
       var range = lo === Infinity ? 'never reaches its range on this curve' : hi === 0 ? 'is past its range before any titrant is added' :

@@ -251,10 +251,40 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .rp-cols i{font-style:normal;font-weight:800;text-transform:none;letter-spacing:0;}
 /* Bonds a little darker than the lesson scenes: on this stage the eye has
    to find the beta carbon and the C-Br bond at a glance. */
-.rp-stage .omol line,.rp-product .omol line{stroke:var(--muted);}
+
 /* molecules.js leaves atom text to the SVG default (black), which vanishes
    on dark discs; tool stages set it from the theme. */
 .tool-root .atom text{fill:var(--ink);}
+
+/* Structures in the tools, drawn the way a textbook draws them: no bubbles,
+   just element labels (heteroatoms in their conventional colors: O red,
+   N blue, halogens green or brown, S amber) with ink bonds that stop short of
+   each label. The atom disc stays, filled with the stage color and unstroked,
+   so it still clears the bonds and is still the tap target; tappable atoms
+   show a faint ring, and every feedback state (chosen, highlight, correct,
+   wrong) draws its ring as before. --mol-bg is the stage color. */
+.tool-root{--mol-bg:var(--paper);--el-O:#D0342C;--el-N:#2756C5;--el-Cl:#1F8A3B;--el-Br:#A2462A;--el-I:#7B3FA8;--el-F:#3C8E2E;--el-S:#B07A00;--el-P:#C35A12;}
+:root[data-theme="dark"] .tool-root{--el-O:#FF8A80;--el-N:#8FB0FF;--el-Cl:#7BD88F;--el-Br:#E9A27F;--el-I:#C9A0F0;--el-F:#9EE08A;--el-S:#F2CA5C;--el-P:#F6A86B;}
+.rp-product{--mol-bg:var(--tint-accent);}
+:root[data-theme="dark"] .rp-product{--mol-bg:#16302B;}
+.tool-root .omol .atom circle:not(.atom-hit):not(.lp-dot){fill:transparent;stroke:none;}
+.tool-root .omol .atom circle.atom-knock{fill:var(--mol-bg);stroke:none;}
+.tool-root .omol .atom:not(.atom--static) circle:not(.atom-hit):not(.lp-dot):not(.atom-knock){stroke:var(--line);stroke-width:1.5;stroke-dasharray:3 3;}
+.tool-root .omol .atom:not(.atom--static):hover circle:not(.atom-hit):not(.lp-dot):not(.atom-knock){stroke:var(--accent);stroke-width:2.5;}
+.tool-root .omol .atom.chosen circle:not(.atom-hit):not(.lp-dot):not(.atom-knock){stroke:var(--accent);stroke-width:3;fill:var(--tint-accent);}
+.tool-root .omol .atom--highlight circle:not(.atom-hit):not(.lp-dot):not(.atom-knock){stroke:var(--amber);stroke-width:3;fill:var(--tint-amber);}
+.tool-root .omol .atom--correct circle:not(.atom-hit):not(.lp-dot):not(.atom-knock){stroke:var(--good);stroke-width:3;fill:var(--tint-good);}
+.tool-root .omol .atom--wrong circle:not(.atom-hit):not(.lp-dot):not(.atom-knock){stroke:var(--bad);stroke-width:3;fill:var(--tint-bad);}
+.tool-root .omol .atom text{font-family:var(--font-ui);font-weight:800;letter-spacing:-.01em;}
+.tool-root .omol .el-O text{fill:var(--el-O);} .tool-root .omol .el-N text{fill:var(--el-N);}
+.tool-root .omol .el-Cl text{fill:var(--el-Cl);} .tool-root .omol .el-Br text{fill:var(--el-Br);}
+.tool-root .omol .el-I text{fill:var(--el-I);} .tool-root .omol .el-F text{fill:var(--el-F);}
+.tool-root .omol .el-S text{fill:var(--el-S);} .tool-root .omol .el-P text{fill:var(--el-P);}
+.tool-root .omol line:not(.obond){stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;}
+.tool-root .omol line.bond-faint{stroke:var(--line);}
+.tool-root .omol .lp-dot{fill:var(--ink);opacity:.8;}
+.tool-root .omol .oarrow-line{stroke-width:2.6;}
+.tool-root .omol .oarrow:hover .oarrow-line{stroke-width:3.4;}
 .rp-corner{position:absolute;width:calc(50% - 10px);height:calc(50% - 26px);display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr auto;align-items:start;gap:3px 6px;
   padding:9px 10px;border:var(--bw) solid var(--line);border-radius:var(--radius-sm);background:var(--white);color:var(--ink);
   cursor:pointer;text-align:left;font:inherit;overflow:hidden;transition:border-color .2s ease,background .2s ease,opacity .2s ease;}
@@ -334,7 +364,7 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ab-rcard__body{all:unset;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 8px 6px;cursor:grab;width:100%;}
 .ab-rcard__body:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:var(--radius);}
 .ab-rcard .omol svg{max-width:100%;max-height:120px;}
-.ab-card .omol svg{max-height:130px;}
+.ab-card .omol svg{max-height:170px;}
 .ab-rcard__n{align-self:flex-start;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--on-accent-fill);
   display:flex;align-items:center;justify-content:center;font:900 11.5px var(--font-mono);}
 .ab-rcard__name{font:900 12.5px var(--font-ui);color:var(--ink);text-align:center;}
@@ -357,7 +387,7 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ab-ario--warn{background:var(--tint-warn);color:var(--amber-text);}
 .ab-site__mol .omol svg{max-width:360px;max-height:190px;}
 .ab-site__f{font:800 14px var(--font-mono);color:var(--muted);text-align:center;margin-top:2px;}
-.ab-site__mol .atom:not(.atom--static) circle:not(.atom-hit){stroke:var(--accent);stroke-width:3;stroke-dasharray:4 3;}
+.ab-site__mol .atom:not(.atom--static) circle:not(.atom-hit):not(.lp-dot):not(.atom-knock){stroke:var(--accent);stroke-width:3;stroke-dasharray:4 3;}
 @media(max-width:640px){
   .ab-rorder{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
@@ -367,11 +397,18 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .sp-link{display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr);gap:12px;align-items:center;}
 .sp-link__mol .scene{margin:0 0 14px;padding:6px 4px;}
 .sp-link__mol .omol svg{max-width:360px;max-height:230px;}
+/* The spectrum is a figure: it scales to its box (it was a fixed 640 units
+   wide, so a phone showed only the 12 to 4 ppm end), on a panel with the
+   integration labels in the spectrum's ink. */
+.sp-chart .sp-int{font:800 11px var(--font-mono);fill:var(--muted);}
+.sp-chart .sp-sig{cursor:pointer;}
+.sp-chart .sp-sig:hover line{stroke:var(--accent);}
+.sp-link .sp-sig.is-on .sp-int{fill:var(--accent-text);}
 .sp-link .sp-sig.is-on line{stroke-width:3;}
-.sp-link__mol .omol line,.ab-rcard .omol line,.ab-card .omol line,.ab-site__mol .omol line{stroke:var(--muted);}
+
 .sp-link .sp-sig.is-on rect{fill:var(--tint-accent);}
 .sp-link .sp-sig:focus-visible rect{stroke:var(--accent);stroke-width:2;}
-.sp-link__mol .atom--highlight circle:not(.atom-hit){stroke:var(--accent);fill:var(--tint-accent);stroke-width:4;}
+.sp-link__mol .atom--highlight circle:not(.atom-hit):not(.lp-dot):not(.atom-knock){stroke:var(--accent);fill:var(--tint-accent);stroke-width:4;}
 .sp-link__mol .atom--highlight text{fill:var(--accent-text);}
 .sp-linknote{min-height:44px;font-size:13.2px;line-height:1.55;font-weight:700;color:var(--ink);margin:-2px 2px 14px;}
 .sp-linknote__why{display:block;color:var(--muted);margin-top:3px;}

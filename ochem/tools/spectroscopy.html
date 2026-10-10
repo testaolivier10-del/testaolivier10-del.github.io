@@ -130,6 +130,9 @@
     padding:10px 6px;margin-bottom:14px;overflow-x:auto;
   }
   .sp-chart svg{width:100%;height:auto;display:block;min-width:460px;}
+  /* The NMR panel sits beside the structure: it scales to its box so the whole 12 to 0 ppm axis shows on a phone. */
+  #spNMR svg{min-width:0;}
+  @media(max-width:560px){#spNMR .sp-axis{font-size:17px;}#spNMR .sp-int{font-size:17px;}}
   .sp-axis{font:700 9.5px var(--font-mono);fill:var(--muted);}
   .sp-int{font:800 10px var(--font-mono);fill:var(--muted);}
   .sp-peak,.sp-sig{cursor:pointer;}

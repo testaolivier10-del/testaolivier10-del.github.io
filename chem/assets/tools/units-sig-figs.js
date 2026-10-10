@@ -77,8 +77,10 @@
       // Unit chips: each placed factor's units, split into top and bottom.
       var top = [], bot = [];
       used.forEach(function(x){ tokens(x.f.u, x.p).forEach(function(t){ (t.top ? top : bot).push({ u: t.u, i: x.i, cancel: false }); }); });
-      top.forEach(function(a){ var b = bot.filter(function(c){ return !c.cancel && c.u === a.u; })[0]; if(b){ a.cancel = b.cancel = true; } });
-      var chip = function(c){ return '<span class="us-chip' + (c.cancel ? ' is-cancel' : '') + '">' + esc(c.u) + '</span>'; };
+      var pair = 0;
+      top.forEach(function(a){ var b = bot.filter(function(c){ return !c.cancel && c.u === a.u; })[0]; if(b){ a.cancel = b.cancel = true; a.pair = b.pair = (pair++ % 4) + 1; } });
+      // A cancelled pair shares a color and a slash, the way it is marked by hand.
+      var chip = function(c){ return '<span class="us-chip' + (c.cancel ? ' is-cancel us-p' + c.pair : '') + '">' + esc(c.u) + '</span>'; };
       var valTop = used.filter(function(x){ return x.p > 0; }).map(function(x){ return esc(x.f.v); }), valBot = used.filter(function(x){ return x.p < 0; }).map(function(x){ return esc(x.f.v); });
       host.querySelector('.us-frac').innerHTML = used.length ? '<div class="us-fr"><div class="us-num"><span class="us-vals">' + (valTop.join(' × ') || '1') + '</span><span class="us-chips">' + (top.map(chip).join('') || '<span class="us-chip is-one">1</span>') + '</span></div>' +
         (bot.length || valBot.length ? '<div class="us-bar"></div><div class="us-den"><span class="us-vals">' + valBot.join(' × ') + '</span><span class="us-chips">' + bot.map(chip).join('') + '</span></div>' : '') + '</div>' : '<p class="bt-small us-none">Your setup appears here.</p>';

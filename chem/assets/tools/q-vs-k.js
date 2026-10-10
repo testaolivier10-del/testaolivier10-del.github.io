@@ -51,7 +51,7 @@
       host.querySelector('.qk-eq').innerHTML = M.eqHtml(sp) + ' &nbsp; K<sub>c</sub> = ' + M.fmt(K, 2);
       host.querySelector('.qk-setup').textContent = 'Gases in a sealed vessel at constant temperature. Each particle is ' + M.fmt(ctx.per, 2) + ' mol, so at 1.00 L each particle is ' + M.fmt(ctx.per, 2) + ' M.';
       if(beaker) beaker.destroy();
-      beaker = window.ApChemBeaker.mount(host.querySelector('.qk-beaker'), { species: sp.map(function(s){ return { key: s.draw, label: s.html, mol: s.draw, name: s.html }; }), readout: 'qk', title: 'The vessel', max: 36, seed: seed });
+      beaker = window.ApChemBeaker.mount(host.querySelector('.qk-beaker'), { species: sp.map(function(s){ return { key: s.draw, label: s.html, mol: s.draw, name: s.html }; }), readout: 'qk', title: 'The vessel', max: 36, seed: seed, vessel: 'gas' });
       host.querySelector('.qk-amts').innerHTML = sp.map(function(s, i){
         return '<div class="qk-amt"><span class="qk-n">' + s.html + '</span><button type="button" class="bt-step" data-i="' + i + '" data-d="-1" aria-label="Remove one ' + esc(s.html) + '">−</button><b class="qk-c" data-i="' + i + '"></b><button type="button" class="bt-step" data-i="' + i + '" data-d="1" aria-label="Add one ' + esc(s.html) + '">+</button></div>';
       }).join('');
