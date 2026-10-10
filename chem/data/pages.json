@@ -133,7 +133,8 @@
    "name": "Particle diagrams",
    "title": "Particle diagram trainer",
    "desc": "Choose the right particle picture: water around ions, limiting reactants, equilibrium counts, and strong against weak acids, with feedback on each wrong one.",
-   "blurb": "Water around ions, limiting reactants, equilibrium counts and acid strength, drawn particle by particle.", "lede": "Build and read particle pictures of reactions, one particle at a time."
+   "blurb": "Water around ions, limiting reactants, equilibrium counts and acid strength, drawn particle by particle.", "lede": "Build and read particle pictures of reactions, one particle at a time.",
+   "studio": true
   },
   {
    "slug": "ice-table-drills",
