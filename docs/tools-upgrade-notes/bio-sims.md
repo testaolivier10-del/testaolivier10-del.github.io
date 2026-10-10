@@ -144,3 +144,32 @@ Phase 1 stage slot (`ApBioTools.mount(slug, fn, { stage })`, `ctx.redraw`). New 
 ## Owner checks
 - Predict/quiz modes record new item ids into mastery and Review; confirm that is wanted for every tool.
 - Osmosis "Calculate it: ψ practice" links to `water-potential.html`; U-Bio-skills may add the link back.
+
+## Accuracy review
+
+Independent review 2026-10-09 (branch `claude/tools-review-bio`). Models run in node on representative cases and
+compared with hand calculations; sources: OpenStax Biology 2e (ch. 5.2 osmosis/tonicity, 6.5 enzymes, 10.3 cell
+cycle control, 11.1 meiosis, 16.2 prokaryotic gene regulation, 19.2 population genetics, 46.2 energy flow),
+College Board AP Biology CED (topics 2.8, 3.2, 4.6, 6.5, 7.3, 8.2) and the AP Biology Equations and Formulas sheet.
+
+| Item | Verdict | Note / source |
+|---|---|---|
+| `osmosis.trajectory` | correct | Same Euler step as `simulate`; endpoint, monotone and lysis tests pass. |
+| Osmosis ψ = ψs + ψp, ψs = −iCRT (R 0.0831 L·bar/(mol·K), T in K) | correct | Formula sheet. Potato isotonic ≈ 0.30 M sucrose (model 0.298). |
+| Osmosis "why": turgor, plasmolysis (gap filled by outside solution), lysis, crenation, not at equilibrium | correct | OpenStax 5.2. |
+| Osmosis "why" for a turgid cell losing water (0.30 M at 0 °C) said "as the cell fills… stops the intake" | fixed | Now: loses a little water, ψp falls, stays turgid. |
+| Predict challenges: water moves but end state is "About unchanged"/"Normal"/"Flaccid" (e.g. bag 0.4 M in 0.35 M, 30 min, +0.7%) | fixed | Not clear-cut; generator now skips them. |
+| Dialysis bag with NaCl outside treated as impermeable | logged | Real tubing passes NaCl; challenges now use sucrose for the bag; why-text says so (needs-author `osmosis-bag-nacl`). |
+| `enzyme.states` occupancy and folded/motion split | correct | Reproduces `rate` (tested). Competitive: apparent Km = Km(1 + I/Ki), Vmax same; noncompetitive: Vmax/(1 + I/Ki), Km same (OpenStax 6.5). |
+| Enzyme denaturation reversibility | logged | Text already states the simplification honestly (needs-author `enzyme-reversible-denaturation`). |
+| Enzyme predict: >15% / <3% only | correct | Checked rate changes for all seven change types. |
+| Checkpoint texts (G1: p53 + Rb/cyclin D–CDK; G2; M spindle-assembly) | correct | OpenStax 10.3. |
+| Mystery-dish keys (p53, growth signal, spindle poison = checkpoint working, normal; G1 or G2 accepted for p53) | correct | Model: p53 loss → 24-33% divisions by damaged cells, 0 apoptosis. |
+| Meiosis MI nondisjunction → 2 n+1, 2 n−1; MII → 1 n+1, 1 n−1, 2 n | correct | Ran `meiosis.simulate`; OpenStax 13.1 (Biology 2e). |
+| lac mutant tables (wt, I⁻, Iˢ, Oᶜ, Z⁻), cAMP-CAP lowering in glucose | correct | I⁻ and Oᶜ identical haploid; either accepted. |
+| trp mutant quiz accepted only the exact one of trpR⁻ / trp Oᶜ, whose tables are identical (100/100) | fixed | Either now accepted, feedback says why; unit test added. |
+| wt lac explanation "tiny level in glucose with no lactose" (also in neither sugar) | fixed | "with no lactose". |
+| Signal-transduction block sentences (antagonist, G locked on = cholera toxin, locked off, PDE inhibitor, PKA inhibitor) | correct | Cholera toxin locks Gs on (OpenStax 9.3). |
+| Energy flow "heat leaves for good, energy flows one way"; ~10% "typical" | correct | OpenStax 46.2 (5-20% range; "about 10%" stated as typical). |
+| HW drift Guess N: N = 100 and N = 1000 sets overlapped in ~1-2% of draws (spread of final p) | fixed | Redraws unless SD of 8 final p > 0.15 (N 100) or < 0.10 (N 1000); test added. N = 1000 text softened ("drift only a little"). |
+| Tree reading: MRCA/clade sentence, rotation | correct | |
