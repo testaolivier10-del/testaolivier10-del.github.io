@@ -504,3 +504,33 @@
   .sg-card>.sg-stagefig+p,.sg-card>.os-play,.sg-card>.sg-why,.sg-card>.bt-controls{grid-column:2;}
   .sg-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
 }
+
+/* ===== Energy flow stage (tools upgrade U-Bio-sims) ===== */
+.ef-flowfig{background:var(--paper);border-radius:14px;padding:6px;}
+.bt-fig svg.ef-flow{max-height:none;max-width:560px;margin:0 auto;}
+.ef-flow text{fill:var(--ink);}
+.ef-flow .ef-lab{font:800 12px var(--font-ui);}
+.ef-flow .ef-num{font:700 11px var(--font-ui);fill:var(--muted);}
+.ef-flow .ef-heatlab{font:700 10.5px var(--font-ui);fill:var(--bio-symp);}
+.ef-flow .ef-uplab{fill:var(--muted);}
+.ef-flow .ef-box{fill:var(--bio-para-fill);stroke:var(--bio-para);stroke-width:2;}
+.ef-flow .ef-lvl{cursor:pointer;}
+.ef-flow .ef-lvl.sel .ef-box,.ef-flow .ef-lvl:hover .ef-box,.ef-flow .ef-lvl:focus-visible .ef-box{stroke:var(--cink);stroke-width:3.5;}
+.ef-flow .ef-lvl:focus{outline:none;}
+.ef-flow .ef-heat{fill:none;stroke:var(--bio-symp);stroke-linecap:round;opacity:.75;stroke-dasharray:6 8;animation:efHeat 1.4s linear infinite;}
+.ef-flow .ef-up{fill:none;stroke:var(--bio-para);opacity:.55;}
+.ef-flow .ef-down{fill:none;stroke:var(--muted);opacity:.35;}
+.ef-flow .ef-dec{fill:var(--bio-lo-fill);stroke:var(--bio-lo);stroke-width:1.5;}
+.ef-flow .ef-block{fill:var(--bio-aff);stroke:var(--white);stroke-width:1;animation:efRise 1.6s linear infinite;}
+@keyframes efRise{from{transform:translateY(0);opacity:0;}15%{opacity:1;}85%{opacity:1;}to{transform:translateY(var(--rise));opacity:0;}}
+@keyframes efHeat{to{stroke-dashoffset:-28;}}
+@media (prefers-reduced-motion:reduce){.ef-flow .ef-block{animation:none;opacity:0;}.ef-flow .ef-heat{animation:none;}}
+.ef-where:empty{display:none;}
+.ef-wh{margin:0 0 8px;}
+.ef-split{display:flex;height:26px;border-radius:8px;overflow:hidden;border:1.5px solid var(--line);}
+.ef-sp{display:flex;align-items:center;justify-content:center;font:800 12px var(--font-ui);color:var(--ink);min-width:2px;}
+.ef-sp.heat,.ef-k.heat{background:var(--bio-symp-fill);}
+.ef-sp.up,.ef-k.up{background:var(--bio-para-fill);}
+.ef-sp.dec,.ef-k.dec{background:var(--bio-lo-fill);}
+.ef-whl{list-style:none;margin:8px 0 6px;padding:0;display:grid;gap:4px;font:700 14px var(--font-ui);}
+.ef-k{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;border:1px solid var(--line);}
