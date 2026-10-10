@@ -132,8 +132,8 @@
     return n;
   }
   function figData(variant, view){
-    var F = window.LevlBodyFigs;
-    return F && F.figs[variant + '-' + view] ? { f: F.figs[variant + '-' + view], base: F.base || 'assets/' } : null;
+    var F = window.LevlBodyFigs, f = F && F.figs[variant + '-' + view];
+    return f ? { f: f, url: F.url(f) } : null;
   }
   function drawFigure(svg, view, uid, variant){
     while(svg.firstChild) svg.removeChild(svg.firstChild);
@@ -153,7 +153,7 @@
     svg._burn = 'bnBurn' + uid;
     var pat = el('pattern', { id:'bnHalf' + uid, width:'22', height:'22', patternUnits:'userSpaceOnUse', patternTransform:'rotate(45)' }, defs);
     el('rect', { width:'10', height:'22', class:'bn-half-st' }, pat);
-    el('image', { href: d.base + f.src, width:f.w, height:f.h, class:'bn-skin', 'aria-hidden':'true', preserveAspectRatio:'none' }, svg);
+    el('image', { href: d.url, width:f.w, height:f.h, class:'bn-skin', 'aria-hidden':'true', preserveAspectRatio:'none' }, svg);
     var paintLayer = el('g', { 'clip-path':'url(#bnClip' + uid + ')', 'aria-hidden':'true' }, svg);
     el('path', { d:f.outline, class:'bn-outline', 'aria-hidden':'true' }, svg);
     var hitLayer = el('g', {}, svg);
@@ -225,7 +225,7 @@
     var regs = {}, drawn = null;
     function draw(){
       var variant = st.child ? 'child' : 'adult';
-      if(drawn === variant) return;
+      if(drawn === variant || !figData(variant, 'front')) return;
       drawn = variant; regs = {};
       ['front','back'].forEach(function(v, i){
         var svg = root.querySelector('svg[data-view="' + v + '"]');
@@ -458,6 +458,8 @@
     }
 
     paint();
+    // the figures' data is fetched on first use; paint again when it lands
+    if(window.LevlBodyFigs) window.LevlBodyFigs.load('body', function(){ paint(); });
     info.innerHTML = '<p>Tap a region to mark it burned, or drag across the body to paint. <b>Half</b> marks part of a region. Each number is that region’s share of the body.</p>';
     if(opts.q && (ESTIMATE.concat(PAINT)).some(function(x){ return x.id === opts.q; })) nextQ(opts.q);
     return { quiz: nextQ, stop: stopQuiz };

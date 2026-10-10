@@ -427,8 +427,8 @@ window.renderFigures = async function(){
       out[name] = {
         w: view.w, h: view.h, webp: cv.toDataURL('image/webp', 0.82),
         outline: pathD(outline),
-        // a generous tap area: the silhouette grown by ~2.5% of the height, so thin limbs stay tappable on a phone
-        hitOutline: pathD(trace(morph(mask, view.w, view.h, 26, true), view.w, view.h, 2.0)),
+        // a generous tap area: the silhouette grown by 44 px (~3.7% of the height), so an arm is still a 40 px target when the figure is 360 px tall
+        hitOutline: pathD(trace(morph(mask, view.w, view.h, 44, true), view.w, view.h, 2.0)),
         regions: regions.paths, anchors: anchorsFor(regions.paths, mask, view),
         lines: Object.fromEntries(Object.entries(regions.lines).map(([k, v]) => [k, r1(v)])),
         landmarks: lmOut
