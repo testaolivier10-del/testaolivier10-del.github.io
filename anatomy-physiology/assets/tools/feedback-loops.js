@@ -500,7 +500,7 @@
       svg.classList.toggle('is-off', Math.abs(v - spOff) >= 0.04);
     }
     function clearRing(){ svg.classList.remove('is-na'); ring.querySelectorAll('.is-lit,.is-stop').forEach(function(x){ x.classList.remove('is-lit'); x.classList.remove('is-stop'); }); }
-    function stop(){ timers.forEach(clearTimeout); timers = []; if(raf) cancelAnimationFrame(raf); raf = 0; running = false; panel.classList.remove('is-running'); }
+    function stop(){ timers.forEach(clearTimeout); timers = []; clearTimeout(keyT); if(raf) cancelAnimationFrame(raf); raf = 0; running = false; panel.classList.remove('is-running'); }
     function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
     function tween(to, ms, done, which){
       if(raf) cancelAnimationFrame(raf);
