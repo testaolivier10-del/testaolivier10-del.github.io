@@ -81,3 +81,14 @@ Sound trainer (all in `nremt/assets/sound-stage.js` unless noted):
   before S1-0.02 s.
 - Feedback copy: "S3 is blood rushing into a stretched ventricle as filling begins"; "S4 is the atrium squeezing
   against a stiff ventricle at the very end of filling"; "the aortic valve closes a moment before the pulmonic".
+
+## Checks (2026-10-09)
+
+- check-site OK; check-weight OK (no budget changed; the two pages and new assets are within existing budgets);
+  node --test: all pass after fixing `scripts/test/anp-tool-kit.test.mjs`, which still read the Browse-by-name labels
+  from body-map.html although Phase 1 moved them into `assets/body-viewer.js` (failed on the base commit too).
+- check-a11y --check: no serious/critical violations. check-console: the full 1201-page run crashed its browser on
+  this shared machine (unrelated to these pages); a targeted run of both pages, every mode and deep link, and
+  review.html had no console errors.
+- New runtime files `nremt/assets/sound-stage.js` and `nremt/assets/burns.js` are in sw.js precache next to
+  `sound-bank.js` / `body-viewer.js`. CACHE not bumped.

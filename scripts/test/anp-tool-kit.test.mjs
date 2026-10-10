@@ -18,7 +18,8 @@ function kit() {
   return window.AnpToolKit;
 }
 function bodyMapLabels() {
-  const html = read('nremt/body-map.html');
+  // The labels live in the body viewer module since the Phase 1 split.
+  const html = read('nremt/assets/body-viewer.js');
   const groups = JSON.parse(html.match(/const GROUP_CONTENT = (\{.*\});\n/)[1]);
   const points = JSON.parse(html.match(/const POINTS_3D = (\[.*\]);\n/)[1]);
   return [...new Set([...Object.values(groups), ...points].map(c => c.name))].sort((a, b) => a.localeCompare(b));
