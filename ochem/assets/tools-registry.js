@@ -86,7 +86,8 @@
       blurb: 'Turn a molecule in 3D and see its real shape and bond angles.',
       teaches: 'VSEPR, hybridization, stereochemistry',
       topic: ['molecular-geometry', 'hybridization', 'bonding'],
-      terms: ['vsepr-theory', 'hybridization', 'wedge-and-dash-notation']
+      terms: ['vsepr-theory', 'hybridization', 'wedge-and-dash-notation'],
+      studio: true
     },
     {
       slug: 'conformations',
@@ -96,7 +97,8 @@
       blurb: 'Turn a bond and watch the energy change, or flip a cyclohexane chair.',
       teaches: 'Torsional strain, A-values, chair flips',
       topic: ['conformational-analysis', 'newman', 'ring-flips'],
-      terms: ['newman-projection', 'torsional-strain', 'gauche', 'a-value']
+      terms: ['newman-projection', 'torsional-strain', 'gauche', 'a-value'],
+      studio: true
     },
     {
       slug: 'reaction-predictor',

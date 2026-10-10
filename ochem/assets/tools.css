@@ -985,3 +985,68 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .res-ls-picks .tmuted{flex:none;}
 .res-ls .ls-pics > .ls-ed{flex-grow:1.5;}
 .res-ls-prog .ls-row > *{flex:1 1 auto;white-space:normal;}
+
+/* ---- 3D molecule viewer in the Tool Studio: the model fills the stage;
+   Predict shape is a one-question-at-a-time card in the dock. */
+.v3-ls .v3-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;border:0;background:none;border-radius:18px;}
+.v3-ls .v3-stage svg{width:100%;height:100%;max-width:none;max-height:100%;}
+.v3-ls .v3-ls-src .tseg{width:100%;display:flex;}
+.v3-ls .v3-ls-src .tseg button{flex:1;}
+.v3-ls #v3Picker .ap-group{margin:0 0 12px;}
+.v3-ls #v3Picker .tool-more{margin:0;border:0;padding:0;}
+.v3-ls #v3Picker .tool-more > summary{font:700 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;}
+.v3-ls #v3Picker .tool-more__now{font-size:var(--ls-s);color:var(--muted);}
+.v3-ls .v3-quiz{margin:0;padding:0;border:0;background:none;display:flex;flex-direction:column;gap:12px;}
+.v3-ls .v3-quiz .v3-quiz__k{margin:0 0 8px;font:900 var(--ls-l)/1.25 var(--font-ui);letter-spacing:-.01em;text-transform:none;color:var(--ink);}
+.v3-ls .v3-quiz .tchips{gap:8px;}
+.v3-ls .v3-quiz .tchip{background:var(--surface2);}
+.v3-ls .v3-quiz .tchip.on{background:var(--cink);color:var(--white);}
+.v3-ls .v3-quiz .trow{display:flex;gap:10px;margin:0 !important;flex-wrap:wrap;}
+.v3-ls .v3-quiz .trow .btn-press{flex:1 1 auto;}
+.v3-ls .v3-quiz .trow [hidden]{display:none;}
+.v3-ls .v3-quiz .ls-step-head{display:flex;}
+.v3-ls #v3Opts{margin:0;border:0;padding:0;}
+.v3-ls #v3Opts > summary{pointer-events:none;background:none;padding:0;min-height:0;}
+.v3-ls #v3Opts > summary::after{display:none;}
+.v3-ls #v3Opts .tseg{display:flex;flex-wrap:wrap;}
+.v3-ls #v3Opts .tcheck{min-height:44px;font-size:var(--ls-s);}
+.v3-ls #v3Opts .tcheck input[type=checkbox]{width:22px;height:22px;}
+.ls-sheet .tstat > div{flex:1 1 40%;}
+
+/* ---- Conformation lab in the Tool Studio: the Newman projection beside
+   its energy curve (the curve a strip under it on a phone), or both chairs
+   over the strain meter. */
+.cf-ls .ls-pics.cf-ls-newman{flex-direction:column;}
+.cf-ls .cf-ls-newman > *{display:flex;align-items:center;justify-content:center;margin:0;padding:0;border:0;background:none;}
+.cf-ls .cf-ls-newman > #cfNewmanStage{flex-grow:1.6;}
+.cf-ls .cf-ls-newman svg{width:100%;height:100%;max-width:none;max-height:100%;}
+.cf-ls .cf-ls-newman > #cfCurve{border-radius:16px;background:var(--surface2);padding:6px;}
+.cf-ls-angle{display:flex;flex-direction:column;gap:6px;}
+.cf-ls-angle .ls-lbl{margin:0;}
+.cf-ls-angle input[type=range]{width:100%;height:44px;accent-color:var(--cink);margin:0;}
+.cf-ls-snaps{display:flex;gap:8px;margin:0 !important;}
+.cf-ls-snaps .tchip{flex:1;}
+.cf-ls #cfTorPicker .tchip--ghost{background:transparent;}
+.cf-ls #cfTorBuild:not([hidden]){display:block;}
+.cf-ls .cf-ls-chairs{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;}
+.cf-ls .cf-pair{flex:1;min-height:0;gap:10px;}
+.cf-ls .cf-pair__one{min-height:0;display:flex;flex-direction:column;border-radius:16px;margin:0;padding:6px;}
+.cf-ls .cf-pair__one .v3-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;border:0;background:none;}
+.cf-ls .cf-pair__one .v3-stage svg{width:100%;height:100%;max-width:none;max-height:100%;}
+.cf-ls .cf-pair__cap{flex:none;}
+.cf-ls .cf-meter{flex:none;margin:0;}
+.cf-ls .cf-meter__h{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
+.cf-ls-task .tseg{display:flex;width:100%;}
+.cf-ls-task .tseg button{flex:1;}
+.cf-ls #cfChal{margin:0;padding:0;border:0;background:none;}
+.cf-ls #cfChal .cf-chal__q{display:none;}
+.cf-ls #cfChal .trow,.cf-ls-flip{display:flex;gap:10px;margin:0 !important;}
+.cf-ls #cfChal .btn-press,.cf-ls-flip .btn-press{flex:1;}
+.cf-ls-open > summary{display:none;}
+.cf-ls #cfRingBox{margin:0;border:0;padding:0;}
+.cf-ls #cfRingBox > summary{pointer-events:none;background:none;padding:0;min-height:0;}
+.cf-ls #cfRingBox > summary::after{display:none;}
+.cf-ls .cf-ring{margin-top:4px;padding-top:0;border:0;}
+.cf-ls .cf-slot .tselect{min-height:44px;font-size:var(--ls-s);}
+.cf-ls .cf-face button{min-height:44px;}
+.cf-ls .cf-pair__tag{text-transform:none;letter-spacing:0;font:800 var(--ls-s) var(--font-ui);}

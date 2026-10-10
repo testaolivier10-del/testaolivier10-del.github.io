@@ -17,3 +17,17 @@ One line per tool: stage / dock controls / what moved to Why and Details. Shared
   your call or Try another pair) / Why = the verdict, progress with Show me one I'm missing and Start over, the ranking
   ("Which one is the molecule really like?" with its rule table), each form's rank and reason in words; Compare: the
   deciding rule / Details = where the charge sits (averaged picture), Compare's numbers, Check yourself, Keep going.
+- **3D molecule viewer**: stage = the model (drag to turn, tap an atom; shape and measured angle as pills) / dock =
+  Explore, Predict shape; Ready-made or Build your own, the molecule chips (More molecules) or the builder; Predict
+  shape asks one thing at a time (shape, then angle, Back / Next, Check, Show lone pairs) / Why = what the tapped atom
+  is doing (groups, bonds, lone pairs, hybridization, the shape in words, Every angle measured, the lone-pair note),
+  the molecule's note, build messages, the prediction verdict / Details = view options (style, view, spin, labels,
+  lone pairs, zoom), Take this molecule to, Check yourself, Keep going. The readout is redrawn only when the atom or
+  molecule changes, so "Every angle, measured" no longer snaps shut while the model rocks.
+- **Conformation lab**: stage = the Newman projection over its energy curve (Chairs: both chairs, their shares, over
+  the strain meter) / dock = Newman & torsion, Cyclohexane chairs; the angle slider with Eclipsed, Gauche, Anti, the
+  molecule chips with Build your own at the end (front and back selects open under them); Chairs: Explore or Find the
+  stable chair, the ring chips, Flip the ring and Clear all (or the challenge's commit and Next ring) / Why = the
+  reading (conformer, energy, the molecule's note, how the curve is drawn), what a chair costs (split, verdict, the
+  strain term by term, every group axial or equatorial), the challenge verdict / Details = groups on C1 to C6 (the
+  ring builder), Check yourself, Keep going.

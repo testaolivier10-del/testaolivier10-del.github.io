@@ -629,7 +629,7 @@
     el.innerHTML = html;
     el.querySelectorAll('[data-shape]').forEach(function(b){ b.addEventListener('click', function(){ task.shape = b.getAttribute('data-shape'); taskSay(); var x = el.querySelector('[data-shape="' + task.shape + '"]'); if(x) x.focus(); }); });
     el.querySelectorAll('[data-angle]').forEach(function(b){ b.addEventListener('click', function(){ task.angle = parseFloat(b.getAttribute('data-angle')); taskSay(); var x = el.querySelector('[data-angle="' + task.angle + '"]'); if(x) x.focus(); }); });
-    var chk = document.getElementById('v3Check');
+    var chk = el.querySelector('#v3Check');
     if(chk) chk.addEventListener('click', function(){
       task.done = true; task.score.total++;
       if(task.shape === a.shape.m && (!askAngle || task.angle === ANGLE_OK[task.id])) task.score.right++;
@@ -637,12 +637,12 @@
       document.getElementById('v3Labels').checked = true; document.getElementById('v3Lp').checked = true;
       selected = mol.focus === undefined ? 0 : mol.focus;
       draw(); taskSay();
-      var v = document.getElementById('v3Verdict'); if(v) v.focus({ preventScroll:true });
+      var v = el.querySelector('#v3Next') || document.getElementById('v3Verdict'); if(v) v.focus({ preventScroll:true });
     });
-    var nx = document.getElementById('v3Next'); if(nx) nx.addEventListener('click', function(){ nextTask(); var f = document.querySelector('#v3Quiz [data-shape]'); if(f) f.focus(); });
-    var lh = document.getElementById('v3LpHint'); if(lh) lh.addEventListener('click', function(){
+    var nx = el.querySelector('#v3Next'); if(nx) nx.addEventListener('click', function(){ nextTask(); var f = document.querySelector('#v3Quiz [data-shape]'); if(f) f.focus(); });
+    var lh = el.querySelector('#v3LpHint'); if(lh) lh.addEventListener('click', function(){
       opts.lonePairs = !opts.lonePairs; document.getElementById('v3Lp').checked = opts.lonePairs; draw(); taskSay();
-      var b2 = document.getElementById('v3LpHint'); if(b2) b2.focus(); });
+      var b2 = el.querySelector('#v3LpHint'); if(b2) b2.focus(); });
   }
 
   function nextTask(){
@@ -678,9 +678,115 @@
     if(on !== task.on) setTask(on);
   });
 
+
+  /* ---- Tool Studio (docs/tools-calm.md) -----------------------------------
+     With the studio on (registry `studio: true`), the model fills the stage
+     and the same elements move into the calm frame: Explore | Predict shape
+     and the molecules (or the builder) in the dock, what the tapped atom is
+     doing in Why, the view options in Details. Predict shape asks one thing
+     at a time (shape, then angle) in the dock and puts the verdict on the
+     stage. The readout is drawn again only when the atom or the molecule
+     changes, not on every frame of a turn. */
+  var studio = window.OchemStudio || null, ls = null;
+  if(studio){
+    var Kit = window.OchemStudioKit;
+    var byId = function(id){ return document.getElementById(id); };
+    studio.root.classList.add('v3-ls');
+    var srcSeg = byId('v3Src');
+    var srcBox = document.createElement('div'); srcBox.className = 'v3-ls-src';
+    srcBox.appendChild(srcSeg);
+    Kit.scrollChips(elPicker);
+    var v3Mode = Kit.seg(byId('v3Task'), 'data-task');
+    studio.add('stage', stage);
+    studio.add('dock', [srcBox, elPicker, elBuild], { mode: 'explore' });
+    studio.add('dock', byId('v3Quiz'), { mode: 'predict' });
+    studio.add('why', [elBMsg, elNote, elAnal]);
+    var detFirst = studio.details.firstChild;
+    var optsBox = byId('v3Opts'); optsBox.open = true;
+    [optsBox, byId('v3Send')].forEach(function(el){ studio.details.insertBefore(el, detFirst); });
+    root.hidden = true;
+    byId('v3Src').addEventListener('click', function(){ Kit.builder(elBuild); });
+    ls = { mode: v3Mode, key: null, step: 0 };
+    var baseAnal = renderAnalysis, baseSay = taskSay;
+    renderAnalysis = function(){
+      var k = [mol && (mol.id || mol.name), selected, task && task.on, task && task.done].join('|');
+      if(k === ls.key) return;
+      ls.key = k; baseAnal(); studioView();
+    };
+    taskSay = function(){ baseSay(); studioQuiz(); };
+    // Back in Explore, the readout is shown again.
+    byId('v3Task').addEventListener('click', function(){ ls.key = null; renderAnalysis(); });
+  }
+
+  function studioView(){
+    if(!ls) return;
+    var name = esc(mol.name) + (mol.formula ? ' · ' + esc(mol.formula) : '');
+    var a = M3.analyse(mol, selected);
+    if(a && a.shape){
+      var ang = a.angles.length ? a.angles[0].deg : null;
+      studio.caption('<b>' + esc(a.el) + ' in ' + esc(mol.name) + ': ' + esc(a.shape.m.toLowerCase()) + '.</b> ' + a.steric + ' electron group' + (a.steric === 1 ? '' : 's') + ', ' +
+        a.lonePairs + ' lone pair' + (a.lonePairs === 1 ? '' : 's') + ', ' + esc(a.shape.hyb) + '. Drag to turn it; tap another atom.', 'explore');
+      studio.pills([{ html: esc(a.el) + ' · ' + esc(a.shape.m) }], 'left', 'explore');
+      studio.pills(ang !== null ? [{ html: ang.toFixed(1) + '°', k: 'angle', tone: 'readout' }] : [], 'right', 'explore');
+    } else {
+      studio.caption('<b>' + name + '.</b> Drag to turn it, and tap an atom to see its shape and angles.', 'explore');
+      studio.pills(a ? [{ html: esc(a.el) + ' selected', tone: 'ghost' }] : [], 'left', 'explore');
+      studio.pills([], 'right', 'explore');
+    }
+  }
+
+  /* Predict shape, one question at a time: the shape, then the angle (when
+     this molecule has one worth asking), then Check. */
+  function studioQuiz(){
+    if(!ls) return;
+    var el = document.getElementById('v3Quiz');
+    if(!task.on){ return; }
+    var q = el.querySelector('.v3-quiz__q');
+    var ks = [].slice.call(el.querySelectorAll('.v3-quiz__k'));
+    var steps = ks.map(function(k){ var d = document.createElement('div'); d.className = 'v3-ls-step'; k.parentNode.insertBefore(d, k); d.appendChild(k); d.appendChild(d.nextSibling); return d; });
+    var n = steps.length;
+    if(!task.shape) ls.step = 0;
+    else if(n > 1 && task.angle === null && ls.step === 0 && ls.justShape) ls.step = 1;
+    ls.justShape = false;
+    var verdict = el.querySelector('#v3Verdict');
+    if(task.done){ ls.step = n; }
+    steps.forEach(function(d, i){ d.classList.toggle('ls-step-off', !task.done && i !== ls.step); });
+    var head = document.createElement('div'); head.className = 'ls-step-head';
+    var dots = ''; for(var i = 0; i < n; i++) dots += '<i class="' + (i === ls.step && !task.done ? 'on' : i < ls.step || task.done ? 'done' : '') + '"></i>';
+    head.innerHTML = '<p class="ls-step-n">' + (task.done ? 'Your answer' : 'Step ' + (ls.step + 1) + ' of ' + n) + '</p><span class="ls-dots" aria-hidden="true">' + dots + '</span>';
+    el.insertBefore(head, el.firstChild);
+    var row = el.querySelector('.trow');
+    if(row && !task.done && n > 1){
+      var back = document.createElement('button'); back.type = 'button'; back.className = 'tchip v3-ls-back'; back.textContent = 'Back';
+      back.hidden = ls.step === 0;
+      back.addEventListener('click', function(){ ls.step = 0; taskSay(); });
+      row.insertBefore(back, row.firstChild);
+      var nextB = document.createElement('button'); nextB.type = 'button'; nextB.className = 'btn-press v3-ls-next'; nextB.textContent = 'Next';
+      if(ls.step === 0){ nextB.disabled = !task.shape; nextB.addEventListener('click', function(){ ls.step = 1; taskSay(); var f = el.querySelector('[data-angle]'); if(f) f.focus(); }); row.insertBefore(nextB, row.firstChild.nextSibling); var ck = el.querySelector('#v3Check'); if(ck) ck.hidden = true; }
+    }
+    if(verdict){
+      // The verdict, in full, is in Why; the stage and the caption carry it.
+      var ok = verdict.classList.contains('tnote--good');
+      var k = verdict.querySelector('.tnote__k').textContent;
+      studio.caption('<b>' + (ok ? 'Right. ' : 'Not quite. ') + esc(k) + '.</b> Why? has the reasoning.', 'predict');
+      studio.pills([{ html: ok ? 'Right' : 'Not quite', tone: ok ? 'good' : 'bad' }, { html: task.score.right + ' of ' + task.score.total + ' right', tone: 'ghost' }], 'left', 'predict');
+      var vb = document.getElementById('v3LsVerdict');
+      if(!vb){ vb = document.createElement('div'); vb.id = 'v3LsVerdict'; studio.why.insertBefore(vb, studio.why.firstChild); }
+      vb.innerHTML = ''; vb.appendChild(verdict);
+    } else {
+      var vb2 = document.getElementById('v3LsVerdict'); if(vb2) vb2.innerHTML = '';
+      studio.caption(q ? q.innerHTML.replace(/<span class="tmuted">.*<\/span>/, '') : '', 'predict');
+      studio.pills(task.score.total ? [{ html: task.score.right + ' of ' + task.score.total + ' right', tone: 'ghost' }] : [{ html: 'Your call', tone: 'ghost' }], 'left', 'predict');
+    }
+    studio.pills([], 'right', 'predict');
+    if(q) q.hidden = true;
+    el.querySelectorAll('[data-shape]').forEach(function(b){ b.addEventListener('click', function(){ ls.justShape = true; }, true); });
+  }
+
   setStep();
   document.getElementById('v3Task').addEventListener('click', setStep);
   if(!restore()) select(LIB.ALL[0]);
+  if(ls && ls.mode() === 'explore') studio.hint({ target: stage, text: 'Drag to turn it, tap an atom', round: 24 });
   /* ---- Check yourself ---------------------------------------------------
      Every answer here is computed by M3.analyse() from the same coordinates
      the viewer draws, exactly as the on-screen readout is. Nothing is typed

@@ -628,7 +628,7 @@
       var a = chairEnergy(buildChair(flipped)).total, b = chairEnergy(buildChair(!flipped)).total;
       chal.done = true; chal.total++; chal.ok = a <= b; if(chal.ok) chal.right++;
       renderChair();
-      var say = document.getElementById('cfChalSay'); if(say) say.focus({ preventScroll:true });
+      var say = document.getElementById('cfChalNext') || document.getElementById('cfChalSay'); if(say) say.focus({ preventScroll:true });
     });
     var nx = document.getElementById('cfChalNext');
     if(nx) nx.addEventListener('click', function(){ newChal(); var g = document.getElementById('cfChalGo'); if(g) g.focus(); });
@@ -1057,6 +1057,100 @@
     });
   });
 
+
+  /* ---- Tool Studio (docs/tools-calm.md) -----------------------------------
+     With the studio on (registry `studio: true`), the same elements move into
+     the calm frame. Newman: the projection and the energy curve on the stage,
+     the angle slider, the snaps and the molecules in the dock, the reading in
+     Why. Chairs: both chairs and the strain meter on the stage, Explore | Find
+     the stable chair, the rings and Flip in the dock, what it costs in Why,
+     the per-group builder in Details. The hooks run after each render. */
+  var studio = window.OchemStudio || null, ls = null;
+  if(studio){
+    var Kit = window.OchemStudioKit;
+    var byId = function(id){ return document.getElementById(id); };
+    var mk = function(cls, html){ var d = document.createElement('div'); d.className = cls; if(html) d.innerHTML = html; return d; };
+    studio.root.classList.add('cf-ls');
+    var nPics = mk('ls-pics cf-ls-newman');
+    nPics.appendChild(byId('cfNewmanStage')); nPics.appendChild(byId('cfCurve'));
+    var slider = byId('cfAngle');
+    var angleBox = mk('cf-ls-angle', '<p class="ls-lbl"><label for="cfAngle">Dihedral angle</label><span class="ls-val" id="cfLsAngle"></span></p>');
+    angleBox.appendChild(slider);
+    var snaps = root.querySelector('[data-snap]').parentNode; snaps.classList.add('cf-ls-snaps');
+    angleBox.appendChild(snaps);
+    var torPick = byId('cfTorPicker'); torPick.classList.add('ls-scroll');
+    var torToggle = byId('cfTorBuildToggle'); torPick.appendChild(torToggle);
+    var chairPics = mk('cf-ls-chairs');
+    chairPics.appendChild(root.querySelector('.cf-pair')); chairPics.appendChild(byId('cfMeter')); chairPics.appendChild(byId('cfFlipSay'));
+    var chairTask = byId('cfChairTask'); var taskBox = mk('cf-ls-task'); taskBox.appendChild(chairTask);
+    var presets = byId('cfPresets'); presets.classList.add('ls-scroll');
+    var flipRow = byId('cfFlip').parentNode; flipRow.classList.add('cf-ls-flip');
+    var chalVerdict = mk('cf-ls-verdict');
+    var ringBox = byId('cfRingBox');
+    var cfMode = Kit.seg(byId('cfMode'), 'data-mode');
+    studio.add('stage', nPics, { mode: 'newman' });
+    studio.add('stage', chairPics, { mode: 'chair' });
+    studio.add('dock', [angleBox, torPick, byId('cfTorBuild')], { mode: 'newman' });
+    studio.add('dock', [taskBox, presets, byId('cfChal'), flipRow], { mode: 'chair' });
+    // The per-carbon builder is a setting: Details, first.
+    studio.add('details', ringBox, { mode: 'chair' });
+    ringBox.open = true;
+    studio.add('why', byId('cfReadout'), { mode: 'newman' });
+    studio.add('why', [chalVerdict, byId('cfChairReadout')], { mode: 'chair' });
+    root.hidden = true;
+    ls = { mode: cfMode, verdict: chalVerdict };
+    var baseNewman = renderNewman, baseChair = renderChair;
+    renderNewman = function(){ baseNewman(); studioNewman(); };
+    renderChair = function(){ baseChair(); studioChair(); };
+  }
+
+  function studioNewman(){
+    if(!ls) return;
+    var d = describeTorsion(theta), e = energyAt(theta), min = Math.min.apply(null, tor.energies), up = e - min;
+    document.getElementById('cfLsAngle').textContent = Math.round(theta) + '°';
+    // The readout's own "Why?" is the Why sheet now: open, without its summary.
+    var w = document.querySelector('#cfReadout details'); if(w){ w.open = true; w.classList.add('cf-ls-open'); }
+    studio.caption('<b>' + esc(tor.name) + ' at ' + Math.round(theta) + '°: ' + esc(d.name.toLowerCase()) + '.</b> ' + up.toFixed(1) + ' kcal/mol above the minimum. Drag the slider to turn the bond.', 'newman');
+    studio.pills([{ html: esc(d.name), tone: up < 0.05 ? 'good' : up > 2 ? 'bad' : 'warn' }], 'left', 'newman');
+    studio.pills([{ html: up.toFixed(1) + ' <small>kcal/mol</small>', k: Math.round(theta) + '°', tone: 'readout' }], 'right', 'newman');
+  }
+
+  function studioChair(){
+    if(!ls) return;
+    var here = chairEnergy(buildChair(flipped)), other = chairEnergy(buildChair(!flipped));
+    var gap = Math.abs(here.total - other.total), K = Math.exp(gap / RT), pct = K / (1 + K) * 100;
+    var subs = ring.filter(Boolean).length;
+    var w = document.querySelector('#cfChairReadout details'); if(w){ w.open = true; w.classList.add('cf-ls-open'); }
+    // "detailed below" meant the panel under it; that reading is in Why now.
+    var tag = document.querySelector('#cfCapA .cf-pair__tag'); if(tag && /detailed below/.test(tag.textContent)) tag.textContent = 'this chair, detailed in Why';
+    var el = document.getElementById('cfChal');
+    ls.verdict.innerHTML = '';
+    var pills = [], cap;
+    if(chal.on){
+      var q = el.querySelector('.cf-chal__q');
+      var say = el.querySelector('#cfChalSay');
+      if(say){ ls.verdict.appendChild(say); }
+      if(chal.done){
+        pills.push({ html: chal.ok ? 'Right' : 'The other chair', tone: chal.ok ? 'good' : 'bad' }, { html: chal.right + ' of ' + chal.total + ' right', tone: 'ghost' });
+        cap = '<b>' + (chal.ok ? 'Right: the left chair is the stable one.' : 'Not quite: the flipped chair is the stable one.') + '</b> Why? has the numbers.';
+      } else {
+        pills.push({ html: 'Your call', tone: 'ghost' });
+        cap = q ? q.innerHTML.replace(/<span class="tmuted">.*<\/span>/, '') : '';
+      }
+    } else if(!subs){
+      cap = '<b>Cyclohexane.</b> Pick a ring below, then tap any group (or Flip the ring) to see which chair costs less.';
+    } else if(gap < 0.005){
+      cap = '<b>Evenly matched.</b> Both chairs cost the same, a 50 : 50 mixture. Tap a group to flip.';
+      pills.push({ html: '50 : 50', tone: 'ghost' });
+    } else {
+      var win = here.total < other.total;
+      cap = '<b>' + (win ? 'You are looking at the major chair' : 'The flipped chair is better') + '.</b> ' + gap.toFixed(2) + ' kcal/mol apart, about ' + pct.toFixed(gap > 2 ? 2 : 1) + '% in the better chair. Tap a group to flip.';
+      pills.push({ html: win ? 'Left chair wins' : 'Flipped chair wins', tone: 'good' });
+    }
+    studio.caption(cap, 'chair');
+    studio.pills(pills, 'left', 'chair');
+  }
+
   /* ---- Restoring a link --------------------------------------------------- */
   if(window.OchemToolState){
     var q = window.OchemToolState.read();
@@ -1093,6 +1187,10 @@
   renderNewman();
   renderRingControls();
   renderChair();
+  if(ls){
+    studio.details.insertBefore(document.getElementById('cfRingBox'), studio.details.firstChild);
+    if(ls.mode() === 'newman') studio.hint({ target: document.getElementById('cfAngle'), text: 'Drag to turn the bond' });
+  }
   /* ---- Check yourself ---------------------------------------------------
      Two question types, matching the two halves of the tool. The A-value
      comparison is the chair half asked in words, and the torsional question
