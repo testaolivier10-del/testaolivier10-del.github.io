@@ -192,7 +192,7 @@
     var b = bodyName(name);
     if(!b) return '';
     return '<a class="kg-3dbtn' + (cls ? ' ' + cls : '') + '" href="' + esc(BASE + '../nremt/body-map.html?focus=' + encodeURIComponent(b)) + '" aria-label="See the ' + esc(b.toLowerCase()) + ' on the 3D body">' +
-      '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l8.5 4.9v9.8L12 21.6l-8.5-4.9V6.9z"/><path d="M12 21.6V12M3.5 6.9L12 12l8.5-5.1"/></svg>See it in 3D</a>';
+      '<span class="kg-3dico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle class="f" cx="12" cy="5" r="2.4"/><path class="f" d="M9.4 8.4h5.2l1.4 6.2h-1.9l-.6 6.4h-3l-.6-6.4H8z"/><ellipse cx="12" cy="14.2" rx="10" ry="3.6"/><path class="f" d="M20.6 12.3l1.8 1.9-2.6.4z"/></svg></span>See it in 3D</a>';
   }
 
   window.AnpToolKit = { strip: strip, picker: picker, bodyName: bodyName, body3d: body3d, status: status, BODY: BODY, ALIAS: ALIAS };
