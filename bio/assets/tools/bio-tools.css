@@ -505,4 +505,22 @@
 .wp-head{fill:var(--bio-deo2);}
 .wp-arrow.mine{stroke:var(--muted);stroke-dasharray:6 4;}
 .wp-head.mine{fill:var(--muted);}
+/* Graph builder, grid first: the live grid leads; beside the steps on a wide screen */
+.gb-body{display:grid;gap:16px;grid-template-columns:minmax(0,1fr);}
+.gb-body>*{min-width:0;}
+.gb-live{display:grid;gap:8px;align-content:start;}
+.gb-stepcol{display:grid;gap:16px;grid-template-columns:minmax(0,1fr);}
+.gb-stepcol>*,.gb-stepcol fieldset{min-width:0;}
+@media (min-width:1000px){
+  .gb-body{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:start;}
+  .gb-live{position:sticky;top:84px;}
+}
+.gb-mode{display:flex;flex-wrap:wrap;gap:8px;}
+.gb-grid svg.is-ghost .grid,.gb-grid svg.is-ghost .minor,.gb-grid svg.is-ghost .tick{opacity:.35;}
+.gb-grid .lbl.gb-ph{fill:var(--muted);font-style:italic;}
+.gb-grid .gsk{fill:var(--bio-s4);}
+.gb-grid .gsk-line{stroke:var(--bio-s4);stroke-dasharray:5 4;}
+.gb-note:empty,.gb-say:empty{display:none;}
+.gb-datawrap .table-wrap{max-height:260px;overflow:auto;}
+.gb-pick .bt-select{max-width:420px;}
 /* ===== Skills tools: end ===== */
