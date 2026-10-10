@@ -417,5 +417,11 @@
     T.questions(app.querySelector('.bt-qs'), data.questions, data.stimuli, SLUG);
     if(data.frq) T.frq(app, data.frq, SLUG);
     if(/^#mutant/.test(location.hash)) setQ('quiz');
-  });
+  }, {
+    // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
+    studio: { sim: true, modeLabels: { quiz: 'Mutant quiz' }, primary: 0, dock: ['.os-chal', '.bt-modes'], stage: ['.op-stagefig'], stageAlso: ['.op-tray'], live: '.op-explain', why: ['.op-taphint', '.op-further'],
+      hint: { target: '.op-chip', text: 'Tap a sugar to change the medium' },
+      caption: function(g){ return '<b>Repressor ' + T.esc(g.ro(0)) + '.</b> RNA polymerase ' + T.esc(g.ro(2)) + '.'; },
+      pills: function(g){ return [{ k: 'mRNA', html: g.ro(3), tone: 'readout' }]; },
+      pillsR: function(g){ return [{ html: 'CAP–cAMP ' + g.ro(1).split(' (')[0], tone: 'ghost' }]; } } });
 })();
