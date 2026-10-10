@@ -327,3 +327,67 @@
 .tr-fb li.ok{box-shadow:inset 4px 0 0 var(--good-text);}
 .tr-fb li.no{box-shadow:inset 4px 0 0 var(--bad-text);}
 .hw-readout dt{text-transform:none;letter-spacing:0;font-size:13px;}
+
+/* ===== Osmosis stage (tools upgrade U-Bio-sims) ===== */
+.os-modes{display:flex;flex-wrap:wrap;gap:8px;}
+.os-calc{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--cink);}
+.os-stage{background:var(--paper);border-radius:14px;padding:6px;}
+.os-fig{width:100%;height:auto;display:block;max-height:420px;margin:0 auto;max-width:640px;}
+.os-fig .os-beaker{fill:none;stroke:var(--bio-shape);stroke-width:3;}
+.os-fig .os-sol{fill:var(--bio-deo2-fill);opacity:.55;}
+.os-fig .os-sd{fill:var(--bio-o2);}
+.os-fig .os-sd.ion{fill:var(--bio-para);}
+.os-fig .os-si{fill:var(--bio-o2);}
+.os-fig .os-gap{fill:var(--bio-deo2-fill);opacity:.6;}
+.os-fig .os-wall{fill:none;stroke:var(--bio-para);stroke-width:6;}
+.os-fig .os-wall.taut{stroke-width:7.5;}
+.os-fig .os-cyto{fill:var(--bio-eff-fill);stroke:var(--bio-memb);stroke-width:2.5;}
+.os-fig .os-vac{fill:var(--white);fill-opacity:.35;stroke:var(--bio-memb);stroke-width:1;stroke-dasharray:3 3;}
+.os-fig .os-rbc{fill:var(--bio-o2-fill);stroke:var(--bio-o2);stroke-width:2.5;}
+.os-fig .os-dimple{fill:none;stroke:var(--bio-o2);stroke-width:1.2;stroke-dasharray:3 3;}
+.os-fig .os-ghost{fill:none;stroke:var(--bio-o2);stroke-width:2.5;stroke-dasharray:7 6;}
+.os-fig .os-bag{fill:var(--bio-aff-fill);stroke:var(--bio-memb);stroke-width:2.5;}
+.os-fig .os-bag.taut{stroke-width:4;}
+.os-fig .os-string,.os-fig .os-knot{fill:none;stroke:var(--muted);stroke-width:2;}
+.os-fig .os-flow{fill:none;stroke:var(--bio-deo2);stroke-linecap:round;}
+.os-fig .os-flowhead{fill:var(--bio-deo2);}
+.os-fig .os-down{fill:none;stroke:var(--bio-deo2);stroke-width:3;}
+.os-fig .os-eq{stroke:var(--muted);stroke-width:2;stroke-dasharray:3 4;}
+.os-fig .os-w{fill:var(--white);stroke:var(--bio-deo2);stroke-width:1.5;}
+.os-fig text{fill:var(--ink);font:800 13px var(--font-ui);}
+.os-fig .os-state{font:900 14px var(--font-ui);fill:var(--cink);}
+.os-fig .os-lab,.os-fig .os-tick{fill:var(--muted);font:700 11.5px var(--font-ui);}
+.os-fig .os-lh{font:900 12.5px var(--font-ui);}
+.os-fig .os-q{font:900 34px var(--font-ui);fill:var(--muted);}
+.os-fig .os-axis{stroke:var(--ink);stroke-width:1.5;}
+.os-fig .os-mk rect{stroke-width:2;}
+.os-fig .os-mk.out rect{fill:var(--bio-deo2-fill);stroke:var(--bio-deo2);}
+.os-fig .os-mk.in rect{fill:var(--bio-eff-fill);stroke:var(--bio-memb);}
+.os-fig .os-mk text{font:900 11px var(--font-ui);}
+.os-play{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;}
+.os-play .btn-press{min-height:44px;}
+.os-clock{margin:0;font:800 14px var(--font-mono);color:var(--muted);}
+.os-why{margin:0;padding:10px 14px;border-radius:12px;background:var(--ctint);font:600 15px/1.55 var(--font-ui);}
+.os-why:empty{display:none;}
+.os-pick-h{font:800 14px var(--font-ui);}
+.os-pick-row{display:flex;flex-wrap:wrap;gap:8px;}
+.os-chal{display:grid;gap:10px;}
+.os-chal-q{margin:0;font:600 15.5px/1.55 var(--font-ui);}
+.os-ask{border:0;margin:0;padding:10px 12px;border-radius:12px;background:var(--paper);}
+.os-ask legend{font:800 15px var(--font-ui);padding:0;float:left;width:100%;margin-bottom:4px;}
+.os-ask legend+*{clear:both;}
+.os-chal-fb p{margin:0 0 8px;font:600 15px/1.55 var(--font-ui);}
+.os-graph .os-gh{font:900 15px var(--font-ui);margin:0;}
+.os-graph .bt-plotwrap{cursor:crosshair;}
+.bt-plot .os-now{stroke:var(--white);stroke-width:2;fill:var(--bio-s1);}
+.os-modes{align-items:center;}
+.os-modes .bt-btn{padding:6px 14px;}
+.os-calc{min-height:44px;font:800 14px var(--font-ui);padding:0 4px;}
+.os-pick-row .bt-btn{flex:1 1 auto;}
+@media (min-width:1000px){
+  .os-card{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:22px;}
+  .os-card>*{grid-column:1 / -1;}
+  .os-card>.os-stage{grid-column:1;grid-row:3 / span 6;align-self:start;position:sticky;top:12px;}
+  .os-card>.os-chal,.os-card>.os-play,.os-card>.os-pick,.os-card>.os-why,.os-card>.bt-controls{grid-column:2;}
+  .os-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
+}

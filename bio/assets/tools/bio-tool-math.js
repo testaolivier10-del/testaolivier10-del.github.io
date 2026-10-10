@@ -187,7 +187,36 @@
     var o = osmo(sys, c), st = psiParts(sys, o, 1);
     return -st.psi / ((c.outI || 1) * o.RT);
   }
-  var osmosis = { simulate: simulate, psiParts: function(sys, c, W){ return psiParts(sys, osmo(sys, c), W); }, isotonicC: isotonicC, mass: massOf };
+  /* The same integration as simulate, sampled at n + 1 evenly spaced times
+     from 0 to c.t (for the animated figure). Each sample: { t, W, lysed }.
+     The last sample equals simulate(sys, c) (tested). Once a cell lyses,
+     later samples stay lysed. */
+  function trajectory(sys, c, n){
+    n = n || 40;
+    var o = osmo(sys, c), W = 1, t = 0, end = c.t || 0, lysed = false, guard = 0, Wmin = 0.02;
+    var out = [{ t: 0, W: 1, lysed: false }], k = 1;
+    if(end <= 0){ for(; k <= n; k++) out.push({ t: 0, W: 1, lysed: false }); return out; }
+    var prevT = 0, prevW = 1;
+    while(t < end - 1e-9 && guard++ < 200000){
+      var pp = psiParts(sys, o, W);
+      var slope = (o.n ? o.n * o.RT / (W * W) : 0) + (sys.W0 && W > sys.W0 ? sys.eps / sys.W0 : 0);
+      var dt = Math.min(end - t, slope > 0 ? 0.05 / (sys.L * slope) : end / 400, end / 400);
+      prevT = t; prevW = W;
+      W = Math.max(Wmin, W + sys.L * (o.psiO - pp.psi) * dt);
+      t += dt;
+      if(sys.kind === 'animal' && sys.lyseAt && massOf(sys, W) >= sys.lyseAt){ lysed = true; W = (sys.lyseAt - sys.b) / (1 - sys.b); }
+      while(k <= n && (k * end / n <= t + 1e-9 || lysed)){
+        var tk = k * end / n, f = t > prevT ? Math.min(1, (tk - prevT) / (t - prevT)) : 1;
+        out.push({ t: tk, W: lysed ? W : prevW + (W - prevW) * f, lysed: lysed && tk >= t - 1e-9 });
+        k++;
+      }
+      if(lysed) break;
+    }
+    for(; k <= n; k++) out.push({ t: k * end / n, W: W, lysed: lysed });
+    out[n].W = W; out[n].lysed = lysed;
+    return out;
+  }
+  var osmosis = { simulate: simulate, trajectory: trajectory, psiParts: function(sys, c, W){ return psiParts(sys, osmo(sys, c), W); }, isotonicC: isotonicC, mass: massOf };
 
   /* ------------------------------------------- signal amplification */
   /* A G protein-coupled receptor pathway in a liver cell (epinephrine →
