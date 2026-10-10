@@ -440,4 +440,27 @@
 .ds-k.median{border-top:3px dashed var(--bio-s2);}
 .ds-k.sd{height:12px;border:1px dashed var(--bio-s1);background:rgba(0,114,178,.15);}
 .ds-k.se{height:7px;border:2.5px solid var(--ink);border-bottom:0;}
+/* Rates: slope triangles (a, b, c) and percent-change bars */
+.rt-fig .rt-pt{stroke:var(--white);stroke-width:1.5;}
+.rt-fig .rt-pt[data-k]{cursor:pointer;}
+.rt-fig .rt-pt.on{fill:var(--bio-s2);r:8;}
+.rt-fig .rt-pt:focus{outline:none;}
+.rt-fig .rt-pt:focus-visible{stroke:var(--ink);stroke-width:3;}
+.rt-tri{fill-opacity:.16;stroke-width:2;}
+.rt-hyp{stroke-width:3;}
+.rt-tri.a,.rt-list .a .rt-sw{fill:var(--bio-s2);stroke:var(--bio-s2);background:var(--bio-s2);}
+.rt-tri.b,.rt-list .b .rt-sw{fill:var(--bio-s3);stroke:var(--bio-s3);background:var(--bio-s3);}
+.rt-tri.c,.rt-list .c .rt-sw{fill:var(--bio-s4);stroke:var(--bio-s4);background:var(--bio-s4);}
+.rt-hyp.a,.rt-mine.a{stroke:var(--bio-s2);} .rt-hyp.b,.rt-mine.b{stroke:var(--bio-s3);} .rt-hyp.c{stroke:var(--bio-s4);}
+.rt-lab.a{fill:var(--bio-s2);} .rt-lab.b{fill:var(--bio-s3);} .rt-lab.c{fill:var(--bio-s4);}
+.rt-mine{stroke-width:2.5;stroke-dasharray:6 4;}
+.rt-d{fill:var(--muted);font:800 11px var(--font-ui);}
+.rt-lab{fill:var(--ink);font:900 12.5px var(--font-mono);}
+.rt-list{list-style:none;margin:0;padding:0;display:grid;gap:6px;font:600 14px/1.5 var(--font-ui);}
+.rt-list li{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;}
+.rt-sw{display:inline-block;width:12px;height:12px;border-radius:3px;flex:0 0 auto;}
+.rt-init{fill:var(--bio-s5);fill-opacity:.55;}
+.rt-fin{fill:var(--bio-s1);}
+.rt-base{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:3 3;}
+.rt-ghost{fill:none;stroke:var(--bio-s2);stroke-width:2.5;stroke-dasharray:5 4;}
 /* ===== Skills tools: end ===== */
