@@ -275,6 +275,14 @@
     host.hidden = (mode !== 'read');
     mount.hidden = (mode !== 'drill');
     if(mode === 'drill' && !current) render();
+    // "Build it" (assets/flow-build.js) reads the same diagrams.
+    var build = document.getElementById('flowBuild');
+    if(build){
+      build.hidden = (mode !== 'build');
+      if(mode === 'build' && !build.firstChild && window.NremtFlowBuild){
+        window.NremtFlowBuild.mount(build, window.NremtFlowBuild.read(host));
+      }
+    }
   }
   if(toggle){
     toggle.querySelectorAll('button').forEach(function(b){
@@ -291,14 +299,20 @@
     h.scrollIntoView({ block: 'start', behavior: window.LevlMotion && !window.LevlMotion.reduced() ? 'smooth' : 'auto' });
     h.focus({ preventScroll: true });
   }
-  mount.addEventListener('click', function(e){
+  function onSee(e){
     var a = e.target.closest('[data-see]');
     if(!a) return;
     e.preventDefault();
     history.replaceState(null, '', '#' + a.getAttribute('data-see'));
     showDiagram(a.getAttribute('data-see'));
-  });
-  function fromHash(){ if(location.hash.indexOf('#flow-') === 0) showDiagram(location.hash.slice(1)); }
+  }
+  mount.addEventListener('click', onSee);
+  var buildBox = document.getElementById('flowBuild');
+  if(buildBox) buildBox.addEventListener('click', onSee);
+  function fromHash(){
+    if(location.hash.indexOf('#flow-') === 0) showDiagram(location.hash.slice(1));
+    else if(location.hash.indexOf('#build-') === 0) setMode('build');
+  }
   window.addEventListener('hashchange', fromHash);
   fromHash();
 })();

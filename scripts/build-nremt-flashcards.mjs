@@ -99,7 +99,7 @@ for (const n of glossDomain.keys()) if (!glossSeen.has(n)) fail(`GLOSSARY_DOMAIN
 const mnHtml = read('mnemonics.html');
 const mnDomain = new Map(Object.entries(MNEMONIC_DOMAIN));
 const mnSeen = new Set();
-for (const block of mnHtml.split('<div class="card">').slice(1)) {
+for (const block of mnHtml.split(/<div class="card"[^>]*>/).slice(1)) {
   const h2 = block.match(/<h2>([\s\S]*?)<\/h2>/);
   if (!h2) continue;
   const title = toText(h2[1]);
