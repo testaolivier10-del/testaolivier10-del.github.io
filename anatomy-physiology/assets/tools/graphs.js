@@ -136,6 +136,17 @@
   var W = 420, ML = 60, MR = 16, MT = 16, PANEL = 210, GAP = 18;
   var DATA = null, booted = false, listFilter = null;
   var scored = {};
+  /* Tool Studio (docs/tools-calm.md): with the page's studio flag a graph is
+     drawn in #app and moved into the calm frame (studioGraph, studioList);
+     lookups go through the document. */
+  var S = window.AnpToolKit && window.AnpToolKit.studio ? window.AnpToolKit.studio() : null;
+  function Q(){ return S ? document : app; }
+  if(S){
+    S.root.classList.add('gr-ls');
+    S.caption('Loading graphs…');
+    S.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'quiz', label: 'Quiz' }], value: 'explore',
+      onChange: function(v){ var b = Q().querySelector('.gr-mode[data-m="' + v + '"]'); if(b) b.click(); } });
+  }
 
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function html(s){ return String(s == null ? '' : s); }
@@ -219,14 +230,15 @@
           }).join('') + '</span></a></li>';
       }).join('') + '</ul></section>';
     }).join('');
+    if(S) S.reset();
     app.innerHTML = '<div class="pw gr">' +
       '<p class="pw-lead">Physiology graphs drawn from real-shaped data. For each one: <b>read a value</b> off it, <b>name a phase or region</b>, and <b>predict how the curve shifts</b>, then see the shifted curve drawn in.</p>' +
       '<p class="anp-small pw-progress">' + done + ' of ' + total + ' questions answered right</p>' + chips + groups + '</div>';
-    app.querySelectorAll('.pw-chip').forEach(function(b){
-      b.addEventListener('click', function(){ listFilter = b.getAttribute('data-f'); showList(); var a = app.querySelector('.pw-chip[data-f="' + listFilter + '"]'); if(a) a.focus(); });
+    Q().querySelectorAll('.pw-chip').forEach(function(b){
+      b.addEventListener('click', function(){ listFilter = b.getAttribute('data-f'); showList(); var a = Q().querySelector('.pw-chip[data-f="' + listFilter + '"]'); if(a) a.focus(); });
     });
-    var sel = app.querySelector('#pw-chsel');
-    if(sel) sel.addEventListener('change', function(){ listFilter = sel.value; showList(); var ns = app.querySelector('#pw-chsel'); if(ns) ns.focus(); });
+    var sel = Q().querySelector('#pw-chsel');
+    if(sel) sel.addEventListener('change', function(){ listFilter = sel.value; showList(); var ns = Q().querySelector('#pw-chsel'); if(ns) ns.focus(); });    if(S) studioList();
   }
 
   /* Open on an item, not the list (docs/tools-upgrade.md, P1-A&P): the
@@ -255,7 +267,7 @@
     return list[0] || null;
   }
   function addPicker(g){
-    var host = app.querySelector('.pw-pickhost'), K = window.AnpToolKit;
+    var host = Q().querySelector('.pw-pickhost'), K = window.AnpToolKit;
     if(!host || !K) return;
     var chapters = [];
     var all = sortedAll();
@@ -474,6 +486,7 @@
     var tried = g.questions.some(function(q){ return status(itemId(g, q)) !== 'new'; });
     var mode = wantMode || (qk != null || tried ? 'quiz' : 'explore');
     var nRight = g.questions.filter(function(q){ return status(itemId(g, q)) === 'right'; }).length;
+    if(S) S.reset();
     app.innerHTML = '<div class="pw gr gr-view">' +
       '<div class="pw-pickhost"></div>' +
       '<h2 class="pw-title" tabindex="-1">' + esc(g.title) + '</h2>' +
@@ -491,10 +504,11 @@
       '<p class="pw-next"><a class="btn-outline" href="#' + esc(next.id) + '">Next graph: ' + esc(next.title) + ' →</a></p></div>';
     addPicker(g);
     var c = chart(g);
-    var fig = app.querySelector('.gr-fig');
+    var fig = Q().querySelector('.gr-fig');
     fig.appendChild(c.svg);
+    if(S) studioGraph(g);
     var showAll = false;
-    var toggle = app.querySelector('.gr-toggle');
+    var toggle = Q().querySelector('.gr-toggle');
     var allLayer = el('g', { 'class': 'gr-all' });
     c.svg.insertBefore(allLayer, c.L.hl);
     if(toggle) toggle.addEventListener('click', function(){
@@ -504,12 +518,12 @@
       while(allLayer.firstChild) allLayer.removeChild(allLayer.firstChild);
       if(showAll) g.regions.forEach(function(r, i){ if(!r.show) c.region(allLayer, allLayer, r, 'gr-region-all' + (i % 2 ? ' alt' : '')); });
     });
-    var panelEl = app.querySelector('#gr-panel');
+    var panelEl = Q().querySelector('#gr-panel');
     var cats = g.x.cats, unitY = function(k){ return g.panels[k].y.unit || ''; };
     function xText(x){ return cats ? cats[Math.round(x)] : fmt(x) + unitText(g.x.unit); }
 
     /* ---- the cursor: drag on the chart, or the slider under it */
-    var range = app.querySelector('#gr-x'), cursorX = null, cursorOn = false, onCursor = null;
+    var range = Q().querySelector('#gr-x'), cursorX = null, cursorOn = false, onCursor = null;
     var span = c.xmax - c.xmin, stepX = cats ? 1 : niceStep(span / 200);
     range.min = cats ? 0 : g.x.min; range.max = cats ? cats.length - 1 : g.x.max; range.step = stepX;
     function niceStep(v){ var p = Math.pow(10, Math.floor(Math.log(v) / Math.LN10)), m = v / p; return (m < 1.5 ? 1 : m < 3.5 ? 2 : m < 7.5 ? 5 : 10) * p; }
@@ -594,14 +608,15 @@
     }
 
     /* ---- tabs */
-    var tabs = app.querySelectorAll('.gr-mode');
+    var tabs = Q().querySelectorAll('.gr-mode');
     function setMode(m, focus){
       mode = m;
+      if(S) S.mode(m);
       tabs.forEach(function(b){ var on = b.getAttribute('data-m') === m; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; if(on && focus) b.focus(); });
       panelEl.setAttribute('aria-labelledby', 'gr-tab-' + m);
-      app.querySelector('.gr-first').textContent = m === 'explore'
+      Q().querySelector('.gr-first').textContent = m === 'explore'
         ? 'Drag along the graph to read every curve' + (conditions(g).length ? ', then tap a What if to shift it.' : '.')
-        : 'Answer the question beside the graph.';
+        : S ? 'Answer the question below. The graph shows the answer once you have.' : 'Answer the question beside the graph.';
       fig.classList.toggle('is-explore', m === 'explore');
       c.clear(); clearCond(true);
       if(m === 'explore') explore(); else { cursorOn = false; drawCursor(); quiz(); }
@@ -681,6 +696,12 @@
         '<p class="gr-ex-go"><button type="button" class="btn-press sm gr-to-quiz">Quiz me on this graph →</button></p>' +
         '</div>';
       var readEl = panelEl.querySelector('.gr-read'), whyEl = panelEl.querySelector('.gr-cond-why'), timer = 0;
+      if(S){
+        // The live reading sits under the chart; a condition's reason goes to Why.
+        S.root.querySelectorAll('.ls-stage .gr-read, .ls-sheet .gr-cond-why').forEach(function(x){ x.parentNode.removeChild(x); });
+        S.put('stage', readEl, { mode: 'explore' });
+        if(whyEl) S.put('why', whyEl, { mode: 'explore', first: true });
+      }
       function readout(x){
         var rows = [];
         g.panels.forEach(function(p, k){
@@ -723,8 +744,9 @@
             showCond(q);
             var at = keyX(q);
             if(at != null) setCursor(at); else readout(cursorX);
-            whyEl.innerHTML = '<p class="gr-why-q">' + html(q.q) + '</p>' + (K() ? K().why('<p>' + html(q.why.correct) + '</p>') : '<p>' + html(q.why.correct) + '</p>');
-          } else { clearCond(); readout(cursorX); whyEl.innerHTML = ''; }
+            whyEl.innerHTML = '<p class="gr-why-q">' + html(q.q) + '</p>' + (K() ? K().why('<p>' + html(q.why.correct) + '</p>', { open: !!S }) : '<p>' + html(q.why.correct) + '</p>');
+            if(S) S.caption('<b>' + esc(condLabel(q)) + ':</b> the dashed curve is where it goes. Tap Why? for the reason.', 'explore');
+          } else { clearCond(); readout(cursorX); whyEl.innerHTML = ''; if(S) S.caption(Q().querySelector('.gr-first').innerHTML, 'explore'); }
         });
       });
       panelEl.querySelector('.gr-to-quiz').addEventListener('click', function(){ history.replaceState(null, '', '#' + g.id); setMode('quiz', true); });
@@ -765,8 +787,9 @@
         return '<button type="button" class="gr-qbtn is-' + s + '" aria-current="' + (i === active ? 'step' : 'false') + '" data-i="' + i + '" aria-label="Question ' + (i + 1) + (s === 'right' ? ', answered right' : s === 'missed' ? ', missed' : '') + '">' + (i + 1) + '</button>';
       }).join('');
       nav.querySelectorAll('.gr-qbtn').forEach(function(b){ b.addEventListener('click', function(){ ask(+b.getAttribute('data-i'), true); }); });
-      var n = g.questions.filter(function(q){ return status(itemId(g, q)) === 'right'; }).length, t = app.querySelector('.gr-mode-n');
+      var n = g.questions.filter(function(q){ return status(itemId(g, q)) === 'right'; }).length, t = Q().querySelector('.gr-mode-n');
       if(t) t.textContent = n + '/' + g.questions.length;
+      if(S) S.pills([{ html: n + ' of ' + g.questions.length + ' right', tone: n === g.questions.length ? 'good' : 'ghost' }], 'right', 'quiz');
     }
     function ask(i, focus){
       var q = g.questions[i];
@@ -959,7 +982,53 @@
       (o.marks || []).forEach(function(m){ c.mark(c.L.overlay, m.panel || 0, m, 'gr-qmark'); });
     }
     setMode(mode, false);
-    if(booted){ var h = app.querySelector('.pw-title'); if(h) h.focus(); }
+    if(booted){ var h = Q().querySelector('.pw-title'); if(h) h.focus(); }
+  }
+
+  /* ------------------------------------------------------------ Tool Studio
+     The graph is the stage (its name over it, the live reading under it in
+     Explore). Explore's controls: the slider along x, the "What if" chips,
+     Quiz me. Quiz: the question numbers, then one question with its answer
+     box; the graph shows the answer. The graph picker is one row at the foot
+     of the dock. Why: the graph's intro (and a condition's reason); Details:
+     topic, phases and regions, the next graph. */
+  function studioGraph(g){
+    function $(sel){ return app.querySelector(sel); }
+    S.modeBar(true);
+    S.pills([], 'right', 'explore');
+    var fig = $('.gr-fig');
+    fig.classList.add('ls-fit');
+    S.put('stage', [$('.pw-title'), fig]);
+    S.put('dock', $('.gr-scrub'), { mode: 'explore' });
+    S.put('dock', [$('#gr-panel'), $('.pw-pickhost')]);
+    S.mirror($('.gr-first'));
+    var ab = $('.kt-about');
+    var w = document.createElement('div');
+    w.className = 'ls-sec';
+    w.innerHTML = '<h3 class="ls-h">About this graph</h3>' + (ab ? ab.querySelector('.kt-about-b').innerHTML : '') +
+      '<p class="ls-sub">Explore: drag along the graph or move the slider to read every curve; a What if moves the curve. Quiz: read a value, name a phase, or predict (or drag) the shift.</p>';
+    if(ab) ab.parentNode.removeChild(ab);
+    S.put('why', w);
+    var d = document.createElement('div');
+    d.className = 'ls-sec gr-ls-det';
+    [$('.pw-meta'), $('.gr-figcol .kt-more') || $('.gr-tools'), $('.pw-next')].forEach(function(x){ if(x) d.appendChild(x); });
+    var mo = d.querySelector('.kt-more'); if(mo) mo.open = true;   // the phases toggle shows in Details as it is
+    S.put('details', d);
+    if(!studioGraph.hinted){
+      studioGraph.hinted = true;
+      S.hint({ target: '.ls-dock .gr-range', text: 'Slide to read every curve' });
+    }
+  }
+  function studioList(){
+    S.modeBar(false);
+    S.pills([], 'right', 'quiz');
+    var root = app.querySelector('.pw');
+    var lead = root.querySelector('.pw-lead');
+    S.put('stage', root);
+    if(lead) S.put('why', lead);
+    S.caption('Pick a graph to explore, then quiz yourself on it.', 'explore');
+    S.caption('Pick a graph to explore, then quiz yourself on it.', 'quiz');
+    S.stage.scrollTop = 0;
   }
 
   function K(){ return window.AnpToolKit && window.AnpToolKit.why ? window.AnpToolKit : null; }
@@ -982,7 +1051,7 @@
   }
 
   /* ------------------------------------------------------------------ boot */
-  function fail(msg){ app.innerHTML = '<p class="pw-error">' + esc(msg) + '</p>'; }
+  function fail(msg){ if(S){ S.suspend(true); app.classList.remove('kt-staging'); } app.innerHTML = '<p class="pw-error">' + esc(msg) + '</p>'; }
   var src = app.getAttribute('data-src');
   if(!src){ fail('No content file for this tool.'); return; }
   fetch(src).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(d){

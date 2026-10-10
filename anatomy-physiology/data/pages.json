@@ -134,7 +134,8 @@
       "desc": "Learn to read physiology graphs: action potentials, the cardiac cycle, the Frank-Starling curve and more. Read values, name phases, predict shifts.",
       "script": "tools/graphs.js",
       "css": "tools/graphs.css",
-      "data": "graphs.json"
+      "data": "graphs.json",
+      "studio": true
     },
     {
       "slug": "calculators",
