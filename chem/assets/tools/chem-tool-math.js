@@ -882,13 +882,157 @@
   }
   function coefText(n){ return n === 0 ? '0' : (n > 0 ? '+' : '−') + (Math.abs(n) === 1 ? '' : Math.abs(n)) + 'x'; }
 
+  /* ===================================================================
+     Explore models (tools upgrade Phase 2, docs/tools-upgrade-notes/chem.md).
+     Pure, tested in scripts/test/apchem-explore.test.mjs. */
+
+  /* Titration: millimoles of each species at v mL of titrant, from the
+     exact pH (titrationPH) and the acid's distribution fractions. Spectator
+     ions (Na⁺, Cl⁻) are left out. Keys: H3O, OH, and HA, A (weak acid),
+     H2A, HA, A (diprotic), B, BH (weak base). */
+  function titrationSpecies(sys, v){
+    var V = sys.Va + v, pH = titrationPH(sys, v), h = Math.pow(10, -pH), Kw = M.C.Kw, n0 = sys.Ca * sys.Va;
+    var out = { pH: pH, V: V, H3O: h * V, OH: Kw / h * V };
+    if(sys.kind === 'sa') return out;
+    if(sys.kind === 'wb'){ var Kb = Kw / sys.Kb; out.BH = n0 * h / (h + Kb); out.B = n0 - out.BH; return out; }
+    var Ka = sys.Ka, n = Ka.length, t = [], s = 0, prod = 1;
+    for(var k = 0; k <= n; k++){ if(k) prod *= Ka[k - 1]; var x = prod * Math.pow(h, n - k); t.push(x); s += x; }
+    if(n === 1){ out.HA = n0 * t[0] / s; out.A = n0 * t[1] / s; }
+    else { out.H2A = n0 * t[0] / s; out.HA = n0 * t[1] / s; out.A = n0 * t[2] / s; }
+    return out;
+  }
+  /* Where a volume sits on the curve: 'start' (nothing added), a landmark
+     ('half', 'eq'; diprotic 'half1', 'eq1', 'half2', 'eq2'): a half point
+     within 2% of the first equivalence volume (at least 0.1 mL), an
+     equivalence point within 0.1 mL (two drops; the pH jumps there), or
+     the stretch between:
+     strong acid 'before'/'after'; weak acid or base 'acid-rich' (before
+     half-equivalence), 'base-rich' (between half and equivalence), 'after';
+     diprotic 'b1a', 'b1b', 'b2a', 'b2b', 'after'. */
+  function titrationRegion(sys, v){
+    var e = titrationEq(sys), tol = Math.max(0.1, 0.02 * e[0]), at = function(w, t){ return Math.abs(v - w) <= (t || tol) + 1e-9; };
+    if(v <= 1e-9) return 'start';
+    if(sys.kind === 'sa') return at(e[0], 0.1) ? 'eq' : v < e[0] ? 'before' : 'after';
+    if(sys.kind === 'di'){
+      var marks = [[e[0] / 2, 'half1', 'b1a'], [e[0], 'eq1', 'b1b', 0.1], [1.5 * e[0], 'half2', 'b2a'], [e[1], 'eq2', 'b2b', 0.1]];
+      for(var i = 0; i < marks.length; i++){ if(at(marks[i][0], marks[i][3])) return marks[i][1]; if(v < marks[i][0]) return marks[i][2]; }
+      return 'after';
+    }
+    if(at(e[0] / 2)) return 'half';
+    if(v < e[0] / 2) return 'acid-rich';
+    if(at(e[0], 0.1)) return 'eq';
+    return v < e[0] ? 'base-rich' : 'after';
+  }
+  /* The volume at which the curve first reaches pH ph (curves are monotonic:
+     rising for an acid analyte, falling for a base): 0 when the start is
+     already past it, Infinity when it is never reached by vmax. */
+  function titrationCross(sys, ph, vmax){
+    var up = sys.kind !== 'wb', f = function(v){ return titrationPH(sys, v); };
+    var past = function(y){ return up ? y >= ph : y <= ph; };
+    if(past(f(0))) return 0;
+    if(!past(f(vmax))) return Infinity;
+    var lo = 0, hi = vmax;
+    for(var i = 0; i < 60; i++){ var m = (lo + hi) / 2; if(past(f(m))) hi = m; else lo = m; }
+    return (lo + hi) / 2;
+  }
+
+  /* Buffer taking strong acid or base, in moles, with no volume change.
+     o: { Ka, nHA, nA (mol at the start), V (L), b (mol of strong base added;
+     negative for strong acid) }. Stoichiometry first (the strong species
+     reacts completely), then the pH two ways:
+       pH        exact, from the charge balance with water (any amount added):
+                 [H₃O⁺] − Kw/[H₃O⁺] + (nA + b)/V − C·Ka/([H₃O⁺] + Ka) = 0,
+                 C = (nHA + nA)/V. The same equation holds for a weak-base
+                 buffer (HA = BH⁺, A = B, Ka = Kw/Kb, the salt's Cl⁻ in place
+                 of Na⁺).
+       method    how the exam expects it: 'hh' (both forms left, ratio 0.1-10),
+                 'hh-edge' (both left, ratio outside 0.1-10), 'weak-base' /
+                 'weak-acid' (exactly one form left), 'excess-base' /
+                 'excess-acid' (capacity passed: pH from the leftover strong
+                 species alone), with pHmethod its value.
+     water: the pH the same addition gives in pure water (exact). */
+  function bufferState(o){
+    var Kw = M.C.Kw, Ka = o.Ka, V = o.V, b = o.b || 0, eps = 1e-9 * (o.nHA + o.nA);
+    var r = { nHA: o.nHA, nA: o.nA, exOH: 0, exH: 0 };
+    if(b >= 0){ var u = Math.min(b, o.nHA); r.nHA = o.nHA - u; r.nA = o.nA + u; r.exOH = b - u; }
+    else { var w = Math.min(-b, o.nA); r.nA = o.nA - w; r.nHA = o.nHA + w; r.exH = -b - w; }
+    ['nHA', 'nA', 'exOH', 'exH'].forEach(function(k){ if(Math.abs(r[k]) < eps) r[k] = 0; });
+    var C = (o.nHA + o.nA) / V, Na = (o.nA + b) / V, lo = -15, hi = 1;
+    for(var i = 0; i < 100; i++){ var m = (lo + hi) / 2, h = Math.pow(10, m); if(h - Kw / h + Na - C * Ka / (h + Ka) > 0) hi = m; else lo = m; }
+    r.pH = -(lo + hi) / 2;
+    if(r.exOH > 0){ r.method = 'excess-base'; r.pHmethod = 14 + Math.log10(r.exOH / V); }
+    else if(r.exH > 0){ r.method = 'excess-acid'; r.pHmethod = -Math.log10(r.exH / V); }
+    else if(r.nHA > 0 && r.nA > 0){ var q = r.nA / r.nHA; r.method = q >= 0.1 && q <= 10 ? 'hh' : 'hh-edge'; r.pHmethod = -Math.log10(Ka) + Math.log10(q); }
+    else if(r.nA > 0){ r.method = 'weak-base'; r.pHmethod = 14 - M.weakAcid(r.nA / V, Kw / Ka).pH; }
+    else { r.method = 'weak-acid'; r.pHmethod = M.weakAcid(r.nHA / V, Ka).pH; }
+    var cb = b / V;
+    // [H₃O⁺] − [OH⁻] = −cb, written without cancellation for either sign.
+    var root = Math.sqrt(cb * cb + 4 * Kw);
+    r.water = -Math.log10(cb > 0 ? 2 * Kw / (cb + root) : (root - cb) / 2);
+    return r;
+  }
+
+  /* Q vs K with amounts: n (mol per species) in V liters. equilibrate()
+     returns the amounts once the net reaction has run until Q = K. */
+  function concOf(n, V){ return n.map(function(x){ return x / V; }); }
+  /* Solids and liquids stay out of Q but still limit how far the reaction
+     can run: if a solid runs out first, the run stops there (Q has not
+     reached K, and no more can react). Extent in mol, by bisection on ln Q. */
+  function equilibrate(sp, n, V, K){
+    var lo = -Infinity, hi = Infinity, lk = Math.log(K);
+    sp.forEach(function(s, i){ if(s.nu < 0) hi = Math.min(hi, n[i] / -s.nu); else lo = Math.max(lo, -n[i] / s.nu); });
+    var lnQ = function(x){ var q = 0, inf = 0; sp.forEach(function(s, i){ if(!inQ(s)) return; var c = (n[i] + s.nu * x) / V; if(c <= 0) inf += s.nu < 0 ? 1 : -1; else q += s.nu * Math.log(c); }); return inf > 0 ? Infinity : inf < 0 ? -Infinity : q; };
+    var a = lo, b = hi;
+    for(var i = 0; i < 300; i++){ var m = (a + b) / 2; if(lnQ(m) > lk) b = m; else a = m; }
+    var x = (a + b) / 2;
+    return sp.map(function(s, i){ var v = n[i] + s.nu * x; return Math.abs(v) < 1e-12 * (Math.abs(n[i]) + 1e-12) ? 0 : v; });
+  }
+
+  /* Atoms in a set of particle counts ({ H2: 3, O2: 1 } -> { H: 6, O: 2 }),
+     from the same templates the pictures draw. */
+  function atomsOf(counts){
+    var out = {};
+    Object.keys(counts).forEach(function(k){ (TEMPL[k] || []).forEach(function(at){ out[at.el] = (out[at.el] || 0) + (counts[k] || 0); }); });
+    return out;
+  }
+
+  /* Units as exponent maps: 'L·atm/(mol·K)' -> { L: 1, atm: 1, mol: -1, K: -1 }.
+     unitMul(list) multiplies [{ u, p }] (p = +1 on top, −1 below);
+     unitText(map) writes the leftover unit, '' when everything cancels. */
+  function unitParse(u){
+    var out = {}, s = String(u || '').replace(/[()\s]/g, ''), parts = s.split('/');
+    parts.forEach(function(part, i){ part.split(/[·*]/).forEach(function(t){
+      if(!t || t === '1') return;
+      var m = /^(.*?)\^?(-?\d+)?$/.exec(t), name = m[1], e = m[2] ? +m[2] : 1;
+      out[name] = (out[name] || 0) + (i ? -e : e);
+    }); });
+    return out;
+  }
+  function unitMul(list){
+    var out = {};
+    list.forEach(function(f){ var m = unitParse(f.u); Object.keys(m).forEach(function(k){ out[k] = (out[k] || 0) + f.p * m[k]; }); });
+    Object.keys(out).forEach(function(k){ if(!out[k]) delete out[k]; });
+    return out;
+  }
+  function unitText(map){
+    var pow = function(k, e){ return k + (e > 1 ? '^' + e : ''); };
+    var top = Object.keys(map).filter(function(k){ return map[k] > 0; }).map(function(k){ return pow(k, map[k]); });
+    var bot = Object.keys(map).filter(function(k){ return map[k] < 0; }).map(function(k){ return pow(k, -map[k]); });
+    if(!top.length && !bot.length) return '';
+    return (top.join('·') || '1') + (bot.length ? '/' + (bot.length > 1 ? '(' + bot.join('·') + ')' : bot[0]) : '');
+  }
+  function unitSame(a, b){ var x = unitMul([{ u: a, p: 1 }, { u: b, p: -1 }]); return !Object.keys(x).length; }
+
   var D = {
     fmt: fmt, sup: sup, cell: cell, diagnose: diagnose, near: near, list: list, parseCoef: parseCoef, coefText: coefText,
+    bufferState: bufferState, equilibrate: equilibrate, concOf: concOf, atomsOf: atomsOf,
+    unitParse: unitParse, unitMul: unitMul, unitText: unitText, unitSame: unitSame,
     Q: Q, Qflat: Qflat, at: at, inQ: inQ, solveExtent: solveExtent, smallX: smallX, eqHtml: eqHtml, exprHtml: exprHtml,
     ice: { generate: iceGenerate },
     qk: { generate: qkGenerate },
     buffer: { generate: bufGenerate },
-    titration: { generate: titGenerate, pH: titrationPH, curve: titrationCurve, eq: titrationEq, nbar: nbar, INDICATORS: INDICATORS },
+    titration: { generate: titGenerate, pH: titrationPH, curve: titrationCurve, eq: titrationEq, nbar: nbar, INDICATORS: INDICATORS,
+      species: titrationSpecies, region: titrationRegion, cross: titrationCross },
     particles: { generate: ptGenerate, box: boxSvg, hydration: hydrationSvg, mol: molSvg, describe: describe },
     units: { generate: unGenerate, sigFigsOf: sfOf, decimalsOf: decOf }
   };

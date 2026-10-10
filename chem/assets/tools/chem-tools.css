@@ -428,3 +428,49 @@
 .lb-legend b{font-variant-numeric:tabular-nums;}
 .lb-key{width:28px;height:28px;}
 .lb-desc{font:700 13px/1.45 var(--font-ui);color:var(--muted);}
+
+/* Explore | Test yourself (ApChemTools.modes) */
+.bt-modebar{display:flex;gap:6px;padding:4px;border-radius:14px;background:var(--paper);border:var(--bw,2px) solid var(--line);width:max-content;max-width:100%;}
+.bt-mode{min-height:44px;padding:8px 16px;border:0;border-radius:10px;background:transparent;color:var(--muted);font:900 15px var(--font-ui);cursor:pointer;}
+.bt-mode[aria-pressed="true"]{background:var(--white);color:var(--cink);box-shadow:0 1px 0 var(--line),0 0 0 2px var(--cink) inset;}
+.bt-pane{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;}
+.bt-pane>*{min-width:0;}
+.bt-pane[hidden]{display:none;}
+.bt-prob-head .bt-btn{margin-left:auto;}
+.bt-pick{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;}
+
+/* Titration explorer: graph, then the beaker beside its readout, then the
+   burette controls; the pickers last (phone first). */
+.tx-card{display:grid;gap:12px;}
+.tx-head{display:grid;gap:2px;}
+.tx-head h2{font-size:17px;}
+.tx-setup{margin:0;}
+.tx-stage{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;}
+.tx-graph{margin:0 -6px;}
+.tx-plot svg{width:100%;height:auto;display:block;cursor:crosshair;}
+.tx-band{fill:var(--cink);opacity:.09;}
+.tx-band-t{font:800 11px var(--font-ui);fill:var(--muted);}
+.tx-lm{font:900 12px var(--font-ui);fill:var(--ink);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
+.tx-ctl .bt-slider label{font-size:13px;}
+.tx-btns{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;}
+.tx-btns .bt-btn{padding:6px 4px;font-size:13px;}
+.tx-run[aria-pressed="true"]{background:var(--ctint);border-color:var(--cink);}
+.tx-beaker .lb-fig{grid-template-columns:minmax(0,.9fr) minmax(0,1fr);align-items:center;}
+.tx-beaker .lb-svg{max-width:220px;}
+.tx-beaker .lb-desc{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.tx-beaker .lb-liquid{transition:fill .35s ease;opacity:1;}
+.tx-beaker .lb-legend li{font-size:13px;}
+.tx-meaning{min-height:4.5em;}
+.tx-where{margin:0;padding:10px 14px;border-radius:12px;background:var(--ctint);border-left:4px solid var(--cink);font:700 15px/1.5 var(--font-ui);}
+.tx-at{color:var(--muted);font-weight:800;white-space:nowrap;}
+.tx-ind-p{margin:0;font:600 14px/1.5 var(--font-ui);}
+.tx-swatch{display:inline-block;width:18px;height:18px;border-radius:50%;vertical-align:-3px;margin-right:6px;border:2px solid var(--ink);}
+.tx-scale{margin:0;}
+.tx-pick .bt-select{flex-direction:row;align-items:center;gap:8px;}
+@media (min-width:900px){
+  .tx-stage{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-areas:"g b" "c b";column-gap:20px;}
+  .tx-graph{grid-area:g;} .tx-ctl{grid-area:c;} .tx-beaker{grid-area:b;}
+  .tx-beaker .lb-fig{grid-template-columns:minmax(0,1fr);}
+  .tx-beaker .lb-svg{max-width:300px;}
+}
+@media (prefers-reduced-motion:reduce){.tx-beaker .lb-liquid{transition:none;}}

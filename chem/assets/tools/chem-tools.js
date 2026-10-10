@@ -582,7 +582,51 @@
     draw(false);
   }
 
+  /* ------------------------------------------- explore / test yourself */
+  /* modes(app, o) -> { explore, quiz, show(name) }: a two-button switch at the
+     top of the tool ("Explore" | "Test yourself") and one pane for each. The
+     quiz pane is built the first time it is shown (o.quiz(host)); explore
+     (o.explore(host)) is built at once. A problem link (?seed=) or #quiz
+     opens on the quiz; otherwise the last mode used on this tool, explore by
+     default. o: { slug, explore, quiz, labels?: [explore, quiz] } */
+  function modes(app, o){
+    var key = 'apchem_toolmode_' + o.slug, lab = o.labels || ['Explore', 'Test yourself'], gid = nid('md');
+    var bar = document.createElement('div');
+    bar.className = 'bt-modebar';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Mode');
+    bar.innerHTML = '<button type="button" class="bt-mode" data-m="explore" aria-pressed="false">' + esc(lab[0]) + '</button><button type="button" class="bt-mode" data-m="quiz" aria-pressed="false">' + esc(lab[1]) + '</button>';
+    var ex = document.createElement('div'), qz = document.createElement('div');
+    ex.className = 'bt-pane bt-pane-explore'; qz.className = 'bt-pane bt-pane-quiz';
+    ex.id = gid + '-e'; qz.id = gid + '-q';
+    app.appendChild(bar); app.appendChild(ex); app.appendChild(qz);
+    var built = false, cur = '';
+    function show(m, user){
+      if(m === cur) return;
+      cur = m;
+      if(m === 'quiz' && !built){ built = true; o.quiz(qz); }
+      ex.hidden = m !== 'explore'; qz.hidden = m !== 'quiz';
+      bar.querySelectorAll('.bt-mode').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-m') === m)); });
+      if(user){ try{ localStorage.setItem(key, m); }catch(e){} event('apchem-tool-mode', { tool: o.slug, mode: m }); }
+      if(o.onShow) o.onShow(m);
+    }
+    bar.addEventListener('click', function(e){ var b = e.target.closest('.bt-mode'); if(b) show(b.getAttribute('data-m'), true); });
+    o.explore(ex);
+    var start = 'explore';
+    try{
+      if(seedFromUrl() || /#quiz\b/.test(location.hash)) start = 'quiz';
+      else if(localStorage.getItem(key) === 'quiz') start = 'quiz';
+    }catch(e){}
+    show(start, false);
+    return { explore: ex, quiz: qz, show: show, bar: bar };
+  }
+  /* Motion off? (site toggle or the OS setting) */
+  function reduced(){
+    try{ if(window.LevlMotion && window.LevlMotion.reduced) return !!window.LevlMotion.reduced(); return matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; }
+  }
+
   window.ApChemTools = {
+    modes: modes, reduced: reduced,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,
     record: record, report: report, event: event, questions: questions, frq: frq, skillTool: skillTool,
