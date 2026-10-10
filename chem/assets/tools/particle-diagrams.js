@@ -168,7 +168,7 @@
         var q = counts.A2 * counts.B2 ? counts.AB * counts.AB / (counts.A2 * counts.B2) : Infinity;
         msg = !isFinite(q) ? 'Atoms balance, but a reactant is gone: that is complete reaction. At equilibrium some of every species remains.'
           : counts.AB === 0 ? 'Atoms balance, but nothing has reacted: Q = 0, far below K.'
-          : 'Atoms balance, but Q = ' + M.fmt(q, 3) + ' is ' + (q < p.extra.K ? 'below' : 'above') + ' K = ' + M.fmt(p.extra.K, 3) + ': ' + (q < p.extra.K ? 'let one more A₂ and one more B₂ react into 2 AB.' : 'undo one reaction event: 2 AB back into A₂ and B₂.');
+          : 'Atoms balance, but Q = ' + M.fmt(q, 3) + ' is ' + (q < p.extra.K ? 'below' : 'above') + ' K = ' + M.fmt(p.extra.K, 3) + ': ' + (q < p.extra.K ? 'let more A₂ and B₂ react (each event turns one A₂ and one B₂ into 2 AB).' : 'undo some reaction events (each turns 2 AB back into one A₂ and one B₂).');
       }
       fb('<span class="chem-mark no">Not yet</span> ' + msg + ' <button type="button" class="bt-btn pb-show">Show the answer</button>');
       host.querySelector('.pb-show').addEventListener('click', function(){ keys.forEach(function(k){ mine[k] = right[k] || 0; }); draw(); fb('<span class="chem-mark no">Shown</span> ' + p.why[0]); });

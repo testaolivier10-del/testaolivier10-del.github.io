@@ -169,7 +169,7 @@
         sa: {
           start: ['Start.', 'HCl is a strong acid, fully ionized: the flask is H₃O⁺ and Cl⁻. pH = −log of the acid concentration.'],
           before: ['Excess H₃O⁺.', 'Each OH⁻ added removes one H₃O⁺ (H₃O⁺ + OH⁻ → 2 H₂O). The pH is set by the H₃O⁺ still left, so it rises slowly until almost all of it is gone.'],
-          eq: ['Equivalence point.', 'Moles of OH⁻ added = moles of HCl at the start. Only Na⁺ and Cl⁻ are left, and neither reacts with water: pH 7.00.'],
+          eq: ['Equivalence point.', 'Moles of OH⁻ added = moles of HCl at the start. Only Na⁺ and Cl⁻ are left, and neither reacts with water: pH 7.00 at exactly ' + F(e[0], 2) + ' mL. Within two drops of it the pH is still mid-jump.'],
           after: ['Excess OH⁻.', 'Every H₃O⁺ is gone, so each OH⁻ added stays. The leftover OH⁻ sets the pH.']
         },
         wa: {
@@ -177,7 +177,7 @@
           'acid-rich': ['Buffer region, more HA than A⁻.', 'Each OH⁻ added turns one ' + nm(HA) + ' into ' + nm(A) + ' (HA + OH⁻ → A⁻ + H₂O). With both forms present the pH barely moves: pH < pK<sub>a</sub>.'],
           half: ['Half-equivalence point.', 'Half the acid has been converted, so [HA] = [A⁻] and pH = pK<sub>a</sub> = ' + pk + '. This is how pK<sub>a</sub> is read off a curve.'],
           'base-rich': ['Buffer region, more A⁻ than HA.', 'pH > pK<sub>a</sub> now. The HA is running out, so each drop moves the pH more: the jump is coming.'],
-          eq: ['Equivalence point.', 'Moles of OH⁻ added = moles of ' + nm(HA) + ' at the start. All of it is ' + nm(A) + ', a weak base, so the pH is above 7 (' + F(p.phEqs[0], 2) + ').'],
+          eq: ['Equivalence point.', 'Moles of OH⁻ added = moles of ' + nm(HA) + ' at the start. All of it is ' + nm(A) + ', a weak base, so the pH is above 7 (' + F(p.phEqs[0], 2) + ' at exactly ' + F(e[0], 2) + ' mL; within two drops of it the pH is still mid-jump).'],
           after: ['Excess OH⁻.', 'No HA is left to react, so added OH⁻ stays and sets the pH. ' + nm(A) + ' barely matters now.']
         },
         wb: {
@@ -185,7 +185,7 @@
           'acid-rich': ['Buffer region, more B than BH⁺.', 'Each H₃O⁺ added turns one ' + nm(ctx.B) + ' into ' + nm(ctx.BH) + '. With both forms present the pH falls slowly: pH > pK<sub>a</sub> of ' + nm(ctx.BH) + '.'],
           half: ['Half-equivalence point.', '[B] = [BH⁺], so pH = pK<sub>a</sub> of ' + nm(ctx.BH) + ' = ' + pk + ' (and pK<sub>b</sub> = 14.00 − ' + pk + ').'],
           'base-rich': ['Buffer region, more BH⁺ than B.', 'pH < pK<sub>a</sub> now. The base is running out, so each drop moves the pH more: the drop is coming.'],
-          eq: ['Equivalence point.', 'Moles of H₃O⁺ added = moles of ' + nm(ctx.B) + ' at the start. All of it is ' + nm(ctx.BH) + ', a weak acid, so the pH is below 7 (' + F(p.phEqs[0], 2) + ').'],
+          eq: ['Equivalence point.', 'Moles of H₃O⁺ added = moles of ' + nm(ctx.B) + ' at the start. All of it is ' + nm(ctx.BH) + ', a weak acid, so the pH is below 7 (' + F(p.phEqs[0], 2) + ' at exactly ' + F(e[0], 2) + ' mL; within two drops of it the pH is still mid-jump).'],
           after: ['Excess H₃O⁺.', 'No base is left, so added H₃O⁺ stays and sets the pH.']
         },
         di: {
@@ -193,11 +193,11 @@
           b1a: ['First buffer region.', 'OH⁻ removes the first proton: H₂A → HA⁻. More H₂A than HA⁻, so pH < pK<sub>a1</sub>.'],
           half1: ['First half-equivalence point.', '[H₂A] = [HA⁻], so pH = pK<sub>a1</sub> = ' + pk + '.'],
           b1b: ['First buffer, running out.', 'More HA⁻ than H₂A; the first jump is coming.'],
-          eq1: ['First equivalence point.', 'Each H₂A has lost one proton: the flask is mostly HA⁻ (pH ' + F(p.phEqs[0], 2) + ').'],
+          eq1: ['First equivalence point.', 'Each H₂A has lost one proton: the flask is mostly HA⁻ (pH ' + F(p.phEqs[0], 2) + ' at exactly ' + F(e[0], 2) + ' mL).'],
           b2a: ['Second buffer region.', 'Now OH⁻ removes the second proton: HA⁻ → A²⁻. pH < pK<sub>a2</sub>.'],
           half2: ['Second half-equivalence point.', '[HA⁻] = [A²⁻], so pH = pK<sub>a2</sub> = ' + F(p.pKa2, 2) + '.'],
           b2b: ['Second buffer, running out.', 'More A²⁻ than HA⁻; the second jump is coming.'],
-          eq2: ['Second equivalence point.', 'Twice the first volume: each molecule has lost both protons. A²⁻ is a weak base, so pH ' + F(p.phEqs[1], 2) + '.'],
+          eq2: ['Second equivalence point.', 'Twice the first volume: each molecule has lost both protons. A²⁻ is a weak base, so pH ' + F(p.phEqs[1], 2) + ' at exactly ' + F(e[1], 2) + ' mL.'],
           after: ['Excess OH⁻.', 'Both protons are gone, so added OH⁻ stays and sets the pH.']
         }
       }[kind][reg];

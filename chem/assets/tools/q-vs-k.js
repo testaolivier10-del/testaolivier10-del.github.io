@@ -80,7 +80,8 @@
       var conc = sp.map(function(s, j){ var c = n[j] / ctx.per, whole = Math.abs(c - Math.round(c)) < 1e-6;
         return '[' + s.html + '] = ' + (whole ? Math.round(c) + ' × ' + M.fmt(ctx.per, 2) + ' mol' : M.fmt(n[j], 3) + ' mol') + ' ÷ ' + F(V, 2) + ' L = ' + M.fmt(n[j] / V, 3) + ' M'; }).join('; ');
       if(!ok){
-        var noR = sp.some(function(s, j){ return s.nu < 0 && n[j] <= 0; });
+        var noR = sp.some(function(s, j){ return s.nu < 0 && M.inQ(s) && n[j] <= 0; }), noP = sp.some(function(s, j){ return s.nu > 0 && M.inQ(s) && n[j] <= 0; });
+        if(noR && noP) return '<p class="tx-where"><b>A reactant and a product are both at zero.</b> Q is not defined, and neither direction can run: each needs a species that is not there.</p>';
         return '<p class="tx-where"><b>' + (noR ? 'A reactant is at zero.' : 'A product is at zero.') + '</b> ' + (noR ? 'Q has a zero on the bottom, so Q is larger than any K: only the reverse reaction can run.' : 'Q = 0, below any K: the forward reaction must run.') + '</p>';
       }
       var c = window.ApChemBeaker.pure.qk(q, K), g = dn();
@@ -89,7 +90,7 @@
       var toK = c.dir === 'fwd' ? 'The reaction makes products until Q rises to K.' : c.dir === 'rev' ? 'The reaction makes reactants until Q falls to K.' : 'Forward and reverse rates are equal: no net change.';
       if(note && /Volume/.test(note)){
         body += g === 0 ? 'Volume cancels here: the gas moles are the same on both sides (Δn = 0), so every concentration changes by the same factor and Q does not move. '
-          : 'Δn(gas) = ' + (g > 0 ? '+' : '') + g + ', so the volume changes Q: Q scales as (1/V)<sup>' + g + '</sup>. ' + (g > 0 ? 'A smaller volume raises Q, so the mixture shifts toward the side with fewer gas particles (reactants).' : 'A smaller volume lowers Q, so the mixture shifts toward the side with fewer gas particles (products).') + ' ';
+          : 'Δn(gas) = ' + (g > 0 ? '+' : '') + g + ', so the volume changes Q: Q scales as (1/V)<sup>' + g + '</sup>. ' + (g > 0 ? 'A smaller volume raises Q and a larger one lowers it. Starting from equilibrium, compressing the vessel makes Q > K, so the mixture shifts toward the side with fewer gas particles (reactants).' : 'A smaller volume lowers Q and a larger one raises it. Starting from equilibrium, compressing the vessel makes Q < K, so the mixture shifts toward the side with fewer gas particles (products).') + ' Which way it goes now depends on Q against K. ';
         body += toK;
       } else if(i != null){
         var prod = sp[i].nu > 0, up = (d > 0) === prod;
@@ -101,7 +102,7 @@
       if(busy) return;
       var target = M.equilibrate(sp, n, V, K), from = n.slice(), steps = T.reduced() ? 1 : 8, k = 0;
       var moved = Math.max.apply(null, target.map(function(t, j){ return Math.abs(t - from[j]); }));
-      if(moved < 1e-9){ draw('Already at equilibrium: nothing changes.'); return; }
+      if(moved < 1e-9){ draw(sp.every(function(s, j){ return !M.inQ(s) || n[j] > 0; }) ? 'Already at equilibrium: nothing changes.' : 'Nothing can react: a species each direction needs is at zero.'); return; }
       busy = true;
       var tick = function(){
         k++;
