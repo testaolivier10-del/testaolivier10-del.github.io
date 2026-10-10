@@ -340,8 +340,8 @@
 .sk-cap{margin:6px 0 0;font:600 14.5px/1.55 var(--font-ui);}
 .sk-say{margin:0;min-height:2.9em;padding:8px 12px;border-radius:12px;background:var(--paper);font:700 14.5px/1.5 var(--font-ui);}
 .sk-say:empty{display:none;}
-.sk-read{grid-template-columns:repeat(auto-fit,minmax(min(100%,92px),1fr));}
-.sk-read dd{font-size:16px;}
+.sk-read{grid-template-columns:repeat(auto-fit,minmax(min(100%,108px),1fr));}
+.sk-read dd{font-size:16px;white-space:nowrap;}
 .sk-read dt{text-transform:none;letter-spacing:0;font-size:13px;}
 .sk-read dd small{font:700 12px var(--font-ui);color:var(--muted);}
 .sk-decide{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font:600 14.5px/1.5 var(--font-ui);}
