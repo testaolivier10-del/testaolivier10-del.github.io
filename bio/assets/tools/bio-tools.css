@@ -339,7 +339,9 @@
 .sk-drag.is-dragging{cursor:grabbing;}
 .sk-cap{margin:6px 0 0;font:600 14.5px/1.55 var(--font-ui);}
 .sk-say{margin:0;min-height:2.9em;padding:8px 12px;border-radius:12px;background:var(--paper);font:700 14.5px/1.5 var(--font-ui);}
-.sk-say:empty{visibility:hidden;}
+.sk-say:empty{display:none;}
+.sk-read{grid-template-columns:repeat(auto-fit,minmax(min(100%,92px),1fr));}
+.sk-read dd{font-size:16px;}
 .sk-read dt{text-transform:none;letter-spacing:0;font-size:13px;}
 .sk-read dd small{font:700 12px var(--font-ui);color:var(--muted);}
 .sk-decide{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font:600 14.5px/1.5 var(--font-ui);}
@@ -416,4 +418,26 @@
 .hw-k{display:inline-block;width:13px;height:13px;border-radius:50%;}
 .hw-k.sq{border-radius:3px;}
 .hw-k.g1{box-shadow:inset 0 0 0 4px var(--bio-s3),inset 0 0 0 7px var(--white);}
+/* Descriptive stats: mean solid, median dashed, SD band, SE bracket */
+.ds-dot{fill:var(--bio-s1);stroke:var(--white);stroke-width:1.5;}
+.ds-fig .ds-dot[data-k]{cursor:ew-resize;}
+.ds-dot.hot{fill:var(--bio-s2);}
+.ds-dot:focus{outline:none;}
+.ds-dot:focus-visible{stroke:var(--ink);stroke-width:3;}
+.ds-mean{stroke:var(--ink);stroke-width:3;}
+.ds-median{stroke:var(--bio-s2);stroke-width:3;stroke-dasharray:6 4;}
+.ds-mean.mine,.ds-median.mine{stroke-opacity:.6;}
+.ds-ml{font:900 12px var(--font-ui);fill:var(--ink);}
+.ds-ml.median{fill:var(--bio-s2);}
+.ds-sd{fill:var(--bio-s1);fill-opacity:.12;stroke:var(--bio-s1);stroke-opacity:.5;stroke-dasharray:3 3;}
+.ds-sd.mine{fill-opacity:.07;}
+.ds-se{fill:none;stroke:var(--ink);stroke-width:2.5;}
+.ds-se.mine{stroke:var(--muted);}
+.ds-bl{fill:var(--muted);font:800 11px var(--font-ui);}
+.ds-key{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;font:700 13.5px var(--font-ui);}
+.ds-key span{display:inline-flex;align-items:center;gap:6px;}
+.ds-k{display:inline-block;width:18px;height:0;border-top:3px solid var(--ink);}
+.ds-k.median{border-top:3px dashed var(--bio-s2);}
+.ds-k.sd{height:12px;border:1px dashed var(--bio-s1);background:rgba(0,114,178,.15);}
+.ds-k.se{height:7px;border:2.5px solid var(--ink);border-bottom:0;}
 /* ===== Skills tools: end ===== */
