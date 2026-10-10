@@ -365,10 +365,12 @@
   }
   /* The Keep going strip for one structure: its lesson and notes, its
      glossary entry, and the 3D body when the body map has it by name. */
+  function see3d(lab){ return window.AnpToolKit && window.AnpToolKit.body3d ? window.AnpToolKit.body3d(lab.name) : ''; }
   function keepGoing(host, lab, st){
     if(!host || !window.AnpToolKit) return;
+    // The 3D link sits beside the name (body3d), so the strip leaves it out.
     window.AnpToolKit.strip(host, { topic: lab.taught || st.topic, terms: lab.concept ? [lab.concept] : [], max: 1,
-      structures: [lab.name] });   // the label's own name only: an accepted synonym can name a different structure
+      structures: window.AnpToolKit.body3d ? [] : [lab.name] });   // the label's own name only: an accepted synonym can name a different structure
   }
 
   /* ------------------------------------------------------------------ home */
@@ -424,7 +426,7 @@
   }
   function infoHtml(lab, st){
     var t = lab.taught && topicInfo(lab.taught);
-    return '<p class="lp-info-name">' + esc(lab.name) + '</p>' +
+    return '<p class="lp-info-name">' + esc(lab.name) + see3d(lab) + '</p>' +
       (lab.fn ? '<p class="lp-info-fn">' + lab.fn + '</p>' : '') +
       (t && !window.AnpToolKit ? '<p class="anp-small">Taught in ' + topicLink(lab.taught) + '</p>' : '');
   }
@@ -605,7 +607,7 @@
         var why = g.gaveUp ? '' : g.side ? ' Right structure, but the side or position word is missing or wrong.' : g.near ? ' “' + esc(g.typed || '') + '” names a different structure: ' + esc(g.near.name) + '.' : g.pick ? ' That mask covers <b>' + esc(g.pick.name) + '</b>.' : '';
         v = '<p class="lp-verdict no" tabindex="-1"><b>Not quite.</b> It is <b>' + esc(lab.name) + '</b>.' + why + '</p>';
       }
-      return v + (lab.fn ? '<p class="lp-fn">' + lab.fn + '</p>' : '') +
+      return v + see3d(lab) + (lab.fn ? '<p class="lp-fn">' + lab.fn + '</p>' : '') +
         (lab.taught && topicInfo(lab.taught) && !window.AnpToolKit ? '<p class="anp-small">Taught in ' + topicLink(lab.taught) + '</p>' : '') +
         (!g.ok || g.hinted ? '<p class="anp-small">Added to your review queue.</p>' : '') +
         (lab.follow && p.follow ? '<div class="lp-follow" data-follow></div>' : '') +
@@ -835,7 +837,7 @@
             '<p><b>' + esc(lab.name) + '</b>' + (s.ok && s.g && s.g.exact === false && s.kind === 'name' ? ' <span class="anp-small">(accepted; check the spelling)</span>' : '') + '</p><p class="anp-small">' + yours + '</p>' +
             (lab.fn ? '<p class="lp-fn">' + lab.fn + '</p>' : '') +
             (s.follow ? '<p class="lp-fq"><span class="lp-part">(b)</span> ' + f.q + '</p><p class="lp-fn"><b class="' + (s.fok ? 'ok' : 'no') + '">' + (s.fok ? 'Right.' : 'Missed.') + '</b> Answer: ' + f.options[f.correct] + '. ' + f.why + '</p>' : '') +
-            '<div class="lp-actions">' + report(s.it.id) + '</div></div></div></li>';
+            '<div class="lp-actions">' + see3d(lab) + report(s.it.id) + '</div></div></div></li>';
         }).join('') + '</ol>');
       focusEl(app.querySelector('.lp-title'));
     }

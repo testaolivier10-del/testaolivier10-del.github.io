@@ -55,3 +55,13 @@ what the owner should check. Accuracy list at the end.
 - **Not given a picture (70):** unit conversions, counts and scores (GCS, Apgar, Punnett, etc.) where a picture would
   add nothing; A-a gradient and Fick were in the brief but the data has no such calculators.
 - **Owner check:** the arterial wave shape is drawn schematically (labelled so in its caption).
+
+## Lab practical and Word roots (lab-practical.js, word-roots.js, tool-kit.js/.css)
+- **Jobs:** lab practical: name and find structures on real figures. Word roots: decode a term from its parts.
+- **Changed:** a "See it in 3D" button beside the structure's name, for the 55 lab label names (and the word-root
+  terms) that are exact body map Browse-by-name labels or listed aliases (`AnpToolKit.body3d`, same rule as the
+  P1 strip, no synonyms). It appears in Explore and Study info, in quiz feedback, and in the timed practical's
+  review; the Keep going strip no longer repeats it there. Only 2 word-root terms match (diaphragm, clavicle):
+  word roots are mostly prefixes/suffixes and non-structure terms. Nothing else in either tool changed.
+- **Also fixed:** `scripts/test/anp-tool-kit.test.mjs` read the body map labels from `nremt/body-map.html`, but
+  P1-NREMT moved them to `nremt/assets/body-viewer.js`; the test now reads the module (and falls back to the page).

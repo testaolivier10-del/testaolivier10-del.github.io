@@ -170,7 +170,7 @@
   }
   function answerFooter(t, mode, ok){
     return '<div class="wr-answer">' +
-      '<p class="wr-term-line">' + glossLink(t) + ' <span class="wr-small">taught in ' + topicHtml(t.topic) + '</span></p>' +
+      '<p class="wr-term-line">' + glossLink(t) + ' <span class="wr-small">taught in ' + topicHtml(t.topic) + '</span>' + (window.AnpToolKit && window.AnpToolKit.body3d ? window.AnpToolKit.body3d(t.term) : '') + '</p>' +
       '<p><b>Literally:</b> ' + esc(t.literal) + '.<br><b>Meaning:</b> ' + esc(t.meaning) + '.</p>' +
       (t.note ? '<p class="wr-note">' + esc(t.note) + '</p>' : '') +
       '<ul class="wr-parts">' + labeled(t).map(function(s){ return '<li>' + partLine(PARTS[s[1]]) + '</li>'; }).join('') + '</ul>' +
@@ -187,7 +187,7 @@
   }
   function wireNext(card){
     var t = state.cur, fb = card.querySelector('.wr-fb');
-    if(t && fb && window.AnpToolKit) window.AnpToolKit.strip(fb, { topic: t.topic, terms: t.concept && GLOSS[t.concept] ? [t.concept] : [], text: t.term, max: 2, structures: [t.term] });
+    if(t && fb && window.AnpToolKit) window.AnpToolKit.strip(fb, { topic: t.topic, terms: t.concept && GLOSS[t.concept] ? [t.concept] : [], text: t.term, max: 2, structures: window.AnpToolKit.body3d ? [] : [t.term] });
     var nb = card.querySelector('.wr-next');
     if(nb){ nb.addEventListener('click', function(){ start(); var h = app.querySelector('.wr-card h2'); if(h){ h.setAttribute('tabindex', '-1'); h.focus(); } }); nb.focus(); }
   }

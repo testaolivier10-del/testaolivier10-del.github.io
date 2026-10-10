@@ -186,5 +186,14 @@
     try{ var r = window.AnpCore && window.AnpCore.load().q[id]; if(!r || !r.n) return 'new'; return r.right ? 'right' : 'missed'; }catch(e){ return 'new'; }
   }
 
-  window.AnpToolKit = { strip: strip, picker: picker, bodyName: bodyName, status: status, BODY: BODY, ALIAS: ALIAS };
+  /* A "See it in 3D" button for a structure the body map has by name (the
+     same exact-name rule as the strip), or '' when it has none. */
+  function body3d(name, cls){
+    var b = bodyName(name);
+    if(!b) return '';
+    return '<a class="kg-3dbtn' + (cls ? ' ' + cls : '') + '" href="' + esc(BASE + '../nremt/body-map.html?focus=' + encodeURIComponent(b)) + '" aria-label="See the ' + esc(b.toLowerCase()) + ' on the 3D body">' +
+      '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2l8.5 4.9v9.8L12 21.6l-8.5-4.9V6.9z"/><path d="M12 21.6V12M3.5 6.9L12 12l8.5-5.1"/></svg>See it in 3D</a>';
+  }
+
+  window.AnpToolKit = { strip: strip, picker: picker, bodyName: bodyName, body3d: body3d, status: status, BODY: BODY, ALIAS: ALIAS };
 })();
