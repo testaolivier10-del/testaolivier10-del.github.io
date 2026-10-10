@@ -397,7 +397,7 @@
 
   /* ---- Drawing a ¹H NMR spectrum ----------------------------------------- */
 
-  var NM_W = 640, NM_H = 230, NM_L = 20, NM_B = 30, NM_T = 14;
+  var NM_W = 640, NM_H = 250, NM_L = 20, NM_B = 50, NM_T = 14;
   var NM_MAX = 12, NM_MIN = 0;
 
   function nmX(ppm){
@@ -434,7 +434,7 @@
       }
       return '<g class="sp-sig' + (on ? ' is-on' : '') + '" data-sig="' + i + '" tabindex="0" role="button" aria-pressed="' + (on ? 'true' : 'false') + '"' +
         ' aria-label="' + esc(s.ppm.toFixed(2) + ' ppm, ' + s.h + ' H, ' + (MULT_NAME[s.mult] || s.mult) + ', ' + s.label) + '">' +
-        '<rect x="' + (nmX(s.ppm) - 22) + '" y="' + (base - h - 26) + '" width="44" height="' + (h + 30) + '" fill="transparent"/>' +
+        '<rect x="' + (nmX(s.ppm) - 26) + '" y="' + (base - h - 30) + '" width="52" height="' + (h + 34) + '" rx="6" fill="transparent"/>' +
         lines +
         '<text class="sp-int" x="' + nmX(s.ppm).toFixed(1) + '" y="' + (base - h - 14).toFixed(1) + '" text-anchor="middle">' + s.h + 'H</text>' +
         '<title>' + esc(s.label) + '</title>' +
@@ -443,13 +443,13 @@
 
     var grid = [12,10,8,6,4,2,0].map(function(p){
       return '<line x1="' + nmX(p).toFixed(1) + '" y1="' + NM_T + '" x2="' + nmX(p).toFixed(1) + '" y2="' + base + '" stroke="var(--line-soft)" stroke-width="1"/>' +
-        '<text class="sp-axis" x="' + nmX(p).toFixed(1) + '" y="' + (base + 15) + '" text-anchor="middle">' + p + '</text>';
+        '<text class="sp-axis" x="' + nmX(p).toFixed(1) + '" y="' + (base + 18) + '" text-anchor="middle">' + p + '</text>';
     }).join('');
 
     return '<svg viewBox="0 0 ' + NM_W + ' ' + NM_H + '" role="group" aria-label="Proton NMR spectrum of ' + esc(c.name) + '">' +
       grid +
       '<line x1="' + NM_L + '" y1="' + base + '" x2="' + (NM_W - 14) + '" y2="' + base + '" stroke="var(--line)" stroke-width="1.5"/>' +
-      '<text class="sp-axis" x="' + (NM_W / 2) + '" y="' + (NM_H - 3) + '" text-anchor="middle">chemical shift (ppm)</text>' +
+      '<text class="sp-axis sp-axis-t" x="' + (NM_W / 2) + '" y="' + (NM_H - 4) + '" text-anchor="middle">chemical shift (ppm)</text>' +
       sticks +
     '</svg>';
   }
