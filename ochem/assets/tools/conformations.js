@@ -399,8 +399,10 @@
   /* Build one chair. `flip` inverts the pucker, which is exactly what a ring
      flip does — and every axial/equatorial assignment is then re-derived from
      the new geometry rather than swapped by hand. */
-  function buildChair(flip){
-    var pts = M3.ringPoints(6, 1.46, flip ? -0.25 : 0.25);
+  function buildChair(flip, pucker){
+    /* `pucker` (between 0.25 and -0.25) is only passed while a flip is being
+       animated; at rest the chair is the 0.25 pucker or its mirror. */
+    var pts = M3.ringPoints(6, 1.46, pucker !== undefined ? pucker : (flip ? -0.25 : 0.25));
     var atoms = pts.map(function(p){ return { el:'C', pos:p, lp:0, label:'C' }; });
     var bonds = [0,1,2,3,4,5].map(function(i){ return { a:i, b:(i+1)%6, order:1 }; });
     var slots = [];
@@ -488,26 +490,157 @@
     });
   }
 
+  /* ---- Drawing a chair, and flipping it by touching a group ----------------
+
+     Tapping a substituent asks to move it from axial to equatorial (or back),
+     and the only way a ring can do that is to flip as a whole, so it does:
+     the pucker runs through flat to its mirror over about half a second,
+     every group swings to its new position, and the strain meter follows.
+     The geometry is rebuilt each frame from the same ringPoints and
+     tetrahedral completion as the resting chairs, so the end state is
+     exactly the other chair, not a picture of it. */
+  var fit = 46, anim = null;   // room for a tert-butyl at the edge of the frame
+  function stage(id, chair, label){
+    var el = document.getElementById(id);
+    el.innerHTML =
+      '<svg viewBox="0 0 320 280" role="group" aria-label="' + label + '">' +
+      M3.render(chair, { cx:160, cy:140, scale:fit, rx:crx, ry:cry, labels:true, lonePairs:false }) +
+      '</svg>';
+    el.querySelectorAll('.m3d-atom').forEach(function(g){
+      var at = chair.atoms[parseInt(g.getAttribute('data-atom'), 10)];
+      if(!at || !at.subKey || at.subKey === 'H'){ g.removeAttribute('tabindex'); g.removeAttribute('role'); g.setAttribute('aria-hidden', 'true'); return; }
+      g.classList.add('cf-sub');
+      g.setAttribute('aria-label', SUBS[at.subKey].label + ' on C' + (at.carbon + 1) + ', ' + (at.isAxial ? 'axial' : 'equatorial') +
+        '. Press to flip the ring and make it ' + (at.isAxial ? 'equatorial' : 'axial'));
+      g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); e.stopPropagation(); flipRing(at); } });
+    });
+  }
+
+  function flipRing(at){
+    if(anim) return;
+    var said = at ? SUBS[at.subKey].label + ' on C' + (at.carbon + 1) + ' goes ' + (at.isAxial ? 'equatorial' : 'axial') + ', and every other group swaps with it.' : '';
+    var calm = (window.LevlMotion && window.LevlMotion.reduced()) ||
+      (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var done = function(){
+      anim = null; flipped = !flipped; renderChair();
+      var live = document.getElementById('cfFlipSay');
+      if(live) live.textContent = 'Ring flipped. ' + said;
+      if(at){ var g = document.querySelector('#cfChairStage .cf-sub'); if(g && document.activeElement && document.activeElement.closest && document.activeElement.closest('.cf-pair')) g.focus(); }
+    };
+    if(calm){ done(); return; }
+    var t0 = null, from = flipped ? -0.25 : 0.25;
+    anim = true;
+    function step(ts){
+      if(t0 === null) t0 = ts;
+      var t = Math.min(1, (ts - t0) / 560), e = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2) / 2;
+      var pk = from * (1 - 2*e);
+      stage('cfChairStage', buildChair(flipped, pk), 'Cyclohexane chair, flipping');
+      stage('cfChairStageB', buildChair(!flipped, -pk), 'Cyclohexane chair, flipping');
+      if(t < 1) requestAnimationFrame(step); else done();
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* The strain meter: each chair's cost as a bar, built from the same terms
+     the table lists (one segment per axial group's A-value, one for each
+     extra 1,3-diaxial clash), on a shared scale so the longer bar is the
+     worse chair at a glance. */
+  function renderMeter(eA, eB){
+    var el = document.getElementById('cfMeter');
+    if(!el) return;
+    var hide = chal.on && !chal.done;
+    var max = Math.max(5, eA.total, eB.total);
+    function bar(e, name){
+      return '<div class="cf-meter__row"><span class="cf-meter__k">' + name + '</span><span class="cf-meter__track">' +
+        (hide ? '<span class="cf-meter__q">?</span>' :
+        e.terms.map(function(t, i){
+          return '<span class="cf-meter__seg' + (/1,3/.test(t.text) ? ' is-clash' : '') + '" style="width:' + (t.kcal / max * 100).toFixed(1) + '%" title="' + esc(t.text) + '">' +
+            (t.kcal / max > 0.14 ? esc(t.text.split(' ')[0] === 'Extra' ? '1,3' : t.text.split(' ')[0]) : '') + '</span>';
+        }).join('')) +
+        '</span><b class="cf-meter__v">' + (hide ? '' : e.total.toFixed(2)) + '</b></div>';
+    }
+    el.innerHTML = '<p class="cf-meter__h">Strain from axial groups <span class="tmuted">(A-values, kcal/mol)</span></p>' +
+      bar(eA, 'This chair') + bar(eB, 'Flipped');
+  }
+
+  /* ---- Find the most stable chair ------------------------------------------
+
+     A substitution pattern drawn at random (one or two groups, cis or trans,
+     1,2 / 1,3 / 1,4), shown in whichever chair the dice pick, with every
+     number hidden. Flip until the left chair is the better one and commit;
+     the meter, the split and the table then come back. Patterns whose two
+     chairs cost the same are skipped: there is no right answer to find. */
+  var chal = { on:false, done:false, right:0, total:0, ok:null };
+  var CHAL_GROUPS = ['Me', 'Et', 'iPr', 'tBu', 'Ph', 'OH', 'Cl', 'Br'];
+
+  function newChal(){
+    for(var tries = 0; tries < 60; tries++){
+      var r = [null,null,null,null,null,null];
+      var g1 = CHAL_GROUPS[Math.floor(Math.random() * CHAL_GROUPS.length)];
+      r[0] = [g1, Math.random() < 0.5 ? 'up' : 'down'];
+      if(Math.random() < 0.75){
+        var pos = 1 + Math.floor(Math.random() * 3);
+        var g2 = CHAL_GROUPS[Math.floor(Math.random() * CHAL_GROUPS.length)];
+        r[pos] = [g2, Math.random() < 0.5 ? 'up' : 'down'];
+      }
+      ring = r;
+      var a = chairEnergy(buildChair(false)).total, b = chairEnergy(buildChair(true)).total;
+      if(Math.abs(a - b) >= 0.2) break;
+    }
+    flipped = Math.random() < 0.5;
+    chal.done = false; chal.ok = null;
+    document.getElementById('cfPresets').querySelectorAll('.tchip').forEach(function(x){ x.classList.remove('on'); });
+    renderChair();
+  }
+
+  function renderChal(eA, eB){
+    var el = document.getElementById('cfChal');
+    if(!el) return;
+    if(!chal.on){ el.hidden = true; return; }
+    el.hidden = false;
+    var names = ring.map(function(e, i){ return e ? SUBS[e[0]].label + ' on C' + (i + 1) + ' (' + e[1] + ')' : null; }).filter(Boolean);
+    el.innerHTML = '<p class="cf-chal__q"><b>Find the more stable chair.</b> ' + esc(names.join(', ')) + '. ' +
+        'Tap a group (or Flip the ring) until the left chair is the better one.' +
+        (chal.total ? ' <span class="tmuted">' + chal.right + ' of ' + chal.total + '</span>' : '') + '</p>' +
+      '<div class="trow">' +
+        (chal.done ? '<button type="button" class="btn-press" id="cfChalNext">Next ring</button>'
+                   : '<button type="button" class="btn-press" id="cfChalGo">The left chair is the stable one</button>') +
+      '</div>' +
+      (chal.done ? '<div class="tnote ' + (chal.ok ? 'tnote--good' : 'tnote--bad') + '" style="margin-top:10px;" tabindex="-1" id="cfChalSay"><span class="tnote__k">' +
+        (chal.ok ? 'Right' : 'The other chair') + '</span>' +
+        (chal.ok ? 'This chair costs ' + eA.total.toFixed(2) + ' kcal/mol against ' + eB.total.toFixed(2) + '.'
+                 : 'The flipped chair costs ' + eB.total.toFixed(2) + ' kcal/mol against this one\'s ' + eA.total.toFixed(2) + '.') +
+        ' ' + (function(){
+          var best = Math.min(eA.total, eB.total);
+          var subs = ring.filter(Boolean);
+          if(best < 0.005) return subs.length > 1 ? 'In the better chair every group is equatorial, so it pays nothing.' : 'Equatorial costs nothing; axial costs the A-value.';
+          var big = subs.slice().sort(function(x, y){ return SUBS[y[0]].a - SUBS[x[0]].a; })[0];
+          return 'Here one group has to be axial in either chair, so the better chair puts the larger one, ' +
+            SUBS[big[0]].label + ' (A = ' + SUBS[big[0]].a.toFixed(2) + '), equatorial.';
+        })() + '</div>' : '');
+    var go = document.getElementById('cfChalGo');
+    if(go) go.addEventListener('click', function(){
+      var a = chairEnergy(buildChair(flipped)).total, b = chairEnergy(buildChair(!flipped)).total;
+      chal.done = true; chal.total++; chal.ok = a <= b; if(chal.ok) chal.right++;
+      renderChair();
+      var say = document.getElementById('cfChalSay'); if(say) say.focus({ preventScroll:true });
+    });
+    var nx = document.getElementById('cfChalNext');
+    if(nx) nx.addEventListener('click', function(){ newChal(); var g = document.getElementById('cfChalGo'); if(g) g.focus(); });
+  }
+
   function renderChair(){
     syncState();
     var here = buildChair(flipped);
     var other = buildChair(!flipped);
     var eHere = chairEnergy(here), eOther = chairEnergy(other);
 
-    var fit = 52;
-
     /* Both chairs, drawn. The tool used to show one and report the other as a
        number, which quietly makes the flip an abstraction again — the whole
        claim being made is that these are two different shapes of the same
        molecule, and one picture plus one number does not show that. */
-    function stage(id, chair, label){
-      document.getElementById(id).innerHTML =
-        '<svg viewBox="0 0 320 280" role="img" aria-label="' + label + '">' +
-        M3.render(chair, { cx:160, cy:140, scale:fit, rx:crx, ry:cry, labels:true, lonePairs:false }) +
-        '</svg>';
-    }
-    stage('cfChairStage',  here,  'Cyclohexane chair, the one being detailed');
-    stage('cfChairStageB', other, 'Cyclohexane chair, after a ring flip');
+    stage('cfChairStage',  here,  'Cyclohexane chair, the one being detailed. Tap a group to flip the ring');
+    stage('cfChairStageB', other, 'Cyclohexane chair, after a ring flip. Tap a group to flip the ring');
 
     // Which chair wins, and by how much.
     var gap = Math.abs(eHere.total - eOther.total);
@@ -526,10 +659,16 @@
         '<div class="cf-pair__kcal">' + kcal.toFixed(2) + ' kcal/mol</div>' +
         '<div class="cf-pair__tag">' + tag + '</div>';
     }
-    cap('cfCapA', eHere.total,  pctHere,       hereWins,  'detailed below');
-    cap('cfCapB', eOther.total, 100 - pctHere, !hereWins, 'after a flip');
-    document.getElementById('cfPairA').classList.toggle('is-win', hereWins && gap >= 0.005);
-    document.getElementById('cfPairB').classList.toggle('is-win', !hereWins && gap >= 0.005);
+    var hide = chal.on && !chal.done;
+    if(hide){
+      document.getElementById('cfCapA').innerHTML = '<div class="cf-pair__tag">this chair</div>';
+      document.getElementById('cfCapB').innerHTML = '<div class="cf-pair__tag">after a flip</div>';
+    } else {
+      cap('cfCapA', eHere.total,  pctHere,       hereWins,  'detailed below');
+      cap('cfCapB', eOther.total, 100 - pctHere, !hereWins, 'after a flip');
+    }
+    document.getElementById('cfPairA').classList.toggle('is-win', !hide && hereWins && gap >= 0.005);
+    document.getElementById('cfPairB').classList.toggle('is-win', !hide && !hereWins && gap >= 0.005);
 
     var html = '<div class="tstat">' +
       '<div><div class="k">This chair</div><div class="v">' + eHere.total.toFixed(2) + ' <small>kcal/mol</small></div></div>' +
@@ -586,7 +725,11 @@
       'all six at once. It never moves a group from one face of the ring to the other, which is why cis stays cis: ' +
       'that would take breaking a bond.</p>';
 
-    document.getElementById('cfChairReadout').innerHTML = html;
+    document.getElementById('cfChairReadout').innerHTML = chal.on && !chal.done
+      ? '<div class="tempty">Hidden until you commit. Flip the ring (tap any group) until the chair on the left is the one you think has less strain, then press the button.</div>'
+      : html;
+    renderMeter(eHere, eOther, here);
+    renderChal(eHere, eOther);
     renderRingControls();
   }
 
@@ -676,12 +819,17 @@
     '</div>' +
 
     '<div id="cfChair" hidden>' +
-      '<div class="tpanel"><div class="tpanel__head">Start from a classic, or build your own</div>' +
+      '<div class="tpanel"><div class="tpanel__head"><span>Start from a classic, or build your own</span>' +
+          '<div class="tseg" id="cfChairTask" role="group" aria-label="Mode">' +
+            '<button type="button" data-ctask="explore" class="on" aria-pressed="true">Explore</button>' +
+            '<button type="button" data-ctask="chal" aria-pressed="false">Find the stable chair</button>' +
+          '</div></div>' +
         '<div class="tchips" id="cfPresets"></div></div>' +
       '<div class="tsplit">' +
         '<div class="tpanel">' +
           '<div class="tpanel__head"><span>Both chairs, side by side</span>' +
-            '<span class="tmuted">drag either one</span></div>' +
+            '<span class="tmuted">drag to turn · tap a group to flip</span></div>' +
+          '<div id="cfChal" class="cf-chal" hidden></div>' +
           '<div class="cf-pair">' +
             '<div class="cf-pair__one" id="cfPairA">' +
               '<div class="v3-stage" id="cfChairStage"></div>' +
@@ -692,8 +840,10 @@
               '<div class="cf-pair__cap" id="cfCapB"></div>' +
             '</div>' +
           '</div>' +
+          '<div class="cf-meter" id="cfMeter"></div>' +
+          '<div class="sr-only" aria-live="polite" id="cfFlipSay"></div>' +
           '<div class="trow" style="margin-top:12px;">' +
-            '<button type="button" class="btn-press" id="cfFlip">Swap which one is detailed</button>' +
+            '<button type="button" class="btn-press" id="cfFlip">Flip the ring</button>' +
             '<button type="button" class="tchip" id="cfClear">Clear all</button>' +
           '</div>' +
           '<div id="cfRing" class="cf-ring"></div>' +
@@ -815,9 +965,15 @@
     });
   });
 
-  document.getElementById('cfFlip').addEventListener('click', function(){
-    flipped = !flipped;
-    renderChair();
+  document.getElementById('cfFlip').addEventListener('click', function(){ flipRing(null); });
+  document.getElementById('cfChairTask').addEventListener('click', function(e){
+    var b = e.target.closest('[data-ctask]'); if(!b) return;
+    var on = b.getAttribute('data-ctask') === 'chal';
+    document.getElementById('cfChairTask').querySelectorAll('button').forEach(function(x){
+      var m = x === b; x.classList.toggle('on', m); x.setAttribute('aria-pressed', m ? 'true' : 'false'); });
+    if(on === chal.on) return;
+    chal.on = on;
+    if(on) newChal(); else { chal.done = false; renderChair(); }
   });
   document.getElementById('cfClear').addEventListener('click', function(){
     ring = [null,null,null,null,null,null];
@@ -836,13 +992,26 @@
     if(!stage) return;
     stage.setAttribute('tabindex', '0');
 
+    var downAt = null, moved = 0;
     stage.addEventListener('pointerdown', function(e){
-      dragging = true; lx = e.clientX; ly = e.clientY;
+      dragging = true; lx = e.clientX; ly = e.clientY; moved = 0;
+      var g = e.target.closest ? e.target.closest('.cf-sub') : null;
+      downAt = g ? parseInt(g.getAttribute('data-atom'), 10) : null;
       stage.setPointerCapture(e.pointerId);
       stage.classList.add('is-dragging');
     });
+    stage.addEventListener('pointerup', function(){
+      /* A tap on a group, as opposed to a drag that started on one, flips. */
+      if(downAt !== null && moved < 6){
+        var ch = buildChair(id === 'cfChairStage' ? flipped : !flipped);
+        flipRing(ch.atoms[downAt]);
+      }
+      downAt = null;
+    });
     stage.addEventListener('pointermove', function(e){
       if(!dragging) return;
+      moved += Math.abs(e.clientX - lx) + Math.abs(e.clientY - ly);
+      if(anim) return;
       cry += (e.clientX - lx) * 0.011;
       crx = Math.max(-1.45, Math.min(1.45, crx + (e.clientY - ly) * 0.011));
       lx = e.clientX; ly = e.clientY;

@@ -214,3 +214,16 @@ test('roadmap puzzle: decoys never react with the current group, and playing the
   }
   assert.ok(played > 300, `only ${played} puzzles`);
 });
+
+test('conformations: the A-values the chair meter uses are the reviewed ones', () => {
+  /* Listed in docs/tools-upgrade-notes/ochem.md "For accuracy review"; a change
+     here should be a deliberate edit to both. */
+  const src = readFileSync('ochem/assets/tools/conformations.js', 'utf8');
+  const want = { Me:1.70, Et:1.75, iPr:2.15, tBu:4.90, Ph:2.80, OH:0.87, OMe:0.75, F:0.15, Cl:0.43, Br:0.38 };
+  for(const [k, a] of Object.entries(want)){
+    const m = new RegExp('\\b' + k + ':\\s*\\{[^}]*\\ba:([0-9.]+)').exec(src);
+    assert.ok(m, `${k} missing`);
+    assert.equal(Number(m[1]), a, `${k} A-value changed`);
+  }
+  assert.match(src, /total \+= 1\.6;/, 'the 1,3-diaxial surcharge changed');
+});
