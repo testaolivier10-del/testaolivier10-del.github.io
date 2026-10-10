@@ -446,19 +446,27 @@
     var liveX = up ? GC : GX0, liveW = (GX1 - GX0) / 2;
     var sp = lv.setPoint ? lv.setPoint : (pos ? 'Starting level' : 'Set point');
     var other = partner(l);
+    var ticks = '';
+    for(var i = 0; i <= 20; i++){ var tx = GX0 + 8 + (GX1 - GX0 - 16) * i / 20; ticks += '<path class="fl-g-tk' + (i % 5 ? '' : ' big') + '" d="M' + tx.toFixed(1) + ' ' + (GY + 11) + ' V' + (GY + (i % 5 ? 15 : 18)) + '"/>'; }
+    var gid = p + '-gg';
     return '<svg class="fl-gauge" viewBox="0 0 340 114" role="group" aria-labelledby="' + p + '-gl">' +
       '<title id="' + p + '-gl">' + esc(lv.variable) + ' gauge</title>' +
+      '<defs><linearGradient id="' + gid + '" x1="0" x2="1" y1="0" y2="0">' +
+        (up ? '<stop offset="0" class="fl-g-s0"/><stop offset="1" class="fl-g-s1 hi"/>' : '<stop offset="0" class="fl-g-s1 lo"/><stop offset="1" class="fl-g-s0"/>') +
+      '</linearGradient><linearGradient id="' + gid + 't" x1="0" x2="0" y1="0" y2="1"><stop offset="0" class="fl-g-t0"/><stop offset="1" class="fl-g-t1"/></linearGradient></defs>' +
       '<text class="fl-g-name" x="' + GX0 + '" y="16">' + esc(lv.variable) + '</text>' +
       '<text class="fl-g-state" x="' + GX0 + '" y="34"></text>' +
-      '<rect class="fl-g-track" x="' + GX0 + '" y="' + (GY - 7) + '" width="' + (GX1 - GX0) + '" height="14" rx="7"/>' +
-      '<rect class="fl-g-live ' + (up ? 'hi' : 'lo') + '" x="' + liveX + '" y="' + (GY - 7) + '" width="' + liveW + '" height="14" rx="7"/>' +
-      '<text class="lbl-sm" x="' + GX0 + '" y="' + (GY + 30) + '">' + (pos ? 'less' : 'lower') + '</text>' +
-      '<text class="lbl-sm" x="' + GX1 + '" y="' + (GY + 30) + '" text-anchor="end">' + (pos ? 'more' : 'higher') + '</text>' +
-      '<g class="fl-g-sp"><path class="fl-g-spline" d="M' + GC + ' ' + (GY - 18) + ' V' + (GY + 18) + '"/><text class="fl-g-spt" x="' + GC + '" y="' + (GY + 34) + '" text-anchor="middle">' + esc(sp) + '</text></g>' +
+      '<rect class="fl-g-track" x="' + GX0 + '" y="' + (GY - 8) + '" width="' + (GX1 - GX0) + '" height="16" rx="8" fill="url(#' + gid + 't)"/>' +
+      '<rect class="fl-g-live ' + (up ? 'hi' : 'lo') + '" x="' + liveX + '" y="' + (GY - 8) + '" width="' + liveW + '" height="16" rx="8" fill="url(#' + gid + ')"/>' +
+      '<rect class="fl-g-gloss" x="' + (GX0 + 6) + '" y="' + (GY - 6) + '" width="' + (GX1 - GX0 - 12) + '" height="4" rx="2"/>' +
+      ticks +
+      '<text class="lbl-sm" x="' + GX0 + '" y="' + (GY + 34) + '">' + (pos ? 'less' : 'lower') + '</text>' +
+      '<text class="lbl-sm" x="' + GX1 + '" y="' + (GY + 34) + '" text-anchor="end">' + (pos ? 'more' : 'higher') + '</text>' +
+      '<g class="fl-g-sp"><path class="fl-g-spline" d="M' + GC + ' ' + (GY - 16) + ' V' + (GY + 20) + '"/><path class="fl-g-sptri" d="M' + (GC - 6) + ' ' + (GY - 22) + ' H' + (GC + 6) + ' L' + GC + ' ' + (GY - 14) + ' Z"/><text class="fl-g-spt" x="' + GC + '" y="' + (GY + 36) + '" text-anchor="middle">' + esc(sp) + '</text></g>' +
       (lv.shift ? '<g class="fl-g-sp0" opacity="0"><path class="fl-g-spline ghost" d="M' + GC + ' ' + (GY - 14) + ' V' + (GY + 14) + '"/><text class="lbl-sm" x="' + GC + '" y="' + (GY + 34) + '" text-anchor="middle">was ' + esc(lv.setPoint) + '</text></g>' : '') +
       '<g class="fl-g-mk" tabindex="0" role="slider" aria-label="' + esc(lv.variable) + '" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">' +
         '<rect class="fl-g-hit" x="-22" y="' + (GY - 30) + '" width="44" height="60" fill="transparent"/>' +
-        '<path class="fl-g-ptr" d="M0 ' + (GY - 22) + ' V' + (GY + 8) + '"/><circle class="fl-g-dot" cx="0" cy="' + GY + '" r="11"/>' +
+        '<path class="fl-g-ptr" d="M0 ' + (GY - 24) + ' V' + (GY + 8) + '"/><circle class="fl-g-halo" cx="0" cy="' + GY + '" r="16"/><circle class="fl-g-dot" cx="0" cy="' + GY + '" r="11"/><path class="fl-g-grip" d="M-3 ' + (GY - 4) + ' V' + (GY + 4) + ' M0 ' + (GY - 4) + ' V' + (GY + 4) + ' M3 ' + (GY - 4) + ' V' + (GY + 4) + '"/>' +
       '</g>' +
       '</svg>' +
       (other ? '<p class="anp-small fl-other">' + (up ? 'A fall' : 'A rise') + ' is answered by another loop: <button type="button" class="link-quiet fl-otherb" data-id="' + esc(other.id) + '">' + esc(other.title) + '</button></p>' : '');
@@ -697,8 +705,41 @@
     if(line) lines.push(line);
     return lines.slice(0, 3);
   }
+  /* Stage icons (visual polish 2026-10): each card carries a small drawing of
+     what that part is, picked from its own text: a sensory nerve ending or a
+     sensing cell, a nerve or a hormone in the blood, the brain or a gland cell,
+     muscle or a secreting cell. Drawn on a 24 x 24 grid, white on the stage tone. */
+  var ICON = {
+    up: '<path d="M12 4 L19 12 H14.5 V20 H9.5 V12 H5 Z"/>',
+    down: '<path d="M12 20 L19 12 H14.5 V4 H9.5 V12 H5 Z"/>',
+    change: '<path d="M3 15 C6 15 7 7 10 7 C13 7 13.5 17 16.5 17 C18.5 17 19.5 12 21 11" class="fi-s"/>',
+    ending: '<path d="M3 20 C7 18 9 15 11 12 M11 12 C11 8 9 6 6 5 M11 12 C14 10 15 7 15 4 M11 12 C15 13 18 12 20 9" class="fi-s"/><circle cx="6" cy="5" r="1.9"/><circle cx="15" cy="4" r="1.9"/><circle cx="20" cy="9" r="1.9"/>',
+    cell: '<path d="M12 3.5 C17.5 3.5 20.5 7.5 20.5 12 C20.5 17 17 20.5 12 20.5 C6.5 20.5 3.5 16.5 3.5 12 C3.5 7 7 3.5 12 3.5 Z" class="fi-s"/><circle cx="12.5" cy="12" r="3.6"/><circle cx="7.5" cy="8.5" r="1"/><circle cx="16.5" cy="16.5" r="1"/>',
+    nerve: '<path d="M2 12 H22" class="fi-s fi-thin"/><rect x="4" y="9" width="5" height="6" rx="3"/><rect x="11" y="9" width="5" height="6" rx="3"/><path d="M18 8 L22 12 L18 16" class="fi-s"/>',
+    hormone: '<path d="M12 3 C12 3 5.5 10.5 5.5 14.5 C5.5 18.2 8.4 21 12 21 C15.6 21 18.5 18.2 18.5 14.5 C18.5 10.5 12 3 12 3 Z"/><circle cx="10" cy="15" r="1.6" class="fi-hole"/><circle cx="14" cy="12.5" r="1.2" class="fi-hole"/><circle cx="13.6" cy="17.4" r="1" class="fi-hole"/>',
+    local: '<circle cx="7" cy="12" r="4.5" class="fi-s"/><circle cx="17" cy="12" r="4.5" class="fi-s"/><path d="M10.5 9.5 L13.5 9.5 M10.5 14.5 L13.5 14.5" class="fi-s fi-thin"/>',
+    brain: '<path d="M12 5 C10.5 3.5 7 3.8 6.3 6.4 C3.8 6.8 3 9.6 4.2 11.3 C2.8 13.2 3.8 16.3 6.4 16.6 C7 19.2 10.4 20.2 12 18.3 C13.6 20.2 17 19.2 17.6 16.6 C20.2 16.3 21.2 13.2 19.8 11.3 C21 9.6 20.2 6.8 17.7 6.4 C17 3.8 13.5 3.5 12 5 Z"/><path d="M12 5.5 V18 M8 9 C9.5 9.5 10 11 9.2 12.5 M16 9 C14.5 9.5 14 11 14.8 12.5 M7.5 14.5 C9 14 10.5 14.6 11 15.6 M16.5 14.5 C15 14 13.5 14.6 13 15.6" class="fi-in"/>',
+    gland: '<circle cx="12" cy="8.5" r="4.2"/><circle cx="7" cy="15" r="4.2"/><circle cx="17" cy="15" r="4.2"/><circle cx="12" cy="13" r="1.6" class="fi-hole"/>',
+    muscle: '<path d="M2.5 12 C5 7 9 5.5 12 5.5 C15 5.5 19 7 21.5 12 C19 17 15 18.5 12 18.5 C9 18.5 5 17 2.5 12 Z"/><path d="M5 12 H19 M6.5 9.3 C10 8.4 14 8.4 17.5 9.3 M6.5 14.7 C10 15.6 14 15.6 17.5 14.7" class="fi-in"/>',
+    secrete: '<path d="M4 7 C4 5 6 4 8 4 H16 C18 4 20 5 20 7 V12 C20 14 18 15 16 15 H8 C6 15 4 14 4 12 Z"/><circle cx="12" cy="9.5" r="2.4" class="fi-hole"/><circle cx="8" cy="19" r="1.5"/><circle cx="12.5" cy="20.5" r="1.5"/><circle cx="16.5" cy="18.6" r="1.5"/>',
+    back: '<path d="M18 7 A7.5 7.5 0 1 0 19.5 13" class="fi-s"/><path d="M14.5 6.5 L19 6.2 L18.7 2" class="fi-s"/>'
+  };
+  function iconFor(l, k){
+    var t = l.slots[k].short;
+    if(k === 'stimulus') return /\b(rises?|high|more|stretch|overload|warms|inflation|trickle|flows|strain|sustained)/i.test(t) ? 'up' : /\b(falls?|low|less|cool|below)/i.test(t) ? 'down' : 'change';
+    if(k === 'sensor') return /(ending|thermorecep|baroreceptor|chemoreceptor|spindle|stretch|sensory receptor|light sensor|nerve)/i.test(t) ? 'ending' : 'cell';
+    if(k === 'afferent' || k === 'efferent'){
+      if(/^none/i.test(t)) return 'local';
+      if(/(nerve|neuron|fiber|axon|vagus|vagal|tract|sympath|motor|phrenic|splanchnic|brainstem|IX|within the hypothalamus)/i.test(t)) return 'nerve';
+      if(/(blood|hormone|portal|ACTH|ADH|EPO|FSH|TSH|GnRH|secretin|PTH|insulin|glucagon|gastrin|aldosterone|angiotensin|oxytocin|ANP|vitamin)/i.test(t)) return 'hormone';
+      return 'local';
+    }
+    if(k === 'control') return /(brain|hypothalam|medull|pontine|cord|horn|pretectal|respiratory|cardiovascular|enteric)/i.test(t) ? 'brain' : 'gland';
+    if(k === 'effector') return /(muscle|detrusor|diaphragm|myometrium|sphincter|arteriol|vessel|heart|SA node|intercostal|iris|antrum)/i.test(t) ? 'muscle' : 'secrete';
+    return 'back';
+  }
   function loopSvg(l, live){
-    var W = 340, BW = 152, BH = 72, GAP = 26, X = [6, 182];
+    var W = 340, BW = 154, BH = 80, GAP = 24, X = [4, 182];
     function y(r){ return 12 + r * (BH + GAP); }
     var pos = { stimulus: [0, 0], sensor: [0, 1], afferent: [0, 2], control: [0, 3], efferent: [1, 3], effector: [1, 2], response: [1, 1] };
     var cls = { stimulus: 'shape', sensor: 'aff', afferent: 'aff', control: 'accent', efferent: 'eff', effector: 'eff', response: 'shape' };
@@ -706,30 +747,30 @@
     var s = '';
     SLOTS.forEach(function(k){
       var cx = X[pos[k][0]], cy = y(pos[k][1]);
-      var lines = wrap(l.slots[k].short, 21);
-      s += '<g data-k="' + k + '"><rect class="' + cls[k] + '" x="' + cx + '" y="' + cy + '" width="' + BW + '" height="' + BH + '" rx="11"/>' +
-        '<text class="lbl-sm fl-svg-l" x="' + (cx + BW / 2) + '" y="' + (cy + 17) + '" text-anchor="middle">' + esc(LABELS[k]) + '</text>' +
-        lines.map(function(t, i){ return '<text class="fl-svg-t" x="' + (cx + BW / 2) + '" y="' + (cy + (lines.length === 3 ? 33 : lines.length === 2 ? 39 : 46) + i * 14.5) + '" text-anchor="middle">' + esc(t) + '</text>'; }).join('') + '</g>';
+      var lines = wrap(l.slots[k].short, 20);
+      s += '<g data-k="' + k + '" class="fl-node fl-n-' + cls[k] + '"><rect class="fl-card-bg ' + cls[k] + '" x="' + cx + '" y="' + cy + '" width="' + BW + '" height="' + BH + '" rx="12"/>' +
+        '<g transform="translate(' + (cx + 7) + ' ' + (cy + 6) + ')"><g class="fl-ic"><circle class="fl-ic-bg" cx="15" cy="15" r="15"/><g class="fl-ic-g" transform="translate(4.2 4.2) scale(.9)">' + ICON[iconFor(l, k)] + '</g></g></g>' +
+        '<text class="fl-svg-l" x="' + (cx + 43) + '" y="' + (cy + 25) + '">' + esc(LABELS[k]) + '</text>' +
+        lines.map(function(t, i){ return '<text class="fl-svg-t" x="' + (cx + BW / 2) + '" y="' + (cy + (lines.length === 3 ? 46 : lines.length === 2 ? 52 : 59) + i * 14) + '" text-anchor="middle">' + esc(t) + '</text>'; }).join('') + '</g>';
     });
     var lx = X[0] + BW / 2, rx = X[1] + BW / 2;
-    // down the left column
-    for(var r = 0; r < 3; r++) s += '<path class="causes" data-from="' + SLOTS[r] + '" d="M' + lx + ' ' + (y(r) + BH + 2) + ' V' + (y(r + 1) - 5) + '"/>';
-    // across the bottom: control center to efferent pathway
-    s += '<path class="causes" data-from="control" d="M' + (X[0] + BW + 2) + ' ' + (y(3) + BH / 2) + ' H' + (X[1] - 5) + '"/>';
-    // up the right column
-    for(r = 3; r > 1; r--) s += '<path class="causes" data-from="' + (r === 3 ? 'efferent' : 'effector') + '" d="M' + rx + ' ' + (y(r) - 2) + ' V' + (y(r - 1) + BH + 5) + '"/>';
-    // response feeds back on the stimulus
-    var fx = X[1] + BW - 26, fy = y(0) + BH / 2;
-    s += '<path class="causes fl-return" data-from="response" d="M' + fx + ' ' + (y(1) - 2) + ' V' + fy + ' H' + (X[0] + BW + 5) + '"/>';
+    // each link carries a traveling impulse while it is lit
+    function link(from, d, extra){ return '<g data-from="' + from + '" class="fl-link"><path class="causes' + (extra || '') + '" d="' + d + '"/><path class="fl-imp" d="' + d + '"/></g>'; }
+    for(var r = 0; r < 3; r++) s += link(SLOTS[r], 'M' + lx + ' ' + (y(r) + BH + 2) + ' V' + (y(r + 1) - 5));
+    s += link('control', 'M' + (X[0] + BW + 2) + ' ' + (y(3) + BH / 2) + ' H' + (X[1] - 5));
+    for(r = 3; r > 1; r--) s += link(r === 3 ? 'efferent' : 'effector', 'M' + rx + ' ' + (y(r) - 2) + ' V' + (y(r - 1) + BH + 5));
+    // response feeds back on the stimulus, round a rounded corner
+    var fx = X[1] + BW - 28, fy = y(0) + BH / 2;
+    s += link('response', 'M' + fx + ' ' + (y(1) - 2) + ' V' + (fy + 10) + ' Q' + fx + ' ' + fy + ' ' + (fx - 10) + ' ' + fy + ' H' + (X[0] + BW + 5), ' fl-return');
     var neg = l.kind === 'negative';
     if(live){
-      s += '<text class="lbl-sm" x="' + (X[1] + BW / 2) + '" y="' + (fy - 8) + '" text-anchor="middle">acts on the variable</text>';
+      s += '<text class="lbl-sm" x="' + (X[1] + BW / 2 - 8) + '" y="' + (fy - 9) + '" text-anchor="middle">acts on the variable</text>';
       var la = 'The loop as a ring of seven parts. ' + SLOTS.map(function(k){ return LABELS[k] + ': ' + l.slots[k].short; }).join('. ') + '. The response acts back on the variable.';
       return '<svg class="fl-svg fl-ring" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(la) + '">' + s + '</svg>';
     }
-    s += '<text class="fl-svg-k" x="' + (X[1] + 58) + '" y="' + (fy - 9) + '" text-anchor="middle">' + (neg ? 'Negative feedback' : 'Positive feedback') + '</text>' +
-      '<text class="lbl-sm" x="' + (X[1] + 56) + '" y="' + (fy + 20) + '" text-anchor="middle">' + (neg ? 'the response opposes' : 'the response strengthens') + '</text>' +
-      '<text class="lbl-sm" x="' + (X[1] + 56) + '" y="' + (fy + 35) + '" text-anchor="middle">the stimulus</text>';
+    s += '<text class="fl-svg-k" x="' + (X[1] + 64) + '" y="' + (fy - 9) + '" text-anchor="middle">' + (neg ? 'Negative feedback' : 'Positive feedback') + '</text>' +
+      '<text class="lbl-sm" x="' + (X[1] + 60) + '" y="' + (fy + 20) + '" text-anchor="middle">' + (neg ? 'the response opposes' : 'the response strengthens') + '</text>' +
+      '<text class="lbl-sm" x="' + (X[1] + 60) + '" y="' + (fy + 35) + '" text-anchor="middle">the stimulus</text>';
     var aria = 'The finished loop. ' + SLOTS.map(function(k){ return LABELS[k] + ': ' + l.slots[k].text; }).join('. ') + '. ' + (neg ? 'Negative feedback: the response opposes the stimulus.' : 'Positive feedback: the response strengthens the stimulus.');
     return '<svg class="fl-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(aria) + '">' + s + '</svg>';
   }
