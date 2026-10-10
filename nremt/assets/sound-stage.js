@@ -504,6 +504,7 @@
       timingBox.hidden = m !== 'timing';
       if(quizSection) quizSection.hidden = m !== 'name';
       root.classList.toggle('is-name', m === 'name');
+      root.classList.toggle('is-where', m === 'where');
       if(m === 'explore') renderExplore();
       if(m === 'where'){ st.where = null; nextWhere(); }
       if(m === 'timing'){ st.timing = null; nextTiming(); }
@@ -665,7 +666,7 @@
       var q = st.where, t = st.tally.where;
       side.innerHTML =
         '<div class="st-q"><span class="st-k">Where to listen</span><strong>' + esc(q.ask) + '</strong>' +
-        '<div class="st-tally">' + t[0] + ' of ' + t[1] + ' right</div></div>' +
+        (t[1] ? '<div class="st-tally">' + t[0] + ' of ' + t[1] + ' right</div>' : '') + '</div>' +
         (result ? result : '<p class="st-hint">Tap the spot on the chest. Flip to Back if you need the back.</p>');
       var n = side.querySelector('.st-next');
       if(n) n.addEventListener('click', function(){ nextWhere(); });
@@ -700,7 +701,7 @@
       markWhere(site, ok);
       var right = q.ok.map(function(id){ return SITE[id].name; });
       var sound = byId[q.sound];
-      var html = '<div class="st-verdict ' + (ok ? 'ok' : 'no') + '">' + (ok ? 'Right: ' + esc(site.name) + '.' : 'Not there: you tapped the ' + esc(site.name) + '.') + '</div>' +
+      var html = '<div class="st-verdict ' + (ok ? 'ok' : 'no') + '">' + (ok ? 'Right: ' + esc(site.name) + '.' : 'Not there. You tapped: ' + esc(site.name) + '.') + '</div>' +
         '<p>' + esc(q.why) + '</p>' +
         (ok ? '' : '<p class="st-sitenote"><b>' + esc(site.name) + ':</b> ' + esc(site.note) + '</p>') +
         '<p class="st-sitenote"><b>Answer:</b> ' + esc(uniq(right).join(', ')) + '.</p>' +
@@ -728,7 +729,7 @@
       var q = st.timing, sound = byId[q.sound], t = st.tally.timing;
       timingBox.innerHTML =
         '<div class="st-q"><span class="st-k">Timing</span><strong>Play the beat, then tap the strip where the extra sound falls.</strong>' +
-        '<div class="st-tally">' + t[0] + ' of ' + t[1] + ' right</div></div>' +
+        (t[1] ? '<div class="st-tally">' + t[0] + ' of ' + t[1] + ' right</div>' : '') + '</div>' +
         '<div class="st-row"><span class="st-k">' + (st.timingAnswered ? esc(sound.label) : 'Mystery heart sound') + ' <span class="synth-tag">generated</span></span>' +
         '<button type="button" class="st-play" data-play-which="t" data-label="Play the beat"></button></div>' +
         '<div class="st-strip st-strip--tap" data-strip="t" tabindex="0" aria-label="Heartbeat timeline. Left and right arrow keys move the marker, Enter answers."></div>' +
