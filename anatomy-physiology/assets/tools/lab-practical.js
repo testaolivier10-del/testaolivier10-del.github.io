@@ -292,7 +292,7 @@
     { key: 'practical', label: 'Timed practical', blurb: 'A bell-ringer practical: fixed stations, a timer at each, no going back, full review at the end.' }
   ];
   function modeTabs(active, setId){
-    return '<nav class="lp-modes" aria-label="Mode">' + MODES.map(function(m){
+    return '<nav class="lp-modes kt-seg" aria-label="Mode">' + MODES.map(function(m){
       if(setId && m.key === 'practical') return '';
       var href = m.key === 'practical' ? '#practical' : setId ? '#' + m.key + '/' + setId : '#' + m.key;
       return '<a class="lp-mode" href="' + href + '"' + (m.key === active ? ' aria-current="true"' : '') + '>' + esc(m.label) + '</a>';
@@ -435,14 +435,15 @@
 
   /* --------------------------------------------------------- explore, study */
   function showExplore(s, n, mode){
-    var st = s.stations[n], z = 1, reveal = {}, pick = null;
+    var st = s.stations[n], z = 1, reveal = {}, pick = null, studyOpen = false;
     function draw(){
       var body = setHeader(s, mode) +
-        '<p class="lp-lead">' + (mode === 'explore'
-          ? 'Every label is a button. Select one to see what the structure is and does.'
-          : 'Every label is masked. Select a mask to reveal it, or try naming it first.') + '</p>' +
+        '<p class="kt-first lp-lead">' + (mode === 'explore'
+          ? 'Tap any label on the figure to see what that structure is and does.'
+          : 'Name each masked label in your head, then tap it to check.') + '</p>' +
         stationTabs(s, n, mode) +
-        (mode === 'study' ? '<div class="lp-actions"><button type="button" class="btn-outline sm lp-all" data-v="1">Reveal all</button><button type="button" class="btn-outline sm lp-all" data-v="0">Hide all</button><a class="btn-press sm" href="#quiz/' + s.id + '">Quiz me on this set</a></div>' : '') +
+        (mode === 'study' && window.AnpToolKit && window.AnpToolKit.more ? window.AnpToolKit.more('<div class="lp-actions"><button type="button" class="btn-outline sm lp-all" data-v="1">Reveal all</button><button type="button" class="btn-outline sm lp-all" data-v="0">Hide all</button><a class="btn-press sm" href="#quiz/' + s.id + '">Quiz me on this set</a></div>', { open: !!studyOpen, cls: 'lp-studymore' })
+          : mode === 'study' ? '<div class="lp-actions"><button type="button" class="btn-outline sm lp-all" data-v="1">Reveal all</button><button type="button" class="btn-outline sm lp-all" data-v="0">Hide all</button><a class="btn-press sm" href="#quiz/' + s.id + '">Quiz me on this set</a></div>' : '') +
         '<div class="lp-stage">' + figureHtml(st, { mode: mode, reveal: reveal, zoom: z, pick: pick }) +
         '<div class="lp-info" aria-live="polite">' + (pick ? infoHtml(pick, st) : '<p class="anp-small">' + (mode === 'explore' ? 'Select a label on the figure.' : 'Revealed labels are explained here.') + '</p>') + '</div></div>' +
         (n + 1 < s.stations.length ? '<p class="lp-next"><a class="btn-outline" href="#' + mode + '/' + s.id + '/' + (n + 2) + '">Next figure &rarr;</a></p>' : '');
@@ -450,6 +451,7 @@
       setPicker(s, mode);
       if(pick) keepGoing(app.querySelector('.lp-info'), pick, st);
       wireZoom(app, function(){ return z; }, function(v){ z = v; draw(); });
+      var sm = app.querySelector('.lp-studymore'); if(sm) sm.addEventListener('toggle', function(){ studyOpen = sm.open; });
       app.querySelectorAll('.lp-box').forEach(function(b){
         b.addEventListener('click', function(){
           var id = b.getAttribute('data-label');
@@ -517,7 +519,7 @@
     var k = 0, z = 1, right = 0, results = [], isAnswered = false;
     function header(){
       return (s ? setHeader(s, 'quiz') : modeTabs('quiz') + '<h2 class="lp-title" tabindex="-1">' + esc(title) + '</h2>') +
-        '<details class="lp-settings-d"' + (pref('qopen', false) ? ' open' : '') + '><summary>Quiz settings: ' + esc(p.kind === 'mix' ? 'name it and point to' : p.kind === 'name' ? 'name it only' : 'point to only') + (p.mc ? ', multiple choice' : ', typed answers') + '</summary><div class="lp-settings" role="group" aria-label="Quiz settings">' +
+        '<details class="lp-settings-d kt-more"' + (pref('qopen', false) ? ' open' : '') + '><summary>More options: ' + esc(p.kind === 'mix' ? 'name it and point to' : p.kind === 'name' ? 'name it only' : 'point to only') + (p.mc ? ', multiple choice' : ', typed answers') + '</summary><div class="lp-settings" role="group" aria-label="Quiz settings">' +
         '<label class="anp-filter">Ask <select class="lp-set-kind"><option value="mix"' + (p.kind === 'mix' ? ' selected' : '') + '>Name it and point to</option><option value="name"' + (p.kind === 'name' ? ' selected' : '') + '>Name it only</option><option value="point"' + (p.kind === 'point' ? ' selected' : '') + '>Point to only</option></select></label>' +
         '<label class="lp-check"><input type="checkbox" class="lp-set-mc"' + (p.mc ? ' checked' : '') + '> Multiple choice instead of typing (beginner)</label>' +
         '</div></details>';
@@ -537,8 +539,8 @@
       function draw(){
         var prompt, body = '';
         if(r.kind === 'point'){
-          prompt = 'Point to: <b>' + esc(it.lab.name) + '</b>';
-        } else prompt = 'Name the highlighted structure.';
+          prompt = 'Tap the label for: <b>' + esc(it.lab.name) + '</b>';
+        } else prompt = 'Type the name of the highlighted structure.';
         var fig = figureHtml(st, r.kind === 'point'
           ? { mode: 'point', zoom: z, result: answered ? { pick: answered.pick, right: it.lab } : null }
           : { mode: answered ? 'show' : 'name', target: it.lab, zoom: z });
@@ -553,7 +555,7 @@
         var fb = answered ? feedbackHtml(it, answered) : '';
         paint(header() +
           '<div class="lp-progress"><span class="anp-small">Item ' + (k + 1) + ' of ' + run.length + ' · ' + right + ' right</span><span class="lp-bar"><span style="width:' + (100 * k / run.length) + '%"></span></span></div>' +
-          '<p class="lp-prompt" id="lp-prompt">' + prompt + '</p>' +
+          '<p class="lp-prompt kt-first" id="lp-prompt">' + prompt + '</p>' +
           '<div class="lp-stage">' + fig + '</div>' +
           (!answered ? body : '') +
           '<div class="lp-feedback" aria-live="polite">' + fb + '</div>');
