@@ -461,3 +461,27 @@
   .mei-card>.mei-taphint,.mei-card>.mei-stepper,.mei-card>.bt-controls{grid-column:2;}
   .mei-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
 }
+
+/* ===== Operons: tray, taps, ribbons (tools upgrade U-Bio-sims) ===== */
+.op-stagefig{background:var(--paper);border-radius:14px;padding:6px;transition:box-shadow .15s;}
+.op-stagefig.op-dropok{box-shadow:0 0 0 3px var(--cink);}
+.op-fig .op-cellbg{fill:none;stroke:var(--line);stroke-width:2;stroke-dasharray:8 6;}
+.op-fig .op-tapg{cursor:pointer;}
+.op-fig .op-hit{fill:transparent;stroke:transparent;stroke-width:2;}
+.op-fig .op-tapg:hover .op-hit,.op-fig .op-tapg:focus-visible .op-hit{fill:var(--ctint);stroke:var(--cink);}
+.op-fig .op-tapg:focus{outline:none;}
+.op-fig .op-ribbon{fill:none;stroke:var(--bio-causes);stroke-width:2.2;animation:opRibbon linear infinite;opacity:0;}
+@keyframes opRibbon{0%{transform:translate(0,0);opacity:0;}10%{opacity:1;}80%{opacity:.9;}100%{transform:translate(200px,34px);opacity:0;}}
+.op-fig .op-slide{animation:opSlide .7s ease-out;}
+@keyframes opSlide{from{transform:translate(var(--dx),var(--dy));}to{transform:none;}}
+@media (prefers-reduced-motion:reduce){.op-fig .op-ribbon{animation:none;opacity:0;}.op-fig .op-slide{animation:none;}}
+.op-tray{display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+.op-tray .op-chip{padding-right:12px;}
+.op-tray-h{font:800 14px var(--font-ui);}
+.op-chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:4px 14px 4px 6px;border-radius:999px;border:2px dashed var(--line);background:var(--white);color:var(--ink);font:800 14px var(--font-ui);cursor:grab;touch-action:none;user-select:none;}
+.op-chip.in{border-style:solid;border-color:var(--cink);background:var(--ctint);}
+.op-mol{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--bio-eff-fill);border:2px solid var(--bio-eff);font:900 11px var(--font-ui);}
+.op-ghost{position:fixed;z-index:1000;pointer-events:none;opacity:.9;box-shadow:0 6px 18px rgba(0,0,0,.2);}
+.op-lower{display:grid;gap:10px;}
+.op-stagefig{overflow-x:auto;}
+@media (max-width:640px){.bt-fig .op-stagefig svg.op-fig,.op-stagefig svg.op-fig{min-width:500px;}}
