@@ -206,6 +206,7 @@
     why.querySelector('[data-show]').addEventListener('click', function(e){
       e.preventDefault();
       if(!dc) return;
+      var ref = document.getElementById('drugRef'); if(ref) ref.open = true; // the cards sit in a disclosure
       dc.classList.remove('gw-flash'); void dc.offsetWidth; dc.classList.add('gw-flash');
       if(line){ line.classList.remove('gw-mark'); void line.offsetWidth; line.classList.add('gw-mark'); }
       dc.scrollIntoView({ block: 'center', behavior: reduced() ? 'auto' : 'smooth' });

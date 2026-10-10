@@ -114,10 +114,12 @@
     if(synth === 'split-s2') m.p2 = P2_AT[site.id];
     return m;
   }
+  /* Stridor is made in the larynx and trachea: everywhere else on the chest it
+     is only transmitted, and fainter the further down you go. */
   var LUNG_GAIN = {
-    wheeze:   function(s){ return s.kind === 'lung' ? 1 : s.kind === 'heart' ? .8 : .6; },
-    crackles: function(s){ return s.kind === 'lung' ? (s.level === 'lower' ? 1 : .45) : s.kind === 'heart' ? .45 : .2; },
-    stridor:  function(s){ return s.id === 'trachea' ? 1 : s.kind === 'heart' ? .55 : s.level === 'upper' ? (s.view === 'back' ? .5 : .6) : .3; }
+    wheeze:   function(s){ return s.kind === 'lung' ? 1 : s.kind === 'heart' ? .6 : .5; },
+    crackles: function(s){ return s.kind === 'lung' ? (s.level === 'lower' ? 1 : .45) : s.kind === 'heart' ? .3 : .15; },
+    stridor:  function(s){ return s.id === 'trachea' ? 1 : s.kind === 'heart' ? .4 : s.level === 'upper' ? .4 : .2; }
   };
   /* A single 0-1 "how well you hear the finding here", for the halo on each site. */
   function strength(sound, site){
@@ -145,11 +147,45 @@
     'stridor': { at:['trachea'], why:'Stridor is an upper airway sound: loudest over the neck, carried down into the chest.' }
   };
 
-  /* ---- Breath timing (schematic) -----------------------------------------
+  /* Where each finding opens (its classic best site; crackles at the
+     posterior base, where fluid shows first in a patient sitting up), and
+     the sites where it is actually listened for. Anywhere else the page says
+     plainly that what you hear is faint and transmitted, not "present here". */
+  var DEFAULT_SITE = { wheeze:'lung-ru', crackles:'back-rl', stridor:'trachea' };
+  function defaultSite(sound){
+    var id = DEFAULT_SITE[sound.id] || (BEST[sound.id] && BEST[sound.id].at[0]) || 'mitral';
+    return SITE[id];
+  }
+  var LUNG_FIELDS = ['lung-ru','lung-lu','lung-rl','lung-ll','back-lu','back-ru','back-ll','back-rl'];
+  var ASSESSED = {
+    wheeze: LUNG_FIELDS, crackles: LUNG_FIELDS, stridor: ['trachea']
+  };
+  function assessedHere(sound, site){
+    if(sound.synth) return HEART_SITES.indexOf(site.id) >= 0;
+    var a = ASSESSED[sound.id];
+    return !a || a.indexOf(site.id) >= 0;
+  }
+  /* The plain sentence for a site where the finding is not listened for. */
+  function notHere(sound, site){
+    if(sound.synth) return 'Heart sounds are listened for over the heart; here they are faint and transmitted.';
+    if(sound.id === 'stridor') return 'Stridor is heard best over the trachea; here it is faint and transmitted.';
+    if(sound.id === 'wheeze') return 'Wheezes are listened for over the lung fields; here they are faint and transmitted.';
+    if(sound.id === 'crackles') return 'Crackles are listened for over the lung fields, the bases first; here they are faint and transmitted.';
+    return 'Not where this is listened for; here it is faint.';
+  }
+  function shortName(sound){ return sound.label.replace(/ \(.*\)/, ''); }
+
+  /* ---- Breath timing -----------------------------------------------------
      A normal adult breath: inspiration about a third of the cycle, expiration
-     about two thirds (I:E roughly 1:2). Drawn, not traced: the recordings
-     carry no inspiration/expiration markers, so the strip shows when in a
-     breath each sound typically falls and says so. */
+     about two thirds (I:E roughly 1:2).
+
+     The strip is a static typical breath, labelled as such, with no
+     playhead. Each clip's breaths were measured from its loudness and
+     spectrum (docs/tools-upgrade-notes/nremt-body.md): the cycles show, but
+     none of the three recordings has an airflow channel, so which part of a
+     breath is in and which is out cannot be told from the audio. A line
+     sweeping a breath curve would claim a timing nobody measured; what was
+     measured is told in words instead (`timingNote` on each sound). */
   var BREATH = 4, INSP = BREATH / 3;
   var PHASE = { wheeze:'exp', crackles:'insp', stridor:'insp' };
   var PHASE_TEXT = {
@@ -314,10 +350,11 @@
       W = myW;
       state.sound = sound; state.kind = 'lung';
       while(layer.firstChild) layer.removeChild(layer.firstChild);
-      var xi = INSP / BREATH * W, ph = PHASE[sound.id];
+      var ph = PHASE[sound.id], base = H - 26, top = 26;
+      var xi = INSP / BREATH * W;
       el('rect', { x: ph === 'insp' ? 0 : xi, y:14, width: ph === 'insp' ? xi : W - xi, height:H - 32, class:'st-band' }, layer);
-      // lung volume through one breath: up during inspiration, down during expiration
-      var d = '', base = H - 26, top = 26;
+      // lung volume through one typical breath: up during inspiration, down during expiration
+      var d = '';
       for(var i = 0; i <= 120; i++){
         var x = i / 120 * W, t = i / 120 * BREATH, v;
         v = t < INSP ? (1 - Math.cos(Math.PI * t / INSP)) / 2 : (1 + Math.cos(Math.PI * (t - INSP) / (BREATH - INSP))) / 2;
@@ -328,13 +365,14 @@
       var a = el('text', { x:xi / 2, y:H - 4, class:'st-phase' }, layer); a.textContent = 'breathe in';
       var b = el('text', { x:(xi + W) / 2, y:H - 4, class:'st-phase' }, layer); b.textContent = 'breathe out';
       var c = el('text', { x: ph === 'insp' ? xi / 2 : (xi + W) / 2, y:10, class:'st-evt st-evt--plain' }, layer);
-      c.textContent = sound.label.replace(/ \(.*\)/, '') + ' here';
-      title.textContent = 'Schematic breath: ' + PHASE_TEXT[sound.id];
+      c.textContent = 'usually ' + (ph === 'insp' ? 'breathing in' : 'breathing out');
+      title.textContent = 'A typical breath, not traced from this recording. ' + shortName(sound) + ': ' + PHASE_TEXT[sound.id];
     };
 
     state.play = function(info){
       state.info = info;
-      if(reduced() || !info){ head.style.display = 'none'; return; }
+      /* No playhead on the breath strip: it is not this recording's timing. */
+      if(reduced() || !info || state.kind === 'lung'){ head.style.display = 'none'; return; }
       head.style.display = '';
       cancelAnimationFrame(state.raf);
       (function frame(){
@@ -345,10 +383,7 @@
           var t = info.now() - info.startAt;
           if(t < 0) t = 0;
           x = tx(t % state.cycle, state.cycle);
-        } else {
-          var tt = info.now() || 0;
-          x = (tt % BREATH) / BREATH * W;
-        }
+        } else { head.style.display = 'none'; return; }
         head.setAttribute('x1', x); head.setAttribute('x2', x);
         state.raf = requestAnimationFrame(frame);
       })();
@@ -444,25 +479,32 @@
 
     root.innerHTML =
       '<div class="st-top">' +
-        '<div class="st-tabs" role="group" aria-label="Mode">' +
-          '<button type="button" data-mode="explore">Explore</button>' +
-          '<button type="button" data-mode="name">Name it</button>' +
-          '<button type="button" data-mode="where">Where to listen</button>' +
-          '<button type="button" data-mode="timing">Timing</button>' +
+        '<div class="st-tabs seg" role="group" aria-label="Mode">' +
+          '<button type="button" data-top="explore">Explore</button>' +
+          '<button type="button" data-top="test">Test yourself</button>' +
         '</div>' +
-        '<div class="st-vol"><button type="button" class="st-mute" aria-pressed="false"></button>' +
-          '<input type="range" min="0" max="100" step="5" aria-label="Volume" class="st-range"></div>' +
+        '<div class="st-vol"><button type="button" class="st-mute" aria-pressed="false"></button></div>' +
+      '</div>' +
+      '<div class="st-quizpick" role="group" aria-label="Kind of test" hidden>' +
+        '<button type="button" data-mode="name">Name the sound</button>' +
+        '<button type="button" data-mode="where">Where to listen</button>' +
+        '<button type="button" data-mode="timing">When in the beat</button>' +
       '</div>' +
       '<div class="st-main">' +
         '<div class="st-fig">' +
           '<div class="st-views" role="group" aria-label="Side of the body">' +
             '<button type="button" data-view="front">Front</button><button type="button" data-view="back">Back</button></div>' +
           '<svg class="st-body" viewBox="0 0 600 660" aria-label="Chest, front view. Each listening spot is a button."></svg>' +
-          '<p class="st-credit">Figure rendered from <a href="https://lifesciencedb.jp/bp3d/" target="_blank" rel="noopener">BodyParts3D</a>, © 2008 Life Science Integrated Database Center, <a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en" target="_blank" rel="noopener">CC BY-SA 2.1 Japan</a>.</p>' +
+          '<p class="st-tapcue" aria-hidden="true">Tap a glowing spot to listen there</p>' +
         '</div>' +
         '<div class="st-side"></div>' +
       '</div>' +
       '<div class="st-timing" hidden></div>' +
+      '<details class="st-more"><summary>More options</summary><div class="st-more-in">' +
+        '<label class="st-volrow">Volume <input type="range" min="0" max="100" step="5" aria-label="Volume" class="st-range"></label>' +
+        '<label class="st-compare"><input type="checkbox"> Compare two sounds side by side</label>' +
+        '<p class="st-credit">Chest figure rendered from <a href="https://lifesciencedb.jp/bp3d/" target="_blank" rel="noopener">BodyParts3D</a>, © 2008 Life Science Integrated Database Center, <a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en" target="_blank" rel="noopener">CC BY-SA 2.1 Japan</a>. Loudness by spot is a teaching approximation: which spot is loudest, not the exact ratio.</p>' +
+      '</div></details>' +
       '<div class="st-live sr-only" aria-live="polite"></div>';
 
     var svg = root.querySelector('.st-body');
@@ -500,6 +542,13 @@
     root.querySelectorAll('[data-mode]').forEach(function(b){
       b.addEventListener('click', function(){ setMode(b.dataset.mode); });
     });
+    var lastTest = 'name';
+    root.querySelectorAll('[data-top]').forEach(function(b){
+      b.addEventListener('click', function(){ setMode(b.dataset.top === 'explore' ? 'explore' : lastTest); });
+    });
+    var quizPick = root.querySelector('.st-quizpick');
+    var cmp = root.querySelector('.st-compare input');
+    cmp.addEventListener('change', function(e){ st.compare = e.target.checked; if(st.mode === 'explore') renderExplore(); });
     root.querySelectorAll('[data-view]').forEach(function(b){
       b.addEventListener('click', function(){ setView(b.dataset.view); });
     });
@@ -521,6 +570,10 @@
       stopAll();
       st.mode = m;
       root.querySelectorAll('[data-mode]').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.mode === m ? 'true' : 'false'); });
+      if(m !== 'explore') lastTest = m;
+      root.querySelectorAll('[data-top]').forEach(function(b){ b.setAttribute('aria-pressed', (b.dataset.top === 'explore') === (m === 'explore') ? 'true' : 'false'); });
+      quizPick.hidden = m === 'explore';
+      root.querySelector('.st-compare').hidden = m !== 'explore';
       main.hidden = !(m === 'explore' || m === 'where');
       timingBox.hidden = m !== 'timing';
       if(quizSection) quizSection.hidden = m !== 'name';
@@ -549,7 +602,8 @@
         onStop: function(){ if(strip) strip.stop(); if(st.playing === which){ st.playing = null; updatePlayButtons(); } },
         onError: function(msg){ st.playing = null; if(strip) strip.stop(); updatePlayButtons(); showError(msg); }
       };
-      if(sound.synth){ h.mix = heartMix(sound.synth, site || SITE.mitral); h.beats = 6; }
+      // The mix the strip was drawn with: the site's, or none (all parts at 1).
+      if(sound.synth){ h.mix = site ? heartMix(sound.synth, site) : {}; h.beats = 6; }
       else if(site){ var g = LUNG_GAIN[sound.id]; h.gain = g ? g(site) : 1; }
       showError('');
       Bank.play(sound, h);
@@ -564,14 +618,15 @@
         b.classList.toggle('playing', on);
         b.innerHTML = on ? '<span aria-hidden="true">&#9724;</span> Stop' : '<span aria-hidden="true">&#9658;</span> ' + esc(b.dataset.label);
       });
-      Object.keys(siteEls).forEach(function(id){ siteEls[id].classList.toggle('is-playing', !!st.playing && st.site === id && st.mode === 'explore'); });
+      var cur = st.mode === 'explore' && byId[st.finding] ? siteFor(byId[st.finding]).id : null;
+      Object.keys(siteEls).forEach(function(id){ siteEls[id].classList.toggle('is-playing', !!st.playing && cur === id); });
     }
 
     function paintSites(){
       var sound = byId[st.finding];
       Object.keys(siteEls).forEach(function(id){
         var g = siteEls[id], s = SITE[id];
-        g.classList.toggle('is-on', st.site === id);
+        g.classList.toggle('is-on', st.mode === 'explore' && sound ? siteFor(sound).id === id : st.site === id);
         var halo = g.querySelector('.st-halo');
         if(st.mode === 'explore' && sound){
           var k = strength(sound, s);
@@ -593,50 +648,56 @@
     }
     function short(s){ return s.label.replace(' (Rales)', '').replace('Normal S1 / S2', 'Normal'); }
 
+    /* The spot a finding is played at: the tapped one, or the finding's own
+       classic best site until the student taps somewhere. */
+    function siteFor(sound){ return st.site ? SITE[st.site] : defaultSite(sound); }
+    function verdict(sound, site){
+      var best = BEST[sound.id];
+      if(best && best.at.indexOf(site.id) >= 0) return { cls:'is-best', head:'Loudest here.', why: best.why };
+      if(!assessedHere(sound, site)) return { cls:'is-faint', head: notHere(sound, site), why: best ? best.why : '' };
+      var k = strength(sound, site);
+      var names = best ? uniq(best.at.filter(function(id){ return SITE[id].view === 'front' || sound.group !== 'heart'; }).map(function(id){ return SITE[id].name; })) : [];
+      return { cls:'', head: (k >= .5 ? 'Heard here, but not at its loudest.' : 'Faint here.') + (names.length ? ' Best at the ' + names.slice(0, 2).join(' or ') + '.' : ''), why: best ? best.why : '' };
+    }
+
     function renderExplore(){
       var sound = byId[st.finding];
       if(!st.against || st.against === st.finding || byId[st.against].group === 'heart' !== (sound.group === 'heart')) st.against = sound.group === 'heart' ? (st.finding === 'heart-normal' ? 'heart-s3' : 'heart-normal') : (st.finding === 'wheeze' ? 'crackles' : 'wheeze');
       var other = byId[st.against];
-      var site = st.site ? SITE[st.site] : null;
-      var best = BEST[sound.id];
-      var bestNames = best ? best.at.filter(function(id){ return SITE[id].view === 'front' || sound.group !== 'heart'; })
-        .map(function(id){ return SITE[id].name; }) : [];
-      var here = '';
-      if(site){
-        var isBest = best && best.at.indexOf(site.id) >= 0;
-        var k = strength(sound, site);
-        here = '<p class="st-here ' + (isBest ? 'is-best' : '') + '"><b>' + (isBest ? 'Loudest here.' : k >= .5 ? 'Heard here, but not at its loudest.' : k >= .2 ? 'Faint here.' : 'Barely heard here.') + '</b> ' +
-          (isBest ? esc(best.why) : 'Best at the ' + esc(uniq(bestNames).slice(0, 2).join(' or ')) + '.') + '</p>' +
-          '<p class="st-sitenote">' + esc(site.note) + '</p>';
-      }
+      var site = siteFor(sound);
+      var v = verdict(sound, site);
+      var siteLine = site.name.replace(/ \(.*\)/, '').replace(/^Over the /, '').toLowerCase();
       side.innerHTML =
-        '<div class="st-pick"><span class="st-k">Patient finding</span>' +
+        '<div class="st-pick">' +
           '<div class="st-chips" role="group" aria-label="Heart sounds (generated)"><span class="st-gl">Heart <span class="synth-tag">generated</span></span>' + HEART.map(function(s){ return chip(s, st.finding, 'data-finding'); }).join('') + '</div>' +
           '<div class="st-chips" role="group" aria-label="Lung and airway sounds (recorded)"><span class="st-gl">Lung &amp; airway <span class="st-rec">recorded</span></span>' + LUNG.map(function(s){ return chip(s, st.finding, 'data-finding'); }).join('') + '</div>' +
         '</div>' +
-        '<div class="st-site-card">' +
-          (site ? '<div class="st-site-name">' + esc(site.name) + '</div><div class="st-site-where">' + esc(site.where) + '</div>' + here
-                : '<div class="st-site-name">Tap a spot on the chest to listen</div><div class="st-site-where">Bigger glow = louder there. The ringed spots are where ' + esc(short(sound)) + ' is loudest.</div>') +
-        '</div>' +
-        '<div class="st-row"><span class="st-k">' + esc(short(sound)) + (site ? ' at the ' + esc(site.name.replace(/ \(.*\)/, '').toLowerCase()) : '') + '</span>' +
+        '<div class="st-row"><span class="st-now"><b>' + esc(short(sound)) + '</b> at the ' + esc(siteLine) + (st.site ? '' : ' <span class="st-muted">(its best spot)</span>') + '</span>' +
           '<button type="button" class="st-play" data-play-which="a" data-label="Play"></button></div>' +
         '<div class="st-strip" data-strip="a"></div>' +
-        '<p class="st-cap-line">' + capLine(sound) + '</p>' +
+        (sound.synth ? '' : '<p class="st-cap-line">A typical breath, not traced from this recording (see Why?).</p>') +
+        '<p class="st-here ' + v.cls + '"><b>' + esc(v.head) + '</b></p>' +
+        '<details class="st-why"><summary>Why?</summary>' +
+          (v.why ? '<p>' + esc(v.why) + '</p>' : '') +
+          '<p><b>' + esc(site.name) + ':</b> ' + esc(site.where) + ' ' + esc(site.note) + '</p>' +
+          '<p>' + capLine(sound) + '</p>' +
+        '</details>' +
         '<div class="st-err" role="alert" hidden></div>' +
-        '<label class="st-compare"><input type="checkbox"' + (st.compare ? ' checked' : '') + '> Compare side by side</label>' +
         (st.compare ?
-          '<div class="st-chips st-chips--b" role="group" aria-label="Compare with">' +
+          '<div class="st-cmp"><div class="st-chips st-chips--b" role="group" aria-label="Compare with"><span class="st-gl">Compare with</span>' +
             (sound.group === 'heart' ? HEART : LUNG).filter(function(s){ return s.id !== st.finding; }).map(function(s){ return chip(s, st.against, 'data-against'); }).join('') + '</div>' +
-          '<div class="st-row"><span class="st-k">' + esc(short(other)) + (site ? ' at the same spot' : '') + '</span>' +
+          '<div class="st-row"><span class="st-now"><b>' + esc(short(other)) + '</b> at the same spot</span>' +
           '<button type="button" class="st-play st-play--b" data-play-which="b" data-label="Play"></button></div>' +
-          '<div class="st-strip" data-strip="b"></div><p class="st-cap-line">' + capLine(other) + '</p>' : '');
+          '<div class="st-strip" data-strip="b"></div><p class="st-cap-line">' + capLine(other) + '</p></div>' : '');
 
       side.querySelectorAll('[data-finding]').forEach(function(b){ b.addEventListener('click', function(){
-        stopAll(); st.finding = b.dataset.finding; renderExplore(); paintSites();
-        say(short(byId[st.finding]) + ' selected. ' + (BEST[st.finding] ? BEST[st.finding].why : ''));
+        stopAll(); st.finding = b.dataset.finding; st.site = null;
+        var ds = defaultSite(byId[st.finding]);
+        if(ds.view !== st.view) setView(ds.view);
+        renderExplore(); paintSites();
+        say(short(byId[st.finding]) + ' selected, at the ' + ds.name + '. ' + (BEST[st.finding] ? BEST[st.finding].why : ''));
       }); });
       side.querySelectorAll('[data-against]').forEach(function(b){ b.addEventListener('click', function(){ stopAll(); st.against = b.dataset.against; renderExplore(); }); });
-      side.querySelector('.st-compare input').addEventListener('change', function(e){ st.compare = e.target.checked; renderExplore(); });
       stripA = makeStrip(side.querySelector('[data-strip="a"]'));
       drawStrip(stripA, sound, site);
       stripB = null;
@@ -648,8 +709,9 @@
     }
     function uniq(a){ return a.filter(function(x, i){ return a.indexOf(x) === i; }); }
     function capLine(sound){
-      return sound.synth ? esc(describeHeart(sound.synth).replace(/^./, function(c){ return c.toUpperCase(); }))
-        : esc(PHASE_TEXT[sound.id]) + ' <span class="st-muted">(Schematic breath: the recording carries no in/out markers.)</span>';
+      if(sound.synth) return esc(describeHeart(sound.synth).replace(/^./, function(c){ return c.toUpperCase(); }));
+      return esc(PHASE_TEXT[sound.id]) + ' <span class="st-muted">The curve is a typical breath, not this recording. ' +
+        (sound.timingNote ? 'In this clip: ' + esc(sound.timingNote) : '') + '</span>';
     }
     function drawStrip(strip, sound, site){
       if(sound.synth) strip.drawHeart(sound, site ? heartMix(sound.synth, site) : {});
@@ -665,8 +727,7 @@
       var sound = byId[st.finding];
       if(same && st.playing === 'a'){ stopAll(); return; }
       play(sound, site, stripA, 'a');
-      var k = strength(sound, site);
-      say(site.name + '. ' + short(sound) + (BEST[sound.id] && BEST[sound.id].at.indexOf(site.id) >= 0 ? ' is loudest here.' : k >= .5 ? ' is heard here.' : ' is faint here.'));
+      say(site.name + '. ' + short(sound) + '. ' + verdict(sound, site).head);
     }
 
     /* ---- where to listen ---- */
@@ -804,8 +865,8 @@
       var nx = timingBox.querySelector('.st-next'); if(nx) nx.focus({ preventScroll: true });
     }
 
-    /* start */
-    setView('front');
+    /* start: on the side of the body that holds the first finding's spot */
+    setView(defaultSite(byId[st.finding]).view);
     var m = opts.mode && /^(explore|name|where|timing)$/.test(opts.mode) ? opts.mode : 'explore';
     setMode(m);
     if(m === 'where' && opts.q && WHERE.some(function(w){ return w.id === opts.q; })) nextWhere(opts.q);
@@ -816,7 +877,8 @@
       /* A labelled strip of one sound, for the name-it quiz's feedback. */
       strip: function(host, sound){
         var s = makeStrip(host);
-        drawStrip(s, sound, sound.synth ? SITE.mitral : null);
+        // Drawn unmixed, as the name-it quiz plays it.
+        drawStrip(s, sound, null);
         return s;
       }
     };
@@ -826,6 +888,7 @@
     mount: mount,
     /* No DOM: for the tests and for the notes file's accuracy list. */
     pure: { SITES: SITES, BEST: BEST, WHERE: WHERE, TIMING: TIMING, heartMix: heartMix, strength: strength, LUNG_GAIN: LUNG_GAIN,
-      PHASE: PHASE, BREATH: BREATH, INSP: INSP, zoneName: zoneName }
+      PHASE: PHASE, BREATH: BREATH, INSP: INSP, zoneName: zoneName,
+      defaultSite: defaultSite, assessedHere: assessedHere, notHere: notHere, ASSESSED: ASSESSED }
   };
 })();

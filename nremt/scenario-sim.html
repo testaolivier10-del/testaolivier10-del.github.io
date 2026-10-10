@@ -111,6 +111,7 @@
   .btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
   .btn-secondary:active{transform:translateY(4px);box-shadow:0 0 0 var(--line);}
 
+  .picker-cue{margin:18px 0 12px;font:800 15px var(--font-ui);color:var(--ink);max-width:62ch;}
   .debrief-review{margin:14px 0 0;padding:12px 14px;border-radius:var(--radius);background:var(--tint-amber);font-size:13.5px;font-weight:700;color:var(--ink);}
   .debrief-review a{color:var(--accent-text);}
   @media (max-width:640px){
@@ -151,6 +152,8 @@
   @media (max-width:860px){.sim-grid{grid-template-columns:1fr;}}
   .sim-side{position:sticky;top:calc(var(--site-header-h,112px) + 12px);}
   @media (max-width:860px){.sim-side{position:static;}}
+  /* ~730 px tall: sticky only on windows tall enough to show all of it. */
+  @media (max-height:880px){.sim-side{position:static;}}
   .pt-jump{display:none;margin-top:12px;font:800 13px var(--font-ui);color:var(--accent-text);}
   @media (max-width:860px){.pt-jump{display:inline-block;}}
   .clock-note{font:800 12.5px var(--font-ui);color:var(--bad-text);margin:-10px 0 14px;}
@@ -348,10 +351,11 @@
   <div class="page-head">
   <div class="eyebrow">Tools <span id="premiumBadge"></span></div>
   <h1>Clinical Scenario Simulator</h1>
-  <p class="lede">Not recall: sequencing and judgment. Every choice leads somewhere, and a skipped step shows up later in the call.</p>
+  <p class="lede">Run an EMT call: every choice changes what happens next.</p>
   </div>
 
   <div id="pickerScreen">
+    <p class="picker-cue">Pick a call to start. A skipped step shows up later in the call, and the debrief shows what each choice cost.</p>
     <div class="picker-grid" id="pickerGrid"></div>
   </div>
 
@@ -2164,8 +2168,10 @@ function renderPicker(){
   if(badgeSlot) badgeSlot.innerHTML = G.badge();
   if(!G.canUse('scenarios')){
     grid.innerHTML = G.gate('scenarios', 'scenario-sim');
+    document.querySelector('.picker-cue').hidden = true;
     return;
   }
+  document.querySelector('.picker-cue').hidden = false;
   grid.innerHTML = SCENARIOS.map(s => `
     <button type="button" class="scenario-card" data-scenario="${s.id}">
       <div class="scenario-domain">${s.domain}</div>
@@ -2285,7 +2291,7 @@ function buildCallView(){
 function scrollToBox(box){
   const head = document.getElementById('site-header');
   const h = head ? Math.max(0, head.getBoundingClientRect().bottom) : 0;
-  const y = Math.max(0, box.getBoundingClientRect().top + window.scrollY - h - 10);
+  const y = Math.max(0, box.getBoundingClientRect().top + window.scrollY - h - 24);
   if(window.LevlMotion) window.LevlMotion.scrollToY(y);
   else window.scrollTo({ top: y });
 }

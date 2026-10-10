@@ -131,16 +131,22 @@
     var list = due();
     el.hidden = !list.length;
     if(!list.length){ el.innerHTML = ''; return; }
+    /* The newest three first; the rest wait behind one disclosure, so a long
+       list never buries the card (simplify pass 2026-10). */
+    var SHOW = 3;
+    function li(it){
+      var n = it.misses || 1;
+      return '<li><div>' + esc(it.label) +
+        '<span>' + esc(NAMES[it.tool] || it.tool) + ' &middot; missed ' + (n === 1 ? 'once' : n + ' times') + '</span></div>' +
+        (it.href ? '<a class="btn-outline cx-tq-go" href="' + esc(it.href) + '">Try it again<span class="sr-only"> in the ' + esc(NAMES[it.tool] || it.tool) + ': ' + esc(it.label) + '</span></a>' : '') +
+        '</li>';
+    }
+    var rest = list.slice(SHOW);
     el.innerHTML =
       '<h2>From the tools <small class="cx-tq-n">' + list.length + ' to revisit</small></h2>' +
-      '<p class="cx-small">Missed in the body map, sound trainer, protocol flows, formulary or a scenario. Each one leaves this list when you get it right in its tool.</p>' +
-      '<ul class="cx-list cx-tq">' + list.map(function(it){
-        var n = it.misses || 1;
-        return '<li><div>' + esc(it.label) +
-          '<span>' + esc(NAMES[it.tool] || it.tool) + ' &middot; missed ' + (n === 1 ? 'once' : n + ' times') + '</span></div>' +
-          (it.href ? '<a class="btn-outline cx-tq-go" href="' + esc(it.href) + '">Try it again<span class="sr-only"> in the ' + esc(NAMES[it.tool] || it.tool) + ': ' + esc(it.label) + '</span></a>' : '') +
-          '</li>';
-      }).join('') + '</ul>';
+      '<p class="cx-small">Missed in a tool. Each leaves this list when you get it right there.</p>' +
+      '<ul class="cx-list cx-tq">' + list.slice(0, SHOW).map(li).join('') + '</ul>' +
+      (rest.length ? '<details class="cx-tq-more"><summary>Show ' + rest.length + ' more</summary><ul class="cx-list cx-tq">' + rest.map(li).join('') + '</ul></details>' : '');
   }
   function renderAll(){
     if(typeof document === 'undefined') return;

@@ -114,12 +114,17 @@
   #drillBox h2{margin:0 0 4px;}
   #drillBox .section-sub{font:700 13px var(--font-ui);color:var(--muted);margin:0 0 12px;}
   #drillBox .drug{background:var(--white);}
-  .ref-h{margin:clamp(36px,5vw,52px) 0 16px;}
+  .ref-more{margin:clamp(28px,4vw,40px) 0 0;}
+  .ref-more>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;min-height:44px;font:800 17px var(--font-ui);color:var(--ink);}
+  .ref-more>summary::-webkit-details-marker{display:none;}
+  .ref-more>summary::before{content:var(--disclose);display:inline-block;color:var(--accent-text);transition:transform .15s;}
+  .ref-more[open]>summary::before{transform:rotate(90deg);}
+  .ref-why{color:var(--muted);font-size:14px;max-width:70ch;margin:6px 0 16px;}
   .formulary-note{margin-top:clamp(28px,4vw,40px);}
   @media (max-width:640px){
-    .hero{padding:20px;}
-    .hero h1{font-size:26px;margin-bottom:8px;}
-    .hero .lede{font-size:14.5px;line-height:1.5;}
+    .page-head{padding:18px 20px;}
+    .page-head h1{font-size:24px;margin-bottom:4px;}
+    .page-head .lede{font-size:14px;}
   }
 
   .mode-switch{display:inline-flex;border:2px solid var(--line);border-radius:22px;overflow:hidden;background:var(--white);margin:clamp(18px,3vw,26px) 0 14px;}
@@ -202,7 +207,7 @@
   .drug.gw-flash{animation:gwFlash 1.6s ease;}
   .gw-mark{background:var(--tint-amber);border-radius:4px;box-shadow:0 0 0 3px var(--tint-amber);}
   @keyframes gwFlash{0%,40%{box-shadow:0 0 0 4px var(--accent)}100%{box-shadow:0 0 0 0 transparent}}
-  @media (max-width:640px){.hero .lede{font-size:13.5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}.gw-pt{font-size:15px;}}
+  @media (max-width:640px){.gw-pt{font-size:15px;}}
   @media (prefers-reduced-motion:reduce){.gw-card,.gw-stamp{transition:none;}.drug.gw-flash{animation:none;}}
 </style>
 </head>
@@ -215,10 +220,10 @@
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="xshell">
 
-  <div class="hero">
-    <div class="eyebrow">EMT formulary</div>
-    <h1>The seven core drugs, and what stops you giving them.</h1>
-    <p class="lede">An EMT carries a very short formulary. Knowing it cold is cheap marks on the exam and the difference between helping and harming on the truck. The contraindications matter more than the indications — the exam tests what stops you, not what starts you.</p>
+  <div class="page-head">
+  <div class="eyebrow">Tools</div>
+  <h1>EMT Drug Formulary</h1>
+  <p class="lede">Decide, patient by patient, whether to give or withhold each of the seven EMT drugs.</p>
   </div>
 
   <div class="mode-switch" id="fxMode" role="group" aria-label="How to practice">
@@ -228,7 +233,9 @@
   <section id="gw" aria-label="Give or withhold"><div id="gwBox"></div></section>
   <div id="drillBox" hidden></div>
 
-  <h2 class="ref-h">The seven drugs</h2>
+  <details class="ref-more" id="drugRef">
+  <summary>The seven drugs: full cards (indications, contraindications, dose)</summary>
+  <p class="ref-why">An EMT carries a very short formulary. The contraindications matter more than the indications: the exam tests what stops you, not what starts you.</p>
   <div class="drug-grid">
 
     <div class="drug">
@@ -389,6 +396,7 @@
 
 
   <p class="formulary-note"><strong>Scope varies.</strong> Which of these you may give, which you may only assist a patient with, and which need online medical direction, is set by your state and your medical director &mdash; not by this page. Where a drug is commonly &ldquo;assisted&rdquo; rather than administered, it is marked. The national scope model also lets EMTs give oral over-the-counter pain and fever relievers such as acetaminophen or ibuprofen, and some protocols still carry activated charcoal; those are not covered here. Doses are the usual adult figures taught to the national standard; <strong>your protocol is the authority</strong>.</p>
+  </details>
 
   <footer>
     <p>Doses and contraindications are the usual figures taught to the national standard. Your protocol and medical direction are the authority.</p>

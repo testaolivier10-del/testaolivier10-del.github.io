@@ -149,8 +149,7 @@
     station = null;
     mount.innerHTML =
       '<div class="run-card">' +
-        '<p class="run-intro">Pick a station and talk your way through it out loud, ticking each phase as you say it. ' +
-          'The clock runs, the critical items are marked, and at the end you get what happened — not a score.</p>' +
+        '<p class="run-intro"><b>Pick a station to start.</b> Say each phase out loud and tick it; the clock runs and critical items are marked.</p>' +
         '<div class="run-pick">' +
           STATIONS.map(function(s, i){
             return '<button type="button" class="run-station" data-i="' + i + '">' +
@@ -278,7 +277,7 @@
               '<input type="number" id="runTarget" min="1" max="60" value="' + targetMin + '"> min' +
             '</label>' +
             '<div class="run-hearsay">' + (station.official
-              ? 'The station limit from the table below (the Registry’s exam guide). Change it if your program differs.'
+              ? 'The station limit from the Registry’s exam guide (see "The official sheets at a glance" below). Change it if your program differs.'
               : 'Commonly published for this station — confirm against your own program’s sheet.') + '</div>' +
             '<a class="run-badge" id="runCritBadge" href="#runCrit" hidden></a>' +
           '</div>' +
@@ -304,7 +303,7 @@
               '<ul>' + station.criteria.map(function(c, i){
                 return '<li><button type="button" class="run-cbtn" data-c="' + i + '" aria-pressed="false">' + esc(c) + '</button></li>';
               }).join('') + '</ul>' +
-              '<p class="run-crit-src">Paraphrased from ' + esc(station.code || 'the official sheet') + ' in the table below.</p>' +
+              '<p class="run-crit-src">Paraphrased from ' + esc(station.code || 'the official sheet') + ' ("The official sheets at a glance" below).</p>' +
             '</div>'
           : '') +
         '</div>' +
