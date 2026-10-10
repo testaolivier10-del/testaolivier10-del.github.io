@@ -114,7 +114,9 @@ const SHELL_BUDGETS = [
   /* 282 -> 283 for registering AP® Chemistry (docs/apchem-spec.md, Phase 0):
      the fifth course in every generated course list, its premium.js entry and
      the theme tint. Measured 281.9 KB (from 281.4). */
-  ['site', 283],
+  /* 283 -> 283.5 (2026-10-10): account.js pendingUserId/settled and the premium.js guard that stop the
+     Premium reload loop (a signed-in member's page rendered locked, unlocked and reloaded forever). */
+  ['site', 283.5],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
