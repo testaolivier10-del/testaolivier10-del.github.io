@@ -534,3 +534,17 @@
 .ef-sp.dec,.ef-k.dec{background:var(--bio-lo-fill);}
 .ef-whl{list-style:none;margin:8px 0 6px;padding:0;display:grid;gap:4px;font:700 14px var(--font-ui);}
 .ef-k{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;border:1px solid var(--line);}
+
+/* ===== Population field (tools upgrade U-Bio-sims) ===== */
+.pg-field{background:var(--paper);border-radius:14px;padding:6px;}
+.bt-fig svg.pg-fieldsvg{max-height:none;max-width:620px;margin:0 auto;}
+.pg-fieldsvg .pg-ground{fill:var(--bio-eff-fill);opacity:.45;}
+.pg-fieldsvg .pg-fence{fill:var(--white);fill-opacity:.35;stroke:var(--bio-para);stroke-width:2;stroke-dasharray:6 4;}
+.pg-fieldsvg .pg-ind{fill:var(--bio-s1);}
+.pg-fieldsvg .pg-ind.new{fill:var(--bio-aff);}
+.pg-fieldsvg .pg-flab{font:800 12px var(--font-ui);fill:var(--ink);}
+.pg-fieldsvg .pg-hit{font:900 16px var(--font-ui);fill:var(--bio-symp);}
+.pg-fieldsvg .pg-floodfx{fill:var(--bio-deo2-fill);opacity:.5;}
+.pg-play .pg-evbtns{display:flex;flex-wrap:wrap;gap:8px;}
+.pg-plot-n{touch-action:pan-y;cursor:ew-resize;}
+.pg-fieldsvg .pg-flab{paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round;}
