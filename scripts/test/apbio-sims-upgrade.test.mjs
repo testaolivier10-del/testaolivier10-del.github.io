@@ -40,3 +40,25 @@ test('osmosis trajectory: a lysed cell stays lysed', () => {
   assert.ok(first > 0);
   assert.ok(tr.slice(first).every(x => x.lysed));
 });
+
+test('enzyme states agree with the rate model', () => {
+  for (const p of data('enzyme-activity').profiles) {
+    const opt = M.enzyme.optimumT(p);
+    for (const T of [5, 25, p.defaults.T, opt, p.Tm, p.Tm + 8]) {
+      const c = { S: 5, T, pH: p.defaults.pH, inhibitor: 'none', I: 0 };
+      const k = M.enzyme.states(p, c), f0 = M.enzyme.states(p, { ...c, T: opt });
+      // tempFactor = motion × folded, normalized at the optimum
+      assert.ok(Math.abs(M.enzyme.tempFactor(p, T) - k.motion * k.folded / f0.folded) < 1e-6, `${p.id} ${T}`);
+      assert.ok(Math.abs(k.phOk - M.enzyme.phFactor(p, c.pH)) < 1e-12);
+    }
+    // occupancy times working enzyme reproduces rate / (Vmax · temp · pH)
+    for (const inhibitor of ['none', 'competitive', 'noncompetitive']) {
+      for (const S of [0.5, 2, 10, 20]) {
+        const c = { S, T: p.defaults.T, pH: p.defaults.pH, inhibitor, I: 2 };
+        const k = M.enzyme.states(p, c), r = M.enzyme.rate(p, c, S);
+        const scale = p.Vmax * M.enzyme.tempFactor(p, c.T) * M.enzyme.phFactor(p, c.pH);
+        assert.ok(Math.abs(r / scale - k.substrate * (1 - k.allosteric)) < 1e-9, `${p.id} ${inhibitor} ${S}`);
+      }
+    }
+  }
+});

@@ -391,3 +391,23 @@
   .os-card>.os-chal,.os-card>.os-play,.os-card>.os-pick,.os-card>.os-why,.os-card>.bt-controls{grid-column:2;}
   .os-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
 }
+
+/* ===== Enzyme scene (tools upgrade U-Bio-sims) ===== */
+.ez-stage{background:var(--paper);border-radius:14px;padding:6px;}
+.ez-wrap{display:flex;justify-content:center;}
+.ez-canvas{display:block;max-width:100%;}
+.ez-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;}
+.ez-key{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;}
+.ez-k{display:inline-block;width:14px;height:12px;border-radius:3px;border:1.5px solid;vertical-align:middle;}
+.ez-k.sub{background:var(--bio-aff-fill);border-color:var(--bio-aff);}
+.ez-k.prod{background:var(--bio-eff);border-color:var(--bio-eff);border-radius:50%;width:10px;height:10px;}
+.ez-k.inh{background:var(--bio-symp-fill);border-color:var(--bio-symp);}
+.ez-plots{display:grid;gap:10px;}
+@media (min-width:1000px){
+  .ez-card{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);column-gap:22px;}
+  .ez-card>*{grid-column:1 / -1;}
+  .ez-card>.ez-stage{grid-column:1;grid-row:3 / span 4;align-self:start;position:sticky;top:12px;}
+  .ez-card>.ez-bar,.ez-card>.ez-chal,.ez-card>.ez-why,.ez-card>.bt-controls{grid-column:2;}
+  .ez-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
+}
+.ez-plots .bt-plotwrap,.os-graph .bt-plotwrap{max-width:720px;}

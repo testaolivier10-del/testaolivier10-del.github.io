@@ -128,8 +128,27 @@
     var k = enzymeParams(p, c), s = S == null ? c.S : S;
     return k.vmax * s / (k.km + s);
   }
+  /* For the animated figure: what fraction of enzyme molecules is in each
+     state at these conditions. folded = 1 / (1 + e^((T - Tm)/w)) (the
+     unfolding term of tempFactor); phOk = phFactor (fraction in the working
+     ionization state, relative to the best pH); motion = the Arrhenius term
+     relative to the optimum temperature (how fast collisions happen). With
+     substrate S and inhibitor I (Ki): competitive, the sites hold substrate
+     (S/Km) / (1 + S/Km + I/Ki) and inhibitor (I/Ki) / (1 + S/Km + I/Ki) of
+     the time; noncompetitive (pure), a fraction (I/Ki)/(1 + I/Ki) carries the
+     inhibitor (inactive) and sites hold substrate S/(Km + S). Turnover in
+     the figure is scaled to rate(p, c) itself, so these only pick which
+     molecules are drawn in which state. */
+  function enzymeStates(p, c){
+    var I = c.inhibitor && c.inhibitor !== 'none' ? (c.I || 0) : 0, s = c.S / p.Km, i = I / p.Ki, sub, inh, allo = 0;
+    if(c.inhibitor === 'competitive'){ sub = s / (1 + s + i); inh = i / (1 + s + i); }
+    else { sub = c.S / (p.Km + c.S); inh = 0; if(c.inhibitor === 'noncompetitive') allo = i / (1 + i); }
+    var arr = Math.exp(-p.Ea / R_KJ * (1 / (c.T + 273.15) - 1 / (p.Tm + 273.15))), at = peak(p, 't').at;
+    var arr0 = Math.exp(-p.Ea / R_KJ * (1 / (at + 273.15) - 1 / (p.Tm + 273.15)));
+    return { folded: 1 / (1 + Math.exp((c.T - p.Tm) / p.w)), phOk: phFactor(p, c.pH), motion: arr / arr0, substrate: sub, inhibitor: inh, allosteric: allo };
+  }
   var enzyme = {
-    params: enzymeParams, rate: enzymeRate, tempFactor: tempFactor, phFactor: phFactor,
+    params: enzymeParams, rate: enzymeRate, tempFactor: tempFactor, phFactor: phFactor, states: enzymeStates,
     optimumT: function(p){ return peak(p, 't').at; },
     optimumPH: function(p){ return peak(p, 'ph').at; }
   };
