@@ -524,3 +524,27 @@
 .qk-conc{display:block;margin-top:4px;}
 .qk-ran{margin:8px 0 0;}
 @media (min-width:900px){.qk-stage{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:22px;}}
+
+/* ICE tables: the table beside the live bars and beaker */
+.ic-wrap{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;}
+.ic-live{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:8px;align-items:start;}
+.ic-bars{margin:0;}
+.ic-svg{width:100%;height:auto;display:block;}
+.ic-svg .ic-bi{fill:var(--chem-s1);opacity:.35;}
+.ic-svg .ic-be{fill:var(--chem-s1);}
+.ic-svg .is-typed{opacity:.55;stroke:var(--chem-s1);stroke-width:1.5;stroke-dasharray:4 3;}
+.ic-svg .ic-bi.is-typed{opacity:.25;}
+.ic-svg .ic-arrow{font:900 12px var(--font-ui);}
+.ic-svg .ic-arrow.up{fill:var(--chem-s3);} .ic-svg .ic-arrow.down{fill:var(--chem-s2);}
+.ic-svg rect{transition:y .35s ease,height .35s ease;}
+.ic-beaker .lb-fig{grid-template-columns:minmax(0,1fr);}
+.ic-beaker .lb-svg{max-width:170px;}
+.ic-beaker .lb-legend{display:none;}
+.ic-beaker .lb-big{font-size:13px;} .ic-beaker .lb-big b{font-size:16px;}
+.ic-cap{margin-top:4px;}
+@media (max-width:520px){.ic-live{grid-template-columns:minmax(0,1fr);}.ic-beaker .lb-fig{grid-template-columns:minmax(0,.8fr) minmax(0,1fr);align-items:center;}}
+@media (min-width:900px){.ic-wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;}}
+@media (prefers-reduced-motion:reduce){.ic-svg rect{transition:none;}}
+.ic-ex{display:grid;gap:12px;}
+.ic-ctl{display:grid;gap:10px;align-content:start;}
+.ic-ex .cd-ice td b{font-family:var(--font-mono);}
