@@ -38,12 +38,22 @@
     var tools = document.createElement('div');
     tools.className = 'mn-tools';
     tools.innerHTML =
-      (rows.length ? '<button type="button" class="mn-test" aria-pressed="false">Fill the letters</button><span class="mn-score" aria-live="polite"></span>' : '') +
+      (rows.length ? '<button type="button" class="mn-test" aria-pressed="false">Fill the letters</button><span class="mn-meter" aria-hidden="true">' + rows.map(function(){ return '<i></i>'; }).join('') + '</span><span class="mn-score" aria-live="polite"></span>' : '') +
       (sid ? '<a class="mn-call" href="scenario-sim.html?scenario=' + sid + '">Use it on a call: ' + card.getAttribute('data-scenario-title') + ' →</a>' : '');
     card.appendChild(tools);
     if(!rows.length) return;
 
     var btn = tools.querySelector('.mn-test'), score = tools.querySelector('.mn-score');
+    var meter = tools.querySelectorAll('.mn-meter i');
+    // the meter shows each letter's state: filled, right or missed (visual polish 2026-10)
+    function paintMeter(reveal){
+      rows.forEach(function(r, k){
+        var m = meter[k]; if(!m) return;
+        m.className = !r._done ? (r._input.value ? 'fill' : '') : reveal ? (r._input.classList.contains('ok') ? 'ok' : 'no') : 'fill';
+        r.classList.toggle('mn-r-ok', !!reveal && r._input.classList.contains('ok'));
+        r.classList.toggle('mn-r-no', !!reveal && !r._input.classList.contains('ok'));
+      });
+    }
     rows.forEach(function(r, i){
       var body = r.children[1];
       body.classList.add('mn-hide');
@@ -74,6 +84,7 @@
       r._done = true;
       var n = rows.filter(function(x){ return x._done; }).length, right = rows.filter(function(x){ return x._input.classList.contains('ok'); }).length;
       score.textContent = n + ' of ' + rows.length + ' answered' + (n === rows.length ? ', now show the answers' : '');
+      paintMeter(false);
     }
 
     var state = 'off';   // off -> testing -> shown -> off
@@ -84,6 +95,7 @@
         rows.forEach(function(r){ if(r._mark) r._mark.hidden = true; r._input.hidden = false; r._input.readOnly = false; r._input.value = ''; r._input.className = 'mn-in'; r._done = false; });
         btn.textContent = 'Show the answers';
         score.textContent = '0 / ' + rows.length;
+        tools.classList.add('is-on'); paintMeter(false);
         rows[0]._input.focus();
       } else if(state === 'testing'){
         state = 'shown';
@@ -101,6 +113,7 @@
         card.classList.remove('is-testing');
         var right = rows.filter(function(x){ return x._input.classList.contains('ok'); }).length;
         score.textContent = right + ' / ' + rows.length + ' recalled';
+        paintMeter(true);
         if(window.LevlAnnounce) window.LevlAnnounce.say(name + ': ' + right + ' of ' + rows.length + ' recalled.');
         btn.textContent = 'Hide my answers';
       } else {
@@ -108,6 +121,8 @@
         rows.forEach(function(r){ r._input.hidden = true; if(r._mark) r._mark.hidden = true; });
         btn.textContent = 'Fill the letters';
         score.textContent = '';
+        tools.classList.remove('is-on');
+        rows.forEach(function(r){ r.classList.remove('mn-r-ok', 'mn-r-no'); });
       }
       btn.setAttribute('aria-pressed', state === 'off' ? 'false' : 'true');
     });

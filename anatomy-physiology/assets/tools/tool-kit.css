@@ -60,9 +60,15 @@
   .kp-sum::after{flex:none;margin-left:6px;}
 }
 /* "See it in 3D" beside a structure's name (lab practical, word roots) */
-.kg-3dbtn{display:inline-flex;align-items:center;gap:6px;margin:0 0 0 10px;padding:5px 11px;border-radius:999px;border:2px solid var(--cink);color:var(--cink);background:var(--white);font:800 13px/1.2 var(--font-ui);text-decoration:none;vertical-align:2px;white-space:nowrap;}
-.kg-3dbtn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round;}
-.kg-3dbtn:hover{background:var(--ctint);}
+.kg-3dbtn{display:inline-flex;align-items:center;gap:8px;min-height:40px;margin:0 0 0 10px;padding:4px 14px 4px 4px;border-radius:999px;border:1.5px solid color-mix(in srgb,var(--cink) 45%,transparent);color:var(--cink);
+  background:linear-gradient(180deg,var(--white),var(--ctint));box-shadow:0 1px 0 color-mix(in srgb,var(--cink) 25%,transparent),var(--lift-sm);font:800 13px/1.2 var(--font-ui);text-decoration:none;vertical-align:middle;white-space:nowrap;transition:box-shadow .15s,transform .15s;}
+.kg-3dico{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--cink);}
+.kg-3dbtn svg{width:20px;height:20px;fill:none;stroke:var(--paper);stroke-width:1.5;stroke-linejoin:round;}
+.kg-3dbtn svg .f{fill:var(--paper);stroke:none;}
+.kg-3dbtn:hover{box-shadow:0 2px 0 color-mix(in srgb,var(--cink) 30%,transparent),var(--lift);transform:translateY(-1px);}
+.kg-3dbtn:hover .kg-3dico svg{animation:kg-spin 1.2s ease-in-out;}
+@keyframes kg-spin{50%{transform:scaleX(-1);}}
+@media (prefers-reduced-motion:reduce){.kg-3dbtn,.kg-3dbtn:hover .kg-3dico svg{transition:none;animation:none;transform:none;}}
 .kg-3dbtn:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .lp-feedback > .kg-3dbtn,.lp-actions .kg-3dbtn{margin:4px 8px 6px 0;}
 

@@ -230,20 +230,24 @@
     this.el.innerHTML =
       '<div class="mon-top"><span class="mon-live" aria-hidden="true"></span><span class="mon-title">Monitor</span>' +
         '<span class="mon-sim">Simulated · numbers from the case</span></div>' +
+      '<div class="mon-screen">' +
       '<div class="mon-body">' +
         '<div class="mon-traces" aria-hidden="true">' +
-          '<div class="mon-lane"><span class="mon-lane-l">ECG</span><canvas class="mon-ecg"></canvas><span class="mon-off" data-off="ecg"></span></div>' +
-          '<div class="mon-lane"><span class="mon-lane-l">Pleth</span><canvas class="mon-pleth"></canvas><span class="mon-off" data-off="pleth"></span></div>' +
+          '<div class="mon-lane mon-lane-ecg"><span class="mon-lane-l">II <i>ECG</i></span><span class="mon-lane-r">×1</span><canvas class="mon-ecg"></canvas><span class="mon-off" data-off="ecg"></span></div>' +
+          '<div class="mon-lane mon-lane-pleth"><span class="mon-lane-l">Pleth</span><canvas class="mon-pleth"></canvas><span class="mon-off" data-off="pleth"></span></div>' +
         '</div>' +
         '<div class="mon-tiles">' +
-          tile('hr', 'HR', '/min') + tile('spo2', 'SpO₂', '%') + tile('bp', 'BP', 'mmHg') + tile('rr', 'RR', '/min') +
+          tile('hr', 'HR', '/min', '<svg class="mon-heart" viewBox="0 0 12 11" aria-hidden="true"><path d="M6 10.4 C2.6 7.7 .5 5.9 .5 3.6 C.5 1.8 1.9 .5 3.5 .5 C4.6 .5 5.5 1.1 6 2 C6.5 1.1 7.4 .5 8.5 .5 C10.1 .5 11.5 1.8 11.5 3.6 C11.5 5.9 9.4 7.7 6 10.4 Z"/></svg>') +
+          tile('spo2', 'SpO₂', '%', '<span class="mon-bar" aria-hidden="true"><i></i></span>') +
+          tile('bp', 'NIBP', 'mmHg', '') + tile('rr', 'RR', '/min', '') +
         '</div>' +
+      '</div>' +
       '</div>' +
       '<div class="mon-notes"></div>' +
       '<div class="mon-drift" hidden></div>' +
       '<p class="sr-only mon-sr"></p>';
-    function tile(k, l, u){
-      return '<div class="mon-tile" data-k="' + k + '"><span class="mon-k">' + l + '</span>' +
+    function tile(k, l, u, extra){
+      return '<div class="mon-tile" data-k="' + k + '"><span class="mon-k">' + l + extra + '</span>' +
         '<span class="mon-v">—</span><span class="mon-u">' + u + '</span><span class="mon-flag"></span></div>';
     }
     this.ecg = this.el.querySelector('.mon-ecg');
@@ -382,8 +386,18 @@
     this.last = t;
     var still = reduced();
     var hr = this.target.pulseless ? null : this.shown.hr;
+    // the heart's own clock: beats advance at the shown rate, so a sweeping
+    // monitor writes each beat once where it happened
+    var prev = this.beat || 0;
+    if(hr != null && !still) this.beat = prev + dt * hr / 60;
+    if(hr != null && !still && Math.floor(this.beat - 0.27) > Math.floor(prev - 0.27)){
+      var tl = this.el.querySelector('.mon-tile[data-k="hr"]');
+      if(tl){ tl.classList.remove('is-beat'); void tl.offsetWidth; tl.classList.add('is-beat'); }
+    }
     this.drawLane(this.ecg, hr, ecgY, 'ecg', dt, still);
     this.drawLane(this.pleth, this.shown.spo2 == null ? null : hr, plethY, 'pleth', dt, still);
+    var bar = this.el.querySelector('.mon-bar i');
+    if(bar){ var sp = this.shown.spo2; bar.style.height = sp == null ? '0' : Math.max(0, Math.min(100, (sp - 70) / 30 * 100)).toFixed(0) + '%'; }
   };
 
   Monitor.prototype.drawLane = function(cv, rate, fn, kind, dt, still){
@@ -394,39 +408,58 @@
     var ctx = cv.getContext('2d');
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, w, h);
-    var col = kind === 'ecg' ? token('--accent', '#127264') : token('--amber-text', '#8A5E10');
-    if(document.documentElement.getAttribute('data-theme') === 'dark' && kind === 'pleth') col = token('--amber', '#D9A54B');
-    ctx.lineWidth = 2; ctx.lineJoin = 'round'; ctx.strokeStyle = col;
-    var mid = kind === 'ecg' ? h * 0.62 : h * 0.85, amp = kind === 'ecg' ? h * 0.5 : h * 0.65;
+    // monitor colours: ECG green, pleth cyan (the convention on bedside monitors)
+    var col = kind === 'ecg' ? '#3DF08B' : '#3CD7F2';
+    var mid = kind === 'ecg' ? h * 0.64 : h * 0.86, amp = kind === 'ecg' ? h * 0.5 : h * 0.66;
     var secs = 4; // seconds across the strip
+    if(kind === 'ecg'){
+      // faint ECG paper grid: 0.2 s major squares
+      ctx.strokeStyle = 'rgba(61,240,139,0.07)'; ctx.lineWidth = 1; ctx.beginPath();
+      for(var gx = 0; gx <= w; gx += w / (secs * 5)){ ctx.moveTo(Math.round(gx) + 0.5, 0); ctx.lineTo(Math.round(gx) + 0.5, h); }
+      for(var gy = mid % (w / (secs * 5)); gy <= h; gy += w / (secs * 5)){ ctx.moveTo(0, Math.round(gy) + 0.5); ctx.lineTo(w, Math.round(gy) + 0.5); }
+      ctx.stroke();
+    }
+    ctx.lineWidth = 1.8; ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.strokeStyle = col;
     if(rate == null){
-      ctx.globalAlpha = 0.35; ctx.setLineDash([4, 5]);
+      ctx.globalAlpha = 0.45; ctx.setLineDash([4, 5]);
       ctx.beginPath(); ctx.moveTo(0, mid); ctx.lineTo(w, mid); ctx.stroke();
       ctx.setLineDash([]); ctx.globalAlpha = 1;
       return;
     }
-    var beatsPerSec = rate / 60;
+    var bps = rate / 60;
     var key = kind === 'ecg' ? 'phase' : 'pphase';
     if(!still) this[key] = (this[key] + dt / secs) % 1;
     var head = still ? 1 : this[key];       // sweep position 0..1
-    var gap = 0.04;
-    ctx.beginPath();
-    var started = false;
-    for(var x = 0; x <= w; x += 1){
-      var u = x / w;
-      if(!still && u > head && u < head + gap){ started = false; continue; }
-      // time at this pixel: newest at the sweep head
-      var age = still ? (1 - u) * secs : ((head - u + 1) % 1) * secs;
-      var tt = -age;
-      var p = ((tt * beatsPerSec) % 1 + 1) % 1;
-      var y = mid - fn(p) * amp;
-      if(!started){ ctx.moveTo(x, y); started = true; } else ctx.lineTo(x, y);
+    var now = (this.beat || 0) - (kind === 'pleth' ? 0.18 * bps : 0);   // the pulse reaches the finger a little after the R wave
+    var gap = 0.035;
+    function path(fill){
+      ctx.beginPath();
+      var started = false, x0 = 0;
+      for(var x = 0; x <= w; x += 1){
+        var u = x / w;
+        if(!still && u > head && u < head + gap){ if(started && fill){ ctx.lineTo(x - 1, mid + 2); ctx.lineTo(x0, mid + 2); ctx.closePath(); } started = false; continue; }
+        var age = still ? (1 - u) * secs : ((head - u + 1) % 1) * secs;
+        var p = (((now - age * bps) % 1) + 1) % 1;
+        var y = mid - fn(p) * amp;
+        if(!started){ if(fill){ ctx.moveTo(x, mid + 2); x0 = x; ctx.lineTo(x, y); } else ctx.moveTo(x, y); started = true; } else ctx.lineTo(x, y);
+      }
+      if(fill && started){ ctx.lineTo(w, mid + 2); ctx.lineTo(x0, mid + 2); ctx.closePath(); }
     }
-    ctx.stroke();
+    if(kind === 'pleth'){
+      var g = ctx.createLinearGradient(0, mid - amp, 0, mid);
+      g.addColorStop(0, 'rgba(60,215,242,0.32)'); g.addColorStop(1, 'rgba(60,215,242,0.02)');
+      ctx.fillStyle = g; path(true); ctx.fill();
+    }
+    ctx.shadowColor = col; ctx.shadowBlur = 6;
+    path(false); ctx.stroke();
+    ctx.shadowBlur = 0;
     if(!still){
-      ctx.fillStyle = col;
-      var hx = head * w, hp = (((-0) * beatsPerSec) % 1 + 1) % 1;
-      ctx.beginPath(); ctx.arc(hx, mid - fn(hp) * amp, 2.5, 0, Math.PI * 2); ctx.fill();
+      // the writing point
+      var hp = (((now) % 1) + 1) % 1;
+      ctx.fillStyle = '#fff';
+      ctx.shadowColor = col; ctx.shadowBlur = 10;
+      ctx.beginPath(); ctx.arc(head * w, mid - fn(hp) * amp, 2.2, 0, Math.PI * 2); ctx.fill();
+      ctx.shadowBlur = 0;
     }
   };
 

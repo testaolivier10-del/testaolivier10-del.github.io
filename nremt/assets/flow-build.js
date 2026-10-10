@@ -128,7 +128,8 @@
       var cls = 'bd-slot k-' + s.kind + (fill ? ' is-filled' : '');
       return '<button type="button" class="' + cls + '" data-slot="' + s.id + '"' + (fill ? ' disabled' : '') +
         ' aria-label="' + (fill ? esc(s.text) : (s.kind === 'decision' ? 'Empty decision' : 'Empty step') + (s.arm ? ' for ' + esc(s.arm.label) : '')) + '">' +
-        (fill ? '<span>' + esc(s.text) + '</span>' : '<span class="bd-q">' + (s.kind === 'decision' ? '?' : '') + '</span>') + '</button>';
+        (s.kind === 'decision' ? '<i class="bd-dia" aria-hidden="true"></i>' : '') +
+        (fill ? '<span>' + esc(s.text) + '</span>' : '<span class="bd-q">' + (s.kind === 'decision' ? 'question goes here' : s.kind === 'terminal' ? 'end step goes here' : 'step goes here') + '</span>') + '</button>';
     }
     function done(it){
       return it.type === 'step' ? !!placed[it.slot.id] : it.arms.every(function(a){ return placed[a.slot.id]; });
@@ -138,12 +139,13 @@
       var h = '';
       d.items.forEach(function(it, k){
         if(it.type === 'step'){
-          if(k > 0 && d.items[k - 1].type === 'step') h += '<div class="bd-arrow" aria-hidden="true">↓</div>';
+          if(k > 0 && d.items[k - 1].type === 'step') h += '<div class="bd-arrow" aria-hidden="true"></div>';
+          else if(k > 0) h += '<div class="bd-arrow bd-arrow-in" aria-hidden="true"></div>';
           h += slotHtml(it.slot);
         } else {
-          h += '<div class="bd-branch">' + it.arms.map(function(a){
-            return '<div class="bd-arm"><div class="bd-label">if ' + esc(a.label) + '</div>' + slotHtml(a.slot) +
-              (a.end ? '<div class="bd-end">↓ ' + esc(a.end) + '</div>' : a.slot.kind === 'terminal' ? '<div class="bd-end bd-stop">stop here</div>' : '') + '</div>';
+          h += '<div class="bd-split" aria-hidden="true"></div><div class="bd-branch">' + it.arms.map(function(a){
+            return '<div class="bd-arm"><div class="bd-label"><span>if ' + esc(a.label) + '</span></div>' + slotHtml(a.slot) +
+              (a.end ? '<div class="bd-end">' + esc(a.end) + '</div>' : a.slot.kind === 'terminal' ? '<div class="bd-end bd-stop">stop here</div>' : '') + '</div>';
           }).join('') + '</div>';
         }
         if(it.notes.length && done(it)) h += it.notes.map(function(n){ return '<div class="bd-note">' + n + '</div>'; }).join('');
