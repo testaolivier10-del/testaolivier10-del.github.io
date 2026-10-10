@@ -358,13 +358,24 @@
   };
   function shortName(n){ var k = String(n).toLowerCase(); return SHORT[k] || n; }
   function dialSvg(){
-    // A half dial: lower on the left, higher on the right, baseline straight up.
+    /* A half dial, drawn as an instrument gauge (visual polish 2026-10): bezel,
+       face, graduated ticks, a tapered needle and a glass sheen. Lower on the
+       left, higher on the right, baseline straight up; geometry unchanged. */
+    var ticks = '';
+    for(var i = 0; i <= 12; i++){
+      var a = Math.PI * (1 - i / 12), big = i % 3 === 0, r0 = 31, r1 = big ? 25 : 27.5;
+      ticks += '<path class="pc-tk' + (big ? ' big' : '') + '" d="M' + (42 + Math.cos(a) * r0).toFixed(1) + ' ' + (44 - Math.sin(a) * r0).toFixed(1) + ' L' + (42 + Math.cos(a) * r1).toFixed(1) + ' ' + (44 - Math.sin(a) * r1).toFixed(1) + '"/>';
+    }
     return '<svg class="pc-dial" viewBox="0 0 84 50" aria-hidden="true" focusable="false">' +
+      '<path class="pc-bezel" d="M2 46 A40 40 0 0 1 82 46 Z"/>' +
+      '<path class="pc-face" d="M5.5 45 A36.5 36.5 0 0 1 78.5 45 Z"/>' +
       '<path class="pc-dial-arc" d="M8 44 A34 34 0 0 1 76 44"/>' +
       '<path class="pc-dial-lo" d="M8 44 A34 34 0 0 1 22 18"/><path class="pc-dial-hi" d="M62 18 A34 34 0 0 1 76 44"/>' +
-      '<path class="pc-dial-base" d="M42 8 V14"/>' +
+      ticks +
+      '<path class="pc-dial-base" d="M42 6 V12"/>' +
       '<g class="pc-ghost"><path d="M42 44 V16"/></g>' +
-      '<g class="pc-needle"><path d="M42 44 V14"/><circle cx="42" cy="44" r="4.5"/></g>' +
+      '<g class="pc-needle"><path class="pc-nd" d="M40.4 44 L42 13 L43.6 44 Z"/><circle cx="42" cy="44" r="4.6"/><circle class="pc-cap" cx="42" cy="44" r="1.7"/></g>' +
+      '<path class="pc-glass" d="M9 40 A33 33 0 0 1 60 14 A40 30 0 0 0 9 40 Z"/>' +
       '<text x="6" y="49" class="pc-dial-t">↓</text><text x="78" y="49" text-anchor="end" class="pc-dial-t">↑</text>' +
       '</svg>';
   }
