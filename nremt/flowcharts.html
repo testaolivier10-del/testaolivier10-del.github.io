@@ -91,6 +91,15 @@
     .page-head .lede{font-size:14px;}
   }
   .page-head + .mode-switch,.page-head + * + .mode-switch{margin-top:18px;}
+  .flow-pick[hidden]{display:none;}
+  .flow-cue{margin:0 0 8px;font:800 15px var(--font-ui);color:var(--ink);}
+  .flow-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px;}
+  .flow-chips button{font:700 13px var(--font-ui);padding:6px 13px;min-height:40px;border:2px solid var(--line);border-radius:18px;background:var(--white);color:var(--ink);cursor:pointer;}
+  .flow-chips button[aria-pressed="true"]{border-color:var(--accent);background:var(--tint-accent);box-shadow:inset 0 0 0 1px var(--accent);}
+  .flow-chips .flow-all{color:var(--accent-text);border-style:dashed;}
+  #flowDiagrams h2[hidden],#flowDiagrams .diagram-card[hidden]{display:none;}
+  #flowDiagrams > h2{margin-top:14px;}
+  .flow-foot{font-size:12.5px;color:var(--muted);margin:22px 0 0;}
   .mode-switch{display:inline-flex;border:2px solid var(--line);border-radius:22px;overflow:hidden;background:var(--white);margin-bottom:22px;}
   .mode-switch button{
     font:700 13px var(--font-ui);padding:9px 18px;border:0;background:transparent;color:var(--muted);cursor:pointer;min-height:42px;
@@ -250,7 +259,8 @@
      These are reference sheets people want next to them while they revise,
      and a diagram that breaks across a page is worse than useless. */
   @media print{
-    .mode-switch,#flowDrill,#flowBuild,.site-nav-fallback,#site-header,.privacy-link{display:none !important;}
+    .mode-switch,.flow-pick,#flowDrill,#flowBuild,.site-nav-fallback,#site-header,.privacy-link{display:none !important;}
+    #flowDiagrams h2[hidden],#flowDiagrams .diagram-card[hidden]{display:block !important;}
     .diagram-card{break-inside:avoid;page-break-inside:avoid;box-shadow:none;border-color:#999;}
     .flow-box{break-inside:avoid;page-break-inside:avoid;}
     h2{break-after:avoid;page-break-after:avoid;}
@@ -317,7 +327,7 @@
   <div class="page-head">
   <div class="eyebrow">Tools</div>
   <h1>Protocol Flow Diagrams</h1>
-  <p class="lede">Core decision sequences as diagrams.</p>
+  <p class="lede">The core EMT decision sequences, one diagram at a time.</p>
   </div>
 
   <!-- Reading a sequence and being able to produce it are different skills, and
@@ -327,6 +337,13 @@
     <button type="button" data-mode="read" class="on" aria-pressed="true">Read</button>
     <button type="button" data-mode="build" aria-pressed="false">Build it</button>
     <button type="button" data-mode="drill" aria-pressed="false">Drill me</button>
+  </div>
+  <!-- Read mode: pick one diagram (simplify pass 2026-10). The diagrams stay in
+       one block in document order, which flow-drill.js and flow-build.js read;
+       this only hides the ones not picked. "Show all" (and print) shows every one. -->
+  <div class="flow-pick" id="flowPick" role="group" aria-label="Pick a diagram">
+    <p class="flow-cue">Pick a sequence to read it.</p>
+    <div class="flow-chips" id="flowChips"></div>
   </div>
 
   <div id="flowBuild" hidden></div>
@@ -762,9 +779,7 @@
 
   </div><!-- /flowDiagrams -->
 
-  <div class="warning warning--after">
-    <b>General, widely-taught sequences, not scored sheets.</b> Protocols vary by medical direction.
-  </div>
+  <p class="flow-foot"><b>General, widely-taught sequences, not scored sheets.</b> Protocols vary by medical direction.</p>
 
 
   <footer>
@@ -774,7 +789,54 @@
 </div>
 <script src="assets/nav.js" defer></script>
 <script src="assets/tool-results.js" defer></script>
+<script>
+/* Runs as parsed (not deferred), before flow-drill.js, which calls
+   NremtFlowPick.show() before it scrolls to a diagram. */
+(function(){
+  var host = document.getElementById('flowDiagrams'), chips = document.getElementById('flowChips'), pick = document.getElementById('flowPick');
+  if(!host || !chips) return;
+  var pairs = [];
+  host.querySelectorAll('h2').forEach(function(h){
+    var card = h.nextElementSibling;
+    while(card && !card.classList.contains('diagram-card')) card = card.nextElementSibling;
+    if(!h.id) h.id = 'flow-' + h.textContent.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+    pairs.push({ h: h, card: card });
+  });
+  var SHORT = { 'flow-primary-assessment-sequence':'Primary assessment', 'flow-adult-and-child-foreign-body-airway-obstruction-1-year-and-o':'Choking, adult and child',
+    'flow-infant-foreign-body-airway-obstruction-under-1-year':'Choking, infant' };
+  function short(t, id){ return SHORT[id] || t.replace(/\s*\(.*\)\s*/g, ' ').replace(/ (Recognition|Assessment|Decision|Sequence|& Management|& Transport Decision|& General Management).*$/, '').trim(); }
+  chips.innerHTML = pairs.map(function(p, i){ return '<button type="button" data-i="' + i + '" aria-pressed="false">' + short(p.h.textContent, p.h.id) + '</button>'; }).join('') +
+    '<button type="button" data-i="all" class="flow-all" aria-pressed="false">Show all</button>';
+  function show(which){
+    pairs.forEach(function(p, i){ var on = which === 'all' || which === i; p.h.hidden = !on; if(p.card) p.card.hidden = !on; });
+    chips.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.i === String(which))); });
+  }
+  chips.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    var w = b.dataset.i === 'all' ? 'all' : +b.dataset.i;
+    show(w);
+    if(w !== 'all'){ try{ history.replaceState(null, '', '#' + pairs[w].h.id); }catch(err){} }
+  });
+  function fromHash(){
+    var id = location.hash.slice(1), i = -1;
+    pairs.forEach(function(p, k){ if(p.h.id === id) i = k; });
+    show(i >= 0 ? i : 0);
+  }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+  // the picker belongs to Read only
+  var mode = document.getElementById('flowMode');
+  function sync(){ pick.hidden = host.hidden; }
+  if(mode) mode.addEventListener('click', function(){ setTimeout(sync, 0); });
+  new MutationObserver(sync).observe(host, { attributes: true, attributeFilter: ['hidden'] });
+  sync();
+  window.NremtFlowPick = { show: function(id){ pairs.forEach(function(p, k){ if(p.h.id === id) show(k); }); } };
+  window.addEventListener('beforeprint', function(){ pairs.forEach(function(p){ p.h.hidden = false; if(p.card) p.card.hidden = false; }); });
+  window.addEventListener('afterprint', fromHash);
+})();
+</script>
 <script src="assets/flow-build.js" defer></script>
 <script src="assets/flow-drill.js" defer></script>
+
 </body>
 </html>
