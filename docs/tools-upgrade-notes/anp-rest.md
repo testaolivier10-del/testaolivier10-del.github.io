@@ -65,3 +65,21 @@ what the owner should check. Accuracy list at the end.
   word roots are mostly prefixes/suffixes and non-structure terms. Nothing else in either tool changed.
 - **Also fixed:** `scripts/test/anp-tool-kit.test.mjs` read the body map labels from `nremt/body-map.html`, but
   P1-NREMT moved them to `nremt/assets/body-viewer.js`; the test now reads the module (and falls back to the page).
+
+## For accuracy review
+1. **Graph readings (Explore):** values between data points are read off the same monotone cubic the chart draws
+   (Fritsch–Carlson), never outside the neighbouring points (tested). A "What if" condition swaps the base curve for
+   the question's existing overlay curve; the 0.7 s slide between them is animation only, and the readout shows only
+   the two data curves' values. No new curves or numbers.
+2. **Place-the-curve:** an option counts as a direction only when its text starts with one (left/right/up/down/no
+   change); 12 questions qualify. Check that "up/down" and "left/right" in those 12 option texts mean the curve's
+   movement on the chart's own axes (e.g. audiogram's y axis is reversed: "moves down" = worse hearing, and a
+   downward drag on screen means down on that chart, which is right).
+3. **Pathway trace points** (data/pathway-traces.json) are where each step happens on the OpenStax drawing, placed by
+   eye: worth a look on blood-flow (pulmonary arteries placed on the left pulmonary arteries; the systemic loop on
+   the upper-body capillaries and veins), conduction ("Atria depolarize" on the right atrium) and CSF (the
+   median-aperture point stands for "median and lateral apertures"). Blood token color follows each step's existing
+   `blood` field (deoxygenated blue, oxygenated orange, exchange purple).
+4. **Calculator pictures:** tube width from resistance uses r = (R0/R)^(1/4) (Poiseuille, other factors equal) and
+   particle speed = flow / r², relative to the defaults; the arterial wave is schematic (stated in its caption);
+   the cardiac-output jug fills at 10x speed (stated). Every number shown is the calculator's own (tested).
