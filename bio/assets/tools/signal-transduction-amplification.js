@@ -5,7 +5,19 @@
    the epinephrine concentration, when it is washed out and which steps are
    blocked, reads the active molecules at every step at a chosen time (the
    pathway figure and a table), plots any step over time or against the
-   dose, and runs trials that land as points (with a little scatter). */
+   dose, and runs trials that land as points (with a little scatter).
+
+   Job: see how one hormone molecule becomes millions of glucose units, and
+   what each blocked step does to everything after it.
+
+   Tools upgrade (U-Bio-sims, lighter version): the cascade is the stage,
+   first in the card. Each rung with a drug is a button: tap the receptor
+   (antagonist), the G protein (normal, locked on, locked off), cAMP (PDE
+   inhibitor) or PKA (PKA inhibitor). Counts tween from the old to the new
+   values down the cascade (drain or flood, each rung a little after the one
+   above), with a log bar of dots per rung. "Play 0 to 300 s" sweeps the read
+   time so the signal rises and, after washout, ends. Checkboxes and selects
+   stay as the keyboard path. Reduced motion: no tween. */
 (function(){
   'use strict';
   var SLUG = 'signal-transduction-amplification';
@@ -15,11 +27,16 @@
     var esc = T.esc, F = T.F, S = M.signal, P = data.model, fmt = S.fmt;
     var view = 'time', runs = [], runSeed = 4271;
     var st = { L: data.ligand.value, tOff: data.washout.value, readT: data.readTime.value, gprotein: 'normal', antagonist: false, pde: false, pka: false, stage: 'rate' };
+    var fs;
     var stageOf = function(id){ return data.stages.filter(function(s){ return s.id === id; })[0]; };
 
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
-      '<section class="bt-card" aria-labelledby="sg-h"><h2 id="sg-h">The model</h2><div class="bt-controls"></div>' +
-      '<div class="bt-stage two"><div class="bt-fig"></div><div><div class="bt-tabs" role="group" aria-label="Graph">' +
+      '<section class="bt-card sg-card" aria-labelledby="sg-h"><h2 id="sg-h">The model</h2>' +
+      '<div class="bt-fig sg-stagefig"></div><p class="bt-small">Tap a rung with a ⊘ to block it (tap the G protein to cycle normal, locked on, locked off).</p>' +
+      '<div class="os-play"><button type="button" class="btn-press sm" data-a="sweep">Play 0 to 300 s</button><p class="os-clock sg-clock" aria-hidden="true"></p></div>' +
+      '<p class="os-why sg-why" role="status" aria-live="polite"></p>' +
+      '<div class="bt-controls"></div>' +
+      '<div class="sg-lower"><div><div class="bt-tabs" role="group" aria-label="Graph">' +
       '<button type="button" class="bt-btn" data-v="time" aria-pressed="true">Over time</button><button type="button" class="bt-btn" data-v="dose" aria-pressed="false">Against epinephrine concentration</button>' +
       '</div><div class="bt-plotwrap"></div></div></div>' +
       '<dl class="bt-readout"></dl><p class="bt-summary"></p>' +
@@ -36,7 +53,7 @@
     var gSel = T.choiceSelect({ label: 'G protein', value: 'normal', options: data.gprotein.map(function(g){ return { value: g.id, label: g.name }; }), onChange: function(v){ st.gprotein = v; update(true); } });
     var stageSel = T.choiceSelect({ label: 'Step to plot', value: st.stage, options: data.stages.map(function(s){ return { value: s.id, label: s.name }; }), onChange: function(v){ st.stage = v; update(true); } });
     [sL, sOff, sRead, gSel].forEach(function(c){ ctl.appendChild(c.el); });
-    var fs = document.createElement('fieldset');
+    fs = document.createElement('fieldset');
     fs.className = 'bt-ctl bt-checks';
     fs.innerHTML = '<legend>Drugs (added at 0 s)</legend>' + data.blocks.map(function(b){
       var id = T.nid('sg-' + b.id);
@@ -44,7 +61,7 @@
     }).join('');
     ctl.appendChild(fs);
     ctl.appendChild(stageSel.el);
-    fs.querySelectorAll('input').forEach(function(b){ b.addEventListener('change', function(){ st[b.getAttribute('data-b')] = b.checked; update(true); }); });
+    fs.querySelectorAll('input').forEach(function(b){ b.addEventListener('change', function(){ st[b.getAttribute('data-b')] = b.checked; card.querySelector('.sg-why').textContent = ''; update(true); }); });
 
     card.querySelectorAll('.bt-tabs .bt-btn').forEach(function(b){
       b.addEventListener('click', function(){
@@ -88,25 +105,75 @@
       var s = stageOf(stage);
       return s.id === 'rate' ? 'Glucose units per second' + (sc.word ? ' (' + sc.word + ')' : '') : s.short + (sc.word ? ' (' + sc.word + ' per cell)' : ' (per cell)');
     }
+    var shownA = null, tw = 0, figEl = card.querySelector('.sg-stagefig');
+    function reducedM(){ try{ return window.LevlMotion ? window.LevlMotion.reduced() : matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } }
+    var TAP = { R: 'antagonist', G: 'gprotein', cAMP: 'pde', PKA: 'pka' };
     function figure(a){
+      if(tw){ cancelAnimationFrame(tw); tw = 0; }
+      var from = shownA, to = a;
+      if(!from || reducedM()){ drawFig(to, null); shownA = to; return; }
+      var t0 = null, D = 900, ids = S.STAGES;
+      var step = function(ts){
+        if(t0 == null) t0 = ts;
+        var u = (ts - t0) / D, mid = {};
+        ids.forEach(function(id, i){ var f = Math.max(0, Math.min(1, u * 1.6 - i * 0.08)); f = f * f * (3 - 2 * f); var lo = Math.log(1 + from[id]), hi = Math.log(1 + to[id]); mid[id] = Math.exp(lo + (hi - lo) * f) - 1; });
+        drawFig(mid, to);
+        if(u < 1.6) tw = requestAnimationFrame(step); else { tw = 0; drawFig(to, null); }
+      };
+      shownA = to;
+      tw = requestAnimationFrame(step);
+    }
+    function drawFig(a, target){
       var rowH = 56, ids = S.STAGES, parts = [];
       var tags = { R: st.antagonist ? 'antagonist present' : '', G: st.gprotein === 'on' ? 'locked on' : st.gprotein === 'off' ? 'locked off' : '', cAMP: st.pde ? 'breakdown blocked' : '', PKA: st.pka ? 'inhibitor present' : '' };
       ids.forEach(function(id, i){
-        var y = 8 + i * rowH, s = stageOf(id), v = a[id], w = Math.max(0, Math.min(1, Math.log(Math.max(1, v)) / Math.LN10 / 7)) * 150;
-        parts.push('<rect class="stp' + (tags[id] ? ' blocked' : '') + '" x="6" y="' + y + '" width="348" height="38" rx="8"/>');
-        parts.push('<text x="16" y="' + (y + 16) + '">' + esc(s.short) + '</text>');
-        if(tags[id]) parts.push('<text class="note" x="16" y="' + (y + 31) + '">' + esc(tags[id]) + '</text>');
-        parts.push('<rect class="cnt" x="196" y="' + (y + 22) + '" width="' + w.toFixed(1) + '" height="9" rx="2"/>');
-        parts.push('<text x="346" y="' + (y + 16) + '" text-anchor="end">' + fmt(v) + '</text>');
+        var y = 8 + i * rowH, s = stageOf(id), v = a[id], dec = Math.max(0, Math.min(7, Math.log(Math.max(1, v)) / Math.LN10));
+        var tap = TAP[id], body = '<rect class="stp' + (tags[id] ? ' blocked' : '') + '" x="6" y="' + y + '" width="348" height="38" rx="8"/>' +
+          '<text x="16" y="' + (y + 16) + '">' + esc(s.short) + (tap ? ' <tspan class="sg-tapmark">' + (tags[id] ? '⊘ ' + esc(tags[id]) : '⊘') + '</tspan>' : '') + '</text>';
+        for(var k = 0; k < 7; k++){ var f = Math.max(0, Math.min(1, dec - k)); body += '<circle class="sg-dot" cx="' + (200 + k * 14) + '" cy="' + (y + 27) + '" r="5"/>' + (f > 0 ? '<circle class="sg-dotf" cx="' + (200 + k * 14) + '" cy="' + (y + 27) + '" r="' + (5 * Math.sqrt(f)).toFixed(2) + '"/>' : ''); }
+        body += '<text x="346" y="' + (y + 16) + '" text-anchor="end">' + fmt(v) + '</text>';
+        if(tap) parts.push('<g class="sg-tap" data-tap="' + id + '" role="button" tabindex="0" aria-pressed="' + !!tags[id] + '" aria-label="' + esc(s.short + ': ' + (tags[id] || 'not blocked') + '. ' + (id === 'G' ? 'Tap to change the G protein.' : tags[id] ? 'Tap to remove the drug.' : 'Tap to block this step.')) + '">' + body + '</g>');
+        else parts.push(body);
         if(i < ids.length - 1){
           var prev = v, next = a[ids[i + 1]], ratio = prev >= 1 ? next / prev : 0, amp = stageOf(ids[i + 1]).amplifies;
-          parts.push('<path class="arr" d="M30 ' + (y + 39) + 'v15"/><path class="arrh" d="M25 ' + (y + 49) + 'l5 6 5-6z"/>');
+          parts.push('<path class="arr' + (amp ? ' amp' : '') + '" d="M30 ' + (y + 39) + 'v15"/><path class="arrh" d="M25 ' + (y + 49) + 'l5 6 5-6z"/>');
           parts.push('<text class="note" x="44" y="' + (y + 51) + '">' + (prev >= 1 ? (ratio >= 10 ? '× ' + fmt(ratio) : ratio >= 0.1 || ratio === 0 ? '× ' + F(ratio, 2) : '1 for every ' + fmt(1 / ratio)) : '—') + (amp ? ' (each one activates or makes many: amplifies)' : ' (binding, one-to-one or less: no gain)') + '</text>');
         }
       });
-      var lab = 'The pathway at ' + st.readT + ' s, from receptor to response. ' + ids.map(function(id){ return stageOf(id).name + ': ' + fmt(a[id]) + (tags[id] ? ' (' + tags[id] + ')' : ''); }).join('; ') + '.';
-      card.querySelector('.bt-fig').innerHTML = '<svg class="sg-fig" viewBox="0 0 360 ' + (8 + ids.length * rowH - 10) + '" role="img" aria-label="' + esc(lab) + '">' + parts.join('') + '</svg>';
+      var fin = target || a;
+      var lab = 'The pathway at ' + st.readT + ' s, from receptor to response. ' + ids.map(function(id){ return stageOf(id).name + ': ' + fmt(fin[id]) + (tags[id] ? ' (' + tags[id] + ')' : ''); }).join('; ') + '.';
+      figEl.innerHTML = '<svg class="sg-fig" viewBox="0 0 360 ' + (8 + ids.length * rowH - 10) + '" role="group" aria-label="' + esc(lab) + '">' + parts.join('') + '</svg>';
+      var f2 = target ? null : figEl.querySelector('[data-tap="' + lastTap + '"]'); if(f2 && refocus){ refocus = false; f2.focus(); }
     }
+    var lastTap = null, refocus = false;
+    function tapRung(id){
+      var what;
+      if(id === 'G'){ var order = ['normal', 'on', 'off'], n = order[(order.indexOf(st.gprotein) + 1) % 3]; st.gprotein = n; gSel.set(n); what = n === 'on' ? 'G protein locked on: it keeps activating adenylyl cyclase even with no hormone (like cholera toxin), so the signal never ends.' : n === 'off' ? 'G protein locked off: it cannot pick up GTP, so nothing after the receptor turns on, however much epinephrine there is.' : 'G protein back to normal.'; }
+      else { var k = TAP[id]; st[k] = !st[k]; var box = fs.querySelector('[data-b="' + k + '"]'); if(box) box.checked = st[k];
+        what = k === 'antagonist' ? (st[k] ? 'Receptor antagonist: it sits in the binding site, so epinephrine cannot bind and every step after drains.' : 'Antagonist removed.')
+          : k === 'pde' ? (st[k] ? 'Phosphodiesterase inhibitor: cAMP is no longer broken down, so it piles up and the signal lasts after washout.' : 'PDE inhibitor removed.')
+          : (st[k] ? 'PKA inhibitor: cAMP still rises, but PKA cannot act, so everything after PKA drains.' : 'PKA inhibitor removed.'); }
+      lastTap = id; refocus = true;
+      card.querySelector('.sg-why').textContent = what;
+      update(true);
+    }
+    figEl.addEventListener('click', function(e){ var g = e.target.closest && e.target.closest('.sg-tap'); if(g) tapRung(g.getAttribute('data-tap')); });
+    figEl.addEventListener('keydown', function(e){ var g = e.target.closest && e.target.closest('.sg-tap'); if(g && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); tapRung(g.getAttribute('data-tap')); } });
+    var sweepT = 0;
+    card.querySelector('[data-a="sweep"]').addEventListener('click', function(){
+      if(sweepT){ cancelAnimationFrame(sweepT); sweepT = 0; }
+      if(reducedM()){ sRead.set(P.tEnd, true); return; }
+      var sim = S.simulate(P, cond({})), t0 = null, D = 5000, clock = card.querySelector('.sg-clock');
+      var go = function(ts){
+        if(t0 == null) t0 = ts;
+        var u = Math.min(1, (ts - t0) / D), t = Math.round(u * P.tEnd / 5) * 5, a = S.at(sim, t);
+        if(tw){ cancelAnimationFrame(tw); tw = 0; }
+        drawFig(a, null); shownA = a;
+        clock.textContent = 't = ' + t + ' s' + (t >= st.tOff && st.tOff < data.washout.max ? ' (washed out at ' + st.tOff + ' s)' : '');
+        if(u < 1) sweepT = requestAnimationFrame(go); else { sweepT = 0; sRead.set(t, true); }
+      };
+      sweepT = requestAnimationFrame(go);
+    });
     function update(now){
       var sim = S.simulate(P, cond({})), a = S.at(sim, st.readT), ref = drugged() ? S.simulate(P, cond(NODRUG)) : null;
       var offTxt = st.tOff >= data.washout.max ? 'never' : st.tOff + ' s';

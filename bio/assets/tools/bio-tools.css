@@ -485,3 +485,22 @@
 .op-lower{display:grid;gap:10px;}
 .op-stagefig{overflow-x:auto;}
 @media (max-width:640px){.bt-fig .op-stagefig svg.op-fig,.op-stagefig svg.op-fig{min-width:500px;}}
+
+/* ===== Signal cascade (tools upgrade U-Bio-sims) ===== */
+.sg-stagefig{background:var(--paper);border-radius:14px;padding:6px;}
+.sg-fig .sg-tap{cursor:pointer;}
+.sg-fig .sg-tap:hover .stp,.sg-fig .sg-tap:focus-visible .stp{stroke:var(--cink);stroke-width:2.5;}
+.sg-fig .sg-tap:focus{outline:none;}
+.sg-fig .sg-tapmark{fill:var(--bio-symp);font-weight:900;}
+.sg-fig .sg-dot{fill:none;stroke:var(--line);stroke-width:1.5;}
+.sg-fig .sg-dotf{fill:var(--bio-aff);}
+.sg-fig .arr.amp{stroke-width:3.5;}
+.sg-why:empty{display:none;}
+.sg-lower{display:grid;gap:10px;}
+@media (min-width:1000px){
+  .sg-card{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:22px;}
+  .sg-card>*{grid-column:1 / -1;}
+  .sg-card>.sg-stagefig{grid-column:1;grid-row:2 / span 5;align-self:start;position:sticky;top:12px;}
+  .sg-card>.sg-stagefig+p,.sg-card>.os-play,.sg-card>.sg-why,.sg-card>.bt-controls{grid-column:2;}
+  .sg-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
+}
