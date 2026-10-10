@@ -474,3 +474,35 @@
   .tx-beaker .lb-svg{max-width:300px;}
 }
 @media (prefers-reduced-motion:reduce){.tx-beaker .lb-liquid{transition:none;}}
+
+/* Buffer explorer */
+.bf-card{display:grid;gap:12px;}
+.bf-stage{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;}
+.bf-beaker .lb-fig{grid-template-columns:minmax(0,.9fr) minmax(0,1fr);align-items:center;}
+.bf-beaker .lb-svg{max-width:220px;}
+.bf-beaker .lb-desc,.bf-qb .lb-desc{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.bf-beaker .lb-legend li{font-size:13px;}
+.bf-side{display:grid;gap:10px;align-content:start;}
+.bf-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.bf-add{min-height:56px;border-radius:14px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:900 18px var(--font-ui);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;}
+.bf-add span{font:700 12px var(--font-ui);color:var(--muted);}
+.bf-add:hover{border-color:var(--cink);}
+.bf-oh{border-color:#6D5BD0;} .bf-h{border-color:#E5484D;}
+.bf-add:active{transform:translateY(1px);}
+.bf-add:disabled{opacity:.45;cursor:default;}
+.bf-plot svg{width:100%;height:auto;display:block;}
+.bf-key{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.bf-k1,.bf-k2{display:inline-block;width:22px;height:0;border-top:3px solid var(--chem-s1,var(--cink));margin-left:6px;}
+.bf-k2{border-top:3px dashed var(--chem-s3);}
+.bf-calc{font-family:var(--font-mono);font-size:14px;display:block;margin-top:4px;}
+.bf-why{min-height:6em;}
+.bf-two{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.bf-two .lb-fig,.bf-qb .lb-fig{grid-template-columns:minmax(0,1fr);}
+.bf-two .lb-desc{font-size:12px;}
+.bf-qb .lb-fig{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;}
+.bf-qb .lb-svg{max-width:200px;}
+@media (min-width:900px){
+  .bf-stage{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:22px;}
+  .bf-beaker .lb-fig{grid-template-columns:minmax(0,1fr);}
+  .bf-beaker .lb-svg{max-width:300px;}
+}
