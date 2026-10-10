@@ -164,7 +164,8 @@ ${bodyOpen(' data-app="equations-sheet"')}
 ${footer(depth, 'page:equations-sheet')}
 <link rel="stylesheet" href="assets/pages/pages.css">
 <link rel="stylesheet" href="assets/pages/entry.css">
-${tail({ depth, section: 'exams' })}
+<link rel="stylesheet" href="../assets/course/tool-studio.css">
+${tail({ depth, section: 'exams', extra: ['pages/calm-ref.js'], site: ['course/tool-studio.js'] })}
 </body>
 </html>
 `;
@@ -205,7 +206,8 @@ ${bodyOpen(' data-app="score-calculator"')}
 ${footer(depth, 'page:score-calculator')}
 <link rel="stylesheet" href="assets/pages/pages.css">
 <link rel="stylesheet" href="assets/pages/entry.css">
-${tail({ depth, section: 'exams', extra: ['pages/score.js'] })}
+<link rel="stylesheet" href="../assets/course/tool-studio.css">
+${tail({ depth, section: 'exams', extra: ['pages/score.js', 'pages/calm-ref.js'], site: ['course/tool-studio.js'] })}
 </body>
 </html>
 `;
