@@ -45,3 +45,10 @@ One line per tool: stage / dock controls / what moved to Why and Details. Shared
   Predicted-not-measured note, the unknown's answer peak by peak, the draw check, the DoU working / Details = every
   band and every signal as tables, degrees of unsaturation, the unknown's peak lists, Take this molecule to, Check
   yourself, Keep going. Fixed on the way: `?mode=puzzle` and `?mode=ref` links now open those modes.
+- **Reagent roadmap**: stage = the ladder map (A start, B target, the route's steps numbered; it scrolls inside the
+  stage on a phone); Reagent: the reagent's page (what it does, every reaction card); Puzzle: your trail over the map,
+  the molecule's place brought into view / dock = Route, Reagent, Groups, Puzzle; Start, swap, Target and Keep the
+  skeleton or Allow C–C steps; the search and the reagent chips; Route from here, Route to here; the reagent tiles with
+  Undo and New / Why = the routes with every reagent card, the other routes of the same length and one step longer;
+  the group (what does not work, what it becomes, what makes it); the puzzle's step cards and notes / Details = Check
+  yourself, Keep going. Caption names the route with its reagents in one line.

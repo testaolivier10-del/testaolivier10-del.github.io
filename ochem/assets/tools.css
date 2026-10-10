@@ -1141,3 +1141,34 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .sp-ls .sp-band__bar{background:var(--surface2);}
 .sp-ls .sp-ls-unit{display:none;flex:none;margin:2px 0 0;text-align:center;font:700 var(--ls-s) var(--font-mono);color:var(--muted);}
 .sp-ls.sp-ls-nmr .sp-ls-pred > .sp-ls-unit{display:none !important;}
+
+/* ---- Reagent roadmap in the Tool Studio: the ladder map is the stage (it
+   scrolls inside it on a phone); the reagent page is a reading view. */
+.rr-ls .rr-ls-box{display:flex;flex-direction:column;gap:10px;min-height:0;}
+.rr-ls .ls-stage-body:has(> .rr-ls-box:not(.ls-off)){overflow:auto;}
+.rr-ls .rr-map{gap:8px;}
+.rr-ls .rr-maphead{margin:0;font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
+.rr-ls .rr-node{min-height:44px;}
+.rr-ls .rr-pick{gap:8px;}
+.rr-ls .rr-pick label,.rr-ls .rr-ls-reagent-dock label{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;color:var(--muted);}
+.rr-ls .rr-pick .tselect,.rr-ls .rr-search{width:100%;min-height:48px;border-radius:14px;font:700 var(--ls-m) var(--font-ui);}
+.rr-ls .rr-swap{min-width:44px;min-height:44px;}
+.rr-ls #rrCC{display:flex;width:100%;}
+.rr-ls #rrCC button{flex:1;min-height:44px;}
+.rr-ls .rr-ls-rx{color:var(--muted);font-weight:600;}
+.rr-ls .rr-fam__k{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
+.rr-ls .rr-reagent{min-height:40px;}
+.rr-ls .rr-ls-reagent-stage .tpanel{margin:0;padding:0;border:0;box-shadow:none;background:none;}
+.rr-ls .rr-ls-reagent-stage .tpanel__head{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
+.rr-ls .rr-ls-groups-dock .trow{display:flex;gap:8px;flex-wrap:wrap;margin:0;}
+.rr-ls .rr-ls-groups-dock .tchip{min-height:44px;}
+.rr-ls .rr-ls-puzzle-dock .rr-tiles{display:flex;flex-wrap:wrap;gap:8px;}
+.rr-ls .rr-tile{min-height:44px;}
+.rr-ls .rr-pz__acts{display:flex;gap:8px;}
+.rr-ls .rr-pz__acts .tchip{min-height:44px;flex:1;}
+.rr-ls .rr-trail{flex:none;}
+.ls-sheet .rr-ls-box .tpanel{margin:0 0 10px;padding:0;border:0;box-shadow:none;background:none;}
+.ls-sheet .tpanel__head{font:900 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;color:var(--ink);}
+.rr-ls .rr-pick{display:grid !important;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:end;}
+.rr-ls .rr-pick .tfield{margin:0;min-width:0;}
+.rr-ls .rr-reagent.tchip--mini{min-height:44px;}

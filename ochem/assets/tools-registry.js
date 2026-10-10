@@ -142,7 +142,8 @@
       blurb: 'Find the reagents that turn one functional group into another.',
       teaches: 'Functional group interconversion, reagents, synthesis',
       topic: ['functional-group-interconversion', 'multistep-synthesis', 'retrosynthesis'],
-      terms: ['functional-group-interconversion', 'retrosynthesis', 'synthon']
+      terms: ['functional-group-interconversion', 'retrosynthesis', 'synthon'],
+      studio: true
     }
   ];
 
