@@ -162,7 +162,8 @@
       "desc": "Decode anatomy and medical terms from their prefixes, roots and suffixes, or build a term from its meaning. Linked to the course glossary.",
       "script": "tools/word-roots.js",
       "css": "tools/word-roots.css",
-      "data": "word-roots.json"
+      "data": "word-roots.json",
+      "studio": true
     }
   ]
 }

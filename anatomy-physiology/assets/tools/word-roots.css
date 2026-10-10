@@ -111,3 +111,43 @@
   .wr-filter select{width:100%;}
 }
 .wr-blank{letter-spacing:.05em;color:var(--muted);}
+
+/* ---- Tool Studio (docs/tools-calm.md; word-roots.js studioCard) ---- */
+.wr-ls .ls-stage-body{justify-content:center;}
+.wr-ls .ls-stage-body > *{flex:none;}
+.wr-ls[data-mode="bank"] .ls-stage-body{justify-content:flex-start;}
+.wr-ls .ls-stage-body > .wr-term{margin:0 0 14px;font:900 clamp(30px,6vw,52px)/1.1 var(--font-ui);text-align:center;}
+.wr-ls .ls-stage-body > .wr-split{justify-content:center;margin:0;}
+.wr-ls .ls-stage-body > .wr-split .wr-seg{font-size:clamp(20px,3.4vw,30px);}
+.wr-ls .ls-stage-body > .wr-prompt{margin:0 0 14px;font:900 var(--ls-l)/1.3 var(--font-ui);text-align:center;}
+.wr-ls .ls-stage-body > .wr-slots{min-height:64px;justify-content:center;}
+.wr-ls .ls-stage-body > .wr-slots + .wr-split{margin-top:14px;}
+.wr-ls .ls-stage-body > h2{margin:0 0 10px;font:900 var(--ls-m)/1.3 var(--font-ui);}
+.wr-ls .ls-dock .wr-steps{margin:0;padding:0;}
+.wr-ls .ls-dock .wr-step{margin:0;padding:0;border:0;}
+.wr-ls .ls-dock .wr-step label,.wr-ls .ls-dock .wr-q{display:block;margin:0 0 8px;font:900 var(--ls-l)/1.3 var(--font-ui);}
+.wr-ls .ls-dock .wr-step-n{display:none;}
+.wr-ls .ls-dock .wr-step select{width:100%;min-height:48px;}
+.wr-ls .ls-dock .wr-step-fb:empty{display:none;}
+.wr-ls .ls-dock .wr-opts{display:flex;flex-direction:column;gap:8px;}
+.wr-ls .ls-dock .wr-opt{min-height:48px;}
+.wr-ls .ls-dock .wr-actions{margin:0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.wr-ls .ls-dock .wr-actions > button{flex:1;}
+.wr-ls .ls-dock .wr-actions .wr-msg:empty{display:none;}
+.wr-ls .ls-dock .wr-actions .wr-msg{flex-basis:100%;margin:0;}
+.wr-ls .ls-dock .wr-actions[hidden]{display:none;}
+.wr-ls .ls-dock .wr-fb{margin:0;}
+.wr-ls .ls-dock .wr-fb:empty{display:none;}
+.wr-ls .ls-dock .wr-bank-h{margin:0;font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.wr-ls .ls-dock .wr-bankcards{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));}
+.wr-ls .ls-dock .wr-cardbtn{min-height:48px;}
+.wr-ls .ls-dock .wr-find{margin:0;}
+.wr-ls .ls-dock .wr-find input{width:100%;min-height:44px;}
+.wr-ls .ls-sheet .wr-ls-opts > summary{display:none;}
+.wr-ls .ls-sheet .wr-ls-opts{margin:0;}
+.wr-ls .ls-sheet .wr-ls-opts .kt-more-b{padding:0;}
+.wr-ls .ls-sheet .wr-parts{margin:0;padding-left:18px;}
+.wr-ls{--wr-prefix:var(--anp-eff, #56B4E9); --wr-prefix-fill:var(--anp-eff-fill, #D2EAF8);
+  --wr-root:var(--anp-aff, #E69F00);   --wr-root-fill:var(--anp-aff-fill, #F8E3B8);
+  --wr-suffix:var(--anp-para, #009E73); --wr-suffix-fill:var(--anp-para-fill, #C4E8DC);}
+.wr-ls .ls-sheet .wr-filter select{min-height:44px;}
