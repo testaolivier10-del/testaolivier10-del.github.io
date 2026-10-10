@@ -464,22 +464,56 @@
   };
 
   /* ---- The patient ------------------------------------------------------------
-     The figure is the body map's own 3D model (BodyParts3D, CC BY-SA 2.1 JP),
+     The figure is the body map's own 3D model (BodyParts3D, CC BY-SA 2.1 JP)
+     in the body map's look, translucent skin over the skeleton and organs,
      rendered flat by scripts/build-body-figures.mjs; its region paths come
      from the skeleton (neck line at the shoulders, arm lines down the axilla,
      chest from abdomen at T12/L1, pelvis down to the groin). A child under 12
      gets the child figure, with a child's larger head and shorter legs. Both
      arms are one region and both legs another (findings name "arms" and
-     "legs", not sides); the back has its own view behind a flip, and shows
-     what the case says about the back, buttocks or spine. A region with
-     findings carries a small labelled callout at its own spot on the body. */
+     "legs", not sides); the back has its own view, and shows what the case
+     says about the back, buttocks or spine. A region with findings carries a
+     short callout beside the body: where (with the side, when the case names
+     one) and a word or two taken from the case's own words. */
   var VIEW_REGIONS = {
     front: [['head', ['simHead']], ['neck', ['simNeck']], ['chest', ['upper']], ['abdomen', ['simAbdomen']],
             ['arms', ['armL', 'armR']], ['legs', ['simLegL', 'simLegR']]],
     back:  [['head', ['simHead']], ['neck', ['simNeck']], ['back', ['simBack']], ['arms', ['armL', 'armR']], ['legs', ['legL', 'legR']]]
   };
-  var SHORT = { head:'Head', neck:'Neck', chest:'Chest', abdomen:'Abdomen', arms:'Arms', legs:'Legs', back:'Back' };
-  var NS = 'http://www.w3.org/2000/svg';
+  var SHORT = { head:'Head', neck:'Neck', chest:'Chest', abdomen:'Abdomen', arms:'Arms', legs:'Legs', back:'Back', ms:'Head' };
+  /* Callout words: the first one or two of these the case's sentences contain,
+     most urgent first. `sev` marks the ones drawn in red. */
+  var WORDS = [
+    [/\bspurt/i, 'Spurting bleed', 1], [/\b(bleeding heavily|heavy bleeding|pooling|soaked)/i, 'Heavy bleeding', 1],
+    [/\b(no pulse|pulseless)/i, 'No pulse', 1], [/\b(not breathing|apneic)/i, 'Not breathing', 1], [/\bunresponsive/i, 'Unresponsive', 1],
+    [/\bbleed|\bblood\b/i, 'Bleeding'], [/\bdeform/i, 'Deformity'], [/\bshortened/i, 'Shortened'], [/\brotated/i, 'Rotated'],
+    [/\bburn(ed|s)?\b/i, 'Burns'], [/\blacerat/i, 'Laceration'], [/\bwound/i, 'Wound'], [/\b(bruis|contusion)/i, 'Bruising'],
+    [/\bswell/i, 'Swelling'], [/\bhives/i, 'Hives'], [/\babras/i, 'Abrasion'], [/\b(puncture|penetrat)/i, 'Puncture'],
+    [/\bstridor/i, 'Stridor'], [/\bwheez/i, 'Wheezing'], [/\bcrackles/i, 'Crackles'], [/\bretraction/i, 'Retractions'],
+    [/\bgurgl/i, 'Gurgling'], [/\bchok/i, 'Choking'], [/\bdrool/i, 'Drooling'], [/\bcough/i, 'Coughing'],
+    [/\b(cyan|blue)/i, 'Cyanosis'], [/\bmottl/i, 'Mottled'], [/\bpale/i, 'Pale'], [/\b(sweat|diaphore|clammy)/i, 'Sweaty'],
+    [/\bflush/i, 'Flushed'], [/\bdroop/i, 'Facial droop'], [/\bslurr/i, 'Slurred speech'], [/\bpupils?\b/i, 'Pupils'],
+    [/\bweak/i, 'Weakness'], [/\bnumb/i, 'Numbness'], [/\b(confus|disorient|does not know)/i, 'Confused'],
+    [/\b(drowsy|sleepy|hard to wake)/i, 'Drowsy'], [/\bseiz/i, 'Seizure'], [/\bagitated/i, 'Agitated'], [/\balert/i, 'Alert'],
+    [/\b(tender|winces|cries when)/i, 'Tender'], [/\bpain/i, 'In pain'], [/\bcontraction/i, 'Contractions'], [/\bcrowning/i, 'Crowning']
+  ];
+  function words(list){
+    var txt = list.map(function(x){ return x.text; }).join(' ');
+    var hits = WORDS.filter(function(w){ return w[0].test(txt); });
+    if(!hits.length) return { text: list.length + ' finding' + (list.length === 1 ? '' : 's'), sev: false };
+    var t = hits[0][1];
+    if(hits[1] && (t + ', ' + hits[1][1]).length <= 22) t += ', ' + hits[1][1].toLowerCase();
+    return { text: t, sev: !!hits[0][2] };
+  }
+  var PARTS = /\b(thigh|knee|shin|calf|ankle|foot|feet|hip|leg|shoulder|upper arm|elbow|forearm|wrist|hand|fingers?|arm)s?\b/i;
+  function where(key, list){
+    if(key !== 'arms' && key !== 'legs') return SHORT[key];
+    var txt = list.map(function(x){ return x.text; }).join(' ');
+    var R = /\bright\b/i.test(txt), L = /\bleft\b/i.test(txt), m = txt.match(PARTS);
+    var part = m ? m[0].toLowerCase() : SHORT[key].toLowerCase();
+    if(R === L) return part.charAt(0).toUpperCase() + part.slice(1);
+    return (R ? 'Right ' : 'Left ') + part;
+  }
   function svgEl(tag, attrs, parent){
     var n = document.createElementNS(NS, tag);
     for(var k in attrs) n.setAttribute(k, attrs[k]);
@@ -505,23 +539,32 @@
     this.el.setAttribute('aria-labelledby', 'ptH');
     this.el.innerHTML =
       '<div class="pt-head"><h3 id="ptH">Assess the patient</h3><span class="pt-age">' + esc(ageWords(this.months)) + '</span></div>' +
-      '<p class="pt-hint">Tap a part of the body, or a step of the primary survey, to see what this call has shown you so far.</p>' +
+      '<p class="pt-hint">Tap the body or a survey step to see what this call has shown you.</p>' +
       '<div class="pt-survey" role="group" aria-label="Primary survey">' +
         SURVEY.map(function(s){ return '<button type="button" class="pt-chip" data-r="' + s.key + '">' + s.label + '</button>'; }).join('') +
       '</div>' +
-      '<div class="pt-wrap">' +
-        '<div class="pt-stage"><svg class="pt-svg" role="group" aria-label="Patient body, front. Tap a region."></svg></div>' +
-        '<div class="pt-tools">' +
-          '<button type="button" class="pt-flip" aria-pressed="false" aria-label="Show the back">' +
-            '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.7-5.6M20 12a8 8 0 0 1-13.7 5.6"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><span>Back</span></button>' +
+      '<div class="pt-stage">' +
+        '<div class="pt-fig"><svg class="pt-svg" role="group" aria-label="Patient body, front. Tap a region."></svg></div>' +
+        '<svg class="pt-lines" aria-hidden="true"></svg><div class="pt-cos" aria-hidden="true"></div>' +
+        '<div class="pt-bar">' +
+          '<div class="pt-seg" role="group" aria-label="View">' +
+            '<button type="button" data-v="front" aria-pressed="true">Front</button>' +
+            '<button type="button" data-v="back" aria-pressed="false">Back</button></div>' +
           '<button type="button" class="pt-chip pt-skin" data-r="skin">Skin</button>' +
         '</div>' +
       '</div>' +
       '<div class="pt-out" aria-live="polite"></div>' +
       '<p class="pt-credit">Figure rendered from <a href="https://lifesciencedb.jp/bp3d/" target="_blank" rel="noopener">BodyParts3D</a>, © 2008 Life Science Integrated Database Center, <a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en" target="_blank" rel="noopener">CC BY-SA 2.1 Japan</a>.</p>';
     this.svg = this.el.querySelector('.pt-svg');
-    this.flip = this.el.querySelector('.pt-flip');
-    this.flip.addEventListener('click', function(){ self.setView(self.view === 'front' ? 'back' : 'front'); });
+    this.stage = this.el.querySelector('.pt-stage');
+    this.figBox = this.el.querySelector('.pt-fig');
+    this.lines = this.el.querySelector('.pt-lines');
+    this.cos = this.el.querySelector('.pt-cos');
+    this.flip = this.el.querySelector('[data-v="back"]');
+    this.el.querySelector('.pt-seg').addEventListener('click', function(e){
+      var b = e.target.closest('[data-v]');
+      if(b && b.getAttribute('data-v') !== self.view) self.setView(b.getAttribute('data-v'));
+    });
     this.el.addEventListener('click', function(e){
       var t = e.target.closest('[data-r]');
       if(t) self.pick(t.getAttribute('data-r'));
@@ -530,14 +573,20 @@
       var t = e.target.closest('.pt-part');
       if(t && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); self.pick(t.getAttribute('data-r')); }
     });
-    if(window.LevlBodyFigs) window.LevlBodyFigs.load('body', function(F){ self.F = F; self.draw(); });
+    if(window.ResizeObserver){
+      this.ro = new ResizeObserver(function(){ self.layout(); });
+      this.ro.observe(this.stage);
+    }
+    // The case's findings can arrive before the figure does (the first step of
+    // every call): draw, then lay the callouts out for what has been seen.
+    if(window.LevlBodyFigs) window.LevlBodyFigs.load('body', function(F){ self.F = F; self.draw(); self.update(self.seen); });
   }
 
   Patient.prototype.setView = function(v){
     this.view = v;
-    this.flip.setAttribute('aria-pressed', v === 'back' ? 'true' : 'false');
-    this.flip.setAttribute('aria-label', v === 'back' ? 'Show the front' : 'Show the back');
-    this.flip.querySelector('span').textContent = v === 'back' ? 'Front' : 'Back';
+    Array.prototype.forEach.call(this.el.querySelectorAll('.pt-seg [data-v]'), function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-v') === v ? 'true' : 'false');
+    });
     this.svg.setAttribute('aria-label', 'Patient body, ' + v + '. Tap a region.');
     if(v === 'front' && this.current === 'back') this.current = null;
     this.draw();
@@ -551,19 +600,16 @@
     if(!f) return;
     this.fig = f;
     while(svg.firstChild) svg.removeChild(svg.firstChild);
-    // room either side for callouts
-    var padX = Math.round(f.w * 0.42);
-    svg.setAttribute('viewBox', (-padX) + ' 0 ' + (f.w + padX * 2) + ' ' + f.h);
+    svg.setAttribute('viewBox', '0 0 ' + f.w + ' ' + f.h);
     var uid = 'pt' + Math.floor(Math.random() * 1e6);
     var defs = svgEl('defs', {}, svg);
     var clip = svgEl('clipPath', { id: uid + 'c' }, defs); svgEl('path', { d: f.outline }, clip);
     var hit = svgEl('clipPath', { id: uid + 'h' }, defs); svgEl('path', { d: f.hitOutline }, hit);
-    svgEl('ellipse', { cx: f.w / 2, cy: f.h - 8, rx: f.w * 0.32, ry: 14, class: 'pt-floor' }, svg);
-    svgEl('image', { href: F.url(f), width: f.w, height: f.h, class: 'pt-skin-img', 'aria-hidden': 'true' }, svg);
+    svgEl('ellipse', { cx: f.w / 2, cy: f.h - 8, rx: f.w * 0.31, ry: 12, class: 'pt-floor' }, svg);
+    svgEl('image', { href: F.base + (f.anat || f.src), width: f.w, height: f.h, class: 'pt-skin-img', 'aria-hidden': 'true' }, svg);
     var tint = svgEl('g', { 'clip-path': 'url(#' + uid + 'c)', 'aria-hidden': 'true' }, svg);
     svgEl('path', { d: f.outline, class: 'pt-outline', 'aria-hidden': 'true' }, svg);
     var parts = svgEl('g', {}, svg);
-    this.callouts = svgEl('g', { class: 'pt-callouts', 'aria-hidden': 'true' }, svg);
     var self = this;
     this.parts = {};
     VIEW_REGIONS[this.view].forEach(function(r){
@@ -576,23 +622,25 @@
       g.setAttribute('aria-label', lab);
       self.parts[key] = { g: g, tint: t, at: anchorOf(f, key, r[1]), paths: r[1] };
     });
+    this.layout();
   };
 
-  /* A small labelled callout: a dot on the body, a leader out to the side, and
-     a pill with the region and how many findings. Fresh findings (this step)
-     are coral; older ones are the accent. */
-  Patient.prototype.drawCallouts = function(){
-    var c = this.callouts, f = this.fig, self = this;
-    if(!c || !f) return;
-    while(c.firstChild) c.removeChild(c.firstChild);
-    var items = [];
+  /* The callouts: for each region with findings, a dot on the body, a leader
+     out to the side and a small card (where / what). A region of the case's
+     current step is coral, an earlier one the accent, a bleed red. The mental
+     status, which has no region of its own, rides on the head when the head
+     has nothing else to say. */
+  Patient.prototype.items = function(){
+    var f = this.fig, fs = this.f || {}, items = [], self = this;
+    if(!f) return items;
     for(var key in this.parts){
-      var list = (this.f && this.f[key]) || [];
+      var list = fs[key] || [];
+      var k = key;
+      if(!list.length && key === 'head' && (fs.ms || []).length){ list = fs.ms; k = 'ms'; }
       if(!list.length) continue;
-      var at = this.parts[key].at;
+      var at = this.parts[key].at, pr = this.parts[key].paths;
       // a limb finding that names a side points at that limb (front view: the
       // patient's right is on the viewer's left; back view: the reverse)
-      var pr = this.parts[key].paths;
       if(pr.length > 1){
         var txt = list.map(function(x){ return x.text; }).join(' ');
         var R = /\bright\b/i.test(txt), L = /\bleft\b/i.test(txt);
@@ -600,27 +648,59 @@
           var viewerLeft = (R === (this.view === 'front'));
           at = f.anchors[pr[viewerLeft ? 0 : 1]] || at;
         }
+        // a thigh finding points at the thigh, not the knee
+        if(key === 'legs' && /\bthigh/i.test(txt) && f.lines && f.lines.groinY) at = [at[0], f.lines.groinY + (at[1] - f.lines.groinY) * 0.55];
       }
-      items.push({ key: key, n: list.length, fresh: list.some(function(x){ return x.now; }), x: at[0], y: at[1] });
+      var w = words(list);
+      items.push({ key: k, where: where(k, list), what: w.text, sev: w.sev,
+        fresh: list.some(function(x){ return x.now; }), x: at[0], y: at[1] });
     }
-    // left column for anchors left of centre, right for the rest; spread so pills never overlap
-    var mid = f.w / 2, colGap = 76;
-    [[-1, items.filter(function(i){ return i.x < mid - 2; })],
-     [1, items.filter(function(i){ return i.x >= mid - 2; })]].forEach(function(side){
-      var s = side[0], col = side[1].sort(function(a, b){ return a.y - b.y; });
-      var lastY = -Infinity;
+    return items;
+  };
+
+  Patient.prototype.layout = function(){
+    var f = this.fig, st = this.stage, self = this;
+    if(!f || !st.clientWidth) return;
+    var SW = st.clientWidth, SH = st.clientHeight, bar = 46;
+    // the figure fills the stage height; the toolbar sits beside the feet
+    var FH = SH - 18, FW = FH * f.w / f.h;
+    if(FW > SW * 0.62){ FW = SW * 0.62; FH = FW * f.h / f.w; }
+    var box = { x: (SW - FW) / 2, y: Math.max(8, (SH - FH) / 2 - 1), w: FW, h: FH }, k = FW / f.w;
+    var fs = this.figBox.style;
+    fs.left = box.x + 'px'; fs.top = box.y + 'px'; fs.width = FW + 'px'; fs.height = FH + 'px';
+    var lines = this.lines, cos = this.cos;
+    while(lines.firstChild) lines.removeChild(lines.firstChild);
+    cos.innerHTML = '';
+    lines.setAttribute('viewBox', '0 0 ' + SW + ' ' + SH);
+    var items = this.items(), mid = f.w / 2, cnt = { '-1': 0, '1': 0 };
+    items.forEach(function(i){
+      i.side = i.x < mid - 2 ? -1 : i.x > mid + 2 ? 1 : 0;
+      if(i.side) cnt[i.side]++;
+    });
+    items.forEach(function(i){ if(!i.side){ i.side = cnt['1'] <= cnt['-1'] ? 1 : -1; cnt[i.side]++; } });
+    var pad = 6, gap = 20;
+    [-1, 1].forEach(function(s){
+      var col = items.filter(function(i){ return i.side === s; }).sort(function(a, b){ return a.y - b.y; });
+      var next = pad;
       col.forEach(function(i){
-        i.ly = Math.max(i.y, lastY + colGap); lastY = i.ly;
-        var px = s < 0 ? -12 : f.w + 12;
-        var g = svgEl('g', { class: 'pt-co' + (i.fresh ? ' is-fresh' : '') + (self.current === i.key ? ' is-on' : '') }, c);
-        svgEl('path', { d: 'M' + i.x + ' ' + i.y + 'C' + (i.x + s * 40) + ' ' + i.y + ' ' + (px - s * 40) + ' ' + i.ly + ' ' + px + ' ' + i.ly, class: 'pt-co-line' }, g);
-        svgEl('circle', { cx: i.x, cy: i.y, r: 11, class: 'pt-co-dot' }, g);
-        var txt = SHORT[i.key] + ' · ' + i.n;
-        var wPill = 22 + txt.length * 17.5;
-        var x0 = s < 0 ? px - wPill : px;
-        svgEl('rect', { x: x0, y: i.ly - 25, width: wPill, height: 50, rx: 25, class: 'pt-co-pill' }, g);
-        var t = svgEl('text', { x: x0 + wPill / 2, y: i.ly, class: 'pt-co-t', dy: '0.35em' }, g);
-        t.textContent = txt;
+        var ax = box.x + i.x * k, ay = box.y + i.y * k;
+        var c = document.createElement('div');
+        c.className = 'pt-co' + (i.fresh ? ' is-fresh' : '') + (i.sev ? ' is-severe' : '') + (self.current === i.key ? ' on' : '');
+        c.setAttribute('data-r', i.key);
+        c.innerHTML = '<span class="pt-co-r">' + esc(i.where) + '</span><span class="pt-co-t">' + esc(i.what) + '</span>';
+        cos.appendChild(c);
+        var room = s < 0 ? ax - gap - pad : SW - ax - gap - pad;
+        c.style.maxWidth = Math.max(84, Math.min(124, room)) + 'px';
+        var cw = c.offsetWidth, ch = c.offsetHeight;
+        var cy = Math.max(next, Math.min(SH - bar - ch - pad, ay - ch / 2));
+        next = cy + ch + 6;
+        var cx = s < 0 ? Math.max(pad, ax - gap - cw) : Math.min(SW - cw - pad, ax + gap);
+        c.style.left = cx + 'px'; c.style.top = cy + 'px';
+        var ex = s < 0 ? cx + cw : cx, ey = cy + ch / 2, mx = (ax + ex) / 2;
+        var cls = i.sev ? ' is-severe' : i.fresh ? ' is-fresh' : '';
+        svgEl('path', { d: 'M' + ax + ' ' + ay + 'C' + mx + ' ' + ay + ' ' + mx + ' ' + ey + ' ' + ex + ' ' + ey, class: 'pt-co-line' + cls }, lines);
+        if(i.sev) svgEl('circle', { cx: ax, cy: ay, r: 11, class: 'pt-co-ring' }, lines);
+        svgEl('circle', { cx: ax, cy: ay, r: 5, class: 'pt-co-dot' + cls }, lines);
       });
     });
   };
@@ -638,11 +718,12 @@
       var base = (REGIONS.concat(SURVEY, [BACK]).filter(function(r){ return r.key === key; })[0] || {}).label;
       if(b.tagName.toLowerCase() === 'g' && b.hasAttribute('data-r')) b.setAttribute('aria-label', base + (list.length ? ', ' + list.length + ' finding' + (list.length === 1 ? '' : 's') : ', nothing reported'));
     });
-    // the flip says when the back has something to show
+    // the Back button says when the back has something to show
     var nb = (f.back || []).length;
     this.flip.classList.toggle('has', nb > 0);
-    this.flip.classList.toggle('fresh', (f.back || []).some(function(x){ return x.now; }));
-    this.drawCallouts();
+    this.flip.classList.toggle('fresh', this.view === 'front' && (f.back || []).some(function(x){ return x.now; }));
+    this.flip.setAttribute('aria-label', 'Back' + (nb ? ', ' + nb + ' finding' + (nb === 1 ? '' : 's') : ''));
+    this.layout();
     if(this.current) this.pick(this.current, true);
   };
 
@@ -667,14 +748,14 @@
         (key !== 'ms' && key !== 'air' && key !== 'brth' && key !== 'circ' && list.some(function(x){ return x.dcap.length; })
           ? '<p class="pt-note">Letters are <a href="mnemonics.html#m-dcap-btls">DCAP-BTLS</a> findings named in the case.</p>' : '')
       : '<p class="pt-none">The case has not told you anything about this yet. On a real call you would still look.</p>');
-    this.drawCallouts();
+    Array.prototype.forEach.call(this.cos.querySelectorAll('.pt-co'), function(c){ c.classList.toggle('on', c.getAttribute('data-r') === key); });
     if(!quiet && window.LevlAnnounce) window.LevlAnnounce.say(def.label + ': ' + (list.length ? list.map(function(x){ return x.text; }).join(' ') : 'nothing reported so far.'));
   };
 
   window.NremtSim = {
     Monitor: Monitor, Patient: Patient, HESITATE: HESITATE,
     pure: { parseVitals: parseVitals, ageMonths: ageMonths, refFor: refFor, sbpLow: sbpLow, judge: judge,
-            driftAt: driftAt, findings: findings, sentences: sentences, REF: REF, SPO2_LOW: SPO2_LOW,
+            driftAt: driftAt, findings: findings, words: words, where: where, sentences: sentences, REF: REF, SPO2_LOW: SPO2_LOW,
             GRACE_MS: GRACE_MS, DRIFT_MS: DRIFT_MS }
   };
 })();

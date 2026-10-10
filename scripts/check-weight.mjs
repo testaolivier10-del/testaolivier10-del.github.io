@@ -140,7 +140,11 @@ const SHELL_BUDGETS = [
      +2.2 KB; figure data and images fetched on demand), plus illustrated tool visuals
      drawn inline (bedside monitor traces, drug icons, age pictograms, phonocardiogram,
      about +1 KB). Re-measured after merging both. */
-  ['nremt', 21],
+  /* 21 -> 22 (patient anatomy view, 2026-10): scenario-monitor.js +1.6 KB gzipped for the
+     patient's short callouts (the word list that turns a case sentence into "Right thigh /
+     Spurting bleed", the side-by-side callout layout) and the Front/Back toggle. Loads only on
+     scenario-sim.html; the anatomy images are fetched on demand and not counted. */
+  ['nremt', 22],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with

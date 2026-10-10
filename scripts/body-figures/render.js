@@ -25,6 +25,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from '/nremt/assets/vendor/three/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from '/nremt/assets/vendor/three/libs/meshopt_decoder.module.js';
 import { mergeVertices } from '/nremt/assets/vendor/three/utils/BufferGeometryUtils.js';
+import { RoomEnvironment } from '/nremt/assets/vendor/three/environments/RoomEnvironment.js';
 
 /* ---- names (FMA ids, as in body-viewer.js PART_GROUP_MAP) ---------------- */
 const RIB_R = ['FMA7857','FMA7882','FMA7909','FMA7957','FMA8066','FMA8175','FMA8229','FMA8283','FMA8364','FMA8445','FMA8531','FMA8533'];
@@ -143,6 +144,75 @@ function makeView(frame, side, pxPerMm){
   const Z = v => frame.z1 - v / h * (frame.z1 - frame.z0);
   return { frame, side, w, h, P, X, Z, k: w / (frame.x1 - frame.x0) };
 }
+/* ---- anatomy figure (step 7) ---------------------------------------------- */
+// The body map's part -> structure map and colours live in body-viewer.js; read
+// them from there so the two never disagree.
+async function viewerContent(){
+  const src = await (await fetch('/nremt/assets/body-viewer.js')).text();
+  const grab = name => JSON.parse(src.match(new RegExp('const ' + name + ' = (\\{.*\\});'))[1]);
+  return { CONTENT: grab('GROUP_CONTENT'), MAP: grab('PART_GROUP_MAP') };
+}
+const KIND_COLORS = { bone:0xD8CFB8, organ:0x8A9B7E, vessel:0xB23A3A, skin:0xE8C9A8 };
+const KIND_ROUGH = { bone:0.75, organ:0.32, vessel:0.25, skin:0.55 };
+// left out: the eyeballs (white spheres in an open skull read as goggles at
+// this size) and the testes (they float below the pelvis once the skin is see-through)
+const ANAT_SKIP = new Set(['skin', 'eyeball', 'testis']);
+function anatomyMeshes(gltf, content, skinGeo, warp){
+  const { CONTENT, MAP } = content, meshes = [];
+  gltf.scene.traverse(o => {
+    if(!o.isMesh) return;
+    const pn = o.parent && o.parent.name, id = (pn && MAP[pn]) ? pn : o.name, gk = MAP[id];
+    if(!gk || ANAT_SKIP.has(gk) || !CONTENT[gk]) return;
+    const c = CONTENT[gk], color = c.color ?? KIND_COLORS[c.kind] ?? 0xbfbfbf;
+    const mat = new THREE.MeshStandardMaterial({ color, roughness: KIND_ROUGH[c.kind] ?? 0.6, metalness: 0.03, side: THREE.DoubleSide });
+    if(c.emissiveFactor){ mat.emissive = new THREE.Color(color); mat.emissiveIntensity = c.emissiveFactor; }
+    meshes.push(new THREE.Mesh(partGeometry(o, warp), mat));
+  });
+  // the skin: see-through in the middle, denser where the surface turns away, so the outline still reads as a body
+  const skin = new THREE.MeshStandardMaterial({ color:0xE9C6A4, roughness:0.55, metalness:0, transparent:true, opacity:0.34, depthWrite:false });
+  skin.onBeforeCompile = sh => {
+    sh.fragmentShader = sh.fragmentShader.replace('#include <opaque_fragment>',
+      'float fr = pow(1.0 - abs(dot(normalize(normal), vec3(0.0, 0.0, 1.0))), 2.0);\n' +
+      'diffuseColor.a = clamp(diffuseColor.a + 0.5 * fr, 0.0, 1.0);\n#include <opaque_fragment>');
+  };
+  const sm = new THREE.Mesh(skinGeo, skin); sm.renderOrder = 2;
+  meshes.push(sm);
+  return meshes;
+}
+let envTex = null;
+function renderAnatomy(view, meshes){
+  const SS = 2, W = view.w * SS, H = view.h * SS;
+  renderer.setSize(W, H, false);
+  renderer.setClearColor(0x000000, 0);
+  renderer.toneMappingExposure = 1.1;
+  const scene = new THREE.Scene();
+  // The back view turns the body round (180 degrees about the vertical) in
+  // front of the same camera, rather than moving the camera: the light and the
+  // environment then fall on the back exactly as they fall on the front, so
+  // the two views match. Same pixels as the back camera, since the frame is
+  // symmetric about the midline.
+  const body = new THREE.Group();
+  meshes.forEach(m => body.add(m));
+  if(view.side !== 'front') body.rotation.z = Math.PI;
+  scene.add(body);
+  if(!envTex){ const pm = new THREE.PMREMGenerator(renderer); envTex = pm.fromScene(new RoomEnvironment(), 0.04).texture; pm.dispose(); }
+  scene.environment = envTex;
+  // the body map's lights (body-viewer.js initScene)
+  scene.add(new THREE.AmbientLight(0xffffff, 0.75));
+  const d1 = new THREE.DirectionalLight(0xffffff, 0.55); d1.position.set(400, -1400, 1600); scene.add(d1);
+  const d2 = new THREE.DirectionalLight(0xffffff, 0.35); d2.position.set(-600, 900, 400); scene.add(d2);
+  const d3 = new THREE.DirectionalLight(0xffffff, 0.25); d3.position.set(300, 1200, 1200); scene.add(d3);
+  const f = view.frame;
+  if(-f.x0 !== f.x1) throw new Error('anatomy view needs a frame symmetric about the midline');
+  const cam = new THREE.OrthographicCamera(f.x0, f.x1, f.z1, f.z0, 1, 8000);
+  cam.up.set(0, 0, 1); cam.position.set(0, -3000, 0); cam.lookAt(0, 0, 0);
+  renderer.render(scene, cam);
+  const c = document.createElement('canvas'); c.width = view.w; c.height = view.h;
+  const x = c.getContext('2d'); x.imageSmoothingQuality = 'high';
+  x.drawImage(renderer.domElement, 0, 0, view.w, view.h);
+  return c;
+}
+
 let renderer;
 function renderMeshes(view, meshes, light){
   const SS = 2, W = view.w * SS, H = view.h * SS;
@@ -395,6 +465,7 @@ window.renderFigures = async function(){
   const skinFor = variant => geoCache[variant] || (geoCache[variant] = skinGeometry(skinMesh, variant === 'child' ? childWarp : null));
 
   const out = {};
+  const content = await viewerContent();
 
   /* ---- full figures (burns, scenario) ----------------------------------- */
   for(const variant of ['adult', 'child']){
@@ -408,6 +479,7 @@ window.renderFigures = async function(){
     for(const side of ['front', 'back']){
       const view = makeView(frame, side, pxPerMm);
       const raw = renderMeshes(view, [new THREE.Mesh(geo, skinMat())], {});
+      const anat = renderAnatomy(view, anatomyMeshes(gltf, content, geo, variant === 'child' ? childWarp : null));
       const zones = {
         head: view.P(0, warp(0, 0, 1452)[2])[1],
         feet: view.P(0, warp(0, 0, 120)[2])[1],
@@ -426,7 +498,7 @@ window.renderFigures = async function(){
         const q = wp(v[0], v[1]), p = view.P(q[0], q[1]); lmOut[k] = [r1(p[0]), r1(p[1])];
       }
       out[name] = {
-        w: view.w, h: view.h, webp: cv.toDataURL('image/webp', 0.82),
+        w: view.w, h: view.h, webp: cv.toDataURL('image/webp', 0.82), anatWebp: anat.toDataURL('image/webp', 0.8),
         outline: pathD(outline),
         // a generous tap area: the silhouette grown by 44 px (~3.7% of the height), so an arm is still a 40 px target when the figure is 360 px tall
         hitOutline: pathD(trace(morph(mask, view.w, view.h, 44, true), view.w, view.h, 2.0)),
