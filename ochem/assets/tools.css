@@ -312,6 +312,57 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
   .rp-puck,.rp-corner::before{transition:none;}
 }
 
+/* ---- Acid/Base: drawn acids, the pKa line, tap the proton ---------------- */
+.ab-card .scene,.ab-rcard .scene,.ab-site__mol .scene{background:transparent;border:0;padding:0;margin:4px 0;}
+.ab-card .omol svg{max-width:260px;}
+.ab-line{width:100%;max-width:640px;height:auto;display:block;margin:2px auto 6px;overflow:visible;}
+.ab-line__axis{stroke:var(--line);stroke-width:3;stroke-linecap:round;}
+.ab-line__tick{stroke:var(--line);stroke-width:2;}
+.ab-line__num{font:800 11px var(--font-mono);fill:var(--muted);}
+.ab-line__end{font:800 11px var(--font-ui);fill:var(--muted);}
+.ab-line__pin{transition:transform .6s cubic-bezier(.2,.8,.2,1);}
+.ab-line__pin circle{fill:var(--white);stroke:var(--muted);stroke-width:2.5;}
+.ab-line__pin.is-ok circle{fill:var(--tint-good);stroke:var(--good-text);}
+.ab-line__pin.is-no circle{fill:var(--tint-bad);stroke:var(--bad-text);}
+.ab-line__pin.is-wait{opacity:.55;}
+.ab-line__lab{font:800 12px var(--font-ui);fill:var(--ink);}
+.ab-line__stem{stroke:var(--line-soft);stroke-width:1.5;}
+.ab-line__n{font:900 11px var(--font-mono);fill:var(--ink);}
+.ab-rorder{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:8px 0 12px;}
+.ab-rcard{position:relative;display:flex;flex-direction:column;border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
+  background:var(--paper);touch-action:none;transition:border-color .15s ease,box-shadow .15s ease;user-select:none;}
+.ab-rcard__body{all:unset;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 8px 6px;cursor:grab;width:100%;}
+.ab-rcard__body:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:var(--radius);}
+.ab-rcard .omol svg{max-width:100%;max-height:120px;}
+.ab-card .omol svg{max-height:130px;}
+.ab-rcard__n{align-self:flex-start;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--on-accent-fill);
+  display:flex;align-items:center;justify-content:center;font:900 11.5px var(--font-mono);}
+.ab-rcard__name{font:900 12.5px var(--font-ui);color:var(--ink);text-align:center;}
+.ab-rcard__pka{font:900 13px var(--font-mono);color:var(--ink);}
+.ab-rcard__move{display:flex;justify-content:center;gap:6px;padding:0 0 8px;}
+.ab-rcard__move .tchip{min-width:40px;min-height:32px;}
+.ab-rcard.is-pick{border-color:var(--accent);box-shadow:0 0 0 3px var(--tint-accent);}
+.ab-rcard.is-target{border-color:var(--accent);border-style:dashed;}
+.ab-rcard.is-drag{z-index:5;box-shadow:var(--lift-lg);border-color:var(--accent);cursor:grabbing;}
+.ab-rcard.is-ok{border-color:var(--good-text);background:var(--tint-good);}
+.ab-rcard.is-no{border-color:var(--bad-text);background:var(--tint-bad);}
+.ab-ract{gap:10px 14px;}
+.ab-gaps{display:flex;flex-direction:column;gap:8px;}
+.ab-gap{border:var(--bw) solid var(--line-soft);border-radius:var(--radius);padding:10px 13px;font-size:13.2px;line-height:1.55;font-weight:700;background:var(--white);}
+.ab-gap.is-no{border-color:var(--bad-text);}
+.ab-gap__h{margin-bottom:4px;}
+.ab-gap__x{font:900 10.5px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--bad-text);}
+.ab-ario{display:inline-block;font:900 10px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;
+  border-radius:var(--radius-pill);background:var(--tint-accent);color:var(--accent-text);margin-right:4px;}
+.ab-ario--warn{background:var(--tint-warn);color:var(--amber-text);}
+.ab-site__mol .omol svg{max-width:360px;max-height:190px;}
+.ab-site__f{font:800 14px var(--font-mono);color:var(--muted);text-align:center;margin-top:2px;}
+.ab-site__mol .atom:not(.atom--static) circle:not(.atom-hit){stroke:var(--accent);stroke-width:3;stroke-dasharray:4 3;}
+@media(max-width:640px){
+  .ab-rorder{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(prefers-reduced-motion:reduce){ .ab-line__pin{transition:none;} }
+
 /* ---- Both chairs at once (Conformation Lab) ------------------------------ */
 
 .cf-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;}

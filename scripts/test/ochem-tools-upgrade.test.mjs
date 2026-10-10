@@ -114,3 +114,33 @@ test('reaction predictor: the drawn product has the formula the reaction gives',
   }
   assert.ok(drawn > 100, `only ${drawn} products drawn`);
 });
+
+test('acid/base: every drawn acid parses, and every tappable proton site sits on an atom with that hydrogen', () => {
+  const s = load(...CORE, 'ochem/assets/tools/acid-base.js');
+  const A = s.OchemAcidBase;
+  for(const a of A.ACIDS){
+    const st = A.parseDrawn(A.DRAWN[a.id]);
+    assert.ok(st, `${a.name} does not draw`);
+    const q = Object.values(st.atoms).reduce((t, x) => t + (x.charge || 0), 0);
+    assert.equal(q, /⁺$/.test(a.formula) ? 1 : 0, `${a.name}: drawn charge ${q}`);
+  }
+  for(const m of A.MULTI){
+    const d = A.MULTI_DRAWN[m.id];
+    assert.ok(d, `${m.id} has no drawing`);
+    const st = A.parseDrawn(d.f);
+    for(const [lbl, keys] of Object.entries(d.at)){
+      assert.ok(m.sites.some(x => x.label === lbl), `${m.id}: "${lbl}" is not one of its sites`);
+      for(const k of keys){
+        const at = st.atoms[k];
+        assert.ok(at, `${m.id}: no atom ${k}`);
+        const h = at.hFixed ?? at.hImplicit ?? 0;
+        assert.ok(h > 0, `${m.id}: ${lbl} points at ${at.el} ${k}, which has no hydrogen`);
+        const el = /S/.test(lbl) ? 'S' : /NH|N/.test(lbl) ? 'N' : /C–H|CH/.test(lbl) ? 'C' : 'O';
+        assert.equal(at.el, el, `${m.id}: ${lbl} points at ${at.el}`);
+      }
+    }
+    // the most acidic site is always tappable, so the structure can be answered
+    const first = m.sites.slice().sort((x, y) => x.pKa - y.pKa)[0];
+    assert.ok(d.at[first.label], `${m.id}: the right answer (${first.label}) cannot be tapped`);
+  }
+});
