@@ -119,17 +119,19 @@
     app.innerHTML =
       '<div class="wr">' +
         '<div class="wr-bar">' +
-          '<div class="wr-modes" role="group" aria-label="Mode">' +
+          '<div class="wr-modes kt-seg" role="group" aria-label="Mode">' +
             '<button type="button" class="wr-mode" data-mode="decode">Decode</button>' +
             '<button type="button" class="wr-mode" data-mode="build">Build</button>' +
             '<button type="button" class="wr-mode" data-mode="bank">Part bank</button>' +
           '</div>' +
+        '</div>' +
+        '<details class="kt-more wr-optsd"><summary>More options</summary><div class="kt-more-b">' +
           '<label class="wr-filter"><span>Terms taught up to</span><select id="wr-upto">' +
             ts.map(function(id){ return '<option value="' + esc(id) + '">' + (TOPIC_IDX[id] + 1) + '. ' + esc(topicTitle(id)) + '</option>'; }).join('') +
             '<option value="">Everything so far</option>' +
           '</select></label>' +
-        '</div>' +
-        '<p class="wr-count" aria-live="polite"></p>' +
+          '<p class="wr-count" aria-live="polite"></p>' +
+        '</div></details>' +
         '<section class="wr-card"></section>' +
       '</div>';
     var sel = app.querySelector('#wr-upto');
@@ -228,6 +230,7 @@
       '<p class="wr-eyebrow">Decode</p>' +
       '<h2 class="wr-term">' + esc(t.term) + '</h2>' +
       splitHtml(t) +
+      '<p class="kt-first wr-first">Pick what each part means, starting with the last part.</p>' +
       '<ol class="wr-steps">' + order.map(function(i, k){
         var s = t.segs[i], p = PARTS[s[1]];
         return '<li class="wr-step" data-seg="' + i + '"><label for="wr-sel-' + i + '"><span class="wr-step-n">' + (k + 1) + '</span> What does the ' + p.type + ' <b class="wr-mono">' + esc(s[0]) + '</b> mean?</label>' +
@@ -314,7 +317,8 @@
     card.innerHTML =
       '<p class="wr-eyebrow">Build</p>' +
       '<h2 class="wr-prompt">Build the term that means: <span>' + masked(t) + '</span></h2>' +
-      '<p class="wr-small">It has ' + need + ' parts. Place them in order, first to last; linking vowels are added for you.</p>' +
+      '<p class="kt-first wr-first">Tap the ' + need + ' word parts in order, first to last.</p>' +
+      '<p class="wr-small">Linking vowels are added for you.</p>' +
       '<div class="wr-slots" aria-label="Your term, in order" aria-live="polite"></div>' +
       '<p class="wr-small wr-bank-h">Word parts</p>' +
       '<div class="wr-bankcards" role="group" aria-label="Word parts to place">' + cards.map(function(p){
