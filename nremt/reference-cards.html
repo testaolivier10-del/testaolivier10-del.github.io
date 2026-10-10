@@ -93,6 +93,35 @@
   .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
   .refnote{margin-top:14px;padding:10px 12px;border-left:3px solid var(--accent);font-size:13px;line-height:1.6;color:var(--muted);}
   .refnote b{color:var(--ink);}
+
+  .vc{border:2px solid var(--line);border-radius:14px;background:var(--white);padding:14px;margin:0 0 14px;}
+  .vc-age{display:flex;justify-content:space-between;align-items:baseline;font:900 11px var(--font-ui);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
+  .vc-age output{font:800 20px var(--font-ui);text-transform:none;letter-spacing:0;color:var(--ink);}
+  #vcAge{width:100%;margin:8px 0 2px;accent-color:var(--accent);height:28px;}
+  .vc-ticks{position:relative;height:14px;margin:0 11px;font:600 10px var(--font-mono);color:var(--muted);}
+  .vc-ticks span{position:absolute;transform:translateX(-50%);white-space:nowrap;}
+  .vc-ticks span:first-child{transform:none;}
+  .vc-ticks span:last-child{transform:translateX(-100%);}
+  .vc-row{font-size:13px;color:var(--muted);margin:8px 0 12px;line-height:1.5;}
+  .vc-row b{color:var(--ink);}
+  .vc-kind{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
+  .vc-kind button{font:800 12.5px var(--font-ui);padding:6px 11px;border-radius:999px;border:2px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer;}
+  .vc-kind button.on{background:var(--navy);border-color:var(--navy);color:var(--on-accent);}
+  .vc-in{display:inline-flex;align-items:center;gap:8px;font:700 13px var(--font-mono);color:var(--muted);}
+  .vc-in input{width:150px;font:800 20px var(--font-mono);padding:8px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);}
+  .vc-in input:focus{outline:none;border-color:var(--accent);}
+  .vc-gauge{position:relative;height:16px;border-radius:8px;background:var(--track);margin:16px 0 22px;}
+  .vc-band{position:absolute;top:0;bottom:0;background:var(--tint-good);border:2px solid var(--good-text);border-radius:8px;transition:left .25s,right .25s;}
+  .vc-lab{position:absolute;top:19px;transform:translateX(-50%);font:700 10.5px var(--font-mono);color:var(--muted);}
+  .vc-pin{position:absolute;top:-6px;width:4px;height:28px;margin-left:-2px;border-radius:2px;background:var(--ink);transition:left .25s;}
+  .vc-gauge.low .vc-pin,.vc-gauge.high .vc-pin{background:var(--bad);}
+  .vc-gauge.ok .vc-pin{background:var(--good-text);}
+  .vc-out{margin:0;font-size:14px;font-weight:700;line-height:1.5;color:var(--muted);}
+  .vc-out.ok{color:var(--good-text);} .vc-out.low,.vc-out.high{color:var(--bad-text);}
+  #pedsVitals tbody tr{cursor:pointer;transition:background .2s;}
+  #pedsVitals tbody tr.vc-on td{background:var(--tint-accent);}
+  #pedsVitals tbody tr.vc-on td:first-child{box-shadow:inset 4px 0 0 var(--accent);font-weight:800;}
+  @media (prefers-reduced-motion:reduce){.vc-band,.vc-pin,#pedsVitals tbody tr{transition:none;}}
 </style>
 </head>
 <body>
@@ -110,9 +139,10 @@
     <p class="lede">Not everything is worth memorizing. These are the tables you want in front of you &mdash; on a call, or the night before the exam &mdash; rather than half-remembered.</p>
   </div>
 
-  <div class="refcard">
+  <div class="refcard" id="pedsVitals">
     <h2>Pediatric vital signs by age</h2>
     <p class="sub">Awake and at rest. A crying, frightened or febrile child runs faster than this on every row, which is why a single set of numbers means very little in a child &mdash; the trend and the overall picture mean far more.</p>
+    <div id="vitalsCheck"></div>
     <div class="table-scroll">
     <table>
       <thead><tr><th>Age</th><th>Heart rate</th><th>Respiratory rate</th><th>Systolic BP</th></tr></thead>
@@ -194,5 +224,6 @@
   </footer>
 </div>
 <script src="assets/nav.js" defer></script>
+<script src="assets/vitals-check.js" defer></script>
 </body>
 </html>
