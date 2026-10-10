@@ -463,4 +463,23 @@
 .rt-fin{fill:var(--bio-s1);}
 .rt-base{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:3 3;}
 .rt-ghost{fill:none;stroke:var(--bio-s2);stroke-width:2.5;stroke-dasharray:5 4;}
+/* Simpson: one icon per organism, each species its own color and shape */
+.sd-q{fill:var(--bio-para-fill);stroke:var(--bio-para);stroke-width:2;}
+.sd-i{stroke:var(--white);stroke-width:.8;}
+.sd-i.ring{fill:none !important;stroke-width:2.6;}
+.sd-i.c1{fill:var(--bio-s1);} .sd-i.c2{fill:var(--bio-s2);} .sd-i.c3{fill:var(--bio-s4);} .sd-i.c4{fill:var(--bio-aff);}
+.sd-i.c5{fill:var(--bio-hi);} .sd-i.c6{fill:var(--bio-eff);} .sd-i.c7{fill:var(--bio-lo);} .sd-i.c8{fill:var(--bio-s5);}
+.sd-i.ring.c7{stroke:var(--bio-lo);}
+.sd-sq{stroke:var(--white);stroke-width:1;}
+.sd-mbg{fill:var(--paper);stroke:var(--line);stroke-width:1.5;}
+.sd-D{fill:var(--white);stroke:var(--ink);stroke-width:1.5;}
+.sd-lev{stroke:var(--ink);stroke-width:3;}
+.sd-lev.mine{stroke:var(--muted);stroke-dasharray:4 3;}
+.sd-Dl{fill:var(--ink);font:900 13px var(--font-mono);}
+.sd-Dl.mine{fill:var(--muted);font-size:12px;}
+.sd-sw{width:18px;height:18px;flex:0 0 auto;}
+.sd-rows,.sk-steppers{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:6px 14px;}
+.sk-stpn{flex:1 1 auto;min-width:0;}
+.sd-key{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0;font:700 13.5px var(--font-ui);}
+.sd-key span{display:inline-flex;align-items:center;gap:5px;}
 /* ===== Skills tools: end ===== */
