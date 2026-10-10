@@ -131,3 +131,25 @@ test('formulary give/withhold cards quote their drug card', () => {
   }
   assert.ok(cards.some((c) => c.give) && cards.some((c) => !c.give));
 });
+
+test('mnemonic self-check accepts recall, not just spelling', () => {
+  const s = sandbox();
+  s.document.querySelectorAll = () => ({ forEach(){} });
+  vm.runInContext(read('nremt/assets/mnemonic-check.js'), s);
+  const ok = s.NremtMnemonicCheck.accepts;
+  assert.ok(ok('Signs/Symptoms', 'symptoms'));
+  assert.ok(ok('Allergies', 'allergy'));
+  assert.ok(ok('Medications', 'meds'));
+  assert.ok(ok('Pertinent past medical history', 'past history'));
+  assert.ok(!ok('Last oral intake', 'lunch'));
+  assert.ok(!ok('Events', ''));
+  assert.ok(!ok('Deformities', 'd'));
+});
+
+test('every mnemonic scenario link points at a case that uses it', () => {
+  const html = read('nremt/mnemonics.html');
+  const ids = new Set(loadScenarios().map((x) => x.id));
+  const links = [...html.matchAll(/data-scenario="(s\d+)"/g)].map((m) => m[1]);
+  assert.ok(links.length >= 10);
+  for(const id of links) assert.ok(ids.has(id), `${id} is not a scenario`);
+});
