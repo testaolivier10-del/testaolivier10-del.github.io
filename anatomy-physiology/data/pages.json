@@ -121,7 +121,8 @@
       "desc": "Practice the sequences A&P asks you to know in order: blood through the heart, conduction, the cardiac cycle and more, with step-by-step feedback.",
       "script": "tools/pathways.js",
       "css": "tools/pathways.css",
-      "data": "pathways.json"
+      "data": "pathways.json",
+      "studio": true
     },
     {
       "slug": "graphs",
