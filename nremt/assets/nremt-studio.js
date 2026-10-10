@@ -79,13 +79,23 @@
     var title = o.title || document.title;
     bar.innerHTML = '<a class="nx-slim-back" href="' + (o.back || 'tools.html') + '" aria-label="' + (o.backLabel || 'Back to all tools') + '">' +
       '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"/></svg></a>' +
-      '<p class="nx-slim-title"></p><span class="nx-slim-sp"></span>' +
+      '<h1 class="nx-slim-title"></h1><span class="nx-slim-sp"></span>' +
+      '<button type="button" class="nx-slim-home nx-slim-tutor">Ask the tutor</button>' +
       '<a class="nx-slim-home" href="index.html">Course home</a>';
     bar.querySelector('.nx-slim-title').textContent = title;
+    // The tutor's floating button is hidden on these pages (nothing floats
+    // over the content); this opens the same tutor.
+    bar.querySelector('.nx-slim-tutor').addEventListener('click', function(){
+      var b = document.querySelector('.lp-launch');
+      if(b){ b.click(); return; }
+      window.__levlTutorOpenOnLoad = true;
+      var sc = document.createElement('script'); sc.src = '/assets/tutor.js'; document.head.appendChild(sc);
+    });
     wrap.parentNode.insertBefore(bar, wrap);
     wrap.classList.add('nx-slim');
     var head = wrap.querySelector(':scope > .page-head');
     if(head) head.classList.add('nx-slim-head');
+    // site-chrome.js pointed the skip link at the wrapper; the bar sits above it, so that stays right.
     return { bar: bar, wrap: wrap };
   }
 
