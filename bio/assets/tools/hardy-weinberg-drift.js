@@ -34,16 +34,17 @@
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
       '<section class="bt-card hw-card" aria-labelledby="hw-h"><h2 id="hw-h">The model</h2>' +
       '<div class="os-modes" role="group" aria-label="Mode"><button type="button" class="bt-btn" data-m="explore" aria-pressed="true">Explore</button><button type="button" class="bt-btn" data-m="guess" aria-pressed="false">Guess N</button></div>' +
+      '<p class="bt-first">Press Draw generations and watch chance change the allele mix.</p>' +
       '<div class="hw-jarrow"><div class="bt-fig hw-jar"></div><div class="hw-jarside"><div class="os-play"><button type="button" class="btn-press sm" data-a="play">Draw generations</button><p class="os-clock hw-clock" aria-hidden="true"></p></div><p class="bt-small hw-jarnote"></p><div class="hw-mini"></div></div></div>' +
       '<div class="os-chal hw-chal" hidden></div>' +
-      '<div class="hw-top"></div><div class="bt-controls hw-controls"></div>' +
+      '<div class="hw-top"></div><div class="bt-controls hw-controls" data-primary="1"></div>' +
       '<div class="bt-buttons"><button type="button" class="btn-press sm" data-a="new">Run with a new seed</button><button type="button" class="btn-press sm alt" data-a="record">Record this run</button>' +
       '<button type="button" class="btn-press sm alt" data-a="series">Compare population sizes</button><button type="button" class="bt-btn" data-a="clear">Clear runs</button></div>' +
       '<p class="bt-small bt-runnote" role="status" aria-live="polite"></p>' +
-      '<div class="bt-stage two"><div><h3>Frequency of A in every population</h3><div class="hw-plot-p"></div><p class="bt-small hw-key"></p></div>' +
+      '<div class="bt-stage two bt-num"><div><h3>Frequency of A in every population</h3><div class="hw-plot-p"></div><p class="bt-small hw-key"></p></div>' +
       '<div><h3 class="hw-gh">Genotypes against Hardy-Weinberg</h3><div class="hw-plot-g"></div><p class="bt-small">Bars: observed genotype frequencies. Squares: Hardy-Weinberg expectation (p², 2pq, q²) from the same generation\'s p.</p></div></div>' +
-      '<div class="bt-controls hw-read"></div>' +
-      '<dl class="bt-readout hw-readout"></dl><div class="hw-chi"></div><p class="bt-summary"></p>' +
+      '<div class="bt-controls hw-read bt-num"></div>' +
+      '<dl class="bt-readout hw-readout"></dl><div class="hw-chi bt-num"></div><p class="bt-summary"></p>' +
       '<details class="bt-data"><summary>Data tables: your runs, each population\'s fate, and p by generation</summary><div class="bt-tables"></div></details></section>' +
       '<section class="bt-card" aria-labelledby="hw-q"><h2 id="hw-q">Questions about this model</h2><div class="bt-qs bio-qs"></div></section>');
     var card = app.querySelector('.bt-card'), ctl = card.querySelector('.hw-controls'), readCtl = card.querySelector('.hw-read');
