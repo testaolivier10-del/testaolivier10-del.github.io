@@ -574,7 +574,7 @@
 .pb-atoms{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;}
 .pb-atoms li{padding:4px 10px;border-radius:10px;font:700 14px var(--font-ui);background:var(--paper);}
 .pb-atoms li span{font-weight:800;}
-.pb-atoms li.ok span{color:var(--chem-s3);} .pb-atoms li.off span{color:var(--chem-s2);}
+.pb-atoms li.ok span{color:var(--good-text,#1B7B5B);} .pb-atoms li.off span{color:var(--bad-text,#B3261E);}
 .pb-q{margin:6px 0 0;}
 .pb-fb:empty{display:none;}
 .pb-fb{font:700 15px/1.5 var(--font-ui);}
@@ -614,7 +614,7 @@
 .us-row{display:grid;grid-template-columns:auto 5ch 1ch 4ch;align-items:baseline;gap:2px;}
 .us-lab{font:700 12px var(--font-ui);color:var(--muted);padding-right:10px;}
 .us-int{text-align:right;}
-.us-x{color:var(--chem-s2);text-decoration:line-through;}
+.us-x{color:var(--bad-text,#B3261E);text-decoration:line-through;}
 .us-pad{color:var(--muted);}
 .us-sum{border-top:2px solid var(--ink);padding-top:2px;color:var(--cink);}
 @media (prefers-reduced-motion:reduce){.us-chip{transition:none;}}
