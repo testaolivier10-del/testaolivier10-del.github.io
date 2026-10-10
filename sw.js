@@ -129,6 +129,7 @@ COURSE_URLS.nremt = [
   // three.js stay runtime-cached, as before).
   'nremt/assets/tool-results.js',
   'nremt/assets/body-viewer.js',
+  'nremt/assets/burns.js',
 ];
 
 COURSE_URLS.ochem = [

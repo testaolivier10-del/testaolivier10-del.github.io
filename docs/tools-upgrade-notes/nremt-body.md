@@ -19,7 +19,41 @@
   schematic because the Wikimedia clips carry no inspiration/expiration markers (the page says so).
 - Tests: `scripts/test/nremt-sound-stage.test.mjs`.
 
+## Body map: Burns / Rule of Nines (`nremt/body-map.html`, `assets/burns.js`)
+
+- **Job:** estimate how much of the body is burned, fast, by the Rule of Nines, and know each region's share.
+- **Changed:** a mode switch above the model ("3D anatomy" / "Burns: Rule of Nines"; `?mode=burns`). Front and back
+  outlines side by side, 15 regions, each showing its %. Tap or drag to paint; brush Full / Half / Erase; Adult /
+  Child toggle; running TBSA; each tap explains that region's share (and how the child chart differs); list of
+  marked regions; over 10% shows the burn-center and no-wet-dressing teaching point; palm rule note. Quiz: 11
+  "estimate the TBSA" scenarios (answer choices include the other-age chart and half/double traps, explained) and 5
+  "paint an X% burn" targets (total hidden until Check; the miss explains the gap in nines). Misses go to
+  `NremtToolResults` (`burns-<id>`, link `body-map.html?mode=burns&q=<id>`). The reference card's "Pediatric
+  proportions differ" now states them and links into the mode. The 3D anatomy mode is unchanged.
+- **Why 2D:** the Rule of Nines is a map of surface regions; the 3D model's skin layer has no region boundaries, so
+  painting "back of the left leg" on it would be guesswork; two flat figures show front and back at once.
+- **Child chart source:** the course's own study notes (ch. 30 Burns: "head and neck 18% rather than 9%, each leg
+  13.5% rather than 18%; everything else as in an adult") and bank question 533 (infant head about 18%). This is
+  the infant version of the modified rule taught at EMT level; some texts give an intermediate child (head 12%,
+  leg 16.5%) or use the Lund-Browder chart. Owner: confirm this single "child" chart is what you want shown.
+- Tests: `scripts/test/nremt-burns.test.mjs` (totals 100%, adult and child values, every quiz answer, every paint
+  target reachable).
+
 ## For accuracy review
+
+Burns (all in `nremt/assets/burns.js`):
+- Adult: head and neck 9 (front 4.5, back 4.5); each arm 9 (4.5 front, 4.5 back); anterior trunk 18 (chest 9,
+  abdomen 9); posterior trunk 18 (upper back 9, lower back and buttocks 9); each leg 18 (9 front, 9 back);
+  genitals 1. Sum 100.
+- Child: head and neck 18 (9 front, 9 back); each leg 13.5 (6.75 front, 6.75 back); all else as adult. Sum 100.
+- Half mark = half the region's %. Palm (fingers included) about 1% TBSA.
+- Over 10% (partial thickness) meets burn center criteria; cool wet dressings over more than 10% risk hypothermia
+  (both from the course's study notes, ch. 30).
+- Quiz answers: arm + anterior trunk 27; both arms 18; left leg + back 36; head + left arm 18; front of both legs 18;
+  genitals + front of both legs 19; lower back + back of both legs 27; child head 18; child head + both legs 45;
+  child right arm + anterior trunk 27; child right leg 13.5.
+
+Sound trainer:
 
 Sound trainer (all in `nremt/assets/sound-stage.js` unless noted):
 - Sites: aortic = 2nd ICS right sternal border; pulmonic = 2nd ICS left sternal border; Erb's point = 3rd ICS left
