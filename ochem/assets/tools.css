@@ -797,3 +797,68 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
    rather than buttons. Give unselected ones the page tint, as the Reaction Predictor's do. */
 .tpanel .tchip:not(.on){background:var(--paper);border-color:var(--line-soft);}
 .tpanel .tchip:not(.on):hover{background:var(--tint-accent);}
+
+/* ---- Reaction Predictor in the Tool Studio (registry studio: true;
+   docs/tools-calm.md). Stage: the flask over four path tiles (a 2 x 2 grid
+   with its row and column names on a desktop). Dock: substrate and reagent
+   as one scrolling row each on a phone. */
+.rp-ls .rp-stage{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:0;background:none;border:0;}
+.rp-ls .rp-stage .scene{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:0;margin:0;}
+.rp-ls .rp-stage .omol{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+.rp-ls .rp-stage svg{width:100%;height:100%;max-width:520px;max-height:100%;}
+.rp-ls .rp-cond{display:none;}
+.rp-ls .rp-ls-meter{flex:none;margin-top:8px;}
+.rp-ls .rp-cols,.rp-ls .rp-axis,.rp-ls .rp-puck,.rp-ls .rp-cover,.rp-ls .rp-corner__why{display:none;}
+.rp-ls .rp-meter,.rp-ls .rp-meter.is-predict{position:static;height:auto;max-width:none;margin:0;padding:0;border:0;background:none;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;}
+.rp-ls .rp-corner{position:relative;inset:auto;width:auto;height:auto;min-height:56px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;
+  padding:8px 10px;border:0;border-radius:14px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);overflow:hidden;color:var(--ink);text-align:left;}
+.rp-ls .rp-corner__name{font:900 var(--ls-s) var(--font-ui);}
+.rp-ls .rp-corner__pct{font:800 var(--ls-s) var(--font-ui);color:var(--muted);justify-self:auto;}
+.rp-ls .rp-corner::before{height:4px;background:var(--cink);border-radius:0 4px 4px 0;}
+.rp-ls .rp-corner:hover{box-shadow:inset 0 0 0 1.5px var(--cink);}
+.rp-ls .rp-corner.is-win{background:var(--cink);color:var(--white);box-shadow:none;}
+.rp-ls .rp-corner.is-win .rp-corner__pct{color:var(--white);opacity:.85;}
+.rp-ls .rp-corner.is-win::before{background:var(--white);opacity:.6;}
+.rp-ls .rp-corner.is-minor{background:var(--ctint);color:var(--cink);box-shadow:none;}
+.rp-ls .rp-corner.is-minor .rp-corner__pct{color:var(--cink);}
+.rp-ls .rp-corner.is-blocked{background:transparent;box-shadow:inset 0 0 0 1.5px var(--line-soft);}
+.rp-ls .rp-corner.is-blocked .rp-corner__name{color:var(--muted);}
+.rp-ls .rp-corner.is-guess:not(.is-win){background:var(--tint-bad);color:var(--bad-text);box-shadow:none;}
+.rp-ls .rp-corner.is-focus{outline:3px solid var(--cink);outline-offset:2px;}
+.rp-ls .rp-meter.is-predict .rp-corner{min-height:56px;box-shadow:inset 0 0 0 1.5px var(--cink);}
+.rp-ls .rp-none{position:static;transform:none;grid-column:1/-1;min-height:44px;border-radius:14px;}
+.rp-ls .rp-ls-pick .ls-lbl{margin:0 0 8px;font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;color:var(--muted);}
+.rp-ls .rp-n{display:none;}
+.rp-ls .rp-chips{gap:8px;}
+.rp-ls .rp-chips .tchip{min-height:44px;}
+.rp-ls .rp-rgtnote{display:none;}
+.rp-ls .rp-pair{gap:12px 18px;}
+.rp-ls .rp-pair .rp-k{margin:0 0 6px;font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;}
+.rp-ls .rp-more{margin-top:12px;}
+.rp-ls .rp-ls-next{align-self:flex-start;}
+.rp-ls .rp-mix__bar.is-major{background:var(--cink);color:var(--white);}
+.rp-ls .rp-ls-product{display:flex;align-items:center;gap:12px;padding:12px;border-radius:18px;background:var(--surface2);--mol-bg:var(--surface2);}
+.rp-ls .rp-ls-product .omol,.rp-ls .rp-ls-product .scene{flex:1;min-width:0;margin:0;padding:0;background:none;border:0;}
+.rp-ls .rp-ls-product p{flex:none;max-width:48%;margin:0;}
+.rp-ls .rp-read{margin:0;font-size:var(--ls-m);font-weight:600;line-height:1.5;}
+.rp-ls .rp-read__arrows{color:var(--muted);}
+.rp-ls .rp-delta{margin:0;text-align:left;min-height:0;font-size:var(--ls-s);}
+.rp-ls .rp-delta:empty{display:none;}
+.rp-ls #tool-quiz:empty{display:none;}
+.rp-ls .tool-foot{margin:0;padding:14px 0 0;border-top:1px solid var(--line-soft);background:none;box-shadow:none;}
+@media (min-width:1000px){
+  .rp-ls .rp-rgtnote{display:block;margin:12px 0 0;}
+  .rp-ls .rp-ls-meter{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto minmax(64px,auto) minmax(64px,auto) auto;
+    gap:10px 12px;align-items:stretch;margin-top:12px;}
+  .rp-ls .rp-cols,.rp-ls .rp-meter,.rp-ls .rp-meter.is-predict{display:contents;}
+  .rp-ls .rp-cols > span{display:block;align-self:end;text-align:center;font:800 var(--ls-s) var(--font-ui);color:var(--muted);text-transform:none;letter-spacing:0;}
+  .rp-ls .rp-cols br,.rp-ls .rp-cols i{display:none;}
+  .rp-ls .rp-cols > span:nth-child(1){grid-area:1/2;} .rp-ls .rp-cols > span:nth-child(2){grid-area:1/3;}
+  .rp-ls .rp-axis{display:block;position:static;transform:none;align-self:center;padding:0 8px 0 0;background:none;
+    font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;color:var(--muted);}
+  .rp-ls .rp-axis--top{grid-area:2/1;} .rp-ls .rp-axis--bot{grid-area:3/1;}
+  .rp-ls .rp-corner[data-path="SN1"]{grid-area:2/2;} .rp-ls .rp-corner[data-path="SN2"]{grid-area:2/3;}
+  .rp-ls .rp-corner[data-path="E1"]{grid-area:3/2;} .rp-ls .rp-corner[data-path="E2"]{grid-area:3/3;}
+  .rp-ls .rp-none{grid-area:4/2/5/4;}
+}

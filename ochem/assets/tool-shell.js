@@ -24,6 +24,12 @@
     });
   }
 
+  /* "Reaction Predictor" -> "Reaction predictor" (studio titles are sentence
+     case); words with capitals inside (3D, SN2, Acid/Base) stay as they are. */
+  function sentence(s){
+    return String(s).split(' ').map(function(w, i){ return i && /^[A-Z][a-z]+$/.test(w) ? w.toLowerCase() : w; }).join(' ');
+  }
+
   /* Same markup as topHtml() in build-tool-pages.mjs, which writes it into
      the page first; change both together. */
   mount.innerHTML =
@@ -40,8 +46,47 @@
   /* Premium tools (all but OchemPremium.FREE_TOOLS): a badge by the name,
      and once Premium launches, the gate in place of the tool for anyone
      without it. The tool's own script still runs underneath, unseen. */
-  var G = window.OchemPremium;
-  if(G && !G.toolFree(slug)){
+  var G = window.OchemPremium, studio = null;
+
+  /* Tool Studio (docs/tools-calm.md): a tool with `studio: true` in the
+     registry gets the calm frame: slim top bar, stage + dock, Why / Details.
+     The frame is built here; the tool's own script fills the stage and the
+     dock through window.OchemStudio (see reaction-predictor.js). Keep going
+     and Check yourself move into Details, the name and promise into About.
+     Other tools are untouched until they set the flag. */
+  if(tool.studio && window.LevlStudio){
+    mount.parentNode.classList.add('ls-host');
+    var about = document.createElement('div');
+    about.className = 'ls-sec';
+    about.innerHTML = '<p>' + esc(tool.blurb) + '</p><p class="ls-sub">' + esc(tool.tagline) + '</p>';
+    var paid = G && !G.toolFree(slug);
+    studio = window.LevlStudio.mount({
+      title: sentence(tool.name), course: 'Organic Chemistry', back: '../tools.html', home: '../', slug: 'ochem-' + slug,
+      host: mount,
+      menu: {
+        copyLink: true,
+        report: { course: 'ochem', id: 'tool:' + slug },
+        note: paid ? { label: 'Premium tool.', html: 'Part of Organic Chemistry Premium.' } : null
+      },
+      about: about,
+      details: [document.getElementById('tool-quiz'), document.getElementById('tool-foot')]
+    });
+    if(!document.querySelector('main')) studio.root.setAttribute('role', 'main');
+    window.OchemStudio = studio;
+  }
+
+  if(G && !G.toolFree(slug) && studio){
+    // The gate replaces the whole studio and gives the page its chrome back.
+    G.lock({
+      feature: 'tool', source: 'tool-' + slug,
+      hide: [studio.root].concat([].slice.call(mount.parentNode.children).filter(function(el){ return el !== mount && el !== studio.root; })),
+      after: mount,
+      notes: '../learn.html', notesText: 'Read the free textbook',
+      locked: function(){ var on = G.locked(); studio.suspend(on); return on; },
+      badgeIn: mount.querySelector('h1'),
+      badge: G.badge()
+    });
+  } else if(G && !G.toolFree(slug)){
     var top = mount;
     G.lock({
       feature: 'tool', source: 'tool-' + slug,
