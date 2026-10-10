@@ -50,11 +50,13 @@
     host.innerHTML = '<section class="bt-problem pb-card" aria-labelledby="pb-h"><div class="tx-head"><h2 id="pb-h" class="pb-title"></h2><div class="pb-text"></div></div>' +
       '<div class="pb-boxes"><figure class="pb-fig"><figcaption class="bt-small">Before</figcaption><div class="pb-before"></div></figure>' +
       '<figure class="pb-fig"><figcaption class="bt-small">After: your box</figcaption><div class="pb-after"></div></figure></div>' +
-      '<p class="bt-small pb-how">Drag a particle into your box, or tap it or +. Tap a particle in the box, or −, to take it out.</p><div class="pb-palette" role="group" aria-label="Particles to add"></div>' +
-      '<div class="pb-tally" aria-live="polite"></div>' +
-      '<div class="bt-buttons"><button type="button" class="btn-press sm pb-check">Check my box</button><button type="button" class="bt-btn pb-clear">Empty the box</button><button type="button" class="bt-btn pb-new">New problem</button></div>' +
-      '<div class="pb-fb" role="status" aria-live="polite"></div><div class="bt-pick pb-pick"></div></section>';
-    var pick = host.querySelector('.pb-pick');
+      '<div class="pb-palette" role="group" aria-label="Particles to add"></div>' +
+      '<div class="bt-buttons"><button type="button" class="btn-press sm pb-check">Check my box</button><button type="button" class="bt-btn pb-clear">Empty the box</button></div>' +
+      '<div class="pb-fb" role="status" aria-live="polite"></div>' +
+      '<details class="pb-tally-d"><summary>Atom tally <span class="pb-tally-s"></span></summary><div class="pb-tally" aria-live="polite"></div></details>' +
+      T.moreHtml('<div class="bt-pick pb-pick"></div><div class="bt-buttons"><button type="button" class="bt-btn pb-new">New problem</button></div>', 'another kind of picture, new problem') + '</section>';
+    var pick = host.querySelector('.pb-pick'), start = T.cue('Drag a particle into your box, or tap it or +. Tap one in the box, or −, to take it out.');
+    host.querySelector('.pb-palette').parentNode.insertBefore(start.el, host.querySelector('.pb-palette'));
     if(ctxs.length > 1){
       var sel = T.choiceSelect({ label: 'Kind', options: ctxs.map(function(c, i){ return { value: i, label: TITLE[c.kind] }; }), value: 0, onChange: function(v){ ci = +v; seed++; fresh(); } });
       sel.el.classList.add('bt-inline'); pick.appendChild(sel.el);
@@ -147,7 +149,10 @@
       var rows = els.map(function(el){ var ok = a0[el] === (a1[el] || 0); return '<li class="' + (ok ? 'ok' : 'off') + '"><b>' + el + '</b> before ' + a0[el] + ', after ' + (a1[el] || 0) + ' <span>' + (ok ? '✓ conserved' : (a1[el] || 0) < a0[el] ? (a0[el] - (a1[el] || 0)) + ' missing' : ((a1[el] || 0) - a0[el]) + ' too many') + '</span></li>'; }).join('');
       var extra = p.type === 'equilibrium' && counts.A2 * counts.B2 > 0 && els.every(function(el){ return a0[el] === (a1[el] || 0); })
         ? '<p class="bt-small pb-q">Q from your counts = (' + counts.AB + ')² / (' + counts.A2 + ' × ' + counts.B2 + ') = ' + M.fmt(counts.AB * counts.AB / (counts.A2 * counts.B2), 3) + ', K = ' + M.fmt(p.extra.K, 3) + '.</p>' : '';
-      host.querySelector('.pb-tally').innerHTML = '<p class="pb-tk">Atom tally</p><ul class="pb-atoms">' + rows + '</ul>' + extra;
+      var off = els.filter(function(el){ return a0[el] !== (a1[el] || 0); }).length;
+      host.querySelector('.pb-tally').innerHTML = '<ul class="pb-atoms">' + rows + '</ul>' + extra;
+      host.querySelector('.pb-tally-s').textContent = off ? '(' + off + ' element' + (off === 1 ? '' : 's') + ' not balanced yet)' : '(every atom conserved ✓)';
+      if(Object.keys(counts).some(function(k){ return counts[k] > 0; })) start.done();
     }
     function fb(h){ host.querySelector('.pb-fb').innerHTML = h; }
     function check(){

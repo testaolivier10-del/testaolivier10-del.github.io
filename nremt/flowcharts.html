@@ -91,6 +91,15 @@
     .page-head .lede{font-size:14px;}
   }
   .page-head + .mode-switch,.page-head + * + .mode-switch{margin-top:18px;}
+  .flow-pick[hidden]{display:none;}
+  .flow-cue{margin:0 0 8px;font:800 15px var(--font-ui);color:var(--ink);}
+  .flow-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px;}
+  .flow-chips button{font:700 13px var(--font-ui);padding:6px 13px;min-height:40px;border:2px solid var(--line);border-radius:18px;background:var(--white);color:var(--ink);cursor:pointer;}
+  .flow-chips button[aria-pressed="true"]{border-color:var(--accent);background:var(--tint-accent);box-shadow:inset 0 0 0 1px var(--accent);}
+  .flow-chips .flow-all{color:var(--accent-text);border-style:dashed;}
+  #flowDiagrams h2[hidden],#flowDiagrams .diagram-card[hidden]{display:none;}
+  #flowDiagrams > h2{margin-top:14px;}
+  .flow-foot{font-size:12.5px;color:var(--muted);margin:22px 0 0;}
   .mode-switch{display:inline-flex;border:2px solid var(--line);border-radius:22px;overflow:hidden;background:var(--white);margin-bottom:22px;}
   .mode-switch button{
     font:700 13px var(--font-ui);padding:9px 18px;border:0;background:transparent;color:var(--muted);cursor:pointer;min-height:42px;
@@ -159,30 +168,53 @@
   .bd-board{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:start;}
   .bd-side{position:sticky;top:calc(var(--site-header-h,112px) + 10px);}
   .bd-chart{display:flex;flex-direction:column;align-items:stretch;}
-  .bd-arrow{text-align:center;color:var(--muted);line-height:1.3;}
-  .bd-slot{display:block;width:100%;min-height:46px;border:2px dashed var(--accent);border-radius:10px;background:var(--tint-accent);
-    color:var(--ink);font:800 13px/1.45 var(--font-ui);padding:9px 12px;text-align:center;cursor:pointer;transition:background .15s,border-color .15s,transform .15s;}
-  .bd-slot .bd-q{color:var(--accent);font-size:16px;}
-  .bd-slot.k-decision{border-radius:4px;clip-path:polygon(4% 0,96% 0,100% 50%,96% 100%,4% 100%,0 50%);border-style:solid;border-color:transparent;background:var(--tint-accent);
-    box-shadow:inset 0 0 0 2px var(--accent);padding:10px 28px;}
-  .bd-slot.k-decision:not(.is-filled){background:repeating-linear-gradient(135deg,var(--tint-accent) 0 8px,var(--white) 8px 12px);}
-  .bd-slot.is-filled{border-style:solid;border-color:var(--navy);background:var(--paper);cursor:default;opacity:1;}
-  .bd-slot.k-decision.is-filled{background:var(--tint-accent);box-shadow:inset 0 0 0 2px var(--accent);}
-  .bd-slot.k-terminal.is-filled{border-style:dashed;}
-  .bd-slot.k-action.is-filled{font-weight:900;}
-  .bd-card.has-pick .bd-slot:not(:disabled),.bd-card.is-dragging .bd-slot:not(:disabled){border-color:var(--accent);background:var(--white);box-shadow:0 0 0 3px var(--tint-accent);}
-  .bd-card.has-pick .bd-slot.k-decision:not(:disabled){box-shadow:inset 0 0 0 2px var(--accent);}
+  /* Build mode, drawn as a real flowchart (visual polish 2026-10): connectors with arrowheads,
+     terminators as stadiums, questions as decision hexagons, steps as cards; empty slots are
+     dashed drop targets that say what goes in them. */
+  .bd-chart{--fc-line:var(--muted);--fc-dec:var(--accent);}
+  .bd-arrow{position:relative;height:24px;}
+  .bd-arrow::before{content:"";position:absolute;left:50%;top:0;bottom:6px;width:2px;margin-left:-1px;background:var(--fc-line);border-radius:1px;}
+  .bd-arrow::after{content:"";position:absolute;left:50%;bottom:0;margin-left:-6px;border:6px solid transparent;border-bottom:0;border-top:7px solid var(--fc-line);}
+  .bd-split{position:relative;height:16px;}
+  .bd-split::before{content:"";position:absolute;left:50%;top:0;height:16px;width:2px;margin-left:-1px;background:var(--fc-dec);}
+  .bd-split::after{content:"";position:absolute;left:50%;bottom:-4px;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:var(--fc-dec);box-shadow:0 0 0 3px var(--white);}
+  .bd-slot{position:relative;isolation:isolate;display:block;width:100%;min-height:50px;border:2px dashed color-mix(in srgb,var(--accent) 55%,transparent);border-radius:12px;background:var(--tint-accent);
+    color:var(--ink);font:800 13px/1.45 var(--font-ui);padding:10px 14px;text-align:center;cursor:pointer;transition:background .15s,border-color .15s,transform .15s,box-shadow .15s;}
+  .bd-slot .bd-q{color:var(--accent-text,var(--accent));font:700 11px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;opacity:.75;}
+  .bd-slot .bd-q::before{content:"+";display:inline-grid;place-items:center;width:18px;height:18px;margin-right:6px;border-radius:50%;background:var(--accent);color:var(--on-accent,#fff);font:900 13px/1 var(--font-ui);vertical-align:1px;}
+  /* decision: a hexagon, outline drawn with drop-shadows around a clipped fill */
+  .bd-slot.k-decision{border:0;background:none;padding:12px 34px;min-height:56px;}
+  .bd-dia{position:absolute;inset:0;z-index:-1;filter:drop-shadow(1.5px 0 0 var(--fc-dec)) drop-shadow(-1.5px 0 0 var(--fc-dec)) drop-shadow(0 1.5px 0 var(--fc-dec)) drop-shadow(0 -1.5px 0 var(--fc-dec));}
+  .bd-dia::before{content:"";position:absolute;inset:1.5px;clip-path:polygon(22px 0,calc(100% - 22px) 0,100% 50%,calc(100% - 22px) 100%,22px 100%,0 50%);background:color-mix(in srgb,var(--accent) 14%,var(--white));}
+  .bd-slot.k-decision:not(.is-filled) .bd-dia::before{background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--accent) 12%,var(--white)) 0 7px,var(--white) 7px 11px);}
+  .bd-slot.k-decision:not(.is-filled) .bd-dia{opacity:.8;}
+  /* terminal: a stadium, the flowchart start/stop shape */
+  .bd-slot.k-terminal{border-radius:999px;padding-left:22px;padding-right:22px;}
+  .bd-slot.is-filled{border:2px solid var(--navy);background:var(--white);cursor:default;opacity:1;box-shadow:0 2px 0 color-mix(in srgb,var(--navy) 22%,transparent),var(--lift-sm);}
+  .bd-slot.k-action.is-filled{font-weight:900;border-left-width:6px;}
+  .bd-slot.k-terminal.is-filled{background:var(--paper);border-color:var(--muted);box-shadow:var(--lift-sm);}
+  .bd-slot.k-decision.is-filled{border:0;background:none;box-shadow:none;}
+  .bd-slot.k-decision.is-filled .bd-dia{filter:drop-shadow(2px 0 0 var(--fc-dec)) drop-shadow(-2px 0 0 var(--fc-dec)) drop-shadow(0 2px 0 var(--fc-dec)) drop-shadow(0 -2px 0 var(--fc-dec)) drop-shadow(0 3px 4px rgba(20,40,35,.12));}
+  .bd-card.has-pick .bd-slot:not(:disabled):not(.k-decision),.bd-card.is-dragging .bd-slot:not(:disabled):not(.k-decision){border-color:var(--accent);border-style:dashed;background:var(--white);box-shadow:0 0 0 4px var(--tint-accent);}
+  .bd-card.has-pick .bd-slot.k-decision:not(:disabled) .bd-dia::before,.bd-card.is-dragging .bd-slot.k-decision:not(:disabled) .bd-dia::before{background:var(--white);}
+  .bd-card.has-pick .bd-slot:not(:disabled) .bd-q,.bd-card.is-dragging .bd-slot:not(:disabled) .bd-q{opacity:1;}
   .bd-slot.is-over{background:var(--accent-bright) !important;transform:scale(1.02);}
+  .bd-slot.k-decision.is-over{background:none !important;}
+  .bd-slot.k-decision.is-over .bd-dia::before{background:var(--accent-bright) !important;}
   .bd-slot:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
   .bd-slot.pop{animation:bdPop .35s ease;}
   .bd-slot.shake{animation:bdShake .35s ease;}
   @keyframes bdPop{0%{transform:scale(.96)}60%{transform:scale(1.03)}100%{transform:none}}
   @keyframes bdShake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
-  .bd-branch{display:flex;gap:8px;margin:4px 0;}
-  .bd-arm{flex:1;min-width:0;border:2px solid var(--line-soft);border-radius:var(--radius-sm);padding:7px;}
-  .bd-label{font:700 10.5px var(--font-mono);color:var(--accent);text-align:center;text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px;}
-  .bd-end{text-align:center;margin-top:5px;font:700 10px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.05em;}
+  .bd-branch{display:flex;gap:10px;margin:4px 0 0;}
+  .bd-arm{flex:1;min-width:0;position:relative;border:2px solid var(--line);border-radius:14px;padding:16px 8px 8px;margin-top:10px;background:var(--paper);}
+  .bd-label{position:absolute;top:-11px;left:0;right:0;text-align:center;}
+  .bd-label span{display:inline-block;font:800 10.5px var(--font-mono);color:var(--on-accent,#fff);background:var(--accent);padding:3px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em;box-shadow:0 0 0 3px var(--white);max-width:calc(100% - 12px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .bd-end{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:6px;font:700 10px var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.05em;}
+  .bd-end::before{content:"";width:2px;height:12px;background:var(--accent);border-radius:1px;}
   .bd-stop{color:var(--muted);}
+  .bd-stop::before{width:12px;height:12px;border-radius:3px;background:var(--muted);}
+  .bd-arrow-in{height:20px;}
   .bd-note{margin:6px 0 2px;padding:7px 10px;border-left:3px solid var(--accent);font-size:12.5px;color:var(--muted);animation:bdPop .35s ease;}
   .bd-status{display:flex;justify-content:space-between;font:700 12px var(--font-mono);color:var(--muted);margin-bottom:8px;}
   .bd-miss{color:var(--bad-text);}
@@ -193,8 +225,11 @@
   .bd-fb.no b{color:var(--bad-text);}
   .bd-why{color:var(--muted);font-weight:600;}
   .bd-tray{display:flex;flex-direction:column;gap:7px;}
-  .bd-tile{text-align:left;font:700 13px/1.45 var(--font-ui);padding:10px 12px;border:2px solid var(--line);border-radius:10px;background:var(--white);color:var(--ink);
-    cursor:grab;box-shadow:var(--lift-sm);touch-action:none;user-select:none;-webkit-user-select:none;}
+  .bd-tile{position:relative;text-align:left;font:700 13px/1.45 var(--font-ui);padding:10px 12px 10px 24px;border:2px solid var(--line);border-radius:12px;background:var(--white);color:var(--ink);
+    cursor:grab;box-shadow:0 2px 0 var(--line),var(--lift-sm);touch-action:none;user-select:none;-webkit-user-select:none;}
+  .bd-tile::before{content:"";position:absolute;left:9px;top:50%;width:6px;height:14px;margin-top:-7px;opacity:.45;
+    background:radial-gradient(circle,var(--muted) 1.2px,transparent 1.5px) 0 0/3px 4.7px;}
+  .bd-tile.is-picked::before{background-image:radial-gradient(circle,var(--on-accent,#fff) 1.2px,transparent 1.5px);opacity:.7;}
   .bd-tile:hover{border-color:var(--accent);}
   .bd-tile.is-picked{border-color:var(--navy);background:var(--navy);color:var(--on-accent);}
   .bd-tile.is-dragging{opacity:.35;}
@@ -211,7 +246,7 @@
       margin:0 -18px -18px;padding:10px 14px 12px;border-top:2px solid var(--line);border-radius:0 0 var(--radius) var(--radius);
       box-shadow:0 -8px 18px rgba(20,40,35,.08);z-index:5;}
     .bd-tray{flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:4px;scroll-snap-type:x proximity;}
-    .bd-tile{flex:none;width:180px;font-size:12px;line-height:1.35;padding:8px 10px;scroll-snap-align:start;}
+    .bd-tile{flex:none;width:180px;font-size:12px;line-height:1.35;padding:8px 10px 8px 22px;scroll-snap-align:start;}
     .bd-fb{font-size:12.5px;padding:6px 9px;margin-bottom:8px;}
     .bd-fb{min-height:0;}
     .bd-card{padding:14px;}
@@ -224,7 +259,8 @@
      These are reference sheets people want next to them while they revise,
      and a diagram that breaks across a page is worse than useless. */
   @media print{
-    .mode-switch,#flowDrill,#flowBuild,.site-nav-fallback,#site-header,.privacy-link{display:none !important;}
+    .mode-switch,.flow-pick,#flowDrill,#flowBuild,.site-nav-fallback,#site-header,.privacy-link{display:none !important;}
+    #flowDiagrams h2[hidden],#flowDiagrams .diagram-card[hidden]{display:block !important;}
     .diagram-card{break-inside:avoid;page-break-inside:avoid;box-shadow:none;border-color:#999;}
     .flow-box{break-inside:avoid;page-break-inside:avoid;}
     h2{break-after:avoid;page-break-after:avoid;}
@@ -291,7 +327,7 @@
   <div class="page-head">
   <div class="eyebrow">Tools</div>
   <h1>Protocol Flow Diagrams</h1>
-  <p class="lede">Core decision sequences as diagrams.</p>
+  <p class="lede">The core EMT decision sequences, one diagram at a time.</p>
   </div>
 
   <!-- Reading a sequence and being able to produce it are different skills, and
@@ -301,6 +337,13 @@
     <button type="button" data-mode="read" class="on" aria-pressed="true">Read</button>
     <button type="button" data-mode="build" aria-pressed="false">Build it</button>
     <button type="button" data-mode="drill" aria-pressed="false">Drill me</button>
+  </div>
+  <!-- Read mode: pick one diagram (simplify pass 2026-10). The diagrams stay in
+       one block in document order, which flow-drill.js and flow-build.js read;
+       this only hides the ones not picked. "Show all" (and print) shows every one. -->
+  <div class="flow-pick" id="flowPick" role="group" aria-label="Pick a diagram">
+    <p class="flow-cue">Pick a sequence to read it.</p>
+    <div class="flow-chips" id="flowChips"></div>
   </div>
 
   <div id="flowBuild" hidden></div>
@@ -736,9 +779,7 @@
 
   </div><!-- /flowDiagrams -->
 
-  <div class="warning warning--after">
-    <b>General, widely-taught sequences, not scored sheets.</b> Protocols vary by medical direction.
-  </div>
+  <p class="flow-foot"><b>General, widely-taught sequences, not scored sheets.</b> Protocols vary by medical direction.</p>
 
 
   <footer>
@@ -748,7 +789,54 @@
 </div>
 <script src="assets/nav.js" defer></script>
 <script src="assets/tool-results.js" defer></script>
+<script>
+/* Runs as parsed (not deferred), before flow-drill.js, which calls
+   NremtFlowPick.show() before it scrolls to a diagram. */
+(function(){
+  var host = document.getElementById('flowDiagrams'), chips = document.getElementById('flowChips'), pick = document.getElementById('flowPick');
+  if(!host || !chips) return;
+  var pairs = [];
+  host.querySelectorAll('h2').forEach(function(h){
+    var card = h.nextElementSibling;
+    while(card && !card.classList.contains('diagram-card')) card = card.nextElementSibling;
+    if(!h.id) h.id = 'flow-' + h.textContent.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+    pairs.push({ h: h, card: card });
+  });
+  var SHORT = { 'flow-primary-assessment-sequence':'Primary assessment', 'flow-adult-and-child-foreign-body-airway-obstruction-1-year-and-o':'Choking, adult and child',
+    'flow-infant-foreign-body-airway-obstruction-under-1-year':'Choking, infant' };
+  function short(t, id){ return SHORT[id] || t.replace(/\s*\(.*\)\s*/g, ' ').replace(/ (Recognition|Assessment|Decision|Sequence|& Management|& Transport Decision|& General Management).*$/, '').trim(); }
+  chips.innerHTML = pairs.map(function(p, i){ return '<button type="button" data-i="' + i + '" aria-pressed="false">' + short(p.h.textContent, p.h.id) + '</button>'; }).join('') +
+    '<button type="button" data-i="all" class="flow-all" aria-pressed="false">Show all</button>';
+  function show(which){
+    pairs.forEach(function(p, i){ var on = which === 'all' || which === i; p.h.hidden = !on; if(p.card) p.card.hidden = !on; });
+    chips.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.i === String(which))); });
+  }
+  chips.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    var w = b.dataset.i === 'all' ? 'all' : +b.dataset.i;
+    show(w);
+    if(w !== 'all'){ try{ history.replaceState(null, '', '#' + pairs[w].h.id); }catch(err){} }
+  });
+  function fromHash(){
+    var id = location.hash.slice(1), i = -1;
+    pairs.forEach(function(p, k){ if(p.h.id === id) i = k; });
+    show(i >= 0 ? i : 0);
+  }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+  // the picker belongs to Read only
+  var mode = document.getElementById('flowMode');
+  function sync(){ pick.hidden = host.hidden; }
+  if(mode) mode.addEventListener('click', function(){ setTimeout(sync, 0); });
+  new MutationObserver(sync).observe(host, { attributes: true, attributeFilter: ['hidden'] });
+  sync();
+  window.NremtFlowPick = { show: function(id){ pairs.forEach(function(p, k){ if(p.h.id === id) show(k); }); } };
+  window.addEventListener('beforeprint', function(){ pairs.forEach(function(p){ p.h.hidden = false; if(p.card) p.card.hidden = false; }); });
+  window.addEventListener('afterprint', fromHash);
+})();
+</script>
 <script src="assets/flow-build.js" defer></script>
 <script src="assets/flow-drill.js" defer></script>
+
 </body>
 </html>

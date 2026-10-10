@@ -111,27 +111,19 @@
     return set.sort(function(a, b){ return a - b; });
   }
 
-  /* ---- Drawing ------------------------------------------------------------ */
-  function mirror(d){ return d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, function(m, x, y){ return (200 - +x) + ' ' + y; }); }
-  var ARM = 'M58 78 L42 84 L30 150 L22 214 L18 240 L24 252 L34 250 L36 236 L44 196 L50 160 L60 122 Z';
-  var LEG_F = 'M60 214 L96 232 L96 300 L94 380 L96 404 L70 406 L72 384 L66 300 L60 250 Z';
-  var LEG_B = 'M58 232 L98 232 L96 300 L94 380 L96 404 L70 406 L72 384 L66 300 L60 258 Z';
-  var SHAPES = {
-    'head-f': ['E', 'M89 56 L111 56 L112 74 L88 74 Z'],
-    'head-b': ['E', 'M89 56 L111 56 L112 74 L88 74 Z'],
-    'chest': ['M60 76 Q100 68 140 76 L144 150 L56 150 Z'],
-    'abdomen': ['M56 150 L144 150 L140 214 L104 232 L96 232 L60 214 Z'],
-    'genitals': ['M92 222 L108 222 L104 238 L96 238 Z'],
-    'upback': ['M60 76 Q100 68 140 76 L144 150 L56 150 Z'],
-    'lowback': ['M56 150 L144 150 L142 232 L58 232 Z'],
-    // front view: the patient's right is on the viewer's left; back view: the reverse
-    'rarm-f': [ARM], 'larm-f': [mirror(ARM)], 'rleg-f': [LEG_F], 'lleg-f': [mirror(LEG_F)],
-    'larm-b': [ARM], 'rarm-b': [mirror(ARM)], 'lleg-b': [LEG_B], 'rleg-b': [mirror(LEG_B)]
-  };
-  var LABEL_AT = {
-    'head-f':[100,36], 'head-b':[100,36], 'chest':[100,116], 'abdomen':[100,186], 'genitals':[100,252],
-    'upback':[100,116], 'lowback':[100,196], 'rarm-f':[38,180], 'larm-f':[162,180], 'larm-b':[38,180], 'rarm-b':[162,180],
-    'rleg-f':[80,320], 'lleg-f':[120,320], 'lleg-b':[80,320], 'rleg-b':[120,320]
+  /* ---- Drawing ------------------------------------------------------------
+     The figures are the body map's own 3D model (BodyParts3D), rendered flat
+     by scripts/build-body-figures.mjs into assets/body-figs/ with each Rule of
+     Nines region measured from the skeleton: the neck line at the shoulders,
+     the arm lines from the acromion down the armpit, chest from abdomen at
+     T12/L1, the abdomen's lower edge on the inguinal line (ASIS to pubis), the
+     back's at the gluteal fold. assets/body-figures.js carries the paths. The
+     child figure has the child's proportions (bigger head, shorter legs).
+     Front view: the patient's right is on the viewer's left; back view: the
+     reverse. */
+  var PATH_OF = {
+    'head-f':'head', chest:'upper', abdomen:'lower', genitals:'genitals', 'rarm-f':'armL', 'larm-f':'armR', 'rleg-f':'legL', 'lleg-f':'legR',
+    'head-b':'head', upback:'upper', lowback:'lower', 'larm-b':'armL', 'rarm-b':'armR', 'lleg-b':'legL', 'rleg-b':'legR'
   };
   function el(tag, attrs, parent){
     var n = document.createElementNS(NS, tag);
@@ -139,22 +131,55 @@
     if(parent) parent.appendChild(n);
     return n;
   }
-  function drawFigure(svg, view, uid){
+  function figData(variant, view){
+    var F = window.LevlBodyFigs, f = F && F.figs[variant + '-' + view];
+    return f ? { f: f, url: F.url(f) } : null;
+  }
+  function drawFigure(svg, view, uid, variant){
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    var d = figData(variant, view);
+    if(!d){ svg.setAttribute('viewBox', '0 0 100 100'); return {}; }
+    var f = d.f;
+    svg.setAttribute('viewBox', '0 0 ' + f.w + ' ' + f.h);
     var defs = el('defs', {}, svg);
-    var pat = el('pattern', { id:'bnHalf' + uid, width:'7', height:'7', patternUnits:'userSpaceOnUse', patternTransform:'rotate(45)' }, defs);
-    el('rect', { width:'7', height:'7', class:'bn-half-bg' }, pat);
-    el('rect', { width:'3.4', height:'7', class:'bn-half-st' }, pat);
+    var clip = el('clipPath', { id:'bnClip' + uid }, defs); el('path', { d:f.outline }, clip);
+    var hitClip = el('clipPath', { id:'bnHit' + uid }, defs); el('path', { d:f.hitOutline }, hitClip);
+    // burned skin: a mottled tint (turbulence) over the figure's own shading
+    var flt = el('filter', { id:'bnBurn' + uid, x:'0', y:'0', width:'1', height:'1', 'color-interpolation-filters':'sRGB' }, defs);
+    el('feTurbulence', { type:'fractalNoise', baseFrequency:'0.06', numOctaves:'2', seed:'7', result:'n' }, flt);
+    el('feColorMatrix', { in:'n', type:'matrix', values:'0 0 0 0 0.42  0 0 0 0 0.06  0 0 0 0 0.03  0 0 0 -1.1 0.62', result:'m' }, flt);
+    el('feComposite', { in:'m', in2:'SourceGraphic', operator:'in', result:'mc' }, flt);
+    el('feMerge', {}, flt).append(el('feMergeNode', { in:'SourceGraphic' }), el('feMergeNode', { in:'mc' }));
+    svg._burn = 'bnBurn' + uid;
+    var pat = el('pattern', { id:'bnHalf' + uid, width:'22', height:'22', patternUnits:'userSpaceOnUse', patternTransform:'rotate(45)' }, defs);
+    el('rect', { width:'10', height:'22', class:'bn-half-st' }, pat);
+    el('image', { href: d.url, width:f.w, height:f.h, class:'bn-skin', 'aria-hidden':'true', preserveAspectRatio:'none' }, svg);
+    var paintLayer = el('g', { 'clip-path':'url(#bnClip' + uid + ')', 'aria-hidden':'true' }, svg);
+    el('path', { d:f.outline, class:'bn-outline', 'aria-hidden':'true' }, svg);
+    var hitLayer = el('g', {}, svg);
+    var labels = el('g', { 'aria-hidden':'true', class:'bn-labels' }, svg);
     var regs = {};
-    REGIONS.filter(function(r){ return r.view === view; }).forEach(function(r){
-      var g = el('g', { class:'bn-reg', 'data-region': r.id, role:'button', tabindex:'0' }, svg);
-      SHAPES[r.id].forEach(function(d){
-        if(d === 'E') el('ellipse', { cx:'100', cy:'32', rx:'22', ry:'26', class:'bn-shape' }, g);
-        else el('path', { d:d, class:'bn-shape' }, g);
+    // the genitals last, so their (larger) tap area sits over the abdomen and legs
+    REGIONS.filter(function(r){ return r.view === view; })
+      .sort(function(a, b){ return (a.id === 'genitals') - (b.id === 'genitals'); })
+      .forEach(function(r){
+        var key = PATH_OF[r.id];
+        var shape = el('path', { d:f.regions[key], class:'bn-shape' + (r.id === 'genitals' ? ' bn-shape--sm' : '') }, paintLayer);
+        var g = el('g', { class:'bn-reg', 'data-region': r.id, role:'button', tabindex:'0' }, hitLayer);
+        if(r.id === 'genitals') el('path', { d:f.regions.genitalHit, class:'bn-hit' }, g);
+        else el('path', { d:f.regions[key], class:'bn-hit', 'clip-path':'url(#bnHit' + uid + ')' }, g);
+        var at = f.anchors[key];
+        var t = el('text', { x:at[0], y:at[1], class:'bn-pct' + (r.id === 'genitals' ? ' bn-pct--sm' : ''), dy:'0.36em' }, labels);
+        if(r.id === 'genitals'){ t.setAttribute('x', at[0] + 34); }
+        regs[r.id] = { g:g, t:t, shape:shape };
       });
-      var at = LABEL_AT[r.id];
-      var t = el('text', { x:at[0], y:at[1], class:'bn-pct' + (r.id === 'genitals' ? ' bn-pct--sm' : '') }, g);
-      regs[r.id] = { g:g, t:t };
-    });
+    // the 1% label sits beside the groin with a leader, as small as the region is
+    var gl = regs.genitals;
+    if(gl){
+      var a = f.anchors.genitals;
+      el('path', { d:'M' + (a[0] + 9) + ' ' + a[1] + 'L' + (a[0] + 30) + ' ' + a[1], class:'bn-leader' }, labels);
+    }
+    svg._half = 'bnHalf' + uid;
     return regs;
   }
 
@@ -177,46 +202,65 @@
       '<div class="bn-bar">' +
         '<div class="bn-seg" role="group" aria-label="Patient">' +
           '<button type="button" data-age="adult">Adult</button><button type="button" data-age="child">Child</button></div>' +
-        '<div class="bn-seg" role="group" aria-label="Brush">' +
-          '<button type="button" data-brush="1">Full</button><button type="button" data-brush="0.5">Half</button><button type="button" data-brush="0">Erase</button></div>' +
-        '<button type="button" class="bn-clear">Clear</button>' +
         '<button type="button" class="bn-quiz" aria-pressed="false">Quiz me</button>' +
+        '<button type="button" class="bn-clear" hidden>Clear</button>' +
       '</div>' +
+      '<p class="bn-cue">Tap a region to mark it burned, or drag across several.</p>' +
       '<div class="bn-grid">' +
         '<div class="bn-figs">' +
-          '<figure class="bn-fig"><figcaption>Front</figcaption><svg viewBox="0 0 200 412" class="bn-svg" data-view="front" aria-label="Body, front. Each region is a button."></svg></figure>' +
-          '<figure class="bn-fig"><figcaption>Back</figcaption><svg viewBox="0 0 200 412" class="bn-svg" data-view="back" aria-label="Body, back. Each region is a button."></svg></figure>' +
+          '<figure class="bn-fig"><figcaption>Front</figcaption><svg class="bn-svg" data-view="front" aria-label="Body, front. Each region is a button."></svg></figure>' +
+          '<figure class="bn-fig"><figcaption>Back</figcaption><svg class="bn-svg" data-view="back" aria-label="Body, back. Each region is a button."></svg></figure>' +
+          '<p class="bn-credit">Figures rendered from <a href="https://lifesciencedb.jp/bp3d/" target="_blank" rel="noopener">BodyParts3D</a>, © 2008 Life Science Integrated Database Center, <a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en" target="_blank" rel="noopener">CC BY-SA 2.1 Japan</a>.</p>' +
         '</div>' +
         '<div class="bn-side">' +
           '<div class="bn-qpanel" hidden></div>' +
           '<div class="bn-total" aria-live="polite"><span class="bn-k">Total body surface area burned</span><span class="bn-num">0%</span><span class="bn-age"></span></div>' +
           '<div class="bn-info"></div>' +
           '<ul class="bn-list"></ul>' +
-          '<p class="bn-palm"><b>Palm rule.</b> The patient’s own palm, fingers included, is about 1% of their body surface. Use it for small or scattered burns the big regions do not fit.</p>' +
+          '<details class="bn-more"><summary>More options</summary><div class="bn-more-in">' +
+            '<div class="bn-seg" role="group" aria-label="Brush">' +
+              '<button type="button" data-brush="1">Full</button><button type="button" data-brush="0.5">Half</button><button type="button" data-brush="0">Erase</button></div>' +
+            '<p class="bn-palm"><b>Half</b> marks part of a region. <b>Palm rule.</b> The patient’s own palm, fingers included, is about 1% of their body surface. Use it for small or scattered burns the big regions do not fit.</p>' +
+          '</div></details>' +
         '</div>' +
       '</div>';
 
-    var regs = {};
-    ['front','back'].forEach(function(v, i){
-      var svg = root.querySelector('svg[data-view="' + v + '"]');
-      var r = drawFigure(svg, v, i + '' + Math.floor(Math.random() * 1e6));
-      for(var k in r) regs[k] = r[k];
-      // a hatch fill id per figure
-      svg._half = svg.querySelector('pattern').id;
-    });
+    var regs = {}, drawn = null;
+    function draw(){
+      var variant = st.child ? 'child' : 'adult';
+      if(drawn === variant || !figData(variant, 'front')) return;
+      drawn = variant; regs = {};
+      ['front','back'].forEach(function(v, i){
+        var svg = root.querySelector('svg[data-view="' + v + '"]');
+        var r = drawFigure(svg, v, i + '' + Math.floor(Math.random() * 1e6), variant);
+        for(var k in r) regs[k] = r[k];
+      });
+      REGIONS.forEach(function(r){
+        var x = regs[r.id]; if(!x) return;
+        var hot = function(on){ return function(){ x.shape.classList.toggle('is-hot', on); }; };
+        x.g.addEventListener('pointerenter', hot(true)); x.g.addEventListener('pointerleave', hot(false));
+        x.g.addEventListener('focus', hot(true)); x.g.addEventListener('blur', hot(false));
+        x.g.addEventListener('click', function(){ if(!moved) apply(r.id, st.brush, true); });
+        x.g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); apply(r.id, st.brush, true); } });
+      });
+    }
     var total$ = root.querySelector('.bn-num'), age$ = root.querySelector('.bn-age');
     var info = root.querySelector('.bn-info'), list = root.querySelector('.bn-list');
-    var qpanel = root.querySelector('.bn-qpanel');
+    var qpanel = root.querySelector('.bn-qpanel'), clearBtn = root.querySelector('.bn-clear'), cue = root.querySelector('.bn-cue');
 
     function paint(){
+      draw();
       REGIONS.forEach(function(r){
         var x = regs[r.id], m = st.marks[r.id] || 0;
+        if(!x) return;
         var shown = st.show && st.show.indexOf(r.id) >= 0;
-        x.g.classList.toggle('is-full', m === 1);
-        x.g.classList.toggle('is-half', m === 0.5);
-        x.g.classList.toggle('is-shown', !!shown);
-        var fill = m === 0.5 ? 'url(#' + x.g.ownerSVGElement._half + ')' : '';
-        x.g.querySelectorAll('.bn-shape').forEach(function(s){ s.style.fill = fill; });
+        [x.g, x.shape, x.t].forEach(function(n){
+          n.classList.toggle('is-full', m === 1);
+          n.classList.toggle('is-half', m === 0.5);
+          n.classList.toggle('is-shown', !!shown);
+        });
+        x.shape.style.fill = m === 0.5 ? 'url(#' + x.g.ownerSVGElement._half + ')' : '';
+        x.shape.style.filter = m ? 'url(#' + x.g.ownerSVGElement._burn + ')' : '';
         var p = pct(r.id, st.child);
         var hideNum = st.quiz && st.quiz.kind === 'estimate' && !st.answered;
         x.t.textContent = hideNum ? '' : fmt(p);
@@ -230,6 +274,7 @@
       root.querySelectorAll('[data-age]').forEach(function(b){ b.setAttribute('aria-pressed', (b.dataset.age === 'child') === st.child ? 'true' : 'false'); });
       root.querySelectorAll('[data-brush]').forEach(function(b){ b.setAttribute('aria-pressed', +b.dataset.brush === st.brush ? 'true' : 'false'); });
       var ids = REGIONS.filter(function(r){ return st.marks[r.id]; });
+      clearBtn.hidden = !ids.length || !!(st.quiz && (st.quiz.kind === 'estimate' || st.answered));
       list.innerHTML = ids.map(function(r){
         var m = st.marks[r.id];
         return '<li><span>' + esc(r.name) + (m === 0.5 ? ' <em>(half)</em>' : '') + '</span><b>' + fmt(pct(r.id, st.child) * m) + '%</b></li>';
@@ -288,11 +333,6 @@
       if(dragging && moved){ var t = total(st.marks, st.child); say(st.quiz ? 'Painted.' : 'Painted. Total ' + fmt(t) + ' percent.'); }
       dragging = false;
     });
-    REGIONS.forEach(function(r){
-      var g = regs[r.id].g;
-      g.addEventListener('click', function(){ if(!moved) apply(r.id, st.brush, true); });
-      g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); apply(r.id, st.brush, true); } });
-    });
 
     root.querySelectorAll('[data-age]').forEach(function(b){ b.addEventListener('click', function(){
       if(st.quiz) return;
@@ -313,7 +353,7 @@
     /* ---- quiz ---- */
     function lockAge(on){ root.querySelectorAll('[data-age]').forEach(function(b){ b.disabled = on; }); }
     function stopQuiz(){
-      st.quiz = null; st.answered = false; st.show = null; st.marks = {};
+      st.quiz = null; st.answered = false; st.show = null; st.marks = {}; cue.hidden = false;
       qpanel.hidden = true; quizBtn.setAttribute('aria-pressed', 'false'); quizBtn.textContent = 'Quiz me';
       lockAge(false); info.innerHTML = ''; paint();
     }
@@ -322,7 +362,7 @@
         .concat(PAINT.map(function(q){ return { id:q.id, kind:'paint', q:q }; }));
       var p = forceId ? pool.filter(function(x){ return x.id === forceId; })[0] : null;
       p = p || pick(pool, st.misses, st.quiz && st.quiz.id);
-      st.quiz = p; st.answered = false; st.show = null; st.marks = {};
+      st.quiz = p; st.answered = false; st.show = null; st.marks = {}; cue.hidden = true;
       st.child = p.q.child; lockAge(true);
       quizBtn.setAttribute('aria-pressed', 'true'); quizBtn.textContent = 'Stop the quiz';
       info.innerHTML = '';
@@ -422,7 +462,9 @@
     }
 
     paint();
-    info.innerHTML = '<p>Tap a region to mark it burned, or drag across the body to paint. <b>Half</b> marks part of a region. Each number is that region’s share of the body.</p>';
+    // the figures' data is fetched on first use; paint again when it lands
+    if(window.LevlBodyFigs) window.LevlBodyFigs.load('body', function(){ paint(); });
+    info.innerHTML = '<p>Each number is that region’s share of the body.</p>';
     if(opts.q && (ESTIMATE.concat(PAINT)).some(function(x){ return x.id === opts.q; })) nextQ(opts.q);
     return { quiz: nextQ, stop: stopQuiz };
   }

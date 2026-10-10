@@ -132,9 +132,12 @@
         (at + 2 < deck.length ? '<div class="gw-under gw-under2" aria-hidden="true"></div>' : '') +
         (at + 1 < deck.length ? '<div class="gw-under" aria-hidden="true"></div>' : '') +
         '<article class="gw-card" id="gwCard" tabindex="-1" aria-labelledby="gwQ">' +
-          '<div class="gw-drug"><span class="gw-pill">' + esc(c.drug) + '</span></div>' +
+          '<span class="gw-clip" aria-hidden="true"></span>' +
+          '<div class="gw-head"><span class="gw-ico" aria-hidden="true">' + drugIcon(c.drug) + '</span>' +
+            '<div><span class="gw-pill">' + esc(c.drug) + '</span><span class="gw-sub">Patient chart</span></div>' +
+            (ageOf(c.pt) ? '<span class="gw-age" aria-hidden="true"><b>' + ageOf(c.pt) + '</b>yr</span>' : '') + '</div>' +
           '<p class="gw-pt">' + esc(c.pt) + '</p>' +
-          '<dl class="gw-facts"><dt>Vitals</dt><dd class="gw-mono">' + esc(c.vitals) + '</dd>' +
+          '<dl class="gw-facts"><dt>Vitals</dt><dd class="gw-vit">' + vitalChips(c.vitals) + '</dd>' +
             '<dt>History</dt><dd>' + esc(c.hx) + '</dd><dt>Meds</dt><dd>' + esc(c.meds) + '</dd></dl>' +
           '<p class="gw-q" id="gwQ">Give ' + esc(c.drug.toLowerCase()) + ', or withhold it?</p>' +
           '<div class="gw-stamp" aria-hidden="true"></div>' +
@@ -148,6 +151,27 @@
       b.addEventListener('click', function(){ decide(b.getAttribute('data-gw') === '1'); });
     });
     swipe(document.getElementById('gwCard'));
+  }
+
+  /* Card art (visual polish 2026-10): a small drawing of each drug's form, the
+     patient's age as a badge, and the vitals as monitor-style chips. The text
+     is unchanged; the chips only split the same vitals line at its dots. */
+  var ICONS = {
+    'Aspirin': '<rect x="8" y="9" width="16" height="19" rx="3" class="gi-f"/><rect x="7" y="4" width="18" height="6" rx="1.6" class="gi-c"/><rect x="10" y="14" width="12" height="9" rx="1.5" class="gi-l"/><circle cx="16" cy="18.5" r="2.6" class="gi-c"/>',
+    'Nitroglycerin': '<rect x="10" y="6" width="12" height="22" rx="2.5" class="gi-f"/><rect x="9" y="3" width="14" height="5" rx="1.5" class="gi-c"/><path d="M13 12 h6 M13 16 h6" class="gi-s"/><circle cx="25" cy="24" r="3.2" class="gi-l"/><circle cx="25" cy="24" r="1.2" class="gi-c"/>',
+    'Oral glucose': '<path d="M9 5 h14 l-1 18 c0 3 -2 5 -6 5 c-4 0 -6 -2 -6 -5 z" class="gi-f"/><rect x="13" y="1.5" width="6" height="4" rx="1" class="gi-c"/><path d="M12 12 h8 M12.5 16 h7" class="gi-s"/>',
+    'Epinephrine': '<rect x="3" y="12" width="21" height="8" rx="4" class="gi-f"/><rect x="22" y="13.5" width="7" height="5" rx="1.5" class="gi-c"/><rect x="6" y="14" width="9" height="4" rx="1" class="gi-l"/><path d="M29 16 h2" class="gi-s"/>',
+    'Naloxone': '<rect x="11" y="14" width="10" height="15" rx="3" class="gi-f"/><path d="M13 14 l1.5 -9 h3 l1.5 9 z" class="gi-c"/><path d="M7 16 c0 -2 2 -3 4 -3 M25 16 c0 -2 -2 -3 -4 -3" class="gi-s"/>',
+    'Albuterol': '<path d="M12 4 h8 v14 h-8 z" class="gi-c"/><path d="M8 16 h16 v6 c0 3 -2 5 -5 5 h-6 c-3 0 -5 -2 -5 -5 z" class="gi-f"/><rect x="10" y="22" width="12" height="4" rx="1.5" class="gi-l"/>',
+    'Oxygen': '<rect x="10" y="8" width="12" height="21" rx="6" class="gi-f"/><rect x="13" y="3" width="6" height="6" rx="1.2" class="gi-c"/><path d="M19 5 h5" class="gi-s"/><rect x="12" y="15" width="8" height="7" rx="1" class="gi-l"/>'
+  };
+  function drugIcon(d){ return '<svg viewBox="0 0 32 32" width="32" height="32">' + (ICONS[d] || ICONS['Aspirin']) + '</svg>'; }
+  function ageOf(pt){ var m = /^(\d+)-year-old/.exec(pt); return m ? m[1] : ''; }
+  function vitalChips(v){
+    return String(v).split(/\s*·\s*/).map(function(part){
+      var m = /^(HR|BP|SpO₂|RR|Glucose)\s+(.*)$/.exec(part);
+      return m ? '<span class="gw-chip gw-c-' + m[1].replace(/[^A-Za-z]/g, '').toLowerCase() + '"><i>' + esc(m[1]) + '</i>' + esc(m[2]) + '</span>' : '<span class="gw-chip">' + esc(part) + '</span>';
+    }).join('<span class="sr-only"> · </span>');
   }
 
   function decide(give){
@@ -182,6 +206,7 @@
     why.querySelector('[data-show]').addEventListener('click', function(e){
       e.preventDefault();
       if(!dc) return;
+      var ref = document.getElementById('drugRef'); if(ref) ref.open = true; // the cards sit in a disclosure
       dc.classList.remove('gw-flash'); void dc.offsetWidth; dc.classList.add('gw-flash');
       if(line){ line.classList.remove('gw-mark'); void line.offsetWidth; line.classList.add('gw-mark'); }
       dc.scrollIntoView({ block: 'center', behavior: reduced() ? 'auto' : 'smooth' });

@@ -52,7 +52,7 @@
       "@id": "https://levlprep.com/ochem/tools/spectroscopy.html#tool",
       "name": "Spectroscopy Lab",
       "url": "https://levlprep.com/ochem/tools/spectroscopy.html",
-      "description": "An IR spectrum that explains its regions, a ¹H NMR predictor for any structure, and a puzzle mode.",
+      "description": "Read IR and ¹H NMR spectra peak by peak, then name the compound.",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Any",
       "browserRequirements": "Requires JavaScript",
@@ -130,6 +130,9 @@
     padding:10px 6px;margin-bottom:14px;overflow-x:auto;
   }
   .sp-chart svg{width:100%;height:auto;display:block;min-width:460px;}
+  /* The NMR panel sits beside the structure: it scales to its box so the whole 12 to 0 ppm axis shows on a phone. */
+  #spNMR svg{min-width:0;}
+  @media(max-width:560px){#spNMR .sp-axis{font-size:17px;}#spNMR .sp-int{font-size:17px;}}
   .sp-axis{font:700 9.5px var(--font-mono);fill:var(--muted);}
   .sp-int{font:800 10px var(--font-mono);fill:var(--muted);}
   .sp-peak,.sp-sig{cursor:pointer;}
@@ -177,7 +180,7 @@
 <div class="xshell">
   <div class="tool-top" id="tool-top">
 <!-- tool-top:start -->
-<div class="tool-topbar"><a class="tool-back" href="../tools.html">&larr; All tools</a><div class="tool-share" id="tool-share"></div></div><div class="tool-title"><span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 16c2 0 2-8 4-8s2 5 4 5 2-9 4-9 2 12 4 12 2-4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h1>Spectroscopy Lab</h1></div><p class="tool-lede">An IR spectrum that explains its regions, a ¹H NMR predictor for any structure, and a puzzle mode.</p>
+<div class="tool-topbar"><a class="tool-back" href="../tools.html">&larr; All tools</a><div class="tool-share" id="tool-share"></div></div><div class="tool-title"><span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 16c2 0 2-8 4-8s2 5 4 5 2-9 4-9 2 12 4 12 2-4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h1>Spectroscopy Lab</h1></div><p class="tool-lede">Read IR and ¹H NMR spectra peak by peak, then name the compound.</p>
 <!-- tool-top:end --></div>
   <div id="spRoot" class="tool-root"></div>
 

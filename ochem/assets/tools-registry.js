@@ -61,7 +61,7 @@
       name: 'Arrow Pusher',
       icon: ICONS.arrow,
       tagline: 'Draw a mechanism and watch what it makes.',
-      blurb: 'Push electrons on any molecule, or one you drew, and the structure changes to match.',
+      blurb: 'Draw curved arrows on a molecule and see the product they make.',
       teaches: 'Curved arrows, formal charge, octets',
       topic: ['curved-arrows', 'sn2', 'formal-charge'],
       terms: ['curved-arrow', 'formal-charge', 'octet-rule']
@@ -71,7 +71,7 @@
       name: 'Resonance Explorer',
       icon: ICONS.resonance,
       tagline: 'Find every valid resonance form, and rank them.',
-      blurb: 'Move a lone pair or a pi bond; the tool checks it and counts every valid form.',
+      blurb: 'Move electrons to find every resonance form of a molecule.',
       teaches: 'Delocalization, contributor weighting',
       topic: ['resonance', 'conjugate'],
       terms: ['resonance-structures', 'major-contributor', 'resonance-hybrid']
@@ -81,7 +81,7 @@
       name: '3D Molecule Viewer',
       icon: ICONS.cube,
       tagline: 'Rotate it until the shape stops being abstract.',
-      blurb: 'Type a formula or draw a structure and see its real shape, angles measured.',
+      blurb: 'Turn a molecule in 3D and see its real shape and bond angles.',
       teaches: 'VSEPR, hybridization, stereochemistry',
       topic: ['molecular-geometry', 'hybridization', 'bonding'],
       terms: ['vsepr-theory', 'hybridization', 'wedge-and-dash-notation']
@@ -91,7 +91,7 @@
       name: 'Conformation Lab',
       icon: ICONS.chair,
       tagline: 'Turn the bond. Watch the energy.',
-      blurb: 'Rotate a Newman projection against a live energy curve, or compare both cyclohexane chairs.',
+      blurb: 'Turn a bond and watch the energy change, or flip a cyclohexane chair.',
       teaches: 'Torsional strain, A-values, chair flips',
       topic: ['conformational-analysis', 'newman', 'ring-flips'],
       terms: ['newman-projection', 'torsional-strain', 'gauche', 'a-value']
@@ -101,7 +101,7 @@
       name: 'Reaction Predictor',
       icon: ICONS.flask,
       tagline: 'SN1, SN2, E1 or E2 — and why, factor by factor.',
-      blurb: 'Substrate, reagent, solvent. Commit to a prediction, then see the four factors that decide it.',
+      blurb: 'Pick a substrate and a reagent and see whether it goes SN1, SN2, E1 or E2.',
       teaches: 'Substitution vs. elimination',
       topic: ['sn1', 'sn2', 'e1', 'e2'],
       terms: ['sn1-reaction', 'sn2-reaction', 'e1-reaction', 'e2-reaction']
@@ -111,7 +111,7 @@
       name: 'Acid/Base Comparator',
       icon: ICONS.scale,
       tagline: 'Two structures. Which proton comes off first?',
-      blurb: 'Compare acids, rank four at once, or find which proton comes off first, from measured pKa.',
+      blurb: 'Find which acid gives up its proton more easily, and why.',
       teaches: 'pKa, conjugate base stability',
       topic: ['acidity-factors', 'pka', 'conjugate'],
       terms: ['pka', 'ario', 'conjugate-acid-base-pair', 'inductive-effect']
@@ -121,7 +121,7 @@
       name: 'Spectroscopy Lab',
       icon: ICONS.wave,
       tagline: 'Read the peaks, name the compound.',
-      blurb: 'An IR spectrum that explains its regions, a ¹H NMR predictor for any structure, and a puzzle mode.',
+      blurb: 'Read IR and ¹H NMR spectra peak by peak, then name the compound.',
       teaches: 'IR, ¹H NMR, degrees of unsaturation',
       topic: ['ir', 'h-nmr', 'mass-spec'],
       terms: ['wavenumber', 'fingerprint-region', 'chemical-shift', 'degree-of-unsaturation']
@@ -131,7 +131,7 @@
       name: 'Reagent Roadmap',
       icon: ICONS.route,
       tagline: 'From any functional group to any other, with the reagents.',
-      blurb: 'Pick a start and a target for the shortest routes, step by step, or look up what any reagent does.',
+      blurb: 'Find the reagents that turn one functional group into another.',
       teaches: 'Functional group interconversion, reagents, synthesis',
       topic: ['functional-group-interconversion', 'multistep-synthesis', 'retrosynthesis'],
       terms: ['functional-group-interconversion', 'retrosynthesis', 'synthon']

@@ -91,6 +91,7 @@
       if(st) st.redraw();
       figureFirst(app);
       tidyAbout(app);
+      simplify(app, slug);
     }).catch(function(e){
       if(window.console) console.error(e);
       app.innerHTML = '<p class="bio-soon" role="alert">The tool could not load. Check your connection and reload the page.</p>';
@@ -117,7 +118,7 @@
     app.querySelectorAll('.bt-card').forEach(function(card){
       var stage = null, ctl = null;
       Array.prototype.forEach.call(card.children, function(k){
-        if(!stage && k.classList.contains('bt-stage')) stage = k;
+        if(!stage && k.classList.contains('bt-stage') && !k.classList.contains('bt-num')) stage = k;
         if(!stage && !ctl && /\b(bt-controls|bt-modes|bt-ctl)\b/.test(k.className)) ctl = k;
       });
       if(!stage || !ctl) return;
@@ -125,6 +126,109 @@
       card.insertBefore(stage, ctl);
       if(key && key.tagName === 'P' && key.classList.contains('bt-small') && !key.classList.contains('bt-runnote')) card.insertBefore(key, ctl);
     });
+  }
+  /* Simple first, depth on demand (2026-10-09 simplify pass). For every
+     simulator card:
+     - More options: a .bt-controls[data-primary="n"] shows its first n
+       controls; a "More options" button after it reveals the rest and any
+       .bt-more block in the card. CSS only, so tools that rebuild their
+       controls keep working.
+     - Split: a card with a .bt-hero (its live figure) gets a .bt-split
+       wrapper: the hero in one column, the controls beside it on a wide
+       screen. The hero is sticky only inside that wrapper, so it can never
+       slide over what follows (the old layout let it cover the readouts).
+     - Show the numbers: readouts, equations, the summary, graphs (.bt-num),
+       trial buttons, the run note and data tables move, in order, into one
+       closed disclosure at the end of the card. Open state is remembered.
+     - Why?: a long .os-why explanation is clamped to two lines with a
+       "Why?" button to read the rest (screen readers get it all).
+     Elements are moved, never copied, so tools' querySelector lookups and
+     hidden toggles still find them. */
+  function store(k, v){ try{ if(v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); }catch(e){} return null; }
+  function simplify(app, slug){
+    app.querySelectorAll('.bt-card').forEach(function(card){
+      foldControls(card);
+      splitHero(card);
+      numbers(card, slug);
+      card.querySelectorAll('.os-why').forEach(clampWhy);
+    });
+  }
+  function foldControls(card){
+    var ctl = card.querySelector('.bt-controls[data-primary]');
+    if(!ctl) return;
+    ctl.id = ctl.id || nid('more');
+    card.classList.add('bt-folded');
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'bt-btn bt-moreopt'; b.setAttribute('aria-expanded', 'false');
+    b.setAttribute('aria-controls', ctl.id);
+    b.innerHTML = '<span class="bt-moreopt-t">More options</span> <span aria-hidden="true">▾</span>';
+    ctl.parentNode.insertBefore(b, ctl.nextSibling);
+    b.addEventListener('click', function(){
+      var open = card.classList.toggle('bt-folded') === false;
+      b.setAttribute('aria-expanded', String(open));
+      b.querySelector('.bt-moreopt-t').textContent = open ? 'Fewer options' : 'More options';
+    });
+  }
+  function splitHero(card){
+    var hero = null;
+    Array.prototype.forEach.call(card.children, function(k){ if(!hero && k.classList.contains('bt-hero')) hero = k; });
+    if(!hero) return;
+    var side = [], k = hero.nextElementSibling, seenCtl = false;
+    while(k){
+      if(seenCtl && !k.classList.contains('bt-moreopt')) break;
+      if(!k.matches(NUM_SEL)) side.push(k);
+      if(k.classList.contains('bt-controls')) seenCtl = true;
+      k = k.nextElementSibling;
+    }
+    if(!seenCtl) side = [];
+    var wrap = document.createElement('div'), a = document.createElement('div'), b = document.createElement('div');
+    wrap.className = 'bt-split'; a.className = 'bt-split-fig'; b.className = 'bt-split-side';
+    card.insertBefore(wrap, hero);
+    a.appendChild(hero);
+    side.forEach(function(x){ b.appendChild(x); });
+    wrap.appendChild(a); wrap.appendChild(b);
+  }
+  var NUM_SEL = '.bt-readout, .bt-eqs, .bt-summary, .bt-buttons, .bt-runnote, .bt-data, .bt-num';
+  function numbers(card, slug){
+    var items = Array.prototype.filter.call(card.children, function(k){ return k.matches(NUM_SEL); });
+    if(!items.some(function(k){ return k.classList.contains('bt-readout'); })) return;
+    var d = document.createElement('details'), key = 'apbio_numbers_' + slug;
+    d.className = 'bt-numbers';
+    d.innerHTML = '<summary><span class="bt-numbers-h">Show the numbers</span> <span class="bt-numbers-sub">readouts, graphs, equations and trials</span></summary><div class="bt-numbers-body"></div>';
+    var body = d.querySelector('.bt-numbers-body');
+    items.forEach(function(x){ body.appendChild(x); });
+    card.appendChild(d);
+    // A mode that hides every item (a quiz) hides the disclosure too.
+    function sync(){ d.hidden = items.every(function(x){ return x.hidden || x.classList.contains('bt-runnote'); }); }
+    items.forEach(function(x){ if(window.MutationObserver) new MutationObserver(sync).observe(x, { attributes: true, attributeFilter: ['hidden'] }); });
+    sync();
+    if(store(key) === '1') d.open = true;
+    d.addEventListener('toggle', function(){ store(key, d.open ? '1' : '0'); });
+  }
+  function clampWhy(el){
+    if(el.getAttribute('data-clamp')) return;
+    el.setAttribute('data-clamp', '1');
+    el.classList.add('bt-clamp');
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'bt-whymore'; b.hidden = true; b.setAttribute('aria-expanded', 'false');
+    b.textContent = 'Why? Read the rest';
+    el.parentNode.insertBefore(b, el.nextSibling);
+    var open = false;
+    function check(){
+      if(open){ b.hidden = false; return; }
+      b.hidden = !(el.textContent.trim() && el.scrollHeight > el.clientHeight + 4);
+    }
+    b.addEventListener('click', function(){
+      open = !open; el.classList.toggle('is-open', open);
+      b.textContent = open ? 'Show less' : 'Why? Read the rest'; b.setAttribute('aria-expanded', String(open));
+      check();
+    });
+    if(window.MutationObserver) new MutationObserver(function(){
+      open = false; el.classList.remove('is-open'); b.textContent = 'Why? Read the rest'; b.setAttribute('aria-expanded', 'false');
+      requestAnimationFrame(check);
+    }).observe(el, { childList: true, characterData: true, subtree: true });
+    if(window.ResizeObserver) new ResizeObserver(function(){ check(); }).observe(el);
+    requestAnimationFrame(check);
   }
   /* The intro and the "How this model works" box, folded into one closed
      disclosure after the tool and before its questions, so a phone opens on
@@ -296,11 +400,11 @@
     if(cats) cats.forEach(function(c, i){ p.push('<text class="tick" x="' + sx(i).toFixed(1) + '" y="' + (T + ph + 18) + '" text-anchor="middle">' + esc(c) + '</text>'); });
     else ticks(s.x).forEach(function(v){ p.push('<line class="grid" y1="' + T + '" y2="' + (T + ph) + '" x1="' + sx(v).toFixed(1) + '" x2="' + sx(v).toFixed(1) + '"/><text class="tick" x="' + sx(v).toFixed(1) + '" y="' + (T + ph + 18) + '" text-anchor="middle">' + F(v, decimalsOf(s.x.step)) + '</text>'); });
     if(s.y.min < 0 && s.y.max > 0) p.push('<line class="zero" x1="' + L + '" x2="' + (L + pw) + '" y1="' + sy(0).toFixed(1) + '" y2="' + sy(0).toFixed(1) + '"/>');
-    p.push('<line class="axis" x1="' + L + '" y1="' + (T + ph) + '" x2="' + (L + pw) + '" y2="' + (T + ph) + '"/><line class="axis" x1="' + L + '" y1="' + T + '" x2="' + L + '" y2="' + (T + ph) + '"/>');
+    p.push('<line class="axis" x1="' + L + '" y1="' + (T + ph) + '" x2="' + (L + pw) + '" y2="' + (T + ph) + '"/><line class="axis y" x1="' + L + '" y1="' + T + '" x2="' + L + '" y2="' + (T + ph) + '"/>');
     if(s.vline) p.push('<line class="vline ' + (s.vline.cls || '') + '" x1="' + sx(s.vline.x).toFixed(1) + '" x2="' + sx(s.vline.x).toFixed(1) + '" y1="' + T + '" y2="' + (T + ph) + '"/>');
     (s.bars || []).forEach(function(b, i){
       var bw = Math.min(70, pw / cats.length * 0.55), x = sx(i) - bw / 2, y0 = sy(Math.max(0, s.y.min)), y1 = sy(b.value);
-      p.push('<rect class="bar ' + (b.cls || 's1') + '" x="' + x.toFixed(1) + '" y="' + Math.min(y0, y1).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + Math.abs(y1 - y0).toFixed(1) + '"/>');
+      p.push('<path class="bar ' + (b.cls || 's1') + '" d="' + barPath(x, Math.min(y0, y1), bw, Math.abs(y1 - y0), y1 <= y0) + '"/>');
       if(b.err) p.push(errBar(sx(i), clampY(b.value + b.err), clampY(b.value - b.err)));
     });
     (s.curves || []).forEach(function(c){
@@ -316,6 +420,12 @@
     p.push('<text class="lbl" x="' + (L + pw / 2) + '" y="' + (H - 10) + '" text-anchor="middle">' + lab(s.x) + '</text>');
     p.push('<text class="lbl" transform="translate(15 ' + (T + ph / 2) + ') rotate(-90)" text-anchor="middle">' + lab(s.y) + '</text>');
     return '<svg class="bio-svg bt-plot" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(s.title || 'Graph') + '">' + p.join('') + '</svg>';
+  }
+  /* A bar with rounded data-end (top for positive, bottom for negative) and a square base on the baseline. */
+  function barPath(x, y, w, h, up){
+    var r = Math.min(4, w / 2, Math.abs(h)); if(!(h > 0)) return 'M' + x.toFixed(1) + ' ' + y.toFixed(1) + 'h' + w.toFixed(1);
+    if(up === false) return 'M' + x.toFixed(1) + ' ' + y.toFixed(1) + 'h' + w.toFixed(1) + 'v' + (h - r).toFixed(1) + 'q0 ' + r + ' ' + (-r) + ' ' + r + 'h' + (-(w - 2 * r)).toFixed(1) + 'q' + (-r) + ' 0 ' + (-r) + ' ' + (-r) + 'z';
+    return 'M' + x.toFixed(1) + ' ' + (y + h).toFixed(1) + 'v' + (-(h - r)).toFixed(1) + 'q0 ' + (-r) + ' ' + r + ' ' + (-r) + 'h' + (w - 2 * r).toFixed(1) + 'q' + r + ' 0 ' + r + ' ' + r + 'v' + (h - r).toFixed(1) + 'z';
   }
   function errBar(x, y1, y2){ return '<path class="err" d="M' + x.toFixed(1) + ' ' + y1.toFixed(1) + 'V' + y2.toFixed(1) + 'M' + (x - 6).toFixed(1) + ' ' + y1.toFixed(1) + 'h12M' + (x - 6).toFixed(1) + ' ' + y2.toFixed(1) + 'h12"/>'; }
   function niceMax(v){ if(v <= 0) return 1; var p = Math.pow(10, Math.floor(Math.log10(v))); var ms = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10]; for(var i = 0; i < ms.length; i++) if(v <= ms[i] * p + 1e-9) return ms[i] * p; return 10 * p; }
@@ -541,7 +651,7 @@
 
   window.ApBioTools = {
     esc: esc, F: F, nid: nid, mount: mount, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
-    plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,
+    plot: plot, barPath: barPath, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,
     record: record, report: report, event: event, questions: questions, frq: frq, skillTool: skillTool,
     gradePart: gradePart, partHtml: partHtml, unitOf: unitOf
   };

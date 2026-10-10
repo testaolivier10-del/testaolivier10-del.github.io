@@ -233,12 +233,18 @@
      first graphs in list order, within ?chapter= / ?topic=, with something
      not yet answered right; #all is the full list. The picker above the item
      reaches every graphs. */
-  function ordered(){
-    var q = params(), want = q.chapter || (q.topic && topicInfo(q.topic) ? topicInfo(q.topic).chapter : '');
+  // Every graph in course order (chapter, then topic): the picker's order.
+  function sortedAll(){
     var order = cur().chapters.map(function(c){ return c.id; }), topicOrder = cur().topics.map(function(t){ return t.id; });
-    var all = DATA.graphs.slice().sort(function(a, b){
+    return DATA.graphs.slice().sort(function(a, b){
       return order.indexOf(chapterOf(a)) - order.indexOf(chapterOf(b)) || topicOrder.indexOf(a.topic) - topicOrder.indexOf(b.topic);
     });
+  }
+  // "Next graph": the next one in that order, inside ?chapter= when set.
+  function nextOf(g){ var list = ordered(); if(list.indexOf(g) < 0) list = sortedAll(); return list[(list.indexOf(g) + 1) % list.length]; }
+  function ordered(){
+    var q = params(), want = q.chapter || (q.topic && topicInfo(q.topic) ? topicInfo(q.topic).chapter : '');
+    var all = sortedAll();
     var inCh = all.filter(function(x){ return chapterOf(x) === want; });
     return inCh.length ? inCh : all;
   }
@@ -252,8 +258,7 @@
     var host = app.querySelector('.pw-pickhost'), K = window.AnpToolKit;
     if(!host || !K) return;
     var chapters = [];
-    var all = DATA.graphs.slice(), order = cur().chapters.map(function(c){ return c.id; }), topicOrder = cur().topics.map(function(t){ return t.id; });
-    all.sort(function(a, b){ return order.indexOf(chapterOf(a)) - order.indexOf(chapterOf(b)) || topicOrder.indexOf(a.topic) - topicOrder.indexOf(b.topic); });
+    var all = sortedAll();
     all.forEach(function(x){ var c = chapterOf(x); if(chapters.indexOf(c) < 0) chapters.push(c); });
     K.picker(host, {
       label: 'Graph', noun: 'graphs', current: g.id, allHref: '#all', allLabel: 'All graphs by chapter',
@@ -464,8 +469,7 @@
   }
 
   function showGraph(g, qk, wantMode){
-    var idx = DATA.graphs.indexOf(g);
-    var next = DATA.graphs[(idx + 1) % DATA.graphs.length];
+    var next = nextOf(g);
     var hasRegions = (g.regions || []).some(function(r){ return !r.show && r.x1 - r.x0 > 0; });
     var tried = g.questions.some(function(q){ return status(itemId(g, q)) !== 'new'; });
     var mode = wantMode || (qk != null || tried ? 'quiz' : 'explore');
@@ -474,14 +478,15 @@
       '<div class="pw-pickhost"></div>' +
       '<h2 class="pw-title" tabindex="-1">' + esc(g.title) + '</h2>' +
       '<p class="anp-small pw-meta">Topic: ' + topicLink(g.topic) + ' · ' + g.questions.length + ' questions</p>' +
-      '<p class="pw-intro">' + html(g.intro) + '</p>' +
-      '<div class="gr-modes" role="tablist" aria-label="Mode">' +
+      (K() ? K().about('<p>' + html(g.intro) + '</p>', 'About this graph') : '<p class="pw-intro">' + html(g.intro) + '</p>') +
+      '<div class="gr-modes kt-seg" role="tablist" aria-label="Mode">' +
         '<button type="button" role="tab" class="gr-mode" id="gr-tab-explore" aria-controls="gr-panel" data-m="explore">Explore</button>' +
         '<button type="button" role="tab" class="gr-mode" id="gr-tab-quiz" aria-controls="gr-panel" data-m="quiz">Quiz <span class="gr-mode-n">' + nRight + '/' + g.questions.length + '</span></button>' +
       '</div>' +
+      '<p class="kt-first gr-first"></p>' +
       '<div class="gr-layout"><div class="gr-figcol"><figure class="anp-fig gr-fig"></figure>' +
       '<div class="gr-scrub"><label class="gr-scrub-l" for="gr-x">' + esc(g.x.label) + '</label><input type="range" id="gr-x" class="gr-range"></div>' +
-      (hasRegions ? '<p class="gr-tools"><button type="button" class="btn-outline gr-toggle" aria-pressed="false">Show phases and regions</button></p>' : '') +
+      (hasRegions ? (K() ? K().more('<p class="gr-tools"><button type="button" class="btn-outline gr-toggle" aria-pressed="false">Show phases and regions</button></p>') : '<p class="gr-tools"><button type="button" class="btn-outline gr-toggle" aria-pressed="false">Show phases and regions</button></p>') : '') +
       '</div><div class="gr-qcol" id="gr-panel" role="tabpanel"></div></div>' +
       '<p class="pw-next"><a class="btn-outline" href="#' + esc(next.id) + '">Next graph: ' + esc(next.title) + ' →</a></p></div>';
     addPicker(g);
@@ -514,28 +519,48 @@
       while(L.firstChild) L.removeChild(L.firstChild);
       if(!cursorOn || cursorX == null) return;
       var px = c.sx(cursorX);
+      /* Cursor (visual polish 2026-10): a hairline with a drag handle on top,
+         a guide from each reading to the y axis, and a value pill per reading;
+         with a condition on, an arrow from the old reading to the new one. */
       L.appendChild(el('line', { x1: px, x2: px, y1: MT - 4, y2: c.plotBottom, 'class': 'gr-cur-line' }));
+      var pills = [], pts = [];
       g.panels.forEach(function(p, k){
+        var shiftedOf = {};
+        if(active) (active.overlay.series || []).forEach(function(os){ var b = GM.pairOf(g, os); if((os.panel || 0) === k && b) shiftedOf[b.id] = os; });
         visibleSeries(k).forEach(function(s){
           readAt(s, cursorX).forEach(function(y){
             if(y < Math.min(p.y.min, p.y.max) - 1e-9 || y > Math.max(p.y.min, p.y.max) + 1e-9) return;
-            L.appendChild(el('circle', { cx: px, cy: c.sy(k, y), r: 4.5, 'class': 'gr-cur-dot gr-dot-' + s.cls }));
+            var cy = c.sy(k, y);
+            L.appendChild(el('line', { x1: ML, x2: px, y1: cy, y2: cy, 'class': 'gr-cur-guide' }));
+            pts.push({ cy: cy, s: s, y: y, k: k });
+            var so = shiftedOf[s.id];
+            if(so){ var ny = readAt(so, cursorX); if(ny.length === 1 && Math.abs(c.sy(k, ny[0]) - cy) > 10) L.appendChild(el('path', { d: 'M' + (px + 7) + ' ' + cy + ' C' + (px + 18) + ' ' + cy + ' ' + (px + 18) + ' ' + c.sy(k, ny[0]) + ' ' + (px + 8) + ' ' + c.sy(k, ny[0]), 'class': 'gr-cur-shift', 'marker-end': 'url(#anp-head-causes)' })); }
           });
         });
       });
-      var tx = Math.min(W - MR - 4, Math.max(ML + 4, px));
-      var tag = el('text', { x: tx, y: c.plotBottom + (cats ? 0 : 0) - 6, 'text-anchor': px > W - MR - 50 ? 'end' : px < ML + 50 ? 'start' : 'middle', 'class': 'gr-cur-tag' }, xText(cursorX));
-      L.appendChild(tag);
-      L.appendChild(el('rect', { x: px - 9, y: MT - 12, width: 18, height: 12, rx: 6, 'class': 'gr-cur-grip' }));
-      /* The cursor's x readout sits on the same baseline as a region's name
-         ("normal blood pH"); where they would overlap, the region name steps
-         up a line so both stay readable. */
+      pts.forEach(function(q){
+        L.appendChild(el('circle', { cx: px, cy: q.cy, r: 9, 'class': 'gr-cur-halo gr-dot-' + q.s.cls }));
+        L.appendChild(el('circle', { cx: px, cy: q.cy, r: 4.5, 'class': 'gr-cur-dot gr-dot-' + q.s.cls }));
+      });
+      // value pills, on the side with more room, nudged apart so they never overlap
+      var right = px < ML + (W - ML - MR) * 0.62, boxes = [];
+      pts.sort(function(a, b){ return a.cy - b.cy; });
+      var lastY = -1e9;
+      pts.forEach(function(q){
+        var txt = fmt(q.y) + unitText(unitY(q.k)), w = txt.length * 6.6 + 12, y = Math.max(q.cy, lastY + 20); lastY = y;
+        var x = right ? px + 12 : px - 12 - w;
+        L.appendChild(el('rect', { x: x, y: y - 9, width: w, height: 18, rx: 9, 'class': 'gr-cur-pill gr-pill-' + q.s.cls }));
+        L.appendChild(el('text', { x: x + w / 2, y: y + 4, 'text-anchor': 'middle', 'class': 'gr-cur-pillt' }, txt));
+        boxes.push({ x: x, y: y - 9, width: w, height: 18 });
+      });
+      /* A region's name ("normal blood pH") under a value pill steps up a
+         line so both stay readable. (This used to measure an
+         x readout tag that no longer exists, so it never ran.) */
       try{
-        var tb = tag.getBBox();
         c.svg.querySelectorAll('.gr-rlabel').forEach(function(t){
           t.removeAttribute('transform');
           var b = t.getBBox();
-          var hit = b.x < tb.x + tb.width + 4 && tb.x < b.x + b.width + 4 && b.y < tb.y + tb.height && tb.y < b.y + b.height;
+          var hit = boxes.some(function(tb){ return b.x < tb.x + tb.width + 2 && tb.x < b.x + b.width + 2 && b.y < tb.y + tb.height && tb.y < b.y + b.height; });
           if(hit) t.setAttribute('transform', 'translate(0 -16)');
         });
       }catch(e){}
@@ -574,6 +599,9 @@
       mode = m;
       tabs.forEach(function(b){ var on = b.getAttribute('data-m') === m; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; if(on && focus) b.focus(); });
       panelEl.setAttribute('aria-labelledby', 'gr-tab-' + m);
+      app.querySelector('.gr-first').textContent = m === 'explore'
+        ? 'Drag along the graph to read every curve' + (conditions(g).length ? ', then tap a What if to shift it.' : '.')
+        : 'Answer the question beside the graph.';
       fig.classList.toggle('is-explore', m === 'explore');
       c.clear(); clearCond(true);
       if(m === 'explore') explore(); else { cursorOn = false; drawCursor(); quiz(); }
@@ -615,7 +643,17 @@
        is drawn from its own points. Reduced motion: the end state at once. */
     function morph(into, k, base, os, my){
       var fb = base && GM.seriesFn(base), fo = GM.seriesFn(os);
-      function finish(tmp){ if(my !== animId) return; if(tmp && tmp.parentNode) tmp.parentNode.removeChild(tmp); var d = c.series(into, into, k, os); if(d.path) d.path.classList.add('gr-shifted'); }
+      function finish(tmp){ if(my !== animId) return; if(tmp && tmp.parentNode) tmp.parentNode.removeChild(tmp); shade(); var d = c.series(into, into, k, os); if(d.path) d.path.classList.add('gr-shifted'); }
+      // the gap the shift opens between the two curves, lightly shaded
+      function shade(){
+        if(!fb || !fo) return;
+        var a = Math.max(base.pts[0][0], os.pts[0][0]), b = Math.min(base.pts[base.pts.length - 1][0], os.pts[os.pts.length - 1][0]);
+        if(!(b > a)) return;
+        var top = [], bot = [];
+        for(var i = 0; i <= 80; i++){ var x = a + (b - a) * i / 80; top.push([c.sx(x), c.sy(k, fb(x))]); bot.push([c.sx(x), c.sy(k, fo(x))]); }
+        var d = 'M' + top.map(function(q){ return q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join(' L') + ' L' + bot.reverse().map(function(q){ return q[0].toFixed(1) + ' ' + q[1].toFixed(1); }).join(' L') + 'Z';
+        into.insertBefore(el('path', { d: d, 'class': 'gr-shift-area gr-sa-' + os.cls, 'clip-path': 'url(#' + c.clipId + '-' + k + ')' }), into.firstChild);
+      }
       if(!fb || !fo || reduced()) return finish(null);
       var x0 = Math.max(base.pts[0][0], os.pts[0][0]), x1 = Math.min(base.pts[base.pts.length - 1][0], os.pts[os.pts.length - 1][0]);
       if(!(x1 > x0)) return finish(null);
@@ -636,7 +674,6 @@
     function explore(){
       var conds = conditions(g);
       panelEl.innerHTML = '<div class="gr-ex">' +
-        '<p class="gr-kind">Explore · drag along the graph</p>' +
         '<div class="gr-read" aria-live="polite"></div>' +
         (conds.length ? '<h3 class="gr-ex-h">What if…</h3><div class="gr-conds" role="group" aria-label="Conditions that shift the curve">' + conds.map(function(q, i){
           return '<button type="button" class="gr-cond-b" aria-pressed="false" data-i="' + i + '">' + esc(condLabel(q)) + '</button>';
@@ -686,7 +723,7 @@
             showCond(q);
             var at = keyX(q);
             if(at != null) setCursor(at); else readout(cursorX);
-            whyEl.innerHTML = '<p class="gr-why-q">' + html(q.q) + '</p><p>' + html(q.why.correct) + '</p>';
+            whyEl.innerHTML = '<p class="gr-why-q">' + html(q.q) + '</p>' + (K() ? K().why('<p>' + html(q.why.correct) + '</p>') : '<p>' + html(q.why.correct) + '</p>');
           } else { clearCond(); readout(cursorX); whyEl.innerHTML = ''; }
         });
       });
@@ -772,7 +809,7 @@
           input.classList.add(ok ? 'is-right' : 'is-wrong');
           var first = after(ok);
           fb.innerHTML = verdict(ok, first) + '<p>' + (ok ? 'You read ' + fmt(v) + unitText(q.unit) + '; the graph reads about ' : 'You read ' + fmt(v) + unitText(q.unit) + '. The graph reads about ') +
-            '<b>' + fmt(q.answer) + unitText(q.unit) + '</b> (anything within ' + fmt(q.tol) + ' counts). ' + html(q.why) + '</p>';
+            '<b>' + fmt(q.answer) + unitText(q.unit) + '</b> (anything within ' + fmt(q.tol) + ' counts).</p>' + whyBox(q.why);
           if(q.show){
             var k = q.show.panel || 0, x = c.sx(q.show.x), y = c.sy(k, q.show.y);
             var base = c.tops[k] + c.hs[k];
@@ -802,7 +839,7 @@
         });
         body.querySelectorAll('.gr-place button').forEach(function(x){ x.disabled = true; });
         var first = after(ok);
-        fb.innerHTML = verdict(ok, first) + (how ? '<p class="gr-how">' + how + '</p>' : '') + '<p>' + html(q.why.correct) + '</p>';
+        fb.innerHTML = verdict(ok, first) + (how ? '<p class="gr-how">' + how + '</p>' : '') + whyBox(q.why.correct);
         if(q.type === 'phase') highlight(q.highlight);
         else if(place) settleGhost(place, q);
         else overlay(q.overlay);
@@ -925,6 +962,9 @@
     if(booted){ var h = app.querySelector('.pw-title'); if(h) h.focus(); }
   }
 
+  function K(){ return window.AnpToolKit && window.AnpToolKit.why ? window.AnpToolKit : null; }
+  // the explanation after an answer: one tap away under "Why?"
+  function whyBox(h){ return K() ? K().why('<p>' + html(h) + '</p>') : '<p>' + html(h) + '</p>'; }
   function verdict(ok, first){
     return '<p class="pw-verdict ' + (ok ? 'ok' : 'no') + '"><b>' + (ok ? 'Correct.' : 'Not quite.') + '</b> ' +
       (first ? (ok ? '' : 'Added to your review queue.') : '<span class="anp-small">Already scored this visit.</span>') + '</p>';

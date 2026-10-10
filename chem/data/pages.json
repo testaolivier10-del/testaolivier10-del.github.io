@@ -52,7 +52,7 @@
    "h1": "Justification trainer",
    "title": "Justification trainer",
    "desc": "Chemistry explain and justify practice: write an answer, check it against a rubric, and compare an answer that earns the point with one that does not.",
-   "lede": "Free-response points are lost on vague reasons. Write your answer, check it against the rubric, then see one answer that earns the point and one that sounds right but does not, and why.",
+   "lede": "Write an explain or justify answer, then check it against the rubric and two model answers.",
    "card": "Explain and justify prompts with a rubric checklist and two model answers.",
    "script": "pages/justify.js",
    "css": [
@@ -133,7 +133,7 @@
    "name": "Particle diagrams",
    "title": "Particle diagram trainer",
    "desc": "Choose the right particle picture: water around ions, limiting reactants, equilibrium counts, and strong against weak acids, with feedback on each wrong one.",
-   "blurb": "Water around ions, limiting reactants, equilibrium counts and acid strength, drawn particle by particle."
+   "blurb": "Water around ions, limiting reactants, equilibrium counts and acid strength, drawn particle by particle.", "lede": "Build and read particle pictures of reactions, one particle at a time."
   },
   {
    "slug": "ice-table-drills",
@@ -141,7 +141,7 @@
    "name": "ICE table drills",
    "title": "ICE table drills",
    "desc": "Unlimited ICE table problems: find K, find equilibrium amounts with small x and the 5% check, and perfect squares, checked row by row.",
-   "blurb": "Build the I, C and E rows step by step; every slip gets its own feedback."
+   "blurb": "Build the I, C and E rows step by step; every slip gets its own feedback.", "lede": "Set up and solve ICE tables, and watch Q close in on K."
   },
   {
    "slug": "q-vs-k",
@@ -150,7 +150,7 @@
    "name": "Q vs K",
    "title": "Q vs K trainer",
    "desc": "Calculate Q from concentrations, pressures or a particle picture, compare it with K, predict the shift and pick the justification that earns the point.",
-   "blurb": "Q from numbers or particles, the direction of the shift, and the wording that earns the point."
+   "blurb": "Q from numbers or particles, the direction of the shift, and the wording that earns the point.", "lede": "Change a mixture and see which way it shifts to reach equilibrium."
   },
   {
    "slug": "titration-curve-reader",
@@ -158,7 +158,7 @@
    "name": "Titration curve reader",
    "title": "Titration curve reader",
    "desc": "Read titration curves computed from the equilibrium math: equivalence and half-equivalence points, pKa, indicator choice and the species present.",
-   "blurb": "Equivalence, half-equivalence and pKa, indicator choice and the species at each point."
+   "blurb": "Equivalence, half-equivalence and pKa, indicator choice and the species at each point.", "lede": "Add titrant from the burette and watch the pH curve and the flask change."
   },
   {
    "slug": "buffer-drills",
@@ -167,7 +167,7 @@
    "name": "Buffer and Henderson-Hasselbalch drills",
    "title": "Buffer and Henderson-Hasselbalch drills",
    "desc": "Unlimited buffer problems: Henderson-Hasselbalch pH, the ratio for a target pH, added strong acid or base, and capacity, with feedback on ln and log.",
-   "blurb": "Buffer pH, target ratios, added acid or base and capacity, checked step by step."
+   "blurb": "Buffer pH, target ratios, added acid or base and capacity, checked step by step.", "lede": "Add acid or base to a buffer and see why its pH barely moves."
   },
   {
    "slug": "units-sig-figs",
@@ -175,7 +175,7 @@
    "name": "Units and significant figures",
    "title": "Units and significant figures checker",
    "desc": "Calculation habits graded on value, units and significant figures: J and kJ, Celsius and kelvin, the right R, and the rules for multiplying and adding.",
-   "blurb": "Value, unit and significant figures graded separately, with a note on every slip."
+   "blurb": "Value, unit and significant figures graded separately, with a note on every slip.", "lede": "Set up a calculation so the units cancel, then report the right significant figures."
   }
  ]
 }

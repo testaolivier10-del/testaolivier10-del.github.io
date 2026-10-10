@@ -20,7 +20,11 @@
   var CL = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
   var QW = 260, QH = 260, QX = 8, QY = 8;
 
-  function icon(k, x, y, r){
+  /* One organism: its drawing (ApBioArt) in the species color when there
+     is one for the name, else a colored shape. */
+  function icon(k, x, y, r, name){
+    var A = window.ApBioArt;
+    if(A && name && A.has(name)) return A.icon(name, x, y, r * 3.3, 'sd-o ' + CL[k % 8]);
     var c = 'sd-i ' + CL[k % 8], s = SH[k % 8];
     if(s === 'c') return '<circle class="' + c + '" cx="' + x + '" cy="' + y + '" r="' + r + '"/>';
     if(s === 'q') return '<rect class="' + c + '" x="' + (x - r) + '" y="' + (y - r) + '" width="' + 2 * r + '" height="' + 2 * r + '" rx="1.5"/>';
@@ -39,13 +43,13 @@
     spots = r.shuffle(out);
     return spots;
   }
-  function quadrat(counts){
-    var g = grid(), N = M.sum(counts), r = N > 160 ? 4.6 : N > 90 ? 5.6 : 6.6, h = ['<rect class="sd-q" x="' + QX + '" y="' + QY + '" width="' + QW + '" height="' + QH + '" rx="6"/>'], k = 0;
+  function quadrat(counts, names){
+    var g = grid(), N = M.sum(counts), r = N > 160 ? 4.6 : N > 90 ? 5.6 : 6.6, h = ['<rect class="sd-q" x="' + QX + '" y="' + QY + '" width="' + QW + '" height="' + QH + '" rx="6"/>', '<path class="sd-qgrid" d="M' + (QX + QW / 2) + ' ' + QY + 'V' + (QY + QH) + 'M' + QX + ' ' + (QY + QH / 2) + 'H' + (QX + QW) + '"/>'], k = 0;
     // interleave species so each is scattered: species by organism index
     var order = [];
     var left = counts.slice();
     while(order.length < Math.min(N, g.length)){ for(var s = 0; s < left.length; s++) if(left[s] > 0){ order.push(s); left[s]--; } }
-    order.forEach(function(sp, i){ h.push(icon(sp, +g[i][0].toFixed(1), +g[i][1].toFixed(1), r)); });
+    order.forEach(function(sp, i){ h.push(icon(sp, +g[i][0].toFixed(1), +g[i][1].toFixed(1), r, names && names[sp])); });
     if(N > g.length) h.push('<text class="sk-ph" x="' + (QX + 4) + '" y="' + (QY + QH + 14) + '">' + g.length + ' of ' + N + ' shown</text>');
     return h.join('');
   }
@@ -82,8 +86,8 @@
     function present(){ return counts.filter(function(n){ return n > 0; }); }
     function render(){
       var c = present(), s = c.length ? M.simpson(c) : null, D = s ? s.D : 0;
-      S.redraw(fig, '<svg class="bio-svg" viewBox="0 0 400 290" role="img" aria-label="' + esc('Quadrat with ' + counts.map(function(n, k){ return n + ' ' + names[k]; }).filter(function(t){ return !/^0 /.test(t); }).join(', ') + '. D = ' + F(D, 2) + '.') + '">' + quadrat(counts) + meter(counts, D, null) + '</svg>');
-      rows.innerHTML = names.map(function(nm, k){ return '<span class="sk-stp"><svg class="sd-sw" viewBox="0 0 20 20" aria-hidden="true">' + icon(k, 10, 10, 6.5) + '</svg><span class="sk-stpn">' + esc(nm) + '</span><button type="button" class="bt-step" data-i="' + k + '" data-d="-1" aria-label="One fewer ' + esc(nm) + '">−</button><b>' + counts[k] + '</b><button type="button" class="bt-step" data-i="' + k + '" data-d="1" aria-label="One more ' + esc(nm) + '">+</button></span>'; }).join('');
+      S.redraw(fig, '<svg class="bio-svg" viewBox="0 0 400 290" role="img" aria-label="' + esc('Quadrat with ' + counts.map(function(n, k){ return n + ' ' + names[k]; }).filter(function(t){ return !/^0 /.test(t); }).join(', ') + '. D = ' + F(D, 2) + '.') + '">' + quadrat(counts, names) + meter(counts, D, null) + '</svg>');
+      rows.innerHTML = names.map(function(nm, k){ return '<span class="sk-stp"><svg class="sd-sw" viewBox="0 0 20 20" aria-hidden="true">' + icon(k, 10, 10, 6.5, nm) + '</svg><span class="sk-stpn">' + esc(nm) + '</span><button type="button" class="bt-step" data-i="' + k + '" data-d="-1" aria-label="One fewer ' + esc(nm) + '">−</button><b>' + counts[k] + '</b><button type="button" class="bt-step" data-i="' + k + '" data-d="1" aria-label="One more ' + esc(nm) + '">+</button></span>'; }).join('');
       out.innerHTML = S.readout([['Species', String(c.length)], ['N', String(M.sum(counts))], ['Σ(n/N)²', s ? F(s.sumSq, 3) : '–'], ['D', F(D, 2)]]);
       return { D: D, N: M.sum(counts), k: c.length };
     }
@@ -119,12 +123,12 @@
   function stage(host, s){
     var x = s.input, a = s.answers || {}, chk = s.phase === 'checked', counts = x.species.map(function(sp){ return sp.n; }), sim = M.simpson(counts);
     var Dm = S.num(a.D);
-    var svg = '<svg class="bio-svg" viewBox="0 0 400 290" role="img" aria-label="' + esc('Quadrat with ' + x.species.map(function(sp){ return sp.n + ' ' + sp.name; }).join(', ') + '.' + (chk ? ' D = ' + F(sim.D, 2) + '.' : '')) + '">' + quadrat(counts) + meter(counts, chk ? sim.D : null, isFinite(Dm) ? Dm : null) + '</svg>';
+    var svg = '<svg class="bio-svg" viewBox="0 0 400 290" role="img" aria-label="' + esc('Quadrat with ' + x.species.map(function(sp){ return sp.n + ' ' + sp.name; }).join(', ') + '.' + (chk ? ' D = ' + F(sim.D, 2) + '.' : '')) + '">' + quadrat(counts, x.species.map(function(sp){ return sp.name; })) + meter(counts, chk ? sim.D : null, isFinite(Dm) ? Dm : null) + '</svg>';
     var big = 0; counts.forEach(function(n, k){ if(n > counts[big]) big = k; });
     var cap = chk ? 'The colored blocks on the meter are each species’ (n/N)²; D is the outlined part left over. ' + esc(x.species[big].name) + ' has the biggest block: the more one species dominates, the lower D.'
       : isFinite(Dm) ? 'Your D is marked on the meter. Does it fit the picture? A quadrat dominated by one species should score low; an even mix of many species, high.'
       : 'One icon per organism counted (each species its own shape). Before you calculate: does this look diverse? Type D and it is marked on the meter.';
-    var key = '<p class="sd-key">' + x.species.map(function(sp, k){ return '<span><svg class="sd-sw" viewBox="0 0 20 20" aria-hidden="true">' + icon(k, 10, 10, 6.5) + '</svg>' + esc(sp.name) + ' ' + sp.n + '</span>'; }).join('') + '</p>';
+    var key = '<p class="sd-key">' + x.species.map(function(sp, k){ return '<span><svg class="sd-sw" viewBox="0 0 20 20" aria-hidden="true">' + icon(k, 10, 10, 6.5, sp.name) + '</svg>' + esc(sp.name) + ' ' + sp.n + '</span>'; }).join('') + '</p>';
     S.redraw(host, '<div class="sk-fig">' + svg + '</div>' + key + '<p class="sk-cap">' + cap + '</p>');
   }
 

@@ -37,7 +37,7 @@
     }
     g.forEach(function(x, i){
       var c = cx(i), y = sy(x.mean), e = iv[i];
-      p.push('<rect class="bar ' + (i ? 's2' : 's1') + ' ci-bar" x="' + (c - bw / 2).toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + (TP + ph - y).toFixed(1) + '"/>');
+      p.push('<path class="bar ' + (i ? 's2' : 's1') + ' ci-bar" d="' + T.barPath(c - bw / 2, y, bw, TP + ph - y) + '"/>');
       p.push('<path class="err ci-err" d="M' + c.toFixed(1) + ' ' + sy(e.hi).toFixed(1) + 'V' + sy(e.lo).toFixed(1) + 'M' + (c - 9).toFixed(1) + ' ' + sy(e.hi).toFixed(1) + 'h18M' + (c - 9).toFixed(1) + ' ' + sy(e.lo).toFixed(1) + 'h18"/>');
       p.push('<text class="tick" x="' + c.toFixed(1) + '" y="' + (TP + ph + 17) + '" text-anchor="middle">' + esc(x.name) + '</text>');
       if(o.marks) p.push('<text class="ci-v" x="' + (c + 13).toFixed(1) + '" y="' + (sy(e.hi) + 4).toFixed(1) + '">' + F(e.hi, o.d) + '</text><text class="ci-v" x="' + (c + 13).toFixed(1) + '" y="' + (sy(e.lo) + 4).toFixed(1) + '">' + F(e.lo, o.d) + '</text>');

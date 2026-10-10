@@ -77,7 +77,7 @@
     var lastPos = {};
     function drawTree(tree, root, o){
       o = o || {};
-      var leaves = P.leaves(root), rowH = 36, top = 26, L = 14, W = o.w || 600, labelW = W < 460 ? 132 : 150, plotW = W - L - 24 - labelW, dna = tree.kind === 'dna';
+      var TA = window.ApBioArt, leaves = P.leaves(root), rowH = 36, top = 26, L = 14, W = o.w || 600, labelW = W < 460 ? 160 : 176, plotW = W - L - 24 - labelW, dna = tree.kind === 'dna';
       var maxD = Math.max.apply(null, leaves.map(function(n){ return dna ? n.dist : n.depth; })) || 1;
       var H = top + leaves.length * rowH + (dna ? 40 : 4);
       var pos = new Map();
@@ -115,7 +115,7 @@
       });
       leaves.forEach(function(n){
         var a = pos.get(n), s = (o.sel || []).indexOf(n.name) >= 0, m = (o.miss || []).indexOf(n.name) >= 0;
-        p.push('<g class="tr-tipg' + (s ? ' sel' : '') + '" data-tip="' + esc(n.name) + '" role="button" tabindex="0" aria-pressed="' + s + '" aria-label="' + esc(nameOf(tree, n.name)) + (s ? ', selected' : '') + '"><rect class="tr-thit" x="' + (a.x + 2).toFixed(1) + '" y="' + (a.y - 15).toFixed(1) + '" width="' + (W - a.x - 4).toFixed(1) + '" height="30" rx="8"/><text class="tr-tip' + (s ? ' sel' : '') + (m ? ' miss' : '') + '" x="' + (a.x + 8).toFixed(1) + '" y="' + (a.y + 5).toFixed(1) + '">' + (s ? '✓ ' : m ? '✗ ' : '') + esc(nameOf(tree, n.name)) + '</text></g>');
+        p.push('<g class="tr-tipg' + (s ? ' sel' : '') + '" data-tip="' + esc(n.name) + '" role="button" tabindex="0" aria-pressed="' + s + '" aria-label="' + esc(nameOf(tree, n.name)) + (s ? ', selected' : '') + '"><rect class="tr-thit" x="' + (a.x + 2).toFixed(1) + '" y="' + (a.y - 15).toFixed(1) + '" width="' + (W - a.x - 4).toFixed(1) + '" height="30" rx="8"/>' + (TA && TA.has(nameOf(tree, n.name)) ? TA.icon(nameOf(tree, n.name), a.x + 18, a.y, 26, 'tr-o') : '') + '<text class="tr-tip' + (s ? ' sel' : '') + (m ? ' miss' : '') + '" x="' + (a.x + (TA && TA.has(nameOf(tree, n.name)) ? 36 : 8)).toFixed(1) + '" y="' + (a.y + 5).toFixed(1) + '">' + (s ? '✓ ' : m ? '✗ ' : '') + esc(nameOf(tree, n.name)) + '</text></g>');
       });
       if(dna){
         var unitPx = plotW / maxD, sy = H - 14;

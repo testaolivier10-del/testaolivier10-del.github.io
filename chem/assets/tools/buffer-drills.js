@@ -44,11 +44,10 @@
     host.innerHTML = '<section class="bt-problem bf-card" aria-labelledby="bf-h"><div class="tx-head"><h2 id="bf-h" class="bf-title"></h2><p class="bt-small bf-setup"></p></div>' +
       '<div class="bf-stage"><div class="bf-beaker"></div>' +
       '<div class="bf-side"><div class="bf-btns"><button type="button" class="bf-add bf-oh" data-d="1">+ OH⁻<span class="bf-u">NaOH</span></button><button type="button" class="bf-add bf-h" data-d="-1">+ H₃O⁺<span class="bf-u">HCl</span></button></div>' +
-      '<div class="bf-plot"></div></div></div>' +
-      '<div class="bf-why" aria-hidden="true"></div>' +
-      '<div class="bt-pick bf-pick"></div>' +
-      '<p class="bt-small bf-scale"><span class="bf-per"></span> Na⁺, Cl⁻ and water are not drawn. The meter shows the exact pH (water\'s own ions included); the line above it is the method the exam expects.</p></section>';
-    var pick = host.querySelector('.bf-pick');
+      '<div class="bf-why"></div><div class="bf-plot"></div></div></div>' +
+      T.moreHtml('<div class="bt-pick bf-pick"></div><p class="bt-small bf-scale"><span class="bf-per"></span> Na⁺, Cl⁻ and water are not drawn. The meter shows the exact pH (water\'s own ions included); the line under "Why?" is the method the exam expects.</p>', 'another buffer, amounts, start over') + '</section>';
+    var pick = host.querySelector('.bf-pick'), start = T.cue('Tap + OH⁻ or + H₃O⁺ to add a little strong base or acid.');
+    host.querySelector('.bf-side').insertBefore(start.el, host.querySelector('.bf-btns'));
     function inline(s){ s.el.classList.add('bt-inline'); return s.el; }
     pick.appendChild(inline(T.choiceSelect({ label: 'Buffer', options: ctxs.map(function(c, i){ return { value: i, label: names(c).name }; }), value: 0, onChange: function(v){ ci = +v; reset(); } })));
     pick.appendChild(inline(T.choiceSelect({ label: 'Amount of each form', options: [{ value: 5, label: '5 mmol (0.050 M)' }, { value: 10, label: '10 mmol (0.10 M)' }, { value: 20, label: '20 mmol (0.20 M)' }], value: 10, onChange: function(v){ size = +v; reset(); } })));
@@ -75,7 +74,9 @@
       var prev = hist.length > 1 ? st(hist[hist.length - 2]) : null, d = prev ? s.pH - prev.pH : 0;
       var added = mm(Math.abs(b)), what = b > 0 ? added + ' mmol OH⁻' : b < 0 ? added + ' mmol H₃O⁺' : '';
       beaker.update({ counts: counts, pH: s.pH, note: acted ? (d >= 0 ? 'pH rose by ' : 'pH fell by ') + F(Math.abs(d), 2) + '.' : '' });
-      host.querySelector('.bf-why').innerHTML = why(s, d, acted, what);
+      if(acted) start.done();
+      var w = why(s, d, acted, what);
+      T.explain(host.querySelector('.bf-why'), w.head, w.body);
       plot(s);
       var lim = 16 * step() - 1e-9;
       host.querySelector('.bf-oh').disabled = b >= lim;
@@ -103,7 +104,7 @@
       }
       var exact = Math.abs(s.pH - s.pHmethod) > 0.02 ? ' (the exact pH, with water\'s own ions, is ' + F(s.pH, 2) + ')' : '';
       var water = b ? ' The same ' + what + ' in 100 mL of pure water: pH ' + F(s.water, 2) + '.' : '';
-      return '<p class="tx-where"><b>' + head + '</b> ' + out + '<span class="bf-calc">' + calc + exact + '.</span>' + water + '</p>';
+      return { head: '<b>' + head + '</b>', body: '<p>' + out + '</p><p class="bf-calc">' + calc + exact + '.</p>' + (water ? '<p>' + water.trim() + '</p>' : '') };
     }
     function plot(s){
       var u = size / 10, lim = 16 * u, seen = hist.map(function(h){ return Math.round(h / step()); });

@@ -113,3 +113,11 @@ reactions (JACI). Monitor functions, sbpLow and the flowchart reasons run in nod
 | Reference slider stops and band edges | correct | table |
 | Mnemonic fill-the-letters answers; scenario links (s1, s2, s7, s8, s12, s13, s15, s19, s22) all use the framework | correct | case text |
 | Build-it reasons: a box that ends several arms (START "IMMEDIATE (red)" x4, SMR "indicated" x3) was always explained against its first copy, so a correct-looking alternative arm got a wrong reason ("answers a different question" when it was the same question) | **fixed**: explained against the same question's arm and says it has other homes; test added | flowcharts.html |
+
+## Visual polish (2026-10): the patient figure
+
+"Assess the patient" draws the body map's model rendered flat (`scripts/build-body-figures.mjs`; child figure under
+12), with regions from the skeleton, a flip to the back view, and labelled callouts for regions with findings (coral
+when new; a limb finding naming a side points at that limb). The back view's region (`back`) matches only the body's
+back, buttocks or spine, not "back blows" (test in `scripts/test/nremt-cases.test.mjs`). Figure data loads on demand
+(`assets/body-figures.js` loader); nremt shell budget 16.5 -> 19.5 KB, reason in `scripts/check-weight.mjs`.

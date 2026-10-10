@@ -120,8 +120,7 @@ a.pc-tag:hover{text-decoration:underline;color:var(--ink);}
   .pc-var{grid-template-columns:1fr;}
   .pc-dir{display:grid;grid-template-columns:repeat(3,1fr);}
   .pc-dir button{padding:7px 4px;white-space:normal;font-size:13px;}
-  .pc-progress{grid-template-columns:auto 1fr;}
-  .pc-progress .pc-quit{grid-column:1 / -1;justify-self:start;}
+  .pc-progress{gap:10px;}   /* "End session" stays on the progress row */
   .pc-title{font-size:19px;}
 }
 
@@ -141,21 +140,29 @@ a.pc-tag:hover{text-decoration:underline;color:var(--ink);}
 .pc-gauge.has-call .pc-gauge-s{color:var(--cink);}
 .pc-gauge.is-ok{border-color:var(--good);}
 .pc-gauge.is-no{border-color:var(--bad);}
-.pc-dial{width:78px;height:46px;overflow:visible;}
-.pc-dial-arc{fill:none;stroke:var(--line);stroke-width:7;stroke-linecap:round;}
-.pc-dial-lo{fill:none;stroke:var(--anp-lo);stroke-width:7;stroke-linecap:round;opacity:.35;}
-.pc-dial-hi{fill:none;stroke:var(--anp-hi);stroke-width:7;stroke-linecap:round;opacity:.35;}
-.pc-dial-base{stroke:var(--muted);stroke-width:2;}
+.pc-dial{width:84px;height:50px;overflow:visible;}
+.pc-bezel{fill:var(--line);}
+.pc-face{fill:var(--paper);}
+:root[data-theme="dark"] .pc-face{fill:#121A18;}
+.pc-dial-arc{fill:none;stroke:var(--line);stroke-width:6;stroke-linecap:butt;opacity:.7;}
+.pc-dial-lo{fill:none;stroke:var(--anp-lo);stroke-width:6;opacity:.3;transition:opacity .3s;}
+.pc-dial-hi{fill:none;stroke:var(--anp-hi);stroke-width:6;opacity:.3;transition:opacity .3s;}
+.pc-tk{stroke:var(--muted);stroke-width:.9;stroke-linecap:round;opacity:.7;}
+.pc-tk.big{stroke:var(--ink);stroke-width:1.5;opacity:.8;}
+.pc-dial-base{stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;}
 .pc-dial-t{font:900 10px var(--font-ui);fill:var(--muted);}
 .pc-needle,.pc-ghost{transform-origin:42px 44px;transform-box:view-box;transition:transform .7s cubic-bezier(.3,1.4,.5,1);}
-.pc-needle path{stroke:var(--ink);stroke-width:3;stroke-linecap:round;}
+.pc-needle .pc-nd{fill:var(--ink);stroke:none;filter:drop-shadow(0 1px 1px rgba(0,0,0,.25));}
 .pc-needle circle{fill:var(--ink);}
-.pc-ghost path{stroke:var(--cink);stroke-width:2.5;stroke-dasharray:3 3;stroke-linecap:round;}
+.pc-needle .pc-cap{fill:var(--paper);}
+.pc-glass{fill:#fff;opacity:.22;pointer-events:none;}
+:root[data-theme="dark"] .pc-glass{opacity:.05;}
+.pc-ghost path{stroke:var(--cink);stroke-width:2.2;stroke-dasharray:3 3;stroke-linecap:round;}
 .pc-ghost{opacity:0;}
 .has-call .pc-ghost{opacity:1;}
 .pc-gauge.m-up .pc-dial-hi,.pc-gauge.m-down .pc-dial-lo{opacity:1;}
-.pc-gauge.m-up .pc-needle path{stroke:var(--anp-hi);} .pc-gauge.m-up .pc-needle circle{fill:var(--anp-hi);}
-.pc-gauge.m-down .pc-needle path{stroke:var(--anp-lo);} .pc-gauge.m-down .pc-needle circle{fill:var(--anp-lo);}
+.pc-gauge.m-up .pc-needle .pc-nd,.pc-gauge.m-up .pc-needle circle:not(.pc-cap){fill:var(--anp-hi);}
+.pc-gauge.m-down .pc-needle .pc-nd,.pc-gauge.m-down .pc-needle circle:not(.pc-cap){fill:var(--anp-lo);}
 .pc-feed{list-style:none;margin:0;padding:10px 12px;border-radius:12px;background:var(--white);display:flex;flex-direction:column;gap:5px;max-height:420px;overflow:auto;}
 .pc-feed li{display:flex;align-items:center;gap:6px;font:700 13.5px/1.4 var(--font-ui);animation:pc-in .35s ease-out both;}
 .pc-f-node{padding:4px 9px;border-radius:9px;background:var(--paper);}

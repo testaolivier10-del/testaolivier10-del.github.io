@@ -60,8 +60,24 @@
   .mn-call{font:800 12.5px var(--font-ui);color:var(--accent-text);text-decoration:none;border-bottom:2px solid var(--tint-accent);display:inline-block;padding:10px 0 4px;}
   .mn-call:hover{border-bottom-color:var(--accent);}
   .card.is-testing .row .mn-hide{display:none;}
-  .mn-in{flex:1;min-width:0;max-width:260px;min-height:40px;font:700 15px var(--font-ui);padding:6px 10px;border:2px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);}
-  .mn-in:focus{outline:none;border-color:var(--accent);}
+  /* Self-check (visual polish 2026-10): letters become keycap tiles, answers are written on a
+     ruled line, and a segmented meter tracks the letters. */
+  .card.is-testing .breakdown .row,.breakdown .row.mn-r-ok,.breakdown .row.mn-r-no{align-items:center;}
+  .card.is-testing .breakdown .letter,.breakdown .mn-r-ok .letter,.breakdown .mn-r-no .letter{display:grid;place-items:center;width:34px;height:36px;border-radius:9px;
+    background:var(--white);border:2px solid var(--line);box-shadow:0 3px 0 var(--line);font:800 17px var(--font-mono);transition:background .2s,border-color .2s,color .2s;}
+  .card.is-testing .row:focus-within .letter{border-color:var(--accent);box-shadow:0 3px 0 var(--accent);background:var(--tint-accent);}
+  .breakdown .mn-r-ok .letter{background:var(--tint-good);border-color:var(--good-text);box-shadow:0 3px 0 var(--good-text);color:var(--good-text);}
+  .breakdown .mn-r-no .letter{background:var(--tint-bad);border-color:var(--bad-text);box-shadow:0 3px 0 var(--bad-text);color:var(--bad-text);}
+  .breakdown .row input.mn-in:not([type="checkbox"]):not([type="radio"]):not([type="range"]){flex:1;min-width:0;max-width:280px;min-height:40px;font:700 15px var(--font-ui);padding:6px 4px 4px;
+    border:0;border-radius:0;background:transparent;box-shadow:inset 0 -2px 0 var(--line);color:var(--ink);transition:box-shadow .2s;}
+  .mn-in::placeholder{color:var(--muted);opacity:.6;}
+  .breakdown .row input.mn-in:not([type="checkbox"]):not([type="radio"]):focus{outline:none;box-shadow:inset 0 -2.5px 0 var(--accent);}
+  .card.is-testing .breakdown .row{border-bottom-color:transparent;}
+  .mn-meter{display:none;gap:3px;align-items:center;}
+  .mn-tools.is-on .mn-meter{display:inline-flex;}
+  .mn-meter i{width:14px;height:8px;border-radius:3px;background:var(--line);transition:background .2s;}
+  .mn-meter i.fill{background:var(--accent);opacity:.55;}
+  .mn-meter i.ok{background:var(--good-text);} .mn-meter i.no{background:var(--bad-text);}
   .mn-mark{flex:none;align-self:flex-start;font:800 11.5px var(--font-mono);padding:2px 8px;border-radius:999px;max-width:40%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .mn-mark.ok{background:var(--tint-good);color:var(--good-text);}
   .mn-mark.no{background:var(--tint-bad);color:var(--bad-text);}
@@ -75,10 +91,11 @@
 
   /* Phones: a compact hero, so the interactive part starts on the first screen. */
   @media (max-width:640px){
-    .hero{padding:20px;}
-    .hero h1{font-size:26px;margin-bottom:8px;}
-    .hero .lede{font-size:14.5px;line-height:1.5;}
+    .page-head{padding:18px 20px;}
+    .page-head h1{font-size:24px;margin-bottom:4px;}
+    .page-head .lede{font-size:14px;}
   }
+  .mn-cue{margin:18px 0 0;font:800 15px var(--font-ui);color:var(--ink);}
 </style>
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
@@ -138,11 +155,12 @@
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="xshell">
 
-  <div class="hero">
-    <div class="eyebrow">Key EMT mnemonics</div>
-    <h1>The frameworks the questions are built on.</h1>
-    <p class="lede">The core assessment frameworks.</p>
+  <div class="page-head">
+  <div class="eyebrow">Tools</div>
+  <h1>Key EMT Mnemonics</h1>
+  <p class="lede">The core EMT mnemonics, letter by letter.</p>
   </div>
+  <p class="mn-cue">Read a card, then press <b>Fill the letters</b> to test yourself on it.</p>
 
   <div class="xsection">
   <div class="mnemonics-grid">

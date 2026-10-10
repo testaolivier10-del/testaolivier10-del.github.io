@@ -97,3 +97,41 @@ test('timing zones hold their own extra sound and miss S1', () => {
     assert.ok(!q.zone(0, ev), `${q.id} zone includes S1`);
   }
 });
+
+test('each lung finding opens at its classic site and says so plainly elsewhere', () => {
+  const { P } = load();
+  const site = id => P.SITES.find(s => s.id === id);
+  assert.equal(P.defaultSite({ id: 'stridor' }).id, 'trachea');
+  assert.equal(P.defaultSite({ id: 'crackles' }).id, 'back-rl', 'crackles: posterior base');
+  assert.equal(site(P.defaultSite({ id: 'crackles' }).id).level, 'lower');
+  assert.equal(P.defaultSite({ id: 'wheeze' }).kind, 'lung');
+  assert.ok(!P.assessedHere({ id: 'stridor' }, site('lung-ll')), 'stridor is not assessed at the left base');
+  assert.match(P.notHere({ id: 'stridor' }, site('lung-ll')), /heard best over the trachea; here it is faint and transmitted/);
+  assert.ok(P.assessedHere({ id: 'stridor' }, site('trachea')));
+  for (const id of ['lung-ll', 'back-lu']) assert.ok(P.LUNG_GAIN.stridor(site(id)) <= 0.4, `stridor at ${id} is only transmitted`);
+  // every where-to-listen answer is a site where its sound is assessed
+  for (const q of P.WHERE) for (const id of q.ok) {
+    const snd = q.sound.startsWith('heart') ? { synth: 'x' } : { id: q.sound };
+    assert.ok(P.assessedHere(snd, site(id)), `${q.id}: ${id}`);
+  }
+});
+
+test('heart strip and audio share one timing table at every listening site', () => {
+  const { Bank, P } = load();
+  const sr = 4000;
+  for (const k of KINDS) {
+    const ev = Bank.heartEvents(k, 72);
+    for (const site of P.SITES.filter(s => s.kind === 'heart')) {
+      const mix = P.heartMix(k, site);
+      const d = Bank.heartData(k, 72, 2, mix, sr);
+      // beat 2: the loudest sample of each event window sits right after its scheduled time
+      for (const p of ev.points) {
+        const part = { S1: mix.s1, S2: mix.s2, A2: mix.s2, P2: (mix.p2 ?? 1) * mix.s2, S3: mix.extra, S4: mix.extra }[p.key];
+        if (!(part > 0.2)) continue;
+        const i = Math.floor((ev.cycle + p.at) * sr), before = Math.max(...Array.from(d.slice(Math.max(0, i - 40), i - 4), Math.abs));
+        const after = Math.max(...Array.from(d.slice(i, i + 60), Math.abs));
+        assert.ok(after > before, `${k} at ${site.id}: ${p.key} not at ${p.at}s`);
+      }
+    }
+  }
+});

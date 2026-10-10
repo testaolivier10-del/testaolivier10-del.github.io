@@ -135,7 +135,12 @@ const SHELL_BUDGETS = [
      page the largest measure of this shell. The other new tool scripts
      (flow-build, formulary-cards, vitals-check, mnemonic-check) load only on
      their own pages and are smaller. */
-  ['nremt', 16.5],
+  /* 16.5 -> 21 (visual polish 2026-10): the scenario sim's patient is the body
+     map's own model rendered flat (body-figures.js loader 0.8 KB, scenario-monitor.js
+     +2.2 KB; figure data and images fetched on demand), plus illustrated tool visuals
+     drawn inline (bedside monitor traces, drug icons, age pictograms, phonocardiogram,
+     about +1 KB). Re-measured after merging both. */
+  ['nremt', 21],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with
@@ -231,7 +236,10 @@ const SHELL_BUDGETS = [
      titles (step-back.js). Measured 109.9 KB. */
   /* 110.5 -> 111: shared classes in session-runner.js and the free line (W-C). */
   /* 111 -> 112: atomic masses in periodic-table.js (also loaded by AP Chemistry). */
-  ['ochem', 112],
+  /* 112 -> 113 (visual polish): molecules.js places lone pairs between bonds,
+     draws swept arrowheads on the curve tangent and trims bonds to the label
+     for the textbook-style tool structures. Measured 112.5 KB. */
+  ['ochem', 113],
   /* The A&P course runtime (anp-core, questions, nav, glossary tooltips,
      anp.css) plus whichever app or tool script the page loads. Measured
      37.3 KB at the Phase 1 pilot. 44 -> 46 (audit 2026-10): the lazy bank
@@ -245,7 +253,9 @@ const SHELL_BUDGETS = [
      shared tools/tool-kit.js and .css (item picker, Keep going strip, body
      map label list), about 4 KB gzipped; the lab practical page, the
      heaviest, measured 46.8 KB. */
-  ['anatomy-physiology', 47.5],
+  /* 47.5 -> 48 (visual polish 2026-10): the 3D button's body icon and the shared illustration code; measured 47.7 KB. */
+  /* 48 -> 49.5 (simplify pass 2026-10): the shared first-step line, segmented mode switch and Why? / More options disclosures in tool-kit.js/.css; lab practical measured 49.3 KB. */
+  ['anatomy-physiology', 49.5],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).
@@ -341,7 +351,9 @@ const BUDGETS = [
   // again, move the data out of the page instead.
   // 50 -> 51.5 (tools upgrade): the monitor and patient panel styles and the
   // call layout, inline in the page. The case data is unchanged.
-  ['nremt/scenario-sim.html', 51.5],
+  /* 51.5 -> 52 (visual polish 2026-10): the bedside monitor's styles; measured 51.6 KB. */
+  // 52 -> 53 (simplify pass 2026-10): the pick-a-call cue and the short-window sticky rule; it sat 0.1 KB under.
+  ['nremt/scenario-sim.html', 53],
   // learn.html is a shell whose only real weight is the static table of
   // contents generated into it for readers without JavaScript — one line per
   // section. It crossed 3.0 KB when the IUPAC Nomenclature chapter added four

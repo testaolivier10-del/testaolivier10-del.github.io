@@ -125,3 +125,67 @@ Independent review 2026-10-09 (spec decision 87). Sources: OpenStax Anatomy and 
    "thigh" / "kneecap" there), not the bones. **Fixed:** no 3D link for regional-term labels (Umbilicus on that figure loses its link too, a small cost). Others (Bladder → Urinary
    bladder, Ureter → Ureters, Testes → Testis, lungs → Lung, Pulmonary semilunar valve → Pulmonary valve, Dorsalis pedis
    artery) are the same structure. **Correct.**
+
+## Bug pass (2026-10-10, simplify brief, all 7 A&P tools)
+Every tool driven with Playwright at 390, 1280 and 1626 wide, light and dark: buttons, pickers and picker search,
+tabs, sliders, drags, keyboard paths, next/previous, deep links (`?id=`, `?chapter=`, `?mode=`, `#` hashes, unknown
+ids fall back to the default item), switching items mid-action, the Keep going strip, recording to Review, reload
+persistence and console errors (none found on any page). Bugs found, each with its fix:
+
+1. **Site header showed the page through it (all tools).** The two sticky chrome rows use the theme's 82%
+   translucent `--header-bg`, so on a scrolled tool page the picker, loop title and figures read through the header
+   as doubled text (owner's report on Feedback loops). Fix: on tool pages both rows are opaque (`tool-kit.css`).
+2. **Sticky panels slid under the header (Graphs, Lab practical).** The graph column stuck at `top:12px` and the lab
+   info card at a fixed `top:120px`, so at 1440+ the top of the chart (and on Graphs the 100% gridline) hid under the
+   chrome. Fix: both stick at `var(--site-header-h) + 12px`, the measured chrome height.
+3. **"Next graph" / "Next pathway" jumped around the course (Graphs, Pathways).** They followed the raw data file
+   order while the picker lists course order, so 32 of 76 graphs and 22 of 208 pathways sent you to an unrelated
+   chapter (pH scale -> Flow vs radius, skipping enzymes). Fix: Next follows the picker's order (inside `?chapter=`
+   when set); checked equal for every item.
+4. **Graph cursor collision code never ran (Graphs).** It measured a removed x-readout element (`tag` undefined,
+   swallowed by try/catch), so a value pill could sit on a region name ("normal blood pH"). Fix: region names step up
+   a line when a value pill overlaps them.
+5. **Pathway drill tabs redrew the whole page (Pathways).** Clicking Missing step / Spot the error re-routed, which
+   jumped the page to the top and reset the figure's Trace it run back to Watch. Fix: tabs swap the drill in place;
+   the hash still updates (`#<id>/<variant>`), deep links and reload unchanged.
+6. **Answered practice problem came back as new (Calculators).** After Check, switching to Calculate and back to
+   Practice showed the same, already answered problem with an empty box; submitting it silently made a new problem
+   and discarded the answer. Fix: an answered problem is replaced on return. The +/- sign button also re-rendered as
+   "+" while the problem kept a negative sign; it now shows the stored sign.
+7. **Changing a quiz setting re-asked an answered item (Lab practical).** Ticking "Multiple choice" after answering
+   redrew the same item unanswered, so it could be scored (and recorded) a second time. Fix: after an answer the
+   setting applies from the next item; a second submit of one item is ignored.
+8. **A chain kept playing after leaving a scenario (Predict).** Picking another scenario (or End session) while
+   "Run it" played left its timers running on the removed card, which then fired `anp-prediction` for the scenario
+   you had left. Fix: the chain stops when its card is gone.
+9. **Pending keyboard push fired after Reset or Cut (Feedback loops).** Arrow keys on the gauge schedule a run after
+   0.7 s; Reset, a cut or a tab switch inside that window did not cancel it. Fix: `stop()` clears it.
+10. **Empty Part bank search showed three empty headings (Word roots).** Fix: headings with no match hide, and an
+    empty search says "No word part matches."
+
+Checked and fine: picker search and Escape, loop/scenario/graph/pathway/calculator/image-set switching (no stale
+state carried over: ring, gauges, ghost curves, overlays, player timers all reset), Watch/Test tabs, Cut a part on
+every part, the timed practical (timer, no going back, results and review), Build / Decode scoring, reload restores
+the hash item or the last calculator / mode, Review entries for every scored id, Keep going links on every tool.
+
+## Simplify pass (2026-10-10, spec decision 88)
+Landing pattern from the simplify brief, shared in `tool-kit.js` (`first`, `why`, `more`, `about`) and `tool-kit.css`
+(`.kt-first`, `.kt-seg`, `.kt-why`, `.kt-more`, `.kt-about`). The opener sentence is `lede` in `data/pages.json`
+(`blurb` still feeds the hub). What a new student sees first:
+- **Feedback loops:** a loop on a gauge; "Drag the marker off the set point, or press Stimulus". Watch | Test yourself.
+  "Cut a part" and the partner loop link sit in one disclosure; Test's long how-to is under "How it works".
+- **Predict:** the scenario and its dials; "Call each one: up, down or no change. Then press Run it." Each variable's
+  chain and why open under "Why?" after Run.
+- **Graphs:** the graph; "Drag along the graph...". Explore | Quiz is one segmented control; the intro is under "About
+  this graph", "Show phases and regions" under More options, each answer's explanation under "Why?".
+- **Pathways:** the first drill; "Put the steps in order...". The three drills are one segmented control (Watch |
+  Trace it is another on traced pathways); the intro is under "About this pathway", the summary under "Why it runs this
+  way".
+- **Calculators:** the live picture; "Drag a slider or type a number...". Calculate | Practice; formula and worked
+  examples, and every step, behind disclosures.
+- **Lab practical:** the figure; "Tap any label on the figure...". Explore | Study | Quiz (| Timed); quiz prompts are
+  the first-step line; quiz settings and Study's reveal buttons are under More options.
+- **Word roots:** the term; "Pick what each part means, starting with the last part." Decode | Build | Part bank; the
+  topic filter and counts are under More options.
+Checked at 390, 1280 and 1626, light and dark: no horizontal scroll, every segment and disclosure at least 40 px tall,
+no console errors, every end-to-end flow from the bug pass rerun.

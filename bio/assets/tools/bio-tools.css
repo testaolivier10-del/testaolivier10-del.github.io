@@ -66,6 +66,17 @@
 @media (min-width:900px){.bt-stage.two{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);}}
 .bt-fig svg{width:100%;height:auto;max-height:340px;display:block;}
 .bt-plot{max-width:100%;}
+/* Publication-style charts in the tools (dataviz: recessive grid and axes,
+   thin marks, ringed markers, rounded data-ends on bars, ink text) */
+.bt-app .bio-svg .grid{stroke:var(--line);stroke-width:1;}
+.bt-app .bio-svg .axis{stroke:var(--muted);stroke-width:1.2;}
+.bt-app .bio-svg .axis.y{stroke:none;}
+.bt-app .bio-svg .tick{fill:var(--muted);font:700 11.5px var(--font-ui);font-variant-numeric:tabular-nums;}
+.bt-app .bio-svg .lbl{fill:var(--ink);font:800 12.5px var(--font-ui);}
+.bt-app .bio-svg .series{stroke-width:2.25;stroke-linejoin:round;stroke-linecap:round;}
+.bt-app .bio-svg .pt{stroke:var(--white);stroke-width:2;}
+.bt-app .bio-svg .bar,.bt-app .sk-obs{stroke:var(--white);stroke-width:1;}
+.bt-app .bio-svg .err{stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;}
 .bt-plot .zero{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 3;}
 .bt-plot .vline{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 4;}
 .bt-plot .series.dashed{stroke-dasharray:7 5;stroke-width:2;}
@@ -212,12 +223,21 @@
 /* Meiosis and nondisjunction: maternal homologs solid orange-red (M),
    paternal blue with stripes (P), so origin never depends on colour alone. */
 .bt-fig svg.mei-fig{max-height:none;max-width:460px;margin:0 auto;}
+.mei-fig{--mei-cyto0:#FFF8EC;--mei-cyto1:#F6E6CF;--mei-memb:#C99A6A;--mei-fib:#7FA39A;}
+:root[data-theme="dark"] .mei-fig{--mei-cyto0:#2E2A22;--mei-cyto1:#241F19;--mei-memb:#B98D5E;--mei-fib:#7FA39A;}
+.mei-fig .mei-c0{stop-color:var(--mei-cyto0);} .mei-fig .mei-c1{stop-color:var(--mei-cyto1);}
 .mei-fig .mei-m{fill:var(--bio-o2);}
 .mei-fig .mei-pbg{fill:var(--bio-deo2);}
-.mei-fig .mei-pst{fill:var(--white);fill-opacity:.75;}
-.mei-fig .mei-out{fill:none;stroke:var(--ink);stroke-width:1;}
+.mei-fig .mei-pst{fill:var(--white);fill-opacity:.55;}
+.mei-fig .mei-out{fill:none;stroke:var(--ink);stroke-width:.9;stroke-linejoin:round;}
+.mei-fig .mei-band{fill:none;stroke:#000;stroke-opacity:.22;stroke-width:1;}
+.mei-fig .mei-shine{fill:none;stroke:#fff;stroke-opacity:.45;stroke-width:1.2;stroke-linecap:round;}
 .mei-fig .mei-cen{fill:var(--ink);}
-.mei-fig .mei-cell{fill:var(--bio-shape-fill);stroke:var(--bio-shape);stroke-width:1.5;}
+.mei-fig .mei-cell{fill:url(#mei-cyto);stroke:var(--mei-memb);stroke-width:1.6;}
+.mei-fig .mei-memb{fill:none;stroke:var(--mei-memb);stroke-opacity:.45;stroke-width:1;}
+.mei-fig .mei-fib{fill:none;stroke:var(--mei-fib);stroke-width:.9;stroke-opacity:.85;}
+.mei-fig .mei-aster{stroke:var(--mei-fib);stroke-width:.9;}
+.mei-fig .mei-pole-c rect{fill:var(--mei-fib);}
 .mei-fig .mei-plate{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 4;}
 .mei-fig text.mei-lab{font:800 10px var(--font-ui);}
 .mei-fig text.mei-ttl{font:800 11.5px var(--font-ui);}
@@ -252,7 +272,8 @@
 .ef-pyr text{fill:var(--ink);}
 .ef-pyr .ef-ttl{font:900 14px var(--font-ui);}
 .ef-pyr .ef-lab{font:700 12px var(--font-ui);}
-.ef-pyr .ef-bar{stroke-width:2;}
+.ef-pyr .ef-bar{stroke-width:1.6;}
+.ef-pyr .ba.ef-o.l0{color:#3FA34D;} .ef-pyr .ba.ef-o.l1{color:#9BC53D;} .ef-pyr .ba.ef-o.l2{color:#2E9C6A;} .ef-pyr .ba.ef-o.l3{color:#C9A227;} .ef-pyr .ba.ef-o.l4{color:#8A5A3B;}
 .ef-pyr .ef-bar.en{fill:var(--bio-para-fill);stroke:var(--bio-para);}
 .ef-pyr .ef-bar.bm{fill:var(--bio-aff-fill);stroke:var(--bio-aff);stroke-dasharray:6 3;}
 .ef-pyr .ef-bar.tx{fill:var(--bio-symp-fill);stroke:var(--bio-symp);stroke-dasharray:2 3;}
@@ -265,21 +286,30 @@
 .op-fig text{font:800 12px var(--font-ui);}
 .op-fig .op-ttl{font:900 13px var(--font-ui);}
 .op-fig .op-note{fill:var(--muted);font:700 11px var(--font-ui);}
-.op-fig .op-dna{stroke:var(--ink);stroke-width:3;}
-.op-fig .op-box{fill:var(--bio-shape-fill);stroke:var(--bio-shape);stroke-width:1.5;}
+.op-fig{--op-bb:#2F5D8A;--op-bb2:#5C8DBF;--op-rung:#9FB7CC;--op-pol:#F6C76B;--op-pole:#A9741A;--op-rep:#E7A3C8;--op-repe:#9A3A72;--op-cap:#8FD4B8;--op-cape:#1F7A58;--op-sm:#7CC3EA;--op-sme:#1F6E9C;--op-mrna:#C2410C;}
+:root[data-theme="dark"] .op-fig{--op-bb:#8DB8E6;--op-bb2:#5D84AD;--op-rung:#3D5266;--op-pol:#8A6420;--op-pole:#F6C76B;--op-rep:#7E3A62;--op-repe:#F0B3D6;--op-cap:#2B6E55;--op-cape:#9BE3C5;--op-sm:#235F82;--op-sme:#9ED6F5;--op-mrna:#FF9A5C;}
+.op-fig .op-bb{fill:none;stroke:var(--op-bb);stroke-width:2.6;stroke-linecap:round;}
+.op-fig .op-bb.b{stroke:var(--op-bb2);stroke-width:2.2;}
+.op-fig .op-rung{fill:none;stroke:var(--op-rung);stroke-width:1.6;}
+.op-fig .op-box{fill:var(--bio-shape-fill);fill-opacity:.72;stroke:var(--bio-shape);stroke-width:1.3;}
 .op-fig .op-box.prom{fill:var(--bio-aff-fill);stroke:var(--bio-aff);}
 .op-fig .op-box.oper{fill:var(--bio-lo-fill);stroke:var(--bio-lo);}
 .op-fig .op-box.cap{fill:var(--bio-para-fill);stroke:var(--bio-para);}
-.op-fig .op-box.reg{fill:var(--paper);}
+.op-fig .op-box.gene{fill:var(--bio-eff-fill);stroke:var(--bio-eff);}
+.op-fig .op-box.reg{fill:var(--white);}
 .op-fig .op-box.mut{stroke:var(--bio-symp);stroke-width:2.5;stroke-dasharray:5 3;}
-.op-fig .op-cap{fill:var(--bio-para-fill);stroke:var(--bio-para);stroke-width:2;}
-.op-fig .op-pol{fill:var(--bio-aff-fill);stroke:var(--bio-aff);stroke-width:2;}
-.op-fig .op-pol.weak{stroke-dasharray:4 3;}
-.op-fig .op-rep{fill:var(--bio-symp-fill);stroke:var(--bio-symp);stroke-width:2;}
-.op-fig .op-small{fill:var(--bio-eff-fill);stroke:var(--bio-eff);stroke-width:1.5;}
-.op-fig .op-mrna{fill:none;stroke:var(--bio-causes);stroke-width:2;}
-.op-fig .op-mrna.hi{stroke-width:3.5;}
+.op-fig text.op-blab{paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round;}
+.op-fig .op-cap{fill:var(--op-cap);stroke:var(--op-cape);stroke-width:1.6;}
+.op-fig .op-camp{fill:var(--op-sm);stroke:var(--op-sme);stroke-width:1.2;}
+.op-fig .op-pol{fill:var(--op-pol);stroke:var(--op-pole);stroke-width:1.8;stroke-linejoin:round;}
+.op-fig .op-pol.weak{stroke-dasharray:4 3;fill-opacity:.6;}
+.op-fig .op-polsh,.op-fig .op-repsh{fill:none;stroke:#fff;stroke-opacity:.55;stroke-width:2.5;stroke-linecap:round;}
+.op-fig .op-rep{fill:var(--op-rep);stroke:var(--op-repe);stroke-width:1.8;stroke-linejoin:round;}
+.op-fig .op-small{fill:var(--op-sm);stroke:var(--op-sme);stroke-width:1.2;stroke-linejoin:round;}
+.op-fig .op-mrna{fill:none;stroke:var(--op-mrna);stroke-width:2;stroke-linecap:round;}
+.op-fig .op-mrna.hi{stroke-width:3;}
 .op-fig .op-mrna.trickle{stroke-dasharray:3 4;}
+.op-fig .op-bases{stroke:var(--op-mrna);stroke-width:1.2;stroke-opacity:.6;}
 .op-further{background:var(--ctint);border-radius:12px;padding:10px 14px;}
 .op-further p{margin:0;font:600 14.5px/1.55 var(--font-ui);}
 .op-genes{border:0;margin:0;padding:0;min-width:0;display:grid;gap:8px;}
@@ -301,7 +331,9 @@
 /* Tree reading */
 .tr-figwrap{overflow-x:auto;}
 .bt-fig svg.tr-fig{max-height:none;min-width:320px;max-width:600px;}
-.tr-fig .tr-edge{fill:none;stroke:var(--ink);stroke-width:2.5;}
+.tr-fig .tr-edge{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.tr-fig .ba.tr-o{color:#6FA36B;}
+.tr-fig .tr-tipg.sel .ba.tr-o{color:var(--bio-aff);}
 .tr-fig .tr-node circle{fill:var(--white);stroke:var(--ink);stroke-width:1.5;}
 .tr-fig .tr-node text{fill:var(--ink);font:800 11px var(--font-ui);}
 .tr-fig .tr-node.mrca circle{fill:var(--bio-aff-fill);stroke:var(--bio-aff);stroke-width:3.5;}
@@ -400,14 +432,18 @@
   .sk-fig .sk-verdict{transition:color .2s;}
 }
 /* Hardy-Weinberg: genotypes differ in shape too (circle, dotted circle, square) */
-.hw-cell{stroke:var(--white);stroke-width:1.5;}
+.hw-cell{stroke:var(--white);stroke-width:2;}
+.hw-gam ellipse,.hw-gam circle{fill:var(--bio-aff-fill);stroke:var(--bio-aff);stroke-width:1.2;}
+.hw-gam .n{fill:var(--bio-aff);stroke:none;}
+.hw-gam.sperm ellipse{fill:var(--bio-eff-fill);stroke:var(--bio-eff);}
+.hw-gam path{fill:none;stroke:var(--bio-eff);stroke-width:1.2;stroke-linecap:round;}
 .hw-cell.g0,.hw-ind.g0,.hw-k.g0{fill:var(--bio-s1);background:var(--bio-s1);}
 .hw-cell.g1,.hw-ind.g1,.hw-k.g1{fill:var(--bio-s3);background:var(--bio-s3);}
 .hw-cell.g2,.hw-ind.g2,.hw-k.g2{fill:var(--bio-s2);background:var(--bio-s2);}
 .hw-ind.unk,.hw-k.unk{fill:var(--bio-s5);background:var(--bio-s5);fill-opacity:.55;}
 .hw-cell{fill-opacity:.85;}
 .hw-dot{fill:var(--white);}
-.hw-frame{fill:none;stroke:var(--ink);stroke-width:2;}
+.hw-frame{fill:none;stroke:var(--ink);stroke-width:1.5;rx:4;}
 .hw-frame.hw-empty{fill:var(--paper);stroke-dasharray:6 4;stroke:var(--muted);}
 .hw-split{stroke:var(--ink);stroke-width:2;stroke-dasharray:4 3;}
 .hw-cl{fill:#fff;font:900 14px var(--font-ui);}
@@ -464,7 +500,11 @@
 .rt-base{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:3 3;}
 .rt-ghost{fill:none;stroke:var(--bio-s2);stroke-width:2.5;stroke-dasharray:5 4;}
 /* Simpson: one icon per organism, each species its own color and shape */
-.sd-q{fill:var(--bio-para-fill);stroke:var(--bio-para);stroke-width:2;}
+.sd-q{fill:var(--sd-ground,#E3F0D8);stroke:#8A6A3E;stroke-width:3;}
+:root[data-theme="dark"] .sd-q{--sd-ground:#1F2E1C;stroke:#B9935E;}
+.sd-qgrid{fill:none;stroke:#8A6A3E;stroke-opacity:.35;stroke-width:1;stroke-dasharray:4 4;}
+.ba.sd-o.c1{color:var(--bio-s1);} .ba.sd-o.c2{color:var(--bio-s2);} .ba.sd-o.c3{color:var(--bio-s4);} .ba.sd-o.c4{color:var(--bio-aff);}
+.ba.sd-o.c5{color:var(--bio-hi);} .ba.sd-o.c6{color:var(--bio-eff);} .ba.sd-o.c7{color:var(--bio-lo);} .ba.sd-o.c8{color:var(--bio-s5);}
 .sd-i{stroke:var(--white);stroke-width:.8;}
 .sd-i.ring{fill:none !important;stroke-width:2.6;}
 .sd-i.c1{fill:var(--bio-s1);} .sd-i.c2{fill:var(--bio-s2);} .sd-i.c3{fill:var(--bio-s4);} .sd-i.c4{fill:var(--bio-aff);}
@@ -495,9 +535,16 @@
 .ci-verdict{display:grid;gap:10px;}
 .ci-more{padding:0 12px;}
 /* Water potential: two compartments on one ψ scale */
-.wp-tank{fill:var(--paper);stroke:var(--bio-shape);stroke-width:2;}
-.wp-tank.cell{stroke:var(--bio-memb);stroke-width:3;}
-.wp-water{fill:var(--bio-eff-fill);}
+.wp-fig{--wp-wall:#8DB86B;--wp-walle:#5E8C3E;--wp-cyto:#F4EBC8;--wp-memb:#8A6A2E;--wp-chl:#4E9A3A;--wp-glass:#8FA6A1;--wp-liq:#BCDDEE;}
+:root[data-theme="dark"] .wp-fig{--wp-wall:#5F8F45;--wp-walle:#9CCB79;--wp-cyto:#4A4430;--wp-memb:#D8B76A;--wp-chl:#7CC35F;--wp-glass:#6E8681;--wp-liq:#1F4A63;}
+.wp-wall{fill:var(--wp-wall);stroke:var(--wp-walle);stroke-width:1.5;}
+.wp-cyto{fill:var(--wp-cyto);stroke:var(--wp-memb);stroke-width:2;}
+.wp-chl{fill:var(--wp-chl);stroke:rgba(0,0,0,.35);stroke-width:.8;}
+.wp-thy{stroke:rgba(255,255,255,.55);stroke-width:.8;}
+.wp-glass{fill:none;stroke:var(--wp-glass);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
+.wp-grad{stroke:var(--wp-glass);stroke-width:1.4;}
+.wp-water{fill:var(--wp-liq);}
+.wp-water.vac{fill:var(--wp-liq);stroke:var(--wp-memb);stroke-width:1;stroke-opacity:.6;}
 .wp-surf{stroke:var(--bio-deo2);stroke-width:3;}
 .wp-surf.mine{stroke-dasharray:6 4;}
 .wp-v{fill:var(--ink);font:900 12.5px var(--font-mono);}
@@ -561,22 +608,49 @@
 .os-calc{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--cink);}
 .os-stage{background:var(--paper);border-radius:14px;padding:6px;}
 .os-fig{width:100%;height:auto;display:block;max-height:420px;margin:0 auto;max-width:640px;}
-.os-fig .os-beaker{fill:none;stroke:var(--bio-shape);stroke-width:3;}
-.os-fig .os-sol{fill:var(--bio-deo2-fill);opacity:.55;}
+/* Osmosis stage art: glass beaker, potato parenchyma cell, red blood cell, dialysis tubing */
+.os-fig{--os-glass:#8FA6A1;--os-liq-a:#DCEEF7;--os-liq-b:#BCDDEE;--os-wall:#8DB86B;--os-wall-e:#5E8C3E;--os-cyto:#F4EBC8;--os-memb:#8A6A2E;--os-vac:#E9F4FA;--os-amy:#FFFDF4;--os-amy-e:#C9B88A;--os-nuc:#C9B3D9;--os-nuc-e:#7E5C99;
+  --os-rbc-a:#F07A6E;--os-rbc-b:#D33B33;--os-rbc-c:#A61F22;--os-pallor:#F6B3A8;--os-hb:rgba(211,59,51,.28);--os-tube:rgba(236,226,196,.62);--os-tube-e:#9C8857;--os-in:#7A5A12;}
+:root[data-theme="dark"] .os-fig{--os-glass:#6E8681;--os-liq-a:#173447;--os-liq-b:#12293A;--os-wall:#5F8F45;--os-wall-e:#9CCB79;--os-cyto:#4A4430;--os-memb:#D8B76A;--os-vac:#21394A;--os-amy:#6E6650;--os-amy-e:#C8B88A;--os-nuc:#5C4A72;--os-nuc-e:#C6A8E6;
+  --os-rbc-a:#E8786C;--os-rbc-b:#B83630;--os-rbc-c:#8C1D20;--os-pallor:#D98C82;--os-hb:rgba(232,120,108,.22);--os-tube:rgba(200,185,140,.22);--os-tube-e:#D3BF8A;--os-in:#F0C674;}
+.os-fig .os-liq0{stop-color:var(--os-liq-a);} .os-fig .os-liq1{stop-color:var(--os-liq-b);}
+.os-fig .os-glass{fill:none;stroke:var(--os-glass);stroke-width:3.5;stroke-linejoin:round;stroke-linecap:round;}
+.os-fig .os-sol{fill:url(#osLiq);}
+.os-fig .os-menis{fill:none;stroke:var(--bio-deo2);stroke-opacity:.45;stroke-width:1.5;}
+.os-fig .os-grad{stroke:var(--os-glass);stroke-width:1.5;}
+.os-fig .os-shine{stroke:#fff;stroke-opacity:.55;stroke-width:3;stroke-linecap:round;}
+:root[data-theme="dark"] .os-fig .os-shine{stroke-opacity:.12;}
 .os-fig .os-sd{fill:var(--bio-o2);}
 .os-fig .os-sd.ion{fill:var(--bio-para);}
-.os-fig .os-si{fill:var(--bio-o2);}
-.os-fig .os-gap{fill:var(--bio-deo2-fill);opacity:.6;}
-.os-fig .os-wall{fill:none;stroke:var(--bio-para);stroke-width:6;}
-.os-fig .os-wall.taut{stroke-width:7.5;}
-.os-fig .os-cyto{fill:var(--bio-eff-fill);stroke:var(--bio-memb);stroke-width:2.5;}
-.os-fig .os-vac{fill:var(--white);fill-opacity:.35;stroke:var(--bio-memb);stroke-width:1;stroke-dasharray:3 3;}
-.os-fig .os-rbc{fill:var(--bio-o2-fill);stroke:var(--bio-o2);stroke-width:2.5;}
-.os-fig .os-dimple{fill:none;stroke:var(--bio-o2);stroke-width:1.2;stroke-dasharray:3 3;}
-.os-fig .os-ghost{fill:none;stroke:var(--bio-o2);stroke-width:2.5;stroke-dasharray:7 6;}
-.os-fig .os-bag{fill:var(--bio-aff-fill);stroke:var(--bio-memb);stroke-width:2.5;}
-.os-fig .os-bag.taut{stroke-width:4;}
-.os-fig .os-string,.os-fig .os-knot{fill:none;stroke:var(--muted);stroke-width:2;}
+.os-fig .os-si{fill:var(--os-in);}
+.os-fig .os-wallband{fill:var(--os-wall);opacity:.85;}
+.os-fig .os-wallband.taut{opacity:1;}
+.os-fig .os-walledge{fill:none;stroke:var(--os-wall-e);stroke-width:1.6;}
+.os-fig .os-walledge.in{stroke-width:1;stroke-opacity:.7;}
+.os-fig .os-gap{fill:url(#osLiq);}
+.os-fig .os-strand{stroke:var(--os-memb);stroke-width:.9;stroke-opacity:.8;}
+.os-fig .os-cyto{fill:var(--os-cyto);stroke:var(--os-memb);stroke-width:2.2;}
+.os-fig .os-vac{fill:var(--os-vac);stroke:var(--os-memb);stroke-width:1;stroke-opacity:.6;}
+.os-fig .os-amy{fill:var(--os-amy);stroke:var(--os-amy-e);stroke-width:1.1;}
+.os-fig .os-amy-r{fill:none;stroke:var(--os-amy-e);stroke-width:.7;}
+.os-fig .os-nuc{fill:var(--os-nuc);stroke:var(--os-nuc-e);stroke-width:1.2;}
+.os-fig .os-nucl{fill:var(--os-nuc-e);}
+.os-fig .os-rbc0{stop-color:var(--os-rbc-a);} .os-fig .os-rbc1{stop-color:var(--os-rbc-b);} .os-fig .os-rbc2{stop-color:var(--os-rbc-c);}
+.os-fig .os-rbc{fill:url(#osRbc);stroke:var(--os-rbc-c);stroke-width:1.4;}
+.os-fig .os-pallor{fill:var(--os-pallor);filter:blur(5px);}
+.os-fig .os-sheen{fill:#fff;opacity:.35;}
+.os-fig .os-hb0{stop-color:var(--os-hb);} .os-fig .os-hb1{stop-color:transparent;stop-opacity:0;}
+.os-fig .os-hb{fill:url(#osHb);}
+.os-fig .os-ghost{fill:var(--os-hb);stroke:var(--os-rbc-c);stroke-width:1.6;stroke-opacity:.75;stroke-dasharray:none;}
+.os-fig .os-ghost.tear{fill:none;stroke-linecap:round;}
+.os-fig .os-bag{fill:var(--os-tube);stroke:var(--os-tube-e);stroke-width:2;stroke-linejoin:round;}
+.os-fig .os-bag.taut{stroke-width:2.6;}
+.os-fig .os-crease{fill:none;stroke:var(--os-tube-e);stroke-width:1;stroke-linecap:round;}
+.os-fig .os-bagsheen{fill:none;stroke:#fff;stroke-opacity:.6;stroke-width:2.5;stroke-linecap:round;}
+:root[data-theme="dark"] .os-fig .os-bagsheen{stroke-opacity:.15;}
+.os-fig .os-bagend{fill:var(--os-tube);stroke:var(--os-tube-e);stroke-width:1.4;stroke-linejoin:round;}
+.os-fig .os-knot{fill:var(--os-memb);}
+.os-fig .os-string{fill:none;stroke:var(--muted);stroke-width:1.5;}
 .os-fig .os-flow{fill:none;stroke:var(--bio-deo2);stroke-linecap:round;}
 .os-fig .os-flowhead{fill:var(--bio-deo2);}
 .os-fig .os-down{fill:none;stroke:var(--bio-deo2);stroke-width:3;}
@@ -612,39 +686,47 @@
 .os-modes .bt-btn{padding:6px 14px;}
 .os-calc{min-height:44px;font:800 14px var(--font-ui);padding:0 4px;}
 .os-pick-row .bt-btn{flex:1 1 auto;}
-@media (min-width:1000px){
-  .os-card{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:22px;}
-  .os-card>*{grid-column:1 / -1;}
-  .os-card>.os-stage{grid-column:1;grid-row:3 / span 6;align-self:start;position:sticky;top:12px;}
-  .os-card>.os-chal,.os-card>.os-play,.os-card>.os-pick,.os-card>.os-why,.os-card>.bt-controls{grid-column:2;}
-  .os-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
-}
 
 /* ===== Enzyme scene (tools upgrade U-Bio-sims) ===== */
 .ez-stage{background:var(--paper);border-radius:14px;padding:6px;}
+.ez-card,.ez-stage{--ez-protA:#D9F2E6;--ez-protB:#7CC7A6;--ez-protE:#1F7A58;--ez-site:#0E5A3F;--ez-subA:#FFE7A8;--ez-subB:#F0B429;--ez-subE:#A86B00;--ez-inhA:#F6D3E6;--ez-inhB:#D27AAE;--ez-inhE:#8E2F68;--ez-shadow:rgba(20,50,40,.22);}
+:root[data-theme="dark"] .ez-card,:root[data-theme="dark"] .ez-stage{--ez-protA:#3E8F6E;--ez-protB:#1D5240;--ez-protE:#8FE0BC;--ez-site:#C8F5DF;--ez-subA:#FFE29A;--ez-subB:#C98A10;--ez-subE:#FFD36B;--ez-inhA:#F1B8D8;--ez-inhB:#9C3F77;--ez-inhE:#F6C4E1;--ez-shadow:rgba(0,0,0,.5);}
 .ez-wrap{display:flex;justify-content:center;}
 .ez-canvas{display:block;max-width:100%;}
 .ez-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;}
 .ez-key{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;}
-.ez-k{display:inline-block;width:14px;height:12px;border-radius:3px;border:1.5px solid;vertical-align:middle;}
-.ez-k.sub{background:var(--bio-aff-fill);border-color:var(--bio-aff);}
-.ez-k.prod{background:var(--bio-eff);border-color:var(--bio-eff);border-radius:50%;width:10px;height:10px;}
-.ez-k.inh{background:var(--bio-symp-fill);border-color:var(--bio-symp);}
+.ez-k{display:inline-block;width:16px;height:14px;vertical-align:middle;background:linear-gradient(135deg,var(--ez-subA),var(--ez-subB));border:1.5px solid var(--ez-subE);clip-path:polygon(0 50%,100% 0,100% 100%);border:0;}
+.ez-k.prod{width:8px;clip-path:polygon(0 50%,100% 14%,100% 86%);}
+.ez-k.prod.b{width:9px;margin-left:-2px;clip-path:polygon(0 18%,70% 0,100% 50%,70% 100%,0 82%);}
+.ez-k.inh.c{width:20px;clip-path:polygon(0 50%,70% 0,70% 30%,100% 30%,100% 70%,70% 70%,70% 100%);}
+.ez-k.inh{background:linear-gradient(135deg,var(--ez-inhA),var(--ez-inhB));clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);}
 .ez-plots{display:grid;gap:10px;}
-@media (min-width:1000px){
-  .ez-card{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);column-gap:22px;}
-  .ez-card>*{grid-column:1 / -1;}
-  .ez-card>.ez-stage{grid-column:1;grid-row:3 / span 4;align-self:start;position:sticky;top:12px;}
-  .ez-card>.ez-bar,.ez-card>.ez-chal,.ez-card>.ez-why,.ez-card>.bt-controls{grid-column:2;}
-  .ez-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
-}
 .ez-plots .bt-plotwrap,.os-graph .bt-plotwrap{max-width:720px;}
 
 /* ===== Cell cycle ring (tools upgrade U-Bio-sims) ===== */
 .cc-ringfig{background:var(--paper);border-radius:14px;padding:6px;}
 .bt-fig svg.cc-ring{max-width:520px;}
-.cc-ring .cc-cell{fill:var(--bio-aff);stroke:var(--white);stroke-width:1;}
-.cc-ring .cc-cell.held{fill:var(--bio-hi);}
+.cc-ring{--cc-cm:#FBE6D2;--cc-cme:#C98B5A;--cc-nu:#D9C6EC;--cc-nue:#7B59A6;--cc-chr:#7B3FA8;--cc-chr2:#C04E8F;--cc-sp:#6E8F86;}
+:root[data-theme="dark"] .cc-ring{--cc-cm:#4A3A2C;--cc-cme:#E2AE7E;--cc-nu:#463A5C;--cc-nue:#C8AEEA;--cc-chr:#D7B8F2;--cc-chr2:#F2A5CF;--cc-sp:#8FB3A9;}
+.cc-ring .ph{stroke-width:24;stroke-linecap:butt;}
+.cc-ring .cc-cell circle{fill:var(--cc-cm);stroke:var(--cc-cme);stroke-width:1;}
+.cc-ring .cc-cell .n{fill:var(--cc-nue);stroke:none;}
+.cc-ring .cc-cell.held circle{fill:var(--bio-hi-fill);stroke:var(--bio-hi);stroke-width:1.4;}
+.cc-ring .cc-cell.held .n{fill:var(--bio-hi);}
+.cc-ring .g0{fill:var(--bio-lo-fill);stroke:var(--bio-lo);stroke-width:1.2;stroke-dasharray:4 3;}
+.cc-ring .cc-cm{fill:var(--cc-cm);stroke:var(--cc-cme);stroke-width:1.6;}
+.cc-ring .cc-nu{fill:var(--cc-nu);stroke:var(--cc-nue);stroke-width:1.2;}
+.cc-ring .cc-nl{fill:var(--cc-nue);}
+.cc-ring .cc-chrt{fill:none;stroke:var(--cc-chr);stroke-width:.9;stroke-linecap:round;stroke-linejoin:round;}
+.cc-ring .cc-chrt.b{stroke:var(--cc-chr2);}
+.cc-ring .cc-chr path{fill:none;stroke:var(--cc-chr);stroke-width:2.6;stroke-linecap:round;}
+.cc-ring .cc-chr.b path{stroke:var(--cc-chr2);}
+.cc-ring .cc-chr circle{fill:var(--ink);}
+.cc-ring .cc-sp{fill:none;stroke:var(--cc-sp);stroke-width:.8;}
+.cc-ring .cc-cs{fill:var(--cc-sp);}
+.cc-ring .cc-cen rect{fill:var(--cc-sp);}
+.cc-ring .cc-sep{stroke:var(--line);stroke-width:1.5;}
+.cc-ring .cc-pcl{font:800 12px var(--font-ui);fill:var(--muted);}
 .cc-ring .cc-gatebtn{cursor:pointer;}
 .cc-ring .cc-hit{fill:transparent;}
 .cc-ring .cc-gatebtn:hover .cc-hit,.cc-ring .cc-gatebtn.sel .cc-hit{fill:var(--ctint);stroke:var(--cink);stroke-width:2;}
@@ -653,13 +735,6 @@
 .cc-ring .cc-glab{font:900 12.5px var(--font-ui);fill:var(--cink);}
 .cc-gate:empty{display:none;}
 .cc-plots{display:grid;gap:10px;}
-@media (min-width:1000px){
-  .cc-card{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:22px;}
-  .cc-card>*{grid-column:1 / -1;}
-  .cc-card>.cc-ringfig{grid-column:1;grid-row:3 / span 4;align-self:start;position:sticky;top:12px;}
-  .cc-card>.cc-tip,.cc-card>.cc-gate,.cc-card>.cc-chal,.cc-card>.bt-controls{grid-column:2;}
-  .cc-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
-}
 .cc-ring .cc-ph{font:800 12.5px var(--font-ui);}
 
 /* ===== Meiosis: tap the figure (tools upgrade U-Bio-sims) ===== */
@@ -682,13 +757,6 @@
 .mei-chip{display:inline-flex;align-items:center;min-height:30px;padding:2px 10px;border-radius:8px;font:900 14px var(--font-ui);border:2px solid var(--line);}
 .mei-chip.m{background:var(--bio-o2-fill);border-color:var(--bio-o2);}
 .mei-chip.p{background:repeating-linear-gradient(45deg,var(--bio-deo2-fill) 0 4px,var(--white) 4px 6px);border-color:var(--bio-deo2);}
-@media (min-width:1000px){
-  .mei-card{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);column-gap:22px;}
-  .mei-card>*{grid-column:1 / -1;}
-  .mei-card>.mei-stagefig{grid-column:1;grid-row:4 / span 4;align-self:start;position:sticky;top:12px;}
-  .mei-card>.mei-taphint,.mei-card>.mei-stepper,.mei-card>.bt-controls{grid-column:2;}
-  .mei-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
-}
 
 /* ===== Operons: tray, taps, ribbons (tools upgrade U-Bio-sims) ===== */
 .op-stagefig{background:var(--paper);border-radius:14px;padding:6px;transition:box-shadow .15s;}
@@ -698,7 +766,7 @@
 .op-fig .op-hit{fill:transparent;stroke:transparent;stroke-width:2;}
 .op-fig .op-tapg:hover .op-hit,.op-fig .op-tapg:focus-visible .op-hit{fill:var(--ctint);stroke:var(--cink);}
 .op-fig .op-tapg:focus{outline:none;}
-.op-fig .op-ribbon{fill:none;stroke:var(--bio-causes);stroke-width:2.2;animation:opRibbon linear infinite;opacity:0;}
+.op-fig .op-ribbon{fill:none;stroke:var(--op-mrna);stroke-width:2.2;animation:opRibbon linear infinite;opacity:0;}
 @keyframes opRibbon{0%{transform:translate(0,0);opacity:0;}10%{opacity:1;}80%{opacity:.9;}100%{transform:translate(200px,34px);opacity:0;}}
 .op-fig .op-slide{animation:opSlide .7s ease-out;}
 @keyframes opSlide{from{transform:translate(var(--dx),var(--dy));}to{transform:none;}}
@@ -708,7 +776,7 @@
 .op-tray-h{font:800 14px var(--font-ui);}
 .op-chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:4px 14px 4px 6px;border-radius:999px;border:2px dashed var(--line);background:var(--white);color:var(--ink);font:800 14px var(--font-ui);cursor:grab;touch-action:none;user-select:none;}
 .op-chip.in{border-style:solid;border-color:var(--cink);background:var(--ctint);}
-.op-mol{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--bio-eff-fill);border:2px solid var(--bio-eff);font:900 11px var(--font-ui);}
+.op-mol{display:inline-grid;place-items:center;width:34px;height:34px;clip-path:polygon(25% 3%,75% 3%,100% 50%,75% 97%,25% 97%,0 50%);background:var(--bio-eff-fill);box-shadow:inset 0 0 0 2px var(--bio-eff);font:900 11px var(--font-ui);}
 .op-ghost{position:fixed;z-index:1000;pointer-events:none;opacity:.9;box-shadow:0 6px 18px rgba(0,0,0,.2);}
 .op-lower{display:grid;gap:10px;}
 .op-stagefig{overflow-x:auto;}
@@ -724,14 +792,37 @@
 .sg-fig .sg-dotf{fill:var(--bio-aff);}
 .sg-fig .arr.amp{stroke-width:3.5;}
 .sg-why:empty{display:none;}
+.sg-fig{--sgs-out:#EAF5FB;--sgs-in:#FFF6E8;--sgs-head:#F2B48A;--sgs-heade:#C6743F;--sgs-tail:#E6C9A8;--sgs-rec:#B9A3E3;--sgs-rece:#6B4FA8;--sgs-ga:#8FD4B8;--sgs-gon:#2FB37E;--sgs-ge:#1F7A58;--sgs-ac:#F5C46B;--sgs-ace:#A86B00;--sgs-camp:#7CC3EA;--sgs-campe:#1F6E9C;--sgs-pr:#9CB7E8;--sgs-pre:#3E5F9E;--sgs-pc:#F2A07B;--sgs-pce:#B4532A;--sgs-gly:#E9DFC6;--sgs-glye:#9C8857;--sgs-epi:#E8789A;--sgs-epie:#A23A5B;}
+:root[data-theme="dark"] .sg-fig{--sgs-out:#14283A;--sgs-in:#2A2419;--sgs-head:#B9744A;--sgs-heade:#F2B48A;--sgs-tail:#5C4632;--sgs-rec:#4F3F7A;--sgs-rece:#C9B5F2;--sgs-ga:#2B6E55;--sgs-gon:#3FD49A;--sgs-ge:#9BE3C5;--sgs-ac:#7A5A14;--sgs-ace:#F5C46B;--sgs-camp:#235F82;--sgs-campe:#9ED6F5;--sgs-pr:#33497A;--sgs-pre:#B4CBF5;--sgs-pc:#7A3A20;--sgs-pce:#F7B797;--sgs-gly:#4A4430;--sgs-glye:#D3BF8A;--sgs-epi:#9C3A5B;--sgs-epie:#F2A5BF;}
+.sg-fig .sgs-out{fill:var(--sgs-out);} .sg-fig .sgs-in{fill:var(--sgs-in);}
+.sg-fig .sgs-lab{fill:var(--muted);font:800 10.5px var(--font-ui);letter-spacing:.03em;text-transform:uppercase;}
+.sg-fig .sgs-name{fill:var(--ink);font:800 10.5px var(--font-ui);paint-order:stroke;stroke:var(--sgs-in);stroke-width:3px;}
+.sg-fig .sgs-mini{fill:var(--ink);font:900 7.5px var(--font-ui);}
+.sg-fig .sgs-tag{fill:var(--bio-symp);font:900 9.5px var(--font-ui);}
+.sg-fig .sgs-head circle{fill:var(--sgs-head);stroke:var(--sgs-heade);stroke-width:.6;}
+.sg-fig .sgs-tail{stroke:var(--sgs-tail);stroke-width:.8;}
+.sg-fig .sgs-rec{fill:var(--sgs-rec);stroke:var(--sgs-rece);stroke-width:1;}
+.sg-fig .sgs-loop{fill:none;stroke:var(--sgs-rece);stroke-width:2;stroke-linecap:round;}
+.sg-fig .sgs-epi path{fill:var(--sgs-epi);stroke:var(--sgs-epie);stroke-width:1;}
+.sg-fig .sgs-epi path.t{fill:none;stroke-width:1.4;stroke-linecap:round;}
+.sg-fig .sgs-ant{fill:var(--bio-symp-fill);stroke:var(--bio-symp);stroke-width:1.6;}
+.sg-fig .sgs-g{fill:var(--sgs-ga);stroke:var(--sgs-ge);stroke-width:1.3;}
+.sg-fig .sgs-g.a.on{fill:var(--sgs-gon);}
+.sg-fig .sgs-g.b,.sg-fig .sgs-g.c{fill:var(--bio-shape-fill);stroke:var(--bio-shape);}
+.sg-fig .sgs-ac{fill:var(--sgs-ac);stroke:var(--sgs-ace);stroke-width:1;fill-opacity:.8;}
+.sg-fig .sgs-ac.core{fill-opacity:.55;stroke-width:1.4;}
+.sg-fig .sgs-ac.core.on{fill-opacity:1;}
+.sg-fig .sgs-flow{fill:none;stroke:var(--sgs-gon);stroke-width:1.6;stroke-dasharray:3 3;}
+.sg-fig .sgs-camp{fill:var(--sgs-camp);stroke:var(--sgs-campe);stroke-width:1;stroke-linejoin:round;}
+.sg-fig .sgs-pho{fill:var(--sgs-ac);stroke:var(--sgs-ace);stroke-width:.8;}
+.sg-fig .sgs-pr{fill:var(--sgs-pr);stroke:var(--sgs-pre);stroke-width:1.2;}
+.sg-fig .sgs-pc{fill:var(--sgs-pc);stroke:var(--sgs-pce);stroke-width:1.2;fill-opacity:.6;}
+.sg-fig .sgs-pc.on{fill-opacity:1;}
+.sg-fig .sgs-gly circle{fill:var(--sgs-gly);stroke:var(--sgs-glye);stroke-width:1;}
+.sg-fig .sgs-glc{fill:#fff;stroke:var(--sgs-glye);stroke-width:1.2;}
+:root[data-theme="dark"] .sg-fig .sgs-glc{fill:var(--sgs-gly);}
+.sg-fig .stp{fill:var(--white);}
 .sg-lower{display:grid;gap:10px;}
-@media (min-width:1000px){
-  .sg-card{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:22px;}
-  .sg-card>*{grid-column:1 / -1;}
-  .sg-card>.sg-stagefig{grid-column:1;grid-row:2 / span 5;align-self:start;position:sticky;top:12px;}
-  .sg-card>.sg-stagefig+p,.sg-card>.os-play,.sg-card>.sg-why,.sg-card>.bt-controls{grid-column:2;}
-  .sg-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
-}
 
 /* ===== Energy flow stage (tools upgrade U-Bio-sims) ===== */
 .ef-flowfig{background:var(--paper);border-radius:14px;padding:6px;}
@@ -749,6 +840,11 @@
 .ef-flow .ef-up{fill:none;stroke:var(--bio-para);opacity:.55;}
 .ef-flow .ef-down{fill:none;stroke:var(--muted);opacity:.35;}
 .ef-flow .ef-dec{fill:var(--bio-lo-fill);stroke:var(--bio-lo);stroke-width:1.5;}
+.ef-flow .ef-box{fill:var(--white);}
+.ef-flow .ba.ef-o.l0{color:#3FA34D;} .ef-flow .ba.ef-o.l1{color:#9BC53D;} .ef-flow .ba.ef-o.l2{color:#2E9C6A;} .ef-flow .ba.ef-o.l3{color:#C9A227;} .ef-flow .ba.ef-o.l4{color:#8A5A3B;}
+.ef-flow .ba.ef-o.dec{color:#C46A4A;} .ef-flow .ba.ef-o.sun{color:#F2B705;}
+.ba .ba-stem{fill:#F3E6CF;stroke:var(--ba-edge,rgba(20,30,28,.55));stroke-width:.9;}
+.ba .ba-ray{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;}
 .ef-flow .ef-block{fill:var(--bio-aff);stroke:var(--white);stroke-width:1;animation:efRise 1.6s linear infinite;}
 @keyframes efRise{from{transform:translateY(0);opacity:0;}15%{opacity:1;}85%{opacity:1;}to{transform:translateY(var(--rise));opacity:0;}}
 @keyframes efHeat{to{stroke-dashoffset:-28;}}
@@ -766,10 +862,15 @@
 /* ===== Population field (tools upgrade U-Bio-sims) ===== */
 .pg-field{background:var(--paper);border-radius:14px;padding:6px;}
 .bt-fig svg.pg-fieldsvg{max-height:none;max-width:620px;margin:0 auto;}
-.pg-fieldsvg .pg-ground{fill:var(--bio-eff-fill);opacity:.45;}
-.pg-fieldsvg .pg-fence{fill:var(--white);fill-opacity:.35;stroke:var(--bio-para);stroke-width:2;stroke-dasharray:6 4;}
-.pg-fieldsvg .pg-ind{fill:var(--bio-s1);}
-.pg-fieldsvg .pg-ind.new{fill:var(--bio-aff);}
+.pg-fieldsvg .pg-ground{fill:#DCEBC9;}
+:root[data-theme="dark"] .pg-fieldsvg .pg-ground{fill:#1E2D1B;}
+.pg-fieldsvg .pg-tuft{fill:none;stroke:#7FAF5A;stroke-width:1.2;stroke-linecap:round;opacity:.8;}
+.pg-fieldsvg .pg-fence{fill:#EAF4DD;fill-opacity:.6;stroke:#8A6A3E;stroke-width:3;stroke-dasharray:2 5;stroke-linecap:round;}
+:root[data-theme="dark"] .pg-fieldsvg .pg-fence{fill:#26391F;stroke:#C9A36A;}
+.pg-fieldsvg .pg-ind{color:#A88C6E;fill:#A88C6E;}
+.pg-fieldsvg symbol .ba{color:inherit;}
+.pg-fieldsvg .pg-ind.new{color:var(--bio-aff);fill:var(--bio-aff);}
+:root[data-theme="dark"] .pg-fieldsvg .pg-ind{color:#D2BFA8;fill:#D2BFA8;}
 .pg-fieldsvg .pg-flab{font:800 12px var(--font-ui);fill:var(--ink);}
 .pg-fieldsvg .pg-hit{font:900 16px var(--font-ui);fill:var(--bio-symp);}
 .pg-fieldsvg .pg-floodfx{fill:var(--bio-deo2-fill);opacity:.5;}
@@ -781,7 +882,16 @@
 .hw-jarrow{display:grid;gap:12px;grid-template-columns:minmax(0,1fr);background:var(--paper);border-radius:14px;padding:8px 12px;}
 @media (min-width:600px){.hw-jarrow{grid-template-columns:minmax(0,220px) minmax(0,1fr);align-items:center;}}
 .bt-fig svg.hw-jarsvg{max-height:220px;max-width:210px;margin:0 auto;}
-.hw-jarsvg .hw-glass{fill:var(--white);fill-opacity:.5;stroke:var(--muted);stroke-width:2.5;}
+.hw-jarsvg{--hw-g0:#CFE3E8;--hw-g1:#F4FAFB;--hw-glass:#8FA6A1;--hw-lid:#B9C3C1;--hw-lide:#6E7F7B;}
+:root[data-theme="dark"] .hw-jarsvg{--hw-g0:#2A4247;--hw-g1:#1A2A2D;--hw-glass:#6E8681;--hw-lid:#5E6B69;--hw-lide:#A9B7B4;}
+.hw-jarsvg .hw-g0{stop-color:var(--hw-g0);} .hw-jarsvg .hw-g1{stop-color:var(--hw-g1);}
+.hw-jarsvg .hw-glass{fill:url(#hw-glassg);stroke:var(--hw-glass);stroke-width:2.5;stroke-linejoin:round;}
+.hw-jarsvg .hw-thread{fill:none;stroke:var(--hw-glass);stroke-width:1.2;}
+.hw-jarsvg .hw-lid{fill:var(--hw-lid);stroke:var(--hw-lide);stroke-width:1.5;}
+.hw-jarsvg .hw-lidline{fill:none;stroke:var(--hw-lide);stroke-width:.8;stroke-opacity:.7;}
+.hw-jarsvg .hw-gl{fill:url(#hw-gloss);pointer-events:none;}
+.hw-jarsvg .hw-shine{fill:none;stroke:#fff;stroke-opacity:.7;stroke-width:3;stroke-linecap:round;}
+:root[data-theme="dark"] .hw-jarsvg .hw-shine{stroke-opacity:.15;}
 .hw-jarsvg .hw-bead.A{fill:var(--bio-o2);stroke:var(--ink);stroke-width:.6;}
 .hw-jarsvg .hw-bead.a{stroke:var(--ink);stroke-width:.6;}
 .hw-jarsvg .hw-bead-a{fill:var(--bio-deo2);}
@@ -812,10 +922,9 @@
 .tr-chip.armed{border-style:solid;background:var(--ctint);border-color:var(--cink);}
 .tr-chip.placed{border-style:solid;opacity:.75;}
 
-/* Water potential on a phone: the two beakers (and their short caption) stay pinned above the
-   inputs, so each typed ψ is seen moving its water surface. */
+/* Water potential on a phone: the two beakers stay compact above the inputs. (They were sticky;
+   the simplify pass dropped that because a pinned stage covered the inputs while scrolling.) */
 @media (max-width:700px){
-  .bt-stage-slot.wp-pin{position:sticky;top:var(--site-header-h,64px);z-index:2;background:var(--white);border-bottom:2px solid var(--line);padding:2px 0;}
   .bt-stage-slot.wp-pin .sk-cap{font-size:13px;line-height:1.4;}
   .bt-stage-slot.wp-pin .wp-fig{max-height:30vh;width:auto;max-width:100%;display:block;margin:0 auto;}
 }
@@ -833,3 +942,66 @@
   .gb-pts .gb-adj button{min-width:40px;}
   .gb-pts input{width:6ch;}
 }
+
+/* ===== Organism icons (bio-art.js, ApBioArt.icon): body in the species
+   color (color: on the group), details in ink, shared by energy flow,
+   population growth and Simpson's quadrat ===== */
+.ba{color:var(--bio-para);}
+.ba .ba-b{fill:currentColor;stroke:var(--ba-edge,rgba(20,30,28,.55));stroke-width:.9;stroke-linejoin:round;}
+.ba .ba-d{fill:none;stroke:var(--ba-edge,rgba(20,30,28,.6));stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;}
+.ba .ba-d.thin{stroke-width:.7;}
+.ba .ba-f{fill:var(--ba-dark,#1B2A26);}
+.ba .ba-w{fill:var(--ba-light,rgba(255,255,255,.75));}
+.ba .ba-head{fill:var(--ba-dark,#1B2A26);}
+.ba .ba-shell{fill:var(--ba-shell,#C98B5A);stroke:var(--ba-edge,rgba(20,30,28,.6));stroke-width:1.1;stroke-linecap:round;}
+.ba .ba-trunk{fill:#8A6A3E;}
+.ba .ba-beak{fill:#E6B23C;}
+.ba-wings .ba-w,.ba .ba-w.wing{fill:var(--ba-wing,rgba(150,190,215,.55));stroke:var(--ba-edge,rgba(20,30,28,.45));stroke-width:.6;}
+.ba .ba-leaf{fill:#5FA64B;stroke:var(--ba-edge,rgba(20,30,28,.55));stroke-width:.8;}
+:root[data-theme="dark"] .ba{--ba-wing:rgba(190,220,240,.4);--ba-edge:rgba(0,0,0,.6);--ba-dark:#0D1412;--ba-light:rgba(255,255,255,.55);}
+
+/* ===== Simple first, depth on demand (simplify pass 2026-10-09; bio-tools.js simplify) ===== */
+/* The first step, in plain words, next to the figure */
+.bt-first{margin:0;font:800 15px/1.45 var(--font-ui);color:var(--cink);display:flex;gap:8px;align-items:flex-start;}
+.bt-first::before{content:"";flex:0 0 auto;width:10px;height:10px;margin-top:5px;border-radius:50%;background:var(--cink);}
+.bt-card:has(.os-chal:not([hidden])) .bt-first{display:none;}
+/* Figure beside its controls on a wide screen. The figure is sticky only
+   inside .bt-split, so it stops at the end of the controls column and
+   never covers the numbers, graphs or questions below. */
+.bt-split{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.bt-split>*{min-width:0;}
+.bt-split-side{display:grid;gap:14px;align-content:start;grid-template-columns:minmax(0,1fr);}
+.bt-split-side>*{min-width:0;}
+.bt-split-side:empty{display:none;}
+@media (min-width:1000px){
+  .bt-split{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:22px;align-items:start;}
+  .bt-split-fig{position:sticky;top:calc(var(--site-header-h,112px) + 12px);}
+  .bt-split-side .bt-controls{grid-template-columns:minmax(0,1fr);}
+}
+@media (min-width:1000px) and (max-height:700px){.bt-split-fig{position:static;}}
+/* More options: the first data-primary controls show, the rest wait */
+.bt-folded .bt-controls[data-primary="1"]>:nth-child(n+2),
+.bt-folded .bt-controls[data-primary="2"]>:nth-child(n+3),
+.bt-folded .bt-controls[data-primary="3"]>:nth-child(n+4),
+.bt-folded .bt-more{display:none !important;}
+.bt-moreopt{justify-self:start;display:inline-flex;align-items:center;gap:6px;color:var(--cink);}
+.bt-moreopt[aria-expanded="true"] span[aria-hidden]{display:inline-block;transform:rotate(180deg);}
+.bt-controls[hidden]+.bt-moreopt{display:none;}
+/* Show the numbers */
+.bt-numbers{border:2px solid var(--line);border-radius:14px;padding:0 14px;background:var(--white);}
+.bt-numbers[open]{padding-bottom:14px;}
+.bt-numbers>summary{cursor:pointer;min-height:48px;display:flex;flex-wrap:wrap;align-items:center;gap:2px 10px;list-style:none;}
+.bt-numbers>summary::-webkit-details-marker{display:none;}
+.bt-numbers>summary::before{content:var(--disclose);display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--ctint);color:var(--cink);font:900 18px/1 var(--font-ui);transition:transform .2s ease;}
+.bt-numbers[open]>summary::before{transform:rotate(90deg);}
+.bt-numbers-h{font:900 15px var(--font-ui);color:var(--cink);}
+.bt-numbers-sub{font:700 13px var(--font-ui);color:var(--muted);}
+.bt-numbers-body{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.bt-numbers-body>*{min-width:0;}
+/* Why?: a long live explanation clamps to two lines */
+.bt-clamp:not(.is-open){padding-top:0 !important;padding-bottom:0 !important;border-top:10px solid transparent;border-bottom:10px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;}
+.bt-clamp:empty{display:none;}
+.bt-whymore{justify-self:start;margin-top:-8px;min-height:40px;padding:0 4px;border:0;background:none;color:var(--cink);font:800 14px var(--font-ui);text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
+.bt-whymore[hidden]{display:none;}
+/* Hardy-Weinberg drift: before More options, only p and N from the Population group */
+.bt-folded .hw-controls>.hw-group:first-child>.bt-ctl:nth-of-type(n+3){display:none !important;}

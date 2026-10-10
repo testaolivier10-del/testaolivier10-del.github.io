@@ -26,8 +26,8 @@
      Recording: record(slug, items) -> ApChemCore.toolResult, so every item
        (id "<tool>:<content>:<item>") reaches mastery and the review queue.
      Page frame (phone first): frame(app, data, { noun, howTitle }) -> { pick,
-       area }: a compact picker row, the problem, then "About this <noun>"
-       (intro and how it works) folded below it, open on wide screens.
+       area }: the problem, then the picker row behind "More options", then
+       "About this <noun>" (intro and how it works), both closed.
      keepGoing(host, { topic, also }) -> the "Keep going" strip after a graded
        problem: the topic's lesson and notes, its glossary terms (from
        assets/glossary.json), and lessons for any other topic missed. */
@@ -136,6 +136,9 @@
     else ticks(s.x).forEach(function(v){ p.push('<line class="grid" y1="' + T + '" y2="' + (T + ph) + '" x1="' + sx(v).toFixed(1) + '" x2="' + sx(v).toFixed(1) + '"/><text class="tick" x="' + sx(v).toFixed(1) + '" y="' + (T + ph + 18) + '" text-anchor="middle">' + F(v, decimalsOf(s.x.step)) + '</text>'); });
     if(s.y.min < 0 && s.y.max > 0) p.push('<line class="zero" x1="' + L + '" x2="' + (L + pw) + '" y1="' + sy(0).toFixed(1) + '" y2="' + sy(0).toFixed(1) + '"/>');
     p.push('<line class="axis" x1="' + L + '" y1="' + (T + ph) + '" x2="' + (L + pw) + '" y2="' + (T + ph) + '"/><line class="axis" x1="' + L + '" y1="' + T + '" x2="' + L + '" y2="' + (T + ph) + '"/>');
+    // Short outward ticks on both axes, the way a printed figure has them.
+    ticks(s.y).forEach(function(v){ p.push('<line class="atick" x1="' + (L - 4) + '" x2="' + L + '" y1="' + sy(v).toFixed(1) + '" y2="' + sy(v).toFixed(1) + '"/>'); });
+    if(!cats) ticks(s.x).forEach(function(v){ p.push('<line class="atick" y1="' + (T + ph) + '" y2="' + (T + ph + 4) + '" x1="' + sx(v).toFixed(1) + '" x2="' + sx(v).toFixed(1) + '"/>'); });
     if(s.vline) p.push('<line class="vline ' + (s.vline.cls || '') + '" x1="' + sx(s.vline.x).toFixed(1) + '" x2="' + sx(s.vline.x).toFixed(1) + '" y1="' + T + '" y2="' + (T + ph) + '"/>');
     (s.bars || []).forEach(function(b, i){
       var bw = Math.min(70, pw / cats.length * 0.55), x = sx(i) - bw / 2, y0 = sy(Math.max(0, s.y.min)), y1 = sy(b.value);
@@ -181,11 +184,47 @@
   }
   function frame(app, data, o){
     o = o || {};
-    app.insertAdjacentHTML('beforeend', '<div class="bt-pick cd-pick"></div>' + (o.before || '') +
-      '<section class="bt-problem cd-problem"' + (o.hid ? ' aria-labelledby="' + o.hid + '"' : '') + '></section>' + aboutHtml(data, o));
-    var about = app.querySelector('.bt-about');
-    try{ if(about && window.matchMedia('(min-width: 900px)').matches) about.open = true; }catch(e){}
+    // The problem first; the kind picker (and any mode radios) behind "More
+    // options" right under it, then "About this ..." (closed).
+    app.insertAdjacentHTML('beforeend', '<section class="bt-problem cd-problem"' + (o.hid ? ' aria-labelledby="' + o.hid + '"' : '') + '></section>' +
+      '<details class="bt-more cd-more" hidden><summary>More options <span class="bt-more-hint">' + esc(o.moreHint || 'choose the kind of problem') + '</span></summary><div class="bt-more-b"><div class="bt-pick cd-pick"></div>' + (o.before || '') + '</div></details>' + aboutHtml(data, o));
+    var more = app.querySelector('.cd-more');
+    if(o.before) more.hidden = false;
+    // Closed at every width: the problem is what a student lands on.
     return { pick: app.querySelector('.bt-pick'), area: app.querySelector('.cd-problem') };
+  }
+
+  /* ------------------------------------------- simple first, depth on tap */
+  /* cue(text) -> { el, done() }: the one first step, written next to the
+     control it names ("Drag the slider to add base"). done() quiets it after
+     the first action, so it stays as a label but stops shouting. */
+  function cue(text){
+    var el = document.createElement('p');
+    el.className = 'bt-cue';
+    el.innerHTML = '<span class="bt-cue-k">Start here</span> <span class="bt-cue-t">' + text + '</span>';
+    return { el: el, done: function(){ el.classList.add('is-done'); } };
+  }
+  /* moreHtml(inner, hint): the extra settings and notes behind one "More
+     options" disclosure (closed), with a short hint of what is inside. */
+  function moreHtml(inner, hint){
+    return '<details class="bt-more"><summary>More options' + (hint ? ' <span class="bt-more-hint">' + esc(hint) + '</span>' : '') + '</summary><div class="bt-more-b">' + inner + '</div></details>';
+  }
+  /* explain(el, head, body): one short line in view, the reasoning behind
+     "Why?". Redraws keep the same nodes, so an open "Why?" stays open while
+     the student keeps dragging. */
+  function explain(el, head, body){
+    if(!el) return;
+    var box = el.querySelector(':scope > .bt-say');
+    if(!box){
+      el.innerHTML = '<div class="tx-where bt-say"><p class="bt-say-h"></p><details class="bt-why"><summary>Why?</summary><div class="bt-why-b"></div></details></div>';
+      box = el.querySelector('.bt-say');
+    }
+    Array.prototype.slice.call(el.children).forEach(function(c){ if(c !== box) c.remove(); });
+    box.querySelector('.bt-say-h').innerHTML = head;
+    var d = box.querySelector('.bt-why');
+    d.hidden = !body;
+    box.querySelector('.bt-why-b').innerHTML = body || '';
+    return box;
   }
   /* A compact "Kind" picker for the frame's pick row: a label and a select
      on one line. */
@@ -193,6 +232,7 @@
     var sel = choiceSelect({ label: o.label || 'Problem type', options: [{ value: '', label: o.mixed || 'Any kind' }].concat(o.options), value: o.value || '', onChange: o.onChange });
     sel.el.classList.add('bt-inline');
     host.appendChild(sel.el);
+    var more = host.closest('.bt-more'); if(more) more.hidden = false;
     return sel;
   }
 
@@ -626,7 +666,7 @@
   }
 
   window.ApChemTools = {
-    modes: modes, reduced: reduced,
+    modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,
     record: record, report: report, event: event, questions: questions, frq: frq, skillTool: skillTool,

@@ -28,23 +28,23 @@
     var esc = T.esc, F = T.F, Me = M.meiosis;
     var view = 'count', runs = [], series = null;
     var st = { k: data.pairs.value, cross: false, orient: [0, 0, 0, 0], nd: 'none', ndPair: 0, ndCell: 0, step: 0 };
-    var LEN = [46, 36, 26, 20], W = 360;
+    var LEN = [56, 44, 32, 25], W = 360;
 
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
       '<section class="bt-card mei-card" aria-labelledby="mei-h"><h2 id="mei-h">The model</h2>' +
       '<div class="os-modes" role="group" aria-label="Mode"><button type="button" class="bt-btn" data-m="explore" aria-pressed="true">Explore</button><button type="button" class="bt-btn" data-m="make" aria-pressed="false">Make this gamete</button></div>' +
-      '<div class="os-chal mei-chal" hidden></div>' +
+      '<p class="bt-first">Press Next step to walk one cell through meiosis.</p><div class="os-chal mei-chal" hidden></div>' +
       '<div class="mei-stephead"><h3 class="mei-steptitle" tabindex="-1"></h3><p class="mei-steptext"></p></div>' +
-      '<div class="bt-fig mei-stagefig"></div><p class="bt-small mei-taphint"></p>' +
+      '<div class="bt-fig mei-stagefig bt-hero"></div><p class="bt-small mei-taphint"></p>' +
       '<div class="mei-stepper"><button type="button" class="bt-btn" data-a="back">Back</button><button type="button" class="btn-press sm" data-a="next">Next step</button><button type="button" class="btn-press sm alt" data-a="play">Play to gametes</button><div class="mei-stepsel"></div></div>' +
-      '<div class="bt-controls"></div>' +
-      '<div class="mei-lower"><div><div class="mei-words"></div></div><div><div class="bt-tabs" role="group" aria-label="Graph">' +
+      '<div class="bt-controls" data-primary="3"></div>' +
+      '<div class="mei-lower bt-num"><div><div class="mei-words"></div></div><div><div class="bt-tabs" role="group" aria-label="Graph">' +
       '<button type="button" class="bt-btn" data-v="count" aria-pressed="true">Chromosomes per cell</button><button type="button" class="bt-btn" data-v="dna" aria-pressed="false">DNA per cell</button>' +
       '</div><div class="bt-plotwrap"></div></div></div>' +
       '<dl class="bt-readout"></dl><p class="bt-summary"></p>' +
       '<div class="bt-buttons"><button type="button" class="btn-press sm" data-a="run">Record these gametes</button><button type="button" class="btn-press sm alt" data-a="series">Try every line-up</button><button type="button" class="bt-btn" data-a="clear">Clear runs</button></div>' +
       '<p class="bt-small bt-runnote" role="status" aria-live="polite"></p>' +
-      '<div class="mei-results"></div>' +
+      '<div class="mei-results bt-num"></div>' +
       '<details class="bt-data"><summary>Data tables: your runs and every cell at each step</summary><div class="bt-tables"></div></details></section>' +
       '<section class="bt-card" aria-labelledby="mei-q"><h2 id="mei-q">Questions about this model</h2><div class="bt-qs bio-qs"></div></section>');
     var card = app.querySelector('.bt-card'), ctl = card.querySelector('.bt-controls');
@@ -99,6 +99,8 @@
       ndPairWrap.innerHTML = ''; ndPairWrap.appendChild(s.el);
     }
     buildOrient(); buildNdPair();
+    // The two switches that change the gametes first; the rest under More options.
+    [cofs, ndSel.el, ndPairWrap, pairSel.el, orFs].forEach(function(x){ ctl.appendChild(x); });
 
     var stepSel = T.choiceSelect({ label: 'Go to step', value: 0, options: data.stages.map(function(s, i){ return { value: i, label: (i + 1) + '. ' + s.name }; }), onChange: function(v){ go(+v); } });
     card.querySelector('.mei-stepsel').appendChild(stepSel.el);
@@ -146,15 +148,37 @@
 
     /* ------------------------------------------------------ figure */
     var lens = function(p){ return LEN[p] || 20; };
+    /* A chromatid: a rounded rod pinched at its centromere, with the same
+       faint bands on both homologs of a pair; a crossed-over tip is the
+       other parent's color (paternal also striped, so it is not color alone). */
     function chromatid(x, cy, t, w){
-      var L = lens(t.pair), top = cy - 0.45 * L, tip = 0.3 * L;
+      var L = lens(t.pair), top = cy - 0.45 * L, bot = top + L, tip = top + 0.3 * L, r = w / 2, k = 1.4;
       var cls = function(f){ return f === 'M' ? 'mei-m' : 'mei-p'; };
       var fill = function(f){ return f === 'P' ? ' fill="url(#mei-stripe)"' : ''; };
-      return '<rect class="' + cls(t.tip) + '"' + fill(t.tip) + ' x="' + x.toFixed(1) + '" y="' + top.toFixed(1) + '" width="' + w + '" height="' + tip.toFixed(1) + '" rx="2"/>' +
-        '<rect class="' + cls(t.from) + '"' + fill(t.from) + ' x="' + x.toFixed(1) + '" y="' + (top + tip).toFixed(1) + '" width="' + w + '" height="' + (L - tip).toFixed(1) + '" rx="2"/>' +
-        '<rect class="mei-out" x="' + x.toFixed(1) + '" y="' + top.toFixed(1) + '" width="' + w + '" height="' + L + '" rx="3"/>';
+      var X = function(v){ return v.toFixed(1); };
+      var body = function(y0, y1, capTop, capBot){
+        var d = 'M' + X(x) + ' ' + X(y0 + (capTop ? r : 0));
+        if(capTop) d += 'A' + r + ' ' + r + ' 0 0 1 ' + X(x + w) + ' ' + X(y0 + r); else d += 'H' + X(x + w);
+        if(y0 < cy && y1 > cy) d += 'V' + X(cy - 3) + 'Q' + X(x + w - k) + ' ' + X(cy) + ' ' + X(x + w) + ' ' + X(cy + 3);
+        d += 'V' + X(y1 - (capBot ? r : 0));
+        if(capBot) d += 'A' + r + ' ' + r + ' 0 0 1 ' + X(x) + ' ' + X(y1 - r); else d += 'H' + X(x);
+        if(y0 < cy && y1 > cy) d += 'V' + X(cy + 3) + 'Q' + X(x + k) + ' ' + X(cy) + ' ' + X(x) + ' ' + X(cy - 3);
+        return d + 'Z';
+      };
+      var bands = [0.12, 0.2, 0.62, 0.74, 0.86].map(function(f){ var y = top + f * L; return 'M' + X(x + 1) + ' ' + X(y) + 'H' + X(x + w - 1); }).join('');
+      return '<path class="' + cls(t.tip) + '"' + fill(t.tip) + ' d="' + body(top, tip, true, false) + '"/>' +
+        '<path class="' + cls(t.from) + '"' + fill(t.from) + ' d="' + body(tip, bot, false, true) + '"/>' +
+        '<path class="mei-band" d="' + bands + '"/><path class="mei-shine" d="M' + X(x + 2.2) + ' ' + X(top + r + 1) + 'V' + X(cy - 4) + 'M' + X(x + 2.2) + ' ' + X(cy + 4) + 'V' + X(bot - r - 1) + '"/>' +
+        '<path class="mei-out" d="' + body(top, bot, true, true) + '"/>';
     }
-    var CW = 8, SG = 2;
+    /* A spindle pole (centrosome with its aster) and the fibers from it. */
+    function pole(x, y, dir){
+      var s = '<g class="mei-pole-c">';
+      for(var i = -3; i <= 3; i++){ var a = Math.PI * (dir > 0 ? 1 : 0) + i * 0.38; s += '<path class="mei-aster" d="M' + x.toFixed(1) + ' ' + y.toFixed(1) + 'l' + (Math.cos(a) * 9).toFixed(1) + ' ' + (Math.sin(a) * 9).toFixed(1) + '"/>'; }
+      return s + '<rect x="' + (x - 3.5).toFixed(1) + '" y="' + (y - 1.3).toFixed(1) + '" width="7" height="2.6" rx="1.2"/><rect x="' + (x - 1.3).toFixed(1) + '" y="' + (y - 3.5).toFixed(1) + '" width="2.6" height="7" rx="1.2"/></g>';
+    }
+    function fiber(px, py, tx, ty){ return '<path class="mei-fib" d="M' + px.toFixed(1) + ' ' + py.toFixed(1) + 'Q' + ((px + tx) / 2).toFixed(1) + ' ' + ((py + ty) / 2 + (ty - py) * 0.15).toFixed(1) + ' ' + tx.toFixed(1) + ' ' + ty.toFixed(1) + '"/>'; }
+    var CW = 10, SG = 1;
     function widthOf(ch){ return ch.c.length * CW + (ch.c.length - 1) * SG; }
     /* One chromosome with its centromere and label, left edge at x. */
     function chrom(x, cy, ch, ly){
@@ -176,17 +200,18 @@
       return s;
     }
     function cellBox(x, y, w, h, title){
-      return '<rect class="mei-cell" x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="' + Math.min(36, h / 3) + '"/>' + (title ? '<text class="mei-ttl" x="' + (x + w / 2) + '" y="' + (y + 16) + '" text-anchor="middle">' + esc(title) + '</text>' : '');
+      var rr = Math.min(h / 2, w / 2, 70);
+      return '<rect class="mei-cell" x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="' + rr + '"/><rect class="mei-memb" x="' + (x + 2.5) + '" y="' + (y + 2.5) + '" width="' + (w - 5) + '" height="' + (h - 5) + '" rx="' + (rr - 2.5) + '"/>' + (title ? '<text class="mei-ttl" x="' + (x + w / 2) + '" y="' + (y + 16) + '" text-anchor="middle">' + esc(title) + '</text>' : '');
     }
     function maxLen(list){ return Math.max.apply(null, list.map(function(ch){ return lens(ch.pair); }).concat([20])); }
     /* Rows along a plate (metaphase): one row per item, each item drawn by fn(cy). */
     function figure(r){
       var s = r.stages[st.step], id = s.id, out = [], H;
-      var defs = '<defs><pattern id="mei-stripe" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="mei-pbg" width="5" height="5"/><rect class="mei-pst" width="2" height="5"/></pattern></defs>';
+      var defs = '<defs><pattern id="mei-stripe" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="mei-pbg" width="5" height="5"/><rect class="mei-pst" width="2" height="5"/></pattern><radialGradient id="mei-cyto" cx=".5" cy=".45" r=".7"><stop offset="0" class="mei-c0"/><stop offset="1" class="mei-c1"/></radialGradient></defs>', fib = [], cells = [];
       if(id === 'g1' || id === 's' || id === 'pro1'){
         var list = s.cells[0], ml = maxLen(list);
         H = ml + 70;
-        out.push(cellBox(20, 6, W - 40, H - 12, ''));
+        cells.push(cellBox(20, 6, W - 40, H - 12, ''));
         out.push(row(list, W / 2, 6 + 22 + 0.45 * ml, id === 'pro1' ? 16 : 12, id === 'pro1'));
         if(id === 'pro1') out.push('<text class="mei-note" x="' + (W / 2) + '" y="' + (H - 12) + '" text-anchor="middle">' + (st.cross ? 'Homologs paired; nonsister chromatids swapped tips' : 'Homologs paired; no crossing over') + '</text>');
       } else if(id === 'meta1' || id === 'ana1'){
@@ -195,12 +220,14 @@
           rows.push({ pair: i, y: y + 0.45 * lens(i) }); y += lens(i) + 22;
         }
         H = y + 18;
-        out.push(cellBox(20, 6, W - 40, H - 12, ''));
+        cells.push(cellBox(20, 6, W - 40, H - 12, ''));
         out.push('<text class="mei-pole" x="30" y="24">cell 1 side</text><text class="mei-pole" x="' + (W - 30) + '" y="24" text-anchor="end">cell 2 side</text>');
         if(id === 'meta1'){
           out.push('<line class="mei-plate" x1="' + (W / 2) + '" x2="' + (W / 2) + '" y1="14" y2="' + (H - 14) + '"/>');
+          fib.push(pole(32, H / 2, -1), pole(W - 32, H / 2, 1));
           rows.forEach(function(rw){
             var L = s.sides[0][rw.pair], R = s.sides[1][rw.pair], wl = widthOf(L), wr = widthOf(R), h = lens(rw.pair);
+            fib.push(fiber(32, H / 2, W / 2 - 2 - wl / 2, rw.y), fiber(W - 32, H / 2, W / 2 + 2 + wr / 2, rw.y));
             var ndHere = st.nd === 'I' && st.ndPair === rw.pair;
             out.push('<g class="mei-tap" data-flip="' + rw.pair + '" role="button" tabindex="0" aria-label="Pair ' + (rw.pair + 1) + ': ' + (st.orient[rw.pair] ? 'paternal' : 'maternal') + ' homolog faces cell 1. Flip it.">' +
               '<rect class="mei-hit" x="' + (W / 2 - wl - 26) + '" y="' + (rw.y - 0.45 * h - 6).toFixed(1) + '" width="' + (wl + wr + 52) + '" height="' + (h + 24) + '" rx="10"/>' +
@@ -211,10 +238,11 @@
           });
         } else {
           var c1 = s.cells[0], c2 = s.cells[1];
+          fib.push(pole(26, H / 2, -1), pole(W - 26, H / 2, 1));
           rows.forEach(function(rw){
             var l = c1.filter(function(ch){ return ch.pair === rw.pair; }), rr = c2.filter(function(ch){ return ch.pair === rw.pair; });
-            var x = 44; l.forEach(function(ch){ out.push(chrom(x, rw.y, ch)); x += widthOf(ch) + 8; });
-            x = W - 44; rr.slice().reverse().forEach(function(ch){ x -= widthOf(ch); out.push(chrom(x, rw.y, ch)); x -= 8; });
+            var x = 44; l.forEach(function(ch){ fib.push(fiber(26, H / 2, x + widthOf(ch) / 2, rw.y)); out.push(chrom(x, rw.y, ch)); x += widthOf(ch) + 8; });
+            x = W - 44; rr.slice().reverse().forEach(function(ch){ x -= widthOf(ch); fib.push(fiber(W - 26, H / 2, x + widthOf(ch) / 2, rw.y)); out.push(chrom(x, rw.y, ch)); x -= 8; });
             if(!rr.length || !l.length) out.push('<text class="mei-note" x="' + (W / 2) + '" y="' + (rw.y + 4) + '" text-anchor="middle">pair ' + (rw.pair + 1) + ' did not separate</text>');
           });
         }
@@ -223,26 +251,28 @@
         if(id === 'mei1'){
           var ml2 = maxLen(items[0].concat(items[1]));
           H = ml2 + 76;
-          [0, 1].forEach(function(ci){ var x0 = 10 + ci * (cw + 10); out.push(cellBox(x0, 6, cw, H - 12, 'Cell ' + (ci + 1) + ': ' + items[ci].length + ' chromosomes')); out.push(row(items[ci], x0 + cw / 2, 36 + 0.45 * ml2, 10)); });
+          [0, 1].forEach(function(ci){ var x0 = 10 + ci * (cw + 10); cells.push(cellBox(x0, 6, cw, H - 12, 'Cell ' + (ci + 1) + ': ' + items[ci].length + ' chromosomes')); out.push(row(items[ci], x0 + cw / 2, 36 + 0.45 * ml2, 10)); });
         } else {
           var heights = [0, 1].map(function(ci){ var yy = 30; items[ci].forEach(function(ch){ yy += lens(ch.pair) + 22; }); return yy; });
           H = Math.max(heights[0], heights[1]) + 14;
           [0, 1].forEach(function(ci){
             var x0 = 10 + ci * (cw + 10), mid = x0 + cw / 2, yy = 30;
-            out.push(cellBox(x0, 6, cw, H - 12, 'Cell ' + (ci + 1)));
+            cells.push(cellBox(x0, 6, cw, H - 12, 'Cell ' + (ci + 1)));
             if(id === 'meta2') out.push('<line class="mei-plate" x1="' + mid + '" x2="' + mid + '" y1="24" y2="' + (H - 14) + '"/>');
+            fib.push(pole(x0 + 14, H / 2, -1), pole(x0 + cw - 14, H / 2, 1));
             items[ci].forEach(function(ch){
               var cy = yy + 0.45 * lens(ch.pair) + 6;
               if(id === 'meta2'){
                 var stuck = st.nd === 'II' && st.ndCell === ci && st.ndPair === ch.pair, wch = widthOf(ch);
+                fib.push(fiber(x0 + 14, H / 2, mid - wch / 2 + 2, cy), fiber(x0 + cw - 14, H / 2, mid + wch / 2 - 2, cy));
                 out.push('<g class="mei-tap mei-nd2' + (stuck ? ' on' : '') + '" data-nd2="' + ci + ':' + ch.pair + '" role="button" tabindex="0" aria-pressed="' + stuck + '" aria-label="Cell ' + (ci + 1) + ', chromosome ' + (ch.pair + 1) + ch.from + ': ' + (stuck ? 'sisters set to stay together. Tap to let them separate.' : 'make its sister chromatids fail to separate') + '">' +
                   '<rect class="mei-hit" x="' + (mid - wch / 2 - 18).toFixed(1) + '" y="' + (cy - 0.45 * lens(ch.pair) - 6).toFixed(1) + '" width="' + (wch + 36) + '" height="' + (lens(ch.pair) + 22) + '" rx="10"/>' + chrom(mid - wch / 2, cy, ch) +
                   (stuck ? '<text class="mei-ndtxt" x="' + (mid + wch / 2 + 6) + '" y="' + (cy + 4) + '">✕</text>' : '') + '</g>');
               }
               else {
                 var t0 = ch.c[0], t1 = ch.c[1], together = st.nd === 'II' && st.ndCell === ci && st.ndPair === ch.pair;
-                if(together){ out.push(chrom(x0 + 14, cy, { pair: ch.pair, from: ch.from, c: [t0] }) + chrom(x0 + 14 + CW + 6, cy, { pair: ch.pair, from: ch.from, c: [t1] }) + '<text class="mei-note" x="' + (mid + 8) + '" y="' + (cy + 4) + '">sisters did not separate</text>'); }
-                else out.push(chrom(x0 + 14, cy, { pair: ch.pair, from: t0.from, c: [t0] }) + chrom(x0 + cw - 14 - CW, cy, { pair: ch.pair, from: t1.from, c: [t1] }));
+                if(together){ fib.push(fiber(x0 + 14, H / 2, x0 + 22 + CW / 2, cy)); out.push(chrom(x0 + 22, cy, { pair: ch.pair, from: ch.from, c: [t0] }) + chrom(x0 + 22 + CW + 6, cy, { pair: ch.pair, from: ch.from, c: [t1] }) + '<text class="mei-note" x="' + (mid + 8) + '" y="' + (cy + 4) + '">sisters did not separate</text>'); }
+                else { fib.push(fiber(x0 + 14, H / 2, x0 + 22 + CW / 2, cy), fiber(x0 + cw - 14, H / 2, x0 + cw - 22 - CW / 2, cy)); out.push(chrom(x0 + 22, cy, { pair: ch.pair, from: t0.from, c: [t0] }) + chrom(x0 + cw - 22 - CW, cy, { pair: ch.pair, from: t1.from, c: [t1] })); }
               }
               yy += lens(ch.pair) + 22;
             });
@@ -253,12 +283,12 @@
         H = 2 * gh + 22;
         s.cells.forEach(function(cell, gi){
           var x0 = 10 + (gi % 2) * (gw + 10), y0 = 6 + Math.floor(gi / 2) * (gh + 10), g = r.gametes[gi];
-          out.push(cellBox(x0, y0, gw, gh, 'Gamete ' + (gi + 1) + ': ' + g.n + ' (' + g.label + ')'));
+          cells.push(cellBox(x0, y0, gw, gh, 'Gamete ' + (gi + 1) + ': ' + g.n + ' (' + g.label + ')'));
           if(cell.length) out.push(row(cell, x0 + gw / 2, y0 + 30 + 0.45 * maxLen(cell), 10));
           else out.push('<text class="mei-note" x="' + (x0 + gw / 2) + '" y="' + (y0 + gh / 2) + '" text-anchor="middle">no chromosomes</text>');
         });
       }
-      return '<svg class="mei-fig" viewBox="0 0 ' + W + ' ' + Math.round(H) + '" role="group" aria-label="' + esc(words(r).join(' ')) + '">' + defs + out.join('') + '</svg>';
+      return '<svg class="mei-fig" viewBox="0 0 ' + W + ' ' + Math.round(H) + '" role="group" aria-label="' + esc(words(r).join(' ')) + '">' + defs + cells.join('') + '<g class="mei-spindle">' + fib.join('') + '</g>' + out.join('') + '</svg>';
     }
     /* Every cell at this step in words: the figure's text twin. */
     function words(r){

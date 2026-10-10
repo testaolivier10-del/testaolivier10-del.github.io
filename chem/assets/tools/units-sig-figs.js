@@ -38,8 +38,8 @@
     ctxs = ctxs.slice().sort(function(a, b){ return SETUP.indexOf(a.kind) - SETUP.indexOf(b.kind); });
     host.innerHTML = '<section class="bt-problem us-card" aria-labelledby="usx-h"><div class="tx-head"><h2 id="usx-h" class="us-title"></h2></div><p class="us-stem"></p>' +
       '<div class="us-build"></div>' +
-      '<div class="bt-buttons"><button type="button" class="bt-btn us-new">New numbers</button><button type="button" class="btn-press sm us-go">Answer one for credit</button></div>' +
-      '<div class="bt-pick us-pick"></div></section>';
+      '<div class="bt-buttons"><button type="button" class="btn-press sm us-go">Answer one for credit</button></div>' +
+      T.moreHtml('<div class="bt-pick us-pick"></div><div class="bt-buttons"><button type="button" class="bt-btn us-new">New numbers</button></div>', 'another habit, new numbers') + '</section>';
     var pick = host.querySelector('.us-pick');
     if(ctxs.length > 1){ var sel = T.choiceSelect({ label: 'Habit', options: ctxs.map(function(c, i){ return { value: i, label: KIND[c.kind] }; }), value: 0, onChange: function(v){ ci = +v; fresh(); } }); sel.el.classList.add('bt-inline'); pick.appendChild(sel.el); }
     host.querySelector('.us-new').addEventListener('click', function(){ seed++; fresh(); });
@@ -55,7 +55,7 @@
       // Tiles in a fixed shuffled order, so position gives nothing away.
       var order = p.setup.factors.map(function(f, i){ return i; }), r = M.rng(seed + 3);
       for(var i = order.length - 1; i > 0; i--){ var j = Math.floor(r() * (i + 1)), t = order[i]; order[i] = order[j]; order[j] = t; }
-      host.querySelector('.us-build').innerHTML = '<p class="bt-small us-how">Put each quantity on top (×) or on the bottom (÷), or leave it out. Units that cancel are struck through.</p><div class="us-tiles">' + order.map(function(i){
+      host.querySelector('.us-build').innerHTML = '<p class="bt-cue us-how"><span class="bt-cue-k">Start here</span> <span>Put each quantity on top (×) or on the bottom (÷), or leave it out. Units that cancel are struck through.</span></p><div class="us-tiles">' + order.map(function(i){
         var f = p.setup.factors[i], nm = 'usx-' + seed + '-' + i;
         return '<fieldset class="us-tile" data-i="' + i + '"><legend><b>' + esc(f.v) + '</b> <span class="us-u">' + esc(f.u) + '</span><span class="bt-small"> ' + esc(f.label) + (f.note ? ' (' + esc(f.note) + ')' : '') + '</span></legend>' +
           '<div class="us-seg">' + [[1, '× top'], [-1, '÷ bottom'], [0, 'leave out']].map(function(o){
@@ -63,7 +63,7 @@
           }).join('') + '</div></fieldset>';
       }).join('') + '</div>';
       host.querySelector('.us-build').insertAdjacentHTML('afterbegin', '<div class="us-sticky"><div class="us-frac" aria-hidden="true"></div><div class="us-live" role="status" aria-live="polite"></div></div>');
-      host.querySelectorAll('.us-tile input').forEach(function(inp){ inp.addEventListener('change', function(){ place[+inp.closest('.us-tile').getAttribute('data-i')] = +inp.value; draw(); }); });
+      host.querySelectorAll('.us-tile input').forEach(function(inp){ inp.addEventListener('change', function(){ place[+inp.closest('.us-tile').getAttribute('data-i')] = +inp.value; host.querySelector('.us-how').classList.add('is-done'); draw(); }); });
       draw();
     }
     function tokens(u, sign){
@@ -77,8 +77,10 @@
       // Unit chips: each placed factor's units, split into top and bottom.
       var top = [], bot = [];
       used.forEach(function(x){ tokens(x.f.u, x.p).forEach(function(t){ (t.top ? top : bot).push({ u: t.u, i: x.i, cancel: false }); }); });
-      top.forEach(function(a){ var b = bot.filter(function(c){ return !c.cancel && c.u === a.u; })[0]; if(b){ a.cancel = b.cancel = true; } });
-      var chip = function(c){ return '<span class="us-chip' + (c.cancel ? ' is-cancel' : '') + '">' + esc(c.u) + '</span>'; };
+      var pair = 0;
+      top.forEach(function(a){ var b = bot.filter(function(c){ return !c.cancel && c.u === a.u; })[0]; if(b){ a.cancel = b.cancel = true; a.pair = b.pair = (pair++ % 4) + 1; } });
+      // A cancelled pair shares a color and a slash, the way it is marked by hand.
+      var chip = function(c){ return '<span class="us-chip' + (c.cancel ? ' is-cancel us-p' + c.pair : '') + '">' + esc(c.u) + '</span>'; };
       var valTop = used.filter(function(x){ return x.p > 0; }).map(function(x){ return esc(x.f.v); }), valBot = used.filter(function(x){ return x.p < 0; }).map(function(x){ return esc(x.f.v); });
       host.querySelector('.us-frac').innerHTML = used.length ? '<div class="us-fr"><div class="us-num"><span class="us-vals">' + (valTop.join(' × ') || '1') + '</span><span class="us-chips">' + (top.map(chip).join('') || '<span class="us-chip is-one">1</span>') + '</span></div>' +
         (bot.length || valBot.length ? '<div class="us-bar"></div><div class="us-den"><span class="us-vals">' + valBot.join(' × ') + '</span><span class="us-chips">' + bot.map(chip).join('') + '</span></div>' : '') + '</div>' : '<p class="bt-small us-none">Your setup appears here.</p>';

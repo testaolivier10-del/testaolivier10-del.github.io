@@ -660,18 +660,40 @@
     HCl: [{ el: 'H', dx: -10, dy: 0, r: 6 }, { el: 'Cl', dx: 5, dy: 0, r: 10 }],
     HA: [{ el: 'H', dx: -10, dy: 0, r: 6 }, { el: 'A', dx: 5, dy: 0, r: 10 }],
     'A-': [{ el: 'A', dx: 0, dy: 0, r: 10, label: 'A⁻' }],
-    'H3O+': [{ el: 'O', dx: 0, dy: 0, label: 'O⁺' }, { el: 'H', dx: -10, dy: 7, r: 6 }, { el: 'H', dx: 10, dy: 7, r: 6 }, { el: 'H', dx: 0, dy: -12, r: 6 }]
+    'H3O+': [{ el: 'O', dx: 0, dy: 0, label: 'O⁺' }, { el: 'H', dx: -10, dy: 7, r: 6 }, { el: 'H', dx: 10, dy: 7, r: 6 }, { el: 'H', dx: 0, dy: -12, r: 6 }],
+    // Gas-phase species the equilibrium tools draw. Flat projections with the
+    // real shapes: NO₂, SO₂ and NOCl bent, SO₃ trigonal planar, PCl₃ a
+    // pyramid seen from above, PCl₅ a trigonal bipyramid (one equatorial Cl
+    // behind P). z orders atoms back to front.
+    I2: [{ el: 'I', dx: -11, dy: 0, r: 12 }, { el: 'I', dx: 11, dy: 0, r: 12 }],
+    HI: [{ el: 'H', dx: -13, dy: 0, r: 6 }, { el: 'I', dx: 4, dy: 0, r: 12 }],
+    NO: [{ el: 'N', dx: -8, dy: 0 }, { el: 'O', dx: 8, dy: 0 }],
+    NO2: [{ el: 'O', dx: -13, dy: 6 }, { el: 'O', dx: 13, dy: 6 }, { el: 'N', dx: 0, dy: -2, z: 1 }],
+    N2O4: [{ el: 'O', dx: -17, dy: -9, r: 8 }, { el: 'O', dx: -17, dy: 9, r: 8 }, { el: 'O', dx: 17, dy: -9, r: 8 }, { el: 'O', dx: 17, dy: 9, r: 8 }, { el: 'N', dx: -7, dy: 0, r: 8, z: 1 }, { el: 'N', dx: 7, dy: 0, r: 8, z: 1 }],
+    SO2: [{ el: 'O', dx: -14, dy: 7 }, { el: 'O', dx: 14, dy: 7 }, { el: 'S', dx: 0, dy: -2, r: 11, z: 1 }],
+    SO3: [{ el: 'O', dx: 0, dy: -16 }, { el: 'O', dx: -14, dy: 8 }, { el: 'O', dx: 14, dy: 8 }, { el: 'S', dx: 0, dy: 0, r: 10, z: 1 }],
+    NOCl: [{ el: 'O', dx: -14, dy: 6 }, { el: 'Cl', dx: 15, dy: 6, r: 10 }, { el: 'N', dx: 0, dy: -2, z: 1 }],
+    PCl3: [{ el: 'Cl', dx: 0, dy: -16, r: 9 }, { el: 'Cl', dx: -14, dy: 8, r: 9 }, { el: 'Cl', dx: 14, dy: 8, r: 9 }, { el: 'P', dx: 0, dy: 0, r: 10, z: 1 }],
+    PCl5: [{ el: 'Cl', dx: 7, dy: -7, r: 8 }, { el: 'P', dx: 0, dy: 0, r: 10, z: 1 }, { el: 'Cl', dx: 0, dy: -17, r: 8, z: 2 }, { el: 'Cl', dx: 0, dy: 17, r: 8, z: 2 }, { el: 'Cl', dx: -17, dy: 2, r: 8, z: 2 }, { el: 'Cl', dx: 15, dy: 7, r: 8, z: 2 }]
   };
-  var ELCLS = { A: 'pa', B: 'pb', H: 'ph', O: 'po', N: 'pn', Cl: 'pcl', C: 'pc' };
-  var NAMES = { A: 'A', B: 'B', A2: 'A₂', B2: 'B₂', AB: 'AB', H2: 'H₂', O2: 'O₂', N2: 'N₂', Cl2: 'Cl₂', CO: 'CO', H2O: 'H₂O', NH3: 'NH₃', CO2: 'CO₂', HCl: 'HCl', HA: 'HA', 'A-': 'A⁻', 'H3O+': 'H₃O⁺' };
+  var ELCLS = { A: 'pa', B: 'pb', H: 'ph', O: 'po', N: 'pn', Cl: 'pcl', C: 'pc', I: 'pi', S: 'ps', P: 'pp', cat: 'pcat', ani: 'pani' };
+  var NAMES = { I2: 'I₂', HI: 'HI', NO: 'NO', NO2: 'NO₂', N2O4: 'N₂O₄', SO2: 'SO₂', SO3: 'SO₃', NOCl: 'NOCl', PCl3: 'PCl₃', PCl5: 'PCl₅', A: 'A', B: 'B', A2: 'A₂', B2: 'B₂', AB: 'AB', H2: 'H₂', O2: 'O₂', N2: 'N₂', Cl2: 'Cl₂', CO: 'CO', H2O: 'H₂O', NH3: 'NH₃', CO2: 'CO₂', HCl: 'HCl', HA: 'HA', 'A-': 'A⁻', 'H3O+': 'H₃O⁺' };
   function rot(dx, dy, a){ var c = Math.cos(a), s = Math.sin(a); return [dx * c - dy * s, dx * s + dy * c]; }
   function atomSvg(x, y, at){
     var rr = at.r || 9, lab = at.label || at.el, fs = rr < 7 ? 8 : lab.length > 1 ? 9 : 11;
-    return '<g class="pt-atom ' + (ELCLS[at.el] || 'pa') + '"><circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + rr + '"/><text x="' + x.toFixed(1) + '" y="' + (y + fs * 0.36).toFixed(1) + '" text-anchor="middle" font-size="' + fs + '">' + lab + '</text></g>';
+    // A space-filling sphere: the colored body, a soft shadow on the lower
+    // right and a specular highlight on the upper left (no gradients, so the
+    // markup works in any SVG it is pasted into). The circle comes first:
+    // scripts/lib/apchem-tool-checks/particle-diagrams.mjs reads its cx/cy.
+    var X = x.toFixed(1), Y = y.toFixed(1);
+    return '<g class="pt-atom ' + (ELCLS[at.el] || 'pa') + '"><circle cx="' + X + '" cy="' + Y + '" r="' + rr + '"/>' +
+      '<path class="pt-shade" d="M' + (x - rr * 0.707).toFixed(1) + ' ' + (y + rr * 0.707).toFixed(1) + 'A' + rr + ' ' + rr + ' 0 0 0 ' + (x + rr * 0.707).toFixed(1) + ' ' + (y - rr * 0.707).toFixed(1) + 'A' + (rr * 1.15).toFixed(1) + ' ' + (rr * 1.15).toFixed(1) + ' 0 0 1 ' + (x - rr * 0.707).toFixed(1) + ' ' + (y + rr * 0.707).toFixed(1) + 'Z"/>' +
+      '<ellipse class="pt-hi" cx="' + (x - rr * 0.36).toFixed(1) + '" cy="' + (y - rr * 0.4).toFixed(1) + '" rx="' + (rr * 0.36).toFixed(1) + '" ry="' + (rr * 0.24).toFixed(1) + '" transform="rotate(-35 ' + (x - rr * 0.36).toFixed(1) + ' ' + (y - rr * 0.4).toFixed(1) + ')"/>' +
+      '<text x="' + X + '" y="' + (y + fs * 0.36).toFixed(1) + '" text-anchor="middle" font-size="' + fs + '">' + lab + '</text></g>';
   }
   function molSvg(kind, x, y, a){
     var t = TEMPL[kind] || TEMPL.A;
-    return '<g class="pt-mol">' + t.slice().sort(function(p, q){ return (q.r || 9) - (p.r || 9); }).map(function(at){ var p = rot(at.dx, at.dy, a || 0); return atomSvg(x + p[0], y + p[1], at); }).join('') + '</g>';
+    return '<g class="pt-mol">' + t.slice().sort(function(p, q){ return (p.z || 0) - (q.z || 0) || (q.r || 9) - (p.r || 9); }).map(function(at){ var p = rot(at.dx, at.dy, a || 0); return atomSvg(x + p[0], y + p[1], at); }).join('') + '</g>';
   }
   function describe(counts, names){
     names = names || {};
@@ -713,7 +735,7 @@
     }
     var lab = ion.name + ' (' + ion.label + ') with six water molecules around it, ' + (orient === 'O-in' ? 'each with its oxygen end pointing toward the ion' : orient === 'H-in' ? 'each with its hydrogen ends pointing toward the ion' : 'in no pattern: some point oxygen and some point hydrogen toward the ion');
     return '<svg class="chem-svg pt-box" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + lab + '"><rect class="pt-frame" x="1" y="1" width="' + (W - 2) + '" height="' + (H - 2) + '" rx="10"/>' + g.join('') +
-      '<g class="pt-atom ' + (ion.charge > 0 ? 'pcat' : 'pani') + '"><circle cx="' + cx + '" cy="' + cy + '" r="18"/><text x="' + cx + '" y="' + (cy + 4) + '" text-anchor="middle" font-size="11">' + ion.label + '</text></g></svg>';
+      atomSvg(cx, cy, { el: ion.charge > 0 ? 'cat' : 'ani', r: 18, label: ion.label }).replace('font-size="9"', 'font-size="11"') + '</svg>';
   }
   /* ctx: { id, topic, kind: 'hydration' (ions: [{ name, label, el, charge }])
      | 'acid' (acids: [{ name, formula, anion, strong?, Ka?, c }])
@@ -1044,7 +1066,7 @@
     buffer: { generate: bufGenerate },
     titration: { generate: titGenerate, pH: titrationPH, curve: titrationCurve, eq: titrationEq, nbar: nbar, INDICATORS: INDICATORS,
       species: titrationSpecies, region: titrationRegion, cross: titrationCross },
-    particles: { generate: ptGenerate, box: boxSvg, hydration: hydrationSvg, mol: molSvg, describe: describe },
+    particles: { generate: ptGenerate, box: boxSvg, hydration: hydrationSvg, mol: molSvg, describe: describe, has: function(k){ return !!TEMPL[k]; } },
     units: { generate: unGenerate, sigFigsOf: sfOf, decimalsOf: decOf }
   };
   for(var k in D) M[k] = D[k];

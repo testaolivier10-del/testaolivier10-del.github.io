@@ -220,6 +220,7 @@
     box.innerHTML =
       (two ? '<h3 class="pc-stage-h" id="' + sid + '-h" tabindex="-1"><span class="pc-stage-n">Stage ' + (k + 1) + ' of 2</span> ' + esc(st.label) + '</h3><p class="pc-prompt">' + esc(st.prompt) + '</p>'
            : '<h3 class="pc-stage-h pc-sr" id="' + sid + '-h">Your predictions</h3>') +
+      (k === 0 ? '<p class="kt-first pc-first">Call each one: up, down or no change. Then press Run it.</p>' : '') +
       dashHtml(s, st, sid) +
       '<div class="pc-vars">' + st.variables.map(function(v, i){
         var nid = sid + '-v' + i;
@@ -295,8 +296,7 @@
         var ans = dirOf(v.answer);
         fb.innerHTML =
           '<p class="pc-verdict">' + (ok ? '<b class="ok">Right:</b> it ' + ans.word + '.' : '<b class="no">Not quite.</b> You said it ' + dirOf(picks[i]).word + '; it ' + ans.word + '.') + '</p>' +
-          chainHtml(st, v) +
-          '<p class="pc-why">' + esc(v.why) + '</p>' +
+          (kit() && kit().why ? kit().why(chainHtml(st, v) + '<p class="pc-why">' + esc(v.why) + '</p>') : chainHtml(st, v) + '<p class="pc-why">' + esc(v.why) + '</p>') +
           '<div class="pc-report">' + report(id) + '</div>';
       });
       res.right += right; res.total += st.variables.length;
@@ -358,13 +358,24 @@
   };
   function shortName(n){ var k = String(n).toLowerCase(); return SHORT[k] || n; }
   function dialSvg(){
-    // A half dial: lower on the left, higher on the right, baseline straight up.
+    /* A half dial, drawn as an instrument gauge (visual polish 2026-10): bezel,
+       face, graduated ticks, a tapered needle and a glass sheen. Lower on the
+       left, higher on the right, baseline straight up; geometry unchanged. */
+    var ticks = '';
+    for(var i = 0; i <= 12; i++){
+      var a = Math.PI * (1 - i / 12), big = i % 3 === 0, r0 = 31, r1 = big ? 25 : 27.5;
+      ticks += '<path class="pc-tk' + (big ? ' big' : '') + '" d="M' + (42 + Math.cos(a) * r0).toFixed(1) + ' ' + (44 - Math.sin(a) * r0).toFixed(1) + ' L' + (42 + Math.cos(a) * r1).toFixed(1) + ' ' + (44 - Math.sin(a) * r1).toFixed(1) + '"/>';
+    }
     return '<svg class="pc-dial" viewBox="0 0 84 50" aria-hidden="true" focusable="false">' +
+      '<path class="pc-bezel" d="M2 46 A40 40 0 0 1 82 46 Z"/>' +
+      '<path class="pc-face" d="M5.5 45 A36.5 36.5 0 0 1 78.5 45 Z"/>' +
       '<path class="pc-dial-arc" d="M8 44 A34 34 0 0 1 76 44"/>' +
       '<path class="pc-dial-lo" d="M8 44 A34 34 0 0 1 22 18"/><path class="pc-dial-hi" d="M62 18 A34 34 0 0 1 76 44"/>' +
-      '<path class="pc-dial-base" d="M42 8 V14"/>' +
+      ticks +
+      '<path class="pc-dial-base" d="M42 6 V12"/>' +
       '<g class="pc-ghost"><path d="M42 44 V16"/></g>' +
-      '<g class="pc-needle"><path d="M42 44 V14"/><circle cx="42" cy="44" r="4.5"/></g>' +
+      '<g class="pc-needle"><path class="pc-nd" d="M40.4 44 L42 13 L43.6 44 Z"/><circle cx="42" cy="44" r="4.6"/><circle class="pc-cap" cx="42" cy="44" r="1.7"/></g>' +
+      '<path class="pc-glass" d="M9 40 A33 33 0 0 1 60 14 A40 30 0 0 0 9 40 Z"/>' +
       '<text x="6" y="49" class="pc-dial-t">↓</text><text x="78" y="49" text-anchor="end" class="pc-dial-t">↑</text>' +
       '</svg>';
   }
@@ -433,6 +444,9 @@
       });
     }
     function step(n){
+      // The student moved on (picker, End session) while the chain played:
+      // stop, and do not finish a scenario that is no longer on the page.
+      if(!box.isConnected) return;
       if(n >= order.length){
         settle();
         box.classList.remove('is-running');

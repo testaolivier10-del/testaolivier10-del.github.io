@@ -39,11 +39,23 @@
   /* Picker and stage side by side on a wide screen (site audit 2026-10): stacked,
      the picker filled the whole first screen at 1440 px and the molecule sat
      below the fold. Narrow screens still stack them (viewer-3d.html). */
+  /* Landing (owner brief 2026-10-09): the Explore | Predict shape switch and
+     one plain first step above the tool; the model gets the wide column. The
+     molecule list shows its first group with the rest behind More molecules,
+     and the display settings (style, view, spin, labels, zoom) sit behind
+     one View options disclosure under the model. */
   root.innerHTML =
+    '<div class="tool-modes">' +
+      '<div class="tseg" id="v3Task" role="group" aria-label="Mode">' +
+        '<button type="button" data-task="explore" class="on" aria-pressed="true">Explore</button>' +
+        '<button type="button" data-task="predict" aria-pressed="false">Predict shape</button>' +
+      '</div>' +
+      '<p class="tool-step" id="v3Step"></p>' +
+    '</div>' +
     '<div class="v3-layout">' +
     '<div class="tpanel v3-pick">' +
       '<div class="tpanel__head">' +
-        '<span>Where the molecule comes from</span>' +
+        '<span>Pick a molecule</span>' +
         '<div class="tseg" id="v3Src">' +
           '<button type="button" data-src="lib" class="on">Ready-made</button>' +
           '<button type="button" data-src="build">Build your own</button>' +
@@ -54,16 +66,14 @@
       '<div id="v3BuildMsg"></div>' +
       '<div id="v3Send"></div>' +
     '</div>' +
-      '<div class="tpanel">' +
-        '<div class="tpanel__head"><div class="tseg" id="v3Task" role="group" aria-label="Mode">' +
-            '<button type="button" data-task="explore" class="on" aria-pressed="true">Explore</button>' +
-            '<button type="button" data-task="predict" aria-pressed="false">Predict shape</button>' +
-          '</div><span id="v3Name" class="tmuted"></span></div>' +
+      '<div class="tpanel v3-main">' +
+        '<div class="tpanel__head"><span>The model</span><span id="v3Name" class="tmuted"></span></div>' +
         '<div class="v3-stage" id="v3Stage">' +
           '<svg id="v3Svg" viewBox="0 0 320 300" role="group" aria-label="3D molecule: tab to an atom to read it, or use the arrow keys to turn the model"></svg>' +
         '</div>' +
         '<div id="v3Quiz" class="v3-quiz" hidden></div>' +
-        '<div class="trow" style="margin-top:12px;">' +
+        '<details class="tool-more" id="v3Opts"><summary>View options <span class="tool-more__now" id="v3OptsNow"></span></summary>' +
+        '<div class="trow" style="margin-top:6px;">' +
           '<div class="tseg" id="v3Modes">' +
             '<button type="button" data-mode="ball" class="on">Ball &amp; stick</button>' +
             '<button type="button" data-mode="space">Space-filling</button>' +
@@ -84,6 +94,7 @@
           '<label class="tcheck"><input type="checkbox" id="v3Lp" checked> Lone pairs</label>' +
           '<label class="tcheck"><input type="range" id="v3Zoom" class="trange" min="60" max="180" value="100" style="width:120px;" aria-label="Zoom"> Zoom</label>' +
         '</div>' +
+        '</details>' +
         '<p class="tmuted" style="margin:12px 0 0;" id="v3Note"></p>' +
       '</div>' +
     '</div>' +
@@ -106,13 +117,25 @@
 
   /* ---- Picker ----------------------------------------------------------- */
 
-  elPicker.innerHTML = LIB.groups().map(function(g){
+  function groupHtml(g){
     return '<div class="ap-group">' +
       '<div class="ap-group__label">' + esc(g.label) + '</div>' +
       '<div class="tchips">' + g.items.map(function(m){
         return '<button type="button" class="tchip" data-id="' + esc(m.id) + '">' + esc(m.name) + '</button>';
       }).join('') + '</div></div>';
-  }).join('');
+  }
+  var GROUPS3 = LIB.groups();
+  elPicker.innerHTML = groupHtml(GROUPS3[0]) +
+    '<details class="tool-more" id="v3More"><summary>More molecules <span class="tool-more__now">· ' +
+      esc(GROUPS3.slice(1).map(function(g){ return g.label.toLowerCase(); }).join(', ')) + '</span></summary>' +
+      GROUPS3.slice(1).map(groupHtml).join('') + '</details>';
+
+  function setStep(){
+    var predicting = typeof task !== 'undefined' && task && task.on;
+    document.getElementById('v3Step').innerHTML = predicting
+      ? '<b>Turn the model, then name the shape of the ringed atom.</b>'
+      : '<b>Drag the molecule to turn it, and tap an atom</b> to see its shape and angles.';
+  }
 
   elPicker.querySelectorAll('.tchip').forEach(function(b){
     b.addEventListener('click', function(){
@@ -131,6 +154,7 @@
     elPicker.querySelectorAll('.tchip').forEach(function(b){
       b.classList.toggle('on', b.getAttribute('data-id') === m.id);
     });
+    if(elPicker.querySelector('#v3More [data-id="' + m.id + '"]')) document.getElementById('v3More').open = true;
     elName.textContent = m.name + ' · ' + m.formula;
     svg.setAttribute('aria-label', m.name + ', 3D model: tab to an atom to read it, or use the arrow keys to turn it');
     elNote.textContent = m.note || '';
@@ -154,7 +178,10 @@
 
   /* ---- Drawing ---------------------------------------------------------- */
 
+  var MODE_NAME = { ball:'ball & stick', space:'space-filling', wire:'wireframe' };
   function draw(){
+    var now = document.getElementById('v3OptsNow');
+    if(now) now.textContent = '· ' + (MODE_NAME[opts.mode] || opts.mode);
     svg.innerHTML = M3.render(mol, {
       cx:160, cy:150, scale:fit * zoom,
       rx:rx, ry:ry, mode:opts.mode,
@@ -445,7 +472,8 @@
          not an error in the model — it is the lone pair doing its job, and
          labelling it as such is the point of showing both numbers. */
       var ideal = shape ? shape.ideal : null;
-      html += '<div class="ttable-scroll"><table class="ttable">' +
+      html += '<details class="tool-more tool-more--why"><summary>Every angle, measured</summary>' +
+        '<div class="ttable-scroll"><table class="ttable">' +
         '<thead><tr><th>Angle</th><th>Measured</th>' + (ideal ? '<th>Ideal</th>' : '') + '</tr></thead><tbody>' +
         dedupeAngles(a.angles).map(function(g){
           var off = ideal === null ? 0 : g.deg - ideal;
@@ -456,7 +484,7 @@
               (Math.abs(off) < 0.6 ? 'on the nose' : (off > 0 ? '+' : '') + off.toFixed(1) + '°') + '</td>' : '') +
           '</tr>';
         }).join('') +
-        '</tbody></table></div>';
+        '</tbody></table></div></details>';
 
       if(ideal !== null){
         var worst = a.angles[0].deg - ideal;
@@ -650,6 +678,8 @@
     if(on !== task.on) setTask(on);
   });
 
+  setStep();
+  document.getElementById('v3Task').addEventListener('click', setStep);
   if(!restore()) select(LIB.ALL[0]);
   /* ---- Check yourself ---------------------------------------------------
      Every answer here is computed by M3.analyse() from the same coordinates

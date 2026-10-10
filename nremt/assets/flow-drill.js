@@ -295,6 +295,7 @@
     var h = document.getElementById(id);
     if(!h) return;
     setMode('read');
+    if(window.NremtFlowPick) window.NremtFlowPick.show(id); // Read shows one diagram at a time
     h.setAttribute('tabindex', '-1');
     h.scrollIntoView({ block: 'start', behavior: window.LevlMotion && !window.LevlMotion.reduced() ? 'smooth' : 'auto' });
     h.focus({ preventScroll: true });

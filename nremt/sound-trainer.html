@@ -36,6 +36,7 @@
      Blocking, because the inline script below calls it while rendering. -->
 <script src="assets/sound-bank.js" defer></script>
 <script src="assets/tool-results.js" defer></script>
+<script src="assets/body-figures.js" defer></script>
 <script src="assets/sound-stage.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
@@ -205,35 +206,32 @@
   .st-fig{position:relative;background:var(--white);border:2px solid var(--line);border-radius:var(--radius);box-shadow:var(--lift);padding:10px 10px 4px;}
   .st-views{position:absolute;top:10px;right:10px;display:flex;gap:4px;z-index:1;}
   .st-views button{padding:5px 12px;font-size:12.5px;min-height:40px;}
-  .st-body{display:block;width:100%;max-width:360px;margin:0 auto;height:auto;touch-action:manipulation;}
-  @media (max-width:760px){.st-body{max-height:44vh;}}
-  .st-skin{fill:var(--surface2);stroke:var(--line);stroke-width:2;}
-  .st-organ{fill:var(--ctint);opacity:.75;}
-  .st-heart{fill:#E7B9AE;opacity:.55;}
-  [data-theme="dark"] .st-heart{fill:#7A3B33;opacity:.6;}
-  .st-rib{fill:none;stroke:var(--muted);stroke-width:1.2;opacity:.28;}
-  .st-bone{fill:var(--paper);stroke:var(--muted);stroke-width:1.4;opacity:.75;}
-  .st-scap{fill:var(--paper);stroke:var(--muted);stroke-width:1.2;opacity:.55;}
-  .st-guide{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 4;opacity:.35;}
-  .st-ics{font:700 9px var(--font-mono);fill:var(--muted);text-anchor:middle;}
-  .st-cap{font:600 9px var(--font-mono);fill:var(--muted);text-anchor:middle;}
-  .st-rl{font:800 13px var(--font-ui);fill:var(--muted);text-anchor:middle;}
+  .st-body{display:block;width:100%;max-width:420px;margin:0 auto;height:auto;touch-action:manipulation;overflow:visible;}
+  @media (max-width:760px){.st-body{max-height:52vh;}}
+  .st-img{filter:drop-shadow(0 4px 10px rgba(80,45,30,.12));}
+  [data-theme="dark"] .st-img{filter:brightness(.88);}
+  .st-guide{stroke:#fff;stroke-width:1.4;stroke-dasharray:5 6;opacity:.8;vector-effect:non-scaling-stroke;}
+  .st-ics{font:800 19px var(--font-mono);fill:#5B3A2A;text-anchor:middle;paint-order:stroke;stroke:rgba(255,246,238,.85);stroke-width:5px;stroke-linejoin:round;}
+  .st-cap{font:700 16px var(--font-mono);fill:#5B3A2A;text-anchor:middle;letter-spacing:.04em;paint-order:stroke;stroke:rgba(255,246,238,.85);stroke-width:5px;stroke-linejoin:round;}
+  .st-rl{font:800 26px var(--font-ui);fill:var(--muted);text-anchor:middle;}
+  .st-credit{font-size:10.5px;color:var(--muted);text-align:center;margin:4px 0 2px;line-height:1.4;}
+  .st-credit a{color:var(--muted);}
   .st-site{cursor:pointer;outline:none;}
   .st-hit{fill:transparent;}
   .st-halo{fill:var(--accent);opacity:0;transition:r .25s,opacity .25s;}
   .st-site--lung .st-halo,.st-site--airway .st-halo{fill:#3C7FC0;}
-  .st-dot{fill:var(--white);stroke:var(--accent);stroke-width:2.5;transition:stroke-width .15s;}
+  .st-dot{fill:rgba(255,255,255,.92);stroke:var(--accent);stroke-width:4;transition:stroke-width .15s;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25));}
   .st-site--lung .st-dot,.st-site--airway .st-dot{stroke:#3C7FC0;}
   .st-core{fill:var(--accent);}
   .st-site--lung .st-core,.st-site--airway .st-core{fill:#3C7FC0;}
-  .st-site.is-best .st-dot{stroke-width:4.5;}
+  .st-site.is-best .st-dot{stroke-width:7;}
   .st-site.is-on .st-dot{fill:var(--accent);}
   .st-site--lung.is-on .st-dot,.st-site--airway.is-on .st-dot{fill:#3C7FC0;}
   .st-site:focus-visible .st-dot,.st-site:hover .st-dot{stroke:var(--ink);}
   .st-site.is-playing .st-halo{animation:stPulse 1s ease-in-out infinite;}
   @keyframes stPulse{50%{opacity:.15;}}
-  .st-site.is-right .st-dot{fill:var(--good);stroke:var(--good-text);stroke-width:4;}
-  .st-site.is-wrong .st-dot{fill:var(--bad);stroke:var(--bad-text);stroke-width:4;}
+  .st-site.is-right .st-dot{fill:var(--good);stroke:var(--good-text);stroke-width:6;}
+  .st-site.is-wrong .st-dot{fill:var(--bad);stroke:var(--bad-text);stroke-width:6;}
   .st-side{min-width:0;}
   .st-k{display:block;font:700 10.5px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px;}
   .st-row .st-k{margin:0;}
@@ -251,21 +249,27 @@
   .st-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0 6px;}
   .st-play{display:inline-flex;align-items:center;gap:7px;background:var(--navy);color:var(--on-accent);border:0;border-radius:18px;padding:8px 16px;font:700 13px var(--font-ui);cursor:pointer;min-height:42px;white-space:nowrap;}
   .st-play.playing{background:var(--accent);color:var(--on-accent-fill);}
-  .st-strip{background:var(--white);border:2px solid var(--line);border-radius:10px;padding:4px 6px;}
-  .st-strip-svg{display:block;width:100%;height:auto;}
+  /* The strip, drawn as a phonocardiogram (visual polish 2026-10). */
+  .st-strip{background:linear-gradient(180deg,var(--white),color-mix(in srgb,var(--paper) 60%,var(--white)));border:1.5px solid var(--line);border-radius:12px;padding:6px 8px 2px;box-shadow:inset 0 1px 0 var(--white),var(--lift-sm);}
+  .st-strip-svg{display:block;width:100%;height:auto;overflow:visible;}
   .st-strip--tap{cursor:crosshair;outline:none;}
-  .st-strip--tap:focus-visible{border-color:var(--accent);}
-  .st-band{fill:var(--ctint);}
-  .st-axis{stroke:var(--line);stroke-width:1;}
-  .st-trace{stroke:var(--accent);stroke-width:2.6;stroke-linecap:round;}
-  .st-breath{fill:none;stroke:#3C7FC0;stroke-width:3;}
-  .st-tick{stroke:var(--muted);stroke-width:1;stroke-dasharray:2 3;}
+  .st-strip--tap:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(--tint-accent);}
+  .st-band{fill:var(--ctint);opacity:.75;}
+  .st-axis{stroke:var(--line);stroke-width:1;stroke-dasharray:1 3;}
+  .st-g0{stop-color:var(--accent);stop-opacity:.25;} .st-g1{stop-color:var(--accent);stop-opacity:.75;}
+  .st-trace-fill{stroke:none;}
+  .st-trace{fill:none;stroke:var(--accent);stroke-width:1.4;stroke-linejoin:round;}
+  .st-breath{fill:none;stroke:#3C7FC0;stroke-width:3;stroke-linecap:round;}
+  .st-tick{stroke:var(--muted);stroke-width:1;stroke-dasharray:2 3;opacity:.8;}
   .st-tick--x{stroke:var(--bad-text);}
-  .st-evt{font:800 11px var(--font-mono);fill:var(--ink);text-anchor:middle;}
-  .st-evt--x{fill:var(--bad-text);}
+  .st-evt-bg{fill:var(--ink);} .st-evt-bg--x{fill:var(--bad-text);}
+  .st-evt{font:800 10px var(--font-mono);fill:var(--white);text-anchor:middle;}
+  .st-evt--x{fill:var(--white);}
+  :root[data-theme="dark"] .st-evt{fill:#0E1513;} :root[data-theme="dark"] .st-evt.st-evt--plain{fill:var(--bad-text);stroke:#0E1513;}
+  .st-evt.st-evt--plain{font-size:11px;fill:var(--bad-text);paint-order:stroke;stroke:var(--white);stroke-width:3px;}
   .st-phase{font:600 10.5px var(--font-ui);fill:var(--muted);text-anchor:middle;}
   .st-span{fill:var(--bad-text);opacity:.7;}
-  .st-playhead{stroke:var(--ink);stroke-width:2;}
+  .st-playhead{stroke:var(--warn);stroke-width:2.5;stroke-linecap:round;}
   .st-marker{fill:var(--warn);stroke:var(--warn);stroke-width:2.5;}
   .st-cap-line{font-size:13px;color:var(--muted);margin:6px 0 0;line-height:1.55;}
   .st-muted{font-size:12px;}
@@ -286,11 +290,38 @@
   .fb-strip{margin:0 0 14px;}
   @media (max-width:520px){
     .st-top{gap:8px;}
-    .st-tabs{gap:4px;flex-wrap:nowrap;overflow-x:auto;}
-    .st-tabs button{font-size:12px;padding:6px 10px;min-height:42px;white-space:nowrap;}
-    .st-range{width:90px;}
-    .page-head .lede{display:none;}
+    .st-tabs button{font-size:12.5px;padding:6px 12px;min-height:40px;white-space:nowrap;}
+    .st-range{width:120px;}
   }
+  /* Simplify pass (2026-10): one segmented mode switch, quiz kinds in a
+     second row only once "Test yourself" is on, extras behind More options. */
+  .st-tabs.seg{display:inline-flex;gap:0;border:2px solid var(--line);border-radius:22px;padding:2px;background:var(--white);flex-wrap:nowrap;}
+  .st-tabs.seg button{border:0;border-radius:18px;background:transparent;}
+  .st-tabs.seg button[aria-pressed="true"]{background:var(--navy);color:var(--on-accent);}
+  .st-quizpick{display:flex;flex-wrap:wrap;gap:6px;margin:-2px 0 12px;}
+  .st-quizpick[hidden]{display:none;}
+  .st-quizpick button{font:700 13px var(--font-ui);padding:6px 14px;border:2px solid var(--line);border-radius:18px;background:var(--white);color:var(--ink);cursor:pointer;min-height:40px;}
+  .st-quizpick button[aria-pressed="true"]{border-color:var(--accent);background:var(--tint-accent);box-shadow:inset 0 0 0 1px var(--accent);}
+  .st-tapcue{text-align:center;font:800 14px var(--font-ui);color:var(--ink);margin:6px 0 4px;}
+  .is-where .st-tapcue{display:none;}
+  .st-now{font-size:14.5px;color:var(--ink);}
+  .st-here{font-size:14px;margin:10px 0 2px;}
+  .st-why,.st-more{margin:8px 0 0;}
+  .st-why summary,.st-more summary,.snd-more summary{cursor:pointer;font:700 13px var(--font-ui);color:var(--accent-text, var(--accent));min-height:40px;display:inline-flex;align-items:center;gap:6px;list-style:none;}
+  .st-why summary::-webkit-details-marker,.st-more summary::-webkit-details-marker,.snd-more summary::-webkit-details-marker{display:none;}
+  .st-why summary::before,.st-more summary::before,.snd-more summary::before{content:var(--disclose);display:inline-block;transition:transform .15s;}
+  .st-why[open] summary::before,.st-more[open] summary::before,.snd-more[open] summary::before{transform:rotate(90deg);}
+  .st-why p{font-size:13.5px;color:var(--muted);line-height:1.55;}
+  .st-more{margin-top:14px;}
+  .st-more-in{padding:6px 0 0;display:grid;gap:4px;}
+  .st-volrow{display:flex;align-items:center;gap:10px;font:700 13px var(--font-ui);color:var(--ink);}
+  .st-compare[hidden]{display:none;}
+  .st-more .st-credit{text-align:left;font-size:11.5px;}
+  .st-cmp{margin-top:10px;padding-top:8px;border-top:1px solid var(--line);}
+  .snd-more{margin-top:8px;}
+  .snd-more>summary{font-size:16px;color:var(--ink);}
+  .snd-more[open]>summary{margin-bottom:10px;}
+  @media (max-width:520px){.st-quizpick{gap:4px;flex-wrap:nowrap;}.st-quizpick button{font-size:12px;padding:6px 8px;white-space:nowrap;flex:1 1 auto;}}
   @media (prefers-reduced-motion: reduce){.st-halo{transition:none;}.st-site.is-playing .st-halo{animation:none;}}
 </style>
 <!-- levlprep-structured-data -->
@@ -353,7 +384,7 @@
   <div class="page-head">
   <div class="eyebrow">Tools</div>
   <h1>Auscultation Sound Trainer</h1>
-  <p class="lede">Tap a spot on the chest to hear a sound where you would listen for it, and watch when it falls in the heartbeat or the breath.</p>
+  <p class="lede">Hear each heart and lung sound where you would listen for it.</p>
   </div>
 
   <section id="stage" aria-label="Sounds on the chest">
@@ -367,14 +398,15 @@
   </section>
 
   <section id="listenSection">
-    <h2>Every sound, described</h2>
+    <details class="snd-more" id="sndMore">
+    <summary>Every sound, described (12 cards)</summary>
     <p class="section-sub">Each card plays the sound as heard at its best spot. Click again to stop.</p>
     <div class="sound-grid" id="soundGrid"></div>
-  </section>
-
-  <div class="notice notice--after">
+    <div class="notice notice--after">
     <strong>A note on these recordings:</strong> the wheeze, crackles and stridor clips are real auscultation recordings from Wikimedia Commons, each individually credited and licensed CC BY-SA. Normal breath sounds and rhonchi have no clip yet: we have not found a recording we are free to use. Snoring, gurgling and diminished breath sounds are described below without a clip for the same reason — the descriptions are there, the audio is not, and a synthesized substitute would be worse than silence.
-  </div>
+    </div>
+    </details>
+  </section>
 
   <footer>
     <p>Audio credits: the wheeze, crackles and stridor recordings are by James Heilman, MD (the stridor clip processed by Natural Philo), from Wikimedia Commons under CC BY-SA 3.0, with individual credits shown next to each clip above. This trainer is a supplementary study aid; it is not a substitute for hands-on stethoscope practice with an instructor.</p>
@@ -413,6 +445,8 @@ const SOUNDS = [
     audioUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Wheeze2O.ogg",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Wheeze2O.ogg",
     creditBy: "James Heilman, MD",
+    // Measured 2026-10-09 (docs/tools-upgrade-notes/nremt-body.md).
+    timingNote: "the whistle comes in bursts of about a second, one every 2.5 seconds (about 24 breaths a minute). The clip has no airflow track, so which part of each breath is out cannot be told from the sound.",
     description: "High-pitched, continuous, musical whistling — usually loudest on expiration. Caused by air forced through narrowed small airways.",
     clinical: "Classic in asthma and COPD exacerbations. A patient who stops wheezing during a severe attack isn't necessarily improving — it can mean they're moving too little air to generate the sound at all, a genuinely worse sign (\"silent chest\")."
   },
@@ -424,6 +458,7 @@ const SOUNDS = [
     audioUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Crackles_pneumoniaO.ogg",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Crackles_pneumoniaO.ogg",
     creditBy: "James Heilman, MD",
+    timingNote: "the crackles cluster in bursts of half a second to a second, about every 2 to 2.8 seconds, and the clip repeats itself after 7.5 seconds. The clip has no airflow track, so which part of each breath is in cannot be told from the sound.",
     description: "Discrete, discontinuous clicking or popping — think of gently rubbing hair between your fingers next to your ear. Heard mainly on inspiration.",
     clinical: "Caused by fluid in the alveoli, or small airways popping open. Classic in pulmonary edema (fine, wet-sounding) and pneumonia (coarser, more localized)."
   },
@@ -435,6 +470,7 @@ const SOUNDS = [
     audioUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Stridor_NP_OGG_2.ogg",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Stridor_NP_OGG_2.ogg",
     creditBy: "James Heilman, MD; processed by Natural Philo",
+    timingNote: "the crowing sound fills most of each breath, about one every 1.8 seconds (about 33 a minute, a child\u2019s rate), with a short gap between. The clip has no airflow track, so which part is in cannot be told from the sound.",
     description: "Harsh, high-pitched crowing sound, loudest on inspiration — and often audible without a stethoscope at all.",
     clinical: "An upper-airway sound, not a lung sound — it means a partial obstruction somewhere in the upper airway, at or near the larynx (croup, epiglottitis, a foreign body, or airway swelling). It's a red flag that gets escalated fast."
   },
@@ -863,6 +899,7 @@ if (!stage) document.getElementById('quizSection').hidden = false;
 // From Review: sound-trainer.html#snd-<id> lands on that sound's card.
 if(location.hash.indexOf('#snd-') === 0){
   const card = document.getElementById(location.hash.slice(1));
+  if(card) document.getElementById('sndMore').open = true;
   if(card){ card.classList.add('is-target'); card.scrollIntoView({ block: 'center' }); card.focus({ preventScroll: true }); }
 }
 });

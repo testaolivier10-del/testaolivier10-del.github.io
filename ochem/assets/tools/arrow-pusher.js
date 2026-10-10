@@ -92,16 +92,21 @@
     });
   }
 
+  /* Landing (owner brief 2026-10-09): the mode switch and one plain first
+     step above the tool; the first row of starting molecules, with the rest
+     behind More molecules; the bookkeeping table behind a disclosure in the
+     result panel. */
   root.innerHTML =
-    '<div class="tpanel">' +
-      '<div class="tpanel__head">' +
-        '<span>Pick something to push electrons on</span>' +
-        '<div class="tseg" id="apSrc">' +
-          '<button type="button" data-src="lib" class="on">Ready-made</button>' +
-          '<button type="button" data-src="build">Build your own</button>' +
-          '<button type="button" data-src="chal">Mechanism challenge</button>' +
-        '</div>' +
+    '<div class="tool-modes">' +
+      '<div class="tseg" id="apSrc" role="group" aria-label="Mode">' +
+        '<button type="button" data-src="lib" class="on">Ready-made</button>' +
+        '<button type="button" data-src="build">Build your own</button>' +
+        '<button type="button" data-src="chal">Mechanism challenge</button>' +
       '</div>' +
+      '<p class="tool-step" id="apStep"></p>' +
+    '</div>' +
+    '<div class="tpanel">' +
+      '<div class="tpanel__head" id="apPickH"><span>Pick something to push electrons on</span></div>' +
       '<div id="apPicker"></div>' +
       '<div id="apChalPick" hidden></div>' +
       '<div id="apBuilder" hidden></div>' +
@@ -121,13 +126,9 @@
         '<div class="tpanel">' +
           '<div class="tpanel__head">What that produces</div>' +
           '<div aria-live="polite" id="apResult"></div>' +
-        '</div>' +
-        '<div class="tpanel tpanel--flat">' +
-          '<div class="tpanel__head">' +
-            '<span>Electron bookkeeping</span>' +
-            '<label class="tcheck"><input type="checkbox" id="apBooks"> show</label>' +
-          '</div>' +
-          '<div id="apBooksBody"><p class="tmuted" style="margin:0;">Every atom’s lone pairs, bonds and formal charge — the arithmetic behind the charges, in case you want to check it by hand.</p></div>' +
+          '<details class="tool-more" id="apBooksBox"><summary>Electron bookkeeping</summary>' +
+            '<div id="apBooksBody"></div>' +
+          '</details>' +
         '</div>' +
       '</div>' +
     '</div>';
@@ -142,19 +143,32 @@
   var elBuilder = document.getElementById('apBuilder');
   var elBuildMsg= document.getElementById('apBuildMsg');
 
-  document.getElementById('apBooks').addEventListener('change', function(e){
-    showBooks = e.target.checked;
+  document.getElementById('apBooksBox').addEventListener('toggle', function(e){
+    showBooks = e.target.open;
     renderBooks();
   });
 
-  elPicker.innerHTML = GROUPS.map(function(g){
+  function groupHtml(g){
     return '<div class="ap-group">' +
       '<div class="ap-group__label">' + esc(g.label) + '</div>' +
       '<div class="tchips">' + g.picks.map(function(p){
         return '<button type="button" class="tchip" data-id="' + esc(p.id) + '">' + esc(p.label) + '</button>';
       }).join('') + '</div>' +
     '</div>';
-  }).join('');
+  }
+  elPicker.innerHTML = groupHtml(GROUPS[0]) +
+    '<details class="tool-more" id="apMore"><summary>More molecules <span class="tool-more__now">· ' +
+      esc(GROUPS.slice(1).map(function(g){ return g.label.toLowerCase(); }).join(', ')) + '</span></summary>' +
+      GROUPS.slice(1).map(groupHtml).join('') +
+    '</details>';
+
+  var STEP = {
+    lib: '<b>Tap a lone pair or a bond, then tap where those electrons go.</b>',
+    build: '<b>Draw a molecule</b>, then push electrons on it below.',
+    chal: '<b>Draw the arrows for each step</b>, then check them.'
+  };
+  function setStep(src){ document.getElementById('apStep').innerHTML = STEP[src] || STEP.lib; }
+  setStep('lib');
 
   elPicker.querySelectorAll('.tchip').forEach(function(b){
     b.addEventListener('click', function(){
@@ -171,6 +185,8 @@
     elPicker.querySelectorAll('.tchip').forEach(function(b){
       b.classList.toggle('on', b.getAttribute('data-id') === pick.id);
     });
+    var inMore = document.querySelector('#apMore [data-id="' + pick.id + '"]');
+    if(inMore) document.getElementById('apMore').open = true;
 
     var mol = Mol.get(pick.id);
     begin(C.fromMolecule(mol), mol.name);
@@ -332,6 +348,8 @@
         x.classList.toggle('on', x === b);
       });
       elPicker.hidden = (src !== 'lib');
+      document.getElementById('apPickH').hidden = (src !== 'lib');
+      setStep(src);
       elBuilder.hidden = (src !== 'build');
       document.getElementById('apChalPick').hidden = (src !== 'chal');
       if(src === 'chal'){ elBuildMsg.innerHTML = ''; startChal(chal.def || CHALLENGES[0]); return; }
@@ -520,7 +538,7 @@
      charged: twenty rows of "H, 0, 1, 0" buries the three rows that matter. */
   function renderBooks(){
     if(!showBooks){
-      elBooks.innerHTML = '<p class="tmuted" style="margin:0;">Every atom’s lone pairs, bonds and formal charge — the arithmetic behind the charges, in case you want to check it by hand.</p>';
+      elBooks.innerHTML = '';
       return;
     }
     var st = start;

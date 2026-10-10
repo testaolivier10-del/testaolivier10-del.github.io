@@ -140,16 +140,21 @@
 .pt-box:hover{border-color:rgba(163,59,38,.55);background:rgba(163,59,38,.06);}
 .pt-box:focus-visible{outline:3px solid var(--accent);outline-offset:1px;}
 .pt-box:disabled{cursor:default;}
-.pt-seg{stroke:#A33B26;stroke-linecap:round;opacity:.85;}
+.pt-seg{stroke:#A33B26;stroke-linecap:round;opacity:.95;}
 .pt-seg.tone-o2{stroke:#D55E00;} .pt-seg.tone-deo2{stroke:#2B6CB0;} .pt-seg.tone-ex{stroke:#7A4E9C;}
 .pt-seg.is-jump{stroke-dasharray:2 10;opacity:.6;}
-.pt-dot{fill:#fff;stroke:#A33B26;stroke-width:3;}
+.pt-dot{fill:#fff;stroke:#A33B26;stroke-width:3;filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.3));}
+.pt-dot.tone-o2{stroke:#D55E00;} .pt-dot.tone-deo2{stroke:#2B6CB0;} .pt-dot.tone-ex{stroke:#7A4E9C;}
+.pt-dotc{fill:#A33B26;} .pt-dotc.tone-o2{fill:#D55E00;} .pt-dotc.tone-deo2{fill:#2B6CB0;} .pt-dotc.tone-ex{fill:#7A4E9C;}
+.pt-seg-under{stroke:#fff;stroke-linecap:round;opacity:.9;}
+.pt-chev{fill:#A33B26;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;}
+.pt-chev.tone-o2{fill:#D55E00;} .pt-chev.tone-deo2{fill:#2B6CB0;} .pt-chev.tone-ex{fill:#7A4E9C;}
 .pt-hit{fill:transparent;}
-.pt-token{fill:#A33B26;stroke:#fff;stroke-width:4;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35));}
-.pt-token.tok-impulse{fill:#E3A600;stroke:#5a3b00;}
-.pt-token.tok-fluid{fill:#3A8DDE;}
-.pt-token.tok-food{fill:#8A5A2B;}
-.pt-token.tone-o2{fill:#D55E00;} .pt-token.tone-deo2{fill:#2B6CB0;} .pt-token.tone-ex{fill:#7A4E9C;}
+.pt-token{fill:url(#ptg-blood);stroke:#fff;stroke-width:3.5;filter:drop-shadow(0 2px 3px rgba(0,0,0,.4));}
+.pt-token.tok-impulse{fill:url(#ptg-impulse);stroke:#7a5200;stroke-width:2;filter:drop-shadow(0 0 6px rgba(255,200,40,.95)) drop-shadow(0 0 2px rgba(255,230,120,1));}
+.pt-token.tok-fluid{fill:url(#ptg-fluid);stroke:#fff;}
+.pt-token.tok-food{fill:url(#ptg-food);stroke:#fff;}
+.pt-token.tone-o2{fill:url(#ptg-o2);} .pt-token.tone-deo2{fill:url(#ptg-deo2);} .pt-token.tone-ex{fill:url(#ptg-ex);}
 .pt-token.pop{animation:pt-pop .45s ease-out;transform-box:fill-box;transform-origin:center;}
 @keyframes pt-pop{0%{transform:scale(.5);}70%{transform:scale(1.25);}100%{transform:scale(1);}}
 .pt-want{fill:rgba(31,110,62,.12);stroke:#1F6E3E;stroke-width:7;stroke-dasharray:10 7;animation:pt-pulse 1.1s ease-in-out infinite;transform-box:fill-box;transform-origin:center;}

@@ -142,7 +142,7 @@ ${bodyOpen(' data-app="equations-sheet"')}
 <main id="main" class="xshell chem-app chem-entry">
   ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Equations sheet, explained' }])}
   <header class="hero chem-hero"><div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div><h1>The equations and constants sheet, explained</h1>
-  <p class="lede">On exam day you get a periodic table and a sheet of equations and constants. Here is what each one is for, when to reach for it, and the slips that cost points. The sheet itself is published by the College Board; this page is our own guide to using it.</p></header>
+  <p class="lede">What each equation and constant on the exam sheet is for, and when to use it.</p></header>
   <section class="xsection chem-eq-tips" aria-labelledby="eq-tips"><h2 id="eq-tips">Three habits that save points</h2>
     <ul class="chem-links">
       <li><b>Kelvins in every gas law and every thermodynamics equation.</b> K = °C + 273.15. The sheet gives the conversion; using °C is still one of the commonest slips.</li>
@@ -154,6 +154,7 @@ ${bodyOpen(' data-app="equations-sheet"')}
   <section class="xsection" aria-labelledby="eq-not"><h2 id="eq-not">What is not on the sheet</h2>
     <p>The exam gives you these values in the question, or expects you to reason without them. None of them is printed on the sheet.</p>
     <ul class="chem-eq-not">${NOT_ON.map(r => `<li><b>${esc(r[0])}.</b> ${esc(r[1])} <span class="chem-small">${topicLink(r[2], depth)}</span></li>`).join('')}</ul>
+    <p>On exam day you get a periodic table and this sheet of equations and constants. The sheet itself is published by the College Board; this page is our own guide to using it.</p>
     <p>The sheet also lists unit symbols, conversions (1 atm = 760 mm Hg = 760 torr; 1 V = 1 J/C; 1 A = 1 C/s) and the metric prefixes from giga to pico.</p>
   </section>
   <section class="xsection" aria-labelledby="eq-next"><h2 id="eq-next">Practice with it</h2>
@@ -184,9 +185,10 @@ ${bodyOpen(' data-app="score-calculator"')}
 <main id="main" class="xshell chem-app chem-entry">
   ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Score calculator' }])}
   <header class="hero chem-hero"><div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div><h1>Score calculator</h1>
-  <p class="lede">Enter how many multiple-choice questions you got right and your points on each free-response question, from a practice exam or a released one you scored with its rubric. You get an estimated score from 1 to 5.</p></header>
+  <p class="lede">Enter your multiple-choice and free-response results to get an estimated score from 1 to 5.</p></header>
   <div id="chem-calc" class="chem-app-mount"><noscript><p>The calculator needs JavaScript. The method below lets you work it out by hand.</p></noscript></div>
   <section class="xsection" aria-labelledby="sc-how"><h2 id="sc-how">How the estimate works</h2>
+    <p>Use the questions you got right and the points on each free-response question from a practice exam, or from a released one you scored with its rubric.</p>
     <p>The exam has two sections worth half the score each: 60 multiple-choice questions, and 7 free-response questions worth 46 points (three long questions at 10 points, four short at 4). So the calculator turns each section into a score out of 50 and adds them:</p>
     <p class="chem-sc-formula"><b>composite = 50 &times; (multiple-choice right &divide; 60) + 50 &times; (free-response points &divide; 46)</b></p>
     <p>A composite of 72 or more is shown as a 5, 58 or more as a 4, 42 or more as a 3, 27 or more as a 2, and anything lower as a 1. There is no penalty for a wrong multiple-choice answer, so a blank and a wrong answer count the same.</p>

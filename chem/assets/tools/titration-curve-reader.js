@@ -42,22 +42,23 @@
     var F = T.F, esc = T.esc, TT = M.titration;
     var ctxs = data.contexts || [], kinds = ['wa', 'sa', 'wb', 'di'].filter(function(k){ return ctxs.some(function(c){ return c.kind === k; }); });
     var kind = kinds[0], seed = 1000 + Math.floor(Math.random() * 9000), p, ctx, v = 0, ind = 0, beaker = null, timer = null, lastRegion = '';
+    // Simple first: the burette slider with a "Start here" cue, then the
+    // curve and the flask; kind, indicator, single-step buttons and the
+    // particle scale sit behind "More options".
     host.innerHTML = '<section class="bt-problem tx-card" aria-labelledby="tx-h"><div class="tx-head"><h2 id="tx-h" class="tx-title"></h2><p class="tx-setup bt-small"></p></div>' +
-      '<div class="tx-stage"><figure class="tx-graph"><div class="tx-plot"></div></figure>' +
-      '<div class="tx-beaker"></div>' +
-      '<div class="tx-ctl"></div></div>' +
-      '<div class="tx-meaning" aria-hidden="true"></div>' +
-      '<div class="tx-ind"></div>' +
-      '<div class="tx-pick bt-pick"></div><p class="bt-small tx-scale"></p></section>';
+      '<div class="tx-stage"><div class="tx-ctl"></div><figure class="tx-graph"><div class="tx-plot"></div></figure>' +
+      '<div class="tx-side"><div class="tx-beaker"></div><div class="tx-ind"></div></div></div>' +
+      '<div class="tx-meaning"></div>' +
+      T.moreHtml('<div class="tx-pick bt-pick"></div><div class="bt-buttons tx-steps"><button type="button" class="bt-btn" data-add="1">+1 mL</button><button type="button" class="bt-btn" data-add="0.05">+1 drop</button><button type="button" class="bt-btn tx-new">New numbers</button></div><p class="bt-small tx-scale"></p>', 'kind of titration, indicator, new numbers') + '</section>';
     var pick = host.querySelector('.tx-pick');
     if(kinds.length > 1) T.kindPicker(pick, { label: 'Titration', options: kinds.map(function(k){ return { value: k, label: KIND[k] }; }), value: kind, mixed: KIND[kind], onChange: function(val){ kind = val || kinds[0]; seed++; build(); } })
       .select.querySelector('option[value=""]').remove();
     var indSel = T.choiceSelect({ label: 'Indicator', options: TT.INDICATORS.map(function(d, i){ return { value: i, label: d.name }; }), value: 0, onChange: function(val){ ind = +val; draw(); } });
     indSel.el.classList.add('bt-inline');
     pick.appendChild(indSel.el);
-    var ctl = host.querySelector('.tx-ctl'), slider = null;
-    pick.insertAdjacentHTML('beforeend', '<button type="button" class="bt-btn tx-new">New numbers</button>');
+    var ctl = host.querySelector('.tx-ctl'), slider = null, start = null;
     host.querySelector('.tx-new').addEventListener('click', function(){ seed++; build(); });
+    host.querySelectorAll('.tx-steps [data-add]').forEach(function(b){ b.addEventListener('click', function(){ stop(); setV(v + (+b.getAttribute('data-add'))); }); });
 
     function build(){
       stop();
@@ -69,15 +70,15 @@
       host.querySelector('.tx-title').textContent = KIND[kind];
       host.querySelector('.tx-setup').innerHTML = 'Flask: ' + M.fmt(p.sys.Va, 3) + ' mL of ' + M.fmt(p.sys.Ca, 3) + ' M ' + esc(ctx.analyte) + '. Burette: ' + M.fmt(p.sys.Ct, 3) + ' M ' + esc(ctx.titrant) + '.';
       ctl.innerHTML = '';
+      start = T.cue('Drag the slider to add ' + esc(ctx.titrant) + ' from the burette, or press Run.');
+      ctl.appendChild(start.el);
       slider = T.slider({ label: 'Volume of ' + ctx.titrant + ' added', min: 0, max: p.vmax, step: 0.05, value: 0, unit: 'mL', decimals: 2, onInput: function(x){ stop(); v = x; draw(); } });
       ctl.appendChild(slider.el);
-      ctl.insertAdjacentHTML('beforeend', '<div class="bt-buttons tx-btns"><button type="button" class="bt-btn tx-run" aria-pressed="false">▶ Run</button><button type="button" class="bt-btn" data-add="1">+1 mL</button><button type="button" class="bt-btn" data-add="0.05">+1 drop</button><button type="button" class="bt-btn" data-add="reset">Start over</button></div>');
-      ctl.querySelectorAll('[data-add]').forEach(function(b){ b.addEventListener('click', function(){
-        stop(); var a = b.getAttribute('data-add'); setV(a === 'reset' ? 0 : v + (+a));
-      }); });
+      ctl.insertAdjacentHTML('beforeend', '<div class="bt-buttons tx-btns"><button type="button" class="bt-btn tx-run" aria-pressed="false">▶ Run</button><button type="button" class="bt-btn" data-add="reset">Start over</button></div>');
+      ctl.querySelector('[data-add="reset"]').addEventListener('click', function(){ stop(); setV(0); });
       ctl.querySelector('.tx-run').addEventListener('click', function(){ timer ? stop() : run(); });
       if(beaker) beaker.destroy();
-      beaker = window.ApChemBeaker.mount(host.querySelector('.tx-beaker'), { species: speciesList(), readout: 'pH', title: 'The flask', max: 32, seed: seed });
+      beaker = window.ApChemBeaker.mount(host.querySelector('.tx-beaker'), { species: speciesList(), readout: 'pH', title: 'The flask', max: 32, seed: seed, vessel: 'flask' });
       var n0 = p.sys.Ca * p.sys.Va;
       host.querySelector('.tx-scale').innerHTML = 'Each particle stands for ' + M.fmt(n0 / per(), 2) + ' mmol. Not drawn: water and the spectator ' + (kind === 'sa' ? 'ions Na⁺ and Cl⁻' : kind === 'wb' ? 'ion Cl⁻' : 'ion Na⁺') + '. A species with less than half a particle\'s worth shows as 0.';
       draw();
@@ -130,7 +131,10 @@
         points: passed.map(function(m){ return { x: m.v, y: TT.pH(p.sys, m.v), cls: 's3', square: true }; }).concat([{ x: v, y: pH, cls: 's2' }]) });
       // Labels for the passed landmarks, and the indicator's range as a band.
       var d = TT.INDICATORS[ind], band = '<rect class="tx-band" x="' + L + '" width="' + PW + '" y="' + sy(d.hi).toFixed(1) + '" height="' + (sy(d.lo) - sy(d.hi)).toFixed(1) + '"/>' +
-        '<text class="tx-band-t" x="' + (L + PW - 6) + '" y="' + (sy(d.hi) + 13).toFixed(1) + '" text-anchor="end">' + esc(d.name) + '</text>';
+        '<path class="tx-band-e" d="M' + L + ' ' + sy(d.hi).toFixed(1) + 'h' + PW + 'M' + L + ' ' + sy(d.lo).toFixed(1) + 'h' + PW + '"/>' +
+        '<text class="tx-band-t" x="' + (L + PW - 6) + '" y="' + (sy(d.hi) + 13).toFixed(1) + '" text-anchor="end">' + esc(d.name) + '</text>' +
+        // A dashed drop line from each equivalence point once it is passed.
+        passed.filter(function(m){ return m.what.indexOf('equivalence') >= 0; }).map(function(m){ return '<line class="tx-eqv" x1="' + sx(m.v).toFixed(1) + '" x2="' + sx(m.v).toFixed(1) + '" y1="' + sy(TT.pH(p.sys, m.v)).toFixed(1) + '" y2="' + (PT + PH) + '"/>'; }).join('');
       var labs = passed.map(function(m){ var x = sx(m.v), y = sy(TT.pH(p.sys, m.v)), up = kind === 'wb' ? 1 : -1; return '<text class="tx-lm" x="' + (x + 8).toFixed(1) + '" y="' + (y + up * -14 + 4).toFixed(1) + '">' + m.label + '</text>'; }).join('');
       svg = svg.replace(/(<line class="axis")/, band + '$1').replace('</svg>', labs + '</svg>');
       var plot = host.querySelector('.tx-plot');
@@ -143,16 +147,16 @@
       var s = TT.species(p.sys, v), k = per() / (p.sys.Ca * p.sys.Va), counts = {};
       speciesList().forEach(function(sp){ counts[sp.key] = Math.round((s[sp.key] || 0) * k); });
       var reg = TT.region(p.sys, v), m = meaning(reg, pH, s);
-      beaker.update({ counts: counts, pH: pH, note: reg !== lastRegion ? m.short : '' });
+      beaker.update({ counts: counts, pH: pH, burette: v / p.vmax, note: reg !== lastRegion ? m.short : '' });
       lastRegion = reg;
       paint(pH);
-      host.querySelector('.tx-meaning').innerHTML = '<p class="tx-where"><b>' + m.head + '</b> ' + m.text + '</p>';
+      if(v > 0 && start) start.done();
+      T.explain(host.querySelector('.tx-meaning'), '<b>' + m.head + '</b> <span class="tx-at">' + m.at + '</span>', '<p>' + m.text + '</p>');
     }
     function paint(pH){
       var d = TT.INDICATORS[ind], c = COLORS[d.name], t = Math.max(0, Math.min(1, (pH - d.lo) / (d.hi - d.lo)));
       var mix = c.a.map(function(x, i){ return x + (c.b[i] - x) * t; });
-      var liq = host.querySelector('.lb-liquid');
-      if(liq) liq.style.fill = 'rgba(' + Math.round(mix[0]) + ',' + Math.round(mix[1]) + ',' + Math.round(mix[2]) + ',' + (0.85 * mix[3]).toFixed(2) + ')';
+      host.querySelectorAll('.tx-beaker .lb-liquid').forEach(function(liq){ liq.style.fill = 'rgba(' + Math.round(mix[0]) + ',' + Math.round(mix[1]) + ',' + Math.round(mix[2]) + ',' + (0.8 * mix[3]).toFixed(2) + ')'; });
       var word = t <= 0 ? c.words[0] : t >= 1 ? c.words[2] : c.words[1];
       var lo = TT.cross(p.sys, kind === 'wb' ? d.hi : d.lo, p.vmax), hi = TT.cross(p.sys, kind === 'wb' ? d.lo : d.hi, p.vmax), last = p.eqs[p.eqs.length - 1];
       var range = lo === Infinity ? 'never reaches its range on this curve' : hi === 0 ? 'is past its range before any titrant is added' :
@@ -160,7 +164,8 @@
       var fit = lo <= last && last <= hi ? 'Its range holds the equivalence pH (' + F(p.phEq, 2) + '), so the color change marks the end point.'
         : hi < last ? 'That is before the equivalence point at ' + F(last, 1) + ' mL: it would change too early.' : 'That is after the equivalence point at ' + F(last, 1) + ' mL: it would change too late.';
       var steep = lo !== Infinity && hi !== 0 && Math.max(Math.abs(lo - last), Math.abs(hi - last)) <= 0.1 && !(lo <= last && last <= hi) ? ' On a jump this steep, that is within two drops, so it would still work in practice.' : '';
-      host.querySelector('.tx-ind').innerHTML = '<p class="tx-ind-p"><span class="tx-swatch" style="background:rgba(' + Math.round(mix[0]) + ',' + Math.round(mix[1]) + ',' + Math.round(mix[2]) + ',' + mix[3].toFixed(2) + ')"></span><b>' + esc(d.name) + ' is ' + word + ' now.</b> Its range is pH ' + F(d.lo, 1) + ' to ' + F(d.hi, 1) + ' (' + c.words[0] + ' to ' + c.words[2] + '); on this curve it ' + range + '. ' + fit + steep + '</p>';
+      var ib = T.explain(host.querySelector('.tx-ind'), '<span class="tx-swatch" style="background:rgba(' + Math.round(mix[0]) + ',' + Math.round(mix[1]) + ',' + Math.round(mix[2]) + ',' + mix[3].toFixed(2) + ')"></span><b>' + esc(d.name) + ' is ' + word + ' now.</b>', '<p>Its range is pH ' + F(d.lo, 1) + ' to ' + F(d.hi, 1) + ' (' + c.words[0] + ' to ' + c.words[2] + '); on this curve it ' + range + '. ' + fit + steep + '</p>');
+      ib.classList.add('tx-ind-p');
     }
     function meaning(reg, pH, s){
       var e = p.eqs, nm = function(x){ return esc(x); };
@@ -201,7 +206,7 @@
           after: ['Excess OH⁻.', 'Both protons are gone, so added OH⁻ stays and sets the pH.']
         }
       }[kind][reg];
-      return { head: W[0], text: W[1] + ' <span class="tx-at">' + at + '</span>', short: (W[0] + ' ' + W[1]).replace(/<[^>]+>/g, '') };
+      return { head: W[0], at: at, text: W[1], short: (W[0] + ' ' + W[1]).replace(/<[^>]+>/g, '') };
     }
     build();
     return { stop: stop };

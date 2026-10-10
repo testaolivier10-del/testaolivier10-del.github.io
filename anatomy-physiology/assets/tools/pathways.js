@@ -61,9 +61,6 @@
     } else if(h[0] === 'all') showList();
     else { var d = defaultItem(); if(d) showPathway(d, firstOpen(d), false); else showList(); }
   }
-  function go(hash){
-    if(location.hash === hash) route(); else location.hash = hash;
-  }
 
   /* -------------------------------------------------------------- list view */
   function params(){
@@ -128,12 +125,18 @@
      first pathways in list order, within ?chapter= / ?topic=, with something
      not yet answered right; #all is the full list. The picker above the item
      reaches every pathways. */
-  function ordered(){
-    var q = params(), want = q.chapter || (q.topic && topicInfo(q.topic) ? topicInfo(q.topic).chapter : '');
+  // Every pathway in course order (chapter, then topic): the picker's order.
+  function sortedAll(){
     var order = cur().chapters.map(function(c){ return c.id; }), topicOrder = cur().topics.map(function(t){ return t.id; });
-    var all = DATA.pathways.slice().sort(function(a, b){
+    return DATA.pathways.slice().sort(function(a, b){
       return order.indexOf(chapterOf(a)) - order.indexOf(chapterOf(b)) || topicOrder.indexOf(a.topic) - topicOrder.indexOf(b.topic);
     });
+  }
+  // "Next pathway": the next one in that order, inside ?chapter= when set.
+  function nextOf(p){ var list = ordered(); if(list.indexOf(p) < 0) list = sortedAll(); return list[(list.indexOf(p) + 1) % list.length]; }
+  function ordered(){
+    var q = params(), want = q.chapter || (q.topic && topicInfo(q.topic) ? topicInfo(q.topic).chapter : '');
+    var all = sortedAll();
     var inCh = all.filter(function(x){ return chapterOf(x) === want; });
     return inCh.length ? inCh : all;
   }
@@ -147,8 +150,7 @@
     var host = app.querySelector('.pw-pickhost'), K = window.AnpToolKit;
     if(!host || !K) return;
     var chapters = [];
-    var all = DATA.pathways.slice(), order = cur().chapters.map(function(c){ return c.id; }), topicOrder = cur().topics.map(function(t){ return t.id; });
-    all.sort(function(a, b){ return order.indexOf(chapterOf(a)) - order.indexOf(chapterOf(b)) || topicOrder.indexOf(a.topic) - topicOrder.indexOf(b.topic); });
+    var all = sortedAll();
     all.forEach(function(x){ var c = chapterOf(x); if(chapters.indexOf(c) < 0) chapters.push(c); });
     K.picker(host, {
       label: 'Pathway', noun: 'pathways', current: p.id, allHref: '#all', allLabel: 'All pathways by chapter',
@@ -163,17 +165,15 @@
 
   /* ----------------------------------------------------------- pathway view */
   function showPathway(p, variant, focusTab){
-    var t = topicInfo(p.topic);
-    var idx = DATA.pathways.indexOf(p);
-    var next = DATA.pathways[(idx + 1) % DATA.pathways.length];
+    var next = nextOf(p);
     app.innerHTML = '<div class="pw pw-view">' +
       '<div class="pw-pickhost"></div>' +
       '<h2 class="pw-title" tabindex="-1">' + esc(p.title) + '</h2>' +
       '<p class="anp-small pw-meta">Topic: ' + topicLink(p.topic) + ' · ' + p.steps.length + ' steps</p>' +
-      '<p class="pw-intro">' + html(p.intro) + '</p>' +
+      (K() ? K().about('<p>' + html(p.intro) + '</p>', 'About this pathway') : '<p class="pw-intro">' + html(p.intro) + '</p>') +
       (p.trace ? '<section class="pt" aria-labelledby="pt-h"></section>' : '') +
       (p.trace ? '<h3 class="pw-drill-h">Drills</h3>' : '') +
-      '<div class="pw-tabs" role="tablist" aria-label="Ways to practice this pathway">' + VARIANTS.map(function(v){
+      '<div class="pw-tabs kt-seg" role="tablist" aria-label="Ways to practice this pathway">' + VARIANTS.map(function(v){
         var s = status(itemId(p, v.key));
         return '<button type="button" role="tab" id="pw-tab-' + v.key + '" aria-controls="pw-panel" aria-selected="' + (v.key === variant) + '" tabindex="' + (v.key === variant ? '0' : '-1') + '" data-v="' + v.key + '" class="pw-tab">' +
           esc(v.tab) + (s === 'right' ? ' <span class="pw-tick" aria-label="done">✓</span>' : s === 'missed' ? ' <span class="pw-miss" aria-label="missed last time">✗</span>' : '') + '</button>';
@@ -184,25 +184,32 @@
     addPicker(p);
     if(p.trace) traceView(p, app.querySelector('.pt'));
     var tabs = app.querySelectorAll('.pw-tab');
+    var panel = app.querySelector('#pw-panel');
+    /* A tab switches the drill below in place: the page keeps its scroll
+       position and the figure above keeps its Watch / Trace it state. (It
+       used to re-route, which redrew the whole page, reset Trace it and
+       jumped focus and scroll to the title.) */
+    function drill(v, focus){
+      if(player){ player.stop(); player = null; }
+      tabs.forEach(function(t){ var on = t.getAttribute('data-v') === v; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; if(on && focus) t.focus(); });
+      panel.setAttribute('aria-labelledby', 'pw-tab-' + v);
+      if(location.hash !== '#' + p.id + '/' + v) history.replaceState(null, '', '#' + p.id + '/' + v);
+      if(v === 'order') orderVariant(p, panel);
+      else if(v === 'missing') missingVariant(p, panel);
+      else errorVariant(p, panel);
+    }
     tabs.forEach(function(b, k){
-      b.addEventListener('click', function(){ if(player){ player.stop(); player = null; } go('#' + p.id + '/' + b.getAttribute('data-v')); });
+      b.addEventListener('click', function(){ drill(b.getAttribute('data-v'), false); });
       b.addEventListener('keydown', function(e){
         var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
         if(e.key === 'Home') d = -k; if(e.key === 'End') d = tabs.length - 1 - k;
         if(!d) return;
         e.preventDefault();
-        var n = (k + d + tabs.length) % tabs.length;
-        stopPlayer();
-        history.replaceState(null, '', '#' + p.id + '/' + tabs[n].getAttribute('data-v'));
-        showPathway(p, tabs[n].getAttribute('data-v'), true);
+        drill(tabs[(k + d + tabs.length) % tabs.length].getAttribute('data-v'), true);
       });
     });
-    var panel = app.querySelector('#pw-panel');
-    if(variant === 'order') orderVariant(p, panel);
-    else if(variant === 'missing') missingVariant(p, panel);
-    else errorVariant(p, panel);
-    if(focusTab){ var tb = app.querySelector('#pw-tab-' + variant); if(tb) tb.focus(); }
-    else if(booted){ var h = app.querySelector('.pw-title'); if(h) h.focus(); }
+    drill(variant, focusTab);
+    if(!focusTab && booted){ var h = app.querySelector('.pw-title'); if(h) h.focus(); }
   }
 
   /* ------------------------------------------------------- trace on the figure
@@ -228,13 +235,22 @@
     var tid = itemId(p, 'trace');
     var st = status(tid);
     host.innerHTML = '<div class="pt-head"><h3 id="pt-h">On the figure</h3>' +
-      '<div class="pt-modes" role="group" aria-label="Figure mode"><button type="button" class="pt-mode" data-m="watch" aria-pressed="true">Watch</button>' +
+      '<div class="pt-modes kt-seg" role="group" aria-label="Figure mode"><button type="button" class="pt-mode" data-m="watch" aria-pressed="true">Watch</button>' +
       '<button type="button" class="pt-mode" data-m="trace" aria-pressed="false">Trace it' + (st === 'right' ? ' <span class="pw-tick" aria-label="done">✓</span>' : st === 'missed' ? ' <span class="pw-miss" aria-label="missed last time">✗</span>' : '') + '</button></div></div>' +
       '<div class="pt-stage"><div class="pt-fig" style="aspect-ratio:' + W + ' / ' + H + ';--pt-r:' + (W / H).toFixed(4) + '">' +
         (T.srcset ? '<picture><source type="image/avif" srcset="' + esc(T.srcset) + '" sizes="(max-width: 760px) 100vw, 720px"><img src="' + esc(BASE + T.src) + '" alt="' + esc(T.alt) + '" width="' + W + '" height="' + H + '" decoding="async"></picture>'
           : '<img src="' + esc(BASE + T.src) + '" alt="' + esc(T.alt) + '" width="' + W + '" height="' + H + '" decoding="async">') +
         T.covered.map(function(b){ return '<span class="pt-cover" aria-hidden="true" style="' + at(b) + '"></span>'; }).join('') +
-        '<svg class="pt-svg" viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true" focusable="false"><g class="pt-trail"></g><g class="pt-hint"></g><g class="pt-hits"></g><circle class="pt-token tok-' + esc(T.token) + '" r="' + R + '" cx="-99" cy="-99"/></svg>' +
+        '<svg class="pt-svg" viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true" focusable="false">' +
+          /* token art (visual polish 2026-10): a red cell with its pale centre, a glowing impulse, a fluid drop, a food bolus */
+          '<defs><radialGradient id="ptg-blood"><stop offset="0" stop-color="#F08A7C"/><stop offset=".42" stop-color="#E35B4B"/><stop offset=".7" stop-color="#C0281C"/><stop offset="1" stop-color="#7E1610"/></radialGradient>' +
+          '<radialGradient id="ptg-o2"><stop offset="0" stop-color="#FFB48A"/><stop offset=".42" stop-color="#F07A3A"/><stop offset=".7" stop-color="#D55E00"/><stop offset="1" stop-color="#8A3A00"/></radialGradient>' +
+          '<radialGradient id="ptg-deo2"><stop offset="0" stop-color="#9CC3EE"/><stop offset=".42" stop-color="#5C93D3"/><stop offset=".7" stop-color="#2B6CB0"/><stop offset="1" stop-color="#173E68"/></radialGradient>' +
+          '<radialGradient id="ptg-ex"><stop offset="0" stop-color="#C9A6E4"/><stop offset=".42" stop-color="#A27CC4"/><stop offset=".7" stop-color="#7A4E9C"/><stop offset="1" stop-color="#4A2C63"/></radialGradient>' +
+          '<radialGradient id="ptg-impulse"><stop offset="0" stop-color="#FFFBE0"/><stop offset=".35" stop-color="#FFE066"/><stop offset=".8" stop-color="#F2B400"/><stop offset="1" stop-color="#B07A00"/></radialGradient>' +
+          '<radialGradient id="ptg-fluid" cx=".38" cy=".32"><stop offset="0" stop-color="#E4F3FF"/><stop offset=".3" stop-color="#8CC6F5"/><stop offset="1" stop-color="#2F7FCC"/></radialGradient>' +
+          '<radialGradient id="ptg-food" cx=".38" cy=".32"><stop offset="0" stop-color="#E8C08C"/><stop offset=".5" stop-color="#B07A44"/><stop offset="1" stop-color="#6E4520"/></radialGradient></defs>' +
+          '<g class="pt-trail"></g><g class="pt-hint"></g><g class="pt-hits"></g><circle class="pt-token tok-' + esc(T.token) + '" r="' + R + '" cx="-99" cy="-99"/></svg>' +
         '<div class="pt-boxes"></div>' +
       '</div></div>' +
       '<div class="pt-bar"></div>' +
@@ -252,9 +268,19 @@
     function seg(i){ // from step i-1 to step i
       var a = T.pts[i - 1], b = T.pts[i];
       if(a[0] === b[0] && a[1] === b[1]) return;
-      trail.appendChild(mk('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], 'class': 'pt-seg' + (jump.indexOf(i) > -1 ? ' is-jump' : '') + (tone(i) ? ' tone-' + tone(i) : ''), 'stroke-width': SW }));
+      if(jump.indexOf(i) < 0) trail.appendChild(mk('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], 'class': 'pt-seg-under', 'stroke-width': SW * 1.9 }));
+      trail.appendChild(mk('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], 'class': 'pt-seg' + (jump.indexOf(i) > -1 ? ' is-jump' : '') + (tone(i) ? ' tone-' + tone(i) : ''), 'stroke-width': SW * 1.3 }));
+      // a chevron at the middle of the segment shows which way it runs
+      var len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+      if(len > R * 6 && jump.indexOf(i) < 0){
+        var ang = Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI, mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, c = SW * 2.4;
+        trail.appendChild(mk('path', { d: 'M' + (-c) + ' ' + (-c) + ' L' + c + ' 0 L' + (-c) + ' ' + c, transform: 'translate(' + mx.toFixed(1) + ' ' + my.toFixed(1) + ') rotate(' + ang.toFixed(1) + ')', 'class': 'pt-chev' + (tone(i) ? ' tone-' + tone(i) : ''), 'stroke-width': Math.max(1.5, SW * 0.7) }));
+      }
     }
-    function dot(i, cls){ trail.appendChild(mk('circle', { cx: T.pts[i][0], cy: T.pts[i][1], r: R * 0.42, 'class': 'pt-dot' + (cls ? ' ' + cls : '') })); }
+    function dot(i, cls){
+      trail.appendChild(mk('circle', { cx: T.pts[i][0], cy: T.pts[i][1], r: R * 0.5, 'class': 'pt-dot' + (cls ? ' ' + cls : '') + (tone(i) ? ' tone-' + tone(i) : '') }));
+      trail.appendChild(mk('circle', { cx: T.pts[i][0], cy: T.pts[i][1], r: R * 0.2, 'class': 'pt-dotc' + (tone(i) ? ' tone-' + tone(i) : '') }));
+    }
     function moveTo(i, done){
       var my = ++anim, b = T.pts[i];
       paintToken(i);
@@ -305,7 +331,7 @@
       bar.querySelector('.pt-prev').addEventListener('click', function(){ stop(); show(Math.max(0, k - 1)); });
       bar.querySelector('.pt-next').addEventListener('click', function(){ stop(); show(Math.min(n - 1, k + 1)); });
       k = 0; clearTrail(); token.setAttribute('cx', -99); moveTo(0);
-      cap.innerHTML = '<span class="anp-small">Press Play to follow the ' + esc(noun) + ' through all ' + n + ' steps, or step with the arrows. Then try <b>Trace it</b>.</span>';
+      cap.innerHTML = '<span class="kt-first">Press Play to follow the ' + esc(noun) + ' through all ' + n + ' steps.</span>';
       bar.querySelector('.pt-prev').disabled = true;
     }
     /* ---- Trace it */
@@ -399,6 +425,7 @@
   }
 
   /* Record the first check of each variant on this visit. */
+  function K(){ return window.AnpToolKit && window.AnpToolKit.why ? window.AnpToolKit : null; }
   function score(p, variant, right, total){
     var id = itemId(p, variant);
     var correct = right === total;
@@ -422,7 +449,8 @@
     var n = p.steps.length;
     var cur = shuffle(p.steps.map(function(s, i){ return i; }));
     if(cur.every(function(v, k){ return v === k; })) cur.reverse();
-    panel.innerHTML = '<p class="pw-task">Put the steps in order, first at the top. Drag a step by its grip, or use its arrow buttons.' + (p.cycle ? ' This pathway is a cycle: start with the step the scenario gives you.' : '') + '</p>' +
+    panel.innerHTML = '<p class="kt-first pw-task">Put the steps in order, first at the top: drag a step or use its arrows.</p>' +
+      (p.cycle ? '<p class="anp-small pw-cyclenote">This pathway is a cycle: start with the step the scenario gives you.</p>' : '') +
       '<ol class="anp-order pw-order"></ol>' +
       '<div class="pw-actions"><button type="button" class="btn-press sm pw-check">Check order</button></div>' +
       '<div class="pw-result" aria-live="polite"></div>';
@@ -520,7 +548,7 @@
   function missingVariant(p, panel){
     var m = p.missing, at = m.at;
     var choices = shuffle([{ text: p.steps[at].text, why: p.steps[at].why, right: true }].concat(m.distractors.map(function(d){ return { text: d.text, why: d.why, right: false }; })));
-    panel.innerHTML = '<p class="pw-task">One step is missing. Choose the step that belongs in the gap.</p>' +
+    panel.innerHTML = '<p class="kt-first pw-task">One step is missing. Choose the step that fills the gap.</p>' +
       '<ol class="pw-steps">' + p.steps.map(function(s, k){
         return k === at ? '<li class="pw-gap"><span class="pw-n" aria-hidden="true">' + (k + 1) + '</span><span class="pw-gap-text">Missing step</span></li>'
           : '<li><span class="pw-n" aria-hidden="true">' + (k + 1) + '</span><span>' + html(s.text) + '</span></li>';
@@ -559,7 +587,7 @@
   /* Variant 3: one step has been replaced by a wrong one; find it. */
   function errorVariant(p, panel){
     var e = p.error, at = e.at, pick = -1;
-    panel.innerHTML = '<p class="pw-task">One step in this pathway is wrong. Select it, then check.</p>' +
+    panel.innerHTML = '<p class="kt-first pw-task">One step is wrong. Tap it, then check.</p>' +
       '<ol class="pw-steps pw-pickable" role="group" aria-label="Steps: select the wrong one">' + p.steps.map(function(s, k){
         return '<li><button type="button" class="pw-pick" aria-pressed="false" data-k="' + k + '"><span class="pw-n" aria-hidden="true">' + (k + 1) + '</span><span class="pw-pick-text">' + html(k === at ? e.text : s.text) + '</span></button></li>';
       }).join('') + '</ol>' +
@@ -604,7 +632,7 @@
     var res = panel.querySelector('.pw-result');
     var box = document.createElement('div');
     box.className = 'pw-after';
-    box.innerHTML = '<p class="pw-summary">' + html(p.summary) + '</p>' +
+    box.innerHTML = (K() ? K().why('<p>' + html(p.summary) + '</p>', { label: 'Why it runs this way' }) : '<p class="pw-summary">' + html(p.summary) + '</p>') +
       '<h3>Watch the pathway</h3>' +
       '<div class="anp-fig pw-fig"></div>' +
       '<div class="pw-player"><button type="button" class="btn-press sm pw-play">▶ Play</button>' +

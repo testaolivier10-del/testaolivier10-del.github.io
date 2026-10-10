@@ -39,18 +39,19 @@
 
       '<div class="os-modes" role="group" aria-label="Mode"><button type="button" class="bt-btn" data-q="explore" aria-pressed="true">Explore</button><button type="button" class="bt-btn" data-q="quiz" aria-pressed="false">Which mutant is this?</button></div>' +
       '<div class="op-further" hidden>' + data.goingFurther + '</div>' +
+      '<p class="bt-first">Tap Lactose or Glucose to change what the cell has, then watch the operon switch.</p>' +
       '<div class="op-tray" role="group" aria-label="In the medium"></div>' +
       '<div class="bt-fig op-stagefig"></div><p class="bt-small op-taphint">Tap a gene or the operator to mutate it (the DNA scrolls sideways on a phone). Drag a chip into the cell, or tap it, to change the medium.</p>' +
-      '<fieldset class="bt-modes"><legend>Operon</legend>' + MODES.map(function(m){
+      '<fieldset class="bt-modes bt-more"><legend>Operon</legend>' + MODES.map(function(m){
         var id = 'op-mode-' + m[0];
         return '<div class="bt-radio"><input type="radio" name="op-mode" id="' + id + '" value="' + m[0] + '"' + (m[0] === st.mode ? ' checked' : '') + '><label for="' + id + '">' + esc(m[1]) + '</label></div>';
       }).join('') + '</fieldset>' +
       '<div class="os-chal op-chal" hidden></div>' +
-      '<div class="bt-controls"></div>' +
-      '<div class="op-lower"><div><div class="bt-tabs" role="group" aria-label="Graph">' +
+      '<div class="bt-controls" data-primary="1"></div>' +
+      '<div class="op-lower bt-num"><div><div class="bt-tabs" role="group" aria-label="Graph">' +
       '<button type="button" class="bt-btn" data-v="time" aria-pressed="true">Time course</button><button type="button" class="bt-btn" data-v="media" aria-pressed="false">Every medium</button>' +
       '</div><div class="bt-plotwrap"></div><p class="bt-small op-key"></p></div></div>' +
-      '<dl class="bt-readout op-read"></dl><div class="op-explain"><h3>What is happening</h3><ol></ol></div><p class="bt-summary"></p>' +
+      '<dl class="bt-readout op-read"></dl><div class="op-explain bt-num"><h3>What is happening</h3><ol></ol></div><p class="bt-summary"></p>' +
       '<div class="bt-buttons"><button type="button" class="btn-press sm" data-a="run">Run one trial</button><button type="button" class="btn-press sm alt" data-a="series">Run every medium</button><button type="button" class="bt-btn" data-a="clear">Clear runs</button></div>' +
       '<p class="bt-small bt-runnote" role="status" aria-live="polite"></p>' +
       '<details class="bt-data"><summary>Data tables: your runs and the time course</summary><div class="bt-tables"></div></details></section>' +
@@ -170,16 +171,32 @@
     }
 
     /* -------------------------------------------------------- figure */
+    /* --- drawing helpers: DNA double helix, protein dimers, small molecules */
+    function helix(x0, x1, y){
+      var A = 9, P = 26, a = '', b = '', rungs = '';
+      for(var x = x0; x <= x1; x += 2){ var t = (x - x0) / P * Math.PI * 2; a += (x === x0 ? 'M' : 'L') + x + ' ' + (y + A * Math.sin(t)).toFixed(1); b += (x === x0 ? 'M' : 'L') + x + ' ' + (y - A * Math.sin(t)).toFixed(1); }
+      for(var r = x0 + 3; r < x1; r += P / 5){ var tt = (r - x0) / P * Math.PI * 2, h = A * Math.sin(tt); if(Math.abs(h) > 2) rungs += 'M' + r.toFixed(1) + ' ' + (y + h).toFixed(1) + 'V' + (y - h).toFixed(1); }
+      return '<path class="op-rung" d="' + rungs + '"/><path class="op-bb b" d="' + b + '"/><path class="op-bb" d="' + a + '"/>';
+    }
+    function dimer(cx, cy, w, h, cls){
+      var l = cx - w / 2, r = cx + w / 2;
+      return '<path class="' + cls + '" d="M' + cx + ' ' + (cy + h * 0.55) + 'C' + (l + 6) + ' ' + (cy + h + 2) + ' ' + (l - 10) + ' ' + (cy + 2) + ' ' + (l - 4) + ' ' + (cy - h * 0.5) + 'C' + l + ' ' + (cy - h - 4) + ' ' + (cx - 6) + ' ' + (cy - h - 2) + ' ' + cx + ' ' + (cy - h * 0.55) + 'C' + (cx + 6) + ' ' + (cy - h - 2) + ' ' + r + ' ' + (cy - h - 4) + ' ' + (r + 4) + ' ' + (cy - h * 0.5) + 'C' + (r + 10) + ' ' + (cy + 2) + ' ' + (r - 6) + ' ' + (cy + h + 2) + ' ' + cx + ' ' + (cy + h * 0.55) + 'Z"/>';
+    }
+    function hexD(cx, cy, r){ var d = ''; for(var i = 0; i < 6; i++){ var a = i / 6 * Math.PI * 2 + Math.PI / 6; d += (i ? 'L' : 'M') + (cx + r * Math.cos(a)).toFixed(1) + ' ' + (cy + r * Math.sin(a)).toFixed(1); } return d + 'Z'; }
+    function trpD(cx, cy){ // indole: a benzene ring fused to a five-membered ring
+      var d = hexD(cx - 5, cy, 6), p = ''; for(var i = 0; i < 5; i++){ var a = i / 5 * Math.PI * 2 + Math.PI; p += (i ? 'L' : 'M') + (cx + 4.2 + 5.2 * Math.cos(a)).toFixed(1) + ' ' + (cy + 5.2 * Math.sin(a)).toFixed(1); }
+      return d + p + 'Z';
+    }
     function rowSvg(s, c, ci, y0){
       var p = [], y = y0 + 112, trp = c.mode === 'trp', k = c.copies[ci], x = s.copies[ci];
       var box = function(x1, x2, cls, label, dashed, gene){
-        var b = '<rect class="op-box ' + cls + (dashed ? ' mut' : '') + '" x="' + x1 + '" y="' + (y - 14) + '" width="' + (x2 - x1) + '" height="28" rx="4"/><text x="' + ((x1 + x2) / 2) + '" y="' + (y + 5) + '" text-anchor="middle">' + label + '</text>';
+        var b = '<rect class="op-box ' + cls + (dashed ? ' mut' : '') + '" x="' + (x1 + 1) + '" y="' + (y - 13) + '" width="' + (x2 - x1 - 2) + '" height="26" rx="6"/><text class="op-blab" x="' + ((x1 + x2) / 2) + '" y="' + (y + 4.5) + '" text-anchor="middle">' + label + '</text>';
         if(!gene || qmode === 'quiz') return b;
         return '<g class="op-tapg" data-gene="' + gene + '" data-ci="' + ci + '" role="button" tabindex="0" aria-label="' + esc(geneTapLabel(gene, k)) + '"><rect class="op-hit" x="' + (x1 - 2) + '" y="' + (y - 20) + '" width="' + (x2 - x1 + 4) + '" height="40" rx="6"/>' + b + '</g>';
       };
       var title = trp ? 'trp operon' : st.mode === 'mero' ? COPY_NAMES[ci] : 'lac operon';
       p.push('<text class="op-ttl" x="8" y="' + (y0 + 18) + '">' + esc(title) + ': mRNA ' + F(x.rate, 0) + ' (' + lvl(x.rate) + ')</text>');
-      p.push('<line class="op-dna" x1="6" y1="' + y + '" x2="594" y2="' + y + '"/>');
+      p.push(helix(6, 594, y));
       var reg = trp ? (k.R === '-' ? 'trpR⁻' : 'trpR') : (k.I === '-' ? 'lacI⁻' : k.I === 's' ? 'lacIˢ' : 'lacI');
       p.push(box(8, 84, 'gene reg', reg, trp ? k.R === '-' : k.I !== '+', trp ? 'R' : 'I'));
       p.push('<text class="op-note" x="46" y="' + (y + 32) + '" text-anchor="middle">' + (trp ? (k.R === '-' ? 'no repressor' : 'repressor gene') : (k.I === '-' ? 'no repressor' : k.I === 's' ? 'super-repressor' : 'repressor gene')) + '</text>');
@@ -191,17 +208,17 @@
       genes.forEach(function(g, i){ var w = trp ? gw : gw[i]; var mut = !trp && g === 'lacZ' && k.Z === '-'; p.push(box(gx, gx + w, 'gene', mut ? 'lacZ⁻' : g, mut, !trp && g === 'lacZ' ? 'Z' : '')); gx += w; });
       var ocx = (pr1 + op1) / 2, pcx = (pr0 + pr1) / 2;
       // CAP–cAMP
-      if(!trp && s.cap) p.push('<rect class="op-cap" x="100" y="' + (y - 46) + '" width="60" height="28" rx="12"/><text class="op-tight" x="130" y="' + (y - 28) + '" text-anchor="middle">CAP–cAMP</text>');
+      if(!trp && s.cap) p.push(dimer(130, y - 28, 40, 13, 'op-cap') + '<path class="op-camp" d="' + hexD(114, y - 42, 5) + '"/><text class="op-tight" x="130" y="' + (y - 24) + '" text-anchor="middle">CAP</text><text class="op-note" x="106" y="' + (y - 39) + '" text-anchor="end">cAMP</text>');
       else if(!trp) p.push('<text class="op-note" x="130" y="' + (y - 26) + '" text-anchor="middle">no CAP</text>');
       // RNA polymerase
       var on = x.rnap !== 'blocked', py = on ? y - 32 : y - 66;
-      p.push('<ellipse class="op-pol' + (x.rnap === 'weak' ? ' weak' : '') + '" cx="' + pcx + '" cy="' + py + '" rx="32" ry="15"/><text x="' + pcx + '" y="' + (py + 4) + '" text-anchor="middle">RNA pol</text>');
+      p.push('<path class="op-pol' + (x.rnap === 'weak' ? ' weak' : '') + '" d="M' + (pcx - 36) + ' ' + (py + 14) + 'C' + (pcx - 44) + ' ' + (py - 6) + ' ' + (pcx - 30) + ' ' + (py - 24) + ' ' + (pcx - 8) + ' ' + (py - 22) + 'C' + (pcx + 4) + ' ' + (py - 30) + ' ' + (pcx + 30) + ' ' + (py - 26) + ' ' + (pcx + 36) + ' ' + (py - 8) + 'C' + (pcx + 42) + ' ' + (py + 4) + ' ' + (pcx + 38) + ' ' + (py + 14) + ' ' + (pcx + 30) + ' ' + (py + 16) + 'Q' + pcx + ' ' + (py + 4) + ' ' + (pcx - 30) + ' ' + (py + 17) + 'Z"/><path class="op-polsh" d="M' + (pcx - 26) + ' ' + (py - 12) + 'q10 -10 24 -10"/><text x="' + pcx + '" y="' + (py - 2) + '" text-anchor="middle">RNA pol</text>');
       if(!on) p.push('<text class="op-note" x="' + pcx + '" y="' + (y - 36) + '" text-anchor="middle">blocked</text>');
       else if(x.rnap === 'weak') p.push('<text class="op-note" x="' + pcx + '" y="' + (y - 56) + '" text-anchor="middle">binds weakly</text>');
       // repressor
       var repShape = function(cx, cy, label, extra){
-        var r = '<path class="op-rep" d="M' + (cx - 34) + ' ' + (cy + 12) + 'h18l4 -6h24l4 6h18v-26h-68z"/><text x="' + cx + '" y="' + (cy + 4) + '" text-anchor="middle">' + label + '</text>';
-        if(extra) r += '<circle class="op-small" cx="' + (cx + 40) + '" cy="' + (cy - 10) + '" r="9"/><text class="op-note" x="' + (cx + 52) + '" y="' + (cy - 6) + '">' + extra + '</text>';
+        var r = dimer(cx, cy, 58, 15, 'op-rep') + '<path class="op-repsh" d="M' + (cx - 30) + ' ' + (cy - 8) + 'q8 -8 18 -7"/>' + '<text x="' + cx + '" y="' + (cy + 3) + '" text-anchor="middle">' + label + '</text>';
+        if(extra) r += '<path class="op-small" d="' + (extra === 'Trp' ? trpD(cx + 40, cy - 14) : hexD(cx + 36, cy - 16, 6) + hexD(cx + 47, cy - 10, 6)) + '"/><text class="op-note" x="' + (cx + 58) + '" y="' + (cy - 8) + '">' + extra + '</text>';
         return r;
       };
       var floatX = op1 + 40, fy = y0 + 46, onOp = x.rep === 'bound' || x.rep === 'super';
@@ -220,6 +237,8 @@
         var d = 'M' + mx0 + ' ' + (y + 30), n = Math.floor((mx1 - mx0) / 20);
         for(var i = 0; i < n; i++) d += ' q5 -' + (x.rate >= 50 ? 7 : 4) + ' 10 0 t10 0';
         p.push('<path class="op-mrna' + (x.rate >= 50 ? ' hi' : '') + '" d="' + d + '"/>');
+        var bt = ''; for(var bi = mx0 + 5; bi < mx0 + n * 20; bi += 5) bt += 'M' + bi + ' ' + (y + 30) + 'v-5';
+        p.push('<path class="op-bases" d="' + bt + '"/>');
         // ribbons peeling off: how many and how often from the model's rate
         var nr = x.rate >= 50 ? 4 : 1, dur = x.rate >= 50 ? 2.4 : 4.8;
         for(var j = 0; j < nr; j++) p.push('<path class="op-ribbon" style="animation-duration:' + dur + 's;animation-delay:-' + (j * dur / nr).toFixed(2) + 's" d="M' + (mx0 + 6) + ' ' + (y + 26) + ' q8 -6 16 0 t16 0 t16 0 t16 0"/>');

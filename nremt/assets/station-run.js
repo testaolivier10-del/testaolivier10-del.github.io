@@ -149,8 +149,7 @@
     station = null;
     mount.innerHTML =
       '<div class="run-card">' +
-        '<p class="run-intro">Pick a station and talk your way through it out loud, ticking each phase as you say it. ' +
-          'The clock runs, the critical items are marked, and at the end you get what happened — not a score.</p>' +
+        '<p class="run-intro"><b>Pick a station to start.</b> Say each phase out loud and tick it; the clock runs and critical items are marked.</p>' +
         '<div class="run-pick">' +
           STATIONS.map(function(s, i){
             return '<button type="button" class="run-station" data-i="' + i + '">' +
@@ -176,12 +175,24 @@
   var RE_PPE = /\bPPE\b/i, RE_TIME = /within the \d+ minutes/i;
   var flagged = [];   // per official criterion: '', 'auto', 'self'
 
+  /* The clock face (visual polish 2026-10): a stopwatch with a crown, a tick
+     per tenth of the limit, the elapsed arc, and a hand that sweeps once
+     round per limit. */
   function ring(frac, over){
-    var r = 52, c = 2 * Math.PI * r, f = Math.max(0, Math.min(1, frac));
-    return '<svg class="run-ring" viewBox="0 0 120 120" aria-hidden="true">' +
+    var r = 52, c = 2 * Math.PI * r, f = Math.max(0, Math.min(1, frac)), ticks = '';
+    for(var i = 0; i < 40; i++){
+      var a = i / 40 * 2 * Math.PI, big = i % 4 === 0, r1 = big ? 40 : 43;
+      ticks += '<line x1="' + (60 + Math.sin(a) * 46).toFixed(1) + '" y1="' + (60 - Math.cos(a) * 46).toFixed(1) + '" x2="' + (60 + Math.sin(a) * r1).toFixed(1) + '" y2="' + (60 - Math.cos(a) * r1).toFixed(1) + '" class="run-tk' + (big ? ' big' : '') + '"/>';
+    }
+    return '<svg class="run-ring" viewBox="0 -10 120 132" aria-hidden="true">' +
+      '<rect x="53" y="-9" width="14" height="8" rx="2" class="run-crown"/><rect x="56.5" y="-2" width="7" height="5" class="run-crown"/>' +
+      '<rect x="88" y="4" width="9" height="6" rx="2" transform="rotate(45 92.5 7)" class="run-crown"/>' +
+      '<circle cx="60" cy="60" r="59" class="run-case"/>' +
       '<circle cx="60" cy="60" r="' + r + '" class="run-ring-bg"/>' +
       '<circle cx="60" cy="60" r="' + r + '" class="run-ring-fg' + (over ? ' over' : frac > 0.8 ? ' late' : '') + '" ' +
         'stroke-dasharray="' + c.toFixed(1) + '" stroke-dashoffset="' + (c * (1 - f)).toFixed(1) + '" transform="rotate(-90 60 60)"/>' +
+      '<circle cx="60" cy="60" r="47" class="run-face"/>' + ticks +
+      '<g class="run-hand" transform="rotate(' + (f * 360).toFixed(1) + ' 60 60)"><path d="M60 68 L60 16" /><circle cx="60" cy="16" r="2.4"/></g>' +
       '</svg>';
   }
 
@@ -226,6 +237,8 @@
       var c = 2 * Math.PI * 52;
       fg.setAttribute('stroke-dashoffset', (c * (1 - Math.min(1, sec / lim))).toFixed(1));
       fg.setAttribute('class', 'run-ring-fg' + (over ? ' over' : sec > lim * 0.8 ? ' late' : ''));
+      var hand = wrap.querySelector('.run-hand');
+      if(hand) hand.setAttribute('transform', 'rotate(' + ((sec / lim % 1) * 360).toFixed(1) + ' 60 60)');
     }
     var left = document.getElementById('runLeft');
     if(left) left.textContent = over ? clockText(sec - lim) + ' over' : clockText(lim - sec) + ' left';
@@ -264,7 +277,7 @@
               '<input type="number" id="runTarget" min="1" max="60" value="' + targetMin + '"> min' +
             '</label>' +
             '<div class="run-hearsay">' + (station.official
-              ? 'The station limit from the table below (the Registry’s exam guide). Change it if your program differs.'
+              ? 'The station limit from the Registry’s exam guide (see "The official sheets at a glance" below). Change it if your program differs.'
               : 'Commonly published for this station — confirm against your own program’s sheet.') + '</div>' +
             '<a class="run-badge" id="runCritBadge" href="#runCrit" hidden></a>' +
           '</div>' +
@@ -290,7 +303,7 @@
               '<ul>' + station.criteria.map(function(c, i){
                 return '<li><button type="button" class="run-cbtn" data-c="' + i + '" aria-pressed="false">' + esc(c) + '</button></li>';
               }).join('') + '</ul>' +
-              '<p class="run-crit-src">Paraphrased from ' + esc(station.code || 'the official sheet') + ' in the table below.</p>' +
+              '<p class="run-crit-src">Paraphrased from ' + esc(station.code || 'the official sheet') + ' ("The official sheets at a glance" below).</p>' +
             '</div>'
           : '') +
         '</div>' +
