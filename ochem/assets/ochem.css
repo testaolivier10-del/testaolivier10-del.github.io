@@ -309,6 +309,8 @@
 /* Invisible hit areas around small targets (atomic-structure's shell slots,
    practice atoms): never stroked or filled, whatever state the atom is in. */
 .atom circle.slot-hit,.atom circle.atom-hit{fill:transparent!important;stroke:none!important;}
+/* The label-sized disc the tools show in place of the full atom bubble. */
+.atom circle.atom-knock{fill:none;stroke:none;}
 .shell-slot:focus-visible circle:not(.slot-hit){outline:none;stroke:var(--ink);stroke-width:3.5;}
 .shell-slot.blocked:hover circle:not(.slot-hit){stroke:var(--line);stroke-width:2;}
 .shell-controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 4px;}

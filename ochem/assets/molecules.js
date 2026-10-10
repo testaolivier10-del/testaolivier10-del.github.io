@@ -1173,13 +1173,33 @@
     return Object.keys(mol.atoms).filter(function(k){ return rolesOf(mol.atoms[k]).indexOf(role) !== -1; });
   }
 
-  function lonePairDots(a){
+  /* Lone pairs go in the gaps between bonds, never on top of one. The four
+     compass slots (up, right, down, left) are ranked by how far each is from
+     the nearest bond direction and the pairs take the clearest ones; an atom
+     with no bonds keeps the old order, starting above and going clockwise. */
+  function lonePairDots(a, dirs, bare){
     if(!a.lp) return '';
-    // Place pairs around the atom, starting above and going clockwise.
     var out = '', angles = [-90, 0, 90, 180];
+    if(dirs && dirs.length){
+      var clear = function(t){ return Math.min.apply(null, dirs.map(function(d){ var x = Math.abs(((t - d) % 360 + 540) % 360 - 180); return x; })); };
+      var cand = [];
+      for(var t = -180; t < 180; t += 15) cand.push(t);
+      var picked = [];
+      for(var n = 0; n < Math.min(a.lp, 4); n++){
+        var best = null, bs = -1;
+        cand.forEach(function(t){
+          var sc = Math.min(clear(t), picked.length ? Math.min.apply(null, picked.map(function(q){ return Math.abs(((t - q) % 360 + 540) % 360 - 180); })) : 360);
+          // Prefer the compass directions a chemist would draw on a tie.
+          sc += (t % 90 === 0 ? 4 : 0);
+          if(sc > bs){ bs = sc; best = t; }
+        });
+        picked.push(best);
+      }
+      angles = picked;
+    }
     for(var i=0;i<Math.min(a.lp, 4);i++){
       var rad = angles[i] * Math.PI/180;
-      var d = a.r + 6;
+      var d = bare ? labelR(a) + 4.5 : a.r + 6;
       var cx = a.x + d*Math.cos(rad), cy = a.y + d*Math.sin(rad);
       var px = -Math.sin(rad)*3.2, py = Math.cos(rad)*3.2;
       out += '<circle class="lp-dot" cx="' + (cx+px).toFixed(1) + '" cy="' + (cy+py).toFixed(1) + '" r="1.9"/>' +
@@ -1188,9 +1208,22 @@
     return out;
   }
 
+  /* How much room a label needs: the radius of a disc that just clears its
+     text. Bonds stop here rather than at the full atom disc, which only
+     matters where the disc is not drawn (the tools draw bare labels, the way
+     a textbook does); where it is drawn it covers the extra length anyway. */
+  function labelR(a){
+    if(!a.label) return 0;
+    var fs = a.r > 15 ? 14.5 : (a.r > 12 ? 12.5 : 11);
+    var n = String(a.label).replace(/[₀-₉⁰-⁹⁺⁻]/g, '').length + String(a.label).replace(/[^₀-₉]/g, '').length * 0.6 + (a.charge ? 0.6 : 0);
+    return Math.min(a.r, fs * (0.52 + 0.3 * Math.max(0, n - 1)) + 2.5);
+  }
+
   function bondPath(mol, b){
     var a = mol.atoms[b.a], c = mol.atoms[b.b];
     if(!a || !c) return '';
+    a = { x:a.x, y:a.y, r:Math.min(a.r, labelR(a) + 2) || a.r };
+    c = { x:c.x, y:c.y, r:Math.min(c.r, labelR(c) + 2) || c.r };
     var stroke = b.style === 'faint' ? 'var(--line-soft)' : 'var(--line)';
     var dx = c.x - a.x, dy = c.y - a.y, len = Math.sqrt(dx*dx + dy*dy) || 1;
     // Stop the line at each atom's edge so it doesn't run under the label.
@@ -1205,13 +1238,14 @@
       return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="var(--ink)" stroke-width="2.5" stroke-dasharray="3 4"/>';
     }
     var order = b.order || 1;
+    var fc = b.style === 'faint' ? ' class="bond-faint"' : '';
     if(order === 1){
-      return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + stroke + '" stroke-width="2.5"/>';
+      return '<line' + fc + ' x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + stroke + '" stroke-width="2.5"/>';
     }
     var out = '', offsets = order === 2 ? [-3, 3] : [-4.5, 0, 4.5];
     offsets.forEach(function(o){
       var ox = -uy*o, oy = ux*o;
-      out += '<line x1="' + (x1+ox).toFixed(1) + '" y1="' + (y1+oy).toFixed(1) + '" x2="' + (x2+ox).toFixed(1) + '" y2="' + (y2+oy).toFixed(1) + '" stroke="' + stroke + '" stroke-width="2.2"/>';
+      out += '<line' + fc + ' x1="' + (x1+ox).toFixed(1) + '" y1="' + (y1+oy).toFixed(1) + '" x2="' + (x2+ox).toFixed(1) + '" y2="' + (y2+oy).toFixed(1) + '" stroke="' + stroke + '" stroke-width="2.2"/>';
     });
     return out;
   }
@@ -1266,8 +1300,15 @@
       ' x1="' + a.x + '" y1="' + a.y + '" x2="' + c.x + '" y2="' + c.y + '"/>';
   }
 
+  /* The element a label starts with (CH₃ is C, OH is O, Cl⁻ is Cl), as a
+     class so a stage can color heteroatoms the way textbooks do. */
+  function elOf(label){
+    var m = /^[⁺⁻+\-]?([A-Z][a-z]?)/.exec(String(label || ''));
+    return m ? m[1] : '';
+  }
+
   function atomGroup(key, a, opts){
-    var cls = 'atom';
+    var cls = 'atom' + (elOf(a.label) ? ' el-' + elOf(a.label) : '');
     var clickable = opts.clickable === 'all' || (opts.clickable && opts.clickable.indexOf(key) !== -1);
     if(!clickable) cls += ' atom--static';
     if(opts.chosen && opts.chosen.indexOf(key) !== -1) cls += ' chosen';
@@ -1286,7 +1327,8 @@
       // A clickable atom is drawn at 11-17 units; an invisible ring around it
       // gives a finger about 44 px to land on (audit 2026-10).
       (clickable ? '<circle class="atom-hit" cx="' + a.x + '" cy="' + a.y + '" r="' + Math.max(a.r + 6, 21) + '"/>' : '') +
-      lonePairDots(a) +
+      lonePairDots(a, opts._dirs && opts._dirs[key], opts._bare) +
+      '<circle class="atom-knock" cx="' + a.x + '" cy="' + a.y + '" r="' + labelR(a).toFixed(1) + '"/>' +
       '<circle cx="' + a.x + '" cy="' + a.y + '" r="' + a.r + '" fill="var(--white)" stroke="var(--line)" stroke-width="2"/>' +
       '<text x="' + a.x + '" y="' + (a.y + fontSize*0.35) + '" text-anchor="middle" font-size="' + fontSize + '">' +
         esc(a.label) + (a.charge ? esc(a.charge) : '') +
@@ -1296,9 +1338,13 @@
 
   // A curved arrow between two atoms, in the same visual language as the
   // mechanism pages: tail at the electron source, head at the destination.
-  function arrowPath(mol, arrow, i){
+  function arrowPath(mol, arrow, i, bare){
     var a = anchor(mol, arrow.from), b = anchor(mol, arrow.to);
     if(!a || !b) return '';
+    if(bare){
+      if(!a.isBond) a = { x:a.x, y:a.y, r:labelR(a) + 3 };
+      if(!b.isBond) b = { x:b.x, y:b.y, r:labelR(b) + 2 };
+    }
     var color = arrow.color || 'var(--accent)';
     var id = 'omol-ah' + i;
     /* Curved arrows are drawn as an arc that leaves the source atom sideways
@@ -1346,12 +1392,23 @@
        editor an arrow is a click target — you click one to erase it. The
        twin is stroke-only hit area; the group carries the index so the
        editor knows which arrow was hit without counting DOM order. */
-    return '<g class="oarrow" data-arrow="' + i + '">' +
-           '<defs><marker id="' + id + '" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">' +
-             '<path d="M0,0 L6,3 L0,6 Z" fill="' + color + '"/></marker></defs>' +
+    /* The head is a drawn, slightly swept triangle whose tip sits exactly on
+       the end point, turned to the curve's tangent there (for a quadratic,
+       the direction from the control point to the end). The stroke stops at
+       the head's base so the line never pokes through the tip. */
+    var tx = x2 - mx, ty = y2 - my, tl = Math.sqrt(tx*tx + ty*ty) || 1;
+    tx /= tl; ty /= tl;
+    var hs = 10, hw = 5, bx = x2 - tx*hs, by = y2 - ty*hs, px = -ty, py = tx;
+    var dl = 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) + ' Q ' + mx.toFixed(1) + ' ' + my.toFixed(1) +
+             ' ' + (x2 - tx*hs*0.7).toFixed(1) + ' ' + (y2 - ty*hs*0.7).toFixed(1);
+    var hd = 'M ' + x2.toFixed(1) + ' ' + y2.toFixed(1) +
+             ' L ' + (bx + px*hw).toFixed(1) + ' ' + (by + py*hw).toFixed(1) +
+             ' Q ' + (x2 - tx*hs*0.62).toFixed(1) + ' ' + (y2 - ty*hs*0.62).toFixed(1) + ' ' + (bx - px*hw).toFixed(1) + ' ' + (by - py*hw).toFixed(1) + ' Z';
+    return '<g class="oarrow" data-arrow="' + i + '" data-head="' + id + '">' +
            '<path class="oarrow-hit" d="' + d + '" stroke="transparent" stroke-width="18" fill="none"/>' +
-           '<path class="oarrow-line" d="' + d + '" ' +
-             'stroke="' + color + '" stroke-width="2.5" fill="none" marker-end="url(#' + id + ')"/>' +
+           '<path class="oarrow-line" d="' + dl + '" ' +
+             'stroke="' + color + '" stroke-width="2.5" stroke-linecap="round" fill="none"/>' +
+           '<path class="oarrow-head" d="' + hd + '" fill="' + color + '"/>' +
            '</g>';
   }
 
@@ -1368,11 +1425,24 @@
     var mol = typeof molOrId === 'string' ? M[molOrId] : molOrId;
     if(!mol) return '';
     opts = opts || {};
+    // Bond directions at each atom, in degrees, for placing lone pairs.
+    var dirs = {};
+    mol.bonds.forEach(function(b){
+      var p = mol.atoms[b.a], q = mol.atoms[b.b];
+      if(!p || !q) return;
+      (dirs[b.a] = dirs[b.a] || []).push(Math.atan2(q.y - p.y, q.x - p.x) * 180/Math.PI);
+      (dirs[b.b] = dirs[b.b] || []).push(Math.atan2(p.y - q.y, p.x - q.x) * 180/Math.PI);
+    });
+    /* The tool pages draw bare labels (tools.css hides the atom bubble), so
+       there lone pairs and arrow ends sit against the label instead of
+       outside a bubble that is not drawn. */
+    var bare = opts.bare !== undefined ? !!opts.bare : !!(typeof document !== 'undefined' && document.querySelector && document.querySelector('.tool-root'));
+    opts = Object.assign({}, opts, { _dirs: dirs, _bare: bare });
     var body = (mol.decor || '') +
       mol.bonds.map(function(b){ return bondPath(mol, b); }).join('') +
       mol.bonds.map(function(b){ return bondHit(mol, b, opts); }).join('') +
       Object.keys(mol.atoms).map(function(k){ return atomGroup(k, mol.atoms[k], opts); }).join('') +
-      (opts.arrows || []).map(function(ar, i){ return arrowPath(mol, ar, i); }).join('');
+      (opts.arrows || []).map(function(ar, i){ return arrowPath(mol, ar, i, bare); }).join('');
     var caption = opts.caption === undefined ? mol.caption : opts.caption;
     /* role="img" makes assistive technology treat the whole SVG as a single
        picture and stop exposing what is inside it — correct for a diagram, and
