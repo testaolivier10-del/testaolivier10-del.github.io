@@ -553,4 +553,9 @@ a.mode-card .go{font:900 14px var(--font-ui);color:var(--accent-ink, var(--accen
 .cx-toolq .cx-tq-n{font:800 12.5px var(--font-ui);color:var(--muted);}
 .cx-toolq .cx-small{margin:0 0 14px;}
 .cx-tq li{background:var(--surface2, var(--paper));box-shadow:none;}
+.cx-tq-more{margin-top:8px;}
+.cx-tq-more>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:6px;min-height:42px;font:700 13.5px var(--font-ui);color:var(--accent-text);}
+.cx-tq-more>summary::-webkit-details-marker{display:none;}
+.cx-tq-more>summary::before{content:var(--disclose);display:inline-block;transition:transform .15s;}
+.cx-tq-more[open]>summary::before{transform:rotate(90deg);}
 .cx-tq .cx-tq-go{padding:8px 14px;font-size:13px;flex:none;min-height:42px;display:inline-flex;align-items:center;}
