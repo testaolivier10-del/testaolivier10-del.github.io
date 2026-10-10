@@ -145,6 +145,13 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    and graph (`.bt-stage`) sit above its controls. `ApBioTools.mount`/`skillTool` take a
    `stage(host, state)` slot drawn first. After every recorded answer and every run, a "Keep going"
    strip links the topic's lesson, notes, up to three glossary terms and (after a miss) Review.
+   (2026-10-09, tools upgrade U-Bio-skills, `docs/tools-upgrade-notes/bio-skills.md`) Skills tools
+   open on an "Explore" card (drag the data, see the result) before the graded problems, and each
+   problem card has a live stage that draws the student's typed answers, then the true ones after
+   Check. Shared pieces are in `bio-skill-stage.js` (loaded on skills and drill pages). The graph
+   builder leads with its grid and has an unchecked free-plot mode; design drills build the null
+   hypothesis from tiles and tag CER with a highlighter (the graded radios stay under "Answer as a
+   list"). Grading, item ids, seeds and recording are unchanged.
 10. (2026-10-03) **Free lessons: Units 1 and 2 and every skills lesson.** The brief's "the first
    lesson of each skills topic" is every skills lesson, because a skills topic has one lesson.
    `isFreeTopic` (`scripts/lib/apbio-build.mjs`) marks every topic outside the course units free;
