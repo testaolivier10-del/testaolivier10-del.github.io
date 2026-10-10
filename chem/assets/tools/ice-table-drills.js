@@ -39,9 +39,9 @@
     var F = T.F, esc = T.esc, ctxs = data.contexts || [], ci = 0, seed = 1 + Math.floor(Math.random() * 9999), p, sp, x = 0, xlo, xhi, xs, beaker, slider;
     host.innerHTML = '<section class="bt-problem ic-ex" aria-labelledby="icx-h"><div class="tx-head"><h2 id="icx-h" class="bt-eq ic-eqn"></h2><p class="bt-small ic-setup"></p></div>' +
       '<div class="ic-wrap"><div class="ic-live"><figure class="ic-bars"><div class="ic-chart"></div></figure><div class="ic-beaker"></div></div>' +
-      '<div class="ic-ctl"><div class="ic-x"></div><div class="bt-buttons"><button type="button" class="btn-press sm ic-solve">Solve for x</button><button type="button" class="bt-btn ic-new">New numbers</button></div>' +
-      '<div class="ic-why" aria-hidden="true"></div><div class="ic-tab"></div></div></div><div class="bt-pick ic-pick"></div></section>';
-    var pick = host.querySelector('.ic-pick');
+      '<div class="ic-ctl"><div class="ic-x"></div><div class="bt-buttons"><button type="button" class="btn-press sm ic-solve">Solve for x</button></div>' +
+      '<div class="ic-why"></div><div class="ic-tab"></div></div></div>' + T.moreHtml('<div class="bt-pick ic-pick"></div><div class="bt-buttons"><button type="button" class="bt-btn ic-new">New numbers</button></div>', 'another reaction, new numbers') + '</section>';
+    var pick = host.querySelector('.ic-pick'), start = null;
     var sel = T.choiceSelect({ label: 'Reaction', options: ctxs.map(function(c, i){ return { value: i, label: M.eqHtml(c.species).replace(/<[^>]+>/g, '') }; }), value: 0, onChange: function(v){ ci = +v; build(); } });
     sel.el.classList.add('bt-inline'); pick.appendChild(sel.el);
     host.querySelector('.ic-new').addEventListener('click', function(){ seed++; build(); });
@@ -58,6 +58,8 @@
       host.querySelector('.ic-eqn').innerHTML = p.equation + ' &nbsp; ' + (p.Kp ? 'K<sub>p</sub>' : 'K<sub>c</sub>') + ' = ' + M.fmt(p.K, 3);
       host.querySelector('.ic-setup').innerHTML = 'Start: ' + sp.map(function(s, i){ return (p.Kp ? 'P<sub>' + s.html + '</sub>' : '[' + s.html + ']') + ' = ' + M.fmt(p.c0[i], 3) + ' ' + p.unit; }).join(', ') + '. Move x and watch Q.';
       var xh = host.querySelector('.ic-x'); xh.innerHTML = '';
+      start = T.cue('Drag the x slider and watch Q move toward K.');
+      xh.appendChild(start.el);
       var step = M.sig(xhi / 200, 1);
       slider = T.slider({ label: 'x, the extent of reaction (' + p.unit + ')', min: 0, max: M.round(Math.floor(xhi / step) * step, 6), step: step, value: 0, decimals: Math.max(2, -Math.floor(Math.log10(step))), onInput: function(v){ x = v; draw(); } });
       xh.appendChild(slider.el);
@@ -88,9 +90,10 @@
       var counts = {}; E.forEach(function(v, i){ counts['s' + i] = Math.round(Math.max(0, v) / perP); });
       beaker.update(q > 0 ? { counts: counts, Q: q, K: p.K } : { counts: counts });
       var r = q / p.K, cl = Math.abs(r - 1) <= 0.01;
-      host.querySelector('.ic-why').innerHTML = '<p class="tx-where"><b>' + (q === 0 ? 'x = 0: no products, Q = 0.' : cl ? 'Q = K: this x is the equilibrium.' : r < 1 ? 'Q < K: more x.' : 'Q > K: too far; less x.') + '</b> ' +
-        (q === 0 ? 'Nothing has reacted yet, so the forward reaction runs.' : 'Q = ' + p.expr + ' = ' + M.fmt(q, 3) + ' at x = ' + M.fmt(x, 3) + ' ' + p.unit + '. ' + (cl ? 'Every E entry is initial + change with this x; putting them back into the K expression returns K.' : r < 1 ? 'Products are still too low for K: the reaction keeps going forward.' : 'Too much product for K: the real mixture would stop before this x.')) +
-        ' K is fixed at this temperature; only Q moves.</p>';
+      if(x > 0 && start) start.done();
+      T.explain(host.querySelector('.ic-why'), '<b>' + (q === 0 ? 'x = 0: no products, Q = 0.' : cl ? 'Q = K: this x is the equilibrium.' : r < 1 ? 'Q < K: more x.' : 'Q > K: too far; less x.') + '</b>',
+        '<p>' + (q === 0 ? 'Nothing has reacted yet, so the forward reaction runs.' : 'Q = ' + p.expr + ' = ' + M.fmt(q, 3) + ' at x = ' + M.fmt(x, 3) + ' ' + p.unit + '. ' + (cl ? 'Every E entry is initial + change with this x; putting them back into the K expression returns K.' : r < 1 ? 'Products are still too low for K: the reaction keeps going forward.' : 'Too much product for K: the real mixture would stop before this x.')) +
+        ' K is fixed at this temperature; only Q moves.</p>');
     }
     build();
   }
