@@ -356,15 +356,18 @@
     }).join('');
   }
 
+  /* Landing (owner brief 2026-10-09): mode switch and one plain first step
+     above the tool, not inside a panel; one route shown in full, the other
+     routes of the same length behind a disclosure. */
   root.innerHTML =
-    '<div class="tpanel rr-modes">' +
+    '<div class="tool-modes">' +
       '<div class="tseg" id="rrMode" role="group" aria-label="What to do">' +
         '<button type="button" data-mode="route" aria-pressed="true" class="on">Route</button>' +
         '<button type="button" data-mode="reagent" aria-pressed="false">Reagent</button>' +
         '<button type="button" data-mode="groups" aria-pressed="false">Groups</button>' +
         '<button type="button" data-mode="puzzle" aria-pressed="false">Synthesis puzzle</button>' +
       '</div>' +
-      '<p class="tmuted rr-modes__say" id="rrModeSay"></p>' +
+      '<p class="tool-step" id="rrModeSay"></p>' +
     '</div>' +
     '<div id="rrRoute"></div>' +
     '<div id="rrReagent" hidden></div>' +
@@ -372,10 +375,10 @@
     '<div id="rrPuzzle" hidden></div>';
 
   var MODE_SAY = {
-    route: 'Pick where you start and where you need to end up. Height on the map is oxidation level: climbing needs an oxidant, falling a reductant, and moving sideways needs neither.',
-    reagent: 'Everything one reagent does in this course, and what it leaves alone.',
-    groups: 'Pick a functional group: what it becomes, what makes it, and what does not work on it.',
-    puzzle: 'You get a start and a target. Tap reagents to build the route one step at a time; each step moves your molecule across the map.'
+    route: '<b>Pick a start and a target</b> (or tap a group on the map) to see the reagents that get you there.',
+    reagent: '<b>Pick a reagent</b> to see everything it does in this course, and what it leaves alone.',
+    groups: '<b>Pick a functional group:</b> what it becomes, what makes it, and what does not work on it.',
+    puzzle: '<b>Tap reagents to build the route</b> from the start to the target, one step at a time.'
   };
 
   var elRoute = document.getElementById('rrRoute');
@@ -391,7 +394,7 @@
       b.classList.toggle('on', on);
       b.setAttribute('aria-pressed', String(on));
     });
-    document.getElementById('rrModeSay').textContent = MODE_SAY[m];
+    document.getElementById('rrModeSay').innerHTML = MODE_SAY[m];
     elRoute.hidden = m !== 'route';
     elReagent.hidden = m !== 'reagent';
     elGroups.hidden = m !== 'groups';
@@ -452,6 +455,7 @@
     '</div>';
   }
 
+  var sameOpen = false;
   function renderRoute(){
     var res = routes(S.from, S.to, { skeleton: S.skeleton });
     if(S.pick >= res.shortest.length) S.pick = 0;
@@ -490,8 +494,13 @@
         '<p class="rr-found"><b>' + res.length + ' step' + (res.length > 1 ? 's' : '') + '</b> at the shortest' +
           (res.shortest.length > 1 ? ', ' + res.shortest.length + ' ways' : '') + '.' +
           (S.skeleton ? ' Same carbon skeleton throughout.' : ' Carbon-changing steps allowed — watch the C–C tags.') + '</p>' +
-        res.shortest.slice(0, 4).map(function(r, i){ return routeHtml(r, i + 1, i === S.pick); }).join('') +
-        (res.shortest.length > 4 ? '<p class="tmuted">…and ' + (res.shortest.length - 4) + ' more of the same length.</p>' : '') +
+        routeHtml(res.shortest[S.pick], S.pick + 1, true) +
+        (res.shortest.length > 1
+          ? '<details class="rr-longer" id="rrSame"' + (sameOpen ? ' open' : '') + '><summary>' + (res.shortest.length - 1) + ' other route' + (res.shortest.length > 2 ? 's' : '') + ' of the same length</summary>' +
+              res.shortest.slice(0, 4).map(function(r, i){ return i === S.pick ? '' : routeHtml(r, i + 1, false); }).join('') +
+              (res.shortest.length > 4 ? '<p class="tmuted">…and ' + (res.shortest.length - 4) + ' more of the same length.</p>' : '') +
+            '</details>'
+          : '') +
         (res.longer.length
           ? '<details class="rr-longer"><summary>One step longer (' + res.longer.length + (res.longer.length >= 40 ? '+' : '') + ')</summary>' +
               '<p class="tmuted">Often the one you actually want: a different reagent pair, a different stereochemical outcome, or a step you already know.</p>' +
@@ -540,6 +549,8 @@
         if(again) again.focus();
       });
     });
+    var same = document.getElementById('rrSame');
+    if(same) same.addEventListener('toggle', function(){ sameOpen = same.open; });
     elRoute.querySelectorAll('.rr-route__show').forEach(function(b){
       b.addEventListener('click', function(){
         var n = parseInt(b.getAttribute('data-pick'), 10);
