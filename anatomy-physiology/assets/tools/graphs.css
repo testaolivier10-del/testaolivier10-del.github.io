@@ -54,7 +54,7 @@
 .gr-layout{display:grid;gap:18px;grid-template-columns:minmax(0,1fr);}
 @media (min-width:900px){
   .gr-layout{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:start;}
-  .gr-figcol{position:sticky;top:12px;}
+  .gr-figcol{position:sticky;top:calc(var(--site-header-h, 112px) + 12px);}
 }
 .gr-fig{margin:0;background:var(--white);border-radius:16px;box-shadow:var(--lift-sm);padding:10px 6px 4px;}
 .gr-svg{display:block;width:100%;height:auto;overflow:visible;}

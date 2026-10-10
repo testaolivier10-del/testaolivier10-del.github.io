@@ -233,12 +233,18 @@
      first graphs in list order, within ?chapter= / ?topic=, with something
      not yet answered right; #all is the full list. The picker above the item
      reaches every graphs. */
-  function ordered(){
-    var q = params(), want = q.chapter || (q.topic && topicInfo(q.topic) ? topicInfo(q.topic).chapter : '');
+  // Every graph in course order (chapter, then topic): the picker's order.
+  function sortedAll(){
     var order = cur().chapters.map(function(c){ return c.id; }), topicOrder = cur().topics.map(function(t){ return t.id; });
-    var all = DATA.graphs.slice().sort(function(a, b){
+    return DATA.graphs.slice().sort(function(a, b){
       return order.indexOf(chapterOf(a)) - order.indexOf(chapterOf(b)) || topicOrder.indexOf(a.topic) - topicOrder.indexOf(b.topic);
     });
+  }
+  // "Next graph": the next one in that order, inside ?chapter= when set.
+  function nextOf(g){ var list = ordered(); if(list.indexOf(g) < 0) list = sortedAll(); return list[(list.indexOf(g) + 1) % list.length]; }
+  function ordered(){
+    var q = params(), want = q.chapter || (q.topic && topicInfo(q.topic) ? topicInfo(q.topic).chapter : '');
+    var all = sortedAll();
     var inCh = all.filter(function(x){ return chapterOf(x) === want; });
     return inCh.length ? inCh : all;
   }
@@ -252,8 +258,7 @@
     var host = app.querySelector('.pw-pickhost'), K = window.AnpToolKit;
     if(!host || !K) return;
     var chapters = [];
-    var all = DATA.graphs.slice(), order = cur().chapters.map(function(c){ return c.id; }), topicOrder = cur().topics.map(function(t){ return t.id; });
-    all.sort(function(a, b){ return order.indexOf(chapterOf(a)) - order.indexOf(chapterOf(b)) || topicOrder.indexOf(a.topic) - topicOrder.indexOf(b.topic); });
+    var all = sortedAll();
     all.forEach(function(x){ var c = chapterOf(x); if(chapters.indexOf(c) < 0) chapters.push(c); });
     K.picker(host, {
       label: 'Graph', noun: 'graphs', current: g.id, allHref: '#all', allLabel: 'All graphs by chapter',
@@ -464,8 +469,7 @@
   }
 
   function showGraph(g, qk, wantMode){
-    var idx = DATA.graphs.indexOf(g);
-    var next = DATA.graphs[(idx + 1) % DATA.graphs.length];
+    var next = nextOf(g);
     var hasRegions = (g.regions || []).some(function(r){ return !r.show && r.x1 - r.x0 > 0; });
     var tried = g.questions.some(function(q){ return status(itemId(g, q)) !== 'new'; });
     var mode = wantMode || (qk != null || tried ? 'quiz' : 'explore');
@@ -538,7 +542,7 @@
         L.appendChild(el('circle', { cx: px, cy: q.cy, r: 4.5, 'class': 'gr-cur-dot gr-dot-' + q.s.cls }));
       });
       // value pills, on the side with more room, nudged apart so they never overlap
-      var right = px < ML + (W - ML - MR) * 0.62;
+      var right = px < ML + (W - ML - MR) * 0.62, boxes = [];
       pts.sort(function(a, b){ return a.cy - b.cy; });
       var lastY = -1e9;
       pts.forEach(function(q){
@@ -546,16 +550,16 @@
         var x = right ? px + 12 : px - 12 - w;
         L.appendChild(el('rect', { x: x, y: y - 9, width: w, height: 18, rx: 9, 'class': 'gr-cur-pill gr-pill-' + q.s.cls }));
         L.appendChild(el('text', { x: x + w / 2, y: y + 4, 'text-anchor': 'middle', 'class': 'gr-cur-pillt' }, txt));
+        boxes.push({ x: x, y: y - 9, width: w, height: 18 });
       });
-      /* The cursor's x readout sits on the same baseline as a region's name
-         ("normal blood pH"); where they would overlap, the region name steps
-         up a line so both stay readable. */
+      /* A region's name ("normal blood pH") under a value pill steps up a
+         line so both stay readable. (This used to measure an
+         x readout tag that no longer exists, so it never ran.) */
       try{
-        var tb = tag.getBBox();
         c.svg.querySelectorAll('.gr-rlabel').forEach(function(t){
           t.removeAttribute('transform');
           var b = t.getBBox();
-          var hit = b.x < tb.x + tb.width + 4 && tb.x < b.x + b.width + 4 && b.y < tb.y + tb.height && tb.y < b.y + b.height;
+          var hit = boxes.some(function(tb){ return b.x < tb.x + tb.width + 2 && tb.x < b.x + b.width + 2 && b.y < tb.y + tb.height && tb.y < b.y + b.height; });
           if(hit) t.setAttribute('transform', 'translate(0 -16)');
         });
       }catch(e){}
