@@ -420,16 +420,18 @@
 
   var rankPool = [], rankOrder = [], rankChecked = false;
 
+  /* Landing (owner brief 2026-10-09): the mode switch and one plain first
+     step above the tool, then two acids and one question. The verdict is a
+     line; the reasoning, the factor table and the caveats open under Why?. */
   root.innerHTML =
-    '<div class="tpanel">' +
-      '<div class="tpanel__head">' +
-        '<div class="tseg" id="abMode">' +
-          '<button type="button" data-mode="pair" class="on">Compare two</button>' +
-          '<button type="button" data-mode="rank">Rank four</button>' +
-          '<button type="button" data-mode="site">Which proton?</button>' +
-        '</div>' +
-        '<span class="tmuted" id="abScore"></span>' +
+    '<div class="tool-modes">' +
+      '<div class="tseg" id="abMode" role="group" aria-label="Mode">' +
+        '<button type="button" data-mode="pair" class="on">Compare two</button>' +
+        '<button type="button" data-mode="rank">Rank four</button>' +
+        '<button type="button" data-mode="site">Which proton?</button>' +
       '</div>' +
+      '<p class="tool-step" id="abStep"></p>' +
+      '<span class="tmuted tool-meta" id="abScore"></span>' +
     '</div>' +
 
     '<div id="abPair">' +
@@ -440,15 +442,12 @@
           '<div class="tfield"><label for="abRight">Acid B</label><select class="tselect" id="abRight"></select></div>' +
         '</div>' +
         '<div class="ab-cards" id="abCards"></div>' +
-      '</div>' +
-      '<div class="tpanel">' +
-        '<div class="tpanel__head">Which loses its proton more easily?</div>' +
-        '<div class="tchips" id="abGuess"></div>' +
-        '<div aria-live="polite" id="abVerdict" style="margin-top:14px;"></div>' +
-      '</div>' +
-      '<div class="tpanel">' +
-        '<div class="tpanel__head">Atom, resonance, induction, orbital</div>' +
-        '<div id="abFactors"></div>' +
+        '<div class="ab-ask">' +
+          '<div class="tpanel__head">Which loses its proton more easily?</div>' +
+          '<div class="tchips" id="abGuess"></div>' +
+          '<div aria-live="polite" id="abVerdict" style="margin-top:14px;"></div>' +
+          '<div id="abFactors"></div>' +
+        '</div>' +
       '</div>' +
     '</div>' +
 
@@ -505,9 +504,18 @@
       if(m === 'rank' && !rankPool.length) newRank();
       if(m === 'site') renderSite();
       if(m === 'pair') renderPair();
+      setStep(m);
       sync();
     });
   });
+
+  var STEP = {
+    pair: '<b>Pick two acids, then tap the one that gives up its proton more easily.</b>',
+    rank: '<b>Put the four in order, most acidic first</b>, then check them on the pK<sub>a</sub> line.',
+    site: '<b>Tap the hydrogen that comes off first.</b>'
+  };
+  function setStep(m){ document.getElementById('abStep').innerHTML = STEP[m] || STEP.pair; }
+  setStep('pair');
 
   function resetPair(){
     guess = null; revealed = false;
@@ -568,8 +576,9 @@
 
     if(!revealed){
       elV.innerHTML = '';
-      elF.innerHTML = '<div class="tempty">Work it out first.<br>Which atom carries the charge in each conjugate base? ' +
-        'Can either one spread it? Is anything pulling on it through the bonds? What orbital is it sitting in?</div>';
+      elF.innerHTML = '<details class="tool-more tool-more--why"><summary>Need a hint?</summary>' +
+        '<p>Which atom carries the charge in each conjugate base? ' +
+        'Can either one spread it? Is anything pulling on it through the bonds? What orbital is it sitting in?</p></details>';
       return;
     }
 
@@ -581,19 +590,19 @@
     var correct = guess === res.truth.id;
     var html = '<div class="tnote ' + (correct ? 'tnote--good' : 'tnote--bad') + '">' +
       '<span class="tnote__k">' + (correct ? 'Right' : 'Not this time') + '</span>' +
-      esc(res.truth.name) + ' is the stronger acid — pK<sub>a</sub> ' + res.truth.pKa + ' against ' + other.pKa + '. ' +
-      'That gap of ' + dpKa.toFixed(2).replace(/\.?0+$/, '') + ' pK<sub>a</sub> units means it is about ' +
-      formatRatio(ratio) + ' times more dissociated at equilibrium — pK<sub>a</sub> is a log scale, so small-looking ' +
-      'differences are not small.</div>';
+      esc(res.truth.name) + ' is the stronger acid: pK<sub>a</sub> ' + res.truth.pKa + ' against ' + other.pKa + '.</div>';
 
-    html += '<div class="tnote tnote--info"><span class="tnote__k">Why its conjugate base is more stable</span>' +
-      esc(res.truth.why) + '</div>';
+    var why = '<p>That gap of ' + dpKa.toFixed(2).replace(/\.?0+$/, '') + ' pK<sub>a</sub> units means it is about ' +
+      formatRatio(ratio) + ' times more dissociated at equilibrium — pK<sub>a</sub> is a log scale, so small-looking ' +
+      'differences are not small.</p>';
+
+    why += '<p><b>Why its conjugate base is more stable.</b> ' + esc(res.truth.why) + '</p>';
 
     if(!res.deciding){
       /* Nothing in the structural toolkit distinguishes them — which is the
          actual answer for ethanol against water, and worth saying rather than
          leaving the factor table silently blank. */
-      html += '<div class="tnote tnote--warn"><span class="tnote__k">The structural rules cannot separate these</span>' +
+      why += '<div class="tnote tnote--warn"><span class="tnote__k">The structural rules cannot separate these</span>' +
         'Atom, resonance, induction and orbital all come out identical — by every factor you are taught to apply, ' +
         'these two should be equally acidic, and the measured pK<sub>a</sub> values are indeed only ' +
         dpKa.toFixed(2).replace(/\.?0+$/, '') + ' apart. What decides it is solvation: the smaller, less hindered ' +
@@ -602,7 +611,8 @@
     } else if(!res.agrees){
       /* The interesting case. Saying "the rules say X, the measurement says Y"
          is more useful than picking whichever one makes the lesson tidy. */
-      html += '<div class="tnote tnote--warn"><span class="tnote__k">The rules and the measurement disagree here</span>' +
+      html += '<p class="tmuted" style="margin:0 0 6px;">Careful: the usual rules point the other way here. Open Why? to see what decides it.</p>';
+      why += '<div class="tnote tnote--warn"><span class="tnote__k">The rules and the measurement disagree here</span>' +
         'Walking the factors in order, ' + esc(res.deciding.factor.toLowerCase()) + ' points at ' + esc(res.deciding.winner.name) +
         ' — but the measured pK<sub>a</sub> says ' + esc(res.truth.name) + '. These two are close enough that something the ' +
         'structural rules do not cover decides it: usually how well the solvent can surround and stabilize the anion. ' +
@@ -614,7 +624,8 @@
 
     elV.innerHTML = html;
 
-    elF.innerHTML = '<div class="ttable-scroll"><table class="ttable">' +
+    elF.innerHTML = '<details class="tool-more tool-more--why"' + (correct ? '' : ' open') + '><summary>Why?</summary>' + why +
+      '<div class="ttable-scroll"><table class="ttable">' +
       '<thead><tr><th>Factor</th><th>Points to</th><th>Reasoning</th></tr></thead><tbody>' +
       res.considered.map(function(c){
         var decided = res.deciding && c.factor === res.deciding.factor;
@@ -629,7 +640,7 @@
       '</tbody></table></div>' +
       '<p class="tmuted" style="margin-top:12px;">The order matters as much as the list. Atom first, because which element ' +
       'holds the charge outweighs everything else; then resonance; then induction; then hybridization. A factor only gets ' +
-      'consulted when the ones above it tie.</p>';
+      'consulted when the ones above it tie.</p></details>';
   }
 
   function formatRatio(r){
