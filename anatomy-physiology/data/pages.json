@@ -106,7 +106,8 @@
       "desc": "Build homeostatic feedback loops step by step: stimulus, sensory receptor, control center, effector and response, then classify the loop.",
       "script": "tools/feedback-loops.js",
       "css": "tools/feedback-loops.css",
-      "data": "feedback-loops.json"
+      "data": "feedback-loops.json",
+      "studio": true
     },
     {
       "slug": "pathways",

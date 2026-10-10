@@ -207,3 +207,39 @@ a.fl-tag:hover{text-decoration:underline;}
   .fl-ringfig .fl-ring{max-width:290px;}
   .fl-livepanel .fl-push{font-size:13.5px;padding:8px 14px;min-height:42px;}
 }
+
+/* ---- Tool Studio (docs/tools-calm.md; feedback-loops.js studioLoop) ---- */
+.fl-ls .ls-stage-body > .fl-title{flex:none;margin:0 0 6px;font:900 var(--ls-m)/1.3 var(--font-ui);color:var(--ink);}
+.fl-ls-stage{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:6px;}
+.fl-ls-stage .fl-gaugefig{flex:none;width:100%;max-width:480px;}
+.fl-ls-stage .fl-ringfig{flex:1;min-height:150px;width:100%;display:flex;justify-content:center;}
+.fl-ls-stage .fl-ringfig .fl-ring{width:100%;height:100%;max-width:520px;max-height:100%;}
+.fl-ls .ls-stage-body > .fl-scenario{flex:none;margin:0 0 12px;font-size:var(--ls-m);line-height:1.5;max-width:70ch;}
+.fl-ls .ls-stage-body > .fl-figure{flex:none;margin:0 0 14px;}
+.fl-ls .ls-stage-body > .fl-figure .fl-svg{max-width:400px;}
+.fl-ls .fl-slots{flex:none;}
+.fl-ls .ls-dock .fl-poolwrap{position:static;}
+.fl-ls .ls-dock .fl-pool-h{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
+.fl-ls .ls-dock .fl-actions,.fl-ls .ls-dock .fl-live-btns{margin:0;}
+.fl-ls .ls-dock .fl-live{margin:0;}
+.fl-ls .ls-dock .fl-live:empty{display:none;}
+.fl-ls .ls-dock .fl-stepper{margin:0;}
+.fl-ls .ls-dock .fl-classify,.fl-ls .ls-dock .fl-failure,.fl-ls .ls-dock .fl-done{margin:0;}
+.fl-ls .ls-dock .fl-cut{margin:0;padding:0;border:0;}
+.fl-ls .fl-slot-l{letter-spacing:0;text-transform:none;font-size:12px;}
+.fl-ls-det .fl-progress{margin:0;}
+.fl-ls .ls-sheet .fl-parts{margin:0;}
+@media (max-width:999.98px){
+  .fl-ls .fl-slot{min-height:44px;padding:7px 10px;}
+  .fl-ls .fl-slots{gap:5px;}
+}
+@media (max-width:599.98px){
+  .fl-ls .ls-stage-body > .fl-scenario{font-size:var(--ls-s);color:var(--muted);margin-bottom:8px;}
+}
+.fl-ls .ls-stage .fl-panel,.fl-ls .ls-sheet .fl-panel{margin:0;padding:0;background:none;box-shadow:none;border-radius:0;}
+.fl-ls .ls-stage .fl-h2{font:900 var(--ls-l)/1.2 var(--font-ui);margin:4px 0 12px;}
+.fl-ls .ls-stage .fl-seg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:2px;margin:0 0 12px;}
+.fl-ls .ls-stage .fl-seg::-webkit-scrollbar{display:none;}
+.fl-ls .ls-stage .fl-seg button{flex:none;min-height:44px;}
+.fl-ls .fl-intro{margin:0;}
+.fl-ls .fl-tag{min-height:44px;display:inline-flex;align-items:center;padding:0 14px;}
