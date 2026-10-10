@@ -66,4 +66,16 @@
      build-tool-pages.mjs, so it reads and links without JavaScript;
      tool-quiz.js points each answered question at its own lesson and term
      from the same links. */
+
+  /* After a pick from a list that sits ABOVE or BELOW the work area, a phone may show no change
+     at all because the work area is off-screen. showWork(el) brings it into view when it is not
+     already mostly visible; on a wide screen it does nothing. */
+  window.OchemShowWork = function(el){
+    if(!el || window.innerWidth >= 900) return;
+    var r = el.getBoundingClientRect(), vh = window.innerHeight;
+    if(r.top >= 60 && r.top < vh * 0.55) return;
+    var reduce = false; try{ reduce = matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+    var head = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--site-header-h')) || 64;
+    window.scrollTo({ top: window.scrollY + r.top - head - 8, behavior: reduce ? 'auto' : 'smooth' });
+  };
 })();

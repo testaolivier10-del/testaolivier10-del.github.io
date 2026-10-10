@@ -883,6 +883,8 @@
         x.classList.toggle('on', x === b);
       });
       renderNewman();
+      // The Newman projection is below the picker: on a phone, take the student to it.
+      if(window.OchemShowWork) window.OchemShowWork(document.getElementById('cfAngleOut').closest('.tpanel'));
     });
   });
   document.getElementById('cfTorPicker').querySelector('.tchip').classList.add('on');
