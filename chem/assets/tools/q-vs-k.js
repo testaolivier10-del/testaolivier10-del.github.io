@@ -20,11 +20,17 @@
   if(!T) return;
   T.mount('q-vs-k', function(app, data){
     var M = window.ApChemMath;
-    T.modes(app, { slug: 'q-vs-k', labels: ['Explore Q and K', 'Test yourself'], explore: function(h){ explore(h, data, M); }, quiz: function(h){ quiz(h, data, M); } });
+    var ex = null;
+    T.modes(app, { slug: 'q-vs-k', labels: ['Explore Q and K', 'Test yourself'], explore: function(h){ ex = explore(h, data, M); }, quiz: function(h){ quiz(h, data, M); },
+      studio: { explore: function(pane, s){ if(ex) ex.studio(pane, s); } } });
   });
 
   function explore(host, data, M){
     var F = T.F, esc = T.esc;
+    // Lookups reach the Tool Studio too, where these parts move (studio()).
+    var LS = null, SP = null;
+    function $(sel){ return host.querySelector(sel) || (LS ? LS.root.querySelector(sel) : null); }
+    function $$(sel){ var a = [].slice.call(host.querySelectorAll(sel)); return LS ? a.concat([].slice.call(LS.root.querySelectorAll(sel))) : a; }
     var ctxs = (data.contexts || []).filter(function(c){ return c.mode === 'particles'; });
     if(!ctxs.length){ host.innerHTML = '<p class="chem-soon">The particle reactions arrive with their unit.</p>'; return; }
     var ci = 0, seed = 1 + Math.floor(Math.random() * 9999), ctx, sp, K, n, V = 1, beaker = null, busy = false, last = null;
@@ -32,16 +38,16 @@
       '<div class="qk-stage"><div class="qk-beaker"></div><div class="qk-side"><div class="qk-amts" role="group" aria-label="Change the amounts"></div>' +
       '<div class="bt-buttons"><button type="button" class="btn-press sm qk-run">Let it react</button></div><div class="qk-why"></div></div></div>' +
       T.moreHtml('<div class="qk-vol"></div><div class="bt-pick qk-pick"></div><div class="bt-buttons"><button type="button" class="bt-btn qk-new">New mixture</button></div>', 'volume of the vessel, another reaction, new mixture') + '</section>';
-    var pick = host.querySelector('.qk-pick'), start = T.cue('Tap + or − to add or remove particles, then press Let it react.');
+    var pick = $('.qk-pick'), start = T.cue('Tap + or − to add or remove particles, then press Let it react.');
     host.querySelector('.qk-side').insertBefore(start.el, host.querySelector('.qk-amts'));
     if(ctxs.length > 1){
       var sel = T.choiceSelect({ label: 'Reaction', options: ctxs.map(function(c, i){ return { value: i, label: M.eqHtml(c.species).replace(/<[^>]+>/g, '') }; }), value: 0, onChange: function(v){ ci = +v; seed++; build(); } });
       sel.el.classList.add('bt-inline'); pick.appendChild(sel.el);
     }
-    host.querySelector('.qk-new').addEventListener('click', function(){ seed++; build(); });
-    host.querySelector('.qk-run').addEventListener('click', run);
+    $('.qk-new').addEventListener('click', function(){ seed++; build(); });
+    $('.qk-run').addEventListener('click', run);
     var volS = T.slider({ label: 'Volume of the vessel', min: 0.5, max: 2, step: 0.25, value: 1, unit: 'L', decimals: 2, onInput: function(v){ V = v; draw('Volume now ' + F(V, 2) + ' L.'); } });
-    host.querySelector('.qk-vol').appendChild(volS.el);
+    $('.qk-vol').appendChild(volS.el);
 
     function dn(){ var s = 0; sp.forEach(function(x){ if(M.inQ(x)) s += x.nu; }); return s; }
     function build(){
@@ -49,14 +55,14 @@
       var p = M.qk.generate(M.rng(seed), ctx);
       K = p.K; V = 1; volS.set(1);
       n = p.counts.map(function(c){ return c * ctx.per; });
-      host.querySelector('.qk-eq').innerHTML = M.eqHtml(sp) + ' &nbsp; K<sub>c</sub> = ' + M.fmt(K, 2);
-      host.querySelector('.qk-setup').textContent = 'Gases in a sealed vessel at constant temperature. Each particle is ' + M.fmt(ctx.per, 2) + ' mol, so at 1.00 L each particle is ' + M.fmt(ctx.per, 2) + ' M.';
+      $('.qk-eq').innerHTML = M.eqHtml(sp) + ' &nbsp; K<sub>c</sub> = ' + M.fmt(K, 2);
+      $('.qk-setup').textContent = 'Gases in a sealed vessel at constant temperature. Each particle is ' + M.fmt(ctx.per, 2) + ' mol, so at 1.00 L each particle is ' + M.fmt(ctx.per, 2) + ' M.';
       if(beaker) beaker.destroy();
-      beaker = window.ApChemBeaker.mount(host.querySelector('.qk-beaker'), { species: sp.map(function(s){ return { key: s.draw, label: s.html, mol: s.draw, name: s.html }; }), readout: 'qk', title: 'The vessel', max: 36, seed: seed, vessel: 'gas' });
-      host.querySelector('.qk-amts').innerHTML = sp.map(function(s, i){
+      beaker = window.ApChemBeaker.mount($('.qk-beaker'), { species: sp.map(function(s){ return { key: s.draw, label: s.html, mol: s.draw, name: s.html }; }), readout: 'qk', title: 'The vessel', max: 36, seed: seed, vessel: 'gas' });
+      $('.qk-amts').innerHTML = sp.map(function(s, i){
         return '<div class="qk-amt"><span class="qk-n">' + s.html + '</span><button type="button" class="bt-step" data-i="' + i + '" data-d="-1" aria-label="Remove one ' + esc(s.html) + '">−</button><b class="qk-c" data-i="' + i + '"></b><button type="button" class="bt-step" data-i="' + i + '" data-d="1" aria-label="Add one ' + esc(s.html) + '">+</button></div>';
       }).join('');
-      host.querySelectorAll('.qk-amt .bt-step').forEach(function(b){ b.addEventListener('click', function(){
+      $$('.qk-amt .bt-step').forEach(function(b){ b.addEventListener('click', function(){
         if(busy) return;
         var i = +b.getAttribute('data-i'), d = +b.getAttribute('data-d');
         n[i] = Math.max(0, Math.round(n[i] / ctx.per) + d) * ctx.per;  // back to whole particles
@@ -69,15 +75,16 @@
     function Qnow(){ return M.Q(sp, M.concOf(n, V)); }
     function draw(note, i, d){
       var q = Qnow(), ok = sp.every(function(s, j){ return !M.inQ(s) || n[j] > 0; }), c = counts();
-      host.querySelectorAll('.qk-c').forEach(function(el){ var j = +el.getAttribute('data-i'); el.textContent = c[sp[j].draw]; });
-      host.querySelectorAll('.qk-amt .bt-step[data-d="-1"]').forEach(function(b){ b.disabled = busy || c[sp[+b.getAttribute('data-i')].draw] <= 0; });
-      host.querySelectorAll('.qk-amt .bt-step[data-d="1"]').forEach(function(b){ b.disabled = busy || c[sp[+b.getAttribute('data-i')].draw] >= 14; });
+      $$('.qk-c').forEach(function(el){ var j = +el.getAttribute('data-i'); el.textContent = c[sp[j].draw]; });
+      $$('.qk-amt .bt-step[data-d="-1"]').forEach(function(b){ b.disabled = busy || c[sp[+b.getAttribute('data-i')].draw] <= 0; });
+      $$('.qk-amt .bt-step[data-d="1"]').forEach(function(b){ b.disabled = busy || c[sp[+b.getAttribute('data-i')].draw] >= 14; });
       beaker.update({ counts: c, Q: ok ? q : (sp.some(function(s, j){ return s.nu < 0 && n[j] <= 0; }) ? Infinity : 0), K: K, note: note });
-      host.querySelector('.qk-run').disabled = busy;
+      $('.qk-run').disabled = busy;
       if(note) start.done();
       var w = why(q, ok, note, i, d);
-      T.explain(host.querySelector('.qk-why'), w.head, w.body);
+      T.explain($('.qk-why'), w.head, w.body);
       last = q;
+      if(LS) studioDraw(q, ok);
     }
     function why(q, ok, note, i, d){
       var conc = sp.map(function(s, j){ var c = n[j] / ctx.per, whole = Math.abs(c - Math.round(c)) < 1e-6;
@@ -116,14 +123,40 @@
         var c = counts(), ex = sp.map(function(s, j){ return s.html + ' ' + M.fmt(n[j], 3) + ' mol'; }).join(', ');
         var whole = sp.every(function(s, j){ return Math.abs(n[j] / ctx.per - Math.round(n[j] / ctx.per)) < 0.02; });
         draw('Reacted until Q = K.');
-        var w = host.querySelector('.qk-why .bt-why-b');
+        var w = $('.qk-why .bt-why-b');
         w.insertAdjacentHTML('afterbegin', '<p class="bt-small qk-ran">Equilibrium amounts: ' + ex + '.' + (whole ? '' : ' These are not whole particles, so the picture rounds to the nearest one; the readout uses the exact amounts.') + ' At equilibrium the reaction has not stopped: forward and reverse run at the same rate.</p>');
         n = target;
         void c;
       };
       tick();
     }
+    /* Tool Studio: Q and K as pills, the direction on the right, the log
+       gauge under the vessel; the verdict as the caption. */
+    function studioDraw(q, ok){
+      var c = ok ? window.ApChemBeaker.pure.qk(q, K) : null;
+      LS.pills([{ k: 'Q', html: ok ? M.fmt(q, 3) : sp.some(function(s, j){ return s.nu < 0 && M.inQ(s) && n[j] <= 0; }) ? '∞' : '0', tone: 'readout' }, { k: 'K', html: M.fmt(K, 2), tone: 'ghost' }], 'left', 'explore');
+      LS.pills([!c ? { html: 'Q undefined', tone: 'warn' } : c.dir === 'fwd' ? { html: 'Runs forward →', tone: 'accent' } : c.dir === 'rev' ? { html: '← Runs in reverse', tone: 'warn' } : { html: 'At equilibrium', tone: 'good' }], 'right', 'explore');
+      LS.caption(T.sayHead($('.qk-why')), 'explore');
+      SP.setup(F(V, 2) + ' L vessel');
+      SP.open();
+      var lg = LS.root.querySelector('.chem-ls-stage .lb-legend'), parts = LS.root.querySelector('.qk-ls-parts');
+      if(lg && parts){ parts.innerHTML = '<h3 class="ls-h">Particles in the vessel</h3>'; parts.appendChild(lg); }
+    }
+    /* Tool Studio arrangement: the equation, the vessel and its Q-K gauge on
+       the stage; the + and − amounts and Let it react in the dock; why it
+       shifts in Why; the setup, the particle counts, the volume, another
+       reaction and a new mixture in Details. */
+    function studio(pane, s){
+      LS = s;
+      var parts = document.createElement('div'); parts.className = 'qk-ls-parts';
+      var btn = $('.qk-run'); btn.classList.add('ls-btn', 'ls-pri');
+      SP = T.studioPane(pane, s, { stage: [$('.qk-eq'), $('.qk-beaker')], dock: [$('.qk-amts'), btn], setup: 'Setup', moreLabel: 'Volume of the vessel, another reaction, new mixture',
+        why: [$('.qk-why'), $('.qk-setup')], details: [parts] });
+      draw('');
+      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.qk-amt .bt-step[data-d="1"]'), text: 'Tap + to add a particle' });
+    }
     build();
+    return { studio: studio };
   }
 
   function quiz(app, data, M){
