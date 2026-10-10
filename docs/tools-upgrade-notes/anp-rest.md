@@ -36,3 +36,22 @@ what the owner should check. Accuracy list at the end.
   chambers unlabeled in 20.44), sound, vision. Each could be added later with a better figure or a two-figure trace.
 - **Owner check:** the step points on the five figures (screenshots `p4-*.png`); conduction's "Atria depolarize" is
   placed on the right atrium label, and the AV delay step shares the AV node point (the trace passes through it).
+
+## Calculators (calculators.js, calculators.css, data/calc-pictures.json)
+- **Job:** see what each formula does to the body as the numbers change, then work it by hand.
+- **Changed:** 19 calculators across 5 picture families get a live picture above the inputs, and every input gets a
+  slider beside its number box (both stay in sync; typing still works; presets move both). Families: **tube** (flow,
+  radius rule, organ flow, TPR): a vessel with in/out pressure gauges, its width following the radius (or resistance,
+  as r ∝ R^-1/4), dots moving at flow ÷ area, a dashed outline of the normal width; **wave** (MAP, pulse pressure):
+  two schematic arterial beats between DBP and SBP with SBP, DBP, MAP lines and the plain average dashed; **balance**
+  (capillary NFP, glomerular NFP): pressures as arrows out above / in below and the net arrow; **pump** (SV/EF: a
+  ventricle beating between EDV and ESV; cardiac output: a heart beating at HR filling a one-minute jug); **stack**
+  (lung capacities, ventilation dead space, FEV1/FVC, filtration fraction, clearance vs GFR, glucose load vs Tm, body
+  water compartments, O2 content, meal energy): parts of a whole on one scale. Numbers in every picture are the
+  calculator's own computed values (test: `scripts/test/anp-calc-pictures.test.mjs`). Practice mode is unchanged and
+  shows the picture with the worked solution after an answer. An invalid input dims the picture.
+- **Also fixed:** the calculators page scrolled sideways on phones (the picker's long title widened the grid);
+  `.calc` now has a `minmax(0,1fr)` column.
+- **Not given a picture (70):** unit conversions, counts and scores (GCS, Apgar, Punnett, etc.) where a picture would
+  add nothing; A-a gradient and Fick were in the brief but the data has no such calculators.
+- **Owner check:** the arterial wave shape is drawn schematically (labelled so in its caption).

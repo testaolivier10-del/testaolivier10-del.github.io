@@ -1,0 +1,41 @@
+{
+  "about": "Live pictures for the worked-example calculators (tools upgrade 2026-10, docs/tools-upgrade-notes/anp-rest.md). One family per kind of formula, drawn by assets/tools/calculators.js from the calculator's own computed values: every key below is an input or derived key of that calculator (checked by scripts/test/anp-calc-pictures.test.mjs). Nothing here adds a number; the picture only shows what the formula already computed. tube: a vessel with an inlet and outlet gauge; its width follows radius r (a fraction of normal) or, failing that, resistance rRes as r = (default R / R)^(1/4); particles move at a speed proportional to flow / r^2 (velocity = flow / area). wave: an arterial pressure trace between diastolic and systolic, with MAP and the plain average as lines (the trace shape is schematic). balance: the pressures that push fluid out of and pull it into a capillary as arrows, and the net. pump: a ventricle filling to EDV and emptying to ESV (sv-ef), or beating at HR with SV per beat filling one minute's output (cardiac-output). stack: bars split into parts on one scale.",
+  "pictures": {
+    "flow": { "kind": "tube", "pin": "P1", "pout": "P2", "flow": "F", "flowUnit": "mL/min", "rRes": "R" },
+    "radius": { "kind": "tube", "flow": "F1", "flowUnit": "mL/min", "r": "f", "baseFlow": "F0" },
+    "organ-flow": { "kind": "tube", "pin": "MAP", "pout": "Pv", "flow": "F1", "flowUnit": "L/min", "flowScale": 1, "r": "f", "baseFlow": "F0" },
+    "tpr": { "kind": "tube", "pin": "MAP", "flow": "CO", "flowUnit": "L/min", "rRes": "TPR" },
+    "map": { "kind": "wave", "sbp": "SBP", "dbp": "DBP", "map": "MAPx", "avg": "avg" },
+    "pulse-pressure": { "kind": "wave", "sbp": "SBP", "dbp": "DBP", "pp": "PP" },
+    "nfp": { "kind": "balance", "net": "NFP", "where": "capillary",
+      "out": [{ "key": "CHP", "label": "CHP pushes out" }, { "key": "IFCOP", "label": "IFCOP pulls out" }],
+      "in": [{ "key": "BCOP", "label": "BCOP pulls in" }, { "key": "IFHP", "label": "IFHP pushes in" }] },
+    "ur-glomerular-nfp": { "kind": "balance", "net": "NFP", "where": "glomerulus",
+      "out": [{ "key": "GBHP", "label": "GBHP pushes out" }],
+      "in": [{ "key": "CHP", "label": "CHP pushes back" }, { "key": "BCOP", "label": "BCOP pulls back" }] },
+    "sv-ef": { "kind": "pump", "edv": "EDV", "esv": "ESV", "sv": "SV", "ef": "EF" },
+    "cardiac-output": { "kind": "pump", "hr": "HR", "sv": "SV", "co": "CO" },
+    "capacities": { "kind": "stack", "unit": "mL", "bars": [
+      { "label": "Total lung capacity", "segs": [{ "key": "IRV", "label": "IRV", "tone": "lo" }, { "key": "TV", "label": "TV", "tone": "accent" }, { "key": "ERV", "label": "ERV", "tone": "o2" }, { "key": "RV", "label": "RV", "tone": "shape" }] },
+      { "label": "Vital capacity", "segs": [{ "key": "VC", "label": "VC", "tone": "lo" }] },
+      { "label": "Functional residual capacity", "segs": [{ "key": "FRC", "label": "FRC", "tone": "shape" }] } ] },
+    "ventilation": { "kind": "stack", "unit": "mL", "bars": [
+      { "label": "One breath", "segs": [{ "key": "VD", "label": "dead space", "tone": "shape" }, { "key": "fresh", "label": "reaches alveoli", "tone": "o2" }] } ] },
+    "fev1-fvc": { "kind": "stack", "unit": "L", "bars": [
+      { "label": "Forced vital capacity", "segs": [{ "key": "FEV1", "label": "first second", "tone": "accent" }, { "key": "rest", "expr": "FVC - FEV1", "label": "after that", "tone": "lo" }] } ] },
+    "ur-filtration-fraction": { "kind": "stack", "unit": "mL/min", "bars": [
+      { "label": "Renal plasma flow", "segs": [{ "key": "GFR", "label": "filtered", "tone": "accent" }, { "key": "left", "label": "stays in the blood", "tone": "o2" }] } ] },
+    "ur-renal-clearance": { "kind": "stack", "unit": "mL/min", "bars": [
+      { "label": "Clearance", "segs": [{ "key": "C", "label": "plasma cleared per minute", "tone": "accent" }] },
+      { "label": "GFR", "segs": [{ "key": "GFR", "label": "filtered per minute", "tone": "lo" }] } ] },
+    "ur-filtered-load-tm": { "kind": "stack", "unit": "mg/min", "bars": [
+      { "label": "Filtered load", "segs": [{ "key": "reab", "label": "reabsorbed", "tone": "lo" }, { "key": "excr", "label": "excreted", "tone": "hi" }] },
+      { "label": "Transport maximum", "segs": [{ "key": "Tm", "label": "Tm", "tone": "shape" }] } ] },
+    "fab-compartments": { "kind": "stack", "unit": "L", "bars": [
+      { "label": "Total body water", "segs": [{ "key": "ICF", "label": "intracellular", "tone": "lo" }, { "key": "ISF", "label": "interstitial", "tone": "o2" }, { "key": "PL", "label": "plasma", "tone": "hi" }] } ] },
+    "oxygen-content": { "kind": "stack", "unit": "mL O2/100 mL", "bars": [
+      { "label": "Oxygen content", "segs": [{ "key": "bound", "label": "on hemoglobin", "tone": "o2" }, { "key": "diss", "label": "dissolved", "tone": "lo" }] } ] },
+    "met-meal-energy": { "kind": "stack", "unit": "kcal", "bars": [
+      { "label": "Energy", "segs": [{ "key": "kc", "label": "carbohydrate", "tone": "lo" }, { "key": "kp", "label": "protein", "tone": "accent" }, { "key": "kf", "label": "fat", "tone": "o2" }, { "key": "ka", "label": "alcohol", "tone": "shape" }] } ] }
+  }
+}

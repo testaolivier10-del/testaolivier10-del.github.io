@@ -1219,7 +1219,12 @@ function publishedTool(file) {
         boxes: labs.filter(l => !covered.includes(l)).map(l => ({ id: l.id, name: l.name, box: l.box })), covered: covered.map(l => l.box) };
     }
   }
-  if (file === 'calculators.json') d.groups = d.groups.filter(g => d.calculators.some(c => c.group === g.id));
+  if (file === 'calculators.json') {
+    d.groups = d.groups.filter(g => d.calculators.some(c => c.group === g.id));
+    // Live pictures per formula family (data/calc-pictures.json, tools upgrade 2026-10).
+    const pics = JSON.parse(readFileSync(join(C.data, 'calc-pictures.json'), 'utf8')).pictures;
+    for (const c of d.calculators) if (pics[c.id]) c.picture = pics[c.id];
+  }
   if (file === 'word-roots.json') {
     const used = new Set(d.terms.flatMap(t => t.segs.map(sg => sg[1])));
     d.parts = d.parts.filter(pt => used.has(pt.id));
