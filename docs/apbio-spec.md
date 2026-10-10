@@ -159,6 +159,16 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    `meiosis-nondisjunction:make-*`, `operons:mutant-*`, `hardy-weinberg-drift:guess-n*`), each opened by a `#` hash.
    Osmosis links to Water potential as its calculation practice. New model helpers `osmosis.trajectory` and
    `enzyme.states`, tested in `scripts/test/apbio-sims-upgrade.test.mjs`.
+   (2026-10-09, simplify pass, branch `claude/simplify-bio`) Simple first, depth on demand. Each tool's header
+   lede is a plain one-sentence `tag` (`pages.json`; hub cards keep `blurb`). `bio-tools.js` `simplify()` runs after
+   mount on every simulator card: `.bt-controls[data-primary=n]` shows its first n controls with a "More options"
+   button (the rest and any `.bt-more` block wait); a `.bt-hero` figure and the controls sit in a `.bt-split` two-column
+   wrapper whose figure is sticky only inside it (fixes the 1626 px overlap where the sticky stage covered readouts on
+   osmosis, enzyme, cell cycle, meiosis and signal; the old per-tool sticky grids and the water-potential phone pin are
+   gone); readouts, equations, summary, `.bt-num` graphs, trial buttons and data tables move into one closed "Show the
+   numbers" disclosure (open state remembered per tool, hidden in quiz modes); long `.os-why` text clamps to two lines
+   with "Why? Read the rest". Each simulator has one `.bt-first` line saying what to do first. Nothing removed: every
+   control, mode, hash, item id and recording is unchanged.
 10. (2026-10-03) **Free lessons: Units 1 and 2 and every skills lesson.** The brief's "the first
    lesson of each skills topic" is every skills lesson, because a skills topic has one lesson.
    `isFreeTopic` (`scripts/lib/apbio-build.mjs`) marks every topic outside the course units free;

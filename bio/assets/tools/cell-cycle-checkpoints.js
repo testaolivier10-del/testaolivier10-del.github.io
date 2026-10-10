@@ -34,10 +34,10 @@
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
       '<section class="bt-card cc-card" aria-labelledby="cc-h"><h2 id="cc-h">The model</h2>' +
       '<div class="os-modes" role="group" aria-label="Mode"><button type="button" class="bt-btn" data-m="explore" aria-pressed="true">Explore</button><button type="button" class="bt-btn" data-m="find" aria-pressed="false">Find the broken checkpoint</button></div>' +
-      '<div class="bt-fig cc-ringfig"></div><p class="bt-small cc-tip">Tap a checkpoint on the ring to see what it checks.</p><div class="cc-gate os-why" role="status" aria-live="polite"></div>' +
+      '<div class="bt-fig cc-ringfig bt-hero"></div><p class="bt-first cc-tip">Tap a checkpoint on the ring to see what it checks.</p><div class="cc-gate os-why" role="status" aria-live="polite"></div>' +
       '<div class="os-chal cc-chal" hidden></div>' +
-      '<div class="bt-controls"></div>' +
-      '<div class="cc-plots"><div><div class="bt-tabs" role="group" aria-label="Graph">' +
+      '<div class="bt-controls" data-primary="2"></div>' +
+      '<div class="cc-plots bt-num"><div><div class="bt-tabs" role="group" aria-label="Graph">' +
       '<button type="button" class="bt-btn" data-v="time" aria-pressed="true">Over time</button><button type="button" class="bt-btn" data-v="hist" aria-pressed="false">DNA content</button><button type="button" class="bt-btn" data-v="gf" aria-pressed="false">Against growth factor</button>' +
       '</div><div class="bt-plotwrap"></div></div></div>' +
       '<dl class="bt-readout"></dl><p class="bt-summary"></p>' +
@@ -54,7 +54,7 @@
     var sDam = T.slider({ label: 'DNA damage', min: data.damage.min, max: data.damage.max, step: data.damage.step, value: st.damage, unit: data.damage.unit, decimals: 1, hint: 'The share of undamaged cells that get damaged DNA each hour.', onInput: function(v){ st.damage = v; update(); } });
     var sRead = T.slider({ label: 'Read the dish at', min: data.readTime.min, max: data.readTime.max, step: data.readTime.step, value: st.readT, unit: 'h', decimals: 0, onInput: function(v){ st.readT = v; update(); } });
     var outSel = T.choiceSelect({ label: 'Output to plot', value: st.out, options: data.outputs.map(function(o){ return { value: o.id, label: o.name }; }), onChange: function(v){ st.out = v; update(true); } });
-    [sGF, sDam, sRead].forEach(function(c){ ctl.appendChild(c.el); });
+    ctl.appendChild(sGF.el);
     function checks(legend, list){
       var fs = document.createElement('fieldset');
       fs.className = 'bt-ctl bt-checks';
@@ -66,6 +66,7 @@
       ctl.appendChild(fs);
     }
     checks('Mutations (from 0 h)', data.mutations);
+    [sDam, sRead].forEach(function(c){ ctl.appendChild(c.el); });
     checks('Drug (from 0 h)', data.drugs);
     ctl.appendChild(outSel.el);
 

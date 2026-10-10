@@ -39,18 +39,19 @@
 
       '<div class="os-modes" role="group" aria-label="Mode"><button type="button" class="bt-btn" data-q="explore" aria-pressed="true">Explore</button><button type="button" class="bt-btn" data-q="quiz" aria-pressed="false">Which mutant is this?</button></div>' +
       '<div class="op-further" hidden>' + data.goingFurther + '</div>' +
+      '<p class="bt-first">Tap Lactose or Glucose to change what the cell has, then watch the operon switch.</p>' +
       '<div class="op-tray" role="group" aria-label="In the medium"></div>' +
       '<div class="bt-fig op-stagefig"></div><p class="bt-small op-taphint">Tap a gene or the operator to mutate it (the DNA scrolls sideways on a phone). Drag a chip into the cell, or tap it, to change the medium.</p>' +
-      '<fieldset class="bt-modes"><legend>Operon</legend>' + MODES.map(function(m){
+      '<fieldset class="bt-modes bt-more"><legend>Operon</legend>' + MODES.map(function(m){
         var id = 'op-mode-' + m[0];
         return '<div class="bt-radio"><input type="radio" name="op-mode" id="' + id + '" value="' + m[0] + '"' + (m[0] === st.mode ? ' checked' : '') + '><label for="' + id + '">' + esc(m[1]) + '</label></div>';
       }).join('') + '</fieldset>' +
       '<div class="os-chal op-chal" hidden></div>' +
-      '<div class="bt-controls"></div>' +
-      '<div class="op-lower"><div><div class="bt-tabs" role="group" aria-label="Graph">' +
+      '<div class="bt-controls" data-primary="1"></div>' +
+      '<div class="op-lower bt-num"><div><div class="bt-tabs" role="group" aria-label="Graph">' +
       '<button type="button" class="bt-btn" data-v="time" aria-pressed="true">Time course</button><button type="button" class="bt-btn" data-v="media" aria-pressed="false">Every medium</button>' +
       '</div><div class="bt-plotwrap"></div><p class="bt-small op-key"></p></div></div>' +
-      '<dl class="bt-readout op-read"></dl><div class="op-explain"><h3>What is happening</h3><ol></ol></div><p class="bt-summary"></p>' +
+      '<dl class="bt-readout op-read"></dl><div class="op-explain bt-num"><h3>What is happening</h3><ol></ol></div><p class="bt-summary"></p>' +
       '<div class="bt-buttons"><button type="button" class="btn-press sm" data-a="run">Run one trial</button><button type="button" class="btn-press sm alt" data-a="series">Run every medium</button><button type="button" class="bt-btn" data-a="clear">Clear runs</button></div>' +
       '<p class="bt-small bt-runnote" role="status" aria-live="polite"></p>' +
       '<details class="bt-data"><summary>Data tables: your runs and the time course</summary><div class="bt-tables"></div></details></section>' +

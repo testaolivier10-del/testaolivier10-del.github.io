@@ -31,17 +31,17 @@
 
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
       '<section class="bt-card ef-card" aria-labelledby="ef-h"><h2 id="ef-h">The model</h2>' +
-      '<div class="bt-fig ef-flowfig"></div><p class="bt-small">Tap a level to see where its energy went.</p><div class="ef-where os-why" role="status" aria-live="polite"></div>' +
-      '<fieldset class="bt-modes"><legend>Show</legend>' + MODES.map(function(m){
+      '<div class="bt-fig ef-flowfig bt-hero"></div><p class="bt-first">Tap a level to see where its energy went, then slide the fraction passed on.</p><div class="ef-where os-why" role="status" aria-live="polite"></div>' +
+      '<fieldset class="bt-modes bt-more"><legend>Show</legend>' + MODES.map(function(m){
         var id = 'ef-mode-' + m[0];
         return '<div class="bt-radio"><input type="radio" name="ef-mode" id="' + id + '" value="' + m[0] + '"' + (m[0] === st.mode ? ' checked' : '') + '><label for="' + id + '">' + esc(m[1]) + '</label></div>';
       }).join('') + '</fieldset>' +
-      '<div class="bt-controls ef-ctl"></div>' +
-      '<div class="ef-levels"><div class="bt-buttons"><button type="button" class="bt-btn" data-a="less">Remove the top level</button><button type="button" class="bt-btn" data-a="more">Add a level</button></div><p class="bt-small ef-lvnote" role="status" aria-live="polite"></p></div>' +
-      '<div><h3 class="ef-sub">Food chain (each arrow: is eaten by)</h3><ol class="ef-chain"></ol></div>' +
-      '<div class="bt-tabs" role="group" aria-label="Bar widths"><button type="button" class="bt-btn" data-s="log" aria-pressed="true">Widths on a log scale</button><button type="button" class="bt-btn" data-s="linear" aria-pressed="false">Widths to scale</button></div>' +
-      '<div class="bt-stage two ef-stage"><div class="bt-fig ef-fig1"></div><div class="bt-fig ef-fig2"></div></div><p class="bt-small ef-key"></p>' +
-      '<dl class="bt-readout ef-out"></dl><div class="ef-explain"><h3>What is happening</h3><ol></ol></div><p class="bt-summary"></p>' +
+      '<div class="bt-controls ef-ctl" data-primary="2"></div>' +
+      '<div class="ef-levels bt-more"><div class="bt-buttons"><button type="button" class="bt-btn" data-a="less">Remove the top level</button><button type="button" class="bt-btn" data-a="more">Add a level</button></div><p class="bt-small ef-lvnote" role="status" aria-live="polite"></p></div>' +
+      '<div class="bt-num"><h3 class="ef-sub">Food chain (each arrow: is eaten by)</h3><ol class="ef-chain"></ol></div>' +
+      '<div class="bt-tabs bt-num" role="group" aria-label="Bar widths"><button type="button" class="bt-btn" data-s="log" aria-pressed="true">Widths on a log scale</button><button type="button" class="bt-btn" data-s="linear" aria-pressed="false">Widths to scale</button></div>' +
+      '<div class="bt-stage two ef-stage bt-num"><div class="bt-fig ef-fig1"></div><div class="bt-fig ef-fig2"></div></div><p class="bt-small ef-key bt-num"></p>' +
+      '<dl class="bt-readout ef-out"></dl><div class="ef-explain bt-num"><h3>What is happening</h3><ol></ol></div><p class="bt-summary"></p>' +
       '<div class="bt-buttons"><button type="button" class="btn-press sm" data-a="run">Run one trial</button><button type="button" class="btn-press sm alt" data-a="series">Run a series of fractions passed on</button><button type="button" class="bt-btn" data-a="clear">Clear runs</button></div>' +
       '<p class="bt-small bt-runnote" role="status" aria-live="polite"></p>' +
       '<details class="bt-data"><summary>Data tables: your runs and every level</summary><div class="bt-tables"></div></details></section>' +
@@ -91,7 +91,7 @@
       ctl.c0 = T.slider({ label: 'Toxin in producers', min: RG.c0.min, max: RG.c0.max, step: RG.c0.step, value: st.c0, unit: 'ppm', decimals: 2, onInput: function(v){ st.c0 = v; update(); } });
       ctl.retain = T.slider({ label: 'Toxin kept from absorbed food', min: RG.retain.min * 100, max: RG.retain.max * 100, step: RG.retain.step * 100, value: Math.round(st.retain * 100), unit: '%', decimals: 0,
         onInput: function(v){ st.retain = v / 100; update(); } });
-      [ctl.eco, ctl.gpp, ctl.prodResp, ctl.eff, ctl.resp, ctl.c0, ctl.retain].forEach(function(c){ host.appendChild(c.el); });
+      [ctl.eff, ctl.c0, ctl.eco, ctl.gpp, ctl.prodResp, ctl.resp, ctl.retain].forEach(function(c){ host.appendChild(c.el); });
       enable();
     }
     function capResp(){

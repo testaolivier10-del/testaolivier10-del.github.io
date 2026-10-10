@@ -686,13 +686,6 @@
 .os-modes .bt-btn{padding:6px 14px;}
 .os-calc{min-height:44px;font:800 14px var(--font-ui);padding:0 4px;}
 .os-pick-row .bt-btn{flex:1 1 auto;}
-@media (min-width:1000px){
-  .os-card{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:22px;}
-  .os-card>*{grid-column:1 / -1;}
-  .os-card>.os-stage{grid-column:1;grid-row:3 / span 6;align-self:start;position:sticky;top:12px;}
-  .os-card>.os-chal,.os-card>.os-play,.os-card>.os-pick,.os-card>.os-why,.os-card>.bt-controls{grid-column:2;}
-  .os-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
-}
 
 /* ===== Enzyme scene (tools upgrade U-Bio-sims) ===== */
 .ez-stage{background:var(--paper);border-radius:14px;padding:6px;}
@@ -708,13 +701,6 @@
 .ez-k.inh.c{width:20px;clip-path:polygon(0 50%,70% 0,70% 30%,100% 30%,100% 70%,70% 70%,70% 100%);}
 .ez-k.inh{background:linear-gradient(135deg,var(--ez-inhA),var(--ez-inhB));clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);}
 .ez-plots{display:grid;gap:10px;}
-@media (min-width:1000px){
-  .ez-card{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);column-gap:22px;}
-  .ez-card>*{grid-column:1 / -1;}
-  .ez-card>.ez-stage{grid-column:1;grid-row:3 / span 4;align-self:start;position:sticky;top:12px;}
-  .ez-card>.ez-bar,.ez-card>.ez-chal,.ez-card>.ez-why,.ez-card>.bt-controls{grid-column:2;}
-  .ez-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
-}
 .ez-plots .bt-plotwrap,.os-graph .bt-plotwrap{max-width:720px;}
 
 /* ===== Cell cycle ring (tools upgrade U-Bio-sims) ===== */
@@ -749,13 +735,6 @@
 .cc-ring .cc-glab{font:900 12.5px var(--font-ui);fill:var(--cink);}
 .cc-gate:empty{display:none;}
 .cc-plots{display:grid;gap:10px;}
-@media (min-width:1000px){
-  .cc-card{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:22px;}
-  .cc-card>*{grid-column:1 / -1;}
-  .cc-card>.cc-ringfig{grid-column:1;grid-row:3 / span 4;align-self:start;position:sticky;top:12px;}
-  .cc-card>.cc-tip,.cc-card>.cc-gate,.cc-card>.cc-chal,.cc-card>.bt-controls{grid-column:2;}
-  .cc-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
-}
 .cc-ring .cc-ph{font:800 12.5px var(--font-ui);}
 
 /* ===== Meiosis: tap the figure (tools upgrade U-Bio-sims) ===== */
@@ -778,13 +757,6 @@
 .mei-chip{display:inline-flex;align-items:center;min-height:30px;padding:2px 10px;border-radius:8px;font:900 14px var(--font-ui);border:2px solid var(--line);}
 .mei-chip.m{background:var(--bio-o2-fill);border-color:var(--bio-o2);}
 .mei-chip.p{background:repeating-linear-gradient(45deg,var(--bio-deo2-fill) 0 4px,var(--white) 4px 6px);border-color:var(--bio-deo2);}
-@media (min-width:1000px){
-  .mei-card{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);column-gap:22px;}
-  .mei-card>*{grid-column:1 / -1;}
-  .mei-card>.mei-stagefig{grid-column:1;grid-row:4 / span 4;align-self:start;position:sticky;top:12px;}
-  .mei-card>.mei-taphint,.mei-card>.mei-stepper,.mei-card>.bt-controls{grid-column:2;}
-  .mei-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
-}
 
 /* ===== Operons: tray, taps, ribbons (tools upgrade U-Bio-sims) ===== */
 .op-stagefig{background:var(--paper);border-radius:14px;padding:6px;transition:box-shadow .15s;}
@@ -851,13 +823,6 @@
 :root[data-theme="dark"] .sg-fig .sgs-glc{fill:var(--sgs-gly);}
 .sg-fig .stp{fill:var(--white);}
 .sg-lower{display:grid;gap:10px;}
-@media (min-width:1000px){
-  .sg-card{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:22px;}
-  .sg-card>*{grid-column:1 / -1;}
-  .sg-card>.sg-stagefig{grid-column:1;grid-row:2 / span 5;align-self:start;position:sticky;top:12px;}
-  .sg-card>.sg-stagefig+p,.sg-card>.os-play,.sg-card>.sg-why,.sg-card>.bt-controls{grid-column:2;}
-  .sg-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
-}
 
 /* ===== Energy flow stage (tools upgrade U-Bio-sims) ===== */
 .ef-flowfig{background:var(--paper);border-radius:14px;padding:6px;}
@@ -957,10 +922,9 @@
 .tr-chip.armed{border-style:solid;background:var(--ctint);border-color:var(--cink);}
 .tr-chip.placed{border-style:solid;opacity:.75;}
 
-/* Water potential on a phone: the two beakers (and their short caption) stay pinned above the
-   inputs, so each typed ψ is seen moving its water surface. */
+/* Water potential on a phone: the two beakers stay compact above the inputs. (They were sticky;
+   the simplify pass dropped that because a pinned stage covered the inputs while scrolling.) */
 @media (max-width:700px){
-  .bt-stage-slot.wp-pin{position:sticky;top:var(--site-header-h,64px);z-index:2;background:var(--white);border-bottom:2px solid var(--line);padding:2px 0;}
   .bt-stage-slot.wp-pin .sk-cap{font-size:13px;line-height:1.4;}
   .bt-stage-slot.wp-pin .wp-fig{max-height:30vh;width:auto;max-width:100%;display:block;margin:0 auto;}
 }
@@ -995,3 +959,49 @@
 .ba-wings .ba-w,.ba .ba-w.wing{fill:var(--ba-wing,rgba(150,190,215,.55));stroke:var(--ba-edge,rgba(20,30,28,.45));stroke-width:.6;}
 .ba .ba-leaf{fill:#5FA64B;stroke:var(--ba-edge,rgba(20,30,28,.55));stroke-width:.8;}
 :root[data-theme="dark"] .ba{--ba-wing:rgba(190,220,240,.4);--ba-edge:rgba(0,0,0,.6);--ba-dark:#0D1412;--ba-light:rgba(255,255,255,.55);}
+
+/* ===== Simple first, depth on demand (simplify pass 2026-10-09; bio-tools.js simplify) ===== */
+/* The first step, in plain words, next to the figure */
+.bt-first{margin:0;font:800 15px/1.45 var(--font-ui);color:var(--cink);display:flex;gap:8px;align-items:flex-start;}
+.bt-first::before{content:"";flex:0 0 auto;width:10px;height:10px;margin-top:5px;border-radius:50%;background:var(--cink);}
+.bt-card:has(.os-chal:not([hidden])) .bt-first{display:none;}
+/* Figure beside its controls on a wide screen. The figure is sticky only
+   inside .bt-split, so it stops at the end of the controls column and
+   never covers the numbers, graphs or questions below. */
+.bt-split{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.bt-split>*{min-width:0;}
+.bt-split-side{display:grid;gap:14px;align-content:start;grid-template-columns:minmax(0,1fr);}
+.bt-split-side>*{min-width:0;}
+.bt-split-side:empty{display:none;}
+@media (min-width:1000px){
+  .bt-split{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:22px;align-items:start;}
+  .bt-split-fig{position:sticky;top:calc(var(--site-header-h,112px) + 12px);}
+  .bt-split-side .bt-controls{grid-template-columns:minmax(0,1fr);}
+}
+@media (min-width:1000px) and (max-height:700px){.bt-split-fig{position:static;}}
+/* More options: the first data-primary controls show, the rest wait */
+.bt-folded .bt-controls[data-primary="1"]>:nth-child(n+2),
+.bt-folded .bt-controls[data-primary="2"]>:nth-child(n+3),
+.bt-folded .bt-controls[data-primary="3"]>:nth-child(n+4),
+.bt-folded .bt-more{display:none !important;}
+.bt-moreopt{justify-self:start;display:inline-flex;align-items:center;gap:6px;color:var(--cink);}
+.bt-moreopt[aria-expanded="true"] span[aria-hidden]{display:inline-block;transform:rotate(180deg);}
+.bt-controls[hidden]+.bt-moreopt{display:none;}
+/* Show the numbers */
+.bt-numbers{border:2px solid var(--line);border-radius:14px;padding:0 14px;background:var(--white);}
+.bt-numbers[open]{padding-bottom:14px;}
+.bt-numbers>summary{cursor:pointer;min-height:48px;display:flex;flex-wrap:wrap;align-items:center;gap:2px 10px;list-style:none;}
+.bt-numbers>summary::-webkit-details-marker{display:none;}
+.bt-numbers>summary::before{content:var(--disclose);display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--ctint);color:var(--cink);font:900 18px/1 var(--font-ui);transition:transform .2s ease;}
+.bt-numbers[open]>summary::before{transform:rotate(90deg);}
+.bt-numbers-h{font:900 15px var(--font-ui);color:var(--cink);}
+.bt-numbers-sub{font:700 13px var(--font-ui);color:var(--muted);}
+.bt-numbers-body{display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.bt-numbers-body>*{min-width:0;}
+/* Why?: a long live explanation clamps to two lines */
+.bt-clamp:not(.is-open){padding-top:0 !important;padding-bottom:0 !important;border-top:10px solid transparent;border-bottom:10px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;}
+.bt-clamp:empty{display:none;}
+.bt-whymore{justify-self:start;margin-top:-8px;min-height:40px;padding:0 4px;border:0;background:none;color:var(--cink);font:800 14px var(--font-ui);text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
+.bt-whymore[hidden]{display:none;}
+/* Hardy-Weinberg drift: before More options, only p and N from the Population group */
+.bt-folded .hw-controls>.hw-group:first-child>.bt-ctl:nth-of-type(n+3){display:none !important;}

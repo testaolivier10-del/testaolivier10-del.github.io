@@ -32,11 +32,12 @@
 
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
       '<section class="bt-card sg-card" aria-labelledby="sg-h"><h2 id="sg-h">The model</h2>' +
-      '<div class="bt-fig sg-stagefig"></div><p class="bt-small">Tap a rung with a ⊘ to block it (tap the G protein to cycle normal, locked on, locked off).</p>' +
+      '<p class="bt-first">Press Play to send epinephrine down the cascade, then tap a rung to block it.</p>' +
+      '<div class="bt-fig sg-stagefig bt-hero"></div><p class="bt-small">Tap a rung with a ⊘ to block it (tap the G protein to cycle normal, locked on, locked off).</p>' +
       '<div class="os-play"><button type="button" class="btn-press sm" data-a="sweep">Play 0 to 300 s</button><p class="os-clock sg-clock" aria-hidden="true"></p></div>' +
       '<p class="os-why sg-why" role="status" aria-live="polite"></p>' +
-      '<div class="bt-controls"></div>' +
-      '<div class="sg-lower"><div><div class="bt-tabs" role="group" aria-label="Graph">' +
+      '<div class="bt-controls" data-primary="2"></div>' +
+      '<div class="sg-lower bt-num"><div><div class="bt-tabs" role="group" aria-label="Graph">' +
       '<button type="button" class="bt-btn" data-v="time" aria-pressed="true">Over time</button><button type="button" class="bt-btn" data-v="dose" aria-pressed="false">Against epinephrine concentration</button>' +
       '</div><div class="bt-plotwrap"></div></div></div>' +
       '<dl class="bt-readout"></dl><p class="bt-summary"></p>' +
@@ -52,15 +53,13 @@
     var sRead = T.slider({ label: 'Read the counts at', min: data.readTime.min, max: data.readTime.max, step: data.readTime.step, value: st.readT, unit: 's', decimals: 0, onInput: function(v){ st.readT = v; update(); } });
     var gSel = T.choiceSelect({ label: 'G protein', value: 'normal', options: data.gprotein.map(function(g){ return { value: g.id, label: g.name }; }), onChange: function(v){ st.gprotein = v; update(true); } });
     var stageSel = T.choiceSelect({ label: 'Step to plot', value: st.stage, options: data.stages.map(function(s){ return { value: s.id, label: s.name }; }), onChange: function(v){ st.stage = v; update(true); } });
-    [sL, sOff, sRead, gSel].forEach(function(c){ ctl.appendChild(c.el); });
     fs = document.createElement('fieldset');
     fs.className = 'bt-ctl bt-checks';
     fs.innerHTML = '<legend>Drugs (added at 0 s)</legend>' + data.blocks.map(function(b){
       var id = T.nid('sg-' + b.id);
       return '<div class="bt-check-row"><input type="checkbox" id="' + id + '" data-b="' + esc(b.id) + '"><label for="' + id + '">' + esc(b.name) + '</label></div>';
     }).join('');
-    ctl.appendChild(fs);
-    ctl.appendChild(stageSel.el);
+    [sL.el, fs, sOff.el, sRead.el, gSel.el, stageSel.el].forEach(function(x){ ctl.appendChild(x); });
     fs.querySelectorAll('input').forEach(function(b){ b.addEventListener('change', function(){ st[b.getAttribute('data-b')] = b.checked; card.querySelector('.sg-why').textContent = ''; update(true); }); });
 
     card.querySelectorAll('.bt-tabs .bt-btn').forEach(function(b){

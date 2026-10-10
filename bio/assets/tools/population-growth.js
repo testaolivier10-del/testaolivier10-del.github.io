@@ -33,20 +33,21 @@
 
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
       '<section class="bt-card pg-card" aria-labelledby="pg-h"><h2 id="pg-h">The model</h2>' +
-      '<div class="bt-fig pg-field"></div>' +
+      '<p class="bt-first">Press Play the years and watch the population fill its space.</p>' +
+      '<div class="bt-fig pg-field bt-hero"></div>' +
       '<div class="os-play pg-play"><button type="button" class="btn-press sm" data-a="play">Play the years</button><span class="pg-evbtns"></span><p class="os-clock pg-clock" aria-hidden="true"></p></div>' +
-      '<fieldset class="bt-modes"><legend>Growth model</legend>' + MODELS.map(function(m){
+      '<fieldset class="bt-modes bt-more"><legend>Growth model</legend>' + MODELS.map(function(m){
         var id = 'pg-model-' + m[0];
         return '<div class="bt-radio"><input type="radio" name="pg-model" id="' + id + '" value="' + m[0] + '"' + (m[0] === st.model ? ' checked' : '') + '><label for="' + id + '">' + esc(m[1]) + '</label></div>';
       }).join('') + '</fieldset>' +
-      '<div class="bt-controls pg-main"></div>' +
-      '<fieldset class="bt-ctl pg-events"><legend>Events (optional)</legend><div class="bt-controls pg-ev"></div></fieldset>' +
-      '<div class="bt-controls pg-read"></div>' +
-      '<div class="bt-stage two"><div><h3 class="pg-gh">Population size over time</h3><p class="bt-small">Drag across the graph to move the year.</p><div class="pg-plot-n"></div><p class="bt-small pg-key-n"></p></div>' +
+      '<div class="bt-controls pg-main" data-primary="2"></div>' +
+      '<fieldset class="bt-ctl pg-events bt-more"><legend>Events (optional)</legend><div class="bt-controls pg-ev"></div></fieldset>' +
+      '<div class="bt-controls pg-read bt-num"></div>' +
+      '<div class="bt-stage two bt-num"><div><h3 class="pg-gh">Population size over time</h3><p class="bt-small">Drag across the graph to move the year.</p><div class="pg-plot-n"></div><p class="bt-small pg-key-n"></p></div>' +
       '<div><div class="bt-tabs" role="group" aria-label="Second graph">' +
       '<button type="button" class="bt-btn" data-v="rate" aria-pressed="true">dN/dt against N</button><button type="button" class="bt-btn" data-v="percap" aria-pressed="false">Per-capita rate against N</button>' +
       '</div><div class="pg-plot-r"></div><p class="bt-small pg-key-r"></p></div></div>' +
-      '<dl class="bt-readout pg-out"></dl><div class="pg-explain"><h3>What is happening</h3><ol></ol></div><p class="bt-summary"></p>' +
+      '<dl class="bt-readout pg-out"></dl><div class="pg-explain bt-num"><h3>What is happening</h3><ol></ol></div><p class="bt-summary"></p>' +
       '<div class="bt-buttons"><button type="button" class="btn-press sm" data-a="run">Run one trial</button><button type="button" class="btn-press sm alt" data-a="series">Run a series of r<sub>max</sub> values</button><button type="button" class="bt-btn" data-a="clear">Clear runs</button></div>' +
       '<p class="bt-small bt-runnote" role="status" aria-live="polite"></p>' +
       '<details class="bt-data"><summary>Data tables: your runs and the time course</summary><div class="bt-tables"></div></details></section>' +
@@ -95,7 +96,7 @@
         onChange: function(v){ st.dt = +v; update(); } });
       ctl.tEnd = T.slider({ label: 'Run length', min: RG.tEnd.min, max: RG.tEnd.max, step: RG.tEnd.step, value: st.tEnd, unit: 'years', decimals: 0,
         onInput: function(v){ st.tEnd = v; readRange(); update(); } });
-      [ctl.N0, ctl.r, ctl.K, ctl.dt, ctl.tEnd].forEach(function(c){ main.appendChild(c.el); });
+      [ctl.r, ctl.K, ctl.N0, ctl.dt, ctl.tEnd].forEach(function(c){ main.appendChild(c.el); });
       st.events.forEach(function(e){
         var box = document.createElement('div');
         box.className = 'bt-ctl pg-evbox';
