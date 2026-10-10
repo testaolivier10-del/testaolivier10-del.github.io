@@ -246,5 +246,10 @@
     update(true);
     T.questions(app.querySelector('.bt-qs'), data.questions, data.stimuli, SLUG);
     if(data.frq) T.frq(app, data.frq, SLUG);
-  });
+  }, {
+    // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
+    studio: { sim: true, live: '.ef-where',
+      hint: { target: '.ef-lvl', text: 'Tap a level' },
+      pills: function(g){ return [{ k: 'NPP', html: g.ro(2).split(' (')[0], tone: 'readout' }]; },
+      pillsR: function(g){ return [{ html: 'Top level stores ' + g.ro(3).split(' (')[0], tone: 'ghost' }]; } } });
 })();
