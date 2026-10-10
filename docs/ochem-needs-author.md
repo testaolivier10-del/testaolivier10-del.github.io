@@ -1022,3 +1022,24 @@ confirm it.
     now also drawn as a bar; the challenge relies on them to say which chair is more stable.
   - 3D viewer "Predict the shape" asks a bond angle only where the model's geometry is the textbook value
     (CH₄ 109.5, NH₃ 107, H₂O 104.5, BF₃/ethene/formaldehyde/CH₃⁺ 120, linear 180, PCl₅/SF₆ smallest 90).
+
+## Tools accuracy review (2026-10)
+
+### tools-review-13diaxial: the flat 1.6 kcal/mol syn-axial surcharge
+- **Status:** open, owner decision. `chairEnergy()` in `ochem/assets/tools/conformations.js` adds 1.6 kcal/mol for
+  any two axial groups 1,3 to each other, whatever they are. Measured Me/Me syn-axial is about 3.7 kcal/mol
+  (cis-1,3-dimethylcyclohexane diaxial chair ≈ 5.4 above diequatorial); a pair like F/F is far less. The
+  direction of every chair comparison the tool asks is unaffected, so the number is kept and labelled "rough
+  flat estimate" on screen. Options: per-pair values for Me/Me (3.7) and drop the term for small groups, or keep.
+- Source: Eliel and Wilen, Stereochemistry of Organic Compounds, ch. 11; OpenStax Organic Chemistry 4.8.
+
+### tools-review-dihalide: A-values miss trans-1,2-dihalide diaxial preference
+- **Status:** handled in the challenge (vicinal dihalide rings not drawn). The explorer can still build
+  trans-1,2-dibromo and will call diequatorial better, which is not true in nonpolar solvents. Consider a note
+  on that preset if one is added.
+
+### tools-review-roadmap-offmap: decoy exclusion list
+- **Status:** judgment call, review the list. `REACTS_OFF_MAP` in `reagent-roadmap.js` names reagents that react
+  with a group even though the map has no edge for it, so they are never offered as "not a step from here".
+  It is hand-written from standard reactivity (acid-base with strong bases, EAS on activated/deactivated rings,
+  E2 on 2° halides, epoxide openings, diol oxidations). If the map gains edges, entries can go.

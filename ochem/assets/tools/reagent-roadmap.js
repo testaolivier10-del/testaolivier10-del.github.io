@@ -744,6 +744,7 @@
        "nothing happens" to a 2° alcohol with it would be false. */
     var hereKeys = {};
     OUT[P.at].forEach(function(x){ x.keys.forEach(function(k){ hereKeys[k] = 1; }); });
+    (REACTS_OFF_MAP[P.at] || []).forEach(function(k){ hereKeys[k] = 1; });
     var pool = shuffleArr(D.EDGES.filter(function(e){
       var k = e.rx.join(' / ');
       return !used[k] && !e.cc && e.from !== P.at && !e.keys.some(function(r){ return hereKeys[r]; });
@@ -754,6 +755,36 @@
     return P.tray;
   }
 
+  /* Reagents that DO react with a group even though the map draws no edge
+     for it (acid-base, a second EAS, a reaction the map files under another
+     group). A decoy is offered as "not a step from here"; offering one of
+     these would tell a student that KOtBu does nothing to a 2° bromide or
+     that H₃O⁺ leaves an ester alone. Keys are the reagent keys in
+     reagent-roadmap-data.js. Accuracy review, 2026-10. */
+  var REACTS_OFF_MAP = {
+    'acid': ['NaOH', 'NaH', 'NaOEt', 'tBuOK', 'NaNH2', 'BH3', 'PBr3', 'amine'],
+    'acid-chloride': ['NaOH', 'H3O', 'Fischer', 'NaH', 'NaOEt', 'tBuOK', 'NaN3', 'DIBAL', 'phthalimide'],
+    'ester': ['H3O', 'Fischer', 'NaOEt', 'tBuOK', 'NaH'],
+    'aldehyde': ['LiAlHOtBu3', 'H2Pd', 'NaOH', 'NaOEt', 'tBuOK', 'NaH', 'Fischer', 'Br2'],
+    'ketone': ['LiAlHOtBu3', 'NaOEt', 'tBuOK', 'NaH', 'NaNH2', 'Fischer', 'Br2'],
+    'alkyne': ['HX', 'HBrROOR', 'BH3', 'HgOAc2', 'Br2', 'Br2FeBr3', 'KMnO4'],
+    'epoxide': ['NaOH', 'NaN3', 'Fischer', 'HX', 'NaH', 'NaOEt', 'amine', 'NaNH2', 'H2O'],
+    'diol': ['PCC', 'DMP', 'Swern', 'Jones', 'KMnO4', 'PBr3', 'SOCl2', 'TsCl', 'acylCl', 'Fischer', 'NaH', 'HX', 'H2SO4heat'],
+    'alcohol-1': ['HX', 'H2SO4heat'],
+    'alcohol-2': ['HX', 'TsCl'],
+    'halide-1': ['NaOEt'],
+    'halide-2': ['NaOH', 'tBuOK', 'NaN3', 'NaH', 'NaNH2'],
+    'halide-3': ['NaOH', 'NaH', 'NaNH2', 'H3O', 'Fischer'],
+    'amine': ['NaH', 'NaOH', 'NaNO2', 'HX'],
+    'alkene': ['R2BH', 'HgSO4', 'NBS', 'Br2FeBr3', 'Fischer'],
+    'alkylbenzene': ['Br2FeBr3', 'HNO3', 'Br2hv'],
+    'aryl-ketone': ['Br2FeBr3', 'HNO3', 'LiAlH4', 'amine'],
+    'nitroarene': ['Br2FeBr3', 'HNO3', 'ZnHg'],
+    'aniline': ['Br2FeBr3', 'HNO3', 'CH3I', 'HX'],
+    'diazonium': ['H2O'],
+    'aryl-halide': ['Br2FeBr3', 'HNO3'],
+    'phenol': ['NaH', 'acylCl', 'Br2FeBr3', 'HNO3', 'Br2']
+  };
   function rxShort(k){ return k.length > 46 ? k.slice(0, 44) + '…' : k; }
 
   function play(i){
@@ -763,7 +794,7 @@
     if(!t.edges.length){
       P.miss++;
       var d = t.decoy;
-      P.note = { bad: true, k: t.k, text: 'No reaction in this course starts from ' + lc(nodeName(P.at)) + ' with this. It is the reagent for ' +
+      P.note = { bad: true, k: t.k, text: 'Not a step from ' + lc(nodeName(P.at)) + ' on this map. It is the reagent for ' +
         d.name.charAt(0).toLowerCase() + d.name.slice(1) + ': ' + lc(nodeName(d.from)) + ' to ' + lc(nodeName(d.to)) + '.' };
       renderPuzzle(); return;
     }
@@ -864,7 +895,7 @@
         '<div class="tpanel__head"><span>' + (P.done ? 'Your route' : 'The bench') + '</span>' +
           '<span class="trow rr-pz__acts">' + (P.steps.length && !P.done ? '<button type="button" class="tchip tchip--mini" id="rrPzUndo">Undo</button>' : '') +
           '<button type="button" class="tchip tchip--mini" id="rrPzNew">New</button></span></div>' +
-        (P.done ? '' : '<p class="tmuted" style="margin-top:0;">Keep the carbon skeleton. Some of these do nothing to ' + lc(nodeName(P.at)) + '.</p>' +
+        (P.done ? '' : '<p class="tmuted" style="margin-top:0;">Keep the carbon skeleton. Some of these are not a step from ' + lc(nodeName(P.at)) + ' in this course.</p>' +
           '') +
         '<div aria-live="polite" id="rrPzNote">' + note + '</div>' +
         (P.done ? '' : '<div class="rr-tiles" role="group" aria-label="Reagents">' + tiles + '</div>') +
@@ -886,7 +917,7 @@
     }
   }
 
-  window.OchemRoadmapPuzzle = { state: P, start: startPuzzle, tray: tray, play: play, undo: undo };
+  window.OchemRoadmapPuzzle = { state: P, start: startPuzzle, tray: tray, play: play, undo: undo, REACTS_OFF_MAP: REACTS_OFF_MAP };
 
   if(window.OchemToolState){
     var q = window.OchemToolState.read();

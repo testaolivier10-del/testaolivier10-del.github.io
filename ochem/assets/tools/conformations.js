@@ -463,7 +463,7 @@
           total += 1.6;
           terms.push({
             text: 'Extra 1,3-diaxial crowding between ' + SUBS[axialSubs[i].subKey].label +
-                  ' and ' + SUBS[axialSubs[j].subKey].label,
+                  ' and ' + SUBS[axialSubs[j].subKey].label + ' (rough flat estimate)',
             kcal: 1.6
           });
         }
@@ -583,6 +583,11 @@
         var g2 = CHAL_GROUPS[Math.floor(Math.random() * CHAL_GROUPS.length)];
         r[pos] = [g2, Math.random() < 0.5 ? 'up' : 'down'];
       }
+      /* trans-1,2-dihalides are the textbook exception to "diequatorial
+         wins" (the diaxial chair is competitive or preferred in nonpolar
+         solvents, a dipole effect A-values do not see), so the challenge
+         does not ask about two halogens on neighboring carbons. */
+      if(r[1] && /^(Cl|Br|F)$/.test(r[0][0]) && /^(Cl|Br|F)$/.test(r[1][0])) continue;
       ring = r;
       var a = chairEnergy(buildChair(false)).total, b = chairEnergy(buildChair(true)).total;
       if(Math.abs(a - b) >= 0.2) break;

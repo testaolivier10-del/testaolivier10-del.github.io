@@ -326,7 +326,7 @@
       (spread <= 1 && got.length === 1
         ? 'One form puts the whole charge on one atom. Find another and watch it spread.'
         : 'Spread over <b>' + spread + '</b> atom' + (spread === 1 ? '' : 's') + '. ' +
-          (got.length < target.length ? 'Each form you add spreads it further.' : 'That is every form: the charge is shared this way in the real molecule.')) +
+          (got.length < target.length ? 'Each form you add spreads it further.' : 'That is every form: the real molecule shares the charge over these same atoms, though not in these exact fractions.')) +
       ' A plain average of the forms found; in reality the major contributors count for more.</p>';
   }
 

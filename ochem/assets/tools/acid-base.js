@@ -764,7 +764,7 @@
           (d && res.agrees ? '<span class="ab-ario">' + esc(d.factor) + '</span> ' + esc(d.text)
             : d ? '<span class="ab-ario ab-ario--warn">Rules disagree</span> ' + esc(d.factor) + ' points at ' + esc(d.winner.name) +
                   ', but the measurement says ' + esc(a.name) + '. ' + esc(a.why)
-            : '<span class="ab-ario ab-ario--warn">Solvation</span> Atom, resonance, induction and orbital all tie; ' + esc(a.why)) +
+            : '<span class="ab-ario ab-ario--warn">Beyond ARIO</span> Atom, resonance, induction and orbital, as this tool scores them, all tie; ' + esc(a.why)) +
         '</div>';
       }).join('') + '</div>' +
       '<button type="button" class="tchip" id="abRankAgain" style="margin-top:12px;">New set of four</button>';
@@ -854,7 +854,7 @@
   var SUP = { '0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹' };
   function factorWords(d){
     var n = Math.round(d);
-    if(n <= 3) return 'about ' + Math.round(Math.pow(10, d)).toLocaleString() + ' times';
+    if(n <= 3){ var f = Math.pow(10, d); return 'about ' + Number(f.toPrecision(f < 10 ? 2 : 1)).toLocaleString() + ' times'; }
     return 'about 10' + String(n).split('').map(function(c){ return SUP[c] || c; }).join('') + ' times';
   }
 

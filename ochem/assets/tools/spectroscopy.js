@@ -292,8 +292,8 @@
         { cm:1600, w:22, d:32, label:'aromatic C=C', note:'The ring, just below the vinyl band.' }
       ],
       nmr:[
-        { ppm:5.25, h:1, mult:'d', j:11, label:'=CH₂ (cis)', note:'The two vinyl hydrogens are NOT equivalent — one is cis to the ring and one is trans, and they couple to the middle hydrogen with very different constants.' },
-        { ppm:5.75, h:1, mult:'d', j:18, label:'=CH₂ (trans)', note:'An 18 Hz coupling. Trans coupling across a double bond is always larger than cis, and that difference is how you assign them.' },
+        { ppm:5.25, h:1, mult:'d', j:11, label:'=CH₂, H cis to =CH–', note:'The two vinyl hydrogens are NOT equivalent: this one is cis to the =CH– hydrogen (trans to the ring), the other is trans to it, and they couple to the middle hydrogen with very different constants.' },
+        { ppm:5.75, h:1, mult:'d', j:18, label:'=CH₂, H trans to =CH–', note:'An 18 Hz coupling to the =CH– hydrogen. Trans coupling across a double bond is always larger than cis, and that difference is how you assign them.' },
         { ppm:6.72, h:1, mult:'dd', j:11, label:'=CH–', note:'A doublet of doublets: it couples to both of the others, with two different constants.' },
         { ppm:7.30, h:5, mult:'m', label:'C₆H₅', note:'A monosubstituted ring — five hydrogens in a lump around 7.3.' }
       ],
