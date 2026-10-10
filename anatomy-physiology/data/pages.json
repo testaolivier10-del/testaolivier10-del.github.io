@@ -81,7 +81,8 @@
       "desc": "Practice A&P lab practicals online: identify labeled structures on real figures in explore, study, quiz or timed practical mode.",
       "script": "tools/lab-practical.js",
       "css": "tools/lab-practical.css",
-      "data": "lab-practical.json"
+      "data": "lab-practical.json",
+      "studio": true
     },
     {
       "slug": "predict",
