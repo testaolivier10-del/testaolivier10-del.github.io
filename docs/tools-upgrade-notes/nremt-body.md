@@ -92,3 +92,25 @@ Sound trainer (all in `nremt/assets/sound-stage.js` unless noted):
   review.html had no console errors.
 - New runtime files `nremt/assets/sound-stage.js` and `nremt/assets/burns.js` are in sw.js precache next to
   `sound-bank.js` / `body-viewer.js`. CACHE not bumped.
+
+## Accuracy review
+
+Independent review, 2026-10-09. Checked against the National EMS Education Standards (EMT), standard EMT texts,
+ABA burn referral criteria and standard auscultation references. Burns model run in node: both charts total 100;
+every one of the 11 estimate answers and its 4 choices hand-checked.
+
+| Item | Verdict | Source |
+|---|---|---|
+| Adult Rule of Nines regions and splits (head 9, arm 9, front/back trunk 18, leg 18, genitals 1; sums 100) | correct | standard EMT texts; course notes ch. 30 |
+| Child chart (head 18, leg 13.5, rest adult) | correct as the infant chart, matches notes ch. 30 and bank Q533; **logged**: the tool now says these are infant/small-child figures and that many protocols use Lund-Browder (docs/TRACKER.md) | Brady/AAOS EMT texts; Lund & Browder |
+| Palm rule (palm with fingers about 1%) | correct | ABA |
+| Over 10% partial thickness meets burn-center criteria; wet dressings over >10% risk hypothermia | correct | ABA referral criteria; course notes ch. 30 |
+| 11 estimate keys (27, 18, 36, 18, 18, 19, 27, 18, 45, 27, 13.5) and distractors; 5 paint targets | correct | hand calculation |
+| Auscultation sites (aortic 2nd ICS RSB, pulmonic 2nd ICS LSB, Erb 3rd ICS LSB, tricuspid 4th-5th ICS LLSB, mitral 5th ICS MCL) | correct | Bates' Guide to Physical Examination |
+| S1 loudest at apex/LLSB, S2 at base; P2 mainly pulmonic; S3/S4 apex, bell, left lateral | correct | Bates' |
+| AS loudest aortic, radiates to neck; AR loudest left sternal border/Erb; MR/MS at apex | correct | Bates' |
+| Timing: systole 0.32 s at 72 bpm; split 45 ms; S3 150 ms after S2; S4 130 ms before S1 | correct (S3 typically 120-180 ms; physiologic split 30-60 ms) | Bates'; standard physiology |
+| Wheeze mainly expiratory, crackles and stridor mainly inspiratory; I:E 1:2 | correct | Bates'; EMT texts |
+| S3/S4/split feedback sentences | correct | standard physiology |
+| "Where to listen: apices" explanation said the back apex is "between the shoulder blades and the spine" | **fixed**: now "high on the back, between the top of the shoulder blade and the spine" (the posterior apex is above the scapular spine) | Bates' |
+| Site loudness multipliers | correct as a labelled teaching approximation (the page says relative, not measured) | judgement |

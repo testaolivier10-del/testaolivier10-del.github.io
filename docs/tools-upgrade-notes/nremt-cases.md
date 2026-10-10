@@ -91,3 +91,25 @@ Branch `claude/tools-upgrades-nremt-cases`. Tests: `scripts/test/nremt-cases.tes
 
 ## Open
 - No needs-author items raised.
+
+## Accuracy review
+
+Independent review, 2026-10-09, against the National EMS Education Standards (EMT), the NREMT EMT Psychomotor
+Exam Users Guide and sheets, AHA/PALS ranges, and the 2025 international consensus on epinephrine in allergic
+reactions (JACI). Monitor functions, sbpLow and the flowchart reasons run in node and in the page.
+
+| Item | Verdict | Source |
+|---|---|---|
+| Monitor ranges = reference-card table, row for row; SpO2 low under 94% | correct | reference-cards.html; formulary |
+| Systolic floor 70 + 2 x age for 1-10 y | correct | PALS |
+| Systolic floor at 11 y used the school-age row's lower figure, 82 | **fixed** (monitor and reference-card checker): over 10 the floor is 90, the top of that row; test added | PALS (90 mmHg over 10 y) |
+| Hesitation drift: 10 forks, each to the case's own "wait" node, never past it, labelled simulated; s5_assess_good -> s5_delay_call is fair (the case's own consequence text says the call itself is not wrong, the sequencing is) | correct | scenario-sim.html |
+| Give/withhold: aspirin x4, oxygen x2, oral glucose x2, naloxone x2, albuterol, epinephrine (give, heart disease give) | correct | National EMS Education Standards; formulary cards |
+| Nitroglycerin withhold "SBP below 100" card had BP 92/60, a give under the "some protocols say 90" line printed on the same card | **fixed**: 86/58, below either threshold; test added | formulary card itself |
+| Epinephrine withhold for hives alone with auto-injector | correct as current teaching (skin-only = allergic reaction; 2025 consensus: no epinephrine for skin-only symptoms) but **logged**; the answer now adds "withhold for now: keep the injector ready, reassess, transport, give it the moment another system is involved; follow her own action plan or your protocol if it differs" | NASEMSO model guidelines; JACI 2025 consensus |
+| Skill sheet limits (10/15/10/5/5/10/10/5/5/10) | correct against the NREMT EMT Psychomotor Exam Users Guide for the six fixed stations; the four random skills are "5-10 minutes" there; the table text said the time is "printed on" each sheet, which it is not (only the two assessment sheets name their limit) | **fixed** wording (table and run screen); the 5/5/10/10 figures for the random skills **logged** | NREMT EMT Psychomotor Exam Users Guide (kbems.ky.gov copy); CT/NREMT sheets |
+| BVM row (E203) missing "No PPE", which is a critical criterion on the sheet | **fixed** | E203 sheet (CT-approved NREMT set) |
+| "No PPE" lit when a later phase is ticked before BSI | tool's inference, defensible; run screen now says so | judgement |
+| Reference slider stops and band edges | correct | table |
+| Mnemonic fill-the-letters answers; scenario links (s1, s2, s7, s8, s12, s13, s15, s19, s22) all use the framework | correct | case text |
+| Build-it reasons: a box that ends several arms (START "IMMEDIATE (red)" x4, SMR "indicated" x3) was always explained against its first copy, so a correct-looking alternative arm got a wrong reason ("answers a different question" when it was the same question) | **fixed**: explained against the same question's arm and says it has other homes; test added | flowcharts.html |

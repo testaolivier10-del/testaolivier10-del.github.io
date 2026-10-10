@@ -29,7 +29,7 @@
       pt: '64-year-old with chest pain of suspected cardiac origin, aspirin already given.', vitals: 'HR 84 · BP 148/90', hx: 'Angina. No head injury.', meds: 'Her own prescribed nitroglycerin, none taken today. No sildenafil-type drug.',
       rule: 'in a patient with their own prescribed nitroglycerin' },
     { id: 'ntg-sbp', drug: 'Nitroglycerin', give: false,
-      pt: '70-year-old with chest pain, lightheaded.', vitals: 'HR 90 · BP 92/60', hx: 'Angina.', meds: 'His own prescribed nitroglycerin, none taken today.',
+      pt: '70-year-old with chest pain, lightheaded.', vitals: 'HR 90 · BP 86/58', hx: 'Angina.', meds: 'His own prescribed nitroglycerin, none taken today.',
       rule: 'Systolic blood pressure below 100 mmHg' },
     { id: 'ntg-pde5', drug: 'Nitroglycerin', give: false,
       pt: '55-year-old with chest pain of suspected cardiac origin.', vitals: 'HR 82 · BP 140/86', hx: 'Angina.', meds: 'His own nitroglycerin. Took sildenafil last night.',
@@ -51,7 +51,8 @@
       rule: 'a likely allergen plus more than one body system involved' },
     { id: 'epi-skin', drug: 'Epinephrine', give: false,
       pt: '30-year-old with itchy hives on both arms after a new antibiotic.', vitals: 'HR 84 · BP 124/80 · SpO₂ 99%', hx: 'Breathing easily, voice normal, no swelling, no GI symptoms.', meds: 'Her own epinephrine auto-injector',
-      rule: 'Skin findings alone are an allergic reaction, not anaphylaxis' },
+      rule: 'Skin findings alone are an allergic reaction, not anaphylaxis',
+      note: 'Withhold for now, not for good. Keep the auto-injector at hand, reassess often and transport: the moment her breathing, voice, swallowing, gut or blood pressure is involved, this is anaphylaxis and she gets it. If her own action plan or your protocol says otherwise for her, follow it.' },
     { id: 'epi-heart', drug: 'Epinephrine', give: true,
       pt: '72-year-old stung by a bee: wheezing, lips swelling, hives.', vitals: 'HR 118 · BP 84/50', hx: 'Coronary artery disease, hypertension. Known bee allergy.', meds: 'His own epinephrine auto-injector',
       rule: 'not reasons to withhold it from someone whose airway is closing' },
@@ -159,6 +160,7 @@
       (line ? '<div class="gw-rule"><span class="gw-rule-k">' + esc(c.drug) + ' · ' + esc(section(line)) + '</span>' + line.innerHTML + '</div>' : '') +
       (c.give && dose ? '<div class="gw-dose"><span class="gw-rule-k">Dose</span><b>' + esc(txt(dose)) + '</b>' +
         (dose.nextElementSibling && dose.nextElementSibling.tagName === 'DD' ? ' ' + dose.nextElementSibling.innerHTML : '') + '</div>' : '') +
+      (c.note ? '<p class="gw-note">' + esc(c.note) + '</p>' : '') +
       '<div class="gw-after"><a href="#drug-' + c.drug.toLowerCase().replace(/[^a-z]+/g, '-') + '" class="link-quiet" data-show="' + esc(c.drug) + '">See the whole ' + esc(c.drug.toLowerCase()) + ' card</a>' +
       '<button type="button" class="btn-press" id="gwNext">Next patient</button></div>';
     var next = document.getElementById('gwNext');
@@ -180,7 +182,7 @@
       tool: 'formulary', id: 'gw:' + c.id, correct: ok,
       label: c.drug + ': ' + c.pt, href: 'formulary.html#gw'
     });
-    if(window.LevlAnnounce) window.LevlAnnounce.say((ok ? 'Right. ' : 'Not this time. ') + (c.give ? 'Give it. ' : 'Withhold it. ') + (line ? txt(line) : ''));
+    if(window.LevlAnnounce) window.LevlAnnounce.say((ok ? 'Right. ' : 'Not this time. ') + (c.give ? 'Give it. ' : 'Withhold it. ') + (line ? txt(line) : '') + (c.note ? ' ' + c.note : ''));
   }
 
   /* Drag the card sideways; past a third of its width it commits. */

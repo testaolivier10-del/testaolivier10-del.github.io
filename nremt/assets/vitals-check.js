@@ -42,6 +42,10 @@
   }
   function sbpLow(mo, r){
     if(mo >= 12 && mo <= 120) return { v: 70 + 2 * Math.floor(mo / 12), how: '70 + 2 × ' + Math.floor(mo / 12) + ' years' };
+    /* Over 10 the formula has already reached 90, the figure PALS uses from
+       then on; a row that gives a range (school age, 82–90) means its top
+       figure at that end, not its bottom one. */
+    if(mo > 120 && r.sbp.length > 1 && r.from < 216) return { v: r.sbp[r.sbp.length - 1], how: 'over 10 years, the top of the table’s ' + r.sbpText };
     return { v: r.sbp[0], how: 'the table, ' + r.sbpText };
   }
 
