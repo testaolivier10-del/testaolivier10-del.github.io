@@ -6,6 +6,8 @@
    vendored three.js in headless chromium instead, and writes:
 
      nremt/assets/body-figs/<name>.webp   the shaded figures (transparent)
+     nremt/assets/body-figs/<name>-anat.webp  the whole-body figures' anatomy
+                                          view (the body map's look), same frame
      nremt/assets/body-figs/body.js       the whole-body figures' data and
      nremt/assets/body-figs/chest.js      the chest views': size, outline path,
                                           region paths and landmark positions,
@@ -68,8 +70,10 @@ const images = {};
 for (const [name, f] of Object.entries(figs)) {
   if (name.startsWith('_')) continue;
   images[name] = Buffer.from(f.webp.split(',')[1], 'base64');
-  const { webp, ...rest } = f;
+  const { webp, anatWebp, ...rest } = f;
   data.figs[name] = { src: 'body-figs/' + name + '.webp', ...rest };
+  // the anatomy view (translucent skin over skeleton and organs), same frame and pixels
+  if(anatWebp){ images[name + '-anat'] = Buffer.from(anatWebp.split(',')[1], 'base64'); data.figs[name].anat = 'body-figs/' + name + '-anat.webp'; }
 }
 /* Two data files, so each tool fetches only its own: the whole-body figures
    (Burns, the scenario sim) and the chest views (the sound trainer). They are

@@ -122,6 +122,18 @@ test('the back view finds the body\'s back, not back blows', () => {
   assert.equal(p.findings([{ text: 'Lay her flat on her back seat.', vitals: '', now: true }]).back.length, 0);
 });
 
+test('callouts name the side and use the case\'s own words', () => {
+  const p = loadSim().pure;
+  const legs = [{ text: 'His right thigh has an open wound with blood visibly spurting in time with his pulse.', now: true }];
+  assert.equal(p.where('legs', legs), 'Right thigh');
+  const w = p.words(legs);
+  assert.equal(w.text, 'Spurting bleed');
+  assert.equal(w.sev, true);
+  assert.equal(p.where('arms', [{ text: 'Both arms are bruised.' }]), 'Arms');
+  assert.equal(p.words([{ text: 'He is alert and shouting in pain.' }]).text, 'Alert, in pain');
+  assert.equal(p.words([{ text: 'Nothing named here.' }]).text, '1 finding');
+});
+
 /* Give or withhold: every deciding phrase is on that drug's own card. */
 test('formulary give/withhold cards quote their drug card', () => {
   const s = sandbox();
