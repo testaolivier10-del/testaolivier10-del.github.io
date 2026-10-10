@@ -820,10 +820,15 @@
     throw new Error('units: no problem for ' + ctx.id);
   }
   function unTry(r, ctx){
-    var q, slug = ctx.slug || 'units-sig-figs';
+    var q, slug = ctx.slug || 'units-sig-figs', setup = null;
+    // setup (tools upgrade): the quantities a student multiplies or divides,
+    // as written in the stem, with units and significant figures, so the page
+    // can let them build the setup and cancel units. place: 1 on top, -1 below,
+    // 0 a distractor that belongs nowhere. sf null for exact numbers.
     if(ctx.kind === 'muldiv'){
       var m = meas(r, 10, 99, r.pick([1, 2, 3])), v = meas(r, 5, 49, r.pick([1, 2])), sf = Math.min(sfOf(m), sfOf(v)), ans = +m / +v;
       if(!clean(ans, sf)) return null;
+      setup = { target: 'g/mL', factors: [{ label: 'mass', v: m, u: 'g', place: 1, sf: sfOf(m) }, { label: 'volume', v: v, u: 'mL', place: -1, sf: sfOf(v) }] };
       q = { q: 'A metal sample has a mass of ' + m + ' g and a volume of ' + v + ' mL. What is its density?',
         numeric: { answer: ans, tol: ulp(ans, sf), unit: 'g/mL', units: ['g/cm^3'], askUnit: true, sigfigs: sf, mistakes: [{ value: +v / +m, why: 'Density is mass ÷ volume, not volume ÷ mass.' }] },
         why: { correct: 'd = m / V = ' + m + ' g ÷ ' + v + ' mL = ' + fmt(ans, sf) + ' g/mL. When you multiply or divide, keep the fewest significant figures in the data: ' + sfOf(m) + ' and ' + sfOf(v) + ', so ' + sf + '.' } };
@@ -832,12 +837,16 @@
       if(p1 === p2) return null;
       var tot = meas(r, 40, 99, p1), beak = meas(r, +tot - 9.5, +tot - 1.2, p2), dp = Math.min(p1, p2), ans2 = +tot - +beak, shown = M.fixed(ans2, dp), sf2 = sfOf(shown);
       if(Math.min(sfOf(tot), sfOf(beak)) === sf2) return null;
+      setup = { addsub: [tot, beak], places: [p1, p2], result: shown };
       q = { q: 'A beaker with a sample in it has a mass of ' + tot + ' g. The empty beaker is ' + beak + ' g. What is the mass of the sample?',
         numeric: { answer: ans2, tol: Math.pow(10, -dp) / 2, unit: 'g', askUnit: true, sigfigs: sf2, mistakes: [] },
         why: { correct: tot + ' g − ' + beak + ' g = ' + shown + ' g. When you add or subtract, keep the fewest decimal places (' + p1 + ' and ' + p2 + ', so ' + dp + '), not the fewest significant figures. Here that leaves ' + sf2 + ' significant figures.' } };
     } else if(ctx.kind === 'gas'){
       var n = meas(r, 0.1, 0.9, 3), T = meas(r, 15, 95, 1), V = meas(r, 1, 9, 2), Tk = +T + M.C.T0, P = +n * M.C.R_LATM * Tk / +V, sf3 = Math.min(sfOf(n), sfOf(V));
       if(!clean(P, sf3)) return null;
+      setup = { target: 'atm', factors: [{ label: 'n', v: n, u: 'mol', place: 1, sf: sfOf(n) }, { label: 'R', v: '0.08206', u: 'L·atm/(mol·K)', place: 1, sf: 4, constant: true },
+        { label: 'T', v: M.fixed(Tk, 2), u: 'K', place: 1, sf: 4, note: T + ' + 273.15' }, { label: 'V', v: V, u: 'L', place: -1, sf: sfOf(V) },
+        { label: 'T in °C', v: T, u: '°C', place: 0, sf: sfOf(T), why: 'Gas laws need kelvin; °C does not cancel the K in R.' }, { label: 'R', v: '8.314', u: 'J/(mol·K)', place: 0, sf: 4, constant: true, why: 'This R is in joules: with L and atm the units do not cancel to atm.' }] };
       q = { q: 'A ' + V + ' L flask holds ' + n + ' mol of an ideal gas at ' + T + ' °C. What is the pressure in atmospheres?',
         numeric: { answer: P, tol: ulp(P, sf3), unit: 'atm', askUnit: true, sigfigs: sf3, mistakes: [
           { value: +n * M.C.R_LATM * +T / +V, why: 'Gas laws need kelvin: T = ' + T + ' + 273.15 = ' + fmt(Tk, 4) + ' K. With degrees Celsius the pressure comes out wrong.' },
@@ -847,6 +856,8 @@
       var mass = meas(r, 50, 150, 1), dT = meas(r, 2, 9, 2), mol = meas(r, 0.02, 0.09, 4);
       var qJ = +mass * 4.18 * +dT, dH = -qJ / 1000 / +mol, sf4 = Math.min(sfOf(mass), sfOf(dT), sfOf(mol), 3);
       if(!clean(dH, sf4)) return null;
+      setup = { target: 'kJ/mol', sign: true, factors: [{ label: 'mass', v: mass, u: 'g', place: 1, sf: sfOf(mass) }, { label: 'c', v: '4.18', u: 'J/(g·°C)', place: 1, sf: 3 },
+        { label: 'ΔT', v: dT, u: '°C', place: 1, sf: sfOf(dT) }, { label: 'kJ per J', v: '1 kJ / 1000 J', u: 'kJ/J', place: 1, sf: null }, { label: 'moles', v: mol, u: 'mol', place: -1, sf: sfOf(mol) }] };
       q = { q: 'Dissolving ' + mol + ' mol of a salt in ' + mass + ' g of water raises the temperature by ' + dT + ' °C. Take c = 4.18 J/(g·°C) for the solution and ignore the heat absorbed by the cup. What is ΔH of dissolution in kJ/mol?',
         numeric: { answer: dH, tol: ulp(dH, sf4), unit: 'kJ/mol', askUnit: true, sigfigs: sf4, mistakes: [
           { value: -qJ / +mol, why: 'That is in J/mol. Divide by 1000 to report kJ/mol.' },
@@ -867,7 +878,7 @@
     q.id = slug + ':' + ctx.id + ':' + ctx.kind;
     q.type = q.type || 'numeric'; q.topic = ctx.topic; q.practice = ctx.kind === 'rchoice' ? '5.B' : '5.F'; q.level = 'apply'; q.diff = 2;
     if(q.numeric) q.numeric.mistakes = q.numeric.mistakes.filter(function(mk){ return Math.abs(mk.value - q.numeric.answer) > 2.5 * q.numeric.tol; });
-    return { kind: 'units', ctx: ctx.id, topic: ctx.topic, item: q };
+    return { kind: 'units', ctx: ctx.id, topic: ctx.topic, item: q, setup: setup };
   }
 
   /* A change-row entry typed by a student: "−2x", "+x", "x", "0" -> the
@@ -882,13 +893,157 @@
   }
   function coefText(n){ return n === 0 ? '0' : (n > 0 ? '+' : '−') + (Math.abs(n) === 1 ? '' : Math.abs(n)) + 'x'; }
 
+  /* ===================================================================
+     Explore models (tools upgrade Phase 2, docs/tools-upgrade-notes/chem.md).
+     Pure, tested in scripts/test/apchem-explore.test.mjs. */
+
+  /* Titration: millimoles of each species at v mL of titrant, from the
+     exact pH (titrationPH) and the acid's distribution fractions. Spectator
+     ions (Na⁺, Cl⁻) are left out. Keys: H3O, OH, and HA, A (weak acid),
+     H2A, HA, A (diprotic), B, BH (weak base). */
+  function titrationSpecies(sys, v){
+    var V = sys.Va + v, pH = titrationPH(sys, v), h = Math.pow(10, -pH), Kw = M.C.Kw, n0 = sys.Ca * sys.Va;
+    var out = { pH: pH, V: V, H3O: h * V, OH: Kw / h * V };
+    if(sys.kind === 'sa') return out;
+    if(sys.kind === 'wb'){ var Kb = Kw / sys.Kb; out.BH = n0 * h / (h + Kb); out.B = n0 - out.BH; return out; }
+    var Ka = sys.Ka, n = Ka.length, t = [], s = 0, prod = 1;
+    for(var k = 0; k <= n; k++){ if(k) prod *= Ka[k - 1]; var x = prod * Math.pow(h, n - k); t.push(x); s += x; }
+    if(n === 1){ out.HA = n0 * t[0] / s; out.A = n0 * t[1] / s; }
+    else { out.H2A = n0 * t[0] / s; out.HA = n0 * t[1] / s; out.A = n0 * t[2] / s; }
+    return out;
+  }
+  /* Where a volume sits on the curve: 'start' (nothing added), a landmark
+     ('half', 'eq'; diprotic 'half1', 'eq1', 'half2', 'eq2'): a half point
+     within 2% of the first equivalence volume (at least 0.1 mL), an
+     equivalence point within 0.1 mL (two drops; the pH jumps there), or
+     the stretch between:
+     strong acid 'before'/'after'; weak acid or base 'acid-rich' (before
+     half-equivalence), 'base-rich' (between half and equivalence), 'after';
+     diprotic 'b1a', 'b1b', 'b2a', 'b2b', 'after'. */
+  function titrationRegion(sys, v){
+    var e = titrationEq(sys), tol = Math.max(0.1, 0.02 * e[0]), at = function(w, t){ return Math.abs(v - w) <= (t || tol) + 1e-9; };
+    if(v <= 1e-9) return 'start';
+    if(sys.kind === 'sa') return at(e[0], 0.1) ? 'eq' : v < e[0] ? 'before' : 'after';
+    if(sys.kind === 'di'){
+      var marks = [[e[0] / 2, 'half1', 'b1a'], [e[0], 'eq1', 'b1b', 0.1], [1.5 * e[0], 'half2', 'b2a'], [e[1], 'eq2', 'b2b', 0.1]];
+      for(var i = 0; i < marks.length; i++){ if(at(marks[i][0], marks[i][3])) return marks[i][1]; if(v < marks[i][0]) return marks[i][2]; }
+      return 'after';
+    }
+    if(at(e[0] / 2)) return 'half';
+    if(v < e[0] / 2) return 'acid-rich';
+    if(at(e[0], 0.1)) return 'eq';
+    return v < e[0] ? 'base-rich' : 'after';
+  }
+  /* The volume at which the curve first reaches pH ph (curves are monotonic:
+     rising for an acid analyte, falling for a base): 0 when the start is
+     already past it, Infinity when it is never reached by vmax. */
+  function titrationCross(sys, ph, vmax){
+    var up = sys.kind !== 'wb', f = function(v){ return titrationPH(sys, v); };
+    var past = function(y){ return up ? y >= ph : y <= ph; };
+    if(past(f(0))) return 0;
+    if(!past(f(vmax))) return Infinity;
+    var lo = 0, hi = vmax;
+    for(var i = 0; i < 60; i++){ var m = (lo + hi) / 2; if(past(f(m))) hi = m; else lo = m; }
+    return (lo + hi) / 2;
+  }
+
+  /* Buffer taking strong acid or base, in moles, with no volume change.
+     o: { Ka, nHA, nA (mol at the start), V (L), b (mol of strong base added;
+     negative for strong acid) }. Stoichiometry first (the strong species
+     reacts completely), then the pH two ways:
+       pH        exact, from the charge balance with water (any amount added):
+                 [H₃O⁺] − Kw/[H₃O⁺] + (nA + b)/V − C·Ka/([H₃O⁺] + Ka) = 0,
+                 C = (nHA + nA)/V. The same equation holds for a weak-base
+                 buffer (HA = BH⁺, A = B, Ka = Kw/Kb, the salt's Cl⁻ in place
+                 of Na⁺).
+       method    how the exam expects it: 'hh' (both forms left, ratio 0.1-10),
+                 'hh-edge' (both left, ratio outside 0.1-10), 'weak-base' /
+                 'weak-acid' (exactly one form left), 'excess-base' /
+                 'excess-acid' (capacity passed: pH from the leftover strong
+                 species alone), with pHmethod its value.
+     water: the pH the same addition gives in pure water (exact). */
+  function bufferState(o){
+    var Kw = M.C.Kw, Ka = o.Ka, V = o.V, b = o.b || 0, eps = 1e-9 * (o.nHA + o.nA);
+    var r = { nHA: o.nHA, nA: o.nA, exOH: 0, exH: 0 };
+    if(b >= 0){ var u = Math.min(b, o.nHA); r.nHA = o.nHA - u; r.nA = o.nA + u; r.exOH = b - u; }
+    else { var w = Math.min(-b, o.nA); r.nA = o.nA - w; r.nHA = o.nHA + w; r.exH = -b - w; }
+    ['nHA', 'nA', 'exOH', 'exH'].forEach(function(k){ if(Math.abs(r[k]) < eps) r[k] = 0; });
+    var C = (o.nHA + o.nA) / V, Na = (o.nA + b) / V, lo = -15, hi = 1;
+    for(var i = 0; i < 100; i++){ var m = (lo + hi) / 2, h = Math.pow(10, m); if(h - Kw / h + Na - C * Ka / (h + Ka) > 0) hi = m; else lo = m; }
+    r.pH = -(lo + hi) / 2;
+    if(r.exOH > 0){ r.method = 'excess-base'; r.pHmethod = 14 + Math.log10(r.exOH / V); }
+    else if(r.exH > 0){ r.method = 'excess-acid'; r.pHmethod = -Math.log10(r.exH / V); }
+    else if(r.nHA > 0 && r.nA > 0){ var q = r.nA / r.nHA; r.method = q >= 0.1 && q <= 10 ? 'hh' : 'hh-edge'; r.pHmethod = -Math.log10(Ka) + Math.log10(q); }
+    else if(r.nA > 0){ r.method = 'weak-base'; r.pHmethod = 14 - M.weakAcid(r.nA / V, Kw / Ka).pH; }
+    else { r.method = 'weak-acid'; r.pHmethod = M.weakAcid(r.nHA / V, Ka).pH; }
+    var cb = b / V;
+    // [H₃O⁺] − [OH⁻] = −cb, written without cancellation for either sign.
+    var root = Math.sqrt(cb * cb + 4 * Kw);
+    r.water = -Math.log10(cb > 0 ? 2 * Kw / (cb + root) : (root - cb) / 2);
+    return r;
+  }
+
+  /* Q vs K with amounts: n (mol per species) in V liters. equilibrate()
+     returns the amounts once the net reaction has run until Q = K. */
+  function concOf(n, V){ return n.map(function(x){ return x / V; }); }
+  /* Solids and liquids stay out of Q but still limit how far the reaction
+     can run: if a solid runs out first, the run stops there (Q has not
+     reached K, and no more can react). Extent in mol, by bisection on ln Q. */
+  function equilibrate(sp, n, V, K){
+    var lo = -Infinity, hi = Infinity, lk = Math.log(K);
+    sp.forEach(function(s, i){ if(s.nu < 0) hi = Math.min(hi, n[i] / -s.nu); else lo = Math.max(lo, -n[i] / s.nu); });
+    var lnQ = function(x){ var q = 0, inf = 0; sp.forEach(function(s, i){ if(!inQ(s)) return; var c = (n[i] + s.nu * x) / V; if(c <= 0) inf += s.nu < 0 ? 1 : -1; else q += s.nu * Math.log(c); }); return inf > 0 ? Infinity : inf < 0 ? -Infinity : q; };
+    var a = lo, b = hi;
+    for(var i = 0; i < 300; i++){ var m = (a + b) / 2; if(lnQ(m) > lk) b = m; else a = m; }
+    var x = (a + b) / 2;
+    return sp.map(function(s, i){ var v = n[i] + s.nu * x; return Math.abs(v) < 1e-12 * (Math.abs(n[i]) + 1e-12) ? 0 : v; });
+  }
+
+  /* Atoms in a set of particle counts ({ H2: 3, O2: 1 } -> { H: 6, O: 2 }),
+     from the same templates the pictures draw. */
+  function atomsOf(counts){
+    var out = {};
+    Object.keys(counts).forEach(function(k){ (TEMPL[k] || []).forEach(function(at){ out[at.el] = (out[at.el] || 0) + (counts[k] || 0); }); });
+    return out;
+  }
+
+  /* Units as exponent maps: 'L·atm/(mol·K)' -> { L: 1, atm: 1, mol: -1, K: -1 }.
+     unitMul(list) multiplies [{ u, p }] (p = +1 on top, −1 below);
+     unitText(map) writes the leftover unit, '' when everything cancels. */
+  function unitParse(u){
+    var out = {}, s = String(u || '').replace(/[()\s]/g, ''), parts = s.split('/');
+    parts.forEach(function(part, i){ part.split(/[·*]/).forEach(function(t){
+      if(!t || t === '1') return;
+      var m = /^(.*?)\^?(-?\d+)?$/.exec(t), name = m[1], e = m[2] ? +m[2] : 1;
+      out[name] = (out[name] || 0) + (i ? -e : e);
+    }); });
+    return out;
+  }
+  function unitMul(list){
+    var out = {};
+    list.forEach(function(f){ var m = unitParse(f.u); Object.keys(m).forEach(function(k){ out[k] = (out[k] || 0) + f.p * m[k]; }); });
+    Object.keys(out).forEach(function(k){ if(!out[k]) delete out[k]; });
+    return out;
+  }
+  function unitText(map){
+    var pow = function(k, e){ return k + (e > 1 ? '^' + e : ''); };
+    var top = Object.keys(map).filter(function(k){ return map[k] > 0; }).map(function(k){ return pow(k, map[k]); });
+    var bot = Object.keys(map).filter(function(k){ return map[k] < 0; }).map(function(k){ return pow(k, -map[k]); });
+    if(!top.length && !bot.length) return '';
+    return (top.join('·') || '1') + (bot.length ? '/' + (bot.length > 1 ? '(' + bot.join('·') + ')' : bot[0]) : '');
+  }
+  function unitSame(a, b){ var x = unitMul([{ u: a, p: 1 }, { u: b, p: -1 }]); return !Object.keys(x).length; }
+
   var D = {
     fmt: fmt, sup: sup, cell: cell, diagnose: diagnose, near: near, list: list, parseCoef: parseCoef, coefText: coefText,
+    bufferState: bufferState, equilibrate: equilibrate, concOf: concOf, atomsOf: atomsOf,
+    unitParse: unitParse, unitMul: unitMul, unitText: unitText, unitSame: unitSame,
     Q: Q, Qflat: Qflat, at: at, inQ: inQ, solveExtent: solveExtent, smallX: smallX, eqHtml: eqHtml, exprHtml: exprHtml,
     ice: { generate: iceGenerate },
     qk: { generate: qkGenerate },
     buffer: { generate: bufGenerate },
-    titration: { generate: titGenerate, pH: titrationPH, curve: titrationCurve, eq: titrationEq, nbar: nbar, INDICATORS: INDICATORS },
+    titration: { generate: titGenerate, pH: titrationPH, curve: titrationCurve, eq: titrationEq, nbar: nbar, INDICATORS: INDICATORS,
+      species: titrationSpecies, region: titrationRegion, cross: titrationCross },
     particles: { generate: ptGenerate, box: boxSvg, hydration: hydrationSvg, mol: molSvg, describe: describe },
     units: { generate: unGenerate, sigFigsOf: sfOf, decimalsOf: decOf }
   };

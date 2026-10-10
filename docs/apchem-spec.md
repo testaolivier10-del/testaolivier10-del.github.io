@@ -287,6 +287,15 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    that practice it ("Practice it:" links, live tools only). **Live beaker**
    `chem/assets/tools/live-beaker.js` (`ApChemBeaker`, not loaded by any page yet; API in
    `docs/tools-upgrade.md`), tests in `scripts/test/apchem-beaker.test.mjs`.
+21. (2026-10-09, tools upgrade U-Chem; `docs/tools-upgrade-notes/chem.md`) **Explore, then test yourself.**
+   Every trainer opens on an Explore pane (`ApChemTools.modes`) with the existing drill as "Test yourself"
+   (`?seed=`/`#quiz` open it; ids, recording and problem codes unchanged). Explore: titration with burette,
+   live flask and indicator color; buffer beaker taking + OH⁻/+ H₃O⁺ past capacity; Q vs K vessel (amounts,
+   volume, Let it react); ICE with x on a slider (the quiz's ICE table also drives live bars and a Q-to-K
+   gauge); particle build mode with an atom tally; units set-up with cancelling chips. New pure models
+   (`titration.species/region/cross`, `bufferState`, `equilibrate`, `atomsOf`, unit cancelling,
+   `units.generate().setup`) in `chem-tool-math.js`, tested in `scripts/test/apchem-explore.test.mjs`;
+   listed for accuracy review in the notes file.
 
 ## 8. Open items for the owner
 
