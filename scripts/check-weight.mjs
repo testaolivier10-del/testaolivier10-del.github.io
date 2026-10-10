@@ -144,7 +144,9 @@ const SHELL_BUDGETS = [
      patient's short callouts (the word list that turns a case sentence into "Right thigh /
      Spurting bleed", the side-by-side callout layout) and the Front/Back toggle. Loads only on
      scenario-sim.html; the anatomy images are fetched on demand and not counted. */
-  ['nremt', 22],
+  /* 22 -> 26.5 (calm tools P1, docs/tools-calm.md): the Tool Studio frame's NREMT side,
+     nremt-studio.js/.css plus the tool's own studio/<slug>.css; measured 26.2 KB on scenario-sim.html. */
+  ['nremt', 26.5],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with
@@ -357,7 +359,8 @@ const BUDGETS = [
   // call layout, inline in the page. The case data is unchanged.
   /* 51.5 -> 52 (visual polish 2026-10): the bedside monitor's styles; measured 51.6 KB. */
   // 52 -> 53 (simplify pass 2026-10): the pick-a-call cue and the short-window sticky rule; it sat 0.1 KB under.
-  ['nremt/scenario-sim.html', 53],
+  /* 53 -> 55 (calm tools P1): the inline Tool Studio arrangement (stage/dock/Why, the call so far); measured 54.3 KB. */
+  ['nremt/scenario-sim.html', 55],
   // learn.html is a shell whose only real weight is the static table of
   // contents generated into it for readers without JavaScript — one line per
   // section. It crossed 3.0 KB when the IUPAC Nomenclature chapter added four

@@ -42,6 +42,7 @@
 <!-- tool-studio:start -->
 <link rel="stylesheet" href="../assets/course/tool-studio.css">
 <link rel="stylesheet" href="assets/nremt-studio.css">
+<link rel="stylesheet" href="assets/studio/sound-trainer.css">
 <script src="../assets/course/tool-studio.js" defer></script>
 <script src="assets/nremt-studio.js" defer></script>
 <!-- tool-studio:end -->
@@ -978,7 +979,9 @@ if (studio) (function(){
     studio.pills(v ? [{ html: v.textContent.split(/[.:—]/)[0], tone: /\b(ok|correct)\b/.test(v.className) ? 'good' : 'bad' }] : [], 'left', 'test');
   };
   [side, timing, quiz].forEach(el => new MutationObserver(() => { verdictPill(); paint(); }).observe(el, { childList: true, subtree: true }));
-  studio.hint({ target: fig.querySelector('.st-site.is-on') || fig.querySelector('.st-body'), text: 'Tap the glowing spot to listen', round: 28 });
+  // The chest's spots are redrawn when its figure data lands, so the hint
+  // points at Play, which stays put.
+  studio.hint({ target: side.querySelector('[data-play-which="a"]') || fig, text: 'Play it, or tap a spot on the chest' });
   // From Review: #snd-<id> opens that sound's card in Details.
   if (location.hash.indexOf('#snd-') === 0) {
     const card = document.getElementById(location.hash.slice(1));

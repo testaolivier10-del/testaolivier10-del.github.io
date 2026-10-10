@@ -1,0 +1,16 @@
+# NREMT tools on the Tool Studio (P1)
+
+Frame: `nremt/assets/nremt-studio.js` (`NremtStudio.mount` for tools, `NremtStudio.slim` for reference pages),
+`nremt/assets/nremt-studio.css` (shared) and `nremt/assets/studio/<slug>.css` (one per tool). `?studio=0` shows the old page.
+Tool scripts that render into one box got an optional dock target (`#flowDrillDock`, `#stationRunDock`, `#gwDock`) or keep
+their own element references (`burns.js`, `sound-stage.js`), so the studio can move their parts.
+
+- **Body map** (`body-map.html`). Stage: the 3D model, or the two burn figures with the TBSA readout on them. Controls: 3D anatomy | Burns; Quiz me + Reset view (anatomy), Adult/Child + Quiz me + Clear (burns); the quiz card in the dock. Why: the tapped structure's full card; the burn breakdown, over-10% flag and Rule of Nines in words. Details: view settings (skin, systems, controls note), pick a part by name, brush and palm rule, figure credit, directional terms.
+- **Sound trainer** (`sound-trainer.html`). Stage: the chest (Front/Back, mute), or the test itself (timing strip, name-it clip and choices). Controls: Explore | Test yourself; sound chips, Play and the beat strip; Name it / Where / When. Why: the sound's description and clinical note, why this spot; in a test, the reason after you answer. Details: volume, compare two sounds, every sound's card (`#snd-<id>` opens it here).
+- **Scenario simulator** (`scenario-sim.html`). Stage: monitor and patient (Monitor | Patient switch on a phone, stacked on a desktop), "What happened" on it; before a call the list of calls, after it the debrief and path. Controls: the choices; the situation is the caption; All scenarios in the menu. Why: the call so far, each choice and its consequence. Details: none (About has the figure credit).
+- **Protocol flows** (`flowcharts.html`). Stage: one diagram (Read), the build board (Build it), the chain with its blank (Drill me). Controls: Read | Build it | Drill me; the sequence chips (Read); the drill's choices and Next (dock). Why: how to read a chart and the chart's own notes; what Build and Drill test. Details: the "general sequences" note.
+- **Station run** (`skillsheets.html`). Stage: the stations, then the clock and the critical-criteria lamps, then the result. Controls: the phases one at a time with the stepper ("Phase 3 of 7", a tick moves on), Finish / Pick another. Why: what a run is, the limit and criteria notes, the picked station's card. Details: the reading guide (how scoring works, the official sheets table, every station's card).
+- **Drug formulary** (`formulary.html`). Stage: the give/withhold patient card, or the bank question. Controls: Give or withhold? | Question drill; Withhold / Give, then Next patient with the deciding line. Why: the verdict, the line, the dose and note; the drill's explanation. Details: the seven drug cards (the reason's link opens them).
+- **Reference cards** (`reference-cards.html`): reference page, not a tool. Slim bar (back, title, Ask the tutor, Course home), calm cards, sticky jump chips; the vitals check stays on its card.
+- **Mnemonics** (`mnemonics.html`): reference page. Slim bar (back to Learn) and calm cards; Fill the letters stays on each card.
+- **Exam day** (`exam-day.html`): not a tool page (it lives under Exams), left as it is.

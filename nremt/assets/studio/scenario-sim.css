@@ -1,0 +1,87 @@
+/* Scenario simulator in the Tool Studio (docs/tools-calm.md): fits this tool's own parts
+   into the frame. Loaded after nremt-studio.css, on scenario-sim.html only. */
+.nx-scenario-sim #pickerScreen{flex:1;min-height:0;overflow:auto;margin:0 -14px -14px;padding:4px 14px 14px;}
+.nx-scenario-sim[data-sim=call] #pickerScreen,.nx-scenario-sim[data-sim=end] #pickerScreen{display:none !important;}
+.nx-scenario-sim .picker-grid{grid-template-columns:1fr;gap:10px;}
+.nx-scenario-sim .scenario-card{border:0;box-shadow:inset 0 0 0 1.5px var(--line);background:var(--surface2);border-radius:18px;padding:14px 16px;transform:none !important;}
+.nx-scenario-sim .scenario-card:hover{box-shadow:inset 0 0 0 1.5px var(--cink);}
+.nx-scenario-sim .scenario-domain{font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;color:var(--cink);}
+.nx-scenario-sim .scenario-card h3{font:900 var(--ls-m)/1.3 var(--font-ui);margin:2px 0 4px;}
+.nx-scenario-sim .scenario-card p{font-size:var(--ls-s);}
+.nx-scenario-sim .sim-box{display:none;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none;}
+.nx-scenario-sim .sim-box.active{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;}
+.nx-scenario-sim[data-sim=end] .sim-box{overflow:auto;margin:0 -14px -14px;padding:4px 14px 14px;display:block;}
+.nx-scenario-sim .sim-ls-views{flex:none;}
+.nx-scenario-sim .sim-grid{flex:1;min-height:0;display:flex;flex-direction:column;gap:12px;}
+.nx-scenario-sim .sim-grid[data-show=mon] > .sim-side,.nx-scenario-sim .sim-grid[data-show=pt] > #monHost{display:none;}
+.nx-scenario-sim .sim-side{position:static;flex:1;min-height:0;display:flex;flex-direction:column;}
+.nx-scenario-sim #monHost .mon{margin:0;}
+.nx-scenario-sim .pt{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px;padding:0;border:0;background:none;border-radius:0;}
+.nx-scenario-sim .pt-head h3{font:900 var(--ls-m) var(--font-ui);}
+.nx-scenario-sim .pt-age{font:700 var(--ls-s) var(--font-ui);}
+.nx-scenario-sim .pt-hint,.nx-scenario-sim .pt-credit{display:none;}
+.nx-scenario-sim .pt-survey{display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:8px;margin:0;}
+.nx-scenario-sim .pt-survey::-webkit-scrollbar{display:none;}
+.nx-scenario-sim .pt-chip{flex:none;min-height:44px;padding:0 14px;border:0;box-shadow:inset 0 0 0 1.5px var(--line);background:var(--surface2);font:800 var(--ls-s) var(--font-ui);}
+.nx-scenario-sim .pt-chip.has{box-shadow:inset 0 0 0 1.5px var(--cink);color:var(--ink);}
+.nx-scenario-sim .pt-chip.on{background:var(--cink);color:var(--white);box-shadow:none;}
+.nx-scenario-sim .pt-stage{flex:1;min-height:240px;height:auto;}
+.nx-scenario-sim .pt-seg button{min-height:40px;}
+.nx-scenario-sim .pt-out{margin:0;max-height:30%;overflow:auto;font-size:var(--ls-s);}
+.nx-scenario-sim .pt-out:empty{display:none;}
+.nx-scenario-sim .pt-out-h{font:900 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;}
+/* dock */
+.nx-scenario-sim .sim-ls-dock{display:flex;flex-direction:column;gap:12px;}
+.nx-scenario-sim .sim-ls-dock:empty{display:none;}
+.nx-scenario-sim .sim-header{margin:0;gap:10px;}
+.nx-scenario-sim .sim-domain{font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;color:var(--cink);min-width:0;}
+.nx-scenario-sim .back-link{flex:none;min-height:44px;padding:0 4px;font:800 var(--ls-s) var(--font-ui);}
+.nx-scenario-sim #nodeHost{display:flex;flex-direction:column;gap:12px;}
+.nx-scenario-sim .consequence-banner,.nx-scenario-sim .clock-note{display:none;}
+.nx-scenario-sim .node-text{margin:0;font:600 var(--ls-m)/1.5 var(--font-ui);}
+.nx-scenario-sim .choice-list{gap:8px;}
+.nx-scenario-sim .choice-option{border:0;box-shadow:inset 0 0 0 1.5px var(--line);background:var(--surface2);border-radius:16px;padding:11px 16px;min-height:48px;
+  font:800 var(--ls-m)/1.35 var(--font-ui);transform:none !important;}
+.nx-scenario-sim .choice-option:hover{box-shadow:inset 0 0 0 2px var(--cink);}
+.nx-scenario-sim .pt-jump{display:inline-flex;align-items:center;min-height:44px;margin:0;font:800 var(--ls-s) var(--font-ui);color:var(--cink);}
+.nx-scenario-sim .debrief-review{margin:0;font-size:var(--ls-m);}
+.nx-scenario-sim .ending-badge{display:none;}
+.nx-scenario-sim[data-sim=end] .node-text{margin:0 0 14px;}
+.nx-scenario-sim .path-log{margin:0;padding:0;border:0;}
+.nx-scenario-sim .path-log-title{font:900 var(--ls-m) var(--font-ui);text-transform:none;letter-spacing:0;color:var(--ink);}
+.nx-scenario-sim .rewind-btn{min-height:44px;border-radius:999px;}
+.nx-scenario-sim .path-alts summary{min-height:44px;display:flex;align-items:center;}
+@media (min-width:1000px){
+  .nx-scenario-sim .sim-ls-views{display:none;}
+  .nx-scenario-sim .sim-grid > .sim-side,.nx-scenario-sim .sim-grid > #monHost{display:flex !important;}
+  .nx-scenario-sim .sim-grid > #monHost{display:block !important;flex:none;}
+  .nx-scenario-sim .picker-grid{grid-template-columns:1fr 1fr;}
+  .nx-scenario-sim .pt-jump{display:none;}
+}
+.nx-scenario-sim .picker-cue{display:none;}
+.nx-scenario-sim #nodeHost > .node-text{display:none;}
+.nx-scenario-sim .ls-pills{position:absolute;top:14px;right:14px;padding:0;z-index:2;}
+.nx-scenario-sim .ls-stage:has(.ls-pills .ls-pill) .sim-ls-views{max-width:calc(100% - 150px);}
+.nx-scenario-sim .sim-ls-views{width:100%;max-width:340px;}
+.nx-scenario-sim .sim-ls-what{flex:none;margin:0;padding:10px 12px;border-radius:14px;background:var(--tint-amber);color:var(--ink);font-size:var(--ls-s);line-height:1.45;max-height:7.5em;overflow:auto;}
+.nx-scenario-sim .sim-ls-what[hidden]{display:none;}
+.nx-scenario-sim[data-sim=end] .ls-pills{position:static;padding:14px 14px 0;}
+@media (max-width:999.98px){
+  .nx-scenario-sim .ls-caption{font-size:15px;line-height:1.45;}
+  .nx-scenario-sim .ls-dock{gap:10px;padding-top:12px;}
+  .nx-scenario-sim .sim-ls-dock{gap:8px;}
+  .nx-scenario-sim .sim-header{min-height:0;}
+  .nx-scenario-sim .back-link{min-height:44px;}
+  .nx-scenario-sim .choice-option{padding:9px 14px;font-size:15px;}
+}
+@media (min-width:1000px){
+  .nx-scenario-sim .ls-pills{top:20px;right:22px;}
+  .nx-scenario-sim .sim-grid{gap:16px;}
+}
+.nx-scenario-sim .sim-grid{align-items:stretch;}
+.nx-scenario-sim .sim-box.active{overflow:auto;margin:0 -14px -14px;padding:0 14px 14px;}
+.nx-scenario-sim .sim-grid{flex:1 0 auto;}
+.nx-scenario-sim .sim-ls-what{max-height:none;overflow:visible;}
+@media (min-width:1000px){ .nx-scenario-sim .sim-box.active{margin:0 -24px -24px;padding:0 24px 24px;} }
+.nx-scenario-sim .pt-seg button,.nx-scenario-sim .pt-bar .pt-skin{min-height:44px;}
+.nx-scenario-sim[data-sim=call] .sim-ls-dock > .sim-header{display:none;}
