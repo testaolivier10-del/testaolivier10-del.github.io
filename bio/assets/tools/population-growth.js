@@ -326,5 +326,10 @@
     update(true);
     T.questions(app.querySelector('.bt-qs'), data.questions, data.stimuli, SLUG);
     if(data.frq) T.frq(app, data.frq, SLUG);
-  });
+  }, {
+    // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
+    studio: { sim: true, live: '.pg-explain li', dock: ['.os-play', '.bt-modes', '@primary'],
+      hint: { target: '.os-play .btn-press', text: 'Press Play the years' },
+      pills: function(g){ return [{ k: 'N', html: g.ro(1), tone: 'readout' }]; },
+      pillsR: function(g){ return [{ html: 'dN/dt ' + g.ro(3), tone: 'ghost' }]; } } });
 })();
