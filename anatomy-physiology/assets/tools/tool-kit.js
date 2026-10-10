@@ -195,5 +195,26 @@
       '<span class="kg-3dico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle class="f" cx="12" cy="5" r="2.4"/><path class="f" d="M9.4 8.4h5.2l1.4 6.2h-1.9l-.6 6.4h-3l-.6-6.4H8z"/><ellipse cx="12" cy="14.2" rx="10" ry="3.6"/><path class="f" d="M20.6 12.3l1.8 1.9-2.6.4z"/></svg></span>See it in 3D</a>';
   }
 
-  window.AnpToolKit = { strip: strip, picker: picker, bodyName: bodyName, body3d: body3d, status: status, BODY: BODY, ALIAS: ALIAS };
+  /* ------------------------------------------------ simple first (simplify pass 2026-10)
+     The landing pattern every A&P tool follows (same feel as the other
+     courses): one plain "do this first" line beside the main visual, one
+     segmented mode switch (class kt-seg), extra settings behind "More
+     options", and explanations behind "Why?" after an action.
+     first(html)          the first-step line (trusted html)
+     why(html, opts)      a "Why?" disclosure; opts.open, opts.label
+     more(html, opts)     a "More options" disclosure; opts.label, opts.cls
+     about(html, label)   a quiet disclosure for an intro paragraph */
+  function first(html){ return '<p class="kt-first">' + html + '</p>'; }
+  function why(html, opts){
+    opts = opts || {};
+    if(!html) return '';
+    return '<details class="kt-why"' + (opts.open ? ' open' : '') + '><summary>' + esc(opts.label || 'Why?') + '</summary><div class="kt-why-b">' + html + '</div></details>';
+  }
+  function more(html, opts){
+    opts = opts || {};
+    return '<details class="kt-more' + (opts.cls ? ' ' + opts.cls : '') + '"' + (opts.open ? ' open' : '') + '><summary>' + esc(opts.label || 'More options') + '</summary><div class="kt-more-b">' + html + '</div></details>';
+  }
+  function about(html, label){ return html ? '<details class="kt-about"><summary>' + esc(label || 'About this') + '</summary><div class="kt-about-b">' + html + '</div></details>' : ''; }
+
+  window.AnpToolKit = { strip: strip, picker: picker, bodyName: bodyName, body3d: body3d, status: status, first: first, why: why, more: more, about: about, BODY: BODY, ALIAS: ALIAS };
 })();

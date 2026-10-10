@@ -167,3 +167,25 @@ Checked and fine: picker search and Escape, loop/scenario/graph/pathway/calculat
 state carried over: ring, gauges, ghost curves, overlays, player timers all reset), Watch/Test tabs, Cut a part on
 every part, the timed practical (timer, no going back, results and review), Build / Decode scoring, reload restores
 the hash item or the last calculator / mode, Review entries for every scored id, Keep going links on every tool.
+
+## Simplify pass (2026-10-10, spec decision 88)
+Landing pattern from the simplify brief, shared in `tool-kit.js` (`first`, `why`, `more`, `about`) and `tool-kit.css`
+(`.kt-first`, `.kt-seg`, `.kt-why`, `.kt-more`, `.kt-about`). The opener sentence is `lede` in `data/pages.json`
+(`blurb` still feeds the hub). What a new student sees first:
+- **Feedback loops:** a loop on a gauge; "Drag the marker off the set point, or press Stimulus". Watch | Test yourself.
+  "Cut a part" and the partner loop link sit in one disclosure; Test's long how-to is under "How it works".
+- **Predict:** the scenario and its dials; "Call each one: up, down or no change. Then press Run it." Each variable's
+  chain and why open under "Why?" after Run.
+- **Graphs:** the graph; "Drag along the graph...". Explore | Quiz is one segmented control; the intro is under "About
+  this graph", "Show phases and regions" under More options, each answer's explanation under "Why?".
+- **Pathways:** the first drill; "Put the steps in order...". The three drills are one segmented control (Watch |
+  Trace it is another on traced pathways); the intro is under "About this pathway", the summary under "Why it runs this
+  way".
+- **Calculators:** the live picture; "Drag a slider or type a number...". Calculate | Practice; formula and worked
+  examples, and every step, behind disclosures.
+- **Lab practical:** the figure; "Tap any label on the figure...". Explore | Study | Quiz (| Timed); quiz prompts are
+  the first-step line; quiz settings and Study's reveal buttons are under More options.
+- **Word roots:** the term; "Pick what each part means, starting with the last part." Decode | Build | Part bank; the
+  topic filter and counts are under More options.
+Checked at 390, 1280 and 1626, light and dark: no horizontal scroll, every segment and disclosure at least 40 px tall,
+no console errors, every end-to-end flow from the bug pass rerun.

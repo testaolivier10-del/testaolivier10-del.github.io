@@ -254,7 +254,8 @@ const SHELL_BUDGETS = [
      map label list), about 4 KB gzipped; the lab practical page, the
      heaviest, measured 46.8 KB. */
   /* 47.5 -> 48 (visual polish 2026-10): the 3D button's body icon and the shared illustration code; measured 47.7 KB. */
-  ['anatomy-physiology', 48],
+  /* 48 -> 49.5 (simplify pass 2026-10): the shared first-step line, segmented mode switch and Why? / More options disclosures in tool-kit.js/.css; lab practical measured 49.3 KB. */
+  ['anatomy-physiology', 49.5],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).

@@ -1066,7 +1066,7 @@ for (const [from, to] of Object.entries(RENAMED)) put(`${from}.html`, `<!DOCTYPE
 </body>
 </html>
 `);
-for (const t of PAGES.tools) put(`tools/${t.slug}.html`, appShell(t, { path: `tools/${t.slug}.html`, depth: '../', h1: t.name, eyebrow: 'A&P tool', lede: t.blurb, section: 'tools', isTool: true }));
+for (const t of PAGES.tools) put(`tools/${t.slug}.html`, appShell(t, { path: `tools/${t.slug}.html`, depth: '../', h1: t.name, eyebrow: 'A&P tool', lede: t.lede || t.blurb, section: 'tools', isTool: true }));
 
 /* ------------------------------------------------------------ runtime */
 
