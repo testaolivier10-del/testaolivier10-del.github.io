@@ -5,23 +5,40 @@
    6, crossing over, each pair's metaphase I orientation and a nondisjunction
    (meiosis I or II, which pair), steps one cell from G1 to four gametes,
    reads every cell in words, the gametes and zygotes in a table, the
-   comparison with mitosis, and plots chromosomes and DNA per cell. */
+   comparison with mitosis, and plots chromosomes and DNA per cell.
+
+   Job: see where gamete variety and aneuploid gametes come from, by moving
+   the chromosomes yourself.
+
+   Tools upgrade (U-Bio-sims): the figure sits first and is the control. At
+   metaphase I, tap a homolog pair to flip which homolog faces cell 1, or tap
+   its "split" tag on the plate to make that pair fail to separate (meiosis I
+   nondisjunction); at metaphase II, tap a chromosome to make its sisters
+   fail to separate in that cell. Play runs the steps from the current one to
+   the gametes (reduced motion: jumps). The selects stay as the keyboard and
+   screen-reader path. "Make this gamete": a target gamete is shown; set the
+   line-up and any nondisjunction until one of the four gametes matches;
+   recorded as meiosis-nondisjunction:make-<normal|extra|missing>:a. */
 (function(){
   'use strict';
   var SLUG = 'meiosis-nondisjunction';
   var T = window.ApBioTools, M = window.ApBioMath;
   if(!T) return;
-  T.mount(SLUG, function(app, data){
+  T.mount(SLUG, function(app, data, ctx){
     var esc = T.esc, F = T.F, Me = M.meiosis;
     var view = 'count', runs = [], series = null;
     var st = { k: data.pairs.value, cross: false, orient: [0, 0, 0, 0], nd: 'none', ndPair: 0, ndCell: 0, step: 0 };
     var LEN = [46, 36, 26, 20], W = 360;
 
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
-      '<section class="bt-card" aria-labelledby="mei-h"><h2 id="mei-h">The model</h2><div class="bt-controls"></div>' +
-      '<div class="mei-stepper"><button type="button" class="bt-btn" data-a="back">Back</button><button type="button" class="btn-press sm" data-a="next">Next step</button><div class="mei-stepsel"></div></div>' +
+      '<section class="bt-card mei-card" aria-labelledby="mei-h"><h2 id="mei-h">The model</h2>' +
+      '<div class="os-modes" role="group" aria-label="Mode"><button type="button" class="bt-btn" data-m="explore" aria-pressed="true">Explore</button><button type="button" class="bt-btn" data-m="make" aria-pressed="false">Make this gamete</button></div>' +
+      '<div class="os-chal mei-chal" hidden></div>' +
       '<div class="mei-stephead"><h3 class="mei-steptitle" tabindex="-1"></h3><p class="mei-steptext"></p></div>' +
-      '<div class="bt-stage two"><div><div class="bt-fig"></div><div class="mei-words"></div></div><div><div class="bt-tabs" role="group" aria-label="Graph">' +
+      '<div class="bt-fig mei-stagefig"></div><p class="bt-small mei-taphint"></p>' +
+      '<div class="mei-stepper"><button type="button" class="bt-btn" data-a="back">Back</button><button type="button" class="btn-press sm" data-a="next">Next step</button><button type="button" class="btn-press sm alt" data-a="play">Play to gametes</button><div class="mei-stepsel"></div></div>' +
+      '<div class="bt-controls"></div>' +
+      '<div class="mei-lower"><div><div class="mei-words"></div></div><div><div class="bt-tabs" role="group" aria-label="Graph">' +
       '<button type="button" class="bt-btn" data-v="count" aria-pressed="true">Chromosomes per cell</button><button type="button" class="bt-btn" data-v="dna" aria-pressed="false">DNA per cell</button>' +
       '</div><div class="bt-plotwrap"></div></div></div>' +
       '<dl class="bt-readout"></dl><p class="bt-summary"></p>' +
@@ -88,6 +105,7 @@
     card.querySelector('[data-a="back"]').addEventListener('click', function(){ go(st.step - 1); });
     card.querySelector('[data-a="next"]').addEventListener('click', function(){ go(st.step + 1); });
     function go(i){
+      stopPlay();
       st.step = Math.max(0, Math.min(data.stages.length - 1, i));
       stepSel.set(st.step);
       update(true);
@@ -182,8 +200,14 @@
         if(id === 'meta1'){
           out.push('<line class="mei-plate" x1="' + (W / 2) + '" x2="' + (W / 2) + '" y1="14" y2="' + (H - 14) + '"/>');
           rows.forEach(function(rw){
-            var L = s.sides[0][rw.pair], R = s.sides[1][rw.pair];
-            out.push(chrom(W / 2 - 2 - widthOf(L), rw.y, L) + chrom(W / 2 + 2, rw.y, R));
+            var L = s.sides[0][rw.pair], R = s.sides[1][rw.pair], wl = widthOf(L), wr = widthOf(R), h = lens(rw.pair);
+            var ndHere = st.nd === 'I' && st.ndPair === rw.pair;
+            out.push('<g class="mei-tap" data-flip="' + rw.pair + '" role="button" tabindex="0" aria-label="Pair ' + (rw.pair + 1) + ': ' + (st.orient[rw.pair] ? 'paternal' : 'maternal') + ' homolog faces cell 1. Flip it.">' +
+              '<rect class="mei-hit" x="' + (W / 2 - wl - 26) + '" y="' + (rw.y - 0.45 * h - 6).toFixed(1) + '" width="' + (wl + wr + 52) + '" height="' + (h + 24) + '" rx="10"/>' +
+              chrom(W / 2 - 2 - wl, rw.y, L) + chrom(W / 2 + 2, rw.y, R) +
+              '<text class="mei-flip" x="' + (W / 2 - wl - 18) + '" y="' + (rw.y + 4).toFixed(1) + '" text-anchor="end">⇄</text></g>');
+            out.push('<g class="mei-tap mei-nd' + (ndHere ? ' on' : '') + '" data-ndi="' + rw.pair + '" role="button" tabindex="0" aria-pressed="' + ndHere + '" aria-label="Pair ' + (rw.pair + 1) + ': ' + (ndHere ? 'set to fail to separate in meiosis I. Tap to let it separate.' : 'make it fail to separate in meiosis I') + '">' +
+              '<rect class="mei-ndtag" x="' + (W / 2 + wr + 30) + '" y="' + (rw.y - 13).toFixed(1) + '" width="96" height="26" rx="13"/><text class="mei-ndtxt" x="' + (W / 2 + wr + 78) + '" y="' + (rw.y + 4).toFixed(1) + '" text-anchor="middle">' + (ndHere ? '✕ stuck' : 'fail to split') + '</text></g>');
           });
         } else {
           var c1 = s.cells[0], c2 = s.cells[1];
@@ -209,7 +233,12 @@
             if(id === 'meta2') out.push('<line class="mei-plate" x1="' + mid + '" x2="' + mid + '" y1="24" y2="' + (H - 14) + '"/>');
             items[ci].forEach(function(ch){
               var cy = yy + 0.45 * lens(ch.pair) + 6;
-              if(id === 'meta2') out.push(chrom(mid - widthOf(ch) / 2, cy, ch));
+              if(id === 'meta2'){
+                var stuck = st.nd === 'II' && st.ndCell === ci && st.ndPair === ch.pair, wch = widthOf(ch);
+                out.push('<g class="mei-tap mei-nd2' + (stuck ? ' on' : '') + '" data-nd2="' + ci + ':' + ch.pair + '" role="button" tabindex="0" aria-pressed="' + stuck + '" aria-label="Cell ' + (ci + 1) + ', chromosome ' + (ch.pair + 1) + ch.from + ': ' + (stuck ? 'sisters set to stay together. Tap to let them separate.' : 'make its sister chromatids fail to separate') + '">' +
+                  '<rect class="mei-hit" x="' + (mid - wch / 2 - 18).toFixed(1) + '" y="' + (cy - 0.45 * lens(ch.pair) - 6).toFixed(1) + '" width="' + (wch + 36) + '" height="' + (lens(ch.pair) + 22) + '" rx="10"/>' + chrom(mid - wch / 2, cy, ch) +
+                  (stuck ? '<text class="mei-ndtxt" x="' + (mid + wch / 2 + 6) + '" y="' + (cy + 4) + '">✕</text>' : '') + '</g>');
+              }
               else {
                 var t0 = ch.c[0], t1 = ch.c[1], together = st.nd === 'II' && st.ndCell === ci && st.ndPair === ch.pair;
                 if(together){ out.push(chrom(x0 + 14, cy, { pair: ch.pair, from: ch.from, c: [t0] }) + chrom(x0 + 14 + CW + 6, cy, { pair: ch.pair, from: ch.from, c: [t1] }) + '<text class="mei-note" x="' + (mid + 8) + '" y="' + (cy + 4) + '">sisters did not separate</text>'); }
@@ -260,7 +289,7 @@
       card.querySelector('.mei-steptext').textContent = d.text;
       card.querySelector('[data-a="back"]').disabled = st.step === 0;
       card.querySelector('[data-a="next"]').disabled = st.step === data.stages.length - 1;
-      card.querySelector('.bt-fig').innerHTML = figure(r);
+      card.querySelector('.mei-stagefig').innerHTML = figure(r); tapHint();
       card.querySelector('.mei-words').innerHTML = '<p class="bt-small">In words</p><ul>' + words(r).slice(1).map(function(w){ return '<li>' + esc(w) + '</li>'; }).join('') + '</ul>' +
         '<p class="bt-small mei-key">Key: maternal homologs are solid orange-red and labeled M; paternal homologs are blue with stripes and labeled P. A tip in the other style came from crossing over.</p>';
       // the plot: chromosomes or DNA per cell at four points, with mitosis dashed
@@ -308,8 +337,100 @@
         (runs.length ? T.dataTable(['Run', 'Settings', 'Gamete 1', 'Gamete 2', 'Gamete 3', 'Gamete 4', 'Kinds of gametes'], runs.map(function(x){ return [String(x.n), esc(x.text)].concat(x.g).concat([String(x.kinds)]); }), 'Your runs (' + runs.length + ')') : '<p class="bt-small">No runs yet. Use Record these gametes.</p>') +
         T.dataTable(['Step and cell', 'Chromosomes', 'DNA (units)', 'Chromosomes in the cell'], rowsAll, 'Every cell at each step (' + esc(setText()) + ')');
     }
+    /* ------------------------------------ tapping the figure */
+    var fig = card.querySelector('.mei-stagefig'), hint = card.querySelector('.mei-taphint');
+    function syncControls(){
+      orFs.querySelectorAll('select').forEach(function(x, j){ x.value = String(st.orient[j]); });
+      ndSel.set(st.nd === 'none' ? 'none' : st.nd === 'I' ? 'I' : 'II-' + st.ndCell);
+      ndPairWrap.hidden = st.nd === 'none';
+      var ps = ndPairWrap.querySelector('select'); if(ps) ps.value = String(st.ndPair);
+    }
+    function tapHint(){
+      var id = data.stages[st.step].id;
+      hint.textContent = id === 'meta1' ? 'Tap a pair to flip which homolog faces cell 1, or tap "fail to split" to make that pair stay together.' : id === 'meta2' ? 'Tap a chromosome to make its sister chromatids stay together in that cell.' : st.step < 3 ? 'Go to Metaphase I to line up the pairs yourself.' : '';
+    }
+    function act(el){
+      var said = '';
+      if(el.hasAttribute('data-flip')){ var i = +el.getAttribute('data-flip'); st.orient[i] = st.orient[i] ? 0 : 1; said = 'Pair ' + (i + 1) + ' flipped: ' + (i + 1) + (st.orient[i] ? 'P' : 'M') + ' now faces cell 1. Each pair lines up on its own, so ' + st.k + ' pairs give 2' + sup(st.k) + ' = ' + Math.pow(2, st.k) + ' line-ups.'; }
+      else if(el.hasAttribute('data-ndi')){ var p = +el.getAttribute('data-ndi'), on = st.nd === 'I' && st.ndPair === p; if(on) st.nd = 'none'; else { st.nd = 'I'; st.ndPair = p; } said = on ? 'Pair ' + (p + 1) + ' separates normally again.' : 'Pair ' + (p + 1) + ' will fail to separate in meiosis I: both homologs go to cell 1, so every gamete is n+1 or n−1.'; }
+      else if(el.hasAttribute('data-nd2')){ var q = el.getAttribute('data-nd2').split(':'), ci = +q[0], pp = +q[1], on2 = st.nd === 'II' && st.ndCell === ci && st.ndPair === pp; if(on2) st.nd = 'none'; else { st.nd = 'II'; st.ndCell = ci; st.ndPair = pp; } said = on2 ? 'The sisters separate normally again.' : 'In cell ' + (ci + 1) + ', the sisters of chromosome ' + (pp + 1) + ' will stay together: that cell makes one n+1 and one n−1 gamete; the other cell\'s two gametes stay normal.'; }
+      series = null; syncControls(); update(true);
+      card.querySelector('.bt-runnote').textContent = said;
+      var again = fig.querySelector('[' + ['data-flip', 'data-ndi', 'data-nd2'].filter(function(a){ return el.hasAttribute(a); })[0] + '="' + (el.getAttribute('data-flip') || el.getAttribute('data-ndi') || el.getAttribute('data-nd2')) + '"]');
+      if(again) again.focus();
+      if(mode === 'make') checkMake();
+    }
+    fig.addEventListener('click', function(e){ var el = e.target.closest && e.target.closest('.mei-tap'); if(el) act(el); });
+    fig.addEventListener('keydown', function(e){ var el = e.target.closest && e.target.closest('.mei-tap'); if(el && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); act(el); } });
+
+    /* ---------------------------------------------------- play */
+    var playT = 0;
+    function stopPlay(){ if(playT){ clearTimeout(playT); playT = 0; } }
+    card.querySelector('[data-a="play"]').addEventListener('click', function(){
+      stopPlay();
+      var reduced = false; try{ reduced = window.LevlMotion ? window.LevlMotion.reduced() : matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+      var last = data.stages.length - 1;
+      if(st.step === last) st.step = Math.max(0, Math.min(3, last));
+      if(reduced){ st.step = last; stepSel.set(st.step); update(true); return; }
+      var tick = function(){ stepSel.set(st.step); update(false); fig.classList.remove('mei-fade'); void fig.offsetWidth; fig.classList.add('mei-fade'); if(st.step < last){ st.step++; playT = setTimeout(tick, 1100); } else { playT = 0; update(true); } };
+      tick();
+    });
+
+    /* ------------------------------------------ make this gamete */
+    var mode = 'explore', chalBox = card.querySelector('.mei-chal'), target = null, mkN = 0, mkSeed = 1 + Math.floor(Math.random() * 99999);
+    function key(chs){ return chs.map(function(ch){ return (ch.pair + 1) + ch.from; }).sort().join(' '); }
+    function newTarget(){
+      var g = M.rng(mkSeed + 7919 * mkN); mkN++;
+      var kind = ['normal', 'extra', 'missing'][(mkN - 1) % 3], orient = [], i;
+      for(i = 0; i < st.k; i++) orient.push(g.int(0, 1));
+      var c = { pairs: st.k, cross: false, orient: orient, nd: kind === 'normal' ? 'none' : g.pick(['I', 'II']), ndPair: g.int(0, st.k - 1), ndCell: g.int(0, 1) };
+      var r = Me.simulate(c), pool = r.gametes.filter(function(x){ return kind === 'normal' ? x.label === 'n' : kind === 'extra' ? x.n > st.k : x.n < st.k; });
+      if(!pool.length){ mkN--; mkSeed++; return newTarget(); }
+      var gm = g.pick(pool);
+      target = { kind: kind, key: key(gm.chromosomes), g: gm, done: false };
+      // start from a fresh cell at metaphase I, crossing over off (so the labels are unambiguous)
+      st.cross = false; cofs.querySelector('input').checked = false; st.nd = 'none'; st.orient = [0, 0, 0, 0]; syncControls();
+      go(3);
+      var chips = gm.chromosomes.map(function(ch){ return '<span class="mei-chip ' + (ch.from === 'M' ? 'm' : 'p') + '">' + (ch.pair + 1) + ch.from + '</span>'; }).join('') || '<span class="mei-chip">none</span>';
+      chalBox.innerHTML = '<p class="os-chal-q" tabindex="-1"><b>Make this gamete (' + mkN + ').</b> Line up the pairs and, if you need to, make a pair fail to separate, until one of the four gametes is exactly:</p><p class="mei-target">' + chips + ' <span class="bt-small">' + gm.n + ' chromosomes (' + gm.label + ')</span></p>' +
+        '<div class="bt-actions"><button type="button" class="btn-press sm mei-mkcheck">Check my gametes</button><button type="button" class="bt-btn mei-mkskip">Show me how</button></div><div class="os-chal-fb" role="status" aria-live="polite"></div>';
+      chalBox.querySelector('.mei-mkcheck').addEventListener('click', function(){ checkMake(true); });
+      chalBox.querySelector('.mei-mkskip').addEventListener('click', function(){ if(target.done) return; target.solution = c; finishMake(false, c); });
+    }
+    function checkMake(explicit){
+      if(!target || target.done) return;
+      var r = Me.simulate(cond()), hit = r.gametes.some(function(x){ return key(x.chromosomes) === target.key; });
+      var fb = chalBox.querySelector('.os-chal-fb');
+      if(hit) finishMake(true);
+      else if(explicit){ target.tries = (target.tries || 0) + 1; fb.textContent = 'Not yet: your gametes are ' + r.gametes.map(function(x){ return '[' + (key(x.chromosomes) || 'none') + ']'; }).join(', ') + '. ' + (target.kind === 'normal' ? 'Each gamete takes one homolog of every pair: flip pairs at metaphase I.' : target.kind === 'extra' ? 'An extra chromosome means a pair (or a pair of sisters) went to the same cell: try "fail to split".' : 'A missing chromosome means its partner went to the other cell: try "fail to split".'); if(st.step === 8) go(3); }
+    }
+    function finishMake(ok, c){
+      target.done = true;
+      var right = ok && !target.tries;
+      if(c){ st.orient = c.orient.slice().concat([0, 0, 0, 0]).slice(0, 4); st.nd = c.nd; st.ndPair = c.ndPair; st.ndCell = c.ndCell; syncControls(); }
+      go(8);
+      var why = target.kind === 'normal' ? 'A normal gamete gets one homolog of each pair; which one depends only on how that pair lined up at metaphase I (independent assortment).' :
+        target.kind === 'extra' ? 'The extra chromosome comes from nondisjunction: homologs that did not separate in meiosis I, or sister chromatids that did not separate in meiosis II. Fertilized by a normal gamete it gives a trisomy.' :
+        'The missing chromosome went to the other cell when a pair (or sisters) failed to separate. Fertilized by a normal gamete it gives a monosomy.';
+      var fb = chalBox.querySelector('.os-chal-fb');
+      fb.innerHTML = '<p><span class="bio-mark ' + (right ? 'ok">Made it' : 'no">' + (ok ? 'Made it, after a check' : 'Shown')) + '</span> ' + esc(why) + (c ? ' One way: ' + esc(orientText()) + ', ' + esc(ndText()) + '.' : '') + '</p><div class="bt-actions"><button type="button" class="btn-press sm os-next">Next gamete</button>' + T.report(SLUG + ':make-' + target.kind) + '</div>';
+      fb.querySelector('.os-next').addEventListener('click', function(){ newTarget(); chalBox.querySelector('.os-chal-q').focus(); });
+      T.record(SLUG, [{ id: SLUG + ':make-' + target.kind + ':a', correct: right, topic: target.kind === 'normal' ? data.topic : (data.ndTopic || data.topic), level: 'apply', diff: 2, group: 'make' }]);
+    }
+    function setMode(m){
+      if(m === mode) return;
+      mode = m;
+      card.querySelectorAll('[data-m]').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-m') === m)); });
+      var mk = m === 'make';
+      chalBox.hidden = !mk;
+      ['.mei-lower', '.bt-readout', '.bt-summary', '.bt-buttons', '.mei-results', '.bt-data'].forEach(function(sel){ var el = card.querySelector(sel); if(el) el.hidden = mk; });
+      if(mk) newTarget(); else { target = null; update(true); }
+    }
+    card.querySelectorAll('[data-m]').forEach(function(b){ b.addEventListener('click', function(){ setMode(b.getAttribute('data-m')); }); });
+
     update(true);
     T.questions(app.querySelector('.bt-qs'), data.questions, data.stimuli, SLUG);
     if(data.frq) T.frq(app, data.frq, SLUG);
+    if(/^#make/.test(location.hash)) setMode('make');
   });
 })();

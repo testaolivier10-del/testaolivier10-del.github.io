@@ -433,3 +433,31 @@
   .cc-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
 }
 .cc-ring .cc-ph{font:800 12.5px var(--font-ui);}
+
+/* ===== Meiosis: tap the figure (tools upgrade U-Bio-sims) ===== */
+.mei-stagefig{background:var(--paper);border-radius:14px;padding:6px;}
+.mei-fig .mei-tap{cursor:pointer;}
+.mei-fig .mei-hit{fill:transparent;stroke:transparent;stroke-width:2;}
+.mei-fig .mei-tap:hover .mei-hit,.mei-fig .mei-tap:focus-visible .mei-hit{fill:var(--ctint);stroke:var(--cink);}
+.mei-fig .mei-tap:focus{outline:none;}
+.mei-fig .mei-flip{font:900 15px var(--font-ui);fill:var(--cink);}
+.mei-fig .mei-ndtag{fill:var(--white);stroke:var(--bio-symp);stroke-width:1.5;stroke-dasharray:4 3;}
+.mei-fig .mei-nd.on .mei-ndtag{fill:var(--bio-symp-fill);stroke-dasharray:none;stroke-width:2.5;}
+.mei-fig .mei-ndtxt{font:800 11px var(--font-ui);fill:var(--ink);}
+.mei-fig .mei-nd2.on .mei-hit{stroke:var(--bio-symp);stroke-dasharray:4 3;}
+.mei-fade{animation:meiFade .45s ease-out;}
+@keyframes meiFade{from{opacity:.35;transform:translateY(4px);}to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion:reduce){.mei-fade{animation:none;}}
+.mei-lower{display:grid;gap:14px;}
+@media (min-width:900px){.mei-lower{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);}}
+.mei-target{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px;}
+.mei-chip{display:inline-flex;align-items:center;min-height:30px;padding:2px 10px;border-radius:8px;font:900 14px var(--font-ui);border:2px solid var(--line);}
+.mei-chip.m{background:var(--bio-o2-fill);border-color:var(--bio-o2);}
+.mei-chip.p{background:repeating-linear-gradient(45deg,var(--bio-deo2-fill) 0 4px,var(--white) 4px 6px);border-color:var(--bio-deo2);}
+@media (min-width:1000px){
+  .mei-card{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);column-gap:22px;}
+  .mei-card>*{grid-column:1 / -1;}
+  .mei-card>.mei-stagefig{grid-column:1;grid-row:4 / span 4;align-self:start;position:sticky;top:12px;}
+  .mei-card>.mei-taphint,.mei-card>.mei-stepper,.mei-card>.bt-controls{grid-column:2;}
+  .mei-card>.bt-controls{grid-template-columns:minmax(0,1fr);}
+}
