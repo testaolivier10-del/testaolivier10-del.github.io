@@ -110,3 +110,4 @@
   .wr-filter{width:100%;}
   .wr-filter select{width:100%;}
 }
+.wr-blank{letter-spacing:.05em;color:var(--muted);}
