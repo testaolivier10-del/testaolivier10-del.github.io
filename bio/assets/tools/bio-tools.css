@@ -66,6 +66,17 @@
 @media (min-width:900px){.bt-stage.two{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);}}
 .bt-fig svg{width:100%;height:auto;max-height:340px;display:block;}
 .bt-plot{max-width:100%;}
+/* Publication-style charts in the tools (dataviz: recessive grid and axes,
+   thin marks, ringed markers, rounded data-ends on bars, ink text) */
+.bt-app .bio-svg .grid{stroke:var(--line);stroke-width:1;}
+.bt-app .bio-svg .axis{stroke:var(--muted);stroke-width:1.2;}
+.bt-app .bio-svg .axis.y{stroke:none;}
+.bt-app .bio-svg .tick{fill:var(--muted);font:700 11.5px var(--font-ui);font-variant-numeric:tabular-nums;}
+.bt-app .bio-svg .lbl{fill:var(--ink);font:800 12.5px var(--font-ui);}
+.bt-app .bio-svg .series{stroke-width:2.25;stroke-linejoin:round;stroke-linecap:round;}
+.bt-app .bio-svg .pt{stroke:var(--white);stroke-width:2;}
+.bt-app .bio-svg .bar,.bt-app .sk-obs{stroke:var(--white);stroke-width:1;}
+.bt-app .bio-svg .err{stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;}
 .bt-plot .zero{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 3;}
 .bt-plot .vline{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 4;}
 .bt-plot .series.dashed{stroke-dasharray:7 5;stroke-width:2;}
@@ -520,9 +531,16 @@
 .ci-verdict{display:grid;gap:10px;}
 .ci-more{padding:0 12px;}
 /* Water potential: two compartments on one ψ scale */
-.wp-tank{fill:var(--paper);stroke:var(--bio-shape);stroke-width:2;}
-.wp-tank.cell{stroke:var(--bio-memb);stroke-width:3;}
-.wp-water{fill:var(--bio-eff-fill);}
+.wp-fig{--wp-wall:#8DB86B;--wp-walle:#5E8C3E;--wp-cyto:#F4EBC8;--wp-memb:#8A6A2E;--wp-chl:#4E9A3A;--wp-glass:#8FA6A1;--wp-liq:#BCDDEE;}
+:root[data-theme="dark"] .wp-fig{--wp-wall:#5F8F45;--wp-walle:#9CCB79;--wp-cyto:#4A4430;--wp-memb:#D8B76A;--wp-chl:#7CC35F;--wp-glass:#6E8681;--wp-liq:#1F4A63;}
+.wp-wall{fill:var(--wp-wall);stroke:var(--wp-walle);stroke-width:1.5;}
+.wp-cyto{fill:var(--wp-cyto);stroke:var(--wp-memb);stroke-width:2;}
+.wp-chl{fill:var(--wp-chl);stroke:rgba(0,0,0,.35);stroke-width:.8;}
+.wp-thy{stroke:rgba(255,255,255,.55);stroke-width:.8;}
+.wp-glass{fill:none;stroke:var(--wp-glass);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
+.wp-grad{stroke:var(--wp-glass);stroke-width:1.4;}
+.wp-water{fill:var(--wp-liq);}
+.wp-water.vac{fill:var(--wp-liq);stroke:var(--wp-memb);stroke-width:1;stroke-opacity:.6;}
 .wp-surf{stroke:var(--bio-deo2);stroke-width:3;}
 .wp-surf.mine{stroke-dasharray:6 4;}
 .wp-v{fill:var(--ink);font:900 12.5px var(--font-mono);}

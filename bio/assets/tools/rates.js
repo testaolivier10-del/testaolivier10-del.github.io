@@ -102,8 +102,8 @@
     p.push('<text class="lbl" transform="translate(13 ' + (TP + ph / 2) + ') rotate(-90)" text-anchor="middle">' + esc((x.unit === 'g' || x.unit === 'kg' || x.unit === 'mg' ? 'Mass' : 'Value') + ' (' + x.unit + ')') + '</text>');
     x.items.forEach(function(it, k){
       var c = L + gw * (k + 0.5), xi = c - bw - 3, xf = c + 3;
-      p.push('<rect class="bar rt-init" x="' + xi.toFixed(1) + '" y="' + sy(it.initial).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + (TP + ph - sy(it.initial)).toFixed(1) + '"/>');
-      p.push('<rect class="bar rt-fin" x="' + xf.toFixed(1) + '" y="' + sy(it.final).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + (TP + ph - sy(it.final)).toFixed(1) + '"/>');
+      p.push('<path class="bar rt-init" d="' + T.barPath(xi, sy(it.initial), bw, TP + ph - sy(it.initial)) + '"/>');
+      p.push('<path class="bar rt-fin" d="' + T.barPath(xf, sy(it.final), bw, TP + ph - sy(it.final)) + '"/>');
       p.push('<line class="rt-base" x1="' + (xi - 4).toFixed(1) + '" x2="' + (xf + bw + 4).toFixed(1) + '" y1="' + sy(it.initial).toFixed(1) + '" y2="' + sy(it.initial).toFixed(1) + '"/>');
       var gt = typed[k];
       if(isFinite(gt) && !chk) p.push('<rect class="rt-ghost" x="' + (xf - 3).toFixed(1) + '" y="' + sy(it.initial * (1 + gt / 100)).toFixed(1) + '" width="' + (bw + 6).toFixed(1) + '" height="' + (TP + ph - sy(it.initial * (1 + gt / 100))).toFixed(1) + '"/>');

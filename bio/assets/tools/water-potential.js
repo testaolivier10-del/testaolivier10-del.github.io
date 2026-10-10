@@ -30,13 +30,19 @@
     for(var t = 0; t >= lo - 1e-9; t -= st) p.push('<line class="grid" x1="' + L + '" x2="' + (W - 12) + '" y1="' + sy(t).toFixed(1) + '" y2="' + sy(t).toFixed(1) + '"/><text class="tick" x="' + (L - 6) + '" y="' + (sy(t) + 4).toFixed(1) + '" text-anchor="end">' + F(M.round(t, 6), Math.max(0, Math.min(3, (String(M.round(st, 6)).split('.')[1] || '').length))) + '</text>');
     p.push('<text class="lbl" transform="translate(14 ' + ((TOP + BOT) / 2) + ') rotate(-90)" text-anchor="middle">ψ (bar)</text>');
     p.push('<text class="sk-ph" x="' + (L + 4) + '" y="' + (TOP - 14) + '">higher ψ (toward 0)</text>');
-    var boxes = [{ x: L + 30, w: 120, v: vC, name: zero ? 'Tissue' : 'Cell', real: cPsi, cls: 'cell', mine: !chk }, { x: L + 210, w: 120, v: vS, name: 'Beaker (' + x.sol.name + ')', real: sS, cls: 'sol', mine: !chk }];
+    var boxes = [{ x: L + 30, w: 120, v: vC, name: zero ? 'Tissue (plant cells)' : 'Plant cell (vacuole)', real: cPsi, cls: 'cell', mine: !chk }, { x: L + 210, w: 120, v: vS, name: 'Beaker (' + x.sol.name + ')', real: sS, cls: 'sol', mine: !chk }];
     boxes.forEach(function(b){
-      p.push('<rect class="wp-tank ' + b.cls + '" x="' + b.x + '" y="' + TOP + '" width="' + b.w + '" height="' + (BOT - TOP) + '" rx="' + (b.cls === 'cell' ? 22 : 4) + '"/>');
+      if(b.cls === 'cell'){ // a plant cell: wall band, membrane, cytoplasm with chloroplasts round the edge
+        p.push('<rect class="wp-wall" x="' + b.x + '" y="' + TOP + '" width="' + b.w + '" height="' + (BOT - TOP) + '" rx="20"/><rect class="wp-cyto" x="' + (b.x + 6) + '" y="' + (TOP + 6) + '" width="' + (b.w - 12) + '" height="' + (BOT - TOP - 12) + '" rx="15"/>');
+        [[14, 24, 0], [b.w - 16, 40, 1], [12, BOT - TOP - 34, 1], [b.w - 14, BOT - TOP - 22, 0]].forEach(function(c){ p.push('<g transform="translate(' + (b.x + c[0]) + ' ' + (TOP + c[1]) + ') rotate(' + (c[2] ? 90 : 0) + ')"><ellipse class="wp-chl" rx="6.5" ry="3.6"/><path class="wp-thy" d="M-3.5-1.5v3M-1-2v4M1.5-2v4M3.8-1.4v2.8"/></g>'); });
+      } else { // a glass beaker with a lip and graduations
+        p.push('<path class="wp-glass" d="M' + (b.x - 6) + ' ' + (TOP - 2) + 'q5 1 6 7V' + (BOT - 8) + 'q0 8 8 8H' + (b.x + b.w - 8) + 'q8 0 8 -8V' + (TOP + 3) + 'q0 -4 4 -5"/>');
+        [0.25, 0.5, 0.75].forEach(function(f){ var gy = TOP + (BOT - TOP) * f; p.push('<path class="wp-grad" d="M' + (b.x + b.w - 3) + ' ' + gy.toFixed(1) + 'h-10"/>'); });
+      }
       if(isFinite(b.v)){
         var y = sy(b.v);
-        var ins = b.cls === 'cell' ? 6 : 2, wy = Math.min(y, BOT - 8);
-        p.push('<rect class="wp-water" x="' + (b.x + ins) + '" y="' + wy.toFixed(1) + '" width="' + (b.w - 2 * ins) + '" height="' + Math.max(0, BOT - ins - wy).toFixed(1) + '" rx="' + (b.cls === 'cell' ? 16 : 2) + '"/>');
+        var ins = b.cls === 'cell' ? 24 : 3, wy = Math.max(b.cls === 'cell' ? TOP + 14 : TOP, Math.min(y, BOT - 8)), bot = BOT - (b.cls === 'cell' ? 22 : 3);
+        p.push('<rect class="wp-water' + (b.cls === 'cell' ? ' vac' : '') + '" x="' + (b.x + ins) + '" y="' + Math.min(wy, bot - 2).toFixed(1) + '" width="' + (b.w - 2 * ins) + '" height="' + Math.max(2, bot - wy).toFixed(1) + '" rx="' + (b.cls === 'cell' ? 10 : 6) + '"/>');
         p.push('<line class="wp-surf' + (b.mine ? ' mine' : '') + '" x1="' + (b.x - 6) + '" x2="' + (b.x + b.w + 6) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/>');
         p.push('<text class="wp-v" x="' + (b.x + b.w / 2) + '" y="' + (y - 7).toFixed(1) + '" text-anchor="middle">' + (b.mine ? 'your ' : '') + 'ψ = ' + F(b.v, 2) + (b.v < lo ? ' ↓' : '') + '</text>');
       } else p.push('<text class="sk-ph sk-dim" x="' + (b.x + b.w / 2) + '" y="' + ((TOP + BOT) / 2) + '" text-anchor="middle">type its ψ</text>');
