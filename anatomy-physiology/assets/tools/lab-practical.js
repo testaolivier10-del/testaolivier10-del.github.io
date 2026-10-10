@@ -514,7 +514,7 @@
   }
 
   function quizLoop(s, run, title, p){
-    var k = 0, z = 1, right = 0, results = [];
+    var k = 0, z = 1, right = 0, results = [], isAnswered = false;
     function header(){
       return (s ? setHeader(s, 'quiz') : modeTabs('quiz') + '<h2 class="lp-title" tabindex="-1">' + esc(title) + '</h2>') +
         '<details class="lp-settings-d"' + (pref('qopen', false) ? ' open' : '') + '><summary>Quiz settings: ' + esc(p.kind === 'mix' ? 'name it and point to' : p.kind === 'name' ? 'name it only' : 'point to only') + (p.mc ? ', multiple choice' : ', typed answers') + '</summary><div class="lp-settings" role="group" aria-label="Quiz settings">' +
@@ -526,11 +526,14 @@
       var ks = app.querySelector('.lp-set-kind'), mc = app.querySelector('.lp-set-mc'), dd = app.querySelector('.lp-settings-d');
       if(dd) dd.addEventListener('toggle', function(){ setPref('qopen', dd.open); });
       if(ks) ks.addEventListener('change', function(){ setPref('qkind', ks.value); var pool = run.map(function(r){ return r.it; }); startQuiz(s, pool, title); });
-      if(mc) mc.addEventListener('change', function(){ setPref('mc', mc.checked); p.mc = mc.checked; step(true); });
+      // After an answer the new setting applies from the next item: re-asking
+      // the answered item let it be scored a second time.
+      if(mc) mc.addEventListener('change', function(){ setPref('mc', mc.checked); p.mc = mc.checked; if(!isAnswered) step(true); });
     }
     function step(keepFocus){
       if(k >= run.length) return summary();
       var r = run[k], it = r.it, st = it.st, answered = null, hinted = false, choices = p.mc ? choicesFor(it) : null;
+      isAnswered = false;
       function draw(){
         var prompt, body = '';
         if(r.kind === 'point'){
@@ -582,7 +585,8 @@
         wireFeedback();
       }
       function submit(g, typed){
-        answered = g; answered.typed = typed; answered.hinted = hinted && g.ok;
+        if(answered) return;
+        answered = g; answered.typed = typed; answered.hinted = hinted && g.ok; isAnswered = true;
         var ok = g.ok && !hinted;
         if(ok) right++;
         score(it, ok, false);
