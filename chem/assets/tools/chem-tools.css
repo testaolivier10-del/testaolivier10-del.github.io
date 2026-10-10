@@ -739,3 +739,42 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .bt-why-b p{margin:0;}
 .pb-tally-d>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:6px;font:900 14px var(--font-ui);color:var(--cink);}
 .pb-tally-s{font-weight:700;color:var(--muted);}
+
+/* Tool Studio (docs/tools-calm.md; pages.json studio: true). Titration:
+   the flask over the curve on the stage; the slider then Run / +1 drop and
+   +1 mL / Start over in the dock. */
+.ls-root .tx-ls-stage,.ls-root .ls-drill-stage{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;}
+.ls-root .tx-ls-stage .tx-beaker{flex:1.15 1 0;min-height:0;display:flex;}
+.ls-root .tx-ls-stage .tx-graph{flex:1 1 0;min-height:0;margin:0;display:flex;}
+.ls-root .tx-ls-stage .tx-plot,.ls-root .ls-drill-stage .tc-plot{flex:1;min-height:0;display:flex;}
+.ls-root .tx-ls-stage .tx-plot svg,.ls-root .ls-drill-stage .tc-plot svg{width:100%;height:100%;max-height:100%;}
+.ls-root .ls-drill-stage .cd-extra,.ls-root .ls-drill-stage .tc-fig{flex:1;min-height:0;display:flex;flex-direction:column;margin:0;}
+.ls-root .ls-drill-stage .tc-pin{position:static;}
+.ls-root .tx-ls-ctl{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ls-root .tx-ls-ctl .tx-ctl,.ls-root .tx-ls-ctl .tx-btns{display:contents;}
+.ls-root .tx-ls-ctl .bt-cue{display:none;}
+.ls-root .tx-ls-ctl .bt-slider{grid-column:1/-1;order:1;position:relative;}
+.ls-root .tx-ls-ctl .bt-slider .bt-out{position:absolute;top:0;right:0;}
+.ls-root .tx-ls-ctl .tx-run{order:2;background:var(--cink);color:var(--white);box-shadow:0 6px 14px rgba(20,40,35,.16);}
+.ls-root .tx-ls-ctl [data-add="0.05"]{order:3;}
+.ls-root .tx-ls-ctl [data-add="1"]{order:4;}
+.ls-root .tx-ls-ctl [data-add="reset"]{order:5;}
+.ls-root .tx-ls-ctl .bt-btn{width:100%;}
+.ls-root .tx-ls-setup .ls-v{font-weight:700;}
+.ls-root .tx-ls-why .tx-where,.ls-root .tx-ls-why .bt-say{margin:0;padding:0;background:none;border:0;box-shadow:none;}
+.ls-root .tx-ls-why details.bt-why > summary{display:none;}
+.ls-root .ls-drill .cd-n{display:none;}
+.ls-root .ls-drill{display:flex;flex-direction:column;gap:14px;margin:0;padding:0;background:none;box-shadow:none;}
+.ls-root .ls-drill .bt-solution{display:none;}
+.ls-root .cd-step{padding:0;background:none;border:0;box-shadow:none;}
+.ls-root .cd-step .cd-label{margin:0 0 8px;}
+.ls-root .cd-opt{min-height:48px;}
+.ls-root .cd-vol label{font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.ls-root .cd-vol input[type=range]{width:100%;height:44px;accent-color:var(--cink);}
+@media (max-width:999.98px){
+  .ls-root .tx-ls-stage{gap:2px;}
+}
+.ls-root .tx-ls-parts .lb-side{display:flex;flex-direction:column;gap:10px;}
+.ls-root .tx-ls-parts:empty{display:none;}
+.ls-root .tx-ls-stage .lb-fig{flex:1;min-height:0;display:flex;margin:0;}
+.ls-root .tx-ls-stage .lb-svg{width:100%;height:100%;max-height:100%;}

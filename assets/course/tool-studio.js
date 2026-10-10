@@ -532,10 +532,12 @@
       var dots = '';
       for(var i = 0; i < tot; i++) dots += '<i class="' + (i === at && !reviewing ? 'on' : i < n ? 'done' : '') + '"></i>';
       head.querySelector('.ls-dots').innerHTML = dots;
-      nav.hidden = reviewing || tot < 2;
-      back.disabled = at === 0;
-      next.disabled = at >= n - 1;
-      next.hidden = at >= tot - 1;
+      // Back shows once there is a step behind; Next only when the next step
+      // exists (a drill adds it after a Check), so the current step's own
+      // Check is the one way forward.
+      back.hidden = at === 0;
+      next.hidden = at >= n - 1 || at >= tot - 1;
+      nav.hidden = reviewing || (back.hidden && next.hidden);
       if(o.submit){ list(o.submit, container).forEach(function(el){ el.classList.toggle('ls-step-off', !reviewing && at !== tot - 1); }); }
       if(focus){
         var f = it[at].querySelector('input:not([type=hidden]):not([readonly]):not([disabled]), select, textarea, button:not([disabled])') || it[at];

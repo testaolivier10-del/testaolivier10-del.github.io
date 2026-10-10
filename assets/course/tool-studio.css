@@ -304,3 +304,11 @@ html.ls-lock{overflow:hidden;}
 .ls-root .bt-result:empty{display:none;}
 .ls-foot{margin:6px 0 0;padding:14px 0 0;border-top:1px solid var(--line-soft);max-width:none;font-size:var(--ls-s);color:var(--muted);}
 .ls-foot footer,.ls-foot p{margin:0 0 8px;padding:0;font-size:var(--ls-s);line-height:1.5;text-align:left;}
+.ls-modes > .ls-seg{display:flex;width:100%;}
+.ls-modes > .ls-seg > *{flex:1 1 0;}
+.ls-tbl th[scope=row]{white-space:nowrap;font-weight:800;color:var(--muted);text-align:left;padding:8px;border-bottom:1px solid var(--line-soft);}
+.ls-linkrow > span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.ls-step-nav .ls-step-back[hidden],.ls-step-nav .ls-step-next[hidden]{display:none;}
+.ls-root .cd-num{display:flex;align-items:center;gap:10px;}
+.ls-root .cd-num input[type=text]{flex:1;min-width:0;}
+.ls-root .cd-num .bt-unit{flex:none;font:800 var(--ls-m) var(--font-ui);color:var(--muted);}
