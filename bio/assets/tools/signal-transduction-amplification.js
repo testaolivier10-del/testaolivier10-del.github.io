@@ -123,11 +123,72 @@
       shownA = to;
       tw = requestAnimationFrame(step);
     }
+    /* The cell-surface scene above the ladder: epinephrine outside, a lipid
+       bilayer, the 7-helix receptor, the G protein (α with GDP or GTP, and
+       βγ), adenylyl cyclase, cAMP molecules, PKA (two regulatory and two
+       catalytic subunits that come apart when cAMP binds) and a glycogen
+       granule shedding glucose. Every level comes from the same counts as
+       the ladder: f = active / total. */
+    var SH = 214;
+    function frac(v, tot){ return Math.max(0, Math.min(1, v / tot)); }
+    function hexP(cx, cy, r, rot){ var d = ''; for(var i = 0; i < 6; i++){ var t = i / 6 * Math.PI * 2 + (rot || 0); d += (i ? 'L' : 'M') + (cx + r * Math.cos(t)).toFixed(1) + ' ' + (cy + r * Math.sin(t)).toFixed(1); } return d + 'Z'; }
+    function pentP(cx, cy, r, rot){ var d = ''; for(var i = 0; i < 5; i++){ var t = i / 5 * Math.PI * 2 + (rot || 0); d += (i ? 'L' : 'M') + (cx + r * Math.cos(t)).toFixed(1) + ' ' + (cy + r * Math.sin(t)).toFixed(1); } return d + 'Z'; }
+    function camp(x, y){ return '<path class="sgs-camp" d="' + hexP(x, y, 4.2, Math.PI / 6) + pentP(x + 6.6, y, 3.6, Math.PI) + '"/><circle class="sgs-pho" cx="' + (x + 1) + '" cy="' + (y + 7.4) + '" r="2.4"/>'; }
+    function epi(x, y, cls){ return '<g class="' + (cls || 'sgs-epi') + '"><path d="' + hexP(x, y, 5, 0) + '"/><path class="t" d="M' + (x + 5) + ' ' + y + 'l6 -3l5 3M' + (x - 2.5) + ' ' + (y - 4.3) + 'l-2 -4M' + (x - 5) + ' ' + y + 'l-4 0"/></g>'; }
+    function scene(a){
+      var s = [], yT = 62, yB = 86, f = { R: frac(a.R, P.Rtot), G: frac(a.G, P.Gtot * 0.2), AC: frac(a.AC, P.ACtot), PKA: frac(a.PKA, P.PKAtot), GP: frac(a.GP, P.Ptot) };
+      // compartments
+      s.push('<rect class="sgs-out" x="0" y="0" width="360" height="' + yT + '"/><rect class="sgs-in" x="0" y="' + yB + '" width="360" height="' + (SH - yB) + '" rx="0"/>');
+      s.push('<text class="sgs-lab" x="8" y="14">outside the liver cell</text><text class="sgs-lab" x="8" y="' + (SH - 8) + '">cytoplasm</text>');
+      // bilayer: heads in two rows, tails between
+      var heads = '', tails = '';
+      for(var x = 3; x < 360; x += 7){ heads += '<circle cx="' + x + '" cy="' + (yT + 3) + '" r="3.2"/><circle cx="' + x + '" cy="' + (yB - 3) + '" r="3.2"/>'; tails += 'M' + (x - 1) + ' ' + (yT + 6) + 'v7M' + (x + 1) + ' ' + (yT + 6) + 'v7M' + (x - 1) + ' ' + (yB - 6) + 'v-7M' + (x + 1) + ' ' + (yB - 6) + 'v-7'; }
+      s.push('<path class="sgs-tail" d="' + tails + '"/><g class="sgs-head">' + heads + '</g>');
+      // receptor (GPCR): seven helices across the membrane
+      var rx = 52;
+      s.push('<path class="sgs-loop" d="M' + (rx - 21) + ' ' + (yT - 2) + 'q4 -10 8 0q4 -10 8 0q4 -10 8 0M' + (rx - 15) + ' ' + (yB + 2) + 'q4 10 8 0q4 10 8 0q4 10 8 0q6 14 14 6"/>');
+      for(var h = 0; h < 7; h++) s.push('<rect class="sgs-rec" x="' + (rx - 24 + h * 7) + '" y="' + (yT - 6) + '" width="6.5" height="' + (yB - yT + 12) + '" rx="3"/>');
+      if(st.antagonist) s.push('<path class="sgs-ant" d="M' + (rx - 9) + ' ' + (yT - 22) + 'h18v10h-18z"/><text class="sgs-tag" x="' + (rx + 14) + '" y="' + (yT - 14) + '">antagonist</text>');
+      else if(st.L > 0 || f.R > 0.01) s.push('<g opacity="' + Math.max(0.15, Math.min(1, f.R * 1.6)).toFixed(2) + '">' + epi(rx - 4, yT - 16) + '</g>');
+      if(st.L > 0) [[110, 22], [150, 36], [200, 18], [250, 30], [300, 16]].slice(0, Math.max(1, Math.min(5, Math.round(st.L / 20)))).forEach(function(q){ s.push(epi(q[0], q[1])); });
+      s.push('<text class="sgs-name" x="' + rx + '" y="' + (yB + 30) + '" text-anchor="middle">receptor</text>');
+      // G protein: α (GDP or GTP) and βγ on the inner face
+      var gx = 112, gOn = f.G > 0.15 || st.gprotein === 'on', gOff = st.gprotein === 'off';
+      s.push('<path class="sgs-g a' + (gOn ? ' on' : '') + '" d="M' + (gx - 16) + ' ' + (yB + 4) + 'c-6 10 -2 24 12 24c12 0 18 -10 14 -22z"/>');
+      s.push('<ellipse class="sgs-g b" cx="' + (gx + 16) + '" cy="' + (yB + 14) + '" rx="10" ry="8"/><ellipse class="sgs-g c" cx="' + (gx + 25) + '" cy="' + (yB + 6) + '" rx="5" ry="3.5"/>');
+      s.push('<text class="sgs-mini" x="' + (gx - 6) + '" y="' + (yB + 21) + '" text-anchor="middle">' + (gOn && !gOff ? 'GTP' : 'GDP') + '</text>');
+      s.push('<text class="sgs-name" x="' + (gx + 4) + '" y="' + (yB + 44) + '" text-anchor="middle">G protein' + (st.gprotein !== 'normal' ? ' (' + (gOff ? 'locked off' : 'locked on') + ')' : '') + '</text>');
+      // adenylyl cyclase: two membrane bundles and a cytosolic catalytic core
+      var ax = 186;
+      for(var k = 0; k < 2; k++) for(var j = 0; j < 3; j++) s.push('<rect class="sgs-ac" x="' + (ax - 22 + k * 26 + j * 6) + '" y="' + (yT - 4) + '" width="5.5" height="' + (yB - yT + 8) + '" rx="2.6"/>');
+      s.push('<path class="sgs-ac core' + (f.AC > 0.1 ? ' on' : '') + '" d="M' + (ax - 18) + ' ' + (yB + 4) + 'c-6 16 8 26 18 20c10 6 24 -4 18 -20z"/>');
+      s.push('<text class="sgs-name" x="' + ax + '" y="' + (yB + 44) + '" text-anchor="middle">adenylyl cyclase</text>');
+      if(gOn && !gOff) s.push('<path class="sgs-flow" d="M' + (gx + 2) + ' ' + (yB + 30) + 'Q' + ((gx + ax) / 2) + ' ' + (yB + 38) + ' ' + (ax - 14) + ' ' + (yB + 18) + '"/>');
+      // cAMP molecules: a log count so 10 and 2 million both read
+      var nC = Math.max(0, Math.min(16, Math.round((Math.log(1 + a.cAMP) / Math.LN10 - 3) * 4)));
+      var cp = [[178, 150], [196, 162], [214, 146], [232, 160], [166, 172], [204, 182], [226, 178], [244, 140], [188, 134], [250, 170], [160, 152], [220, 196], [180, 192], [238, 192], [256, 152], [172, 134]];
+      for(var c = 0; c < nC; c++) s.push(camp(cp[c][0], cp[c][1]));
+      s.push('<text class="sgs-name" x="206" y="' + (SH - 8) + '" text-anchor="middle">cAMP' + (st.pde ? ' (PDE blocked)' : '') + '</text>');
+      // PKA: R2C2; catalytic subunits drift off as it activates
+      var px = 296, py = yB + 34, d = (st.pka ? 0 : f.PKA) * 18;
+      s.push('<ellipse class="sgs-pr" cx="' + (px - 7) + '" cy="' + py + '" rx="7" ry="11"/><ellipse class="sgs-pr" cx="' + (px + 7) + '" cy="' + py + '" rx="7" ry="11"/>');
+      s.push('<ellipse class="sgs-pc' + (d > 4 ? ' on' : '') + '" cx="' + (px - 20 - d * 0.6) + '" cy="' + (py + d * 0.5) + '" rx="8" ry="7"/><ellipse class="sgs-pc' + (d > 4 ? ' on' : '') + '" cx="' + (px + 20 + d * 0.6) + '" cy="' + (py + d * 0.5) + '" rx="8" ry="7"/>');
+      if(st.pka) s.push('<path class="sgs-ant" d="' + hexP(px + 20, py - 9, 4, 0) + '"/>');
+      s.push('<text class="sgs-name" x="' + px + '" y="' + (yB + 64) + '" text-anchor="middle">PKA' + (st.pka ? ' (inhibited)' : '') + '</text>');
+      // glycogen granule and the glucose it sheds (count from the rate)
+      var gx2 = 312, gy2 = 178, br = '';
+      [[0, 0], [-8, -5], [8, -5], [-12, 4], [12, 5], [-4, 9], [5, 10], [0, -10], [-15, -4], [16, -3]].forEach(function(q){ br += '<circle cx="' + (gx2 + q[0]) + '" cy="' + (gy2 + q[1]) + '" r="4.2"/>'; });
+      s.push('<g class="sgs-gly">' + br + '</g>');
+      var nG = Math.max(0, Math.min(6, Math.round((Math.log(1 + a.rate) / Math.LN10 - 2) * 1.4)));
+      for(var gq = 0; gq < nG; gq++) s.push('<path class="sgs-glc" d="' + hexP(gx2 - 30 - gq * 12, gy2 - 18 + (gq % 2) * 9, 4.6, Math.PI / 6) + '"/>');
+      s.push('<text class="sgs-name" x="' + (gx2 + 2) + '" y="' + (SH - 8) + '" text-anchor="middle">glycogen</text>');
+      return s.join('');
+    }
     function drawFig(a, target){
       var rowH = 56, ids = S.STAGES, parts = [];
       var tags = { R: st.antagonist ? 'antagonist present' : '', G: st.gprotein === 'on' ? 'locked on' : st.gprotein === 'off' ? 'locked off' : '', cAMP: st.pde ? 'breakdown blocked' : '', PKA: st.pka ? 'inhibitor present' : '' };
       ids.forEach(function(id, i){
-        var y = 8 + i * rowH, s = stageOf(id), v = a[id], dec = Math.max(0, Math.min(7, Math.log(Math.max(1, v)) / Math.LN10));
+        var y = SH + 12 + i * rowH, s = stageOf(id), v = a[id], dec = Math.max(0, Math.min(7, Math.log(Math.max(1, v)) / Math.LN10));
         var tap = TAP[id], body = '<rect class="stp' + (tags[id] ? ' blocked' : '') + '" x="6" y="' + y + '" width="348" height="38" rx="8"/>' +
           '<text x="16" y="' + (y + 16) + '">' + esc(s.short) + (tap ? ' <tspan class="sg-tapmark">' + (tags[id] ? '⊘ ' + esc(tags[id]) : '⊘') + '</tspan>' : '') + '</text>';
         for(var k = 0; k < 7; k++){ var f = Math.max(0, Math.min(1, dec - k)); body += '<circle class="sg-dot" cx="' + (200 + k * 14) + '" cy="' + (y + 27) + '" r="5"/>' + (f > 0 ? '<circle class="sg-dotf" cx="' + (200 + k * 14) + '" cy="' + (y + 27) + '" r="' + (5 * Math.sqrt(f)).toFixed(2) + '"/>' : ''); }
@@ -142,7 +203,7 @@
       });
       var fin = target || a;
       var lab = 'The pathway at ' + st.readT + ' s, from receptor to response. ' + ids.map(function(id){ return stageOf(id).name + ': ' + fmt(fin[id]) + (tags[id] ? ' (' + tags[id] + ')' : ''); }).join('; ') + '.';
-      figEl.innerHTML = '<svg class="sg-fig" viewBox="0 0 360 ' + (8 + ids.length * rowH - 10) + '" role="group" aria-label="' + esc(lab) + '">' + parts.join('') + '</svg>';
+      figEl.innerHTML = '<svg class="sg-fig" viewBox="0 0 360 ' + (SH + 12 + ids.length * rowH - 10) + '" role="group" aria-label="' + esc(lab) + '"><g class="sgs" aria-hidden="true">' + scene(a) + '</g>' + parts.join('') + '</svg>';
       var f2 = target ? null : figEl.querySelector('[data-tap="' + lastTap + '"]'); if(f2 && refocus){ refocus = false; f2.focus(); }
     }
     var lastTap = null, refocus = false;
