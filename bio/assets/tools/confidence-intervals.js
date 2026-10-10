@@ -106,5 +106,10 @@
   T.mount('confidence-intervals', function(app, data){
     explore(app, data);
     T.skillTool(app, data, { slug: 'confidence-intervals', kind: 'ci', stage: stage });
-  });
+  }, {
+    // Tool Studio (docs/tools-calm.md; bio-tools.js studioArrange)
+    studio: { hint: { target: '.ci-ctl input[type=range]', text: 'Raise n, the samples per group' },
+      caption: function(g){ var v = g.$('.sk-decide'), k = v && v.querySelector('.sk-verdict'); if(!v) return null; var rest = v.textContent.replace(k ? k.textContent : '', '').trim(); return '<b>' + T.esc(k ? k.textContent : '') + '.</b> ' + T.esc(rest); },
+      pills: function(g){ var k = g.$('.sk-decide .sk-verdict'); return k ? [{ html: T.esc(k.textContent), tone: k.classList.contains('keep') ? 'warn' : 'good' }] : []; },
+      pillsR: function(g){ return [{ html: 'SE ' + g.ro(0) + ' · ' + g.ro(1), tone: 'ghost' }]; } } });
 })();
