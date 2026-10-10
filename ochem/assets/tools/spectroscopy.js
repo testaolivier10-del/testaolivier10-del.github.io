@@ -930,7 +930,7 @@
     var w = host && host.getBoundingClientRect().width;
     if(w && Math.abs(w - (renderRef.drawnAt || 0)) > 20) renderRef();
   }
-  window.addEventListener('resize', function(){ if(!document.getElementById('spRef').hidden) redrawRef(); });
+  if(window.addEventListener) window.addEventListener('resize', function(){ if(!document.getElementById('spRef').hidden) redrawRef(); });
 
   /* ---- Puzzle mode ------------------------------------------------------- */
 
