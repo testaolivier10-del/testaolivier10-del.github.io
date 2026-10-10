@@ -145,6 +145,13 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    and graph (`.bt-stage`) sit above its controls. `ApBioTools.mount`/`skillTool` take a
    `stage(host, state)` slot drawn first. After every recorded answer and every run, a "Keep going"
    strip links the topic's lesson, notes, up to three glossary terms and (after a miss) Review.
+   (2026-10-09, tools upgrade U-Bio-sims, `docs/tools-upgrade-notes/bio-sims.md`) The ten simulators put a live,
+   tappable stage first (osmosis beaker, enzyme molecules, cycle ring, meiosis figure, operon DNA, signal cascade,
+   energy flow, population field, allele jar, tree) and seven gain a quiz mode that records new items
+   (`osmosis:predict-*`, `enzyme-activity:predict-*`, `cell-cycle-checkpoints:find-*`,
+   `meiosis-nondisjunction:make-*`, `operons:mutant-*`, `hardy-weinberg-drift:guess-n*`), each opened by a `#` hash.
+   Osmosis links to Water potential as its calculation practice. New model helpers `osmosis.trajectory` and
+   `enzyme.states`, tested in `scripts/test/apbio-sims-upgrade.test.mjs`.
 10. (2026-10-03) **Free lessons: Units 1 and 2 and every skills lesson.** The brief's "the first
    lesson of each skills topic" is every skills lesson, because a skills topic has one lesson.
    `isFreeTopic` (`scripts/lib/apbio-build.mjs`) marks every topic outside the course units free;
