@@ -126,15 +126,16 @@
       return W * (0.12 + 0.88 * (span > 0 ? (Math.log10(v) - Math.log10(lo)) / span : 1));
     }
     function pyramid(title, unit, cls, vals, labels, extra, inverted){
-      var row = 50, h = 34 + row * vals.length, p = ['<text class="ef-ttl" x="160" y="18" text-anchor="middle">' + esc(title) + '</text>'];
-      // producers at the bottom
+      var row = 46, h = 34 + row * vals.length, p = ['<text class="ef-ttl" x="160" y="18" text-anchor="middle">' + esc(title) + '</text>'], A = window.ApBioArt;
+      // producers at the bottom; tiers touch, like a textbook pyramid
       vals.forEach(function(v, i){
-        var y = h - row * (i + 1), w = widthOf(v, vals);
-        p.push('<text class="ef-lab" x="160" y="' + (y + 12) + '" text-anchor="middle">' + esc(labels[i] + ': ' + sig(v) + ' ' + unit + (extra && extra[i] ? ' (' + extra[i] + ')' : '')) + '</text>');
-        p.push('<rect class="ef-bar ' + cls + '" x="' + (160 - w / 2).toFixed(1) + '" y="' + (y + 18) + '" width="' + w.toFixed(1) + '" height="22" rx="3"/>');
+        var y = h - row * (i + 1), w = widthOf(v, vals), nm = eco().organisms[i];
+        p.push('<rect class="ef-bar ' + cls + '" x="' + (160 - w / 2).toFixed(1) + '" y="' + (y + 20) + '" width="' + w.toFixed(1) + '" height="26" rx="4"/>');
+        if(A && A.has(nm)) p.push(A.icon(nm, 160 - Math.max(w, 30) / 2 - 16, y + 33, 22, 'ef-o l' + i));
+        p.push('<text class="ef-lab" x="160" y="' + (y + 14) + '" text-anchor="middle">' + esc(labels[i] + ': ' + sig(v) + ' ' + unit + (extra && extra[i] ? ' (' + extra[i] + ')' : '')) + '</text>');
       });
       var desc = title + (st.scale === 'log' ? ' (bar widths on a log scale)' : ' (bar widths to scale)') + ', producers at the bottom: ' + vals.map(function(v, i){ return labels[i] + ' ' + sig(v) + ' ' + unit + (extra && extra[i] ? ' (' + extra[i] + ')' : ''); }).join('; ') + '.' + (inverted ? ' ' + inverted : '');
-      return '<svg class="ef-pyr" viewBox="0 0 320 ' + h + '" role="img" aria-label="' + esc(desc) + '">' + p.join('') + '</svg>';
+      return '<svg class="ef-pyr" viewBox="-10 0 340 ' + h + '" role="img" aria-label="' + esc(desc) + '">' + p.join('') + '</svg>';
     }
 
     /* ------------------------------------------------------- the flow */
@@ -142,17 +143,18 @@
     function flow(s){
       var L = s.levels, n = L.length, rowH = 66, H = 40 + n * rowH, Wd = 400, cx = 170, p = [];
       var lmax = Math.log10(Math.max.apply(null, L.map(function(x){ return x.inE; }))), lmin = Math.log10(Math.max(1e-3, Math.min.apply(null, L.map(function(x){ return x.inE; }))));
-      var bw = function(v){ var span = Math.max(1, lmax - lmin); return 70 + 110 * Math.max(0, (Math.log10(Math.max(v, 1e-3)) - lmin) / span); };
+      var bw = function(v){ var span = Math.max(1, lmax - lmin); return 112 + 92 * Math.max(0, (Math.log10(Math.max(v, 1e-3)) - lmin) / span); };
       var aw = function(v){ return Math.max(1.5, Math.min(18, 2 + 3 * Math.log10(Math.max(1, v)))); };
-      p.push('<rect class="ef-dec" x="' + (Wd - 92) + '" y="' + (H - 54) + '" width="86" height="44" rx="10"/><text class="ef-lab" x="' + (Wd - 49) + '" y="' + (H - 36) + '" text-anchor="middle">decomposers</text><text class="ef-lab" x="' + (Wd - 49) + '" y="' + (H - 20) + '" text-anchor="middle">' + num(s.decomp) + '</text>');
-      p.push('<text class="ef-lab ef-sun" x="' + cx + '" y="' + (H - 6) + '" text-anchor="middle">☀ GPP ' + num(s.gpp) + ' kcal/m²/yr</text>');
+      var A = window.ApBioArt, art = function(nm, x, y, sz, cls){ return A ? A.icon(nm, x, y, sz, cls) : ''; };
+      p.push('<rect class="ef-dec" x="' + (Wd - 100) + '" y="' + (H - 76) + '" width="96" height="68" rx="12"/>' + art('mushroom', Wd - 52, H - 56, 24, 'ef-o dec') + '<text class="ef-lab" x="' + (Wd - 52) + '" y="' + (H - 30) + '" text-anchor="middle">decomposers</text><text class="ef-num" x="' + (Wd - 52) + '" y="' + (H - 15) + '" text-anchor="middle">' + num(s.decomp) + '</text>');
+      p.push(art('sun', cx - 92, H - 10, 18, 'ef-o sun') + '<text class="ef-lab ef-sun" x="' + cx + '" y="' + (H - 6) + '" text-anchor="middle">GPP ' + num(s.gpp) + ' kcal/m²/yr</text>');
       L.forEach(function(x, i){
         var y = H - 26 - (i + 1) * rowH + 14, w = bw(x.inE), sel = pickLevel === i;
         // heat to the left, decomposers to the right-down, passed on upward
         var hw = aw(x.heat);
         p.push('<path class="ef-heat" stroke-width="' + hw.toFixed(1) + '" d="M' + (cx - w / 2) + ' ' + (y + 26) + ' c-10 -8 -14 8 -24 0 s-14 -8 -24 0 s-14 -8 -24 0"/>');
         p.push('<text class="ef-heatlab" x="4" y="' + (y + 10) + '">heat ' + sig(x.heat) + '</text>');
-        if(x.decomp > 0){ var dw = aw(x.decomp); p.push('<path class="ef-down" stroke-width="' + dw.toFixed(1) + '" d="M' + (cx + w / 2) + ' ' + (y + 24) + ' L' + (Wd - 60) + ' ' + (H - 56) + '"/>'); }
+        if(x.decomp > 0){ var dw = aw(x.decomp); p.push('<path class="ef-down" stroke-width="' + dw.toFixed(1) + '" d="M' + (cx + w / 2) + ' ' + (y + 24) + ' L' + (Wd - 64) + ' ' + (H - 74) + '"/>'); }
         if(i < n - 1){
           var uw = aw(x.passed), y2 = y - rowH + 40;
           p.push('<path class="ef-up" stroke-width="' + uw.toFixed(1) + '" d="M' + cx + ' ' + y + ' V' + (y2 + 2) + '"/>');
@@ -160,8 +162,9 @@
           for(var b = 0; b < nb; b++) p.push('<rect class="ef-block" x="' + (cx - 4) + '" y="' + (y - 8) + '" width="8" height="8" rx="2" style="--rise:' + (y2 - y + 8) + 'px;animation-delay:-' + (b * 1.6 / nb).toFixed(2) + 's"/>');
           p.push('<text class="ef-heatlab ef-uplab" x="' + (cx + 10) + '" y="' + ((y + y2) / 2 + 4) + '">' + sig(x.passed) + ' eaten</text>');
         }
-        p.push('<g class="ef-lvl' + (sel ? ' sel' : '') + '" data-lv="' + i + '" role="button" tabindex="0" aria-pressed="' + sel + '" aria-label="' + esc(lname(i) + ': absorbs ' + sig(x.inE) + ' kcal/m²/yr. Tap to see where it went.') + '"><rect class="ef-box" x="' + (cx - w / 2).toFixed(1) + '" y="' + y + '" width="' + w.toFixed(1) + '" height="40" rx="8"/>' +
-          '<text class="ef-lab" x="' + cx + '" y="' + (y + 17) + '" text-anchor="middle">' + esc(eco().organisms[i]) + '</text><text class="ef-num" x="' + cx + '" y="' + (y + 33) + '" text-anchor="middle">' + sig(x.inE) + (i ? ' in' : ' captured') + '</text></g>');
+        p.push('<g class="ef-lvl' + (sel ? ' sel' : '') + '" data-lv="' + i + '" role="button" tabindex="0" aria-pressed="' + sel + '" aria-label="' + esc(lname(i) + ': absorbs ' + sig(x.inE) + ' kcal/m²/yr. Tap to see where it went.') + '"><rect class="ef-box" x="' + (cx - w / 2).toFixed(1) + '" y="' + y + '" width="' + w.toFixed(1) + '" height="40" rx="10"/>' +
+          (A && A.has(eco().organisms[i]) ? art(eco().organisms[i], cx - w / 2 + 19, y + 20, 28, 'ef-o l' + i) : '') +
+          '<text class="ef-lab" x="' + (cx + 12) + '" y="' + (y + 17) + '" text-anchor="middle">' + esc(eco().organisms[i]) + '</text><text class="ef-num" x="' + (cx + 12) + '" y="' + (y + 33) + '" text-anchor="middle">' + sig(x.inE) + (i ? ' in' : ' captured') + '</text></g>');
       });
       var desc = 'Energy flow, producers at the bottom: ' + L.map(function(x, i){ return eco().organisms[i] + ' take in ' + sig(x.inE) + ', lose ' + sig(x.heat) + ' as heat' + (i < n - 1 ? ', pass ' + sig(x.passed) + ' up' : '') + ', ' + sig(x.decomp) + ' to decomposers'; }).join('; ') + ' (kcal/m²/yr).';
       var host = card.querySelector('.ef-flowfig');
