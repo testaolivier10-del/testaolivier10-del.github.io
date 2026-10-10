@@ -1,5 +1,5 @@
 {
-  "about": "Feedback loop builder (docs/anp-spec.md section 8.3). Each loop fills the seven slots every loop in the course uses: Stimulus, Receptor (sensor), Afferent pathway, Control center, Efferent pathway, Effector, Response. Each slot has the card text, a short label for the finished diagram, and why it belongs there. Distractor cards belong in no slot. Then the learner classifies the loop (kind) and predicts the effect of a failed part. \"map\" names the dependency-map loop this one fulfils. Item ids: feedback-loops:<loop>:<slot>, :kind and :failure. Checked by scripts/lib/anp-tool-checks/feedback-loops.mjs.",
+  "about": "Feedback loop builder (docs/anp-spec.md section 8.3). Each loop fills the seven slots every loop in the course uses: Stimulus, Receptor (sensor), Afferent pathway, Control center, Efferent pathway, Effector, Response. Each slot has the card text, a short label for the finished diagram, and why it belongs there. Distractor cards belong in no slot. Then the learner classifies the loop (kind) and predicts the effect of a failed part. \"map\" names the dependency-map loop this one fulfils. Item ids: feedback-loops:<loop>:<slot>, :kind and :failure. Checked by scripts/lib/anp-tool-checks/feedback-loops.mjs. \"live\" drives the live loop: the controlled variable on the gauge, the direction the stimulus moves it from the set point (dir), the set point as written in the loop's own text (setPoint, optional), what ends a positive loop (end), what the variable does when the failure question's part is broken (broken: uncorrected, worse, partial, slower, corrected, stalls, reset, never, or text for a case the gauge cannot show), and for a loop whose stimulus moves the set point instead (shift) the new set point and the button label.",
   "slots": [
     {
       "id": "stimulus",
@@ -40,6 +40,12 @@
         "homeostasis"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Body temperature",
+        "dir": "down",
+        "setPoint": "about 37 °C",
+        "broken": "partial"
+      },
       "scenario": "You step outside on a winter morning at −5 °C. Within a minute your fingers go pale and you start to shiver, and your body temperature stays close to 37 °C.",
       "slots": {
         "stimulus": {
@@ -125,6 +131,12 @@
         "homeostasis"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Body temperature",
+        "dir": "up",
+        "setPoint": "about 37 °C",
+        "broken": "uncorrected"
+      },
       "scenario": "You run for half an hour on a warm afternoon. Your skin flushes and you sweat, and your body temperature settles just above 37 °C instead of climbing.",
       "slots": {
         "stimulus": {
@@ -211,6 +223,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Glucose in the blood",
+        "dir": "up",
+        "broken": "uncorrected"
+      },
       "scenario": "An hour after a large bowl of pasta, glucose absorbed from your gut has pushed up the glucose level in your blood. Two hours later it is back near its usual level.",
       "slots": {
         "stimulus": {
@@ -297,6 +314,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Oxygen carried by the blood",
+        "dir": "down",
+        "broken": "uncorrected"
+      },
       "scenario": "You move to a mountain town where each breath brings in less oxygen. Over the next few weeks, your blood slowly gains more red blood cells.",
       "slots": {
         "stimulus": {
@@ -383,6 +405,12 @@
         "communication"
       ],
       "kind": "positive",
+      "live": {
+        "variable": "Stretch of the uterus opening",
+        "dir": "up",
+        "end": "Delivery removes the stretch, and the loop stops.",
+        "broken": "stalls"
+      },
       "scenario": "Late in labor, contractions come harder and closer together, each one pushing the baby further down, until the baby is born.",
       "slots": {
         "stimulus": {
@@ -470,6 +498,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Mean arterial pressure",
+        "dir": "down",
+        "broken": "uncorrected"
+      },
       "scenario": "You stand up quickly after lying down. Blood pools in your leg veins and your mean arterial pressure dips, but within a few heartbeats it is back near normal.",
       "slots": {
         "stimulus": {
@@ -557,6 +590,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Mean arterial pressure",
+        "dir": "up",
+        "broken": "reset"
+      },
       "scenario": "You strain to lift something heavy, then relax. Your arterial pressure overshoots for a few seconds, and your heart rate drops sharply before everything settles.",
       "slots": {
         "stimulus": {
@@ -644,6 +682,11 @@
         "mass-balance"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Blood pressure and volume",
+        "dir": "down",
+        "broken": "uncorrected"
+      },
       "scenario": "After a day of vomiting, a patient has lost fluid and their blood pressure is low. Over the next hours their kidneys make very little urine and their pressure slowly improves.",
       "slots": {
         "stimulus": {
@@ -730,6 +773,11 @@
         "mass-balance"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Plasma osmolarity",
+        "dir": "up",
+        "broken": "uncorrected"
+      },
       "scenario": "After a salty meal and a long afternoon without a drink, your plasma is slightly more concentrated than usual. You feel thirsty and pass only a little dark urine.",
       "slots": {
         "stimulus": {
@@ -816,6 +864,11 @@
         "mass-balance"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Blood volume",
+        "dir": "up",
+        "broken": "uncorrected"
+      },
       "scenario": "A patient receives two liters of isotonic saline by IV over half an hour. Over the next hours they pass much more urine than usual, and their blood volume returns toward normal.",
       "slots": {
         "stimulus": {
@@ -903,6 +956,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Arterial PCO2",
+        "dir": "up",
+        "broken": "uncorrected"
+      },
       "scenario": "You hold your breath for 40 seconds. Carbon dioxide keeps arriving at your lungs but none leaves. When you let go, your first breaths are deep and fast, and within a minute your breathing settles back to normal.",
       "slots": {
         "stimulus": {
@@ -994,6 +1052,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Arterial PO2",
+        "dir": "down",
+        "broken": "uncorrected"
+      },
       "scenario": "A hiker drives from the coast to a pass at 4,000 m. Within minutes of arriving, her arterial PO2 has fallen below 60 mm Hg, and she notices she is breathing more deeply even while sitting still.",
       "slots": {
         "stimulus": {
@@ -1080,6 +1143,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Lung inflation",
+        "dir": "up",
+        "broken": "uncorrected"
+      },
       "scenario": "During a hard run, each breath grows to about three times its resting size. As the lungs fill, each breath in is cut short a little earlier, which limits how far they are stretched.",
       "slots": {
         "stimulus": {
@@ -1166,6 +1234,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Calf muscle length",
+        "dir": "up",
+        "broken": "uncorrected"
+      },
       "scenario": "You are standing on a bus when it brakes hard. Your body tips forward, which stretches your calf muscles. A split second later, before you have decided anything, they contract and help pull you back upright.",
       "slots": {
         "stimulus": {
@@ -1256,6 +1329,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Light reaching the retina",
+        "dir": "up",
+        "broken": "uncorrected"
+      },
       "scenario": "You step out of a dark building into bright sunshine. Within about a second both pupils narrow, and the light reaching your retinas falls back toward a comfortable level.",
       "slots": {
         "stimulus": {
@@ -1346,6 +1424,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Pressure in the large arteries",
+        "dir": "down",
+        "broken": "partial"
+      },
       "scenario": "You stand up quickly after lying on a couch. Blood pools in the veins of your legs, less returns to your heart, and the pressure in your large arteries dips. Within a few heartbeats it is back to normal.",
       "slots": {
         "stimulus": {
@@ -1437,6 +1520,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Oxygen delivered to the kidney",
+        "dir": "down",
+        "broken": "uncorrected"
+      },
       "scenario": "You donate a unit of blood. Your plasma volume is back within a day or two, but your red cells take weeks to catch up. Build the loop that brings them back.",
       "slots": {
         "stimulus": {
@@ -1528,6 +1616,12 @@
         "communication"
       ],
       "kind": "positive",
+      "live": {
+        "variable": "Thrombin at the cut",
+        "dir": "up",
+        "end": "The hole is sealed, and the loop stops.",
+        "broken": "stalls"
+      },
       "scenario": "You cut your finger on a kitchen knife. Within a couple of minutes the bleeding slows and a firm clot seals the cut. The clotting runs as a local loop at the injury, with no nerve or brain involved.",
       "slots": {
         "stimulus": {
@@ -1619,6 +1713,12 @@
         "energy"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Blood glucose",
+        "dir": "up",
+        "setPoint": "about 88 mg/dL fasting",
+        "broken": "corrected"
+      },
       "scenario": "You eat a bowl of rice. Forty-five minutes later your blood glucose has climbed from about 88 to about 135 mg/dL. By two hours it is back below 100.",
       "slots": {
         "stimulus": {
@@ -1710,6 +1810,12 @@
         "energy"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Blood glucose",
+        "dir": "down",
+        "setPoint": "near 80 mg/dL",
+        "broken": "corrected"
+      },
       "scenario": "You skip breakfast. By mid-morning, some fifteen hours after dinner, your brain has been taking about 5 grams of glucose an hour out of your blood, yet your blood glucose stays near 80 mg/dL.",
       "slots": {
         "stimulus": {
@@ -1797,6 +1903,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Free T4 and T3",
+        "dir": "down",
+        "broken": "uncorrected"
+      },
       "scenario": "For months, a woman eats food that is low in iodine. Her free T4 drifts down, a blood test shows a raised TSH, and TSH drives her follicular cells to trap iodide harder. Her free T4 creeps back toward normal.",
       "slots": {
         "stimulus": {
@@ -1884,6 +1995,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Cortisol in the blood",
+        "dir": "down",
+        "broken": "uncorrected"
+      },
       "scenario": "A patient taking a drug that partly blocks cortisol synthesis has a lower cortisol level for a few days. Blood tests show ACTH climbing, and cortisol creeps back toward normal.",
       "slots": {
         "stimulus": {
@@ -1971,6 +2087,12 @@
         "mass-balance"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Blood calcium",
+        "dir": "down",
+        "setPoint": "near 9 mg/dL",
+        "broken": "partial"
+      },
       "scenario": "For a week, a woman eats almost no dairy or other calcium-rich food. Her blood calcium dips slightly, then holds steady near 9 mg/dL.",
       "slots": {
         "stimulus": {
@@ -2058,6 +2180,11 @@
         "mass-balance"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Blood calcium",
+        "dir": "up",
+        "broken": "corrected"
+      },
       "scenario": "After a large calcium supplement and a big glass of milk, a man’s blood calcium rises a little above its set point. Within hours it is back in range.",
       "slots": {
         "stimulus": {
@@ -2144,6 +2271,11 @@
         "mass-balance"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Plasma potassium",
+        "dir": "up",
+        "broken": "uncorrected"
+      },
       "scenario": "After a large meal of bananas and potatoes, plasma potassium creeps up. Over the next hours the extra potassium leaves in the urine and the level settles.",
       "slots": {
         "stimulus": {
@@ -2231,6 +2363,16 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Body temperature",
+        "dir": "down",
+        "setPoint": "36.6 °C",
+        "shift": {
+          "to": "39 °C",
+          "label": "Pyrogens raise the set point"
+        },
+        "broken": "slower"
+      },
       "scenario": "You wake with a sore throat. Macrophages fighting the infection release interleukin-1, and prostaglandin E2 in your hypothalamus raises the set point from 36.6 to 39 °C. Your hands go pale and cold, you shiver under two blankets, and over the next hour your temperature climbs to 39 °C and then holds there.",
       "slots": {
         "stimulus": {
@@ -2322,6 +2464,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "pH in the antrum",
+        "dir": "down",
+        "broken": "text"
+      },
       "scenario": "An hour into a steak dinner, the parietal cells have been secreting acid steadily. Food buffered the acid at first, but now the pH in the antrum is falling below 3, and gastrin release begins to slow.",
       "slots": {
         "stimulus": {
@@ -2412,6 +2559,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Chyme in the small intestine",
+        "dir": "up",
+        "broken": "uncorrected"
+      },
       "scenario": "After a fatty, acidic meal, chyme leaves the stomach faster than the first part of the small intestine can neutralize and digest it. Within minutes, the stomach’s waves weaken and the pylorus tightens.",
       "slots": {
         "stimulus": {
@@ -2498,6 +2650,12 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "pH in the duodenum",
+        "dir": "down",
+        "setPoint": "about 6 to 7",
+        "broken": "uncorrected"
+      },
       "scenario": "A squirt of chyme at pH 2 enters the duodenum. Within a minute, pancreatic juice rich in bicarbonate follows it, and the duodenal contents rise back to a pH of about 6 to 7.",
       "slots": {
         "stimulus": {
@@ -2585,6 +2743,11 @@
         "energy"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Core temperature",
+        "dir": "down",
+        "broken": "worse"
+      },
       "scenario": "A hiker waits out a storm on a windy ridge at 2 °C in damp clothes. Within minutes his skin cools, his fingers go pale, and he starts to shiver before his core temperature has fallen at all.",
       "slots": {
         "stimulus": {
@@ -2677,6 +2840,11 @@
         "interdependence"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Core temperature",
+        "dir": "up",
+        "broken": "uncorrected"
+      },
       "scenario": "A cyclist climbs a long hill on a warm afternoon. Her working muscles release heat, her skin flushes, she sweats heavily, and her core temperature rises a little and then holds steady.",
       "slots": {
         "stimulus": {
@@ -2768,6 +2936,11 @@
         "gradients"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "GFR in one nephron",
+        "dir": "up",
+        "broken": "worse"
+      },
       "scenario": "During a brisk walk, blood pressure rises for a few seconds, and filtration in one nephron starts to climb. Within seconds its own filtering settles back toward normal, with no signal from the brain.",
       "slots": {
         "stimulus": {
@@ -2858,6 +3031,11 @@
         "gradients"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "GBHP and GFR",
+        "dir": "up",
+        "broken": "uncorrected"
+      },
       "scenario": "A sudden fright makes your mean arterial pressure jump from 95 to 115 mm Hg for a minute. Within seconds, your GFR has barely changed.",
       "slots": {
         "stimulus": {
@@ -2944,6 +3122,12 @@
         "structure-function"
       ],
       "kind": "positive",
+      "live": {
+        "variable": "Urine flow in the urethra",
+        "dir": "up",
+        "end": "The bladder is empty, flow stops, and the loop ends.",
+        "broken": "stalls"
+      },
       "scenario": "Once you start to urinate, the stream keeps going until the bladder is nearly empty, even though the bladder gets less stretched as it empties.",
       "slots": {
         "stimulus": {
@@ -3030,6 +3214,11 @@
         "mass-balance"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Arterial pressure",
+        "dir": "up",
+        "broken": "reset"
+      },
       "scenario": "After a salty weekend, a man’s blood volume and arterial pressure creep up. Over the next day or two his kidneys excrete the extra salt and water, and his pressure settles back, even though his GFR has hardly changed.",
       "slots": {
         "stimulus": {
@@ -3117,6 +3306,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Blood testosterone",
+        "dir": "down",
+        "broken": "text"
+      },
       "scenario": "A man’s blood testosterone dips below its usual range. Within hours, his hypothalamus speeds its GnRH pulses, his pituitary releases more LH, and his testes bring testosterone back up.",
       "slots": {
         "stimulus": {
@@ -3203,6 +3397,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Inhibin in the blood",
+        "dir": "down",
+        "broken": "uncorrected"
+      },
       "scenario": "Sperm production in a man’s tubules slows for a while, and his Sertoli cells release less inhibin. His FSH creeps up, and the extra FSH drives the Sertoli cells to support spermatogenesis harder.",
       "slots": {
         "stimulus": {
@@ -3289,6 +3488,11 @@
         "communication"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Estradiol and inhibin",
+        "dir": "down",
+        "broken": "uncorrected"
+      },
       "scenario": "As the old corpus luteum dies, its hormones fall and FSH climbs. A group of follicles grows, their estradiol and inhibin rise, and FSH falls again, leaving one follicle that can still grow.",
       "slots": {
         "stimulus": {
@@ -3376,6 +3580,12 @@
         "communication"
       ],
       "kind": "positive",
+      "live": {
+        "variable": "Estradiol",
+        "dir": "up",
+        "end": "The LH turns the follicle into a corpus luteum, estradiol falls, and the loop ends.",
+        "broken": "never"
+      },
       "scenario": "Around day 12 of a 28-day cycle, the dominant follicle’s estradiol has stayed high for about two days. LH begins to shoot up, reaching many times its usual level about a day later, and ovulation follows about 34 to 36 hours after the rise began.",
       "slots": {
         "stimulus": {
@@ -3467,6 +3677,12 @@
         "mass-balance"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Plasma osmolality",
+        "dir": "down",
+        "setPoint": "about 287 mOsm/kg",
+        "broken": "worse"
+      },
       "scenario": "At a summer picnic you drink 1.5 L of water in half an hour. Within the hour you are passing a lot of pale urine, you no longer want a drink, and by evening your plasma osmolality is back near 287 mOsm/kg.",
       "slots": {
         "stimulus": {
@@ -3558,6 +3774,11 @@
         "interdependence"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Arterial pH",
+        "dir": "down",
+        "broken": "worse"
+      },
       "scenario": "In untreated type 1 diabetes, ketone bodies pour into the blood faster than tissues can burn them. The hydrogen ions they release use up bicarbonate, and arterial pH starts to fall. Within minutes the person is breathing deeper and faster, and arterial PCO2 drifts down.",
       "slots": {
         "stimulus": {
@@ -3648,6 +3869,11 @@
         "mass-balance"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Plasma bicarbonate",
+        "dir": "down",
+        "broken": "worse"
+      },
       "scenario": "For a week a bodybuilder eats a very high-protein diet. The sulfuric acid from its amino acids keeps using up bicarbonate. His breathing barely changes, yet by the end of the week his plasma bicarbonate is steady again and his urine holds about twice its usual ammonium.",
       "slots": {
         "stimulus": {
@@ -3735,6 +3961,12 @@
         "communication"
       ],
       "kind": "positive",
+      "live": {
+        "variable": "Stretch of the cervix",
+        "dir": "up",
+        "end": "The baby is born, the stretch stops, and the loop ends.",
+        "broken": "stalls"
+      },
       "scenario": "A woman is in the active phase of labor. Each contraction pushes the fetal head down onto her cervix, and over the next hours the contractions come harder and closer together until the baby is born.",
       "slots": {
         "stimulus": {
@@ -3824,6 +4056,11 @@
         "homeostasis"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Newborn’s body temperature",
+        "dir": "down",
+        "broken": "worse"
+      },
       "scenario": "A term baby is born wet into a room about 10 °C cooler than the uterus. Its temperature starts to fall, and within minutes its brown fat is making heat.",
       "slots": {
         "stimulus": {
@@ -3911,6 +4148,11 @@
         "structure-function"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Body temperature",
+        "dir": "up",
+        "broken": "uncorrected"
+      },
       "scenario": "You hike uphill for an hour on a warm, dry day. Your skin flushes, sweat beads on your forehead and dries in the breeze, and your body temperature rises a little and then holds steady.",
       "slots": {
         "stimulus": {
@@ -4002,6 +4244,11 @@
         "structure-function"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Body temperature",
+        "dir": "down",
+        "broken": "worse"
+      },
       "scenario": "You step out of a warm house into freezing wind without a coat. Within minutes your hands go pale and cold, you get goose bumps and you start to shiver, while the temperature deep in your body barely changes.",
       "slots": {
         "stimulus": {
@@ -4089,6 +4336,12 @@
         "mass-balance"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Blood calcium",
+        "dir": "down",
+        "setPoint": "near 9.5 mg/dL",
+        "broken": "corrected"
+      },
       "scenario": "For a day, a man eats almost no calcium. His blood calcium dips slightly below its set point, then climbs back and holds steady near 9.5 mg/dL.",
       "slots": {
         "stimulus": {
@@ -4180,6 +4433,11 @@
         "mass-balance"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Blood calcium",
+        "dir": "up",
+        "broken": "uncorrected"
+      },
       "scenario": "A man takes a large calcium supplement on an empty stomach. His blood calcium rises a little above its set point, then settles back over the next hours.",
       "slots": {
         "stimulus": {
@@ -4266,6 +4524,11 @@
         "structure-function"
       ],
       "kind": "negative",
+      "live": {
+        "variable": "Strain in the bone",
+        "dir": "up",
+        "broken": "text"
+      },
       "scenario": "A 20-year-old starts carrying heavy packs on long hikes every weekend. Over the following months, the bones of her legs and spine thicken where they bend most, and then stop thickening.",
       "slots": {
         "stimulus": {
