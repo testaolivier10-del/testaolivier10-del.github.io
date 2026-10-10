@@ -845,7 +845,7 @@
       var n = meas(r, 0.1, 0.9, 3), T = meas(r, 15, 95, 1), V = meas(r, 1, 9, 2), Tk = +T + M.C.T0, P = +n * M.C.R_LATM * Tk / +V, sf3 = Math.min(sfOf(n), sfOf(V));
       if(!clean(P, sf3)) return null;
       setup = { target: 'atm', factors: [{ label: 'n', v: n, u: 'mol', place: 1, sf: sfOf(n) }, { label: 'R', v: '0.08206', u: 'L·atm/(mol·K)', place: 1, sf: 4, constant: true },
-        { label: 'T', v: M.fixed(Tk, 2), u: 'K', place: 1, sf: 4, note: T + ' + 273.15' }, { label: 'V', v: V, u: 'L', place: -1, sf: sfOf(V) },
+        { label: 'T', v: M.fixed(Tk, 2), u: 'K', place: 1, sf: 4, note: T + ' + 273.15; the sum keeps one decimal place, so it counts as 4 significant figures (the extra digit is carried)' }, { label: 'V', v: V, u: 'L', place: -1, sf: sfOf(V) },
         { label: 'T in °C', v: T, u: '°C', place: 0, sf: sfOf(T), why: 'Gas laws need kelvin; °C does not cancel the K in R.' }, { label: 'R', v: '8.314', u: 'J/(mol·K)', place: 0, sf: 4, constant: true, why: 'This R is in joules: with L and atm the units do not cancel to atm.' }] };
       q = { q: 'A ' + V + ' L flask holds ' + n + ' mol of an ideal gas at ' + T + ' °C. What is the pressure in atmospheres?',
         numeric: { answer: P, tol: ulp(P, sf3), unit: 'atm', askUnit: true, sigfigs: sf3, mistakes: [

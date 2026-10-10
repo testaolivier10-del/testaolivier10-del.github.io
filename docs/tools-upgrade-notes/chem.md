@@ -94,3 +94,31 @@ No contested science found; nothing added to `docs/apchem-needs-author.md`.
 within; chem shell 50.3 / 52 KB, unchanged: tool scripts are page-only), axe (serious/critical) clean on all six
 tools × explore/quiz × light/dark at 390 px with no console errors. `anp-tool-kit.test.mjs` fails 2 tests on the
 base commit too (body-map label list), not from this work.
+
+## Accuracy review (2026-10-09)
+
+Independent pass: hand recomputation in node against each pure function, then every new on-screen sentence.
+Sources: OpenStax *Chemistry 2e* §14.6-14.7 (buffers, titration curves, indicator table 14.7 / Fig. 14.21),
+§13.3-13.4 (Q vs K, Le Chatelier volume changes, ICE and the 5% rule), §1.5 (significant figures);
+College Board AP Chemistry CED (2024) topics 7.3-7.10, 8.5-8.10.
+
+| Item | Verdict | Check |
+|---|---|---|
+| `titration.species` / `pH`, weak acid 0.100 M × 25.0 mL with 0.100 M NaOH | correct | start 2.87, half 4.74 = pKa, eq 8.72 (0.0500 M acetate, Kb = Kw/Ka), 30 mL 11.96, 40 mL 12.36: all match hand values; mass balance 2.50 mmol |
+| Strong acid, weak base (NH₃ + HCl), diprotic (H₂CO₃-like) | correct | SA 1.00 / 1.37 / 7.00 / 11.96; WB 11.13 / 9.26 / 5.28 / 2.04; diprotic half1 = pKa1, eq1 ≈ (pKa1 + pKa2)/2, half2 = pKa2 within 0.01 |
+| `titration.region` landmark bands | fixed (wording) | 24.9 and 25.1 mL read "equivalence" (pH 7.14 and 10.30) while the text gave only the exact equivalence pH (8.72). Text now says the pH quoted is at exactly V_eq and that within two drops the pH is still mid-jump |
+| `titration.cross`, indicator turn volumes | correct | phenolphthalein 8.2-10.0 on the acetic curve: 24.99-25.05 mL |
+| Indicator ranges and colors | correct | methyl orange 3.1-4.4 red→yellow, methyl red 4.4-6.2 red→yellow, bromothymol blue 6.0-7.6 yellow→blue, phenolphthalein 8.2-10.0 colorless→pink, alizarin yellow R 10.1-12.0 yellow→red (OpenStax Fig. 14.21; standard tables) |
+| Titration region sentences (SA/WA/WB/diprotic), pKb = 14.00 − pKa | correct | |
+| `bufferState`, 10/10 mmol acetic in 100 mL | correct | +4 mmol OH⁻ 5.11; +10 → weak base 0.10 M acetate 9.02; +12 → excess 0.020 M OH⁻ 12.30; −10 → 0.20 M HOAc 2.72; −13 → 0.030 M H₃O⁺ 1.52 (exact 1.52); water with 4 mmol OH⁻ 12.60 |
+| Buffer worked lines (stoichiometry first, HH, capacity, excess) | correct | past-capacity method ignores the weak conjugate, as the exam does; meter shows the exact value |
+| `equilibrate` | correct | A₂ ⇌ 2A, K = 4, 1 mol in 1 L → x = 0.618; at 0.5 L Q of the same amounts doubles; CaCO₃ stops when the solid runs out |
+| Q vs K volume sentence | fixed | "A smaller volume raises Q, so the mixture shifts toward fewer gas particles" was shown for any volume change, including an expansion (which lowers Q and shifts the other way) and for a mixture not at equilibrium. Now: what smaller and larger volumes do to Q, that compression *from equilibrium* shifts toward fewer gas particles, then the actual direction from Q vs K |
+| Q vs K zero species | fixed | with a reactant and a product both at zero the page said "only the reverse can run"; now says Q is undefined and neither direction can run, and "Let it react" no longer reports "already at equilibrium" in that state. Solids no longer count as a zero |
+| ICE explore (x slider, Solve for x, Q gauge 1%) | correct | `solveExtent` reproduces K to 1% for all six contexts × 40 seeds; small-x and 5% statements unchanged from the reviewed drill |
+| `atomsOf`, build-mode feedback | fixed (wording) | equilibrium hint said "let one more A₂ and B₂ react"; one event may not be enough. Now "let more react (each event…)" |
+| Units setup cancellation, distractors (°C, R in J), exact 1000 J/kJ | correct | test reproduces key value and figures |
+| Gas setup T in K counted as 4 significant figures | fixed (wording) | T(°C) to one decimal + 273.15 gives 4 figures only once the sum is kept to one decimal; the tile note now says so |
+| Add/subtract decimal alignment text | correct | fewest decimal places, not fewest figures |
+
+Logged to needs-author: nothing (no contested science).
