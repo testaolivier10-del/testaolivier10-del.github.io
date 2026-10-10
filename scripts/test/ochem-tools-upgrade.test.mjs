@@ -195,7 +195,7 @@ test('roadmap puzzle: decoys never react with the current group, and playing the
     for(let step = 0; step < 6 && !Z.state.done; step++){
       const at = Z.state.at;
       const tray = Z.tray();
-      const here = new Set(E.edgesFrom(at).flatMap(e => e.keys));
+      const here = new Set(E.edgesFrom(at).flatMap(e => e.keys).concat(Z.REACTS_OFF_MAP[at] || []));
       for(const t of tray){
         if(!t.edges.length) assert.ok(!t.decoy.keys.some(k => here.has(k)), `${a.id}->${b.id} at ${at}: decoy "${t.k}" does react here`);
       }
@@ -272,6 +272,24 @@ test('arrow pusher challenges: every answer step applies cleanly and changes the
       const fwd = C.apply(C.fromMolecule(M.get(ch.mol)), ch.steps[0].map(([f, t]) => ({ from:f, to:t }))).structure;
       const rev = C.apply(C.fromMolecule(M.get(ch.mol)), ch.steps[0].slice().reverse().map(([f, t]) => ({ from:f, to:t }))).structure;
       assert.ok(A.sameStructure(fwd, rev), `${ch.id}: arrow order changed the product`);
+    }
+  }
+});
+
+test('reaction predictor: a substrate with one possible alkene is not labelled Zaitsev or Hofmann', () => {
+  /* Accuracy review 2026-10: KOtBu on 1-bromopropane was tagged "Zaitsev"
+     with a note that the base was "small enough to choose". */
+  const s = load(...CORE, 'ochem/assets/tools/reaction-predictor.js');
+  const R = s.OchemReactionPredictor;
+  for(const c of combos(R)){
+    const p = R.predict(c);
+    if(!/E/.test(p.major || '') || !c.sub.zaitsev) continue;
+    const tag = `${c.sub.id}/${c.rgt.id}`;
+    if(c.sub.zaitsev === c.sub.hofmann){
+      assert.equal(p.alkene, null, `${tag}: one alkene, labelled ${p.alkene}`);
+      assert.doesNotMatch(p.productNote, /small enough/, `${tag}`);
+    } else {
+      assert.equal(p.alkene, p.major === 'E2' && c.rgt.bulky ? 'Hofmann' : 'Zaitsev', tag);
     }
   }
 });

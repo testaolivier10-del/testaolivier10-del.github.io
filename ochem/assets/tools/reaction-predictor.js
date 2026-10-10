@@ -314,10 +314,17 @@
     } else if(isElim && canEliminate){
       /* Zaitsev unless the base is too bulky to reach the more substituted
          side — which is the entire reason anyone teaches Hofmann. */
-      var useHofmann = out.major === 'E2' && r.bulky && sub.hofmann !== sub.zaitsev;
+      var oneAlkene = sub.hofmann === sub.zaitsev;
+      var useHofmann = out.major === 'E2' && r.bulky && !oneAlkene;
       out.product = useHofmann ? sub.hofmann : sub.zaitsev;
-      out.alkene = useHofmann ? 'Hofmann' : 'Zaitsev';
-      out.productNote = useHofmann
+      /* Only one alkene can form when every beta hydrogen gives the same
+         double bond (1-bromopropane, bromocyclohexane, tert-butyl bromide).
+         Calling it "Zaitsev" with a bulky base, and saying the base was
+         "small enough to choose", was wrong on both counts. */
+      out.alkene = oneAlkene ? null : (useHofmann ? 'Hofmann' : 'Zaitsev');
+      out.productNote = oneAlkene
+        ? 'The only alkene this substrate can make: every beta hydrogen gives the same double bond, so the Zaitsev/Hofmann question does not arise' + (r.bulky ? ', and the bulky base changes nothing here.' : '.')
+        : useHofmann
         ? 'The Hofmann product — the LESS substituted alkene. A bulky base cannot get at the crowded, more substituted beta position, so it takes a proton from the accessible end instead. With an alkyl halide, this is the usual situation where Zaitsev loses.'
         : 'The Zaitsev product — the more substituted alkene, which is the more stable one, and the one you get whenever the base is small enough to choose.' +
           (sub.zaitsevEZ ? ' ' + sub.zaitsevEZ : '');
@@ -901,15 +908,18 @@
       stage.innerHTML = '<p class="tformula" style="text-align:center;">' + esc(state.sub.formula) + ' + ' + esc(state.rgt.name) + '</p>';
     }
     var at = sc && sc.at;
+    var lgIon = sc ? ({ Br:'bromide', Cl:'chloride', I:'iodide', F:'fluoride' })[sc.lgEl] || 'the leaving group' : 'bromide';
     var cls = ({ methyl:'methyl', '1':'primary (1°)', '1-hindered':'primary, but hindered', '2':'secondary (2°)',
                  '3':'tertiary (3°)', benzylic:'benzylic' })[state.sub.cls];
     document.getElementById('rpRead').innerHTML = at
       ? '<b>' + esc(state.sub.name) + '.</b> The carbon holding ' + esc(sc.lgEl) + ' is <b>' + esc(cls) + '</b>' +
         ' and has <b>' + at.betaH + ' β-hydrogen' + (at.betaH === 1 ? '' : 's') + '</b> next door' +
         (at.betaH ? '.' : ', so nothing can eliminate.') +
-        (show && sc.arrows.length ? ' <span class="rp-read__arrows">Arrows: ' + (p.major === 'SN2' ? 'the nucleophile hits the back of the carbon as bromide leaves, in one step.'
-            : p.major === 'E2' ? 'the base takes a β-hydrogen, that C–H pair becomes the π bond, and bromide leaves, all at once.'
-            : 'step 1 only: the C–Br bond breaks on its own and leaves a carbocation; ' + (p.major === 'SN1' ? 'the solvent attacks it next.' : 'a β-hydrogen is lost from it next.')) + '</span>' : '')
+        (show && sc.arrows.length ? ' <span class="rp-read__arrows">Arrows: ' + (p.major === 'SN2' ? 'the nucleophile hits the back of the carbon as ' + lgIon + ' leaves, in one step.'
+            : p.major === 'E2' ? 'the base takes a β-hydrogen, that C–H pair becomes the π bond, and ' + lgIon + ' leaves, all at once.'
+            : 'step 1 only: the C–' + sc.lgEl + ' bond breaks on its own and leaves a carbocation; ' + (p.major === 'SN1'
+                ? (state.rgt.nu <= 1 ? 'the solvent attacks it next.' : 'the nucleophile from ' + state.rgt.name + ' attacks it next.')
+                : 'a β-hydrogen is lost from it next.')) + '</span>' : '')
       : '';
 
     var rgtNote = document.getElementById('rpRgtNote');
