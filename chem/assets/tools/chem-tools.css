@@ -506,3 +506,21 @@
   .bf-beaker .lb-fig{grid-template-columns:minmax(0,1fr);}
   .bf-beaker .lb-svg{max-width:300px;}
 }
+
+/* Q vs K explorer */
+.qk-card{display:grid;gap:12px;}
+.qk-eq{margin:0;font-size:16px;}
+.qk-stage{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;}
+.qk-beaker .lb-fig{grid-template-columns:minmax(0,1fr);}
+.qk-beaker .lb-svg{max-width:200px;}
+@media (max-width:899px){.qk-beaker .lb-fig{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;}.qk-beaker .lb-big b{font-size:19px;}}
+.qk-beaker .lb-desc,.ic-beaker .lb-desc{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.qk-side{display:grid;gap:10px;align-content:start;}
+.qk-amts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;}
+.qk-amt{display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:12px;background:var(--paper);}
+.qk-n{flex:1 1 auto;font:900 16px var(--font-ui);}
+.qk-c{min-width:2ch;text-align:center;font:900 18px var(--font-mono);}
+.qk-why{min-height:5em;}
+.qk-conc{display:block;margin-top:4px;}
+.qk-ran{margin:8px 0 0;}
+@media (min-width:900px){.qk-stage{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:22px;}}
