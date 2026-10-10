@@ -393,10 +393,12 @@
     /* Cropped to the atoms, so HCl and phenylacetic acid both fill their
        card instead of sitting at one scale in a 320 by 170 field; never
        narrower than 190 units, so a hydride is not blown up to a disc. */
+    // Spread the skeleton (atoms keep their size) so bonds between labelled atoms show.
+    Object.keys(mol.atoms).forEach(function(k){ var t = mol.atoms[k]; t.x = 160 + (t.x - 160) * 1.45; t.y = 85 + (t.y - 85) * 1.45; });
     var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
     Object.keys(mol.atoms).forEach(function(k){ var t = mol.atoms[k], pd = t.r + (t.lp ? 11 : 4);
       x0 = Math.min(x0, t.x - pd); x1 = Math.max(x1, t.x + pd); y0 = Math.min(y0, t.y - pd); y1 = Math.max(y1, t.y + pd); });
-    var w = Math.max(190, x1 - x0), hgt = Math.max(96, y1 - y0), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+    var w = Math.max(220, x1 - x0), hgt = Math.max(110, y1 - y0), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
     mol.viewBox = Math.round(cx - w / 2) + ' ' + Math.round(cy - hgt / 2) + ' ' + Math.round(w) + ' ' + Math.round(hgt);
     return mol;
   }
@@ -700,7 +702,7 @@
       var x = rankChecked ? lineX(a.pKa, lo, hi) : 40 + i * 106;
       var anchor = x < 70 ? 'start' : x > 330 ? 'end' : 'middle';
       line += '<g class="ab-line__pin' + (rankChecked ? (ok ? ' is-ok' : ' is-no') : ' is-wait') + '" style="transform:translate(' + x.toFixed(1) + 'px,0)">' +
-        '<line x1="0" y1="' + (i % 2 ? 40 : 18) + '" x2="0" y2="64" class="ab-line__stem"/>' +
+        '<line x1="0" y1="42" x2="0" y2="64" class="ab-line__stem"/>' +
         '<circle cx="0" cy="74" r="10"/>' +
         '<text x="' + (anchor === 'start' ? -8 : anchor === 'end' ? 8 : 0) + '" y="' + (i % 2 ? 36 : 14) + '" text-anchor="' + anchor + '" class="ab-line__lab">' +
           esc(a.name.length > 18 ? a.name.slice(0, 17) + '…' : a.name) + (rankChecked ? ' ' + a.pKa : '') + '</text>' +

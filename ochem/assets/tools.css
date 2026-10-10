@@ -363,6 +363,24 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 }
 @media(prefers-reduced-motion:reduce){ .ab-line__pin{transition:none;} }
 
+/* ---- Spectroscopy: a signal and its hydrogens --------------------------- */
+.sp-link{display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr);gap:12px;align-items:center;}
+.sp-link__mol .scene{margin:0 0 14px;padding:6px 4px;}
+.sp-link__mol .omol svg{max-width:360px;max-height:230px;}
+.sp-link .sp-sig.is-on line{stroke-width:3;}
+.sp-link__mol .omol line,.ab-rcard .omol line,.ab-card .omol line,.ab-site__mol .omol line{stroke:var(--muted);}
+.sp-link .sp-sig.is-on rect{fill:var(--tint-accent);}
+.sp-link .sp-sig:focus-visible rect{stroke:var(--accent);stroke-width:2;}
+.sp-link__mol .atom--highlight circle:not(.atom-hit){stroke:var(--accent);fill:var(--tint-accent);stroke-width:4;}
+.sp-link__mol .atom--highlight text{fill:var(--accent-text);}
+.sp-linknote{min-height:44px;font-size:13.2px;line-height:1.55;font-weight:700;color:var(--ink);margin:-2px 2px 14px;}
+.sp-linknote__why{display:block;color:var(--muted);margin-top:3px;}
+@media(max-width:820px){
+  .sp-link{grid-template-columns:minmax(0,1fr);gap:0;}
+  .sp-link__mol .scene{margin-bottom:8px;}
+  .sp-link__mol .omol svg{max-height:160px;}
+}
+
 /* ---- Both chairs at once (Conformation Lab) ------------------------------ */
 
 .cf-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;}

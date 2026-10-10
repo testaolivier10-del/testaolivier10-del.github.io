@@ -144,3 +144,41 @@ test('acid/base: every drawn acid parses, and every tappable proton site sits on
     assert.ok(d.at[first.label], `${m.id}: the right answer (${first.label}) cannot be tapped`);
   }
 });
+
+test('spectroscopy: every tabulated signal lights hydrogens that add up to its integration', () => {
+  const s = load(...CORE, 'ochem/assets/spectra-predict.js', 'ochem/assets/tools/spectroscopy.js');
+  const S = s.OchemSpectroscopy;
+  for(const c of S.COMPOUNDS){
+    assert.ok(S.NMR_ATOMS[c.id], `${c.id} has no structure map`);
+    const st = s.OchemBuilder.parse(S.NMR_ATOMS[c.id].f).st;
+    const sig = S.NMR_ATOMS[c.id].sig;
+    assert.equal(sig.length, c.nmr.length, `${c.id}: ${sig.length} mapped signals for ${c.nmr.length}`);
+    // the drawn molecule is the compound
+    assert.equal(s.OchemChem.formula(st), c.formula, `${c.id}: drawn ${s.OchemChem.formula(st)}`);
+    const seen = {};
+    c.nmr.forEach((x, i) => {
+      const keys = sig[i];
+      const h = keys.reduce((t, k) => { const a = st.atoms[k]; assert.ok(a, `${c.id}: no atom ${k}`); return t + (a.hFixed ?? a.hImplicit ?? 0); }, 0);
+      keys.forEach(k => { seen[k] = (seen[k] || 0) + 1; });
+      // Styrene's =CH₂ is two one-H signals on one carbon (cis and trans to the ring).
+      if(c.id === 'styrene' && i < 2) assert.equal(h, 2);
+      else assert.equal(h, x.h, `${c.id}: signal ${x.label} is ${x.h}H, its atoms carry ${h}`);
+    });
+    // every hydrogen-bearing atom belongs to some signal
+    for(const [k, a] of Object.entries(st.atoms)){
+      if((a.hFixed ?? a.hImplicit ?? 0) > 0) assert.ok(seen[k], `${c.id}: ${a.el} ${k} has hydrogens but no signal`);
+    }
+  }
+});
+
+test('spectroscopy: a predicted spectrum reports which atoms make each signal', () => {
+  const s = load(...CORE, 'ochem/assets/spectra-predict.js');
+  for(const f of ['CH3CH2OH', 'CH3COOCH2CH3', 'toluene', 'p-xylene', 'CH3CH(OH)CH3', 'cyclohexanone']){
+    const st = s.OchemBuilder.parse(f).st;
+    const sigs = s.OchemSpectra.predictNMR(st);
+    for(const x of sigs){
+      const h = x.keys.reduce((t, k) => t + (st.atoms[k].hFixed ?? st.atoms[k].hImplicit ?? 0), 0);
+      assert.equal(h, x.h, `${f}: ${x.label} ${x.h}H but its atoms carry ${h}`);
+    }
+  }
+});
