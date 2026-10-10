@@ -482,4 +482,16 @@
 .sk-stpn{flex:1 1 auto;min-width:0;}
 .sd-key{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0;font:700 13.5px var(--font-ui);}
 .sd-key span{display:inline-flex;align-items:center;gap:5px;}
+/* Confidence intervals */
+.ci-bar{fill-opacity:.85;}
+.ci-err{stroke-width:2.5;}
+.ci-band.ov{fill:var(--good-text);fill-opacity:.14;}
+.ci-band.gap{fill:var(--bad-text);fill-opacity:.14;}
+.ci-bl{font:900 12px var(--font-ui);}
+.ci-bl.ov{fill:var(--good-text);} .ci-bl.gap{fill:var(--bad-text);}
+.ci-v{fill:var(--ink);font:800 11px var(--font-mono);}
+.ci-mine{fill:none;stroke:var(--muted);stroke-width:2.5;}
+.ci-off{fill:var(--bad-text);}
+.ci-verdict{display:grid;gap:10px;}
+.ci-more{padding:0 12px;}
 /* ===== Skills tools: end ===== */
