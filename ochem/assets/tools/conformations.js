@@ -308,7 +308,7 @@
     var grid = [0, 60, 120, 180, 240, 300, 360].map(function(t){
       return '<line x1="' + px(t).toFixed(1) + '" y1="' + padT + '" x2="' + px(t).toFixed(1) + '" y2="' + (H - padB) + '" ' +
              'stroke="var(--line-soft)" stroke-width="1"/>' +
-             '<text class="cf-axis" x="' + px(t).toFixed(1) + '" y="' + (H - padB + 15) + '" text-anchor="middle">' + t + '°</text>';
+             '<text class="cf-axis" x="' + px(t).toFixed(1) + '" y="' + (H - padB + 15) + '" text-anchor="' + (t === 360 ? 'end' : t === 0 ? 'start' : 'middle') + '">' + t + '°</text>';
     }).join('');
 
     var here = '<line x1="' + px(theta).toFixed(1) + '" y1="' + padT + '" x2="' + px(theta).toFixed(1) + '" y2="' + (H - padB) + '" ' +
