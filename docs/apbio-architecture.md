@@ -243,6 +243,10 @@ problem on every scored thing.
   format; the student writes, opens the rubric, ticks the points earned, sees the sample answer,
   saves; one item per part, right when every point is ticked; drafts kept in localStorage
   `apbio_frqdraft_*`; the FRQ page may reuse it), `skillTool` (the skills runner), `record`.
+  Page order (tools upgrade P1): optional stage slot, the tool, "About this tool" (intro plus
+  model box, folded by `tidyAbout`), questions, mini FRQ; a simulator card's `.bt-stage` moves above
+  its first control (`figureFirst`). The **stage slot** and **Keep going strip** are specified in
+  the header of `bio-tools.js` and in `docs/tools-upgrade.md` (P1-Bio row).
 - `bio-tools.css`: every tool's styles.
 - The validators load `bio-tool-math.js` and `bio-skill-problems.js` in a Node `vm` sandbox
   (`scripts/lib/apbio-tool-checks/_shared.mjs` `runtime()`), so authored numbers are recomputed

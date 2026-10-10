@@ -361,3 +361,70 @@
 .pt-atom.pn circle{fill:#B6B8F2;} .pt-atom.pcl circle{fill:#A8E0A0;} .pt-atom.pc circle{fill:#C9C9C9;}
 .pt-atom.pcat circle{fill:#F7D774;} .pt-atom.pani circle{fill:#B9E3E8;}
 :root[data-theme="dark"] .pt-atom circle{stroke:#0b0b0c;}
+
+/* Page frame (ApChemTools.frame): the problem first. The picker is one row,
+   the intro and how-it-works fold into "About this ..." below the problem,
+   and on phones the opener shrinks to its title. */
+.bt-pick:empty{display:none;}
+.bt-pick{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;}
+.bt-ctl.bt-inline{flex-direction:row;align-items:center;gap:10px;flex-wrap:wrap;}
+.bt-ctl.bt-inline label{white-space:nowrap;}
+.bt-ctl.bt-inline select{flex:1 1 12ch;min-width:0;}
+.bt-about{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:14px;padding:0 16px;}
+.bt-about summary{cursor:pointer;font:900 15px var(--font-ui);color:var(--cink);min-height:44px;display:flex;align-items:center;}
+.bt-about-body{padding:0 0 12px;}
+.bt-about-h{font:900 15px var(--font-ui);margin:6px 0 4px;}
+@media (max-width:640px){
+  body[data-app^="tool-"] .chem-hero{margin-top:10px;padding:14px 16px;border-radius:16px;}
+  body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
+  body[data-app^="tool-"] .chem-hero h1{font-size:22px;line-height:1.2;margin:0;max-width:none;}
+  body[data-app^="tool-"] .chem-hero .lede{display:none;}
+  body[data-app^="tool-"] .chem-crumb{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:10px;}
+  body[data-app^="tool-"] .bt-app{margin-top:12px;gap:14px;}
+}
+
+/* Keep going (ApChemTools.keepGoing): after a graded problem. */
+.bt-keep{border-top:2px solid var(--line);padding-top:12px;margin-top:12px;display:grid;gap:8px;}
+.bt-keep h3{font:900 15px var(--font-ui);margin:0;}
+.bt-keep ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;}
+.bt-keep a{display:inline-flex;flex-direction:column;justify-content:center;min-height:44px;padding:6px 12px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px/1.3 var(--font-ui);text-decoration:none;}
+.bt-keep a:hover{border-color:var(--cink);}
+.bt-keep a:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.bt-keep-k{display:block;font:900 11px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--cink);margin:0;}
+.bt-keep-terms{display:grid;gap:6px;}
+.bt-keep-terms a{flex-direction:row;align-items:center;}
+@media print{.bt-keep,.bt-about{display:none;}}
+
+/* Live beaker (live-beaker.js, ApChemBeaker). Token colors, so dark mode
+   follows the theme; particles move by CSS transition, which the site-wide
+   reduced-motion rule cuts to nothing (and the script skips the fades). */
+.lb-fig{margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-items:start;}
+@media (min-width:560px){.lb-fig{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);}.lb-desc{grid-column:1/-1;}}
+.lb-svg{width:100%;max-width:340px;height:auto;display:block;margin:0 auto;}
+.lb-glass{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;opacity:.75;}
+.lb-liquid{fill:var(--chem-eff-fill);opacity:.7;}
+.lb-ticks path{stroke:var(--ink);stroke-width:2;opacity:.45;}
+.lb-p{transition:transform .6s cubic-bezier(.3,.7,.2,1),opacity .45s ease;}
+.lb-p.is-in,.lb-p.is-out{opacity:0;}
+.lb-disc circle{stroke:var(--ink);stroke-width:1.2;}
+.lb-disc text{fill:#111;font-family:var(--font-ui);font-weight:800;}
+.lb-t1 circle{fill:#9CC8F0;} .lb-t2 circle{fill:#F4B58A;} .lb-t3 circle{fill:#A8E0A0;}
+.lb-t4 circle{fill:#F7D774;} .lb-t5 circle{fill:#B6B8F2;} .lb-t6 circle{fill:#F2A0A0;}
+.lb-side{display:grid;gap:10px;align-content:start;}
+.lb-read{display:grid;gap:8px;}
+.lb-big{margin:0;font:800 16px var(--font-ui);color:var(--ink);}
+.lb-big b{font-size:24px;font-variant-numeric:tabular-nums;}
+.lb-big span{color:var(--muted);font-size:14px;}
+.lb-scale{position:relative;height:40px;}
+.lb-scale-bar{position:absolute;left:0;right:0;top:6px;height:12px;border-radius:6px;background:linear-gradient(90deg,#E5484D,#F2A33A,#E9D84A,#57B65F,#3F8FD8,#6D5BD0);}
+.lb-qk .lb-scale-bar{background:var(--line);}
+.lb-mark{position:absolute;top:0;width:4px;height:24px;margin-left:-2px;border-radius:2px;background:var(--ink);box-shadow:0 0 0 2px var(--white);transition:left .6s cubic-bezier(.3,.7,.2,1);}
+.lb-k{position:absolute;top:2px;width:2px;height:20px;margin-left:-1px;background:var(--cink);}
+.lb-scale-l,.lb-scale-m,.lb-scale-r{position:absolute;top:24px;font:700 12px var(--font-ui);color:var(--muted);}
+.lb-scale-l{left:0;} .lb-scale-r{right:0;} .lb-scale-m{left:50%;transform:translateX(-50%);}
+.lb-dir{margin:0;font:900 14px var(--font-ui);color:var(--cink);}
+.lb-legend{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px;}
+.lb-legend li{display:flex;align-items:center;gap:6px;font:800 14px var(--font-ui);}
+.lb-legend b{font-variant-numeric:tabular-nums;}
+.lb-key{width:28px;height:28px;}
+.lb-desc{font:700 13px/1.45 var(--font-ui);color:var(--muted);}

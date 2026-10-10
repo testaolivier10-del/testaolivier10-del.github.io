@@ -738,6 +738,7 @@
 
     return {
       id: 'rx:' + e.id,
+      topic: e.topic,
       prompt: 'Which reagents take <b>' + esc(lc(nodeName(from))) + '</b> to <b>' + esc(lc(label(e))) + '</b>?' +
         (e.ex ? '<br><span class="tmuted">e.g. <span class="tformula">' + esc(e.ex[0]) + '</span> &rarr; <span class="tformula">' + esc(e.ex[1]) + '</span></span>' : ''),
       options: [{ id: e.id, label: '<span class="rr-rx">' + rxHtml(e) + '</span>', correct: true }].concat(
@@ -769,6 +770,7 @@
 
     return {
       id: 'pr:' + e.id,
+      topic: e.topic,
       prompt: exampleLine(e) + ' treated with <span class="rr-rx">' + rxHtml(e) + '</span> gives…',
       options: [{ id: e.id, label: esc(label(e)), correct: true }].concat(
         distract.map(function(d){ return { id: d.id, label: esc(label(d)), correct: false }; })),

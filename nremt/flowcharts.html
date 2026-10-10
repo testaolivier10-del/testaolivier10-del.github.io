@@ -84,6 +84,13 @@
 
   /* ---- Drill mode ------------------------------------------------------- */
 
+  .warning--after{margin:32px 0 0;}
+  @media (max-width:640px){
+    .page-head{padding:18px 20px;}
+    .page-head h1{font-size:24px;margin-bottom:4px;}
+    .page-head .lede{font-size:14px;}
+  }
+  .page-head + .mode-switch,.page-head + * + .mode-switch{margin-top:18px;}
   .mode-switch{display:inline-flex;border:2px solid var(--line);border-radius:22px;overflow:hidden;background:var(--white);margin-bottom:22px;}
   .mode-switch button{
     font:700 13px inherit;padding:9px 18px;border:0;background:transparent;color:var(--muted);cursor:pointer;
@@ -135,6 +142,7 @@
   .drill-verdict{font-size:13.5px;font-weight:700;line-height:1.6;margin-bottom:12px;text-wrap:pretty;}
   .drill-verdict.ok{color:var(--good-text);}
   .drill-verdict.no{color:var(--bad-text);}
+  .drill-see{display:inline-block;margin:0 12px 10px 0;font:800 13px var(--font-ui);color:var(--accent-text);}
   .drill-next{
     font:700 13px inherit;padding:9px 20px;border:0;border-radius:20px;
     background:var(--navy);color:var(--on-accent);cursor:pointer;
@@ -212,10 +220,6 @@
   <div class="eyebrow">Tools</div>
   <h1>Protocol Flow Diagrams</h1>
   <p class="lede">Core decision sequences as diagrams.</p>
-  </div>
-
-  <div class="warning">
-    <b>General, widely-taught sequences, not scored sheets.</b> Protocols vary by medical direction.
   </div>
 
   <!-- Reading a sequence and being able to produce it are different skills, and
@@ -658,12 +662,18 @@
 
   </div><!-- /flowDiagrams -->
 
+  <div class="warning warning--after">
+    <b>General, widely-taught sequences, not scored sheets.</b> Protocols vary by medical direction.
+  </div>
+
+
   <footer>
     <p>Simplified for review. Not a substitute for your course's protocols.</p>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../about.html">About</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
     </footer>
 </div>
 <script src="assets/nav.js" defer></script>
+<script src="assets/tool-results.js" defer></script>
 <script src="assets/flow-drill.js" defer></script>
 </body>
 </html>

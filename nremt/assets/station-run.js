@@ -82,7 +82,7 @@
       var steps = [{
         text: 'Take or verbalize BSI / PPE precautions',
         critical: true,
-        why: 'The page above calls this "almost always the very first scored item", and it appears on essentially every critical-criteria list there is. Say it out loud before you touch the patient.'
+        why: 'The reading guide on this page calls this "almost always the very first scored item", and it appears on essentially every critical-criteria list there is. Say it out loud before you touch the patient.'
       }];
       phases.forEach(function(p){
         steps.push({ text: p.charAt(0).toUpperCase() + p.slice(1), critical: false });

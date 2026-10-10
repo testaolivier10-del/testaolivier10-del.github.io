@@ -14,7 +14,12 @@
    'sn1-sn2' were never topics, they were what the topics felt like they ought
    to be called — which nothing noticed because nothing read the field. Checked
    against curriculum.js now, and an array, because a tool that covers SN1 and
-   SN2 and E1 and E2 was never going to fit in one. */
+   SN2 and E1 and E2 was never going to fit in one.
+
+   `terms` lists glossary ids (ochem/assets/glossary.json) for the tool's
+   Keep going strip. build-tool-pages.mjs writes the strip, with each term's
+   name, into the page, and tool-quiz.js links the term a question is about
+   from it; a question can only name a term from this list. */
 (function(){
 
   /* Line marks rather than emoji: they inherit currentColor, so they work in
@@ -58,7 +63,8 @@
       tagline: 'Draw a mechanism and watch what it makes.',
       blurb: 'Push electrons on any molecule, or one you drew, and the structure changes to match.',
       teaches: 'Curved arrows, formal charge, octets',
-      topic: ['curved-arrows', 'sn2', 'formal-charge']
+      topic: ['curved-arrows', 'sn2', 'formal-charge'],
+      terms: ['curved-arrow', 'formal-charge', 'octet-rule']
     },
     {
       slug: 'resonance',
@@ -67,7 +73,8 @@
       tagline: 'Find every valid resonance form, and rank them.',
       blurb: 'Move a lone pair or a pi bond; the tool checks it and counts every valid form.',
       teaches: 'Delocalization, contributor weighting',
-      topic: ['resonance', 'conjugate']
+      topic: ['resonance', 'conjugate'],
+      terms: ['resonance-structures', 'major-contributor', 'resonance-hybrid']
     },
     {
       slug: 'viewer-3d',
@@ -76,7 +83,8 @@
       tagline: 'Rotate it until the shape stops being abstract.',
       blurb: 'Type a formula or draw a structure and see its real shape, angles measured.',
       teaches: 'VSEPR, hybridization, stereochemistry',
-      topic: ['molecular-geometry', 'hybridization', 'bonding']
+      topic: ['molecular-geometry', 'hybridization', 'bonding'],
+      terms: ['vsepr-theory', 'hybridization', 'wedge-and-dash-notation']
     },
     {
       slug: 'conformations',
@@ -85,7 +93,8 @@
       tagline: 'Turn the bond. Watch the energy.',
       blurb: 'Rotate a Newman projection against a live energy curve, or compare both cyclohexane chairs.',
       teaches: 'Torsional strain, A-values, chair flips',
-      topic: ['conformational-analysis', 'newman', 'ring-flips']
+      topic: ['conformational-analysis', 'newman', 'ring-flips'],
+      terms: ['newman-projection', 'torsional-strain', 'gauche', 'a-value']
     },
     {
       slug: 'reaction-predictor',
@@ -94,7 +103,8 @@
       tagline: 'SN1, SN2, E1 or E2 — and why, factor by factor.',
       blurb: 'Substrate, reagent, solvent. Commit to a prediction, then see the four factors that decide it.',
       teaches: 'Substitution vs. elimination',
-      topic: ['sn1', 'sn2', 'e1', 'e2']
+      topic: ['sn1', 'sn2', 'e1', 'e2'],
+      terms: ['sn1-reaction', 'sn2-reaction', 'e1-reaction', 'e2-reaction']
     },
     {
       slug: 'acid-base',
@@ -103,7 +113,8 @@
       tagline: 'Two structures. Which proton comes off first?',
       blurb: 'Compare acids, rank four at once, or find which proton comes off first, from measured pKa.',
       teaches: 'pKa, conjugate base stability',
-      topic: ['acidity-factors', 'pka', 'conjugate']
+      topic: ['acidity-factors', 'pka', 'conjugate'],
+      terms: ['pka', 'ario', 'conjugate-acid-base-pair', 'inductive-effect']
     },
     {
       slug: 'spectroscopy',
@@ -112,7 +123,8 @@
       tagline: 'Read the peaks, name the compound.',
       blurb: 'An IR spectrum that explains its regions, a ¹H NMR predictor for any structure, and a puzzle mode.',
       teaches: 'IR, ¹H NMR, degrees of unsaturation',
-      topic: ['ir', 'h-nmr', 'mass-spec']
+      topic: ['ir', 'h-nmr', 'mass-spec'],
+      terms: ['wavenumber', 'fingerprint-region', 'chemical-shift', 'degree-of-unsaturation']
     },
     {
       slug: 'reagent-roadmap',
@@ -121,7 +133,8 @@
       tagline: 'From any functional group to any other, with the reagents.',
       blurb: 'Pick a start and a target for the shortest routes, step by step, or look up what any reagent does.',
       teaches: 'Functional group interconversion, reagents, synthesis',
-      topic: ['functional-group-interconversion', 'multistep-synthesis', 'retrosynthesis']
+      topic: ['functional-group-interconversion', 'multistep-synthesis', 'retrosynthesis'],
+      terms: ['functional-group-interconversion', 'retrosynthesis', 'synthon']
     }
   ];
 

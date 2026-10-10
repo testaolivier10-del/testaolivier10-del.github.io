@@ -934,6 +934,7 @@
           var small = big === x ? y : x;
           return {
             id: 'a:' + x + y,
+            term: 'a-value',
             prompt: 'On a cyclohexane ring, which group pays more to sit <b>axial</b> — ' +
                     '<span class="tformula">' + esc(SUBS[x].label) + '</span> or ' +
                     '<span class="tformula">' + esc(SUBS[y].label) + '</span>?',
@@ -995,6 +996,7 @@
           if(!opts60.some(function(o){ return o.correct; })) return null;
           return {
             id: 'm:' + tor2.id,
+            term: 'gauche', topic: 'newman',
             prompt: 'Which conformation of <b>' + esc(tor2.name) + '</b>' +
                     (tor2.formula ? ' (<span class="tformula">' + esc(tor2.formula) + '</span>)' : '') +
                     ' is the <b>most stable</b>?',
@@ -1006,6 +1008,7 @@
 
         return {
           id: 't:' + tor2.id,
+          term: 'torsional-strain', topic: 'newman',
           prompt: 'Turning the central bond of <b>' + esc(tor2.name) + '</b>' +
                   (tor2.formula ? ' (<span class="tformula">' + esc(tor2.formula) + '</span>)' : '') +
                   ' through 360°, how big is the <b>barrier</b> — the gap between its highest and ' +

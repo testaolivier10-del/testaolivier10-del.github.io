@@ -31,6 +31,7 @@
      before they arrive; they still run first, in this order, and the
      page's own inline script waits for DOMContentLoaded. -->
 <script src="assets/question-ids.js" defer></script>
+<script src="assets/tool-results.js" defer></script>
 <script src="../assets/report-question.js" defer></script>
 <script src="../assets/errors.js" defer></script>
 <script src="../assets/account.js" defer></script>
@@ -146,6 +147,10 @@
           </div>
           <div id="premiumNotice" class="premium-slot premium-slot--reserved"></div>
         </section>
+        <!-- Misses from the body map, sound trainer, protocol flows and scenario
+             sim: not bank questions, so not in the session above. Filled by
+             assets/tool-results.js; hidden while empty. -->
+        <section class="cx-card cx-toolq" data-tool-queue hidden aria-live="polite"></section>
 
         <script>
         /* Which state shows depends on this browser's answers (renderDueSummary

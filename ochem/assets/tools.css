@@ -36,23 +36,28 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 /* ---- Tool page chrome -------------------------------------------------- */
 
 .tool-top{margin:0 0 22px;}
+/* Back link and the share control on one line, so the opener is three short
+   rows and the tool starts on a phone's first screen. */
+.tool-topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
 .tool-back{
   display:inline-flex;align-items:center;gap:6px;text-decoration:none;
-  font:900 12px var(--font-ui);color:var(--muted);margin-bottom:14px;
+  font:900 12px var(--font-ui);color:var(--muted);min-height:32px;
 }
 .tool-back:hover{color:var(--accent);}
 .tool-title{display:flex;align-items:center;gap:14px;margin-bottom:8px;}
-.tool-title h1{margin:0;font-size:clamp(26px,4vw,34px);}
+.tool-title h1{margin:0;font-size:clamp(24px,4vw,34px);}
 .tool-title .tool-tile__mark{margin-bottom:0;}
 .tool-lede{font-size:15px;line-height:1.6;color:var(--muted);font-weight:700;max-width:62ch;margin:0;}
 
-.tool-switch{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0 0;}
+/* The other tools, inside the Keep going strip under the tool. */
+.tool-switch{margin:20px 0 0;}
+.tool-switch__row{display:flex;flex-wrap:wrap;gap:7px;}
 .tool-switch a{
   font:900 11.5px var(--font-ui);text-decoration:none;color:var(--muted);
-  border:var(--bw) solid var(--line);border-radius:var(--radius-pill);padding:6px 13px;background:var(--white);
+  border:var(--bw) solid var(--line);border-radius:var(--radius-pill);padding:7px 13px;background:var(--white);
+  display:inline-flex;align-items:center;min-height:32px;
 }
 .tool-switch a:hover{border-color:var(--accent);color:var(--accent);}
-.tool-switch a.on{background:var(--navy);color:var(--on-accent);border-color:var(--navy);}
 
 /* ---- Panels ------------------------------------------------------------ */
 
@@ -330,7 +335,8 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 
 /* ---- Share this setup ---------------------------------------------------- */
 
-.tool-share{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:14px 0 2px;}
+.tool-share{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px;}
+.tool-share .tchip{padding:6px 12px;font-size:12px;min-height:32px;}
 .tool-share__said{font:700 12px var(--font-ui);color:var(--good-text);}
 .tool-share__url{
   flex:1;min-width:200px;padding:6px 10px;border:var(--bw) solid var(--line);
@@ -338,17 +344,28 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
   font:600 11.5px var(--font-mono);
 }
 
-/* ---- Footer link back into the course ---------------------------------- */
+/* ---- Keep going: lessons, glossary, Practice, other tools -------------- */
 
-.tool-foot{
-  margin-top:26px;padding-top:18px;border-top:var(--bw) solid var(--line);
-  display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;
-}
-.tool-foot p{margin:0;font-size:13px;font-weight:700;color:var(--muted);max-width:52ch;line-height:1.55;}
+.tool-foot{margin-top:26px;padding-top:18px;border-top:var(--bw) solid var(--line);}
+.tool-foot__h{margin:0 0 12px;font:900 18px var(--font-ui);color:var(--ink);}
+.tool-foot__cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 28px;margin-bottom:16px;}
+.tool-foot__k{margin:0 0 6px;font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+.tool-foot__list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 16px;}
+.tool-foot__list a{display:inline-flex;align-items:center;min-height:32px;font:800 14px var(--font-ui);color:var(--accent-text);}
+
+/* After each answered question: that question's lesson and glossary entry. */
+.tquiz__next{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px;margin:-2px 0 12px;font:800 13px var(--font-ui);}
+.tquiz__next-k{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+.tquiz__next a{display:inline-flex;align-items:center;min-height:32px;color:var(--accent-text);}
+.tquiz__missed-go{font-weight:800;color:var(--accent-text);white-space:nowrap;}
 
 @media(max-width:640px){
   .tpanel{padding:16px;}
-  .tool-title{gap:10px;}
+  .tool-title{gap:10px;margin-bottom:4px;}
+  .tool-title .tool-tile__mark{width:34px;height:34px;border-radius:10px;}
+  .tool-title .tool-tile__mark svg{width:20px;height:20px;}
+  .tool-topbar{margin-bottom:8px;}
+  .tool-lede{font-size:13.5px;line-height:1.5;}
   .tstat > div{flex:1 1 45%;}
 }
 
@@ -391,4 +408,7 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
   margin-top:16px;padding:clamp(22px,3.5vw,34px) clamp(22px,3.5vw,36px);
   background:var(--ctint);border-radius:var(--radius-lg);
   animation:levl-rise .5s cubic-bezier(.2,.8,.2,1) both;
+}
+@media(max-width:640px){
+  #tool-top{margin:10px 0 14px;padding:14px 16px 16px;}
 }

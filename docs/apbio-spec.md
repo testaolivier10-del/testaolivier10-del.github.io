@@ -139,6 +139,12 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    is the free one; the enzyme simulator is Premium (`tools`). Skills tools and drills are free
    for now (owner to confirm, needs-author `tools-premium`). Formula-sheet conventions: sample SD
    with n − 1, 95% CI ≈ mean ± 2 SE, T = °C + 273, R = 0.0831 L·bar/(mol·K), χ² at p = 0.05.
+   (2026-10-09, tools upgrade P1-Bio, `docs/tools-upgrade.md`) Every tool page now opens on the tool:
+   a slim hero on phones; the intro and "How this model works" are moved by `bio-tools.js` into one
+   closed "About this tool" disclosure after the tool (before its questions); a simulator's figure
+   and graph (`.bt-stage`) sit above its controls. `ApBioTools.mount`/`skillTool` take a
+   `stage(host, state)` slot drawn first. After every recorded answer and every run, a "Keep going"
+   strip links the topic's lesson, notes, up to three glossary terms and (after a miss) Review.
 10. (2026-10-03) **Free lessons: Units 1 and 2 and every skills lesson.** The brief's "the first
    lesson of each skills topic" is every skills lesson, because a skills topic has one lesson.
    `isFreeTopic` (`scripts/lib/apbio-build.mjs`) marks every topic outside the course units free;

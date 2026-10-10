@@ -57,7 +57,8 @@
     if(p){
       var v = h[1] && /^(order|missing|error)$/.test(h[1]) ? h[1] : 'order';
       showPathway(p, v, false);
-    } else showList();
+    } else if(h[0] === 'all') showList();
+    else { var d = defaultItem(); if(d) showPathway(d, firstOpen(d), false); else showList(); }
   }
   function go(hash){
     if(location.hash === hash) route(); else location.hash = hash;
@@ -122,13 +123,50 @@
     if(sel) sel.addEventListener('change', function(){ listFilter = sel.value; showList(); var ns = app.querySelector('#pw-chsel'); if(ns) ns.focus(); });
   }
 
+  /* Open on an item, not the list (docs/tools-upgrade.md, P1-A&P): the
+     first pathways in list order, within ?chapter= / ?topic=, with something
+     not yet answered right; #all is the full list. The picker above the item
+     reaches every pathways. */
+  function ordered(){
+    var q = params(), want = q.chapter || (q.topic && topicInfo(q.topic) ? topicInfo(q.topic).chapter : '');
+    var order = cur().chapters.map(function(c){ return c.id; }), topicOrder = cur().topics.map(function(t){ return t.id; });
+    var all = DATA.pathways.slice().sort(function(a, b){
+      return order.indexOf(chapterOf(a)) - order.indexOf(chapterOf(b)) || topicOrder.indexOf(a.topic) - topicOrder.indexOf(b.topic);
+    });
+    var inCh = all.filter(function(x){ return chapterOf(x) === want; });
+    return inCh.length ? inCh : all;
+  }
+  function defaultItem(){
+    var list = ordered(), q = params();
+    if(q.topic){ var t = list.filter(function(x){ return x.topic === q.topic; }); if(t.length) list = t.concat(list.filter(function(x){ return t.indexOf(x) < 0; })); }
+    for(var i = 0; i < list.length; i++) if(VARIANTS.some(function(v){ return status(itemId(list[i], v.key)) !== 'right'; })) return list[i];
+    return list[0] || null;
+  }
+  function addPicker(p){
+    var host = app.querySelector('.pw-pickhost'), K = window.AnpToolKit;
+    if(!host || !K) return;
+    var chapters = [];
+    var all = DATA.pathways.slice(), order = cur().chapters.map(function(c){ return c.id; }), topicOrder = cur().topics.map(function(t){ return t.id; });
+    all.sort(function(a, b){ return order.indexOf(chapterOf(a)) - order.indexOf(chapterOf(b)) || topicOrder.indexOf(a.topic) - topicOrder.indexOf(b.topic); });
+    all.forEach(function(x){ var c = chapterOf(x); if(chapters.indexOf(c) < 0) chapters.push(c); });
+    K.picker(host, {
+      label: 'Pathway', noun: 'pathways', current: p.id, allHref: '#all', allLabel: 'All pathways by chapter',
+      groups: chapters.map(function(c){ var ch = chapterInfo(c); return { title: ch ? ch.title : c, items: all.filter(function(x){ return chapterOf(x) === c; }).map(function(x){
+        var t = topicInfo(x.topic);
+        return { id: x.id, title: x.title, meta: t ? t.title : '', href: '#' + x.id, done: VARIANTS.every(function(v){ return status(itemId(x, v.key)) === 'right'; }) };
+      }) }; })
+    });
+  }
+
+  function firstOpen(p){ for(var i = 0; i < VARIANTS.length; i++) if(status(itemId(p, VARIANTS[i].key)) !== 'right') return VARIANTS[i].key; return 'order'; }
+
   /* ----------------------------------------------------------- pathway view */
   function showPathway(p, variant, focusTab){
     var t = topicInfo(p.topic);
     var idx = DATA.pathways.indexOf(p);
     var next = DATA.pathways[(idx + 1) % DATA.pathways.length];
     app.innerHTML = '<div class="pw pw-view">' +
-      '<p class="pw-back"><a href="#">← All pathways</a></p>' +
+      '<div class="pw-pickhost"></div>' +
       '<h2 class="pw-title" tabindex="-1">' + esc(p.title) + '</h2>' +
       '<p class="anp-small pw-meta">Topic: ' + topicLink(p.topic) + ' · ' + p.steps.length + ' steps</p>' +
       '<p class="pw-intro">' + html(p.intro) + '</p>' +
@@ -140,6 +178,7 @@
       '<div id="pw-panel" class="pw-panel" role="tabpanel" aria-labelledby="pw-tab-' + variant + '"></div>' +
       '<p class="pw-next"><a class="btn-outline" href="#' + esc(next.id) + '">Next pathway: ' + esc(next.title) + ' →</a></p>' +
       '</div>';
+    addPicker(p);
     var tabs = app.querySelectorAll('.pw-tab');
     tabs.forEach(function(b, k){
       b.addEventListener('click', function(){ go('#' + p.id + '/' + b.getAttribute('data-v')); });
@@ -330,6 +369,8 @@
         return '<li><b>' + html(s.text) + '</b> <span>' + html(s.why) + '</span></li>';
       }).join('') + '</ol></details>';
     res.appendChild(box);
+    if(window.AnpToolKit) window.AnpToolKit.strip(box, { topic: p.topic, text: p.title + ' ' + p.intro,
+      structures: p.steps.map(function(st){ return st.label; }) });
     var fig = box.querySelector('.pw-fig');
     var svg = diagram(p, mark);
     fig.appendChild(svg);

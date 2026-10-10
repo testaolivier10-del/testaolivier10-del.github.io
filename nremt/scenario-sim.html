@@ -111,6 +111,13 @@
   .btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
   .btn-secondary:active{transform:translateY(4px);box-shadow:0 0 0 var(--line);}
 
+  .debrief-review{margin:14px 0 0;padding:12px 14px;border-radius:var(--radius);background:var(--tint-amber);font-size:13.5px;font-weight:700;color:var(--ink);}
+  .debrief-review a{color:var(--accent-text);}
+  @media (max-width:640px){
+    .page-head{padding:18px 20px;}
+    .page-head h1{font-size:24px;margin-bottom:4px;}
+    .page-head .lede{font-size:14px;}
+  }
   .path-log{margin-top:24px;padding-top:18px;border-top:2px solid var(--line);}
   .path-log-title{
     font:900 10.5px var(--font-ui);color:var(--muted);
@@ -2076,6 +2083,33 @@ function rewindTo(i){
   }
 }
 
+/* The debrief's misses. At a fork, the choice written without a
+   `consequence` is the one the case teaches (73 of 82 forks have exactly
+   one); a choice that carries one is a step skipped or done out of order. So
+   at the end of a call every fork on the path is scored once: the better
+   choice taken is right, a consequence choice where a better one was on offer
+   is a miss and goes to Review (assets/tool-results.js), linking back to this
+   scenario. Forks where every option carries a consequence are not scored. */
+function recordDebrief(){
+  if(!window.NremtToolResults) return 0;
+  let missed = 0;
+  pathLog.forEach(p => {
+    const node = currentScenario.nodes[p.fromNode];
+    if(!node || !node.choices || node.choices.length < 2) return;
+    const better = node.choices.filter(c => !c.consequence);
+    if(!better.length) return;
+    const picked = node.choices[p.index];
+    const correct = !picked.consequence;
+    if(!correct) missed++;
+    window.NremtToolResults.record({
+      tool: 'scenario-sim', id: currentScenario.id + ':' + p.fromNode, correct,
+      label: currentScenario.title + ': ' + better[0].text,
+      href: 'scenario-sim.html?scenario=' + currentScenario.id
+    });
+  });
+  return missed;
+}
+
 function renderNode(consequenceText){
   const node = currentScenario.nodes[currentNodeId];
   const box = document.getElementById('simBox');
@@ -2100,6 +2134,7 @@ function renderNode(consequenceText){
   }
 
   if (node.ending) {
+    const missedSteps = recordDebrief();
     box.innerHTML = `
       <div class="sim-header">
         <span class="sim-domain">${currentScenario.domain}</span>
@@ -2107,6 +2142,7 @@ function renderNode(consequenceText){
       </div>
       <span class="ending-badge ${node.ending}">${node.ending === 'good' ? 'Good outcome' : node.ending === 'bad' ? 'Poor outcome' : 'Mixed outcome'}</span>
       <p class="node-text">${node.text}</p>
+      ${missedSteps ? `<p class="debrief-review">${missedSteps} skipped or out-of-order step${missedSteps === 1 ? '' : 's'} went to your <a href="review.html">Review queue</a>. Each leaves it when you take the better choice on a later run.</p>` : ''}
       ${window.LevlNextStep ? LevlNextStep('nremt', { tags: ['nremt:' + currentScenario.id],
         also: [{ label: 'Try this scenario again', act: () => startScenario(currentScenario.id) }] }) : ''}
       <div class="path-log">
@@ -2176,8 +2212,14 @@ function renderNode(consequenceText){
 // Called now and whenever access changes. A run already under way when access
 // lapses is left to finish; the next pick meets the gate.
 G.onChange(renderPicker);
+// From Review: scenario-sim.html?scenario=<id> opens that call.
+(function(){
+  const id = new URLSearchParams(location.search).get('scenario');
+  if(id && SCENARIOS.some(s => s.id === id) && G.canUse('scenarios')) startScenario(id);
+})();
 });
 </script>
+<script src="assets/tool-results.js" defer></script>
 <script src="assets/nav.js" defer></script>
 </body>
 </html>

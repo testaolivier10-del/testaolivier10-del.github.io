@@ -24,8 +24,9 @@
    with "control bleeding immediately" is the actual failure mode, so those are
    the choices offered.
 
-   Nothing is scored, kept, or reported. This is a study aid on a page whose
-   own banner says it is not a scored skill sheet, and it stays that way. */
+   No score. A miss is kept for Review (assets/tool-results.js) with a link to
+   the diagram it came from, and getting the same step right later clears it.
+   flowcharts.html#flow-<slug> opens on that diagram. */
 (function(){
   var mount = document.getElementById('flowDrill');
   var host  = document.getElementById('flowDiagrams');
@@ -53,13 +54,18 @@
   /* One entry per <h2> + .diagram-card pair, in document order. `steps` is the
      spine of the chart — the boxes you meet going straight down — and each
      branch hangs off whichever step preceded it. */
+  function slug(t){ return String(t).toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60); }
+
   function readDiagrams(){
     var out = [];
     host.querySelectorAll('.diagram-card').forEach(function(card){
       var title = '';
       var prev = card.previousElementSibling;
       while(prev && !title){
-        if(prev.tagName === 'H2') title = text(prev);
+        if(prev.tagName === 'H2'){
+          title = text(prev);
+          if(!prev.id) prev.id = 'flow-' + slug(title);
+        }
         prev = prev.previousElementSibling;
       }
 
@@ -79,7 +85,7 @@
         }
       });
 
-      if(steps.length > 1 || branches.length) out.push({ title: title, steps: steps, branches: branches });
+      if(steps.length > 1 || branches.length) out.push({ title: title, anchor: 'flow-' + slug(title), steps: steps, branches: branches });
     });
     return out;
   }
@@ -127,6 +133,7 @@
     return {
       kind: 'next',
       title: d.title,
+      anchor: d.anchor,
       lead: 'What comes next?',
       context: before.map(function(s){ return s.text; }),
       correct: correct,
@@ -149,6 +156,7 @@
     return {
       kind: 'branch',
       title: d.title,
+      anchor: d.anchor,
       lead: 'The decision goes this way — now what?',
       context: [b.from],
       branchLabel: arm.label,
@@ -235,6 +243,12 @@
       blank.classList.add('drill-step--filled');
     }
 
+    if(window.NremtToolResults) window.NremtToolResults.record({
+      tool: 'flowcharts', id: current.anchor + ':' + slug(current.correct), correct: right,
+      label: current.title + ': ' + (current.branchLabel ? 'after \u201c' + current.context[0] + '\u201d, ' + current.branchLabel : 'the step after \u201c' + current.context[current.context.length - 1] + '\u201d'),
+      href: 'flowcharts.html#' + current.anchor
+    });
+
     var after = document.getElementById('drillAfter');
     after.innerHTML =
       '<div class="drill-verdict ' + (right ? 'ok' : 'no') + '">' +
@@ -242,6 +256,7 @@
         (current.note ? ' ' + esc(current.note) : '') +
         (right ? '' : ' The step that follows is shown above — the option you picked belongs to a different protocol.') +
       '</div>' +
+      (right ? '' : '<a class="drill-see" href="#' + current.anchor + '" data-see="' + current.anchor + '">See the whole diagram</a> ') +
       '<button type="button" class="drill-next" id="drillNext">Next</button>';
     var next = document.getElementById('drillNext');
     next.addEventListener('click', render);
@@ -251,18 +266,39 @@
   /* ---- Mode switch ------------------------------------------------------- */
 
   var toggle = document.getElementById('flowMode');
+  function setMode(mode){
+    if(toggle) toggle.querySelectorAll('button').forEach(function(x){
+      var on = x.getAttribute('data-mode') === mode;
+      x.classList.toggle('on', on);
+      x.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    host.hidden = (mode !== 'read');
+    mount.hidden = (mode !== 'drill');
+    if(mode === 'drill' && !current) render();
+  }
   if(toggle){
     toggle.querySelectorAll('button').forEach(function(b){
-      b.addEventListener('click', function(){
-        var mode = b.getAttribute('data-mode');
-        toggle.querySelectorAll('button').forEach(function(x){
-          x.classList.toggle('on', x === b);
-          x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
-        });
-        host.hidden = (mode !== 'read');
-        mount.hidden = (mode !== 'drill');
-        if(mode === 'drill' && !current) render();
-      });
+      b.addEventListener('click', function(){ setMode(b.getAttribute('data-mode')); });
     });
   }
+
+  // A diagram by its anchor: from a miss's "See the whole diagram", or from Review.
+  function showDiagram(id){
+    var h = document.getElementById(id);
+    if(!h) return;
+    setMode('read');
+    h.setAttribute('tabindex', '-1');
+    h.scrollIntoView({ block: 'start', behavior: window.LevlMotion && !window.LevlMotion.reduced() ? 'smooth' : 'auto' });
+    h.focus({ preventScroll: true });
+  }
+  mount.addEventListener('click', function(e){
+    var a = e.target.closest('[data-see]');
+    if(!a) return;
+    e.preventDefault();
+    history.replaceState(null, '', '#' + a.getAttribute('data-see'));
+    showDiagram(a.getAttribute('data-see'));
+  });
+  function fromHash(){ if(location.hash.indexOf('#flow-') === 0) showDiagram(location.hash.slice(1)); }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
 })();

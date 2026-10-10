@@ -1091,6 +1091,7 @@
 
           return {
             id: 'ir:' + band.label,
+            term: 'wavenumber', topic: 'ir',
             prompt: 'An IR spectrum shows a <b>' + esc(band.shape) + '</b> absorption at about <b>' +
                     at + ' cm⁻¹</b>. What is it?',
             options: opts,
@@ -1116,6 +1117,7 @@
 
         return {
           id: 'du:' + cmp.name,
+          term: 'degree-of-unsaturation',
           prompt: 'How many <b>degrees of unsaturation</b> does <span class="tformula">' +
                   esc(cmp.formula) + '</span> have?',
           options: duOpts.map(function(v){
