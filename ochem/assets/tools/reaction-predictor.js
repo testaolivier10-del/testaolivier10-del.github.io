@@ -663,40 +663,54 @@
   var SHORT = { mebr:'CH₃Br', prbr:'1° propyl', neopentyl:'Neopentyl', bubr2:'2° butyl', cyhexbr:'Cyclohexyl',
                 tbubr:'3° butyl', mebubr:'3° pentyl', bnbr:'Benzyl' };
 
+  /* Landing order (owner brief 2026-10-09): one mode switch and one plain
+     first step, then the flask and the two choices that matter most
+     (substrate, reagent). Solvent, heat, Shuffle and Draw your own sit behind
+     one disclosure whose summary always says the current solvent and
+     temperature, so nothing that decides the answer is hidden from view. The
+     meter and the product are the payoff, side by side on a wide screen; the
+     verdict in full and the four arguments are behind "Why?". Nothing here
+     is sticky: the two rows are aligned grid rows, so no panel can slide
+     over another while scrolling. */
   root.innerHTML =
+    '<div class="rp-top">' +
+      '<div class="tseg" id="rpMode" role="group" aria-label="Mode">' +
+        '<button type="button" data-mode="explore" class="on" aria-pressed="true">Explore</button>' +
+        '<button type="button" data-mode="predict" aria-pressed="false">Predict first</button>' +
+      '</div>' +
+      '<p class="rp-step" id="rpStep"></p>' +
+    '</div>' +
     '<div class="rp-grid">' +
       '<div class="tpanel rp-flask">' +
-        '<div class="tpanel__head"><span>The flask</span>' +
-          '<div class="tseg" id="rpMode" role="group" aria-label="Mode">' +
-            '<button type="button" data-mode="explore" class="on" aria-pressed="true">Explore</button>' +
-            '<button type="button" data-mode="predict" aria-pressed="false">Predict first</button>' +
-          '</div></div>' +
+        '<div class="tpanel__head"><span>The flask</span></div>' +
         '<div class="rp-stage tstage" id="rpStage"></div>' +
         '<p class="rp-read" id="rpRead"></p>' +
       '</div>' +
       '<div class="tpanel rp-ctl">' +
-        '<div class="tpanel__head"><span>Change the conditions</span></div>' +
-          '<p class="rp-k" id="rpSubK">Substrate</p>' +
+        '<div class="tpanel__head"><span>Change the flask</span></div>' +
+          '<p class="rp-k" id="rpSubK"><span class="rp-n">1</span>Substrate</p>' +
           '<div class="tchips rp-chips" id="rpSub" role="group" aria-labelledby="rpSubK"></div>' +
-          '<p class="rp-k" id="rpRgtK">Reagent</p>' +
+          '<p class="rp-k" id="rpRgtK"><span class="rp-n">2</span>Reagent</p>' +
           '<div class="tchips rp-chips" id="rpRgt" role="group" aria-labelledby="rpRgtK"></div>' +
           '<p class="rp-rgtnote" id="rpRgtNote"></p>' +
-          '<div class="rp-pair">' +
-            '<div><p class="rp-k" id="rpSolvK">Solvent</p>' +
-              '<div class="tseg" id="rpSolv" role="group" aria-labelledby="rpSolvK"></div></div>' +
-            '<div><p class="rp-k" id="rpHeatK">Temperature</p>' +
-              '<div class="tseg" id="rpHeat" role="group" aria-labelledby="rpHeatK">' +
-                '<button type="button" data-heat="0" class="on" aria-pressed="true">Room temp</button>' +
-                '<button type="button" data-heat="1" aria-pressed="false">Heat</button>' +
-              '</div></div>' +
-          '</div>' +
-          '<div class="trow rp-more">' +
-            '<button type="button" class="tchip" id="rpShuffle">Shuffle the flask</button>' +
-            '<button type="button" class="tchip tchip--ghost" id="rpBuildToggle">Draw your own substrate &rarr;</button>' +
-          '</div>' +
-          '<div id="rpBuilder" hidden></div>' +
-          '<div id="rpBuildMsg"></div>' +
-          '<div id="rpSend"></div>' +
+          '<details class="rp-opts" id="rpOpts"><summary><span class="rp-n">3</span>Solvent and heat <span class="rp-opts__now" id="rpOptsNow"></span></summary>' +
+            '<div class="rp-pair">' +
+              '<div><p class="rp-k" id="rpSolvK">Solvent</p>' +
+                '<div class="tseg" id="rpSolv" role="group" aria-labelledby="rpSolvK"></div></div>' +
+              '<div><p class="rp-k" id="rpHeatK">Temperature</p>' +
+                '<div class="tseg" id="rpHeat" role="group" aria-labelledby="rpHeatK">' +
+                  '<button type="button" data-heat="0" class="on" aria-pressed="true">Room temp</button>' +
+                  '<button type="button" data-heat="1" aria-pressed="false">Heat</button>' +
+                '</div></div>' +
+            '</div>' +
+            '<div class="trow rp-more">' +
+              '<button type="button" class="tchip" id="rpShuffle">Shuffle the flask</button>' +
+              '<button type="button" class="tchip tchip--ghost" id="rpBuildToggle">Draw your own substrate &rarr;</button>' +
+            '</div>' +
+            '<div id="rpBuilder" hidden></div>' +
+            '<div id="rpBuildMsg"></div>' +
+            '<div id="rpSend"></div>' +
+          '</details>' +
       '</div>' +
       '<div class="tpanel rp-side">' +
         '<div class="tpanel__head"><span id="rpMeterH">Where the flask goes</span><span class="tmuted" id="rpScore"></span></div>' +
@@ -717,7 +731,7 @@
         '<p class="rp-delta" id="rpDelta"></p>' +
         '<div class="sr-only" aria-live="polite" id="rpLive"></div>' +
       '</div>' +
-      '<div class="rp-out" id="rpVerdict"></div>' +
+      '<div class="tpanel rp-out" id="rpVerdict"></div>' +
     '</div>';
 
   /* ---- Draw your own substrate ------------------------------------------- */
@@ -892,6 +906,12 @@
     var sh = shares(p);
     sync();
 
+    document.getElementById('rpStep').innerHTML = state.mode === 'predict'
+      ? (state.revealed ? 'Change anything, or tap <b>Next flask</b>, to try another.'
+                        : '<b>Read the flask, then tap the corner of the meter you think wins.</b>')
+      : '<b>Pick a substrate and a reagent.</b> The meter shows which mechanism wins.';
+    document.getElementById('rpOptsNow').textContent = '· ' + state.solvent.name + ', ' + (state.heat ? 'heat' : 'room temp');
+
     document.getElementById('rpScore').textContent =
       state.mode === 'predict' && state.score.total ? state.score.right + ' of ' + state.score.total + ' right' : '';
 
@@ -985,8 +1005,6 @@
       } else {
         line = '<b>' + esc(changed) + '</b> made no difference here.';
       }
-    } else if(!show){
-      line = 'Read the flask: substrate class, then the reagent, then the solvent and heat.';
     }
     delta.innerHTML = line;
     if(show) prev = now;
@@ -1001,54 +1019,55 @@
     var elV = document.getElementById('rpVerdict');
     if(!show){ elV.innerHTML = ''; return; }
 
-    var html = '';
+    /* The payoff, short: the call (or your result), the split as a bar, the
+       product. Everything that explains it, the verdict in full, why the
+       split is not even, the product note and the four arguments, opens
+       under "Why?". */
+    var html = '<div class="tpanel__head"><span>What you get</span></div>';
+    var mix = mixture(state, p);
     if(state.mode === 'predict'){
       var right = state.guess === p.major;
       html += '<div class="tnote ' + (right ? 'tnote--good' : 'tnote--bad') + '" tabindex="-1" id="rpCall">' +
         '<span class="tnote__k">' + (right ? 'Correct: ' + esc(p.major) : 'Not quite: it is ' + esc(p.major) + ', not ' + esc(state.guess)) + '</span>' +
-        esc(p.verdict) + '</div>';
+        (p.minor ? 'With some ' + esc(p.minor) + ' alongside it.' : (p.major === 'No reaction' ? 'Nothing worth writing down happens here.' : 'One clear winner.')) + '</div>';
     } else if(focusPath){
       var fb = p.blocked && p.blocked[focusPath];
       var fr = (p.reasons || []).filter(function(r){ return r.votes && r.votes[focusPath]; });
       html += '<div class="tnote tnote--info"><span class="tnote__k">Why ' + (fb ? 'not ' : '') + esc(focusPath) + (fb ? '' : ' (' + (sh && sh[focusPath] ? '≈' + sh[focusPath] + '%' : 'not the main pathway') + ')') + '</span>' +
         (fb ? esc(fb) + ' ' : '') +
         (fr.length && !fb ? fr.map(function(r){ return '<b>' + esc(factorShort(r)) + ':</b> ' + esc(r.text); }).join(' ') : '') +
-        (!fb && !fr.length ? 'Nothing in this flask argues for it.' : '') +
-        (!fb && p.major !== focusPath ? ' <b>Verdict:</b> ' + esc(p.verdict) : '') + '</div>';
-    } else {
-      html += '<div class="tnote tnote--info"><span class="tnote__k">' + esc(p.major) + (p.minor ? ', some ' + esc(p.minor) : '') + '</span>' +
-        esc(p.verdict) + '</div>';
+        (!fb && !fr.length ? 'Nothing in this flask argues for it.' : '') + '</div>';
     }
+    html += '<p class="rp-call"><b>' + esc(p.major) + '</b>' + (p.minor ? ', some ' + esc(p.minor) : '') + '</p>';
 
-    var mix = mixture(state, p);
     if(mix && mix.length > 1){
-      var why = mix[2] && mix[2].why && mix[2].why.length ? mix[2].why.join(', and ') : null;
-      html += '<div class="tnote tnote--warn"><span class="tnote__k">Roughly what you get</span>' +
-        '<div class="rp-mix">' +
+      html += '<div class="rp-mix" role="img" aria-label="Roughly ' + esc(mix[0].path) + ' ' + mix[0].pct + '%, ' + esc(mix[1].path) + ' ' + mix[1].pct + '%">' +
           mix.slice(0, 2).map(function(m, i){
             return '<div class="rp-mix__bar' + (i === 0 ? ' is-major' : '') + '" style="flex:' + m.pct + ';">' +
               '<span>' + esc(m.path) + '</span><b>' + m.pct + '%</b></div>';
           }).join('') +
-        '</div>' +
-        'These are competitions, not switches: a real flask gives you both, and the useful question is how lopsided. ' +
-        (why ? 'Here ' + esc(why) + '. ' : '') +
-        'Treat the split as a band rather than a yield: the actual numbers move with concentration, the exact solvent and how long it was left.' +
-      '</div>';
+        '</div>';
     }
 
     var pm = productDrawing(state.sub, state.rgt, p);
     if(p.product && p.product !== '—'){
-      html += '<div class="tnote tnote--info rp-product"><span class="tnote__k">Major product' +
+      html += '<div class="rp-product"><span class="tnote__k">Major product' +
         (p.alkene ? ' · ' + esc(p.alkene) : '') + '</span>' +
         (pm && Mol ? Mol.svg(pm, { caption:'', label:'Major product: ' + p.product }) : '') +
         '<span class="tformula">' + esc(p.product) + '</span> <span class="tmuted">+ Br⁻</span>' +
-        (p.productNote ? '<div style="margin-top:6px;">' + esc(p.productNote) + '</div>' : '') +
       '</div>';
-    } else if(p.productNote){
-      html += '<div class="tnote"><span class="tnote__k">Product</span>' + esc(p.productNote) + '</div>';
     }
 
-    html += '<details class="rp-args"><summary>The four arguments in full</summary>' +
+    var why = mix && mix[2] && mix[2].why && mix[2].why.length ? mix[2].why.join(', and ') : null;
+    html += '<details class="rp-args"' + (state.mode === 'predict' && state.guess !== p.major ? ' open' : '') + '><summary>Why?</summary>' +
+      '<p>' + esc(p.verdict) + '</p>' +
+      (mix && mix.length > 1
+        ? '<p class="tmuted"><b>Roughly what you get.</b> These are competitions, not switches: a real flask gives you both, and the useful question is how lopsided. ' +
+          (why ? 'Here ' + esc(why) + '. ' : '') +
+          'Treat the split as a band rather than a yield: the actual numbers move with concentration, the exact solvent and how long it was left.</p>'
+        : '') +
+      (p.productNote ? '<p><b>' + (p.product && p.product !== '—' ? 'The product.' : 'Product.') + '</b> ' + esc(p.productNote) + '</p>' : '') +
+      '<p class="rp-k">The four arguments</p>' +
       p.reasons.map(function(r){
         return '<p><b>' + esc(r.factor) + '</b> <span class="tmuted">argues ' + esc(r.leans) + '.</span> ' + esc(r.text) + '</p>';
       }).join('') +
@@ -1100,6 +1119,7 @@
     if(q2.build && window.OchemToolHandoff){
       var rpToggle = document.getElementById('rpBuildToggle');
       if(rpToggle){
+        document.getElementById('rpOpts').open = true;
         rpToggle.click();
         if(rpBuilderApi) rpBuilderApi.build(q2.build);
       }

@@ -192,19 +192,33 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 
 /* ---- Reaction Predictor: the flask, the controls, the pull ---------------
 
-   Phone order is the flask, the meter, the controls, the verdict: the thing
-   you change and the thing that moves stay on one screen. On a desktop the
-   flask and controls stack on the left and the meter sits beside them. */
+   Desktop: two aligned rows, the flask beside the meter, then the controls
+   beside the result. Nothing is sticky: a sticky meter used to slide down
+   over the result cards on wide screens (owner report 2026-10-09). Phone:
+   flask, meter, controls, result: the meter sits right under what it reads. */
+.rp-top{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;margin:0 0 14px;}
+.rp-step{margin:0;font-size:14px;line-height:1.5;font-weight:700;color:var(--muted);}
+.rp-step b{color:var(--ink);font-weight:900;}
 .rp-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:0 16px;
-  grid-template-areas:"flask side" "ctl side" "out out";align-items:start;}
-.rp-flask{grid-area:flask;}
+  grid-template-areas:"flask side" "ctl out";align-items:start;}
+.rp-flask{grid-area:flask;align-self:stretch;}
 .rp-ctl{grid-area:ctl;}
-.rp-side{grid-area:side;position:sticky;top:calc(var(--site-header-h,64px) + 12px);}
+.rp-side{grid-area:side;align-self:stretch;}
 .rp-out{grid-area:out;}
 @media(max-width:820px){
   .rp-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"flask" "side" "ctl" "out";}
-  .rp-side{position:static;}
 }
+.rp-n{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;margin-right:7px;
+  background:var(--tint-accent);color:var(--accent-text);font:900 10.5px var(--font-ui);letter-spacing:0;vertical-align:1px;}
+.rp-opts{margin-top:14px;border-top:var(--bw) solid var(--line-soft);padding-top:6px;}
+.rp-opts > summary{cursor:pointer;min-height:40px;display:flex;align-items:center;flex-wrap:wrap;gap:0 6px;
+  font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);list-style:none;}
+.rp-opts > summary::-webkit-details-marker{display:none;}
+.rp-opts > summary::after{content:"Change";margin-left:auto;font:900 12px var(--font-ui);letter-spacing:0;text-transform:none;color:var(--accent-text);}
+.rp-opts[open] > summary::after{content:"Hide";}
+.rp-opts__now{text-transform:none;letter-spacing:0;font-weight:800;color:var(--ink);}
+.rp-call{margin:0 0 8px;font:800 15px var(--font-ui);color:var(--muted);}
+.rp-call b{font:900 22px var(--font-mono);color:var(--ink);margin-right:2px;}
 .rp-stage{position:relative;padding:4px 4px 0;}
 .rp-stage .scene{padding:4px 0 0;}
 .rp-stage .omol svg{max-width:460px;}
@@ -265,8 +279,7 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
    wrong) draws its ring as before. --mol-bg is the stage color. */
 .tool-root{--mol-bg:var(--paper);--el-O:#D0342C;--el-N:#2756C5;--el-Cl:#1F8A3B;--el-Br:#A2462A;--el-I:#7B3FA8;--el-F:#3C8E2E;--el-S:#B07A00;--el-P:#C35A12;}
 :root[data-theme="dark"] .tool-root{--el-O:#FF8A80;--el-N:#8FB0FF;--el-Cl:#7BD88F;--el-Br:#E9A27F;--el-I:#C9A0F0;--el-F:#9EE08A;--el-S:#F2CA5C;--el-P:#F6A86B;}
-.rp-product{--mol-bg:var(--tint-accent);}
-:root[data-theme="dark"] .rp-product{--mol-bg:#16302B;}
+.rp-product{--mol-bg:var(--white);margin-top:4px;}
 .tool-root .omol .atom circle:not(.atom-hit):not(.lp-dot){fill:transparent;stroke:none;}
 .tool-root .omol .atom circle.atom-knock{fill:var(--mol-bg);stroke:none;}
 .tool-root .omol .atom:not(.atom--static) circle:not(.atom-hit):not(.lp-dot):not(.atom-knock){stroke:var(--line);stroke-width:1.5;stroke-dasharray:3 3;}
@@ -326,12 +339,11 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .rp-meter.is-predict .rp-corner:hover{background:var(--tint-accent);}
 .rp-delta{min-height:20px;margin:12px 0 0;font-size:13px;font-weight:700;color:var(--muted);line-height:1.5;text-align:center;}
 .rp-delta b{color:var(--ink);}
-.rp-out{margin-bottom:16px;}
 .rp-out:empty{display:none;}
 .rp-product .scene{background:transparent;border:0;padding:4px 0;margin:2px 0 4px;}
 .rp-product .omol svg{max-width:340px;margin:0;}
-.rp-args{margin-top:4px;font-size:13.2px;line-height:1.6;font-weight:700;}
-.rp-args summary{cursor:pointer;font:900 12.5px var(--font-ui);color:var(--accent-text);min-height:32px;display:flex;align-items:center;}
+.rp-args{margin-top:10px;border-top:var(--bw) solid var(--line-soft);padding-top:4px;font-size:13.2px;line-height:1.6;font-weight:700;}
+.rp-args summary{cursor:pointer;font:900 13px var(--font-ui);color:var(--accent-text);min-height:40px;display:flex;align-items:center;}
 .rp-args p{margin:8px 0;}
 @media(max-width:430px){
   .rp-corner{padding:7px 8px;}

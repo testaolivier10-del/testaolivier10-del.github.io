@@ -101,7 +101,7 @@
       name: 'Reaction Predictor',
       icon: ICONS.flask,
       tagline: 'SN1, SN2, E1 or E2 — and why, factor by factor.',
-      blurb: 'Substrate, reagent, solvent. Commit to a prediction, then see the four factors that decide it.',
+      blurb: 'Pick a substrate and a reagent and see whether it goes SN1, SN2, E1 or E2.',
       teaches: 'Substitution vs. elimination',
       topic: ['sn1', 'sn2', 'e1', 'e2'],
       terms: ['sn1-reaction', 'sn2-reaction', 'e1-reaction', 'e2-reaction']
