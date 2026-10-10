@@ -375,14 +375,15 @@
 
     var markers = c.ir.map(function(p, i){
       var on = highlight === i;
-      return '<g class="sp-peak' + (on ? ' is-on' : '') + '" data-peak="' + i + '" tabindex="0" role="button">' +
+      return '<g class="sp-peak' + (on ? ' is-on' : '') + '" data-peak="' + i + '" tabindex="0" role="button" aria-pressed="' + (on ? 'true' : 'false') + '"' +
+        ' aria-label="' + esc(p.cm + ' per centimetre, ' + p.label) + '">' +
         '<circle cx="' + irX(p.cm).toFixed(1) + '" cy="' + irY(100 - p.d).toFixed(1) + '" r="' + (on ? 7 : 5) + '" ' +
           'fill="' + (on ? 'var(--accent)' : 'var(--white)') + '" stroke="var(--accent)" stroke-width="2"/>' +
         '<title>' + esc(p.label) + '</title>' +
       '</g>';
     }).join('');
 
-    return '<svg viewBox="0 0 ' + IR_W + ' ' + IR_H + '" role="img" aria-label="Infrared spectrum of ' + esc(c.name) + '">' +
+    return '<svg viewBox="0 0 ' + IR_W + ' ' + IR_H + '" role="group" aria-label="Infrared spectrum of ' + esc(c.name) + '">' +
       grid +
       '<line x1="' + IR_L + '" y1="' + (IR_H - IR_B) + '" x2="' + (IR_W - 10) + '" y2="' + (IR_H - IR_B) + '" stroke="var(--line)" stroke-width="1.5"/>' +
       '<line x1="' + IR_L + '" y1="' + IR_T + '" x2="' + IR_L + '" y2="' + (IR_H - IR_B) + '" stroke="var(--line)" stroke-width="1.5"/>' +
@@ -431,7 +432,8 @@
                  'x2="' + (nmX(s.ppm) + off).toFixed(1) + '" y2="' + (base - lh).toFixed(1) + '" ' +
                  'stroke="' + (on ? 'var(--accent)' : 'var(--ink)') + '" stroke-width="2" stroke-linecap="round"/>';
       }
-      return '<g class="sp-sig' + (on ? ' is-on' : '') + '" data-sig="' + i + '" tabindex="0" role="button">' +
+      return '<g class="sp-sig' + (on ? ' is-on' : '') + '" data-sig="' + i + '" tabindex="0" role="button" aria-pressed="' + (on ? 'true' : 'false') + '"' +
+        ' aria-label="' + esc(s.ppm.toFixed(2) + ' ppm, ' + s.h + ' H, ' + (MULT_NAME[s.mult] || s.mult) + ', ' + s.label) + '">' +
         '<rect x="' + (nmX(s.ppm) - 22) + '" y="' + (base - h - 26) + '" width="44" height="' + (h + 30) + '" fill="transparent"/>' +
         lines +
         '<text class="sp-int" x="' + nmX(s.ppm).toFixed(1) + '" y="' + (base - h - 14).toFixed(1) + '" text-anchor="middle">' + s.h + 'H</text>' +
@@ -444,7 +446,7 @@
         '<text class="sp-axis" x="' + nmX(p).toFixed(1) + '" y="' + (base + 15) + '" text-anchor="middle">' + p + '</text>';
     }).join('');
 
-    return '<svg viewBox="0 0 ' + NM_W + ' ' + NM_H + '" role="img" aria-label="Proton NMR spectrum of ' + esc(c.name) + '">' +
+    return '<svg viewBox="0 0 ' + NM_W + ' ' + NM_H + '" role="group" aria-label="Proton NMR spectrum of ' + esc(c.name) + '">' +
       grid +
       '<line x1="' + NM_L + '" y1="' + base + '" x2="' + (NM_W - 14) + '" y2="' + base + '" stroke="var(--line)" stroke-width="1.5"/>' +
       '<text class="sp-axis" x="' + (NM_W / 2) + '" y="' + (NM_H - 3) + '" text-anchor="middle">chemical shift (ppm)</text>' +
@@ -467,6 +469,76 @@
   var compound = COMPOUNDS[0];
   var hlIR = null, hlNMR = null;
   var puzzle = null, puzzleGuess = null;
+  /* ---- Peaks and the hydrogens that make them ----------------------------
+
+     The whole skill in ¹H NMR is the link between a signal and a set of
+     hydrogens, so the predictor draws the molecule beside the spectrum and
+     makes the link run both ways: tap a signal and its hydrogens light up,
+     tap a carbon (or O, N) and its signal lights up. For the tabulated
+     compounds the map below says which drawn atom carries each signal's
+     hydrogens, signal by signal in the order the compound lists them; for a
+     structure the student drew, spectra-predict.js reports the atoms itself.
+     Styrene's two =CH₂ hydrogens are different signals on one drawn carbon,
+     so tapping that carbon lights both. */
+  var NMR_ATOMS = {
+    ethanol:      { f:'CH3CH2OH',            sig:[['a1'],['a3'],['a2']] },
+    acetone:      { f:'CH3COCH3',            sig:[['a1','a4']] },
+    acetic:       { f:'CH3COOH',             sig:[['a1'],['a4']] },
+    etac:         { f:'CH3COOCH2CH3',        sig:[['a6'],['a1'],['a5']] },
+    toluene:      { f:'toluene',             sig:[['a7'],['r2','r3','r4','r5','r6']] },
+    benzaldehyde: { f:'benzaldehyde',        sig:[['a7'],['r3','r4','r5'],['r2','r6']] },
+    ether:        { f:'CH3CH2OCH2CH3',       sig:[['a1','a5'],['a2','a4']] },
+    ethylamine:   { f:'CH3CH2NH2',           sig:[['a1'],['a3'],['a2']] },
+    hexyne:       { f:'HC#CCH2CH2CH2CH3',    sig:[['a6'],['a4','a5'],['a1'],['a3']] },
+    pxylene:      { f:'p-xylene',            sig:[['a7','a8'],['r2','r3','r5','r6']] },
+    benzoic:      { f:'benzoic acid',        sig:[['r3','r5'],['r4'],['r2','r6'],['a9']] },
+    'acetamide-sp':   { f:'CH3CONH2',        sig:[['a1'],['a4']] },
+    'acetonitrile-sp':{ f:'CH3CN',           sig:[['a1']] },
+    cyclohexanone:{ f:'cyclohexanone',       sig:[['r4'],['r3','r5'],['r2','r6']] },
+    'phenol-sp':  { f:'phenol',              sig:[['a7'],['r2','r4','r6'],['r3','r5']] },
+    'nitrobenzene-sp':{ f:'nitrobenzene',    sig:[['r3','r5'],['r4'],['r2','r6']] },
+    styrene:      { f:'styrene',             sig:[['a8'],['a8'],['a7'],['r2','r3','r4','r5','r6']] },
+    'isopropanol-sp': { f:'CH3CH(OH)CH3',    sig:[['a1','a4'],['a3'],['a2']] }
+  };
+  var SUBN = '₀₁₂₃₄₅₆₇₈₉';
+  /* The structure and, per signal, the atom keys carrying its hydrogens. */
+  function nmrMap(c){
+    var B = window.OchemBuilder, Ch = window.OchemChem;
+    if(!B || !Ch) return null;
+    var st = null, sig = null;
+    if(c.predicted && c._st){
+      st = Ch.clone(c._st);
+      sig = c.nmr.map(function(x){ return x.keys || []; });
+    } else if(NMR_ATOMS[c.id]){
+      var r = B.parse(NMR_ATOMS[c.id].f);
+      if(!r || !r.st) return null;
+      st = r.st; sig = NMR_ATOMS[c.id].sig;
+    } else return null;
+    B.centre(st);
+    var mol = Ch.toMolecule(st);
+    Object.keys(st.atoms).forEach(function(k){
+      var a = st.atoms[k], m = mol.atoms[k];
+      if(!a.el || a.group) return;
+      var h = a.hFixed !== undefined ? a.hFixed : (a.hImplicit || 0);
+      m.label = a.el + (h ? 'H' + (h > 1 ? SUBN[h] : '') : '');
+      m.r = Math.max(m.r || 14, m.label.length > 2 ? 17 : 15);
+      m.lp = 0;   // the lone pairs are not what this picture is about
+    });
+    /* The builder's layout puts 18-unit atoms 42 units apart, so the bonds
+       between labelled atoms all but vanish; spread the skeleton half again
+       (atoms keep their size) so every bond reads. */
+    Object.keys(mol.atoms).forEach(function(k){ var t = mol.atoms[k]; t.x = 160 + (t.x - 160) * 1.5; t.y = 85 + (t.y - 85) * 1.5; });
+    // Cropped to the molecule so a small one is drawn large enough to tap.
+    var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    Object.keys(mol.atoms).forEach(function(k){ var t = mol.atoms[k];
+      x0 = Math.min(x0, t.x - t.r - 6); x1 = Math.max(x1, t.x + t.r + 6); y0 = Math.min(y0, t.y - t.r - 6); y1 = Math.max(y1, t.y + t.r + 6); });
+    var w = Math.max(200, x1 - x0), hh = Math.max(100, y1 - y0);
+    mol.viewBox = Math.round((x0 + x1 - w) / 2) + ' ' + Math.round((y0 + y1 - hh) / 2) + ' ' + Math.round(w) + ' ' + Math.round(hh);
+    var bySig = {};
+    sig.forEach(function(keys, i){ keys.forEach(function(k){ (bySig[k] = bySig[k] || []).push(i); }); });
+    return { mol: mol, sig: sig, bySig: bySig };
+  }
+
   var score = { right:0, total:0 };
 
   root.innerHTML =
@@ -499,8 +571,12 @@
         '<div id="spIRNote"></div>' +
       '</div>' +
       '<div class="tpanel">' +
-        '<div class="tpanel__head">¹H NMR</div>' +
-        '<div class="sp-chart" id="spNMR"></div>' +
+        '<div class="tpanel__head"><span>¹H NMR</span><span class="tmuted">tap a signal or an atom</span></div>' +
+        '<div class="sp-link">' +
+          '<div class="sp-link__mol" id="spMol"></div>' +
+          '<div class="sp-chart" id="spNMR"></div>' +
+        '</div>' +
+        '<div class="sp-linknote" id="spLinkNote" aria-live="polite"></div>' +
         '<div id="spNMRNote"></div>' +
       '</div>' +
       '<div class="tpanel">' +
@@ -621,7 +697,7 @@
     });
 
     document.getElementById('spIRNote').innerHTML =
-      '<div class="ttable-scroll"><table class="ttable"><thead><tr><th>cm⁻¹</th><th>Assignment</th><th>What it tells you</th></tr></thead><tbody>' +
+      '<div class="ttable-scroll" tabindex="0" role="region" aria-label="IR bands">' + '<table class="ttable"><thead><tr><th>cm⁻¹</th><th>Assignment</th><th>What it tells you</th></tr></thead><tbody>' +
       compound.ir.map(function(p, i){
         return '<tr class="' + (hlIR === i ? 'sp-row-on' : '') + '"><td class="num">' + p.cm + '</td>' +
           '<td style="white-space:nowrap;"><b>' + esc(p.label) + '</b></td><td>' + esc(p.note) + '</td></tr>';
@@ -632,14 +708,57 @@
 
     document.getElementById('spNMR').innerHTML = nmrSpectrum(compound, hlNMR);
     document.getElementById('spNMR').querySelectorAll('.sp-sig').forEach(function(g){
-      var pick = function(){ hlNMR = parseInt(g.getAttribute('data-sig'), 10); renderPredict(); };
+      var pick = function(){
+        var i = parseInt(g.getAttribute('data-sig'), 10);
+        hlNMR = hlNMR === i ? null : i;
+        renderPredict();
+        var again = document.querySelector('#spNMR .sp-sig[data-sig="' + i + '"]'); if(again) again.focus();
+      };
       g.addEventListener('click', pick);
       g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pick(); } });
     });
 
+    var map = nmrMap(compound);
+    var elMol = document.getElementById('spMol');
+    var elLN = document.getElementById('spLinkNote');
+    if(map && window.OchemMolecules){
+      var lit = hlNMR !== null && map.sig[hlNMR] ? map.sig[hlNMR] : [];
+      elMol.innerHTML = window.OchemMolecules.svg(map.mol, {
+        clickable: Object.keys(map.bySig), highlight: lit, caption: '',
+        label: compound.name + ', structure'
+      });
+      elMol.hidden = false;
+      elMol.querySelectorAll('.atom[data-key]').forEach(function(g){
+        var k = g.getAttribute('data-key'), sigs = map.bySig[k];
+        if(!sigs) return;
+        var s0 = compound.nmr[sigs[0]];
+        g.setAttribute('aria-label', map.mol.atoms[k].label + ': signal at ' + s0.ppm.toFixed(2) + ' ppm' + (sigs.length > 1 ? ' and ' + (sigs.length - 1) + ' more' : ''));
+        var pick = function(){
+          // a carbon carrying two signals (styrene's =CH₂) steps through them
+          var at = sigs.indexOf(hlNMR);
+          hlNMR = sigs[(at + 1) % sigs.length];
+          renderPredict();
+          var again = document.querySelector('#spMol .atom[data-key="' + k + '"]'); if(again) again.focus();
+        };
+        g.addEventListener('click', pick);
+        g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pick(); } });
+      });
+    } else {
+      elMol.innerHTML = ''; elMol.hidden = true;
+    }
+    if(hlNMR !== null && compound.nmr[hlNMR]){
+      var hs = compound.nmr[hlNMR];
+      var nAt = map && map.sig[hlNMR] ? map.sig[hlNMR].length : 0;
+      elLN.innerHTML = '<b>' + hs.ppm.toFixed(2) + ' ppm, ' + hs.h + 'H, ' + esc(MULT_NAME[hs.mult] || hs.mult) + '</b> · ' + esc(hs.label) +
+        (nAt > 1 ? ' <span class="tmuted">(' + nAt + ' equivalent positions, one signal)</span>' : '') +
+        '<span class="sp-linknote__why">' + esc(hs.note) + '</span>';
+    } else {
+      elLN.innerHTML = '<span class="tmuted">Each signal is one set of equivalent hydrogens. Tap one to see which.</span>';
+    }
+
     var totalH = compound.nmr.reduce(function(n, s){ return n + s.h; }, 0);
     document.getElementById('spNMRNote').innerHTML =
-      '<div class="ttable-scroll"><table class="ttable"><thead><tr><th>ppm</th><th>Integration</th><th>Shape</th><th>Assignment</th><th>Why</th></tr></thead><tbody>' +
+      '<div class="ttable-scroll" tabindex="0" role="region" aria-label="NMR signals">' + '<table class="ttable"><thead><tr><th>ppm</th><th>Integration</th><th>Shape</th><th>Assignment</th><th>Why</th></tr></thead><tbody>' +
       compound.nmr.slice().sort(function(a, b){ return a.ppm - b.ppm; }).map(function(s){
         var i = compound.nmr.indexOf(s);
         return '<tr class="' + (hlNMR === i ? 'sp-row-on' : '') + '"><td class="num">' + s.ppm.toFixed(2) + '</td>' +
@@ -888,6 +1007,13 @@
 
   document.getElementById('spNew').addEventListener('click', newPuzzle);
 
+  /* The compound in the address bar, read before the first render: that
+     render writes the URL, and doing it first replaced ?c= with the default
+     compound, so a shared link always opened on ethanol. */
+  if(window.OchemToolState){
+    var q0 = window.OchemToolState.read();
+    COMPOUNDS.forEach(function(c){ if(c.id === q0.c) compound = c; });
+  }
   renderPredict();
   renderRef();
   /* ---- Predict your own --------------------------------------------------
@@ -934,6 +1060,7 @@
             '<span class="tnote__k">Predicted</span>' + p.ir.length + ' IR band' + (p.ir.length === 1 ? '' : 's') +
             ' and ' + p.nmr.length + ' NMR signal' + (p.nmr.length === 1 ? '' : 's') + '. Both spectra are below.</div>';
           document.getElementById('spPicker').querySelectorAll('.tchip').forEach(function(b){ b.classList.remove('on'); });
+          p._st = st;
           compound = p;
           hlIR = null; hlNMR = null;
           renderPredict();
@@ -1051,6 +1178,8 @@
       if(mb) mb.click();
     }
   }
+
+  window.OchemSpectroscopy = { COMPOUNDS: COMPOUNDS, NMR_ATOMS: NMR_ATOMS, nmrMap: nmrMap };
 
   /* ---- Check yourself ---------------------------------------------------
      Two directions, because spectroscopy is learned in one and examined in

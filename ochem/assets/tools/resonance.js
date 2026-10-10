@@ -93,6 +93,10 @@
       '</div>' +
     '</div>' +
     '<div class="tpanel">' +
+      '<div class="tpanel__head"><span>Where the charge sits</span><span class="tmuted" id="resChargeK"></span></div>' +
+      '<div id="resCharge"></div>' +
+    '</div>' +
+    '<div class="tpanel">' +
       '<div class="tpanel__head">Forms found</div>' +
       '<div id="resFound"></div>' +
     '</div>' +
@@ -259,7 +263,71 @@
       '</p>';
 
     document.getElementById('resReveal').disabled = remaining() === 0;
+    renderCharge(got);
     renderSummary(got.length === target.length);
+  }
+
+  /* ---- The charge, spread over the forms found so far --------------------
+
+     Every form has the same skeleton, so each atom's formal charge can be
+     read off every form and averaged. The overlay draws that average on the
+     structure: a halo whose size is how much charge the atom carries across
+     the forms, labelled as a fraction. With one form found, the charge is
+     all on one atom; each new form you find spreads it, which is the point
+     of resonance made visible. It is a plain average of the forms on the
+     table, said so on screen: the real weighting favors major contributors,
+     and the tool has no energies to weight them by. */
+  function fraction(x){
+    var n = Math.abs(x);
+    if(n < 0.005) return '';
+    for(var d = 1; d <= 6; d++){
+      var num = Math.round(n * d);
+      if(Math.abs(num / d - n) < 0.005) return (x < 0 ? '−' : '+') + (d === 1 ? String(num) : num + '/' + d);
+    }
+    return (x < 0 ? '−' : '+') + n.toFixed(2);
+  }
+  function renderCharge(got){
+    var el = document.getElementById('resCharge');
+    if(!got.length){ el.innerHTML = ''; return; }
+    var sum = {};
+    Object.keys(start.atoms).forEach(function(k){ sum[k] = 0; });
+    got.forEach(function(f){
+      Object.keys(f.atoms).forEach(function(k){
+        if(sum[k] === undefined) return;
+        var a = f.atoms[k];
+        if(!a.el || a.group) return;
+        sum[k] += C.formalCharge(f, k);
+      });
+    });
+    var mol = C.toMolecule(start);
+    // The overlay shows the averaged charge, so the drawn atoms carry none.
+    Object.keys(mol.atoms).forEach(function(k){ mol.atoms[k].charge = ''; mol.atoms[k].lp = 0; });
+    var halos = '', labels = '', said = [];
+    Object.keys(sum).forEach(function(k){
+      var q = sum[k] / got.length, a = mol.atoms[k];
+      if(!a || Math.abs(q) < 0.005) return;
+      var r = a.r + 6 + 16 * Math.min(1, Math.abs(q));
+      halos += '<circle class="res-q ' + (q < 0 ? 'res-q--neg' : 'res-q--pos') + '" cx="' + a.x + '" cy="' + a.y + '" r="' + r.toFixed(1) + '"/>';
+      labels += '<text class="res-q__t ' + (q < 0 ? 'res-q__t--neg' : 'res-q__t--pos') + '" x="' + a.x + '" y="' + (a.y - r - 4).toFixed(1) + '" text-anchor="middle">' + fraction(q) + '</text>';
+      said.push(fraction(q) + ' on ' + (a.label || k));
+    });
+    mol.decor = halos;
+    // Room for the halos and their labels outside the usual 320 by 170 field.
+    var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    Object.keys(mol.atoms).forEach(function(k){ var t = mol.atoms[k];
+      x0 = Math.min(x0, t.x - 44); x1 = Math.max(x1, t.x + 44); y0 = Math.min(y0, t.y - 58); y1 = Math.max(y1, t.y + 40); });
+    mol.viewBox = Math.round(x0) + ' ' + Math.round(y0) + ' ' + Math.round(x1 - x0) + ' ' + Math.round(y1 - y0);
+    var svg = Mol.svg(mol, { caption:'', label: 'Average charge over ' + got.length + ' form' + (got.length === 1 ? '' : 's') + ': ' + (said.join(', ') || 'none') });
+    svg = svg.replace('</svg>', labels + '</svg>');
+    document.getElementById('resChargeK').textContent = 'averaged over ' + got.length + ' of ' + target.length + ' forms';
+    var spread = said.length;
+    el.innerHTML = '<div class="tstage res-charge">' + svg + '</div>' +
+      '<p class="tmuted" style="margin:10px 0 0;">' +
+      (spread <= 1 && got.length === 1
+        ? 'One form puts the whole charge on one atom. Find another and watch it spread.'
+        : 'Spread over <b>' + spread + '</b> atom' + (spread === 1 ? '' : 's') + '. ' +
+          (got.length < target.length ? 'Each form you add spreads it further.' : 'That is every form: the charge is shared this way in the real molecule.')) +
+      ' A plain average of the forms found; in reality the major contributors count for more.</p>';
   }
 
   function reveal(){

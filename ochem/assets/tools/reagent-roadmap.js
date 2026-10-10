@@ -126,7 +126,7 @@
         nodes.pop(); seen[v] = false;
       });
     }
-    go(from, patternsOf(from), [from]);
+    go(from, opts.set || patternsOf(from), [from]);
     return found;
   }
 
@@ -137,7 +137,7 @@
      out rather than offered as an alternative that dead-ends. */
   function refine(nodes, opts){
     var k = nodes.length - 1, target = nodes[k];
-    var cand = [], R = [patternsOf(nodes[0])];
+    var cand = [], R = [opts.set || patternsOf(nodes[0])];
     for(var i = 0; i < k; i++){
       cand[i] = OUT[nodes[i]].filter(function(e){ return e.to === nodes[i + 1] && allowed(e, opts, target); });
       var nx = [];
@@ -222,7 +222,7 @@
   }
 
   window.OchemRoadmapEngine = {
-    routes: routes, through: through, patternsOf: patternsOf,
+    routes: routes, through: through, patternsOf: patternsOf, allowed: allowed,
     edgesFrom: function(id){ return OUT[id] ? OUT[id].slice() : []; },
     edgesInto: function(id){ return IN[id] ? IN[id].slice() : []; },
     edgesForReagent: edgesForReagent, searchReagents: searchReagents, norm: norm
@@ -341,7 +341,8 @@
       t: S.mode === 'route' ? S.to : null,
       c: S.mode === 'route' && !S.skeleton ? 1 : null,
       r: S.mode === 'reagent' ? S.reagent : null,
-      g: S.mode === 'groups' ? S.group : null
+      g: S.mode === 'groups' ? S.group : null,
+      pz: S.mode === 'puzzle' && P.from ? P.from + '.' + P.to : null
     });
   }
 
@@ -361,22 +362,26 @@
         '<button type="button" data-mode="route" aria-pressed="true" class="on">Route</button>' +
         '<button type="button" data-mode="reagent" aria-pressed="false">Reagent</button>' +
         '<button type="button" data-mode="groups" aria-pressed="false">Groups</button>' +
+        '<button type="button" data-mode="puzzle" aria-pressed="false">Synthesis puzzle</button>' +
       '</div>' +
       '<p class="tmuted rr-modes__say" id="rrModeSay"></p>' +
     '</div>' +
     '<div id="rrRoute"></div>' +
     '<div id="rrReagent" hidden></div>' +
-    '<div id="rrGroups" hidden></div>';
+    '<div id="rrGroups" hidden></div>' +
+    '<div id="rrPuzzle" hidden></div>';
 
   var MODE_SAY = {
     route: 'Pick where you start and where you need to end up. Height on the map is oxidation level: climbing needs an oxidant, falling a reductant, and moving sideways needs neither.',
     reagent: 'Everything one reagent does in this course, and what it leaves alone.',
-    groups: 'Pick a functional group: what it becomes, what makes it, and what does not work on it.'
+    groups: 'Pick a functional group: what it becomes, what makes it, and what does not work on it.',
+    puzzle: 'You get a start and a target. Tap reagents to build the route one step at a time; each step moves your molecule across the map.'
   };
 
   var elRoute = document.getElementById('rrRoute');
   var elReagent = document.getElementById('rrReagent');
   var elGroups = document.getElementById('rrGroups');
+  var elPuzzle = document.getElementById('rrPuzzle');
 
   function setMode(m){
     S.mode = m;
@@ -390,9 +395,11 @@
     elRoute.hidden = m !== 'route';
     elReagent.hidden = m !== 'reagent';
     elGroups.hidden = m !== 'groups';
+    elPuzzle.hidden = m !== 'puzzle';
     if(m === 'route') renderRoute();
     if(m === 'reagent') renderReagent();
     if(m === 'groups') renderGroups();
+    if(m === 'puzzle'){ if(!P.from) newPuzzle(); else renderPuzzle(); }
     sync();
   }
 
@@ -669,6 +676,218 @@
 
   /* ---- Start ---------------------------------------------------------------- */
 
+  /* ---- Synthesis puzzle ------------------------------------------------------
+
+     The map, a start and a target, and a tray of reagent tiles: the reagents
+     that do something to the molecule you have right now, plus the same
+     number of reagents that do nothing to it. Tap one and the step is
+     applied: the molecule moves to its new group on the map and the step's
+     card says what it did. A reagent with no reaction here says so and why;
+     a step that leaves the target unreachable (with the skeleton kept) is
+     flagged at once rather than at the end. Every judgement is the route
+     engine's, run from where you are with the patterns you have (a
+     2-methylpropene made from tert-butyl alcohol still cannot become an
+     alkyne). Puzzles are drawn from pairs two to four steps apart. */
+  var P = { from: null, to: null, at: null, set: null, steps: [], miss: 0, done: false, best: 0, note: null, tray: [] };
+
+  function shuffleArr(a){ for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+
+  /* Reactions available from here: skeleton kept, and the start's pattern
+     can go through them. */
+  function movesFrom(at, set){
+    return OUT[at].filter(function(e){
+      return allowed(e, { skeleton: true }, P.to) && through(e, set).length > 0;
+    });
+  }
+
+  function startPuzzle(from, to){
+    var r = routes(from, to, { skeleton: true });
+    if(!r.shortest.length) return false;
+    P.from = from; P.to = to; P.at = from; P.set = patternsOf(from);
+    P.steps = []; P.miss = 0; P.done = false; P.best = r.length; P.note = null; P.tray = null;
+    return true;
+  }
+
+  function newPuzzle(){
+    var tries = 0;
+    while(tries++ < 300){
+      var a = D.NODES[Math.floor(Math.random() * D.NODES.length)].id;
+      var b = D.NODES[Math.floor(Math.random() * D.NODES.length)].id;
+      if(a === b) continue;
+      var r = routes(a, b, { skeleton: true });
+      if(r.length >= 2 && r.length <= 4 && startPuzzle(a, b)) break;
+    }
+    renderPuzzle(); sync();
+  }
+
+  /* The tray for where you stand: each reagent that works here once, and as
+     many decoys, chosen from reagents that do something somewhere else on
+     the map. Fixed until you move, so tiles do not jump under a finger. */
+  function tray(){
+    if(P.tray) return P.tray;
+    var here = movesFrom(P.at, P.set), keys = {};
+    here.forEach(function(e){ var k = e.rx.join(' / '); if(!keys[k]) keys[k] = { k: k, edges: [] }; keys[k].edges.push(e); });
+    var real = Object.keys(keys).map(function(k){ return keys[k]; });
+    /* An alkene has fifteen reactions here, which is a wall rather than a
+       choice. Keep every reagent that still leads to the target, and at most
+       three that work but lead somewhere else. */
+    var left = routes(P.at, P.to, { skeleton: true, set: P.set }).length || 0;
+    var useful = function(t){ return t.edges.some(function(e){ var ns = through(e, P.set);
+      if(e.to === P.to) return true;
+      var d = routes(e.to, P.to, { skeleton: true, set: ns }).length;
+      return d > 0 && d + 1 <= left + 1; }); };
+    var good = real.filter(useful), other = shuffleArr(real.filter(function(t){ return !useful(t); })).slice(0, 2);
+    real = good.concat(other);
+    var used = {}; real.forEach(function(t){ used[t.k] = 1; });
+    /* A decoy shares no reagent with anything the map does to the current
+       group, C–C steps included: Jones is listed under two wordings, and
+       "nothing happens" to a 2° alcohol with it would be false. */
+    var hereKeys = {};
+    OUT[P.at].forEach(function(x){ x.keys.forEach(function(k){ hereKeys[k] = 1; }); });
+    var pool = shuffleArr(D.EDGES.filter(function(e){
+      var k = e.rx.join(' / ');
+      return !used[k] && !e.cc && e.from !== P.at && !e.keys.some(function(r){ return hereKeys[r]; });
+    }));
+    var decoys = [];
+    pool.forEach(function(e){ var k = e.rx.join(' / '); if(decoys.length < 3 && !used[k]){ used[k] = 1; decoys.push({ k: k, edges: [], decoy: e }); } });
+    P.tray = shuffleArr(real.concat(decoys));
+    return P.tray;
+  }
+
+  function rxShort(k){ return k.length > 46 ? k.slice(0, 44) + '…' : k; }
+
+  function play(i){
+    if(P.done) return;
+    var t = tray()[i];
+    if(!t) return;
+    if(!t.edges.length){
+      P.miss++;
+      var d = t.decoy;
+      P.note = { bad: true, k: t.k, text: 'No reaction in this course starts from ' + lc(nodeName(P.at)) + ' with this. It is the reagent for ' +
+        d.name.charAt(0).toLowerCase() + d.name.slice(1) + ': ' + lc(nodeName(d.from)) + ' to ' + lc(nodeName(d.to)) + '.' };
+      renderPuzzle(); return;
+    }
+    /* One tile can name several reactions (H₂, Pd/C on an alkyne or an
+       alkene): take the one that keeps the target reachable, else the first. */
+    var pick = null, best = Infinity;
+    t.edges.forEach(function(e){
+      /* The molecule's exact kind is only known up to the patterns the route
+         allows (an alkene that may be mono- or 1,1-disubstituted), so a
+         reagent with two outcomes here takes the one the student is
+         steering for: the target itself, else the shortest way on. */
+      var nset = through(e, P.set);
+      var d = e.to === P.to ? 0 : (routes(e.to, P.to, { skeleton: true, set: nset }).length || Infinity);
+      if(d < best){ best = d; pick = e; }
+    });
+    var e = pick || t.edges[0];
+    var from = P.at;
+    P.set = through(e, P.set);
+    P.at = e.to;
+    P.tray = null;
+    var dead = P.at !== P.to && !routes(P.at, P.to, { skeleton: true, set: P.set }).shortest.length;
+    P.steps.push({ e: e, from: from, dead: dead });
+    if(P.at === P.to) P.done = true;
+    P.note = { bad: dead, step: true };
+    renderPuzzle(true);
+  }
+
+  function undo(){
+    if(!P.steps.length) return;
+    P.steps.pop();
+    P.at = P.from; P.set = patternsOf(P.from);
+    P.steps.forEach(function(st){ P.set = through(st.e, P.set); P.at = st.e.to; });
+    P.done = false; P.note = null; P.tray = null;
+    renderPuzzle();
+  }
+
+  function renderPuzzle(moved){
+    if(!P.from){ newPuzzle(); return; }
+    var marks = {};
+    marks[P.from] = { cls: 'is-start', badge: 'A', label: 'start' };
+    marks[P.to] = { cls: 'is-end', badge: 'B', label: 'target' };
+    P.steps.forEach(function(st, i){ if(st.e.to !== P.to) marks[st.e.to] = { cls: 'is-on', badge: i + 1, label: 'step ' + (i + 1) }; });
+    if(P.at !== P.from && P.at !== P.to) marks[P.at].cls += ' is-here';
+    else if(P.at === P.from) marks[P.from].cls += ' is-here';
+    else marks[P.to].cls += ' is-here';
+
+    var last = P.steps[P.steps.length - 1];
+    var stepsHtml = P.steps.map(function(st, i){
+      return '<li class="rr-pz__step' + (st.dead ? ' is-dead' : '') + (moved && i === P.steps.length - 1 ? ' is-new' : '') + '">' +
+        '<span class="rr-pz__n">' + (i + 1) + '</span>' +
+        '<span><b>' + esc(nodeName(st.from)) + '</b> &rarr; <b>' + esc(nodeName(st.e.to)) + '</b>' +
+          (st.e.spec ? ' <span class="tmuted">(' + esc(st.e.spec) + ')</span>' : '') +
+          '<br><span class="rr-pz__rx">' + rxHtml(st.e) + '</span> ' + tags(st.e) + '</span></li>';
+    }).join('');
+
+    var note = '';
+    if(P.done){
+      var par = P.steps.length === P.best;
+      note = '<div class="tnote tnote--good"><span class="tnote__k">' + (par ? 'Made it in the fewest steps' : 'Made it') + '</span>' +
+        esc(nodeName(P.from)) + ' to ' + esc(nodeName(P.to)) + ' in ' + P.steps.length + ' step' + (P.steps.length > 1 ? 's' : '') +
+        (par ? '.' : '; the shortest route takes ' + P.best + '.') +
+        (P.miss ? ' ' + P.miss + ' reagent' + (P.miss > 1 ? 's' : '') + ' did nothing on the way.' : '') + '</div>' +
+        (par ? '' : '<p class="tmuted">The shortest: ' + (function(){ var r = routes(P.from, P.to, { skeleton: true }).shortest[0];
+          return r ? r.nodes.map(function(n){ return esc(nodeName(n)); }).join(' → ') : ''; })() + '.</p>');
+    } else if(P.note && P.note.step && last){
+      note = '<div class="tnote ' + (last.dead ? 'tnote--bad' : 'tnote--info') + '"><span class="tnote__k">' +
+        (last.dead ? 'Dead end' : 'Step ' + P.steps.length) + '</span>' +
+        esc(last.e.name) + ': ' + lc(esc(nodeName(last.from))) + ' to ' + lc(esc(nodeName(last.e.to))) + '. ' +
+        (last.e.regio ? esc(last.e.regio) + ' ' : '') + (last.e.stereo ? esc(last.e.stereo) + ' ' : '') +
+        (last.dead ? 'From here nothing in the course reaches ' + lc(nodeName(P.to)) + ' without making or breaking a C–C bond. Undo it.'
+                   : (function(){ var r = routes(P.at, P.to, { skeleton: true, set: P.set }); return r.length ? r.length + ' step' + (r.length > 1 ? 's' : '') + ' to go at best.' : ''; })()) +
+        '</div>';
+    } else if(P.note && P.note.bad){
+      note = '<div class="tnote tnote--bad"><span class="tnote__k">' + esc(rxShort(P.note.k)) + '</span>' + esc(P.note.text) + '</div>';
+    }
+
+    var tiles = P.done ? '' : tray().map(function(t, i){
+      return '<button type="button" class="rr-tile" data-tile="' + i + '">' + esc(t.k) + '</button>';
+    }).join('');
+
+    elPuzzle.setAttribute('data-at', P.at);
+    elPuzzle.setAttribute('data-done', P.done ? '1' : '');
+    elPuzzle.innerHTML =
+      '<div class="rr-pzgrid">' +
+      '<div class="tpanel rr-pz rr-pz__map">' +
+        '<div class="tpanel__head"><span>The map</span><span class="rr-legend"><span class="rr-dot rr-dot--a">A</span> start <span class="rr-dot rr-dot--b">B</span> target</span></div>' +
+        mapHtml(marks) +
+      '</div>' +
+      '<div class="tpanel rr-pz__bench">' +
+        '<p class="rr-pz__goal">Get from <b class="rr-pz__ab">A</b> <b>' + esc(nodeName(P.from)) + '</b> to <b class="rr-pz__ab">B</b> <b>' + esc(nodeName(P.to)) + '</b></p>' +
+        '<div class="rr-trail" aria-label="Your route so far">' +
+          '<span class="rr-trail__n is-a">' + esc(nodeName(P.from)) + '</span>' +
+          P.steps.map(function(st, i){ return '<span class="rr-trail__arrow" aria-hidden="true">&rarr;</span><span class="rr-trail__n' +
+            (st.e.to === P.to ? ' is-b' : '') + (st.dead ? ' is-dead' : '') + (moved && i === P.steps.length - 1 ? ' is-new' : '') + '">' + esc(nodeName(st.e.to)) + '</span>'; }).join('') +
+          (P.done ? '' : '<span class="rr-trail__arrow" aria-hidden="true">&rarr;</span><span class="rr-trail__gap">?</span><span class="rr-trail__arrow" aria-hidden="true">&rarr;</span><span class="rr-trail__n is-b">' + esc(nodeName(P.to)) + '</span>') +
+        '</div>' +
+
+        '<div class="tpanel__head"><span>' + (P.done ? 'Your route' : 'The bench') + '</span>' +
+          '<span class="trow rr-pz__acts">' + (P.steps.length && !P.done ? '<button type="button" class="tchip tchip--mini" id="rrPzUndo">Undo</button>' : '') +
+          '<button type="button" class="tchip tchip--mini" id="rrPzNew">New</button></span></div>' +
+        (P.done ? '' : '<p class="tmuted" style="margin-top:0;">Keep the carbon skeleton. Some of these do nothing to ' + lc(nodeName(P.at)) + '.</p>' +
+          '') +
+        '<div aria-live="polite" id="rrPzNote">' + note + '</div>' +
+        (P.done ? '' : '<div class="rr-tiles" role="group" aria-label="Reagents">' + tiles + '</div>') +
+        (P.steps.length ? '<ol class="rr-pz__steps">' + stepsHtml + '</ol>' : '') +
+      '</div></div>';
+
+    elPuzzle.querySelectorAll('.rr-tile').forEach(function(b){
+      b.addEventListener('click', function(){ play(parseInt(b.getAttribute('data-tile'), 10)); var f = elPuzzle.querySelector('.rr-tile') || elPuzzle.querySelector('#rrPzNew'); if(f && !moved) f.focus(); });
+    });
+    var u = document.getElementById('rrPzUndo'); if(u) u.addEventListener('click', undo);
+    document.getElementById('rrPzNew').addEventListener('click', function(){ newPuzzle(); var n = document.getElementById('rrPzNew'); if(n) n.focus(); });
+    // The map is the picture here, not a control: the tiles are how you move.
+    elPuzzle.querySelectorAll('.rr-node').forEach(function(b){ b.disabled = true; });
+    if(moved){
+      var here = elPuzzle.querySelector('.rr-node.is-here');
+      if(here && !(window.LevlMotion && window.LevlMotion.reduced())){ here.classList.add('is-arrive'); }
+      var t0 = elPuzzle.querySelector('.rr-tile') || document.getElementById('rrPzNew');
+      if(t0) t0.focus({ preventScroll: true });
+    }
+  }
+
+  window.OchemRoadmapPuzzle = { state: P, start: startPuzzle, tray: tray, play: play, undo: undo };
+
   if(window.OchemToolState){
     var q = window.OchemToolState.read();
     if(q.f && D.node(q.f)) S.from = q.f;
@@ -676,7 +895,8 @@
     if(q.c === '1') S.skeleton = false;
     if(q.r && D.reagent(q.r)) S.reagent = q.r;
     if(q.g && D.node(q.g)) S.group = q.g;
-    setMode(q.m === 'reagent' || q.m === 'groups' ? q.m : 'route');
+    if(q.pz){ var pzp = q.pz.split('.'); if(D.node(pzp[0]) && D.node(pzp[1]) && pzp[0] !== pzp[1]) startPuzzle(pzp[0], pzp[1]); }
+    setMode(q.m === 'reagent' || q.m === 'groups' || q.m === 'puzzle' ? q.m : 'route');
   } else {
     setMode('route');
   }

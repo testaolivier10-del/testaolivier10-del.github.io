@@ -110,6 +110,7 @@
     heat: false,
     guess: null,
     revealed: false,
+    mode: 'explore',
     score: { right:0, total:0 }
   };
 
@@ -121,9 +122,15 @@
   function predict(s){
     var sub = s.sub, r = s.rgt, solv = s.solvent, heat = s.heat;
     var reasons = [];
-    var out = { major:null, minor:null, product:null, alkene:null };
+    var out = { major:null, minor:null, product:null, alkene:null, blocked:{} };
 
-    function say(factor, leans, text){ reasons.push({ factor:factor, leans:leans, text:text }); }
+    /* `votes` is the same argument as `leans`, as weights on the four
+       pathways (1 = argues for it, 0.5 = "mildly" or split, 0.25 =
+       "slightly"), so the meter can draw what each factor says without a
+       second rule set. `out.blocked` records a pathway the substrate rules
+       out entirely, with the reason. */
+    function say(factor, leans, text, votes){ reasons.push({ factor:factor, leans:leans, text:text, votes:votes || {} }); }
+    function block(path, why){ if(!out.blocked[path]) out.blocked[path] = why; }
 
     var strongBase = r.base >= 3;
     var goodNu = r.nu >= 3;
@@ -133,56 +140,70 @@
     /* --- substrate --- */
     if(sub.cls === 'methyl'){
       say('Substrate', 'SN2',
-        'A methyl carbon: nothing is in the way of a backside attack, and there is no beta hydrogen, so elimination cannot happen no matter what you add.');
+        'A methyl carbon: nothing is in the way of a backside attack, and there is no beta hydrogen, so elimination cannot happen no matter what you add.', { SN2:1 });
+      block('SN1', 'A methyl cation is far too unstable to form.');
+      block('E1', 'No carbocation, and no beta hydrogen.');
+      block('E2', 'No beta hydrogen to remove.');
     } else if(sub.cls === '1'){
       say('Substrate', 'SN2',
-        'Primary and unhindered. Backside attack is easy; a primary carbocation is so unstable that SN1 and E1 are effectively ruled out here.');
+        'Primary and unhindered. Backside attack is easy; a primary carbocation is so unstable that SN1 and E1 are effectively ruled out here.', { SN2:1 });
+      block('SN1', 'A primary carbocation will not form.');
+      block('E1', 'A primary carbocation will not form.');
     } else if(sub.cls === '1-hindered'){
       say('Substrate', 'nothing',
-        'Primary on paper, but the quaternary carbon next door blocks the backside trajectory, and the primary cation it would make is too unstable to form on its own. Everything is very slow here.');
+        'Primary on paper, but the quaternary carbon next door blocks the backside trajectory, and the primary cation it would make is too unstable to form on its own. Everything is very slow here.', {});
+      block('SN2', 'The quaternary carbon next door blocks the backside.');
+      block('SN1', 'A primary cation will not form on its own.');
+      block('E1', 'A primary cation will not form on its own.');
+      block('E2', 'No hydrogen on the neighboring carbon.');
     } else if(sub.cls === '2'){
       say('Substrate', 'either',
-        'Secondary — the genuinely ambiguous case. It can be attacked from behind and it can ionize, so the substrate alone does not settle anything and the reagent has to.');
+        'Secondary — the genuinely ambiguous case. It can be attacked from behind and it can ionize, so the substrate alone does not settle anything and the reagent has to.', { SN1:0.5, SN2:0.5, E1:0.5, E2:0.5 });
     } else if(sub.cls === '3'){
       say('Substrate', 'SN1/E1/E2',
-        'Tertiary: three alkyl groups block backside attack completely, so SN2 is off the table. It ionizes readily, and it has plenty of beta hydrogens for a base to take.');
+        'Tertiary: three alkyl groups block backside attack completely, so SN2 is off the table. It ionizes readily, and it has plenty of beta hydrogens for a base to take.', { SN1:1, E1:1, E2:1 });
+      block('SN2', 'Three alkyl groups wall off the backside.');
     } else if(sub.cls === 'benzylic'){
       say('Substrate', 'either',
-        'Benzylic. Primary and open to backside attack, but it also ionizes easily because the ring delocalizes the cation. Both substitution mechanisms are live; with no beta hydrogen, neither elimination is.');
+        'Benzylic. Primary and open to backside attack, but it also ionizes easily because the ring delocalizes the cation. Both substitution mechanisms are live; with no beta hydrogen, neither elimination is.', { SN1:1, SN2:1 });
+      block('E1', 'No beta hydrogen on the ring side.');
+      block('E2', 'No beta hydrogen on the ring side.');
     }
 
     /* --- reagent --- */
     if(r.bulky && strongBase){
       say('Reagent', 'E2',
-        r.name + ' is a strong base that is too bulky to reach the carbon. It cannot do SN2 even where SN2 would be easy, so it goes for a beta proton on the outside of the molecule instead.');
+        r.name + ' is a strong base that is too bulky to reach the carbon. It cannot do SN2 even where SN2 would be easy, so it goes for a beta proton on the outside of the molecule instead.', { E2:1 });
     } else if(strongBase && goodNu){
       say('Reagent', 'SN2/E2',
-        r.name + ' is strong at both jobs, so it argues for a bimolecular pathway — which one depends on the substrate. It rules out SN1 and E1 by being reactive enough that nothing has to wait for an ionization.');
+        r.name + ' is strong at both jobs, so it argues for a bimolecular pathway — which one depends on the substrate. It rules out SN1 and E1 by being reactive enough that nothing has to wait for an ionization.', { SN2:1, E2:1 });
     } else if(goodNu && r.base <= 1){
       say('Reagent', 'SN2',
-        r.name + ' is an excellent nucleophile and a poor base. That combination is the cleanest argument for substitution there is: it wants the carbon, not the proton.');
+        r.name + ' is an excellent nucleophile and a poor base. That combination is the cleanest argument for substitution there is: it wants the carbon, not the proton.', { SN2:1 });
     } else if(weakBoth){
       say('Reagent', 'SN1/E1',
-        r.name + ' is weak at both jobs, which means it cannot force anything. Nothing happens until the substrate ionizes on its own, so whatever occurs will be unimolecular — and the solvent is the nucleophile.');
+        r.name + ' is weak at both jobs, which means it cannot force anything. Nothing happens until the substrate ionizes on its own, so whatever occurs will be unimolecular — and the solvent is the nucleophile.', { SN1:1, E1:1 });
     } else {
       say('Reagent', 'SN2',
-        r.name + ' is a moderate nucleophile and a weak base — it leans toward substitution, without the force to compel it.');
+        r.name + ' is a moderate nucleophile and a weak base — it leans toward substitution, without the force to compel it.', { SN2:1 });
     }
 
     /* --- solvent --- */
     if(solv.id === 'aprotic'){
       say('Solvent', 'SN2',
-        'Polar aprotic. There is no O–H to hydrogen-bond to the nucleophile, so the anion is left unsolvated and far more reactive. This is worth orders of magnitude to an SN2 rate.');
+        'Polar aprotic. There is no O–H to hydrogen-bond to the nucleophile, so the anion is left unsolvated and far more reactive. This is worth orders of magnitude to an SN2 rate.', { SN2:1 });
     } else {
       say('Solvent', weakBoth ? 'SN1/E1' : 'SN1/E1 (mildly)',
-        'Polar protic. It hydrogen-bonds to an anionic nucleophile and blunts it, while stabilizing both ions of an ionization. It pushes toward the unimolecular pathways — decisively when the reagent is weak, only mildly when the reagent is strong enough to act anyway.');
+        'Polar protic. It hydrogen-bonds to an anionic nucleophile and blunts it, while stabilizing both ions of an ionization. It pushes toward the unimolecular pathways — decisively when the reagent is weak, only mildly when the reagent is strong enough to act anyway.',
+        weakBoth ? { SN1:1, E1:1 } : { SN1:0.5, E1:0.5 });
     }
 
     /* --- temperature --- */
     say('Temperature', heat ? 'elimination' : 'substitution (slightly)',
       heat
         ? 'Heat. Elimination makes more particles from fewer, so it has the larger positive entropy change — and the TΔS term grows with temperature. Heating a mixture that could go either way pushes it toward the alkene.'
-        : 'Room temperature. Nothing is being pushed toward elimination by entropy, which slightly favors substitution in any case that is otherwise balanced.');
+        : 'Room temperature. Nothing is being pushed toward elimination by entropy, which slightly favors substitution in any case that is otherwise balanced.',
+      heat ? { E1:1, E2:1 } : { SN1:0.25, SN2:0.25 });
 
     /* --- the arbitration --- */
     if(sub.cls === 'methyl'){
@@ -379,7 +400,7 @@
      a stored molecule, so the only thing keeping it to nine substrates was
      that nothing else offered one. Classifying a drawn structure is three
      questions: where is the leaving group, how many carbons are on the carbon
-     holding it, and is there a hydrogen on any neighbour. */
+     holding it, and is there a hydrogen on any neighbor. */
   var HALIDES = { F:1, Cl:1, Br:1, I:1 };
 
   function classifySubstrate(st){
@@ -445,45 +466,251 @@
     };
   }
 
-  /* ---- Rendering -------------------------------------------------------- */
+  /* ---- Drawing the flask ------------------------------------------------
+
+     The substrate is drawn, not named, because "secondary" is something you
+     read off a structure: the carbon holding the leaving group, the carbons
+     on it, the hydrogens next door. The same drawing carries the arrows once
+     the mechanism is known, and the product is drawn the same way. Every
+     structure is parsed from a condensed formula by mol-builder.js, so the
+     drawings are the same objects the rest of the tools use. */
+  var B = window.OchemBuilder, Mol = window.OchemMolecules, Chem = window.OchemChem;
+
+  /* {X} is the group on the reacting carbon: Br in the substrate, the
+     nucleophile's atom in a substitution product. Rings are built from a
+     ring spec because the condensed-formula reader has no ring syntax. */
+  var DRAW = {
+    mebr:'CH3{X}', prbr:'CH3CH2CH2{X}', neopentyl:'(CH3)3CCH2{X}',
+    bubr2:'CH3CH({X})CH2CH3', cyhexbr:{ n:6 }, tbubr:'(CH3)3C({X})',
+    mebubr:'CH3C({X})(CH3)CH2CH3', bnbr:{ n:6, aromatic:true, pre:'CH2' }
+  };
+  var ALKENE = {
+    prbr:{ z:'CH3CH=CH2' }, bubr2:{ z:'CH3CH=CHCH3', h:'CH2=CHCH2CH3' },
+    cyhexbr:{ z:'cyclohexene' }, tbubr:{ z:'(CH3)2C=CH2' },
+    mebubr:{ z:'(CH3)2C=CHCH3', h:'CH2=C(CH3)CH2CH3' }
+  };
+  /* The atom the reagent attacks with, as it goes into a product formula,
+     and as it is drawn beside the substrate. */
+  var GROUP = { oh:'OH', oet:'OCH2CH3', otbu:'OC(CH3)3', sh:'SH', cn:'C#N', n3:'N=N+=N-',
+                i:'I', nh3:'NH2', h2o:'OH', etoh:'OCH2CH3' };
+  var REAGENT_ATOM = {
+    oh:{ label:'HO', q:-1, lp:3 }, oet:{ label:'EtO', q:-1, lp:3 }, otbu:{ label:'tBuO', q:-1, lp:3 },
+    dbu:{ label:'DBU', q:0, lp:1 }, sh:{ label:'HS', q:-1, lp:3 }, cn:{ label:'CN', q:-1, lp:1 },
+    n3:{ label:'N₃', q:-1, lp:1 }, i:{ label:'I', q:-1, lp:4 }, nh3:{ label:'H₃N', q:0, lp:1 },
+    h2o:{ label:'H₂O', q:0, lp:2 }, etoh:{ label:'EtOH', q:0, lp:2 }
+  };
+
+  function build(draw, x){
+    if(!B || !draw) return null;
+    var r = typeof draw === 'string'
+      ? B.parse(draw.replace('{X}', x))
+      : B.parseRing({ n:draw.n, aromatic:draw.aromatic, subs:{ 0:(draw.pre || '') + x } });
+    return r && r.st ? r.st : null;
+  }
+
+  /* Where things are on a structure: the leaving group, the carbon holding
+     it, and the beta carbons with the hydrogens each one has. */
+  function sites(st){
+    if(!Chem || !st) return null;
+    var site = null, lg = null;
+    Object.keys(st.atoms).forEach(function(k){
+      if(site || !HALIDES[st.atoms[k].el]) return;
+      Chem.neighbors(st, k).forEach(function(n){
+        if(!site && st.atoms[n] && st.atoms[n].el === 'C'){ site = n; lg = k; }
+      });
+    });
+    if(!site) return null;
+    var betas = Chem.neighbors(st, site).filter(function(n){ return st.atoms[n].el === 'C'; })
+      .map(function(n){ var a = st.atoms[n]; return { k:n, h: a.hFixed !== undefined ? a.hFixed : (a.hImplicit || 0) }; });
+    return { alpha:site, lg:lg, betas:betas,
+             betaH: betas.reduce(function(t, b){ return t + b.h; }, 0) };
+  }
+
+  /* B.centre() only ever shrinks a drawing; a four-carbon substrate then sits
+     small in the middle of the stage with its arrows crammed together. This
+     also grows it, up to half again, to fill the 320 by 170 box. */
+  function fit(st){
+    var ks = Object.keys(st.atoms), x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    ks.forEach(function(k){ var a = st.atoms[k], pad = a.r + 12;
+      x0 = Math.min(x0, a.x - pad); x1 = Math.max(x1, a.x + pad); y0 = Math.min(y0, a.y - pad); y1 = Math.max(y1, a.y + pad); });
+    var sc = Math.min(1.5, 320 / (x1 - x0), 170 / (y1 - y0)), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+    ks.forEach(function(k){ var a = st.atoms[k];
+      a.x = Math.round(160 + (a.x - cx) * sc); a.y = Math.round(85 + (a.y - cy) * sc);
+      if(sc < 1) a.r = Math.max(11, Math.round(a.r * sc)); });
+  }
+
+  function dist(a, b){ var dx = a.x - b.x, dy = a.y - b.y; return Math.sqrt(dx*dx + dy*dy); }
+
+  /* The free direction around an atom: the angle that keeps a new atom at
+     distance d furthest from everything already drawn, nudged toward a
+     preferred angle (backside of the leaving group, say). */
+  function freeSpot(st, k, d, prefer){
+    var a = st.atoms[k], best = null, bestScore = -Infinity;
+    for(var i = 0; i < 36; i++){
+      var ang = i * Math.PI / 18;
+      var p = { x: a.x + d * Math.cos(ang), y: a.y + d * Math.sin(ang) };
+      var min = Infinity;
+      Object.keys(st.atoms).forEach(function(o){ if(o !== k) min = Math.min(min, dist(p, st.atoms[o])); });
+      var score = Math.min(min, 90) + (prefer === undefined ? 0 : 26 * Math.cos(ang - prefer));
+      if(score > bestScore){ bestScore = score; best = p; }
+    }
+    return best;
+  }
+
+  /* Labels with their hydrogens (CH₃, OH), because a drawing that leaves
+     them off cannot show you a beta hydrogen. */
+  function toDrawing(st, extraH){
+    var mol = Chem.toMolecule(st);
+    Object.keys(st.atoms).forEach(function(k){
+      var a = st.atoms[k], m = mol.atoms[k];
+      if(!a.el || a.group || m.isReagent) return;
+      var h = (a.hFixed !== undefined ? a.hFixed : (a.hImplicit || 0)) - ((extraH && extraH[k]) || 0);
+      m.label = a.el + (h > 0 ? 'H' + (h > 1 ? Chem.sub(h) : '') : '');
+      m.r = Math.max(m.r || 14, m.label.length > 2 ? 17 : 15);
+    });
+    return mol;
+  }
+
+  /* The scene: substrate, reagent beside it, and — once the mechanism is
+     known — the curved arrows for its first step. The reagent sits off to
+     the side until then, so its position never gives the answer away. */
+  function scene(sub, rgt, mech){
+    if(!B || !Chem) return null;
+    var st = sub.generic ? Chem.clone(sub.st) : build(DRAW[sub.id], 'Br');
+    if(!st) return null;
+    st = Chem.clone(st);
+    var at = sites(st);
+    if(!at) return null;
+    var ra = REAGENT_ATOM[rgt.id] || { label: rgt.name, q:0, lp:1 };
+    var extraH = {}, arrows = [], hKey = null, beta = null;
+
+    if(mech === 'E2' && at.betas.some(function(b){ return b.h > 0; })){
+      /* Zaitsev takes the H from the most substituted beta carbon, a bulky
+         base from the least, which is the same choice predict() makes. */
+      var withH = at.betas.filter(function(b){ return b.h > 0; });
+      withH.sort(function(p, q){ return rgt.bulky ? q.h - p.h : p.h - q.h; });
+      beta = withH[0].k;
+      var hp = freeSpot(st, beta, 34);
+      hKey = 'hBeta';
+      st.atoms[hKey] = { el:'H', label:'H', x:hp.x, y:hp.y, r:11, lp:0, charge:0, hImplicit:0 };
+      st.bonds.push({ a:beta, b:hKey, order:1 });
+      extraH[beta] = 1;
+    }
+
+    var A = st.atoms[at.alpha], L = st.atoms[at.lg];
+    var pos;
+    if(mech === 'SN2'){
+      pos = freeSpot(st, at.alpha, 70, Math.atan2(A.y - L.y, A.x - L.x));
+    } else if(hKey){
+      var H = st.atoms[hKey], Bt = st.atoms[beta];
+      var ux = (H.x - Bt.x) / (dist(H, Bt) || 1), uy = (H.y - Bt.y) / (dist(H, Bt) || 1);
+      pos = { x: H.x + ux * 56, y: H.y + uy * 56 };
+    } else {
+      var minX = Infinity, sumY = 0, n = 0;
+      Object.keys(st.atoms).forEach(function(k){ minX = Math.min(minX, st.atoms[k].x); sumY += st.atoms[k].y; n++; });
+      pos = { x: minX - 74, y: sumY / n };
+    }
+    st.atoms.rgt = { el: null, group: true, label: ra.label, x: pos.x, y: pos.y,
+                     r: ra.label.length > 3 ? 23 : (ra.label.length > 2 ? 20 : 17), lp: ra.lp, charge: ra.q, hImplicit: 0 };
+
+    if(mech === 'SN2'){
+      arrows = [{ from:'rgt', to:at.alpha }, { from:'bond:' + at.alpha + '-' + at.lg, to:at.lg }];
+    } else if(mech === 'E2' && hKey){
+      arrows = [{ from:'rgt', to:hKey }, { from:'bond:' + beta + '-' + hKey, to:'bond:' + at.alpha + '-' + beta },
+                { from:'bond:' + at.alpha + '-' + at.lg, to:at.lg }];
+    } else if(mech === 'SN1' || mech === 'E1'){
+      arrows = [{ from:'bond:' + at.alpha + '-' + at.lg, to:at.lg }];
+    }
+
+    fit(st);
+    var mol = toDrawing(st, extraH);
+    mol.atoms.rgt.label = ra.label;
+    mol.atoms.rgt.charge = ra.q ? Chem.chargeGlyph(ra.q) : '';
+    mol.viewBox = '0 0 320 170';
+    return { mol: mol, arrows: arrows, at: at, lgEl: st.atoms[at.lg].el };
+  }
+
+  function productDrawing(sub, rgt, p){
+    if(!B || !Chem) return null;
+    if(sub.generic || !p.product || p.product === '—') return null;
+    var st = null;
+    if(p.major === 'SN1' || p.major === 'SN2'){
+      if(!GROUP[rgt.id]) return null;
+      st = build(DRAW[sub.id], GROUP[rgt.id]);
+    } else if(ALKENE[sub.id]){
+      var alk = ALKENE[sub.id], src = p.alkene === 'Hofmann' && alk.h ? alk.h : alk.z;
+      var r = B.parse(src);
+      st = r && r.st;
+    }
+    if(!st) return null;
+    fit(st);
+    var mol = toDrawing(st);
+    mol.viewBox = '0 0 320 170';
+    return mol;
+  }
+
+  /* ---- The page ---------------------------------------------------------- */
+
+  var PATHS = ['SN1', 'SN2', 'E1', 'E2'];
+  var CORNER = { SN1:[25, 30], SN2:[75, 30], E1:[25, 70], E2:[75, 70] };
+  var SHORT = { mebr:'CH₃Br', prbr:'1° propyl', neopentyl:'Neopentyl', bubr2:'2° butyl', cyhexbr:'Cyclohexyl',
+                tbubr:'3° butyl', mebubr:'3° pentyl', bnbr:'Benzyl' };
 
   root.innerHTML =
-    '<div class="tpanel">' +
-      '<div class="tpanel__head"><span>Set up the reaction</span><span class="tmuted" id="rpScore"></span></div>' +
-      '<div class="rp-setup">' +
-        '<div class="tfield"><label for="rpSub">Substrate</label><select class="tselect" id="rpSub"></select></div>' +
-        '<div class="tfield"><label for="rpRgt">Reagent</label><select class="tselect" id="rpRgt"></select></div>' +
-        '<div class="tfield"><label for="rpSolv">Solvent</label><select class="tselect" id="rpSolv"></select></div>' +
-        '<div class="tfield"><label for="rpHeat">Temperature</label>' +
-          '<div class="tseg" id="rpHeat">' +
-            '<button type="button" data-heat="0" class="on">Room temp</button>' +
-            '<button type="button" data-heat="1">Heat</button>' +
+    '<div class="rp-grid">' +
+      '<div class="tpanel rp-flask">' +
+        '<div class="tpanel__head"><span>The flask</span>' +
+          '<div class="tseg" id="rpMode" role="group" aria-label="Mode">' +
+            '<button type="button" data-mode="explore" class="on" aria-pressed="true">Explore</button>' +
+            '<button type="button" data-mode="predict" aria-pressed="false">Predict first</button>' +
+          '</div></div>' +
+        '<div class="rp-stage tstage" id="rpStage"></div>' +
+        '<p class="rp-read" id="rpRead"></p>' +
+      '</div>' +
+      '<div class="tpanel rp-ctl">' +
+        '<div class="tpanel__head"><span>Change the conditions</span></div>' +
+          '<p class="rp-k" id="rpSubK">Substrate</p>' +
+          '<div class="tchips rp-chips" id="rpSub" role="group" aria-labelledby="rpSubK"></div>' +
+          '<p class="rp-k" id="rpRgtK">Reagent</p>' +
+          '<div class="tchips rp-chips" id="rpRgt" role="group" aria-labelledby="rpRgtK"></div>' +
+          '<p class="rp-rgtnote" id="rpRgtNote"></p>' +
+          '<div class="rp-pair">' +
+            '<div><p class="rp-k" id="rpSolvK">Solvent</p>' +
+              '<div class="tseg" id="rpSolv" role="group" aria-labelledby="rpSolvK"></div></div>' +
+            '<div><p class="rp-k" id="rpHeatK">Temperature</p>' +
+              '<div class="tseg" id="rpHeat" role="group" aria-labelledby="rpHeatK">' +
+                '<button type="button" data-heat="0" class="on" aria-pressed="true">Room temp</button>' +
+                '<button type="button" data-heat="1" aria-pressed="false">Heat</button>' +
+              '</div></div>' +
           '</div>' +
-        '</div>' +
+          '<div class="trow rp-more">' +
+            '<button type="button" class="tchip" id="rpShuffle">Shuffle the flask</button>' +
+            '<button type="button" class="tchip tchip--ghost" id="rpBuildToggle">Draw your own substrate &rarr;</button>' +
+          '</div>' +
+          '<div id="rpBuilder" hidden></div>' +
+          '<div id="rpBuildMsg"></div>' +
+          '<div id="rpSend"></div>' +
       '</div>' +
-      '<div class="rp-equation" id="rpEq"></div>' +
-      '<div class="trow" style="margin-top:12px;">' +
-        '<button type="button" class="tchip tchip--ghost" id="rpBuildToggle">Draw your own substrate &rarr;</button>' +
-      '</div>' +
-      '<div id="rpBuilder" hidden></div>' +
-      '<div id="rpBuildMsg"></div>' +
-      '<div id="rpSend"></div>' +
-    '</div>' +
-    '<div class="tsplit tsplit--wide">' +
-      '<div class="tpanel">' +
-        '<div class="tpanel__head">Commit to a prediction</div>' +
-        '<p class="tmuted" style="margin-top:0;">Decide before you look. Getting it wrong with a reason in mind teaches more than getting it right by reading the answer.</p>' +
-        '<div class="tchips" id="rpGuess">' +
-          ['SN2','SN1','E2','E1','No reaction'].map(function(g){
-            return '<button type="button" class="tchip" data-guess="' + g + '">' + g + '</button>';
+      '<div class="tpanel rp-side">' +
+        '<div class="tpanel__head"><span id="rpMeterH">Where the flask goes</span><span class="tmuted" id="rpScore"></span></div>' +
+        '<div class="rp-cols" aria-hidden="true"><span>Cation first<br><i>unimolecular</i></span><span>One concerted step<br><i>bimolecular</i></span></div>' +
+        '<div class="rp-meter" id="rpMeter">' +
+          '<span class="rp-axis rp-axis--top">Substitution</span>' +
+          '<span class="rp-axis rp-axis--bot">Elimination</span>' +
+
+          PATHS.map(function(m){
+            return '<button type="button" class="rp-corner" data-path="' + m + '" id="rpC' + m + '">' +
+              '<span class="rp-corner__name">' + m + '</span><span class="rp-corner__pct"></span>' +
+              '<span class="rp-corner__why"></span></button>';
           }).join('') +
+          '<span class="rp-puck" id="rpPuck" aria-hidden="true"></span>' +
+          '<button type="button" class="rp-none" id="rpNone" data-path="No reaction">No reaction</button>' +
+          '<div class="rp-cover" id="rpCover">Tap the corner you think wins.<br><span>Then the pull appears.</span></div>' +
         '</div>' +
-        '<div aria-live="polite" id="rpVerdict" style="margin-top:14px;"></div>' +
+        '<p class="rp-delta" id="rpDelta"></p>' +
+        '<div class="sr-only" aria-live="polite" id="rpLive"></div>' +
       '</div>' +
-      '<div class="tpanel">' +
-        '<div class="tpanel__head">How the four factors voted</div>' +
-        '<div id="rpFactors"></div>' +
-      '</div>' +
+      '<div class="rp-out" id="rpVerdict"></div>' +
     '</div>';
 
   /* ---- Draw your own substrate ------------------------------------------- */
@@ -520,10 +747,10 @@
           }
           msg.innerHTML = '<div class="tnote tnote--good" style="margin-top:12px;">' +
             '<span class="tnote__k">Loaded</span>' + esc(sub.note) + '</div>';
+          sub.st = Chem.clone(st);
           state.sub = sub;
-          state.guess = null;
-          state.revealed = false;
-          render();
+          paintChips();
+          reset('Your drawing');
         }
       });
     }
@@ -532,48 +759,86 @@
   var elSub = document.getElementById('rpSub');
   var elRgt = document.getElementById('rpRgt');
   var elSolv = document.getElementById('rpSolv');
+  var elHeat = document.getElementById('rpHeat');
 
-  elSub.innerHTML = SUBSTRATES.map(function(s, i){
-    return '<option value="' + s.id + '"' + (i === 3 ? ' selected' : '') + '>' + esc(s.name) + ' — ' + esc(s.formula) + '</option>';
+  elSub.innerHTML = SUBSTRATES.map(function(s){
+    return '<button type="button" class="tchip" data-sub="' + s.id + '" aria-label="' + esc(s.name) + '">' + esc(SHORT[s.id] || s.name) + '</button>';
   }).join('');
-  elRgt.innerHTML = REAGENTS.map(function(r, i){
-    return '<option value="' + r.id + '"' + (i === 1 ? ' selected' : '') + '>' + esc(r.name) + ' — ' + esc(r.kind) + '</option>';
+  elRgt.innerHTML = REAGENTS.map(function(r){
+    return '<button type="button" class="tchip" data-rgt="' + r.id + '" aria-label="' + esc(r.name + ': ' + r.kind) + '">' + esc(r.name) + '</button>';
   }).join('');
-  elSolv.innerHTML = SOLVENTS.map(function(s){
-    return '<option value="' + s.id + '">' + esc(s.name) + ' (' + esc(s.example) + ')</option>';
+  elSolv.innerHTML = SOLVENTS.map(function(s, i){
+    return '<button type="button" data-solv="' + s.id + '"' + (i === 0 ? ' class="on" aria-pressed="true"' : ' aria-pressed="false"') +
+      ' title="' + esc(s.example) + '">' + esc(s.name) + '</button>';
   }).join('');
 
   function find(list, id){
     for(var i=0;i<list.length;i++) if(list[i].id === id) return list[i];
-    return list[0];
+    return null;
   }
 
-  elSub.addEventListener('change', function(){ state.sub = find(SUBSTRATES, elSub.value); reset(); });
-  elRgt.addEventListener('change', function(){ state.rgt = find(REAGENTS, elRgt.value); reset(); });
-  elSolv.addEventListener('change', function(){ state.solvent = find(SOLVENTS, elSolv.value); reset(); });
-  document.getElementById('rpHeat').querySelectorAll('button').forEach(function(b){
-    b.addEventListener('click', function(){
-      state.heat = b.getAttribute('data-heat') === '1';
-      document.getElementById('rpHeat').querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', x === b); });
-      reset();
+  function press(box, attr, val){
+    box.querySelectorAll('[' + attr + ']').forEach(function(b){
+      var on = b.getAttribute(attr) === val;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
+  }
+  function paintChips(){
+    press(elSub, 'data-sub', state.sub.generic ? '' : state.sub.id);
+    press(elRgt, 'data-rgt', state.rgt.id);
+    press(elSolv, 'data-solv', state.solvent.id);
+    press(elHeat, 'data-heat', state.heat ? '1' : '0');
+    press(document.getElementById('rpMode'), 'data-mode', state.mode);
+  }
+
+  elSub.addEventListener('click', function(e){
+    var b = e.target.closest('[data-sub]'); if(!b) return;
+    state.sub = find(SUBSTRATES, b.getAttribute('data-sub')) || state.sub; paintChips(); reset('Substrate');
   });
-  document.getElementById('rpGuess').querySelectorAll('.tchip').forEach(function(b){
-    b.addEventListener('click', function(){
-      if(state.revealed) return;
-      state.guess = b.getAttribute('data-guess');
-      document.getElementById('rpGuess').querySelectorAll('.tchip').forEach(function(x){ x.classList.toggle('on', x === b); });
+  elRgt.addEventListener('click', function(e){
+    var b = e.target.closest('[data-rgt]'); if(!b) return;
+    state.rgt = find(REAGENTS, b.getAttribute('data-rgt')) || state.rgt; paintChips(); reset('Reagent');
+  });
+  elSolv.addEventListener('click', function(e){
+    var b = e.target.closest('[data-solv]'); if(!b) return;
+    state.solvent = find(SOLVENTS, b.getAttribute('data-solv')) || state.solvent; paintChips(); reset('Solvent');
+  });
+  elHeat.addEventListener('click', function(e){
+    var b = e.target.closest('[data-heat]'); if(!b) return;
+    state.heat = b.getAttribute('data-heat') === '1'; paintChips(); reset('Temperature');
+  });
+  document.getElementById('rpMode').addEventListener('click', function(e){
+    var b = e.target.closest('[data-mode]'); if(!b) return;
+    state.mode = b.getAttribute('data-mode'); paintChips(); prev = null; reset();
+  });
+  document.getElementById('rpShuffle').addEventListener('click', shuffle);
+
+  /* The meter's corners are the prediction buttons in Predict first, and in
+     Explore they say why that pathway is or is not happening. */
+  var focusPath = null;
+  document.getElementById('rpMeter').addEventListener('click', function(e){
+    var b = e.target.closest('[data-path]'); if(!b) return;
+    var path = b.getAttribute('data-path');
+    if(state.mode === 'predict' && !state.revealed){
+      state.guess = path;
       reveal();
-    });
+      return;
+    }
+    focusPath = focusPath === path ? null : path;
+    render();
   });
 
-  /* Changing any input puts the answer away again. Leaving the previous
-     verdict on screen while the conditions change would let you read off the
-     new answer without ever making a second prediction. */
-  function reset(){
+  /* Changing any input puts the answer away again in Predict first: leaving
+     the previous verdict on screen would let you read off the new answer
+     without making a second prediction. In Explore the meter moves at once,
+     and the line under it says what that one change did. */
+  var prev = null, changed = null;
+  function reset(what){
+    changed = what || null;
     state.guess = null;
     state.revealed = false;
-    document.getElementById('rpGuess').querySelectorAll('.tchip').forEach(function(x){ x.classList.remove('on'); });
+    focusPath = null;
     render();
   }
 
@@ -593,57 +858,157 @@
       sub: state.sub.generic ? null : state.sub.id,
       rgt: state.rgt.id,
       solv: state.solvent.id,
-      heat: state.heat ? 1 : null
+      heat: state.heat ? 1 : null,
+      mode: state.mode === 'predict' ? 'predict' : null
     });
   }
 
+  function shares(p){
+    var out = { SN1:0, SN2:0, E1:0, E2:0 };
+    var mix = mixture(state, p);
+    if(!mix) return null;
+    mix.slice(0, 2).forEach(function(m){ if(m.path in out) out[m.path] = m.pct; });
+    return out;
+  }
+
+  function sayShares(sh, p){
+    if(!sh) return 'no reaction worth writing down';
+    return PATHS.filter(function(m){ return sh[m]; }).sort(function(a, b){ return sh[b] - sh[a]; })
+      .map(function(m){ return m + ' about ' + sh[m] + '%'; }).join(', ');
+  }
+
+  function factorShort(r){ return r.factor === 'Temperature' ? (state.heat ? 'Heat' : 'Room temp') : r.factor; }
+
   function render(){
     var p = predict(state);
+    var show = state.mode === 'explore' || state.revealed;
+    var sh = shares(p);
     sync();
 
     document.getElementById('rpScore').textContent =
-      state.score.total ? state.score.right + ' of ' + state.score.total + ' right' : '';
+      state.mode === 'predict' && state.score.total ? state.score.right + ' of ' + state.score.total + ' right' : '';
 
-    document.getElementById('rpEq').innerHTML =
-      '<span class="rp-term">' + esc(state.sub.formula) + '</span>' +
-      '<span class="rp-op">+</span>' +
-      '<span class="rp-term">' + esc(state.rgt.name) + '</span>' +
-      '<span class="rp-arrow">' +
-        '<span class="rp-over">' + esc(state.solvent.example) + '</span>' +
-        '<span class="rp-line">&rarr;</span>' +
-        '<span class="rp-under">' + (state.heat ? 'heat' : '25 °C') + '</span>' +
-      '</span>' +
-      '<span class="rp-term rp-term--product">' + (state.revealed ? esc(p.product || '—') : '?') + '</span>';
-
-    // Factors stay hidden until the prediction is in.
-    var elF = document.getElementById('rpFactors');
-    if(!state.revealed){
-      elF.innerHTML = '<div class="tempty">The four arguments appear once you have committed.<br>' +
-        'Work through them yourself first: what does the substrate allow, what does the reagent want, ' +
-        'which way does the solvent lean, and is anything being heated?</div>';
+    /* The stage. */
+    var sc = scene(state.sub, state.rgt, show ? p.major : null);
+    var stage = document.getElementById('rpStage');
+    if(sc && Mol){
+      stage.innerHTML = Mol.svg(sc.mol, {
+        highlight: [sc.at.alpha, sc.at.lg], arrows: show ? sc.arrows : [], caption: '',
+        label: state.sub.name + ' with ' + state.rgt.name + (show && sc.arrows.length ? ', with the curved arrows for ' + p.major : '')
+      }) +
+      '<div class="rp-cond" aria-hidden="true"><span>' + esc(state.solvent.example) + '</span><span class="rp-cond__arrow"></span><span>' + (state.heat ? 'heat' : '25 °C') + '</span></div>';
     } else {
-      elF.innerHTML = '<div class="ttable-scroll"><table class="ttable">' +
-        '<thead><tr><th>Factor</th><th>Argues for</th></tr></thead><tbody>' +
-        p.reasons.map(function(r){
-          return '<tr><td style="white-space:nowrap;"><b>' + esc(r.factor) + '</b><br>' +
-            '<span class="tmuted" style="font-size:11.5px;">' + esc(r.leans) + '</span></td>' +
-            '<td>' + esc(r.text) + '</td></tr>';
-        }).join('') +
-        '</tbody></table></div>' +
-        '<p class="tmuted" style="margin-top:12px;">' + esc(state.sub.note) + '</p>' +
-        '<p class="tmuted">' + esc(state.solvent.note) + '</p>';
+      stage.innerHTML = '<p class="tformula" style="text-align:center;">' + esc(state.sub.formula) + ' + ' + esc(state.rgt.name) + '</p>';
     }
+    var at = sc && sc.at;
+    var cls = ({ methyl:'methyl', '1':'primary (1°)', '1-hindered':'primary, but hindered', '2':'secondary (2°)',
+                 '3':'tertiary (3°)', benzylic:'benzylic' })[state.sub.cls];
+    document.getElementById('rpRead').innerHTML = at
+      ? '<b>' + esc(state.sub.name) + '.</b> The carbon holding ' + esc(sc.lgEl) + ' is <b>' + esc(cls) + '</b>' +
+        ' and has <b>' + at.betaH + ' β-hydrogen' + (at.betaH === 1 ? '' : 's') + '</b> next door' +
+        (at.betaH ? '.' : ', so nothing can eliminate.') +
+        (show && sc.arrows.length ? ' <span class="rp-read__arrows">Arrows: ' + (p.major === 'SN2' ? 'the nucleophile hits the back of the carbon as bromide leaves, in one step.'
+            : p.major === 'E2' ? 'the base takes a β-hydrogen, that C–H pair becomes the π bond, and bromide leaves, all at once.'
+            : 'step 1 only: the C–Br bond breaks on its own and leaves a carbocation; ' + (p.major === 'SN1' ? 'the solvent attacks it next.' : 'a β-hydrogen is lost from it next.')) + '</span>' : '')
+      : '';
 
+    var rgtNote = document.getElementById('rpRgtNote');
+    rgtNote.innerHTML = '<span class="rp-meters" aria-hidden="true">' +
+        '<span>Nucleophile</span><span class="rp-bar"><i style="width:' + (state.rgt.nu * 25) + '%"></i></span>' +
+        '<span>Base</span><span class="rp-bar"><i style="width:' + (state.rgt.base * 25) + '%"></i></span></span>' +
+      '<b>' + esc(state.rgt.name) + '</b>: ' + esc(state.rgt.kind) + '.';
+
+    /* The meter. */
+    var meter = document.getElementById('rpMeter');
+    meter.classList.toggle('is-covered', !show);
+    meter.classList.toggle('is-predict', state.mode === 'predict' && !state.revealed);
+    document.getElementById('rpMeterH').textContent = show ? 'Where the flask goes' : 'Your call';
+    PATHS.forEach(function(m){
+      var c = document.getElementById('rpC' + m);
+      var blocked = p.blocked && p.blocked[m];
+      var pct = sh ? sh[m] : 0;
+      var pulls = (p.reasons || []).filter(function(r){ return r.votes && r.votes[m]; });
+      c.classList.toggle('is-blocked', show && !!blocked);
+      c.classList.toggle('is-win', show && p.major === m);
+      c.classList.toggle('is-minor', show && p.minor === m);
+      c.classList.toggle('is-focus', focusPath === m);
+      c.classList.toggle('is-guess', state.guess === m);
+      if(c.style.setProperty) c.style.setProperty('--pct', show ? pct : 0);
+      c.querySelector('.rp-corner__pct').textContent = show ? (blocked ? 'blocked' : (pct ? '≈' + pct + '%' : '—')) : '';
+      c.querySelector('.rp-corner__why').innerHTML = !show ? '' : blocked
+        ? '<span class="rp-x">' + esc(blocked) + '</span>'
+        : pulls.map(function(r){
+            return '<span class="rp-pull' + (r.votes[m] < 1 ? ' is-soft' : '') + '">' + esc(factorShort(r)) + '</span>';
+          }).join('');
+      c.setAttribute('aria-label', state.mode === 'predict' && !state.revealed
+        ? 'Predict ' + m
+        : m + ': ' + (blocked ? 'blocked. ' + blocked : (pct ? 'about ' + pct + '% of the product' : 'not the main pathway') +
+          (pulls.length ? '. Argued for by ' + pulls.map(factorShort).join(', ') : '')) + '. Tap for why.');
+    });
+    var none = document.getElementById('rpNone');
+    none.hidden = !(state.mode === 'predict' && !state.revealed) && p.major !== 'No reaction';
+    none.classList.toggle('is-win', show && p.major === 'No reaction');
+    none.classList.toggle('is-guess', state.guess === 'No reaction');
+    var puck = document.getElementById('rpPuck');
+    var px = 50, py = 50;
+    if(show && sh){
+      px = 0; py = 0;
+      PATHS.forEach(function(m){ px += CORNER[m][0] * sh[m] / 100; py += CORNER[m][1] * sh[m] / 100; });
+    }
+    puck.style.left = px + '%';
+    puck.style.top = py + '%';
+    puck.classList.toggle('is-none', show && !sh);
+    puck.hidden = !show;
+
+    /* What the last change did. */
+    var delta = document.getElementById('rpDelta');
+    var now = { major: p.major, sh: sh };
+    var line = '';
+    if(show && prev && changed){
+      if(prev.major !== now.major){
+        line = '<b>' + esc(changed) + '</b> changed the winner: ' + esc(prev.major) + ' → <b>' + esc(now.major) + '</b>.';
+      } else if(prev.sh && now.sh){
+        var moved = PATHS.filter(function(m){ return prev.sh[m] !== now.sh[m] && now.sh[m]; })[0];
+        line = moved
+          ? '<b>' + esc(changed) + '</b> moved ' + moved + ' from ' + prev.sh[moved] + '% to ' + now.sh[moved] + '%; ' + esc(now.major) + ' still wins.'
+          : '<b>' + esc(changed) + '</b> made no difference here: ' + esc(now.major) + ' either way.';
+      } else {
+        line = '<b>' + esc(changed) + '</b> made no difference here.';
+      }
+    } else if(!show){
+      line = 'Read the flask: substrate class, then the reagent, then the solvent and heat.';
+    }
+    delta.innerHTML = line;
+    if(show) prev = now;
+    changed = null;
+
+    document.getElementById('rpLive').textContent =
+      state.sub.name + ' with ' + state.rgt.name + ', ' + state.solvent.name.toLowerCase() + ' solvent, ' +
+      (state.heat ? 'heated' : 'room temperature') + '. ' +
+      (show ? (p.major === 'No reaction' ? 'No reaction.' : 'Result: ' + sayShares(sh, p) + '.') : 'Make your prediction.');
+
+    /* The verdict. */
     var elV = document.getElementById('rpVerdict');
-    if(!state.revealed){
-      elV.innerHTML = '';
-      return;
-    }
+    if(!show){ elV.innerHTML = ''; return; }
 
-    var right = state.guess === p.major;
-    var html = '<div class="tnote ' + (right ? 'tnote--good' : 'tnote--bad') + '">' +
-      '<span class="tnote__k">' + (right ? 'Correct — ' + esc(p.major) : 'Not quite — it is ' + esc(p.major) + ', not ' + esc(state.guess)) + '</span>' +
-      esc(p.verdict) + '</div>';
+    var html = '';
+    if(state.mode === 'predict'){
+      var right = state.guess === p.major;
+      html += '<div class="tnote ' + (right ? 'tnote--good' : 'tnote--bad') + '" tabindex="-1" id="rpCall">' +
+        '<span class="tnote__k">' + (right ? 'Correct: ' + esc(p.major) : 'Not quite: it is ' + esc(p.major) + ', not ' + esc(state.guess)) + '</span>' +
+        esc(p.verdict) + '</div>';
+    } else if(focusPath){
+      var fb = p.blocked && p.blocked[focusPath];
+      var fr = (p.reasons || []).filter(function(r){ return r.votes && r.votes[focusPath]; });
+      html += '<div class="tnote tnote--info"><span class="tnote__k">Why ' + (fb ? 'not ' : '') + esc(focusPath) + (fb ? '' : ' (' + (sh && sh[focusPath] ? '≈' + sh[focusPath] + '%' : 'not the main pathway') + ')') + '</span>' +
+        (fb ? esc(fb) + ' ' : '') +
+        (fr.length && !fb ? fr.map(function(r){ return '<b>' + esc(factorShort(r)) + ':</b> ' + esc(r.text); }).join(' ') : '') +
+        (!fb && !fr.length ? 'Nothing in this flask argues for it.' : '') +
+        (!fb && p.major !== focusPath ? ' <b>Verdict:</b> ' + esc(p.verdict) : '') + '</div>';
+    } else {
+      html += '<div class="tnote tnote--info"><span class="tnote__k">' + esc(p.major) + (p.minor ? ', some ' + esc(p.minor) : '') + '</span>' +
+        esc(p.verdict) + '</div>';
+    }
 
     var mix = mixture(state, p);
     if(mix && mix.length > 1){
@@ -657,30 +1022,42 @@
         '</div>' +
         'These are competitions, not switches: a real flask gives you both, and the useful question is how lopsided. ' +
         (why ? 'Here ' + esc(why) + '. ' : '') +
-        'Treat the split as a band rather than a yield — the actual numbers move with concentration, the exact solvent and how long it was left.' +
+        'Treat the split as a band rather than a yield: the actual numbers move with concentration, the exact solvent and how long it was left.' +
       '</div>';
     }
 
+    var pm = productDrawing(state.sub, state.rgt, p);
     if(p.product && p.product !== '—'){
-      html += '<div class="tnote tnote--info"><span class="tnote__k">Major product' +
+      html += '<div class="tnote tnote--info rp-product"><span class="tnote__k">Major product' +
         (p.alkene ? ' · ' + esc(p.alkene) : '') + '</span>' +
-        '<span class="tformula">' + esc(p.product) + '</span>' +
+        (pm && Mol ? Mol.svg(pm, { caption:'', label:'Major product: ' + p.product }) : '') +
+        '<span class="tformula">' + esc(p.product) + '</span> <span class="tmuted">+ Br⁻</span>' +
         (p.productNote ? '<div style="margin-top:6px;">' + esc(p.productNote) + '</div>' : '') +
       '</div>';
     } else if(p.productNote){
       html += '<div class="tnote"><span class="tnote__k">Product</span>' + esc(p.productNote) + '</div>';
     }
 
+    html += '<details class="rp-args"><summary>The four arguments in full</summary>' +
+      p.reasons.map(function(r){
+        return '<p><b>' + esc(r.factor) + '</b> <span class="tmuted">argues ' + esc(r.leans) + '.</span> ' + esc(r.text) + '</p>';
+      }).join('') +
+      '<p class="tmuted">' + esc(state.sub.note) + '</p><p class="tmuted">' + esc(state.solvent.note) + '</p></details>';
+
     var link = MECH_LINK[p.major];
-    html += '<div class="trow" style="margin-top:4px;">' +
-      '<button type="button" class="tchip" id="rpNext">Try another combination</button>' +
-      (link
-        ? '<a class="tchip tchip--ghost" href="arrow-pusher.html?start=' + encodeURIComponent(link.id) + '">' +
-          esc(link.label) + ' &rarr;</a>'
-        : '') +
+    html += '<div class="trow" style="margin-top:10px;">' +
+      (state.mode === 'predict' ? '<button type="button" class="tchip" id="rpNext">Next flask</button>' : '') +
+      (link ? '<a class="tchip tchip--ghost" href="arrow-pusher.html?start=' + encodeURIComponent(link.id) + '">' +
+          esc(link.label) + ' in the Arrow Pusher &rarr;</a>' : '') +
     '</div>';
     elV.innerHTML = html;
-    document.getElementById('rpNext').addEventListener('click', shuffle);
+    var nx = document.getElementById('rpNext');
+    if(nx) nx.addEventListener('click', shuffle);
+    var call = document.getElementById('rpCall');
+    if(call && state.guess && window.matchMedia && window.matchMedia('(max-width: 820px)').matches){
+      call.focus({ preventScroll: true });
+      if(window.LevlMotion) window.LevlMotion.scrollIntoView(call, { block:'nearest' });
+    }
   }
 
   /* A random setup, so the tool can be used as a drill rather than only as a
@@ -690,40 +1067,40 @@
     state.rgt = REAGENTS[Math.floor(Math.random() * REAGENTS.length)];
     state.solvent = SOLVENTS[Math.floor(Math.random() * SOLVENTS.length)];
     state.heat = Math.random() < 0.4;
-    elSub.value = state.sub.id;
-    elRgt.value = state.rgt.id;
-    elSolv.value = state.solvent.id;
-    document.getElementById('rpHeat').querySelectorAll('button').forEach(function(x){
-      x.classList.toggle('on', (x.getAttribute('data-heat') === '1') === state.heat);
-    });
+    paintChips();
+    prev = null;
     reset();
   }
 
-  render();
   if(window.OchemToolState){
     var q = window.OchemToolState.read();
-
-    // A substrate drawn in another tool and sent here.
-    if(q.build && window.OchemToolHandoff){
-      var rpToggle = document.getElementById('rpBuildToggle');
-      if(rpToggle){
-        rpToggle.click();
-        if(rpBuilderApi) rpBuilderApi.build(q.build);
-      }
-    }
     var qs = find(SUBSTRATES, q.sub), qr = find(REAGENTS, q.rgt), qv = find(SOLVENTS, q.solv);
     if(qs) state.sub = qs;
     if(qr) state.rgt = qr;
     if(qv) state.solvent = qv;
     state.heat = q.heat === '1';
-    if(qs || qr || qv || state.heat){
-      elSub.value = state.sub.id; elRgt.value = state.rgt.id; elSolv.value = state.solvent.id;
-      document.getElementById('rpHeat').querySelectorAll('button').forEach(function(x){
-        x.classList.toggle('on', (x.getAttribute('data-heat') === '1') === state.heat);
-      });
-      render();
+    if(q.mode === 'predict') state.mode = 'predict';
+  }
+  paintChips();
+  render();
+
+  // A substrate drawn in another tool and sent here.
+  if(window.OchemToolState){
+    var q2 = window.OchemToolState.read();
+    if(q2.build && window.OchemToolHandoff){
+      var rpToggle = document.getElementById('rpBuildToggle');
+      if(rpToggle){
+        rpToggle.click();
+        if(rpBuilderApi) rpBuilderApi.build(q2.build);
+      }
     }
   }
+
+  /* For scripts/test/ochem-tools-upgrade.test.mjs: the engine and the
+     drawings, so the meter and the product structures can be checked against
+     the verdict they illustrate. */
+  window.OchemReactionPredictor = { predict: predict, mixture: mixture, scene: scene, productDrawing: productDrawing,
+    sites: sites, build: build, DRAW: DRAW, SUBSTRATES: SUBSTRATES, REAGENTS: REAGENTS, SOLVENTS: SOLVENTS };
 
   /* ---- Check yourself ---------------------------------------------------
      The tool already makes you commit before it reveals, which is most of the
