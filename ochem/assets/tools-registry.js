@@ -75,7 +75,8 @@
       blurb: 'Move electrons to find every resonance form of a molecule.',
       teaches: 'Delocalization, contributor weighting',
       topic: ['resonance', 'conjugate'],
-      terms: ['resonance-structures', 'major-contributor', 'resonance-hybrid']
+      terms: ['resonance-structures', 'major-contributor', 'resonance-hybrid'],
+      studio: true
     },
     {
       slug: 'viewer-3d',
