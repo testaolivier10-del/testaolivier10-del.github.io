@@ -61,9 +61,6 @@
     } else if(h[0] === 'all') showList();
     else { var d = defaultItem(); if(d) showPathway(d, firstOpen(d), false); else showList(); }
   }
-  function go(hash){
-    if(location.hash === hash) route(); else location.hash = hash;
-  }
 
   /* -------------------------------------------------------------- list view */
   function params(){
@@ -128,12 +125,18 @@
      first pathways in list order, within ?chapter= / ?topic=, with something
      not yet answered right; #all is the full list. The picker above the item
      reaches every pathways. */
-  function ordered(){
-    var q = params(), want = q.chapter || (q.topic && topicInfo(q.topic) ? topicInfo(q.topic).chapter : '');
+  // Every pathway in course order (chapter, then topic): the picker's order.
+  function sortedAll(){
     var order = cur().chapters.map(function(c){ return c.id; }), topicOrder = cur().topics.map(function(t){ return t.id; });
-    var all = DATA.pathways.slice().sort(function(a, b){
+    return DATA.pathways.slice().sort(function(a, b){
       return order.indexOf(chapterOf(a)) - order.indexOf(chapterOf(b)) || topicOrder.indexOf(a.topic) - topicOrder.indexOf(b.topic);
     });
+  }
+  // "Next pathway": the next one in that order, inside ?chapter= when set.
+  function nextOf(p){ var list = ordered(); if(list.indexOf(p) < 0) list = sortedAll(); return list[(list.indexOf(p) + 1) % list.length]; }
+  function ordered(){
+    var q = params(), want = q.chapter || (q.topic && topicInfo(q.topic) ? topicInfo(q.topic).chapter : '');
+    var all = sortedAll();
     var inCh = all.filter(function(x){ return chapterOf(x) === want; });
     return inCh.length ? inCh : all;
   }
@@ -147,8 +150,7 @@
     var host = app.querySelector('.pw-pickhost'), K = window.AnpToolKit;
     if(!host || !K) return;
     var chapters = [];
-    var all = DATA.pathways.slice(), order = cur().chapters.map(function(c){ return c.id; }), topicOrder = cur().topics.map(function(t){ return t.id; });
-    all.sort(function(a, b){ return order.indexOf(chapterOf(a)) - order.indexOf(chapterOf(b)) || topicOrder.indexOf(a.topic) - topicOrder.indexOf(b.topic); });
+    var all = sortedAll();
     all.forEach(function(x){ var c = chapterOf(x); if(chapters.indexOf(c) < 0) chapters.push(c); });
     K.picker(host, {
       label: 'Pathway', noun: 'pathways', current: p.id, allHref: '#all', allLabel: 'All pathways by chapter',
@@ -163,9 +165,7 @@
 
   /* ----------------------------------------------------------- pathway view */
   function showPathway(p, variant, focusTab){
-    var t = topicInfo(p.topic);
-    var idx = DATA.pathways.indexOf(p);
-    var next = DATA.pathways[(idx + 1) % DATA.pathways.length];
+    var next = nextOf(p);
     app.innerHTML = '<div class="pw pw-view">' +
       '<div class="pw-pickhost"></div>' +
       '<h2 class="pw-title" tabindex="-1">' + esc(p.title) + '</h2>' +
@@ -184,25 +184,32 @@
     addPicker(p);
     if(p.trace) traceView(p, app.querySelector('.pt'));
     var tabs = app.querySelectorAll('.pw-tab');
+    var panel = app.querySelector('#pw-panel');
+    /* A tab switches the drill below in place: the page keeps its scroll
+       position and the figure above keeps its Watch / Trace it state. (It
+       used to re-route, which redrew the whole page, reset Trace it and
+       jumped focus and scroll to the title.) */
+    function drill(v, focus){
+      if(player){ player.stop(); player = null; }
+      tabs.forEach(function(t){ var on = t.getAttribute('data-v') === v; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; if(on && focus) t.focus(); });
+      panel.setAttribute('aria-labelledby', 'pw-tab-' + v);
+      if(location.hash !== '#' + p.id + '/' + v) history.replaceState(null, '', '#' + p.id + '/' + v);
+      if(v === 'order') orderVariant(p, panel);
+      else if(v === 'missing') missingVariant(p, panel);
+      else errorVariant(p, panel);
+    }
     tabs.forEach(function(b, k){
-      b.addEventListener('click', function(){ if(player){ player.stop(); player = null; } go('#' + p.id + '/' + b.getAttribute('data-v')); });
+      b.addEventListener('click', function(){ drill(b.getAttribute('data-v'), false); });
       b.addEventListener('keydown', function(e){
         var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
         if(e.key === 'Home') d = -k; if(e.key === 'End') d = tabs.length - 1 - k;
         if(!d) return;
         e.preventDefault();
-        var n = (k + d + tabs.length) % tabs.length;
-        stopPlayer();
-        history.replaceState(null, '', '#' + p.id + '/' + tabs[n].getAttribute('data-v'));
-        showPathway(p, tabs[n].getAttribute('data-v'), true);
+        drill(tabs[(k + d + tabs.length) % tabs.length].getAttribute('data-v'), true);
       });
     });
-    var panel = app.querySelector('#pw-panel');
-    if(variant === 'order') orderVariant(p, panel);
-    else if(variant === 'missing') missingVariant(p, panel);
-    else errorVariant(p, panel);
-    if(focusTab){ var tb = app.querySelector('#pw-tab-' + variant); if(tb) tb.focus(); }
-    else if(booted){ var h = app.querySelector('.pw-title'); if(h) h.focus(); }
+    drill(variant, focusTab);
+    if(!focusTab && booted){ var h = app.querySelector('.pw-title'); if(h) h.focus(); }
   }
 
   /* ------------------------------------------------------- trace on the figure
