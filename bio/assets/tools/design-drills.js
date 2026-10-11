@@ -241,5 +241,47 @@
       });
     }
     draw(scen[0].id, false);
-  });
+  }, { studio: { arrange: studio } });
+
+  /* Tool Studio (docs/tools-calm.md): the scenario (its setup and data
+     table) is the stage; the drills go one at a time in the dock, each with
+     its own Check; the scenario choice is the one dock control, the drill
+     filter is in Details; "How this works" is under Why. Every draw (a new scenario) is re-arranged into a
+     fresh stepper. */
+  function studio(app, s){
+    var pick = app.querySelector('.dr-pick'), host = app.querySelector('.dr-scen');
+    // "How this works" (what each drill practices and how it is checked) is the Why.
+    Array.prototype.slice.call(app.children).forEach(function(k){ if(k.matches('.bt-intro')) s.add('about', k); if(k.matches('details.bt-how')){ k.open = true; s.add('why', k); } });
+    T.studioKeep(s);
+    var stage = document.createElement('div'), det = document.createElement('div'), dock = document.createElement('div');
+    stage.className = 'ls-dr-stage'; det.className = 'ls-sec'; dock.className = 'ls-dr-dock';
+    s.add('stage', stage); s.add('details', det);
+    var sels = pick.querySelectorAll(':scope > .bt-ctl');
+    if(sels[1]) det.appendChild(sels[1]);
+    s.add('dock', pick); s.add('dock', dock);
+    var wrap = null;
+    function arrange(){
+      if(!host.children.length) return;
+      stage.innerHTML = '';
+      Array.prototype.slice.call(host.querySelectorAll(':scope > h2, :scope > .bt-context, :scope > .table-wrap')).forEach(function(x){ stage.appendChild(x); });
+      var h2 = stage.querySelector('h2'); if(h2) h2.classList.add('ls-title-l');
+      var w = document.createElement('div'); w.className = 'ls-dr-steps';
+      Array.prototype.slice.call(host.children).forEach(function(x){ w.appendChild(x); });
+      if(wrap) wrap.remove();
+      wrap = w; dock.appendChild(w);
+      window.LevlStudio.stepper(w, { items: ':scope > .dr-sec, :scope > .bt-frq', label: 'Drill' });
+      s.caption('Read the experiment, then answer one drill at a time. Each drill has its own Check.');
+      s.pills([]);
+    }
+    // Feedback lands on the stage: the last checked drill's score as a pill.
+    dock.addEventListener('submit', function(){ setTimeout(function(){
+      var r = Array.prototype.filter.call(dock.querySelectorAll('.dr-sec:not(.ls-step-off) .bt-result'), function(x){ return x.textContent; })[0];
+      var m = r && /(\d+) of (\d+)/.exec(r.textContent);
+      if(m){ s.pills([{ html: m[1] + ' of ' + m[2] + ' right', tone: m[1] === m[2] ? 'good' : 'warn' }]); s.caption('<b>' + T.esc(r.textContent) + '</b> The feedback is under each answer. Next goes on to the next drill.'); }
+    }, 0); });
+    if(window.MutationObserver) new MutationObserver(arrange).observe(host, { childList: true });
+    arrange();
+    app.hidden = true;
+    s.hint({ target: '.ls-dr-steps .bt-radio', text: 'Read the setup, then pick an answer' });
+  }
 })();

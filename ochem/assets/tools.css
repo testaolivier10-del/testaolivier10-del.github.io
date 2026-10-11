@@ -797,3 +797,387 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
    rather than buttons. Give unselected ones the page tint, as the Reaction Predictor's do. */
 .tpanel .tchip:not(.on){background:var(--paper);border-color:var(--line-soft);}
 .tpanel .tchip:not(.on):hover{background:var(--tint-accent);}
+
+/* ---- Reaction Predictor in the Tool Studio (registry studio: true;
+   docs/tools-calm.md). Stage: the flask over four path tiles (a 2 x 2 grid
+   with its row and column names on a desktop). Dock: substrate and reagent
+   as one scrolling row each on a phone. */
+.rp-ls .rp-stage{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:0;background:none;border:0;}
+.rp-ls .rp-stage .scene{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:0;margin:0;}
+.rp-ls .rp-stage .omol{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+.rp-ls .rp-stage svg{width:100%;height:100%;max-width:520px;max-height:100%;}
+.rp-ls .rp-cond{display:none;}
+.rp-ls .rp-ls-meter{flex:none;margin-top:8px;}
+.rp-ls .rp-cols,.rp-ls .rp-axis,.rp-ls .rp-puck,.rp-ls .rp-cover,.rp-ls .rp-corner__why{display:none;}
+.rp-ls .rp-meter,.rp-ls .rp-meter.is-predict{position:static;height:auto;max-width:none;margin:0;padding:0;border:0;background:none;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;}
+.rp-ls .rp-corner{position:relative;inset:auto;width:auto;height:auto;min-height:56px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;
+  padding:8px 10px;border:0;border-radius:14px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);overflow:hidden;color:var(--ink);text-align:left;}
+.rp-ls .rp-corner__name{font:900 var(--ls-s) var(--font-ui);}
+.rp-ls .rp-corner__pct{font:800 var(--ls-s) var(--font-ui);color:var(--muted);justify-self:auto;}
+.rp-ls .rp-corner::before{height:4px;background:var(--cink);border-radius:0 4px 4px 0;}
+.rp-ls .rp-corner:hover{box-shadow:inset 0 0 0 1.5px var(--cink);}
+.rp-ls .rp-corner.is-win{background:var(--cink);color:var(--white);box-shadow:none;}
+.rp-ls .rp-corner.is-win .rp-corner__pct{color:var(--white);opacity:.85;}
+.rp-ls .rp-corner.is-win::before{background:var(--white);opacity:.6;}
+.rp-ls .rp-corner.is-minor{background:var(--ctint);color:var(--cink);box-shadow:none;}
+.rp-ls .rp-corner.is-minor .rp-corner__pct{color:var(--cink);}
+.rp-ls .rp-corner.is-blocked{background:transparent;box-shadow:inset 0 0 0 1.5px var(--line-soft);}
+.rp-ls .rp-corner.is-blocked .rp-corner__name{color:var(--muted);}
+.rp-ls .rp-corner.is-guess:not(.is-win){background:var(--tint-bad);color:var(--bad-text);box-shadow:none;}
+.rp-ls .rp-corner.is-focus{outline:3px solid var(--cink);outline-offset:2px;}
+.rp-ls .rp-meter.is-predict .rp-corner{min-height:56px;box-shadow:inset 0 0 0 1.5px var(--cink);}
+.rp-ls .rp-none{position:static;transform:none;grid-column:1/-1;min-height:44px;border-radius:14px;}
+.rp-ls .rp-ls-pick .ls-lbl{margin:0 0 8px;font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;color:var(--muted);}
+.rp-ls .rp-n{display:none;}
+.rp-ls .rp-chips{gap:8px;}
+.rp-ls .rp-chips .tchip{min-height:44px;}
+.rp-ls .rp-rgtnote{display:none;}
+.rp-ls .rp-pair{gap:12px 18px;}
+.rp-ls .rp-pair .rp-k{margin:0 0 6px;font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;}
+.rp-ls .rp-more{margin-top:12px;}
+.rp-ls .rp-ls-next{align-self:flex-start;}
+.rp-ls .rp-mix__bar.is-major{background:var(--cink);color:var(--white);}
+.rp-ls .rp-ls-product{display:flex;align-items:center;gap:12px;padding:12px;border-radius:18px;background:var(--surface2);--mol-bg:var(--surface2);}
+.rp-ls .rp-ls-product .omol,.rp-ls .rp-ls-product .scene{flex:1;min-width:0;margin:0;padding:0;background:none;border:0;}
+.rp-ls .rp-ls-product p{flex:none;max-width:48%;margin:0;}
+.rp-ls .rp-read{margin:0;font-size:var(--ls-m);font-weight:600;line-height:1.5;}
+.rp-ls .rp-read__arrows{color:var(--muted);}
+.rp-ls .rp-delta{margin:0;text-align:left;min-height:0;font-size:var(--ls-s);}
+.rp-ls .rp-delta:empty{display:none;}
+.rp-ls #tool-quiz:empty{display:none;}
+.rp-ls .tool-foot{margin:0;padding:14px 0 0;border-top:1px solid var(--line-soft);background:none;box-shadow:none;}
+@media (min-width:1000px){
+  .rp-ls .rp-rgtnote{display:block;margin:12px 0 0;}
+  .rp-ls .rp-ls-meter{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto minmax(64px,auto) minmax(64px,auto) auto;
+    gap:10px 12px;align-items:stretch;margin-top:12px;}
+  .rp-ls .rp-cols,.rp-ls .rp-meter,.rp-ls .rp-meter.is-predict{display:contents;}
+  .rp-ls .rp-cols > span{display:block;align-self:end;text-align:center;font:800 var(--ls-s) var(--font-ui);color:var(--muted);text-transform:none;letter-spacing:0;}
+  .rp-ls .rp-cols br,.rp-ls .rp-cols i{display:none;}
+  .rp-ls .rp-cols > span:nth-child(1){grid-area:1/2;} .rp-ls .rp-cols > span:nth-child(2){grid-area:1/3;}
+  .rp-ls .rp-axis{display:block;position:static;transform:none;align-self:center;padding:0 8px 0 0;background:none;
+    font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;color:var(--muted);}
+  .rp-ls .rp-axis--top{grid-area:2/1;} .rp-ls .rp-axis--bot{grid-area:3/1;}
+  .rp-ls .rp-corner[data-path="SN1"]{grid-area:2/2;} .rp-ls .rp-corner[data-path="SN2"]{grid-area:2/3;}
+  .rp-ls .rp-corner[data-path="E1"]{grid-area:3/2;} .rp-ls .rp-corner[data-path="E2"]{grid-area:3/3;}
+  .rp-ls .rp-none{grid-area:4/2/5/4;}
+}
+.rp-ls #rpOpts > summary{flex-wrap:nowrap;white-space:nowrap;font-size:var(--ls-s);font-weight:800;color:var(--muted);}
+.rp-ls #rpOpts .tool-more__now{min-width:0;overflow:hidden;text-overflow:ellipsis;font-size:var(--ls-m);}
+.rp-ls .rp-bar i{background:var(--cink);}
+.rp-ls .rp-meters{font-size:var(--ls-s);}
+.ls-root.tool-root{--mol-bg:var(--white);}
+
+/* ---- Tool Studio: shared ochem pieces (docs/tools-calm.md) ---------------
+   .ls-pics   the stage's one or two pictures: stacked on a phone, side by
+              side once the stage is wide enough.
+   .ls-ed     a molecule editor (molecule-editor.js) on the stage: the
+              drawing fills, Undo / Clear and the one-line status under it.
+   .ls-pane   a second picture beside it (a product, a target), with a small
+              label and its formula chips.
+   The builder (builder-ui.js) in a dock: type row first, the canvas behind
+   "Draw it yourself" (OchemStudioKit.builder in tool-shell.js). */
+.ls-root .ls-stage .scene{background:none;border:0;padding:0;margin:0;}
+.ls-pics{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;}
+.ls-pics > *{flex:1 1 0;min-height:0;min-width:0;}
+.ls-pics > [hidden]{display:none;}
+.ls-root .ls-stage-body:has(> .ls-pics){container-type:inline-size;}
+@container (min-width:560px){ .ls-pics{flex-direction:row;gap:18px;} }
+.ls-ed{display:flex;flex-direction:column;}
+.ls-ed > .scene{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.ls-ed > .scene svg,.ls-pane .scene svg,.ls-fitmol .scene svg{width:100%;height:100%;max-width:560px;max-height:100%;}
+.ls-ed > .scene .omol-caption{display:none;}
+.ls-ed .med-bar{flex:none;margin:6px 0 0;gap:8px;flex-wrap:nowrap;}
+.ls-ed .med-count{width:auto;margin:0 auto 0 0;font:800 var(--ls-s) var(--font-ui);}
+.ls-ed .med-btn{min-height:44px;min-width:64px;padding:0 16px;border:0;border-radius:999px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);
+  color:var(--ink);font:800 var(--ls-s) var(--font-ui);}
+.ls-ed .med-status{margin:2px 0 0;text-align:center;font:700 var(--ls-s) var(--font-ui);}
+.ls-ed .click-hint,.ls-ed .kbd-hint{display:none;}
+.ls-pane{display:flex;flex-direction:column;gap:6px;padding:10px 12px;border-radius:18px;background:var(--surface2);--mol-bg:var(--surface2);}
+.ls-pane-k{flex:none;margin:0;font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.ls-pane .tstage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:0;border:0;background:none;}
+.ls-pane .tstage .scene,.ls-pane > .scene{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+.ls-pane .tfrags{flex:none;margin:0 !important;}
+.ls-root .tfrag{font-size:var(--ls-s);}
+.ls-root .mb{gap:12px;}
+.ls-root .mb__label{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;color:var(--muted);}
+.ls-root .mb__input{min-height:48px;border-radius:14px;font-size:var(--ls-m);}
+.ls-root .mb__build{min-height:48px;}
+.ls-root .mb__quick .tchip{min-height:40px;}
+.ls-root .mb-ls-draw{margin:0;}
+.ls-root .mb-ls-draw .mb__canvaswrap{margin-bottom:12px;}
+.ls-root .mb__el{min-width:40px;min-height:40px;}
+.ls-root .mb__status:empty{display:none;}
+.ls-root .tnote{margin:0;}
+.ls-root .tool-send__row{display:flex;flex-wrap:wrap;gap:8px;}
+.ls-sheet .tnote + .tnote,.ls-sheet .tnote + .tstage,.ls-sheet .tstage + .tnote{margin-top:10px;}
+
+/* ---- Arrow Pusher in the Tool Studio */
+.ap-ls .ap-steps{flex:none;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 0 8px;padding:2px;}
+.ap-ls .ap-steps::-webkit-scrollbar{display:none;}
+.ap-ls .ap-steps > *{flex:none;}
+.ap-ls .ap-steps__k{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
+.ap-ls .ap-step{min-height:36px;}
+.ap-ls .ap-steps__reset{min-height:36px !important;}
+.ap-ls .ap-group{margin:0 0 12px;}
+.ap-ls .ap-group__label,.ls-root .ap-group__label{margin:0 0 8px;font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
+.ap-ls #apPicker .tool-more{margin:0;border:0;padding:0;}
+.ap-ls #apPicker .tool-more > summary{font:700 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;}
+.ap-ls #apChalPick .tchip .tmuted{color:inherit;opacity:.75;}
+.ap-ls-act:empty{display:none;}
+.ap-ls-act .trow{display:flex;gap:10px;flex-wrap:wrap;margin:0 !important;}
+.ap-ls-act .btn-press{flex:1 1 auto;}
+.ap-ls-act .tchip{min-height:44px;display:inline-flex;align-items:center;}
+.ap-ls #apResult .ap-chal__k,.ap-ls #apResult .tempty{display:none;}
+.ap-ls #apBooksBox{margin:0;border:0;padding:0;}
+.ap-ls #apBooksBox > summary{pointer-events:none;}
+.ap-ls #apBooksBox > summary::after{display:none;}
+.ap-ls #apPicker .tool-more__now{font-size:var(--ls-s);color:var(--muted);}
+.ls-root .ls-modes .ls-seg > button{padding:0 6px;}
+.ls-sheet .tnote__k{font:900 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
+.ls-sheet .tnote{font-size:var(--ls-m);line-height:1.5;}
+.ls-sheet details > summary{font:800 var(--ls-m) var(--font-ui) !important;letter-spacing:0 !important;text-transform:none !important;min-height:44px;display:flex;align-items:center;}
+.ls-ed .med-status{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0;}
+.ls-root .mb__typerow{flex-direction:row;}
+.ls-root .mb__input{flex:1;min-width:0;}
+.ap-ls #apBooksBox > summary{background:none;padding:0;min-height:0;font-weight:900 !important;}
+.ls-sheet .ttable th{text-transform:none;letter-spacing:0;font-size:var(--ls-s);}
+
+/* ---- Resonance explorer in the Tool Studio: the drawing board beside the
+   forms found (a scrolling strip of cards on a phone, a grid when wide);
+   Compare two: both species as panes, the winner marked. */
+.res-ls-found{gap:8px;}
+.res-ls-found #resFound{flex:1;min-height:0;display:flex;}
+.res-ls .res-grid{flex:1;min-height:0;display:flex;gap:10px;overflow-x:auto;scrollbar-width:thin;}
+.res-ls .res-card{flex:0 0 auto;width:min(46%,220px);min-height:0;display:flex;flex-direction:column;margin:0;padding:8px;border-radius:14px;
+  background:var(--white);--mol-bg:var(--white);border:0;box-shadow:inset 0 0 0 1.5px var(--line-soft);}
+.res-ls .res-card--major{box-shadow:inset 0 0 0 2px var(--good-text);background:var(--tint-good);--mol-bg:var(--tint-good);}
+.res-ls .res-card .tstage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;}
+.res-ls .res-card .scene{width:100%;height:100%;display:flex;align-items:center;}
+.res-ls .res-card .scene svg{width:100%;height:100%;max-height:100%;}
+.res-ls .res-card__rank{flex:none;font:800 var(--ls-s)/1.3 var(--font-ui);letter-spacing:0;text-transform:none;}
+.res-ls .res-card__why{display:none;}
+.res-ls .res-card--blank{align-items:center;justify-content:center;font:900 var(--ls-l) var(--font-ui);color:var(--muted);background:transparent;box-shadow:inset 0 0 0 1.5px var(--line);border-style:none;}
+@container (min-width:560px){ .res-ls .res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));align-content:start;overflow:auto;} .res-ls .res-card{width:auto;} .res-ls .res-card .tstage{flex:none;height:120px;} .res-ls .res-card--blank{min-height:150px;} }
+.res-ls #resMore{margin:0;border:0;padding:0;}
+.res-ls #resMore > summary{font:700 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;}
+.res-ls #resMore .tchips{margin-bottom:12px;}
+.res-ls #resChargeBox{margin:0;border:0;padding:0;}
+.res-ls #resChargeBox > summary{pointer-events:none;background:none;padding:0;min-height:0;}
+.res-ls #resChargeBox > summary::after{display:none;}
+.res-ls-prog .res-bar{height:8px;border-radius:9px;}
+.res-ls-prog .trow{margin:0 !important;gap:8px;}
+.res-ls-prog .tchip{min-height:44px;}
+.res-ls-cmp .ls-pane{margin:0;box-shadow:none;border:0;background:var(--surface2);}
+.res-ls-cmp .ls-pane .tpanel__head{margin:0;font:800 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;color:var(--ink);}
+.res-ls-cmp .ls-pane .tstage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;border:0;background:none;padding:0;}
+.res-ls-cmp .ls-pane.tpanel--win{background:var(--tint-good);--mol-bg:var(--tint-good);box-shadow:inset 0 0 0 2px var(--good-text);}
+.res-ls-cmpdock{display:flex;flex-direction:column;gap:12px;}
+.res-ls-picks{display:flex;align-items:center;gap:8px;flex-wrap:nowrap !important;}
+.res-ls-picks select{flex:1;min-width:0;max-width:none !important;min-height:48px;}
+.res-ls-guess{display:flex;gap:8px;flex-wrap:wrap;margin:0 !important;}
+.res-ls-guess .btn-press{flex:1 1 0;}
+.res-ls-guess .tchip{min-height:44px;flex:1 0 100%;}
+.res-ls-cmpwhy .tpanel__head{font:900 var(--ls-l) var(--font-ui);letter-spacing:0;text-transform:none;color:var(--ink);margin:0 0 8px;}
+.res-ls-cmpdet .tstat{margin:0 0 6px;}
+.ls-sheet .tstat .k{text-transform:none;letter-spacing:0;font-size:var(--ls-s);}
+.res-ls-picks select{font:700 var(--ls-m) var(--font-ui);border-radius:14px;}
+.res-ls-picks .tmuted{flex:none;}
+.res-ls .ls-pics > .ls-ed{flex-grow:1.5;}
+.res-ls-prog .ls-row > *{flex:1 1 auto;white-space:normal;}
+
+/* ---- 3D molecule viewer in the Tool Studio: the model fills the stage;
+   Predict shape is a one-question-at-a-time card in the dock. */
+.v3-ls .v3-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;border:0;background:none;border-radius:18px;}
+.v3-ls .v3-stage svg{width:100%;height:100%;max-width:none;max-height:100%;}
+.v3-ls .v3-ls-src .tseg{width:100%;display:flex;}
+.v3-ls .v3-ls-src .tseg button{flex:1;}
+.v3-ls #v3Picker .ap-group{margin:0 0 12px;}
+.v3-ls #v3Picker .tool-more{margin:0;border:0;padding:0;}
+.v3-ls #v3Picker .tool-more > summary{font:700 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;}
+.v3-ls #v3Picker .tool-more__now{font-size:var(--ls-s);color:var(--muted);}
+.v3-ls .v3-quiz{margin:0;padding:0;border:0;background:none;display:flex;flex-direction:column;gap:12px;}
+.v3-ls .v3-quiz .v3-quiz__k{margin:0 0 8px;font:900 var(--ls-l)/1.25 var(--font-ui);letter-spacing:-.01em;text-transform:none;color:var(--ink);}
+.v3-ls .v3-quiz .tchips{gap:8px;}
+.v3-ls .v3-quiz .tchip{background:var(--surface2);}
+.v3-ls .v3-quiz .tchip.on{background:var(--cink);color:var(--white);}
+.v3-ls .v3-quiz .trow{display:flex;gap:10px;margin:0 !important;flex-wrap:wrap;}
+.v3-ls .v3-quiz .trow .btn-press{flex:1 1 auto;}
+.v3-ls .v3-quiz .trow [hidden]{display:none;}
+.v3-ls .v3-quiz .ls-step-head{display:flex;}
+.v3-ls #v3Opts{margin:0;border:0;padding:0;}
+.v3-ls #v3Opts > summary{pointer-events:none;background:none;padding:0;min-height:0;}
+.v3-ls #v3Opts > summary::after{display:none;}
+.v3-ls #v3Opts .tseg{display:flex;flex-wrap:wrap;}
+.v3-ls #v3Opts .tcheck{min-height:44px;font-size:var(--ls-s);}
+.v3-ls #v3Opts .tcheck input[type=checkbox]{width:22px;height:22px;}
+.ls-sheet .tstat > div{flex:1 1 40%;}
+
+/* ---- Conformation lab in the Tool Studio: the Newman projection beside
+   its energy curve (the curve a strip under it on a phone), or both chairs
+   over the strain meter. */
+.cf-ls .ls-pics.cf-ls-newman{flex-direction:column;}
+.cf-ls .cf-ls-newman > *{display:flex;align-items:center;justify-content:center;margin:0;padding:0;border:0;background:none;}
+.cf-ls .cf-ls-newman > #cfNewmanStage{flex-grow:1.6;}
+.cf-ls .cf-ls-newman svg{width:100%;height:100%;max-width:none;max-height:100%;}
+.cf-ls .cf-ls-newman > #cfCurve{border-radius:16px;background:var(--surface2);padding:6px;}
+.cf-ls-angle{display:flex;flex-direction:column;gap:6px;}
+.cf-ls-angle .ls-lbl{margin:0;}
+.cf-ls-angle input[type=range]{width:100%;height:44px;accent-color:var(--cink);margin:0;}
+.cf-ls-snaps{display:flex;gap:8px;margin:0 !important;}
+.cf-ls-snaps .tchip{flex:1;}
+.cf-ls #cfTorPicker .tchip--ghost{background:transparent;}
+.cf-ls #cfTorBuild:not([hidden]){display:block;}
+.cf-ls .cf-ls-chairs{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;}
+.cf-ls .cf-pair{flex:1;min-height:0;gap:10px;}
+.cf-ls .cf-pair__one{min-height:0;display:flex;flex-direction:column;border-radius:16px;margin:0;padding:6px;}
+.cf-ls .cf-pair__one .v3-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;border:0;background:none;}
+.cf-ls .cf-pair__one .v3-stage svg{width:100%;height:100%;max-width:none;max-height:100%;}
+.cf-ls .cf-pair__cap{flex:none;}
+.cf-ls .cf-meter{flex:none;margin:0;}
+.cf-ls .cf-meter__h{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
+.cf-ls-task .tseg{display:flex;width:100%;}
+.cf-ls-task .tseg button{flex:1;}
+.cf-ls #cfChal{margin:0;padding:0;border:0;background:none;}
+.cf-ls #cfChal .cf-chal__q{display:none;}
+.cf-ls #cfChal .trow,.cf-ls-flip{display:flex;gap:10px;margin:0 !important;}
+.cf-ls #cfChal .btn-press,.cf-ls-flip .btn-press{flex:1;}
+.cf-ls-open > summary{display:none;}
+.cf-ls #cfRingBox{margin:0;border:0;padding:0;}
+.cf-ls #cfRingBox > summary{pointer-events:none;background:none;padding:0;min-height:0;}
+.cf-ls #cfRingBox > summary::after{display:none;}
+.cf-ls .cf-ring{margin-top:4px;padding-top:0;border:0;}
+.cf-ls .cf-slot .tselect{min-height:44px;font-size:var(--ls-s);}
+.cf-ls .cf-face button{min-height:44px;}
+.cf-ls .cf-pair__tag{text-transform:none;letter-spacing:0;font:800 var(--ls-s) var(--font-ui);}
+
+/* ---- Acid/base comparator in the Tool Studio: two acid cards side by side;
+   the pKa line over four cards; one molecule to tap. */
+.ab-ls #abCards{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;align-items:stretch;}
+.ab-ls .ab-cards__vs{display:none;}
+.ab-ls .ab-card{min-height:0;display:flex;flex-direction:column;padding:10px 12px;border:0;border-radius:16px;background:var(--surface2);--mol-bg:var(--surface2);overflow:hidden;}
+.ab-ls .ab-card--win{background:var(--tint-good);--mol-bg:var(--tint-good);box-shadow:inset 0 0 0 2px var(--good-text);}
+.ab-ls .ab-card__name{font:900 var(--ls-m)/1.25 var(--font-ui);}
+.ab-ls .ab-card .scene{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;}
+.ab-ls .ab-card .omol svg{width:100%;height:100%;max-width:none;max-height:100%;}
+.ab-ls .ab-card__formula{font-size:var(--ls-s);margin:2px 0 4px;}
+.ab-ls .ab-card__row{font-size:var(--ls-s);padding:3px 0;}
+.ab-ls .ab-vs{gap:8px;}
+.ab-ls .ab-vs label{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;color:var(--muted);}
+.ab-ls .ab-vs .tselect,.ab-ls #abSiteSel{width:100%;min-height:48px;border-radius:14px;font:700 var(--ls-m) var(--font-ui);}
+.ab-ls .ab-vs__mid{padding-bottom:14px;}
+@media (max-width:999.98px){ .ab-ls .ab-vs{grid-template-columns:1fr auto 1fr;} .ab-ls .ab-vs__mid{padding:0 0 14px;} }
+.ab-ls .ab-ls-guess .ls-lbl{margin:0 0 8px;}
+.ab-ls #abGuess,.ab-ls #abSiteGuess{display:flex;gap:8px;flex-wrap:wrap;}
+.ab-ls #abGuess .tchip{flex:1 1 0;min-height:48px;background:var(--cink);color:var(--white);box-shadow:none;}
+.ab-ls #abGuess .tchip.on{box-shadow:0 0 0 3px var(--ctint);}
+.ab-ls .ab-ls-rank{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;}
+.ab-ls #abRankPool{flex:none;}
+.ab-ls .ab-line{max-width:none;max-height:120px;}
+.ab-ls .ab-rorder{flex:1;min-height:0;margin:0;gap:8px;}
+.ab-ls .ab-rcard{min-height:0;border-radius:14px;}
+.ab-ls .ab-rcard__body{flex:1;min-height:0;}
+.ab-ls .ab-rcard .scene{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;}
+.ab-ls .ab-rcard .omol svg{width:100%;height:100%;max-height:100%;}
+.ab-ls .ab-rcard__move .tchip{min-width:44px;min-height:44px;}
+.ab-ls-rankact{display:flex;gap:10px;flex-wrap:wrap;}
+.ab-ls-rankact #abRankAct{flex:1 1 auto;margin:0;}
+.ab-ls-rankact #abRankAct:empty{display:none;}
+.ab-ls-rankact .btn-press{width:100%;}
+.ab-ls-rankact #abNewRank{min-height:48px;}
+.ab-ls #abSiteFormula{flex:1;min-height:0;display:flex;flex-direction:column;margin:0;}
+.ab-ls .ab-site__mol{flex:1;min-height:0;display:flex;}
+.ab-ls .ab-site__mol .scene{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;}
+.ab-ls .ab-site__mol .omol svg{width:100%;height:100%;max-width:none;max-height:100%;}
+.ab-ls-site{display:flex;flex-direction:column;gap:10px;}
+.ab-ls-site .ls-lbl{margin:0;}
+.ab-ls .ab-gap__x,.ab-ls .ab-ario{text-transform:none;letter-spacing:0;font-size:var(--ls-s);}
+.ls-root .ls-modes .ls-seg > button{white-space:normal;text-overflow:clip;line-height:1.15;}
+.ab-ls .ab-ls-again{width:100%;margin-top:10px;}
+
+/* ---- A details box that is always open in a sheet reads as a heading. */
+.ls-root details.ls-open-h{margin:0;border:0;padding:0;}
+.ls-root details.ls-open-h > summary{pointer-events:none;background:none;padding:0;min-height:0;font-weight:900 !important;}
+.ls-root details.ls-open-h > summary::after,.ls-root details.ls-open-h > summary::before{display:none;}
+
+/* ---- Spectroscopy lab in the Tool Studio: one spectrum at a time (the NMR
+   beside its structure); both spectra for an unknown; the reference charts
+   scroll inside the stage. */
+.sp-ls .sp-chart{margin:0;padding:6px 4px;border:0;border-radius:14px;background:var(--surface2);overflow:hidden;}
+.sp-ls .sp-chart svg{min-width:0;width:100%;height:100%;max-height:100%;}
+.sp-ls .sp-ls-pred{flex:1;min-height:0;display:flex;flex-direction:column;}
+.sp-ls .sp-ls-pred > #spIR{flex:1;min-height:0;display:flex;align-items:center;}
+.sp-ls .sp-ls-pred > .sp-link{display:none;flex:1;min-height:0;}
+.sp-ls.sp-ls-nmr .sp-ls-pred > #spIR{display:none;}
+.sp-ls.sp-ls-nmr .sp-ls-pred > .sp-link{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,.8fr) minmax(0,1.2fr);gap:8px;}
+.sp-ls .sp-link__mol,.sp-ls .sp-link > #spNMR{min-height:0;display:flex;align-items:center;justify-content:center;}
+.sp-ls .sp-link__mol .scene{width:100%;height:100%;margin:0;padding:0;display:flex;align-items:center;justify-content:center;}
+.sp-ls .sp-link__mol .omol svg{width:100%;height:100%;max-width:none;max-height:100%;}
+.sp-ls .ls-stage-body:has(.sp-link){container-type:inline-size;}
+@container (min-width:640px){ .sp-ls.sp-ls-nmr .sp-ls-pred > .sp-link{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);grid-template-rows:minmax(0,1fr);} }
+@container (max-width:560px){ .sp-ls #spIR .sp-axis,.sp-ls .sp-ls-puz .sp-axis{font-size:17px;} .sp-ls .sp-int{font-size:17px;} .sp-ls .sp-ls-irt{display:none;} .sp-ls .ls-stage .sp-ls-unit{display:block;} }
+.sp-ls-view .tseg{display:flex;width:100%;}
+.sp-ls-view .tseg button{flex:1;}
+.sp-ls #spMore{margin:0;border:0;padding:0;}
+.sp-ls #spMore > summary{font:700 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;}
+.sp-ls #spMore .tchips{margin-bottom:12px;}
+.sp-ls .sp-ls-peak .sp-linknote{margin:0 0 10px;min-height:0;font-size:var(--ls-m);}
+.sp-ls .sp-ls-puz{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px;}
+.sp-ls .sp-ls-puz > .sp-chart{flex:1;min-height:0;display:flex;align-items:center;}
+.sp-ls-ans{display:flex;flex-direction:column;gap:12px;}
+.sp-ls-ans .tseg{display:flex;width:100%;}
+.sp-ls-ans .tseg button{flex:1;}
+.sp-ls #spOptions{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.sp-ls #spOptions .tchip{min-height:48px;white-space:normal;font-family:var(--font-mono);font-size:var(--ls-s);}
+.sp-ls #spNew{align-self:flex-start;}
+.sp-ls .sp-ls-ref{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:8px;}
+.sp-ls .sp-ls-ref .ls-pane-k{margin-top:6px;}
+.sp-ls .sp-ls-ref .tnote{margin-top:16px !important;}
+.sp-ls .sp-band{min-height:22px;}
+.sp-ls-formula{display:flex;flex-direction:column;gap:8px;}
+.sp-ls-formula .ls-lbl{margin:0;}
+.sp-ls-formula #spFormula{max-width:none !important;min-height:48px;border-radius:14px;font:600 var(--ls-l) var(--font-mono);}
+.ls-root .tnote__k{text-transform:none;letter-spacing:0;font-size:var(--ls-s);}
+.sp-ls .sp-band__bar{background:var(--surface2);}
+.sp-ls .sp-ls-unit{display:none;flex:none;margin:2px 0 0;text-align:center;font:700 var(--ls-s) var(--font-mono);color:var(--muted);}
+.sp-ls.sp-ls-nmr .sp-ls-pred > .sp-ls-unit{display:none !important;}
+
+/* ---- Reagent roadmap in the Tool Studio: the ladder map is the stage (it
+   scrolls inside it on a phone); the reagent page is a reading view. */
+.rr-ls .rr-ls-box{display:flex;flex-direction:column;gap:10px;min-height:0;}
+.rr-ls .ls-stage-body:has(> .rr-ls-box:not(.ls-off)){overflow:auto;}
+.rr-ls .rr-map{gap:8px;}
+.rr-ls .rr-maphead{margin:0;font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
+.rr-ls .rr-node{min-height:44px;}
+.rr-ls .rr-pick{gap:8px;}
+.rr-ls .rr-pick label,.rr-ls .rr-ls-reagent-dock label{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;color:var(--muted);}
+.rr-ls .rr-pick .tselect,.rr-ls .rr-search{width:100%;min-height:48px;border-radius:14px;font:700 var(--ls-m) var(--font-ui);}
+.rr-ls .rr-swap{min-width:44px;min-height:44px;}
+.rr-ls #rrCC{display:flex;width:100%;}
+.rr-ls #rrCC button{flex:1;min-height:44px;}
+.rr-ls .rr-ls-rx{color:var(--muted);font-weight:600;}
+.rr-ls .rr-fam__k{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
+.rr-ls .rr-reagent{min-height:40px;}
+.rr-ls .rr-ls-reagent-stage .tpanel{margin:0;padding:0;border:0;box-shadow:none;background:none;}
+.rr-ls .rr-ls-reagent-stage .tpanel__head{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
+.rr-ls .rr-ls-groups-dock .trow{display:flex;gap:8px;flex-wrap:wrap;margin:0;}
+.rr-ls .rr-ls-groups-dock .tchip{min-height:44px;}
+.rr-ls .rr-ls-puzzle-dock .rr-tiles{display:flex;flex-wrap:wrap;gap:8px;}
+.rr-ls .rr-tile{min-height:44px;}
+.rr-ls .rr-pz__acts{display:flex;gap:8px;}
+.rr-ls .rr-pz__acts .tchip{min-height:44px;flex:1;}
+.rr-ls .rr-trail{flex:none;}
+.ls-sheet .rr-ls-box .tpanel{margin:0 0 10px;padding:0;border:0;box-shadow:none;background:none;}
+.ls-sheet .tpanel__head{font:900 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;color:var(--ink);}
+.rr-ls .rr-pick{display:grid !important;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:end;}
+.rr-ls .rr-pick .tfield{margin:0;min-width:0;}
+.rr-ls .rr-reagent.tchip--mini{min-height:44px;}
+.ls-root .ls-foot .ls-foot-c{margin:0;padding:0;font-size:var(--ls-s);line-height:1.5;}
+.sp-ls:not(.sp-ls-nmr) .sp-ls-peak #spLinkNote,.sp-ls.sp-ls-nmr .sp-ls-peak .sp-ls-irnote{display:none;}
+/* An unknown on a phone: each spectrum takes the full stage width (height follows), instead of
+   both shrinking to fit the height with wide empty margins. */
+@media (max-width:599.98px){
+  .sp-ls .sp-ls-puz{justify-content:center;}
+  .sp-ls .sp-ls-puz > .sp-chart{flex:none;display:block;}
+  .sp-ls .sp-ls-puz > .sp-chart svg{height:auto;max-height:none;}
+}

@@ -33,6 +33,13 @@
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
+<!-- tool-studio:start -->
+<link rel="stylesheet" href="../assets/course/tool-studio.css">
+<link rel="stylesheet" href="assets/nremt-studio.css">
+<link rel="stylesheet" href="assets/studio/flowcharts.css">
+<script src="../assets/course/tool-studio.js" defer></script>
+<script src="assets/nremt-studio.js" defer></script>
+<!-- tool-studio:end -->
 <style>
   .diagram-card{background:var(--white);border:2px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--lift);padding:22px;margin-bottom:18px;}
   .flow-box{
@@ -837,6 +844,72 @@
 </script>
 <script src="assets/flow-build.js" defer></script>
 <script src="assets/flow-drill.js" defer></script>
+<script>
+/* ---- Tool Studio (docs/tools-calm.md; assets/nremt-studio.js) ------------
+   Read: one diagram on the stage, the sequences as one row of chips in the
+   dock. Build it: the board on the stage (chart, and the tray of steps along
+   its bottom). Drill me: the chain with its blank on the stage, the choices
+   and the verdict in the dock (flow-drill.js renders them into
+   #flowDrillDock). The page's own Read / Build it / Drill me switch is the
+   mode switch; its listeners (flow-drill.js) still drive everything. */
+document.addEventListener('DOMContentLoaded', function(){
+  var studio = window.NremtStudio ? window.NremtStudio.mount({ title: 'Protocol flows', slug: 'flowcharts' }) : null;
+  if(!studio) return;
+  var $ = function(id){ return document.getElementById(id); };
+  var mode = $('flowMode'), chips = $('flowChips'), host = $('flowDiagrams');
+  var dock = document.createElement('div'); dock.id = 'flowDrillDock'; dock.className = 'fl-ls-drill';
+  chips.classList.add('ls-scroll');
+  // The diagram scrolls inside the stage: reachable by keyboard.
+  window.NremtStudio.scrollable(host, 'Diagram');
+  window.NremtStudio.scrollable([$('flowBuild'), $('flowDrill')], 'Board');
+  studio.add('stage', [host, $('flowBuild'), $('flowDrill')]);
+  studio.add('dock', $('flowPick'), { mode: 'read' });
+  studio.add('dock', dock, { mode: 'drill' });
+  var foot = document.querySelector('.flow-foot');
+  var how = document.createElement('div'); how.className = 'fl-ls-why';
+  studio.add('why', how);
+  studio.add('details', foot);
+  var cur = function(){ var b = mode.querySelector('[aria-pressed="true"]'); return b ? b.getAttribute('data-mode') : 'read'; };
+  studio.modes({ el: mode, value: cur() });
+  function shown(){ var h = [].filter.call(host.querySelectorAll('h2'), function(x){ return !x.hidden; }); return h.length === 1 ? h[0] : null; }
+  function paint(){
+    var m = cur();
+    studio.mode(m);
+    if(m === 'read'){
+      var h = shown();
+      studio.caption(h ? '<b>' + h.textContent + '.</b> Read it top to bottom; the shaded boxes are what you check.' : 'Every sequence, one after another.', 'read');
+      var on = chips.querySelector('[aria-pressed="true"]');
+      if(on && chips.scrollWidth > chips.clientWidth) chips.scrollLeft = Math.max(0, on.offsetLeft - 16);
+      var card = h && h.nextElementSibling, notes = card ? card.querySelectorAll('.flow-note') : [];
+      how.innerHTML = '<h3 class="ls-title-l">' + (h ? h.textContent : 'Protocol flows') + '</h3>' +
+        '<p>Plain boxes are actions, shaded boxes are what you check (decisions are diamonds when you build a flow), and each arm under a decision is labeled with its answer. The notes under a chart say why the order is what it is.</p>' +
+        [].map.call(notes, function(n){ return '<p>' + n.innerHTML + '</p>'; }).join('');
+    } else if(m === 'build'){
+      studio.caption('Drag each step into the chart, or tap a step and then the place it goes. Two steps belong to other protocols.', 'build');
+      how.innerHTML = '<h3 class="ls-title-l">Build it</h3><p>Producing a sequence from its parts is the skill the scene asks for. Diamonds are questions; each arm is labeled with its answer. A step in the wrong place bounces and says why; two tiles are from other protocols. A chart you misplaced a step in goes to your Review list until you build it clean.</p>';
+    } else {
+      studio.caption('Which step comes next? Pick it below.', 'drill');
+      how.innerHTML = '<h3 class="ls-title-l">Drill me</h3><p>Each question shows the sequence so far, or a decision and which way it went, and asks what follows. The wrong choices are real steps from the other protocols, because mixing them up is the actual mistake. A miss goes to your Review list with a link to its diagram.</p>';
+    }
+  }
+  mode.addEventListener('click', function(){ setTimeout(paint, 0); });
+  chips.addEventListener('click', function(){ setTimeout(paint, 0); });
+  window.addEventListener('hashchange', function(){ setTimeout(paint, 0); });
+  // A drill verdict lands on the stage.
+  new MutationObserver(function(){
+    var v = dock.querySelector('.drill-verdict');
+    studio.pills(v ? [{ html: v.classList.contains('ok') ? 'Yes' : 'Not here', tone: v.classList.contains('ok') ? 'good' : 'bad' }] : [], 'left', 'drill');
+  }).observe(dock, { childList: true, subtree: true });
+  // A build's bounce or finish, too.
+  new MutationObserver(function(){
+    var fb = $('flowBuild').querySelector('.bd-fb'), done = $('flowBuild').querySelector('.bd-done-h');
+    var t = done ? done.textContent : fb && fb.textContent ? (fb.classList.contains('ok') ? 'Placed' : 'Bounced') : '';
+    studio.pills(t ? [{ html: t, tone: done || fb.classList.contains('ok') ? 'good' : 'bad' }] : [], 'left', 'build');
+  }).observe($('flowBuild'), { childList: true, subtree: true, characterData: true });
+  paint();
+  studio.hint({ target: mode.querySelector('[data-mode="drill"]'), text: 'Read a flow, or test yourself' });
+});
+</script>
 
 </body>
 </html>

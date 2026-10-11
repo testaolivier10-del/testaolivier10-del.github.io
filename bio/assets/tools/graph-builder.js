@@ -155,10 +155,10 @@
     var W = 560, H = 380, L = 70, R = 16, TOP = 16, B = 62, pw = W - L - R, ph = H - TOP - B;
     function drawGrid(){
       var host = body.querySelector('.gb-grid'), ys = scaleOf('ys'), xs = scaleOf('xs');
-      var why = !st.y ? 'Choose the y-axis variable (step 2).' : !isNum(st.y) ? 'The y-axis variable has categories, not numbers. Put a number variable on the y-axis.' :
-        !ys.ok ? 'Enter a y-axis minimum, maximum and interval (step 4): the grid redraws as you type.' :
-        !bar() && (!st.x || !isNum(st.x)) ? (st.x ? 'This x-axis variable has categories, not numbers, so it cannot go on a number scale. A bar graph shows categories.' : 'Choose the x-axis variable (step 2).') :
-        !bar() && !xs.ok ? 'Enter an x-axis minimum, maximum and interval (step 4): the grid redraws as you type.' : '';
+      var why = !st.y ? 'Choose the y-axis variable.' : !isNum(st.y) ? 'The y-axis variable has categories, not numbers. Put a number variable on the y-axis.' :
+        !ys.ok ? 'Enter a y-axis minimum, maximum and interval: the grid redraws as you type.' :
+        !bar() && (!st.x || !isNum(st.x)) ? (st.x ? 'This x-axis variable has categories, not numbers, so it cannot go on a number scale. A bar graph shows categories.' : 'Choose the x-axis variable.') :
+        !bar() && !xs.ok ? 'Enter an x-axis minimum, maximum and interval: the grid redraws as you type.' : '';
       var ghostY = !ys.ok, ghostX = !bar() && !xs.ok;
       if(ghostY) ys = { min: 0, max: 10, interval: 2, ok: true };
       if(ghostX) xs = { min: 0, max: 10, interval: 2, ok: true };
@@ -193,7 +193,7 @@
         if(!bar()) p.push('<circle class="gpt' + on + '" data-k="' + k + '" tabindex="0" role="button" aria-roledescription="movable point" aria-label="' + esc(pointName(k) + ': x ' + q.x + ', y ' + q.y + '. Arrow keys move it.') + '" cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="7"/>');
       });
       var xl = st.xl ? st.xl.split('|') : null, yl = st.yl ? st.yl.split('|') : null;
-      p.push('<text class="lbl' + (xl ? '' : ' gb-ph') + '" x="' + (L + pw / 2) + '" y="' + (H - 12) + '" text-anchor="middle">' + esc(xl ? labelOf(col(xl[0]), xl[1]) : st.x ? col(st.x).name + ': choose a label (step 3)' : 'x-axis') + '</text>');
+      p.push('<text class="lbl' + (xl ? '' : ' gb-ph') + '" x="' + (L + pw / 2) + '" y="' + (H - 12) + '" text-anchor="middle">' + esc(xl ? labelOf(col(xl[0]), xl[1]) : st.x ? col(st.x).name + ': choose a label' : 'x-axis') + '</text>');
       p.push('<text class="lbl' + (yl ? '' : ' gb-ph') + '" transform="translate(16 ' + (TOP + ph / 2) + ') rotate(-90)" text-anchor="middle">' + esc(yl ? labelOf(col(yl[0]), yl[1]) : st.y ? col(st.y).name + ': label?' : 'y-axis') + '</text>');
       var label = 'Your graph: ' + (st.type ? st.type + ' graph' : 'graph') + ' with ' + placed.length + ' of ' + n + ' points plotted. The table below the grid lists every point’s values.';
       if(st.free) label = 'Free plot sketch with ' + st.sketch.length + ' points. Not checked.';
@@ -301,5 +301,87 @@
       checked = true;
     }
     load(data.datasets[0].id);
-  });
+  }, { studio: { arrange: studio } });
+
+  /* Tool Studio (docs/tools-calm.md): the grid is the stage; the five
+     steps go one at a time in the dock (Check my graph on the last);
+     "Plot the data | Free plot" is the mode switch; the data table stays
+     in sight on the stage under the grid (a disclosure that can be
+     closed for a bigger grid); after Check, the feedback is under Why; the
+     data set choice is in Details. Every render of the steps (a new data set) is re-arranged. */
+  function studio(app, s, slug){
+    var form = app.querySelector('form.gb-steps'), body = form.querySelector('.gb-body'), fb = app.querySelector('.gb-feedback');
+    Array.prototype.slice.call(app.children).forEach(function(k){ if(k.matches('.bt-intro')) s.add('about', k); if(k.matches('details.bt-how')){ k.open = true; s.add('about', k); } });
+    var stage = document.createElement('div'), data = document.createElement('div'), det = document.createElement('div');
+    stage.className = 'ls-gb-stage'; data.className = 'ls-sec ls-gb-data'; det.className = 'ls-sec';
+    var parts = [];
+    T.studioVirtual(body, function(){ return parts; });
+    T.studioVirtual(app, function(){ return [fb]; });
+    T.studioKeep(s);
+    s.add('stage', stage); s.add('why', fb); s.add('why', data); s.add('details', det);
+    det.appendChild(form.querySelector('.gb-pick'));
+    var h2 = form.querySelector(':scope > h2'); if(h2) h2.classList.add('sr-only');
+    s.add('dock', form);
+    s.modes({ items: [{ value: 'data', label: 'Plot the data' }, { value: 'free', label: 'Free plot' }], value: 'data', onChange: function(v){
+      var b = body.querySelector('.gb-mode [data-mode="' + v + '"]'); if(b) b.click();
+    } });
+    var st = window.LevlStudio.stepper(form, { items: '.gb-stepcol > .gb-step:first-child > .bt-part-choice, .gb-stepcol > .gb-step:not(:first-child)', submit: ':scope > .bt-actions' });
+    var armed = false;
+    function arrange(){
+      var grid = body.querySelector('.gb-live');
+      if(!grid || !body.contains(grid)) return;
+      parts = [];
+      stage.innerHTML = ''; data.innerHTML = '';
+      ['.gb-grid', '.gb-note'].forEach(function(sel){ var x = grid.querySelector(sel); if(x){ parts.push(x); stage.appendChild(x); } });
+      var say = grid.querySelector('.gb-say'), dw = grid.querySelector('.gb-datawrap'), mode = grid.querySelector('.gb-mode');
+      if(say){ parts.push(say); data.appendChild(say); say.classList.add('sr-only'); }
+      if(dw){ parts.push(dw); dw.open = true; dw.classList.add('ls-gb-table'); stage.appendChild(dw); }
+      if(mode){ parts.push(mode); mode.hidden = true; det.appendChild(mode); var on = mode.querySelector('[aria-pressed="true"]'); s.mode(on && on.getAttribute('data-mode') === 'free' ? 'free' : 'data'); }
+      // The stepper counts the steps ("Step 3 of 6"): drop the headings' own numbers.
+      form.querySelectorAll('.gb-step > .bt-sec-h').forEach(function(h){ h.textContent = h.textContent.replace(/^\d+\.\s*/, ''); });
+      grid.remove();
+      // A new data set starts again at step 1; the first load does not move focus.
+      if(armed) st.go(0); else st.refresh();
+      armed = true;
+      cap();
+    }
+    function cap(){
+      var note = stage.querySelector('.gb-note'), say = data.querySelector('.gb-say');
+      // The data set's description is the caption (as a practice problem's
+      // text is), so the stage keeps the table and the grid.
+      var ctx = stage.querySelector('.ls-gb-table .bt-context');
+      var t = (say && say.textContent) || (ctx && ctx.textContent.replace(/\s+/g, ' ').trim()) || 'Build the graph from the data, one step at a time. Check it on the last step.';
+      s.caption(T.esc(t));
+    }
+    if(window.MutationObserver){
+      new MutationObserver(arrange).observe(body, { childList: true });
+      new MutationObserver(cap).observe(stage, { childList: true, subtree: true, characterData: true });
+      new MutationObserver(cap).observe(data, { childList: true, subtree: true, characterData: true });
+      new MutationObserver(function(){
+        if(fb.hidden){ s.pills([]); return; }
+        var m = /(\d+) of (\d+)/.exec(fb.textContent);
+        if(m) s.pills([{ html: m[1] + ' of ' + m[2] + ' criteria met', tone: m[1] === m[2] ? 'good' : 'warn' }]);
+        s.caption((m ? '<b>' + m[1] + ' of ' + m[2] + ' criteria met.</b> ' : '') + 'What to fix is under Why.');
+        s.open('why', fb.querySelector('h2'));
+      }).observe(fb, { attributes: true, attributeFilter: ['hidden'], childList: true, subtree: true });
+    }
+    // On a phone the stage holds the data or the grid, not both: the data
+    // is open for the first steps (graph type and why), then folds to its
+    // "The data" line so the grid has the stage (a tap opens it again).
+    var lastFirst = null;
+    function dataFit(){
+      var dw = stage.querySelector('.ls-gb-table');
+      if(!dw) return;
+      var wideNow = false; try{ wideNow = matchMedia('(min-width: 1000px)').matches; }catch(e){}
+      var first = form.querySelector('.gb-stepcol > .gb-step:first-child');
+      var onFirst = !!first && Array.prototype.some.call(first.querySelectorAll('.bt-part-choice'), function(x){ return !x.classList.contains('ls-step-off'); });
+      if(wideNow){ lastFirst = null; return; }
+      if(onFirst !== lastFirst){ lastFirst = onFirst; dw.open = onFirst; }
+    }
+    if(window.MutationObserver) new MutationObserver(dataFit).observe(form, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    arrange();
+    dataFit();
+    app.hidden = true;
+    s.hint({ target: '.gb-step .bt-radio', text: 'Start here: pick the graph type' });
+  }
 })();

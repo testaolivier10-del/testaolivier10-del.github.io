@@ -57,3 +57,55 @@
 }
 .chem-eq-tools{display:block;margin-top:6px;font-weight:700;}
 .chem-eq-tools a{display:inline-block;min-height:24px;}
+
+/* Justification trainer on the Tool Studio (justify.js studio()): the
+   prompt and the answer box are the stage; no card inside the stage card. */
+.ls-root .chem-ls-jcard{margin:0;padding:0;border:0;background:none;box-shadow:none;display:flex;flex-direction:column;gap:10px;flex:1;min-height:0;}
+.ls-root .chem-ls-jcard .chem-js-title{margin:0;font:900 var(--ls-l)/1.25 var(--font-ui);letter-spacing:-.01em;}
+.ls-root .chem-ls-jcard .chem-stim{margin:0;padding:12px 14px;border-radius:16px;background:var(--surface2);border:0;font-size:var(--ls-m);}
+.ls-root .chem-ls-jcard .chem-stim-k{font:800 var(--ls-s) var(--font-ui);color:var(--muted);text-transform:none;letter-spacing:0;margin:0 0 4px;}
+.ls-root .chem-ls-jcard .chem-js-prompt{margin:0;font:800 var(--ls-m)/1.45 var(--font-ui);}
+.ls-root .chem-ls-jcard .chem-fq-alabel{font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.ls-root .chem-ls-jcard .chem-fq-answer{flex:1 0 120px;min-height:120px;border:0;border-radius:16px;box-shadow:inset 0 0 0 2px var(--line);font:600 var(--ls-m)/1.5 var(--font-ui);padding:12px 14px;resize:none;}
+.ls-root .chem-ls-jcard .chem-fq-answer:focus{outline:none;box-shadow:inset 0 0 0 2px var(--cink);}
+.ls-root .chem-ls-jcard > .chem-small{margin:0;font-size:var(--ls-s);}
+.ls-root .chem-pr-actions{display:flex;gap:10px;flex-wrap:wrap;margin:0;}
+.ls-root .chem-pr-actions > *{flex:1 1 auto;}
+.ls-root .chem-ls-jnav{margin:0;}
+.ls-root .chem-ls-jnav a{display:flex;align-items:center;min-height:44px;padding:0 14px;border-radius:14px;background:var(--surface2);color:var(--ink);font:700 var(--ls-m) var(--font-ui);text-decoration:none;}
+.ls-root .chem-ls-jnav span{display:none;}
+.ls-sheet .chem-js-check{margin:0;}
+.ls-sheet .chem-js-check h2{font:900 var(--ls-l)/1.25 var(--font-ui);margin:0 0 10px;}
+.ls-sheet .chem-js-yours{border-radius:14px;}
+.ls-sheet .chem-fq-sample-k,.ls-sheet .chem-js-model .chem-fq-sample-k{font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;}
+.ls-sheet .chem-js-models{grid-template-columns:1fr;}
+.ls-sheet .chem-js-model{border-radius:16px;border:0;box-shadow:inset 0 0 0 1.5px var(--line);}
+.ls-sheet .chem-js-model.is-earns{box-shadow:inset 0 0 0 2px var(--cink);}
+.ls-sheet .chem-fq-rpart{margin:0;padding:0;border:0;}
+.ls-sheet .chem-fq-rpart legend{font:800 var(--ls-s) var(--font-ui);color:var(--muted);padding:0;margin-bottom:6px;}
+.ls-sheet .chem-js-how{margin:0;padding:14px 0 0;border:0;border-top:1px solid var(--line-soft);background:none;box-shadow:none;border-radius:0;}
+.ls-sheet .chem-js-how summary{color:var(--ink);pointer-events:none;min-height:0;}
+.ls-sheet .chem-js-check[hidden]{display:none;}
+.ls-root .chem-ls-jlist{display:flex;flex-direction:column;gap:10px;}
+.ls-root .chem-ls-jlist .chem-fq-card{border:0;box-shadow:inset 0 0 0 1.5px var(--line);border-radius:16px;}
+.ls-root .chem-ls-jlist .chem-fq-card-k{font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;}
+.ls-root .chem-ls-jlist #chem-js-count{margin:0;}
+.ls-root .chem-fq-filters{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;}
+.ls-root .chem-fq-filters .chem-pr-field{display:flex;flex-direction:column;gap:4px;font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.ls-root .chem-fq-filters select{width:100%;min-height:48px;padding:0 12px;border:0;border-radius:14px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--ink);font:700 var(--ls-m) var(--font-ui);}
+
+/* Reference pages on the calm layout (pages/calm-ref.js): the slim bar,
+   then the page in calm type (13 / 16 / 22), no caps kickers, no hero. */
+body.chem-calm-ref main.chem-entry{max-width:760px;margin:0 auto;padding:4px 16px 32px;font:600 16px/1.6 var(--font-ui);color:var(--ink);}
+body.chem-calm-ref main.chem-entry .chem-ref-lede{margin:8px 0 20px;font:700 22px/1.35 var(--font-ui);letter-spacing:-.01em;color:var(--ink);}
+body.chem-calm-ref main.chem-entry .xsection{margin:0;padding:22px 0 0;border:0;background:none;box-shadow:none;border-radius:0;}
+body.chem-calm-ref main.chem-entry .xsection + .xsection{margin-top:22px;border-top:1px solid var(--line-soft);}
+body.chem-calm-ref main.chem-entry h2{margin:0 0 10px;font:900 22px/1.25 var(--font-ui);letter-spacing:-.01em;text-transform:none;color:var(--ink);}
+body.chem-calm-ref main.chem-entry p,body.chem-calm-ref main.chem-entry li{font-size:16px;line-height:1.6;}
+body.chem-calm-ref main.chem-entry .chem-small{font-size:13px;}
+body.chem-calm-ref main.chem-entry table{font-size:13px;}
+body.chem-calm-ref main.chem-entry th{text-transform:none;letter-spacing:0;}
+body.chem-calm-ref main.chem-entry .chem-ex-band-warn{border-radius:16px;}
+body.chem-calm-ref .chem-foot{max-width:760px;margin:0 auto;padding:0 16px 24px;}
+@media (min-width:1000px){ body.chem-calm-ref main.chem-entry{padding-top:8px;} }
+.ls-root .chem-ls-jcard .chem-js-prompt{color:var(--ink);} .ls-root .chem-ls-jcard .chem-stim{box-shadow:none;}

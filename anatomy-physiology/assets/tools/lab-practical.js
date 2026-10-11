@@ -47,6 +47,21 @@
   var ALLNAMES = [];       // [{ key, lab }] every normalized answer in the data
   var timer = null;        // the running practical's interval
   var booted = false;
+  /* Tool Studio (docs/tools-calm.md): with the page's studio flag every
+     screen is painted into #app and then sorted into the calm frame
+     (studioPaint, called by paint); lookups go through the document. */
+  var ST = window.AnpToolKit && window.AnpToolKit.studio ? window.AnpToolKit.studio() : null;
+  function Q(){ return ST ? document : app; }
+  if(ST){
+    ST.root.classList.add('lp-ls');
+    ST.caption('Loading the lab practical…');
+    ST.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'study', label: 'Study' }, { value: 'quiz', label: 'Quiz' }, { value: 'practical', label: 'Timed' }], value: 'explore',
+      onChange: function(v){
+        if(v === 'practical'){ location.hash = '#practical'; return; }
+        var a = app.querySelector('.lp-modes .lp-mode[href^="#' + v + '"]');
+        location.hash = a ? a.getAttribute('href') : '#' + v;
+      } });
+  }
 
   /* ---------------------------------------------------------------- utils */
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
@@ -300,8 +315,86 @@
   }
   function paint(html){
     stopTimer();
+    if(ST) ST.reset();
     app.innerHTML = '<div class="lp">' + html + '</div>';
     app.classList.add('is-ready');
+    if(ST) studioPaint();
+  }
+  /* Tool Studio: the figure (with its zoom and credit) is the stage, under
+     the set's name; the prompt or first-step line is the caption; the
+     structure's info, the figure tabs, the answer box, the feedback and Next
+     are the dock, the set picker last. Quiz settings and the set's chapter
+     go to Details. Lists, setup and results fill the stage on their own. */
+  function studioPaint(){
+    var root = app.querySelector('.lp');
+    var kids = [].slice.call(root.children), dock = [], stage = [], det = [], pick = null, cap = null;
+    var nav = root.querySelector('.lp-modes'), cur = nav && nav.querySelector('.lp-mode[aria-current="true"]');
+    ST.modeBar(!!nav);
+    if(cur){ var m = (cur.getAttribute('href') || '').replace(/^#/, '').split('/')[0]; ST.mode(m); }
+    ST.pills([], 'right'); ST.pills([], 'left');
+    kids.forEach(function(el){
+      var c = el.classList;
+      if(c.contains('lp-modes')) return;                       // the studio's switch stands in for it
+      if(c.contains('lp-pickhost')){ pick = el; return; }
+      if(!cap && (c.contains('kt-first') || c.contains('lp-lead') || c.contains('lp-prompt'))){ cap = el; return; }
+      if(c.contains('lp-title') || c.contains('lp-run-head') || c.contains('lp-timebar')){ stage.push(el); return; }
+      if(c.contains('lp-meta') || c.contains('lp-settings-d')){ det.push(el); return; }
+      if(c.contains('lp-progress')){ ST.pills([{ html: esc(el.textContent), tone: 'ghost' }], 'right'); det.push(el); return; }
+      if(c.contains('lp-stage')){
+        var fig = el.querySelector('.lp-figure'), info = el.querySelector('.lp-info');
+        if(fig){ fig.classList.add('lp-ls-fig'); stage.push(fig); }
+        if(info) dock.unshift(info);
+        return;
+      }
+      if(c.contains('lp-stations')){ c.add('lp-ls-scroll'); dock.push(el); return; }
+      if(c.contains('lp-studymore') || c.contains('lp-answer') || c.contains('lp-mc') || c.contains('lp-feedback') ||
+        c.contains('lp-follow') || c.contains('lp-actions') || c.contains('lp-next') || c.contains('lp-review') ||
+        (el.tagName === 'P' && c.contains('anp-small') && el.querySelector('.lp-idk'))){ dock.push(el); return; }
+      stage.push(el);
+    });
+    var setup = root.querySelector('.lp-setup');
+    if(setup && cap){
+      // The practical's setup: the long lead goes to Why; the dock gets the
+      // start button (the form's own stays at its foot) and the estimate.
+      var w = document.createElement('div'); w.className = 'ls-sec'; w.innerHTML = '<h3 class="ls-h">The timed practical</h3><p>' + cap.innerHTML + '</p>';
+      ST.put('why', w); cap.parentNode.removeChild(cap); cap = null;
+      ST.caption('Choose the image sets, the number of stations and the time, then start.');
+      var real = setup.querySelector('button[type="submit"]'), est = setup.querySelector('.lp-est');
+      var go = document.createElement('div'); go.className = 'lp-ls-go';
+      go.innerHTML = '<p class="lp-ls-est" aria-hidden="true"></p><button type="button" class="ls-btn ls-pri">Start the practical</button>';
+      var gb = go.querySelector('button'), ge = go.querySelector('.lp-ls-est');
+      gb.addEventListener('click', function(){ if(setup.requestSubmit) setup.requestSubmit(real); else real.click(); });
+      var sync = function(){ gb.disabled = real.disabled; ge.textContent = est ? est.textContent : ''; };
+      sync();
+      if(window.MutationObserver){ var mo = new MutationObserver(sync); mo.observe(real, { attributes: true }); if(est) mo.observe(est, { childList: true, characterData: true, subtree: true }); }
+      dock.push(go);
+    }
+    if(cap){ ST.caption(cap.innerHTML); cap.parentNode.removeChild(cap); }
+    else if(!setup) ST.caption('');
+    ST.put('stage', stage);
+    ST.put('dock', dock);
+    // An answer: verdict pill on the stage; the structure's role goes to Why.
+    dock.forEach(function(el){
+      if(!el.classList || !el.classList.contains('lp-feedback')) return;
+      var v = el.querySelector('.lp-verdict');
+      var ok = v && v.classList.contains('ok');
+      if(v) ST.pills([{ html: ok ? 'Right' : 'Not quite', tone: ok ? 'good' : 'bad' }], 'left');
+      var extra = [].slice.call(el.querySelectorAll(':scope > .lp-fn, :scope > p.anp-small'));
+      if(extra.length){
+        var w = document.createElement('div'); w.className = 'ls-sec lp-ls-fbwhy';
+        extra.forEach(function(x){ w.appendChild(x); });
+        ST.put('why', w, { first: true });
+      }
+    });
+    if(det.length){ var d = document.createElement('div'); d.className = 'ls-sec lp-ls-det'; det.forEach(function(x){ d.appendChild(x); }); ST.put('details', d); }
+    if(pick) ST.put('dock', pick);
+    ST.stage.scrollTop = 0;
+    root.classList.toggle('lp-ls-fill', !root.querySelector('.lp-figure'));
+    ST.root.classList.toggle('lp-ls-list', !ST.stage.querySelector('.lp-ls-fig'));
+    if(!studioPaint.hinted && ST.stage.querySelector('.lp-box')){
+      studioPaint.hinted = true;
+      ST.hint({ target: '.ls-stage .lp-box', text: 'Tap a label on the figure' });
+    }
   }
 
   /* ---------------------------------------------------------------- routing
@@ -353,7 +446,7 @@
   }
   /* Every image set, by chapter, in the shared compact picker. */
   function setPicker(s, mode){
-    var host = app.querySelector('.lp-pickhost'), K = window.AnpToolKit;
+    var host = Q().querySelector('.lp-pickhost'), K = window.AnpToolKit;
     if(!host || !K) return;
     K.picker(host, {
       label: 'Image set', noun: 'image sets', current: s.id, allHref: '#' + mode, allLabel: 'All image sets by chapter',
@@ -370,6 +463,8 @@
   function see3d(lab){ return window.AnpToolKit && window.AnpToolKit.body3d && lab.concept !== 'regional-terms' ? window.AnpToolKit.body3d(lab.name) : ''; }
   function keepGoing(host, lab, st){
     if(!host || !window.AnpToolKit) return;
+    // Studio: the strip waits in Details, so the dock stays short.
+    if(ST){ host = document.createElement('div'); host.className = 'ls-sec lp-ls-kg'; ST.put('details', host, { first: true }); }
     // The 3D link sits beside the name (body3d), so the strip leaves it out.
     window.AnpToolKit.strip(host, { topic: lab.taught || st.topic, terms: lab.concept ? [lab.concept] : [], max: 1,
       structures: window.AnpToolKit.body3d ? [] : [lab.name] });   // the label's own name only: an accepted synonym can name a different structure
@@ -405,11 +500,11 @@
         }).join('') + '</ul>';
       }).join('');
     paint(html);
-    app.querySelectorAll('.lp-chip').forEach(function(b){
-      b.addEventListener('click', function(){ setPref('chapter', b.getAttribute('data-ch')); showHome(mode); var nb = app.querySelector('.lp-chip[data-ch="' + b.getAttribute('data-ch') + '"]'); if(nb) nb.focus(); });
+    Q().querySelectorAll('.lp-chip').forEach(function(b){
+      b.addEventListener('click', function(){ setPref('chapter', b.getAttribute('data-ch')); showHome(mode); var nb = Q().querySelector('.lp-chip[data-ch="' + b.getAttribute('data-ch') + '"]'); if(nb) nb.focus(); });
     });
-    var sel = app.querySelector('#lp-chsel');
-    if(sel) sel.addEventListener('change', function(){ setPref('chapter', sel.value); showHome(mode); var ns = app.querySelector('#lp-chsel'); if(ns) ns.focus(); });
+    var sel = Q().querySelector('#lp-chsel');
+    if(sel) sel.addEventListener('change', function(){ setPref('chapter', sel.value); showHome(mode); var ns = Q().querySelector('#lp-chsel'); if(ns) ns.focus(); });
     document.title = 'Virtual lab practical | Anatomy & Physiology';
   }
 
@@ -445,34 +540,34 @@
         (mode === 'study' && window.AnpToolKit && window.AnpToolKit.more ? window.AnpToolKit.more('<div class="lp-actions"><button type="button" class="btn-outline sm lp-all" data-v="1">Reveal all</button><button type="button" class="btn-outline sm lp-all" data-v="0">Hide all</button><a class="btn-press sm" href="#quiz/' + s.id + '">Quiz me on this set</a></div>', { open: !!studyOpen, cls: 'lp-studymore' })
           : mode === 'study' ? '<div class="lp-actions"><button type="button" class="btn-outline sm lp-all" data-v="1">Reveal all</button><button type="button" class="btn-outline sm lp-all" data-v="0">Hide all</button><a class="btn-press sm" href="#quiz/' + s.id + '">Quiz me on this set</a></div>' : '') +
         '<div class="lp-stage">' + figureHtml(st, { mode: mode, reveal: reveal, zoom: z, pick: pick }) +
-        '<div class="lp-info" aria-live="polite">' + (pick ? infoHtml(pick, st) : '<p class="anp-small">' + (mode === 'explore' ? 'Select a label on the figure.' : 'Revealed labels are explained here.') + '</p>') + '</div></div>' +
+        '<div class="lp-info" aria-live="polite">' + (pick ? infoHtml(pick, st) : mode === 'explore' ? '' : '<p class="anp-small">Revealed labels are explained here.</p>') + '</div></div>' +
         (n + 1 < s.stations.length ? '<p class="lp-next"><a class="btn-outline" href="#' + mode + '/' + s.id + '/' + (n + 2) + '">Next figure &rarr;</a></p>' : '');
       paint(body);
       setPicker(s, mode);
-      if(pick) keepGoing(app.querySelector('.lp-info'), pick, st);
-      wireZoom(app, function(){ return z; }, function(v){ z = v; draw(); });
-      var sm = app.querySelector('.lp-studymore'); if(sm) sm.addEventListener('toggle', function(){ studyOpen = sm.open; });
-      app.querySelectorAll('.lp-box').forEach(function(b){
+      if(pick) keepGoing(Q().querySelector('.lp-info'), pick, st);
+      wireZoom(Q(), function(){ return z; }, function(v){ z = v; draw(); });
+      var sm = Q().querySelector('.lp-studymore'); if(sm) sm.addEventListener('toggle', function(){ studyOpen = sm.open; });
+      Q().querySelectorAll('.lp-box').forEach(function(b){
         b.addEventListener('click', function(){
           var id = b.getAttribute('data-label');
           var lab = st.labels.filter(function(l){ return l.id === id; })[0];
           if(mode === 'study'){ reveal[id] = !reveal[id]; pick = reveal[id] ? lab : pick === lab ? null : pick; }
           else pick = lab;
           draw();
-          var nb = app.querySelector('.lp-box[data-label="' + id + '"]'); if(nb) nb.focus();
+          var nb = Q().querySelector('.lp-box[data-label="' + id + '"]'); if(nb) nb.focus();
         });
       });
-      app.querySelectorAll('.lp-all').forEach(function(b){
+      Q().querySelectorAll('.lp-all').forEach(function(b){
         b.addEventListener('click', function(){
           var v = b.getAttribute('data-v') === '1';
           st.labels.forEach(function(l){ reveal[l.id] = v; });
           pick = null; draw();
-          var nb = app.querySelector('.lp-all[data-v="' + (v ? 1 : 0) + '"]'); if(nb) nb.focus();
+          var nb = Q().querySelector('.lp-all[data-v="' + (v ? 1 : 0) + '"]'); if(nb) nb.focus();
         });
       });
     }
     draw();
-    focusEl(app.querySelector('.lp-title'));
+    focusEl(Q().querySelector('.lp-title'));
     document.title = s.title + ' | Virtual lab practical';
   }
 
@@ -487,7 +582,7 @@
     var pool = items || setItems(s);
     if(!pool.length){
       paint(modeTabs('quiz') + '<h2 class="lp-title" tabindex="-1">' + esc(title || 'Quiz') + '</h2><p class="lp-lead">Nothing to review right now. Missed structures come back here until you name them right.</p><p><a class="btn-press sm" href="#quiz">Choose an image set</a></p>');
-      focusEl(app.querySelector('.lp-title'));
+      focusEl(Q().querySelector('.lp-title'));
       return;
     }
     var order = [];
@@ -525,7 +620,7 @@
         '</div></details>';
     }
     function wireSettings(){
-      var ks = app.querySelector('.lp-set-kind'), mc = app.querySelector('.lp-set-mc'), dd = app.querySelector('.lp-settings-d');
+      var ks = Q().querySelector('.lp-set-kind'), mc = Q().querySelector('.lp-set-mc'), dd = Q().querySelector('.lp-settings-d');
       if(dd) dd.addEventListener('toggle', function(){ setPref('qopen', dd.open); });
       if(ks) ks.addEventListener('change', function(){ setPref('qkind', ks.value); var pool = run.map(function(r){ return r.it; }); startQuiz(s, pool, title); });
       // After an answer the new setting applies from the next item: re-asking
@@ -561,28 +656,28 @@
           '<div class="lp-feedback" aria-live="polite">' + fb + '</div>');
         wireSettings();
         if(s) setPicker(s, 'quiz');
-        if(answered) keepGoing(app.querySelector('.lp-feedback'), it.lab, st);
-        wireZoom(app, function(){ return z; }, function(v){ z = v; draw(); if(r.kind === 'name') scrollToBox(app, it.lab); });
-        if(r.kind === 'name') scrollToBox(app, it.lab);
-        var form = app.querySelector('.lp-answer');
+        if(answered) keepGoing(Q().querySelector('.lp-feedback'), it.lab, st);
+        wireZoom(Q(), function(){ return z; }, function(v){ z = v; draw(); if(r.kind === 'name') scrollToBox(Q(), it.lab); });
+        if(r.kind === 'name') scrollToBox(Q(), it.lab);
+        var form = Q().querySelector('.lp-answer');
         if(form){
           var inp = form.querySelector('.lp-input');
           form.addEventListener('submit', function(e){ e.preventDefault(); if(!inp.value.trim()) { inp.focus(); return; } submit(grade(inp.value, it.lab), inp.value); });
-          form.querySelector('.lp-hint').addEventListener('click', function(){ var v = inp.value; hinted = true; draw(); var i2 = app.querySelector('.lp-input'); if(i2){ i2.value = v; i2.focus(); } });
+          form.querySelector('.lp-hint').addEventListener('click', function(){ var v = inp.value; hinted = true; draw(); var i2 = Q().querySelector('.lp-input'); if(i2){ i2.value = v; i2.focus(); } });
           form.querySelector('.lp-idk').addEventListener('click', function(){ submit({ ok: false, gaveUp: true }, ''); });
-          var tb = app.querySelector('.lp-box.is-target'); if(tb) tb.addEventListener('click', function(){ inp.focus(); });
+          var tb = Q().querySelector('.lp-box.is-target'); if(tb) tb.addEventListener('click', function(){ inp.focus(); });
         }
-        app.querySelectorAll('.lp-mc .anp-opt').forEach(function(b){
+        Q().querySelectorAll('.lp-mc .anp-opt').forEach(function(b){
           b.addEventListener('click', function(){ var c = b.getAttribute('data-c'); submit({ ok: norm(c) === norm(it.lab.name), exact: true }, c); });
         });
         if(r.kind === 'point' && !answered){
-          app.querySelectorAll('.lp-box').forEach(function(b){
+          Q().querySelectorAll('.lp-box').forEach(function(b){
             b.addEventListener('click', function(){
               var lab = st.labels.filter(function(l){ return l.id === b.getAttribute('data-label'); })[0];
               submit({ ok: same(lab, it.lab), pick: lab }, lab.name);
             });
           });
-          var idk = app.querySelector('.lp-idk'); if(idk) idk.addEventListener('click', function(){ submit({ ok: false, gaveUp: true, pick: null }, ''); });
+          var idk = Q().querySelector('.lp-idk'); if(idk) idk.addEventListener('click', function(){ submit({ ok: false, gaveUp: true, pick: null }, ''); });
         }
         wireFeedback();
       }
@@ -595,16 +690,16 @@
         results.push({ it: it, kind: r.kind, ok: ok, g: g });
         if(window.LevlSound && window.LevlSound.answer) try{ window.LevlSound.answer(ok); }catch(e){}
         draw();
-        focusEl(app.querySelector('.lp-verdict'));
+        focusEl(Q().querySelector('.lp-verdict'));
       }
       function wireFeedback(){
-        var nx = app.querySelector('.lp-nextbtn');
+        var nx = Q().querySelector('.lp-nextbtn');
         if(nx) nx.addEventListener('click', function(){ k++; step(); });
-        wireFollow(app, it, !answered || !p.follow);
+        wireFollow(Q(), it, !answered || !p.follow);
       }
       draw();
-      if(!keepFocus) focusEl(app.querySelector('.lp-input') || app.querySelector('.lp-mc .anp-opt') || app.querySelector('.lp-box') || app.querySelector('#lp-prompt'));
-      else focusEl(app.querySelector('.lp-set-mc'));
+      if(!keepFocus) focusEl(Q().querySelector('.lp-input') || Q().querySelector('.lp-mc .anp-opt') || Q().querySelector('.lp-box') || Q().querySelector('#lp-prompt'));
+      else focusEl(Q().querySelector('.lp-set-mc'));
     }
     function feedbackHtml(it, g){
       var lab = it.lab, v;
@@ -631,10 +726,10 @@
           ? { label: 'Retry the ' + byStruct.length + ' missed', act: function(){ startQuiz(s, byStruct.map(function(x){ return x.it; }), s ? s.title + ': missed' : title); } }
           : { label: 'Timed practical', href: '#practical' }] }) : '');
       paint(html);
-      focusEl(app.querySelector('.lp-score'));
+      focusEl(Q().querySelector('.lp-score'));
     }
     step(true);
-    focusEl(app.querySelector('.lp-title'));
+    focusEl(Q().querySelector('.lp-title'));
     if(s) document.title = s.title + ' quiz | Virtual lab practical';
   }
 
@@ -708,7 +803,7 @@
       '</div><p class="lp-est anp-small" aria-live="polite"></p>' +
       '<p><button type="submit" class="btn-press">Start the practical</button></p></form>';
     paint(html);
-    var form = app.querySelector('.lp-setup');
+    var form = Q().querySelector('.lp-setup');
     function picked(){ return [].slice.call(form.querySelectorAll('input[name="set"]:checked')).map(function(i){ return i.value; }); }
     function est(){
       var ids = picked(), pool = ITEMS.filter(function(it){ return ids.indexOf(it.set.id) > -1; }).length;
@@ -740,7 +835,7 @@
       if(core() && !core().allowed('lab-timed-practical')) return;
       runPractical(buildPractical(ids, +form.count.value, form.kind.value, form.follow.checked), +form.time.value);
     });
-    focusEl(app.querySelector('.lp-mode[aria-current="true"]'));
+    focusEl(Q().querySelector('.lp-mode[aria-current="true"]'));
     document.title = 'Timed lab practical | Anatomy & Physiology';
   }
 
@@ -773,7 +868,7 @@
       var S = stations[k], it = S.it, st = it.st, pick = null, fpick = null, ends = secs ? Date.now() + secs * 1000 : 0, done = false;
       if(S.follow && !it.lab.follow.order) it.lab.follow.order = shuffle(it.lab.follow.options.map(function(o, i){ return i; }));
       function draw(){
-        var typed = app.querySelector('.lp-input') ? app.querySelector('.lp-input').value : '';
+        var typed = Q().querySelector('.lp-input') ? Q().querySelector('.lp-input').value : '';
         paint('<div class="lp-run-head"><span class="lp-run-n">Station ' + (k + 1) + ' of ' + stations.length + '</span>' +
           (secs ? '<span class="lp-timer" role="timer" aria-live="off"><span class="lp-timer-t">' + secs + '</span> s</span>' : '<span class="anp-small">Untimed</span>') + '</div>' +
           (secs ? '<span class="lp-bar lp-timebar"><span></span></span>' : '') +
@@ -783,30 +878,30 @@
           (S.follow ? '<div class="lp-follow"><p class="lp-fq"><span class="lp-part">(b)</span> ' + it.lab.follow.q + '</p><div class="anp-opt-btns" role="group" aria-label="Part b answers">' +
             it.lab.follow.order.map(function(i){ return '<button type="button" class="anp-opt" data-i="' + i + '" aria-pressed="' + (fpick === i) + '">' + it.lab.follow.options[i] + '</button>'; }).join('') + '</div></div>' : '') +
           '<div class="lp-actions"><button type="button" class="btn-press sm lp-go">' + (k + 1 < stations.length ? 'Next station' : 'Finish') + ' &rarr;</button><span class="anp-small">No going back.</span></div>');
-        var inp = app.querySelector('.lp-input');
+        var inp = Q().querySelector('.lp-input');
         if(inp){ inp.value = typed; }
-        if(S.kind === 'name') scrollToBox(app, it.lab);
+        if(S.kind === 'name') scrollToBox(Q(), it.lab);
         if(S.kind === 'point'){
-          app.querySelectorAll('.lp-box').forEach(function(b){
+          Q().querySelectorAll('.lp-box').forEach(function(b){
             var lab = st.labels.filter(function(l){ return l.id === b.getAttribute('data-label'); })[0];
             if(lab === pick){ b.classList.add('is-picked'); b.setAttribute('aria-pressed', 'true'); } else b.setAttribute('aria-pressed', 'false');
-            b.addEventListener('click', function(){ pick = lab; draw(); var nb = app.querySelector('.lp-box[data-label="' + lab.id + '"]'); if(nb) nb.focus(); });
+            b.addEventListener('click', function(){ pick = lab; draw(); var nb = Q().querySelector('.lp-box[data-label="' + lab.id + '"]'); if(nb) nb.focus(); });
           });
         }
-        app.querySelectorAll('.lp-follow .anp-opt').forEach(function(b){
-          b.addEventListener('click', function(){ fpick = +b.getAttribute('data-i'); draw(); var nb = app.querySelector('.lp-follow .anp-opt[data-i="' + fpick + '"]'); if(nb) nb.focus(); });
+        Q().querySelectorAll('.lp-follow .anp-opt').forEach(function(b){
+          b.addEventListener('click', function(){ fpick = +b.getAttribute('data-i'); draw(); var nb = Q().querySelector('.lp-follow .anp-opt[data-i="' + fpick + '"]'); if(nb) nb.focus(); });
         });
-        var form = app.querySelector('.lp-answer');
-        if(form) form.addEventListener('submit', function(e){ e.preventDefault(); if(S.follow){ var f = app.querySelector('.lp-follow .anp-opt'); if(f) f.focus(); } else next(); });
-        app.querySelector('.lp-go').addEventListener('click', next);
-        wireZoom(app, function(){ return z; }, function(v){ z = v; draw(); });
+        var form = Q().querySelector('.lp-answer');
+        if(form) form.addEventListener('submit', function(e){ e.preventDefault(); if(S.follow){ var f = Q().querySelector('.lp-follow .anp-opt'); if(f) f.focus(); } else next(); });
+        Q().querySelector('.lp-go').addEventListener('click', next);
+        wireZoom(Q(), function(){ return z; }, function(v){ z = v; draw(); });
         tick();
         timer = secs ? setInterval(tick, 250) : null;
       }
       function tick(){
         if(!secs || done) return;
         var left = Math.max(0, ends - Date.now()), s = Math.ceil(left / 1000);
-        var t = app.querySelector('.lp-timer-t'), bar = app.querySelector('.lp-timebar span'), tm = app.querySelector('.lp-timer');
+        var t = Q().querySelector('.lp-timer-t'), bar = Q().querySelector('.lp-timebar span'), tm = Q().querySelector('.lp-timer');
         if(t && t.textContent !== String(s)) t.textContent = s;
         if(bar) bar.style.width = (100 * left / (secs * 1000)) + '%';
         if(tm){ tm.classList.toggle('is-low', s <= 10); if(s === 10 && !tm.getAttribute('data-warned')){ tm.setAttribute('data-warned', '1'); announce('Ten seconds left.'); } }
@@ -815,13 +910,13 @@
       function next(){
         if(done) return;
         done = true; stopTimer();
-        var typed = app.querySelector('.lp-input') ? app.querySelector('.lp-input').value : '';
+        var typed = Q().querySelector('.lp-input') ? Q().querySelector('.lp-input').value : '';
         var g = S.kind === 'point' ? { ok: !!pick && same(pick, it.lab), pick: pick } : grade(typed, it.lab);
         S.typed = typed; S.g = g; S.ok = !!g.ok; S.fpick = fpick;
         score(it, S.ok, false);
         if(S.follow){ S.fok = fpick === it.lab.follow.correct; score(it, S.fok, true); }
         k++; station();
-        focusEl(app.querySelector('.lp-input') || app.querySelector('.lp-box') || app.querySelector('.lp-run-n'));
+        focusEl(Q().querySelector('.lp-input') || Q().querySelector('.lp-box') || Q().querySelector('.lp-run-n'));
       }
       draw();
     }
@@ -847,10 +942,10 @@
             (s.follow ? '<p class="lp-fq"><span class="lp-part">(b)</span> ' + f.q + '</p><p class="lp-fn"><b class="' + (s.fok ? 'ok' : 'no') + '">' + (s.fok ? 'Right.' : 'Missed.') + '</b> Answer: ' + f.options[f.correct] + '. ' + f.why + '</p>' : '') +
             '<div class="lp-actions">' + see3d(lab) + report(s.it.id) + '</div></div></div></li>';
         }).join('') + '</ol>');
-      focusEl(app.querySelector('.lp-title'));
+      focusEl(Q().querySelector('.lp-title'));
     }
     station();
-    focusEl(app.querySelector('.lp-input') || app.querySelector('.lp-box') || app.querySelector('.lp-run-n'));
+    focusEl(Q().querySelector('.lp-input') || Q().querySelector('.lp-box') || Q().querySelector('.lp-run-n'));
     document.title = 'Timed practical in progress | Anatomy & Physiology';
   }
 
@@ -865,6 +960,7 @@
       route();
       booted = true;
     }).catch(function(){
+      if(ST){ ST.suspend(true); app.classList.remove('kt-staging'); }
       app.innerHTML = '<p class="lp-error">The lab practical could not load its figures. Check your connection and reload the page.</p>';
       app.classList.add('is-ready');
     });

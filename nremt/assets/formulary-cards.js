@@ -106,6 +106,12 @@
 
   var deck = [], at = 0, right = 0, answered = false;
 
+  /* A host page may give the decision its own place (the Tool Studio's dock:
+     #gwDock): the patient card stays here, the Give / Withhold buttons and
+     the reason go there. It calls NremtFormularyCards.render() once the dock
+     exists. */
+  function dk(){ return document.getElementById('gwDock'); }
+
   /* formulary.html?gw=<card id> (Review's "Try it again") deals that card first. */
   var firstId = (function(){ try{ return new URLSearchParams(location.search).get('gw'); }catch(e){ return null; } })();
   function start(){
@@ -121,13 +127,20 @@
       mount.innerHTML = '<div class="gw-end"><div class="gw-end-n">' + right + ' / ' + deck.length + '</div>' +
         '<p>' + (right === deck.length ? 'Every call right.' : 'The ones you missed went to your Review list.') + '</p>' +
         '<button type="button" class="btn-press" id="gwAgain">Deal again</button></div>';
+      if(dk()) dk().innerHTML = '';
       document.getElementById('gwAgain').addEventListener('click', start);
       return;
     }
+    var controls =
+      '<div class="gw-btns"><button type="button" class="gw-btn gw-no" data-gw="0"><span aria-hidden="true">← </span>Withhold</button>' +
+        '<button type="button" class="gw-btn gw-yes" data-gw="1">Give<span aria-hidden="true"> →</span></button></div>' +
+      '<p class="gw-hint">Swipe the card, or press <kbd>←</kbd> withhold / <kbd>→</kbd> give.</p>' +
+      '<div class="gw-why" id="gwWhy" role="status" aria-live="polite"></div>';
+    if(dk()) dk().innerHTML = controls;
     var c = deck[at];
     answered = false;
     mount.innerHTML =
-      '<div class="gw-meta"><span>Card ' + (at + 1) + ' of ' + deck.length + '</span><span>' + right + ' right</span></div>' +
+      '<div class="gw-meta"><span>Card ' + (at + 1) + ' of ' + deck.length + '</span><span class="gw-right">' + right + ' right</span></div>' +
       '<div class="gw-stack">' +
         (at + 2 < deck.length ? '<div class="gw-under gw-under2" aria-hidden="true"></div>' : '') +
         (at + 1 < deck.length ? '<div class="gw-under" aria-hidden="true"></div>' : '') +
@@ -143,11 +156,8 @@
           '<div class="gw-stamp" aria-hidden="true"></div>' +
         '</article>' +
       '</div>' +
-      '<div class="gw-btns"><button type="button" class="gw-btn gw-no" data-gw="0"><span aria-hidden="true">← </span>Withhold</button>' +
-        '<button type="button" class="gw-btn gw-yes" data-gw="1">Give<span aria-hidden="true"> →</span></button></div>' +
-      '<p class="gw-hint">Swipe the card, or press <kbd>←</kbd> withhold / <kbd>→</kbd> give.</p>' +
-      '<div class="gw-why" id="gwWhy" role="status" aria-live="polite"></div>';
-    mount.querySelectorAll('[data-gw]').forEach(function(b){
+      (dk() ? '' : controls);
+    (dk() || mount).querySelectorAll('[data-gw]').forEach(function(b){
       b.addEventListener('click', function(){ decide(b.getAttribute('data-gw') === '1'); });
     });
     swipe(document.getElementById('gwCard'));
@@ -179,11 +189,12 @@
     answered = true;
     var c = deck[at], ok = give === c.give;
     if(ok) right++;
+    var tally = mount.querySelector('.gw-right'); if(tally) tally.textContent = right + ' right';
     var card = document.getElementById('gwCard');
     card.classList.add(give ? 'went-give' : 'went-hold', ok ? 'is-ok' : 'is-no');
     card.style.transform = '';
     card.querySelector('.gw-stamp').textContent = c.give ? 'Give' : 'Withhold';
-    mount.querySelectorAll('[data-gw]').forEach(function(b){ b.disabled = true; });
+    (dk() || mount).querySelectorAll('[data-gw]').forEach(function(b){ b.disabled = true; });
 
     var dc = drugCard(c.drug), line = dc && ruleLine(dc, c.rule), dose = dc && dc.querySelector('dd.dose');
     var why = document.getElementById('gwWhy');
@@ -199,7 +210,7 @@
     next.addEventListener('click', function(){ at++; render(); var cd = document.getElementById('gwCard'); if(cd) cd.focus({ preventScroll: true }); });
     next.focus({ preventScroll: true });
     // On a phone the reason is below the card: bring it up.
-    if(window.innerWidth < 960){
+    if(window.innerWidth < 960 && !dk()){
       var r = why.getBoundingClientRect();
       if(r.bottom > window.innerHeight - 90) window.scrollBy({ top: r.top - 140, behavior: reduced() ? 'auto' : 'smooth' });
     }
@@ -265,5 +276,5 @@
   mode(location.hash === '#drill' ? 'drill' : 'gw');
   start();
 
-  window.NremtFormularyCards = { CARDS: CARDS };
+  window.NremtFormularyCards = { CARDS: CARDS, render: function(){ if(!answered) render(); } };
 })();

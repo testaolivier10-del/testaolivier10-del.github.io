@@ -31,6 +31,11 @@
   var DATA = null, filterCh = '', filterTopic = '', queue = [], qi = 0, uid = 0, booted = false;
   var startTab = param('mode') === 'test' ? 'test' : 'live', activeLive = null;
   function stopLive(){ if(activeLive){ activeLive.stop(); activeLive = null; } }
+  /* Tool Studio (docs/tools-calm.md): with the page's studio flag the loop
+     is drawn in #app and then moved into the calm frame (studioLoop,
+     studioList); lookups go through the document, where the parts are. */
+  var S = window.AnpToolKit && window.AnpToolKit.studio ? window.AnpToolKit.studio() : null, showTabNow = null;
+  function Q(){ return S ? document : app; }
 
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function core(){ return window.AnpCore || null; }
@@ -49,10 +54,16 @@
   /* ------------------------------------------------------------ load */
   app.classList.add('fl-app');
   app.innerHTML = '<p class="fl-loading anp-hint">Loading feedback loops…</p>';
+  if(S){
+    S.root.classList.add('fl-ls');
+    S.caption('Loading feedback loops…');
+    S.modes({ items: [{ value: 'live', label: 'Watch it work' }, { value: 'test', label: 'Test yourself' }], value: startTab,
+      onChange: function(v){ if(showTabNow) showTabNow(v); } });
+  }
   fetch(app.getAttribute('data-src') || (base() + 'data/tools/feedback-loops.json'))
     .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
     .then(init)
-    .catch(function(){ app.innerHTML = '<p class="anp-hint">The loops could not be loaded. Check your connection and reload the page.</p>'; });
+    .catch(function(){ if(S){ S.suspend(true); app.classList.remove('kt-staging'); } app.innerHTML = '<p class="anp-hint">The loops could not be loaded. Check your connection and reload the page.</p>'; });
 
   function init(data){
     DATA = data;
@@ -87,6 +98,7 @@
     var chs = [];
     DATA.loops.forEach(function(l){ if(chs.indexOf(l.chapter) < 0) chs.push(l.chapter); });
     var list = visible();
+    if(S) S.reset();
     app.innerHTML =
       '<section class="fl-panel" aria-labelledby="fl-list-h">' +
         '<h2 id="fl-list-h" class="fl-h2">Pick a loop to build</h2>' +
@@ -109,19 +121,20 @@
         '<ol class="fl-parts">' + SLOTS.map(function(k){ return '<li class="fl-part-' + k + '">' + esc(LABELS[k]) + '</li>'; }).join('') + '</ol>' +
         '<p class="anp-small">Afferent means carried toward the control center; efferent means carried away from it. The response feeds back on the stimulus.</p>' +
       '</section>';
-    app.querySelectorAll('[data-ch]').forEach(function(b){
-      b.addEventListener('click', function(){ filterCh = b.getAttribute('data-ch'); filterTopic = ''; renderList(); focusEl(app.querySelector('[data-ch="' + filterCh + '"]')); });
+    Q().querySelectorAll('[data-ch]').forEach(function(b){
+      b.addEventListener('click', function(){ filterCh = b.getAttribute('data-ch'); filterTopic = ''; renderList(); focusEl(Q().querySelector('[data-ch="' + filterCh + '"]')); });
     });
-    var clear = app.querySelector('.fl-clear');
+    var clear = Q().querySelector('.fl-clear');
     if(clear) clear.addEventListener('click', function(){ filterTopic = ''; filterCh = ''; renderList(); });
-    app.querySelectorAll('.fl-pick').forEach(function(b){
+    Q().querySelectorAll('.fl-pick').forEach(function(b){
       b.addEventListener('click', function(){ var id = b.getAttribute('data-id'); queue = DATA.loops.filter(function(l){ return l.id === id; }); qi = 0; renderLoop(); });
     });
-    app.querySelector('.fl-all').addEventListener('click', function(){ queue = visible(); qi = 0; startTab = 'test'; renderLoop(); });
+    Q().querySelector('.fl-all').addEventListener('click', function(){ queue = visible(); qi = 0; startTab = 'test'; renderLoop(); });
+    if(S) studioList();
   }
   function kit(){ return window.AnpToolKit || null; }
   function addPicker(l){
-    var K = kit(), host = app.querySelector('.fl-pickhost');
+    var K = kit(), host = Q().querySelector('.fl-pickhost');
     if(!K || !host) return;
     var chs = [];
     DATA.loops.forEach(function(x){ if(chs.indexOf(x.chapter) < 0) chs.push(x.chapter); });
@@ -134,9 +147,9 @@
       onPick: function(id){
         var k = -1; queue.forEach(function(x, i){ if(x.id === id) k = i; });
         if(k < 0){ queue = DATA.loops.filter(function(x){ return x.id === id; }); k = 0; }
-        qi = k; renderLoop(); focusEl(app.querySelector('.fl-title'));
+        qi = k; renderLoop(); focusEl(Q().querySelector('.fl-title'));
       },
-      onAll: function(){ renderList(); focusEl(app.querySelector('#fl-list-h')); }
+      onAll: function(){ renderList(); focusEl(Q().querySelector('#fl-list-h')); }
     });
   }
 
@@ -151,6 +164,7 @@
     var active = 0;     // index into SLOTS of the slot being filled, or -1
     var score = { right: 0, total: 0 };
     var p = 'fl' + (++uid);
+    if(S) S.reset();
     var topicLink = t.built ? '<a class="fl-tag" href="' + esc(base() + 'lessons/' + t.id + '.html') + '">' + esc(t.title) + '</a>' : '<span class="fl-tag">' + esc(t.title) + '</span>';
     app.innerHTML =
       '<div class="fl-pickhost"></div>' +
@@ -189,23 +203,26 @@
         '</section>' +
       '</article>';
 
-    var build = app.querySelector('.fl-build'), pool = app.querySelector('.fl-pool'), live = app.querySelector('.fl-live');
-    var checkBtn = app.querySelector('.fl-check');
-    app.querySelector('.fl-back').addEventListener('click', renderList);
+    var build = Q().querySelector('.fl-build'), pool = Q().querySelector('.fl-pool'), live = Q().querySelector('.fl-live');
+    var checkBtn = Q().querySelector('.fl-check');
+    Q().querySelector('.fl-back').addEventListener('click', renderList);
     addPicker(l);
-    var liveCtl = activeLive = mountLive(l, app.querySelector('.fl-livepanel'), p);
-    tabs(app.querySelector('.fl-tabs'));
-    if(startTab === 'test') showTab('test');
+    var liveCtl = activeLive = mountLive(l, Q().querySelector('.fl-livepanel'), p);
+    tabs(Q().querySelector('.fl-tabs'));
+    if(S) studioLoop(l, p);
+    showTabNow = showTab;
+    if(startTab === 'test') showTab('test'); else if(S) S.mode('live');
 
     function showTab(which){
       startTab = which;
-      app.querySelectorAll('.fl-tabs [role="tab"]').forEach(function(t){
+      Q().querySelectorAll('.fl-tabs [role="tab"]').forEach(function(t){
         var on = t.id === p + '-tab-' + which;
         t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1;
       });
-      app.querySelector('.fl-livepanel').hidden = which !== 'live';
-      app.querySelector('.fl-testpanel').hidden = which !== 'test';
+      Q().querySelector('.fl-livepanel').hidden = which !== 'live';
+      Q().querySelector('.fl-testpanel').hidden = which !== 'test';
       if(which === 'test') liveCtl.stop();
+      if(S) S.mode(which);
     }
     function tabs(bar){
       var ts = [].slice.call(bar.querySelectorAll('[role="tab"]'));
@@ -226,7 +243,7 @@
       return -1;
     }
     function paint(){
-      app.querySelectorAll('.fl-slot').forEach(function(b, i){
+      Q().querySelectorAll('.fl-slot').forEach(function(b, i){
         var k = SLOTS[i], c = placed[k] ? cardById(placed[k]) : null;
         b.setAttribute('aria-pressed', String(i === active));
         b.classList.toggle('is-filled', !!c);
@@ -239,6 +256,9 @@
       pool.querySelectorAll('.fl-tile').forEach(function(tb){ tb.addEventListener('click', function(){ place(tb.getAttribute('data-card')); }); });
       var filled = SLOTS.filter(function(k){ return placed[k]; }).length;
       checkBtn.disabled = filled < SLOTS.length;
+      // In the studio the slots scroll on the stage: keep the one being filled in view.
+      var on = S && Q().querySelector('.fl-slot[aria-pressed="true"]');
+      if(on && on.scrollIntoView && on.offsetParent) on.scrollIntoView({ block: 'nearest' });
     }
     function place(cardId){
       if(active < 0) active = nextEmpty(0);
@@ -252,7 +272,7 @@
       var tiles = pool.querySelectorAll('.fl-tile');
       if(tiles.length) tiles[Math.min(Math.max(pos, 0), tiles.length - 1)].focus(); else checkBtn.focus();
     }
-    app.querySelectorAll('.fl-slot').forEach(function(b, i){
+    Q().querySelectorAll('.fl-slot').forEach(function(b, i){
       b.addEventListener('click', function(){
         if(build.classList.contains('is-done')) return;
         var k = SLOTS[i];
@@ -263,9 +283,9 @@
         b.focus();
       });
     });
-    app.querySelector('.fl-reset').addEventListener('click', function(){ placed = {}; active = 0; live.textContent = 'All slots emptied.'; paint(); });
+    Q().querySelector('.fl-reset').addEventListener('click', function(){ placed = {}; active = 0; live.textContent = 'All slots emptied.'; paint(); });
     paint();
-    if(booted) focusEl(app.querySelector('.fl-title'));
+    if(booted) focusEl(Q().querySelector('.fl-title'));
     booted = true;
 
     checkBtn.addEventListener('click', function(){
@@ -276,7 +296,7 @@
         var c = cardById(placed[k]), ok = c && c.slot === k;
         if(ok) right++;
         items.push(item(l, k, ok, 'apply', 1));
-        var row = app.querySelector('.fl-slotrow[data-slot="' + k + '"]');
+        var row = Q().querySelector('.fl-slotrow[data-slot="' + k + '"]');
         var btn = row.querySelector('.fl-slot');
         btn.disabled = true;
         btn.setAttribute('aria-pressed', 'false');
@@ -293,9 +313,9 @@
       if(core()) core().toolResult(KIND, items);
       if(window.LevlSound && window.LevlSound.answer) try{ window.LevlSound.answer(right === SLOTS.length); }catch(e){}
       pool.parentNode.hidden = true;
-      app.querySelector('.fl-how').hidden = true;
-      var hw = app.querySelector('.fl-build > .kt-why'); if(hw) hw.hidden = true;
-      app.querySelector('.fl-actions').hidden = true;
+      Q().querySelector('.fl-how').hidden = true;
+      var hw = Q().querySelector('.fl-build > .kt-why'); if(hw) hw.hidden = true;
+      Q().querySelector('.fl-actions').hidden = true;
       live.textContent = right + ' of 7 slots right.';
       live.classList.add('fl-live-score');
       stepper(2);
@@ -303,7 +323,7 @@
     });
 
     function renderClassify(){
-      var sec = app.querySelector('.fl-classify');
+      var sec = Q().querySelector('.fl-classify');
       sec.innerHTML = '<h3 class="fl-h3" id="' + p + '-c" tabindex="-1">Step 2: what kind of loop is it?</h3>' +
         '<p class="anp-small">Does the response oppose the stimulus, or make it stronger?</p>' +
         '<div class="fl-choices" role="group" aria-labelledby="' + p + '-c"><button type="button" class="fl-choice" data-k="negative">Negative feedback</button><button type="button" class="fl-choice" data-k="positive">Positive feedback</button></div>' +
@@ -330,7 +350,7 @@
     }
 
     function renderFailure(){
-      var f = l.failure, sec = app.querySelector('.fl-failure');
+      var f = l.failure, sec = Q().querySelector('.fl-failure');
       var opts = shuffle(f.options.map(function(o, i){ return { o: o, i: i }; }));
       sec.innerHTML = '<h3 class="fl-h3" id="' + p + '-f" tabindex="-1">Step 3: when the ' + esc(lower(f.part)) + ' fails</h3>' +
         '<p class="fl-q">' + esc(f.q) + '</p>' +
@@ -359,7 +379,7 @@
     }
 
     function renderDone(){
-      var sec = app.querySelector('.fl-done'), more = qi < queue.length - 1;
+      var sec = Q().querySelector('.fl-done'), more = qi < queue.length - 1;
       sec.innerHTML = '<h3 class="fl-h3" tabindex="-1">The finished loop</h3>' +
         '<figure class="anp-fig fl-figure">' + loopSvg(l) + '<figcaption>Arrows mean “causes”. Afferent parts carry information toward the control center; efferent parts carry commands away from it. The response feeds back on the stimulus.</figcaption></figure>' +
         '<p class="fl-final" role="status"><b>' + score.right + ' of ' + score.total + '</b> right on this loop.' + (score.right < score.total ? ' Missed parts are in your review queue.' : '') + '</p>' +
@@ -370,6 +390,16 @@
         '</div>';
       sec.hidden = false;
       if(kit()) kit().strip(sec, { topic: l.topic, text: l.title + ' ' + l.scenario + ' ' + SLOTS.map(function(k){ return l.slots[k].text; }).join(' ') });
+      if(S){
+        // The finished loop is the picture now; the slots and their feedback stay below it.
+        var fig = sec.querySelector('.fl-figure');
+        S.put('stage', fig, { mode: 'test', first: true });
+        var tt = Q().querySelector('.fl-title'); if(tt) S.stage.insertBefore(tt, S.stage.firstChild);
+        S.stage.scrollTop = 0;
+        if(sec.scrollIntoView) sec.scrollIntoView({ block: 'start' });
+        S.caption('<b>' + score.right + ' of ' + score.total + '</b> right on this loop.' + (score.right < score.total ? ' Missed parts are in your review queue.' : ' The finished loop is on the left.'), 'test');
+        S.pills([{ html: score.right + ' of ' + score.total, tone: score.right === score.total ? 'good' : 'warn' }], 'right', 'test');
+      }
       var nx = sec.querySelector('.fl-next');
       if(nx) nx.addEventListener('click', function(){ qi++; renderLoop(); window.scrollTo(0, 0); });
       sec.querySelector('.fl-again').addEventListener('click', function(){ startTab = 'test'; renderLoop(); window.scrollTo(0, 0); });
@@ -377,12 +407,74 @@
     }
 
     function stepper(n){
-      app.querySelectorAll('.fl-stepper li').forEach(function(li){
+      if(S) S.caption(n === 2 ? '<b>' + score.right + ' of 7</b> slots right. Now: does the response oppose the stimulus, or make it stronger?'
+        : n === 3 ? 'Last step: what happens when the <b>' + esc(lower(l.failure.part)) + '</b> fails?' : '', 'test');
+      Q().querySelectorAll('.fl-stepper li').forEach(function(li){
         var s = +li.getAttribute('data-step');
         li.classList.toggle('is-on', s === n);
         li.classList.toggle('is-done', s < n);
       });
     }
+  }
+
+  /* ------------------------------------------------------------ Tool Studio
+     Watch it work: the gauge over the ring is the stage; Stimulus (and the
+     set point shift) and Reset are the controls, "Cut a part" a quiet row
+     below them, the loop picker last. Test yourself: the seven slots are the
+     stage (feedback lands on them, then the finished ring above them); the
+     cards, Check, then the classify and failure steps are the dock, one step
+     at a time. Why holds how it works and the seven parts; Details the
+     loop's topic, its place in the run and All loops. */
+  function studioLoop(l, p){
+    function $(sel){ return app.querySelector(sel); }
+    function box(cls, els){ var d = document.createElement('div'); d.className = cls; els.forEach(function(e){ if(e) d.appendChild(e); }); return d; }
+    S.modeBar(true);
+    S.pills([], 'right', 'live'); S.pills([], 'right', 'test');
+    S.put('stage', $('.fl-title'));
+    S.put('stage', box('fl-ls-stage', [$('.fl-gaugefig'), $('.fl-ringfig')]), { mode: 'live' });
+    var how = $('.fl-live-how');
+    S.mirror($('.fl-now'), 'live', how ? how.innerHTML : '');
+    S.put('dock', [$('.fl-live-btns'), $('.fl-cut'), $('.fl-sr')], { mode: 'live' });
+    S.put('stage', [$('.fl-scenario'), $('.fl-slots')], { mode: 'test' });
+    S.caption($('.fl-how').innerHTML, 'test');
+    S.put('dock', [$('.fl-stepper'), $('.fl-poolwrap'), $('.fl-actions'), $('.fl-live'), $('.fl-classify'), $('.fl-failure'), $('.fl-done')], { mode: 'test' });
+    S.put('dock', $('.fl-pickhost'));
+    var w1 = document.createElement('div');
+    w1.className = 'ls-sec';
+    w1.innerHTML = '<h3 class="ls-h">Watch it work</h3><p>' + (how ? esc(how.textContent) : '') + '</p>' +
+      '<p>The ring shows the seven parts in order. Each lights up as the signal reaches it; then the response acts back on ' + esc(lowFirst(l.live.variable)) + '.</p>';
+    S.put('why', w1, { mode: 'live' });
+    var tw = $('.fl-build > .kt-why .kt-why-b');
+    var w2 = document.createElement('div');
+    w2.className = 'ls-sec';
+    w2.innerHTML = '<h3 class="ls-h">How the test works</h3>' + (tw ? tw.innerHTML : '') +
+      '<p>Three steps: build the loop, say whether it is negative or positive feedback, then predict what happens when one part fails. Missed parts go into your review queue.</p>';
+    S.put('why', w2, { mode: 'test' });
+    var hw = $('.fl-build > .kt-why'); if(hw) hw.parentNode.removeChild(hw);
+    S.put('why', box('ls-sec', [partsEl()]));
+    S.put('details', box('ls-sec fl-ls-det', [$('.fl-meta'), $('.fl-progress')]));
+    if(!studioLoop.hinted){
+      studioLoop.hinted = true;
+      S.hint(startTab === 'test' ? { target: '.fl-pool .fl-tile', text: 'Tap a card to fill the highlighted slot' } : { target: '.fl-g-mk .fl-g-dot', text: 'Drag the marker off the set point' });
+    }
+  }
+  function partsEl(){
+    var d = document.createElement('div');
+    d.innerHTML = '<h3 class="ls-h">The seven slots</h3><ol class="fl-parts">' + SLOTS.map(function(k){ return '<li class="fl-part-' + k + '">' + esc(LABELS[k]) + '</li>'; }).join('') + '</ol>' +
+      '<p class="ls-sub">Afferent means carried toward the control center; efferent means carried away from it. The response feeds back on the stimulus.</p>';
+    return d;
+  }
+  function studioList(){
+    S.modeBar(false);
+    S.pills([], 'right', 'live'); S.pills([], 'right', 'test');
+    var panels = app.querySelectorAll('.fl-panel');
+    var intro = panels[0].querySelector('.fl-intro');
+    S.put('stage', panels[0]);
+    if(intro) S.put('why', intro);
+    S.put('why', panels[1]);
+    S.caption('Pick a loop to watch, or test yourself on all of them in order.', 'live');
+    S.caption('Pick a loop to watch, or test yourself on all of them in order.', 'test');
+    S.stage.scrollTop = 0;
   }
 
   function item(l, k, ok, level, diff){
@@ -477,7 +569,7 @@
     var svg = panel.querySelector('.fl-gauge'), mk = panel.querySelector('.fl-g-mk'), state = panel.querySelector('.fl-g-state');
     var spG = panel.querySelector('.fl-g-sp'), spT = panel.querySelector('.fl-g-spt'), sp0 = panel.querySelector('.fl-g-sp0');
     var ring = panel.querySelector('.fl-ringfig svg'), now = panel.querySelector('.fl-now'), sr = panel.querySelector('.fl-sr');
-    var cutfb = panel.querySelector('.fl-cutfb'), band = panel.querySelector('.fl-g-live');
+    var cutfb = panel.querySelector('.fl-cutfb'), band = panel.querySelector('.fl-g-live'), cutbs = [].slice.call(panel.querySelectorAll('.fl-cutb'));
     var v = 0;          // how far the variable is off its set point, 0..1, on this loop's side
     var spOff = 0;      // how far the set point itself has moved, 0..1, on this loop's side (fever, reset)
     var cut = '';       // the part cut, or ''
@@ -661,14 +753,14 @@
       b.addEventListener('click', function(){
         stop(); clearRing();
         cut = b.getAttribute('data-cut');
-        panel.querySelectorAll('.fl-cutb').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+        cutbs.forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
         ring.querySelectorAll('.is-cut').forEach(function(x){ x.classList.remove('is-cut'); });
         if(cut){ var g = ring.querySelector('[data-k="' + cut + '"]'); if(g) g.classList.add('is-cut'); }
         if(!cut){ cutfb.hidden = true; say('Nothing cut. The loop is whole again.'); }
         else if(noPart(l, cut)){
           cutfb.innerHTML = '<p>' + esc(l.slots[cut].text) + '. There is nothing separate to cut; to break this loop, cut a part it has.</p>';
           cutfb.hidden = false; cut = ''; ring.querySelectorAll('.is-cut').forEach(function(x){ x.classList.remove('is-cut'); });
-          panel.querySelectorAll('.fl-cutb').forEach(function(x){ x.setAttribute('aria-pressed', String(x.getAttribute('data-cut') === '')); });
+          cutbs.forEach(function(x){ x.setAttribute('aria-pressed', String(x.getAttribute('data-cut') === '')); });
           say(cutfb.textContent);
         } else if(cut === f.part){
           cutfb.innerHTML = '<p><b>The case:</b> ' + esc(f.q) + '</p><p class="anp-small">Push ' + esc(lowFirst(lv.variable)) + ' off again to see what happens.</p>';
@@ -685,7 +777,7 @@
       var id = ob.getAttribute('data-id'), k = -1;
       queue.forEach(function(x, i){ if(x.id === id) k = i; });
       if(k < 0){ queue = DATA.loops.filter(function(x){ return x.id === id; }); k = 0; }
-      stop(); qi = k; startTab = 'live'; renderLoop(); focusEl(app.querySelector('.fl-title'));
+      stop(); qi = k; startTab = 'live'; renderLoop(); focusEl(Q().querySelector('.fl-title'));
     });
     draw();
     return { stop: function(){ stop(); clearRing(); } };

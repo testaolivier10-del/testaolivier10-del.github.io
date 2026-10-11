@@ -60,6 +60,11 @@ const FOOT_START = '<!-- tool-foot:start -->';
 const FOOT_END = '<!-- tool-foot:end -->';
 const LD_START = '<!-- tool-ld:start -->';
 const LD_END = '<!-- tool-ld:end -->';
+/* Tools with `studio: true` in the registry load the shared Tool Studio
+   layout (docs/tools-calm.md) from this block in their head. */
+const STUDIO_START = '<!-- tool-studio:start -->';
+const STUDIO_END = '<!-- tool-studio:end -->';
+const STUDIO_HTML = '<link rel="stylesheet" href="../../assets/course/tool-studio.css">\n<script src="../../assets/course/tool-studio.js" defer></script>';
 
 /* The last line of every tool page's head, and so the place the structured
    data is inserted the first time. */
@@ -235,6 +240,9 @@ for (const tool of tools) {
   const ldBlock = `<!-- levlprep-structured-data -->\n<script type="application/ld+json">\n${ldJson(tool)}\n</script>`;
   let next = splice(current, LD_START, LD_END, ldBlock, FONTS_LINK);
   if (next === null) { broken.push(`${tool.slug}: no place to put the structured data`); continue; }
+
+  if (tool.studio) next = splice(next, STUDIO_START, STUDIO_END, STUDIO_HTML, LD_END);
+  else if (next.includes(STUDIO_START)) next = next.slice(0, next.indexOf(STUDIO_START) - 1) + next.slice(next.indexOf(STUDIO_END) + STUDIO_END.length);
 
   next = splice(next, TOP_START, TOP_END, topHtml(tool), '<div class="tool-top" id="tool-top">');
   if (next === null) { broken.push(`${tool.slug}: no <div id="tool-top">`); continue; }

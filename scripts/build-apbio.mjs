@@ -996,13 +996,13 @@ ${bodyOpen(` data-app="tool-${t.slug}"`)}
 <main id="main" class="xshell bio-app">
   ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: t.name }])}
   <header class="hero bio-hero"><div class="eyebrow">${COURSE_HTML} ${t.kind === 'simulator' ? 'simulator' : t.kind === 'drill' ? 'drills' : 'skills'} ${BETA_PILL}</div><h1>${esc(t.name)}</h1><p class="lede">${esc(t.tag || t.blurb)}</p></header>
-  <div id="app" class="bio-app-mount" data-slug="${t.slug}" data-src="${depth}assets/tool-data/${t.slug}.json"${t.premium ? ` data-premium="${t.premium}"` : ''}>${scriptOk
+  <div id="app" class="bio-app-mount" data-slug="${t.slug}" data-src="${depth}assets/tool-data/${t.slug}.json"${t.premium ? ` data-premium="${t.premium}"` : ''}${t.studio ? ' data-studio="1"' : ''}>${scriptOk
     ? '<noscript><p>This tool needs JavaScript. Every notes page works without it.</p></noscript>'
     : `<p class="bio-soon">This tool arrives with its unit. Meanwhile, read the <a href="../learn.html">free notes</a>.</p>`}</div>
 </main>
 ${footer(depth, `tool:${t.slug}`)}
-<link rel="stylesheet" href="${depth}assets/tools/bio-tools.css">
-${tail({ depth, section: 'tools', extra, premium: true })}
+<link rel="stylesheet" href="${depth}assets/tools/bio-tools.css">${t.studio ? `\n<link rel="stylesheet" href="${depth}../assets/course/tool-studio.css">` : ''}
+${tail({ depth, section: 'tools', extra, premium: true, site: t.studio ? ['course/tool-studio.js'] : [] })}
 </body>
 </html>
 `;

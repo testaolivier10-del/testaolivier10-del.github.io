@@ -49,6 +49,13 @@
   }
   function stopPlayer(){ if(player){ player.stop(); player = null; } if(tracer){ tracer.stop(); tracer = null; } }
   var tracer = null;          // the running figure trace, if any
+  /* Tool Studio (docs/tools-calm.md): with the page's studio flag a pathway
+     is drawn in #app and moved into the calm frame (studioPathway,
+     studioDrill, studioList); lookups go through the document. */
+  var S = window.AnpToolKit && window.AnpToolKit.studio ? window.AnpToolKit.studio() : null;
+  function Q(){ return S ? document : app; }
+  function pq(el, sel){ return (S ? document : el).querySelector(sel); }
+  if(S){ S.root.classList.add('pw-ls'); S.caption('Loading pathways…'); }
 
   /* ---------------------------------------------------------------- routing */
   function route(){
@@ -110,15 +117,16 @@
       }).join('') + '</ul></section>';
     }).join('');
 
+    if(S) S.reset();
     app.innerHTML = '<div class="pw">' +
       '<p class="pw-lead">Each pathway comes three ways: <b>put the steps in order</b>, <b>find the missing step</b>, and <b>spot the error</b>. After you answer, the pathway plays step by step on a diagram, with why each step comes where it does.</p>' +
       '<p class="anp-small pw-progress">' + done + ' of ' + total + ' done right · the dots show order, missing step and error</p>' +
       chips + groups + '</div>';
-    app.querySelectorAll('.pw-chip').forEach(function(b){
-      b.addEventListener('click', function(){ listFilter = b.getAttribute('data-f'); showList(); var again = app.querySelector('.pw-chip[data-f="' + listFilter + '"]'); if(again) again.focus(); });
+    Q().querySelectorAll('.pw-chip').forEach(function(b){
+      b.addEventListener('click', function(){ listFilter = b.getAttribute('data-f'); showList(); var again = Q().querySelector('.pw-chip[data-f="' + listFilter + '"]'); if(again) again.focus(); });
     });
-    var sel = app.querySelector('#pw-chsel');
-    if(sel) sel.addEventListener('change', function(){ listFilter = sel.value; showList(); var ns = app.querySelector('#pw-chsel'); if(ns) ns.focus(); });
+    var sel = Q().querySelector('#pw-chsel');
+    if(sel) sel.addEventListener('change', function(){ listFilter = sel.value; showList(); var ns = Q().querySelector('#pw-chsel'); if(ns) ns.focus(); });    if(S) studioList();
   }
 
   /* Open on an item, not the list (docs/tools-upgrade.md, P1-A&P): the
@@ -147,7 +155,7 @@
     return list[0] || null;
   }
   function addPicker(p){
-    var host = app.querySelector('.pw-pickhost'), K = window.AnpToolKit;
+    var host = Q().querySelector('.pw-pickhost'), K = window.AnpToolKit;
     if(!host || !K) return;
     var chapters = [];
     var all = sortedAll();
@@ -166,6 +174,7 @@
   /* ----------------------------------------------------------- pathway view */
   function showPathway(p, variant, focusTab){
     var next = nextOf(p);
+    if(S) S.reset();
     app.innerHTML = '<div class="pw pw-view">' +
       '<div class="pw-pickhost"></div>' +
       '<h2 class="pw-title" tabindex="-1">' + esc(p.title) + '</h2>' +
@@ -182,9 +191,10 @@
       '<p class="pw-next"><a class="btn-outline" href="#' + esc(next.id) + '">Next pathway: ' + esc(next.title) + ' →</a></p>' +
       '</div>';
     addPicker(p);
-    if(p.trace) traceView(p, app.querySelector('.pt'));
-    var tabs = app.querySelectorAll('.pw-tab');
-    var panel = app.querySelector('#pw-panel');
+    if(p.trace) traceView(p, Q().querySelector('.pt'));
+    if(S) studioPathway(p, variant);
+    var tabs = Q().querySelectorAll('.pw-tab');
+    var panel = Q().querySelector('#pw-panel');
     /* A tab switches the drill below in place: the page keeps its scroll
        position and the figure above keeps its Watch / Trace it state. (It
        used to re-route, which redrew the whole page, reset Trace it and
@@ -194,6 +204,7 @@
       tabs.forEach(function(t){ var on = t.getAttribute('data-v') === v; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; if(on && focus) t.focus(); });
       panel.setAttribute('aria-labelledby', 'pw-tab-' + v);
       if(location.hash !== '#' + p.id + '/' + v) history.replaceState(null, '', '#' + p.id + '/' + v);
+      if(S && !p.trace) S.mode(v);
       if(v === 'order') orderVariant(p, panel);
       else if(v === 'missing') missingVariant(p, panel);
       else errorVariant(p, panel);
@@ -209,7 +220,7 @@
       });
     });
     drill(variant, focusTab);
-    if(!focusTab && booted){ var h = app.querySelector('.pw-title'); if(h) h.focus(); }
+    if(!focusTab && booted){ var h = Q().querySelector('.pw-title'); if(h) h.focus(); }
   }
 
   /* ------------------------------------------------------- trace on the figure
@@ -258,6 +269,7 @@
       '<p class="lp-credit pt-credit">' + T.attribution + '</p>';
     var svg = host.querySelector('.pt-svg'), trail = host.querySelector('.pt-trail'), hint = host.querySelector('.pt-hint'), hits = host.querySelector('.pt-hits');
     var token = host.querySelector('.pt-token'), bar = host.querySelector('.pt-bar'), cap = host.querySelector('.pt-cap'), boxes = host.querySelector('.pt-boxes');
+    var figEl = host.querySelector('.pt-fig');   // kept: the studio moves the figure out of host
     var NS = 'http://www.w3.org/2000/svg';
     function mk(name, attrs){ var e = document.createElementNS(NS, name); for(var a in attrs) e.setAttribute(a, attrs[a]); return e; }
     var jump = T.jump || [];
@@ -315,7 +327,7 @@
     }
     function watch(){
       mode = 'watch'; stop(); anim++; boxes.innerHTML = ''; while(hits.firstChild) hits.removeChild(hits.firstChild);
-      host.querySelector('.pt-fig').classList.remove('is-trace');
+      figEl.classList.remove('is-trace');
       bar.innerHTML = '<button type="button" class="btn-press sm pt-play" aria-pressed="false">▶ Play</button>' +
         '<button type="button" class="btn-outline pt-prev" aria-label="Previous step">←</button><button type="button" class="btn-outline pt-next" aria-label="Next step">→</button>' +
         '<span class="pt-n anp-small"></span>';
@@ -337,7 +349,7 @@
     /* ---- Trace it */
     function traceIt(){
       mode = 'trace'; stop(); anim++;
-      host.querySelector('.pt-fig').classList.add('is-trace');
+      figEl.classList.add('is-trace');
       var misses = 0, done = false;
       k = 0; clearTrail(); token.setAttribute('cx', -99); moveTo(0);
       bar.innerHTML = '<span class="pt-score anp-small" aria-live="polite"></span><button type="button" class="btn-outline pt-restart">Start over</button>';
@@ -405,7 +417,7 @@
         if(window.LevlSound && window.LevlSound.answer) try{ window.LevlSound.answer(false); }catch(e){}
       }
       boxes.querySelectorAll('.pt-box').forEach(function(bt){ bt.addEventListener('click', function(e){ e.stopPropagation(); tapped(bt.getAttribute('data-id'), null); }); });
-      host.querySelector('.pt-fig').onclick = function(e){
+      figEl.onclick = function(e){
         if(mode !== 'trace' || e.target.closest('.pt-box')) return;
         var r = svg.getBoundingClientRect(), x = (e.clientX - r.left) * W / r.width, y = (e.clientY - r.top) * H / r.height;
         var best = -1, bd = Infinity;
@@ -422,6 +434,86 @@
     });
     watch();
     tracer = { stop: function(){ stop(); anim++; } };
+  }
+
+  /* ------------------------------------------------------------ Tool Studio
+     A pathway with a figure: Watch | Trace it | Drills. The real figure is
+     the stage for Watch and Trace it (Play and the step arrows in the dock;
+     the step caption is the live caption); Drills puts the drill's steps on
+     the stage with the drill choice as one row of chips in the dock. A
+     pathway without a figure: the three drills are the modes. In a drill the
+     steps (to order, with the gap, or to pick) are the stage, the choices,
+     Check and the result the dock; after an answer the pathway's diagram
+     tops the stage and its player sits in the dock. The pathway picker is
+     one row at the foot of the dock. Why: about this pathway; Details:
+     topic, Next pathway, the figure credit. */
+  var drillParts = [];
+  function studioPathway(p, variant){
+    function $(sel){ return app.querySelector(sel); }
+    S.modeBar(true);
+    var dm = p.trace ? 'drills' : null;
+    var first = p.trace ? (/(^|\/)(order|missing|error)$/.test(location.hash) ? 'drills' : 'watch') : variant;
+    function modeTo(v){
+      if(v === 'watch' || v === 'trace'){ var b = Q().querySelector('.pt-mode[data-m="' + v + '"]'); if(b) b.click(); }
+      else if(v === 'drills'){ if(tracer) tracer.stop(); }
+      else { var t = Q().querySelector('.pw-tab[data-v="' + v + '"]'); if(t) t.click(); }
+    }
+    S.modes({
+      items: p.trace ? [{ value: 'watch', label: 'Watch' }, { value: 'trace', label: 'Trace it' }, { value: 'drills', label: 'Drills' }]
+        : VARIANTS.map(function(v){ return { value: v.key, label: v.key === 'order' ? 'Order' : v.tab }; }),
+      value: first, onChange: modeTo
+    });
+    S.put('stage', $('.pw-title'));
+    if(p.trace){
+      S.put('stage', $('.pt-stage'), { mode: 'watch trace' });
+      S.put('dock', $('.pt-bar'), { mode: 'watch trace' });
+      S.mirror($('.pt-cap'));
+      var tabs = $('.pw-tabs');
+      tabs.classList.add('pw-ls-drills');
+      S.put('dock', tabs, { mode: 'drills' });
+    }
+    S.put('dock', $('#pw-panel'), dm ? { mode: dm } : null);
+    S.put('dock', $('.pw-pickhost'));
+    var ab = $('.kt-about'), w = document.createElement('div');
+    w.className = 'ls-sec';
+    w.innerHTML = '<h3 class="ls-h">About this pathway</h3>' + (ab ? ab.querySelector('.kt-about-b').innerHTML : '') +
+      '<p class="ls-sub">' + (p.trace ? 'Watch follows the pathway on the real figure; Trace it asks you to tap each next stop (scored once a visit). ' : '') +
+      'The drills: put the steps in order, find the missing step, spot the wrong one. After each answer the pathway plays step by step with why each step comes where it does.</p>';
+    if(ab) ab.parentNode.removeChild(ab);
+    S.put('why', w);
+    var d = document.createElement('div');
+    d.className = 'ls-sec pw-ls-det';
+    [$('.pw-meta'), $('.pw-next'), $('.pt-credit')].forEach(function(x){ if(x) d.appendChild(x); });
+    S.put('details', d);
+    var dh = $('.pw-drill-h'); if(dh) dh.parentNode.removeChild(dh);
+    S.mode(first);
+    if(p.trace && first === 'drills' && tracer) tracer.stop();
+    if(!studioPathway.hinted){
+      studioPathway.hinted = true;
+      S.hint(p.trace && first !== 'drills' ? { target: '.ls-dock .pt-play', text: 'Press Play to follow it' } : { target: '.ls-stage .pw-order li, .ls-stage .pw-pick, .ls-dock .pw-choices .anp-opt', text: 'Start here' });
+    }
+  }
+  function studioDrill(p, panel){
+    var dm = p.trace ? 'drills' : null;
+    drillParts.forEach(function(x){ if(x.parentNode) x.parentNode.removeChild(x); });
+    drillParts = [];
+    var list = panel.querySelector('.pw-order, .pw-steps');
+    if(list){ drillParts.push(list); S.put('stage', list, dm ? { mode: dm } : null); }
+    var note = panel.querySelector('.pw-cyclenote');
+    if(note){ drillParts.push(note); S.put('stage', note, { mode: dm, first: false }); S.stage.insertBefore(note, list); }
+    var task = panel.querySelector('.kt-first.pw-task');
+    if(task){ S.caption(task.innerHTML, dm || undefined); task.parentNode.removeChild(task); }
+    // the old diagram from an earlier answer goes with its drill
+    S.stage.querySelectorAll('.pw-fig').forEach(function(f){ f.parentNode.removeChild(f); });
+    S.stage.scrollTop = 0;
+  }
+  function studioList(){
+    S.modeBar(false);
+    var root = app.querySelector('.pw'), lead = root.querySelector('.pw-lead');
+    S.put('stage', root);
+    if(lead) S.put('why', lead);
+    S.caption('Pick a pathway: watch it, trace it, then drill it.');
+    S.stage.scrollTop = 0;
   }
 
   /* Record the first check of each variant on this visit. */
@@ -528,6 +620,7 @@
       });
     }
     paint();
+    if(S) studioDrill(p, panel);
     panel.querySelector('.pw-check').addEventListener('click', function(){
       checked = true;
       var right = cur.filter(function(v, k){ return v === k; }).length;
@@ -539,7 +632,7 @@
         '<p>' + right + ' of ' + n + ' steps in the right position.' + (correct ? '' : ' Each step in the wrong place shows where it belongs.') + '</p>';
       afterAnswer(p, panel, 'order', null);
       panel.querySelector('.pw-actions').innerHTML = '<button type="button" class="btn-outline pw-again">Shuffle and try again</button>' + report(itemId(p, 'order'));
-      panel.querySelector('.pw-again').addEventListener('click', function(){ if(player){ player.stop(); player = null; } orderVariant(p, panel); panel.querySelector('.pw-order button:not([disabled])').focus(); });
+      panel.querySelector('.pw-again').addEventListener('click', function(){ if(player){ player.stop(); player = null; } orderVariant(p, panel); pq(panel, '.pw-order button:not([disabled])').focus(); });
       res.setAttribute('tabindex', '-1'); res.focus();
     });
   }
@@ -559,6 +652,7 @@
       }).join('') + '</div>' +
       '<div class="pw-actions"></div><div class="pw-result" aria-live="polite"></div>';
     var answered = false;
+    if(S) studioDrill(p, panel);
     panel.querySelectorAll('.pw-choices .anp-opt').forEach(function(b){
       b.addEventListener('click', function(){
         if(answered) return;
@@ -570,7 +664,7 @@
           if(c.right) x.classList.add('is-right'); else if(c === pick) x.classList.add('is-wrong');
           x.insertAdjacentHTML('beforeend', '<span class="anp-opt-why">' + html(c.why) + '</span>');
         });
-        var gap = panel.querySelector('.pw-gap');
+        var gap = pq(panel, '.pw-gap');
         gap.classList.add(pick.right ? 'is-right' : 'is-filled');
         gap.querySelector('.pw-gap-text').innerHTML = html(p.steps[at].text);
         var first = score(p, 'missing', pick.right ? 1 : 0, 1);
@@ -595,6 +689,7 @@
       '<div class="pw-result" aria-live="polite"></div>';
     var btns = panel.querySelectorAll('.pw-pick');
     var check = panel.querySelector('.pw-check');
+    if(S) studioDrill(p, panel);
     btns.forEach(function(b){
       b.addEventListener('click', function(){
         if(check.hasAttribute('data-done')) return;
@@ -622,7 +717,7 @@
         '<p><b>The error was step ' + (at + 1) + '.</b> ' + html(e.why) + '</p>';
       afterAnswer(p, panel, 'error', at);
       panel.querySelector('.pw-actions').innerHTML = '<button type="button" class="btn-outline pw-again">Try again</button>' + report(itemId(p, 'error'));
-      panel.querySelector('.pw-again').addEventListener('click', function(){ if(player){ player.stop(); player = null; } errorVariant(p, panel); panel.querySelector('.pw-pick').focus(); });
+      panel.querySelector('.pw-again').addEventListener('click', function(){ if(player){ player.stop(); player = null; } errorVariant(p, panel); pq(panel, '.pw-pick').focus(); });
       res.setAttribute('tabindex', '-1'); res.focus();
     });
   }
@@ -649,6 +744,14 @@
     var svg = diagram(p, mark);
     fig.appendChild(svg);
     player = makePlayer(p, svg, box);
+    if(S){
+      // The diagram is the picture now, over the answered steps.
+      S.put('stage', fig, { mode: p.trace ? 'drills' : null, first: true });
+      var t = S.stage.querySelector('.pw-title'); if(t) S.stage.insertBefore(t, S.stage.firstChild);
+      S.stage.scrollTop = 0;
+      var h3 = box.querySelector('h3'); if(h3) h3.parentNode.removeChild(h3);
+      S.caption('Your answer is marked on the steps under the diagram. Press <b>Play</b> to watch the pathway run.', p.trace ? 'drills' : undefined);
+    }
   }
 
   /* ---------------------------------------------------------------- diagram
@@ -755,7 +858,7 @@
   }
 
   /* ------------------------------------------------------------------ boot */
-  function fail(msg){ app.innerHTML = '<p class="pw-error">' + esc(msg) + '</p>'; }
+  function fail(msg){ if(S){ S.suspend(true); app.classList.remove('kt-staging'); } app.innerHTML = '<p class="pw-error">' + esc(msg) + '</p>'; }
   var src = app.getAttribute('data-src');
   if(!src){ fail('No content file for this tool.'); return; }
   fetch(src).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(d){

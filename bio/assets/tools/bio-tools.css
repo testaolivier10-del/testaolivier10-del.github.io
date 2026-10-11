@@ -1005,3 +1005,187 @@
 .bt-whymore[hidden]{display:none;}
 /* Hardy-Weinberg drift: before More options, only p and N from the Population group */
 .bt-folded .hw-controls>.hw-group:first-child>.bt-ctl:nth-of-type(n+3){display:none !important;}
+
+/* Tool Studio (docs/tools-calm.md; pages.json studio: true): the figure
+   shrinks to fit the stage; the practice problem's text is the caption. */
+.ls-root .sk-fig,.ls-root .ls-prac-stage .bt-stage-slot{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.ls-root .sk-fig svg{width:100%;height:100%;max-width:none;max-height:100%;flex:1;min-height:0;}
+.ls-root .ls-prac-stage{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px;}
+.ls-root .ls-prac-stage .bt-stage-slot > *{width:100%;}
+/* The practice problem's data table sits under the figure, compact, so both fit. */
+.ls-root .ls-prac-stage .bt-stage-slot{min-height:150px;}
+.ls-root .ls-prac-stage .ls-prac-data{flex:none;margin:0;}
+.ls-root .ls-prac-data table{width:100%;margin:0;font-size:var(--ls-s);line-height:1.25;}
+.ls-root .ls-prac-data th,.ls-root .ls-prac-data td{padding:5px 10px;}
+.ls-root .ls-prac-data caption{font-size:var(--ls-s);}
+.ls-root .ls-prac-stage .sk-cap{flex:none;margin:0;font-size:var(--ls-s);color:var(--muted);text-align:center;}
+.ls-root .ls-prac .bt-result{display:none;}
+.ls-root .ls-prac .bt-prob-head{display:contents;}
+.ls-root .ls-prac .bt-solution{display:none;}
+.ls-root .ls-prac{display:flex;flex-direction:column;gap:14px;margin:0;padding:0;background:none;box-shadow:none;}
+.ls-root .sk-say{margin:0;}
+.ls-root .sk-head h2{margin:0 0 6px;font:900 var(--ls-l)/1.2 var(--font-ui);}
+.ls-root .sk-kicker{display:none;}
+.ls-root .sk-steppers{display:flex;flex-wrap:wrap;gap:8px;}
+.ls-root .sk-fig svg{max-width:680px;}
+
+/* Tool Studio: simulators (bio-tools.js studioSim). The figure fills the
+   stage; the dock holds play, a picker and 1 to 2 primary controls. */
+.ls-root [hidden]:not(.ls-sheet){display:none !important;}
+.ls-root .ls-stage-body > .bt-hero,.ls-root .ls-stage-body > .bt-fig,.ls-root .ls-stage-body > .bt-stage-slot,.ls-root .ls-stage-body > .bt-stage{
+  flex:1 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;margin:0;padding:0;border:0;background:none;box-shadow:none;}
+.ls-root .ls-stage-body > .bt-hero > svg,.ls-root .ls-stage-body > .bt-fig > svg,.ls-root .ls-stage-body > .bt-stage-slot > svg,
+.ls-root .ls-stage-body > .bt-hero > .bt-figsvg > svg{flex:1 1 0;min-height:0;width:100%;height:100%;max-width:100%;max-height:100%;}
+.ls-root .ls-stage-body > .bt-hero > :not(svg),.ls-root .ls-stage-body > .bt-fig > :not(svg){flex:none;max-width:100%;}
+.ls-root .ls-stage-body > * + *{margin-top:8px;}
+.ls-root .os-play{flex-wrap:nowrap;gap:12px;}
+.ls-root .os-play .btn-press{flex:none;}
+.ls-root .os-clock{margin:0;font:600 var(--ls-s) var(--font-mono);color:var(--muted);}
+.ls-root .os-pick{gap:8px;}
+.ls-root .os-pick-h,.ls-root .ls-primary .bt-ctl > label,.ls-root .ls-primary legend{font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.ls-root .os-pick-row{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}
+.ls-root .os-pick-row::-webkit-scrollbar{display:none;}
+.ls-root .os-pick-row .bt-btn{flex:none;}
+.ls-root .ls-primary{display:flex;flex-direction:column;gap:14px;margin:0;padding:0;}
+.ls-root .ls-primary .bt-hint{display:none;}
+.ls-root .ls-sim-why .os-why,.ls-root .ls-sim-why .bt-first{display:block;margin:0;max-height:none;-webkit-line-clamp:unset;overflow:visible;}
+.ls-root .ls-sim-det .bt-numbers,.ls-root .ls-sim-det .bt-controls{margin:0;}
+.ls-root .ls-more-set .bt-controls{display:flex;flex-direction:column;gap:14px;}
+.ls-root .os-chal{margin:0;padding:0;background:none;border:0;box-shadow:none;}
+/* Questions: the stimulus on the stage, one question at a time in the dock. */
+.ls-root .ls-q-stage{display:flex;flex-direction:column;gap:10px;min-width:0;}
+.ls-root .ls-q-stage .bio-stim{margin:0;border:0;box-shadow:none;background:none;padding:0;}
+.ls-root .ls-qs .bt-card,.ls-root .ls-qs .bt-frq{margin:0;padding:0;border:0;background:none;box-shadow:none;}
+.ls-root .ls-qs .bio-set{margin:0;padding:0;border:0;}
+.ls-root .ls-qs .bio-q{margin:0;padding:0;border:0;box-shadow:none;background:none;}
+.ls-root .ls-qs .bio-q-stem{font:800 var(--ls-m)/1.4 var(--font-ui);}
+.ls-root .ls-qs .bio-q.ls-step-off + .bt-keep{display:none;}
+.ls-root .ls-qs.is-review .bio-q,.ls-root .ls-qs.is-review .bt-card{display:none;}
+.ls-root .ls-qs .bt-frq-part textarea{width:100%;min-height:140px;}
+.ls-root .ls-qs .bt-frq-prompt{font:800 var(--ls-m)/1.4 var(--font-ui);}
+.ls-root .ls-qs .bio-set .bio-q,.ls-root .ls-qs .bio-qs .bio-q{margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none;}
+.ls-root .bio-stim-k{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;color:var(--muted);}
+.ls-root .ls-q-stage .bio-stim h3,.ls-root .ls-q-stage .bio-stim-h{font:900 var(--ls-l)/1.2 var(--font-ui);margin:0 0 8px;}
+.ls-root .ls-chal-steps{display:flex;flex-direction:column;gap:12px;}
+.ls-root .os-chal .os-ask{margin:0;padding:0;border:0;background:none;}
+.ls-root .os-chal .os-ask legend{font:900 var(--ls-m)/1.35 var(--font-ui);color:var(--ink);padding:0;margin-bottom:4px;}
+.ls-root .os-chal-q{margin:0;}
+.ls-root .ls-qs .bio-set{background:none;box-shadow:none;border-radius:0;}
+.ls-root .ls-dock:has(.ls-chal-steps .ls-step-next:not([hidden])) .os-play{display:none;}
+.ls-root:has(.ez-stage){--ez-protA:#D9F2E6;--ez-protB:#7CC7A6;--ez-protE:#1F7A58;--ez-site:#0E5A3F;--ez-subA:#FFE7A8;--ez-subB:#F0B429;--ez-subE:#A86B00;--ez-inhA:#F6D3E6;--ez-inhB:#D27AAE;--ez-inhE:#8E2F68;--ez-shadow:rgba(20,50,40,.22);}
+:root[data-theme="dark"] .ls-root:has(.ez-stage){--ez-protA:#3E8F6E;--ez-protB:#1D5240;--ez-protE:#8FE0BC;--ez-site:#C8F5DF;--ez-subA:#FFE29A;--ez-subB:#C98A10;--ez-subE:#FFD36B;--ez-inhA:#F1B8D8;--ez-inhB:#9C3F77;--ez-inhE:#F6C4E1;--ez-shadow:rgba(0,0,0,.5);}
+/* checkboxes among the primary controls: one compact row of toggle chips */
+.ls-root .ls-primary .bt-checks{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;border:0;}
+.ls-root .ls-primary .bt-checks > legend{width:100%;margin-bottom:6px;padding:0;}
+.ls-root .ls-primary .bt-check-row{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin:0;padding:0 14px 0 10px;border-radius:999px;
+  background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);font:700 var(--ls-s)/1.2 var(--font-ui);}
+.ls-root .ls-primary .bt-check-row:has(input:checked){background:var(--ctint);box-shadow:inset 0 0 0 2px var(--cink);color:var(--cink);}
+.ls-root .ls-primary .bt-check-row input{width:20px;height:20px;margin:0;flex:none;accent-color:var(--cink);}
+.ls-root .ls-primary .bt-check-row label{min-height:0;padding:0;}
+/* a radio choice in the dock (operon, growth model): one row of chips */
+.ls-root .ls-dock .bt-modes{display:flex;flex-wrap:nowrap;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0;padding:2px 0;border:0;}
+.ls-root .ls-dock .bt-modes::-webkit-scrollbar{display:none;}
+.ls-root .ls-dock .bt-modes > legend{float:left;width:100%;margin:0 0 6px;padding:0;font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.ls-root .ls-dock .bt-modes .bt-radio{flex:none;margin:0;min-height:44px;padding:0 14px 0 10px;border-radius:999px;display:inline-flex;align-items:center;gap:8px;font:700 var(--ls-s)/1.2 var(--font-ui);}
+.ls-root .ls-dock .bt-modes{flex-wrap:wrap;}
+.ls-root .os-play{overflow-x:auto;scrollbar-width:none;}
+.ls-root .os-play::-webkit-scrollbar{display:none;}
+.ls-root .os-play > *,.ls-root .pg-evbtns{flex:none;}
+.ls-root .pg-evbtns{display:inline-flex;gap:8px;}
+.ls-root .pg-evbtns:empty{display:none;}
+/* tree reading: the taxa checklists in the dock as chips */
+.ls-root .ls-dock .tr-checks{display:flex;flex-wrap:wrap;gap:8px;}
+.ls-root .ls-dock .tr-checks .bt-check-row{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin:0;padding:0 14px 0 10px;border-radius:999px;
+  background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);font:700 var(--ls-s)/1.2 var(--font-ui);}
+.ls-root .ls-dock .tr-checks .bt-check-row:has(input:checked){background:var(--ctint);box-shadow:inset 0 0 0 2px var(--cink);color:var(--cink);}
+.ls-root .ls-dock .tr-checks input{width:20px;height:20px;margin:0;accent-color:var(--cink);}
+.ls-root .ls-dock .tr-tips,.ls-root .ls-dock .tb-pieces{margin:0;padding:0;border:0;display:flex;flex-direction:column;gap:12px;}
+.ls-root .ls-dock .tr-tips > legend,.ls-root .ls-dock .tb-pieces > legend{padding:0;margin-bottom:8px;font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.ls-root .ls-dock .tr-tips .bt-buttons,.ls-root .ls-dock .tb-pieces .bt-buttons{display:flex;flex-wrap:wrap;gap:8px;}
+.ls-root .ls-stage-body > .bt-hero,.ls-root .ls-stage-body > .bt-fig,.ls-root .ls-stage-body > .bt-stage-slot{min-height:140px;}
+.ls-root .ls-stage-body > .tr-figwrap{overflow:hidden;}
+.ls-root .ls-stage-body > .tr-figwrap > svg.tr-fig{min-width:0;max-width:100%;max-height:100%;}
+@media (max-width:999.98px){
+  .ls-root .ls-dock .tr-tips .bt-buttons,.ls-root .ls-dock .tb-pieces .bt-buttons{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-16px;padding-right:16px;}
+  .ls-root .ls-dock .tr-tips .bt-buttons > *,.ls-root .ls-dock .tb-pieces .bt-buttons > *{flex:none;}
+}
+.ls-root .tr-chips{flex:none;}
+@media (max-width:999.98px){
+  .ls-root .tr-chips{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:8px;scrollbar-width:none;}
+  .ls-root .tr-chips > *{flex:none;}
+  .ls-root .tr-chips > p,.ls-root .tr-chips > .bt-small{display:none;}
+}
+/* graph builder and design drills in the studio */
+.ls-root .ls-gb-stage{flex:1 1 0;min-height:0;display:flex;flex-direction:column;gap:6px;}
+.ls-root .ls-gb-stage .gb-grid{flex:1 1 0;min-height:0;display:flex;align-items:center;justify-content:center;}
+.ls-root .ls-gb-stage .gb-grid svg{width:100%;height:100%;max-height:100%;}
+.ls-root .ls-gb-stage .gb-note{flex:none;margin:0;text-align:center;}
+.ls-root form.gb-steps{margin:0;padding:0;border:0;background:none;box-shadow:none;}
+.ls-root .gb-step{display:flex;flex-direction:column;gap:12px;}
+.ls-root .gb-step .bt-sec-h{margin:0;font:900 var(--ls-l)/1.2 var(--font-ui);}
+.ls-root .gb-step .gb-row{display:flex;flex-direction:column;gap:12px;}
+.ls-root .gb-step .gb-axisset{margin:0;padding:0;border:0;}
+.ls-root .gb-step .gb-axisset .gb-row{flex-direction:row;gap:8px;}
+.ls-root .gb-step .gb-num input{width:100%;min-height:48px;}
+.ls-root .ls-dr-stage{display:flex;flex-direction:column;gap:10px;}
+.ls-root .ls-dr-dock,.ls-root .ls-dr-steps{display:flex;flex-direction:column;gap:12px;}
+.ls-root .ls-dr-steps .dr-sec h3{margin:0 0 8px;font:900 var(--ls-l)/1.2 var(--font-ui);}
+.ls-root .ls-dr-steps .bt-frq{margin:0;padding:0;border:0;background:none;box-shadow:none;}
+.ls-root form.gb-steps .gb-body{display:block;}
+.ls-root form.gb-steps .gb-stepcol{display:block;width:100%;max-width:none;}
+.ls-root form.gb-steps .gb-step{width:100%;max-width:none;margin:0;padding:0;border:0;}
+.ls-root form.gb-steps .bt-part-choice .bt-radio{width:100%;}
+.ls-root form.gb-steps .gb-step:first-child:not(:has(> .bt-part-choice:not(.ls-step-off))){display:none;}
+.ls-root .ls-sim-why > :empty{display:none;}
+/* Graph builder: the data table stays on the stage under the grid. */
+.ls-root .ls-gb-stage .gb-grid{min-height:150px;}
+.ls-root .ls-gb-table{flex:none;margin:0;}
+.ls-root .ls-gb-table > summary{min-height:44px;font:800 var(--ls-s) var(--font-ui);}
+.ls-root .ls-gb-table .bt-how-body{padding:0;}
+.ls-root .ls-gb-table .table-wrap{max-height:30vh;max-height:30dvh;overflow:auto;}
+.ls-root .ls-gb-table table{width:100%;margin:0;font-size:var(--ls-s);line-height:1.25;}
+.ls-root .ls-gb-table th,.ls-root .ls-gb-table td{padding:4px 10px;}
+@media (max-width:999px){
+  /* The data on top, scrolling in at most half the stage; the grid keeps the rest. */
+  .ls-root .ls-gb-table{order:-1;flex:0 1 auto;min-height:0;overflow:auto;}
+  .ls-root .ls-gb-table[open]{flex:1 1 auto;}
+  .ls-root .ls-gb-stage:has(> .ls-gb-table[open]) > .gb-grid,.ls-root .ls-gb-stage:has(> .ls-gb-table[open]) > .gb-note{display:none;}
+  .ls-root .ls-gb-table .table-wrap{max-height:none;}
+  .ls-root .ls-gb-stage .gb-grid{min-height:120px;}
+}
+.ls-root .ls-gb-table .bt-how-body p{margin:0 0 6px;font-size:var(--ls-s);line-height:1.4;}
+.ls-root .ls-gb-table caption{font-size:var(--ls-s);}
+.ls-root .ls-gb-table .bt-context{display:none;}
+.ls-root .gb-adj button{min-width:44px;}
+/* Tree reading: the taxa are one scrolling row on a phone, so the tree keeps the stage. */
+@media (max-width:999px){
+  .ls-root .ls-dock .tr-checks{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .ls-root .ls-dock .tr-checks::-webkit-scrollbar{display:none;}
+  .ls-root .ls-dock .tr-checks > *{flex:none;}
+}
+/* Population growth: the model choice is two chips in the dock on a phone (the equations are under Why and About). */
+@media (max-width:999px){ .ls-root .ls-dock .pg-eq{display:none;} }
+/* A long mode label (operons' "Going further") wraps instead of running out of the dock. */
+.ls-root .ls-dock .bt-modes .bt-radio{max-width:100%;min-width:0;}
+.ls-root .ls-dock .bt-modes .bt-radio label{white-space:normal;min-width:0;padding-top:6px;padding-bottom:6px;}
+/* Signal transduction on a phone: the cascade fills the stage width (readable labels) and the stage scrolls. */
+@media (max-width:999px){
+  .ls-root .ls-stage-body > .sg-stagefig{display:block;flex:none;}
+  .ls-root .ls-stage-body > .sg-stagefig > svg{width:100%;height:auto;max-height:none;}
+}
+/* Questions on a phone: the stimulus text is compact so its table shows on the stage. */
+@media (max-width:999px){
+  .ls-root .ls-q-stage .bio-stim h3,.ls-root .ls-q-stage .bio-stim-h{font-size:var(--ls-m);}
+  .ls-root .ls-q-stage .bio-stim p{font-size:var(--ls-s);line-height:1.4;margin:0 0 6px;}
+  .ls-root .ls-q-stage .bio-stim table{font-size:var(--ls-s);}
+  .ls-root .ls-q-stage .bio-stim th,.ls-root .ls-q-stage .bio-stim td{padding:5px 8px;}
+}
+/* Questions: each question's own Check is the main action; the stepper's Next (move on or skip) is secondary. */
+.ls-root .ls-qs .ls-step-nav .ls-step-next{background:var(--surface2);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);}
+/* Design drills on a phone: the scenario reads compactly so its data table shows too. */
+@media (max-width:999px){
+  .ls-root .ls-dr-stage .ls-title-l{font-size:var(--ls-m);}
+  .ls-root .ls-dr-stage .bt-context,.ls-root .ls-dr-stage .bt-context p{font-size:var(--ls-s);line-height:1.4;}
+  .ls-root .ls-dr-stage table{font-size:var(--ls-s);}
+  .ls-root .ls-dr-stage th,.ls-root .ls-dr-stage td{padding:5px 8px;}
+}

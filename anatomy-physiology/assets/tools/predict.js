@@ -34,6 +34,13 @@
   var filters = { chapter: '', topic: '', level: 0, length: '8' };
   var session = null;
   var uid = 0, booted = false;
+  /* Tool Studio (docs/tools-calm.md): with the page's studio flag each
+     scenario is drawn in #app and moved into the calm frame (studioScenario,
+     studioStage, studioSetup, studioSummary); lookups go through the
+     document, and a stage's dials through dashOf(box). */
+  var S = window.AnpToolKit && window.AnpToolKit.studio ? window.AnpToolKit.studio({ menu: [{ label: 'End session', icon: 'flag', onClick: function(){ var q = Q().querySelector('.pc-quit'); if(q) q.click(); } }] }) : null;
+  function Q(){ return S ? document : app; }
+  function dashOf(box){ return box._dash || box; }
 
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function core(){ return window.AnpCore || null; }
@@ -55,10 +62,11 @@
   /* ------------------------------------------------------------ load */
   app.classList.add('pc-app');
   app.innerHTML = '<p class="pc-loading anp-hint">Loading scenarios…</p>';
+  if(S){ S.root.classList.add('pc-ls'); S.caption('Loading scenarios…'); }
   fetch(app.getAttribute('data-src') || (base() + 'data/tools/predict.json'))
     .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
     .then(init)
-    .catch(function(){ app.innerHTML = '<p class="anp-hint">The scenarios could not be loaded. Check your connection and reload the page.</p>'; });
+    .catch(function(){ if(S){ S.suspend(true); app.classList.remove('kt-staging'); } app.innerHTML = '<p class="anp-hint">The scenarios could not be loaded. Check your connection and reload the page.</p>'; });
 
   function init(data){
     DATA = data;
@@ -79,7 +87,7 @@
   }
   function kit(){ return window.AnpToolKit || null; }
   function addPicker(s){
-    var K = kit(), host = app.querySelector('.pc-pickhost');
+    var K = kit(), host = Q().querySelector('.pc-pickhost');
     if(!K || !host) return;
     K.picker(host, {
       label: 'Scenario', noun: 'scenarios', current: s.id, allLabel: 'Set up a session: chapter, topic, level',
@@ -87,8 +95,8 @@
         var l = lastScore(x);
         return { id: x.id, title: x.title, meta: 'Level ' + x.level + ' · ' + topicOf(x.topic).title, done: !!(l && l.right === l.total) };
       }) }; }),
-      onPick: function(id){ startSession(DATA.scenarios.filter(function(x){ return x.id === id; })); focusEl(app.querySelector('#pc-title')); },
-      onAll: function(){ renderSetup(); focusEl(app.querySelector('#pc-setup-h')); }
+      onPick: function(id){ startSession(DATA.scenarios.filter(function(x){ return x.id === id; })); focusEl(Q().querySelector('#pc-title')); },
+      onAll: function(){ renderSetup(); focusEl(Q().querySelector('#pc-setup-h')); }
     });
   }
 
@@ -124,6 +132,7 @@
     var chs = chapters(), tps = topicsIn(filters.chapter);
     var stats = core() ? core().toolStats(KIND) : { n: 0, c: 0, by: {} };
     var len = filters.length === 'all' ? list.length : Math.min(list.length, +filters.length);
+    if(S) S.reset();
     app.innerHTML =
       '<section class="pc-panel" aria-labelledby="pc-setup-h">' +
         '<h2 id="pc-setup-h" class="pc-h2">Choose your scenarios</h2>' +
@@ -160,17 +169,17 @@
         }).join('') + '</ul>' : '<p class="anp-hint">No scenarios match. Try a different level or chapter.</p>') +
       '</section>';
 
-    app.querySelector('#pc-chapter').addEventListener('change', function(e){ filters.chapter = e.target.value; filters.topic = ''; renderSetup(); focusEl(app.querySelector('#pc-chapter')); });
-    app.querySelector('#pc-topic').addEventListener('change', function(e){ filters.topic = e.target.value; renderSetup(); focusEl(app.querySelector('#pc-topic')); });
-    app.querySelector('#pc-len').addEventListener('change', function(e){ filters.length = e.target.value; renderSetup(); focusEl(app.querySelector('#pc-len')); });
-    app.querySelectorAll('[data-level]').forEach(function(b){
-      b.addEventListener('click', function(){ filters.level = +b.getAttribute('data-level'); renderSetup(); focusEl(app.querySelector('[data-level="' + filters.level + '"]')); });
+    Q().querySelector('#pc-chapter').addEventListener('change', function(e){ filters.chapter = e.target.value; filters.topic = ''; renderSetup(); focusEl(Q().querySelector('#pc-chapter')); });
+    Q().querySelector('#pc-topic').addEventListener('change', function(e){ filters.topic = e.target.value; renderSetup(); focusEl(Q().querySelector('#pc-topic')); });
+    Q().querySelector('#pc-len').addEventListener('change', function(e){ filters.length = e.target.value; renderSetup(); focusEl(Q().querySelector('#pc-len')); });
+    Q().querySelectorAll('[data-level]').forEach(function(b){
+      b.addEventListener('click', function(){ filters.level = +b.getAttribute('data-level'); renderSetup(); focusEl(Q().querySelector('[data-level="' + filters.level + '"]')); });
     });
-    var start = app.querySelector('#pc-start');
+    var start = Q().querySelector('#pc-start');
     start.addEventListener('click', function(){ startSession(ordered(list).slice(0, len)); });
-    app.querySelectorAll('.pc-pick').forEach(function(b){
+    Q().querySelectorAll('.pc-pick').forEach(function(b){
       b.addEventListener('click', function(){ var id = b.getAttribute('data-id'); startSession(DATA.scenarios.filter(function(s){ return s.id === id; })); });
-    });
+    });    if(S) studioSetup();
   }
 
   /* Easier levels first, shuffled within a level. */
@@ -192,6 +201,7 @@
     var topicLink = t.built ? '<a class="pc-tag" href="' + esc(base() + 'lessons/' + t.id + '.html') + '">' + esc(t.title) + '</a>' : '<span class="pc-tag">' + esc(t.title) + '</span>';
     var res = { id: s.id, title: s.title, level: s.level, right: 0, total: 0, missed: [] };
     session.results[session.i] = res;
+    if(S) S.reset();
     app.innerHTML =
       '<div class="pc-pickhost"></div>' +
       '<div class="pc-progress"><span class="anp-small">Scenario ' + (session.i + 1) + ' of ' + n + '</span>' +
@@ -203,10 +213,11 @@
         '<p class="pc-setup-text">' + esc(s.setup) + '</p>' +
         '<div class="pc-stages"></div>' +
       '</article>';
-    app.querySelector('.pc-quit').addEventListener('click', function(){ if(n > 1 && session.results.some(function(r){ return r && r.total; })) renderSummary(); else renderSetup(); });
+    Q().querySelector('.pc-quit').addEventListener('click', function(){ if(n > 1 && session.results.some(function(r){ return r && r.total; })) renderSummary(); else renderSetup(); });
     addPicker(s);
+    if(S) studioScenario(s);
     renderStage(s, 0, res);
-    if(booted) focusEl(app.querySelector('#pc-title'));
+    if(booted) focusEl(Q().querySelector('#pc-title'));
     booted = true;
   }
 
@@ -234,7 +245,8 @@
       }).join('') + '</div>' +
       '<div class="pc-actions"><button type="button" class="btn-press sm pc-check" disabled>Run it</button><span class="anp-small pc-left" aria-live="polite"></span></div>' +
       '<div class="pc-after" hidden></div>';
-    app.querySelector('.pc-stages').appendChild(box);
+    Q().querySelector('.pc-stages').appendChild(box);
+    var steps = S ? studioStage(s, k, box) : null;
     var check = box.querySelector('.pc-check'), left = box.querySelector('.pc-left');
     function updateLeft(){
       var remaining = st.variables.length - Object.keys(picks).length;
@@ -255,7 +267,14 @@
         updateLeft();
       }
       btns.forEach(function(b, j){
-        b.addEventListener('click', function(){ choose(b, false); });
+        b.addEventListener('click', function(e){
+          choose(b, false);
+          // Studio: a tapped call moves on to the next variable still to call.
+          if(steps && e.detail !== 0 && !box.classList.contains('is-done')){
+            var nx = -1; for(var q = 1; q <= st.variables.length; q++){ var c = (i + q) % st.variables.length; if(!picks[c]){ nx = c; break; } }
+            if(nx > -1) setTimeout(function(){ steps.go(nx); }, 220);
+          }
+        });
         b.addEventListener('keydown', function(e){
           var d = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : (e.key === 'ArrowLeft' || e.key === 'ArrowUp') ? -1 : 0;
           if(!d) return;
@@ -265,12 +284,13 @@
       });
     });
 
-    box.querySelectorAll('.pc-gauge').forEach(function(g){
+    dashOf(box).querySelectorAll('.pc-gauge').forEach(function(g){
       g.addEventListener('click', function(){
         if(box.classList.contains('is-done')) return;
         var i = +g.getAttribute('data-k'), order = ['up', 'down', 'none'];
         var nx = order[(order.indexOf(picks[i]) + 1) % 3];
         var b = box.querySelector('.pc-var[data-k="' + i + '"] [data-v="' + nx + '"]');
+        if(steps) steps.go(i);
         if(b) b.click();
       });
     });
@@ -305,6 +325,7 @@
       check.hidden = true;
       left.textContent = '';
       box.querySelectorAll('.pc-dir button').forEach(function(b){ b.disabled = true; });
+      if(S){ S.caption('Watch the chain play out on the dials.'); if(steps) steps.go(0); }
       runChain(box, st, picks, reveals, function(){ afterRun(); });
     });
     function afterRun(){
@@ -322,15 +343,22 @@
       after.hidden = false;
       if(last && kit()) kit().strip(after, { topic: s.topic, text: s.title + ' ' + s.setup + ' ' + st.variables.map(function(v){ return v.name; }).join(' ') });
       var show = after.querySelector('.pc-show'), tree = after.querySelector('.pc-tree');
+      if(S){
+        // The whole chain is a picture: it opens on the stage, under the dials.
+        S.put('stage', tree);
+        S.caption(right === st.variables.length ? 'Every prediction correct. <b>Show the chain</b> to see how the change spreads.' : 'Step through each call to see why. Missed calls are in your review queue.');
+        S.pills([{ html: right + ' of ' + st.variables.length, tone: right === st.variables.length ? 'good' : 'warn' }], 'left');
+      }
       show.addEventListener('click', function(){
         var open = tree.hidden;
         tree.hidden = !open;
         show.setAttribute('aria-expanded', String(open));
         show.textContent = open ? 'Hide the chain' : 'Show the chain';
+        if(S && open && tree.scrollIntoView) tree.scrollIntoView({ block: 'start', behavior: 'smooth' });
       });
       after.querySelector('.pc-next').addEventListener('click', function(){
         this.disabled = true;
-        if(!last){ renderStage(s, k + 1, res); focusEl(app.querySelectorAll('.pc-stage-h')[k + 1]); return; }
+        if(!last){ renderStage(s, k + 1, res); focusEl(Q().querySelectorAll('.pc-stage-h')[k + 1]); return; }
         if(session.i < session.list.length - 1){ session.i++; renderScenario(); window.scrollTo(0, 0); return; }
         if(session.list.length > 1) renderSummary(); else renderSetup();
         window.scrollTo(0, 0);
@@ -392,7 +420,7 @@
   }
   var ANG = { up: 52, down: -52, none: 0 };
   function setGauge(box, i, dir, ghost, ok){
-    var g = box.querySelector('.pc-gauge[data-k="' + i + '"]');
+    var g = dashOf(box).querySelector('.pc-gauge[data-k="' + i + '"]');
     if(!g) return;
     var d = dirOf(dir);
     if(ghost){
@@ -424,7 +452,7 @@
     return { keys: order, from: from };
   }
   function runChain(box, st, picks, reveals, done){
-    var feed = box.querySelector('.pc-feed'), live = box.querySelector('.pc-feed-live');
+    var feed = dashOf(box).querySelector('.pc-feed'), live = dashOf(box).querySelector('.pc-feed-live');
     var co = chainOrder(st), order = co.keys, seen = {}, resolved = {}, quick = motionOff(), t = 0, gap = 750;
     feed.hidden = false;
     feed.innerHTML = '<li class="pc-f-root"><span class="pc-f-node pc-root">' + esc(st.start) + '</span></li>';
@@ -511,6 +539,84 @@
     return '<p class="pc-tree-cap">How the change reaches every variable. Each arrow means “causes”.</p>' + segment(root, true);
   }
 
+  /* ------------------------------------------------------------ Tool Studio
+     The dials are the stage, under the scenario's name and what changes; the
+     dock calls one variable at a time (the stepper; a tapped call moves on,
+     a tapped dial jumps to its variable) and Run it shows once every call is
+     made. The chain plays on the dials and opens there as one diagram; each
+     variable's verdict and "Why?" stay on its step. The scenario picker is
+     one row at the foot of the dock, the session's place is a pill on the
+     stage and End session is in the menu. Why: how it works and the four
+     levels; Details: the level and topic, the session row, earlier stages. */
+  function studioScenario(s){
+    function $(sel){ return app.querySelector(sel); }
+    var n = session.list.length;
+    S.pills([], 'left');
+    S.pills(n > 1 ? [{ html: 'Scenario ' + (session.i + 1) + ' of ' + n, tone: 'ghost' }] : [], 'right');
+    S.put('stage', [$('#pc-title'), $('.pc-setup-text')]);
+    S.put('dock', $('.pc-pickhost'));
+    var w = document.createElement('div');
+    w.className = 'ls-sec';
+    w.innerHTML = '<h3 class="ls-h">How it works</h3><p>Call each variable: does it increase, decrease or not change? Tap a call under the dial, or tap the dial to cycle it. Then press Run it: the chain of causes plays step by step and each dial swings the way the body really goes.</p>' +
+      '<p class="ls-sub">The steps follow cause to effect, not a clock: two branches can happen at the same time. The dials are qualitative: up, down or unchanged, never a number.</p>' +
+      '<h3 class="ls-h">The four levels</h3><ol class="ls-steps">' + [1, 2, 3, 4].map(function(k){ return '<li>' + esc(LEVEL_NAMES[k]) + '</li>'; }).join('') + '</ol>';
+    S.put('why', w);
+    var d = document.createElement('div');
+    d.className = 'ls-sec pc-ls-det';
+    [$('.pc-meta'), $('.pc-progress')].forEach(function(x){ if(x) d.appendChild(x); });
+    S.put('details', d);
+    S.stage.scrollTop = 0;
+  }
+  function studioStage(s, k, box){
+    var dash = box.querySelector('.pc-dash');
+    box._dash = dash;
+    if(k > 0){
+      // The earlier stage moves to Details with its dials and results.
+      var prev = Q().querySelectorAll('.pc-stage')[k - 1];
+      if(prev){
+        var h = document.createElement('h3');
+        h.className = 'ls-h';
+        h.textContent = 'Earlier: ' + s.stages[k - 1].label;
+        S.put('details', [h].concat(prev._head || []).concat([prev._dash, prev]));
+      }
+    }
+    // A two-stage scenario: the stage's name and its prompt sit over the dials.
+    var sh = box.querySelector('.pc-stage-h:not(.pc-sr)'), pr = box.querySelector('.pc-prompt');
+    if(sh){ box._head = [sh, pr].filter(Boolean); S.put('stage', box._head); }
+    S.put('stage', dash);
+    var first = box.querySelector('.kt-first');
+    if(first) first.parentNode.removeChild(first);
+    S.caption(k === 0 ? 'Call each one: up, down or no change. Then press <b>Run it</b>.' : '<b>' + esc(s.stages[k].label) + '.</b> Call each one again.');
+    S.pills([], 'left');
+    S.put('dock', box, { first: true });
+    var vars = box.querySelector('.pc-vars');
+    // done: a stage stays one variable at a time after Run, each with its
+    // verdict (the stepper needs a done() to observe; see the P1 notes).
+    var steps = window.LevlStudio.stepper(vars, { items: '.pc-var', label: 'Variable' });
+    if(!studioStage.hinted){
+      studioStage.hinted = true;
+      S.hint({ target: '.pc-var .pc-dir button', text: 'Call it: up, down or no change' });
+    }
+    return steps;
+  }
+  function studioSetup(){
+    var panels = app.querySelectorAll('.pc-panel');
+    S.pills([], 'left'); S.pills([], 'right');
+    var intro = panels[0].querySelector('.pc-intro');
+    S.put('stage', panels[2]);
+    S.put('dock', panels[0]);
+    if(intro) S.put('why', intro);
+    S.put('why', panels[1]);
+    S.caption('Set up a session, or pick one scenario.');
+    S.stage.scrollTop = 0;
+  }
+  function studioSummary(right, total){
+    S.pills([], 'left'); S.pills([], 'right');
+    S.put('stage', app.querySelector('.pc-summary'));
+    S.caption('<b>' + right + ' of ' + total + '</b> predictions right this session.');
+    S.stage.scrollTop = 0;
+  }
+
   /* ------------------------------------------------------------ summary */
   function renderSummary(){
     var rs = session.results.filter(function(r){ return r && r.total; });
@@ -522,6 +628,7 @@
     });
     var missedScenarios = rs.filter(function(r){ return r.missed.length; });
     if(core()) core().event('anp-session-finish', { mode: 'predict', answered: total, correct: right });
+    if(S) S.reset();
     app.innerHTML =
       '<section class="pc-panel pc-summary" aria-labelledby="pc-sum-h">' +
         '<h2 id="pc-sum-h" class="pc-h2" tabindex="-1">Session summary</h2>' +
@@ -541,6 +648,7 @@
           startSession(DATA.scenarios.filter(function(s){ return ids.indexOf(s.id) > -1; }));
         } } : { label: 'Choose new scenarios', act: renderSetup }] }) : '') +
       '</section>';
-    focusEl(app.querySelector('#pc-sum-h'));
+    if(S) studioSummary(right, total);
+    focusEl(Q().querySelector('#pc-sum-h'));
   }
 })();

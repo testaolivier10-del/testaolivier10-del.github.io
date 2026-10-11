@@ -835,6 +835,108 @@
   });
   document.getElementById('rpShuffle').addEventListener('click', shuffle);
 
+  /* ---- Tool Studio (docs/tools-calm.md) -----------------------------------
+     With the studio on (registry `studio: true`; tool-shell.js mounts it), the
+     same elements are moved into the calm frame: the flask and the meter on
+     the stage, the mode switch, substrate, reagent and "Solvent and heat" in
+     the dock, the reasons in Why and the numbers in Details. The engine,
+     the listeners and the URL state are the ones above. */
+  var studio = window.OchemStudio || null, ls = null;
+  if(studio){
+    var byId = function(id){ return document.getElementById(id); };
+    var box = function(cls, kids){ var d = document.createElement('div'); d.className = cls; kids.forEach(function(k){ if(k) d.appendChild(k); }); return d; };
+    byId('rpSub').classList.add('ls-scroll'); byId('rpRgt').classList.add('ls-scroll');
+    ['rpSubK', 'rpRgtK'].forEach(function(id){ byId(id).classList.add('ls-lbl'); });
+    var next = document.createElement('button');
+    next.type = 'button'; next.className = 'ls-btn ls-pri rp-ls-next'; next.textContent = 'Next flask'; next.hidden = true;
+    next.addEventListener('click', shuffle);
+    var det = document.createElement('div'); det.id = 'rpDetails'; det.className = 'ls-sec';
+    studio.root.classList.add('rp-ls');
+    studio.add('stage', [byId('rpStage'), box('rp-ls-meter', [root.querySelector('.rp-cols'), byId('rpMeter')])]);
+    studio.add('dock', [next, box('rp-ls-pick', [byId('rpSubK'), byId('rpSub')]), box('rp-ls-pick', [byId('rpRgtK'), byId('rpRgt'), byId('rpRgtNote')]), byId('rpOpts')]);
+    studio.add('why', [byId('rpVerdict'), byId('rpRead'), byId('rpDelta'), byId('rpLive')]);
+    studio.details.insertBefore(det, studio.details.firstChild);
+    // The tool's own mode switch goes to the top of the dock.
+    studio.modes({ el: byId('rpMode'), value: state.mode });
+    root.hidden = true;
+    ls = { next: next, det: det };
+  }
+  var CLS_SHORT = { methyl:'methyl', '1':'1°', '1-hindered':'hindered 1°', '2':'2°', '3':'3°', benzylic:'benzylic' };
+  function upper(s){ s = String(s || ''); return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  /* The studio's view of one render: caption, stage pills, the Why sheet
+     (the four arguments as numbered reasons, the product, the links) and
+     Details (the split, a path table, the reagent). */
+  function studioRender(p, sh, show){
+    studio.mode(state.mode);
+    var mix = mixture(state, p), pred = state.mode === 'predict', none = p.major === 'No reaction';
+    var share = function(m){ return sh && sh[m] ? '≈' + sh[m] + '%' : '—'; };
+    var result = none ? 'no reaction' : (p.minor ? 'mostly ' + p.major + ', some ' + p.minor : p.major);
+    var head = '<b>' + esc(state.sub.name) + ' + ' + esc(state.rgt.name) + '.</b> ';
+    var cls = CLS_SHORT[state.sub.cls] || '';
+    var kind = upper(esc(state.rgt.kind.split(',')[0].toLowerCase()));
+    if(pred && !state.revealed){
+      studio.caption(head + 'Which path wins? Tap the tile you think wins.');
+      studio.pills([{ html: 'Your call', tone: 'ghost' }]);
+    } else if(pred){
+      var right = state.guess === p.major;
+      studio.caption('<b>' + (right ? 'Correct: ' + esc(p.major) + '.' : 'Not quite: it is ' + esc(p.major) + ', not ' + esc(state.guess) + '.') + '</b> ' +
+        kind + (cls ? ' on a ' + cls + ' carbon.' : '.'));
+      studio.pills([{ html: (right ? 'Correct: ' : 'It is ') + esc(p.major), tone: right ? 'good' : 'bad' },
+        state.score.total ? { html: state.score.right + ' of ' + state.score.total + ' right', tone: 'ghost' } : null]);
+    } else {
+      studio.caption(head + kind + (cls ? ' on a ' + cls + ' carbon' : '') + ': ' + esc(none ? result : p.minor ? 'mostly ' + p.major : p.major) + '.');
+      studio.pills(none ? [{ html: 'No reaction', tone: 'ghost' }]
+        : [{ html: (p.minor ? 'Mostly ' : '') + esc(p.major) }, p.minor ? { html: 'some ' + esc(p.minor), tone: 'ghost' } : null]);
+    }
+    studio.pills([{ html: esc(state.solvent.example.split(',')[0]) + ' · ' + (state.heat ? 'heat' : '25 °C'), tone: 'ghost' }], 'right');
+    studio.mode(state.mode);
+    ls.next.hidden = !(pred && state.revealed);
+
+    var elV = document.getElementById('rpVerdict');
+    if(!show){
+      elV.innerHTML = '<h3 class="ls-title-l">Make your call first</h3><p>Read the flask, then tap the tile on the stage you think wins. The reasons appear here after you choose.</p>';
+      ls.det.innerHTML = '<h3 class="ls-title-l">The numbers</h3><p class="ls-sub">The split between the four paths appears after your call.</p>';
+      return;
+    }
+    var title = none ? 'Why nothing happens here' : p.minor ? 'Why ' + p.major + ' wins, with some ' + p.minor : 'Why ' + p.major + ' wins here';
+    var why = mix && mix[2] && mix[2].why && mix[2].why.length ? mix[2].why.join(', and ') : null;
+    var pm = productDrawing(state.sub, state.rgt, p), link = MECH_LINK[p.major];
+    var html = '<h3 class="ls-title-l">' + esc(title) + '</h3>' +
+      '<ol class="ls-steps">' + p.reasons.map(function(r){
+        return '<li><span><span class="ls-k">' + esc(r.factor) + '</span> argues ' + esc(r.leans) + '. ' + esc(r.text) + '</span></li>';
+      }).join('') + '</ol>' +
+      '<p>' + esc(p.verdict) + '</p>' +
+      (mix && mix.length > 1 ? '<p class="tmuted"><b>Roughly what you get.</b> These are competitions, not switches: a real flask gives you both, and the useful question is how lopsided. ' +
+        (why ? 'Here ' + esc(why) + '. ' : '') + 'Treat the split as a band rather than a yield: the actual numbers move with concentration, the exact solvent and how long it was left.</p>' : '');
+    if(p.product && p.product !== '—'){
+      html += '<div class="rp-ls-product">' + (pm && Mol ? Mol.svg(pm, { caption:'', label:'Major product: ' + p.product }) : '') +
+        '<p><span class="ls-sub">Major product' + (p.alkene ? ' · ' + esc(p.alkene) : '') + '</span><br><b class="tformula">' + esc(p.product) + '</b> + Br⁻</p></div>';
+    }
+    if(p.productNote) html += '<p><b>' + (p.product && p.product !== '—' ? 'The product.' : 'Product.') + '</b> ' + esc(p.productNote) + '</p>';
+    html += '<p class="tmuted">' + esc(state.sub.note) + '</p><p class="tmuted">' + esc(state.solvent.note) + '</p>' +
+      '<div class="ls-tags">' + (link ? '<a class="ls-tag" href="arrow-pusher.html?start=' + encodeURIComponent(link.id) + '">' + esc(link.label) + ' in Arrow Pusher &rarr;</a>' : '') +
+      '<button type="button" class="ls-tag" data-ls-act="tutor">Ask the tutor</button></div>' +
+      '<h3 class="ls-h">What the drawing shows</h3>';
+    elV.innerHTML = html;
+
+    var d = '<h3 class="ls-title-l">' + esc(p.major) + (p.minor ? ', some ' + esc(p.minor) : '') + '</h3>';
+    if(mix && mix.length > 1){
+      d += '<div class="rp-mix" role="img" aria-label="Roughly ' + esc(mix[0].path) + ' ' + mix[0].pct + '%, ' + esc(mix[1].path) + ' ' + mix[1].pct + '%">' +
+        mix.slice(0, 2).map(function(m, i){ return '<div class="rp-mix__bar' + (i === 0 ? ' is-major' : '') + '" style="flex:' + m.pct + ';"><span>' + esc(m.path) + '</span><b>' + m.pct + '%</b></div>'; }).join('') + '</div>';
+    }
+    d += '<table class="ls-tbl"><caption class="sr-only">Each path: its share of the product and what argues for it</caption><thead><tr><th scope="col">Path</th><th scope="col">Share</th><th scope="col">Driven by</th></tr></thead><tbody>' +
+      PATHS.map(function(m){
+        var blocked = p.blocked && p.blocked[m];
+        var pulls = (p.reasons || []).filter(function(r){ return r.votes && r.votes[m]; }).map(factorShort);
+        return '<tr' + (m === p.major ? ' class="hl"' : '') + '><th scope="row">' + m + '</th><td>' + (blocked ? 'blocked' : share(m)) + '</td><td>' +
+          esc(blocked || (pulls.length ? pulls.join(', ').toLowerCase() : 'nothing here')) + '</td></tr>';
+      }).join('') + '</tbody></table>' +
+      '<p><b>' + esc(state.rgt.name) + '</b>: ' + esc(state.rgt.kind) + '. <span class="tmuted">Nucleophile ' + state.rgt.nu + ' of 4, base ' + state.rgt.base + ' of 4.</span></p>' +
+      '<p class="tmuted">' + esc(state.sub.name) + ' in ' + esc(state.solvent.name.toLowerCase()) + ' solvent (' + esc(state.solvent.example) + '), ' + (state.heat ? 'heated' : 'room temperature') + '.</p>';
+    ls.det.innerHTML = d;
+  }
+
   /* The meter's corners are the prediction buttons in Predict first, and in
      Explore they say why that pathway is or is not happening. */
   var focusPath = null;
@@ -910,7 +1012,8 @@
       ? (state.revealed ? 'Change anything, or tap <b>Next flask</b>, to try another.'
                         : '<b>Read the flask, then tap the corner of the meter you think wins.</b>')
       : '<b>Pick a substrate and a reagent.</b> The meter shows which mechanism wins.';
-    document.getElementById('rpOptsNow').textContent = '· ' + state.solvent.name + ', ' + (state.heat ? 'heat' : 'room temp');
+    document.getElementById('rpOptsNow').textContent = ls ? state.solvent.name + ', ' + (state.heat ? 'heat' : '25 °C')
+      : '· ' + state.solvent.name + ', ' + (state.heat ? 'heat' : 'room temp');
 
     document.getElementById('rpScore').textContent =
       state.mode === 'predict' && state.score.total ? state.score.right + ' of ' + state.score.total + ' right' : '';
@@ -1015,6 +1118,8 @@
       (state.heat ? 'heated' : 'room temperature') + '. ' +
       (show ? (p.major === 'No reaction' ? 'No reaction.' : 'Result: ' + sayShares(sh, p) + '.') : 'Make your prediction.');
 
+    if(ls){ studioRender(p, sh, show); return; }
+
     /* The verdict. */
     var elV = document.getElementById('rpVerdict');
     if(!show){ elV.innerHTML = ''; return; }
@@ -1112,6 +1217,11 @@
   }
   paintChips();
   render();
+  if(studio){
+    studio.hint(state.mode === 'predict'
+      ? { target: document.getElementById('rpCE2'), text: 'Tap the path you think wins', round: 14 }
+      : { target: document.getElementById('rpRgt').querySelector('.tchip:not(.on)'), text: 'Try another reagent' });
+  }
 
   // A substrate drawn in another tool and sent here.
   if(window.OchemToolState){

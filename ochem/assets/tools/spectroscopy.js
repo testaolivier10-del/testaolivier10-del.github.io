@@ -349,11 +349,16 @@
 
   // Wavenumber runs right to left, the way an IR is always printed.
   function irX(cm){
-    return IR_L + (IR_MAX - cm) / (IR_MAX - IR_MIN) * (IR_W - IR_L - 10);
+    return IR_L + (IR_MAX - cm) / (IR_MAX - IR_MIN) * (IR_W - IR_L - 22);   // room for the "500" label at the right edge
   }
   function irY(t){ return IR_T + (100 - t) / 100 * (IR_H - IR_T - IR_B); }
 
-  function irSpectrum(c, highlight){
+  /* On a phone a 640-wide spectrum shrinks to half size and the plot is a thin
+     strip; the one-spectrum view (fit) draws it on a narrower, taller canvas
+     there instead. An unknown's two stacked spectra keep the wide shape. */
+  function narrowChart(){ return !!(window.matchMedia && window.matchMedia('(max-width: 599.98px)').matches); }
+  function irSpectrum(c, highlight, fit){
+    var nw = !!fit && narrowChart(); IR_W = nw ? 440 : 640; IR_H = nw ? 250 : 220;
     var pts = [];
     for(var cm = IR_MAX; cm >= IR_MIN; cm -= 6){
       var t = 100;
@@ -377,6 +382,7 @@
       var on = highlight === i;
       return '<g class="sp-peak' + (on ? ' is-on' : '') + '" data-peak="' + i + '" tabindex="0" role="button" aria-pressed="' + (on ? 'true' : 'false') + '"' +
         ' aria-label="' + esc(p.cm + ' per centimetre, ' + p.label) + '">' +
+        '<circle cx="' + irX(p.cm).toFixed(1) + '" cy="' + irY(100 - p.d).toFixed(1) + '" r="20" fill="transparent" stroke="none" pointer-events="all"/>' +
         '<circle cx="' + irX(p.cm).toFixed(1) + '" cy="' + irY(100 - p.d).toFixed(1) + '" r="' + (on ? 7 : 5) + '" ' +
           'fill="' + (on ? 'var(--accent)' : 'var(--white)') + '" stroke="var(--accent)" stroke-width="2"/>' +
         '<title>' + esc(p.label) + '</title>' +
@@ -406,7 +412,8 @@
 
   var MULT_LINES = { s:1, d:2, t:3, q:4, quint:5, sext:6, sept:7, oct:8, non:9, m:5 };
 
-  function nmrSpectrum(c, highlight){
+  function nmrSpectrum(c, highlight, fit){
+    var nw = !!fit && narrowChart(); NM_W = nw ? 440 : 640; NM_H = nw ? 280 : 250;
     var base = NM_H - NM_B;
     var maxH = Math.max.apply(null, c.nmr.map(function(s){ return s.h; }));
 
@@ -711,7 +718,7 @@
         : '';
     }
 
-    document.getElementById('spIR').innerHTML = irSpectrum(compound, hlIR);
+    document.getElementById('spIR').innerHTML = irSpectrum(compound, hlIR, true);
     document.getElementById('spIR').querySelectorAll('.sp-peak').forEach(function(g){
       var pick = function(){ hlIR = parseInt(g.getAttribute('data-peak'), 10); renderPredict(); };
       g.addEventListener('click', pick);
@@ -733,7 +740,7 @@
       'numbers, so the picture and the table cannot disagree.</p></details>';
     document.getElementById('spIRBox').addEventListener('toggle', function(e){ spIROpen = e.target.open; });
 
-    document.getElementById('spNMR').innerHTML = nmrSpectrum(compound, hlNMR);
+    document.getElementById('spNMR').innerHTML = nmrSpectrum(compound, hlNMR, true);
     document.getElementById('spNMR').querySelectorAll('.sp-sig').forEach(function(g){
       var pick = function(){
         var i = parseInt(g.getAttribute('data-sig'), 10);
@@ -1048,10 +1055,137 @@
       '</tbody></table></div>' +
       '<button type="button" class="tchip" id="spNext" style="margin-top:12px;">Next unknown</button>';
 
-    document.getElementById('spNext').addEventListener('click', newPuzzle);
+    elV.querySelector('#spNext').addEventListener('click', newPuzzle);
   }
 
   document.getElementById('spNew').addEventListener('click', newPuzzle);
+
+
+  /* ---- Tool Studio (docs/tools-calm.md) -----------------------------------
+     With the studio on (registry `studio: true`), the same elements move into
+     the calm frame. Read a spectrum: one spectrum at a time on the stage (IR,
+     or the NMR beside the structure), chosen in the dock with the compounds;
+     the band or signal you tapped in the caption and in Why; every band and
+     signal as tables, and the degrees of unsaturation, in Details. Identify
+     it: both spectra on the stage with the formula and counts as pills, the
+     four candidates (or Draw it) in the dock, the answer and its peak by peak
+     reasoning in Why, the peak lists in Details. Reference: the band and zone
+     charts on the stage, the formula box in the dock, its working in Why. */
+  var studio = window.OchemStudio || null, ls = null;
+  if(studio){
+    var Kit = window.OchemStudioKit;
+    var $ = function(id){ return document.getElementById(id); };
+    var mk = function(cls, html){ var d = document.createElement('div'); d.className = cls; if(html) d.innerHTML = html; return d; };
+    studio.root.classList.add('sp-ls');
+    var spMode = Kit.seg($('spMode'), 'data-mode');
+    // Which spectrum the stage shows in Read a spectrum.
+    var view = mk('sp-ls-view', '<div class="tseg" role="group" aria-label="Spectrum"><button type="button" data-view="ir" class="on" aria-pressed="true">Infrared</button><button type="button" data-view="nmr" aria-pressed="false">¹H NMR</button></div>');
+    view.addEventListener('click', function(e){
+      var b = e.target.closest('[data-view]'); if(!b) return;
+      view.querySelectorAll('[data-view]').forEach(function(x){ var on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on)); });
+      ls.view = b.getAttribute('data-view');
+      studio.root.classList.toggle('sp-ls-nmr', ls.view === 'nmr');
+      studioPredict();
+    });
+    var spPick = $('spPicker'); spPick.classList.add('ls-scroll');
+    var predStage = mk('sp-ls-pred'); predStage.appendChild($('spIR')); predStage.appendChild(root.querySelector('.sp-link'));
+    var whyPeak = mk('sp-ls-peak');
+    whyPeak.appendChild($('spLinkNote'));
+    var puzStage = mk('sp-ls-puz'), puzDet = mk('ls-sec sp-ls-puzdet');
+    var ansBox = mk('sp-ls-ans'); ansBox.appendChild($('spAnsMode')); ansBox.appendChild($('spPickWrap')); ansBox.appendChild($('spDrawWrap'));
+    var newBtn = $('spNew'); ansBox.appendChild(newBtn);
+    var formula = mk('sp-ls-formula', '<p class="ls-lbl"><label for="spFormula">Degrees of unsaturation from a formula</label></p>');
+    var fIn = $('spFormula'), fTry = fIn.nextSibling;
+    formula.appendChild(fIn); if(fTry) formula.appendChild(fTry);
+    var refStage = mk('sp-ls-ref');
+    refStage.appendChild(mk('ls-pane-k', 'Where things absorb: infrared')); refStage.appendChild($('spRefIR'));
+    refStage.appendChild(mk('ls-pane-k', 'Where things appear: ¹H NMR')); refStage.appendChild($('spRefNMR'));
+    studio.add('stage', predStage, { mode: 'predict' });
+    studio.add('stage', puzStage, { mode: 'puzzle' });
+    studio.add('stage', refStage, { mode: 'ref' });
+    studio.add('dock', [view, spPick, $('spMore')], { mode: 'predict' });
+    studio.add('dock', ansBox, { mode: 'puzzle' });
+    studio.add('dock', formula, { mode: 'ref' });
+    studio.add('why', [$('spPredicted'), whyPeak], { mode: 'predict' });
+    studio.add('why', [$('spPuzzleVerdict'), $('spDrawMsg')], { mode: 'puzzle' });
+    studio.add('why', $('spDouCalc'), { mode: 'ref' });
+    var detFirst = studio.details.firstChild;
+    var nmrNote = $('spNMRNote'), irNote = $('spIRNote'), dou = $('spDouBox');
+    dou.open = true; dou.classList.add('ls-open-h');
+    studio.add('details', [irNote, nmrNote, dou, $('spSend')], { mode: 'predict' });
+    studio.add('details', puzDet, { mode: 'puzzle' });
+    [irNote, nmrNote, dou, $('spSend'), puzDet].forEach(function(el){ studio.details.insertBefore(el, detFirst); });
+    spIROpen = true; spNMROpen = true;
+    root.hidden = true;
+    $('spBuildToggle').addEventListener('click', function(){ Kit.builder($('spBuilder')); });
+    $('spAnsMode').addEventListener('click', function(){ Kit.builder($('spAnswerBuilder')); });
+    // The reference charts pack their labels to their width, known once showing.
+    $('spMode').addEventListener('click', function(){ if(spMode() === 'ref') redrawRef(); });
+    ls = { mode: spMode, view: 'ir', whyPeak: whyPeak, puzStage: puzStage, puzDet: puzDet };
+    var basePredict = renderPredict, basePuzzle = renderPuzzle;
+    renderPredict = function(){ basePredict(); studioPredict(); };
+    renderPuzzle = function(){ basePuzzle(); studioPuzzle(); };
+  }
+
+  /* The axis title shares the tick labels' line once they are enlarged for
+     a phone, so it gets a class the narrow layout can drop (the unit is in
+     the label under the chart). */
+  function markAxisTitle(scope){
+    (scope || document).querySelectorAll('text.sp-axis').forEach(function(t){
+      if(!/^wavenumber/.test(t.textContent)) return;
+      t.classList.add('sp-ls-irt');
+      var chart = t.closest('.sp-chart');
+      if(chart && !(chart.nextElementSibling && chart.nextElementSibling.classList.contains('sp-ls-unit'))){
+        var u = document.createElement('p'); u.className = 'sp-ls-unit'; u.setAttribute('aria-hidden', 'true'); u.textContent = 'wavenumber (cm⁻¹)';
+        chart.parentNode.insertBefore(u, chart.nextSibling);
+      }
+    });
+  }
+  function studioPredict(){
+    if(!ls) return;
+    markAxisTitle(document.getElementById('spIR'));
+    // The tapped band's note is the caption; its sentence is in Why too.
+    var old = ls.whyPeak.querySelector('.sp-ls-irnote'); if(old) old.remove();
+    var irP = document.querySelector('#spIRNote > p.sp-linknote');
+    if(irP){ irP.classList.add('sp-ls-irnote'); ls.whyPeak.insertBefore(irP, ls.whyPeak.firstChild); }
+    ['#spIRBox', '#spNMRBox'].forEach(function(sel){ var d = document.querySelector(sel); if(d){ d.open = true; d.classList.add('ls-open-h'); } });
+    var name = esc(compound.name || 'Your molecule'), cap, right = [];
+    if(ls.view === 'ir'){
+      var pk = hlIR !== null && compound.ir[hlIR];
+      cap = pk ? '<b>' + pk.cm + ' cm⁻¹: ' + esc(pk.label) + '.</b> ' + esc(pk.note)
+               : '<b>The infrared spectrum of ' + name + '.</b> Tap a marker to see what that band means.';
+      if(pk) right.push({ html: pk.cm + ' <small>cm⁻¹</small>', k: 'band', tone: 'readout' });
+    } else {
+      var hs = hlNMR !== null && compound.nmr[hlNMR];
+      cap = hs ? '<b>' + hs.ppm.toFixed(2) + ' ppm, ' + hs.h + 'H, ' + esc(MULT_NAME[hs.mult] || hs.mult) + ': ' + esc(hs.label) + '.</b> ' + esc(hs.note)
+               : '<b>The ¹H NMR of ' + name + '.</b> Each signal is one set of equivalent hydrogens. Tap a signal or an atom.';
+      if(hs) right.push({ html: hs.ppm.toFixed(2) + ' <small>ppm</small>', k: hs.h + 'H', tone: 'readout' });
+    }
+    studio.caption(cap, 'predict');
+    studio.pills([{ html: name + (compound.formula ? ' · ' + esc(compound.formula) : ''), tone: 'ghost' }].concat(compound.predicted ? [{ html: 'Predicted', tone: 'warn' }] : []), 'left', 'predict');
+    studio.pills(right, 'right', 'predict');
+  }
+
+  function studioPuzzle(){
+    if(!ls || !puzzle) return;
+    var data = document.getElementById('spPuzzleData'), c = puzzle.answer;
+    ls.puzStage.innerHTML = ''; ls.puzDet.innerHTML = '<h3 class="ls-h">The data as lists</h3>';
+    data.querySelectorAll('.sp-chart').forEach(function(ch){ ls.puzStage.appendChild(ch); });
+    markAxisTitle(ls.puzStage);
+    var tbl = data.querySelector('.ttable-scroll'); if(tbl) ls.puzDet.appendChild(tbl);
+    var d = degreesOfUnsaturation(parseFormula(c.formula));
+    var left = [{ html: esc(c.formula), tone: 'ghost' }, { html: 'DoU ' + d, tone: 'ghost' }, { html: c.nmr.length + ' NMR signals', tone: 'ghost' }], cap;
+    if(!puzzleGuess){
+      cap = '<b>What is it?</b> Work from the largest clues down: the formula and degrees of unsaturation, the carbonyl region, any O–H or N–H, then the integrations.';
+    } else {
+      var ok = puzzleGuess === c.id;
+      left.unshift({ html: ok ? 'Correct' : 'It was ' + esc(c.name), tone: ok ? 'good' : 'bad' });
+      cap = '<b>' + (ok ? 'Correct: ' : 'It was ') + esc(c.name) + ', ' + esc(c.structure) + '.</b> Why? goes peak by peak.';
+    }
+    studio.caption(cap, 'puzzle');
+    studio.pills(left, 'left', 'puzzle');
+    studio.pills(score.total ? [{ html: score.right + ' of ' + score.total + ' right', tone: 'ghost' }] : [], 'right', 'puzzle');
+  }
 
   /* The compound in the address bar, read before the first render: that
      render writes the URL, and doing it first replaced ?c= with the default
@@ -1207,7 +1341,9 @@
   document.getElementById('spCheckDraw').addEventListener('click', checkDrawn);
 
   if(window.OchemToolState){
-    var q = window.OchemToolState.read();
+    // q0 was read before the first render, which rewrites the address bar
+    // (it used to drop ?mode=puzzle and ?mode=ref before they were read).
+    var q = q0 || window.OchemToolState.read();
 
     // A structure handed over from another tool: open the predictor on it.
     if(q.build && window.OchemToolHandoff){
@@ -1224,6 +1360,11 @@
       var mb = document.getElementById('spMode').querySelector('[data-mode="' + q.mode + '"]');
       if(mb) mb.click();
     }
+  }
+
+  if(ls){
+    studio.caption('Where each kind of bond and hydrogen shows up. <b>Tap a band or a zone</b> to read what it is.', 'ref');
+    if(ls.mode() === 'predict') studio.hint({ target: document.querySelector('#spIR .sp-peak'), text: 'Tap a peak' });
   }
 
   window.OchemSpectroscopy = { COMPOUNDS: COMPOUNDS, NMR_ATOMS: NMR_ATOMS, nmrMap: nmrMap };

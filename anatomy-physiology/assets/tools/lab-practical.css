@@ -71,7 +71,7 @@
 .lp-box{position:absolute;box-sizing:border-box;margin:0;padding:0;border:0;border-radius:4px;background:transparent;color:transparent;font:900 12px var(--font-ui);display:grid;place-items:center;overflow:visible;}
 button.lp-box{cursor:pointer;}
 /* a finger-sized hit area around small boxes */
-button.lp-box::after{content:'';position:absolute;inset:-5px;}
+button.lp-box::after{content:'';position:absolute;inset:-8px -6px;}
 .lp-open{outline:2px solid transparent;}
 .lp-open.is-picked{outline:3px solid var(--lp-pick);background:rgba(18,114,100,0.12);}
 .lp-open:hover,.lp-open:focus-visible{outline:2px solid var(--lp-mask-line);background:rgba(18,114,100,0.10);}
@@ -181,3 +181,42 @@ button.lp-box:focus-visible{outline:3px solid var(--accent);outline-offset:2px;z
   .lp-meta{font-size:12.5px;margin:0 0 6px;}
   .lp-modes + .lp-lead{font-size:13.5px;line-height:1.45;margin:0 0 8px;}
 }
+
+/* ---- Tool Studio (docs/tools-calm.md; lab-practical.js studioPaint) ---- */
+.lp-ls{--lp-mask:#FFF4DC; --lp-mask-line:#0F5F53; --lp-target:#FFD66B; --lp-target-line:#7A4B00;
+  --lp-right:#1F6E3E; --lp-wrong:#A83B2C; --lp-pick:#127264;}
+.lp-ls .ls-stage-body > *{flex:none;}
+.lp-ls .ls-stage-body > .lp-title{margin:0 0 6px;font:900 var(--ls-m)/1.3 var(--font-ui);}
+/* the figure fits the stage: its box is a size container */
+.lp-ls .ls-stage-body > .lp-ls-fig{flex:1 1 0;min-height:200px;display:flex;flex-direction:column;}
+.lp-ls .lp-ls-fig .lp-zoom{flex:none;margin:0 0 4px;}
+.lp-ls .lp-ls-fig .lp-scroll{flex:1;min-height:0;container-type:size;display:flex;align-items:center;justify-content:center;}
+.lp-ls .lp-ls-fig .lp-scroll.is-zoomed{display:block;max-height:none;}
+.lp-ls .lp-ls-fig .lp-scroll:not(.is-zoomed) .lp-fig{width:min(100cqw, 100cqh * var(--lp-ratio, 1));}
+.lp-ls .lp-ls-fig .lp-scroll.is-zoomed .lp-fig{width:calc(var(--lp-z, 1) * min(100cqw, 100cqh * var(--lp-ratio, 1)));}
+.lp-ls .lp-ls-fig figcaption{flex:none;margin:4px 0 0;}
+.lp-ls .lp-ls-fig figcaption .lp-credit{margin:0;font-size:11px;}
+.lp-ls .lp-zbtn{min-width:44px;min-height:44px;}
+.lp-ls .ls-dock .lp-info{margin:0;padding:0;background:none;box-shadow:none;min-height:0;}
+.lp-ls .ls-dock .lp-info .anp-small{margin:0;}
+.lp-ls .ls-dock .lp-ls-scroll{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0;padding:2px;}
+.lp-ls .ls-dock .lp-ls-scroll .lp-st{flex:none;min-height:44px;}
+.lp-ls .ls-dock .lp-answer,.lp-ls .ls-dock .lp-feedback,.lp-ls .ls-dock .lp-follow,.lp-ls .ls-dock .lp-actions,.lp-ls .ls-dock .lp-next,.lp-ls .ls-dock .lp-review{margin:0;}
+.lp-ls .ls-dock .lp-feedback:empty{display:none;}
+.lp-ls .ls-dock .lp-row input{min-height:48px;}
+.lp-ls .ls-dock .lp-link{min-height:44px;}
+.lp-ls .ls-dock .lp-mc{margin:0;}
+.lp-ls .ls-stage h2,.lp-ls .ls-stage h3{margin:14px 0 8px;}
+.lp-ls .ls-stage .lp-ch:first-of-type{margin-top:4px;}
+.lp-ls .lp-ls-det .lp-settings-d{margin:0;}
+.lp-ls .lp-ls-det .lp-meta,.lp-ls .lp-ls-det .lp-progress{margin:0;}
+.lp-ls .ls-stage-body > .lp-run-head{margin:0 0 4px;}
+.lp-ls .ls-stage-body > .lp-timebar{margin:0 0 8px;}
+.lp-ls .ls-stage .lp-setup{margin:0;}
+.lp-ls .ls-stage .lp-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:2px;}
+.lp-ls .ls-stage .lp-chips > *{flex:none;}
+body.ls-on #lp-announce{top:0;left:0;}
+.lp-ls .lp-ls-go{display:flex;flex-direction:column;gap:8px;}
+.lp-ls .lp-ls-est{margin:0;font-size:var(--ls-s);color:var(--muted);}
+.lp-ls .lp-ls-est:empty{display:none;}
+.lp-ls .ls-dock .lp-follow{padding:0;background:none;box-shadow:none;border:0;border-radius:0;}

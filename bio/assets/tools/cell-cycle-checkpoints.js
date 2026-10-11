@@ -369,5 +369,10 @@
     T.questions(app.querySelector('.bt-qs'), data.questions, data.stimuli, SLUG);
     if(data.frq) T.frq(app, data.frq, SLUG);
     if(/^#find/.test(location.hash)) setMode('find');
-  });
+  }, {
+    // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
+    studio: { sim: true, modeLabels: { find: 'Diagnose' }, live: '.cc-gate', why: ['.cc-tip'],
+      hint: { target: '.cc-gatebtn', text: 'Tap a checkpoint on the ring' },
+      pills: function(g){ return [{ k: 'Cells', html: g.ro(0), tone: 'readout' }]; },
+      pillsR: function(g){ return [{ html: 'G1 / S / G2-M ' + g.ro(1), tone: 'ghost' }]; } } });
 })();

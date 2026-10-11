@@ -82,13 +82,29 @@
       ['click', 'submit', 'change'].forEach(function(t){ app.addEventListener(t, function(e){
         var x = e.target;
         if(!x || !x.closest) return;
-        lastHit = { card: x.closest('.bt-frq, .bt-problem, .bt-card'), q: x.closest('.bio-q'), form: x.closest('form') };
+        lastHit = { card: x.closest('.bt-frq, .bt-problem, .bt-card'), q: x.closest('.bio-q'), form: x.closest('form'), target: x };
       }, true); });
       if(data.status === 'placeholder') app.insertAdjacentHTML('beforeend', '<p class="bt-draft"><b>Draft content.</b> These scenarios are waiting for review by a biology teacher. Spot a problem? Use Report a problem.</p>');
+      // Tool Studio (docs/tools-calm.md): pages.json `studio: true` puts
+      // data-studio on #app; the frame is mounted before the tool builds, so
+      // its code can set the caption and the stage pills (ctx.studio). Its
+      // parts move out of #app, so the listeners above go on the studio too.
+      var studio = app.getAttribute('data-studio') && window.LevlStudio ? studioFrame(app, slug, data) : null;
+      var scopes = studio ? [app, studio.root] : [app];
+      if(studio) ['click', 'submit', 'change'].forEach(function(t){ studio.root.addEventListener(t, function(e){
+        var x = e.target;
+        if(!x || !x.closest) return;
+        lastHit = { card: x.closest('.bt-frq, .bt-problem, .bt-card'), q: x.closest('.bio-q'), form: x.closest('form'), target: x };
+      }, true); });
       var st = opts.stage ? stageSlot(opts.stage, { slug: slug, data: data }) : null;
-      if(st){ app.appendChild(st.host); ['input', 'change'].forEach(function(t){ app.addEventListener(t, function(){ st.redraw(); }); }); }
-      fn(app, data, { stage: st ? st.host : null, redraw: st ? st.redraw : function(){} });
+      if(st){ app.appendChild(st.host); scopes.forEach(function(sc){ ['input', 'change'].forEach(function(t){ sc.addEventListener(t, function(){ st.redraw(); }); }); }); }
+      fn(app, data, { stage: st ? st.host : null, redraw: st ? st.redraw : function(){}, studio: studio });
       if(st) st.redraw();
+      if(studio){
+        var so = opts.studio || {};
+        if(so.arrange) so.arrange(app, studio, slug, so); else if(so.sim) studioSim(app, studio, slug, so); else studioArrange(app, studio, slug, so);
+        return;
+      }
       figureFirst(app);
       tidyAbout(app);
       simplify(app, slug);
@@ -325,8 +341,11 @@
   /* The card the student just used (where the strip goes). */
   function usedCard(){
     var app = document.getElementById('app');
-    var c = lastHit.card;
-    return c && app && app.contains(c) ? c : null;
+    var c = lastHit.card, LS = window.LevlStudio && window.LevlStudio.get();
+    if(c && app && (app.contains(c) || (LS && LS.root.contains(c)))) return c;
+    // Tool Studio: a simulator's parts left their card; the strip goes to
+    // the Keep going host in the sheet (studioKeep).
+    return LS && LS.keepHost ? LS.keepHost(lastHit.target) : null;
   }
 
   /* ------------------------------------------------------- controls */
@@ -431,6 +450,8 @@
   function niceMax(v){ if(v <= 0) return 1; var p = Math.pow(10, Math.floor(Math.log10(v))); var ms = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10]; for(var i = 0; i < ms.length; i++) if(v <= ms[i] * p + 1e-9) return ms[i] * p; return 10 * p; }
   function niceStep(span, n){ var raw = span / (n || 5), p = Math.pow(10, Math.floor(Math.log10(raw))); var ms = [1, 2, 2.5, 5, 10]; for(var i = 0; i < ms.length; i++) if(raw <= ms[i] * p + 1e-9) return ms[i] * p; return 10 * p; }
   function wrapTable(inner, label){ return '<div class="table-wrap" tabindex="0" role="region" aria-label="' + esc(label || 'Data table') + '">' + inner + '</div>'; }
+  /* A part label may carry <sup>/<sub>/<i> (allele names such as C<sup>R</sup>); everything else is escaped. */
+  function escLabel(t){ return esc(t).replace(/&lt;(\/?)(sup|sub|i)&gt;/g, '<$1$2>'); }
   function dataTable(cols, rows, caption){
     return wrapTable('<table class="bio-data">' + (caption ? '<caption>' + caption + '</caption>' : '') + '<thead><tr>' + cols.map(function(c){ return '<th scope="col">' + c + '</th>'; }).join('') + '</tr></thead><tbody>' +
       rows.map(function(r){ return '<tr>' + r.map(function(v, i){ return i === 0 ? '<th scope="row">' + v + '</th>' : '<td>' + v + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table>', caption ? String(caption).replace(/<[^>]+>/g, '') : 'Table: ' + cols.join(', ').replace(/<[^>]+>/g, ''));
@@ -539,13 +560,13 @@
   /* A part's answer field (number) or option list (choice). */
   function partHtml(p, pid){
     if(p.type === 'choice'){
-      return '<fieldset class="bt-part bt-part-choice" data-key="' + p.key + '"><legend>' + esc(p.label) + '</legend>' + p.options.map(function(o, i){
+      return '<fieldset class="bt-part bt-part-choice" data-key="' + p.key + '"><legend>' + escLabel(p.label) + '</legend>' + p.options.map(function(o, i){
         var id = pid + '-' + i;
         return '<div class="bt-radio"><input type="radio" name="' + pid + '" id="' + id + '" value="' + i + '"><label for="' + id + '">' + esc(o) + '</label></div>';
       }).join('') + '<div class="bt-part-fb"></div></fieldset>';
     }
     var hint = 'Round to ' + p.d + ' decimal place' + (p.d === 1 ? '' : 's') + '.';
-    return '<div class="bt-part bt-part-num" data-key="' + p.key + '"><label for="' + pid + '">' + esc(p.label) + (p.unit ? ' <span class="bt-unit">(' + esc(p.unit) + ')</span>' : '') + '</label>' +
+    return '<div class="bt-part bt-part-num" data-key="' + p.key + '"><label for="' + pid + '">' + escLabel(p.label) + (p.unit ? ' <span class="bt-unit">(' + esc(p.unit) + ')</span>' : '') + '</label>' +
       '<span class="bt-num-row"><input type="text" id="' + pid + '" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="' + pid + '-h"></span>' +
       '<span class="bt-small" id="' + pid + '-h">' + (p.d === 0 ? 'A whole number.' : hint) + '</span><div class="bt-part-fb"></div></div>';
   }
@@ -649,7 +670,396 @@
     draw(false);
   }
 
+  /* ------------------------------------------------ Tool Studio frame */
+  /* docs/tools-calm.md. studioFrame mounts the calm frame in place of the
+     hero (title, back to the tools hub, the Beta note and Report a problem in
+     the menu). studioArrange then moves what the tool built (never copies it):
+       Explore card (S.card): its figure (.sk-fig, .bt-stage, .bt-hero) to the
+         stage; .bt-controls and .bt-buttons to the dock; its heading, lead,
+         live explanation (.sk-say) and "Try this" goals to Why; readouts and
+         the rest to Details.
+       Practice (skillTool): each new problem's stage slot, text and tables to
+         the stage; the parts one at a time in the dock (LevlStudio.stepper);
+         after Check, the worked solution to Why and the score as a pill; the
+         problem code and the Practice / Worked set choice to Details.
+       Intro, "How this works" and the draft note to About; anything else
+       (the critical value table) to Details.
+     A tool sets the explore caption and pills itself (ctx.studio, or
+     LevlStudio.get()); o (T.mount's opts.studio) may name a hint:
+     { hint: { target: selector, text } }. */
+  function studioFrame(app, slug, data){
+    var main = app.parentNode, h1 = main.querySelector('.bio-hero h1'), lede = main.querySelector('.bio-hero .lede');
+    main.classList.add('ls-host');
+    var s = window.LevlStudio.mount({
+      title: h1 ? h1.textContent : slug, course: 'AP® Biology', back: base() + 'tools.html', home: base(), slug: 'apbio-' + slug,
+      host: app,
+      menu: {
+        copyLink: function(){
+          var code = s.mode() === 'practice' ? s.root.querySelector('.ls-prac-code .bt-code b') : null;
+          return code ? location.origin + location.pathname + '?seed=' + code.textContent : location.origin + location.pathname;
+        },
+        report: { course: 'apbio', id: 'tool:' + slug },
+        note: { label: 'Beta.', html: 'This course has not yet been reviewed by an AP® Biology teacher. <a href="' + base() + '../sources.html">Sources</a>' }
+      }
+    });
+    if(lede){ var p = document.createElement('p'); p.textContent = lede.textContent; s.add('about', p); }
+    return s;
+  }
+  function studioArrange(app, s, slug, o){
+    var kid = function(sel){ return Array.prototype.filter.call(app.children, function(k){ return k.matches(sel); })[0] || null; };
+    var explore = kid('.bt-card'), area = kid('.bt-problem'), modes = kid('.bt-modes');
+    ['.bt-draft', '.bt-intro'].forEach(function(sel){ var x = kid(sel); if(x) s.add('about', x); });
+    var how = kid('details.bt-how');
+    if(how){ how.open = true; s.add('about', how); }
+    if(explore && area){
+      var start = seedFromUrl() || /#practice\b/.test(location.hash) ? 'practice' : 'explore';
+      try{ if(start === 'explore' && localStorage.getItem('apbio_toolmode_' + slug) === 'practice') start = 'practice'; }catch(e){}
+      s.modes({ items: [{ value: 'explore', label: 'Explore' }, { value: 'practice', label: 'Practice' }], value: start,
+        onChange: function(v){ try{ localStorage.setItem('apbio_toolmode_' + slug, v); }catch(e){} event('apbio-tool-mode', { tool: slug, mode: v }); } });
+    }
+    studioKeep(s);
+    if(explore){
+      var only = area ? { mode: 'explore' } : null, parts = [];
+      var take = function(x){ if(parts.indexOf(x) < 0) parts.push(x); return x; };
+      var ex = function(sel){ return explore.querySelector(':scope > ' + sel); };
+      var fig = ex('.sk-fig') || ex('.bt-stage') || ex('.bt-hero');
+      if(fig) s.add('stage', take(fig), only);
+      (o.stageAlso || []).forEach(function(sel){ var x = ex(sel); if(x) s.add('stage', take(x), only); });
+      (o.dock || []).forEach(function(sel){ var x = ex(sel); if(x) s.add('dock', take(x), only); });
+      Array.prototype.slice.call(explore.querySelectorAll(':scope > .bt-controls, :scope > .bt-buttons')).forEach(function(c){
+        if(c.classList.contains('bt-buttons')) c.classList.add('ls-scroll');
+        s.add('dock', take(c), only);
+      });
+      var why = document.createElement('div'); why.className = 'ls-sec';
+      ['.sk-head', '.sk-say', '.sk-goals'].concat(o.why || []).forEach(function(sel){ var x = ex(sel); if(x) why.appendChild(take(x)); });
+      s.add('why', why, only);
+      var det = document.createElement('div'); det.className = 'ls-sec';
+      Array.prototype.slice.call(explore.children).forEach(function(k){ det.appendChild(take(k)); });
+      if(det.children.length) s.add('details', det, only);
+      explore.remove();
+      // The card's own lookups (sec.querySelector) still find its parts.
+      studioVirtual(explore, parts);
+      if(o.caption || o.pills) studioMirror(s, explore, parts, { live: o.live || '.sk-say', caption: o.caption, pills: o.pills, pillsR: o.pillsR }, only && only.mode, null);
+    }
+    if(area) studioPractice(s, area, modes, explore ? { mode: 'practice' } : null);
+    Array.prototype.slice.call(app.children).forEach(function(k){ if(!k.classList.contains('bt-loading')) s.add('details', k); });
+    app.hidden = true;
+    var h = o.hint || (explore ? { target: '.sk-grip', text: 'Drag a bar up or down' } : null);
+    if(h && s.mode() !== 'practice') s.hint(h);
+  }
+  function studioPractice(s, area, modes, only){
+    var stage = document.createElement('div'), why = document.createElement('div'), det = document.createElement('div');
+    stage.className = 'ls-prac-stage'; why.className = 'ls-sec ls-prac-why'; det.className = 'ls-sec ls-prac-code';
+    s.add('stage', stage, only); s.add('why', why, only); s.add('details', det, only);
+    if(modes){ modes.classList.add('ls-prac-set'); s.add('details', modes, only); }
+    area.classList.add('ls-prac');
+    s.add('dock', area, only);
+    var m = only && only.mode;
+    function fresh(){
+      var slot = area.querySelector(':scope > .bt-stage-slot');
+      if(!slot) return;
+      stage.innerHTML = '';
+      why.innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here after you check your answers.</p>';
+      stage.appendChild(slot);
+      // The problem text becomes the caption; its data table goes on the
+      // stage under the figure (the numbers to work from stay in sight);
+      // the text itself and the problem code go to Details.
+      var ctxEl = area.querySelector(':scope > .bt-context');
+      var text = ctxEl ? ctxEl.textContent.replace(/\s+/g, ' ').trim() : '';
+      det.innerHTML = '<h3 class="ls-title-l">This problem</h3>';
+      Array.prototype.slice.call(area.querySelectorAll(':scope > .table-wrap')).forEach(function(x){ x.classList.add('ls-prac-data'); stage.appendChild(x); });
+      Array.prototype.slice.call(area.querySelectorAll(':scope > .bt-context')).forEach(function(x){ det.appendChild(x); });
+      var code = area.querySelector('.bt-code');
+      if(code) det.appendChild(code);
+      var h2 = area.querySelector('.bt-prob-head h2');
+      if(h2) h2.classList.add('sr-only');
+      var form = area.querySelector('form.bt-parts');
+      if(form) window.LevlStudio.stepper(form, { items: ':scope > .bt-part', submit: ':scope > .bt-actions',
+        done: function(){ return !!form.querySelector('.bt-part.is-right, .bt-part.is-wrong'); } });
+      s.caption(esc(text), m); s.pills([], 'left', m);
+    }
+    function checked(){
+      var sol = area.querySelector(':scope > .bt-solution'), res = area.querySelector('.bt-result'), t = res ? res.textContent : '';
+      if(!sol || sol.hidden){ if(t) s.caption(esc(t), m); return; }
+      why.innerHTML = '';
+      why.appendChild(sol);
+      var mm = /(\d+) of (\d+)/.exec(t);
+      if(mm) s.pills([{ html: mm[1] + ' of ' + mm[2] + ' right', tone: mm[1] === mm[2] ? 'good' : 'warn' }], 'left', m);
+      s.caption((mm ? '<b>' + mm[1] + ' of ' + mm[2] + ' parts right.</b> ' : '') + 'The worked solution is under Why.', m);
+      var nx = area.querySelector('.bt-next .btn-press');
+      if(nx) nx.classList.add('ls-btn', 'ls-pri');
+    }
+    if(window.MutationObserver) new MutationObserver(fresh).observe(area, { childList: true });
+    area.addEventListener('submit', function(){ setTimeout(checked, 0); });
+    fresh();
+  }
+
+  /* ------------------------------------------ Tool Studio: simulators */
+  /* studioSim(app, s, slug, o): T.mount(slug, fn, { studio: { sim: true, ... } }).
+     A simulator card's parts move into the studio; the card stays (hidden)
+     and its querySelector / querySelectorAll also search the moved parts
+     (studioVirtual), so the tool's card.querySelector(...) keeps working.
+       Modes: the tool's own .os-modes buttons ([data-m] / [data-q]) become
+         the studio's switch (o.modeLabels shortens labels); picking one
+         clicks the tool's button, and a switch the tool makes itself is
+         followed. "Questions" (the stimulus questions and the mini FRQ) is
+         added when the page has them.
+       Each card (o.cards[i] for a page with several, else o): stage (the
+         figure: o.stage selectors, default the .bt-hero), dock (o.dock
+         selectors, default .os-chal, .os-play, then the first n controls
+         of .bt-controls[data-primary=n], o.primary overrides n), Why (the
+         heading, .bt-first, the live explanation o.live (default .os-why),
+         o.why), Details (readouts, equations, graphs, trials, data tables,
+         then "More settings": the other controls).
+       Caption and pills: o.caption(g) / o.pills(g) -> html / pill list, run
+         after every change; g.ro(i) is readout row i's value, g.live the
+         live explanation's text, g.$ the virtual card's querySelector. The
+         default caption is the live explanation's first sentence.
+       Questions: the stimulus (and the FRQ's heading and intro) on the
+         stage, one question or FRQ part at a time in the dock. */
+  function firstSentence(t){
+    t = String(t || '').replace(/\s+/g, ' ').trim();
+    var m = /^(.+?[.!?])(\s|$)/.exec(t);
+    return m ? m[1] : t;
+  }
+  function studioVirtual(el, parts){
+    var P = Element.prototype.querySelector, PA = Element.prototype.querySelectorAll;
+    function list(){ return (typeof parts === 'function' ? parts() : parts).filter(function(p){ return p.isConnected && !el.contains(p); }); }
+    el.querySelector = function(sel){
+      var r = P.call(el, sel);
+      if(r) return r;
+      list().some(function(p){ r = p.matches(sel) ? p : P.call(p, sel); return !!r; });
+      return r;
+    };
+    el.querySelectorAll = function(sel){
+      var out = Array.prototype.slice.call(PA.call(el, sel));
+      list().forEach(function(p){ if(p.matches(sel)) out.push(p); Array.prototype.push.apply(out, Array.prototype.slice.call(PA.call(p, sel))); });
+      return out.filter(function(x, i){ return out.indexOf(x) === i; });
+    };
+    return el;
+  }
+  function studioKeep(s){
+    var hosts = {};
+    s.keepHost = function(){
+      var m = s.mode() || '*';
+      if(!hosts[m]){
+        hosts[m] = document.createElement('div');
+        hosts[m].className = 'ls-sec ls-keephost';
+        s.add('why', hosts[m], s.mode() ? { mode: m } : null);
+      }
+      return hosts[m];
+    };
+  }
+  function studioSim(app, s, slug, o){
+    var kids = Array.prototype.slice.call(app.children);
+    var qcard = kids.filter(function(k){ return k.classList.contains('bt-card') && k.querySelector('.bt-qs'); })[0] || null;
+    var frq = kids.filter(function(k){ return k.classList.contains('bt-frq'); })[0] || null;
+    var cards = kids.filter(function(k){ return k.classList.contains('bt-card') && k !== qcard; });
+    ['.bt-draft', '.bt-intro'].forEach(function(sel){ kids.forEach(function(k){ if(k.matches(sel)) s.add('about', k); }); });
+    kids.forEach(function(k){ if(k.matches('details.bt-how')){ k.open = true; s.add('about', k); } });
+    studioKeep(s);
+    var cfgs = o.cards || [o];
+    // The modes: one per card (o.cards[i].mode / label), else the tool's own.
+    var simModes = [], P = Element.prototype.querySelector, PA = Element.prototype.querySelectorAll;
+    var om = cards[0] ? P.call(cards[0], '.os-modes') : null;
+    if(o.cards) cfgs.forEach(function(c, i){ simModes.push({ value: c.mode || 'card' + i, label: c.label, card: i }); });
+    else if(om) Array.prototype.forEach.call(PA.call(om, '[data-m], [data-q]'), function(b){
+      var v = b.getAttribute('data-m') || b.getAttribute('data-q');
+      simModes.push({ value: v, label: (o.modeLabels || {})[v] || b.textContent.trim(), btn: b });
+    });
+    if(!simModes.length) simModes.push({ value: 'explore', label: 'Explore' });
+    var hasQ = !!(qcard || frq), many = simModes.length > 1 || hasQ;
+    var all = simModes.map(function(m){ return m.value; }).join(' ');
+    var items = simModes.map(function(m){ return { value: m.value, label: m.label }; });
+    if(hasQ) items.push({ value: 'questions', label: o.questionsLabel || 'Questions' });
+    var start = simModes[0].value;
+    simModes.forEach(function(m){ if(m.btn && m.btn.getAttribute('aria-pressed') === 'true') start = m.value; });
+    if(hasQ && /^#(questions|frq)\b/.test(location.hash)) start = 'questions';
+    if(many) s.modes({ items: items, value: start, onChange: function(v){
+      var m = simModes.filter(function(x){ return x.value === v; })[0];
+      if(m && m.btn && m.btn.getAttribute('aria-pressed') !== 'true') m.btn.click();
+      if(o.onMode) o.onMode(v);
+      event('apbio-tool-mode', { tool: slug, mode: v });
+    } });
+    // A switch the tool makes itself (a deep link, "Next challenge") is followed.
+    if(window.MutationObserver) simModes.forEach(function(m){
+      if(!m.btn) return;
+      new MutationObserver(function(){
+        if(m.btn.getAttribute('aria-pressed') === 'true' && s.mode() !== m.value && s.mode() !== 'questions') s.mode(m.value);
+      }).observe(m.btn, { attributes: true, attributeFilter: ['aria-pressed'] });
+    });
+    cards.forEach(function(card, i){
+      var cfg = cfgs[i] || {};
+      var only = many ? { mode: o.cards ? simModes[i].value : all } : null;
+      studioCard(s, card, cfg, only, i === 0 ? om : null);
+    });
+    if(hasQ) studioQuestions(s, qcard, frq, many ? { mode: 'questions' } : null, o);
+    // Whatever is left (a second card's extras) goes to Details.
+    Array.prototype.slice.call(app.children).forEach(function(k){ if(cards.indexOf(k) < 0 && !k.classList.contains('bt-loading')) s.add('details', k); });
+    app.hidden = true;
+    s.mode(start);
+    var h = o.hint || (cfgs[0] && cfgs[0].hint);
+    if(h && s.mode() !== 'questions') s.hint(h);
+  }
+  function studioCard(s, card, cfg, only, om){
+    var parts = [], P = Element.prototype.querySelector, PA = Element.prototype.querySelectorAll;
+    var find = function(sel){ return sel ? P.call(card, sel) : null; };
+    var m = only && only.mode;
+    // Pick everything first, then move (moving changes what :scope finds).
+    var stageEls = [], dockEls = [], whyEls = [];
+    var fig = null;
+    (cfg.stage || ['.bt-hero', '.bt-stage-slot', '.bt-fig', '.bt-stage']).some(function(sel){ fig = find(sel); return !!fig; });
+    if(fig) stageEls.push(fig);
+    (cfg.stageAlso || []).forEach(function(sel){ var x = find(sel); if(x && stageEls.indexOf(x) < 0) stageEls.push(x); });
+    var ctl = find('.bt-controls[data-primary]') || (cfg.primary != null ? find('.bt-controls') : null);
+    var n = cfg.primary != null ? cfg.primary : ctl ? +ctl.getAttribute('data-primary') || 0 : 0;
+    var prim = null;
+    if(ctl && (n > 0 || cfg.primarySel)){ prim = document.createElement('div'); prim.className = 'bt-controls ls-primary'; }
+    (cfg.dock || ['.os-chal', '.os-play', '@primary']).forEach(function(sel){
+      if(sel === '@primary'){ if(prim) dockEls.push(prim); return; }
+      var x = find(sel); if(x && dockEls.indexOf(x) < 0 && stageEls.indexOf(x) < 0) dockEls.push(x);
+    });
+    var h2 = find(':scope > h2'), live = find(cfg.live || '.os-why'), first = find('.bt-first');
+    [h2, find('.bt-first')].concat((cfg.why || []).map(find)).concat([live]).forEach(function(x){ if(x && whyEls.indexOf(x) < 0 && dockEls.indexOf(x) < 0) whyEls.push(x); });
+    if(h2){ h2.classList.add('ls-title-l'); }
+    function take(x){ if(parts.indexOf(x) < 0) parts.push(x); return x; }
+    studioVirtual(card, parts);
+    stageEls.forEach(function(x){ s.add('stage', take(x), only); });
+    // The primary controls: the first n of the tool's .bt-controls. A tool
+    // that rebuilds its controls (ctl.innerHTML = '') gets them re-split.
+    function split(){
+      if(!prim) return;
+      prim.innerHTML = '';
+      (cfg.primarySel ? Array.prototype.slice.call(PA.call(ctl, cfg.primarySel)) : Array.prototype.slice.call(ctl.children, 0, n)).forEach(function(c){ prim.appendChild(take(c)); });
+    }
+    split();
+    if(prim){
+      studioVirtual(ctl, function(){ return Array.prototype.slice.call(prim.children); });
+      if(window.MutationObserver){
+        var mo = new MutationObserver(function(recs){
+          var cleared = recs.some(function(r){ return r.removedNodes.length && !r.addedNodes.length; });
+          if(cleared || ctl.children.length && !prim.children.length){ split(); mo.takeRecords(); }
+        });
+        mo.observe(ctl, { childList: true });
+      }
+    }
+    dockEls.forEach(function(x){ if(x.classList.contains('bt-buttons')) x.classList.add('ls-scroll'); s.add('dock', take(x), only); if(x.classList.contains('os-chal')) chalSteps(x); });
+    var why = document.createElement('div'); why.className = 'ls-sec ls-sim-why';
+    whyEls.forEach(function(x){ why.appendChild(take(x)); });
+    s.add('why', why, only);
+    // Details: what is left of the card, then the other controls.
+    var det = document.createElement('div'); det.className = 'ls-sec ls-sim-det';
+    if(om){
+      Array.prototype.forEach.call(PA.call(om, 'a[href]'), function(a){ a.classList.add('ls-linkrow'); det.appendChild(take(a)); });
+      om.hidden = true;
+    }
+    Array.prototype.slice.call(card.children).forEach(function(k){ if(k !== ctl) det.appendChild(take(k)); });
+    if(ctl){
+      ctl.hidden = false;
+      var mh = document.createElement('h3'); mh.className = 'ls-h'; mh.textContent = cfg.moreTitle || 'More settings';
+      var mw = document.createElement('div'); mw.className = 'ls-sec ls-more-set';
+      mw.appendChild(mh); mw.appendChild(take(ctl));
+      det.appendChild(mw);
+    }
+    s.add('details', det, only);
+    card.hidden = true;
+    studioMirror(s, card, parts, cfg, m, first);
+  }
+  /* Caption and pills from a card's live parts, repainted after every
+     change in them (a frame later): cfg.caption(g) / cfg.pills(g) /
+     cfg.pillsR(g), g = { ro(i), live, $(sel) }; default caption: the live
+     explanation's (cfg.live, default .os-why) first sentence, else the
+     card's first-use line. m: the studio modes (space separated) they
+     belong to. */
+  function studioMirror(s, card, parts, cfg, m, first){
+    var g = { $: function(sel){ return card.querySelector(sel); } };
+    g.ro = function(i){ var r = card.querySelectorAll('.bt-readout > div')[i], d = r && r.querySelector('dd'); return d ? d.textContent.replace(/\s+/g, ' ').trim() : ''; };
+    var queued = false;
+    function paint(){
+      queued = false;
+      var live = card.querySelector(cfg.live || '.os-why');
+      g.live = live ? live.textContent.replace(/\s+/g, ' ').trim() : '';
+      var cap = cfg.caption ? cfg.caption(g) : g.live ? esc(firstSentence(g.live)) : first ? esc(first.textContent) : null;
+      var pl = cfg.pills ? cfg.pills(g) || [] : null, pr = cfg.pillsR ? cfg.pillsR(g) || [] : null;
+      // The tool hides its readouts while a prediction is open: so do the pills.
+      var roEl = card.querySelector('.bt-readout');
+      if(roEl && roEl.hidden && !cfg.pillsAlways){ if(pl) pl = []; if(pr) pr = []; }
+      // Caption and pills are kept per studio mode: set them for each of this card's modes.
+      (m ? m.split(' ') : [null]).forEach(function(mm){
+        if(cap != null) s.caption(cap, mm);
+        if(pl) s.pills(pl, 'left', mm);
+        if(pr) s.pills(pr, 'right', mm);
+      });
+    }
+    function queue(){ if(!queued){ queued = true; requestAnimationFrame(paint); } }
+    if(window.MutationObserver){
+      var watch = new MutationObserver(queue);
+      parts.forEach(function(x){ watch.observe(x, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['hidden', 'aria-pressed'] }); });
+    }
+    paint();
+    return queue;
+  }
+  /* A challenge box the tool rewrites (innerHTML) for every new challenge:
+     two or more questions in it become one step at a time; its own Check
+     (.bt-actions) shows on the last step. Each new challenge gets a fresh
+     wrapper and stepper, so an old stepper never touches the new one. */
+  function chalSteps(box){
+    function wrap(){
+      if(box.querySelector('.ls-chal-steps')) return;
+      var fs = Array.prototype.filter.call(box.children, function(k){ return k.tagName === 'FIELDSET'; });
+      if(fs.length < 2) return;
+      var w = document.createElement('div'); w.className = 'ls-chal-steps';
+      box.insertBefore(w, fs[0]);
+      fs.forEach(function(f){ w.appendChild(f); });
+      var act = w.nextElementSibling && w.nextElementSibling.classList.contains('bt-actions') ? w.nextElementSibling : null;
+      if(act) w.appendChild(act);
+      window.LevlStudio.stepper(w, { items: ':scope > fieldset', submit: act ? ':scope > .bt-actions' : null, label: 'Part',
+        done: function(){ return !!w.querySelector('input:disabled'); } });
+    }
+    if(window.MutationObserver) new MutationObserver(wrap).observe(box, { childList: true });
+    wrap();
+  }
+  function studioQuestions(s, qcard, frq, only, o){
+    var stage = document.createElement('div'), dock = document.createElement('div');
+    stage.className = 'ls-q-stage'; dock.className = 'ls-qs';
+    s.add('stage', stage, only);
+    var stims = qcard ? Array.prototype.slice.call(qcard.querySelectorAll('.bio-stim')) : [];
+    stims.forEach(function(x){ stage.appendChild(x); });
+    var head = null;
+    if(qcard){ var h = qcard.querySelector('h2'); if(h) h.classList.add('sr-only'); dock.appendChild(qcard); }
+    if(frq){
+      head = document.createElement('div'); head.className = 'ls-frq-head';
+      var fh = frq.querySelector(':scope > h2'), fi = frq.querySelector(':scope > .bt-frq-intro');
+      if(fh){ fh.classList.add('ls-title-l'); head.appendChild(fh); }
+      if(fi) head.appendChild(fi);
+      stage.appendChild(head);
+      dock.appendChild(frq);
+    }
+    s.add('dock', dock, only);
+    var m = only && only.mode;
+    var st = window.LevlStudio.stepper(dock, { items: '.bio-q, .bt-frq-part', submit: '.bt-frq > .bt-actions, .bt-frq > .bt-frq-total', label: 'Question',
+      done: function(){ return !!(frq && frq.querySelector('.bt-rubric')); } });
+    var last = null;
+    function sync(){
+      var cur = Array.prototype.filter.call(dock.querySelectorAll('.bio-q, .bt-frq-part'), function(x){ return !x.classList.contains('ls-step-off'); });
+      var review = dock.classList.contains('is-review');
+      var inFrq = review || (cur[0] && frq && frq.contains(cur[0]));
+      var key = review ? 'r' : inFrq ? 'f' : 'q';
+      if(key === last) return;
+      last = key;
+      stims.forEach(function(x){ x.hidden = !!inFrq; });
+      if(head) head.hidden = !inFrq;
+      s.caption(review ? 'Tick each rubric point your answer earns, then save your score.'
+        : inFrq ? 'Write your answer in your own words; the rubric and a sample answer come after the last part.'
+        : 'Answer from the data shown. Each answer is checked right away.', m);
+    }
+    if(window.MutationObserver) new MutationObserver(function(){ requestAnimationFrame(sync); }).observe(dock, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    sync();
+    return st;
+  }
+
   window.ApBioTools = {
+    studioVirtual: studioVirtual, studioKeep: studioKeep, firstSentence: firstSentence,
     esc: esc, F: F, nid: nid, mount: mount, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, barPath: barPath, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,
     record: record, report: report, event: event, questions: questions, frq: frq, skillTool: skillTool,

@@ -33,6 +33,10 @@
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
+<!-- tool-studio:start -->
+<link rel="stylesheet" href="assets/nremt-studio.css">
+<script src="assets/nremt-studio.js" defer></script>
+<!-- tool-studio:end -->
 <style>
   .mnemonics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(28px,4vw,44px);}
   .card{break-inside:avoid;}
@@ -409,5 +413,13 @@
 </div>
 <script src="assets/nav.js" defer></script>
 <script src="assets/mnemonic-check.js" defer></script>
+<script>
+/* Reference page (docs/tools-calm.md): the slim top bar and calm type over
+   the page's own content (assets/nremt-studio.js NremtStudio.slim); the
+   self-check on the cards stays where it is, as the page's one tool. */
+document.addEventListener('DOMContentLoaded', function(){
+  if(window.NremtStudio) window.NremtStudio.slim({ title: 'Mnemonics', back: 'study-notes.html', backLabel: 'Back to Learn' });
+});
+</script>
 </body>
 </html>

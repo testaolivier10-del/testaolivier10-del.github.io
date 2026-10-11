@@ -55,7 +55,7 @@
 @media (prefers-reduced-motion: reduce){.pw-order li{transition:none;}}
 .pw-order .anp-order-text{font-weight:650;line-height:1.45;padding-top:2px;}
 .pw-move{display:flex;flex-direction:column;gap:4px;flex:0 0 auto;}
-.pw-order button{min-width:42px;min-height:42px;}
+.pw-order button{min-width:44px;min-height:44px;}
 .pw-order button:disabled{opacity:.35;cursor:default;}
 .pw-order button:focus-visible,.pw-pick:focus-visible,.pw-chip:focus-visible,.pw-tab:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .pw-pos{display:block;margin-top:4px;font:900 12.5px var(--font-ui);}
@@ -173,3 +173,50 @@
 .pt-credit a{color:inherit;}
 .pw-drill-h{margin:6px 0 8px !important;font-size:17px;}
 @media (max-width:560px){ .pt{padding:12px 10px;margin-left:-6px;margin-right:-6px;} }
+
+/* ---- Tool Studio (docs/tools-calm.md; pathways.js studioPathway) ---- */
+.pw-ls .ls-stage-body > *{flex:none;}
+.pw-ls .ls-stage-body > .pw-title{margin:0 0 6px !important;font:900 var(--ls-m)/1.3 var(--font-ui);}
+/* the figure fits the stage: the stage body is a size container for it */
+.pw-ls .ls-stage-body > .pt-stage{flex:1 1 0;min-height:180px;container-type:size;display:flex;align-items:center;justify-content:center;border-radius:12px;}
+.pw-ls .pt-stage .pt-fig{width:min(100cqw, 100cqh * var(--pt-r, 1));}
+.pw-ls .ls-dock .pt-bar{margin:0;}
+.pw-ls .ls-dock .pt-bar .btn-press,.pw-ls .ls-dock .pt-bar .btn-outline{min-height:44px;}
+.pw-ls .ls-dock .pt-bar .pt-play{flex:1;}
+.pw-ls .ls-dock .pt-n:empty{display:none;}
+.pw-ls .ls-caption .pt-why{color:var(--muted);font-weight:600;}
+.pw-ls .ls-caption .kt-first{padding:0;color:inherit;font:inherit;}
+.pw-ls .ls-caption .kt-first::before{display:none;}
+.pw-ls .ls-caption .pw-verdict{margin:0 0 4px;}
+.pw-ls .ls-caption p{margin:0;}
+.pw-ls .ls-dock .pw-ls-drills:not(.ls-off){display:flex !important;flex-wrap:nowrap;gap:8px;margin:0;padding:2px;border:0 !important;background:none;box-shadow:none;overflow-x:auto;scrollbar-width:none;}
+.pw-ls .ls-dock .pw-ls-drills > .pw-tab{flex:none;min-height:44px;padding:0 16px !important;border-radius:999px !important;background:var(--surface2) !important;box-shadow:inset 0 0 0 1.5px var(--line) !important;color:var(--ink) !important;font:700 var(--ls-s) var(--font-ui) !important;}
+.pw-ls .ls-dock .pw-ls-drills > .pw-tab[aria-selected="true"]{background:var(--cink) !important;color:var(--white) !important;box-shadow:none !important;}
+.pw-ls .ls-dock .pw-panel{margin:0;display:flex;flex-direction:column;gap:12px;}
+.pw-ls .ls-dock .pw-panel > :empty{display:none;}
+.pw-ls .ls-dock .pw-task{margin:0;}
+.pw-ls .ls-dock .pw-actions{margin:0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.pw-ls .ls-dock .pw-actions .pw-check{flex:1;}
+.pw-ls .ls-dock .pw-result{margin:0;}
+.pw-ls .ls-dock .pw-after{margin:0;display:flex;flex-direction:column;gap:10px;}
+.pw-ls .ls-dock .pw-player{margin:0;}
+.pw-ls .ls-dock .pw-player .pw-play{flex:1;}
+.pw-ls .ls-dock .pw-whys > summary{min-height:44px;display:flex;align-items:center;}
+.pw-ls .ls-stage .pw-order,.pw-ls .ls-stage .pw-steps{margin:0;}
+.pw-ls .ls-stage .pw-steps > li,.pw-ls .ls-stage .pw-order li{box-shadow:none;background:var(--surface2);}
+.pw-ls .ls-stage-body > .pw-fig{margin:0 auto 14px;width:100%;}
+.pw-ls .ls-stage-body > .pw-cyclenote{margin:0 0 8px;}
+.pw-ls .pw-ls-det .pw-next{margin:0;}
+.pw-ls .pw-ls-det .pw-next a{min-height:44px;display:inline-flex;align-items:center;white-space:normal;}
+.pw-ls .pw-ls-det .pt-credit{margin:0;font-size:var(--ls-s);color:var(--muted);}
+.pw-ls .ls-stage .pw{margin:0;max-width:none;}
+.pw-ls .ls-caption .pt-why{font-size:var(--ls-s);}
+@media (min-width:600px){
+  .pw-ls .ls-stage .pw-move{flex-direction:row;}
+}
+.pw-ls .ls-dock .pw-after > *{margin:0;}
+.pw-ls .ls-dock .pw-after .pw-caption{min-height:0;}
+.pw-ls .ls-dock .pw-result{display:flex;flex-direction:column;gap:10px;}
+.pw-ls .ls-dock .pw-result > p{margin:0;}
+@media (min-width:1000px){ .pw-ls .ls-stage-body > .pw-fig{max-width:520px;} }
+.ls-root .ls-modes .ls-seg > button{white-space:normal;text-overflow:clip;line-height:1.15;}

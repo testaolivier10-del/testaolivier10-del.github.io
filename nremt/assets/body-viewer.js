@@ -176,7 +176,7 @@
     if (opts.onPick) listeners.pick.push(opts.onPick);
     if (opts.onLoad) listeners.load.push(opts.onLoad);
     if (opts.onLayers) listeners.layers.push(opts.onLayers);
-    function emit(name, a, b){ listeners[name].forEach(fn => { try { fn(a, b); } catch(e){ console.error(e); } }); }
+    function emit(name, a, b){ kick(); listeners[name].forEach(fn => { try { fn(a, b); } catch(e){ console.error(e); } }); }
 
     let L = null;   // the three.js libraries, once loaded
     let scene, camera, renderer, controls, raycaster, pointer, bgTex;
@@ -390,12 +390,25 @@
     /* The loop stops while the model is scrolled out of view, so reading the
        cards below it does not keep the GPU (and a phone's battery) busy. */
     let onScreen = true, viewIo = null;
+    /* Render on demand: a frame is drawn while the camera moves (drag, damping,
+       a fly-to), for a moment after any input or event, and once a second
+       otherwise. An idle body map no longer redraws 60 times a second, which
+       kept a phone's GPU busy for nothing and made low-end devices janky. */
+    var activeUntil = 0, lastFrame = 0;   // var: emit() may kick before this line has run
+    function kick(ms){ activeUntil = Math.max(activeUntil || 0, performance.now() + (ms || 1500)); }
+    const KICK_ON = ['pointerdown', 'pointermove', 'pointerup', 'wheel', 'keydown', 'click', 'touchstart', 'resize'];
+    const onKick = () => kick();
+    KICK_ON.forEach(t => window.addEventListener(t, onKick, { passive: true, capture: true }));
     function animate(){
       if (destroyed) return;
       if (!onScreen) { rafId = 0; return; }
       rafId = requestAnimationFrame(animate);
-      controls.update();
-      renderer.render(scene, camera);
+      const now = performance.now();
+      const moved = controls.update();
+      if (moved || now < activeUntil || now - lastFrame > 1000) {
+        renderer.render(scene, camera);
+        lastFrame = now;
+      }
     }
     function watchView(){
       if (!('IntersectionObserver' in window)) return;
@@ -702,7 +715,7 @@
           <strong>${t.content.name}</strong>
           <span class="hunt-sys">${SYSTEM_LABELS[t.content.system] || t.content.system}</span>
         </div>
-        <div class="hunt-tally">${hunt.total ? hunt.right + ' of ' + hunt.total : 'Find it on the model, or pick it from Browse by name.'}</div>
+        <div class="hunt-tally">${hunt.total ? hunt.right + ' of ' + hunt.total : 'Find it on the model, or pick it by name in Details.'}</div>
         <div class="hunt-after"></div>
         <div class="hunt-actions">
           <button type="button" class="hunt-skip" data-hunt="show">Show me</button>
@@ -842,6 +855,7 @@
         themeWatch.disconnect();
         cancelAnimationFrame(rafId);
         window.removeEventListener('resize', onResize);
+        KICK_ON.forEach(t => window.removeEventListener(t, onKick, { capture: true }));
         if (renderer) renderer.dispose();
       },
     };

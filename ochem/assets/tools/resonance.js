@@ -232,7 +232,7 @@
       '</div>' +
       '<button type="button" class="btn-press" id="resAdd" style="width:100%;">Add it to the collection</button>';
 
-    document.getElementById('resAdd').addEventListener('click', function(){
+    elVerdict.querySelector('#resAdd').addEventListener('click', function(){
       found[k] = 'found';
       mountEditor();
       renderVerdict(null);
@@ -610,9 +610,9 @@
       '<div class="tpanel">' +
         '<div class="tpanel__head">Which is more stabilized by resonance?</div>' +
         '<div class="trow" style="gap:10px;flex-wrap:wrap;">' +
-          '<select class="mb__input" id="cmpA" style="max-width:220px;">' + options(cmpLeft && cmpLeft.id) + '</select>' +
+          '<select class="mb__input" id="cmpA" aria-label="First species" style="max-width:220px;">' + options(cmpLeft && cmpLeft.id) + '</select>' +
           '<span class="tmuted" style="font-weight:900;">vs</span>' +
-          '<select class="mb__input" id="cmpB" style="max-width:220px;">' + options(cmpRight && cmpRight.id) + '</select>' +
+          '<select class="mb__input" id="cmpB" aria-label="Second species" style="max-width:220px;">' + options(cmpRight && cmpRight.id) + '</select>' +
         '</div>' +
       '</div>' +
       '<div class="tsplit tsplit--wide">' +
@@ -636,7 +636,7 @@
           : renderVerdictBlock(verdict)) +
       '</div>';
 
-    var a = document.getElementById('cmpA'), b = document.getElementById('cmpB');
+    var a = elCompare.querySelector('#cmpA'), b = elCompare.querySelector('#cmpB');
     a.addEventListener('change', function(){ setSide('a', a.value); });
     b.addEventListener('change', function(){ setSide('b', b.value); });
     elCompare.querySelectorAll('[data-guess]').forEach(function(btn){
@@ -702,6 +702,126 @@
     });
   });
 
+
+  /* ---- Tool Studio (docs/tools-calm.md) -----------------------------------
+     With the studio on (registry `studio: true`), the same elements move into
+     the calm frame. Find the forms: the drawing board and the forms found so
+     far on the stage, the species and the one next action (Add it) in the
+     dock, the verdict, progress, nudge and the ranking in Why, the averaged
+     charge in Details. Compare two: both species on the stage, the two picks
+     and your call in the dock, the deciding rule in Why, the numbers in
+     Details. The hooks below run after the tool's own renders. */
+  var studio = window.OchemStudio || null, ls = null;
+  if(studio){
+    var Kit = window.OchemStudioKit;
+    var byId = function(id){ return document.getElementById(id); };
+    var mk = function(cls, html){ var d = document.createElement('div'); d.className = cls; if(html) d.innerHTML = html; return d; };
+    studio.root.classList.add('res-ls');
+    var pics = mk('ls-pics'), edBox = byId('resEditor');
+    edBox.classList.add('ls-ed');
+    var foundPane = mk('ls-pane res-ls-found', '<p class="ls-pane-k">Forms found</p>');
+    foundPane.appendChild(elFound);
+    pics.appendChild(edBox); pics.appendChild(foundPane);
+    var act = mk('ap-ls-act res-ls-act');
+    var cmpStage = mk('ls-pics res-ls-cmp'), cmpDock = mk('res-ls-cmpdock'), cmpWhy = mk('res-ls-cmpwhy'), cmpDet = mk('ls-sec res-ls-cmpdet');
+    var prog = mk('ls-sec res-ls-prog');
+    prog.appendChild(elProgress);
+    var tools = byId('resReveal').parentNode; tools.classList.add('ls-row'); prog.appendChild(tools);
+    var formsWhy = mk('ls-sec res-ls-forms');
+    var resMode = Kit.seg(byId('resMode'), 'data-mode');
+    Kit.scrollChips(byId('resPickPanel'));
+    studio.add('stage', pics, { mode: 'hunt' });
+    studio.add('stage', cmpStage, { mode: 'compare' });
+    studio.add('dock', [elPicker, byId('resMore'), act], { mode: 'hunt' });
+    studio.add('dock', cmpDock, { mode: 'compare' });
+    studio.add('why', [elVerdict, prog, elSummary, formsWhy], { mode: 'hunt' });
+    studio.add('why', cmpWhy, { mode: 'compare' });
+    var detFirst = studio.details.firstChild;
+    var chargeBox = byId('resChargeBox');
+    chargeBox.open = true;
+    studio.add('details', chargeBox, { mode: 'hunt' });
+    studio.add('details', cmpDet, { mode: 'compare' });
+    // The tool's own numbers first, then Check yourself and Keep going.
+    studio.details.insertBefore(chargeBox, detFirst);
+    studio.details.insertBefore(cmpDet, detFirst);
+    root.hidden = true;
+    byId('resBuildToggle').addEventListener('click', function(){ Kit.builder(elBuilder); });
+    ls = { act: act, mode: resMode, cmpStage: cmpStage, cmpDock: cmpDock, cmpWhy: cmpWhy, cmpDet: cmpDet, formsWhy: formsWhy };
+
+    var baseVerdict = renderVerdict, baseFound = renderFound, baseCompare = renderCompare;
+    renderVerdict = function(v){ baseVerdict(v); ls.v = v; studioHunt(); };
+    renderFound = function(){ baseFound(); studioHunt(); };
+    renderCompare = function(){ baseCompare(); studioCompare(); };
+  }
+
+  function studioHunt(){
+    if(!ls) return;
+    var got = target.filter(function(f){ return found[R.key(f)]; }).length, left = target.length - got;
+    var name = esc(elName.textContent || '');
+    ls.act.innerHTML = '';
+    var add = elVerdict.querySelector('#resAdd');
+    if(add) ls.act.appendChild(add);
+    var v = ls.v, pills = [{ html: got + ' of ' + target.length + ' forms', tone: left ? 'accent' : 'good' }], cap;
+    var note = elVerdict.querySelector('.tnote');
+    var say = note ? esc((note.lastChild && note.lastChild.nodeType === 3 ? note.lastChild.textContent : note.textContent).split('. ')[0].replace(/\.$/, '')) + '.' : '';
+    if(v && !v.valid){
+      var already = v.code === 'no-change';
+      pills.push({ html: already ? 'No movement' : 'Not a resonance form', tone: already ? 'warn' : 'bad' });
+      cap = '<b>' + (already ? 'No movement.' : 'Not a resonance form.') + '</b> ' + say;
+    } else if(v && !add){
+      pills.push({ html: 'Already have it', tone: 'warn' });
+      cap = '<b>Already have that one.</b> ' + (left === 1 ? 'One other to find.' : left + ' others to find.');
+    } else if(v){
+      pills.push({ html: 'A resonance form', tone: 'good' });
+      cap = '<b>That is a resonance form.</b> Add it to the collection.';
+    } else if(!left){
+      cap = '<b>All ' + target.length + ' forms of ' + name + '.</b> Why? says which one the molecule is most like.';
+    } else {
+      cap = '<b>' + name + ':</b> ' + left + ' more form' + (left === 1 ? '' : 's') + ' to find. Tap a lone pair or a π bond, then tap where it goes.';
+    }
+    studio.caption(cap, 'hunt');
+    studio.pills(pills, 'left', 'hunt');
+    // The forms on the stage are pictures; what each one is, in words, is in Why.
+    ls.formsWhy.innerHTML = '<h3 class="ls-h">The forms so far</h3><ol class="ls-steps">' + target.filter(function(f){ return found[R.key(f)]; }).map(function(f){
+      var d = R.describe(f, target), how = found[R.key(f)];
+      return '<li><span><span class="ls-k">' + esc(d.rank) + '</span>' + (how === 'revealed' ? ' (revealed)' : how === 'given' ? ' (given)' : '') + ' ' + esc(d.summary) + '.</span></li>';
+    }).join('') + '</ol>';
+  }
+
+  function studioCompare(){
+    if(!ls) return;
+    ls.cmpStage.innerHTML = ''; ls.cmpDock.innerHTML = ''; ls.cmpWhy.innerHTML = ''; ls.cmpDet.innerHTML = '';
+    var picks = elCompare.querySelector('.tpanel'), split = elCompare.querySelector('.tsplit'), verdict = elCompare.querySelector('#cmpVerdict');
+    if(split) [].slice.call(split.children).forEach(function(p, i){
+      p.classList.add('ls-pane');
+      var stat = p.querySelector('.tstat');
+      if(stat){ var h = document.createElement('h3'); h.className = 'ls-h'; h.textContent = p.querySelector('.tpanel__head').textContent; ls.cmpDet.appendChild(h); ls.cmpDet.appendChild(stat); }
+      var wait = p.querySelector('p.tmuted'); if(wait) wait.remove();
+      ls.cmpStage.appendChild(p);
+    });
+    if(picks){ var row = picks.querySelector('.trow'); row.classList.add('res-ls-picks'); ls.cmpDock.appendChild(row); }
+    if(verdict){
+      var guess = verdict.querySelector('.trow');
+      if(guess){ guess.classList.add('res-ls-guess'); ls.cmpDock.appendChild(guess); }
+      var again = guess && guess.querySelector('#cmpAgain');
+      if(again) again.addEventListener('click', function(){ cmpGuess = null; renderCompare(); });
+      while(verdict.firstChild) ls.cmpWhy.appendChild(verdict.firstChild);
+    }
+    if(!ls.cmpDet.children.length) ls.cmpDet.innerHTML = '<p class="ls-sub">The numbers behind each species (forms, equally good forms, how many atoms the charge roams over) appear here once you have called it.</p>';
+    var la = cmpLeft && cmpLeft.label, lb = cmpRight && cmpRight.label, cap, pills = [];
+    if(cmpGuess === null){
+      cap = '<b>' + esc(la) + ' or ' + esc(lb) + '?</b> Which is more stabilized by resonance? Make your call.';
+      pills.push({ html: 'Your call', tone: 'ghost' });
+    } else {
+      var v = judge(stabilization(cmpLeft.st), stabilization(cmpRight.st)), right = cmpGuess === v.winner;
+      var win = v.winner === 'tie' ? 'Neither' : (v.winner === 'a' ? la : lb);
+      pills.push({ html: right ? 'Right' : 'Not quite', tone: right ? 'good' : 'bad' }, { html: v.winner === 'tie' ? 'About the same' : esc(win) + ' wins', tone: 'ghost' });
+      cap = '<b>' + (right ? 'Right.' : 'Not quite.') + '</b> ' + (v.winner === 'tie' ? 'Resonance does not separate them' : esc(win) + ' is more stabilized') + ': ' + esc(v.rule.toLowerCase()) + '. Why? has the reasoning.';
+    }
+    studio.caption(cap, 'compare');
+    studio.pills(pills, 'left', 'compare');
+  }
+
   if(window.OchemToolState){
     var q = window.OchemToolState.read();
 
@@ -735,6 +855,12 @@
   } else {
     select(SPECIES[0]);
   }
+  if(ls && ls.mode() === 'hunt'){
+    var atoms = [].slice.call(document.querySelectorAll('#resEditor .atom'));
+    var charged = atoms.filter(function(g){ return /[⁻−-]/.test(g.textContent); })[0];
+    studio.hint({ target: charged || atoms[0], text: 'Tap this lone pair, then where it goes' });
+  }
+
   /* ---- Check yourself ---------------------------------------------------
      The count comes from resonance-engine.js enumerating the species, not
      from a number typed next to it — which is the same property that lets the

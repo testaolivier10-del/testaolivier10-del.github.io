@@ -34,6 +34,17 @@
   var base = window.ANP_BASE || '../';
   var src = app.getAttribute('data-src') || (base + 'data/tools/word-roots.json');
   var PREF = 'anp_wordroots_prefs_v1';
+  /* Tool Studio (docs/tools-calm.md): with the page's studio flag each term
+     is drawn in #app and moved into the calm frame (studioCard,
+     studioAnswered); lookups go through the document (cq). */
+  var ST = window.AnpToolKit && window.AnpToolKit.studio ? window.AnpToolKit.studio() : null, steps = null;
+  function cq(el){ return ST ? document : el; }
+  if(ST){
+    ST.root.classList.add('wr-ls');
+    ST.caption('Loading word parts…');
+    ST.modes({ items: [{ value: 'decode', label: 'Decode' }, { value: 'build', label: 'Build' }, { value: 'bank', label: 'Part bank' }], value: 'decode',
+      onChange: function(v){ var b = document.querySelector('.wr-mode[data-mode="' + v + '"]'); if(b) b.click(); } });
+  }
 
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function shuffle(a){ a = a.slice(); for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
@@ -134,24 +145,30 @@
         '</div></details>' +
         '<section class="wr-card"></section>' +
       '</div>';
-    var sel = app.querySelector('#wr-upto');
+    if(ST){ var od = app.querySelector('.wr-optsd'); od.open = true; od.classList.add('wr-ls-opts'); ST.add('details', od); }
+    var sel = cq(app).querySelector('#wr-upto');
     sel.value = state.upto || '';
     sel.addEventListener('change', function(){ state.upto = sel.value || null; savePrefs(true); state.cur = null; start(); });
-    app.querySelectorAll('.wr-mode').forEach(function(b){
+    cq(app).querySelectorAll('.wr-mode').forEach(function(b){
       b.addEventListener('click', function(){ state.mode = b.getAttribute('data-mode'); savePrefs(); state.cur = null; start(); });
     });
     start();
   }
 
   function start(){
-    app.querySelectorAll('.wr-mode').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-mode') === state.mode ? 'true' : 'false'); });
+    if(ST) ST.reset();
+    startInner();
+    if(ST) studioCard();
+  }
+  function startInner(){
+    cq(app).querySelectorAll('.wr-mode').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-mode') === state.mode ? 'true' : 'false'); });
     var terms = available();
-    app.querySelector('.wr-count').textContent = terms.length + ' terms and ' + availableParts().length + ' word parts from ' +
+    cq(app).querySelector('.wr-count').textContent = terms.length + ' terms and ' + availableParts().length + ' word parts from ' +
       (state.upto ? 'topics 1 to ' + (TOPIC_IDX[state.upto] + 1) : 'every topic so far') + '.' +
       (state.session.n ? ' This session: ' + state.session.c + ' of ' + state.session.n + ' right.' : '');
     if(state.mode === 'bank') return renderBank();
     state.cur = nextTerm(); state.done = false; state.placed = [];
-    if(!state.cur){ app.querySelector('.wr-card').innerHTML = '<p>No terms yet for this range. Choose a later topic.</p>'; return; }
+    if(!state.cur){ cq(app).querySelector('.wr-card').innerHTML = '<p>No terms yet for this range. Choose a later topic.</p>'; return; }
     if(state.mode === 'decode') renderDecode(); else renderBuild();
   }
 
@@ -184,14 +201,15 @@
     var n = labeled(t).length;
     if(window.AnpCore) window.AnpCore.toolResult(KIND, [{ id: itemId(t, mode), correct: ok, topic: t.topic, core: DATA.core, level: 'apply', diff: n >= 4 ? 3 : n === 3 ? 2 : 1, group: mode }]);
     if(window.LevlSound && window.LevlSound.answer) try{ window.LevlSound.answer(ok); }catch(e){}
-    var cnt = app.querySelector('.wr-count');
+    var cnt = cq(app).querySelector('.wr-count');
     cnt.textContent = cnt.textContent.replace(/ This session:.*$/, '') + ' This session: ' + state.session.c + ' of ' + state.session.n + ' right.';
   }
   function wireNext(card){
-    var t = state.cur, fb = card.querySelector('.wr-fb');
+    var t = state.cur, fb = cq(card).querySelector('.wr-fb');
     if(t && fb && window.AnpToolKit) window.AnpToolKit.strip(fb, { topic: t.topic, terms: t.concept && GLOSS[t.concept] ? [t.concept] : [], text: t.term, max: 2, structures: window.AnpToolKit.body3d ? [] : [t.term] });
-    var nb = card.querySelector('.wr-next');
-    if(nb){ nb.addEventListener('click', function(){ start(); var h = app.querySelector('.wr-card h2'); if(h){ h.setAttribute('tabindex', '-1'); h.focus(); } }); nb.focus(); }
+    if(ST) studioAnswered();
+    var nb = cq(card).querySelector('.wr-next');
+    if(nb){ nb.addEventListener('click', function(){ start(); var h = cq(app).querySelector(ST ? '.ls-stage h2' : '.wr-card h2'); if(h){ h.setAttribute('tabindex', '-1'); h.focus(); } }); nb.focus(); }
   }
 
   /* ------------------------------------------------------ decode */
@@ -219,7 +237,7 @@
   }
 
   function renderDecode(){
-    var t = state.cur, card = app.querySelector('.wr-card');
+    var t = state.cur, card = cq(app).querySelector('.wr-card');
     // Suffix first, then prefix, then roots: the decoding order the course teaches.
     var order = [];
     t.segs.forEach(function(s, i){ if(s[1] && PARTS[s[1]].type === 'suffix') order.push(i); });
@@ -243,19 +261,19 @@
       '</ol>' +
       '<div class="wr-actions"><button type="button" class="btn-press sm wr-check">Check</button><button type="button" class="btn-outline wr-skip">Skip</button><p class="wr-msg" role="status"></p></div>' +
       '<div class="wr-fb" aria-live="polite"></div>';
-    card.querySelectorAll('.wr-opt').forEach(function(b){
+    cq(card).querySelectorAll('.wr-opt').forEach(function(b){
       b.addEventListener('click', function(){
         if(state.done) return;
-        card.querySelectorAll('.wr-opt').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        cq(card).querySelectorAll('.wr-opt').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
       });
     });
-    card.querySelector('.wr-skip').addEventListener('click', function(){ start(); });
-    card.querySelector('.wr-check').addEventListener('click', function(){
+    cq(card).querySelector('.wr-skip').addEventListener('click', function(){ start(); });
+    cq(card).querySelector('.wr-check').addEventListener('click', function(){
       if(state.done) return;
-      var sels = card.querySelectorAll('select'), chosen = card.querySelector('.wr-opt[aria-pressed="true"]');
+      var sels = cq(card).querySelectorAll('.wr-steps select'), chosen = cq(card).querySelector('.wr-opt[aria-pressed="true"]');
       var missing = [].some.call(sels, function(s){ return !s.value; }) || !chosen;
-      if(missing){ card.querySelector('.wr-msg').textContent = 'Answer every step first.'; return; }
-      card.querySelector('.wr-msg').textContent = '';
+      if(missing){ cq(card).querySelector('.wr-msg').textContent = 'Answer every step first.'; return; }
+      cq(card).querySelector('.wr-msg').textContent = '';
       state.done = true;
       var allRight = true, marks = {};
       sels.forEach(function(s){
@@ -270,15 +288,15 @@
       });
       var wholeOk = chosen.getAttribute('data-id') === t.id;
       if(!wholeOk) allRight = false;
-      card.querySelectorAll('.wr-opt').forEach(function(x){
+      cq(card).querySelectorAll('.wr-opt').forEach(function(x){
         x.disabled = true;
         if(x.getAttribute('data-id') === t.id) x.classList.add('is-right');
         else if(x === chosen) x.classList.add('is-wrong');
       });
-      card.querySelector('.wr-split').outerHTML = splitHtml(t, marks);
-      card.querySelector('.wr-actions').hidden = true;
+      cq(card).querySelector('.wr-split').outerHTML = splitHtml(t, marks);
+      cq(card).querySelector('.wr-actions').hidden = true;
       recordResult(t, 'decode', allRight);
-      card.querySelector('.wr-fb').innerHTML = '<p class="wr-verdict ' + (allRight ? 'ok' : 'no') + '">' + (allRight ? 'Correct: every part and the whole term.' : 'Not all right yet. This term is in your review queue.') + '</p>' + answerFooter(t, 'decode', allRight);
+      cq(card).querySelector('.wr-fb').innerHTML = '<p class="wr-verdict ' + (allRight ? 'ok' : 'no') + '">' + (allRight ? 'Correct: every part and the whole term.' : 'Not all right yet. This term is in your review queue.') + '</p>' + answerFooter(t, 'decode', allRight);
       wireNext(card);
     });
   }
@@ -311,7 +329,7 @@
   }
 
   function renderBuild(){
-    var t = state.cur, card = app.querySelector('.wr-card');
+    var t = state.cur, card = cq(app).querySelector('.wr-card');
     var need = labeled(t).length;
     var cards = buildCards(t);
     card.innerHTML =
@@ -327,42 +345,42 @@
       '<div class="wr-actions"><button type="button" class="btn-press sm wr-check">Check</button><button type="button" class="btn-outline wr-clear">Clear</button><button type="button" class="btn-outline wr-skip">Skip</button><p class="wr-msg" role="status"></p></div>' +
       '<div class="wr-fb" aria-live="polite"></div>';
     function paint(){
-      var slots = card.querySelector('.wr-slots');
+      var slots = cq(card).querySelector('.wr-slots');
       slots.innerHTML = state.placed.length ? state.placed.map(function(id, k){
         var p = PARTS[id];
         return '<button type="button" class="wr-slot wr-' + p.type + '" data-k="' + k + '" aria-label="' + esc(p.form + ', ' + p.meaning + '. Remove') + '"' + (state.done ? ' disabled' : '') + '>' + esc(p.form) + '</button>';
       }).join('<span class="wr-plus" aria-hidden="true">+</span>') : '<span class="wr-empty">Tap a word part to place it here.</span>';
-      card.querySelectorAll('.wr-cardbtn').forEach(function(b){ b.disabled = state.done || state.placed.indexOf(b.getAttribute('data-id')) > -1; });
+      cq(card).querySelectorAll('.wr-cardbtn').forEach(function(b){ b.disabled = state.done || state.placed.indexOf(b.getAttribute('data-id')) > -1; });
       slots.querySelectorAll('.wr-slot').forEach(function(b){
         b.addEventListener('click', function(){
           if(state.done) return;
           state.placed.splice(+b.getAttribute('data-k'), 1); paint();
-          var next = card.querySelector('.wr-slot') || card.querySelector('.wr-cardbtn:not(:disabled)'); if(next) next.focus();
+          var next = cq(card).querySelector('.wr-slot') || cq(card).querySelector('.wr-cardbtn:not(:disabled)'); if(next) next.focus();
         });
       });
     }
-    card.querySelectorAll('.wr-cardbtn').forEach(function(b){
+    cq(card).querySelectorAll('.wr-cardbtn').forEach(function(b){
       b.addEventListener('click', function(){
         if(state.done) return;
         state.placed.push(b.getAttribute('data-id')); paint();
-        var next = card.querySelector('.wr-cardbtn:not(:disabled)') || card.querySelector('.wr-check'); if(next) next.focus();
+        var next = cq(card).querySelector('.wr-cardbtn:not(:disabled)') || cq(card).querySelector('.wr-check'); if(next) next.focus();
       });
     });
-    card.querySelector('.wr-clear').addEventListener('click', function(){ if(!state.done){ state.placed = []; paint(); } });
-    card.querySelector('.wr-skip').addEventListener('click', function(){ start(); });
-    card.querySelector('.wr-check').addEventListener('click', function(){
+    cq(card).querySelector('.wr-clear').addEventListener('click', function(){ if(!state.done){ state.placed = []; paint(); } });
+    cq(card).querySelector('.wr-skip').addEventListener('click', function(){ start(); });
+    cq(card).querySelector('.wr-check').addEventListener('click', function(){
       if(state.done) return;
-      if(!state.placed.length){ card.querySelector('.wr-msg').textContent = 'Place at least one word part first.'; return; }
-      card.querySelector('.wr-msg').textContent = '';
+      if(!state.placed.length){ cq(card).querySelector('.wr-msg').textContent = 'Place at least one word part first.'; return; }
+      cq(card).querySelector('.wr-msg').textContent = '';
       var want = labeled(t).map(function(s){ return s[1]; });
       var ok = state.placed.join('+') === want.join('+');
       state.done = true;
       paint();
-      card.querySelectorAll('.wr-slot').forEach(function(b, k){ b.classList.add(state.placed[k] === want[k] ? 'is-right' : 'is-wrong'); });
-      card.querySelector('.wr-actions').hidden = true;
+      cq(card).querySelectorAll('.wr-slot').forEach(function(b, k){ b.classList.add(state.placed[k] === want[k] ? 'is-right' : 'is-wrong'); });
+      cq(card).querySelector('.wr-actions').hidden = true;
       recordResult(t, 'build', ok);
       var why = ok ? '' : buildHint(state.placed, want);
-      card.querySelector('.wr-fb').innerHTML = '<p class="wr-verdict ' + (ok ? 'ok' : 'no') + '">' + (ok ? 'Correct.' : 'Not quite. This term is in your review queue.') + (why ? ' ' + why : '') + '</p>' +
+      cq(card).querySelector('.wr-fb').innerHTML = '<p class="wr-verdict ' + (ok ? 'ok' : 'no') + '">' + (ok ? 'Correct.' : 'Not quite. This term is in your review queue.') + (why ? ' ' + why : '') + '</p>' +
         '<p class="wr-small">The term:</p>' + splitHtml(t) + answerFooter(t, 'build', ok);
       wireNext(card);
     });
@@ -378,7 +396,7 @@
   /* ------------------------------------------------------ part bank */
 
   function renderBank(){
-    var card = app.querySelector('.wr-card');
+    var card = cq(app).querySelector('.wr-card');
     var parts = availableParts();
     var terms = available();
     var groups = [['prefix', 'Prefixes'], ['root', 'Roots'], ['suffix', 'Suffixes']];
@@ -393,17 +411,78 @@
         }).join('') + '</ul></section>';
       }).join('') +
       '<p class="wr-small wr-none" hidden>No word part matches. Try another spelling or meaning.</p>';
-    var f = card.querySelector('#wr-find');
+    var f = cq(card).querySelector('#wr-find');
     f.addEventListener('input', function(){
       var q = f.value.trim().toLowerCase(), shown = 0;
       // a heading whose parts are all filtered out goes too, and an empty search says so
-      card.querySelectorAll('.wr-bank-sec').forEach(function(sec){
+      cq(card).querySelectorAll('.wr-bank-sec').forEach(function(sec){
         var k = 0;
         sec.querySelectorAll('.wr-banklist li').forEach(function(li){ li.hidden = !!q && li.getAttribute('data-find').indexOf(q) < 0; if(!li.hidden) k++; });
         sec.hidden = !k; shown += k;
       });
-      card.querySelector('.wr-none').hidden = shown > 0;
+      cq(card).querySelector('.wr-none').hidden = shown > 0;
     });
+  }
+
+  /* ------------------------------------------------------ Tool Studio
+     Decode: the term and its colored split are the stage (marked right or
+     wrong after Check); the dock asks one part at a time (the stepper; a
+     choice moves on), then the whole term, then Check. Build: the meaning
+     and the term you are building are the stage, the part cards and Check
+     the dock. Part bank: the list is the stage, its search the dock. After
+     an answer: the verdict, the meaning and Next term in the dock, every
+     part's origin in Why, Keep going in Details with the topic filter. */
+  function studioCard(){
+    var card = app.querySelector('.wr-card'), stage = [], dock = [], cap = '';
+    steps = null;
+    ST.mode(state.mode);
+    ST.pills([], 'left');
+    [].slice.call(card.children).forEach(function(el){
+      var c = el.classList;
+      if(c.contains('wr-eyebrow')){ el.parentNode.removeChild(el); return; }
+      if(c.contains('kt-first')){ cap += el.innerHTML; return; }
+      if(el.tagName === 'P' && c.contains('wr-small') && !c.contains('wr-bank-h') && !c.contains('wr-none')){ cap += ' ' + el.innerHTML; return; }
+      if(c.contains('wr-steps') || c.contains('wr-actions') || c.contains('wr-fb') || c.contains('wr-bankcards') || c.contains('wr-bank-h') || c.contains('wr-find')){ dock.push(el); return; }
+      stage.push(el);
+    });
+    ST.caption(cap || (state.mode === 'bank' ? 'Every word part so far, with where it comes from. Search by part or meaning.' : ''));
+    ST.put('stage', stage);
+    ST.put('dock', dock, { first: true });
+    var ol = card.querySelector('.wr-steps') || ST.dock.querySelector('.wr-steps');
+    if(ol){
+      // The stepper adds its own rows; they go in a wrapper so the list holds only its items.
+      var wrap = document.createElement('div');
+      wrap.className = 'wr-ls-steps';
+      wrap.appendChild(ol); ST.put('dock', wrap, { first: true });
+      steps = window.LevlStudio.stepper(wrap, { items: '.wr-step', label: 'Step', submit: ST.dock.querySelector('.wr-actions') });
+      ol.addEventListener('change', function(e){
+        if(!e.target.matches('select') || state.done) return;
+        var li = e.target.closest('.wr-step'), all = [].slice.call(ol.querySelectorAll('.wr-step')), k = all.indexOf(li);
+        if(k > -1 && k < all.length - 1) setTimeout(function(){ steps.go(k + 1); }, 200);
+      });
+    }
+    ST.stage.scrollTop = 0;
+    if(!studioCard.hinted && state.mode !== 'bank'){
+      studioCard.hinted = true;
+      ST.hint(state.mode === 'build' ? { target: '.ls-dock .wr-cardbtn', text: 'Tap the first word part' } : { target: '.ls-dock .wr-step select', text: 'Pick what this part means' });
+    }
+  }
+  function studioAnswered(){
+    var fb = ST.dock.querySelector('.wr-fb');
+    if(!fb) return;
+    var ok = !!fb.querySelector('.wr-verdict.ok');
+    ST.pills([{ html: ok ? 'Correct' : 'Not quite', tone: ok ? 'good' : 'bad' }], 'left');
+    ST.caption(ok ? 'Every part right. Next term when you are ready.' : 'The parts in red were wrong; the answer and each part\'s origin are below and under Why?');
+    var parts = fb.querySelector('.wr-parts'), note = fb.querySelector('.wr-note'), split = fb.querySelector(':scope > .wr-split'), lbl = split && split.previousElementSibling;
+    var w = document.createElement('div');
+    w.className = 'ls-sec';
+    w.innerHTML = '<h3 class="ls-h">Each part</h3>';
+    [note, parts].forEach(function(x){ if(x) w.appendChild(x); });
+    ST.put('why', w, { first: true });
+    if(split){ ST.put('stage', split); if(lbl && lbl.classList.contains('wr-small')) lbl.parentNode.removeChild(lbl); }
+    var kg = fb.querySelector('.kg');
+    if(kg){ var d = document.createElement('div'); d.className = 'ls-sec'; d.appendChild(kg); ST.put('details', d, { first: true }); }
+    if(steps) steps.go(0);
   }
 
   /* ------------------------------------------------------ load */
@@ -421,6 +500,7 @@
     DATA.terms = DATA.terms.filter(function(t){ return t.topic in TOPIC_IDX; });
     mount();
   }).catch(function(){
+    if(ST){ ST.suspend(true); app.classList.remove('kt-staging'); }
     app.innerHTML = '<p class="wr-msg">The word root builder could not load. Check your connection and reload the page.</p>';
   });
 })();

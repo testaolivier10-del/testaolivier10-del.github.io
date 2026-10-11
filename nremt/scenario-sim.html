@@ -35,6 +35,13 @@
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
+<!-- tool-studio:start -->
+<link rel="stylesheet" href="../assets/course/tool-studio.css">
+<link rel="stylesheet" href="assets/nremt-studio.css">
+<link rel="stylesheet" href="assets/studio/scenario-sim.css">
+<script src="../assets/course/tool-studio.js" defer></script>
+<script src="assets/nremt-studio.js" defer></script>
+<!-- tool-studio:end -->
 <style>
   body{line-height:1.65;}
   .lede{color:var(--muted);font-size:15.5px;max-width:60ch;margin:0 0 28px;}
@@ -2172,6 +2179,53 @@ let currentScenario = null;
 let currentNodeId = null;
 let pathLog = [];
 
+/* ---- Tool Studio (docs/tools-calm.md; assets/nremt-studio.js) -------------
+   Stage: the live patient, the monitor and the body to examine (a Monitor |
+   Patient switch on a phone, side by side on a desktop); before a call, the
+   list of calls; after it, the debrief. Dock: the call's line and back link,
+   what happened, the situation and the choices. Why: the call so far, each
+   choice and what it cost. simBox stays the stage's container and simDock
+   the dock's, so the code below only decides which of the two a part goes in. */
+const studio = window.NremtStudio ? window.NremtStudio.mount({
+  title: 'Scenario simulator', slug: 'scenario-sim',
+  about: (() => {
+    const lede = document.querySelector('.page-head .lede');
+    const credit = document.createElement('p'); credit.className = 'ls-sub';
+    credit.innerHTML = 'Patient figure rendered from <a href="https://lifesciencedb.jp/bp3d/" target="_blank" rel="noopener">BodyParts3D</a>, © 2008 Life Science Integrated Database Center, <a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en" target="_blank" rel="noopener">CC BY-SA 2.1 Japan</a>.';
+    return [lede, credit];
+  })(),
+  caption: 'Pick a call. You choose each step; the patient responds.',
+  note: { label: 'Premium tool.', html: 'Part of NREMT-EMT Premium.' },
+}) : null;
+let simDock = null, simWhy = null;
+if (studio) {
+  document.querySelector('.picker-cue').hidden = true;
+  simDock = document.createElement('div'); simDock.className = 'sim-ls-dock';
+  simWhy = document.createElement('div'); simWhy.className = 'sim-ls-why';
+  studio.add('stage', [document.getElementById('pickerScreen'), document.getElementById('simBox')]);
+  window.NremtStudio.scrollable(document.getElementById('pickerScreen'), 'Calls');
+  window.NremtStudio.scrollable(document.getElementById('simBox'), 'The call');
+  studio.add('dock', simDock);
+  studio.add('why', simWhy);
+  studio.root.setAttribute('data-sim', 'picker');
+  studio.menu({ items: [{ label: 'All scenarios', icon: 'grid', onClick: () => backToPicker() }] });
+  // "Examine the patient" turns the stage to the patient (phone).
+  simDock.addEventListener('click', e => {
+    const j = e.target.closest('.pt-jump'); if (!j) return;
+    e.preventDefault();
+    const b = document.querySelector('[data-simview="pt"]'); if (b) { b.click(); b.focus(); }
+  });
+}
+/* Why: the call so far, newest last. */
+function studioWhy(){
+  if (!simWhy) return;
+  simWhy.innerHTML = !currentScenario ? '<h3 class="ls-title-l">How it works</h3><p>Each call is a chain of decisions. Pick what you would do; the patient answers on the monitor and the body. A skipped or out-of-order step comes back later in the call, and the debrief shows what each choice cost.</p>'
+    : '<h3 class="ls-title-l">' + currentScenario.title + '</h3><p class="ls-sub">' + currentScenario.domain + '</p>' +
+      (pathLog.length ? '<ol class="ls-steps">' + pathLog.map(p => '<li><span><b>' + p.text + '.</b>' + (p.consequence ? ' ' + p.consequence : '') + '</span></li>').join('') + '</ol>'
+        : '<p>No choices yet. The monitor shows the numbers from the case; tap the body or a survey step to see what the call has shown you.</p>');
+}
+studioWhy();
+
 // Premium (assets/premium-gates.js): the simulator is part of it. Before launch,
 // or with the gate files missing, it is open as it always was, with a badge.
 const G = window.NremtGates || { canUse: () => true, gate: () => '', badge: () => '', onChange(fn){ fn(); } };
@@ -2208,6 +2262,7 @@ function startScenario(id){
   if(window.LevlAnalytics) window.LevlAnalytics.event('scenario-start', { scenario: id });
   document.getElementById('pickerScreen').style.display = 'none';
   document.getElementById('simBox').classList.add('active');
+  if (studio) studio.root.setAttribute('data-sim', 'call');
   renderNode();
 }
 
@@ -2216,6 +2271,13 @@ function backToPicker(){
   if(monitor){ monitor.destroy(); monitor = null; }
   document.getElementById('simBox').classList.remove('active');
   document.getElementById('pickerScreen').style.display = 'block';
+  if (studio) {
+    simDock.innerHTML = '';
+    studio.root.setAttribute('data-sim', 'picker');
+    studio.pills([]); studio.caption('Pick a call. You choose each step; the patient responds.');
+    studioWhy();
+    return;
+  }
   if(window.LevlMotion) window.LevlMotion.scrollToY(0);
   else window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -2279,7 +2341,24 @@ function buildCallView(){
   const box = document.getElementById('simBox');
   if(monitor){ monitor.destroy(); monitor = null; }
   const months = SIM ? SIM.pure.ageMonths(currentScenario.nodes[currentScenario.startNode].text) : null;
-  box.innerHTML = `
+  if (studio) {
+    box.innerHTML = `
+      <div class="sim-ls-views ls-seg" role="group" aria-label="Show">
+        <button type="button" data-simview="mon" aria-pressed="true">Monitor</button><button type="button" data-simview="pt" aria-pressed="false">Patient</button>
+      </div>
+      <p class="sim-ls-what" role="status" hidden></p>
+      <div class="sim-grid" data-show="mon"><div id="monHost"></div><div class="sim-side" id="ptHost"></div></div>`;
+    simDock.innerHTML = `
+      <div class="sim-header">
+        <span class="sim-domain">${currentScenario.domain}</span>
+        <button type="button" class="back-link" id="backBtn">&larr; All scenarios</button>
+      </div>
+      <div id="nodeHost"></div>`;
+    box.querySelectorAll('[data-simview]').forEach(b => b.addEventListener('click', () => {
+      box.querySelectorAll('[data-simview]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      box.querySelector('.sim-grid').setAttribute('data-show', b.dataset.simview);
+    }));
+  } else box.innerHTML = `
     <div class="sim-header">
       <span class="sim-domain">${currentScenario.domain}</span>
       <button type="button" class="back-link" id="backBtn">&larr; All scenarios</button>
@@ -2303,6 +2382,7 @@ function buildCallView(){
 /* Bring the call to the top of the screen, below the sticky site header, so
    the monitor is never tucked under it. */
 function scrollToBox(box){
+  if (studio) { box.scrollTop = 0; simDock.scrollTop = 0; if (studio.dockEl) studio.dockEl.scrollTop = 0; return; }
   const head = document.getElementById('site-header');
   const h = head ? Math.max(0, head.getBoundingClientRect().bottom) : 0;
   const y = Math.max(0, box.getBoundingClientRect().top + window.scrollY - h - 24);
@@ -2347,6 +2427,48 @@ function renderNode(consequenceText){
   if (node.ending) {
     if(monitor){ monitor.destroy(); monitor = null; }
     const missedSteps = recordDebrief();
+    if (studio) {
+      const outcome = node.ending === 'good' ? 'Good outcome' : node.ending === 'bad' ? 'Poor outcome' : 'Mixed outcome';
+      studio.pills([{ html: outcome, tone: node.ending === 'good' ? 'good' : node.ending === 'bad' ? 'bad' : 'warn' }]);
+      studio.caption('<b>' + outcome + '.</b> ' + (pathLog.length ? 'Your path is on the ' + (matchMedia('(min-width:1000px)').matches ? 'left' : 'screen above') + ': go back to any decision to try the other branch.' : ''));
+      studioWhy();
+      simDock.innerHTML = `
+        <div class="sim-header">
+          <span class="sim-domain">${currentScenario.domain}</span>
+          <button type="button" class="back-link" id="backBtn">&larr; All scenarios</button>
+        </div>
+        ${missedSteps ? `<p class="debrief-review">${missedSteps} skipped or out-of-order step${missedSteps === 1 ? '' : 's'} went to your <a href="review.html">Review queue</a>. Each leaves it when you take the better choice on a later run.</p>` : ''}
+        ${window.LevlNextStep ? LevlNextStep('nremt', { tags: ['nremt:' + currentScenario.id],
+          also: [{ label: 'Try this scenario again', act: () => startScenario(currentScenario.id) }] }) : ''}`;
+      box.innerHTML = `
+      <span class="ending-badge ${node.ending}">${outcome}</span>
+      <p class="node-text">${node.text}</p>
+      <div class="path-log">
+        <div class="path-log-title">Your path through this call</div>
+        <ol>
+          ${pathLog.map((p, i) => `
+            <li>
+              <div class="path-choice">${p.text}</div>
+              ${p.waited ? `<div class="path-waited">You took ${p.waited} s at a time-critical decision; the monitor was trending toward what the case says waiting costs (simulated).</div>` : ''}
+              ${p.consequence ? `<div class="path-conseq">${p.consequence}</div>` : ''}
+              ${p.alternatives.length ? `
+                <details class="path-alts">
+                  <summary>${p.alternatives.length} other option${p.alternatives.length === 1 ? '' : 's'} at this point</summary>
+                  <ul>${p.alternatives.map(a => `<li>${a}</li>`).join('')}</ul>
+                </details>` : ''}
+              ${p.alternatives.length ? `<button type="button" class="rewind-btn" data-rewind="${i}">Go back to this decision</button>` : ''}
+            </li>
+          `).join('')}
+        </ol>
+      </div>`;
+      studio.root.setAttribute('data-sim', 'end');
+      document.getElementById('backBtn').addEventListener('click', backToPicker);
+      box.querySelectorAll('[data-rewind]').forEach(btn => {
+        btn.addEventListener('click', () => { studio.root.setAttribute('data-sim', 'call'); rewindTo(parseInt(btn.dataset.rewind, 10)); });
+      });
+      scrollToBox(box);
+      return;
+    }
     box.innerHTML = `
       <div class="sim-header">
         <span class="sim-domain">${currentScenario.domain}</span>
@@ -2395,10 +2517,19 @@ function renderNode(consequenceText){
     <div class="choice-list">
       ${node.choices.map((c, i) => `<button type="button" class="choice-option" data-choice="${i}">${c.text}</button>`).join('')}
     </div>
-    ${SIM ? `<a class="pt-jump" href="#ptHost">Examine the patient &darr;</a>` : ''}
+    ${SIM ? `<a class="pt-jump" href="#ptHost">Examine the patient</a>` : ''}
   `;
   if(monitor) monitor.show(node.vitals, hesitateTo ? hesitateTo.vitals : null);
   if(patient) patient.update(seenNodes());
+  if (studio) {
+    studio.root.setAttribute('data-sim', 'call');
+    studio.pills(hesitateTo ? [{ html: 'Time-critical', tone: 'bad' }] : [], 'right');
+    // The caption is the situation; what the last choice did lands on the stage.
+    studio.caption(node.text);
+    const what = box.querySelector('.sim-ls-what');
+    if (what) { what.hidden = !consequenceText; what.innerHTML = consequenceText ? '<b>What happened.</b> ' + consequenceText : ''; }
+    studioWhy();
+  }
   shownAt = Date.now();
   host.querySelectorAll('[data-choice]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -2428,6 +2559,7 @@ function renderNode(consequenceText){
 // Called now and whenever access changes. A run already under way when access
 // lapses is left to finish; the next pick meets the gate.
 G.onChange(renderPicker);
+if (studio) studio.hint({ target: document.querySelector('#pickerGrid [data-scenario]'), text: 'Pick a call to start', round: 18 });
 // From Review: scenario-sim.html?scenario=<id> opens that call.
 (function(){
   const id = new URLSearchParams(location.search).get('scenario');

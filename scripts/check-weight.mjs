@@ -123,8 +123,15 @@ const SHELL_BUDGETS = [
      its own because only course pages load it. Measured 10.5 KB with the
      glossary work (W-A). 14 -> 17 once book.css, study.css/js and hub.css/js
      joined it (W-B, W-C, W-D), each replacing four per-course copies; the
-     /assets every-page ruler stayed under its old 282. Measured 16.0 KB. */
-  ['assets/course', 17],
+     /assets every-page ruler stayed under its old 282. Measured 16.0 KB.
+     17 -> 19.5 (calm tools P1, docs/tools-calm.md): tool pages also load the shared Tool Studio (tool-studio.css/js, about 3.4 KB); an A&P tool page measured 19.4 KB.
+     19.5 -> 20.5 (calm tools shared fixes): the Tool Studio took over the courses' workarounds (stepper without done,
+     one mode listener, closed-<details> focus trap, footer as a group in About, slim bar and back/All tools options);
+     the ochem and AP Chem copies left their own shells. Measured 20.0 KB.
+     20.5 -> 21.5 (calm tools student tests): hint placement that keeps off the bar and caption, the sticky
+     primary row, the stepper's Next tone and focus rules, one-line pills, segment contrast. Only tool pages
+     load tool-studio.*; other course pages do not pay for it. Measured 21.2 KB. */
+  ['assets/course', 21.5],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -146,7 +153,9 @@ const SHELL_BUDGETS = [
      patient's short callouts (the word list that turns a case sentence into "Right thigh /
      Spurting bleed", the side-by-side callout layout) and the Front/Back toggle. Loads only on
      scenario-sim.html; the anatomy images are fetched on demand and not counted. */
-  ['nremt', 22],
+  /* 22 -> 26.5 (calm tools P1, docs/tools-calm.md): the Tool Studio frame's NREMT side,
+     nremt-studio.js/.css plus the tool's own studio/<slug>.css; measured 26.2 KB on scenario-sim.html. */
+  ['nremt', 26.5],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with
@@ -261,7 +270,8 @@ const SHELL_BUDGETS = [
      heaviest, measured 46.8 KB. */
   /* 47.5 -> 48 (visual polish 2026-10): the 3D button's body icon and the shared illustration code; measured 47.7 KB. */
   /* 48 -> 49.5 (simplify pass 2026-10): the shared first-step line, segmented mode switch and Why? / More options disclosures in tool-kit.js/.css; lab practical measured 49.3 KB. */
-  ['anatomy-physiology', 49.5],
+  /* 49.5 -> 53.5 (calm tools P1, docs/tools-calm-notes/anp.md): each tool's Tool Studio arrangement and AnpToolKit.studio; lab practical measured 53.1 KB. */
+  ['anatomy-physiology', 53.5],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).
@@ -359,7 +369,8 @@ const BUDGETS = [
   // call layout, inline in the page. The case data is unchanged.
   /* 51.5 -> 52 (visual polish 2026-10): the bedside monitor's styles; measured 51.6 KB. */
   // 52 -> 53 (simplify pass 2026-10): the pick-a-call cue and the short-window sticky rule; it sat 0.1 KB under.
-  ['nremt/scenario-sim.html', 53],
+  /* 53 -> 55 (calm tools P1): the inline Tool Studio arrangement (stage/dock/Why, the call so far); measured 54.3 KB. */
+  ['nremt/scenario-sim.html', 55],
   // learn.html is a shell whose only real weight is the static table of
   // contents generated into it for readers without JavaScript — one line per
   // section. It crossed 3.0 KB when the IUPAC Nomenclature chapter added four

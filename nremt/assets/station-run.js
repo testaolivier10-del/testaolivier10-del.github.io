@@ -132,6 +132,12 @@
 
   var station = null, done = [], startedAt = 0, tick = null, targetMin = 0;
 
+  /* A host page may give the controls their own place (the Tool Studio's
+     dock: #stationRunDock): the clock, the critical list and the result stay
+     in the card, the phases to tick and the buttons go there. */
+  function dk(){ return document.getElementById('stationRunDock'); }
+  function ctl(){ return dk() || mount; }
+
   function elapsed(){ return startedAt ? Math.floor((Date.now() - startedAt) / 1000) : 0; }
   function clockText(sec){
     var m = Math.floor(sec / 60), s = sec % 60;
@@ -159,6 +165,7 @@
           }).join('') +
         '</div>' +
       '</div>';
+    if(dk()) dk().innerHTML = '';
     mount.querySelectorAll('.run-station').forEach(function(b){
       b.addEventListener('click', function(){
         begin(STATIONS[parseInt(b.getAttribute('data-i'), 10)]);
@@ -264,6 +271,25 @@
   }
 
   function renderRun(){
+    var steps =
+        '<div class="run-stepper"><ol class="run-steps">' +
+          station.steps.map(function(st, i){
+            return '<li class="run-step' + (st.critical ? ' is-critical' : '') + (done[i] ? ' is-done' : '') + '">' +
+              '<label>' +
+                '<input type="checkbox" data-i="' + i + '"' + (done[i] ? ' checked' : '') + '>' +
+                '<span class="run-step__text">' + esc(st.text) + '</span>' +
+              '</label>' +
+              (st.critical ? '<span class="run-flag">critical</span>' : '') +
+            '</li>';
+          }).join('') +
+        '</ol></div>';
+    var actions =
+        '<div class="run-actions">' +
+          '<button type="button" class="drill-next" id="runFinish">Finish and see the run</button>' +
+          '<button type="button" class="run-quit" id="runQuit">Pick another station</button>' +
+        '</div>';
+    var d = dk();
+    if(d) d.innerHTML = steps + actions;
     mount.innerHTML =
       '<div class="run-card run-live">' +
         '<div class="run-name">' + esc(station.name) + (station.code ? ' <span class="run-code">' + esc(station.code) + '</span>' : '') + '</div>' +
@@ -284,17 +310,7 @@
         '</div>' +
 
         '<div class="run-cols">' +
-        '<ol class="run-steps">' +
-          station.steps.map(function(st, i){
-            return '<li class="run-step' + (st.critical ? ' is-critical' : '') + (done[i] ? ' is-done' : '') + '">' +
-              '<label>' +
-                '<input type="checkbox" data-i="' + i + '"' + (done[i] ? ' checked' : '') + '>' +
-                '<span class="run-step__text">' + esc(st.text) + '</span>' +
-              '</label>' +
-              (st.critical ? '<span class="run-flag">critical</span>' : '') +
-            '</li>';
-          }).join('') +
-        '</ol>' +
+        (d ? '' : steps) +
 
         (station.criteria.length
           ? '<div class="run-crit" id="runCrit">' +
@@ -310,19 +326,15 @@
 
         '<p class="run-note">These are the phases this page lists, not an official scored step order. ' +
           'Verbalize each one as you would in the room — the examiner scores what you say and show.</p>' +
-
-        '<div class="run-actions">' +
-          '<button type="button" class="drill-next" id="runFinish">Finish and see the run</button>' +
-          '<button type="button" class="run-quit" id="runQuit">Pick another station</button>' +
-        '</div>' +
+        (d ? '' : actions) +
       '</div>';
 
-    mount.querySelectorAll('.run-step input').forEach(function(box){
+    ctl().querySelectorAll('.run-step input').forEach(function(box){
       box.addEventListener('change', function(){
         var i = parseInt(box.getAttribute('data-i'), 10);
         done[i] = box.checked;
         box.closest('.run-step').classList.toggle('is-done', box.checked);
-        var li0 = mount.querySelector('.run-step');
+        var li0 = ctl().querySelector('.run-step');
         if(li0) li0.classList.toggle('is-skipped', bsiSkipped());
         lightCriteria(elapsed());
       });
@@ -354,6 +366,11 @@
       else missedOther++;
     });
     var over = sec > targetMin * 60;
+    var again =
+        '<div class="run-actions">' +
+          '<button type="button" class="drill-next" id="runAgain">Run it again</button>' +
+          '<button type="button" class="run-quit" id="runOther">Pick another station</button>' +
+        '</div>';
 
     mount.innerHTML =
       '<div class="run-card">' +
@@ -392,11 +409,9 @@
           'general structure — the real sheet has a point list and a critical-criteria list this page ' +
           'deliberately does not reproduce. Check your program’s copy for both.</p>' +
 
-        '<div class="run-actions">' +
-          '<button type="button" class="drill-next" id="runAgain">Run it again</button>' +
-          '<button type="button" class="run-quit" id="runOther">Pick another station</button>' +
-        '</div>' +
+        (dk() ? '' : again) +
       '</div>';
+    if(dk()) dk().innerHTML = again;
 
     document.getElementById('runAgain').addEventListener('click', function(){ begin(station); });
     document.getElementById('runOther').addEventListener('click', picker);

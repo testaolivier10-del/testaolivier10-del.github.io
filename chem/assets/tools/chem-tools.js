@@ -58,8 +58,13 @@
       app.innerHTML = '';
       unitMap = data.units || {};
       if(data.status === 'placeholder') app.insertAdjacentHTML('beforeend', '<p class="bt-draft"><b>Draft content.</b> These scenarios are waiting for review by a chemistry teacher. Spot a problem? Use Report a problem.</p>');
+      // Tool Studio (docs/tools-calm.md): pages.json `studio: true` puts
+      // data-studio on #app. modes() and drill() then place their parts in
+      // the frame; a trainer's explore view places its own (o.studio).
+      var studio = app.getAttribute('data-studio') && window.LevlStudio ? studioFrame(app, slug) : null;
       fn(app, data);
-    }).catch(function(){
+      if(studio) studioRest(app, studio);
+    }).catch(function(e){ try{ console.error(e); }catch(x){}
       app.innerHTML = '<p class="chem-soon" role="alert">The tool could not load. Check your connection and reload the page.</p>';
     });
   }
@@ -490,6 +495,7 @@
     if(kinds.length > 1){
       kindPicker(fr.pick, { label: o.typeLabel || 'Problem type', options: kinds, onChange: function(v){ type = v; seed = freshSeed(); draw(true); } });
     }
+    var sd = studioDrill(app, area, o);
     function pickable(){ return contexts.filter(function(c){ return !type || (c.types ? c.types.indexOf(type) > -1 : c.mode ? c.mode === type : c.kind === type); }); }
     function pickCtx(r){ var ok = pickable(); return r.pick(ok.length ? ok : contexts); }
     function draw(focus){
@@ -497,8 +503,12 @@
       area.innerHTML = '<div class="bt-prob-head"><h2 id="' + gid + '-h" tabindex="-1">' + esc(o.title ? o.title(p) : 'Practice problem') + '</h2><p class="bt-code">Problem code <b>' + seed + '</b> <a href="?seed=' + seed + '">Link to this problem</a></p></div>' +
         '<div class="bt-context">' + p.text + '</div><div class="cd-extra"></div><div class="cd-steps"></div>' +
         '<div class="bt-solution" hidden></div><div class="bt-next"></div>';
-      var api = { area: area, problem: p };
-      if(o.extra) o.extra(area.querySelector('.cd-extra'), p, api);
+      var api = { area: area, problem: p }, exEl = area.querySelector('.cd-extra');
+      // The table rows to fill live in the figure, which the Tool Studio
+      // moves to the stage: reach them through it, not through the area.
+      function rowsAll(sel){ return exEl.querySelectorAll(sel).length ? exEl.querySelectorAll(sel) : area.querySelectorAll(sel); }
+      function row1(sel){ return exEl.querySelector(sel) || area.querySelector(sel); }
+      if(o.extra) o.extra(exEl, p, api);
       var host = area.querySelector('.cd-steps');
       function step(i){
         if(i >= p.steps.length) return finish();
@@ -525,13 +535,16 @@
         host.appendChild(el);
         var rowInputs = [];
         if(s.kind === 'row' || s.kind === 'coef'){
-          area.querySelectorAll('[data-row="' + s.row + '"] [data-i]').forEach(function(td){
+          rowsAll('[data-row="' + s.row + '"] [data-i]').forEach(function(td){
             var k = +td.getAttribute('data-i');
             td.innerHTML = '<input type="text" class="cd-cell" autocomplete="off" spellcheck="false"' + (s.kind === 'num' ? '' : ' inputmode="' + (s.kind === 'coef' ? 'text' : 'decimal') + '"') + ' aria-label="' + esc(td.getAttribute('data-label')) + '">';
             rowInputs[k] = td.querySelector('input');
             rowInputs[k].addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); check(); } });
           });
-          area.querySelector('[data-row="' + s.row + '"]').classList.add('is-active');
+          var activeRow = row1('[data-row="' + s.row + '"]');
+          activeRow.classList.add('is-active');
+          // On the Tool Studio stage the table can be taller than the stage: bring the row to fill into view.
+          if(activeRow.closest('.ls-stage-body') && activeRow.scrollIntoView){ try{ activeRow.scrollIntoView({ block: 'nearest' }); }catch(e){} }
         }
         var fb = el.querySelector('.cd-fb'), input = el.querySelector('.cd-num input'), range = el.querySelector('.cd-vol input');
         if(range){
@@ -546,7 +559,7 @@
           done = true;
           el.querySelectorAll('input').forEach(function(x){ if(x.type === 'radio' || x.type === 'range') x.disabled = true; else x.readOnly = true; });
           rowInputs.forEach(function(x){ if(x) x.readOnly = true; });
-          if(s.row) area.querySelector('[data-row="' + s.row + '"]').classList.remove('is-active');
+          if(s.row) row1('[data-row="' + s.row + '"]').classList.remove('is-active');
         }
         function next(right){
           results.push({ id: slug + ':' + p.ctx + ':' + s.key, correct: right, topic: (data.partTopics && data.partTopics[s.key]) || p.topic, practice: s.practice, level: s.level || 'apply', diff: 2, group: s.key });
@@ -554,7 +567,7 @@
           if(o.onStep) o.onStep(s, right, api);
           step(i + 1);
           var nx = host.lastElementChild;
-          if(nx && nx !== el){ var f = nx.querySelector('input:not([readonly]):not([disabled])') || area.querySelector('tr.is-active input'); if(f) f.focus(); }
+          if(nx && nx !== el){ var f = nx.querySelector('input:not([readonly]):not([disabled])') || row1('tr.is-active input'); if(f) f.focus(); }
         }
         function reveal(){
           if(s.kind === 'num' || s.kind === 'vol'){ input.value = shownNum(s.cell, s.d); if(range){ range.value = String(s.cell.answer); if(o.onVol) o.onVol(s.cell.answer, s, api); } }
@@ -611,12 +624,14 @@
         record(slug, results);
         event('apchem-drill-check', { tool: slug, correct: right, total: results.length });
         var nx = area.querySelector('.bt-next');
-        nx.innerHTML = '<p class="bt-result" role="status">' + right + ' of ' + results.length + ' steps right the first time.</p><div class="bt-actions"><button type="button" class="btn-press sm cd-again">' + esc(o.newLabel || 'New problem') + '</button>' + report(slug + ':' + p.ctx) + '</div>';
+        nx.innerHTML = '<p class="bt-result" role="status">' + right + ' of ' + results.length + (results.length === 1 ? ' step' : ' steps') + ' right the first time.</p><div class="bt-actions"><button type="button" class="btn-press sm cd-again">' + esc(o.newLabel || 'New problem') + '</button>' + report(slug + ':' + p.ctx) + '</div>';
         nx.querySelector('.cd-again').addEventListener('click', function(){ seed = freshSeed(); draw(true); });
         keepGoing(nx, { topic: p.topic, also: results.filter(function(x){ return !x.correct; }).map(function(x){ return x.topic; }) });
+        if(sd){ sd.done(right, results.length); return; }
         sol.querySelector('h3').focus();
       }
       step(0);
+      if(sd) sd.fresh(p);
       if(focus) area.querySelector('h2').focus();
     }
     draw(false);
@@ -646,17 +661,26 @@
       cur = m;
       if(m === 'quiz' && !built){ built = true; o.quiz(qz); }
       ex.hidden = m !== 'explore'; qz.hidden = m !== 'quiz';
+      if(st) st.mode(m);
       bar.querySelectorAll('.bt-mode').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-m') === m)); });
       if(user){ try{ localStorage.setItem(key, m); }catch(e){} event('apchem-tool-mode', { tool: o.slug, mode: m }); }
       if(o.onShow) o.onShow(m);
     }
     bar.addEventListener('click', function(e){ var b = e.target.closest('.bt-mode'); if(b) show(b.getAttribute('data-m'), true); });
+    var st = studioOf(app);
     o.explore(ex);
     var start = 'explore';
     try{
       if(seedFromUrl() || /#quiz\b/.test(location.hash)) start = 'quiz';
       else if(localStorage.getItem(key) === 'quiz') start = 'quiz';
     }catch(e){}
+    if(st){
+      var eb = bar.querySelector('[data-m="explore"]');
+      if(/^Explore\b/.test(eb.textContent)) eb.textContent = 'Explore';
+      st.modes({ el: bar, value: start });
+      // After the switch, so the arrangement knows the mode it opens on.
+      if(o.studio && o.studio.explore) o.studio.explore(ex, st);
+    }
     show(start, false);
     return { explore: ex, quiz: qz, show: show, bar: bar };
   }
@@ -665,7 +689,163 @@
     try{ if(window.LevlMotion && window.LevlMotion.reduced) return !!window.LevlMotion.reduced(); return matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; }
   }
 
+  /* ------------------------------------------------ Tool Studio frame */
+  /* docs/tools-calm.md. studioFrame mounts the calm frame in place of the
+     hero (title, back to the tools hub; the Beta note and Report a problem
+     in the menu). modes() hands its switch to the frame and keeps the
+     frame's mode in step; a trainer's explore view arranges itself through
+     modes({ studio: { explore(pane, s) } }); drill() arranges every problem:
+       stage   .cd-extra (the problem's figure), unless it holds table rows
+       dock    the steps, one at a time (LevlStudio.stepper), then the result,
+               New problem and Keep going
+       caption the problem text (.bt-context; it stays in the dock if it
+               holds table rows to fill)
+       Why     the worked solution, once every step is answered
+       Details the problem text and code, any extra disclosures, More options
+       About   "About this drill"
+     A drill's tool code must reach its figure through its own references
+     (not app.querySelector), since the figure moves to the stage. */
+  function studioOf(app){
+    var s = window.LevlStudio && window.LevlStudio.get();
+    var root = document.getElementById('app');
+    return s && root && root.getAttribute('data-studio') && root.contains(app) ? s : null;
+  }
+  function studioFrame(app, slug){
+    var main = app.parentNode, h1 = main.querySelector('.chem-hero h1'), lede = main.querySelector('.chem-hero .lede');
+    main.classList.add('ls-host');
+    var s = window.LevlStudio.mount({
+      title: h1 ? h1.textContent : slug, course: 'AP® Chemistry', back: base() + 'tools.html', home: base(), slug: 'apchem-' + slug,
+      host: app,
+      menu: {
+        copyLink: function(){
+          var code = s.mode() === 'quiz' ? s.root.querySelector('.ls-drill-det .bt-code b') : null;
+          return location.origin + location.pathname + (code ? '?seed=' + code.textContent : '');
+        },
+        report: { course: 'apchem', id: 'tool:' + slug },
+        note: { label: 'Beta.', html: 'This course has not yet been reviewed by an AP® Chemistry teacher. <a href="' + base() + '../sources.html">Sources</a>' }
+      }
+    });
+    if(lede){ var p = document.createElement('p'); p.textContent = lede.textContent; s.add('about', p); }
+    return s;
+  }
+  function studioRest(app, s){
+    var draft = app.querySelector(':scope > .bt-draft');
+    if(draft) s.add('about', draft);
+    app.hidden = true;
+  }
+  function studioDrill(app, area, o){
+    o = o || {};
+    var s = studioOf(app);
+    if(!s) return null;
+    var only = app.classList.contains('bt-pane-quiz') ? { mode: 'quiz' } : null, m = only && only.mode;
+    var stage = document.createElement('div'), why = document.createElement('div'), det = document.createElement('div');
+    stage.className = 'ls-drill-stage'; why.className = 'ls-sec ls-drill-why'; det.className = 'ls-sec ls-drill-det';
+    s.add('stage', stage, only); s.add('why', why, only); s.add('details', det, only);
+    var more = app.querySelector(':scope > .cd-more'), about = app.querySelector(':scope > .bt-about');
+    area.classList.add('ls-drill');
+    s.add('dock', area, only);
+    if(more) s.add('details', more, only);
+    if(about){ about.open = true; s.add('about', about, only); }
+    return {
+      fresh: function(p){
+        stage.innerHTML = ''; det.innerHTML = '<h3 class="ls-title-l">This problem</h3>';
+        why.innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
+        var extra = area.querySelector(':scope > .cd-extra'), fig = extra && (extra.children.length || extra.textContent.trim());
+        var ctx = area.querySelector(':scope > .bt-context'), text = ctx ? Array.prototype.map.call(ctx.childNodes, function(n){ return n.textContent; }).join(' ').replace(/\s+/g, ' ').trim() : '';
+        // The problem is read on the stage when there is no figure, or when
+        // the drill asks (o.textOnStage: a long problem over a table to
+        // fill); otherwise it is the caption over the figure.
+        var onStage = ctx && (!fig || o.textOnStage);
+        if(onStage){ ctx.classList.add('ls-drill-text'); stage.appendChild(ctx); }
+        // The figure is the stage, table rows to fill included (drill()
+        // reaches them through the figure).
+        if(fig) stage.appendChild(extra);
+        if(ctx && !onStage && !ctx.querySelector('[data-row], input')) det.appendChild(ctx);
+        Array.prototype.slice.call(area.querySelectorAll(':scope > details')).forEach(function(d){ det.appendChild(d); });
+        var code = area.querySelector('.bt-code'); if(code) det.appendChild(code);
+        var h2 = area.querySelector('.bt-prob-head h2'); if(h2) h2.classList.add('sr-only');
+        var steps = area.querySelector(':scope > .cd-steps'), nSteps = (p.steps || []).length;
+        // One step: no "Step 1 of 1" stepper. A one-step picture choice is
+        // the picture: its options (and Check) join the problem on the stage.
+        if(steps && nSteps > 1) window.LevlStudio.stepper(steps, { items: ':scope > .cd-step', total: nSteps,
+          done: function(){ var nx = area.querySelector(':scope > .bt-next'); return !!(nx && nx.children.length); } });
+        if(steps && nSteps === 1 && steps.querySelector('.cd-pics')){ steps.classList.add('ls-drill-pics'); stage.appendChild(steps); }
+        // o.studioAsk: a long problem over a figure is captioned by its
+        // equation and its question; the whole text is in Details.
+        if(!onStage && o.studioAsk && ctx){
+          var eq = ctx.querySelector('.bt-eq'), eqT = eq ? eq.textContent.replace(/\s+/g, ' ').trim() : '';
+          var rest = eqT ? text.replace(eqT, '').trim() : text, ss = rest.match(/[^.?!]+[.?!]+/g) || [rest];
+          var ask = ss.filter(function(x){ return /\?\s*$/.test(x); }).pop() || ss[ss.length - 1];
+          text = (eqT ? eqT.replace(/\s+K\s*=/, ', K =') + '. ' : '') + ask.trim();
+        }
+        s.caption(onStage ? esc(o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.')) : esc(text), m); s.pills([], 'left', m);
+      },
+      done: function(right, total){
+        var sol = area.querySelector(':scope > .bt-solution');
+        if(sol){ why.innerHTML = ''; why.appendChild(sol); }
+        s.pills([{ html: right + ' of ' + total + ' right', tone: right === total ? 'good' : 'warn' }], 'left', m);
+        s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is under Why.', m);
+        var again = area.querySelector('.cd-again');
+        if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus(); }
+      }
+    };
+  }
+
+  /* studioPane(pane, s, o): the usual arrangement of an explore view (the
+     titration reader's, written once for the other trainers). Every part is
+     MOVED, so the tool keeps its references:
+       o.stage    [els]  the picture, in a .chem-ls-stage column
+       o.dock     [els]  the 1 to 3 primary controls, in a .chem-ls-dock
+       o.setup    'Reaction'   a "Setup" row under them that opens Details on
+                  the tool's More options (its summary renamed to o.moreLabel)
+       o.why      [els]  what is happening (each "Why?" disclosure opened,
+                  its own summary hidden: the sheet is the Why)
+       o.details  [els]  numbers and settings; then More options, then
+                  whatever else is left in the pane
+       o.mode     'explore' (default)
+     Returns { setup(text), open() }: the Setup row's value, and reopening
+     the Why disclosures after a redraw. */
+  function studioPane(pane, s, o){
+    var only = { mode: o.mode || 'explore' }, q = function(sel){ return pane.querySelector(sel); };
+    function box(cls, els){ var d = document.createElement('div'); d.className = cls; (els || []).forEach(function(e){ if(e) d.appendChild(e); }); return d; }
+    s.add('stage', box('chem-ls-stage', o.stage), only);
+    var dock = [box('chem-ls-dock', o.dock)], row = null;
+    var more = q('details.bt-more');
+    if(o.setup && more){
+      row = document.createElement('button');
+      row.type = 'button'; row.className = 'ls-linkrow chem-ls-setup';
+      row.innerHTML = '<span><span class="ls-k">' + esc(o.setup) + '</span><span class="ls-v"></span></span>' + window.LevlStudio.icon('more');
+      row.setAttribute('aria-label', o.setup + ': ' + (o.moreLabel || 'more options') + ' (opens Details)');
+      row.addEventListener('click', function(){ s.open('details', more.querySelector('summary')); });
+      dock.push(row);
+    }
+    s.add('dock', dock, only);
+    // The "Start here" cue reads as the first line of Why.
+    var why = box('ls-sec chem-ls-why', [pane.querySelector('.bt-cue')].concat(o.why || []));
+    s.add('why', why, only);
+    var det = box('ls-sec chem-ls-det', o.details);
+    if(more){
+      more.classList.add('chem-ls-more'); more.open = true;
+      if(o.moreLabel) more.querySelector('summary').textContent = o.moreLabel;
+      det.appendChild(more);
+    }
+    Array.prototype.slice.call(pane.querySelectorAll(':scope > *, :scope > .bt-problem > *')).forEach(function(k){
+      if(k.classList.contains('bt-problem') || !k.textContent.trim() && !k.querySelector('svg, input, select, button')) return;
+      det.appendChild(k);
+    });
+    s.add('details', det, only);
+    function openAll(){ why.querySelectorAll('details.bt-why').forEach(function(d){ d.open = true; }); }
+    openAll();
+    return {
+      setup: function(t){ if(row){ row.querySelector('.ls-v').textContent = t; row.setAttribute('aria-label', o.setup + ': ' + t + '. ' + (o.moreLabel || 'More options') + ' (opens Details)'); } },
+      open: openAll, why: why, details: det
+    };
+  }
+  /* The "head" line of an explain() box as plain caption html. */
+  function sayHead(el){ var h = el && el.querySelector('.bt-say-h'); return h ? h.innerHTML : ''; }
+
   window.ApChemTools = {
+    studioOf: studioOf, studioPane: studioPane, sayHead: sayHead,
     modes: modes, reduced: reduced, cue: cue, moreHtml: moreHtml, explain: explain,
     esc: esc, F: F, nid: nid, mount: mount, frame: frame, kindPicker: kindPicker, keepGoing: keepGoing, slider: slider, choiceSelect: choiceSelect, announcer: announcer,
     plot: plot, niceMax: niceMax, niceStep: niceStep, dataTable: dataTable, wrapTables: wrapTables, box: box,

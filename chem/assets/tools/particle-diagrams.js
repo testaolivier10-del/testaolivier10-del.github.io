@@ -34,17 +34,25 @@
         types: [{ value: 'hydration', label: TITLE.hydration + ' (Unit 3)' }, { value: 'limiting', label: TITLE.limiting + ' (Unit 4)' }, { value: 'equilibrium', label: TITLE.equilibrium + ' (Unit 7)' }, { value: 'acid', label: TITLE.acid + ' (Unit 8)' }],
         typeLabel: 'Kind of picture',
         title: function(p){ return TITLE[p.type]; },
+        // Tool Studio: the before box on the stage, the equation and the question as the caption.
+        studioAsk: true,
         extra: function(h, p){
           if(p.extra.before) h.innerHTML = '<figure class="cd-fig"><figcaption class="bt-small">' + (p.type === 'limiting' ? 'Before the reaction' : 'Before any reaction') + '</figcaption>' + p.extra.before + '</figure>';
         }
       });
     }
     if(!buildable.length){ quiz(app); return; }
-    T.modes(app, { slug: 'particle-diagrams', labels: ['Build it', 'Pick the picture'], explore: function(h){ build(h, buildable, M); }, quiz: quiz });
+    var ex = null;
+    T.modes(app, { slug: 'particle-diagrams', labels: ['Build it', 'Pick the picture'], explore: function(h){ ex = build(h, buildable, M); }, quiz: quiz,
+      studio: { explore: function(pane, s){ if(ex) ex.studio(pane, s); } } });
   });
 
   function build(host, ctxs, M){
     var esc = T.esc, BP = window.ApChemBeaker.pure;
+    // Lookups reach the Tool Studio too, where these parts move (studio()).
+    var LS = null, SP = null, showSlot = null;
+    function $(sel){ return host.querySelector(sel) || (LS ? LS.root.querySelector(sel) : null); }
+    function $$(sel){ var a = [].slice.call(host.querySelectorAll(sel)); return LS ? a.concat([].slice.call(LS.root.querySelectorAll(sel))) : a; }
     var BOX = { x0: 22, x1: 278, y0: 22, y1: 168 }, SL = BP.slots(20, 5, BOX);
     var ci = 0, seed = 1 + Math.floor(Math.random() * 9999), p, keys, before, mine = {}, placed = [], drag = null;
     host.innerHTML = '<section class="bt-problem pb-card" aria-labelledby="pb-h"><div class="tx-head"><h2 id="pb-h" class="pb-title"></h2><div class="pb-text"></div></div>' +
@@ -55,15 +63,15 @@
       '<div class="pb-fb" role="status" aria-live="polite"></div>' +
       '<details class="pb-tally-d"><summary>Atom tally <span class="pb-tally-s"></span></summary><div class="pb-tally" aria-live="polite"></div></details>' +
       T.moreHtml('<div class="bt-pick pb-pick"></div><div class="bt-buttons"><button type="button" class="bt-btn pb-new">New problem</button></div>', 'another kind of picture, new problem') + '</section>';
-    var pick = host.querySelector('.pb-pick'), start = T.cue('Drag a particle into your box, or tap it or +. Tap one in the box, or −, to take it out.');
+    var pick = $('.pb-pick'), start = T.cue('Drag a particle into your box, or tap it or +. Tap one in the box, or −, to take it out.');
     host.querySelector('.pb-palette').parentNode.insertBefore(start.el, host.querySelector('.pb-palette'));
     if(ctxs.length > 1){
       var sel = T.choiceSelect({ label: 'Kind', options: ctxs.map(function(c, i){ return { value: i, label: TITLE[c.kind] }; }), value: 0, onChange: function(v){ ci = +v; seed++; fresh(); } });
       sel.el.classList.add('bt-inline'); pick.appendChild(sel.el);
     }
-    host.querySelector('.pb-new').addEventListener('click', function(){ seed++; fresh(); });
-    host.querySelector('.pb-clear').addEventListener('click', function(){ keys.forEach(function(k){ mine[k] = 0; }); draw(); fb(''); });
-    host.querySelector('.pb-check').addEventListener('click', check);
+    $('.pb-new').addEventListener('click', function(){ seed++; fresh(); });
+    $('.pb-clear').addEventListener('click', function(){ keys.forEach(function(k){ mine[k] = 0; }); draw(); fb(''); });
+    $('.pb-check').addEventListener('click', check);
 
     function fresh(){
       var ctx = ctxs[ci];
@@ -72,25 +80,25 @@
       else { var e = p.extra.eq, x = p.extra.x; before = { A2: e.A2 + x, B2: e.B2 + x, AB: 0 }; keys = ['A2', 'B2', 'AB']; }
       keys.forEach(function(k){ mine[k] = 0; });
       placed = [];
-      host.querySelector('.pb-title').textContent = TITLE[p.type] + ': build the box';
-      host.querySelector('.pb-text').innerHTML = p.type === 'limiting'
+      $('.pb-title').textContent = TITLE[p.type] + ': build the box';
+      $('.pb-text').innerHTML = p.type === 'limiting'
         ? '<p class="bt-eq">' + (ctx.reactions ? eqOf(p) : '') + '</p><p class="bt-small">The reaction goes to completion. Fill the after box: what is left, and what formed?</p>'
         : '<p class="bt-eq">A₂ + B₂ ⇌ 2 AB &nbsp; K = ' + M.fmt(p.extra.K, 3) + '</p><p class="bt-small">The gas particle count does not change, so Q can be worked from counts. Fill the box with the mixture at equilibrium.</p>';
       var bc = {}; Object.keys(before).forEach(function(k){ if(before[k]) bc[k] = before[k]; });
-      host.querySelector('.pb-before').innerHTML = M.particles.box(bc, seed + 9, { w: 300, h: 190, label: 'Before: a box containing ' + M.particles.describe(bc) });
-      host.querySelector('.pb-palette').innerHTML = keys.map(function(k){
+      $('.pb-before').innerHTML = M.particles.box(bc, seed + 9, { w: 300, h: 190, label: 'Before: a box containing ' + M.particles.describe(bc) });
+      $('.pb-palette').innerHTML = keys.map(function(k){
         return '<div class="pb-pal" data-k="' + k + '"><button type="button" class="pb-chip" data-k="' + k + '" aria-label="Add one ' + esc(NAMES[k] || k) + '"><svg viewBox="-22 -18 44 36" aria-hidden="true">' + M.particles.mol(k, 0, 0, 0) + '</svg><span>' + esc(NAMES[k] || k) + '</span></button>' +
           '<button type="button" class="bt-step pb-minus" data-k="' + k + '" aria-label="Remove one ' + esc(NAMES[k] || k) + '">−</button><b class="pb-n" data-k="' + k + '">0</b><button type="button" class="bt-step pb-plus" data-k="' + k + '" aria-label="Add one ' + esc(NAMES[k] || k) + '">+</button></div>';
       }).join('');
-      host.querySelectorAll('.pb-plus').forEach(function(b){ b.addEventListener('click', function(){ add(b.getAttribute('data-k'), 1); }); });
-      host.querySelectorAll('.pb-minus').forEach(function(b){ b.addEventListener('click', function(){ add(b.getAttribute('data-k'), -1); }); });
-      host.querySelectorAll('.pb-chip').forEach(function(b){
+      $$('.pb-plus').forEach(function(b){ b.addEventListener('click', function(){ add(b.getAttribute('data-k'), 1); }); });
+      $$('.pb-minus').forEach(function(b){ b.addEventListener('click', function(){ add(b.getAttribute('data-k'), -1); }); });
+      $$('.pb-chip').forEach(function(b){
         b.addEventListener('click', function(){ if(!b._dragged) add(b.getAttribute('data-k'), 1); b._dragged = false; });
         b.addEventListener('pointerdown', function(e){ startDrag(e, b); });
       });
       var svgHtml = '<svg class="chem-svg pt-box pb-svg" viewBox="0 0 300 190" role="img" aria-label="Your after box"><rect class="pt-frame" x="1" y="1" width="298" height="188" rx="10"/><g class="pb-parts"></g><text class="pb-empty" x="150" y="100" text-anchor="middle">Empty: add particles</text></svg>';
-      host.querySelector('.pb-after').innerHTML = svgHtml;
-      host.querySelector('.pb-after svg').addEventListener('click', function(e){
+      $('.pb-after').innerHTML = svgHtml;
+      $('.pb-after svg').addEventListener('click', function(e){
         var g = e.target.closest('.pb-p'); if(g) add(g.getAttribute('data-k'), -1);
       });
       fb('');
@@ -110,22 +118,22 @@
         if(!moved && Math.hypot(ev.clientX - sx, ev.clientY - sy) < 6) return;
         if(!moved){ moved = true; ghost = document.createElement('div'); ghost.className = 'pb-ghost'; ghost.innerHTML = chip.querySelector('svg').outerHTML; document.body.appendChild(ghost); }
         ghost.style.left = ev.clientX + 'px'; ghost.style.top = ev.clientY + 'px';
-        var over = isOver(ev); host.querySelector('.pb-after').classList.toggle('is-over', over);
+        var over = isOver(ev); $('.pb-after').classList.toggle('is-over', over);
         ev.preventDefault();
       }
       function up(ev){
         window.removeEventListener('pointermove', mv); window.removeEventListener('pointerup', up); window.removeEventListener('pointercancel', up);
         if(ghost) ghost.remove();
-        host.querySelector('.pb-after').classList.remove('is-over');
+        $('.pb-after').classList.remove('is-over');
         if(moved){ chip._dragged = true; if(isOver(ev)) add(k, 1); setTimeout(function(){ chip._dragged = false; }, 0); }
       }
-      function isOver(ev){ var r = host.querySelector('.pb-after svg').getBoundingClientRect(); return ev.clientX >= r.left && ev.clientX <= r.right && ev.clientY >= r.top && ev.clientY <= r.bottom; }
+      function isOver(ev){ var r = $('.pb-after svg').getBoundingClientRect(); return ev.clientX >= r.left && ev.clientX <= r.right && ev.clientY >= r.top && ev.clientY <= r.bottom; }
       window.addEventListener('pointermove', mv, { passive: false }); window.addEventListener('pointerup', up); window.addEventListener('pointercancel', up);
     }
     function draw(){
       var counts = {}; keys.forEach(function(k){ counts[k] = mine[k]; });
       placed = BP.assign(placed, counts, SL.length);
-      var g = host.querySelector('.pb-parts'), reduced = T.reduced();
+      var g = $('.pb-parts'), reduced = T.reduced();
       var have = {}; g.querySelectorAll('.pb-p').forEach(function(n){ have[n.getAttribute('data-id')] = n; });
       var keep = {};
       placed.forEach(function(q){
@@ -139,9 +147,9 @@
         if(!reduced) requestAnimationFrame(function(){ requestAnimationFrame(function(){ n.classList.remove('is-in'); }); });
       });
       Object.keys(have).forEach(function(id){ if(!keep[id]) have[id].remove(); });
-      host.querySelector('.pb-empty').style.display = placed.length ? 'none' : '';
-      host.querySelector('.pb-after svg').setAttribute('aria-label', 'Your after box: ' + M.particles.describe(counts));
-      keys.forEach(function(k){ host.querySelector('.pb-n[data-k="' + k + '"]').textContent = mine[k]; });
+      $('.pb-empty').style.display = placed.length ? 'none' : '';
+      $('.pb-after svg').setAttribute('aria-label', 'Your after box: ' + M.particles.describe(counts));
+      keys.forEach(function(k){ $('.pb-n[data-k="' + k + '"]').textContent = mine[k]; });
       tally(counts);
     }
     function tally(counts){
@@ -150,11 +158,49 @@
       var extra = p.type === 'equilibrium' && counts.A2 * counts.B2 > 0 && els.every(function(el){ return a0[el] === (a1[el] || 0); })
         ? '<p class="bt-small pb-q">Q from your counts = (' + counts.AB + ')² / (' + counts.A2 + ' × ' + counts.B2 + ') = ' + M.fmt(counts.AB * counts.AB / (counts.A2 * counts.B2), 3) + ', K = ' + M.fmt(p.extra.K, 3) + '.</p>' : '';
       var off = els.filter(function(el){ return a0[el] !== (a1[el] || 0); }).length;
-      host.querySelector('.pb-tally').innerHTML = '<ul class="pb-atoms">' + rows + '</ul>' + extra;
-      host.querySelector('.pb-tally-s').textContent = off ? '(' + off + ' element' + (off === 1 ? '' : 's') + ' not balanced yet)' : '(every atom conserved ✓)';
+      $('.pb-tally').innerHTML = '<ul class="pb-atoms">' + rows + '</ul>' + extra;
+      $('.pb-tally-s').textContent = off ? '(' + off + ' element' + (off === 1 ? '' : 's') + ' not balanced yet)' : '(every atom conserved ✓)';
       if(Object.keys(counts).some(function(k){ return counts[k] > 0; })) start.done();
+      studioDraw();
     }
-    function fb(h){ host.querySelector('.pb-fb').innerHTML = h; }
+    function fb(h){ $('.pb-fb').innerHTML = h; if(LS) studioFb(); }
+    /* Tool Studio: the verdict lands on the stage (a pill and the caption);
+       the full message stays in Why, and Show the answer moves to the dock. */
+    function studioFb(){
+      var el = $('.pb-fb'), mark = el.querySelector('.chem-mark'), btn = el.querySelector('.pb-show');
+      showSlot.innerHTML = '';
+      if(btn){ btn.classList.add('ls-btn'); showSlot.appendChild(btn); }
+      var c = el.cloneNode(true); [].slice.call(c.querySelectorAll('.chem-mark, button')).forEach(function(x){ x.remove(); });
+      var msg = c.textContent.replace(/\s+/g, ' ').trim();
+      LS.pills(mark ? [{ html: mark.textContent, tone: mark.classList.contains('ok') ? 'good' : /Shown/.test(mark.textContent) ? 'warn' : 'bad' }] : [], 'left', 'explore');
+      LS.caption(mark ? '<b>' + esc(mark.textContent) + '.</b> ' + esc(msg) : msg ? esc(msg) : esc(instruction()), 'explore');
+    }
+    function instruction(){ var t = $('.pb-text .bt-small'); return t ? t.textContent : ''; }
+    /* Tool Studio arrangement: the equation and the two boxes on the stage;
+       the particles to add, Check my box and Empty the box in the dock; the
+       atom tally, the problem and another kind in Details. */
+    function studio(pane, s){
+      LS = s;
+      showSlot = document.createElement('div'); showSlot.className = 'pb-ls-show';
+      var row = document.createElement('div'); row.className = 'pb-ls-btns';
+      var chk = $('.pb-check'), clr = $('.pb-clear');
+      chk.classList.add('ls-btn', 'ls-pri'); clr.classList.add('ls-btn');
+      row.appendChild(chk); row.appendChild(clr);
+      var f = $('.pb-fb'); f.removeAttribute('aria-live'); f.removeAttribute('role');
+      var tally = $('details.pb-tally-d'); tally.open = true;
+      SP = T.studioPane(pane, s, { stage: [$('.pb-text'), $('.pb-boxes')], dock: [$('.pb-palette'), row, showSlot], setup: 'Kind', moreLabel: 'Another kind of picture, new problem',
+        why: [f], details: [tally] });
+      studioDraw(); studioFb();
+      if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.pb-chip'), text: 'Tap or drag a particle into your box' });
+    }
+    function studioDraw(){
+      if(!LS || !SP) return;
+      var counts = {}; keys.forEach(function(k){ counts[k] = mine[k]; });
+      var a0 = M.atomsOf(before), a1 = M.atomsOf(counts), off = Object.keys(a0).filter(function(el){ return a0[el] !== (a1[el] || 0); }).length;
+      var any = keys.some(function(k){ return mine[k] > 0; });
+      LS.pills([!any ? { html: 'Your box is empty', tone: 'ghost' } : off ? { html: off + ' element' + (off === 1 ? '' : 's') + ' not balanced', tone: 'warn' } : { html: 'Every atom conserved ✓', tone: 'good' }], 'right', 'explore');
+      SP.setup(TITLE[p.type]);
+    }
     function check(){
       var counts = {}; keys.forEach(function(k){ counts[k] = mine[k]; });
       var a0 = M.atomsOf(before), a1 = M.atomsOf(counts);
@@ -176,8 +222,9 @@
           : 'Atoms balance, but Q = ' + M.fmt(q, 3) + ' is ' + (q < p.extra.K ? 'below' : 'above') + ' K = ' + M.fmt(p.extra.K, 3) + ': ' + (q < p.extra.K ? 'let more A₂ and B₂ react (each event turns one A₂ and one B₂ into 2 AB).' : 'undo some reaction events (each turns 2 AB back into one A₂ and one B₂).');
       }
       fb('<span class="chem-mark no">Not yet</span> ' + msg + ' <button type="button" class="bt-btn pb-show">Show the answer</button>');
-      host.querySelector('.pb-show').addEventListener('click', function(){ keys.forEach(function(k){ mine[k] = right[k] || 0; }); draw(); fb('<span class="chem-mark no">Shown</span> ' + p.why[0]); });
+      $('.pb-show').addEventListener('click', function(){ keys.forEach(function(k){ mine[k] = right[k] || 0; }); draw(); fb('<span class="chem-mark no">Shown</span> ' + p.why[0]); });
     }
     fresh();
+    return { studio: studio };
   }
 })();
