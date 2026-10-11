@@ -1189,3 +1189,5 @@
   .ls-root .ls-dr-stage table{font-size:var(--ls-s);}
   .ls-root .ls-dr-stage th,.ls-root .ls-dr-stage td{padding:5px 8px;}
 }
+/* The dock scrolls: hold its .sr-only labels inside it, or they hang below the screen and the whole page scrolls (shared layer issue, reported). */
+.ls-root .ls-dock{position:relative;}
