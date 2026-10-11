@@ -406,8 +406,12 @@
     // two modes. Read: the tree is the stage; pick a tree, tap tips, ask.
     // Build: the character table and your tree are the stage; join pieces.
     studio: { sim: true, cards: [
-      { mode: 'read', label: 'Read a tree', stage: ['.tr-figwrap'], stageAlso: ['.tr-chips'], dock: ['.tr-pick', '.tr-tips'], live: '.tr-result',
+      // The tree choice is a setting (Details); the dock keeps the pieces
+      // and the questions, each one scrolling row on a phone.
+      { mode: 'read', label: 'Read a tree', stage: ['.tr-figwrap'], stageAlso: ['.tr-chips'], dock: ['.tr-tips'], live: '.tr-result',
+        caption: function(g){ return g.live ? T.esc(T.firstSentence(g.live)) : 'Tap two or more names on the tree, then ask a question about them.'; },
         why: ['.tr-about', '.tr-hint', '.tr-desc'], hint: { target: '.tr-tipg .tr-tip', text: 'Tap a name to select it' } },
-      { mode: 'build', label: 'Build a tree', stage: ['.tb-table'], stageAlso: ['.tb-out'], dock: ['.tb-pick', '.tb-pieces'], live: '.tb-status' }
+      { mode: 'build', label: 'Build a tree', stage: ['.tb-out'], stageAlso: ['.tb-table'], dock: ['.tb-pieces'], live: '.tb-status',
+        caption: function(g){ return g.live ? T.esc(T.firstSentence(g.live)) : 'Check two or more pieces that share a derived character, then join them.'; } }
     ] } });
 })();

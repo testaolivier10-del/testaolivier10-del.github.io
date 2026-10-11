@@ -1157,3 +1157,19 @@
 .ls-root .ls-gb-table caption{font-size:var(--ls-s);}
 .ls-root .ls-gb-table .bt-context{display:none;}
 .ls-root .gb-adj button{min-width:44px;}
+/* Tree reading: the taxa are one scrolling row on a phone, so the tree keeps the stage. */
+@media (max-width:999px){
+  .ls-root .ls-dock .tr-checks{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .ls-root .ls-dock .tr-checks::-webkit-scrollbar{display:none;}
+  .ls-root .ls-dock .tr-checks > *{flex:none;}
+}
+/* Population growth: the model choice is two chips in the dock on a phone (the equations are under Why and About). */
+@media (max-width:999px){ .ls-root .ls-dock .pg-eq{display:none;} }
+/* A long mode label (operons' "Going further") wraps instead of running out of the dock. */
+.ls-root .ls-dock .bt-modes .bt-radio{max-width:100%;min-width:0;}
+.ls-root .ls-dock .bt-modes .bt-radio label{white-space:normal;min-width:0;padding-top:6px;padding-bottom:6px;}
+/* Signal transduction on a phone: the cascade fills the stage width (readable labels) and the stage scrolls. */
+@media (max-width:999px){
+  .ls-root .ls-stage-body > .sg-stagefig{display:block;flex:none;}
+  .ls-root .ls-stage-body > .sg-stagefig > svg{width:100%;height:auto;max-height:none;}
+}
