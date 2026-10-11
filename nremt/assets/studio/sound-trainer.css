@@ -91,10 +91,12 @@
 .nx-sound-trainer .st-timing .st-play{background:var(--cink);color:var(--white);box-shadow:0 6px 14px rgba(20,40,35,.16);}
 .nx-sound-trainer .quiz-box{text-align:center;}
 .nx-sound-trainer .big-play-btn{width:72px;height:72px;margin:0 auto;font-size:26px;}
-.nx-sound-trainer .quiz-choices{grid-template-columns:1fr 1fr;width:100%;max-width:520px;gap:8px;}
+.nx-sound-trainer .quiz-choices{grid-template-columns:minmax(0,1fr) minmax(0,1fr);width:100%;max-width:520px;gap:8px;}
 .nx-sound-trainer .choice-btn{padding:6px 10px;line-height:1.2;}
 .nx-sound-trainer .feedback{margin:0;padding:0;border:0;}
 .nx-sound-trainer .feedback > p,.nx-sound-trainer .feedback-verdict{display:none;}
 .nx-sound-trainer .feedback.visible{display:flex;flex-direction:column;gap:10px;}
 .nx-sound-trainer .quiz-progress{display:flex;justify-content:space-between;}
 .nx-sound-trainer[data-mode=test] .ls-pills{position:static;padding:0 0 8px;}
+.nx-sound-trainer .choice-btn{display:flex;align-items:center;justify-content:center;text-align:center;text-wrap:balance;}
+.nx-sound-trainer .choice-btn{flex-wrap:wrap;gap:2px 8px;}

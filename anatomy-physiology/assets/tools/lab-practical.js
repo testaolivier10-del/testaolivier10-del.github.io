@@ -373,6 +373,19 @@
     else if(!setup) ST.caption('');
     ST.put('stage', stage);
     ST.put('dock', dock);
+    // An answer: verdict pill on the stage; the structure's role goes to Why.
+    dock.forEach(function(el){
+      if(!el.classList || !el.classList.contains('lp-feedback')) return;
+      var v = el.querySelector('.lp-verdict');
+      var ok = v && v.classList.contains('ok');
+      if(v) ST.pills([{ html: ok ? 'Right' : 'Not quite', tone: ok ? 'good' : 'bad' }], 'left');
+      var extra = [].slice.call(el.querySelectorAll(':scope > .lp-fn, :scope > p.anp-small'));
+      if(extra.length){
+        var w = document.createElement('div'); w.className = 'ls-sec lp-ls-fbwhy';
+        extra.forEach(function(x){ w.appendChild(x); });
+        ST.put('why', w, { first: true });
+      }
+    });
     if(det.length){ var d = document.createElement('div'); d.className = 'ls-sec lp-ls-det'; det.forEach(function(x){ d.appendChild(x); }); ST.put('details', d); }
     if(pick) ST.put('dock', pick);
     ST.stage.scrollTop = 0;
@@ -527,7 +540,7 @@
         (mode === 'study' && window.AnpToolKit && window.AnpToolKit.more ? window.AnpToolKit.more('<div class="lp-actions"><button type="button" class="btn-outline sm lp-all" data-v="1">Reveal all</button><button type="button" class="btn-outline sm lp-all" data-v="0">Hide all</button><a class="btn-press sm" href="#quiz/' + s.id + '">Quiz me on this set</a></div>', { open: !!studyOpen, cls: 'lp-studymore' })
           : mode === 'study' ? '<div class="lp-actions"><button type="button" class="btn-outline sm lp-all" data-v="1">Reveal all</button><button type="button" class="btn-outline sm lp-all" data-v="0">Hide all</button><a class="btn-press sm" href="#quiz/' + s.id + '">Quiz me on this set</a></div>' : '') +
         '<div class="lp-stage">' + figureHtml(st, { mode: mode, reveal: reveal, zoom: z, pick: pick }) +
-        '<div class="lp-info" aria-live="polite">' + (pick ? infoHtml(pick, st) : '<p class="anp-small">' + (mode === 'explore' ? 'Select a label on the figure.' : 'Revealed labels are explained here.') + '</p>') + '</div></div>' +
+        '<div class="lp-info" aria-live="polite">' + (pick ? infoHtml(pick, st) : mode === 'explore' ? '' : '<p class="anp-small">Revealed labels are explained here.</p>') + '</div></div>' +
         (n + 1 < s.stations.length ? '<p class="lp-next"><a class="btn-outline" href="#' + mode + '/' + s.id + '/' + (n + 2) + '">Next figure &rarr;</a></p>' : '');
       paint(body);
       setPicker(s, mode);
