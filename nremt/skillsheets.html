@@ -33,6 +33,13 @@
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
+<!-- tool-studio:start -->
+<link rel="stylesheet" href="../assets/course/tool-studio.css">
+<link rel="stylesheet" href="assets/nremt-studio.css">
+<link rel="stylesheet" href="assets/studio/skillsheets.css">
+<script src="../assets/course/tool-studio.js" defer></script>
+<script src="assets/nremt-studio.js" defer></script>
+<!-- tool-studio:end -->
 <style>
   h2{font-size:21px;font-weight:900;margin:44px 0 10px;}
   .skill-card{
@@ -443,5 +450,81 @@
 </div>
 <script src="assets/nav.js" defer></script>
 <script src="assets/station-run.js" defer></script>
+<script>
+/* ---- Tool Studio (docs/tools-calm.md; assets/nremt-studio.js) ------------
+   The station run is the tool. Stage: the stations to pick from, then the
+   clock with the critical criteria, then the result. Dock: the phases, one
+   at a time ("Phase 2 of 6": say it, tick it, it moves on), and the
+   buttons (station-run.js renders them into #stationRunDock). Why: what a
+   run is, and the picked station's card. Details: the reading guide (how
+   the stations are scored, the official sheets, every station's card). */
+document.addEventListener('DOMContentLoaded', function(){
+  var studio = window.NremtStudio ? window.NremtStudio.mount({ title: 'Station run', slug: 'skillsheets' }) : null;
+  if(!studio) return;
+  var run = document.getElementById('stationRun');
+  var dock = document.createElement('div'); dock.id = 'stationRunDock'; dock.className = 'sk-ls-dock';
+  document.getElementById('runH').hidden = true;
+  studio.add('stage', run);
+  window.NremtStudio.scrollable(run, 'Station');
+  studio.add('dock', dock);
+  var why = document.createElement('div'); why.className = 'sk-ls-why';
+  studio.add('why', why);
+  var guide = document.createElement('div'); guide.className = 'ls-sec';
+  guide.innerHTML = '<h3 class="ls-h">Reading guide</h3>';
+  guide.appendChild(document.querySelector('.ss-note'));
+  document.querySelectorAll('.ss-more').forEach(function(d){ guide.appendChild(d); });
+  studio.add('details', guide);
+  var INTRO = '<h3 class="ls-title-l">A station, out loud, against the clock</h3>' +
+    '<p>Examiners score what you say and show, not what you think. Say each phase out loud as you would in the room, then tick it. The clock runs against the station&rsquo;s limit, and the critical criteria light up when the run breaks one: no PPE if you tick a later phase before BSI, and the time limit once it passes. Tap any other criterion you know you broke.</p>' +
+    '<p>No points, no pass or fail: the real sheet has its own point list. The reading guide in Details has how scoring works and the official sheets.</p>';
+  var stepped = null;
+  function card(name){
+    var hit = null;
+    document.querySelectorAll('#stationCards .skill-card').forEach(function(c){ var h = c.querySelector('h3'); if(h && name && h.textContent.trim() === name.trim()) hit = c; });
+    return hit;
+  }
+  function paint(){
+    var live = run.querySelector('.run-live'), pick = run.querySelector('.run-pick'), name = run.querySelector('.run-name');
+    var st = pick ? 'pick' : live ? 'run' : 'done';
+    studio.root.setAttribute('data-run', st);
+    if(st === 'pick'){
+      studio.caption('Pick a station. Say each phase out loud and tick it; the clock runs.');
+      studio.pills([]);
+      why.innerHTML = INTRO;
+      return;
+    }
+    var c = card(name && name.firstChild ? name.firstChild.textContent : '');
+    var hs = run.querySelector('.run-hearsay'), cs = run.querySelector('.run-crit-sub');
+    why.innerHTML = INTRO + (hs ? '<p class="ls-sub"><b>The limit.</b> ' + hs.innerHTML + '</p>' : '') + (cs ? '<p class="ls-sub"><b>The critical criteria.</b> ' + cs.innerHTML + '</p>' : '') + (c ? '<h3 class="ls-h">' + c.querySelector('h3').textContent + '</h3>' +
+      [].filter.call(c.children, function(x){ return x.tagName !== 'H3'; }).map(function(x){ return '<p>' + x.innerHTML + '</p>'; }).join('') : '');
+    if(st === 'run'){
+      studio.caption('<b>Say it out loud,</b> then tick it. Finish when the station is done.');
+    } else {
+      var v = run.querySelector('.run-result__row .v');
+      studio.caption('<b>Your run.</b> No score: your program&rsquo;s sheet decides.');
+      studio.pills(v ? [{ html: v.textContent.split(' against')[0], k: 'Time', tone: v.classList.contains('over') ? 'bad' : 'readout' }] : []);
+    }
+  }
+  /* One phase at a time: the shared stepper over the run's checkboxes. A tick
+     moves on to the next phase; Back and Next walk them; the last one is
+     followed by Finish. */
+  new MutationObserver(function(){
+    var wrap = dock.querySelector('.run-stepper');
+    if(wrap && wrap !== stepped){
+      stepped = wrap;
+      // done() is passed so the shared stepper's MutationObserver gets valid options.
+      var sp = window.LevlStudio.stepper(wrap, { items: 'li.run-step', label: 'Phase', done: function(){ return false; } });
+      wrap.addEventListener('change', function(e){
+        if(!e.target.checked) return;
+        var all = [].slice.call(wrap.querySelectorAll('li.run-step')), i = all.indexOf(e.target.closest('li'));
+        if(i >= 0 && i < all.length - 1) setTimeout(function(){ sp.go(i + 1); }, 250);
+      });
+    }
+  }).observe(dock, { childList: true });
+  new MutationObserver(paint).observe(run, { childList: true });
+  paint();
+  studio.hint({ target: run.querySelector('.run-station'), text: 'Pick a station to run', round: 16 });
+});
+</script>
 </body>
 </html>

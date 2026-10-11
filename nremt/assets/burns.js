@@ -225,13 +225,20 @@
         '</div>' +
       '</div>';
 
+    /* Element references are taken once here, not looked up under root later,
+       so a host page can move the parts (the Tool Studio puts the figures on
+       its stage and the controls in its dock). */
+    var svgs = { front: root.querySelector('svg[data-view="front"]'), back: root.querySelector('svg[data-view="back"]') };
+    var figsEl = root.querySelector('.bn-figs');
+    var ageBtns = Array.prototype.slice.call(root.querySelectorAll('[data-age]'));
+    var brushBtns = Array.prototype.slice.call(root.querySelectorAll('[data-brush]'));
     var regs = {}, drawn = null;
     function draw(){
       var variant = st.child ? 'child' : 'adult';
       if(drawn === variant || !figData(variant, 'front')) return;
       drawn = variant; regs = {};
       ['front','back'].forEach(function(v, i){
-        var svg = root.querySelector('svg[data-view="' + v + '"]');
+        var svg = svgs[v];
         var r = drawFigure(svg, v, i + '' + Math.floor(Math.random() * 1e6), variant);
         for(var k in r) regs[k] = r[k];
       });
@@ -271,8 +278,8 @@
       var hideTotal = st.quiz && st.quiz.kind === 'paint' && !st.answered;
       total$.textContent = hideTotal ? '?' : fmt(t) + '%';
       age$.textContent = st.child ? 'Child chart: head 18%, each leg 13.5%' : 'Adult Rule of Nines';
-      root.querySelectorAll('[data-age]').forEach(function(b){ b.setAttribute('aria-pressed', (b.dataset.age === 'child') === st.child ? 'true' : 'false'); });
-      root.querySelectorAll('[data-brush]').forEach(function(b){ b.setAttribute('aria-pressed', +b.dataset.brush === st.brush ? 'true' : 'false'); });
+      ageBtns.forEach(function(b){ b.setAttribute('aria-pressed', (b.dataset.age === 'child') === st.child ? 'true' : 'false'); });
+      brushBtns.forEach(function(b){ b.setAttribute('aria-pressed', +b.dataset.brush === st.brush ? 'true' : 'false'); });
       var ids = REGIONS.filter(function(r){ return st.marks[r.id]; });
       clearBtn.hidden = !ids.length || !!(st.quiz && (st.quiz.kind === 'estimate' || st.answered));
       list.innerHTML = ids.map(function(r){
@@ -280,7 +287,7 @@
         return '<li><span>' + esc(r.name) + (m === 0.5 ? ' <em>(half)</em>' : '') + '</span><b>' + fmt(pct(r.id, st.child) * m) + '%</b></li>';
       }).join('');
       var big = t > 10 && !hideTotal ? '<p class="bn-flag">Over 10%: if these are partial-thickness burns, that alone meets burn center criteria. Cover with dry sterile dressings: cool wet dressings over more than 10% risk hypothermia.</p>' : '';
-      var old = root.querySelector('.bn-flag'); if(old) old.remove();
+      var old = list.nextElementSibling; if(old && old.classList.contains('bn-flag')) old.remove();
       if(big) list.insertAdjacentHTML('afterend', big);
       return t;
     }
@@ -311,7 +318,7 @@
 
     /* tap, keyboard, and drag to paint */
     var dragging = false, dragSeen = null, downId = null, moved = false;
-    root.querySelectorAll('.bn-svg').forEach(function(svg){
+    [svgs.front, svgs.back].forEach(function(svg){
       svg.addEventListener('pointerdown', function(e){
         var g = e.target.closest && e.target.closest('[data-region]');
         dragging = true; moved = false; dragSeen = {}; downId = g ? g.dataset.region : null;
@@ -322,7 +329,7 @@
       if(!dragging) return;
       var t = document.elementFromPoint(e.clientX, e.clientY);
       var g = t && t.closest && t.closest('.bn-svg [data-region]');
-      if(!g || !root.contains(g)) return;
+      if(!g || !figsEl.contains(g)) return;
       var id = g.dataset.region;
       if(dragSeen[id]) return;
       if(!moved && downId){ moved = true; apply(downId, st.brush, false); }
@@ -334,7 +341,7 @@
       dragging = false;
     });
 
-    root.querySelectorAll('[data-age]').forEach(function(b){ b.addEventListener('click', function(){
+    ageBtns.forEach(function(b){ b.addEventListener('click', function(){
       if(st.quiz) return;
       st.child = b.dataset.age === 'child'; var t = paint();
       info.innerHTML = '<p>' + (st.child
@@ -342,7 +349,7 @@
         : '<b>Adult Rule of Nines.</b> Head and neck 9%, each arm 9%, front of trunk 18%, back of trunk 18%, each leg 18%, genitals 1%.') + '</p>';
       say((st.child ? 'Child chart. ' : 'Adult chart. ') + 'Total ' + fmt(t) + ' percent.');
     }); });
-    root.querySelectorAll('[data-brush]').forEach(function(b){ b.addEventListener('click', function(){ st.brush = +b.dataset.brush; paint(); }); });
+    brushBtns.forEach(function(b){ b.addEventListener('click', function(){ st.brush = +b.dataset.brush; paint(); }); });
     root.querySelector('.bn-clear').addEventListener('click', function(){
       if(st.quiz && (st.quiz.kind === 'estimate' || st.answered)) return;
       st.marks = {}; paint(); info.innerHTML = ''; say('Cleared. Total 0 percent.');
@@ -351,7 +358,7 @@
     quizBtn.addEventListener('click', function(){ if(st.quiz) stopQuiz(); else nextQ(); });
 
     /* ---- quiz ---- */
-    function lockAge(on){ root.querySelectorAll('[data-age]').forEach(function(b){ b.disabled = on; }); }
+    function lockAge(on){ ageBtns.forEach(function(b){ b.disabled = on; }); }
     function stopQuiz(){
       st.quiz = null; st.answered = false; st.show = null; st.marks = {}; cue.hidden = false;
       qpanel.hidden = true; quizBtn.setAttribute('aria-pressed', 'false'); quizBtn.textContent = 'Quiz me';

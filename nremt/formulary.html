@@ -33,6 +33,13 @@
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
+<!-- tool-studio:start -->
+<link rel="stylesheet" href="../assets/course/tool-studio.css">
+<link rel="stylesheet" href="assets/nremt-studio.css">
+<link rel="stylesheet" href="assets/studio/formulary.css">
+<script src="../assets/course/tool-studio.js" defer></script>
+<script src="assets/nremt-studio.js" defer></script>
+<!-- tool-studio:end -->
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
 {
@@ -407,5 +414,73 @@
 <script src="assets/tool-results.js" defer></script>
 <script src="assets/formulary-drill.js" defer></script>
 <script src="assets/formulary-cards.js" defer></script>
+<script>
+/* ---- Tool Studio (docs/tools-calm.md; assets/nremt-studio.js) ------------
+   Stage: the patient card (Give or withhold?) or the bank question (Question
+   drill). Dock: Withhold / Give and, after the call, the line on the drug's
+   card that decides it, with Next patient (formulary-cards.js renders them
+   into #gwDock). Why: the whole reason, with the dose. Details: the seven
+   drug cards, which the reason links into. */
+document.addEventListener('DOMContentLoaded', function(){
+  var studio = window.NremtStudio ? window.NremtStudio.mount({ title: 'Drug formulary', slug: 'formulary' }) : null;
+  if(!studio) return;
+  var $ = function(id){ return document.getElementById(id); };
+  var gw = $('gwBox'), drill = $('drillBox'), ref = $('drugRef'), sw = $('fxMode');
+  var dock = document.createElement('div'); dock.id = 'gwDock'; dock.className = 'fx-ls-dock';
+  studio.add('stage', [gw, drill]);
+  window.NremtStudio.scrollable(gw, 'Patient card'); window.NremtStudio.scrollable(drill, 'Question');
+  studio.add('dock', dock, { mode: 'gw' });
+  var why = document.createElement('div'); why.className = 'fx-ls-why';
+  studio.add('why', why);
+  ref.open = true;
+  studio.add('details', ref);
+  var cur = function(){ var b = sw.querySelector('[aria-pressed="true"]'); return b ? b.getAttribute('data-mode') : 'gw'; };
+  studio.modes({ el: sw, value: cur() });
+  if(window.NremtFormularyCards && window.NremtFormularyCards.render) window.NremtFormularyCards.render();
+  var INTRO = '<p>An EMT carries a very short formulary, and the contraindications matter more than the indications: the exam tests what stops you, not what starts you. Each card is one patient and one drug. The reason after your call is the exact line on that drug&rsquo;s card in Details.</p>';
+  function paint(){
+    var m = cur();
+    studio.mode(m);
+    if(m === 'drill'){
+      var fb = $('drillFb'), ps = fb ? fb.querySelectorAll('p') : [];
+      if(ps.length){
+        var ok = /Correct/.test(ps[0].textContent);
+        studio.caption('<b>' + ps[0].textContent + '</b> Why? has the explanation.', 'drill');
+        studio.pills([{ html: ok ? 'Correct' : 'Not quite', tone: ok ? 'good' : 'bad' }], 'right', 'drill');
+        why.innerHTML = '<h3 class="ls-title-l">' + ps[0].textContent + '</h3>' + (ps[1] ? '<p>' + ps[1].innerHTML + '</p>' : '');
+      } else {
+        studio.caption('Questions from the bank on the seven drugs. Pick an answer.', 'drill');
+        studio.pills([], 'right', 'drill');
+        why.innerHTML = '<h3 class="ls-title-l">Question drill</h3><p>Pharmacology questions from the practice bank, one at a time. A miss goes to your Review list, where it comes back with the rest of Practice.</p>';
+      }
+      return;
+    }
+    var w = $('gwWhy'), v = w && w.querySelector('.gw-verdict'), end = gw.querySelector('.gw-end');
+    if(end){
+      studio.caption('<b>Deck done.</b> ' + (end.querySelector('p') ? end.querySelector('p').textContent : ''), 'gw');
+      studio.pills([], 'left', 'gw');
+      return;
+    }
+    var q = $('gwQ');
+    if(v){
+      studio.caption('<b>' + v.textContent + '</b> The line that decides it is below; Why? has the dose.', 'gw');
+      studio.pills([{ html: v.textContent.replace(/[:.].*$/, ''), tone: v.classList.contains('ok') ? 'good' : 'bad' }], 'right', 'gw');
+      why.innerHTML = '<h3 class="ls-title-l">' + v.textContent + '</h3>' + [].filter.call(w.children, function(x){ return !x.classList.contains('gw-verdict') && !x.classList.contains('gw-after'); }).map(function(x){ return x.outerHTML; }).join('') + INTRO;
+    } else {
+      studio.caption((q ? '<b>' + q.textContent + '</b> ' : '') + 'Swipe the card, or tap below.', 'gw');
+      studio.pills([], 'right', 'gw');
+      why.innerHTML = '<h3 class="ls-title-l">Give or withhold?</h3>' + INTRO;
+    }
+  }
+  new MutationObserver(paint).observe(dock, { childList: true, subtree: true });
+  new MutationObserver(paint).observe(gw, { childList: true });
+  new MutationObserver(paint).observe(drill, { childList: true, subtree: true });
+  sw.addEventListener('click', function(){ setTimeout(paint, 0); });
+  // "See the whole card" opens Details first; the card's own handler then scrolls to it.
+  dock.addEventListener('click', function(e){ if(e.target.closest('[data-show]')) studio.open('details'); }, true);
+  paint();
+  studio.hint({ target: dock.querySelector('.gw-yes') || gw, text: 'Give or withhold? Decide', round: 14 });
+});
+</script>
 </body>
 </html>

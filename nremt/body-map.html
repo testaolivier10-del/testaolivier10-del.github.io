@@ -33,6 +33,13 @@
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
+<!-- tool-studio:start -->
+<link rel="stylesheet" href="../assets/course/tool-studio.css">
+<link rel="stylesheet" href="assets/nremt-studio.css">
+<link rel="stylesheet" href="assets/studio/body-map.css">
+<script src="../assets/course/tool-studio.js" defer></script>
+<script src="assets/nremt-studio.js" defer></script>
+<!-- tool-studio:end -->
 <style>
   .lede{color:var(--muted);font-size:15.5px;max-width:60ch;margin:0 0 20px;}
   .warning{
@@ -453,12 +460,105 @@ document.addEventListener('DOMContentLoaded', function(){
         q: params.get('q'),
         record: r => { if (window.NremtToolResults) window.NremtToolResults.record(r); },
       });
+      if (studio) studioBurns();
     }
+    if (studio) studio.mode(m);
     if (push) { try { const u = new URL(location.href); if (isBurns) u.searchParams.set('mode', 'burns'); else { u.searchParams.delete('mode'); u.searchParams.delete('q'); } history.replaceState(null, '', u); } catch (e) {} }
   }
   document.querySelectorAll('[data-bm-mode]').forEach(b => b.addEventListener('click', () => setBmMode(b.dataset.bmMode, true)));
   const openBurns = document.querySelector('[data-open-burns]');
   if (openBurns) openBurns.addEventListener('click', e => { e.preventDefault(); setBmMode('burns', true); burnsRoot.scrollIntoView({ block: 'start' }); });
+
+  /* ---- Tool Studio (docs/tools-calm.md; assets/nremt-studio.js) ----------
+     Stage: the 3D model, or the two burn figures with the running total on
+     them. Dock: the mode switch (3D anatomy | Burns), one caption, Quiz me
+     and the quiz card. Why: what you tapped (the full card for a structure;
+     the burn breakdown and the Rule of Nines in words). Details: the view
+     settings, pick a part by name, the brush, the directional terms. The
+     elements are moved, never copied, so everything below works as before. */
+  const $ = id => document.getElementById(id);
+  const studio = window.NremtStudio ? window.NremtStudio.mount({
+    title: 'Body map', slug: 'body-map',
+    modes: { items: [{ value: 'anatomy', label: '3D anatomy' }, { value: 'burns', label: 'Burns' }],
+      value: params.get('mode') === 'burns' ? 'burns' : 'anatomy', onChange: v => setBmMode(v, true) },
+    caption: 'Tap any part of the body to learn what it does. Drag to turn it.',
+  }) : null;
+  let anchor = null;
+  if (studio) {
+    document.querySelector('.bm-modes').hidden = true;
+    const row = document.createElement('div'); row.className = 'ls-row bm-ls-row';
+    const reset = document.createElement('button'); reset.type = 'button'; reset.className = 'ls-btn'; reset.textContent = 'Reset view';
+    reset.addEventListener('click', () => $('resetBtn').click());
+    $('huntToggle').classList.add('ls-btn'); row.append($('huntToggle'), reset);
+    // A point on the chest for the first-run hint: "tap the body".
+    anchor = document.createElement('span'); anchor.className = 'bm-ls-anchor'; anchor.setAttribute('aria-hidden', 'true');
+    $('bodyViewer').appendChild(anchor);
+    studio.add('stage', $('bodyViewer'), { mode: 'anatomy' });
+    studio.add('dock', [row, $('huntPanel'), $('huntLive')], { mode: 'anatomy' });
+    studio.add('why', $('infoPanel'), { mode: 'anatomy' });
+    const view = document.createElement('div'); view.className = 'ls-sec';
+    view.innerHTML = '<h3 class="ls-h">View</h3>';
+    view.append(...document.querySelector('.bm-more-in').children);
+    const byName = document.querySelector('.bm-browse'); byName.open = true;
+    studio.add('details', [view, byName], { mode: 'anatomy' });
+    const terms = document.createElement('div'); terms.className = 'ls-sec';
+    terms.innerHTML = '<h3 class="ls-h">Directional and positional terms</h3>'; terms.append($('termsCard'));
+    studio.add('details', terms);
+    document.querySelector('.bm-cue').hidden = true;
+    // The stage changes size without a window resize (the drawer opens on a
+    // desktop, the dock grows): tell the 3D view.
+    if (window.ResizeObserver) new ResizeObserver(() => window.dispatchEvent(new Event('resize'))).observe($('bodyViewer'));
+  }
+  /* Burns arrives in the studio when it mounts (on first use). */
+  function studioBurns(){
+    const q = sel => burnsRoot.querySelector(sel);
+    const figs = q('.bn-figs'), total = q('.bn-total'), info = q('.bn-info'), side = q('.bn-side'), moreIn = q('.bn-more-in'), more = q('.bn-more');
+    const bar = q('.bn-bar'), qpanel = q('.bn-qpanel');
+    figs.appendChild(total);
+    const credit = q('.bn-credit');
+    const quiz = q('.bn-quiz'); quiz.classList.add('ls-btn');
+    const clear = q('.bn-clear'); clear.classList.add('ls-btn');
+    bar.classList.add('bn-ls-bar');
+    q('.bn-cue').hidden = true;
+    studio.add('stage', figs, { mode: 'burns' });
+    studio.add('dock', [bar, qpanel], { mode: 'burns' });
+    const rule = document.createElement('div'); rule.className = 'ls-sec';
+    rule.innerHTML = '<h3 class="ls-h">The Rule of Nines in words</h3>';
+    rule.append(...document.querySelector('.rule9-card').children);
+    rule.querySelector('[data-open-burns]').parentNode.hidden = true;
+    studio.add('why', [info, side, rule], { mode: 'burns' });
+    const brush = document.createElement('div'); brush.className = 'ls-sec';
+    brush.innerHTML = '<h3 class="ls-h">Brush</h3>';
+    brush.append(...moreIn.children);
+    more.hidden = true;
+    const cr = document.createElement('p'); cr.className = 'ls-sub'; cr.append(...credit.childNodes); credit.remove();
+    studio.add('details', [brush, cr], { mode: 'burns' });
+    // The total on the stage reads "TBSA 18%"; the long name stays for screen readers.
+    const k = total.querySelector('.bn-k'); k.classList.add('sr-only');
+    const short = document.createElement('span'); short.className = 'bn-ls-k'; short.setAttribute('aria-hidden', 'true'); short.textContent = 'TBSA';
+    total.insertBefore(short, k);
+    // The caption is the burn card's latest line (the full card is in Why);
+    // in the quiz it is the question's kind and the running score.
+    const cap = () => {
+      const quizOn = quiz.getAttribute('aria-pressed') === 'true';
+      if (quizOn) {
+        const kind = qpanel.querySelector(':scope > .bn-k'), tally = qpanel.querySelector('.bn-tally');
+        studio.caption('<b>' + (kind ? kind.textContent : 'Quiz') + '.</b>' + (tally ? ' ' + tally.textContent + '.' : ''), 'burns');
+        const v = qpanel.querySelector('.bn-verdict');
+        studio.pills(v ? [{ html: v.textContent, tone: v.classList.contains('ok') ? 'good' : 'bad' }] : [], 'right', 'burns');
+      } else {
+        studio.pills([], 'right', 'burns');
+        studio.caption(info.innerHTML.replace(/<\/?p>/g, '') || 'Tap a region to mark it burned, or drag across several.', 'burns');
+      }
+    };
+    [info, qpanel].forEach(el => new MutationObserver(cap).observe(el, { childList: true, subtree: true, characterData: true }));
+    new MutationObserver(cap).observe(quiz, { attributes: true, attributeFilter: ['aria-pressed'] });
+    cap();
+    const front = figs.querySelector('.bn-fig');
+    const spot = document.createElement('span'); spot.className = 'bm-ls-anchor bn-ls-anchor'; spot.setAttribute('aria-hidden', 'true');
+    front.appendChild(spot);
+    studio.hint({ target: spot, text: 'Tap a region to mark it burned', key: 'nremt-body-map-burns' });
+  }
   if (params.get('mode') === 'burns') setBmMode('burns');
 
   if (!window.LevlBodyViewer) return;
@@ -468,10 +568,20 @@ document.addEventListener('DOMContentLoaded', function(){
     focus: params.get('focus'),
     hint: false, // the cue above the model already says what to do
     placeholder: '<p class="info-placeholder">Tap a part of the model and what it is shows here.</p>',
+    onSelect: studio ? (key, c) => {
+      if (viewer && viewer.hunt.active()) return;
+      if (!c) { studio.pills([], 'left', 'anatomy'); studio.caption('Tap any part of the body to learn what it does. Drag to turn it.', 'anatomy'); return; }
+      const first = String(c.funct || '').split(/(?<=\.)\s/)[0];
+      studio.pills([{ html: c.name }], 'left', 'anatomy');
+      studio.caption('<b>' + c.name + '.</b> ' + first, 'anatomy');
+    } : undefined,
   });
+  if (studio) studio.hint({ target: anchor, text: 'Tap any part of the body', key: 'nremt-body-map' });
 
   const toggle = document.getElementById('huntToggle');
   const panel = document.getElementById('huntPanel');
+  // A new question clears the last verdict pill from the stage.
+  if (studio) new MutationObserver(() => { if (!panel.querySelector('.hunt-verdict')) studio.pills([], 'left', 'anatomy'); }).observe(panel, { childList: true });
   function setToggle(on){
     toggle.textContent = on ? 'Stop the quiz' : 'Quiz me';
     toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
@@ -485,15 +595,17 @@ document.addEventListener('DOMContentLoaded', function(){
       /* A miss goes to Review with a link straight back to a hunt for the
          same structure; finding it later takes it off the list. */
       onAnswer(r){
+        if (studio) studio.pills([{ html: r.correct ? 'Found it: ' + r.name : 'That is the ' + (r.pickedName || 'wrong part'), tone: r.correct ? 'good' : 'bad' }], 'left', 'anatomy');
         if (window.NremtToolResults) window.NremtToolResults.record({
           tool: 'body-map', id: r.key, correct: r.correct,
           label: 'Find the ' + r.name + ' on the model',
           href: 'body-map.html?hunt=' + encodeURIComponent(r.name.toLowerCase()),
         });
       },
-      onStop(){ setToggle(false); },
+      onStop(){ setToggle(false); if (studio) { studio.pills([], 'left', 'anatomy'); studio.caption('Tap any part of the body to learn what it does. Drag to turn it.', 'anatomy'); } },
     });
     setToggle(true);
+    if (studio) studio.caption('<b>Find it on the model</b> and tap it. Not sure? Show me highlights it.', 'anatomy');
   });
   // From Review: body-map.html?hunt=<name> opens the quiz on that structure.
   if (params.get('hunt')) toggle.click();

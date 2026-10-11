@@ -185,10 +185,26 @@
 
   var current = null, answered = false, tally = { right:0, total:0 };
 
+  /* A host page may give the question its own place (the Tool Studio's dock:
+     #flowDrillDock): the chain stays here, the lead, the choices and the
+     verdict go there. Without one, everything is in the card as before. */
+  function dockEl(){ return document.getElementById('flowDrillDock'); }
+  function opts(){ return (dockEl() || mount).querySelectorAll('.drill-opt'); }
+
   function render(){
     current = nextQuestion();
     answered = false;
-    if(!current){ mount.innerHTML = '<div class="drill-card">Nothing left to ask.</div>'; return; }
+    var dk = dockEl();
+    if(!current){ mount.innerHTML = '<div class="drill-card">Nothing left to ask.</div>'; if(dk) dk.innerHTML = ''; return; }
+    var ask =
+        '<div class="drill-lead">' + esc(current.lead) + '</div>' +
+        '<div class="drill-opts" role="group" aria-label="Choices">' +
+          current.options.map(function(t, i){
+            return '<button type="button" class="drill-opt" data-i="' + i + '">' + esc(t) + '</button>';
+          }).join('') +
+        '</div>' +
+        '<div class="drill-after" id="drillAfter" role="status" aria-live="polite"></div>';
+    if(dk) dk.innerHTML = ask;
 
     mount.innerHTML =
       '<div class="drill-card">' +
@@ -207,16 +223,10 @@
             : '<div class="drill-arrow" aria-hidden="true">&darr;</div>') +
           '<div class="drill-step drill-step--blank">?</div>' +
         '</div>' +
-        '<div class="drill-lead">' + esc(current.lead) + '</div>' +
-        '<div class="drill-opts" role="group" aria-label="Choices">' +
-          current.options.map(function(t, i){
-            return '<button type="button" class="drill-opt" data-i="' + i + '">' + esc(t) + '</button>';
-          }).join('') +
-        '</div>' +
-        '<div class="drill-after" id="drillAfter" role="status" aria-live="polite"></div>' +
+        (dk ? '' : ask) +
       '</div>';
 
-    mount.querySelectorAll('.drill-opt').forEach(function(btn){
+    opts().forEach(function(btn){
       btn.addEventListener('click', function(){
         if(answered) return;
         choose(current.options[parseInt(btn.getAttribute('data-i'), 10)], btn);
@@ -230,7 +240,7 @@
     tally.total++;
     if(right) tally.right++;
 
-    mount.querySelectorAll('.drill-opt').forEach(function(b){
+    opts().forEach(function(b){
       b.disabled = true;
       if(b.textContent === current.correct) b.classList.add('is-right');
       else if(b === btn) b.classList.add('is-wrong');
@@ -308,6 +318,7 @@
     showDiagram(a.getAttribute('data-see'));
   }
   mount.addEventListener('click', onSee);
+  document.addEventListener('click', function(e){ var d = dockEl(); if(d && d.contains(e.target)) onSee(e); });
   var buildBox = document.getElementById('flowBuild');
   if(buildBox) buildBox.addEventListener('click', onSee);
   function fromHash(){

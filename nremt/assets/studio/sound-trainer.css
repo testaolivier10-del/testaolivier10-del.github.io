@@ -1,0 +1,100 @@
+/* Sound trainer in the Tool Studio (docs/tools-calm.md): fits this tool's own parts
+   into the frame. Loaded after nremt-studio.css, on sound-trainer.html only. */
+.nx-sound-trainer .st-fig{flex:1;min-height:0;display:flex;flex-direction:column;margin:0;padding:0;border:0;box-shadow:none;background:none;}
+.nx-sound-trainer .st-fig[hidden],.nx-sound-trainer .st-side[hidden]{display:none;}
+.nx-sound-trainer .st-body{flex:1;min-height:0;width:100%;height:100%;max-width:none;max-height:none;}
+.nx-sound-trainer .st-views{position:absolute;top:0;left:0;right:auto;display:inline-flex;gap:0;padding:3px;border-radius:999px;background:var(--track);}
+.nx-sound-trainer .st-views button{min-height:38px;padding:0 14px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:800 var(--ls-s) var(--font-ui);}
+.nx-sound-trainer .st-views button[aria-pressed=true]{background:var(--white);color:var(--ink);box-shadow:0 1px 2px rgba(20,40,35,.08),0 2px 8px rgba(20,40,35,.06);}
+:root[data-theme="dark"] .nx-sound-trainer .st-views button[aria-pressed=true]{background:var(--surface2);box-shadow:0 0 0 1.5px var(--line);}
+.nx-sound-trainer .st-views button::after{content:"";position:absolute;inset:-3px 0;}
+.nx-sound-trainer .st-views button{position:relative;}
+.nx-sound-trainer .st-vol{position:absolute;top:0;right:0;z-index:1;}
+.nx-sound-trainer .st-mute{min-height:44px;min-width:44px;border:0;border-radius:999px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);
+  display:inline-flex;align-items:center;gap:6px;padding:0 14px;font:800 var(--ls-s) var(--font-ui);color:var(--ink);}
+.nx-sound-trainer .st-mute svg{width:18px;height:18px;}
+.nx-sound-trainer .st-tapcue{display:none;}
+.nx-sound-trainer .ls-pills{position:absolute;left:0;right:0;bottom:12px;z-index:1;justify-content:center;pointer-events:none;}
+.nx-sound-trainer .ls-pills-l,.nx-sound-trainer .ls-pills-r{justify-content:center;}
+.nx-sound-trainer .st-quizpick{display:flex;}
+.nx-sound-trainer .st-quizpick[hidden]{display:none;}
+.nx-sound-trainer .st-quizpick button{position:relative;flex:1;min-width:0;min-height:38px;padding:0 10px;margin:0;border:0;border-radius:999px;background:transparent;color:var(--muted);
+  font:800 var(--ls-s)/1.2 var(--font-ui);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nx-sound-trainer .st-quizpick button::after{content:"";position:absolute;inset:-3px 0;}
+.nx-sound-trainer .st-quizpick button[aria-pressed=true]{background:var(--white);color:var(--ink);box-shadow:0 1px 2px rgba(20,40,35,.08),0 2px 8px rgba(20,40,35,.06);}
+:root[data-theme="dark"] .nx-sound-trainer .st-quizpick button[aria-pressed=true]{background:var(--surface2);box-shadow:0 0 0 1.5px var(--line);}
+/* explore card in the dock: chips, the play row and the strip; the lines the caption carries are hidden */
+.nx-sound-trainer .st-side{display:flex;flex-direction:column;gap:12px;}
+.nx-sound-trainer .st-side > *{margin:0;}
+.nx-sound-trainer .st-pick{display:flex;flex-direction:column;gap:8px;}
+.nx-sound-trainer .st-chips{display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:8px;margin:0 -16px 0 0;padding:2px 16px 2px 0;align-items:center;}
+.nx-sound-trainer .st-chips::-webkit-scrollbar{display:none;}
+.nx-sound-trainer .st-chips > *{flex:none;}
+.nx-sound-trainer .st-gl{font:800 var(--ls-s) var(--font-ui);color:var(--muted);text-transform:none;letter-spacing:0;}
+.nx-sound-trainer .st-chips button{min-height:44px;padding:0 16px;border:0;border-radius:999px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);
+  font:700 var(--ls-m) var(--font-ui);color:var(--ink);}
+.nx-sound-trainer .st-chips button[aria-pressed=true]{background:var(--cink);color:var(--white);box-shadow:none;}
+.nx-sound-trainer .st-side > .st-row > .st-now,.nx-sound-trainer .st-side > .st-here,.nx-sound-trainer .st-side > details.st-why{display:none;}
+.nx-sound-trainer .st-row{display:flex;align-items:center;gap:10px;}
+.nx-sound-trainer .st-play{flex:1;min-height:44px;border:0;border-radius:999px;background:var(--cink);color:var(--white);font:800 var(--ls-m) var(--font-ui);padding:0 18px;box-shadow:0 6px 14px rgba(20,40,35,.16);}
+.nx-sound-trainer .st-cmp .st-row .st-now{flex:1;}
+.nx-sound-trainer .st-cap-line{font-size:var(--ls-s);color:var(--muted);}
+.nx-sound-trainer .st-q .st-k{font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;color:var(--muted);}
+.nx-sound-trainer .st-q strong{display:block;font:900 var(--ls-l)/1.25 var(--font-ui);}
+.nx-sound-trainer .st-side p,.nx-sound-trainer .st-timing p{font-size:var(--ls-m);}
+.nx-sound-trainer .st-hint{display:none;}
+.nx-sound-trainer .st-next,.nx-sound-trainer .next-btn,.nx-sound-trainer .start-btn{width:100%;min-height:44px;border:0;border-radius:999px;background:var(--cink);color:var(--white);font:800 var(--ls-m) var(--font-ui);}
+.nx-sound-trainer .st-actions{margin:0;}
+/* tests on the stage */
+.nx-sound-trainer .st-timing{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:12px;margin:0;}
+.nx-sound-trainer .st-timing[hidden],.nx-sound-trainer #quizSection[hidden]{display:none;}
+.nx-sound-trainer .st-timing .st-q strong{display:none;}
+.nx-sound-trainer #quizSection{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;margin:0;}
+.nx-sound-trainer #quizSection > h2,.nx-sound-trainer #quizSection > .section-sub{display:none;}
+.nx-sound-trainer .quiz-box{flex:1;margin:0;padding:0;border:0;box-shadow:none;background:none;display:flex;flex-direction:column;justify-content:center;gap:12px;}
+.nx-sound-trainer .quiz-hint{display:none;}
+.nx-sound-trainer .quiz-progress{font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;}
+.nx-sound-trainer .choice-btn{min-height:48px;border-radius:999px;font:800 var(--ls-m) var(--font-ui);}
+.nx-sound-trainer .quiz-group{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+.nx-sound-trainer .quiz-group button{min-height:44px;}
+.nx-sound-trainer .feedback p{font-size:var(--ls-m);}
+.nx-sound-trainer .st-ls-why{display:flex;flex-direction:column;gap:12px;}
+.nx-sound-trainer .st-ls-why p{margin:0;}
+.nx-sound-trainer #listenSection details > summary{margin-bottom:0;}
+.nx-sound-trainer .st-more-in{display:flex;flex-direction:column;gap:12px;}
+.nx-sound-trainer .st-volrow{font:800 var(--ls-s) var(--font-ui);color:var(--muted);min-height:44px;}
+.nx-sound-trainer .st-volrow input{flex:1;accent-color:var(--cink);}
+.nx-sound-trainer .st-compare{display:flex;align-items:center;gap:10px;min-height:44px;font-size:var(--ls-m);}
+.nx-sound-trainer .st-compare[hidden]{display:none;}
+.nx-sound-trainer .st-credit{font-size:var(--ls-s);color:var(--muted);}
+@media (min-width:1000px){
+  .nx-sound-trainer .st-chips{flex-wrap:wrap;overflow:visible;margin:0;padding:0;}
+}
+.nx-sound-trainer .st-gl{width:auto;flex:none;}
+.nx-sound-trainer .st-side > .st-q{order:0;}
+.nx-sound-trainer .st-side > .st-verdict{order:1;}
+.nx-sound-trainer .st-side > .st-actions{order:2;}
+.nx-sound-trainer .st-side > *{order:3;}
+.nx-sound-trainer .st-q{margin:0;padding:0;border:0;background:none;border-radius:0;}
+.nx-sound-trainer .st-tally{font:700 var(--ls-s) var(--font-ui);color:var(--muted);}
+.nx-sound-trainer .st-verdict{font:900 var(--ls-m) var(--font-ui);margin:0;}
+.nx-sound-trainer .st-timing{justify-content:center;}
+.nx-sound-trainer .st-timing .st-q .st-k{display:none;}
+.nx-sound-trainer .st-timing .st-q:not(:has(.st-tally)){display:none;}
+.nx-sound-trainer .st-timing .st-row .st-k{font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;color:var(--muted);}
+.nx-sound-trainer .synth-tag,.nx-sound-trainer .st-rec{font:800 11px var(--font-ui);letter-spacing:0;text-transform:none;}
+.nx-sound-trainer[data-mode=test] .st-side > p{display:none;}
+.nx-sound-trainer .st-side > .st-cap-line{display:none;}
+.nx-sound-trainer .st-side > .st-verdict,.nx-sound-trainer .st-side > .st-q > .st-k{display:none;}
+.nx-sound-trainer .st-row .st-k{flex:1;font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;color:var(--muted);}
+.nx-sound-trainer[data-mode=test] .st-play{flex:none;background:var(--surface2);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);}
+.nx-sound-trainer .st-timing .st-play{background:var(--cink);color:var(--white);box-shadow:0 6px 14px rgba(20,40,35,.16);}
+.nx-sound-trainer .quiz-box{text-align:center;}
+.nx-sound-trainer .big-play-btn{width:72px;height:72px;margin:0 auto;font-size:26px;}
+.nx-sound-trainer .quiz-choices{grid-template-columns:1fr 1fr;width:100%;max-width:520px;gap:8px;}
+.nx-sound-trainer .choice-btn{padding:6px 10px;line-height:1.2;}
+.nx-sound-trainer .feedback{margin:0;padding:0;border:0;}
+.nx-sound-trainer .feedback > p,.nx-sound-trainer .feedback-verdict{display:none;}
+.nx-sound-trainer .feedback.visible{display:flex;flex-direction:column;gap:10px;}
+.nx-sound-trainer .quiz-progress{display:flex;justify-content:space-between;}
+.nx-sound-trainer[data-mode=test] .ls-pills{position:static;padding:0 0 8px;}
