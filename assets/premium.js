@@ -231,7 +231,13 @@
   function currentUserId() {
     var a = window.StudyHubAccount;
     var u = a && a.user ? a.user() : null;
-    return u ? u.id : null;
+    if (u) return u.id;
+    /* Before the session is restored, the id of the session this browser
+       holds, so a Premium member's page is unlocked at first paint instead of
+       rendering locked and reloading (account.js, pendingUserId). Only ever
+       paired with the cached pass of that same id, and dropped the moment the
+       real session is known. */
+    return a && a.pendingUserId ? a.pendingUserId() : null;
   }
 
   /* Signed out is never Premium: the cache counts only for the loaded user
@@ -290,6 +296,10 @@
     // The cached pass belongs to this user: unlock now, confirm below.
     if (access().userId === uid) notify();
     if (!a || !a.rpcData) return Promise.resolve(false);
+    /* The id came from the session hint, not a restored session: asking the
+       database now would run as nobody and clear a real pass. onAuthChange
+       calls refresh() again once the session is known. */
+    if (!(a.user && a.user()) && !(a.settled && a.settled())) return Promise.resolve(false);
     return a.rpcData('my_premium', {}).then(function (rows) {
       if (!Array.isArray(rows)) { refreshFailed(); return false; }
       refreshFailures = 0;

@@ -234,11 +234,22 @@
      practice, review and exams handle their own allowance. Before launch the
      pill goes beside the page's eyebrow. A change of access (sign-in, a
      purchase) reloads the page so every surface agrees. */
+  /* A page reloads when access changes so every surface agrees. Never more
+     than twice in a minute, so an access state that keeps flipping (a slow
+     session restore, a flaky network) cannot trap the page in a reload loop. */
+  function reloadForAccess(){
+    var k = 'levl_access_reloads', now = Date.now(), list = [];
+    try { list = JSON.parse(sessionStorage.getItem(k) || '[]').filter(function(t){ return now - t < 60000; }); } catch(e){ list = []; }
+    if(list.length >= 2) return;
+    list.push(now);
+    try { sessionStorage.setItem(k, JSON.stringify(list)); } catch(e){ return; }
+    location.reload();
+  }
   function mountPremium(){
     var P = prem(), app = document.getElementById('app'), f = app && app.getAttribute('data-premium');
     if(!P) return;
     var was = locked();
-    P.onChange(function(){ if(locked() !== was) location.reload(); });
+    P.onChange(function(){ if(locked() !== was) reloadForAccess(); });
     if(!f) return;
     if(!was){ var e = document.querySelector('.anp-hero .eyebrow, .page-head .eyebrow'); if(e) e.insertAdjacentHTML('beforeend', ' ' + badge()); return; }
     if(WHOLE[f]){ app.removeAttribute('id'); app.innerHTML = gate(f, app.getAttribute('data-slug'), '', 'The word root builder, the feedback loop builder and the calculators are free.'); }

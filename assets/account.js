@@ -1757,6 +1757,7 @@
     document.head.appendChild(s);
   }
 
+  var sessionKnown = false;      // true once getSession() (or a failed load) has answered
   var connectState = 'idle';     // idle | loading | ready | failed
   var connectWaiters = [];
   function connect(cb){
@@ -1777,6 +1778,7 @@
         c.auth.getSession().then(function(res){
           var session = res.data && res.data.session;
           currentUser = session ? session.user : null;
+          sessionKnown = true;
           renderAccountUI();
           notify();
           // The pull on every page load, not only on a fresh sign-in.
@@ -1784,7 +1786,7 @@
         });
       }
       connect();
-    }, function(){ connectState = 'failed'; connect(); });
+    }, function(){ connectState = 'failed'; sessionKnown = true; connect(); });
   }
 
   /* For the sign-in buttons: when the SDK is still on its way (or not yet
@@ -2155,6 +2157,27 @@
       hash: hash
     },
     user: function(){ return currentUser; },
+    /* Until the SDK has restored the session (a second or two after load),
+       user() is null even for someone signed in. Premium checks need an
+       answer at first paint, or a page renders locked, unlocks, reloads and
+       renders locked again: an endless reload loop for every Premium member.
+       This reads the id of the session the SDK left in this browser. It is a
+       hint for first paint only: settled() turns true once the real session
+       is known, and from then on only user() counts. */
+    pendingUserId: function(){
+      if(sessionKnown) return null;
+      try {
+        for(var i = 0; i < localStorage.length; i++){
+          var k = localStorage.key(i);
+          if(!/^sb-.+-auth-token$/.test(k)) continue;
+          var v = JSON.parse(localStorage.getItem(k) || 'null');
+          var u = v && (v.user || (v.currentSession && v.currentSession.user));
+          if(u && u.id) return u.id;
+        }
+      } catch(e){ /* private mode or a malformed token: no hint */ }
+      return null;
+    },
+    settled: function(){ return sessionKnown; },
     onAuthChange: function(fn){ authListeners.push(fn); fn(currentUser); },
     openAuthModal: openAuthModal,
     renderAccountUI: renderAccountUI,
