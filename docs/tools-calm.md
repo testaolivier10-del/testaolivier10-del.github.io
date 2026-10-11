@@ -46,6 +46,15 @@ tool-studio.js; the short version:
 - `LevlStudio.stepper(container, { items, submit, total, done })`: one step at a time over existing graded inputs
   ("Step 2 of 5", dots, Back/Next; Next only to steps that exist, so a drill's own Check moves on; `done()` shows all
   steps for review; optional). `s.suspend(on)` hides the studio for a Premium gate.
+- Student-test fixes (shared2): the hint tip sits above or below its target inside the stage or dock and never
+  over the top bar or the caption line with Why (the arrow hides when it cannot touch the target); its
+  `aria-describedby` goes with it, and it follows a target the tool redraws. Pills stay on one line and end in an
+  ellipsis (`.ls-pill-t`). The selected segment has a course-colour ring and text (a tinted fill in dark mode).
+  "?" and "⋯" are 44px on desktop. `.ls-dock` is `position:relative` (the per-course patches are gone). The primary
+  row stays in view at the foot of a scrolling dock: the stepper's Back/Next, `.bt-actions`, any `.ls-act`, and a
+  plain row whose direct child is `.btn-press`/`.ls-pri` (sticky). The stepper's Next is secondary (`.is-sec`) when
+  the step has its own primary action, and `go(i)` moves focus only when focus is already in the stepper
+  (`go(i, true)` forces it).
 - The phone sheet's focus trap skips controls inside a closed `<details>` (its summary stays) and `tabindex=-1`
   controls (the unselected tab).
 - Not adopted: A&P's `AnpToolKit.studio` helpers (`put`/`reset` for its render-into-staging cycle, `mirror`,

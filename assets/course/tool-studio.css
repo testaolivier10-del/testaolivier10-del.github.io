@@ -68,10 +68,13 @@ html.ls-lock{overflow:hidden;}
   background:var(--white);border-radius:var(--ls-r);box-shadow:var(--elev-1);overflow:hidden;}
 .ls-pills{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:14px 14px 0;flex:none;}
 .ls-pills:not(:has(.ls-pill)){display:none;}
-.ls-pills-l,.ls-pills-r{display:flex;flex-wrap:wrap;gap:8px;min-width:0;}
+.ls-pills-l,.ls-pills-r{display:flex;flex-wrap:wrap;gap:8px;min-width:0;max-width:100%;}
 .ls-pills-r{justify-content:flex-end;}
 .ls-pill{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:3px 12px;border-radius:999px;font-size:var(--ls-s);font-weight:800;
-  line-height:1.2;background:var(--ctint);color:var(--cink);}
+  line-height:1.2;background:var(--ctint);color:var(--cink);white-space:nowrap;flex:0 1 auto;min-width:0;max-width:100%;}
+/* One line: a long pill shrinks and ends in an ellipsis, it never wraps. */
+.ls-pill-t{min-width:0;overflow:hidden;text-overflow:ellipsis;}
+.ls-pill-k{flex:none;}
 .ls-pill-good{background:var(--tint-good);color:var(--good-text);}
 .ls-pill-bad{background:var(--tint-bad);color:var(--bad-text);}
 .ls-pill-warn{background:var(--tint-amber);color:var(--amber-text);}
@@ -82,10 +85,14 @@ html.ls-lock{overflow:hidden;}
 .ls-pill-dot{width:10px;height:10px;border-radius:999px;display:inline-block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15);}
 .ls-stage-body{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;padding:8px 14px 14px;overflow:auto;}
 
-.ls-dock{flex:none;display:flex;flex-direction:column;gap:14px;padding:14px 16px calc(20px + env(safe-area-inset-bottom));
+.ls-dock{position:relative;flex:none;display:flex;flex-direction:column;gap:14px;padding:14px 16px calc(20px + env(safe-area-inset-bottom));
   background:var(--white);border-radius:var(--ls-r) var(--ls-r) 0 0;box-shadow:0 -1px 0 var(--line-soft),0 -10px 30px rgba(20,40,35,.06);}
 .ls-dock-body{display:flex;flex-direction:column;gap:14px;min-width:0;}
 .ls-dock-body:empty,.ls-modes:empty{display:none;}
+/* The primary action row (the stepper's Back/Next, .ls-act, a row of buttons
+   holding the primary one) stays in view at the foot of a dock that scrolls. */
+.ls-dock .ls-act,.ls-dock .bt-actions,
+.ls-dock :is(div,p):has(> .btn-press,> .ls-pri):not(:has(input,select,textarea,fieldset,.ls-stepper,.ls-act)){position:sticky;bottom:0;z-index:2;background:var(--white);box-shadow:0 0 0 6px var(--white);}
 .ls-modes[hidden]{display:none;}
 
 /* the segmented control (modes and the sheet's tabs) */
@@ -93,10 +100,13 @@ html.ls-lock{overflow:hidden;}
 .ls-seg > button,.ls-seg > .bt-mode{position:relative;flex:1;min-width:0;min-height:38px;padding:0 12px;margin:0;border:0;border-radius:999px;background:transparent;
   color:var(--muted);font:800 var(--ls-s)/1.2 var(--font-ui);cursor:pointer;box-shadow:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .ls-seg > button::after{content:"";position:absolute;inset:-3px 0;}
-.ls-seg > button[aria-pressed=true],.ls-seg > button[aria-selected=true],.ls-seg > button.on{background:var(--white);color:var(--ink);
-  box-shadow:0 1px 2px rgba(20,40,35,.08),0 2px 8px rgba(20,40,35,.06);}
+/* The selected segment: a raised card with a course-colour ring and text, so it
+   reads at a glance in both themes (dark: a tinted fill, the track is darker). */
+.ls-seg > button[aria-pressed=true],.ls-seg > button[aria-selected=true],.ls-seg > button.on,.ls-seg > .bt-mode.on{background:var(--white);color:var(--cink);
+  box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--cink) 45%, transparent),0 1px 2px rgba(20,40,35,.1),0 2px 8px rgba(20,40,35,.08);}
 :root[data-theme="dark"] .ls-seg > button[aria-pressed=true],:root[data-theme="dark"] .ls-seg > button[aria-selected=true],
-:root[data-theme="dark"] .ls-seg > button.on{background:var(--surface2);box-shadow:0 0 0 1.5px var(--line);}
+:root[data-theme="dark"] .ls-seg > button.on,:root[data-theme="dark"] .ls-seg > .bt-mode.on{background:color-mix(in srgb, var(--cink) 20%, var(--white));
+  box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--cink) 60%, transparent);}
 
 /* caption */
 .ls-cap{display:flex;gap:12px;align-items:flex-start;}
@@ -197,6 +207,7 @@ html.ls-lock{overflow:hidden;}
 .ls-coach .ls-i{width:18px;height:18px;}
 .ls-coach::after{content:"";position:absolute;bottom:-5px;left:var(--ax,24px);width:12px;height:12px;background:var(--ink);transform:rotate(45deg);border-radius:2px;}
 .ls-coach.is-below::after{bottom:auto;top:-5px;}
+.ls-coach.no-arrow::after{display:none;}
 
 /* toast */
 .ls-toast{position:fixed;left:50%;bottom:24px;z-index:90;transform:translate(-50%,20px);opacity:0;pointer-events:none;margin:0;
@@ -221,8 +232,7 @@ html.ls-lock{overflow:hidden;}
   .ls-title{flex:none;}
   .ls-course{display:inline;}
   .ls-tutor-btn{display:inline-flex;}
-  .ls-ib.ls-help,.ls-ib.ls-more{background:var(--white);box-shadow:var(--elev-1);width:40px;height:40px;}
-  .ls-ib.ls-help::after,.ls-ib.ls-more::after{content:"";position:absolute;inset:-2px;}
+  .ls-ib.ls-help,.ls-ib.ls-more{background:var(--white);box-shadow:var(--elev-1);width:44px;height:44px;}
   .ls-main{display:grid;grid-template-columns:minmax(0,1fr) 360px;grid-template-rows:minmax(0,1fr);gap:20px;padding:4px 24px 24px;}
   .ls-root.is-sheet .ls-main{grid-template-columns:minmax(0,1fr) 340px 380px;}
   .ls-stage{margin:0;min-height:0;height:100%;}
@@ -250,8 +260,10 @@ html.ls-lock{overflow:hidden;}
 .ls-root .tchip--ghost{background:transparent;}
 .ls-root .tseg:not(.ls-seg){display:inline-flex;padding:3px;border:0;border-radius:999px;background:var(--track);overflow:visible;}
 .ls-root .tseg:not(.ls-seg) button{min-height:44px;padding:0 14px;border-radius:999px;background:transparent;color:var(--muted);font:800 var(--ls-s) var(--font-ui);}
-.ls-root .tseg:not(.ls-seg) button.on{background:var(--white);color:var(--ink);box-shadow:0 1px 2px rgba(20,40,35,.08),0 2px 8px rgba(20,40,35,.06);}
-:root[data-theme="dark"] .ls-root .tseg:not(.ls-seg) button.on{background:var(--surface2);box-shadow:0 0 0 1.5px var(--line);}
+.ls-root .tseg:not(.ls-seg) button.on{background:var(--white);color:var(--cink);
+  box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--cink) 45%, transparent),0 1px 2px rgba(20,40,35,.1),0 2px 8px rgba(20,40,35,.08);}
+:root[data-theme="dark"] .ls-root .tseg:not(.ls-seg) button.on{background:color-mix(in srgb, var(--cink) 20%, var(--white));
+  box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--cink) 60%, transparent);}
 .ls-root .btn-press{min-height:44px;border-radius:999px;background:var(--cink);color:var(--white);box-shadow:0 6px 14px rgba(20,40,35,.16);
   font:800 var(--ls-m) var(--font-ui);border:0;padding:0 20px;}
 .ls-root details.ls-more > summary,.ls-root .tool-more > summary,.ls-root details.bt-more > summary{list-style:none;display:flex;align-items:center;gap:10px;
@@ -303,7 +315,7 @@ html.ls-lock{overflow:hidden;}
 .ls-root .bt-actions{display:flex;gap:10px;flex-wrap:wrap;}
 .ls-root .bt-actions .btn-press,.ls-root .bt-next .btn-press{flex:1;}
 .ls-root .ls-stepper .is-review .bt-part + .bt-part{padding-top:14px;border-top:1px solid var(--line-soft);}
-.ls-step-nav .ls-step-next{background:var(--cink);color:var(--white);box-shadow:0 6px 14px rgba(20,40,35,.16);}
+.ls-step-nav .ls-step-next:not(.is-sec){background:var(--cink);color:var(--white);box-shadow:0 6px 14px rgba(20,40,35,.16);}
 .ls-root .bt-result:empty{display:none;}
 .ls-foot{margin:6px 0 0;padding:14px 0 0;border-top:1px solid var(--line-soft);max-width:none;font-size:var(--ls-s);color:var(--muted);}
 .ls-foot footer,.ls-foot .ls-foot-c,.ls-foot p{margin:0 0 8px;padding:0;font-size:var(--ls-s);line-height:1.5;text-align:left;}

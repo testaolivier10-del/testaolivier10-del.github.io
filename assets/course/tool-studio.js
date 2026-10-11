@@ -60,7 +60,7 @@
      s.suspend(on)                  hide the studio and give the page its
                                     chrome back (a Premium gate, an error)
      s.root, s.stage, s.dock, s.why, s.details, s.about   the regions
-   LevlStudio.stepper(container, opts) -> { go(i), refresh(), review(on) }
+   LevlStudio.stepper(container, opts) -> { go(i, focus?), refresh(), review(on) }
      One step at a time over existing graded inputs. opts:
        items   selector (inside container) of the step elements
        submit  selector of an element to show only on the last step
@@ -70,6 +70,7 @@
      New items appearing later (a drill that appends the next step after a
      Check) are picked up and become current. Back/Next move between steps;
      Next stops at the last step that exists.
+   .ls-act on a dock row keeps it in view at the dock's foot (primary actions).
    LevlStudio.on()                  true when a studio is mounted on the page */
 (function(){
   'use strict';
@@ -258,7 +259,7 @@
     s.pills = function(items, side, m){
       pillBy[key(m) + '|' + (side === 'right' ? 'right' : 'left')] = (items || []).filter(Boolean).map(function(p){
         var tone = TONES[p.tone] ? p.tone : 'accent';
-        return '<span class="ls-pill ls-pill-' + tone + '">' + (p.k ? '<span class="ls-pill-k">' + p.k + '</span> ' : '') + p.html + '</span>';
+        return '<span class="ls-pill ls-pill-' + tone + '">' + (p.k ? '<span class="ls-pill-k">' + p.k + '</span> ' : '') + '<span class="ls-pill-t">' + p.html + '</span></span>';
       }).join('');
       if(key(m) === key() || key(m) === '*') showPills();
       return s;
@@ -474,7 +475,8 @@
     if(!o || !o.target) return null;
     var key = 'levl_hint_' + (o.key || slug || location.pathname);
     if(store(key)) return null;
-    var target = typeof o.target === 'string' ? s.root.querySelector(o.target) || document.querySelector(o.target) : o.target;
+    function find(){ return typeof o.target === 'string' ? s.root.querySelector(o.target) || document.querySelector(o.target) : o.target; }
+    var target = find();
     if(!target) return null;
     var ring = document.createElement('div'), tip = document.createElement('div');
     ring.className = 'ls-halo' + (reduced() ? ' is-static' : '');
@@ -483,14 +485,25 @@
     tip.setAttribute('role', 'note');
     tip.innerHTML = icon('tap') + '<span>' + esc(o.text) + '</span>';
     document.body.appendChild(ring); document.body.appendChild(tip);
-    // Screen readers: the tip is described on the target.
+    // Screen readers: the tip describes the target, and only while it shows.
     tip.id = nid('hint');
-    var prevDesc = target.getAttribute('aria-describedby');
-    target.setAttribute('aria-describedby', (prevDesc ? prevDesc + ' ' : '') + tip.id);
+    function describe(el, on){
+      var ids = (el.getAttribute('aria-describedby') || '').split(/\s+/).filter(function(x){ return x && x !== tip.id; });
+      if(on) ids.push(tip.id);
+      if(ids.length) el.setAttribute('aria-describedby', ids.join(' ')); else el.removeAttribute('aria-describedby');
+    }
+    describe(target, true);
     var gone = false, raf = 0;
+    function box(sel){ var e = s.root.querySelector(sel); if(!e || !e.offsetParent) return null; var b = e.getBoundingClientRect(); return b.width && b.height ? b : null; }
+    function over(a, b){ return b ? Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left)) * Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top)) : 0; }
     function place(){
       raf = 0;
       if(gone) return;
+      // A tool that redraws its parts replaces the target: follow the new one.
+      if(!document.contains(target)){
+        var t = find();
+        if(t && t !== target){ describe(target, false); target = t; describe(target, true); }
+      }
       var r = target.getBoundingClientRect();
       if(!r.width && !r.height){ ring.style.display = tip.style.display = 'none'; return; }
       ring.style.display = tip.style.display = '';
@@ -499,12 +512,23 @@
       ring.style.width = (r.width + pad * 2) + 'px'; ring.style.height = (r.height + pad * 2) + 'px';
       var round = Math.min(r.width, r.height) / 2 + pad;
       ring.style.borderRadius = (o.round != null ? o.round : round) + 'px';
-      var tw = tip.offsetWidth, th = tip.offsetHeight, vw = document.documentElement.clientWidth;
-      var above = r.top > th + 18;
-      var left = Math.max(8, Math.min(vw - tw - 8, r.left + r.width / 2 - 28));
+      var tw = tip.offsetWidth, th = tip.offsetHeight, vw = document.documentElement.clientWidth, vh = window.innerHeight;
+      // Above or below, inside the target's stage or dock: least cover of the bar, caption and target wins.
+      var reg = target.closest('.ls-stage, .ls-dock'), rr = reg ? reg.getBoundingClientRect() : null;
+      var lo = Math.max(8, rr ? rr.left + 4 : 8), hi = Math.min(vw - 8, rr ? rr.right - 4 : vw - 8);
+      var left = Math.max(lo, Math.min(hi - tw, r.left + r.width / 2 - 28));
+      if(left < 8) left = 8;
+      var keep = [box('.ls-bar'), box('.ls-cap')], best = null;
+      [r.top - th - 12, r.bottom + 12].forEach(function(top, i){
+        var t0 = Math.max(rr ? Math.max(8, rr.top + 4) : 8, Math.min(top, (rr ? Math.min(vh, rr.bottom) - 4 : vh - 8) - th));
+        var c = { left: left, right: left + tw, top: t0, bottom: t0 + th };
+        var cost = over(c, keep[0]) * 4 + over(c, keep[1]) * 4 + over(c, r) * 2 + (t0 < 0 || t0 + th > vh ? 1e7 : 0) + Math.abs(t0 - top);
+        if(!best || cost < best.cost) best = { cost: cost, top: t0, below: i === 1 };
+      });
       tip.style.left = (left + sx) + 'px';
-      tip.style.top = (above ? r.top + sy - th - 12 : r.bottom + sy + 12) + 'px';
-      tip.classList.toggle('is-below', !above);
+      tip.style.top = (best.top + sy) + 'px';
+      tip.classList.toggle('is-below', best.below);
+      tip.classList.toggle('no-arrow', best.below ? best.top > r.bottom + 14 : best.top + th < r.top - 14);
       tip.style.setProperty('--ax', Math.max(14, Math.min(tw - 26, r.left + r.width / 2 - left - 6)) + 'px');
     }
     function queue(){ if(!raf) raf = requestAnimationFrame(place); }
@@ -513,7 +537,8 @@
       gone = true;
       store(key, '1');
       ring.remove(); tip.remove();
-      if(prevDesc) target.setAttribute('aria-describedby', prevDesc); else target.removeAttribute('aria-describedby');
+      describe(target, false);
+      Array.prototype.forEach.call(document.querySelectorAll('[aria-describedby]'), function(el){ if((' ' + el.getAttribute('aria-describedby') + ' ').indexOf(' ' + tip.id + ' ') >= 0) describe(el, false); });
       window.removeEventListener('resize', queue); window.removeEventListener('scroll', queue, true);
       ['pointerdown', 'keydown', 'input', 'change'].forEach(function(t){ s.root.removeEventListener(t, onUse, true); });
       clearInterval(iv);
@@ -539,7 +564,7 @@
     var head = document.createElement('div'), nav = document.createElement('div');
     head.className = 'ls-step-head';
     head.innerHTML = '<p class="ls-step-n" aria-live="polite"></p><span class="ls-dots" aria-hidden="true"></span>';
-    nav.className = 'ls-step-nav';
+    nav.className = 'ls-step-nav ls-act';
     nav.innerHTML = '<button type="button" class="ls-btn ls-step-back">Back</button><button type="button" class="ls-btn ls-step-next">Next</button>';
     container.classList.add('ls-stepper');
     container.insertBefore(head, container.firstChild);
@@ -565,12 +590,22 @@
       back.hidden = at === 0;
       next.hidden = at >= n - 1 || at >= tot - 1;
       nav.hidden = reviewing || (back.hidden && next.hidden);
-      if(o.submit){ list(o.submit, container).forEach(function(el){ el.classList.toggle('ls-step-off', !reviewing && at !== tot - 1); }); }
+      if(o.submit){ list(o.submit, container).forEach(function(el){ el.classList.add('ls-act'); el.classList.toggle('ls-step-off', !reviewing && at !== tot - 1); }); }
+      tone();
       if(focus){
         var f = it[at].querySelector('input:not([type=hidden]):not([readonly]):not([disabled]), select, textarea, button:not([disabled])') || it[at];
         if(f === it[at]) it[at].setAttribute('tabindex', '-1');
         try{ f.focus({ preventScroll: true }); }catch(e){ f.focus(); }
       }
+    }
+    // Next is secondary when the step has its own primary action (a Check).
+    function tone(){
+      var cur = items()[at], own = false;
+      if(cur && !reviewing){
+        own = Array.prototype.some.call(cur.querySelectorAll('.btn-press, .ls-pri, button[type=submit]'), function(b){ return !b.disabled && b.offsetParent !== null && !nav.contains(b); });
+        if(!own && o.submit) own = list(o.submit, container).some(function(el){ return !el.classList.contains('ls-step-off') && el.offsetParent !== null; });
+      }
+      next.classList.toggle('is-sec', own);
     }
     back.addEventListener('click', function(){ at--; paint(true); });
     next.addEventListener('click', function(){ at++; paint(true); });
@@ -597,12 +632,14 @@
           queued = false;
           var d = !!(o.done && o.done());
           if(items().length !== seen || d !== lastDone){ lastDone = d; refresh(); }
+          else tone();
         });
       }).observe(container, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
     }
     seen = items().length; at = o.start || 0;
     paint(false);
-    return { go: function(i){ at = i; paint(true); }, refresh: refresh, review: function(on){ o.done = null; reviewing = !!on; paint(false); }, head: head, nav: nav };
+    // go() moves focus only if it is already in the stepper (not on load), unless told.
+    return { go: function(i, focus){ at = i; paint(focus != null ? !!focus : container.contains(document.activeElement)); }, refresh: refresh, review: function(on){ o.done = null; reviewing = !!on; paint(false); }, head: head, nav: nav };
   }
 
   window.LevlStudio = { mount: mount, stepper: stepper, on: function(){ return !!current; }, get: function(){ return current; }, icon: icon };
