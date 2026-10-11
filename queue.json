@@ -244,6 +244,25 @@
       "yt_buffer": "6ac9c88fed92ed8fa5b99a49"
     },
     {
+      "id": "y1011-02-burn-story",
+      "status": "approved",
+      "added_on": "2026-10-11",
+      "approved_on": "2026-10-11",
+      "date": null,
+      "tiktok_caption": "His sleeve caught fire and part of the burn doesn't hurt. Here's why that's the bad sign, and the 6 steps EMTs use to treat it. Free NREMT practice at levlprep.com #NREMT #EMT #burns",
+      "yt_title": "Part of this burn doesn't hurt. That's the bad sign.",
+      "yt_description": "Superficial, partial thickness and full thickness burns, why the deepest part can feel numb, and the EMT treatment steps. Free NREMT practice at levlprep.com #NREMT #EMT #burns",
+      "badge": "NREMT",
+      "hook": "Part of it doesn't hurt. That's the bad sign.",
+      "buffer": null,
+      "yt_buffer": null,
+      "youtube_id": null,
+      "thumbnail_set": null,
+      "shorts_thumb": null,
+      "notes": "v2 2026-10-11: natural one take voice, zap sounds removed.",
+      "duration": 45.4
+    },
+    {
       "id": "w1007-07-acid-resonance",
       "status": "approved",
       "added_on": "2026-10-06",
@@ -334,25 +353,6 @@
       "youtube_id": null,
       "thumbnail_set": null,
       "shorts_thumb": null
-    },
-    {
-      "id": "y1011-02-burn-story",
-      "status": "approved",
-      "added_on": "2026-10-11",
-      "approved_on": "2026-10-11",
-      "date": null,
-      "tiktok_caption": "His sleeve caught fire and part of the burn doesn't hurt. Here's why that's the bad sign, and the 6 steps EMTs use to treat it. Free NREMT practice at levlprep.com #NREMT #EMT #burns",
-      "yt_title": "Part of this burn doesn't hurt. That's the bad sign.",
-      "yt_description": "Superficial, partial thickness and full thickness burns, why the deepest part can feel numb, and the EMT treatment steps. Free NREMT practice at levlprep.com #NREMT #EMT #burns",
-      "badge": "NREMT",
-      "hook": "Part of it doesn't hurt. That's the bad sign.",
-      "buffer": null,
-      "yt_buffer": null,
-      "youtube_id": null,
-      "thumbnail_set": null,
-      "shorts_thumb": null,
-      "notes": "v2 2026-10-11: natural one take voice, zap sounds removed.",
-      "duration": 45.4
     }
   ]
 }
