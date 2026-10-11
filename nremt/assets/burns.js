@@ -133,7 +133,8 @@
   }
   function figData(variant, view){
     var F = window.LevlBodyFigs, f = F && F.figs[variant + '-' + view];
-    return f ? { f: f, url: F.url(f) } : null;
+    // the anatomy-view patient (owner's pick, same figure as the scenario sim), not the plain skin mannequin
+    return f ? { f: f, url: F.url(f.anat ? { src: f.anat } : f) } : null;
   }
   function drawFigure(svg, view, uid, variant){
     while(svg.firstChild) svg.removeChild(svg.firstChild);

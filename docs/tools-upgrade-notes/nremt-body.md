@@ -36,6 +36,7 @@
   proportions differ" now states them and links into the mode. The 3D anatomy mode is unchanged.
 - **Why 2D:** the Rule of Nines is a map of surface regions; the 3D model's skin layer has no region boundaries, so
   painting "back of the left leg" on it would be guesswork; two flat figures show front and back at once.
+- **Figure (2026-10-10, owner):** the burns chart draws the anatomy-view patient (`*-anat.webp`, option A, same as the scenario sim), not the plain skin mannequin. Do not switch it back.
 - **Child chart source:** the course's own study notes (ch. 30 Burns: "head and neck 18% rather than 9%, each leg
   13.5% rather than 18%; everything else as in an adult") and bank question 533 (infant head about 18%). This is
   the infant version of the modified rule taught at EMT level; some texts give an intermediate child (head 12%,
