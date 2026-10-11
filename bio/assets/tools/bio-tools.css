@@ -1012,6 +1012,12 @@
 .ls-root .sk-fig svg{width:100%;height:100%;max-width:none;max-height:100%;flex:1;min-height:0;}
 .ls-root .ls-prac-stage{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px;}
 .ls-root .ls-prac-stage .bt-stage-slot > *{width:100%;}
+/* The practice problem's data table sits under the figure, compact, so both fit. */
+.ls-root .ls-prac-stage .bt-stage-slot{min-height:150px;}
+.ls-root .ls-prac-stage .ls-prac-data{flex:none;margin:0;}
+.ls-root .ls-prac-data table{width:100%;margin:0;font-size:var(--ls-s);line-height:1.25;}
+.ls-root .ls-prac-data th,.ls-root .ls-prac-data td{padding:5px 10px;}
+.ls-root .ls-prac-data caption{font-size:var(--ls-s);}
 .ls-root .ls-prac-stage .sk-cap{flex:none;margin:0;font-size:var(--ls-s);color:var(--muted);text-align:center;}
 .ls-root .ls-prac .bt-result{display:none;}
 .ls-root .ls-prac .bt-prob-head{display:contents;}
@@ -1131,3 +1137,57 @@
 .ls-root form.gb-steps .bt-part-choice .bt-radio{width:100%;}
 .ls-root form.gb-steps .gb-step:first-child:not(:has(> .bt-part-choice:not(.ls-step-off))){display:none;}
 .ls-root .ls-sim-why > :empty{display:none;}
+/* Graph builder: the data table stays on the stage under the grid. */
+.ls-root .ls-gb-stage .gb-grid{min-height:150px;}
+.ls-root .ls-gb-table{flex:none;margin:0;}
+.ls-root .ls-gb-table > summary{min-height:44px;font:800 var(--ls-s) var(--font-ui);}
+.ls-root .ls-gb-table .bt-how-body{padding:0;}
+.ls-root .ls-gb-table .table-wrap{max-height:30vh;max-height:30dvh;overflow:auto;}
+.ls-root .ls-gb-table table{width:100%;margin:0;font-size:var(--ls-s);line-height:1.25;}
+.ls-root .ls-gb-table th,.ls-root .ls-gb-table td{padding:4px 10px;}
+@media (max-width:999px){
+  /* The data on top, scrolling in at most half the stage; the grid keeps the rest. */
+  .ls-root .ls-gb-table{order:-1;flex:0 1 auto;min-height:0;overflow:auto;}
+  .ls-root .ls-gb-table[open]{flex:1 1 auto;}
+  .ls-root .ls-gb-stage:has(> .ls-gb-table[open]) > .gb-grid,.ls-root .ls-gb-stage:has(> .ls-gb-table[open]) > .gb-note{display:none;}
+  .ls-root .ls-gb-table .table-wrap{max-height:none;}
+  .ls-root .ls-gb-stage .gb-grid{min-height:120px;}
+}
+.ls-root .ls-gb-table .bt-how-body p{margin:0 0 6px;font-size:var(--ls-s);line-height:1.4;}
+.ls-root .ls-gb-table caption{font-size:var(--ls-s);}
+.ls-root .ls-gb-table .bt-context{display:none;}
+.ls-root .gb-adj button{min-width:44px;}
+/* Tree reading: the taxa are one scrolling row on a phone, so the tree keeps the stage. */
+@media (max-width:999px){
+  .ls-root .ls-dock .tr-checks{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:2px;}
+  .ls-root .ls-dock .tr-checks::-webkit-scrollbar{display:none;}
+  .ls-root .ls-dock .tr-checks > *{flex:none;}
+}
+/* Population growth: the model choice is two chips in the dock on a phone (the equations are under Why and About). */
+@media (max-width:999px){ .ls-root .ls-dock .pg-eq{display:none;} }
+/* A long mode label (operons' "Going further") wraps instead of running out of the dock. */
+.ls-root .ls-dock .bt-modes .bt-radio{max-width:100%;min-width:0;}
+.ls-root .ls-dock .bt-modes .bt-radio label{white-space:normal;min-width:0;padding-top:6px;padding-bottom:6px;}
+/* Signal transduction on a phone: the cascade fills the stage width (readable labels) and the stage scrolls. */
+@media (max-width:999px){
+  .ls-root .ls-stage-body > .sg-stagefig{display:block;flex:none;}
+  .ls-root .ls-stage-body > .sg-stagefig > svg{width:100%;height:auto;max-height:none;}
+}
+/* Questions on a phone: the stimulus text is compact so its table shows on the stage. */
+@media (max-width:999px){
+  .ls-root .ls-q-stage .bio-stim h3,.ls-root .ls-q-stage .bio-stim-h{font-size:var(--ls-m);}
+  .ls-root .ls-q-stage .bio-stim p{font-size:var(--ls-s);line-height:1.4;margin:0 0 6px;}
+  .ls-root .ls-q-stage .bio-stim table{font-size:var(--ls-s);}
+  .ls-root .ls-q-stage .bio-stim th,.ls-root .ls-q-stage .bio-stim td{padding:5px 8px;}
+}
+/* Questions: each question's own Check is the main action; the stepper's Next (move on or skip) is secondary. */
+.ls-root .ls-qs .ls-step-nav .ls-step-next{background:var(--surface2);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);}
+/* Design drills on a phone: the scenario reads compactly so its data table shows too. */
+@media (max-width:999px){
+  .ls-root .ls-dr-stage .ls-title-l{font-size:var(--ls-m);}
+  .ls-root .ls-dr-stage .bt-context,.ls-root .ls-dr-stage .bt-context p{font-size:var(--ls-s);line-height:1.4;}
+  .ls-root .ls-dr-stage table{font-size:var(--ls-s);}
+  .ls-root .ls-dr-stage th,.ls-root .ls-dr-stage td{padding:5px 8px;}
+}
+/* The dock scrolls: hold its .sr-only labels inside it, or they hang below the screen and the whole page scrolls (shared layer issue, reported). */
+.ls-root .ls-dock{position:relative;}

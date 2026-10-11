@@ -81,3 +81,12 @@ tool-studio.js; the short version:
 | P0 | Build Tool Studio shared layer + adopt it on the 3 mockup tools (ochem reaction predictor, bio chi-square, chem titration) as the reference | done (branch `claude/tools-calm-p0`, API below) |
 | P1 | Adopt on every other tool: NREMT, Ochem, A&P, AP Bio, AP Chem (parallel, one branch per course) | pending |
 | P2 | Fresh 5-second test on every tool, fixes, full CI, PR, live | pending |
+
+## P2 QA notes (AP Bio + AP Chem, branch `claude/tools-calm-qa-b`)
+- Bio practice: the problem's data table now sits on the stage under the figure (was hidden in Details); graph builder's
+  data is on the stage (phone: open for the first steps, then folds so the grid has the stage).
+- Chem drills: a one-step picture choice puts its pictures and Check on the stage (no "Step 1 of 1"); the active ICE row
+  scrolls into view.
+- Shared-layer issues found (not fixed in tool-studio.*): `.ls-dock` needs `position:relative` (sr-only labels in a
+  scrolled dock made the whole page scroll; patched per course CSS); the first-run hint tooltip covers the caption and
+  Why on phones; `stepper.go()` moves focus (focus ring on load); stepper Next is styled primary even beside a Check.

@@ -29,7 +29,7 @@
       events: data.events.map(function(e){ return { id: e.id, label: e.label, on: false, t: e.t, f: e.f }; }),
       kc: { on: false, t: data.kChange.t, K: data.kChange.K } };
     var runs = [], ctl = {};
-    var MODELS = [['log', 'Logistic: dN/dt = rmaxN(K − N)/K'], ['exp', 'Exponential: dN/dt = rmaxN']];
+    var MODELS = [['log', 'Logistic', 'dN/dt = rmaxN(K − N)/K'], ['exp', 'Exponential', 'dN/dt = rmaxN']];
 
     app.insertAdjacentHTML('beforeend', '<div class="bt-intro">' + data.intro + '</div>' + T.box('How this model works', data.howItWorks) +
       '<section class="bt-card pg-card" aria-labelledby="pg-h"><h2 id="pg-h">The model</h2>' +
@@ -38,7 +38,7 @@
       '<div class="os-play pg-play"><button type="button" class="btn-press sm" data-a="play">Play the years</button><span class="pg-evbtns"></span><p class="os-clock pg-clock" aria-hidden="true"></p></div>' +
       '<fieldset class="bt-modes bt-more"><legend>Growth model</legend>' + MODELS.map(function(m){
         var id = 'pg-model-' + m[0];
-        return '<div class="bt-radio"><input type="radio" name="pg-model" id="' + id + '" value="' + m[0] + '"' + (m[0] === st.model ? ' checked' : '') + '><label for="' + id + '">' + esc(m[1]) + '</label></div>';
+        return '<div class="bt-radio"><input type="radio" name="pg-model" id="' + id + '" value="' + m[0] + '"' + (m[0] === st.model ? ' checked' : '') + '><label for="' + id + '">' + esc(m[1]) + '<span class="pg-eq">: ' + esc(m[2]) + '</span></label></div>';
       }).join('') + '</fieldset>' +
       '<div class="bt-controls pg-main" data-primary="2"></div>' +
       '<fieldset class="bt-ctl pg-events bt-more"><legend>Events (optional)</legend><div class="bt-controls pg-ev"></div></fieldset>' +
@@ -330,6 +330,12 @@
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
     studio: { sim: true, live: '.pg-explain li', dock: ['.os-play', '.bt-modes', '@primary'],
       hint: { target: '.os-play .btn-press', text: 'Press Play the years' },
+      // A short caption (the full working is under Why): where the population is now.
+      caption: function(g){
+        var K = g.$('#pg-model-log') && g.$('#pg-model-log').checked ? g.ro(2) : '';
+        return T.esc('Year ' + g.ro(0) + ': N = ' + g.ro(1) + (K ? ' of K = ' + K : '') + '. Change a setting and play again.');
+      },
       pills: function(g){ return [{ k: 'N', html: g.ro(1), tone: 'readout' }]; },
-      pillsR: function(g){ return [{ html: 'dN/dt ' + g.ro(3), tone: 'ghost' }]; } } });
+      // dN/dt is readout row 3 with a K row (logistic), row 2 without (exponential).
+      pillsR: function(g){ var log = g.$('#pg-model-log') && g.$('#pg-model-log').checked; return [{ html: 'dN/dt ' + g.ro(log ? 3 : 2), tone: 'ghost' }]; } } });
 })();

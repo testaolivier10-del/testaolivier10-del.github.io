@@ -541,7 +541,10 @@
             rowInputs[k] = td.querySelector('input');
             rowInputs[k].addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); check(); } });
           });
-          row1('[data-row="' + s.row + '"]').classList.add('is-active');
+          var activeRow = row1('[data-row="' + s.row + '"]');
+          activeRow.classList.add('is-active');
+          // On the Tool Studio stage the table can be taller than the stage: bring the row to fill into view.
+          if(activeRow.closest('.ls-stage-body') && activeRow.scrollIntoView){ try{ activeRow.scrollIntoView({ block: 'nearest' }); }catch(e){} }
         }
         var fb = el.querySelector('.cd-fb'), input = el.querySelector('.cd-num input'), range = el.querySelector('.cd-vol input');
         if(range){
@@ -621,7 +624,7 @@
         record(slug, results);
         event('apchem-drill-check', { tool: slug, correct: right, total: results.length });
         var nx = area.querySelector('.bt-next');
-        nx.innerHTML = '<p class="bt-result" role="status">' + right + ' of ' + results.length + ' steps right the first time.</p><div class="bt-actions"><button type="button" class="btn-press sm cd-again">' + esc(o.newLabel || 'New problem') + '</button>' + report(slug + ':' + p.ctx) + '</div>';
+        nx.innerHTML = '<p class="bt-result" role="status">' + right + ' of ' + results.length + (results.length === 1 ? ' step' : ' steps') + ' right the first time.</p><div class="bt-actions"><button type="button" class="btn-press sm cd-again">' + esc(o.newLabel || 'New problem') + '</button>' + report(slug + ':' + p.ctx) + '</div>';
         nx.querySelector('.cd-again').addEventListener('click', function(){ seed = freshSeed(); draw(true); });
         keepGoing(nx, { topic: p.topic, also: results.filter(function(x){ return !x.correct; }).map(function(x){ return x.topic; }) });
         if(sd){ sd.done(right, results.length); return; }
@@ -761,9 +764,12 @@
         Array.prototype.slice.call(area.querySelectorAll(':scope > details')).forEach(function(d){ det.appendChild(d); });
         var code = area.querySelector('.bt-code'); if(code) det.appendChild(code);
         var h2 = area.querySelector('.bt-prob-head h2'); if(h2) h2.classList.add('sr-only');
-        var steps = area.querySelector(':scope > .cd-steps');
-        if(steps) window.LevlStudio.stepper(steps, { items: ':scope > .cd-step', total: (p.steps || []).length,
+        var steps = area.querySelector(':scope > .cd-steps'), nSteps = (p.steps || []).length;
+        // One step: no "Step 1 of 1" stepper. A one-step picture choice is
+        // the picture: its options (and Check) join the problem on the stage.
+        if(steps && nSteps > 1) window.LevlStudio.stepper(steps, { items: ':scope > .cd-step', total: nSteps,
           done: function(){ var nx = area.querySelector(':scope > .bt-next'); return !!(nx && nx.children.length); } });
+        if(steps && nSteps === 1 && steps.querySelector('.cd-pics')){ steps.classList.add('ls-drill-pics'); stage.appendChild(steps); }
         // o.studioAsk: a long problem over a figure is captioned by its
         // equation and its question; the whole text is in Details.
         if(!onStage && o.studioAsk && ctx){
@@ -772,13 +778,13 @@
           var ask = ss.filter(function(x){ return /\?\s*$/.test(x); }).pop() || ss[ss.length - 1];
           text = (eqT ? eqT.replace(/\s+K\s*=/, ', K =') + '. ' : '') + ask.trim();
         }
-        s.caption(onStage ? esc(o.studioCaption || 'Answer one step at a time.') : esc(text), m); s.pills([], 'left', m);
+        s.caption(onStage ? esc(o.studioCaption || (nSteps > 1 ? 'Answer one step at a time.' : stage.querySelector('.cd-pics') ? 'Tap the picture that fits, then Check.' : 'Answer, then Check.')) : esc(text), m); s.pills([], 'left', m);
       },
       done: function(right, total){
         var sol = area.querySelector(':scope > .bt-solution');
         if(sol){ why.innerHTML = ''; why.appendChild(sol); }
         s.pills([{ html: right + ' of ' + total + ' right', tone: right === total ? 'good' : 'warn' }], 'left', m);
-        s.caption('<b>' + right + ' of ' + total + ' steps right the first time.</b> The worked solution is under Why.', m);
+        s.caption('<b>' + (total === 1 ? (right ? 'Right the first time.' : 'Not right the first time.') : right + ' of ' + total + ' steps right the first time.') + '</b> The worked solution is under Why.', m);
         var again = area.querySelector('.cd-again');
         if(again){ again.classList.add('ls-btn', 'ls-pri'); again.focus(); }
       }

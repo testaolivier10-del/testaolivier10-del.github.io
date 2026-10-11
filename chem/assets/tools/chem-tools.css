@@ -937,3 +937,10 @@ body[data-app^="tool-"] .chem-hero .eyebrow{margin-bottom:4px;}
 .ls-root .ls-drill-stage > .ls-drill-text:only-child .bt-eq{font-size:var(--ls-m);}
 .ls-root .ls-drill-stage .cd-fig > svg{width:100% !important;height:100% !important;max-width:none !important;max-height:100% !important;}
 .ls-root .us-ls-dock .us-tile{display:block;} .ls-root .us-ls-dock .us-tile legend{float:left;width:100%;margin:0 0 8px;} .ls-root .us-ls-dock .us-seg{clear:both;}
+/* A one-step picture choice sits on the stage with its problem (chem-tools.js studioDrill). */
+.ls-root .ls-drill-pics{flex:none;display:flex;flex-direction:column;gap:10px;}
+.ls-root .ls-drill-pics .cd-n{display:none;}
+.ls-root .ls-drill-pics .cd-step{margin:0;padding:0;background:none;box-shadow:none;border:0;}
+.ls-root .ls-drill-pics .bt-actions .btn-press{width:100%;}
+/* The dock scrolls: hold its .sr-only labels inside it, or they hang below the screen and the whole page scrolls (shared layer issue, reported). */
+.ls-root .ls-dock{position:relative;}

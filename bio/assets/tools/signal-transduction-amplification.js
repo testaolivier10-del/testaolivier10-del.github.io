@@ -290,6 +290,6 @@
     // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
     studio: { sim: true, live: '.sg-why', primary: 1, why: ['.sg-stagefig + p.bt-small'],
       hint: { target: '.os-play .btn-press', text: 'Press Play to start the cascade' },
-      pills: function(g){ return [{ k: 'Glucose out', html: g.ro(0), tone: 'readout' }]; },
+      pills: function(g){ return [{ k: 'Glucose out', html: g.ro(0).replace(/ per s$/, '/s'), tone: 'readout' }]; },
       pillsR: function(g){ return [{ html: 'cAMP ' + g.ro(1), tone: 'ghost' }]; } } });
 })();
