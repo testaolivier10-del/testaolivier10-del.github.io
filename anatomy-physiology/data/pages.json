@@ -81,7 +81,8 @@
       "desc": "Practice A&P lab practicals online: identify labeled structures on real figures in explore, study, quiz or timed practical mode.",
       "script": "tools/lab-practical.js",
       "css": "tools/lab-practical.css",
-      "data": "lab-practical.json"
+      "data": "lab-practical.json",
+      "studio": true
     },
     {
       "slug": "predict",
@@ -94,7 +95,8 @@
       "desc": "Train physiology reasoning: a perturbation happens, you predict whether each variable rises, falls or stays the same, then see the causal chain.",
       "script": "tools/predict.js",
       "css": "tools/predict.css",
-      "data": "predict.json"
+      "data": "predict.json",
+      "studio": true
     },
     {
       "slug": "feedback-loops",
@@ -106,7 +108,8 @@
       "desc": "Build homeostatic feedback loops step by step: stimulus, sensory receptor, control center, effector and response, then classify the loop.",
       "script": "tools/feedback-loops.js",
       "css": "tools/feedback-loops.css",
-      "data": "feedback-loops.json"
+      "data": "feedback-loops.json",
+      "studio": true
     },
     {
       "slug": "pathways",
@@ -119,7 +122,8 @@
       "desc": "Practice the sequences A&P asks you to know in order: blood through the heart, conduction, the cardiac cycle and more, with step-by-step feedback.",
       "script": "tools/pathways.js",
       "css": "tools/pathways.css",
-      "data": "pathways.json"
+      "data": "pathways.json",
+      "studio": true
     },
     {
       "slug": "graphs",
@@ -132,7 +136,8 @@
       "desc": "Learn to read physiology graphs: action potentials, the cardiac cycle, the Frank-Starling curve and more. Read values, name phases, predict shifts.",
       "script": "tools/graphs.js",
       "css": "tools/graphs.css",
-      "data": "graphs.json"
+      "data": "graphs.json",
+      "studio": true
     },
     {
       "slug": "calculators",
@@ -144,7 +149,8 @@
       "desc": "Physiology calculators that show every step: cardiac output, mean arterial pressure, flow and resistance, filtration pressure and total peripheral resistance.",
       "script": "tools/calculators.js",
       "css": "tools/calculators.css",
-      "data": "calculators.json"
+      "data": "calculators.json",
+      "studio": true
     },
     {
       "slug": "word-roots",
@@ -156,7 +162,8 @@
       "desc": "Decode anatomy and medical terms from their prefixes, roots and suffixes, or build a term from its meaning. Linked to the course glossary.",
       "script": "tools/word-roots.js",
       "css": "tools/word-roots.css",
-      "data": "word-roots.json"
+      "data": "word-roots.json",
+      "studio": true
     }
   ]
 }

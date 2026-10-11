@@ -123,8 +123,9 @@ const SHELL_BUDGETS = [
      its own because only course pages load it. Measured 10.5 KB with the
      glossary work (W-A). 14 -> 17 once book.css, study.css/js and hub.css/js
      joined it (W-B, W-C, W-D), each replacing four per-course copies; the
-     /assets every-page ruler stayed under its old 282. Measured 16.0 KB. */
-  ['assets/course', 17],
+     /assets every-page ruler stayed under its old 282. Measured 16.0 KB.
+     17 -> 19.5 (calm tools P1, docs/tools-calm.md): tool pages also load the shared Tool Studio (tool-studio.css/js, about 3.4 KB); an A&P tool page measured 19.4 KB. */
+  ['assets/course', 19.5],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -263,7 +264,8 @@ const SHELL_BUDGETS = [
      heaviest, measured 46.8 KB. */
   /* 47.5 -> 48 (visual polish 2026-10): the 3D button's body icon and the shared illustration code; measured 47.7 KB. */
   /* 48 -> 49.5 (simplify pass 2026-10): the shared first-step line, segmented mode switch and Why? / More options disclosures in tool-kit.js/.css; lab practical measured 49.3 KB. */
-  ['anatomy-physiology', 49.5],
+  /* 49.5 -> 53.5 (calm tools P1, docs/tools-calm-notes/anp.md): each tool's Tool Studio arrangement and AnpToolKit.studio; lab practical measured 53.1 KB. */
+  ['anatomy-physiology', 53.5],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).

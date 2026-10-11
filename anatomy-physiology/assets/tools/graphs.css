@@ -207,3 +207,47 @@
 @media (max-width:899px){
   .gr-qcol .gr-ex,.gr-qcol .gr-q{min-height:0;}
 }
+
+/* ---- Tool Studio (docs/tools-calm.md; graphs.js studioGraph) ---- */
+.gr-ls .ls-stage-body > .pw-title{flex:none;margin:0 0 4px;font:900 var(--ls-m)/1.3 var(--font-ui);}
+.gr-ls .ls-stage-body > .gr-fig{margin:0;padding:0;background:none;box-shadow:none;border-radius:0;min-height:180px;}
+.gr-ls .ls-stage-body > .gr-fig .gr-svg{width:100%;height:100%;max-height:100%;}
+.gr-ls .ls-stage-body > .gr-read{flex:none;margin:6px 0 0;padding:10px 12px;border-radius:14px;background:var(--surface2);}
+.gr-ls .ls-stage-body > .gr-read .gr-rows{margin:0;}
+.gr-ls .ls-stage-body > .gr-read .gr-at{margin:0 0 4px;}
+.gr-ls .ls-dock .gr-scrub{display:flex;margin:0;}
+.gr-ls .ls-dock .gr-ex,.gr-ls .ls-dock .gr-q{padding:0;background:none;box-shadow:none;border-radius:0;min-height:0;}
+.gr-ls .ls-dock .gr-ex{display:flex;flex-direction:column;gap:10px;}
+.gr-ls .ls-dock .gr-ex-h{margin:0 !important;font:800 var(--ls-s) var(--font-ui) !important;color:var(--muted);}
+.gr-ls .ls-dock .gr-conds{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-16px;padding:2px 16px 2px 0;}
+.gr-ls .ls-dock .gr-conds::-webkit-scrollbar{display:none;}
+.gr-ls .ls-dock .gr-cond-b{flex:none;min-height:44px;}
+.gr-ls .ls-dock .gr-ex-go{margin:0;}
+.gr-ls .ls-dock .gr-ex-none{margin:0;}
+.gr-ls .ls-dock .gr-qnav{margin:0 0 10px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:2px;}
+.gr-ls .ls-dock .gr-qbtn{flex:none;min-width:44px;height:44px;}
+.gr-ls .ls-dock .gr-kind{letter-spacing:0;text-transform:none;font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.gr-ls .ls-dock .gr-stem{font:800 var(--ls-m)/1.45 var(--font-ui);}
+.gr-ls .ls-dock .gr-input{min-height:48px;}
+.gr-ls .ls-sheet .gr-cond-why{margin:0;}
+.gr-ls .gr-ls-det .pw-next{margin:0;}
+.gr-ls .gr-ls-det .pw-next a{min-height:44px;display:inline-flex;align-items:center;white-space:normal;}
+.gr-ls .ls-stage .pw{margin:0;max-width:none;}
+@media (min-width:1000px){
+  .gr-ls .ls-dock .gr-conds{flex-wrap:wrap;overflow:visible;margin-right:0;padding:0;}
+}
+@media (max-width:599.98px){
+  .gr-ls .ls-stage-body > .gr-read{padding:8px 10px;}
+  .gr-ls .ls-stage-body > .gr-read .gr-rows li{font-size:13px;}
+}
+@media (min-width:1000px){
+  .gr-ls .ls-stage-body > .gr-fig .gr-svg{max-width:720px;margin:0 auto;}
+  .gr-ls .ls-stage-body > .gr-read{max-width:560px;width:100%;align-self:center;}
+}
+.gr-ls .ls-sheet .gr-cond-why .kt-why > summary{display:none;}
+.gr-ls .ls-sheet .gr-cond-why .kt-why-b{padding:0;}
+.gr-ls .ls-sheet .gr-cond-why .gr-why-q{margin:0 0 6px;}
+.gr-ls .gr-ls-det .kt-more,.gr-ls .gr-ls-det .gr-tools{margin:0;}
+.gr-ls .gr-ls-det .kt-more > summary{display:none;}
+.gr-ls .gr-ls-det .kt-more-b{padding:0;}
+.gr-ls .gr-ls-det .kt-more:not([open]) > .kt-more-b{display:block;}

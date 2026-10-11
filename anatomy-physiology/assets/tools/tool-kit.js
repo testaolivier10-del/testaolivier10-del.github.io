@@ -216,5 +216,74 @@
   }
   function about(html, label){ return html ? '<details class="kt-about"><summary>' + esc(label || 'About this') + '</summary><div class="kt-about-b">' + html + '</div></details>' : ''; }
 
-  window.AnpToolKit = { strip: strip, picker: picker, bodyName: bodyName, body3d: body3d, status: status, first: first, why: why, more: more, about: about, BODY: BODY, ALIAS: ALIAS };
+  /* ------------------------------------------------ Tool Studio (docs/tools-calm.md, P1 A&P)
+     studio(o) mounts the calm frame once on a tool page built with
+     "studio": true in data/pages.json (#app[data-studio]), else returns null
+     and the tool keeps its old layout. #app stays the tool's render target
+     but is hidden (.kt-staging): after each render the tool moves its parts
+     into the studio with s.put(region, els, opts) and, before the next
+     render, s.reset() takes the previous render's parts away, so lookups
+     through the document never find two copies. Elements are moved, never
+     copied, so the tool's references and listeners keep working.
+       o.title   studio title (default: the page's h1)
+       o.about   extra html for About (the page lede is always there)
+       o.menu    extra menu items [{ label, onClick | href, icon }]
+     s.put(region, els, { mode, first })  'stage' | 'dock' | 'why' | 'details'
+     s.reset()                            remove every part put so far
+     s.mirror(el, mode, fallback)         the caption follows el's content
+     s.modeBar(on)                        show or hide the mode switch */
+  var S = null;
+  function studio(o){
+    if(S) return S;
+    var app = document.getElementById('app');
+    if(!app || !app.hasAttribute('data-studio') || !window.LevlStudio) return null;
+    o = o || {};
+    var slug = app.getAttribute('data-slug'), h1 = document.querySelector('.anp-hero h1'), lede = document.querySelector('.anp-hero .lede');
+    var ab = document.createElement('div');
+    ab.className = 'ls-sec';
+    ab.innerHTML = (lede ? '<p>' + esc(lede.textContent) + '</p>' : '') + (o.about || '');
+    var s = window.LevlStudio.mount({
+      title: o.title || (h1 ? h1.textContent : document.title), course: 'Anatomy & Physiology',
+      back: BASE + 'tools.html', home: BASE, slug: 'anp-' + slug, host: app,
+      menu: {
+        copyLink: true,
+        report: { course: 'anp', id: 'tool:' + slug },
+        note: app.getAttribute('data-premium') ? { label: 'Premium tool.', html: 'Part of Anatomy &amp; Physiology Premium.' } : null,
+        items: o.menu || []
+      },
+      about: ab
+    });
+    if(app.parentNode) app.parentNode.classList.add('ls-host');
+    if(ab.parentNode && ab.parentNode.firstChild !== ab) ab.parentNode.insertBefore(ab, ab.parentNode.firstChild);
+    app.classList.add('kt-staging');
+    var owned = [];
+    function arr(x){ return !x ? [] : x.nodeType ? [x] : [].slice.call(x).filter(Boolean); }
+    s.put = function(region, els, opt){
+      var l = arr(els);
+      l.forEach(function(el){ owned.push(el); });
+      s.add(region, l, opt);
+      if(opt && opt.first){
+        var box = s[region];
+        for(var i = l.length - 1; i >= 0; i--) box.insertBefore(l[i], box.firstChild);
+      }
+      return s;
+    };
+    s.reset = function(){
+      owned.forEach(function(el){ if(el.parentNode) el.parentNode.removeChild(el); });
+      owned = [];
+      return s;
+    };
+    s.mirror = function(el, mode, fallback){
+      if(!el) return s;
+      function up(){ var h = el.innerHTML.trim(); s.caption(h || fallback || '', mode); }
+      if(window.MutationObserver) new MutationObserver(up).observe(el, { childList: true, characterData: true, subtree: true });
+      up();
+      return s;
+    };
+    s.modeBar = function(on){ var m = s.root.querySelector('.ls-modes'); if(m) m.hidden = !on; return s; };
+    S = s;
+    return s;
+  }
+
+  window.AnpToolKit = { strip: strip, picker: picker, bodyName: bodyName, body3d: body3d, status: status, first: first, why: why, more: more, about: about, studio: studio, BODY: BODY, ALIAS: ALIAS };
 })();

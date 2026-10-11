@@ -23,6 +23,18 @@
   if(!app) return;
   var base = window.ANP_BASE || '../';
   var src = app.getAttribute('data-src') || (base + 'data/tools/calculators.json');
+  /* Tool Studio (docs/tools-calm.md): with the page's studio flag the card
+     is drawn in #app and moved into the calm frame (studioHead, studioCalc,
+     studioPractice, studioGraded); lookups go through the document. ST, not
+     S: S draws the pictures' SVG below. */
+  var ST = window.AnpToolKit && window.AnpToolKit.studio ? window.AnpToolKit.studio() : null, bodyParts = [];
+  function Q(){ return ST ? document : app; }
+  if(ST){
+    ST.root.classList.add('calc-ls');
+    ST.caption('Loading calculators…');
+    ST.modes({ items: [{ value: 'calc', label: 'Calculate' }, { value: 'practice', label: 'Practice' }], value: 'calc',
+      onChange: function(v){ var b = Q().querySelector('.calc-mode[data-mode="' + v + '"]'); if(b) b.click(); } });
+  }
 
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
@@ -171,6 +183,7 @@
         '<div class="calc-pickhost"></div>' +
         '<section class="calc-card" aria-live="off"></section>' +
       '</div>';
+    if(ST) ST.add('dock', Q().querySelector('.calc-pickhost'));
     var want = (location.hash || '').replace(/^#/, '');
     var last = null; try{ last = localStorage.getItem(PREF); }catch(e){}
     var first = byId(want) ? want : byId(last) ? last : DATA.calculators[0].id;
@@ -181,7 +194,7 @@
      (AnpToolKit.picker), so the open calculator is on the first screen. The
      old chip grid is the fallback if the kit is missing. */
   function renderPicker(){
-    var host = app.querySelector('.calc-pickhost');
+    var host = Q().querySelector('.calc-pickhost');
     host.innerHTML = '';
     if(window.AnpToolKit){
       window.AnpToolKit.picker(host, {
@@ -208,7 +221,7 @@
       if(!b) return;
       select(b.getAttribute('data-id'), true);
     });
-    app.querySelectorAll('.calc-chip').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-id') === current.id ? 'true' : 'false'); });
+    Q().querySelectorAll('.calc-chip').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-id') === current.id ? 'true' : 'false'); });
   }
   function byId(id){ if(!id) return null; for(var i = 0; i < DATA.calculators.length; i++) if(DATA.calculators[i].id === id) return DATA.calculators[i]; return null; }
 
@@ -220,12 +233,13 @@
     try{ localStorage.setItem(PREF, id); }catch(e){}
     if(location.hash.replace(/^#/, '') !== id && window.history && history.replaceState) try{ history.replaceState(null, '', '#' + id); }catch(e){}
     renderCard();
-    if(focus){ var h = app.querySelector('.calc-card h2'); if(h){ h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: false }); } }
+    if(focus){ var h = Q().querySelector(ST ? '.ls-stage h2' : '.calc-card h2'); if(h){ h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: false }); } }
   }
 
   function renderCard(){
-    var c = current, card = app.querySelector('.calc-card');
+    var c = current, card = Q().querySelector('.calc-card');
     var n = topicNumber(c.topic);
+    if(ST){ ST.reset(); bodyParts = []; }
     card.innerHTML =
       '<header class="calc-head">' +
         '<p class="calc-eyebrow">Topic ' + n + ' · ' + topicLink(c.topic) + '</p>' +
@@ -246,16 +260,21 @@
       });
     });
     renderBody();
+    if(ST) studioHead(c);
   }
 
-  function renderBody(){ picAnim++; if(mode === 'calc') renderCalc(); else renderPractice(); }
+  function renderBody(){
+    picAnim++;
+    if(ST){ bodyParts.forEach(function(x){ if(x.parentNode) x.parentNode.removeChild(x); }); bodyParts = []; ST.mode(mode); ST.pills([], 'left'); }
+    if(mode === 'calc') renderCalc(); else renderPractice();
+  }
 
   /* ------------------------------------------------------ calculate mode */
 
   function inputId(key){ return 'calc-in-' + current.id + '-' + key; }
 
   function renderCalc(){
-    var c = current, body = app.querySelector('.calc-body');
+    var c = current, body = Q().querySelector('.calc-body');
     var presets = (c.presets || []).length ? '<div class="calc-presets" role="group" aria-label="Load an example"><span class="calc-presets-h">Try:</span>' + c.presets.map(function(p, i){
         return '<button type="button" class="calc-preset" data-i="' + i + '">' + esc(p.label) + '</button>';
       }).join('') + '</div>' : '';
@@ -280,12 +299,12 @@
     body.querySelectorAll('.calc-preset').forEach(function(b){
       b.addEventListener('click', function(){
         var p = c.presets[+b.getAttribute('data-i')];
-        Object.keys(p.values).forEach(function(k){ values[k] = p.values[k]; var el = document.getElementById(inputId(k)); if(el) el.value = p.values[k]; var r = body.querySelector('.calc-range[data-for="' + k + '"]'); if(r) r.value = p.values[k]; });
+        Object.keys(p.values).forEach(function(k){ values[k] = p.values[k]; var el = document.getElementById(inputId(k)); if(el) el.value = p.values[k]; var r = (ST ? document : body).querySelector('.calc-range[data-for="' + k + '"]'); if(r) r.value = p.values[k]; });
         update();
       });
     });
     body.querySelectorAll('.calc-inputs input:not(.calc-range)').forEach(function(el){
-      el.addEventListener('input', function(){ var r = body.querySelector('.calc-range[data-for="' + el.getAttribute('data-key') + '"]'); if(r && el.value !== '') r.value = el.value; update(); });
+      el.addEventListener('input', function(){ var r = (ST ? document : body).querySelector('.calc-range[data-for="' + el.getAttribute('data-key') + '"]'); if(r && el.value !== '') r.value = el.value; update(); });
     });
     body.querySelectorAll('.calc-range').forEach(function(r){
       r.addEventListener('input', function(){ var el = document.getElementById(inputId(r.getAttribute('data-for'))); el.value = r.value; update(); });
@@ -293,7 +312,7 @@
     baseEnv = null;
     if(c.picture){ var dv = {}; c.inputs.forEach(function(inp){ dv[inp.key] = inp['default']; }); var b0 = compute(c, dv); if(!b0.invalid) baseEnv = b0.env; }
     update();
-    if(window.AnpToolKit) window.AnpToolKit.strip(body, { topic: c.topic, text: c.title + ' ' + c.intro });
+    if(window.AnpToolKit) window.AnpToolKit.strip(body, { topic: c.topic, text: c.title + ' ' + c.intro });    if(ST) studioCalc(c, body);
   }
 
   function readInputs(){
@@ -313,18 +332,18 @@
   }
 
   function update(){
-    var c = current, out = app.querySelector('.calc-out'), work = app.querySelector('.calc-work');
+    var c = current, out = Q().querySelector('.calc-out'), work = Q().querySelector('.calc-work');
     var problems = readInputs();
     var r = problems.length ? null : compute(c, values);
     if(problems.length || r.invalid){
-      picAnim++; var ph = app.querySelector('.calc-pic'); if(ph) ph.classList.add('is-stale');
+      picAnim++; var ph = Q().querySelector('.calc-pic'); if(ph) ph.classList.add('is-stale');
       out.innerHTML = '<div class="calc-invalid" role="status"><b>Check the numbers.</b> ' + esc(problems.length ? problems[0] : r.invalid) + '</div>';
       work.innerHTML = '';
       return;
     }
     out.innerHTML = resultsHtml(c, r.env);
     work.innerHTML = solutionHtml(c, r.env, 'Every step');
-    var pc = app.querySelector('.calc-pic'); if(pc) pc.classList.remove('is-stale');
+    var pc = Q().querySelector('.calc-pic'); if(pc) pc.classList.remove('is-stale');
     drawPicture(c, r.env);
   }
 
@@ -364,7 +383,7 @@
   function val(c, env, key){ return fmt(env[key], dpOf(c, key)); }
   function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
   function drawPicture(c, env){
-    var host = app.querySelector('.calc-pic');
+    var host = Q().querySelector('.calc-pic');
     if(!host || !c.picture) return;
     picAnim++;
     var pic = c.picture, svg, cap = '';
@@ -732,7 +751,7 @@
   }
 
   function renderPractice(){
-    var c = current, body = app.querySelector('.calc-body'), p = problem, ask = p.ask;
+    var c = current, body = Q().querySelector('.calc-body'), p = problem, ask = p.ask;
     var st = window.AnpCore ? window.AnpCore.toolStats(KIND) : { by: {} };
     var mine = (st.by || {})[c.id];
     body.innerHTML =
@@ -766,15 +785,15 @@
       e.preventDefault();
       if(p.done){ newProblem(); renderPractice(); focusAnswer(); return; }
       var v = parseAnswer(input.value);
-      var msg = body.querySelector('.calc-msg');
+      var msg = (ST ? document : body).querySelector('.calc-msg');
       if(!isFinite(v)){ msg.textContent = 'Enter a number, digits only (for example 12.5).'; input.setAttribute('aria-invalid', 'true'); input.focus(); return; }
       input.setAttribute('aria-invalid', 'false');
       msg.textContent = '';
       if(sign && p.sign < 0 && v > 0) v = -v;
       grade(v);
-    });
+    });    if(ST) studioPractice(c, body);
   }
-  function focusAnswer(){ var i = app.querySelector('#calc-ans'); if(i) i.focus(); }
+  function focusAnswer(){ var i = Q().querySelector('#calc-ans'); if(i) i.focus(); }
 
   function grade(v){
     var c = current, p = problem, ask = p.ask;
@@ -789,7 +808,7 @@
     var id = itemId(c);
     if(window.AnpCore) window.AnpCore.toolResult(KIND, [{ id: id, correct: ok, topic: c.topic, core: c.core, level: c.level, diff: c.diff, group: c.id }]);
     if(window.LevlSound && window.LevlSound.answer) try{ window.LevlSound.answer(ok); }catch(e){}
-    var body = app.querySelector('.calc-body');
+    var body = ST ? document : app.querySelector('.calc-body');
     body.querySelectorAll('.calc-answer input, .calc-sign').forEach(function(x){ x.disabled = true; });
     body.querySelector('.calc-check').textContent = 'Next problem';
     body.querySelector('.calc-skip').hidden = true;
@@ -809,9 +828,77 @@
     if(window.AnpToolKit) window.AnpToolKit.strip(body.querySelector('.calc-feedback'), { topic: c.topic, text: c.title + ' ' + c.intro });
     var s = window.AnpCore ? window.AnpCore.toolStats(KIND) : null, mine = s && s.by ? s.by[c.id] : null;
     if(mine) body.querySelector('.calc-record').textContent = 'Your practice record here: ' + mine.c + ' of ' + mine.n + ' correct.';
+    if(ST) studioGraded(c, ok);
     body.querySelector('.calc-check').focus();
   }
   function decimalsIn(v){ var s = String(v); return s.indexOf('.') > -1 ? Math.min(3, s.split('.')[1].length) : 0; }
+
+  /* ------------------------------------------------------ Tool Studio
+     Calculate: the live picture is the stage with the results under it (a
+     calculator without a picture shows the results alone); the sliders and
+     number boxes are the dock. Practice: the problem is the stage (the
+     picture joins it once answered), the answer box the dock, the worked
+     solution goes to Why. Details: the topic, the formula and worked
+     examples, every step, Keep going, the practice record. */
+  function own(region, els, opt){ (els.nodeType ? [els] : els).forEach(function(x){ if(x) bodyParts.push(x); }); ST.put(region, els, opt); }
+  function keepPickerLast(){ var ph = Q().querySelector('.calc-pickhost'); if(ph) ST.dock.appendChild(ph); }
+  function wrapEl(cls, els){ var d = document.createElement('div'); d.className = cls; els.forEach(function(x){ if(x) d.appendChild(x); }); return d; }
+  function studioHead(c){
+    var card = app.querySelector('.calc-card'), h2 = card.querySelector('.calc-head h2'), eb = card.querySelector('.calc-eyebrow'), intro = card.querySelector('.calc-intro');
+    ST.put('stage', h2, { first: true });
+    var w = wrapEl('ls-sec', [intro]);
+    w.insertAdjacentHTML('afterbegin', '<h3 class="ls-h">About this calculator</h3>');
+    ST.put('why', w, { first: true });
+    ST.put('details', wrapEl('ls-sec calc-ls-det', [eb]), { first: true });
+    if(!studioHead.hinted){
+      studioHead.hinted = true;
+      ST.hint({ target: c.picture ? '.ls-dock .calc-range' : '.ls-dock .calc-inputs input', text: c.picture ? 'Drag a slider and watch the picture' : 'Change a number' });
+    }
+  }
+  function studioCalc(c, body){
+    var first = body.querySelector('.kt-first');
+    ST.caption(first ? first.innerHTML : '', 'calc');
+    if(first) first.parentNode.removeChild(first);
+    var pic = body.querySelector('.calc-pic'), out = body.querySelector('.calc-out');
+    if(pic){ pic.classList.add('ls-fit'); own('stage', pic); }
+    own('stage', out);
+    own('dock', body.querySelector('.calc-inputs'));
+    keepPickerLast();
+    var more = body.querySelector('.calc-more'), work = body.querySelector('.calc-workd');
+    if(more) more.open = true;
+    if(work) work.open = true;
+    own('details', [more, work, body.querySelector(':scope > .kg')]);
+    if(pic){
+      // the picture's own caption explains it: in Why, kept current
+      var live = document.createElement('div');
+      live.className = 'ls-sec calc-ls-piccap';
+      var sync = function(){ var cp = pic.querySelector('.calc-pic-cap'); live.innerHTML = '<h3 class="ls-h">What the picture shows</h3><p>' + (cp ? cp.innerHTML : '') + '</p>'; };
+      sync();
+      if(window.MutationObserver) new MutationObserver(sync).observe(pic, { childList: true });
+      own('why', live);
+    }
+    ST.stage.scrollTop = 0;
+  }
+  function studioPractice(c, body){
+    var first = body.querySelector('.kt-first');
+    ST.caption(first ? first.innerHTML : '', 'practice');
+    if(first) first.parentNode.removeChild(first);
+    own('stage', body.querySelector('.calc-prompt'));
+    own('dock', [body.querySelector('.calc-answer'), body.querySelector('.calc-feedback')]);
+    keepPickerLast();
+    var more = body.querySelector('.calc-more');
+    if(more) more.open = true;
+    own('details', [body.querySelector('.calc-record'), more]);
+    ST.stage.scrollTop = 0;
+  }
+  function studioGraded(c, ok){
+    var fb = Q().querySelector('.calc-feedback'), pic = fb.querySelector('.calc-pic');
+    if(pic){ pic.classList.add('ls-fit'); own('stage', pic); }
+    var sol = wrapEl('ls-sec calc-ls-sol', [].slice.call(fb.children).filter(function(x){ return !x.matches('.calc-verdict, .calc-report, .kg'); }));
+    own('why', sol, { first: true });
+    ST.pills([{ html: ok ? 'Correct' : 'Not quite', tone: ok ? 'good' : 'bad' }], 'left', 'practice');
+    ST.caption('The worked solution, step by step, is under <b>Why?</b> Press Next problem for another.', 'practice');
+  }
 
   /* ------------------------------------------------------ load */
 
@@ -821,6 +908,7 @@
     app.classList.remove('calc-loading');
     mount();
   }).catch(function(){
+    if(ST){ ST.suspend(true); app.classList.remove('kt-staging'); }
     app.classList.remove('calc-loading');
     app.innerHTML = '<p class="calc-invalid">The calculators could not load. Check your connection and reload the page.</p>';
   });

@@ -111,3 +111,43 @@ main.anp-app button.link-quiet{min-height:40px;padding-block:9px;}
 @media (prefers-reduced-motion:reduce){ .kt-why > summary::before,.kt-more > summary::before,.kt-about > summary::before{transition:none;} }
 /* The item header stays to one line of meta: intro text waits in "About this" */
 .kt-about-b p{margin:0 0 8px;max-width:68ch;}
+
+/* ---- Tool Studio (docs/tools-calm.md; tool-kit.js studio) ---- */
+/* #app is the render target only: every part moves into the studio */
+.kt-staging{display:none !important;}
+body.ls-on .anp-crumb{display:none !important;}
+.ls-root .kt-first{position:relative;display:block;padding-left:18px;margin:0;font:800 15px/1.45 var(--font-ui);color:var(--cink);max-width:none;}
+.ls-root .kt-first::before{content:"";position:absolute;left:0;top:6px;width:10px;height:10px;border-radius:50%;background:var(--cink);}
+.ls-root .kt-first b{color:var(--ink);}
+.ls-root .kt-first:empty{display:none;}
+.ls-sheet .kt-why,.ls-sheet .kt-about{margin:0;}
+/* the picker: one compact row in the dock, the list opens below it */
+.ls-dock .kp{margin:0;background:var(--surface2);box-shadow:none;border-radius:14px;}
+.ls-dock .kp-sum{flex-wrap:nowrap;min-height:44px;padding:8px 14px;border-radius:14px;}
+.ls-dock .kp-label{font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;color:var(--muted);}
+.ls-dock .kp-cur{flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font:700 var(--ls-m) var(--font-ui);}
+.ls-dock .kp-n{display:none;}
+.ls-dock .kp-list{max-height:min(44vh,420px);}
+.ls-dock .kp-item{background:var(--white);}
+.ls-dock .kp .kp-gh{letter-spacing:0;text-transform:none;font-size:var(--ls-s);}
+/* Keep going inside Details: no tinted card in a card */
+.ls-sheet .kg{margin:0;padding:14px 0 0;border-top:1px solid var(--line-soft);border-radius:0;background:none;}
+.ls-sheet .kg-h,.ls-root .kg-h{font:900 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;color:var(--ink);}
+.ls-root .kg-k{letter-spacing:0;text-transform:none;font-size:12px;}
+.ls-sheet .kg-link,.ls-sheet .kg-term{background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);min-height:44px;}
+/* quiet disclosures in the dock: one row like the studio's own */
+.ls-dock details.kt-more,.ls-dock details.kt-about{margin:0;padding:0;border:0;}
+.ls-dock details.kt-more > summary,.ls-dock details.kt-about > summary{display:flex;width:100%;min-height:44px;padding:0 14px;border-radius:14px;background:var(--surface2);color:var(--ink);font:700 var(--ls-m) var(--font-ui);}
+.ls-dock details.kt-more > summary::before,.ls-dock details.kt-about > summary::before{display:none;}
+.ls-dock details.kt-more > summary::after,.ls-dock details.kt-about > summary::after{content:"";margin-left:auto;width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-2px) rotate(45deg);flex:none;}
+.ls-dock details[open].kt-more > summary::after,.ls-dock details[open].kt-about > summary::after{transform:translateY(2px) rotate(-135deg);}
+.ls-dock .kt-more-b{padding:12px 2px 2px;}
+.ls-root .ok{color:var(--good-text);} .ls-root .no{color:var(--bad-text);}
+.ls-root .btn-press.sm{min-height:44px;}
+.ls-root .btn-outline{min-height:44px;border-radius:999px;font:800 var(--ls-m) var(--font-ui);}
+.ls-root button.link-quiet{min-height:44px;font:800 var(--ls-m) var(--font-ui);}
+.ls-sheet .ls-sec > p,.ls-sheet .ls-sec > div > p{margin:0 0 8px;}
+.ls-sheet .ls-sec > p:last-child{margin-bottom:0;}
+.ls-root .report-btn{min-height:44px;display:inline-flex;align-items:center;}
+.ls-dock .kg{margin:0;padding:14px 0 0;border-top:1px solid var(--line-soft);border-radius:0;background:none;}
+.ls-dock .kg-link,.ls-dock .kg-term{background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);min-height:44px;}
