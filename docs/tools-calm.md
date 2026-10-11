@@ -26,21 +26,30 @@ approved ("do that for all"): the "Calmer tools redesign" canvas (reaction predi
 `assets/course/tool-studio.css` + `assets/course/tool-studio.js` (`window.LevlStudio`). Full API in the header of
 tool-studio.js; the short version:
 
-- `var s = LevlStudio.mount({ title, course, back, home, slug, host, modes, caption, hint, menu, stage, dock, why, details, about })`
+- `var s = LevlStudio.mount({ title, course, back, backLabel, home, slug, host, modes, caption, hint, menu, stage, dock, why, details, about, slim })`
   builds the frame (top bar, stage, dock, Why/Details sheet, menu) and sets `body.ls-on` (hides header, course tabs,
   crumb, hero, bottom tab bar, tutor and periodic-table buttons; the menu reaches them). The page footer moves to the
-  end of About, so the page is exactly one screen.
+  end of About, so the page is exactly one screen; a moved `<footer>` becomes `div.ls-foot-c[role=group]`
+  "Site links" (same classes, text and links), since About is inside main (check-a11y).
+- `backLabel` names the back arrow (default "Back to all tools"; `back` is its target). `menu.allTools`: `false`
+  drops the menu's last item, `{ label, href }` renames or retargets it (default "All tools" to `back`).
+- `slim: true` is the reference-page mount: the top bar only (back, title, tutor, menu without About, no "?"), over
+  the page's own scrolling content; no stage, dock or sheet, and the footer stays where it is (chem `calm-ref.js`).
 - `s.add(region, els, { mode })` MOVES elements (never copies) into `stage | dock | why | details | about`; with a mode
   they show only in that mode. Tool code keeps its element references, so lookups must not go through the old
   container (`app.querySelector`) once a part has moved (see titration `$()`).
 - `s.modes({ items, value, onChange })` draws the segmented switch, or `s.modes({ el, value })` adopts the tool's own;
-  `s.mode(v)` switches. `s.caption(html, mode?)` and `s.pills([{ html, tone, k }], 'left'|'right', mode?)` are kept per
+  calling it again replaces the set (one click listener, the latest `onChange`); `s.mode(v)` switches. `s.caption(html, mode?)` and `s.pills([{ html, tone, k }], 'left'|'right', mode?)` are kept per
   mode (tones: accent, good, bad, warn, ghost, readout). `s.open('why'|'details'|'about')`, `s.close()`.
 - `s.hint({ target, text })`: pulse ring + tooltip, once per tool per device (localStorage, try/catch), static ring
   with reduced motion, gone on the first pointer/key/input in the studio.
 - `LevlStudio.stepper(container, { items, submit, total, done })`: one step at a time over existing graded inputs
   ("Step 2 of 5", dots, Back/Next; Next only to steps that exist, so a drill's own Check moves on; `done()` shows all
-  steps for review). `s.suspend(on)` hides the studio for a Premium gate.
+  steps for review; optional). `s.suspend(on)` hides the studio for a Premium gate.
+- The phone sheet's focus trap skips controls inside a closed `<details>` (its summary stays) and `tabindex=-1`
+  controls (the unselected tab).
+- Not adopted: A&P's `AnpToolKit.studio` helpers (`put`/`reset` for its render-into-staging cycle, `mirror`,
+  `modeBar`) stay in `tool-kit.js`; they serve A&P's re-render model, and no other course needs them.
 - Helper classes: `.ls-scroll` (one scrolling chip row on a phone), `.ls-btn`/`.ls-pri`, `.ls-linkrow`, `.ls-lbl`,
   `.ls-row`, `.ls-tbl`, `.ls-steps` (numbered reasons), `.ls-tags`, `.ls-sec`, `.ls-title-l`, `.ls-k`. The courses' own
   controls (`.tchip`, `.tseg`, `.bt-btn`, `.bt-step`, `.bt-select`, `.bt-part`, `.btn-press`, `.tool-more`, `.bt-more`)

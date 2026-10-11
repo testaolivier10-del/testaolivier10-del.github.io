@@ -52,7 +52,7 @@
   /* Tool Studio (docs/tools-calm.md): with the page's studio flag a pathway
      is drawn in #app and moved into the calm frame (studioPathway,
      studioDrill, studioList); lookups go through the document. */
-  var S = window.AnpToolKit && window.AnpToolKit.studio ? window.AnpToolKit.studio() : null, modeTo = null;
+  var S = window.AnpToolKit && window.AnpToolKit.studio ? window.AnpToolKit.studio() : null;
   function Q(){ return S ? document : app; }
   function pq(el, sel){ return (S ? document : el).querySelector(sel); }
   if(S){ S.root.classList.add('pw-ls'); S.caption('Loading pathways…'); }
@@ -453,15 +453,15 @@
     S.modeBar(true);
     var dm = p.trace ? 'drills' : null;
     var first = p.trace ? (/(^|\/)(order|missing|error)$/.test(location.hash) ? 'drills' : 'watch') : variant;
-    modeTo = function(v){
+    function modeTo(v){
       if(v === 'watch' || v === 'trace'){ var b = Q().querySelector('.pt-mode[data-m="' + v + '"]'); if(b) b.click(); }
       else if(v === 'drills'){ if(tracer) tracer.stop(); }
       else { var t = Q().querySelector('.pw-tab[data-v="' + v + '"]'); if(t) t.click(); }
-    };
+    }
     S.modes({
       items: p.trace ? [{ value: 'watch', label: 'Watch' }, { value: 'trace', label: 'Trace it' }, { value: 'drills', label: 'Drills' }]
         : VARIANTS.map(function(v){ return { value: v.key, label: v.key === 'order' ? 'Order' : v.tab }; }),
-      value: first, onChange: function(v){ if(modeTo) modeTo(v); }
+      value: first, onChange: modeTo
     });
     S.put('stage', $('.pw-title'));
     if(p.trace){

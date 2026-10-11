@@ -74,38 +74,6 @@
     if(!document.querySelector('main')) studio.root.setAttribute('role', 'main');
     // The tool's drawings are styled under .tool-root (tools.css).
     studio.root.classList.add('tool-root');
-    /* The site footer now lives at the end of About, inside the main
-       landmark, where a <footer> no longer means the page's contentinfo (and
-       check-a11y flags a footer inside main). Same links, same text, as a
-       plain group. Shared layer request filed. */
-    [].slice.call(studio.root.querySelectorAll('footer')).forEach(function(f){
-      var d = document.createElement('div');
-      d.className = (f.className ? f.className + ' ' : '') + 'ls-foot-c';
-      d.setAttribute('role', 'group'); d.setAttribute('aria-label', 'Site links');
-      while(f.firstChild) d.appendChild(f.firstChild);
-      f.parentNode.replaceChild(d, f);
-    });
-
-    /* Focus trap in the phone sheet, for content the shared trap misreads:
-       controls inside a closed <details> count as visible there (Chrome keeps
-       their boxes), so Tab from the last real control left the sheet. This
-       runs first and wraps at the true ends. Shared layer request filed. */
-    (function(){
-      var sheet = studio.root.querySelector('.ls-sheet');
-      if(!sheet) return;
-      sheet.addEventListener('keydown', function(e){
-        if(e.key !== 'Tab' || sheet.getAttribute('aria-modal') !== 'true') return;
-        var f = [].filter.call(sheet.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea, summary, [tabindex]:not([tabindex="-1"])'), function(el){
-          if(el.offsetParent === null && el !== document.activeElement) return false;
-          var d = el.parentNode && el.parentNode.closest ? el.parentNode.closest('details:not([open])') : null;
-          return !(d && !(el.tagName === 'SUMMARY' && el.parentNode === d));
-        });
-        if(!f.length) return;
-        var first = f[0], last = f[f.length - 1];
-        if(e.shiftKey && document.activeElement === first){ e.preventDefault(); e.stopPropagation(); last.focus(); }
-        else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); e.stopPropagation(); first.focus(); }
-      }, true);
-    })();
     window.OchemStudio = studio;
   }
 

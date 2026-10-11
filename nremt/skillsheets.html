@@ -512,8 +512,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var wrap = dock.querySelector('.run-stepper');
     if(wrap && wrap !== stepped){
       stepped = wrap;
-      // done() is passed so the shared stepper's MutationObserver gets valid options.
-      var sp = window.LevlStudio.stepper(wrap, { items: 'li.run-step', label: 'Phase', done: function(){ return false; } });
+      var sp = window.LevlStudio.stepper(wrap, { items: 'li.run-step', label: 'Phase' });
       wrap.addEventListener('change', function(e){
         if(!e.target.checked) return;
         var all = [].slice.call(wrap.querySelectorAll('li.run-step')), i = all.indexOf(e.target.closest('li'));
