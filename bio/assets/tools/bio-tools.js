@@ -450,6 +450,8 @@
   function niceMax(v){ if(v <= 0) return 1; var p = Math.pow(10, Math.floor(Math.log10(v))); var ms = [1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10]; for(var i = 0; i < ms.length; i++) if(v <= ms[i] * p + 1e-9) return ms[i] * p; return 10 * p; }
   function niceStep(span, n){ var raw = span / (n || 5), p = Math.pow(10, Math.floor(Math.log10(raw))); var ms = [1, 2, 2.5, 5, 10]; for(var i = 0; i < ms.length; i++) if(raw <= ms[i] * p + 1e-9) return ms[i] * p; return 10 * p; }
   function wrapTable(inner, label){ return '<div class="table-wrap" tabindex="0" role="region" aria-label="' + esc(label || 'Data table') + '">' + inner + '</div>'; }
+  /* A part label may carry <sup>/<sub>/<i> (allele names such as C<sup>R</sup>); everything else is escaped. */
+  function escLabel(t){ return esc(t).replace(/&lt;(\/?)(sup|sub|i)&gt;/g, '<$1$2>'); }
   function dataTable(cols, rows, caption){
     return wrapTable('<table class="bio-data">' + (caption ? '<caption>' + caption + '</caption>' : '') + '<thead><tr>' + cols.map(function(c){ return '<th scope="col">' + c + '</th>'; }).join('') + '</tr></thead><tbody>' +
       rows.map(function(r){ return '<tr>' + r.map(function(v, i){ return i === 0 ? '<th scope="row">' + v + '</th>' : '<td>' + v + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table>', caption ? String(caption).replace(/<[^>]+>/g, '') : 'Table: ' + cols.join(', ').replace(/<[^>]+>/g, ''));
@@ -558,13 +560,13 @@
   /* A part's answer field (number) or option list (choice). */
   function partHtml(p, pid){
     if(p.type === 'choice'){
-      return '<fieldset class="bt-part bt-part-choice" data-key="' + p.key + '"><legend>' + esc(p.label) + '</legend>' + p.options.map(function(o, i){
+      return '<fieldset class="bt-part bt-part-choice" data-key="' + p.key + '"><legend>' + escLabel(p.label) + '</legend>' + p.options.map(function(o, i){
         var id = pid + '-' + i;
         return '<div class="bt-radio"><input type="radio" name="' + pid + '" id="' + id + '" value="' + i + '"><label for="' + id + '">' + esc(o) + '</label></div>';
       }).join('') + '<div class="bt-part-fb"></div></fieldset>';
     }
     var hint = 'Round to ' + p.d + ' decimal place' + (p.d === 1 ? '' : 's') + '.';
-    return '<div class="bt-part bt-part-num" data-key="' + p.key + '"><label for="' + pid + '">' + esc(p.label) + (p.unit ? ' <span class="bt-unit">(' + esc(p.unit) + ')</span>' : '') + '</label>' +
+    return '<div class="bt-part bt-part-num" data-key="' + p.key + '"><label for="' + pid + '">' + escLabel(p.label) + (p.unit ? ' <span class="bt-unit">(' + esc(p.unit) + ')</span>' : '') + '</label>' +
       '<span class="bt-num-row"><input type="text" id="' + pid + '" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="' + pid + '-h"></span>' +
       '<span class="bt-small" id="' + pid + '-h">' + (p.d === 0 ? 'A whole number.' : hint) + '</span><div class="bt-part-fb"></div></div>';
   }
@@ -759,12 +761,14 @@
       stage.innerHTML = '';
       why.innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here after you check your answers.</p>';
       stage.appendChild(slot);
-      // The problem text becomes the caption; the text itself, its tables and
-      // the problem code go to Details.
+      // The problem text becomes the caption; its data table goes on the
+      // stage under the figure (the numbers to work from stay in sight);
+      // the text itself and the problem code go to Details.
       var ctxEl = area.querySelector(':scope > .bt-context');
       var text = ctxEl ? ctxEl.textContent.replace(/\s+/g, ' ').trim() : '';
       det.innerHTML = '<h3 class="ls-title-l">This problem</h3>';
-      Array.prototype.slice.call(area.querySelectorAll(':scope > .bt-context, :scope > .table-wrap')).forEach(function(x){ det.appendChild(x); });
+      Array.prototype.slice.call(area.querySelectorAll(':scope > .table-wrap')).forEach(function(x){ x.classList.add('ls-prac-data'); stage.appendChild(x); });
+      Array.prototype.slice.call(area.querySelectorAll(':scope > .bt-context')).forEach(function(x){ det.appendChild(x); });
       var code = area.querySelector('.bt-code');
       if(code) det.appendChild(code);
       var h2 = area.querySelector('.bt-prob-head h2');
