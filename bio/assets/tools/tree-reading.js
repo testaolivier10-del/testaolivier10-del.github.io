@@ -401,5 +401,13 @@
     buildAll();
     T.questions(app.querySelector('.bt-qs'), data.questions, data.stimuli, SLUG);
     if(data.frq) T.frq(app, data.frq, SLUG);
-  });
+  }, {
+    // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim): two cards,
+    // two modes. Read: the tree is the stage; pick a tree, tap tips, ask.
+    // Build: the character table and your tree are the stage; join pieces.
+    studio: { sim: true, cards: [
+      { mode: 'read', label: 'Read a tree', stage: ['.tr-figwrap'], stageAlso: ['.tr-chips'], dock: ['.tr-pick', '.tr-tips'], live: '.tr-result',
+        why: ['.tr-about', '.tr-hint', '.tr-desc'], hint: { target: '.tr-tipg .tr-tip', text: 'Tap a name to select it' } },
+      { mode: 'build', label: 'Build a tree', stage: ['.tb-table'], stageAlso: ['.tb-out'], dock: ['.tb-pick', '.tb-pieces'], live: '.tb-status' }
+    ] } });
 })();

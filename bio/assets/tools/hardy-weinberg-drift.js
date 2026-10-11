@@ -310,5 +310,12 @@
     T.questions(app.querySelector('.bt-qs'), data.questions, data.stimuli, SLUG);
     if(data.frq) T.frq(app, data.frq, SLUG);
     if(/^#guess/.test(location.hash)) setMode('guess');
-  });
+  }, {
+    // Tool Studio (docs/tools-calm.md; bio-tools.js studioSim)
+    studio: { sim: true, stage: ['.hw-jar'], stageAlso: ['.hw-mini'], why: ['.hw-jarnote'], live: '.bt-summary',
+      dock: ['.os-chal', '.os-play', '@primary'], primarySel: '.hw-group:first-child > .bt-ctl:nth-of-type(-n+2)',
+      hint: { target: '.os-play .btn-press', text: 'Press Draw generations' },
+      caption: function(g){ return '<b>Generation ' + T.esc(g.ro(0)) + ':</b> p = ' + T.esc(g.ro(2).split(' / ')[0]) + ' in population 1. Across all populations: ' + T.esc(g.ro(6)) + '.'; },
+      pills: function(g){ return [{ k: 'p', html: g.ro(2).split(' / ')[0], tone: 'readout' }]; },
+      pillsR: function(g){ return [{ html: 'Generation ' + g.ro(0), tone: 'ghost' }]; } } });
 })();

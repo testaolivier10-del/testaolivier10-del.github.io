@@ -169,6 +169,15 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    numbers" disclosure (open state remembered per tool, hidden in quiz modes); long `.os-why` text clamps to two lines
    with "Why? Read the rest". Each simulator has one `.bt-first` line saying what to do first. Nothing removed: every
    control, mode, hash, item id and recording is unchanged.
+   (2026-10-10, calm tools P1-Bio, branch `claude/tools-calm-bio`, `docs/tools-calm.md`, per-tool lines in
+   `docs/tools-calm-notes/bio.md`) All 19 tools run on the Tool Studio (`"studio": true` in `pages.json`): the figure
+   is the stage, 1 to 3 controls in the dock, one live caption, "Show the numbers" content and extra settings in
+   Details, explanations in Why. Simulators pass `T.mount(..., { studio: { sim: true, ... } })` (`studioSim`): the
+   tool's own `.os-modes` become the switch plus a "Questions" mode (stimulus on the stage, one question or FRQ part
+   at a time); moved parts stay findable through the card (`studioVirtual`). Skills tools keep Explore + Practice
+   (`studioArrange`); graph builder and design drills arrange themselves (`studio.arrange`) as steppers. Hashes
+   (`#predict`, `#find`, `#make`, `#mutant`, `#guess`, `?seed=`) and every recorded item id are unchanged; new
+   `#questions` opens the Questions mode. `simplify()` still runs only on pages without the studio.
 10. (2026-10-03) **Free lessons: Units 1 and 2 and every skills lesson.** The brief's "the first
    lesson of each skills topic" is every skills lesson, because a skills topic has one lesson.
    `isFreeTopic` (`scripts/lib/apbio-build.mjs`) marks every topic outside the course units free;

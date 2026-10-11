@@ -437,5 +437,9 @@
     T.questions(app.querySelector('.bt-qs'), data.questions, data.stimuli, SLUG);
     if(data.frq) T.frq(app, data.frq, SLUG);
     if(/^#predict/.test(location.hash)) setMode('predict');
-  }, { stage: function(){} });
+  }, { stage: function(){},
+    studio: { sim: true, modeLabels: { predict: 'Predict' }, stageAlso: ['.ez-bar'],
+      hint: { target: '.ls-primary input[type=range]', text: 'Slide the substrate concentration' },
+      pills: function(g){ return [{ k: 'Rate', html: g.ro(0), tone: 'readout' }]; },
+      pillsR: function(g){ return [{ html: g.ro(3) + ' of Vmax', tone: 'ghost' }]; } } });
 })();

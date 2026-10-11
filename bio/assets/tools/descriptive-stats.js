@@ -119,5 +119,10 @@
   T.mount('descriptive-stats', function(app, data){
     explore(app);
     T.skillTool(app, data, { slug: 'descriptive-stats', kind: 'descriptive', stage: stage });
-  });
+  }, {
+    // Tool Studio (docs/tools-calm.md; bio-tools.js studioArrange)
+    studio: { stageAlso: ['.ds-key'], hint: { target: '.ds-dot', text: 'Drag a dot sideways' },
+      caption: function(g){ return g.live ? T.esc(T.firstSentence(g.live)) : '<b>Mean ' + g.ro(1) + ', median ' + g.ro(2) + '.</b> Drag one dot far to the right and watch which one moves more.'; },
+      pills: function(g){ return [{ k: 'Mean', html: g.ro(1), tone: 'readout' }]; },
+      pillsR: function(g){ return [{ html: 'n ' + g.ro(0) + ' · SD ' + g.ro(3) + ' · SE ' + g.ro(4), tone: 'ghost' }]; } } });
 })();
