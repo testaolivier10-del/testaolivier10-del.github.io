@@ -99,3 +99,10 @@ tool-studio.js; the short version:
 - Shared-layer issues found (not fixed in tool-studio.*): `.ls-dock` needs `position:relative` (sr-only labels in a
   scrolled dock made the whole page scroll; patched per course CSS); the first-run hint tooltip covers the caption and
   Why on phones; `stepper.go()` moves focus (focus ring on load); stepper Next is styled primary even beside a Check.
+
+## Honest labels (2026-10-10, owner)
+"Why?" holds explanation only. Settings, data tables, formulas and extra practice live in the second sheet tab, which is
+named for what it holds (`detailsTitle`: "Data & settings", "View options", "Formula & every step"...) and has its own
+dock button with that name, so nothing is reached by tapping "Why?". A tool with only About there shows an "About" tab and
+no button. Actions never sit in Why (resonance's reveal and start over moved to the dock); in-sheet "Why?" toggles are
+"Show the reasoning".

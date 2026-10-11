@@ -382,7 +382,7 @@
       }
     }
 
-    html += '<details class="tool-more tool-more--why"><summary>Why? Every form, rule by rule</summary>' +
+    html += '<details class="tool-more tool-more--why"><summary>Every form, rule by rule</summary>' +
       '<div class="ttable-scroll"><table class="ttable" style="margin-top:8px;">' +
       '<thead><tr><th>Form</th><th>Octets</th><th>Formal charges</th><th>Standing</th></tr></thead><tbody>' +
       target.map(function(f, i){
@@ -726,13 +726,14 @@
     var cmpStage = mk('ls-pics res-ls-cmp'), cmpDock = mk('res-ls-cmpdock'), cmpWhy = mk('res-ls-cmpwhy'), cmpDet = mk('ls-sec res-ls-cmpdet');
     var prog = mk('ls-sec res-ls-prog');
     prog.appendChild(elProgress);
-    var tools = byId('resReveal').parentNode; tools.classList.add('ls-row'); prog.appendChild(tools);
+    // the reveal and start-over buttons are actions: they live in the dock, not under Why
+    var tools = byId('resReveal').parentNode; tools.classList.add('ls-row');
     var formsWhy = mk('ls-sec res-ls-forms');
     var resMode = Kit.seg(byId('resMode'), 'data-mode');
     Kit.scrollChips(byId('resPickPanel'));
     studio.add('stage', pics, { mode: 'hunt' });
     studio.add('stage', cmpStage, { mode: 'compare' });
-    studio.add('dock', [elPicker, byId('resMore'), act], { mode: 'hunt' });
+    studio.add('dock', [elPicker, byId('resMore'), act, tools], { mode: 'hunt' });
     studio.add('dock', cmpDock, { mode: 'compare' });
     studio.add('why', [elVerdict, prog, elSummary, formsWhy], { mode: 'hunt' });
     studio.add('why', cmpWhy, { mode: 'compare' });

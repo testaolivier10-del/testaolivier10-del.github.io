@@ -624,7 +624,7 @@
 
     elV.innerHTML = html;
 
-    elF.innerHTML = '<details class="tool-more tool-more--why"' + (correct ? '' : ' open') + '><summary>Why?</summary>' + why +
+    elF.innerHTML = '<details class="tool-more tool-more--why"' + (correct ? '' : ' open') + '><summary>Show the reasoning</summary>' + why +
       '<div class="ttable-scroll"><table class="ttable">' +
       '<thead><tr><th>Factor</th><th>Points to</th><th>Reasoning</th></tr></thead><tbody>' +
       res.considered.map(function(c){

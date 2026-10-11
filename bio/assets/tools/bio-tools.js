@@ -693,6 +693,11 @@
     var s = window.LevlStudio.mount({
       title: h1 ? h1.textContent : slug, course: 'AP® Biology', back: base() + 'tools.html', home: base(), slug: 'apbio-' + slug,
       host: app,
+      // the second tab and its dock button, named for what is in it
+      detailsTitle: ({ 'chi-square': 'Problem & critical values', 'confidence-intervals': 'Problem, formulas & settings',
+        'descriptive-stats': 'Problem & formulas', 'hardy-weinberg': 'Problem & equations', 'rates': 'Problem & formulas',
+        'simpson-diversity': 'Problem & formula', 'water-potential': 'Problem & formulas', 'graph-builder': 'What full credit needs',
+        'tree-reading': 'Trees & characters', 'design-drills': 'All drills' })[slug] || 'Data & settings',
       menu: {
         copyLink: function(){
           var code = s.mode() === 'practice' ? s.root.querySelector('.ls-prac-code .bt-code b') : null;

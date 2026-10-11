@@ -63,6 +63,10 @@
     studio = window.LevlStudio.mount({
       title: sentence(tool.name), course: 'Organic Chemistry', back: '../tools.html', home: '../', slug: 'ochem-' + slug,
       host: mount,
+      // the second tab and its dock button, named for what is in it
+      detailsTitle: ({ 'acid-base': 'More practice', 'reaction-predictor': 'Product mix & practice', 'reagent-roadmap': 'More practice',
+        'arrow-pusher': 'Bookkeeping & keys', 'conformations': 'Build your own', 'resonance': 'Charge map & practice',
+        'spectroscopy': 'Tables & practice', 'viewer-3d': 'View options' })[slug] || 'More practice',
       menu: {
         copyLink: true,
         report: { course: 'ochem', id: 'tool:' + slug },

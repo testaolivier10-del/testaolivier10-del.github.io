@@ -329,3 +329,13 @@ html.ls-lock{overflow:hidden;}
 .ls-root .cd-num{display:flex;align-items:center;gap:10px;}
 .ls-root .cd-num input[type=text]{flex:1;min-width:0;}
 .ls-root .cd-num .bt-unit{flex:none;font:800 var(--ls-m) var(--font-ui);color:var(--muted);}
+
+/* the second tab's own button: what the tool keeps out of sight, by name */
+.ls-detbtn{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:0 14px;margin-top:2px;border:1.5px solid var(--line, rgba(20,40,35,.14));
+  border-radius:14px;background:transparent;color:var(--ink);font:800 var(--ls-s) var(--font-ui);text-align:left;cursor:pointer;}
+.ls-detbtn[hidden]{display:none;}
+.ls-detbtn .ls-i{width:18px;height:18px;flex:none;color:var(--cink);}
+.ls-detbtn-t{flex:1;min-width:0;}
+.ls-detbtn .ls-detbtn-c{color:var(--muted);}
+.ls-detbtn:hover{background:var(--ctint);}
+.ls-detbtn:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}

@@ -478,7 +478,7 @@ document.addEventListener('DOMContentLoaded', function(){
      elements are moved, never copied, so everything below works as before. */
   const $ = id => document.getElementById(id);
   const studio = window.NremtStudio ? window.NremtStudio.mount({
-    title: 'Body map', slug: 'body-map',
+    title: 'Body map', slug: 'body-map', detailsTitle: 'View options & terms',
     modes: { items: [{ value: 'anatomy', label: '3D anatomy' }, { value: 'burns', label: 'Burns' }],
       value: params.get('mode') === 'burns' ? 'burns' : 'anatomy', onChange: v => setBmMode(v, true) },
     caption: 'Tap any part of the body to learn what it does. Drag to turn it.',

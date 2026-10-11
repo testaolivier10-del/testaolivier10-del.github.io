@@ -37,7 +37,12 @@
                 items: [{ label, onClick | href }],
                 allTools: false | { label, href } (last item; default All tools) }
      slim     true                   bar only (reference pages; no About, footer stays)
-     whyTitle 'Why' (tab label)      detailsTitle 'Details'
+     whyTitle 'Why' (tab label)
+     detailsTitle 'Data & settings'  names the second tab AND the dock button that
+                                    opens it: say what is in there (settings,
+                                    tables, formulas). With nothing but About
+                                    in it, the tab says 'About' and there is no
+                                    dock button. Why holds explanation only.
      footer   selector               the site footer, moved to the end of About
                                      (default: the page's footer elements)
    Methods (all return s unless noted):
@@ -54,6 +59,7 @@
                                     mode (given, or the one showing) and come
                                     back when that mode does.
      s.open(tab, focusEl?)          open the sheet on 'why' | 'details' | 'about'
+     s.detailsTitle(t)              rename the second tab and its dock button
      s.close()
      s.hint({ target, text, key })  pulse + tooltip on target, once per tool
                                     per device; gone on first interaction
@@ -108,6 +114,8 @@
     home: '<path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-6h4v6"/>',
     grid: '<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>',
     atom: '<circle cx="12" cy="12" r="1.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/>',
+    sliders: '<path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/>',
+    chev: '<path d="M9 6l6 6-6 6"/>',
     star: '<path d="M12 4l2.4 5 5.4.6-4 3.7 1.1 5.3L12 16l-4.9 2.6 1.1-5.3-4-3.7 5.4-.6z"/>'
   };
   function icon(n, cls){ return '<svg class="ls-i' + (cls ? ' ' + cls : '') + '" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + ICON[n] + '</svg>'; }
@@ -145,13 +153,14 @@
           '<div class="ls-cap"><p class="ls-caption" id="' + ids.cap + '" aria-live="polite"></p>' +
             '<button type="button" class="ls-why" aria-controls="' + ids.why + '">' + icon('bulb') + '<span>Why?</span></button></div>' +
           '<div class="ls-dock-body"></div>' +
+          '<button type="button" class="ls-detbtn" aria-controls="' + ids.det + '" hidden>' + icon('sliders') + '<span class="ls-detbtn-t"></span>' + icon('chev', 'ls-detbtn-c') + '</button>' +
         '</section>' +
         '<aside class="ls-sheet" aria-labelledby="' + ids.sheetH + '" tabindex="-1" hidden>' +
           '<div class="ls-grab" aria-hidden="true"></div>' +
-          '<div class="ls-sheet-head"><h2 class="sr-only" id="' + ids.sheetH + '">Why and details</h2>' +
-            '<div class="ls-seg ls-tabs" role="tablist" aria-label="Why or details">' +
+          '<div class="ls-sheet-head"><h2 class="sr-only" id="' + ids.sheetH + '">Why and more</h2>' +
+            '<div class="ls-seg ls-tabs" role="tablist" aria-label="Why, or the rest of the tool">' +
               '<button type="button" role="tab" id="' + ids.why + '-tab" aria-controls="' + ids.why + '" aria-selected="true" data-tab="why">' + esc(opts.whyTitle || 'Why') + '</button>' +
-              '<button type="button" role="tab" id="' + ids.det + '-tab" aria-controls="' + ids.det + '" aria-selected="false" tabindex="-1" data-tab="details">' + esc(opts.detailsTitle || 'Details') + '</button>' +
+              '<button type="button" role="tab" id="' + ids.det + '-tab" aria-controls="' + ids.det + '" aria-selected="false" tabindex="-1" data-tab="details"></button>' +
             '</div>' +
             '<button type="button" class="ls-ib ls-close" aria-label="Close">' + icon('close') + '</button></div>' +
           '<div class="ls-panel ls-why-panel" role="tabpanel" id="' + ids.why + '" aria-labelledby="' + ids.why + '-tab" tabindex="-1"></div>' +
@@ -193,11 +202,29 @@
         if(o && o.mode){ el.setAttribute('data-ls-only', o.mode); modeOnly.push(el); }
       });
       if(region === 'about') aboutS.hidden = !aboutB.children.length;
+      if(region === 'details' || region === 'about') paintDet();
       if(mode) paintMode();
       return s;
     };
+    /* The second tab is named for what it holds, and gets its own button in
+       the dock, so settings and data are never found by tapping "Why?". */
+    var detTitle = opts.detailsTitle || '', detBtn = q('.ls-detbtn'), detTab = q('.ls-tabs [data-tab=details]');
+    function detHas(){
+      return Array.prototype.some.call(detP.children, function(c){ return !c.hidden && !c.classList.contains('ls-off'); });
+    }
+    function paintDet(){
+      if(!detTab) return;
+      var has = detHas(), t = has ? (detTitle || 'Data & settings') : 'About';
+      detTab.textContent = t;
+      detBtn.hidden = !has;
+      detBtn.querySelector('.ls-detbtn-t').textContent = t;
+    }
+    s.detailsTitle = function(t){ detTitle = t || ''; paintDet(); return s; };
+    detBtn.addEventListener('click', function(){ sheetOpen && tab === 'details' ? s.close() : s.open('details'); });
+    paintDet();
     function paintMode(){
       modeOnly.forEach(function(el){ el.classList.toggle('ls-off', el.getAttribute('data-ls-only').split(/\s+/).indexOf(mode) < 0); });
+      paintDet();
       root.setAttribute('data-mode', mode || '');
     }
 
