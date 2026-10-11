@@ -1051,7 +1051,7 @@
       if(head) head.hidden = !inFrq;
       s.caption(review ? 'Tick each rubric point your answer earns, then save your score.'
         : inFrq ? 'Write your answer in your own words; the rubric and a sample answer come after the last part.'
-        : 'Answer from the data shown. Each answer is checked and explained right away.', m);
+        : 'Answer from the data shown. Each answer is checked right away.', m);
     }
     if(window.MutationObserver) new MutationObserver(function(){ requestAnimationFrame(sync); }).observe(dock, { subtree: true, attributes: true, attributeFilter: ['class'] });
     sync();

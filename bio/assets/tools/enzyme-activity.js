@@ -49,6 +49,10 @@
     function layout(){
       var w = Math.max(280, host.clientWidth || 600);
       W = Math.min(720, w); H = Math.round(W < 480 ? W * 0.78 : W * 0.5);
+      // In the Tool Studio the stage sets the height: the scene shrinks to
+      // fit it rather than spilling over the Pause bar below.
+      var fitH = host.closest && host.closest('.ls-stage-body') ? host.clientHeight : 0;
+      if(fitH > 100 && H > fitH){ var r = H / W; H = fitH; W = Math.max(140, Math.round(H / r)); }
       dpr = Math.min(2, window.devicePixelRatio || 1);
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + 'px'; cv.style.height = H + 'px';
       var cols = W < 480 ? 3 : 4, rows = Math.ceil(8 / cols), top = 20, bot = H - 50;
@@ -236,6 +240,8 @@
     if(window.IntersectionObserver) new IntersectionObserver(function(es){ visible = es[0].isIntersecting; if(visible && cfg && !reduced()) start(); else stop(); }).observe(wrap);
     document.addEventListener('visibilitychange', function(){ if(document.hidden) stop(); else if(cfg && !reduced()) start(); });
     window.addEventListener('resize', function(){ if(!cfg) return; layout(); if(reduced() || paused) draw(0); });
+    // A studio mode switch resizes the stage without a window resize.
+    if(window.ResizeObserver){ var lastHW = ''; new ResizeObserver(function(){ var k = host.clientWidth + 'x' + host.clientHeight; if(!cfg || k === lastHW) return; lastHW = k; layout(); draw(0); }).observe(host); }
     var mo = new MutationObserver(function(){ if(cfg){ colors(); if(reduced() || paused) draw(0); } });
     mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     host.innerHTML = ''; host.appendChild(wrap);
@@ -440,6 +446,8 @@
   }, { stage: function(){},
     studio: { sim: true, modeLabels: { predict: 'Predict' }, stageAlso: ['.ez-bar'],
       hint: { target: '.ls-primary input[type=range]', text: 'Slide the substrate concentration' },
+      // In Predict the challenge reads in the dock: the caption only says what to do.
+      caption: function(g){ var st = window.LevlStudio.get(); return st && st.mode() === 'predict' ? 'Predict first, then make the change and watch the scene.' : T.esc(T.firstSentence(g.live)); },
       pills: function(g){ return [{ k: 'Rate', html: g.ro(0), tone: 'readout' }]; },
       pillsR: function(g){ return [{ html: g.ro(3) + ' of Vmax', tone: 'ghost' }]; } } });
 })();
