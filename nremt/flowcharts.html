@@ -877,12 +877,12 @@ document.addEventListener('DOMContentLoaded', function(){
     studio.mode(m);
     if(m === 'read'){
       var h = shown();
-      studio.caption(h ? '<b>' + h.textContent + '.</b> Read it top to bottom; the shaded boxes are the questions you ask.' : 'Every sequence, one after another.', 'read');
+      studio.caption(h ? '<b>' + h.textContent + '.</b> Read it top to bottom; the shaded boxes are what you check.' : 'Every sequence, one after another.', 'read');
       var on = chips.querySelector('[aria-pressed="true"]');
       if(on && chips.scrollWidth > chips.clientWidth) chips.scrollLeft = Math.max(0, on.offsetLeft - 16);
       var card = h && h.nextElementSibling, notes = card ? card.querySelectorAll('.flow-note') : [];
       how.innerHTML = '<h3 class="ls-title-l">' + (h ? h.textContent : 'Protocol flows') + '</h3>' +
-        '<p>Plain boxes are actions, shaded boxes are decisions (diamonds when you build a flow), and each arm under a decision is labeled with its answer. The notes under a chart say why the order is what it is.</p>' +
+        '<p>Plain boxes are actions, shaded boxes are what you check (decisions are diamonds when you build a flow), and each arm under a decision is labeled with its answer. The notes under a chart say why the order is what it is.</p>' +
         [].map.call(notes, function(n){ return '<p>' + n.innerHTML + '</p>'; }).join('');
     } else if(m === 'build'){
       studio.caption('Drag each step into the chart, or tap a step and then the place it goes. Two steps belong to other protocols.', 'build');
