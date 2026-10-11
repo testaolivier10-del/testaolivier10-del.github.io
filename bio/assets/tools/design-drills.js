@@ -246,11 +246,12 @@
   /* Tool Studio (docs/tools-calm.md): the scenario (its setup and data
      table) is the stage; the drills go one at a time in the dock, each with
      its own Check; the scenario choice is the one dock control, the drill
-     filter is in Details. Every draw (a new scenario) is re-arranged into a
+     filter is in Details; "How this works" is under Why. Every draw (a new scenario) is re-arranged into a
      fresh stepper. */
   function studio(app, s){
     var pick = app.querySelector('.dr-pick'), host = app.querySelector('.dr-scen');
-    Array.prototype.slice.call(app.children).forEach(function(k){ if(k.matches('.bt-intro')) s.add('about', k); if(k.matches('details.bt-how')){ k.open = true; s.add('about', k); } });
+    // "How this works" (what each drill practices and how it is checked) is the Why.
+    Array.prototype.slice.call(app.children).forEach(function(k){ if(k.matches('.bt-intro')) s.add('about', k); if(k.matches('details.bt-how')){ k.open = true; s.add('why', k); } });
     T.studioKeep(s);
     var stage = document.createElement('div'), det = document.createElement('div'), dock = document.createElement('div');
     stage.className = 'ls-dr-stage'; det.className = 'ls-sec'; dock.className = 'ls-dr-dock';

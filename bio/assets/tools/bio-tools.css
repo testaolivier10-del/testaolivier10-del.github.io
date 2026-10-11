@@ -1182,3 +1182,10 @@
 }
 /* Questions: each question's own Check is the main action; the stepper's Next (move on or skip) is secondary. */
 .ls-root .ls-qs .ls-step-nav .ls-step-next{background:var(--surface2);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);}
+/* Design drills on a phone: the scenario reads compactly so its data table shows too. */
+@media (max-width:999px){
+  .ls-root .ls-dr-stage .ls-title-l{font-size:var(--ls-m);}
+  .ls-root .ls-dr-stage .bt-context,.ls-root .ls-dr-stage .bt-context p{font-size:var(--ls-s);line-height:1.4;}
+  .ls-root .ls-dr-stage table{font-size:var(--ls-s);}
+  .ls-root .ls-dr-stage th,.ls-root .ls-dr-stage td{padding:5px 8px;}
+}
