@@ -88,8 +88,8 @@ tool-studio.js; the short version:
 | Step | Scope | Status |
 |---|---|---|
 | P0 | Build Tool Studio shared layer + adopt it on the 3 mockup tools (ochem reaction predictor, bio chi-square, chem titration) as the reference | done (branch `claude/tools-calm-p0`, API below) |
-| P1 | Adopt on every other tool: NREMT, Ochem, A&P, AP Bio, AP Chem (parallel, one branch per course) | pending |
-| P2 | Fresh 5-second test on every tool, fixes, full CI, PR, live | pending |
+| P1 | Adopt on every other tool: NREMT, Ochem, A&P, AP Bio, AP Chem (parallel, one branch per course) | done 2026-10-10: all five courses converted; notes in `docs/tools-calm-notes/` |
+| P2 | Fresh 5-second test on every tool, fixes, full CI, PR, live | done 2026-10-10: two fresh 5-second passes (NREMT/A&P/Ochem, Bio/Chem) fixed layout, wording and bugs; shared-layer fixes merged; full CI |
 
 ## P2 QA notes (AP Bio + AP Chem, branch `claude/tools-calm-qa-b`)
 - Bio practice: the problem's data table now sits on the stage under the figure (was hidden in Details); graph builder's
