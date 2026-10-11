@@ -243,3 +243,4 @@ a.fl-tag:hover{text-decoration:underline;}
 .fl-ls .ls-stage .fl-seg button{flex:none;min-height:44px;}
 .fl-ls .fl-intro{margin:0;}
 .fl-ls .fl-tag{min-height:44px;display:inline-flex;align-items:center;padding:0 14px;}
+.ls-root .fl-lreset{min-width:44px;min-height:44px;}

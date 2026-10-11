@@ -55,3 +55,10 @@
 .nx-skillsheets .run-actions > button{font-size:15px;line-height:1.2;padding:6px 12px;}
 .nx-skillsheets .run-badge{margin:8px 0 0 8px;}
 @media (min-width:1000px){ .nx-skillsheets .run-clockwrap{width:200px;height:200px;} .nx-skillsheets .run-live .run-clock{font-size:44px;} }
+/* A critical phase: the label carries the warn ring; the row itself stays clear, and the label
+   shrinks so the "critical" tag is never pushed past the dock edge. */
+.nx-skillsheets .run-step.is-critical,.nx-skillsheets .run-step.is-critical.is-done{background:none;border:0;}
+.nx-skillsheets .run-step label{flex:1;min-width:0;}
+/* One filled button at a time: while a phase is still ahead, Next is the action and Finish waits as an outline. */
+.nx-skillsheets .sk-ls-dock:has(.ls-step-next:not([hidden])) .run-actions .drill-next{background:var(--surface2);color:var(--cink);box-shadow:inset 0 0 0 2px var(--cink);}
+.nx-skillsheets #runCritN{font:700 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;}

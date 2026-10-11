@@ -58,7 +58,8 @@
       b.className = 'btn-press alt';
       b.style.cssText = 'display:block;width:100%;text-align:left;margin-bottom:8px;font-size:14px;line-height:1.45;';
       b.textContent = p.text;
-      b.addEventListener('click', function(){ answer(p.key, q); });
+      if(p.key) b.setAttribute('data-ok', '');
+      b.addEventListener('click', function(){ b.classList.add('is-picked'); answer(p.key, q); });
       box.appendChild(b);
     });
   }
@@ -71,7 +72,12 @@
       tool: 'formulary', id: q.id, qid: q.id, correct: correct,
       label: q.q, href: 'practice.html?q=' + q.id
     });
-    Array.prototype.forEach.call(document.querySelectorAll('#drillOpts button'), function(b){ b.disabled = true; });
+    // Mark the answer on the options themselves: the right one green, a wrong pick red.
+    Array.prototype.forEach.call(document.querySelectorAll('#drillOpts button'), function(b){
+      b.disabled = true;
+      if(b.hasAttribute('data-ok')) b.classList.add('is-right');
+      else if(b.classList.contains('is-picked')) b.classList.add('is-wrong');
+    });
     var fb = document.getElementById('drillFb');
     fb.innerHTML =
       '<p role="status" style="font-weight:800;margin:0 0 6px;color:' + (correct ? 'var(--good-text)' : 'var(--bad-text)') + '">' +

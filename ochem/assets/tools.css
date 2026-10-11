@@ -920,7 +920,7 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .ap-ls .ap-step{min-height:36px;}
 .ap-ls .ap-steps__reset{min-height:36px !important;}
 .ap-ls .ap-group{margin:0 0 12px;}
-.ap-ls .ap-group__label{margin:0 0 8px;font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
+.ap-ls .ap-group__label,.ls-root .ap-group__label{margin:0 0 8px;font:800 var(--ls-s) var(--font-ui);letter-spacing:0;text-transform:none;}
 .ap-ls #apPicker .tool-more{margin:0;border:0;padding:0;}
 .ap-ls #apPicker .tool-more > summary{font:700 var(--ls-m) var(--font-ui);letter-spacing:0;text-transform:none;}
 .ap-ls #apChalPick .tchip .tmuted{color:inherit;opacity:.75;}
@@ -1174,3 +1174,10 @@ a.tool-tile:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .rr-ls .rr-reagent.tchip--mini{min-height:44px;}
 .ls-root .ls-foot .ls-foot-c{margin:0;padding:0;font-size:var(--ls-s);line-height:1.5;}
 .sp-ls:not(.sp-ls-nmr) .sp-ls-peak #spLinkNote,.sp-ls.sp-ls-nmr .sp-ls-peak .sp-ls-irnote{display:none;}
+/* An unknown on a phone: each spectrum takes the full stage width (height follows), instead of
+   both shrinking to fit the height with wide empty margins. */
+@media (max-width:599.98px){
+  .sp-ls .sp-ls-puz{justify-content:center;}
+  .sp-ls .sp-ls-puz > .sp-chart{flex:none;display:block;}
+  .sp-ls .sp-ls-puz > .sp-chart svg{height:auto;max-height:none;}
+}

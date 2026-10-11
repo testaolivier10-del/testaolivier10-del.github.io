@@ -41,7 +41,8 @@
 .nx-flowcharts .fl-ls-why p{margin:0;}
 .nx-flowcharts .flow-foot{margin:0;font-size:var(--ls-s);color:var(--muted);}
 @media (max-width:999.98px){
-  .nx-flowcharts .bd-side{bottom:0;margin:0 -14px -14px;}
+  /* The scroller's 14px bottom padding deflates the sticky edge, so pin past it or the chart shows under the tray. */
+  .nx-flowcharts .bd-side{bottom:-14px;margin:0 -14px -14px;}
 }
 @media (min-width:1000px){
   .nx-flowcharts #flowDiagrams,.nx-flowcharts #flowBuild,.nx-flowcharts #flowDrill{margin:0 -24px -24px;padding:0 24px 24px;}
@@ -53,3 +54,7 @@
 .nx-flowcharts .fl-ls-drill .drill-verdict.ok,.nx-flowcharts .fl-ls-drill .drill-verdict.no{color:var(--ink);}
 .nx-flowcharts .bd-tile{min-height:44px;}
 .nx-flowcharts .bd-label span{background:var(--cink);color:var(--white);font:800 12px var(--font-ui);text-transform:none;letter-spacing:0;}
+/* Calm type: branch labels and arrows in sentence case, UI font (no caps kickers). */
+.nx-flowcharts .branch-label,.nx-flowcharts .drill-branchlabel,.nx-flowcharts .flow-rejoin,.nx-flowcharts .flow-box.terminal::after{font:700 12px var(--font-ui);text-transform:none;letter-spacing:0;}
+.nx-flowcharts .bd-slot .bd-q,.nx-flowcharts .bd-status{font:700 12px var(--font-ui);text-transform:none;letter-spacing:0;}
+@media (max-width:999.98px){.nx-flowcharts .bd-tray{padding-bottom:6px;}}

@@ -2194,7 +2194,7 @@ const studio = window.NremtStudio ? window.NremtStudio.mount({
     credit.innerHTML = 'Patient figure rendered from <a href="https://lifesciencedb.jp/bp3d/" target="_blank" rel="noopener">BodyParts3D</a>, © 2008 Life Science Integrated Database Center, <a href="https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en" target="_blank" rel="noopener">CC BY-SA 2.1 Japan</a>.';
     return [lede, credit];
   })(),
-  caption: 'Pick a call to start. A skipped step shows up later in the call.',
+  caption: 'Pick a call. You choose each step; the patient responds.',
   note: { label: 'Premium tool.', html: 'Part of NREMT-EMT Premium.' },
 }) : null;
 let simDock = null, simWhy = null;
@@ -2274,7 +2274,7 @@ function backToPicker(){
   if (studio) {
     simDock.innerHTML = '';
     studio.root.setAttribute('data-sim', 'picker');
-    studio.pills([]); studio.caption('Pick a call to start. A skipped step shows up later in the call.');
+    studio.pills([]); studio.caption('Pick a call. You choose each step; the patient responds.');
     studioWhy();
     return;
   }
@@ -2517,7 +2517,7 @@ function renderNode(consequenceText){
     <div class="choice-list">
       ${node.choices.map((c, i) => `<button type="button" class="choice-option" data-choice="${i}">${c.text}</button>`).join('')}
     </div>
-    ${SIM ? `<a class="pt-jump" href="#ptHost">Examine the patient &darr;</a>` : ''}
+    ${SIM ? `<a class="pt-jump" href="#ptHost">Examine the patient</a>` : ''}
   `;
   if(monitor) monitor.show(node.vitals, hesitateTo ? hesitateTo.vitals : null);
   if(patient) patient.update(seenNodes());

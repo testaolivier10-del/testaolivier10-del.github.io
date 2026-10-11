@@ -195,6 +195,7 @@
      ],
      "correct": 0,
      "overlay": {
+      "name": "pH falls to 7.1",
       "marks": [
        {
         "x": 7.4,
@@ -998,6 +999,7 @@
      ],
      "correct": 0,
      "overlay": {
+      "name": "pH falls to 7.0",
       "marks": [
        {
         "x": 7.4,

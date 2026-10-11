@@ -153,3 +153,21 @@
 .wr-ls .ls-sheet .wr-filter select{min-height:44px;}
 .wr-ls .wr-seg-k{color:var(--ink);}
 .wr-ls .wr-ls-steps{display:flex;flex-direction:column;gap:12px;}
+/* In the dock a step is bare (its card ring cut through the question); a checked step marks its select instead. */
+.wr-ls .ls-dock .wr-step{background:none;box-shadow:none;border-radius:0;}
+.wr-ls .ls-dock .wr-step label,.wr-ls .ls-dock .wr-q{font:800 var(--ls-m)/1.4 var(--font-ui);}
+.wr-ls .ls-dock .wr-step.is-right select{box-shadow:inset 0 0 0 2px var(--good);}
+.wr-ls .ls-dock .wr-step.is-wrong select{box-shadow:inset 0 0 0 2px var(--bad);}
+/* "Put it together": Back shares one row with Check and Skip, so Check is on screen without scrolling the dock. */
+.wr-ls .ls-dock-body:has(> .wr-actions:not(.ls-step-off)){display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px 10px;align-items:center;}
+.wr-ls .ls-dock-body:has(> .wr-actions:not(.ls-step-off)) > .wr-ls-steps{display:contents;}
+.wr-ls .ls-dock-body:has(> .wr-actions:not(.ls-step-off)) .ls-step-head,
+.wr-ls .ls-dock-body:has(> .wr-actions:not(.ls-step-off)) .wr-steps,
+.wr-ls .ls-dock-body:has(> .wr-actions:not(.ls-step-off)) > :not(.wr-ls-steps):not(.wr-actions){grid-column:1 / -1;}
+.wr-ls .ls-dock-body:has(> .wr-actions:not(.ls-step-off)) .ls-step-nav{grid-column:1;margin:0;}
+.wr-ls .ls-dock-body:has(> .wr-actions:not(.ls-step-off)) .ls-step-nav[hidden]{display:none;}
+.wr-ls .ls-dock-body:has(> .wr-actions:not(.ls-step-off)) .ls-step-back{padding:0 18px;}
+.wr-ls .ls-dock-body:has(> .wr-actions:not(.ls-step-off)) > .wr-actions{grid-column:2;}
+.wr-ls .ls-dock-body:has(> .wr-actions:not(.ls-step-off) .wr-msg:not(:empty)) > .wr-actions{grid-column:1 / -1;}
+/* Once a term is checked, "Next term" is the action; stepping through the parts again is secondary. */
+.wr-ls .ls-dock-body:has(> .wr-fb:not(:empty)) .ls-step-next{background:var(--surface2);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);}

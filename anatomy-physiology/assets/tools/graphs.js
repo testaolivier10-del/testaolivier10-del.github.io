@@ -473,6 +473,7 @@
   }
   function condLabel(q){
     var o = q.overlay, names = [];
+    if(o.name) return o.name;   // a plain name when the marks' own labels are only numbers
     (o.series || []).forEach(function(s){ if(s.label && names.indexOf(s.label) < 0) names.push(s.label); });
     if(!names.length) (o.hlines || []).forEach(function(l){ if(l.label && names.indexOf(l.label) < 0) names.push(l.label); });
     if(!names.length) (o.marks || []).forEach(function(m){ if(m.label) names.push(m.label); });

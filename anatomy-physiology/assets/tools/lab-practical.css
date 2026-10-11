@@ -71,7 +71,7 @@
 .lp-box{position:absolute;box-sizing:border-box;margin:0;padding:0;border:0;border-radius:4px;background:transparent;color:transparent;font:900 12px var(--font-ui);display:grid;place-items:center;overflow:visible;}
 button.lp-box{cursor:pointer;}
 /* a finger-sized hit area around small boxes */
-button.lp-box::after{content:'';position:absolute;inset:-5px;}
+button.lp-box::after{content:'';position:absolute;inset:-8px -6px;}
 .lp-open{outline:2px solid transparent;}
 .lp-open.is-picked{outline:3px solid var(--lp-pick);background:rgba(18,114,100,0.12);}
 .lp-open:hover,.lp-open:focus-visible{outline:2px solid var(--lp-mask-line);background:rgba(18,114,100,0.10);}

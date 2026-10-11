@@ -349,11 +349,16 @@
 
   // Wavenumber runs right to left, the way an IR is always printed.
   function irX(cm){
-    return IR_L + (IR_MAX - cm) / (IR_MAX - IR_MIN) * (IR_W - IR_L - 10);
+    return IR_L + (IR_MAX - cm) / (IR_MAX - IR_MIN) * (IR_W - IR_L - 22);   // room for the "500" label at the right edge
   }
   function irY(t){ return IR_T + (100 - t) / 100 * (IR_H - IR_T - IR_B); }
 
-  function irSpectrum(c, highlight){
+  /* On a phone a 640-wide spectrum shrinks to half size and the plot is a thin
+     strip; the one-spectrum view (fit) draws it on a narrower, taller canvas
+     there instead. An unknown's two stacked spectra keep the wide shape. */
+  function narrowChart(){ return !!(window.matchMedia && window.matchMedia('(max-width: 599.98px)').matches); }
+  function irSpectrum(c, highlight, fit){
+    var nw = !!fit && narrowChart(); IR_W = nw ? 440 : 640; IR_H = nw ? 250 : 220;
     var pts = [];
     for(var cm = IR_MAX; cm >= IR_MIN; cm -= 6){
       var t = 100;
@@ -377,6 +382,7 @@
       var on = highlight === i;
       return '<g class="sp-peak' + (on ? ' is-on' : '') + '" data-peak="' + i + '" tabindex="0" role="button" aria-pressed="' + (on ? 'true' : 'false') + '"' +
         ' aria-label="' + esc(p.cm + ' per centimetre, ' + p.label) + '">' +
+        '<circle cx="' + irX(p.cm).toFixed(1) + '" cy="' + irY(100 - p.d).toFixed(1) + '" r="20" fill="transparent" stroke="none" pointer-events="all"/>' +
         '<circle cx="' + irX(p.cm).toFixed(1) + '" cy="' + irY(100 - p.d).toFixed(1) + '" r="' + (on ? 7 : 5) + '" ' +
           'fill="' + (on ? 'var(--accent)' : 'var(--white)') + '" stroke="var(--accent)" stroke-width="2"/>' +
         '<title>' + esc(p.label) + '</title>' +
@@ -406,7 +412,8 @@
 
   var MULT_LINES = { s:1, d:2, t:3, q:4, quint:5, sext:6, sept:7, oct:8, non:9, m:5 };
 
-  function nmrSpectrum(c, highlight){
+  function nmrSpectrum(c, highlight, fit){
+    var nw = !!fit && narrowChart(); NM_W = nw ? 440 : 640; NM_H = nw ? 280 : 250;
     var base = NM_H - NM_B;
     var maxH = Math.max.apply(null, c.nmr.map(function(s){ return s.h; }));
 
@@ -711,7 +718,7 @@
         : '';
     }
 
-    document.getElementById('spIR').innerHTML = irSpectrum(compound, hlIR);
+    document.getElementById('spIR').innerHTML = irSpectrum(compound, hlIR, true);
     document.getElementById('spIR').querySelectorAll('.sp-peak').forEach(function(g){
       var pick = function(){ hlIR = parseInt(g.getAttribute('data-peak'), 10); renderPredict(); };
       g.addEventListener('click', pick);
@@ -733,7 +740,7 @@
       'numbers, so the picture and the table cannot disagree.</p></details>';
     document.getElementById('spIRBox').addEventListener('toggle', function(e){ spIROpen = e.target.open; });
 
-    document.getElementById('spNMR').innerHTML = nmrSpectrum(compound, hlNMR);
+    document.getElementById('spNMR').innerHTML = nmrSpectrum(compound, hlNMR, true);
     document.getElementById('spNMR').querySelectorAll('.sp-sig').forEach(function(g){
       var pick = function(){
         var i = parseInt(g.getAttribute('data-sig'), 10);

@@ -140,7 +140,7 @@
     var c = deck[at];
     answered = false;
     mount.innerHTML =
-      '<div class="gw-meta"><span>Card ' + (at + 1) + ' of ' + deck.length + '</span><span>' + right + ' right</span></div>' +
+      '<div class="gw-meta"><span>Card ' + (at + 1) + ' of ' + deck.length + '</span><span class="gw-right">' + right + ' right</span></div>' +
       '<div class="gw-stack">' +
         (at + 2 < deck.length ? '<div class="gw-under gw-under2" aria-hidden="true"></div>' : '') +
         (at + 1 < deck.length ? '<div class="gw-under" aria-hidden="true"></div>' : '') +
@@ -189,6 +189,7 @@
     answered = true;
     var c = deck[at], ok = give === c.give;
     if(ok) right++;
+    var tally = mount.querySelector('.gw-right'); if(tally) tally.textContent = right + ' right';
     var card = document.getElementById('gwCard');
     card.classList.add(give ? 'went-give' : 'went-hold', ok ? 'is-ok' : 'is-no');
     card.style.transform = '';

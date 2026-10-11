@@ -366,6 +366,8 @@
       var b = el('text', { x:(xi + W) / 2, y:H - 4, class:'st-phase' }, layer); b.textContent = 'breathe out';
       var c = el('text', { x: ph === 'insp' ? xi / 2 : (xi + W) / 2, y:10, class:'st-evt st-evt--plain' }, layer);
       c.textContent = 'usually ' + (ph === 'insp' ? 'breathing in' : 'breathing out');
+      // The breathing-in band is narrow: start the label at its left edge so it is not cut off.
+      if(ph === 'insp'){ c.setAttribute('x', 4); c.style.textAnchor = 'start'; }
       title.textContent = 'A typical breath, not traced from this recording. ' + shortName(sound) + ': ' + PHASE_TEXT[sound.id];
     };
 
