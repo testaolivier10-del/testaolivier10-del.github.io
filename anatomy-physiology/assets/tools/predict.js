@@ -592,7 +592,7 @@
     var vars = box.querySelector('.pc-vars');
     // done: a stage stays one variable at a time after Run, each with its
     // verdict (the stepper needs a done() to observe; see the P1 notes).
-    var steps = window.LevlStudio.stepper(vars, { items: '.pc-var', label: 'Variable', done: function(){ return false; } });
+    var steps = window.LevlStudio.stepper(vars, { items: '.pc-var', label: 'Variable' });
     if(!studioStage.hinted){
       studioStage.hinted = true;
       S.hint({ target: '.pc-var .pc-dir button', text: 'Call it: up, down or no change' });

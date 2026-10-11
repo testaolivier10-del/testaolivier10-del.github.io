@@ -68,12 +68,11 @@
     if(!app.getAttribute('data-studio') || !window.LevlStudio) return null;
     var main = app.parentNode, h1 = main.querySelector('.chem-hero h1'), lede = main.querySelector('.chem-hero .lede');
     main.classList.add('ls-host');
-    LS = window.LevlStudio.mount({ title: h1 ? h1.textContent : 'Justification trainer', course: 'AP® Chemistry', back: BASE + 'index.html', slug: 'apchem-justify', host: app,
-      menu: { copyLink: true, report: { course: 'apchem', id: 'page:justify' },
-        note: { label: 'Beta.', html: 'This course has not yet been reviewed by an AP® Chemistry teacher. <a href="' + BASE + '../sources.html">Sources</a>' } } });
     // Back goes to the course home here, not to a tools page.
-    var back = LS.root.querySelector('.ls-back'); if(back) back.setAttribute('aria-label', 'Back to AP® Chemistry');
-    LS.root.querySelectorAll('.ls-menu a.ls-mi').forEach(function(a){ if(a.getAttribute('href') === BASE + 'index.html') a.querySelector('span').textContent = 'Course home'; });
+    LS = window.LevlStudio.mount({ title: h1 ? h1.textContent : 'Justification trainer', course: 'AP® Chemistry', back: BASE + 'index.html', backLabel: 'Back to AP® Chemistry',
+      slug: 'apchem-justify', host: app,
+      menu: { copyLink: true, report: { course: 'apchem', id: 'page:justify' }, allTools: { label: 'Course home' },
+        note: { label: 'Beta.', html: 'This course has not yet been reviewed by an AP® Chemistry teacher. <a href="' + BASE + '../sources.html">Sources</a>' } } });
     if(lede){ var pp = document.createElement('p'); pp.textContent = lede.textContent; LS.add('about', pp); }
     app.hidden = true;
     return LS;

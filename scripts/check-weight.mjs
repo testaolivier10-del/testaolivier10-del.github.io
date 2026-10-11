@@ -124,8 +124,11 @@ const SHELL_BUDGETS = [
      glossary work (W-A). 14 -> 17 once book.css, study.css/js and hub.css/js
      joined it (W-B, W-C, W-D), each replacing four per-course copies; the
      /assets every-page ruler stayed under its old 282. Measured 16.0 KB.
-     17 -> 19.5 (calm tools P1, docs/tools-calm.md): tool pages also load the shared Tool Studio (tool-studio.css/js, about 3.4 KB); an A&P tool page measured 19.4 KB. */
-  ['assets/course', 19.5],
+     17 -> 19.5 (calm tools P1, docs/tools-calm.md): tool pages also load the shared Tool Studio (tool-studio.css/js, about 3.4 KB); an A&P tool page measured 19.4 KB.
+     19.5 -> 20.5 (calm tools shared fixes): the Tool Studio took over the courses' workarounds (stepper without done,
+     one mode listener, closed-<details> focus trap, footer as a group in About, slim bar and back/All tools options);
+     the ochem and AP Chem copies left their own shells. Measured 20.0 KB. */
+  ['assets/course', 20.5],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —

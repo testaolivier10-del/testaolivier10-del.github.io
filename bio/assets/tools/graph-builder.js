@@ -324,7 +324,7 @@
     s.modes({ items: [{ value: 'data', label: 'Plot the data' }, { value: 'free', label: 'Free plot' }], value: 'data', onChange: function(v){
       var b = body.querySelector('.gb-mode [data-mode="' + v + '"]'); if(b) b.click();
     } });
-    var st = window.LevlStudio.stepper(form, { items: '.gb-stepcol > .gb-step:first-child > .bt-part-choice, .gb-stepcol > .gb-step:not(:first-child)', submit: ':scope > .bt-actions', done: function(){ return false; } }); // done: works around the shared stepper's observer options without one
+    var st = window.LevlStudio.stepper(form, { items: '.gb-stepcol > .gb-step:first-child > .bt-part-choice, .gb-stepcol > .gb-step:not(:first-child)', submit: ':scope > .bt-actions' });
     function arrange(){
       var grid = body.querySelector('.gb-live');
       if(!grid || !body.contains(grid)) return;

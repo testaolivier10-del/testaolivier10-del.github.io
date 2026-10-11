@@ -268,7 +268,7 @@
       Array.prototype.slice.call(host.children).forEach(function(x){ w.appendChild(x); });
       if(wrap) wrap.remove();
       wrap = w; dock.appendChild(w);
-      window.LevlStudio.stepper(w, { items: ':scope > .dr-sec, :scope > .bt-frq', label: 'Drill', done: function(){ return false; } });
+      window.LevlStudio.stepper(w, { items: ':scope > .dr-sec, :scope > .bt-frq', label: 'Drill' });
       s.caption('Read the experiment, then answer one drill at a time. Each drill has its own Check.');
       s.pills([]);
     }

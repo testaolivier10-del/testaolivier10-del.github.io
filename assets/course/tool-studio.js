@@ -20,6 +20,7 @@
      title    'Reaction predictor'   sentence case
      course   'Organic Chemistry'    shown beside the title on a desktop
      back     '../tools.html'        the back arrow (to the course tools page)
+     backLabel 'Back to all tools'   the back arrow's accessible name
      home     '../'                  course home (menu)
      slug     'reaction-predictor'   hint storage key, report id
      host     element                the studio goes in place of / before it
@@ -33,7 +34,9 @@
      menu     { copyLink: true | fn() -> url, note: { label, html },
                 report: { course, id } | fn, tutor: true (default),
                 periodic: true (default when a .pt-fab exists),
-                items: [{ label, onClick | href }] }
+                items: [{ label, onClick | href }],
+                allTools: false | { label, href } (last item; default All tools) }
+     slim     true                   bar only (reference pages; no About, footer stays)
      whyTitle 'Why' (tab label)      detailsTitle 'Details'
      footer   selector               the site footer, moved to the end of About
                                      (default: the page's footer elements)
@@ -42,7 +45,7 @@
                                     'details' | 'about'; with mode, they show
                                     only in that mode ('explore', 'practice'...)
      s.mode(v)                      switch modes (shows/hides mode-only parts)
-     s.modes(m)                     set up the mode switch after mount (as opts.modes)
+     s.modes(m)                     set up or replace the mode switch (as opts.modes)
      s.caption(html, mode?)         set the caption line (polite live region)
      s.pills(list, side?, mode?)    result pills on the stage: list of
                                     { html, tone: 'accent'|'good'|'bad'|'warn'|
@@ -63,7 +66,7 @@
        submit  selector of an element to show only on the last step
        total   number | fn() -> number (default: items found)
        label   'Step'
-       done    fn() -> true when graded (shows every step, for review)
+       done    fn() -> true when graded (shows every step, for review); optional
      New items appearing later (a drill that appends the next step after a
      Check) are picked up and become current. Back/Next move between steps;
      Next stops at the last step that exists.
@@ -114,24 +117,24 @@
     opts = opts || {};
     if(current) return current;
     var s = {}, mode = null, lastFocus = null, sheetOpen = false, tab = 'why';
-    var menuO = opts.menu || {};
+    var menuO = opts.menu || {}, slim = !!opts.slim;
     var ids = { title: nid('t'), why: nid('why'), det: nid('det'), sheetH: nid('sh'), menu: nid('m'), cap: nid('cap') };
 
     var root = document.createElement('div');
-    root.className = 'ls-root';
+    root.className = 'ls-root' + (slim ? ' ls-slim' : '');
     root.setAttribute('data-ls', '');
     root.innerHTML =
       '<header class="ls-bar">' +
-        '<a class="ls-ib ls-back" href="' + esc(opts.back || '../tools.html') + '" aria-label="Back to all tools">' + icon('back') + '</a>' +
+        '<a class="ls-ib ls-back" href="' + esc(opts.back || '../tools.html') + '" aria-label="' + esc(opts.backLabel || 'Back to all tools') + '">' + icon('back') + '</a>' +
         '<h1 class="ls-title" id="' + ids.title + '"><span class="ls-title-t">' + esc(opts.title || document.title) + '</span>' +
           (opts.course ? ' <span class="ls-course">' + esc(opts.course) + '</span>' : '') + '</h1>' +
         '<span class="ls-sp"></span>' +
         (menuO.tutor === false ? '' : '<button type="button" class="ls-tutor-btn" data-ls-act="tutor"><span class="ls-tutor-dot">' + icon('bot') + '</span>Ask the tutor</button>') +
-        '<button type="button" class="ls-ib ls-help" aria-label="Why? Explain what is on screen" aria-controls="' + ids.why + '">' + icon('help') + '</button>' +
+        (slim ? '' : '<button type="button" class="ls-ib ls-help" aria-label="Why? Explain what is on screen" aria-controls="' + ids.why + '">' + icon('help') + '</button>') +
         '<div class="ls-menu-wrap"><button type="button" class="ls-ib ls-more" aria-label="More" aria-haspopup="true" aria-expanded="false" aria-controls="' + ids.menu + '">' + icon('more') + '</button>' +
           '<div class="ls-menu" id="' + ids.menu + '" hidden></div></div>' +
       '</header>' +
-      '<div class="ls-main">' +
+      '<div class="ls-main"' + (slim ? ' hidden' : '') + '>' +
         '<section class="ls-stage" aria-label="' + esc((opts.title || 'Tool') + ': the picture') + '">' +
           '<div class="ls-pills"><div class="ls-pills-l"></div><div class="ls-pills-r"></div></div>' +
           '<div class="ls-stage-body"></div>' +
@@ -198,7 +201,7 @@
     }
 
     /* ---------------- modes */
-    var modeBtns = null;
+    var modeBtns = null, modesO = null;
     s.mode = function(v){
       if(v == null) return mode;
       mode = v;
@@ -207,10 +210,23 @@
       if(capEl){ showCap(); showPills(); }
       return s;
     };
+    // One listener, for whatever s.modes() set last.
+    modesEl.addEventListener('click', function(e){
+      var m = modesO;
+      if(!m || m.el) return;
+      var b = e.target.closest('button[data-v]'); if(!b) return;
+      var v = b.getAttribute('data-v');
+      if(v === mode) return;
+      s.mode(v);
+      if(m.onChange) m.onChange(v);
+    });
     function setupModes(m){
       modesEl.hidden = !m;
       if(!m) return;
+      modesO = m;
       if(m.el){
+        modeBtns = null;
+        Array.prototype.slice.call(modesEl.children).forEach(function(c){ if(c !== m.el) modesEl.removeChild(c); });
         m.el.classList.add('ls-seg', 'ls-seg-adopted');
         modesEl.appendChild(m.el);
         if(m.value) s.mode(m.value);
@@ -220,13 +236,6 @@
         return '<button type="button" data-v="' + esc(it.value) + '" aria-pressed="false">' + esc(it.label) + '</button>';
       }).join('') + '</div>';
       modeBtns = Array.prototype.slice.call(modesEl.querySelectorAll('button'));
-      modesEl.addEventListener('click', function(e){
-        var b = e.target.closest('button[data-v]'); if(!b) return;
-        var v = b.getAttribute('data-v');
-        if(v === mode) return;
-        s.mode(v);
-        if(m.onChange) m.onChange(v);
-      });
       s.mode(m.value || m.items[0].value);
     }
 
@@ -268,7 +277,10 @@
     }
     function focusables(){
       return Array.prototype.filter.call(sheet.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea, summary, [tabindex]:not([tabindex="-1"])'), function(el){
-        return el.offsetParent !== null || el === document.activeElement;
+        if(el !== document.activeElement && (el.offsetParent === null || el.tabIndex < 0)) return false;
+        // In a closed <details> only its own summary is focusable.
+        var d = el.parentNode && el.parentNode.closest ? el.parentNode.closest('details:not([open])') : null;
+        return !d || (el.tagName === 'SUMMARY' && el.parentNode === d);
       });
     }
     s.open = function(t, focusEl){
@@ -282,7 +294,7 @@
       sheet.setAttribute('aria-modal', modal ? 'true' : 'false');
       scrim.hidden = !modal;
       if(modal) document.documentElement.classList.add('ls-lock');
-      [q('.ls-help'), q('.ls-why')].forEach(function(b){ b.setAttribute('aria-expanded', 'true'); });
+      [q('.ls-help'), q('.ls-why')].forEach(function(b){ if(b) b.setAttribute('aria-expanded', 'true'); });
       requestAnimationFrame(function(){
         sheet.classList.add('is-open');
         var f = focusEl || (t === 'about' ? q('.ls-about .ls-h') : null) || root.querySelector('.ls-tabs [aria-selected=true]');
@@ -298,13 +310,13 @@
       root.classList.remove('is-sheet');
       scrim.hidden = true;
       document.documentElement.classList.remove('ls-lock');
-      [q('.ls-help'), q('.ls-why')].forEach(function(b){ b.setAttribute('aria-expanded', 'false'); });
+      [q('.ls-help'), q('.ls-why')].forEach(function(b){ if(b) b.setAttribute('aria-expanded', 'false'); });
       var done = function(){ if(!sheetOpen) sheet.hidden = true; };
       if(reduced()) done(); else setTimeout(done, 260);
       if(lastFocus && document.contains(lastFocus) && lastFocus.focus){ try{ lastFocus.focus({ preventScroll: true }); }catch(e){ lastFocus.focus(); } }
       return s;
     };
-    q('.ls-help').addEventListener('click', function(){ sheetOpen && tab === 'why' ? s.close() : s.open('why'); });
+    if(!slim) q('.ls-help').addEventListener('click', function(){ sheetOpen && tab === 'why' ? s.close() : s.open('why'); });
     q('.ls-why').addEventListener('click', function(){ sheetOpen && tab === 'why' ? s.close() : s.open('why'); });
     q('.ls-close').addEventListener('click', s.close);
     scrim.addEventListener('click', s.close);
@@ -349,7 +361,7 @@
     function buildMenu(){
       var h = '';
       if(menuO.copyLink){ h += item('copy', 'link', 'Copy link to this setup'); acts.copy = copyLink; }
-      h += item('about', 'info', 'About this tool'); acts.about = function(){ s.open('about'); };
+      if(!slim){ h += item('about', 'info', 'About this tool'); acts.about = function(){ s.open('about'); }; }
       if(menuO.report){
         var r = menuO.report;
         if(typeof r === 'function'){ h += item('report', 'flag', 'Report a problem'); acts.report = r; }
@@ -363,7 +375,11 @@
       });
       h += '<div class="ls-mdiv" role="presentation"></div>';
       if(opts.home) h += '<a class="ls-mi" href="' + esc(opts.home) + '">' + icon('home') + '<span>Course home</span></a>';
-      h += '<a class="ls-mi" href="' + esc(opts.back || '../tools.html') + '">' + icon('grid') + '<span>All tools</span></a>';
+      var all = menuO.allTools;
+      if(all !== false){
+        all = all && typeof all === 'object' ? all : {};
+        h += '<a class="ls-mi" href="' + esc(all.href || opts.back || '../tools.html') + '">' + icon(all.icon || 'grid') + '<span>' + esc(all.label || 'All tools') + '</span></a>';
+      }
       if(menuO.note) h += '<p class="ls-mnote">' + icon('star') + '<span><b>' + esc(menuO.note.label) + '</b> ' + (menuO.note.html || '') + '</span></p>';
       menu.innerHTML = h;
     }
@@ -426,11 +442,22 @@
 
     /* The site footer (legal links, the course's notes) goes to the end of
        About, so the page is exactly one screen and nothing is lost. */
-    list(opts.footer || 'body > footer, body > .xshell > footer, body > .bio-foot, body > .chem-foot').forEach(function(f){
-      if(root.contains(f)) return;
+    // About is in main, where a <footer> may not be (check-a11y): a moved one becomes a group.
+    function unfooter(f){
+      var d = document.createElement('div');
+      d.className = (f.className ? f.className + ' ' : '') + 'ls-foot-c';
+      d.setAttribute('role', 'group'); d.setAttribute('aria-label', 'Site links');
+      while(f.firstChild) d.appendChild(f.firstChild);
+      f.parentNode.replaceChild(d, f);
+      return d;
+    }
+    list(opts.footer || (slim ? null : 'body > footer, body > .xshell > footer, body > .bio-foot, body > .chem-foot')).forEach(function(f){
+      if(!f.parentNode || root.contains(f)) return;
       var wrap = f.parentNode !== document.body && f.parentNode.children.length === 1 ? f.parentNode : f;
-      wrap.classList.add('ls-foot');
       aboutB.appendChild(wrap);
+      if(wrap.tagName === 'FOOTER') wrap = unfooter(wrap);
+      wrap.classList.add('ls-foot');
+      Array.prototype.slice.call(wrap.querySelectorAll('footer')).forEach(unfooter);
       aboutS.hidden = false;
     });
 
@@ -571,7 +598,7 @@
           var d = !!(o.done && o.done());
           if(items().length !== seen || d !== lastDone){ lastDone = d; refresh(); }
         });
-      }).observe(container, { childList: true, subtree: true, attributes: !!o.done, attributeFilter: ['class'] });
+      }).observe(container, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
     }
     seen = items().length; at = o.start || 0;
     paint(false);
