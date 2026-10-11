@@ -187,9 +187,9 @@ def kitchen_svg():
     </g>
   </g>
   <g id="charW">
-    <g id="pA"><image href="poseA_full.png" x="-330" y="38" width="1440" height="1075"/></g>
-    <g id="pB" opacity="0"><image href="poseB_full.png" x="-330" y="38" width="1440" height="1075"/></g>
-    <g id="wA" opacity="1"><g transform="translate(744 560) rotate(-4)"><rect x="-7" y="-26" width="14" height="52" rx="5" fill="#2b2f3a"/><circle cx="0" cy="-20" r="12" fill="#cfd6e2" stroke="#8b94a5" stroke-width="3"/><circle cx="0" cy="-20" r="8" fill="#0e1622"/><path d="M0 -20 L0 -26 M0 -20 L4 -18" stroke="#2ee6d6" stroke-width="2" stroke-linecap="round"/></g></g><g id="wB" opacity="0"><g transform="translate(548 478) rotate(28)"><rect x="-7" y="-26" width="14" height="52" rx="5" fill="#2b2f3a"/><circle cx="0" cy="-20" r="12" fill="#cfd6e2" stroke="#8b94a5" stroke-width="3"/><circle cx="0" cy="-20" r="8" fill="#0e1622"/><path d="M0 -20 L0 -26 M0 -20 L4 -18" stroke="#2ee6d6" stroke-width="2" stroke-linecap="round"/></g></g>
+    <g id="pA" opacity="0"><image href="poseA_full.png" x="-330" y="38" width="1440" height="1075"/></g>
+    <g id="pB"><image href="poseB_full.png" x="-330" y="38" width="1440" height="1075"/></g>
+    <g id="wA" opacity="0"><g transform="translate(744 560) rotate(-4)"><rect x="-7" y="-26" width="14" height="52" rx="5" fill="#2b2f3a"/><circle cx="0" cy="-20" r="12" fill="#cfd6e2" stroke="#8b94a5" stroke-width="3"/><circle cx="0" cy="-20" r="8" fill="#0e1622"/><path d="M0 -20 L0 -26 M0 -20 L4 -18" stroke="#2ee6d6" stroke-width="2" stroke-linecap="round"/></g></g><g id="wB" opacity="1"><g transform="translate(548 478) rotate(28)"><rect x="-7" y="-26" width="14" height="52" rx="5" fill="#2b2f3a"/><circle cx="0" cy="-20" r="12" fill="#cfd6e2" stroke="#8b94a5" stroke-width="3"/><circle cx="0" cy="-20" r="8" fill="#0e1622"/><path d="M0 -20 L0 -26 M0 -20 L4 -18" stroke="#2ee6d6" stroke-width="2" stroke-linecap="round"/></g></g>
   </g>
   <g id="aMid">
     <rect x="-200" y="660" width="1480" height="40" fill="#5a4a46"/>
@@ -216,11 +216,11 @@ def kitchen_svg():
     </g>
   </g>
   <g id="armW">
-    <g id="fireW"><g id="cuffFire">{cuff}</g>
-    {sparks}</g>
+    <g transform="translate(-112 -14)"><g id="fireW"><g id="cuffFire">{cuff}</g>
+    {sparks}</g></g>
     {smoke}
   </g>
-  <g id="fireLight" style="mix-blend-mode:screen"><ellipse cx="690" cy="540" rx="460" ry="360" fill="url(#gFireLight)"/></g>
+  <g id="fireLight" style="mix-blend-mode:screen"><ellipse cx="580" cy="540" rx="460" ry="360" fill="url(#gFireLight)"/></g>
   <g id="aFront" filter="url(#blur3)" opacity=".85"><ellipse cx="80" cy="980" rx="260" ry="90" fill="#140f18"/><ellipse cx="1040" cy="1000" rx="300" ry="110" fill="#140f18"/></g>
 '''
 
@@ -286,7 +286,8 @@ def arm_svg():
   <g id="noIce" opacity="0"><g filter="url(#sh)"><rect x="830" y="150" width="120" height="110" rx="22" fill="#cfefff" stroke="#fff" stroke-width="5"/>
     <path d="M850 180 L900 172 M860 210 L920 200" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".8"/></g>
     <path d="M818 140 L962 270 M962 140 L818 270" stroke="#ff4f6b" stroke-width="16" stroke-linecap="round"/>
-    <text x="890" y="320" text-anchor="middle" class="lbl" font-size="36" fill="#ff8a9a">no ice</text></g>
+    <text x="890" y="326" text-anchor="middle" class="lbl" font-size="48" fill="#ff8a9a">no ice</text></g>
+  <g id="bigNote" opacity="0"><rect x="470" y="640" width="580" height="120" rx="28" fill="#081428" stroke="#8fd6ff" stroke-width="5"/><text x="760" y="690" text-anchor="middle" class="lbl" font-size="42" fill="#ffffff">Large burns: limit cooling</text><text x="760" y="738" text-anchor="middle" class="lbl" font-size="36" fill="#ffd23f">risk of hypothermia</text></g>
   <g id="gauzeW" opacity="0"><g id="gauze" filter="url(#sh)">
     <rect x="215" y="402" width="420" height="206" rx="14" fill="#fbfdff"/>
     {"".join(f'<path d="M{x} 406 L{x} 604" stroke="#dde6f2" stroke-width="3"/>' for x in range(235, 635, 22))}
@@ -368,7 +369,7 @@ def compose(c):
   </defs>
   <g id="scA">{kitchen_svg()}</g>
   <g id="scB" opacity="0">{arm_svg()}</g>
-  <g id="scC" opacity="0">{slab_svg()}</g>
+  <g id="scC" opacity="0"><g transform="translate(-50 40) scale(1.1)">{slab_svg()}</g></g>
 </svg>'''
     c.g(JS.replace("\n", " "))
     g = c.g
@@ -399,15 +400,11 @@ def compose(c):
 
     # ---------------- A: kitchen, sleeve on fire at frame zero ----------------
     g('tl.fromTo("#cam",{scale:1.12,x:-30,y:30},{scale:1.08,x:-24,y:26,duration:0.4,ease:"sine.inOut"},0);')
-    g('tl.fromTo("#pA",{x:0},{x:8,duration:0.42,ease:"sine.in"},0);')
-    g('tl.set("#pA, #wA",{opacity:0},0.42); tl.set("#pB, #wB",{opacity:1},0.42);')
-    g('tl.fromTo("#wA",{x:0},{x:8,duration:0.42,ease:"sine.in"},0);')
-    g('tl.fromTo("#wB",{x:10,y:-4},{x:-16,y:0,duration:0.3,ease:"power3.out",immediateRender:false},0.42);')
-    g('tl.fromTo("#pB",{x:10,y:-4},{x:-16,y:0,duration:0.3,ease:"power3.out",immediateRender:false},0.42);')
-    g('tl.set("#fireW",{x:-180,y:-62},0.42); tl.set("#fireLight",{x:-170,y:-50},0.42);')
-    g('tl.to("#cam",{x:-6,duration:0.06,yoyo:true,repeat:5,ease:"none"},0.42);')
+    g('tl.fromTo("#pB, #wB, #fireW, #fireLight",{x:34,y:-6},{x:0,y:0,duration:0.32,ease:"power3.out"},0);')
+    g('tl.to("#pB, #wB, #fireW, #fireLight",{x:-16,duration:0.5,ease:"sine.out"},0.32);')
+    g('tl.to("#cam",{x:-6,duration:0.06,yoyo:true,repeat:5,ease:"none"},0.02);')
     c.sound("fire", 0.0, 1.1); c.sound("ignite", 0.0, 1.0); c.sound("sizzle", 0.15, 0.6)
-    c.sound("flinch", 0.42, 1.2); c.sound("whoosh", 0.4, 0.7); c.sound("fire", 0.9, 0.7)
+    c.sound("flinch", 0.03, 1.2); c.sound("whoosh", 0.0, 0.7); c.sound("fire", 0.9, 0.7)
     g('tl.to("#cam",{scale:1.0,x:0,y:0,duration:1.0,ease:"power2.inOut"},0.8);')
     g('tl.to("#aFar",{x:24,duration:1.6,ease:"sine.inOut"},0.6); tl.to("#aMid",{x:-14,duration:1.6,ease:"sine.inOut"},0.6); tl.to("#charW",{y:-5,duration:1.6,ease:"sine.inOut"},0.9); tl.to("#aFront",{x:-60,duration:1.6,ease:"sine.inOut"},0.6);')
     g('tl.to("#cuffFire",{scale:0,transformOrigin:"50% 100%",duration:0.5,ease:"power2.in"},1.25);')
@@ -433,38 +430,39 @@ def compose(c):
     c.set("#scC", td, "opacity:1")
     g(f'tl.set("#cam",{{scale:2.6,x:{-(385-540)*2.6:.0f},y:{-(430-480)*2.6:.0f}}},{td:.2f});')
     g(f'tl.to("#cam",{{scale:1.0,x:0,y:0,duration:0.9,ease:"power3.out"}},{td:.2f});')
-    g(f'tl.set(P,{{v:5,onUpdate:pm}},{td:.2f});')
+    g(f'tl.set(P,{{v:4,onUpdate:pm}},{td:.2f});')
     g(f'tl.fromTo(".ce",{{y:0,opacity:0}},{{y:-130,opacity:0.9,duration:1.3,stagger:0.18,repeat:{int(TOT/1.3)},ease:"sine.out",immediateRender:false}},{td:.2f});')
 
     # ---------------- C: three zones ----------------
     def focus(sel, t0, t1):
         g(f'tl.fromTo("{sel}",{{opacity:0}},{{opacity:1,duration:0.3,immediateRender:false}},{t0:.2f}); tl.to("{sel}",{{opacity:0,duration:0.25}},{t1:.2f});')
     t = T["d1"]
-    focus(".fSup", t + 0.1, T["d2"] - 0.15); c.fade_in("#chSup", t + 0.1, 0.3, -12); c.fade_out("#chSup", T["d2"] - 0.15, 0.2)
+    focus(".fSup", t + 0.1, T["d2"] - 0.15); pass
     c.sound("pop", t + 0.1, 0.6)
     cam_to(c, t, 470, 430, 1.05, 0.7)
-    g(f'tl.to(P,{{v:5,duration:0.4,onUpdate:pm}},{t:.2f});')
+    g(f'tl.to(P,{{v:4,duration:0.4,onUpdate:pm}},{t:.2f});')
     g(f'tl.fromTo(".sig.sup",{{strokeWidth:9}},{{strokeWidth:14,duration:0.2,yoyo:true,repeat:5,immediateRender:false}},{C["d1"][1]:.2f});')
     g(f'tl.fromTo(".nt.sup",{{scale:1,transformOrigin:"50% 50%"}},{{scale:1.7,duration:0.2,yoyo:true,repeat:5,ease:"sine.inOut",immediateRender:false}},{C["d1"][1]:.2f});')
     c.sound("zap", C["d1"][1], 0.6); c.sound("zap", C["d1"][1] + 0.4, 0.4)
     t = T["d2"]
-    focus(".fPar", t + 0.1, T["d3"] - 0.15); c.fade_in("#chPar", t + 0.1, 0.3, -12); c.fade_out("#chPar", T["d3"] - 0.15, 0.2)
+    focus(".fPar", t + 0.1, T["d3"] - 0.15); pass
     c.sound("pop", t + 0.1, 0.6)
     g(f'tl.fromTo(".bl",{{scaleY:1,transformOrigin:"50% 100%"}},{{scaleY:1.12,duration:0.35,yoyo:true,repeat:5,ease:"sine.inOut",immediateRender:false}},{t+0.2:.2f});')
     p1 = C["d2"][1]
+    g(f'tl.to(P,{{v:8,duration:0.5,ease:"power2.out",onUpdate:pm}},{T["d2"]+0.5:.2f});')
     g(f'tl.to(P,{{v:9.5,duration:0.4,ease:"back.out(1.6)",onUpdate:pm}},{p1:.2f});')
     g(f'tl.fromTo("#meter",{{x:0}},{{x:6,duration:0.05,yoyo:true,repeat:13,ease:"none",immediateRender:false}},{p1+0.3:.2f});')
     g(f'tl.fromTo(".sig.par",{{strokeWidth:9}},{{strokeWidth:15,duration:0.18,yoyo:true,repeat:7,immediateRender:false}},{p1:.2f});')
     g(f'tl.fromTo(".nt.par",{{scale:1,transformOrigin:"50% 50%"}},{{scale:1.8,duration:0.18,yoyo:true,repeat:7,ease:"sine.inOut",immediateRender:false}},{p1:.2f});')
     c.sound("zap", p1, 1.0); c.sound("zap", p1 + 0.22, 0.9); c.sound("zap", p1 + 0.44, 0.8); c.sound("heartbeat", p1 + 0.1, 0.8); c.sound("heartbeat", p1 + 0.65, 0.8)
     t = T["d3"]
-    focus("#fCore", t + 0.1, T["tx"] - 0.3); c.fade_in("#chCore", t + 0.1, 0.3, -12); c.fade_out("#chCore", T["tx"] - 0.3, 0.2)
+    focus("#fCore", t + 0.1, T["tx"] - 0.3); pass
     c.sound("pop", t + 0.1, 0.6)
     k1 = C["d3"][1]
     cam_to(c, k1 - 0.1, 455, 420, 1.1, 0.5)
     g(f'tl.fromTo(".nt.core",{{scale:1,transformOrigin:"50% 50%"}},{{scale:1.8,duration:0.22,yoyo:true,repeat:3,ease:"sine.inOut",immediateRender:false}},{k1+0.1:.2f});')
-    g(f'tl.to(P,{{v:1,duration:0.7,ease:"power3.inOut",onUpdate:pm}},{k1+0.1:.2f});')
-    c.sound("numb", k1 + 0.1, 1.1)
+    g(f'tl.to(P,{{v:1,duration:0.35,ease:"power2.out",onUpdate:pm}},{T["d3"]-0.08:.2f});')
+    c.sound("numb", T["d3"] - 0.05, 1.1)
     k2 = C["d3"][2]
     cam_to(c, k2 - 0.1, 470, 440, 1.03, 0.5)
     g(f'tl.fromTo("#numb",{{opacity:0,scale:0.3,transformOrigin:"50% 50%"}},{{opacity:1,scale:1,duration:0.4,ease:"back.out(2.2)",immediateRender:false}},{k2:.2f});'); c.sound("check", k2, 0.5)
@@ -494,7 +492,7 @@ def compose(c):
     g(f'tl.fromTo("#pip",{{scale:0.4,transformOrigin:"190px 190px"}},{{scale:1,duration:0.45,ease:"back.out(2)",immediateRender:false}},{s2:.2f});')
     c.sound("shimmer", s2, 0.8); c.sound("swish", s2 - 0.08, 0.6)
     for i in range(3):
-        c.fade_in(f"#aw{i}", s2 + 0.35 + i * 0.25, 0.25, 10); c.sound("check", s2 + 0.35 + i * 0.25, 0.9)
+        c.fade_in(f"#aw{i}", s2 + 0.15 + i * 0.2, 0.25, 10); c.sound("check", s2 + 0.15 + i * 0.2, 0.9)
     g(f'tl.fromTo("#lens",{{x:0,y:0}},{{x:-30,y:-40,duration:0.5,yoyo:true,repeat:2,ease:"sine.inOut",immediateRender:false}},{s2+0.3:.2f});')
     t = T["t2"]
     c.fade_out("#pipW, #aw0, #aw1, #aw2", t - 0.05, 0.25)
@@ -508,8 +506,9 @@ def compose(c):
     g(f'tl.fromTo(".dr",{{y:0,x:0,opacity:1}},{{y:-60,x:"random(-60,60)",opacity:0,duration:0.5,repeat:5,stagger:0.08,ease:"power2.out",immediateRender:false}},{w1+0.3:.2f});')
     c.sound("swish", w1 - 0.08, 0.6); c.sound("water", w1, 1.0); c.sound("water", w1 + 2.2, 0.8)
     g(f'tl.fromTo("#noIce",{{opacity:0,scale:0.4,transformOrigin:"50% 50%"}},{{opacity:1,scale:1,duration:0.4,ease:"back.out(2)",immediateRender:false}},{w1+0.9:.2f});'); c.sound("wrong", w1 + 0.9, 0.8)
+    c.fade_in("#bigNote", w1 + 1.2, 0.35, 12); c.sound("check", w1 + 1.2, 0.7)
     t = T["t3"]
-    c.fade_out("#water, #noIce", t - 0.05, 0.3)
+    c.fade_out("#water, #noIce, #bigNote", t - 0.05, 0.3)
     g(f'tl.fromTo("#gauzeW",{{opacity:0}},{{opacity:1,duration:0.15,immediateRender:false}},{t+0.1:.2f});')
     g(f'tl.fromTo("#gauze",{{y:-420,rotation:-8,svgOrigin:"425 505"}},{{y:0,rotation:-2,duration:0.6,ease:"bounce.out",immediateRender:false}},{t+0.1:.2f});')
     c.fade_in("#dryTag", t + 0.7, 0.3, 10); c.sound("swish", t - 0.08, 0.6); c.sound("pat", t + 0.62, 1.0)
@@ -523,10 +522,10 @@ def compose(c):
 
 
 SPEC = dict(
-    id="y1011-02-burn-story", badge="NREMT  BURNS", tail=1.6, bpm=88, key=-2, seed=29,
+    id="y1011-02-burn-story", badge="NREMT  BURNS", tail=3.0, bpm=88, key=-2, seed=29,
     vars="--glow:#3a1a14;--acc1:#ff8a3d;--acc2:#2ee6d6",
-    css="#end-l1{font-size:88px;letter-spacing:-1.5px}",
-    end_line='Judge the <span style="color:#ffd23f">depth</span>,<br>not the pain',
+    css="#end-l1{font-size:88px;letter-spacing:-1.5px} #stagewrap{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 60px,#000 905px,transparent 960px);mask-image:linear-gradient(180deg,transparent 0,#000 60px,#000 905px,transparent 960px)}",
+    end_line='Judge the <span style="color:#ffd23f">depth</span>,<br>not the pain<div style="font-size:58px;color:#bff8f2;margin-top:34px;font-weight:800">Free NREMT practice</div>',
     beats=[
         dict(key="hook", vo="His sleeve caught fire, {1}and part of the burn doesn't hurt. That's the bad sign.",
              disp="His sleeve caught fire, and part of the burn doesn't hurt. That's the bad sign."),
