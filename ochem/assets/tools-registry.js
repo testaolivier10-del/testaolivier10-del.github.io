@@ -64,7 +64,8 @@
       blurb: 'Draw curved arrows on a molecule and see the product they make.',
       teaches: 'Curved arrows, formal charge, octets',
       topic: ['curved-arrows', 'sn2', 'formal-charge'],
-      terms: ['curved-arrow', 'formal-charge', 'octet-rule']
+      terms: ['curved-arrow', 'formal-charge', 'octet-rule'],
+      studio: true
     },
     {
       slug: 'resonance',
@@ -74,7 +75,8 @@
       blurb: 'Move electrons to find every resonance form of a molecule.',
       teaches: 'Delocalization, contributor weighting',
       topic: ['resonance', 'conjugate'],
-      terms: ['resonance-structures', 'major-contributor', 'resonance-hybrid']
+      terms: ['resonance-structures', 'major-contributor', 'resonance-hybrid'],
+      studio: true
     },
     {
       slug: 'viewer-3d',
@@ -84,7 +86,8 @@
       blurb: 'Turn a molecule in 3D and see its real shape and bond angles.',
       teaches: 'VSEPR, hybridization, stereochemistry',
       topic: ['molecular-geometry', 'hybridization', 'bonding'],
-      terms: ['vsepr-theory', 'hybridization', 'wedge-and-dash-notation']
+      terms: ['vsepr-theory', 'hybridization', 'wedge-and-dash-notation'],
+      studio: true
     },
     {
       slug: 'conformations',
@@ -94,7 +97,8 @@
       blurb: 'Turn a bond and watch the energy change, or flip a cyclohexane chair.',
       teaches: 'Torsional strain, A-values, chair flips',
       topic: ['conformational-analysis', 'newman', 'ring-flips'],
-      terms: ['newman-projection', 'torsional-strain', 'gauche', 'a-value']
+      terms: ['newman-projection', 'torsional-strain', 'gauche', 'a-value'],
+      studio: true
     },
     {
       slug: 'reaction-predictor',
@@ -116,7 +120,8 @@
       blurb: 'Find which acid gives up its proton more easily, and why.',
       teaches: 'pKa, conjugate base stability',
       topic: ['acidity-factors', 'pka', 'conjugate'],
-      terms: ['pka', 'ario', 'conjugate-acid-base-pair', 'inductive-effect']
+      terms: ['pka', 'ario', 'conjugate-acid-base-pair', 'inductive-effect'],
+      studio: true
     },
     {
       slug: 'spectroscopy',
@@ -126,7 +131,8 @@
       blurb: 'Read IR and ¹H NMR spectra peak by peak, then name the compound.',
       teaches: 'IR, ¹H NMR, degrees of unsaturation',
       topic: ['ir', 'h-nmr', 'mass-spec'],
-      terms: ['wavenumber', 'fingerprint-region', 'chemical-shift', 'degree-of-unsaturation']
+      terms: ['wavenumber', 'fingerprint-region', 'chemical-shift', 'degree-of-unsaturation'],
+      studio: true
     },
     {
       slug: 'reagent-roadmap',
@@ -136,7 +142,8 @@
       blurb: 'Find the reagents that turn one functional group into another.',
       teaches: 'Functional group interconversion, reagents, synthesis',
       topic: ['functional-group-interconversion', 'multistep-synthesis', 'retrosynthesis'],
-      terms: ['functional-group-interconversion', 'retrosynthesis', 'synthon']
+      terms: ['functional-group-interconversion', 'retrosynthesis', 'synthon'],
+      studio: true
     }
   ];
 

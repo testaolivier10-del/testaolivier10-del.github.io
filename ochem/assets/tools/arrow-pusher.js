@@ -170,6 +170,108 @@
   function setStep(src){ document.getElementById('apStep').innerHTML = STEP[src] || STEP.lib; }
   setStep('lib');
 
+  /* ---- Tool Studio (docs/tools-calm.md) -----------------------------------
+     With the studio on (registry `studio: true`; tool-shell.js mounts it), the
+     same elements move into the calm frame: the arrow editor and what your
+     arrows make (or the challenge's target) side by side on the stage, the
+     mode switch, the molecules and the one next action in the dock, the
+     readout and the nudge in Why, the bookkeeping table in Details.
+     studioAfter() runs after every readout and lifts the product drawing and
+     the action buttons out of it; everything else stays where it was drawn. */
+  var studio = window.OchemStudio || null, ls = null;
+  if(studio){
+    var Kit = window.OchemStudioKit;
+    var byId = function(id){ return document.getElementById(id); };
+    var pics = document.createElement('div'); pics.className = 'ls-pics';
+    var edBox = byId('apEditor'); edBox.classList.add('ls-ed');
+    var outPane = document.createElement('div'); outPane.className = 'ls-pane'; outPane.hidden = true;
+    pics.appendChild(edBox); pics.appendChild(outPane);
+    var act = document.createElement('div'); act.className = 'ap-ls-act';
+    var kbd = document.createElement('div'); kbd.className = 'ls-sec';
+    kbd.innerHTML = '<h3 class="ls-h">Using the keyboard</h3><p class="ls-sub">Tab moves between atoms and bonds, Enter picks one. An arrow is two picks: where the electrons start, then where they go. Pick a drawn arrow to remove it.</p>';
+    studio.root.classList.add('ap-ls');
+    Kit.scrollChips(elPicker);
+    studio.add('stage', [byId('apSteps'), pics]);
+    // Short names, so the three fit one switch on a phone.
+    [['build', 'Build'], ['chal', 'Challenge']].forEach(function(x){ var b = byId('apSrc').querySelector('[data-src="' + x[0] + '"]'); if(b) b.textContent = x[1]; });
+    var apMode = Kit.seg(byId('apSrc'), 'data-src');
+    studio.add('dock', elPicker, { mode: 'lib' });
+    studio.add('dock', byId('apChalPick'), { mode: 'chal' });
+    studio.add('dock', elBuilder, { mode: 'build' });
+    studio.add('why', elBuildMsg, { mode: 'build' });
+    studio.add('dock', act);
+    studio.add('why', [elResult, elHintBox]);
+    // The numbers first, then the ways onward, then Check yourself and Keep going.
+    var detFirst = studio.details.firstChild;
+    [byId('apBooksBox'), byId('apSend'), kbd].forEach(function(el){ studio.details.insertBefore(el, detFirst); });
+    studio.add('details', byId('apSend'), { mode: 'build' });
+    studio.details.insertBefore(byId('apSend'), kbd);
+    byId('apBooksBox').open = true; showBooks = true;
+    root.hidden = true;
+    ls = { out: outPane, act: act, mode: apMode };
+  }
+  function firstSentence(t){ var m = /^.*?[.!?](?=\s|$)/.exec(String(t || '')); return m ? m[0] : String(t || ''); }
+  function upper1(s){ s = String(s || ''); return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  /* The studio's view of one readout: the product (or target) on the stage,
+     the next action in the dock, a caption and pills saying what happened. */
+  function studioAfter(){
+    if(!ls) return;
+    var m = ls.mode() || 'lib';
+    ls.out.innerHTML = ''; ls.act.innerHTML = '';
+    var pic = elResult.querySelector('.tstage'), fr = elResult.querySelector('.tfrags');
+    if(pic){
+      ls.out.innerHTML = '<p class="ls-pane-k">' + (chal.on ? 'Target' : 'What your arrows make') + '</p>';
+      ls.out.appendChild(pic); if(fr) ls.out.appendChild(fr);
+    }
+    ls.out.hidden = !pic;
+    // "See it in 3D" is a way onward, not the next move: it waits in Why.
+    var to3d = elResult.querySelector('.trow a[href^="viewer-3d"]');
+    if(to3d){ var tags = document.createElement('div'); tags.className = 'ls-tags'; to3d.className = 'ls-tag'; tags.appendChild(to3d); elResult.appendChild(tags); }
+    elResult.querySelectorAll('.trow').forEach(function(r){ ls.act.appendChild(r); });
+    // A re-render replaced the button that had focus: keep the keyboard in the dock.
+    if((!document.activeElement || document.activeElement === document.body) && ls.act.querySelector('button')) ls.act.querySelector('button').focus({ preventScroll: true });
+    document.querySelectorAll('#apChalPick .tchips').forEach(function(c){ c.classList.add('ls-scroll'); });
+    var cap, left = [], right = [], name = esc(elName.textContent || '');
+    if(chal.on){
+      var def = chal.def, done = chal.i >= def.steps.length;
+      right.push({ html: done ? 'Done' : 'Step ' + (chal.i + 1) + ' of ' + def.steps.length, tone: 'ghost' });
+      if(chal.verdict && chal.verdict.ok){
+        left.push({ html: done ? 'Mechanism complete' : 'Step ' + (chal.verdict.step + 1) + ' right', tone: 'good' });
+        cap = done ? '<b>That is the whole mechanism.</b> Try the next challenge.' : '<b>Step ' + (chal.verdict.step + 1) + ' right.</b> Draw the next step on the intermediate.';
+      } else if(chal.verdict){
+        left.push({ html: 'Not this step yet', tone: 'bad' });
+        cap = '<b>Not this step yet.</b> ' + esc(firstSentence(chal.verdict.text)) + ' Why? has the rest.';
+      } else {
+        cap = '<b>' + esc(def.label) + '.</b> ' + esc(def.goal) + (lastArrows.length ? ' Then check the step.' : '');
+      }
+    } else if(m === 'build' && !lastBuilt){
+      cap = '<b>Build a molecule.</b> Type a formula or a name and tap Build, then push electrons on it.';
+    } else if(!lastArrows.length){
+      cap = '<b>' + name + '.</b> Tap a lone pair or a bond, then tap where those electrons go.';
+      elResult.insertAdjacentHTML('beforeend', '<h3 class="ls-title-l">How an arrow works</h3>' +
+        '<p>Each curved arrow moves two electrons. It starts where they are now, a lone pair or a bond, and ends where they go: an atom, or the space between two atoms to make a new bond.</p>' +
+        '<p>Draw one and what your arrows make appears beside your drawing, with formal charges recalculated. Nothing here is graded, but an arrow that could not have happened is told so.</p>');
+    } else {
+      var res = C.apply(start, lastArrows);
+      var err = res.issues.filter(function(i){ return i.level === 'error'; })[0];
+      if(err){
+        left.push({ html: 'That cannot happen', tone: 'bad' });
+        cap = '<b>That cannot happen.</b> ' + esc(firstSentence(upper1(err.text))) + ' Why? has the rest.';
+      } else {
+        if(fr) left.push({ html: esc(fr.textContent.replace(/\s*\+\s*/g, ' + ')) });
+        if(elResult.querySelector('.tnote--warn')) left.push({ html: 'Legal, but…', tone: 'warn' });
+        else if(elResult.querySelector('.tnote--good')) left.push({ html: 'Looks right', tone: 'good' });
+        cap = '<b>' + esc(upper1(res.steps[0] || 'Nothing legal to apply')) + '.</b>' +
+          (res.steps.length > 1 ? ' Plus ' + (res.steps.length - 1) + ' more arrow' + (res.steps.length > 2 ? 's' : '') + '.' : '') +
+          ' Tap Why? for what it means.';
+      }
+    }
+    studio.caption(cap, m);
+    studio.pills(left, 'left', m);
+    studio.pills(right, 'right', m);
+  }
+
   elPicker.querySelectorAll('.tchip').forEach(function(b){
     b.addEventListener('click', function(){
       var pick = null;
@@ -339,6 +441,7 @@
         update();
       }
     });
+    if(ls) window.OchemStudioKit.builder(elBuilder);
   }
 
   document.getElementById('apSrc').querySelectorAll('button').forEach(function(b){
@@ -368,6 +471,7 @@
         '<div class="tempty">Draw an arrow and the product appears here.<br>' +
         'Click an electron source — a lone pair, or a bond — then click where those electrons go.</div>';
       renderBooks();
+      studioAfter();
       return;
     }
 
@@ -448,9 +552,10 @@
     }
 
     elResult.innerHTML = html;
-    var commit = document.getElementById('apCommit');
+    var commit = elResult.querySelector('#apCommit');
     if(commit) commit.addEventListener('click', commitStep);
     renderBooks();
+    studioAfter();
   }
 
   /* ---- Legal, but ---------------------------------------------------------
@@ -669,7 +774,7 @@
     var missing = need.filter(function(n){ return !drawn.some(function(d){ return sameArrow(d, n); }); });
     var extra = drawn.filter(function(d){ return !need.some(function(n){ return sameArrow(d, n); }); });
     var lines = [];
-    if(errs.length) lines.push(errs[0].text.charAt(0).toUpperCase() + errs[0].text.slice(1) + '.');
+    if(errs.length) lines.push(errs[0].text.charAt(0).toUpperCase() + errs[0].text.slice(1) + (/[.!?]$/.test(errs[0].text) ? '' : '.'));
     else if(res.steps.length) lines.push('Your arrows: ' + res.steps.join('; ') + '.');
     if(extra.length) lines.push('Not part of this step: ' + C.deltaFor(start, extra[0]).text + '.');
     if(missing.length) lines.push(missing.length === need.length && !drawn.length ? 'Start with the electron source.'
@@ -710,14 +815,15 @@
     }
     html += '</div>';
     elResult.innerHTML = html;
-    var ck = document.getElementById('apChalCheck');
-    if(ck) ck.addEventListener('click', function(){ checkChal(); var say = document.getElementById('apChalSay'); if(say) say.focus({ preventScroll:true }); });
-    var hn = document.getElementById('apChalHint');
+    var ck = elResult.querySelector('#apChalCheck');
+    if(ck) ck.addEventListener('click', function(){ checkChal(); var say = elResult.querySelector('#apChalSay'); if(say) say.focus({ preventScroll:true }); });
+    var hn = elResult.querySelector('#apChalHint');
     if(hn) hn.addEventListener('click', function(){ chal.shown = Math.min(chal.shown + 1, def.steps[chal.i].length); renderChal(); });
-    var nx = document.getElementById('apChalNext');
+    var nx = elResult.querySelector('#apChalNext');
     if(nx) nx.addEventListener('click', function(){ var i = CHALLENGES.indexOf(def); startChal(CHALLENGES[(i + 1) % CHALLENGES.length]); });
-    var ag = document.getElementById('apChalAgain');
+    var ag = elResult.querySelector('#apChalAgain');
     if(ag) ag.addEventListener('click', function(){ startChal(def); });
+    studioAfter();
   }
 
   /* A step's arrows changed: the old verdict no longer describes them. */
@@ -732,6 +838,7 @@
   var fromLink = fromUrl();
   // Read before select(), which rewrites the address bar.
   var chalWanted = window.OchemToolState && window.OchemToolState.read().chal;
+  var builtWanted = window.OchemToolState && window.OchemToolState.read().build;
   select(fromLink || ALL[0]);
   (function(){
     var want = chalWanted;
@@ -742,15 +849,23 @@
 
   // A link can also carry a molecule somebody typed rather than one on the list.
   if(window.OchemToolState){
-    var built = window.OchemToolState.read().build;
+    // Read before select() too, which rewrites the address bar.
+    var built = builtWanted;
     if(built){
       var srcBtn = document.getElementById('apSrc').querySelector('[data-src="build"]');
       if(srcBtn){
         srcBtn.click();
+        // In the type box too, so the address (and Copy link) keeps it.
+        var typedIn = document.getElementById('mbText'); if(typedIn) typedIn.value = built;
         if(builderApi) builderApi.build(built);
       }
     }
   }
+  if(ls && ls.mode() === 'lib'){
+    var ed = document.getElementById('apEditor');
+    studio.hint({ target: ed.querySelector('.atom[data-key="nucO"]') || ed.querySelector('.atom'), text: 'Tap this lone pair, then where it goes' });
+  }
+
   /* ---- Check yourself ---------------------------------------------------
      The sandbox tells you when an arrow could not have happened. What it
      cannot tell you is whether you could have SEEN that before drawing it,

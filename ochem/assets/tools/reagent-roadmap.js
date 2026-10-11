@@ -928,6 +928,135 @@
     }
   }
 
+
+  /* ---- Tool Studio (docs/tools-calm.md) -----------------------------------
+     With the studio on (registry `studio: true`), the same elements move into
+     the calm frame after each render (the old copies are cleared first, so
+     the render's own lookups find the new ones). Route: the map on the stage,
+     start, target and the skeleton switch in the dock, the routes with every
+     reagent in Why. Reagent: what it does on the stage, the search and the
+     reagents in the dock. Groups: the map to pick from, the group in Why.
+     Puzzle: the map and your trail on the stage, the reagent tiles in the
+     dock, each step's card in Why. */
+  var studio = window.OchemStudio || null, ls = null;
+  if(studio){
+    var Kit = window.OchemStudioKit;
+    var mk = function(cls){ var d = document.createElement('div'); d.className = cls; return d; };
+    studio.root.classList.add('rr-ls');
+    var pz = document.querySelector('#rrMode [data-mode="puzzle"]'); if(pz) pz.textContent = 'Puzzle';
+    var rrMode = Kit.seg(document.getElementById('rrMode'), 'data-mode');
+    ls = { mode: rrMode, box: {} };
+    [['route', 'stage'], ['route', 'dock'], ['route', 'why'], ['reagent', 'stage'], ['reagent', 'dock'],
+     ['groups', 'stage'], ['groups', 'dock'], ['groups', 'why'], ['puzzle', 'stage'], ['puzzle', 'dock'], ['puzzle', 'why']].forEach(function(x){
+      var b = mk('rr-ls-box rr-ls-' + x[0] + '-' + x[1]);
+      ls.box[x[0] + '-' + x[1]] = b;
+      studio.add(x[1], b, { mode: x[0] });
+    });
+    root.hidden = true;
+    var wrap = function(name, base, after){
+      return function(){
+        var m = name, a = document.activeElement;
+        ['stage', 'dock', 'why'].forEach(function(r){ var b = ls.box[m + '-' + r]; if(b) b.innerHTML = ''; });
+        base.apply(null, arguments);
+        after();
+        if(a && a !== document.activeElement && document.contains(a) && a.focus){ try{ a.focus({ preventScroll: true }); }catch(e){} }
+      };
+    };
+    renderRoute = wrap('route', renderRoute, studioRoute);
+    renderReagent = wrap('reagent', renderReagent, studioReagent);
+    renderGroups = wrap('groups', renderGroups, studioGroups);
+    renderPuzzle = wrap('puzzle', renderPuzzle, studioPuzzle);
+    // Searching and picking a reagent redraw only the list and the detail.
+    ['input', 'click'].forEach(function(t){ ls.box['reagent-dock'].addEventListener(t, function(){ reagentCaption(); }); });
+    // A mode set from code (a link, Route from here) switches the studio too.
+    var baseSetMode = setMode;
+    setMode = function(m){ baseSetMode(m); studio.mode(m); };
+  }
+  /* Bring a node of the map into view inside the stage (the map scrolls
+     there on a phone), without moving the page. */
+  function showNode(box, sel){
+    var el = box.querySelector(sel), sc = box.closest('.ls-stage-body');
+    if(!el || !sc) return;
+    var r = el.getBoundingClientRect(), b = sc.getBoundingClientRect();
+    if(r.top < b.top + 40 || r.bottom > b.bottom - 8) sc.scrollTop += r.top - b.top - b.height / 2 + r.height / 2;
+  }
+  function lc0(t){ return /^[A-Z][a-z]/.test(t) ? t.charAt(0).toLowerCase() + t.slice(1) : t; }
+  function put(key, els){ els.forEach(function(el){ if(el) ls.box[key].appendChild(el); }); }
+
+  function studioRoute(){
+    put('route-stage', [elRoute.querySelector('.rr-maphead'), elRoute.querySelector('.rr-map')]);
+    put('route-dock', [elRoute.querySelector('.rr-pick'), elRoute.querySelector('#rrCC')]);
+    put('route-why', [elRoute.querySelector('#rrRoutes')]);
+    showNode(ls.box['route-stage'], '.rr-node.is-start');
+    var res = routes(S.from, S.to, { skeleton: S.skeleton }), r = res.shortest[S.pick], cap, pills = [];
+    if(S.from === S.to){ cap = '<b>Start and target are the same group.</b> Pick two different ones.'; }
+    else if(!r){
+      cap = '<b>No route from ' + esc(lc0(nodeName(S.from))) + ' to ' + esc(lc0(nodeName(S.to))) + (S.skeleton ? ' keeping the skeleton' : '') + '.</b> Why? says what would.';
+      pills.push({ html: 'No route', tone: 'warn' });
+    } else {
+      cap = '<b>' + res.length + ' step' + (res.length > 1 ? 's' : '') + ':</b> ' + esc(nodeName(r.nodes[0])) + r.hops.map(function(alts, i){
+        return ' → ' + esc(lc0(nodeName(r.nodes[i + 1]))) + ' <span class="rr-ls-rx">(' + esc(rxText(alts[0])) + ')</span>';
+      }).join('') + '. Why? has every reagent card' + (res.shortest.length > 1 ? ' and the other ' + (res.shortest.length - 1) + ' route' + (res.shortest.length > 2 ? 's' : '') : '') + '.';
+      pills.push({ html: res.length + ' step' + (res.length > 1 ? 's' : '') }, { html: S.skeleton ? 'Same skeleton' : 'C–C steps allowed', tone: 'ghost' });
+    }
+    studio.caption(cap, 'route');
+    studio.pills(pills, 'left', 'route');
+  }
+
+  function studioReagent(){
+    put('reagent-stage', [elReagent.querySelector('#rrReagentOut')]);
+    var head = elReagent.querySelector('.tpanel');
+    put('reagent-dock', head ? [].slice.call(head.children) : []);
+    reagentCaption();
+  }
+  function reagentCaption(){
+    var r = D.reagent(S.reagent);
+    var nr = r ? edgesForReagent(r.id).length : 0;
+    studio.caption(r ? '<b>' + esc(r.name) + ':</b> ' + nr + ' reaction' + (nr === 1 ? '' : 's') + ' in this course, each one on the stage. Tap another reagent, or search.' : '<b>Pick a reagent</b> to see everything it does in this course.', 'reagent');
+    studio.pills(r ? [{ html: esc(r.name) }, { html: nr + ' reaction' + (nr === 1 ? '' : 's'), tone: 'ghost' }] : [], 'left', 'reagent');
+  }
+
+  function studioGroups(){
+    var n = D.node(S.group) || D.NODES[0];
+    put('groups-stage', [elGroups.querySelector('.rr-map')]);
+    var g = elGroups.querySelector('.rr-group');
+    put('groups-dock', g ? [g.querySelector('.trow')] : []);
+    put('groups-why', [elGroups.querySelector('#rrGroupOut')]);
+    var out = OUT[n.id].length, into = IN[n.id].filter(function(e){ return e.from !== e.to; }).length;
+    studio.caption('<b>' + esc(n.name) + ' (' + esc(n.short) + '):</b> becomes ' + out + ' thing' + (out === 1 ? '' : 's') + ', made ' + into + ' way' + (into === 1 ? '' : 's') +
+      (n.dead && n.dead.length ? ', and ' + n.dead.length + ' trap' + (n.dead.length > 1 ? 's' : '') + ' to avoid' : '') + '. Tap another group on the map; Why? lists them.', 'groups');
+    studio.pills([{ html: esc(n.name) }], 'left', 'groups');
+  }
+
+  function studioPuzzle(){
+    if(!P.from) return;
+    put('puzzle-stage', [elPuzzle.querySelector('.rr-trail'), elPuzzle.querySelector('.rr-map')]);
+    var acts = elPuzzle.querySelector('.rr-pz__acts');
+    put('puzzle-dock', [elPuzzle.querySelector('.rr-tiles'), acts]);
+    put('puzzle-why', [elPuzzle.querySelector('#rrPzNote'), elPuzzle.querySelector('.rr-pz__steps')]);
+    showNode(ls.box['puzzle-stage'], '.rr-node.is-here');
+    var last = P.steps[P.steps.length - 1], cap, pills = [];
+    var goal = 'Get from <b>' + esc(nodeName(P.from)) + '</b> to <b>' + esc(nodeName(P.to)) + '</b>';
+    if(P.done){
+      var par = P.steps.length === P.best;
+      cap = '<b>' + (par ? 'Made it in the fewest steps.' : 'Made it.') + '</b> ' + P.steps.length + ' step' + (P.steps.length > 1 ? 's' : '') + (par ? '' : '; the shortest takes ' + P.best) + '. Why? has your route.';
+      pills.push({ html: par ? 'Fewest steps' : 'Made it', tone: 'good' });
+    } else if(P.note && P.note.step && last){
+      cap = last.dead ? '<b>Dead end.</b> From ' + esc(lc0(nodeName(P.at))) + ' nothing reaches ' + esc(lc0(nodeName(P.to))) + ' keeping the skeleton. Undo it.'
+        : '<b>Step ' + P.steps.length + ': ' + esc(last.e.name) + '.</b> Now at ' + esc(lc0(nodeName(P.at))) + '. Tap the next reagent.';
+      pills.push({ html: last.dead ? 'Dead end' : 'Step ' + P.steps.length, tone: last.dead ? 'bad' : 'accent' });
+    } else if(P.note && P.note.bad){
+      cap = '<b>Not a step from ' + esc(lc0(nodeName(P.at))) + '.</b> Why? says what that reagent is for. Try another.';
+      pills.push({ html: 'Nothing happens', tone: 'bad' });
+    } else {
+      cap = goal + '. Tap reagents to build the route, keeping the carbon skeleton.';
+      pills.push({ html: 'Your route', tone: 'ghost' });
+    }
+    studio.caption(cap, 'puzzle');
+    studio.pills(pills, 'left', 'puzzle');
+    studio.pills(P.miss ? [{ html: P.miss + ' did nothing', tone: 'ghost' }] : [], 'right', 'puzzle');
+  }
+
   window.OchemRoadmapPuzzle = { state: P, start: startPuzzle, tray: tray, play: play, undo: undo, REACTS_OFF_MAP: REACTS_OFF_MAP };
 
   if(window.OchemToolState){
@@ -942,6 +1071,8 @@
   } else {
     setMode('route');
   }
+
+  if(ls && ls.mode() === 'route') studio.hint({ target: document.getElementById('rrTo'), text: 'Pick a target', round: 14 });
 
   /* ======================================================================
      Check yourself

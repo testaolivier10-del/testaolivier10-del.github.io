@@ -835,6 +835,105 @@
 
   document.getElementById('abNewRank').addEventListener('click', newRank);
 
+
+  /* ---- Tool Studio (docs/tools-calm.md) -----------------------------------
+     With the studio on (registry `studio: true`), the same elements move into
+     the calm frame. Compare two: both acids as cards on the stage, the two
+     picks and your call in the dock, the verdict and the factor walk in Why.
+     Rank four: the pKa line over the four cards on the stage (drag or tap to
+     swap), the check and New set in the dock, the gaps explained in Why.
+     Which proton: the molecule on the stage (tap a hydrogen), the molecule
+     and the sites in the dock, the order and reasons in Why. */
+  var studio = window.OchemStudio || null, ls = null;
+  if(studio){
+    var Kit = window.OchemStudioKit;
+    var $ = function(id){ return document.getElementById(id); };
+    var mk = function(cls, html){ var d = document.createElement('div'); d.className = cls; if(html) d.innerHTML = html; return d; };
+    studio.root.classList.add('ab-ls');
+    var abMode = Kit.seg($('abMode'), 'data-mode');
+    var vs = root.querySelector('.ab-vs');
+    var guessBox = mk('ab-ls-guess', '<p class="ls-lbl">Which loses its proton more easily?</p>'); guessBox.appendChild($('abGuess'));
+    var rankAct = mk('ab-ls-rankact'); rankAct.appendChild($('abRankAct')); rankAct.appendChild($('abNewRank'));
+    var rankStage = mk('ab-ls-rank'); rankStage.appendChild($('abRankPool')); rankStage.appendChild($('abRankOrder')); rankStage.appendChild($('abRankLive'));
+    var siteBox = mk('ab-ls-site', '<p class="ls-lbl"><label for="abSiteSel">Molecule</label></p>'); siteBox.appendChild($('abSiteSel'));
+    var siteGuessBox = mk('ab-ls-guess', '<p class="ls-lbl">Which hydrogen comes off first?</p>'); siteGuessBox.appendChild($('abSiteGuess'));
+    studio.add('stage', $('abCards'), { mode: 'pair' });
+    studio.add('stage', rankStage, { mode: 'rank' });
+    studio.add('stage', $('abSiteFormula'), { mode: 'site' });
+    studio.add('dock', [vs, guessBox], { mode: 'pair' });
+    studio.add('dock', rankAct, { mode: 'rank' });
+    studio.add('dock', [siteBox, siteGuessBox], { mode: 'site' });
+    studio.add('why', [$('abVerdict'), $('abFactors')], { mode: 'pair' });
+    studio.add('why', $('abRankVerdict'), { mode: 'rank' });
+    studio.add('why', [$('abSiteNote'), $('abSiteVerdict')], { mode: 'site' });
+    root.hidden = true;
+    ls = { mode: abMode };
+    var basePair = renderPair, baseRank = renderRank, baseSite = renderSite;
+    renderPair = function(){ basePair(); studioPair(); };
+    renderRank = function(){ baseRank(); studioRank(); };
+    renderSite = function(){ baseSite(); studioSite(); };
+  }
+  function scorePill(){ return score.total ? [{ html: score.right + ' of ' + score.total + ' right', tone: 'ghost' }] : []; }
+  function openWhy(sel){ var d = document.querySelector(sel + ' details'); if(d){ d.open = true; d.classList.add('cf-ls-open'); } }
+
+  function studioPair(){
+    if(!ls) return;
+    openWhy('#abFactors');
+    var cap, pills = [];
+    if(left.id === right.id){ cap = '<b>Same compound.</b> Pick two different acids.'; }
+    else if(!revealed){
+      cap = '<b>' + esc(left.name) + ' or ' + esc(right.name) + '?</b> Tap the one that gives up its proton more easily. Why? has a hint.';
+      pills.push({ html: 'Your call', tone: 'ghost' });
+    } else {
+      var res = analyse(left, right), other = res.truth === left ? right : left, ok = guess === res.truth.id;
+      cap = '<b>' + (ok ? 'Right.' : 'Not this time.') + '</b> ' + esc(res.truth.name) + ' is the stronger acid: pK<sub>a</sub> ' + res.truth.pKa + ' against ' + other.pKa + '. Why? walks the factors.';
+      pills.push({ html: ok ? 'Right' : 'Not this time', tone: ok ? 'good' : 'bad' });
+      if(res.deciding && !res.agrees) pills.push({ html: 'The rules disagree here', tone: 'warn' });
+    }
+    studio.caption(cap, 'pair');
+    studio.pills(pills, 'left', 'pair');
+    studio.pills(scorePill(), 'right', 'pair');
+  }
+
+  function studioRank(){
+    if(!ls) return;
+    var tip = document.querySelector('#abRankAct .tmuted'); if(tip) tip.hidden = true;
+    var truth = rankPool.slice().sort(function(x, y){ return x.pKa - y.pKa; });
+    var placed = rankOrder.filter(function(a, i){ return truth[i] === a; }).length, cap, pills = [];
+    if(!rankChecked){
+      cap = '<b>Most acidic first.</b> Drag the cards into order, or tap one and then another to swap them. Then put them on the pK<sub>a</sub> line.';
+      pills.push({ html: 'Your order', tone: 'ghost' });
+    } else {
+      cap = '<b>' + (placed === 4 ? 'All four in order.' : placed + ' of 4 in the right place.') + '</b> Most acidic to least: ' + truth.map(function(a){ return esc(a.name); }).join(', ') + '. Why? explains each gap.';
+      pills.push({ html: placed === 4 ? 'All four in order' : placed + ' of 4 placed', tone: placed === 4 ? 'good' : 'bad' });
+    }
+    studio.caption(cap, 'rank');
+    studio.pills(pills, 'left', 'rank');
+    studio.pills(scorePill(), 'right', 'rank');
+  }
+
+  function studioSite(){
+    if(!ls) return;
+    var again = document.querySelector('#abSiteVerdict #abSiteAgain');
+    var cap, pills = [];
+    if(siteGuess === null){
+      cap = '<b>' + esc(siteMol.name) + '.</b> Tap the hydrogen that comes off first, on the structure or in the list.';
+      pills.push({ html: 'Your call', tone: 'ghost' });
+    } else {
+      var order = siteMol.sites.map(function(st, i){ return { st: st, i: i }; }).sort(function(a, b){ return a.st.pKa - b.st.pKa; });
+      var ok = order[0].i === siteGuess;
+      cap = '<b>' + (ok ? 'Right.' : 'Not that one.') + '</b> ' + esc(order[0].st.label) + ' goes first, at pK<sub>a</sub> ' + esc(siteText(order[0].st)) + '. Why? has the order and the reasons.';
+      pills.push({ html: ok ? 'Right' : 'Not that one', tone: ok ? 'good' : 'bad' });
+    }
+    // Try another is the next move: it sits with the picks in the dock.
+    var box = document.getElementById('abSiteGuess').parentNode;
+    var old = box.querySelector('#abSiteAgain'); if(old && old !== again) old.remove();
+    if(again){ again.className = 'btn-press ab-ls-again'; box.appendChild(again); }
+    studio.caption(cap, 'site');
+    studio.pills(pills, 'left', 'site');
+    studio.pills([], 'right', 'site');
+  }
+
   /* The address bar is read before the first render, which writes it: done
      the other way round, ?mode=rank and ?mode=site links opened on Compare. */
   var q0 = window.OchemToolState ? window.OchemToolState.read() : {};
@@ -960,7 +1059,7 @@
         : '') +
       '<button type="button" class="tchip" id="abSiteAgain" style="margin-top:12px;">Try another</button>';
 
-    var again = document.getElementById('abSiteAgain');
+    var again = v.querySelector('#abSiteAgain');
     if(again) again.addEventListener('click', function(){
       siteMol = MULTI[Math.floor(Math.random() * MULTI.length)];
       siteGuess = null;
@@ -979,6 +1078,8 @@
       if(mb) mb.click();
     }
   }
+
+  if(ls && ls.mode() === 'pair') studio.hint({ target: document.querySelector('#abGuess .tchip'), text: 'Tap the stronger acid' });
 
   window.OchemAcidBase = { ACIDS: ACIDS, MULTI: MULTI, DRAWN: DRAWN, MULTI_DRAWN: MULTI_DRAWN, parseDrawn: parseDrawn, analyse: analyse };
 

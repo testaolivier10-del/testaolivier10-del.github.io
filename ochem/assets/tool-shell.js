@@ -74,8 +74,87 @@
     if(!document.querySelector('main')) studio.root.setAttribute('role', 'main');
     // The tool's drawings are styled under .tool-root (tools.css).
     studio.root.classList.add('tool-root');
+    /* The site footer now lives at the end of About, inside the main
+       landmark, where a <footer> no longer means the page's contentinfo (and
+       check-a11y flags a footer inside main). Same links, same text, as a
+       plain group. Shared layer request filed. */
+    [].slice.call(studio.root.querySelectorAll('footer')).forEach(function(f){
+      var d = document.createElement('div');
+      d.className = (f.className ? f.className + ' ' : '') + 'ls-foot-c';
+      d.setAttribute('role', 'group'); d.setAttribute('aria-label', 'Site links');
+      while(f.firstChild) d.appendChild(f.firstChild);
+      f.parentNode.replaceChild(d, f);
+    });
+
+    /* Focus trap in the phone sheet, for content the shared trap misreads:
+       controls inside a closed <details> count as visible there (Chrome keeps
+       their boxes), so Tab from the last real control left the sheet. This
+       runs first and wraps at the true ends. Shared layer request filed. */
+    (function(){
+      var sheet = studio.root.querySelector('.ls-sheet');
+      if(!sheet) return;
+      sheet.addEventListener('keydown', function(e){
+        if(e.key !== 'Tab' || sheet.getAttribute('aria-modal') !== 'true') return;
+        var f = [].filter.call(sheet.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea, summary, [tabindex]:not([tabindex="-1"])'), function(el){
+          if(el.offsetParent === null && el !== document.activeElement) return false;
+          var d = el.parentNode && el.parentNode.closest ? el.parentNode.closest('details:not([open])') : null;
+          return !(d && !(el.tagName === 'SUMMARY' && el.parentNode === d));
+        });
+        if(!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if(e.shiftKey && document.activeElement === first){ e.preventDefault(); e.stopPropagation(); last.focus(); }
+        else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); e.stopPropagation(); first.focus(); }
+      }, true);
+    })();
     window.OchemStudio = studio;
   }
+
+  /* Small helpers the ochem tools share when they arrange themselves in the
+     studio (each tool's "Tool Studio" block uses them).
+       seg(seg, attr)    adopt the tool's own .tseg as the mode switch; its
+                         buttons' [attr] values are the mode names, and a
+                         click switches the studio's mode-only parts. Returns
+                         a function giving the mode now showing.
+       builder(box)      a mounted molecule builder made calm: the type row
+                         and its quick picks first, the canvas, palette and
+                         atom tools behind "Draw it yourself".
+       scrollChips(el)   every .tchips row inside el becomes one scrolling
+                         row on a phone; group labels become .ls-lbl. */
+  window.OchemStudioKit = {
+    seg: function(seg, attr){
+      if(!studio || !seg) return function(){ return null; };
+      function now(){ var b = seg.querySelector('button.on') || seg.querySelector('button'); return b ? b.getAttribute(attr) : null; }
+      seg.classList.add('ls-seg');
+      studio.modes({ el: seg, value: now() });
+      seg.addEventListener('click', function(e){
+        if(e.target.closest('button')) studio.mode(now());
+      });
+      return now;
+    },
+    builder: function(box){
+      var mb = box && box.querySelector('.mb');
+      if(!mb || mb.getAttribute('data-ls')) return;
+      mb.setAttribute('data-ls', '1');
+      var d = document.createElement('details');
+      d.className = 'tool-more mb-ls-draw';
+      d.innerHTML = '<summary>Draw it yourself</summary>';
+      ['.mb__canvaswrap', '.mb__tools'].forEach(function(s){ var e = mb.querySelector(s); if(e) d.appendChild(e); });
+      // The checker's report goes in there too; a structure it cannot read
+      // opens the drawer, so the reason is never hidden.
+      var st = mb.querySelector('.mb__status');
+      mb.appendChild(d);
+      if(st){
+        d.appendChild(st);
+        if(window.MutationObserver) new MutationObserver(function(){ if(st.querySelector('.tnote--bad')) d.open = true; }).observe(st, { childList: true, subtree: true });
+      }
+      var q = mb.querySelector('.mb__quick'); if(q) q.classList.add('ls-scroll');
+    },
+    scrollChips: function(el){
+      if(!el) return;
+      el.querySelectorAll('.tchips').forEach(function(c){ c.classList.add('ls-scroll'); });
+      el.querySelectorAll('.ap-group__label').forEach(function(l){ l.classList.add('ls-lbl'); });
+    }
+  };
 
   if(G && !G.toolFree(slug) && studio){
     // The gate replaces the whole studio and gives the page its chrome back.
