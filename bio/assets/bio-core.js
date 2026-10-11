@@ -210,11 +210,22 @@
     var t = topic && topicInfo(topic), b = window.ApBioBase || '';
     return '<div class="bio-gate">' + g + '<p class="bio-gate-notes"><a href="' + b + (t ? 'notes/' + t.id + '.html">Read the free notes on ' + t.title.replace(/</g, '&lt;') : 'learn.html">Read the free notes for every topic') + ' &rarr;</a></p></div>';
   }
+  /* A page reloads when access changes so every surface agrees. Never more
+     than twice in a minute, so an access state that keeps flipping (a slow
+     session restore, a flaky network) cannot trap the page in a reload loop. */
+  function reloadForAccess(){
+    var k = 'levl_access_reloads', now = Date.now(), list = [];
+    try { list = JSON.parse(sessionStorage.getItem(k) || '[]').filter(function(t){ return now - t < 60000; }); } catch(e){ list = []; }
+    if(list.length >= 2) return;
+    list.push(now);
+    try { sessionStorage.setItem(k, JSON.stringify(list)); } catch(e){ return; }
+    location.reload();
+  }
   function mountPremium(){
     var P = prem(), app = document.getElementById('app'), f = app && app.getAttribute('data-premium');
     if(!P) return;
     var was = locked();
-    try{ P.onChange(function(){ if(locked() !== was) location.reload(); }); }catch(e){}
+    try{ P.onChange(function(){ if(locked() !== was) reloadForAccess(); }); }catch(e){}
     if(f && was && WHOLE[f]){ app.removeAttribute('id'); app.innerHTML = gate(f, app.getAttribute('data-slug')); }
   }
 
