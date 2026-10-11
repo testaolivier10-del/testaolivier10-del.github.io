@@ -710,7 +710,7 @@
       warn.innerHTML = compound.predicted
         ? '<div class="tnote tnote--warn"><span class="tnote__k">Predicted, not measured</span>' +
           'The NMR shifts are an estimate, usually within a few tenths of a ppm. ' +
-          '<details class="tool-more tool-more--why tool-more--flush"><summary>Why?</summary><p>The IR bands are a lookup over the functional groups in what you drew, and at this level that is genuinely how an IR is read — ' +
+          '<details class="tool-more tool-more--why tool-more--flush"><summary>Show the reasoning</summary><p>The IR bands are a lookup over the functional groups in what you drew, and at this level that is genuinely how an IR is read — ' +
           'those positions are as trustworthy as the tabulated ones. The NMR shifts are an additive estimate: a base value for each ' +
           'CH₃, CH₂ or CH plus a contribution for everything attached to it or next to it. That is the model the course teaches and it ' +
           'lands within a few tenths of a ppm for ordinary compounds — but it is not a calculation, and it will be wrong about anything ' +

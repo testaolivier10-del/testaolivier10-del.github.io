@@ -340,7 +340,7 @@
       '<div class="tnote ' + (e - min < 0.05 ? 'tnote--good' : (e - min > 2 ? 'tnote--bad' : 'tnote--warn')) + '">' +
         '<span class="tnote__k">' + esc(d.name) + ' · ' + Math.round(theta) + '° · ' + (e - min).toFixed(1) + ' kcal/mol above the minimum</span>' + esc(d.detail) +
       '</div>' +
-      '<details class="tool-more tool-more--why"><summary>Why?</summary>' +
+      '<details class="tool-more tool-more--why"><summary>Show the reasoning</summary>' +
       '<div class="tstat">' +
         '<div><div class="k">Relative energy</div><div class="v">' + e.toFixed(1) + ' <small>kcal/mol</small></div></div>' +
         '<div><div class="k">Above the minimum</div><div class="v">' + (e - min).toFixed(1) + ' <small>kcal/mol</small></div></div>' +
@@ -700,7 +700,7 @@
       '</div>';
     }
 
-    html += '<details class="tool-more tool-more--why"><summary>Why? The strain, term by term</summary>';
+    html += '<details class="tool-more tool-more--why"><summary>The strain, term by term</summary>';
     if(eHere.terms.length){
       html += '<div class="ttable-scroll"><table class="ttable">' +
         '<thead><tr><th>What this chair is paying for</th><th>kcal/mol</th></tr></thead><tbody>' +

@@ -422,7 +422,7 @@
    into #gwDock). Why: the whole reason, with the dose. Details: the seven
    drug cards, which the reason links into. */
 document.addEventListener('DOMContentLoaded', function(){
-  var studio = window.NremtStudio ? window.NremtStudio.mount({ title: 'Drug formulary', slug: 'formulary' }) : null;
+  var studio = window.NremtStudio ? window.NremtStudio.mount({ title: 'Drug formulary', slug: 'formulary', detailsTitle: 'Full drug cards' }) : null;
   if(!studio) return;
   var $ = function(id){ return document.getElementById(id); };
   var gw = $('gwBox'), drill = $('drillBox'), ref = $('drugRef'), sw = $('fxMode');

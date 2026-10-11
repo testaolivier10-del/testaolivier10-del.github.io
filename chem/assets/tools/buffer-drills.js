@@ -50,7 +50,7 @@
       '<div class="bf-stage"><div class="bf-beaker"></div>' +
       '<div class="bf-side"><div class="bf-btns"><button type="button" class="bf-add bf-oh" data-d="1">+ OH⁻<span class="bf-u">NaOH</span></button><button type="button" class="bf-add bf-h" data-d="-1">+ H₃O⁺<span class="bf-u">HCl</span></button></div>' +
       '<div class="bf-why"></div><div class="bf-plot"></div></div></div>' +
-      T.moreHtml('<div class="bt-pick bf-pick"></div><p class="bt-small bf-scale"><span class="bf-per"></span> Na⁺, Cl⁻ and water are not drawn. The meter shows the exact pH (water\'s own ions included); the line under "Why?" is the method the exam expects.</p>', 'another buffer, amounts, start over') + '</section>';
+      T.moreHtml('<div class="bt-pick bf-pick"></div><p class="bt-small bf-scale"><span class="bf-per"></span> Na⁺, Cl⁻ and water are not drawn. The meter shows the exact pH (water\'s own ions included); the line under "Show the reasoning" is the method the exam expects.</p>', 'another buffer, amounts, start over') + '</section>';
     var pick = $('.bf-pick'), start = T.cue('Tap + OH⁻ or + H₃O⁺ to add a little strong base or acid.');
     host.querySelector('.bf-side').insertBefore(start.el, $('.bf-btns'));
     var resetBtn = null;

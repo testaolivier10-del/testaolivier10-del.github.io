@@ -131,7 +131,8 @@ const SHELL_BUDGETS = [
      20.5 -> 21.5 (calm tools student tests): hint placement that keeps off the bar and caption, the sticky
      primary row, the stepper's Next tone and focus rules, one-line pills, segment contrast. Only tool pages
      load tool-studio.*; other course pages do not pay for it. Measured 21.2 KB. */
-  ['assets/course', 21.5],
+  /* 21.5 -> 22 (honest labels, docs/tools-calm.md): the named second-tab button in the dock. */
+  ['assets/course', 22],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -271,7 +272,8 @@ const SHELL_BUDGETS = [
   /* 47.5 -> 48 (visual polish 2026-10): the 3D button's body icon and the shared illustration code; measured 47.7 KB. */
   /* 48 -> 49.5 (simplify pass 2026-10): the shared first-step line, segmented mode switch and Why? / More options disclosures in tool-kit.js/.css; lab practical measured 49.3 KB. */
   /* 49.5 -> 53.5 (calm tools P1, docs/tools-calm-notes/anp.md): each tool's Tool Studio arrangement and AnpToolKit.studio; lab practical measured 53.1 KB. */
-  ['anatomy-physiology', 53.5],
+  /* 53.5 -> 54 (honest labels): per-tool names for the second tab. */
+  ['anatomy-physiology', 54],
   /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
      glossary tooltips, bio.css, the generated curriculum, plus the app script
      a page loads (exams.js, the largest, with pages.css and frq-kit.js).

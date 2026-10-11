@@ -910,7 +910,7 @@ if (!stage) document.getElementById('quizSection').hidden = false;
    test (name it, where, when) at the top of the dock and the question itself
    on the stage. Why: why this spot (mirrored from the explore card) and the
    sound's description. Details: volume, compare two sounds, every sound's card. */
-const studio = stage && window.NremtStudio ? window.NremtStudio.mount({ title: 'Sound trainer', slug: 'sound-trainer' }) : null;
+const studio = stage && window.NremtStudio ? window.NremtStudio.mount({ title: 'Sound trainer', slug: 'sound-trainer', detailsTitle: 'Settings & every sound' }) : null;
 if (studio) (function(){
   const R = document.getElementById('stageRoot'), q = sel => R.querySelector(sel);
   const fig = q('.st-fig'), side = q('.st-side'), main = q('.st-main'), timing = q('.st-timing'), pick = q('.st-quizpick'), vol = q('.st-vol');

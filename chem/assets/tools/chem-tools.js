@@ -221,7 +221,7 @@
     if(!el) return;
     var box = el.querySelector(':scope > .bt-say');
     if(!box){
-      el.innerHTML = '<div class="tx-where bt-say"><p class="bt-say-h"></p><details class="bt-why"><summary>Why?</summary><div class="bt-why-b"></div></details></div>';
+      el.innerHTML = '<div class="tx-where bt-say"><p class="bt-say-h"></p><details class="bt-why"><summary>Show the reasoning</summary><div class="bt-why-b"></div></details></div>';
       box = el.querySelector('.bt-say');
     }
     Array.prototype.slice.call(el.children).forEach(function(c){ if(c !== box) c.remove(); });
@@ -716,6 +716,9 @@
     var s = window.LevlStudio.mount({
       title: h1 ? h1.textContent : slug, course: 'AP® Chemistry', back: base() + 'tools.html', home: base(), slug: 'apchem-' + slug,
       host: app,
+      // the second tab and its dock button, named for what is in it
+      detailsTitle: ({ 'buffer-drills': 'Numbers & setup', 'ice-table-drills': 'Setup', 'particle-diagrams': 'Atom tally & setup',
+        'q-vs-k': 'Particles & setup', 'titration-curve-reader': 'Numbers & setup', 'units-sig-figs': 'Setup & gas law' })[slug] || 'Numbers & setup',
       menu: {
         copyLink: function(){
           var code = s.mode() === 'quiz' ? s.root.querySelector('.ls-drill-det .bt-code b') : null;

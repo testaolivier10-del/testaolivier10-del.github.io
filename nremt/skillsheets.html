@@ -459,7 +459,7 @@
    run is, and the picked station's card. Details: the reading guide (how
    the stations are scored, the official sheets, every station's card). */
 document.addEventListener('DOMContentLoaded', function(){
-  var studio = window.NremtStudio ? window.NremtStudio.mount({ title: 'Station run', slug: 'skillsheets' }) : null;
+  var studio = window.NremtStudio ? window.NremtStudio.mount({ title: 'Station run', slug: 'skillsheets', detailsTitle: 'Scoring guide & sheets' }) : null;
   if(!studio) return;
   var run = document.getElementById('stationRun');
   var dock = document.createElement('div'); dock.id = 'stationRunDock'; dock.className = 'sk-ls-dock';

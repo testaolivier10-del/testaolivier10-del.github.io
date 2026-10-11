@@ -853,7 +853,7 @@
    #flowDrillDock). The page's own Read / Build it / Drill me switch is the
    mode switch; its listeners (flow-drill.js) still drive everything. */
 document.addEventListener('DOMContentLoaded', function(){
-  var studio = window.NremtStudio ? window.NremtStudio.mount({ title: 'Protocol flows', slug: 'flowcharts' }) : null;
+  var studio = window.NremtStudio ? window.NremtStudio.mount({ title: 'Protocol flows', slug: 'flowcharts', detailsTitle: 'Scope note' }) : null;
   if(!studio) return;
   var $ = function(id){ return document.getElementById(id); };
   var mode = $('flowMode'), chips = $('flowChips'), host = $('flowDiagrams');

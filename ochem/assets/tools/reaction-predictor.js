@@ -1164,7 +1164,7 @@
     }
 
     var why = mix && mix[2] && mix[2].why && mix[2].why.length ? mix[2].why.join(', and ') : null;
-    html += '<details class="tool-more tool-more--why"' + (state.mode === 'predict' && state.guess !== p.major ? ' open' : '') + '><summary>Why?</summary>' +
+    html += '<details class="tool-more tool-more--why"' + (state.mode === 'predict' && state.guess !== p.major ? ' open' : '') + '><summary>Show the reasoning</summary>' +
       '<p>' + esc(p.verdict) + '</p>' +
       (mix && mix.length > 1
         ? '<p class="tmuted"><b>Roughly what you get.</b> These are competitions, not switches: a real flask gives you both, and the useful question is how lopsided. ' +
