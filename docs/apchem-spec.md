@@ -306,6 +306,13 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
    Run and Start over above the curve, flask and indicator beside it. Units tool: the cancelling bar is
    sticky on phones only (it covered tiles on wide screens). No content, ids or recording changed.
 
+23. (2026-10-10, calm tools P1; `docs/tools-calm.md`, `docs/tools-calm-notes/chem.md`) **Every tool on the Tool Studio.**
+   `studio: true` on every tool in `pages.json` (and on the justification trainer's app entry): one stage, 1 to 3
+   primary controls in the dock, one caption, Why and Details sheets (`ApChemTools.studioPane` for explore views;
+   `drill()` puts the figure, table rows included, on the stage, with `textOnStage`/`studioAsk` for long problems).
+   The score calculator and the equations sheet are reference pages: the slim bar and calm type only
+   (`pages/calm-ref.js`). No content, ids, problem codes or recording changed.
+
 ## 8. Open items for the owner
 
 - **Launch checklist (only you can do).** The course is published (free parts live, Premium shows
