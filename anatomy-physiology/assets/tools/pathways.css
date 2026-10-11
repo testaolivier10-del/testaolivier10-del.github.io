@@ -219,3 +219,4 @@
 .pw-ls .ls-dock .pw-result{display:flex;flex-direction:column;gap:10px;}
 .pw-ls .ls-dock .pw-result > p{margin:0;}
 @media (min-width:1000px){ .pw-ls .ls-stage-body > .pw-fig{max-width:520px;} }
+.ls-root .ls-modes .ls-seg > button{white-space:normal;text-overflow:clip;line-height:1.15;}

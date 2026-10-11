@@ -715,7 +715,7 @@
           <strong>${t.content.name}</strong>
           <span class="hunt-sys">${SYSTEM_LABELS[t.content.system] || t.content.system}</span>
         </div>
-        <div class="hunt-tally">${hunt.total ? hunt.right + ' of ' + hunt.total : 'Find it on the model, or pick it from Browse by name.'}</div>
+        <div class="hunt-tally">${hunt.total ? hunt.right + ' of ' + hunt.total : 'Find it on the model, or pick it by name in Details.'}</div>
         <div class="hunt-after"></div>
         <div class="hunt-actions">
           <button type="button" class="hunt-skip" data-hunt="show">Show me</button>
