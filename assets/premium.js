@@ -748,7 +748,10 @@
       writeJson(PENDING_KEY, { pass: passId, source: active ? active.source : '', at: Date.now() });
       funnel('signin-for-checkout', courseOfPass(passId), { course: courseOfPass(passId), pass: passId });
       close();
-      a.openAuthModal('checkout', { purpose: 'checkout' });
+      /* An account.js cached from before the checkout mode existed has no
+         'checkout' to switch to; the full form still gets them in. */
+      try { a.openAuthModal('checkout', { purpose: 'checkout' }); }
+      catch (e) { a.openAuthModal('signup', { purpose: 'checkout' }); }
       return;
     }
     funnel('checkout-start', courseOfPass(passId), { course: courseOfPass(passId), pass: passId });
