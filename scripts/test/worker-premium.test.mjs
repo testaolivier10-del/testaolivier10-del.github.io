@@ -172,6 +172,14 @@ test('order.paid adds one pass; the same order delivered again adds nothing', as
   assert.deepEqual(db.counts, ['nremt']);
 });
 
+test('order.paid credits the video tag the checkout carried, and ignores a bad one', async () => {
+  const now = Date.UTC(2026, 9, 1);
+  const db = fakeDb([], now);
+  await premiumWebhook(delivery(paid({ id: 'ord_r1', metadata: { user_id: USER, pass: 'nremt-90', ref: 'tt-bag-rate' } }), now), ENV, now);
+  await premiumWebhook(delivery(paid({ id: 'ord_r2', metadata: { user_id: USER, pass: 'nremt-90', ref: 'evil<script>' } }), now), ENV, now);
+  assert.deepEqual(db.counts, ['nremt', 'ref:tt-bag-rate', 'nremt']);
+});
+
 test('order.paid stores Polar\'s order time and customer for the refund rules', async () => {
   const now = Date.UTC(2026, 9, 3);
   const db = fakeDb([], now);
@@ -309,7 +317,7 @@ test('checkout: verifies the session, then asks Polar with the right fields', as
   const req = (token, returnTo) => new Request('https://w.example/premium/checkout', {
     method: 'POST',
     headers: { Origin: 'https://levlprep.com', 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-    body: JSON.stringify({ pass: 'ochem-year', returnTo }),
+    body: JSON.stringify({ pass: 'ochem-year', returnTo, ref: returnTo.includes('levlprep') ? 'yt-sn2' : 'not a ref' }),
   });
 
   const bad = await worker.fetch(req('nope', 'https://levlprep.com/'), env);
@@ -324,6 +332,7 @@ test('checkout: verifies the session, then asks Polar with the right fields', as
   assert.deepEqual(body.products, ['prod_oy']);
   assert.equal(body.external_customer_id, USER);
   assert.equal(body.customer_email, 'a@b.co');
+  // A ref that is not a video tag is dropped, never passed on to Polar.
   assert.deepEqual(body.metadata, { user_id: USER, pass: 'ochem-year' });
   assert.equal(body.discount_id, 'disc_1');
   assert.equal(body.success_url, 'https://levlprep.com/?premium=success&course=ochem&checkout_id={CHECKOUT_ID}');

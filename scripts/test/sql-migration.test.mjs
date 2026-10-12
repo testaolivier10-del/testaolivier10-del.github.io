@@ -119,9 +119,9 @@ test('premium_add_pass takes p_until (fixed-date passes) and never ends one befo
   assert.doesNotMatch(mig, /grant execute on function public\.premium_add_pass\([^)]*\) to [^;]*(anon|authenticated)/);
 });
 
-test('2026-10c-apchem.sql adds apchem to every course check and course list, and sorts last', () => {
+test('2026-10c-apchem.sql adds apchem to every course check and course list, and runs after 2026-10b', () => {
   const files = readdirSync('scripts/sql/migrations').filter((x) => x.endsWith('.sql')).sort();
-  assert.equal(files[files.length - 1], '2026-10c-apchem.sql', 'runs after 2026-10b-apbio.sql');
+  assert.ok(files.indexOf('2026-10c-apchem.sql') > files.indexOf('2026-10b-apbio.sql'), 'runs after 2026-10b-apbio.sql');
   const mig = readFileSync('scripts/sql/migrations/2026-10c-apchem.sql', 'utf8');
   const LIST = "('nremt', 'ochem', 'anp', 'apbio', 'apchem')";
   for (const t of ['premium_passes', 'premium_funnel', 'exam_completions'])
@@ -135,4 +135,18 @@ test('2026-10c-apchem.sql adds apchem to every course check and course list, and
   for (const sql of [mig, SCHEMA]) assert.doesNotMatch(sql, /'apbio'\)/);
   assert.match(fns.get('premium_add_pass'), /p_until timestamptz default null/, 'the fixed-date pass parameter is kept');
   assert.doesNotMatch(mig, /grant execute on function public\.premium_add_pass\([^)]*\) to [^;]*(anon|authenticated)/);
+});
+
+test('2026-10d-ref-tracking.sql: the browser may count video visits, only the Worker may count a sale', () => {
+  const mig = readFileSync('scripts/sql/migrations/2026-10d-ref-tracking.sql', 'utf8');
+  const fns = blocks(mig);
+  for (const f of ['track_ref', 'track_ref_paid', 'count_premium_step']) assert.ok(fns.has(f), `${f} is defined`);
+  assert.match(mig, /grant execute on function public\.track_ref\(text, text\) to anon, authenticated;/);
+  assert.match(SCHEMA, /grant execute on function public\.track_ref\(text, text\) to anon, authenticated;/);
+  assert.doesNotMatch(mig + SCHEMA, /grant execute on function public\.track_ref_paid\([^)]*\) to [^;]*(anon|authenticated)/);
+  assert.doesNotMatch(fns.get('track_ref'), /'paid'/, 'a browser cannot claim a sale');
+  // The same ref shape the browser accepts (assets/analytics.js VIDEO_REF).
+  for (const f of ['track_ref', 'track_ref_paid']) assert.ok(fns.get(f).includes("'^(tt|yt|ig)-[a-z0-9-]{1,40}$'"), `${f} checks the ref`);
+  assert.ok(mig.includes("check (step in ('gate-shown', 'interest', 'signin-for-checkout', 'checkout-start', 'checkout-paid'))"));
+  assert.ok(SCHEMA.includes("check (step in ('gate-shown', 'interest', 'signin-for-checkout', 'checkout-start', 'checkout-paid'))"));
 });

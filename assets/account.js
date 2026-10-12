@@ -1130,6 +1130,15 @@
             '<span class="auth-strength__label" id="authStrengthLabel"></span>' +
           '</div>' +
           '<p class="auth-hint" id="authPwHint" hidden></p>' +
+          // The code step of the passwordless sign-in. A code typed here keeps
+          // the buyer in this tab, which matters most for visitors who came
+          // from TikTok or Instagram: their email link opens in a different
+          // browser, one that knows nothing about the pass they picked.
+          '<div class="auth-field" id="authCodeLabel" hidden>' +
+            '<label for="authCode">Code from the email</label>' +
+            '<input type="text" id="authCode" inputmode="numeric" autocomplete="one-time-code" ' +
+              'maxlength="10" pattern="[0-9]*" spellcheck="false">' +
+          '</div>' +
           '<p class="auth-forgot" id="authForgotRow">' +
             '<button type="button" id="authForgotBtn">Forgot your password?</button>' +
           '</p>' +
@@ -1153,7 +1162,7 @@
      'authPassword','authPasswordLabel','authPasswordText','authPwHint','authReveal',
      'authStrength','authStrengthFill','authStrengthLabel','authForgotRow','authForgotBtn',
      'authSubmitBtn','authAltRow','authMagicBtn','authToggleRow','authToggleText','authToggleBtn',
-     'authModalClose'].forEach(function(id){ el[id] = document.getElementById(id); });
+     'authModalClose','authCodeLabel','authCode'].forEach(function(id){ el[id] = document.getElementById(id); });
 
     /* --- mode ---------------------------------------------------------- */
 
@@ -1182,6 +1191,27 @@
         toggleBtn: 'Back to sign in',
         password: false, forgot: false, magic: false, strength: false, social: false
       },
+      /* Buying, signed out. One way in for new and returning students alike,
+         with no password to invent and no confirmation email to wait on
+         before paying: Google in one tap, or an email that carries both a
+         six-digit code and a link. The full sign-in form is one tap away
+         for anyone who set a password before. */
+      checkout: {
+        title: 'One step before you pay',
+        sub: 'Your pass is saved to this sign-in so it works on any device. No password needed.',
+        submit: 'Email me a sign-in code',
+        toggleText: 'Have a password?',
+        toggleBtn: 'Sign in with it',
+        password: false, forgot: false, magic: false, strength: false, social: true
+      },
+      code: {
+        title: 'Check your email',
+        sub: '',
+        submit: 'Continue',
+        toggleText: 'Didn’t arrive?',
+        toggleBtn: 'Send it again',
+        password: false, forgot: false, magic: false, strength: false, social: false
+      },
       newpassword: {
         title: 'Set a new password',
         sub: 'Almost done — choose the password you’ll use from now on.',
@@ -1199,8 +1229,11 @@
       el.authSubmitBtn.textContent = c.submit;
       el.authSubmitBtn.disabled = false;
 
-      el.authEmailLabel.hidden = (m === 'newpassword');
-      el.authEmail.required = (m !== 'newpassword');
+      el.authEmailLabel.hidden = (m === 'newpassword' || m === 'code');
+      el.authEmail.required = (m !== 'newpassword' && m !== 'code');
+      el.authCodeLabel.hidden = (m !== 'code');
+      el.authCode.required = (m === 'code');
+      if(m !== 'code') el.authCode.value = '';
       el.authPasswordLabel.hidden = !c.password;
       el.authPassword.required = c.password;
       el.authPasswordText.textContent = (m === 'newpassword') ? 'New password' : 'Password';
@@ -1210,17 +1243,27 @@
       el.authToggleRow.hidden = !c.toggleBtn;
       el.authToggleText.textContent = c.toggleText;
       el.authToggleBtn.textContent = c.toggleBtn;
+      // Buying from the password form: the way back is the code, not a
+      // second password form.
+      if(m === 'signin' && authPurpose === 'checkout'){
+        el.authToggleText.textContent = 'No password?';
+        el.authToggleBtn.textContent = 'Get a code by email';
+      }
       el.authStrength.hidden = true;
 
       // The row is shown only where it belongs (never on reset or recovery)
       // AND only if the project actually has a provider to put in it.
-      var hasProviders = !!(enabledProviders && enabledProviders.length);
+      // Google refuses to sign in inside an app's built-in browser
+      // ("disallowed_useragent"), which is where TikTok and Instagram open
+      // links. A button that can only fail is worse than none.
+      var hasProviders = !!(enabledProviders && enabledProviders.length) && !inAppBrowser();
       var socialRow = document.getElementById('authSocial');
       var orRow = document.getElementById('authOr');
       if(socialRow) socialRow.hidden = !(c.social && hasProviders);
       if(orRow) orRow.hidden = !(c.social && hasProviders);
 
-      setHint(el.authEmailHint, '');
+      setHint(el.authEmailHint, (c.social && inAppBrowser() && m !== 'code')
+        ? 'Google sign-in doesn’t open inside this app’s browser, so use your email here.' : '');
       setHint(el.authPwHint, '');
       setReveal(false);
       unsuggestMagicLink();
@@ -1295,9 +1338,47 @@
       if(e.target === overlay && authMode !== 'newpassword') closeAuthModal();
     });
     el.authToggleBtn.addEventListener('click', function(){
-      setMode(authMode === 'signin' ? 'signup' : 'signin');
+      if(authMode === 'code'){ sendCode(el.authEmail.value.trim(), true); return; }
+      if(authMode === 'checkout') setMode('signin');
+      else if(authMode === 'signin') setMode(authPurpose === 'checkout' ? 'checkout' : 'signup');
+      else setMode('signin');
       el.authEmail.focus();
     });
+
+    /* --- passwordless code ----------------------------------------------- */
+
+    // Sends the email (a code and a link: scripts/email/magic-link.html) and
+    // moves to the code step. Creates the account if this address is new.
+    function sendCode(email, again){
+      var c = getClient();
+      if(!c) return setMsg('Accounts are unavailable right now. Check your connection.', 'error');
+      el.authSubmitBtn.disabled = true;
+      el.authToggleBtn.disabled = true;
+      setMsg(again ? 'Sending again…' : 'Sending…');
+      c.auth.signInWithOtp({ email: email, options: { emailRedirectTo: location.origin + location.pathname } })
+        .then(function(res){
+          el.authSubmitBtn.disabled = false;
+          el.authToggleBtn.disabled = false;
+          if(res.error){
+            if(authMode === 'code') setMode('checkout');
+            return setMsg(authMessage(res.error), 'error');
+          }
+          rememberEmail(email);
+          rememberMethod('magiclink');
+          authEvent('auth-code-sent', { purpose: authPurpose || 'none' });
+          if(authMode !== 'code') setMode('code');
+          if(authPurpose === 'checkout') el.authSubmitBtn.textContent = 'Continue to payment';
+          el.authModalSub.textContent = 'We sent a code to ' + email + '. Type it here' +
+            (authPurpose === 'checkout' ? ' and you’ll go straight to payment.' : '.') +
+            ' It can take a minute, and sometimes lands in spam.';
+          if(again) setMsg('Sent again.', 'success');
+          el.authCode.focus();
+        }, function(){
+          el.authSubmitBtn.disabled = false;
+          el.authToggleBtn.disabled = false;
+          setMsg('Couldn’t send the email. Check your connection and try again.', 'error');
+        });
+    }
     el.authForgotBtn.addEventListener('click', function(){
       setMode('reset');
       el.authEmail.focus();
@@ -1408,6 +1489,37 @@
       e.preventDefault();
       var email = el.authEmail.value.trim();
       var password = el.authPassword.value;
+      if(authMode === 'code'){
+        var token = el.authCode.value.replace(/\D/g, '');
+        if(token.length < 6){ setMsg('Enter the code from the email.', 'error'); el.authCode.focus(); return; }
+        var vc = getClient();
+        if(!vc) return setMsg('Accounts are unavailable right now. Check your connection.', 'error');
+        el.authSubmitBtn.disabled = true;
+        setMsg('Checking…');
+        vc.auth.verifyOtp({ email: email, token: token, type: 'email' }).then(function(res){
+          el.authSubmitBtn.disabled = false;
+          if(res && res.error){
+            setMsg(/expired|invalid/i.test(res.error.message || '')
+              ? 'That code didn’t work. Check it, or tap “Send it again” for a new one.'
+              : authMessage(res.error), 'error');
+            el.authCode.focus();
+            return;
+          }
+          authEvent('auth-succeeded', { method: 'code' });
+          closeAuthModal();
+        }, function(){
+          el.authSubmitBtn.disabled = false;
+          setMsg('Something went wrong. Check your connection and try again.', 'error');
+        });
+        return;
+      }
+      if(authMode === 'checkout'){
+        if(!email) { setMsg('Enter your email.', 'error'); el.authEmail.focus(); return; }
+        if(!looksLikeEmail(email)) { setMsg('That doesn’t look like an email address. Check it and try again.', 'error'); el.authEmail.focus(); return; }
+        if(!getClient() && whenConnected(function(){ el.authForm.dispatchEvent(new Event('submit', { cancelable: true })); })) return;
+        sendCode(email, false);
+        return;
+      }
       if(authMode !== 'newpassword'){
         if(!email) { setMsg('Enter the email you use for your account.', 'error'); el.authEmail.focus(); return; }
         if(!looksLikeEmail(email)) { setMsg('That doesn’t look like an email address. Check it and try again.', 'error'); el.authEmail.focus(); return; }
@@ -1600,6 +1712,13 @@
   }
 
   // Something@something.tld: enough to catch a typo before any network call.
+  // TikTok, Instagram, Facebook and Snapchat open links in their own
+  // browser, where Google sign-in is refused.
+  function inAppBrowser(){
+    var ua = (navigator && navigator.userAgent) || '';
+    return /musical_ly|BytedanceWebview|TikTok|Instagram|FBAN|FBAV|Snapchat/i.test(ua);
+  }
+
   function looksLikeEmail(s){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(s || '')); }
 
   function openAuthModal(mode, opts){
@@ -1636,6 +1755,7 @@
     // Prefilling the address someone signed in with last time turns the
     // common case into one field. Password managers still fill both.
     if(!email.value) email.value = lastEmail();
+    if(mode === 'checkout'){ email.focus(); return; }
     if(email.value) pw.focus(); else email.focus();
   }
 
@@ -1714,6 +1834,14 @@
   // or write it directly).
   function trackPageview(){
     postRpc('track_pageview', { p_path: location.pathname });
+  }
+
+  // One count for the video tag a visitor came with (assets/analytics.js),
+  // by day and step, nothing else: track_ref in
+  // scripts/sql/migrations/2026-10d-ref-tracking.sql validates both.
+  function trackRef(ref, step){
+    if(!ref || !step) return Promise.resolve(false);
+    return postRpc('track_ref', { p_ref: ref, p_step: step });
   }
 
   /* A one-way RPC as a plain POST, for a visitor with no session: the page
@@ -2124,6 +2252,7 @@
   window.StudyHubAccount = {
     rpc: rpc,
     rpcData: rpcData,
+    trackRef: trackRef,
     accessToken: accessToken,
     /* Exported for scripts/test/account-delete.test.mjs. This one function
        erases a student's work on purpose, so what it does and does not touch

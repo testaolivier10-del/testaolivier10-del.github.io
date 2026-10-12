@@ -195,7 +195,12 @@
     writeVisits(v);
 
     // Before the once-a-day guard: an evening return still counts.
-    if(landedRef) event('ref-open', { ref: landedRef, course: courseOf(location.pathname) });
+    if(landedRef){
+      event('ref-open', { ref: landedRef, course: courseOf(location.pathname) });
+      // The same landing, counted where the weekly report can read it.
+      var acct = window.StudyHubAccount;
+      if(acct && acct.trackRef) acct.trackRef(landedRef, 'visit');
+    }
 
     if(alreadySentToday) return; // nine pages in one evening is still one visit
 
@@ -220,6 +225,24 @@
   var REFS = { push: 1, email: 1, share: 1 };
   var VIDEO_REF = /^(tt|yt|ig)-[a-z0-9-]{1,40}$/;
   var landedRef = takeRef();
+
+  /* The last video that brought this browser here, kept for 30 days in this
+     browser only, so a visit from a TikTok on Monday that buys on Thursday
+     is still credited to that TikTok. Counted per day in Supabase
+     (track_ref, scripts/sql/migrations/2026-10d-ref-tracking.sql) as
+     anonymous totals, never with a user or browser id. */
+  var ATTR_KEY = 'levlprep_ref';
+  var ATTR_DAYS = 30;
+  if(landedRef && VIDEO_REF.test(landedRef)){
+    try { localStorage.setItem(ATTR_KEY, JSON.stringify({ ref: landedRef, at: Date.now() })); } catch(e){ /* private mode */ }
+  }
+  function attributedRef(){
+    try {
+      var v = JSON.parse(localStorage.getItem(ATTR_KEY) || 'null');
+      if(v && v.ref && VIDEO_REF.test(v.ref) && Date.now() - v.at < ATTR_DAYS * 86400000) return v.ref;
+    } catch(e){ /* nothing kept */ }
+    return null;
+  }
 
   function takeRef(){
     try {
@@ -294,6 +317,10 @@
        browser has no performance clock. */
     secondsIn: secondsIn,
     mount: mount,
+    /* The ref this page was opened with (null if none), and the video this
+       browser was last sent by within 30 days (null if none). */
+    landedRef: function(){ return landedRef; },
+    attributedRef: attributedRef,
     enabled: enabled,
     optedOut: optedOut,
     /* Takes effect immediately for events, and from the next page load for

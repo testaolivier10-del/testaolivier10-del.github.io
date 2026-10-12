@@ -116,7 +116,11 @@ const SHELL_BUDGETS = [
      the theme tint. Measured 281.9 KB (from 281.4). */
   /* 283 -> 283.5 (2026-10-10): account.js pendingUserId/settled and the premium.js guard that stop the
      Premium reload loop (a signed-in member's page rendered locked, unlocked and reloaded forever). */
-  ['site', 283.5],
+  /* 283.5 -> 287 (2026-10-11): the one-step checkout sign-in (account.js checkout and code modes,
+     premium.js pending-buy resume and courseOfPass) and video link tracking (analytics.js attributedRef,
+     account.js trackRef, premium.js crediting each funnel step). Measured 286.5 KB; 0 sales on 1,150
+     paywall views made the checkout path worth the bytes. */
+  ['site', 287],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
