@@ -1,25 +1,44 @@
 {
- "items": [
-  {
-   "id": "yt-orgo-01-atomic-structure",
-   "course": "orgo",
-   "topic_pages": [
-    "ochem/notes/atomic-structure.html"
-   ],
-   "title": "Atomic Structure for Organic Chemistry (Valence Electrons, Octet Rule)",
-   "description_file": "long/yt-orgo-01-youtube.md",
-   "video": "long/yt-orgo-01-atomic-structure.mp4",
-   "thumb": "long/yt-orgo-01-thumb.png",
-   "captions": "long/yt-orgo-01-captions.srt",
-   "playlist": "Organic Chemistry | LevlPrep",
-   "date": "2026-10-07",
-   "status": "posted",
-   "approved_on": "2026-10-06",
-   "youtube_id": "1p-L3_POFL0",
-   "thumbnail_set": true,
-   "playlist_added": true,
-   "pr_url": "https://github.com/testaolivier10-del/testaolivier10-del.github.io/pull/48",
-   "captions_set": true
-  }
- ]
+  "items": [
+    {
+      "id": "yt-orgo-01-atomic-structure",
+      "course": "orgo",
+      "topic_pages": [
+        "ochem/notes/atomic-structure.html"
+      ],
+      "title": "Atomic Structure for Organic Chemistry (Valence Electrons, Octet Rule)",
+      "description_file": "long/yt-orgo-01-youtube.md",
+      "video": "long/yt-orgo-01-atomic-structure.mp4",
+      "thumb": "long/yt-orgo-01-thumb.png",
+      "captions": "long/yt-orgo-01-captions.srt",
+      "playlist": "Organic Chemistry | LevlPrep",
+      "date": "2026-10-07",
+      "status": "posted",
+      "approved_on": "2026-10-06",
+      "youtube_id": "1p-L3_POFL0",
+      "thumbnail_set": true,
+      "playlist_added": true,
+      "pr_url": "https://github.com/testaolivier10-del/testaolivier10-del.github.io/pull/48",
+      "captions_set": true
+    },
+    {
+      "id": "yt-nremt-01-ems-system",
+      "course": "nremt",
+      "topic_pages": "",
+      "title": "",
+      "description_file": "",
+      "video": "",
+      "thumb": "",
+      "captions": "",
+      "playlist": "",
+      "date": "",
+      "status": "building",
+      "approved_on": "",
+      "youtube_id": "",
+      "thumbnail_set": false,
+      "playlist_added": false,
+      "pr_url": "",
+      "captions_set": false
+    }
+  ]
 }
