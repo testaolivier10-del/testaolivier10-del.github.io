@@ -742,7 +742,7 @@ alter table public.premium_guarantee_claims enable row level security;
 create table if not exists public.premium_funnel (
   day    date not null default current_date,
   course text not null check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem')),
-  step   text not null check (step in ('gate-shown', 'interest', 'checkout-start', 'checkout-paid')),
+  step   text not null check (step in ('gate-shown', 'interest', 'signin-for-checkout', 'checkout-start', 'checkout-paid')),
   n      integer not null default 0,
   primary key (day, course, step)
 );
@@ -757,7 +757,7 @@ set search_path = public
 as $$
 begin
   if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem')
-     or p_step is null or p_step not in ('gate-shown', 'interest', 'checkout-start') then
+     or p_step is null or p_step not in ('gate-shown', 'interest', 'signin-for-checkout', 'checkout-start') then
     return;
   end if;
   insert into public.premium_funnel (course, step, n)
@@ -769,6 +769,76 @@ $$;
 
 revoke all on function public.count_premium_step(text, text) from public;
 grant execute on function public.count_premium_step(text, text) to anon, authenticated;
+
+-- ---------------------------------------------------------------------------
+-- Video link tracking (migrations/2026-10d-ref-tracking.sql)
+--
+-- Which TikTok, YouTube or Instagram post sent a visitor, and how far they
+-- got: visit, sign-in to buy, checkout, paid. A count per day, ref and step;
+-- the ref is remembered only in the visitor's own browser (assets/analytics.js).
+-- ---------------------------------------------------------------------------
+create table if not exists public.ref_events (
+  day  date not null default current_date,
+  ref  text not null,
+  step text not null,
+  n    integer not null default 0,
+  primary key (day, ref, step)
+);
+
+alter table public.ref_events enable row level security;
+
+-- ---------------------------------------------------------------------------
+-- 2. The browser counter
+-- ---------------------------------------------------------------------------
+create or replace function public.track_ref(p_ref text, p_step text)
+returns void
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_ref text := lower(coalesce(p_ref, ''));
+begin
+  if not (v_ref ~ '^(tt|yt|ig)-[a-z0-9-]{1,40}$' or v_ref in ('push', 'email', 'share'))
+     or p_step is null
+     or p_step not in ('visit', 'gate-shown', 'interest', 'signin-for-checkout', 'checkout-start') then
+    return;
+  end if;
+  if not exists (select 1 from public.ref_events e where e.day = current_date and e.ref = v_ref and e.step = p_step)
+     and (select count(*) from public.ref_events e where e.day = current_date) >= 2000 then
+    return;
+  end if;
+  insert into public.ref_events (day, ref, step, n)
+  values (current_date, v_ref, p_step, 1)
+  on conflict (day, ref, step) do update set n = ref_events.n + 1
+   where ref_events.n < 100000;
+end;
+$$;
+
+-- ---------------------------------------------------------------------------
+-- 3. The paid counter (Worker only)
+-- ---------------------------------------------------------------------------
+create or replace function public.track_ref_paid(p_ref text)
+returns void
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_ref text := lower(coalesce(p_ref, ''));
+begin
+  if not (v_ref ~ '^(tt|yt|ig)-[a-z0-9-]{1,40}$' or v_ref in ('push', 'email', 'share')) then
+    return;
+  end if;
+  insert into public.ref_events (day, ref, step, n)
+  values (current_date, v_ref, 'paid', 1)
+  on conflict (day, ref, step) do update set n = ref_events.n + 1;
+end;
+$$;
+
+revoke all on function public.track_ref(text, text) from public;
+revoke all on function public.track_ref_paid(text) from public, anon, authenticated;
+grant execute on function public.track_ref_paid(text) to service_role;
 
 
 -- ===========================================================================
@@ -1172,6 +1242,7 @@ grant execute on function public.save_push_subscription(text, text, text, timest
 grant execute on function public.delete_push_subscription(text) to anon, authenticated;
 grant execute on function public.join_waitlist(text, text, text) to anon, authenticated;
 grant execute on function public.count_premium_step(text, text) to anon, authenticated;
+grant execute on function public.track_ref(text, text) to anon, authenticated;
 
 -- Signed in only: each acts on auth.uid() and nothing else.
 grant execute on function public.delete_own_account() to authenticated;

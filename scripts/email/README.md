@@ -9,7 +9,7 @@ they only take effect once pasted into the dashboard. Same reasoning as
 |---|---|---|
 | `confirm-signup.html` | Confirm signup | Confirm your LevlPrep account |
 | `reset-password.html` | Reset password | Reset your LevlPrep password |
-| `magic-link.html` | Magic Link | Your LevlPrep sign-in link |
+| `magic-link.html` | Magic Link | Your LevlPrep sign-in code |
 | `change-email.html` | Change Email Address | Confirm your new LevlPrep email |
 
 ## Why bother
@@ -44,6 +44,12 @@ strip or mangle links.
   could easily be wrong. If you set one explicitly, say it.
 - `change-email.html` uses `{{ .Email }}` and `{{ .NewEmail }}`; the other
   three only need `{{ .ConfirmationURL }}`.
+- `magic-link.html` and `confirm-signup.html` also show `{{ .Token }}`, the
+  code the checkout sign-in asks for (`checkout` and `code` modes in
+  `assets/account.js`). A new address gets the confirm-signup email, a known
+  one gets the magic link, so both need it. Without the code in the email the
+  checkout sign-in still works through the link, but a buyer who came from
+  TikTok or Instagram then lands in a different browser.
 - Send yourself one of each after switching SMTP over, and open it on a
   phone. Test **reset** specifically — it is the flow whose failure is
   invisible.

@@ -68,5 +68,9 @@ export function premiumRpc(rows, name, args, now, counts = []) {
     counts.push(args.p_course);
     return new Response(null, { status: 204 });
   }
+  if (name === 'track_ref_paid') {
+    counts.push('ref:' + args.p_ref);
+    return new Response(null, { status: 204 });
+  }
   return null;
 }

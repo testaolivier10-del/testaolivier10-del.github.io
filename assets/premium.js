@@ -413,6 +413,9 @@
     if (step === 'checkout-paid') return;
     var a = window.StudyHubAccount;
     if (a && a.rpc && course) a.rpc('count_premium_step', { p_course: course, p_step: step });
+    // The same step credited to the video that sent this browser, if any.
+    var ref = an && an.attributedRef ? an.attributedRef() : null;
+    if (ref && a && a.trackRef) a.trackRef(ref, step);
   }
 
   /* ---- the free exam -------------------------------------------------------
@@ -484,8 +487,19 @@
       scoreLine(course, feature) +
       '<p>' + esc(c.premium.slice(0, 3).join(' · ')) + '.</p>' +
       '<span class="premium-card__price">From ' + fromPrice(c) + ' for ' + passLength(c) + ', one-time. No subscription.</span>' +
+      (c.guarantee ? '<p class="premium-card__guarantee">Includes Pass-or-extend: don’t pass the NREMT, and you can claim a free extension (conditions apply).</p>' : '') +
       '<button type="button" class="btn-press sm"' + openAttrs(course, source || feature) + '>See Premium</button>' +
+      tomorrowLine(course, feature) +
     '</div>';
+  }
+
+  /* The other honest answer at the daily limit: the free questions come
+     back. A student who is not buying today should leave knowing there is a
+     reason to return tomorrow, not that the door is shut. */
+  function tomorrowLine(course, feature) {
+    if (feature !== 'daily-limit') return '';
+    return '<p class="premium-card__tomorrow">Not today? You get ' + COURSES[course].dailyFree +
+      ' free questions again tomorrow, and the study notes stay open now.</p>';
   }
 
   function scoreLine(course, feature) {
@@ -697,29 +711,56 @@
   }
 
   /* Buying needs an account: the pass is attached to it, so it follows the
-     student to every device. Not signed in → sign in first, then come back to
-     this dialog. Signed in → the Worker makes a Polar checkout and we go there. */
+     student to every device. Not signed in → the one-step checkout sign-in
+     (Google, or an emailed code; account.js 'checkout' mode), and the pass
+     they picked is remembered so payment opens by itself once they are in,
+     whether that happens in this tab (a code) or after Google's redirect
+     brings them back to this page. Signed in → the Worker makes a Polar
+     checkout and it opens over the page. */
+  /* The course a pass belongs to. Not the part before the dash: the AP®
+     passes are bio-2027 and chem-2027 while their courses are apbio and
+     apchem, so splitting sent "bio" to the funnel counter, which drops any
+     course it does not know (AP® checkout starts were never counted). */
+  function courseOfPass(passId) {
+    for (var k in COURSES) {
+      if (!Object.prototype.hasOwnProperty.call(COURSES, k)) continue;
+      var list = COURSES[k].passes || [];
+      for (var i = 0; i < list.length; i++) if (list[i].id === passId) return k;
+    }
+    return '';
+  }
+
+  // Sent with a checkout so the paid webhook can credit the video (never
+  // when analytics is turned off in this browser).
+  function attributedRef() {
+    var an = window.LevlAnalytics;
+    if (!an || !an.attributedRef || (an.optedOut && an.optedOut())) return null;
+    return an.attributedRef();
+  }
+
+  var PENDING_KEY = 'levlprep_pending_buy';
+  var PENDING_MINUTES = 30;
+
   function checkout(passId, button) {
     var a = window.StudyHubAccount;
     if (!a) { setMsg('Couldn’t reach checkout just now. Try again in a moment.', 'error'); return; }
     if (!currentUserId()) {
-      var resume = active;
+      writeJson(PENDING_KEY, { pass: passId, source: active ? active.source : '', at: Date.now() });
+      funnel('signin-for-checkout', courseOfPass(passId), { course: courseOfPass(passId), pass: passId });
       close();
-      var once = false;
-      a.onAuthChange(function (u) { if (u && !once && resume) { once = true; open(resume.course, resume.source); } });
-      a.openAuthModal('signup', { purpose: 'checkout' });
+      a.openAuthModal('checkout', { purpose: 'checkout' });
       return;
     }
-    funnel('checkout-start', passId.split('-')[0], { course: active && active.course, pass: passId });
+    funnel('checkout-start', courseOfPass(passId), { course: courseOfPass(passId), pass: passId });
     button.disabled = true;
     button.textContent = 'Opening…';
-    var course = passId.split('-')[0];
+    var course = courseOfPass(passId);
     a.accessToken().then(function (token) {
       if (!token) throw new Error('no session');
       return fetch(ENDPOINT + '/premium/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
-        body: JSON.stringify({ pass: passId, returnTo: window.location.href }),
+        body: JSON.stringify({ pass: passId, returnTo: window.location.href, ref: attributedRef() }),
       });
     }).then(function (res) {
       return res.json().then(function (body) { return { ok: res.ok, body: body }; });
@@ -891,6 +932,21 @@
     return '';
   }
 
+  /* Signed in with a pass still waiting: reopen the dialog and start that
+     checkout, so "sign in" and "pay" feel like one step. Only within
+     PENDING_MINUTES of choosing it, and only once. */
+  function resumePending() {
+    var p = readJson(PENDING_KEY);
+    if (!p || !p.pass) return;
+    if (!currentUserId() || !(window.StudyHubAccount && window.StudyHubAccount.user && window.StudyHubAccount.user())) return;
+    writeJson(PENDING_KEY, {});
+    var course = courseOfPass(String(p.pass));
+    if (!COURSES[course] || !live(course) || !(Date.now() - (p.at || 0) < PENDING_MINUTES * 60000)) return;
+    open(course, p.source || 'resume');
+    var btn = overlay && overlay.querySelector('[data-premium-buy="' + String(p.pass).replace(/[^a-z0-9-]/g, '') + '"]');
+    if (btn) checkout(p.pass, btn);
+  }
+
   function handleReturn() {
     var course = returnCourse(window.location.search, window.location.pathname);
     if (course === null) return;
@@ -957,7 +1013,7 @@
       open(btn.getAttribute('data-premium-open'), btn.getAttribute('data-premium-source'), btn);
     });
     var a = window.StudyHubAccount;
-    if (a && a.onAuthChange) a.onAuthChange(function () { refresh(); });
+    if (a && a.onAuthChange) a.onAuthChange(function (u) { refresh(); if (u) resumePending(); });
     handleReturn();
   }
 

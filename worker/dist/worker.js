@@ -905,6 +905,12 @@ async function sessionUser(env, token) {
 }
 
 /* Returns { status, body }; index.js adds the CORS headers. */
+/* The video tag a buyer came from (assets/analytics.js VIDEO_REF), carried
+   through Polar's metadata so the paid webhook can credit that video. */
+function isRef(ref) {
+  return typeof ref === 'string' && /^(tt|yt|ig)-[a-z0-9-]{1,40}$/.test(ref);
+}
+
 async function premiumCheckout(request, env) {
   const token = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '').trim();
   if (!token) return { status: 401, body: { error: 'Sign in first.' } };
@@ -929,7 +935,7 @@ async function premiumCheckout(request, env) {
   const body = {
     products: [productId],
     external_customer_id: user.id,
-    metadata: { user_id: user.id, pass: passId },
+    metadata: { user_id: user.id, pass: passId, ...(isRef(payload?.ref) ? { ref: payload.ref } : {}) },
     success_url: successUrl(payload?.returnTo, pass.course),
   };
   if (user.email) body.customer_email = user.email;
@@ -1394,6 +1400,11 @@ async function recordPaid(env, order, now) {
   try {
     await sb(env, 'rpc/count_premium_paid', { method: 'POST', body: JSON.stringify({ p_course: pass.course }) });
   } catch { /* the count is not worth a retry */ }
+  if (isRef(order.metadata?.ref)) {
+    try {
+      await sb(env, 'rpc/track_ref_paid', { method: 'POST', body: JSON.stringify({ p_ref: order.metadata.ref }) });
+    } catch { /* same: best effort */ }
+  }
   return { status: 200, body: { ok: true } };
 }
 

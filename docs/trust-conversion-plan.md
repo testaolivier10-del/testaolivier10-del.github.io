@@ -25,6 +25,28 @@ Leaks, biggest first: checkout (4 → 0), signup (6,700 → 4), gate (644 → 10
 - Channels: YouTube https://www.youtube.com/@levlprep, TikTok https://www.tiktok.com/@levl.prep (on about.html and in the index.html schema `sameAs`).
 - Not anonymous any more: reverses PR #45 (`claude/anonymize-operator`).
 
+## Checkout sign-in and video tracking (2026-10-11)
+
+Built on branch `claude/checkout-signin-ref-tracking` (owner asked for: one-step sign-in at checkout, link tracking,
+Cloudflare cache fix, small cleanup).
+
+- **Checkout sign-in.** A signed-out "Get it" opens account.js mode `checkout`: Google, or an email that carries a
+  6-digit code (mode `code`, `verifyOtp` type `email`) plus the link. No password, no confirm-then-come-back. The
+  chosen pass is kept in `levlprep_pending_buy` (30 min); `resumePending()` in premium.js reopens the dialog and starts
+  that checkout once signed in, in this tab (code) or after Google's redirect. Google is hidden inside TikTok,
+  Instagram, Facebook and Snapchat browsers (Google refuses sign-in there). Password sign-in stays one tap away.
+- **Owner:** paste `scripts/email/magic-link.html` and `scripts/email/confirm-signup.html` into Supabase →
+  Authentication → Emails (they now show `{{ .Token }}`). Until then the link still works; the code box gets no code.
+- **Bug fixed:** AP® passes are `bio-2027` / `chem-2027`, and checkout used `pass.split('-')[0]` as the course, so
+  AP® checkout starts were never counted and the post-payment unlock polled the wrong course. Now `courseOfPass()`.
+- **Daily-limit card:** "Not today? You get 15 free questions again tomorrow…", and NREMT cards name Pass-or-extend.
+- **Video tracking in Supabase.** `?ref=tt-|yt-|ig-<topic>` is remembered in the visitor's browser for 30 days
+  (`levlprep_ref`, analytics.js `attributedRef`). Counts per day, ref and step go to `ref_events` via `track_ref`
+  (visit, gate-shown, interest, signin-for-checkout, checkout-start) and, from the paid webhook, `track_ref_paid`
+  (Polar metadata `ref`). Migration: `scripts/sql/migrations/2026-10d-ref-tracking.sql`. Read:
+  `select ref, step, sum(n) from ref_events where day > current_date - 7 group by 1, 2 order by 1, 2;`
+- New funnel step `signin-for-checkout` (premium_funnel): how many signed-out buyers met the sign-in step.
+
 Wording rule (FTC): the NREMT story is the founder's own result. Say it as that ("I passed…"), never as
 typical ("students pass…").
 
