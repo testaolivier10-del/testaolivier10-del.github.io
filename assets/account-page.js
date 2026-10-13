@@ -44,7 +44,13 @@
     var c = P && P.COURSES[course];
     return c ? c.name : course;
   }
+  // A grant longer than a year is the owner's own access (it runs to 2099),
+  // not a free month.
+  function isLongGrant(row) {
+    return row.pass === 'grant' && Date.parse(row.expires_at) - Date.parse(row.starts_at) > 400 * DAY_MS;
+  }
   function passLabel(row) {
+    if (isLongGrant(row)) return 'Full access';
     if (row.pass === 'grant') return 'Free month';
     if (row.pass === 'guarantee') return 'Pass-or-extend extension';
     var c = P && P.COURSES[row.course];
@@ -162,12 +168,13 @@
       var end = live.reduce(function (m, r) { return Math.max(m, Date.parse(r.expires_at)); }, 0);
       var paid = live.some(isPurchase);
       var state = !end ? 'Not active'
+        : live.some(isLongGrant) ? 'Full access, no end date'
         : (paid ? 'Premium active until ' : 'Free month until ') + day(end);
       return '<div class="panel course">' +
         '<div><b>' + esc(courseName(course)) + '</b>' +
         '<span class="state' + (end ? ' on' : '') + '">' + esc(state) + '</span></div>' +
-        '<div class="buy"><button type="button" class="btn-press sm" data-buy="' + course + '">' +
-          (end ? 'Extend' : 'Get Premium') + '</button></div>' +
+        (live.some(isLongGrant) ? '' : '<div class="buy"><button type="button" class="btn-press sm" data-buy="' + course + '">' +
+          (end ? 'Extend' : 'Get Premium') + '</button></div>') +
       '</div>';
     }).join('');
   }
@@ -186,7 +193,7 @@
       var html = '<li class="order"><div class="top">' +
         '<b>' + esc(courseName(r.course)) + ' &middot; ' + esc(passLabel(r)) + '</b>' +
         '<span class="chip ' + chip[0] + '">' + esc(chip[1]) + '</span></div>' +
-        '<div class="meta">' + day(start) + ' &ndash; ' + day(end) +
+        '<div class="meta">' + (isLongGrant(r) ? 'Since ' + day(start) + ', no end date' : day(start) + ' &ndash; ' + day(end)) +
         (isPurchase(r) ? ' &middot; ' + money(r.amount_cents) + ' + tax &middot; bought ' + day(Date.parse(r.created_at)) : '') +
         '</div>';
       if (isPurchase(r) && !r.refunded_at) {
