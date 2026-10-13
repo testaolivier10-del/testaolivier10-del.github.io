@@ -29,5 +29,6 @@ npm i 3dmol >/dev/null 2>&1
 pip install --break-system-packages -q rdkit cairosvg
 # synthesized effects (sfx.py) and real sounds already fetched from Freesound (media branch sfx/)
 [ -f sfx.py ] && python3 sfx.py >/dev/null 2>&1 || true
-[ -d /tmp/m/sfx ] && cp /tmp/m/sfx/* /home/claude/lp/assets/ 2>/dev/null || true
+[ -d /tmp/m/.git ] && git -C /tmp/m sparse-checkout add /sfx/ 2>/dev/null || true
+[ -d /tmp/m/sfx ] && cp /tmp/m/sfx/*.wav /home/claude/lp/assets/ 2>/dev/null || true
 echo science tools ready

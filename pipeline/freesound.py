@@ -1,5 +1,7 @@
 """Real recorded sound effects from Freesound (free), CC0 only, so no credit is needed and monetized use is fine.
 
+NOTE: Freesound refuses the cloud workspace (HTTP 403); run searches and downloads on the laptop with device_bash,
+then stage the files here. These helpers work wherever freesound.org answers.
 Needs (one time, by Olivier): a free freesound.org account, an API key from https://freesound.org/apiv2/apply
 saved as Downloads\\levlprep\\freesound_key.txt, and freesound.org plus cdn.freesound.org added to the
 allowed network domains. Stage the key like the others to /root/.lpkey/fs (chmod 600, never print it).
