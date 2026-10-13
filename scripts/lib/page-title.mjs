@@ -38,7 +38,10 @@ export function courseTitle(topic, labels, { keepFirstLabel = false } = {}) {
   if (titleLength(bare) <= TITLE_MAX) return bare;
   const room = TITLE_MAX - titleLength(` — ${label}`) - 1;
   const cut = decode(topic).slice(0, room).replace(/\s+\S*$/, '').replace(/[\s,;:–—-]+$/, '');
-  return `${cut}… — ${label}`;
+  // Cutting at a word can free enough room for the brand again; then it goes
+  // back on, as site rule title-pattern expects (AP® Physics 1 launch).
+  const short = `${cut}… — ${label}`;
+  return titleLength(`${short} | ${BRAND}`) <= TITLE_MAX ? `${short} | ${BRAND}` : short;
 }
 
 /* A site-level page (hub, legal, search): "{Page} | LevlPrep". */
