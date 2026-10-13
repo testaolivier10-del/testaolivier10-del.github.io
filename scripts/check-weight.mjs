@@ -309,8 +309,10 @@ const SHELL_BUDGETS = [
      gzipped together, which replace a math library several times their
      size; tool pages add the plot helper (6.5 KB). Physics' 52 is the
      reference; measured 66.0 KB on the exams page before any unit is
-     published. */
-  ['calculus', 67],
+     published. 67 -> 68 at launch (docs/apcalc-spec.md decision 12): the
+     curriculum with every topic live and calc-math.js breaking long inline
+     chains at "=" for phones; measured 67.5 KB. */
+  ['calculus', 68],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as

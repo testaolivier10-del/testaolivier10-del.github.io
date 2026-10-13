@@ -90,11 +90,23 @@
 
   // Tags out, entities decoded, whitespace collapsed. Block-level tags become
   // a space so "<li>a</li><li>b</li>" does not read as "ab".
+  /* AP® Calculus AB math (<math>...<annotation>TeX</annotation></math>) as
+     plain text: its TeX read out by ApCalcTex.text once calc-math.js is
+     loaded ("d/dx f(g(x)) = f′(g(x)) · g′(x)"), else the formula's symbols. */
+  function mathText(m) {
+    var tex = /<annotation[^>]*>([\s\S]*?)<\/annotation>/.exec(m);
+    if (tex && window.ApCalcTex) return ' ' + window.ApCalcTex.text(decodeEntities(tex[1])) + ' ';
+    return ' ' + m.replace(/<annotation[\s\S]*?<\/annotation>/g, '').replace(/<[^>]+>/g, '') + ' ';
+  }
   function stripHtml(html) {
-    return decodeEntities(String(html || '')
-      .replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, ' ')
+    var s = String(html || ''), math = /<math\b/.test(s);
+    s = decodeEntities(s
+      .replace(/<math\b[\s\S]*?<\/math>/g, mathText)
+      .replace(/<(script|style|annotation)\b[\s\S]*?<\/\1>/gi, ' ')
       .replace(/<[^>]+>/g, ' '))
       .replace(/\s+/g, ' ').trim();
+    // A formula ends where its sentence goes on: no space before the punctuation.
+    return math ? s.replace(/ ([.,;:])/g, '$1') : s;
   }
 
   /* Long prose split into pieces of at most `max` characters, at a sentence
@@ -640,12 +652,16 @@
         });
       }],
       ['glossary', function () {
-        return getJson('calculus/assets/glossary.json').then(function (g) {
+        return loadScript('calculus/assets/calc-math.js').catch(function () {}).then(function () {
+          return getJson('calculus/assets/glossary.json');
+        }).then(function (g) {
           return glossaryChunks('apcalc', termsFromJson(g), function (x) { return { file: 'glossary.html#t-' + x.id }; });
         });
       }],
       ['notes', function () {
-        return getJson('calculus/assets/notes-index.json').then(function (list) {
+        return loadScript('calculus/assets/calc-math.js').catch(function () {}).then(function () {
+          return getJson('calculus/assets/notes-index.json');
+        }).then(function (list) {
           return Promise.all(list.map(function (n) {
             var id = String(n.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
             var href = 'calculus/notes/' + id + '.html';
@@ -653,11 +669,14 @@
               var doc = parseHtml(html);
               var root = doc.querySelector('.calc-prose') || doc.querySelector('main') || doc.body;
               root.querySelectorAll('.calc-crumb,.calc-onward,.calc-share,.calc-foot').forEach(function (x) { x.remove(); });
+              // Each formula as plain text, not its MathML symbols plus the TeX kept in its annotation.
+              root.querySelectorAll('math').forEach(function (m) { m.replaceWith(doc.createTextNode(mathText(m.outerHTML))); });
+              root.normalize();
               var out = [];
               var heading = n.title;
               var hid = '';
               root.querySelectorAll('h2,h3,p,li,td,th,dd,figcaption').forEach(function (el) {
-                var text = (el.textContent || '').replace(/\s+/g, ' ').trim();
+                var text = (el.textContent || '').replace(/\s+/g, ' ').trim().replace(/ ([.,;:])/g, '$1');
                 if (!text) return;
                 if (/^H[23]$/.test(el.tagName)) { heading = text; hid = el.id || ''; return; }
                 if (text.length < 30) return;

@@ -25,7 +25,13 @@
   var GREEK = { 'α': 'alpha', 'β': 'beta', 'γ': 'gamma', 'δ': 'delta', 'ε': 'epsilon', 'κ': 'kappa', 'λ': 'lambda', 'μ': 'mu', 'π': 'pi', 'σ': 'sigma', 'ω': 'omega' };
 
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-  function rich(s){ return esc(s).replace(/&lt;(\/?)(i|b|em|strong|sub|sup)&gt;/g, '<$1$2>'); }
+  /* A few inline tags survive escaping; so does math rendered at build time
+     (AP® Calculus AB definitions carry <math>...</math>). plainDef() is the
+     same definition as text to filter on: the formula's symbols, not its TeX
+     annotation or its markup. */
+  var MATH_SPLIT = /(<math[\s\S]*?<\/math>)/;
+  function rich(s){ return String(s == null ? '' : s).split(MATH_SPLIT).map(function(x, i){ return i % 2 ? x : esc(x).replace(/&lt;(\/?)(i|b|em|strong|sub|sup)&gt;/g, '<$1$2>'); }).join(''); }
+  function plainDef(s){ return String(s == null ? '' : s).replace(/<annotation[\s\S]*?<\/annotation>/g, '').replace(/<[^>]+>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&'); }
   function fold(s){
     return String(s || '').replace(/<[^>]+>/g, '').replace(/[αβγδεκλμπσω]/g, function(c){ return GREEK[c]; })
       .normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -72,7 +78,7 @@
             '<span class="gx-def">' + rich(t.def) + '</span>' +
             (t.topicTitle ? '<span class="gx-src">Taught in ' + (href ? '<a href="' + esc(href) + '">' + esc(t.topicTitle) + '</a>' : esc(t.topicTitle) + ' (coming soon)') + '</span>' : '') +
             '</dd></div>';
-          rows.push({ id: t.id, L: L, ch: t.chapter || '', hay: fold([t.term].concat(t.aka || []).join(' | ') + ' | ' + t.def), name: fold([t.term].concat(t.aka || []).join(' | ')) });
+          rows.push({ id: t.id, L: L, ch: t.chapter || '', hay: fold([t.term].concat(t.aka || []).join(' | ') + ' | ' + plainDef(t.def)), name: fold([t.term].concat(t.aka || []).join(' | ')) });
         });
         html += '</dl></section>';
       });

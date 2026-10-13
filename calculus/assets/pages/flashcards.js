@@ -109,6 +109,11 @@
   function built(id){ return !!(TOPIC[id] && TOPIC[id].built); }
   function unitName(u){ var c = UNIT[u]; return c ? (c.part === 'course' ? 'Unit ' + c.n + ': ' : '') + c.title : u; }
   var CARDS = [], BY_ID = {}, GLOSS = {}, missedConcepts = null;
+  /* Glossary definitions carry math rendered at build time (<math>...</math>);
+     everything else in them is plain text. rich() escapes the text and keeps
+     the math; maskTerm() masks the term in the text only. */
+  var MATH_SPLIT = /(<math[\s\S]*?<\/math>)/;
+  function rich(s){ return String(s == null ? '' : s).split(MATH_SPLIT).map(function(x, i){ return i % 2 ? x : esc(x); }).join(''); }
   function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
   function maskTerm(def, term){
     var names = [term.replace(/^the\s+/i, '')], paren = term.match(/^(.*?)\s*\(([^)]+)\)\s*$/);
@@ -117,7 +122,8 @@
       n = n.trim();
       var sym = /[A-Z]/.test(n.slice(1)) || /^[A-Z]{2,}/.test(n);
       if(n.length < (sym ? 2 : 3)) return;
-      def = def.replace(new RegExp('(^|[^\\w-])' + escRe(n) + '(s|es)?(?![\\w-])', sym ? 'g' : 'gi'), '$1_____');
+      var re = new RegExp('(^|[^\\w-])' + escRe(n) + '(s|es)?(?![\\w-])', sym ? 'g' : 'gi');
+      def = def.split(MATH_SPLIT).map(function(x, i){ return i % 2 ? x : x.replace(re, '$1_____'); }).join('');
     });
     return def;
   }
@@ -261,12 +267,12 @@
   }
   function frontHtml(c){
     if(c.kind === 't') return '<p class="calc-fc-ask">What does this term mean?</p><p class="calc-fc-q">' + esc(c.term) + '</p>';
-    if(c.kind === 'd') return '<p class="calc-fc-ask">Which term is this?</p><p class="calc-fc-q calc-fc-q-def">' + esc(c.masked) + '</p>';
+    if(c.kind === 'd') return '<p class="calc-fc-ask">Which term is this?</p><p class="calc-fc-q calc-fc-q-def">' + rich(c.masked) + '</p>';
     return '<p class="calc-fc-ask">Sum up this topic in two or three sentences, then check.</p><p class="calc-fc-q calc-fc-q-def">' + esc(TOPIC[c.topic].title) + '</p>';
   }
   function backHtml(c){
     var t = TOPIC[c.topic];
-    var body = c.kind === 't' ? '<p class="calc-fc-a">' + esc(c.def) + '</p>' : c.kind === 'd' ? '<p class="calc-fc-a calc-fc-a-term">' + esc(c.term) + '</p><p class="calc-fc-a-sub">' + esc(c.def) + '</p>' : '<p class="calc-fc-a">' + esc(c.back) + '</p>';
+    var body = c.kind === 't' ? '<p class="calc-fc-a">' + rich(c.def) + '</p>' : c.kind === 'd' ? '<p class="calc-fc-a calc-fc-a-term">' + esc(c.term) + '</p><p class="calc-fc-a-sub">' + rich(c.def) + '</p>' : '<p class="calc-fc-a">' + rich(c.back) + '</p>';
     return body + '<p class="calc-fc-from">Taught in <a href="' + esc(BASE + 'lessons/' + c.topic + '.html') + '">' + esc(t.title) + '</a> &middot; <a href="' + esc(BASE + 'notes/' + c.topic + '.html') + '">notes</a>' +
       (window.LevlReport ? ' <span class="calc-fc-report">' + window.LevlReport.button('apcalc', c.id) + '</span>' : '') + '</p>';
   }

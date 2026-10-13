@@ -58,19 +58,33 @@
     INDEX.forEach(function(c){ var id = c.page === 'Lessons' && c.file.replace(/^.*lessons\//, '').replace(/\.html$/, ''); if(id && byTopic[id]) c.text += ' Terms taught: ' + byTopic[id].join(', ') + '.'; });
     return Object.keys(g || {}).map(function(cid){
       var x = g[cid], t = TOPIC[x.p];
-      return { page: 'Glossary', file: BASE + 'glossary.html#t-' + cid, heading: x.t, meta: t ? 'Taught in ' + t.title : 'Glossary', text: x.d, weight: 2 };
+      return { page: 'Glossary', file: BASE + 'glossary.html#t-' + cid, heading: x.t, meta: t ? 'Taught in ' + t.title : 'Glossary', text: plain(x.d), weight: 2 };
     });
   }
   function frqs(list){
     return (list || []).map(function(f){ return { page: 'Free response', file: BASE + 'frq/' + f.id + '.html', heading: f.title, meta: (f.units || []).map(unitName).join(', ') + ' · ' + f.points + ' points', text: f.title + '. Free-response question. ' + (f.topics || []).map(function(t){ return TOPIC[t] ? TOPIC[t].title : ''; }).join(', '), weight: 2 }; });
   }
+  /* A definition's math as plain text: the formula's own symbols, without the TeX kept in its annotation. */
+  function mathToText(root, doc){
+    root.querySelectorAll('math').forEach(function(m){
+      var a = m.querySelector('annotation'), T = window.ApCalcTex;
+      if(a && T) m.replaceWith(doc.createTextNode(' ' + T.text(a.textContent) + ' '));
+      else { if(a) a.remove(); }
+    });
+  }
+  function plain(html){
+    var d = new DOMParser().parseFromString('<div>' + (html || '') + '</div>', 'text/html');
+    mathToText(d.body, d);
+    return d.body.textContent.replace(/\s+/g, ' ').trim().replace(/ ([.,;:])/g, '$1');
+  }
   function noteChunks(entry, html){
     var doc = new DOMParser().parseFromString(html, 'text/html');
     var root = doc.querySelector('.calc-prose') || doc.querySelector('main') || doc.body;
     root.querySelectorAll('script,style,nav,.calc-crumb').forEach(function(n){ n.remove(); });
+    mathToText(root, doc);
     var out = [], heading = entry.title, hid = '';
     root.querySelectorAll('h2,h3,p,li,td,th,dd,figcaption').forEach(function(el){
-      var text = (el.textContent || '').replace(/\s+/g, ' ').trim();
+      var text = (el.textContent || '').replace(/\s+/g, ' ').trim().replace(/ ([.,;:])/g, '$1');
       if(!text) return;
       if(/^H[23]$/.test(el.tagName)){ heading = text; hid = el.id || ''; return; }
       if(text.length < 30) return;

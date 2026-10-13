@@ -419,6 +419,7 @@
     var doc = new DOMParser().parseFromString(
       '<!doctype html><body>' + raw.replace(/<br\s*\/?>/gi, ' '), 'text/html');
 
+    doc.body.querySelectorAll('annotation').forEach(function(n){ n.remove(); });
     var tables = doc.body.querySelectorAll('table');
     for(var i = 0; i < tables.length; i++){
       tables[i].replaceWith(doc.createTextNode(' ' + tableText(tables[i]) + ' '));
@@ -510,7 +511,8 @@
   function extractChunks(html, page){
     var chunks = [];
     var doc = new DOMParser().parseFromString(html.replace(/<br\s*\/?>/gi, ' '), 'text/html');
-    doc.querySelectorAll('script,style,noscript').forEach(function(n){ n.remove(); });
+    // annotation: the TeX kept inside each AP® Calculus AB formula, not text to quote.
+    doc.querySelectorAll('script,style,noscript,annotation').forEach(function(n){ n.remove(); });
     extractFromDom(doc, page, chunks);
     extractFromScripts(html, page, chunks);
     return dedupe(chunks);

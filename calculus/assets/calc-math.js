@@ -339,11 +339,42 @@
 
   /* ---------------------------------------------------------- in text */
   var MATH_RE = /\$\$([\s\S]+?)\$\$|\$([^$]+?)\$/g;
+  /* A long inline chain (a = b = c) is split before each top-level = or \approx
+     into pieces of math with a space between, so a line can wrap there: MathML
+     never breaks inside an inline formula, and on a phone one long chain made
+     the whole page scroll sideways (AP® Calculus AB launch). */
+  var BREAK_AT = 30;
+  function splitChain(tex){
+    var out = [], from = 0, depth = 0, i = 0, m;
+    while(i < tex.length){
+      var c = tex[i];
+      if(c === '\\'){
+        m = /^\\([A-Za-z]+|.)/.exec(tex.slice(i));
+        var cmd = m ? m[1] : '';
+        if(cmd === 'left' || cmd === 'begin') depth++;
+        else if(cmd === 'right' || cmd === 'end') depth--;
+        else if(cmd === 'approx' && depth === 0 && i > from){ out.push(tex.slice(from, i)); from = i; }
+        i += m ? m[0].length : 1; continue;
+      }
+      if(c === '{') depth++;
+      else if(c === '}') depth--;
+      else if(c === '=' && depth === 0 && i > from && tex.slice(from, i).trim()){ out.push(tex.slice(from, i)); from = i; }
+      i++;
+    }
+    out.push(tex.slice(from));
+    return out.map(function(x){ return x.trim(); }).filter(Boolean);
+  }
+  function inline(tex, opts){
+    var parts = text(tex).length > BREAK_AT ? splitChain(tex) : [tex];
+    if(parts.length < 2) return render(tex, opts);
+    return parts.map(function(x){ return render(x, opts); }).join(' ');
+  }
   function html(str, opts){
     var s = String(str == null ? '' : str);
     if(s.indexOf('$') < 0) return s;
     return s.replace(/\\\$/g, '\u0000').replace(MATH_RE, function(m, d, i){
-      return render(d !== undefined ? d : i, { display: d !== undefined, strict: opts && opts.strict });
+      var o = { display: d !== undefined, strict: opts && opts.strict };
+      return d !== undefined ? render(d, o) : inline(i, o);
     }).replace(/\u0000/g, '$');
   }
   function plain(str){

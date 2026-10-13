@@ -635,7 +635,10 @@ ${tail({ depth, section: 'learn', extra: ['calc-toc.js', 'calc-book.js'] })}
     const sims = (C.pages.tools || []).filter(t => t.kind === 'simulator' && toolLive(t));
     const freeSims = sims.filter(t => !t.premium).map(t => t.name.toLowerCase());
     const freeSim = sims.find(t => !t.premium);
-    const freeLine = freeSims.length ? (freeSims.length === 1 ? `The ${freeSims[0]} trainer is free.` : `The ${freeSims.slice(0, -1).join(', ')} and ${freeSims[freeSims.length - 1]} trainers are free.`) : '';
+    // Free drills (the rule drills) are named too, so the line lists every free tool (launch continuity pass).
+    const freeDrills = (C.pages.tools || []).filter(t => t.kind !== 'simulator' && toolLive(t) && !t.premium).map(t => t.name.toLowerCase());
+    const andDrills = freeDrills.length ? `, and so ${freeDrills.length === 1 && !/s$/.test(freeDrills[0]) ? 'is' : 'are'} the ${freeDrills.join(' and ')}` : '';
+    const freeLine = freeSims.length ? (freeSims.length === 1 ? `The ${freeSims[0]} trainer is free${andDrills}.` : `The ${freeSims.slice(0, -1).join(', ')} and ${freeSims[freeSims.length - 1]} trainers are free${andDrills}.`) : '';
     const partCount = id => map.chapters.filter(c => c.part === id).length;
     const partTopics = id => topics.filter(t => chapterById(t.chapter).part === id).length;
     const bars = map.parts.map(p => `<div class="mini-domain-row"><span>${esc(PART_LABEL[p.id] || p.title)}</span><span class="bar"><i data-part-bar="${p.id}" style="width:0%;--dc:${(PART_COLORS[p.id] || PART_COLORS.course)[0]}"></i></span><span class="pct" data-part-pct="${p.id}">0%</span></div>`).join('');
