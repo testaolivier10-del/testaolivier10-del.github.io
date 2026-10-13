@@ -1,0 +1,111 @@
+/* AP® Physics 1 entry pages and trainer, on top of pages.css: the justification
+   trainer (pages/justify.js), the score calculator (pages/score.js), the
+   equations-sheet walkthrough and the unit practice tests
+   (scripts/lib/apphys-entry.mjs). Kept out of pages.css so the exams page
+   does not carry them. */
+.phys-js-how summary{cursor:pointer;font:900 16px var(--font-ui);color:var(--cink);min-height:44px;display:flex;align-items:center;}
+.phys-js-how[open] summary{margin-bottom:6px;}
+.phys-js-nav span{color:var(--muted);}
+@media (max-width:640px){
+  body[data-app="justify"] .phys-hero{margin-top:10px;padding:14px 16px;border-radius:16px;}
+  body[data-app="justify"] .phys-hero .eyebrow{margin-bottom:4px;}
+  body[data-app="justify"] .phys-hero h1{font-size:22px;line-height:1.2;margin:0;}
+  body[data-app="justify"] .phys-hero .lede{display:none;}
+}
+.phys-js-steps{margin:0 0 8px;padding-left:22px;}
+.phys-js-steps li{margin:4px 0;}
+.phys-js-card .phys-js-title{margin:4px 0 12px;font-size:21px;}
+.phys-js-card .phys-js-title:focus{outline:none;}
+.phys-js-prompt{font-size:16px;margin:14px 0;}
+.phys-js-check{margin:18px 0 0;}
+.phys-js-check h2:focus{outline:none;}
+.phys-js-yours{margin:0 0 12px;padding:10px 12px;border-radius:10px;border:2px dashed var(--line);}
+.phys-js-yours p{margin:0;overflow-wrap:anywhere;}
+.phys-js-models{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin:14px 0;}
+.phys-js-model{padding:12px 14px;border-radius:12px;border:2px solid var(--line);background:var(--white);}
+.phys-js-model.is-earns{border-color:var(--cink);background:var(--ctint);}
+.phys-js-model p{margin:0 0 8px;}
+.phys-js-model .phys-js-why{margin:0;font-size:14px;}
+.phys-js-model .phys-fq-sample-k{font:900 11.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--cink);}
+.phys-js-model.is-misses .phys-fq-sample-k{color:var(--muted);}
+.phys-js-empty{color:var(--ink);}
+.phys-sc-form{display:grid;gap:16px;}
+.phys-sc-part{border:0;margin:0;padding:0;min-width:0;}
+.phys-sc-part legend{font:900 15px var(--font-ui);margin:0 0 8px;}
+.phys-sc-mcq,.phys-sc-q{display:flex;flex-direction:column;gap:4px;font:800 13.5px var(--font-ui);}
+.phys-sc-mcq input,.phys-sc-q input{min-height:44px;padding:8px 10px;font:700 16px var(--font-ui);border:2px solid var(--line);border-radius:10px;background:var(--white);color:var(--ink);max-width:100%;box-sizing:border-box;}
+.phys-sc-mcq input{max-width:140px;}
+.phys-sc-part input[type=range]{width:100%;min-height:44px;accent-color:var(--cink);}
+.phys-sc-frq{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;}
+.phys-sc-q small{font-weight:600;color:var(--muted);}
+.phys-sc-out{margin:16px 0;}
+.phys-sc-formula{padding:10px 12px;border-radius:10px;background:var(--ctint);overflow-wrap:anywhere;}
+.phys-eq{width:100%;border-collapse:collapse;font-size:14.5px;}
+.phys-eq th,.phys-eq td{text-align:left;vertical-align:top;padding:10px 8px;border-bottom:1px solid var(--line);}
+.phys-eq thead th{font:900 12.5px var(--font-ui);text-transform:uppercase;letter-spacing:.04em;color:var(--muted);}
+.phys-eq-f{font:700 15px var(--font-mono, monospace);white-space:normal;color:var(--cink);}
+.phys-eq tbody th{min-width:150px;}
+.phys-eq-not li{margin:8px 0;}
+.phys-entry .phys-qs{margin:16px 0;}
+.phys-cards-row{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 12px;}
+.phys-sample-done{margin:14px 0;}
+@media (max-width:560px){
+  .phys-eq thead{display:none;}
+  .phys-eq tr{display:block;padding:8px 0;border-bottom:1px solid var(--line);}
+  .phys-eq th,.phys-eq td{display:block;border:0;padding:3px 0;}
+  .phys-eq tbody th{min-width:0;}
+}
+.phys-eq-tools{display:block;margin-top:6px;font-weight:700;}
+.phys-eq-tools a{display:inline-block;min-height:24px;}
+
+/* Justification trainer on the Tool Studio (justify.js studio()): the
+   prompt and the answer box are the stage; no card inside the stage card. */
+.ls-root .phys-ls-jcard{margin:0;padding:0;border:0;background:none;box-shadow:none;display:flex;flex-direction:column;gap:10px;flex:1;min-height:0;}
+.ls-root .phys-ls-jcard .phys-js-title{margin:0;font:900 var(--ls-l)/1.25 var(--font-ui);letter-spacing:-.01em;}
+.ls-root .phys-ls-jcard .phys-stim{margin:0;padding:12px 14px;border-radius:16px;background:var(--surface2);border:0;font-size:var(--ls-m);}
+.ls-root .phys-ls-jcard .phys-stim-k{font:800 var(--ls-s) var(--font-ui);color:var(--muted);text-transform:none;letter-spacing:0;margin:0 0 4px;}
+.ls-root .phys-ls-jcard .phys-js-prompt{margin:0;font:800 var(--ls-m)/1.45 var(--font-ui);}
+.ls-root .phys-ls-jcard .phys-fq-alabel{font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.ls-root .phys-ls-jcard .phys-fq-answer{flex:1 0 120px;min-height:120px;border:0;border-radius:16px;box-shadow:inset 0 0 0 2px var(--line);font:600 var(--ls-m)/1.5 var(--font-ui);padding:12px 14px;resize:none;}
+.ls-root .phys-ls-jcard .phys-fq-answer:focus{outline:none;box-shadow:inset 0 0 0 2px var(--cink);}
+.ls-root .phys-ls-jcard > .phys-small{margin:0;font-size:var(--ls-s);}
+.ls-root .phys-pr-actions{display:flex;gap:10px;flex-wrap:wrap;margin:0;}
+.ls-root .phys-pr-actions > *{flex:1 1 auto;}
+.ls-root .phys-ls-jnav{margin:0;}
+.ls-root .phys-ls-jnav a{display:flex;align-items:center;min-height:44px;padding:0 14px;border-radius:14px;background:var(--surface2);color:var(--ink);font:700 var(--ls-m) var(--font-ui);text-decoration:none;}
+.ls-root .phys-ls-jnav span{display:none;}
+.ls-sheet .phys-js-check{margin:0;}
+.ls-sheet .phys-js-check h2{font:900 var(--ls-l)/1.25 var(--font-ui);margin:0 0 10px;}
+.ls-sheet .phys-js-yours{border-radius:14px;}
+.ls-sheet .phys-fq-sample-k,.ls-sheet .phys-js-model .phys-fq-sample-k{font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;}
+.ls-sheet .phys-js-models{grid-template-columns:1fr;}
+.ls-sheet .phys-js-model{border-radius:16px;border:0;box-shadow:inset 0 0 0 1.5px var(--line);}
+.ls-sheet .phys-js-model.is-earns{box-shadow:inset 0 0 0 2px var(--cink);}
+.ls-sheet .phys-fq-rpart{margin:0;padding:0;border:0;}
+.ls-sheet .phys-fq-rpart legend{font:800 var(--ls-s) var(--font-ui);color:var(--muted);padding:0;margin-bottom:6px;}
+.ls-sheet .phys-js-how{margin:0;padding:14px 0 0;border:0;border-top:1px solid var(--line-soft);background:none;box-shadow:none;border-radius:0;}
+.ls-sheet .phys-js-how summary{color:var(--ink);pointer-events:none;min-height:0;}
+.ls-sheet .phys-js-check[hidden]{display:none;}
+.ls-root .phys-ls-jlist{display:flex;flex-direction:column;gap:10px;}
+.ls-root .phys-ls-jlist .phys-fq-card{border:0;box-shadow:inset 0 0 0 1.5px var(--line);border-radius:16px;}
+.ls-root .phys-ls-jlist .phys-fq-card-k{font:800 var(--ls-s) var(--font-ui);text-transform:none;letter-spacing:0;}
+.ls-root .phys-ls-jlist #phys-js-count{margin:0;}
+.ls-root .phys-fq-filters{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;}
+.ls-root .phys-fq-filters .phys-pr-field{display:flex;flex-direction:column;gap:4px;font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+.ls-root .phys-fq-filters select{width:100%;min-height:48px;padding:0 12px;border:0;border-radius:14px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--ink);font:700 var(--ls-m) var(--font-ui);}
+
+/* Reference pages on the calm layout (pages/calm-ref.js): the slim bar,
+   then the page in calm type (13 / 16 / 22), no caps kickers, no hero. */
+body.phys-calm-ref main.phys-entry{max-width:760px;margin:0 auto;padding:4px 16px 32px;font:600 16px/1.6 var(--font-ui);color:var(--ink);}
+body.phys-calm-ref main.phys-entry .phys-ref-lede{margin:8px 0 20px;font:700 22px/1.35 var(--font-ui);letter-spacing:-.01em;color:var(--ink);}
+body.phys-calm-ref main.phys-entry .xsection{margin:0;padding:22px 0 0;border:0;background:none;box-shadow:none;border-radius:0;}
+body.phys-calm-ref main.phys-entry .xsection + .xsection{margin-top:22px;border-top:1px solid var(--line-soft);}
+body.phys-calm-ref main.phys-entry h2{margin:0 0 10px;font:900 22px/1.25 var(--font-ui);letter-spacing:-.01em;text-transform:none;color:var(--ink);}
+body.phys-calm-ref main.phys-entry p,body.phys-calm-ref main.phys-entry li{font-size:16px;line-height:1.6;}
+body.phys-calm-ref main.phys-entry .phys-small{font-size:13px;}
+body.phys-calm-ref main.phys-entry table{font-size:13px;}
+body.phys-calm-ref main.phys-entry th{text-transform:none;letter-spacing:0;}
+body.phys-calm-ref main.phys-entry .phys-ex-band-warn{border-radius:16px;}
+body.phys-calm-ref .phys-foot{max-width:760px;margin:0 auto;padding:0 16px 24px;}
+@media (min-width:1000px){ body.phys-calm-ref main.phys-entry{padding-top:8px;} }
+.ls-root .phys-ls-jcard .phys-js-prompt{color:var(--ink);} .ls-root .phys-ls-jcard .phys-stim{box-shadow:none;}

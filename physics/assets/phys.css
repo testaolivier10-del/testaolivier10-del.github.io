@@ -1,0 +1,407 @@
+/* AP® Physics 1 course styles, on top of assets/theme.css. Forked from the AP® Chemistry
+   stylesheet (itself from A&P's) (docs/apphys-spec.md decision 1): the same visual language
+   tokens (Okabe–Ito based, colorblind-safe, light and dark), page shell,
+   stepped lesson, textbook frame and question styles, renamed phys-*, plus
+   what this course adds: stimulus panels and sets, numeric answers, charts,
+   unit pages, the printable unit sheet and the course home.
+
+   The course color: amber on every page (body.phys), the same values as
+   body[data-course="apphys"] in assets/theme.css (docs/apphys-spec.md
+   decision 6): --cink on --ctint 7.3:1 light, about 10:1 dark (dark tint
+   kept low, A&P decision 81). */
+body.phys{--ctint:#FBEED5;--cink:#734200;}
+:root[data-theme="dark"] body.phys{--ctint:rgba(235,165,50,0.10);--cink:#F5CF8A;}
+
+/* ============================================================ 1. Visual language */
+:root{
+  --phys-o2:#D55E00;        /* oxygenated blood: vermillion */
+  --phys-o2-fill:#F6D2BD;
+  --phys-deo2:#0072B2;      /* deoxygenated blood: blue */
+  --phys-deo2-fill:#C3DDF0;
+  --phys-symp:#CC79A7;      /* sympathetic: reddish purple */
+  --phys-symp-fill:#F1DAE7;
+  --phys-para:#009E73;      /* parasympathetic: bluish green */
+  --phys-para-fill:#C4E8DC;
+  --phys-aff:#E69F00;       /* afferent (toward the control center): orange */
+  --phys-aff-fill:#F8E3B8;
+  --phys-eff:#56B4E9;       /* efferent (away from it): sky blue */
+  --phys-eff-fill:#D2EAF8;
+  --phys-hi:#8E3B2E;        /* the high side of a gradient */
+  --phys-hi-fill:#EFD5CF;
+  --phys-lo:#5B6B8C;        /* the low side */
+  --phys-lo-fill:#E1E6F0;
+  --phys-memb:#6B5E3C;      /* membranes */
+  --phys-shape:#5D6B69;     /* neutral structure */
+  --phys-shape-fill:#EEF2F1;
+  --phys-causes:#1F2A28;    /* "causes" arrows */
+  --phys-flows:#1F2A28;     /* "flows to" arrows */
+  --phys-mask:#FFF7E6;
+}
+:root[data-theme="dark"]{
+  --phys-o2:#FF9A5C;  --phys-o2-fill:rgba(213,94,0,0.28);
+  --phys-deo2:#6CB8EC; --phys-deo2-fill:rgba(0,114,178,0.30);
+  --phys-symp:#E7A5CA; --phys-symp-fill:rgba(204,121,167,0.26);
+  --phys-para:#4FD1AA; --phys-para-fill:rgba(0,158,115,0.26);
+  --phys-aff:#F3C04F;  --phys-aff-fill:rgba(230,159,0,0.26);
+  --phys-eff:#8FD0F5;  --phys-eff-fill:rgba(86,180,233,0.24);
+  --phys-hi:#F0A08F;   --phys-hi-fill:rgba(142,59,46,0.34);
+  --phys-lo:#AEBBD6;   --phys-lo-fill:rgba(91,107,140,0.30);
+  --phys-memb:#D8C58F;
+  --phys-shape:#B7C4C1; --phys-shape-fill:rgba(183,196,193,0.10);
+  --phys-causes:#E6EEEC; --phys-flows:#E6EEEC;
+  --phys-mask:#2B3432;
+}
+
+/* SVG vocabulary. Fill classes color a shape; add .line for a stroke only. */
+.phys-fig svg, svg.phys-svg{max-width:100%;height:auto;overflow:visible;}
+/* Inline stimulus drawings (particle views) carry a fixed width; they shrink to the column on a phone. */
+.phys-stim-html svg{max-width:100%;height:auto;}
+.phys-fig .shape{fill:var(--phys-shape-fill);stroke:var(--phys-shape);stroke-width:2;}
+.phys-fig .o2{fill:var(--phys-o2-fill);stroke:var(--phys-o2);stroke-width:2;}
+.phys-fig .deo2{fill:var(--phys-deo2-fill);stroke:var(--phys-deo2);stroke-width:2;}
+.phys-fig .symp{fill:var(--phys-symp-fill);stroke:var(--phys-symp);stroke-width:2;}
+.phys-fig .para{fill:var(--phys-para-fill);stroke:var(--phys-para);stroke-width:2;}
+.phys-fig .aff{fill:var(--phys-aff-fill);stroke:var(--phys-aff);stroke-width:2;}
+.phys-fig .eff{fill:var(--phys-eff-fill);stroke:var(--phys-eff);stroke-width:2;}
+.phys-fig .hi{fill:var(--phys-hi-fill);stroke:var(--phys-hi);stroke-width:2;}
+.phys-fig .lo{fill:var(--phys-lo-fill);stroke:var(--phys-lo);stroke-width:2;}
+.phys-fig .memb{fill:none;stroke:var(--phys-memb);stroke-width:3;}
+.phys-fig .accent{fill:var(--ctint);stroke:var(--cink);stroke-width:2;}
+.phys-fig .line{fill:none !important;}
+.phys-fig .o2.line{stroke:var(--phys-o2);} .phys-fig .deo2.line{stroke:var(--phys-deo2);}
+/* The two arrow kinds (spec section 6). "causes": solid, filled head.
+   "flows": dashed, open head. The heads are markers defined once per page by
+   phys-core.js, so an author only writes class="causes" or class="flows". */
+.phys-fig .causes{fill:none;stroke:var(--phys-causes);stroke-width:2.5;marker-end:url(#phys-head-causes);}
+.phys-fig .flows{fill:none;stroke:var(--phys-flows);stroke-width:2.2;stroke-dasharray:7 5;marker-end:url(#phys-head-flows);}
+.phys-fig .o2.flows{stroke:var(--phys-o2);} .phys-fig .deo2.flows{stroke:var(--phys-deo2);}
+.phys-fig .lbl{fill:var(--ink);font:800 15px var(--font-ui);}
+.phys-fig .lbl-sm{fill:var(--muted);font:700 12.5px var(--font-ui);}
+.phys-fig text{fill:var(--ink);font-family:var(--font-ui);}
+#phys-defs{position:absolute;width:0;height:0;overflow:hidden;}
+
+/* ============================================================ 2. Page shell */
+.phys-crumb{font:800 12.5px var(--font-ui);color:var(--muted);margin:18px 0 0;}
+.phys-crumb a{color:var(--muted);text-decoration:none;}
+.phys-crumb a:hover{color:var(--ink);text-decoration:underline;}
+.phys-hero{padding-top:22px;}
+.phys-hero h1{max-width:24ch;}
+.phys-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;}
+.phys-tag{display:inline-block;padding:4px 11px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12.5px var(--font-ui);text-decoration:none;}
+a.phys-tag:hover{text-decoration:underline;}
+.phys-part{margin:0 0 30px;max-width:760px;}
+.phys-part h2{display:flex;align-items:baseline;gap:10px;font-size:21px;margin:0 0 12px;}
+.phys-part p,.phys-prose p,.phys-prose li{font-weight:600;line-height:1.7;}
+.phys-hint{color:var(--muted);font-size:14px;}
+.phys-small{color:var(--muted);font:700 13px var(--font-ui);}
+.phys-unbuilt{color:var(--muted);}
+.phys-links{margin:0;padding-left:20px;}
+.phys-links li{margin:4px 0;}
+.phys-plain{margin:6px 0 14px;padding-left:20px;}
+.phys-hook{background:var(--ctint);border-radius:var(--radius, 18px);padding:18px 22px;}
+
+/* The causal chain: numbered cause -> effect steps. */
+.phys-chain{list-style:none;counter-reset:step;margin:0;padding:0;}
+.phys-chain li{counter-increment:step;display:grid;grid-template-columns:32px 1fr;column-gap:12px;row-gap:4px;padding:12px 0;border-bottom:1px solid var(--line, rgba(0,0,0,0.08));}
+.phys-chain li::before{content:counter(step);grid-row:1 / span 3;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--cink);color:var(--paper);font:900 13px var(--font-ui);}
+.phys-chain .phys-arrow{color:var(--cink);font-weight:900;}
+.phys-chain .phys-cause{font-weight:700;}
+.phys-ideas{margin:0;padding-left:20px;}.phys-ideas li{margin:0 0 10px;}
+.phys-core-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.phys-core{display:inline-block;padding:6px 13px;border-radius:12px;background:var(--white);box-shadow:var(--lift-sm);font:800 13.5px var(--font-ui);color:var(--ink);text-decoration:none;}
+.phys-misconception{border-left:4px solid var(--warn, #C98A1A);padding-left:16px;}
+.phys-wrong b{color:var(--bad-text, #B3261E);}
+.phys-right b{color:var(--good-text, #1B7B5B);}
+
+/* Figures and the lesson figure panel. */
+.phys-figure{margin:18px 0 24px;}
+.phys-figure figcaption{font:600 13.5px/1.5 var(--font-ui);color:var(--muted);margin-top:8px;}
+.phys-credit{display:block;font-size:12px;margin-top:3px;}
+.phys-figimg{position:relative;display:inline-block;max-width:100%;}
+.phys-figimg img{display:block;max-width:100%;height:auto;border-radius:10px;background:#fff;}
+/* Dark mode: the diagrams are SVG files drawn on white in the course palette
+   (the Okabe-Ito hues above), shown as <img>, so page tokens cannot reach
+   inside them. Inverting lightness and turning the hue back round keeps every
+   hue in place while light fills go dark and dark strokes and labels go light,
+   the same swap the A&P figures make with their dark tokens; the white ground
+   lands near the dark card surface. Follows the site's theme toggle. */
+:root[data-theme="dark"] .phys-figimg img{filter:invert(.88) hue-rotate(180deg) saturate(1.25) brightness(1.05);}
+@media print{:root[data-theme="dark"] .phys-figimg img{filter:none;}}
+.phys-mask{position:absolute;border:0;padding:0;margin:0;background:transparent;cursor:default;color:transparent;border-radius:4px;}
+.phys-mask span{position:absolute;left:-9999px;}
+.phys-labels-hidden .phys-mask{background:var(--phys-mask);outline:2px solid var(--cink);cursor:pointer;}
+.phys-labels-hidden .phys-mask:focus-visible{outline:3px solid var(--accent);}
+.phys-labels-hidden .phys-mask.revealed{background:transparent;outline:2px dashed var(--good, #1B7B5B);}
+.phys-toggle-labels{margin-top:4px;}
+
+/* Prose (notes pages). */
+.phys-prose{max-width:760px;}
+.phys-prose h2{font-size:23px;margin:34px 0 10px;}
+.phys-prose h3{font-size:18px;margin:24px 0 8px;}
+.phys-prose table.compare{width:100%;border-collapse:collapse;margin:18px 0;font:600 14.5px/1.5 var(--font-ui);display:block;overflow-x:auto;}
+.phys-prose table.compare th,.phys-prose table.compare td{padding:9px 11px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;vertical-align:top;}
+.phys-prose table.compare thead th{background:var(--ctint);color:var(--cink);}
+.phys-prose table.compare tbody th{font-weight:800;}
+.phys-prose .worked{background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:14px 18px;margin:18px 0;}
+.phys-prose .worked::before{content:'Worked example';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:6px;}
+.going-further,.phys-preview,.for-your-exam{border-radius:14px;padding:12px 16px;margin:18px 0;}
+.going-further{background:var(--paper-2, rgba(0,0,0,0.035));}
+.going-further::before{content:'Going further';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.phys-preview{border:2px dashed var(--cink);}
+.phys-preview::before{content:'Preview';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:4px;}
+.for-your-exam{background:var(--ctint);}
+.phys-disclaimer{color:var(--muted);font:600 12.5px/1.5 var(--font-ui);max-width:760px;}
+.phys-foot{padding:26px 0 40px;}
+.phys-gate{margin:0 0 18px;}.phys-gate .premium-card{margin:0;}.phys-gate-notes{margin:8px 0 0;font:700 14px/1.5 var(--font-ui);}
+.phys-accuracy-note{color:var(--muted);font:600 13px/1.5 var(--font-ui);max-width:760px;}
+.phys-beta{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--cink);color:var(--paper);font:900 10.5px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;vertical-align:middle;}
+.phys-q-credit{margin:4px 0 0;color:var(--muted);}
+
+/* ============================================================ Lesson layout (redesign)
+   A rail with the lesson's parts, a coral title card joined to a white card
+   and chip rows under it. Without JS every part shows in one scroll and the
+   rail links jump to them; phys-lesson.js adds .phys-stepped (one part a step). */
+.phys-ls{display:grid;grid-template-columns:250px minmax(0,1fr);gap:0 clamp(24px,4vw,54px);align-items:start;}
+.phys-ls-rail{position:sticky;top:calc(var(--site-header-h,112px) + 18px);display:flex;flex-direction:column;gap:14px;padding:22px 0 26px;max-height:calc(100vh - var(--site-header-h,112px) - 36px);overflow-y:auto;}
+.phys-ls-main{min-width:0;}
+.phys-ls-k{font:900 12px/1.5 var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0;}
+.phys-ls-links{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0;}
+.phys-ls-links a{display:inline-flex;align-items:center;gap:6px;font:800 13.5px var(--font-ui);color:var(--ink);text-decoration:none;}
+.phys-ls-links a:hover,.phys-ls-chips a:hover{color:var(--cink);}
+.phys-ls-prog{display:flex;align-items:center;gap:12px;}
+.phys-ls-prog[hidden]{display:none;}
+.phys-ls-track{flex:1;height:8px;border-radius:999px;background:var(--track);overflow:hidden;}
+.phys-ls-fill{width:0;height:100%;background:var(--cink);border-radius:999px;transition:width .25s ease;}
+.phys-ls-count{font:900 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
+.phys-ls-steps{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:2px;}
+.phys-ls-steps a{display:flex;align-items:flex-start;gap:10px;padding:7px 8px;border-radius:9px;font:800 12.5px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;}
+.phys-ls-steps a:hover{background:var(--hover-tint);}
+.phys-ls-steps .n{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);font:900 11px var(--font-mono);margin-top:-2px;}
+.phys-ls-steps .done a{color:var(--ink);}
+.phys-ls-steps .current .n{background:var(--cink);color:var(--paper);}
+.phys-ls-steps .done:not(.current) .n{background:var(--good-text);color:var(--white);font-size:0;}
+.phys-ls-steps .done:not(.current) .n::after{content:"\2713";font:900 12px var(--font-ui);}
+.phys-ls-hint{font:700 13px var(--font-ui);color:var(--muted);margin-left:auto;text-align:right;}
+.phys-ls-hint:empty{display:none;}
+.phys-ls-hint + .phys-ls-go{margin-left:0;}
+.phys-ls-go:disabled{opacity:.5;cursor:not-allowed;filter:none;}
+.phys-free-first{margin:16px 0;padding:18px 20px;border-radius:var(--radius-lg);background:var(--white);border:var(--bw,2px) solid var(--line);}
+.phys-free-first p{margin:0 0 12px;font-weight:700;color:var(--muted);}
+.phys-ls-steps .current a{background:var(--ctint);color:var(--cink);}
+.phys-ls-hero{margin-top:16px;padding:clamp(24px,4vw,44px) clamp(24px,4vw,44px) 26px;background:var(--ctint);border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
+.phys-ls-hero .eyebrow{color:var(--cink);}
+.phys-ls-hero .phys-tag{background:var(--white);}
+.phys-ls-hero h1{margin:0 0 6px;max-width:20ch;}
+.phys-ls-hero .lede{margin:0 0 14px;max-width:52ch;color:var(--muted);font-weight:700;}
+.phys-ls-card{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:var(--radius-lg);margin-top:-2px;padding:clamp(20px,4vw,32px);box-shadow:var(--lift-lg);}
+.phys-ls [id]{scroll-margin-top:calc(var(--site-header-h,112px) + 12px);}
+.phys-stepped .phys-ls-card{min-height:360px;display:flex;flex-direction:column;}
+.phys-ls-card .phys-part{max-width:72ch;}
+.phys-ls-card #figure{max-width:none;}
+.phys-stepped .phys-step{display:none;flex:1;margin:0;}
+.phys-stepped .phys-step.is-on{display:block;}
+.phys-step .phys-step-k{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);margin:0 0 6px;}
+.phys-step h2{font:900 clamp(19px,3vw,24px) var(--font-ui);margin:0 0 14px;}
+.phys-step h2:focus{outline:none;}
+.phys-step-body > :first-child{margin-top:0;}
+.phys-step-body > :last-child{margin-bottom:0;}
+.phys-ls-actions{display:flex;align-items:center;gap:12px;margin-top:26px;}
+.phys-ls-actions[hidden],.phys-ls-actions [hidden]{display:none;}
+.phys-ls-back{font:800 14.5px var(--font-ui);color:var(--muted);background:none;border:0;padding:10px 6px;cursor:pointer;}
+.phys-ls-back:hover{color:var(--ink);}
+.phys-ls-go{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font:900 15px var(--font-ui);color:var(--paper);background:var(--cink);padding:13px 24px;border-radius:var(--radius);border:0;cursor:pointer;text-decoration:none;box-shadow:var(--lift-sm);}
+.phys-ls-go:hover{filter:brightness(1.07);color:var(--paper);}
+.phys-ls-related{margin:22px 0 30px;display:flex;flex-direction:column;gap:10px;}
+.phys-ls-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;}
+.phys-ls-label{font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:74px;}
+.phys-ls-chips{display:flex;flex-wrap:wrap;gap:6px;flex:1;min-width:0;}
+.phys-ls-chips a,.phys-ls-chips .phys-unbuilt,.phys-ls-chips summary{display:inline-block;color:var(--ink);background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:var(--radius-sm);padding:6px 11px;font:700 12.5px var(--font-ui);text-decoration:none;}
+.phys-ls-chips details{display:contents;}
+.phys-ls-chips summary{cursor:pointer;color:var(--cink);list-style:none;}
+@media (prefers-reduced-motion:no-preference){.phys-stepped .phys-step.is-on{animation:phys-step-in .25s ease both;}}
+@keyframes phys-step-in{from{opacity:0;transform:translateY(6px);}}
+@media (max-width:900px){
+  .phys-ls{display:block;}
+  .phys-ls-rail{position:static;max-height:none;overflow:visible;padding:14px 0 0;gap:10px;}
+  .phys-ls-links{flex-direction:row;flex-wrap:wrap;gap:6px 18px;}
+  .phys-ls-steps{flex-direction:row;flex-wrap:wrap;gap:6px;}
+  .phys-ls-steps a{padding:5px 9px 5px 5px;background:var(--white);box-shadow:var(--lift-sm);}
+  .phys-stepped .phys-ls-steps .t{display:none;}
+  .phys-stepped .phys-ls-steps .current .t{display:inline;}
+}
+@media (max-width:560px){.phys-ls-label{min-width:0;flex-basis:100%;}}
+/* No JavaScript: the lesson reads as one scroll, every part shown, no step
+   controls (the stepped classes are in the markup for the first paint). */
+@media (scripting: none){.phys-stepped .phys-step{display:block;margin:0 0 28px;}.phys-ls-prog,.phys-ls-actions{display:none;}.phys-stepped .phys-ls-steps .t{display:inline;}}
+@media print{.phys-ls{display:block;}.phys-ls-rail,.phys-ls-actions{display:none !important;}.phys-stepped .phys-step{display:block;}}
+
+/* Glossary terms in running text: underlined, with a definition on hover,
+   focus or tap (phys-glossary.js). */
+.gl{text-decoration:underline dotted;text-decoration-thickness:1.5px;text-underline-offset:3px;cursor:help;color:inherit;}
+a.gl{cursor:pointer;}
+
+/* Questions. */
+.phys-qs{display:grid;gap:14px;}
+.phys-q{background:var(--white);box-shadow:var(--lift-sm);border-radius:16px;padding:16px 18px;}
+.phys-q-stem{margin:0 0 10px;font-weight:700;}
+.phys-q-n{color:var(--cink);font-weight:900;}
+.phys-opts{margin:0;padding-left:20px;}
+.phys-opt-btns{display:grid;gap:8px;}
+.phys-opt{display:block;width:100%;text-align:left;padding:11px 14px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 15px/1.45 var(--font-ui);cursor:pointer;}
+.phys-opt:hover:not(:disabled):not([aria-disabled="true"]){border-color:var(--cink);}
+.phys-opt[aria-disabled="true"]{cursor:default;}
+.phys-opt[aria-checked="true"]{border-color:var(--cink);background:var(--ctint);}
+.phys-opt.is-right{border-color:var(--good, #1B7B5B);background:var(--good-tint, rgba(27,123,91,0.1));}
+.phys-opt.is-wrong{border-color:var(--bad, #B3261E);background:var(--bad-tint, rgba(179,38,30,0.08));}
+.phys-opt .phys-opt-why{display:block;font-weight:600;font-size:13.5px;color:var(--muted);margin-top:4px;}
+.phys-q-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;}
+.phys-q-feedback{margin-top:12px;font-weight:600;line-height:1.6;}
+.phys-q-feedback .phys-verdict{font-weight:900;}
+.phys-q-feedback .ok{color:var(--good-text, #1B7B5B);} .phys-q-feedback .no{color:var(--bad-text, #B3261E);}
+.phys-order{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.phys-order li{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);}
+.phys-order li.pos-ok{border-color:var(--good, #1B7B5B);} .phys-order li.pos-no{border-color:var(--bad, #B3261E);}
+.phys-order .phys-order-text{flex:1;font-weight:700;}
+.phys-order button{min-width:34px;min-height:34px;border-radius:9px;border:0;background:var(--ctint);color:var(--cink);font:900 15px var(--font-ui);cursor:pointer;}
+.phys-predict{width:100%;border-collapse:collapse;}
+.phys-predict th,.phys-predict td{padding:8px 6px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;}
+.phys-predict .phys-dir{display:flex;gap:6px;flex-wrap:wrap;}
+.phys-predict .phys-dir button{padding:6px 12px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);font:800 13.5px var(--font-ui);color:var(--ink);cursor:pointer;}
+.phys-predict .phys-dir button[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);}
+.phys-predict tr.var-ok th{color:var(--good-text, #1B7B5B);} .phys-predict tr.var-no th{color:var(--bad-text, #B3261E);}
+.phys-predict .phys-var-why{font-weight:600;font-size:13.5px;color:var(--muted);}
+.phys-q-key summary{cursor:pointer;font-weight:800;color:var(--cink);margin-top:8px;}
+.js .phys-q-key{display:none;}
+
+/* Mastery text, study cards and filters. */
+.phys-mastery{font:900 12.5px var(--font-ui);color:var(--cink);}
+.phys-cards{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));}
+.phys-cards li a{display:flex;flex-direction:column;gap:4px;height:100%;padding:15px 17px;border-radius:16px;background:var(--white);box-shadow:var(--lift-sm);text-decoration:none;color:var(--ink);}
+.phys-cards li a span{color:var(--muted);font:600 13.5px/1.45 var(--font-ui);}
+.phys-filter{display:inline-flex;align-items:center;gap:8px;font:800 13.5px var(--font-ui);margin-top:6px;}
+.phys-filter input,.phys-filter select{padding:8px 11px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 14px var(--font-ui);}
+
+
+/* ============ Unit, notes and Learn pages
+   The textbook layout is shared by every course: assets/course/book.css
+   (.bk-*), loaded by those pages after base.css. Only Chem specifics stay. */
+
+@media (max-width:560px){
+  .phys-part h2{font-size:19px;}
+}
+@media print{
+  .phys-toggle-labels,.phys-q-actions,#site-header,.course-nav{display:none !important;}
+  .js .phys-q-key{display:block;}
+}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;}
+.phys-cover{position:absolute;background:#fff;border-radius:3px;pointer-events:none;}
+.phys-fix{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+.phys-pin{position:absolute;background:#fff;border:3px solid var(--accent,#A33B26);border-radius:4px;box-shadow:0 0 0 3px rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font:800 14px var(--font-ui,system-ui);color:var(--accent,#A33B26);pointer-events:none;}
+.phys-report-page{margin:18px 0 0;color:var(--muted);font:600 13px/1.5 var(--font-ui);}
+
+/* Learn: the book column keeps the footer below the fold while the chosen
+   chapter's topics load in order (phys-book.js), so nothing on screen moves. */
+#phys-book{min-height:100vh;}
+
+/* ============================================================ AP Physics 1 additions */
+/* 44 px touch targets on every control a student answers with. */
+.phys-opt,.phys-ls-go,.phys-ls-back,.bk-btn,.phys-check,.phys-dir button,.phys-order button,.phys-num input{min-height:44px;}
+.phys-order button{min-width:44px;}
+.phys-foot .report-btn,.phys-report-page .report-btn{min-height:44px;}
+.phys-disclaimer{color:var(--muted);font:600 12.5px/1.5 var(--font-ui);max-width:760px;margin:8px 0 0;}
+.phys-review-note{font:700 13.5px/1.5 var(--font-ui);color:var(--muted);margin:14px 0 0;}
+.phys-soon{padding:18px 20px;border-radius:var(--radius-lg,18px);background:var(--white);border:var(--bw,2px) solid var(--line);font-weight:700;}
+.phys-hero{padding-top:22px;}
+
+/* Answer marks: a word as well as a colour (A&P decision 81). */
+.phys-mark{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;font:900 11.5px var(--font-ui);vertical-align:middle;}
+.phys-mark.ok{background:var(--good-text,#1B7B5B);color:var(--white,#fff);}
+.phys-mark.no{background:var(--bad-text,#B3261E);color:var(--white,#fff);}
+.phys-mark.miss{background:var(--amber-text,#8A5A00);color:var(--white,#fff);}
+.phys-mark.ok::before{content:"\2713  ";}.phys-mark.no::before{content:"\2715  ";}
+.phys-dir button[aria-checked="true"]{border-color:var(--cink);background:var(--ctint);}
+.phys-predict .phys-dir{display:flex;gap:6px;flex-wrap:wrap;}
+.phys-predict .phys-dir button{padding:6px 12px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);font:800 13.5px var(--font-ui);color:var(--ink);cursor:pointer;}
+
+/* Stimulus sets: one panel, then its 4-5 questions, held together. */
+.phys-set{border:var(--bw,2px) solid var(--line);border-radius:18px;padding:14px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px;background:var(--paper);}
+.phys-set>*,.phys-qs>*{min-width:0;}
+.phys-qs{grid-template-columns:minmax(0,1fr);}
+.phys-stim{background:var(--white);border-radius:14px;padding:16px 18px;box-shadow:var(--lift-sm);}
+.phys-stim-k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--cink);margin:0 0 4px;}
+.phys-stim h3{font:900 17px var(--font-ui);margin:0 0 8px;}
+.phys-stim-text p{font-weight:600;line-height:1.6;margin:0 0 10px;}
+table.phys-data{width:100%;border-collapse:collapse;font:600 14px/1.45 var(--font-ui);}
+table.phys-data caption{text-align:left;font:800 13px var(--font-ui);color:var(--muted);padding:0 0 6px;}
+table.phys-data th,table.phys-data td{padding:8px 10px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;vertical-align:top;}
+table.phys-data thead th{background:var(--ctint);color:var(--cink);}
+table.phys-data td{font-variant-numeric:tabular-nums;}
+
+/* Charts drawn by the generator (scripts/lib/apphys-build.mjs chartSvg).
+   Series differ by colour AND marker shape, in light and dark. */
+:root{--phys-s1:#0072B2;--phys-s2:#D55E00;--phys-s3:#009E73;--phys-s4:#CC79A7;--phys-s5:#5E5E5E;}
+:root[data-theme="dark"]{--phys-s1:#6CB8EC;--phys-s2:#FF9A5C;--phys-s3:#4FD1AA;--phys-s4:#E7A5CA;--phys-s5:#C9C9C9;}
+.phys-chart{margin:4px 0;}
+.phys-svg{width:100%;max-width:560px;height:auto;display:block;}
+.phys-svg .axis{stroke:var(--ink);stroke-width:1.5;}
+.phys-svg .grid{stroke:var(--line, rgba(0,0,0,0.1));stroke-width:1;}
+.phys-svg .tick{fill:var(--muted);font:700 12px var(--font-ui);}
+.phys-svg .lbl{fill:var(--ink);font:800 13px var(--font-ui);}
+.phys-svg .series{fill:none;stroke-width:2.5;}
+.phys-svg .err{stroke:var(--ink);stroke-width:1.5;fill:none;}
+.phys-svg .s1{stroke:var(--phys-s1);} .phys-svg .s2{stroke:var(--phys-s2);} .phys-svg .s3{stroke:var(--phys-s3);} .phys-svg .s4{stroke:var(--phys-s4);} .phys-svg .s5{stroke:var(--phys-s5);} .phys-svg .series.s5{stroke-dasharray:7 4;}
+.phys-svg .pt.s1,.phys-svg .bar.s1{fill:var(--phys-s1);} .phys-svg .pt.s2,.phys-svg .bar.s2{fill:var(--phys-s2);} .phys-svg .pt.s3,.phys-svg .bar.s3{fill:var(--phys-s3);} .phys-svg .pt.s4,.phys-svg .bar.s4{fill:var(--phys-s4);} .phys-svg .pt.s5,.phys-svg .bar.s5{fill:var(--phys-s5);}
+.phys-legend{display:flex;gap:16px;flex-wrap:wrap;margin:6px 0 0;font:800 13px var(--font-ui);}
+.phys-legend i{display:inline-block;width:18px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle;}
+.phys-legend .s1 i{background:var(--phys-s1);} .phys-legend .s2 i{background:var(--phys-s2);} .phys-legend .s3 i{background:var(--phys-s3);} .phys-legend .s4 i{background:var(--phys-s4);} .phys-legend .s5 i{background:var(--phys-s5);}
+.phys-chart-data summary{cursor:pointer;font:800 13px var(--font-ui);color:var(--cink);margin-top:6px;min-height:32px;}
+
+/* Numeric answers. */
+.phys-num{display:flex;flex-direction:column;gap:6px;}
+.phys-num label{font:800 14px var(--font-ui);}
+.phys-num-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.phys-num input{width:12ch;padding:8px 12px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.2));background:var(--paper);color:var(--ink);font:800 17px var(--font-mono, monospace);}
+.phys-num input:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.phys-num-unit{font:800 15px var(--font-ui);color:var(--muted);}
+.phys-num-ulabel{font:800 14px var(--font-ui);margin-left:6px;}
+.phys-num input.phys-num-u{width:10ch;}
+/* Value, units and significant figures, each with its own mark. */
+.phys-num-parts{list-style:none;margin:8px 0 4px;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px;font:700 14px var(--font-ui);}
+.phys-num-parts li{display:flex;align-items:center;gap:6px;}
+.phys-num-notes{margin:6px 0;padding-left:20px;font-size:14.5px;line-height:1.5;}
+.phys-num-notes li{margin:2px 0;}
+
+
+
+/* Glossary page: its styles are inlined in physics/glossary.html (build-apphys.mjs, GLOSSARY_CSS). */
+
+/* The printable unit sheet: one page on screen, compact on paper. */
+.phys-sheet-head h1{margin:6px 0 10px;}
+.phys-sheet-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin:10px 0 24px;}
+.phys-sheet-topic{background:var(--white);border-radius:14px;padding:14px 16px;box-shadow:var(--lift-sm);font:600 13.5px/1.5 var(--font-ui);}
+.phys-sheet-topic h2{font:900 16px var(--font-ui);margin:0 0 6px;}
+.phys-sheet-topic h2 span{color:var(--cink);}
+.phys-sheet-topic ul{margin:6px 0;padding-left:18px;}
+.phys-sheet-chain{color:var(--muted);}
+.phys-sheet-terms{margin:6px 0 0;display:grid;gap:4px;}
+.phys-sheet-terms dt{display:inline;font-weight:900;}
+.phys-sheet-terms dt::after{content:": ";}
+.phys-sheet-terms dd{display:inline;margin:0;}
+@media print{
+  body.phys{background:#fff;color:#000;}
+  .phys-foot .privacy-link,.phys-crumb,.phys-nav-ref .btn-press,.report-btn{display:none !important;}
+  .phys-sheet-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .phys-sheet-topic{box-shadow:none;border:1px solid #999;padding:8px 10px;font-size:10.5pt;break-inside:avoid;}
+  .phys-sheet-head h1{font-size:16pt;}
+  .phys-set{border-color:#999;}
+}
+@media (max-width:560px){.phys-sheet-grid{grid-template-columns:minmax(0,1fr);}.phys-set{padding:10px;}}
+
+/* Share bar: Share to Google Classroom, Copy link, Print (lessons, notes,
+   unit sheets, FRQs; scripts/build-apphys.mjs shareBar). Fixed height, so
+   nothing shifts when the copy label changes. */
+.phys-share{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px;}
+.phys-share-btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--white);color:var(--cink);font:800 13.5px var(--font-ui);text-decoration:none;cursor:pointer;white-space:nowrap;min-width:7.5em;justify-content:center;}
+.phys-share-btn:hover{border-color:var(--cink);color:var(--cink);}
+.phys-share-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+@media print{.phys-share{display:none !important;}}

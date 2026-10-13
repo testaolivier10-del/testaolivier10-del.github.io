@@ -1,0 +1,23 @@
+{
+ "point-object": {
+  "def": "A model of an object as a single point with a position but no size, shape or inner parts."
+ },
+ "time-interval": {
+  "def": "The time between two moments, Δt = final time minus initial time."
+ },
+ "average-velocity": {
+  "def": "Displacement divided by the time interval: v = Δx/Δt, in m/s."
+ },
+ "acceleration": {
+  "def": "The rate at which velocity changes, in m/s²; any change in speed or direction."
+ },
+ "average-acceleration": {
+  "def": "Change in velocity divided by the time interval: a = Δv/Δt."
+ },
+ "instantaneous-velocity": {
+  "def": "The velocity at one instant: the average velocity over a very short interval."
+ },
+ "instantaneous-acceleration": {
+  "def": "The acceleration at one instant: the average acceleration over a very short interval."
+ }
+}

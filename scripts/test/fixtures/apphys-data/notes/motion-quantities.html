@@ -1,0 +1,25 @@
+<!-- PLACEHOLDER SAMPLE (test fixture only, never published): written to prove the AP Physics 1 engine in Phase 0. Not accuracy-checked. Content authors write the real topic in physics/data/. -->
+<h2>Where it ended up, not how far it went</h2>
+<p>Picture a cart on a straight track. To describe where it is, pick a zero point on the track and a positive direction, say to the right. The cart's position is then a single signed number in meters. When the cart moves, its position changes. That change is its <b>displacement</b>, written Δx, and it is always the final position minus the starting position.</p>
+<p>Displacement is not the same as the distance the cart traveled. If the cart rolls 2.0 m to the right and then 2.0 m back, it traveled 4.0 m, but its displacement is zero because it ended where it began. Distance is a size only; displacement has a size and a direction, and on a line the direction is carried by the sign.</p>
+<p>We model the cart as an <b>object model</b>: a single point that has a position but no size, shape or inner parts. That is enough to describe where it is and how it moves, and it keeps the arithmetic simple.</p>
+<h2>Average velocity</h2>
+<p>How quickly the position changes is the <b>velocity</b>. Over a time interval Δt, the cart's <b>average velocity</b> is its displacement divided by that interval: v = Δx/Δt. The unit is meters per second, m/s. A positive velocity means the cart moves in the positive direction; a negative one means it moves the other way.</p>
+<p>Speed is the size of the velocity. A cart moving left at 0.5 m/s has a velocity of −0.5 m/s and a speed of 0.5 m/s. Average speed over a trip is distance over time, which can differ from the size of the average velocity when the cart turns around.</p>
+<div class="worked">
+<p><b>Worked example.</b> A cart is at 0.20 m at time 0 and at 1.40 m at 3.0 s. What is its average velocity?</p>
+<p>Δx = 1.40 m − 0.20 m = 1.20 m. Δt = 3.0 s − 0 s = 3.0 s.</p>
+<p>v = Δx/Δt = 1.20 m / 3.0 s = 0.40 m/s, to two significant figures, in the positive direction.</p>
+</div>
+<h2>Average acceleration</h2>
+<p>When the velocity itself changes, the cart is accelerating. Its <b>average acceleration</b> is the change in velocity divided by the time interval: a = Δv/Δt, in meters per second per second, m/s². An object accelerates whenever its speed changes or its direction of motion changes.</p>
+<p>The sign of the acceleration compares with the sign of the velocity. If they match, the object speeds up; if they are opposite, it slows down. A car moving forward and braking has a negative acceleration, even though it is still moving forward.</p>
+<div class="worked">
+<p><b>Worked example.</b> A cart's velocity rises from 0.20 m/s to 0.80 m/s in 3.0 s. What is its average acceleration?</p>
+<p>Δv = 0.80 m/s − 0.20 m/s = 0.60 m/s.</p>
+<p>a = Δv/Δt = 0.60 m/s / 3.0 s = 0.20 m/s².</p>
+</div>
+<h2>Shorter and shorter intervals</h2>
+<p>An average describes a whole interval. When the interval is made very short, the average velocity gets closer and closer to the velocity at one instant, the <b>instantaneous velocity</b>, and the same is true for acceleration. A speedometer shows instantaneous speed; a trip computer shows an average.</p>
+<h2>Common slips</h2>
+<p>Three mistakes cost the most points. First, using the final position instead of the change in position: always subtract where the object started. Second, dropping the sign: slowing down while moving forward is a negative acceleration. Third, mixing centimeters and meters: convert to meters before you divide, so the answer comes out in m/s.</p>
