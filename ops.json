@@ -3,6 +3,10 @@
   "notes": [
     "2026-10-09 daily run: b2-05-ap-pulmonary-artery and b2-04-orgo-markovnikov have no badge or hook, so thumb.py cannot make a Studio thumbnail; skipped until Olivier decides.",
     "2026-10-11 weekly batch: analytics done for TikTok and site; YouTube skipped (Downloads folder not attached to the task, key files unreadable). PART B not built: queue full (14 days covered from 2026-10-12: 8 scheduled + 6 approved).",
-    "2026-10-11 daily run: Studio showed 'Oops, something went wrong' (also with authuser=1), so thumbnails for b3-04-mitral-valve, w1006-01-bag-rate, w1006-02-heart-wiring were skipped; PNGs are already in Downloads\\LevlPrep-posting\\thumbs."
+    "2026-10-11 daily run: Studio showed 'Oops, something went wrong' (also with authuser=1), so thumbnails for b3-04-mitral-valve, w1006-01-bag-rate, w1006-02-heart-wiring were skipped; PNGs are already in Downloads\\LevlPrep-posting\\thumbs.",
+    "2026-10-12 long build: yt-nremt-01-ems-system script written and audited (saved in project as claude/levlprep-pipeline/long/01_nremt_script.py, '# audited, not voiced'). Stopped before voice: Downloads folder not attached to the task, so the ElevenLabs key could not be read. Resume at step 6."
+  ],
+  "pending_reruns": [
+    "LevlPrep long video build"
   ]
 }
