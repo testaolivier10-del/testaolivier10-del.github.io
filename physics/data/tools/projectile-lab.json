@@ -1,0 +1,22 @@
+{
+ "about": "Trainer: projectile lab (Unit 1, motion-2d; Premium). Explore: launch from the ground or a cliff with velocity components at strobe dots, compare two launches on one clock, and a cart launching a ball straight up seen from the ground or from the cart. Test yourself: seeded problems from ApPhysMath.projectileLab.generate; the validator recomputes every key for 300 seeds per context.",
+ "slug": "projectile-lab",
+ "kind": "simulator",
+ "topic": "motion-2d",
+ "g": 9.8,
+ "intro": "<p>Launch a ball from the ground or off a cliff and watch its motion split in two: a steady sideways motion and an up-and-down motion that changes by g every second. Compare two launches to see which lands first, and ride along with a moving cart to see the same throw from two reference frames.</p>",
+ "howItWorksTitle": "The model: two independent motions",
+ "howItWorks": "<ul><li>No air resistance, g = 9.8 m/s² downward (switch to 10 m/s² under More options; both are accepted on the exam).</li><li><b>Components:</b> v<sub>x</sub> = v cos θ, v<sub>y</sub> = v sin θ, with θ measured from the horizontal.</li><li><b>Horizontal:</b> a = 0, so v<sub>x</sub> never changes and x = v<sub>x</sub>t.</li><li><b>Vertical:</b> a = −g, so v<sub>y</sub> = v sin θ − gt and y = h + v<sub>y0</sub>t − ½gt².</li><li><b>Time of flight</b> is when y = 0, from the vertical motion alone; <b>range</b> = v<sub>x</sub> × time of flight; the <b>highest point</b> is where v<sub>y</sub> = 0.</li><li><b>Frames:</b> velocity seen from the ground = velocity seen from the cart + the cart's velocity (one dimension at a time). The acceleration is g down in both frames.</li><li>Positions are computed from these formulas at each moment, not stepped, so the drawing and the numbers always agree. The arrows use one scale per view.</li></ul>",
+ "partTopics": {
+  "vxg": "reference-frames"
+ },
+ "contexts": [
+  { "id": "components", "topic": "motion-2d", "kind": "components", "g": 9.8 },
+  { "id": "flight", "topic": "motion-2d", "kind": "flight", "g": 9.8 },
+  { "id": "range", "topic": "motion-2d", "kind": "range", "g": 9.8 },
+  { "id": "maxh", "topic": "motion-2d", "kind": "maxh", "g": 9.8 },
+  { "id": "first", "topic": "motion-2d", "kind": "first", "g": 9.8 },
+  { "id": "vxconst", "topic": "motion-2d", "kind": "vxconst", "g": 9.8 },
+  { "id": "relative", "topic": "reference-frames", "kind": "relative", "g": 9.8 }
+ ]
+}

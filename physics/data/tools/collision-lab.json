@@ -1,0 +1,15 @@
+{
+ "about": "Trainer: collision lab (Unit 4). Explore runs ApPhysMath.collisionLab.run, a closed-form model of two carts whose bumper is a spring that loads at stiffness k and unloads at k/e² (e = 0 Velcro, 1 elastic): momentum is conserved at every instant, the center of mass moves at constant velocity, and the impulse is the area under the force-time pulse. The validator regenerates 300 problems per context and type and recomputes every key from the problem's own numbers.",
+ "slug": "collision-lab",
+ "kind": "simulator",
+ "topic": "collisions",
+ "intro": "<p>Two carts on a low-friction track. Set their masses and velocities, choose a bumper from sticky Velcro to a bouncy spring, and crash them. The momentum bars and the center of mass show what is always conserved; the kinetic energy bars show what depends on the bumper; the force-time graph shows the impulse as an area. Explosion mode pushes two carts apart from rest.</p>",
+ "howItWorksTitle": "How the lab works",
+ "howItWorks": "<ul><li><b>Momentum</b> p = mv, a vector: right is positive here. With no net external force on the two-cart system, the total momentum is constant, so the center of mass moves at a constant velocity v<sub>cm</sub> = p/M.</li><li><b>Kinetic energy</b> K = ½mv² is conserved only in an elastic collision. In an inelastic one some becomes thermal energy and deformation; when the carts stick (perfectly inelastic) the most is lost.</li><li><b>Impulse</b> J = Δp = the area under the force-time graph = F<sub>avg</sub>Δt. A stiffer bumper gives a shorter, taller spike with the same area.</li><li><b>Momentum or energy?</b> Start a collision from momentum; use energy for motion with no collision (ramps, springs, friction).</li></ul><p>The bumper is a spring that pushes back with F = kx; the motion is computed exactly, not sketched. On the exam you will not be asked for both final velocities of an elastic collision (that needs simultaneous equations); here the lab shows them so you can see the bars.</p>",
+ "contexts": [
+  { "id": "momentum", "topic": "linear-momentum", "types": ["cm"] },
+  { "id": "impulse", "topic": "impulse", "types": ["impulse"] },
+  { "id": "conservation", "topic": "momentum-conservation", "types": ["sticky", "explode", "bars", "cm"] },
+  { "id": "collisions", "topic": "collisions", "types": ["sticky", "onefinal", "ke", "choose", "bars"] }
+ ]
+}

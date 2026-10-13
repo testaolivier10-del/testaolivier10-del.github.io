@@ -215,8 +215,8 @@
    "topic": "rotational-equilibrium",
    "name": "Torque balance",
    "title": "Torque balance trainer",
-   "desc": "Hang masses on a beam or a mobile and balance the torques; lever arms, rotational equilibrium, and a race between shapes with different rotational inertia.",
-   "blurb": "Balance a beam with masses; lever arms, torques and rotational inertia.",
+   "desc": "Hang masses on a meter stick balanced on a fulcrum, move the fulcrum and pull at an angle: live torque bars, lever arms, the stick tipping with alpha = net torque / I, and a race between wheels with different rotational inertia.",
+   "blurb": "Balance a meter stick with masses; lever arms, torques and rotational inertia.",
    "lede": "Hang masses on a beam and make it balance.",
    "studio": true,
    "premium": "tools"

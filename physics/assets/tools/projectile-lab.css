@@ -1,0 +1,117 @@
+/* Projectile lab (physics/assets/tools/projectile-lab.js). OWNED BY THIS TOOL
+   ONLY. Loaded by the tool script itself (next to it), after phys-tools.css.
+   Sky, ground, cliff, cannon, cart, ball, strobe dots and component arrows,
+   light and dark. */
+.pl-card{gap:12px;}
+.pl-stage{position:relative;display:flex;flex-direction:column;min-height:0;}
+.pl-scene{width:100%;height:auto;display:block;touch-action:none;user-select:none;-webkit-user-select:none;border-radius:12px;}
+
+.pl-sky{fill:#EEF5FA;}
+.pl-ground{fill:#D9CDB4;}
+.pl-grass{stroke:#6E9B4F;stroke-width:4;stroke-linecap:round;}
+.pl-cliff{fill:#B9A27E;stroke:#8E7754;stroke-width:1.5;stroke-linejoin:round;}
+.pl-strata{stroke:#8E7754;stroke-opacity:.45;stroke-width:1.2;}
+.pl-tick{stroke:var(--ink);stroke-width:1.2;opacity:.6;}
+.pl-tl{fill:var(--muted);font:700 11px var(--font-ui);font-variant-numeric:tabular-nums;}
+.pl-ruler{stroke:var(--ink);stroke-width:1;opacity:.35;}
+.pl-note{fill:var(--muted);font:700 11.5px var(--font-ui);}
+.pl-mk{fill:var(--ink);font:800 12.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.pl-on-rock{stroke:#F3EBDD;}
+.pl-id{fill:var(--ink);font:900 13px var(--font-ui);}
+.pl-lbl{pointer-events:none;}
+
+.pl-barrel rect{fill:#3B4348;}
+.pl-barrel .pl-muzzle{fill:#2A3034;}
+.pl-barrel .pl-band{fill:#B08D3C;}
+.pl-carriage{fill:#7A4B2A;stroke:#55331C;stroke-width:1.2;}
+.pl-wheel circle{fill:#5E3A20;stroke:#3E2513;stroke-width:1.5;}
+.pl-spokes line{stroke:#C9A57A;stroke-width:1.4;}
+.pl-wheel .pl-hubc,.pl-hubc{fill:#C9A57A;stroke:none;}
+.pl-cannon.is-ghost{opacity:.45;}
+.pl-cannon.pl-a .pl-barrel rect:first-child{fill:#6B5B8C;}
+
+.pl-cart-body{fill:#0B6FA4;stroke:#07527A;stroke-width:1.5;}
+.pl-tube{fill:#3B4348;}
+.pl-cwheel{fill:#262D31;}
+.pl-post{stroke:#8E7754;stroke-width:2;}
+
+.pl-ball{fill:#D55E00;stroke:#8C3D00;stroke-width:1.5;}
+.pl-ball.pl-a{fill:#7A4F9E;stroke:#4D2F66;}
+.pl-shine{fill:#FFFFFF;opacity:.55;pointer-events:none;}
+.pl-guide{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-dasharray:3 6;opacity:.35;stroke-linecap:round;}
+.pl-guide.pl-a{stroke:#7A4F9E;opacity:.55;}
+.pl-path{fill:none;stroke:#D55E00;stroke-width:2.2;opacity:.55;}
+.pl-path.pl-a{stroke:#7A4F9E;}
+.pl-dot{fill:var(--ink);}
+.pl-dot.pl-a{fill:#7A4F9E;}
+.pl-mark{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 4;opacity:.5;}
+.pl-land{stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;}
+.pl-arc{fill:none;stroke:var(--ink);stroke-width:1.6;}
+.pl-help{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 4;opacity:.6;}
+
+/* Component arrows: horizontal blue-green, vertical vermillion, ghosted for A. */
+.phys-arrow.pl-vx{color:#0072B2;} .phys-arrow.pl-vy{color:#C24F00;}
+.phys-arrow.pl-vx.is-ghost,.phys-arrow.pl-vy.is-ghost{opacity:.4;}
+.phys-arrow.pl-cartv{color:#009E73;}
+
+.pl-grab{fill:transparent;stroke:var(--cink);stroke-width:2;stroke-dasharray:3 4;cursor:grab;outline:none;}
+.pl-grab:hover,.pl-grab:focus-visible{fill:var(--ctint);fill-opacity:.55;stroke-dasharray:none;stroke-width:3;}
+.pl-hgt{fill:var(--white);}
+.pl-hgt-i{fill:none;stroke:var(--cink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;}
+
+:root[data-theme="dark"] .pl-sky{fill:#17262E;}
+:root[data-theme="dark"] .pl-ground{fill:#3A3328;}
+:root[data-theme="dark"] .pl-grass{stroke:#7FB35E;}
+:root[data-theme="dark"] .pl-cliff{fill:#5E5140;stroke:#8E7754;}
+:root[data-theme="dark"] .pl-on-rock{stroke:#2A241C;}
+:root[data-theme="dark"] .pl-barrel rect{fill:#8D989D;} :root[data-theme="dark"] .pl-barrel .pl-muzzle{fill:#AEB8BD;}
+:root[data-theme="dark"] .pl-cart-body{fill:#2C8FC9;stroke:#9DD3F2;}
+:root[data-theme="dark"] .pl-cwheel{fill:#11161A;stroke:#AEB8BD;stroke-width:1.5;}
+:root[data-theme="dark"] .pl-tube{fill:#8D989D;}
+:root[data-theme="dark"] .pl-path{stroke:#FF9A5C;}
+:root[data-theme="dark"] .phys-arrow.pl-vx{color:#6CB8EC;} :root[data-theme="dark"] .phys-arrow.pl-vy{color:#FF9A5C;}
+:root[data-theme="dark"] .phys-arrow.pl-cartv{color:#4FD1AA;}
+:root[data-theme="dark"] .pl-ball.pl-a,:root[data-theme="dark"] .pl-dot.pl-a{fill:#C3A3E0;}
+:root[data-theme="dark"] .pl-path.pl-a,:root[data-theme="dark"] .pl-guide.pl-a{stroke:#C3A3E0;}
+
+/* Controls */
+.pl-ctl{display:flex;flex-direction:column;gap:12px;}
+.pl-p{display:flex;flex-direction:column;gap:10px;}
+.pl-p[hidden]{display:none;}
+.pl-views,.pl-frames{display:flex;}
+.pl-card:not(.ls-root *) .pl-views,.pl-card:not(.ls-root *) .pl-frames{gap:6px;padding:4px;border-radius:14px;background:var(--paper);border:var(--bw,2px) solid var(--line);width:max-content;max-width:100%;}
+.pl-views .bt-mode.on,.pl-frames .bt-mode.on{color:var(--cink);}
+.pl-btns .bt-btn[hidden]{display:none;}
+.pl-checks{border:0;margin:0;padding:0;}
+.pl-checks legend{font:800 14px var(--font-ui);padding:0;margin-bottom:2px;}
+.pl-checks input{width:20px;height:20px;accent-color:var(--cink);margin:0;}
+.pl-tbl td.r,.pl-tbl th.r{text-align:right;font-variant-numeric:tabular-nums;}
+.pl-pk{font-weight:900;color:var(--ink);}
+.pl-ctl .bt-out{min-width:9ch;white-space:nowrap;}
+
+/* Inside the Tool Studio */
+body.ls-on .phys-crumb{display:none;}
+.ls-root .pl-ls-stage .pl-stage{flex:1;min-height:0;}
+.ls-root .pl-ls-stage .pl-scene{height:100%;}
+.ls-root .pl-ls-dock .pl-views,.ls-root .pl-ls-dock .pl-frames{width:100%;}
+.ls-root .pl-ls-dock .pl-views .bt-mode,.ls-root .pl-ls-dock .pl-frames .bt-mode{flex:1;}
+.ls-root .pl-ls-dock .btn-press.pl-go{flex:1;}
+.ls-root .pl-ls-dock .bt-slider{position:relative;}
+.ls-root .pl-ls-dock .bt-slider .bt-out{position:absolute;right:0;top:0;min-width:0;font-size:13px;line-height:1.2;}
+.ls-root .pl-ls-dock .bt-slider-row{gap:6px;}
+.ls-root .pl-ls-det .bt-slider{margin-top:6px;}
+@media (max-width:999.98px){
+  .ls-root .ls-stage:has(.pl-ls-stage){min-height:min(300px,44dvh);}
+  .ls-root:has(.pl-ls-stage) .ls-dock{max-height:max(260px,calc(100dvh - 56px - min(300px,44dvh) - 24px));}
+}
+@media (max-width:599.98px){
+  .ls-root .pl-ls-dock .pl-ctl{gap:8px;}
+  .ls-root .pl-ls-dock .pl-p{gap:4px;}
+  .ls-root .pl-ls-dock .bt-slider label{font-size:12.5px;}
+  .ls-root .pl-ls-dock .pl-views .bt-mode,.ls-root .pl-ls-dock .pl-frames .bt-mode{min-height:40px;font-size:13px;padding:0 6px;}
+}
+.pl-qfig svg{max-width:560px;}
+/* The quiz figure's sky and ground run past its viewBox: on the stage they
+   fill the letterbox instead of leaving blank bands. */
+.ls-root .ls-drill-stage .pl-qfig svg,.pl-qfig svg{overflow:visible;}
+.pl-qfig{overflow:hidden;border-radius:12px;}

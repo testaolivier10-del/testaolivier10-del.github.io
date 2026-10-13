@@ -1,0 +1,17 @@
+{
+ "about": "Lab design (the Experimental Design and Analysis trainer). Each experiment unlocks with the topic that teaches its physics; the first, the ramp, with motion-representations. Model: physics/assets/tools/math/lab-design.js; validator: scripts/lib/apphys-tool-checks/lab-design.mjs.",
+ "slug": "lab-design",
+ "kind": "simulator",
+ "topic": "motion-representations",
+ "intro": "<p>Run an experiment on a lab bench: choose what to change, take real-looking measurements (each instrument has its own scatter), plot them, and find the graph that makes a straight line. The best-fit line's slope then gives a physical quantity: the cart's acceleration, g from a pendulum, a spring constant, the mass of a system, a pulley's rotational inertia or a liquid's density.</p>",
+ "howItWorksTitle": "How to design and analyze an experiment",
+ "howItWorks": "<ul><li><b>Variables.</b> The independent variable is the one you set; the dependent variable is the one you measure; everything else is held constant (the controls).</li><li><b>Instruments.</b> Meterstick: a length. Stopwatch: a time (time many swings and divide). Motion detector: position over time, and from it velocity and acceleration. Spring scale or force sensor: a force. Balance: a mass. Photogate: when something passes a point.</li><li><b>Linearize.</b> Write the model, then choose what to put on each axis so it reads y = (slope)·x + intercept. T = 2π√(L/g) becomes T² = (4π²/g)·L: graph T² against L.</li><li><b>Best-fit line.</b> A straight line through the trend of the points (not dot to dot). Find the slope from two points on the line, far apart.</li><li><b>Use the slope.</b> Match the slope to the symbols in the model (slope = 4π²/g, so g = 4π²/slope) and keep the units.</li><li><b>Error.</b> An offset that is the same in every reading moves the line but not its slope. An error that grows with the reading (a percentage) changes the slope.</li></ul><p>Data come from the physics with seeded noise sized to each instrument. g = 9.8 m/s². In the drill a slope counts within 6% of the least-squares slope, and the quantity from it within 6%.</p>",
+ "contexts": [
+  { "id": "ramp", "topic": "motion-representations", "exp": "ramp" },
+  { "id": "spring", "topic": "spring-forces", "exp": "spring" },
+  { "id": "atwood", "topic": "second-law", "exp": "atwood" },
+  { "id": "pulley", "topic": "rotational-second-law", "exp": "pulley" },
+  { "id": "pendulum", "topic": "shm-period", "exp": "pendulum" },
+  { "id": "buoyancy", "topic": "buoyancy", "exp": "buoyancy" }
+ ]
+}

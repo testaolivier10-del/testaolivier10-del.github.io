@@ -1,0 +1,144 @@
+/* Motion graphs (physics/assets/tools/motion-graphs.js). OWNED BY THIS TOOL
+   ONLY. Loaded by the tool script itself (next to it), after phys-tools.css.
+   The track, the cart and the stacked x, v, a graphs, light and dark. */
+.mg-card{gap:12px;}
+.mg-stage{display:flex;flex-direction:column;gap:6px;min-height:0;}
+.mg-scene-wrap{flex:none;}
+.mg-scene{width:100%;height:auto;display:block;touch-action:none;user-select:none;-webkit-user-select:none;}
+.mg-graphs-wrap{position:relative;min-height:0;border-radius:12px;}
+.mg-graphs-wrap:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.mg-graphs{width:100%;height:100%;display:block;touch-action:none;cursor:crosshair;user-select:none;-webkit-user-select:none;}
+
+/* The scene */
+.mg-bench{fill:var(--paper);}
+.mg-rail{fill:#8C969B;}
+.mg-rail-slot{fill:#5F696E;}
+.mg-bumper{fill:#3C4549;}
+.mg-tick{stroke:var(--muted);stroke-width:1;}
+.mg-tick.major{stroke:var(--ink);stroke-width:1.4;}
+.mg-tl{fill:var(--muted);font:700 11.5px var(--font-ui);font-variant-numeric:tabular-nums;}
+.mg-tl.zero{fill:var(--ink);font-weight:900;}
+.mg-axis-l{fill:var(--muted);font:700 11px var(--font-ui);}
+.mg-stand{fill:#7A858A;}
+.mg-det-body{fill:#2F3A40;}
+.mg-det-face{fill:#C9D3D8;}
+.mg-det-led{fill:#5A6268;}
+.mg-det-led.on{fill:#E0453A;}
+.mg-ping path{fill:none;stroke:var(--phys-s1);stroke-width:2;stroke-linecap:round;opacity:.55;}
+.mg-cart{cursor:grab;outline:none;}
+.mg-cart:active{cursor:grabbing;}
+.mg-hit{fill:transparent;}
+.mg-body{fill:#0B6FA4;stroke:#07527A;stroke-width:1.5;}
+.mg-stripe{fill:#FFFFFF;opacity:.35;}
+.mg-reflector{fill:#D9E2E6;stroke:#7A858A;stroke-width:1;}
+.mg-tyre{fill:#262D31;}
+.mg-hub{fill:#B8C2C7;}
+.mg-spokes line{stroke:#9AA5AA;stroke-width:1.6;stroke-linecap:round;}
+.mg-dot-l{stroke:var(--white);stroke-width:1;stroke-dasharray:2 2;opacity:.7;}
+.mg-dot{fill:#FFFFFF;stroke:#07527A;stroke-width:1.5;}
+.mg-cart:focus-visible .mg-body{stroke:var(--cink);stroke-width:4;}
+:root[data-theme="dark"] .mg-body{fill:#2C8FC9;stroke:#9DD3F2;}
+:root[data-theme="dark"] .mg-rail{fill:#6C767B;} :root[data-theme="dark"] .mg-bumper{fill:#AEB8BD;}
+:root[data-theme="dark"] .mg-det-body{fill:#5C6A72;} :root[data-theme="dark"] .mg-stand{fill:#8D989D;}
+
+/* The graphs */
+.mg-panel-bg{fill:var(--white);}
+.mg-panel-bg.is-target{fill:var(--ctint);}
+.mg-graphs .grid{stroke:var(--line);stroke-width:1;}
+.mg-graphs .zero{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:none;opacity:.55;}
+.mg-glbl{font:900 12.5px var(--font-ui);}
+.mg-graphs .series{fill:none;stroke-width:2.6;}
+.mg-graphs .pt{stroke:var(--white);stroke-width:2;}
+.mg-target-l{fill:none;stroke:var(--cink);stroke-width:7;stroke-opacity:.28;stroke-dasharray:10 6;stroke-linecap:round;stroke-linejoin:round;}
+.mg-area{stroke:none;fill-opacity:.16;}
+.mg-area.s1{fill:var(--phys-s2);} .mg-area.s3{fill:var(--phys-s3);}
+.mg-fig .mg-area.s1{fill:var(--phys-s2);fill-opacity:.2;}
+.mg-cursor{stroke:var(--ink);stroke-width:1.4;stroke-dasharray:4 3;}
+.mg-tan{stroke:var(--ink);stroke-width:2;stroke-dasharray:6 4;opacity:.8;}
+.mg-cur-pt{fill:var(--white);stroke:var(--ink);stroke-width:2.4;}
+.mg-cur-t{fill:var(--ink);font:900 12px var(--font-ui);}
+.mg-hl{stroke:var(--cink);stroke-width:8;stroke-opacity:.3;stroke-linecap:round;}
+
+/* Controls */
+.mg-ctl{display:flex;flex-direction:column;gap:12px;}
+.mg-drive{display:flex;}
+.mg-card:not(.ls-root *) .mg-drive{gap:6px;padding:4px;border-radius:14px;background:var(--paper);border:var(--bw,2px) solid var(--line);width:max-content;max-width:100%;}
+.mg-drive .bt-mode.on,.mg-drive .bt-mode[aria-pressed="true"]{color:var(--cink);}
+.mg-panel{display:flex;flex-direction:column;gap:10px;}
+.mg-panel[hidden]{display:none;}
+.mg-target{margin:0;font:700 15px/1.45 var(--font-ui);}
+.mg-btns .bt-btn[hidden]{display:none;}
+.mg-cur:empty{display:none;}
+.mg-cur-h{margin:6px 0 4px;}
+.mg-why-list{margin:0;padding:0;list-style:none;display:grid;gap:8px;}
+.mg-why-list li{display:block;padding-left:22px;position:relative;line-height:1.5;}
+.mg-k{position:absolute;left:0;top:.35em;width:14px;height:4px;border-radius:2px;}
+.mg-k.s1{background:var(--phys-s1);} .mg-k.s2{background:var(--phys-s2);} .mg-k.s3{background:var(--phys-s3);}
+.mg-k.a{height:12px;top:.2em;opacity:.45;}
+.mg-k.s1.a{background:var(--phys-s2);}
+.mg-tbl td.r{text-align:right;font-variant-numeric:tabular-nums;}
+
+/* Outside the Tool Studio (no JS studio): a sensible stacked layout. */
+.mg-card .mg-graphs-wrap{aspect-ratio:auto;}
+
+/* Inside the Tool Studio: the scene on top, the graphs fill the rest. */
+.ls-root .mg-ls-stage{gap:4px;}
+.ls-root .mg-ls-stage .mg-stage{flex:1;min-height:0;}
+.ls-root .mg-ls-stage .mg-graphs-wrap{flex:1;min-height:180px;}
+.ls-root .mg-ls-dock .mg-drive{width:100%;}
+.ls-root .mg-ls-dock .mg-drive .bt-mode{flex:1;}
+.ls-root .mg-ls-dock .mg-p-drag .bt-cue{display:flex;}
+@media (max-width:999.98px){
+  .ls-root .mg-ls-stage .mg-graphs-wrap{min-height:200px;}
+  .ls-root .mg-ls-dock .bt-slider label{font-size:var(--ls-s);}
+}
+
+/* Test yourself figures */
+.mg-qfig .mg-fig{max-width:560px;}
+.cd-pics .mg-fig{max-width:100%;}
+
+/* The Tool Studio hides each course's breadcrumb; phys-crumb is not in its
+   list yet (shared fix reported), so this page hides it itself. */
+body.ls-on .phys-crumb{display:none;}
+.mg-ctl .bt-out{min-width:9.5ch;white-space:nowrap;}
+:root[data-theme="dark"] .mg-tyre{fill:#11161A;stroke:#AEB8BD;stroke-width:1.5;}
+:root[data-theme="dark"] .mg-bench{fill:var(--surface2,var(--paper));}
+.mg-pk{font-weight:900;color:var(--ink);font-style:italic;}
+@media (max-width:599.98px){
+  .ls-root .mg-ls-dock{gap:8px;}
+  .ls-root .mg-ls-dock .mg-ctl{gap:8px;}
+  .ls-root .mg-ls-dock .mg-panel{gap:4px;}
+  .ls-root .mg-ls-dock .bt-slider{gap:0;}
+  .ls-root .mg-ls-dock .bt-slider label{font-size:12.5px;}
+  .ls-root .mg-ls-dock .mg-drive .bt-mode{min-height:40px;}
+  .ls-root .mg-ls-stage .mg-graphs-wrap{min-height:120px;}
+  .ls-root .mg-ls-dock .mg-p-drag .bt-cue{font-size:14px;}
+}
+/* A phone: the stage keeps room for all three graphs; a tall dock scrolls. */
+@media (max-width:999.98px){
+  .ls-root .ls-stage:has(.mg-ls-stage){min-height:min(350px,48dvh);}
+  .ls-root:has(.mg-ls-stage) .ls-dock{max-height:max(250px,calc(100dvh - 56px - min(350px,48dvh) - 24px));}
+}
+.ls-root .mg-ls-dock .bt-slider{position:relative;}
+.ls-root .mg-ls-dock .bt-slider .bt-out{position:absolute;right:0;top:0;min-width:0;font-size:13px;line-height:1.2;}
+.ls-root .mg-ls-dock .bt-slider-row{gap:6px;}
+.mg-glbl{paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.mg-cur-t{paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.cd-pics .mg-fig .tick{font-size:10.5px;}
+.cd-pics .mg-fig .series{stroke-width:2.6;}
+.mg-sm-l{font-size:10.5px;}
+/* Pick the a-t graph: 2 × 2 on a phone so the v-t graph stays in view. */
+@media (max-width:699.98px){
+  .ls-root .ls-drill-pics .cd-pics:has(.mg-fig),.cd-pics:has(.mg-fig){grid-template-columns:1fr 1fr;gap:6px;}
+  .cd-pics:has(.mg-fig) .bt-radio{padding:4px;}
+  .cd-pics:has(.mg-fig) .bt-radio input{margin-top:2px;width:18px;height:18px;}
+  .cd-pics:has(.mg-fig) .cd-pic-n{font-size:10.5px;}
+  .ls-root .ls-drill-stage:has(.cd-pics .mg-fig) .mg-qfig svg{max-height:30dvh;}
+}
+/* With the pictures on the stage too, the v-t figure keeps a fixed share. */
+.ls-root .ls-drill-stage:has(.cd-pics .mg-fig) .cd-extra,.ls-root .ls-drill-stage:has(.cd-pics .mg-fig) .cd-fig{flex:none;}
+.ls-root .ls-drill-stage:has(.cd-pics .mg-fig) .cd-fig > svg{height:auto !important;max-height:32dvh !important;}
+@media (max-width:699.98px){
+  .ls-root .ls-drill-stage:has(.cd-pics .mg-fig) .cd-fig > svg{max-height:21dvh !important;}
+  .ls-root .ls-drill-pics:has(.mg-fig) .cd-label{font-size:16px;margin:0 0 4px;}
+}

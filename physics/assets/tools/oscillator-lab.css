@@ -1,0 +1,96 @@
+/* Oscillator lab (physics/assets/tools/oscillator-lab.js). OWNED BY THIS TOOL. */
+.ol-root{--ol-metal1:#E6EAEC;--ol-metal2:#9AA4AB;--ol-metal-ink:#47525A;--ol-brass1:#F3D27A;--ol-brass2:#B88A2E;--ol-wood1:#E9C48C;--ol-wood2:#C99A5B;--ol-wood-ink:#5A3B12;
+  --ol-spring:#5E6A72;--ol-spring2:#B9C2C8;--ol-cart:#2F7FB6;--ol-cart2:#1F5F8E;--ol-wall:#C8BBA6;--ol-hatch:#9C8E78;--ol-string:#5A5A5A;}
+:root[data-theme="dark"] .ol-root{--ol-metal1:#AEB6BC;--ol-metal2:#5E686F;--ol-metal-ink:#1C2328;--ol-brass1:#D9B65E;--ol-brass2:#8E6A22;--ol-wood1:#B98C55;--ol-wood2:#8A6534;--ol-wood-ink:#2B1A05;
+  --ol-spring:#C9D1D6;--ol-spring2:#7C878E;--ol-cart:#3C8CC4;--ol-cart2:#2A6A9A;--ol-wall:#4A4237;--ol-hatch:#6E6252;--ol-string:#C9C9C9;}
+.ol-root .ol-m1{stop-color:var(--ol-metal1);} .ol-root .ol-m2{stop-color:var(--ol-metal2);}
+.ol-root .ol-b1{stop-color:var(--ol-brass1);} .ol-root .ol-b2{stop-color:var(--ol-brass2);}
+.ol-root .ol-w1{stop-color:var(--ol-wood1);} .ol-root .ol-w2{stop-color:var(--ol-wood2);}
+.ol-root .ol-c1{stop-color:var(--ol-cart);} .ol-root .ol-c2{stop-color:var(--ol-cart2);}
+
+.ol-stage{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:8px;min-height:0;flex:1;}
+.ol-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;min-height:0;align-items:center;}
+.ol-scene{min-height:0;height:100%;display:flex;align-items:center;justify-content:center;}
+.ol-scene > svg{width:100%;height:100%;max-height:100%;display:block;touch-action:none;user-select:none;-webkit-user-select:none;}
+.ol-bars{width:92px;height:100%;min-height:0;display:flex;}
+.ol-bars svg{width:100%;height:100%;max-height:260px;display:block;margin:auto 0;}
+.ol-graphs{display:grid;gap:4px;min-height:0;}
+.ol-graph svg{width:100%;height:auto;display:block;}
+.ls-root .ol-gsel,.ol-gsel{display:none;}
+@media (min-width:1000px){
+  .ol-stage{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);}
+  .ol-graphs{align-content:center;}
+}
+@media (max-width:999.98px){
+  .ls-root .ol-gsel,.ol-gsel{display:flex;justify-content:center;align-self:center;}
+  .ls-root .ol-gsel button{min-height:32px;padding:0 14px;}
+  .ol-graphs{grid-template-columns:auto minmax(0,1fr);align-items:center;gap:6px;}
+  .ls-root .ol-gsel{flex-direction:column;border-radius:14px;}
+  .ol-graphs .ol-graph{display:none;} .ol-graphs .ol-graph.is-on{display:block;}
+  .ol-graph svg{max-height:96px;}
+  .ol-top{min-height:150px;}
+  .ol-bars{width:70px;}
+}
+.ol-root text{font-family:var(--font-ui);}
+.ol-metal{stroke:var(--ol-metal-ink);stroke-width:1.2;}
+.ol-wood{stroke:var(--ol-wood-ink);stroke-width:1.2;}
+.ol-coil{fill:none;stroke:var(--ol-spring);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;}
+.ol-coilb{fill:none;stroke:var(--ol-spring2);stroke-width:2.6;stroke-linecap:round;}
+.ol-string{stroke:var(--ol-string);stroke-width:1.6;}
+.ol-wall{fill:var(--ol-wall);} .ol-hatch{stroke:var(--ol-hatch);stroke-width:1.2;}
+.ol-eq{stroke:var(--muted);stroke-width:1.4;stroke-dasharray:5 5;}
+.ol-amp{stroke:var(--cink);stroke-width:1.3;stroke-dasharray:2 4;}
+.ol-t{fill:var(--ink);font-size:12px;font-weight:800;}
+.ol-tm{fill:var(--muted);font-size:11.5px;font-weight:800;}
+.ol-arc{fill:none;stroke:var(--muted);stroke-width:1.4;stroke-dasharray:3 4;}
+.ol-drag{cursor:grab;} .ol-drag:focus{outline:none;} .ol-drag:focus-visible .ol-body{stroke:var(--cink);stroke-width:3;}
+.ol-hit{fill:transparent;stroke:none;}
+/* graphs */
+.ol-g-bg{fill:var(--surface2);}
+.ol-g-grid{stroke:var(--line);stroke-width:1;}
+.ol-g-axis{stroke:var(--ink);stroke-width:1.3;}
+.ol-g-zero{stroke:var(--ink);stroke-width:1;opacity:.55;}
+.ol-g-tick{fill:var(--muted);font-size:10px;font-weight:700;font-variant-numeric:tabular-nums;}
+.ol-g-lbl{fill:var(--ink);font-size:11.5px;font-weight:900;}
+.ol-g-line{fill:none;stroke-width:2.4;stroke-linejoin:round;}
+.ol-g-x{stroke:var(--phys-s1);} .ol-g-v{stroke:var(--phys-s3);} .ol-g-a{stroke:var(--phys-s2);}
+.ol-g-dot{stroke:var(--white);stroke-width:1.5;}
+.ol-g-dx{fill:var(--phys-s1);} .ol-g-dv{fill:var(--phys-s3);} .ol-g-da{fill:var(--phys-s2);}
+.ol-g-now{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3;}
+.ol-g-T{stroke:var(--cink);stroke-width:1.6;fill:none;}
+.ol-g-Tt{fill:var(--cink);font-size:10.5px;font-weight:900;}
+/* energy bars */
+.ol-e-bg{fill:var(--track);}
+.ol-e-k{fill:var(--phys-s1);} .ol-e-us{fill:var(--phys-s4);} .ol-e-ug{fill:var(--phys-s5);} .ol-e-tot{stroke:var(--ink);stroke-width:1.6;stroke-dasharray:4 3;}
+.ol-e-t{fill:var(--ink);font-size:12px;font-weight:900;}
+.ol-e-v{fill:var(--muted);font-size:10.5px;font-weight:800;font-variant-numeric:tabular-nums;}
+/* dock */
+.ol-dock{display:flex;flex-direction:column;gap:12px;}
+.ol-vars{display:flex;gap:6px;flex-wrap:wrap;}
+.ol-vars .bt-btn{flex:1 1 0;padding:0 8px;min-width:0;}
+.ol-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.ol-row > .ls-btn{flex:1 1 auto;}
+.ol-planets{display:flex;gap:6px;flex-wrap:wrap;}
+.ol-planets .bt-btn{flex:1 1 auto;padding:0 10px;}
+.ol-tbl{width:100%;border-collapse:collapse;font:700 14px var(--font-ui);}
+.ol-tbl th,.ol-tbl td{padding:6px 4px;border-bottom:1px solid var(--line-soft);text-align:left;vertical-align:top;}
+.ol-tbl td.r,.ol-tbl th.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.ol-tbl tr.hl td,.ol-tbl tr.hl th{background:var(--ctint);}
+.ol-check{display:flex;align-items:center;gap:10px;min-height:44px;font:700 15px var(--font-ui);cursor:pointer;}
+.ol-check input{width:22px;height:22px;accent-color:var(--cink);margin:0;flex:none;}
+.ol-fig{margin:0;} .ol-fig svg{width:100%;height:auto;display:block;}
+.ls-root .ol-graphs .tseg.ol-gsel{display:none;}
+@media (max-width:999.98px){
+  .ol-stage{display:flex;flex-direction:column;gap:6px;}
+  .ol-top{flex:1 1 0;min-height:84px;overflow:hidden;}
+  .ol-graphs{flex:none;}
+  .ls-root .ol-graphs .tseg.ol-gsel{display:flex;flex-direction:column;gap:2px;}
+  .ol-graph svg{max-height:88px;}
+}
+@media (max-width:999.98px){
+  .ls-root .ol-graphs .tseg.ol-gsel{padding:2px;gap:1px;}
+  .ls-root .ol-graphs .tseg.ol-gsel button{min-height:26px;height:26px;padding:0 10px;font-size:12px;}
+  .ls-root .ol-graphs .tseg.ol-gsel button::after{inset:-2px 0;}
+  .ol-graph svg{max-height:84px;}
+  .ol-top{min-height:70px;}
+}

@@ -1,0 +1,87 @@
+/* Lab design (physics/assets/tools/lab-design.js). OWNED BY THIS TOOL ONLY.
+   Loaded by the tool's script. Bench colors have light and dark values. */
+:root{--ld-wood:#C99A62;--ld-wood-e:#A5763F;--ld-steel:#8C969D;--ld-glass:#5C6B73;--ld-liq:#7FBFE6;--ld-cart:#D55E00;--ld-det:#3B4A52;}
+:root[data-theme="dark"]{--ld-wood:#8E6A3E;--ld-wood-e:#6E5230;--ld-steel:#AAB4BC;--ld-glass:#A9BAC3;--ld-liq:#2F78A8;--ld-cart:#FF9A5C;--ld-det:#9DB0BA;}
+.ld-view{display:flex;gap:12px;align-items:stretch;min-height:0;flex:1;position:relative;}
+.ld-bench-v{flex:1 1 0;min-width:0;min-height:0;display:flex;}
+.ld-graph-v{flex:1.05 1 0;min-width:0;min-height:0;display:flex;flex-direction:column;gap:4px;justify-content:center;}
+.ld-graph{flex:0 1 auto;min-height:0;display:flex;}
+.ld-bench-v svg,.ld-graph svg{width:100%;height:100%;max-height:480px;display:block;}
+.ld-view > .ld-vtoggle,.ls-root .ld-view > .ld-vtoggle.tseg{display:none;}
+.ld-fitbox{font:700 14px/1.4 var(--font-ui);text-align:center;min-height:1.4em;}
+.ld-fitbox p{margin:0;}
+.ld-empty{color:var(--muted);}
+.ld-fitline b{font-family:var(--font-mono);}
+.ld-svg{font-family:var(--font-ui);}
+.ld-svg text{fill:var(--ink);}
+.ld-lab{font:800 14px var(--font-ui);}
+.ld-mut{font:700 13px var(--font-ui);fill:var(--muted) !important;}
+.ld-big{font:900 20px var(--font-mono);}
+.ld-bench{fill:var(--ld-wood);} .ld-bench-e{fill:var(--ld-wood-e);}
+.ld-steel{fill:var(--ld-steel);}
+.ld-hook{fill:var(--ink);}
+.ld-ramp{stroke:var(--ink);stroke-width:5;stroke-linecap:round;}
+.ld-ramp-fill{fill:var(--paper);stroke:var(--line);stroke-width:1.5;}
+.ld-track{fill:var(--ld-steel);}
+.ld-cart{fill:var(--ld-cart);stroke:#7A2E0E;stroke-width:1.5;}
+.ld-cart-hi{fill:#fff;fill-opacity:.35;}
+.ld-wheel{fill:#2B3236;stroke:#111;stroke-width:1;}
+.ld-hub{fill:#C9D0D5;}
+.ld-det{fill:var(--ld-det);}
+.ld-det-face{fill:#C9D0D5;stroke:#2B3236;stroke-width:1.5;}
+.ld-beam{fill:var(--phys-s1);fill-opacity:.10;}
+.ld-string{stroke:var(--ink);stroke-width:1.6;fill:none;}
+.ld-plumb{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 4;}
+.ld-arc{stroke:var(--muted);stroke-width:1.5;fill:none;}
+.ld-stick{fill:#F2D78A;stroke:#9C7A1E;stroke-width:1;}
+:root[data-theme="dark"] .ld-stick{fill:#8C7535;}
+.ld-tick{stroke:#5A4510;stroke-width:1;}
+:root[data-theme="dark"] .ld-tick{stroke:#F5E6B8;}
+.ld-dim{stroke:var(--muted);stroke-width:1.5;fill:none;}
+.ld-watch{fill:var(--white);stroke:var(--ink);stroke-width:3;}
+.ld-needle{stroke:var(--phys-s2);stroke-width:2.5;stroke-linecap:round;}
+.ld-spring{stroke:var(--phys-s4);stroke-width:2.4;fill:none;stroke-linejoin:round;}
+.ld-pulley{fill:var(--paper);stroke:var(--ink);stroke-width:2;}
+.ld-wheel2{fill:var(--paper);stroke:var(--ink);stroke-width:3;}
+.ld-spoke{stroke:var(--ld-steel);stroke-width:3;}
+.ld-spool{fill:var(--ld-steel);stroke:var(--ink);stroke-width:1.5;}
+.ld-scale{fill:var(--white);stroke:var(--ink);stroke-width:2;}
+.ld-ptr{stroke:var(--phys-s2);stroke-width:3;}
+.ld-liquid{fill:none;}
+.ld-liquid2{fill:var(--ld-liq);fill-opacity:.5;}
+.ld-surf{stroke:var(--ld-liq);stroke-width:2.5;}
+.ld-glass{fill:none;stroke:var(--ld-glass);stroke-width:4;stroke-linejoin:round;}
+.ld-hatch{stroke:var(--muted);stroke-width:1;}
+.ld-dock{display:flex;flex-direction:column;gap:10px;}
+.ld-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.ld-pair.one{grid-template-columns:1fr;}
+.ld-pair .bt-ctl{gap:2px;}
+.ld-pair .bt-ctl label{font:800 12.5px var(--font-ui);color:var(--muted);}
+.ld-pair select{width:100%;}
+.ld-pair .ld-ivsel:empty{display:none;}
+.ld-dock .bt-buttons{flex-wrap:nowrap;}
+.ld-dock .bt-buttons > *{flex:1;}
+.ld-qfig{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start;}
+.ld-qbench{flex:1 1 240px;min-width:0;}
+.ld-qdata{flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:6px;}
+.ld-qbench svg{width:100%;height:auto;max-height:260px;}
+.ld-qplot svg{width:100%;height:auto;max-height:260px;}
+.ld-qdata table{font-size:14px;}
+.ls-root .ls-drill-stage .ld-qfig{overflow:auto;}
+@media (max-width:700px){
+  .ld-view{flex-direction:column;gap:6px;}
+  .ld-view > .ld-vtoggle,.ls-root .ld-view > .ld-vtoggle.tseg{display:inline-flex;align-self:flex-start;flex:none;}
+  .ld-vtoggle button{min-height:36px !important;}
+  .ld-view .ld-graph-v{display:none;}
+  .ld-view.show-graph .ld-graph-v{display:flex;}
+  .ld-view.show-graph .ld-bench-v{display:none;}
+  .ld-qbench{display:none;}
+  .ld-fitbox{display:none;}
+  .ld-graph{flex:1 1 auto;}
+  .ld-bench-v svg,.ld-graph svg{max-height:none;}
+}
+.ld-plotrow{display:flex;gap:8px;align-items:flex-end;}
+.ld-plotrow .ld-plotsel{flex:1;min-width:0;}
+.ld-plotrow .bt-select{flex-direction:row;align-items:center;gap:8px;}
+.ld-plotrow .bt-select select{flex:1;min-width:0;width:100%;}
+.ld-plotrow .ld-fit{flex:none;}

@@ -1,0 +1,105 @@
+/* Collision lab (physics/assets/tools/collision-lab.js). OWNED BY THIS TOOL
+   ONLY; loaded by the tool's script. Cart A blue, cart B orange (Okabe-Ito),
+   the total a dark neutral; every bar is also labeled A, B or Total. */
+:root{--cl-a:#0072B2;--cl-b:#D55E00;--cl-tot:#3F4A52;--cl-bg:#F3F7FA;--cl-rail:#8C979F;--cl-area:#E0A100;}
+:root[data-theme="dark"]{--cl-a:#6BB4E8;--cl-b:#F29A5C;--cl-tot:#C9D1D6;--cl-bg:#16202A;--cl-rail:#6E7A83;--cl-area:#F2C14E;}
+
+.cl-explore{gap:12px;}
+.cl-stage{display:flex;flex-direction:column;gap:8px;min-height:0;flex:1;}
+.cl-fig{margin:0;min-width:0;min-height:0;display:flex;}
+.cl-fig svg{width:100%;height:100%;max-height:100%;display:block;}
+.cl-track{flex:1.05;}
+.cl-track svg{touch-action:none;cursor:ew-resize;border-radius:14px;}
+.cl-lower{flex:1;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:8px;min-height:0;}
+@media (max-width:760px){
+  .cl-lower{grid-template-columns:minmax(0,1fr);}
+  .cl-lower[data-show="bars"] .cl-ft,.cl-lower[data-show="ft"] .cl-bars{display:none;}
+  .cl-track{flex:0.8;}
+  .cl-lower{flex:1.2;}
+}
+
+.phys-scene .cl-bg{fill:var(--cl-bg);}
+.phys-scene .cl-rail{fill:var(--cl-rail);}
+.phys-scene .cl-leg{fill:var(--cl-rail);opacity:.6;}
+.phys-scene .cl-tick{stroke:var(--muted);stroke-width:1;}
+.phys-scene .cl-tick.big{stroke-width:1.6;}
+.phys-scene .cl-tickt{fill:var(--muted);font:700 10.5px var(--font-ui);}
+.phys-scene .cl-body{stroke:var(--ink);stroke-width:1.5;}
+.phys-scene .cl-a .cl-body{fill:var(--cl-a);} .phys-scene .cl-b .cl-body{fill:var(--cl-b);}
+.phys-scene .cl-stripe{fill:#fff;opacity:.35;}
+.phys-scene .cl-name{fill:#fff;font:900 14px var(--font-ui);}
+.phys-scene .cl-mass{fill:#fff;font:800 11px var(--font-ui);}
+.phys-scene .cl-wheel{fill:#22292F;stroke:#9AA5AE;stroke-width:2;}
+.phys-scene .cl-hub{fill:#C9D1D6;}
+.phys-scene .cl-coil{fill:none;stroke:var(--ink);stroke-width:2;stroke-linejoin:round;}
+.phys-scene .cl-plate{fill:var(--ink);}
+.phys-scene .cl-velcro{fill:#5D8C3A;stroke:var(--ink);stroke-width:1;stroke-dasharray:2 1.5;}
+.phys-scene .cl-cm line{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:3 3;}
+.phys-scene .cl-cm circle{fill:var(--white);stroke:var(--ink);stroke-width:2;}
+.phys-scene .cl-cm path{stroke:var(--ink);stroke-width:1.6;}
+.phys-scene .cl-cm text{fill:var(--ink);font:900 11px var(--font-ui);}
+.phys-scene .cl-flash circle{fill:var(--cl-area);opacity:.35;}
+.phys-scene .cl-h{fill:var(--ink);font:800 12px var(--font-ui);}
+.phys-scene .cl-zero{stroke:var(--ink);stroke-width:1.8;}
+.phys-scene .cl-bar{stroke:var(--ink);stroke-width:1;}
+.phys-scene .cl-bar.cl-a{fill:var(--cl-a);} .phys-scene .cl-bar.cl-b{fill:var(--cl-b);} .phys-scene .cl-bar.cl-tot{fill:var(--cl-tot);}
+.phys-scene .cl-bar.is-wrong{stroke:var(--bad-text);stroke-width:3;}
+.phys-scene .cl-bar.is-right{stroke:var(--good-text);stroke-width:2.5;}
+.phys-scene .cl-ghost{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-dasharray:4 3;opacity:.65;}
+.phys-scene .cl-bl{fill:var(--ink);font:800 11.5px var(--font-ui);}
+.phys-scene .cl-bv{fill:var(--ink);font:800 10.5px var(--font-mono);}
+.phys-scene .cl-axis{stroke:var(--ink);stroke-width:1.6;}
+.phys-scene .cl-grid{stroke:var(--line);stroke-width:1;}
+.phys-scene .cl-ax{fill:var(--ink);font:800 11px var(--font-ui);}
+.phys-scene .cl-curve{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linejoin:round;}
+.phys-scene .cl-area{fill:var(--cl-area);fill-opacity:.45;stroke:none;}
+.phys-scene .cl-j{fill:var(--ink);font:800 12px var(--font-mono);}
+.phys-scene .cl-note{fill:var(--muted);font:700 12px var(--font-ui);}
+.phys-scene .cl-div{stroke:var(--line);stroke-width:2;stroke-dasharray:4 4;}
+.phys-scene .cl-grpt{fill:var(--muted);font:800 11px var(--font-ui);}
+.phys-scene .cl-hit{fill:transparent;cursor:ns-resize;}
+
+.cl-ctl{display:flex;flex-direction:column;gap:10px;}
+.cl-seg{display:flex;gap:4px;padding:3px;border-radius:999px;background:var(--track,var(--paper));align-self:center;}
+.cl-seg .bt-btn{min-height:36px;border-radius:999px;box-shadow:none;background:transparent;font-size:14px;}
+.ls-root .cl-seg .bt-btn[aria-pressed=true],.cl-seg .bt-btn[aria-pressed=true]{background:var(--white);color:var(--cink);box-shadow:0 0 0 2px var(--cink) inset;}
+.cl-btns{display:grid;grid-template-columns:1.4fr 1fr;gap:8px;}
+.cl-btns>*{min-width:0;}
+.cl-e input[type=range]{accent-color:var(--cink);}
+
+.cl-qfig svg{max-width:460px;}
+.cl-build{margin:0;display:flex;flex-direction:column;gap:4px;flex:1;min-height:0;}
+.cl-build-top svg{width:100%;max-height:110px;height:auto;}
+.cl-chart{flex:1;min-height:170px;display:flex;}
+.cl-chart svg{width:100%;height:100%;max-height:100%;display:block;touch-action:none;}
+.cl-slots{display:grid;gap:4px;}
+.cl-slots .cd-cell{width:100%;min-width:0;padding:4px 2px;text-align:center;font-size:15px;}
+.ls-root .cd-rowhint{display:none;}
+.cl-tabs{display:none;}
+@media (max-width:760px){
+  .cl-tabs{display:flex;gap:4px;padding:3px;border-radius:999px;background:var(--track,var(--paper));align-self:center;}
+  .cl-tabs .bt-btn{min-height:36px;border-radius:999px;box-shadow:none;background:transparent;font-size:13px;padding:0 10px;}
+  .ls-root .cl-tabs .bt-btn[aria-pressed=true],.cl-tabs .bt-btn[aria-pressed=true]{background:var(--white);color:var(--cink);box-shadow:0 0 0 2px var(--cink) inset;}
+}
+.cl-cap-r{display:block;font:700 13px var(--font-mono);color:var(--muted);}
+.cl-vrow{display:grid;grid-template-columns:1fr;gap:6px;}
+.cl-vrow .bt-ctl{gap:2px;}
+@media (max-width:760px){ .cl-tabs .bt-btn{font-size:12.5px;padding:0 8px;} .cl-seg .bt-btn{font-size:13px;} }
+.cl-top{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 10px;}
+@media (max-width:760px){ .cl-top .bt-btn{min-height:34px;} .cl-track{flex:0.75;} }
+@media (max-width:760px){
+  .cl-top{flex-wrap:nowrap;gap:6px;}
+  .cl-top .cl-seg,.cl-top .cl-tabs{padding:2px;}
+  .cl-top .bt-btn{min-height:34px;font-size:12.5px;padding:0 9px;}
+  .cl-track{flex:1;}
+  .cl-lower{flex:1.1;}
+}
+@media (max-width:760px){
+  .ls-root .cl-top .bt-btn{min-height:34px;font-size:12.5px;padding:0 8px;white-space:nowrap;}
+  .cl-top{min-width:0;max-width:100%;}
+  .cl-top>*{min-width:0;flex:0 1 auto;}
+}
+@media (max-width:760px){
+  .cl-build-top{display:none;}
+  .cl-chart{min-height:0;}
+}

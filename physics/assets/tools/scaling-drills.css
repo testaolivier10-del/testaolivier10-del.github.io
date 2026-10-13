@@ -1,0 +1,64 @@
+/* Scaling drills (physics/assets/tools/scaling-drills.js). OWNED BY THIS TOOL
+   ONLY. Loaded by the tool's script. */
+.sd-view{display:flex;flex-direction:column;gap:6px;min-height:0;flex:1;justify-content:center;}
+.sd-pic{min-height:0;flex:1 1 auto;display:flex;}
+.sd-pic svg{width:100%;height:auto;max-height:300px;}
+.sd-view > .sd-vtoggle,.ls-root .sd-view > .sd-vtoggle.tseg{display:none;}
+.sd-bar svg{width:100%;height:auto;max-height:250px;}
+.sd-eq{margin:0;text-align:center;font:700 18px var(--font-ui);}
+.sd-eq b{color:var(--cink);}
+.sd-svg text{fill:var(--ink);font-family:var(--font-ui);}
+.sd-h{font:900 14px var(--font-ui);fill:var(--muted) !important;}
+.sd-mut{font:700 13px var(--font-ui);fill:var(--muted) !important;}
+.sd-div{stroke:var(--line);stroke-width:2;stroke-dasharray:4 5;}
+.sd-fill{fill:var(--phys-s1);fill-opacity:.28;stroke:var(--phys-s1);stroke-width:2.5;}
+.sd-top{fill:var(--phys-s1);fill-opacity:.15;stroke:var(--phys-s1);stroke-width:2;}
+.sd-side{fill:var(--phys-s1);fill-opacity:.45;stroke:var(--phys-s1);stroke-width:2;}
+.sd-tile{stroke:var(--phys-s1);stroke-width:1;stroke-dasharray:3 3;}
+.sd-steel{fill:#8C969D;}
+.sd-string{stroke:var(--ink);stroke-width:1.6;}
+.sd-bob{fill:#9BA6AE;stroke:#4A545B;stroke-width:1.5;}
+.sd-spring{stroke:var(--phys-s4);fill:none;stroke-linejoin:round;}
+.sd-block{fill:var(--phys-s2);fill-opacity:.85;stroke:#7A2E0E;stroke-width:1.5;}
+.sd-mark{stroke:var(--muted);stroke-width:1.5;}
+.sd-car{fill:var(--phys-s2);stroke:#7A2E0E;stroke-width:1.5;}
+.sd-wheel{fill:#2B3236;}
+.sd-planet{fill:var(--phys-s1);fill-opacity:.7;stroke:var(--phys-s1);stroke-width:1.5;}
+.sd-orbit{fill:none;stroke:var(--muted);stroke-width:1.2;stroke-dasharray:4 4;}
+.sd-sat{fill:var(--phys-s2);}
+.sd-ground{stroke:var(--ink);stroke-width:2;}
+.sd-dim{stroke:var(--muted);stroke-width:1.5;}
+.sd-water{fill:#7FBFE6;fill-opacity:.55;}
+:root[data-theme="dark"] .sd-water{fill:#2F78A8;}
+.sd-pipe{stroke:#5C6B73;stroke-width:4;fill:none;}
+:root[data-theme="dark"] .sd-pipe{stroke:#A9BAC3;}
+.sd-dot{fill:#fff;fill-opacity:.85;}
+.sd-sym{font:900 18px var(--font-ui);}
+.sd-k{font:800 15px var(--font-mono);}
+.sd-y{fill:var(--cink) !important;}
+.sd-b0{fill:var(--muted);fill-opacity:.35;}
+.sd-b1{fill:var(--phys-s1);}
+.sd-b1.y{fill:var(--cink);}
+.sd-bq{fill:none;stroke:var(--cink);stroke-width:2;stroke-dasharray:5 4;}
+.sd-list{margin:6px 0;padding-left:20px;display:grid;gap:4px;}
+.sd-dock{display:flex;flex-direction:column;gap:10px;}
+.sd-dock .bt-select select{width:100%;}
+.sd-fig{margin:0;display:flex;flex-direction:column;gap:6px;}
+.sd-fig svg{width:100%;height:auto;max-height:220px;}
+@media (max-width:899px){
+  .sd-view > .sd-vtoggle,.ls-root .sd-view > .sd-vtoggle.tseg{display:inline-flex;align-self:flex-start;flex:none;}
+  .sd-view.no-pic > .sd-vtoggle,.ls-root .sd-view.no-pic > .sd-vtoggle.tseg{display:none;}
+  .sd-vtoggle button{min-height:36px !important;}
+  .sd-view.show-pic:not(.no-pic) .sd-bar,.sd-view.show-bar .sd-pic{display:none;}
+  .sd-pic svg,.sd-bar svg{max-height:none;}
+  .sd-eq{font-size:16px;}
+}
+@media (min-width:900px){
+  .sd-view{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;align-items:center;gap:8px 20px;}
+  .sd-pic{grid-row:1;grid-column:1;height:100%;align-items:center;}
+  .sd-pic[hidden] + .sd-bar{grid-column:1 / -1;}
+  .sd-bar{grid-row:1;grid-column:2;}
+  .sd-eq{grid-row:2;grid-column:1 / -1;}
+  .sd-pic svg{max-height:420px;height:auto;}
+  .sd-bar svg{max-height:420px;}
+}
