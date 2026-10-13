@@ -1,0 +1,62 @@
+{
+ "topic": "antiderivatives",
+ "hook": "A rate of flow tells you how fast water enters a tank, minute by minute. To know how much water arrived, you need a function whose rate of change is that flow. Finding such a function, an antiderivative, turns every derivative rule around.",
+ "prereq": [
+  {
+   "q": "What is the derivative of $x^3$?",
+   "options": [
+    "$3x^2$",
+    "$x^2$",
+    "$3x^3$",
+    "$\\frac{x^4}{4}$"
+   ],
+   "correct": 0,
+   "why": "The power rule: bring the power down and lower it by one.",
+   "review": "power-rule"
+  },
+  {
+   "q": "If $F(x) = \\int_0^x f(t)\\,dt$, what is $F'(x)$?",
+   "options": [
+    "$f(x)$",
+    "$f(0)$",
+    "$F(x)$",
+    "$f'(x)$"
+   ],
+   "correct": 0,
+   "why": "The Fundamental Theorem: an accumulation function has derivative $f$.",
+   "review": "ftc-accumulation"
+  }
+ ],
+ "figure": null,
+ "chain": [
+  {
+   "cause": "A function $F$ has derivative $f$",
+   "effect": "$F$ is an antiderivative of $f$"
+  },
+  {
+   "cause": "Adding a constant does not change a derivative",
+   "effect": "every $F(x) + C$ is an antiderivative too"
+  },
+  {
+   "cause": "The family of all of them is written $\\int f(x)\\,dx = F(x) + C$",
+   "effect": "an indefinite integral always carries $+ C$"
+  }
+ ],
+ "ideas": [
+  "Read each derivative rule backward to get an antiderivative rule.",
+  "Check an antiderivative by differentiating it."
+ ],
+ "misconception": {
+  "wrong": "The antiderivative of $x^n$ is always $\\frac{x^{n+1}}{n+1}$.",
+  "right": "That rule fails for $n = -1$, where the antiderivative is $\\ln|x| + C$."
+ },
+ "check": [
+  "calc-antiderivatives-1",
+  "calc-antiderivatives-2",
+  "calc-antiderivatives-3",
+  "calc-antiderivatives-4",
+  "calc-antiderivatives-12",
+  "calc-antiderivatives-13"
+ ],
+ "summary": "An antiderivative undoes a derivative. The indefinite integral $\\int f(x)\\,dx = F(x) + C$ is the whole family of antiderivatives, and each derivative rule read backward is an antiderivative rule."
+}

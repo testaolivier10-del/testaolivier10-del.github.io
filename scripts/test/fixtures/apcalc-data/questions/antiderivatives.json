@@ -1,0 +1,482 @@
+{
+ "stimuli": {
+  "antiderivatives-s1": {
+   "kind": "graph",
+   "title": "The graph of $f(x) = 3x^2$",
+   "plot": {
+    "label": "Graph of f(x) = 3x squared from x = 0 to 2, with the region under it shaded",
+    "x": [
+     -0.5,
+     2.5
+    ],
+    "y": [
+     -1,
+     13
+    ],
+    "xStep": 0.5,
+    "yStep": 2,
+    "xLabel": "x",
+    "yLabel": "y",
+    "curves": [
+     {
+      "fn": "3x^2",
+      "domain": [
+       0,
+       2
+      ],
+      "label": "f",
+      "ends": [
+       "closed",
+       "closed"
+      ]
+     }
+    ],
+    "shade": [
+     {
+      "fn": "3x^2",
+      "domain": [
+       0,
+       2
+      ]
+     }
+    ]
+   }
+  },
+  "antiderivatives-s2": {
+   "kind": "table",
+   "title": "Rate of flow into a tank",
+   "table": {
+    "caption": "Rate of flow r(t), in liters per hour, at selected times t, in hours",
+    "cols": [
+     "$t$ (hours)",
+     "0",
+     "2",
+     "5",
+     "9"
+    ],
+    "rows": [
+     [
+      "$r(t)$ (liters per hour)",
+      "4",
+      "7",
+      "6",
+      "10"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "calc-antiderivatives-1",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "single",
+   "practice": "1.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "The graph shows $f(x) = 3x^2$ on $[0, 2]$. Which function is an antiderivative of $f$?",
+   "options": [
+    "$x^3$",
+    "$6x$",
+    "$\\frac{x^3}{3}$",
+    "$3x^3$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An antiderivative $F$ has $F'(x) = f(x)$; the derivative of $x^3$ is $3x^2$.",
+    "options": [
+     "Its derivative is $3x^2$, which is $f$.",
+     "This is the derivative of $f$, not an antiderivative.",
+     "Its derivative is $x^2$: the coefficient 3 was lost.",
+     "Its derivative is $9x^2$, three times too large."
+    ]
+   },
+   "stimulus": "antiderivatives-s1"
+  },
+  {
+   "id": "calc-antiderivatives-2",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Using the graph, what is $\\int_0^2 f(x)\\,dx$?",
+   "options": [
+    "$8$",
+    "$12$",
+    "$24$",
+    "$4$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "By the Fundamental Theorem of Calculus, the integral is $F(2) - F(0) = 8$.",
+    "options": [
+     "$F(2) - F(0) = 2^3 - 0 = 8$ with $F(x) = x^3$.",
+     "This is $f(2)$, a height, not an area.",
+     "This is $3 \\cdot 2^3$: the antiderivative was not divided by 3.",
+     "This is half the area."
+    ]
+   },
+   "stimulus": "antiderivatives-s1"
+  },
+  {
+   "id": "calc-antiderivatives-3",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "antiderivatives-s1",
+   "q": "For the function $f$ in the graph, find $\\int f(x)\\,dx$.",
+   "expr": {
+    "answer": "x^3",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "mode": "constant",
+    "lhs": "\\int f(x)\\,dx =",
+    "mistakes": [
+     {
+      "expr": "6x",
+      "why": "That is the derivative of $3x^2$. An antiderivative goes the other way: raise the power by one and divide by the new power."
+     },
+     {
+      "expr": "x^3/3",
+      "why": "The coefficient 3 is still there: $\\int 3x^2\\,dx = 3 \\cdot \\frac{x^3}{3} = x^3$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Raise the power and divide: $\\int 3x^2\\,dx = x^3 + C$. Check by differentiating: $(x^3)' = 3x^2$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-4",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "single",
+   "practice": "3.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Let $F(x) = \\int_0^x f(t)\\,dt$ for the $f$ in the graph. On $(0, 2)$, $F$ is",
+   "options": [
+    "increasing, because $f > 0$ there",
+    "decreasing, because $f$ is increasing",
+    "constant, because $F(0) = 0$",
+    "increasing where $f$ is concave up, decreasing elsewhere"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "By the Fundamental Theorem, $F'(x) = f(x) = 3x^2 > 0$ on $(0, 2)$, so $F$ is increasing.",
+    "options": [
+     "$F' = f$, and $f > 0$ on $(0, 2)$.",
+     "Whether $f$ increases tells about the concavity of $F$, not its direction.",
+     "$F(0) = 0$ is one value, not the behavior on an interval.",
+     "Concavity of $f$ is not what makes $F$ increase."
+    ]
+   },
+   "stimulus": "antiderivatives-s1"
+  },
+  {
+   "id": "calc-antiderivatives-5",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "single",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Water flows into a tank at rate $r(t)$ liters per hour, measured at the times in the table. A right Riemann sum with the table's subintervals estimates $\\int_0^9 r(t)\\,dt$ as",
+   "options": [
+    "$72$ liters",
+    "$53$ liters",
+    "$62.5$ liters",
+    "$81$ liters"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each subinterval's width times the rate at its right end: $2 \\cdot 7 + 3 \\cdot 6 + 4 \\cdot 10 = 72$.",
+    "options": [
+     "$2(7) + 3(6) + 4(10) = 72$.",
+     "This uses left endpoints.",
+     "This is the trapezoidal sum.",
+     "This uses the largest rate on every subinterval."
+    ]
+   },
+   "stimulus": "antiderivatives-s2",
+   "calc": true
+  },
+  {
+   "id": "calc-antiderivatives-6",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "antiderivatives-s2",
+   "calc": true,
+   "q": "Use a trapezoidal sum with the table's subintervals to estimate $\\int_0^9 r(t)\\,dt$.",
+   "numeric": {
+    "answer": 62.5,
+    "unit": "liters",
+    "askUnit": true,
+    "units": [
+     "L"
+    ],
+    "mistakes": [
+     {
+      "value": 53,
+      "why": "That is the left Riemann sum. A trapezoid averages the two ends of each subinterval."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$2 \\cdot \\frac{4 + 7}{2} + 3 \\cdot \\frac{7 + 6}{2} + 4 \\cdot \\frac{6 + 10}{2} = 11 + 19.5 + 32 = 62.5$ liters."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-7",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "single",
+   "practice": "3.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In context, $\\int_0^9 r(t)\\,dt$ is",
+   "options": [
+    "the liters of water that flow in from $t = 0$ to $t = 9$ hours",
+    "the rate of flow at $t = 9$ hours",
+    "the average rate over the 9 hours",
+    "the liters of water in the tank at $t = 9$ hours"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The integral of a rate gives the amount accumulated over the interval, here in liters.",
+    "options": [
+     "The integral of a rate is the accumulated change over the interval.",
+     "That is $r(9)$, a rate.",
+     "The average rate divides the integral by 9.",
+     "Only if the tank started empty; the integral is the change."
+    ]
+   },
+   "stimulus": "antiderivatives-s2",
+   "calc": true
+  },
+  {
+   "id": "calc-antiderivatives-8",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "antiderivatives-s2",
+   "calc": true,
+   "q": "Find the average rate of change of $r(t)$ over $0 \\le t \\le 9$.",
+   "numeric": {
+    "answer": 0.6666666666666666,
+    "unit": "liters per hour per hour"
+   },
+   "why": {
+    "correct": "$\\frac{r(9) - r(0)}{9 - 0} = \\frac{10 - 4}{9} \\approx 0.667$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-9",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "calc": true,
+   "q": "Use a calculator to find $\\int_0^1 e^{-x^2}\\,dx$.",
+   "numeric": {
+    "answer": 0.7468241328124271,
+    "mistakes": [
+     {
+      "value": 0.6321205588285577,
+      "why": "That is $\\int_0^1 e^{-x}\\,dx$: the exponent is $-x^2$, not $-x$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "A numerical integral gives $0.746824\\ldots$, so $0.747$ (or $0.746$ truncated)."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-10",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 1,
+   "q": "Find $\\int_0^\\pi \\sin x\\,dx$ without a calculator.",
+   "numeric": {
+    "answer": 2,
+    "mistakes": [
+     {
+      "value": 0,
+      "why": "An antiderivative of $\\sin x$ is $-\\cos x$: $-\\cos\\pi - (-\\cos 0) = 1 + 1 = 2$."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\left[-\\cos x\\right]_0^\\pi = -\\cos\\pi + \\cos 0 = 2$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-11",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "numeric",
+   "practice": "1.E",
+   "level": "recall",
+   "diff": 1,
+   "q": "Find $\\int_0^1 x^2\\,dx$ exactly.",
+   "numeric": {
+    "answer": "1/3",
+    "mistakes": [
+     {
+      "value": "1/2",
+      "why": "That is $\\int_0^1 x\\,dx$. For $x^2$, raise the power to 3 and divide by 3."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\left.\\frac{x^3}{3}\\right|_0^1 = \\frac{1}{3}$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-12",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Check an antiderivative by differentiating: find $F'(x)$ when $F(x) = \\sin(x^2)$.",
+   "expr": {
+    "answer": "2x*cos(x^2)",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "lhs": "F'(x) =",
+    "mistakes": [
+     {
+      "expr": "cos(x^2)",
+      "why": "You forgot the chain rule: multiply by the derivative of the inside, $2x$."
+     },
+     {
+      "expr": "cos(2x)",
+      "why": "The inside stays $x^2$; its derivative $2x$ multiplies the outside."
+     }
+    ]
+   },
+   "why": {
+    "correct": "By the chain rule, $F'(x) = \\cos(x^2) \\cdot 2x$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-13",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "expr",
+   "practice": "1.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Find $\\int \\cos(3x)\\,dx$.",
+   "expr": {
+    "answer": "sin(3x)/3",
+    "vars": [
+     "x"
+    ],
+    "domain": [
+     -2,
+     2
+    ],
+    "mode": "constant",
+    "mistakes": [
+     {
+      "expr": "sin(3x)",
+      "why": "Differentiate $\\sin(3x)$ and you get $3\\cos(3x)$: divide by 3 to undo the chain rule."
+     },
+     {
+      "expr": "-sin(3x)/3",
+      "why": "The antiderivative of cosine is sine, with no minus sign."
+     }
+    ]
+   },
+   "why": {
+    "correct": "$\\int \\cos(3x)\\,dx = \\frac{\\sin(3x)}{3} + C$, since the derivative of $\\frac{\\sin(3x)}{3}$ is $\\cos(3x)$."
+   }
+  },
+  {
+   "id": "calc-antiderivatives-14",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "single",
+   "practice": "1.E",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which is $\\int \\frac{1}{x}\\,dx$ for $x \\ne 0$?",
+   "options": [
+    "$\\ln|x| + C$",
+    "$-\\frac{1}{x^2} + C$",
+    "$\\frac{x^0}{0} + C$",
+    "$\\ln x^2 + C$"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The power rule does not cover $x^{-1}$; the antiderivative is $\\ln|x| + C$.",
+    "options": [
+     "The derivative of $\\ln|x|$ is $\\frac{1}{x}$ for every $x \\ne 0$.",
+     "That is the derivative of $\\frac{1}{x}$.",
+     "The power rule fails for the power $-1$: dividing by 0 has no meaning.",
+     "Its derivative is $\\frac{2}{x}$."
+    ]
+   }
+  },
+  {
+   "id": "calc-antiderivatives-15",
+   "unit": "unit-6",
+   "topic": "antiderivatives",
+   "type": "multi",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which are antiderivatives of $2x$?",
+   "options": [
+    "$x^2 + 5$",
+    "$2x^2$",
+    "$x^2 - 1$",
+    "$2$"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "Any $x^2 + C$ has derivative $2x$.",
+    "options": [
+     "Its derivative is $2x$.",
+     "Its derivative is $4x$.",
+     "Its derivative is $2x$.",
+     "That is the derivative of $2x$."
+    ]
+   }
+  }
+ ]
+}

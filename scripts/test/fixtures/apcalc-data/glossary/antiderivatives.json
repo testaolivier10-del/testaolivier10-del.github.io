@@ -1,0 +1,5 @@
+{
+ "indefinite-integral": {
+  "def": "The family of all antiderivatives of a function, written $\\int f(x)\\,dx = F(x) + C$, where $C$ is the constant of integration."
+ }
+}
