@@ -261,7 +261,7 @@
       "yt_buffer": "6acd84c49f22b96ae7ec8bbe",
       "youtube_id": "A2Vr9TetCUs",
       "thumbnail_set": null,
-      "shorts_thumb": null,
+      "shorts_thumb": false,
       "notes": "v2 2026-10-11: natural one take voice, zap sounds removed.",
       "duration": 45.4,
       "replaced_posts": {
