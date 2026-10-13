@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Defining Simple Harmonic Motion — AP® Physics 1 Notes</title>
+<meta name="description" content="Pull a mass on a spring to one side and let go. It slides back, shoots past the middle, slows, stops, and comes back.">
+<link rel="canonical" href="https://levlprep.com/physics/notes/shm-intro.html">
+<meta property="og:title" content="Defining Simple Harmonic Motion — AP® Physics 1 Notes">
+<meta property="og:description" content="Pull a mass on a spring to one side and let go. It slides back, shoots past the middle, slows, stops, and comes back.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/physics/notes/shm-intro.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/physics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/phys.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/physics/notes/shm-intro.html#reading",
+      "name": "Defining Simple Harmonic Motion",
+      "url": "https://levlprep.com/physics/notes/shm-intro.html",
+      "description": "Pull a mass on a spring to one side and let go. It slides back, shoots past the middle, slows, stops, and comes back.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "defining simple harmonic motion physics 1 explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/physics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Physics 1",
+          "item": "https://levlprep.com/physics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Oscillations",
+          "item": "https://levlprep.com/physics/units/unit-7.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Defining Simple Harmonic Motion: notes",
+          "item": "https://levlprep.com/physics/notes/shm-intro.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="phys" data-topic="shm-intro" data-unit="unit-7">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="phys-rail" aria-expanded="false">&#9776; Unit 7 contents</button>
+  <aside class="tb-rail phys-nav-ref bk-rail" id="phys-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Energy and Momentum of Rotating Systems</a>
+    <a class="bk-toc-chap" href="../units/unit-7.html"><span class="bk-toc-chap-n">7</span><span><b>Oscillations</b><small>4 topics</small></span></a>
+    <div class="phys-toc-prog" data-toc-prog="unit-7"><div class="tb-progress-row"><span><b>0</b> of 4 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li class="current" data-toc-t="shm-intro"><a href="#main" aria-current="page"><span class="bk-toc-n">7.1</span>Defining Simple Harmonic Motion</a><div class="bk-toc-onpage"><p>On this page</p><a href="#periodic-motion-and-equilibrium">Periodic motion and equilibrium</a><a href="#the-rule-that-makes-motion-simple">The rule that makes motion &quot;simple harmonic&quot;</a><a href="#following-one-cycle">Following one cycle</a><a href="#reading-shm-from-data">Reading SHM from data</a><a href="#the-simple-pendulum">The simple pendulum</a></div></li><li data-toc-t="shm-period"><a href="shm-period.html"><span class="bk-toc-n">7.2</span>Frequency and Period of SHM</a></li><li data-toc-t="shm-representations"><a href="shm-representations.html"><span class="bk-toc-n">7.3</span>Representing and Analyzing SHM</a></li><li data-toc-t="shm-energy"><a href="shm-energy.html"><span class="bk-toc-n">7.4</span>Energy of Simple Harmonic Oscillators</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Fluids</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="phys-crumb phys-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Physics 1</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-7.html">Oscillations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Defining Simple Harmonic Motion: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/shm-intro.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 7 &middot; Topic 7.1 <span class="phys-beta phys-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Defining Simple Harmonic Motion</h1>
+      <p class="bk-meta phys-nav-ref"><span class="bk-small">5 min read &middot; free</span><span class="bk-chip" data-chip-topic="shm-intro">Not practiced</span></p>
+      <div class="bk-actions phys-share phys-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fphysics%2Fnotes%2Fshm-intro.html&amp;title=Defining%20Simple%20Harmonic%20Motion%3A%20physics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/physics/notes/shm-intro.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="phys-prose bk-prose">
+<p>Pull a <a class="gl" href="../notes/systems-center-of-mass.html" data-c="mass">mass</a> on a spring to one side and let go. It slides back, shoots past the middle, slows, stops, and comes back. Without <a class="gl" href="../notes/friction.html" data-c="friction">friction</a> it would do this forever, taking the same time for each trip. This page builds the model behind that motion from one idea: a <a class="gl" href="../notes/forces-fbd.html" data-c="force">force</a> that always points back to the middle and grows the farther you go.</p>
+
+<h2 id="periodic-motion-and-equilibrium">Periodic motion and equilibrium</h2>
+<p>Motion that repeats itself in equal <a class="gl" href="../notes/motion-quantities.html" data-c="time-interval">time intervals</a> is <b><span class="gl" tabindex="0" data-c="periodic-motion">periodic motion</span></b>. A swing, a vibrating ruler and a cart bouncing between two springs are all periodic. Each one moves back and forth about a middle <a class="gl" href="../notes/scalars-vectors.html" data-c="position">position</a>.</p>
+<p>That middle position is the <b><span class="gl" tabindex="0" data-c="equilibrium-position">equilibrium position</span></b>: the place where the <a class="gl" href="../notes/forces-fbd.html" data-c="net-force">net force</a> on the object is zero. If you set the object down there at rest, it would stay. For a cart on a horizontal spring, it is where the spring is relaxed. For a block hanging from a vertical spring, it is lower than that: where the spring has stretched just enough to hold up the block's <a class="gl" href="../notes/forces-fbd.html" data-c="weight">weight</a>.</p>
+<p>Displace the object from equilibrium and a force appears that pulls it back. That force is a <b><span class="gl" tabindex="0" data-c="restoring-force">restoring force</span></b>. It always points toward equilibrium, whichever side the object is on.</p>
+
+<h2 id="the-rule-that-makes-motion-simple">The rule that makes motion "simple harmonic"</h2>
+<p>A spring gives the cleanest restoring force. You met <a class="gl" href="../notes/spring-forces.html" data-c="hookes-law">Hooke's law</a> in Unit 2: a spring stretched or compressed by x exerts a force of size kx. Put the cart's position x = 0 at equilibrium, and the <a class="gl" href="../notes/spring-forces.html" data-c="spring-force">spring force</a> on the cart is</p>
+<p style="text-align:center"><b>F = −kx</b></p>
+<p>The minus sign carries the whole story. When x is positive (cart to the right), the force is negative (to the left). When x is negative, the force is to the right. And the size of the force is <i><a class="gl" href="../notes/math-proportional.html" data-c="proportional">proportional</a></i> to the <a class="gl" href="../notes/scalars-vectors.html" data-c="displacement">displacement</a>: twice as far, twice the force.</p>
+<p><b><span class="gl" tabindex="0" data-c="shm">Simple harmonic motion</span></b> (SHM) is the motion produced by exactly this kind of force: a restoring force proportional to the displacement from equilibrium and opposite to it. Any system with that force law moves in SHM, whether or not it contains a spring.</p>
+<figure id="fig-restoring"  class="phys-figure"><div class="phys-figimg" data-fig="shm-restoring-force"><img src="../figures/shm-restoring-force.svg" alt="A cart on a horizontal spring at three positions. At x = −A the spring is compressed and its force on the cart points right, toward equilibrium. At x = 0 there is no spring force. At x = +A the spring is stretched and its force points left. The force is always toward equilibrium and largest at the ends." width="760" height="450" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A cart on a spring at its two turning points and at equilibrium. The spring force (pink) always points toward x = 0. <span class="phys-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="following-one-cycle">Following one cycle</h2>
+<p>Use <a class="figref" href="#fig-restoring">the figure</a> and walk through one cycle, step by step. Each step causes the next.</p>
+<ol>
+<li>The cart is held at x = −A, the spring compressed, and released. The spring pushes it right with its largest force, kA, so its <a class="gl" href="../notes/motion-quantities.html" data-c="acceleration">acceleration</a> is largest here, even though its <a class="gl" href="../notes/scalars-vectors.html" data-c="velocity">velocity</a> is zero.</li>
+<li>As the cart moves toward x = 0, the displacement shrinks, so the force shrinks. The cart keeps speeding up, but more and more gently.</li>
+<li>At x = 0 the force is zero. The cart is moving at its greatest <a class="gl" href="../notes/scalars-vectors.html" data-c="speed">speed</a>. Zero net force means zero acceleration, not zero velocity, so it carries on past the middle.</li>
+<li>Past x = 0 the spring is stretched and pulls left. The cart slows down, more strongly the farther it goes.</li>
+<li>At x = +A it stops for an instant. The force is again largest, now to the left, and the cart heads back.</li>
+</ol>
+<p>The largest displacement, A, is the <b><span class="gl" tabindex="0" data-c="amplitude">amplitude</span></b>. Without friction the cart reaches the same <a class="gl" href="../notes/scalars-vectors.html" data-c="distance">distance</a> A on both sides, every time. Notice the pattern that students most often get backwards: <b>force and acceleration are largest where the speed is zero</b> (the ends) and <b>zero where the speed is largest</b> (the middle).</p>
+<div class="worked">
+<p><b>Worked example.</b> A 0.25 kg cart on a spring with k = 20. N/m is pulled to x = +0.050 m and released on a frictionless track. Find its acceleration at release.</p>
+<p>Principle: <a class="gl" href="../notes/second-law.html" data-c="second-law">Newton's second law</a> with the spring as the only horizontal force. F = −kx.</p>
+<p>F = −(20. N/m)(0.050 m) = −1.0 N</p>
+<p>a = F/m = −1.0 N / 0.25 kg = <b>−4.0 m/s²</b>, toward equilibrium.</p>
+<p>At x = 0 the same cart has a = 0; at x = +0.025 m it has −2.0 m/s², half as much, because the force is proportional to x.</p>
+</div>
+
+<h2 id="reading-shm-from-data">Reading SHM from data</h2>
+<p>How can you tell from measurements whether a system will move in SHM? Measure the restoring force at several displacements. If a graph of force against displacement is a straight line through the origin with a negative <a class="gl" href="../notes/math-slopes-areas.html" data-c="slope">slope</a>, the force has the form F = −kx, and the slope is −k. If the line curves, the motion is still periodic but not simple harmonic.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Motion</th><th>Periodic?</th><th>Simple harmonic?</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Cart on a spring, no friction</td><td>Yes</td><td>Yes</td><td>F = −kx exactly</td></tr>
+<tr><td><span class="gl" tabindex="0" data-c="simple-pendulum">Pendulum</span> swinging through 5°</td><td>Yes</td><td>Very nearly</td><td>Restoring force ≈ mgθ, proportional to θ</td></tr>
+<tr><td>Pendulum swinging through 70°</td><td>Yes</td><td>No (not closely)</td><td>mg <a class="gl" href="../notes/math-trig-components.html" data-c="sine-cosine">sin</a> θ grows more slowly than θ</td></tr>
+<tr><td>Ball bouncing on a floor</td><td>Yes</td><td>No</td><td>In the air the only force is the constant weight</td></tr>
+</tbody></table></div>
+
+<h2 id="the-simple-pendulum">The simple pendulum</h2>
+<p>A <b>simple pendulum</b> is a small, heavy bob on a light string of length ℓ. Its equilibrium position is straight below the pivot. When the string makes an angle θ with the vertical, the string pulls along the string, and <a class="gl" href="../notes/gravitational-force.html" data-c="gravitational-force">gravity</a> has a part of size mg sin θ along the bob's path, pointing back toward the bottom. That part is the restoring force.</p>
+<p>For small angles, measured in <a class="gl" href="../notes/rotational-kinematics.html" data-c="radian">radians</a>, sin θ is almost exactly θ (at 10°, θ = 0.1745 rad and sin θ = 0.1736). The bob's displacement along the arc is s = ℓθ. So the restoring force is about mgθ = (mg/ℓ)s: proportional to the displacement and opposite to it. That is the SHM force law, with mg/ℓ playing the role of k. In terms of rotation, the restoring <a class="gl" href="../notes/torque.html" data-c="torque">torque</a> about the pivot is about mgℓθ, proportional to the angle.</p>
+<p>At large angles the approximation fails. The pendulum still swings back and forth, but the motion is no longer a close match to SHM.</p>
+<aside class="going-further"><p><b>Going further.</b> Real oscillators lose <a class="gl" href="../notes/kinetic-energy.html" data-c="energy">energy</a> to friction and air resistance, so their amplitude slowly shrinks. The model on this page ignores those losses, as the exam does unless a question says otherwise.</p></aside>
+
+    </article>
+    <p class="phys-report-page phys-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:shm-intro">Report a problem</button></p>
+    <nav class="tb-chapter-nav phys-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="orbits.html"><span>&larr; Previous</span><b>Motion of Orbiting Satellites</b></a><a class="tb-chapter-link next" href="shm-period.html"><span>Next &rarr;</span><b>Frequency and Period of SHM</b></a></nav>
+  </main>
+</div>
+<footer class="phys-foot xshell">
+  <p class="phys-accuracy-note"><span class="phys-beta phys-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Physics 1 teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:shm-intro">Report a problem</button></span></p>
+  <p class="phys-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPhysSection = 'learn'; window.ApPhysBase = '../';</script>
+<script src="../assets/phys-curriculum.js" defer></script>
+<script src="../assets/phys-core.js" defer></script>
+<script src="../assets/phys-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/phys-toc.js" defer></script>
+</body>
+</html>

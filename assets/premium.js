@@ -206,7 +206,8 @@
         'Every lesson in Units 1 and 2, and every "Math you need" lesson',
         '15 practice or review questions a day from any unit',
         'One full practice exam',
-        'The first trainer of each unit, and the scaling drills',
+        'Three trainers: free-body diagrams, motion graphs and the scaling drills',
+        'Your progress, XP, streak and weak topics',
       ],
       premium: [
         'Every interactive lesson',

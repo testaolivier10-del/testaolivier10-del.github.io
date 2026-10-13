@@ -367,7 +367,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "A free-body diagram puts all forces at one dot. For rotation the point of application matters, so a force diagram draws the object and starts each force where it acts, labelled with type and agent.",
+    "correct": "A free-body diagram puts all forces at one dot. For rotation the point of application matters, so a force diagram draws the object and starts each force where it acts, labeled with type and agent.",
     "options": [
      "Right: torques depend on where forces act, so the diagram shows it.",
      "That is a free-body diagram; it hides where forces act, so it cannot show torques.",

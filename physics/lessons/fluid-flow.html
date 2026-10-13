@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluids and Conservation Laws — AP® Physics 1 | LevlPrep</title>
+<meta name="description" content="Fluids and Conservation Laws: a physics lesson taught from scratch, step by step, with exam-style practice questions.">
+<link rel="canonical" href="https://levlprep.com/physics/lessons/fluid-flow.html">
+<meta property="og:title" content="Fluids and Conservation Laws — AP® Physics 1 | LevlPrep">
+<meta property="og:description" content="Fluids and Conservation Laws: a physics lesson taught from scratch, step by step, with exam-style practice questions.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/physics/lessons/fluid-flow.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/physics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/phys.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/physics/lessons/fluid-flow.html#lesson",
+      "name": "Fluids and Conservation Laws",
+      "url": "https://levlprep.com/physics/lessons/fluid-flow.html",
+      "description": "Fluids and Conservation Laws: a physics lesson taught from scratch, step by step, with exam-style practice questions.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".phys-ls-card"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "volume flow rate"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "continuity equation"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Bernoulli's equation"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Torricelli's theorem"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/physics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Physics 1",
+          "item": "https://levlprep.com/physics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Fluids",
+          "item": "https://levlprep.com/physics/units/unit-8.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Fluids and Conservation Laws",
+          "item": "https://levlprep.com/physics/lessons/fluid-flow.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="phys" data-topic="fluid-flow" data-unit="unit-8">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="phys-crumb phys-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Physics 1</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-8.html">Fluids</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Fluids and Conservation Laws</span></nav></div>
+<div class="xshell phys-ls phys-stepped">
+  <aside class="phys-ls-rail phys-nav-ref" aria-label="Lesson parts">
+    <p class="phys-ls-k">Unit 8 · Fluids</p>
+    <p class="phys-ls-links"><a href="../units/unit-8.html">&larr; Back to the unit</a><a href="../notes/fluid-flow.html">Read the notes</a></p>
+    <div class="phys-ls-prog"><div class="phys-ls-track"><div class="phys-ls-fill"></div></div><span class="phys-ls-count">Step 1 / 11</span></div>
+    <ol class="phys-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="phys-ls-main phys-lesson">
+  <header class="phys-ls-hero">
+    <div class="eyebrow">Unit 8 · Topic 8.4 <span class="phys-beta phys-nav-ref">Beta</span></div>
+    <h1>Fluids and Conservation Laws</h1>
+    <p class="lede">For an ideal fluid in a full pipe, continuity (A₁v₁ = A₂v₂, mass conservation) sets the speeds and Bernoulli's equation (energy conservation per volume) then sets the pressures; faster flow at the same height means lower pressure, and a hole a depth h down gives v = √(2gh).</p>
+    <p class="phys-tags phys-nav-ref"><span class="phys-tag">Practice 2: Mathematical Routines</span><span class="phys-tag">Practice 3: Scientific Questioning and Argumentation</span></p>
+    <div class="phys-share phys-nav-ref" role="group" aria-label="Share or print this lesson"><a class="phys-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fphysics%2Flessons%2Ffluid-flow.html&amp;title=Fluids%20and%20Conservation%20Laws%3A%20physics%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="phys-share-btn" data-copy="https://levlprep.com/physics/lessons/fluid-flow.html">Copy link</button><button type="button" class="phys-share-btn" data-print>Print</button></div>
+    <p class="phys-small phys-nav-ref"><a href="../practice.html?topic=fluid-flow">Question set for this topic</a></p>
+  </header>
+  <div class="phys-ls-card">
+  <section class="phys-part phys-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="phys-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="phys-step-body phys-hook">Squeeze the end of a garden hose and the water shoots farther. Poke a hole in a full water bottle and a jet arcs out, weaker as the level drops. These everyday effects follow from two conservation laws you already know, <a class="gl" href="../notes/systems-center-of-mass.html" data-c="mass">mass</a> and <a class="gl" href="../notes/kinetic-energy.html" data-c="energy">energy</a>, applied to a <a class="gl" href="../notes/density-fluids.html" data-c="fluid">fluid</a> on the move.</div>
+  </section>
+  <section class="phys-part phys-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="phys-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="phys-step-body"><nav class="phys-nav-ref" aria-label="Earlier topics"><ul class="phys-links"><li><a href="../notes/kinetic-energy.html">Translational Kinetic Energy</a></li><li><a href="../notes/potential-energy.html">Potential Energy</a></li><li><a href="../notes/energy-conservation.html">Conservation of Energy</a></li><li><a href="../notes/density-fluids.html">Internal Structure and Density</a></li><li><a href="../notes/fluid-pressure.html">Pressure</a></li></ul></nav></div>
+  </section>
+  <section class="phys-part phys-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="phys-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="phys-step-body"><div class="phys-qs" data-set="prereq"><div class="phys-q" data-qid="fluid-flow-pre-1"><p class="phys-q-stem"><span class="phys-q-n">1.</span> For a system with no friction, which is constant?</p><ol class="phys-opts"><li>K + U</li><li>K alone</li><li>U alone</li><li>The speed</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>Mechanical energy K + U is constant when no nonconservative work is done.</p><ul><li><b>Correct:</b> K + U: </li><li>K alone: </li><li>U alone: </li><li>The speed: </li></ul></details></div><div class="phys-q" data-qid="fluid-flow-pre-2"><p class="phys-q-stem"><span class="phys-q-n">2.</span> What is the gauge pressure 2.0 m below the surface of water (ρ = 1000 kg/m³, g = 9.8 m/s²)?</p><ol class="phys-opts"><li>1.96 × 10⁴ Pa</li><li>2.0 × 10³ Pa</li><li>1.2 × 10⁵ Pa</li><li>9.8 × 10³ Pa</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>P_gauge = ρgh = (1000)(9.8)(2.0) Pa.</p><ul><li><b>Correct:</b> 1.96 × 10⁴ Pa: </li><li>2.0 × 10³ Pa: </li><li>1.2 × 10⁵ Pa: </li><li>9.8 × 10³ Pa: </li></ul></details></div><div class="phys-q" data-qid="fluid-flow-pre-3"><p class="phys-q-stem"><span class="phys-q-n">3.</span> An ideal fluid is</p><ol class="phys-opts"><li>incompressible and nonviscous</li><li>compressible and sticky</li><li>always at rest</li><li>a gas at low pressure</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>Constant density and no internal friction.</p><ul><li><b>Correct:</b> incompressible and nonviscous: </li><li>compressible and sticky: </li><li>always at rest: </li><li>a gas at low pressure: </li></ul></details></div></div></div>
+  </section>
+  <section class="phys-part phys-step" id="figure" aria-labelledby="h-figure">
+    <p class="phys-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="phys-step-body"><figure class="phys-figure phys-lesson-fig"><div class="phys-figimg" data-fig="fluid-flow-pipe"><img src="../figures/fluid-flow-pipe.svg" alt="A full pipe whose wide lower section (area A₁, speed v₁, pressure P₁, height y₁) narrows and rises into a smaller upper section (area A₂, faster speed v₂, height y₂). Continuity A₁v₁ = A₂v₂ sets the speeds; Bernoulli P₁ + ρgy₁ + ½ρv₁² = P₂ + ρgy₂ + ½ρv₂² gives the pressures." width="760" height="400" loading="lazy" decoding="async"></div><figcaption>Continuity sets the <a class="gl" href="../notes/scalars-vectors.html" data-c="speed">speeds</a> from the areas; <span class="gl" tabindex="0" data-c="bernoulli">Bernoulli's equation</span> then gives the pressures. <span class="phys-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="phys-part phys-step" id="chain" aria-labelledby="h-chain">
+    <p class="phys-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="phys-step-body"><ol class="phys-chain"><li><span class="phys-cause">An ideal fluid is <a class="gl" href="../notes/density-fluids.html" data-c="ideal-fluid">incompressible</a> and fills the pipe</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">the volume entering each second equals the volume leaving: A₁v₁ = A₂v₂</span></li><li><span class="phys-cause">The pipe narrows</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">the fluid must move faster there (continuity sets the speed)</span></li><li><span class="phys-cause">Speeding up needs a <a class="gl" href="../notes/forces-fbd.html" data-c="net-force">net force</a> along the flow</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">the <a class="gl" href="../notes/fluid-pressure.html" data-c="pressure">pressure</a> is lower where the fluid moves faster, at the same height</span></li><li><span class="phys-cause">Energy per unit volume is conserved in an ideal fluid</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">P + ρgy + ½ρv² is the same at every point along the flow (Bernoulli)</span></li></ol></div>
+  </section>
+  <section class="phys-part phys-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="phys-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="phys-step-body"><ul class="phys-ideas"><li><b><span class="gl" tabindex="0" data-c="volume-flow-rate">Volume flow rate</span></b> is Av, in m³/s. For an ideal fluid in a full pipe it is the same everywhere: <b>A₁v₁ = A₂v₂</b> (continuity, from conservation of mass).</li><li><b>Continuity sets the speed</b>: a quarter of the area gives four times the speed. Use it first.</li><li><b>Bernoulli</b>: P₁ + ρgy₁ + ½ρv₁² = P₂ + ρgy₂ + ½ρv₂², <a class="gl" href="../notes/energy-conservation.html" data-c="conservation-of-energy">conservation of energy</a> per volume. At equal heights, faster flow means lower pressure.</li><li>Torricelli: fluid leaves a small hole a depth h below an open surface at <b>v = √(2gh)</b>, the speed of a drop falling h.</li></ul></div>
+  </section>
+  <section class="phys-part phys-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="phys-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="phys-step-body phys-misconception"><p class="phys-wrong"><b>The wrong idea:</b> Where a pipe narrows, the water is squeezed, so its pressure goes up.</p><p class="phys-right"><b>What actually happens:</b> The water speeds up into the narrow part, and something must push it to speed up: the higher pressure behind it. In a horizontal pipe the narrow, fast section has the lower pressure.</p></div>
+  </section>
+  <section class="phys-part phys-step" id="check" aria-labelledby="h-check">
+    <p class="phys-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="phys-step-body"><p class="phys-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="phys-qs" data-set="check"><div class="phys-set"><section class="phys-stim" data-stim="fluid-flow-s1" aria-labelledby="stim-fluid-flow-s1"><p class="phys-stim-k">Data table</p><h3 id="stim-fluid-flow-s1">Water in a narrowing pipe</h3><div class="phys-stim-text"><p>Water (ρ = 1000 kg/m³) flows steadily through a horizontal pipe that narrows from section 1 to section 2. The pipe is full and the water is an ideal fluid.</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Measurements at the two sections"><table class="phys-data"><caption>Measurements at the two sections</caption><thead><tr><th scope="col">Section</th><th scope="col">Area (m²)</th><th scope="col">Speed (m/s)</th><th scope="col">Absolute pressure (Pa)</th></tr></thead><tbody><tr><th scope="row">1</th><td>4.0 × 10⁻³</td><td>1.5</td><td>2.00 × 10⁵</td></tr><tr><th scope="row">2</th><td>1.0 × 10⁻³</td><td>?</td><td>?</td></tr></tbody></table></div></section><div class="phys-q" data-qid="phys-fluid-flow-1"><p class="phys-q-stem"><span class="phys-q-n">1.</span> What is the volume flow rate of the water? Give the value and its unit.</p><p class="phys-small">Type a number and its unit.</p><details class="phys-q-key"><summary>Show the answer</summary><p>Volume flow rate = A₁v₁ = (4.0 × 10⁻³ m²)(1.5 m/s) = 6.0 × 10⁻³ m³/s, six liters each second. It is the same at every section of the pipe.</p><ul><li>Answer: 0.0060 m^3/s</li></ul></details></div><div class="phys-q" data-qid="phys-fluid-flow-2"><p class="phys-q-stem"><span class="phys-q-n">2.</span> What is the speed of the water at section 2? Give the value and its unit.</p><p class="phys-small">Type a number and its unit.</p><details class="phys-q-key"><summary>Show the answer</summary><p>Continuity: A₁v₁ = A₂v₂, so v₂ = (4.0 × 10⁻³ m²)(1.5 m/s)/(1.0 × 10⁻³ m²) = 6.0 m/s. A quarter of the area, four times the speed.</p><ul><li>Answer: 6.0 m/s</li></ul></details></div><div class="phys-q" data-qid="phys-fluid-flow-3"><p class="phys-q-stem"><span class="phys-q-n">3.</span> What is the absolute pressure at section 2? Give the value and its unit.</p><p class="phys-small">Type a number and its unit.</p><details class="phys-q-key"><summary>Show the answer</summary><p>Bernoulli with y₁ = y₂ (horizontal pipe): P₁ + ½ρv₁² = P₂ + ½ρv₂². P₂ = 2.00 × 10⁵ Pa + ½(1000 kg/m³)[(1.5 m/s)² − (6.0 m/s)²] = 2.00 × 10⁵ Pa − 1.69 × 10⁴ Pa = 1.83 × 10⁵ Pa.</p><ul><li>Answer: 1.83 × 10<sup>5</sup> Pa</li></ul></details></div><div class="phys-q" data-qid="phys-fluid-flow-4"><p class="phys-q-stem"><span class="phys-q-n">4.</span> A student predicts that the pressure is higher at section 2 because the water is squeezed into a narrower pipe. Which response is correct?</p><ol class="phys-opts"><li>The pressure is lower at section 2, because the water speeds up and is pushed from behind</li><li>The pressure is higher at section 2, because the narrow walls push in on the water</li><li>The pressure is the same at both sections, because the water is incompressible</li><li>The pressure is higher at section 2, because the same flow rate passes through less area</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>Water speeds up from section 1 to section 2, so it gains kinetic energy. A net force must act on it in the direction of flow, which means the pressure behind it (section 1) is larger than the pressure ahead (section 2).</p><ul><li><b>Correct:</b> The pressure is lower at section 2, because the water speeds up and is pushed from behind: Right: faster flow, lower pressure in a horizontal pipe.</li><li>The pressure is higher at section 2, because the narrow walls push in on the water: This "squeezing" picture is the classic error; the water accelerates into the narrow part, so the pressure there is lower.</li><li>The pressure is the same at both sections, because the water is incompressible: Incompressible means constant density, not constant pressure.</li><li>The pressure is higher at section 2, because the same flow rate passes through less area: The same flow rate through less area means higher speed, which goes with lower pressure.</li></ul></details></div><div class="phys-q" data-qid="phys-fluid-flow-5"><p class="phys-q-stem"><span class="phys-q-n">5.</span> Which principle sets the speed at section 2, and which sets the pressure there?</p><ol class="phys-opts"><li>Continuity sets the speed; Bernoulli then sets the pressure</li><li>Bernoulli sets the speed; continuity then sets the pressure</li><li>Bernoulli alone sets both, with no need for continuity</li><li>Continuity alone sets both, because the pipe is horizontal</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>The volume flowing in each second must flow out (an incompressible fluid cannot pile up), so A₁v₁ = A₂v₂ gives v₂ from the areas alone. Bernoulli, an energy statement, then turns the speed change into a pressure change.</p><ul><li><b>Correct:</b> Continuity sets the speed; Bernoulli then sets the pressure: Right: geometry and continuity first, then energy.</li><li>Bernoulli sets the speed; continuity then sets the pressure: Bernoulli has two unknowns here (P₂ and v₂); continuity has to supply the speed.</li><li>Bernoulli alone sets both, with no need for continuity: One equation cannot give two unknowns.</li><li>Continuity alone sets both, because the pipe is horizontal: Continuity says nothing about pressure.</li></ul></details></div></div><div class="phys-q" data-qid="phys-fluid-flow-11"><p class="phys-q-stem"><span class="phys-q-n">6.</span> You put your thumb over part of the end of a garden hose, and the water sprays out faster. Why?</p><ol class="phys-opts"><li>The same volume per second leaves through a smaller area</li><li>Your thumb adds energy to the water as it squeezes past</li><li>The pressure in the jet rises under your thumb, which pushes the water out faster</li><li>Water is compressed under your thumb and expands as it leaves</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>The supply pushes water through at about the same volume flow rate. Continuity, Av = constant, means a smaller opening needs a larger speed.</p><ul><li><b>Correct:</b> The same volume per second leaves through a smaller area: Right: continuity.</li><li>Your thumb adds energy to the water as it squeezes past: Your thumb is at rest, so it does no work on the water.</li><li>The pressure in the jet rises under your thumb, which pushes the water out faster: This is the "squeezed water has higher pressure" error. Once it leaves, the jet is at atmospheric pressure; it is faster because the same flow passes a smaller opening.</li><li>Water is compressed under your thumb and expands as it leaves: Water is nearly incompressible; continuity, not compression, explains the jet.</li></ul></details></div></div></div>
+  </section>
+  <section class="phys-part phys-step" id="summary" aria-labelledby="h-summary">
+    <p class="phys-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="phys-step-body">For an ideal fluid in a full pipe, continuity (A₁v₁ = A₂v₂, mass conservation) sets the speeds and Bernoulli's equation (energy conservation per volume) then sets the pressures; faster flow at the same height means lower pressure, and a hole a depth h down gives v = √(2gh).</div>
+  </section>
+  <section class="phys-part phys-step" id="next" aria-labelledby="h-next">
+    <p class="phys-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="phys-step-body"><p>This is the last topic in the course.</p></div>
+  </section>
+  <section class="phys-part phys-step" id="connections" aria-labelledby="h-connections">
+    <p class="phys-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="phys-step-body"><ul class="phys-links phys-nav-ref"><li><a href="../notes/density-fluids.html">Back: Internal Structure and Density (8.1)</a></li><li><a href="../notes/fluid-pressure.html">Back: Pressure (8.2)</a></li></ul></div>
+  </section>
+    <div class="phys-ls-actions phys-nav-ref"><button type="button" class="phys-ls-back">&larr; Previous</button><button type="button" class="phys-ls-go">Continue &rarr;</button><a class="phys-ls-go" hidden href="../units/unit-8.html">Back to the unit &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.phys-ls'),p=s&&s.querySelectorAll('.phys-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.phys-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apphys_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="phys-foot xshell">
+  <p class="phys-accuracy-note"><span class="phys-beta phys-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Physics 1 teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="lesson:fluid-flow">Report a problem</button></span></p>
+  <p class="phys-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="phys-page-data">{"topic":"fluid-flow","unit":"unit-8","free":false,"prereq":[{"id":"fluid-flow-pre-1","type":"single","unit":"unit-8","topic":"fluid-flow","q":"For a system with no friction, which is constant?","options":["K + U","K alone","U alone","The speed"],"correct":0,"why":{"correct":"Mechanical energy K + U is constant when no nonconservative work is done.","options":["","","",""]},"reviewHref":"../notes/energy-conservation.html","reviewTitle":"Conservation of Energy"},{"id":"fluid-flow-pre-2","type":"single","unit":"unit-8","topic":"fluid-flow","q":"What is the gauge pressure 2.0 m below the surface of water (ρ = 1000 kg/m³, g = 9.8 m/s²)?","options":["1.96 × 10⁴ Pa","2.0 × 10³ Pa","1.2 × 10⁵ Pa","9.8 × 10³ Pa"],"correct":0,"why":{"correct":"P_gauge = ρgh = (1000)(9.8)(2.0) Pa.","options":["","","",""]},"reviewHref":"../notes/fluid-pressure.html","reviewTitle":"Pressure"},{"id":"fluid-flow-pre-3","type":"single","unit":"unit-8","topic":"fluid-flow","q":"An ideal fluid is","options":["incompressible and nonviscous","compressible and sticky","always at rest","a gas at low pressure"],"correct":0,"why":{"correct":"Constant density and no internal friction.","options":["","","",""]},"reviewHref":"../notes/density-fluids.html","reviewTitle":"Internal Structure and Density"}],"check":[{"id":"phys-fluid-flow-1","type":"numeric","unit":"unit-8","topic":"fluid-flow","practice":"2.B","level":"apply","diff":1,"stimulus":"fluid-flow-s1","q":"What is the volume flow rate of the water? Give the value and its unit.","numeric":{"answer":0.006,"tol":0.0001,"unit":"m^3/s","sigfigs":2,"askUnit":true,"mistakes":[{"value":0.0027,"rel":0.02,"why":"Value: you divided area by speed. Volume flow rate is area × speed, Av."}]},"why":{"correct":"Volume flow rate = A₁v₁ = (4.0 × 10⁻³ m²)(1.5 m/s) = 6.0 × 10⁻³ m³/s, six liters each second. It is the same at every section of the pipe."}},{"id":"phys-fluid-flow-2","type":"numeric","unit":"unit-8","topic":"fluid-flow","practice":"2.B","level":"apply","diff":2,"stimulus":"fluid-flow-s1","q":"What is the speed of the water at section 2? Give the value and its unit.","numeric":{"answer":6,"tol":0.1,"unit":"m/s","sigfigs":2,"askUnit":true,"mistakes":[{"value":0.38,"rel":0.02,"why":"Value: the ratio is upside down. The water must speed up where the pipe is narrower: v₂ = v₁A₁/A₂."},{"value":1.5,"rel":0.02,"why":"Value: the speed changes. The same volume each second must pass through a smaller area: A₁v₁ = A₂v₂."}]},"why":{"correct":"Continuity: A₁v₁ = A₂v₂, so v₂ = (4.0 × 10⁻³ m²)(1.5 m/s)/(1.0 × 10⁻³ m²) = 6.0 m/s. A quarter of the area, four times the speed."}},{"id":"phys-fluid-flow-3","type":"numeric","unit":"unit-8","topic":"fluid-flow","practice":"2.B","level":"analyze","diff":3,"stimulus":"fluid-flow-s1","q":"What is the absolute pressure at section 2? Give the value and its unit.","numeric":{"answer":183000,"tol":1000,"unit":"Pa","sigfigs":3,"askUnit":true,"mistakes":[{"value":217000,"rel":0.02,"why":"Value: the sign is reversed. Where the water moves faster, its pressure is lower: P₂ = P₁ + ½ρ(v₁² − v₂²)."},{"value":166000,"rel":0.02,"why":"Value: you left out the ½ in the kinetic term. Bernoulli uses ½ρv²."},{"value":190000,"rel":0.02,"why":"Value: you used ½ρ(Δv)². Use the difference of the squares: ½ρ(v₁² − v₂²)."}]},"why":{"correct":"Bernoulli with y₁ = y₂ (horizontal pipe): P₁ + ½ρv₁² = P₂ + ½ρv₂². P₂ = 2.00 × 10⁵ Pa + ½(1000 kg/m³)[(1.5 m/s)² − (6.0 m/s)²] = 2.00 × 10⁵ Pa − 1.69 × 10⁴ Pa = 1.83 × 10⁵ Pa."}},{"id":"phys-fluid-flow-4","type":"single","unit":"unit-8","topic":"fluid-flow","practice":"3.C","level":"analyze","diff":2,"stimulus":"fluid-flow-s1","q":"A student predicts that the pressure is higher at section 2 because the water is squeezed into a narrower pipe. Which response is correct?","options":["The pressure is lower at section 2, because the water speeds up and is pushed from behind","The pressure is higher at section 2, because the narrow walls push in on the water","The pressure is the same at both sections, because the water is incompressible","The pressure is higher at section 2, because the same flow rate passes through less area"],"correct":0,"why":{"correct":"Water speeds up from section 1 to section 2, so it gains kinetic energy. A net force must act on it in the direction of flow, which means the pressure behind it (section 1) is larger than the pressure ahead (section 2).","options":["Right: faster flow, lower pressure in a horizontal pipe.","This \"squeezing\" picture is the classic error; the water accelerates into the narrow part, so the pressure there is lower.","Incompressible means constant density, not constant pressure.","The same flow rate through less area means higher speed, which goes with lower pressure."]}},{"id":"phys-fluid-flow-5","type":"single","unit":"unit-8","topic":"fluid-flow","practice":"3.B","level":"analyze","diff":2,"stimulus":"fluid-flow-s1","q":"Which principle sets the speed at section 2, and which sets the pressure there?","options":["Continuity sets the speed; Bernoulli then sets the pressure","Bernoulli sets the speed; continuity then sets the pressure","Bernoulli alone sets both, with no need for continuity","Continuity alone sets both, because the pipe is horizontal"],"correct":0,"why":{"correct":"The volume flowing in each second must flow out (an incompressible fluid cannot pile up), so A₁v₁ = A₂v₂ gives v₂ from the areas alone. Bernoulli, an energy statement, then turns the speed change into a pressure change.","options":["Right: geometry and continuity first, then energy.","Bernoulli has two unknowns here (P₂ and v₂); continuity has to supply the speed.","One equation cannot give two unknowns.","Continuity says nothing about pressure."]}},{"id":"phys-fluid-flow-11","type":"single","unit":"unit-8","topic":"fluid-flow","practice":"3.C","level":"apply","diff":1,"q":"You put your thumb over part of the end of a garden hose, and the water sprays out faster. Why?","options":["The same volume per second leaves through a smaller area","Your thumb adds energy to the water as it squeezes past","The pressure in the jet rises under your thumb, which pushes the water out faster","Water is compressed under your thumb and expands as it leaves"],"correct":0,"why":{"correct":"The supply pushes water through at about the same volume flow rate. Continuity, Av = constant, means a smaller opening needs a larger speed.","options":["Right: continuity.","Your thumb is at rest, so it does no work on the water.","This is the \"squeezed water has higher pressure\" error. Once it leaves, the jet is at atmospheric pressure; it is faster because the same flow passes a smaller opening.","Water is nearly incompressible; continuity, not compression, explains the jet."]}}],"stimuli":{"fluid-flow-s1":{"kind":"table","title":"Water in a narrowing pipe","html":"\u003cdiv class=\"phys-stim-text\">\u003cp>Water (ρ = 1000 kg/m³) flows steadily through a horizontal pipe that narrows from section 1 to section 2. The pipe is full and the water is an ideal fluid.\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Measurements at the two sections\">\u003ctable class=\"phys-data\">\u003ccaption>Measurements at the two sections\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Section\u003c/th>\u003cth scope=\"col\">Area (m²)\u003c/th>\u003cth scope=\"col\">Speed (m/s)\u003c/th>\u003cth scope=\"col\">Absolute pressure (Pa)\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">1\u003c/th>\u003ctd>4.0 × 10⁻³\u003c/td>\u003ctd>1.5\u003c/td>\u003ctd>2.00 × 10⁵\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">2\u003c/th>\u003ctd>1.0 × 10⁻³\u003c/td>\u003ctd>?\u003c/td>\u003ctd>?\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApPhysSection = 'learn'; window.ApPhysBase = '../';</script>
+<script src="../assets/phys-curriculum.js" defer></script>
+<script src="../assets/phys-core.js" defer></script>
+<script src="../assets/phys-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/phys-questions.js" defer></script>
+<script src="../assets/phys-lesson.js" defer></script>
+</body>
+</html>

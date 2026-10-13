@@ -70,7 +70,7 @@
   "The <b>lever arm</b> r⊥ is the perpendicular distance from the axis to the line of action, not the distance to the point where the force acts.",
   "Only the part of a force perpendicular to r turns the object.",
   "Give each torque a sign: counterclockwise + and clockwise − (or the reverse, stated). Add them for the net torque.",
-  "A <b>force diagram</b> starts each force at its point of application, labelled with type and agent."
+  "A <b>force diagram</b> starts each force at its point of application, labeled with type and agent."
  ],
  "misconception": {
   "wrong": "The torque of a force is its size times the distance from the axis to where it acts, whatever its direction.",

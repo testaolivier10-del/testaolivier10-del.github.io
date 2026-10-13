@@ -623,7 +623,9 @@ ${tail({ depth, section: 'learn', extra: ['phys-toc.js', 'phys-book.js'] })}
     const dailyFree = (() => { try { return premiumData().COURSES[COURSE_KEY].dailyFree || 0; } catch { return 0; } })();
     // The simulators band: every live simulator; the free ones (no premium flag) say so.
     const sims = (C.pages.tools || []).filter(t => t.kind === 'simulator' && toolLive(t));
+    const freeSims = sims.filter(t => !t.premium).map(t => t.name.toLowerCase());
     const freeSim = sims.find(t => !t.premium);
+    const freeLine = freeSims.length ? (freeSims.length === 1 ? `The ${freeSims[0]} trainer is free.` : `The ${freeSims.slice(0, -1).join(', ')} and ${freeSims[freeSims.length - 1]} trainers are free.`) : '';
     const partCount = id => map.chapters.filter(c => c.part === id).length;
     const partTopics = id => topics.filter(t => chapterById(t.chapter).part === id).length;
     const bars = map.parts.map(p => `<div class="mini-domain-row"><span>${esc(PART_LABEL[p.id] || p.title)}</span><span class="bar"><i data-part-bar="${p.id}" style="width:0%;--dc:${(PART_COLORS[p.id] || PART_COLORS.course)[0]}"></i></span><span class="pct" data-part-pct="${p.id}">0%</span></div>`).join('');
@@ -714,7 +716,7 @@ ${sims.length ? `
       </div>
       <div>
         <h2 id="h-tools">${word(sims.length)} trainers for what the exam marks hardest.</h2>
-        <p>Drag forces onto a real scene and get each one graded, drive a cart and watch its graphs draw, build energy and momentum bar charts, design a lab, then answer the questions about what you did.${freeSim ? ` The ${esc(freeSim.name.toLowerCase())} trainer is free.` : ''}</p>
+        <p>Drag forces onto a real scene and get each one graded, drive a cart and watch its graphs draw, build energy and momentum bar charts, design a lab, then answer the questions about what you did.${freeLine ? ` ${esc(freeLine)}` : ''}</p>
         <div class="phys-tool-chips">${sims.map(t => `<a href="tools/${t.slug}.html">${esc(t.name)}${t.premium ? '' : ' &middot; free'}</a>`).join('')}</div>
         <a class="btn-press alt" href="tools.html">See all tools</a>
       </div>
@@ -940,7 +942,7 @@ ${bodyOpen(' data-app="teachers"')}
   <section class="xsection" aria-labelledby="h-assign">
     <h2 id="h-assign">How to assign it</h2>
     <ul class="phys-tc-list">
-      <li><b>Stable links.</b> Each lesson, notes page, unit sheet and free-response question has a permanent address, such as <code>levlprep.com/physics/notes/&lt;topic&gt;.html</code>. Links do not expire and need no account.</li>
+      <li><b>Stable links.</b> Each lesson, notes page, unit sheet and free-response question has a permanent address, such as <code>levlprep.com/physics/<wbr>notes/&lt;topic&gt;.html</code>. Links do not expire and need no account.</li>
       <li><b>Question sets.</b> <code>practice.html?topic=&lt;topic&gt;</code> opens practice on one topic, <code>practice.html?unit=unit-1</code> on a whole unit. Students get feedback and an explanation for every option. The practice page can also print a set as a worksheet.</li>
       <li><b>Free-response questions.</b> Each has its own page with the prompt, the data and a printable answer sheet with lined space. Students write, then reveal the rubric and score themselves point by point. Nothing is graded by AI.</li>
       <li><b>Printing.</b> Each lesson, notes page, unit sheet and free-response question has a Print button. A lesson prints all its parts in one run; a free-response question prints with lined answer space, and its rubric can print on a separate page.</li>

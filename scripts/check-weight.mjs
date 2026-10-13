@@ -324,7 +324,9 @@ const BUDGETS = [
   /* 7.8 -> 8.5 for AP® Biology once a unit is published: its hub card, its
      pass in the FAQ and the structured data's offers, and the College Board
      sentence (build-pricing.mjs). Measured 8.1 KB with Unit 1 published. */
-  ['index.html', 8.5],
+  /* 8.5 -> 8.8 for AP® Physics 1's launch (docs/apphys-spec.md decision 11):
+     its hub card, its pass in the FAQ and the offers. Measured 8.6 KB. */
+  ['index.html', 8.8],
   /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
      preloads its one text face (Nunito, latin) so it is ready at first paint
      with font-display: optional, which removed the font-swap layout shift. */

@@ -156,7 +156,10 @@ test('?course= picks one course, and anything else means all of them', () => {
   assert.equal(A.parseCourse('anatomy-physiology'), 'anp');
   assert.equal(A.parseCourse(''), 'all');
   assert.equal(A.parseCourse(null), 'all');
-  assert.equal(A.parseCourse('physics'), 'all');
+  assert.equal(A.parseCourse('chemistry-2'), 'all');
+  // AP® Physics 1 (beta since its launch): key apphys, named by its folder.
+  assert.equal(A.parseCourse('physics'), 'apphys');
+  assert.equal(A.urlKey('apphys'), 'physics');
   // AP® Biology: key apbio, but a URL names it by its folder (no "ap" in URLs).
   assert.equal(A.parseCourse('bio'), 'apbio');
   assert.equal(A.parseCourse('biology'), 'apbio');
@@ -168,11 +171,9 @@ test('?course= picks one course, and anything else means all of them', () => {
   assert.equal(A.parseCourse('chem'), 'apchem');
   assert.equal(A.parseCourse('chemistry'), 'apchem');
   assert.equal(A.urlKey('apchem'), 'chem');
-  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem']);
+  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys']);
   eq(A.scopeKeys('ochem'), ['ochem']);
-  // AP® Physics 1 is registered hidden until its first unit is published:
-  // ?course=physics means all courses, and its URL key is its folder.
-  assert.equal(A.urlKey('apphys'), 'physics');
+  eq(A.scopeKeys('apphys'), ['apphys']);
 });
 
 test('HTML becomes plain text: tags out, entities decoded, blocks spaced', () => {

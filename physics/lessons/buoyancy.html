@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluids and Newton's Laws — AP® Physics 1 Lesson | LevlPrep</title>
+<meta name="description" content="Fluids and Newton's Laws: a physics lesson taught from scratch, step by step, with exam-style practice questions.">
+<link rel="canonical" href="https://levlprep.com/physics/lessons/buoyancy.html">
+<meta property="og:title" content="Fluids and Newton's Laws — AP® Physics 1 Lesson | LevlPrep">
+<meta property="og:description" content="Fluids and Newton's Laws: a physics lesson taught from scratch, step by step, with exam-style practice questions.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/physics/lessons/buoyancy.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/physics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/phys.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/physics/lessons/buoyancy.html#lesson",
+      "name": "Fluids and Newton's Laws",
+      "url": "https://levlprep.com/physics/lessons/buoyancy.html",
+      "description": "Fluids and Newton's Laws: a physics lesson taught from scratch, step by step, with exam-style practice questions.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".phys-ls-card"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "fluid parcel"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "buoyant force"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Archimedes' principle"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "neutral buoyancy"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/physics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Physics 1",
+          "item": "https://levlprep.com/physics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Fluids",
+          "item": "https://levlprep.com/physics/units/unit-8.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Fluids and Newton's Laws",
+          "item": "https://levlprep.com/physics/lessons/buoyancy.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="phys" data-topic="buoyancy" data-unit="unit-8">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="phys-crumb phys-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Physics 1</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-8.html">Fluids</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Fluids and Newton's Laws</span></nav></div>
+<div class="xshell phys-ls phys-stepped">
+  <aside class="phys-ls-rail phys-nav-ref" aria-label="Lesson parts">
+    <p class="phys-ls-k">Unit 8 · Fluids</p>
+    <p class="phys-ls-links"><a href="../units/unit-8.html">&larr; Back to the unit</a><a href="../notes/buoyancy.html">Read the notes</a></p>
+    <div class="phys-ls-prog"><div class="phys-ls-track"><div class="phys-ls-fill"></div></div><span class="phys-ls-count">Step 1 / 11</span></div>
+    <ol class="phys-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="phys-ls-main phys-lesson">
+  <header class="phys-ls-hero">
+    <div class="eyebrow">Unit 8 · Topic 8.3 <span class="phys-beta phys-nav-ref">Beta</span></div>
+    <h1>Fluids and Newton's Laws</h1>
+    <p class="lede">The buoyant force is the fluid's net upward push, caused by pressure increasing with depth; it equals the weight of the displaced fluid, ρ_fluid V_displaced g, and Newton's laws with buoyancy and gravity as separate forces decide whether an object floats, sinks or accelerates.</p>
+    <p class="phys-tags phys-nav-ref"><span class="phys-tag">Practice 1: Creating Representations</span><span class="phys-tag">Practice 2: Mathematical Routines</span><span class="phys-tag">Practice 3: Scientific Questioning and Argumentation</span></p>
+    <div class="phys-share phys-nav-ref" role="group" aria-label="Share or print this lesson"><a class="phys-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fphysics%2Flessons%2Fbuoyancy.html&amp;title=Fluids%20and%20Newton's%20Laws%3A%20physics%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="phys-share-btn" data-copy="https://levlprep.com/physics/lessons/buoyancy.html">Copy link</button><button type="button" class="phys-share-btn" data-print>Print</button></div>
+    <p class="phys-small phys-nav-ref"><a href="../practice.html?topic=buoyancy">Question set for this topic</a></p>
+  </header>
+  <div class="phys-ls-card">
+  <section class="phys-part phys-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="phys-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="phys-step-body phys-hook">A large cruise ship has a <a class="gl" href="../notes/systems-center-of-mass.html" data-c="mass">mass</a> of about 100,000 tonnes and floats; a pebble sinks. A lump of clay sinks, but shape the same clay into a bowl and it floats. The difference is not how heavy the object is, but how much water it pushes aside. This lesson shows where that upward push comes from and how to calculate it.</div>
+  </section>
+  <section class="phys-part phys-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="phys-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="phys-step-body"><nav class="phys-nav-ref" aria-label="Earlier topics"><ul class="phys-links"><li><a href="../notes/forces-fbd.html">Forces and Free-Body Diagrams</a></li><li><a href="../notes/first-law.html">Newton's First Law</a></li><li><a href="../notes/second-law.html">Newton's Second Law</a></li><li><a href="../notes/density-fluids.html">Internal Structure and Density</a></li><li><a href="../notes/fluid-pressure.html">Pressure</a></li></ul></nav></div>
+  </section>
+  <section class="phys-part phys-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="phys-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="phys-step-body"><div class="phys-qs" data-set="prereq"><div class="phys-q" data-qid="buoyancy-pre-1"><p class="phys-q-stem"><span class="phys-q-n">1.</span> In a fluid at rest, how does the pressure at the bottom of a block compare with the pressure at its top?</p><ol class="phys-opts"><li>Larger, because the bottom is deeper</li><li>Smaller, because the block shields it</li><li>The same, because the block is small</li><li>Zero, because the block is solid</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>P = P₀ + ρgh grows with depth.</p><ul><li><b>Correct:</b> Larger, because the bottom is deeper: </li><li>Smaller, because the block shields it: </li><li>The same, because the block is small: </li><li>Zero, because the block is solid: </li></ul></details></div><div class="phys-q" data-qid="buoyancy-pre-2"><p class="phys-q-stem"><span class="phys-q-n">2.</span> An object is at rest with two forces on it. What must be true?</p><ol class="phys-opts"><li>The two forces are equal in size and opposite</li><li>There are no forces on it</li><li>The larger force points up</li><li>The forces point the same way</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>Zero acceleration means zero net force, so the two forces balance.</p><ul><li><b>Correct:</b> The two forces are equal in size and opposite: </li><li>There are no forces on it: </li><li>The larger force points up: </li><li>The forces point the same way: </li></ul></details></div><div class="phys-q" data-qid="buoyancy-pre-3"><p class="phys-q-stem"><span class="phys-q-n">3.</span> What is the mass of 2.0 × 10⁻³ m³ of water (ρ = 1000 kg/m³)?</p><ol class="phys-opts"><li>2.0 kg</li><li>0.50 kg</li><li>20 kg</li><li>2.0 × 10⁻⁶ kg</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>m = ρV = (1000 kg/m³)(2.0 × 10⁻³ m³) = 2.0 kg.</p><ul><li><b>Correct:</b> 2.0 kg: </li><li>0.50 kg: </li><li>20 kg: </li><li>2.0 × 10⁻⁶ kg: </li></ul></details></div></div></div>
+  </section>
+  <section class="phys-part phys-step" id="figure" aria-labelledby="h-figure">
+    <p class="phys-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="phys-step-body"><figure class="phys-figure phys-lesson-fig"><div class="phys-figimg" data-fig="buoyancy-forces"><img src="../figures/buoyancy-forces.svg" alt="A wooden block held under water by a string. Short pressure arrows push down on its top and longer ones push up on its bottom; side pushes cancel. Its free-body diagram: the buoyant force (water on block) up, longest; the gravitational force (Earth on block) and tension (string on block) down, together balancing it. F_b = ρ_fluid V_disp g." width="760" height="420" loading="lazy" decoding="async"></div><figcaption>Why the water pushes up: the <a class="gl" href="../notes/fluid-pressure.html" data-c="pressure">pressure</a> on the bottom face is larger than on the top. Right: the block's <a class="gl" href="../notes/forces-fbd.html" data-c="free-body-diagram">free-body diagram</a>. <span class="phys-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="phys-part phys-step" id="chain" aria-labelledby="h-chain">
+    <p class="phys-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="phys-step-body"><ol class="phys-chain"><li><span class="phys-cause">Pressure in a <a class="gl" href="../notes/density-fluids.html" data-c="fluid">fluid</a> increases with depth</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">the fluid pushes up on an object's bottom harder than it pushes down on its top</span></li><li><span class="phys-cause">The side pushes cancel</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">the net push of the fluid is upward: the <span class="gl" tabindex="0" data-c="buoyant-force">buoyant force</span></span></li><li><span class="phys-cause">The pressure difference across the object is ρg times its height</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">the buoyant <a class="gl" href="../notes/forces-fbd.html" data-c="force">force</a> is ρ_fluid V_displaced g, the <a class="gl" href="../notes/forces-fbd.html" data-c="weight">weight</a> of the <span class="gl" tabindex="0" data-c="archimedes">displaced fluid</span></span></li><li><span class="phys-cause"><a class="gl" href="../notes/second-law.html" data-c="second-law">Newton's second law</a> applies to the object, with the buoyant force and <a class="gl" href="../notes/gravitational-force.html" data-c="gravitational-force">gravity</a> as separate forces</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">it floats where F_b = mg, sinks if mg is larger, and <a class="gl" href="../notes/motion-quantities.html" data-c="acceleration">accelerates</a> at a = (mg − F_b)/m</span></li></ol></div>
+  </section>
+  <section class="phys-part phys-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="phys-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="phys-step-body"><ul class="phys-ideas"><li>The <b>buoyant force</b> is the fluid's net upward push. On a free-body diagram it is a separate arrow, up, labeled "F<sub>b</sub>, water on block", opposite to the gravitational force.</li><li><b>Archimedes' principle</b>: F<sub>b</sub> = ρ<sub>fluid</sub>V<sub>displaced</sub>g, the weight of the displaced fluid. It depends on the <i>fluid's</i> <a class="gl" href="../notes/density-fluids.html" data-c="density">density</a> and the displaced volume, not on the object's density or weight.</li><li>A floating object is in equilibrium: F<sub>b</sub> = mg, so the fraction under the surface is ρ<sub>object</sub>/ρ<sub>fluid</sub>.</li><li>A submerged object denser than the fluid sinks with a = g(1 − ρ<sub>fluid</sub>/ρ<sub>object</sub>), neglecting drag.</li></ul></div>
+  </section>
+  <section class="phys-part phys-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="phys-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="phys-step-body phys-misconception"><p class="phys-wrong"><b>The wrong idea:</b> The buoyant force equals the object's weight, so a heavier object feels a larger buoyant force.</p><p class="phys-right"><b>What actually happens:</b> The buoyant force equals the weight of the displaced fluid. It equals the object's own weight only when the object floats. Two equal-volume blocks, lead and aluminum, fully submerged feel the same buoyant force.</p></div>
+  </section>
+  <section class="phys-part phys-step" id="check" aria-labelledby="h-check">
+    <p class="phys-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="phys-step-body"><p class="phys-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="phys-qs" data-set="check"><div class="phys-set"><section class="phys-stim" data-stim="buoyancy-s1" aria-labelledby="stim-buoyancy-s1"><p class="phys-stim-k">Data table</p><h3 id="stim-buoyancy-s1">Lowering a cylinder into water</h3><div class="phys-stim-text"><p>A solid metal cylinder 10.0 cm tall with a base of area 1.00 × 10⁻³ m² hangs from a spring scale. A student lowers it, flat end first, into a beaker of water (ρ = 1000 kg/m³) and records the scale reading at each depth of the cylinder's bottom below the surface. Use g = 9.8 m/s².</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Spring scale reading against depth"><table class="phys-data"><caption>Spring scale reading against depth</caption><thead><tr><th scope="col">Depth of bottom below surface (cm)</th><th scope="col">Scale reading (N)</th></tr></thead><tbody><tr><th scope="row">0.0</th><td>2.65</td></tr><tr><th scope="row">2.0</th><td>2.45</td></tr><tr><th scope="row">4.0</th><td>2.26</td></tr><tr><th scope="row">6.0</th><td>2.06</td></tr><tr><th scope="row">8.0</th><td>1.87</td></tr><tr><th scope="row">10.0</th><td>1.67</td></tr><tr><th scope="row">12.0</th><td>1.67</td></tr></tbody></table></div></section><div class="phys-q" data-qid="phys-buoyancy-1"><p class="phys-q-stem"><span class="phys-q-n">1.</span> What is the buoyant force on the cylinder when it is fully under water? Give the value and its unit.</p><p class="phys-small">Type a number and its unit.</p><details class="phys-q-key"><summary>Show the answer</summary><p>In air the scale holds the whole weight, 2.65 N. Fully under water it reads 1.67 N, because the water pushes up with the rest: F_b = 2.65 N − 1.67 N = 0.98 N. Check: ρVg = (1000)(1.00 × 10⁻⁴ m³)(9.8) = 0.98 N.</p><ul><li>Answer: 0.98 N</li></ul></details></div><div class="phys-q" data-qid="phys-buoyancy-2"><p class="phys-q-stem"><span class="phys-q-n">2.</span> Why does the scale reading stop changing once the depth is more than 10 cm?</p><ol class="phys-opts"><li>The cylinder is fully submerged, so the volume of water it displaces stops growing</li><li>The water pressure stops increasing below 10 cm of depth</li><li>The cylinder's weight decreases until it matches the buoyant force</li><li>The buoyant force reaches its largest possible value for any object in water</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>F_b = ρ_fluid V_displaced g. Once the cylinder is all under water, V_displaced equals its full volume and cannot grow. The pressures on the top and bottom both rise with depth, but their difference stays the same.</p><ul><li><b>Correct:</b> The cylinder is fully submerged, so the volume of water it displaces stops growing: Right: the buoyant force follows the displaced volume.</li><li>The water pressure stops increasing below 10 cm of depth: Pressure keeps rising with depth; it is the difference between the bottom and top pressures that stays fixed.</li><li>The cylinder's weight decreases until it matches the buoyant force: The weight mg does not change in water; the scale reading changes because the buoyant force supports part of it.</li><li>The buoyant force reaches its largest possible value for any object in water: A bigger object would displace more water and feel a larger buoyant force.</li></ul></details></div><div class="phys-q" data-qid="phys-buoyancy-3"><p class="phys-q-stem"><span class="phys-q-n">3.</span> Use the data to find the density of the cylinder's metal. Give the value and its unit.</p><p class="phys-small">Type a number and its unit.</p><details class="phys-q-key"><summary>Show the answer</summary><p>Fully submerged, F_b = ρ_w V g and the weight is ρ_cyl V g. Dividing, ρ_cyl/ρ_w = W/F_b = 2.65 N / 0.98 N = 2.70, so ρ_cyl = 2.7 × 10³ kg/m³ (aluminum).</p><ul><li>Answer: 2.7 × 10<sup>3</sup> kg/m^3</li></ul></details></div><div class="phys-q" data-qid="phys-buoyancy-4"><p class="phys-q-stem"><span class="phys-q-n">4.</span> The experiment is repeated in salt water, which is denser than fresh water. Compared with the fresh-water value, what is the scale reading when the cylinder is fully submerged?</p><ol class="phys-opts"><li>Smaller, because the buoyant force is larger</li><li>Larger, because salt water pushes down harder on the top</li><li>The same, because the cylinder displaces the same volume</li><li>Larger, because the cylinder's weight increases in salt water</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>F_b = ρ_fluid V g: the same displaced volume of a denser fluid weighs more, so the buoyant force is larger and the scale has less weight left to support.</p><ul><li><b>Correct:</b> Smaller, because the buoyant force is larger: Right: denser fluid, larger buoyant force, smaller reading.</li><li>Larger, because salt water pushes down harder on the top: Salt water pushes harder on both the top and the bottom; the upward push on the bottom grows more.</li><li>The same, because the cylinder displaces the same volume: Same volume, but the buoyant force depends on the fluid's density too.</li><li>Larger, because the cylinder's weight increases in salt water: The gravitational force on the cylinder, mg, does not depend on the fluid around it.</li></ul></details></div><div class="phys-q" data-qid="phys-buoyancy-5"><p class="phys-q-stem"><span class="phys-q-n">5.</span> While the cylinder hangs at rest fully under water, which equation describes the forces on it?</p><ol class="phys-opts"><li>F_T + F_b = F_g</li><li>F_T = F_g + F_b</li><li>F_b = F_g</li><li>F_T = F_g</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>Two forces act up on the cylinder (the scale's tension and the water's buoyant force) and one down (Earth's gravitational force). At rest the net force is zero: F_T + F_b = F_g.</p><ul><li><b>Correct:</b> F_T + F_b = F_g: Right: up forces balance the down force.</li><li>F_T = F_g + F_b: This puts the buoyant force downward; it acts upward, opposite to gravity.</li><li>F_b = F_g: This leaves out the scale's pull; the cylinder would sink without it.</li><li>F_T = F_g: This leaves out the buoyant force, so the reading would equal the weight.</li></ul></details></div></div><div class="phys-q" data-qid="phys-buoyancy-12"><p class="phys-q-stem"><span class="phys-q-n">6.</span> A lead block and an aluminum block have the same volume and are both held fully under water. A student claims the lead block feels the larger buoyant force because it is heavier. What is the best response?</p><ol class="phys-opts"><li>The forces are equal: each displaces the same volume of water</li><li>The claim is right: a heavier object pushes more water aside</li><li>The aluminum feels more, because it is less dense and tends to rise</li><li>The lead feels more, because it sinks deeper and feels more pressure</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>F_b = ρ_fluid V_displaced g depends on the fluid and the displaced volume, not on the object. The lead sinks because its weight is larger, not because its buoyant force is different.</p><ul><li><b>Correct:</b> The forces are equal: each displaces the same volume of water: Right: same displaced volume, same buoyant force.</li><li>The claim is right: a heavier object pushes more water aside: Both displace exactly their own volume when fully submerged; weight does not change that.</li><li>The aluminum feels more, because it is less dense and tends to rise: Density decides whether an object floats, not the size of the buoyant force when submerged.</li><li>The lead feels more, because it sinks deeper and feels more pressure: Both are held at the same depth here; and once submerged, depth does not change F_b.</li></ul></details></div></div></div>
+  </section>
+  <section class="phys-part phys-step" id="summary" aria-labelledby="h-summary">
+    <p class="phys-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="phys-step-body">The buoyant force is the fluid's net upward push, caused by pressure increasing with depth; it equals the weight of the displaced fluid, ρ_fluid V_displaced g, and Newton's laws with buoyancy and gravity as separate forces decide whether an object floats, sinks or accelerates.</div>
+  </section>
+  <section class="phys-part phys-step" id="next" aria-labelledby="h-next">
+    <p class="phys-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="phys-step-body"><nav class="phys-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="fluid-flow.html">Fluids and Conservation Laws &rarr;</a></p></nav></div>
+  </section>
+  <section class="phys-part phys-step" id="connections" aria-labelledby="h-connections">
+    <p class="phys-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="phys-step-body"><ul class="phys-links phys-nav-ref"><li><a href="../notes/density-fluids.html">Back: Internal Structure and Density (8.1)</a></li><li><a href="../notes/fluid-pressure.html">Back: Pressure (8.2)</a></li><li><a href="../notes/fluid-flow.html">Next: Fluids and Conservation Laws (8.4)</a></li></ul></div>
+  </section>
+    <div class="phys-ls-actions phys-nav-ref"><button type="button" class="phys-ls-back">&larr; Previous</button><button type="button" class="phys-ls-go">Continue &rarr;</button><a class="phys-ls-go" hidden href="fluid-flow.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.phys-ls'),p=s&&s.querySelectorAll('.phys-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.phys-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apphys_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="phys-foot xshell">
+  <p class="phys-accuracy-note"><span class="phys-beta phys-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Physics 1 teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="lesson:buoyancy">Report a problem</button></span></p>
+  <p class="phys-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="phys-page-data">{"topic":"buoyancy","unit":"unit-8","free":false,"prereq":[{"id":"buoyancy-pre-1","type":"single","unit":"unit-8","topic":"buoyancy","q":"In a fluid at rest, how does the pressure at the bottom of a block compare with the pressure at its top?","options":["Larger, because the bottom is deeper","Smaller, because the block shields it","The same, because the block is small","Zero, because the block is solid"],"correct":0,"why":{"correct":"P = P₀ + ρgh grows with depth.","options":["","","",""]},"reviewHref":"../notes/fluid-pressure.html","reviewTitle":"Pressure"},{"id":"buoyancy-pre-2","type":"single","unit":"unit-8","topic":"buoyancy","q":"An object is at rest with two forces on it. What must be true?","options":["The two forces are equal in size and opposite","There are no forces on it","The larger force points up","The forces point the same way"],"correct":0,"why":{"correct":"Zero acceleration means zero net force, so the two forces balance.","options":["","","",""]},"reviewHref":"../notes/first-law.html","reviewTitle":"Newton's First Law"},{"id":"buoyancy-pre-3","type":"single","unit":"unit-8","topic":"buoyancy","q":"What is the mass of 2.0 × 10⁻³ m³ of water (ρ = 1000 kg/m³)?","options":["2.0 kg","0.50 kg","20 kg","2.0 × 10⁻⁶ kg"],"correct":0,"why":{"correct":"m = ρV = (1000 kg/m³)(2.0 × 10⁻³ m³) = 2.0 kg.","options":["","","",""]},"reviewHref":"../notes/density-fluids.html","reviewTitle":"Internal Structure and Density"}],"check":[{"id":"phys-buoyancy-1","type":"numeric","unit":"unit-8","topic":"buoyancy","practice":"2.B","level":"apply","diff":2,"stimulus":"buoyancy-s1","q":"What is the buoyant force on the cylinder when it is fully under water? Give the value and its unit.","numeric":{"answer":0.98,"tol":0.01,"unit":"N","sigfigs":2,"askUnit":true,"mistakes":[{"value":1.7,"rel":0.02,"why":"Value: that is the scale reading, the tension in the scale. The buoyant force is the drop in the reading: weight in air minus reading in water."},{"value":2.6,"rel":0.02,"why":"Value: that is the cylinder's weight. The buoyant force is the part of the weight the water now supports: 2.65 N − 1.67 N."}]},"why":{"correct":"In air the scale holds the whole weight, 2.65 N. Fully under water it reads 1.67 N, because the water pushes up with the rest: F_b = 2.65 N − 1.67 N = 0.98 N. Check: ρVg = (1000)(1.00 × 10⁻⁴ m³)(9.8) = 0.98 N."}},{"id":"phys-buoyancy-2","type":"single","unit":"unit-8","topic":"buoyancy","practice":"3.C","level":"analyze","diff":2,"stimulus":"buoyancy-s1","q":"Why does the scale reading stop changing once the depth is more than 10 cm?","options":["The cylinder is fully submerged, so the volume of water it displaces stops growing","The water pressure stops increasing below 10 cm of depth","The cylinder's weight decreases until it matches the buoyant force","The buoyant force reaches its largest possible value for any object in water"],"correct":0,"why":{"correct":"F_b = ρ_fluid V_displaced g. Once the cylinder is all under water, V_displaced equals its full volume and cannot grow. The pressures on the top and bottom both rise with depth, but their difference stays the same.","options":["Right: the buoyant force follows the displaced volume.","Pressure keeps rising with depth; it is the difference between the bottom and top pressures that stays fixed.","The weight mg does not change in water; the scale reading changes because the buoyant force supports part of it.","A bigger object would displace more water and feel a larger buoyant force."]}},{"id":"phys-buoyancy-3","type":"numeric","unit":"unit-8","topic":"buoyancy","practice":"2.A","level":"analyze","diff":3,"stimulus":"buoyancy-s1","q":"Use the data to find the density of the cylinder's metal. Give the value and its unit.","numeric":{"answer":2700,"tol":100,"unit":"kg/m^3","sigfigs":2,"askUnit":true,"mistakes":[{"value":1700,"rel":0.02,"why":"Value: you used the reading in water in place of the weight. ρ_object/ρ_water = weight / buoyant force when fully submerged: 2.65 N / 0.98 N."},{"value":370,"rel":0.02,"why":"Value: you divided the buoyant force by the weight; the ratio is upside down. The object is denser than water, so its density must be above 1000 kg/m³."}]},"why":{"correct":"Fully submerged, F_b = ρ_w V g and the weight is ρ_cyl V g. Dividing, ρ_cyl/ρ_w = W/F_b = 2.65 N / 0.98 N = 2.70, so ρ_cyl = 2.7 × 10³ kg/m³ (aluminum)."}},{"id":"phys-buoyancy-4","type":"single","unit":"unit-8","topic":"buoyancy","practice":"2.D","level":"analyze","diff":2,"stimulus":"buoyancy-s1","q":"The experiment is repeated in salt water, which is denser than fresh water. Compared with the fresh-water value, what is the scale reading when the cylinder is fully submerged?","options":["Smaller, because the buoyant force is larger","Larger, because salt water pushes down harder on the top","The same, because the cylinder displaces the same volume","Larger, because the cylinder's weight increases in salt water"],"correct":0,"why":{"correct":"F_b = ρ_fluid V g: the same displaced volume of a denser fluid weighs more, so the buoyant force is larger and the scale has less weight left to support.","options":["Right: denser fluid, larger buoyant force, smaller reading.","Salt water pushes harder on both the top and the bottom; the upward push on the bottom grows more.","Same volume, but the buoyant force depends on the fluid's density too.","The gravitational force on the cylinder, mg, does not depend on the fluid around it."]}},{"id":"phys-buoyancy-5","type":"single","unit":"unit-8","topic":"buoyancy","practice":"3.B","level":"apply","diff":2,"stimulus":"buoyancy-s1","q":"While the cylinder hangs at rest fully under water, which equation describes the forces on it?","options":["F_T + F_b = F_g","F_T = F_g + F_b","F_b = F_g","F_T = F_g"],"correct":0,"why":{"correct":"Two forces act up on the cylinder (the scale's tension and the water's buoyant force) and one down (Earth's gravitational force). At rest the net force is zero: F_T + F_b = F_g.","options":["Right: up forces balance the down force.","This puts the buoyant force downward; it acts upward, opposite to gravity.","This leaves out the scale's pull; the cylinder would sink without it.","This leaves out the buoyant force, so the reading would equal the weight."]}},{"id":"phys-buoyancy-12","type":"single","unit":"unit-8","topic":"buoyancy","practice":"3.C","level":"analyze","diff":2,"q":"A lead block and an aluminum block have the same volume and are both held fully under water. A student claims the lead block feels the larger buoyant force because it is heavier. What is the best response?","options":["The forces are equal: each displaces the same volume of water","The claim is right: a heavier object pushes more water aside","The aluminum feels more, because it is less dense and tends to rise","The lead feels more, because it sinks deeper and feels more pressure"],"correct":0,"why":{"correct":"F_b = ρ_fluid V_displaced g depends on the fluid and the displaced volume, not on the object. The lead sinks because its weight is larger, not because its buoyant force is different.","options":["Right: same displaced volume, same buoyant force.","Both displace exactly their own volume when fully submerged; weight does not change that.","Density decides whether an object floats, not the size of the buoyant force when submerged.","Both are held at the same depth here; and once submerged, depth does not change F_b."]}}],"stimuli":{"buoyancy-s1":{"kind":"table","title":"Lowering a cylinder into water","html":"\u003cdiv class=\"phys-stim-text\">\u003cp>A solid metal cylinder 10.0 cm tall with a base of area 1.00 × 10⁻³ m² hangs from a spring scale. A student lowers it, flat end first, into a beaker of water (ρ = 1000 kg/m³) and records the scale reading at each depth of the cylinder's bottom below the surface. Use g = 9.8 m/s².\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Spring scale reading against depth\">\u003ctable class=\"phys-data\">\u003ccaption>Spring scale reading against depth\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Depth of bottom below surface (cm)\u003c/th>\u003cth scope=\"col\">Scale reading (N)\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">0.0\u003c/th>\u003ctd>2.65\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">2.0\u003c/th>\u003ctd>2.45\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">4.0\u003c/th>\u003ctd>2.26\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">6.0\u003c/th>\u003ctd>2.06\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">8.0\u003c/th>\u003ctd>1.87\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">10.0\u003c/th>\u003ctd>1.67\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">12.0\u003c/th>\u003ctd>1.67\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApPhysSection = 'learn'; window.ApPhysBase = '../';</script>
+<script src="../assets/phys-curriculum.js" defer></script>
+<script src="../assets/phys-core.js" defer></script>
+<script src="../assets/phys-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/phys-questions.js" defer></script>
+<script src="../assets/phys-lesson.js" defer></script>
+</body>
+</html>

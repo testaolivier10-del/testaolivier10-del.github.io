@@ -343,7 +343,7 @@
    "options": [
     "The string's force is perpendicular to the velocity, so it does no work",
     "The string's force is zero, because the ball moves at constant speed",
-    "The string does positive work that is cancelled by negative work from gravity",
+    "The string does positive work that is canceled by negative work from gravity",
     "The ball has no acceleration, so nothing does work"
    ],
    "correct": 0,

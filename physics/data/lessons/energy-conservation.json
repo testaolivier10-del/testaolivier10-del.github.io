@@ -20,7 +20,7 @@
     "change in kinetic energy",
     "kinetic energy",
     "change in potential energy",
-    "momentum"
+    "speed"
    ],
    "correct": 0,
    "why": "The work-energy theorem: W_net = ΔK.",

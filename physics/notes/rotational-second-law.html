@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newton's Second Law for Rotation — AP® Physics 1 Notes</title>
+<meta name="description" content="A net force changes an object's velocity; a net torque changes its angular velocity. This page puts a number on that.">
+<link rel="canonical" href="https://levlprep.com/physics/notes/rotational-second-law.html">
+<meta property="og:title" content="Newton's Second Law for Rotation — AP® Physics 1 Notes">
+<meta property="og:description" content="A net force changes an object's velocity; a net torque changes its angular velocity. This page puts a number on that.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/physics/notes/rotational-second-law.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/physics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/phys.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/physics/notes/rotational-second-law.html#reading",
+      "name": "Newton's Second Law for Rotation",
+      "url": "https://levlprep.com/physics/notes/rotational-second-law.html",
+      "description": "A net force changes an object's velocity; a net torque changes its angular velocity. This page puts a number on that.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "newton's second law for rotation physics 1 explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/physics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Physics 1",
+          "item": "https://levlprep.com/physics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Torque and Rotational Dynamics",
+          "item": "https://levlprep.com/physics/units/unit-5.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Newton's Second Law for Rotation: notes",
+          "item": "https://levlprep.com/physics/notes/rotational-second-law.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="phys" data-topic="rotational-second-law" data-unit="unit-5">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="phys-rail" aria-expanded="false">&#9776; Unit 5 contents</button>
+  <aside class="tb-rail phys-nav-ref bk-rail" id="phys-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Linear Momentum</a>
+    <a class="bk-toc-chap" href="../units/unit-5.html"><span class="bk-toc-chap-n">5</span><span><b>Torque and Rotational Dynamics</b><small>6 topics</small></span></a>
+    <div class="phys-toc-prog" data-toc-prog="unit-5"><div class="tb-progress-row"><span><b>0</b> of 6 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="rotational-kinematics"><a href="rotational-kinematics.html"><span class="bk-toc-n">5.1</span>Rotational Kinematics</a></li><li data-toc-t="linear-rotational-link"><a href="linear-rotational-link.html"><span class="bk-toc-n">5.2</span>Linking Linear and Rotational Motion</a></li><li data-toc-t="torque"><a href="torque.html"><span class="bk-toc-n">5.3</span>Torque</a></li><li data-toc-t="rotational-inertia"><a href="rotational-inertia.html"><span class="bk-toc-n">5.4</span>Rotational Inertia</a></li><li data-toc-t="rotational-equilibrium"><a href="rotational-equilibrium.html"><span class="bk-toc-n">5.5</span>Rotational Equilibrium</a></li><li class="current" data-toc-t="rotational-second-law"><a href="#main" aria-current="page"><span class="bk-toc-n">5.6</span>Newton's Second Law for Rotation</a><div class="bk-toc-onpage"><p>On this page</p><a href="#net-i">α = τ net / I</a><a href="#two-analyses-for-one-system">Two analyses for one system</a><a href="#strings-over-a-pulley-with-mass">Strings over a pulley with mass</a><a href="#reading-data">Reading data</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Energy and Momentum of Rotating Systems</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="phys-crumb phys-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Physics 1</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-5.html">Torque and Rotational Dynamics</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Newton's Second Law for Rotation: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/rotational-second-law.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 5 &middot; Topic 5.6 <span class="phys-beta phys-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Newton's Second Law for Rotation</h1>
+      <p class="bk-meta phys-nav-ref"><span class="bk-small">3 min read &middot; free</span><span class="bk-chip" data-chip-topic="rotational-second-law">Not practiced</span></p>
+      <div class="bk-actions phys-share phys-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fphysics%2Fnotes%2Frotational-second-law.html&amp;title=Newton's%20Second%20Law%20for%20Rotation%3A%20physics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/physics/notes/rotational-second-law.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="phys-prose bk-prose">
+<p>A <a class="gl" href="../notes/forces-fbd.html" data-c="net-force">net force</a> changes an object's <a class="gl" href="../notes/scalars-vectors.html" data-c="velocity">velocity</a>; a <a class="gl" href="../notes/torque.html" data-c="torque">net torque</a> changes its <a class="gl" href="../notes/rotational-kinematics.html" data-c="angular-velocity">angular velocity</a>. This page puts a number on that. It is the rotational version of <a class="gl" href="../notes/second-law.html" data-c="second-law">Newton's second law</a>, and it is what lets you predict how a <a class="gl" href="../notes/third-law.html" data-c="ideal-pulley">pulley</a>, a drum or a door <a class="gl" href="../notes/scalars-vectors.html" data-c="speed">speeds</a> up when something pushes it.</p>
+
+<h2 id="net-i">α = τ<sub>net</sub> / I</h2>
+<p>For translation, a = F<sub>net</sub>/m: more <a class="gl" href="../notes/forces-fbd.html" data-c="force">force</a>, more <a class="gl" href="../notes/motion-quantities.html" data-c="acceleration">acceleration</a>; more <a class="gl" href="../notes/systems-center-of-mass.html" data-c="mass">mass</a>, less. For rotation, swap in the partners: torque for force, <a class="gl" href="../notes/rotational-inertia.html" data-c="rotational-inertia">rotational inertia</a> for mass, <a class="gl" href="../notes/rotational-kinematics.html" data-c="angular-acceleration">angular acceleration</a> for acceleration.</p>
+<p style="text-align:center"><b>α = τ<sub>net</sub> / I</b> &#160; or &#160; <b>τ<sub>net</sub> = Iα</b></p>
+<p>The angular acceleration has the direction of the net torque: a counterclockwise net torque speeds up a wheel turning counterclockwise, or slows one turning clockwise. With zero net torque, α = 0 and ω stays constant, which is the <a class="gl" href="../notes/first-law.html" data-c="first-law">first law</a> again.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A grindstone with I = 0.25 kg·m² starts from rest. A net torque of 1.5 N·m acts on it. How long until it turns at 24 rad/s?</p>
+<p>α = τ<sub>net</sub>/I = (1.5 N·m)/(0.25 kg·m²) = 6.0 rad/s².</p>
+<p>From rest, ω = αt, so t = ω/α = (24 rad/s)/(6.0 rad/s²) = <b>4.0 s</b>.</p>
+</div>
+<p>Rotational <a class="gl" href="../notes/first-law.html" data-c="inertia">inertia</a> now shows why it matters. Apply the same torque to a hoop and a disk of the same mass and radius. The hoop's I = MR² is twice the disk's ½MR², so the hoop gets half the angular acceleration.</p>
+
+<h2 id="two-analyses-for-one-system">Two analyses for one system</h2>
+<p>Many problems have a part that moves and a part that turns. A block hangs from a string wound on a <span class="gl" tabindex="0" data-c="massive-pulley">pulley with mass</span>. The block falls; the pulley spins. To describe the whole thing you need one equation for each.</p>
+<figure id="fig-pul"  class="phys-figure"><div class="phys-figimg" data-fig="pulley-block-forces"><img src="../figures/pulley-block-forces.svg" alt="A pulley of mass M and radius R turns on a fixed axle hung from the ceiling. A light string wrapped around its rim holds a block of mass m, which accelerates downward with acceleration a while the pulley gains angular acceleration α, with a = Rα. Middle: the force diagram of the pulley shows the string pulling down at the rim, Earth’s gravitational force down at the center and the axle’s force up at the center; only the string’s pull has a lever arm, so F_T R = Iα. Right: the free-body diagram of the block shows the string’s tension up, shorter than Earth’s gravitational force down, so mg − F_T = ma." width="760" height="460" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The pulley's force diagram and the block's free-body diagram. <span class="phys-credit">LevlPrep original diagram.</span></figcaption></figure>
+<ul>
+<li><b>The block</b> (translation), down positive: mg − F<sub>T</sub> = ma.</li>
+<li><b>The pulley</b> (rotation): of the forces on it, only the string's pull has a <a class="gl" href="../notes/torque.html" data-c="lever-arm">lever arm</a>, R. So F<sub>T</sub>R = Iα.</li>
+<li><b>The link</b>: the string does not slip, so a = Rα.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> A 0.200 kg block hangs from a light string wound on a uniform disk pulley (M = 1.20 kg, R = 0.080 m, I = ½MR², given) on a frictionless axle. Find the block's acceleration and the <a class="gl" href="../notes/forces-fbd.html" data-c="tension">tension</a>. Use g = 9.8 m/s².</p>
+<p>Pulley: F<sub>T</sub>R = (½MR²)(a/R), so F<sub>T</sub> = ½Ma = (0.600 kg)a. R cancels.</p>
+<p>Block: mg − F<sub>T</sub> = ma, so mg = (m + ½M)a.</p>
+<p>a = (0.200 kg)(9.8 m/s²)/(0.200 kg + 0.600 kg) = <b>2.45 m/s²</b>.</p>
+<p>F<sub>T</sub> = (0.600 kg)(2.45 m/s²) = <b>1.47 N</b>. Check with the block: (0.200 kg)(9.8 − 2.45) m/s² = 1.47 N.</p>
+</div>
+<p>Two features of that answer are worth remembering. The tension (1.47 N) is <b>less</b> than the block's <a class="gl" href="../notes/forces-fbd.html" data-c="weight">weight</a> (1.96 N): the block speeds up downward, so the net force on it must be down. And the acceleration is less than g, because part of <a class="gl" href="../notes/gravitational-force.html" data-c="gravitational-force">gravity</a>'s pull goes into spinning up the pulley.</p>
+
+<h2 id="strings-over-a-pulley-with-mass">Strings over a pulley with mass</h2>
+<p>With an ideal (massless) pulley, the tension is the same on both sides of the string. That stops being true once the pulley has mass. To give the pulley an angular acceleration, the two sides must pull with different tensions: (F<sub>T1</sub> − F<sub>T2</sub>)R = Iα. The heavier block's side has the larger tension, but still less than that block's weight.</p>
+
+<h2 id="reading-data">Reading data</h2>
+<p>If you apply several known torques to a wheel and measure α, then α = (1/I)τ says a graph of α against τ is a line through the origin with <a class="gl" href="../notes/math-slopes-areas.html" data-c="slope">slope</a> 1/I. If <a class="gl" href="../notes/friction.html" data-c="friction">friction</a> at the axle exerts a constant torque, the line keeps its slope but shifts: the wheel only starts to speed up once the applied torque exceeds the friction torque.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare"><thead><tr><th>Translation</th><th>Rotation</th></tr></thead><tbody>
+<tr><td>force F</td><td>torque τ</td></tr>
+<tr><td>mass m</td><td>rotational inertia I</td></tr>
+<tr><td>a = F<sub>net</sub>/m</td><td>α = τ<sub>net</sub>/I</td></tr>
+<tr><td>ΣF = 0: velocity constant</td><td>Στ = 0: angular velocity constant</td></tr>
+</tbody></table></div>
+
+    </article>
+    <p class="phys-report-page phys-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:rotational-second-law">Report a problem</button></p>
+    <nav class="tb-chapter-nav phys-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="rotational-equilibrium.html"><span>&larr; Previous</span><b>Rotational Equilibrium</b></a><a class="tb-chapter-link next" href="rotational-kinetic-energy.html"><span>Next &rarr;</span><b>Rotational Kinetic Energy</b></a></nav>
+  </main>
+</div>
+<footer class="phys-foot xshell">
+  <p class="phys-accuracy-note"><span class="phys-beta phys-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Physics 1 teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:rotational-second-law">Report a problem</button></span></p>
+  <p class="phys-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPhysSection = 'learn'; window.ApPhysBase = '../';</script>
+<script src="../assets/phys-curriculum.js" defer></script>
+<script src="../assets/phys-core.js" defer></script>
+<script src="../assets/phys-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/phys-toc.js" defer></script>
+</body>
+</html>

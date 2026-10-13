@@ -70,12 +70,11 @@
     {
       // As AP® Chemistry (docs/apphys-spec.md decision 2): the mark only in
       // the full names, never in a URL; the key travels as its folder, "physics".
-      // 'hidden' until its first unit is published (docs/apphys-spec.md
-      // decision 6): no search chip or Continue link for an empty course.
-      // Set it to 'beta' in the publishing commit.
+      // Was 'hidden' until published (docs/apphys-spec.md decision 6); 'beta'
+      // since the launch (decision 11).
       key: 'apphys', short: 'Physics', name: 'AP® Physics 1', productName: 'AP® Physics 1',
       path: '/physics/', dir: 'physics', storagePrefix: 'apphys_', rankLabel: 'Physics rank',
-      searchLabel: 'Physics', aliases: ['physics', 'phys', 'physics-1'], paid: true, status: 'hidden', order: 6,
+      searchLabel: 'Physics', aliases: ['physics', 'phys', 'physics-1'], paid: true, status: 'beta', order: 6,
     },
   ];
 

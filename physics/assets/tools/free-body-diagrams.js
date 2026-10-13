@@ -287,7 +287,7 @@
     if(!scenes.length) scenes = ['table'];
     var sc = scenes[0], P = {}, LS = null, comps = false, run = null, motion = { t: 0 }, sel = -1, start = null;
     scenes.forEach(function(s){ P[s] = Object.assign({}, DEF[s]); });
-    host.innerHTML = '<section class="bt-problem fb-ex" aria-labelledby="fbx-h"><h2 id="fbx-h" class="sr-only">Explore the forces</h2>' +
+    host.innerHTML = '<section class="bt-problem fb-ex" aria-labelledby="fbx-title"><h2 id="fbx-title" class="sr-only">Explore the forces</h2>' +
       '<div class="fb-stage"><svg class="phys-scene fb-svg" viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-labelledby="fbx-d"><title id="fbx-d">Free-body diagram scene</title><g class="fb-root"></g></svg></div>' +
       '<p class="sr-only fb-live" aria-live="polite"></p>' +
       '<div class="fb-dock"><div class="fb-pick"></div><div class="fb-main"></div><div class="bt-buttons fb-btns"><button type="button" class="bt-btn fb-run" aria-pressed="false">▶ Run</button><button type="button" class="bt-btn fb-comp-b" aria-pressed="false">Components</button></div></div>' +

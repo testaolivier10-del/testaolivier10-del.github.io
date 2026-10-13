@@ -29,7 +29,7 @@
     { key: 'anp', searchLabel: 'A&P', name: 'Anatomy & Physiology', dir: 'anatomy-physiology', aliases: ['a&p', 'ap', 'anatomy-physiology'], status: 'beta' },
     { key: 'apbio', searchLabel: 'Biology', name: 'AP® Biology', dir: 'bio', aliases: ['bio', 'biology'], status: 'beta' },
     { key: 'apchem', searchLabel: 'Chemistry', name: 'AP® Chemistry', dir: 'chem', aliases: ['chem', 'chemistry'], status: 'beta' },
-    { key: 'apphys', searchLabel: 'Physics', name: 'AP® Physics 1', dir: 'physics', aliases: ['physics', 'phys', 'physics-1'], status: 'hidden' },
+    { key: 'apphys', searchLabel: 'Physics', name: 'AP® Physics 1', dir: 'physics', aliases: ['physics', 'phys', 'physics-1'], status: 'beta' },
   ];
   // courses:end
   var COURSES = COURSE_LIST.filter(function (c) { return c.status !== 'hidden'; }).map(function (c) {

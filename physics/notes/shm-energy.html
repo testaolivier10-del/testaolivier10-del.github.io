@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy of Simple Harmonic Oscillators — AP® Physics 1 Notes</title>
+<meta name="description" content="Unit 3 gave you a powerful shortcut: follow the energy instead of the forces.">
+<link rel="canonical" href="https://levlprep.com/physics/notes/shm-energy.html">
+<meta property="og:title" content="Energy of Simple Harmonic Oscillators — AP® Physics 1 Notes">
+<meta property="og:description" content="Unit 3 gave you a powerful shortcut: follow the energy instead of the forces.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/physics/notes/shm-energy.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/physics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/phys.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/physics/notes/shm-energy.html#reading",
+      "name": "Energy of Simple Harmonic Oscillators",
+      "url": "https://levlprep.com/physics/notes/shm-energy.html",
+      "description": "Unit 3 gave you a powerful shortcut: follow the energy instead of the forces.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "energy of simple harmonic oscillators physics 1 explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/physics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Physics 1",
+          "item": "https://levlprep.com/physics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Oscillations",
+          "item": "https://levlprep.com/physics/units/unit-7.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Energy of Simple Harmonic Oscillators: notes",
+          "item": "https://levlprep.com/physics/notes/shm-energy.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="phys" data-topic="shm-energy" data-unit="unit-7">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="phys-rail" aria-expanded="false">&#9776; Unit 7 contents</button>
+  <aside class="tb-rail phys-nav-ref bk-rail" id="phys-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Energy and Momentum of Rotating Systems</a>
+    <a class="bk-toc-chap" href="../units/unit-7.html"><span class="bk-toc-chap-n">7</span><span><b>Oscillations</b><small>4 topics</small></span></a>
+    <div class="phys-toc-prog" data-toc-prog="unit-7"><div class="tb-progress-row"><span><b>0</b> of 4 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="shm-intro"><a href="shm-intro.html"><span class="bk-toc-n">7.1</span>Defining Simple Harmonic Motion</a></li><li data-toc-t="shm-period"><a href="shm-period.html"><span class="bk-toc-n">7.2</span>Frequency and Period of SHM</a></li><li data-toc-t="shm-representations"><a href="shm-representations.html"><span class="bk-toc-n">7.3</span>Representing and Analyzing SHM</a></li><li class="current" data-toc-t="shm-energy"><a href="#main" aria-current="page"><span class="bk-toc-n">7.4</span>Energy of Simple Harmonic Oscillators</a><div class="bk-toc-onpage"><p>On this page</p><a href="#name-the-system-state-the-condition">Name the system, state the condition</a><a href="#the-total-is-set-by-the">The total is set by the amplitude</a><a href="#energy-against-position">Energy against position</a><a href="#energy-bar-charts">Energy bar charts</a><a href="#the-pendulum">The pendulum</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Fluids</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="phys-crumb phys-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Physics 1</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-7.html">Oscillations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Energy of Simple Harmonic Oscillators: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/shm-energy.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 7 &middot; Topic 7.4 <span class="phys-beta phys-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Energy of Simple Harmonic Oscillators</h1>
+      <p class="bk-meta phys-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="shm-energy">Not practiced</span></p>
+      <div class="bk-actions phys-share phys-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fphysics%2Fnotes%2Fshm-energy.html&amp;title=Energy%20of%20Simple%20Harmonic%20Oscillators%3A%20physics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/physics/notes/shm-energy.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="phys-prose bk-prose">
+<p>Unit 3 gave you a powerful shortcut: follow the <a class="gl" href="../notes/kinetic-energy.html" data-c="energy">energy</a> instead of the <a class="gl" href="../notes/forces-fbd.html" data-c="force">forces</a>. An oscillator is a perfect place to use it, because the energy moves back and forth between two forms in a fixed total. This page shows how to find <a class="gl" href="../notes/scalars-vectors.html" data-c="speed">speeds</a>, <a class="gl" href="../notes/shm-intro.html" data-c="amplitude">amplitudes</a> and energy shares from that one idea, and how to draw the energy graphs and bar charts the exam asks for.</p>
+
+<h2 id="name-the-system-state-the-condition">Name the system, state the condition</h2>
+<p>Take a block on a horizontal spring sliding on a frictionless surface. Choose the <b>system</b> to be the block and the spring. The <a class="gl" href="../notes/spring-forces.html" data-c="spring-force">spring force</a> is internal and conservative, <a class="gl" href="../notes/gravitational-force.html" data-c="gravitational-force">gravity</a> and the <a class="gl" href="../notes/forces-fbd.html" data-c="normal-force">normal force</a> do no work on horizontal motion, and there is no <a class="gl" href="../notes/friction.html" data-c="friction">friction</a>. So no energy enters or leaves the system as work, and its <b><a class="gl" href="../notes/energy-conservation.html" data-c="mechanical-energy">mechanical energy</a> is constant</b>:</p>
+<p style="text-align:center"><b>E = K + U<sub>s</sub> = ½mv² + ½kx² = constant</b></p>
+<p>Always write the condition with the claim ("no friction, so the mechanical energy of the block-spring system is constant"). A bare "<a class="gl" href="../notes/energy-conservation.html" data-c="conservation-of-energy">energy is conserved</a>" earns no credit on a justification.</p>
+
+<h2 id="the-total-is-set-by-the">The total is set by the amplitude</h2>
+<p>At a turning point, x = ±A, the block is momentarily at rest, so K = 0 and every <a class="gl" href="../notes/kinetic-energy.html" data-c="joule">joule</a> is in the spring:</p>
+<p style="text-align:center"><b>E = ½kA²</b></p>
+<p>At equilibrium, x = 0, the spring is relaxed, so U<sub>s</sub> = 0 and every joule is kinetic: ½mv<sub>max</sub>² = ½kA². In between, the energy is shared, but the total does not change.</p>
+<p>Two consequences are tested often. First, the energy goes as the <b>amplitude squared</b>: double A and the total energy is four times as large. Second, <a class="gl" href="../notes/kinetic-energy.html" data-c="kinetic-energy">kinetic energy</a> is never negative, so its smallest value is zero, reached at the turning points.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A 0.40 kg block on a spring with k = 100 N/m is released from rest at x = 0.10 m on a frictionless surface. Find its top speed.</p>
+<p>System: block and spring. No friction, so the mechanical energy is constant.</p>
+<p>At release: E = ½kA² = ½(100 N/m)(0.10 m)² = 0.50 J.</p>
+<p>At x = 0: ½mv² = 0.50 J, so v = √(2 × 0.50 J / 0.40 kg) = √2.5 m/s = <b>1.6 m/s</b>.</p>
+</div>
+
+<h2 id="energy-against-position">Energy against position</h2>
+<figure id="fig-energy"  class="phys-figure"><div class="phys-figimg" data-fig="shm-energy-position"><img src="../figures/shm-energy-position.svg" alt="Energy against position for a block on a spring: the spring potential energy ½kx² is a parabola, zero at x = 0 and equal to the total at ±A; the kinetic energy is the inverted parabola; the total ½kA² is a flat line. Bar charts at x = +A, +A/2 and 0 show K = 0 and U_s = E; K = 3E/4 and U_s = E/4; K = E and U_s = 0." width="760" height="470" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Energy against position for a block on a spring. The total is a flat line; the spring energy is a parabola; the kinetic energy fills the gap. <span class="phys-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Plot energy against the block's <b><a class="gl" href="../notes/scalars-vectors.html" data-c="position">position</a></b> (not time) and you get <a class="figref" href="#fig-energy">the figure</a>:</p>
+<ul>
+<li>U<sub>s</sub> = ½kx² is a parabola, zero at x = 0 and equal to E at x = ±A.</li>
+<li>K = E − ½kx² is the same parabola turned upside down, largest at x = 0 and zero at x = ±A.</li>
+<li>The total E is a <b>horizontal line</b>. Readers report students drawing a sloped or curved total; with no friction it cannot change.</li>
+</ul>
+<p>Because U<sub>s</sub> goes as x², the energy split is not linear in position. At x = A/2 the spring holds (½)² = ¼ of the energy and the block has ¾. The energy is split evenly only at x = A/√2 ≈ 0.71A.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> For the block in worked example 1, find its speed at x = 0.050 m.</p>
+<p>U<sub>s</sub> = ½(100 N/m)(0.050 m)² = 0.125 J.</p>
+<p>K = E − U<sub>s</sub> = 0.50 J − 0.125 J = 0.375 J.</p>
+<p>v = √(2 × 0.375 J / 0.40 kg) = √1.875 m/s = <b>1.4 m/s</b>, about 87% of the top speed at half the amplitude.</p>
+</div>
+
+<h2 id="energy-bar-charts">Energy bar charts</h2>
+<p>An <a class="gl" href="../notes/energy-conservation.html" data-c="energy-bar-chart">energy bar chart</a> shows each kind of energy as a bar at one instant. For a block on a spring the bars are K and U<sub>s</sub>, and they must add to the same total at every position. At x = A: no K bar, full U<sub>s</sub> bar. At x = 0: full K bar, no U<sub>s</sub> bar. At x = A/2: a U<sub>s</sub> bar one quarter of the total and a K bar three quarters. Free-response questions ask you to draw these and then write an equation with one term for each nonzero bar.</p>
+
+<h2 id="the-pendulum">The pendulum</h2>
+<p>For a <a class="gl" href="../notes/shm-intro.html" data-c="simple-pendulum">pendulum</a>, choose the bob and Earth as the system. The string pulls at right angles to the bob's motion, so it does no work, and with negligible air resistance the mechanical energy is constant. The energy trades between <a class="gl" href="../notes/potential-energy.html" data-c="gravitational-pe">gravitational potential energy</a> and kinetic energy. If the bob is released from rest a height Δy above its lowest point,</p>
+<p style="text-align:center"><b>mgΔy = ½mv² &nbsp;so&nbsp; v = √(2gΔy)</b></p>
+<p>at the bottom. The <a class="gl" href="../notes/systems-center-of-mass.html" data-c="mass">mass</a> cancels, as it did in the pendulum's period. The highest points of the swing are the turning points (K = 0); the lowest point is the <a class="gl" href="../notes/shm-intro.html" data-c="equilibrium-position">equilibrium position</a> (largest K).</p>
+<p>We use g = 9.8 m/s² here; the exam accepts 10 m/s² as long as you use one value consistently.</p>
+
+    </article>
+    <p class="phys-report-page phys-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:shm-energy">Report a problem</button></p>
+    <nav class="tb-chapter-nav phys-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="shm-representations.html"><span>&larr; Previous</span><b>Representing and Analyzing SHM</b></a><a class="tb-chapter-link next" href="density-fluids.html"><span>Next &rarr;</span><b>Internal Structure and Density</b></a></nav>
+  </main>
+</div>
+<footer class="phys-foot xshell">
+  <p class="phys-accuracy-note"><span class="phys-beta phys-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Physics 1 teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:shm-energy">Report a problem</button></span></p>
+  <p class="phys-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPhysSection = 'learn'; window.ApPhysBase = '../';</script>
+<script src="../assets/phys-curriculum.js" defer></script>
+<script src="../assets/phys-core.js" defer></script>
+<script src="../assets/phys-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/phys-toc.js" defer></script>
+</body>
+</html>

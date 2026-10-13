@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angular Momentum and Angular Impulse — AP® Physics 1</title>
+<meta name="description" content="Angular momentum is L = Iω for a rigid object turning about a fixed axis, and L = rmv sin θ for a point object about a chosen point.">
+<link rel="canonical" href="https://levlprep.com/physics/lessons/angular-momentum.html">
+<meta property="og:title" content="Angular Momentum and Angular Impulse — AP® Physics 1">
+<meta property="og:description" content="Angular momentum is L = Iω for a rigid object turning about a fixed axis, and L = rmv sin θ for a point object about a chosen point.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/physics/lessons/angular-momentum.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/physics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/phys.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/physics/lessons/angular-momentum.html#lesson",
+      "name": "Angular Momentum and Angular Impulse",
+      "url": "https://levlprep.com/physics/lessons/angular-momentum.html",
+      "description": "Angular momentum is L = Iω for a rigid object turning about a fixed axis, and L = rmv sin θ for a point object about a chosen point.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".phys-ls-card"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "angular momentum"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "angular momentum of a point object"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "angular impulse"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/physics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Physics 1",
+          "item": "https://levlprep.com/physics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Energy and Momentum of Rotating Systems",
+          "item": "https://levlprep.com/physics/units/unit-6.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Angular Momentum and Angular Impulse",
+          "item": "https://levlprep.com/physics/lessons/angular-momentum.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="phys" data-topic="angular-momentum" data-unit="unit-6">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="phys-crumb phys-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Physics 1</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-6.html">Energy and Momentum of Rotating Systems</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Angular Momentum and Angular Impulse</span></nav></div>
+<div class="xshell phys-ls phys-stepped">
+  <aside class="phys-ls-rail phys-nav-ref" aria-label="Lesson parts">
+    <p class="phys-ls-k">Unit 6 · Energy and Momentum of Rotating Systems</p>
+    <p class="phys-ls-links"><a href="../units/unit-6.html">&larr; Back to the unit</a><a href="../notes/angular-momentum.html">Read the notes</a></p>
+    <div class="phys-ls-prog"><div class="phys-ls-track"><div class="phys-ls-fill"></div></div><span class="phys-ls-count">Step 1 / 11</span></div>
+    <ol class="phys-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="phys-ls-main phys-lesson">
+  <header class="phys-ls-hero">
+    <div class="eyebrow">Unit 6 · Topic 6.3 <span class="phys-beta phys-nav-ref">Beta</span></div>
+    <h1>Angular Momentum and Angular Impulse</h1>
+    <p class="lede">Angular momentum is L = Iω for a rigid object turning about a fixed axis, and L = rmv sin θ for a point object about a chosen point.</p>
+    <p class="phys-tags phys-nav-ref"><span class="phys-tag">Practice 1: Creating Representations</span><span class="phys-tag">Practice 2: Mathematical Routines</span><span class="phys-tag">Practice 3: Scientific Questioning and Argumentation</span></p>
+    <div class="phys-share phys-nav-ref" role="group" aria-label="Share or print this lesson"><a class="phys-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fphysics%2Flessons%2Fangular-momentum.html&amp;title=Angular%20Momentum%20and%20Angular%20Impulse%3A%20physics%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="phys-share-btn" data-copy="https://levlprep.com/physics/lessons/angular-momentum.html">Copy link</button><button type="button" class="phys-share-btn" data-print>Print</button></div>
+    <p class="phys-small phys-nav-ref"><a href="../practice.html?topic=angular-momentum">Question set for this topic</a></p>
+  </header>
+  <div class="phys-ls-card">
+  <section class="phys-part phys-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="phys-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="phys-step-body phys-hook">A spinning bicycle wheel is hard to stop and hard to tilt, and a puck sliding past you in a straight line has, in a precise sense, some of the same turning quantity about the spot where you stand. <span class="gl" tabindex="0" data-c="angular-momentum">Angular momentum</span> measures "how much turning" an object carries, and <a class="gl" href="../notes/torque.html" data-c="torque">torque</a> acting over time is what changes it.</div>
+  </section>
+  <section class="phys-part phys-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="phys-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="phys-step-body"><nav class="phys-nav-ref" aria-label="Earlier topics"><ul class="phys-links"><li><a href="../notes/motion-quantities.html">Displacement, Velocity and Acceleration</a></li><li><a href="../notes/math-trig-components.html">Right-Triangle Trigonometry and Vector Components</a></li><li><a href="../notes/linear-momentum.html">Linear Momentum</a></li><li><a href="../notes/impulse.html">Change in Momentum and Impulse</a></li><li><a href="../notes/rotational-kinematics.html">Rotational Kinematics</a></li><li><a href="../notes/torque.html">Torque</a></li><li><a href="../notes/rotational-inertia.html">Rotational Inertia</a></li></ul></nav></div>
+  </section>
+  <section class="phys-part phys-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="phys-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="phys-step-body"><div class="phys-qs" data-set="prereq"><div class="phys-q" data-qid="angular-momentum-pre-1"><p class="phys-q-stem"><span class="phys-q-n">1.</span> A 2.0 kg cart moves at 3.0 m/s. Its momentum is</p><ol class="phys-opts"><li>6.0 kg·m/s</li><li>9.0 kg·m/s</li><li>1.5 kg·m/s</li><li>18 kg·m/s</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>p = mv.</p><ul><li><b>Correct:</b> 6.0 kg·m/s: </li><li>9.0 kg·m/s: </li><li>1.5 kg·m/s: </li><li>18 kg·m/s: </li></ul></details></div><div class="phys-q" data-qid="angular-momentum-pre-2"><p class="phys-q-stem"><span class="phys-q-n">2.</span> The area under a force-time graph equals</p><ol class="phys-opts"><li>the impulse, the change in momentum</li><li>the work done</li><li>the change in kinetic energy</li><li>the average force</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>J = FΔt = Δp.</p><ul><li><b>Correct:</b> the impulse, the change in momentum: </li><li>the work done: </li><li>the change in kinetic energy: </li><li>the average force: </li></ul></details></div></div></div>
+  </section>
+  <section class="phys-part phys-step" id="figure" aria-labelledby="h-figure">
+    <p class="phys-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="phys-step-body"><figure class="phys-figure phys-lesson-fig"><div class="phys-figimg" data-fig="puck-passing-point"><img src="../figures/puck-passing-point.svg" alt="Top view of a level, frictionless table. A puck of mass m slides at constant velocity v along a straight dashed line. A point P lies off the line, a perpendicular distance d from it. The puck is shown at three positions; gray lines from P reach the first and third positions, and at the first one the angle θ between r and v is marked. The amber perpendicular from P to the line has length r⊥ = d. A panel gives L = rmv sin θ = mvd: r changes as the puck moves, but r sin θ always equals d, so the angular momentum about P is constant. About any point on the puck’s own line, L is zero." width="760" height="420" loading="lazy" decoding="async"></div><figcaption>A puck in straight-line motion has angular <a class="gl" href="../notes/linear-momentum.html" data-c="momentum">momentum</a> mvd about a point a <a class="gl" href="../notes/scalars-vectors.html" data-c="distance">distance</a> d from its path, the same at every <a class="gl" href="../notes/scalars-vectors.html" data-c="position">position</a>. <span class="phys-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="phys-part phys-step" id="chain" aria-labelledby="h-chain">
+    <p class="phys-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="phys-step-body"><ol class="phys-chain"><li><span class="phys-cause">A <a class="gl" href="../notes/rotational-kinematics.html" data-c="rigid-body">rigid object</a> turns at ω and has <a class="gl" href="../notes/rotational-inertia.html" data-c="rotational-inertia">rotational inertia</a> I</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">it has angular momentum L = Iω</span></li><li><span class="phys-cause">A <a class="gl" href="../notes/motion-quantities.html" data-c="point-object">point object</a> moves with momentum mv past a chosen point</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">it has angular momentum L = rmv <a class="gl" href="../notes/math-trig-components.html" data-c="sine-cosine">sin</a> θ = mv × (perpendicular distance) about that point</span></li><li><span class="phys-cause">A net torque acts for a time Δt</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">it delivers an <span class="gl" tabindex="0" data-c="angular-impulse">angular impulse</span> τΔt</span></li><li><span class="phys-cause">An angular <a class="gl" href="../notes/impulse.html" data-c="impulse">impulse</a> is delivered</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">the angular momentum changes by exactly that much: ΔL = τΔt</span></li><li><span class="phys-cause">The net torque is zero</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">L stays the same, and the L-t graph is flat</span></li></ol></div>
+  </section>
+  <section class="phys-part phys-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="phys-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="phys-step-body"><ul class="phys-ideas"><li><b>L = Iω</b> for a rigid object about a <a class="gl" href="../notes/rotational-kinematics.html" data-c="axis-of-rotation">fixed axis</a>; unit kg·m²/s.</li><li>A point object has <b>L = rmv sin θ</b> about a chosen point: momentum × perpendicular distance from the point to its line of motion. Change the point, change L.</li><li>A puck in straight-line motion keeps the same L about any fixed point, and has L = 0 about points on its path.</li><li><b>Angular impulse</b> τΔt = ΔL; it is the area under a τ-t graph.</li><li>Net torque = <a class="gl" href="../notes/math-slopes-areas.html" data-c="slope">slope</a> of the L-t graph (and = Iα when I is constant).</li></ul></div>
+  </section>
+  <section class="phys-part phys-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="phys-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="phys-step-body phys-misconception"><p class="phys-wrong"><b>The wrong idea:</b> Only spinning objects have angular momentum; a puck moving in a straight line has none.</p><p class="phys-right"><b>What actually happens:</b> About any point not on its line of motion, a moving point object has L = mv × (perpendicular distance). Whether something has angular momentum depends on the point you measure it about.</p></div>
+  </section>
+  <section class="phys-part phys-step" id="check" aria-labelledby="h-check">
+    <p class="phys-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="phys-step-body"><p class="phys-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="phys-qs" data-set="check"><div class="phys-set"><section class="phys-stim" data-stim="angular-momentum-s1" aria-labelledby="stim-angular-momentum-s1"><p class="phys-stim-k">Diagram</p><h3 id="stim-angular-momentum-s1">A puck sliding past two points</h3><div class="phys-stim-html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 230" role="img" aria-label="Top view of a 0.20 kg puck sliding at 3.0 m/s along a straight line on a frictionless table, passing 0.40 m from point P; point Q lies on the puck’s path" font-family="Arial, Helvetica, sans-serif" style="max-width:100%;height:auto"><rect width="560" height="230" fill="#FFFFFF"/><rect x="20" y="20" width="520" height="200" rx="8" fill="#EEF1EF" stroke="#C9CFCC"/><line x1="40" y1="70" x2="520" y2="70" stroke="#C9CFCC" stroke-width="1.4" stroke-dasharray="6 5"/><circle cx="140" cy="70" r="13" fill="#8E989E" stroke="#1F2A28" stroke-width="2"/><line x1="155" y1="70" x2="214" y2="70" stroke="#B07A00" stroke-width="3.5"/><polygon points="225,70 214,76 214,64" fill="#B07A00"/><text x="190" y="58" font-size="12.5" fill="#B07A00" font-weight="bold">v = 3.0 m/s</text><circle cx="280" cy="190" r="5" fill="#1F2A28"/><text x="290" y="194" font-size="14" fill="#1F2A28" font-weight="bold">P</text><circle cx="470" cy="70" r="5" fill="#1F2A28"/><text x="470" y="58" font-size="14" fill="#1F2A28" text-anchor="middle" font-weight="bold">Q</text><line x1="280" y1="129" x2="280" y2="176" stroke="#5A6268" stroke-width="1.4"/><polygon points="280,184 276,176 284,176" fill="#5A6268"/><line x1="280" y1="129" x2="280" y2="82" stroke="#5A6268" stroke-width="1.4"/><polygon points="280,74 284,82 276,82" fill="#5A6268"/><text x="288" y="134" font-size="12" fill="#1F2A28">0.40 m</text><text x="34" y="210" font-size="12" fill="#5A6268">Top view, level frictionless table. Puck mass 0.20 kg. Q lies on the puck’s path.</text></svg></div></section><div class="phys-q" data-qid="phys-angular-momentum-1"><p class="phys-q-stem"><span class="phys-q-n">1.</span> What is the size of the puck’s angular momentum about point P? Give the value and its unit.</p><p class="phys-small">Type a number and its unit.</p><details class="phys-q-key"><summary>Show the answer</summary><p>L = rmv sin θ = mv(r sin θ) = mvd = (0.20 kg)(3.0 m/s)(0.40 m) = 0.24 kg·m²/s.</p><ul><li>Answer: 0.24 kg·m^2/s</li></ul></details></div><div class="phys-q" data-qid="phys-angular-momentum-2"><p class="phys-q-stem"><span class="phys-q-n">2.</span> As the puck slides on past P, its distance r from P grows. Its angular momentum about P</p><ol class="phys-opts"><li>stays the same, because r sin θ stays 0.40 m</li><li>grows, because r grows</li><li>shrinks, because the puck moves away from P</li><li>is zero, because the puck is not turning</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>L = rmv sin θ, and r sin θ is the perpendicular distance from P to the line of motion, 0.40 m at every position. With m and v constant, L about P stays 0.24 kg·m²/s.</p><ul><li><b>Correct:</b> stays the same, because r sin θ stays 0.40 m: Right: the perpendicular distance from P to the path never changes.</li><li>grows, because r grows: r grows, but sin θ shrinks so that r sin θ stays 0.40 m.</li><li>shrinks, because the puck moves away from P: Moving away along a straight line keeps the lever arm, and so L, the same.</li><li>is zero, because the puck is not turning: A point object moving past a point has angular momentum about it, turning or not.</li></ul></details></div><div class="phys-q" data-qid="phys-angular-momentum-3"><p class="phys-q-stem"><span class="phys-q-n">3.</span> What is the puck’s angular momentum about point Q, which lies on its path?</p><ol class="phys-opts"><li>Zero</li><li>0.24 kg·m²/s</li><li>0.60 kg·m²/s</li><li>It depends on how far the puck is from Q</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>The puck’s velocity points along the line through Q, so the perpendicular distance from Q to its line of motion is zero: L = mv(0) = 0. Angular momentum depends on the point you choose.</p><ul><li><b>Correct:</b> Zero: Right: the puck moves straight along a line through Q, so θ = 0 or 180°.</li><li>0.24 kg·m²/s: That is the value about P. About Q the lever arm is zero.</li><li>0.60 kg·m²/s: That is the linear momentum, mv, in kg·m/s.</li><li>It depends on how far the puck is from Q: Along a line through Q, r sin θ = 0 at every distance.</li></ul></details></div><div class="phys-q" data-qid="phys-angular-momentum-4"><p class="phys-q-stem"><span class="phys-q-n">4.</span> A second puck of the same mass slides at 6.0 m/s along a parallel line 0.20 m from P. Compared with the first puck, its angular momentum about P is</p><ol class="phys-opts"><li>the same</li><li>twice as large</li><li>half as large</li><li>four times as large</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>L = mvd: (0.20)(6.0)(0.20) = 0.24 kg·m²/s, the same as (0.20)(3.0)(0.40).</p><ul><li><b>Correct:</b> the same: Right: twice the speed × half the lever arm.</li><li>twice as large: The speed doubles, but the lever arm halves.</li><li>half as large: The lever arm halves, but the speed doubles.</li><li>four times as large: L = mvd is the product; the two factors cancel.</li></ul></details></div></div><div class="phys-q" data-qid="phys-angular-momentum-9"><p class="phys-q-stem"><span class="phys-q-n">5.</span> For a rigid object turning about a fixed axis, angular momentum is</p><ol class="phys-opts"><li>L = Iω, in kg·m²/s</li><li>L = ½Iω², in joules</li><li>L = Iα, in N·m</li><li>L = mv, in kg·m/s</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>L = Iω pairs I with m and ω with v, as p = mv does. Its unit is kg·m²/s (the same as N·m·s and J·s).</p><ul><li><b>Correct:</b> L = Iω, in kg·m²/s: Right: the rotational partner of p = mv.</li><li>L = ½Iω², in joules: That is rotational kinetic energy.</li><li>L = Iα, in N·m: Iα is the net torque.</li><li>L = mv, in kg·m/s: That is linear momentum.</li></ul></details></div><div class="phys-q" data-qid="phys-angular-momentum-11"><p class="phys-q-stem"><span class="phys-q-n">6.</span> A torque of 0.60 N·m acts on a spinning top for 0.50 s in the direction it spins. By how much does its angular momentum change?</p><p class="phys-small">Type a number in kg·m^2/s.</p><details class="phys-q-key"><summary>Show the answer</summary><p>ΔL = τΔt = (0.60 N·m)(0.50 s) = 0.30 kg·m²/s.</p><ul><li>Answer: 0.30 kg·m^2/s</li></ul></details></div><div class="phys-q" data-qid="phys-angular-momentum-13"><p class="phys-q-stem"><span class="phys-q-n">7.</span> A graph of a wheel’s angular momentum against time is a horizontal line. What does that tell you?</p><ol class="phys-opts"><li>The net torque on the wheel is zero</li><li>The wheel is not turning</li><li>The wheel’s angular acceleration is constant and nonzero</li><li>A constant torque is acting on the wheel</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>τ_net = ΔL/Δt, the slope of the L-t graph. A horizontal line has zero slope, so the net torque is zero and ω is constant.</p><ul><li><b>Correct:</b> The net torque on the wheel is zero: Right: the slope of L-t is the net torque.</li><li>The wheel is not turning: A horizontal line at a nonzero L means steady turning.</li><li>The wheel’s angular acceleration is constant and nonzero: Constant nonzero α would make L change steadily, a sloped line.</li><li>A constant torque is acting on the wheel: A constant nonzero torque gives a sloped straight line.</li></ul></details></div></div></div>
+  </section>
+  <section class="phys-part phys-step" id="summary" aria-labelledby="h-summary">
+    <p class="phys-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="phys-step-body">Angular momentum is L = Iω for a rigid object turning about a fixed axis, and L = rmv sin θ for a point object about a chosen point. A net torque acting over a time changes it: angular impulse τΔt = ΔL, the area under a τ-t graph, and the net torque is the slope of an L-t graph.</div>
+  </section>
+  <section class="phys-part phys-step" id="next" aria-labelledby="h-next">
+    <p class="phys-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="phys-step-body"><nav class="phys-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="angular-momentum-conservation.html">Conservation of Angular Momentum &rarr;</a></p></nav></div>
+  </section>
+  <section class="phys-part phys-step" id="connections" aria-labelledby="h-connections">
+    <p class="phys-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="phys-step-body"><ul class="phys-links phys-nav-ref"><li><a href="../notes/torque-work.html">Back: work done by a torque (6.2)</a></li><li><a href="../notes/angular-momentum-conservation.html">Next: when angular momentum stays the same (6.4)</a></li></ul></div>
+  </section>
+    <div class="phys-ls-actions phys-nav-ref"><button type="button" class="phys-ls-back">&larr; Previous</button><button type="button" class="phys-ls-go">Continue &rarr;</button><a class="phys-ls-go" hidden href="angular-momentum-conservation.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.phys-ls'),p=s&&s.querySelectorAll('.phys-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.phys-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apphys_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="phys-foot xshell">
+  <p class="phys-accuracy-note"><span class="phys-beta phys-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Physics 1 teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="lesson:angular-momentum">Report a problem</button></span></p>
+  <p class="phys-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="phys-page-data">{"topic":"angular-momentum","unit":"unit-6","free":false,"prereq":[{"id":"angular-momentum-pre-1","type":"single","unit":"unit-6","topic":"angular-momentum","q":"A 2.0 kg cart moves at 3.0 m/s. Its momentum is","options":["6.0 kg·m/s","9.0 kg·m/s","1.5 kg·m/s","18 kg·m/s"],"correct":0,"why":{"correct":"p = mv.","options":["","","",""]},"reviewHref":"../notes/linear-momentum.html","reviewTitle":"Linear Momentum"},{"id":"angular-momentum-pre-2","type":"single","unit":"unit-6","topic":"angular-momentum","q":"The area under a force-time graph equals","options":["the impulse, the change in momentum","the work done","the change in kinetic energy","the average force"],"correct":0,"why":{"correct":"J = FΔt = Δp.","options":["","","",""]},"reviewHref":"../notes/impulse.html","reviewTitle":"Change in Momentum and Impulse"}],"check":[{"id":"phys-angular-momentum-1","type":"numeric","unit":"unit-6","topic":"angular-momentum","practice":"2.B","level":"apply","diff":2,"stimulus":"angular-momentum-s1","q":"What is the size of the puck’s angular momentum about point P? Give the value and its unit.","numeric":{"answer":0.24,"tol":0.01,"unit":"kg·m^2/s","sigfigs":2,"units":["kg m^2/s","kg·m²/s","kg m²/s","J·s","J s","N·m·s","N m s"],"askUnit":true,"mistakes":[{"value":0.6,"rel":0.015,"why":"Value: that is the linear momentum, mv. Multiply by the lever arm: L = mvd."},{"value":0.096,"rel":0.015,"why":"Value: d is not squared for a point object. L = r m v sin θ = mvd."}]},"why":{"correct":"L = rmv sin θ = mv(r sin θ) = mvd = (0.20 kg)(3.0 m/s)(0.40 m) = 0.24 kg·m²/s."}},{"id":"phys-angular-momentum-2","type":"single","unit":"unit-6","topic":"angular-momentum","practice":"3.B","level":"analyze","diff":2,"stimulus":"angular-momentum-s1","q":"As the puck slides on past P, its distance r from P grows. Its angular momentum about P","options":["stays the same, because r sin θ stays 0.40 m","grows, because r grows","shrinks, because the puck moves away from P","is zero, because the puck is not turning"],"correct":0,"why":{"correct":"L = rmv sin θ, and r sin θ is the perpendicular distance from P to the line of motion, 0.40 m at every position. With m and v constant, L about P stays 0.24 kg·m²/s.","options":["Right: the perpendicular distance from P to the path never changes.","r grows, but sin θ shrinks so that r sin θ stays 0.40 m.","Moving away along a straight line keeps the lever arm, and so L, the same.","A point object moving past a point has angular momentum about it, turning or not."]}},{"id":"phys-angular-momentum-3","type":"single","unit":"unit-6","topic":"angular-momentum","practice":"2.B","level":"apply","diff":2,"stimulus":"angular-momentum-s1","q":"What is the puck’s angular momentum about point Q, which lies on its path?","options":["Zero","0.24 kg·m²/s","0.60 kg·m²/s","It depends on how far the puck is from Q"],"correct":0,"why":{"correct":"The puck’s velocity points along the line through Q, so the perpendicular distance from Q to its line of motion is zero: L = mv(0) = 0. Angular momentum depends on the point you choose.","options":["Right: the puck moves straight along a line through Q, so θ = 0 or 180°.","That is the value about P. About Q the lever arm is zero.","That is the linear momentum, mv, in kg·m/s.","Along a line through Q, r sin θ = 0 at every distance."]}},{"id":"phys-angular-momentum-4","type":"single","unit":"unit-6","topic":"angular-momentum","practice":"2.D","level":"apply","diff":2,"stimulus":"angular-momentum-s1","q":"A second puck of the same mass slides at 6.0 m/s along a parallel line 0.20 m from P. Compared with the first puck, its angular momentum about P is","options":["the same","twice as large","half as large","four times as large"],"correct":0,"why":{"correct":"L = mvd: (0.20)(6.0)(0.20) = 0.24 kg·m²/s, the same as (0.20)(3.0)(0.40).","options":["Right: twice the speed × half the lever arm.","The speed doubles, but the lever arm halves.","The lever arm halves, but the speed doubles.","L = mvd is the product; the two factors cancel."]}},{"id":"phys-angular-momentum-9","type":"single","unit":"unit-6","topic":"angular-momentum","practice":"2.A","level":"recall","diff":1,"q":"For a rigid object turning about a fixed axis, angular momentum is","options":["L = Iω, in kg·m²/s","L = ½Iω², in joules","L = Iα, in N·m","L = mv, in kg·m/s"],"correct":0,"why":{"correct":"L = Iω pairs I with m and ω with v, as p = mv does. Its unit is kg·m²/s (the same as N·m·s and J·s).","options":["Right: the rotational partner of p = mv.","That is rotational kinetic energy.","Iα is the net torque.","That is linear momentum."]}},{"id":"phys-angular-momentum-11","type":"numeric","unit":"unit-6","topic":"angular-momentum","practice":"2.B","level":"analyze","diff":2,"q":"A torque of 0.60 N·m acts on a spinning top for 0.50 s in the direction it spins. By how much does its angular momentum change?","numeric":{"answer":0.3,"tol":0.01,"unit":"kg·m^2/s","sigfigs":2,"units":["kg m^2/s","kg·m²/s","kg m²/s","J·s","J s","N·m·s","N m s"],"mistakes":[{"value":1.2,"rel":0.015,"why":"Value: that divides torque by time. ΔL = τΔt."}]},"why":{"correct":"ΔL = τΔt = (0.60 N·m)(0.50 s) = 0.30 kg·m²/s."}},{"id":"phys-angular-momentum-13","type":"single","unit":"unit-6","topic":"angular-momentum","practice":"2.C","level":"analyze","diff":2,"q":"A graph of a wheel’s angular momentum against time is a horizontal line. What does that tell you?","options":["The net torque on the wheel is zero","The wheel is not turning","The wheel’s angular acceleration is constant and nonzero","A constant torque is acting on the wheel"],"correct":0,"why":{"correct":"τ_net = ΔL/Δt, the slope of the L-t graph. A horizontal line has zero slope, so the net torque is zero and ω is constant.","options":["Right: the slope of L-t is the net torque.","A horizontal line at a nonzero L means steady turning.","Constant nonzero α would make L change steadily, a sloped line.","A constant nonzero torque gives a sloped straight line."]}}],"stimuli":{"angular-momentum-s1":{"kind":"diagram","title":"A puck sliding past two points","html":"\u003cdiv class=\"phys-stim-html\">\u003csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 230\" role=\"img\" aria-label=\"Top view of a 0.20 kg puck sliding at 3.0 m/s along a straight line on a frictionless table, passing 0.40 m from point P; point Q lies on the puck’s path\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\">\u003crect width=\"560\" height=\"230\" fill=\"#FFFFFF\"/>\u003crect x=\"20\" y=\"20\" width=\"520\" height=\"200\" rx=\"8\" fill=\"#EEF1EF\" stroke=\"#C9CFCC\"/>\u003cline x1=\"40\" y1=\"70\" x2=\"520\" y2=\"70\" stroke=\"#C9CFCC\" stroke-width=\"1.4\" stroke-dasharray=\"6 5\"/>\u003ccircle cx=\"140\" cy=\"70\" r=\"13\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"2\"/>\u003cline x1=\"155\" y1=\"70\" x2=\"214\" y2=\"70\" stroke=\"#B07A00\" stroke-width=\"3.5\"/>\u003cpolygon points=\"225,70 214,76 214,64\" fill=\"#B07A00\"/>\u003ctext x=\"190\" y=\"58\" font-size=\"12.5\" fill=\"#B07A00\" font-weight=\"bold\">v = 3.0 m/s\u003c/text>\u003ccircle cx=\"280\" cy=\"190\" r=\"5\" fill=\"#1F2A28\"/>\u003ctext x=\"290\" y=\"194\" font-size=\"14\" fill=\"#1F2A28\" font-weight=\"bold\">P\u003c/text>\u003ccircle cx=\"470\" cy=\"70\" r=\"5\" fill=\"#1F2A28\"/>\u003ctext x=\"470\" y=\"58\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">Q\u003c/text>\u003cline x1=\"280\" y1=\"129\" x2=\"280\" y2=\"176\" stroke=\"#5A6268\" stroke-width=\"1.4\"/>\u003cpolygon points=\"280,184 276,176 284,176\" fill=\"#5A6268\"/>\u003cline x1=\"280\" y1=\"129\" x2=\"280\" y2=\"82\" stroke=\"#5A6268\" stroke-width=\"1.4\"/>\u003cpolygon points=\"280,74 284,82 276,82\" fill=\"#5A6268\"/>\u003ctext x=\"288\" y=\"134\" font-size=\"12\" fill=\"#1F2A28\">0.40 m\u003c/text>\u003ctext x=\"34\" y=\"210\" font-size=\"12\" fill=\"#5A6268\">Top view, level frictionless table. Puck mass 0.20 kg. Q lies on the puck’s path.\u003c/text>\u003c/svg>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApPhysSection = 'learn'; window.ApPhysBase = '../';</script>
+<script src="../assets/phys-curriculum.js" defer></script>
+<script src="../assets/phys-core.js" defer></script>
+<script src="../assets/phys-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/phys-questions.js" defer></script>
+<script src="../assets/phys-lesson.js" defer></script>
+</body>
+</html>
