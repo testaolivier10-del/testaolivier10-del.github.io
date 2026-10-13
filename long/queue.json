@@ -43,6 +43,25 @@
       "playlist_added": true,
       "pr_url": "",
       "captions_set": true
+    },
+    {
+      "id": "yt-ap-01-intro-levels-of-organization",
+      "course": "ap",
+      "topic_pages": [],
+      "title": "",
+      "description_file": "",
+      "video": "",
+      "thumb": "",
+      "captions": "",
+      "playlist": "",
+      "date": "",
+      "status": "building",
+      "approved_on": "",
+      "youtube_id": "",
+      "thumbnail_set": false,
+      "playlist_added": false,
+      "captions_set": false,
+      "pr_url": ""
     }
   ]
 }
