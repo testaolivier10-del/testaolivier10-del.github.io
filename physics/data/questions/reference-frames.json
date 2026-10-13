@@ -1,0 +1,480 @@
+{
+ "stimuli": {
+  "reference-frames-s1": {
+   "kind": "diagram",
+   "title": "A moving walkway at an airport",
+   "text": "<p>An airport walkway 48 m long moves to the right at 1.2 m/s relative to the floor. Ana walks to the right on it at 1.8 m/s relative to the walkway. Ben stands still on the walkway. Cara stands on the floor beside it. Right is positive.</p>",
+   "html": "<svg role=\"img\" aria-label=\"A moving walkway carrying Ana, who walks right, and Ben, who stands still, with Cara standing on the floor beside it\" viewBox=\"0 0 680 236\" width=\"100%\" style=\"max-width:680px;height:auto\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Arial,Helvetica,sans-serif\"><rect width=\"680\" height=\"236\" fill=\"#ffffff\"/><rect x=\"0\" y=\"162\" width=\"660\" height=\"18\" fill=\"#C9C2AE\"/><rect x=\"20\" y=\"150\" width=\"600\" height=\"12\" rx=\"6\" fill=\"#5F6468\" stroke=\"#1F2A28\"/><line x1=\"30\" y1=\"150\" x2=\"38\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"54\" y1=\"150\" x2=\"62\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"78\" y1=\"150\" x2=\"86\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"102\" y1=\"150\" x2=\"110\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"126\" y1=\"150\" x2=\"134\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"150\" y1=\"150\" x2=\"158\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"174\" y1=\"150\" x2=\"182\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"198\" y1=\"150\" x2=\"206\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"222\" y1=\"150\" x2=\"230\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"246\" y1=\"150\" x2=\"254\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"270\" y1=\"150\" x2=\"278\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"294\" y1=\"150\" x2=\"302\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"318\" y1=\"150\" x2=\"326\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"342\" y1=\"150\" x2=\"350\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"366\" y1=\"150\" x2=\"374\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"390\" y1=\"150\" x2=\"398\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"414\" y1=\"150\" x2=\"422\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"438\" y1=\"150\" x2=\"446\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"462\" y1=\"150\" x2=\"470\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"486\" y1=\"150\" x2=\"494\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"510\" y1=\"150\" x2=\"518\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"534\" y1=\"150\" x2=\"542\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"558\" y1=\"150\" x2=\"566\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"582\" y1=\"150\" x2=\"590\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"606\" y1=\"150\" x2=\"614\" y2=\"162\" stroke=\"#9AA0A5\" stroke-width=\"2\"/><line x1=\"480.0\" y1=\"196.0\" x2=\"539.0\" y2=\"196.0\" stroke=\"#734200\" stroke-width=\"3\"/><polygon points=\"550.0,196.0 539.0,190.5 539.0,201.5\" fill=\"#734200\"/><text x=\"474\" y=\"200\" fill=\"#734200\" font-size=\"12\" text-anchor=\"end\" font-weight=\"bold\">walkway: 1.2 m/s to the right</text><polyline points=\"170.0,122.1 183.6,136.4 179.9,150.0\" fill=\"none\" stroke=\"#3B4A6B\" stroke-width=\"5.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><polyline points=\"170.0,122.1 165.0,137.6 152.6,142.6\" fill=\"none\" stroke=\"#3B4A6B\" stroke-width=\"5.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><polyline points=\"171.9,103.5 179.9,111.6 184.9,104.1\" fill=\"none\" stroke=\"#3B4A6B\" stroke-width=\"5.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><polyline points=\"171.9,103.5 162.6,112.8 157.6,120.2\" fill=\"none\" stroke=\"#3B4A6B\" stroke-width=\"5.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"170.0\" y1=\"122.1\" x2=\"171.9\" y2=\"103.5\" stroke=\"#3B4A6B\" stroke-width=\"7.9\" stroke-linecap=\"round\"/><circle cx=\"173.1\" cy=\"93.4\" r=\"8.1\" fill=\"#3B4A6B\"/><text x=\"170\" y=\"72\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"bold\">Ana</text><line x1=\"186.0\" y1=\"104.0\" x2=\"280.0\" y2=\"104.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"291.0,104.0 280.0,98.5 280.0,109.5\" fill=\"#B07A00\"/><text x=\"194\" y=\"90\" fill=\"#B07A00\" font-size=\"12\" text-anchor=\"start\" font-weight=\"bold\">1.8 m/s relative to the walkway</text><polyline points=\"470.0,122.1 473.1,136.4 473.7,150.0\" fill=\"none\" stroke=\"#7A4F9E\" stroke-width=\"5.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><polyline points=\"470.0,122.1 466.9,136.4 466.3,150.0\" fill=\"none\" stroke=\"#7A4F9E\" stroke-width=\"5.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><polyline points=\"471.9,103.5 476.2,114.0 476.8,122.7\" fill=\"none\" stroke=\"#7A4F9E\" stroke-width=\"5.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><polyline points=\"471.9,103.5 463.8,114.0 463.2,122.7\" fill=\"none\" stroke=\"#7A4F9E\" stroke-width=\"5.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"470.0\" y1=\"122.1\" x2=\"471.9\" y2=\"103.5\" stroke=\"#7A4F9E\" stroke-width=\"7.9\" stroke-linecap=\"round\"/><circle cx=\"473.1\" cy=\"93.4\" r=\"8.1\" fill=\"#7A4F9E\"/><text x=\"470\" y=\"72\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"bold\">Ben</text><text x=\"486\" y=\"120\" fill=\"#1F2A28\" font-size=\"11\" text-anchor=\"start\" font-weight=\"normal\">stands still on</text><text x=\"486\" y=\"133\" fill=\"#1F2A28\" font-size=\"11\" text-anchor=\"start\" font-weight=\"normal\">the walkway</text><rect x=\"620\" y=\"150\" width=\"40\" height=\"30\" fill=\"#C9C2AE\"/><polyline points=\"640.0,124.8 642.8,137.7 643.4,150.0\" fill=\"none\" stroke=\"#5A4632\" stroke-width=\"4.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><polyline points=\"640.0,124.8 637.2,137.7 636.6,150.0\" fill=\"none\" stroke=\"#5A4632\" stroke-width=\"4.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><polyline points=\"641.7,108.0 645.6,117.5 646.2,125.4\" fill=\"none\" stroke=\"#5A4632\" stroke-width=\"4.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><polyline points=\"641.7,108.0 634.4,117.5 633.8,125.4\" fill=\"none\" stroke=\"#5A4632\" stroke-width=\"4.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"640.0\" y1=\"124.8\" x2=\"641.7\" y2=\"108.0\" stroke=\"#5A4632\" stroke-width=\"7.1\" stroke-linecap=\"round\"/><circle cx=\"642.8\" cy=\"98.9\" r=\"7.3\" fill=\"#5A4632\"/><text x=\"640\" y=\"72\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"bold\">Cara</text><text x=\"640\" y=\"196\" fill=\"#1F2A28\" font-size=\"11\" text-anchor=\"middle\" font-weight=\"normal\">floor</text></svg><p>Key: orange arrow, the walkway's velocity relative to the floor; gold arrow, Ana's velocity relative to the walkway. Arrow lengths are to scale.</p>"
+  },
+  "reference-frames-s2": {
+   "kind": "table",
+   "title": "Three vehicles on a straight highway",
+   "text": "<p>A truck, a car and a motorcycle travel along a straight highway. East is positive. The table gives each one's velocity relative to the road.</p>",
+   "table": {
+    "caption": "Velocities relative to the road",
+    "cols": [
+     "Vehicle",
+     "Velocity relative to the road (m/s)"
+    ],
+    "rows": [
+     [
+      "Truck",
+      "+22"
+     ],
+     [
+      "Car",
+      "+29"
+     ],
+     [
+      "Motorcycle",
+      "−17"
+     ]
+    ]
+   }
+  },
+  "reference-frames-s3": {
+   "kind": "setup",
+   "title": "A boat on a river",
+   "text": "<p>A straight river flows east at 1.5 m/s relative to the bank. A motorboat moves at 4.0 m/s relative to the water. It travels 300 m due east (downstream) between two docks, then returns due west (upstream). East is positive.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-reference-frames-1",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "reference-frames-s1",
+   "q": "What is Ana's velocity relative to the floor, as Cara measures it?",
+   "numeric": {
+    "answer": 3.0,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.6,
+      "why": "Value: 0.60 m/s subtracts the walkway's velocity. Both point right, so they add."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Velocity relative to the floor = velocity relative to the walkway + velocity of the walkway relative to the floor = 1.8 m/s + 1.2 m/s = +3.0 m/s."
+   }
+  },
+  {
+   "id": "phys-reference-frames-2",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reference-frames-s1",
+   "q": "How long does Ana take to cover the 48 m walkway?",
+   "numeric": {
+    "answer": 16.0,
+    "tol": 1.0,
+    "unit": "s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 27.0,
+      "why": "Value: 27 s uses only her walking speed. The walkway carries her too, so use 3.0 m/s relative to the floor."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Relative to the floor she moves at 3.0 m/s, and the walkway is 48 m long in the floor's frame: t = 48 m ÷ 3.0 m/s = 16 s."
+   }
+  },
+  {
+   "id": "phys-reference-frames-3",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reference-frames-s1",
+   "q": "What is Ana's velocity as Ben measures it?",
+   "options": [
+    "+3.0 m/s",
+    "+1.2 m/s",
+    "Zero, because they are both on the walkway",
+    "+1.8 m/s"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Ben is at rest relative to the walkway, so in his frame Ana moves at her walking velocity, +1.8 m/s.",
+    "options": [
+     "That is her velocity relative to the floor. Ben is moving with the walkway, not standing on the floor.",
+     "That is the walkway's velocity relative to the floor, which Ben shares.",
+     "Ben stands still on the walkway while Ana walks on it, so she moves away from him.",
+     "Right: Ben moves with the walkway, so he sees only her motion relative to the walkway."
+    ]
+   }
+  },
+  {
+   "id": "phys-reference-frames-4",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reference-frames-s1",
+   "q": "What is Cara's velocity as Ben measures it?",
+   "options": [
+    "+1.2 m/s",
+    "Zero, because Cara is standing still",
+    "−1.2 m/s",
+    "−3.0 m/s"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "If B moves at +1.2 m/s relative to C, then C moves at −1.2 m/s relative to B. Swapping the observer flips the sign.",
+    "options": [
+     "From Ben's frame, Cara moves the opposite way to how he moves relative to her.",
+     "Cara is at rest relative to the floor, not relative to Ben.",
+     "Right: Ben moves right at 1.2 m/s relative to the floor, so to him the floor and Cara move left at 1.2 m/s.",
+     "That would be relative to Ana. Ben moves only with the walkway, at 1.2 m/s."
+    ]
+   }
+  },
+  {
+   "id": "phys-reference-frames-5",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "reference-frames-s1",
+   "q": "Ana turns around and walks to the left at 1.8 m/s relative to the walkway. What is her velocity relative to the floor?",
+   "numeric": {
+    "answer": -0.6,
+    "tol": 0.01,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": -3.0,
+      "why": "Value: −3.0 m/s gives the walkway the wrong sign. It still moves right, +1.2 m/s."
+     },
+     {
+      "value": 0.6,
+      "why": "Value: the size is right, but she walks left faster than the walkway carries her right, so her velocity is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "v(Ana, floor) = v(Ana, walkway) + v(walkway, floor) = (−1.8 m/s) + (+1.2 m/s) = −0.60 m/s: she moves slowly to the left."
+   }
+  },
+  {
+   "id": "phys-reference-frames-6",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "reference-frames-s2",
+   "q": "What is the car's velocity relative to the truck?",
+   "numeric": {
+    "answer": 7.0,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 51.0,
+      "why": "Value: 51 m/s adds the velocities. To change frames from the road to the truck, subtract the truck's velocity."
+     },
+     {
+      "value": -7.0,
+      "why": "Value: −7.0 m/s is the truck's velocity relative to the car. The car is the faster one, so relative to the truck it moves forward."
+     }
+    ]
+   },
+   "why": {
+    "correct": "v(car, truck) = v(car, road) − v(truck, road) = 29 m/s − 22 m/s = +7.0 m/s. From the truck, the car pulls ahead eastward."
+   }
+  },
+  {
+   "id": "phys-reference-frames-7",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reference-frames-s2",
+   "q": "What is the motorcycle's velocity relative to the truck?",
+   "numeric": {
+    "answer": -39.0,
+    "tol": 1.0,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 5.0,
+      "why": "Value: 5.0 m/s adds the truck's velocity. Subtract it: −17 − (+22) = −39 m/s."
+     },
+     {
+      "value": 39.0,
+      "why": "Value: the size is right, but the motorcycle moves west relative to the truck, so its velocity is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "v(moto, truck) = v(moto, road) − v(truck, road) = −17 m/s − 22 m/s = −39 m/s. From the truck, the oncoming motorcycle approaches at 39 m/s."
+   }
+  },
+  {
+   "id": "phys-reference-frames-8",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reference-frames-s2",
+   "q": "Which observer sees the motorcycle moving with the greatest speed?",
+   "options": [
+    "The truck's driver",
+    "A person standing at the roadside",
+    "The car's driver",
+    "Each of the three measures an equal speed"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Subtract each observer's velocity: road 17 m/s, truck |−17 − 22| = 39 m/s, car |−17 − 29| = 46 m/s.",
+    "options": [
+     "Relative to the truck it is −39 m/s, less than relative to the car, which moves faster toward it.",
+     "Relative to the road it is 17 m/s, the smallest of the three.",
+     "Right: relative to the car, the motorcycle's velocity is −17 − 29 = −46 m/s, the largest size.",
+     "Speed depends on the observer's frame; each observer moves differently."
+    ]
+   }
+  },
+  {
+   "id": "phys-reference-frames-9",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "reference-frames-s2",
+   "q": "The truck's driver brakes, and her velocity relative to the road drops steadily from +22 m/s to +16 m/s in 3.0 s. The car keeps a steady +29 m/s. What is the car's acceleration as measured from the truck?",
+   "options": [
+    "Zero, because the car moves at a steady velocity",
+    "+2.0 m/s², because the truck slows while the car does not",
+    "−2.0 m/s², the same as the truck's acceleration",
+    "+29 m/s², because the car's velocity is 29 m/s"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Accelerations agree only between frames moving at a constant velocity relative to each other. The braking truck is not such a frame: the car's relative velocity changes by +6.0 m/s in 3.0 s, so +2.0 m/s².",
+    "options": [
+     "Relative to the road the car does not accelerate, but the truck's frame is itself accelerating.",
+     "Right: relative to the truck, the car's velocity goes from +7 m/s to +13 m/s in 3.0 s. This frame is accelerating, so accelerations differ.",
+     "The truck's acceleration relative to the road is −2.0 m/s²; relative to the truck the car's velocity grows.",
+     "A velocity is not an acceleration."
+    ]
+   }
+  },
+  {
+   "id": "phys-reference-frames-10",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "reference-frames-s3",
+   "q": "What is the boat's velocity relative to the bank on the downstream trip?",
+   "numeric": {
+    "answer": 5.5,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2.5,
+      "why": "Value: going downstream, the current points the same way as the boat, so the velocities add."
+     }
+    ]
+   },
+   "why": {
+    "correct": "v(boat, bank) = v(boat, water) + v(water, bank) = +4.0 m/s + 1.5 m/s = +5.5 m/s."
+   }
+  },
+  {
+   "id": "phys-reference-frames-11",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reference-frames-s3",
+   "q": "How long does the upstream return trip take?",
+   "numeric": {
+    "answer": 120.0,
+    "tol": 10.0,
+    "unit": "s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 55.0,
+      "why": "Value: 55 s is the downstream time. Upstream the current works against the boat: 4.0 − 1.5 = 2.5 m/s."
+     },
+     {
+      "value": 75.0,
+      "why": "Value: 75 s ignores the current. Relative to the bank the boat moves at 2.5 m/s upstream."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Upstream: v(boat, bank) = −4.0 m/s + 1.5 m/s = −2.5 m/s. Time = 300 m ÷ 2.5 m/s = 120 s (two significant figures)."
+   }
+  },
+  {
+   "id": "phys-reference-frames-12",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "reference-frames-s3",
+   "q": "How does the round-trip time on the river compare with the time for the same 600 m round trip on still water?",
+   "options": [
+    "It is the same, because the current helps one way and hurts the other",
+    "It is shorter on the river",
+    "It is longer on the river",
+    "A comparison needs the mass of the boat"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Times: river 300/5.5 + 300/2.5 ≈ 55 + 120 = 175 s; still water 600/4.0 = 150 s. Averaging velocities is not averaging times.",
+    "options": [
+     "The help and hurt in speed are equal, but the boat spends more time going slowly, so the effects do not cancel in time.",
+     "The downstream gain (55 s instead of 75 s) is smaller than the upstream loss (120 s instead of 75 s).",
+     "Right: river 54.5 s + 120 s ≈ 175 s; still water 600 m ÷ 4.0 m/s = 150 s. The slow upstream leg lasts longer than the fast leg saves.",
+     "Only velocities and distances are needed."
+    ]
+   }
+  },
+  {
+   "id": "phys-reference-frames-13",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "reference-frames-s3",
+   "q": "A passenger on the boat walks toward the stern (the back) at 1.0 m/s relative to the boat during the downstream trip. What is her velocity relative to the bank?",
+   "options": [
+    "+6.5 m/s",
+    "+4.5 m/s",
+    "+3.0 m/s",
+    "−1.0 m/s"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Chain the frames: v(her, bank) = v(her, boat) + v(boat, bank) = −1.0 + 5.5 = +4.5 m/s.",
+    "options": [
+     "Walking toward the stern on an eastbound boat is walking west, so her 1.0 m/s is negative.",
+     "Right: v = −1.0 m/s (relative to the boat) + 5.5 m/s (boat relative to bank) = +4.5 m/s.",
+     "This leaves out the current: the boat moves at 5.5 m/s relative to the bank, not 4.0 m/s.",
+     "That is her velocity relative to the boat only."
+    ]
+   }
+  },
+  {
+   "id": "phys-reference-frames-14",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cart on a flatcar speeds up from rest to 0.60 m/s relative to the flatcar in 2.0 s. The flatcar moves at a constant 5.0 m/s relative to the ground. What is the cart's acceleration relative to the ground?",
+   "options": [
+    "0.30 m/s², the same as relative to the flatcar",
+    "2.8 m/s², because the flatcar's velocity adds 5.0 m/s",
+    "Zero, because the cart rides on the flatcar",
+    "2.5 m/s², the flatcar's velocity divided by 2.0 s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Relative to the ground: v goes from 5.0 to 5.6 m/s in 2.0 s, a = 0.30 m/s². Frames moving at constant velocity relative to each other measure the same acceleration.",
+    "options": [
+     "Right: the flatcar moves at a constant velocity, so adding it changes every velocity by the same amount and leaves Δv unchanged.",
+     "A constant added velocity cancels in Δv; it changes velocities, not accelerations.",
+     "The cart speeds up relative to the flatcar, so it also speeds up relative to the ground.",
+     "The flatcar's velocity does not change, so it contributes no acceleration."
+    ]
+   }
+  },
+  {
+   "id": "phys-reference-frames-15",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "You sit in a train at rest in a station and see the train beside yours start to move forward. A moment later you realize it is your own train moving backward. Why could you not tell at first?",
+   "options": [
+    "Your train was moving too slowly to have a velocity",
+    "The other train had a larger velocity than yours",
+    "Motion is visible to a person on the ground, not to a passenger",
+    "You saw relative motion, and either train moving looks the same"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A velocity is measured relative to a reference frame. Seeing only the other train, you measure its velocity relative to your train, which is the same whichever train moves.",
+    "options": [
+     "Any motion is a velocity; the issue is which frame you measure it in.",
+     "Neither velocity was larger in a way you could see; you saw only how they moved relative to each other.",
+     "Any observer can measure motion; each measures it relative to their own frame.",
+     "Right: from your seat, you can only see the other train's motion relative to yours."
+    ]
+   }
+  },
+  {
+   "id": "phys-reference-frames-16",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "reference-frames",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cyclist rides east at 8.0 m/s relative to the road into a wind blowing west at 5.0 m/s relative to the road. What wind speed does the cyclist feel, relative to herself?",
+   "numeric": {
+    "answer": 13.0,
+    "tol": 1.0,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 3.0,
+      "why": "Value: 3.0 m/s would be the wind she feels if the wind blew east, with her. A headwind and her own motion add."
+     }
+    ]
+   },
+   "why": {
+    "correct": "v(wind, cyclist) = v(wind, road) − v(cyclist, road) = −5.0 m/s − 8.0 m/s = −13 m/s. She feels a 13 m/s headwind."
+   }
+  }
+ ]
+}

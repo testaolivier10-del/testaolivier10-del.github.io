@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 4 (docs/apphys-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u4-sticky-collision-start",
+   "unit": "unit-4",
+   "topic": "collisions",
+   "practice": "3.C",
+   "skill": "energy-momentum",
+   "title": "Momentum first in a sticky collision",
+   "context": "<p>A 0.20 kg lump of clay moving at 5.0 m/s hits a 0.80 kg cart at rest on a level, low-friction track and sticks to it. A student finds the speed afterward by setting the kinetic energy before equal to the kinetic energy after.</p>",
+   "prompt": "<b>Explain</b> why the student's method is wrong, and <b>calculate</b> the speed after the collision correctly.",
+   "checklist": [
+    "Says the net external force on the clay-cart system is negligible during the collision, so its momentum is the same before and after",
+    "Says kinetic energy is not conserved when the objects stick: some becomes thermal energy and deformation",
+    "Calculates v = (0.20 kg)(5.0 m/s) / (1.00 kg) = 1.0 m/s, and shows the kinetic energy falls from 2.5 J to 0.50 J"
+   ],
+   "earns": {
+    "answer": "Take the clay and the cart as the system. During the collision the net external force on it is negligible (the vertical forces balance and the track has little friction), so its total momentum is the same before and after: (0.20 kg)(5.0 m/s) = (1.00 kg)v, so v = 1.0 m/s. Kinetic energy is not conserved in a collision where the objects stick: it falls from ½(0.20)(5.0)² = 2.5 J to ½(1.00)(1.0)² = 0.50 J, the rest becoming thermal energy and deformation of the clay. So the student's equation is false.",
+    "why": "It starts from momentum with its condition, explains why kinetic energy cannot be used, and backs both with numbers."
+   },
+   "misses": {
+    "answer": "Kinetic energy before = kinetic energy after: ½(0.20)(5.0)² = ½(1.00)v², so v = 2.2 m/s.",
+    "why": "This is the error the readers report most in this kind of question: in a sticky (perfectly inelastic) collision kinetic energy is not conserved, so this equation gives the wrong speed."
+   }
+  },
+  {
+   "id": "u4-skaters-push-apart",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "3.C",
+   "skill": "conservation",
+   "title": "Why the skaters' momentum stays zero",
+   "context": "<p>Two skaters stand at rest on smooth ice and push off each other. Afterward they glide apart in opposite directions.</p>",
+   "prompt": "<b>Justify</b> the claim that the total momentum of the two skaters is zero after they separate.",
+   "checklist": [
+    "Names the system: both skaters together",
+    "Says the pushes are internal forces, a third-law pair, equal in size and opposite in direction",
+    "Says the external forces (gravity and the ice's normal force) balance and ice friction is negligible, so the net external force is zero and the total momentum stays zero, its value before the push"
+   ],
+   "earns": {
+    "answer": "Take the two skaters as the system. The pushes they exert on each other are internal forces, a Newton's third law pair, equal in size and opposite in direction, so they cannot change the system's total momentum. The external forces on the system, the gravitational force of Earth and the normal force of the ice, are vertical and balance, and friction from the smooth ice is negligible. With zero net external force, the total momentum stays at its initial value, zero, so afterward the skaters' momenta are equal in size and opposite in direction.",
+    "why": "It names the system and gives the condition (zero net external force) instead of quoting the law."
+   },
+   "misses": {
+    "answer": "The total momentum is zero because momentum is conserved because of the law of conservation of momentum.",
+    "why": "This is circular: it names the law but not why it applies here. The readers give the point only when the answer says the net external force on the system is zero."
+   }
+  },
+  {
+   "id": "u4-friction-is-internal",
+   "unit": "unit-4",
+   "topic": "momentum-conservation",
+   "practice": "3.C",
+   "skill": "conservation",
+   "title": "Friction between a block and a cart",
+   "context": "<p>A block slides onto a cart that rests on a frictionless track. Friction between the block and the cart slows the block and speeds up the cart until they move together.</p>",
+   "prompt": "<b>Determine</b> whether the momentum of the block-cart system stays constant while they slide, and <b>justify</b> your answer.",
+   "checklist": [
+    "Claims the total momentum of the block-cart system stays constant",
+    "Says friction between block and cart is internal: the cart's backward friction on the block and the block's forward friction on the cart are a third-law pair",
+    "Says the external forces are vertical and balance and the track is frictionless, so the net external horizontal force is zero; the block's own momentum does change, because for the block alone friction is external"
+   ],
+   "earns": {
+    "answer": "Yes, it stays constant. Friction acts between the block and the cart: the cart pushes backward on the block and the block pushes forward on the cart, a third-law pair of equal size, so both are internal to the block-cart system. The external forces, the gravitational forces and the track's normal force, are vertical and balance, and the track is frictionless, so the net external horizontal force is zero and the total momentum is constant. The block's own momentum does decrease, because for the block alone the cart's friction is an external force.",
+    "why": "It links the word \"internal\" to the reason it matters (a third-law pair cancels in the system) and states the condition for the system."
+   },
+   "misses": {
+    "answer": "No. Friction always takes momentum away, so the momentum decreases while they slide.",
+    "why": "Friction removes kinetic energy here, not momentum. What matters for momentum is whether a force is external to the chosen system, and this friction is internal."
+   }
+  },
+  {
+   "id": "u4-impulse-from-graph",
+   "unit": "unit-4",
+   "topic": "impulse",
+   "practice": "2.B",
+   "skill": "graphs",
+   "title": "Impulse from a force-time graph",
+   "context": "<p>A bat hits a 0.050 kg ball at rest. A force sensor shows the force on the ball rising in a straight line from 0 to 400 N and back to 0, in the shape of a triangle that lasts 0.010 s.</p>",
+   "prompt": "<b>Calculate</b> the ball's speed just after the hit, and <b>explain</b> how you used the graph.",
+   "checklist": [
+    "Uses the area under the force-time graph as the impulse on the ball",
+    "Finds the triangle's area: ½(400 N)(0.010 s) = 2.0 N·s",
+    "Uses impulse = change in momentum: 2.0 N·s = (0.050 kg)v, so v = 40 m/s"
+   ],
+   "earns": {
+    "answer": "The impulse on the ball is the area under the force-time graph. The graph is a triangle, so J = ½(400 N)(0.010 s) = 2.0 N·s. By the impulse-momentum theorem, the impulse equals the ball's change in momentum: 2.0 N·s = (0.050 kg)(v − 0), so v = 40 m/s.",
+    "why": "It names the graph feature (area), handles the changing force correctly, and links impulse to the change in momentum."
+   },
+   "misses": {
+    "answer": "Impulse = Ft = (400 N)(0.010 s) = 4.0 N·s, so v = 4.0 / 0.050 = 80 m/s.",
+    "why": "This uses the peak force as if it lasted the whole 0.010 s. The force changes, so the impulse is the area of the triangle, half of this."
+   }
+  }
+ ]
+}

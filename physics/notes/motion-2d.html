@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vectors and Motion in Two Dimensions — AP® Physics 1 Notes</title>
+<meta name="description" content="A basketball shot, a ball rolling off a table, a package dropped from a drone: each moves across and down at the same time, along a curved path.">
+<link rel="canonical" href="https://levlprep.com/physics/notes/motion-2d.html">
+<meta property="og:title" content="Vectors and Motion in Two Dimensions — AP® Physics 1 Notes">
+<meta property="og:description" content="A basketball shot, a ball rolling off a table, a package dropped from a drone: each moves across and down at the same time, along a curved path.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/physics/notes/motion-2d.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/physics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/phys.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/physics/notes/motion-2d.html#reading",
+      "name": "Vectors and Motion in Two Dimensions",
+      "url": "https://levlprep.com/physics/notes/motion-2d.html",
+      "description": "A basketball shot, a ball rolling off a table, a package dropped from a drone: each moves across and down at the same time, along a curved path.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "vectors and motion in two dimensions physics 1 explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/physics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Physics 1",
+          "item": "https://levlprep.com/physics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Kinematics",
+          "item": "https://levlprep.com/physics/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Vectors and Motion in Two Dimensions: notes",
+          "item": "https://levlprep.com/physics/notes/motion-2d.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="phys" data-topic="motion-2d" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="phys-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail phys-nav-ref bk-rail" id="phys-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Kinematics</b><small>5 topics</small></span></a>
+    <div class="phys-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 5 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="scalars-vectors"><a href="scalars-vectors.html"><span class="bk-toc-n">1.1</span>Scalars and Vectors on a Line</a></li><li data-toc-t="motion-quantities"><a href="motion-quantities.html"><span class="bk-toc-n">1.2</span>Displacement, Velocity and Acceleration</a></li><li data-toc-t="motion-representations"><a href="motion-representations.html"><span class="bk-toc-n">1.3</span>Representing Motion</a></li><li data-toc-t="reference-frames"><a href="reference-frames.html"><span class="bk-toc-n">1.4</span>Reference Frames and Relative Motion</a></li><li class="current" data-toc-t="motion-2d"><a href="#main" aria-current="page"><span class="bk-toc-n">1.5</span>Vectors and Motion in Two Dimensions</a><div class="bk-toc-onpage"><p>On this page</p><a href="#two-independent-motions">Two independent motions</a><a href="#projectiles">Projectiles</a><a href="#the-method">The method</a><a href="#at-the-top-of-the-path">At the top of the path</a><a href="#functional-dependence">Functional dependence</a><a href="#frames-and-projectiles">Frames and projectiles</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Force and Translational Dynamics</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="phys-crumb phys-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Physics 1</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Kinematics</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Vectors and Motion in Two Dimensions: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/motion-2d.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 1 &middot; Topic 1.5 <span class="phys-beta phys-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Vectors and Motion in Two Dimensions</h1>
+      <p class="bk-meta phys-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="motion-2d">Not practiced</span></p>
+      <div class="bk-actions phys-share phys-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fphysics%2Fnotes%2Fmotion-2d.html&amp;title=Vectors%20and%20Motion%20in%20Two%20Dimensions%3A%20physics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/physics/notes/motion-2d.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="phys-prose bk-prose">
+<p>A basketball shot, a ball rolling off a table, a package dropped from a drone: each moves across and down at the same time, along a curved path. The curve looks complicated, but it is made of two simple motions you already know. This page shows how to split two-dimensional motion into a horizontal part and a vertical part, solve each one alone, and put them back together.</p>
+
+<h2 id="two-independent-motions">Two independent motions</h2>
+<figure id="fig-strobe"  class="phys-figure"><div class="phys-figimg" data-fig="table-launch-strobe"><img src="../figures/table-launch-strobe.svg" alt="Two balls leave a 1.25 m high table at the same instant: one is dropped from rest at the edge, the other rolls off horizontally at 3.0 m/s. Snapshots every 0.10 s show both balls at the same height at each instant, with dashed lines joining equal heights. The launched ball moves 0.30 m sideways in every 0.10 s, and its horizontal velocity arrow stays 3.0 m/s, while its vertical velocity arrow grows like the dropped ball's. Both land together after about 0.51 s, the launched ball about 1.5 m from the table." width="800" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Two balls, one launched sideways and one dropped, photographed at equal time intervals. <span class="phys-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Look at the figure. At every instant the launched ball and the dropped ball are at the same height. Its sideways motion does not make the launched ball fall more slowly or more quickly. Meanwhile, it moves the same <a class="gl" href="../notes/scalars-vectors.html" data-c="distance">distance</a> sideways in each interval, as if <a class="gl" href="../notes/gravitational-force.html" data-c="gravitational-force">gravity</a> did not exist.</p>
+<p>This is the key idea of the topic: <b>perpendicular components of motion are independent</b>. Choose a horizontal <a class="gl" href="../notes/scalars-vectors.html" data-c="coordinate-system">x-axis</a> and a vertical y-axis. The x-motion follows its own rules, the y-motion follows its own rules, and the only thing they share is the clock. In short, two-dimensional motion is two one-dimensional motions happening at once.</p>
+
+<h2 id="projectiles">Projectiles</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="projectile">projectile</span></b> is an object that, after it is launched, moves under gravity alone. Air resistance is assumed negligible. Gravity acts straight down, so:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Horizontal (x), Vertical (y), up positive"><table class="compare"><thead><tr><th scope="col"></th><th scope="col">Horizontal (x)</th><th scope="col">Vertical (y), up positive</th></tr></thead>
+<tbody><tr><th scope="row">Acceleration</th><td>aₓ = 0</td><td>a<sub>y</sub> = −g = −9.8 m/s²</td></tr>
+<tr><th scope="row">Velocity</th><td>vₓ stays the same</td><td>v<sub>y</sub> = v<sub>y0</sub> − gt</td></tr>
+<tr><th scope="row">Position</th><td>x = vₓt</td><td>y = y₀ + v<sub>y0</sub>t − ½gt²</td></tr>
+<tr><th scope="row">Kind of motion</th><td>constant <a class="gl" href="../notes/scalars-vectors.html" data-c="velocity">velocity</a></td><td><a class="gl" href="../notes/motion-representations.html" data-c="free-fall">free fall</a></td></tr></tbody></table></div>
+<p>To start, split the launch velocity using the <b><span class="gl" tabindex="0" data-c="launch-angle">launch angle</span></b> θ above the horizontal: vₓ = v <a class="gl" href="../notes/math-trig-components.html" data-c="sine-cosine">cos</a> θ and v<sub>y0</sub> = v sin θ. A launch that is horizontal (off a table, from a flying drone) has θ = 0, so vₓ = v and v<sub>y0</sub> = 0.</p>
+
+<h2 id="the-method">The method</h2>
+<ol>
+<li>Draw the situation and choose axes (usually x across, y up).</li>
+<li>Split the initial velocity into vₓ and v<sub>y0</sub>.</li>
+<li>Use the vertical motion to find the <b><span class="gl" tabindex="0" data-c="time-of-flight">time of flight</span></b>: the vertical motion alone decides how long the object is in the air.</li>
+<li>Use that time in the horizontal motion: the <b><span class="gl" tabindex="0" data-c="horizontal-range">horizontal range</span></b> is vₓ × t.</li>
+<li>To find a <a class="gl" href="../notes/scalars-vectors.html" data-c="speed">speed</a> at some moment, combine the components with the <a class="gl" href="../notes/math-trig-components.html" data-c="right-triangle">Pythagorean theorem</a>.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> A ball rolls off a 0.90 m high table at 2.0 m/s. Where does it land, and how fast is it going? Use g = 9.8 m/s².</p>
+<p>Vertical: v<sub>y0</sub> = 0, Δy = −0.90 m. Δy = −½gt² → t = √(2 × 0.90 m ÷ 9.8 m/s²) = 0.429 s.</p>
+<p>Horizontal: d = vₓt = 2.0 m/s × 0.429 s = 0.86 m.</p>
+<p>Landing speed: vₓ = 2.0 m/s; v<sub>y</sub> = −gt = −4.20 m/s. Speed = √(2.0² + 4.20²) = 4.7 m/s.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> A soccer ball is kicked at 15.0 m/s, 53.0° above level ground. Find its time of flight and range.</p>
+<p>Components: vₓ = 15.0 cos 53.0° = 9.03 m/s; v<sub>y0</sub> = 15.0 sin 53.0° = 12.0 m/s.</p>
+<p>Time to the top (v<sub>y</sub> = 0): t = 11.98 ÷ 9.8 = 1.22 s. On level ground the fall takes as long as the rise, so the time of flight is 2.44 s.</p>
+<p>Range = vₓ × t = 9.03 m/s × 2.44 s = 22.1 m.</p>
+</div>
+
+<h2 id="at-the-top-of-the-path">At the top of the path</h2>
+<p>At the highest point, the vertical velocity is zero for an instant. The horizontal velocity is not: the ball is still moving sideways at vₓ. So the velocity at the top is horizontal, and the speed there is the smallest of the whole flight, but not zero. The <a class="gl" href="../notes/motion-quantities.html" data-c="acceleration">acceleration</a> is still g downward, as it is everywhere along the path.</p>
+
+<h2 id="functional-dependence">Functional dependence</h2>
+<p>Because the parts are independent, you can reason about changes without numbers.</p>
+<ul>
+<li>Double the horizontal speed off the same table: the fall time is the same, and the landing distance doubles.</li>
+<li>Make the table 9 times as high: t = √(2h/g) grows by √9 = 3, so the landing distance triples.</li>
+<li>Raise the launch angle at the same speed: v<sub>y0</sub> = v sin θ grows, so the ball stays up longer, but vₓ = v cos θ shrinks. On level ground, angles that add to 90° (like 37° and 53°) give the same range.</li>
+</ul>
+
+<h2 id="frames-and-projectiles">Frames and projectiles</h2>
+<p>A drone flying at 5.0 m/s drops a package. At release, the package already moves forward at 5.0 m/s with the drone. In the drone's frame it falls straight down and stays directly below the drone. In the ground's frame the same motion is a curved path. Both descriptions are correct; they are the same motion seen from two frames. That is why the drone must release the package before it is over the target.</p>
+
+    </article>
+    <p class="phys-report-page phys-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:motion-2d">Report a problem</button></p>
+    <nav class="tb-chapter-nav phys-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="math-trig-components.html"><span>&larr; Previous</span><b>Right-Triangle Trigonometry and Vector Components</b></a><a class="tb-chapter-link next" href="systems-center-of-mass.html"><span>Next &rarr;</span><b>Systems and Center of Mass</b></a></nav>
+  </main>
+</div>
+<footer class="phys-foot xshell">
+  <p class="phys-accuracy-note"><span class="phys-beta phys-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Physics 1 teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:motion-2d">Report a problem</button></span></p>
+  <p class="phys-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPhysSection = 'learn'; window.ApPhysBase = '../';</script>
+<script src="../assets/phys-curriculum.js" defer></script>
+<script src="../assets/phys-core.js" defer></script>
+<script src="../assets/phys-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/phys-toc.js" defer></script>
+</body>
+</html>

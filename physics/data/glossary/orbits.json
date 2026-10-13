@@ -1,0 +1,11 @@
+{
+ "elliptical-orbit": {
+  "def": "An oval orbit with the central body off center. The satellite moves fastest at its closest point and slowest at its farthest; the total energy and the angular momentum about the central body stay constant while K and U trade."
+ },
+ "orbital-energy": {
+  "def": "The total mechanical energy of a satellite and the body it orbits, E = K + U with U_G = −GMm/r (zero at infinite separation). It is negative for a bound orbit; for a circular orbit E = −K = −GMm/(2r)."
+ },
+ "escape-speed": {
+  "def": "The smallest speed that lets an object reach infinite separation from a body: the speed at which the total energy is zero, v = √(2GM/r)."
+ }
+}

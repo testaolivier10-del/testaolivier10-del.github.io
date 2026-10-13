@@ -1,0 +1,45 @@
+<p>Unit 3 is about <b>energy</b>: a single number, a scalar, that a system has and that can change form or move from one object to another without ever being created or destroyed. Energy is one of the most useful ideas in physics because it lets you skip the step-by-step motion and compare a "before" with an "after". This page starts with the simplest form, the energy of motion.</p>
+
+<h2>Energy of motion</h2>
+<p>A moving object can do things a still one cannot: a rolling cart can push a spring, a thrown ball can break a window. We say the moving object has <b>kinetic energy</b>, written K. For an object of mass m moving at speed v,</p>
+<p style="text-align:center"><b>K = ½mv²</b></p>
+<p>The SI unit of energy is the <b>joule</b> (J). Writing the units of ½mv² shows what a joule is: kg × (m/s)² = kg·m²/s². A 1 kg cart moving at about 1.4 m/s has roughly 1 J of kinetic energy, a small amount; a car on the highway has hundreds of thousands of joules.</p>
+<p>This K is sometimes called translational kinetic energy, the energy of an object moving from place to place. Treat the object as a point object: its mass and its speed are all that matter.</p>
+
+<h2>Why the square matters</h2>
+<figure id="fig-ke" data-fig="ke-speed-squared"><figcaption>The same car at 10 m/s and 20 m/s: twice the speed, four times the kinetic energy and four times the braking distance.</figcaption></figure>
+<p>Mass and speed do not count equally. K is proportional to m, so doubling the mass doubles K. But K is proportional to v², so doubling the speed multiplies K by 2² = 4, and tripling it multiplies K by 9.</p>
+<p>That is why speed matters so much on the road. With the same brakes, the braking force and so the deceleration are the same at any speed. From the kinematic equation v² = v₀² + 2aΔx with v = 0, the stopping distance is v₀²/(2a): it grows with the square of the speed, just like K. A car at 30 m/s needs nine times the stopping distance of the same car at 10 m/s.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A 1500 kg car moves at 8.0 m/s. What is its kinetic energy? What is it at 24 m/s?</p>
+<p>Start from the definition: K = ½mv².</p>
+<p>At 8.0 m/s: K = ½(1500 kg)(8.0 m/s)² = ½(1500)(64) kg·m²/s² = 4.8 × 10⁴ J.</p>
+<p>At 24 m/s: K = ½(1500 kg)(24 m/s)² = 4.3 × 10⁵ J. Three times the speed gives nine times the energy, as the v² predicts.</p>
+</div>
+<p>Ratios like this are a favorite exam question: "if the speed is halved, the kinetic energy is…" Write K ∝ mv², put in the factors, and read the answer: half the speed gives (½)² = ¼ of the kinetic energy.</p>
+
+<h2>A scalar that is never negative</h2>
+<p>Velocity has a direction, carried by its sign on a line. Kinetic energy does not. Squaring the velocity removes the sign: a 1.5 kg cart moving left at 4.0 m/s has K = ½(1.5 kg)(−4.0 m/s)² = +12 J, exactly the same as moving right. Kinetic energy can be zero (for an object at rest) but never negative.</p>
+<p>The kinetic energy of a system of several objects is the sum of each object's kinetic energy. Because each one is positive, they never cancel. Two 0.50 kg carts moving toward each other at 3.0 m/s have velocities that cancel as vectors, but the system's kinetic energy is 2.25 J + 2.25 J = 4.5 J.</p>
+
+<h2>It depends on who is watching</h2>
+<p>Speed depends on the reference frame, so kinetic energy does too. A passenger sitting in a bus moving at 15 m/s has zero kinetic energy measured from the train and a large kinetic energy measured from the ground. Neither answer is wrong; they belong to different frames. On the exam, unless a frame is named, kinetic energy is measured from the ground.</p>
+
+<h2>Changes in kinetic energy</h2>
+<p>Much of Unit 3 is about how kinetic energy changes. The change is final minus initial, each computed separately:</p>
+<p style="text-align:center"><b>ΔK = ½mv_f² − ½mv_i²</b></p>
+<div class="worked">
+<p><b>Worked example 2.</b> A 0.50 kg cart speeds up from 2.0 m/s to 4.0 m/s. By how much does its kinetic energy change?</p>
+<p>K_i = ½(0.50 kg)(2.0 m/s)² = 1.0 J. K_f = ½(0.50 kg)(4.0 m/s)² = 4.0 J.</p>
+<p>ΔK = 4.0 J − 1.0 J = 3.0 J.</p>
+<p>Check the trap: ½m(Δv)² = ½(0.50)(2.0)² = 1.0 J, three times too small. Square first, then subtract.</p>
+</div>
+<p>Solving K = ½mv² for the speed is the other common step: v = √(2K/m). Keep the 2, and take the square root at the end.</p>
+
+<h2>Common slips</h2>
+<table class="compare"><thead><tr><th>Slip</th><th>Fix</th></tr></thead><tbody>
+<tr><td>Writing ΔK = ½m(Δv)²</td><td>Compute ½mv² at each speed, then subtract</td></tr>
+<tr><td>Treating K as proportional to v ("twice as fast, twice the energy")</td><td>K ∝ v²: twice as fast is four times the energy</td></tr>
+<tr><td>A negative kinetic energy for leftward motion</td><td>K is a scalar and never negative; the square removes the sign</td></tr>
+<tr><td>Letting opposite motions cancel in a system's K</td><td>Add each object's K; positive numbers never cancel</td></tr>
+</tbody></table>

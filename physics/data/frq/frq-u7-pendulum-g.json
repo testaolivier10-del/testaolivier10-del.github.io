@@ -1,0 +1,162 @@
+{
+ "id": "frq-u7-pendulum-g",
+ "type": "lab",
+ "points": 10,
+ "title": "Measuring g with a pendulum",
+ "units": [
+  "unit-7"
+ ],
+ "topics": [
+  "shm-period"
+ ],
+ "practices": [
+  "1.B",
+  "2.B",
+  "3.A",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Pendulum timing data",
+  "text": "<p>A student wants to determine the magnitude of the gravitational field g in the classroom using a small metal bob on a light string hung from a clamp. The student has a meterstick, a stopwatch and a protractor.</p><p>The student's data for five lengths are shown. Length ℓ is measured from the pivot to the center of the bob; each bob was released from rest at about 8°.</p>",
+  "table": {
+   "caption": "Length and time for 10 complete oscillations",
+   "cols": [
+    "Length ℓ (m)",
+    "Time for 10 oscillations (s)"
+   ],
+   "rows": [
+    [
+     "0.20",
+     "9.0"
+    ],
+    [
+     "0.40",
+     "12.6"
+    ],
+    [
+     "0.60",
+     "15.6"
+    ],
+    [
+     "0.80",
+     "17.9"
+    ],
+    [
+     "1.00",
+     "20.1"
+    ]
+   ]
+  }
+ },
+ "graphSpec": {
+  "type": "line",
+  "x": {
+   "label": "Length ℓ",
+   "unit": "m"
+  },
+  "y": {
+   "label": "Period squared T²",
+   "unit": "s²"
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 3,
+   "space": "lines",
+   "prompt": "<b>Describe</b> an experimental procedure the student could use to collect data like these. Include what is measured, with which equipment, and one way to reduce experimental uncertainty.",
+   "rubric": [
+    {
+     "point": "Measures the length ℓ from the pivot to the center of the bob with the meterstick, for several (at least 5) different lengths",
+     "accept": [
+      "varies ℓ over a range"
+     ]
+    },
+    {
+     "point": "Releases the bob from rest at a small angle (checked with the protractor) and times the oscillations with the stopwatch",
+     "accept": [
+      "small angle so the motion is close to SHM"
+     ]
+    },
+    {
+     "point": "Reduces uncertainty: times many oscillations (e.g. 10) and divides, and/or repeats each length and averages",
+     "accept": [
+      "repeated trials; timing several cycles"
+     ]
+    }
+   ],
+   "sample": "Hang the bob from the clamp and use the meterstick to measure ℓ from the pivot to the center of the bob. Pull the bob aside to about 8° (protractor) and release it from rest. Start the stopwatch as it passes the bottom and time 10 full oscillations; divide by 10 to get T. Repeat three times for each length and average. Do this for five lengths from 0.20 m to 1.00 m."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "space": "lines",
+   "prompt": "<b>Indicate</b> what quantities could be graphed to yield a straight line whose slope could be used to determine g. <b>Explain</b> how g is found from the slope.",
+   "rubric": [
+    {
+     "point": "Graphs T² (vertical) against ℓ (horizontal), or ℓ against T²",
+     "accept": [
+      "T against √ℓ also earns the point"
+     ]
+    },
+    {
+     "point": "States the slope relation from T = 2π√(ℓ/g): slope = 4π²/g so g = 4π²/slope (or g = 4π² × slope for ℓ against T²)",
+     "accept": [
+      "T² = (4π²/g)ℓ",
+      "for T against √ℓ: slope = 2π/√g, so g = 4π²/slope²"
+     ]
+    }
+   ],
+   "sample": "Square T = 2π√(ℓ/g): T² = (4π²/g)ℓ. A graph of T² against ℓ is a straight line through the origin with slope 4π²/g, so g = 4π²/slope."
+  },
+  {
+   "label": "c",
+   "points": 3,
+   "space": "graph",
+   "prompt": "On the grid, <b>plot</b> the data points for the quantities you indicated in part (b). Clearly label the axes with quantities and units, use a linear scale, and <b>draw</b> a best-fit line for the data.",
+   "rubric": [
+    {
+     "point": "Axes labeled with quantities and units (T² in s², ℓ in m) and a linear scale that uses most of the grid",
+     "accept": [
+      "both label and unit on each axis"
+     ]
+    },
+    {
+     "point": "Points plotted correctly: T² = 0.81, 1.59, 2.43, 3.20, 4.04 s² at ℓ = 0.20 to 1.00 m",
+     "accept": [
+      "within half a grid square"
+     ]
+    },
+    {
+     "point": "A single straight best-fit line through the data, close to the origin; not connect-the-dots",
+     "accept": [
+      "roughly as many points above as below"
+     ]
+    }
+   ],
+   "sample": "Computed T = t/10, then T²: 0.20 m → 0.81 s²; 0.40 m → 1.59 s²; 0.60 m → 2.43 s²; 0.80 m → 3.20 s²; 1.00 m → 4.04 s². With T² on the vertical axis (0 to 4.5 s²) and ℓ on the horizontal axis (0 to 1.0 m), the points lie close to one straight line through about the origin; draw a single ruler line through them."
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "space": "lines",
+   "prompt": "<b>Calculate</b> an experimental value for g using the best-fit line.",
+   "rubric": [
+    {
+     "point": "Slope found from two well-separated points on the line (not data points unless on the line), about 4.0 s²/m",
+     "accept": [
+      "slope between 3.8 and 4.2 s²/m, with units"
+     ]
+    },
+    {
+     "point": "g = 4π²/slope, about 9.8 m/s², consistent with the student's slope",
+     "accept": [
+      "value between 9.4 and 10.4 m/s² with units"
+     ]
+    }
+   ],
+   "sample": "Two points on my line: (0.10 m, 0.40 s²) and (0.90 m, 3.63 s²). Slope = 3.23 s² / 0.80 m = 4.04 s²/m. g = 4π²/slope = 39.48 / 4.04 s²/m = 9.8 m/s²."
+  }
+ ]
+}

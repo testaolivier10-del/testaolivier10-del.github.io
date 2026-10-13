@@ -1,0 +1,99 @@
+{
+ "topic": "orbits",
+ "hook": "The International Space Station circles Earth about sixteen times a day, while the Moon takes a month. Comets swing close to the Sun at tremendous speed, then crawl through the far reaches of their orbits for decades. Two conservation laws you already have, energy and angular momentum, explain all of it.",
+ "prereq": [
+  {
+   "q": "With U_G = 0 at infinite separation, the gravitational potential energy of two masses a distance r apart is",
+   "options": [
+    "−Gm₁m₂/r",
+    "+Gm₁m₂/r",
+    "−Gm₁m₂/r²",
+    "mgh"
+   ],
+   "correct": 0,
+   "why": "U_G = −Gm₁m₂/r, negative and approaching zero far away.",
+   "review": "potential-energy"
+  },
+  {
+   "q": "For a satellite in a circular orbit, gravity provides",
+   "options": [
+    "the centripetal net force, mv²/r",
+    "a force balanced by centrifugal force",
+    "no force, because it is weightless",
+    "a force along its velocity"
+   ],
+   "correct": 0,
+   "why": "GMm/r² = mv²/r.",
+   "review": "circular-motion"
+  },
+  {
+   "q": "A point object’s angular momentum about a point stays constant when",
+   "options": [
+    "no net torque acts about that point",
+    "its speed is constant",
+    "its distance from the point is constant",
+    "no forces act on it"
+   ],
+   "correct": 0,
+   "why": "ΔL = τΔt.",
+   "review": "angular-momentum-conservation"
+  }
+ ],
+ "figure": {
+  "figure": "elliptical-orbit-energy",
+  "caption": "On an elliptical orbit the satellite is fastest at the near point; E and L stay constant while K and U trade."
+ },
+ "chain": [
+  {
+   "cause": "A small satellite orbits a much more massive body, and only gravity acts",
+   "effect": "the total mechanical energy E = K + U of the system is constant"
+  },
+  {
+   "cause": "Gravity points at the central body’s center",
+   "effect": "it exerts no torque about that point, so the satellite’s angular momentum L about it is constant"
+  },
+  {
+   "cause": "On an elliptical orbit the satellite moves closer in",
+   "effect": "U becomes more negative and K grows: it speeds up (r v sin θ stays fixed)"
+  },
+  {
+   "cause": "In a circular orbit, GMm/r² = mv²/r",
+   "effect": "K = GMm/(2r), U = −2K and E = −K: a bound orbit has E < 0"
+  },
+  {
+   "cause": "The total energy is raised to zero",
+   "effect": "the object can just escape: v_esc = √(2GM/r)"
+  }
+ ],
+ "ideas": [
+  "Model: a satellite of much smaller mass than the central body; U<sub>G</sub> = −GMm/r, zero at infinite separation.",
+  "<b>Circular orbit</b>: E, U, K and L are all constant. v = √(GM/r), K = GMm/(2r), E = −K.",
+  "<b>Elliptical orbit</b>: E and L constant; K and U trade. Fastest at the closest point: r<sub>A</sub>v<sub>A</sub> = r<sub>B</sub>v<sub>B</sub> where v ⊥ r.",
+  "A bound orbit has E &lt; 0. <b>Escape speed</b> sets E = 0: v = √(2GM/r).",
+  "Name the reason: no torque about the center (L), only a conservative force inside the system (E)."
+ ],
+ "misconception": {
+  "wrong": "A satellite in orbit is weightless because there is no gravity in space, and a satellite moving faster must be in a higher orbit.",
+  "right": "Gravity is what holds it in orbit; it is in free fall around the planet. And higher circular orbits are slower: v = √(GM/r) falls as r grows, even though the total energy is higher."
+ },
+ "check": [
+  "phys-orbits-1",
+  "phys-orbits-2",
+  "phys-orbits-3",
+  "phys-orbits-4",
+  "phys-orbits-9",
+  "phys-orbits-10",
+  "phys-orbits-13"
+ ],
+ "summary": "For a satellite of small mass orbiting a massive body, total mechanical energy is conserved (gravity is the only force, and it is conservative) and angular momentum about the central body is conserved (gravity exerts no torque about its center). In a circular orbit K = GMm/(2r) and E = −K; on an ellipse, K and U trade and the satellite is fastest at its closest point. Escape needs E = 0, v = √(2GM/r).",
+ "connections": [
+  {
+   "href": "../notes/rolling.html",
+   "label": "Back: rolling (6.5)"
+  },
+  {
+   "href": "../notes/gravitational-force.html",
+   "label": "Back: Newton’s law of gravitation (2.6)"
+  }
+ ]
+}

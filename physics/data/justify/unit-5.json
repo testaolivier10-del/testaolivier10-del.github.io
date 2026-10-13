@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 5 (docs/apphys-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u5-wheelbarrow-lift",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "3.C",
+   "skill": "forces",
+   "title": "How hard you lift a wheelbarrow",
+   "context": "<p>A gardener holds a loaded wheelbarrow at rest with its handles lifted, so its legs are just off the ground. The 420 N load sits 0.50 m (measured horizontally) from the wheel's axle, the wheelbarrow's own 140 N weight acts 0.60 m from the axle, and her hands lift straight up on the handles 1.40 m from the axle. A friend says she must lift 560 N, the total weight.</p>",
+   "prompt": "<b>Evaluate</b> the friend's claim, and <b>justify</b> your answer with a calculation.",
+   "checklist": [
+    "Takes torques about the wheel's axle, so the ground's unknown force on the wheel has no lever arm and no torque",
+    "Uses rotational equilibrium: the torque of the lift about the axle balances the torques of the load and of the wheelbarrow's weight",
+    "Solves F(1.40 m) = (420 N)(0.50 m) + (140 N)(0.60 m), so F = 210 N, less than 560 N; the ground pushes up on the wheel with the remaining 350 N"
+   ],
+   "earns": {
+    "answer": "The claim is wrong. The wheelbarrow is at rest, so the net torque about any axis is zero. Taking the wheel's axle as the axis removes the ground's unknown force on the wheel, which has no lever arm there. The upward lift at 1.40 m must balance the torques of the load at 0.50 m and of the wheelbarrow's weight at 0.60 m: F(1.40 m) = (420 N)(0.50 m) + (140 N)(0.60 m) = 294 N·m, so F = 210 N. The net force is zero too, so the ground pushes up on the wheel with 560 N − 210 N = 350 N. Her lift is smaller than the total weight because it acts much farther from the axle.",
+    "why": "It picks a sensible axis, includes the wheelbarrow's own weight, balances torques, and checks the forces add up."
+   },
+   "misses": {
+    "answer": "She must lift the whole weight, 420 N + 140 N = 560 N, because she is holding everything up.",
+    "why": "She is not the only one holding it up: the ground pushes on the wheel. Her lift is set by balancing torques about the axle, so the lever arms matter, the error the readers report when a force is assumed to equal a weight."
+   }
+  },
+  {
+   "id": "u5-where-the-mass-is",
+   "unit": "unit-5",
+   "topic": "rotational-inertia",
+   "practice": "3.C",
+   "skill": "functional-dependence",
+   "title": "Same mass, different spin-up",
+   "context": "<p>Two rods have the same length and the same total mass, and each turns about an axis through its center. Rod A has most of its mass in two heavy caps at its ends; rod B has most of its mass in a heavy sleeve at its center. The same net torque acts on each, starting from rest.</p>",
+   "prompt": "<b>Predict</b> which rod has the greater angular acceleration, and <b>justify</b> your prediction.",
+   "checklist": [
+    "Claims rod B has the greater angular acceleration",
+    "Uses I = Σmr²: the same mass farther from the axis gives a larger rotational inertia, so rod A has the larger I",
+    "Uses Newton's second law in rotational form, α = τ/I: with the same torque, the smaller I gives the larger α"
+   ],
+   "earns": {
+    "answer": "Rod B speeds up faster. The rotational inertia I = Σmr² depends on how far each bit of mass is from the axis, squared. Rod A has its mass far from the axis, so its I is larger; rod B has its mass near the axis, so its I is smaller. By Newton's second law in rotational form, α = τ/I, the same net torque gives the rod with the smaller rotational inertia, B, the larger angular acceleration.",
+    "why": "It explains the difference in I from the distribution of mass (r², not m alone) and then uses τ = Iα."
+   },
+   "misses": {
+    "answer": "They have the same angular acceleration, because they have the same mass and the same torque.",
+    "why": "For rotation the mass alone does not set the response; where the mass sits does. Equal masses can have very different rotational inertias."
+   }
+  },
+  {
+   "id": "u5-tension-on-a-heavy-pulley",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "3.C",
+   "skill": "forces",
+   "title": "Tension on a pulley with mass",
+   "context": "<p>A block of mass m hangs from a string wrapped around a pulley with mass, which turns on a frictionless axle. The block is released from rest and falls while the pulley spins up.</p>",
+   "prompt": "<b>Compare</b> the string's tension with the block's weight mg while the block falls, and <b>justify</b> your answer using the block and the pulley.",
+   "checklist": [
+    "Claims the tension is less than mg",
+    "For the block: it speeds up downward, so the net force on it is down: mg − T = ma with a greater than 0, so T is less than mg",
+    "For the pulley: the tension is what gives it a net torque TR = Iα, so T is greater than zero; the tension is between 0 and mg"
+   ],
+   "earns": {
+    "answer": "The tension is less than mg. The block speeds up downward, so the net force on it points down: mg − T = ma, with a greater than zero, so T is less than mg. The tension is not zero either: it is the only force with a torque about the pulley's axle, and that torque, TR = Iα, is what spins the pulley up. So 0 is less than T, which is less than mg.",
+    "why": "It uses Newton's second law for the block and the rotational form for the pulley, and ties each to the direction of motion."
+   },
+   "misses": {
+    "answer": "The tension equals mg, because the string is holding the block.",
+    "why": "The string would hold up the full weight only if the block were at rest or moving at constant velocity. The block accelerates down, so the net force on it is not zero."
+   }
+  },
+  {
+   "id": "u5-slope-gives-inertia",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "2.B",
+   "skill": "graphs",
+   "title": "Rotational inertia from a slope",
+   "context": "<p>A student applies several steady torques to a wheel on a low-friction axle and measures its angular acceleration. Her data: 0.40 N·m gives 2.0 rad/s², 0.80 N·m gives 4.1 rad/s², 1.20 N·m gives 6.0 rad/s². She graphs torque (vertical) against angular acceleration (horizontal).</p>",
+   "prompt": "<b>Explain</b> what the slope of her graph represents, and <b>determine</b> the wheel's rotational inertia from it.",
+   "checklist": [
+    "Uses Newton's second law in rotational form, τ = Iα, so the graph of τ against α is a straight line through the origin whose slope is I",
+    "Draws a best-fit line through the data rather than using one data point or connecting the dots",
+    "Finds the slope from two points on the best-fit line, far apart, (1.20 − 0.40) N·m / (6.0 − 2.0) rad/s² = 0.20 kg·m², with the unit"
+   ],
+   "earns": {
+    "answer": "Newton's second law for rotation says τ = Iα, so a graph of τ against α is a straight line through the origin whose slope is the rotational inertia I. Draw the best-fit line through the three points rather than using any one point. Read two points on the line itself, far apart; here the line passes almost exactly through (2.0 rad/s², 0.40 N·m) and (6.0 rad/s², 1.20 N·m), so its slope is (1.20 N·m − 0.40 N·m) / (6.0 rad/s² − 2.0 rad/s²) = 0.20 kg·m². So the wheel's rotational inertia is 0.20 kg·m².",
+    "why": "It names what the slope means from the equation, uses the best-fit line, and gives the value with its unit."
+   },
+   "misses": {
+    "answer": "I = τ/α = 1.20/6.0 = 0.20 for the last trial, so the slope is 0.20.",
+    "why": "One trial is not the slope of the graph, and the value has no unit. The point of plotting is to use every trial through a best-fit line; with scattered data one point can be well off the line."
+   }
+  }
+ ]
+}

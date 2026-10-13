@@ -1,0 +1,12 @@
+{
+ "pulley-block-forces": {
+  "file": "figures/pulley-block-forces.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 460,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A pulley of mass M and radius R turns on a fixed axle hung from the ceiling. A light string wrapped around its rim holds a block of mass m, which accelerates downward with acceleration a while the pulley gains angular acceleration α, with a = Rα. Middle: the force diagram of the pulley shows the string pulling down at the rim, Earth’s gravitational force down at the center and the axle’s force up at the center; only the string’s pull has a lever arm, so F_T R = Iα. Right: the free-body diagram of the block shows the string’s tension up, shorter than Earth’s gravitational force down, so mg − F_T = ma."
+ }
+}

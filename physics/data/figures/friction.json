@@ -1,0 +1,12 @@
+{
+ "friction-static-kinetic": {
+  "file": "figures/friction-static-kinetic.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A crate on a floor pushed to the right by a hand, with its free-body diagram (F_A, hand, right; F_f, floor, left and equal; F_N up and F_g down, equal). Beside it, a graph of friction against the applied push: friction equals the push from 0 to 120 N (static), drops at 120 N, the maximum μs F_N, and stays at 80 N (kinetic, μk F_N) for larger pushes while the crate slides."
+ }
+}

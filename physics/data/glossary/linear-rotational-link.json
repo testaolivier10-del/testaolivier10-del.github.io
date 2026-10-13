@@ -1,0 +1,8 @@
+{
+ "arc-length": {
+  "def": "The distance traveled along a circle of radius r while turning through an angle θ in radians: s = rθ."
+ },
+ "tangential-speed": {
+  "def": "The speed of a point on a turning object, along its circle: v = rω, with ω in rad/s. Points farther from the axis move faster."
+ }
+}

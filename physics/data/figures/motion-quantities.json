@@ -1,0 +1,12 @@
+{
+ "car-speeding-slowing": {
+  "file": "figures/car-speeding-slowing.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two rows of snapshots of a car on a road, taken 1 s apart, with a gold velocity arrow above each car. Top row, speeding up while moving right: the snapshots spread out and the velocity arrows grow. At the right, the initial and final velocity arrows are drawn from one point; the change in velocity, delta v, points right, so the acceleration points right, the same way as the velocity. Bottom row, slowing down while moving right: the snapshots bunch together and the arrows shrink; delta v points left, so the acceleration points left, opposite to the velocity, and the car slows."
+ }
+}

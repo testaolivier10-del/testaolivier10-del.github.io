@@ -1,0 +1,99 @@
+/* Fluids tank (physics/assets/tools/fluids-tank.js). OWNED BY THIS TOOL ONLY.
+   Loaded by the tool's script (a <link> next to it) so the generator needs no
+   change. Fluid and object colors have light and dark values. */
+:root{--ft-water:#7FBFE6;--ft-oil:#E8C25A;--ft-salt:#6FC2B8;--ft-glass:#5C6B73;--ft-glass-fill:rgba(214,232,240,.25);--ft-hi:rgba(255,255,255,.65);--ft-steel:#7B868F;--ft-dot:#FFFFFF;}
+:root[data-theme="dark"] :root{--ft-water:#2F78A8;--ft-oil:#9C7A1E;--ft-salt:#2C8077;--ft-glass:#A9BAC3;--ft-glass-fill:rgba(140,170,190,.10);--ft-hi:rgba(255,255,255,.22);--ft-steel:#AAB4BC;--ft-dot:#EAF4FA;}
+.ft-view{display:flex;gap:10px;align-items:stretch;min-height:0;flex:1;position:relative;}
+.ft-scene{flex:1.7 1 0;min-width:0;min-height:0;display:flex;}
+.ft-panel{flex:1 1 0;min-width:0;min-height:0;display:flex;}
+.ft-scene svg,.ft-panel svg{width:100%;height:100%;max-height:520px;display:block;}
+.ft-scene svg{touch-action:none;}
+.ft-view > .ft-vtoggle,.ls-root .ft-view > .ft-vtoggle.tseg{display:none;}
+.ft-svg{font-family:var(--font-ui);font-size:16px;}
+.ft-svg text{fill:var(--ink);font-weight:700;}
+.ft-svg .ft-mut{fill:var(--muted);font-weight:700;font-size:13px;}
+.ft-svg .ft-big{font-size:20px;font-weight:900;}
+.ft-svg .ft-h{font-size:15px;font-weight:900;fill:var(--muted);}
+.ft-water{stroke:none;}
+.ft-water.water{fill:var(--ft-water);fill-opacity:.62;}
+.ft-water.oil{fill:var(--ft-oil);fill-opacity:.62;}
+.ft-water.salt{fill:var(--ft-salt);fill-opacity:.62;}
+.ft-surf{stroke-width:2.5;fill:none;}
+.ft-surf.water{stroke:var(--ft-water);} .ft-surf.oil{stroke:var(--ft-oil);} .ft-surf.salt{stroke:var(--ft-salt);}
+.ft-sheen{fill:var(--ft-hi);}
+.ft-glass{fill:none;stroke:var(--ft-glass);stroke-width:4;stroke-linejoin:round;stroke-linecap:round;}
+.ft-glassfill{fill:var(--ft-glass-fill);}
+.ft-glass-hi{stroke:var(--ft-hi);stroke-width:3;fill:none;stroke-linecap:round;}
+.ft-base{fill:var(--ft-glass);opacity:.7;}
+.ft-rule{stroke:var(--muted);stroke-width:1.4;}
+.ft-steel{fill:var(--ft-steel);}
+.ft-steel-s{stroke:var(--ft-steel);fill:none;stroke-width:4;stroke-linecap:round;}
+.ft-string{stroke:var(--ink);stroke-width:1.6;fill:none;}
+.ft-tube{fill:var(--white);stroke:var(--ink);stroke-width:2;}
+.ft-spring{stroke:var(--phys-s4);stroke-width:2;fill:none;stroke-linejoin:round;}
+.ft-ptr{fill:var(--phys-s2);}
+.ft-wl{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:5 4;}
+.ft-dim{stroke:var(--muted);stroke-width:1.5;fill:none;}
+.ft-probe{fill:var(--white);stroke:var(--ink);stroke-width:2;}
+.ft-probe-hit{fill:transparent;cursor:grab;}
+.ft-pt{fill:var(--phys-s2);stroke:var(--white);stroke-width:2;}
+.ft-line{fill:none;stroke-width:2;}
+.ft-line.water{stroke:var(--phys-s1);} .ft-line.oil{stroke:#B07A00;} .ft-line.salt{stroke:var(--phys-s3);}
+:root[data-theme="dark"] .ft-line.oil{stroke:#F5CF8A;}
+.ft-line.on{stroke-width:4;}
+.ft-line.off{stroke-dasharray:5 4;opacity:.7;}
+.ft-axis{stroke:var(--ink);stroke-width:1.5;fill:none;}
+.ft-grid{stroke:var(--line);stroke-width:1;}
+.ft-bar{stroke:var(--white);stroke-width:1.5;}
+.ft-bar.p{fill:var(--phys-s1);} .ft-bar.k{fill:var(--phys-s2);} .ft-bar.u{fill:var(--phys-s3);}
+.ft-bar-t{fill:#fff !important;font-size:13px;font-weight:900;}
+.ft-eqline{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:6 4;}
+.ft-dial{fill:var(--white);stroke:var(--ink);stroke-width:2;}
+.ft-tick{stroke:var(--ink);stroke-width:1.4;}
+.ft-needle{stroke:var(--phys-s2);stroke-width:3;stroke-linecap:round;}
+.ft-pipe{fill:none;stroke:var(--ft-glass);stroke-width:4;stroke-linejoin:round;}
+.ft-dot{fill:var(--ft-dot);fill-opacity:.85;}
+.ft-jet{fill:none;stroke-linecap:round;}
+.ft-jet.water{stroke:var(--ft-water);} .ft-jet.oil{stroke:var(--ft-oil);} .ft-jet.salt{stroke:var(--ft-salt);}
+.ft-ground{stroke:var(--ink);stroke-width:2;}
+.ft-hatch{stroke:var(--muted);stroke-width:1;}
+.ft-parr{color:var(--phys-s2);}
+.ft-legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin:0;padding:0;list-style:none;font:700 13px var(--font-ui);color:var(--muted);}
+.ft-nums table{width:100%;}
+.ft-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.ft-grp[hidden]{display:none !important;}
+.ft-grp{display:flex;flex-direction:column;gap:10px;}
+.ft-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.ls-root .ft-scenes{margin-bottom:2px;}
+.ft-fig{margin:0;display:flex;flex-direction:column;}
+.ft-fig svg{width:100%;height:auto;max-height:340px;}
+.ls-root .ls-drill-stage .ft-fig{flex:1;min-height:0;}
+.ls-root .ls-drill-stage .ft-fig svg{flex:1;min-height:0;height:100%;max-height:none;}
+@media (max-width:700px){
+  .ft-view{flex-direction:column;gap:6px;}
+  .ft-view > .ft-vtoggle,.ls-root .ft-view > .ft-vtoggle.tseg{display:inline-flex;align-self:flex-start;flex:none;}
+  .ft-vtoggle button{min-height:36px !important;}
+  .ft-view.show-scene .ft-panel,.ft-view.show-panel .ft-scene{display:none;}
+  .ft-scene svg,.ft-panel svg{max-height:none;}
+}
+.ft-scenesel{max-width:100%;}
+.ls-root .ft-fluid.tseg button,.ls-root .ft-vtoggle.tseg button{border:0;flex:1;}
+.ls-root .ft-fluid.tseg{display:flex;}
+.ft-fbdfig{margin:0;display:flex;flex-direction:column;min-height:0;flex:1;}
+.ft-cap{font:800 13px var(--font-ui);color:var(--muted);text-align:center;}
+.ft-fbd .ft-fbdl{font-size:16px;font-weight:900;}
+.ft-panel{flex-direction:column;justify-content:center;}
+.ft-two{display:flex;flex-direction:column;gap:4px;min-height:0;flex:1;}
+.ft-two .ft-fbdfig svg{max-height:230px;}
+.ft-note{font-weight:700;text-align:left;margin:4px 0 0;}
+.ft-fbdfig svg{flex:1;min-height:0;}
+.ft-two .bt-plot{min-height:0;flex:1;}
+.ls-root .ft-fluid.tseg{width:100%;box-sizing:border-box;}
+.ft-svg .phys-arrow.vel text{paint-order:stroke;stroke:var(--white);stroke-width:4px;}
+.ft-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.ft-pair .bt-ctl{gap:2px;}
+.ft-pair .bt-ctl label{font:800 12.5px var(--font-ui);color:var(--muted);}
+.ft-pair select{width:100%;}
+.ft-dock{display:flex;flex-direction:column;gap:10px;}
+.ft-dock .bt-buttons{flex-wrap:nowrap;}
+.ft-dock .bt-buttons > *{flex:1;}

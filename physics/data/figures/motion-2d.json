@@ -1,0 +1,12 @@
+{
+ "table-launch-strobe": {
+  "file": "figures/table-launch-strobe.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two balls leave a 1.25 m high table at the same instant: one is dropped from rest at the edge, the other rolls off horizontally at 3.0 m/s. Snapshots every 0.10 s show both balls at the same height at each instant, with dashed lines joining equal heights. The launched ball moves 0.30 m sideways in every 0.10 s, and its horizontal velocity arrow stays 3.0 m/s, while its vertical velocity arrow grows like the dropped ball's. Both land together after about 0.51 s, the launched ball about 1.5 m from the table."
+ }
+}

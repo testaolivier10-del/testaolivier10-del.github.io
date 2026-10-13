@@ -42,4 +42,6 @@ test('AP® Chemistry counts down to Thursday 6 May 2027 by default', () => {
   assert.equal(X.isDefault('apchem'), true);
   assert.equal(X.DEFAULTS.apchem.label, 'AP® Chemistry exam (Thu, May 6, 2027)');
   assert.equal(ls.getItem('apchem_exam_date'), null, 'the default is not written to storage');
+  assert.equal(X.read('apphys'), '2027-05-05');
+  assert.equal(X.DEFAULTS.apphys.label, 'AP® Physics 1 exam (Wed, May 5, 2027)');
 });

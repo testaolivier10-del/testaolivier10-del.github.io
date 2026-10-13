@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 8 (docs/apphys-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u8-float-in-salt-water",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "3.C",
+   "skill": "fluids",
+   "title": "Floating higher in salt water",
+   "context": "<p>A wooden block floats at rest in fresh water. It is moved to salt water, which is denser, and floats at rest again.</p>",
+   "prompt": "<b>Predict</b> whether more or less of the block is under the surface in salt water, and <b>justify</b> your prediction.",
+   "checklist": [
+    "Claims less of the block is under water in salt water",
+    "Says floating at rest means the buoyant force balances the block's weight, so the buoyant force is the same in both liquids",
+    "Uses F_b = ρ_fluid V_under g: the same F_b with a larger ρ_fluid needs a smaller submerged volume"
+   ],
+   "earns": {
+    "answer": "Less of the block is under water in salt water. The block floats at rest in both, so the buoyant force balances its weight each time; its weight has not changed, so the buoyant force is the same in both liquids. The buoyant force is F_b = ρ_fluid V_under g. Salt water has a larger density, so the same buoyant force needs a smaller submerged volume V_under, and the block floats higher.",
+    "why": "It uses the equilibrium of two separate forces and reads the dependence on the fluid's density correctly."
+   },
+   "misses": {
+    "answer": "The salt water is denser, so it pushes up harder on the block and the buoyant force is bigger.",
+    "why": "The buoyant force cannot be bigger: the block floats at rest in both, so it equals the block's weight each time. The readers report this \"denser fluid pushes harder\" reasoning."
+   }
+  },
+  {
+   "id": "u8-sinking-stone",
+   "unit": "unit-8",
+   "topic": "buoyancy",
+   "practice": "2.B",
+   "skill": "fluids",
+   "title": "How fast a stone sinks at first",
+   "context": "<p>A granite stone (density 2700 kg/m³) is released from rest under water (density 1000 kg/m³). Ignore the water's drag at this low speed. Use g = 9.8 m/s².</p>",
+   "prompt": "<b>Derive</b> an expression for the stone's acceleration, <b>calculate</b> it, and <b>explain</b> why it is less than g.",
+   "checklist": [
+    "Names two forces: the gravitational force of Earth down, ρ_stone V g, and the buoyant force of the water up, ρ_water V g",
+    "Uses Newton's second law: ρ_stone V a = ρ_stone V g − ρ_water V g, so a = g(1 − ρ_water/ρ_stone)",
+    "Calculates a = (9.8 m/s²)(1 − 1000/2700) = 6.2 m/s², less than g because the buoyant force points up and partly balances the weight"
+   ],
+   "earns": {
+    "answer": "Two forces act on the stone: the gravitational force of Earth, down, of size ρ_stone V g, and the buoyant force of the water, up, of size ρ_water V g, where V is the stone's volume. By Newton's second law, (ρ_stone V)a = ρ_stone V g − ρ_water V g, so a = g(1 − ρ_water/ρ_stone) = (9.8 m/s²)(1 − 1000/2700) = 6.2 m/s², downward. It is less than g because the buoyant force points up, opposite the gravitational force, and cancels part of it.",
+    "why": "It keeps gravity and buoyancy as two separate forces in opposite directions, starts from Newton's second law, and shows the result."
+   },
+   "misses": {
+    "answer": "Only the buoyant force acts under water, pushing up, so a = F_b/m = (1000/2700)(9.8) = 3.6 m/s² up.",
+    "why": "This drops the gravitational force, the error the readers report most on buoyancy questions. Both forces act on the stone, in opposite directions."
+   }
+  },
+  {
+   "id": "u8-pressure-depth-graph",
+   "unit": "unit-8",
+   "topic": "fluid-pressure",
+   "practice": "2.B",
+   "skill": "graphs",
+   "title": "Reading a pressure-depth graph",
+   "context": "<p>A diver's gauge records the absolute pressure at several depths in a lake. The graph of pressure against depth is a straight line that crosses the pressure axis at 1.0 × 10⁵ Pa and has a slope of 1.0 × 10⁴ Pa/m. Use g = 9.8 m/s².</p>",
+   "prompt": "<b>Explain</b> what the intercept and the slope represent, and <b>determine</b> the density of the lake water.",
+   "checklist": [
+    "Uses P = P₀ + ρgh, so the graph of P against depth h is a straight line",
+    "Says the intercept is P₀, the atmospheric pressure at the surface, and the slope is ρg",
+    "Finds ρ = slope/g = (1.0 × 10⁴ Pa/m)/(9.8 m/s²) = 1.0 × 10³ kg/m³, with the unit"
+   ],
+   "earns": {
+    "answer": "The absolute pressure at depth h is P = P₀ + ρgh. So a graph of P against h is a straight line whose intercept, at h = 0, is P₀: the atmospheric pressure pushing on the lake surface, 1.0 × 10⁵ Pa. Its slope is ρg. So ρ = slope/g = (1.0 × 10⁴ Pa/m) / (9.8 m/s²) = 1.0 × 10³ kg/m³ (about 1020 kg/m³).",
+    "why": "It reads both features of the graph from the equation, including why the line does not start at zero, and finds ρ with its unit."
+   },
+   "misses": {
+    "answer": "Pressure is proportional to depth, so at 10 m, ρ = P/(gh) = (2.0 × 10⁵)/(9.8 × 10) = 2.0 × 10³ kg/m³.",
+    "why": "Absolute pressure is not proportional to depth: the line has an intercept, the atmosphere's pressure. Ignoring it doubles the density here. The slope, not one point, gives ρg."
+   }
+  },
+  {
+   "id": "u8-tank-jet-speed",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "2.D",
+   "skill": "functional-dependence",
+   "title": "A hole four times as deep",
+   "context": "<p>Water leaks from a small hole in the side of a wide open tank, a depth h below the water surface. A second tank has a hole at depth 4h. Water is an ideal fluid.</p>",
+   "prompt": "<b>Derive</b> an expression for the speed of the water leaving a hole, and use it to <b>compare</b> the two jet speeds.",
+   "checklist": [
+    "Applies Bernoulli's equation from the water surface to the hole: both are open to the air, so the pressures are equal (atmospheric)",
+    "Uses continuity to take the surface speed as about zero, because the tank is much wider than the hole",
+    "Gets ρgh = ½ρv², so v = √(2gh): the density cancels, and v ∝ √h, so the 4h hole gives twice the speed"
+   ],
+   "earns": {
+    "answer": "Apply Bernoulli's equation along the flow from the water surface to the hole: P₁ + ρgy₁ + ½ρv₁² = P₂ + ρgy₂ + ½ρv₂². Both points are open to the air, so P₁ = P₂. The tank is much wider than the hole, so by continuity (A₁v₁ = A₂v₂) the surface moves very slowly: v₁ ≈ 0. That leaves ρgh = ½ρv², so v = √(2gh). The density cancels, and v is proportional to √h, so the hole at depth 4h gives a jet √4 = 2 times as fast.",
+    "why": "It starts from a named principle, states each simplification with its reason, and reads the square-root dependence correctly."
+   },
+   "misses": {
+    "answer": "Four times the depth gives four times the pressure, so the water comes out four times as fast.",
+    "why": "The gauge pressure at the hole does grow 4 times, but it sets the jet's kinetic energy per volume, ½ρv², not its speed. The speed grows as √h, so it doubles."
+   }
+  }
+ ]
+}

@@ -1,0 +1,545 @@
+{
+ "stimuli": {
+  "motion-2d-s1": {
+   "kind": "diagram",
+   "title": "A ball rolls off a table",
+   "text": "<p>A ball rolls off the edge of a level table 0.80 m high at 2.4 m/s, moving horizontally. Air resistance is negligible. Use g = 9.8 m/s².</p>",
+   "html": "<svg role=\"img\" aria-label=\"A ball rolls off a table 0.80 m high moving horizontally at 2.4 m/s and follows a curved path to the floor, landing a horizontal distance d from the table edge\" viewBox=\"0 0 620 316\" width=\"100%\" style=\"max-width:620px;height:auto\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Arial,Helvetica,sans-serif\"><rect width=\"620\" height=\"316\" fill=\"#ffffff\"/><rect x=\"20\" y=\"96\" width=\"200\" height=\"12\" fill=\"#A9784A\" stroke=\"#1F2A28\"/><rect x=\"36\" y=\"108\" width=\"12\" height=\"156\" fill=\"#8A5F38\"/><rect x=\"196\" y=\"108\" width=\"12\" height=\"156\" fill=\"#8A5F38\"/><rect x=\"0\" y=\"264\" width=\"620\" height=\"14\" fill=\"#D8D2C4\"/><circle cx=\"206.0\" cy=\"88.0\" r=\"8\" fill=\"#E07B39\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><circle cx=\"203.2\" cy=\"85.2\" r=\"2.2\" fill=\"#ffffff\" opacity=\"0.5\"/><line x1=\"216.0\" y1=\"88.0\" x2=\"265.0\" y2=\"88.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"276.0,88.0 265.0,82.5 265.0,93.5\" fill=\"#B07A00\"/><text x=\"282\" y=\"92\" fill=\"#B07A00\" font-size=\"13\" text-anchor=\"start\" font-weight=\"bold\">2.4 m/s</text><polyline points=\"206.0,88.0 211.8,88.2 217.6,88.8 223.5,89.8 229.3,91.1 235.1,92.9 240.9,95.0 246.7,97.6 252.5,100.5 258.4,103.8 264.2,107.6 270.0,111.7 275.8,116.2 281.6,121.0 287.5,126.3 293.3,132.0 299.1,138.1 304.9,144.5 310.7,151.4 316.6,158.6 322.4,166.2 328.2,174.2 334.0,182.6 339.8,191.4 345.6,200.6 351.5,210.2 357.3,220.2 363.1,230.6 368.9,241.3 374.7,252.5 380.6,264.0\" fill=\"none\" stroke=\"#734200\" stroke-width=\"1.8\" stroke-dasharray=\"5 4\"/><line x1=\"232\" y1=\"96\" x2=\"232\" y2=\"264\" stroke=\"#1F2A28\"/><line x1=\"226\" y1=\"96\" x2=\"238\" y2=\"96\" stroke=\"#1F2A28\"/><text x=\"240\" y=\"190\" fill=\"#1F2A28\" font-size=\"13\" text-anchor=\"start\" font-weight=\"bold\">0.80 m</text><line x1=\"206\" y1=\"290\" x2=\"380.6\" y2=\"290\" stroke=\"#1F2A28\"/><line x1=\"206\" y1=\"284\" x2=\"206\" y2=\"296\" stroke=\"#1F2A28\"/><line x1=\"380.6\" y1=\"284\" x2=\"380.6\" y2=\"296\" stroke=\"#1F2A28\"/><text x=\"293.3\" y=\"308\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"normal\">horizontal distance d</text></svg><p>Key: gold arrow, the ball's velocity as it leaves the table; dashed curve, its path.</p>"
+  },
+  "motion-2d-s2": {
+   "kind": "table",
+   "title": "Video tracking of a kicked ball",
+   "text": "<p>A soccer ball is kicked from level ground at 18.0 m/s, 37.0° above the horizontal. A video tracker records its position. Air resistance is negligible; g = 9.8 m/s².</p>",
+   "table": {
+    "caption": "Position of the ball after the kick",
+    "cols": [
+     "Time (s)",
+     "Horizontal position x (m)",
+     "Height y (m)"
+    ],
+    "rows": [
+     [
+      "0.00",
+      "0.00",
+      "0.00"
+     ],
+     [
+      "0.40",
+      "5.75",
+      "3.55"
+     ],
+     [
+      "0.80",
+      "11.50",
+      "5.53"
+     ],
+     [
+      "1.10",
+      "15.81",
+      "5.99"
+     ],
+     [
+      "1.60",
+      "23.00",
+      "4.79"
+     ],
+     [
+      "2.00",
+      "28.75",
+      "2.07"
+     ]
+    ]
+   }
+  },
+  "motion-2d-s3": {
+   "kind": "diagram",
+   "title": "A drone drops a package",
+   "text": "<p>A delivery drone flies horizontally at a steady 6.0 m/s, 20. m above level ground, and releases a package. Air resistance is negligible. Use g = 9.8 m/s².</p>",
+   "html": "<svg role=\"img\" aria-label=\"A drone flying right at 6.0 m/s, 20 m above the ground, carrying a package, with a target marked on the ground ahead\" viewBox=\"0 0 620 262\" width=\"100%\" style=\"max-width:620px;height:auto\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Arial,Helvetica,sans-serif\"><rect width=\"620\" height=\"262\" fill=\"#ffffff\"/><rect x=\"0\" y=\"230\" width=\"620\" height=\"16\" fill=\"#7BAE5B\"/><rect x=\"120\" y=\"52\" width=\"60\" height=\"16\" rx=\"6\" fill=\"#5A6268\" stroke=\"#1F2A28\"/><line x1=\"116\" y1=\"52\" x2=\"116\" y2=\"42\" stroke=\"#1F2A28\" stroke-width=\"2\"/><ellipse cx=\"116\" cy=\"40\" rx=\"20\" ry=\"3\" fill=\"#9AA0A5\"/><line x1=\"184\" y1=\"52\" x2=\"184\" y2=\"42\" stroke=\"#1F2A28\" stroke-width=\"2\"/><ellipse cx=\"184\" cy=\"40\" rx=\"20\" ry=\"3\" fill=\"#9AA0A5\"/><rect x=\"142\" y=\"70\" width=\"16\" height=\"14\" fill=\"#C58B4E\" stroke=\"#1F2A28\"/><line x1=\"190.0\" y1=\"60.0\" x2=\"249.0\" y2=\"60.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"260.0,60.0 249.0,54.5 249.0,65.5\" fill=\"#B07A00\"/><text x=\"266\" y=\"64\" fill=\"#B07A00\" font-size=\"13\" text-anchor=\"start\" font-weight=\"bold\">6.0 m/s</text><line x1=\"70\" y1=\"76\" x2=\"70\" y2=\"230\" stroke=\"#1F2A28\"/><line x1=\"64\" y1=\"76\" x2=\"76\" y2=\"76\" stroke=\"#1F2A28\"/><text x=\"62\" y=\"150\" fill=\"#1F2A28\" font-size=\"13\" text-anchor=\"end\" font-weight=\"bold\">20 m</text><rect x=\"440\" y=\"214\" width=\"60\" height=\"16\" fill=\"#F6D776\" stroke=\"#1F2A28\"/><text x=\"470\" y=\"250\" font-size=\"12\" text-anchor=\"middle\" fill=\"#1F2A28\">target</text></svg><p>Key: gold arrow, the drone's velocity relative to the ground.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-motion-2d-1",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-2d-s1",
+   "q": "How long is the ball in the air?",
+   "numeric": {
+    "answer": 0.4,
+    "tol": 0.01,
+    "unit": "s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.33,
+      "why": "Value: 0.33 s divides the height by the horizontal speed. The fall time comes from the vertical motion alone: Δy = ½gt²."
+     },
+     {
+      "value": 0.16,
+      "why": "Value: you forgot the square root: t² = 2Δy/g, so t = √(2Δy/g)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Vertically the ball starts with v<sub>y</sub> = 0 and falls 0.80 m: Δy = ½gt², so t = √(2Δy/g) = √(2 × 0.80 m ÷ 9.8 m/s²) = 0.40 s. The horizontal speed does not matter."
+   }
+  },
+  {
+   "id": "phys-motion-2d-2",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-2d-s1",
+   "q": "How far from the base of the table does the ball land (the distance d)?",
+   "numeric": {
+    "answer": 0.97,
+    "tol": 0.01,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.48,
+      "why": "Value: there is no ½ in the horizontal motion. With no horizontal acceleration, d = vₓt."
+     },
+     {
+      "value": 0.8,
+      "why": "Value: 0.80 m is the height of the table, not the horizontal distance. Find the fall time from the height (0.40 s), then d = vₓt."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Horizontally there is no acceleration, so d = vₓt = (2.4 m/s)(0.404 s) = 0.97 m."
+   }
+  },
+  {
+   "id": "phys-motion-2d-3",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "motion-2d-s1",
+   "q": "The ball leaves the same table at 4.8 m/s instead. How does its time in the air compare?",
+   "options": [
+    "It is twice as long",
+    "It is half as long",
+    "It is √2 times as long",
+    "It is the same, 0.40 s"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Horizontal and vertical motions are independent. Same height, same vertical start, same fall time; only d doubles.",
+    "options": [
+     "A faster horizontal speed carries the ball farther, but it does not change how long it takes to fall 0.80 m.",
+     "The vertical motion starts from v<sub>y</sub> = 0 in both cases, so the ball falls the same way.",
+     "Square roots come from changing the height; here only the horizontal speed changed.",
+     "Right: the fall time depends only on the vertical motion (height and g), and the vertical motion has not changed."
+    ]
+   }
+  },
+  {
+   "id": "phys-motion-2d-4",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "motion-2d-s1",
+   "q": "What is the ball's speed just before it hits the floor?",
+   "numeric": {
+    "answer": 4.6,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 6.4,
+      "why": "Value: 6.4 m/s adds the components as numbers. They are perpendicular, so combine them with the Pythagorean theorem."
+     },
+     {
+      "value": 4.0,
+      "why": "Value: 4.0 m/s is only the vertical component. The ball still moves sideways at 2.4 m/s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "vₓ = 2.4 m/s (unchanged). v<sub>y</sub> = gt = (9.8 m/s²)(0.404 s) = 3.96 m/s downward. Speed = √(2.4² + 3.96²) = 4.6 m/s."
+   }
+  },
+  {
+   "id": "phys-motion-2d-5",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-2d-s1",
+   "q": "Which statement about the ball's velocity while it is in the air is correct?",
+   "options": [
+    "Its horizontal component slows down as the ball falls",
+    "Its horizontal part is steady; its vertical part grows",
+    "Both components grow at the same rate",
+    "Its vertical component stays zero until it lands"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "A projectile: aₓ = 0, so vₓ is constant; a_y = −g, so v<sub>y</sub> grows downward steadily.",
+    "options": [
+     "Nothing pushes the ball sideways once it leaves the table, so vₓ does not change.",
+     "Right: no horizontal acceleration; a constant downward acceleration g changes v<sub>y</sub> by 9.8 m/s each second.",
+     "Only the vertical component changes; the horizontal acceleration is zero.",
+     "Gravity gives the ball a downward velocity from the moment it leaves the table."
+    ]
+   }
+  },
+  {
+   "id": "phys-motion-2d-6",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-2d-s2",
+   "q": "Using the table, what is the ball's horizontal velocity?",
+   "numeric": {
+    "answer": 14.4,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 18.0,
+      "why": "Value: 18.0 m/s is the launch speed along the 37° direction. Only its horizontal component, v cos θ, shows up in x."
+     },
+     {
+      "value": 10.8,
+      "why": "Value: 10.8 m/s is the vertical component, v sin θ."
+     }
+    ]
+   },
+   "why": {
+    "correct": "x grows by the same amount in equal times: from 0.00 s to 2.00 s, Δx = 28.75 m, so vₓ = 28.75 m ÷ 2.00 s = 14.4 m/s. Check: 18.0 cos 37.0° = 14.4 m/s."
+   }
+  },
+  {
+   "id": "phys-motion-2d-7",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-2d-s2",
+   "q": "At what time does the ball reach its highest point?",
+   "numeric": {
+    "answer": 1.11,
+    "tol": 0.01,
+    "unit": "s",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 2.21,
+      "why": "Value: 2.21 s is the whole flight. The top comes halfway, when v<sub>y</sub> = 0."
+     },
+     {
+      "value": 1.84,
+      "why": "Value: use the vertical component, 18.0 sin 37.0° = 10.8 m/s, not the full launch speed."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At the top, v<sub>y</sub> = 0. v<sub>y</sub> = v₀ sin θ − gt → t = (18.0 sin 37.0°) ÷ 9.8 = 10.83 ÷ 9.8 = 1.11 s. The table agrees: the height peaks near 1.10 s."
+   }
+  },
+  {
+   "id": "phys-motion-2d-8",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "motion-2d-s2",
+   "q": "Which describes a graph of the ball's vertical velocity v<sub>y</sub> against time (up positive)?",
+   "options": [
+    "A horizontal line at 14.4 m/s",
+    "A curve that rises and then falls, like the path of the ball",
+    "A straight line sloping down, crossing zero near 1.1 s",
+    "A straight line sloping down that stops at zero"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Vertical motion: constant acceleration −g. v<sub>y</sub> starts at +10.8 m/s and falls by 9.8 m/s each second, through zero at about 1.1 s.",
+    "options": [
+     "That describes vₓ, which does not change.",
+     "That shape is y against t. The velocity changes steadily, so its graph is straight.",
+     "Right: v<sub>y</sub> changes at a constant −9.8 m/s², so the graph is a line with slope −9.8 m/s², zero at the top.",
+     "After the top, v<sub>y</sub> keeps decreasing and becomes negative as the ball falls."
+    ]
+   }
+  },
+  {
+   "id": "phys-motion-2d-9",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "motion-2d-s2",
+   "q": "Where does the ball land, measured horizontally from the kick?",
+   "numeric": {
+    "answer": 31.8,
+    "tol": 0.1,
+    "unit": "m",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 15.9,
+      "why": "Value: 15.9 m is where the ball is at its highest point. On level ground the flight takes twice as long."
+     },
+     {
+      "value": 39.8,
+      "why": "Value: use the horizontal component of the velocity, 14.4 m/s, not 18.0 m/s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The flight lasts 2 × 1.105 s = 2.21 s (up and down on level ground). Range = vₓ × t = 14.38 m/s × 2.21 s = 31.8 m."
+   }
+  },
+  {
+   "id": "phys-motion-2d-10",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "motion-2d-s2",
+   "q": "The ball is kicked again at 18.0 m/s but at 53.0° (so sin and cos swap). How do the new range and time of flight compare with the 37.0° kick?",
+   "options": [
+    "The same range, but a longer time of flight",
+    "A longer range and a longer time of flight",
+    "A shorter range and the same time of flight",
+    "The same range and the same time of flight"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Time of flight = 2v sin θ/g grows with θ. Range = vₓ × time = 2v² sin θ cos θ/g, and sin θ cos θ is the same for 37° and 53°.",
+    "options": [
+     "Right: range ∝ sin θ cos θ, which is the same for 37° and 53°; the larger vertical component keeps the ball up longer.",
+     "The longer flight is offset by a smaller horizontal velocity; the product, the range, is the same.",
+     "The time of flight depends on v sin θ, which is larger at 53°.",
+     "The ranges match, but at 53° the ball goes higher and stays up longer."
+    ]
+   }
+  },
+  {
+   "id": "phys-motion-2d-11",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-2d-s3",
+   "q": "How long does the package take to reach the ground?",
+   "numeric": {
+    "answer": 2.0,
+    "tol": 0.1,
+    "unit": "s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 4.1,
+      "why": "Value: take the square root: t² = 2Δy/g = 4.08 s², so t = 2.0 s."
+     },
+     {
+      "value": 3.3,
+      "why": "Value: the fall time comes from the vertical motion alone, not from 20 m ÷ 6.0 m/s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At release the package moves with the drone: horizontally at 6.0 m/s, vertically at 0. Δy = ½gt² → t = √(2 × 20. m ÷ 9.8 m/s²) = 2.0 s."
+   }
+  },
+  {
+   "id": "phys-motion-2d-12",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-2d-s3",
+   "q": "How far ahead of the target should the drone release the package, measured horizontally?",
+   "numeric": {
+    "answer": 12.0,
+    "tol": 1.0,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.0,
+      "why": "Value: released straight above the target, the package would land 12 m past it: it keeps moving forward at 6.0 m/s."
+     },
+     {
+      "value": 6.1,
+      "why": "Value: there is no ½ in the horizontal motion, since aₓ = 0."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The package keeps the drone's horizontal velocity: d = vₓt = (6.0 m/s)(2.02 s) = 12 m before the target."
+   }
+  },
+  {
+   "id": "phys-motion-2d-13",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "motion-2d-s3",
+   "q": "Where is the package relative to the drone while it falls, if the drone keeps flying at 6.0 m/s?",
+   "options": [
+    "Behind the drone, falling farther back each second",
+    "Directly below the drone the whole time",
+    "Ahead of the drone, pulling farther in front of it",
+    "At the drone's height, moving sideways"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "In the drone's frame the package has zero horizontal velocity and falls straight down. In the ground's frame the same motion is a curved path.",
+    "options": [
+     "That would happen with air resistance slowing the package; here it keeps vₓ = 6.0 m/s.",
+     "Right: both have the same horizontal velocity, so relative to the drone the package just falls straight down.",
+     "Nothing speeds the package up horizontally.",
+     "Gravity pulls the package down from the moment it is released."
+    ]
+   }
+  },
+  {
+   "id": "phys-motion-2d-14",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "motion-2d-s3",
+   "q": "Which describes the package's path as seen by a person standing on the ground?",
+   "options": [
+    "A downward curve that gets steeper",
+    "A straight line down",
+    "A straight slanted line toward the target",
+    "A curve that rises first, then falls"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ground frame: x = vₓt and y = −½gt². Combining them gives a parabola that gets steeper as v<sub>y</sub> grows.",
+    "options": [
+     "Right: steady horizontal motion plus growing downward speed traces a downward-curving path, a parabola.",
+     "That is the path in the drone's frame. On the ground, the package also moves forward at 6.0 m/s.",
+     "A straight slanted path would need a constant ratio of v<sub>y</sub> to vₓ, but v<sub>y</sub> grows while vₓ stays the same.",
+     "The package is released with no upward velocity, so it never rises."
+    ]
+   }
+  },
+  {
+   "id": "phys-motion-2d-15",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "At the highest point of a ball's flight after being thrown at an angle, which is true? Air resistance is negligible.",
+   "options": [
+    "Its velocity and acceleration are both zero",
+    "Its velocity is zero and its acceleration is g downward",
+    "Its velocity is horizontal and its acceleration is zero",
+    "Its velocity is horizontal; its acceleration is g down"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "At the top v<sub>y</sub> = 0 but vₓ is unchanged, and a = g downward at every point of a projectile's flight.",
+    "options": [
+     "vₓ is not zero, and the acceleration stays g downward at the top.",
+     "Only the vertical part of the velocity is zero at the top; vₓ remains.",
+     "The vertical velocity is changing from up to down at the top, so the acceleration is not zero.",
+     "Right: v<sub>y</sub> = 0 at the top, so the velocity is just vₓ; the acceleration is g down throughout."
+    ]
+   }
+  },
+  {
+   "id": "phys-motion-2d-16",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Two balls roll off the edges of two tables at the same horizontal speed. Table B is 4.0 times as high as table A. Ball A lands 0.50 m from its table. How far from its table does ball B land?",
+   "numeric": {
+    "answer": 1.0,
+    "tol": 0.1,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2.0,
+      "why": "Value: 2.0 m assumes d ∝ h. The fall time grows as √h, so d grows by √4 = 2."
+     },
+     {
+      "value": 8.0,
+      "why": "Value: d grows as √h, not h²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Fall time t = √(2h/g) ∝ √h, so B falls √4.0 = 2.0 times as long. With the same vₓ, d = vₓt doubles: 1.0 m."
+   }
+  },
+  {
+   "id": "phys-motion-2d-17",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "motion-2d",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A ball is launched at 25 m/s, 60.° above the horizontal. What is the vertical component of its initial velocity? (Degree mode.)",
+   "numeric": {
+    "answer": 22.0,
+    "tol": 1.0,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 13.0,
+      "why": "Value: 13 m/s is the horizontal component. The vertical side is opposite the angle from the ground: use sine."
+     }
+    ]
+   },
+   "why": {
+    "correct": "v<sub>y</sub> = v sin θ = (25 m/s) sin 60.° = 22 m/s."
+   }
+  }
+ ]
+}

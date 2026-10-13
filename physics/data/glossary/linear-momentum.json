@@ -1,0 +1,11 @@
+{
+ "momentum": {
+  "def": "The product of an object's mass and velocity, p = mv: a vector along the velocity, in kg·m/s."
+ },
+ "collision-model": {
+  "def": "The model of a brief, strong interaction (a collision or an explosion) in which internal forces far exceed external ones, so the system's momentum is the same just before and just after."
+ },
+ "cm-velocity": {
+  "def": "The velocity of a system's center of mass: the system's momentum divided by its total mass, v_cm = Σp/Σm."
+ }
+}

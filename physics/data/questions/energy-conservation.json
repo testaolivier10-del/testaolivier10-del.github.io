@@ -1,0 +1,542 @@
+{
+ "stimuli": {
+  "energy-conservation-s1": {
+   "kind": "diagram",
+   "title": "A block on a frictionless track",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 760 300\" role=\"img\" aria-label=\"A frictionless curved track. A 2.0 kg block is released from rest at point A, 6.0 m above the lowest point B, then slides through B and up to point C, 2.0 m above B.\" style=\"max-width:100%;height:auto;background:#fff\"><rect width=\"760\" height=\"300\" fill=\"#FFFFFF\"/><text x=\"24\" y=\"30\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" fill=\"#1F2A28\" text-anchor=\"start\" font-weight=\"bold\">A 2.0 kg block on a frictionless track, released from rest at A</text><path d=\"M30,100 L80,100 C170,100 210,250 330,250 C450,250 520,185 600,200 L730,200 L730,270 L30,270 Z\" fill=\"#EFEADF\" stroke=\"none\"/><path d=\"M30,100 L80,100 C170,100 210,250 330,250 C450,250 520,185 600,200 L730,200\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"3\"/><line x1=\"20\" y1=\"250\" x2=\"740\" y2=\"250\" stroke=\"#734200\" stroke-width=\"1.4\" stroke-dasharray=\"7 5\"/><text x=\"60\" y=\"266\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#734200\" text-anchor=\"start\">U<tspan baseline-shift=\"sub\" font-size=\"75%\">g</tspan> = 0 at B</text><rect x=\"47\" y=\"80\" width=\"26\" height=\"20\" fill=\"#9CC3E0\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"60\" y=\"70\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">A</text><rect x=\"317\" y=\"230\" width=\"26\" height=\"20\" fill=\"#9CC3E0\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"330\" y=\"220\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">B</text><rect x=\"637\" y=\"180\" width=\"26\" height=\"20\" fill=\"#9CC3E0\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"650\" y=\"170\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">C</text><line x1=\"700\" y1=\"200\" x2=\"700\" y2=\"250\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"706\" y=\"229\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"start\">2.0 m</text><line x1=\"18\" y1=\"100\" x2=\"18\" y2=\"250\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"24\" y=\"160\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"start\">6.0 m</text><line x1=\"360\" y1=\"228\" x2=\"409.0\" y2=\"228.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"420.0,228.0 409.0,232.9 409.0,223.1\" fill=\"#B07A00\"/><text x=\"428.0\" y=\"233.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#B07A00\" text-anchor=\"start\" font-weight=\"bold\">v</text></svg><p>The block has a mass of 2.0 kg. Use g = 9.8 m/s². Air resistance is negligible.</p>"
+  },
+  "energy-conservation-s2": {
+   "kind": "table",
+   "title": "A skier on a snowy slope",
+   "text": "<p>A 60.0 kg skier starts from rest at the top of a slope. A radar gun and the slope map give the data below. Use g = 9.8 m/s² and the bottom of the slope as the zero of U_g.</p>",
+   "table": {
+    "caption": "Height and speed of the skier",
+    "cols": [
+     "Point",
+     "Height above bottom (m)",
+     "Speed (m/s)"
+    ],
+    "rows": [
+     [
+      "Top",
+      "20.0",
+      "0.0"
+     ],
+     [
+      "Middle",
+      "10.0",
+      "12.0"
+     ],
+     [
+      "Bottom",
+      "0.0",
+      "17.0"
+     ]
+    ]
+   }
+  },
+  "energy-conservation-s3": {
+   "kind": "setup",
+   "title": "A cart and a spring bumper",
+   "text": "<p>A 0.50 kg cart rolls at 2.0 m/s along a level, low-friction track toward a spring bumper (k = 200 N/m) fixed to the end of the track. The cart compresses the spring, stops for an instant, and is pushed back. Take the cart and the spring as the system; friction is negligible.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-energy-conservation-1",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "energy-conservation-s1",
+   "q": "How fast is the block moving at B, in m/s?",
+   "numeric": {
+    "answer": 11,
+    "tol": 1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 7.7,
+      "why": "Value: you left out the 2. From mgΔy = ½mv², v = √(2gΔy)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "System: block + track + Earth, no friction, so K + U_g is constant: mg(6.0 m) = ½mv_B². v_B = √(2 × 9.8 m/s² × 6.0 m) = 11 m/s."
+   }
+  },
+  {
+   "id": "phys-energy-conservation-2",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "energy-conservation-s1",
+   "q": "How fast is the block moving at C, in m/s?",
+   "numeric": {
+    "answer": 8.9,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 6.3,
+      "why": "Value: 2.0 m is C's height above B. The block has dropped 6.0 m − 2.0 m = 4.0 m from A."
+     },
+     {
+      "value": 12.5,
+      "why": "Value: you added the heights. The drop from A to C is 6.0 m − 2.0 m = 4.0 m.",
+      "tol": 0.5
+     }
+    ]
+   },
+   "why": {
+    "correct": "mg(6.0 m) = mg(2.0 m) + ½mv_C², so v_C = √(2g(4.0 m)) = √(78.4) m/s = 8.9 m/s."
+   }
+  },
+  {
+   "id": "phys-energy-conservation-3",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "energy-conservation-s1",
+   "q": "Which describes an energy bar chart for the block-track-Earth system at C, with the zero of U_g at B?",
+   "options": [
+    "K is twice U_g, and K + U_g equals the U_g bar at A",
+    "K and U_g are equal, each one half of the total energy",
+    "U_g is twice K, because C is high on the track",
+    "K is twice U_g, and the total is less than at A"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Total = mg(6.0 m). At C: U_g = mg(2.0 m) = ⅓ of the total and K = ⅔ of it. The bars must add to the same total at every point.",
+    "options": [
+     "Right: at C, U_g = mg(2.0 m) and K = mg(4.0 m), adding to mg(6.0 m).",
+     "Bars are not split evenly by default; the heights decide. C is at one third of A's height.",
+     "C is 2.0 m up out of 6.0 m, so U_g is one third of the total, not two thirds.",
+     "With no friction the total stays the same as at A."
+    ]
+   }
+  },
+  {
+   "id": "phys-energy-conservation-4",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "energy-conservation-s1",
+   "q": "A 4.0 kg block is released from A instead. How does its speed at C compare with the 2.0 kg block's?",
+   "options": [
+    "It is twice as large",
+    "It is the same",
+    "It is √2 times as large",
+    "It is half as large"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "mgΔy = ½mv² gives v = √(2gΔy): no mass. Both blocks reach C at 8.9 m/s.",
+    "options": [
+     "Doubling the mass doubles both U_g and K, so the speed does not change.",
+     "Right: the mass cancels from mgΔy = ½mv².",
+     "The mass appears on both sides of the energy equation and cancels.",
+     "A heavier block is not slower; both energies scale with m."
+    ]
+   }
+  },
+  {
+   "id": "phys-energy-conservation-5",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "energy-conservation-s1",
+   "q": "Now take the block alone as the system. Which statement is correct as it slides from A to B?",
+   "options": [
+    "The block alone has gravitational potential energy that turns into kinetic energy",
+    "The block's energy is constant, because the track is frictionless and nothing slows it",
+    "It has just kinetic energy, and Earth's pull, now external, does positive work on it",
+    "The normal force from the track does the work that speeds the block up"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Choosing the system decides the bookkeeping. Block alone: only K, and W_grav = +mg(6.0 m) = ΔK. Block + Earth: U_g changes into K with no external work. Both give the same speed.",
+    "options": [
+     "Potential energy belongs to a system of interacting objects. With Earth outside, there is no U_g.",
+     "Earth is outside the system and does positive work, so the block's energy (all kinetic) increases.",
+     "Right: a one-object system has no potential energy, so gravity's work is an energy transfer in.",
+     "The normal force is perpendicular to the track, so it does no work."
+    ]
+   }
+  },
+  {
+   "id": "phys-energy-conservation-6",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "energy-conservation-s2",
+   "q": "What is the mechanical energy (K + U_g) of the skier-Earth system at the middle point, in joules?",
+   "numeric": {
+    "answer": 10200,
+    "tol": 100,
+    "unit": "J",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 5880,
+      "why": "Value: that is U_g alone. Add the kinetic energy, ½(60.0 kg)(12.0 m/s)²."
+     },
+     {
+      "value": 4320,
+      "why": "Value: that is K alone. Add U_g = mg(10.0 m)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "U_g = (60.0)(9.8)(10.0) = 5880 J; K = ½(60.0)(12.0)² = 4320 J. K + U_g = 1.02 × 10⁴ J."
+   }
+  },
+  {
+   "id": "phys-energy-conservation-7",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "energy-conservation-s2",
+   "q": "How much mechanical energy is converted to thermal energy between the top and the bottom, in joules?",
+   "numeric": {
+    "answer": 3090,
+    "tol": 10,
+    "unit": "J",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 8670,
+      "why": "Value: that is the kinetic energy at the bottom. Subtract it from the mechanical energy at the top."
+     },
+     {
+      "value": 1560,
+      "why": "Value: that is the loss from the top to the middle only."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Top: K + U_g = (60.0)(9.8)(20.0) = 11,760 J. Bottom: ½(60.0)(17.0)² = 8670 J. The difference, 3.09 × 10³ J, became thermal energy in the skis and snow (and some sound)."
+   }
+  },
+  {
+   "id": "phys-energy-conservation-8",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "energy-conservation-s2",
+   "q": "For which system is the total energy constant as the skier goes down the slope?",
+   "options": [
+    "Skier + Earth, since friction from the snow is internal",
+    "Skier alone, since the skier's kinetic energy stays the same",
+    "No system, because energy is lost to friction on the slope",
+    "Skier + Earth + snow, since friction is then an internal force"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Energy is always conserved. With the snow inside the system, friction is internal and turns mechanical energy into thermal energy. Without it, friction is external and removes energy from the system.",
+    "options": [
+     "The snow is outside this system. Friction from it does negative work and takes mechanical energy out.",
+     "The skier speeds up, so K is not constant.",
+     "Energy is not lost; it becomes thermal energy. Include the snow and it is all accounted for.",
+     "Right: friction is internal, so no energy crosses the boundary."
+    ]
+   }
+  },
+  {
+   "id": "phys-energy-conservation-9",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "energy-conservation-s2",
+   "q": "The skier travels 50.0 m along the slope from top to bottom. If all the thermal energy came from kinetic friction, what was the average friction force, in newtons?",
+   "numeric": {
+    "answer": 61.8,
+    "tol": 0.1,
+    "unit": "N",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 173,
+      "why": "Value: that divides the final kinetic energy by the distance. Use the energy turned into thermal energy, 3090 J.",
+      "tol": 0.5
+     }
+    ]
+   },
+   "why": {
+    "correct": "Friction does work −f d = −(3090 J), so f = 3090 J / 50.0 m = 61.8 N."
+   }
+  },
+  {
+   "id": "phys-energy-conservation-10",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "energy-conservation-s3",
+   "q": "Which bar chart matches the cart-spring system at the instant of greatest compression?",
+   "options": [
+    "The U_s bar holds the energy; K is zero",
+    "K and U_s are equal",
+    "The K bar holds the energy; U_s is zero",
+    "Both K and U_s are zero, because the cart has stopped"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At greatest compression v = 0, so K = 0 and U_s equals the cart's starting kinetic energy, 1.0 J.",
+    "options": [
+     "Right: the cart is momentarily at rest, so its kinetic energy has all become elastic potential energy.",
+     "At greatest compression the cart is at rest, so K = 0.",
+     "That describes the cart before it touches the spring.",
+     "The energy has not disappeared: it is stored in the spring."
+    ]
+   }
+  },
+  {
+   "id": "phys-energy-conservation-11",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "energy-conservation-s3",
+   "q": "At the instant the spring is compressed by half its greatest compression, how do K and U_s compare?",
+   "options": [
+    "K and U_s are equal",
+    "K is three times U_s",
+    "U_s is three times K",
+    "K is twice U_s"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "U_s(x_max/2) = ½k(x_max/2)² = ¼ × ½k x_max² = ¼ of the total. K is the remaining ¾, three times U_s.",
+    "options": [
+     "Half the compression is not half the energy: U_s = ½k(Δx)² gives one quarter.",
+     "Right: U_s ∝ (Δx)², so at half the compression U_s is ¼ of the total and K is ¾.",
+     "At half compression only ¼ of the energy is stored, so K is the larger bar.",
+     "This takes U_s as one third of the total. It is one quarter: (½)²."
+    ]
+   }
+  },
+  {
+   "id": "phys-energy-conservation-12",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "energy-conservation-s3",
+   "q": "What is the greatest compression of the spring, in meters?",
+   "numeric": {
+    "answer": 0.1,
+    "tol": 0.01,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.071,
+      "why": "Value: you dropped the ½ from ½kx². Both sides have a ½, so they cancel: x = v√(m/k)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "½mv² = ½kx², so x = v√(m/k) = (2.0 m/s)√(0.50 kg / 200 N/m) = 0.10 m."
+   }
+  },
+  {
+   "id": "phys-energy-conservation-13",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "energy-conservation-s3",
+   "q": "Now take the cart alone as the system. Which describes its energy while it compresses the spring?",
+   "options": [
+    "Its total energy stays the same, now partly stored as U_s",
+    "Its kinetic energy decreases because friction does negative work",
+    "Its K decreases, because the spring (external) does negative work on it",
+    "Its kinetic energy stays the same until the spring is fully compressed and stops it"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Cart alone: only K. The spring is external and pushes opposite to the motion, so it does negative work and ΔK = W_spring < 0.",
+    "options": [
+     "U_s belongs to a system that includes the spring. The cart alone has only K.",
+     "Friction is negligible here; the spring force is what slows the cart.",
+     "Right: the spring's push opposes the motion and takes energy out of the cart system.",
+     "The spring pushes back the whole time it is compressed, so K falls steadily."
+    ]
+   }
+  },
+  {
+   "id": "phys-energy-conservation-14",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A block slides down a frictionless ramp. Which is the best justification that the mechanical energy of the block-Earth system stays constant?",
+   "options": [
+    "Mechanical energy is constant because energy is conserved",
+    "The block's speed stays constant as it slides down the ramp",
+    "Gravity does no work on the block, since the ramp supports it",
+    "No friction acts, and the normal force is perpendicular to the motion, so it does no work"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "K + U_g stays constant when no external force does net work on the system and no nonconservative force acts inside it. State that condition, not just the conservation law.",
+    "options": [
+     "This is circular. Total energy is always conserved; mechanical energy is constant only under a condition, which must be stated.",
+     "The block speeds up; its kinetic energy grows as U_g falls.",
+     "Gravity does positive work. Inside the block-Earth system that appears as a drop in U_g.",
+     "Right: it names the condition (no external work, no internal nonconservative force)."
+    ]
+   }
+  },
+  {
+   "id": "phys-energy-conservation-15",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A roller coaster car passes over a 30.0 m high hill at 4.00 m/s. Friction is negligible. How fast is it moving when it is 10.0 m above the ground? Use g = 9.8 m/s².",
+   "numeric": {
+    "answer": 20.2,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 19.8,
+      "why": "Value: you left out the kinetic energy at the top. ½mv² + mgΔy at the top includes the 4.00 m/s."
+     },
+     {
+      "value": 23.8,
+      "why": "Value: speeds do not add. Add the energies: ½v_f² = ½v_i² + gΔh."
+     }
+    ]
+   },
+   "why": {
+    "correct": "½mv_i² + mg(30.0 m) = ½mv_f² + mg(10.0 m), so v_f = √(v_i² + 2g(20.0 m)) = √(16.0 + 392) m/s = 20.2 m/s."
+   }
+  },
+  {
+   "id": "phys-energy-conservation-16",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A block slides from rest down a frictionless ramp. If the ramp's height is doubled, the block's speed at the bottom becomes",
+   "options": [
+    "√2 times as large",
+    "2 times as large",
+    "4 times as large",
+    "the same, if the ramp's angle is unchanged"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "mgh = ½mv² gives v = √(2gh) ∝ √h. Twice the height gives √2 ≈ 1.41 times the speed.",
+    "options": [
+     "Right: v = √(2gh), so doubling h multiplies v by √2.",
+     "K doubles, but v is the square root of K, so v grows by √2.",
+     "That squares the factor instead of taking the root.",
+     "The speed depends on the height dropped, which doubled."
+    ]
+   }
+  },
+  {
+   "id": "phys-energy-conservation-17",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A ball is dropped onto a floor and bounces back to a lower height. Which is the best explanation?",
+   "options": [
+    "The energy was destroyed by the impact with the floor",
+    "Some mechanical energy became thermal energy and sound during the bounce",
+    "The ball lost mass during the bounce",
+    "Gravity is stronger on the way up, so the ball rises less"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Energy is always conserved, but mechanical energy is constant only when no nonconservative force acts. Deforming the ball and floor turns some K into thermal energy and sound.",
+    "options": [
+     "Energy is never destroyed. It changes into forms the bounce height cannot show.",
+     "Right: the total energy is the same; part of it is no longer mechanical.",
+     "The ball's mass does not change.",
+     "Gravity is the same on the way up and down."
+    ]
+   }
+  },
+  {
+   "id": "phys-energy-conservation-18",
+   "type": "predict",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A crate slides down a rough ramp at constant speed. For the crate-ramp-Earth system, predict how each quantity changes.",
+   "variables": [
+    {
+     "name": "Kinetic energy",
+     "answer": "none",
+     "why": "The speed is constant, so ½mv² does not change."
+    },
+    {
+     "name": "Gravitational potential energy",
+     "answer": "down",
+     "why": "The crate gets lower, so mgΔy decreases."
+    },
+    {
+     "name": "Thermal energy",
+     "answer": "up",
+     "why": "Kinetic friction between the crate and ramp turns the lost U_g into thermal energy."
+    }
+   ],
+   "why": {
+    "correct": "Every joule of U_g lost becomes thermal energy, because K stays the same. The system's total energy is constant."
+   }
+  }
+ ]
+}

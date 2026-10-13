@@ -1,0 +1,12 @@
+{
+ "wrench-lever-arm": {
+  "file": "figures/wrench-lever-arm.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 470,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A wrench grips a bolt, which is the axis of rotation. A hand pushes on the far end of the handle, a distance r from the axis, with a force F_A at angle θ = 60° to the handle, turning the wrench counterclockwise. A dashed line extends the force’s line of action. The lever arm, r⊥ = r sin θ, is the perpendicular distance from the axis to that line, drawn in amber with a right-angle mark. The panel gives τ = r⊥F = rF sin θ in N·m, notes that a counterclockwise torque is positive, and that a force whose line passes through the axis gives zero torque."
+ }
+}

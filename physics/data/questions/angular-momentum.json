@@ -1,0 +1,561 @@
+{
+ "stimuli": {
+  "angular-momentum-s1": {
+   "kind": "diagram",
+   "title": "A puck sliding past two points",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 230\" role=\"img\" aria-label=\"Top view of a 0.20 kg puck sliding at 3.0 m/s along a straight line on a frictionless table, passing 0.40 m from point P; point Q lies on the puck’s path\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"230\" fill=\"#FFFFFF\"/><rect x=\"20\" y=\"20\" width=\"520\" height=\"200\" rx=\"8\" fill=\"#EEF1EF\" stroke=\"#C9CFCC\"/><line x1=\"40\" y1=\"70\" x2=\"520\" y2=\"70\" stroke=\"#C9CFCC\" stroke-width=\"1.4\" stroke-dasharray=\"6 5\"/><circle cx=\"140\" cy=\"70\" r=\"13\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"2\"/><line x1=\"155\" y1=\"70\" x2=\"214\" y2=\"70\" stroke=\"#B07A00\" stroke-width=\"3.5\"/><polygon points=\"225,70 214,76 214,64\" fill=\"#B07A00\"/><text x=\"190\" y=\"58\" font-size=\"12.5\" fill=\"#B07A00\" font-weight=\"bold\">v = 3.0 m/s</text><circle cx=\"280\" cy=\"190\" r=\"5\" fill=\"#1F2A28\"/><text x=\"290\" y=\"194\" font-size=\"14\" fill=\"#1F2A28\" font-weight=\"bold\">P</text><circle cx=\"470\" cy=\"70\" r=\"5\" fill=\"#1F2A28\"/><text x=\"470\" y=\"58\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">Q</text><line x1=\"280\" y1=\"129\" x2=\"280\" y2=\"176\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"280,184 276,176 284,176\" fill=\"#5A6268\"/><line x1=\"280\" y1=\"129\" x2=\"280\" y2=\"82\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"280,74 284,82 276,82\" fill=\"#5A6268\"/><text x=\"288\" y=\"134\" font-size=\"12\" fill=\"#1F2A28\">0.40 m</text><text x=\"34\" y=\"210\" font-size=\"12\" fill=\"#5A6268\">Top view, level frictionless table. Puck mass 0.20 kg. Q lies on the puck’s path.</text></svg>"
+  },
+  "angular-momentum-s2": {
+   "kind": "graph",
+   "title": "Torque on a wheel over time",
+   "text": "<p>A wheel (I = 0.50 kg·m²) starts at rest on a frictionless axle. The graph shows the net torque on it, counterclockwise positive.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Time",
+     "unit": "s",
+     "min": 0,
+     "max": 7,
+     "step": 1
+    },
+    "y": {
+     "label": "Net torque",
+     "unit": "N·m",
+     "min": -3,
+     "max": 5,
+     "step": 1
+    },
+    "series": [
+     {
+      "name": "τ",
+      "points": [
+       [
+        0,
+        4
+       ],
+       [
+        2,
+        4
+       ],
+       [
+        2,
+        0
+       ],
+       [
+        4,
+        0
+       ],
+       [
+        4,
+        -2
+       ],
+       [
+        6,
+        -2
+       ],
+       [
+        6,
+        0
+       ],
+       [
+        7,
+        0
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-angular-momentum-1",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "angular-momentum-s1",
+   "q": "What is the size of the puck’s angular momentum about point P? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.24,
+    "tol": 0.01,
+    "unit": "kg·m^2/s",
+    "sigfigs": 2,
+    "units": [
+     "kg m^2/s",
+     "kg·m²/s",
+     "kg m²/s",
+     "J·s",
+     "J s",
+     "N·m·s",
+     "N m s"
+    ],
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.6,
+      "rel": 0.015,
+      "why": "Value: that is the linear momentum, mv. Multiply by the lever arm: L = mvd."
+     },
+     {
+      "value": 0.096,
+      "rel": 0.015,
+      "why": "Value: d is not squared for a point object. L = r m v sin θ = mvd."
+     }
+    ]
+   },
+   "why": {
+    "correct": "L = rmv sin θ = mv(r sin θ) = mvd = (0.20 kg)(3.0 m/s)(0.40 m) = 0.24 kg·m²/s."
+   }
+  },
+  {
+   "id": "phys-angular-momentum-2",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "angular-momentum-s1",
+   "q": "As the puck slides on past P, its distance r from P grows. Its angular momentum about P",
+   "options": [
+    "stays the same, because r sin θ stays 0.40 m",
+    "grows, because r grows",
+    "shrinks, because the puck moves away from P",
+    "is zero, because the puck is not turning"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "L = rmv sin θ, and r sin θ is the perpendicular distance from P to the line of motion, 0.40 m at every position. With m and v constant, L about P stays 0.24 kg·m²/s.",
+    "options": [
+     "Right: the perpendicular distance from P to the path never changes.",
+     "r grows, but sin θ shrinks so that r sin θ stays 0.40 m.",
+     "Moving away along a straight line keeps the lever arm, and so L, the same.",
+     "A point object moving past a point has angular momentum about it, turning or not."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-3",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "angular-momentum-s1",
+   "q": "What is the puck’s angular momentum about point Q, which lies on its path?",
+   "options": [
+    "Zero",
+    "0.24 kg·m²/s",
+    "0.60 kg·m²/s",
+    "It depends on how far the puck is from Q"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The puck’s velocity points along the line through Q, so the perpendicular distance from Q to its line of motion is zero: L = mv(0) = 0. Angular momentum depends on the point you choose.",
+    "options": [
+     "Right: the puck moves straight along a line through Q, so θ = 0 or 180°.",
+     "That is the value about P. About Q the lever arm is zero.",
+     "That is the linear momentum, mv, in kg·m/s.",
+     "Along a line through Q, r sin θ = 0 at every distance."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-4",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "angular-momentum-s1",
+   "q": "A second puck of the same mass slides at 6.0 m/s along a parallel line 0.20 m from P. Compared with the first puck, its angular momentum about P is",
+   "options": [
+    "the same",
+    "twice as large",
+    "half as large",
+    "four times as large"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "L = mvd: (0.20)(6.0)(0.20) = 0.24 kg·m²/s, the same as (0.20)(3.0)(0.40).",
+    "options": [
+     "Right: twice the speed × half the lever arm.",
+     "The speed doubles, but the lever arm halves.",
+     "The lever arm halves, but the speed doubles.",
+     "L = mvd is the product; the two factors cancel."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-5",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "angular-momentum-s2",
+   "q": "What angular impulse does the torque deliver from 0 to 2.0 s?",
+   "numeric": {
+    "answer": 8,
+    "tol": 0.1,
+    "unit": "kg·m^2/s",
+    "sigfigs": 2,
+    "units": [
+     "kg m^2/s",
+     "kg·m²/s",
+     "kg m²/s",
+     "J·s",
+     "J s",
+     "N·m·s",
+     "N m s"
+    ],
+    "mistakes": [
+     {
+      "value": 2,
+      "rel": 0.015,
+      "why": "Value: that divides torque by time. Angular impulse is τΔt, the area under the τ-t graph."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Angular impulse = τΔt = (4.0 N·m)(2.0 s) = 8.0 N·m·s = 8.0 kg·m²/s, the area under the graph."
+   }
+  },
+  {
+   "id": "phys-angular-momentum-6",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "angular-momentum-s2",
+   "q": "The wheel starts at rest. What is its angular velocity at 3.0 s?",
+   "numeric": {
+    "answer": 16,
+    "tol": 1,
+    "unit": "rad/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 4,
+      "rel": 0.015,
+      "why": "Value: that multiplies L by I. ω = L/I."
+     },
+     {
+      "value": 24,
+      "rel": 0.015,
+      "why": "Value: that uses the torque for 3.0 s. The torque is zero after 2.0 s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From 0 to 2.0 s, ΔL = 8.0 kg·m²/s; from 2.0 to 3.0 s the torque is zero, so L stays 8.0. ω = L/I = (8.0 kg·m²/s)/(0.50 kg·m²) = 16 rad/s."
+   }
+  },
+  {
+   "id": "phys-angular-momentum-7",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "angular-momentum-s2",
+   "q": "What is the wheel’s angular momentum at 6.0 s?",
+   "numeric": {
+    "answer": 4,
+    "tol": 0.1,
+    "unit": "kg·m^2/s",
+    "sigfigs": 2,
+    "units": [
+     "kg m^2/s",
+     "kg·m²/s",
+     "kg m²/s",
+     "J·s",
+     "J s",
+     "N·m·s",
+     "N m s"
+    ],
+    "mistakes": [
+     {
+      "value": 12,
+      "rel": 0.015,
+      "why": "Value: that adds the last part of the area. From 4.0 to 6.0 s the torque is negative, so it removes angular momentum."
+     },
+     {
+      "value": 8,
+      "rel": 0.015,
+      "why": "Value: that ignores the negative torque from 4.0 to 6.0 s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Add the signed areas: +8.0 (0-2 s) + 0 (2-4 s) + (−2.0 N·m)(2.0 s) = 4.0 kg·m²/s."
+   }
+  },
+  {
+   "id": "phys-angular-momentum-8",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "angular-momentum-s2",
+   "q": "Which describes the graph of the wheel’s angular momentum against time from 4.0 s to 6.0 s?",
+   "options": [
+    "A straight line sloping down, with slope −2.0 N·m",
+    "A horizontal line, because L is conserved",
+    "A straight line sloping up, because the wheel still turns counterclockwise",
+    "A vertical drop to zero at 4.0 s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "τ_net = ΔL/Δt is the slope of the L-t graph. A constant −2.0 N·m makes L fall in a straight line from 8.0 to 4.0 kg·m²/s; the wheel slows but still turns the same way.",
+    "options": [
+     "Right: the slope of L-t is the net torque.",
+     "The net torque is not zero in this interval, so L changes.",
+     "L is still positive but falling; the slope is the torque, −2.0 N·m.",
+     "A finite torque changes L gradually, at a rate equal to the torque."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-9",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "For a rigid object turning about a fixed axis, angular momentum is",
+   "options": [
+    "L = Iω, in kg·m²/s",
+    "L = ½Iω², in joules",
+    "L = Iα, in N·m",
+    "L = mv, in kg·m/s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "L = Iω pairs I with m and ω with v, as p = mv does. Its unit is kg·m²/s (the same as N·m·s and J·s).",
+    "options": [
+     "Right: the rotational partner of p = mv.",
+     "That is rotational kinetic energy.",
+     "Iα is the net torque.",
+     "That is linear momentum."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-10",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A bicycle wheel with I = 0.25 kg·m² spins at 12 rad/s. What is its angular momentum?",
+   "numeric": {
+    "answer": 3,
+    "tol": 0.1,
+    "unit": "kg·m^2/s",
+    "sigfigs": 2,
+    "units": [
+     "kg m^2/s",
+     "kg·m²/s",
+     "kg m²/s",
+     "J·s",
+     "J s",
+     "N·m·s",
+     "N m s"
+    ],
+    "mistakes": [
+     {
+      "value": 18,
+      "rel": 0.015,
+      "why": "Value: that is ½Iω², the kinetic energy in joules. L = Iω."
+     }
+    ]
+   },
+   "why": {
+    "correct": "L = Iω = (0.25 kg·m²)(12 rad/s) = 3.0 kg·m²/s."
+   }
+  },
+  {
+   "id": "phys-angular-momentum-11",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A torque of 0.60 N·m acts on a spinning top for 0.50 s in the direction it spins. By how much does its angular momentum change?",
+   "numeric": {
+    "answer": 0.3,
+    "tol": 0.01,
+    "unit": "kg·m^2/s",
+    "sigfigs": 2,
+    "units": [
+     "kg m^2/s",
+     "kg·m²/s",
+     "kg m²/s",
+     "J·s",
+     "J s",
+     "N·m·s",
+     "N m s"
+    ],
+    "mistakes": [
+     {
+      "value": 1.2,
+      "rel": 0.015,
+      "why": "Value: that divides torque by time. ΔL = τΔt."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔL = τΔt = (0.60 N·m)(0.50 s) = 0.30 kg·m²/s."
+   }
+  },
+  {
+   "id": "phys-angular-momentum-12",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A ball on a string moves in a horizontal circle of radius 0.50 m at 2.0 m/s around a post. A student says the ball has no angular momentum about the post because it is a point object, not a spinning body. Which response is correct?",
+   "options": [
+    "It does: about the post, L = rmv sin 90° = rmv",
+    "It does not: a point object has no rotational inertia",
+    "It does not: its velocity keeps changing direction",
+    "It does, but just while the string is speeding it up"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A point object has angular momentum about a chosen point: L = rmv sin θ. Moving around the post, its velocity is perpendicular to r, so L = rmv. (Treating it as I = mr² turning at ω = v/r gives the same result.)",
+    "options": [
+     "Right: a point object has angular momentum about any point it does not move straight toward or away from.",
+     "L = Iω is for rigid bodies; a point object has L = rmv sin θ.",
+     "Changing direction does not remove angular momentum; here its size stays the same.",
+     "It has angular momentum whenever it moves past the post, speeding up or not."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-13",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A graph of a wheel’s angular momentum against time is a horizontal line. What does that tell you?",
+   "options": [
+    "The net torque on the wheel is zero",
+    "The wheel is not turning",
+    "The wheel’s angular acceleration is constant and nonzero",
+    "A constant torque is acting on the wheel"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "τ_net = ΔL/Δt, the slope of the L-t graph. A horizontal line has zero slope, so the net torque is zero and ω is constant.",
+    "options": [
+     "Right: the slope of L-t is the net torque.",
+     "A horizontal line at a nonzero L means steady turning.",
+     "Constant nonzero α would make L change steadily, a sloped line.",
+     "A constant nonzero torque gives a sloped straight line."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-14",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two wheels have the same angular momentum. Wheel A has twice the rotational inertia of wheel B. Wheel A’s angular velocity is",
+   "options": [
+    "half of wheel B’s",
+    "twice wheel B’s",
+    "the same as wheel B’s",
+    "one quarter of wheel B’s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "ω = L/I. With L the same and I doubled, ω is halved.",
+    "options": [
+     "Right: ω = L/I.",
+     "A larger I with the same L means a smaller ω.",
+     "Same L, different I, different ω.",
+     "ω is inversely proportional to I, not I²."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-15",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A torque acts on a wheel for a short time. Which change in the wheel is set directly by the angular impulse τΔt?",
+   "options": [
+    "Its change in angular momentum",
+    "Its change in rotational kinetic energy",
+    "Its rotational inertia",
+    "Its angular acceleration"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The angular impulse-momentum theorem: τΔt = ΔL. (The work τΔθ is what changes the kinetic energy.)",
+    "options": [
+     "Right: angular impulse = ΔL.",
+     "Kinetic energy changes by the work, τΔθ, not by τΔt.",
+     "I depends on the mass distribution, not on the torque.",
+     "α = τ/I is set by the torque itself, not by τΔt."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-16",
+   "type": "predict",
+   "unit": "unit-6",
+   "topic": "angular-momentum",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A puck slides in a straight line at constant speed past a point P on a frictionless table. Predict how each quantity changes as the puck moves from far left of P to the point of its path closest to P.",
+   "variables": [
+    {
+     "name": "The puck’s distance r from P",
+     "answer": "down",
+     "why": "The puck approaches the closest point of its path to P, so r shrinks to the perpendicular distance d."
+    },
+    {
+     "name": "sin θ, where θ is the angle between the puck’s velocity and the line from P to the puck",
+     "answer": "up",
+     "why": "Far away, that line is nearly parallel to the path (θ near 180°, sin θ near 0); at the closest point θ = 90° and sin θ = 1."
+    },
+    {
+     "name": "The puck’s angular momentum about P",
+     "answer": "none",
+     "why": "L = rmv sin θ, and r sin θ always equals the fixed distance d from P to the path, so L = mvd does not change."
+    }
+   ],
+   "why": {
+    "correct": "With no net force, mv is constant. As the puck approaches, r falls while sin θ rises, and their product r sin θ stays equal to the fixed distance d, so L = mvd about P stays the same."
+   }
+  }
+ ]
+}

@@ -1,0 +1,83 @@
+{
+ "topic": "gravitational-force",
+ "hook": "The force that pulls an apple off a tree also holds the Moon in its orbit, and it weakens in a precise way as you move away. Stand on a bathroom scale in an elevator, though, and the number changes as you start and stop, even though Earth pulls on you just as hard. This topic separates the pull of gravity from what you actually feel.",
+ "prereq": [
+  {
+   "q": "Near Earth, the weight of a 2.0 kg book is about",
+   "options": [
+    "20 N",
+    "2.0 N",
+    "2.0 kg",
+    "0.20 N"
+   ],
+   "correct": 0,
+   "why": "F_g = mg = 2.0 kg × 9.8 m/s² ≈ 20 N.",
+   "review": "forces-fbd"
+  },
+  {
+   "q": "A 60 kg person in an elevator accelerates upward at 1.0 m/s². The net force on her is",
+   "options": [
+    "60 N up",
+    "588 N up",
+    "zero",
+    "60 N down"
+   ],
+   "correct": 0,
+   "why": "ΣF = ma = 60 kg × 1.0 m/s² = 60 N, along the acceleration.",
+   "review": "second-law"
+  },
+  {
+   "q": "If a quantity is proportional to 1/r², tripling r",
+   "options": [
+    "divides it by 9",
+    "divides it by 3",
+    "multiplies it by 9",
+    "leaves it unchanged"
+   ],
+   "correct": 0,
+   "why": "1/3² = 1/9.",
+   "review": "math-proportional"
+  }
+ ],
+ "figure": {
+  "figure": "elevator-apparent-weight",
+  "caption": "The scale reads the normal force. Earth's pull, mg, is the same in all three."
+ },
+ "chain": [
+  {
+   "cause": "Two objects have mass",
+   "effect": "each pulls the other with a gravitational force Gm₁m₂/r², toward the other's center"
+  },
+  {
+   "cause": "You divide that force by the mass it acts on",
+   "effect": "you get the gravitational field g = F/m, which near Earth's surface is about 9.8 N/kg and nearly constant"
+  },
+  {
+   "cause": "An object stands on a scale and accelerates up or down",
+   "effect": "the normal force differs from mg: F_N = m(g + a) going up, m(g − a) going down"
+  },
+  {
+   "cause": "The object and scale fall freely together",
+   "effect": "the normal force is zero, so the object is weightless even though gravity still acts"
+  }
+ ],
+ "ideas": [
+  "<b>Newton's law of universal gravitation</b>: |F<sub>g</sub>| = Gm₁m₂/r², attractive, along the line between centers, with r from center to center and G = 6.67 × 10⁻¹¹ N·m²/kg².",
+  "The <b>gravitational field</b> g = F<sub>g</sub>/m = GM/R² at a planet's surface. Near Earth g ≈ 9.8 N/kg = 9.8 m/s², treated as constant.",
+  "<b>Apparent weight</b> is the normal force (what a scale reads). It equals mg only when the acceleration is zero; in free fall it is zero (weightless).",
+  "<b>Inertial mass</b> (resisting acceleration) and <b>gravitational mass</b> (feeling gravity) are equal by experiment, so all objects fall with the same g."
+ ],
+ "misconception": {
+  "wrong": "Astronauts in orbit are weightless because there is no gravity in space.",
+  "right": "At the station's height gravity is about 90% as strong as on the ground. The astronauts and the station fall together around Earth, so the floor pushes on them with zero force: zero apparent weight."
+ },
+ "check": [
+  "phys-gravitational-force-1",
+  "phys-gravitational-force-2",
+  "phys-gravitational-force-3",
+  "phys-gravitational-force-4",
+  "phys-gravitational-force-10",
+  "phys-gravitational-force-14"
+ ],
+ "summary": "Every two masses attract with |F_g| = Gm₁m₂/r², measured center to center; the field g = F/m is about 9.8 N/kg at Earth's surface. A scale reads the normal force, the apparent weight, which differs from mg whenever the object accelerates and is zero in free fall."
+}

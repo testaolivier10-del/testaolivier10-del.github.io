@@ -1,0 +1,81 @@
+{
+ "topic": "math-symbols",
+ "hook": "Physics equations look like algebra with the wrong letters. They are the same algebra you already know: x is not a mystery number but a position in meters, and t is a time in seconds. Once you read the symbols as quantities, rearranging an equation is just undoing what was done, step by step.",
+ "prereq": [
+  {
+   "q": "What is the SI unit of velocity?",
+   "options": [
+    "m/s",
+    "km/h",
+    "m",
+    "s/m"
+   ],
+   "correct": 0,
+   "why": "Velocity is a displacement in meters per time in seconds.",
+   "review": "scalars-vectors"
+  },
+  {
+   "q": "A ball moves from x = 2.0 m to x = 5.0 m. What is its displacement?",
+   "options": [
+    "+3.0 m",
+    "+7.0 m",
+    "−3.0 m",
+    "+5.0 m"
+   ],
+   "correct": 0,
+   "why": "Displacement is final position minus starting position: 5.0 m − 2.0 m = +3.0 m.",
+   "review": "scalars-vectors"
+  }
+ ],
+ "figure": {
+  "figure": "equation-anatomy",
+  "caption": "Each symbol is a quantity with a unit. To solve for t, undo the addition first, then the multiplication, doing the same to both sides."
+ },
+ "chain": [
+  {
+   "cause": "Each letter in an equation stands for a quantity with a unit",
+   "effect": "you can check any rearranged equation by checking its units"
+  },
+  {
+   "cause": "An equation stays true when you do the same thing to both sides",
+   "effect": "you can isolate any symbol by undoing operations in reverse order"
+  },
+  {
+   "cause": "You solve in symbols before putting in numbers",
+   "effect": "the result shows how the answer depends on each quantity, and you substitute only once"
+  },
+  {
+   "cause": "Δ means final minus initial",
+   "effect": "a change can be negative, and its sign carries the direction"
+  }
+ ],
+ "ideas": [
+  "A symbol is a quantity with a unit: x position (m), v velocity (m/s), t time (s). Subscripts are labels: x₀ is the starting position.",
+  "<b>Δ</b> means \"change in\" and is always final minus initial: Δx = x − x₀. A negative Δ means the quantity went down.",
+  "To <b>rearrange</b>, undo operations in reverse order, doing the same to both sides: from x = x₀ + vt, subtract x₀, then divide by v.",
+  "Solve in symbols first, then substitute numbers with units once. Check that the units of the result make sense."
+ ],
+ "misconception": {
+  "wrong": "To solve d = vt for t, divide v by d, because t is \"on the other side\" of v.",
+  "right": "Divide both sides by v: t = d/v. A units check catches the slip: d/v is m ÷ (m/s) = s, while v/d is 1/s."
+ },
+ "check": [
+  "phys-math-symbols-1",
+  "phys-math-symbols-2",
+  "phys-math-symbols-3",
+  "phys-math-symbols-4",
+  "phys-math-symbols-6",
+  "phys-math-symbols-9"
+ ],
+ "summary": "Symbols stand for quantities with units, subscripts are labels and Δ means final minus initial. Rearrange by undoing operations in reverse order on both sides, solve in symbols first, then substitute numbers with units and check the units of the result.",
+ "connections": [
+  {
+   "href": "../notes/scalars-vectors.html",
+   "label": "Back: scalars and vectors (1.1)"
+  },
+  {
+   "href": "../notes/motion-quantities.html",
+   "label": "Next: displacement, velocity and acceleration (1.2)"
+  }
+ ]
+}

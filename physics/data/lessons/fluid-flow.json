@@ -1,0 +1,83 @@
+{
+ "topic": "fluid-flow",
+ "hook": "Squeeze the end of a garden hose and the water shoots farther. Poke a hole in a full water bottle and a jet arcs out, weaker as the level drops. These everyday effects follow from two conservation laws you already know, mass and energy, applied to a fluid on the move.",
+ "prereq": [
+  {
+   "q": "For a system with no friction, which is constant?",
+   "options": [
+    "K + U",
+    "K alone",
+    "U alone",
+    "The speed"
+   ],
+   "correct": 0,
+   "why": "Mechanical energy K + U is constant when no nonconservative work is done.",
+   "review": "energy-conservation"
+  },
+  {
+   "q": "What is the gauge pressure 2.0 m below the surface of water (ρ = 1000 kg/m³, g = 9.8 m/s²)?",
+   "options": [
+    "1.96 × 10⁴ Pa",
+    "2.0 × 10³ Pa",
+    "1.2 × 10⁵ Pa",
+    "9.8 × 10³ Pa"
+   ],
+   "correct": 0,
+   "why": "P_gauge = ρgh = (1000)(9.8)(2.0) Pa.",
+   "review": "fluid-pressure"
+  },
+  {
+   "q": "An ideal fluid is",
+   "options": [
+    "incompressible and nonviscous",
+    "compressible and sticky",
+    "always at rest",
+    "a gas at low pressure"
+   ],
+   "correct": 0,
+   "why": "Constant density and no internal friction.",
+   "review": "density-fluids"
+  }
+ ],
+ "figure": {
+  "figure": "fluid-flow-pipe",
+  "caption": "Continuity sets the speeds from the areas; Bernoulli's equation then gives the pressures."
+ },
+ "chain": [
+  {
+   "cause": "An ideal fluid is incompressible and fills the pipe",
+   "effect": "the volume entering each second equals the volume leaving: A₁v₁ = A₂v₂"
+  },
+  {
+   "cause": "The pipe narrows",
+   "effect": "the fluid must move faster there (continuity sets the speed)"
+  },
+  {
+   "cause": "Speeding up needs a net force along the flow",
+   "effect": "the pressure is lower where the fluid moves faster, at the same height"
+  },
+  {
+   "cause": "Energy per unit volume is conserved in an ideal fluid",
+   "effect": "P + ρgy + ½ρv² is the same at every point along the flow (Bernoulli)"
+  }
+ ],
+ "ideas": [
+  "<b>Volume flow rate</b> is Av, in m³/s. For an ideal fluid in a full pipe it is the same everywhere: <b>A₁v₁ = A₂v₂</b> (continuity, from conservation of mass).",
+  "<b>Continuity sets the speed</b>: a quarter of the area gives four times the speed. Use it first.",
+  "<b>Bernoulli</b>: P₁ + ρgy₁ + ½ρv₁² = P₂ + ρgy₂ + ½ρv₂², conservation of energy per volume. At equal heights, faster flow means lower pressure.",
+  "Torricelli: fluid leaves a small hole a depth h below an open surface at <b>v = √(2gh)</b>, the speed of a drop falling h."
+ ],
+ "misconception": {
+  "wrong": "Where a pipe narrows, the water is squeezed, so its pressure goes up.",
+  "right": "The water speeds up into the narrow part, and something must push it to speed up: the higher pressure behind it. In a horizontal pipe the narrow, fast section has the lower pressure."
+ },
+ "check": [
+  "phys-fluid-flow-1",
+  "phys-fluid-flow-2",
+  "phys-fluid-flow-3",
+  "phys-fluid-flow-4",
+  "phys-fluid-flow-5",
+  "phys-fluid-flow-11"
+ ],
+ "summary": "For an ideal fluid in a full pipe, continuity (A₁v₁ = A₂v₂, mass conservation) sets the speeds and Bernoulli's equation (energy conservation per volume) then sets the pressures; faster flow at the same height means lower pressure, and a hole a depth h down gives v = √(2gh)."
+}

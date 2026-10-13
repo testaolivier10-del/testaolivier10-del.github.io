@@ -1,0 +1,12 @@
+{
+ "impulse-ball-wall": {
+  "file": "figures/impulse-ball-wall.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A 0.20 kg ball moves left at 4.0 m/s toward a wall, is pushed right by the wall during contact, and leaves right at 2.0 m/s. A triangular force-time graph peaks at 600 N at 2 ms and ends at 4 ms; its shaded area, 1.2 N·s, is the impulse."
+ }
+}

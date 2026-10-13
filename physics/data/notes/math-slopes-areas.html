@@ -1,0 +1,42 @@
+<p>Physics uses graphs constantly, and almost every graph question comes down to two moves: find the <b>slope</b>, or find the <b>area</b> under the graph. This page shows both, with the one habit that makes them easy: keep track of the units of each axis.</p>
+
+<h2>Axes: a quantity and a unit</h2>
+<p>Each axis shows one quantity, and its label must name both the quantity and its unit, as in "Time (s)" or "Height (m)". A label with only one of the two loses the point on the exam. By habit, the quantity you choose or control (the independent variable, often time) goes across, and the quantity that responds goes up.</p>
+
+<h2>Slope: rise over run</h2>
+<figure id="fig-sa" data-fig="slope-and-area"><figcaption>Left: the slope of a straight line. Right: the area under a horizontal line.</figcaption></figure>
+<p>The <b>slope</b> of a straight line is how much y changes for each unit of x. Pick two points <i>on the line</i>, far apart, and divide:</p>
+<p style="text-align:center"><b>slope = rise / run = Δy / Δx</b></p>
+<p>The unit of a slope is (y unit)/(x unit). That is the key to its meaning. On a graph of distance (m) against time (s), the slope is in m/s, so it is a speed. On a graph of speed (m/s) against time (s), it is in m/s², a rate of change of speed.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A line passes through (2 s, 4 m) and (8 s, 16 m) on a graph of distance against time. Find its slope.</p>
+<p>rise = 16 m − 4 m = 12 m; run = 8 s − 2 s = 6 s.</p>
+<p>slope = 12 m ÷ 6 s = 2 m/s. The walker covers 2 m every second.</p>
+</div>
+<p>A line that rises to the right has a positive slope; one that falls has a negative slope; a horizontal line has zero slope. A straight line has the same slope everywhere: a <b>linear relationship</b>, y = mx + b, where m is the slope and b is the vertical intercept (the value of y at x = 0).</p>
+<p>A curved graph has a different steepness at each point. Its slope at one point is the slope of the straight line that just touches the curve there (a tangent line).</p>
+
+<h2>Area under a graph</h2>
+<p>The <b>area under a graph</b> is the region between the graph and the horizontal axis over some interval. Its unit is (y unit) × (x unit). On a graph of speed (m/s) against time (s), the area is in (m/s)(s) = m: a distance. That is why area matters: it turns a rate back into a total.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Speed is a steady 3 m/s from t = 2 s to t = 8 s. What distance is covered?</p>
+<p>The region is a rectangle 3 m/s tall and 6 s wide.</p>
+<p>area = 3 m/s × 6 s = 18 m.</p>
+</div>
+<p>Break other shapes into rectangles and triangles. A triangle has area ½ × base × height: a speed rising steadily from 0 to 6.0 m/s over 3.0 s gives ½ × 3.0 s × 6.0 m/s = 9.0 m. Area that lies below the horizontal axis counts as negative.</p>
+<table class="compare"><thead><tr><th scope="col"></th><th scope="col">Slope</th><th scope="col">Area under the graph</th></tr></thead>
+<tbody><tr><th scope="row">How</th><td>Δy ÷ Δx between two points on the line</td><td>height × width (rectangles), ½ × base × height (triangles)</td></tr>
+<tr><th scope="row">Unit</th><td>(y unit)/(x unit)</td><td>(y unit) × (x unit)</td></tr>
+<tr><th scope="row">Meaning</th><td>a rate: how fast y changes</td><td>a total: how much y × x builds up</td></tr></tbody></table>
+
+<h2>Real data: the best-fit line</h2>
+<p>Measured points never sit exactly on a line. Draw one straight <b>best-fit line</b> through them with about as many points above as below. Never connect the dots. Then find the slope from two points on your line, far apart, not from two data points. The line averages out the random scatter, so its slope uses all your measurements.</p>
+
+<h2>Linearizing a curve</h2>
+<p>Some relationships are not straight. A cart released from rest moves d = ½at², so a graph of d against t curves upward. The trick is to change what you plot. Compare d = (½a)(t²) with y = mx: if you put t² on the horizontal axis, the graph of d against t² is a straight line through the origin with slope ½a. This is <b>linearization</b>.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A student plots d against t² and finds a best-fit slope of 0.45 m/s². Find a.</p>
+<p>slope = ½a, so a = 2 × slope = 2 × 0.45 m/s² = 0.90 m/s².</p>
+<p>Units check: the slope is m ÷ s² = m/s², an acceleration, as it should be.</p>
+</div>
+<p>The recipe: write the equation, match it to y = mx + b, choose y and x so that the rest is a constant slope, and say what the slope equals. The experimental design question on the exam asks for exactly this.</p>

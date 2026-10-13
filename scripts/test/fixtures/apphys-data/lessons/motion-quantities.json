@@ -1,0 +1,62 @@
+{
+ "topic": "motion-quantities",
+ "hook": "A phone app can tell you that you walked 3 km today, but not where you ended up. A delivery van can drive 40 km and finish back at the depot. Physics separates how far something went from where it ended up, and that difference decides everything that follows.",
+ "prereq": [
+  {
+   "q": "Which is a vector?",
+   "options": [
+    "Displacement",
+    "Distance",
+    "Speed",
+    "Mass"
+   ],
+   "correct": 0,
+   "why": "Displacement has a direction.",
+   "review": "scalars-vectors"
+  },
+  {
+   "q": "What does Δx mean?",
+   "options": [
+    "Final position minus initial position",
+    "Initial minus final",
+    "The distance traveled",
+    "Position times time"
+   ],
+   "correct": 0,
+   "why": "Δ is always final minus initial.",
+   "review": "math-symbols"
+  }
+ ],
+ "figure": null,
+ "chain": [
+  {
+   "cause": "An object changes position",
+   "effect": "it has a displacement, the change in position"
+  },
+  {
+   "cause": "The displacement happens over a time interval",
+   "effect": "its average velocity is Δx divided by Δt"
+  },
+  {
+   "cause": "The velocity changes over a time interval",
+   "effect": "the object has an average acceleration, Δv divided by Δt"
+  }
+ ],
+ "ideas": [
+  "Displacement is a change in position, with a sign for its direction.",
+  "Average velocity is Δx/Δt; average acceleration is Δv/Δt."
+ ],
+ "misconception": {
+  "wrong": "Acceleration means speeding up.",
+  "right": "Acceleration is any change in velocity: speeding up, slowing down or turning."
+ },
+ "check": [
+  "phys-motion-quantities-1",
+  "phys-motion-quantities-2",
+  "phys-motion-quantities-5",
+  "phys-motion-quantities-6",
+  "phys-motion-quantities-9",
+  "phys-motion-quantities-10"
+ ],
+ "summary": "Displacement is the change in position; average velocity is displacement over time and average acceleration is change in velocity over time, each with a sign for direction."
+}

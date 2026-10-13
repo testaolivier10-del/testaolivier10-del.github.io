@@ -1,0 +1,12 @@
+{
+ "kick-components": {
+  "file": "figures/kick-components.svg",
+  "ext": "svg",
+  "w": 800,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a soccer ball kicked from the grass with velocity 15 m/s at 37 degrees above the horizontal. The velocity arrow is the hypotenuse of a right triangle; its horizontal component, v x = v cos theta = 15 cos 37 degrees = 12 m/s, runs along the ground, and its vertical component, v y = v sin theta = 15 sin 37 degrees = 9.0 m/s, runs straight up. Right: a right triangle with angle theta, labeled hypotenuse, adjacent and opposite sides, with sin = opposite over hypotenuse, cos = adjacent over hypotenuse, tan = opposite over adjacent, the Pythagorean theorem, and a reminder to set the calculator to degree mode."
+ }
+}

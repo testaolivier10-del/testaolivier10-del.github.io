@@ -112,6 +112,15 @@ const CARDS = [
     title: 'Chemistry for the May exam, one particle at a time',
     sub: 'Free notes for every topic, practice that checks units and significant figures, and justifications that earn the point.',
   },
+  /* AP® Physics 1 (folder physics/), the same rules: no mark, no counts
+     (docs/apphys-spec.md decision 2). Render with ONLY=physics/assets/og-image.png. */
+  {
+    out: 'physics/assets/og-image.png',
+    badge: 'Beta · Free notes',
+    brand: 'LevlPrep',
+    title: 'Physics 1 for the May exam, one force at a time',
+    sub: 'Free notes for every topic, free-body diagrams graded force by force, and trainers that are also tests.',
+  },
 ];
 // ONLY=<out path> renders just that card (adding a course need not re-render the others).
 if (process.env.ONLY) CARDS.splice(0, CARDS.length, ...CARDS.filter((c) => c.out === process.env.ONLY));

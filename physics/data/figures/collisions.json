@@ -1,0 +1,12 @@
+{
+ "collision-types": {
+  "file": "figures/collision-types.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 520,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Cart A, 1.0 kg at 4.0 m/s, hits cart B, 3.0 kg at rest. Three outcomes: elastic (A back at 2.0 m/s, B at 2.0 m/s, K stays 8.0 J), inelastic (0.25 and 1.25 m/s, K 2.4 J) and perfectly inelastic (stuck at 1.0 m/s, K 2.0 J). Total momentum is 4.0 kg·m/s in every case."
+ }
+}

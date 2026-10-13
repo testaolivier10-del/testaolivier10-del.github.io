@@ -1,0 +1,49 @@
+<p>Physics describes motion with numbers, and the first thing to settle is what kind of number you need. Some quantities are fully described by a size: 7 m, 20 s. Others also need a direction: 7 m <i>to the left</i>. This page sorts the quantities of motion into these two kinds, and shows why the difference decides every answer in the rest of the unit.</p>
+
+<h2>Scalars and vectors</h2>
+<p>A <b>scalar</b> is a quantity with a size and a unit, and nothing else. Time is a scalar: 20 s has no direction. Distance and speed are scalars too.</p>
+<p>A <b>vector</b> is a quantity with a size <i>and</i> a direction. "The robot moved 12 m" is incomplete: east or west? Position, displacement and velocity are vectors. The size of a vector, with the direction left off, is its <b>magnitude</b>. A magnitude is never negative.</p>
+
+<h2>Positions need a coordinate system</h2>
+<p>To give a position as a number you first make two choices. Pick an <b>origin</b>, the zero point. Then pick which direction is positive. Together these make a <b>coordinate system</b>. On a straight line, every position is then one signed number, called x, in meters. A position of x = −2.5 m means 2.5 m from the origin on the negative side.</p>
+<p>The choice is yours, and the physics does not care which you make. If you flip the axis so that west is positive, the same ball at 2.5 m west of the origin is written +2.5 m instead of −2.5 m. What matters is that you state your choice and keep it for the whole problem.</p>
+
+<h2>Distance and displacement</h2>
+<figure id="fig-walk" data-fig="walk-distance-displacement"><figcaption>A walk with a turnaround. The dashed arrows are the path (distance); the solid arrow is the displacement.</figcaption></figure>
+<p>Follow the walker in the figure. She starts at x = −1 m, walks 5 m to x = +4 m, turns, and walks 2 m back to x = +2 m.</p>
+<ul>
+<li>The <b>distance</b> is the length of her whole path: 5 m + 2 m = 7 m. It counts every step, adds no signs, and can only grow.</li>
+<li>The <b>displacement</b> is her change in position: where she ended minus where she started. +2 m − (−1 m) = +3 m. It is a vector: 3 m in the positive direction.</li>
+</ul>
+<p>The two match only when an object moves in one direction without turning around. Any turnaround adds to the distance but cancels part of the displacement, so the magnitude of the displacement is never larger than the distance. A full round trip has zero displacement and a large distance.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Sam starts at x = +1 m, walks to x = +5 m, then walks back to x = +3 m. Find his distance and displacement.</p>
+<p>Distance: leg 1 is 5 m − 1 m = 4 m long; leg 2 is 5 m − 3 m = 2 m long. Distance = 4 m + 2 m = 6 m.</p>
+<p>Displacement: final position minus starting position = +3 m − (+1 m) = +2 m. He ended 2 m to the right of where he began, even though he walked 6 m.</p>
+</div>
+
+<h2>Speed and velocity</h2>
+<p><b>Speed</b> tells you how fast something moves: a distance per time, in m/s. <b>Velocity</b> tells you how fast <i>and</i> which way: a displacement per time. Velocity is a vector, and its magnitude is the speed.</p>
+<p>On a line, the sign of the velocity is the direction of motion. Two skaters gliding at 4.5 m/s in opposite directions have the same speed but different velocities, +4.5 m/s and −4.5 m/s. A negative velocity does not mean "slow" or "slowing down". It only means "moving toward the negative direction".</p>
+<table class="compare"><thead><tr><th scope="col"></th><th scope="col">Distance</th><th scope="col">Displacement</th><th scope="col">Speed</th><th scope="col">Velocity</th></tr></thead>
+<tbody><tr><th scope="row">Kind</th><td>scalar</td><td>vector</td><td>scalar</td><td>vector</td></tr>
+<tr><th scope="row">Measures</th><td>path length</td><td>change in position</td><td>how fast</td><td>how fast and which way</td></tr>
+<tr><th scope="row">Can be negative?</th><td>no</td><td>yes (the sign is direction)</td><td>no</td><td>yes (the sign is direction)</td></tr>
+<tr><th scope="row">Unit</th><td>m</td><td>m</td><td>m/s</td><td>m/s</td></tr>
+<tr><th scope="row">Round trip</th><td>large</td><td>zero</td><td>usually not zero</td><td>can be zero over the trip</td></tr></tbody></table>
+
+<h2>Adding vectors on a line</h2>
+<p>When displacements happen one after another, the total is their <b>vector sum</b>, and along a line you find it by adding signed numbers. A taxi drives 320 m north, then 485 m south. With north positive, the displacements are +320 m and −485 m:</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Total displacement = (+320 m) + (−485 m) = −165 m.</p>
+<p>The taxi ends 165 m south of its start. The distance driven is 320 m + 485 m = 805 m. Check that the answer makes sense: the southward leg is longer, so the taxi should end south of where it began, and it does.</p>
+</div>
+<p>Opposite directions get opposite signs, so vectors pointing opposite ways partly cancel. Vectors pointing the same way simply add.</p>
+
+<h2>What to remember</h2>
+<ul>
+<li>State your origin and positive direction first.</li>
+<li>Displacement compares the start and the end; distance counts the whole path.</li>
+<li>The sign of a velocity is a direction, not a judgment about speed.</li>
+<li>Add vectors on a line by adding their signed values.</li>
+</ul>

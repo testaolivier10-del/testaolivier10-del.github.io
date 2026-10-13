@@ -1,0 +1,448 @@
+{
+ "stimuli": {
+  "angular-momentum-conservation-s1": {
+   "kind": "diagram",
+   "title": "Pulling weights in on a rotating stool",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 250\" role=\"img\" aria-label=\"A student on a stool that turns on a nearly frictionless vertical axle. Before: arms out holding weights, rotational inertia 3.0 kg·m² and angular velocity 2.0 rad/s. After: arms pulled in, rotational inertia 1.2 kg·m², angular velocity unknown\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"250\" fill=\"#FFFFFF\"/><rect x=\"30\" y=\"220\" width=\"220\" height=\"10\" fill=\"#EEF1EF\"/><line x1=\"30\" y1=\"220\" x2=\"250\" y2=\"220\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"34\" y1=\"220\" x2=\"26\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"46\" y1=\"220\" x2=\"38\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"58\" y1=\"220\" x2=\"50\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"70\" y1=\"220\" x2=\"62\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"82\" y1=\"220\" x2=\"74\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"94\" y1=\"220\" x2=\"86\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"106\" y1=\"220\" x2=\"98\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"118\" y1=\"220\" x2=\"110\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"130\" y1=\"220\" x2=\"122\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"142\" y1=\"220\" x2=\"134\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"154\" y1=\"220\" x2=\"146\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"166\" y1=\"220\" x2=\"158\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"178\" y1=\"220\" x2=\"170\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"190\" y1=\"220\" x2=\"182\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"202\" y1=\"220\" x2=\"194\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"214\" y1=\"220\" x2=\"206\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"226\" y1=\"220\" x2=\"218\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"238\" y1=\"220\" x2=\"230\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"140\" y1=\"220\" x2=\"140\" y2=\"186\" stroke=\"#1F2A28\" stroke-width=\"5\"/><rect x=\"100\" y=\"178\" width=\"80\" height=\"10\" rx=\"3\" fill=\"#E9D8B8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><rect x=\"126\" y=\"112\" width=\"28\" height=\"66\" rx=\"10\" fill=\"#9DB7C9\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"140\" cy=\"96\" r=\"13\" fill=\"#E8C4A0\" stroke=\"#1F2A28\" stroke-width=\"2\"/><line x1=\"130\" y1=\"124\" x2=\"50\" y2=\"124\" stroke=\"#E8C4A0\" stroke-width=\"7\"/><line x1=\"150\" y1=\"124\" x2=\"230\" y2=\"124\" stroke=\"#E8C4A0\" stroke-width=\"7\"/><rect x=\"43\" y=\"113\" width=\"14\" height=\"22\" rx=\"3\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"2\"/><rect x=\"223\" y=\"113\" width=\"14\" height=\"22\" rx=\"3\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"140\" y=\"30\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">Before: arms out</text><text x=\"140\" y=\"48\" font-size=\"12.5\" fill=\"#1F2A28\" text-anchor=\"middle\">I = 3.0 kg·m², ω = 2.0 rad/s</text><rect x=\"310\" y=\"220\" width=\"220\" height=\"10\" fill=\"#EEF1EF\"/><line x1=\"310\" y1=\"220\" x2=\"530\" y2=\"220\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"314\" y1=\"220\" x2=\"306\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"326\" y1=\"220\" x2=\"318\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"338\" y1=\"220\" x2=\"330\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"350\" y1=\"220\" x2=\"342\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"362\" y1=\"220\" x2=\"354\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"374\" y1=\"220\" x2=\"366\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"386\" y1=\"220\" x2=\"378\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"398\" y1=\"220\" x2=\"390\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"410\" y1=\"220\" x2=\"402\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"422\" y1=\"220\" x2=\"414\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"434\" y1=\"220\" x2=\"426\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"446\" y1=\"220\" x2=\"438\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"458\" y1=\"220\" x2=\"450\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"470\" y1=\"220\" x2=\"462\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"482\" y1=\"220\" x2=\"474\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"494\" y1=\"220\" x2=\"486\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"506\" y1=\"220\" x2=\"498\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"518\" y1=\"220\" x2=\"510\" y2=\"229\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"420\" y1=\"220\" x2=\"420\" y2=\"186\" stroke=\"#1F2A28\" stroke-width=\"5\"/><rect x=\"380\" y=\"178\" width=\"80\" height=\"10\" rx=\"3\" fill=\"#E9D8B8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><rect x=\"406\" y=\"112\" width=\"28\" height=\"66\" rx=\"10\" fill=\"#9DB7C9\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"420\" cy=\"96\" r=\"13\" fill=\"#E8C4A0\" stroke=\"#1F2A28\" stroke-width=\"2\"/><line x1=\"410\" y1=\"124\" x2=\"394\" y2=\"124\" stroke=\"#E8C4A0\" stroke-width=\"7\"/><line x1=\"430\" y1=\"124\" x2=\"446\" y2=\"124\" stroke=\"#E8C4A0\" stroke-width=\"7\"/><rect x=\"387\" y=\"113\" width=\"14\" height=\"22\" rx=\"3\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"2\"/><rect x=\"439\" y=\"113\" width=\"14\" height=\"22\" rx=\"3\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"420\" y=\"30\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">After: arms in</text><text x=\"420\" y=\"48\" font-size=\"12.5\" fill=\"#1F2A28\" text-anchor=\"middle\">I = 1.2 kg·m², ω = ?</text></svg>"
+  },
+  "angular-momentum-conservation-s2": {
+   "kind": "diagram",
+   "title": "Clay hits a hanging rod",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 270\" role=\"img\" aria-label=\"A uniform rod 0.80 m long hangs at rest from a frictionless pivot at its top end. A 0.050 kg lump of clay moving horizontally at 8.0 m/s is about to hit and stick to the bottom end\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"270\" fill=\"#FFFFFF\"/><rect x=\"100\" y=\"12\" width=\"120\" height=\"10\" fill=\"#EEF1EF\"/><line x1=\"100\" y1=\"22\" x2=\"220\" y2=\"22\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"104\" y1=\"22\" x2=\"112\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"116\" y1=\"22\" x2=\"124\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"128\" y1=\"22\" x2=\"136\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"140\" y1=\"22\" x2=\"148\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"152\" y1=\"22\" x2=\"160\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"164\" y1=\"22\" x2=\"172\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"176\" y1=\"22\" x2=\"184\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"188\" y1=\"22\" x2=\"196\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"200\" y1=\"22\" x2=\"208\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"212\" y1=\"22\" x2=\"220\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><rect x=\"152\" y=\"22\" width=\"16\" height=\"16\" rx=\"3\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"160\" cy=\"30\" r=\"3\" fill=\"#1F2A28\"/><rect x=\"153\" y=\"30\" width=\"14\" height=\"210\" rx=\"2\" fill=\"#E9D8B8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"232\" r=\"9\" fill=\"#A9765A\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><line x1=\"52\" y1=\"232\" x2=\"109\" y2=\"232\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"120,232 109,238 109,226\" fill=\"#B07A00\"/><text x=\"60\" y=\"222\" font-size=\"12\" fill=\"#B07A00\" font-weight=\"bold\">v = 8.0 m/s</text><line x1=\"182\" y1=\"135\" x2=\"182\" y2=\"38\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"182,30 186,38 178,38\" fill=\"#5A6268\"/><line x1=\"182\" y1=\"135\" x2=\"182\" y2=\"232\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"182,240 178,232 186,232\" fill=\"#5A6268\"/><text x=\"190\" y=\"135\" font-size=\"12\" fill=\"#1F2A28\">0.80 m</text><text x=\"146\" y=\"34\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"end\">pivot</text><rect x=\"300\" y=\"30\" width=\"245\" height=\"190\" rx=\"8\" fill=\"#EEF1EF\" stroke=\"#C9CFCC\"/><text x=\"312\" y=\"56\" font-size=\"12.5\" fill=\"#1F2A28\">Uniform rod: M = 1.2 kg,</text><text x=\"312\" y=\"80\" font-size=\"12.5\" fill=\"#1F2A28\">length 0.80 m, hangs at rest</text><text x=\"312\" y=\"104\" font-size=\"12.5\" fill=\"#1F2A28\">from a frictionless pivot.</text><text x=\"312\" y=\"128\" font-size=\"12.5\" fill=\"#1F2A28\">I about the pivot = ⅓ML² (given)</text><text x=\"312\" y=\"152\" font-size=\"12.5\" fill=\"#1F2A28\">Clay: 0.050 kg at 8.0 m/s,</text><text x=\"312\" y=\"176\" font-size=\"12.5\" fill=\"#1F2A28\">moving horizontally; it sticks</text><text x=\"312\" y=\"200\" font-size=\"12.5\" fill=\"#1F2A28\">to the bottom end of the rod.</text></svg>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-angular-momentum-conservation-1",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "angular-momentum-conservation-s1",
+   "q": "What is the student’s angular velocity after pulling the weights in?",
+   "numeric": {
+    "answer": 5,
+    "tol": 0.1,
+    "unit": "rad/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.8,
+      "rel": 0.015,
+      "why": "Value: the ratio is upside down. I₁ω₁ = I₂ω₂, so a smaller I gives a larger ω."
+     },
+     {
+      "value": 3.2,
+      "rel": 0.015,
+      "why": "Value: that keeps kinetic energy constant. The conserved quantity is L = Iω."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The net torque about the axle from outside the student-stool system is negligible, so L is constant: (3.0 kg·m²)(2.0 rad/s) = (1.2 kg·m²)ω, ω = 5.0 rad/s."
+   }
+  },
+  {
+   "id": "phys-angular-momentum-conservation-2",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "angular-momentum-conservation-s1",
+   "q": "Why is the angular momentum of the student, weights and stool the same before and after?",
+   "options": [
+    "No net torque about the axle comes from outside the system",
+    "Angular momentum is conserved whatever acts on a system",
+    "The student pulls the weights in slowly",
+    "The student’s arms exert no force on the weights"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For the student-weights-stool system, the forces from the arms are internal. The external forces (gravity, the floor through the axle) have no lever arm about the vertical axle, and friction is negligible, so the net torque from outside is about zero and L stays constant.",
+    "options": [
+     "Right: the axle is nearly frictionless, and gravity and the floor act along the axis.",
+     "It is constant just when the net torque from outside the system is zero.",
+     "Speed of pulling does not matter; the condition is zero net torque from outside.",
+     "The arms do exert forces, but they are internal to the system."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-conservation-3",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "angular-momentum-conservation-s1",
+   "q": "By how much does the rotational kinetic energy of the system change?",
+   "numeric": {
+    "answer": 9,
+    "tol": 0.1,
+    "unit": "J",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0,
+      "rel": 0.015,
+      "why": "Value: kinetic energy is not conserved here. The student does work pulling the weights in."
+     },
+     {
+      "value": 15,
+      "rel": 0.015,
+      "why": "Value: that is the final kinetic energy. Subtract the initial 6.0 J."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Before: ½(3.0)(2.0)² = 6.0 J. After: ½(1.2)(5.0)² = 15 J. The change is +9 J."
+   }
+  },
+  {
+   "id": "phys-angular-momentum-conservation-4",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "angular-momentum-conservation-s1",
+   "q": "Where does the extra rotational kinetic energy come from?",
+   "options": [
+    "Work done by her muscles pulling the weights in",
+    "The floor, through the stool’s axle",
+    "Nowhere: kinetic energy is conserved in a closed system",
+    "The angular momentum, which turns into energy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "L stays the same, but K = L²/(2I) rises as I falls. The student’s arms pull the weights inward through a distance, doing positive work from stored chemical energy.",
+    "options": [
+     "Right: the weights move inward against their tendency to keep moving in a straight line; the arms do positive work.",
+     "The axle exerts no torque about the axis and does no work on the turning.",
+     "Mechanical energy is not conserved here; the student converts internal (chemical) energy.",
+     "Angular momentum stays the same; it is not converted into anything."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-conservation-5",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "angular-momentum-conservation-s1",
+   "q": "If the student could pull in until the system’s rotational inertia were one third of 3.0 kg·m², her angular velocity would be",
+   "options": [
+    "3 times as large, 6.0 rad/s",
+    "9 times as large, 18 rad/s",
+    "√3 times as large, about 3.5 rad/s",
+    "the same, 2.0 rad/s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "L = Iω is constant, so ω ∝ 1/I: one third of the inertia gives three times the angular velocity.",
+    "options": [
+     "Right: ω = L/I, so I ÷ 3 gives ω × 3.",
+     "ω is inversely proportional to I, not I².",
+     "That would keep kinetic energy constant; L is what stays constant.",
+     "With less I and the same L, she must turn faster."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-conservation-6",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "angular-momentum-conservation-s2",
+   "q": "What is the clay’s angular momentum about the pivot just before it hits?",
+   "numeric": {
+    "answer": 0.32,
+    "tol": 0.01,
+    "unit": "kg·m^2/s",
+    "sigfigs": 2,
+    "units": [
+     "kg m^2/s",
+     "kg·m²/s",
+     "kg m²/s",
+     "J·s",
+     "J s",
+     "N·m·s",
+     "N m s"
+    ],
+    "mistakes": [
+     {
+      "value": 0.4,
+      "rel": 0.015,
+      "why": "Value: that is the clay’s linear momentum. Multiply by the perpendicular distance from the pivot, 0.80 m."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The clay moves horizontally on a line 0.80 m below the pivot: L = mvd = (0.050 kg)(8.0 m/s)(0.80 m) = 0.32 kg·m²/s."
+   }
+  },
+  {
+   "id": "phys-angular-momentum-conservation-7",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "angular-momentum-conservation-s2",
+   "q": "What is the angular velocity of the rod and clay just after the collision?",
+   "numeric": {
+    "answer": 1.1,
+    "tol": 0.1,
+    "unit": "rad/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1.3,
+      "rel": 0.015,
+      "why": "Value: that leaves out the clay’s own rotational inertia after it sticks, mr² = 0.032 kg·m²."
+     },
+     {
+      "value": 0.4,
+      "rel": 0.015,
+      "why": "Value: that uses linear momentum conservation. The pivot exerts an outside force during the collision, so use angular momentum about the pivot."
+     }
+    ]
+   },
+   "why": {
+    "correct": "About the pivot, L is conserved: 0.32 kg·m²/s = (⅓ML² + mL²)ω = (0.256 + 0.032)ω, so ω = 0.32/0.288 = 1.11 rad/s, about 1.1 rad/s."
+   }
+  },
+  {
+   "id": "phys-angular-momentum-conservation-8",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "angular-momentum-conservation-s2",
+   "q": "For the clay-rod system during the collision, which quantity stays the same?",
+   "options": [
+    "Angular momentum about the pivot",
+    "Linear momentum of the clay and rod",
+    "Kinetic energy of the clay and rod",
+    "Each of momentum, angular momentum and energy"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The only outside forces during the brief collision are gravity (no lever arm while the rod hangs straight down, and negligible over so short a time) and the pivot force, which acts at the axis. So the net torque about the pivot is zero and L about the pivot is constant. The pivot force is not zero, so linear momentum is not constant.",
+    "options": [
+     "Right: the pivot’s force acts at the axis, so it exerts no torque about it.",
+     "The pivot pushes on the rod during the collision, an outside force, so linear momentum changes.",
+     "The clay sticks; the collision is perfectly inelastic and kinetic energy is lost.",
+     "Angular momentum about the pivot is the one quantity whose condition is met."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-conservation-9",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "angular-momentum-conservation-s2",
+   "q": "What fraction of the clay’s kinetic energy is left just after the collision?",
+   "options": [
+    "About 11%",
+    "Nearly 100%",
+    "About 4%",
+    "About 50%"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Before: ½(0.050)(8.0)² = 1.6 J. After: ½(0.288)(1.111)² = 0.18 J, about 11%. The rest became thermal energy and sound when the clay deformed.",
+    "options": [
+     "Right: 0.18 J of 1.6 J.",
+     "A sticky collision is not elastic; kinetic energy is lost.",
+     "This is the ratio of the clay’s mass to the total mass, which is not the energy ratio here.",
+     "Half is not a rule for sticky collisions; compute both energies."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-conservation-10",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "The angular momentum of a system stays constant when",
+   "options": [
+    "the net external torque on it is zero",
+    "the net external force on the system is zero",
+    "no forces act inside the system",
+    "the system’s kinetic energy is constant"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Total angular momentum changes only through angular impulse from outside the system. With zero net external torque, L stays the same.",
+    "options": [
+     "Right: that is the condition.",
+     "Zero net force is the condition for linear momentum, not angular momentum.",
+     "Internal forces cannot change the total L; outside torques can.",
+     "L can stay constant while K changes, as the spinning student shows."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-conservation-11",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A diver leaves the board turning slowly, then tucks into a ball. Ignoring air, why does she turn faster in the tuck?",
+   "options": [
+    "Her I falls while her angular momentum stays the same",
+    "Tucking pushes against the air and creates a torque",
+    "Gravity exerts a larger torque when she is tucked",
+    "Her kinetic energy is conserved, so she speeds up"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In the air, the only outside force is gravity, which acts at her center of mass and exerts no torque about it. Her L stays constant, so tucking (reducing I) increases ω.",
+    "options": [
+     "Right: L = Iω is constant in the air, so smaller I means larger ω.",
+     "Air is ignored, and pushing on air would not be needed.",
+     "Gravity acts at her center of mass, so it has no torque about it.",
+     "Her kinetic energy actually increases; L is what is conserved."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-conservation-12",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A disk (I = 0.040 kg·m²) spins at 10 rad/s on a frictionless axle. A second disk (I = 0.020 kg·m²), not spinning, is dropped onto it on the same axle, and they turn together. What is their common angular velocity?",
+   "numeric": {
+    "answer": 6.7,
+    "tol": 0.1,
+    "unit": "rad/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 8.2,
+      "rel": 0.015,
+      "why": "Value: that keeps kinetic energy constant. The disks rub as they match speeds; use L = Iω."
+     },
+     {
+      "value": 3.3,
+      "rel": 0.015,
+      "why": "Value: the inertias are swapped in the ratio."
+     }
+    ]
+   },
+   "why": {
+    "correct": "No outside torque about the axle: (0.040)(10) = (0.040 + 0.020)ω, ω = 6.7 rad/s."
+   }
+  },
+  {
+   "id": "phys-angular-momentum-conservation-13",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A child runs tangent to the rim of a stationary merry-go-round and jumps on. For which system is angular momentum about the axle constant during the jump-on?",
+   "options": [
+    "The child and the merry-go-round together",
+    "The child alone",
+    "The merry-go-round alone",
+    "Neither one, since the child pushes on the merry-go-round"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Choose the system so the forces that change each part are internal. The child and merry-go-round exert equal and opposite torques on each other; the axle force acts at the axis. So L about the axle is constant for the pair.",
+    "options": [
+     "Right: their forces on each other are internal, and the axle exerts no torque about itself.",
+     "The merry-go-round pushes on the child, an outside torque on that system.",
+     "The child pushes on it, an outside torque on that system.",
+     "Their pushes on each other are internal to the pair, so the pair’s L is constant."
+    ]
+   }
+  },
+  {
+   "id": "phys-angular-momentum-conservation-14",
+   "type": "predict",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A spinning ice skater on frictionless ice pulls her arms in. Predict how each quantity changes.",
+   "variables": [
+    {
+     "name": "Her angular momentum",
+     "answer": "none",
+     "why": "No outside torque acts about her vertical axis, so L stays the same."
+    },
+    {
+     "name": "Her angular velocity",
+     "answer": "up",
+     "why": "ω = L/I and I falls as her arms come in."
+    },
+    {
+     "name": "Her rotational kinetic energy",
+     "answer": "up",
+     "why": "K = L²/(2I) grows as I falls; her muscles do the work."
+    }
+   ],
+   "why": {
+    "correct": "L is constant (no outside torque), I decreases, so ω increases and K = ½Iω² = L²/(2I) increases, the extra energy coming from work done by her muscles."
+   }
+  },
+  {
+   "id": "phys-angular-momentum-conservation-15",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A star collapses to one hundredth of its radius, keeping its mass and shape. With no outside torque, its rotation rate becomes",
+   "options": [
+    "10,000 times as large",
+    "100 times as large",
+    "the same",
+    "one hundredth as large"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For the same mass and shape, I ∝ R². Shrinking R by 100 shrinks I by 10,000. With L = Iω constant, ω grows by a factor of 10,000.",
+    "options": [
+     "Right: I ∝ R², so I falls by 100² and ω rises by the same factor.",
+     "I depends on R², not R.",
+     "L stays the same, but I changes, so ω changes.",
+     "A smaller I means a faster spin, not a slower one."
+    ]
+   }
+  }
+ ]
+}

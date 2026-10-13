@@ -1,0 +1,183 @@
+/* Free-body diagrams (physics/assets/tools/free-body-diagrams.js). OWNED BY
+   THIS TOOL ONLY. Scene illustration, the force palette and the drawing
+   layer. Theme tokens only, so dark mode follows; force colors come from
+   phys-tools.css (.phys-arrow.f-*). */
+
+/* ------------------------------------------------------------ the scene */
+.fb-svg{width:100%;height:100%;display:block;touch-action:none;user-select:none;-webkit-user-select:none;overflow:visible;}
+.fb-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;}
+.fb-stage .fb-svg{max-height:100%;}
+.fb-t{fill:var(--muted);font:700 15px var(--font-ui);}
+body.ls-on .phys-crumb{display:none !important;}
+.fb-t-s{font-size:12.5px;}
+.fb-t-on{fill:var(--muted);}
+.fb-ang{fill:var(--ink);font:800 15px var(--font-serif,var(--font-ui));font-style:italic;}
+.fb-on-blk{fill:#fff;font:800 13px var(--font-ui);}
+.fb-on-dim{fill:var(--muted);}
+.fb-net-t{fill:var(--ink);font-weight:800;}
+.fb-gnd{fill:var(--surface2);}
+.fb-hatch{opacity:.9;}
+.fb-hl{stroke:var(--line);stroke-width:1.4;}
+.fb-edge{stroke:var(--ink);stroke-width:2;opacity:.55;}
+.fb-grit{fill:#8a6a40;opacity:.55;}
+.fb-wood{fill:#C9915A;stroke:#8A5A2B;stroke-width:1.6;}
+.fb-grain{stroke:#A8743F;stroke-width:1.2;stroke-linecap:round;opacity:.7;}
+.fb-plank{fill:none;stroke:#8A5A2B;stroke-width:1.4;opacity:.7;}
+.fb-brace{stroke:#8A5A2B;stroke-width:5;stroke-linecap:round;opacity:.75;}
+.fb-book{fill:#2F6DB5;stroke:#1E4C82;stroke-width:1.6;}
+.fb-pages{fill:#FBF7EE;stroke:#D8CFBD;stroke-width:1;}
+.fb-pl{stroke:#D8CFBD;stroke-width:1;}
+.fb-skin{fill:#E7B48F;stroke:#B98361;stroke-width:1.4;}
+.fb-cloth{fill:#5D7FA3;stroke:#3F5E80;stroke-width:1.4;}
+.fb-pants{fill:#3D4A5C;}
+.fb-crease{stroke:#B98361;stroke-width:1.2;}
+.fb-sleeve{stroke:#5D7FA3;stroke-width:14;stroke-linecap:round;}
+.fb-metal{fill:#A9B3BC;stroke:#6E7A85;stroke-width:1.4;}
+.fb-rim{fill:#C3CBD2;stroke:#6E7A85;stroke-width:1.4;}
+.fb-band{stroke:#6E7A85;stroke-width:1.4;opacity:.6;}
+.fb-wire{fill:none;stroke:#59636D;stroke-width:2.2;}
+.fb-rope{fill:none;stroke:#A87B3D;stroke-width:3.4;stroke-linecap:round;}
+.fb-string{stroke:#A87B3D;stroke-width:2;}
+.fb-cable{stroke:#59636D;stroke-width:3;}
+.fb-ring{fill:none;stroke:#59636D;stroke-width:2.4;}
+.fb-arc{fill:none;stroke:var(--ink);stroke-width:1.4;opacity:.75;}
+.fb-guide{stroke:var(--muted);stroke-width:1.2;stroke-dasharray:4 4;}
+.fb-ramp{fill:#D8DEE4;stroke:#7D8A96;stroke-width:1.6;}
+.fb-ramp.is-rough{fill:#D9CDB7;stroke:#8A7454;}
+.fb-slick{stroke:#FFFFFF;stroke-width:2;opacity:.8;}
+.fb-sand{stroke-width:7;}
+.fb-block{fill:#E39B3B;stroke:#9C6114;stroke-width:1.8;}
+.fb-dim{fill:var(--surface2);stroke:var(--line);}
+.fb-shine{stroke:#fff;stroke-width:2;stroke-linecap:round;opacity:.45;}
+.fb-glow{fill:var(--ctint);stroke:var(--cink);stroke-width:2;stroke-dasharray:5 4;opacity:.9;}
+.fb-none{fill:none;}
+.fb-shaft{fill:var(--surface2);stroke:var(--line);stroke-width:1.4;}
+.fb-tick{stroke:var(--muted);stroke-width:2;}
+.fb-cab{fill:var(--white);stroke:#7D8A96;stroke-width:2.4;}
+.fb-cabfloor{fill:#7D8A96;}
+.fb-door{stroke:var(--line);stroke-width:1.4;stroke-dasharray:3 5;}
+.fb-wheel{fill:#C3CBD2;stroke:#59636D;stroke-width:2;}
+.fb-hub{fill:none;stroke:#8E99A3;stroke-width:1.4;}
+.fb-spoke{stroke:#8E99A3;stroke-width:2;}
+.fb-axle{fill:#59636D;}
+.fb-blk{cursor:pointer;}
+.fb-road{fill:#5E656D;}
+.fb-lane{fill:#F2D16B;}
+.fb-tire{fill:#24282C;}
+.fb-body{fill:#C8423B;stroke:#8E2A25;stroke-width:1.6;}
+.fb-win{fill:#BFD6E6;stroke:#8E2A25;stroke-width:1.4;}
+.fb-tail{fill:#F6B44C;}
+.fb-bumper{fill:#3A3F45;}
+.fb-plate{fill:#F5F5F0;stroke:#999;stroke-width:1;}
+.fb-inset{fill:var(--white);stroke:var(--line);stroke-width:1.4;}
+.fb-path{fill:none;stroke:var(--muted);stroke-width:1.4;stroke-dasharray:4 4;}
+.fb-cdot{fill:var(--muted);}
+.fb-trail{fill:none;stroke:#C8423B;stroke-width:1.6;opacity:.7;}
+.phys-arrow.fb-center{color:var(--muted);}
+.fb-rail{fill:#7D8A96;}
+.fb-coil{fill:none;stroke:#59636D;stroke-width:2.6;stroke-linejoin:round;}
+.phys-arrow.fb-dim-arrow{color:var(--muted);}
+.fb-water{fill:#7FB8DE;opacity:.45;}
+.fb-surf{fill:none;stroke:#3E8CC0;stroke-width:2;}
+.fb-glass{fill:none;stroke:#7D8A96;stroke-width:3;stroke-linejoin:round;}
+.fb-stone{fill:#8D9399;stroke:#5B6167;stroke-width:1.8;}
+.fb-scale{stroke:var(--ink);stroke-width:2;}
+.fb-dot{fill:var(--ink);stroke:var(--white);stroke-width:1.6;}
+.fb-axis{stroke:var(--muted);stroke-width:1.2;stroke-dasharray:6 4;}
+.fb-plus{fill:var(--cink);font:900 18px var(--font-ui);}
+.phys-arrow.fb-comp{opacity:.8;}
+:root[data-theme="dark"] .fb-cab{fill:var(--surface2);}
+:root[data-theme="dark"] .fb-ramp{fill:#46525E;stroke:#8E9BA7;}
+:root[data-theme="dark"] .fb-ramp.is-rough{fill:#5A4E3A;stroke:#A08B66;}
+:root[data-theme="dark"] .fb-edge{stroke:var(--line);opacity:1;}
+:root[data-theme="dark"] .fb-water{fill:#2F6E99;opacity:.55;}
+:root[data-theme="dark"] .fb-glass,:root[data-theme="dark"] .fb-cabfloor{stroke:#9AA6B1;}
+:root[data-theme="dark"] .fb-rope{stroke:#D0A162;}
+:root[data-theme="dark"] .fb-wire,:root[data-theme="dark"] .fb-cable,:root[data-theme="dark"] .fb-coil{stroke:#AAB5BF;}
+:root[data-theme="dark"] .fb-road{fill:#3A3F45;}
+
+/* Arrows: thicker than the scene, a soft halo so they read over the picture. */
+.fb-a line{stroke-width:4;}
+.fb-f,.fb-ua{cursor:pointer;}
+.fb-f:focus,.fb-ua:focus{outline:none;}
+.fb-f:focus-visible .fb-hit,.fb-ua:focus-visible .fb-hit,.fb-f.is-sel .fb-hit,.fb-ua.is-sel .fb-hit{stroke:var(--cink);stroke-opacity:.22;}
+.fb-hit{stroke:transparent;stroke-width:26;stroke-linecap:round;}
+.fb-a text{paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;font-size:15px;}
+.fb-muted{opacity:.55;}
+.fb-ulab{fill:var(--ink);font:800 15px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.fb-handle{fill:var(--white);fill-opacity:.01;stroke:var(--cink);stroke-width:2;stroke-dasharray:3 3;opacity:0;cursor:grab;}
+.fb-ua.is-sel .fb-handle,.fb-ua:hover .fb-handle,.fb-ua:focus-visible .fb-handle{opacity:1;}
+.fb-ua.is-sel .fb-a{filter:drop-shadow(0 0 3px var(--cink));}
+.fb-badge circle{fill:var(--bad-text);stroke:var(--white);stroke-width:2;}
+.fb-badge text{fill:#fff;font:900 12px var(--font-ui);}
+.fb-ua.is-ok .fb-badge circle{fill:var(--good-text);}
+@media (hover:none){.fb-ua .fb-handle{opacity:.9;}}
+
+/* -------------------------------------------------------------- the dock */
+.fb-dock{display:flex;flex-direction:column;gap:12px;}
+.fb-main{display:flex;flex-direction:column;gap:10px;}
+.fb-btns{display:flex;gap:8px;flex-wrap:wrap;}
+.fb-btns .bt-btn{flex:1 1 0;}
+.fb-law{margin:0 0 12px;}
+.fb-law-h{margin:0 0 4px;font:800 var(--ls-m,15px) var(--font-ui);}
+.fb-law-h span{font-weight:700;color:var(--muted);}
+.fb-eq{margin:0;font:700 15px/1.5 var(--font-mono);overflow-x:auto;}
+.fb-eq-n{color:var(--muted);}
+.fb-law-r{margin:4px 0 0;font-weight:700;}
+.fb-list{margin:6px 0 10px;padding-left:20px;display:grid;gap:6px;line-height:1.5;}
+.fb-tbl td.r,.fb-tbl th.r{text-align:right;white-space:nowrap;}
+
+/* Test yourself: problem text over the scene, palette and editor in the dock. */
+.fb-qstage{flex:1;min-height:0;display:flex;flex-direction:column;gap:4px;}
+.fb-qstage .fb-stage{flex:1;min-height:150px;}
+.fb-n{display:block;font:800 12px var(--font-ui);color:var(--muted);margin-bottom:2px;}
+.fb-step{display:flex;flex-direction:column;gap:10px;}
+.fb-step .cd-label{margin:0;font-weight:700;line-height:1.45;}
+.fb-pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:6px;}
+.fb-label{margin:0;font:800 var(--ls-m,16px)/1.35 var(--font-ui);color:var(--ink);}
+.fb-how{margin:-4px 0 0;}
+.fb-capk{display:block;margin-top:4px;font-size:var(--ls-s,13px);color:var(--muted);}
+.fb-chip{display:flex;align-items:center;gap:5px;min-height:44px;padding:4px 8px;border:0;border-radius:12px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);
+  color:var(--ink);font:700 12.5px/1.12 var(--font-ui);text-align:left;cursor:pointer;min-width:0;}
+.fb-chip span{min-width:0;}
+.fb-chip:hover{box-shadow:inset 0 0 0 2px var(--cink);}
+.fb-chip:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.fb-sw{width:20px;height:20px;flex:none;}
+.fb-sw line{stroke:currentColor;stroke-width:3;stroke-linecap:round;}
+.fb-sw polygon{fill:currentColor;}
+.fb-sw.f-grav{color:#0072B2;} .fb-sw.f-normal{color:#009E73;} .fb-sw.f-tension{color:#7A4F9E;} .fb-sw.f-friction{color:#D55E00;}
+.fb-sw.f-spring{color:#CC79A7;} .fb-sw.f-applied{color:#5A6268;} .fb-sw.f-buoy{color:#3E9BC8;} .fb-sw.net{color:var(--ink);}
+:root[data-theme="dark"] .fb-sw.f-grav{color:#6BB4E8;} :root[data-theme="dark"] .fb-sw.f-normal{color:#52CFA6;} :root[data-theme="dark"] .fb-sw.f-tension{color:#C3A3E0;}
+:root[data-theme="dark"] .fb-sw.f-friction{color:#F29A5C;} :root[data-theme="dark"] .fb-sw.f-spring{color:#E7A6CB;} :root[data-theme="dark"] .fb-sw.f-applied{color:#B8C0C4;} :root[data-theme="dark"] .fb-sw.f-buoy{color:#8CCBEA;}
+.fb-edit{display:flex;flex-direction:column;gap:8px;padding:10px 12px;border-radius:14px;background:var(--ctint);}
+.fb-edit[hidden]{display:none;}
+.fb-ed-h{display:flex;align-items:center;gap:6px;font:700 14px var(--font-ui);}
+.fb-ed-row{display:flex;gap:6px;}
+.ls-root .fb-ed-row .bt-btn,.fb-ed-row .bt-btn{flex:1 1 0;min-width:40px;padding:0;}
+.fb-ib{font-size:18px !important;}
+.ls-root .fb-ok{background:var(--cink);color:var(--white);box-shadow:none;}
+.fb-edit .bt-select select{min-height:44px;}
+.fb-palw[hidden]{display:none;}
+.fb-notes{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:8px;}
+.fb-notes li{line-height:1.45;}
+.fb-nb{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:999px;background:var(--bad-text);color:#fff;font:900 11px var(--font-ui);margin-right:2px;}
+.fb-nb-m{background:var(--amber-text);}
+.fb-eqo{font:700 15px var(--font-mono);}
+.fb-done{display:flex;gap:6px;flex-wrap:wrap;}
+.fb-done[hidden]{display:none;}
+.fb-dchip{font:800 12px var(--font-ui);padding:3px 10px;border-radius:999px;}
+.fb-dchip.ok{background:var(--tint-good);color:var(--good-text);}
+.fb-dchip.no{background:var(--tint-amber);color:var(--amber-text);}
+.fb-keys p{margin:8px 0 0;}
+.fb-qpick{margin-top:8px;}
+
+/* Tool Studio arrangement */
+.ls-root .fb-ls-stage,.ls-root .fb-ls-qstage{flex:1;min-height:0;display:flex;flex-direction:column;}
+.ls-root .fb-ls-dock .bt-cue{display:none;}
+.ls-root .fb-ls-dock .fb-pick .bt-ctl > label{font:800 var(--ls-s) var(--font-ui);color:var(--muted);}
+@media (max-width:420px){
+  /* the motion is in the caption; the stage keeps its height for the picture */
+  .ls-pill:has(.fb-pill-st){display:none;}
+  .ls-root .fb-ls-dock .bt-slider-row{gap:4px;}
+  .ls-root .fb-ls-dock .bt-out{min-width:6.5ch;font-size:13px;}
+}

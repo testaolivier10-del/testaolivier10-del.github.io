@@ -1,0 +1,138 @@
+{
+ "id": "frq-u1-stopping-distance",
+ "type": "mr",
+ "points": 10,
+ "title": "How far does a car need to stop?",
+ "units": [
+  "unit-1"
+ ],
+ "topics": [
+  "motion-representations",
+  "motion-quantities"
+ ],
+ "practices": [
+  "1.C",
+  "2.A",
+  "2.B",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "setup",
+  "title": "A driver brakes for a hazard",
+  "text": "<p>A car moves along a straight, level road at a constant speed v₀. At time t = 0 the driver sees a hazard ahead. For a reaction time t<sub>r</sub> the car keeps moving at v₀; then the driver brakes, and the car slows with a constant acceleration of magnitude a until it stops. The total stopping distance D is measured from where the car is at t = 0 to where it stops. Take the direction of motion as positive.</p>"
+ },
+ "graphSpec": {
+  "type": "line",
+  "x": {
+   "label": "Time",
+   "unit": "s"
+  },
+  "y": {
+   "label": "Velocity",
+   "unit": "m/s"
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 3,
+   "space": "graph",
+   "prompt": "<b>Sketch</b> a graph of the car's velocity as a function of time from t = 0 until it stops. Label the times t<sub>r</sub> and the time t<sub>s</sub> when the car stops, and the velocity v₀.",
+   "rubric": [
+    {
+     "point": "A horizontal segment at v₀ from t = 0 to t = t_r",
+     "accept": [
+      "flat line at v₀ until the reaction time ends",
+      "constant velocity labeled v₀ up to t_r"
+     ]
+    },
+    {
+     "point": "A straight line (constant slope) decreasing from v₀ to zero, starting at t_r",
+     "accept": [
+      "a straight, downward-sloping segment after t_r",
+      "not curved: the braking acceleration is constant"
+     ]
+    },
+    {
+     "point": "The graph reaches v = 0 at a labeled stopping time t_s, later than t_r, and does not go below zero",
+     "accept": [
+      "ends on the time axis at t_s = t_r + v₀/a",
+      "the line stops at zero; the car does not reverse"
+     ]
+    }
+   ],
+   "sample": "The graph is flat at v = v₀ from t = 0 to t = t_r (the car moves at a constant velocity while the driver reacts). At t_r it becomes a straight line sloping down, with slope −a, and reaches v = 0 at t_s = t_r + v₀/a. It ends there on the time axis."
+  },
+  {
+   "label": "b",
+   "points": 3,
+   "prompt": "<b>Derive</b> an expression for the total stopping distance D in terms of v₀, t<sub>r</sub>, a and physical constants, as appropriate. Begin your derivation by writing a fundamental equation or by naming what a feature of your graph represents.",
+   "rubric": [
+    {
+     "point": "Starts from a correct principle: the area under the v-t graph is the displacement, or a constant-acceleration equation such as v² = v₀² + 2aΔx",
+     "accept": [
+      "states that displacement equals the area under the velocity-time graph",
+      "writes a kinematic equation correctly"
+     ]
+    },
+    {
+     "point": "Reaction distance v₀t_r (rectangle under the flat segment or Δx = vt at constant velocity)",
+     "accept": [
+      "d₁ = v₀ t_r"
+     ]
+    },
+    {
+     "point": "Braking distance v₀²/(2a) (triangle area ½ × v₀ × v₀/a, or from 0 = v₀² − 2aΔx), added to give D = v₀t_r + v₀²/(2a)",
+     "accept": [
+      "D = v₀t_r + v₀²/(2a)",
+      "an equivalent expression in the given quantities"
+     ]
+    }
+   ],
+   "sample": "The displacement is the area under the v-t graph. During the reaction time the region is a rectangle: d₁ = v₀t_r. During braking it is a triangle with height v₀ and base v₀/a (from 0 = v₀ − at): d₂ = ½ × v₀ × (v₀/a) = v₀²/(2a). The same d₂ follows from v² = v₀² + 2(−a)Δx with v = 0. So D = v₀t_r + v₀²/(2a)."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Calculate</b> the stopping distance for v₀ = 24 m/s, t<sub>r</sub> = 0.75 s and a = 6.0 m/s².",
+   "rubric": [
+    {
+     "point": "Correct substitution into the expression from part (b), with units",
+     "accept": [
+      "D = (24 m/s)(0.75 s) + (24 m/s)²/(2 × 6.0 m/s²)"
+     ]
+    },
+    {
+     "point": "D = 66 m, with a unit (63 m to 69 m accepted for rounding of intermediate steps)",
+     "accept": [
+      "66 m",
+      "about 66 m"
+     ]
+    }
+   ],
+   "sample": "D = (24 m/s)(0.75 s) + (24 m/s)² ÷ (2 × 6.0 m/s²) = 18 m + 48 m = 66 m."
+  },
+  {
+   "label": "d",
+   "points": 2,
+   "prompt": "A student claims: \"If the car were going twice as fast, it would need twice the stopping distance.\" Do you agree or disagree? <b>Justify</b> your answer using your expression from part (b).",
+   "rubric": [
+    {
+     "point": "Disagrees: the stopping distance more than doubles",
+     "accept": [
+      "D becomes more than twice as large",
+      "the claim is wrong; it increases by more than a factor of 2"
+     ]
+    },
+    {
+     "point": "Justifies with functional dependence from part (b): the reaction term v₀t_r doubles (∝ v₀) while the braking term v₀²/(2a) becomes 4 times as large (∝ v₀²), so the sum grows by a factor between 2 and 4",
+     "accept": [
+      "the v₀² term quadruples",
+      "numerically 66 m becomes 230 m, about 3.5 times"
+     ]
+    }
+   ],
+   "sample": "Disagree. In D = v₀t_r + v₀²/(2a), the reaction distance is proportional to v₀, so it doubles, but the braking distance is proportional to v₀², so it becomes 2² = 4 times as large. The total therefore grows by more than a factor of 2 (and less than 4). With the numbers from part (c), 66 m becomes 36 m + 192 m = 228 m, about 3.5 times as far."
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "rolling-race": {
+  "file": "figures/rolling-race.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 420,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A ramp of height h with a solid sphere, a solid disk and a hoop at the top, released from rest to roll without slipping. A table gives each shape’s rotational inertia (sphere two fifths MR², disk ½MR², hoop MR²), its finishing place (sphere first, disk second, hoop third) and a bar showing how its kinetic energy at the bottom splits between moving along (translation) and spinning (rotation): sphere 71% and 29%, disk 67% and 33%, hoop 50% and 50%. Energy conservation Mgh = ½Mv² + ½Iω² with v = Rω gives v = √(2gh/(1 + I/MR²)); mass and radius cancel, so only the shape decides the order."
+ }
+}

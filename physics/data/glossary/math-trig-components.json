@@ -1,0 +1,17 @@
+{
+ "right-triangle": {
+  "def": "A triangle with one 90° angle. Its longest side, opposite the right angle, is the hypotenuse; the Pythagorean theorem says hypotenuse² = leg² + leg²."
+ },
+ "sine-cosine": {
+  "def": "For an angle θ in a right triangle: sin θ = opposite/hypotenuse, cos θ = adjacent/hypotenuse, tan θ = opposite/adjacent (SOH CAH TOA)."
+ },
+ "degree-mode": {
+  "def": "The calculator setting that reads angles in degrees. Physics 1 angles are in degrees; in any other mode, sin and cos of a degree value come out wrong."
+ },
+ "vector-components": {
+  "def": "The parts of a vector along perpendicular axes: for magnitude A at angle θ from the x-axis, the x-component is A cos θ and the y-component is A sin θ. The vector is the sum of its components."
+ },
+ "vector-addition-2d": {
+  "def": "Adding vectors by drawing each one starting at the tip of the one before; the resultant runs from the first tail to the last tip. In practice, add the x-components and the y-components separately."
+ }
+}

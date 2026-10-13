@@ -1,0 +1,419 @@
+{
+  "about": "Exam-only questions for the two fixed practice exams (docs/apphys-architecture.md, \"Practice exams\"). Ids phys-exam-<form>-<nn>; stimuli exam-<form>-s<n>. They count in the exam score only and never appear in practice, review or on a free page. Every keyed number is recomputed in scripts/lib/apphys-exams.mjs (EXAM_NUMBERS).",
+  "stimuli": {
+    "exam-1-s1": {
+      "kind": "setup",
+      "title": "A spring launcher and a ramp",
+      "text": "<p>A 0.40 kg block is pushed against a horizontal spring (k = 250 N/m) on a level, frictionless surface, compressing the spring by 0.12 m. The block is released from rest, leaves the spring, and slides up a frictionless ramp until it stops for an instant. Take the block, the spring and Earth as the system. Use g = 9.8 m/s².</p>"
+    },
+    "exam-1-s2": {
+      "kind": "diagram",
+      "title": "Water in a narrowing pipe",
+      "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 460 190\" role=\"img\" aria-label=\"A horizontal pipe full of water. The wide section on the left has area 1.2 × 10⁻³ m² and the water moves right at 1.5 m/s; the pipe then narrows to a section on the right with area 4.0 × 10⁻⁴ m².\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"460\" height=\"190\" fill=\"#FFFFFF\"/><path d=\"M20,40 L200,40 L260,75 L440,75 L440,115 L260,115 L200,150 L20,150 Z\" fill=\"#D7EBF4\" stroke=\"#1F2A28\" stroke-width=\"3\"/><line x1=\"60\" y1=\"95\" x2=\"120\" y2=\"95\" stroke=\"#B07A00\" stroke-width=\"2.5\"/><polygon points=\"129,95 120,100 120,90\" fill=\"#B07A00\"/><text x=\"62\" y=\"84\" font-size=\"14\" fill=\"#B07A00\" font-weight=\"bold\">1.5 m/s</text><text x=\"40\" y=\"172\" font-size=\"13\" fill=\"#1F2A28\">wide: A₁ = 1.2 × 10⁻³ m²</text><text x=\"270\" y=\"140\" font-size=\"13\" fill=\"#1F2A28\">narrow: A₂ = 4.0 × 10⁻⁴ m²</text><text x=\"300\" y=\"64\" font-size=\"13\" fill=\"#5A6268\">flow →</text></svg><p>The pipe is horizontal and completely full. Water is an ideal fluid with density 1000 kg/m³.</p>"
+    },
+    "exam-2-s1": {
+      "kind": "graph",
+      "title": "A cart pushed by a changing force",
+      "text": "<p>A 2.0 kg cart starts at rest at x = 0 on a level, frictionless track. A force sensor records the horizontal force pushing it, which points along the motion the whole time. The graph shows that force against the cart's position.</p>",
+      "chart": { "type": "line", "x": { "label": "Position", "unit": "m", "min": 0, "max": 4, "step": 1 }, "y": { "label": "Force", "unit": "N", "min": 0, "max": 8, "step": 2 }, "series": [ { "name": "Force on the cart", "points": [[0, 6], [1, 6], [2, 6], [3, 3], [4, 0]] } ] }
+    },
+    "exam-2-s2": {
+      "kind": "table",
+      "title": "Two carts collide",
+      "text": "<p>Cart A rolls along a level, low-friction track toward cart B, which is at rest. The carts collide and do not stick. Motion sensors record each cart's velocity just before and just after the collision. Right is positive.</p>",
+      "table": { "caption": "Collision data", "cols": ["Cart", "Mass (kg)", "Velocity before (m/s)", "Velocity after (m/s)"], "rows": [["A", "0.50", "+0.80", "?"], ["B", "0.30", "0", "+0.75"]] }
+    }
+  },
+  "items": [
+    {
+      "id": "phys-exam-1-01", "type": "single", "unit": "unit-1", "topic": "motion-representations", "practice": "2.B", "level": "apply", "diff": 2,
+      "q": "A ball is thrown straight up at 14.7 m/s and caught at the same height it left the hand. Air resistance is negligible. Use g = 9.8 m/s². How long is the ball in the air?",
+      "options": ["3.0 s", "1.5 s", "0.67 s", "6.0 s"],
+      "correct": 0,
+      "why": {
+        "correct": "Take up as positive: v = v₀ − gt. At the top v = 0, so t_up = 14.7 / 9.8 = 1.5 s. The way down takes the same time, so the whole flight is 2 × 1.5 s = 3.0 s.",
+        "options": [
+          "Right: the ball takes 1.5 s to stop at the top and another 1.5 s to fall back to the same height.",
+          "This is the time to reach the top, where the velocity is zero. The ball still has to fall back down to the hand.",
+          "This divides g by the speed (9.8 / 14.7) instead of the speed by g, so its unit is 1/s, not s.",
+          "This doubles the round trip. The time up and the time down are each 1.5 s, so the total is 3.0 s."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-1-02", "type": "single", "unit": "unit-2", "topic": "second-law", "practice": "2.B", "level": "apply", "diff": 2,
+      "q": "A 3.9 kg cart on a level, frictionless track is tied to a light string that runs over an ideal pulley to a hanging 1.0 kg block. The system is released from rest. Use g = 9.8 m/s². What is the size of the cart's acceleration?",
+      "options": ["2.0 m/s²", "2.5 m/s²", "9.8 m/s²", "0.26 m/s²"],
+      "correct": 0,
+      "why": {
+        "correct": "Take the cart, string and block as one system. The only unbalanced external force along the motion is the block's weight, (1.0 kg)(9.8 m/s²) = 9.8 N, and it accelerates the whole 4.9 kg: a = 9.8 N / 4.9 kg = 2.0 m/s².",
+        "options": [
+          "Right: the hanging weight pulls the whole 4.9 kg system, so a = m_block g / (m_cart + m_block).",
+          "This divides the hanging weight by the cart's mass alone. The same pull also has to accelerate the hanging block.",
+          "This is free fall. The string pulls up on the block, so the block falls with a smaller acceleration than g.",
+          "This divides 1.0 kg by 3.9 kg and leaves out g, so it is a ratio of masses, not an acceleration."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-1-03", "type": "single", "unit": "unit-2", "topic": "friction", "practice": "3.B", "level": "analyze", "diff": 3,
+      "q": "A 12 kg crate rests on a level floor. The coefficients of friction between the crate and the floor are μ_s = 0.50 and μ_k = 0.30. A worker pushes the crate horizontally with a 40 N force. Use g = 9.8 m/s². What friction force does the floor exert on the crate?",
+      "options": ["40 N, static friction", "59 N, static friction", "35 N, kinetic friction", "0 N, as the crate does not move"],
+      "correct": 0,
+      "why": {
+        "correct": "The normal force is mg = (12 kg)(9.8 m/s²) = 118 N, so static friction can be as large as μ_s F_N = 0.50 × 118 N = 59 N. The 40 N push is smaller than that, so the crate stays at rest, and static friction is exactly as large as it needs to be to balance the push: 40 N.",
+        "options": [
+          "Right: the crate stays at rest, so the net force is zero and static friction matches the 40 N push.",
+          "This is the largest static friction can be, μ_s F_N. Static friction only rises to that value when the push reaches it.",
+          "Kinetic friction acts only on a sliding crate. A 40 N push is less than the 59 N needed to start this crate sliding.",
+          "The crate is at rest because a friction force balances the push. With no friction, the 40 N push would accelerate it."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-1-04", "type": "single", "unit": "unit-3", "topic": "potential-energy", "practice": "2.B", "level": "apply", "diff": 1, "stimulus": "exam-1-s1",
+      "q": "How much elastic potential energy is stored in the spring just before the block is released?",
+      "options": ["1.8 J", "3.6 J", "15 J", "30 J"],
+      "correct": 0,
+      "why": {
+        "correct": "U_s = ½k(Δx)² = ½(250 N/m)(0.12 m)² = 1.8 J.",
+        "options": [
+          "Right: half of k times the compression squared.",
+          "This leaves out the ½ in U_s = ½k(Δx)².",
+          "This uses ½kΔx without squaring the compression, which gives newton-meters of the wrong size.",
+          "This is kΔx, the spring force in newtons, not an energy."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-1-05", "type": "single", "unit": "unit-3", "topic": "energy-conservation", "practice": "2.B", "level": "apply", "diff": 2, "stimulus": "exam-1-s1",
+      "q": "What is the block's speed just after it leaves the spring?",
+      "options": ["3.0 m/s", "4.2 m/s", "2.1 m/s", "9.0 m/s"],
+      "correct": 0,
+      "why": {
+        "correct": "No friction and no external work, so the system's energy is constant: all 1.8 J of spring energy becomes kinetic energy. ½(0.40 kg)v² = 1.8 J gives v² = 9.0 m²/s², so v = 3.0 m/s.",
+        "options": [
+          "Right: the spring's 1.8 J all becomes the block's kinetic energy on the level surface.",
+          "This uses 3.6 J, the spring energy without its ½, so the speed comes out √2 times too large.",
+          "This sets mv² (no ½) equal to 1.8 J, so the speed comes out √2 times too small.",
+          "This is v², 9.0 m²/s². Take the square root to get the speed."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-1-06", "type": "single", "unit": "unit-3", "topic": "energy-conservation", "practice": "2.B", "level": "apply", "diff": 2, "stimulus": "exam-1-s1",
+      "q": "How high above the level surface does the block rise on the ramp?",
+      "options": ["0.46 m", "0.92 m", "4.5 m", "0.18 m"],
+      "correct": 0,
+      "why": {
+        "correct": "At the highest point the block is at rest for an instant, so all 1.8 J is gravitational potential energy: mgh = 1.8 J, h = 1.8 J / ((0.40 kg)(9.8 m/s²)) = 0.46 m.",
+        "options": [
+          "Right: the spring's energy all becomes U_g = mgh at the top.",
+          "This is v²/g. Setting ½mv² = mgh gives h = v²/(2g), half of this.",
+          "This divides the energy by the mass only. Dividing by mg gives a height in meters.",
+          "This divides the energy by g only. The block's mass is also part of U_g = mgh."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-1-07", "type": "single", "unit": "unit-3", "topic": "energy-conservation", "practice": "2.D", "level": "analyze", "diff": 2, "stimulus": "exam-1-s1",
+      "q": "The experiment is repeated with the spring compressed by 0.24 m instead. How does the height the block reaches compare with before?",
+      "options": ["4 times as high", "2 times as high", "√2 times as high", "The same height"],
+      "correct": 0,
+      "why": {
+        "correct": "The height is set by mgh = ½k(Δx)², so h = k(Δx)²/(2mg) is proportional to (Δx)². Doubling the compression makes the stored energy, and so the height, 2² = 4 times as large.",
+        "options": [
+          "Right: h is proportional to the compression squared.",
+          "This treats the stored energy as proportional to the compression. U_s depends on (Δx)².",
+          "This would fit a height that grows as √Δx. The height is set by the stored energy, which goes as (Δx)², so it is 4 times as high (the launch speed doubles).",
+          "The height depends on the energy stored, which grows when the spring is compressed more."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-1-08", "type": "single", "unit": "unit-4", "topic": "impulse", "practice": "2.B", "level": "analyze", "diff": 3,
+      "q": "A 0.50 kg ball moving at 6.0 m/s hits a wall head-on and bounces straight back at 4.0 m/s. It is in contact with the wall for 0.020 s. What is the size of the average force of the wall on the ball?",
+      "options": ["250 N", "50 N", "150 N", "5.0 N"],
+      "correct": 0,
+      "why": {
+        "correct": "Take the rebound direction as positive. Δp = m(v_f − v_i) = (0.50 kg)(4.0 m/s − (−6.0 m/s)) = 5.0 kg·m/s. By the impulse-momentum theorem, F_avg = Δp/Δt = 5.0 kg·m/s / 0.020 s = 250 N.",
+        "options": [
+          "Right: the velocity reverses, so its change is 10.0 m/s, and F = mΔv/Δt.",
+          "This subtracts the speeds (6.0 − 4.0). The velocity reverses direction, so the change is 4.0 − (−6.0) = 10.0 m/s.",
+          "This uses only the stopping part (6.0 m/s). The wall also pushes the ball back out at 4.0 m/s.",
+          "This is the impulse, 5.0 N·s. Divide by the contact time to get the average force."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-1-09", "type": "single", "unit": "unit-5", "topic": "rotational-equilibrium", "practice": "2.B", "level": "apply", "diff": 2,
+      "q": "A uniform 5.0 m plank is balanced on a pivot at its center. A 30 kg child sits 1.5 m to the left of the pivot. Where must a 45 kg child sit for the plank to stay level?",
+      "options": ["1.0 m right of the pivot", "2.3 m right of the pivot", "1.5 m right of the pivot", "1.0 m left of the pivot"],
+      "correct": 0,
+      "why": {
+        "correct": "The plank's own weight acts at the pivot, so it has no torque about it. Balance the torques: (30 kg)g(1.5 m) = (45 kg)g·x, so x = 45/45 = 1.0 m, on the right so its torque is opposite.",
+        "options": [
+          "Right: equal and opposite torques, m₁r₁ = m₂r₂.",
+          "This swaps the masses (45 × 1.5 / 30). The heavier child needs the shorter lever arm.",
+          "Equal distances balance only equal masses. The heavier child's torque would be larger.",
+          "On the same side, both torques turn the plank the same way, so it cannot balance."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-1-10", "type": "single", "unit": "unit-6", "topic": "angular-momentum-conservation", "practice": "2.B", "level": "analyze", "diff": 3,
+      "q": "A turntable with rotational inertia 0.020 kg·m² spins freely at 3.0 rad/s. A 0.10 kg lump of clay is dropped straight down onto it and sticks 0.20 m from the axis. What is the turntable's angular velocity just after?",
+      "options": ["2.5 rad/s", "3.0 rad/s", "3.6 rad/s", "2.7 rad/s"],
+      "correct": 0,
+      "why": {
+        "correct": "The net external torque on the turntable-clay system about the axle is zero, so its angular momentum stays the same. The clay adds I = mr² = (0.10 kg)(0.20 m)² = 0.0040 kg·m². (0.020)(3.0) = (0.024)ω, so ω = 2.5 rad/s.",
+        "options": [
+          "Right: Iω before equals Iω after, with the clay's mr² added.",
+          "The clay increases the rotational inertia, so with the same angular momentum the turntable turns more slowly.",
+          "This multiplies by the ratio of inertias the wrong way up. A larger I means a smaller ω.",
+          "This keeps rotational kinetic energy constant. The clay sticks, like a perfectly inelastic collision, so kinetic energy is not conserved; angular momentum is."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-1-11", "type": "single", "unit": "unit-8", "topic": "fluid-flow", "practice": "2.B", "level": "apply", "diff": 1, "stimulus": "exam-1-s2",
+      "q": "What is the speed of the water in the narrow section?",
+      "options": ["4.5 m/s", "0.50 m/s", "13.5 m/s", "1.5 m/s"],
+      "correct": 0,
+      "why": {
+        "correct": "By continuity, A₁v₁ = A₂v₂: v₂ = (1.2 × 10⁻³ m²)(1.5 m/s) / (4.0 × 10⁻⁴ m²) = 4.5 m/s.",
+        "options": [
+          "Right: the area is 3 times smaller, so the water moves 3 times faster.",
+          "This multiplies by the area ratio the wrong way up. Water speeds up in a narrower section.",
+          "This multiplies by the square of the area ratio. The speed is inversely proportional to the area itself.",
+          "The same volume passes each section per second, so the speed changes where the area changes."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-1-12", "type": "single", "unit": "unit-8", "topic": "fluid-flow", "practice": "2.B", "level": "analyze", "diff": 3, "stimulus": "exam-1-s2",
+      "q": "By how much is the pressure in the wide section greater than the pressure in the narrow section?",
+      "options": ["9.0 × 10³ Pa", "1.8 × 10⁴ Pa", "4.5 × 10³ Pa", "1.0 × 10⁴ Pa"],
+      "correct": 0,
+      "why": {
+        "correct": "The pipe is horizontal, so Bernoulli's equation gives P₁ − P₂ = ½ρ(v₂² − v₁²) = ½(1000 kg/m³)((4.5 m/s)² − (1.5 m/s)²) = 9.0 × 10³ Pa.",
+        "options": [
+          "Right: the pressure drop pays for the increase in ½ρv².",
+          "This leaves out the ½ in ½ρv².",
+          "This squares the difference of the speeds, (v₂ − v₁)², instead of taking the difference of the squares, v₂² − v₁².",
+          "This uses only ½ρv₂² and ignores the kinetic energy per volume the water already has in the wide section."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-1-13", "type": "single", "unit": "unit-8", "topic": "fluid-flow", "practice": "3.C", "level": "analyze", "diff": 2, "stimulus": "exam-1-s2",
+      "q": "Which is the best explanation of why the pressure is greater in the wide section?",
+      "options": [
+        "Water speeds up into the narrow section, so the net force on it from pressure points toward the narrow end",
+        "The water is squeezed in the narrow section, so the pressure there is greater",
+        "The wide section holds more water, so the water above any point is heavier there",
+        "Water slows down as it enters the narrow section, so the pressure behind it builds up"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A parcel of water speeds up as it moves from the wide to the narrow section, so the net force on it points in the direction of flow. In a horizontal pipe that force comes from the pressure difference, so the pressure behind it (wide side) is greater than ahead of it (narrow side).",
+        "options": [
+          "Right: an acceleration in the direction of flow needs a larger pressure behind than ahead.",
+          "An ideal fluid is incompressible, and the faster water in the narrow section is at the lower pressure.",
+          "The pipe is horizontal and full, so the depth of water is the same at both sections; the difference comes from the speed.",
+          "Continuity says the water speeds up, not slows down, as the area decreases."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-2-01", "type": "single", "unit": "unit-1", "topic": "motion-2d", "practice": "2.B", "level": "apply", "diff": 2,
+      "q": "A ball rolls off the edge of a horizontal table 1.2 m high at 3.0 m/s. Air resistance is negligible. Use g = 9.8 m/s². How far from the bottom of the table's edge does the ball land?",
+      "options": ["1.5 m", "3.6 m", "1.0 m", "0.49 m"],
+      "correct": 0,
+      "why": {
+        "correct": "The vertical motion starts from zero vertical velocity: 1.2 m = ½(9.8 m/s²)t², so t = 0.49 s. The horizontal velocity stays 3.0 m/s, so x = (3.0 m/s)(0.49 s) = 1.5 m.",
+        "options": [
+          "Right: the fall time comes from the height alone, and the horizontal distance is v_x times that time.",
+          "This multiplies the speed by the height, which has the unit m²/s, not m.",
+          "This uses t = √(h/g), leaving out the 2 in h = ½gt².",
+          "This is the fall time in seconds, not a distance."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-2-02", "type": "single", "unit": "unit-2", "topic": "circular-motion", "practice": "2.B", "level": "apply", "diff": 2,
+      "q": "A 1200 kg car rounds a flat, level curve of radius 40 m at a steady 12 m/s. What is the size of the friction force the road exerts on the car toward the center of the curve?",
+      "options": ["4.3 × 10³ N", "3.6 × 10² N", "1.2 × 10⁴ N", "0 N, as the speed is constant"],
+      "correct": 0,
+      "why": {
+        "correct": "On a flat curve, static friction from the road is the only horizontal force, so it supplies the centripetal net force: F = mv²/r = (1200 kg)(12 m/s)² / 40 m = 4.3 × 10³ N.",
+        "options": [
+          "Right: friction is the real force that points to the center, with size mv²/r.",
+          "This uses mv/r, leaving out the square on the speed.",
+          "This is the car's weight, mg. The friction needed depends on the speed and the radius, not on g.",
+          "The speed is constant but the direction of the velocity changes, so the car accelerates toward the center and needs a net force."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-2-03", "type": "single", "unit": "unit-3", "topic": "work-by-forces", "practice": "2.B", "level": "apply", "diff": 2, "stimulus": "exam-2-s1",
+      "q": "How much work does the force do on the cart from x = 0 to x = 4.0 m?",
+      "options": ["18 J", "24 J", "12 J", "6.0 J"],
+      "correct": 0,
+      "why": {
+        "correct": "The work is the area under the force-position graph: a rectangle (6 N)(2.0 m) = 12 J plus a triangle ½(6 N)(2.0 m) = 6.0 J, so 18 J.",
+        "options": [
+          "Right: the rectangle from 0 to 2 m plus the triangle from 2 to 4 m.",
+          "This multiplies 6 N by 4.0 m as if the force stayed 6 N. It falls to zero after 2.0 m.",
+          "This is the rectangle only. The force still does work from 2.0 m to 4.0 m while it shrinks.",
+          "This is the triangle only, the work from 2.0 m to 4.0 m."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-2-04", "type": "single", "unit": "unit-3", "topic": "work-by-forces", "practice": "2.B", "level": "analyze", "diff": 2, "stimulus": "exam-2-s1",
+      "q": "What is the cart's speed at x = 4.0 m?",
+      "options": ["4.2 m/s", "3.0 m/s", "18 m/s", "4.9 m/s"],
+      "correct": 0,
+      "why": {
+        "correct": "By the work-energy theorem, the net work equals the change in kinetic energy. The track is frictionless and level, so 18 J = ½(2.0 kg)v², v² = 18 m²/s² and v = 4.2 m/s.",
+        "options": [
+          "Right: all 18 J of work becomes kinetic energy, starting from rest.",
+          "This divides 18 J by the full mass (2.0 kg) without the ½, which gives v² = 9.",
+          "This is v², 18 m²/s². Take the square root to get the speed.",
+          "This uses 24 J, as if the force stayed 6 N the whole 4.0 m."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-2-05", "type": "single", "unit": "unit-3", "topic": "work-by-forces", "practice": "3.C", "level": "analyze", "diff": 2, "stimulus": "exam-2-s1",
+      "q": "Where between x = 0 and x = 4.0 m is the cart's speed greatest?",
+      "options": [
+        "At x = 4.0 m, as the force still does positive work until then",
+        "At x = 2.0 m, where the force starts to decrease",
+        "At x = 0, where the force is largest",
+        "It is the same from x = 2.0 m on, as the force decreases"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The force points along the motion everywhere up to 4.0 m, so it does positive work on every stretch and the kinetic energy keeps growing. A smaller force only means the cart speeds up more slowly.",
+        "options": [
+          "Right: positive work on every stretch, so the speed rises the whole way.",
+          "A decreasing force still points along the motion, so the cart keeps speeding up, just more slowly.",
+          "A large force gives a large acceleration, not a large speed. The cart starts at rest at x = 0.",
+          "A force that is smaller but not zero still does positive work, so the speed keeps rising."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-2-06", "type": "single", "unit": "unit-4", "topic": "collisions", "practice": "2.B", "level": "apply", "diff": 2, "stimulus": "exam-2-s2",
+      "q": "What is cart A's velocity just after the collision?",
+      "options": ["+0.35 m/s", "−0.35 m/s", "+0.05 m/s", "+0.58 m/s"],
+      "correct": 0,
+      "why": {
+        "correct": "The net external force on the two-cart system is negligible during the collision, so its momentum is the same before and after: (0.50)(0.80) = (0.50)v_A + (0.30)(0.75). So 0.40 = 0.50v_A + 0.225 and v_A = +0.35 m/s.",
+        "options": [
+          "Right: total momentum before (0.40 kg·m/s) equals total momentum after.",
+          "This has the right size but the wrong sign. With 0.225 kg·m/s given to B, A keeps 0.175 kg·m/s to the right.",
+          "This subtracts velocities (0.80 − 0.75). Momentum, mass times velocity, is what is conserved.",
+          "This finds A's momentum after (0.175 kg·m/s) correctly but divides it by cart B's mass instead of cart A's."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-2-07", "type": "single", "unit": "unit-4", "topic": "collisions", "practice": "2.B", "level": "analyze", "diff": 3, "stimulus": "exam-2-s2",
+      "q": "How much of the carts' kinetic energy is converted to other forms in the collision?",
+      "options": ["0.045 J", "0 J", "0.16 J", "0.12 J"],
+      "correct": 0,
+      "why": {
+        "correct": "Before: ½(0.50)(0.80)² = 0.16 J. After: ½(0.50)(0.35)² + ½(0.30)(0.75)² = 0.031 J + 0.084 J = 0.115 J. The difference, 0.045 J, becomes thermal energy and sound.",
+        "options": [
+          "Right: the total kinetic energy falls from 0.16 J to 0.115 J.",
+          "Zero would make the collision elastic. The kinetic energies after add up to less than before.",
+          "This is the whole kinetic energy before the collision. Both carts still move afterward.",
+          "This is the kinetic energy left after the collision, not the amount converted."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-2-08", "type": "single", "unit": "unit-4", "topic": "collisions", "practice": "3.C", "level": "analyze", "diff": 2, "stimulus": "exam-2-s2",
+      "q": "Which statement about this collision is correct?",
+      "options": [
+        "It is inelastic: momentum is conserved, but kinetic energy decreases",
+        "It is elastic, because the carts do not stick together",
+        "It is elastic, because momentum is conserved",
+        "It is inelastic, because the momentum of the carts decreases"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Momentum is conserved in every collision where the net external force is negligible. What makes a collision elastic or inelastic is the kinetic energy, and here it falls from 0.16 J to 0.115 J, so the collision is inelastic even though the carts bounce apart.",
+        "options": [
+          "Right: kinetic energy is lost, so the collision is inelastic; momentum is conserved either way.",
+          "Not sticking does not make a collision elastic. Only an unchanged total kinetic energy does.",
+          "Momentum is conserved in elastic and inelastic collisions alike, so it cannot tell them apart.",
+          "The total momentum is 0.40 kg·m/s before and after. The kinetic energy is what decreases."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-2-09", "type": "single", "unit": "unit-5", "topic": "rotational-kinematics", "practice": "2.B", "level": "apply", "diff": 1,
+      "q": "A fan blade starts from rest and speeds up with constant angular acceleration to 30 rad/s in 5.0 s. Through what angle does it turn in that time?",
+      "options": ["75 rad", "150 rad", "6.0 rad", "30 rad"],
+      "correct": 0,
+      "why": {
+        "correct": "With constant angular acceleration, the average angular velocity is (0 + 30 rad/s)/2 = 15 rad/s, so Δθ = (15 rad/s)(5.0 s) = 75 rad.",
+        "options": [
+          "Right: average angular velocity times the time.",
+          "This multiplies the final angular velocity by the time, as if the blade turned at 30 rad/s from the start.",
+          "This is the angular acceleration, 30/5.0 rad/s², not an angle.",
+          "This is the final angular velocity, in rad/s, not the angle turned."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-2-10", "type": "single", "unit": "unit-5", "topic": "rotational-second-law", "practice": "2.B", "level": "apply", "diff": 2,
+      "q": "A net torque of 0.50 N·m acts on a wheel with rotational inertia 0.25 kg·m², which starts from rest. What is its angular velocity after 3.0 s?",
+      "options": ["6.0 rad/s", "2.0 rad/s", "0.38 rad/s", "1.5 rad/s"],
+      "correct": 0,
+      "why": {
+        "correct": "Newton's second law in rotational form: α = τ/I = 0.50 / 0.25 = 2.0 rad/s². Then ω = αt = (2.0 rad/s²)(3.0 s) = 6.0 rad/s.",
+        "options": [
+          "Right: find α from τ = Iα, then ω = ω₀ + αt.",
+          "This is the angular acceleration, in rad/s². It still has to act for 3.0 s.",
+          "This multiplies the torque by the inertia instead of dividing by it, then by the time.",
+          "This multiplies the torque by the time, which is the angular impulse, not ω."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-2-11", "type": "single", "unit": "unit-8", "topic": "fluid-pressure", "practice": "2.B", "level": "apply", "diff": 2,
+      "q": "A diver descends in a freshwater lake (density 1000 kg/m³). Use g = 9.8 m/s². At what depth is the gauge pressure 1.00 × 10⁵ Pa?",
+      "options": ["10.2 m", "1.02 m", "102 m", "0 m, at the surface"],
+      "correct": 0,
+      "why": {
+        "correct": "Gauge pressure is the pressure above atmospheric: P_gauge = ρgh, so h = (1.00 × 10⁵ Pa) / ((1000 kg/m³)(9.8 m/s²)) = 10.2 m.",
+        "options": [
+          "Right: P_gauge = ρgh solved for h.",
+          "This is 10 times too small; check the powers of ten in 10⁵ / (10³ × 9.8).",
+          "This is 10 times too large; check the powers of ten in 10⁵ / (10³ × 9.8).",
+          "At the surface the absolute pressure is about 1.0 × 10⁵ Pa, but the gauge pressure there is zero."
+        ]
+      }
+    },
+    {
+      "id": "phys-exam-2-12", "type": "single", "unit": "unit-8", "topic": "buoyancy", "practice": "2.C", "level": "analyze", "diff": 2,
+      "q": "A block of wood with density 600 kg/m³ floats at rest in fresh water (density 1000 kg/m³). What fraction of the block's volume is under water?",
+      "options": ["60%", "40%", "100%", "50%"],
+      "correct": 0,
+      "why": {
+        "correct": "Floating at rest, the buoyant force balances the block's weight: ρ_water V_under g = ρ_wood V g, so V_under / V = 600/1000 = 0.60, or 60%.",
+        "options": [
+          "Right: the fraction under water is the ratio of the densities.",
+          "This is the fraction above the water.",
+          "Then the buoyant force would be 1000/600 times the weight, so the block would rise.",
+          "Half under water fits only a block whose density is half the water's, 500 kg/m³."
+        ]
+      }
+    }
+  ]
+}

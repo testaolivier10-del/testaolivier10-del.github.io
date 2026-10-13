@@ -1,0 +1,152 @@
+{
+ "id": "frq-u4-sticky-blocks-ramp",
+ "type": "mr",
+ "points": 10,
+ "title": "Two blocks stick, then climb a ramp",
+ "units": [
+  "unit-4",
+  "unit-3"
+ ],
+ "topics": [
+  "collisions",
+  "momentum-conservation",
+  "energy-conservation"
+ ],
+ "practices": [
+  "1.C",
+  "2.A",
+  "2.B",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "diagram",
+  "title": "Two blocks stick, then climb a ramp",
+  "text": "<p>Block A (mass m) slides at speed v₀ toward block B (mass 2m), which is at rest on a level, frictionless floor. Velcro on the facing sides makes the blocks stick together when they collide. The pair then slides up a frictionless curved ramp and reaches a greatest height h above the floor. Air resistance is negligible.</p>",
+  "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 240\" role=\"img\" aria-label=\"Block A of mass m slides right at speed v zero toward block B of mass 2m at rest on a frictionless floor; to the right a frictionless curved ramp rises; the height h the pair reaches is unknown.\" style=\"max-width:100%;height:auto;background:#fff\"><rect width=\"660\" height=\"240\" fill=\"#FFFFFF\"/><path d=\"M20,200 L460,200 C540,200 580,170 630,70\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><path d=\"M20,200 L460,200 C540,200 580,170 630,70 L630,220 L20,220 Z\" fill=\"#EFEADF\"/><rect x=\"80\" y=\"160\" width=\"50\" height=\"40\" fill=\"#9CC3E0\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"105\" y=\"185\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">A</text><text x=\"105\" y=\"150\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">mass m</text><line x1=\"136\" y1=\"180\" x2=\"195.0\" y2=\"180.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"206.0,180.0 195.0,184.9 195.0,175.1\" fill=\"#B07A00\"/><text x=\"214.0\" y=\"185.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#B07A00\" text-anchor=\"start\" font-weight=\"bold\">v₀</text><rect x=\"290\" y=\"148\" width=\"80\" height=\"52\" fill=\"#D9B27C\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"330\" y=\"179\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"15\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">B</text><text x=\"330\" y=\"138\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">mass 2m, at rest</text><text x=\"20\" y=\"24\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"start\">Level floor and curved ramp, both frictionless. Velcro on the facing sides of A and B.</text><line x1=\"600\" y1=\"108\" x2=\"600\" y2=\"200\" stroke=\"#8A8F8C\" stroke-width=\"1\" stroke-dasharray=\"4 3\"/><text x=\"606\" y=\"160\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"start\" font-weight=\"bold\" font-style=\"italic\">h ?</text></svg>"
+ },
+ "graphSpec": {
+  "type": "line",
+  "x": {
+   "label": "Time",
+   "unit": "s"
+  },
+  "y": {
+   "label": "Momentum",
+   "unit": "kg·m/s"
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 3,
+   "space": "graph",
+   "prompt": "On the axes, <b>sketch</b> the momentum of block A and the momentum of the two-block system as functions of time, from shortly before the collision until shortly after it (before the pair reaches the ramp). Label each line. Take the initial direction of A's motion as positive.",
+   "rubric": [
+    {
+     "point": "The system's momentum is a single horizontal line at the same value before, during and after the collision.",
+     "accept": [
+      "flat line at mv₀ throughout",
+      "no jump or drop at the collision"
+     ]
+    },
+    {
+     "point": "A's momentum starts at the same value as the system's (mv₀) and decreases during the collision.",
+     "accept": [
+      "A's line starts on the system line and drops",
+      "A loses momentum at the collision"
+     ]
+    },
+    {
+     "point": "After the collision A's momentum is constant at a positive value one third of its initial value.",
+     "accept": [
+      "A levels off at mv₀/3",
+      "A's final momentum is positive and about a third of the start"
+     ]
+    }
+   ],
+   "sample": "The system line is flat at mv₀ the whole time. A's line starts at mv₀, drops steeply during the short collision, and levels off at mv₀/3 (A moves with the pair at v₀/3). B's momentum, if drawn, rises from 0 to 2mv₀/3, so the two always add to mv₀."
+  },
+  {
+   "label": "b",
+   "points": 2,
+   "prompt": "<b>Derive</b> an expression for the speed v_f of the blocks just after the collision, in terms of v₀. Begin your derivation by writing a fundamental physics principle or an equation from the reference information.",
+   "rubric": [
+    {
+     "point": "Starts from conservation of momentum for the two-block system: m v₀ + 2m(0) = (m + 2m)v_f.",
+     "accept": [
+      "p_before = p_after for A and B",
+      "mv₀ = 3mv_f"
+     ]
+    },
+    {
+     "point": "Correct answer v_f = v₀/3.",
+     "accept": [
+      "v_f = v₀/3",
+      "one third of v₀"
+     ]
+    }
+   ],
+   "sample": "The net external force on the A-B system is zero (the floor is frictionless and the vertical forces balance), so its momentum is constant: m v₀ + (2m)(0) = (3m) v_f, giving v_f = v₀/3."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Derive</b> an expression for h in terms of v₀ and physical constants, as appropriate.",
+   "rubric": [
+    {
+     "point": "Uses conservation of mechanical energy for the blocks-Earth system after the collision: ½(3m)v_f² = (3m)gh.",
+     "accept": [
+      "K at the bottom equals U_g at the top",
+      "½v_f² = gh"
+     ]
+    },
+    {
+     "point": "Correct answer h = v₀²/(18g), using v_f = v₀/3.",
+     "accept": [
+      "h = v₀²/(18g)",
+      "h = (v₀/3)²/(2g)"
+     ]
+    }
+   ],
+   "sample": "After the collision only gravity and the normal force act, and the ramp is frictionless, so the normal force does no work and K + U_g of the blocks-Earth system is constant: ½(3m)v_f² = (3m)gh. So h = v_f²/(2g) = (v₀/3)²/(2g) = v₀²/(18g)."
+  },
+  {
+   "label": "d",
+   "points": 1,
+   "prompt": "<b>Calculate</b> h for v₀ = 6.0 m/s. Use g = 9.8 m/s².",
+   "rubric": [
+    {
+     "point": "Correct value h = 0.20 m, with units (the same to two figures with g = 10 m/s²).",
+     "accept": [
+      "0.20 m",
+      "20 cm"
+     ]
+    }
+   ],
+   "sample": "h = (6.0 m/s)²/(18 × 9.8 m/s²) = 0.20 m."
+  },
+  {
+   "label": "e",
+   "points": 2,
+   "prompt": "A student says: \"Block A starts with kinetic energy ½mv₀², and the pair ends with gravitational potential energy 3mgh, so ½mv₀² = 3mgh and h = v₀²/(6g).\" Is the student correct? <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "Claims the student is not correct (the height is less than v₀²/(6g)).",
+     "accept": [
+      "no",
+      "the student overestimates h"
+     ]
+    },
+    {
+     "point": "Justifies: the collision is perfectly inelastic, so kinetic energy is not conserved in it (some becomes thermal energy and sound); only momentum is conserved through the collision, and energy conservation applies only after it.",
+     "accept": [
+      "sticking dissipates kinetic energy",
+      "energy is not conserved as mechanical energy during the collision",
+      "two-thirds of the kinetic energy is lost when the blocks stick"
+     ]
+    }
+   ],
+   "sample": "No. The blocks stick, so the collision is perfectly inelastic: the Velcro does negative work inside the system and two thirds of A's kinetic energy becomes thermal energy and sound. Mechanical energy is not constant from the start to the top. Momentum gives v_f = v₀/3 through the collision; only after it is K + U_g constant, which gives h = v₀²/(18g), one third of the student's value."
+  }
+ ]
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluids and Newton's Laws — AP® Physics 1 Notes | LevlPrep</title>
+<meta name="description" content="Lift a friend in a swimming pool and they feel light. Hang a stone from a spring scale and lower it into water, and the reading drops.">
+<link rel="canonical" href="https://levlprep.com/physics/notes/buoyancy.html">
+<meta property="og:title" content="Fluids and Newton's Laws — AP® Physics 1 Notes | LevlPrep">
+<meta property="og:description" content="Lift a friend in a swimming pool and they feel light. Hang a stone from a spring scale and lower it into water, and the reading drops.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/physics/notes/buoyancy.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/physics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/phys.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/physics/notes/buoyancy.html#reading",
+      "name": "Fluids and Newton's Laws",
+      "url": "https://levlprep.com/physics/notes/buoyancy.html",
+      "description": "Lift a friend in a swimming pool and they feel light. Hang a stone from a spring scale and lower it into water, and the reading drops.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "fluids and newton's laws physics 1 explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/physics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Physics 1",
+          "item": "https://levlprep.com/physics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Fluids",
+          "item": "https://levlprep.com/physics/units/unit-8.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Fluids and Newton's Laws: notes",
+          "item": "https://levlprep.com/physics/notes/buoyancy.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="phys" data-topic="buoyancy" data-unit="unit-8">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="phys-rail" aria-expanded="false">&#9776; Unit 8 contents</button>
+  <aside class="tb-rail phys-nav-ref bk-rail" id="phys-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-7.html"><span class="bk-toc-n">7</span>Oscillations</a>
+    <a class="bk-toc-chap" href="../units/unit-8.html"><span class="bk-toc-chap-n">8</span><span><b>Fluids</b><small>4 topics</small></span></a>
+    <div class="phys-toc-prog" data-toc-prog="unit-8"><div class="tb-progress-row"><span><b>0</b> of 4 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="density-fluids"><a href="density-fluids.html"><span class="bk-toc-n">8.1</span>Internal Structure and Density</a></li><li data-toc-t="fluid-pressure"><a href="fluid-pressure.html"><span class="bk-toc-n">8.2</span>Pressure</a></li><li class="current" data-toc-t="buoyancy"><a href="#main" aria-current="page"><span class="bk-toc-n">8.3</span>Fluids and Newton's Laws</a><div class="bk-toc-onpage"><p>On this page</p><a href="#where-the-buoyant-force-comes-from">Where the buoyant force comes from</a><a href="#archimedes-principle">Archimedes' principle</a><a href="#newton-s-laws-with-buoyancy">Newton's laws with buoyancy</a><a href="#floating">Floating</a></div></li><li data-toc-t="fluid-flow"><a href="fluid-flow.html"><span class="bk-toc-n">8.4</span>Fluids and Conservation Laws</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="phys-crumb phys-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Physics 1</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-8.html">Fluids</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Fluids and Newton's Laws: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/buoyancy.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 8 &middot; Topic 8.3 <span class="phys-beta phys-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Fluids and Newton's Laws</h1>
+      <p class="bk-meta phys-nav-ref"><span class="bk-small">5 min read &middot; free</span><span class="bk-chip" data-chip-topic="buoyancy">Not practiced</span></p>
+      <div class="bk-actions phys-share phys-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fphysics%2Fnotes%2Fbuoyancy.html&amp;title=Fluids%20and%20Newton's%20Laws%3A%20physics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/physics/notes/buoyancy.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="phys-prose bk-prose">
+<p>Lift a friend in a swimming pool and they feel light. Hang a stone from a spring scale and lower it into water, and the reading drops. The water is pushing up. This page explains where that push comes from, why it equals the <a class="gl" href="../notes/forces-fbd.html" data-c="weight">weight</a> of the water pushed aside, and how to use it with <a class="gl" href="../notes/forces-fbd.html" data-c="force">Newton</a>'s laws. The 2025 exam's last free-response question was on exactly this, so it is worth getting right.</p>
+
+<h2 id="where-the-buoyant-force-comes-from">Where the buoyant force comes from</h2>
+<p>Put a block under water. From the last topic, the <a class="gl" href="../notes/fluid-pressure.html" data-c="pressure">pressure</a> at any point in the water is P = P₀ + ρgh, so it grows with depth. The water pushes on every face of the block, perpendicular to that face:</p>
+<ul>
+<li>The pushes on the left and right faces are at matching depths, so they cancel.</li>
+<li>The push down on the top face comes from the pressure at the top's depth.</li>
+<li>The push up on the bottom face comes from the pressure at the bottom's depth, which is larger.</li>
+</ul>
+<p>So the water's pushes add up to a net upward force. That is the <b><span class="gl" tabindex="0" data-c="buoyant-force">buoyant force</span></b>, F<sub>b</sub>.</p>
+<figure id="fig-buoy"  class="phys-figure"><div class="phys-figimg" data-fig="buoyancy-forces"><img src="../figures/buoyancy-forces.svg" alt="A wooden block held under water by a string. Short pressure arrows push down on its top and longer ones push up on its bottom; side pushes cancel. Its free-body diagram: the buoyant force (water on block) up, longest; the gravitational force (Earth on block) and tension (string on block) down, together balancing it. F_b = ρ_fluid V_disp g." width="760" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Left: the water pushes up on the bottom harder than it pushes down on the top. Right: the block's free-body diagram. <span class="phys-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Now find its size. Let the block have height h and top and bottom area A. The pressure difference between bottom and top is ρ<sub><a class="gl" href="../notes/density-fluids.html" data-c="fluid">fluid</a></sub>gh, so</p>
+<p style="text-align:center">F<sub>b</sub> = (P<sub>bottom</sub> − P<sub>top</sub>)A = ρ<sub>fluid</sub>ghA = <b>ρ<sub>fluid</sub>V<sub>displaced</sub>g</b></p>
+<p>since hA is the block's volume, the volume of water it has pushed aside. Notice that the depth of the block cancels out: once an object is fully submerged, moving it deeper does not change its buoyant force.</p>
+
+<h2 id="archimedes-principle">Archimedes' principle</h2>
+<p>ρ<sub>fluid</sub>V<sub>displaced</sub> is the <a class="gl" href="../notes/systems-center-of-mass.html" data-c="mass">mass</a> of the fluid the object pushes aside, so ρ<sub>fluid</sub>V<sub>displaced</sub>g is that fluid's weight. This is <b><span class="gl" tabindex="0" data-c="archimedes">Archimedes' principle</span></b>: the buoyant force on an object equals the weight of the fluid it displaces.</p>
+<p>There is a neat way to see why it holds for any shape. Imagine a <b><span class="gl" tabindex="0" data-c="fluid-parcel">fluid parcel</span></b>, a portion of the water itself, with exactly the stone's shape, sitting in the lake. The parcel is at rest, so by <a class="gl" href="../notes/first-law.html" data-c="first-law">Newton's first law</a> the surrounding water pushes up on it with a force equal to its weight. Replace the parcel with the stone. The surrounding water pushes on the stone's surface exactly as it pushed on the parcel's, so the stone feels the same upward force: the weight of a stone-shaped parcel of water.</p>
+<p>Three things the buoyant force does <b>not</b> depend on: the object's <a class="gl" href="../notes/density-fluids.html" data-c="density">density</a>, the object's weight, and (once it is fully submerged) its depth. It depends on the fluid's density and the displaced volume.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A 2.0 kg stone of volume 8.0 × 10⁻⁴ m³ hangs from a spring scale, fully under water. Find the buoyant force and the scale reading. Use g = 9.8 m/s².</p>
+<p>Archimedes: F<sub>b</sub> = ρ<sub>w</sub>Vg = (1000 kg/m³)(8.0 × 10⁻⁴ m³)(9.8 m/s²) = 7.84 N ≈ <b>7.8 N</b>.</p>
+<p>Newton's first law on the stone (at rest), up positive: F<sub>T</sub> + F<sub>b</sub> − mg = 0.</p>
+<p>F<sub>T</sub> = mg − F<sub>b</sub> = (2.0 kg)(9.8 m/s²) − 7.84 N = 19.6 N − 7.84 N = <b>12 N</b>. The scale reads 12 N.</p>
+</div>
+
+<h2 id="newton-s-laws-with-buoyancy">Newton's laws with buoyancy</h2>
+<p>Treat the buoyant force as one more force on the <a class="gl" href="../notes/forces-fbd.html" data-c="free-body-diagram">free-body diagram</a>. Draw it <b>up</b>, from the object, labeled with its agent ("F<sub>b</sub>, water on block"), and keep the <a class="gl" href="../notes/gravitational-force.html" data-c="gravitational-force">gravitational force</a> as a <b>separate</b> arrow, down. Readers report students drawing only one of the two, or both in the same direction, or thinking gravity itself changes in water. It does not: mg is the same in air and in water.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Situation</th><th>Forces</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>Floating at rest</td><td>F<sub>b</sub> = mg</td><td>fraction submerged = ρ<sub>object</sub>/ρ<sub>fluid</sub></td></tr>
+<tr><td>Held under by a string</td><td>F<sub>b</sub> = mg + F<sub>T</sub></td><td>object less dense than fluid</td></tr>
+<tr><td>Hanging from a scale, submerged</td><td>F<sub>T</sub> + F<sub>b</sub> = mg</td><td>scale reads less than mg</td></tr>
+<tr><td>Resting on the bottom</td><td>F<sub>b</sub> + F<sub>N</sub> = mg</td><td>object denser than fluid</td></tr>
+<tr><td>Released under water</td><td>ma = mg − F<sub>b</sub></td><td>sinks if ρ<sub>object</sub> &gt; ρ<sub>fluid</sub></td></tr>
+</tbody></table></div>
+
+<h2 id="floating">Floating</h2>
+<p>A floating object sits still at the surface, so the <a class="gl" href="../notes/forces-fbd.html" data-c="net-force">net force</a> on it is zero: the buoyant force exactly balances its weight. (When that balance holds for an object fully under the surface, so it hangs in the fluid without rising or sinking, the object has <b><span class="gl" tabindex="0" data-c="neutral-buoyancy">neutral buoyancy</span></b>: its average density equals the fluid's, as for a fish or a submarine holding its depth.) The object sinks into the fluid only as far as it needs to displace its own weight of fluid:</p>
+<p style="text-align:center">ρ<sub>fluid</sub>V<sub>sub</sub>g = ρ<sub>object</sub>Vg &nbsp;so&nbsp; <b>V<sub>sub</sub>/V = ρ<sub>object</sub>/ρ<sub>fluid</sub></b></p>
+<p>Wood of density 600 kg/m³ floats with 60% of its volume under fresh water. An object denser than the fluid cannot displace enough fluid even when fully under, so it sinks. A steel ship floats because its hollow shape displaces a huge volume of water: its <i>average</i> density, steel plus air inside, is less than water's.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A 0.50 kg block of density 2500 kg/m³ is released under water. Find its <a class="gl" href="../notes/motion-quantities.html" data-c="acceleration">acceleration</a>, neglecting drag. Use g = 9.8 m/s².</p>
+<p>V = m/ρ = 0.50 kg / 2500 kg/m³ = 2.0 × 10⁻⁴ m³; F<sub>b</sub> = (1000)(2.0 × 10⁻⁴)(9.8) N = 1.96 N.</p>
+<p><a class="gl" href="../notes/second-law.html" data-c="second-law">Newton's second law</a>, down positive: ma = mg − F<sub>b</sub> = 4.90 N − 1.96 N = 2.94 N, so a = 2.94 N / 0.50 kg = <b>5.9 m/s²</b> downward.</p>
+<p>In general a = g(1 − ρ<sub>fluid</sub>/ρ<sub>object</sub>): a denser fluid gives a smaller acceleration, because it gives a larger buoyant force.</p>
+</div>
+
+    </article>
+    <p class="phys-report-page phys-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:buoyancy">Report a problem</button></p>
+    <nav class="tb-chapter-nav phys-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="fluid-pressure.html"><span>&larr; Previous</span><b>Pressure</b></a><a class="tb-chapter-link next" href="fluid-flow.html"><span>Next &rarr;</span><b>Fluids and Conservation Laws</b></a></nav>
+  </main>
+</div>
+<footer class="phys-foot xshell">
+  <p class="phys-accuracy-note"><span class="phys-beta phys-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Physics 1 teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:buoyancy">Report a problem</button></span></p>
+  <p class="phys-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPhysSection = 'learn'; window.ApPhysBase = '../';</script>
+<script src="../assets/phys-curriculum.js" defer></script>
+<script src="../assets/phys-core.js" defer></script>
+<script src="../assets/phys-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/phys-toc.js" defer></script>
+</body>
+</html>

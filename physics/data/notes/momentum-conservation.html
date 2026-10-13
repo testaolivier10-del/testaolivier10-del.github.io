@@ -1,0 +1,46 @@
+<p>Momentum is useful because, under the right condition, a system's momentum cannot change. This page explains why internal forces leave the total untouched, states the condition precisely, and shows why the choice of system decides whether the rule applies. The exam rewards one habit above all here: name the system and the condition, every time.</p>
+
+<h2>Internal forces cancel</h2>
+<p>When cart A pushes cart B, cart B pushes cart A with a force of the same size in the opposite direction (Newton's third law). The two forces also act for exactly the same time. So their impulses are equal and opposite: whatever momentum B gains, A loses. Inside a system, these internal pushes move momentum from one object to another, but the total cannot change.</p>
+<p>Only an <b>external force</b>, one exerted by something outside the system, can change the system's momentum. Using the impulse-momentum theorem for the whole system:</p>
+<p style="text-align:center"><b>F_net,external Δt = Δp_system</b></p>
+
+<h2>Conservation of momentum</h2>
+<p>If the net external force on a system is zero, its momentum is constant:</p>
+<p style="text-align:center"><b>Σp_before = Σp_after</b> (when F_net,external = 0)</p>
+<p>The external forces need not be absent; they need to add to zero. On a level track, gravity and the normal force on each cart balance, so if friction is negligible the net external force is zero. During a brief collision, even friction is usually negligible compared with the huge internal forces (the collision model).</p>
+<p>Because v_cm = Σp/Σm, a constant momentum also means the <b>center of mass moves at constant velocity</b>, no matter how the parts bounce around.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Cart A (0.60 kg) moves right at 0.90 m/s and hits cart B (0.30 kg) at rest on a level, frictionless track. Afterward A moves right at 0.30 m/s. Find B's velocity.</p>
+<p>System: carts A and B. Gravity and the normal forces balance and there is no friction, so the net external force is zero and the system's momentum is constant.</p>
+<p>(0.60)(0.90) + 0 = (0.60)(0.30) + (0.30)v_B, so 0.54 = 0.18 + 0.30v_B and v_B = +1.2 m/s.</p>
+<p>Check: Δp_A = −0.36 kg·m/s and Δp_B = +0.36 kg·m/s. Equal and opposite.</p>
+</div>
+
+<h2>The choice of system</h2>
+<figure id="fig-sys" data-fig="momentum-system-choice"><figcaption>The same collision, two systems. For cart A alone, B's push is external; for both carts, it is internal.</figcaption></figure>
+<p>Whether momentum is constant depends on what you include. In the collision above:</p>
+<ul>
+<li><b>Cart A alone</b>: B's push on A crosses the system boundary, so it is external. A's momentum changes (it drops from 0.54 to 0.18 kg·m/s).</li>
+<li><b>Carts A and B</b>: the pushes are internal. The system's momentum stays 0.54 kg·m/s.</li>
+</ul>
+<p>A falling ball is the same story. The ball alone gains downward momentum because Earth's pull is external. Ball + Earth together: the pull is internal, so the total stays constant (Earth gains an immeasurably small upward momentum).</p>
+<p>To use conservation, choose a system that includes every object exerting a large force during the interaction.</p>
+
+<h2>Justifying conservation on the exam</h2>
+<table class="compare"><thead><tr><th>Earns the point</th><th>Does not</th></tr></thead><tbody>
+<tr><td>"The net external force on the two-cart system is zero, because the vertical forces balance and friction is negligible, so the system's momentum is constant."</td><td>"Momentum is conserved because of conservation of momentum." (circular)</td></tr>
+<tr><td>"Friction from the floor is external to the block-dart system and is unbalanced, so the system's momentum decreases."</td><td>"Friction is internal." (without saying what the system is or why it matters)</td></tr>
+</tbody></table>
+
+<h2>Momentum before, energy after</h2>
+<p>Many problems chain the two units. First use momentum for the brief interaction, then energy or forces for what follows.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A 0.020 kg dart at 50. m/s sticks in a 0.480 kg block at rest on a smooth surface. The pair then slides onto a rough patch with μ_k = 0.25. How far does it slide? Use g = 9.8 m/s² (the exam also accepts 10 m/s², used throughout).</p>
+<p>Collision (momentum, system dart + block, no net external horizontal force): (0.020)(50.) = (0.500)v, so v = 2.0 m/s. Kinetic energy is not conserved here: it drops from 25 J to 1.0 J.</p>
+<p>Sliding (work-energy, friction from the patch is external): −μ_k Mg d = 0 − ½Mv², so d = v²/(2μ_k g) = (2.0)²/(2 × 0.25 × 9.8) m = 0.82 m.</p>
+<p>On the patch the system's momentum is not constant: friction is an unbalanced external force.</p>
+</div>
+
+<h2>Common slips</h2>
+<p>Treating each object's momentum as constant (only the total is). Forgetting the sign of an object moving left. Using the combined mass before a collision in which the objects were separate. Using momentum conservation while an unbalanced external force acts, such as friction over a long slide.</p>

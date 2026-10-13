@@ -1,0 +1,274 @@
+{
+ "stimuli": {},
+ "items": [
+  {
+   "id": "phys-math-proportional-1",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "A cyclist rides at a steady speed, so the distance covered is d = vt. If she rides for 3 times as long, how does the distance change?",
+   "options": [
+    "It is 9 times as large",
+    "It is 3 times as large",
+    "It is one third as large",
+    "It is unchanged"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "d = vt with v fixed: d ∝ t. Multiply t by 3 and d is multiplied by 3.",
+    "options": [
+     "That would be true if d depended on t², but at a steady speed d = vt has t to the first power.",
+     "Right: d is directly proportional to t, so tripling t triples d.",
+     "Riding longer at the same speed covers more distance, not less.",
+     "Distance depends on time here; only the speed is held steady."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-proportional-2",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A bus route has a fixed length d. The time for the trip is t = d/v. If the bus drives 1.5 times as fast, how does the trip time change?",
+   "options": [
+    "It becomes about 0.67 times as long",
+    "It becomes about 1.5 times as long",
+    "It becomes about 2.25 times as long",
+    "It becomes about 0.50 times as long"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "t = d/v: t ∝ 1/v. New t = t/1.5 ≈ 0.67t.",
+    "options": [
+     "Right: t is inversely proportional to v, so multiplying v by 1.5 divides t by 1.5.",
+     "Faster means less time; v is in the denominator.",
+     "v is not squared in t = d/v, and the time should shrink, not grow.",
+     "Halving the time would need twice the speed, not 1.5 times."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-proportional-3",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cart starts from rest with a steady acceleration, so its displacement is Δx = ½at². After 2.0 s it has moved 0.50 m. How far has it moved after 6.0 s?",
+   "numeric": {
+    "answer": 4.5,
+    "tol": 0.1,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1.5,
+      "why": "Value: you multiplied by 3. Δx depends on t², so tripling t multiplies Δx by 3² = 9."
+     },
+     {
+      "value": 9.0,
+      "why": "Value: work with the ratio of times: (6.0 s / 2.0 s)² = 9, then 9 × 0.50 m."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Δx ∝ t². The time is 3 times as long, so Δx is 3² = 9 times as large: 9 × 0.50 m = 4.5 m."
+   }
+  },
+  {
+   "id": "phys-math-proportional-4",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "For a car braking with the same steady deceleration, the stopping distance is d = v²/(2a). Driving at 3 times the speed multiplies the stopping distance by",
+   "options": [
+    "3",
+    "6",
+    "9",
+    "1/9"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "d = v²/(2a), a fixed: d ∝ v². Factor = 3² = 9. This is why speed matters so much for braking.",
+    "options": [
+     "That treats d as proportional to v, but the speed is squared.",
+     "Squaring 3 gives 9, not 2 × 3. A square multiplies the factor by itself.",
+     "Right: d ∝ v², so 3 times the speed gives 3² = 9 times the distance.",
+     "The speed is on top of the fraction, so a larger speed gives a larger distance."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-proportional-5",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "In y = kx²/z, x is doubled and z is doubled at the same time. By what factor does y change?",
+   "options": [
+    "1",
+    "2",
+    "4",
+    "8"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Write the factor for each change and multiply: (2)²/(2) = 4/2 = 2.",
+    "options": [
+     "The two changes do not cancel: x is squared but z is not.",
+     "Right: doubling x multiplies y by 2² = 4, and doubling z divides it by 2. 4 ÷ 2 = 2.",
+     "This counts the effect of x but forgets that z also doubled, in the denominator.",
+     "z is in the denominator, so doubling it divides y by 2 rather than multiplying."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-proportional-6",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two runners cover the same distance. Runner A takes 48 s. Runner B runs 1.5 times as fast as A. How long does B take?",
+   "numeric": {
+    "answer": 32.0,
+    "tol": 1.0,
+    "unit": "s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 72.0,
+      "why": "Value: a faster runner takes less time. Time is inversely proportional to speed, so divide by 1.5."
+     },
+     {
+      "value": 21.0,
+      "why": "Value: speed is not squared in t = d/v, so divide by 1.5 once."
+     }
+    ]
+   },
+   "why": {
+    "correct": "t = d/v, with d fixed: t ∝ 1/v. B's time = 48 s ÷ 1.5 = 32 s."
+   }
+  },
+  {
+   "id": "phys-math-proportional-7",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A table of measurements shows that each time t doubles, a quantity Q becomes 4 times as large. Which relationship fits?",
+   "options": [
+    "Q ∝ t",
+    "Q ∝ 1/t",
+    "Q ∝ √t",
+    "Q ∝ t²"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Test with a factor: if t × 2 gives Q × 4 = Q × 2², then Q ∝ t².",
+    "options": [
+     "A direct proportion would only double Q when t doubles.",
+     "An inverse relationship would halve Q when t doubles.",
+     "A square root would multiply Q by about 1.41 when t doubles.",
+     "Right: a factor of 2 in t giving a factor of 4 = 2² in Q is the mark of a square relationship."
+    ]
+   }
+  },
+  {
+   "id": "phys-math-proportional-8",
+   "type": "predict",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A car covers a trip of length d at a steady speed v, taking time t = d/v. The driver keeps the same trip length but drives faster. Predict how each quantity changes.",
+   "variables": [
+    {
+     "name": "The trip time t",
+     "answer": "down",
+     "why": "t = d/v: a larger v in the denominator gives a smaller t."
+    },
+    {
+     "name": "The trip length d",
+     "answer": "none",
+     "why": "The route is the same, so d is fixed by the question."
+    },
+    {
+     "name": "The product v × t",
+     "answer": "none",
+     "why": "v × t = d, which stays the same: v goes up by the same factor that t goes down."
+    }
+   ],
+   "why": {
+    "correct": "With d fixed, t ∝ 1/v, so speeding up shortens the time and v × t stays equal to d."
+   }
+  },
+  {
+   "id": "phys-math-proportional-9",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A square floor tile has a side of 30 cm and costs $2.00 to glaze, with the cost proportional to the area. What does it cost to glaze a square tile with a side of 45 cm? Give the number of dollars, to the cent.",
+   "numeric": {
+    "answer": 4.5,
+    "tol": 0.01,
+    "unit": "",
+    "mistakes": [
+     {
+      "value": 3.0,
+      "why": "Value: $3.00 scales the cost with the side. Area goes as the side squared, so the factor is 1.5² = 2.25."
+     }
+    ],
+    "places": 2
+   },
+   "why": {
+    "correct": "Cost ∝ area ∝ s². Factor for s: 45/30 = 1.5. Factor for the cost: 1.5² = 2.25. Cost = 2.25 × $2.00 = $4.50."
+   }
+  },
+  {
+   "id": "phys-math-proportional-10",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-proportional",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statement correctly describes the relationship in t = d/v when d is held fixed?",
+   "options": [
+    "Doubling v halves t, so v × t stays equal to d",
+    "Doubling v doubles t, so t ÷ v stays equal to d",
+    "Doubling v makes t one quarter as large",
+    "Doubling v leaves t unchanged, because d is fixed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "t = d/v → vt = d. With d fixed, v and t are inversely proportional: one doubles, the other halves.",
+    "options": [
+     "Right: in an inverse relationship the product of the two quantities stays constant.",
+     "This is a direct proportion; here v is in the denominator.",
+     "v is not squared, so the factor is ½, not ¼.",
+     "Fixing d is exactly what makes t depend on v alone."
+    ]
+   }
+  }
+ ]
+}

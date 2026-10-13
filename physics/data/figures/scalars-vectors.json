@@ -1,0 +1,12 @@
+{
+ "walk-distance-displacement": {
+  "file": "figures/walk-distance-displacement.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 370,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A person starts at x = −1 m on a number line marked from −2 m to +6 m, walks 5 m in the positive direction to x = +4 m, turns around and walks 2 m back to end at x = +2 m. Dashed curved arrows show the two legs of the walk. A solid arrow from −1 m to +2 m is the displacement, +3 m. The distance traveled is 5 m + 2 m = 7 m, a scalar; the displacement is +3 m, a vector pointing in the positive direction."
+ }
+}

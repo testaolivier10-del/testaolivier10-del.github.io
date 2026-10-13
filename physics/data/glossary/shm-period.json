@@ -1,0 +1,11 @@
+{
+ "oscillation-period": {
+  "def": "The time for one complete cycle of an oscillation, T, in seconds; the frequency is f = 1/T, in hertz."
+ },
+ "spring-mass-period": {
+  "def": "The period of a block of mass m on a spring of constant k: T = 2π√(m/k). It does not depend on the amplitude or on g."
+ },
+ "pendulum-period": {
+  "def": "The period of a simple pendulum of length ℓ at small angles: T = 2π√(ℓ/g). It does not depend on the bob's mass."
+ }
+}

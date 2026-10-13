@@ -1,0 +1,492 @@
+{
+ "stimuli": {
+  "shm-intro-s1": {
+   "kind": "table",
+   "title": "Force on a glider from a spring",
+   "text": "<p>A 0.40 kg glider on a level air track is attached to a spring. A student holds the glider at several positions and reads the force the spring exerts on it with a force sensor. Position is measured from where the spring is relaxed; + is to the right.</p>",
+   "table": {
+    "caption": "Spring force on the glider at each position",
+    "cols": [
+     "Position x (m)",
+     "Force from spring F (N)"
+    ],
+    "rows": [
+     [
+      "−0.10",
+      "+2.4"
+     ],
+     [
+      "−0.05",
+      "+1.2"
+     ],
+     [
+      "0",
+      "0"
+     ],
+     [
+      "+0.05",
+      "−1.2"
+     ],
+     [
+      "+0.10",
+      "−2.4"
+     ]
+    ]
+   }
+  },
+  "shm-intro-s2": {
+   "kind": "diagram",
+   "title": "A pendulum at three points",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 300\" role=\"img\" aria-label=\"A pendulum hanging from a ceiling, shown at three points of its swing: X, 8 degrees to the left of vertical; Y, straight below the pivot; Z, 8 degrees to the right.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"400\" height=\"300\" fill=\"#FFFFFF\"/><rect x=\"130\" y=\"20\" width=\"140\" height=\"10\" fill=\"#EEF1EF\"/><line x1=\"130\" y1=\"30\" x2=\"270\" y2=\"30\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"134\" y1=\"30\" x2=\"142\" y2=\"21\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"146\" y1=\"30\" x2=\"154\" y2=\"21\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"158\" y1=\"30\" x2=\"166\" y2=\"21\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"170\" y1=\"30\" x2=\"178\" y2=\"21\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"182\" y1=\"30\" x2=\"190\" y2=\"21\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"194\" y1=\"30\" x2=\"202\" y2=\"21\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"206\" y1=\"30\" x2=\"214\" y2=\"21\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"218\" y1=\"30\" x2=\"226\" y2=\"21\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"230\" y1=\"30\" x2=\"238\" y2=\"21\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"242\" y1=\"30\" x2=\"250\" y2=\"21\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"254\" y1=\"30\" x2=\"262\" y2=\"21\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"266\" y1=\"30\" x2=\"274\" y2=\"21\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"200\" y1=\"30\" x2=\"200\" y2=\"268\" stroke=\"#5A6268\" stroke-width=\"1.2\" stroke-dasharray=\"6 5\"/><line x1=\"200\" y1=\"30\" x2=\"169.4\" y2=\"247.9\" stroke=\"#C9CFCC\" stroke-width=\"1.4\"/><circle cx=\"169.4\" cy=\"247.9\" r=\"11\" fill=\"#FFFFFF\" stroke=\"#1F2A28\" stroke-width=\"1.8\"/><text x=\"149.4\" y=\"251.9\" font-size=\"15\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">X</text><line x1=\"200\" y1=\"30\" x2=\"200\" y2=\"250\" stroke=\"#1F2A28\" stroke-width=\"1.8\"/><circle cx=\"200.0\" cy=\"250.0\" r=\"11\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"1.8\"/><text x=\"200\" y=\"280\" font-size=\"15\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">Y</text><line x1=\"200\" y1=\"30\" x2=\"230.6\" y2=\"247.9\" stroke=\"#C9CFCC\" stroke-width=\"1.4\"/><circle cx=\"230.6\" cy=\"247.9\" r=\"11\" fill=\"#FFFFFF\" stroke=\"#1F2A28\" stroke-width=\"1.8\"/><text x=\"250.6\" y=\"251.9\" font-size=\"15\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">Z</text><path d=\"M200,110 A80,80 0 0,0 211.1,109.2\" fill=\"none\" stroke=\"#5A6268\" stroke-width=\"1.3\"/><text x=\"216\" y=\"130\" font-size=\"13\" fill=\"#1F2A28\">8°</text><text x=\"230\" y=\"180\" font-size=\"13\" fill=\"#5A6268\">string, 0.90 m</text></svg><p>The bob is released from rest at X and swings through Y to Z and back. Air resistance is negligible.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-shm-intro-1",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "shm-intro-s1",
+   "q": "Which feature of the data shows that the glider, once released, will move in simple harmonic motion?",
+   "options": [
+    "The force is proportional to the displacement and points the opposite way",
+    "The force is zero at the position where the spring is relaxed",
+    "The force keeps getting more negative as the glider is moved farther to the right",
+    "The force has the same size at equal distances on either side"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "SHM needs a restoring force proportional to the displacement from equilibrium and opposite to it: F = −kx. Doubling x doubles F, and the sign is always opposite to x.",
+    "options": [
+     "Right: this is the definition of the restoring force in SHM, F = −kx.",
+     "A zero force at equilibrium is true of any oscillation; it does not show the force grows in proportion to the displacement.",
+     "True of the data, but it says nothing about proportion or about the left side: a force that pointed left everywhere would never pull the glider back from the left. SHM needs F proportional to x and opposite to it.",
+     "Symmetry alone allows forces that are not proportional to x (for example a force that grows as x²)."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-intro-2",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "shm-intro-s1",
+   "q": "What is the spring constant of the spring? Give the value and its unit.",
+   "numeric": {
+    "answer": 24,
+    "tol": 1,
+    "unit": "N/m",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.042,
+      "rel": 0.02,
+      "why": "Value: you divided the displacement by the force. The spring constant is force per unit displacement, k = |F|/|x|."
+     },
+     {
+      "value": 0.24,
+      "rel": 0.02,
+      "why": "Value: you multiplied force by displacement. k = |F|/|x| = 2.4 N / 0.10 m."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From any row, k = |F|/|x| = 2.4 N / 0.10 m = 24 N/m. Every row gives the same value, which is what makes the force proportional to x."
+   }
+  },
+  {
+   "id": "phys-shm-intro-3",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "shm-intro-s1",
+   "q": "The glider is pulled to x = +0.080 m and released. What is its acceleration at the moment of release? Take + to the right, include the sign, and give the unit.",
+   "numeric": {
+    "answer": -4.8,
+    "tol": 0.1,
+    "unit": "m/s^2",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": -1.9,
+      "rel": 0.02,
+      "why": "Value: that is the spring force in newtons. Newton's second law gives a = F/m: divide by the 0.40 kg mass."
+     },
+     {
+      "value": 4.8,
+      "rel": 0.02,
+      "why": "Value: the size is right but the direction is wrong. At x = +0.080 m the spring pulls the glider back toward x = 0, so a is negative."
+     }
+    ]
+   },
+   "why": {
+    "correct": "F = −kx = −(24 N/m)(0.080 m) = −1.92 N. a = F/m = −1.92 N / 0.40 kg = −4.8 m/s², toward equilibrium."
+   }
+  },
+  {
+   "id": "phys-shm-intro-4",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "shm-intro-s1",
+   "q": "When the oscillating glider passes x = 0 moving to the right, what is the net force on it?",
+   "options": [
+    "Zero, even though the glider is moving fast",
+    "To the right, in the direction it is moving",
+    "To the left, because it will soon turn around",
+    "Its largest value, because its speed is largest"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At x = 0 the spring is relaxed, so the spring force is zero; gravity and the normal force cancel on the level track. Zero net force means zero acceleration at that instant, not zero velocity.",
+    "options": [
+     "Right: x = 0 is the equilibrium position, where the net force is zero.",
+     "This is the \"a force is needed to keep it moving\" idea. The glider keeps moving at x = 0 with no net force at that instant.",
+     "The force points left only once the glider is to the right of x = 0 and the spring is stretched.",
+     "This mixes up force with speed. The force depends on the displacement, which is zero here."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-intro-5",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "shm-intro-s2",
+   "q": "Which point is the equilibrium position of the pendulum, and why?",
+   "options": [
+    "Y, where nothing pushes the bob along its path",
+    "X, where the bob is momentarily at rest",
+    "Z, where the bob stops before turning back",
+    "Y, because the bob is moving fastest at that point"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At Y the string pulls straight up and Earth pulls straight down, so no force acts along the arc. That is the equilibrium position: the bob would stay there if placed at rest.",
+    "options": [
+     "Right: at the equilibrium position the restoring force along the path is zero.",
+     "Being at rest for an instant does not make a point the equilibrium position. At X a restoring force pulls the bob back toward Y.",
+     "At Z the restoring force is largest, which is the opposite of equilibrium.",
+     "Y is the right point, but speed does not define equilibrium; the zero restoring force does."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-intro-6",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "shm-intro-s2",
+   "q": "What is the amplitude of the pendulum's motion, measured as an angle?",
+   "options": [
+    "8°",
+    "16°",
+    "4°",
+    "0°"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Amplitude is the largest displacement from equilibrium, measured from Y. The bob reaches 8° on each side.",
+    "options": [
+     "Right: from Y to X (or to Z) is 8°.",
+     "This is the angle from one extreme to the other, which is twice the amplitude.",
+     "This halves the amplitude; the bob reaches the full 8° on each side.",
+     "The amplitude is not the displacement at equilibrium; it is the largest displacement."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-intro-7",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "shm-intro-s2",
+   "q": "Why is this pendulum a good example of simple harmonic motion?",
+   "options": [
+    "At small angles the restoring force along the arc is close to proportional to the bob's displacement",
+    "The string pulls the bob toward the pivot with a force that stays the same at each point",
+    "The bob's weight pulls it down, and gravity is a force that is the same everywhere",
+    "The bob moves along a curved path, so it returns to its starting point each cycle"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Along the arc, gravity has a part of size mg sin θ pointing back toward Y. For small angles sin θ ≈ θ (in radians), so the restoring force is close to mgθ = (mg/ℓ)s, proportional to the displacement s along the arc.",
+    "options": [
+     "Right: a restoring force proportional to the displacement is what SHM needs.",
+     "The string force is not constant (it is largest at Y) and it points along the string, not along the path, so it is not the restoring force.",
+     "A constant downward force alone does not give a force proportional to the displacement along the arc.",
+     "Returning to the start shows periodic motion, not simple harmonic motion."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-intro-8",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "shm-intro-s2",
+   "q": "The same pendulum is released from 60° instead. Which statement is best?",
+   "options": [
+    "The motion is periodic but noticeably less like SHM, because sin 60° is well below 60° in radians",
+    "The motion is still SHM, because a pendulum oscillates about Y at any angle",
+    "The motion is no longer periodic, because the bob speeds up too much at Y",
+    "The motion is closer to SHM, because a larger angle gives a larger restoring force"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "60° is 1.05 rad but sin 60° = 0.87, so the restoring force (mg sin θ) is 17% smaller than a force proportional to θ would be. The bob still swings back and forth, but the motion is no longer a close match to SHM.",
+    "options": [
+     "Right: the small-angle approximation sin θ ≈ θ breaks down at large angles.",
+     "Oscillating about Y makes the motion periodic; SHM also needs the restoring force to be proportional to the displacement.",
+     "Without friction the bob repeats the same swing, so the motion is still periodic.",
+     "A larger force is not the test; the force must stay proportional to the displacement, and at 60° it falls short."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-intro-9",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "An object moves back and forth along the x-axis about x = 0. Which force on it, written as a function of its position x, gives simple harmonic motion?",
+   "options": [
+    "F = −(6.0 N/m)x",
+    "F = +(6.0 N/m)x",
+    "F = −(6.0 N/m²)x²",
+    "F = −6.0 N"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "SHM needs F = −kx: proportional to x and opposite to it. Here k = 6.0 N/m.",
+    "options": [
+     "Right: proportional to the displacement and opposite to it.",
+     "This force points away from x = 0, so it pushes the object farther away; there is no oscillation.",
+     "This force is proportional to x², not x, and it points in −x on both sides, so it does not restore from the left.",
+     "A constant force does not depend on position at all, so it cannot pull back from both sides."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-intro-10",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A ball bounces straight up and down on a hard floor, rising to the same height each time. Why is this periodic motion but not simple harmonic motion?",
+   "options": [
+    "In the air the force on it is its constant weight, not a force proportional to its distance from a center",
+    "The ball is not attached to a spring, so there is no restoring force acting on it at any point of its motion",
+    "The ball does not return to the same height, so the motion does not repeat",
+    "The ball moves fastest at the top, so its speed pattern is reversed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Between bounces the only force is the ball's weight, mg downward, which does not change with height. SHM needs a restoring force that grows in proportion to the displacement from equilibrium.",
+    "options": [
+     "Right: a constant force is not a restoring force proportional to displacement.",
+     "A pendulum is SHM with no spring; what matters is the form of the restoring force.",
+     "The stem says the ball rises to the same height each time, so the motion does repeat.",
+     "The ball is slowest at the top, not fastest."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-intro-11",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A block on a spring slides back and forth on a frictionless table. A meterstick beside it shows that its front edge moves between the 0.12 m mark and the 0.38 m mark. What is the amplitude of the motion? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.13,
+    "tol": 0.005,
+    "unit": "m",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.26,
+      "rel": 0.02,
+      "why": "Value: that is the distance from one turning point to the other, which is twice the amplitude. Amplitude is measured from the middle."
+     },
+     {
+      "value": 0.38,
+      "rel": 0.02,
+      "why": "Value: that is a meterstick reading, not a displacement from equilibrium. Equilibrium is halfway, at 0.25 m."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Equilibrium is halfway between the turning points, at 0.25 m. The amplitude is the largest displacement from there: 0.38 m − 0.25 m = 0.13 m."
+   }
+  },
+  {
+   "id": "phys-shm-intro-12",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 0.50 kg block hangs at rest from a vertical spring with spring constant 40 N/m. How far is the spring stretched from its relaxed length at the block's equilibrium position? Use g = 9.8 m/s². Give the value and its unit.",
+   "numeric": {
+    "answer": 0.12,
+    "tol": 0.005,
+    "unit": "m",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.013,
+      "rel": 0.02,
+      "why": "Value: you divided the mass by k. The spring must balance the weight, mg = 4.9 N, so stretch = mg/k."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At equilibrium the net force is zero: kΔx = mg, so Δx = mg/k = (0.50 kg)(9.8 m/s²)/(40 N/m) = 0.1225 m ≈ 0.12 m. For a hanging spring the equilibrium position is this stretched point, not the relaxed length."
+   }
+  },
+  {
+   "id": "phys-shm-intro-13",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "The block hanging from the vertical spring is pulled down and released. When it is at its lowest point, what is the direction of the net force on it?",
+   "options": [
+    "Upward, toward the equilibrium position",
+    "Downward, because its weight pulls down",
+    "Zero, because it is momentarily at rest",
+    "Downward, in the direction it was moving"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Below equilibrium the spring is stretched more than at equilibrium, so its upward pull is larger than the weight. The net force points up, toward equilibrium, as a restoring force should.",
+    "options": [
+     "Right: the spring force exceeds the weight below equilibrium.",
+     "The weight is there, but the spring's upward pull is larger at the lowest point.",
+     "At rest for an instant does not mean zero net force; this is where the net force is largest.",
+     "The net force does not follow the motion; it follows the displacement, pointing back toward equilibrium."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-intro-14",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A cart on a horizontal spring oscillates between x = −A and x = +A. Where is the size of its acceleration greatest?",
+   "options": [
+    "At x = −A and x = +A",
+    "At x = 0",
+    "At x = −A/2 and x = +A/2",
+    "The same size at each position along the track"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The net force is −kx, so its size is largest where |x| is largest, at the turning points. By Newton's second law the acceleration is largest there too, even though the speed is zero.",
+    "options": [
+     "Right: largest displacement, largest restoring force, largest acceleration.",
+     "At x = 0 the net force is zero, so the acceleration is zero; this is where the speed is greatest.",
+     "The force at ±A/2 is half its value at ±A.",
+     "A constant acceleration would need a constant force; the spring force changes with x."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-intro-15",
+   "type": "predict",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A block on a horizontal spring is pulled 0.10 m from equilibrium and released. In a second trial the same block on the same spring is pulled 0.20 m. Predict how each quantity in the second trial compares with the first.",
+   "variables": [
+    {
+     "name": "Size of the spring force at the moment of release",
+     "answer": "up",
+     "why": "F = kx and x doubled, so the force at release doubles."
+    },
+    {
+     "name": "Size of the acceleration at the moment of release",
+     "answer": "up",
+     "why": "a = F/m: twice the force on the same mass gives twice the acceleration."
+    },
+    {
+     "name": "Spring constant",
+     "answer": "none",
+     "why": "k is a property of the spring; pulling it farther does not change it."
+    }
+   ],
+   "why": {
+    "correct": "The restoring force is proportional to the displacement, F = −kx; the spring constant belongs to the spring."
+   }
+  },
+  {
+   "id": "phys-shm-intro-16",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-intro",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "A spring is replaced by one with twice the spring constant. At the same displacement from equilibrium, how does the restoring force on the block compare?",
+   "options": [
+    "It is twice as large",
+    "It is half as large",
+    "It is four times as large",
+    "It is the same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "F = −kx: at the same x, doubling k doubles the force.",
+    "options": [
+     "Right: F is proportional to k at a fixed displacement.",
+     "A stiffer spring pulls harder, not more gently.",
+     "F depends on k to the first power, not k².",
+     "The force depends on k as well as x."
+    ]
+   }
+  }
+ ]
+}

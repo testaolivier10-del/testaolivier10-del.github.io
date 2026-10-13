@@ -1,0 +1,11 @@
+{
+ "rotational-equilibrium": {
+  "def": "The state of an object whose net torque is zero, so its angular velocity does not change. With zero net force as well, an object at rest stays at rest (static equilibrium)."
+ },
+ "rotational-first-law": {
+  "def": "With zero net torque on it, an object’s angular velocity stays constant: at rest stays at rest, turning keeps turning at the same rate."
+ },
+ "hinge-force": {
+  "def": "The contact force a hinge or pivot exerts on an object. Its direction is not fixed in advance; it is whatever balances the other forces, often with both horizontal and vertical parts."
+ }
+}

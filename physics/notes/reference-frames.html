@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reference Frames and Relative Motion — AP® Physics 1 Notes</title>
+<meta name="description" content="&quot;How fast are you moving?&quot; sounds like it has one answer. It does not.">
+<link rel="canonical" href="https://levlprep.com/physics/notes/reference-frames.html">
+<meta property="og:title" content="Reference Frames and Relative Motion — AP® Physics 1 Notes">
+<meta property="og:description" content="&quot;How fast are you moving?&quot; sounds like it has one answer. It does not.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/physics/notes/reference-frames.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/physics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/phys.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/physics/notes/reference-frames.html#reading",
+      "name": "Reference Frames and Relative Motion",
+      "url": "https://levlprep.com/physics/notes/reference-frames.html",
+      "description": "\"How fast are you moving?\" sounds like it has one answer. It does not.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "reference frames and relative motion physics 1 explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/physics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Physics 1",
+          "item": "https://levlprep.com/physics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Kinematics",
+          "item": "https://levlprep.com/physics/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Reference Frames and Relative Motion: notes",
+          "item": "https://levlprep.com/physics/notes/reference-frames.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="phys" data-topic="reference-frames" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="phys-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail phys-nav-ref bk-rail" id="phys-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Kinematics</b><small>5 topics</small></span></a>
+    <div class="phys-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 5 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="scalars-vectors"><a href="scalars-vectors.html"><span class="bk-toc-n">1.1</span>Scalars and Vectors on a Line</a></li><li data-toc-t="motion-quantities"><a href="motion-quantities.html"><span class="bk-toc-n">1.2</span>Displacement, Velocity and Acceleration</a></li><li data-toc-t="motion-representations"><a href="motion-representations.html"><span class="bk-toc-n">1.3</span>Representing Motion</a></li><li class="current" data-toc-t="reference-frames"><a href="#main" aria-current="page"><span class="bk-toc-n">1.4</span>Reference Frames and Relative Motion</a><div class="bk-toc-onpage"><p>On this page</p><a href="#reference-frames">Reference frames</a><a href="#adding-velocities-along-a-line">Adding velocities along a line</a><a href="#velocity-seen-by-a-moving-observer">Velocity seen by a moving observer</a><a href="#accelerations-agree">Accelerations agree</a><a href="#scope-note">Scope note</a></div></li><li data-toc-t="motion-2d"><a href="motion-2d.html"><span class="bk-toc-n">1.5</span>Vectors and Motion in Two Dimensions</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Force and Translational Dynamics</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="phys-crumb phys-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Physics 1</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Kinematics</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Reference Frames and Relative Motion: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/reference-frames.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 1 &middot; Topic 1.4 <span class="phys-beta phys-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Reference Frames and Relative Motion</h1>
+      <p class="bk-meta phys-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="reference-frames">Not practiced</span></p>
+      <div class="bk-actions phys-share phys-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fphysics%2Fnotes%2Freference-frames.html&amp;title=Reference%20Frames%20and%20Relative%20Motion%3A%20physics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/physics/notes/reference-frames.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="phys-prose bk-prose">
+<p>"How fast are you moving?" sounds like it has one answer. It does not. Sitting at your desk you are at rest relative to the room, moving at about 400 m/s relative to Earth's center as Earth spins, and much faster relative to the Sun. Each answer is right for a different observer. This page shows how to describe motion from different points of view and how to convert between them.</p>
+
+<h2 id="reference-frames">Reference frames</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="reference-frame">reference frame</span></b> is the point of view of an observer, together with a <a class="gl" href="../notes/scalars-vectors.html" data-c="coordinate-system">coordinate system</a> that moves with that observer. <a class="gl" href="../notes/scalars-vectors.html" data-c="position">Positions</a>, <a class="gl" href="../notes/scalars-vectors.html" data-c="displacement">displacements</a> and <a class="gl" href="../notes/scalars-vectors.html" data-c="velocity">velocities</a> are all measured relative to some frame. When a problem says "a car moves at 20 m/s", it almost always means relative to the ground, but that is a choice, and sometimes another frame makes the problem easier.</p>
+<p>You know this from experience. In a train waiting at a station, you see the next train start to move and feel, for a moment, that it is your own train moving backward. From your seat you can only see how the two trains move relative to each other, and either train moving gives the same view.</p>
+
+<h2 id="adding-velocities-along-a-line">Adding velocities along a line</h2>
+<figure id="fig-train"  class="phys-figure"><div class="phys-figimg" data-fig="train-walker-frames"><img src="../figures/train-walker-frames.svg" alt="A train moves to the right at +20.0 m/s relative to the ground. Inside, a passenger walks toward the front at +1.5 m/s relative to the train. An observer stands on the platform. The walker's velocity relative to the ground is 1.5 m/s + 20.0 m/s = +21.5 m/s; walking toward the back at 1.5 m/s would give +18.5 m/s." width="780" height="400" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A passenger walks forward in a moving train. Her velocity relative to the ground combines both motions. <span class="phys-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>A train moves at +20.0 m/s relative to the ground. A passenger walks toward the front at +1.5 m/s relative to the train. Each second, the train carries her 20.0 m forward and she walks another 1.5 m, so relative to the ground she moves 21.5 m each second.</p>
+<p style="text-align:center"><b>v(object relative to ground) = v(object relative to frame) + v(frame relative to ground)</b></p>
+<p>Signs carry the direction. If she walks toward the back, her <span class="gl" tabindex="0" data-c="relative-velocity">velocity relative to</span> the train is −1.5 m/s, and relative to the ground it is −1.5 + 20.0 = +18.5 m/s: still forward, just slower than the train.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A river flows east at 1.2 m/s. A boat moves at 3.6 m/s relative to the water. Find the boat's velocity relative to the bank going downstream (east) and upstream (west). East is positive.</p>
+<p>Downstream: v = +3.6 m/s + 1.2 m/s = +4.8 m/s.</p>
+<p>Upstream: v = −3.6 m/s + 1.2 m/s = −2.4 m/s.</p>
+<p>A 300 m trip takes 300 ÷ 4.8 = 63 s downstream and 300 ÷ 2.4 = 125 s upstream. The round trip (about 190 s) is slower than on still water (600 ÷ 3.6 = 170 s), because the boat spends more time at the slow <a class="gl" href="../notes/scalars-vectors.html" data-c="speed">speed</a>.</p>
+</div>
+
+<h2 id="velocity-seen-by-a-moving-observer">Velocity seen by a moving observer</h2>
+<p>Turn the equation around to find how one moving object looks from another. Subtract the observer's velocity:</p>
+<p style="text-align:center"><b>v(A relative to B) = v(A relative to ground) − v(B relative to ground)</b></p>
+<div class="worked">
+<p><b>Worked example 2.</b> On a highway (east positive), a bus moves at +18 m/s and a scooter at −12 m/s, both relative to the road. Find the scooter's velocity relative to the bus.</p>
+<p>v(scooter, bus) = −12 m/s − (+18 m/s) = −30. m/s.</p>
+<p>From the bus, the oncoming scooter approaches at 30. m/s. That is why head-on closing speeds are so dangerous: the two speeds add.</p>
+</div>
+<p>Swapping the observer flips the sign. If a car moves at +5 m/s relative to a bus, the bus moves at −5 m/s relative to the car. And an object at rest relative to one frame (a passenger sitting on the train) moves at that frame's velocity relative to the ground.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Observer, Sees the walker, Sees the train"><table class="compare"><thead><tr><th scope="col">Observer</th><th scope="col">Sees the walker</th><th scope="col">Sees the train</th></tr></thead>
+<tbody><tr><td>A passenger sitting on the train</td><td>+1.5 m/s</td><td>0</td></tr>
+<tr><td>A person standing on the platform</td><td>+21.5 m/s</td><td>+20.0 m/s</td></tr></tbody></table></div>
+
+<h2 id="accelerations-agree">Accelerations agree</h2>
+<p>A cart on a flatcar speeds up from rest to 0.80 m/s relative to the flatcar in 2.0 s. The flatcar rolls at a steady 6.0 m/s. Relative to the ground, the cart goes from 6.0 m/s to 6.8 m/s in the same 2.0 s. The change in velocity, 0.80 m/s, is the same in both frames, so the <a class="gl" href="../notes/motion-quantities.html" data-c="acceleration">acceleration</a> is too: 0.40 m/s².</p>
+<p>This works whenever the two frames move at a <i>constant</i> velocity relative to each other: the same velocity is added at every instant and cancels when you take Δv. If the frame itself speeds up or slows down (a braking truck), observers in it measure different accelerations. Unless a problem says otherwise, assume frames that move at a constant velocity relative to the ground.</p>
+
+<h2 id="scope-note">Scope note</h2>
+<p>In this course, relative velocities are added along one line only (east and west, up and down the river). A boat crossing a river at an angle to the current is a two-dimensional problem and is not tested here.</p>
+
+    </article>
+    <p class="phys-report-page phys-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:reference-frames">Report a problem</button></p>
+    <nav class="tb-chapter-nav phys-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="motion-representations.html"><span>&larr; Previous</span><b>Representing Motion</b></a><a class="tb-chapter-link next" href="math-trig-components.html"><span>Next &rarr;</span><b>Right-Triangle Trigonometry and Vector Components</b></a></nav>
+  </main>
+</div>
+<footer class="phys-foot xshell">
+  <p class="phys-accuracy-note"><span class="phys-beta phys-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Physics 1 teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:reference-frames">Report a problem</button></span></p>
+  <p class="phys-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPhysSection = 'learn'; window.ApPhysBase = '../';</script>
+<script src="../assets/phys-curriculum.js" defer></script>
+<script src="../assets/phys-core.js" defer></script>
+<script src="../assets/phys-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/phys-toc.js" defer></script>
+</body>
+</html>

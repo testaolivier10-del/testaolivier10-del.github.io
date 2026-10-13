@@ -1,0 +1,466 @@
+{
+ "stimuli": {
+  "rotational-equilibrium-s1": {
+   "kind": "diagram",
+   "title": "A balanced meterstick",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 230\" role=\"img\" aria-label=\"A uniform meterstick of mass 0.150 kg balanced horizontally on a pivot at the 40 cm mark, with a block of unknown mass hanging from the 10 cm mark\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"230\" fill=\"#FFFFFF\"/><rect x=\"30\" y=\"82\" width=\"500\" height=\"16\" rx=\"2\" fill=\"#E9D8B8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><line x1=\"30\" y1=\"82\" x2=\"30\" y2=\"88\" stroke=\"#1F2A28\" stroke-width=\"1\"/><text x=\"30\" y=\"76\" font-size=\"10\" fill=\"#5A6268\" text-anchor=\"middle\">0</text><line x1=\"80\" y1=\"82\" x2=\"80\" y2=\"88\" stroke=\"#1F2A28\" stroke-width=\"1\"/><text x=\"80\" y=\"76\" font-size=\"10\" fill=\"#5A6268\" text-anchor=\"middle\">10</text><line x1=\"130\" y1=\"82\" x2=\"130\" y2=\"88\" stroke=\"#1F2A28\" stroke-width=\"1\"/><text x=\"130\" y=\"76\" font-size=\"10\" fill=\"#5A6268\" text-anchor=\"middle\">20</text><line x1=\"180\" y1=\"82\" x2=\"180\" y2=\"88\" stroke=\"#1F2A28\" stroke-width=\"1\"/><text x=\"180\" y=\"76\" font-size=\"10\" fill=\"#5A6268\" text-anchor=\"middle\">30</text><line x1=\"230\" y1=\"82\" x2=\"230\" y2=\"88\" stroke=\"#1F2A28\" stroke-width=\"1\"/><text x=\"230\" y=\"76\" font-size=\"10\" fill=\"#5A6268\" text-anchor=\"middle\">40</text><line x1=\"280\" y1=\"82\" x2=\"280\" y2=\"88\" stroke=\"#1F2A28\" stroke-width=\"1\"/><text x=\"280\" y=\"76\" font-size=\"10\" fill=\"#5A6268\" text-anchor=\"middle\">50</text><line x1=\"330\" y1=\"82\" x2=\"330\" y2=\"88\" stroke=\"#1F2A28\" stroke-width=\"1\"/><text x=\"330\" y=\"76\" font-size=\"10\" fill=\"#5A6268\" text-anchor=\"middle\">60</text><line x1=\"380\" y1=\"82\" x2=\"380\" y2=\"88\" stroke=\"#1F2A28\" stroke-width=\"1\"/><text x=\"380\" y=\"76\" font-size=\"10\" fill=\"#5A6268\" text-anchor=\"middle\">70</text><line x1=\"430\" y1=\"82\" x2=\"430\" y2=\"88\" stroke=\"#1F2A28\" stroke-width=\"1\"/><text x=\"430\" y=\"76\" font-size=\"10\" fill=\"#5A6268\" text-anchor=\"middle\">80</text><line x1=\"480\" y1=\"82\" x2=\"480\" y2=\"88\" stroke=\"#1F2A28\" stroke-width=\"1\"/><text x=\"480\" y=\"76\" font-size=\"10\" fill=\"#5A6268\" text-anchor=\"middle\">90</text><line x1=\"530\" y1=\"82\" x2=\"530\" y2=\"88\" stroke=\"#1F2A28\" stroke-width=\"1\"/><text x=\"530\" y=\"76\" font-size=\"10\" fill=\"#5A6268\" text-anchor=\"middle\">100</text><polygon points=\"230,98 214,130 246,130\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><rect x=\"170\" y=\"130\" width=\"120\" height=\"10\" fill=\"#EEF1EF\"/><line x1=\"170\" y1=\"130\" x2=\"290\" y2=\"130\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"174\" y1=\"130\" x2=\"166\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"186\" y1=\"130\" x2=\"178\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"198\" y1=\"130\" x2=\"190\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"210\" y1=\"130\" x2=\"202\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"222\" y1=\"130\" x2=\"214\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"234\" y1=\"130\" x2=\"226\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"246\" y1=\"130\" x2=\"238\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"258\" y1=\"130\" x2=\"250\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"270\" y1=\"130\" x2=\"262\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"282\" y1=\"130\" x2=\"274\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"80\" y1=\"98\" x2=\"80\" y2=\"150\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><rect x=\"64\" y=\"150\" width=\"32\" height=\"28\" rx=\"3\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"80\" y=\"169\" font-size=\"14\" fill=\"#FFFFFF\" text-anchor=\"middle\" font-weight=\"bold\" font-style=\"italic\">m</text><text x=\"30\" y=\"190\" font-size=\"12.5\" fill=\"#1F2A28\">Uniform meterstick, mass 0.150 kg, balanced horizontally on a pivot at the 40 cm mark.</text><text x=\"30\" y=\"210\" font-size=\"12.5\" fill=\"#1F2A28\">A block of unknown mass m hangs from the 10 cm mark. Marks are in cm.</text></svg>"
+  },
+  "rotational-equilibrium-s2": {
+   "kind": "diagram",
+   "title": "A beam held by a hinge and a cable",
+   "text": "<p>The uniform beam has a mass of 12.0 kg and the lamp a mass of 8.00 kg. The beam is at rest. Use g = 9.8 m/s².</p>",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 320\" role=\"img\" aria-label=\"A uniform horizontal beam 2.00 m long hinged to a wall at its left end, held by a cable from its right end to the wall at 30.0 degrees above the beam, with a lamp hanging from the right end\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"320\" fill=\"#FFFFFF\"/><rect x=\"48\" y=\"15\" width=\"12\" height=\"270\" fill=\"#EEF1EF\"/><line x1=\"60\" y1=\"15\" x2=\"60\" y2=\"285\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"60\" y1=\"19\" x2=\"50\" y2=\"27\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"29\" x2=\"50\" y2=\"37\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"39\" x2=\"50\" y2=\"47\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"49\" x2=\"50\" y2=\"57\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"59\" x2=\"50\" y2=\"67\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"69\" x2=\"50\" y2=\"77\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"79\" x2=\"50\" y2=\"87\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"89\" x2=\"50\" y2=\"97\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"99\" x2=\"50\" y2=\"107\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"109\" x2=\"50\" y2=\"117\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"119\" x2=\"50\" y2=\"127\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"129\" x2=\"50\" y2=\"137\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"139\" x2=\"50\" y2=\"147\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"149\" x2=\"50\" y2=\"157\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"159\" x2=\"50\" y2=\"167\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"169\" x2=\"50\" y2=\"177\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"179\" x2=\"50\" y2=\"187\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"189\" x2=\"50\" y2=\"197\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"199\" x2=\"50\" y2=\"207\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"209\" x2=\"50\" y2=\"217\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"219\" x2=\"50\" y2=\"227\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"229\" x2=\"50\" y2=\"237\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"239\" x2=\"50\" y2=\"247\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"249\" x2=\"50\" y2=\"257\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"259\" x2=\"50\" y2=\"267\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"269\" x2=\"50\" y2=\"277\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"60\" y1=\"279\" x2=\"50\" y2=\"287\" stroke=\"#5A6268\" stroke-width=\"1\"/><rect x=\"60\" y=\"232\" width=\"360\" height=\"16\" rx=\"2\" fill=\"#E9D8B8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"66\" cy=\"240\" r=\"7\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"66\" cy=\"240\" r=\"2.5\" fill=\"#1F2A28\"/><line x1=\"60\" y1=\"32.2\" x2=\"416\" y2=\"232\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"60\" cy=\"32.2\" r=\"4\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"1\"/><text x=\"336\" y=\"226\" font-size=\"12\" fill=\"#1F2A28\">30.0°</text><line x1=\"414\" y1=\"248\" x2=\"414\" y2=\"274\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><path d=\"M398,274 h32 l-8,18 h-16 z\" fill=\"#F5CF8A\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"434\" y=\"290\" font-size=\"12\" fill=\"#1F2A28\">lamp</text><text x=\"74\" y=\"270\" font-size=\"12\" fill=\"#5A6268\">hinge</text><line x1=\"240\" y1=\"304\" x2=\"68\" y2=\"304\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"60,304 68,300 68,308\" fill=\"#5A6268\"/><line x1=\"240\" y1=\"304\" x2=\"412\" y2=\"304\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"420,304 412,308 412,300\" fill=\"#5A6268\"/><text x=\"240\" y=\"300\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">2.00 m</text><text x=\"180\" y=\"125\" font-size=\"12\" fill=\"#5A6268\">cable</text></svg>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-rotational-equilibrium-1",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-equilibrium-s1",
+   "q": "What is the mass m of the block?",
+   "numeric": {
+    "answer": 0.05,
+    "tol": 0.001,
+    "unit": "kg",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.45,
+      "rel": 0.015,
+      "why": "Value: the distances are swapped. The block is 0.30 m from the pivot; the stick’s center of mass is 0.10 m from it."
+     },
+     {
+      "value": 0.037,
+      "rel": 0.015,
+      "why": "Value: that measures the block’s distance from the 50 cm mark. Lever arms are measured from the pivot, at 40 cm."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Take torques about the pivot (40 cm). The block, 0.30 m left, turns the stick counterclockwise; the stick’s weight acts at its center (50 cm), 0.10 m right, turning it clockwise. m g(0.30 m) = (0.150 kg) g(0.10 m), so m = 0.050 kg. g cancels."
+   }
+  },
+  {
+   "id": "phys-rotational-equilibrium-2",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-equilibrium-s1",
+   "q": "Use g = 9.8 m/s². What is the size of the force the pivot exerts on the stick?",
+   "numeric": {
+    "answer": 2,
+    "tol": 0.1,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1.5,
+      "rel": 0.015,
+      "why": "Value: that is the stick’s weight alone. The pivot also holds up the block through the string."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The stick is in translational equilibrium: F_pivot = (0.150 kg + 0.050 kg)(9.8 m/s²) = 1.96 N, about 2.0 N, upward."
+   }
+  },
+  {
+   "id": "phys-rotational-equilibrium-3",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-equilibrium-s1",
+   "q": "Which force diagram of the meterstick is correct?",
+   "options": [
+    "Pivot force up at 40 cm; the stick’s weight down at 50 cm; the string’s pull down at 10 cm",
+    "Pivot force up at 40 cm; the stick’s weight down at 40 cm; the string’s pull down at 10 cm",
+    "The stick’s weight down at 50 cm; the string’s pull down at 10 cm; nothing at the pivot",
+    "Pivot force up at 40 cm; the stick’s weight down at 0 cm; the string’s pull down at 10 cm"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Three forces act on the stick: the pivot’s normal force (up, at 40 cm), Earth’s gravitational force (down, at the center of mass, 50 cm) and the string’s tension (down, at 10 cm).",
+    "options": [
+     "Right: each force at its point of application.",
+     "A uniform stick’s weight acts at its center of mass, the 50 cm mark.",
+     "Without an upward force the stick would fall; the pivot pushes up.",
+     "The weight acts at the center of mass, not at an end."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-equilibrium-4",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rotational-equilibrium-s1",
+   "q": "The block is moved from the 10 cm mark to the 20 cm mark and the stick is released. What happens?",
+   "options": [
+    "The stick tips so its right end goes down",
+    "The stick tips so its left end goes down",
+    "It stays balanced, because no mass changed",
+    "It stays balanced, because the pivot force adjusts"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The block’s torque about the pivot falls from mg(0.30 m) to mg(0.20 m); the stick’s own torque, (0.150 kg)g(0.10 m), is unchanged. The net torque is clockwise, so the stick starts to turn with its right end going down.",
+    "options": [
+     "Right: the block’s counterclockwise torque shrinks while the stick’s clockwise torque stays the same.",
+     "Moving the block toward the pivot reduces its torque, so the left side loses.",
+     "The torque depends on the lever arm, which changed from 0.30 m to 0.20 m.",
+     "The pivot force acts at the axis and gives no torque, so it cannot restore the balance."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-equilibrium-5",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rotational-equilibrium-s1",
+   "q": "A student ignores the stick’s mass and finds m = 0. What is wrong with that reasoning?",
+   "options": [
+    "The stick’s center of mass is not at the pivot, so its weight exerts a torque",
+    "The pivot force exerts a torque that the student left out",
+    "The stick’s weight acts at the pivot and adds to the block’s",
+    "Torques about a pivot ignore any masses that do not hang from strings"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A uniform stick’s weight acts at its center of mass, 50 cm. That point is 0.10 m from the pivot, so the weight exerts a clockwise torque that the block must balance.",
+    "options": [
+     "Right: the stick’s weight acts 0.10 m from the pivot.",
+     "The pivot force acts at the axis, so its torque is zero.",
+     "The weight acts at the 50 cm mark, not the pivot.",
+     "Every force with a lever arm gives a torque, strings or not."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-equilibrium-6",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "rotational-equilibrium-s2",
+   "q": "What is the tension in the cable?",
+   "numeric": {
+    "answer": 274,
+    "tol": 1,
+    "unit": "N",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 137,
+      "rel": 0.015,
+      "why": "Value: that uses the full tension as if it were perpendicular to the beam. Only F_T sin 30° has a lever arm of 2.00 m."
+     },
+     {
+      "value": 158,
+      "rel": 0.015,
+      "why": "Value: that uses cos 30°. The part of the tension perpendicular to the beam is F_T sin 30°."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Torques about the hinge (the hinge force has none): F_T sin 30° (2.00 m) = (12.0 kg)(9.8)(1.00 m) + (8.00 kg)(9.8)(2.00 m) = 117.6 + 156.8 = 274.4 N·m, so F_T = 274.4/(2.00 × 0.500) = 274.4 N."
+   }
+  },
+  {
+   "id": "phys-rotational-equilibrium-7",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rotational-equilibrium-s2",
+   "q": "In which direction does the hinge push on the beam?",
+   "options": [
+    "Away from the wall and slightly upward",
+    "Straight up",
+    "Toward the wall and downward",
+    "Along the cable, toward the top of the wall"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Net force zero: horizontally, the hinge must push away from the wall with F_T cos 30° = 238 N; vertically, it supplies 196 N − F_T sin 30° = 58.8 N upward. So it points away from the wall and slightly up.",
+    "options": [
+     "Right: it balances the cable’s pull toward the wall and supplies the rest of the upward force.",
+     "The cable pulls the beam toward the wall, so the hinge must also push horizontally, away from the wall.",
+     "That would add to the cable’s pull toward the wall instead of balancing it.",
+     "The cable already pulls that way; the hinge must balance its horizontal part."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-equilibrium-8",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "rotational-equilibrium-s2",
+   "q": "What is the vertical component of the force the hinge exerts on the beam?",
+   "numeric": {
+    "answer": 58.8,
+    "tol": 0.2,
+    "unit": "N",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 196,
+      "rel": 0.015,
+      "why": "Value: that is the total weight. The cable holds up part of it: subtract F_T sin 30°."
+     },
+     {
+      "value": 137,
+      "rel": 0.015,
+      "why": "Value: that is the cable’s vertical pull. The hinge supplies what is left of the 196 N."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Vertical forces add to zero: F_hinge,y + F_T sin 30.0° = (20.0 kg)(9.8 m/s²) = 196 N, so F_hinge,y = 196 N − 137.2 N = 58.8 N, upward."
+   }
+  },
+  {
+   "id": "phys-rotational-equilibrium-9",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-equilibrium-s2",
+   "q": "Why is the hinge a good choice of axis for summing torques on the beam?",
+   "options": [
+    "The unknown hinge force acts there, so its torque is zero",
+    "The beam turns about the hinge, so other axes give wrong answers",
+    "The hinge force is the largest force on the beam",
+    "The beam’s weight acts at the hinge"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In equilibrium the net torque is zero about any point. Choosing the hinge removes the unknown hinge force from the torque equation, leaving only the tension.",
+    "options": [
+     "Right: the equation then has one unknown, the tension.",
+     "The beam is not turning; in equilibrium the net torque is zero about any axis.",
+     "It is not; and a large force at the axis still has no torque.",
+     "The beam’s weight acts at its center, 1.00 m from the hinge."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-equilibrium-10",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "An object stays at rest without turning. Which conditions hold?",
+   "options": [
+    "The net force on it is zero and the net torque on it is zero",
+    "The net force is zero; that alone keeps it from turning",
+    "The net torque is zero; that alone keeps it from moving",
+    "The forces on each side of the pivot are equal"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Static equilibrium needs both ΣF = 0 (no change in the center of mass’s motion) and Στ = 0 (no change in rotation). Neither condition implies the other.",
+    "options": [
+     "Right: translational and rotational equilibrium are separate conditions.",
+     "Two equal, opposite forces along different lines give zero net force but a net torque.",
+     "Zero net torque says nothing about the net force.",
+     "Torques must balance, and equal forces at different lever arms do not."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-equilibrium-11",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A driver pushes up on one side of a steering wheel and pulls down equally hard on the other side. The wheel",
+   "options": [
+    "starts turning while its center stays put",
+    "stays still, because the forces cancel",
+    "moves up and down without turning",
+    "turns and also moves sideways"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The two forces are equal and opposite, so the net force is zero and the center stays at rest. Their lines of action are on opposite sides of the axis, so both torques are in the same direction and the net torque is not zero: the wheel starts to turn.",
+    "options": [
+     "Right: the net force is zero, but the two torques add.",
+     "The forces cancel, but their torques both point the same way.",
+     "Equal and opposite forces leave the center of mass at rest.",
+     "With zero net force the center does not accelerate."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-equilibrium-12",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 25 kg child sits 1.8 m from the pivot of a seesaw. How far from the pivot, on the other side, must a 30 kg child sit to balance it? Ignore the plank’s mass.",
+   "numeric": {
+    "answer": 1.5,
+    "tol": 0.1,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2.2,
+      "rel": 0.015,
+      "why": "Value: the masses are swapped. The heavier child sits closer: m₁r₁ = m₂r₂."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Balanced torques about the pivot: (25 kg)g(1.8 m) = (30 kg)g r, so r = 45/30 = 1.5 m. g cancels."
+   }
+  },
+  {
+   "id": "phys-rotational-equilibrium-13",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A bicycle wheel spins at 5.0 rad/s on a frictionless axle. Nothing exerts a net torque on it. What happens to its angular velocity?",
+   "options": [
+    "It stays at 5.0 rad/s",
+    "It slowly falls to zero",
+    "It slowly increases",
+    "It drops to zero at once"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Newton’s first law in rotational form: with zero net torque, an object’s angular velocity stays constant. A wheel keeps spinning at 5.0 rad/s until a torque acts.",
+    "options": [
+     "Right: zero net torque means constant ω, the rotational first law.",
+     "Slowing needs a net torque, such as friction at the axle.",
+     "Speeding up needs a net torque in the direction of turning.",
+     "Nothing acts to stop it."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-equilibrium-14",
+   "type": "predict",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A uniform plank rests on two supports, one under each end. A painter walks from the middle of the plank toward the right support. Predict how each quantity changes.",
+   "variables": [
+    {
+     "name": "Force from the right support",
+     "answer": "up",
+     "why": "Taking torques about the left support, the painter’s lever arm grows, so the right support must push harder."
+    },
+    {
+     "name": "Force from the left support",
+     "answer": "down",
+     "why": "Taking torques about the right support, the painter’s lever arm shrinks, so the left support pushes less."
+    },
+    {
+     "name": "Sum of the two support forces",
+     "answer": "none",
+     "why": "Net force zero: the two supports together hold the plank’s and painter’s weight, which do not change."
+    }
+   ],
+   "why": {
+    "correct": "Translational equilibrium fixes the total support force at the total weight; rotational equilibrium decides how it splits, shifting load to the support the painter is nearer."
+   }
+  },
+  {
+   "id": "phys-rotational-equilibrium-15",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A mobile hangs from a string tied to its light rod. A 0.20 kg ornament hangs 0.15 m left of the string and a 0.10 kg ornament hangs 0.25 m right of it. What happens when it is released level?",
+   "options": [
+    "The left end goes down",
+    "The right end goes down, because its ornament is farther out",
+    "It stays level, because the heavier ornament is closer",
+    "It stays level, because the string holds up both ornaments"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Torques about the string (use g = 9.8 m/s²): left (0.20 kg)(9.8 m/s²)(0.15 m) = 0.29 N·m counterclockwise; right (0.10 kg)(9.8 m/s²)(0.25 m) = 0.25 N·m clockwise. The left side wins, so the left end goes down.",
+    "options": [
+     "Right: 0.29 N·m counterclockwise beats 0.25 N·m clockwise.",
+     "Distance counts, but so does weight: 0.10 × 0.25 is less than 0.20 × 0.15.",
+     "Closer, but not close enough: the torques are not equal.",
+     "The string force acts at the axis and gives no torque."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-equilibrium-16",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-equilibrium",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A uniform 4.00 m plank of mass 20.0 kg rests on supports at its ends. A 60.0 kg person stands 1.00 m from the left end. Use g = 9.8 m/s². What force does the right support exert?",
+   "numeric": {
+    "answer": 245,
+    "tol": 1,
+    "unit": "N",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 539,
+      "rel": 0.015,
+      "why": "Value: that is the left support’s force. Take torques about the left end to find the right support."
+     },
+     {
+      "value": 392,
+      "rel": 0.015,
+      "why": "Value: that splits the load evenly. The person is not at the middle."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Torques about the left end: F_R(4.00 m) = (20.0 kg)(9.8 m/s²)(2.00 m) + (60.0 kg)(9.8 m/s²)(1.00 m) = 392 + 588 = 980 N·m, so F_R = 245 N."
+   }
+  }
+ ]
+}

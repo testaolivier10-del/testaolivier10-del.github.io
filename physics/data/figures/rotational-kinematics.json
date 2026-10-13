@@ -1,0 +1,12 @@
+{
+ "wheel-angle-radians": {
+  "file": "figures/wheel-angle-radians.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A wheel turns about an axis through its center. A painted spoke has turned counterclockwise from a dashed reference line through an angle of 1 radian: the distance along the rim between the reference line and the spoke, highlighted, equals the radius r. A curved arrow outside the rim shows the angular velocity ω, counterclockwise, called positive. A side panel pairs each straight-line quantity with its rotational partner: position x with angle θ in radians, velocity v with angular velocity ω, acceleration a with angular acceleration α, and the three constant-acceleration equations with their rotational forms. One revolution is 2π rad, or 360 degrees."
+ }
+}

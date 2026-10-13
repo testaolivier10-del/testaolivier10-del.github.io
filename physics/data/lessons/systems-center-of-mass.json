@@ -1,0 +1,71 @@
+{
+ "topic": "systems-center-of-mass",
+ "hook": "A diver tumbles off a platform, arms and legs flying in every direction, yet one point of her body traces a smooth arc into the pool. A thrown wrench spins wildly but one point glides in a straight line. Physics finds that point, the center of mass, and lets you treat a whole messy object as a single dot.",
+ "prereq": [
+  {
+   "q": "In the object model, an object is treated as",
+   "options": [
+    "a single point with a position",
+    "a point with a size and shape",
+    "a set of separate moving parts",
+    "a point that cannot move"
+   ],
+   "correct": 0,
+   "why": "The object model keeps only a position: no size, shape or inner parts.",
+   "review": "motion-quantities"
+  },
+  {
+   "q": "A projectile's path, with air ignored, is",
+   "options": [
+    "a parabola",
+    "a straight line",
+    "a circle",
+    "a zigzag"
+   ],
+   "correct": 0,
+   "why": "Constant velocity sideways plus constant acceleration downward gives a parabola.",
+   "review": "motion-2d"
+  }
+ ],
+ "figure": {
+  "figure": "com-two-objects",
+  "caption": "The center of mass sits nearer the heavier ball; a system is whatever you draw the boundary around."
+ },
+ "chain": [
+  {
+   "cause": "You draw a boundary around the objects you care about",
+   "effect": "they form the system, and everything else is the surroundings"
+  },
+  {
+   "cause": "The parts of the system are not what the question is about",
+   "effect": "you can model the whole system as one point object"
+  },
+  {
+   "cause": "The system's mass is not spread evenly",
+   "effect": "that point, the center of mass, sits nearer the heavier parts: x_cm = Σm·x ÷ Σm"
+  },
+  {
+   "cause": "The system moves, tumbles or turns",
+   "effect": "its center of mass still moves like a single point object, so you can track one point instead of every part"
+  }
+ ],
+ "ideas": [
+  "A <b>system</b> is the object or objects you choose to study; everything outside the boundary is the <b>surroundings</b>.",
+  "<b>Mass</b> is a scalar measure of how much matter there is, in kilograms; masses add.",
+  "The <b>center of mass</b> is the mass-weighted average position: x_cm = (m₁x₁ + m₂x₂ + …) ÷ (m₁ + m₂ + …). Do x and y separately.",
+  "For a uniform, symmetric object the center of mass is on every line of symmetry. It can be in empty space (a ring)."
+ ],
+ "misconception": {
+  "wrong": "The center of mass is halfway between the objects, or at the middle of the object.",
+  "right": "Only for equal masses or a uniform object. Otherwise weight each position by its mass: the center of mass is closer to the heavier part."
+ },
+ "check": [
+  "phys-systems-center-of-mass-1",
+  "phys-systems-center-of-mass-2",
+  "phys-systems-center-of-mass-5",
+  "phys-systems-center-of-mass-6",
+  "phys-systems-center-of-mass-10",
+  "phys-systems-center-of-mass-12"
+ ],
+ "summary": "Choose a system and its boundary; when its insides do not matter, model it as one point at its center of mass, the mass-weighted average position x_cm = Σm·x ÷ Σm, which lies nearer the heavier parts and on any line of symmetry."
+}

@@ -1,0 +1,501 @@
+{
+ "stimuli": {
+  "fluid-flow-s1": {
+   "kind": "table",
+   "title": "Water in a narrowing pipe",
+   "text": "<p>Water (ρ = 1000 kg/m³) flows steadily through a horizontal pipe that narrows from section 1 to section 2. The pipe is full and the water is an ideal fluid.</p>",
+   "table": {
+    "caption": "Measurements at the two sections",
+    "cols": [
+     "Section",
+     "Area (m²)",
+     "Speed (m/s)",
+     "Absolute pressure (Pa)"
+    ],
+    "rows": [
+     [
+      "1",
+      "4.0 × 10⁻³",
+      "1.5",
+      "2.00 × 10⁵"
+     ],
+     [
+      "2",
+      "1.0 × 10⁻³",
+      "?",
+      "?"
+     ]
+    ]
+   }
+  },
+  "fluid-flow-s2": {
+   "kind": "diagram",
+   "title": "A tank with a hole",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 420 300\" role=\"img\" aria-label=\"A wide open tank of water with a small hole in its side wall 1.8 m below the water surface. A jet of water leaves the hole horizontally with speed v.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"420\" height=\"300\" fill=\"#FFFFFF\"/><rect x=\"40\" y=\"60\" width=\"220\" height=\"220\" fill=\"#D7EBF4\"/><path d=\"M40,30 L40,280 L260,280 L260,30\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"3\"/><line x1=\"40\" y1=\"60\" x2=\"260\" y2=\"60\" stroke=\"#7FB6CF\" stroke-width=\"2\"/><rect x=\"257\" y=\"205\" width=\"6\" height=\"10\" fill=\"#D7EBF4\"/><path d=\"M263,210 Q330,214 380,280\" fill=\"none\" stroke=\"#7FB6CF\" stroke-width=\"5\"/><line x1=\"268\" y1=\"210\" x2=\"311\" y2=\"210\" stroke=\"#B07A00\" stroke-width=\"2.5\" stroke-linecap=\"butt\"/><polygon points=\"320,210 311,215 311,205\" fill=\"#B07A00\"/><text x=\"300\" y=\"198\" font-size=\"15\" fill=\"#B07A00\" font-weight=\"bold\" font-style=\"italic\">v</text><line x1=\"20\" y1=\"135\" x2=\"20\" y2=\"68\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"20,60 24,68 16,68\" fill=\"#5A6268\"/><line x1=\"20\" y1=\"135\" x2=\"20\" y2=\"202\" stroke=\"#5A6268\" stroke-width=\"1.4\" stroke-linecap=\"butt\"/><polygon points=\"20,210 16,202 24,202\" fill=\"#5A6268\"/><text x=\"48\" y=\"140\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"start\">1.8 m</text><line x1=\"40\" y1=\"210\" x2=\"260\" y2=\"210\" stroke=\"#C9CFCC\" stroke-width=\"1.2\" stroke-dasharray=\"6 5\"/><text x=\"150\" y=\"52\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">open to the air</text><text x=\"275\" y=\"236\" font-size=\"12\" fill=\"#1F2A28\">small hole</text></svg><p>The tank is much wider than the hole, and the water is an ideal fluid. Use g = 9.8 m/s².</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-fluid-flow-1",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "fluid-flow-s1",
+   "q": "What is the volume flow rate of the water? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.006,
+    "tol": 0.0001,
+    "unit": "m^3/s",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.0027,
+      "rel": 0.02,
+      "why": "Value: you divided area by speed. Volume flow rate is area × speed, Av."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Volume flow rate = A₁v₁ = (4.0 × 10⁻³ m²)(1.5 m/s) = 6.0 × 10⁻³ m³/s, six liters each second. It is the same at every section of the pipe."
+   }
+  },
+  {
+   "id": "phys-fluid-flow-2",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "fluid-flow-s1",
+   "q": "What is the speed of the water at section 2? Give the value and its unit.",
+   "numeric": {
+    "answer": 6,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.38,
+      "rel": 0.02,
+      "why": "Value: the ratio is upside down. The water must speed up where the pipe is narrower: v₂ = v₁A₁/A₂."
+     },
+     {
+      "value": 1.5,
+      "rel": 0.02,
+      "why": "Value: the speed changes. The same volume each second must pass through a smaller area: A₁v₁ = A₂v₂."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Continuity: A₁v₁ = A₂v₂, so v₂ = (4.0 × 10⁻³ m²)(1.5 m/s)/(1.0 × 10⁻³ m²) = 6.0 m/s. A quarter of the area, four times the speed."
+   }
+  },
+  {
+   "id": "phys-fluid-flow-3",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "fluid-flow-s1",
+   "q": "What is the absolute pressure at section 2? Give the value and its unit.",
+   "numeric": {
+    "answer": 183000,
+    "tol": 1000,
+    "unit": "Pa",
+    "sigfigs": 3,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 217000,
+      "rel": 0.02,
+      "why": "Value: the sign is reversed. Where the water moves faster, its pressure is lower: P₂ = P₁ + ½ρ(v₁² − v₂²)."
+     },
+     {
+      "value": 166000,
+      "rel": 0.02,
+      "why": "Value: you left out the ½ in the kinetic term. Bernoulli uses ½ρv²."
+     },
+     {
+      "value": 190000,
+      "rel": 0.02,
+      "why": "Value: you used ½ρ(Δv)². Use the difference of the squares: ½ρ(v₁² − v₂²)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Bernoulli with y₁ = y₂ (horizontal pipe): P₁ + ½ρv₁² = P₂ + ½ρv₂². P₂ = 2.00 × 10⁵ Pa + ½(1000 kg/m³)[(1.5 m/s)² − (6.0 m/s)²] = 2.00 × 10⁵ Pa − 1.69 × 10⁴ Pa = 1.83 × 10⁵ Pa."
+   }
+  },
+  {
+   "id": "phys-fluid-flow-4",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "fluid-flow-s1",
+   "q": "A student predicts that the pressure is higher at section 2 because the water is squeezed into a narrower pipe. Which response is correct?",
+   "options": [
+    "The pressure is lower at section 2, because the water speeds up and is pushed from behind",
+    "The pressure is higher at section 2, because the narrow walls push in on the water",
+    "The pressure is the same at both sections, because the water is incompressible",
+    "The pressure is higher at section 2, because the same flow rate passes through less area"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Water speeds up from section 1 to section 2, so it gains kinetic energy. A net force must act on it in the direction of flow, which means the pressure behind it (section 1) is larger than the pressure ahead (section 2).",
+    "options": [
+     "Right: faster flow, lower pressure in a horizontal pipe.",
+     "This \"squeezing\" picture is the classic error; the water accelerates into the narrow part, so the pressure there is lower.",
+     "Incompressible means constant density, not constant pressure.",
+     "The same flow rate through less area means higher speed, which goes with lower pressure."
+    ]
+   }
+  },
+  {
+   "id": "phys-fluid-flow-5",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "fluid-flow-s1",
+   "q": "Which principle sets the speed at section 2, and which sets the pressure there?",
+   "options": [
+    "Continuity sets the speed; Bernoulli then sets the pressure",
+    "Bernoulli sets the speed; continuity then sets the pressure",
+    "Bernoulli alone sets both, with no need for continuity",
+    "Continuity alone sets both, because the pipe is horizontal"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The volume flowing in each second must flow out (an incompressible fluid cannot pile up), so A₁v₁ = A₂v₂ gives v₂ from the areas alone. Bernoulli, an energy statement, then turns the speed change into a pressure change.",
+    "options": [
+     "Right: geometry and continuity first, then energy.",
+     "Bernoulli has two unknowns here (P₂ and v₂); continuity has to supply the speed.",
+     "One equation cannot give two unknowns.",
+     "Continuity says nothing about pressure."
+    ]
+   }
+  },
+  {
+   "id": "phys-fluid-flow-6",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "fluid-flow-s2",
+   "q": "What is the speed of the water as it leaves the hole? Give the value and its unit.",
+   "numeric": {
+    "answer": 5.9,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 35,
+      "rel": 0.02,
+      "why": "Value: that is v². Take the square root: v = √(2gh)."
+     },
+     {
+      "value": 4.2,
+      "rel": 0.02,
+      "why": "Value: you lost the factor of 2. ρgh = ½ρv² gives v = √(2gh)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Bernoulli from the surface (point 1) to the hole (point 2): both are open to the air, so P₁ = P₂ = P₀; the surface barely moves, so v₁ ≈ 0. Then ρgy₁ = ρgy₂ + ½ρv², and v = √(2g × 1.8 m) = √(2 × 9.8 × 1.8) m/s = 5.9 m/s (Torricelli's result)."
+   }
+  },
+  {
+   "id": "phys-fluid-flow-7",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "fluid-flow-s2",
+   "q": "Why can the speed of the water surface in the tank be taken as zero?",
+   "options": [
+    "By continuity, the wide surface moves far more slowly than the water in the small hole",
+    "The water at the surface is at atmospheric pressure, so it does not move",
+    "The surface is the highest point, so its kinetic energy is converted to potential energy",
+    "The water in the tank is at rest; just the jet moves"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A_surface v_surface = A_hole v_hole. With A_surface much larger than A_hole, v_surface is tiny, and ½ρv² there is negligible.",
+    "options": [
+     "Right: continuity makes the surface speed negligible.",
+     "Pressure does not stop motion; the surface is falling, just slowly.",
+     "The surface does not gain or lose height quickly; this is not why its speed is small.",
+     "The water level is dropping, so the water in the tank moves; just slowly."
+    ]
+   }
+  },
+  {
+   "id": "phys-fluid-flow-8",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "fluid-flow-s2",
+   "q": "A second hole is made 7.2 m below the surface of a taller tank of the same kind. How does the jet speed from this hole compare with the 1.8 m hole?",
+   "options": [
+    "Twice as fast",
+    "Four times as fast",
+    "√2 times as fast",
+    "The same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "v = √(2gh), so v ∝ √h. Four times the depth (7.2/1.8 = 4) gives √4 = 2 times the speed.",
+    "options": [
+     "Right: speed grows as the square root of depth.",
+     "This treats v as proportional to h; it is proportional to √h.",
+     "The depth is 4 times as large, not 2 times.",
+     "Deeper water is at higher pressure and pushes the jet out faster."
+    ]
+   }
+  },
+  {
+   "id": "phys-fluid-flow-9",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "fluid-flow-s2",
+   "q": "The hole is replaced by one with half the area, at the same depth. What happens to the jet's speed and to the volume flow rate out of the hole?",
+   "options": [
+    "Speed unchanged; flow rate halved",
+    "Speed doubled; flow rate unchanged",
+    "Speed halved; flow rate halved",
+    "Speed doubled; flow rate doubled"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The exit speed √(2gh) depends only on the depth, not on the hole's size. The flow rate Av then halves with A.",
+    "options": [
+     "Right: v from depth, then flow rate = Av.",
+     "A garden-hose nozzle speeds water up because a pump keeps the flow rate fixed; here the depth fixes the speed instead.",
+     "Nothing about the speed formula involves the hole's area.",
+     "The speed is set by the depth; with less area the flow rate cannot grow."
+    ]
+   }
+  },
+  {
+   "id": "phys-fluid-flow-10",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "fluid-flow-s2",
+   "q": "The hole has an area of 2.0 × 10⁻⁴ m². What is the volume flow rate out of it? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.0012,
+    "tol": 0.00005,
+    "unit": "m^3/s",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.0071,
+      "rel": 0.02,
+      "why": "Value: you used v² in place of v. Find v = √(2gh) first, then multiply by the area."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Flow rate = Av = (2.0 × 10⁻⁴ m²)(5.94 m/s) = 1.2 × 10⁻³ m³/s, about 1.2 liters per second."
+   }
+  },
+  {
+   "id": "phys-fluid-flow-11",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "3.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "You put your thumb over part of the end of a garden hose, and the water sprays out faster. Why?",
+   "options": [
+    "The same volume per second leaves through a smaller area",
+    "Your thumb adds energy to the water as it squeezes past",
+    "The pressure in the jet rises under your thumb, which pushes the water out faster",
+    "Water is compressed under your thumb and expands as it leaves"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The supply pushes water through at about the same volume flow rate. Continuity, Av = constant, means a smaller opening needs a larger speed.",
+    "options": [
+     "Right: continuity.",
+     "Your thumb is at rest, so it does no work on the water.",
+     "This is the \"squeezed water has higher pressure\" error. Once it leaves, the jet is at atmospheric pressure; it is faster because the same flow passes a smaller opening.",
+     "Water is nearly incompressible; continuity, not compression, explains the jet."
+    ]
+   }
+  },
+  {
+   "id": "phys-fluid-flow-12",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Treat blood as an ideal fluid. It flows at 0.30 m/s in an artery. At a narrowed section, the area is one third of the normal area. What is the blood's speed in the narrowed section? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.9,
+    "tol": 0.01,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.1,
+      "rel": 0.02,
+      "why": "Value: the speed goes up where the area goes down. v₂ = v₁(A₁/A₂) = 3 × 0.30 m/s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Continuity: A₁v₁ = A₂v₂ with A₂ = A₁/3, so v₂ = 3v₁ = 0.90 m/s."
+   }
+  },
+  {
+   "id": "phys-fluid-flow-13",
+   "type": "numeric",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Water flows at a steady speed up a vertical pipe of constant cross section. What is the difference in pressure between two points 5.0 m apart in height? Use g = 9.8 m/s² and ρ = 1000 kg/m³. Give the value and its unit.",
+   "numeric": {
+    "answer": 49000,
+    "tol": 1000,
+    "unit": "Pa",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 5000,
+      "rel": 0.02,
+      "why": "Value: you left out g. The pressure difference is ρgΔy."
+     },
+     {
+      "value": 25000,
+      "rel": 0.02,
+      "why": "Value: there is no ½ here. With equal speeds the kinetic terms cancel, leaving P₁ − P₂ = ρg(y₂ − y₁)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Continuity: constant area means equal speeds, so the ½ρv² terms cancel in Bernoulli's equation. P_low − P_high = ρgΔy = (1000 kg/m³)(9.8 m/s²)(5.0 m) = 4.9 × 10⁴ Pa; the lower point has the higher pressure."
+   }
+  },
+  {
+   "id": "phys-fluid-flow-14",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "3.B",
+   "level": "recall",
+   "diff": 2,
+   "q": "Bernoulli's equation is a statement of which conservation law, applied to a moving fluid?",
+   "options": [
+    "Conservation of energy",
+    "Conservation of mass",
+    "Conservation of momentum",
+    "Conservation of angular momentum"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each term is an energy per unit volume: ½ρv² (kinetic), ρgy (gravitational potential), and P (the work done per unit volume by the pressure pushing the fluid along). With no friction (an ideal fluid), their sum stays constant along the flow.",
+    "options": [
+     "Right: energy per unit volume.",
+     "Mass conservation is the continuity equation, A₁v₁ = A₂v₂.",
+     "Momentum conservation is not what Bernoulli expresses.",
+     "Bernoulli involves no rotation."
+    ]
+   }
+  },
+  {
+   "id": "phys-fluid-flow-15",
+   "type": "predict",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Water flows through a full horizontal pipe that widens to twice its diameter. Predict how each quantity in the wide part compares with the narrow part.",
+   "variables": [
+    {
+     "name": "Volume flow rate",
+     "answer": "none",
+     "why": "Continuity: what flows in each second flows out; the fluid is incompressible."
+    },
+    {
+     "name": "Speed of the water",
+     "answer": "down",
+     "why": "Twice the diameter is four times the area, so the speed is a quarter as large."
+    },
+    {
+     "name": "Pressure in the water",
+     "answer": "up",
+     "why": "Bernoulli, same height: the water slows down, so its pressure rises."
+    }
+   ],
+   "why": {
+    "correct": "Continuity sets the speeds from the areas; Bernoulli then gives the pressure change."
+   }
+  },
+  {
+   "id": "phys-fluid-flow-16",
+   "type": "single",
+   "unit": "unit-8",
+   "topic": "fluid-flow",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A smooth stream of water falling from a faucet gets narrower as it falls. Which explanation is correct?",
+   "options": [
+    "It speeds up as it falls, so by continuity its area shrinks",
+    "Air pressure squeezes the stream more and more as it falls",
+    "The water is compressed by its own weight as it falls",
+    "Some water evaporates from the stream, so less is left"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Gravity speeds the water up. The volume flow rate Av is the same at every height, so where v is larger, A must be smaller.",
+    "options": [
+     "Right: faster flow, smaller area.",
+     "Air pressure is about the same all along the short stream.",
+     "Water is nearly incompressible.",
+     "Evaporation over a fraction of a second is negligible."
+    ]
+   }
+  }
+ ]
+}

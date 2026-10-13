@@ -1,0 +1,100 @@
+{
+ "id": "frq-u8-floating-coin",
+ "type": "qqt",
+ "points": 8,
+ "title": "A coin on a floating block",
+ "units": [
+  "unit-8"
+ ],
+ "topics": [
+  "buoyancy"
+ ],
+ "practices": [
+  "2.A",
+  "2.D",
+  "3.B",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "diagram",
+  "title": "Two floating blocks",
+  "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 580 230\" role=\"img\" aria-label=\"Two rectangular wooden blocks of equal mass float upright in water. Block 1 has bottom area A and is tall and narrow; block 2 has bottom area 2A and is short and wide, so it sits less deep in the water.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"580\" height=\"230\" fill=\"#FFFFFF\"/><rect x=\"30\" y=\"90\" width=\"520\" height=\"130\" fill=\"#D7EBF4\"/><path d=\"M30,30 L30,220 L550,220 L550,30\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"3\"/><line x1=\"30\" y1=\"90\" x2=\"550\" y2=\"90\" stroke=\"#7FB6CF\" stroke-width=\"2\"/><rect x=\"110\" y=\"60\" width=\"70\" height=\"60\" rx=\"3\" fill=\"#E9D8B8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"145\" y=\"95\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">1</text><rect x=\"330\" y=\"75\" width=\"140\" height=\"30\" rx=\"3\" fill=\"#E9D8B8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"400\" y=\"95\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">2</text><text x=\"145\" y=\"30\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\">area A</text><text x=\"400\" y=\"30\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\">area 2A</text><text x=\"290\" y=\"200\" font-size=\"13\" fill=\"#5A6268\" text-anchor=\"middle\">equal masses, M</text></svg><p>Two rectangular wooden blocks, each of mass M, float upright in water of density ρ with their flat bottoms horizontal. Block 1 has bottom area A. Block 2 has bottom area 2A. A coin of mass m is placed at the center of the top of each block. Both blocks still float, with their tops above the water, and come to rest.</p>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 2,
+   "space": "lines",
+   "prompt": "When the coin is added, each block sinks an additional distance Δd lower in the water. Is Δd greater for block 1, greater for block 2, or the same for both? <b>Justify</b> your answer without using equations.",
+   "rubric": [
+    {
+     "point": "Claims Δd is greater for block 1",
+     "accept": [
+      "block 1 sinks farther"
+     ]
+    },
+    {
+     "point": "Reasons that each block needs the same extra buoyant force (equal to the coin's weight), so each must displace the same extra volume of water, and block 1 must sink deeper to displace it over a smaller area",
+     "accept": [
+      "same added volume spread over a smaller area means a larger depth"
+     ]
+    }
+   ],
+   "sample": "Block 1 sinks farther. The coin adds the same weight to each block, so to float again each block needs the same extra upward push from the water. The buoyant force depends on how much water is pushed aside, so each must displace the same extra volume of water. Block 1 has the smaller bottom, so it has to sink deeper to push aside that same volume."
+  },
+  {
+   "label": "b",
+   "points": 4,
+   "space": "lines",
+   "prompt": "Starting with Newton's second law, <b>derive</b> an expression for Δd for a block of bottom area A. Express your answer in terms of m, ρ, A and physical constants, as appropriate.",
+   "rubric": [
+    {
+     "point": "Starts from Newton's second law with zero acceleration, with the buoyant force and the gravitational force as separate, opposite forces",
+     "accept": [
+      "ΣF = 0: F_b − (M + m)g = 0, with F_b up and gravity down"
+     ]
+    },
+    {
+     "point": "Writes the buoyant force as ρ V_displaced g with V_displaced = A × (depth below the surface)",
+     "accept": [
+      "F_b = ρ A d g"
+     ]
+    },
+    {
+     "point": "Applies the condition before and after (or the change): ρAd₀g = Mg and ρA(d₀ + Δd)g = (M + m)g",
+     "accept": [
+      "subtracting gives ρAΔd g = mg"
+     ]
+    },
+    {
+     "point": "Correct result Δd = m/(ρA)",
+     "accept": [
+      "g cancels; M cancels"
+     ]
+    }
+   ],
+   "sample": "Newton's second law for the floating block, which is at rest (a = 0), up positive: F_b − F_g = 0. The buoyant force (water on block) points up and equals ρV_disp g = ρAdg, where d is the depth of the bottom below the surface; the gravitational force (Earth on block plus coin) points down. Before: ρAd₀g − Mg = 0. After the coin: ρA(d₀ + Δd)g − (M + m)g = 0. Subtracting the first equation from the second: ρAΔd g − mg = 0, so Δd = m/(ρA)."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "space": "lines",
+   "prompt": "<b>Explain</b> how your expression from part (b) supports or does not support your claim in part (a).",
+   "rubric": [
+    {
+     "point": "Reads the dependence correctly: Δd is inversely proportional to A, so block 2 (area 2A) sinks half as far as block 1",
+     "accept": [
+      "Δd ∝ 1/A; Δd₁ = 2Δd₂"
+     ]
+    },
+    {
+     "point": "Ties it to the claim in part (a): consistent, block 1 sinks farther; or, if (a) was wrong, states that the expression contradicts it",
+     "accept": [
+      "notes also that Δd does not depend on M, so equal masses do not matter"
+     ]
+    }
+   ],
+   "sample": "Δd = m/(ρA) is inversely proportional to the bottom area. Block 2 has twice the area, so Δd₂ = m/(2ρA), half of Δd₁. Block 1 sinks twice as far, which supports my claim in part (a). The expression also shows that the block's own mass M does not matter, which agrees with the reasoning that only the coin's added weight has to be balanced."
+  }
+ ]
+}

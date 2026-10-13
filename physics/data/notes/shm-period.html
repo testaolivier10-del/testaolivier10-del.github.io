@@ -1,0 +1,53 @@
+<p>Every oscillator has a natural rhythm: a time for one full cycle that it keeps returning to. This page gives the two formulas for that time that the exam uses, explains where each one comes from in words, and shows the functional-dependence reasoning ("if the mass is four times as large, the period is...") that free-response questions ask for.</p>
+
+<h2>Period and frequency</h2>
+<p>The <b>period</b> T of an oscillation is the time for one complete cycle: from one position, through the whole motion, and back to the same position moving the same way. For a pendulum released at the left, one period is left, right, and back to the left, not just one swing across.</p>
+<p>The <b>frequency</b> f is the number of cycles per second, measured in hertz (1 Hz = 1 cycle per second). The two are reciprocals, as you saw for circular motion:</p>
+<p style="text-align:center"><b>T = 1/f</b></p>
+<p>In the lab, timing one cycle with a stopwatch gives a large error, because your reaction time (about 0.2 s) is a sizable fraction of a period. Time 10 or 20 cycles and divide: the reaction-time error is spread over all of them.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A mass on a spring completes 20 oscillations in 13.0 s. Find T and f.</p>
+<p>T = 13.0 s / 20 = <b>0.650 s</b>; f = 1/T = 1/(0.650 s) = <b>1.54 Hz</b>.</p>
+</div>
+
+<h2>A block on a spring: T = 2π√(m/k)</h2>
+<p>Think about what makes a block turn around sooner. A stiffer spring (larger k) pulls harder at every position, so the block is pushed back more quickly: a shorter period. A more massive block (larger m) accelerates less under the same force, so it takes longer: a longer period. The exact result, printed on the equations sheet, is</p>
+<p style="text-align:center"><b>T<sub>s</sub> = 2π√(m/k)</b></p>
+<p>Two things are missing from this formula, and both are tested:</p>
+<ul>
+<li><b>No amplitude.</b> Pull the block twice as far and it has twice as far to go, but the force at each point is twice as large, so it moves twice as fast. The two effects cancel exactly. Unit 7.3 shows this on graphs.</li>
+<li><b>No g.</b> A block hanging from a vertical spring has the same period as on a horizontal frictionless table. Gravity shifts the equilibrium position down, but about that new position the restoring force is still −kx.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> A 0.50 kg block on a spring has a period of 0.80 s. Find k.</p>
+<p>Start from T = 2π√(m/k). Square both sides: T² = 4π²m/k, so k = 4π²m/T².</p>
+<p>k = 4π²(0.50 kg)/(0.80 s)² = 19.74/0.64 N/m = <b>31 N/m</b>.</p>
+</div>
+
+<h2>A simple pendulum: T = 2π√(ℓ/g)</h2>
+<p>For a pendulum, the restoring force comes from gravity, so g appears: a stronger gravitational field pulls the bob back harder and shortens the period. A longer string makes the bob travel a longer arc for the same angle, while the restoring force at that angle is the same, so a longer pendulum has a longer period. For small angles,</p>
+<p style="text-align:center"><b>T<sub>p</sub> = 2π√(ℓ/g)</b></p>
+<p>The mass of the bob is missing. A bob with twice the mass has twice the weight pulling it back, but also twice the inertia resisting the change in motion. Its acceleration at each point is the same, so its period is the same. This is the same reason heavy and light objects fall together.</p>
+<figure id="fig-period" data-fig="shm-period-factors"><figcaption>What the two periods depend on, and what they do not.</figcaption></figure>
+<table class="compare">
+<thead><tr><th>Change</th><th>Block on a spring</th><th>Pendulum (small angle)</th></tr></thead>
+<tbody>
+<tr><td>Mass × 4</td><td>T × 2</td><td>no change</td></tr>
+<tr><td>Spring constant × 4</td><td>T × ½</td><td>(no spring)</td></tr>
+<tr><td>Length × 4</td><td>(no length)</td><td>T × 2</td></tr>
+<tr><td>g × 4 (another planet)</td><td>no change</td><td>T × ½</td></tr>
+<tr><td>Amplitude × 2</td><td>no change</td><td>no change</td></tr>
+</tbody></table>
+<p>The exam's most common error here is using the spring formula for a pendulum and concluding that a heavier bob swings more slowly. Check which system you have before you pick the formula.</p>
+
+<h2>Functional dependence</h2>
+<p>Many questions do not give numbers; they ask how T changes when one quantity changes. Write the formula, keep everything else fixed, and read the factor. T ∝ √m means: multiply m by 4, T is multiplied by √4 = 2. Multiply m by 2, T is multiplied by √2 ≈ 1.41.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A pendulum on Earth has period 1.6 s. It is taken to a planet where g is 4 times as large, and its string is made 9 times as long. Find the new period.</p>
+<p>T ∝ √(ℓ/g), so the factor is √(9/4) = 3/2.</p>
+<p>New T = 1.5 × 1.6 s = <b>2.4 s</b>.</p>
+</div>
+<p>On this course we use g = 9.8 m/s², the value printed on the equations sheet. The exam also accepts 10 m/s²; whichever you use, use it throughout a solution.</p>
+
+<h2>Measuring k or g with a straight line</h2>
+<p>A graph of T against m curves, because T ∝ √m. To get a straight line, square the formula: T² = (4π²/k)·m. Plot T² on the vertical axis and m on the horizontal axis; the slope is 4π²/k, so k = 4π²/slope. For a pendulum, T² = (4π²/g)·ℓ: plot T² against ℓ and g = 4π²/slope. This is a favorite laboratory free-response task.</p>

@@ -1,0 +1,99 @@
+{
+ "topic": "rotational-kinetic-energy",
+ "hook": "Some city buses and racing cars store energy in a heavy spinning wheel: brake, and the wheel spins up; accelerate, and it hands the energy back. The wheel never goes anywhere, yet it holds a lot of energy. That is kinetic energy of turning, and it follows the same rule as a moving cart, with new letters.",
+ "prereq": [
+  {
+   "q": "A 4.0 kg cart moves at 3.0 m/s. Its kinetic energy is",
+   "options": [
+    "18 J",
+    "6.0 J",
+    "36 J",
+    "12 J"
+   ],
+   "correct": 0,
+   "why": "K = ½mv² = ½(4.0)(3.0)² = 18 J.",
+   "review": "kinetic-energy"
+  },
+  {
+   "q": "A point 0.50 m from an axis turns at 4.0 rad/s. Its speed is",
+   "options": [
+    "2.0 m/s",
+    "8.0 m/s",
+    "0.13 m/s",
+    "4.0 m/s"
+   ],
+   "correct": 0,
+   "why": "v = rω = (0.50)(4.0).",
+   "review": "linear-rotational-link"
+  },
+  {
+   "q": "A hoop and a disk have the same mass and radius. Which has the larger rotational inertia about its center?",
+   "options": [
+    "The hoop",
+    "The disk",
+    "Neither",
+    "It depends on how fast they spin"
+   ],
+   "correct": 0,
+   "why": "All of the hoop’s mass is at the rim: MR² > ½MR².",
+   "review": "rotational-inertia"
+  }
+ ],
+ "figure": {
+  "figure": "flywheel-energy",
+  "caption": "Every piece of a spinning wheel moves, even though the center stays put, so the wheel has kinetic energy K = ½Iω²."
+ },
+ "chain": [
+  {
+   "cause": "A wheel turns at ω about a fixed axle",
+   "effect": "each piece of mass m at distance r moves at v = rω"
+  },
+  {
+   "cause": "Each piece has kinetic energy ½mv² = ½m r²ω²",
+   "effect": "adding the pieces gives ½(Σmr²)ω²"
+  },
+  {
+   "cause": "Σmr² is the rotational inertia I",
+   "effect": "the wheel’s kinetic energy is K = ½Iω²"
+  },
+  {
+   "cause": "ω doubles",
+   "effect": "K becomes 4 times as large"
+  },
+  {
+   "cause": "The same mass sits farther from the axle",
+   "effect": "I and so K are larger at the same ω"
+  }
+ ],
+ "ideas": [
+  "A turning object has <b>rotational kinetic energy</b> K = ½Iω², even if its center of mass is at rest.",
+  "It is the sum of ½mv² over every piece, with v = rω.",
+  "A scalar in joules; the direction of turning does not matter, because ω is squared.",
+  "K ∝ ω² at fixed I (doubling ω gives 4K) and K ∝ I at fixed ω.",
+  "K against ω² is a straight line with slope ½I."
+ ],
+ "misconception": {
+  "wrong": "A wheel spinning in place has no kinetic energy, because it is not going anywhere.",
+  "right": "Every piece of the wheel is moving, so the wheel has kinetic energy ½Iω². Its momentum adds to zero because opposite sides move opposite ways, but kinetic energy is a scalar and does not cancel."
+ },
+ "check": [
+  "phys-rotational-kinetic-energy-1",
+  "phys-rotational-kinetic-energy-2",
+  "phys-rotational-kinetic-energy-3",
+  "phys-rotational-kinetic-energy-4",
+  "phys-rotational-kinetic-energy-6",
+  "phys-rotational-kinetic-energy-7",
+  "phys-rotational-kinetic-energy-12"
+ ],
+ "summary": "An object turning about an axis has rotational kinetic energy K = ½Iω², the sum of ½mv² over all its pieces. It is a scalar in joules, is present even when the center of mass is at rest, grows with the square of ω and in proportion to the rotational inertia.",
+ "connections": [
+  {
+   "href": "../notes/rotational-second-law.html",
+   "label": "Back: torque and angular acceleration (5.6)"
+  },
+  {
+   "href": "../notes/torque-work.html",
+   "label": "Next: how a torque gives a wheel energy (6.2)"
+  }
+ ]
+}

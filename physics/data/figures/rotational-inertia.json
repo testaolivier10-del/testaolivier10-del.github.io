@@ -1,0 +1,12 @@
+{
+ "dumbbell-inertia": {
+  "file": "figures/dumbbell-inertia.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two light rods each carry two equal masses m and turn about a vertical axis through their centers. In the top rod the masses sit a distance r from the axis, giving I = 2mr². In the bottom rod they sit at 2r, giving I = 8mr², four times as much with the same total mass. A panel gives I = Σmr², notes that doubling the distance quadruples I, and lists rotational inertias the exam gives for shapes: hoop MR², solid disk ½MR², solid sphere two fifths MR², rod about its center one twelfth ML², rod about one end one third ML². Unit kg·m²."
+ }
+}

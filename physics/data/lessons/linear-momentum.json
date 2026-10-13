@@ -1,0 +1,94 @@
+{
+ "topic": "linear-momentum",
+ "hook": "A slow loaded freight train and a fast baseball are both hard to stop, for different reasons: one has enormous mass, the other a large speed. Momentum combines the two into one vector quantity, and it turns out to be the quantity collisions and explosions cannot change.",
+ "prereq": [
+  {
+   "q": "Velocity is",
+   "options": [
+    "a vector with size and direction",
+    "a scalar",
+    "always positive",
+    "the same as speed"
+   ],
+   "correct": 0,
+   "why": "Velocity has a direction, carried by its sign in one dimension.",
+   "review": "scalars-vectors"
+  },
+  {
+   "q": "The center of mass of a system is",
+   "options": [
+    "the mass-weighted average position",
+    "the midpoint between objects",
+    "the heaviest object",
+    "where gravity is zero"
+   ],
+   "correct": 0,
+   "why": "x_cm = Σmᵢxᵢ/Σmᵢ.",
+   "review": "systems-center-of-mass"
+  },
+  {
+   "q": "Forces between objects inside a system are",
+   "options": [
+    "internal forces",
+    "external forces",
+    "net forces",
+    "contact forces only"
+   ],
+   "correct": 0,
+   "why": "Forces between parts of the system are internal; Newton's third law makes them cancel in pairs.",
+   "review": "third-law"
+  }
+ ],
+ "figure": {
+  "figure": "momentum-two-carts",
+  "caption": "Two carts with equal momentum: one heavy and slow, one light and fast, with different kinetic energies."
+ },
+ "chain": [
+  {
+   "cause": "An object of mass m moves with velocity v",
+   "effect": "it has momentum p = mv, a vector along v, in kg·m/s"
+  },
+  {
+   "cause": "Several objects form a system",
+   "effect": "the system's momentum is the vector sum, and momenta in opposite directions cancel"
+  },
+  {
+   "cause": "The system's momentum is divided by its total mass",
+   "effect": "the result is the velocity of the center of mass, v_cm = Σp/Σm"
+  },
+  {
+   "cause": "Objects push on each other briefly and hard (a collision or explosion)",
+   "effect": "the internal forces dominate, so the system's momentum is the same just before and just after"
+  }
+ ],
+ "ideas": [
+  "<b>Momentum</b> p = mv is a vector in the direction of the velocity, in kg·m/s.",
+  "A system's momentum is the vector sum of its parts. Opposite momenta cancel; kinetic energies never do.",
+  "Same momentum does not mean same kinetic energy: K = p²/(2m), so the lighter object has more K.",
+  "The <b>velocity of the center of mass</b> is v_cm = Σp/Σm.",
+  "The <b>collision model</b>: forces between colliding objects are internal and much larger than outside forces, so the system's momentum is the same just before and just after. An <b>explosion</b> is the same model in reverse."
+ ],
+ "misconception": {
+  "wrong": "A heavy truck always has more momentum than a light ball.",
+  "right": "Momentum is mass times velocity. A fast, light object can have as much momentum as a slow, heavy one, and two momenta in opposite directions can cancel."
+ },
+ "check": [
+  "phys-linear-momentum-1",
+  "phys-linear-momentum-2",
+  "phys-linear-momentum-3",
+  "phys-linear-momentum-4",
+  "phys-linear-momentum-10",
+  "phys-linear-momentum-14"
+ ],
+ "summary": "Momentum p = mv is a vector along the velocity. A system's momentum is the vector sum of its parts, and its center of mass moves at v_cm = Σp/Σm. In collisions and explosions the internal forces dominate, so the momentum just before equals the momentum just after.",
+ "connections": [
+  {
+   "href": "../notes/power.html",
+   "label": "Back: power (3.5)"
+  },
+  {
+   "href": "../notes/impulse.html",
+   "label": "Next: 4.2"
+  }
+ ]
+}

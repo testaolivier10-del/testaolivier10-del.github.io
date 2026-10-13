@@ -1,0 +1,12 @@
+{
+ "meterstick-prefixes": {
+  "file": "figures/meterstick-prefixes.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A meterstick from 0 to 100 centimeters, labeled 1 m = 100 cm = 1000 mm. The first 10 centimeters are magnified to show that 1 cm = 10 mm and each small mark is 1 mm = 0.001 m. A table lists the prefixes kilo (10 to the 3), centi (10 to the minus 2), milli (10 to the minus 3) and micro (10 to the minus 6). At the bottom, 54 km/h is multiplied by 1000 m per km and by 1 h per 3600 s, the km and h cancel, and the result is 15 m/s."
+ }
+}

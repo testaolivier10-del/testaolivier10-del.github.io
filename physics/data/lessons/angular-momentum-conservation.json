@@ -1,0 +1,100 @@
+{
+ "topic": "angular-momentum-conservation",
+ "hook": "A spinning skater pulls in her arms and whirls into a blur. A diver tucks and flips. A collapsing star becomes a pulsar spinning hundreds of times a second. None of them gets a push from outside. They just rearrange their own mass, and angular momentum, which cannot change without an outside torque, does the rest.",
+ "prereq": [
+  {
+   "q": "A system’s total momentum stays constant when",
+   "options": [
+    "the net external force on it is zero",
+    "its kinetic energy is constant",
+    "no internal forces act",
+    "it is at rest"
+   ],
+   "correct": 0,
+   "why": "Zero net external force means zero external impulse.",
+   "review": "momentum-conservation"
+  },
+  {
+   "q": "A wheel with I = 0.50 kg·m² turns at 6.0 rad/s. Its angular momentum is",
+   "options": [
+    "3.0 kg·m²/s",
+    "9.0 kg·m²/s",
+    "12 kg·m²/s",
+    "0.083 kg·m²/s"
+   ],
+   "correct": 0,
+   "why": "L = Iω.",
+   "review": "angular-momentum"
+  },
+  {
+   "q": "A puck slides in a straight line past point P. Its angular momentum about P",
+   "options": [
+    "stays the same",
+    "grows as it moves away",
+    "is zero",
+    "shrinks as it moves away"
+   ],
+   "correct": 0,
+   "why": "mv × (perpendicular distance) does not change.",
+   "review": "angular-momentum"
+  }
+ ],
+ "figure": {
+  "figure": "stool-arms-in-out",
+  "caption": "With no outside torque about the axle, L = Iω stays the same: arms in means smaller I and larger ω."
+ },
+ "chain": [
+  {
+   "cause": "The net external torque on a system is zero",
+   "effect": "no angular impulse comes from outside, so the total L stays the same"
+  },
+  {
+   "cause": "Parts of the system push on each other",
+   "effect": "they trade angular momentum, but the total is unchanged"
+  },
+  {
+   "cause": "The system pulls mass in toward the axis",
+   "effect": "I falls, so ω = L/I rises"
+  },
+  {
+   "cause": "I falls with L fixed",
+   "effect": "K = L²/(2I) rises; internal work (muscles) supplies it"
+  },
+  {
+   "cause": "An object sticks to a pivoted body",
+   "effect": "L about the pivot is conserved (the pivot force has no torque about it) even though linear momentum is not"
+  }
+ ],
+ "ideas": [
+  "L is constant when the <b>net external torque</b> is zero. State the system and this condition every time.",
+  "Choose the system so that the forces that change each part are internal.",
+  "Shape change at constant L: I₁ω₁ = I₂ω₂. Pulling mass in speeds up the spin.",
+  "Kinetic energy is <i>not</i> conserved in these changes: pulling in raises K; sticking collisions lower it.",
+  "A pivot pushes during a collision, so linear momentum changes, but its torque about the pivot is zero, so L about the pivot is conserved."
+ ],
+ "misconception": {
+  "wrong": "When clay hits and sticks to a rod hanging from a pivot, linear momentum is conserved, so (m + M)v_after = mv.",
+  "right": "The pivot pushes on the rod during the collision, an outside force, so linear momentum is not conserved. That force acts at the pivot and has no torque about it, so angular momentum about the pivot is conserved: mvd = I_total ω."
+ },
+ "check": [
+  "phys-angular-momentum-conservation-1",
+  "phys-angular-momentum-conservation-2",
+  "phys-angular-momentum-conservation-3",
+  "phys-angular-momentum-conservation-4",
+  "phys-angular-momentum-conservation-6",
+  "phys-angular-momentum-conservation-7",
+  "phys-angular-momentum-conservation-8",
+  "phys-angular-momentum-conservation-9"
+ ],
+ "summary": "A system’s total angular momentum stays constant when the net external torque on it is zero. When the system changes shape, its rotational inertia changes and its angular velocity changes the opposite way (I₁ω₁ = I₂ω₂), while kinetic energy does not stay constant. Around a pivot, angular momentum about the pivot is conserved in a collision even though linear momentum is not.",
+ "connections": [
+  {
+   "href": "../notes/angular-momentum.html",
+   "label": "Back: angular momentum and angular impulse (6.3)"
+  },
+  {
+   "href": "../notes/rolling.html",
+   "label": "Next: objects that roll (6.5)"
+  }
+ ]
+}

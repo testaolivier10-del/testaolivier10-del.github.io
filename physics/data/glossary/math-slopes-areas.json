@@ -1,0 +1,20 @@
+{
+ "graph-axes": {
+  "def": "The labels on a graph's axes: the quantity and its unit, such as \"Time (s)\". The independent variable (the one you choose or control) usually goes on the horizontal axis."
+ },
+ "slope": {
+  "def": "The steepness of a line: rise over run, Δy/Δx between two points on the line. Its unit is (y unit)/(x unit), and it tells you the rate at which y changes with x."
+ },
+ "linear-relationship": {
+  "def": "A relationship whose graph is a straight line, y = mx + b, with slope m and vertical intercept b."
+ },
+ "area-under-graph": {
+  "def": "The area between a graph and the horizontal axis over an interval. Its unit is (y unit) × (x unit); area below the axis counts as negative."
+ },
+ "best-fit-line": {
+  "def": "A straight line drawn through scattered data with about as many points above it as below. It is never drawn dot to dot; its slope uses all the data."
+ },
+ "linearization": {
+  "def": "Choosing what to plot so that the graph is a straight line, for example d against t² when d = ½at², so the slope gives the quantity you want."
+ }
+}

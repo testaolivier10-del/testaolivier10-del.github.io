@@ -1,0 +1,468 @@
+{
+ "stimuli": {
+  "systems-center-of-mass-s1": {
+   "kind": "diagram",
+   "title": "A wrench sliding across ice",
+   "text": "<p>A wrench is given a spin and a shove across smooth, level ice. A camera above records it every 0.20 s. Most of its mass is in the steel head; the black dot marks the light end of the handle.</p>",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 620 220\" role=\"img\" aria-label=\"Top view of a wrench sliding across ice, shown at five moments 0.20 s apart. The wrench turns as it slides. Its center of mass, near the heavy head, moves along a straight dashed line by equal steps, while the handle end swings around it.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"620\" height=\"220\" fill=\"#FFFFFF\"/><rect x=\"10\" y=\"10\" width=\"600\" height=\"200\" rx=\"8\" fill=\"#EEF5F8\" stroke=\"#C9CFCC\" stroke-width=\"1.2\"/><line x1=\"70\" y1=\"150\" x2=\"550\" y2=\"62\" stroke=\"#734200\" stroke-width=\"1.6\" stroke-dasharray=\"6 5\"/><line x1=\"86\" y1=\"150\" x2=\"26\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"7\"/><circle cx=\"86\" cy=\"150\" r=\"13\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><circle cx=\"26\" cy=\"150\" r=\"4\" fill=\"#1F2A28\"/><circle cx=\"70\" cy=\"150\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><path d=\"M70,150 L76,150 A6,6 0 0,1 70,156 Z\" fill=\"#1F2A28\"/><path d=\"M70,150 L64,150 A6,6 0 0,1 70,144 Z\" fill=\"#1F2A28\"/><text x=\"70\" y=\"200\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">0.00 s</text><line x1=\"200.3\" y1=\"115.7\" x2=\"161.7\" y2=\"161.7\" stroke=\"#5A6268\" stroke-width=\"7\"/><circle cx=\"200.3\" cy=\"115.7\" r=\"13\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><circle cx=\"161.7\" cy=\"161.7\" r=\"4\" fill=\"#1F2A28\"/><circle cx=\"190\" cy=\"128\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><path d=\"M190,128 L196,128 A6,6 0 0,1 190,134 Z\" fill=\"#1F2A28\"/><path d=\"M190,128 L184,128 A6,6 0 0,1 190,122 Z\" fill=\"#1F2A28\"/><text x=\"190\" y=\"200\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">0.20 s</text><line x1=\"307.2\" y1=\"90.2\" x2=\"317.6\" y2=\"149.3\" stroke=\"#5A6268\" stroke-width=\"7\"/><circle cx=\"307.2\" cy=\"90.2\" r=\"13\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><circle cx=\"317.6\" cy=\"149.3\" r=\"4\" fill=\"#1F2A28\"/><circle cx=\"310\" cy=\"106\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><path d=\"M310,106 L316,106 A6,6 0 0,1 310,112 Z\" fill=\"#1F2A28\"/><path d=\"M310,106 L304,106 A6,6 0 0,1 310,100 Z\" fill=\"#1F2A28\"/><text x=\"310\" y=\"200\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">0.40 s</text><line x1=\"416.1\" y1=\"76\" x2=\"468.1\" y2=\"106\" stroke=\"#5A6268\" stroke-width=\"7\"/><circle cx=\"416.1\" cy=\"76\" r=\"13\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><circle cx=\"468.1\" cy=\"106\" r=\"4\" fill=\"#1F2A28\"/><circle cx=\"430\" cy=\"84\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><path d=\"M430,84 L436,84 A6,6 0 0,1 430,90 Z\" fill=\"#1F2A28\"/><path d=\"M430,84 L424,84 A6,6 0 0,1 430,78 Z\" fill=\"#1F2A28\"/><text x=\"430\" y=\"200\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">0.60 s</text><line x1=\"535\" y1=\"67.5\" x2=\"591.3\" y2=\"47\" stroke=\"#5A6268\" stroke-width=\"7\"/><circle cx=\"535\" cy=\"67.5\" r=\"13\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><circle cx=\"591.3\" cy=\"47\" r=\"4\" fill=\"#1F2A28\"/><circle cx=\"550\" cy=\"62\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><path d=\"M550,62 L556,62 A6,6 0 0,1 550,68 Z\" fill=\"#1F2A28\"/><path d=\"M550,62 L544,62 A6,6 0 0,1 550,56 Z\" fill=\"#1F2A28\"/><text x=\"550\" y=\"200\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">0.80 s</text><text x=\"30\" y=\"34\" font-size=\"12.5\" fill=\"#5A6268\">heavy head</text><text x=\"30\" y=\"52\" font-size=\"12.5\" fill=\"#5A6268\">light handle end (black dot)</text><circle cx=\"372\" cy=\"32\" r=\"6\" fill=\"#FFFFFF\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><path d=\"M372,32 L378,32 A6,6 0 0,1 372,38 Z\" fill=\"#1F2A28\"/><path d=\"M372,32 L366,32 A6,6 0 0,1 372,26 Z\" fill=\"#1F2A28\"/><text x=\"384\" y=\"37\" font-size=\"12.5\" fill=\"#5A6268\">center of mass</text></svg>"
+  },
+  "systems-center-of-mass-s2": {
+   "kind": "table",
+   "title": "Three clamps on a meterstick",
+   "text": "<p>A student clamps three small masses to a meterstick of negligible mass. Each clamp is small enough to treat as a point object at the position shown, measured from the 0 end of the stick.</p>",
+   "table": {
+    "caption": "Masses and positions on the stick",
+    "cols": [
+     "Clamp",
+     "Mass (kg)",
+     "Position (m)"
+    ],
+    "rows": [
+     [
+      "1",
+      "0.20",
+      "0.10"
+     ],
+     [
+      "2",
+      "0.30",
+      "0.50"
+     ],
+     [
+      "3",
+      "0.70",
+      "0.90"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-systems-center-of-mass-1",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "systems-center-of-mass-s1",
+   "q": "Which statement describes the motion of the wrench's center of mass across the ice?",
+   "options": [
+    "It moves along a straight line, covering equal distances in equal times",
+    "It moves along a wavy path that follows the swinging handle",
+    "It curves toward the heavy head a little more in each picture",
+    "It speeds up each time the wrench completes half a turn"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The pictures show the quartered center-of-mass symbol on one straight dashed line, equally spaced every 0.20 s. Nothing outside the wrench pushes it sideways along the slippery ice, so its center of mass keeps a constant velocity even while the wrench turns.",
+    "options": [
+     "Right: the center of mass moves like a single point object that nothing pushes or pulls along the ice.",
+     "The handle end follows a wavy path because it swings around the center of mass; the center of mass itself stays on the dashed line.",
+     "The dashed line through the five positions is straight; the head turning around the center of mass does not bend that path.",
+     "The spacing between positions is the same every 0.20 s, so the center of mass is not speeding up."
+    ]
+   }
+  },
+  {
+   "id": "phys-systems-center-of-mass-2",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "systems-center-of-mass-s1",
+   "q": "Between 0.00 s and 0.80 s the wrench's center of mass moves 2.4 m along the dashed line. What is its average speed, in m/s?",
+   "numeric": {
+    "answer": 3,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 12,
+      "why": "Value: that divides by one 0.20 s interval. The 2.4 m is covered over four intervals, 0.80 s in all."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Average speed = distance ÷ time = 2.4 m ÷ 0.80 s = 3.0 m/s."
+   }
+  },
+  {
+   "id": "phys-systems-center-of-mass-3",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "systems-center-of-mass-s1",
+   "q": "A second student tracks the black dot at the end of the handle instead of the center of mass. What will she find?",
+   "options": [
+    "The dot's displacement changes from one 0.20 s interval to the next",
+    "The dot moves the same distance as the center of mass in each interval",
+    "The dot stays at the same distance ahead of the center of mass",
+    "The dot moves in a straight line, parallel to the dashed line"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The handle end swings around the center of mass while the whole wrench slides, so its displacement in each interval keeps changing in size and direction. That is why the center of mass, not any one point of the object, is the point that moves simply.",
+    "options": [
+     "Right: the handle end combines the steady slide with the turning, so its steps are uneven.",
+     "Only the center of mass covers equal steps; the handle end sometimes swings forward and sometimes back.",
+     "The handle end is sometimes ahead of the center of mass and sometimes behind it as the wrench turns.",
+     "The dot's path is wavy because the wrench turns while it slides."
+    ]
+   }
+  },
+  {
+   "id": "phys-systems-center-of-mass-4",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "systems-center-of-mass-s1",
+   "q": "Why is the wrench's center of mass much closer to the head than to the end of the handle?",
+   "options": [
+    "More of the wrench's mass is in the head",
+    "The center of mass is at the middle of the length",
+    "The head is the end that leads the motion",
+    "The handle is longer, so it pulls the center its way"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The center of mass is a mass-weighted average position, so it sits nearer to where more of the mass is. The steel head holds most of the mass.",
+    "options": [
+     "Right: the average is weighted by mass, and the head is heavy.",
+     "The middle of the length is the center of mass only when the mass is spread evenly along it; this wrench's mass is not.",
+     "Which end leads depends on how the wrench was thrown; the center of mass depends on where the mass is.",
+     "Length alone does not set the center of mass; a long, light handle holds little of the mass."
+    ]
+   }
+  },
+  {
+   "id": "phys-systems-center-of-mass-5",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "systems-center-of-mass-s2",
+   "q": "Where is the center of mass of the three clamps, measured from the 0 end of the stick, in meters?",
+   "numeric": {
+    "answer": 0.67,
+    "tol": 0.01,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.5,
+      "why": "Value: that is the plain average of the three positions. Weight each position by its mass, then divide by the total mass."
+     },
+     {
+      "value": 0.8,
+      "why": "Value: that is Σm·x, in kg·m. Divide it by the total mass, 1.20 kg, to get a position in meters."
+     }
+    ]
+   },
+   "why": {
+    "correct": "x_cm = Σm·x ÷ Σm = [(0.20)(0.10) + (0.30)(0.50) + (0.70)(0.90)] kg·m ÷ 1.20 kg = 0.80 kg·m ÷ 1.20 kg = 0.67 m."
+   }
+  },
+  {
+   "id": "phys-systems-center-of-mass-6",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "systems-center-of-mass-s2",
+   "q": "Clamp 3 (0.70 kg) is moved from the 0.90 m mark to the 0.30 m mark. Where is the center of mass now?",
+   "options": [
+    "At about 0.32 m, closer to the 0 end",
+    "At about 0.07 m, closer to the 0 end",
+    "Still at 0.67 m, since the total mass is unchanged",
+    "At about 0.50 m, the middle of the stick"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The new Σm·x is (0.20)(0.10) + (0.30)(0.50) + (0.70)(0.30) = 0.38 kg·m, so x_cm = 0.38 kg·m ÷ 1.20 kg = 0.32 m. The center of mass moves (0.70/1.20) × 0.60 m = 0.35 m toward the 0 end.",
+    "options": [
+     "Right: recompute the weighted average with the new position.",
+     "This moves the center of mass by the full 0.60 m that clamp 3 moved. One clamp carries only 0.70 of the 1.20 kg, so the center of mass moves 0.70/1.20 of that distance.",
+     "The total mass is the same, but the center of mass depends on where the mass is, not only on how much there is.",
+     "The middle of the stick is the center of mass of the stick itself, which is negligible here; the clamps set the center of mass."
+    ]
+   }
+  },
+  {
+   "id": "phys-systems-center-of-mass-7",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "numeric",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "systems-center-of-mass-s2",
+   "q": "The clamps are back where the table shows. Where must a fourth clamp of mass 0.60 kg be placed so that the center of mass of all four is at the 0.50 m mark? Give the position in meters from the 0 end.",
+   "numeric": {
+    "answer": 0.17,
+    "tol": 0.01,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.5,
+      "why": "Value: placing the new clamp at 0.50 m does not move the center of mass to 0.50 m; it pulls it only partway there. Solve Σm·x ÷ Σm = 0.50 m for the new position."
+     },
+     {
+      "value": -0.33,
+      "why": "Value: the total mass must include the new 0.60 kg clamp (1.80 kg), not only the first three."
+     }
+    ]
+   },
+   "why": {
+    "correct": "For x_cm = 0.50 m with 1.80 kg in all, Σm·x must be 0.50 m × 1.80 kg = 0.90 kg·m. The three clamps give 0.80 kg·m, so the fourth needs 0.10 kg·m: x = 0.10 kg·m ÷ 0.60 kg = 0.17 m."
+   }
+  },
+  {
+   "id": "phys-systems-center-of-mass-8",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "systems-center-of-mass-s2",
+   "q": "Suppose the meterstick is not negligible: it is uniform, with a mass of 0.12 kg. Compared with 0.67 m, the center of mass of the stick and the three clamps is",
+   "options": [
+    "a little closer to the 0.50 m mark",
+    "unchanged, since the stick's mass is spread evenly",
+    "a little closer to the 1 m end",
+    "exactly at the 0.50 m mark"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A uniform stick acts like 0.12 kg at its middle, 0.50 m. Adding mass at 0.50 m pulls the weighted average from 0.67 m slightly toward 0.50 m: (0.80 + 0.06) kg·m ÷ 1.32 kg = 0.65 m.",
+    "options": [
+     "Right: the stick adds mass at its center, below 0.67 m.",
+     "Evenly spread mass still has a center of mass, at the middle of the stick, and it shifts the system's average.",
+     "The stick's own center is at 0.50 m, below 0.67 m, so it pulls the average down, not up.",
+     "The stick's 0.12 kg is small next to the clamps' 1.20 kg, so it moves the center of mass only a little."
+    ]
+   }
+  },
+  {
+   "id": "phys-systems-center-of-mass-9",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Where is the center of mass of a thin, uniform rectangular sheet of metal?",
+   "options": [
+    "Where its two lines of symmetry cross",
+    "At one corner, where the measurements start",
+    "Halfway along its longer edge",
+    "At its heaviest corner"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For a uniform object the center of mass lies on every line of symmetry, so it is where the lines of symmetry cross: the geometric center.",
+    "options": [
+     "Right: uniform and symmetric means the center of mass is on each symmetry line.",
+     "Where you start measuring changes the numbers, not where the center of mass is.",
+     "A point on the edge is not on the line of symmetry that runs along the long direction.",
+     "A uniform sheet has no heaviest corner; its mass is spread evenly."
+    ]
+   }
+  },
+  {
+   "id": "phys-systems-center-of-mass-10",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 2.0 kg ball sits at x = 0 and a 6.0 kg ball at x = 0.40 m, joined by a rod of negligible mass. Where is the center of mass, in meters?",
+   "numeric": {
+    "answer": 0.3,
+    "tol": 0.01,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.2,
+      "why": "Value: 0.20 m is the midpoint. That is the center of mass only for equal masses; weight each position by its mass."
+     },
+     {
+      "value": 0.1,
+      "why": "Value: the masses are swapped. The center of mass is closer to the heavier ball, which is at 0.40 m."
+     }
+    ]
+   },
+   "why": {
+    "correct": "x_cm = (2.0 kg × 0 + 6.0 kg × 0.40 m) ÷ 8.0 kg = 2.4 kg·m ÷ 8.0 kg = 0.30 m, closer to the heavier ball."
+   }
+  },
+  {
+   "id": "phys-systems-center-of-mass-11",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 3,
+   "q": "Three small objects lie on a level floor: 1.0 kg at (0, 0), 1.0 kg at (2.0 m, 0) and 2.0 kg at (1.0 m, 2.0 m). What is the y-coordinate of their center of mass, in meters?",
+   "numeric": {
+    "answer": 1,
+    "tol": 0.1,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.67,
+      "why": "Value: that is the plain average of the three y-values. Weight each by its mass: the 2.0 kg object counts twice."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Treat each direction on its own: y_cm = (1.0 kg × 0 + 1.0 kg × 0 + 2.0 kg × 2.0 m) ÷ 4.0 kg = 1.0 m."
+   }
+  },
+  {
+   "id": "phys-systems-center-of-mass-12",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Where is the center of mass of a thin, uniform metal ring?",
+   "options": [
+    "At the center of the ring, where there is no metal",
+    "Somewhere on the metal, where the mass is",
+    "At the top of the ring, above its middle",
+    "Nowhere, since the middle of the ring is empty"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The ring is symmetric about every line through its center, so its center of mass is at the center, even though no material is there. A center of mass is a position, not a piece of the object.",
+    "options": [
+     "Right: it lies on every line of symmetry, and they all cross at the center.",
+     "The center of mass is an average position; it need not be inside the material.",
+     "Up and down do not matter to a uniform ring: the top has no more mass than the bottom.",
+     "Every object has a center of mass; for a ring it is a point in empty space."
+    ]
+   }
+  },
+  {
+   "id": "phys-systems-center-of-mass-13",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "multi",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "In which situations can you treat the system as a single point object at its center of mass, ignoring its internal structure? Select all that apply.",
+   "options": [
+    "Predicting where a spinning football lands after a long throw",
+    "Explaining how a cat twists to land on its feet",
+    "Explaining why a bicycle's pedals turn its back wheel",
+    "Explaining how bending your knees lets you jump higher"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "When the question is only about where the whole system goes, the parts do not matter and the center of mass stands for the system. When the question is about how the parts move relative to each other, the inside matters.",
+    "options": [
+     "Right: the landing spot depends on how the center of mass moves; the spin does not change that path.",
+     "Twisting is about how the parts of the cat move relative to each other, so the structure matters.",
+     "This is about how the parts of the bicycle act on each other, so the internal structure matters.",
+     "This is about how the legs push and the body moves inside the system, so it cannot be one point."
+    ]
+   }
+  },
+  {
+   "id": "phys-systems-center-of-mass-14",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "single",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A student chooses as her system a cart, a hanging block and the string that joins them. Which of these belongs to the surroundings?",
+   "options": [
+    "Earth",
+    "The string",
+    "The hanging block",
+    "The cart's wheels"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The surroundings are everything outside the chosen system boundary. The cart (with its wheels), the block and the string are inside; Earth is outside.",
+    "options": [
+     "Right: Earth is not part of the chosen system.",
+     "The string was chosen as part of the system.",
+     "The block was chosen as part of the system.",
+     "The wheels are part of the cart, which is in the system."
+    ]
+   }
+  },
+  {
+   "id": "phys-systems-center-of-mass-15",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Ball 1 (mass m) is at x = 0 and ball 2 (mass 3m) is at x = d, on a light rod. If the mass of ball 2 is doubled to 6m, the center of mass",
+   "options": [
+    "moves from 3d/4 to 6d/7, toward ball 2",
+    "moves from 3d/4 to 3d/2, twice as far out",
+    "stays at 3d/4, since the spacing is the same",
+    "moves from d/4 to d/7, toward ball 1"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "x_cm = (m × 0 + 3m × d) ÷ 4m = 3d/4 before; after, x_cm = 6m × d ÷ 7m = 6d/7. More mass at ball 2 pulls the center of mass toward it, but never past it.",
+    "options": [
+     "Right: recompute the weighted average with 6m.",
+     "Doubling one mass does not double x_cm, because the total mass in the denominator also grows. And 3d/2 is beyond ball 2, which no center of mass of two balls can be.",
+     "The center of mass depends on the masses as well as the spacing.",
+     "These are distances measured from ball 2, and the change goes the wrong way: more mass at ball 2 moves the center of mass toward ball 2."
+    ]
+   }
+  },
+  {
+   "id": "phys-systems-center-of-mass-16",
+   "unit": "unit-2",
+   "topic": "systems-center-of-mass",
+   "type": "order",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for finding the center of mass of a few point objects along a line in order.",
+   "options": [
+    "Choose an origin and a positive direction",
+    "Write each object's mass and position",
+    "Multiply each mass by its position and add the products",
+    "Divide that sum by the total mass"
+   ],
+   "why": {
+    "correct": "Positions only mean something once there is an origin; then weight each position by its mass, add, and divide by the total mass."
+   }
+  }
+ ]
+}

@@ -1,0 +1,155 @@
+{
+ "id": "frq-u1-ramp-round-trip",
+ "type": "tbr",
+ "points": 12,
+ "title": "A cart's round trip on a ramp",
+ "units": [
+  "unit-1"
+ ],
+ "topics": [
+  "motion-representations",
+  "motion-quantities"
+ ],
+ "practices": [
+  "1.A",
+  "1.C",
+  "2.A",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "diagram",
+  "title": "A cart pushed up a ramp",
+  "text": "<p>A cart at the bottom of a long, straight ramp is given a quick push and leaves the bottom (x = 0) moving up the ramp with speed v₀. It rolls up, stops for an instant, and rolls back down to the bottom. Throughout the trip after the push, the cart's acceleration has a constant magnitude a and points down the ramp. Up the ramp is the positive x direction.</p>",
+  "html": "<svg role=\"img\" aria-label=\"A cart near the bottom of a long straight ramp, moving up the ramp with initial speed v-zero; up the ramp is the positive x direction\" viewBox=\"0 0 620 240\" width=\"100%\" style=\"max-width:620px;height:auto\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Arial,Helvetica,sans-serif\"><rect width=\"620\" height=\"240\" fill=\"#ffffff\"/><polygon points=\"60,170 564.6,44.2 564.6,170\" fill=\"#E7DCC4\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><rect x=\"0\" y=\"170\" width=\"620\" height=\"12\" fill=\"#C9C2AE\"/><g transform=\"rotate(-14 166.7 143.4)\"><rect x=\"134.7\" y=\"107.4\" width=\"64\" height=\"26\" rx=\"5\" fill=\"#D9A441\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><rect x=\"140.7\" y=\"112.4\" width=\"52\" height=\"5\" rx=\"2\" fill=\"#ffffff\" opacity=\"0.45\"/><circle cx=\"148.7\" cy=\"136.4\" r=\"7\" fill=\"#3B4044\" stroke=\"#1F2A28\" stroke-width=\"1\"/><circle cx=\"148.7\" cy=\"136.4\" r=\"2.4\" fill=\"#C9CDD1\"/><circle cx=\"184.7\" cy=\"136.4\" r=\"7\" fill=\"#3B4044\" stroke=\"#1F2A28\" stroke-width=\"1\"/><circle cx=\"184.7\" cy=\"136.4\" r=\"2.4\" fill=\"#C9CDD1\"/></g><line x1=\"205.5\" y1=\"99.7\" x2=\"272.5\" y2=\"83.0\" stroke=\"#B07A00\" stroke-width=\"3\"/><polygon points=\"283.2,80.4 271.2,77.7 273.8,88.4\" fill=\"#B07A00\"/><text x=\"288.98979140113516\" y=\"76.9064326384784\" fill=\"#B07A00\" font-size=\"13\" text-anchor=\"start\" font-weight=\"bold\">v₀ (up the ramp)</text><text x=\"56\" y=\"200\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"start\" font-weight=\"normal\">bottom of the ramp (x = 0)</text><line x1=\"60\" y1=\"170\" x2=\"60\" y2=\"180\" stroke=\"#1F2A28\" stroke-width=\"2\"/><line x1=\"430.0\" y1=\"222.0\" x2=\"477.5\" y2=\"210.1\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><polygon points=\"488.2,207.5 476.2,204.8 478.9,215.5\" fill=\"#1F2A28\"/><text x=\"500\" y=\"212\" fill=\"#1F2A28\" font-size=\"13\" text-anchor=\"start\" font-weight=\"bold\">+x</text></svg><p>Key: gold arrow, the cart's velocity just after the push.</p>"
+ },
+ "drawSpec": {
+  "kind": "box",
+  "label": "A blank box for a motion diagram of the cart going up and coming back down the ramp"
+ },
+ "graphSpec": {
+  "type": "line",
+  "x": {
+   "label": "Time",
+   "unit": "s"
+  },
+  "y": {
+   "label": "Velocity",
+   "unit": "m/s"
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 3,
+   "space": "draw",
+   "prompt": "<b>Draw</b> a motion diagram for the cart, from just after the push until it returns to the bottom: dots for the cart's position at equal time intervals, with a velocity arrow at each dot. Draw the trip up and the trip down side by side so they do not overlap, mark the turning point, and draw one arrow showing the direction of the cart's acceleration.",
+   "rubric": [
+    {
+     "point": "On the way up, the dots get closer together and the velocity arrows (pointing up the ramp) get shorter",
+     "accept": [
+      "spacing decreases going up",
+      "shrinking up-ramp velocity arrows"
+     ]
+    },
+    {
+     "point": "At the turning point the velocity is zero (a dot with no arrow), and on the way down the dots spread out with growing arrows pointing down the ramp",
+     "accept": [
+      "zero velocity at the top",
+      "spacing increases coming down"
+     ]
+    },
+    {
+     "point": "A single acceleration arrow pointing down the ramp, labeled, the same throughout, including at the turning point; no acceleration of zero at the top",
+     "accept": [
+      "acceleration down the ramp everywhere",
+      "the acceleration does not reverse at the top"
+     ]
+    }
+   ],
+   "sample": "Up trip (left column): dots starting at the bottom, each gap smaller than the one before, with up-ramp velocity arrows that get shorter. The last dot, the turning point, has no velocity arrow (v = 0). Down trip (right column): dots starting at the turning point, gaps growing, with down-ramp arrows that get longer; the last arrow is as long as the first one going up. Beside the diagram: one arrow labeled \"a, the whole trip\" pointing down the ramp."
+  },
+  {
+   "label": "b",
+   "points": 3,
+   "prompt": "<b>Derive</b> an expression for the time T the cart takes to return to the bottom of the ramp, in terms of v₀ and a. Begin your derivation by writing a fundamental equation, and make sure the signs are consistent with your motion diagram.",
+   "rubric": [
+    {
+     "point": "Starts from a correct kinematic equation, such as x = x₀ + v₀t + ½a_x t² or v = v₀ + a_x t",
+     "accept": [
+      "writes a constant-acceleration equation"
+     ]
+    },
+    {
+     "point": "Uses the correct signs: a_x = −a (down the ramp) with v₀ positive, and a correct condition for the return (x = 0, or v = −v₀ at the bottom, or the top reached at v = 0 halfway)",
+     "accept": [
+      "0 = v₀T − ½aT²",
+      "−v₀ = v₀ − aT"
+     ]
+    },
+    {
+     "point": "T = 2v₀/a",
+     "accept": [
+      "an equivalent expression in v₀ and a"
+     ]
+    }
+   ],
+   "sample": "Use x = x₀ + v₀t + ½a_x t² with x₀ = 0, v₀ up the ramp (positive) and a_x = −a. Back at the bottom x = 0: 0 = v₀T − ½aT². Dividing by T (T ≠ 0): v₀ = ½aT, so T = 2v₀/a. Check with v = v₀ + a_x t: the cart stops when 0 = v₀ − at, at t = v₀/a, which is exactly half of T, as the symmetric motion diagram suggests."
+  },
+  {
+   "label": "c",
+   "points": 3,
+   "space": "graph",
+   "prompt": "<b>Sketch</b> a graph of the cart's velocity as a function of time from just after the push until it returns to the bottom. Label v₀ and the time T, and mark where the cart is at the top of the ramp.",
+   "rubric": [
+    {
+     "point": "A single straight line with a negative slope for the whole trip (no kink or flat part at the top)",
+     "accept": [
+      "one straight line sloping down",
+      "constant slope −a"
+     ]
+    },
+    {
+     "point": "Starts at +v₀ at t = 0 and crosses zero at T/2, marked as the top",
+     "accept": [
+      "v = 0 at the halfway time"
+     ]
+    },
+    {
+     "point": "Ends at −v₀ at t = T (same size, opposite sign as the start)",
+     "accept": [
+      "final velocity −v₀",
+      "symmetric about the time axis"
+     ]
+    }
+   ],
+   "sample": "A straight line from (0, +v₀) down to (T, −v₀), crossing the time axis at T/2, labeled \"top of the ramp\". The slope is −a for the whole trip; there is no flat part at the top, because the velocity is still changing there."
+  },
+  {
+   "label": "d",
+   "points": 3,
+   "prompt": "<b>Explain</b> how your motion diagram, your expression for T and your graph are consistent with one another. Refer to a specific feature of each representation.",
+   "rubric": [
+    {
+     "point": "Constant acceleration: the single down-ramp acceleration arrow in the diagram matches the constant (straight-line) negative slope of the graph and the constant −a in the equation",
+     "accept": [
+      "straight line ↔ constant a ↔ same arrow throughout"
+     ]
+    },
+    {
+     "point": "Turning point: the zero-velocity dot in the diagram matches the graph crossing v = 0 at T/2 and the time v₀/a from v = v₀ − at, half of T",
+     "accept": [
+      "top at half the total time in all three"
+     ]
+    },
+    {
+     "point": "Return to the start: the equal and opposite areas above and below the time axis (zero net displacement) match the condition x = 0 used to derive T and the diagram ending at the bottom with a velocity arrow as long as the first",
+     "accept": [
+      "net area zero ↔ x = 0 ↔ symmetric diagram",
+      "final velocity −v₀ in the graph matches equal first and last arrows"
+     ]
+    }
+   ],
+   "sample": "All three show one constant acceleration down the ramp: the diagram has one acceleration arrow for the whole trip, the graph is one straight line with slope −a, and the equation uses a_x = −a throughout. All three put the turning point halfway: the diagram's up and down trips have the same number of intervals with v = 0 at the top, the graph crosses zero at T/2, and v = v₀ − at gives v₀/a = T/2. And all three show the cart back where it started: in the graph the triangle above the axis has the same area as the one below, so the net displacement is zero, which is the condition x = 0 used to find T; the diagram ends at the bottom with a velocity arrow as long as the first one, matching the graph ending at −v₀."
+  }
+ ]
+}

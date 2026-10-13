@@ -1,0 +1,12 @@
+{
+ "shm-xva-graphs": {
+  "file": "figures/shm-xva-graphs.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 580,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Position, velocity and acceleration against time over one period for SHM starting at x = +A. Position is a cosine; velocity is zero at the turning points and largest at x = 0; acceleration is always opposite to the position, largest at the turning points and zero at equilibrium."
+ }
+}

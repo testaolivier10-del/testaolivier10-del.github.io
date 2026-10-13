@@ -1,0 +1,23 @@
+{
+ "point-object": {
+  "def": "The object model: treating an object as a single point that has a position but no size, shape or inner parts. It works when those do not affect the motion described."
+ },
+ "time-interval": {
+  "def": "The time between two moments: Δt = t(final) − t(initial), in seconds."
+ },
+ "average-velocity": {
+  "def": "Displacement divided by the time interval: v(avg) = Δx/Δt, in m/s. Its sign gives the direction of the net change in position."
+ },
+ "acceleration": {
+  "def": "The rate at which velocity changes, in m/s². An object accelerates when its speed changes, its direction changes, or both."
+ },
+ "average-acceleration": {
+  "def": "Change in velocity divided by the time interval: a(avg) = Δv/Δt, in m/s². It points the same way as Δv."
+ },
+ "instantaneous-velocity": {
+  "def": "The velocity at one instant: the value the average velocity approaches as the time interval is made very short."
+ },
+ "instantaneous-acceleration": {
+  "def": "The acceleration at one instant: the value the average acceleration approaches as the time interval is made very short."
+ }
+}

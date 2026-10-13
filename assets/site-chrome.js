@@ -130,6 +130,7 @@
     { key: 'anp', short: 'A&P', dir: 'anatomy-physiology' },
     { key: 'apbio', short: 'Biology', dir: 'bio' },
     { key: 'apchem', short: 'Chemistry', dir: 'chem' },
+    { key: 'apphys', short: 'Physics', dir: 'physics' },
   ];
   // courses:end
   var COURSE_SHORT = {};

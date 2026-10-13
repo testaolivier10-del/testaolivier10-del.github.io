@@ -1,0 +1,493 @@
+{
+ "stimuli": {
+  "rotational-second-law-s1": {
+   "kind": "diagram",
+   "title": "A block on a pulley with mass",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 260\" role=\"img\" aria-label=\"A block of mass 0.500 kg hangs from a light string wrapped around a uniform disk pulley of mass 1.50 kg and radius 0.100 m that turns on a frictionless axle\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"260\" fill=\"#FFFFFF\"/><rect x=\"60\" y=\"12\" width=\"200\" height=\"10\" fill=\"#EEF1EF\"/><line x1=\"60\" y1=\"22\" x2=\"260\" y2=\"22\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"64\" y1=\"22\" x2=\"72\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"76\" y1=\"22\" x2=\"84\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"88\" y1=\"22\" x2=\"96\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"100\" y1=\"22\" x2=\"108\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"112\" y1=\"22\" x2=\"120\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"124\" y1=\"22\" x2=\"132\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"136\" y1=\"22\" x2=\"144\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"148\" y1=\"22\" x2=\"156\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"160\" y1=\"22\" x2=\"168\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"172\" y1=\"22\" x2=\"180\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"184\" y1=\"22\" x2=\"192\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"196\" y1=\"22\" x2=\"204\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"208\" y1=\"22\" x2=\"216\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"220\" y1=\"22\" x2=\"228\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"232\" y1=\"22\" x2=\"240\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"244\" y1=\"22\" x2=\"252\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"256\" y1=\"22\" x2=\"264\" y2=\"13\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"150\" y1=\"22\" x2=\"150\" y2=\"80\" stroke=\"#1F2A28\" stroke-width=\"5\"/><circle cx=\"150\" cy=\"80\" r=\"46\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><circle cx=\"150\" cy=\"80\" r=\"8\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"150\" cy=\"80\" r=\"2.5\" fill=\"#1F2A28\"/><line x1=\"196\" y1=\"80\" x2=\"196\" y2=\"190\" stroke=\"#1F2A28\" stroke-width=\"2\"/><rect x=\"172\" y=\"190\" width=\"48\" height=\"40\" rx=\"3\" fill=\"#8E989E\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"196\" y=\"215\" font-size=\"15\" fill=\"#FFFFFF\" text-anchor=\"middle\" font-weight=\"bold\" font-style=\"italic\">m</text><rect x=\"300\" y=\"30\" width=\"245\" height=\"200\" rx=\"8\" fill=\"#EEF1EF\" stroke=\"#C9CFCC\"/><text x=\"312\" y=\"56\" font-size=\"12.5\" fill=\"#1F2A28\">Pulley: uniform disk,</text><text x=\"312\" y=\"80\" font-size=\"12.5\" fill=\"#1F2A28\">M = 1.50 kg, R = 0.100 m,</text><text x=\"312\" y=\"104\" font-size=\"12.5\" fill=\"#1F2A28\">I = ½MR² (given)</text><text x=\"312\" y=\"128\" font-size=\"12.5\" fill=\"#1F2A28\">Turns on a frictionless axle.</text><text x=\"312\" y=\"152\" font-size=\"12.5\" fill=\"#1F2A28\">Block: m = 0.500 kg</text><text x=\"312\" y=\"176\" font-size=\"12.5\" fill=\"#1F2A28\">Light string, no slipping.</text><text x=\"312\" y=\"200\" font-size=\"12.5\" fill=\"#1F2A28\">Released from rest. Use g = 9.8 m/s².</text></svg>"
+  },
+  "rotational-second-law-s2": {
+   "kind": "table",
+   "title": "Spinning up a wheel",
+   "text": "<p>A student applies a steady torque to a wheel on a low-friction axle and measures its angular acceleration with a rotation sensor. She repeats this for four torques.</p>",
+   "table": {
+    "caption": "Angular acceleration against applied torque",
+    "cols": [
+     "Torque (N·m)",
+     "Angular acceleration (rad/s²)"
+    ],
+    "rows": [
+     [
+      "0.50",
+      "1.0"
+     ],
+     [
+      "1.00",
+      "2.1"
+     ],
+     [
+      "1.50",
+      "2.9"
+     ],
+     [
+      "2.00",
+      "4.0"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-rotational-second-law-1",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "rotational-second-law-s1",
+   "q": "What is the size of the block’s acceleration?",
+   "numeric": {
+    "answer": 3.92,
+    "tol": 0.01,
+    "unit": "m/s^2",
+    "sigfigs": 3,
+    "units": [
+     "m/s²"
+    ],
+    "mistakes": [
+     {
+      "value": 9.8,
+      "rel": 0.015,
+      "why": "Value: that is free fall. The string pulls up on the block, and the pulley has to be spun up too."
+     },
+     {
+      "value": 2.45,
+      "rel": 0.015,
+      "why": "Value: that treats the pulley as if I = MR² (or adds its full mass). For a disk, I/R² = ½M = 0.750 kg."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Block: mg − F_T = ma. Pulley: F_T R = Iα = (½MR²)(a/R), so F_T = ½Ma. Adding: mg = (m + ½M)a, so a = (0.500 kg)(9.8 m/s²)/(0.500 kg + 0.750 kg) = 3.92 m/s²."
+   }
+  },
+  {
+   "id": "phys-rotational-second-law-2",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-second-law-s1",
+   "q": "What is the tension in the string?",
+   "numeric": {
+    "answer": 2.94,
+    "tol": 0.01,
+    "unit": "N",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 4.9,
+      "rel": 0.015,
+      "why": "Value: that is the block’s weight. The block accelerates downward, so the tension is less than mg."
+     }
+    ]
+   },
+   "why": {
+    "correct": "F_T = ½Ma = (0.750 kg)(3.92 m/s²) = 2.94 N; check with the block: m(g − a) = (0.500 kg)(9.8 − 3.92) m/s² = 2.94 N."
+   }
+  },
+  {
+   "id": "phys-rotational-second-law-3",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-second-law-s1",
+   "q": "How does the tension compare with the block’s weight while the block falls?",
+   "options": [
+    "Less than the weight, because the block accelerates downward",
+    "Equal to the weight, because the string is light",
+    "More than the weight, because the string also turns the pulley",
+    "Zero, because the block is falling"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The block speeds up downward, so the net force on it is down: mg − F_T = ma > 0. The tension (2.94 N) is less than the weight (4.90 N).",
+    "options": [
+     "Right: the net force on the block is down, so mg > F_T.",
+     "A light string transmits tension, but the block is not in equilibrium.",
+     "Turning the pulley takes tension, but the block still speeds up downward, so F_T < mg.",
+     "If the tension were zero, the pulley would not speed up."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-second-law-4",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-second-law-s1",
+   "q": "What is the pulley’s angular acceleration?",
+   "numeric": {
+    "answer": 39.2,
+    "tol": 0.1,
+    "unit": "rad/s^2",
+    "sigfigs": 3,
+    "units": [
+     "rad/s²"
+    ],
+    "mistakes": [
+     {
+      "value": 0.392,
+      "rel": 0.015,
+      "why": "Value: that multiplies a by R. The string does not slip, so a = Rα and α = a/R."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The string does not slip on the rim, so α = a/R = (3.92 m/s²)/(0.100 m) = 39.2 rad/s²."
+   }
+  },
+  {
+   "id": "phys-rotational-second-law-5",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rotational-second-law-s1",
+   "q": "The disk pulley is replaced by a hoop pulley with the same mass and radius (I = MR², given). The block’s acceleration is",
+   "options": [
+    "smaller, because more of the pulley’s mass is at its rim",
+    "larger, because a hoop has less material near the axle",
+    "the same, because the pulley’s mass is the same",
+    "zero, because the hoop’s inertia balances the block"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With I = MR², a = mg/(m + M) = (4.90 N)/(2.00 kg) = 2.45 m/s², less than 3.92 m/s². A larger I needs more torque for the same α, so less of the weight is left to accelerate the block.",
+    "options": [
+     "Right: a = mg/(m + I/R²) falls when I rises.",
+     "Less mass near the axle means more at the rim, so a larger I.",
+     "Same mass, larger I; the pulley is harder to spin up.",
+     "Inertia resists changes in motion; it does not balance a weight."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-second-law-6",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-second-law-s2",
+   "q": "Which plot gives a straight line whose slope tells you the wheel’s rotational inertia?",
+   "options": [
+    "α against τ; the slope is 1/I",
+    "α against τ; the slope is I",
+    "α against 1/τ; the slope is I",
+    "τ against α²; the slope is I"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Newton’s second law in rotational form, τ = Iα, gives α = (1/I)τ: a line through the origin with slope 1/I (or plot τ against α for slope I).",
+    "options": [
+     "Right: α = τ/I is a line through the origin with slope 1/I.",
+     "Rearranged, α = (1/I)τ, so the slope is the reciprocal of I.",
+     "α grows with τ, so against 1/τ the points curve.",
+     "τ is proportional to α, not α²."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-second-law-7",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rotational-second-law-s2",
+   "q": "From the data, what is the wheel’s rotational inertia?",
+   "numeric": {
+    "answer": 0.5,
+    "tol": 0.01,
+    "unit": "kg·m^2",
+    "sigfigs": 2,
+    "units": [
+     "kg m^2",
+     "kg·m²"
+    ],
+    "mistakes": [
+     {
+      "value": 2,
+      "rel": 0.015,
+      "why": "Value: that is the slope of α against τ, which is 1/I. Take its reciprocal."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The best-fit line through the origin has slope ≈ 2.0 (rad/s²)/(N·m) (for example (4.0 − 1.0)/(2.00 − 0.50) = 2.0), so I = 1/slope = 0.50 kg·m²."
+   }
+  },
+  {
+   "id": "phys-rotational-second-law-8",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-second-law-s2",
+   "q": "A metal ring is clamped to the wheel, doubling its rotational inertia. With a torque of 1.00 N·m, its angular acceleration would be about",
+   "options": [
+    "1.0 rad/s²",
+    "4.0 rad/s²",
+    "2.0 rad/s²",
+    "0.50 rad/s²"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "α = τ/I. At 1.00 N·m the wheel alone had α ≈ 2.0 rad/s²; doubling I halves it to about 1.0 rad/s².",
+    "options": [
+     "Right: α = τ/I, so doubling I halves α from 2.0 rad/s².",
+     "A larger rotational inertia makes the wheel harder to speed up, not easier.",
+     "The torque is the same but the inertia doubled, so α changes.",
+     "α ∝ 1/I, not 1/I²: doubling I halves α."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-second-law-9",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "rotational-second-law-s2",
+   "q": "A second student repeats the experiment with a rusty axle. Her line of α against τ is parallel to the first but crosses the τ-axis at 0.30 N·m. What best explains this?",
+   "options": [
+    "Friction at the axle exerts a torque of about 0.30 N·m that opposes the applied torque",
+    "Rust on the axle gives the wheel a larger rotational inertia than before",
+    "Her torque sensor reads each torque 0.30 N·m lower than the real value",
+    "Below 0.30 N·m of applied torque, the wheel turns in the opposite direction"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The net torque is τ_applied − τ_friction = Iα. The same slope means the same I; the intercept at 0.30 N·m means α stays zero until the applied torque exceeds a friction torque of about 0.30 N·m.",
+    "options": [
+     "Right: the wheel speeds up only once the applied torque beats the friction torque.",
+     "A larger I would change the slope, but the lines are parallel.",
+     "A sensor reading too low would shift the line the other way.",
+     "Below 0.30 N·m the wheel does not turn at all."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-second-law-10",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "According to Newton’s second law in rotational form, an object’s angular acceleration is",
+   "options": [
+    "the net torque divided by its rotational inertia",
+    "the net torque multiplied by its rotational inertia",
+    "the net force on it divided by its total mass",
+    "in the direction the object is turning, whatever the torque"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "α = τ_net/I. A larger net torque gives a larger α; a larger I gives a smaller α; α points the way the net torque does (clockwise or counterclockwise).",
+    "options": [
+     "Right: α = τ_net/I, in the direction of the net torque.",
+     "τ_net = Iα, so α = τ_net/I.",
+     "That is the translational second law.",
+     "α follows the net torque; it can oppose the turning and slow it."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-second-law-11",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A grinding disk has rotational inertia 0.020 kg·m². The motor exerts a net torque of 0.50 N·m on it. What is its angular acceleration?",
+   "numeric": {
+    "answer": 25,
+    "tol": 1,
+    "unit": "rad/s^2",
+    "sigfigs": 2,
+    "units": [
+     "rad/s²"
+    ],
+    "mistakes": [
+     {
+      "value": 0.01,
+      "rel": 0.015,
+      "why": "Value: that multiplies torque by inertia. α = τ/I."
+     }
+    ]
+   },
+   "why": {
+    "correct": "α = τ_net/I = (0.50 N·m)/(0.020 kg·m²) = 25 rad/s²."
+   }
+  },
+  {
+   "id": "phys-rotational-second-law-12",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A wheel with rotational inertia 0.40 kg·m² starts from rest. A net torque of 2.0 N·m acts on it. How long does it take to reach 30 rad/s?",
+   "numeric": {
+    "answer": 6,
+    "tol": 0.1,
+    "unit": "s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 38,
+      "rel": 0.015,
+      "why": "Value: that uses α = τI. The angular acceleration is τ/I = 5.0 rad/s²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "α = τ/I = 2.0/0.40 = 5.0 rad/s². From rest, t = ω/α = (30 rad/s)/(5.0 rad/s²) = 6.0 s."
+   }
+  },
+  {
+   "id": "phys-rotational-second-law-13",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A solid disk and a hoop have the same mass and radius. Equal net torques act on each for the same time, starting from rest. Which ends up turning faster?",
+   "options": [
+    "The disk, because its rotational inertia is smaller",
+    "The hoop, because its mass is farther out from the axle",
+    "They match, because the torques and the masses are equal",
+    "The hoop, because a hoop has less material near the axle"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The same torque gives α = τ/I. The disk’s I = ½MR² is half the hoop’s MR², so its α and its final ω are twice as large.",
+    "options": [
+     "Right: α = τ/I, and ½MR² < MR².",
+     "Mass farther out raises I, which lowers α.",
+     "Equal mass does not mean equal I.",
+     "Less mass near the axle means more at the rim and a larger I."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-second-law-14",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two blocks of different mass hang on either side of a pulley that has mass, connected by one string that does not slip. The tensions in the two parts of the string are",
+   "options": [
+    "different, because the pulley needs a net torque to speed up",
+    "equal, because a single string runs over the pulley",
+    "equal, because the pulley turns at a steady angular velocity",
+    "both equal to the weight of the heavier of the two blocks"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The pulley’s angular acceleration needs a net torque: (F_T,heavy side − F_T,light side)R = Iα. If the pulley had no mass (I = 0), the tensions would be equal; with mass they differ.",
+    "options": [
+     "Right: (F_T1 − F_T2)R = Iα ≠ 0.",
+     "One string over a pulley with mass carries different tensions on its two sides.",
+     "The blocks speed up, so the pulley speeds up too.",
+     "The heavier block accelerates downward, so the tension on its side is less than its weight."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-second-law-15",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A spinning wheel with rotational inertia 1.2 kg·m² turns at 20 rad/s. A brake stops it steadily in 8.0 s. What is the size of the braking torque?",
+   "numeric": {
+    "answer": 3,
+    "tol": 0.1,
+    "unit": "N·m",
+    "sigfigs": 2,
+    "units": [
+     "N m",
+     "Nm"
+    ],
+    "mistakes": [
+     {
+      "value": 2.5,
+      "rel": 0.015,
+      "why": "Value: that is the angular acceleration. Multiply by I: τ = Iα."
+     },
+     {
+      "value": 0.48,
+      "rel": 0.015,
+      "why": "Value: that inverts the ratio. α = Δω/Δt = 20/8.0 rad/s²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "α = Δω/Δt = 20 rad/s ÷ 8.0 s = 2.5 rad/s² in size, so τ = Iα = (1.2 kg·m²)(2.5 rad/s²) = 3.0 N·m."
+   }
+  },
+  {
+   "id": "phys-rotational-second-law-16",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-second-law",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A spool falls while its string unwinds from a fixed hook. To find both how fast it falls and how fast it spins, you need",
+   "options": [
+    "ΣF = ma for its center and Στ = Iα for its spin",
+    "the rotational form of the second law, Στ = Iα, by itself",
+    "the translational second law, ΣF = ma, by itself",
+    "the condition that the net torque on the spool is zero"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Translation: mg − F_T = ma. Rotation: F_T R = Iα. The no-slip link a = Rα closes the system. A full description needs both analyses.",
+    "options": [
+     "Right: one equation for translation, one for rotation, linked by a = Rα.",
+     "That gives α, but the falling of the center needs ΣF = ma too.",
+     "That misses the tension’s torque, which sets the spin.",
+     "The spool speeds up its spin, so the net torque is not zero."
+    ]
+   }
+  }
+ ]
+}

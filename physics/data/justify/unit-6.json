@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 6 (docs/apphys-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u6-skater-pulls-in",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "3.C",
+   "skill": "conservation",
+   "title": "Why the spinning skater speeds up",
+   "context": "<p>A skater spins on smooth ice with her arms out, then pulls her arms in and spins faster.</p>",
+   "prompt": "<b>Explain</b> why her angular velocity increases, and <b>determine</b> whether her rotational kinetic energy stays the same.",
+   "checklist": [
+    "Names the system, the skater, and says the net external torque about her vertical axis is zero: the ice is smooth, and gravity and the normal force have no lever arm about that axis",
+    "Says her angular momentum L = Iω is constant, so pulling her arms in (smaller I) makes ω larger",
+    "Says her rotational kinetic energy ½Iω² = L²/(2I) increases, because her muscles do positive work pulling her arms in"
+   ],
+   "earns": {
+    "answer": "Take the skater as the system. The ice is smooth, and the gravitational and normal forces act along her vertical axis, so they have no lever arm and the net external torque about that axis is zero. Her angular momentum, L = Iω, therefore stays constant. Pulling her arms in moves mass closer to the axis and makes I smaller, so ω must increase. Her rotational kinetic energy, ½Iω² = L²/(2I), increases as I decreases: her muscles do positive work on her arms as she pulls them inward.",
+    "why": "It gives the condition (zero net external torque) before the conservation law, and does not confuse constant angular momentum with constant kinetic energy."
+   },
+   "misses": {
+    "answer": "She spins faster because her energy is conserved, and with a smaller I she needs a bigger ω to keep the same energy.",
+    "why": "Her angular momentum is what stays constant; her kinetic energy increases. This mixes up the two conservation laws, as the readers report for collisions too."
+   }
+  },
+  {
+   "id": "u6-rolling-race",
+   "unit": "unit-6",
+   "topic": "rolling",
+   "practice": "3.C",
+   "skill": "functional-dependence",
+   "title": "Sphere against hoop",
+   "context": "<p>A solid sphere (I = ⅖MR²) and a hoop (I = MR²) of the same mass and radius are released together from rest at the top of a ramp and roll down without slipping.</p>",
+   "prompt": "<b>Predict</b> which reaches the bottom first, and <b>justify</b> your prediction using energy.",
+   "checklist": [
+    "Uses the energy of each object with Earth: Mgh = ½Mv² + ½Iω², with v = Rω for rolling without slipping",
+    "Writes I = βMR² and gets v = √(2gh/(1 + β)), so the speed does not depend on M or R",
+    "Concludes the sphere (β = ⅖) has the larger speed at every height and wins; the hoop puts more of its energy into rotation"
+   ],
+   "earns": {
+    "answer": "The sphere wins. For each object and Earth, the static friction of rolling does no work, so Mgh = ½Mv² + ½Iω², with v = Rω because it rolls without slipping. Writing I = βMR² gives Mgh = ½Mv²(1 + β), so v = √(2gh/(1 + β)), with no M or R left. The sphere has β = ⅖ and the hoop β = 1, so at every height the sphere moves faster: more of its energy goes into translation and less into rotation.",
+    "why": "It derives the speed from energy with v = Rω and reads the dependence, so the reason is in the rotational inertia, not the mass."
+   },
+   "misses": {
+    "answer": "They tie, because energy is conserved and they start at the same height with the same mass.",
+    "why": "The same total energy is shared differently between translation and rotation. The hoop's larger rotational inertia takes a larger share, so less is left for its speed."
+   }
+  },
+  {
+   "id": "u6-merry-go-round-jump",
+   "unit": "unit-6",
+   "topic": "angular-momentum-conservation",
+   "practice": "3.C",
+   "skill": "energy-momentum",
+   "title": "What is conserved when a child jumps on",
+   "context": "<p>A child runs along a line tangent to the rim of a merry-go-round that turns freely on a fixed axle, and jumps on. The merry-go-round speeds up.</p>",
+   "prompt": "<b>Explain</b> which of these stays constant for the child-merry-go-round system during the jump: its linear momentum, its angular momentum about the axle, its kinetic energy.",
+   "checklist": [
+    "Says angular momentum about the axle stays constant: the axle's force acts at the axis, so it has no lever arm, and the net external torque is zero",
+    "Says linear momentum does not stay constant: the axle exerts an external force that keeps the merry-go-round's center in place",
+    "Says kinetic energy decreases: the child and the rim end up moving together, like a perfectly inelastic collision"
+   ],
+   "earns": {
+    "answer": "Only the angular momentum about the axle stays constant. The axle exerts an external force on the merry-go-round, so the system's linear momentum changes: the child's straight-line momentum does not carry on after the jump. But that axle force acts at the axis, where it has no lever arm, and friction at the axle is negligible, so the net external torque about the axle is zero and the angular momentum is constant. Kinetic energy is not constant: the child and the rim end up moving together, as in a perfectly inelastic collision, and some kinetic energy becomes thermal energy.",
+    "why": "It treats each quantity with its own condition: an external force can act with no external torque."
+   },
+   "misses": {
+    "answer": "All three are conserved, because nothing outside the system pushes on it during the jump.",
+    "why": "The axle does push on the merry-go-round, so linear momentum is not conserved. And the child sticks to the rim, so kinetic energy is not conserved either."
+   }
+  },
+  {
+   "id": "u6-satellite-near-and-far",
+   "unit": "unit-6",
+   "topic": "orbits",
+   "practice": "3.C",
+   "skill": "conservation",
+   "title": "Faster near the planet",
+   "context": "<p>A satellite moves in an elliptical orbit around a planet. It is moving fastest at the point closest to the planet.</p>",
+   "prompt": "<b>Justify</b> this with a conservation law, naming the system and its condition.",
+   "checklist": [
+    "Names the satellite-planet system: the gravitational force is internal, and no external force does work on it, so K + U_G is constant",
+    "Uses U_G = −GMm/r: closer to the planet U_G is more negative, so K, and the speed, is larger",
+    "Or: the gravitational force on the satellite points at the planet, so its torque about the planet is zero and rmv sinθ is constant; a smaller r at the closest point (θ = 90°) means a larger v"
+   ],
+   "earns": {
+    "answer": "Take the satellite and the planet as the system. The gravitational force between them is internal and no external force does work, so the total energy K + U_G is constant, with U_G = −GMm/r. At the closest point r is smallest, so U_G is most negative and K must be largest: the satellite moves fastest there. The same result follows from angular momentum: the gravitational force on the satellite points at the planet, so it has no torque about the planet, and the satellite's angular momentum rmv sinθ is constant. At the closest point θ = 90° and r is smallest, so v is largest.",
+    "why": "It names the system and the condition for each conservation law, and uses the r-dependence to reach the claim."
+   },
+   "misses": {
+    "answer": "It goes faster because gravity is stronger when it is closer to the planet.",
+    "why": "A stronger pull alone does not explain a larger speed; the force is perpendicular to the velocity at the closest point. The readers want a conservation law with its condition."
+   }
+  }
+ ]
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frequency and Period of SHM — AP® Physics 1 Notes | LevlPrep</title>
+<meta name="description" content="Every oscillator has a natural rhythm: a time for one full cycle that it keeps returning to.">
+<link rel="canonical" href="https://levlprep.com/physics/notes/shm-period.html">
+<meta property="og:title" content="Frequency and Period of SHM — AP® Physics 1 Notes | LevlPrep">
+<meta property="og:description" content="Every oscillator has a natural rhythm: a time for one full cycle that it keeps returning to.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/physics/notes/shm-period.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/physics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/phys.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/physics/notes/shm-period.html#reading",
+      "name": "Frequency and Period of SHM",
+      "url": "https://levlprep.com/physics/notes/shm-period.html",
+      "description": "Every oscillator has a natural rhythm: a time for one full cycle that it keeps returning to.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "frequency and period of shm physics 1 explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/physics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Physics 1",
+          "item": "https://levlprep.com/physics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Oscillations",
+          "item": "https://levlprep.com/physics/units/unit-7.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Frequency and Period of SHM: notes",
+          "item": "https://levlprep.com/physics/notes/shm-period.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="phys" data-topic="shm-period" data-unit="unit-7">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="phys-rail" aria-expanded="false">&#9776; Unit 7 contents</button>
+  <aside class="tb-rail phys-nav-ref bk-rail" id="phys-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Energy and Momentum of Rotating Systems</a>
+    <a class="bk-toc-chap" href="../units/unit-7.html"><span class="bk-toc-chap-n">7</span><span><b>Oscillations</b><small>4 topics</small></span></a>
+    <div class="phys-toc-prog" data-toc-prog="unit-7"><div class="tb-progress-row"><span><b>0</b> of 4 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="shm-intro"><a href="shm-intro.html"><span class="bk-toc-n">7.1</span>Defining Simple Harmonic Motion</a></li><li class="current" data-toc-t="shm-period"><a href="#main" aria-current="page"><span class="bk-toc-n">7.2</span>Frequency and Period of SHM</a><div class="bk-toc-onpage"><p>On this page</p><a href="#period-and-frequency">Period and frequency</a><a href="#a-block-on-a-spring-t">A block on a spring: T = 2π√(m/k)</a><a href="#a-simple-pendulum-t-2-g">A simple pendulum: T = 2π√(ℓ/g)</a><a href="#functional-dependence">Functional dependence</a><a href="#measuring-k-or-g-with-a">Measuring k or g with a straight line</a></div></li><li data-toc-t="shm-representations"><a href="shm-representations.html"><span class="bk-toc-n">7.3</span>Representing and Analyzing SHM</a></li><li data-toc-t="shm-energy"><a href="shm-energy.html"><span class="bk-toc-n">7.4</span>Energy of Simple Harmonic Oscillators</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Fluids</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="phys-crumb phys-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Physics 1</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-7.html">Oscillations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Frequency and Period of SHM: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/shm-period.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 7 &middot; Topic 7.2 <span class="phys-beta phys-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Frequency and Period of SHM</h1>
+      <p class="bk-meta phys-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="shm-period">Not practiced</span></p>
+      <div class="bk-actions phys-share phys-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fphysics%2Fnotes%2Fshm-period.html&amp;title=Frequency%20and%20Period%20of%20SHM%3A%20physics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/physics/notes/shm-period.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="phys-prose bk-prose">
+<p>Every oscillator has a natural rhythm: a time for one full cycle that it keeps returning to. This page gives the two formulas for that time that the exam uses, explains where each one comes from in words, and shows the functional-dependence reasoning ("if the <a class="gl" href="../notes/systems-center-of-mass.html" data-c="mass">mass</a> is four times as large, the period is...") that free-response questions ask for.</p>
+
+<h2 id="period-and-frequency">Period and frequency</h2>
+<p>The <b>period</b> T of an <a class="gl" href="../notes/shm-intro.html" data-c="periodic-motion">oscillation</a> is the time for one complete cycle: from one <a class="gl" href="../notes/scalars-vectors.html" data-c="position">position</a>, through the whole motion, and back to the same position moving the same way. For a <a class="gl" href="../notes/shm-intro.html" data-c="simple-pendulum">pendulum</a> released at the left, one period is left, right, and back to the left, not just one swing across.</p>
+<p>The <b>frequency</b> f is the number of cycles per second, measured in <a class="gl" href="../notes/circular-motion.html" data-c="frequency">hertz</a> (1 Hz = 1 cycle per second). The two are reciprocals, as you saw for <a class="gl" href="../notes/circular-motion.html" data-c="uniform-circular-motion">circular motion</a>:</p>
+<p style="text-align:center"><b>T = 1/f</b></p>
+<p>In the lab, timing one cycle with a stopwatch gives a large error, because your reaction time (about 0.2 s) is a sizable fraction of a period. Time 10 or 20 cycles and divide: the reaction-time error is spread over all of them.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A mass on a spring completes 20 oscillations in 13.0 s. Find T and f.</p>
+<p>T = 13.0 s / 20 = <b>0.650 s</b>; f = 1/T = 1/(0.650 s) = <b>1.54 Hz</b>.</p>
+</div>
+
+<h2 id="a-block-on-a-spring-t">A block on a spring: T = 2π√(m/k)</h2>
+<p>Think about what makes a block turn around sooner. A stiffer spring (larger k) pulls harder at every position, so the block is pushed back more quickly: a shorter period. A more massive block (larger m) <a class="gl" href="../notes/motion-quantities.html" data-c="acceleration">accelerates</a> less under the same <a class="gl" href="../notes/forces-fbd.html" data-c="force">force</a>, so it takes longer: a longer period. The exact result, printed on the equations sheet, is</p>
+<p style="text-align:center"><b>T<sub>s</sub> = 2π√(m/k)</b></p>
+<p>Two things are missing from this formula, and both are tested:</p>
+<ul>
+<li><b>No <a class="gl" href="../notes/shm-intro.html" data-c="amplitude">amplitude</a>.</b> Pull the block twice as far and it has twice as far to go, but the force at each point is twice as large, so it moves twice as fast. The two effects cancel exactly. Unit 7.3 shows this on graphs.</li>
+<li><b>No g.</b> A block hanging from a vertical spring has the same period as on a horizontal frictionless table. <a class="gl" href="../notes/gravitational-force.html" data-c="gravitational-force">Gravity</a> shifts the <a class="gl" href="../notes/shm-intro.html" data-c="equilibrium-position">equilibrium position</a> down, but about that new position the <a class="gl" href="../notes/shm-intro.html" data-c="restoring-force">restoring force</a> is still −kx.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> A 0.50 kg block on a spring has a period of 0.80 s. Find k.</p>
+<p>Start from T = 2π√(m/k). Square both sides: T² = 4π²m/k, so k = 4π²m/T².</p>
+<p>k = 4π²(0.50 kg)/(0.80 s)² = 19.74/0.64 N/m = <b>31 N/m</b>.</p>
+</div>
+
+<h2 id="a-simple-pendulum-t-2-g">A simple pendulum: T = 2π√(ℓ/g)</h2>
+<p>For a pendulum, the restoring force comes from gravity, so g appears: a stronger <a class="gl" href="../notes/gravitational-force.html" data-c="gravitational-field">gravitational field</a> pulls the bob back harder and shortens the period. A longer string makes the bob travel a longer arc for the same angle, while the restoring force at that angle is the same, so a longer pendulum has a longer period. For small angles,</p>
+<p style="text-align:center"><b>T<sub>p</sub> = 2π√(ℓ/g)</b></p>
+<p>The mass of the bob is missing. A bob with twice the mass has twice the <a class="gl" href="../notes/forces-fbd.html" data-c="weight">weight</a> pulling it back, but also twice the <a class="gl" href="../notes/first-law.html" data-c="inertia">inertia</a> resisting the change in motion. Its acceleration at each point is the same, so its period is the same. This is the same reason heavy and light objects fall together.</p>
+<figure id="fig-period"  class="phys-figure"><div class="phys-figimg" data-fig="shm-period-factors"><img src="../figures/shm-period-factors.svg" alt="Left: a block of mass m hanging from a spring of constant k, with T = 2π√(m/k); the period depends on m and k, not on the amplitude or g. Right: a simple pendulum of length ℓ at a small angle, with T = 2π√(ℓ/g); the period depends on ℓ and g, not on the bob's mass or the amplitude." width="760" height="440" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> What the two periods depend on, and what they do not. <span class="phys-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Change</th><th>Block on a spring</th><th>Pendulum (small angle)</th></tr></thead>
+<tbody>
+<tr><td>Mass × 4</td><td>T × 2</td><td>no change</td></tr>
+<tr><td><a class="gl" href="../notes/spring-forces.html" data-c="hookes-law">Spring constant</a> × 4</td><td>T × ½</td><td>(no spring)</td></tr>
+<tr><td>Length × 4</td><td>(no length)</td><td>T × 2</td></tr>
+<tr><td>g × 4 (another planet)</td><td>no change</td><td>T × ½</td></tr>
+<tr><td>Amplitude × 2</td><td>no change</td><td>no change</td></tr>
+</tbody></table></div>
+<p>The exam's most common error here is using the spring formula for a pendulum and concluding that a heavier bob swings more slowly. Check which system you have before you pick the formula.</p>
+
+<h2 id="functional-dependence">Functional dependence</h2>
+<p>Many questions do not give numbers; they ask how T changes when one quantity changes. Write the formula, keep everything else fixed, and read the factor. T ∝ √m means: multiply m by 4, T is multiplied by √4 = 2. Multiply m by 2, T is multiplied by √2 ≈ 1.41.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A pendulum on Earth has period 1.6 s. It is taken to a planet where g is 4 times as large, and its string is made 9 times as long. Find the new period.</p>
+<p>T ∝ √(ℓ/g), so the factor is √(9/4) = 3/2.</p>
+<p>New T = 1.5 × 1.6 s = <b>2.4 s</b>.</p>
+</div>
+<p>On this course we use g = 9.8 m/s², the value printed on the equations sheet. The exam also accepts 10 m/s²; whichever you use, use it throughout a solution.</p>
+
+<h2 id="measuring-k-or-g-with-a">Measuring k or g with a straight line</h2>
+<p>A graph of T against m curves, because T ∝ √m. To get a straight line, square the formula: T² = (4π²/k)·m. Plot T² on the vertical axis and m on the horizontal axis; the <a class="gl" href="../notes/math-slopes-areas.html" data-c="slope">slope</a> is 4π²/k, so k = 4π²/slope. For a pendulum, T² = (4π²/g)·ℓ: plot T² against ℓ and g = 4π²/slope. This is a favorite laboratory free-response task.</p>
+
+    </article>
+    <p class="phys-report-page phys-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:shm-period">Report a problem</button></p>
+    <nav class="tb-chapter-nav phys-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="shm-intro.html"><span>&larr; Previous</span><b>Defining Simple Harmonic Motion</b></a><a class="tb-chapter-link next" href="shm-representations.html"><span>Next &rarr;</span><b>Representing and Analyzing SHM</b></a></nav>
+  </main>
+</div>
+<footer class="phys-foot xshell">
+  <p class="phys-accuracy-note"><span class="phys-beta phys-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Physics 1 teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:shm-period">Report a problem</button></span></p>
+  <p class="phys-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPhysSection = 'learn'; window.ApPhysBase = '../';</script>
+<script src="../assets/phys-curriculum.js" defer></script>
+<script src="../assets/phys-core.js" defer></script>
+<script src="../assets/phys-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/phys-toc.js" defer></script>
+</body>
+</html>

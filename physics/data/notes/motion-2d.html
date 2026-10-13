@@ -1,0 +1,50 @@
+<p>A basketball shot, a ball rolling off a table, a package dropped from a drone: each moves across and down at the same time, along a curved path. The curve looks complicated, but it is made of two simple motions you already know. This page shows how to split two-dimensional motion into a horizontal part and a vertical part, solve each one alone, and put them back together.</p>
+
+<h2>Two independent motions</h2>
+<figure id="fig-strobe" data-fig="table-launch-strobe"><figcaption>Two balls, one launched sideways and one dropped, photographed at equal time intervals.</figcaption></figure>
+<p>Look at the figure. At every instant the launched ball and the dropped ball are at the same height. Its sideways motion does not make the launched ball fall more slowly or more quickly. Meanwhile, it moves the same distance sideways in each interval, as if gravity did not exist.</p>
+<p>This is the key idea of the topic: <b>perpendicular components of motion are independent</b>. Choose a horizontal x-axis and a vertical y-axis. The x-motion follows its own rules, the y-motion follows its own rules, and the only thing they share is the clock. In short, two-dimensional motion is two one-dimensional motions happening at once.</p>
+
+<h2>Projectiles</h2>
+<p>A <b>projectile</b> is an object that, after it is launched, moves under gravity alone. Air resistance is assumed negligible. Gravity acts straight down, so:</p>
+<table class="compare"><thead><tr><th scope="col"></th><th scope="col">Horizontal (x)</th><th scope="col">Vertical (y), up positive</th></tr></thead>
+<tbody><tr><th scope="row">Acceleration</th><td>aₓ = 0</td><td>a<sub>y</sub> = −g = −9.8 m/s²</td></tr>
+<tr><th scope="row">Velocity</th><td>vₓ stays the same</td><td>v<sub>y</sub> = v<sub>y0</sub> − gt</td></tr>
+<tr><th scope="row">Position</th><td>x = vₓt</td><td>y = y₀ + v<sub>y0</sub>t − ½gt²</td></tr>
+<tr><th scope="row">Kind of motion</th><td>constant velocity</td><td>free fall</td></tr></tbody></table>
+<p>To start, split the launch velocity using the <b>launch angle</b> θ above the horizontal: vₓ = v cos θ and v<sub>y0</sub> = v sin θ. A launch that is horizontal (off a table, from a flying drone) has θ = 0, so vₓ = v and v<sub>y0</sub> = 0.</p>
+
+<h2>The method</h2>
+<ol>
+<li>Draw the situation and choose axes (usually x across, y up).</li>
+<li>Split the initial velocity into vₓ and v<sub>y0</sub>.</li>
+<li>Use the vertical motion to find the <b>time of flight</b>: the vertical motion alone decides how long the object is in the air.</li>
+<li>Use that time in the horizontal motion: the <b>horizontal range</b> is vₓ × t.</li>
+<li>To find a speed at some moment, combine the components with the Pythagorean theorem.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> A ball rolls off a 0.90 m high table at 2.0 m/s. Where does it land, and how fast is it going? Use g = 9.8 m/s².</p>
+<p>Vertical: v<sub>y0</sub> = 0, Δy = −0.90 m. Δy = −½gt² → t = √(2 × 0.90 m ÷ 9.8 m/s²) = 0.429 s.</p>
+<p>Horizontal: d = vₓt = 2.0 m/s × 0.429 s = 0.86 m.</p>
+<p>Landing speed: vₓ = 2.0 m/s; v<sub>y</sub> = −gt = −4.20 m/s. Speed = √(2.0² + 4.20²) = 4.7 m/s.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> A soccer ball is kicked at 15.0 m/s, 53.0° above level ground. Find its time of flight and range.</p>
+<p>Components: vₓ = 15.0 cos 53.0° = 9.03 m/s; v<sub>y0</sub> = 15.0 sin 53.0° = 12.0 m/s.</p>
+<p>Time to the top (v<sub>y</sub> = 0): t = 11.98 ÷ 9.8 = 1.22 s. On level ground the fall takes as long as the rise, so the time of flight is 2.44 s.</p>
+<p>Range = vₓ × t = 9.03 m/s × 2.44 s = 22.1 m.</p>
+</div>
+
+<h2>At the top of the path</h2>
+<p>At the highest point, the vertical velocity is zero for an instant. The horizontal velocity is not: the ball is still moving sideways at vₓ. So the velocity at the top is horizontal, and the speed there is the smallest of the whole flight, but not zero. The acceleration is still g downward, as it is everywhere along the path.</p>
+
+<h2>Functional dependence</h2>
+<p>Because the parts are independent, you can reason about changes without numbers.</p>
+<ul>
+<li>Double the horizontal speed off the same table: the fall time is the same, and the landing distance doubles.</li>
+<li>Make the table 9 times as high: t = √(2h/g) grows by √9 = 3, so the landing distance triples.</li>
+<li>Raise the launch angle at the same speed: v<sub>y0</sub> = v sin θ grows, so the ball stays up longer, but vₓ = v cos θ shrinks. On level ground, angles that add to 90° (like 37° and 53°) give the same range.</li>
+</ul>
+
+<h2>Frames and projectiles</h2>
+<p>A drone flying at 5.0 m/s drops a package. At release, the package already moves forward at 5.0 m/s with the drone. In the drone's frame it falls straight down and stays directly below the drone. In the ground's frame the same motion is a curved path. Both descriptions are correct; they are the same motion seen from two frames. That is why the drone must release the package before it is over the target.</p>

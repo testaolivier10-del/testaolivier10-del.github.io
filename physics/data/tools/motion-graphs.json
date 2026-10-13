@@ -1,0 +1,212 @@
+{
+ "about": "Trainer: motion graphs (Unit 1, free). Explore drives one model (ApPhysMath.motionGraphs) three ways: drag the cart, set v and a, or match a target graph. Test yourself: seeded problems from ApPhysMath.motionGraphs.generate; the validator recomputes every key for 300 seeds per context.",
+ "slug": "motion-graphs",
+ "kind": "simulator",
+ "topic": "motion-representations",
+ "intro": "<p>One cart, three graphs. Drag the cart along the track (or set its starting velocity and acceleration and press Run), and its position-time, velocity-time and acceleration-time graphs draw themselves as it moves. Tap any graph to read the slope and the area at that moment. In Match, drive the cart so its graph traces a target.</p>",
+ "howItWorksTitle": "Slopes, areas and the model",
+ "howItWorks": "<ul><li><b>Slope of x-t = velocity.</b> Steep means fast; rising means moving in the + direction; flat means at rest.</li><li><b>Slope of v-t = acceleration.</b> A straight v-t line means constant acceleration. v and a with the same sign: speeding up; opposite signs: slowing down.</li><li><b>Area under v-t = displacement</b> (area below the axis counts as negative); adding every area as positive gives the distance. <b>Area under a-t = change in velocity.</b></li><li>In <b>Set v and a</b> the motion is exact: x = x₀ + v₀t + ½at² and v = v₀ + at, recomputed each frame from the time, so nothing drifts. Changing a while it runs starts a new straight piece on v-t.</li><li>In <b>Drag</b> and <b>Match</b> the detector records your position every frame; v and a are least-squares slopes over a short window, as a real motion detector computes them.</li><li>Free fall in the drills uses g = 9.8 m/s² downward with no air resistance; 10 m/s² is also accepted on the exam.</li></ul>",
+ "targets": [
+  {
+   "id": "walk-away",
+   "topic": "motion-representations",
+   "kind": "x",
+   "name": "Walk away slowly, stop, then come back faster",
+   "pts": [
+    [
+     0,
+     -3
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     8,
+     -3
+    ],
+    [
+     10,
+     -3
+    ]
+   ]
+  },
+  {
+   "id": "out-and-back",
+   "topic": "motion-representations",
+   "kind": "x",
+   "name": "Go right steadily, then come straight back",
+   "pts": [
+    [
+     0,
+     -4
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     10,
+     -4
+    ]
+   ]
+  },
+  {
+   "id": "stairs",
+   "topic": "motion-representations",
+   "kind": "x",
+   "name": "Move, wait, move, wait",
+   "pts": [
+    [
+     0,
+     -4
+    ],
+    [
+     2,
+     -1
+    ],
+    [
+     4,
+     -1
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     8,
+     2
+    ],
+    [
+     10,
+     2
+    ]
+   ]
+  },
+  {
+   "id": "steady-right",
+   "topic": "motion-representations",
+   "kind": "v",
+   "name": "Hold 1 m/s to the right, then stop",
+   "pts": [
+    [
+     0,
+     1
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     6.5,
+     0
+    ],
+    [
+     10,
+     0
+    ]
+   ],
+   "x0": -3
+  },
+  {
+   "id": "speed-up-slow-down",
+   "topic": "motion-representations",
+   "kind": "v",
+   "name": "Speed up to the right, then slow to a stop",
+   "pts": [
+    [
+     0,
+     0
+    ],
+    [
+     4,
+     1.5
+    ],
+    [
+     8,
+     0
+    ],
+    [
+     10,
+     0
+    ]
+   ],
+   "x0": -3
+  },
+  {
+   "id": "right-then-left",
+   "topic": "motion-representations",
+   "kind": "v",
+   "name": "Right at 1 m/s, stop, then left at 1 m/s",
+   "x0": -3,
+   "pts": [
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     4.5,
+     0
+    ],
+    [
+     5.5,
+     0
+    ],
+    [
+     6,
+     -1
+    ],
+    [
+     10,
+     -1
+    ]
+   ]
+  }
+ ],
+ "contexts": [
+  {
+   "id": "slope",
+   "topic": "motion-representations",
+   "kind": "slope"
+  },
+  {
+   "id": "area",
+   "topic": "motion-representations",
+   "kind": "area"
+  },
+  {
+   "id": "pick",
+   "topic": "motion-representations",
+   "kind": "pick"
+  },
+  {
+   "id": "describe",
+   "topic": "motion-representations",
+   "kind": "describe"
+  },
+  {
+   "id": "turn",
+   "topic": "motion-representations",
+   "kind": "turn",
+   "g": 9.8
+  },
+  {
+   "id": "signs",
+   "topic": "motion-quantities",
+   "kind": "signs"
+  },
+  {
+   "id": "dist",
+   "topic": "scalars-vectors",
+   "kind": "dist"
+  }
+ ]
+}

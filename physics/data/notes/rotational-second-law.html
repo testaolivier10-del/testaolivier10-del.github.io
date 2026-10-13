@@ -1,0 +1,41 @@
+<p>A net force changes an object's velocity; a net torque changes its angular velocity. This page puts a number on that. It is the rotational version of Newton's second law, and it is what lets you predict how a pulley, a drum or a door speeds up when something pushes it.</p>
+
+<h2>α = τ<sub>net</sub> / I</h2>
+<p>For translation, a = F<sub>net</sub>/m: more force, more acceleration; more mass, less. For rotation, swap in the partners: torque for force, rotational inertia for mass, angular acceleration for acceleration.</p>
+<p style="text-align:center"><b>α = τ<sub>net</sub> / I</b> &#160; or &#160; <b>τ<sub>net</sub> = Iα</b></p>
+<p>The angular acceleration has the direction of the net torque: a counterclockwise net torque speeds up a wheel turning counterclockwise, or slows one turning clockwise. With zero net torque, α = 0 and ω stays constant, which is the first law again.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A grindstone with I = 0.25 kg·m² starts from rest. A net torque of 1.5 N·m acts on it. How long until it turns at 24 rad/s?</p>
+<p>α = τ<sub>net</sub>/I = (1.5 N·m)/(0.25 kg·m²) = 6.0 rad/s².</p>
+<p>From rest, ω = αt, so t = ω/α = (24 rad/s)/(6.0 rad/s²) = <b>4.0 s</b>.</p>
+</div>
+<p>Rotational inertia now shows why it matters. Apply the same torque to a hoop and a disk of the same mass and radius. The hoop's I = MR² is twice the disk's ½MR², so the hoop gets half the angular acceleration.</p>
+
+<h2>Two analyses for one system</h2>
+<p>Many problems have a part that moves and a part that turns. A block hangs from a string wound on a pulley with mass. The block falls; the pulley spins. To describe the whole thing you need one equation for each.</p>
+<figure id="fig-pul" data-fig="pulley-block-forces"><figcaption>The pulley's force diagram and the block's free-body diagram.</figcaption></figure>
+<ul>
+<li><b>The block</b> (translation), down positive: mg − F<sub>T</sub> = ma.</li>
+<li><b>The pulley</b> (rotation): of the forces on it, only the string's pull has a lever arm, R. So F<sub>T</sub>R = Iα.</li>
+<li><b>The link</b>: the string does not slip, so a = Rα.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> A 0.200 kg block hangs from a light string wound on a uniform disk pulley (M = 1.20 kg, R = 0.080 m, I = ½MR², given) on a frictionless axle. Find the block's acceleration and the tension. Use g = 9.8 m/s².</p>
+<p>Pulley: F<sub>T</sub>R = (½MR²)(a/R), so F<sub>T</sub> = ½Ma = (0.600 kg)a. R cancels.</p>
+<p>Block: mg − F<sub>T</sub> = ma, so mg = (m + ½M)a.</p>
+<p>a = (0.200 kg)(9.8 m/s²)/(0.200 kg + 0.600 kg) = <b>2.45 m/s²</b>.</p>
+<p>F<sub>T</sub> = (0.600 kg)(2.45 m/s²) = <b>1.47 N</b>. Check with the block: (0.200 kg)(9.8 − 2.45) m/s² = 1.47 N.</p>
+</div>
+<p>Two features of that answer are worth remembering. The tension (1.47 N) is <b>less</b> than the block's weight (1.96 N): the block speeds up downward, so the net force on it must be down. And the acceleration is less than g, because part of gravity's pull goes into spinning up the pulley.</p>
+
+<h2>Strings over a pulley with mass</h2>
+<p>With an ideal (massless) pulley, the tension is the same on both sides of the string. That stops being true once the pulley has mass. To give the pulley an angular acceleration, the two sides must pull with different tensions: (F<sub>T1</sub> − F<sub>T2</sub>)R = Iα. The heavier block's side has the larger tension, but still less than that block's weight.</p>
+
+<h2>Reading data</h2>
+<p>If you apply several known torques to a wheel and measure α, then α = (1/I)τ says a graph of α against τ is a line through the origin with slope 1/I. If friction at the axle exerts a constant torque, the line keeps its slope but shifts: the wheel only starts to speed up once the applied torque exceeds the friction torque.</p>
+<table class="compare"><thead><tr><th>Translation</th><th>Rotation</th></tr></thead><tbody>
+<tr><td>force F</td><td>torque τ</td></tr>
+<tr><td>mass m</td><td>rotational inertia I</td></tr>
+<tr><td>a = F<sub>net</sub>/m</td><td>α = τ<sub>net</sub>/I</td></tr>
+<tr><td>ΣF = 0: velocity constant</td><td>Στ = 0: angular velocity constant</td></tr>
+</tbody></table>

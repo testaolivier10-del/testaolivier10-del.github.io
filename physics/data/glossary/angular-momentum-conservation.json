@@ -1,0 +1,11 @@
+{
+ "external-torque": {
+  "def": "A torque on a system from an object outside it. Only the net external torque can change a system’s total angular momentum."
+ },
+ "conservation-angular-momentum": {
+  "def": "The total angular momentum of a system stays constant when the net external torque on it is zero. The parts can trade angular momentum, but the total does not change."
+ },
+ "shape-change": {
+  "def": "When a system changes shape with no net external torque (a skater pulling in her arms), its rotational inertia changes and its angular velocity changes the opposite way so that L = Iω stays the same."
+ }
+}

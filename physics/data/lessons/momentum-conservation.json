@@ -1,0 +1,94 @@
+{
+ "topic": "momentum-conservation",
+ "hook": "A rifle kicks back when it fires, a skater drifts backward after throwing a ball, and two pool balls share their motion when they collide. All three follow one rule: with no net external push, a system cannot change its total momentum. Choosing the system decides when the rule applies.",
+ "prereq": [
+  {
+   "q": "Newton's third law says the force A exerts on B is",
+   "options": [
+    "equal in size and opposite to the force B exerts on A",
+    "larger when A is heavier",
+    "always zero",
+    "in the same direction as B on A"
+   ],
+   "correct": 0,
+   "why": "Third-law pairs are equal and opposite.",
+   "review": "third-law"
+  },
+  {
+   "q": "Impulse equals",
+   "options": [
+    "the change in momentum",
+    "the momentum",
+    "the change in kinetic energy",
+    "force divided by time"
+   ],
+   "correct": 0,
+   "why": "J = Δp.",
+   "review": "impulse"
+  },
+  {
+   "q": "The velocity of a system's center of mass is",
+   "options": [
+    "Σp/Σm",
+    "the average of the speeds",
+    "Σm/Σp",
+    "the fastest object's velocity"
+   ],
+   "correct": 0,
+   "why": "v_cm = total momentum / total mass.",
+   "review": "linear-momentum"
+  }
+ ],
+ "figure": {
+  "figure": "momentum-system-choice",
+  "caption": "For cart A alone, B's push is external and A's momentum changes; for both carts, the pushes are internal and the total momentum stays constant."
+ },
+ "chain": [
+  {
+   "cause": "Two objects in a system push on each other",
+   "effect": "the third law makes the forces, and their impulses, equal and opposite"
+  },
+  {
+   "cause": "The internal impulses are equal and opposite",
+   "effect": "one object's momentum gain is the other's loss, so internal forces cannot change the total"
+  },
+  {
+   "cause": "The net external force on the system is zero",
+   "effect": "the system's total momentum, and its center of mass's velocity, stay constant"
+  },
+  {
+   "cause": "An object is left out of the system",
+   "effect": "its forces become external and the system's momentum can change"
+  }
+ ],
+ "ideas": [
+  "Internal forces come in third-law pairs, so their impulses cancel: they move momentum between parts but never change the total.",
+  "<b>Conservation of momentum</b>: when the net external force on a system is zero, its total momentum is constant: Σp_before = Σp_after.",
+  "The <b>choice of system</b> decides whether momentum is constant. A cart alone in a collision is not; both carts together are.",
+  "With no net external force, the center of mass moves at constant velocity, whatever the parts do.",
+  "Justify with the condition: \"the net external force on the two-cart system is zero\", never \"because momentum is conserved\"."
+ ],
+ "misconception": {
+  "wrong": "Momentum is constant because of conservation of momentum.",
+  "right": "Momentum is constant for a system on which the net external force is zero. Name the system and say why the external forces add to zero (they balance, or are negligible during a brief collision)."
+ },
+ "check": [
+  "phys-momentum-conservation-1",
+  "phys-momentum-conservation-2",
+  "phys-momentum-conservation-3",
+  "phys-momentum-conservation-4",
+  "phys-momentum-conservation-5",
+  "phys-momentum-conservation-11"
+ ],
+ "summary": "Internal forces cancel in pairs, so only external forces change a system's momentum. With zero net external force, total momentum and the center of mass's velocity stay constant. Choosing the system decides which forces are external; always state the condition.",
+ "connections": [
+  {
+   "href": "../notes/impulse.html",
+   "label": "Back: impulse (4.2)"
+  },
+  {
+   "href": "../notes/collisions.html",
+   "label": "Next: 4.4"
+  }
+ ]
+}

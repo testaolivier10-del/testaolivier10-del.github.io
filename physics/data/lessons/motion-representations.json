@@ -1,0 +1,99 @@
+{
+ "topic": "motion-representations",
+ "hook": "A coach's stopwatch, a phone's motion sensor and a slow-motion video describe the same sprint in different ways: a table of times, a graph that climbs and flattens, a strip of frames. The exam asks you to move between all of them, and two graph rules do most of the work: slope down, area up.",
+ "prereq": [
+  {
+   "q": "What does the slope of a graph of y against x tell you?",
+   "options": [
+    "How fast y changes per unit of x",
+    "The value of y at x = 0",
+    "The total of y times x",
+    "The largest value of y"
+   ],
+   "correct": 0,
+   "why": "Slope = Δy/Δx, a rate, with units (y unit)/(x unit).",
+   "review": "math-slopes-areas"
+  },
+  {
+   "q": "A cart's velocity changes from 2.0 m/s to 5.0 m/s in 1.5 s. What is its average acceleration?",
+   "options": [
+    "2.0 m/s²",
+    "4.5 m/s²",
+    "3.0 m/s²",
+    "0.50 m/s²"
+   ],
+   "correct": 0,
+   "why": "a = Δv/Δt = 3.0 m/s ÷ 1.5 s = 2.0 m/s².",
+   "review": "motion-quantities"
+  },
+  {
+   "q": "If Δx ∝ t², how does Δx change when t doubles?",
+   "options": [
+    "It becomes 4 times as large",
+    "It doubles",
+    "It halves",
+    "It does not change"
+   ],
+   "correct": 0,
+   "why": "The factor squared: 2² = 4.",
+   "review": "math-proportional"
+  }
+ ],
+ "figure": {
+  "figure": "motion-graphs-stack",
+  "caption": "One motion in four representations. Read downward with slopes (x-t → v-t → a-t) and upward with areas (a-t → v-t → x-t)."
+ },
+ "chain": [
+  {
+   "cause": "Position changes with time",
+   "effect": "the slope of the x-t graph at any instant is the velocity"
+  },
+  {
+   "cause": "Velocity changes with time",
+   "effect": "the slope of the v-t graph is the acceleration, and the area under it is the displacement"
+  },
+  {
+   "cause": "The acceleration is constant",
+   "effect": "the v-t graph is a straight line and the three kinematic equations apply"
+  },
+  {
+   "cause": "An object falls with air resistance negligible",
+   "effect": "its acceleration is g = 9.8 m/s² downward at every instant, even when v = 0 at the top"
+  }
+ ],
+ "ideas": [
+  "A <b>motion diagram</b> shows positions at equal times: growing gaps mean speeding up, shrinking gaps mean slowing down.",
+  "Slope of <b>x-t</b> = velocity. Slope of <b>v-t</b> = acceleration. Area under <b>v-t</b> = displacement. Area under <b>a-t</b> = change in velocity.",
+  "For <b>constant acceleration</b>: v = v₀ + at; x = x₀ + v₀t + ½at²; v² = v₀² + 2a(x − x₀). Pick the one that leaves out the quantity you neither know nor want.",
+  "<b>Free fall</b>: a = g = 9.8 m/s² downward (10 m/s² is accepted), on the way up, at the top and on the way down.",
+  "If the acceleration changes (<b>nonuniform</b>), the v-t graph curves. Describe it from the graph only; the equations do not apply."
+ ],
+ "misconception": {
+  "wrong": "At the top of its flight a ball thrown straight up has zero acceleration, because it stops for an instant.",
+  "right": "Its velocity is zero for an instant, but the velocity is still changing, from upward to downward, at 9.8 m/s² each second. The acceleration is g downward at the top, as everywhere else in the flight."
+ },
+ "check": [
+  "phys-motion-representations-1",
+  "phys-motion-representations-2",
+  "phys-motion-representations-3",
+  "phys-motion-representations-11",
+  "phys-motion-representations-13",
+  "phys-motion-representations-21",
+  "phys-motion-representations-25"
+ ],
+ "summary": "Motion can be shown as a motion diagram, x-t, v-t and a-t graphs, equations and words. Slopes go down the chain (x-t to v-t to a-t) and areas go up it. For constant acceleration, three kinematic equations apply, each missing one quantity; free fall is constant acceleration g downward.",
+ "connections": [
+  {
+   "href": "../notes/math-slopes-areas.html",
+   "label": "Back: slopes and areas"
+  },
+  {
+   "href": "../notes/motion-quantities.html",
+   "label": "Back: velocity and acceleration (1.2)"
+  },
+  {
+   "href": "../notes/reference-frames.html",
+   "label": "Next: reference frames (1.4)"
+  }
+ ]
+}

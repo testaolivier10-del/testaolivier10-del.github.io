@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slopes and Areas of Graphs — AP® Physics 1 Lesson | LevlPrep</title>
+<meta name="description" content="The slope of a line is Δy/Δx between two points on it, with units (y unit)/(x unit); the area under a graph is height × width, with units (y unit) × (x unit).">
+<link rel="canonical" href="https://levlprep.com/physics/lessons/math-slopes-areas.html">
+<meta property="og:title" content="Slopes and Areas of Graphs — AP® Physics 1 Lesson | LevlPrep">
+<meta property="og:description" content="The slope of a line is Δy/Δx between two points on it, with units (y unit)/(x unit); the area under a graph is height × width, with units (y unit) × (x unit).">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/physics/lessons/math-slopes-areas.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/physics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/phys.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/physics/lessons/math-slopes-areas.html#lesson",
+      "name": "Slopes and Areas of Graphs",
+      "url": "https://levlprep.com/physics/lessons/math-slopes-areas.html",
+      "description": "The slope of a line is Δy/Δx between two points on it, with units (y unit)/(x unit); the area under a graph is height × width, with units (y unit) × (x unit).",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "axis label"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "slope"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "linear relationship"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "area under a graph"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "best-fit line"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "linearization"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/physics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Physics 1",
+          "item": "https://levlprep.com/physics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Math you need",
+          "item": "https://levlprep.com/physics/units/skills-math.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Slopes and Areas of Graphs",
+          "item": "https://levlprep.com/physics/lessons/math-slopes-areas.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="phys" data-topic="math-slopes-areas" data-unit="skills-math">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="phys-crumb phys-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Physics 1</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-math.html">Math you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Slopes and Areas of Graphs</span></nav></div>
+<div class="xshell phys-ls phys-stepped">
+  <aside class="phys-ls-rail phys-nav-ref" aria-label="Lesson parts">
+    <p class="phys-ls-k">Skills · Math you need</p>
+    <p class="phys-ls-links"><a href="../units/skills-math.html">&larr; Back to the unit</a><a href="../notes/math-slopes-areas.html">Read the notes</a></p>
+    <div class="phys-ls-prog"><div class="phys-ls-track"><div class="phys-ls-fill"></div></div><span class="phys-ls-count">Step 1 / 11</span></div>
+    <ol class="phys-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="phys-ls-main phys-lesson">
+  <header class="phys-ls-hero">
+    <div class="eyebrow">Skills <span class="phys-beta phys-nav-ref">Beta</span></div>
+    <h1>Slopes and Areas of Graphs</h1>
+    <p class="lede">Label every axis with a quantity and unit.</p>
+    <p class="phys-tags phys-nav-ref"><span class="phys-tag">Practice 1: Creating Representations</span><span class="phys-tag">Practice 2: Mathematical Routines</span></p>
+    <div class="phys-share phys-nav-ref" role="group" aria-label="Share or print this lesson"><a class="phys-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fphysics%2Flessons%2Fmath-slopes-areas.html&amp;title=Slopes%20and%20Areas%20of%20Graphs%3A%20physics%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="phys-share-btn" data-copy="https://levlprep.com/physics/lessons/math-slopes-areas.html">Copy link</button><button type="button" class="phys-share-btn" data-print>Print</button></div>
+    <p class="phys-small phys-nav-ref"><a href="../practice.html?topic=math-slopes-areas">Question set for this topic</a></p>
+  </header>
+  <div class="phys-ls-card">
+  <section class="phys-part phys-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="phys-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="phys-step-body phys-hook">A graph is a picture of how one quantity depends on another, and two features of it carry most of the physics: how steep it is and how much area sits under it. Read those two and you can get a <a class="gl" href="../notes/scalars-vectors.html" data-c="speed">speed</a>, a <a class="gl" href="../notes/scalars-vectors.html" data-c="distance">distance</a> or an <a class="gl" href="../notes/motion-quantities.html" data-c="acceleration">acceleration</a> without a single equation.</div>
+  </section>
+  <section class="phys-part phys-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="phys-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="phys-step-body"><nav class="phys-nav-ref" aria-label="Earlier topics"><ul class="phys-links"><li><a href="../notes/math-units.html">Units, Prefixes and Significant Figures</a></li><li><a href="../notes/math-symbols.html">Rearranging Equations with Symbols</a></li><li><a href="../notes/math-proportional.html">Proportional Reasoning and Functional Dependence</a></li></ul></nav></div>
+  </section>
+  <section class="phys-part phys-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="phys-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="phys-step-body"><div class="phys-qs" data-set="prereq"><div class="phys-q" data-qid="math-slopes-areas-pre-1"><p class="phys-q-stem"><span class="phys-q-n">1.</span> A walker covers 12 m in 6.0 s at a steady speed. What is her speed?</p><ol class="phys-opts"><li>2.0 m/s</li><li>72 m/s</li><li>0.50 m/s</li><li>18 m/s</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>Speed = distance ÷ time = 12 m ÷ 6.0 s = 2.0 m/s.</p><ul><li><b>Correct:</b> 2.0 m/s: </li><li>72 m/s: </li><li>0.50 m/s: </li><li>18 m/s: </li></ul></details></div><div class="phys-q" data-qid="math-slopes-areas-pre-2"><p class="phys-q-stem"><span class="phys-q-n">2.</span> If y ∝ x², what happens to y when x triples?</p><ol class="phys-opts"><li>It becomes 9 times as large</li><li>It triples</li><li>It becomes 6 times as large</li><li>It becomes one ninth as large</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>The factor squared: 3² = 9.</p><ul><li><b>Correct:</b> It becomes 9 times as large: </li><li>It triples: </li><li>It becomes 6 times as large: </li><li>It becomes one ninth as large: </li></ul></details></div></div></div>
+  </section>
+  <section class="phys-part phys-step" id="figure" aria-labelledby="h-figure">
+    <p class="phys-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="phys-step-body"><figure class="phys-figure phys-lesson-fig"><div class="phys-figimg" data-fig="slope-and-area"><img src="../figures/slope-and-area.svg" alt="Two graphs. Left: distance walked in meters against time in seconds, a straight line through the origin to 20 m at 10 s. A dashed triangle between the points (2 s, 4 m) and (8 s, 16 m) shows a run of 6 s and a rise of 12 m, so the slope is 12 m divided by 6 s = 2 m/s; the units of a slope are the y unit over the x unit. Right: speed in m/s against time, a horizontal line at 3 m/s. The rectangle under it from 2 s to 8 s is shaded: its area is 3 m/s times 6 s = 18 m, the distance covered; the units of an area are the y unit times the x unit." width="800" height="380" loading="lazy" decoding="async"></div><figcaption>The slope is <span class="gl" tabindex="0" data-c="slope">rise over run</span>, in (y unit)/(x unit). The area under a line is height × width, in (y unit) × (x unit). <span class="phys-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="phys-part phys-step" id="chain" aria-labelledby="h-chain">
+    <p class="phys-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="phys-step-body"><ol class="phys-chain"><li><span class="phys-cause">A graph has a quantity with a unit on each axis</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">its slope and its area each have a unit, built from those two units</span></li><li><span class="phys-cause">You divide the rise by the run between two points on a line</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">you get the slope, the rate at which y changes per unit of x</span></li><li><span class="phys-cause">You multiply the height by the width of the region under a graph</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">you get an area whose unit is (y unit) × (x unit), often a total such as a distance</span></li><li><span class="phys-cause">Data scatter and the relationship may be curved</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">you draw a <span class="gl" tabindex="0" data-c="best-fit-line">best-fit line</span>, after choosing what to plot so the graph is straight</span></li></ol></div>
+  </section>
+  <section class="phys-part phys-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="phys-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="phys-step-body"><ul class="phys-ideas"><li>Every axis gets a label and a unit: "Time (s)". Without both, the graph cannot be read.</li><li><b>Slope</b> = rise/run = Δy/Δx, from two points on the line (not data points). Its unit is (y unit)/(x unit), and it is a rate.</li><li><b><span class="gl" tabindex="0" data-c="area-under-graph">Area under a graph</span></b> = height × width for a rectangle, ½ × base × height for a triangle. Its unit is (y unit) × (x unit).</li><li>A <b>best-fit line</b> passes between scattered points, never dot to dot. If the relationship is curved, <b><span class="gl" tabindex="0" data-c="linearization">linearize</span></b>: for d = ½at², plot d against t², and the slope is ½a.</li></ul></div>
+  </section>
+  <section class="phys-part phys-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="phys-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="phys-step-body phys-misconception"><p class="phys-wrong"><b>The wrong idea:</b> To find a slope, divide the y-value of a point by its x-value, for example 9.0 m ÷ 10 s for a line through (0 s, 2.0 m) and (10 s, 9.0 m).</p><p class="phys-right"><b>What actually happens:</b> A slope uses changes between two points on the line: (9.0 m − 2.0 m) ÷ (10 s − 0 s) = 0.70 m/s. Dividing one point's values works only when the line passes through the origin.</p></div>
+  </section>
+  <section class="phys-part phys-step" id="check" aria-labelledby="h-check">
+    <p class="phys-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="phys-step-body"><p class="phys-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="phys-qs" data-set="check"><div class="phys-set"><section class="phys-stim" data-stim="math-slopes-areas-s1" aria-labelledby="stim-math-slopes-areas-s1"><p class="phys-stim-k">Graph</p><h3 id="stim-math-slopes-areas-s1">A rising weather balloon</h3><div class="phys-stim-text"><p>A student tracks a small weather balloon just after release and records its height above the ground every 2 s. The line through the data is the best-fit line, height = 0.50 t + 1.2 (height in meters, t in seconds).</p></div><div class="phys-chart"><svg class="phys-svg" viewBox="0 0 560 320" role="img" aria-label="A rising weather balloon: line graph of Height against Time for Measured height, Best-fit line. The data table follows."><line class="axis" x1="64" y1="262" x2="542" y2="262"/><line class="axis" x1="64" y1="18" x2="64" y2="262"/><line class="grid" x1="64" y1="262.0" x2="542" y2="262.0"/><text class="tick" x="56" y="266.0" text-anchor="end">0</text><line class="grid" x1="64" y1="227.1" x2="542" y2="227.1"/><text class="tick" x="56" y="231.1" text-anchor="end">1</text><line class="grid" x1="64" y1="192.3" x2="542" y2="192.3"/><text class="tick" x="56" y="196.3" text-anchor="end">2</text><line class="grid" x1="64" y1="157.4" x2="542" y2="157.4"/><text class="tick" x="56" y="161.4" text-anchor="end">3</text><line class="grid" x1="64" y1="122.6" x2="542" y2="122.6"/><text class="tick" x="56" y="126.6" text-anchor="end">4</text><line class="grid" x1="64" y1="87.7" x2="542" y2="87.7"/><text class="tick" x="56" y="91.7" text-anchor="end">5</text><line class="grid" x1="64" y1="52.9" x2="542" y2="52.9"/><text class="tick" x="56" y="56.9" text-anchor="end">6</text><line class="grid" x1="64" y1="18.0" x2="542" y2="18.0"/><text class="tick" x="56" y="22.0" text-anchor="end">7</text><text class="tick" x="64.0" y="280" text-anchor="middle">0</text><text class="tick" x="159.6" y="280" text-anchor="middle">2</text><text class="tick" x="255.2" y="280" text-anchor="middle">4</text><text class="tick" x="350.8" y="280" text-anchor="middle">6</text><text class="tick" x="446.4" y="280" text-anchor="middle">8</text><text class="tick" x="542.0" y="280" text-anchor="middle">10</text><circle class="pt s1" cx="64.0" cy="223.7" r="4.5"/><circle class="pt s1" cx="159.6" cy="178.3" r="4.5"/><circle class="pt s1" cx="255.2" cy="147.0" r="4.5"/><circle class="pt s1" cx="350.8" cy="122.6" r="4.5"/><circle class="pt s1" cx="446.4" cy="87.7" r="4.5"/><circle class="pt s1" cx="542.0" cy="38.9" r="4.5"/><polyline class="series s2" points="64.0,220.2 542.0,45.9"/><text class="lbl" x="303" y="308" text-anchor="middle">Time (s)</text><text class="lbl" transform="translate(16 140) rotate(-90)" text-anchor="middle">Height (m)</text></svg><p class="phys-legend"><span class="s1"><i aria-hidden="true"></i>Measured height</span><span class="s2"><i aria-hidden="true"></i>Best-fit line</span></p><details class="phys-chart-data"><summary>Data table</summary><div class="table-wrap" tabindex="0" role="region" aria-label="Data table"><table><thead><tr><th scope="col">Time (s)</th><th scope="col">Measured height</th><th scope="col">Best-fit line</th></tr></thead><tbody><tr><th scope="row">0</th><td>1.1</td><td>1.2</td></tr><tr><th scope="row">2</th><td>2.4</td><td>—</td></tr><tr><th scope="row">4</th><td>3.3</td><td>—</td></tr><tr><th scope="row">6</th><td>4</td><td>—</td></tr><tr><th scope="row">8</th><td>5</td><td>—</td></tr><tr><th scope="row">10</th><td>6.4</td><td>6.2</td></tr></tbody></table></div></details></div></section><div class="phys-q" data-qid="phys-math-slopes-areas-1"><p class="phys-q-stem"><span class="phys-q-n">1.</span> Using the best-fit line, what is the slope of the graph, with its unit?</p><p class="phys-small">Type a number and its unit.</p><details class="phys-q-key"><summary>Show the answer</summary><p>Pick two points on the best-fit line, far apart, not data points: (0 s, 1.2 m) and (10 s, 6.2 m). Slope = rise/run = (6.2 m − 1.2 m) ÷ (10 s − 0 s) = 0.50 m/s.</p><ul><li>Answer: 0.50 m/s</li></ul></details></div><div class="phys-q" data-qid="phys-math-slopes-areas-2"><p class="phys-q-stem"><span class="phys-q-n">2.</span> What does the slope of this graph tell you about the balloon?</p><ol class="phys-opts"><li>The rate its height increases (m/s)</li><li>How high it is at each moment of its flight</li><li>How many seconds it takes to reach 6.2 m</li><li>How high above the ground it started</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>A slope means "change in y per change in x". Here that is meters of height per second: the rate at which the balloon rises.</p><ul><li><b>Correct:</b> The rate its height increases (m/s): Right: the slope is a change in height per change in time, so it is the balloon's upward speed.</li><li>How high it is at each moment of its flight: Height at a moment is read straight off the graph, not from the slope.</li><li>How many seconds it takes to reach 6.2 m: That is a time read from the horizontal axis, not a rate.</li><li>How high above the ground it started: The starting height is the vertical intercept, 1.2 m.</li></ul></details></div><div class="phys-q" data-qid="phys-math-slopes-areas-3"><p class="phys-q-stem"><span class="phys-q-n">3.</span> What does the vertical intercept of the best-fit line, 1.2 m, represent?</p><ol class="phys-opts"><li>How fast the balloon rises</li><li>The total height the balloon gained in 10 s</li><li>The error in the height measurements made</li><li>Its height when timing began</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>For a line y = mx + b, b is the value of y at x = 0. Timing started with the balloon already 1.2 m up.</p><ul><li>How fast the balloon rises: That is the slope, 0.50 m/s.</li><li>The total height the balloon gained in 10 s: The gain is 6.2 m − 1.2 m = 5.0 m, a change, not the intercept.</li><li>The error in the height measurements made: The intercept is a real starting value: the balloon was released from a height above the ground.</li><li><b>Correct:</b> Its height when timing began: Right: the intercept is the value of y when x is zero.</li></ul></details></div><div class="phys-q" data-qid="phys-math-slopes-areas-4"><p class="phys-q-stem"><span class="phys-q-n">4.</span> Why is the slope found from the best-fit line instead of from the first and last data points?</p><ol class="phys-opts"><li>The data points are not plotted on the graph</li><li>Two data points are not enough to give a slope</li><li>The line averages the scatter of all six points</li><li>The best-fit line passes through each of the data points</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>Real data scatter. The first and last points here give (6.4 − 1.1) ÷ 10 = 0.53 m/s, while the best-fit line, which balances points above and below it, gives 0.50 m/s from all six measurements.</p><ul><li>The data points are not plotted on the graph: They are plotted; the issue is that each one carries some random error.</li><li>Two data points are not enough to give a slope: Any two points give a slope, but two scattered points give a less reliable one than a line fit to all six.</li><li><b>Correct:</b> The line averages the scatter of all six points: Right: each point has some measurement error; the best-fit line uses all the data, so its slope is more reliable.</li><li>The best-fit line passes through each of the data points: A best-fit line usually passes between points, with about as many above as below.</li></ul></details></div></div><div class="phys-q" data-qid="phys-math-slopes-areas-7"><p class="phys-q-stem"><span class="phys-q-n">5.</span> A graph has speed (m/s) on the vertical axis and time (s) on the horizontal axis. Which unit does the slope have, and which unit does the area under the line have?</p><ol class="phys-opts"><li>Slope: m; area: m/s²</li><li>Slope: m/s; area: m/s</li><li>Slope: s/m; area: m·s²</li><li>Slope: m/s²; area: m</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>Slope units = (y unit)/(x unit); area units = (y unit) × (x unit).</p><ul><li>Slope: m; area: m/s²: These are swapped: a slope divides the units, an area multiplies them.</li><li>Slope: m/s; area: m/s: The axis unit alone is neither; slope and area combine both axes' units.</li><li>Slope: s/m; area: m·s²: Slope is y over x, not x over y, and an area multiplies y by x.</li><li><b>Correct:</b> Slope: m/s²; area: m: Right: slope = (m/s) ÷ s = m/s²; area = (m/s) × s = m.</li></ul></details></div><div class="phys-q" data-qid="phys-math-slopes-areas-9"><p class="phys-q-stem"><span class="phys-q-n">6.</span> A cart starts from rest with a steady acceleration, so d = ½at². A student wants a straight-line graph whose slope gives a. What should she plot?</p><ol class="phys-opts"><li>d against t; the slope is the acceleration a</li><li>d against t²; the slope is ½a</li><li>d against t²; the slope is twice the acceleration, 2a</li><li>d² against t; the slope is half the acceleration</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>Linearize by matching y = mx: y = d, x = t², m = ½a. Then a = 2 × slope.</p><ul><li>d against t; the slope is the acceleration a: d against t curves upward because d depends on t², so it has no single slope.</li><li><b>Correct:</b> d against t²; the slope is ½a: Right: d = (½a)(t²) has the form y = mx with x = t², so the graph is a line through the origin with slope ½a.</li><li>d against t²; the slope is twice the acceleration, 2a: The slope is the factor multiplying t², which is ½a, so a = 2 × slope, not slope = 2a.</li><li>d² against t; the slope is half the acceleration: Squaring d does not undo the square on t; this graph is not a line either.</li></ul></details></div></div></div>
+  </section>
+  <section class="phys-part phys-step" id="summary" aria-labelledby="h-summary">
+    <p class="phys-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="phys-step-body">Label every axis with a quantity and unit. The slope of a line is Δy/Δx between two points on it, with units (y unit)/(x unit); the area under a graph is height × width, with units (y unit) × (x unit). Fit a line to data, and linearize a curved relationship before fitting.</div>
+  </section>
+  <section class="phys-part phys-step" id="next" aria-labelledby="h-next">
+    <p class="phys-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="phys-step-body"><nav class="phys-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="motion-representations.html">Representing Motion &rarr;</a></p></nav></div>
+  </section>
+  <section class="phys-part phys-step" id="connections" aria-labelledby="h-connections">
+    <p class="phys-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="phys-step-body"><ul class="phys-links phys-nav-ref"><li><a href="../notes/math-proportional.html">Back: proportional reasoning</a></li><li><a href="../notes/motion-representations.html">Next: representing motion (1.3)</a></li></ul></div>
+  </section>
+    <div class="phys-ls-actions phys-nav-ref"><button type="button" class="phys-ls-back">&larr; Previous</button><button type="button" class="phys-ls-go">Continue &rarr;</button><a class="phys-ls-go" hidden href="motion-representations.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.phys-ls'),p=s&&s.querySelectorAll('.phys-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.phys-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apphys_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="phys-foot xshell">
+  <p class="phys-accuracy-note"><span class="phys-beta phys-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Physics 1 teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="lesson:math-slopes-areas">Report a problem</button></span></p>
+  <p class="phys-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="phys-page-data">{"topic":"math-slopes-areas","unit":"skills-math","free":true,"prereq":[{"id":"math-slopes-areas-pre-1","type":"single","unit":"skills-math","topic":"math-slopes-areas","q":"A walker covers 12 m in 6.0 s at a steady speed. What is her speed?","options":["2.0 m/s","72 m/s","0.50 m/s","18 m/s"],"correct":0,"why":{"correct":"Speed = distance ÷ time = 12 m ÷ 6.0 s = 2.0 m/s.","options":["","","",""]},"reviewHref":"../notes/motion-quantities.html","reviewTitle":"Displacement, Velocity and Acceleration"},{"id":"math-slopes-areas-pre-2","type":"single","unit":"skills-math","topic":"math-slopes-areas","q":"If y ∝ x², what happens to y when x triples?","options":["It becomes 9 times as large","It triples","It becomes 6 times as large","It becomes one ninth as large"],"correct":0,"why":{"correct":"The factor squared: 3² = 9.","options":["","","",""]},"reviewHref":"../notes/math-proportional.html","reviewTitle":"Proportional Reasoning and Functional Dependence"}],"check":[{"id":"phys-math-slopes-areas-1","type":"numeric","unit":"skills-math","topic":"math-slopes-areas","practice":"2.B","level":"apply","diff":2,"stimulus":"math-slopes-areas-s1","q":"Using the best-fit line, what is the slope of the graph, with its unit?","numeric":{"answer":0.5,"tol":0.01,"unit":"m/s","askUnit":true,"sigfigs":2,"mistakes":[{"value":0.62,"why":"Value: 0.62 divides a height on the line by a time without subtracting the starting height. Slope uses changes: (6.2 − 1.2) ÷ (10 − 0)."},{"value":2,"why":"Value: the fraction is upside down. Slope is rise (vertical change) over run (horizontal change)."},{"value":0.53,"tol":0.005,"why":"Value: 0.53 m/s is the slope between the first and last data points. Those two points carry their own scatter; use two points on the best-fit line, (0 s, 1.2 m) and (10 s, 6.2 m)."}]},"why":{"correct":"Pick two points on the best-fit line, far apart, not data points: (0 s, 1.2 m) and (10 s, 6.2 m). Slope = rise/run = (6.2 m − 1.2 m) ÷ (10 s − 0 s) = 0.50 m/s."}},{"id":"phys-math-slopes-areas-2","type":"single","unit":"skills-math","topic":"math-slopes-areas","practice":"2.A","level":"apply","diff":2,"stimulus":"math-slopes-areas-s1","q":"What does the slope of this graph tell you about the balloon?","options":["The rate its height increases (m/s)","How high it is at each moment of its flight","How many seconds it takes to reach 6.2 m","How high above the ground it started"],"correct":0,"why":{"correct":"A slope means \"change in y per change in x\". Here that is meters of height per second: the rate at which the balloon rises.","options":["Right: the slope is a change in height per change in time, so it is the balloon's upward speed.","Height at a moment is read straight off the graph, not from the slope.","That is a time read from the horizontal axis, not a rate.","The starting height is the vertical intercept, 1.2 m."]}},{"id":"phys-math-slopes-areas-3","type":"single","unit":"skills-math","topic":"math-slopes-areas","practice":"2.A","level":"apply","diff":1,"stimulus":"math-slopes-areas-s1","q":"What does the vertical intercept of the best-fit line, 1.2 m, represent?","options":["How fast the balloon rises","The total height the balloon gained in 10 s","The error in the height measurements made","Its height when timing began"],"correct":3,"why":{"correct":"For a line y = mx + b, b is the value of y at x = 0. Timing started with the balloon already 1.2 m up.","options":["That is the slope, 0.50 m/s.","The gain is 6.2 m − 1.2 m = 5.0 m, a change, not the intercept.","The intercept is a real starting value: the balloon was released from a height above the ground.","Right: the intercept is the value of y when x is zero."]}},{"id":"phys-math-slopes-areas-4","type":"single","unit":"skills-math","topic":"math-slopes-areas","practice":"3.B","level":"analyze","diff":2,"stimulus":"math-slopes-areas-s1","q":"Why is the slope found from the best-fit line instead of from the first and last data points?","options":["The data points are not plotted on the graph","Two data points are not enough to give a slope","The line averages the scatter of all six points","The best-fit line passes through each of the data points"],"correct":2,"why":{"correct":"Real data scatter. The first and last points here give (6.4 − 1.1) ÷ 10 = 0.53 m/s, while the best-fit line, which balances points above and below it, gives 0.50 m/s from all six measurements.","options":["They are plotted; the issue is that each one carries some random error.","Any two points give a slope, but two scattered points give a less reliable one than a line fit to all six.","Right: each point has some measurement error; the best-fit line uses all the data, so its slope is more reliable.","A best-fit line usually passes between points, with about as many above as below."]}},{"id":"phys-math-slopes-areas-7","type":"single","unit":"skills-math","topic":"math-slopes-areas","practice":"2.A","level":"apply","diff":2,"q":"A graph has speed (m/s) on the vertical axis and time (s) on the horizontal axis. Which unit does the slope have, and which unit does the area under the line have?","options":["Slope: m; area: m/s²","Slope: m/s; area: m/s","Slope: s/m; area: m·s²","Slope: m/s²; area: m"],"correct":3,"why":{"correct":"Slope units = (y unit)/(x unit); area units = (y unit) × (x unit).","options":["These are swapped: a slope divides the units, an area multiplies them.","The axis unit alone is neither; slope and area combine both axes' units.","Slope is y over x, not x over y, and an area multiplies y by x.","Right: slope = (m/s) ÷ s = m/s²; area = (m/s) × s = m."]}},{"id":"phys-math-slopes-areas-9","type":"single","unit":"skills-math","topic":"math-slopes-areas","practice":"2.A","level":"analyze","diff":3,"q":"A cart starts from rest with a steady acceleration, so d = ½at². A student wants a straight-line graph whose slope gives a. What should she plot?","options":["d against t; the slope is the acceleration a","d against t²; the slope is ½a","d against t²; the slope is twice the acceleration, 2a","d² against t; the slope is half the acceleration"],"correct":1,"why":{"correct":"Linearize by matching y = mx: y = d, x = t², m = ½a. Then a = 2 × slope.","options":["d against t curves upward because d depends on t², so it has no single slope.","Right: d = (½a)(t²) has the form y = mx with x = t², so the graph is a line through the origin with slope ½a.","The slope is the factor multiplying t², which is ½a, so a = 2 × slope, not slope = 2a.","Squaring d does not undo the square on t; this graph is not a line either."]}}],"stimuli":{"math-slopes-areas-s1":{"kind":"graph","title":"A rising weather balloon","html":"\u003cdiv class=\"phys-stim-text\">\u003cp>A student tracks a small weather balloon just after release and records its height above the ground every 2 s. The line through the data is the best-fit line, height = 0.50 t + 1.2 (height in meters, t in seconds).\u003c/p>\u003c/div>\u003cdiv class=\"phys-chart\">\u003csvg class=\"phys-svg\" viewBox=\"0 0 560 320\" role=\"img\" aria-label=\"A rising weather balloon: line graph of Height against Time for Measured height, Best-fit line. The data table follows.\">\u003cline class=\"axis\" x1=\"64\" y1=\"262\" x2=\"542\" y2=\"262\"/>\u003cline class=\"axis\" x1=\"64\" y1=\"18\" x2=\"64\" y2=\"262\"/>\u003cline class=\"grid\" x1=\"64\" y1=\"262.0\" x2=\"542\" y2=\"262.0\"/>\u003ctext class=\"tick\" x=\"56\" y=\"266.0\" text-anchor=\"end\">0\u003c/text>\u003cline class=\"grid\" x1=\"64\" y1=\"227.1\" x2=\"542\" y2=\"227.1\"/>\u003ctext class=\"tick\" x=\"56\" y=\"231.1\" text-anchor=\"end\">1\u003c/text>\u003cline class=\"grid\" x1=\"64\" y1=\"192.3\" x2=\"542\" y2=\"192.3\"/>\u003ctext class=\"tick\" x=\"56\" y=\"196.3\" text-anchor=\"end\">2\u003c/text>\u003cline class=\"grid\" x1=\"64\" y1=\"157.4\" x2=\"542\" y2=\"157.4\"/>\u003ctext class=\"tick\" x=\"56\" y=\"161.4\" text-anchor=\"end\">3\u003c/text>\u003cline class=\"grid\" x1=\"64\" y1=\"122.6\" x2=\"542\" y2=\"122.6\"/>\u003ctext class=\"tick\" x=\"56\" y=\"126.6\" text-anchor=\"end\">4\u003c/text>\u003cline class=\"grid\" x1=\"64\" y1=\"87.7\" x2=\"542\" y2=\"87.7\"/>\u003ctext class=\"tick\" x=\"56\" y=\"91.7\" text-anchor=\"end\">5\u003c/text>\u003cline class=\"grid\" x1=\"64\" y1=\"52.9\" x2=\"542\" y2=\"52.9\"/>\u003ctext class=\"tick\" x=\"56\" y=\"56.9\" text-anchor=\"end\">6\u003c/text>\u003cline class=\"grid\" x1=\"64\" y1=\"18.0\" x2=\"542\" y2=\"18.0\"/>\u003ctext class=\"tick\" x=\"56\" y=\"22.0\" text-anchor=\"end\">7\u003c/text>\u003ctext class=\"tick\" x=\"64.0\" y=\"280\" text-anchor=\"middle\">0\u003c/text>\u003ctext class=\"tick\" x=\"159.6\" y=\"280\" text-anchor=\"middle\">2\u003c/text>\u003ctext class=\"tick\" x=\"255.2\" y=\"280\" text-anchor=\"middle\">4\u003c/text>\u003ctext class=\"tick\" x=\"350.8\" y=\"280\" text-anchor=\"middle\">6\u003c/text>\u003ctext class=\"tick\" x=\"446.4\" y=\"280\" text-anchor=\"middle\">8\u003c/text>\u003ctext class=\"tick\" x=\"542.0\" y=\"280\" text-anchor=\"middle\">10\u003c/text>\u003ccircle class=\"pt s1\" cx=\"64.0\" cy=\"223.7\" r=\"4.5\"/>\u003ccircle class=\"pt s1\" cx=\"159.6\" cy=\"178.3\" r=\"4.5\"/>\u003ccircle class=\"pt s1\" cx=\"255.2\" cy=\"147.0\" r=\"4.5\"/>\u003ccircle class=\"pt s1\" cx=\"350.8\" cy=\"122.6\" r=\"4.5\"/>\u003ccircle class=\"pt s1\" cx=\"446.4\" cy=\"87.7\" r=\"4.5\"/>\u003ccircle class=\"pt s1\" cx=\"542.0\" cy=\"38.9\" r=\"4.5\"/>\u003cpolyline class=\"series s2\" points=\"64.0,220.2 542.0,45.9\"/>\u003ctext class=\"lbl\" x=\"303\" y=\"308\" text-anchor=\"middle\">Time (s)\u003c/text>\u003ctext class=\"lbl\" transform=\"translate(16 140) rotate(-90)\" text-anchor=\"middle\">Height (m)\u003c/text>\u003c/svg>\u003cp class=\"phys-legend\">\u003cspan class=\"s1\">\u003ci aria-hidden=\"true\">\u003c/i>Measured height\u003c/span>\u003cspan class=\"s2\">\u003ci aria-hidden=\"true\">\u003c/i>Best-fit line\u003c/span>\u003c/p>\u003cdetails class=\"phys-chart-data\">\u003csummary>Data table\u003c/summary>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Data table\">\u003ctable>\u003cthead>\u003ctr>\u003cth scope=\"col\">Time (s)\u003c/th>\u003cth scope=\"col\">Measured height\u003c/th>\u003cth scope=\"col\">Best-fit line\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">0\u003c/th>\u003ctd>1.1\u003c/td>\u003ctd>1.2\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">2\u003c/th>\u003ctd>2.4\u003c/td>\u003ctd>—\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">4\u003c/th>\u003ctd>3.3\u003c/td>\u003ctd>—\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">6\u003c/th>\u003ctd>4\u003c/td>\u003ctd>—\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">8\u003c/th>\u003ctd>5\u003c/td>\u003ctd>—\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">10\u003c/th>\u003ctd>6.4\u003c/td>\u003ctd>6.2\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>\u003c/details>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApPhysSection = 'learn'; window.ApPhysBase = '../';</script>
+<script src="../assets/phys-curriculum.js" defer></script>
+<script src="../assets/phys-core.js" defer></script>
+<script src="../assets/phys-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/phys-questions.js" defer></script>
+<script src="../assets/phys-lesson.js" defer></script>
+</body>
+</html>

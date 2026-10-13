@@ -1,0 +1,484 @@
+{
+ "stimuli": {
+  "torque-s1": {
+   "kind": "diagram",
+   "title": "Four ways to push a door",
+   "text": "<p>A door 0.80 m wide is hinged at its left edge. Four separate pushes, each 30 N, are shown; consider each on its own.</p>",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 260\" role=\"img\" aria-label=\"Top view of a door 0.80 m wide hinged at the left. Four 30 N pushes act on it: push 1 perpendicular to the door at the far edge, push 2 perpendicular at 0.40 m from the hinge, push 3 at the far edge at 30 degrees to the door, and push 4 at the far edge straight along the door toward the hinge\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"260\" fill=\"#FFFFFF\"/><rect x=\"32\" y=\"40\" width=\"12\" height=\"180\" fill=\"#EEF1EF\"/><line x1=\"44\" y1=\"40\" x2=\"44\" y2=\"220\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"44\" y1=\"44\" x2=\"34\" y2=\"52\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"54\" x2=\"34\" y2=\"62\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"64\" x2=\"34\" y2=\"72\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"74\" x2=\"34\" y2=\"82\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"84\" x2=\"34\" y2=\"92\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"94\" x2=\"34\" y2=\"102\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"104\" x2=\"34\" y2=\"112\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"114\" x2=\"34\" y2=\"122\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"124\" x2=\"34\" y2=\"132\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"134\" x2=\"34\" y2=\"142\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"144\" x2=\"34\" y2=\"152\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"154\" x2=\"34\" y2=\"162\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"164\" x2=\"34\" y2=\"172\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"174\" x2=\"34\" y2=\"182\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"184\" x2=\"34\" y2=\"192\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"194\" x2=\"34\" y2=\"202\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"204\" x2=\"34\" y2=\"212\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"44\" y1=\"214\" x2=\"34\" y2=\"222\" stroke=\"#5A6268\" stroke-width=\"1\"/><rect x=\"50\" y=\"121\" width=\"380\" height=\"18\" rx=\"2\" fill=\"#E9D8B8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"50\" cy=\"130\" r=\"9\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"50\" cy=\"130\" r=\"3\" fill=\"#1F2A28\"/><text x=\"54\" y=\"170\" font-size=\"12\" fill=\"#5A6268\">hinge (axis)</text><line x1=\"240\" y1=\"51\" x2=\"240\" y2=\"110\" stroke=\"#5A6268\" stroke-width=\"3\"/><polygon points=\"240,121 234,110 246,110\" fill=\"#5A6268\"/><text x=\"246\" y=\"60\" font-size=\"15\" fill=\"#1F2A28\" font-weight=\"bold\">2</text><line x1=\"424\" y1=\"51\" x2=\"424\" y2=\"110\" stroke=\"#5A6268\" stroke-width=\"3\"/><polygon points=\"424,121 418,110 430,110\" fill=\"#5A6268\"/><text x=\"400\" y=\"60\" font-size=\"15\" fill=\"#1F2A28\" font-weight=\"bold\">1</text><line x1=\"488.6\" y1=\"174\" x2=\"437.5\" y2=\"144.5\" stroke=\"#5A6268\" stroke-width=\"3\"/><polygon points=\"428,139 440.5,139.3 434.5,149.7\" fill=\"#5A6268\"/><text x=\"492.6\" y=\"188\" font-size=\"15\" fill=\"#1F2A28\" font-weight=\"bold\">3</text><line x1=\"428\" y1=\"139\" x2=\"490\" y2=\"139\" stroke=\"#C9CFCC\" stroke-width=\"1.2\" stroke-dasharray=\"6 5\"/><text x=\"456\" y=\"156\" font-size=\"12\" fill=\"#1F2A28\">30°</text><line x1=\"504\" y1=\"128\" x2=\"445\" y2=\"128\" stroke=\"#5A6268\" stroke-width=\"3\"/><polygon points=\"434,128 445,122 445,134\" fill=\"#5A6268\"/><text x=\"490\" y=\"118\" font-size=\"15\" fill=\"#1F2A28\" font-weight=\"bold\">4</text><line x1=\"145\" y1=\"186\" x2=\"58\" y2=\"186\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"50,186 58,182 58,190\" fill=\"#5A6268\"/><line x1=\"145\" y1=\"186\" x2=\"232\" y2=\"186\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"240,186 232,190 232,182\" fill=\"#5A6268\"/><text x=\"145\" y=\"204\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">0.40 m</text><line x1=\"240\" y1=\"222\" x2=\"58\" y2=\"222\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"50,222 58,218 58,226\" fill=\"#5A6268\"/><line x1=\"240\" y1=\"222\" x2=\"422\" y2=\"222\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"430,222 422,226 422,218\" fill=\"#5A6268\"/><text x=\"240\" y=\"240\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">0.80 m</text></svg>"
+  },
+  "torque-s2": {
+   "kind": "diagram",
+   "title": "A bar with three forces",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 240\" role=\"img\" aria-label=\"A light horizontal bar on an axle at its center. A 20 N force pushes down 0.30 m left of the axle, a 15 N force pushes down 0.40 m right of the axle, and a 10 N force pulls up 0.20 m right of the axle\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"240\" fill=\"#FFFFFF\"/><rect x=\"55\" y=\"113\" width=\"450\" height=\"14\" rx=\"2\" fill=\"#E9D8B8\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"280\" cy=\"120\" r=\"8\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"280\" cy=\"120\" r=\"3\" fill=\"#1F2A28\"/><text x=\"280\" y=\"154\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">axle</text><line x1=\"130\" y1=\"127\" x2=\"130\" y2=\"196\" stroke=\"#5A6268\" stroke-width=\"3\"/><polygon points=\"130,207 124,196 136,196\" fill=\"#5A6268\"/><text x=\"138\" y=\"200\" font-size=\"13\" fill=\"#1F2A28\" font-weight=\"bold\">20 N</text><line x1=\"480\" y1=\"127\" x2=\"480\" y2=\"176\" stroke=\"#5A6268\" stroke-width=\"3\"/><polygon points=\"480,187 474,176 486,176\" fill=\"#5A6268\"/><text x=\"488\" y=\"184\" font-size=\"13\" fill=\"#1F2A28\" font-weight=\"bold\">15 N</text><line x1=\"380\" y1=\"113\" x2=\"380\" y2=\"84\" stroke=\"#5A6268\" stroke-width=\"3\"/><polygon points=\"380,73 386,84 374,84\" fill=\"#5A6268\"/><text x=\"388\" y=\"86\" font-size=\"13\" fill=\"#1F2A28\" font-weight=\"bold\">10 N</text><line x1=\"205\" y1=\"86\" x2=\"138\" y2=\"86\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"130,86 138,82 138,90\" fill=\"#5A6268\"/><line x1=\"205\" y1=\"86\" x2=\"272\" y2=\"86\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"280,86 272,90 272,82\" fill=\"#5A6268\"/><text x=\"205\" y=\"78\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">0.30 m</text><line x1=\"380\" y1=\"56\" x2=\"288\" y2=\"56\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"280,56 288,52 288,60\" fill=\"#5A6268\"/><line x1=\"380\" y1=\"56\" x2=\"472\" y2=\"56\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"480,56 472,60 472,52\" fill=\"#5A6268\"/><text x=\"380\" y=\"48\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">0.40 m</text><line x1=\"330\" y1=\"160\" x2=\"288\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"280,160 288,156 288,164\" fill=\"#5A6268\"/><line x1=\"330\" y1=\"160\" x2=\"372\" y2=\"160\" stroke=\"#5A6268\" stroke-width=\"1.4\"/><polygon points=\"380,160 372,164 372,156\" fill=\"#5A6268\"/><text x=\"334\" y=\"176\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"middle\">0.20 m</text><text x=\"20\" y=\"222\" font-size=\"12\" fill=\"#5A6268\">Light bar on a fixed axle at its center. Counterclockwise is positive.</text></svg>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-torque-1",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "torque-s1",
+   "q": "What is the size of the torque from push 1 about the hinge? Give the value and its unit.",
+   "numeric": {
+    "answer": 24,
+    "tol": 1,
+    "unit": "N·m",
+    "sigfigs": 2,
+    "units": [
+     "N m",
+     "Nm",
+     "J"
+    ],
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 38,
+      "rel": 0.015,
+      "why": "Value: that divides the force by the distance. Torque is lever arm × force."
+     },
+     {
+      "value": 12,
+      "rel": 0.015,
+      "why": "Value: that uses 0.40 m. Push 1 acts at the edge, 0.80 m from the hinge."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Push 1 is perpendicular to the door, so its lever arm is the full 0.80 m: τ = r⊥F = (0.80 m)(30 N) = 24 N·m."
+   }
+  },
+  {
+   "id": "phys-torque-2",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "torque-s1",
+   "q": "Rank the sizes of the torques the four pushes exert about the hinge.",
+   "options": [
+    "τ₁ > τ₂ = τ₃ > τ₄",
+    "τ₁ = τ₃ > τ₂ > τ₄",
+    "τ₁ = τ₂ = τ₃ = τ₄",
+    "τ₄ > τ₁ > τ₃ > τ₂"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Lever arms: push 1, 0.80 m; push 2, 0.40 m; push 3, (0.80 m)(sin 30°) = 0.40 m; push 4, 0. With F = 30 N: 24, 12, 12 and 0 N·m.",
+    "options": [
+     "Right: 24, 12, 12 and 0 N·m.",
+     "Push 3 acts at the edge but at 30°, so its lever arm is halved to 0.40 m.",
+     "Equal forces give equal torques only with equal lever arms.",
+     "Push 4 points straight at the hinge, so its lever arm is zero."
+    ]
+   }
+  },
+  {
+   "id": "phys-torque-3",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "torque-s1",
+   "q": "Why does push 4 produce no torque about the hinge?",
+   "options": [
+    "Its line of action passes through the hinge",
+    "It is weaker than the other three pushes",
+    "It acts at the point farthest from the hinge",
+    "The door’s weight cancels it"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Torque is r⊥F, where r⊥ is the perpendicular distance from the axis to the force’s line of action. Push 4 points along the door straight at the hinge, so r⊥ = 0 and τ = 0, however hard the push.",
+    "options": [
+     "Right: the perpendicular distance from the hinge to its line is zero.",
+     "All four pushes are 30 N; the difference is the lever arm.",
+     "Pushes 1 and 3 act there too and do give torques.",
+     "The door’s weight is vertical; push 4 is horizontal along the door. They do not cancel, and neither is the reason."
+    ]
+   }
+  },
+  {
+   "id": "phys-torque-4",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "torque-s1",
+   "q": "What is the size of the torque from push 3 about the hinge?",
+   "numeric": {
+    "answer": 12,
+    "tol": 1,
+    "unit": "N·m",
+    "sigfigs": 2,
+    "units": [
+     "N m",
+     "Nm"
+    ],
+    "mistakes": [
+     {
+      "value": 21,
+      "rel": 0.015,
+      "why": "Value: that uses cos 30°. The angle is between the door (r) and the force, so τ = rF sin θ."
+     },
+     {
+      "value": 24,
+      "rel": 0.015,
+      "why": "Value: that ignores the 30° angle. Only the part of the push perpendicular to the door turns it."
+     }
+    ]
+   },
+   "why": {
+    "correct": "τ = rF sin θ = (0.80 m)(30 N)(sin 30°) = 12 N·m. Equivalently, the lever arm is (0.80 m)(sin 30°) = 0.40 m."
+   }
+  },
+  {
+   "id": "phys-torque-5",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "torque-s1",
+   "q": "Push 2 is moved to the outer edge of the door and its force is halved to 15 N, still perpendicular to the door. Its torque about the hinge is now",
+   "options": [
+    "the same as before",
+    "twice as large",
+    "half as large",
+    "four times as large"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "τ = r⊥F: (0.80 m)(15 N) = 12 N·m, the same as (0.40 m)(30 N) = 12 N·m.",
+    "options": [
+     "Right: twice the lever arm × half the force = same torque.",
+     "The force is halved, which cancels the doubled lever arm.",
+     "The lever arm doubles, which cancels the halved force.",
+     "Torque is the product r⊥F: (2)(½) = 1."
+    ]
+   }
+  },
+  {
+   "id": "phys-torque-6",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "torque-s2",
+   "q": "Counterclockwise is positive. What is the torque of the 20 N force about the axle, with its sign?",
+   "numeric": {
+    "answer": 6,
+    "tol": 0.1,
+    "unit": "N·m",
+    "sigfigs": 2,
+    "units": [
+     "N m",
+     "Nm"
+    ],
+    "mistakes": [
+     {
+      "value": 67,
+      "rel": 0.015,
+      "why": "Value: that divides the force by the distance. τ = r⊥F."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The 20 N force pushes down left of the axle, turning the bar counterclockwise: τ = +(0.30 m)(20 N) = +6.0 N·m."
+   }
+  },
+  {
+   "id": "phys-torque-7",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "torque-s2",
+   "q": "Counterclockwise is positive. What is the net torque on the bar about the axle?",
+   "numeric": {
+    "answer": 2,
+    "tol": 0.1,
+    "unit": "N·m",
+    "sigfigs": 2,
+    "units": [
+     "N m",
+     "Nm"
+    ],
+    "mistakes": [
+     {
+      "value": 14,
+      "rel": 0.015,
+      "why": "Value: that adds every torque as positive. The 15 N force turns the bar clockwise, so its torque is negative."
+     },
+     {
+      "value": -2,
+      "rel": 0.015,
+      "why": "Value: that gives the 10 N upward force a clockwise torque. Pulling up right of the axle turns the bar counterclockwise."
+     }
+    ]
+   },
+   "why": {
+    "correct": "+6.0 N·m (20 N, counterclockwise) − 6.0 N·m (15 N, clockwise) + 2.0 N·m (10 N up on the right, counterclockwise) = +2.0 N·m."
+   }
+  },
+  {
+   "id": "phys-torque-8",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "torque-s2",
+   "q": "The bar starts at rest. Which way does it begin to turn?",
+   "options": [
+    "Counterclockwise, because the net torque is counterclockwise",
+    "Clockwise, because two of the three forces push down",
+    "It stays still, because the 20 N and 15 N torques cancel",
+    "Clockwise, because the 15 N force is farthest from the axle"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sum the torques with signs: +6.0 − 6.0 + 2.0 = +2.0 N·m. A nonzero net torque starts the bar turning in its direction, counterclockwise.",
+    "options": [
+     "Right: the net torque is +2.0 N·m.",
+     "Pushing down turns the bar one way on the left of the axle and the other way on the right; count torques, not forces.",
+     "Those two do cancel, but the 10 N force still gives a +2.0 N·m torque.",
+     "Its torque, 6.0 N·m, is the same size as the 20 N force’s torque."
+    ]
+   }
+  },
+  {
+   "id": "phys-torque-9",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "torque-s2",
+   "q": "The bar is 0.90 m long, so its right end is 0.45 m from the axle. Which single extra force, perpendicular to the bar at its right end, makes the net torque zero?",
+   "options": [
+    "4.4 N down",
+    "4.4 N up",
+    "2.0 N down",
+    "0.90 N down"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The extra force must give −2.0 N·m: pushing down right of the axle is clockwise, and F = 2.0 N·m ÷ 0.45 m = 4.44 N, about 4.4 N.",
+    "options": [
+     "Right: a clockwise torque of 2.0 N·m = (0.45 m)F.",
+     "Pulling up on the right end adds counterclockwise torque; the bar already has too much.",
+     "This sets the force equal to the torque. Divide the torque by the lever arm.",
+     "This multiplies the torque by the lever arm instead of dividing."
+    ]
+   }
+  },
+  {
+   "id": "phys-torque-10",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "The lever arm of a force about an axis is",
+   "options": [
+    "the perpendicular distance from the axis to the force’s line of action",
+    "the distance from the axis to where the force acts",
+    "the length of the force arrow",
+    "the distance from the force to the center of mass"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Extend the force along its line of action. The lever arm r⊥ is the perpendicular distance from the axis to that line; τ = r⊥F.",
+    "options": [
+     "Right: r⊥, the shortest distance from the axis to the line.",
+     "That is r. The lever arm is r⊥ = r sin θ, which equals r for a perpendicular force.",
+     "The arrow’s length shows the force’s size, not a distance.",
+     "Torque is about the chosen axis, not the center of mass."
+    ]
+   }
+  },
+  {
+   "id": "phys-torque-11",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A mechanic pulls on the end of a 0.30 m wrench with an 80 N force at 60° to the handle. What is the size of the torque about the bolt?",
+   "numeric": {
+    "answer": 21,
+    "tol": 1,
+    "unit": "N·m",
+    "sigfigs": 2,
+    "units": [
+     "N m",
+     "Nm"
+    ],
+    "mistakes": [
+     {
+      "value": 12,
+      "rel": 0.015,
+      "why": "Value: that uses cos 60°. τ = rF sin θ, with θ the angle between the handle and the force."
+     },
+     {
+      "value": 24,
+      "rel": 0.015,
+      "why": "Value: that ignores the angle; that is the torque of a perpendicular pull."
+     }
+    ]
+   },
+   "why": {
+    "correct": "τ = rF sin θ = (0.30 m)(80 N)(sin 60°) = 20.8 N·m, about 21 N·m."
+   }
+  },
+  {
+   "id": "phys-torque-12",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "How does a force diagram of a beam differ from a free-body diagram of the beam?",
+   "options": [
+    "Each force is drawn from the point where it acts on the beam",
+    "Each force is drawn from a dot at the center of mass",
+    "Each force is split into parts along and across the beam",
+    "The net torque is drawn as an extra curved arrow"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A free-body diagram puts all forces at one dot. For rotation the point of application matters, so a force diagram draws the object and starts each force where it acts, labeled with type and agent.",
+    "options": [
+     "Right: torques depend on where forces act, so the diagram shows it.",
+     "That is a free-body diagram; it hides where forces act, so it cannot show torques.",
+     "Both diagrams show whole forces; components go beside the diagram.",
+     "Neither diagram shows a net force or net torque as an extra arrow."
+    ]
+   }
+  },
+  {
+   "id": "phys-torque-13",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A bolt is stuck. With the least force, how should you push on the wrench?",
+   "options": [
+    "Perpendicular to the handle, at its far end",
+    "Perpendicular to the handle, near the bolt",
+    "Along the handle, toward the bolt",
+    "At 30° to the handle, at its far end"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For a fixed torque, F = τ/r⊥. The lever arm is largest when the force is perpendicular to the handle at the far end, so the force needed is smallest.",
+    "options": [
+     "Right: the largest lever arm gives a given torque with the smallest force.",
+     "A small lever arm needs a large force for the same torque.",
+     "A push along the handle has zero lever arm and no torque.",
+     "The lever arm is then halved, so you need twice the force."
+    ]
+   }
+  },
+  {
+   "id": "phys-torque-14",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A bolt needs a torque of 45 N·m to loosen. A wrench is 0.30 m long. What perpendicular force at its end is needed?",
+   "numeric": {
+    "answer": 150,
+    "tol": 10,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 14,
+      "rel": 0.015,
+      "why": "Value: that multiplies torque by length. F = τ/r⊥."
+     }
+    ]
+   },
+   "why": {
+    "correct": "F = τ/r⊥ = (45 N·m)/(0.30 m) = 150 N."
+   }
+  },
+  {
+   "id": "phys-torque-15",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A force of fixed size acts at the end of a wrench. The angle between the handle and the force changes from 90° to 30°. The torque",
+   "options": [
+    "halves",
+    "stays the same",
+    "falls to one third",
+    "doubles"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "τ = rF sin θ. sin 90° = 1 and sin 30° = 0.5, so the torque falls to half.",
+    "options": [
+     "Right: sin 30° = 0.5, so the lever arm halves.",
+     "The force and r are the same, but the lever arm r sin θ shrinks.",
+     "Torque follows sin θ, not θ itself: sin 30°/sin 90° = 0.5.",
+     "Tilting the force away from perpendicular reduces the torque."
+    ]
+   }
+  },
+  {
+   "id": "phys-torque-16",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "torque",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Counterclockwise is positive. A force that would start a wheel turning clockwise exerts a torque that is",
+   "options": [
+    "negative",
+    "positive",
+    "zero",
+    "positive or negative, depending on its size"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "On this exam a torque is described only as clockwise or counterclockwise. With counterclockwise positive, any torque tending to turn the object clockwise is negative.",
+    "options": [
+     "Right: the sign of a torque says which way it tends to turn the object.",
+     "Positive was chosen as counterclockwise.",
+     "A force that starts the wheel turning has a nonzero torque.",
+     "The sign comes from the direction of turning, not the size."
+    ]
+   }
+  }
+ ]
+}

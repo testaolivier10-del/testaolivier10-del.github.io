@@ -1,0 +1,535 @@
+{
+ "stimuli": {
+  "work-by-forces-s1": {
+   "kind": "diagram",
+   "title": "A crate pulled across a rough floor",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 760 330\" role=\"img\" aria-label=\"A 20.0 kg crate on a rough floor pulled 4.00 m to the right by a rope at 30 degrees above horizontal. Forces drawn from its center: rope tension 45.0 N up and to the right, kinetic friction 28.0 N to the left, normal force 174 N up, gravitational force 196 N down.\" style=\"max-width:100%;height:auto;background:#fff\"><rect width=\"760\" height=\"330\" fill=\"#FFFFFF\"/><text x=\"24\" y=\"30\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"16\" fill=\"#1F2A28\" text-anchor=\"start\" font-weight=\"bold\">A 20.0 kg crate pulled 4.00 m to the right across a rough floor</text><line x1=\"20\" y1=\"250\" x2=\"470\" y2=\"250\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"26\" y1=\"251\" x2=\"17\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"40\" y1=\"251\" x2=\"31\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"54\" y1=\"251\" x2=\"45\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"68\" y1=\"251\" x2=\"59\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"82\" y1=\"251\" x2=\"73\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"96\" y1=\"251\" x2=\"87\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"110\" y1=\"251\" x2=\"101\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"124\" y1=\"251\" x2=\"115\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"138\" y1=\"251\" x2=\"129\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"152\" y1=\"251\" x2=\"143\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"166\" y1=\"251\" x2=\"157\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"180\" y1=\"251\" x2=\"171\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"194\" y1=\"251\" x2=\"185\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"208\" y1=\"251\" x2=\"199\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"222\" y1=\"251\" x2=\"213\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"236\" y1=\"251\" x2=\"227\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"250\" y1=\"251\" x2=\"241\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"264\" y1=\"251\" x2=\"255\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"278\" y1=\"251\" x2=\"269\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"292\" y1=\"251\" x2=\"283\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"306\" y1=\"251\" x2=\"297\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"320\" y1=\"251\" x2=\"311\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"334\" y1=\"251\" x2=\"325\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"348\" y1=\"251\" x2=\"339\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"362\" y1=\"251\" x2=\"353\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"376\" y1=\"251\" x2=\"367\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"390\" y1=\"251\" x2=\"381\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"404\" y1=\"251\" x2=\"395\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"418\" y1=\"251\" x2=\"409\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"432\" y1=\"251\" x2=\"423\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"446\" y1=\"251\" x2=\"437\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><line x1=\"460\" y1=\"251\" x2=\"451\" y2=\"260\" stroke=\"#8A8F8C\" stroke-width=\"1.3\"/><rect x=\"200\" y=\"170\" width=\"110\" height=\"80\" fill=\"#D9B27C\" stroke=\"#1F2A28\" stroke-width=\"2\"/><rect x=\"205\" y=\"175\" width=\"100\" height=\"70\" fill=\"none\" stroke=\"#9C7440\" stroke-width=\"2\"/><line x1=\"205\" y1=\"175\" x2=\"305\" y2=\"245\" stroke=\"#9C7440\" stroke-width=\"2\"/><line x1=\"305\" y1=\"175\" x2=\"205\" y2=\"245\" stroke=\"#9C7440\" stroke-width=\"2\"/><line x1=\"255\" y1=\"210\" x2=\"428.20508075688775\" y2=\"110.00000000000001\" stroke=\"#8B6B3E\" stroke-width=\"3\"/><line x1=\"255\" y1=\"210\" x2=\"255.0\" y2=\"291.0\" stroke=\"#0072B2\" stroke-width=\"3\"/><polygon points=\"255.0,302.0 250.1,291.0 259.9,291.0\" fill=\"#0072B2\"/><text x=\"259.0\" y=\"322.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#0072B2\" text-anchor=\"start\" font-weight=\"bold\">F<tspan baseline-shift=\"sub\" font-size=\"75%\">g</tspan>, Earth on crate (196 N)</text><line x1=\"255\" y1=\"210\" x2=\"255.0\" y2=\"139.0\" stroke=\"#009E73\" stroke-width=\"3\"/><polygon points=\"255.0,128.0 259.9,139.0 250.1,139.0\" fill=\"#009E73\"/><text x=\"249.0\" y=\"114.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#009E73\" text-anchor=\"end\" font-weight=\"bold\">F<tspan baseline-shift=\"sub\" font-size=\"75%\">N</tspan>, floor on crate (174 N)</text><line x1=\"255\" y1=\"210\" x2=\"280.1\" y2=\"195.5\" stroke=\"#7A4F9E\" stroke-width=\"3\"/><polygon points=\"289.6,190.0 282.6,199.8 277.6,191.2\" fill=\"#7A4F9E\"/><text x=\"362.5\" y=\"170.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#7A4F9E\" text-anchor=\"start\" font-weight=\"bold\">F<tspan baseline-shift=\"sub\" font-size=\"75%\">T</tspan>, rope on crate (45.0 N)</text><line x1=\"255\" y1=\"210\" x2=\"241.0\" y2=\"210.0\" stroke=\"#D55E00\" stroke-width=\"3\"/><polygon points=\"230.0,210.0 241.0,205.1 241.0,214.9\" fill=\"#D55E00\"/><text x=\"192\" y=\"236\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#D55E00\" text-anchor=\"end\" font-weight=\"bold\">f<tspan baseline-shift=\"sub\" font-size=\"75%\">k</tspan>, floor on crate (28.0 N)</text><line x1=\"194\" y1=\"228\" x2=\"240\" y2=\"214\" stroke=\"#D55E00\" stroke-width=\"1\"/><circle cx=\"255\" cy=\"210\" r=\"4.5\" fill=\"#1F2A28\"/><path d=\"M289,210 A34,34 0 0 0 284.4,193.0\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><line x1=\"255\" y1=\"210\" x2=\"345\" y2=\"210\" stroke=\"#8A8F8C\" stroke-width=\"1.2\" stroke-dasharray=\"4 3\"/><text x=\"293\" y=\"206\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"12\" fill=\"#1F2A28\" text-anchor=\"start\">30°</text><line x1=\"200\" y1=\"288\" x2=\"369.0\" y2=\"288.0\" stroke=\"#1F2A28\" stroke-width=\"3\"/><polygon points=\"380.0,288.0 369.0,292.9 369.0,283.1\" fill=\"#1F2A28\"/><text x=\"388.0\" y=\"293.0\" font-family=\"Arial, Helvetica, sans-serif\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"start\" font-weight=\"bold\">displacement d = 4.00 m</text></svg><p>The crate starts from rest. Use g = 9.8 m/s².</p>"
+  },
+  "work-by-forces-s2": {
+   "kind": "graph",
+   "title": "A stretched band launches a cart",
+   "text": "<p>A stretched elastic band pushes a 0.60 kg cart along a level, low-friction track. The graph shows the band's force on the cart, in the direction of motion, against the cart's position. The cart starts from rest at x = 0.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Position",
+     "unit": "m",
+     "min": 0,
+     "max": 0.5,
+     "step": 0.1
+    },
+    "y": {
+     "label": "Force of band on cart",
+     "unit": "N",
+     "min": 0,
+     "max": 14,
+     "step": 2
+    },
+    "series": [
+     {
+      "name": "Band force",
+      "points": [
+       [
+        0,
+        12
+       ],
+       [
+        0.1,
+        12
+       ],
+       [
+        0.2,
+        8
+       ],
+       [
+        0.3,
+        4
+       ],
+       [
+        0.4,
+        0
+       ],
+       [
+        0.5,
+        0
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-work-by-forces-1",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "work-by-forces-s1",
+   "q": "How much work does the rope do on the crate over the 4.00 m? Give the value and its unit.",
+   "numeric": {
+    "answer": 156,
+    "tol": 1,
+    "unit": "J",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 180,
+      "why": "Value: that uses the whole rope force. Only the part along the displacement does work: F d cos 30°."
+     },
+     {
+      "value": 90,
+      "why": "Value: that uses sin 30°. The angle is measured from the displacement, so use cos 30°."
+     }
+    ]
+   },
+   "why": {
+    "correct": "W = F_T d cos θ = (45.0 N)(4.00 m)(cos 30°) = 156 J. The angle is between the force and the displacement."
+   }
+  },
+  {
+   "id": "phys-work-by-forces-2",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "work-by-forces-s1",
+   "q": "How much work does kinetic friction do on the crate over the 4.00 m, in joules? Include the sign.",
+   "numeric": {
+    "answer": -112,
+    "tol": 1,
+    "unit": "J",
+    "sigfigs": 3
+   },
+   "why": {
+    "correct": "Friction points opposite the displacement (θ = 180°), so W = f_k d cos 180° = −(28.0 N)(4.00 m) = −112 J."
+   }
+  },
+  {
+   "id": "phys-work-by-forces-3",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "work-by-forces-s1",
+   "q": "How much work do the normal force and the gravitational force do on the crate over the 4.00 m?",
+   "options": [
+    "Zero each: each is perpendicular to the displacement",
+    "+696 J by the normal force and −784 J by gravity",
+    "Zero by the normal force, −784 J by gravity",
+    "Both positive, since both act on the crate while it moves"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both forces are vertical and the crate moves horizontally, so θ = 90° and W = Fd cos 90° = 0 for each.",
+    "options": [
+     "Right: cos 90° = 0, so a force at right angles to the motion does no work.",
+     "These multiply each force by 4.00 m as if it pointed along the motion. Both are vertical; the motion is horizontal.",
+     "Gravity is also perpendicular to the horizontal displacement, so it does no work here.",
+     "A force does work only through its component along the displacement. Both of these have none."
+    ]
+   }
+  },
+  {
+   "id": "phys-work-by-forces-4",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "work-by-forces-s1",
+   "q": "What is the net work done on the crate over the 4.00 m, in joules?",
+   "numeric": {
+    "answer": 43.9,
+    "tol": 0.1,
+    "unit": "J",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 268,
+      "why": "Value: that adds the friction work as if it were positive. Friction does negative work, so subtract it.",
+      "tol": 0.5
+     },
+     {
+      "value": 68,
+      "why": "Value: that uses the whole rope force (180 J). The rope does F d cos 30° = 156 J."
+     }
+    ]
+   },
+   "why": {
+    "correct": "W_net = 155.9 J + (−112 J) + 0 + 0 = 43.9 J. By the work-energy theorem this is also the crate's change in kinetic energy."
+   }
+  },
+  {
+   "id": "phys-work-by-forces-5",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "work-by-forces-s1",
+   "q": "The crate starts from rest. How fast is it moving after the 4.00 m, in m/s?",
+   "numeric": {
+    "answer": 2.09,
+    "tol": 0.01,
+    "unit": "m/s",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 3.95,
+      "why": "Value: that uses only the rope's work. The change in kinetic energy equals the net work, so include friction."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Work-energy theorem: W_net = ΔK = ½mv² − 0, so v = √(2W_net/m) = √(2 × 43.9 J / 20.0 kg) = 2.09 m/s."
+   }
+  },
+  {
+   "id": "phys-work-by-forces-6",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "work-by-forces-s2",
+   "q": "How much work does the band do on the cart from x = 0 to x = 0.40 m, in joules?",
+   "numeric": {
+    "answer": 3,
+    "tol": 0.1,
+    "unit": "J",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 4.8,
+      "why": "Value: that treats the force as 12 N the whole way. The work is the area under the graph, and the force falls after 0.10 m."
+     },
+     {
+      "value": 2.4,
+      "why": "Value: that treats the whole area as one triangle. From 0 to 0.10 m it is a rectangle."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Work is the area under the force-position graph: rectangle (12 N)(0.10 m) = 1.2 J plus triangle ½(12 N)(0.30 m) = 1.8 J, so 3.0 J."
+   }
+  },
+  {
+   "id": "phys-work-by-forces-7",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "work-by-forces-s2",
+   "q": "How fast is the 0.60 kg cart moving at x = 0.40 m, in m/s?",
+   "numeric": {
+    "answer": 3.2,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 4,
+      "why": "Value: that uses 4.8 J, a constant 12 N force. Use the area under the graph, 3.0 J."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The band is the only force doing work along the track, so ΔK = 3.0 J: v = √(2 × 3.0 J / 0.60 kg) = √10 m/s = 3.2 m/s."
+   }
+  },
+  {
+   "id": "phys-work-by-forces-8",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "work-by-forces-s2",
+   "q": "What happens to the cart's speed between x = 0.40 m and x = 0.50 m?",
+   "options": [
+    "It decreases, because the band no longer pushes",
+    "It stays the same, because the band does no work there",
+    "It increases, because the cart is still moving forward",
+    "It drops to zero, because the force is zero"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Between 0.40 m and 0.50 m the force is zero, so the work is zero and, by the work-energy theorem, ΔK = 0: the speed stays at 3.2 m/s.",
+    "options": [
+     "With no force (and low friction) nothing slows the cart. Velocity changes need a net force.",
+     "Right: the force is zero, so no work is done and K does not change.",
+     "Moving forward does not add energy. The speed rises only while positive work is done.",
+     "Zero force means zero acceleration, not zero speed. The cart keeps the speed it has."
+    ]
+   }
+  },
+  {
+   "id": "phys-work-by-forces-9",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "work-by-forces-s2",
+   "q": "Over which 0.10 m interval does the band do the most work on the cart?",
+   "options": [
+    "0.10 to 0.20 m",
+    "0.30 to 0.40 m",
+    "0 to 0.10 m",
+    "Each of the four intervals, equally"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Areas: 0-0.10 m: 1.2 J; 0.10-0.20 m: 1.0 J; 0.20-0.30 m: 0.6 J; 0.30-0.40 m: 0.2 J. The cart gains kinetic energy fastest at the start.",
+    "options": [
+     "The force starts to fall here, so the area is 1.0 J, a little less than the first interval.",
+     "The force is smallest here; the area is only 0.2 J.",
+     "Right: 1.2 J, the largest area, because the force is largest there.",
+     "The intervals have the same width but different force heights, so the areas differ."
+    ]
+   }
+  },
+  {
+   "id": "phys-work-by-forces-10",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A worker lowers a 15 kg box onto the floor at constant speed. What sign is the work done by the worker on the box?",
+   "options": [
+    "Positive, because the worker is making an effort",
+    "Zero, because the speed is constant",
+    "Positive, because the box moves",
+    "Negative, because the push opposes the motion"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The worker's force on the box is upward and the displacement is downward (θ = 180°), so the worker does negative work. Gravity does an equal amount of positive work, so the net work is zero and the speed is constant.",
+    "options": [
+     "Work in physics is F d cos θ, not effort. Here the force opposes the motion.",
+     "Constant speed means the net work is zero. The worker's own work is negative, balancing gravity's positive work.",
+     "Motion alone does not fix the sign. The angle between the force and the displacement does.",
+     "Right: force and displacement are opposite, so cos 180° = −1."
+    ]
+   }
+  },
+  {
+   "id": "phys-work-by-forces-11",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A ball on a string moves in a horizontal circle at constant speed. Which is the best explanation of why its speed does not change?",
+   "options": [
+    "The string's force is perpendicular to the velocity, so it does no work",
+    "The string's force is zero, because the ball moves at constant speed",
+    "The string does positive work that is canceled by negative work from gravity",
+    "The ball has no acceleration, so nothing does work"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The velocity is tangent to the circle, and the string's pull has no component along it, so θ = 90° at every instant: W = 0, ΔK = 0, and the speed stays the same.",
+    "options": [
+     "Right: a force at 90° to the motion changes the direction but adds no kinetic energy.",
+     "The string pulls the ball inward; without that pull the ball would not turn.",
+     "Gravity is vertical and the circle is horizontal, so gravity does no work either.",
+     "The ball accelerates toward the center. The point is that this force does no work."
+    ]
+   }
+  },
+  {
+   "id": "phys-work-by-forces-12",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 3.0 kg ball falls 2.5 m. How much work does the gravitational force do on the ball, in joules? Use g = 9.8 m/s².",
+   "numeric": {
+    "answer": 74,
+    "tol": 1,
+    "unit": "J",
+    "sigfigs": 2
+   },
+   "why": {
+    "correct": "The gravitational force (mg, down) and the displacement (2.5 m, down) point the same way, so W = mgd = (3.0 kg)(9.8 m/s²)(2.5 m) = 74 J."
+   }
+  },
+  {
+   "id": "phys-work-by-forces-13",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A rope pulls a crate up a straight ramp at constant speed. What is the net work done on the crate?",
+   "options": [
+    "Positive, because the rope pulls the crate uphill",
+    "Zero, because its kinetic energy does not change",
+    "Negative, because gravity opposes the motion",
+    "It equals the crate's weight times the height of the ramp"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Constant speed means ΔK = 0, so by the work-energy theorem the works done by all the forces on the crate add to zero.",
+    "options": [
+     "The rope does positive work, but gravity (and any friction) do an equal total of negative work.",
+     "Right: the work-energy theorem says W_net = ΔK, and ΔK = 0.",
+     "Gravity does negative work, but the rope's positive work balances it.",
+     "That is the size of the work done by gravity alone, not the net work."
+    ]
+   }
+  },
+  {
+   "id": "phys-work-by-forces-14",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A 0.17 kg puck slides at 6.0 m/s onto rough ice, where a 0.50 N friction force slows it. How far does it slide before stopping, in meters?",
+   "numeric": {
+    "answer": 6.1,
+    "tol": 0.1,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2,
+      "why": "Value: that divides mass times speed by the force. Use the work-energy theorem: −f d = 0 − ½mv²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Friction does all the work: −f d = 0 − ½mv², so d = mv²/(2f) = (0.17 kg)(6.0 m/s)²/(2 × 0.50 N) = 6.1 m."
+   }
+  },
+  {
+   "id": "phys-work-by-forces-15",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A crate is dragged 5.0 m east and then 5.0 m back west to where it started. Kinetic friction from the floor has size f the whole time. What total work does friction do on the crate?",
+   "options": [
+    "Zero, because the crate ends where it started",
+    "+f(10 m)",
+    "−f(10 m)",
+    "−f(5.0 m)"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "On each leg friction points opposite the displacement: W = −f(5.0 m) twice, for −f(10 m). The work done by friction depends on the path length, not just the start and end.",
+    "options": [
+     "The displacement is zero overall, but friction reverses with the motion, so it does negative work on each leg.",
+     "Friction always acts against the sliding, so its work on the crate is negative.",
+     "Right: friction opposes the motion on both legs, so each leg contributes −f(5.0 m).",
+     "That counts one leg. The return trip adds the same negative work again."
+    ]
+   }
+  },
+  {
+   "id": "phys-work-by-forces-16",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "A constant force pushes a cart along its motion. If the force is doubled and the distance is halved, what happens to the work done by the force?",
+   "options": [
+    "It doubles",
+    "It is halved",
+    "It is four times as large",
+    "It stays the same"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "W = Fd, so (2F)(d/2) = Fd: the work is unchanged.",
+    "options": [
+     "Doubling the force doubles the work only at the same distance; halving the distance cancels it.",
+     "The force also changes; the two factors cancel.",
+     "This multiplies by 2 twice. One factor is 2 and the other is ½.",
+     "Right: W = Fd, and 2 × ½ = 1."
+    ]
+   }
+  },
+  {
+   "id": "phys-work-by-forces-17",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "2.C",
+   "level": "recall",
+   "diff": 1,
+   "q": "On a graph of the force along the direction of motion against position, what represents the work done by the force?",
+   "options": [
+    "The area between the graph and the position axis",
+    "The slope of the graph",
+    "The largest force times the total time",
+    "The height of the graph at the final position"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Work equals the area under a force-position graph, with area below the axis counting as negative work.",
+    "options": [
+     "Right: each thin strip F Δx is a little work, and they add up to the area.",
+     "Slope is a change in force per meter, not an amount of energy.",
+     "Work is force times displacement, not force times time.",
+     "That is one force value, in newtons, not an energy in joules."
+    ]
+   }
+  },
+  {
+   "id": "phys-work-by-forces-18",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "work-by-forces",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Take a sled as the system. A rope outside the system pulls it forward and does +40 J of work on it. What does this tell you?",
+   "options": [
+    "40 J of energy left the sled",
+    "40 J of energy entered the sled",
+    "The sled's speed is certain to increase",
+    "The rope gained 40 J"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Work by an external force is energy crossing the system boundary: +40 J means 40 J entered the sled. Whether the sled speeds up depends on the net work of all the forces.",
+    "options": [
+     "Positive work brings energy in; negative work takes it out.",
+     "Right: positive work by an external force is an energy transfer into the system.",
+     "The net work decides the change in speed. Other forces, such as friction, may do negative work.",
+     "The rope gave energy to the sled; it did not gain it."
+    ]
+   }
+  }
+ ]
+}

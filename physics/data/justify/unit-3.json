@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 3 (docs/apphys-architecture.md, \"Justification trainer\").",
+ "prompts": [
+  {
+   "id": "u3-name-the-system",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "3.C",
+   "skill": "conservation",
+   "title": "Is the ball's mechanical energy conserved?",
+   "context": "<p>A ball is dropped from rest and falls 2.0 m. Air resistance is negligible. One student says its mechanical energy is conserved; another says its kinetic energy increases, so energy is not conserved.</p>",
+   "prompt": "<b>Explain</b> how both students can be partly right, by naming the system each is using.",
+   "checklist": [
+    "Names the ball-Earth system: only the internal gravitational force does work and no external force does work, so K + U_g stays constant",
+    "Names the ball-alone system: there is no potential energy, and Earth's gravitational force is external and does positive work, so the ball's K increases",
+    "Says whether energy is constant depends on the system chosen, not on a rule that energy is always constant"
+   ],
+   "earns": {
+    "answer": "It depends on the system. For the ball-Earth system, the gravitational force is internal, no external force does work and air resistance is negligible, so the mechanical energy K + U_g stays constant: U_g decreases by mg(2.0 m) and K increases by the same amount. For the ball alone there is no potential energy; Earth's gravitational force is an external force that does positive work, mg(2.0 m), on the ball, so the ball's kinetic energy increases. Both descriptions agree once the system is named.",
+    "why": "It names each system, says which forces are internal or external, and gives the condition (no external work) that makes the energy constant."
+   },
+   "misses": {
+    "answer": "Mechanical energy is conserved because energy is always conserved; it can never be created or destroyed.",
+    "why": "Energy is conserved overall, but the mechanical energy of a chosen system stays constant only when no external work is done and no energy is converted to thermal energy. This names no system and no condition."
+   }
+  },
+  {
+   "id": "u3-friction-on-the-ramp",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "3.C",
+   "skill": "conservation",
+   "title": "Where the missing speed went",
+   "context": "<p>A block slides from rest down a rough ramp from a height h. At the bottom its speed is less than √(2gh), the speed it would have on a frictionless ramp.</p>",
+   "prompt": "<b>Explain</b> why, using the energy of a named system.",
+   "checklist": [
+    "Names a system, the block, the ramp and Earth, and says kinetic friction acts between block and ramp as the block slides",
+    "Says kinetic friction converts some of the mechanical energy into thermal energy of the block and ramp",
+    "Writes the energy balance mgh = ½mv² + (thermal energy), so ½mv² is less than mgh and v is less than √(2gh)"
+   ],
+   "earns": {
+    "answer": "Take the block, the ramp and Earth as the system. As the block slides, kinetic friction between the block and the ramp converts some of the system's mechanical energy into thermal energy of the block and ramp surfaces. So mgh = ½mv² + E_thermal, where E_thermal = f_k d for a slide of length d. The kinetic energy at the bottom is less than mgh, so the speed is less than √(2gh).",
+    "why": "It names the system, the process (kinetic friction) and where the energy goes (thermal energy), and shows the effect in the energy equation."
+   },
+   "misses": {
+    "answer": "The block has less speed because some energy is lost to friction on the way down.",
+    "why": "Energy is not lost: it becomes thermal energy of the surfaces. The readers ask where the energy goes and in which system, and this answer names neither."
+   }
+  },
+  {
+   "id": "u3-total-energy-graph",
+   "unit": "unit-3",
+   "topic": "energy-conservation",
+   "practice": "1.C",
+   "skill": "graphs",
+   "title": "The shape of the total energy graph",
+   "context": "<p>A skater glides along a frictionless track that dips down into a valley and rises over a hill. You are asked to sketch K, U_g and the total mechanical energy of the skater-Earth system against the skater's horizontal position.</p>",
+   "prompt": "<b>Describe</b> the shape of the total mechanical energy graph, and <b>justify</b> it.",
+   "checklist": [
+    "Says the total is a horizontal line at the same value at every position",
+    "Justifies it: no friction and no external work on the skater-Earth system, so K + U_g does not change",
+    "Says K and U_g mirror each other: where U_g dips (the valley), K rises by the same amount"
+   ],
+   "earns": {
+    "answer": "The total mechanical energy graph is a horizontal line. The track is frictionless and no external force does work on the skater-Earth system, so K + U_g has the same value at every position. The other two graphs mirror each other: U_g follows the shape of the track, lowest in the valley, and K is largest in the valley, so that their sum stays flat.",
+    "why": "It gives the shape, the condition that makes it flat, and how the two other graphs combine to give it."
+   },
+   "misses": {
+    "answer": "The total energy goes down into the valley and back up over the hill, following the track.",
+    "why": "This describes U_g, not the total. The readers often see a sloping or curved total line; with no friction and no external work it must be flat."
+   }
+  },
+  {
+   "id": "u3-power-same-lift",
+   "unit": "unit-3",
+   "topic": "power",
+   "practice": "2.D",
+   "skill": "functional-dependence",
+   "title": "Two motors, one load",
+   "context": "<p>Two motors each lift an identical 20 kg crate 3.0 m straight up at constant speed. Motor A takes 6.0 s and motor B takes 3.0 s.</p>",
+   "prompt": "<b>Compare</b> the work done and the average power of the two motors, and <b>justify</b> each comparison.",
+   "checklist": [
+    "Says each motor does the same work, mgh = (20 kg)(9.8 m/s²)(3.0 m) = 588 J, because the mass and height are the same and the speed is constant",
+    "Uses P = W/Δt: the same work in half the time means twice the average power",
+    "Gives the values: motor A 98 W, motor B 196 W"
+   ],
+   "earns": {
+    "answer": "They do the same work. Each crate rises at constant speed, so the motor's force equals the crate's weight and the work is W = mgh = (20 kg)(9.8 m/s²)(3.0 m) = 588 J for both. Average power is work divided by time, P = W/Δt. Motor B does the same work in half the time, so its average power is twice motor A's: 196 W for B and 98 W for A.",
+    "why": "It separates work (depends on force and distance) from power (work per unit time) and gives the factor with numbers."
+   },
+   "misses": {
+    "answer": "Motor B does more work because it is faster, so it has more power.",
+    "why": "Both motors do the same work, since the force and distance are the same. Speed changes how fast the work is done, which is the power, not the work."
+   }
+  }
+ ]
+}

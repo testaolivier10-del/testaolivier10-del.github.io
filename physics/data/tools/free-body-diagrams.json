@@ -1,0 +1,44 @@
+{
+ "about": "Trainer: free-body diagrams (Unit 2, the flagship, free). Explore: eleven illustrated scenes drawn from ApPhysMath.freeBodyDiagrams.solve, arrows to scale from the object's dot, the forces added tip to tail, the acceleration and the motion on Run. Test yourself: the student builds the diagram (palette, drag or keys, agent labels), graded force by force by freeBodyDiagrams.grade, then Newton's second law along an axis and a number. Each context lists its scenes and unlocks with its topic. The validator regenerates 300 problems per context and scene and recomputes every force, equation and answer independently.",
+ "slug": "free-body-diagrams",
+ "kind": "simulator",
+ "topic": "forces-fbd",
+ "intro": "<p>A free-body diagram shows every force on one object, each as an arrow from the object's dot, labeled with the kind of force and the object that exerts it. In <b>Explore</b>, change the situation and watch the diagram, the net force and the motion follow. In <b>Test yourself</b>, draw the diagram: pick forces from the palette, drag each arrow's tip to aim and size it, label who exerts it, and check. Each force is graded on its own, and every miss is named.</p>",
+ "howItWorksTitle": "The rules a free-body diagram follows",
+ "howItWorks": "<ul><li><b>One object, every force on it.</b> Each arrow starts on the object (at its dot) and is labeled with its type and its agent: \"F<sub>g</sub>, Earth on block\".</li><li><b>Only real forces.</b> Every force has an agent you can name. There is no \"force of motion\", and the net force and a \"centripetal force\" are never drawn as extra forces: the net force is the sum of the forces already there, and \"centripetal\" names the job of whatever real force points to the center.</li><li><b>Directions.</b> Gravity points down; the normal force is perpendicular to the surface, away from it; tension pulls along the rope; friction points against sliding (kinetic) or against the tendency to slide (static); a spring force points back toward the relaxed length; the buoyant force points up.</li><li><b>Lengths.</b> Balanced forces are drawn the same length; when the object accelerates, the force on the side of the acceleration is longer. On a ramp F<sub>N</sub> = mg cos θ is shorter than F<sub>g</sub>.</li><li><b>Third law.</b> \"Block on ramp\" is the partner of \"ramp on block\": it acts on the ramp, so it belongs on the ramp's diagram.</li><li><b>Whole forces, not components.</b> Choose axes beside the diagram (along the ramp, for example) and split the forces into components there, when you write ΣF = ma.</li></ul><p>Directions are graded within 12°. Lengths are compared only where the physics fixes them: opposite forces (balanced or not) and gravity against the normal force. g = 9.8 m/s² unless a problem says otherwise; ropes, springs and pulleys are ideal.</p>",
+ "partTopics": {
+  "fbd": "forces-fbd"
+ },
+ "contexts": [
+  {
+   "id": "basic",
+   "topic": "forces-fbd",
+   "scenes": ["table", "hang1", "hang2", "incline"]
+  },
+  {
+   "id": "accel",
+   "topic": "second-law",
+   "scenes": ["hang1", "elevator", "atwood", "incline"]
+  },
+  {
+   "id": "friction",
+   "topic": "friction",
+   "scenes": ["rough", "crate"]
+  },
+  {
+   "id": "spring",
+   "topic": "spring-forces",
+   "scenes": ["spring"]
+  },
+  {
+   "id": "circular",
+   "topic": "circular-motion",
+   "scenes": ["car"]
+  },
+  {
+   "id": "buoyancy",
+   "topic": "buoyancy",
+   "scenes": ["water"]
+  }
+ ]
+}

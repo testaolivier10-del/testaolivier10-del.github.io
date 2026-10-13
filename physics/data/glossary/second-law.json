@@ -1,0 +1,11 @@
+{
+ "second-law": {
+  "def": "Newton's second law: the acceleration of an object (or of a system's center of mass) equals the net external force divided by the mass, a = ΣF/m, and points in the direction of the net force."
+ },
+ "system-acceleration": {
+  "def": "The acceleration of a system's center of mass, a_sys = ΣF_ext / m_sys: the net external force divided by the total mass. Internal forces do not enter."
+ },
+ "connected-objects": {
+  "def": "Objects joined by ideal strings or pushing on each other so that they share one acceleration, such as a cart pulled by a hanging block or an Atwood machine (two masses hung over one pulley)."
+ }
+}

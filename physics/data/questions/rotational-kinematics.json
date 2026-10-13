@@ -1,0 +1,543 @@
+{
+ "stimuli": {
+  "rotational-kinematics-s1": {
+   "kind": "diagram",
+   "title": "A potter’s wheel speeding up",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 250\" role=\"img\" aria-label=\"Top view of a potter’s wheel with a chalk mark near its rim, turning counterclockwise from rest with constant angular acceleration of 2.0 rad/s² for 3.0 s\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"560\" height=\"250\" fill=\"#FFFFFF\"/><circle cx=\"150\" cy=\"120\" r=\"95\" fill=\"#E9D8B8\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><circle cx=\"150\" cy=\"120\" r=\"10\" fill=\"#B9C2C7\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"150\" cy=\"120\" r=\"3\" fill=\"#1F2A28\"/><circle cx=\"188\" cy=\"54.2\" r=\"7\" fill=\"#734200\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><line x1=\"194\" y1=\"48.2\" x2=\"228\" y2=\"24.2\" stroke=\"#5A6268\" stroke-width=\"1\"/><text x=\"230\" y=\"22.2\" font-size=\"12\" fill=\"#1F2A28\">chalk mark</text><path d=\"M45.7,158 A111 111 0 0 0 196.6,220.7\" fill=\"none\" stroke=\"#B07A00\" stroke-width=\"2.5\"/><polygon points=\"205.5,216.1 199.2,225.6 194.1,215.9\" fill=\"#B07A00\"/><text x=\"150\" y=\"244\" font-size=\"12\" fill=\"#5A6268\" text-anchor=\"middle\">Top view: turns counterclockwise</text><rect x=\"300\" y=\"30\" width=\"240\" height=\"190\" rx=\"8\" fill=\"#EEF1EF\" stroke=\"#C9CFCC\"/><text x=\"314\" y=\"60\" font-size=\"13\" fill=\"#1F2A28\">Starts from rest.</text><text x=\"314\" y=\"84\" font-size=\"13\" fill=\"#1F2A28\">Constant angular acceleration</text><text x=\"314\" y=\"108\" font-size=\"13\" fill=\"#1F2A28\">2.0 rad/s² for 3.0 s.</text><text x=\"314\" y=\"132\" font-size=\"13\" fill=\"#1F2A28\"></text><text x=\"314\" y=\"156\" font-size=\"13\" fill=\"#1F2A28\">Counterclockwise is positive.</text></svg>"
+  },
+  "rotational-kinematics-s2": {
+   "kind": "graph",
+   "title": "A ceiling fan switched on, then off",
+   "text": "<p>A sensor records the angular velocity of a ceiling fan, counterclockwise positive, as it is switched on, runs, and is switched off.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Time",
+     "unit": "s",
+     "min": 0,
+     "max": 18,
+     "step": 2
+    },
+    "y": {
+     "label": "Angular velocity",
+     "unit": "rad/s",
+     "min": 0,
+     "max": 14,
+     "step": 2
+    },
+    "series": [
+     {
+      "name": "ω",
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        4,
+        12
+       ],
+       [
+        10,
+        12
+       ],
+       [
+        16,
+        0
+       ],
+       [
+        18,
+        0
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-rotational-kinematics-1",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-kinematics-s1",
+   "q": "What is the wheel’s angular velocity at the end of the 3.0 s?",
+   "numeric": {
+    "answer": 6,
+    "tol": 0.1,
+    "unit": "rad/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 3,
+      "rel": 0.015,
+      "why": "Value: that is ½αt, a mix of two equations. Starting from rest, ω = ω₀ + αt = 0 + αt."
+     }
+    ]
+   },
+   "why": {
+    "correct": "From rest, ω = ω₀ + αt = 0 + (2.0 rad/s²)(3.0 s) = 6.0 rad/s."
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-2",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-kinematics-s1",
+   "q": "Through what angle, in radians, does the chalk mark turn during the 3.0 s?",
+   "numeric": {
+    "answer": 9,
+    "tol": 0.1,
+    "unit": "rad",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 6,
+      "rel": 0.015,
+      "why": "Value: that is the final angular velocity in rad/s, not the angle turned. Use θ = ω₀t + ½αt²."
+     },
+     {
+      "value": 1.4,
+      "rel": 0.015,
+      "why": "Value: that is the angle in revolutions. The question asks for radians: θ = ½αt²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "θ = ω₀t + ½αt² = 0 + ½(2.0 rad/s²)(3.0 s)² = 9.0 rad."
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-3",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-kinematics-s1",
+   "q": "About how many revolutions does the wheel make in the 3.0 s?",
+   "options": [
+    "1.4 rev",
+    "9.0 rev",
+    "2.9 rev",
+    "0.72 rev"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "One revolution is 2π rad, so 9.0 rad ÷ 2π = 1.43, about 1.4 rev.",
+    "options": [
+     "Right: 9.0 rad ÷ 2π rad per revolution = 1.4 rev.",
+     "This treats each radian as a whole turn. One revolution is 2π rad, about 6.28 rad.",
+     "This divides by π instead of 2π. A full turn is 2π rad.",
+     "This halves the correct value. A revolution is 2π rad, not 4π rad."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-4",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rotational-kinematics-s1",
+   "q": "A second chalk mark is drawn halfway between the first mark and the axle. During the same 3.0 s, its angular displacement is",
+   "options": [
+    "the same as the first mark’s",
+    "half the first mark’s",
+    "twice the first mark’s",
+    "one quarter of the first mark’s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The wheel is a rigid system: every point on it turns through the same angle in the same time, so both marks have the same angular displacement (9.0 rad), the same ω and the same α.",
+    "options": [
+     "Right: a rigid wheel turns as one piece, so every mark turns through the same angle.",
+     "Halving the distance from the axle changes how far the mark travels, not the angle it turns through.",
+     "Being closer to the axle does not make a mark turn through more angle; the wheel turns as one piece.",
+     "No square law applies here: every mark on a rigid wheel turns through the same angle."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-5",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "rotational-kinematics-s1",
+   "q": "The wheel keeps the same angular acceleration but runs for 6.0 s instead of 3.0 s, starting from rest. Its angular displacement is",
+   "options": [
+    "4 times as large",
+    "2 times as large",
+    "the same",
+    "8 times as large"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From rest, θ = ½αt². With α fixed, θ ∝ t², so twice the time gives 2² = 4 times the angle (36 rad).",
+    "options": [
+     "Right: from rest θ = ½αt², so doubling t multiplies θ by 2² = 4.",
+     "That would be true at constant ω. With constant α from rest, θ grows with t².",
+     "A longer time at the same α gives more turning, not the same.",
+     "θ depends on t², not t³."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-6",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-kinematics-s2",
+   "q": "What is the fan’s angular acceleration from 0 to 4.0 s?",
+   "numeric": {
+    "answer": 3,
+    "tol": 0.1,
+    "unit": "rad/s^2",
+    "sigfigs": 2,
+    "units": [
+     "rad/s²",
+     "rad/s/s"
+    ],
+    "mistakes": [
+     {
+      "value": 0.33,
+      "rel": 0.015,
+      "why": "Value: that divides time by angular velocity. α = Δω/Δt, the slope of the ω-t graph."
+     }
+    ]
+   },
+   "why": {
+    "correct": "α = Δω/Δt = (12.0 rad/s − 0)/(4.0 s) = 3.0 rad/s², the slope of the graph."
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-7",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "rotational-kinematics-s2",
+   "q": "Through what angle does the fan turn from 0 to 16.0 s?",
+   "numeric": {
+    "answer": 132,
+    "tol": 1,
+    "unit": "rad",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 192,
+      "rel": 0.015,
+      "why": "Value: that uses 12.0 rad/s for the whole 16.0 s. The fan is slower while it speeds up and slows down; take the area under the graph."
+     },
+     {
+      "value": 72,
+      "rel": 0.015,
+      "why": "Value: that is the constant-speed part only. Add the two triangles where the fan speeds up and slows down."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The angle is the area under the ω-t graph: ½(4.0 s)(12.0 rad/s) + (6.0 s)(12.0 rad/s) + ½(6.0 s)(12.0 rad/s) = 24 + 72 + 36 = 132 rad."
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-8",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-kinematics-s2",
+   "q": "Which describes the fan from 10.0 s to 16.0 s, with counterclockwise positive?",
+   "options": [
+    "Turning counterclockwise and slowing down",
+    "Turning clockwise and speeding up",
+    "Turning counterclockwise and speeding up",
+    "At rest, since α is negative"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "ω is positive (counterclockwise) but decreasing toward zero, so the angular acceleration is negative, opposite to ω: the fan slows down until it stops at 16.0 s.",
+    "options": [
+     "Right: ω stays positive while its size falls, so α is negative.",
+     "ω is still positive in this interval, so the fan has not reversed.",
+     "ω is getting smaller, so the fan is slowing down.",
+     "A negative α means ω is decreasing, not that the fan has stopped; it stops at 16.0 s."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-9",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "rotational-kinematics-s2",
+   "q": "What is the fan’s angular acceleration at t = 12.0 s?",
+   "options": [
+    "−2.0 rad/s²",
+    "+2.0 rad/s²",
+    "8.0 rad/s²",
+    "0 rad/s²"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "α is the slope of the ω-t graph. From 10.0 s to 16.0 s it is (0 − 12.0 rad/s)/(6.0 s) = −2.0 rad/s², the same at every instant in that interval.",
+    "options": [
+     "Right: the slope from 10.0 s to 16.0 s is −12.0 rad/s ÷ 6.0 s.",
+     "The size is right, but ω is falling, so the slope is negative.",
+     "That is the value of ω at 12.0 s, read off the graph, not its slope.",
+     "The graph is sloping at 12.0 s, so ω is changing and α is not zero."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-10",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "How many radians are in one full revolution?",
+   "options": [
+    "2π rad",
+    "π rad",
+    "360 rad",
+    "1 rad"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "An angle in radians is (distance along the circle) ÷ (radius). A full turn covers the whole circumference, 2πr, so it is 2πr/r = 2π rad.",
+    "options": [
+     "Right: the full circumference is 2π times the radius.",
+     "π rad is half a turn, 180°.",
+     "360 is the number of degrees in a turn, not radians.",
+     "One radian is about 57°, much less than a full turn."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-11",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A record turntable spins at 45 revolutions per minute. What is its angular velocity in rad/s?",
+   "numeric": {
+    "answer": 4.7,
+    "tol": 0.1,
+    "unit": "rad/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.75,
+      "rel": 0.015,
+      "why": "Value: that is revolutions per second. Multiply by 2π rad per revolution."
+     },
+     {
+      "value": 270,
+      "rel": 0.015,
+      "why": "Value: that is degrees per second. Use 2π rad per revolution, not 360°."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ω = (45 rev/min)(2π rad/rev)(1 min/60 s) = 4.71 rad/s, about 4.7 rad/s."
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-12",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Counterclockwise is positive. A wheel has a negative angular velocity and a positive angular acceleration. What is it doing?",
+   "options": [
+    "Turning clockwise and slowing down",
+    "Turning clockwise and speeding up",
+    "Turning counterclockwise and slowing down",
+    "Turning counterclockwise and speeding up"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The sign of ω gives the direction of turning (negative: clockwise). When α has the opposite sign, ω moves toward zero, so the wheel slows, just as a car with v and a of opposite signs slows.",
+    "options": [
+     "Right: ω and α have opposite signs, so the size of ω is shrinking.",
+     "Speeding up needs α with the same sign as ω.",
+     "A negative ω means clockwise turning.",
+     "The sign of ω, not α, gives the direction of turning."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-13",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A wheel turning counterclockwise at 8.0 rad/s slows at a steady rate and stops in 5.0 s. Counterclockwise is positive. What is its angular acceleration?",
+   "numeric": {
+    "answer": -1.6,
+    "tol": 0.1,
+    "unit": "rad/s^2",
+    "sigfigs": 2,
+    "units": [
+     "rad/s²",
+     "rad/s/s"
+    ],
+    "mistakes": [
+     {
+      "value": -0.63,
+      "rel": 0.015,
+      "why": "Value: that divides time by angular velocity. α = Δω/Δt."
+     }
+    ]
+   },
+   "why": {
+    "correct": "α = Δω/Δt = (0 − 8.0 rad/s)/(5.0 s) = −1.6 rad/s². It is negative because the wheel turns counterclockwise and slows."
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-14",
+   "type": "numeric",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 3,
+   "q": "A grinding wheel speeds up from 20.0 rad/s to 50.0 rad/s with a constant angular acceleration of 6.00 rad/s². Through what angle does it turn while speeding up?",
+   "numeric": {
+    "answer": 175,
+    "tol": 1,
+    "unit": "rad",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 208,
+      "rel": 0.015,
+      "why": "Value: that ignores the starting angular velocity. Use ω² = ω₀² + 2αΔθ with ω₀ = 20.0 rad/s."
+     },
+     {
+      "value": 75,
+      "rel": 0.015,
+      "why": "Value: that squares the change in ω. The equation uses ω² − ω₀², not (ω − ω₀)²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "No time is given, so use ω² = ω₀² + 2αΔθ: Δθ = (50.0² − 20.0²)/(2 × 6.00) = 2100/12.0 = 175 rad."
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-15",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A rigid wheel turns about a fixed axle. Which statement is true for the points on the wheel?",
+   "options": [
+    "Each point turns through the same angle in a given time",
+    "Points farther from the axle turn through larger angles",
+    "Each point moves the same distance in a given time",
+    "Points near the axle have a larger angular velocity"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A rigid system keeps its shape, so every point turns through the same angle in the same time: one θ, one ω and one α describe the whole wheel.",
+    "options": [
+     "Right: that is what it means for the wheel to be a rigid system.",
+     "Points farther out travel farther, but they turn through the same angle.",
+     "Points farther from the axle trace bigger circles, so they move farther.",
+     "Every point of a rigid wheel shares one angular velocity."
+    ]
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-16",
+   "type": "predict",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A fan turns counterclockwise and speeds up with a constant angular acceleration. Predict how each quantity changes over the next second.",
+   "variables": [
+    {
+     "name": "Angular velocity",
+     "answer": "up",
+     "why": "α has the same sign as ω, so ω grows by α each second."
+    },
+    {
+     "name": "Angular acceleration",
+     "answer": "none",
+     "why": "The angular acceleration is constant, as stated."
+    },
+    {
+     "name": "Angle turned in each second",
+     "answer": "up",
+     "why": "The fan is turning faster, so it covers a larger angle each second."
+    }
+   ],
+   "why": {
+    "correct": "With constant α in the direction of ω, ω increases steadily; the faster it turns, the larger the angle covered each second, while α itself stays the same."
+   }
+  },
+  {
+   "id": "phys-rotational-kinematics-17",
+   "type": "single",
+   "unit": "unit-5",
+   "topic": "rotational-kinematics",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A wheel starts from rest and turns with constant positive angular acceleration. What does its graph of angle θ against time look like?",
+   "options": [
+    "A curve that gets steeper with time",
+    "A straight line through the origin",
+    "A horizontal line",
+    "A curve that levels off"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The slope of a θ-t graph is ω. With constant positive α, ω grows steadily, so the graph is a parabola that gets steeper with time, just like x-t for constant a.",
+    "options": [
+     "Right: θ = ½αt², and the slope of θ-t is ω, which keeps growing.",
+     "A straight θ-t line means constant ω, not constant α.",
+     "A flat θ-t line means the wheel is not turning.",
+     "Leveling off would mean ω is falling, so α would be negative."
+    ]
+   }
+  }
+ ]
+}

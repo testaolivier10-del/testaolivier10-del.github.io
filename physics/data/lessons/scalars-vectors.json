@@ -1,0 +1,82 @@
+{
+ "topic": "scalars-vectors",
+ "hook": "A fitness tracker says you walked 6 km today, yet you ended the day in your own kitchen, right where you started. Both statements are true. Physics keeps them apart: one number counts every step, the other only asks where you ended up, and the second one comes with a direction.",
+ "prereq": [
+  {
+   "q": "What is 350 cm in meters?",
+   "options": [
+    "3.5 m",
+    "35 m",
+    "0.35 m",
+    "3500 m"
+   ],
+   "correct": 0,
+   "why": "1 m = 100 cm, so 350 cm × (1 m / 100 cm) = 3.5 m.",
+   "review": "math-units"
+  },
+  {
+   "q": "Which is the SI unit of time?",
+   "options": [
+    "second",
+    "minute",
+    "hour",
+    "millisecond"
+   ],
+   "correct": 0,
+   "why": "The SI base units are the meter, the kilogram and the second.",
+   "review": "math-units"
+  }
+ ],
+ "figure": {
+  "figure": "walk-distance-displacement",
+  "caption": "A walk of 5 m out and 2 m back: the distance is 7 m, but the displacement is +3 m, from the start to the end."
+ },
+ "chain": [
+  {
+   "cause": "You pick an origin and a positive direction",
+   "effect": "every position along the line becomes one signed number, x, in meters"
+  },
+  {
+   "cause": "An object moves from one position to another",
+   "effect": "its displacement is the final position minus the starting position, with a sign for direction"
+  },
+  {
+   "cause": "The object turns around along the way",
+   "effect": "the distance keeps growing, but parts of the displacement cancel, so the distance is larger"
+  },
+  {
+   "cause": "Several displacements happen one after another",
+   "effect": "their vector sum is found by adding the signed values"
+  }
+ ],
+ "ideas": [
+  "A <b>scalar</b> has a size only (distance, speed, time). A <b>vector</b> has a size and a direction (position, displacement, velocity).",
+  "Choose a <b>coordinate system</b>: an origin and a positive direction. Then a position is one signed number, x.",
+  "<b>Displacement</b> = final position − starting position. <b>Distance</b> = the total length of the path. They match only for a trip in one direction.",
+  "<b>Speed</b> is how fast; <b>velocity</b> is how fast and which way. Along a line the sign of the velocity is the direction of motion.",
+  "Add vectors on a line by adding signed values: +320 m and −485 m give −165 m."
+ ],
+ "misconception": {
+  "wrong": "A negative velocity means the object is slowing down, and a negative position means it is moving backward.",
+  "right": "The sign of a velocity only gives the direction of motion: −4.2 m/s means 4.2 m/s in the negative direction. A negative position only says which side of the origin the object is on."
+ },
+ "check": [
+  "phys-scalars-vectors-1",
+  "phys-scalars-vectors-2",
+  "phys-scalars-vectors-3",
+  "phys-scalars-vectors-4",
+  "phys-scalars-vectors-12",
+  "phys-scalars-vectors-13"
+ ],
+ "summary": "Scalars have a size only; vectors have a size and a direction, which along a line is the sign. Displacement is the final minus the starting position; distance is the path length. Speed is the magnitude of velocity, and vectors on a line add as signed numbers.",
+ "connections": [
+  {
+   "href": "../notes/math-units.html",
+   "label": "Back: units and significant figures"
+  },
+  {
+   "href": "../notes/motion-quantities.html",
+   "label": "Next: displacement, velocity and acceleration (1.2)"
+  }
+ ]
+}

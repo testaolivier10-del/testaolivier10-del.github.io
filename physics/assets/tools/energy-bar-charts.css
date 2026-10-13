@@ -1,0 +1,143 @@
+/* Energy bar charts (physics/assets/tools/energy-bar-charts.js). OWNED BY THIS
+   TOOL ONLY; loaded by the tool's script. Store colors match the force
+   colors in phys-tools.css: U_g is gravity's blue, U_s the spring's pink,
+   thermal energy friction's orange, the cable tension's purple; K is gold.
+   Every bar also carries its symbol, so color is never the only cue. */
+:root{--eb-k:#E0A100;--eb-ug:#0072B2;--eb-us:#CC79A7;--eb-th:#D55E00;--eb-cable:#7A4F9E;--eb-sky:#EEF5FA;--eb-ground:#D9CDB4;--eb-ramp:#C9B48E;--eb-rail:#5B6770;--eb-block:#C46A2B;}
+:root[data-theme="dark"]{--eb-k:#F2C14E;--eb-ug:#6BB4E8;--eb-us:#E7A6CB;--eb-th:#F29A5C;--eb-cable:#C3A3E0;--eb-sky:#16202A;--eb-ground:#3A3428;--eb-ramp:#5A4C34;--eb-rail:#AAB5BD;--eb-block:#D9824A;}
+
+.eb-explore{gap:12px;}
+.eb-stage{display:flex;flex-direction:column;gap:6px;min-height:0;flex:1;}
+.eb-scene-fig{flex:1.35;}
+.eb-bars-fig{flex:1;}
+.eb-fig{margin:0;min-width:0;display:flex;flex-direction:column;gap:4px;min-height:0;}
+.eb-scene,.eb-bars{flex:1;min-height:0;display:flex;}
+.eb-scene svg,.eb-bars svg{width:100%;height:100%;max-height:100%;display:block;}
+.eb-scene svg{touch-action:none;cursor:grab;border-radius:14px;}
+.eb-sysname{font:700 13px/1.3 var(--font-ui);color:var(--muted);text-align:center;}
+.eb-sysname b{color:var(--ink);}
+.eb-eq{margin:0;text-align:center;font:800 13px/1.35 var(--font-mono);color:var(--ink);font-variant-numeric:tabular-nums;}
+.eb-eq-w{color:var(--cink);}
+@media (max-width:760px){ .eb-sysname,.eb-eq{font-size:11.5px;} }
+.eb-explore > .bt-more .eb-seg{margin-bottom:4px;}
+
+/* Scene */
+.phys-scene .eb-sky{fill:var(--eb-sky);}
+.phys-scene .eb-ground{fill:var(--eb-ground);}
+.phys-scene .eb-ground-l{stroke:var(--ink);stroke-width:2;}
+.phys-scene .eb-rule{stroke:var(--muted);stroke-width:1.5;}
+.phys-scene .eb-rule-t{fill:var(--muted);font:700 11px var(--font-ui);}
+.phys-scene .eb-post{stroke:var(--eb-rail);stroke-width:3;stroke-opacity:.45;}
+.phys-scene .eb-rail-under{fill:none;stroke:var(--white);stroke-width:9;stroke-linecap:round;stroke-linejoin:round;}
+.phys-scene .eb-rail{fill:none;stroke:var(--eb-rail);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;}
+.phys-scene .eb-rail.is-rough{stroke-dasharray:3 2;stroke:var(--eb-th);}
+.phys-scene .eb-ramp{fill:var(--eb-ramp);stroke:none;}
+.phys-scene .eb-surface{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linejoin:round;}
+.phys-scene .eb-surface.is-rough{stroke:var(--eb-th);stroke-dasharray:4 2;stroke-width:4;}
+.phys-scene .eb-rough{fill:var(--eb-th);fill-opacity:.55;}
+.phys-scene .eb-wall{fill:var(--eb-rail);}
+.phys-scene .eb-note{fill:var(--ink);font:700 12px var(--font-ui);}
+.phys-scene .eb-block rect{fill:var(--eb-block);stroke:var(--ink);stroke-width:1.5;}
+.phys-scene .eb-block text{fill:#fff;font:800 11px var(--font-ui);}
+.phys-scene .eb-box rect{fill:#B8874A;}
+.phys-scene .eb-tape{stroke:#E8D3A6;stroke-width:5;}
+.phys-scene .eb-spring{fill:none;stroke:var(--eb-us);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
+.phys-scene .eb-board{fill:#3D4A55;}
+.phys-scene .eb-wheel{fill:#22292F;stroke:#9AA5AE;stroke-width:1.5;}
+.phys-scene .eb-limb{fill:none;stroke:#2E5E8C;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;}
+.phys-scene .eb-limb.thin{stroke:#E0A100;stroke-width:3.5;}
+.phys-scene .eb-torso{stroke:#E0A100;stroke-width:8;stroke-linecap:round;}
+.phys-scene .eb-head{fill:#C98E62;}
+.phys-scene .eb-helmet{fill:#D55E00;}
+.phys-scene .eb-frame{fill:var(--eb-rail);}
+.phys-scene .eb-motor{fill:var(--paper);stroke:var(--ink);stroke-width:1.5;}
+.phys-scene .eb-pulley{fill:var(--paper);stroke:var(--ink);stroke-width:2;}
+.phys-scene .eb-hub{fill:var(--ink);}
+.phys-scene .eb-cable{stroke:var(--eb-cable);stroke-width:2.5;}
+.phys-scene .eb-hmark line{stroke:var(--muted);stroke-width:1.2;stroke-dasharray:4 3;}
+.phys-scene .eb-hmark text{fill:var(--muted);font:800 11.5px var(--font-ui);}
+.phys-scene .eb-dot{fill:var(--eb-k);stroke:var(--ink);stroke-width:1.5;}
+.phys-scene .eb-angle{fill:none;stroke:var(--muted);stroke-width:1.5;}
+.phys-scene .eb-car rect,.phys-scene .eb-car path{fill:#2E7DB5;stroke:var(--ink);stroke-width:1.5;}
+
+/* Bars */
+.phys-scene .eb-zero{stroke:var(--ink);stroke-width:2;}
+.phys-scene .eb-gridl{stroke:var(--line);stroke-width:1;}
+.phys-scene .eb-div{stroke:var(--line);stroke-width:2;stroke-dasharray:4 4;}
+.phys-scene .eb-bar{stroke:var(--ink);stroke-width:1;}
+.phys-scene .eb-k{fill:var(--eb-k);} .phys-scene .eb-ug{fill:var(--eb-ug);} .phys-scene .eb-us{fill:var(--eb-us);}
+.phys-scene .eb-th{fill:var(--eb-th);} .phys-scene .eb-cable{fill:var(--eb-cable);} .phys-scene .eb-w{fill:var(--eb-cable);}
+.phys-scene rect.eb-cable{stroke:var(--ink);}
+.phys-scene .eb-neg{fill-opacity:.55;}
+.phys-scene .eb-ghost{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-dasharray:4 3;opacity:.6;}
+.phys-scene .eb-val{fill:var(--ink);font:800 15px var(--font-mono);}
+.phys-scene .eb-lab{fill:var(--ink);font:900 18px var(--font-ui);}
+.phys-scene .eb-lab.is-out{fill:var(--muted);}
+.phys-scene .eb-lab2{fill:var(--muted);font:700 13px var(--font-ui);}
+.phys-scene .eb-out{fill:var(--paper);stroke:var(--line);stroke-width:1.5;stroke-dasharray:4 3;}
+.phys-scene .eb-out-t{fill:var(--muted);font:800 13px var(--font-ui);}
+.phys-scene .eb-axis,.phys-scene .eb-tick{fill:var(--muted);font:700 11px var(--font-ui);}
+.phys-scene .eb-grp{fill:var(--muted);font:800 11px var(--font-ui);}
+.phys-scene .eb-sub{font-weight:800;}
+
+/* Dock controls */
+.eb-ctl{display:flex;flex-direction:column;gap:10px;}
+.eb-seg{display:flex;gap:4px;padding:3px;border-radius:999px;background:var(--track,var(--paper));align-self:center;max-width:100%;}
+.eb-seg .bt-btn{flex:1 1 auto;min-height:36px;border-radius:999px;box-shadow:none;background:transparent;font-size:14px;}
+.ls-root .eb-seg .bt-btn[aria-pressed=true],.eb-seg .bt-btn[aria-pressed=true]{background:var(--white);color:var(--cink);box-shadow:0 0 0 2px var(--cink) inset;}
+.eb-seg .bt-btn{padding:0 8px;min-width:0;}
+.eb-sys{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;}
+.eb-sys-k{font:800 13px var(--font-ui);color:var(--muted);margin-right:2px;}
+.eb-chip{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border-radius:999px;border:0;box-shadow:inset 0 0 0 1.5px var(--line);background:var(--surface2,var(--paper));color:var(--muted);font:800 14px var(--font-ui);cursor:pointer;}
+.eb-chip[aria-pressed="true"]{background:var(--ctint);color:var(--cink);box-shadow:inset 0 0 0 2px var(--cink);}
+.eb-chip.is-fixed{background:var(--ctint);color:var(--cink);cursor:default;}
+.eb-chip.is-out{cursor:default;border:1.5px dashed var(--line);box-shadow:none;background:transparent;}
+.eb-tick{width:14px;height:14px;border-radius:4px;box-shadow:inset 0 0 0 2px currentColor;position:relative;}
+.eb-chip[aria-pressed="true"] .eb-tick{background:var(--cink);box-shadow:none;}
+.eb-chip[aria-pressed="true"] .eb-tick::after{content:"";position:absolute;left:4px;top:1px;width:4px;height:8px;border:solid var(--white);border-width:0 2px 2px 0;transform:rotate(45deg);}
+.eb-chip:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.eb-btns{display:grid;grid-template-columns:1.6fr 1fr;gap:8px;}
+.eb-btns>*{min-width:0;}
+.ls-root .phys-ls-dock .eb-ctl .bt-cue{display:none;}
+
+/* The bar chart builder (Test yourself) */
+.eb-build{margin:0;display:flex;flex-direction:column;gap:4px;min-height:0;flex:1;}
+.eb-build-top{display:flex;align-items:center;gap:10px;}
+.eb-thumb{flex:0 0 38%;max-width:200px;}
+.eb-thumb svg{width:100%;height:auto;border-radius:10px;}
+.eb-q-sys{margin:0;font:700 14px/1.35 var(--font-ui);color:var(--muted);}
+.eb-q-sys b{color:var(--ink);}
+.eb-chart{flex:1;min-height:170px;display:flex;}
+.eb-chart svg{width:100%;height:100%;max-height:100%;display:block;touch-action:none;}
+.eb-chart.is-live .eb-hit{cursor:ns-resize;}
+.phys-scene .eb-hit{fill:transparent;}
+.phys-scene .eb-bar.is-wrong{stroke:var(--bad-text);stroke-width:3;}
+.phys-scene .eb-bar.is-right{stroke:var(--good-text);stroke-width:2.5;}
+.eb-slots{display:grid;gap:4px;}
+.eb-slots .eb-slot{min-width:0;}
+.eb-slots .cd-cell{width:100%;min-width:0;padding:4px 2px;text-align:center;font-size:15px;}
+.eb-slots.is-active .cd-cell{border-color:var(--cink);}
+.eb-qfig svg{max-width:420px;}
+.ls-root .ls-drill-stage .eb-build{flex:1;}
+@media (max-width:760px){ .eb-thumb{flex-basis:34%;} .eb-q-sys{font-size:13px;} }
+
+.phys-scene .eb-read text{fill:var(--ink);font:800 17px var(--font-mono);paint-order:stroke;stroke:var(--eb-sky);stroke-width:4px;}
+.phys-scene .eb-read .eb-read-t{fill:var(--muted);font-size:14px;}
+@media (max-width:760px){ .eb-seg .bt-btn{font-size:13px;padding:0 8px;} }
+@media (max-width:760px){
+  .eb-sysname{display:none;}
+  .eb-sys{gap:4px;} .eb-sys-k{font-size:12px;} .eb-chip{min-height:36px;padding:0 10px;font-size:13px;}
+  .eb-scene-fig{flex:1.2;}
+}
+.phys-scene .eb-read.is-big text{font-size:27px;stroke-width:6px;}
+@media (max-width:760px){
+  .eb-scene-fig{flex:1;}
+  .eb-bars-fig{flex:1.25;}
+  .eb-eq{display:none;}
+  .eb-stage{gap:4px;}
+}
+.eb-cap-eq{display:block;font:700 13px var(--font-mono);color:var(--muted);}
+.phys-scene .eb-cm{fill:var(--ink);}
+.ls-root .cd-rowhint{display:none;}
+@media (max-width:760px){ .ls-root .eb-seg .bt-btn{padding:0 9px;font-size:13px;} }
+@media (max-width:760px){ .eb-build-top{display:none;} .eb-chart{min-height:0;} }

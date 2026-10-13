@@ -11,11 +11,11 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Search All Courses | LevlPrep</title>
-<meta name="description" content="Search every LevlPrep course at once: NREMT-EMT, Organic Chemistry and Anatomy &amp; Physiology notes, lessons, glossary terms, tools and questions.">
+<meta name="description" content="Search every LevlPrep course at once: NREMT-EMT, organic chemistry, A&amp;P, biology, chemistry and physics notes, lessons, terms, tools and questions.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://levlprep.com/search.html">
 <meta property="og:title" content="Search All Courses | LevlPrep">
-<meta property="og:description" content="Search every LevlPrep course at once: NREMT-EMT, Organic Chemistry and Anatomy &amp; Physiology notes, lessons, glossary terms, tools and questions.">
+<meta property="og:description" content="Search every LevlPrep course at once: NREMT-EMT, organic chemistry, A&amp;P, biology, chemistry and physics notes, lessons, terms, tools and questions.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://levlprep.com/search.html">
 <meta property="og:site_name" content="LevlPrep">
@@ -69,11 +69,13 @@
   [data-c="anp"]{--c-tint:#FBE9E4;--c-ink:#A33B26;}
   [data-c="apbio"]{--c-tint:#E4F1DD;--c-ink:#2D6A1F;}
   [data-c="apchem"]{--c-tint:#E3EAFA;--c-ink:#1D44A6;}
+  [data-c="apphys"]{--c-tint:#FBEED5;--c-ink:#734200;}
   :root[data-theme="dark"] [data-c="nremt"]{--c-tint:rgba(63,194,169,0.16);--c-ink:#9FE6D6;}
   :root[data-theme="dark"] [data-c="ochem"]{--c-tint:rgba(156,143,224,0.2);--c-ink:#C9C0F2;}
   :root[data-theme="dark"] [data-c="anp"]{--c-tint:rgba(236,132,108,0.2);--c-ink:#F2B9A9;}
   :root[data-theme="dark"] [data-c="apbio"]{--c-tint:rgba(140,200,110,0.16);--c-ink:#B6E2A2;}
   :root[data-theme="dark"] [data-c="apchem"]{--c-tint:rgba(90,130,230,0.2);--c-ink:#B3C8F7;}
+  :root[data-theme="dark"] [data-c="apphys"]{--c-tint:rgba(235,165,50,0.16);--c-ink:#F5CF8A;}
   /* ?embed=1: this page inside the "/" search overlay every page opens
      (site-chrome.js), so only the box, chips and results show. */
   .ss-embed #site-header,.ss-embed .skip-link,.ss-embed .ss-hero,.ss-embed .ss-help,.ss-embed .xsection:has(> footer){display:none;}
@@ -93,7 +95,7 @@
   <div class="hero ss-hero">
     <div class="eyebrow">Search</div>
     <h1>Search every course.</h1>
-    <p class="lede">NREMT-EMT, Organic Chemistry and Anatomy &amp; Physiology: notes and textbook, lessons, glossary terms, tools and practice questions.</p>
+    <p class="lede">NREMT-EMT, Organic Chemistry, Anatomy &amp; Physiology, AP® Biology, AP® Chemistry and AP® Physics 1: notes and textbook, lessons, glossary terms, tools and practice questions.</p>
   </div>
 
   <div class="xsection">
@@ -107,7 +109,7 @@
       <div class="ss-chips" id="ssChips" role="group" aria-label="Course"></div>
       <div class="ss-status" id="ssStatus" role="status" aria-live="polite"></div>
       <div id="ssResults"></div>
-      <noscript><p class="ss-none">Search runs in your browser and needs JavaScript. Each course&rsquo;s notes and glossary work without it: <a href="nremt/">NREMT</a>, <a href="ochem/">Organic Chemistry</a>, <a href="anatomy-physiology/">Anatomy &amp; Physiology</a>, <a href="bio/">AP&reg; Biology</a>, <a href="chem/">AP&reg; Chemistry</a>.</p></noscript>
+      <noscript><p class="ss-none">Search runs in your browser and needs JavaScript. Each course&rsquo;s notes and glossary work without it: <a href="nremt/">NREMT</a>, <a href="ochem/">Organic Chemistry</a>, <a href="anatomy-physiology/">Anatomy &amp; Physiology</a>, <a href="bio/">AP&reg; Biology</a>, <a href="chem/">AP&reg; Chemistry</a>, <a href="physics/">AP&reg; Physics 1</a>.</p></noscript>
     </div>
   </div>
 </div>

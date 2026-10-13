@@ -1,0 +1,66 @@
+<p>The same motion can be told in five ways: a motion diagram, a position-time graph, a velocity-time graph, an acceleration-time graph and equations, plus plain words. The exam rewards students who can move between them, and it has a whole free-response question, Translation Between Representations, built on that skill. This page shows how the representations connect and gives you the three equations for motion with a constant acceleration.</p>
+
+<h2>Motion diagrams</h2>
+<p>Imagine photographing a cart at equal time intervals and stacking the photos into one picture. That is a <b>motion diagram</b>: dots (or images) for the positions, often with velocity arrows. You read it by the spacing.</p>
+<ul>
+<li>Equal gaps: the cart covers the same distance in each interval, so its velocity is constant.</li>
+<li>Growing gaps: it is speeding up. The acceleration points the same way as the motion.</li>
+<li>Shrinking gaps: it is slowing down. The acceleration points opposite to the motion.</li>
+</ul>
+
+<h2>Position-time graphs</h2>
+<p>A <b>position-time graph</b> (x-t graph) plots where the object is at each moment. Its height is the position; its <b>slope is the velocity</b>, because slope = Δx/Δt.</p>
+<ul>
+<li>A straight line: constant velocity. Steeper means faster; a downward slope means a negative velocity; a horizontal line means the object is at rest.</li>
+<li>A curve: the velocity is changing. The slope at one instant is the slope of the tangent line there. A curve that gets steeper (bending upward, for positive v) means speeding up.</li>
+</ul>
+<p>Two lines crossing on an x-t graph means two objects at the same position at the same time, not the same velocity. Compare slopes for velocity.</p>
+
+<h2>Velocity-time graphs</h2>
+<p>A <b>velocity-time graph</b> (v-t graph) carries the most information. Its <b>slope is the acceleration</b> (Δv/Δt), and the <b>area between the graph and the time axis is the displacement</b>, since (m/s) × s = m. Area below the axis counts as negative displacement.</p>
+<figure id="fig-stack" data-fig="motion-graphs-stack"><figcaption>A cart that speeds up, coasts and slows down, in four representations. Shaded regions are areas that the side boxes name.</figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> A bus speeds up from rest to 10. m/s in 5.0 s, cruises at 10. m/s for 8.0 s, then brakes to a stop in 5.0 s, each part with constant acceleration. Find the acceleration in the first part and the total displacement.</p>
+<p>Acceleration = slope of v-t = (10. m/s − 0) ÷ 5.0 s = 2.0 m/s².</p>
+<p>Displacement = area under v-t: triangle ½(5.0 s)(10. m/s) = 25 m; rectangle (8.0 s)(10. m/s) = 80. m; triangle ½(5.0 s)(10. m/s) = 25 m. Total = 130 m (1.3 × 10² m to two figures).</p>
+</div>
+
+<h2>Acceleration-time graphs</h2>
+<p>An <b>acceleration-time graph</b> (a-t graph) shows the acceleration at each moment. The <b>area under it is the change in velocity</b>, because (m/s²) × s = m/s. It tells you how much the velocity changed, not what the velocity is: add the starting velocity.</p>
+<p>The four rules fit in one sentence: <b>slopes go down the chain, areas go up</b>.</p>
+<table class="compare"><thead><tr><th scope="col">Graph</th><th scope="col">Its slope is</th><th scope="col">The area under it is</th></tr></thead>
+<tbody><tr><td>x-t</td><td>velocity</td><td>(not used)</td></tr>
+<tr><td>v-t</td><td>acceleration</td><td>displacement</td></tr>
+<tr><td>a-t</td><td>(not used)</td><td>change in velocity</td></tr></tbody></table>
+
+<h2>Constant acceleration: three equations</h2>
+<p>When the acceleration does not change, the v-t graph is a straight line and three equations describe the motion. They are on the exam's equations sheet, written for the x direction:</p>
+<table class="compare"><thead><tr><th scope="col">Equation</th><th scope="col">Leaves out</th><th scope="col">Use it when</th></tr></thead>
+<tbody><tr><td>v = v₀ + at</td><td>displacement</td><td>no distance is given or asked</td></tr>
+<tr><td>x = x₀ + v₀t + ½at²</td><td>final velocity</td><td>the final velocity is not given or asked</td></tr>
+<tr><td>v² = v₀² + 2a(x − x₀)</td><td>time</td><td>no time is given or asked</td></tr></tbody></table>
+<p>Where they come from: the first is a = Δv/Δt rearranged. The second is the area under a straight v-t line: a rectangle v₀t plus a triangle ½(at)t. The third comes from eliminating t between the first two.</p>
+<p>The method is always the same. List the five quantities (x − x₀, v₀, v, a, t). Mark which you know and which you want. Choose the equation that contains those and leaves out the one you neither know nor want. Choose a positive direction and give every vector its sign.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A car at 18 m/s brakes with a constant acceleration of −4.5 m/s² (forward positive). How far does it travel while stopping?</p>
+<p>Known: v₀ = +18 m/s, v = 0, a = −4.5 m/s². Wanted: Δx. Not known and not wanted: t. So use v² = v₀² + 2aΔx.</p>
+<p>0 = (18 m/s)² + 2(−4.5 m/s²)Δx → Δx = 324 m²/s² ÷ 9.0 m/s² = 36 m.</p>
+<p>Functional dependence: Δx = v₀²/(2|a|), so twice the speed needs 4 times the braking distance.</p>
+</div>
+
+<h2>Free fall</h2>
+<figure id="fig-ff" data-fig="free-fall-strobe"><figcaption>A dropped ball in free fall: the gaps grow, the velocity arrows grow by the same amount each interval, and the acceleration arrow stays the same.</figcaption></figure>
+<p>An object moving under gravity alone, with air resistance negligible, is in <b>free fall</b>. Near Earth every object in free fall has the same constant acceleration, <b>g = 9.8 m/s² downward</b>, whatever its mass. The course often rounds it to 10 m/s², and the exam accepts either; this course uses 9.8 in worked examples and always says which value an item wants.</p>
+<p>Free fall includes a ball thrown upward. On the way up it slows by 9.8 m/s each second; at the top its velocity is zero for an instant; on the way down it speeds up by 9.8 m/s each second. The acceleration is 9.8 m/s² downward the whole time, including at the top. If the velocity were not changing at the top, the ball would stay there.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A ball is thrown straight up at 15 m/s. How high does it rise? Use g = 9.8 m/s² and take up as positive.</p>
+<p>At the top v = 0. Known: v₀ = +15 m/s, a = −9.8 m/s². No time, so v² = v₀² + 2aΔy.</p>
+<p>0 = (15 m/s)² + 2(−9.8 m/s²)Δy → Δy = 225 ÷ 19.6 = 11 m.</p>
+<p>Time to the top: v = v₀ + at → 0 = 15 − 9.8t → t = 1.5 s.</p>
+</div>
+
+<h2>When the acceleration changes</h2>
+<p>A sprinter leaving the blocks accelerates hard at first, then less, until she runs at a steady top speed. Her v-t graph curves, rising steeply and then flattening. This is <b>nonuniform acceleration</b>. In this course you describe it from the graph and in words (the slope of the v-t graph, so the acceleration, shrinks to zero), but you do not calculate it, and the three equations do not apply.</p>
+
+<h2>Translating between representations</h2>
+<p>A good check is to tell the same story in two representations and compare a specific feature. For a cart that slows down while moving forward: the motion diagram has shrinking gaps; the x-t graph rises with a decreasing slope; the v-t graph is above the axis and slopes down; the a-t graph is below the axis. If one representation disagrees with another, one of them is wrong.</p>

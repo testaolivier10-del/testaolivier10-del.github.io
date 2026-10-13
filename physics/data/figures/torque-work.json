@@ -1,0 +1,12 @@
+{
+ "torque-angle-work": {
+  "file": "figures/torque-angle-work.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 410,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Left: a hand pushes up on the handle of a crank wheel, turning it counterclockwise through an angle Δθ; for a constant torque, the work is W = τΔθ, with the angle in radians and work in joules. Right: a graph of torque in N·m against angle in radians. The torque is 4.0 N·m from 0 to 10 rad, then falls in a straight line to zero at 20 rad and stays zero. The shaded area under the line is the work: a rectangle of 4.0 × 10 = 40 J plus a triangle of ½ × 4.0 × 10 = 20 J, 60 J in all."
+ }
+}

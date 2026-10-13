@@ -1,0 +1,83 @@
+{
+ "topic": "friction",
+ "hook": "Push a heavy couch and at first nothing happens; push harder and it suddenly lurches forward, then slides with less effort than it took to start. Friction is not one fixed force: it adjusts while things grip and changes its rules once they slide. Telling those two cases apart is a classic place to lose points.",
+ "prereq": [
+  {
+   "q": "On a level floor with no other vertical forces, the normal force on a box of mass m is",
+   "options": [
+    "mg",
+    "zero",
+    "less than mg",
+    "greater than mg"
+   ],
+   "correct": 0,
+   "why": "Up and down balance, so F_N = mg. On a ramp or with a tilted pull, it is different.",
+   "review": "forces-fbd"
+  },
+  {
+   "q": "A box slides at constant velocity. The net force on it is",
+   "options": [
+    "zero",
+    "in the direction of motion",
+    "opposite the motion",
+    "equal to its weight"
+   ],
+   "correct": 0,
+   "why": "Constant velocity means translational equilibrium.",
+   "review": "first-law"
+  },
+  {
+   "q": "On a ramp tilted at θ, the part of a vector pointing along the ramp from a vertical force F is",
+   "options": [
+    "F sin θ",
+    "F cos θ",
+    "F tan θ",
+    "F"
+   ],
+   "correct": 0,
+   "why": "The angle between the vertical and the ramp's perpendicular is θ, so the along-ramp part is F sin θ.",
+   "review": "math-trig-components"
+  }
+ ],
+ "figure": {
+  "figure": "friction-static-kinetic",
+  "caption": "Static friction matches the push up to its maximum; once the crate slides, kinetic friction is constant and smaller."
+ },
+ "chain": [
+  {
+   "cause": "Two surfaces press together with a normal force F_N",
+   "effect": "they can exert friction on each other along the surface"
+  },
+  {
+   "cause": "The surfaces do not slide but something tries to slide them",
+   "effect": "static friction takes whatever value prevents slipping, up to μ_s F_N"
+  },
+  {
+   "cause": "The needed friction would exceed μ_s F_N",
+   "effect": "the surfaces slip and friction drops to kinetic friction, μ_k F_N, opposing the sliding"
+  },
+  {
+   "cause": "The normal force changes (a ramp, a tilted pull, a load)",
+   "effect": "both the maximum static friction and the kinetic friction change in proportion"
+  }
+ ],
+ "ideas": [
+  "<b>Kinetic friction</b> (sliding): f<sub>k</sub> = μ<sub>k</sub>F<sub>N</sub>, opposing the sliding of the surfaces; independent of contact area and speed.",
+  "<b>Static friction</b> (gripping): f<sub>s</sub> ≤ μ<sub>s</sub>F<sub>N</sub>. It equals whatever prevents slipping; it reaches μ<sub>s</sub>F<sub>N</sub> only at the point of slipping.",
+  "Usually μ<sub>s</sub> > μ<sub>k</sub>, so a stuck object lurches once it breaks free.",
+  "Find F<sub>N</sub> from the perpendicular direction first: on a ramp it is mg cos θ, not mg. The equations sheet writes |F<sub>f</sub>| ≤ |μF<sub>N</sub>|."
+ ],
+ "misconception": {
+  "wrong": "Static friction on a resting object is always μ_s F_N.",
+  "right": "Static friction is only as large as it needs to be. A crate pushed with 60 N that does not move has 60 N of friction, even if μ_s F_N is 206 N."
+ },
+ "check": [
+  "phys-friction-1",
+  "phys-friction-2",
+  "phys-friction-3",
+  "phys-friction-4",
+  "phys-friction-11",
+  "phys-friction-14"
+ ],
+ "summary": "Friction acts along a surface. Kinetic friction, while sliding, is μ_k F_N and opposes the sliding; static friction, while gripping, is whatever prevents slipping, up to μ_s F_N. Usually μ_s > μ_k. Find the normal force first, since it is mg cos θ on a ramp and changes with tilted pulls."
+}

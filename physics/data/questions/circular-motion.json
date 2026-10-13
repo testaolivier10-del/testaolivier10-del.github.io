@@ -1,0 +1,487 @@
+{
+ "stimuli": {
+  "circular-motion-s1": {
+   "kind": "diagram",
+   "title": "A puck on a string",
+   "text": "<p>A 0.40 kg puck slides in a horizontal circle of radius 0.50 m on a frictionless table, held by a light string tied to a peg at the center. It makes 2.0 revolutions each second at a constant speed.</p>",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 420 250\" role=\"img\" aria-label=\"Top view: a puck on a frictionless horizontal table moves in a circle at constant speed, held by a string tied to a central peg.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"420\" height=\"250\" fill=\"#FFFFFF\"/><circle cx=\"160\" cy=\"130\" r=\"95\" fill=\"none\" stroke=\"#C9CFCC\" stroke-width=\"2\" stroke-dasharray=\"6 6\"/><circle cx=\"160\" cy=\"130\" r=\"6\" fill=\"#1F2A28\"/><text x=\"150\" y=\"152\" font-size=\"12.5\" fill=\"#5A6268\">peg</text><line x1=\"160\" y1=\"130\" x2=\"243.4\" y2=\"84.5\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"243.4\" cy=\"84.5\" r=\"13\" fill=\"#2E5E7E\" stroke=\"#1F2A28\" stroke-width=\"1.6\"/><polygon points=\"248.3,100.2 283.4,162 278.6,164.7 293.4,172.5 294.3,155.8 289.5,158.6 254.4,96.7\" fill=\"#FFFFFF\" stroke=\"#B07A00\" stroke-width=\"2.2\" stroke-linejoin=\"round\"/><text x=\"301.4\" y=\"176.5\" font-size=\"14\" fill=\"#B07A00\" font-weight=\"bold\" font-style=\"italic\">v</text><text x=\"300\" y=\"40\" font-size=\"12.5\" fill=\"#5A6268\">top view of a</text><text x=\"300\" y=\"56\" font-size=\"12.5\" fill=\"#5A6268\">frictionless table</text></svg>"
+  },
+  "circular-motion-s2": {
+   "kind": "diagram",
+   "title": "A car over a hill",
+   "text": "<p>A 1200 kg car drives over the crest of a rounded hill at a constant speed of 12 m/s. Near the crest the road follows a vertical circle of radius 45 m. Use g = 9.8 m/s².</p>",
+   "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 480 230\" role=\"img\" aria-label=\"A car drives over the top of a rounded hill whose crest is part of a vertical circle.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"480\" height=\"230\" fill=\"#FFFFFF\"/><path d=\"M10,190 Q240,40 470,190 L470,220 L10,220 Z\" fill=\"#CFE3D3\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><rect x=\"212\" y=\"92\" width=\"56\" height=\"22\" rx=\"6\" fill=\"#C0392B\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"225\" cy=\"117\" r=\"7\" fill=\"#1F2A28\"/><circle cx=\"255\" cy=\"117\" r=\"7\" fill=\"#1F2A28\"/><polygon points=\"280,103.5 336,103.5 336,109 350,100 336,91 336,96.5 280,96.5\" fill=\"#FFFFFF\" stroke=\"#B07A00\" stroke-width=\"2.2\" stroke-linejoin=\"round\"/><text x=\"358\" y=\"105\" font-size=\"14\" fill=\"#B07A00\" font-weight=\"bold\" font-style=\"italic\">v</text><text x=\"240\" y=\"175\" font-size=\"13\" fill=\"#1F2A28\" text-anchor=\"middle\">crest: part of a vertical circle</text></svg>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-circular-motion-1",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "circular-motion-s1",
+   "q": "What is the speed of the puck, in m/s?",
+   "numeric": {
+    "answer": 6.3,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 3.1,
+      "why": "Value: the distance once around is the circumference, 2πr, not πr."
+     },
+     {
+      "value": 1.6,
+      "why": "Value: that multiplies by the period. Speed is the circumference divided by the period."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The period is T = 1/f = 1 ÷ 2.0 s⁻¹ = 0.50 s. In one period the puck goes once around: v = 2πr ÷ T = 2π(0.50 m) ÷ 0.50 s = 6.3 m/s."
+   }
+  },
+  {
+   "id": "phys-circular-motion-2",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "circular-motion-s1",
+   "q": "What is the tension in the string, in newtons?",
+   "numeric": {
+    "answer": 32,
+    "tol": 1,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 5,
+      "why": "Value: the speed must be squared: a_c = v²/r."
+     },
+     {
+      "value": 7.9,
+      "why": "Value: divide by the radius; a_c = v²/r."
+     }
+    ]
+   },
+   "why": {
+    "correct": "The string's pull is the only horizontal force, so it supplies the centripetal net force: F_T = mv²/r = (0.40 kg)(6.28 m/s)² ÷ 0.50 m = 32 N (31.6 N)."
+   }
+  },
+  {
+   "id": "phys-circular-motion-3",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "circular-motion-s1",
+   "q": "The string breaks at the moment shown in the diagram. Which path does the puck follow next, seen from above?",
+   "options": [
+    "A straight line along the velocity arrow",
+    "A straight line outward, along the line from the peg",
+    "It keeps moving around the same circle",
+    "A curve that spirals slowly outward"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With the string gone, no horizontal force acts on the puck. By the first law it keeps its velocity at that instant, which is tangent to the circle, and moves in a straight line.",
+    "options": [
+     "Right: zero net force, constant velocity, along the tangent.",
+     "Nothing pushes it outward; there is no outward force. It only looks like it \"flies out\" because the circle curves away from its straight path.",
+     "Going around a circle needs a net force toward the center; without the string there is none.",
+     "Any curved path needs a sideways force; with none, the path is straight."
+    ]
+   }
+  },
+  {
+   "id": "phys-circular-motion-4",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "circular-motion-s1",
+   "q": "The puck is made to go around twice as fast (4.0 revolutions per second) on the same circle. How does the tension change?",
+   "options": [
+    "It becomes 4 times as large",
+    "It becomes 2 times as large",
+    "It stays the same, since the radius is the same",
+    "It becomes half as large"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Doubling the frequency doubles the speed, and the needed net force is mv²/r ∝ v². 2² = 4, so the tension quadruples.",
+    "options": [
+     "Right: F ∝ v², and v doubled.",
+     "The force depends on the square of the speed.",
+     "The radius is the same, but the speed doubled.",
+     "A faster puck needs a larger inward force, not a smaller one."
+    ]
+   }
+  },
+  {
+   "id": "phys-circular-motion-5",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "circular-motion-s1",
+   "q": "Which free-body diagram of the puck, drawn from the side, is correct?",
+   "options": [
+    "F_T toward the peg, F_N up and F_g down",
+    "F_T toward the peg, a centripetal force toward the peg, F_N up and F_g down",
+    "F_T toward the peg, an outward force, F_N up and F_g down",
+    "F_T toward the peg, a forward force along v, F_N up and F_g down"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The puck touches the string and the table, and Earth pulls on it: three forces. The string's pull is the centripetal net force; \"centripetal\" names a role, not an extra force.",
+    "options": [
+     "Right: only real forces with agents.",
+     "This counts the string's pull twice. The centripetal net force IS the tension here; it is not a separate arrow.",
+     "There is no outward force with an agent; the puck tends to go straight, which is not a force.",
+     "Nothing pushes the puck forward; at constant speed no force acts along the velocity."
+    ]
+   }
+  },
+  {
+   "id": "phys-circular-motion-6",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "circular-motion-s2",
+   "q": "What is the normal force of the road on the car at the crest, in newtons?",
+   "numeric": {
+    "answer": 7900,
+    "tol": 100,
+    "unit": "N",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 15600,
+      "why": "Value: that adds the centripetal term. At the top of a hill the center is below the car, so the net force points down and F_N is less than mg.",
+      "rel": 0.03
+     },
+     {
+      "value": 11800,
+      "why": "Value: that is the weight. The car is accelerating toward the center (down), so F_N is less than mg.",
+      "rel": 0.03
+     }
+    ]
+   },
+   "why": {
+    "correct": "At the crest the center of the circle is below the car, so the net force must point down: mg − F_N = mv²/r. F_N = m(g − v²/r) = 1200 kg × (9.8 − 144/45) m/s² = 1200 kg × 6.6 m/s² = 7900 N (7920 N)."
+   }
+  },
+  {
+   "id": "phys-circular-motion-7",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "single",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "circular-motion-s2",
+   "q": "How does the car's apparent weight at the crest compare with its weight on level road?",
+   "options": [
+    "It is smaller",
+    "It is larger",
+    "It is the same, since the speed is constant",
+    "It is zero at any speed"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The net force at the crest points down, toward the center, so the road pushes up with less than mg. Riders feel lighter going over a hill.",
+    "options": [
+     "Right: F_N < mg at the top of a hill.",
+     "F_N is larger than mg at the bottom of a dip, where the center is above.",
+     "Constant speed on a curved path is still an acceleration toward the center.",
+     "The road pushes with zero force only at one particular speed, √(gr)."
+    ]
+   }
+  },
+  {
+   "id": "phys-circular-motion-8",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "numeric",
+   "practice": "2.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "circular-motion-s2",
+   "q": "What is the greatest speed at which the car can go over this crest without its tires leaving the road, in m/s?",
+   "numeric": {
+    "answer": 21,
+    "tol": 1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 440,
+      "why": "Value: that is v², in m²/s². Take the square root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At the greatest speed the road pushes with zero force (F_N = 0), so gravity alone supplies the net force: mg = mv²/r, so v = √(gr) = √(9.8 m/s² × 45 m) = 21 m/s."
+   }
+  },
+  {
+   "id": "phys-circular-motion-9",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "single",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "circular-motion-s2",
+   "q": "A student claims a heavier car could go over the crest faster without leaving the road. Is she right?",
+   "options": [
+    "No: the greatest speed is √(gr), which does not depend on the mass",
+    "Yes: a heavier car is pulled down harder, so it stays on the road",
+    "Yes: a heavier car presses on the road harder, so it grips better",
+    "No: a heavier car has to go slower, as it needs more force"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At the limit mg = mv²/r: the mass appears on both sides and cancels. More weight means more downward pull, but the car also needs proportionally more force to turn, so the limit speed is the same.",
+    "options": [
+     "Right: m cancels, leaving v = √(gr).",
+     "The larger pull is matched by the larger force needed to turn a heavier car.",
+     "At the limit the road presses with zero force, whatever the mass.",
+     "The extra force needed is matched by the extra weight; the mass cancels."
+    ]
+   }
+  },
+  {
+   "id": "phys-circular-motion-10",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "single",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "An object moves in a circle at a constant speed. Its acceleration",
+   "options": [
+    "points to the center, with size v²/r",
+    "is zero, since the speed is constant",
+    "points along the velocity",
+    "points away from the center"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The velocity keeps changing direction, so the object accelerates. That centripetal acceleration points to the center with size v²/r.",
+    "options": [
+     "Right: centripetal acceleration.",
+     "Changing direction is a change of velocity, so there is an acceleration.",
+     "An acceleration along the velocity would change the speed.",
+     "The acceleration points inward; no outward acceleration exists in an inertial frame."
+    ]
+   }
+  },
+  {
+   "id": "phys-circular-motion-11",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A car rounds a flat, unbanked curve at a constant speed. Which force supplies the centripetal net force?",
+   "options": [
+    "Static friction from the road on the tires",
+    "Kinetic friction from the road on the tires",
+    "The normal force from the road",
+    "The engine's forward push"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The tires do not slide sideways, so the road's sideways grip is static friction, pointing toward the center of the curve. It is the only horizontal force pointing inward.",
+    "options": [
+     "Right: static friction toward the center.",
+     "Kinetic friction would mean the tires skid sideways.",
+     "On a flat road the normal force is vertical; it balances the weight.",
+     "A forward force along the road cannot turn the car; the turning force must point sideways, toward the center."
+    ]
+   }
+  },
+  {
+   "id": "phys-circular-motion-12",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 3,
+   "q": "On a frictionless banked curve, the normal force alone supplies the centripetal net force. A curve of radius 60.0 m is banked at 30.0°. At what speed can a car round it with no friction needed, in m/s? Use g = 9.8 m/s².",
+   "numeric": {
+    "answer": 18.4,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 17.1,
+      "why": "Value: that uses sin θ. Dividing the two equations gives tan θ = v²/(gr)."
+     },
+     {
+      "value": 339,
+      "why": "Value: that is v². Take the square root."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Vertical: F_N cos θ = mg. Horizontal, toward the center: F_N sin θ = mv²/r. Dividing: tan θ = v²/(gr), so v = √(gr tan θ) = √(9.8 × 60.0 × tan 30.0°) = √339 = 18.4 m/s."
+   }
+  },
+  {
+   "id": "phys-circular-motion-13",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A ride spins riders in a circle of radius 6.0 m once every 4.0 s. What is the size of a rider's centripetal acceleration, in m/s²?",
+   "numeric": {
+    "answer": 15,
+    "tol": 1,
+    "unit": "m/s^2",
+    "sigfigs": 2,
+    "units": [
+     "m/s/s"
+    ],
+    "mistakes": [
+     {
+      "value": 1.6,
+      "why": "Value: the speed must be squared: a_c = v²/r."
+     }
+    ]
+   },
+   "why": {
+    "correct": "v = 2πr/T = 2π(6.0 m) ÷ 4.0 s = 9.42 m/s. a_c = v²/r = (9.42 m/s)² ÷ 6.0 m = 15 m/s² (14.8)."
+   }
+  },
+  {
+   "id": "phys-circular-motion-14",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "numeric",
+   "practice": "2.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A space station orbits Earth in a circle of radius 6.80 × 10⁶ m. Earth's mass is 5.97 × 10²⁴ kg. What is the station's orbital speed, in m/s? Use G = 6.67 × 10⁻¹¹ N·m²/kg².",
+   "numeric": {
+    "answer": 7650,
+    "tol": 10,
+    "unit": "m/s",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 58600000,
+      "why": "Value: that is v². Take the square root."
+     },
+     {
+      "value": 2.93,
+      "why": "Value: one r cancels between GMm/r² and mv²/r, leaving v² = GM/r."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Gravity supplies the centripetal net force: GMm/r² = mv²/r, so v = √(GM/r) = √[(6.67 × 10⁻¹¹)(5.97 × 10²⁴) ÷ (6.80 × 10⁶)] = 7.65 × 10³ m/s. The station's own mass cancels."
+   }
+  },
+  {
+   "id": "phys-circular-motion-15",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "single",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Two moons orbit the same planet in circular orbits. Moon B's orbit radius is 4 times moon A's. How do their periods compare?",
+   "options": [
+    "B's period is 8 times A's",
+    "B's period is 4 times A's",
+    "B's period is 16 times A's",
+    "B's period is 2 times A's"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Kepler's third law for circular orbits, from GMm/r² = m(2πr/T)²/r: T² = (4π²/GM)r³, so T ∝ r^(3/2). 4^(3/2) = 8.",
+    "options": [
+     "Right: T² ∝ r³, so T ∝ r^1.5.",
+     "That assumes T ∝ r; the period grows faster than the radius.",
+     "That is the factor for T², not T.",
+     "That would be T ∝ √r; the exponent is 3/2."
+    ]
+   }
+  },
+  {
+   "id": "phys-circular-motion-16",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "single",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "At the top of a vertical loop, a roller-coaster car moves along the inside of the track. Which forces act on it there?",
+   "options": [
+    "Gravity down and the track's normal force down",
+    "Gravity down and the track's normal force up",
+    "Gravity down, the normal force down and a centripetal force down",
+    "The normal force up and a centripetal force down"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At the top, the car is upside down against the track, so the track pushes it down, toward the center. Gravity also points down. Together they make the centripetal net force: F_g + F_N = mv²/r.",
+    "options": [
+     "Right: both real forces point toward the center at the top.",
+     "The track is above the car at the top, so it pushes the car down, not up.",
+     "There is no separate centripetal force; it is the sum of gravity and the normal force.",
+     "The normal force points down at the top, and there is no separate centripetal force."
+    ]
+   }
+  },
+  {
+   "id": "phys-circular-motion-17",
+   "unit": "unit-2",
+   "topic": "circular-motion",
+   "type": "single",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A car speeds up while going around a circular track. Which describes its acceleration?",
+   "options": [
+    "It has parts toward the center and along v",
+    "It points exactly toward the center",
+    "It points exactly along the velocity",
+    "It is zero, since the car stays on the circle"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Turning gives a centripetal part, v²/r, toward the center. Speeding up gives a tangential part along the velocity. The total acceleration is their vector sum, tilted forward of the center.",
+    "options": [
+     "Right: centripetal plus tangential.",
+     "Pointing exactly at the center would keep the speed constant.",
+     "Along the velocity alone would not turn the car.",
+     "Both turning and speeding up are accelerations."
+    ]
+   }
+  }
+ ]
+}

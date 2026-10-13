@@ -128,6 +128,15 @@
       { min: 20, title: 'Buffer Master' },
       { min: 30, title: 'Chemistry Legend' },
     ],
+    apphys: [
+      { min: 1,  title: 'Point Particle' },
+      { min: 3,  title: 'Vector Tracer' },
+      { min: 6,  title: 'Force Balancer' },
+      { min: 10, title: 'Energy Keeper' },
+      { min: 15, title: 'Momentum Master' },
+      { min: 20, title: 'Torque Turner' },
+      { min: 30, title: 'Physics Legend' },
+    ],
   };
 
   // Each course names its ranks differently, so a rank shown on its own says
@@ -139,6 +148,7 @@
     { key: 'anp', rankLabel: 'A&P rank' },
     { key: 'apbio', rankLabel: 'Biology rank' },
     { key: 'apchem', rankLabel: 'Chemistry rank' },
+    { key: 'apphys', rankLabel: 'Physics rank' },
   ];
   // courses:end
   var COURSE_RANK_LABEL = { hub: 'LevlPrep rank' };

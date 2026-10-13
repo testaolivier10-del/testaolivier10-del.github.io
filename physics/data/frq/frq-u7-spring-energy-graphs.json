@@ -1,0 +1,154 @@
+{
+ "id": "frq-u7-spring-energy-graphs",
+ "type": "tbr",
+ "points": 12,
+ "title": "Energy of a block on a spring",
+ "units": [
+  "unit-7"
+ ],
+ "topics": [
+  "shm-energy",
+  "shm-representations"
+ ],
+ "practices": [
+  "1.A",
+  "1.C",
+  "2.A",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "diagram",
+  "title": "A block on a horizontal spring",
+  "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 600 180\" role=\"img\" aria-label=\"A block of mass M on a level frictionless surface is attached to a horizontal spring fixed to a wall. Dashed lines mark the positions x = −A, x = 0 (equilibrium), x = +A/2 and x = +A.\" font-family=\"Arial, Helvetica, sans-serif\" style=\"max-width:100%;height:auto\"><rect width=\"600\" height=\"180\" fill=\"#FFFFFF\"/><rect x=\"38\" y=\"40\" width=\"12\" height=\"90\" fill=\"#EEF1EF\"/><line x1=\"50\" y1=\"40\" x2=\"50\" y2=\"130\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"50\" y1=\"44\" x2=\"40\" y2=\"52\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"50\" y1=\"54\" x2=\"40\" y2=\"62\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"50\" y1=\"64\" x2=\"40\" y2=\"72\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"50\" y1=\"74\" x2=\"40\" y2=\"82\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"50\" y1=\"84\" x2=\"40\" y2=\"92\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"50\" y1=\"94\" x2=\"40\" y2=\"102\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"50\" y1=\"104\" x2=\"40\" y2=\"112\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"50\" y1=\"114\" x2=\"40\" y2=\"122\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"50\" y1=\"124\" x2=\"40\" y2=\"132\" stroke=\"#5A6268\" stroke-width=\"1\"/><rect x=\"50\" y=\"130\" width=\"510\" height=\"10\" fill=\"#EEF1EF\"/><line x1=\"50\" y1=\"130\" x2=\"560\" y2=\"130\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><line x1=\"54\" y1=\"130\" x2=\"46\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"66\" y1=\"130\" x2=\"58\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"78\" y1=\"130\" x2=\"70\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"90\" y1=\"130\" x2=\"82\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"102\" y1=\"130\" x2=\"94\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"114\" y1=\"130\" x2=\"106\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"126\" y1=\"130\" x2=\"118\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"138\" y1=\"130\" x2=\"130\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"150\" y1=\"130\" x2=\"142\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"162\" y1=\"130\" x2=\"154\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"174\" y1=\"130\" x2=\"166\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"186\" y1=\"130\" x2=\"178\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"198\" y1=\"130\" x2=\"190\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"210\" y1=\"130\" x2=\"202\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"222\" y1=\"130\" x2=\"214\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"234\" y1=\"130\" x2=\"226\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"246\" y1=\"130\" x2=\"238\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"258\" y1=\"130\" x2=\"250\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"270\" y1=\"130\" x2=\"262\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"282\" y1=\"130\" x2=\"274\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"294\" y1=\"130\" x2=\"286\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"306\" y1=\"130\" x2=\"298\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"318\" y1=\"130\" x2=\"310\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"330\" y1=\"130\" x2=\"322\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"342\" y1=\"130\" x2=\"334\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"354\" y1=\"130\" x2=\"346\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"366\" y1=\"130\" x2=\"358\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"378\" y1=\"130\" x2=\"370\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"390\" y1=\"130\" x2=\"382\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"402\" y1=\"130\" x2=\"394\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"414\" y1=\"130\" x2=\"406\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"426\" y1=\"130\" x2=\"418\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"438\" y1=\"130\" x2=\"430\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"450\" y1=\"130\" x2=\"442\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"462\" y1=\"130\" x2=\"454\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"474\" y1=\"130\" x2=\"466\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"486\" y1=\"130\" x2=\"478\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"498\" y1=\"130\" x2=\"490\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"510\" y1=\"130\" x2=\"502\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"522\" y1=\"130\" x2=\"514\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"534\" y1=\"130\" x2=\"526\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"546\" y1=\"130\" x2=\"538\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><line x1=\"558\" y1=\"130\" x2=\"550\" y2=\"139\" stroke=\"#5A6268\" stroke-width=\"1\"/><polyline points=\"50,98 60,98 65.5,90 76.5,106 87.5,90 98.5,106 109.5,90 120.5,106 131.5,90 142.5,106 153.5,90 164.5,106 175.5,90 186.5,106 197.5,90 208.5,106 219.5,90 230.5,106 241.5,90 252.5,106 263.5,90 274.5,106 280,98 290,98\" fill=\"none\" stroke=\"#CC79A7\" stroke-width=\"2.2\" stroke-linejoin=\"round\"/><rect x=\"290\" y=\"82\" width=\"70\" height=\"34\" rx=\"5\" fill=\"#E6E0D2\" stroke=\"#1F2A28\" stroke-width=\"2\"/><circle cx=\"305\" cy=\"123\" r=\"7\" fill=\"#5A6268\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><circle cx=\"345\" cy=\"123\" r=\"7\" fill=\"#5A6268\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"325\" y=\"104\" font-size=\"14\" fill=\"#1F2A28\" text-anchor=\"middle\" font-weight=\"bold\">M</text><line x1=\"205\" y1=\"30\" x2=\"205\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1.3\" stroke-dasharray=\"6 5\"/><text x=\"205\" y=\"168\" font-size=\"12.5\" fill=\"#1F2A28\" text-anchor=\"middle\">x = −A</text><line x1=\"325\" y1=\"30\" x2=\"325\" y2=\"150\" stroke=\"#734200\" stroke-width=\"1.3\" stroke-dasharray=\"6 5\"/><text x=\"325\" y=\"168\" font-size=\"12.5\" fill=\"#734200\" text-anchor=\"middle\">x = 0</text><line x1=\"385\" y1=\"30\" x2=\"385\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1.3\" stroke-dasharray=\"6 5\"/><text x=\"385\" y=\"168\" font-size=\"12.5\" fill=\"#1F2A28\" text-anchor=\"middle\">x = +A/2</text><line x1=\"445\" y1=\"30\" x2=\"445\" y2=\"150\" stroke=\"#5A6268\" stroke-width=\"1.3\" stroke-dasharray=\"6 5\"/><text x=\"445\" y=\"168\" font-size=\"12.5\" fill=\"#1F2A28\" text-anchor=\"middle\">x = +A</text></svg><p>A block of mass M is attached to a spring of spring constant k on a level, frictionless surface. The block is pulled to x = +A and released from rest at time t = 0. It then oscillates in simple harmonic motion about x = 0. The system is the block and the spring.</p>"
+ },
+ "drawSpec": {
+  "kind": "bars",
+  "label": "Three energy bar charts, one each at x = +A, x = +A/2 and x = 0, with bars for K and U_s",
+  "bars": [
+   "K",
+   "U_s"
+  ]
+ },
+ "graphSpec": {
+  "type": "line",
+  "x": {
+   "label": "Position x",
+   "unit": "m"
+  },
+  "y": {
+   "label": "Energy",
+   "unit": "J"
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 3,
+   "space": "draw",
+   "prompt": "On the bar charts, <b>draw</b> shaded bars to show the kinetic energy K of the block and the elastic potential energy U<sub>s</sub> of the system when the block is at x = +A, at x = +A/2 and at x = 0. Use the same scale for all three charts. A zero line is drawn for each.",
+   "rubric": [
+    {
+     "point": "At x = +A: K bar is zero and U_s bar has the full height; at x = 0: U_s is zero and K has the full height",
+     "accept": [
+      "endpoints correct"
+     ]
+    },
+    {
+     "point": "At x = +A/2: the U_s bar is one quarter of the total and the K bar three quarters",
+     "accept": [
+      "U_s : K = 1 : 3"
+     ]
+    },
+    {
+     "point": "The total height (K + U_s) is the same in all three charts",
+     "accept": [
+      "equal sums"
+     ]
+    }
+   ],
+   "sample": "At x = +A: K = 0; U_s is 4 units. At x = +A/2: U_s is 1 unit and K is 3 units. At x = 0: U_s = 0; K is 4 units. Each chart adds to the same 4 units."
+  },
+  {
+   "label": "b",
+   "points": 3,
+   "space": "lines",
+   "prompt": "<b>Derive</b> an expression for the speed of the block when it is at x = +A/2. Express your answer in terms of M, k, A and physical constants, as appropriate. Your equation should be consistent with your bar chart for x = +A/2.",
+   "rubric": [
+    {
+     "point": "Starts from conservation of mechanical energy for the block-spring system, stating the condition (no friction, so no nonconservative work)",
+     "accept": [
+      "E at +A = E at +A/2"
+     ]
+    },
+    {
+     "point": "Writes the energy at each position with the right terms: ½kA² = ½k(A/2)² + ½Mv²",
+     "accept": [
+      "a term for each nonzero bar, and no K at x = +A"
+     ]
+    },
+    {
+     "point": "Correct result v = (√3/2)A√(k/M)",
+     "accept": [
+      "v = A√(3k/4M)",
+      "v = √(3kA²/4M)"
+     ]
+    }
+   ],
+   "sample": "The surface is frictionless, so no nonconservative force does work, and the mechanical energy of the block-spring system is constant. At x = +A the block is at rest: E = ½kA². At x = +A/2: E = ½k(A/2)² + ½Mv². So ½kA² = ⅛kA² + ½Mv², which gives ½Mv² = ⅜kA² and v = A√(3k/(4M)) = (√3/2)A√(k/M)."
+  },
+  {
+   "label": "c",
+   "points": 3,
+   "space": "graph",
+   "prompt": "On the axes, <b>sketch</b> and label graphs of the kinetic energy K, the potential energy U<sub>s</sub> and the total mechanical energy E of the system as functions of the block's position x, from x = −A to x = +A.",
+   "rubric": [
+    {
+     "point": "U_s is a parabola (concave up) that is zero at x = 0 and greatest at x = ±A",
+     "accept": [
+      "symmetric curve, not V-shaped or straight lines"
+     ]
+    },
+    {
+     "point": "K is an upside-down parabola that is greatest at x = 0 and zero at x = ±A",
+     "accept": [
+      "K = E − U_s at every x"
+     ]
+    },
+    {
+     "point": "E is a horizontal line equal to the peak of K and of U_s",
+     "accept": [
+      "total flat, not sloped or curved"
+     ]
+    }
+   ],
+   "sample": "U_s: a U-shaped parabola, zero at x = 0, reaching the total at x = ±A. K: an upside-down parabola, at the total at x = 0 and zero at x = ±A. E: a flat horizontal line at the height where K peaks and where U_s ends. The K and U_s curves cross at x = ±A/√2, where each is half the total."
+  },
+  {
+   "label": "d",
+   "points": 3,
+   "space": "lines",
+   "prompt": "<b>Explain</b> how your bar charts in part (a), your equation in part (b) and your graph in part (c) are consistent with each other.",
+   "rubric": [
+    {
+     "point": "Links a specific feature of the bar charts to the equation: the U_s bar at +A/2 (one quarter of the total) matches the ⅛kA² term out of ½kA²",
+     "accept": [
+      "the equation has one term for each nonzero bar"
+     ]
+    },
+    {
+     "point": "Links the graph to the bar charts: at x = +A/2 the U_s curve is at one quarter of the flat total line and K at three quarters; at x = 0 and x = +A the curves match the endpoint bars",
+     "accept": [
+      "reading the graph at the three positions gives the bar heights"
+     ]
+    },
+    {
+     "point": "Links the constant total in all three: equal bar sums, the energy equation with the same E on both sides, and the horizontal E line",
+     "accept": [
+      "all three show E constant because there is no friction"
+     ]
+    }
+   ],
+   "sample": "All three show a constant total: the bars add to the same height, the equation sets ½kA² equal at both positions, and the E line on the graph is flat. At x = +A/2 the U_s bar is a quarter of the total, which is the ⅛kA² term out of ½kA² in my equation, and it is the height of the U_s parabola at x = A/2 (U_s ∝ x²). The K bar (three quarters) is the ½Mv² = ⅜kA² term and the height of the K curve there. At x = +A and x = 0 the curves are at zero and at the total, matching the end bar charts."
+  }
+ ]
+}

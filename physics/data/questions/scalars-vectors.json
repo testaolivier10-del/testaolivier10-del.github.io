@@ -1,0 +1,484 @@
+{
+ "stimuli": {
+  "scalars-vectors-s1": {
+   "kind": "diagram",
+   "title": "A walk along a hallway",
+   "text": "<p>Tape marks every meter along a straight hallway, with positive to the right. Mia starts at x = +2 m, walks to the 7 m mark (leg 1), turns around and walks to the 0 m mark (leg 2). The walk takes 20 s in all.</p>",
+   "html": "<svg role=\"img\" aria-label=\"Mia on a hallway number line from −1 m to 7 m: she starts at +2 m, walks right to +7 m, then walks left and ends at 0 m\" viewBox=\"0 0 640 180\" width=\"100%\" style=\"max-width:640px;height:auto\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Arial,Helvetica,sans-serif\"><rect width=\"640\" height=\"180\" fill=\"#ffffff\"/><rect x=\"20\" y=\"108\" width=\"600\" height=\"8\" fill=\"#D8D2C4\"/><line x1=\"50\" y1=\"140\" x2=\"574\" y2=\"140\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><polygon points=\"582,140 572,135 572,145\" fill=\"#1F2A28\"/><text x=\"586\" y=\"144\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"start\" font-weight=\"normal\"><tspan font-style=\"italic\">x</tspan> (m)</text><line x1=\"60.0\" y1=\"134\" x2=\"60.0\" y2=\"146\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"60.0\" y=\"161\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"normal\">−1</text><line x1=\"122.5\" y1=\"134\" x2=\"122.5\" y2=\"146\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"122.5\" y=\"161\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"normal\">0</text><line x1=\"185.0\" y1=\"134\" x2=\"185.0\" y2=\"146\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"185.0\" y=\"161\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"normal\">1</text><line x1=\"247.5\" y1=\"134\" x2=\"247.5\" y2=\"146\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"247.5\" y=\"161\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"normal\">2</text><line x1=\"310.0\" y1=\"134\" x2=\"310.0\" y2=\"146\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"310.0\" y=\"161\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"normal\">3</text><line x1=\"372.5\" y1=\"134\" x2=\"372.5\" y2=\"146\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"372.5\" y=\"161\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"normal\">4</text><line x1=\"435.0\" y1=\"134\" x2=\"435.0\" y2=\"146\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"435.0\" y=\"161\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"normal\">5</text><line x1=\"497.5\" y1=\"134\" x2=\"497.5\" y2=\"146\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"497.5\" y=\"161\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"normal\">6</text><line x1=\"560.0\" y1=\"134\" x2=\"560.0\" y2=\"146\" stroke=\"#1F2A28\" stroke-width=\"1.3\"/><text x=\"560.0\" y=\"161\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"normal\">7</text><g opacity=\"0.35\"><polyline points=\"247.5,83.7 250.2,96.1 250.7,108.0\" fill=\"none\" stroke=\"#3B4A6B\" stroke-width=\"4.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><polyline points=\"247.5,83.7 244.8,96.1 244.3,108.0\" fill=\"none\" stroke=\"#3B4A6B\" stroke-width=\"4.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><polyline points=\"249.1,67.5 252.9,76.7 253.4,84.2\" fill=\"none\" stroke=\"#3B4A6B\" stroke-width=\"4.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><polyline points=\"249.1,67.5 242.1,76.7 241.6,84.2\" fill=\"none\" stroke=\"#3B4A6B\" stroke-width=\"4.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"247.5\" y1=\"83.7\" x2=\"249.1\" y2=\"67.5\" stroke=\"#3B4A6B\" stroke-width=\"6.9\" stroke-linecap=\"round\"/><circle cx=\"250.2\" cy=\"58.7\" r=\"7.0\" fill=\"#3B4A6B\"/></g><text x=\"259.5\" y=\"84\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"start\" font-weight=\"bold\">start</text><line x1=\"261.5\" y1=\"22.0\" x2=\"549.0\" y2=\"22.0\" stroke=\"#734200\" stroke-width=\"2.4\" stroke-dasharray=\"7 4\"/><polygon points=\"560.0,22.0 549.0,16.5 549.0,27.5\" fill=\"#734200\"/><text x=\"568.0\" y=\"27\" fill=\"#734200\" font-size=\"12\" text-anchor=\"start\" font-weight=\"bold\">leg 1</text><line x1=\"560.0\" y1=\"40.0\" x2=\"133.5\" y2=\"40.0\" stroke=\"#734200\" stroke-width=\"2.4\" stroke-dasharray=\"7 4\"/><polygon points=\"122.5,40.0 133.5,45.5 133.5,34.5\" fill=\"#734200\"/><text x=\"114.5\" y=\"45\" fill=\"#734200\" font-size=\"12\" text-anchor=\"end\" font-weight=\"bold\">leg 2</text><polyline points=\"122.5,83.7 125.2,96.1 125.7,108.0\" fill=\"none\" stroke=\"#3B4A6B\" stroke-width=\"4.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><polyline points=\"122.5,83.7 119.8,96.1 119.3,108.0\" fill=\"none\" stroke=\"#3B4A6B\" stroke-width=\"4.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><polyline points=\"120.9,67.5 127.9,76.7 128.4,84.2\" fill=\"none\" stroke=\"#3B4A6B\" stroke-width=\"4.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><polyline points=\"120.9,67.5 117.1,76.7 116.6,84.2\" fill=\"none\" stroke=\"#3B4A6B\" stroke-width=\"4.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"122.5\" y1=\"83.7\" x2=\"120.9\" y2=\"67.5\" stroke=\"#3B4A6B\" stroke-width=\"6.9\" stroke-linecap=\"round\"/><circle cx=\"119.8\" cy=\"58.7\" r=\"7.0\" fill=\"#3B4A6B\"/><text x=\"134.5\" y=\"84\" fill=\"#1F2A28\" font-size=\"12\" text-anchor=\"start\" font-weight=\"bold\">end</text></svg><p>Key: dashed arrows show the path of each leg; the faded figure marks the start.</p>"
+  },
+  "scalars-vectors-s2": {
+   "kind": "table",
+   "title": "A delivery robot in a corridor",
+   "text": "<p>A delivery robot moves along a straight corridor. East is positive. In each leg it moves at a steady speed; between legs it turns around or keeps going. The table lists each leg's displacement and how long it took.</p>",
+   "table": {
+    "caption": "The robot's four legs",
+    "cols": [
+     "Leg",
+     "Displacement (m)",
+     "Time taken (s)"
+    ],
+    "rows": [
+     [
+      "1",
+      "+12.0",
+      "8.0"
+     ],
+     [
+      "2",
+      "−5.5",
+      "5.0"
+     ],
+     [
+      "3",
+      "+9.0",
+      "6.0"
+     ],
+     [
+      "4",
+      "−14.0",
+      "7.0"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-scalars-vectors-1",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "scalars-vectors-s1",
+   "q": "What total distance does Mia walk?",
+   "numeric": {
+    "answer": 12.0,
+    "tol": 1.0,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 2.0,
+      "why": "Value: 2 m is the size of her displacement (start to end). Distance counts every meter walked: 5 m out and 7 m back."
+     },
+     {
+      "value": 5.0,
+      "why": "Value: 5 m is leg 1 alone. Distance adds every leg: 5 m out plus 7 m back."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Distance adds the length of every leg, with no signs: 5.0 m (from 2 m to 7 m) + 7.0 m (from 7 m to 0 m) = 12 m."
+   }
+  },
+  {
+   "id": "phys-scalars-vectors-2",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "scalars-vectors-s1",
+   "q": "What is Mia's displacement for the whole walk? Use a negative number for a displacement to the left.",
+   "numeric": {
+    "answer": -2.0,
+    "tol": 0.1,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 12.0,
+      "why": "Value: 12 m is the distance, the length of her path. Displacement only compares where she ended (0 m) with where she started (+2 m).",
+      "tol": 0.5
+     },
+     {
+      "value": -7.0,
+      "why": "Value: −7 m is only leg 2. Displacement for the whole walk compares the final position with the very first one."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Displacement is the final position minus the starting position: 0 m − (+2 m) = −2.0 m. The minus sign says it points left."
+   }
+  },
+  {
+   "id": "phys-scalars-vectors-3",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "scalars-vectors-s1",
+   "q": "How does the size of Mia's displacement compare with the distance she walks?",
+   "options": [
+    "It is equal, because both describe the same walk",
+    "It is larger, because displacement includes a direction",
+    "It is smaller, because displacement is measured in a different unit",
+    "It is smaller, because she reversed direction partway"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Distance is 12 m; the displacement is −2.0 m, size 2.0 m. Turning around makes the displacement smaller than the distance.",
+    "options": [
+     "They match only for a trip in one direction. Mia turned around, so the two differ.",
+     "A direction does not add size. The size of a displacement can never be more than the path length.",
+     "Both are measured in meters; the difference comes from turning around, not from units.",
+     "Right: the 5 m out and most of the way back cancel in the displacement, but every meter counts toward distance."
+    ]
+   }
+  },
+  {
+   "id": "phys-scalars-vectors-4",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "scalars-vectors-s1",
+   "q": "During leg 2, what is the sign of Mia's velocity?",
+   "options": [
+    "Positive, because she is still at positive positions",
+    "Positive, because speed is a positive number",
+    "Negative, because she moves toward smaller x",
+    "Zero, because she ends up back near the start"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "With right as positive, moving left means the velocity is negative, even while her position is still a positive number.",
+    "options": [
+     "The sign of the velocity depends on the direction of motion, not on whether the position is positive.",
+     "Speed is the size of the velocity and has no sign; the velocity has the sign of the direction.",
+     "Right: her position decreases during leg 2, so her velocity points in the negative direction.",
+     "She is moving the whole time during leg 2; a zero velocity would mean she stands still."
+    ]
+   }
+  },
+  {
+   "id": "phys-scalars-vectors-5",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "scalars-vectors-s1",
+   "q": "After leg 2, Mia walks a third leg so that her displacement for the entire walk becomes zero. Where does she finish?",
+   "options": [
+    "At the 0 m mark",
+    "At the +2 m mark",
+    "At the +7 m mark",
+    "At the −2 m mark"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Zero displacement for the whole walk means she ends where she began, at +2 m (a third leg of +2.0 m).",
+    "options": [
+     "That is where leg 2 ended; staying there leaves a displacement of −2.0 m.",
+     "Right: zero displacement means the final position equals the starting position, +2 m.",
+     "That is where she turned around; it gives a displacement of +5.0 m from the start.",
+     "This walks another 2 m left, doubling the displacement to −4.0 m instead of cancelling it."
+    ]
+   }
+  },
+  {
+   "id": "phys-scalars-vectors-6",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "scalars-vectors-s2",
+   "q": "What total distance does the robot travel in the four legs?",
+   "numeric": {
+    "answer": 40.5,
+    "tol": 0.1,
+    "unit": "m",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 1.5,
+      "why": "Value: 1.5 m is the displacement, where the signs cancel. Distance adds every leg as a positive length."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Distance adds the sizes of all four legs: 12.0 + 5.5 + 9.0 + 14.0 = 40.5 m."
+   }
+  },
+  {
+   "id": "phys-scalars-vectors-7",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "scalars-vectors-s2",
+   "q": "What is the robot's total displacement? Give a signed value (east is positive).",
+   "numeric": {
+    "answer": 1.5,
+    "tol": 0.1,
+    "unit": "m",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 40.5,
+      "why": "Value: 40.5 m is the distance. A displacement adds the legs as vectors, so the westward legs are negative.",
+      "tol": 0.5
+     },
+     {
+      "value": 21.0,
+      "why": "Value: 21 m adds only the eastward legs. The westward legs are negative and must be added too."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Add the displacements with their signs: +12.0 − 5.5 + 9.0 − 14.0 = +1.5 m, so the robot ends 1.5 m east of where it started."
+   }
+  },
+  {
+   "id": "phys-scalars-vectors-8",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "scalars-vectors-s2",
+   "q": "In which leg does the robot have the greatest speed?",
+   "options": [
+    "Leg 1",
+    "Leg 2",
+    "Leg 4",
+    "Leg 3"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Speed is the size of the velocity. Leg speeds: 1.5, 1.1, 1.5 and 2.0 m/s. The negative sign of leg 4 shows direction, not slowness.",
+    "options": [
+     "Leg 1 has the largest displacement east among the first three legs, but 12.0 m in 8.0 s is only 1.5 m/s.",
+     "Leg 2 covers 5.5 m in 5.0 s, 1.1 m/s, the slowest leg.",
+     "Right: 14.0 m in 7.0 s is 2.0 m/s, faster than any other leg; its velocity is −2.0 m/s because it moves west.",
+     "Leg 3 covers 9.0 m in 6.0 s, 1.5 m/s. A large positive value is not the same as the greatest speed."
+    ]
+   }
+  },
+  {
+   "id": "phys-scalars-vectors-9",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "scalars-vectors-s2",
+   "q": "What is the robot's velocity during leg 2? Give a signed value in m/s (east is positive).",
+   "numeric": {
+    "answer": -1.1,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": -0.91,
+      "why": "Value: you divided the time by the displacement. Velocity is displacement divided by time."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Velocity = displacement ÷ time = (−5.5 m) ÷ (5.0 s) = −1.1 m/s: 1.1 m/s toward the west."
+   }
+  },
+  {
+   "id": "phys-scalars-vectors-10",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "scalars-vectors-s2",
+   "q": "The robot makes a fifth leg that takes it back to exactly where it started. What is the displacement of that leg?",
+   "options": [
+    "−1.5 m",
+    "+1.5 m",
+    "−40.5 m",
+    "0 m"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Returning to the start makes the total displacement zero: +1.5 m + (−1.5 m) = 0.",
+    "options": [
+     "Right: the first four legs add to +1.5 m, so a fifth leg of −1.5 m brings the total to zero.",
+     "This doubles the displacement to +3.0 m instead of cancelling it; the return leg points the other way.",
+     "This undoes the distance, not the displacement; the robot is only 1.5 m from its start.",
+     "A leg with zero displacement leaves the robot 1.5 m east of its start."
+    ]
+   }
+  },
+  {
+   "id": "phys-scalars-vectors-11",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which of these quantities is a scalar?",
+   "options": [
+    "The displacement of a runner",
+    "The velocity of a runner",
+    "The position of a runner on a track",
+    "The distance a runner covers"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A scalar has a size only. Distance and speed are scalars; position, displacement and velocity are vectors.",
+    "options": [
+     "Displacement has a direction: it points from the start to the end.",
+     "Velocity is speed with a direction, so it is a vector.",
+     "Position is measured from an origin in a chosen direction, so it carries a sign: a vector.",
+     "Right: distance is a size only, with no direction."
+    ]
+   }
+  },
+  {
+   "id": "phys-scalars-vectors-12",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A bus drives 235 m north along a straight street, then 410 m south. Taking north as positive, what is its total displacement?",
+   "numeric": {
+    "answer": -175.0,
+    "tol": 1.0,
+    "unit": "m",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 645.0,
+      "why": "Value: 645 m is the distance driven. For displacement, the southward leg is negative."
+     },
+     {
+      "value": 175.0,
+      "why": "Value: the size is right, but the bus ends south of its start, so with north positive the displacement is −175 m."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Add the displacements with signs: +235 m + (−410 m) = −175 m, that is, 175 m south of the start."
+   }
+  },
+  {
+   "id": "phys-scalars-vectors-13",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Two cyclists ride along the same straight road at 6.0 m/s, one heading east and one heading west. Which statement is correct?",
+   "options": [
+    "They have equal speeds and equal velocities",
+    "They have equal speeds but different velocities",
+    "They have different speeds but equal velocities",
+    "They have different speeds and different velocities"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Velocity is a vector: +6.0 m/s and −6.0 m/s (east positive) are different velocities with the same speed, 6.0 m/s.",
+    "options": [
+     "Velocity includes direction; opposite directions mean different velocities.",
+     "Right: speed has no direction, so it matches; velocity includes direction, so it differs.",
+     "Both cover 6.0 m each second, so their speeds are equal, and their velocities point opposite ways.",
+     "Their speeds match: both are 6.0 m/s. Only the directions differ."
+    ]
+   }
+  },
+  {
+   "id": "phys-scalars-vectors-14",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statement about a trip along a straight road is correct?",
+   "options": [
+    "The size of the displacement is at most equal to the distance",
+    "The distance is at most equal to the size of the displacement",
+    "The distance and the size of the displacement are equal for a trip that ends where it started",
+    "The size of the displacement grows each time the traveler turns around"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Distance counts every meter of the path; displacement compares the ends. They are equal only for a trip in one direction.",
+    "options": [
+     "Right: the straight-line change in position is the shortest way between the ends, so it cannot exceed the path length.",
+     "This reverses the rule; turning around adds distance without adding displacement.",
+     "A round trip has zero displacement but a nonzero distance.",
+     "Turning around brings the traveler back toward the start, which can shrink the displacement."
+    ]
+   }
+  },
+  {
+   "id": "phys-scalars-vectors-15",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A ball sits at x = −3.0 m on a number line where east is positive. A student redraws the axis with the same origin but west as positive. What is the ball's position now?",
+   "options": [
+    "−3.0 m",
+    "0 m",
+    "+6.0 m",
+    "+3.0 m"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The ball is 3.0 m west of the origin either way. With west positive, that is written +3.0 m. Positions depend on the coordinate system you choose.",
+    "options": [
+     "The sign of a position depends on which direction is chosen as positive; flipping the axis flips the sign.",
+     "Only the direction was changed, not the origin, so the ball is still 3.0 m from it.",
+     "Changing the positive direction flips the sign; it does not move the ball 3.0 m farther away.",
+     "Right: the ball has not moved, but with west positive its location 3.0 m west of the origin is written +3.0 m."
+    ]
+   }
+  },
+  {
+   "id": "phys-scalars-vectors-16",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "scalars-vectors",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A runner's velocity is −4.2 m/s, with east positive. What is the runner's speed?",
+   "numeric": {
+    "answer": 4.2,
+    "tol": 0.1,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": -4.2,
+      "why": "Value: speed is the size of the velocity and is never negative. Drop the sign: 4.2 m/s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Speed is the magnitude of the velocity, the size without the sign: 4.2 m/s. The minus sign only tells you the runner is heading west."
+   }
+  }
+ ]
+}

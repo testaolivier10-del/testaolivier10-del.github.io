@@ -1,0 +1,11 @@
+{
+ "rolling-without-slipping": {
+  "def": "Rolling in which the contact point does not slide on the surface, so the center moves forward one circumference per turn: Δx_cm = RΔθ and v_cm = Rω. Static friction may act but does no work."
+ },
+ "total-kinetic-energy": {
+  "def": "The kinetic energy of a rolling object: K = ½Mv_cm² + ½Iω², the translational kinetic energy of its center of mass plus its rotational kinetic energy about the center."
+ },
+ "rolling-with-slipping": {
+  "def": "Rolling in which the contact point slides, so v_cm ≠ Rω. Kinetic friction then acts and dissipates mechanical energy until the motion matches (or the object stops)."
+ }
+}

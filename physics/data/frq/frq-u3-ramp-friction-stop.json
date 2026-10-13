@@ -1,0 +1,104 @@
+{
+ "id": "frq-u3-ramp-friction-stop",
+ "type": "qqt",
+ "points": 8,
+ "title": "How far does it slide?",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "energy-conservation",
+  "work-by-forces"
+ ],
+ "practices": [
+  "3.B",
+  "2.A",
+  "2.D",
+  "3.C"
+ ],
+ "stimulus": {
+  "kind": "setup",
+  "title": "How far does it slide?",
+  "text": "<p>A small block of mass m is released from rest at a height h on a frictionless ramp. At the bottom it slides onto a level rough floor, where the coefficient of kinetic friction between the block and the floor is μ, and it slides a distance d before stopping. A second block, of mass 2m and made of the same material, is released from the same height on the same ramp.</p>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 3,
+   "prompt": "Does the 2m block slide a distance on the floor that is greater than, less than or equal to d? <b>Justify</b> your answer without manipulating equations.",
+   "rubric": [
+    {
+     "point": "Claims the distance is equal to d.",
+     "accept": [
+      "the same distance",
+      "equal"
+     ]
+    },
+    {
+     "point": "States that the heavier block arrives at the bottom with twice the kinetic energy (twice the gravitational potential energy converted; the speed at the bottom is the same).",
+     "accept": [
+      "twice the energy to remove",
+      "same speed at the bottom, twice the mass"
+     ]
+    },
+    {
+     "point": "States that the friction force on the heavier block is also twice as large (the normal force doubles), so it removes energy twice as fast per meter, and the two effects cancel.",
+     "accept": [
+      "twice the friction force",
+      "friction ∝ mass, energy ∝ mass"
+     ]
+    }
+   ],
+   "sample": "Equal. The 2m block starts with twice the gravitational potential energy (with Earth), so it reaches the floor with twice the kinetic energy. But the floor pushes up on it twice as hard, so kinetic friction on it is twice as large and removes twice as much energy per meter. Twice the energy removed at twice the rate takes the same distance."
+  },
+  {
+   "label": "b",
+   "points": 3,
+   "prompt": "Starting with conservation of energy, <b>derive</b> an expression for d in terms of h, μ and physical constants, as appropriate.",
+   "rubric": [
+    {
+     "point": "Starts from conservation of energy for the block-Earth system with friction removing energy (or the work-energy theorem): mgh − μmgd = 0.",
+     "accept": [
+      "U_g at the top = thermal energy on the floor",
+      "mgh = f_k d"
+     ]
+    },
+    {
+     "point": "Uses the friction force f_k = μmg (normal force equals mg on the level floor).",
+     "accept": [
+      "F_N = mg so f = μmg"
+     ]
+    },
+    {
+     "point": "Correct answer d = h/μ.",
+     "accept": [
+      "d = h/μ"
+     ]
+    }
+   ],
+   "sample": "For the block-Earth-floor system, the gravitational potential energy at the top all becomes thermal energy on the floor: mgh = f_k d. On the level floor F_N = mg, so f_k = μmg. Then mgh = μmgd and d = h/μ."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Explain</b> how your expression in part (b) supports your claim in part (a). Then <b>predict</b> how d changes if the release height is doubled.",
+   "rubric": [
+    {
+     "point": "Notes that m cancels, so d does not depend on mass, consistent with the claim that the distances are equal.",
+     "accept": [
+      "no m in d = h/μ",
+      "mass cancels"
+     ]
+    },
+    {
+     "point": "Predicts d doubles when h doubles, because d ∝ h.",
+     "accept": [
+      "twice as far",
+      "d is proportional to h"
+     ]
+    }
+   ],
+   "sample": "In d = h/μ the mass has canceled, so the 2m block slides the same distance, as claimed in (a). Since d ∝ h, doubling the release height doubles the stopping distance."
+  }
+ ]
+}

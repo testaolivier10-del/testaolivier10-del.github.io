@@ -1,0 +1,83 @@
+{
+ "topic": "circular-motion",
+ "hook": "A car takes a curve, a planet circles the Sun, a bucket of water whirls overhead without spilling. Each object moves at a steady speed yet is accelerating, because its direction keeps changing. Something has to pull it toward the center. Finding that something, among the real forces, is the whole skill.",
+ "prereq": [
+  {
+   "q": "An object's speed stays the same but its direction changes. It is",
+   "options": [
+    "accelerating",
+    "in equilibrium",
+    "at constant velocity",
+    "unaffected by any net force"
+   ],
+   "correct": 0,
+   "why": "Any change in velocity, size or direction, is an acceleration.",
+   "review": "motion-quantities"
+  },
+  {
+   "q": "An object with nonzero net force on it",
+   "options": [
+    "accelerates in the direction of the net force",
+    "moves in the direction of the net force",
+    "keeps its velocity",
+    "slows to a stop"
+   ],
+   "correct": 0,
+   "why": "Newton's second law: a = ΣF/m, along ΣF.",
+   "review": "second-law"
+  },
+  {
+   "q": "The gravitational force between two masses is",
+   "options": [
+    "Gm₁m₂/r²",
+    "Gm₁m₂/r",
+    "mg at any distance",
+    "zero in orbit"
+   ],
+   "correct": 0,
+   "why": "Newton's law of universal gravitation.",
+   "review": "gravitational-force"
+  }
+ ],
+ "figure": {
+  "figure": "circular-flat-curve",
+  "caption": "Velocity is tangent, acceleration points to the center, and static friction is the real force that turns the car."
+ },
+ "chain": [
+  {
+   "cause": "An object moves in a circle",
+   "effect": "its velocity direction changes continuously, so it accelerates even at constant speed"
+  },
+  {
+   "cause": "The speed is v and the radius r",
+   "effect": "the centripetal acceleration points to the center with size a_c = v²/r"
+  },
+  {
+   "cause": "Newton's second law applies along the radius",
+   "effect": "the real forces must add to a net force toward the center of size mv²/r"
+  },
+  {
+   "cause": "That net force disappears (the string breaks)",
+   "effect": "the object moves off in a straight line along the tangent"
+  }
+ ],
+ "ideas": [
+  "<b>Uniform circular motion</b>: constant speed v = 2πr/T on a circle; the acceleration a<sub>c</sub> = v²/r points to the center. The <b>period</b> T is the time for one trip; the <b>frequency</b> f = 1/T, in Hz.",
+  "The <b>centripetal net force</b>, ΣF toward the center = mv²/r, is supplied by real forces: tension, friction, normal force, gravity, or their parts. Never draw it as an extra arrow.",
+  "Speeding up or slowing on a circle adds a <b>tangential acceleration</b>; the total is the vector sum.",
+  "<b>Circular orbits</b>: GMm/r² = mv²/r gives v = √(GM/r) and <b>Kepler's third law</b>, T² = (4π²/GM)r³."
+ ],
+ "misconception": {
+  "wrong": "An object moving in a circle has a centripetal force pulling it in and a centrifugal force pushing it out, and both go on the free-body diagram.",
+  "right": "Only real forces go on the diagram. \"Centripetal\" names the job of the net force toward the center; there is no outward force. A released object leaves along the tangent, not outward."
+ },
+ "check": [
+  "phys-circular-motion-1",
+  "phys-circular-motion-2",
+  "phys-circular-motion-3",
+  "phys-circular-motion-5",
+  "phys-circular-motion-6",
+  "phys-circular-motion-11"
+ ],
+ "summary": "Circular motion at constant speed is accelerated motion: a_c = v²/r toward the center, with v = 2πr/T. Real forces (tension, friction, normal force, gravity) must add to a net force mv²/r toward the center; for circular orbits this gives v = √(GM/r) and T² ∝ r³."
+}

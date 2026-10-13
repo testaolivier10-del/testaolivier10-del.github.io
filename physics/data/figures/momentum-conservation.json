@@ -1,0 +1,12 @@
+{
+ "momentum-system-choice": {
+  "file": "figures/momentum-system-choice.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 430,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Cart A hits cart B on a level track; each pushes the other with equal and opposite forces. Top: a dashed boundary around cart A alone; B's push is external, so A's momentum changes. Bottom: a boundary around both carts; the pushes are internal and the total momentum stays constant."
+ }
+}

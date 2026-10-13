@@ -126,12 +126,24 @@ export function counts() {
     }
   }
   const chemNotes = join(ROOT, 'chem', 'assets', 'notes-index.json');
+  // AP® Physics 1: the same, from scripts/build-apphys.mjs (physics/data/published.json).
+  const physBank = join(ROOT, 'physics', 'assets', 'bank');
+  let apphys = 0;
+  if (existsSync(physBank)) {
+    for (const f of readdirSync(physBank)) {
+      if (!f.endsWith('.json') || f.endsWith('-why.json') || f === 'index.json') continue;
+      const d = read(join('physics', 'assets', 'bank', f));
+      apphys += Array.isArray(d.items) ? d.items.length : 0;
+    }
+  }
+  const physNotes = join(ROOT, 'physics', 'assets', 'notes-index.json');
   countsCache = {
     nremt, ochem, anp,
     ochemChapters: modules.length, ochemTopics: topics, ochemMechanisms: mechanisms, ochemTools,
     anpChapters: anpMap.chapters.length, anpTopics: anpMap.topics.length,
     apbio, apbioTopics: existsSync(bioNotes) ? read('bio/assets/notes-index.json').length : 0,
     apchem, apchemTopics: existsSync(chemNotes) ? read('chem/assets/notes-index.json').length : 0,
+    apphys, apphysTopics: existsSync(physNotes) ? read('physics/assets/notes-index.json').length : 0,
   };
   return countsCache;
 }

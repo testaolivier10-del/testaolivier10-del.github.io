@@ -1,0 +1,99 @@
+{
+ "topic": "torque",
+ "hook": "Try to open a heavy door by pushing right next to the hinges: it barely moves. Push the same amount at the handle and it swings. Push straight at the hinges and nothing happens at all. How hard you push is only half the story; where and in which direction you push decide whether anything turns.",
+ "prereq": [
+  {
+   "q": "In a right triangle, the side opposite angle θ equals",
+   "options": [
+    "hypotenuse × sin θ",
+    "hypotenuse × cos θ",
+    "hypotenuse × tan θ",
+    "hypotenuse ÷ sin θ"
+   ],
+   "correct": 0,
+   "why": "sin θ = opposite/hypotenuse.",
+   "review": "math-trig-components"
+  },
+  {
+   "q": "A free-body diagram shows",
+   "options": [
+    "each force on one object, drawn from a dot",
+    "the net force as an extra arrow",
+    "the velocity of the object",
+    "forces the object exerts on others"
+   ],
+   "correct": 0,
+   "why": "An FBD shows only real forces on the object, from a dot.",
+   "review": "forces-fbd"
+  },
+  {
+   "q": "An object turns counterclockwise and slows down. Counterclockwise is positive. The sign of α is",
+   "options": [
+    "negative",
+    "positive",
+    "zero",
+    "undefined"
+   ],
+   "correct": 0,
+   "why": "Slowing means α is opposite to ω.",
+   "review": "rotational-kinematics"
+  }
+ ],
+ "figure": {
+  "figure": "wrench-lever-arm",
+  "caption": "The lever arm is the perpendicular distance from the axis to the force’s line of action: r⊥ = r sin θ, and τ = r⊥F."
+ },
+ "chain": [
+  {
+   "cause": "A force acts on an object that can turn about an axis",
+   "effect": "its line of action may pass the axis at some distance"
+  },
+  {
+   "cause": "The line of action misses the axis by a perpendicular distance r⊥",
+   "effect": "the force has a lever arm r⊥ = r sin θ"
+  },
+  {
+   "cause": "The force has a lever arm",
+   "effect": "it exerts a torque τ = r⊥F that tends to turn the object one way"
+  },
+  {
+   "cause": "Several forces act",
+   "effect": "their torques add with signs (counterclockwise +, clockwise −) to a net torque"
+  },
+  {
+   "cause": "A force’s line of action passes through the axis",
+   "effect": "its lever arm and its torque are zero"
+  }
+ ],
+ "ideas": [
+  "Torque is the turning effect of a force: <b>τ = r⊥F = rF sin θ</b>, in N·m.",
+  "The <b>lever arm</b> r⊥ is the perpendicular distance from the axis to the line of action, not the distance to the point where the force acts.",
+  "Only the part of a force perpendicular to r turns the object.",
+  "Give each torque a sign: counterclockwise + and clockwise − (or the reverse, stated). Add them for the net torque.",
+  "A <b>force diagram</b> starts each force at its point of application, labeled with type and agent."
+ ],
+ "misconception": {
+  "wrong": "The torque of a force is its size times the distance from the axis to where it acts, whatever its direction.",
+  "right": "Only the perpendicular distance from the axis to the force’s line of action counts: τ = rF sin θ. A force along the line toward the axis has no torque however far out it acts."
+ },
+ "check": [
+  "phys-torque-1",
+  "phys-torque-2",
+  "phys-torque-3",
+  "phys-torque-4",
+  "phys-torque-10",
+  "phys-torque-12",
+  "phys-torque-16"
+ ],
+ "summary": "Torque measures how well a force turns an object about an axis: τ = r⊥F = rF sin θ, where the lever arm r⊥ is the perpendicular distance from the axis to the force’s line of action. Torques carry a sign for clockwise or counterclockwise and add to a net torque. A force diagram draws each force where it acts.",
+ "connections": [
+  {
+   "href": "../notes/linear-rotational-link.html",
+   "label": "Back: linking turning to moving (5.2)"
+  },
+  {
+   "href": "../notes/rotational-inertia.html",
+   "label": "Next: how hard an object is to turn (5.4)"
+  }
+ ]
+}

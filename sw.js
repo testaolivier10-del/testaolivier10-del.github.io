@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v73';
+const CACHE_NAME = 'levlprep-v76';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -217,6 +217,21 @@ COURSE_URLS.chem = [
   'chem/assets/chem-questions.js',
   'chem/assets/chem-nav.js',
   'chem/assets/glossary.json',
+];
+COURSE_URLS.physics = [
+  // The AP® Physics 1 shell (key apphys, folder physics), the same files as Chemistry.
+  'physics/index.html',
+  'physics/learn.html',
+  'physics/search.html',
+  'physics/tools.html',
+  'physics/dashboard.html',
+  'physics/manifest.json',
+  'physics/assets/phys.css',
+  'physics/assets/phys-curriculum.js',
+  'physics/assets/phys-core.js',
+  'physics/assets/phys-questions.js',
+  'physics/assets/phys-nav.js',
+  'physics/assets/glossary.json',
 ];
 
 // The question bank is 2.3 MB across its two files — an order of magnitude

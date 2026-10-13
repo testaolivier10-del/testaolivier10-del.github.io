@@ -1,0 +1,51 @@
+<p>To describe how something moves, physics uses three quantities: where it goes (displacement), how fast its position changes (velocity) and how fast its velocity changes (acceleration). Each is a vector, and each is defined as a change divided by a time. This page builds them one at a time, then shows the trap that catches most students: the sign of the acceleration.</p>
+
+<h2>The object model</h2>
+<p>A car is 4.5 m long; a highway trip is 2000 m. To describe the trip, the size of the car does not matter, and every part of the car moves the same way. So we replace the car by a single point with a position. This is the <b>object model</b>: an object with no size, shape or inner parts. It is a choice, and it is a good one whenever those details do not change the motion you are describing. (A spinning wheel is a case where they do; that comes much later.)</p>
+
+<h2>Average velocity</h2>
+<p>Pick a <b>time interval</b>, Δt = t(final) − t(initial). Over that interval the object has a displacement Δx. Its <b>average velocity</b> is</p>
+<p style="text-align:center"><b>v(avg) = Δx / Δt</b> &nbsp;&nbsp; (unit: m/s)</p>
+<p>Because it uses the displacement, average velocity has a sign, and a round trip has an average velocity of zero. <b>Average speed</b> is different: total distance divided by time. The two match only for a trip in one direction.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A courier cycles 3.0 km east in 10.0 min, then 1.2 km west in 4.0 min. Find her average velocity and average speed.</p>
+<p>Convert to SI: Δx = +3.0 km − 1.2 km = +1.8 km = +1800 m. Δt = 14.0 min = 840 s. Distance = 4.2 km = 4200 m.</p>
+<p>v(avg) = Δx/Δt = 1800 m ÷ 840 s = +2.1 m/s (east). Average speed = 4200 m ÷ 840 s = 5.0 m/s.</p>
+<p>A tempting shortcut is to average the two legs' velocities. It fails because the legs last different times. Always use total displacement over total time.</p>
+</div>
+
+<h2>Instantaneous velocity</h2>
+<p>A speedometer does not show an average over a whole trip. It shows the velocity right now, the <b>instantaneous velocity</b>. You can get it from position data by making the time interval very short. A ball rolling down a ramp from rest has these average velocities, each interval starting at 3.0 s:</p>
+<table class="compare"><thead><tr><th scope="col">Interval</th><th scope="col">Δt (s)</th><th scope="col">Δx (m)</th><th scope="col">v(avg) (m/s)</th></tr></thead>
+<tbody><tr><td>3.0 s to 4.0 s</td><td>1.0</td><td>2.100</td><td>2.10</td></tr>
+<tr><td>3.0 s to 3.5 s</td><td>0.5</td><td>0.975</td><td>1.95</td></tr>
+<tr><td>3.0 s to 3.1 s</td><td>0.1</td><td>0.183</td><td>1.83</td></tr></tbody></table>
+<p>As Δt shrinks, the averages close in on about 1.8 m/s. That is the ball's velocity at the instant t = 3.0 s. The long interval overestimates it because the ball keeps speeding up after 3.0 s.</p>
+
+<h2>Acceleration</h2>
+<p>When the velocity changes, the object has an <b>acceleration</b>. Over a time interval, the <b>average acceleration</b> is</p>
+<p style="text-align:center"><b>a(avg) = Δv / Δt</b> &nbsp;&nbsp; (unit: (m/s)/s = m/s²)</p>
+<p>An acceleration of 3 m/s² means the velocity changes by 3 m/s every second. An object accelerates whenever its velocity changes in any way: speeding up, slowing down, or turning at a steady speed (the direction changes, so the velocity changes).</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A motion detector reads a cart's velocity as +0.90 m/s at t = 0 and +0.30 m/s at t = 1.5 s. Find its average acceleration.</p>
+<p>Δv = 0.30 m/s − 0.90 m/s = −0.60 m/s. Δt = 1.5 s.</p>
+<p>a(avg) = Δv/Δt = −0.60 m/s ÷ 1.5 s = −0.40 m/s². The cart's velocity points in the positive direction, and its acceleration points in the negative direction.</p>
+</div>
+<p>Turned around, the same definition predicts a velocity: Δv = aΔt. A car at +15 m/s with a = −2.5 m/s² has Δv = −5.0 m/s after 2.0 s, so its velocity is then +10. m/s. The <b>instantaneous acceleration</b> is the same idea as the instantaneous velocity: the average acceleration over a very short interval.</p>
+
+<h2>Speeding up or slowing down? Compare the signs</h2>
+<figure id="fig-car" data-fig="car-speeding-slowing"><figcaption>Δv, and so the acceleration, points along the velocity when the car speeds up and against it when the car slows down.</figcaption></figure>
+<p>Acceleration points the same way as the change in velocity, Δv. Whether that means speeding up depends on the velocity too:</p>
+<table class="compare"><thead><tr><th scope="col">Velocity</th><th scope="col">Acceleration</th><th scope="col">The object</th></tr></thead>
+<tbody><tr><td>+</td><td>+</td><td>speeds up (moving in +)</td></tr>
+<tr><td>+</td><td>−</td><td>slows down</td></tr>
+<tr><td>−</td><td>−</td><td>speeds up (moving in −)</td></tr>
+<tr><td>−</td><td>+</td><td>slows down</td></tr></tbody></table>
+<p>So "negative acceleration" does not mean "slowing down". A cart rolling down a ramp, with down as negative, has negative velocity and negative acceleration, and it gets faster.</p>
+<p>A second trap: at the moment a cart pushed up a ramp stops and turns back, its velocity is zero. Its acceleration is not. Just before, the velocity was positive; just after, it is negative. The velocity is changing at that instant, at the same rate as before and after.</p>
+
+<h2>Summary of the definitions</h2>
+<table class="compare"><thead><tr><th scope="col">Quantity</th><th scope="col">Definition</th><th scope="col">Unit</th><th scope="col">Kind</th></tr></thead>
+<tbody><tr><td>Displacement</td><td>Δx = x − x₀</td><td>m</td><td>vector</td></tr>
+<tr><td>Average velocity</td><td>Δx/Δt</td><td>m/s</td><td>vector</td></tr>
+<tr><td>Average acceleration</td><td>Δv/Δt</td><td>m/s²</td><td>vector</td></tr></tbody></table>

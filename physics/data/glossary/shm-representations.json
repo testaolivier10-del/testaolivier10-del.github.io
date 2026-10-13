@@ -1,0 +1,8 @@
+{
+ "sinusoidal-motion": {
+  "def": "Motion whose position-time graph is a sine or cosine curve, as in SHM: x = A cos(2πft) or x = A sin(2πft)."
+ },
+ "amplitude-independence": {
+  "def": "In simple harmonic motion the period does not depend on the amplitude: a larger swing is covered at a proportionally larger speed."
+ }
+}

@@ -1,0 +1,11 @@
+{
+ "angular-momentum": {
+  "def": "The rotational partner of momentum. For a rigid object turning about a fixed axis, L = Iω, in kg·m²/s; its sign gives the direction of turning."
+ },
+ "point-angular-momentum": {
+  "def": "For a point object moving past a chosen point, L = rmv sin θ: its momentum times the perpendicular distance from the point to its line of motion. It depends on the point chosen."
+ },
+ "angular-impulse": {
+  "def": "A torque times the time it acts, τΔt (the area under a torque-time graph), in N·m·s. It equals the change in angular momentum: τΔt = ΔL."
+ }
+}

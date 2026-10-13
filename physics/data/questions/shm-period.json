@@ -1,0 +1,544 @@
+{
+ "stimuli": {
+  "shm-period-s1": {
+   "kind": "table",
+   "title": "Timing a block on a spring",
+   "text": "<p>A student hangs blocks of different mass from the same spring, pulls each one down a few centimeters, releases it, and uses a stopwatch to time 10 complete oscillations.</p>",
+   "table": {
+    "caption": "Time for 10 oscillations for each mass",
+    "cols": [
+     "Mass m (kg)",
+     "Time for 10 oscillations (s)"
+    ],
+    "rows": [
+     [
+      "0.10",
+      "4.95"
+     ],
+     [
+      "0.20",
+      "7.05"
+     ],
+     [
+      "0.40",
+      "9.90"
+     ],
+     [
+      "0.80",
+      "14.1"
+     ]
+    ]
+   }
+  },
+  "shm-period-s2": {
+   "kind": "table",
+   "title": "Four pendulums",
+   "text": "<p>A class sets up four simple pendulums and releases each from rest at a small angle. Air resistance is negligible.</p>",
+   "table": {
+    "caption": "The four pendulums",
+    "cols": [
+     "Pendulum",
+     "Length ℓ (m)",
+     "Bob mass (kg)",
+     "Release angle"
+    ],
+    "rows": [
+     [
+      "1",
+      "0.50",
+      "0.10",
+      "5°"
+     ],
+     [
+      "2",
+      "0.50",
+      "0.40",
+      "10°"
+     ],
+     [
+      "3",
+      "2.00",
+      "0.10",
+      "5°"
+     ],
+     [
+      "4",
+      "1.00",
+      "0.20",
+      "8°"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "phys-shm-period-1",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "shm-period-s1",
+   "q": "What is the period of the 0.20 kg block? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.705,
+    "tol": 0.001,
+    "unit": "s",
+    "sigfigs": 3,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 7.05,
+      "rel": 0.02,
+      "why": "Value: that is the time for 10 oscillations. The period is the time for one: divide by 10."
+     },
+     {
+      "value": 1.42,
+      "rel": 0.02,
+      "why": "Value: that is the frequency (oscillations per second), 10/7.05 s. The period is its reciprocal, T = 1/f."
+     }
+    ]
+   },
+   "why": {
+    "correct": "T = (time for 10 oscillations)/10 = 7.05 s / 10 = 0.705 s. Timing many oscillations and dividing shrinks the effect of your reaction time."
+   }
+  },
+  {
+   "id": "phys-shm-period-2",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "shm-period-s1",
+   "q": "From 0.20 kg to 0.80 kg the mass is multiplied by 4. How does the period change, and does that agree with T = 2π√(m/k)?",
+   "options": [
+    "It doubles, which agrees: T is proportional to √m",
+    "It quadruples, which agrees: T is proportional to m",
+    "It doubles, which disagrees: T should quadruple",
+    "It halves, which agrees: a heavier block is pulled harder"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The 10-oscillation time goes from 7.05 s to 14.1 s, a factor of 2. T ∝ √m, and √4 = 2.",
+    "options": [
+     "Right: the data and the equation both give a factor of 2.",
+     "The data show a factor of 2, not 4; and T depends on √m, not m.",
+     "The equation predicts a factor of √4 = 2, so the data agree with it.",
+     "A heavier block has more inertia, so it takes longer; the period grows."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-period-3",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "shm-period-s1",
+   "q": "Use the 0.80 kg trial to find the spring constant of the spring. Give the value and its unit.",
+   "numeric": {
+    "answer": 16,
+    "tol": 0.6,
+    "unit": "N/m",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 22,
+      "rel": 0.02,
+      "why": "Value: you divided by T instead of T². Squaring T = 2π√(m/k) gives T² = 4π²m/k, so k = 4π²m/T²."
+     },
+     {
+      "value": 0.16,
+      "rel": 0.02,
+      "why": "Value: you used the time for 10 oscillations as the period. Divide by 10 first: T = 1.41 s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "T = 14.1 s / 10 = 1.41 s. Square T = 2π√(m/k): T² = 4π²m/k, so k = 4π²m/T² = 4π²(0.80 kg)/(1.41 s)² = 15.9 N/m ≈ 16 N/m."
+   }
+  },
+  {
+   "id": "phys-shm-period-4",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "shm-period-s1",
+   "q": "The student wants a straight-line graph whose slope gives the spring constant. What should be plotted?",
+   "options": [
+    "T² against m; the slope is 4π²/k",
+    "T against m; the slope is 2π/k",
+    "T against √m; the slope is k/2π",
+    "T² against m; the slope is k/4π²"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Squaring T = 2π√(m/k) gives T² = (4π²/k)·m, the form y = (slope)·x with y = T² and x = m. So k = 4π²/slope.",
+    "options": [
+     "Right: T² is proportional to m, with slope 4π²/k.",
+     "T against m is a curve (T ∝ √m), so it has no single slope.",
+     "T against √m is a straight line, but its slope is 2π/√k, not k/2π.",
+     "The variables are right but the slope is upside down: T² = (4π²/k)m."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-period-5",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "shm-period-s2",
+   "q": "Which two pendulums have the same period?",
+   "options": [
+    "Pendulums 1 and 2",
+    "Pendulums 1 and 3",
+    "Pendulums 2 and 4",
+    "Pendulums 3 and 4"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "T = 2π√(ℓ/g): the period depends on the length and g, not on the bob's mass or the (small) release angle. Pendulums 1 and 2 have the same length, 0.50 m.",
+    "options": [
+     "Right: same length, so same period, despite different masses and angles.",
+     "These have the same mass and angle but different lengths, and length is what sets the period.",
+     "These have different lengths (0.50 m and 1.00 m).",
+     "These have different lengths (2.00 m and 1.00 m)."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-period-6",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "shm-period-s2",
+   "q": "What is the period of pendulum 3? Use g = 9.8 m/s². Give the value and its unit.",
+   "numeric": {
+    "answer": 2.8,
+    "tol": 0.1,
+    "unit": "s",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 14,
+      "rel": 0.02,
+      "why": "Value: you used √(g/ℓ). The length goes on top: T = 2π√(ℓ/g)."
+     },
+     {
+      "value": 0.45,
+      "rel": 0.02,
+      "why": "Value: you left out the 2π. T = 2π√(ℓ/g)."
+     },
+     {
+      "value": 0.63,
+      "rel": 0.02,
+      "why": "Value: you used the bob's mass in place of the length. The period of a pendulum does not depend on the mass: T = 2π√(ℓ/g)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "T = 2π√(ℓ/g) = 2π√(2.00 m / 9.8 m/s²) = 2.84 s ≈ 2.8 s."
+   }
+  },
+  {
+   "id": "phys-shm-period-7",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "shm-period-s2",
+   "q": "How does the period of pendulum 3 compare with the period of pendulum 1?",
+   "options": [
+    "Twice as long",
+    "Four times as long",
+    "Half as long",
+    "The same"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "T ∝ √ℓ. Pendulum 3 is 4 times as long (2.00 m vs 0.50 m), so its period is √4 = 2 times as long.",
+    "options": [
+     "Right: four times the length gives twice the period.",
+     "This treats T as proportional to ℓ; it is proportional to √ℓ.",
+     "A longer pendulum swings more slowly, so its period is longer.",
+     "The bobs and angles match, but the lengths differ, and length sets the period."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-period-8",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "shm-period-s2",
+   "q": "Pendulum 1 is taken to the Moon, where g is about one sixth of its value on Earth. What happens to its period?",
+   "options": [
+    "It increases, by a factor of about 2.4",
+    "It increases, by a factor of about 6",
+    "It decreases, by a factor of about 2.4",
+    "It stays the same, because ℓ is unchanged"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "T ∝ 1/√g. With g one sixth as large, T is √6 ≈ 2.4 times as long. A weaker gravitational field gives a weaker restoring force.",
+    "options": [
+     "Right: T = 2π√(ℓ/g), so T grows by √6.",
+     "The period depends on √g, not on g, so the factor is √6, not 6.",
+     "Smaller g means a weaker restoring force and slower swings: T grows.",
+     "g appears in the pendulum's period, so changing g changes T."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-period-9",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A child on a swing completes 12 full swings (out and back) in 30.0 s. What is the frequency of the swinging? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.4,
+    "tol": 0.01,
+    "unit": "Hz",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 2.5,
+      "rel": 0.02,
+      "why": "Value: that is the period, the time for one swing. Frequency is cycles per second: f = 12/30.0 s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "f = number of cycles / time = 12 / 30.0 s = 0.40 Hz. The period is T = 1/f = 2.5 s."
+   }
+  },
+  {
+   "id": "phys-shm-period-10",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "2.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "What length of simple pendulum has a period of 2.0 s? Use g = 9.8 m/s². Give the value and its unit.",
+   "numeric": {
+    "answer": 0.99,
+    "tol": 0.01,
+    "unit": "m",
+    "sigfigs": 2,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 0.25,
+      "rel": 0.02,
+      "why": "Value: you used 1.0 s, the time for one swing across. A period is a full cycle, there and back: T = 2.0 s."
+     },
+     {
+      "value": 0.5,
+      "rel": 0.02,
+      "why": "Value: you used T instead of T². Squaring T = 2π√(ℓ/g) gives ℓ = gT²/4π²."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Square T = 2π√(ℓ/g): T² = 4π²ℓ/g, so ℓ = gT²/(4π²) = (9.8 m/s²)(2.0 s)²/(4π²) = 0.99 m."
+   }
+  },
+  {
+   "id": "phys-shm-period-11",
+   "type": "predict",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A block oscillates on a horizontal spring. Predict how its period changes for each separate change.",
+   "variables": [
+    {
+     "name": "The block is replaced by one with twice the mass",
+     "answer": "up",
+     "why": "T = 2π√(m/k): more mass, more inertia, longer period (by √2)."
+    },
+    {
+     "name": "The block is pulled twice as far before release",
+     "answer": "none",
+     "why": "A does not appear in T = 2π√(m/k): a larger amplitude means more distance but also more force and more speed."
+    },
+    {
+     "name": "The spring is replaced by a stiffer one",
+     "answer": "down",
+     "why": "Larger k means a larger restoring force at each x, so the block turns around sooner."
+    }
+   ],
+   "why": {
+    "correct": "The period of a block on a spring depends on m and k: T = 2π√(m/k)."
+   }
+  },
+  {
+   "id": "phys-shm-period-12",
+   "type": "predict",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A simple pendulum swings through a small angle. Predict how its period changes for each separate change.",
+   "variables": [
+    {
+     "name": "The bob is replaced by one with twice the mass",
+     "answer": "none",
+     "why": "A heavier bob has a larger weight but also more inertia; m cancels and T = 2π√(ℓ/g) has no m."
+    },
+    {
+     "name": "The string is made four times as long",
+     "answer": "up",
+     "why": "T ∝ √ℓ, so the period doubles."
+    },
+    {
+     "name": "The pendulum is taken to a planet with a stronger gravitational field",
+     "answer": "down",
+     "why": "Larger g gives a larger restoring force, so T = 2π√(ℓ/g) is shorter."
+    }
+   ],
+   "why": {
+    "correct": "A pendulum's period depends on its length and on g, not on the bob's mass."
+   }
+  },
+  {
+   "id": "phys-shm-period-13",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "3.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student claims that a pendulum with a heavier bob has a longer period, because T = 2π√(m/k) shows that more mass means a longer period. What is wrong with the claim?",
+   "options": [
+    "That equation is for a block on a spring; a pendulum's period is 2π√(ℓ/g), with no mass in it",
+    "Nothing: a heavier bob has more inertia, so it does swing more slowly",
+    "The equation is right, but a heavier bob also stretches the string, which shortens the period",
+    "A heavier bob has a larger weight, so its period is shorter, not longer"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "For a pendulum, the restoring force comes from the bob's weight, which is proportional to its mass. Twice the mass gives twice the restoring force on twice the inertia, so the acceleration and the period do not change. Using the spring formula for a pendulum is a classic exam error.",
+    "options": [
+     "Right: wrong formula for the system; the pendulum's period has no mass.",
+     "More inertia is matched by more weight pulling it back, so the two effects cancel.",
+     "An ideal string does not stretch, and the spring formula still does not apply.",
+     "The larger weight is canceled by the larger inertia; the period is unchanged."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-period-14",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "The same block and spring are used horizontally on a frictionless table and then hanging vertically. How do the two periods compare?",
+   "options": [
+    "They are equal",
+    "The vertical one is longer, because gravity stretches the spring",
+    "The vertical one is shorter, because gravity adds to the restoring force",
+    "The horizontal one is longer, because there is no gravity to pull it back"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "T = 2π√(m/k) contains neither g nor the stretch. Hanging the block moves the equilibrium position down, but about that new equilibrium the net restoring force is still −kx.",
+    "options": [
+     "Right: same m and same k give the same period.",
+     "Gravity shifts where equilibrium is, not how fast the block oscillates about it.",
+     "Gravity is constant, so it cancels at the new equilibrium; it does not add to the restoring force.",
+     "Horizontally the spring alone is the restoring force, with the same k."
+    ]
+   }
+  },
+  {
+   "id": "phys-shm-period-15",
+   "type": "numeric",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "A 0.250 kg block is attached to a spring with spring constant 40.0 N/m. What is the period of its oscillation? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.497,
+    "tol": 0.001,
+    "unit": "s",
+    "sigfigs": 3,
+    "askUnit": true,
+    "mistakes": [
+     {
+      "value": 79.5,
+      "rel": 0.02,
+      "why": "Value: you used √(k/m). The mass goes on top: T = 2π√(m/k)."
+     },
+     {
+      "value": 0.0791,
+      "rel": 0.02,
+      "why": "Value: you left out the 2π. T = 2π√(m/k)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "T = 2π√(m/k) = 2π√(0.250 kg / 40.0 N/m) = 2π(0.0791 s) = 0.497 s."
+   }
+  },
+  {
+   "id": "phys-shm-period-16",
+   "type": "single",
+   "unit": "unit-7",
+   "topic": "shm-period",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "You want to double the period of a block oscillating on a spring by changing only the block. What mass should the new block have, if the old one has mass m?",
+   "options": [
+    "4m",
+    "2m",
+    "√2 m",
+    "m/4"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "T ∝ √m, so to double T you need √(new m / m) = 2, which gives 4m.",
+    "options": [
+     "Right: four times the mass doubles the period.",
+     "Twice the mass gives √2 ≈ 1.41 times the period.",
+     "This multiplies the period by only about 1.19.",
+     "A smaller mass shortens the period."
+    ]
+   }
+  }
+ ]
+}

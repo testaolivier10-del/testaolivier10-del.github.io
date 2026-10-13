@@ -1,0 +1,22 @@
+{
+ "elevator-apparent-weight": {
+  "file": "figures/elevator-apparent-weight.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 440,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A 70 kg rider on a scale in an elevator, three times, with g = 9.8 m/s². Accelerating up at 1.2 m/s²: F_N, scale on rider, is longer than F_g, Earth on rider, and the scale reads 770 N. Constant velocity: equal arrows, 686 N. Accelerating down at 1.2 m/s²: F_N is shorter than F_g, 602 N. The gravitational force, 686 N, is the same in all three."
+ },
+ "gravitation-two-spheres": {
+  "file": "figures/gravitation-two-spheres.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two spheres of masses m1 and m2 a distance r apart, center to center, pull each other with equal and opposite forces along the line joining their centers. A panel gives |F_g| = Gm1m2/r² and how it scales: doubling r divides F by 4, tripling r divides it by 9, doubling m1 doubles it, doubling both masses multiplies it by 4."
+ }
+}

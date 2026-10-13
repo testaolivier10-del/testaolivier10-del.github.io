@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Defining Simple Harmonic Motion — AP® Physics 1 | LevlPrep</title>
+<meta name="description" content="Defining Simple Harmonic Motion: a physics lesson taught from scratch, step by step, with exam-style practice questions.">
+<link rel="canonical" href="https://levlprep.com/physics/lessons/shm-intro.html">
+<meta property="og:title" content="Defining Simple Harmonic Motion — AP® Physics 1 | LevlPrep">
+<meta property="og:description" content="Defining Simple Harmonic Motion: a physics lesson taught from scratch, step by step, with exam-style practice questions.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/physics/lessons/shm-intro.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/physics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/phys.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/physics/lessons/shm-intro.html#lesson",
+      "name": "Defining Simple Harmonic Motion",
+      "url": "https://levlprep.com/physics/lessons/shm-intro.html",
+      "description": "Defining Simple Harmonic Motion: a physics lesson taught from scratch, step by step, with exam-style practice questions.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".phys-ls-card"
+      },
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "periodic motion"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "restoring force"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "equilibrium position"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "simple harmonic motion"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "amplitude"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "simple pendulum"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/physics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Physics 1",
+          "item": "https://levlprep.com/physics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Oscillations",
+          "item": "https://levlprep.com/physics/units/unit-7.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Defining Simple Harmonic Motion",
+          "item": "https://levlprep.com/physics/lessons/shm-intro.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="phys" data-topic="shm-intro" data-unit="unit-7">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="phys-crumb phys-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Physics 1</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-7.html">Oscillations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Defining Simple Harmonic Motion</span></nav></div>
+<div class="xshell phys-ls phys-stepped">
+  <aside class="phys-ls-rail phys-nav-ref" aria-label="Lesson parts">
+    <p class="phys-ls-k">Unit 7 · Oscillations</p>
+    <p class="phys-ls-links"><a href="../units/unit-7.html">&larr; Back to the unit</a><a href="../notes/shm-intro.html">Read the notes</a></p>
+    <div class="phys-ls-prog"><div class="phys-ls-track"><div class="phys-ls-fill"></div></div><span class="phys-ls-count">Step 1 / 11</span></div>
+    <ol class="phys-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="phys-ls-main phys-lesson">
+  <header class="phys-ls-hero">
+    <div class="eyebrow">Unit 7 · Topic 7.1 <span class="phys-beta phys-nav-ref">Beta</span></div>
+    <h1>Defining Simple Harmonic Motion</h1>
+    <p class="lede">Simple harmonic motion is periodic motion driven by a restoring force proportional to the displacement from equilibrium and opposite to it (F = −kx); the force and acceleration are zero at equilibrium and largest at the amplitude, and a pendulum at small angles is a close match.</p>
+    <p class="phys-tags phys-nav-ref"><span class="phys-tag">Practice 2: Mathematical Routines</span><span class="phys-tag">Practice 3: Scientific Questioning and Argumentation</span></p>
+    <div class="phys-share phys-nav-ref" role="group" aria-label="Share or print this lesson"><a class="phys-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fphysics%2Flessons%2Fshm-intro.html&amp;title=Defining%20Simple%20Harmonic%20Motion%3A%20physics%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="phys-share-btn" data-copy="https://levlprep.com/physics/lessons/shm-intro.html">Copy link</button><button type="button" class="phys-share-btn" data-print>Print</button></div>
+    <p class="phys-small phys-nav-ref"><a href="../practice.html?topic=shm-intro">Question set for this topic</a></p>
+  </header>
+  <div class="phys-ls-card">
+  <section class="phys-part phys-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="phys-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="phys-step-body phys-hook">A guitar string, a car bouncing on its springs after a pothole, a child on a swing and the quartz crystal timing your phone all do the same thing: they go back and forth, over and over, about a middle <a class="gl" href="../notes/scalars-vectors.html" data-c="position">position</a>. Physics has one model that describes all of them, and it starts with a single rule about the <a class="gl" href="../notes/forces-fbd.html" data-c="force">force</a>.</div>
+  </section>
+  <section class="phys-part phys-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="phys-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="phys-step-body"><nav class="phys-nav-ref" aria-label="Earlier topics"><ul class="phys-links"><li><a href="../notes/scalars-vectors.html">Scalars and Vectors on a Line</a></li><li><a href="../notes/math-proportional.html">Proportional Reasoning and Functional Dependence</a></li><li><a href="../notes/forces-fbd.html">Forces and Free-Body Diagrams</a></li><li><a href="../notes/first-law.html">Newton's First Law</a></li><li><a href="../notes/circular-motion.html">Circular Motion</a></li></ul></nav></div>
+  </section>
+  <section class="phys-part phys-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="phys-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="phys-step-body"><div class="phys-qs" data-set="prereq"><div class="phys-q" data-qid="shm-intro-pre-1"><p class="phys-q-stem"><span class="phys-q-n">1.</span> A spring with k = 50 N/m is stretched 0.10 m. How large is the force it exerts?</p><ol class="phys-opts"><li>5.0 N</li><li>500 N</li><li>0.0020 N</li><li>50 N</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>Hooke's law: |F| = kΔx = (50 N/m)(0.10 m) = 5.0 N.</p><ul><li><b>Correct:</b> 5.0 N: </li><li>500 N: </li><li>0.0020 N: </li><li>50 N: </li></ul></details></div><div class="phys-q" data-qid="shm-intro-pre-2"><p class="phys-q-stem"><span class="phys-q-n">2.</span> An object has zero net force on it. What must be true?</p><ol class="phys-opts"><li>Its velocity is constant (possibly zero)</li><li>It is at rest</li><li>It is slowing down</li><li>No forces act on it</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>Zero net force means zero acceleration, so the velocity does not change. The object can be moving.</p><ul><li><b>Correct:</b> Its velocity is constant (possibly zero): </li><li>It is at rest: </li><li>It is slowing down: </li><li>No forces act on it: </li></ul></details></div><div class="phys-q" data-qid="shm-intro-pre-3"><p class="phys-q-stem"><span class="phys-q-n">3.</span> A 2.0 kg object has a net force of 6.0 N on it. What is its acceleration?</p><ol class="phys-opts"><li>3.0 m/s²</li><li>12 m/s²</li><li>0.33 m/s²</li><li>6.0 m/s²</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>a = F/m = 6.0 N / 2.0 kg = 3.0 m/s².</p><ul><li><b>Correct:</b> 3.0 m/s²: </li><li>12 m/s²: </li><li>0.33 m/s²: </li><li>6.0 m/s²: </li></ul></details></div></div></div>
+  </section>
+  <section class="phys-part phys-step" id="figure" aria-labelledby="h-figure">
+    <p class="phys-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="phys-step-body"><figure class="phys-figure phys-lesson-fig"><div class="phys-figimg" data-fig="shm-restoring-force"><img src="../figures/shm-restoring-force.svg" alt="A cart on a horizontal spring at three positions. At x = −A the spring is compressed and its force on the cart points right, toward equilibrium. At x = 0 there is no spring force. At x = +A the spring is stretched and its force points left. The force is always toward equilibrium and largest at the ends." width="760" height="450" loading="lazy" decoding="async"></div><figcaption>The <a class="gl" href="../notes/spring-forces.html" data-c="spring-force">spring force</a> on the cart always points back toward equilibrium and is <a class="gl" href="../notes/math-proportional.html" data-c="proportional">proportional</a> to the <a class="gl" href="../notes/scalars-vectors.html" data-c="displacement">displacement</a>. <span class="phys-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="phys-part phys-step" id="chain" aria-labelledby="h-chain">
+    <p class="phys-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="phys-step-body"><ol class="phys-chain"><li><span class="phys-cause">An object is displaced from its <span class="gl" tabindex="0" data-c="equilibrium-position">equilibrium position</span></span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">a <span class="gl" tabindex="0" data-c="restoring-force">restoring force</span> pulls it back toward equilibrium</span></li><li><span class="phys-cause">The restoring force is proportional to the displacement and opposite to it (F = −kx)</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">the <a class="gl" href="../notes/motion-quantities.html" data-c="acceleration">acceleration</a> is largest at the ends and zero at equilibrium</span></li><li><span class="phys-cause">The object reaches equilibrium moving fast</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">it overshoots, because zero force does not stop it</span></li><li><span class="phys-cause">On the other side the restoring force reverses</span><span class="phys-arrow" aria-hidden="true">→</span><span class="phys-effect">the object slows, stops at the same <a class="gl" href="../notes/scalars-vectors.html" data-c="distance">distance</a> A, and comes back: <span class="gl" tabindex="0" data-c="shm">simple harmonic motion</span></span></li></ol></div>
+  </section>
+  <section class="phys-part phys-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="phys-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="phys-step-body"><ul class="phys-ideas"><li><b><span class="gl" tabindex="0" data-c="periodic-motion">Periodic motion</span></b> repeats in equal <a class="gl" href="../notes/motion-quantities.html" data-c="time-interval">time intervals</a>. <b>Simple harmonic motion</b> (SHM) is the special case caused by a restoring force proportional to the displacement: F = −kx.</li><li>The <b>equilibrium position</b> is where the <a class="gl" href="../notes/forces-fbd.html" data-c="net-force">net force</a> is zero. The object moves fastest there, so zero force does not mean zero <a class="gl" href="../notes/scalars-vectors.html" data-c="velocity">velocity</a>.</li><li>The <b><span class="gl" tabindex="0" data-c="amplitude">amplitude</span></b> A is the largest displacement from equilibrium: half the distance from one turning point to the other.</li><li>A <b><span class="gl" tabindex="0" data-c="simple-pendulum">simple pendulum</span></b> at small angles is close to SHM: along its arc the restoring force is about mg·θ, proportional to the angle (in <a class="gl" href="../notes/rotational-kinematics.html" data-c="radian">radians</a>).</li></ul></div>
+  </section>
+  <section class="phys-part phys-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="phys-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="phys-step-body phys-misconception"><p class="phys-wrong"><b>The wrong idea:</b> At the turning points the object is at rest, so the force on it is zero; at the middle it is moving fastest, so the force there is largest.</p><p class="phys-right"><b>What actually happens:</b> It is the other way round. The force depends on the displacement, not on the <a class="gl" href="../notes/scalars-vectors.html" data-c="speed">speed</a>: it is largest at the turning points (where the object is momentarily at rest) and zero at equilibrium (where it moves fastest).</p></div>
+  </section>
+  <section class="phys-part phys-step" id="check" aria-labelledby="h-check">
+    <p class="phys-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="phys-step-body"><p class="phys-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="phys-qs" data-set="check"><div class="phys-set"><section class="phys-stim" data-stim="shm-intro-s1" aria-labelledby="stim-shm-intro-s1"><p class="phys-stim-k">Data table</p><h3 id="stim-shm-intro-s1">Force on a glider from a spring</h3><div class="phys-stim-text"><p>A 0.40 kg glider on a level air track is attached to a spring. A student holds the glider at several positions and reads the force the spring exerts on it with a force sensor. Position is measured from where the spring is relaxed; + is to the right.</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Spring force on the glider at each position"><table class="phys-data"><caption>Spring force on the glider at each position</caption><thead><tr><th scope="col">Position x (m)</th><th scope="col">Force from spring F (N)</th></tr></thead><tbody><tr><th scope="row">−0.10</th><td>+2.4</td></tr><tr><th scope="row">−0.05</th><td>+1.2</td></tr><tr><th scope="row">0</th><td>0</td></tr><tr><th scope="row">+0.05</th><td>−1.2</td></tr><tr><th scope="row">+0.10</th><td>−2.4</td></tr></tbody></table></div></section><div class="phys-q" data-qid="phys-shm-intro-1"><p class="phys-q-stem"><span class="phys-q-n">1.</span> Which feature of the data shows that the glider, once released, will move in simple harmonic motion?</p><ol class="phys-opts"><li>The force is proportional to the displacement and points the opposite way</li><li>The force is zero at the position where the spring is relaxed</li><li>The force keeps getting more negative as the glider is moved farther to the right</li><li>The force has the same size at equal distances on either side</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>SHM needs a restoring force proportional to the displacement from equilibrium and opposite to it: F = −kx. Doubling x doubles F, and the sign is always opposite to x.</p><ul><li><b>Correct:</b> The force is proportional to the displacement and points the opposite way: Right: this is the definition of the restoring force in SHM, F = −kx.</li><li>The force is zero at the position where the spring is relaxed: A zero force at equilibrium is true of any oscillation; it does not show the force grows in proportion to the displacement.</li><li>The force keeps getting more negative as the glider is moved farther to the right: True of the data, but it says nothing about proportion or about the left side: a force that pointed left everywhere would never pull the glider back from the left. SHM needs F proportional to x and opposite to it.</li><li>The force has the same size at equal distances on either side: Symmetry alone allows forces that are not proportional to x (for example a force that grows as x²).</li></ul></details></div><div class="phys-q" data-qid="phys-shm-intro-2"><p class="phys-q-stem"><span class="phys-q-n">2.</span> What is the spring constant of the spring? Give the value and its unit.</p><p class="phys-small">Type a number and its unit.</p><details class="phys-q-key"><summary>Show the answer</summary><p>From any row, k = |F|/|x| = 2.4 N / 0.10 m = 24 N/m. Every row gives the same value, which is what makes the force proportional to x.</p><ul><li>Answer: 24 N/m</li></ul></details></div><div class="phys-q" data-qid="phys-shm-intro-3"><p class="phys-q-stem"><span class="phys-q-n">3.</span> The glider is pulled to x = +0.080 m and released. What is its acceleration at the moment of release? Take + to the right, include the sign, and give the unit.</p><p class="phys-small">Type a number and its unit.</p><details class="phys-q-key"><summary>Show the answer</summary><p>F = −kx = −(24 N/m)(0.080 m) = −1.92 N. a = F/m = −1.92 N / 0.40 kg = −4.8 m/s², toward equilibrium.</p><ul><li>Answer: -4.8 m/s^2</li></ul></details></div><div class="phys-q" data-qid="phys-shm-intro-4"><p class="phys-q-stem"><span class="phys-q-n">4.</span> When the oscillating glider passes x = 0 moving to the right, what is the net force on it?</p><ol class="phys-opts"><li>Zero, even though the glider is moving fast</li><li>To the right, in the direction it is moving</li><li>To the left, because it will soon turn around</li><li>Its largest value, because its speed is largest</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>At x = 0 the spring is relaxed, so the spring force is zero; gravity and the normal force cancel on the level track. Zero net force means zero acceleration at that instant, not zero velocity.</p><ul><li><b>Correct:</b> Zero, even though the glider is moving fast: Right: x = 0 is the equilibrium position, where the net force is zero.</li><li>To the right, in the direction it is moving: This is the "a force is needed to keep it moving" idea. The glider keeps moving at x = 0 with no net force at that instant.</li><li>To the left, because it will soon turn around: The force points left only once the glider is to the right of x = 0 and the spring is stretched.</li><li>Its largest value, because its speed is largest: This mixes up force with speed. The force depends on the displacement, which is zero here.</li></ul></details></div></div><div class="phys-q" data-qid="phys-shm-intro-13"><p class="phys-q-stem"><span class="phys-q-n">5.</span> The block hanging from the vertical spring is pulled down and released. When it is at its lowest point, what is the direction of the net force on it?</p><ol class="phys-opts"><li>Upward, toward the equilibrium position</li><li>Downward, because its weight pulls down</li><li>Zero, because it is momentarily at rest</li><li>Downward, in the direction it was moving</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>Below equilibrium the spring is stretched more than at equilibrium, so its upward pull is larger than the weight. The net force points up, toward equilibrium, as a restoring force should.</p><ul><li><b>Correct:</b> Upward, toward the equilibrium position: Right: the spring force exceeds the weight below equilibrium.</li><li>Downward, because its weight pulls down: The weight is there, but the spring's upward pull is larger at the lowest point.</li><li>Zero, because it is momentarily at rest: At rest for an instant does not mean zero net force; this is where the net force is largest.</li><li>Downward, in the direction it was moving: The net force does not follow the motion; it follows the displacement, pointing back toward equilibrium.</li></ul></details></div><div class="phys-q" data-qid="phys-shm-intro-14"><p class="phys-q-stem"><span class="phys-q-n">6.</span> A cart on a horizontal spring oscillates between x = −A and x = +A. Where is the size of its acceleration greatest?</p><ol class="phys-opts"><li>At x = −A and x = +A</li><li>At x = 0</li><li>At x = −A/2 and x = +A/2</li><li>The same size at each position along the track</li></ol><details class="phys-q-key"><summary>Show the answer</summary><p>The net force is −kx, so its size is largest where |x| is largest, at the turning points. By Newton's second law the acceleration is largest there too, even though the speed is zero.</p><ul><li><b>Correct:</b> At x = −A and x = +A: Right: largest displacement, largest restoring force, largest acceleration.</li><li>At x = 0: At x = 0 the net force is zero, so the acceleration is zero; this is where the speed is greatest.</li><li>At x = −A/2 and x = +A/2: The force at ±A/2 is half its value at ±A.</li><li>The same size at each position along the track: A constant acceleration would need a constant force; the spring force changes with x.</li></ul></details></div></div></div>
+  </section>
+  <section class="phys-part phys-step" id="summary" aria-labelledby="h-summary">
+    <p class="phys-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="phys-step-body">Simple harmonic motion is periodic motion driven by a restoring force proportional to the displacement from equilibrium and opposite to it (F = −kx); the force and acceleration are zero at equilibrium and largest at the amplitude, and a pendulum at small angles is a close match.</div>
+  </section>
+  <section class="phys-part phys-step" id="next" aria-labelledby="h-next">
+    <p class="phys-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="phys-step-body"><nav class="phys-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="shm-period.html">Frequency and Period of SHM &rarr;</a></p></nav></div>
+  </section>
+  <section class="phys-part phys-step" id="connections" aria-labelledby="h-connections">
+    <p class="phys-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="phys-step-body"><ul class="phys-links phys-nav-ref"><li><a href="../notes/first-law.html">Back: Newton's First Law (2.4)</a></li><li><a href="../notes/circular-motion.html">Back: Circular Motion (2.9)</a></li><li><a href="../notes/shm-period.html">Next: Frequency and Period of SHM (7.2)</a></li></ul></div>
+  </section>
+    <div class="phys-ls-actions phys-nav-ref"><button type="button" class="phys-ls-back">&larr; Previous</button><button type="button" class="phys-ls-go">Continue &rarr;</button><a class="phys-ls-go" hidden href="shm-period.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.phys-ls'),p=s&&s.querySelectorAll('.phys-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.phys-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apphys_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="phys-foot xshell">
+  <p class="phys-accuracy-note"><span class="phys-beta phys-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Physics 1 teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="lesson:shm-intro">Report a problem</button></span></p>
+  <p class="phys-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="phys-page-data">{"topic":"shm-intro","unit":"unit-7","free":false,"prereq":[{"id":"shm-intro-pre-1","type":"single","unit":"unit-7","topic":"shm-intro","q":"A spring with k = 50 N/m is stretched 0.10 m. How large is the force it exerts?","options":["5.0 N","500 N","0.0020 N","50 N"],"correct":0,"why":{"correct":"Hooke's law: |F| = kΔx = (50 N/m)(0.10 m) = 5.0 N.","options":["","","",""]},"reviewHref":"../notes/spring-forces.html","reviewTitle":"Spring Forces"},{"id":"shm-intro-pre-2","type":"single","unit":"unit-7","topic":"shm-intro","q":"An object has zero net force on it. What must be true?","options":["Its velocity is constant (possibly zero)","It is at rest","It is slowing down","No forces act on it"],"correct":0,"why":{"correct":"Zero net force means zero acceleration, so the velocity does not change. The object can be moving.","options":["","","",""]},"reviewHref":"../notes/first-law.html","reviewTitle":"Newton's First Law"},{"id":"shm-intro-pre-3","type":"single","unit":"unit-7","topic":"shm-intro","q":"A 2.0 kg object has a net force of 6.0 N on it. What is its acceleration?","options":["3.0 m/s²","12 m/s²","0.33 m/s²","6.0 m/s²"],"correct":0,"why":{"correct":"a = F/m = 6.0 N / 2.0 kg = 3.0 m/s².","options":["","","",""]},"reviewHref":"../notes/second-law.html","reviewTitle":"Newton's Second Law"}],"check":[{"id":"phys-shm-intro-1","type":"single","unit":"unit-7","topic":"shm-intro","practice":"3.B","level":"analyze","diff":2,"stimulus":"shm-intro-s1","q":"Which feature of the data shows that the glider, once released, will move in simple harmonic motion?","options":["The force is proportional to the displacement and points the opposite way","The force is zero at the position where the spring is relaxed","The force keeps getting more negative as the glider is moved farther to the right","The force has the same size at equal distances on either side"],"correct":0,"why":{"correct":"SHM needs a restoring force proportional to the displacement from equilibrium and opposite to it: F = −kx. Doubling x doubles F, and the sign is always opposite to x.","options":["Right: this is the definition of the restoring force in SHM, F = −kx.","A zero force at equilibrium is true of any oscillation; it does not show the force grows in proportion to the displacement.","True of the data, but it says nothing about proportion or about the left side: a force that pointed left everywhere would never pull the glider back from the left. SHM needs F proportional to x and opposite to it.","Symmetry alone allows forces that are not proportional to x (for example a force that grows as x²)."]}},{"id":"phys-shm-intro-2","type":"numeric","unit":"unit-7","topic":"shm-intro","practice":"2.B","level":"apply","diff":1,"stimulus":"shm-intro-s1","q":"What is the spring constant of the spring? Give the value and its unit.","numeric":{"answer":24,"tol":1,"unit":"N/m","sigfigs":2,"askUnit":true,"mistakes":[{"value":0.042,"rel":0.02,"why":"Value: you divided the displacement by the force. The spring constant is force per unit displacement, k = |F|/|x|."},{"value":0.24,"rel":0.02,"why":"Value: you multiplied force by displacement. k = |F|/|x| = 2.4 N / 0.10 m."}]},"why":{"correct":"From any row, k = |F|/|x| = 2.4 N / 0.10 m = 24 N/m. Every row gives the same value, which is what makes the force proportional to x."}},{"id":"phys-shm-intro-3","type":"numeric","unit":"unit-7","topic":"shm-intro","practice":"2.B","level":"apply","diff":2,"stimulus":"shm-intro-s1","q":"The glider is pulled to x = +0.080 m and released. What is its acceleration at the moment of release? Take + to the right, include the sign, and give the unit.","numeric":{"answer":-4.8,"tol":0.1,"unit":"m/s^2","sigfigs":2,"askUnit":true,"mistakes":[{"value":-1.9,"rel":0.02,"why":"Value: that is the spring force in newtons. Newton's second law gives a = F/m: divide by the 0.40 kg mass."},{"value":4.8,"rel":0.02,"why":"Value: the size is right but the direction is wrong. At x = +0.080 m the spring pulls the glider back toward x = 0, so a is negative."}]},"why":{"correct":"F = −kx = −(24 N/m)(0.080 m) = −1.92 N. a = F/m = −1.92 N / 0.40 kg = −4.8 m/s², toward equilibrium."}},{"id":"phys-shm-intro-4","type":"single","unit":"unit-7","topic":"shm-intro","practice":"3.B","level":"apply","diff":2,"stimulus":"shm-intro-s1","q":"When the oscillating glider passes x = 0 moving to the right, what is the net force on it?","options":["Zero, even though the glider is moving fast","To the right, in the direction it is moving","To the left, because it will soon turn around","Its largest value, because its speed is largest"],"correct":0,"why":{"correct":"At x = 0 the spring is relaxed, so the spring force is zero; gravity and the normal force cancel on the level track. Zero net force means zero acceleration at that instant, not zero velocity.","options":["Right: x = 0 is the equilibrium position, where the net force is zero.","This is the \"a force is needed to keep it moving\" idea. The glider keeps moving at x = 0 with no net force at that instant.","The force points left only once the glider is to the right of x = 0 and the spring is stretched.","This mixes up force with speed. The force depends on the displacement, which is zero here."]}},{"id":"phys-shm-intro-13","type":"single","unit":"unit-7","topic":"shm-intro","practice":"3.B","level":"analyze","diff":2,"q":"The block hanging from the vertical spring is pulled down and released. When it is at its lowest point, what is the direction of the net force on it?","options":["Upward, toward the equilibrium position","Downward, because its weight pulls down","Zero, because it is momentarily at rest","Downward, in the direction it was moving"],"correct":0,"why":{"correct":"Below equilibrium the spring is stretched more than at equilibrium, so its upward pull is larger than the weight. The net force points up, toward equilibrium, as a restoring force should.","options":["Right: the spring force exceeds the weight below equilibrium.","The weight is there, but the spring's upward pull is larger at the lowest point.","At rest for an instant does not mean zero net force; this is where the net force is largest.","The net force does not follow the motion; it follows the displacement, pointing back toward equilibrium."]}},{"id":"phys-shm-intro-14","type":"single","unit":"unit-7","topic":"shm-intro","practice":"2.C","level":"apply","diff":2,"q":"A cart on a horizontal spring oscillates between x = −A and x = +A. Where is the size of its acceleration greatest?","options":["At x = −A and x = +A","At x = 0","At x = −A/2 and x = +A/2","The same size at each position along the track"],"correct":0,"why":{"correct":"The net force is −kx, so its size is largest where |x| is largest, at the turning points. By Newton's second law the acceleration is largest there too, even though the speed is zero.","options":["Right: largest displacement, largest restoring force, largest acceleration.","At x = 0 the net force is zero, so the acceleration is zero; this is where the speed is greatest.","The force at ±A/2 is half its value at ±A.","A constant acceleration would need a constant force; the spring force changes with x."]}}],"stimuli":{"shm-intro-s1":{"kind":"table","title":"Force on a glider from a spring","html":"\u003cdiv class=\"phys-stim-text\">\u003cp>A 0.40 kg glider on a level air track is attached to a spring. A student holds the glider at several positions and reads the force the spring exerts on it with a force sensor. Position is measured from where the spring is relaxed; + is to the right.\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Spring force on the glider at each position\">\u003ctable class=\"phys-data\">\u003ccaption>Spring force on the glider at each position\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Position x (m)\u003c/th>\u003cth scope=\"col\">Force from spring F (N)\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">−0.10\u003c/th>\u003ctd>+2.4\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">−0.05\u003c/th>\u003ctd>+1.2\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">0\u003c/th>\u003ctd>0\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">+0.05\u003c/th>\u003ctd>−1.2\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">+0.10\u003c/th>\u003ctd>−2.4\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApPhysSection = 'learn'; window.ApPhysBase = '../';</script>
+<script src="../assets/phys-curriculum.js" defer></script>
+<script src="../assets/phys-core.js" defer></script>
+<script src="../assets/phys-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/phys-questions.js" defer></script>
+<script src="../assets/phys-lesson.js" defer></script>
+</body>
+</html>

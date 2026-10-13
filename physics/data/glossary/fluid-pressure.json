@@ -1,0 +1,11 @@
+{
+ "pressure": {
+  "def": "The perpendicular force per unit area on a surface, P = F⊥/A, a scalar measured in pascals (1 Pa = 1 N/m²)."
+ },
+ "hydrostatic-pressure": {
+  "def": "The pressure at a depth h in a fluid at rest: P = P₀ + ρgh, set by depth, not by the container's shape."
+ },
+ "gauge-pressure": {
+  "def": "The pressure above atmospheric pressure, P_gauge = P − P₀ = ρgh in a liquid; absolute pressure P includes the atmosphere's P₀ ≈ 1.0 × 10⁵ Pa."
+ }
+}

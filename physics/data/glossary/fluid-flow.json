@@ -1,0 +1,14 @@
+{
+ "volume-flow-rate": {
+  "def": "The volume of fluid passing a point each second, Av (area × speed), in m³/s."
+ },
+ "continuity": {
+  "def": "For an incompressible fluid in a full pipe, the volume flow rate is the same everywhere: A₁v₁ = A₂v₂. It expresses conservation of mass."
+ },
+ "bernoulli": {
+  "def": "P₁ + ρgy₁ + ½ρv₁² = P₂ + ρgy₂ + ½ρv₂² along an ideal fluid's flow: conservation of energy per unit volume."
+ },
+ "torricelli": {
+  "def": "The speed of fluid leaving a small opening a depth h below an open surface: v = √(2gh), derived from Bernoulli's equation."
+ }
+}

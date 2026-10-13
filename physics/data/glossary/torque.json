@@ -1,0 +1,14 @@
+{
+ "line-of-action": {
+  "def": "The straight line through a force’s point of application, along the force’s direction, extended both ways."
+ },
+ "torque": {
+  "def": "The turning effect of a force about an axis: τ = r⊥F = rF sin θ, in N·m. Sign gives the direction, clockwise or counterclockwise. The net torque is the sum with signs."
+ },
+ "lever-arm": {
+  "def": "The perpendicular distance r⊥ from the axis of rotation to a force’s line of action: r⊥ = r sin θ. A force whose line passes through the axis has zero lever arm."
+ },
+ "force-diagram": {
+  "def": "A diagram of an extended object that draws each force from the point where it acts, labeled with its type and agent, so torques about an axis can be read from it."
+ }
+}

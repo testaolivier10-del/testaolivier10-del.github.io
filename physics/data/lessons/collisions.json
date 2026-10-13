@@ -1,0 +1,94 @@
+{
+ "topic": "collisions",
+ "hook": "Crash investigators work backward from skid marks and the wreckage to how fast each car was going. Their key tool is that momentum survives every collision unchanged, while kinetic energy may not. Knowing which one to trust, and when, is the most-missed idea on the momentum free-response questions.",
+ "prereq": [
+  {
+   "q": "With zero net external force on a system, its total momentum",
+   "options": [
+    "stays constant",
+    "decreases",
+    "becomes zero",
+    "equals its kinetic energy"
+   ],
+   "correct": 0,
+   "why": "Conservation of momentum.",
+   "review": "momentum-conservation"
+  },
+  {
+   "q": "Kinetic friction inside a system turns mechanical energy into",
+   "options": [
+    "thermal energy",
+    "momentum",
+    "potential energy",
+    "impulse"
+   ],
+   "correct": 0,
+   "why": "Nonconservative forces dissipate mechanical energy as thermal energy.",
+   "review": "energy-conservation"
+  },
+  {
+   "q": "A cart of mass m at speed v has kinetic energy",
+   "options": [
+    "½mv²",
+    "mv",
+    "mv²",
+    "½mv"
+   ],
+   "correct": 0,
+   "why": "K = ½mv².",
+   "review": "kinetic-energy"
+  }
+ ],
+ "figure": {
+  "figure": "collision-types",
+  "caption": "The same collision with three outcomes: momentum is the same every time; kinetic energy is unchanged only when the collision is elastic."
+ },
+ "chain": [
+  {
+   "cause": "Two objects collide with no net external force",
+   "effect": "the system's momentum is the same before and after, whatever the type of collision"
+  },
+  {
+   "cause": "The objects deform and spring back fully",
+   "effect": "the collision is elastic: total kinetic energy is unchanged, though it moves between the objects"
+  },
+  {
+   "cause": "Part of the deformation is permanent (heat, sound)",
+   "effect": "the collision is inelastic: total kinetic energy decreases"
+  },
+  {
+   "cause": "The objects stick together",
+   "effect": "the collision is perfectly inelastic: one common final velocity, the largest possible loss of kinetic energy"
+  }
+ ],
+ "ideas": [
+  "Momentum first: in every collision with no net external force, Σp_before = Σp_after.",
+  "<b>Elastic collision</b>: total kinetic energy unchanged (individual K can change). <b>Inelastic</b>: total K decreases. <b>Perfectly inelastic</b>: objects stick, v_f = Σp/Σm.",
+  "Never use energy conservation to find the speed after a sticky collision. Use momentum, then use energy afterward if needed.",
+  "A <b>momentum bar chart</b> shows each object's momentum (with sign) before and after; the total bars match.",
+  "A bounce delivers more impulse than a stick: reversing momentum is a bigger change than stopping."
+ ],
+ "misconception": {
+  "wrong": "Momentum and kinetic energy are both conserved in every collision.",
+  "right": "Momentum is conserved in every collision with no net external force. Kinetic energy is conserved only in elastic collisions; when objects stick, kinetic energy always decreases."
+ },
+ "check": [
+  "phys-collisions-1",
+  "phys-collisions-2",
+  "phys-collisions-3",
+  "phys-collisions-6",
+  "phys-collisions-7",
+  "phys-collisions-8"
+ ],
+ "summary": "Collisions conserve momentum when no net external force acts. Elastic collisions also keep the total kinetic energy; inelastic ones lose some; perfectly inelastic ones stick and lose the most. Start every collision from momentum, and use energy only when the collision is elastic or after it is over.",
+ "connections": [
+  {
+   "href": "../notes/momentum-conservation.html",
+   "label": "Back: conservation of momentum (4.3)"
+  },
+  {
+   "href": "../notes/energy-conservation.html",
+   "label": "Review: conservation of energy (3.4)"
+  }
+ ]
+}

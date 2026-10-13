@@ -1,0 +1,82 @@
+{
+ "topic": "math-trig-components",
+ "hook": "A kicked ball does two things at once: it travels across the field and it rises and falls. Trigonometry splits its velocity into those two parts, the horizontal and the vertical, so each can be handled with the one-line motion you already know.",
+ "prereq": [
+  {
+   "q": "Solve y = A sin θ for A.",
+   "options": [
+    "A = y / sin θ",
+    "A = y sin θ",
+    "A = sin θ / y",
+    "A = y − sin θ"
+   ],
+   "correct": 0,
+   "why": "Divide both sides by sin θ.",
+   "review": "math-symbols"
+  },
+  {
+   "q": "Displacements of +5.0 m and −2.0 m along a line add to",
+   "options": [
+    "+3.0 m",
+    "+7.0 m",
+    "−3.0 m",
+    "−7.0 m"
+   ],
+   "correct": 0,
+   "why": "Add the signed values.",
+   "review": "scalars-vectors"
+  }
+ ],
+ "figure": {
+  "figure": "kick-components",
+  "caption": "A velocity is the hypotenuse of a right triangle whose legs are its horizontal and vertical components."
+ },
+ "chain": [
+  {
+   "cause": "A vector points at an angle to the axes",
+   "effect": "it forms the hypotenuse of a right triangle whose legs lie along the axes"
+  },
+  {
+   "cause": "You know the magnitude and the angle",
+   "effect": "the leg adjacent to the angle is A cos θ and the leg opposite it is A sin θ"
+  },
+  {
+   "cause": "You know both components",
+   "effect": "the magnitude is the square root of (x-component² + y-component²), and tan θ = y-component ÷ x-component"
+  },
+  {
+   "cause": "You add vectors that are not along one line",
+   "effect": "you add their x-components and their y-components separately"
+  }
+ ],
+ "ideas": [
+  "SOH CAH TOA: sin θ = opposite/hypotenuse, cos θ = adjacent/hypotenuse, tan θ = opposite/adjacent.",
+  "Components: the side <b>adjacent</b> to the given angle is A cos θ; the side <b>opposite</b> it is A sin θ. Check which axis the angle is measured from.",
+  "Back to the vector: magnitude = √(Aₓ² + A<sub>y</sub>²); angle = tan⁻¹(A<sub>y</sub>/Aₓ).",
+  "Set your calculator to <b>degree mode</b>. The sheet lists 37° and 53° (the 3-4-5 triangle): sin 37° ≈ 0.60, cos 37° ≈ 0.80.",
+  "Add vectors tip to tail, or by adding x-components and y-components separately."
+ ],
+ "misconception": {
+  "wrong": "The x-component always uses cosine and the y-component always uses sine.",
+  "right": "Cosine goes with the side adjacent to the angle you are given. If the angle is measured from the vertical (or from the ramp), the horizontal component uses sine."
+ },
+ "check": [
+  "phys-math-trig-components-1",
+  "phys-math-trig-components-2",
+  "phys-math-trig-components-3",
+  "phys-math-trig-components-4",
+  "phys-math-trig-components-5",
+  "phys-math-trig-components-7"
+ ],
+ "summary": "A vector at an angle is the hypotenuse of a right triangle. The component adjacent to the given angle is A cos θ and the opposite one is A sin θ; the magnitude is the square root of the sum of the squared components. Add vectors by components, with the calculator in degree mode.",
+ "connections": [
+  {
+   "href": "../notes/reference-frames.html",
+   "label": "Back: reference frames (1.4)"
+  },
+  {
+   "href": "../notes/motion-2d.html",
+   "label": "Next: motion in two dimensions (1.5)"
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+{
+ "conservation-of-momentum": {
+  "def": "When the net external force on a system is zero, the system's total momentum stays constant."
+ },
+ "system-choice": {
+  "def": "Deciding which objects are inside the system; it determines which forces are internal (cannot change the total momentum) and which are external (can)."
+ }
+}

@@ -67,6 +67,15 @@
       path: '/chem/', dir: 'chem', storagePrefix: 'apchem_', rankLabel: 'Chemistry rank',
       searchLabel: 'Chemistry', aliases: ['chem', 'chemistry'], paid: true, status: 'beta', order: 5,
     },
+    {
+      // As AP® Chemistry (docs/apphys-spec.md decision 2): the mark only in
+      // the full names, never in a URL; the key travels as its folder, "physics".
+      // Was 'hidden' until published (docs/apphys-spec.md decision 6); 'beta'
+      // since the launch (decision 11).
+      key: 'apphys', short: 'Physics', name: 'AP® Physics 1', productName: 'AP® Physics 1',
+      path: '/physics/', dir: 'physics', storagePrefix: 'apphys_', rankLabel: 'Physics rank',
+      searchLabel: 'Physics', aliases: ['physics', 'phys', 'physics-1'], paid: true, status: 'beta', order: 6,
+    },
   ];
 
   var list = LIST.slice().sort(function (a, b) { return a.order - b.order; });

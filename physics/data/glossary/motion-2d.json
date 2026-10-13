@@ -1,0 +1,17 @@
+{
+ "independent-components": {
+  "def": "In two-dimensional motion, the horizontal and vertical components each follow their own one-dimensional rules; what happens in one direction does not affect the other. Only the time is shared."
+ },
+ "projectile": {
+  "def": "An object that, after launch, moves under gravity alone (air resistance negligible): zero horizontal acceleration and a constant downward acceleration g."
+ },
+ "launch-angle": {
+  "def": "The angle between a projectile's initial velocity and the horizontal. It sets how the launch speed splits: horizontal v cos θ, vertical v sin θ."
+ },
+ "horizontal-range": {
+  "def": "The horizontal distance a projectile travels before landing: the horizontal velocity times the time of flight."
+ },
+ "time-of-flight": {
+  "def": "How long a projectile is in the air. It is set by the vertical motion alone: the vertical launch velocity, the height and g."
+ }
+}

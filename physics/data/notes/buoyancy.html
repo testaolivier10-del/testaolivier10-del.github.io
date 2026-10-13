@@ -1,0 +1,48 @@
+<p>Lift a friend in a swimming pool and they feel light. Hang a stone from a spring scale and lower it into water, and the reading drops. The water is pushing up. This page explains where that push comes from, why it equals the weight of the water pushed aside, and how to use it with Newton's laws. The 2025 exam's last free-response question was on exactly this, so it is worth getting right.</p>
+
+<h2>Where the buoyant force comes from</h2>
+<p>Put a block under water. From the last topic, the pressure at any point in the water is P = P₀ + ρgh, so it grows with depth. The water pushes on every face of the block, perpendicular to that face:</p>
+<ul>
+<li>The pushes on the left and right faces are at matching depths, so they cancel.</li>
+<li>The push down on the top face comes from the pressure at the top's depth.</li>
+<li>The push up on the bottom face comes from the pressure at the bottom's depth, which is larger.</li>
+</ul>
+<p>So the water's pushes add up to a net upward force. That is the <b>buoyant force</b>, F<sub>b</sub>.</p>
+<figure id="fig-buoy" data-fig="buoyancy-forces"><figcaption>Left: the water pushes up on the bottom harder than it pushes down on the top. Right: the block's free-body diagram.</figcaption></figure>
+<p>Now find its size. Let the block have height h and top and bottom area A. The pressure difference between bottom and top is ρ<sub>fluid</sub>gh, so</p>
+<p style="text-align:center">F<sub>b</sub> = (P<sub>bottom</sub> − P<sub>top</sub>)A = ρ<sub>fluid</sub>ghA = <b>ρ<sub>fluid</sub>V<sub>displaced</sub>g</b></p>
+<p>since hA is the block's volume, the volume of water it has pushed aside. Notice that the depth of the block cancels out: once an object is fully submerged, moving it deeper does not change its buoyant force.</p>
+
+<h2>Archimedes' principle</h2>
+<p>ρ<sub>fluid</sub>V<sub>displaced</sub> is the mass of the fluid the object pushes aside, so ρ<sub>fluid</sub>V<sub>displaced</sub>g is that fluid's weight. This is <b>Archimedes' principle</b>: the buoyant force on an object equals the weight of the fluid it displaces.</p>
+<p>There is a neat way to see why it holds for any shape. Imagine a <b>fluid parcel</b>, a portion of the water itself, with exactly the stone's shape, sitting in the lake. The parcel is at rest, so by Newton's first law the surrounding water pushes up on it with a force equal to its weight. Replace the parcel with the stone. The surrounding water pushes on the stone's surface exactly as it pushed on the parcel's, so the stone feels the same upward force: the weight of a stone-shaped parcel of water.</p>
+<p>Three things the buoyant force does <b>not</b> depend on: the object's density, the object's weight, and (once it is fully submerged) its depth. It depends on the fluid's density and the displaced volume.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A 2.0 kg stone of volume 8.0 × 10⁻⁴ m³ hangs from a spring scale, fully under water. Find the buoyant force and the scale reading. Use g = 9.8 m/s².</p>
+<p>Archimedes: F<sub>b</sub> = ρ<sub>w</sub>Vg = (1000 kg/m³)(8.0 × 10⁻⁴ m³)(9.8 m/s²) = 7.84 N ≈ <b>7.8 N</b>.</p>
+<p>Newton's first law on the stone (at rest), up positive: F<sub>T</sub> + F<sub>b</sub> − mg = 0.</p>
+<p>F<sub>T</sub> = mg − F<sub>b</sub> = (2.0 kg)(9.8 m/s²) − 7.84 N = 19.6 N − 7.84 N = <b>12 N</b>. The scale reads 12 N.</p>
+</div>
+
+<h2>Newton's laws with buoyancy</h2>
+<p>Treat the buoyant force as one more force on the free-body diagram. Draw it <b>up</b>, from the object, labeled with its agent ("F<sub>b</sub>, water on block"), and keep the gravitational force as a <b>separate</b> arrow, down. Readers report students drawing only one of the two, or both in the same direction, or thinking gravity itself changes in water. It does not: mg is the same in air and in water.</p>
+<table class="compare">
+<thead><tr><th>Situation</th><th>Forces</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>Floating at rest</td><td>F<sub>b</sub> = mg</td><td>fraction submerged = ρ<sub>object</sub>/ρ<sub>fluid</sub></td></tr>
+<tr><td>Held under by a string</td><td>F<sub>b</sub> = mg + F<sub>T</sub></td><td>object less dense than fluid</td></tr>
+<tr><td>Hanging from a scale, submerged</td><td>F<sub>T</sub> + F<sub>b</sub> = mg</td><td>scale reads less than mg</td></tr>
+<tr><td>Resting on the bottom</td><td>F<sub>b</sub> + F<sub>N</sub> = mg</td><td>object denser than fluid</td></tr>
+<tr><td>Released under water</td><td>ma = mg − F<sub>b</sub></td><td>sinks if ρ<sub>object</sub> &gt; ρ<sub>fluid</sub></td></tr>
+</tbody></table>
+
+<h2>Floating</h2>
+<p>A floating object sits still at the surface, so the net force on it is zero: the buoyant force exactly balances its weight. (When that balance holds for an object fully under the surface, so it hangs in the fluid without rising or sinking, the object has <b>neutral buoyancy</b>: its average density equals the fluid's, as for a fish or a submarine holding its depth.) The object sinks into the fluid only as far as it needs to displace its own weight of fluid:</p>
+<p style="text-align:center">ρ<sub>fluid</sub>V<sub>sub</sub>g = ρ<sub>object</sub>Vg &nbsp;so&nbsp; <b>V<sub>sub</sub>/V = ρ<sub>object</sub>/ρ<sub>fluid</sub></b></p>
+<p>Wood of density 600 kg/m³ floats with 60% of its volume under fresh water. An object denser than the fluid cannot displace enough fluid even when fully under, so it sinks. A steel ship floats because its hollow shape displaces a huge volume of water: its <i>average</i> density, steel plus air inside, is less than water's.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A 0.50 kg block of density 2500 kg/m³ is released under water. Find its acceleration, neglecting drag. Use g = 9.8 m/s².</p>
+<p>V = m/ρ = 0.50 kg / 2500 kg/m³ = 2.0 × 10⁻⁴ m³; F<sub>b</sub> = (1000)(2.0 × 10⁻⁴)(9.8) N = 1.96 N.</p>
+<p>Newton's second law, down positive: ma = mg − F<sub>b</sub> = 4.90 N − 1.96 N = 2.94 N, so a = 2.94 N / 0.50 kg = <b>5.9 m/s²</b> downward.</p>
+<p>In general a = g(1 − ρ<sub>fluid</sub>/ρ<sub>object</sub>): a denser fluid gives a smaller acceleration, because it gives a larger buoyant force.</p>
+</div>

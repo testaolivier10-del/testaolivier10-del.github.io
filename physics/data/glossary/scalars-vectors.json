@@ -1,0 +1,32 @@
+{
+ "scalar": {
+  "def": "A quantity with a size (and a unit) but no direction, such as distance, speed, time or mass."
+ },
+ "vector": {
+  "def": "A quantity with both a size and a direction, such as displacement or velocity. Along a line, its sign gives its direction."
+ },
+ "magnitude": {
+  "def": "The size of a vector, with no direction: always zero or positive. The magnitude of a velocity of −4.2 m/s is 4.2 m/s."
+ },
+ "position": {
+  "def": "Where an object is, measured from an origin along a chosen positive direction, in meters. Along a line it is one signed number, x."
+ },
+ "coordinate-system": {
+  "def": "The choice of an origin (zero point) and a positive direction (an x-axis) used to give positions as numbers."
+ },
+ "distance": {
+  "def": "The total length of the path an object travels: a scalar that counts every meter and never decreases."
+ },
+ "displacement": {
+  "def": "The change in position: final position minus starting position. A vector; along a line its sign gives its direction."
+ },
+ "speed": {
+  "def": "How fast an object moves, as a distance per time (m/s): a scalar, the magnitude of the velocity."
+ },
+ "velocity": {
+  "def": "How fast an object moves and in which direction: displacement per time, in m/s. A vector; its magnitude is the speed."
+ },
+ "vector-sum-1d": {
+  "def": "Adding vectors along one line by adding their signed values: +12 m and −5 m add to +7 m. The result is the resultant."
+ }
+}

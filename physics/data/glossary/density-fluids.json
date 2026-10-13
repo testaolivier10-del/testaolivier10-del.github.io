@@ -1,0 +1,14 @@
+{
+ "state-of-matter": {
+  "def": "One of the forms matter takes (solid, liquid or gas), set by how closely its particles are packed and how freely they move."
+ },
+ "fluid": {
+  "def": "A substance that flows and takes the shape of its container, because its particles can move past one another: a liquid or a gas."
+ },
+ "density": {
+  "def": "Mass per unit volume, ρ = m/V, in kg/m³. A property of the material, not of the amount; water is about 1000 kg/m³."
+ },
+ "ideal-fluid": {
+  "def": "A model fluid that is incompressible (constant density) and nonviscous (no internal friction), flowing smoothly; the exam's fluids are ideal unless stated."
+ }
+}

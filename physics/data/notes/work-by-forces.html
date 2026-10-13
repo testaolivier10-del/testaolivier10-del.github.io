@@ -1,0 +1,55 @@
+<p>Kinetic energy tells you how much energy of motion an object has. <b>Work</b> tells you how a force changes it. In everyday speech, holding a heavy bag still for a minute is hard work. In physics it is no work at all, because nothing moves. This page defines work precisely, shows when it is positive, negative or zero, and connects it to kinetic energy with the work-energy theorem.</p>
+
+<h2>What work means</h2>
+<p>When a force acts on an object while the object moves, the force can move energy into or out of the object. That transfer is the <b>work</b> done by the force. For a constant force F and a straight displacement d, with θ the angle between the force and the displacement,</p>
+<p style="text-align:center"><b>W = F d cos θ</b></p>
+<p>Only the part of the force along the displacement, F cos θ, does work. Work is a scalar measured in joules: 1 J = 1 N·m, the same joule as kinetic energy. That is not a coincidence: work is energy on the move.</p>
+
+<h2>Positive, negative or zero</h2>
+<figure id="fig-work" data-fig="work-pulled-crate"><figcaption>The four forces on a pulled crate and the work each does over the displacement.</figcaption></figure>
+<p>The angle θ decides the sign:</p>
+<ul>
+<li>θ less than 90°: the force has a component along the motion, cos θ is positive, and the work is <b>positive</b>. Energy enters the object. The rope pulling the crate forward does positive work.</li>
+<li>θ = 180°: the force points against the motion, cos θ = −1, and the work is <b>negative</b>. Energy leaves the object. Kinetic friction on a sliding crate always does negative work on it.</li>
+<li>θ = 90°: the force is perpendicular to the motion, cos 90° = 0, and the force does <b>no work</b>. The normal force and the gravitational force on a crate sliding across a level floor do none.</li>
+</ul>
+<p>A force perpendicular to the velocity can still change the direction of motion, but it cannot change the speed. A ball whirled in a horizontal circle on a string on a smooth table keeps its speed because the string's pull, toward the center, is always at 90° to the velocity.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A rope pulls a 25.0 kg crate 5.00 m to the right with a 60.0 N force at 25° above the horizontal. Kinetic friction of 35.0 N acts on the crate. Find the work done by each force and the net work.</p>
+<p>Rope: W_T = F_T d cos 25° = (60.0 N)(5.00 m)(0.906) = 272 J.</p>
+<p>Friction (θ = 180°): W_f = −(35.0 N)(5.00 m) = −175 J.</p>
+<p>Normal force and gravitational force (θ = 90°): 0 J each.</p>
+<p>Net work: W_net = 272 J − 175 J + 0 + 0 = 97 J.</p>
+</div>
+
+<h2>The work-energy theorem</h2>
+<p>Add up the work done by every force on an object and you get the net work. The <b>work-energy theorem</b> says the net work equals the change in the object's kinetic energy:</p>
+<p style="text-align:center"><b>W_net = ΔK = ½mv_f² − ½mv_i²</b></p>
+<p>The reason is Newton's second law. The net force gives the object an acceleration, and the kinematic equation v² = v₀² + 2aΔx turns that acceleration over a distance into a change in v². Multiply by ½m and you have ΔK = F_net d.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> The crate in example 1 starts from rest. How fast does it move after the 5.00 m?</p>
+<p>Work-energy theorem: W_net = ½mv² − 0.</p>
+<p>v = √(2W_net/m) = √(2 × 96.9 J / 25.0 kg) = 2.78 m/s.</p>
+</div>
+<p>The theorem also works backward. If an object moves at constant speed, the net work on it is zero, even if several forces are doing work: a crate pulled up a ramp at steady speed has positive work from the rope and an equal total of negative work from gravity (and any friction).</p>
+
+<h2>Work from a force-position graph</h2>
+<p>Many forces change as an object moves: a stretched band pulls hard at first and less as it relaxes. Split the motion into thin slices; in each slice the force is nearly constant, and the work is F × Δx, the area of a thin strip. Add the strips and you get the <b>area under the force-position graph</b>.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A band's force on a 0.50 kg cart is 10. N from x = 0 to 0.20 m, then falls in a straight line to zero at x = 0.50 m. How much work does it do, and how fast is the cart (from rest) at 0.50 m?</p>
+<p>Area: rectangle (10. N)(0.20 m) = 2.0 J plus triangle ½(10. N)(0.30 m) = 1.5 J, so W = 3.5 J.</p>
+<p>The band is the only force doing work along the level track, so ΔK = 3.5 J and v = √(2 × 3.5 J / 0.50 kg) = 3.7 m/s.</p>
+</div>
+<p>Area below the position axis (a force opposite the motion) counts as negative work.</p>
+
+<h2>Work as an energy transfer</h2>
+<p>Choose a system and draw its boundary. A force from outside the system that does work moves energy across that boundary: positive work brings energy in, negative work takes it out. This idea, energy transfer by work, is the key to keeping track of energy for the rest of the unit.</p>
+<p>One warning about friction: the work it does depends on the path length, not only on where the object starts and ends. Drag a crate 3.0 m north and 3.0 m back, and friction does −f(6.0 m) of work, even though the crate ends where it started.</p>
+
+<h2>Common slips</h2>
+<table class="compare"><thead><tr><th>Slip</th><th>Fix</th></tr></thead><tbody>
+<tr><td>Using sin θ, or the whole force, for an angled pull</td><td>θ is from the force to the displacement: W = F d cos θ</td></tr>
+<tr><td>Giving gravity or the normal force work on level ground</td><td>A force perpendicular to the motion does no work</td></tr>
+<tr><td>Adding friction's work as positive</td><td>Friction opposes sliding: its work on the sliding object is negative</td></tr>
+<tr><td>Using one force's work in the work-energy theorem</td><td>ΔK equals the net work, the sum over all forces</td></tr>
+</tbody></table>

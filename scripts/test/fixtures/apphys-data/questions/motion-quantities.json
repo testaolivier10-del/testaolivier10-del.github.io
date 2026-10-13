@@ -1,0 +1,424 @@
+{
+ "stimuli": {
+  "motion-quantities-s1": {
+   "kind": "table",
+   "title": "A cart timed at four marks",
+   "text": "<p>A student times a cart rolling along a level track and records its position at each time.</p>",
+   "table": {
+    "caption": "Position of the cart",
+    "cols": [
+     "Time (s)",
+     "Position (m)"
+    ],
+    "rows": [
+     [
+      "0.0",
+      "0.20"
+     ],
+     [
+      "1.0",
+      "0.60"
+     ],
+     [
+      "2.0",
+      "1.00"
+     ],
+     [
+      "3.0",
+      "1.40"
+     ]
+    ]
+   }
+  },
+  "motion-quantities-s2": {
+   "kind": "diagram",
+   "title": "A cart and a motion detector",
+   "html": "<svg role=\"img\" aria-label=\"A cart on a straight track moving right, with a motion detector at the left end and a meter scale from 0 to 2.0 m\" viewBox=\"0 0 400 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"10\" y=\"80\" width=\"380\" height=\"6\" fill=\"#888\"/><rect x=\"10\" y=\"50\" width=\"26\" height=\"30\" fill=\"#555\"/><rect x=\"180\" y=\"58\" width=\"60\" height=\"22\" rx=\"4\" fill=\"#C27A12\"/><circle cx=\"195\" cy=\"84\" r=\"6\" fill=\"#333\"/><circle cx=\"225\" cy=\"84\" r=\"6\" fill=\"#333\"/><line x1=\"245\" y1=\"66\" x2=\"300\" y2=\"66\" stroke=\"#333\" stroke-width=\"3\"/><polygon points=\"300,60 312,66 300,72\" fill=\"#333\"/><text x=\"20\" y=\"110\" font-size=\"12\">0</text><text x=\"370\" y=\"110\" font-size=\"12\">2.0 m</text></svg><p>Key: the box at the left is the motion detector; the arrow shows the cart's direction of motion.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "phys-motion-quantities-1",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-quantities",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-quantities-s1",
+   "q": "What is the cart's average velocity from 0.0 s to 3.0 s?",
+   "options": [
+    "0.40 m/s",
+    "0.47 m/s",
+    "1.20 m/s",
+    "0.13 m/s"
+   ],
+   "why": {
+    "correct": "Average velocity is Δx/Δt = (1.40 m − 0.20 m) / 3.0 s = 0.40 m/s.",
+    "options": [
+     "Right: the change in position divided by the time interval.",
+     "This divides the final position by the time; it ignores the starting position of 0.20 m.",
+     "This is the change in position alone, with no division by the time interval.",
+     "This divides the time by the position change instead of position by time."
+    ]
+   },
+   "correct": 0
+  },
+  {
+   "id": "phys-motion-quantities-2",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "motion-quantities",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-quantities-s1",
+   "q": "What is the cart's displacement from 1.0 s to 3.0 s? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.8,
+    "tol": 0.01,
+    "unit": "m",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1.4,
+      "why": "Value: that is the final position, not the change in position. Subtract where it started."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Δx = 1.40 m − 0.60 m = 0.80 m, to two significant figures."
+   }
+  },
+  {
+   "id": "phys-motion-quantities-3",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-quantities",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "motion-quantities-s1",
+   "q": "How does the cart's velocity change over the four readings?",
+   "options": [
+    "It stays the same",
+    "It increases each second",
+    "It decreases each second",
+    "It reverses direction once"
+   ],
+   "why": {
+    "correct": "The position grows by 0.40 m every second, so the velocity is constant.",
+    "options": [
+     "Right: equal changes in equal times mean constant velocity.",
+     "The position changes by the same amount each second, so the velocity is not growing.",
+     "Each interval covers the same 0.40 m, so the cart is not slowing.",
+     "The position keeps increasing, so the cart never turns around."
+    ]
+   },
+   "correct": 0
+  },
+  {
+   "id": "phys-motion-quantities-4",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-quantities",
+   "practice": "2.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "motion-quantities-s1",
+   "q": "The cart keeps the same motion. Where is it at 5.0 s?",
+   "options": [
+    "2.20 m",
+    "2.00 m",
+    "1.80 m",
+    "2.40 m"
+   ],
+   "why": {
+    "correct": "It moves 0.40 m each second, so 2.0 s after 1.40 m it is at 1.40 + 0.80 = 2.20 m.",
+    "options": [
+     "Right: two more seconds at 0.40 m/s add 0.80 m.",
+     "This multiplies 0.40 m/s by 5.0 s and leaves out the starting position.",
+     "This adds only one second of motion after 3.0 s.",
+     "This adds 0.40 m for each of the five seconds to 0.40 m, not to the start."
+    ]
+   },
+   "correct": 0
+  },
+  {
+   "id": "phys-motion-quantities-5",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-quantities",
+   "practice": "3.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-quantities-s2",
+   "q": "The detector reports the cart's position increasing. Which sign does its velocity have, with positive to the right?",
+   "options": [
+    "Positive",
+    "Negative",
+    "Zero",
+    "It depends on the speed"
+   ],
+   "why": {
+    "correct": "Moving away from the detector to the right means position increases, so the velocity is positive.",
+    "options": [
+     "Right: the sign of velocity is the direction of motion.",
+     "Negative would mean the position decreases, toward the detector.",
+     "A zero velocity would leave the position unchanged.",
+     "The sign depends on the direction, not on how fast the cart moves."
+    ]
+   },
+   "correct": 0
+  },
+  {
+   "id": "phys-motion-quantities-6",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "motion-quantities",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-quantities-s2",
+   "q": "The cart goes from 0.50 m to 1.70 m in 2.0 s. What is its average velocity, in m/s?",
+   "numeric": {
+    "answer": 0.6,
+    "tol": 0.01,
+    "unit": "m/s",
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 0.85,
+      "why": "Value: that divides the final position by the time; use the change in position."
+     }
+    ]
+   },
+   "why": {
+    "correct": "v = Δx/Δt = (1.70 m − 0.50 m) / 2.0 s = 0.60 m/s."
+   }
+  },
+  {
+   "id": "phys-motion-quantities-7",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-quantities",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "motion-quantities-s2",
+   "q": "The cart speeds up while moving right. What is the direction of its acceleration?",
+   "options": [
+    "To the right",
+    "To the left",
+    "Up",
+    "Down"
+   ],
+   "why": {
+    "correct": "Speeding up means the acceleration points the same way as the velocity: right.",
+    "options": [
+     "Right: speeding up puts acceleration along the velocity.",
+     "An acceleration to the left would slow a cart moving right.",
+     "Nothing in the motion changes vertically.",
+     "The track is level and nothing changes vertically."
+    ]
+   },
+   "correct": 0
+  },
+  {
+   "id": "phys-motion-quantities-8",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "motion-quantities",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "motion-quantities-s2",
+   "q": "The cart's velocity rises from 0.20 m/s to 0.80 m/s in 3.0 s. What is its average acceleration? Give the value and its unit.",
+   "numeric": {
+    "answer": 0.2,
+    "tol": 0.01,
+    "unit": "m/s^2",
+    "units": [
+     "m/s/s"
+    ],
+    "askUnit": true,
+    "sigfigs": 2
+   },
+   "why": {
+    "correct": "a = Δv/Δt = (0.80 − 0.20) m/s / 3.0 s = 0.20 m/s²."
+   }
+  },
+  {
+   "id": "phys-motion-quantities-9",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-quantities",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which quantity is a vector?",
+   "options": [
+    "Displacement",
+    "Distance",
+    "Speed",
+    "Time"
+   ],
+   "why": {
+    "correct": "Displacement has a size and a direction.",
+    "options": [
+     "Right: it has a direction.",
+     "Distance is the path length, a size only.",
+     "Speed is a size only.",
+     "Time has no direction."
+    ]
+   },
+   "correct": 0
+  },
+  {
+   "id": "phys-motion-quantities-10",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-quantities",
+   "practice": "2.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "A runner goes 400 m around a track and stops where she started. What is her displacement?",
+   "options": [
+    "0 m",
+    "400 m",
+    "200 m",
+    "800 m"
+   ],
+   "why": {
+    "correct": "She ends where she began, so the change in position is zero.",
+    "options": [
+     "Right: same start and end position.",
+     "That is the distance, the path length.",
+     "Half the lap is not where she stops.",
+     "This doubles the distance for no reason."
+    ]
+   },
+   "correct": 0
+  },
+  {
+   "id": "phys-motion-quantities-11",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "motion-quantities",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A ball rolls 150 cm in 2.5 s. What is its average speed, in m/s?",
+   "numeric": {
+    "answer": 0.6,
+    "tol": 0.01,
+    "unit": "m/s",
+    "sigfigs": 2
+   },
+   "why": {
+    "correct": "150 cm = 1.50 m; 1.50 m / 2.5 s = 0.60 m/s."
+   }
+  },
+  {
+   "id": "phys-motion-quantities-12",
+   "type": "multi",
+   "unit": "unit-1",
+   "topic": "motion-quantities",
+   "practice": "2.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which of these describe an object that is accelerating?",
+   "options": [
+    "Its speed is increasing",
+    "Its direction is changing",
+    "It moves at a steady speed in a straight line",
+    "It stays at rest"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Acceleration is any change in velocity, in size or direction.",
+    "options": [
+     "Right: a change in speed.",
+     "Right: a change in direction.",
+     "Constant speed in a line means constant velocity.",
+     "At rest, the velocity stays zero."
+    ]
+   }
+  },
+  {
+   "id": "phys-motion-quantities-13",
+   "type": "order",
+   "unit": "unit-1",
+   "topic": "motion-quantities",
+   "practice": "2.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for finding an average velocity from two readings in order.",
+   "options": [
+    "Read the starting and final positions",
+    "Subtract to find the displacement",
+    "Find the time interval",
+    "Divide the displacement by the time interval"
+   ],
+   "why": {
+    "correct": "Positions, then their difference, then the time interval, then divide."
+   }
+  },
+  {
+   "id": "phys-motion-quantities-14",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-quantities",
+   "practice": "3.B",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Two carts have the same average velocity over 4.0 s. What must be true?",
+   "options": [
+    "They have the same displacement",
+    "They travel the same path",
+    "They have the same speed at 2.0 s",
+    "They start at the same place"
+   ],
+   "why": {
+    "correct": "Same average velocity over the same time means the same displacement.",
+    "options": [
+     "Right: Δx = v_avg Δt for both.",
+     "The paths can differ if one turns around.",
+     "An average over 4.0 s says nothing about the speed at one instant.",
+     "They can start anywhere and still move the same amount."
+    ]
+   },
+   "correct": 0
+  },
+  {
+   "id": "phys-motion-quantities-15",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "motion-quantities",
+   "practice": "2.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A car goes from 10 m/s to 4 m/s in 2.0 s, moving forward. What is its average acceleration?",
+   "options": [
+    "−3.0 m/s²",
+    "3.0 m/s²",
+    "−7.0 m/s²",
+    "−6.0 m/s²"
+   ],
+   "why": {
+    "correct": "a = (4 − 10) m/s / 2.0 s = −3.0 m/s²; negative because it slows while moving forward.",
+    "options": [
+     "Right: change in velocity over time, with its sign.",
+     "The size is right but the sign: slowing while moving forward is negative.",
+     "This uses the average of the speeds, not their change.",
+     "This is the change in velocity, not divided by the time."
+    ]
+   },
+   "correct": 0
+  }
+ ]
+}

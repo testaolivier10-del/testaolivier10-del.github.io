@@ -1,0 +1,71 @@
+{
+ "topic": "third-law",
+ "hook": "When you jump, you push down on the ground, yet you go up. When a rocket fires, it pushes gas backward and the rocket goes forward. Every force comes with a partner pushing the other way on the other object. Seeing those partners clearly is what lets you choose systems and ignore the forces inside them.",
+ "prereq": [
+  {
+   "q": "Every force on a free-body diagram has",
+   "options": [
+    "an agent that exerts it",
+    "the same size as the weight",
+    "a direction along the motion",
+    "a partner on the same diagram"
+   ],
+   "correct": 0,
+   "why": "A force is an interaction, so some object exerts it.",
+   "review": "forces-fbd"
+  },
+  {
+   "q": "A system is",
+   "options": [
+    "the objects you choose to study, inside a boundary",
+    "always a single object",
+    "everything except Earth",
+    "the object with the largest mass"
+   ],
+   "correct": 0,
+   "why": "You choose the system; the rest is the surroundings.",
+   "review": "systems-center-of-mass"
+  }
+ ],
+ "figure": {
+  "figure": "third-law-book-table",
+  "caption": "The two forces on the book are not partners. Each interaction gives a pair on two different objects."
+ },
+ "chain": [
+  {
+   "cause": "Object A exerts a force on object B",
+   "effect": "B exerts a force on A of the same size, the opposite direction and the same type"
+  },
+  {
+   "cause": "The two partner forces act on different objects",
+   "effect": "they appear on different free-body diagrams and never cancel each other"
+  },
+  {
+   "cause": "Both objects are inside the system you chose",
+   "effect": "the pair are internal forces and add to zero for the system"
+  },
+  {
+   "cause": "Only external forces are left in the sum for the system",
+   "effect": "only external forces can change how the system's center of mass moves"
+  }
+ ],
+ "ideas": [
+  "<b>Newton's third law</b>: if A pushes on B, B pushes on A with a force equal in size, opposite in direction, of the same type. Partners act on different objects.",
+  "To name a partner, swap the two objects and flip the direction: \"road on tire, forward\" ↔ \"tire on road, backward\".",
+  "<b>Internal forces</b> act between parts of the system and cancel in pairs; <b>external forces</b> come from the surroundings.",
+  "An <b>ideal string</b> is massless and does not stretch: one tension all along it. An <b>ideal pulley</b> is massless and frictionless: it turns the string without changing the tension."
+ ],
+ "misconception": {
+  "wrong": "The normal force and the weight of a book on a table are a third-law pair, because they are equal and opposite.",
+  "right": "Both act on the book, so they cannot be partners. The weight's partner is the book pulling up on Earth; the normal force's partner is the book pushing down on the table."
+ },
+ "check": [
+  "phys-third-law-1",
+  "phys-third-law-3",
+  "phys-third-law-5",
+  "phys-third-law-6",
+  "phys-third-law-10",
+  "phys-third-law-14"
+ ],
+ "summary": "Forces come in third-law pairs: equal in size, opposite in direction, same type, acting on two different objects, so they never cancel each other. Inside a chosen system the pairs are internal and add to zero; an ideal string carries one tension over an ideal pulley."
+}

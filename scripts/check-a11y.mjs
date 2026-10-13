@@ -99,6 +99,13 @@ const PAGES = [
   ['/chem/exams.html', 'the AP® Chemistry exams app'],
   ['/chem/frq.html', 'the AP® Chemistry free-response list'],
   ...bioPages('chem', 'AP® Chemistry'),
+  // AP® Physics 1, the same way; its topic pages join once a unit is published.
+  ['/physics/', 'the AP® Physics 1 course home'],
+  ['/physics/glossary.html', 'the AP® Physics 1 glossary'],
+  ['/physics/practice.html', 'the AP® Physics 1 practice builder'],
+  ['/physics/exams.html', 'the AP® Physics 1 exams app'],
+  ['/physics/frq.html', 'the AP® Physics 1 free-response list'],
+  ...bioPages('physics', 'AP® Physics 1'),
 ];
 
 /* The first published AP® Biology topic's lesson and notes page, the first

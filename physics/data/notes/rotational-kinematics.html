@@ -1,0 +1,53 @@
+<p>So far every object has been a point that slides from place to place. Real wheels, fans and doors also turn. A ceiling fan can spin for an hour and never leave its spot. This page builds the language of turning. The good news: you already know it. Every idea from one-dimensional motion comes back, with an angle in place of a position.</p>
+
+<h2>Turning about a fixed axis</h2>
+<p>Picture a bicycle wheel spinning on its axle. The <b>axis of rotation</b> is the line through the axle. Every point of the wheel moves in a circle centered on that line.</p>
+<p>We model the wheel as a <b>rigid system</b>: an object that keeps its shape. That one assumption does a lot of work. If the wheel keeps its shape, then when one spoke turns through some angle, every spoke, every point of the rim and every speck of the hub turns through the same angle in the same time. So one angle describes the whole wheel.</p>
+<p>In this course the axis stays fixed, and the object turns in one plane. We describe the direction of turning in words: <b>clockwise</b> or <b>counterclockwise</b>, as seen from a stated side.</p>
+
+<h2>Angles in radians</h2>
+<p>Degrees are fine for geometry, but physics measures turning in <b>radians</b>. The definition is a ratio of two lengths. Take a circle of radius r. Walk a distance s along its edge. The angle you turned through, in radians, is</p>
+<p style="text-align:center"><b>θ = s / r</b></p>
+<p>One radian is the angle where the distance along the edge equals the radius, about 57°. A full turn covers the whole circumference, 2πr, so one revolution is 2πr ÷ r = <b>2π rad</b>, which is 360°. Half a turn is π rad.</p>
+<figure id="fig-rad" data-fig="wheel-angle-radians"><figcaption>A wheel turned through 1 rad, and each linear quantity beside its rotational partner.</figcaption></figure>
+<p>Because the radian is a ratio of lengths, it has no real dimension. That is why "rad" can appear or vanish in a unit: rad/s and 1/s are the same unit. Keep writing "rad" anyway, so a reader knows you meant an angle.</p>
+
+<h2>Angular position, velocity and acceleration</h2>
+<p>Choose a reference line and a positive direction, usually counterclockwise. Then the wheel's <b>angular position</b> θ is a signed angle, just as x was a signed position on a line. The partners line up exactly:</p>
+<table class="compare"><thead><tr><th>Straight line</th><th>Rotation about a fixed axis</th></tr></thead><tbody>
+<tr><td>position x (m)</td><td>angle θ (rad)</td></tr>
+<tr><td>displacement Δx</td><td><b>angular displacement</b> Δθ = θ − θ₀</td></tr>
+<tr><td>velocity v = Δx/Δt (m/s)</td><td><b>angular velocity</b> ω = Δθ/Δt (rad/s)</td></tr>
+<tr><td>acceleration a = Δv/Δt (m/s²)</td><td><b>angular acceleration</b> α = Δω/Δt (rad/s²)</td></tr>
+</tbody></table>
+<p>Signs work the same way, too. With counterclockwise positive, a wheel turning clockwise has a negative ω. If α has the same sign as ω, the wheel speeds up. If α has the opposite sign, it slows down. A fan turning counterclockwise while it coasts to a stop has ω positive and α negative.</p>
+
+<h2>The three equations, with new letters</h2>
+<p>When the angular acceleration is constant, the reasoning that gave the kinematic equations works again, letter for letter. Swap x for θ, v for ω and a for α:</p>
+<p style="text-align:center"><b>ω = ω₀ + αt</b> &#160;&#160; <b>θ = θ₀ + ω₀t + ½αt²</b> &#160;&#160; <b>ω² = ω₀² + 2α(θ − θ₀)</b></p>
+<p>These are on the equations sheet. Pick the one that leaves out the quantity you neither know nor need, as you did for carts.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> A lathe chuck starts from rest and speeds up with a constant angular acceleration of 2.5 rad/s² for 4.0 s. How fast is it turning at the end, and through what angle has it turned?</p>
+<p>Principle: constant α, so the rotational kinematic equations apply. Counterclockwise is positive; ω₀ = 0.</p>
+<p>ω = ω₀ + αt = 0 + (2.5 rad/s²)(4.0 s) = <b>10. rad/s</b>.</p>
+<p>Δθ = ω₀t + ½αt² = 0 + ½(2.5 rad/s²)(4.0 s)² = <b>20. rad</b>. That is 20. ÷ 2π ≈ 3.2 revolutions.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> A drill bit speeds up from 15.0 rad/s to 45.0 rad/s with α = 4.00 rad/s². Through what angle does it turn?</p>
+<p>No time is given or asked, so use the equation without t: ω² = ω₀² + 2αΔθ.</p>
+<p>Δθ = (ω² − ω₀²)/(2α) = (45.0² − 15.0²)/(2 × 4.00) rad = 1800/8.00 rad = <b>225 rad</b>.</p>
+<p>A common slip is to square the change, (45.0 − 15.0)², which gives 113 rad. The equation subtracts the squares.</p>
+</div>
+
+<h2>Graphs of rotation</h2>
+<p>Rotational graphs read exactly like motion graphs. On a θ-t graph the slope is ω. On an ω-t graph the slope is α and the area under the line is the angular displacement Δθ.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A washing-machine drum speeds up steadily from rest to 30. rad/s in 2.0 s, spins at 30. rad/s until 7.0 s, then slows steadily to rest at 11.0 s. How far does it turn?</p>
+<p>The angle is the area under the ω-t graph: a triangle, a rectangle and a triangle.</p>
+<p>Δθ = ½(2.0 s)(30. rad/s) + (5.0 s)(30. rad/s) + ½(4.0 s)(30. rad/s) = 30. + 150 + 60. = <b>240 rad</b>.</p>
+</div>
+<p>Unit conversions come up often. An old record player spinning at 78 revolutions per minute turns at (78 rev/min)(2π rad/rev)(1 min/60 s) ≈ 8.2 rad/s.</p>
+
+<h2>One wheel, one ω</h2>
+<p>The most common slip in this topic comes from the rigid-system idea. A point near the rim and a point near the axle sweep out the same angle each second, so they have the <b>same</b> angular velocity and the same angular acceleration. The rim point moves faster through space, but that is a different quantity, its speed along the circle. The next topic links the two.</p>
+<aside class="going-further"><p><b>Going further:</b> physicists also treat angular velocity as a vector along the axis, with its direction set by a right-hand rule. This course does not use that; you describe turning as clockwise or counterclockwise.</p></aside>

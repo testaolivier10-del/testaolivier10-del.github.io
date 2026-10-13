@@ -1,0 +1,12 @@
+{
+ "equation-anatomy": {
+  "file": "figures/equation-anatomy.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The equation x = x-zero plus v t, with callouts: x is the position at time t in meters; x-zero, with subscript 0, is the starting position at t = 0; v is the velocity in meters per second; t is the time since the start in seconds. Below, a two-column rearrangement solves for t: x = x0 + vt; subtract x0 from both sides to get x − x0 = vt; divide both sides by v to get (x − x0)/v = t; write x − x0 as delta x, so t = delta x over v."
+ }
+}

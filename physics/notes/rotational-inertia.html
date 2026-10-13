@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rotational Inertia — AP® Physics 1 Notes | LevlPrep</title>
+<meta name="description" content="Mass tells you how hard it is to change an object's motion along a line.">
+<link rel="canonical" href="https://levlprep.com/physics/notes/rotational-inertia.html">
+<meta property="og:title" content="Rotational Inertia — AP® Physics 1 Notes | LevlPrep">
+<meta property="og:description" content="Mass tells you how hard it is to change an object's motion along a line.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/physics/notes/rotational-inertia.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/physics/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/phys.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/physics/notes/rotational-inertia.html#reading",
+      "name": "Rotational Inertia",
+      "url": "https://levlprep.com/physics/notes/rotational-inertia.html",
+      "description": "Mass tells you how hard it is to change an object's motion along a line.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "rotational inertia physics 1 explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/physics/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Physics 1",
+          "item": "https://levlprep.com/physics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Torque and Rotational Dynamics",
+          "item": "https://levlprep.com/physics/units/unit-5.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Rotational Inertia: notes",
+          "item": "https://levlprep.com/physics/notes/rotational-inertia.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="phys" data-topic="rotational-inertia" data-unit="unit-5">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="phys-rail" aria-expanded="false">&#9776; Unit 5 contents</button>
+  <aside class="tb-rail phys-nav-ref bk-rail" id="phys-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Linear Momentum</a>
+    <a class="bk-toc-chap" href="../units/unit-5.html"><span class="bk-toc-chap-n">5</span><span><b>Torque and Rotational Dynamics</b><small>6 topics</small></span></a>
+    <div class="phys-toc-prog" data-toc-prog="unit-5"><div class="tb-progress-row"><span><b>0</b> of 6 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="rotational-kinematics"><a href="rotational-kinematics.html"><span class="bk-toc-n">5.1</span>Rotational Kinematics</a></li><li data-toc-t="linear-rotational-link"><a href="linear-rotational-link.html"><span class="bk-toc-n">5.2</span>Linking Linear and Rotational Motion</a></li><li data-toc-t="torque"><a href="torque.html"><span class="bk-toc-n">5.3</span>Torque</a></li><li class="current" data-toc-t="rotational-inertia"><a href="#main" aria-current="page"><span class="bk-toc-n">5.4</span>Rotational Inertia</a><div class="bk-toc-onpage"><p>On this page</p><a href="#why-distance-matters">Why distance matters</a><a href="#mass-and-its-distribution">Mass and its distribution</a><a href="#shapes-are-given">Shapes are given</a><a href="#shifting-the-axis-the-parallel-axis">Shifting the axis: the parallel-axis theorem</a><a href="#finding-i-from-data">Finding I from data</a></div></li><li data-toc-t="rotational-equilibrium"><a href="rotational-equilibrium.html"><span class="bk-toc-n">5.5</span>Rotational Equilibrium</a></li><li data-toc-t="rotational-second-law"><a href="rotational-second-law.html"><span class="bk-toc-n">5.6</span>Newton's Second Law for Rotation</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Energy and Momentum of Rotating Systems</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="phys-crumb phys-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Physics 1</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-5.html">Torque and Rotational Dynamics</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Rotational Inertia: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/rotational-inertia.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 5 &middot; Topic 5.4 <span class="phys-beta phys-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Rotational Inertia</h1>
+      <p class="bk-meta phys-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="rotational-inertia">Not practiced</span></p>
+      <div class="bk-actions phys-share phys-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fphysics%2Fnotes%2Frotational-inertia.html&amp;title=Rotational%20Inertia%3A%20physics%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/physics/notes/rotational-inertia.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="phys-prose bk-prose">
+<p><a class="gl" href="../notes/systems-center-of-mass.html" data-c="mass">Mass</a> tells you how hard it is to change an object's motion along a line. Turning has its own version, and it holds a surprise: the same mass can be easy or hard to set spinning depending on where it sits. A tightrope walker's long pole is hard to rotate, which is exactly why it steadies her. This page defines that resistance, the <b><span class="gl" tabindex="0" data-c="rotational-inertia">rotational inertia</span></b>.</p>
+
+<h2 id="why-distance-matters">Why distance matters</h2>
+<p>Imagine a light rod with two small masses, spun about its middle. Each mass moves on a circle. For a given <a class="gl" href="../notes/rotational-kinematics.html" data-c="angular-velocity">angular velocity</a> ω, a mass far from the axis moves faster (v = rω) than one close in. To spin the rod up, you have to give each mass its <a class="gl" href="../notes/scalars-vectors.html" data-c="speed">speed</a>, and the far ones need more. So mass far from the axis resists a change in rotation more than mass close to it.</p>
+<p>The careful result counts each piece of mass with the <b>square</b> of its <a class="gl" href="../notes/scalars-vectors.html" data-c="distance">distance</a> from the axis. For a set of small masses (<a class="gl" href="../notes/motion-quantities.html" data-c="point-object">point objects</a>),</p>
+<p style="text-align:center"><b>I = Σ m r²</b></p>
+<p>Here r is each mass's perpendicular distance from the axis, and the sum runs over all the masses. The unit is kg·m². The exam asks you to compute this for up to five objects.</p>
+<figure id="fig-db"  class="phys-figure"><div class="phys-figimg" data-fig="dumbbell-inertia"><img src="../figures/dumbbell-inertia.svg" alt="Two light rods each carry two equal masses m and turn about a vertical axis through their centers. In the top rod the masses sit a distance r from the axis, giving I = 2mr². In the bottom rod they sit at 2r, giving I = 8mr², four times as much with the same total mass. A panel gives I = Σmr², notes that doubling the distance quadruples I, and lists rotational inertias the exam gives for shapes: hoop MR², solid disk ½MR², solid sphere two fifths MR², rod about its center one twelfth ML², rod about one end one third ML². Unit kg·m²." width="760" height="440" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The same two masses at r and at 2r: four times the rotational inertia. <span class="phys-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> A light rod 0.60 m long carries a 0.30 kg ball at each end and a 0.10 kg ball at its middle. Find I about an axis through the middle, and about an axis through one end. Both axes are perpendicular to the rod.</p>
+<p>Middle axis: the middle ball has r = 0. I = (0.30 kg)(0.30 m)² + 0 + (0.30 kg)(0.30 m)² = <b>0.054 kg·m²</b>.</p>
+<p>End axis: r = 0, 0.30 m and 0.60 m. I = 0 + (0.10 kg)(0.30 m)² + (0.30 kg)(0.60 m)² = 0.009 + 0.108 = <b>0.12 kg·m²</b>.</p>
+<p>Same mass, same rod, more than twice the rotational <a class="gl" href="../notes/first-law.html" data-c="inertia">inertia</a>, because the mass is farther from the second axis on average.</p>
+</div>
+
+<h2 id="mass-and-its-distribution">Mass and its distribution</h2>
+<p>So rotational inertia depends on two things: how much mass there is, and how that mass is spread around the axis, its <b><span class="gl" tabindex="0" data-c="mass-distribution">mass distribution</span></b>. Changing the axis changes I. Moving the same mass outward increases I, and because r is squared, doubling every distance makes I four times as large.</p>
+
+<h2 id="shapes-are-given">Shapes are given</h2>
+<p>For solid objects you would add up a huge number of tiny pieces. The results for common shapes are known, and the exam gives them to you when you need them. You never have to memorize them.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare"><thead><tr><th>Object (mass M)</th><th>Axis</th><th>I</th></tr></thead><tbody>
+<tr><td>Thin hoop or ring, radius R</td><td>through its center, perpendicular to it</td><td>MR²</td></tr>
+<tr><td>Solid disk or cylinder, radius R</td><td>through its center, along its axis</td><td>½MR²</td></tr>
+<tr><td>Solid sphere, radius R</td><td>through its center</td><td>⅖MR²</td></tr>
+<tr><td>Thin rod, length L</td><td>through its center</td><td>¹⁄₁₂ML²</td></tr>
+<tr><td>Thin rod, length L</td><td>through one end</td><td>⅓ML²</td></tr>
+</tbody></table></div>
+<p>Notice the pattern rather than the numbers. A hoop has all its mass at the rim, so its I is the full MR². A disk of the same mass and radius has much of its mass close to the center, so its I is only half as big. A sphere has even more mass near the center. The number in front tells you how far out the mass is, on average.</p>
+
+<h2 id="shifting-the-axis-the-parallel-axis">Shifting the axis: the parallel-axis theorem</h2>
+<p>If you know I<sub>cm</sub>, the rotational inertia about an axis through the <a class="gl" href="../notes/systems-center-of-mass.html" data-c="center-of-mass">center of mass</a>, you can find it about any parallel axis a distance d away:</p>
+<p style="text-align:center"><b>I = I<sub>cm</sub> + Md²</b></p>
+<p>M is the total mass. Because Md² is never negative, an object's rotational inertia is smallest about an axis through its center of mass.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A solid disk of mass 4.0 kg and radius 0.20 m (I<sub>cm</sub> = ½MR², given) turns about an axis through a point on its rim, parallel to its central axis. Find I.</p>
+<p>I<sub>cm</sub> = ½(4.0 kg)(0.20 m)² = 0.080 kg·m². The axes are d = 0.20 m apart.</p>
+<p>I = I<sub>cm</sub> + Md² = 0.080 + (4.0 kg)(0.20 m)² = 0.080 + 0.16 = <b>0.24 kg·m²</b>, three times I<sub>cm</sub>.</p>
+</div>
+<p>You can check the theorem on the rod above: the middle axis passes through its center of mass, the total mass is 0.70 kg and the end axis is 0.30 m away, so 0.054 + (0.70 kg)(0.30 m)² = 0.117 kg·m², the same as the direct sum.</p>
+
+<h2 id="finding-i-from-data">Finding I from data</h2>
+<p>Lab questions often move masses and measure I. If two sliders of mass m each sit a distance r from the axis on a platform, I = I<sub>platform</sub> + 2mr². A graph of I against r is a curve, but a graph of I against <b>r²</b> is a straight line: its <a class="gl" href="../notes/math-slopes-areas.html" data-c="slope">slope</a> is 2m and its intercept is the platform's own inertia. Choosing what to plot so the graph is a line is a skill the exam rewards.</p>
+
+    </article>
+    <p class="phys-report-page phys-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:rotational-inertia">Report a problem</button></p>
+    <nav class="tb-chapter-nav phys-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="torque.html"><span>&larr; Previous</span><b>Torque</b></a><a class="tb-chapter-link next" href="rotational-equilibrium.html"><span>Next &rarr;</span><b>Rotational Equilibrium</b></a></nav>
+  </main>
+</div>
+<footer class="phys-foot xshell">
+  <p class="phys-accuracy-note"><span class="phys-beta phys-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Physics 1 teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="phys-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apphys" data-report-question="notes:rotational-inertia">Report a problem</button></span></p>
+  <p class="phys-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApPhysSection = 'learn'; window.ApPhysBase = '../';</script>
+<script src="../assets/phys-curriculum.js" defer></script>
+<script src="../assets/phys-core.js" defer></script>
+<script src="../assets/phys-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/phys-toc.js" defer></script>
+</body>
+</html>
