@@ -94,11 +94,11 @@ One branch, `claude/apcalc`, one PR at the end.
 |---|---|---|
 | R | Research: `docs/apcalc-research/framework.md`, `market.md` | **done 2026-10-13** |
 | 0 | Fork AP® Physics 1: map (81 topics + math chapter), dependency map, generator, runtime `calculus/assets/`, math expression parser and `expr` items, plots, checks, tests, fixture, registration hidden until published (registry, Premium pass, Worker, SQL migration, hub/pricing, search, sitemap, OG, budgets, theme, sw.js), tool scaffolding, docs | **done 2026-10-13** (`docs/apcalc-phase0.md`, `docs/apcalc-architecture.md`) |
-| 1 | Content: every unit's lessons, notes, banks, FRQs, glossary, figures | planned |
-| 2 | Trainers (section 6) | planned |
+| 1 | Content: every unit's lessons, notes, banks, FRQs, glossary, figures | **done 2026-10-13**: 88 topics, 1392 bank questions, 21 FRQs, 136 glossary terms |
+| 2 | Trainers (section 6) | **done 2026-10-13**: all 10, each with Explore, a seeded drill, a validator and tests; phone legibility pass (`docs/tools-phone-pass/calc-*.md`) |
 | 3 | Justification trainer, two fixed practice exams, formula page, score calculator, unit tests, cram kit | **done 2026-10-13** (decision 11) |
-| 4 | Independent accuracy checks per unit and for tools/exams; fixes | planned |
-| Launch | Publish, generators, continuity pass, seven-course wording, full CI with browser checks, PR | planned |
+| 4 | Independent accuracy checks per unit and for tools/exams; fixes | **done 2026-10-13**: `docs/apcalc-reviews/` (u1, u2-3, u4-5, u6, u7-8, tools-a/b/c, exams, and the authors' self-checks); open points in `docs/apcalc-needs-author.md` |
+| Launch | Publish, generators, continuity pass, seven-course wording, full CI with browser checks, PR | **done 2026-10-13** (decision 12); Premium not on sale until the section 8 checklist |
 
 Quality bar: AP® Physics 1 authoring rules; every numeric key and expression key checked by code; every
 graph drawn from the function it claims to show; independent accuracy review.
@@ -180,6 +180,49 @@ a tool's data file exists and its topic is published.
       two justification prompts on study and weak-spot days, timed sets at 100/42 min a question) were built in
       Phase 0 and are now tested against the real forms and prompts.
 
+12. (2026-10-13, launch) **Published, Premium not on sale**, as AP® Physics 1 decision 11.
+    - All eight units and `skills-math` in `calculus/data/published.json`; registry `status: 'beta'`; every
+      generator rerun (course, courses, pricing, OG tags, sitemap, crumbs, Worker). Hub and 404 cards say "All 88
+      published topics". `sw.js` cache v79. Changelog entry (with the phone legibility pass for every trainer).
+      `onSale: false` stays, so Premium shows "coming soon", locks nothing, and the account page lists the course
+      only to an account holding a pass.
+    - Seven courses: the hub hero's generated count ("Seven courses", "See all seven courses"), the hero lede and
+      meta description (no "AP" in the meta), the manifest, `search.html` (lede, meta, noscript links),
+      `sources.html` (new AP® Calculus AB section), the Premium rules and `terms.html#fixed-date` (generated) name
+      every course or dated pass.
+    - **Bank files split by size**: `bankFile` packs a unit's topics in course order into files of at most 44 KB
+      gzipped (`<unit>`, or `<unit>-a`, `-b`, ...), replacing the physics rule (more than 10 topics → halves), since
+      MathML and plotted stimuli made five unit files 51-86 KB against the 48 KB budget (now 20 files).
+    - Publishing turned on the site checks for `calculus/`: British spellings in data (canceled, labeled, gray,
+      practices, colors); eight notes descriptions pointing at earlier pages and one ending on a colon
+      (`descriptions.json` notes); three trainer descriptions over 160 characters (`pages.json`); the two FTC notes
+      had the same cut title (`descriptions.json` gains `titles`, a shorter name for the `<title>`: "The FTC and
+      ..."). The near-duplicate rule (`check-apcalc-content.mjs`) counts each `$...$` span as one word and a set
+      item's stimulus title, so stems that differ only in their math or region are not flagged (20 false
+      positives). Budgets: home 8.8 → 9.0 KB, calculus shell 67 → 68 KB, first lesson 15 → 22 KB (MathML; see
+      needs-author `lesson-weight`).
+    - Continuity pass (calculus vs physics, every shared page type, 1280/360, light/dark, Playwright; practice
+      answered on an `expr`, a calculator numeric and a set item; practice exam 1 walked through all four parts,
+      the calculator notice right in each; Enlarge on phones for three trainers). Shared-layer fixes:
+      `glossary-page.js` and `glossary-tip.js` escaped the MathML in definitions (raw markup on the glossary page
+      and in tooltips; now kept, and the filter reads plain text); `site-search-all.js` and the course search read
+      formulas through `ApCalcTex.text` (no TeX annotation in snippets); `tutor.js` drops annotations;
+      `book.css` crumb spacing, `study.css` answer chips and `tool-studio.js` footer move now know `.calc-crumb`,
+      `.calc-mark`, `.calc-foot` (the same gaps the physics launch found). Calculus fixes: `calc-math.js` breaks
+      a long inline chain before each top-level = or \approx (21 notes pages scrolled sideways at 360 px);
+      flashcards showed definitions as escaped MathML; the home trainers band now names the free rule drills; the
+      trainer caption split no longer cuts at a decimal point (calculus and physics `studioAsk`).
+
 ## 8. Open items for the owner
 
-To be filled at launch (same checklist as AP® Physics 1).
+- **Launch checklist (only you can do).** The course is published (free parts live, Premium shows
+  "coming soon" and locks nothing) until these are done, in order:
+  1. Apply `scripts/sql/migrations/2026-10g-apcalc.sql` in Supabase (after 2026-10f).
+  2. Create the Polar product "AP® Calculus AB Premium (through June 30, 2027)", one-time $25.
+  3. Add `"calc-2027": "<product id>"` to `POLAR_PRODUCTS` in the Cloudflare Worker settings.
+  4. Merge the PR (the Worker deploys on merge, `.github/workflows/deploy-worker.yml`).
+  5. Delete `onSale: false` from `COURSES.apcalc` in `assets/premium.js` and bump `CACHE_NAME` in `sw.js`.
+- Questions in `docs/apcalc-needs-author.md` (CED exclusions for Units 3-8 and the scope calls that rest on them,
+  unit weights, the 2027 scaling and score cut-offs, which trainers are free, the calculator link, form 2's two
+  particle-motion questions, notes that print item answers, lesson weight, tool polish).
+- Optional: an AP® Calculus AB teacher to review the course (the Beta note stays until then).

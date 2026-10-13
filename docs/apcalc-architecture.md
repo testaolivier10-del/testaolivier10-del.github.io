@@ -154,6 +154,9 @@ As AP® Physics 1 (`--check`, `--out <dir>`, `APCALC_PUBLISHED=unit-6`, `APCALC_
 - Home: "AP® Calculus AB, one idea at a time.", crimson part colours, the integral icon, ranks starting
   at "Limit Seeker". `SAMPLE_Q` is `calc-limit-notation-1` (left out until it exists).
 - Every page loads `calc-expr.js` and `calc-math.js` before `calc-questions.js`.
+- **Bank files** (`assets/bank/`): a unit's questions go in `<unit>.json`, or, when they would pass 44 KB
+  gzipped, in `<unit>-a`, `-b`, ... packed in course order (`bankFile`, `BANK_GZ`); `topics[].bank` tells the
+  runtime; explanations (`-why.json`) follow the same split.
 - **Tools** build only when `data/tools/<slug>.json` exists and the tool's topic is published. A tool
   page loads `calc-questions.js`, `tools/calc-tool-math.js`, `tools/math/<slug>.js`,
   `tools/calc-tools.js`, `tools/calc-plot.js`, `tools/<slug>.js`.
@@ -251,12 +254,13 @@ to know": `EQ` rows `[TeX, what, when, 'Unit N', topic, trainers?]` in groups, p
 forget" lines `[title, text, topic]`; trainers link only when live), `unit-tests/<unit>.html` (built once a
 unit is published).
 
-## Registration (hidden until launch)
+## Registration
 
-`assets/courses.js` status `hidden` (order 7); `assets/premium.js` pass `calc-2027`, $25 through
+Registered hidden in Phase 0; **status `beta` since the launch** (spec decision 12), Premium `onSale: false`
+until the owner checklist (spec section 8). `assets/courses.js` (order 7); `assets/premium.js` pass `calc-2027`, $25 through
 2027-06-30, `onSale: false`; `assets/exam-date.js` 2027-05-10; `assets/hub-progress.js` ranks;
 `assets/site-search-all.js`, `assets/tutor.js`, `assets/theme.css`, `search.html`; `index.html` and
-`404.html` markers (empty while hidden; the home still says "Six courses"); `scripts/build-pricing.mjs`,
+`404.html` markers (filled by `build-pricing.mjs`; the home's course count is generated); `scripts/build-pricing.mjs`,
 `build-og-images.mjs`, `check-site.mjs`, `check-a11y.mjs`, `check-console.mjs`, `check-weight.mjs`;
 `worker/src/premium.js` and `index.js`; `sw.js` `COURSE_URLS.calculus`;
 `scripts/sql/migrations/2026-10g-apcalc.sql` (**not applied**), with `schema.sql`, `reports.sql` and
