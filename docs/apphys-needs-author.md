@@ -61,13 +61,11 @@ the band equal.
 
 ## tools-premium: which trainers are free (open, 2026-10-12)
 
-Spec section 6 rule, as apchem decision 16: the first trainer of each unit in map order and every
-skills tool are free. Registered in `physics/data/pages.json`: free `scaling-drills` (skills),
-`motion-graphs` (Unit 1), `free-body-diagrams` (2), `energy-bar-charts` (3), `collision-lab` (4),
-`torque-balance` (5), `rotation-lab` (6), `oscillator-lab` (7), `fluids-tank` (8); Premium
-`lab-design` and `projectile-lab` (the second and third Unit 1 trainers). With one trainer in most
-units, nine of eleven are free; the owner may prefer fewer free (for example only the flagship and
-the skills tool). To change one, add or remove `"premium": "tools"` and rebuild.
+Decided 2026-10-12 (spec section 6): one trainer per unit made the AP® Chemistry rule (first trainer of
+each unit free) give away nine of eleven, so only three are free: the flagship `free-body-diagrams`,
+`motion-graphs` (Unit 1, the first one a student meets) and `scaling-drills` (skills). The other eight
+carry `"premium": "tools"`. Owner to confirm; to change one, add or remove `"premium": "tools"` in
+`physics/data/pages.json` and rebuild.
 
 ## teacher-review: an AP® Physics 1 teacher to review the course (open)
 

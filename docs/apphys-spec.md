@@ -125,8 +125,9 @@ numeric key recomputed by code; physics content gets an independent accuracy che
 | `lab-design` | all | Experimental design: what to measure with which instrument, linearize, fit a line, slope meaning; seeded noisy data |
 | `scaling-drills` | math chapter, then all | Functional dependence and units: "if L is 4 times as long, the period is ... times" |
 
-Free tools: the first trainer of each unit in map order and every skills tool (as apchem decision 16);
-owner to confirm (needs-author).
+Free tools: `free-body-diagrams` (flagship), `motion-graphs` and `scaling-drills`; the other eight are
+Premium. Most units have one trainer, so the AP® Chemistry rule would have made nine of eleven free.
+Owner to confirm (needs-author `tools-premium`).
 
 ## 7. Decisions log
 

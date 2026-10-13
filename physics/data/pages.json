@@ -1,5 +1,5 @@
 {
- "about": "The AP Physics 1 app pages. scripts/build-apphys.mjs writes each page's shell (head, header, footer, a <div id=\"app\"> mount) from this file; the page's behavior is its script in physics/assets/<script>, which mounts into #app. \"static\": true marks a generated page that is not an app (teachers.html). premium names the Premium feature (ApPhysCore gates it); card is the line on the course home. No path may contain the token \"ap\" (docs/apphys-spec.md decision 2). tools[] are the eleven trainers of docs/apphys-spec.md section 6, pre-registered in Phase 0: page physics/tools/<slug>.html, script physics/assets/tools/<slug>.js, model physics/assets/tools/math/<slug>.js (ApPhysMath.<camelSlug>), content physics/data/tools/<slug>.json, validator scripts/lib/apphys-tool-checks/<slug>.mjs, test scripts/test/apphys-tool-<slug>.test.mjs (docs/apphys-architecture.md, \"Tools\"). topic is the tool's context topic: the tool is built only when its data file exists and that topic is published. Free or Premium: the first trainer of each unit in map order and every skills tool are free; the rest carry \"premium\": \"tools\" (docs/apphys-spec.md section 6; owner to confirm).",
+ "about": "The AP Physics 1 app pages. scripts/build-apphys.mjs writes each page's shell (head, header, footer, a <div id=\"app\"> mount) from this file; the page's behavior is its script in physics/assets/<script>, which mounts into #app. \"static\": true marks a generated page that is not an app (teachers.html). premium names the Premium feature (ApPhysCore gates it); card is the line on the course home. No path may contain the token \"ap\" (docs/apphys-spec.md decision 2). tools[] are the eleven trainers of docs/apphys-spec.md section 6, pre-registered in Phase 0: page physics/tools/<slug>.html, script physics/assets/tools/<slug>.js, model physics/assets/tools/math/<slug>.js (ApPhysMath.<camelSlug>), content physics/data/tools/<slug>.json, validator scripts/lib/apphys-tool-checks/<slug>.mjs, test scripts/test/apphys-tool-<slug>.test.mjs (docs/apphys-architecture.md, \"Tools\"). topic is the tool's context topic: the tool is built only when its data file exists and that topic is published. Free or Premium: motion-graphs, free-body-diagrams and scaling-drills are free; the rest carry \"premium\": \"tools\" (docs/apphys-spec.md decision on free trainers; owner to confirm).",
  "apps": [
   {
    "slug": "practice",
@@ -194,7 +194,8 @@
    "desc": "Watch energy move between kinetic, gravitational and spring energy on a skater track, a launcher and a rough ramp, then build the bar charts.",
    "blurb": "Skater track, spring launcher and rough ramp, with live energy bars.",
    "lede": "Watch energy change form, then build the bar charts yourself.",
-   "studio": true
+   "studio": true,
+   "premium": "tools"
   },
   {
    "slug": "collision-lab",
@@ -205,7 +206,8 @@
    "desc": "Two carts on a track, from elastic to sticky: momentum and energy bar charts before and after, and the force-time graph with its impulse.",
    "blurb": "Elastic to sticky collisions with momentum and energy bars, and impulse.",
    "lede": "Crash two carts and see what is conserved.",
-   "studio": true
+   "studio": true,
+   "premium": "tools"
   },
   {
    "slug": "torque-balance",
@@ -216,7 +218,8 @@
    "desc": "Hang masses on a beam or a mobile and balance the torques; lever arms, rotational equilibrium, and a race between shapes with different rotational inertia.",
    "blurb": "Balance a beam with masses; lever arms, torques and rotational inertia.",
    "lede": "Hang masses on a beam and make it balance.",
-   "studio": true
+   "studio": true,
+   "premium": "tools"
   },
   {
    "slug": "rotation-lab",
@@ -227,7 +230,8 @@
    "desc": "A rolling race down a ramp, a spinning skater who pulls in her arms, and a satellite on an orbit: rotational energy and angular momentum, live.",
    "blurb": "Rolling races, a spinning skater and orbit energy.",
    "lede": "Race shapes down a ramp and spin a skater.",
-   "studio": true
+   "studio": true,
+   "premium": "tools"
   },
   {
    "slug": "oscillator-lab",
@@ -238,7 +242,8 @@
    "desc": "A mass on a spring and a pendulum: position, velocity and acceleration graphs, energy as it sloshes back and forth, and what sets the period.",
    "blurb": "Spring and pendulum: graphs, energy, and what sets the period.",
    "lede": "Set a mass bouncing and find what changes its period.",
-   "studio": true
+   "studio": true,
+   "premium": "tools"
   },
   {
    "slug": "fluids-tank",
@@ -249,7 +254,8 @@
    "desc": "Drop objects of different density into a tank, read pressure at any depth, and push fluid through a narrowing pipe to see continuity and Bernoulli at work.",
    "blurb": "Buoyancy, pressure with depth and flow through a pipe.",
    "lede": "Drop objects in a tank and see what floats and why.",
-   "studio": true
+   "studio": true,
+   "premium": "tools"
   }
  ]
 }

@@ -143,9 +143,8 @@ As AP® Chemistry, under `physics/data/` and `physics/figures/`.
 
 - `pages.json`: `{ apps: [...], tools: [...] }`. **All eleven trainers are pre-registered** in
   `tools[]` (Phase 0): `{ slug, kind, topic, name, title, desc, blurb, lede, premium?, studio: true }`.
-  `topic` is the tool's context topic (the check wants it in the map). Free rule (spec section 6):
-  the first trainer of each unit in map order and every skills tool; the rest carry
-  `"premium": "tools"`.
+  `topic` is the tool's context topic (the check wants it in the map). Free (spec section 6):
+  `free-body-diagrams`, `motion-graphs`, `scaling-drills`; the rest carry `"premium": "tools"`.
 - `published.json`: `{ "chapters": [] }` until Unit 1 is written and checked.
 
 ## Tools
