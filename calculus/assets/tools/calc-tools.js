@@ -830,7 +830,7 @@
         // equation and its question; the whole text is in Details.
         if(!onStage && o.studioAsk && ctx){
           var eq = ctx.querySelector('.bt-eq'), eqT = eq ? plainText(eq) : '';
-          var rest = eqT ? text.replace(eqT, '').trim() : text, ss = rest.match(/[^.?!]+[.?!]+/g) || [rest];
+          var rest = eqT ? text.replace(eqT, '').trim() : text, ss = rest.match(/(?:[^.?!]|\.(?=\d))+[.?!]+/g) || [rest]; // a decimal point (2.5 ft) does not end a sentence
           var ask = ss.filter(function(x){ return /\?\s*$/.test(x); }).pop() || ss[ss.length - 1];
           text = (eqT ? eqT.replace(/\s+K\s*=/, ', K =') + '. ' : '') + ask.trim();
         }
