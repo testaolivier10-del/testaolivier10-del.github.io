@@ -21,6 +21,7 @@
     { key: 'apbio', paid: true },
     { key: 'apchem', paid: true },
     { key: 'apphys', paid: true },
+    { key: 'apcalc', paid: true },
   ];
   // courses:end
   var COURSE_ORDER = COURSE_LIST.filter(function (c) { return c.paid; }).map(function (c) { return c.key; });

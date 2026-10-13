@@ -48,7 +48,8 @@
   var DEFAULTS = {
     apbio: { date: '2027-05-03', label: 'AP® Biology exam (Mon, May 3, 2027)' },
     apchem: { date: '2027-05-06', label: 'AP® Chemistry exam (Thu, May 6, 2027)' },
-    apphys: { date: '2027-05-05', label: 'AP® Physics 1 exam (Wed, May 5, 2027)' }
+    apphys: { date: '2027-05-05', label: 'AP® Physics 1 exam (Wed, May 5, 2027)' },
+    apcalc: { date: '2027-05-10', label: 'AP® Calculus AB exam (Mon, May 10, 2027)' }
   };
   function key(subject){ return (subject || 'levl') + '_exam_date'; }
   function stored(subject){

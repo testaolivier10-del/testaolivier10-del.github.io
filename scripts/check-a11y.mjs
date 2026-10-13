@@ -106,6 +106,14 @@ const PAGES = [
   ['/physics/exams.html', 'the AP® Physics 1 exams app'],
   ['/physics/frq.html', 'the AP® Physics 1 free-response list'],
   ...bioPages('physics', 'AP® Physics 1'),
+  // AP® Calculus AB, the same way, hidden until a unit is published.
+  ['/calculus/', 'the AP® Calculus AB course home'],
+  ['/calculus/glossary.html', 'the AP® Calculus AB glossary'],
+  ['/calculus/practice.html', 'the AP® Calculus AB practice builder'],
+  ['/calculus/exams.html', 'the AP® Calculus AB exams app'],
+  ['/calculus/frq.html', 'the AP® Calculus AB free-response list'],
+  ['/calculus/formula-sheet.html', 'the AP® Calculus AB formula page'],
+  ...bioPages('calculus', 'AP® Calculus AB'),
 ];
 
 /* The first published AP® Biology topic's lesson and notes page, the first

@@ -137,6 +137,15 @@
       { min: 20, title: 'Torque Turner' },
       { min: 30, title: 'Physics Legend' },
     ],
+    apcalc: [
+      { min: 1,  title: 'Limit Seeker' },
+      { min: 3,  title: 'Slope Finder' },
+      { min: 6,  title: 'Chain Linker' },
+      { min: 10, title: 'Rate Relater' },
+      { min: 15, title: 'Curve Sketcher' },
+      { min: 20, title: 'Area Builder' },
+      { min: 30, title: 'Calculus Legend' },
+    ],
   };
 
   // Each course names its ranks differently, so a rank shown on its own says
@@ -149,6 +158,7 @@
     { key: 'apbio', rankLabel: 'Biology rank' },
     { key: 'apchem', rankLabel: 'Chemistry rank' },
     { key: 'apphys', rankLabel: 'Physics rank' },
+    { key: 'apcalc', rankLabel: 'Calculus rank' },
   ];
   // courses:end
   var COURSE_RANK_LABEL = { hub: 'LevlPrep rank' };

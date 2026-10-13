@@ -76,6 +76,15 @@
       path: '/physics/', dir: 'physics', storagePrefix: 'apphys_', rankLabel: 'Physics rank',
       searchLabel: 'Physics', aliases: ['physics', 'phys', 'physics-1'], paid: true, status: 'beta', order: 6,
     },
+    {
+      // As AP® Physics 1 (docs/apcalc-spec.md decision 2): the mark only in
+      // the full names, never in a URL; the key travels as its folder,
+      // "calculus". 'hidden' until its first unit is published (decision 6):
+      // no site-search chip, no Continue link, no hub card.
+      key: 'apcalc', short: 'Calculus', name: 'AP® Calculus AB', productName: 'AP® Calculus AB',
+      path: '/calculus/', dir: 'calculus', storagePrefix: 'apcalc_', rankLabel: 'Calculus rank',
+      searchLabel: 'Calculus', aliases: ['calculus', 'calc', 'calculus-ab'], paid: true, status: 'hidden', order: 7,
+    },
   ];
 
   var list = LIST.slice().sort(function (a, b) { return a.order - b.order; });

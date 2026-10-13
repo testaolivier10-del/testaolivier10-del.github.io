@@ -808,6 +808,8 @@ const PASSES = {
   'chem-2027':      { course: 'apchem', until: '2027-06-30T23:59:59-10:00' },
   // AP® Physics 1 mirrors AP® Chemistry (docs/apphys-spec.md decision 3).
   'phys-2027':      { course: 'apphys', until: '2027-06-30T23:59:59-10:00' },
+  // AP® Calculus AB mirrors AP® Physics 1 (docs/apcalc-spec.md decision 3).
+  'calc-2027':      { course: 'apcalc', until: '2027-06-30T23:59:59-10:00' },
 };
 
 const isPass = (id) => typeof id === 'string' && Object.prototype.hasOwnProperty.call(PASSES, id);
@@ -827,7 +829,7 @@ function passTerms(pass) {
 /* The course as a URL may name it. A key with the token "ap" in it never
    goes into a URL (docs/apbio-spec.md decision 2), so apbio travels as its
    folder, "bio"; assets/premium.js returnCourse() reads either. */
-const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics' };
+const URL_COURSE = { apbio: 'bio', apchem: 'chem', apphys: 'physics', apcalc: 'calculus' };
 const urlCourse = (course) => URL_COURSE[course] || course;
 
 const SITE = 'https://levlprep.com';
@@ -1466,7 +1468,7 @@ async function premiumWebhook(request, env, now = Date.now()) {
 /* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
    checks it). */
 // Each paid course in assets/courses.js, by its productName (scripts/check-courses.mjs).
-const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1' };
+const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology', apchem: 'AP® Chemistry', apphys: 'AP® Physics 1', apcalc: 'AP® Calculus AB' };
 
 const ENDING_NOTICE_DAYS = 3;
 
@@ -1820,6 +1822,17 @@ const COURSE_RULES = {
     '- Do not state a constant or value that is not in the passages or the official equations sheet; say it is not in their material instead.',
     '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
     '- For a free-response question, coach the reasoning (claim, evidence, reasoning) rather than writing a finished answer to hand in.',
+  ].join('\n'),
+  apcalc: [
+    '',
+    'This student is a high-school student preparing for the AP® Calculus AB exam. Additional guidance:',
+    '- Explain at a high-school level, from the basics up, and show each step of a derivative, an integral or a limit with the rule it uses (power, product, quotient, chain, substitution).',
+    '- Write math so it reads plainly in text: f\'(x), x^2, sqrt(x), the integral from 0 to 2 of f(x) dx. Work in radians.',
+    '- Justify with the named theorem and its hypotheses (continuity on the closed interval for the Intermediate and Extreme Value Theorems, also differentiability on the open interval for the Mean Value Theorem), and tie every sign argument to the function it is about (f\' changes sign, not "it changes sign").',
+    '- A relative extremum needs a sign change of f\'; an absolute extremum needs the candidates test or a global argument. An antiderivative carries + C.',
+    '- For calculator answers, give the setup and three decimal places. Do not state a value that is not in the passages; say it is not in their material instead.',
+    '- Never reproduce or quote released AP® exam questions, AP Classroom items or College Board course text, and do not claim to know what will be on the exam.',
+    '- For a free-response question, coach the reasoning rather than writing a finished answer to hand in.',
   ].join('\n'),
 };
 

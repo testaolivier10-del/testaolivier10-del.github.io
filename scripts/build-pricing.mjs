@@ -29,7 +29,10 @@
    9. The hub hero's course count and terms.html#fixed-date (the dated passes).
    8. AP® Physics 1's the same way (<!-- hub-phys:start/end -->,
       <!-- nf-phys:start/end -->, physics/manifest.json), hidden until its
-      first unit is published (docs/apphys-spec.md). */
+      first unit is published (docs/apphys-spec.md).
+   9. AP® Calculus AB's the same way (<!-- hub-calc:start/end -->,
+      <!-- nf-calc:start/end -->, calculus/manifest.json), hidden until its
+      first unit is published (docs/apcalc-spec.md). */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, ORIGIN, FREE_SENTENCE, premiumData, counts, fmt, money, foundingPrice, longDate, courseOffers, guaranteeText } from './lib/premium-data.mjs';
@@ -75,12 +78,14 @@ const tutorSpan = HOURS(LOW) === HOURS(HIGH) ? HOURS(LOW) : HOURS(LOW).replace(/
 const BIO = ORDER.includes('apbio');
 const CHEM = ORDER.includes('apchem');
 const PHYS = ORDER.includes('apphys');
+const CALC = ORDER.includes('apcalc');
 /* Once every topic in the map is published the card stops promising more.
    "N published topics" keeps clear of check-site's ochem topic-count claim. */
 const CHEM_ALL = N.apchemTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apchem-dependency-map.json'), 'utf8')).topics.length;
 const PHYS_ALL = N.apphysTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apphys-dependency-map.json'), 'utf8')).topics.length;
-// Any course that uses the College Board's mark (AP® Biology, AP® Chemistry, AP® Physics 1).
-const MARK = BIO || CHEM || PHYS;
+const CALC_ALL = N.apcalcTopics >= JSON.parse(readFileSync(join(ROOT, 'docs', 'apcalc-dependency-map.json'), 'utf8')).topics.length;
+// Any course that uses the College Board's mark (AP® Biology, AP® Chemistry, AP® Physics 1, AP® Calculus AB).
+const MARK = BIO || CHEM || PHYS || CALC;
 // The College Board sentence, on every page that uses the mark (docs/apbio-spec.md).
 const TM_HTML = `<p class="tm-note">${esc(DISCLAIMER)}</p>`;
 const founding = FOUNDING && FOUNDING.until ? FOUNDING : null;
@@ -415,6 +420,29 @@ function hubPhysCard() {
         </a>`;
 }
 
+/* AP® Calculus AB's hub card, the same way: the integral sign over a curve
+   (docs/apcalc-spec.md decision 6), counted, never typed. */
+function hubCalcCard() {
+  const topics = N.apcalcTopics;
+  return `        <a class="featured-card" href="calculus/">
+          <div class="featured-top">
+            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 3.5c-1.3-.7-2.6.1-2.8 1.6l-1.4 13.8c-.2 1.5-1.5 2.3-2.8 1.6"/><path d="M3 17c3 0 4-7 8-8s5 2 6 3" stroke-opacity=".55"/><path d="M15 6l6 4" stroke-dasharray="1.5 2.5"/></svg></div>
+            <span class="status-badge">Beta</span>
+          </div>
+          <div>
+            <p class="featured-name">AP® Calculus AB</p>
+            <p class="featured-desc">Built on the course framework, in its order: lessons from scratch, answers you type as expressions and are graded by value, and calculator and no-calculator practice as the exam splits it. ${CALC_ALL ? `All ${fmt(topics)} published topics, from the math you need to volumes.` : `${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far.`}</p>
+          </div>
+          <div class="featured-tags">
+            <span>Beta</span>
+            <span>Free notes</span>
+            <span>Tangent tracer</span>
+            <span>Typed answers</span>
+          </div>
+          <span class="featured-cta">Start learning &rarr;</span>
+        </a>`;
+}
+
 {
   const rel = 'index.html';
   let src = readFileSync(join(ROOT, rel), 'utf8');
@@ -423,6 +451,7 @@ function hubPhysCard() {
   src = between(src, '<!-- hub-bio:start -->', '<!-- hub-bio:end -->', BIO ? hubBioCard() : '', rel);
   src = between(src, '<!-- hub-chem:start -->', '<!-- hub-chem:end -->', CHEM ? hubChemCard() : '', rel);
   src = between(src, '<!-- hub-phys:start -->', '<!-- hub-phys:end -->', PHYS ? hubPhysCard() : '', rel);
+  src = between(src, '<!-- hub-calc:start -->', '<!-- hub-calc:end -->', CALC ? hubCalcCard() : '', rel);
   /* The hero's course count (owner, 2026-10-12: it said "Three courses" with
      five live): every open course, from the registry. */
   const word = (NUMBER_WORDS[OPEN.length] || String(OPEN.length));
@@ -464,7 +493,7 @@ function hubPhysCard() {
   const out = src.replace(/(The full )[\d,]+(-question bank[^\n]*\/\/ count:)(nremt|ochem|anp)/g,
     (_, a, b, k) => `${a}${fmt(N[k])}${b}${k}`);
   // AP® Biology and AP® Chemistry state no count while their banks grow unit by unit.
-  for (const k of ORDER.filter((x) => x !== 'apbio' && x !== 'apchem' && x !== 'apphys')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
+  for (const k of ORDER.filter((x) => x !== 'apbio' && x !== 'apchem' && x !== 'apphys' && x !== 'apcalc')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
   put(rel, out);
 }
 
@@ -473,7 +502,7 @@ function hubPhysCard() {
 /* Manifests never carry the AP® mark (docs/apbio-spec.md, "Trademark": no
    "AP" in meta tags or ad copy, and an install name is both): AP® Biology's
    app is "Biology". */
-const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics' };
+const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology', apchem: 'Chemistry', apphys: 'Physics', apcalc: 'Calculus' };
 const MANIFESTS = {
   'manifest.json': {
     name: 'LevlPrep — NREMT-EMT, Organic Chemistry and A&P study tools',
@@ -494,6 +523,11 @@ const MANIFESTS = {
     name: 'LevlPrep — Physics',
     short_name: 'LevlPrep Physics',
     description: `Physics 1 on the 2024-25 course framework, in its order, for the May exam: every notes page is free forever and Units 1 and 2 are fully interactive, with the math you need; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.`,
+  },
+  'calculus/manifest.json': {
+    name: 'LevlPrep — Calculus',
+    short_name: 'LevlPrep Calculus',
+    description: `Calculus AB on the course framework, in its order, for the May exam: every notes page is free forever and Units 1 and 2 are fully interactive, with the math you need; Premium adds unlimited practice, the FRQs, practice exams, every trainer and every lesson.`,
   },
   'nremt/manifest.json': {
     name: 'LevlPrep — NREMT-EMT Practice Exam & Study Tools',
@@ -548,6 +582,11 @@ for (const [rel, fields] of Object.entries(MANIFESTS)) {
       <p>${PHYS_ALL ? `All ${fmt(N.apphysTopics)} published topics` : `${fmt(N.apphysTopics)} published topic${N.apphysTopics === 1 ? '' : 's'} so far`}, in the order of the 2024-25 course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
     </a>`;
   out = between(out, '<!-- nf-phys:start -->', '<!-- nf-phys:end -->', PHYS ? phys : '', rel);
+  const calc = `    <a class="card nf-card" href="/calculus/">
+      <h2>AP® Calculus AB (Beta) &rarr;</h2>
+      <p>${CALC_ALL ? `All ${fmt(N.apcalcTopics)} published topics` : `${fmt(N.apcalcTopics)} published topic${N.apcalcTopics === 1 ? '' : 's'} so far`}, in the order of the course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
+    </a>`;
+  out = between(out, '<!-- nf-calc:start -->', '<!-- nf-calc:end -->', CALC ? calc : '', rel);
   put(rel, out);
 }
 

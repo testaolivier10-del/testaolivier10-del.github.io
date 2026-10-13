@@ -30,6 +30,7 @@
     { key: 'apbio', searchLabel: 'Biology', name: 'AP® Biology', dir: 'bio', aliases: ['bio', 'biology'], status: 'beta' },
     { key: 'apchem', searchLabel: 'Chemistry', name: 'AP® Chemistry', dir: 'chem', aliases: ['chem', 'chemistry'], status: 'beta' },
     { key: 'apphys', searchLabel: 'Physics', name: 'AP® Physics 1', dir: 'physics', aliases: ['physics', 'phys', 'physics-1'], status: 'beta' },
+    { key: 'apcalc', searchLabel: 'Calculus', name: 'AP® Calculus AB', dir: 'calculus', aliases: ['calculus', 'calc', 'calculus-ab'], status: 'hidden' },
   ];
   // courses:end
   var COURSES = COURSE_LIST.filter(function (c) { return c.status !== 'hidden'; }).map(function (c) {
@@ -59,11 +60,11 @@
   }
 
   /* The ?course= value written for a course. A key with the token "ap" in it
-     (apbio, apchem, apphys) never goes into a URL (docs/apbio-spec.md decision 2): it travels
+     (apbio, apchem, apphys, apcalc) never goes into a URL (docs/apbio-spec.md decision 2): it travels
      as its folder ("bio"), which parseCourse reads back through its aliases. */
   function urlKey(key) {
     var tokens = String(key || '').toLowerCase().split(/[^a-z0-9]+/);
-    if (tokens.indexOf('ap') === -1 && tokens.indexOf('apbio') === -1 && tokens.indexOf('apchem') === -1 && tokens.indexOf('apphys') === -1) return key;
+    if (tokens.indexOf('ap') === -1 && tokens.indexOf('apbio') === -1 && tokens.indexOf('apchem') === -1 && tokens.indexOf('apphys') === -1 && tokens.indexOf('apcalc') === -1) return key;
     for (var i = 0; i < COURSE_LIST.length; i++) if (COURSE_LIST[i].key === key) return COURSE_LIST[i].dir;
     return key;
   }
@@ -623,6 +624,44 @@
                 if (/^H[23]$/.test(el.tagName)) { heading = text; hid = el.id || ''; return; }
                 if (text.length < 30) return;
                 out.push({ course: 'apphys', kind: 'Notes', file: href + (hid ? '#' + hid : ''), frag: true,
+                  heading: heading === n.title ? n.title : n.title + ' — ' + heading, text: text });
+              });
+              return out;
+            }).catch(function () { return []; });
+          })).then(function (all) { return [].concat.apply([], all); });
+        });
+      }],
+    ],
+    // AP® Calculus AB: the same, from scripts/build-apcalc.mjs (empty until a unit is published).
+    apcalc: [
+      ['lessons', function () {
+        return loadScript('calculus/assets/calc-curriculum.js').then(function () {
+          return apbioStructureChunks(window.ApCalcCurriculum, 'apcalc', 'calculus');
+        });
+      }],
+      ['glossary', function () {
+        return getJson('calculus/assets/glossary.json').then(function (g) {
+          return glossaryChunks('apcalc', termsFromJson(g), function (x) { return { file: 'glossary.html#t-' + x.id }; });
+        });
+      }],
+      ['notes', function () {
+        return getJson('calculus/assets/notes-index.json').then(function (list) {
+          return Promise.all(list.map(function (n) {
+            var id = String(n.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+            var href = 'calculus/notes/' + id + '.html';
+            return getText(href).then(function (html) {
+              var doc = parseHtml(html);
+              var root = doc.querySelector('.calc-prose') || doc.querySelector('main') || doc.body;
+              root.querySelectorAll('.calc-crumb,.calc-onward,.calc-share,.calc-foot').forEach(function (x) { x.remove(); });
+              var out = [];
+              var heading = n.title;
+              var hid = '';
+              root.querySelectorAll('h2,h3,p,li,td,th,dd,figcaption').forEach(function (el) {
+                var text = (el.textContent || '').replace(/\s+/g, ' ').trim();
+                if (!text) return;
+                if (/^H[23]$/.test(el.tagName)) { heading = text; hid = el.id || ''; return; }
+                if (text.length < 30) return;
+                out.push({ course: 'apcalc', kind: 'Notes', file: href + (hid ? '#' + hid : ''), frag: true,
                   heading: heading === n.title ? n.title : n.title + ' — ' + heading, text: text });
               });
               return out;

@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v77';
+const CACHE_NAME = 'levlprep-v78';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -232,6 +232,24 @@ COURSE_URLS.physics = [
   'physics/assets/phys-questions.js',
   'physics/assets/phys-nav.js',
   'physics/assets/glossary.json',
+];
+COURSE_URLS.calculus = [
+  // The AP® Calculus AB shell (key apcalc, folder calculus), as Physics plus
+  // the parser and the math renderer every question page loads.
+  'calculus/index.html',
+  'calculus/learn.html',
+  'calculus/search.html',
+  'calculus/tools.html',
+  'calculus/dashboard.html',
+  'calculus/manifest.json',
+  'calculus/assets/calc.css',
+  'calculus/assets/calc-curriculum.js',
+  'calculus/assets/calc-core.js',
+  'calculus/assets/calc-expr.js',
+  'calculus/assets/calc-math.js',
+  'calculus/assets/calc-questions.js',
+  'calculus/assets/calc-nav.js',
+  'calculus/assets/glossary.json',
 ];
 
 // The question bank is 2.3 MB across its two files — an order of magnitude

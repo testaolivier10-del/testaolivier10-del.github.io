@@ -131,6 +131,7 @@
     { key: 'apbio', short: 'Biology', dir: 'bio' },
     { key: 'apchem', short: 'Chemistry', dir: 'chem' },
     { key: 'apphys', short: 'Physics', dir: 'physics' },
+    { key: 'apcalc', short: 'Calculus', dir: 'calculus' },
   ];
   // courses:end
   var COURSE_SHORT = {};

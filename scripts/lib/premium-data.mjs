@@ -137,6 +137,16 @@ export function counts() {
     }
   }
   const physNotes = join(ROOT, 'physics', 'assets', 'notes-index.json');
+  const calcBank = join(ROOT, 'calculus', 'assets', 'bank');
+  let apcalc = 0;
+  if (existsSync(calcBank)) {
+    for (const f of readdirSync(calcBank)) {
+      if (!f.endsWith('.json') || f.endsWith('-why.json') || f === 'index.json') continue;
+      const d = read(join('calculus', 'assets', 'bank', f));
+      apcalc += Array.isArray(d.items) ? d.items.length : 0;
+    }
+  }
+  const calcNotes = join(ROOT, 'calculus', 'assets', 'notes-index.json');
   countsCache = {
     nremt, ochem, anp,
     ochemChapters: modules.length, ochemTopics: topics, ochemMechanisms: mechanisms, ochemTools,
@@ -144,6 +154,7 @@ export function counts() {
     apbio, apbioTopics: existsSync(bioNotes) ? read('bio/assets/notes-index.json').length : 0,
     apchem, apchemTopics: existsSync(chemNotes) ? read('chem/assets/notes-index.json').length : 0,
     apphys, apphysTopics: existsSync(physNotes) ? read('physics/assets/notes-index.json').length : 0,
+    apcalc, apcalcTopics: existsSync(calcNotes) ? read('calculus/assets/notes-index.json').length : 0,
   };
   return countsCache;
 }
