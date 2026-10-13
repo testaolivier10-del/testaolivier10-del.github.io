@@ -90,7 +90,7 @@
    },
    "misses": {
     "answer": "Four times the depth gives four times the pressure, so the water comes out four times as fast.",
-    "why": "Pressure at the hole does grow 4 times, but it sets the jet's kinetic energy per volume, ½ρv², not its speed. The speed grows as √h, so it doubles."
+    "why": "The gauge pressure at the hole does grow 4 times, but it sets the jet's kinetic energy per volume, ½ρv², not its speed. The speed grows as √h, so it doubles."
    }
   }
  ]

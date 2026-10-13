@@ -154,6 +154,43 @@
     return svgOut(400, 330, lab, inner);
   }
 
+  /* The drill's own bench: the experiment drawn large on a lab table, with a
+     shelf holding every instrument in the lab (all of them, so the picture
+     never says which ones this experiment needs). */
+  function tool(kind, x, y, p){
+    var o = '<g transform="translate(' + x + ' ' + y + ')">';
+    if(kind === 'meterstick'){ o += '<rect x="-46" y="-8" width="92" height="12" class="ld-stick"/>'; for(var i = 0; i <= 10; i++) o += '<line x1="' + (-46 + i * 9.2).toFixed(1) + '" x2="' + (-46 + i * 9.2).toFixed(1) + '" y1="-8" y2="' + (i % 5 ? -4 : -1) + '" class="ld-tick"/>'; }
+    else if(kind === 'stopwatch') o += '<circle cy="-14" r="13" class="ld-watch" style="stroke-width:2.5"/><rect x="-4" y="-32" width="8" height="5" rx="1.5" class="ld-steel"/><line x1="0" y1="-14" x2="6" y2="-22" class="ld-needle"/>';
+    else if(kind === 'detector') o += '<rect x="-14" y="-30" width="28" height="30" rx="5" class="ld-det"/><circle cx="0" cy="-15" r="9" class="ld-det-face"/>';
+    else if(kind === 'scale') o += '<rect x="-7" y="-34" width="14" height="30" rx="5" class="ld-scale"/><path d="M-4 -22h8" class="ld-ptr"/><path d="M0 -4v2m-3 0a3 3 0 0 0 6 0" class="ld-string"/>';
+    else if(kind === 'balance') o += '<rect x="-30" y="-14" width="60" height="14" rx="4" class="ld-det"/><rect x="-22" y="-20" width="44" height="5" rx="2" class="ld-steel"/><rect x="-12" y="-10" width="24" height="7" rx="1.5" class="ld-lcd"/>';
+    else if(kind === 'photogate') o += '<path d="M-20 0v-34h10v26h20v-26h10v34z" class="ld-det"/><circle cx="-15" cy="-26" r="2.5" class="ld-led"/>';
+    else if(kind === 'protractor') o += '<path d="M-26 0a26 26 0 0 1 52 0z" class="ld-prot"/><path d="M0 0l-18 -18M0 0v-24M0 0l18 -18" class="ld-tick" style="opacity:.6"/>';
+    return o + '</g>';
+  }
+  function drillBench(exp, P, x){
+    var inner = bench(exp, P, x, { t: 0, run: false, reading: null }), vb = (/viewBox="([^"]+)"/.exec(inner) || [])[1] || '0 0 400 330';
+    var lab = (/aria-label="([^"]+)"/.exec(inner) || [])[1] || 'The bench';
+    var body = inner.replace(/^<svg[^>]*>/, '').replace(/<\/svg>$/, ''), v = vb.split(' ').map(Number), W = 760, H = 360;
+    var sc = Math.min(470 / v[2], 300 / v[3]), bw = v[2] * sc, bh = v[3] * sc, bx = 18 + (470 - bw) / 2, by = 324 - bh;
+    // Ramp and track setups bring their own table; the stands get the bench.
+    var own = exp.id === 'ramp' || exp.id === 'atwood';
+    var o = '<rect x="0" y="0" width="' + W + '" height="' + H + '" class="ld-wall"/>' + (own ? '' : '<rect x="0" y="316" width="' + W + '" height="16" class="ld-bench"/><rect x="0" y="332" width="' + W + '" height="7" class="ld-bench-e"/><rect x="0" y="339" width="' + W + '" height="21" class="ld-floor"/>');
+    if(own){ sc = Math.min(480 / v[2], 340 / v[3]); bw = v[2] * sc; bh = v[3] * sc; bx = 12 + (480 - bw) / 2; by = (H - bh) / 2; }
+    // (a group, not a nested svg: the figure's CSS sizes every svg inside it)
+    o += '<g transform="translate(' + (bx - v[0] * sc).toFixed(1) + ' ' + (by - v[1] * sc).toFixed(1) + ') scale(' + sc.toFixed(4) + ')">' + body + '</g>';
+    // the instrument shelf
+    var sx = 508, sy = 30;
+    o += '<rect x="' + sx + '" y="' + sy + '" width="236" height="276" rx="10" class="ld-cab"/><text x="' + (sx + 118) + '" y="' + (sy + 22) + '" text-anchor="middle" class="ld-mut">Instruments in the lab</text>';
+    var kinds = ['meterstick', 'stopwatch', 'detector', 'scale', 'balance', 'photogate', 'protractor'], names = LD.INSTRUMENTS || {};
+    kinds.forEach(function(k, i){
+      var col = i % 2, row = Math.floor(i / 2), cx = sx + 62 + col * 112, cy = sy + 72 + row * 60;
+      if(i === 6){ cx = sx + 118; }
+      o += '<rect x="' + (cx - 54) + '" y="' + (cy + 4) + '" width="108" height="5" rx="2" class="ld-shelf"/>' + tool(k, cx, cy + 4, '') + '<text x="' + cx + '" y="' + (cy + 22) + '" text-anchor="middle" class="ld-tn">' + esc(names[k] || k) + '</text>';
+    });
+    return svgOut(W, H, lab + ' Beside it, a shelf of lab instruments: meterstick, stopwatch, motion detector, spring scale, electronic balance, photogate and protractor.', o);
+  }
+
   /* -------------------------------------------------------------- mount */
   T.mount('lab-design', function(app, data){
     var ex = null;
@@ -350,7 +387,7 @@
         cur = p; fig = el;
         var exp = LD.EXPS[p.exp], v = p.values, x = exp.iv.min + (exp.iv.max - exp.iv.min) * 0.6;
         var rows = v.rows.map(function(rw, i){ return ['' + (i + 1), F(rw[0], exp.iv.d), F(rw[1], exp.dv.d)]; });
-        el.innerHTML = '<div class="ld-qfig"><div class="ld-qbench">' + bench(exp, v.P, x, { t: 0, run: false, reading: null }) + '</div><div class="ld-qdata">' + T.dataTable(['Trial', sym(exp.iv.sym) + ' (' + exp.iv.unit + ')', sym(exp.dv.sym) + ' (' + exp.dv.unit + ')'], rows, 'The data') + '<div class="ld-qplot"></div></div></div>';
+        el.innerHTML = '<div class="ld-qfig"><div class="ld-qbench">' + drillBench(exp, v.P, x) + bench(exp, v.P, x, { t: 0, run: false, reading: null }).replace('class="phys-scene ld-svg"', 'class="phys-scene ld-svg ld-qsmall"') + '</div><div class="ld-qdata">' + T.dataTable(['Trial', sym(exp.iv.sym) + ' (' + exp.iv.unit + ')', sym(exp.dv.sym) + ' (' + exp.dv.unit + ')'], rows, 'The data') + '<div class="ld-qplot"></div></div></div>';
       },
       onStep: function(s, right, api){
         // Once the plot is chosen, the linearized data and its best-fit line appear.

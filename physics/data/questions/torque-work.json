@@ -493,13 +493,13 @@
      "why": "With no friction, all the work becomes rotational kinetic energy."
     },
     {
-     "name": "The wheel’s rotational inertia",
-     "answer": "none",
-     "why": "I depends on the wheel’s mass and its distribution, which do not change."
+     "name": "The time the wheel takes to make each successive full turn",
+     "answer": "down",
+     "why": "Each turn adds the same work τ(2π), so the wheel spins faster and faster and each turn takes less time."
     }
    ],
    "why": {
-    "correct": "The work done by the torque, τΔθ, grows with the angle and all of it becomes rotational kinetic energy; the wheel itself, and so its I, is unchanged."
+    "correct": "The work done by the torque, τΔθ, grows with the angle and all of it becomes rotational kinetic energy. Equal angles get equal work, but the wheel is turning faster each time, so each turn takes less time."
    }
   }
  ]

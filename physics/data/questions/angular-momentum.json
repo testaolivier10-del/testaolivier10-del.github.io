@@ -535,26 +535,26 @@
    "practice": "2.C",
    "level": "analyze",
    "diff": 2,
-   "q": "A puck slides in a straight line at constant speed past a point P on a frictionless table. Predict how each quantity changes as the puck moves from far left of P to far right of P.",
+   "q": "A puck slides in a straight line at constant speed past a point P on a frictionless table. Predict how each quantity changes as the puck moves from far left of P to the point of its path closest to P.",
    "variables": [
     {
-     "name": "The puck’s linear momentum",
-     "answer": "none",
-     "why": "No net force acts on the puck, so its mass and velocity, and so mv, stay the same."
+     "name": "The puck’s distance r from P",
+     "answer": "down",
+     "why": "The puck approaches the closest point of its path to P, so r shrinks to the perpendicular distance d."
     },
     {
-     "name": "The perpendicular distance from P to the puck’s path",
-     "answer": "none",
-     "why": "The path is a fixed straight line, so this distance never changes."
+     "name": "sin θ, where θ is the angle between the puck’s velocity and the line from P to the puck",
+     "answer": "up",
+     "why": "Far away, that line is nearly parallel to the path (θ near 180°, sin θ near 0); at the closest point θ = 90° and sin θ = 1."
     },
     {
      "name": "The puck’s angular momentum about P",
      "answer": "none",
-     "why": "L = mv × (perpendicular distance), and none of those change."
+     "why": "L = rmv sin θ, and r sin θ always equals the fixed distance d from P to the path, so L = mvd does not change."
     }
    ],
    "why": {
-    "correct": "With no net force, mv is constant. The perpendicular distance from P to the line is fixed, so L = mvd about P stays the same even though the puck’s distance from P shrinks and then grows."
+    "correct": "With no net force, mv is constant. As the puck approaches, r falls while sin θ rises, and their product r sin θ stays equal to the fixed distance d, so L = mvd about P stays the same."
    }
   }
  ]

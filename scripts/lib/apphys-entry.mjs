@@ -87,7 +87,7 @@ export const EQ = [
   { h: 'Energy, work and power', id: 'energy', rows: [
     ['K = ½mv²', 'Translational kinetic energy.', 'Speed from energy, and energy from speed. It depends on v², so twice the speed gives four times the kinetic energy; ΔK is not ½m(Δv)².', 'Unit 3', 'kinetic-energy', ['energy-bar-charts', 'collision-lab']],
     ['W = F_∥ d = F d cos θ', 'The work done by a constant force: the part of the force along the displacement, times the distance.', 'How much energy a force transfers. Positive when the force has a part along the motion, negative against it, zero when it is perpendicular (a normal force on a level floor, the string on a ball in a circle). For a changing force, use the area under the force-position graph.', 'Unit 3', 'work-by-forces', ['energy-bar-charts']],
-    ['ΔK = ΣW_i = F_net,∥ d', 'The work-energy theorem: the net work on an object equals its change in kinetic energy.', 'Speeds after a push, stopping distances with friction, and anything with a force-position graph.', 'Unit 3', 'work-by-forces', ['energy-bar-charts']],
+    ['ΔK = ΣW_i = ΣF_∥,i d_i', 'The work-energy theorem: the net work on an object, the sum of the work each force does, equals its change in kinetic energy.', 'Speeds after a push, stopping distances with friction, and anything with a force-position graph.', 'Unit 3', 'work-by-forces', ['energy-bar-charts']],
     ['U_s = ½k(Δx)²', 'The elastic potential energy stored in an ideal spring.', 'Spring launchers and bumpers, and oscillators. It depends on (Δx)², so twice the compression stores four times the energy.', 'Unit 3', 'potential-energy', ['energy-bar-charts', 'oscillator-lab']],
     ['U_G = −G m₁m₂ / r', 'The gravitational potential energy of two masses, zero when they are infinitely far apart.', 'Satellites and orbits far from a surface, and escape. It is negative and rises toward zero as the masses separate.', 'Unit 3', 'potential-energy', ['rotation-lab']],
     ['ΔU_g = m g Δy', 'The change in gravitational potential energy near Earth\'s surface.', 'Anything that rises or falls a height Δy near the ground: ramps, hills, pendulums. Only changes matter, so choose the zero height that makes the problem simplest.', 'Unit 3', 'potential-energy', ['energy-bar-charts']],
@@ -110,7 +110,7 @@ export const EQ = [
     ['I\' = I_cm + M d²', 'The parallel-axis theorem: the rotational inertia about an axis a distance d from a parallel axis through the center of mass.', 'A rod turning about its end instead of its center, a disk pivoted at its rim.', 'Unit 5', 'rotational-inertia'],
     ['α_sys = Στ / I_sys = τ_net / I_sys', 'Newton\'s second law in rotational form.', 'Pulleys with mass, wheels driven by a torque, rods falling about a pivot. Write it alongside ΣF = ma for any object that also moves.', 'Unit 5', 'rotational-second-law', ['torque-balance', 'rotation-lab']],
     ['K = ½ I ω²', 'Rotational kinetic energy.', 'Spinning objects, and rolling objects, whose total kinetic energy is ½Mv² + ½Iω².', 'Unit 6', 'rotational-kinetic-energy', ['rotation-lab']],
-    ['W = τ Δθ', 'The work done by a constant torque turning through an angle Δθ (in radians).', 'Motors and brakes on wheels; the rotational work-energy theorem, τΔθ = ΔK.', 'Unit 6', 'torque-work'],
+    ['W = τ Δθ', 'The work done by a constant torque turning through an angle Δθ (in radians).', 'Motors and brakes on wheels; the rotational work-energy theorem, τ_net Δθ = ΔK (with the net torque).', 'Unit 6', 'torque-work'],
     ['L = I ω', 'The angular momentum of a rotating object.', 'Spinning skaters and divers, turntables that catch a falling lump, merry-go-rounds. It stays constant when the net external torque is zero.', 'Unit 6', 'angular-momentum', ['rotation-lab']],
     ['L = r m v sin θ', 'The angular momentum of a point object about an axis.', 'A child jumping onto a merry-go-round, a ball on a string, a satellite (constant because gravity points at the planet).', 'Unit 6', 'angular-momentum'],
     ['ΔL = τ Δt', 'Angular impulse: a torque acting for a time changes the angular momentum.', 'Spinning a wheel up or down with a known torque for a known time.', 'Unit 6', 'angular-momentum'],
@@ -134,7 +134,7 @@ export const EQ = [
   { h: 'Geometry and trigonometry', id: 'geometry', rows: [
     ['sin θ = a/c;  cos θ = b/c;  tan θ = a/b;  c² = a² + b²', 'Right-triangle trigonometry and the Pythagorean theorem. The sheet also lists sin, cos and tan of 0°, 30°, 37°, 45°, 53°, 60° and 90° (37° and 53° are the 3-4-5 triangle).', 'Components of forces and velocities, heights from ramp lengths (h = d sin θ), torques at an angle. Check the calculator is in degree mode.', 'Math you need', 'math-trig-components', ['projectile-lab', 'scaling-drills']],
     ['s = r θ;  C = 2πr;  A = πr²', 'Arc length (θ in radians), circumference and area of a circle.', 'Distance around a wheel, the period of circular motion (v = 2πr/T), pipe cross-sections for continuity.', 'Units 2, 5', 'linear-rotational-link'],
-    ['A = bh;  A = ½bh;  V = ℓwh;  V = πr²ℓ;  V = 4/3 πr³;  S = 4πr²', 'Areas of a rectangle and triangle; volumes of a rectangular solid, cylinder and sphere; surface area of a sphere.', 'Areas under graphs (displacement, work, impulse) and volumes for density and buoyancy.', 'Math you need', 'math-slopes-areas'],
+    ['A = bh;  A = ½bh;  V = ℓwh;  V = πr²ℓ;  S = 2πrℓ + 2πr²;  V = 4/3 πr³;  S = 4πr²', 'Areas of a rectangle and triangle; volumes of a rectangular solid, cylinder and sphere; surface areas of a cylinder and a sphere.', 'Areas under graphs (displacement, work, impulse) and volumes for density and buoyancy.', 'Math you need', 'math-slopes-areas'],
   ] },
 ];
 // What the sheet leaves out (docs/apphys-research/framework.md, section 5).
@@ -276,7 +276,7 @@ ${bodyOpen(` data-unit="${ch.id}" data-app="unit-test"`)}
 <main id="main" class="xshell phys-app phys-entry">
   ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../units/${ch.id}.html` }, { name: `Unit ${ch.n} practice test` }])}
   <header class="hero phys-hero"><div class="eyebrow">Unit ${ch.n} &middot; ${ch.weight[0]}&ndash;${ch.weight[1]}% of the exam ${BETA_PILL}</div><h1>Unit ${ch.n} practice test: ${esc(ch.title)}</h1>
-  <p class="lede">${qs.length} exam-style questions from the unit, free, with an explanation for every option. Four answer choices each, and data sets that share one table, graph or scene diagram, as on the real exam.</p>
+  <p class="lede">${qs.length} exam-style questions from the unit, free, with an explanation for every option. Most have four answer choices, as on the real exam, and a few ask you to type a value; data sets share one table, graph or scene diagram.</p>
   <p class="phys-small phys-nav-ref">Covers: ${topics.map(t => esc(t.title)).join('; ')}.</p></header>
   <div class="phys-qs" data-set="check">${html}</div>
   <section class="xsection phys-nav-ref" aria-labelledby="ut-more"><h2 id="ut-more">Keep going</h2>

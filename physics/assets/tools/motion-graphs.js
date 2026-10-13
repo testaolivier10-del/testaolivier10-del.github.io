@@ -229,7 +229,7 @@
     }
 
     /* ---- first touch quiets the cue */
-    function firstTouch(){ if(!firstAct){ firstAct = true; start.done(); } }
+    function firstTouch(){ if(!firstAct){ firstAct = true; start.done(); if(geo) drawScene(nowState()); } }
 
     /* ================================================ drawing: the scene */
     var geo = null, cartG = null, vecG = null, pingG = null;
@@ -294,6 +294,12 @@
       // A zero vector is drawn as nothing here (the readout says 0).
       if(Math.abs(vNow) * vs >= 4) out += PS.arrow(X, y0, clamp(vNow * vs, -geo.w, geo.w), 0, { cls: 'vel', label: 'v', width: 3.5 });
       if(Math.abs(aNow) * as >= 4) out += PS.arrow(X, y0 - 20, clamp(aNow * as, -geo.w, geo.w), 0, { cls: 'acc', label: 'a', width: 3, dashed: true });
+      // Before the first move in Drag: a "drag me" cue on the track.
+      if(st.drive === 'drag' && !firstAct && !st.rec.t.length){
+        var cy = geo.railY + 1, hw = geo.cw * 0.5 + 34;
+        out += '<g class="mg-drag-cue" aria-hidden="true"><path d="M' + (X - hw).toFixed(1) + ' ' + (y0 + 4) + 'h' + (hw * 2).toFixed(1) + '"/><path class="hd" d="M' + (X - hw + 8).toFixed(1) + ' ' + (y0 - 2) + 'l-8 6 8 6M' + (X + hw - 8).toFixed(1) + ' ' + (y0 - 2) + 'l8 6 -8 6"/>' +
+          '<text x="' + X.toFixed(1) + '" y="' + (y0 - 8) + '" text-anchor="middle">Drag the cart</text></g>';
+      }
       vecG.innerHTML = out;
       // The detector's ping while recording.
       var dx = sceneX(TR.min) - 6, dy = geo.railY - 31;
@@ -363,6 +369,16 @@
       p.push('<line class="axis" x1="' + gl.L + '" x2="' + (gl.L + gl.pw) + '" y1="' + (gl.top.a + gl.ph).toFixed(1) + '" y2="' + (gl.top.a + gl.ph).toFixed(1) + '"/>');
       for(var t = 0; t <= WIN; t += (gl.pw < 300 ? 2 : 1)) p.push('<text class="tick" x="' + gx(t).toFixed(1) + '" y="' + (gl.top.a + gl.ph + 16).toFixed(1) + '" text-anchor="middle">' + t + '</text>');
       p.push('<text class="lbl" x="' + (gl.L + gl.pw) + '" y="' + (gl.h - 2) + '" text-anchor="end">t (s)</text>');
+      // Before any motion: a faint example run and a hint, so the first screen
+      // shows what the graphs will do (Drag), or the run that Run will make (Set).
+      var ghost = !m.t.length && !st.running ? ghostRun() : null;
+      if(ghost){
+        var gcls = { x: 's1', v: 's2', a: 's3' };
+        ['x', 'v', 'a'].forEach(function(k){ p.push('<polyline class="series mg-ghost ' + gcls[k] + '" points="' + ghost.m.t.map(function(t, i){ return gx(t).toFixed(1) + ',' + gy(k, ghost.m[k][i]).toFixed(1); }).join(' ') + '"/>'); });
+        if(ghost.notes) ghost.notes.forEach(function(n){ p.push('<text class="mg-ghost-n" x="' + gx(n[0]).toFixed(1) + '" y="' + (gy(n[1], n[2]) + n[3]).toFixed(1) + '" text-anchor="middle">' + n[4] + '</text>'); });
+        var hx = gl.L + gl.pw - 8, hy = gl.top.x + 16;
+        p.push('<g class="mg-ghost-hint"><text x="' + hx + '" y="' + hy + '" text-anchor="end">' + ghost.title + '</text>' + (ghost.sub && gl.pw > 300 ? '<text class="sub" x="' + hx + '" y="' + (hy + 16) + '" text-anchor="end">' + ghost.sub + '</text>' : '') + '</g>');
+      }
       // Target (Match).
       if(tg) p.push('<polyline class="mg-target-l" points="' + tg.pts.map(function(q){ return gx(q[0]).toFixed(1) + ',' + gy(tg.kind, q[1]).toFixed(1); }).join(' ') + '"/>');
       // The cursor's area and tangents go under the curves.
@@ -389,6 +405,21 @@
       }
       graphsSvg.innerHTML = p.join('');
       graphsSvg.setAttribute('aria-label', graphsLabel(m, c));
+    }
+    /* The faint example (Drag) or the preview of Run (Set), from the exact model. */
+    function ghostRun(){
+      if(st.drive === 'drag'){
+        var mo = MG.motion(-1.5, 0, [{ dur: 2, a: 0.6 }, { dur: 2, a: 0 }, { dur: 2, a: -0.6 }, { dur: 2, a: -0.6 }, { dur: 2, a: 0 }]);
+        var w = gl.pw > 300;
+        return { m: MG.sample(mo, WIN, 0.05), title: 'Example run (faint)', sub: 'Drag the cart: your own run draws here',
+          notes: w ? [[1, 'v', 0.6, -10, 'speeds up'], [3, 'v', 1.2, -10, 'steady'], [6, 'v', 0.0, -10, 'turns around'], [9, 'v', -1.2, 18, 'steady back']] : null };
+      }
+      if(st.drive === 'set'){
+        var mo2 = MG.motion(st.x0, st.v0, [{ dur: WIN, a: st.a }]), T = MG.edgeTime(mo2, WIN);
+        if(T < 0.1) return null;
+        return { m: MG.sample(mo2, T, 0.05), title: 'Preview of the run (faint)', sub: 'Press Run to record it' };
+      }
+      return null;
     }
     function areaPath(k, m, t1, cls){
       var ys = m[k], pts = [gx(0).toFixed(1) + ',' + gy(k, 0).toFixed(1)];

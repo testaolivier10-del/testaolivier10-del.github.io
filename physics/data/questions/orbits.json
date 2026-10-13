@@ -378,13 +378,13 @@
      "why": "Only gravity acts, a conservative force inside the system."
     },
     {
-     "name": "Angular momentum about the Sun",
-     "answer": "none",
-     "why": "The Sun’s pull points at its center and exerts no torque about it."
+     "name": "Gravitational potential energy of the comet-Sun system (zero at infinite separation)",
+     "answer": "down",
+     "why": "U = −GMm/r becomes more negative as r shrinks."
     }
    ],
    "why": {
-    "correct": "E and L stay constant. Falling inward, U = −GMm/r becomes more negative, so K and the speed increase; r v sin θ stays constant."
+    "correct": "E stays constant because only gravity, a conservative force inside the system, acts. Falling inward, U = −GMm/r becomes more negative, so K and the speed increase."
    }
   },
   {

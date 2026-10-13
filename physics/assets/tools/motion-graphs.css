@@ -142,3 +142,14 @@ body.ls-on .phys-crumb{display:none;}
   .ls-root .ls-drill-stage:has(.cd-pics .mg-fig) .cd-fig > svg{max-height:21dvh !important;}
   .ls-root .ls-drill-pics:has(.mg-fig) .cd-label{font-size:16px;margin:0 0 4px;}
 }
+
+/* First screen: the faint example run and the drag cue (before any motion). */
+.mg-graphs .series.mg-ghost{stroke-width:2.4;stroke-opacity:.32;stroke-dasharray:6 5;}
+.mg-ghost-n{fill:var(--muted);font:800 11px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round;}
+.mg-ghost-hint text{fill:var(--cink);font:900 12.5px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
+.mg-ghost-hint text.sub{fill:var(--muted);font-weight:800;font-size:11.5px;}
+.mg-drag-cue path{fill:none;stroke:var(--cink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:3 4;}
+.mg-drag-cue path.hd{stroke-dasharray:none;}
+.mg-drag-cue text{fill:var(--cink);font:900 12px var(--font-ui);}
+@media (prefers-reduced-motion: no-preference){ .mg-drag-cue{animation:mg-nudge 1.6s ease-in-out infinite;} }
+@keyframes mg-nudge{0%,100%{transform:translateX(0);}50%{transform:translateX(5px);}}

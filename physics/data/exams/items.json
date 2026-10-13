@@ -125,7 +125,7 @@
         "options": [
           "Right: h is proportional to the compression squared.",
           "This treats the stored energy as proportional to the compression. U_s depends on (Δx)².",
-          "This is how the launch speed changes (v ∝ Δx gives 2 times, not √2). The height goes with the energy, ∝ (Δx)².",
+          "This would fit a height that grows as √Δx. The height is set by the stored energy, which goes as (Δx)², so it is 4 times as high (the launch speed doubles).",
           "The height depends on the energy stored, which grows when the spring is compressed more."
         ]
       }
@@ -387,11 +387,11 @@
     },
     {
       "id": "phys-exam-2-11", "type": "single", "unit": "unit-8", "topic": "fluid-pressure", "practice": "2.B", "level": "apply", "diff": 2,
-      "q": "A diver descends in a freshwater lake (density 1000 kg/m³). Use g = 9.8 m/s². At what depth is the gauge pressure 1.0 × 10⁵ Pa?",
+      "q": "A diver descends in a freshwater lake (density 1000 kg/m³). Use g = 9.8 m/s². At what depth is the gauge pressure 1.00 × 10⁵ Pa?",
       "options": ["10.2 m", "1.02 m", "102 m", "0 m, at the surface"],
       "correct": 0,
       "why": {
-        "correct": "Gauge pressure is the pressure above atmospheric: P_gauge = ρgh, so h = (1.0 × 10⁵ Pa) / ((1000 kg/m³)(9.8 m/s²)) = 10.2 m.",
+        "correct": "Gauge pressure is the pressure above atmospheric: P_gauge = ρgh, so h = (1.00 × 10⁵ Pa) / ((1000 kg/m³)(9.8 m/s²)) = 10.2 m.",
         "options": [
           "Right: P_gauge = ρgh solved for h.",
           "This is 10 times too small; check the powers of ten in 10⁵ / (10³ × 9.8).",

@@ -61,11 +61,25 @@
 .ld-pair .ld-ivsel:empty{display:none;}
 .ld-dock .bt-buttons{flex-wrap:nowrap;}
 .ld-dock .bt-buttons > *{flex:1;}
-.ld-qfig{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start;}
-.ld-qbench{flex:1 1 240px;min-width:0;}
-.ld-qdata{flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:6px;}
-.ld-qbench svg{width:100%;height:auto;max-height:260px;}
-.ld-qplot svg{width:100%;height:auto;max-height:260px;}
+/* Drill: the bench picture across the top (its own, larger drawing with an
+   instrument shelf), the data table and, once chosen, the plot beneath. */
+.ld-qfig{display:flex;flex-direction:column;gap:12px;align-items:stretch;}
+.ld-qbench{flex:none;min-width:0;border-radius:14px;overflow:hidden;}
+.ld-qdata{flex:none;min-width:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:start;}
+.ld-qdata .ld-qplot:empty{display:none;}
+.ld-qdata:has(.ld-qplot:empty){grid-template-columns:minmax(0,1fr);}
+.ld-qbench svg{width:100%;height:auto;max-height:min(420px,52vh);display:block;}
+.ld-qplot svg{width:100%;height:auto;max-height:280px;}
+.ld-qbench .ld-qsmall{display:none;}
+.ld-wall{fill:var(--surface2);}
+.ld-floor{fill:var(--line);}
+.ld-cab{fill:var(--white);stroke:var(--line);stroke-width:2;}
+.ld-shelf{fill:var(--ld-wood);}
+.ld-tn{font:800 11.5px var(--font-ui);fill:var(--muted) !important;}
+.ld-lcd{fill:#BFE3C9;}
+.ld-led{fill:#E5484D;}
+.ld-prot{fill:#DDEFF9;fill-opacity:.7;stroke:var(--ld-glass);stroke-width:1.5;}
+:root[data-theme="dark"] .ld-lcd{fill:#3E7A52;} :root[data-theme="dark"] .ld-prot{fill:#2F78A8;fill-opacity:.35;}
 .ld-qdata table{font-size:14px;}
 .ls-root .ls-drill-stage .ld-qfig{overflow:auto;}
 @media (max-width:700px){
@@ -75,7 +89,9 @@
   .ld-view .ld-graph-v{display:none;}
   .ld-view.show-graph .ld-graph-v{display:flex;}
   .ld-view.show-graph .ld-bench-v{display:none;}
-  .ld-qbench{display:none;}
+  .ld-qdata{grid-template-columns:minmax(0,1fr);}
+  .ld-qbench svg:not(.ld-qsmall){display:none;}
+  .ld-qbench .ld-qsmall{display:block;max-height:240px;background:var(--surface2);}
   .ld-fitbox{display:none;}
   .ld-graph{flex:1 1 auto;}
   .ld-bench-v svg,.ld-graph svg{max-height:none;}

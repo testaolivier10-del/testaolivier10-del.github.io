@@ -181,8 +181,7 @@ Owner to confirm (needs-author `tools-premium`).
 
 10. (2026-10-12, Phase 3) **Exams, trainer and entry pages**, as apchem decision 17 with the 2027 format.
    - Two **fixed practice exams** (`physics/data/exams/forms.json`): 42 four-option MCQ each, every unit
-     inside its CED range (form 1: U1 5, U2 7, U3 9, U4 5, U5 6, U6 3, U7 3, U8 4; form 2: U1 6, U2 8,
-     U3 9, U4 5, U5 5, U6 3, U7 2, U8 4), 7-9 stimulus sets of 3-5, bank items none of which is a
+     inside its CED range (both forms: U1 5, U2 8, U3 8, U4 5, U5 5, U6 3, U7 3, U8 5; exams review), 7-9 stimulus sets of 3-5, bank items none of which is a
      lesson-check item, plus 13 (form 1) and 12 (form 2) **exam-only items** (`items.json`: a spring
      launcher set and a narrowing pipe set in form 1, a force-position graph set and a two-cart
      collision table in form 2, plus discrete calculations). Section II one of each type in order:

@@ -73,8 +73,8 @@
   "Kinetic energy depends on the reference frame, because speed does."
  ],
  "misconception": {
-  "wrong": "A cart that speeds up from 1.5 m/s to 2.5 m/s gains ½m(1.0 m/s)² of kinetic energy.",
-  "right": "The change is ½m(2.5 m/s)² − ½m(1.5 m/s)² = ½m(4.0 m²/s²), four times ½m(Δv)² = ½m(1.0 m²/s²). Square each speed before you subtract."
+  "wrong": "A cart that speeds up from 2.0 m/s to 3.0 m/s gains ½m(1.0 m/s)² of kinetic energy.",
+  "right": "The change is ½m(3.0 m/s)² − ½m(2.0 m/s)² = ½m(5.0 m²/s²), five times ½m(Δv)² = ½m(1.0 m²/s²). Square each speed before you subtract."
  },
  "check": [
   "phys-kinetic-energy-1",

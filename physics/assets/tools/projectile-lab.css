@@ -74,6 +74,11 @@
 :root[data-theme="dark"] .pl-ball.pl-a,:root[data-theme="dark"] .pl-dot.pl-a{fill:#C3A3E0;}
 :root[data-theme="dark"] .pl-path.pl-a,:root[data-theme="dark"] .pl-guide.pl-a{stroke:#C3A3E0;}
 
+.pl-scale-bg{fill:var(--white);fill-opacity:.82;}
+.pl-scale-bar{stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;}
+.pl-scale-t{fill:var(--ink);font:800 11.5px var(--font-ui);}
+:root[data-theme="dark"] .pl-scale-bg{fill:#0E1A20;}
+
 /* Controls */
 .pl-ctl{display:flex;flex-direction:column;gap:12px;}
 .pl-p{display:flex;flex-direction:column;gap:10px;}
@@ -92,7 +97,9 @@
 /* Inside the Tool Studio */
 body.ls-on .phys-crumb{display:none;}
 .ls-root .pl-ls-stage .pl-stage{flex:1;min-height:0;}
-.ls-root .pl-ls-stage .pl-scene{height:100%;}
+.ls-root .pl-ls-stage .pl-stage{justify-content:center;overflow:hidden;border-radius:12px;}
+.ls-root .pl-ls-stage .pl-scene{overflow:visible;}
+.ls-root .pl-ls-stage .pl-scene{height:auto;max-height:100%;}
 .ls-root .pl-ls-dock .pl-views,.ls-root .pl-ls-dock .pl-frames{width:100%;}
 .ls-root .pl-ls-dock .pl-views .bt-mode,.ls-root .pl-ls-dock .pl-frames .bt-mode{flex:1;}
 .ls-root .pl-ls-dock .btn-press.pl-go{flex:1;}

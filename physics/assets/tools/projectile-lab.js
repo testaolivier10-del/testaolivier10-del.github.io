@@ -220,7 +220,7 @@
       var w = Math.max(300, Math.round(svg.parentNode.clientWidth || 640));
       var hAvail = Math.round(svg.parentNode.clientHeight || 0);
       var h = hAvail > 160 ? hAvail : Math.round(clamp(w * 0.56, 240, 440));
-      var Lm = Math.round(clamp(w * 0.13, 62, 120)), Rm = 18, Tm = 22, Bm = 34;
+      var Lm = Math.round(clamp(w * 0.09, 62, 96)), Rm = 18, Tm = 22, Bm = 34;
       var spanX, spanY, x0World = 0;
       if(st.view === 'cart'){
         var K = cartModel();
@@ -235,7 +235,15 @@
       }
       var pw = w - Lm - Rm, ph = h - Tm - Bm;
       var ppm = Math.min(pw / spanX, ph / spanY);
-      geo = { w: w, h: h, L: Lm, R: Rm, T: Tm, B: Bm, ppm: ppm, spanX: spanX, x0: x0World, ground: h - Bm };
+      // Fit the view to this flight: one scale both ways (true shape), and the
+      // scene only as tall as the flight needs (plus room for the cannon and
+      // the scale bar), so a low, long flight is not drawn under a tall empty
+      // sky. The stage centers the shorter scene.
+      if(hAvail > 160){
+        var need = Math.round(Tm + Bm + spanY * ppm + 30), hMin = Math.round(Math.min(h, Math.max(240, w * 0.46)));
+        h = clamp(need, hMin, h);
+      }
+      geo = { hA: hAvail, w: w, h: h, L: Lm, R: Rm, T: Tm, B: Bm, ppm: ppm, spanX: spanX, x0: x0World, ground: h - Bm };
       // Velocity arrows: one px-per-(m/s) for the whole view, chosen so an
       // arrow shows how far the ball would go in 0.8 of a strobe step at that
       // velocity: horizontal arrows then fit between the dots.
@@ -261,7 +269,15 @@
         p.push(label(X(x), geo.ground + 18, M.minus(String(M.round(x, 1))), 'middle', 'pl-tl'));
       }
       p.push(label(geo.w - geo.R, geo.h - 3, 'x (m)', 'end', 'pl-tl'));
-      return p.join('');
+      return p.join('') + scaleBar();
+    }
+    /* A scale bar: the same meters across and up (the picture has the true shape). */
+    function scaleBar(){
+      var m = gridStep(geo.spanX); while(m * geo.ppm > geo.w * 0.28 && m > 1) m = m / 2 >= 1 ? m / 2 : 1;
+      var px = m * geo.ppm, x = geo.L + 34, y = geo.T + 10;
+      return '<g class="pl-scale"><rect class="pl-scale-bg" x="' + (x - 8) + '" y="' + (y - 14) + '" width="' + (px + 150).toFixed(1) + '" height="26" rx="8"/>' +
+        '<path class="pl-scale-bar" d="M' + x + ' ' + (y - 4) + 'v8M' + x + ' ' + y + 'h' + px.toFixed(1) + 'M' + (x + px).toFixed(1) + ' ' + (y - 4) + 'v8"/>' +
+        label(x + px + 8, y + 4, m + ' m, across and up', 'start', 'pl-scale-t') + '</g>';
     }
     function heightRuler(){
       var yMax = (geo.ground - geo.T) / geo.ppm, step = gridStep(yMax * 1.6), p = [], xr = geo.L - 10;
@@ -282,8 +298,8 @@
     function drawLaunch(){
       var Ls = launches(), p = [], cs = clamp(geo.ppm * 2.2, 34, 58), hMax = 0;
       Ls.forEach(function(x){ hMax = Math.max(hMax, x.L.h); });
-      p.push('<rect class="pl-sky" x="0" y="0" width="' + geo.w + '" height="' + geo.h + '"/>');
-      p.push(grass(0, geo.w, geo.ground));
+      p.push('<rect class="pl-sky" x="-1500" y="-1500" width="' + (geo.w + 3000) + '" height="' + (geo.ground + 1500) + '"/>');
+      p.push(grass(-1500, geo.w + 1500, geo.ground));
       p.push(axisLabels());
       // Cliffs (one per launch height; A and B can differ).
       Ls.slice().sort(function(a, b){ return b.L.h - a.L.h; }).forEach(function(x){ if(x.L.h > 0) p.push(cliff(X(0), Y(x.L.h), geo.ground, 0)); });
@@ -342,10 +358,10 @@
       var K = cartModel(), t = st.flown ? st.t : 0, inCart = st.frame === 'cart';
       var cs = clamp(geo.ppm * 1.6, 56, 96), p = [];
       var gq = K.ground(t), cartX = inCart ? 0 : gq.cart, ballX = inCart ? 0 : gq.x;
-      p.push('<rect class="pl-sky" x="0" y="0" width="' + geo.w + '" height="' + geo.h + '"/>');
+      p.push('<rect class="pl-sky" x="-1500" y="-1500" width="' + (geo.w + 3000) + '" height="' + (geo.ground + 1500) + '"/>');
       // In the cart's frame the ground slides backward: offset the ground marks by the cart's travel.
       var shift = inCart ? gq.cart : 0, p2 = [];
-      p.push(grass(0, geo.w, geo.ground));
+      p.push(grass(-1500, geo.w + 1500, geo.ground));
       var step = gridStep(geo.spanX) / 2, xEnd = geo.x0 + (geo.w - geo.L - geo.R) / geo.ppm;
       for(var x = Math.floor((geo.x0 + shift) / step) * step; x - shift <= xEnd + step; x += step){
         var sx = X(x - shift);
@@ -355,6 +371,7 @@
       }
       p.push(p2.join(''));
       p.push(label(geo.w - geo.R, geo.h - 3, inCart ? 'ground marks (m): they slide past' : 'x (m), ground frame', 'end', 'pl-tl'));
+      p.push(scaleBar());
       p.push(heightRuler());
       // The path traced so far, in this frame.
       var fr = inCart ? K.cart : K.ground, pts = [], sb = { dt: geo.dt };
@@ -462,7 +479,7 @@
     }
 
     if(window.ResizeObserver){
-      var ro = new ResizeObserver(function(){ var w = Math.round(svg.parentNode.clientWidth), h = Math.round(svg.parentNode.clientHeight); if(geo && w === geo.w && (h <= 160 || h === geo.h)) return; geo = null; draw(false); });
+      var ro = new ResizeObserver(function(){ var w = Math.round(svg.parentNode.clientWidth), h = Math.round(svg.parentNode.clientHeight); if(geo && w === geo.w && (h <= 160 || h === geo.hA)) return; geo = null; draw(false); });
       ro.observe(svg.parentNode);
     }
 

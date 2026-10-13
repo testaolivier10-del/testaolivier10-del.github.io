@@ -399,13 +399,13 @@
      "why": "Its mass is farther out, so its I is larger and ½Iω² is larger."
     },
     {
-     "name": "Its translational kinetic energy",
-     "answer": "none",
-     "why": "½Mv² with the same M and v."
+     "name": "Its total kinetic energy",
+     "answer": "up",
+     "why": "Its translational kinetic energy ½Mv² is the same, and its rotational kinetic energy is larger, so the total is larger."
     }
    ],
    "why": {
-    "correct": "Rolling at the same v with the same R fixes ω. The hollow ball’s larger I gives it more rotational kinetic energy; its translational kinetic energy is the same."
+    "correct": "Rolling at the same v with the same R fixes ω. The hollow ball’s larger I gives it more rotational kinetic energy; with the same ½Mv², its total kinetic energy is larger too."
    }
   },
   {

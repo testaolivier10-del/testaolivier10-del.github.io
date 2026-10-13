@@ -3,15 +3,15 @@
  "hook": "A washing machine drum spins up, holds a fast spin, then coasts to a stop. Its edge travels a long way, yet the drum never goes anywhere. To describe turning, physics swaps position, velocity and acceleration for angle, angular velocity and angular acceleration, and every equation you already know comes back with new letters.",
  "prereq": [
   {
-   "q": "A cart starts from rest with a = 2.0 m/s². How far does it go in 3.0 s?",
+   "q": "A cart starts from rest with a = 4.0 m/s². How far does it go in 3.0 s?",
    "options": [
-    "9.0 m",
-    "6.0 m",
     "18 m",
-    "3.0 m"
+    "12 m",
+    "36 m",
+    "6.0 m"
    ],
    "correct": 0,
-   "why": "x = v₀t + ½at² = 0 + ½(2.0)(3.0)² = 9.0 m.",
+   "why": "x = v₀t + ½at² = 0 + ½(4.0)(3.0)² = 18 m.",
    "review": "motion-representations"
   },
   {

@@ -98,3 +98,15 @@ All five tools stay inside scope:
   gives h), but a student may look for it. Consider removing the angle label.
 - The fluids scene has no in-SVG keyboard handle (the dock sliders cover it). This is acceptable per the
   bar, but it is unlike the other four tools.
+
+## Polish (2026-10-13, open items for lab-design, torque-balance, rotation-lab)
+
+Same method (scratch build in the session scratchpad `polish/`, Playwright at 1280 and 360, light and dark,
+screenshots looked at). No ids, recording, validators or tests changed: torque-balance 6/6, rotation-lab 6/6,
+lab-design 8/8 pass; `check-apphys-content --check`: tools 0 failing.
+
+| Tool | Change | Screenshots (`/tmp/claude-0/-home-claude/1e00213e-3bb5-50fc-a8ac-0b1f2469eb3d/scratchpad/polish/shots/`) |
+|---|---|---|
+| lab-design | The drill has its own bench picture (`drillBench`), separate from the Explore bench: the experiment drawn large on a lab table (stand setups get the bench, ramp and track setups keep their own table), with a shelf of every instrument in the lab (meterstick, stopwatch, motion detector, spring scale, electronic balance, photogate, protractor; all of them, so it does not hint which the experiment needs). Layout: picture across the top of the stage, data table (and the plot once chosen) beneath. On a phone a compact bench (the Explore drawing) shows instead, so the drawing stays large. | `ldq.png` (all six at 1280 light), `fig-lab-design-pendulum-pendulum-pendulum-1280-dark.png`, `fig-lab-design-*-360-dark.png` |
+| rotation-lab | Rolling-race drill figure: the 28° arc and label are gone (the stem gives only h; the angle does not matter). The height is a full dimension (dashed line from the top, end ticks, "h = … m"). The speed drill, which gives θ, still marks it. | `fig-rotation-lab-rolling-race-race--1280-light.png`, `…-360-dark.png` |
+| torque-balance | Phone balance scene: the view is cropped to the stick and the band above it (no empty sky above, 22 px trimmed at each side), and the hardware zoom on a phone is 1.75× (was 1.5×): masses, labels, ticks and hooks are larger and the stick spans the card. The hint text moves with the crop. Desktop and the inertia race are unchanged. | `tb-cmp.png` (before, after light, after dark tipped), `tb-1280-light.png`, `tb-360-race.png` |

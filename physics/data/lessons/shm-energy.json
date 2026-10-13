@@ -3,15 +3,15 @@
  "hook": "A trampoline jumper, a bungee cord and a car's suspension all trade energy back and forth between motion and a stretched or squeezed spring. Follow the energy and you can find the top speed of an oscillator without knowing anything about its timing.",
  "prereq": [
   {
-   "q": "A spring with k = 200 N/m is compressed 0.10 m. How much elastic potential energy does it store?",
+   "q": "A spring with k = 400 N/m is compressed 0.050 m. How much elastic potential energy does it store?",
    "options": [
+    "0.50 J",
     "1.0 J",
-    "2.0 J",
-    "10 J",
-    "20 J"
+    "10. J",
+    "20. J"
    ],
    "correct": 0,
-   "why": "U_s = ½k(Δx)² = ½(200 N/m)(0.10 m)² = 1.0 J.",
+   "why": "U_s = ½k(Δx)² = ½(400 N/m)(0.050 m)² = 0.50 J.",
    "review": "potential-energy"
   },
   {

@@ -82,10 +82,10 @@
    "checklist": [
     "Uses Newton's second law in rotational form, τ = Iα, so the graph of τ against α is a straight line through the origin whose slope is I",
     "Draws a best-fit line through the data rather than using one data point or connecting the dots",
-    "Finds the slope from the best-fit line, (1.20 − 0.40) N·m / (6.0 − 2.0) rad/s² = 0.20 kg·m², with the unit"
+    "Finds the slope from two points on the best-fit line, far apart, (1.20 − 0.40) N·m / (6.0 − 2.0) rad/s² = 0.20 kg·m², with the unit"
    ],
    "earns": {
-    "answer": "Newton's second law for rotation says τ = Iα, so a graph of τ against α is a straight line through the origin whose slope is the rotational inertia I. Draw the best-fit line through the three points rather than using any one point. Its slope, from two points on the line, is (1.20 N·m − 0.40 N·m) / (6.0 rad/s² − 2.0 rad/s²) = 0.20 kg·m². So the wheel's rotational inertia is 0.20 kg·m².",
+    "answer": "Newton's second law for rotation says τ = Iα, so a graph of τ against α is a straight line through the origin whose slope is the rotational inertia I. Draw the best-fit line through the three points rather than using any one point. Read two points on the line itself, far apart; here the line passes almost exactly through (2.0 rad/s², 0.40 N·m) and (6.0 rad/s², 1.20 N·m), so its slope is (1.20 N·m − 0.40 N·m) / (6.0 rad/s² − 2.0 rad/s²) = 0.20 kg·m². So the wheel's rotational inertia is 0.20 kg·m².",
     "why": "It names what the slope means from the equation, uses the best-fit line, and gives the value with its unit."
    },
    "misses": {

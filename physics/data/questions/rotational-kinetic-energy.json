@@ -434,13 +434,13 @@
      "why": "K = ½Iω²; with ω the same and I four times as large, K is four times as large."
     },
     {
-     "name": "Her mass",
-     "answer": "none",
-     "why": "Spreading the same mass over a wider shape does not change the mass."
+     "name": "The angular velocity she would need to keep her original rotational kinetic energy",
+     "answer": "down",
+     "why": "K = ½Iω²; with I four times as large, the same K needs ω² one quarter as large, so half the angular velocity."
     }
    ],
    "why": {
-    "correct": "Spreading the same mass farther from the axis raises I (as R²), and at the same ω, K = ½Iω² rises in proportion to I."
+    "correct": "Spreading the same mass farther from the axis raises I (as R²). At the same ω, K = ½Iω² rises in proportion to I; to keep the old K she would need half the angular velocity."
    }
   },
   {

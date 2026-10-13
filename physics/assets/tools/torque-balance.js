@@ -98,7 +98,10 @@
   function explore(host, data){
     var W = 640, H = 300, X0 = 40, PPM = 560, BENCH = 284, HPIV = 0.26, THICK = 15, STOP = 10, STOPR = 0.30, FSC = 14;
     var PY = BENCH - HPIV * PPM;
-    function zoomFor(){ var w = sceneEl.clientWidth || 600; Z = w < 520 ? 1.5 : 1; THICK = 15 * Z; }
+    function zoomFor(){ var w = sceneEl.clientWidth || 600; Z = w < 520 ? 1.75 : 1; THICK = 15 * Z; }
+    // On a phone the view is cropped to the stick (its ends, the masses at 5 cm
+    // and 95 cm) and the empty band above it, so the stick fills the width.
+    function vBox(){ var ph = Z > 1, x0 = ph ? 22 : 0, w = ph ? W - 44 : W, top = vTop(); return x0 + ' ' + top + ' ' + w + ' ' + (H - top); }
     var st = { L: 1, mb: 0.12, useMb: true, pivot: 0.5, h: HPIV, stop: STOP, masses: [], force: null };
     var nextId = 1, held = true, th = 0, om = 0, rest = '', s = null, scene = 'beam', idp = nid('tbx');
     function addMass(m, x){ var q = { id: nextId++, m: m, x: x }; st.masses.push(q); return q; }
@@ -138,7 +141,7 @@
     fF.el.querySelector('label').innerHTML = 'Pull, F<sub>A</sub>';
     [fF, fX, fA].forEach(function(x){ fset.appendChild(x.el); });
     det.querySelector('.tb-usemb').addEventListener('change', function(e){ st.useMb = e.target.checked; holdLevel(); draw(); });
-    det.querySelector('.tb-usef').addEventListener('change', function(e){ st.force = e.target.checked ? pull : null; fset.hidden = !e.target.checked; holdLevel(); draw(); });
+    det.querySelector('.tb-usef').addEventListener('change', function(e){ st.force = e.target.checked ? pull : null; fset.hidden = !e.target.checked; if(svg) svg.setAttribute('viewBox', vBox()); holdLevel(); draw(); });
     det.querySelector('.tb-clear').addEventListener('click', function(){ st.masses = []; holdLevel(); draw(); });
     dock.querySelectorAll('[data-add]').forEach(function(b){ b.addEventListener('click', function(){
       var m = +b.getAttribute('data-add'), x = freeSpot();
@@ -189,18 +192,18 @@
     var svg = null, gBeam, gMasses, gStand, gForce, gArm, gStops, did = nid('tbd');
     function build(){
       zoomFor();
-      sceneEl.innerHTML = '<svg viewBox="0 ' + vTop() + ' ' + W + ' ' + (H - vTop()) + '" class="phys-scene tb-svg" role="group" aria-labelledby="' + did + 't">' + defs(did) +
+      sceneEl.innerHTML = '<svg viewBox="' + vBox() + '" class="phys-scene tb-svg" role="group" aria-labelledby="' + did + 't">' + defs(did) +
         '<title id="' + did + 't">Meter stick on a fulcrum</title>' + benchArt(W, BENCH) +
         '<g class="tb-stops"></g><g class="tb-stand tb-drag" tabindex="0" role="slider" aria-label="Fulcrum position" aria-valuemin="25" aria-valuemax="75"></g>' +
         '<g class="tb-armg"></g><g class="tb-beam"></g><g class="tb-masses"></g><g class="tb-force"></g>' +
-        '<text class="tb-hint" x="' + (W - 12) + '" y="20" text-anchor="end" aria-hidden="true"></text></svg>';
+        '<text class="tb-hint" x="' + (W - (Z > 1 ? 26 : 12)) + '" y="' + (vTop() + 16) + '" text-anchor="end" aria-hidden="true"' + (Z > 1 ? ' font-size="17"' : '') + '></text></svg>';
       svg = sceneEl.querySelector('svg');
       gBeam = svg.querySelector('.tb-beam'); gMasses = svg.querySelector('.tb-masses'); gStand = svg.querySelector('.tb-stand');
       gForce = svg.querySelector('.tb-force'); gArm = svg.querySelector('.tb-armg'); gStops = svg.querySelector('.tb-stops');
       gBeam.innerHTML = stickArt(did, X0, PY, PPM, 1, THICK) + '<g class="tb-clampg"></g>';
       dragStand(); keysStand();
     }
-    function vTop(){ return st.force ? 8 : 64; }
+    function vTop(){ return st.force ? 8 : Z > 1 ? Math.round(PY - 40) : 64; }
     function px(x){ return X0 + x * PPM; }
     function onBeam(x){ var r = (x - st.pivot) * PPM, c = Math.cos(th), sn = Math.sin(th); return { x: px(st.pivot) + r * c, y: PY - r * sn }; }
     function drawBeam(){

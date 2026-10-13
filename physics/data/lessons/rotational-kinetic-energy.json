@@ -3,15 +3,15 @@
  "hook": "Some city buses and racing cars store energy in a heavy spinning wheel: brake, and the wheel spins up; accelerate, and it hands the energy back. The wheel never goes anywhere, yet it holds a lot of energy. That is kinetic energy of turning, and it follows the same rule as a moving cart, with new letters.",
  "prereq": [
   {
-   "q": "A 2.0 kg cart moves at 3.0 m/s. Its kinetic energy is",
+   "q": "A 4.0 kg cart moves at 3.0 m/s. Its kinetic energy is",
    "options": [
-    "9.0 J",
-    "6.0 J",
     "18 J",
-    "3.0 J"
+    "6.0 J",
+    "36 J",
+    "12 J"
    ],
    "correct": 0,
-   "why": "K = ½mv² = ½(2.0)(3.0)² = 9.0 J.",
+   "why": "K = ½mv² = ½(4.0)(3.0)² = 18 J.",
    "review": "kinetic-energy"
   },
   {

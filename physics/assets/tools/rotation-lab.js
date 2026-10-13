@@ -389,7 +389,7 @@
   function figure(p){
     var f = p.fig, id = nid('rlq'), W = 520, H = 240, out = '', label = '';
     if(f.kind === 'race' || f.kind === 'ramp'){
-      var th = f.kind === 'ramp' ? f.th : 28, list = f.kind === 'race' ? f.pick : [f.sh], x0 = 60, y0 = 50, run = 330, drop = run * Math.tan(M.rad(th)), gap = 40, n = list.length;
+      var th = f.kind === 'ramp' ? f.th : 28 /* drawn slope only, not labelled */, list = f.kind === 'race' ? f.pick : [f.sh], x0 = 60, y0 = 50, run = 330, drop = run * Math.tan(M.rad(th)), gap = 40, n = list.length;
       H = Math.ceil(y0 + drop + (n - 1) * gap + 25);
       out += '<rect class="rl-floor" x="0" y="' + (H - 18) + '" width="' + W + '" height="18"/>';
       list.forEach(function(k, i){
@@ -399,8 +399,10 @@
           (n > 1 ? '<text class="rl-t" x="' + (x0 - 14) + '" y="' + (ly + 4) + '" text-anchor="end">' + SHORT[k] + '</text>' : '');
       });
       var bx = x0 + run, by = y0 + (n - 1) * gap + drop + 3.5;
-      out += '<path class="rl-ang" d="M' + n1(bx - 46) + ' ' + n1(by) + 'A46 46 0 0 1 ' + n1(bx - 46 * Math.cos(M.rad(th))) + ' ' + n1(by - 46 * Math.sin(M.rad(th))) + '"/><text class="rl-t" x="' + n1(bx - 54) + '" y="' + n1(by - 8) + '" text-anchor="end">' + th + '°</text>';
-      if(f.kind === 'race') out += '<line class="rl-dim" x1="' + n1(bx + 22) + '" x2="' + n1(bx + 22) + '" y1="' + y0 + '" y2="' + n1(y0 + drop) + '"/><text class="rl-tm" x="' + n1(bx + 30) + '" y="' + n1(y0 + drop / 2) + '">h = ' + gv(f.h) + ' m</text>';
+      // The race stem gives only h (the angle does not matter for the order or
+      // the speeds), so its figure marks h and no angle; the speed drill gives θ.
+      if(f.kind === 'ramp') out += '<path class="rl-ang" d="M' + n1(bx - 46) + ' ' + n1(by) + 'A46 46 0 0 1 ' + n1(bx - 46 * Math.cos(M.rad(th))) + ' ' + n1(by - 46 * Math.sin(M.rad(th))) + '"/><text class="rl-t" x="' + n1(bx - 54) + '" y="' + n1(by - 8) + '" text-anchor="end">' + th + '°</text>';
+      if(f.kind === 'race') out += '<line class="rl-dim" x1="' + n1(bx + 22) + '" x2="' + n1(bx + 22) + '" y1="' + y0 + '" y2="' + n1(y0 + drop) + '"/><path class="rl-dim" d="M' + n1(bx + 14) + ' ' + y0 + 'h16M' + n1(bx + 14) + ' ' + n1(y0 + drop) + 'h16"/><line class="rl-dim" stroke-dasharray="3 4" x1="' + (x0 - 8) + '" x2="' + n1(bx + 14) + '" y1="' + y0 + '" y2="' + y0 + '"/><text class="rl-tm" x="' + n1(bx + 30) + '" y="' + n1(y0 + drop / 2) + '">h = ' + gv(f.h) + ' m</text>';
       label = f.kind === 'race' ? 'Three lanes of one ramp with a ' + list.map(function(k){ return SHORT[k].toLowerCase(); }).join(', a ') + ' at the top, released together from a height of ' + gv(f.h) + ' m.' : 'A ' + SH[f.sh].name.toLowerCase() + ' at the top of a ramp tilted ' + th + ' degrees.';
     } else if(f.kind === 'stool'){
       H = 230;
