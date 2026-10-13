@@ -50,6 +50,21 @@ Cloudflare cache fix, small cleanup).
 Wording rule (FTC): the NREMT story is the founder's own result. Say it as that ("I passed…"), never as
 typical ("students pass…").
 
+## Honest paywall counting (2026-10-13)
+
+Branch `claude/premium-funnel-real-views`. "Premium gate shown" was counted whenever a page drew a locked card,
+so pages that render one on load (dashboards, lessons, scenarios) and crawlers inflated it: 759 a week against
+3 people opening Premium. Real funnel 2026-09-29 to 2026-10-12: 12 opened Premium (8 NREMT), 4 checkout starts
+on Oct 2 to 3 (check Polar: owner tests or abandoned), 0 since.
+
+- `assets/premium.js` `watchGates()`: a locked card counts only when at least half of it has been on screen for
+  a second, in a visible tab, after the visitor scrolled, tapped, clicked or typed. Once per page per card.
+- New step `limit-hit` (daily questions used up, free exam used) separate from `gate-shown` (any other locked
+  feature looked at). `gate()` itself no longer counts.
+- Migration `scripts/sql/migrations/2026-10e-funnel-seen.sql` adds `limit-hit` to the premium_funnel check,
+  `count_premium_step` and `track_ref`. Numbers before 2026-10-13 are not comparable with numbers after it.
+- Weekly read: limit-hit per 100 human visitors, then interest per limit-hit, then checkout per interest.
+
 ## Plan and status (owner decisions 2026-10-08)
 
 | # | Item | Status |
@@ -76,6 +91,8 @@ hyphens after `tt-`, `yt-` or `ig-`, up to 40 characters). Umami → Events → 
 - Later: real student quotes with permission; a teacher/clinical reviewer to name on the About page.
 
 ## Progress log
+
+- 2026-10-13: paywall counting fixed (counts only cards people see; new step limit-hit).
 
 - 2026-10-08: plan written; items 1, 2, 4, 6, 7, 9, 10 built, full CI green (with browser checks).
 - 2026-10-08: search titles. Homepage title/description now name Anatomy & Physiology and the AP® courses.

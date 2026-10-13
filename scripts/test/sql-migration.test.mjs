@@ -148,5 +148,19 @@ test('2026-10d-ref-tracking.sql: the browser may count video visits, only the Wo
   // The same ref shape the browser accepts (assets/analytics.js VIDEO_REF).
   for (const f of ['track_ref', 'track_ref_paid']) assert.ok(fns.get(f).includes("'^(tt|yt|ig)-[a-z0-9-]{1,40}$'"), `${f} checks the ref`);
   assert.ok(mig.includes("check (step in ('gate-shown', 'interest', 'signin-for-checkout', 'checkout-start', 'checkout-paid'))"));
-  assert.ok(SCHEMA.includes("check (step in ('gate-shown', 'interest', 'signin-for-checkout', 'checkout-start', 'checkout-paid'))"));
+});
+
+test('2026-10e-funnel-seen.sql: limit-hit is a funnel step everywhere the browser may count one', () => {
+  const mig = readFileSync('scripts/sql/migrations/2026-10e-funnel-seen.sql', 'utf8');
+  const fns = blocks(mig);
+  const STEP = "check (step in ('gate-shown', 'limit-hit', 'interest', 'signin-for-checkout', 'checkout-start', 'checkout-paid'))";
+  assert.ok(mig.includes(STEP));
+  assert.ok(SCHEMA.includes(STEP));
+  for (const f of ['count_premium_step', 'track_ref']) {
+    assert.ok(fns.has(f), `${f} is redefined`);
+    assert.match(fns.get(f), /'limit-hit'/, `${f} accepts limit-hit`);
+    assert.equal(fns.get(f).trim(), blocks(SCHEMA).get(f).trim(), `${f} matches schema.sql`);
+  }
+  assert.doesNotMatch(fns.get('track_ref'), /'paid'/, 'a browser cannot claim a sale');
+  assert.match(mig, /grant execute on function public\.count_premium_step\(text, text\) to anon, authenticated;/);
 });
