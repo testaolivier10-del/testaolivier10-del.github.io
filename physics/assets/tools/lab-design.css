@@ -101,3 +101,29 @@
 .ld-plotrow .bt-select{flex-direction:row;align-items:center;gap:8px;}
 .ld-plotrow .bt-select select{flex:1;min-width:0;width:100%;}
 .ld-plotrow .ld-fit{flex:none;}
+/* Phone pass (docs/tools-phone-pass.md): bench labels and graph numbers at 12 px or more at 360 px. */
+.ls-phone .ld-svg .ld-mut{font-size:14.5px;}
+.ls-phone .ld-svg .ld-lab{font-size:15px;}
+.ls-phone .ld-svg .ld-tn{font-size:14px;}
+.ls-phone .ld-graph .bt-plot .tick,.ls-phone .ld-qplot .bt-plot .tick{font-size:14px;}
+.ls-phone .ld-graph .bt-plot .lbl,.ls-phone .ld-qplot .bt-plot .lbl{font-size:15px;}
+/* Phone on its side: the Bench / Graph switch as on a narrow phone (side by side, both were about 7 px text),
+   and the stage is short, so the labels are set larger still. */
+@media (min-width:700.02px) and (max-width:999.98px) and (max-height:540px){
+  .ld-view{flex-direction:column;gap:6px;}
+  .ld-view > .ld-vtoggle,.ls-root .ld-view > .ld-vtoggle.tseg{display:inline-flex;align-self:flex-start;flex:none;}
+  .ld-vtoggle button{min-height:36px !important;}
+  .ld-view .ld-graph-v{display:none;}
+  .ld-view.show-graph .ld-graph-v{display:flex;}
+  .ld-view.show-graph .ld-bench-v{display:none;}
+  .ld-fitbox{display:none;}
+  .ld-graph{flex:1 1 auto;}
+  .ld-bench-v svg,.ld-graph svg{max-height:none;}
+}
+@media (max-width:999.98px) and (max-height:540px){
+  .ls-phone .ld-svg .ld-mut{font-size:20px;}
+  .ls-phone .ld-svg .ld-lab{font-size:20px;}
+  .ls-phone .ld-graph .bt-plot .tick{font-size:20px;}
+  .ls-phone .ld-graph .bt-plot .lbl{font-size:21px;}
+}
+@media (max-width:700px){ .ls-phone .ld-qbench .ld-qsmall{max-height:300px;} }   /* drill bench: full width (was 240 px tall, 0.72 scale) */

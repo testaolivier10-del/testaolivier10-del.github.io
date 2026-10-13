@@ -156,12 +156,13 @@
       s.push('<path class="sgs-g a' + (gOn ? ' on' : '') + '" d="M' + (gx - 16) + ' ' + (yB + 4) + 'c-6 10 -2 24 12 24c12 0 18 -10 14 -22z"/>');
       s.push('<ellipse class="sgs-g b" cx="' + (gx + 16) + '" cy="' + (yB + 14) + '" rx="10" ry="8"/><ellipse class="sgs-g c" cx="' + (gx + 25) + '" cy="' + (yB + 6) + '" rx="5" ry="3.5"/>');
       s.push('<text class="sgs-mini" x="' + (gx - 6) + '" y="' + (yB + 21) + '" text-anchor="middle">' + (gOn && !gOff ? 'GTP' : 'GDP') + '</text>');
-      s.push('<text class="sgs-name" x="' + (gx + 4) + '" y="' + (yB + 44) + '" text-anchor="middle">G protein' + (st.gprotein !== 'normal' ? ' (' + (gOff ? 'locked off' : 'locked on') + ')' : '') + '</text>');
+      // a locked G protein says so on a second line, clear of the adenylyl cyclase label
+      s.push('<text class="sgs-name" x="' + (gx - 2) + '" y="' + (yB + 44) + '" text-anchor="middle">G protein</text>' + (st.gprotein !== 'normal' ? '<text class="sgs-name" x="' + (gx - 2) + '" y="' + (yB + 57) + '" text-anchor="middle">(' + (gOff ? 'locked off' : 'locked on') + ')</text>' : ''));
       // adenylyl cyclase: two membrane bundles and a cytosolic catalytic core
       var ax = 186;
       for(var k = 0; k < 2; k++) for(var j = 0; j < 3; j++) s.push('<rect class="sgs-ac" x="' + (ax - 22 + k * 26 + j * 6) + '" y="' + (yT - 4) + '" width="5.5" height="' + (yB - yT + 8) + '" rx="2.6"/>');
       s.push('<path class="sgs-ac core' + (f.AC > 0.1 ? ' on' : '') + '" d="M' + (ax - 18) + ' ' + (yB + 4) + 'c-6 16 8 26 18 20c10 6 24 -4 18 -20z"/>');
-      s.push('<text class="sgs-name" x="' + ax + '" y="' + (yB + 44) + '" text-anchor="middle">adenylyl cyclase</text>');
+      s.push('<text class="sgs-name" x="' + (ax + 6) + '" y="' + (yB + 44) + '" text-anchor="middle">adenylyl cyclase</text>');
       if(gOn && !gOff) s.push('<path class="sgs-flow" d="M' + (gx + 2) + ' ' + (yB + 30) + 'Q' + ((gx + ax) / 2) + ' ' + (yB + 38) + ' ' + (ax - 14) + ' ' + (yB + 18) + '"/>');
       // cAMP molecules: a log count so 10 and 2 million both read
       var nC = Math.max(0, Math.min(16, Math.round((Math.log(1 + a.cAMP) / Math.LN10 - 3) * 4)));
@@ -184,7 +185,8 @@
       return s.join('');
     }
     function drawFig(a, target){
-      var rowH = 56, ids = S.STAGES, parts = [];
+      // On a phone each gain note takes two lines (ratio, then why), so it stays at a readable size inside the width.
+      var narrow = !!document.querySelector('.ls-root.ls-phone'), rowH = narrow ? 70 : 56, ids = S.STAGES, parts = [];
       var tags = { R: st.antagonist ? 'antagonist present' : '', G: st.gprotein === 'on' ? 'locked on' : st.gprotein === 'off' ? 'locked off' : '', cAMP: st.pde ? 'breakdown blocked' : '', PKA: st.pka ? 'inhibitor present' : '' };
       ids.forEach(function(id, i){
         var y = SH + 12 + i * rowH, s = stageOf(id), v = a[id], dec = Math.max(0, Math.min(7, Math.log(Math.max(1, v)) / Math.LN10));
@@ -196,8 +198,9 @@
         else parts.push(body);
         if(i < ids.length - 1){
           var prev = v, next = a[ids[i + 1]], ratio = prev >= 1 ? next / prev : 0, amp = stageOf(ids[i + 1]).amplifies;
-          parts.push('<path class="arr' + (amp ? ' amp' : '') + '" d="M30 ' + (y + 39) + 'v15"/><path class="arrh" d="M25 ' + (y + 49) + 'l5 6 5-6z"/>');
-          parts.push('<text class="note" x="44" y="' + (y + 51) + '">' + (prev >= 1 ? (ratio >= 10 ? '× ' + fmt(ratio) : ratio >= 0.1 || ratio === 0 ? '× ' + F(ratio, 2) : '1 for every ' + fmt(1 / ratio)) : '—') + (amp ? ' (each one activates or makes many: amplifies)' : ' (binding, one-to-one or less: no gain)') + '</text>');
+          parts.push('<path class="arr' + (amp ? ' amp' : '') + '" d="M30 ' + (y + 39) + 'v' + (rowH - 41) + '"/><path class="arrh" d="M25 ' + (y + rowH - 7) + 'l5 6 5-6z"/>');
+          var gain = prev >= 1 ? (ratio >= 10 ? '× ' + fmt(ratio) : ratio >= 0.1 || ratio === 0 ? '× ' + F(ratio, 2) : '1 for every ' + fmt(1 / ratio)) : '—', why = amp ? '(each one activates or makes many: amplifies)' : '(binding, one-to-one or less: no gain)';
+          parts.push(narrow ? '<text class="note" x="44" y="' + (y + 53) + '">' + gain + '<tspan x="44" dy="13.5">' + why + '</tspan></text>' : '<text class="note" x="44" y="' + (y + 51) + '">' + gain + ' ' + why + '</text>');
         }
       });
       var fin = target || a;

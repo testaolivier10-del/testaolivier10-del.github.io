@@ -239,11 +239,17 @@
     // Molecules are wider than tall (a diatomic is about 36 x 20 units), so
     // the cell's width and height limit the size separately.
     var K = (flask ? Math.min(1.3, (SL.cell - 1) / 32) : Math.min(1.05, (SL.cw - 3) / 36, (SL.ch - 3) / 22)).toFixed(3);
+    /* On a phone (docs/tools-phone-pass.md) the beaker's viewBox is cropped
+       to the glass and particles grow to what their cell holds without
+       overlapping (up to 1.25), so the atoms read at a phone's picture size. */
+    var KP = flask ? K : Math.max(+K, Math.min(1.25, (SL.cw - 8) / 36, (SL.ch - 6) / 22)).toFixed(3);
+    var VB = flask ? '0 0 486 376' : '0 0 ' + W + ' ' + H, VBP = flask ? '0 0 486 376' : '20 16 260 256';
+    function phone(){ var r = el.closest ? el.closest('.ls-root') : null; return !!(r && r.classList.contains('ls-phone')); }
     var art = flask ? glassFlask(id) : glassBeaker(o.vessel === 'gas');
     el.classList.add('lb');
     if(flask) el.classList.add('lb-is-flask');
     el.innerHTML = '<figure class="lb-fig">' +
-      '<svg class="lb-svg lb-v-' + esc(o.vessel) + '" viewBox="0 0 ' + (flask ? '486 376' : W + ' ' + H) + '" role="img" aria-labelledby="' + id + '-d">' +
+      '<svg class="lb-svg lb-v-' + esc(o.vessel) + '" viewBox="' + VB + '" role="img" aria-labelledby="' + id + '-d">' +
         art.back + '<g class="lb-parts"></g>' + art.front +
       '</svg>' +
       '<div class="lb-side"><div class="lb-read" aria-hidden="true"></div><ul class="lb-legend" aria-hidden="true"></ul></div>' +
@@ -251,7 +257,11 @@
     var g = el.querySelector('.lb-parts'), read = el.querySelector('.lb-read'), legend = el.querySelector('.lb-legend'), cap = el.querySelector('.lb-desc');
     var say = window.ApChemTools && window.ApChemTools.announcer ? window.ApChemTools.announcer(cap) : function(t){ cap.textContent = t; };
     if(!(window.ApChemTools && window.ApChemTools.announcer)){ cap.setAttribute('aria-live', 'polite'); cap.setAttribute('role', 'status'); }
-    var first = true, lastBur = null;
+    var first = true, lastBur = null, lastState = null, lastPhone = false, raf = 0;
+    // A picture mounted before it moved onto a phone's stage (or a phone
+    // turned into a wide window) is redrawn once it knows where it is.
+    function recheck(){ cancelAnimationFrame(raf); raf = requestAnimationFrame(function(){ if(alive && lastState && phone() !== lastPhone){ var q = first; first = true; update(lastState); first = q; } }); }
+    window.addEventListener('resize', recheck);
 
     function phScale(pH){
       var x = Math.max(0, Math.min(14, pH)) / 14 * 100, t = '';
@@ -278,6 +288,9 @@
       if(!alive) return;
       state = state || {};
       var sc = scale(state.counts || {}, o.max), counts = sc.counts, quick = first || reduced();
+      var ph = lastPhone = phone(), k = ph ? KP : K, svg = el.querySelector('.lb-svg');
+      lastState = state;
+      if(svg && svg.getAttribute('viewBox') !== (ph ? VBP : VB)) svg.setAttribute('viewBox', ph ? VBP : VB);
       var next = assign(placed, counts, SL.length), byId = {};
       next.forEach(function(p){ byId[p.id] = p; });
       // Leaving particles fade out, then go.
@@ -291,7 +304,7 @@
       });
       next.forEach(function(p){
         var s = SL[p.slot], n = g.querySelector('[data-id="' + p.id + '"]');
-        var tf = 'translate(' + s.x + 'px,' + s.y + 'px) scale(' + K + ')';
+        var tf = 'translate(' + s.x + 'px,' + s.y + 'px) scale(' + k + ')';
         if(!n){
           n = document.createElementNS(NS, 'g');
           n.setAttribute('class', 'lb-p' + (quick ? '' : ' is-in'));
@@ -322,10 +335,12 @@
       var text = describe({ counts: counts, pH: state.pH, Q: state.Q, K: state.K, note: state.note, scaled: sc.factor }, o);
       say(text, first);
       first = false;
+      recheck();
     }
     function destroy(){
       alive = false;
       timers.forEach(clearTimeout);
+      window.removeEventListener('resize', recheck);
       el.classList.remove('lb', 'lb-is-flask');
       el.innerHTML = '';
     }

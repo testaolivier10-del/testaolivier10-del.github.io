@@ -228,6 +228,28 @@
     .mon-sim{font-size:9.5px;}
     .node-text{font-size:15px;margin-bottom:16px;}
   }
+  /* Phone pass (2026-10-13): on the Tool Studio stage the monitor's labels read at least 12 px; held upright, the
+     stage has the height for taller traces and a 2 x 2 grid of larger vitals. */
+  .ls-root.ls-phone .ls-stage .mon-title,.ls-root.ls-phone .ls-stage .mon-sim,.ls-root.ls-phone .ls-stage .mon-lane-l,
+  .ls-root.ls-phone .ls-stage .mon-lane-r,.ls-root.ls-phone .ls-stage .mon-off,.ls-root.ls-phone .ls-stage .mon-k,
+  .ls-root.ls-phone .ls-stage .mon-u,.ls-root.ls-phone .ls-stage .mon-flag{font-size:12px;}
+  .ls-root.ls-phone .ls-stage .mon-note{font-size:12.5px;}
+  .ls-root.ls-phone .ls-stage .mon-heart{width:12px;height:11px;}
+  @media (orientation:portrait){
+    .ls-root.ls-phone .ls-stage .mon-lane{height:66px;}
+    .ls-root.ls-phone .ls-stage .mon-lane:last-child{height:50px;}
+    .ls-root.ls-phone .ls-stage .mon-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;}
+    .ls-root.ls-phone .ls-stage .mon-tile{padding:5px 8px 6px;}
+    .ls-root.ls-phone .ls-stage .mon-v{font-size:30px;}
+    .ls-root.ls-phone .ls-stage .mon-tile[data-k="bp"] .mon-v{font-size:26px;line-height:1.15;}
+    .ls-root.ls-phone .ls-stage .mon-flag{position:absolute;right:6px;top:5px;margin:0;}
+  }
+  @media (orientation:landscape){ .ls-root.ls-phone .ls-stage .mon-flag{position:static;align-self:flex-start;margin-top:2px;order:3;} }
+  /* the patient: callout labels at 12 px, Front/Back 44 px tall, the Skin switch clear of the Enlarge button */
+  .ls-root.ls-phone .ls-stage .pt-co-r{font-size:12px;}
+  .ls-root.ls-phone .ls-stage .pt-co-t{font-size:13px;}
+  .ls-root.ls-phone .ls-stage .pt-seg button{font-size:12.5px;min-height:44px;}
+  .ls-root.ls-phone .ls-stage .pt-bar{right:58px;}
 
   /* The patient (patient redesign 2026-10): the body map's anatomy view, translucent skin over
      the skeleton and organs, rendered flat by scripts/build-body-figures.mjs; short callouts beside it. */

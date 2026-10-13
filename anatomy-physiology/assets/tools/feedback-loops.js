@@ -830,20 +830,30 @@
     if(k === 'effector') return /(muscle|detrusor|diaphragm|myometrium|sphincter|arteriol|vessel|heart|SA node|intercostal|iris|antrum)/i.test(t) ? 'muscle' : 'secrete';
     return 'back';
   }
+  /* A phone in portrait (docs/tools-phone-pass.md): the ring shares a short
+     stage with the gauge, so its boxes are shorter and wider (344 x 316
+     instead of 340 x 416), the icon smaller and the text larger: at a
+     360 px screen the box labels render at 12 px and up instead of 8. */
+  function phoneRing(){ try{ return window.matchMedia('(max-width:640px), (max-width:999.98px) and (max-height:540px)').matches; }catch(e){ return false; } }
   function loopSvg(l, live){
-    var W = 340, BW = 154, BH = 80, GAP = 24, X = [4, 182];
-    function y(r){ return 12 + r * (BH + GAP); }
+    var ph = phoneRing();
+    var W = ph ? 344 : 340, BW = ph ? 160 : 154, BH = ph ? 68 : 80, GAP = ph ? 12 : 24, X = ph ? [2, 182] : [4, 182], TOP = ph ? 4 : 12;
+    function y(r){ return TOP + r * (BH + GAP); }
     var pos = { stimulus: [0, 0], sensor: [0, 1], afferent: [0, 2], control: [0, 3], efferent: [1, 3], effector: [1, 2], response: [1, 1] };
     var cls = { stimulus: 'shape', sensor: 'aff', afferent: 'aff', control: 'accent', efferent: 'eff', effector: 'eff', response: 'shape' };
-    var H = y(3) + BH + 12;
+    var H = y(3) + BH + TOP;
     var s = '';
     SLOTS.forEach(function(k){
       var cx = X[pos[k][0]], cy = y(pos[k][1]);
-      var lines = wrap(l.slots[k].short, 20);
-      s += '<g data-k="' + k + '" class="fl-node fl-n-' + cls[k] + '"><rect class="fl-card-bg ' + cls[k] + '" x="' + cx + '" y="' + cy + '" width="' + BW + '" height="' + BH + '" rx="12"/>' +
-        '<g transform="translate(' + (cx + 7) + ' ' + (cy + 6) + ')"><g class="fl-ic"><circle class="fl-ic-bg" cx="15" cy="15" r="15"/><g class="fl-ic-g" transform="translate(4.2 4.2) scale(.9)">' + ICON[iconFor(l, k)] + '</g></g></g>' +
-        '<text class="fl-svg-l" x="' + (cx + 43) + '" y="' + (cy + 25) + '">' + esc(LABELS[k]) + '</text>' +
-        lines.map(function(t, i){ return '<text class="fl-svg-t" x="' + (cx + BW / 2) + '" y="' + (cy + (lines.length === 3 ? 46 : lines.length === 2 ? 52 : 59) + i * 14) + '" text-anchor="middle">' + esc(t) + '</text>'; }).join('') + '</g>';
+      // Phone: the bottom-right box stops short of the stage's Enlarge button.
+      var bw = ph && k === 'efferent' ? BW - 18 : BW;
+      var lines = wrap(l.slots[k].short, bw < BW ? 18 : 20);
+      var ic = ph ? '<g transform="translate(' + (cx + 5) + ' ' + (cy + 5) + ') scale(.7)">' : '<g transform="translate(' + (cx + 7) + ' ' + (cy + 6) + ')">';
+      var ly = ph ? [17, lines.length === 3 ? 35 : lines.length === 2 ? 41 : 48, 15] : [25, lines.length === 3 ? 46 : lines.length === 2 ? 52 : 59, 14];
+      s += '<g data-k="' + k + '" class="fl-node fl-n-' + cls[k] + '"><rect class="fl-card-bg ' + cls[k] + '" x="' + cx + '" y="' + cy + '" width="' + bw + '" height="' + BH + '" rx="12"/>' +
+        ic + '<g class="fl-ic"><circle class="fl-ic-bg" cx="15" cy="15" r="15"/><g class="fl-ic-g" transform="translate(4.2 4.2) scale(.9)">' + ICON[iconFor(l, k)] + '</g></g></g>' +
+        '<text class="fl-svg-l" x="' + (cx + (ph ? 32 : 43)) + '" y="' + (cy + ly[0]) + '">' + esc(LABELS[k]) + '</text>' +
+        lines.map(function(t, i){ return '<text class="fl-svg-t" x="' + (cx + bw / 2) + '" y="' + (cy + ly[1] + i * ly[2]) + '" text-anchor="middle">' + esc(t) + '</text>'; }).join('') + '</g>';
     });
     var lx = X[0] + BW / 2, rx = X[1] + BW / 2;
     // each link carries a traveling impulse while it is lit
@@ -858,12 +868,12 @@
     if(live){
       s += '<text class="lbl-sm" x="' + (X[1] + BW / 2 - 8) + '" y="' + (fy - 9) + '" text-anchor="middle">acts on the variable</text>';
       var la = 'The loop as a ring of seven parts. ' + SLOTS.map(function(k){ return LABELS[k] + ': ' + l.slots[k].short; }).join('. ') + '. The response acts back on the variable.';
-      return '<svg class="fl-svg fl-ring" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(la) + '">' + s + '</svg>';
+      return '<svg class="fl-svg fl-ring' + (ph ? ' fl-ph' : '') + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(la) + '">' + s + '</svg>';
     }
     s += '<text class="fl-svg-k" x="' + (X[1] + 64) + '" y="' + (fy - 9) + '" text-anchor="middle">' + (neg ? 'Negative feedback' : 'Positive feedback') + '</text>' +
       '<text class="lbl-sm" x="' + (X[1] + 60) + '" y="' + (fy + 20) + '" text-anchor="middle">' + (neg ? 'the response opposes' : 'the response strengthens') + '</text>' +
       '<text class="lbl-sm" x="' + (X[1] + 60) + '" y="' + (fy + 35) + '" text-anchor="middle">the stimulus</text>';
     var aria = 'The finished loop. ' + SLOTS.map(function(k){ return LABELS[k] + ': ' + l.slots[k].text; }).join('. ') + '. ' + (neg ? 'Negative feedback: the response opposes the stimulus.' : 'Positive feedback: the response strengthens the stimulus.');
-    return '<svg class="fl-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(aria) + '">' + s + '</svg>';
+    return '<svg class="fl-svg' + (ph ? ' fl-ph' : '') + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(aria) + '">' + s + '</svg>';
   }
 })();

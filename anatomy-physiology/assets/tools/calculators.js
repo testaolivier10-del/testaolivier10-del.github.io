@@ -382,6 +382,8 @@
   function S(name, attrs, text){ var e = document.createElementNS(SVGNS, name); for(var a in attrs) if(attrs[a] != null) e.setAttribute(a, attrs[a]); if(text != null) e.textContent = text; return e; }
   function val(c, env, key){ return fmt(env[key], dpOf(c, key)); }
   function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+  /* A phone (docs/tools-phone-pass.md): the same query as the Tool Studio's .ls-phone. */
+  function phone(){ try{ return window.matchMedia('(max-width:640px), (max-width:999.98px) and (max-height:540px)').matches; }catch(e){ return false; } }
   function drawPicture(c, env){
     var host = Q().querySelector('.calc-pic');
     if(!host || !c.picture) return;
@@ -480,7 +482,8 @@
       var top = cy - rad - wt, gy = 26;
       svg.appendChild(S('rect', { x: x - 3, y: gy + 16, width: 6, height: Math.max(2, top - gy - 16), rx: 1, 'class': 'cp-tap' }));
       dial(svg, x, gy, 15, env[key], 200);
-      var left = x < W / 2;
+      // On a phone the picture fills the stage edge to edge, so each gauge's words go inward (outside the tube's ends they were cut off).
+      var left = (x < W / 2) !== phone();
       svg.appendChild(S('text', { x: x + (left ? -22 : 22), y: gy - 2, 'text-anchor': left ? 'end' : 'start', 'class': 'cp-t' }, label + ' (mm Hg)'));
       svg.appendChild(S('text', { x: x + (left ? -22 : 22), y: gy + 14, 'text-anchor': left ? 'end' : 'start', 'class': 'cp-v cp-big' }, val(c, env, key)));
     }
@@ -501,7 +504,7 @@
     var sbp = env[pic.sbp], dbp = env[pic.dbp], top = Math.max(160, Math.ceil((sbp + 15) / 20) * 20);
     function y(v){ return B - v / top * (B - T); }
     svg.appendChild(S('rect', { x: L, y: T, width: R - L, height: B - T, rx: 6, 'class': 'cp-plot' }));
-    for(var t = 0; t <= top; t += top > 200 ? 50 : 40){ if(t > 0 && t < top) svg.appendChild(S('line', { x1: L, x2: R, y1: y(t), y2: y(t), 'class': 'cp-grid' })); svg.appendChild(S('text', { x: L - 6, y: y(t) + 3.5, 'text-anchor': 'end', 'class': 'cp-tick' }, String(t))); }
+    for(var t = 0; t <= top; t += top > 200 ? 50 : 40){ if(t > 0 && t < top) svg.appendChild(S('line', { x1: L, x2: R, y1: y(t), y2: y(t), 'class': 'cp-grid' })); svg.appendChild(S('text', { x: L - (phone() ? 3 : 6), y: y(t) + 3.5, 'text-anchor': 'end', 'class': 'cp-tick' }, String(t))); }
     // the band between diastolic and systolic
     svg.appendChild(S('rect', { x: L, y: y(sbp), width: R - L, height: Math.max(0, y(dbp) - y(sbp)), 'class': 'cp-band' }));
     // schematic arterial trace: fast upstroke, dicrotic notch, slow fall
@@ -514,7 +517,7 @@
     function tag(v, label, cls, dy){
       svg.appendChild(S('line', { x1: L, x2: R, y1: y(v), y2: y(v), 'class': 'cp-hl ' + cls }));
       var ty = y(v) + (dy || 0), txt = label + ' ' + fmt(v, 0);
-      svg.appendChild(S('rect', { x: R + 6, y: ty - 9, width: txt.length * 6.6 + 10, height: 18, rx: 9, 'class': 'cp-pill ' + cls }));
+      svg.appendChild(S('rect', { x: R + 6, y: ty - 9, width: txt.length * (phone() ? 7.5 : 6.6) + 10, height: 18, rx: 9, 'class': 'cp-pill ' + cls }));
       svg.appendChild(S('text', { x: R + 11, y: ty + 4, 'class': 'cp-pill-t' }, txt));
     }
     var sY = y(sbp), dY = y(dbp), mY = pic.map ? y(env[pic.map]) : null;
@@ -687,7 +690,7 @@
     return { svg: svg, cap: cap };
   }
   function stack(c, env, pic){
-    var W = 360, rowH = 50, H = pic.bars.length * rowH + 22, L = 10, R = 350, svg = S('svg', { viewBox: '0 0 ' + W + ' ' + H });
+    var W = 360, rowH = phone() ? 46 : 50, H = pic.bars.length * rowH + 22, L = 10, R = 350, svg = S('svg', { viewBox: '0 0 ' + W + ' ' + H });
     function v(sg){ return sg.expr ? evaluate(sg.expr, env) : env[sg.key]; }
     var max = 0;
     pic.bars.forEach(function(b){ var t = 0; b.segs.forEach(function(sg){ t += Math.max(0, v(sg)); }); max = Math.max(max, t); });
@@ -709,8 +712,10 @@
         g.appendChild(S('rect', { x: x, y: by, width: Math.max(0, w), height: bh, 'class': 'cp-seg tone-' + sg.tone }));
         if(w > 1.5 && x + w < L + totW - 0.5) g.appendChild(S('rect', { x: x + w - 1, y: by, width: 2, height: bh, 'class': 'cp-gap' }));
         var txt = sg.label + ' ' + fmt(v(sg), dpOf(c, sg.key));
-        if(w > txt.length * 6.2 + 10) svg.appendChild(S('text', { x: x + 7, y: by + 16, 'class': 'cp-in-t' }, txt));
-        else if(w > 34) svg.appendChild(S('text', { x: x + 5, y: by + 16, 'class': 'cp-in-t' }, fmt(v(sg), dpOf(c, sg.key))));
+        // A phone sets these at 12.5 px (calculators.css); a name that only fits at the desktop size keeps that size (cp-in-fit), so no segment loses its name.
+        if(w > txt.length * (phone() ? 7.2 : 6.2) + 10) svg.appendChild(S('text', { x: x + 7, y: by + 16, 'class': 'cp-in-t' }, txt));
+        else if(w > txt.length * 6.2 + 10) svg.appendChild(S('text', { x: x + 7, y: by + 16, 'class': 'cp-in-t cp-in-fit' }, txt));
+        else if(w > (phone() ? 42 : 34)) svg.appendChild(S('text', { x: x + 5, y: by + 16, 'class': 'cp-in-t' }, fmt(v(sg), dpOf(c, sg.key))));
         x += w;
       });
       g.appendChild(S('rect', { x: L, y: by, width: Math.max(0, totW), height: bh, fill: gloss, 'pointer-events': 'none' }));

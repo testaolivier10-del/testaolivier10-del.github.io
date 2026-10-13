@@ -139,6 +139,16 @@
   .cf-curve{background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);padding:8px;}
   .cf-curve svg{width:100%;height:auto;display:block;}
   .cf-axis{font:700 9.5px var(--font-mono);fill:var(--muted);}
+  /* Phone pass (2026-10-13): the Newman projection is height-limited (scale ~0.78) and the energy curve ~0.94, so
+     their labels grow to read at least 12 px. */
+  .ls-root.ls-phone .nm-lab{font-size:16px;}
+  .ls-root.ls-phone .cf-axis{font-size:13px;}
+  /* Held sideways the stage is short: the projection keeps a readable height and the stage scrolls to the curve. */
+  @media (orientation:landscape){
+    .ls-root.ls-phone .cf-ls-newman{flex:none;}
+    .ls-root.ls-phone .cf-ls-newman > .cf-stage{flex:none;height:250px;}
+    .ls-root.ls-phone .cf-ls-newman > .cf-curve{flex:none;}
+  }
   .v3-stage{
     background:var(--paper);border:var(--bw) solid var(--line-soft);border-radius:var(--radius);
     touch-action:none;cursor:grab;user-select:none;

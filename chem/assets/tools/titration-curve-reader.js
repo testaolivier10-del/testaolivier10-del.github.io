@@ -29,7 +29,10 @@
     'Alizarin yellow R': { a: [240, 212, 58, 1], b: [216, 69, 47, 1], words: ['yellow', 'orange', 'red'] }
   };
   // plot() geometry (chem-tools.js): left 66, right 16, top 16, bottom 56.
+  // 560 x 330 off a phone; on a phone the box the curve is drawn in
+  // (T.fitBox), so its labels keep their CSS size (docs/tools-phone-pass.md).
   var W = 560, H = 330, L = 66, PW = W - 66 - 16, PT = 16, PH = H - 16 - 56;
+  function geom(host){ var f = T.fitBox(host, 560, 330, { w: 220, h: 150 }); W = f.w; H = f.h; PW = W - L - 16; PH = H - PT - 56; return { W: W, PW: PW, ys: PH < 140 ? 4 : 2 }; }
 
   T.mount('titration-curve-reader', function(app, data){
     var M = window.ApChemMath;
@@ -129,9 +132,10 @@
       var pts = p.curve.filter(function(q){ return q[0] <= v; });
       pts.push([v, pH]);
       var passed = landmarks().filter(function(m){ return v >= m.v - tol; });
+      var gm = geom($('.tx-plot'));
       var svg = T.plot({ w: W, h: H, title: 'Titration curve so far: pH against volume of ' + ctx.titrant + ' added, drawn from 0 to ' + F(v, 1) + ' mL of ' + p.vmax + '. pH now ' + F(pH, 2) + '.' + (passed.length ? ' Marked: ' + passed.map(function(m){ return m.what + ' at ' + F(m.v, 1) + ' mL, pH ' + F(TT.pH(p.sys, m.v), 2); }).join('; ') + '.' : ''),
         x: { label: 'Volume of ' + ctx.titrant + ' added', unit: 'mL', min: 0, max: p.vmax, step: T.niceStep(p.vmax, 6) },
-        y: { label: 'pH', min: 0, max: 14, step: 2 },
+        y: { label: 'pH', min: 0, max: 14, step: gm.ys },
         curves: [{ cls: 's1', points: pts }],
         points: passed.map(function(m){ return { x: m.v, y: TT.pH(p.sys, m.v), cls: 's3', square: true }; }).concat([{ x: v, y: pH, cls: 's2' }]) });
       // Labels for the passed landmarks, and the indicator's range as a band.
@@ -145,8 +149,8 @@
       var plot = $('.tx-plot');
       plot.innerHTML = svg;
       plot.querySelector('svg').addEventListener('click', function(e){
-        var b = this.getBoundingClientRect(), x = (e.clientX - b.left) * W / b.width;
-        stop(); setV((x - L) / PW * p.vmax);
+        var b = this.getBoundingClientRect(), x = (e.clientX - b.left) * gm.W / b.width;
+        stop(); setV((x - L) / gm.PW * p.vmax);
       });
       // The beaker: counts proportional to millimoles.
       var s = TT.species(p.sys, v), k = per() / (p.sys.Ca * p.sys.Va), counts = {};
@@ -220,6 +224,7 @@
       Array.prototype.slice.call(pane.querySelectorAll(':scope > *')).forEach(function(k){ if(k.textContent.trim()) det.appendChild(k); });
       s.add('details', det, o);
       draw();
+      T.watchBox($('.tx-plot'), draw);
       if(s.mode() === 'explore') s.hint({ target: s.root.querySelector('.tx-ls-ctl input[type=range]'), text: 'Drag to add ' + ctx.titrant, round: 999 });
     }
     function paint(pH){
@@ -284,6 +289,7 @@
   /* --------------------------------------------------------------- quiz */
   function quiz(app, data, M){
     var F = T.F, cur = null, marker = null, marks = [], api = null;
+    var ro = null;    // redraws the curve when its box changes size on a phone
     var fig = null;   // the figure's host: it moves to the stage in the Tool Studio
     function draw(){
       var p = cur, host = fig && fig.querySelector('.tc-plot');
@@ -292,15 +298,16 @@
       marks.forEach(function(m){ pts.push({ x: m.v, y: M.titration.pH(p.sys, m.v), cls: 's3', square: true }); });
       if(p.point && p.showPoint) pts.push({ x: p.point.v, y: p.point.pH, cls: 's4' });
       if(marker != null) pts.push({ x: marker, y: M.titration.pH(p.sys, marker), cls: 's2' });
+      var gm = geom(host);
       host.innerHTML = T.plot({ w: W, h: H, title: 'Titration curve: pH against volume of ' + p.titrant + ' added, from 0 to ' + p.vmax + ' mL. ' + (marker != null ? 'Marker at ' + F(marker, 1) + ' mL, pH ' + F(M.titration.pH(p.sys, marker), 2) + '.' : ''),
         x: { label: 'Volume of ' + p.titrant + ' added', unit: 'mL', min: 0, max: p.vmax, step: T.niceStep(p.vmax, 6) },
-        y: { label: 'pH', min: 0, max: 14, step: 2 },
+        y: { label: 'pH', min: 0, max: 14, step: gm.ys },
         curves: [{ cls: 's1', points: p.curve }], points: pts, vline: marker != null ? { x: marker, cls: 's2' } : null });
       var svg = host.querySelector('svg');
       svg.addEventListener('click', function(e){
         if(!api || !api.setVol) return;
-        var b = svg.getBoundingClientRect(), x = (e.clientX - b.left) * W / b.width;
-        api.setVol((x - L) / PW * p.vmax);
+        var b = svg.getBoundingClientRect(), x = (e.clientX - b.left) * gm.W / b.width;
+        api.setVol((x - L) / gm.PW * p.vmax);
       });
       var out = fig.querySelector('.tc-read');
       if(out) out.textContent = marker != null ? 'Marker: ' + F(marker, 1) + ' mL, pH ' + F(M.titration.pH(p.sys, marker), 2) : '';
@@ -316,6 +323,8 @@
         cur = p; marker = null; marks = []; api = a; p.showPoint = false; fig = host;
         host.innerHTML = '<figure class="tc-fig"><div class="tc-plot"></div><figcaption class="bt-small tc-read" aria-hidden="true"></figcaption></figure>';
         host.classList.add('tc-pin');
+        if(ro) ro.disconnect();
+        ro = T.watchBox(host.querySelector('.tc-plot'), draw);
         // The ranges sit below the steps, behind a tap (each indicator choice repeats its range), so on a phone the pinned curve stays right above the step being answered.
         a.area.querySelector('.cd-steps').insertAdjacentHTML('afterend', '<details class="tc-ind"><summary>Indicator color ranges</summary>' + T.dataTable(['Indicator', 'Color change range (pH)'], M.titration.INDICATORS.map(function(d){ return [d.name, F(d.lo, 1) + ' to ' + F(d.hi, 1)]; }), 'Indicators') + '</details>');
         draw();

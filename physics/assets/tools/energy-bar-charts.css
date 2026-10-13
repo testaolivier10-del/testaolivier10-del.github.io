@@ -141,3 +141,21 @@
 .ls-root .cd-rowhint{display:none;}
 @media (max-width:760px){ .ls-root .eb-seg .bt-btn{padding:0 9px;font-size:13px;} }
 @media (max-width:760px){ .eb-build-top{display:none;} .eb-chart{min-height:0;} }
+
+/* Phones (docs/tools-phone-pass.md): on-screen sizes; --eb-k (set per svg by
+   the script) undoes the picture's shrinking. The scene gets a little more of
+   the stage than the bars. */
+.ls-phone .phys-scene .eb-rule-t,.ls-phone .phys-scene .eb-hmark text,.ls-phone .phys-scene .eb-note,.ls-phone .phys-scene .eb-block text{font-size:calc(12.5px * var(--eb-k, 1));}
+.ls-phone .eb-scene .phys-arrow text{font-size:calc(14px * var(--eb-k, 1));}
+.ls-phone .phys-scene .eb-read text,.ls-phone .phys-scene .eb-read.is-big text{font-size:calc(14.5px * var(--eb-k, 1));stroke-width:calc(4px * var(--eb-k, 1));}
+.ls-phone .phys-scene .eb-val{font-size:calc(14px * var(--eb-k, 1));}
+.ls-phone .phys-scene .eb-lab{font-size:calc(15px * var(--eb-k, 1));}
+.ls-phone .phys-scene .eb-lab2,.ls-phone .phys-scene .eb-out-t,.ls-phone .phys-scene .eb-axis,.ls-phone .phys-scene .eb-tick,.ls-phone .phys-scene .eb-grp{font-size:calc(12.5px * var(--eb-k, 1));}
+@media (max-width:760px) and (min-height:541px){ .ls-phone .eb-scene-fig{flex:1.15;} .ls-phone .eb-bars-fig{flex:1;} }
+/* The bar builder on a phone: the scene and system come back over the chart
+   when the stage is tall, and the input row stays clear of Enlarge. */
+@media (max-width:760px) and (min-height:541px){
+  .ls-phone .eb-build-top{display:flex;}
+  .ls-phone .eb-build{padding-bottom:48px;}
+}
+@media (max-height:540px){ .ls-phone .eb-build{padding-right:48px;} }

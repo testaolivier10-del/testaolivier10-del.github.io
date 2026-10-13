@@ -120,9 +120,9 @@
     function announceRoll(){ say('Finish order: ' + order().map(function(k){ return SHORT[k] + ' in ' + F(RL.roll.at(k, 0, R0).tEnd, 2) + ' seconds'; }).join(', then ') + '.', true); }
     function drawRoll(){
       if(scene !== 'roll') return;
-      var nar = narrow(), W = nar ? 340 : 640, th = M.rad(R0.theta), ppm = (nar ? 160 : 330) * Math.min(1, Math.cos(M.rad(25)) / Math.cos(th)), rpx = R0.r * ppm * (nar ? 1.6 : 1);
+      var nar = narrow(), W = nar ? 352 : 640, th = M.rad(R0.theta), ppm = (nar ? 160 : 330) * Math.min(1, Math.cos(M.rad(25)) / Math.cos(th)), rpx = R0.r * ppm * (nar ? 1.6 : 1);
       var gap = nar ? 30 : 48, n = lineup.length, run = R0.len * Math.cos(th) * ppm, drop = R0.len * Math.sin(th) * ppm;
-      var x0 = nar ? 58 : 70, y0 = nar ? 34 : 46, H = Math.ceil(y0 + drop + (n - 1) * gap + (nar ? 24 : 70)), xEnd = x0 + run;
+      var x0 = nar ? 70 : 70, y0 = nar ? 50 : 46, H = Math.ceil(y0 + drop + (n - 1) * gap + (nar ? 24 : 70)), xEnd = x0 + run;
       var out = '<rect class="rl-floor" x="0" y="' + n1(H - 22) + '" width="' + W + '" height="22"/><rect class="rl-floor2" x="0" y="' + n1(H - 6) + '" width="' + W + '" height="6"/>';
       // The ramp: one wooden block carrying a lane per racer.
       var topY = y0, botY = y0 + drop + (n - 1) * gap;
@@ -130,21 +130,21 @@
       lineup.forEach(function(k, i){
         var ly = y0 + i * gap;
         out += '<path class="rl-wood" fill="url(#' + did + 'w)" d="M' + (x0 - 8) + ' ' + n1(ly) + 'L' + n1(xEnd) + ' ' + n1(ly + drop) + 'l0 7L' + (x0 - 8) + ' ' + n1(ly + 7) + 'Z"/>' +
-          '<text class="rl-t" x="' + (x0 - 14) + '" y="' + n1(ly + 4) + '" text-anchor="end"' + (nar ? ' font-size="15"' : '') + '>' + SHORT[k] + '</text>';
+          '<text class="rl-t" x="' + (x0 - 14) + '" y="' + n1(ly + 4) + '" text-anchor="end"' + (nar ? ' style="font-size:16px"' : '') + '>' + SHORT[k] + '</text>';
       });
-      out += '<line class="rl-fin" x1="' + n1(xEnd) + '" x2="' + n1(xEnd) + '" y1="' + (y0 - 30) + '" y2="' + n1(H - 22) + '"/><text class="rl-tm" x="' + n1(xEnd - 6) + '" y="' + (y0 - 34) + '" text-anchor="end"' + (nar ? ' font-size="15"' : '') + '>finish</text>';
+      out += '<line class="rl-fin" x1="' + n1(xEnd) + '" x2="' + n1(xEnd) + '" y1="' + (y0 - 30) + '" y2="' + n1(H - 22) + '"/><text class="rl-tm" x="' + n1(xEnd - 6) + '" y="' + (y0 - 34) + '" text-anchor="end"' + (nar ? ' style="font-size:16px"' : '') + '>finish</text>';
       // Angle mark at the bottom lane's end.
       var bx = xEnd, by = y0 + (n - 1) * gap + drop + 3.5, ar = 44;
       out += '<path class="rl-ang" d="M' + n1(bx - ar) + ' ' + n1(by) + 'A' + ar + ' ' + ar + ' 0 0 1 ' + n1(bx - ar * Math.cos(th)) + ' ' + n1(by - ar * Math.sin(th)) + '"/><line class="rl-dim" x1="' + n1(bx - ar - 30) + '" x2="' + n1(bx) + '" y1="' + n1(by) + '" y2="' + n1(by) + '" stroke-dasharray="3 4"/>' +
-        '<text class="rl-t" x="' + n1(bx - ar - 8) + '" y="' + n1(by - 8) + '" text-anchor="end"' + (nar ? ' font-size="15"' : '') + '>' + R0.theta + '°</text>';
+        '<text class="rl-t" x="' + n1(bx - ar - 8) + '" y="' + n1(by - 8) + '" text-anchor="end"' + (nar ? ' style="font-size:16px"' : '') + '>' + R0.theta + '°</text>';
       // Height dimension at the right.
       out += '<g><line class="rl-dim" x1="' + n1(xEnd + 22) + '" x2="' + n1(xEnd + 22) + '" y1="' + n1(y0) + '" y2="' + n1(y0 + drop) + '"/><path class="rl-dim" d="M' + n1(xEnd + 16) + ' ' + n1(y0) + 'h12M' + n1(xEnd + 16) + ' ' + n1(y0 + drop) + 'h12"/>' +
-        '<text class="rl-tm" transform="translate(' + n1(xEnd + 38) + ' ' + n1(y0 + drop / 2) + ') rotate(90)" text-anchor="middle"' + (nar ? ' font-size="15"' : '') + '>h = ' + F(R0.len * Math.sin(th), 2) + ' m</text></g>';
+        '<text class="rl-tm" transform="translate(' + n1(xEnd + 38) + ' ' + n1(y0 + drop / 2) + ') rotate(90)" text-anchor="middle"' + (nar ? ' style="font-size:16px"' : '') + '>h = ' + F(R0.len * Math.sin(th), 2) + ' m</text></g>';
       lineup.forEach(function(k, i){
         var st = RL.roll.at(k, rt, R0), ly = y0 + i * gap, sx = st.s * Math.cos(th) * ppm, sy = st.s * Math.sin(th) * ppm;
         var cx = x0 + 10 * Math.cos(th) + sx + rpx * Math.sin(th), cy = ly + 10 * Math.sin(th) + sy - rpx * Math.cos(th);
         out += racerArt(did, k, cx, cy, rpx, st.angle * R0.r * ppm / rpx, R0.theta);
-        if(st.done && rt > 0 && !nar) out += '<text class="rl-t" x="' + n1(xEnd + (nar ? 8 : 52)) + '" y="' + n1(ly + drop - 2) + '"' + (nar ? ' font-size="15"' : '') + '>' + F(st.tEnd, 2) + ' s</text>';
+        if(st.done && rt > 0 && !nar) out += '<text class="rl-t" x="' + n1(xEnd + (nar ? 8 : 52)) + '" y="' + n1(ly + drop - 2) + '"' + (nar ? ' style="font-size:16px"' : '') + '>' + F(st.tEnd, 2) + ' s</text>';
       });
       sceneEl.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="phys-scene" role="img" aria-label="' + esc('A ramp at ' + R0.theta + ' degrees with ' + lineup.length + ' lanes: ' + lineup.map(function(k){ var st = RL.roll.at(k, rt, R0); return SHORT[k] + ' ' + (st.done && rt > 0 ? 'finished in ' + F(st.tEnd, 2) + ' s' : F(st.s, 2) + ' m down'); }).join(', ') + '.') + '">' + defs(did) + out + '</svg>';
       // Energy bars: K_trans, K_rot, and the U still to give up, as shares of m g h.
@@ -200,7 +200,7 @@
       [-1, 1].forEach(function(sg){
         var hx = sg * hxa, H = P(hx, hy), A1 = P(hx, hy - 0.07), A2 = P(hx, hy + 0.07), B1 = P(hx - 0.04, hy - 0.07), B2 = P(hx + 0.04, hy - 0.07), C1 = P(hx - 0.04, hy + 0.07), C2 = P(hx + 0.04, hy + 0.07);
         out += '<g class="rl-db rl-drag" data-sg="' + sg + '" tabindex="0" role="slider" aria-label="' + (sg < 0 ? 'Left' : 'Right') + ' dumbbell: drag it in or out" aria-valuemin="20" aria-valuemax="75" aria-valuenow="' + Math.round(d * 100) + '" aria-valuetext="' + F(d, 2) + ' meters from the axis">' +
-          '<circle class="rl-hit" cx="' + n1(H.x) + '" cy="' + n1(H.y) + '" r="30"/><path class="rl-bellbar" d="M' + pt(A1) + 'L' + pt(A2) + '"/>' +
+          '<circle class="rl-hit" cx="' + n1(H.x) + '" cy="' + n1(H.y) + '" r="' + (phoneNow() ? 44 : 30) + '"/><path class="rl-bellbar" d="M' + pt(A1) + 'L' + pt(A2) + '"/>' +
           '<path class="rl-bell" d="M' + pt(B1) + 'L' + pt(B2) + '" stroke="#3B4248" stroke-width="' + n1(0.05 * ppm) + '" stroke-linecap="round"/><path class="rl-bell" d="M' + pt(C1) + 'L' + pt(C2) + '" stroke="#3B4248" stroke-width="' + n1(0.05 * ppm) + '" stroke-linecap="round"/>' +
           '<circle cx="' + n1(H.x) + '" cy="' + n1(H.y) + '" r="' + n1(0.035 * ppm) + '" class="rl-skin"/></g>';
       });
@@ -285,7 +285,7 @@
        scene (x0 onward), clear of the orbit, scaled to the closest point's |U|. */
     function inset(en, rp, x0, H){
       var Up = GM * mSat / rp, z = H * 0.42, sc = (H * 0.40) / Up, cw = 18, gap = 6;
-      function c(i, v, cls, t){ var h = v * sc, x = x0 + i * (cw + gap); return '<rect class="' + cls + '" x="' + n1(x) + '" y="' + n1(h >= 0 ? z - h : z) + '" width="' + cw + '" height="' + n1(Math.abs(h)) + '" rx="3"/><text class="rl-st" x="' + n1(x + cw / 2) + '" y="' + n1(H - 12) + '" text-anchor="middle" font-size="17">' + t + '</text>'; }
+      function c(i, v, cls, t){ var h = v * sc, x = x0 + i * (cw + gap); return '<rect class="' + cls + '" x="' + n1(x) + '" y="' + n1(h >= 0 ? z - h : z) + '" width="' + cw + '" height="' + n1(Math.abs(h)) + '" rx="3"/><text class="rl-st" x="' + n1(x + cw / 2) + '" y="' + n1(H - 12) + '" text-anchor="middle" style="font-size:17px">' + t + '</text>'; }
       return '<g aria-hidden="true"><rect x="' + n1(x0 - 8) + '" y="10" width="' + n1(3 * cw + 2 * gap + 16) + '" height="' + n1(H - 20) + '" rx="10" fill="#fff" opacity=".06"/>' + c(0, en.K, 'rl-col-k', 'K') + c(1, en.U, 'rl-col-u', 'U') + c(2, en.E, 'rl-col-e', 'E') + '<line x1="' + n1(x0 - 4) + '" x2="' + n1(x0 + 3 * cw + 2 * gap + 4) + '" y1="' + n1(z) + '" y2="' + n1(z) + '" stroke="#E6EDF5" stroke-width="1.4"/></g>';
     }
     function drawOrbit(fast){
@@ -386,10 +386,12 @@
   }
 
   /* ------------------------------------------------------------ quiz */
+  function phoneNow(){ try{ return matchMedia('(max-width:640px), (max-width:999.98px) and (max-height:540px)').matches; }catch(e){ return false; } }
   function figure(p){
-    var f = p.fig, id = nid('rlq'), W = 520, H = 240, out = '', label = '';
+    var f = p.fig, id = nid('rlq'), W = 520, H = 240, out = '', label = '', ph = phoneNow();
     if(f.kind === 'race' || f.kind === 'ramp'){
-      var th = f.kind === 'ramp' ? f.th : 28 /* drawn slope only, not labelled */, list = f.kind === 'race' ? f.pick : [f.sh], x0 = 60, y0 = 50, run = 330, drop = run * Math.tan(M.rad(th)), gap = 40, n = list.length;
+      // Phone: the labels are drawn bigger (rotation-lab.css), so the ramp starts further in.
+      var th = f.kind === 'ramp' ? f.th : 28 /* drawn slope only, not labelled */, list = f.kind === 'race' ? f.pick : [f.sh], x0 = ph ? 82 : 60, y0 = 50, run = ph ? 296 : 330, drop = run * Math.tan(M.rad(th)), gap = 40, n = list.length;
       H = Math.ceil(y0 + drop + (n - 1) * gap + 25);
       out += '<rect class="rl-floor" x="0" y="' + (H - 18) + '" width="' + W + '" height="18"/>';
       list.forEach(function(k, i){

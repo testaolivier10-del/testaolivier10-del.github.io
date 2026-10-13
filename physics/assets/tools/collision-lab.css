@@ -103,3 +103,28 @@
   .cl-build-top{display:none;}
   .cl-chart{min-height:0;}
 }
+
+/* Phones (docs/tools-phone-pass.md). A portrait phone's stage holds the track,
+   the bars and the force-time graph at once (.cl-all, set by the script); a
+   phone on its side keeps the switch. Text sizes are on-screen CSS px: --cl-k
+   (viewBox units per px, set per svg by the script) undoes the picture's
+   shrinking. */
+.cl-stage.cl-all .cl-track{flex:.95;}
+.cl-stage.cl-all .cl-lower{flex:1.6;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:4px;}
+.cl-stage.cl-all .cl-lower .cl-bars,.cl-stage.cl-all .cl-lower .cl-ft{display:flex;}
+.cl-tabs[hidden]{display:none !important;}
+.ls-phone .phys-scene .cl-tickt{font-size:calc(12.5px * var(--cl-k, 1));}
+.ls-phone .phys-scene .cl-mass,.ls-phone .phys-scene .cl-cm text{font-size:calc(13px * var(--cl-k, 1));}
+.ls-phone .phys-scene .cl-name{font-size:calc(13px * min(var(--cl-k, 1), 1.4));}
+.ls-phone .phys-scene .cl-h,.ls-phone .phys-scene .cl-bl,.ls-phone .phys-scene .cl-note{font-size:calc(13px * var(--cl-k, 1));}
+.ls-phone .phys-scene .cl-bv,.ls-phone .phys-scene .cl-j{font-size:calc(14px * var(--cl-k, 1));}
+.ls-phone .phys-scene .cl-ax,.ls-phone .phys-scene .cl-grpt{font-size:calc(12.5px * var(--cl-k, 1));}
+.ls-phone .cl-fig .phys-arrow text,.ls-phone .cl-qfig .phys-arrow text,.ls-phone .cl-build .phys-arrow text{font-size:calc(14px * var(--cl-k, 1));}
+/* The bar builder on a phone: the carts come back over the chart when the
+   stage is tall, and the input row stays clear of the Enlarge button. */
+@media (max-width:760px) and (min-height:541px){
+  .ls-phone .cl-build-top{display:block;}
+  .ls-phone .cl-build-top svg{max-height:110px;}
+  .ls-phone .cl-build{padding-bottom:48px;}
+}
+@media (max-height:540px){ .ls-phone .cl-build{padding-right:48px;} }

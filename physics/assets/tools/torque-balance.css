@@ -103,3 +103,10 @@
 .tb-ebars .tb-brow{grid-template-columns:5.2em minmax(60px,1fr) 4.4em !important;}
 .tb-ebars .tb-brow .tb-bl{grid-column:auto !important;}
 .tb-check span{flex:1;}
+/* Phone pass (docs/tools-phone-pass.md): keep the bar values and the net line clear of the Enlarge button. */
+.ls-phone .tb-panel{padding-bottom:20px;}
+.ls-phone .tb-bnet{padding-right:52px;}
+.ls-phone .tb-svg .phys-arrow text{font-size:22px;}
+/* Problem drawings (viewBox 520 wide, about 0.68 scale at 360 px): text at 12 px or more. */
+.ls-phone .tb-fig .tb-angle-t,.ls-phone .tb-fig .tb-hint{font-size:21px;}
+.ls-phone .tb-fig .phys-arrow text{font-size:22px;}

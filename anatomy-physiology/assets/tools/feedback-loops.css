@@ -244,3 +244,24 @@ a.fl-tag:hover{text-decoration:underline;}
 .fl-ls .fl-intro{margin:0;}
 .fl-ls .fl-tag{min-height:44px;display:inline-flex;align-items:center;padding:0 14px;}
 .ls-root .fl-lreset{min-width:44px;min-height:44px;}
+
+/* Phone legibility pass (docs/tools-phone-pass.md; docs/tools-phone-pass/chem-anp.md). The phone ring
+   (feedback-loops.js loopSvg, class fl-ph) is drawn at about 1:1 on a 360 px screen, so these sizes are
+   close to what a student sees. */
+.anp-fig .fl-ph .fl-svg-l{font:800 13px var(--font-ui);letter-spacing:0;}
+.anp-fig .fl-ph .fl-svg-t{font-size:13.4px;}
+.anp-fig .fl-ph .lbl-sm{font-size:13px;}
+.anp-fig .fl-ph .fl-svg-k{font-size:14px;}
+.fl-ls-stage .fl-ringfig:has(.fl-ph){justify-content:flex-start;}
+.fl-ls-stage .fl-ringfig .fl-ring.fl-ph{max-width:100%;width:auto;margin:0;}
+.fl-ls .ls-stage-body > .fl-figure .fl-svg.fl-ph{max-width:none;width:100%;}
+/* The gauge's words at a phone's width (its viewBox is 340 wide, drawn at about 352). */
+.ls-root.ls-phone .fl-g-name{font-size:14.5px;}
+.ls-root.ls-phone .fl-g-state{font-size:13.5px;}
+.ls-root.ls-phone .fl-gauge .lbl-sm,.ls-root.ls-phone .anp-fig .fl-g-spt{font-size:13.5px;}
+/* A phone on its side: the gauge and the ring side by side (one above the other left the ring 150 px tall). */
+@media (orientation:landscape){
+  .ls-root.ls-phone .fl-ls-stage{flex-direction:row;align-items:center;}
+  .ls-root.ls-phone .fl-ls-stage .fl-gaugefig{flex:1 1 0;min-width:0;}
+  .ls-root.ls-phone .fl-ls-stage .fl-ringfig{flex:1.25 1 0;min-width:0;height:100%;}
+}

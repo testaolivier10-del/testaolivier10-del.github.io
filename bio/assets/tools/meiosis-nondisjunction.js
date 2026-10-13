@@ -206,6 +206,8 @@
     function maxLen(list){ return Math.max.apply(null, list.map(function(ch){ return lens(ch.pair); }).concat([20])); }
     /* Rows along a plate (metaphase): one row per item, each item drawn by fn(cy). */
     function figure(r){
+      // A phone draws the same layout on a narrower canvas (300 units), so chromosomes and labels come out ~20% larger.
+      W = document.querySelector('.ls-root.ls-phone') ? 300 : 360;
       var s = r.stages[st.step], id = s.id, out = [], H;
       var defs = '<defs><pattern id="mei-stripe" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="mei-pbg" width="5" height="5"/><rect class="mei-pst" width="2" height="5"/></pattern><radialGradient id="mei-cyto" cx=".5" cy=".45" r=".7"><stop offset="0" class="mei-c0"/><stop offset="1" class="mei-c1"/></radialGradient></defs>', fib = [], cells = [];
       if(id === 'g1' || id === 's' || id === 'pro1'){

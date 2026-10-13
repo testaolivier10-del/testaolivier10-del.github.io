@@ -328,9 +328,11 @@
         var x = tx(p.at, ev.cycle);
         el('line', { x1:x, x2:x, y1:12, y2:H - 18, class:'st-tick' + (/S1|S2|A2|P2/.test(p.key) ? '' : ' st-tick--x') }, layer);
         var label = hide && p.key === 'A2' ? 'S2' : p.key;
-        var lx = x + (p.key === 'P2' ? 11 : p.key === 'A2' && !hide ? -11 : 0), pw = label.length * 7 + 8;
-        el('rect', { x:lx - pw / 2, y:0, width:pw, height:13, rx:6.5, class:'st-evt-bg' + (/S1|S2|A2|P2/.test(p.key) ? '' : ' st-evt-bg--x') }, layer);
-        var t = el('text', { x:lx, y:10, class:'st-evt' + (/S1|S2|A2|P2/.test(p.key) ? '' : ' st-evt--x') }, layer);
+        // On a phone the event pills are a size larger (12.5 px text) so S1, S2, A2 and P2 read at arm's length.
+        var big = !!document.querySelector('.ls-root.ls-phone'), off = big ? 14 : 11;
+        var lx = x + (p.key === 'P2' ? off : p.key === 'A2' && !hide ? -off : 0), pw = label.length * (big ? 8.6 : 7) + 8;
+        el('rect', { x:lx - pw / 2, y:big ? -3 : 0, width:pw, height:big ? 16 : 13, rx:big ? 8 : 6.5, class:'st-evt-bg' + (/S1|S2|A2|P2/.test(p.key) ? '' : ' st-evt-bg--x') }, layer);
+        var t = el('text', { x:lx, y:big ? 9.5 : 10, class:'st-evt' + (/S1|S2|A2|P2/.test(p.key) ? '' : ' st-evt--x') }, layer);
         t.textContent = label;
         names.push(label);
       });

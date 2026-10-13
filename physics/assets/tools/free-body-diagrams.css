@@ -181,3 +181,12 @@ body.ls-on .phys-crumb{display:none !important;}
   .ls-root .fb-ls-dock .bt-slider-row{gap:4px;}
   .ls-root .fb-ls-dock .bt-out{min-width:6.5ch;font-size:13px;}
 }
+
+/* Phones (docs/tools-phone-pass.md): the scene's small notes (insets, "relaxed
+   length") read at 12 px or more on a 360 px screen, each drawn arrow's tip
+   has a 46 px touch target (.fb-tiphit), and the palette is two columns of
+   14 px chips so every force name fits on one line. */
+.fb-tiphit{fill:transparent;stroke:none;cursor:grab;}
+.ls-phone .fb-t-s{font-size:15px;}
+.ls-phone .fb-pal{grid-template-columns:repeat(2,minmax(0,1fr));}
+.ls-phone .fb-chip{font-size:14px;min-height:44px;}

@@ -220,3 +220,10 @@ body.ls-on #lp-announce{top:0;left:0;}
 .lp-ls .lp-ls-est{margin:0;font-size:var(--ls-s);color:var(--muted);}
 .lp-ls .lp-ls-est:empty{display:none;}
 .lp-ls .ls-dock .lp-follow{padding:0;background:none;box-shadow:none;border:0;border-radius:0;}
+
+/* Phone legibility pass (docs/tools-phone-pass.md; docs/tools-phone-pass/chem-anp.md). The figure already
+   fills the stage; its credit line reaches 12 px and stops short of the stage's Enlarge button. The
+   figures' own printed labels are part of the image: tapping one names it in the caption, and the +/−
+   zoom or Enlarge shows them larger. */
+.ls-root.ls-phone.lp-ls .lp-ls-fig figcaption{padding-right:50px;}
+.ls-root.ls-phone.lp-ls .lp-ls-fig figcaption .lp-credit{font-size:12px;line-height:1.35;}

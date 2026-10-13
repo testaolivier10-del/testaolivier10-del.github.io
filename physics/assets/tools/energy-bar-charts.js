@@ -30,6 +30,21 @@
   function F1(x, d){ return T.F(x, d == null ? 1 : d); }
   function sub(t){ return String(t).replace(/_(\w+)/, '<tspan class="eb-sub" dy="4" font-size="0.72em">$1</tspan>'); }
   function subH(t){ return String(t).replace(/_(\w+)/, '<sub>$1</sub>'); }
+  /* Phones (docs/tools-phone-pass.md): the scene and bars draw in fixed
+     viewBox units, so on a phone each svg gets --eb-k = viewBox units per CSS
+     px (1 to 4) and energy-bar-charts.css multiplies its phone font sizes by
+     it: the labels keep their on-screen size however small the picture is. */
+  function kfit(root){
+    if(!root) return;
+    var ph = !!(root.closest && root.closest('.ls-phone'));
+    [].slice.call(root.querySelectorAll('svg.phys-scene')).forEach(function(svg){
+      var vb = svg.viewBox && svg.viewBox.baseVal, r = svg.getBoundingClientRect();
+      if(!ph || !vb || !vb.width || r.width < 20 || r.height < 20){ svg.style.removeProperty('--eb-k'); return; }
+      var k = 1 / Math.min(r.width / vb.width, r.height / vb.height);
+      svg.style.setProperty('--eb-k', String(Math.round(Math.max(1, Math.min(4, k)) * 100) / 100));
+    });
+  }
+  function onPhone(el){ return !!(el && el.closest && el.closest('.ls-phone')); }
 
   T.mount('energy-bar-charts', function(app, data){
     var ex = null;
@@ -217,7 +232,9 @@
       out += '<rect class="eb-ground" x="0" y="' + gy + '" width="' + VW + '" height="' + (SIZE[scene] - gy) + '"/><line class="eb-ground-l" x1="0" x2="' + VW + '" y1="' + gy + '" y2="' + gy + '"/>';
       // A height ruler at the left edge, in meters.
       var top = scene === 'skater' ? 5 : scene === 'launcher' ? 3 : Math.ceil(P.ramp.h);
-      for(var hh = 0; hh <= top; hh++){ var r = pt(0, hh); out += '<line class="eb-rule" x1="6" x2="14" y1="' + n(r.y) + '" y2="' + n(r.y) + '"/><text class="eb-rule-t" x="17" y="' + n(r.y + 4) + '">' + hh + (hh === top ? ' m' : '') + '</text>'; }
+      // A very small scene (a phone on its side) numbers every other meter.
+      var ev = sceneK() > 2.4 ? 2 : 1;
+      for(var hh = 0; hh <= top; hh++){ var r = pt(0, hh); out += '<line class="eb-rule" x1="6" x2="14" y1="' + n(r.y) + '" y2="' + n(r.y) + '"/>' + (hh !== top && (hh % ev || top - hh < ev) ? '' : '<text class="eb-rule-t" x="17" y="' + n(r.y + 4) + '">' + hh + (hh === top ? ' m' : '') + '</text>'); }
       if(scene === 'skater'){
         // Posts under the rail, then the rail itself.
         for(var xx = 0.5; xx < 10; xx += 1){ var j = Math.round(xx / 10 * Pth.n), a = pt(Pth.x[j], Pth.y[j]); out += '<line class="eb-post" x1="' + n(a.x) + '" x2="' + n(a.x) + '" y1="' + n(a.y + 4) + '" y2="' + gy + '"/>'; }
@@ -230,16 +247,19 @@
       } else {
         var xb = P.ramp.h / Math.tan(35 * Math.PI / 180), fx = pt(Pth.floorX, 0), endp = pt(Pth.x[Pth.n], 0);
         out += '<polygon class="eb-ramp" points="' + pts.join(' ') + ' ' + n(first.x) + ',' + gy + '"/><polyline class="eb-surface" points="' + pts.join(' ') + '"/>';
+        // On a phone the notes grow with --eb-k: keep them inside the ground band and the picture.
+        var kq = sceneK(), ny = kq ? n(gy + Math.min(SIZE[scene] - gy - 3, 4 + 10.5 * kq)) : gy + 22, nx = kq ? Math.max(n(pt(xb / 2, 0).x), 2 + 0.29 * 12.5 * kq * 17) : n(pt(xb / 2, 0).x);
         out += '<rect class="eb-rough" x="' + n(fx.x) + '" y="' + (gy - 3) + '" width="' + n(endp.x - fx.x) + '" height="7"/>' +
-          '<text class="eb-note" x="' + n((fx.x + endp.x) / 2) + '" y="' + (gy + 22) + '" text-anchor="middle">rough floor, μ = ' + F1(P.ramp.mu, 2) + '</text>' +
-          '<text class="eb-note" x="' + n(pt(xb / 2, 0).x) + '" y="' + (gy + 22) + '" text-anchor="middle">frictionless ramp</text>';
+          '<text class="eb-note" x="' + n(kq ? Math.max((fx.x + endp.x) / 2, nx * 2 + 0.29 * 12.5 * kq * 26) : (fx.x + endp.x) / 2) + '" y="' + ny + '" text-anchor="middle">rough floor, μ = ' + F1(P.ramp.mu, 2) + '</text>' +
+          '<text class="eb-note" x="' + n(nx) + '" y="' + ny + '" text-anchor="middle">frictionless ramp</text>';
       }
       return out;
     }
     function liftStatic(){
       var v = VIEW.lift, gy = v.y0, topY = pt(0, P.lift.H + 1.3).y, cx = v.x0;
       var out = '<rect class="eb-ground" x="0" y="' + gy + '" width="' + VW + '" height="' + (SIZE[scene] - gy) + '"/><line class="eb-ground-l" x1="0" x2="' + VW + '" y1="' + gy + '" y2="' + gy + '"/>';
-      for(var hh = 0; hh <= P.lift.H; hh++){ var r = pt(0, hh); out += '<line class="eb-rule" x1="' + (cx - 120) + '" x2="' + (cx - 112) + '" y1="' + n(r.y) + '" y2="' + n(r.y) + '"/><text class="eb-rule-t" x="' + (cx - 108) + '" y="' + n(r.y + 4) + '">' + hh + (hh === P.lift.H ? ' m' : '') + '</text>'; }
+      var ev = sceneK() > 1.6 ? 2 : 1;
+      for(var hh = 0; hh <= P.lift.H; hh++){ var r = pt(0, hh); out += '<line class="eb-rule" x1="' + (cx - 120) + '" x2="' + (cx - 112) + '" y1="' + n(r.y) + '" y2="' + n(r.y) + '"/>' + (hh !== P.lift.H && (hh % ev || P.lift.H - hh < ev) ? '' : '<text class="eb-rule-t" x="' + (cx - 108) + '" y="' + n(r.y + 4) + '">' + hh + (hh === P.lift.H ? ' m' : '') + '</text>'); }
       // A frame with a motor and pulley at the top.
       out += '<rect class="eb-frame" x="' + (cx + 60) + '" y="' + n(topY) + '" width="10" height="' + n(gy - topY) + '"/>' +
         '<rect class="eb-frame" x="' + (cx - 30) + '" y="' + n(topY) + '" width="100" height="10"/>' +
@@ -301,7 +321,9 @@
     }
     function heightMark(x, y, gy, h){
       if(h < 0.3) return '';
-      return '<g class="eb-hmark"><line x1="' + n(x) + '" x2="' + n(x) + '" y1="' + n(y) + '" y2="' + gy + '"/><text x="' + n(x + 6) + '" y="' + n((y + gy) / 2 + 4) + '">h = ' + F1(h, 2) + ' m</text></g>';
+      // The label goes left of the line when it would run off the right edge (its width grows with --eb-k on a phone).
+      var tw = 0.62 * (sceneK() ? 12.5 * sceneK() : 11.5) * 10, left = x + 6 + tw > VW - 4;
+      return '<g class="eb-hmark"><line x1="' + n(x) + '" x2="' + n(x) + '" y1="' + n(y) + '" y2="' + gy + '"/><text x="' + n(left ? x - 6 : x + 6) + '" y="' + n((y + gy) / 2 + 4) + '"' + (left ? ' text-anchor="end"' : '') + '>h = ' + F1(h, 2) + ' m</text></g>';
     }
 
     /* ------------------------------------------------ drawing the bars */
@@ -310,11 +332,16 @@
     function drawBars(i){
       // Match the chart's shape to its box, so text keeps one size.
       var box = $('.eb-bars'), r = box && box.getBoundingClientRect();
-      BH = 200; BW = r && r.width > 20 && r.height > 20 ? Math.max(240, Math.min(620, BH * r.width / r.height)) : 480;
+      // On a phone the chart draws at its box's own height (1 unit = 1 px), so its text is its CSS size.
+      var ph = onPhone(box) && r && r.height > 20;
+      BH = ph ? Math.max(100, Math.min(260, Math.round(r.height))) : 200; BW = r && r.width > 20 && r.height > 20 ? Math.max(240, Math.min(620, BH * r.width / r.height)) : 480;
+      PAD.b = ph ? 44 : 40;
       var b = barsAt(i), L = b.L, sc = scale(), cols = b.cols.concat(['W']);
       var H = BH - PAD.t - PAD.b, tot = sc.pos + sc.neg, zy = PAD.t + H * (sc.pos / tot), ppj = H / tot;
-      var cw = (BW - PAD.l - PAD.r) / cols.length, out = '';
-      out += '<line class="eb-zero" x1="' + PAD.l + '" x2="' + (BW - PAD.r) + '" y1="' + n(zy) + '" y2="' + n(zy) + '"/>';
+      // On a phone the right end stays clear of the stage's Enlarge button (bottom right).
+      var pr = PAD.r + (onPhone(box) && r && r.width > 20 ? Math.round(48 * BW / r.width) : 0);
+      var cw = (BW - PAD.l - pr) / cols.length, out = '';
+      out += '<line class="eb-zero" x1="' + PAD.l + '" x2="' + (BW - pr) + '" y1="' + n(zy) + '" y2="' + n(zy) + '"/>';
       cols.forEach(function(k, ci){
         var x = PAD.l + ci * cw, bx = x + cw * 0.18, bw = cw * 0.64, cxm = x + cw / 2;
         if(k === 'W'){
@@ -327,7 +354,7 @@
             else { out += '<rect class="eb-bar eb-neg ' + WORK[a].cls + '" x="' + n(bx) + '" y="' + n(dn) + '" width="' + n(bw) + '" height="' + n(hpx) + '"/>'; dn += hpx; }
           });
           out += '<text class="eb-val" x="' + n(cxm) + '" y="' + n(L.W >= 0 ? up - 6 : dn + 14) + '" text-anchor="middle">' + (Math.abs(L.W) < 0.05 ? '0' : M.fmt(L.W, 3)) + '</text>';
-          out += '<text class="eb-lab" x="' + n(cxm) + '" y="' + (BH - PAD.b + 18) + '" text-anchor="middle">W</text><text class="eb-lab2" x="' + n(cxm) + '" y="' + (BH - PAD.b + 32) + '" text-anchor="middle">work in</text>';
+          out += '<text class="eb-lab" x="' + n(cxm) + '" y="' + (BH - PAD.b + 18) + '" text-anchor="middle">W</text><text class="eb-lab2" x="' + n(cxm) + '" y="' + (BH - PAD.b + (ph ? 36 : 32)) + '" text-anchor="middle">work in</text>';
           return;
         }
         var st = STORE[k], inside = !st.ag || sys[st.ag], v = L.now[k], v0 = L.start[k];
@@ -346,15 +373,22 @@
       return S.svg(BW, BH, lab, out);
     }
 
+    var lastK = -1;
     function draw(){
       if(!trace.length) return;
+      // The ruler's numbering depends on the scene's on-screen size: rebuild it when that changes.
+      var kk = Math.round(sceneK() * 10); if(kk !== lastK){ lastK = kk; staticHtml = staticScene(); }
       var st = trace[idx], L = barsAt(idx).L;
-      var big = narrow(), lh = big ? 34 : 22, rx = scene === 'launcher' ? 96 : scene === 'skater' ? VW / 2 : VW - 12, an = scene === 'launcher' ? 'start' : scene === 'skater' ? 'middle' : 'end';
+      // On a phone the readout's line spacing follows its on-screen size (--eb-k).
+      var big = narrow(), sk = sceneK(), lh = sk ? 18 * sk : big ? 34 : 22, y1 = sk ? 17 * sk + (scene === 'lift' ? 70 : 0) : big ? 30 : 24, rx = scene === 'launcher' ? 96 : scene === 'skater' ? VW / 2 : VW - 12, an = scene === 'launcher' ? 'start' : scene === 'skater' ? 'middle' : 'end';
       var lines = ['v = ' + F1(st.speed, 1) + ' m/s', 'h = ' + F1(st.y, 2) + ' m'].concat(scene === 'lift' ? ['P = ' + M.fmt(st.P, 3) + ' W'] : []);
-      var rd = '<g class="eb-read' + (big ? ' is-big' : '') + '" aria-hidden="true">' + lines.map(function(t, k){ return '<text x="' + rx + '" y="' + ((big ? 30 : 24) + k * lh) + '" text-anchor="' + an + '">' + t + '</text>'; }).join('') +
+      // A scene too small for its readout (a phone on its side) moves it to the caption.
+      var tiny = sk > 2.4;
+      var rd = tiny ? '' : '<g class="eb-read' + (big ? ' is-big' : '') + '" aria-hidden="true">' + lines.map(function(t, k){ return '<text x="' + rx + '" y="' + n(y1 + k * lh) + '" text-anchor="' + an + '">' + t + '</text>'; }).join('') +
         (big ? '' : '<text class="eb-read-t" x="' + rx + '" y="' + (24 + lines.length * lh) + '" text-anchor="' + an + '">t = ' + F1(st.t, 1) + ' s</text>') + '</g>';
       $('.eb-scene').innerHTML = S.svg(VW, SIZE[scene], sceneLabel(st), '<g class="eb-static">' + staticHtml + '</g>' + dynamicScene(st) + rd);
       $('.eb-bars').innerHTML = drawBars(idx);
+      kfit($('.eb-stage'));
       $('.eb-sysname').innerHTML = 'System: <b>' + esc(sysName()) + '</b>';
       $('.eb-eq').innerHTML = '<span>Start ' + J(L.totalStart) + '</span> + <span class="eb-eq-w">W ' + J(L.W) + '</span> = <span>Now ' + J(L.totalNow) + '</span>';
       if(scrub){ scrub.set(idx / 60); }
@@ -363,10 +397,12 @@
       numbers(st, L);
       if(LS){
         LS.pills([], 'left', 'explore'); LS.pills([], 'right', 'explore');
-        LS.caption('<b>' + m.head + '</b> ' + m.short + (narrow() ? ' <span class="eb-cap-eq">' + J(L.totalStart) + ' + W ' + J(L.W) + ' = ' + J(L.totalNow) + '</span>' : ''), 'explore');
+        LS.caption('<b>' + m.head + '</b> ' + m.short + (narrow() ? ' <span class="eb-cap-eq">' + J(L.totalStart) + ' + W ' + J(L.W) + ' = ' + J(L.totalNow) + '</span>' : '') + (tiny ? ' <span class="eb-cap-eq">' + lines.join(', ') + '</span>' : ''), 'explore');
       }
     }
     var staticHtml = '';
+    // viewBox units per CSS px of the scene on a phone (as kfit sets it), else 0.
+    function sceneK(){ var e = $('.eb-scene'), r = e && e.getBoundingClientRect(); if(!onPhone(e) || !r || r.width < 20 || r.height < 20) return 0; return Math.max(1, Math.min(4, 1 / Math.min(r.width / VW, r.height / SIZE[scene]))); }
     function sceneLabel(st){
       var u = SCENE_UI[scene];
       return cap(u.obj) + ' at height ' + F1(st.y, 2) + ' m moving at ' + F1(st.speed, 2) + ' m/s, t = ' + F1(st.t, 1) + ' s.' + (scene === 'lift' ? ' Cable tension ' + M.fmt(st.tension, 3) + ' N, power ' + M.fmt(st.P, 3) + ' W.' : '') + (scene === 'launcher' && st.comp > 0 ? ' Spring compressed ' + F1(st.comp, 2) + ' m.' : '');
@@ -443,7 +479,7 @@
       if(newScene){ sys = { earth: true, spring: true, surface: true }; controls(); }
       seg.querySelectorAll('[data-scene]').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-scene') === scene)); });
       compute(); idx = 0;
-      staticHtml = staticScene();
+      staticHtml = staticScene(); lastK = Math.round(sceneK() * 10);
       paintSys();
       if(!scrub){ scrub = T.slider({ label: 'Time', min: 0, max: 30, step: 1 / 60, value: 0, unit: 's', decimals: 2, onInput: function(v){ pause(); idx = Math.min(trace.length - 1, Math.round(v * 60)); draw(); } }); scrubHost.appendChild(scrub.el); }
       var tmax = (trace.length - 1) / 60; scrub.input.max = String(tmax);
@@ -455,7 +491,9 @@
       if(!svg || scene !== 'skater') return;
       pause();
       var move = function(ev){
-        var b = svg.getBoundingClientRect(), x = (ev.clientX - b.left) * VW / b.width, y = (ev.clientY - b.top) * SIZE[scene] / b.height, v = VIEW.skater;
+        // Through the screen matrix, so a letterboxed scene (a phone) maps right.
+        var m = svg.getScreenCTM(), q0 = svg.createSVGPoint(); q0.x = ev.clientX; q0.y = ev.clientY;
+        var qq = m ? q0.matrixTransform(m.inverse()) : q0, x = qq.x, y = qq.y, v = VIEW.skater;
         var Pth = run.path, s0 = E.nearest(Pth, (x - v.x0) / v.ppm, (v.y0 - y) / v.ppm);
         P.skater.s0 = s0; start.done(); build(false); P.skater.h0 = trace[0].y; mainSlider.set(Math.max(+mainSlider.input.min, M.round(trace[0].y, 1)));
       };
@@ -469,6 +507,8 @@
       LS = s;
       T.studioPane(pane, s, { stage: [$('.eb-stage')], dock: [ctl], moreLabel: 'Track, friction, mass, g and time', why: [start.el, $('.eb-say')], details: [$('.eb-nums')] });
       draw();
+      // Redraw at the new box shape when the window turns or Enlarge opens or zooms.
+      var rq = 0; window.addEventListener('resize', function(){ if(rq) return; rq = requestAnimationFrame(function(){ rq = 0; draw(); }); });
       if(s.mode() === 'explore') s.hint({ target: btns.querySelector('.eb-play'), text: 'Press Play' });
     }
     build(true);
@@ -490,11 +530,12 @@
       extra: function(host, p){
         cur = p; fig = host;
         if(p.figure && p.figure.kind === 'bars') builder(host, p);
-        else if(p.figure) host.innerHTML = '<figure class="cd-fig eb-qfig">' + sceneThumb(p.figure.scene) + '</figure>';
+        else if(p.figure){ host.innerHTML = '<figure class="cd-fig eb-qfig">' + sceneThumb(p.figure.scene) + '</figure>'; requestAnimationFrame(function(){ kfit(host); }); }
       },
       onStep: function(s, right){ if(s.key === 'system' && fig){ var n = fig.querySelector('.eb-q-sys'); if(n) n.innerHTML = 'System: <b>' + esc(cur.figure.sysName) + '</b>'; } if(fig && fig._redraw) fig._redraw(); }
     };
     T.drill(pane, data, opts);
+    var rq = 0; window.addEventListener('resize', function(){ if(rq) return; rq = requestAnimationFrame(function(){ rq = 0; if(fig) kfit(fig); }); });
   }
 
   /* The bar chart builder: one column per cell; drag a bar, press the arrow
@@ -531,6 +572,7 @@
       var ready = ins.some(Boolean);
       var lab = 'Bar chart to build, in units of ' + M.fmt(f.unit || 1, 3) + ' J. ' + cells.map(function(c, i){ var v = val(ins[i]); return c.label + ' ' + (v == null ? 'empty' : M.minus(String(v))); }).join(', ') + '.' + (ready ? '' : ' The bars open in the next step.');
       chart.innerHTML = S.svg(W, H, lab, out);
+      kfit(host); requestAnimationFrame(function(){ kfit(host); });
       chart.classList.toggle('is-live', ready && ins.some(function(x){ return x && !x.readOnly; }));
     }
     host._redraw = draw;

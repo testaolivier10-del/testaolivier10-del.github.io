@@ -73,6 +73,32 @@
 .bt-app .bio-svg .axis.y{stroke:none;}
 .bt-app .bio-svg .tick{fill:var(--muted);font:700 11.5px var(--font-ui);font-variant-numeric:tabular-nums;}
 .bt-app .bio-svg .lbl{fill:var(--ink);font:800 12.5px var(--font-ui);}
+/* Phone pass (2026-10-13): graph text on a phone stage. The skills figures are 380-430 units wide on a ~350 px
+   stage (scale 0.82-0.93), so ticks, axis titles and on-graph values go up to read at least 12 px (values ~13-14). */
+.ls-root.ls-phone .ls-stage .bio-svg .tick{font-size:14.4px;}
+.ls-root.ls-phone .ls-stage .bio-svg .lbl{font-size:14.6px;}
+.ls-root.ls-phone .ls-stage .bio-svg .note{font-size:14.2px;}
+.ls-root.ls-phone .ls-stage .sk-fig .sk-ph,.ls-root.ls-phone .ls-stage .sk-fig .sk-cat{font-size:14.7px;}
+/* the caption under a skills figure keeps clear of the Enlarge button */
+.ls-root.ls-phone .ls-stage .sk-cap{padding-right:50px;}
+/* Chi-square on a phone held sideways: the bars-over-curve figure is tall, so it takes the stage width and the stage
+   scrolls (fitting it to the 300 px height drew 9 px labels). */
+@media (orientation:landscape){
+  .ls-root.ls-phone .ls-stage .sk-fig:has(> svg.sk-chi){flex:none;}
+  .ls-root.ls-phone .ls-stage svg.sk-chi{flex:none;height:auto;max-height:none;}
+  /* the same for the other tall figures: the cell-cycle ring and the energy flow */
+  .ls-root.ls-phone .ls-stage-body > :has(> svg.cc-ring),.ls-root.ls-phone .ls-stage-body > :has(> svg.ef-flow){flex:none;}
+  .ls-root.ls-phone .ls-stage svg.cc-ring,.ls-root.ls-phone .ls-stage svg.ef-flow{flex:none;width:100%;height:auto;max-height:none;}
+  .ls-root.ls-phone .ls-stage-body > .ls-gb-stage,.ls-root.ls-phone .ls-gb-stage > .gb-grid{flex:none;}
+  .ls-root.ls-phone .ls-stage .gb-grid > svg{flex:none;width:100%;height:auto;max-height:none;}
+}
+.ls-root.ls-phone .ls-stage .sk-fig .sk-val,.ls-root.ls-phone .ls-stage .sk-fig .sk-markl{font-size:15.5px;}
+.ls-root.ls-phone .ls-stage .sk-fig .sk-critl{font-size:14.2px;}
+.ls-root.ls-phone .ls-stage .wp-fig .wp-v{font-size:15.5px;}
+.ls-root.ls-phone .ls-stage .ds-bl{font-size:14.4px;} .ls-root.ls-phone .ls-stage .ds-ml{font-size:14.6px;}
+.ls-root.ls-phone .ls-stage .ci-bl{font-size:14.6px;} .ls-root.ls-phone .ls-stage .ci-v{font-size:14.4px;}
+.ls-root.ls-phone .ls-stage .hw-cl{font-size:16px;} .ls-root.ls-phone .ls-stage .hw-cv{font-size:15px;}
+.ls-root.ls-phone .ls-stage .sd-Dl{font-size:15.5px;} .ls-root.ls-phone .ls-stage .sd-Dl.mine{font-size:14.4px;}
 .bt-app .bio-svg .series{stroke-width:2.25;stroke-linejoin:round;stroke-linecap:round;}
 .bt-app .bio-svg .pt{stroke:var(--white);stroke-width:2;}
 .bt-app .bio-svg .bar,.bt-app .sk-obs{stroke:var(--white);stroke-width:1;}
@@ -242,6 +268,9 @@
 .mei-fig text.mei-lab{font:800 10px var(--font-ui);}
 .mei-fig text.mei-ttl{font:800 11.5px var(--font-ui);}
 .mei-fig text.mei-pole,.mei-fig text.mei-note{fill:var(--muted);font:700 10.5px var(--font-ui);}
+/* Phone pass: on the 300-unit phone canvas (scale ~1.17) these read at least 12 px. */
+.ls-root.ls-phone .mei-fig text.mei-lab{font-size:10.8px;}
+.ls-root.ls-phone .mei-fig text.mei-pole,.ls-root.ls-phone .mei-fig text.mei-note{font-size:10.8px;}
 .mei-stepper{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;}
 .mei-stepper .bt-ctl{flex:1 1 220px;}
 .mei-stephead h3{font:900 17px var(--font-ui);margin:0 0 4px;}
@@ -336,6 +365,9 @@
 .tr-fig .tr-tipg.sel .ba.tr-o{color:var(--bio-aff);}
 .tr-fig .tr-node circle{fill:var(--white);stroke:var(--ink);stroke-width:1.5;}
 .tr-fig .tr-node text{fill:var(--ink);font:800 11px var(--font-ui);}
+/* Phone pass: node numbers read at least 12 px; the character chips scroll clear of the Enlarge button. */
+.ls-root.ls-phone .tr-fig .tr-node text{font-size:14px;}
+.ls-root.ls-phone .ls-stage .tr-chips{padding-right:52px;}
 .tr-fig .tr-node.mrca circle{fill:var(--bio-aff-fill);stroke:var(--bio-aff);stroke-width:3.5;}
 .tr-fig .tr-tip{fill:var(--ink);font:700 15px var(--font-ui);}
 .tr-fig .tr-tip.sel{font-weight:900;}
@@ -666,6 +698,9 @@
 .os-fig .os-mk.out rect{fill:var(--bio-deo2-fill);stroke:var(--bio-deo2);}
 .os-fig .os-mk.in rect{fill:var(--bio-eff-fill);stroke:var(--bio-memb);}
 .os-fig .os-mk text{font:900 11px var(--font-ui);}
+/* Phone pass: the 400-unit figure is ~350 px wide, so labels go up to read at least 12 px (key numbers 14). */
+.ls-root.ls-phone .os-fig .os-lab,.ls-root.ls-phone .os-fig .os-tick,.ls-root.ls-phone .os-fig .os-lh,.ls-root.ls-phone .os-fig .os-tag,.ls-root.ls-phone .os-fig .os-mk text{font-size:14.2px;}
+.ls-root.ls-phone .os-fig .os-state{font-size:15px;}
 .os-play{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;}
 .os-play .btn-press{min-height:44px;}
 .os-clock{margin:0;font:800 14px var(--font-mono);color:var(--muted);}
@@ -695,6 +730,8 @@
 .ez-canvas{display:block;max-width:100%;}
 .ez-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;}
 .ez-key{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;}
+.ls-root.ls-phone .ls-stage .ez-bar{padding-right:52px;} /* the key wraps clear of the Enlarge button */
+@media (orientation:landscape){ .ls-root.ls-phone .ls-stage .ez-bar{flex-wrap:nowrap;} .ls-root.ls-phone .ls-stage .ez-key{flex:1 1 auto;min-width:0;} }
 .ez-k{display:inline-block;width:16px;height:14px;vertical-align:middle;background:linear-gradient(135deg,var(--ez-subA),var(--ez-subB));border:1.5px solid var(--ez-subE);clip-path:polygon(0 50%,100% 0,100% 100%);border:0;}
 .ez-k.prod{width:8px;clip-path:polygon(0 50%,100% 14%,100% 86%);}
 .ez-k.prod.b{width:9px;margin-left:-2px;clip-path:polygon(0 18%,70% 0,100% 50%,70% 100%,0 82%);}
@@ -736,6 +773,9 @@
 .cc-gate:empty{display:none;}
 .cc-plots{display:grid;gap:10px;}
 .cc-ring .cc-ph{font:800 12.5px var(--font-ui);}
+/* Phone pass: the ring is 400 x 488 units in a ~400 px tall stage (scale 0.82), so its labels go up to read 12 px. */
+.ls-root.ls-phone .cc-ring text,.ls-root.ls-phone .cc-ring .cc-ph,.ls-root.ls-phone .cc-ring .cc-pcl,.ls-root.ls-phone .cc-ring .note{font-size:14.8px;}
+.ls-root.ls-phone .cc-ring .cc-glab{font-size:15px;}
 
 /* ===== Meiosis: tap the figure (tools upgrade U-Bio-sims) ===== */
 .mei-stagefig{background:var(--paper);border-radius:14px;padding:6px;}
@@ -781,6 +821,13 @@
 .op-lower{display:grid;gap:10px;}
 .op-stagefig{overflow-x:auto;}
 @media (max-width:640px){.bt-fig .op-stagefig svg.op-fig,.op-stagefig svg.op-fig{min-width:500px;}}
+/* Phone pass (2026-10-13): the strip is drawn near full size (labels at least 12 px rendered), the regulatory end
+   (lacI, CAP site, promoter, operator) fits the first screen and the genes scroll sideways; the medium chips keep
+   clear of the Enlarge button. */
+.ls-root.ls-phone .op-stagefig svg.op-fig{min-width:630px;height:auto;max-height:none;flex:none;align-self:flex-start;margin:auto 0;}
+.ls-root.ls-phone .op-fig .op-note{font-size:11.5px;}
+.ls-root.ls-phone .op-fig text.op-tight{font-size:11.5px;}
+.ls-root.ls-phone .ls-stage .op-tray{padding-right:52px;}
 
 /* ===== Signal cascade (tools upgrade U-Bio-sims) ===== */
 .sg-stagefig{background:var(--paper);border-radius:14px;padding:6px;}
@@ -799,6 +846,11 @@
 .sg-fig .sgs-name{fill:var(--ink);font:800 10.5px var(--font-ui);paint-order:stroke;stroke:var(--sgs-in);stroke-width:3px;}
 .sg-fig .sgs-mini{fill:var(--ink);font:900 7.5px var(--font-ui);}
 .sg-fig .sgs-tag{fill:var(--bio-symp);font:900 9.5px var(--font-ui);}
+/* Phone pass: scene labels and gain notes at least 12 px rendered (the cascade is 360 units across a ~352 px stage). */
+.ls-root.ls-phone .sg-fig .sgs-lab,.ls-root.ls-phone .sg-fig .sgs-name,.ls-root.ls-phone .sg-fig .sgs-tag{font-size:12.3px;}
+.ls-root.ls-phone .sg-fig .sgs-mini{font-size:12.3px;}
+.ls-root.ls-phone .sg-stagefig{padding-bottom:52px;}
+.ls-root.ls-phone .sg-fig text.note{font-size:12.3px;}
 .sg-fig .sgs-head circle{fill:var(--sgs-head);stroke:var(--sgs-heade);stroke-width:.6;}
 .sg-fig .sgs-tail{stroke:var(--sgs-tail);stroke-width:.8;}
 .sg-fig .sgs-rec{fill:var(--sgs-rec);stroke:var(--sgs-rece);stroke-width:1;}
@@ -831,6 +883,8 @@
 .ef-flow .ef-lab{font:800 12px var(--font-ui);}
 .ef-flow .ef-num{font:700 11px var(--font-ui);fill:var(--muted);}
 .ef-flow .ef-heatlab{font:700 10.5px var(--font-ui);fill:var(--bio-symp);}
+/* Phone pass: the flow is 400 units across a ~350 px stage, so its labels go up to read at least 12 px. */
+.ls-root.ls-phone .ef-flow .ef-lab,.ls-root.ls-phone .ef-flow .ef-num,.ls-root.ls-phone .ef-flow .ef-heatlab{font-size:14.4px;}
 .ef-flow .ef-uplab{fill:var(--muted);}
 .ef-flow .ef-box{fill:var(--bio-para-fill);stroke:var(--bio-para);stroke-width:2;}
 .ef-flow .ef-lvl{cursor:pointer;}
@@ -873,6 +927,8 @@
 :root[data-theme="dark"] .pg-fieldsvg .pg-ind{color:#D2BFA8;fill:#D2BFA8;}
 .pg-fieldsvg .pg-flab{font:800 12px var(--font-ui);fill:var(--ink);}
 .pg-fieldsvg .pg-hit{font:900 16px var(--font-ui);fill:var(--bio-symp);}
+.ls-root.ls-phone .pg-fieldsvg .pg-flab{font-size:14px;} /* phone pass: 400-unit field at ~350 px */
+.ls-root.ls-phone .pg-fieldsvg .pg-hit{font-size:17px;}
 .pg-fieldsvg .pg-floodfx{fill:var(--bio-deo2-fill);opacity:.5;}
 .pg-play .pg-evbtns{display:flex;flex-wrap:wrap;gap:8px;}
 .pg-plot-n{touch-action:pan-y;cursor:ew-resize;}
@@ -928,6 +984,8 @@
   .bt-stage-slot.wp-pin .sk-cap{font-size:13px;line-height:1.4;}
   .bt-stage-slot.wp-pin .wp-fig{max-height:30vh;width:auto;max-width:100%;display:block;margin:0 auto;}
 }
+/* In the Tool Studio the stage already has the height, so the beakers use the full width (phone pass). */
+.ls-root.ls-phone .bt-stage-slot.wp-pin .wp-fig,.ls-root.ls-phone .ls-stage .wp-pin .wp-fig{max-height:none;width:100%;}
 
 /* Graph builder on a phone: each point's controls wrap under its name instead of running off
    the right edge of a sideways-scrolling table. */

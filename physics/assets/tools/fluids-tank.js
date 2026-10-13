@@ -23,6 +23,7 @@
   var T = window.ApPhysTools, M = window.ApPhysMath, S = window.ApPhysScene;
   if(!T || !M || !M.fluidsTank) return;
   var FT = M.fluidsTank, G = M.C.g, ATM = M.C.ATM;
+  function phoneNow(){ try{ return matchMedia('(max-width:640px), (max-width:999.98px) and (max-height:540px)').matches; }catch(e){ return false; } }
   var here = document.currentScript && document.currentScript.src;
   if(here && !document.querySelector('link[data-ft-css], link[href$="tools/fluids-tank.css"]')){
     var ln = document.createElement('link'); ln.rel = 'stylesheet'; ln.href = here.replace(/fluids-tank\.js(\?.*)?$/, 'fluids-tank.css'); ln.setAttribute('data-ft-css', '1');
@@ -94,7 +95,8 @@
      dot, each force an arrow starting on it, labeled with type and agent,
      lengths to scale). list: [{ cls, sym, agent, value, up }]. */
   function fbdSvg(list, on, note, h){
-    var W = 280, H = h || 380, cx = 92, cy = H / 2, bx = 26, max = Math.max.apply(null, list.map(function(f){ return f.value; }).concat([1e-9])), k = (H / 2 - 40) / max;
+    // Phone on its side: height-limited, so a wider frame keeps the bigger labels in.
+    var W = phoneNow() && window.innerHeight <= 540 ? 420 : 280, H = h || 380, cx = 92, cy = H / 2, bx = 26, max = Math.max.apply(null, list.map(function(f){ return f.value; }).concat([1e-9])), k = (H / 2 - 40) / max;
     var ups = list.filter(function(f){ return f.up && f.value > 1e-9; }), downs = list.filter(function(f){ return !f.up && f.value > 1e-9; });
     var inner = '<rect x="' + (cx - bx) + '" y="' + (cy - bx) + '" width="' + (2 * bx) + '" height="' + (2 * bx) + '" rx="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>';
     function put(arr, sgn){
@@ -111,7 +113,7 @@
         var y = sgn < 0 ? Math.max(16, t.y + 6) : Math.min(H - 22, t.y - 6);
         if(last != null) y = sgn < 0 ? Math.max(y, last + 38) : Math.min(y, last - 38);
         last = y;
-        inner += '<text x="' + (cx + 40) + '" y="' + y.toFixed(1) + '" class="ft-fbdl">' + t.f.html + '<tspan x="' + (cx + 40) + '" dy="17" class="ft-mut">' + F(t.f.value, 2) + ' N, ' + t.f.agent + '</tspan></text>';
+        inner += '<text x="' + (cx + 40) + '" y="' + y.toFixed(1) + '" class="ft-fbdl">' + t.f.html + '<tspan x="' + (cx + 40) + '" dy="1.3em" class="ft-mut">' + F(t.f.value, 2) + ' N, ' + t.f.agent + '</tspan></text>';
       });
     }
     put(ups, -1); put(downs, 1);
@@ -163,7 +165,7 @@
     inner += '<line class="ft-string" x1="' + x + '" x2="' + x + '" y1="20" y2="' + ty + '"/><rect class="ft-tube" x="' + (x - 17) + '" y="' + ty + '" width="34" height="' + tl + '" rx="8"/>';
     for(var n = 0; n <= st.max + 1e-9; n += st.max / 10){
       var yy = ty + 20 + n / st.max * (tl - 34);
-      inner += '<line class="ft-tick" x1="' + (x + 6) + '" x2="' + (x + 15) + '" y1="' + yy.toFixed(1) + '" y2="' + yy.toFixed(1) + '"/>' + (st.quiz ? '' : Math.round(n / st.max * 10) % 2 === 0 ? '<text x="' + (x + 22) + '" y="' + (yy + 4).toFixed(1) + '" class="ft-mut" style="font-size:11px">' + F(n, st.max < 6 ? 1 : 0) + '</text>' : '');
+      inner += '<line class="ft-tick" x1="' + (x + 6) + '" x2="' + (x + 15) + '" y1="' + yy.toFixed(1) + '" y2="' + yy.toFixed(1) + '"/>' + (st.quiz ? '' : Math.round(n / st.max * 10) % 2 === 0 ? '<text x="' + (x + 22) + '" y="' + (yy + 4).toFixed(1) + '" class="ft-mut" style="font-size:' + (phoneNow() ? 17 : 11) + 'px">' + F(n, st.max < 6 ? 1 : 0) + '</text>' : '');
     }
     var coils = '', nC = 9, c0 = ty + 8, c1 = ty + sp;
     for(var i = 0; i <= nC; i++) coils += (i ? 'L' : 'M') + (x + (i % 2 ? -8 : 8) * (i && i < nC ? 1 : 0)) + ' ' + (c0 + (c1 - c0) * i / nC).toFixed(1);
@@ -190,7 +192,8 @@
       inner += '<line class="ft-rule" x1="' + (x0 - 22) + '" x2="' + (x0 - 12) + '" y1="' + yy.toFixed(1) + '" y2="' + yy.toFixed(1) + '"/>' + (Math.abs(d / lab - Math.round(d / lab)) < 1e-6 ? '<text x="' + (x0 - 28) + '" y="' + (yy + 4).toFixed(1) + '" text-anchor="end" class="ft-mut">' + F(d, lab < 1 ? 1 : 0) + '</text>' : '');
     }
     inner += '<text x="' + (x0 - 28) + '" y="' + (ys - 16) + '" text-anchor="end" class="ft-mut">depth (m)</text>';
-    inner += '<text x="' + (x1 + 10) + '" y="' + (ys - 4) + '" class="ft-mut">air above:</text><text x="' + (x1 + 10) + '" y="' + (ys + 12) + '" class="ft-mut">P<tspan dy="4" font-size=".75em">atm</tspan><tspan dy="-4"> = 100 kPa</tspan></text>';
+    if(phoneNow()) inner += '<text x="' + (x1 + 10) + '" y="' + (ys - 10) + '" class="ft-mut">air above:</text><text x="' + (x1 + 10) + '" y="' + (ys + 10) + '" class="ft-mut">P<tspan dy="4" font-size=".75em">atm</tspan><tspan dy="-4"> =</tspan></text><text x="' + (x1 + 10) + '" y="' + (ys + 30) + '" class="ft-mut">100 kPa</text>';   // phone: bigger text, three lines inside the frame
+    else inner += '<text x="' + (x1 + 10) + '" y="' + (ys - 4) + '" class="ft-mut">air above:</text><text x="' + (x1 + 10) + '" y="' + (ys + 12) + '" class="ft-mut">P<tspan dy="4" font-size=".75em">atm</tspan><tspan dy="-4"> = 100 kPa</tspan></text>';
     // the probe on its cable, with pressure pushing on it from every side
     inner += '<line class="ft-string" x1="' + (x1 - 50) + '" x2="' + (x1 - 50) + '" y1="14" y2="' + (py - 10).toFixed(1) + '"/><rect class="ft-steel" x="' + (x1 - 64) + '" y="6" width="28" height="12" rx="4"/>';
     if(!st.quiz){
@@ -202,7 +205,9 @@
       var yb = yf; inner += '<path class="ft-dim" d="M' + (x1 - 28) + ' ' + py.toFixed(1) + 'V' + yb + 'm-5 0h10m-10 ' + (py - yb).toFixed(1) + 'h10"/><text x="' + (x1 - 22) + '" y="' + ((py + yb) / 2 + 4).toFixed(1) + '" class="ft-mut">' + esc(st.aboveLabel || '') + '</text>';
     }
     if(!st.quiz) inner += '<rect class="ft-probe-hit" x="' + x0 + '" y="' + (ys - 6) + '" width="' + (x1 - x0) + '" height="' + (yf - ys + 12) + '"/>';
-    return S.svg(400, 345, st.label || 'A deep tank of fluid with a pressure probe at a depth.', inner).replace('class="phys-scene"', 'class="phys-scene ft-svg"');
+    var svgOut = S.svg(400, 345, st.label || 'A deep tank of fluid with a pressure probe at a depth.', inner).replace('class="phys-scene"', 'class="phys-scene ft-svg"');
+    // Phone on its side: height-limited, so a wider frame holds the bigger labels.
+    return !st.quiz && phoneNow() && window.innerHeight <= 540 ? svgOut.replace('viewBox="0 0 400 345"', 'viewBox="-40 0 480 345"') : svgOut;
   }
 
   /* A pipe that narrows (d1 to d2, cm) and rises dy (m). st: { fluid, d1, d2, dy, res?, dots?, quiz?, labels? } */
@@ -244,7 +249,8 @@
     // labels and the height
     inner += '<text x="' + x1 + '" y="' + (g.c1 + g.r1 + 22).toFixed(1) + '" text-anchor="middle" class="ft-mut">' + esc(st.quiz ? '1: d₁ = ' + F(st.d1, 1) + ' cm' : 'point 1') + '</text><text x="' + x2 + '" y="' + (g.c2 + g.r2 + 22).toFixed(1) + '" text-anchor="middle" class="ft-mut">' + esc(st.quiz ? '2: d₂ = ' + F(st.d2, 1) + ' cm' : 'point 2') + '</text>';
     if(st.dy > 0){ inner += '<line class="ft-wl" x1="' + (PP.xd - 4) + '" x2="' + (PP.xd + 14) + '" y1="' + g.c1 + '" y2="' + g.c1 + '" opacity=".5"/><line class="ft-wl" x1="' + (PP.xd - 4) + '" x2="' + (PP.xd + 14) + '" y1="' + g.c2.toFixed(1) + '" y2="' + g.c2.toFixed(1) + '" opacity=".5"/><path class="ft-dim" d="M' + (PP.xd + 10) + ' ' + g.c1 + 'V' + g.c2.toFixed(1) + '"/><text x="' + (PP.xd + 16) + '" y="' + ((g.c1 + g.c2) / 2 + 4).toFixed(1) + '" class="ft-mut">' + F(st.dy, 1) + ' m</text>'; }
-    return S.svg(400, 300, st.label || 'A full pipe that narrows and rises, with pressure gauges at two points.', inner).replace('class="phys-scene"', 'class="phys-scene ft-svg"');
+    var out = S.svg(400, 300, st.label || 'A full pipe that narrows and rises, with pressure gauges at two points.', inner).replace('class="phys-scene"', 'class="phys-scene ft-svg"');
+    return phoneNow() && st.dy > 0 ? out.replace('viewBox="0 0 400 300"', 'viewBox="0 0 416 300"') : out;   // phone: room for the rise's bigger label
   }
 
   /* Hole in a tank. st: { fluid, H (m), yh (m), quiz?, t (jet phase) } */
@@ -294,7 +300,7 @@
       '<div class="ft-grp" data-g="obj"><div class="ft-chips ls-scroll" role="group" aria-label="Object">' + Object.keys(FT.OBJECTS).map(function(k){ return '<button type="button" class="bt-btn" data-obj="' + k + '" aria-pressed="false">' + esc(FT.OBJECTS[k].name) + '</button>'; }).join('') + '</div></div>' +
       '<div class="ft-grp" data-g="float"><div class="bt-buttons"><button type="button" class="btn-press sm ft-drop">Drop it in</button><button type="button" class="bt-btn ft-push">Push it under</button></div></div>' +
       '<div class="ft-grp" data-g="scale"></div><div class="ft-grp" data-g="pressure"></div><div class="ft-grp" data-g="pipe"></div><div class="ft-grp" data-g="hole"></div></div>' +
-      '<div class="ft-view show-scene"><div class="ft-vtoggle tseg" role="group" aria-label="Show"><button type="button" data-v="scene" aria-pressed="true" class="on">Tank</button><button type="button" data-v="panel" aria-pressed="false">Graph</button></div><div class="ft-scene"></div><div class="ft-panel"></div></div>' +
+      '<div class="ft-view show-scene"><div class="ft-vtoggle tseg" role="group" aria-label="Show"><button type="button" data-v="scene" aria-pressed="true" class="on">Tank</button><button type="button" data-v="fbd" aria-pressed="false" class="ft-v-fbd" hidden>Forces</button><button type="button" data-v="panel" aria-pressed="false">Graph</button></div><div class="ft-scene"></div><div class="ft-panel"></div></div>' +
       '<div class="ft-say"></div><p class="sr-only ft-live"></p>' +
       T.moreHtml('<div class="ft-grp" data-g="pipe-more"></div><p class="bt-small">g = 9.8 m/s². P<sub>atm</sub> = 1.0 × 10⁵ Pa. The fluids are ideal: incompressible, no viscosity, and the pipe runs full.</p><div class="ft-nums"></div>', 'flow speed and pressure, the numbers') + '</section>';
     var $ = function(sel){ return host.querySelector(sel) || (LS ? LS.root.querySelector(sel) : null); };
@@ -347,7 +353,8 @@
     $$('[data-obj]').forEach(function(b){ b.addEventListener('click', function(){ st.obj = b.getAttribute('data-obj'); if(st.scene === 'float') drop(); else { touched(); draw(); } }); });
     host.querySelector('.ft-drop').addEventListener('click', function(){ drop(); });
     view.querySelectorAll('.ft-vtoggle button').forEach(function(b){ b.addEventListener('click', function(){
-      var v = b.getAttribute('data-v'); view.classList.toggle('show-scene', v === 'scene'); view.classList.toggle('show-panel', v === 'panel');
+      // Phone, Spring scale: "Forces" and "Graph" each give the stage to one of the panel's two figures.
+      var v = b.getAttribute('data-v'); view.classList.toggle('show-scene', v === 'scene'); view.classList.toggle('show-panel', v !== 'scene'); view.classList.toggle('show-fbd', v === 'fbd');
       view.querySelectorAll('.ft-vtoggle button').forEach(function(x){ var on = x === b; x.setAttribute('aria-pressed', String(on)); x.classList.toggle('on', on); });
     }); });
     host.querySelector('.ft-push').addEventListener('click', function(){ touched(); newSim(Math.min(TK.depth - 0.002, FT.height(obj()) + 0.1)); drop(sim.state.y); });
@@ -357,6 +364,8 @@
       sceneSel.set(id);
       ['obj', 'float', 'scale', 'pressure', 'pipe', 'hole'].forEach(function(g){ var e = grp(g); if(e) e.hidden = !(g === id || g === 'obj' && (id === 'float' || id === 'scale')); });
       var pm = grp('pipe-more'); if(pm) pm.hidden = id !== 'pipe';
+      var fb = view.querySelector('.ft-v-fbd'); fb.hidden = id !== 'scale';
+      if(id !== 'scale' && view.classList.contains('show-fbd')) view.querySelector('.ft-vtoggle [data-v="panel"]').click();
       if(id === 'float'){ if(!sim) newSim(-0.10); else newSim(sim.state.y); if(!started) sim.state.y = -0.10; }
       if(id === 'pipe' || id === 'hole') flowTick();
       draw();

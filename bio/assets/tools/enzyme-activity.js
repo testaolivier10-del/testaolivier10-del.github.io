@@ -52,10 +52,11 @@
       // In the Tool Studio the stage sets the height: the scene shrinks to
       // fit it rather than spilling over the Pause bar below.
       var fitH = host.closest && host.closest('.ls-stage-body') ? host.clientHeight : 0;
-      if(fitH > 100 && H > fitH){ var r = H / W; H = fitH; W = Math.max(140, Math.round(H / r)); }
+      // A short, wide stage (a phone held sideways) keeps the full width with a wider scene instead of shrinking it.
+      if(fitH > 100 && H > fitH){ if(fitH / W >= 0.45){ H = fitH; } else { var r = H / W; H = fitH; W = Math.max(140, Math.round(H / r)); } }
       dpr = Math.min(2, window.devicePixelRatio || 1);
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + 'px'; cv.style.height = H + 'px';
-      var cols = W < 480 ? 3 : 4, rows = Math.ceil(8 / cols), top = 20, bot = H - 50;
+      var cols = W < 480 && H / W > 0.62 ? 3 : 4, rows = Math.ceil(8 / cols), top = 20, bot = H - 50;
       ENZ.forEach(function(e, k){
         var r = Math.floor(k / cols), c = k % cols, n = r === rows - 1 ? 8 - cols * (rows - 1) : cols;
         e.x = W * (c + 0.5 + (cols - n) / 2) / cols + (e.u - 0.5) * 14; e.y = top + (bot - top) * (r + 0.5) / rows + (e.v - 0.5) * 10;

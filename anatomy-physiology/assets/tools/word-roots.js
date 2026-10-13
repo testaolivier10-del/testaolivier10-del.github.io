@@ -246,7 +246,8 @@
     var whole = wholeOptions(t);
     card.innerHTML =
       '<p class="wr-eyebrow">Decode</p>' +
-      '<h2 class="wr-term">' + esc(t.term) + '</h2>' +
+      // --wr-len (its longest word) lets a phone size the term to fit one line (word-roots.css).
+      '<h2 class="wr-term" style="--wr-len:' + Math.max.apply(null, String(t.term).split(/\s+/).map(function(w){ return w.length; })) + '">' + esc(t.term) + '</h2>' +
       splitHtml(t) +
       '<p class="kt-first wr-first">Pick what each part means, starting with the last part.</p>' +
       '<ol class="wr-steps">' + order.map(function(i, k){

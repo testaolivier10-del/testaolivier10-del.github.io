@@ -18,6 +18,7 @@
   if(!T || !M || !M.oscillatorLab || !S) return;
   var OL = M.oscillatorLab, esc = T.esc, F = T.F, TAU = 2 * Math.PI;
   var uid = 0;
+  function phoneNow(){ try{ return matchMedia('(max-width:640px), (max-width:999.98px) and (max-height:540px)').matches; }catch(e){ return false; } }
   function nid(p){ return (p || 'ol') + (++uid); }
   function n1(x){ return Math.round(x * 10) / 10; }
   function gv(x){ return M.fmt(x, Number(Number(x).toPrecision(2)) === x ? 2 : 3); }
@@ -185,10 +186,13 @@
     /* ----- drawing */
     var built = false, gEls = {};
     function geom(){
-      var nar = (sceneEl.clientWidth || 500) < 420;
+      var nar = (sceneEl.clientWidth || 500) < 420 || (phoneNow() && window.innerHeight <= 540);   // narrow, or a phone on its side (short)
       // Phone: crop the track to the wall and the cart's farthest reach (+A), so the cart reads larger.
       if(sys.type === 'spring') return { W: 520, H: 200, nar: nar, vb: nar ? '8 36 ' + Math.round(300 + sys.A * 600 + (64 + 18 * Math.sqrt(sys.m)) / 2 + 14 - 8) + ' 156' : '6 30 500 160' };
-      if(sys.type === 'vspring') return { W: 380, H: 360, nar: nar };
+      // Phone: the hanging spring is limited by the stage's height, so a wider frame costs nothing and keeps its labels in.
+      // On its side the stage is short: a much wider frame, still height-limited, with labels at 30 units.
+      var short = phoneNow() && window.innerHeight <= 540;
+      if(sys.type === 'vspring') return { W: 380, H: 360, nar: nar, short: short, vb: short ? '-110 0 600 360' : nar ? '-30 0 444 360' : '' };
       return { W: 420, H: 360, nar: nar };
     }
     function drawScene(){
@@ -201,16 +205,16 @@
           [-1, 1].map(function(sg){ return '<line class="ol-amp" x1="' + n1(eqX + sg * sys.A * ppm) + '" x2="' + n1(eqX + sg * sys.A * ppm) + '" y1="52" y2="' + (y + 18) + '"/><text class="ol-tm" x="' + n1(eqX + sg * sys.A * ppm) + '" y="48" text-anchor="middle">' + (sg < 0 ? '−A' : '+A') + '</text>'; }).join('') +
           coil(36, y - 26, cx - cw / 2, y - 26, 11, 22) + '<g class="ol-mass ol-drag" tabindex="0" role="slider" aria-label="Cart: drag it to stretch or squash the spring" aria-valuemin="-20" aria-valuemax="20" aria-valuenow="' + Math.round(x * 100) + '" aria-valuetext="' + F(x * 100, 0) + ' centimeters from equilibrium">' +
           '<rect class="ol-hit" x="' + n1(cx - cw / 2 - 10) + '" y="' + (y - 64) + '" width="' + n1(cw + 20) + '" height="70"/>' + cartArt(did, cx, y, cw, 46) +
-          '<text x="' + n1(cx) + '" y="' + (y - 22 + (g.nar ? 2 : 0)) + '" text-anchor="middle" font-size="' + (g.nar ? 16 : 12) + '" font-weight="900" fill="#fff">' + kgTxt(sys.m) + '</text></g>';
+          '<text x="' + n1(cx) + '" y="' + (y - 22 + (g.nar ? 2 : 0)) + '" text-anchor="middle" font-size="' + (g.nar ? 19 : 12) + '" font-weight="900" fill="#fff">' + kgTxt(sys.m) + '</text></g>';
         label = 'A ' + kgTxt(sys.m) + ' cart on a spring of k = ' + F(sys.k, 0) + ' N/m, ' + F(x * 100, 1) + ' cm from equilibrium, amplitude ' + F(sys.A * 100, 0) + ' cm.';
       } else if(sys.type === 'vspring'){
         var L0 = 0.20, x0 = sys.m * sys.g / sys.k, mh = 0.06, tot = L0 + x0 + sys.A + mh, ppm2 = Math.min(600, (H - 70) / tot), top = 30, cx2 = W / 2;
-        var eqY = top + (L0 + x0) * ppm2, my = eqY + x * ppm2, mw = 46 + 16 * Math.sqrt(sys.m), mhp = 28 + 14 * Math.sqrt(sys.m);
+        var eqY = top + (L0 + x0) * ppm2, my = eqY + x * ppm2, mw = (46 + 16 * Math.sqrt(sys.m)) * (g.short ? 1.6 : 1), mhp = (28 + 14 * Math.sqrt(sys.m)) * (g.short ? 1.3 : 1);
         out += '<rect class="ol-metal" x="40" y="' + (top - 16) + '" width="' + (W - 80) + '" height="12" rx="3" fill="url(#' + did + 'm)"/><rect class="ol-metal" x="' + (cx2 - 6) + '" y="' + (top - 6) + '" width="12" height="8" fill="url(#' + did + 'm)"/>' +
           '<line class="ol-eq" x1="' + (cx2 - 80) + '" x2="' + (cx2 + 80) + '" y1="' + n1(eqY + 6 + mhp / 2) + '" y2="' + n1(eqY + 6 + mhp / 2) + '"/><text class="ol-tm" x="' + (cx2 + 84) + '" y="' + n1(eqY + 6 + mhp / 2 + 4) + '">equilibrium</text>' +
           '<line class="ol-amp" x1="' + (cx2 - 70) + '" x2="' + (cx2 - 30) + '" y1="' + n1(top + L0 * ppm2) + '" y2="' + n1(top + L0 * ppm2) + '"/><text class="ol-tm" x="' + (cx2 - 74) + '" y="' + n1(top + L0 * ppm2 + 4) + '" text-anchor="end">unstretched</text>' +
           coil(cx2, top + 2, cx2, my, 13, 26) + '<g class="ol-mass ol-drag" tabindex="0" role="slider" aria-label="Mass: drag it up or down from equilibrium" aria-valuemin="-15" aria-valuemax="15" aria-valuenow="' + Math.round(x * 100) + '" aria-valuetext="' + F(Math.abs(x) * 100, 0) + ' centimeters ' + (x >= 0 ? 'below' : 'above') + ' equilibrium">' +
-          '<rect class="ol-hit" x="' + n1(cx2 - mw / 2 - 12) + '" y="' + n1(my - 10) + '" width="' + n1(mw + 24) + '" height="' + n1(mhp + 20) + '"/><path class="ol-metal" d="M' + cx2 + ' ' + n1(my) + 'v6" stroke-width="2.4"/>' + massArt(did, cx2, my + 6, mw, mhp, kgTxt(sys.m)) + '</g>' +
+          '<rect class="ol-hit" x="' + n1(cx2 - mw / 2 - 12) + '" y="' + n1(my - (g.nar ? 22 : 10)) + '" width="' + n1(mw + 24) + '" height="' + n1(mhp + (g.nar ? 44 : 20)) + '"/><path class="ol-metal" d="M' + cx2 + ' ' + n1(my) + 'v6" stroke-width="2.4"/>' + massArt(did, cx2, my + 6, mw, mhp, kgTxt(sys.m)) + '</g>' +
           '<g><line class="ol-amp" x1="' + (cx2 + 56) + '" x2="' + (cx2 + 56) + '" y1="' + n1(top + L0 * ppm2) + '" y2="' + n1(eqY) + '" style="stroke-dasharray:none"/><text class="ol-tm" x="' + (cx2 + 62) + '" y="' + n1(top + (L0 + x0 / 2) * ppm2 + 4) + '">mg/k = ' + F(x0 * 100, 1) + ' cm</text></g>';
         label = 'A ' + kgTxt(sys.m) + ' mass hanging from a spring of k = ' + F(sys.k, 0) + ' N/m, stretched ' + F(x0 * 100, 1) + ' cm at equilibrium, now ' + F(Math.abs(x) * 100, 1) + ' cm ' + (x >= 0 ? 'below' : 'above') + ' it.';
       } else {
@@ -227,34 +231,48 @@
         label = 'A pendulum ' + F(sys.L, 2) + ' m long with a ' + kgTxt(sys.m) + ' bob, released from ' + F(sys.A, 0) + ' degrees, now at ' + F(M.deg(th), 1) + ' degrees.';
       }
       var pl = PL.filter(function(p){ return Math.abs(p.g - sys.g) < 1e-9; })[0];
-      if(sys.type !== 'spring') out += '<text class="ol-tm" x="' + (W - 10) + '" y="' + (H - 8) + '" text-anchor="end">' + (pl ? (pl.name === 'Earth' ? 'On Earth' : 'On ' + pl.name) : '') + ', g = ' + sys.g + ' m/s²</text>';
+      if(sys.type !== 'spring' && !g.short) out += '<text class="ol-tm" x="' + (W - 10) + '" y="' + (H - 8) + '" text-anchor="end">' + (pl ? (pl.name === 'Earth' ? 'On Earth' : 'On ' + pl.name) : '') + ', g = ' + sys.g + ' m/s²</text>';
       // Phone: the scene is drawn small, so its labels are set larger (a style, which beats the class's size).
-      if(g.nar) out = out.replace(/class="ol-tm"/g, 'class="ol-tm" style="font-size:' + (sys.type === 'spring' ? 18 : 24) + 'px"');
+      if(g.nar) out = out.replace(/class="ol-tm"/g, 'class="ol-tm" style="font-size:' + (sys.type === 'spring' ? 19 : sys.type === 'vspring' ? (g.short ? 30 : 21) : 24) + 'px"').replace(/font-size="12" font-weight="900" fill="#2B2205"/g, 'font-size="' + (g.short ? 30 : 21) + '" font-weight="900" fill="#2B2205"');
       if(g.nar && sys.type === 'pendulum'){ var Lq = sys.L * (H - 80) / Math.max(1, sys.L) * Math.min(1, 0.55 + 0.45 * sys.L / 2), hw = Math.max(120, Lq * Math.sin(M.rad(Math.max(sys.A, 8))) + 50); g.vb = n1(W / 2 - hw) + ' 6 ' + n1(2 * hw) + ' ' + n1(Lq + 60); }
       sceneEl.innerHTML = '<svg viewBox="' + (g.vb || '0 0 ' + W + ' ' + H) + '" class="phys-scene" role="group" aria-label="' + esc(NAMES[sysKey]) + '">' + defs(did) + '<title>' + esc(label) + '</title>' + out + '</svg>';
       dragWire();
     }
     function drawBars(){
-      var nar = (sceneEl.clientWidth || 500) < 420, e = OL.energy(sys, st), E = e.E || 1, Hb = nar ? 110 : 200, top = nar ? 22 : 26, bw = 18, col = function(i, v, cls, t){ var h = Math.max(0, v / E * Hb); return '<rect class="ol-e-bg" x="' + (6 + i * 26) + '" y="' + top + '" width="' + bw + '" height="' + Hb + '" rx="4"/><rect class="' + cls + '" x="' + (6 + i * 26) + '" y="' + n1(top + Hb - h) + '" width="' + bw + '" height="' + n1(h) + '" rx="3"/><text class="ol-e-t" x="' + (15 + i * 26) + '" y="' + (top + Hb + 16) + '" text-anchor="middle">' + t + '</text>'; };
+      var nar = (sceneEl.clientWidth || 500) < 420, e = OL.energy(sys, st), E = e.E || 1, Hb = nar ? 110 : 200, top = nar ? 22 : 26, bw = 18, col = function(i, v, cls, t){ var h = Math.max(0, v / E * Hb); return '<rect class="ol-e-bg" x="' + (ox + 6 + i * 26) + '" y="' + top + '" width="' + bw + '" height="' + Hb + '" rx="4"/><rect class="' + cls + '" x="' + (ox + 6 + i * 26) + '" y="' + n1(top + Hb - h) + '" width="' + bw + '" height="' + n1(h) + '" rx="3"/><text class="ol-e-t" x="' + (ox + 15 + i * 26) + '" y="' + (top + Hb + 16) + '" text-anchor="middle">' + t + '</text>'; };
       var cols = sys.type === 'pendulum' ? [[e.K, 'ol-e-k', 'K'], [e.Ug, 'ol-e-ug', 'U<tspan dy="3" font-size="9">g</tspan>']] : sys.type === 'vspring' ? [[e.K, 'ol-e-k', 'K'], [e.Us, 'ol-e-us', 'U<tspan dy="3" font-size="9">s</tspan>'], [e.Ug, 'ol-e-ug', 'U<tspan dy="3" font-size="9">g</tspan>']] : [[e.K, 'ol-e-k', 'K'], [e.Us, 'ol-e-us', 'U<tspan dy="3" font-size="9">s</tspan>']];
-      var Wd = 10 + cols.length * 26;
+      // Phone: at least 80 wide (columns centred), so the E label fits at 13 px.
+      var Wd0 = 10 + cols.length * 26, Wd = phoneNow() ? Math.max(Wd0, 80) : Wd0, ox = (Wd - Wd0) / 2;
       barsEl.innerHTML = '<svg viewBox="0 0 ' + Wd + ' ' + (top + Hb + 22) + '" role="img" aria-label="' + esc('Energy now: K ' + F(e.K, 3) + ' J' + (sys.type !== 'pendulum' ? ', spring U ' + F(e.Us, 3) + ' J' : '') + (sys.type !== 'spring' ? ', gravitational U ' + F(e.Ug, 3) + ' J' : '') + '; total ' + F(e.E, 3) + ' J, constant.') + '">' +
         cols.map(function(c, i){ return col(i, c[0], c[1], c[2]); }).join('') + '<line class="ol-e-tot" x1="2" x2="' + (Wd - 2) + '" y1="' + top + '" y2="' + top + '"/><text class="ol-e-v" x="' + (Wd / 2) + '" y="' + (top - 8) + '" text-anchor="middle">E ' + F(e.E, e.E < 1 ? 3 : 2) + ' J</text></svg>';
     }
     /* Graphs: built once per run (axes, grid), the lines' points updated. */
-    var GW = 360, GH = 104, GL = 46, GR = 10, GT = 8, GB = 22;
+    var GW = 360, GH = 104, GL = 46, GR = 10, GT = 8, GB = 22, gPh = false;
+    /* Phone: the graph's viewBox is as wide as its box in CSS px (one unit = one px), so its
+       12-14 px labels (oscillator-lab.css) render at that size; the name and unit sit at the
+       left of the zero line, clear of the tick numbers. Desktop: the fixed 360 x 104 frame. */
+    function graphGeom(){
+      var on = stage.querySelector('.ol-graph.is-on'), gw = (on && on.clientWidth) || stage.querySelector('.ol-graphs').clientWidth || 0;
+      gPh = phoneNow() && gw > 200;
+      var low = window.innerHeight <= 540;   // phone on its side: a shorter graph, the scene keeps its share
+      if(gPh){ GW = Math.round(Math.min(640, gw)); GH = low ? 100 : 124; GL = 58; GR = 10; GT = 8; GB = 22; }
+      else { GW = 360; GH = 104; GL = 46; GR = 10; GT = 8; GB = 22; }
+    }
     function buildGraphs(){
+      graphGeom();
       var w = window_(), A = sys.type === 'pendulum' ? sys.L * M.rad(sys.A) : sys.A, om = TAU / period();
       var amp = { x: A, v: A * om, a: sys.type === 'pendulum' ? sys.g * Math.sin(M.rad(sys.A)) : A * om * om };
       var unit = { x: sys.type === 'vspring' ? 'm, down' : 'm', v: 'm/s', a: 'm/s²' }, name = { x: sys.type === 'pendulum' ? 's' : 'x', v: 'v', a: 'a' };
       ['x', 'v', 'a'].forEach(function(k){
         var ym = T.niceMax(amp[k] * 1.1), PW = GW - GL - GR, PH = GH - GT - GB, ts = T.niceStep(w, 5), grid = '';
-        for(var t = 0; t <= w + 1e-9; t += ts){ var X = GL + t / w * PW; grid += '<line class="ol-g-grid" x1="' + n1(X) + '" x2="' + n1(X) + '" y1="' + GT + '" y2="' + (GT + PH) + '"/>' + (X > GL + PW - 34 ? '' : '<text class="ol-g-tick" x="' + n1(X) + '" y="' + (GH - 8) + '" text-anchor="middle">' + M.fixed(t, ts < 1 ? 1 : 0) + '</text>'); }
+        for(var t = 0; t <= w + 1e-9; t += ts){ var X = GL + t / w * PW; grid += '<line class="ol-g-grid" x1="' + n1(X) + '" x2="' + n1(X) + '" y1="' + GT + '" y2="' + (GT + PH) + '"/>' + (X > GL + PW - (gPh ? 40 : 34) ? '' : '<text class="ol-g-tick" x="' + n1(X) + '" y="' + (GH - 8) + '" text-anchor="middle">' + M.fixed(t, ts < 1 ? 1 : 0) + '</text>'); }
         [-1, 0, 1].forEach(function(f){ var Y = GT + PH / 2 - f * PH / 2; grid += '<line class="' + (f ? 'ol-g-grid' : 'ol-g-zero') + '" x1="' + GL + '" x2="' + (GL + PW) + '" y1="' + n1(Y) + '" y2="' + n1(Y) + '"/>' + (f ? '<text class="ol-g-tick" x="' + (GL - 4) + '" y="' + n1(Y + 3) + '" text-anchor="end">' + M.fmt(f * ym, 2) + '</text>' : ''); });
         var el = stage.querySelector('.ol-graph[data-g="' + k + '"]');
         el.innerHTML = '<svg viewBox="0 0 ' + GW + ' ' + GH + '" class="phys-svg" role="img" aria-label="' + esc(name[k] + ' against time') + '"><rect class="ol-g-bg" x="' + GL + '" y="' + GT + '" width="' + PW + '" height="' + PH + '"/>' + grid +
           '<line class="ol-g-axis" x1="' + GL + '" x2="' + GL + '" y1="' + GT + '" y2="' + (GT + PH) + '"/>' +
-          '<text class="ol-g-lbl" x="6" y="' + (GT + 11) + '">' + name[k] + '</text><text class="ol-g-tick" x="6" y="' + (GT + 24) + '">' + unit[k] + '</text><text class="ol-g-tick" x="' + (GL + PW) + '" y="' + (GH - 8) + '" text-anchor="end" dx="0">t (s)</text>' +
+          (gPh ? '<text class="ol-g-lbl" x="4" y="' + n1(GT + PH / 2 - 3) + '">' + name[k] + '</text><text class="ol-g-tick" x="4" y="' + n1(GT + PH / 2 + 13) + '">' + unit[k] + '</text>'
+            : '<text class="ol-g-lbl" x="6" y="' + (GT + 11) + '">' + name[k] + '</text><text class="ol-g-tick" x="6" y="' + (GT + 24) + '">' + unit[k] + '</text>') +
+          '<text class="ol-g-tick" x="' + (GL + PW) + '" y="' + (GH - 8) + '" text-anchor="end" dx="0">t (s)</text>' +
           '<g class="ol-g-Tg"></g><polyline class="ol-g-line ol-g-' + k + '" points=""/><circle class="ol-g-dot ol-g-d' + k + '" r="4" cx="-9" cy="-9"/></svg>';
         gEls[k] = { svg: el.querySelector('svg'), line: el.querySelector('polyline'), dot: el.querySelector('circle.ol-g-dot'), Tg: el.querySelector('.ol-g-Tg'), ym: ym, PW: PW, PH: PH, w: w, name: name[k], unit: unit[k] };
       });
@@ -356,7 +374,9 @@
     }
 
     buildVars(); release(); draw();
-    if(window.ResizeObserver){ var lastW = 0; new ResizeObserver(function(){ var w = sceneEl.clientWidth; if(Math.abs(w - lastW) > 40){ lastW = w; draw(); } }).observe(sceneEl); }
+    if(window.ResizeObserver){ var lastW = 0; new ResizeObserver(function(){ var w = sceneEl.clientWidth; if(Math.abs(w - lastW) > 40){ lastW = w; built = false; draw(); } }).observe(sceneEl);
+      // Phone graphs are drawn one unit per CSS px: redraw when their box changes width.
+      var gBox = stage.querySelector('.ol-graphs'), lastG = 0; new ResizeObserver(function(){ var w = gBox.clientWidth; if(phoneNow() && Math.abs(w - lastG) > 2){ lastG = w; built = false; draw(); } }).observe(gBox); }
     return {
       stop: function(){ loop.stop(); playing = false; playBtn.textContent = 'Play'; playBtn.setAttribute('aria-pressed', 'false'); },
       studio: function(pane, studio){
