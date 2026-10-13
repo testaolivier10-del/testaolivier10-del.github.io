@@ -288,7 +288,7 @@
     "The tangent line is horizontal, because the numerator is 0",
     "The tangent line is vertical, because the denominator is 0",
     "The slope is 1, because $\\frac{0}{0} = 1$",
-    "Nothing: it gives $\\frac{0}{0}$, so it decides neither a horizontal nor a vertical tangent"
+    "Nothing, because it gives $\\frac{0}{0}$, which decides neither a horizontal nor a vertical tangent"
    ],
    "correct": 3,
    "why": {
@@ -469,7 +469,7 @@
    "diff": 2,
    "q": "For $x^2 - xy + y^2 = 12$, the numerator of $\\frac{dy}{dx} = \\frac{y - 2x}{2y - x}$ is 0 at $(1, 2)$. Is the tangent line horizontal at $(1, 2)$?",
    "options": [
-    "No: $(1, 2)$ is not on the curve, since $1 - 2 + 4 = 3 \\ne 12$",
+    "No, because $(1, 2)$ is not on the curve ($1 - 2 + 4 = 3 \\ne 12$)",
     "Yes, because the numerator is 0 there",
     "Yes, because the denominator $2(2) - 1 = 3$ is not 0",
     "No, because the denominator is 0 there"

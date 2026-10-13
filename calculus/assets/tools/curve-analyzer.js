@@ -50,7 +50,7 @@
     var LS = null;
     var curves = (data.curves || CA.ORDER).filter(function(id){ return CA.CURVES[id]; });
     var scenes = (data.optimize || []).map(function(s){ return s.id || s; }).filter(function(id){ return CA.SCENES[id]; });
-    var st = { view: 'curves', id: curves[0], x: 0, sid: scenes[0] || null, u: 0, reveal: 1, touched: false };
+    var st = { view: 'curves', id: curves[0], x: 0, sid: scenes[0] || null, u: 0, reveal: 1, touched: false, gv: null };
     var cue = T.cue('Drag across the graphs: the cursor reads f, f′ and f″ at once.');
     host.innerHTML =
       '<section class="bt-problem ca-card" aria-label="Curve analyzer explorer">' +
@@ -67,6 +67,7 @@
         '<div class="ca-ctl">' +
           (scenes.length ? '<div class="ca-views ls-seg" role="group" aria-label="View"><button type="button" class="bt-mode" data-v="curves" aria-pressed="true">Curves</button><button type="button" class="bt-mode" data-v="opt" aria-pressed="false">Optimize</button></div>' : '') +
           '<div class="ca-chips ls-scroll" role="group" aria-label="Function"></div>' +
+          '<div class="ca-gview ls-seg" role="group" aria-label="Graphs shown"><button type="button" class="bt-mode" data-k="all" aria-pressed="true">All three</button><button type="button" class="bt-mode" data-k="f" aria-pressed="false">f only</button><button type="button" class="bt-mode" data-k="fp" aria-pressed="false">f′ only</button><button type="button" class="bt-mode" data-k="fpp" aria-pressed="false">f″ only</button></div>' +
           '<div class="ca-slot"></div>' +
         '</div>' +
         '<div class="ca-say"></div>' +
@@ -106,6 +107,7 @@
       st.view = v; pause();
       if(viewsEl) viewsEl.querySelectorAll('.bt-mode').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === v)); });
       curvesEl.hidden = v !== 'curves'; optEl.hidden = v === 'curves';
+      var gvx = host.querySelector('.ca-gview') || (LS && LS.root.querySelector('.ca-gview')); if(gvx) gvx.hidden = v !== 'curves';
       if(v === 'opt' && !st.u){ st.u = sc().start; }
       buildChips(); buildSlider(); gl = null; ol = null; draw(true);
     }
@@ -124,15 +126,36 @@
       if(st.view === 'curves'){ if(b.getAttribute('data-id') !== st.id) setCurve(b.getAttribute('data-id')); }
       else { st.sid = b.getAttribute('data-id'); st.u = sc().start; buildChips(); buildSlider(); ol = null; draw(true); }
     });
+    var gviewEl = host.querySelector('.ca-gview');
+    gviewEl.addEventListener('click', function(e){
+      var b = e.target.closest('.bt-mode'); if(!b) return;
+      st.gv = b.getAttribute('data-k'); touch();
+      gviewEl.querySelectorAll('.bt-mode').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+      gl = null; draw(false);
+    });
     if(viewsEl) viewsEl.addEventListener('click', function(e){ var b = e.target.closest('.bt-mode'); if(b && b.getAttribute('data-v') !== st.view){ touch(); setView(b.getAttribute('data-v')); } });
 
     /* ------------------------------------------------ the stacked graphs */
+    /* On a phone one graph can have the whole stage (the switch in the
+       dock), with the sign charts that go with it; elsewhere all three. */
+    function phone(){ return !!(LS && LS.root && LS.root.classList.contains('ls-phone')); }
+    /* Not chosen yet: all three, except on a phone on its side, where three
+       graphs would be slivers: f with both sign charts. */
+    function gview(){ return st.gv || (phone() && window.innerWidth > window.innerHeight ? 'f' : 'all'); }
+    function rowKeys(){
+      var v = phone() ? gview() : 'all';
+      var gx = host.querySelector('.ca-gview') || (LS && LS.root.querySelector('.ca-gview'));
+      if(gx) gx.querySelectorAll('.bt-mode').forEach(function(x){ x.setAttribute('aria-pressed', String(x.getAttribute('data-k') === gview())); });
+      return v === 'f' ? ['f', 'sfp', 'sfpp'] : v === 'fp' ? ['fp', 'sfp'] : v === 'fpp' ? ['fpp', 'sfpp'] : ['f', 'fp', 'sfp', 'fpp', 'sfpp'];
+    }
     function layout(){
-      var c = cv(), w = Math.max(280, Math.round(gwrap.clientWidth || 600)), h = Math.max(260, Math.round(gwrap.clientHeight || 420));
-      var L = w < 420 ? 38 : 46, R = 12, T0 = 6, row = w < 420 ? 18 : 22, gap = 8, axis = 20;
-      var avail = h - T0 - axis - 2 * row - 4 * gap, hf = avail * 0.38, hd = avail * 0.31;
+      var c = cv(), w = Math.max(280, Math.round(gwrap.clientWidth || 600)), h = Math.max(200, Math.round(gwrap.clientHeight || 420));
+      var ph = phone(), L = w < 420 ? 40 : 46, R = 12, T0 = 6, row = w < 420 ? 20 : 22, gap = 8, axis = ph ? 22 : 20;
+      var ks = rowKeys(), WT = { f: 0.38, fp: 0.31, fpp: 0.31 }, nS = ks.filter(function(k){ return k.charAt(0) === 's'; }).length;
+      var wsum = ks.reduce(function(t, k){ return t + (WT[k] || 0); }, 0), avail = h - T0 - axis - nS * row - (ks.length - 1) * gap;
+      var FN = { f: c.f, fp: c.fp, fpp: c.fpp };
       var a = c.dom[0], b = c.dom[1], rows = {}, y = T0;
-      [['f', hf, c.f], ['fp', hd, c.fp], ['sfp', row], ['fpp', hd, c.fpp], ['sfpp', row]].forEach(function(r){
+      ks.map(function(k){ return WT[k] ? [k, avail * WT[k] / wsum, FN[k]] : [k, row]; }).forEach(function(r){
         rows[r[0]] = { y0: y, h: r[1] }; y += r[1] + gap;
         if(r[2]){
           var lo = Infinity, hi = -Infinity;
@@ -143,7 +166,7 @@
           rows[r[0]].lo = lo - pad; rows[r[0]].hi = hi + pad; rows[r[0]].fn = r[2];
         }
       });
-      return { w: w, h: h, L: L, R: R, pw: w - L - R, rows: rows, a: a, b: b, axisY: y - gap + 14,
+      return { w: w, h: h, L: L, R: R, pw: w - L - R, rows: rows, ks: ks, top: rows[ks[0]].y0, bot: y - gap, a: a, b: b, axisY: y - gap + 14,
         gx: function(x){ return L + (x - a) / (b - a) * (w - L - R); },
         ix: function(px){ return a + (px - L) / (w - L - R) * (b - a); },
         gy: function(k, v){ var r = rows[k]; return r.y0 + (r.hi - v) / (r.hi - r.lo) * r.h; } };
@@ -163,7 +186,7 @@
       var g = gl, c = cv(), I = info(), A = I.A, o = [], NAME = { f: 'f', fp: 'f′', fpp: 'f″' }, CLS = { f: 's1', fp: 's2', fpp: 's3' };
       gsvg.setAttribute('viewBox', '0 0 ' + g.w + ' ' + g.h);
       var xt = c.piX ? P.piTicks(g.a, g.b) : P.ticks(g.a, g.b, Math.max(4, Math.round(g.pw / 70)));
-      ['f', 'fp', 'fpp'].forEach(function(k){
+      ['f', 'fp', 'fpp'].filter(function(k){ return g.rows[k]; }).forEach(function(k){
         var r = g.rows[k];
         o.push('<rect class="ca-panel" x="' + g.L + '" y="' + r1(r.y0) + '" width="' + g.pw + '" height="' + r1(r.h) + '" rx="6"/>');
         xt.forEach(function(v){ var px = r1(g.gx(v)); o.push('<line class="ca-grid" x1="' + px + '" y1="' + r1(r.y0) + '" x2="' + px + '" y2="' + r1(r.y0 + r.h) + '"/>'); });
@@ -172,11 +195,11 @@
         o.push('<text class="ca-pl ' + CLS[k] + '" x="' + (g.L + 6) + '" y="' + r1(r.y0 + 15) + '">' + NAME[k] + '</text>');
       });
       // the closed interval's endpoints on f, and the candidates' winners
-      [g.a, g.b].forEach(function(x){ o.push('<circle class="ca-end" cx="' + r1(g.gx(x)) + '" cy="' + r1(g.gy('f', c.f(x))) + '" r="4.5"/>'); });
+      if(g.rows.f) [g.a, g.b].forEach(function(x){ o.push('<circle class="ca-end" cx="' + r1(g.gx(x)) + '" cy="' + r1(g.gy('f', c.f(x))) + '" r="4.5"/>'); });
       // sign charts, revealed left to right
       var rv = st.reveal, clipW = r1(g.pw * rv);
       o.push('<defs><clipPath id="ca-clip"><rect x="' + g.L + '" y="0" width="' + clipW + '" height="' + g.h + '"/></clipPath></defs>');
-      [['sfp', A.signFp, function(s){ return s > 0 ? '+  f ↗' : '−  f ↘'; }, 'f′'], ['sfpp', A.signFpp, function(s){ return s > 0 ? '+  ∪' : '−  ∩'; }, 'f″']].forEach(function(row){
+      [['sfp', A.signFp, function(s){ return s > 0 ? '+  f ↗' : '−  f ↘'; }, 'f′'], ['sfpp', A.signFpp, function(s){ return s > 0 ? '+  ∪' : '−  ∩'; }, 'f″']].filter(function(row){ return g.rows[row[0]]; }).forEach(function(row){
         var r = g.rows[row[0]], segs = row[1];
         o.push('<text class="ca-rowk" x="' + (g.L - 5) + '" y="' + r1(r.y0 + r.h / 2 + 4) + '" text-anchor="end">' + row[3] + '</text>');
         o.push('<g clip-path="url(#ca-clip)">' + segs.map(function(sg){
@@ -187,23 +210,28 @@
       });
       // features: critical points and inflection points
       I.feats.forEach(function(ft){
-        var px = r1(g.gx(ft.x)), py = r1(g.gy('f', c.f(ft.x)));
-        o.push('<line class="ca-fline" x1="' + px + '" y1="' + r1(g.rows.f.y0 + g.rows.f.h) + '" x2="' + px + '" y2="' + r1(g.rows.sfpp.y0 + g.rows.sfpp.h) + '"/>');
+        var px = r1(g.gx(ft.x)), py = g.rows.f ? r1(g.gy('f', c.f(ft.x))) : 0;
+        o.push('<line class="ca-fline" x1="' + px + '" y1="' + r1(g.rows.f ? g.rows.f.y0 + g.rows.f.h : g.top) + '" x2="' + px + '" y2="' + r1(g.bot) + '"/>');
         if(ft.type === 'crit'){
+          var fy = g.rows.fp && g.gy('fp', 0); if(g.rows.fp && !ft.undef) o.push('<circle class="ca-z s2" cx="' + px + '" cy="' + r1(fy) + '" r="4"/>');
+          if(!g.rows.f) return;
           o.push('<circle class="ca-crit is-' + ft.kind + '" cx="' + px + '" cy="' + py + '" r="5.5"/>');
           var absTag = Math.abs(A.absMax.x - ft.x) < 1e-9 ? ', abs max' : Math.abs(A.absMin.x - ft.x) < 1e-9 ? ', abs min' : '';
           if(A.infl.some(function(z){ return Math.abs(z - ft.x) < 1e-9; })) absTag += ' · inflection';
-          o.push('<text class="ca-flab" x="' + px + '" y="' + r1(ft.kind === 'min' ? +py + 17 : +py - 9) + '" text-anchor="middle">' + (ft.kind === 'max' ? 'rel max' : ft.kind === 'min' ? 'rel min' : 'neither') + absTag + '</text>');
-          var fy = g.gy('fp', 0); if(!ft.undef) o.push('<circle class="ca-z s2" cx="' + px + '" cy="' + r1(fy) + '" r="4"/>');
+          // above a maximum (below a minimum); beside it when the panel's edge is too close
+          var ly = ft.kind === 'min' ? +py + 17 : +py - 9, fr = g.rows.f, side = ly < fr.y0 + 12 || ly > fr.y0 + fr.h - 2, lx = +px, la = 'middle';
+          if(side){ ly = +py + 4; la = px > g.L + g.pw * 0.6 ? 'end' : 'start'; lx = +px + (la === 'start' ? 10 : -10); }
+          o.push('<text class="ca-flab" x="' + r1(lx) + '" y="' + r1(ly) + '" text-anchor="' + la + '">' + (ft.kind === 'max' ? 'rel max' : ft.kind === 'min' ? 'rel min' : 'neither') + absTag + '</text>');
         } else {
+          if(g.rows.fpp) o.push('<circle class="ca-z s3" cx="' + px + '" cy="' + r1(g.gy('fpp', 0)) + '" r="4"/>');
+          if(!g.rows.f) return;
           o.push('<rect class="ca-poi" x="' + (px - 5) + '" y="' + (py - 5) + '" width="10" height="10" transform="rotate(45 ' + px + ' ' + py + ')"/>');
           var withCrit = I.feats.some(function(f2){ return f2.type === 'crit' && Math.abs(f2.x - ft.x) < 1e-9; });
           if(!withCrit) o.push('<text class="ca-flab" x="' + px + '" y="' + r1(+py - 10) + '" text-anchor="middle">inflection</text>');
-          o.push('<circle class="ca-z s3" cx="' + px + '" cy="' + r1(g.gy('fpp', 0)) + '" r="4"/>');
         }
       });
       // absolute extrema on the closed interval
-      [['abs max', A.absMax], ['abs min', A.absMin]].filter(function(p){ return p[1].role === 'endpoint'; }).forEach(function(p){
+      [['abs max', A.absMax], ['abs min', A.absMin]].filter(function(p){ return g.rows.f && p[1].role === 'endpoint'; }).forEach(function(p){
         var px = g.gx(p[1].x), py = g.gy('f', p[1].y), right = px < g.L + g.pw * 0.8, top = g.rows.f.y0, bot = top + g.rows.f.h;
         var ty = p[0] === 'abs max' ? (py < top + 24 ? py + 16 : py - 8) : (py > bot - 14 ? py - 10 : py + 16);
         o.push('<text class="ca-abs" x="' + r1(px + (right ? 8 : -8)) + '" y="' + r1(ty) + '" text-anchor="' + (right ? 'start' : 'end') + '">' + p[0] + '</text>');
@@ -213,8 +241,8 @@
       o.push('<g class="ca-xaxis">' + xt.map(function(v){ return '<text x="' + r1(g.gx(v)) + '" y="' + r1(g.h - 5) + '" text-anchor="middle">' + (c.piX ? piLab(v) : F(v, Math.abs(v - Math.round(v)) < 1e-9 ? 0 : 1)) + '</text>'; }).join('') + '<text class="ca-xl" x="' + (g.L + g.pw) + '" y="' + r1(g.h - 5) + '" text-anchor="end">x</text></g>');
       // cursor
       var cx = r1(g.gx(st.x));
-      o.push('<line class="ca-cur" x1="' + cx + '" y1="' + r1(g.rows.f.y0) + '" x2="' + cx + '" y2="' + r1(g.rows.sfpp.y0 + g.rows.sfpp.h) + '"/>');
-      ['f', 'fp', 'fpp'].forEach(function(k){ var v = g.rows[k].fn(st.x); if(isFinite(v) && v >= g.rows[k].lo && v <= g.rows[k].hi) o.push('<circle class="ca-cur-pt ' + CLS[k] + '" cx="' + cx + '" cy="' + r1(g.gy(k, v)) + '" r="5"/>'); });
+      o.push('<line class="ca-cur" x1="' + cx + '" y1="' + r1(g.top) + '" x2="' + cx + '" y2="' + r1(g.bot) + '"/>');
+      ['f', 'fp', 'fpp'].filter(function(k){ return g.rows[k]; }).forEach(function(k){ var v = g.rows[k].fn(st.x); if(isFinite(v) && v >= g.rows[k].lo && v <= g.rows[k].hi) o.push('<circle class="ca-cur-pt ' + CLS[k] + '" cx="' + cx + '" cy="' + r1(g.gy(k, v)) + '" r="5"/>'); });
       gsvg.innerHTML = o.join('');
       var vals = vals3();
       gwrap.setAttribute('aria-valuemin', String(g.a)); gwrap.setAttribute('aria-valuemax', String(g.b)); gwrap.setAttribute('aria-valuenow', M.fixed(st.x, 3));
@@ -278,7 +306,7 @@
         o.push('<line class="ca-rad" x1="' + cx + '" y1="' + r1(base - hh) + '" x2="' + r1(cx + rr) + '" y2="' + r1(base - hh) + '"/>');
         o.push('<text class="ca-st is-x" x="' + r1(cx + rr / 2) + '" y="' + r1(base - hh - ry - 6) + '" text-anchor="middle">r = ' + F(u, 2) + '</text>');
         o.push('<text class="ca-st" x="' + r1(cx + rr + 10) + '" y="' + r1(base - hh / 2 + 4) + '" text-anchor="start">h = ' + F(355 / (Math.PI * u * u), 2) + ' cm</text>');
-        o.push('<text class="ca-st" x="300" y="70" text-anchor="start">355 cm³</text><text class="ca-st ca-sub" x="300" y="88" text-anchor="start">every can holds</text><text class="ca-st ca-sub" x="300" y="106" text-anchor="start">the same amount</text>');
+        o.push('<text class="ca-st" x="410" y="70" text-anchor="end">355 cm³</text><text class="ca-st ca-sub" x="410" y="90" text-anchor="end">every can holds</text><text class="ca-st ca-sub" x="410" y="110" text-anchor="end">the same amount</text>');
       }
       sceneSvg.innerHTML = o.join('');
       sceneSvg.setAttribute('aria-label', s.name + ': ' + s.label.toLowerCase() + ' ' + s.var + ' = ' + F(u, 2) + ' ' + s.unit + ', ' + s.what + ' ' + F(s.obj(u), 2) + ' ' + s.ounit + '.');
@@ -308,8 +336,8 @@
       var bx = r1(gx(s.best));
       o.push('<line class="ca-fline" x1="' + bx + '" y1="' + T0 + '" x2="' + bx + '" y2="' + r1(T0 + 2 * ph + gap) + '"/>');
       o.push('<circle class="ca-crit is-' + (s.goal === 'max' ? 'max' : 'min') + '" cx="' + bx + '" cy="' + r1(gy('obj', s.obj(s.best))) + '" r="5"/><circle class="ca-z s2" cx="' + bx + '" cy="' + r1(gy('d', 0)) + '" r="4"/>');
-      var xt = P.ticks(a, b, Math.max(4, Math.round((w - L - R) / 70))).filter(function(v){ return gx(v) < w - R - 34 || v === a; });
-      o.push('<g class="ca-xaxis">' + xt.map(function(v){ return '<text x="' + r1(gx(v)) + '" y="' + (h - 5) + '" text-anchor="middle">' + F(v, Math.abs(v - Math.round(v)) < 1e-9 ? 0 : 1) + '</text>'; }).join('') + '<text class="ca-xl" x="' + (w - R) + '" y="' + (h - 5) + '" text-anchor="end">' + s.var + ' (' + s.unit + ')</text></g>');
+      var xt = P.ticks(a, b, Math.max(4, Math.round((w - L - R) / 70))).filter(function(v){ return gx(v) < w - R - (phone() ? 50 : 34) || v === a; });
+      o.push('<g class="ca-xaxis">' + xt.map(function(v){ return '<text x="' + r1(gx(v)) + '" y="' + (h - 5) + '" text-anchor="middle">' + F(v, Math.abs(v - Math.round(v)) < 1e-9 ? 0 : 1) + '</text>'; }).join('') + (phone() ? '<text class="ca-xl" x="' + (L - 8) + '" y="' + (h - 5) + '" text-anchor="end">' + s.var + ' (' + s.unit + ')</text>' : '<text class="ca-xl" x="' + (w - R) + '" y="' + (h - 5) + '" text-anchor="end">' + s.var + ' (' + s.unit + ')</text>') + '</g>');
       var cx = r1(gx(st.u));
       o.push('<line class="ca-cur" x1="' + cx + '" y1="' + T0 + '" x2="' + cx + '" y2="' + r1(T0 + 2 * ph + gap) + '"/>');
       o.push('<circle class="ca-cur-pt s1" cx="' + cx + '" cy="' + r1(gy('obj', s.obj(st.u))) + '" r="5"/><circle class="ca-cur-pt s2" cx="' + cx + '" cy="' + r1(gy('d', s.dobj(st.u))) + '" r="5"/>');
@@ -328,7 +356,7 @@
         body = '<ol class="ca-feats">' + I.feats.map(function(f2){ return '<li' + (ft === f2 ? ' class="is-on"' : '') + '>' + html(f2.text) + '</li>'; }).join('') + '</ol>' +
           '<p class="ca-rule"><b>A sign chart alone does not justify.</b> Say in words which function changes sign, from what to what, and where. Where $f\'$ is $0$ but keeps its sign (or $f\'\'$ is $0$ but keeps its sign) there is no extremum (no inflection).</p>' +
           '<p class="ca-rule"><b>Absolute extrema on $[' + CA.xs(c.dom[0]) + ', ' + CA.xs(c.dom[1]) + ']$:</b> compare $f$ at the endpoints and the critical points (candidates test). The largest is $f(' + CA.xs(A.absMax.x) + ') \\approx ' + CA.n(A.absMax.y, 3) + '$, the smallest $f(' + CA.xs(A.absMin.x) + ') \\approx ' + CA.n(A.absMin.y, 3) + '$. A single sign change only proves a relative extremum.</p>';
-        pills = narrow() ? [{ html: '<span class="ca-pk s1">f</span> ' + v.f + ' · <span class="ca-pk s2">f′</span> ' + v.fp + ' · <span class="ca-pk s3">f″</span> ' + v.fpp, tone: 'ghost' }]
+        pills = narrow() || phone() ? [{ html: '<span class="ca-pk s1">f</span> ' + v.f + ' · <span class="ca-pk s2">f′</span> ' + v.fp + ' · <span class="ca-pk s3">f″</span> ' + v.fpp, tone: 'ghost' }]
           : [{ k: 'f', html: v.f, tone: 'readout' }, { k: 'f′', html: '<span class="ca-pv s2">' + v.fp + '</span>', tone: 'readout' }, { k: 'f″', html: '<span class="ca-pv s3">' + v.fpp + '</span>', tone: 'readout' }];
         det = '<h3 class="ls-title-l">' + esc(c.name) + ' on [' + xlabel(c.dom[0], c) + ', ' + xlabel(c.dom[1], c) + ']</h3><table class="ls-tbl ca-ftbl"><tbody>' +
           [['f(x)', c.tex.f], ['f′(x)', c.tex.fp], ['f″(x)', c.tex.fpp]].map(function(r){ return '<tr><th scope="row">' + r[0] + '</th><td>' + tex(r[1]) + '</td></tr>'; }).join('') + '</tbody></table>' +
@@ -418,13 +446,22 @@
   }
 
   /* ============================================================ test yourself */
+  /* The drill figure's size in its own units: on a phone about the stage's
+     size in CSS px, so its labels are drawn near their true size. */
+  function figSize(w, h){
+    var W = window.innerWidth || 1280, Hh = window.innerHeight || 800;
+    if(W <= 640) return [340, Math.round(Math.max(260, Math.min(440, Hh * 0.62 - 90)))];
+    if(W <= 999 && Hh <= 540) return [440, Math.round(Math.max(220, Math.min(300, Hh - 110)))];
+    return [w, h];
+  }
   function figure(p){
     var f = p.fig, a = f.dom[0], b = f.dom[1], n = 200, ys = [];
     for(var i = 0; i <= n; i++){ var v = f.f(a + (b - a) * i / n); if(isFinite(v)) ys.push(v); }
     var lo = Math.min(0, Math.min.apply(null, ys)), hi = Math.max(0, Math.max.apply(null, ys)), pad = (hi - lo) * 0.12 || 1;
     var cls = f.kind === 'f' || f.kind === 'obj' ? 's1' : f.kind === 'fp' ? 's2' : 's3';
     var yl = { f: 'f(x)', fp: "f′(x)", fpp: "f″(x)", obj: p.scene === 'box' ? 'V(x)' : p.scene === 'fence' ? 'A(x)' : 'S(r)' }[f.kind];
-    var spec = { label: f.label + ', for x from ' + CA.n(a, 2) + ' to ' + CA.n(b, 2), width: 600, height: 360, x: [a, b], y: [lo - pad, hi + pad], xLabel: p.scene === 'can' ? 'r' : 'x', yLabel: yl,
+    var sz = figSize(600, 360);
+    var spec = { label: f.label + ', for x from ' + CA.n(a, 2) + ' to ' + CA.n(b, 2), width: sz[0], height: sz[1], x: [a, b], y: [lo - pad, hi + pad], xLabel: p.scene === 'can' ? 'r' : 'x', yLabel: yl,
       curves: [{ fn: f.f, domain: [a, b], cls: cls, ends: f.closed ? ['closed', 'closed'] : null }], points: [] };
     if(f.pts){ spec.points = f.pts.map(function(q){ return { at: q, cls: 's2' }; }); spec.yStep = 1; spec.xStep = 1; }
     try{ return '<div class="ca-figwrap">' + P.svg(spec) + '</div>'; }catch(e){ return ''; }
@@ -435,7 +472,6 @@
       generate: CA.generate, title: function(p){ return p.title; },
       extra: function(el, p, api){
         el.innerHTML = figure(p);
-        if(api.area) api.area.querySelectorAll('.bt-context annotation').forEach(function(a){ a.remove(); });
         var s = studioNow();
         if(s) setTimeout(function(){ s.caption(String(p.text).replace(/<\/?p[^>]*>/g, ' ').trim(), 'quiz'); }, 0);
       } });

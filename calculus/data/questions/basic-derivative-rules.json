@@ -281,7 +281,7 @@
      },
      {
       "value": -1,
-      "why": "The derivative of $x^2$ is $2x$, which is 4 at $x = 2$: $-5 - 4$."
+      "why": "The term $-x^2$ has derivative $-2x$, which is $-4$ at $x = 2$, not $+4$: $5(-1) - 4 = -9$."
      }
     ]
    },

@@ -66,7 +66,8 @@
   /* The tank: a real-looking scene, its water level the amount so far. */
   function tankSvg(amount, cap, unit, flowing){
     var W = 170, H = 230, x0 = 34, x1 = 150, top = 46, bot = 212, frac = Math.max(0, Math.min(1, amount / cap)), lev = bot - (bot - top) * frac;
-    var ticks = [0, 0.25, 0.5, 0.75, 1].map(function(t){ var y = bot - (bot - top) * t; return '<line class="rs-tk" x1="' + (x1 - 10) + '" x2="' + x1 + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/><text class="rs-tkt" x="' + (x1 + 4) + '" y="' + (y + 4).toFixed(1) + '">' + M.fmt(cap * t, 3) + '</text>'; }).join('');
+    // the quarter marks' numbers are minor: a phone shows only 0, half and full, larger
+    var ticks = [0, 0.25, 0.5, 0.75, 1].map(function(t){ var y = bot - (bot - top) * t; return '<line class="rs-tk" x1="' + (x1 - 10) + '" x2="' + x1 + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/><text class="rs-tkt' + (t === 0.25 || t === 0.75 ? ' rs-tk-minor' : '') + '" x="' + (x1 + 4) + '" y="' + (y + 4).toFixed(1) + '">' + M.fmt(cap * t, 3) + '</text>'; }).join('');
     return '<svg class="rs-tank-svg" viewBox="0 0 ' + (W + 20) + ' ' + H + '" role="img" aria-label="Tank holding about ' + esc(M.fmt(amount, 4)) + ' ' + esc(unit) + ' so far, of a scale up to ' + esc(M.fmt(cap, 3)) + '">' +
       '<defs><clipPath id="rsTankClip"><rect x="' + x0 + '" y="' + top + '" width="' + (x1 - x0) + '" height="' + (bot - top) + '" rx="6"/></clipPath></defs>' +
       '<path class="rs-pipe" d="M0 18 H58 Q66 18 66 26 V34"/>' +
@@ -155,7 +156,7 @@
     }
     function size(el){
       var r = el.getBoundingClientRect(), w = Math.round(r.width) || 620, h = Math.round(r.height) || 0;
-      w = Math.max(300, Math.min(1000, w));
+      w = Math.max(200, Math.min(1000, w));
       if(!h || h < 120) h = Math.round(Math.min(420, Math.max(240, w * 0.6)));
       return [w, Math.min(h, 640)];
     }
@@ -289,23 +290,32 @@
     var g = p.figure;
     if(!g && p.table){ el.innerHTML = '<div class="rs-qtable">' + p.table.html + '</div>'; return; }
     if(!g){ el.innerHTML = ''; return; }
-    var spec, ps = [], kind = g.sumKind;
+    var spec, ps = [], kind = g.sumKind, fs = figSize(520, 300, !!p.table || !!p.stageText);
     if(g.kind === 'table'){
       var xs = g.xs, ys = g.ys, pad = (xs[xs.length - 1] - xs[0]) * 0.05;
-      spec = { label: 'Data points of ' + g.rate + '(' + g.v + ') from the table, at ' + xs.join(', ') + ' ' + g.varUnit, width: 520, height: 300, x: [xs[0] - pad, xs[xs.length - 1] + pad], y: yRange(ys), xLabel: g.v + ' (' + g.varUnit + ')', yLabel: g.rate + '(' + g.v + ')',
+      spec = { label: 'Data points of ' + g.rate + '(' + g.v + ') from the table, at ' + xs.join(', ') + ' ' + g.varUnit, width: fs[0], height: fs[1], x: [xs[0] - pad, xs[xs.length - 1] + pad], y: yRange(ys), xLabel: g.v + ' (' + g.varUnit + ')', yLabel: g.rate + '(' + g.v + ')',
         points: xs.map(function(x, i){ return { at: [x, ys[i]], cls: 's1' }; }), xStep: niceX(xs) };
       if(reveal) ps = R.tablePieces(xs, ys, kind);
     } else if(g.kind === 'poly'){
       var fx = function(x){ for(var i = 0; i + 1 < g.xs.length; i++) if(x <= g.xs[i + 1] + 1e-12) return g.ys[i] + (g.ys[i + 1] - g.ys[i]) * (x - g.xs[i]) / (g.xs[i + 1] - g.xs[i]); return g.ys[g.ys.length - 1]; };
       var p0 = g.xs[0], p1 = g.xs[g.xs.length - 1];
-      spec = { label: 'Graph of the rate ' + g.rate + '(' + g.v + ') made of straight pieces, with the area under it shaded', width: 520, height: 300, x: [p0 - 0.3, p1 + 0.3], y: yRange(g.ys), xLabel: g.v + ' (' + g.varUnit + ')', yLabel: g.rate + '(' + g.v + ')', xStep: 1,
+      spec = { label: 'Graph of the rate ' + g.rate + '(' + g.v + ') made of straight pieces, with the area under it shaded', width: fs[0], height: fs[1], x: [p0 - 0.3, p1 + 0.3], y: yRange(g.ys), xLabel: g.v + ' (' + g.varUnit + ')', yLabel: g.rate + '(' + g.v + ')', xStep: 1,
         curves: [{ fn: fx, domain: [p0, p1], cls: 's1' }], shade: [{ fn: fx, domain: [p0, p1] }], points: g.xs.map(function(x, i){ return { at: [x, g.ys[i]], cls: 's1' }; }) };
     } else {
       var f = M.fn(g.fn), vals = []; for(var i = 0; i <= 80; i++) vals.push(f(g.a + (g.b - g.a) * i / 80));
-      spec = { label: 'Graph of f on the interval from ' + g.a + ' to ' + g.b, width: 520, height: 300, x: [g.a - (g.b - g.a) * 0.05, g.b + (g.b - g.a) * 0.05], y: yRange(vals), xLabel: 'x', yLabel: 'y', curves: [{ fn: f, domain: [g.a, g.b], cls: 's1', label: 'f' }] };
+      spec = { label: 'Graph of f on the interval from ' + g.a + ' to ' + g.b, width: fs[0], height: fs[1], x: [g.a - (g.b - g.a) * 0.05, g.b + (g.b - g.a) * 0.05], y: yRange(vals), xLabel: 'x', yLabel: 'y', curves: [{ fn: f, domain: [g.a, g.b], cls: 's1', label: 'f' }] };
       if(reveal) ps = R.pieces(f, R.partition(g.a, g.b, g.n || 4), kind);
     }
     el.innerHTML = (p.table ? '<div class="rs-qtable">' + p.table.html + '</div>' : '') + '<figure class="rs-qfig">' + stripsSvg({ spec: spec, pieces: ps, kind: kind }) + (reveal && ps.length ? '<figcaption class="bt-small">The ' + esc(R.NAME[kind]) + ', drawn.</figcaption>' : '') + '</figure>';
+  }
+  /* The drill figure's size in its own units: on a phone about the room it
+     gets in CSS px (less when a table or the problem shares the stage), so
+     its labels are drawn near their true size. */
+  function figSize(w, h, shared){
+    var W = window.innerWidth || 1280, Hh = window.innerHeight || 800;
+    if(W <= 640) return [340, Math.round(Math.max(220, Math.min(420, Hh * 0.62 - (shared ? 200 : 90))))];
+    if(W <= 999 && Hh <= 540) return [440, shared ? Math.round(Math.max(150, Hh - 170)) : Math.round(Math.max(220, Math.min(300, Hh - 110)))];
+    return [w, h];
   }
   function niceX(xs){ var span = xs[xs.length - 1] - xs[0]; return span <= 12 ? 1 : span <= 24 ? 2 : 5; }
 })();

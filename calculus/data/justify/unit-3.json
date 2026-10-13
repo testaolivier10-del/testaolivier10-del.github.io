@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 3 (docs/apcalc-architecture.md, \"Justification trainer\"). Every number is recomputed in scripts/lib/apcalc-exams.mjs (JUSTIFY_NUMBERS).",
+ "prompts": [
+  {
+   "unit": "unit-3",
+   "id": "u3-chain-rule-from-table",
+   "topic": "chain-rule",
+   "practice": "3.D",
+   "skill": "rules",
+   "title": "The chain rule with table values",
+   "context": "<p>Differentiable functions $f$ and $g$ have these values.</p><table class=\"calc-data\"><tr><th scope=\"col\">$x$</th><th scope=\"col\">$f(x)$</th><th scope=\"col\">$f'(x)$</th><th scope=\"col\">$g(x)$</th><th scope=\"col\">$g'(x)$</th></tr><tr><td>2</td><td>1</td><td>4</td><td>3</td><td>$-2$</td></tr><tr><td>3</td><td>6</td><td>5</td><td>0</td><td>1</td></tr></table>",
+   "prompt": "Let $h(x) = f(g(x))$. <b>Find</b> $h'(2)$. Show the work that leads to your answer.",
+   "checklist": [
+    "Writes the chain rule: $h'(x) = f'(g(x)) \\cdot g'(x)$",
+    "Substitutes in the right order: $h'(2) = f'(g(2)) \\cdot g'(2) = f'(3) \\cdot (-2)$",
+    "Gets $h'(2) = 5 \\cdot (-2) = -10$, with no false equals signs along the way"
+   ],
+   "earns": {
+    "answer": "$h'(x) = f'(g(x)) \\cdot g'(x)$, so $h'(2) = f'(g(2)) \\cdot g'(2) = f'(3) \\cdot g'(2) = 5 \\cdot (-2) = -10$.",
+    "why": "It writes the rule first, evaluates the inside function before the outside derivative, and every equals sign joins equal things."
+   },
+   "misses": {
+    "answer": "$h'(2) = f'(2) \\cdot g'(2) = 4 \\cdot (-2) = -8$.",
+    "why": "It evaluates $f'$ at 2 instead of at $g(2) = 3$. The outside derivative is taken at the inside function's value."
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-show-implicit-derivative",
+   "topic": "implicit-differentiation",
+   "practice": "3.D",
+   "skill": "rules",
+   "title": "Showing an implicit derivative",
+   "context": "<p>A curve is given by $x^2 - xy + y^2 = 7$.</p>",
+   "prompt": "<b>Show</b> that $\\frac{dy}{dx} = \\frac{y - 2x}{2y - x}$.",
+   "checklist": [
+    "Differentiates both sides with respect to $x$ and keeps \"$= 0$\" on the right",
+    "Uses the product rule on $xy$: $\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}$, and the chain rule on $y^2$: $2y\\frac{dy}{dx}$",
+    "Collects the $\\frac{dy}{dx}$ terms and solves to reach the given form"
+   ],
+   "earns": {
+    "answer": "Differentiating both sides with respect to $x$: $2x - \\left(y + x\\frac{dy}{dx}\\right) + 2y\\frac{dy}{dx} = 0$. So $(2y - x)\\frac{dy}{dx} = y - 2x$, and $\\frac{dy}{dx} = \\frac{y - 2x}{2y - x}$.",
+    "why": "Each step is an equation, the product and chain rules both show, and the last line follows from the one before."
+   },
+   "misses": {
+    "answer": "$2x - y + 2y\\frac{dy}{dx} = 0$, so $\\frac{dy}{dx} = \\frac{y - 2x}{2y - x}$.",
+    "why": "The product rule on $xy$ is missing its $x\\frac{dy}{dx}$ term, so the last line does not follow from the work. A \"show that\" earns nothing when the steps do not lead to the given result."
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-inverse-derivative-point",
+   "topic": "inverse-function-derivatives",
+   "practice": "3.D",
+   "skill": "rules",
+   "title": "The derivative of an inverse at a point",
+   "context": "<p>Let $f(x) = x^3 + x + 1$, which is increasing, and let $g$ be the inverse function of $f$.</p>",
+   "prompt": "<b>Find</b> $g'(3)$. Show the work that leads to your answer.",
+   "checklist": [
+    "Finds the $x$ with $f(x) = 3$: $f(1) = 3$, so $g(3) = 1$",
+    "Uses $g'(3) = \\frac{1}{f'(g(3))} = \\frac{1}{f'(1)}$",
+    "Computes $f'(x) = 3x^2 + 1$, $f'(1) = 4$, so $g'(3) = \\frac{1}{4}$"
+   ],
+   "earns": {
+    "answer": "$f(1) = 1 + 1 + 1 = 3$, so $g(3) = 1$. Since $f(g(x)) = x$, $f'(g(x)) \\cdot g'(x) = 1$, so $g'(3) = \\frac{1}{f'(g(3))} = \\frac{1}{f'(1)}$. With $f'(x) = 3x^2 + 1$, $f'(1) = 4$, so $g'(3) = \\frac{1}{4}$.",
+    "why": "It finds the input of $f$ that gives 3 before taking the reciprocal, which is the step most answers skip."
+   },
+   "misses": {
+    "answer": "$g'(3) = \\frac{1}{f'(3)} = \\frac{1}{3(3)^2 + 1} = \\frac{1}{28}$.",
+    "why": "It takes $f'$ at 3, but 3 is an output of $f$. The slope of $g$ at 3 matches the slope of $f$ at the point $(1, 3)$, so use $f'(1)$."
+   }
+  },
+  {
+   "unit": "unit-3",
+   "id": "u3-second-derivative-implicit",
+   "topic": "higher-order-derivatives",
+   "practice": "3.D",
+   "skill": "rules",
+   "title": "A second derivative on a circle",
+   "context": "<p>For the circle $x^2 + y^2 = 25$, $\\frac{dy}{dx} = -\\frac{x}{y}$.</p>",
+   "prompt": "<b>Find</b> $\\frac{d^2y}{dx^2}$ in terms of $y$ alone. Show the work that leads to your answer.",
+   "checklist": [
+    "Uses the quotient rule on $-\\frac{x}{y}$, with $y$ a function of $x$: $\\frac{d^2y}{dx^2} = -\\frac{y - x\\frac{dy}{dx}}{y^2}$",
+    "Substitutes $\\frac{dy}{dx} = -\\frac{x}{y}$ to get $-\\frac{y^2 + x^2}{y^3}$",
+    "Uses the curve, $x^2 + y^2 = 25$, to reach $-\\frac{25}{y^3}$"
+   ],
+   "earns": {
+    "answer": "$\\frac{d^2y}{dx^2} = -\\frac{y \\cdot 1 - x\\frac{dy}{dx}}{y^2} = -\\frac{y - x\\left(-\\frac{x}{y}\\right)}{y^2} = -\\frac{y^2 + x^2}{y^3}$. On the curve $x^2 + y^2 = 25$, so $\\frac{d^2y}{dx^2} = -\\frac{25}{y^3}$.",
+    "why": "It treats $y$ as a function of $x$, so $\\frac{dy}{dx}$ appears and is replaced, and it uses the curve to finish."
+   },
+   "misses": {
+    "answer": "$\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\left(-\\frac{x}{y}\\right) = -\\frac{1}{y}$.",
+    "why": "It differentiates as if $y$ were a constant. The chain rule makes a $\\frac{dy}{dx}$ appear when you differentiate $y$, so the quotient rule is needed."
+   }
+  }
+ ]
+}

@@ -347,8 +347,10 @@
     return c;
   }
   function T(s, vars){ return tex(tidy(P(s, vars))); } // TeX of a typed string, tidied (1x -> x, + (-3) -> - 3)
-  function plain(s){ var tx = window.ApCalcTex; return tx && tx.text ? tx.text(T(s)) : s; }
-  function plainU(s){ var tx = window.ApCalcTex; return tx && tx.text ? tx.text(T(s, ['u'])) : s; }
+  // Plain text of an expression: "cos(x)", not the TeX-spaced "cos (x)".
+  function tight(t){ return String(t).replace(/\b(sin|cos|tan|sec|csc|cot|ln|log|arcsin|arccos|arctan) \(/g, '$1('); }
+  function plain(s){ var tx = window.ApCalcTex; return tx && tx.text ? tight(tx.text(T(s))) : s; }
+  function plainU(s){ var tx = window.ApCalcTex; return tx && tx.text ? tight(tx.text(T(s, ['u']))) : s; }
   function D(s){ return simplify(deriv(P(s))); }          // its derivative, simplified
   function DS(s){ return str(D(s)); }
   function DT(s){ return tex(D(s)); }
@@ -493,13 +495,15 @@
 
   /* ---------------------------------------------- powers (rewrite, power) */
   // c, p and how f is written: c·x^p
+  // A leading coefficient 1 is not written (\sqrt{x}, not 1\sqrt{x}).
+  function co(c){ return c === 1 ? '' : String(c); }
   var POW_FORMS = [
     { tex: function(c){ return '\\frac{' + c + '}{x^{3}}'; }, s: function(c){ return c + '/x^3'; }, p: -3, c: function(c){ return c; } },
     { tex: function(c){ return '\\frac{' + c + '}{x}'; }, s: function(c){ return c + '/x'; }, p: -1, c: function(c){ return c; } },
-    { tex: function(c){ return c + '\\sqrt{x}'; }, s: function(c){ return c + 'sqrt(x)'; }, p: 0.5, c: function(c){ return c; } },
+    { tex: function(c){ return co(c) + '\\sqrt{x}'; }, s: function(c){ return c + 'sqrt(x)'; }, p: 0.5, c: function(c){ return c; } },
     { tex: function(c){ return '\\frac{' + c + '}{\\sqrt{x}}'; }, s: function(c){ return c + '/sqrt(x)'; }, p: -0.5, c: function(c){ return c; } },
-    { tex: function(c){ return c + 'x^{2}\\sqrt{x}'; }, s: function(c){ return c + 'x^2 sqrt(x)'; }, p: 2.5, c: function(c){ return c; } },
-    { tex: function(c){ return c + '\\sqrt[3]{x^{2}}'; }, s: function(c){ return c + 'cbrt(x^2)'; }, p: 2 / 3, c: function(c){ return c; } },
+    { tex: function(c){ return co(c) + 'x^{2}\\sqrt{x}'; }, s: function(c){ return c + 'x^2 sqrt(x)'; }, p: 2.5, c: function(c){ return c; } },
+    { tex: function(c){ return co(c) + '\\sqrt[3]{x^{2}}'; }, s: function(c){ return c + 'cbrt(x^2)'; }, p: 2 / 3, c: function(c){ return c; } },
     { tex: function(c){ return '\\frac{' + c + '}{2x^{4}}'; }, s: function(c){ return c + '/(2x^4)'; }, p: -4, c: function(c){ return c / 2; } },
     { tex: function(c){ return '\\frac{' + c + '}{x^{2}}'; }, s: function(c){ return c + '/x^2'; }, p: -2, c: function(c){ return c; } }
   ];
@@ -509,7 +513,7 @@
     if(Math.abs(p - Math.round(p)) > 1e-9) pm.push({ value: 1 / p, why: 'A root is a fractional power with the root on the bottom: √x = x^(1/2), ∛(x²) = x^(2/3).' });
     var steps = [
       numStep('p', 'Write $f(x) = ' + F.tex(c0) + '$ as $c\\,x^{p}$. What is $p$?', p, pm, '1.E'),
-      numStep('c', 'And the coefficient $c$?', c, [{ value: 1 / c, why: 'Only the power of x moves; a number in the bottom stays a division: 3/(2x⁴) = (3/2)x⁻⁴.' }, { value: c0 * 2, why: 'The 2 in the bottom divides: c = ' + c0 + '/2.' }], '1.E')
+      numStep('c', 'And the coefficient $c$?', c, [{ value: 1 / c, why: 'Only the power of x moves; a number in the bottom stays a division: 3/(2x⁴) = (3/2)x⁻⁴.' }].concat(c !== c0 ? [{ value: c0 * 2, why: 'The 2 in the bottom divides: c = ' + c0 + '/2.' }] : []).filter(function(m){ return Math.abs(m.value - c) > 1e-9; }), '1.E')
     ];
     return { text: 'Rewrite $f(x) = ' + F.tex(c0) + '$ as a constant times a power of $x$.', fig: { power: { tex: F.tex(c0), c: c, p: p } }, steps: steps, meta: { f: f, c: c, p: p },
       solution: ['A root is a fractional power: $\\sqrt{x} = x^{1/2}$, $\\sqrt[3]{x^2} = x^{2/3}$.', 'A power in the bottom moves up with a negative exponent: $\\frac{1}{x^n} = x^{-n}$.', '$f(x) = ' + F.tex(c0) + ' = ' + cxp(c, p) + '$.'] };
@@ -529,8 +533,9 @@
   /* ---------------------------------------------- sum and constant multiples */
   function genSum(r){
     var a = r.nonzero(-4, 5), n = r.pick([3, 4, 5]), b = r.nonzero(-6, 6), c = r.pick([2, 3, 4, 5, 6]) * r.pick([1, -1]), k = r.pick([1, 2, 3]), d = r.nonzero(-9, 9);
-    var f = a + 'x^' + n + ' + (' + b + ')x + (' + c + ')/x^' + k + ' + (' + d + ')';
-    var term = '(' + c + ')/x^' + k, dterm = '(' + (-c * k) + ')*x^(' + (-k - 1) + ')';
+    var xk = k === 1 ? 'x' : 'x^' + k; // x, not x^1, on the page
+    var f = a + 'x^' + n + ' + (' + b + ')x + (' + c + ')/' + xk + ' + (' + d + ')';
+    var term = '(' + c + ')/' + xk + '', dterm = '(' + (-c * k) + ')*x^(' + (-k - 1) + ')';
     var key = '(' + (a * n) + ')x^' + (n - 1) + ' + (' + b + ') + ' + dterm;
     var steps = [
       choiceStep('const', 'What is the derivative of the constant term $' + tn(d) + '$?', [
@@ -539,7 +544,7 @@
         { t: $(T(d + 'x')), why: 'That is an antiderivative of ' + d + ', not its derivative.' }
       ], '1.C'),
       exprStep('term', 'Differentiate the term $' + T(term) + '$ (rewrite it as a power first).', dterm, { lhs: "\\frac{d}{dx} =", check: { d1: term },
-        mistakes: [{ expr: '(' + (c * k) + ')*x^(' + (-k - 1) + ')', why: 'The exponent is negative: bring down −' + k + ', which flips the sign.' }, { expr: '(' + (-c * k) + ')*x^(' + (-k + 1) + ')', why: 'Subtract 1 from the exponent −' + k + ': it becomes −' + (k + 1) + ', not −' + (k - 1) + '.' }] }),
+        mistakes: [{ expr: '(' + (c * k) + ')*x^(' + (-k - 1) + ')', why: 'The exponent is negative: bring down −' + k + ', which flips the sign.' }, { expr: '(' + (-c * k) + ')*x^(' + (-k + 1) + ')', why: 'Subtract 1 from the exponent: −' + k + ' − 1 = −' + (k + 1) + '. Yours went up by 1 instead.' }] }),
       exprStep('d', 'Now the whole derivative, $f\'(x)$.', key, { lhs: "f'(x) =", reveal: 'f', check: { d1: f },
         mistakes: [{ expr: key + ' + (' + d + ')', why: 'The constant term ' + d + ' differentiates to 0: drop it.' }, { expr: '(' + (a * n) + ')x^' + (n - 1) + ' + (' + b + ') + (' + (c * k) + ')*x^(' + (-k - 1) + ')', why: 'The derivative of ' + plain(term) + ' has the opposite sign: the exponent −' + k + ' comes down.' }] })
     ];
@@ -759,7 +764,7 @@
   /* ---------------------------------------------- inverse functions (3.3) */
   function genInverse(r){
     var p = r.pick([1, 2, 3]), q = r.int(-3, 3), b = r.pick([-1, 0, 1, 2]), c3 = r.pick([1, 1, 2]);
-    var fS = c3 + 'x^3 + ' + p + 'x + (' + q + ')', fx = function(x){ return c3 * x * x * x + p * x + q; }, a = fx(b), fp = function(x){ return 3 * c3 * x * x + p; };
+    var fS = c3 + 'x^3 + ' + p + 'x' + (q ? ' + (' + q + ')' : ''), fx = function(x){ return c3 * x * x * x + p * x + q; }, a = fx(b), fp = function(x){ return 3 * c3 * x * x + p; };
     var steps = [
       numStep('ginv', 'Let $g = f^{-1}$. First find $g(' + tnb(a) + ')$: the $x$ with $f(x) = ' + tnb(a) + '$.', b, [{ value: fx(a), why: 'g(a) is the input of f that gives a, not f(a).' }], '1.E'),
       numStep('fp', 'Find $f\'(' + tnb(b) + ')$.', fp(b), [{ value: fp(a), why: 'Use the x-value g(' + a + ') = ' + b + ', not ' + a + '.' }], '1.E'),

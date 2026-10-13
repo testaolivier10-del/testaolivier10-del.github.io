@@ -6,11 +6,13 @@
 
    Each section is half the exam score (docs/apcalc-research/framework.md,
    section 5): 42 four-option questions (29 without a calculator, 13 with),
-   then 6 free-response questions of 9 points each. The bands (64, 48, 37
-   and 27 out of 100) are PLACEHOLDERS, "not calibrated": the College Board
-   publishes no cut-offs, and Phase 3 fits them to the published score
-   distributions (docs/apcalc-needs-author.md, score-cutoffs). A test holds
-   this file and the readiness band in pages/exams.js equal.
+   then 6 free-response questions of 9 points each. The bands (66, 49, 40
+   and 23 out of 100) are ESTIMATES: the College Board publishes no cut-offs
+   for the current calculus exam, so they are the composites that reproduce
+   the published 2024-2026 score distributions under a model of the
+   composite built from the 2024 and 2025 free-response statistics
+   (docs/apcalc-needs-author.md, score-cutoffs, has the method). A test
+   holds this file and the readiness band in pages/exams.js equal.
 
      ApCalcScore.composite(mcq, frq, opts)  { mcqPct, frqPct, composite, band, next }
      ApCalcScore.band(composite)            1-5
@@ -18,7 +20,7 @@
 (function(){
   var MCQ = 42, FRQ = [9, 9, 9, 9, 9, 9];   // Part A (calculator) 2, Part B (no calculator) 4
   var FRQ_TOTAL = FRQ.reduce(function(a, b){ return a + b; }, 0);
-  var CUTS = [64, 48, 37, 27];   // band 5, 4, 3, 2 from these composites up; below is 1
+  var CUTS = [66, 49, 40, 23];   // band 5, 4, 3, 2 from these composites up; below is 1
 
   function clamp(x, lo, hi){ x = Number(x); if(!isFinite(x)) x = 0; return Math.max(lo, Math.min(hi, x)); }
   function band(c){ return c >= CUTS[0] ? 5 : c >= CUTS[1] ? 4 : c >= CUTS[2] ? 3 : c >= CUTS[3] ? 2 : 1; }
@@ -63,7 +65,7 @@
       var next = r.next ? '<p>To reach an estimated ' + r.next.band + ' (' + r.next.at + ' or more): ' +
         [r.next.mcq != null ? plural(r.next.mcq, 'more multiple-choice question') : '', r.next.frq != null ? plural(r.next.frq, 'more free-response point') : ''].filter(Boolean).join(', or ') + ', or a mix of the two.</p>' : '<p>That is in the top band of this estimate.</p>';
       out.innerHTML = '<div class="calc-pr-score"><span class="calc-pr-score-big">' + r.band + '<small>/5</small></span><span><b>Estimated score: ' + r.band + '</b><span class="calc-small">Composite ' + r.composite + ' of 100 &middot; multiple choice ' + r.mcqPct + '% &middot; free response ' + r.frqPct + '%</span></span></div>' +
-        '<p class="calc-ex-band-warn"><b>Not calibrated: a rough guide, not a predicted score.</b> The cut-offs are placeholders; the real ones are set after each exam.</p>' + next;
+        '<p class="calc-ex-band-warn"><b>An estimate, not a predicted score.</b> The cut-offs are ours; the real ones are set after each exam.</p>' + next;
     }
     form.addEventListener('input', function(e){
       if(e.target === range) num.value = range.value;

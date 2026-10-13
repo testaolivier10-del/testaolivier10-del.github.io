@@ -57,6 +57,7 @@
 
 /* drag handles: a 44 px target around a visible dot */
 .sf-handle{cursor:grab;outline:none;touch-action:none;}
+.sf-handle .sf-hitc{fill:transparent;stroke:none;pointer-events:all;}
 .sf-handle .sf-halo{fill:var(--cink);fill-opacity:.14;}
 .sf-handle .sf-dot{fill:var(--cink);stroke:var(--white);stroke-width:2.5;}
 .sf-handle:hover .sf-halo{fill-opacity:.24;}
@@ -83,13 +84,18 @@
 .sf-thumb .calc-plot-axis line{stroke-width:1.1;}
 .sf-mfig svg{width:100%;height:auto;display:block;}
 .sf-mfig.is-key{border-color:var(--good-text);box-shadow:0 0 0 2px var(--good-text) inset;}
-.ls-root .ls-drill-stage .sf-match{flex:1;min-height:0;grid-template-rows:repeat(2,minmax(0,1fr));}
-.ls-root .ls-drill-stage .sf-mfig{min-height:0;}
-.ls-root .ls-drill-stage .sf-mfig svg{flex:1;min-height:0;width:100%;height:100%;}
+.sf-match{justify-content:center;align-content:start;}
+.ls-root .ls-drill-stage .sf-qfig.is-clear{padding-bottom:40px;}
+.sf-mfig svg{width:100%;height:auto;}
+.calc-plot.sf-thumb .sf-field line{stroke-width:1.7;stroke-opacity:.78;}
+:root[data-theme="dark"] .calc-plot.sf-thumb .sf-field line{stroke-opacity:.72;}
 .ls-root .ls-drill-stage .bt-context.ls-drill-text{flex:none;margin:0;font:600 var(--ls-m)/1.45 var(--font-ui);}
 .ls-root .ls-drill-stage .bt-context.ls-drill-text p{margin:0;}
 .sf-skstep .cd-opts{display:none;}
 @media (max-width:640px){.sf-eq{font-size:15px;}}
+/* phones: tick numbers at least 12 px (the SVGs are drawn 1:1) */
+.ls-phone .sf-plot .calc-plot,.ls-phone .sf-qfig .calc-plot{font-size:12.5px;}
+.ls-phone .sf-plot .calc-plot .calc-plot-axlabel,.ls-phone .sf-qfig .calc-plot .calc-plot-axlabel{font-size:14px;}
 @media (max-width:640px){.ls-root .ls-drill-stage .bt-context.ls-drill-text{font-size:14.5px;line-height:1.4;}}
 /* A long formula in the caption scrolls inside its line instead of pushing past the dock. */
 body[data-app="tool-slope-fields"] .ls-caption math{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;}

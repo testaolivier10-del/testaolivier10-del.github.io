@@ -44,28 +44,32 @@
      "ends": [
       "closed",
       null
-     ]
+     ],
+     "cls": "s1"
     },
     {
      "fn": "8 - 2x",
      "domain": [
       2,
       6
-     ]
+     ],
+     "cls": "s1"
     },
     {
      "fn": "-4",
      "domain": [
       6,
       8
-     ]
+     ],
+     "cls": "s1"
     },
     {
      "fn": "2x - 20",
      "domain": [
       8,
       10
-     ]
+     ],
+     "cls": "s1"
     },
     {
      "fn": "x - 10",
@@ -76,7 +80,8 @@
      "ends": [
       null,
       "closed"
-     ]
+     ],
+     "cls": "s1"
     }
    ]
   }

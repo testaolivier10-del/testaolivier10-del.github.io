@@ -27,21 +27,24 @@
       "ends": [
        "closed",
        null
-      ]
+      ],
+      "cls": "s1"
      },
      {
       "fn": "4",
       "domain": [
        2,
        5
-      ]
+      ],
+      "cls": "s1"
      },
      {
       "fn": "14 - 2x",
       "domain": [
        5,
        8
-      ]
+      ],
+      "cls": "s1"
      },
      {
       "fn": "-2",
@@ -52,7 +55,8 @@
       "ends": [
        null,
        "closed"
-      ]
+      ],
+      "cls": "s1"
      }
     ]
    }

@@ -64,7 +64,7 @@
   var ART = {};
   ART.ladder = {
     vb: [420, 290],
-    geo: function(p){ var L = p.L || 13, s = 200 / L; return { L: L, s: s, X0: 128, Y0: 252 }; },
+    geo: function(p){ var L = p.L || 13, s = 200 / L; return { L: L, s: s, X0: 156, Y0: 252 }; },
     art: function(g, st){
       var s = g.s, X0 = g.X0, Y0 = g.Y0, x = st.q.x, y = st.q.y, bx = X0 + x * s, ty = Y0 - y * s, o = [];
       // sky, floor, wall
@@ -78,9 +78,11 @@
       }
       o.push('<g>' + wall.join('') + '</g>');
       // the angle at the foot
-      var th = Math.atan2(y, x), ar = 26;
+      var th = Math.atan2(y, x), ar = th < 0.75 ? 40 : 26;
       o.push('<path class="rr-arc" d="M' + r1(bx - ar) + ' ' + Y0 + 'A' + ar + ' ' + ar + ' 0 0 1 ' + r1(bx - ar * Math.cos(th)) + ' ' + r1(Y0 - ar * Math.sin(th)) + '"/>');
-      o.push(text(bx - (ar + 12) * Math.cos(th / 2), Y0 - (ar + 12) * Math.sin(th / 2) + 5, 'θ', 'rr-th'));
+      // a flat ladder leaves no room inside the arc: the θ sits on the ground, beyond it
+      if(th < 0.75) o.push(text(bx - ar - 13, Y0 - 3, 'θ', 'rr-th'));
+      else o.push(text(bx - (ar + 12) * Math.cos(th / 2), Y0 - (ar + 12) * Math.sin(th / 2) + 5, 'θ', 'rr-th'));
       // the ladder: two rails and rungs
       var ux = (X0 - bx), uy = (ty - Y0), Lp = Math.sqrt(ux * ux + uy * uy), nx = -uy / Lp * 6, ny = ux / Lp * 6;
       var lad = ['<line class="rr-rail" x1="' + r1(bx + nx) + '" y1="' + r1(Y0 + ny) + '" x2="' + r1(X0 + nx) + '" y2="' + r1(ty + ny) + '"/>',
@@ -91,7 +93,7 @@
       o.push(text((bx + X0) / 2 - uy / Lp * 20, (Y0 + ty) / 2 + ux / Lp * 20 + 4, g.L + ' ft', 'rr-len', 'middle'));
       // dimensions
       o.push(dim(X0, Y0 + 20, bx, Y0 + 20, st.labels.x, 14, st.given === 'x' ? 'is-given' : st.watch === 'x' ? 'is-watch' : ''));
-      o.push(dim(X0 - 46, Y0, X0 - 46, ty, st.labels.y, -8, st.given === 'y' ? 'is-given' : st.watch === 'y' ? 'is-watch' : ''));
+      o.push(dim(X0 - 44, Y0, X0 - 44, ty, st.labels.y, -8, st.given === 'y' ? 'is-given' : st.watch === 'y' ? 'is-watch' : ''));
       // rate arrows
       var sp = 12;
       if(st.d){
@@ -196,13 +198,14 @@
       for(var k = 1; k <= 2; k++) if(r * (1 - 0.18 * k) > 4) o.push('<circle class="rr-wave-in" cx="' + cx + '" cy="' + cy + '" r="' + r1(r * (1 - 0.18 * k)) + '" style="opacity:' + (0.5 - 0.15 * k) + '"/>');
       o.push('<circle class="rr-wave" cx="' + cx + '" cy="' + cy + '" r="' + r1(r) + '"/>');
       o.push('<circle class="rr-stone" cx="' + cx + '" cy="' + cy + '" r="4"/>');
-      o.push('<line class="rr-rad is-given" x1="' + cx + '" y1="' + cy + '" x2="' + r1(cx + r) + '" y2="' + cy + '"/>');
-      o.push(text(cx + r / 2, cy - 10, st.labels.r, 'rr-dl is-given'));
+      // the radius runs left, so the drag handle (right edge) never covers its label
+      o.push('<line class="rr-rad is-given" x1="' + cx + '" y1="' + cy + '" x2="' + r1(cx - r) + '" y2="' + cy + '"/>');
+      o.push(text(cx - r / 2, cy - 10, st.labels.r, 'rr-dl is-given'));
       o.push(r > 70 ? text(cx, cy + r * 0.5, st.labels.A, 'rr-dl is-watch') : text(cx, Math.min(282, cy + r + 22), st.labels.A, 'rr-dl is-watch'));
       if(st.d && Math.abs(st.d.r) > 1e-9){
         var a = alen(st.d.r, 14, 40);
         o.push(arrow(cx - r * 0.7071, cy - r * 0.7071, cx - (r + a) * 0.7071, cy - (r + a) * 0.7071, 'is-given'));
-        o.push(arrow(cx, cy + r, cx, cy + r + a, 'is-given'));
+        o.push(arrow(cx + r * 0.7071, cy + r * 0.7071, cx + (r + a) * 0.7071, cy + (r + a) * 0.7071, 'is-given'));
       }
       return o.join('');
     },
@@ -293,7 +296,8 @@
     // the drag handle: one element, kept across redraws (focus and pointer capture survive)
     var hd = document.createElementNS(NS, 'g');
     hd.setAttribute('class', 'rr-handle'); hd.setAttribute('tabindex', '0'); hd.setAttribute('role', 'slider');
-    hd.innerHTML = '<circle class="rr-halo" r="20"/><circle class="rr-dot" r="8"/>';
+    // an invisible 27-unit hit circle: at least 44 px across on a 360 px phone
+    hd.innerHTML = '<circle class="rr-hit" r="27"/><circle class="rr-halo" r="20"/><circle class="rr-dot" r="8"/>';
     svg.appendChild(hd);
 
     function scene(){ return RR.SCENES[st.id]; }
@@ -384,7 +388,7 @@
       var S = scene();
       if(LS){
         var g = S.qs.filter(function(x){ return x.key === S.rate.key; })[0], w = S.qs.filter(function(x){ return x.key === S.watch; })[0];
-        var narrow = false; try{ narrow = matchMedia('(max-width: 599.98px)').matches; }catch(e){}
+        var narrow = LS.root.classList.contains('ls-phone'); try{ narrow = narrow || matchMedia('(max-width: 599.98px)').matches; }catch(e){}
         var gTxt = (st.rate > 0 ? '+' : '') + fv(st.rate, S.rate.step < 1 ? 2 : 0) + ' ' + esc(g.rate), wTxt = (c.d[S.watch] > 0 ? '+' : '') + sig(c.d[S.watch]) + ' ' + esc(w.rate);
         LS.pills(narrow ? [{ html: '<span class="rr-pk is-given">' + rsym(S.rate.key) + '</span> ' + gTxt + ' · <span class="rr-pk is-watch">' + rsym(S.watch) + '</span> ' + wTxt, tone: 'ghost' }]
           : [{ k: rsym(S.rate.key), html: gTxt, tone: 'readout' }, { k: rsym(S.watch), html: '<span class="rr-pv-w">' + wTxt + '</span>', tone: 'readout' }], 'left', 'explore');
@@ -474,14 +478,15 @@
       ripple: ['dr/dt = ' + RR.n(v.k) + ' ft/s', 'dA/dt'],
       balloon: ['dh/dt = ' + v.v + ' ft/min', 'dθ/dt']
     }[id];
-    art += '<g class="rr-legend">' + text(410, 22, '', 'rr-leg', 'end').replace('></text>', '><tspan class="rr-leg-k">Given </tspan><tspan class="is-given">' + esc(leg[0]) + '</tspan></text>').replace('class="rr-t rr-leg"', 'class="rr-t rr-leg"') +
-      text(410, 42, '', 'rr-leg', 'end').replace('></text>', '><tspan class="rr-leg-k">Find </tspan><tspan class="is-watch">' + esc(leg[1]) + '</tspan></text>') + '</g>';
-    return '<svg class="rr-scene rr-fig" viewBox="0 0 420 290" role="img" aria-label="' + esc(p.title + ': the situation in the problem, with the known lengths labelled') + '">' + art + '</svg>';
+    // the knowns and the unknown in a band above the scene, never over it
+    art += '<g class="rr-legend">' + text(410, -28, '', 'rr-leg', 'end').replace('></text>', '><tspan class="rr-leg-k">Given </tspan><tspan class="is-given">' + esc(leg[0]) + '</tspan></text>').replace('class="rr-t rr-leg"', 'class="rr-t rr-leg"') +
+      text(410, -8, '', 'rr-leg', 'end').replace('></text>', '><tspan class="rr-leg-k">Find </tspan><tspan class="is-watch">' + esc(leg[1]) + '</tspan></text>') + '</g>';
+    return '<svg class="rr-scene rr-fig" viewBox="0 -48 420 338" role="img" aria-label="' + esc(p.title + ': the situation in the problem, with the known lengths labeled') + '">' + art + '</svg>';
   }
   function quiz(host, data){
     T.drill(host, data, { slug: 'related-rates', noun: 'drill',
       types: RR.KINDS.map(function(k){ return { value: k, label: RR.TITLE[k] }; }), typeLabel: 'Scene',
       generate: RR.generate, title: function(p){ return p.title; }, studioAsk: true,
-      extra: function(el, p, api){ el.innerHTML = '<div class="rr-figwrap">' + figure(p) + '</div>'; if(api.area) api.area.querySelectorAll('.bt-context annotation').forEach(function(a){ a.remove(); }); } });
+      extra: function(el, p){ el.innerHTML = '<div class="rr-figwrap">' + figure(p) + '</div>'; } });
   }
 })();

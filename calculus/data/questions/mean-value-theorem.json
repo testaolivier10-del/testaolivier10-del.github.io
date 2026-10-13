@@ -246,8 +246,8 @@
       "why": "$-1$ is the average rate of change, $\\frac{g(3) - g(1)}{3 - 1}$. Now solve $g'(c) = -(c - 1) = -1$ for $c$."
      },
      {
-      "value": 0,
-      "why": "Solve $g'(c) = -1$, not $g'(c) = 0$: the theorem matches the slope of the secant line."
+      "value": 1,
+      "why": "$c = 1$ solves $g'(c) = 0$ (a flat tangent line), and it is an endpoint, not inside $(1, 3)$. The theorem matches the secant slope: solve $g'(c) = -(c - 1) = -1$."
      }
     ]
    },

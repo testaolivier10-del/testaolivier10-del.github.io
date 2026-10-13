@@ -96,7 +96,7 @@ One branch, `claude/apcalc`, one PR at the end.
 | 0 | Fork AP® Physics 1: map (81 topics + math chapter), dependency map, generator, runtime `calculus/assets/`, math expression parser and `expr` items, plots, checks, tests, fixture, registration hidden until published (registry, Premium pass, Worker, SQL migration, hub/pricing, search, sitemap, OG, budgets, theme, sw.js), tool scaffolding, docs | **done 2026-10-13** (`docs/apcalc-phase0.md`, `docs/apcalc-architecture.md`) |
 | 1 | Content: every unit's lessons, notes, banks, FRQs, glossary, figures | planned |
 | 2 | Trainers (section 6) | planned |
-| 3 | Justification trainer, two fixed practice exams, formula page, score calculator, unit tests, cram kit | planned |
+| 3 | Justification trainer, two fixed practice exams, formula page, score calculator, unit tests, cram kit | **done 2026-10-13** (decision 11) |
 | 4 | Independent accuracy checks per unit and for tools/exams; fixes | planned |
 | Launch | Publish, generators, continuity pass, seven-course wording, full CI with browser checks, PR | planned |
 
@@ -149,6 +149,36 @@ a tool's data file exists and its topic is published.
    graphing calculator in a new tab.
 10. (2026-10-13) **Score cut-offs 64/48/37/27 are placeholders**, labelled "Not calibrated" (needs-author
     `score-cutoffs`).
+11. (2026-10-13, Phase 3) **Exams, trainer and entry pages**, as AP® Physics 1 decision 10 in the May 2027 format.
+    - Two **fixed practice exams** (`calculus/data/exams/forms.json`): Section I Part A is 29 no-calculator bank
+      questions (none a lesson-check item; 7 stimulus sets of 3-4 in form 2, 6 of 3-4 in form 1), Part B is 13
+      **exam-only calculator items** per form (`items.json`, `calc-exam-<form>-<nn>`: a storage-tank set in form 1
+      and a particle-motion set in form 2, each drawn from its function, plus single questions), because the
+      bank's few calculator singles sit one or two to a set. Units, both forms: U1 5, U2 5, U3 4, U4 5, U5 8,
+      U6 8, U7 3, U8 4. Section II: form 1 `frq-u6-table-2`, `frq-u8-region-exponential` (calculator), then
+      `frq-u5-graph-fprime`, `frq-u7-slope-field-tangent`, `frq-u4-motion-two-particles`, `frq-u3-implicit-oval`;
+      form 2 `frq-u6-model-1`, `frq-u8-particle-calculator`, then `frq-u6-graph-2`, `frq-u8-region-two-parabolas`,
+      `frq-u7-equilibrium-cosine`, `frq-u5-fg-table`. No question or FRQ in both. Every key is recomputed in
+      `EXAM_NUMBERS` (own Simpson, bisection and difference code, with side checks such as the candidates test) and
+      every option graded through `ApCalcQuestions.grade` in the test.
+    - **Justification trainer**: 33 prompts (`calculus/data/justify/<unit>.json`, 4-5 per unit) on the reader-report
+      misses: IVT, MVT and EVT with hypotheses, continuity's three conditions, differentiability from one-sided
+      difference quotients, L'Hospital's form shown first, chain and implicit steps, inverse derivative at a point,
+      sign changes for extrema and inflection, the candidates test, vertical tangents, speeding up and direction
+      changes, left sums with unequal widths, meaning with units, reversed limits, separation with + C, tangent-line
+      over/under from d²y/dx², distance vs displacement, washers about a line, average value. `JUSTIFY_SKILLS` adds
+      `rules` and `setup`; every number is in `JUSTIFY_NUMBERS`. Model answers are rendered on their own
+      (`answer` is a raw key for questions).
+    - **Formulas you must know** (`EQ`, `NOT_ON` in `scripts/lib/apcalc-entry.mjs`): 56 rows in seven groups
+      (limits, derivative rules, theorems and curve analysis, integrals and the FTC, motion and accumulation,
+      differential equations, area and volume), each with what it is, when to use it, the topic that teaches it and
+      the live trainers that practise it; six "easy to forget" lines.
+    - **Score estimate**: 50 × MCQ/42 + 50 × FRQ/54, **estimated cut-offs 66/49/40/23**, fitted to the 2024-2026
+      distributions with the 2024 and 2025 FRQ statistics (needs-author `score-cutoffs`), labelled estimates, equal
+      to the readiness band (test). Supersedes decision 10.
+    - Unit tests (12 bank questions per unit, no exam-only items) and the cram kit (exam day n opens practice exam n,
+      two justification prompts on study and weak-spot days, timed sets at 100/42 min a question) were built in
+      Phase 0 and are now tested against the real forms and prompts.
 
 ## 8. Open items for the owner
 

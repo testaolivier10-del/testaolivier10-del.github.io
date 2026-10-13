@@ -12,7 +12,7 @@
    ],
    "correct": 0,
    "why": "An inverse swaps inputs and outputs: $f(2) = 7$ means $g(7) = 2$.",
-   "review": "chain-rule"
+   "review": "math-inverse-functions"
   },
   {
    "q": "By the chain rule, $\\frac{d}{dx}f(g(x))$ is",

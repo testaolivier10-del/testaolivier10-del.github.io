@@ -11,21 +11,30 @@
      Part A 2 FRQs in 30 min with a calculator, Part B 4 in 60 min without;
      a calculator notice per part, with a link (no embedded script);
    - the unit weight ranges come out right for 42 questions;
-   - a good form passes and the checker catches each way a form can break
-     (synthetic forms; Phase 3 writes the real ones);
-   - the justification checker refuses a value theorem without continuity;
+   - a good form passes and the checker catches each way a form can break,
+     on synthetic forms and on the two real ones (calculus/data/exams/);
+   - every exam-only key is recomputed (EXAM_NUMBERS) and graded right by
+     the runtime grader, every distractor graded wrong;
+   - the justification checker refuses a value theorem without continuity,
+     and the 32+ prompts pass and cover every unit and skill;
+   - the formula page lists the rules, theorems and set-ups to know, each
+     with a topic that teaches it and only live trainers;
    - the generator serves no forms and no unit tests before anything is
-     published, a unit test once one is, and the formula and score pages. */
+     published, a unit test once one is, and with every unit published the
+     exams, prompts, formula page and 12-question unit tests. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync, mkdtempSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { execFileSync } from 'node:child_process';
+import { readdirSync } from 'node:fs';
 import { createBrowser } from './harness.mjs';
-import { loadMap } from '../lib/apcalc-build.mjs';
-import { loadExams, checkForms, checkJustify, unitRange, MCQ_TOTAL, MCQ_PARTS, FRQ_PARTS, FRQ_POINTS, FRQ_TOTAL, JUSTIFY_SKILLS } from '../lib/apcalc-exams.mjs';
-import { EQ } from '../lib/apcalc-entry.mjs';
+import { loadMap, trademarkProblems } from '../lib/apcalc-build.mjs';
+import { scanPage } from '../lib/apcalc-map.mjs';
+import { Tex } from '../lib/apcalc-mathlib.mjs';
+import { loadExams, loadJustify, checkForms, checkJustify, checkNumbers, formUnits, unitRange, MCQ_TOTAL, MCQ_PARTS, FRQ_PARTS, FRQ_POINTS, FRQ_TOTAL, FREE_JUSTIFY, JUSTIFY_SKILLS, EXAM_NUMBERS, JUSTIFY_NUMBERS } from '../lib/apcalc-exams.mjs';
+import { EQ, NOT_ON } from '../lib/apcalc-entry.mjs';
 
 const S = (() => { const b = createBrowser(); b.load('calculus/assets/pages/score.js'); return b.window.ApCalcScore; })();
 
@@ -42,9 +51,9 @@ test('score: each section is half, out of 42 questions and 54 points', () => {
   assert.equal(S.composite(-5, -1).composite, 0);
 });
 
-test('score: the calculator and the practice exam use the same placeholder cut-offs (64, 48, 37, 27)', () => {
-  assert.deepEqual([...S.CUTS], [64, 48, 37, 27]);
-  for (const [c, b] of [[100, 5], [64, 5], [63.9, 4], [48, 4], [37, 3], [27, 2], [26.9, 1]]) assert.equal(S.band(c), b, `composite ${c}`);
+test('score: the calculator and the practice exam use the same estimated cut-offs (66, 49, 40, 23)', () => {
+  assert.deepEqual([...S.CUTS], [66, 49, 40, 23]);
+  for (const [c, b] of [[100, 5], [66, 5], [65.9, 4], [49, 4], [40, 3], [39.9, 2], [23, 2], [22.9, 1]]) assert.equal(S.band(c), b, `composite ${c}`);
   const ex = readFileSync('calculus/assets/pages/exams.js', 'utf8');
   const m = /function band\(p\)\{ return p >= (\d+) \? 5 : p >= (\d+) \? 4 : p >= (\d+) \? 3 : p >= (\d+) \? 2 : 1; \}/.exec(ex);
   assert.ok(m, 'exams.js still has its band function');
@@ -137,7 +146,7 @@ test('a form in the real format passes, and every way to break it is caught', ()
 });
 
 test('the justification checker wants a value theorem with its hypotheses', () => {
-  assert.deepEqual(Object.keys(JUSTIFY_SKILLS).sort(), ['accumulation', 'behavior', 'context', 'de', 'extrema', 'limits', 'motion', 'theorems']);
+  assert.deepEqual(Object.keys(JUSTIFY_SKILLS).sort(), ['accumulation', 'behavior', 'context', 'de', 'extrema', 'limits', 'motion', 'rules', 'setup', 'theorems']);
   const p = {
     id: 'u5-mvt-speed', unit: 'unit-5', topic: 'mean-value-theorem', practice: '3.C', skill: 'theorems', title: 'A car on a toll road',
     prompt: '<b>Justify</b> that at some time the speedometer read exactly the average speed over the trip.',
@@ -151,16 +160,130 @@ test('the justification checker wants a value theorem with its hypotheses', () =
   assert.ok(checkJustify([q], { map }).some(e => /continuous/.test(e)));
 });
 
-test('Phase 0: no real forms or prompts yet, and the formula page is an empty frame', () => {
-  const ex = loadExams('calculus/data');
-  assert.deepEqual(ex.forms, []);
-  assert.deepEqual(EQ, []);
+/* ---------------------------------------------------- the real forms */
+const DATA = 'calculus/data';
+const ex = loadExams(DATA);
+const bank = new Map(), orderOf = {};
+for (const t of map.topics) { const p = join(DATA, 'questions', `${t.id}.json`); if (existsSync(p)) JSON.parse(readFileSync(p, 'utf8')).items.forEach((q, i) => { bank.set(q.id, q); orderOf[q.id] = i; }); }
+ex.items.forEach((q, i) => { orderOf[q.id] = i; });
+const examItems = new Map(ex.items.map(q => [q.id, q]));
+const frqs = Object.fromEntries(readdirSync(join(DATA, 'frq')).map(f => JSON.parse(readFileSync(join(DATA, 'frq', f), 'utf8'))).map(f => [f.id, f]));
+const ctx = { map, bank, examItems, frqs, orderOf: id => orderOf[id] };
+const clone = x => JSON.parse(JSON.stringify(x));
+const checks = new Set(readdirSync(join(DATA, 'lessons')).flatMap(f => JSON.parse(readFileSync(join(DATA, 'lessons', f), 'utf8')).check || []));
+
+test('the two practice exams pass every assembly rule', () => {
+  assert.equal(ex.forms.length, 2);
+  assert.deepEqual(checkForms(ex.forms, ctx), []);
+  for (const f of ex.forms) {
+    const ids = f.mcq.flat();
+    assert.equal(ids.length, MCQ_TOTAL);
+    const q = id => bank.get(id) || examItems.get(id);
+    assert.equal(ids.slice(0, 29).filter(id => !q(id).calc).length, 29, `${f.id}: Part A is 29 no-calculator questions`);
+    assert.equal(ids.slice(29).filter(id => q(id).calc).length, 13, `${f.id}: Part B is 13 calculator questions`);
+    const sets = f.mcq.filter(b => b.length > 1);
+    assert.ok(sets.length >= 6 && sets.every(b => b.length >= 3 && b.length <= 5), `${f.id}: stimulus sets of 3 to 5 (${sets.map(b => b.length)})`);
+    assert.ok(sets.flat().length >= 21, `${f.id}: at least half the questions in sets`);
+    const own = ids.filter(id => examItems.has(id));
+    assert.ok(own.length >= 12 && own.length <= 14, `${f.id}: 12-14 exam-only items (${own.length})`);
+    assert.ok(own.every(id => id.startsWith(`calc-exam-${f.id.slice(5)}-`)), 'exam-only items belong to their form');
+    assert.equal(ids.filter(id => bank.has(id) && checks.has(id)).length, 0, `${f.id}: no lesson-check items`);
+    assert.equal(formUnits(f, ctx).filter(u => u.startsWith('unit-')).length, 8, 'every unit is on each exam');
+    // Section II: a realistic mix, calculator questions first.
+    const types = f.frq.map(id => frqs[id].type);
+    assert.deepEqual(f.frq.map(id => !!frqs[id].calc), [true, true, false, false, false, false]);
+    assert.equal(new Set(types).size, 6, `${f.id}: six different FRQ types (${types})`);
+    assert.ok(types.includes('motion') && types.includes('area') && types.includes('de') && types.includes('graph'), `${f.id}: motion, area-volume, a differential equation and a graph of f'`);
+    assert.ok(types.includes('table') || types.includes('model'), `${f.id}: a rate from a table or a model`);
+    assert.ok(types.includes('implicit') || types.includes('fg'), `${f.id}: implicit or f and g`);
+  }
+  const all = ex.forms.flatMap(f => f.mcq.flat());
+  assert.equal(new Set(all).size, all.length, 'no question in both forms');
+  const allF = ex.forms.flatMap(f => f.frq);
+  assert.equal(new Set(allF).size, allF.length, 'no FRQ in both forms');
+  assert.ok(ex.items.every(q => ex.forms.some(f => f.mcq.flat().includes(q.id))), 'every exam-only item is used');
+  assert.ok(ex.items.every(q => q.calc === true && q.type === 'single' && q.options.length === 4), 'exam-only items are four-option calculator questions');
+});
+
+test('the assembly check catches a broken real form', () => {
+  const bad = (mut, re) => { const f = clone(ex.forms); mut(f); const e = checkForms(f, ctx); assert.ok(e.some(x => re.test(x)), `${re}: ${e.join(' | ')}`); };
+  bad(f => { const i = f[0].mcq.findIndex(b => b.length > 2); f[0].mcq[i] = f[0].mcq[i].slice().reverse(); }, /not in authored order/);
+  bad(f => { const i = f[0].mcq.findIndex(b => b.length > 2 && !b[0].startsWith('calc-exam-')); const b = f[0].mcq[i]; f[0].mcq.splice(i, 1, [b[0]], b.slice(1)); }, /needs its stimulus|has 2 questions/);
+  bad(f => { f[1].frq[0] = f[0].frq[0]; }, /FRQ .* is also in form-1/);
+  bad(f => { const own = f[0].mcq.findIndex(b => b.length === 1 && b[0].startsWith('calc-exam-1-')); const j = f[1].mcq.findIndex(b => b.length === 1 && b[0].startsWith('calc-exam-2-')); f[1].mcq[j] = f[0].mcq[own]; }, /belongs to form-1/);
+  bad(f => { const j = f[0].mcq.findIndex(b => b.length === 1 && b[0].startsWith('calc-exam-')); const b = f[0].mcq.splice(j, 1)[0]; f[0].mcq.unshift(b); }, /Part A \(no calculator\) comes before Part B/);
+});
+
+/* The runtime grader (calc-questions.js) on every exam-only item: the key is
+   graded right and every other option wrong, so a key the data marks right
+   is the one a student is credited for. */
+test('every exam-only key is recomputed, and the runtime grader credits exactly the key', () => {
+  const prompts = loadJustify(DATA, map);
+  assert.deepEqual(checkNumbers(examItems, prompts), []);
+  assert.deepEqual(ex.items.map(q => q.id).filter(id => !EXAM_NUMBERS.some(n => n.id === id)), [], 'every exam-only item keys a recomputed value');
+  const b = createBrowser(); b.load('calculus/assets/calc-expr.js'); b.load('calculus/assets/calc-math.js');
+  const Q = b.load('calculus/assets/calc-questions.js').ApCalcQuestions;
+  for (const q of ex.items) q.options.forEach((_, i) => assert.equal(Q.grade(q, i).correct, i === q.correct, `${q.id} option ${i}`));
+  // A wrong key is caught, and so is a key that no longer matches the math.
+  const m = new Map(examItems); const w = clone(m.get('calc-exam-1-12')); w.correct = 1; m.set(w.id, w);
+  assert.ok(checkNumbers(m, prompts).some(e => /calc-exam-1-12/.test(e)));
+  const m2 = new Map(examItems); const w2 = clone(m2.get('calc-exam-2-06')); w2.options[w2.correct] = '$-2.473$'; m2.set(w2.id, w2);
+  assert.ok(checkNumbers(m2, prompts).some(e => /calc-exam-2-06/.test(e)));
+});
+
+test('the justification prompts pass, cover every unit and every calculus skill', () => {
+  const prompts = loadJustify(DATA, map);
+  assert.deepEqual(checkJustify(prompts, { map, trademarkProblems, scanPage }), []);
+  assert.ok(prompts.length >= 32, `${prompts.length} prompts`);
+  for (const u of units) {
+    const n = prompts.filter(p => p.unit === u.id).length;
+    assert.ok(n >= 3 && n <= 5, `${u.id}: ${n} prompts (3 to 5)`);
+  }
+  for (const k of Object.keys(JUSTIFY_SKILLS)) assert.ok(prompts.some(p => p.skill === k), `a prompt for ${k}`);
+  for (const n of JUSTIFY_NUMBERS) assert.ok(prompts.some(p => p.id === n.id), `${n.id} exists`);
+  // The misses the reader reports name: each has a prompt.
+  const ids = prompts.map(p => p.id).join(' ');
+  for (const w of ['ivt', 'mvt', 'candidates', 'relative-max', 'inflection', 'underestimate', 'continuity', 'lhospital', 'units', 'speeding-up', 'direction']) assert.match(ids, new RegExp(w), `a prompt on ${w}`);
+  // The runtime (pages/justify.js) reads the skill names from the served data, not a list of its own.
+  assert.doesNotMatch(readFileSync('calculus/assets/pages/justify.js', 'utf8'), /coulomb|free-body|titration/);
+  // A wrong number in a model answer is caught.
+  const p = clone(prompts.find(x => x.id === 'u6-left-sum-underestimate'));
+  p.earns.answer = p.earns.answer.replace('= 65', '= 60');
+  p.checklist = p.checklist.map(c => c.replace('= 65', '= 60'));
+  assert.ok(checkNumbers(examItems, prompts.map(x => x.id === p.id ? p : x)).some(e => /u6-left-sum-underestimate/.test(e)));
+});
+
+test('the formula page lists the rules, theorems and set-ups to know', () => {
+  const rows = EQ.flatMap(s => s.rows);
+  const all = rows.map(r => r[0]).join(' | ');
+  const must = [String.raw`\lim_{h \to 0} \frac{f(a + h) - f(a)}{h}`, String.raw`\frac{\sin x}{x} = 1`, 'n x^{n - 1}', "f'(x)g(x) + f(x)g'(x)", "f'(x)g(x) - f(x)g'(x)", "f'(g(x)) \\cdot g'(x)",
+    String.raw`\frac{d}{dx}\sin x = \cos x`, String.raw`\frac{d}{dx}\tan x = \sec^2 x`, String.raw`\frac{d}{dx}\ln x = \frac{1}{x}`, String.raw`\frac{d}{dx}\arctan x`, String.raw`\left(f^{-1}\right)'(b)`, "f(a) + f'(a)(x - a)",
+    "\\frac{f'(x)}{g'(x)}", 'a < c < b', 'absolute max and min', String.raw`\text{compare}`, 'concave up', String.raw`f(c) = d \ \text{for some}`,
+    String.raw`\int \frac{1}{x}\,dx = \ln|x| + C`, String.raw`\int \sin x\,dx = -\cos x + C`, String.raw`\frac{d}{dx}\int_a^x f(t)\,dt = f(x)`, 'F(b) - F(a)', String.raw`\frac{\Delta x_1}{2}`, String.raw`\int f(u)\,du`,
+    String.raw`f_{\text{avg}} = \frac{1}{b - a}`, String.raw`\int_a^b |v(t)|\,dt`, String.raw`x(t) = x(t_0)`, String.raw`\left[f(x) - g(x)\right]dx`, String.raw`\pi\int_a^b \left[R(x)\right]^2 dx`, String.raw`\left[r(x)\right]^2`, String.raw`\frac{\sqrt{3}}{4}s^2`, String.raw`y = y_0 e^{kt}`];
+  for (const e of must) assert.ok(all.includes(e), `the page has "${e}"`);
+  const topics = new Set(map.topics.map(t => t.id));
+  const slugs = new Set(JSON.parse(readFileSync('calculus/data/pages.json', 'utf8')).tools.map(t => t.slug));
+  for (const r of rows) {
+    assert.ok(r.length >= 5, r[0]);
+    assert.ok(r[1].length >= 20 && r[2].length >= 20, `${r[0]}: what it is and when to use it`);
+    assert.ok(topics.has(r[4]), `${r[0]}: topic ${r[4]}`);
+    assert.equal(r[3], `Unit ${map.topicById(r[4]).chapter.slice(5)}`, `${r[0]}: the unit of ${r[4]}`);
+    for (const sl of r[5] || []) assert.ok(slugs.has(sl), `${r[0]}: trainer ${sl}`);
+    for (const t of [`$${r[0]}$`, r[1], r[2]]) assert.equal(Tex.check(t).length, 0, `${r[0]}: math renders`);
+    for (const t of [r[1], r[2]]) assert.deepEqual(trademarkProblems(t), [], r[0]);
+  }
+  // A value theorem on the page names its hypotheses.
+  for (const r of rows.filter(r => /Value Theorem/.test(r[1]))) assert.match(r[0] + r[1], /continuous/, r[1]);
+  assert.ok(NOT_ON.length >= 5);
+  for (const r of NOT_ON) { assert.ok(topics.has(r[2]), r[0]); assert.equal(Tex.check(r[0] + ' ' + r[1]).length, 0, r[0]); }
 });
 
 test('the generator serves nothing before a unit is published, and a unit test, the formula and score pages once one is', () => {
   const out = join(mkdtempSync(join(tmpdir(), 'apcalc-exams-')), 'calculus');
   execFileSync(process.execPath, ['scripts/build-apcalc.mjs', '--out', out], { env: { ...process.env, APCALC_DATA: '', APCALC_PUBLISHED: '' } });
   assert.deepEqual(JSON.parse(readFileSync(join(out, 'assets/exams/forms.json'), 'utf8')), []);
+  assert.deepEqual(JSON.parse(readFileSync(join(out, 'assets/justify.json'), 'utf8')).prompts, []);
   assert.equal(existsSync(join(out, 'unit-tests')), false);
   const out2 = join(mkdtempSync(join(tmpdir(), 'apcalc-exams-')), 'calculus');
   execFileSync(process.execPath, ['scripts/build-apcalc.mjs', '--out', out2], { env: { ...process.env, APCALC_DATA: 'scripts/test/fixtures/apcalc-data', APCALC_PUBLISHED: 'unit-6' } });
@@ -170,9 +293,40 @@ test('the generator serves nothing before a unit is published, and a unit test, 
   assert.match(html, /<math class="calc-m">/, 'with rendered math');
   const calc = readFileSync(join(out2, 'score-calculator.html'), 'utf8');
   assert.match(calc, /50 &times; \(multiple-choice right &divide; 42\) \+ 50 &times; \(free-response points &divide; 54\)/);
-  assert.match(calc, /64 or more is shown as a 5, 48 or more as a 4, 37 or more as a 3, 27 or more as a 2/);
-  assert.match(calc, /Not calibrated/);
+  assert.match(calc, /66 or more is shown as a 5, 49 or more as a 4, 40 or more as a 3, 23 or more as a 2/);
+  assert.match(calc, /estimates, not official/);
   const f = readFileSync(join(out2, 'formula-sheet.html'), 'utf8');
   assert.match(f, /The exam gives no formula sheet/);
-  assert.match(f, /arrives with the first published unit/);
+  assert.equal((f.match(/<th scope="row">/g) || []).length, EQ.flatMap(s => s.rows).length);
+  assert.doesNotMatch(f, /href="tools\//, 'no trainer is live in the fixture, so none is linked');
+});
+
+test('with every unit published: the exams, the prompts, the formula page and 12-question unit tests', () => {
+  const out = join(mkdtempSync(join(tmpdir(), 'apcalc-exams-')), 'calculus');
+  execFileSync(process.execPath, ['scripts/build-apcalc.mjs', '--out', out], { env: { ...process.env, APCALC_DATA: '', APCALC_PUBLISHED: 'skills-math,unit-1,unit-2,unit-3,unit-4,unit-5,unit-6,unit-7,unit-8' }, maxBuffer: 1 << 26 });
+  const forms = JSON.parse(readFileSync(join(out, 'assets/exams/forms.json'), 'utf8'));
+  assert.equal(forms.length, ex.forms.length);
+  const own = JSON.parse(readFileSync(join(out, 'assets/exams/items.json'), 'utf8'));
+  assert.equal(own.items.length, ex.items.length);
+  assert.ok(own.items.every(q => q.why && q.why.correct && q.calc), 'exam-only items carry their explanations and the calculator flag');
+  assert.deepEqual(Object.keys(own.stimuli).sort(), Object.keys(ex.stimuli).sort());
+  assert.ok(Object.values(own.stimuli).every(s => /<svg/.test(s.html)), 'the exam stimuli are drawn from their functions');
+  const j = JSON.parse(readFileSync(join(out, 'assets/justify.json'), 'utf8'));
+  assert.deepEqual(j.skills, JUSTIFY_SKILLS);
+  assert.equal(j.prompts.length, loadJustify(DATA, map).length);
+  assert.equal(j.prompts.filter(p => p.free).length, FREE_JUSTIFY);
+  assert.ok(j.prompts.slice(0, FREE_JUSTIFY).every(p => p.free), 'the first prompts in course order are the free ones');
+  for (const p of j.prompts) for (const t of [p.context, p.prompt, ...p.checklist, p.earns.answer, p.earns.why, p.misses.answer, p.misses.why]) assert.doesNotMatch(t.replace(/<annotation[^>]*>[\s\S]*?<\/annotation>/g, ''), /\$/, `${p.id}: math is rendered`);
+  for (let n = 1; n <= 8; n++) {
+    const html = readFileSync(join(out, `unit-tests/unit-${n}.html`), 'utf8');
+    assert.equal((html.match(/<div class="calc-q" data-qid=/g) || []).length, 12, `unit ${n} sample has 12 questions`);
+    assert.match(html, new RegExp(`practice\\.html\\?unit=unit-${n}`));
+    assert.match(html, /<details class="calc-q-key">/, 'answers readable without JavaScript');
+    assert.doesNotMatch(html, /calc-exam-/, 'exam-only questions never appear on a free page');
+  }
+  const eq = readFileSync(join(out, 'formula-sheet.html'), 'utf8');
+  assert.equal((eq.match(/<th scope="row">/g) || []).length, EQ.flatMap(s => s.rows).length);
+  const linked = [...eq.matchAll(/href="tools\/([a-z-]+)\.html"/g)].map(m => m[1]);
+  assert.ok(linked.length > 10, 'live trainers are linked');
+  for (const sl of linked) assert.ok(existsSync(join(out, 'tools', `${sl}.html`)), `the page links only live trainers (${sl})`);
 });

@@ -98,7 +98,7 @@
   {
    "label": "d",
    "points": 2,
-   "prompt": "<b>Write</b>, but do not evaluate, an integral expression for the volume of the solid generated when $R$ is revolved about the vertical line $x = -1$.",
+   "prompt": "<b>Write</b>, but do not evaluate, an integral expression for the volume of the solid generated when $R$ is revolved about the vertical line $x = -1$. (For $0 \\le x \\le 3$, the graph of $f$ is also the graph of $x = 3 - \\sqrt{9 - y}$.)",
    "rubric": [
     {
      "point": "Radii in terms of $y$: outer $\\sqrt{y} + 1$, inner $4 - \\sqrt{9 - y}$",

@@ -348,7 +348,7 @@
     "The pool gains 120 gallons, since an area is positive",
     "The pool loses 120 gallons from t = 5 to t = 6 hours",
     "The pool holds 120 gallons at t = 6 hours",
-    "The pump drains 120 gallons per hour at t = 6"
+    "The rate of draining grows by 120 gallons per hour"
    ],
    "correct": 1,
    "why": {
@@ -357,7 +357,7 @@
      "A region below the axis comes from a negative rate, so the amount decreases.",
      "Correct: area means gallons, and below the axis means the amount goes down.",
      "The area is a change over the hour, not the amount in the pool.",
-     "That is the height of the graph (a rate). The area is gallons, a rate times a time."
+     "That reads the area as a change in the rate. The area is gallons, a rate times a time: here, water that leaves the pool."
     ]
    }
   },

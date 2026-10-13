@@ -217,7 +217,7 @@ FIGS['arcsin-steepening'] = () => {
   let body = txt(500, 70, `${it('y')} = arcsin ${it('x')}`, { size: 17, bold: true, color: CRIMSON });
   body += txt(500, 110, `${it('dy')}/${it('dx')} = 1/√(1 − ${it('x')}${sup('2')})`, { size: 15, bold: true });
   body += txt(500, 150, `At ${it('x')} = 0: slope 1`, { size: 14, color: BLUE }) + txt(500, 174, `At ${it('x')} = 0.8: slope 1/0.6 = 5/3`, { size: 14, color: VERM });
-  body += txt(500, 214, 'Near ' + it('x') + ' = ±1 the slope grows', { size: 13, color: MUTED }) + txt(500, 232, 'without bound: the derivative', { size: 13, color: MUTED }) + txt(500, 250, 'exists only for −1 < ' + it('x') + ' < 1.', { size: 13, color: MUTED });
+  body += txt(500, 214, 'Near ' + it('x') + ' = ±1 the slope grows', { size: 13, color: MUTED }) + txt(500, 232, 'without bound: the derivative', { size: 13, color: MUTED }) + txt(500, 250, 'exists only for −1 &lt; ' + it('x') + ' &lt; 1.', { size: 13, color: MUTED });
   return doc(760, 440, 'The slope of arcsin x grows near the ends of its domain',
     'The graph of y = arcsin x for x from minus 1 to 1, rising from (minus 1, minus pi/2) to (1, pi/2), with closed endpoints. The tangent line at the origin has slope 1; the tangent line at x = 0.8 has slope 1 over 0.6, which is 5/3. The derivative 1 over the square root of 1 minus x squared grows without bound as x approaches 1 or minus 1.',
     P.out() + '\n' + body);

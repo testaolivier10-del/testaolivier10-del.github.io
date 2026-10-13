@@ -263,7 +263,7 @@
    "options": [
     "Yes, by the Mean Value Theorem applied to $D$ on $[2, 5]$",
     "No, because the table does not show a zero of $D'$",
-    "Yes: $D'$ is continuous and $D'(2) > 0 > D'(5)$, so by the IVT $D'(t) = 0$ for some $t$ there",
+    "Yes, by the IVT applied to $D'$, which is continuous with $D'(2) > 0 > D'(5)$",
     "No, because $D$ is increasing at $t = 2$"
    ],
    "correct": 2,
@@ -315,7 +315,7 @@
    "stimulus": "increasing-decreasing-s2",
    "q": "Is $D$ decreasing on the whole interval $5 < t < 8$?",
    "options": [
-    "Not necessarily: the table gives $D'$ only at $t = 5$ and $t = 8$",
+    "Not necessarily, because the table gives $D'$ only at $t = 5$ and $t = 8$",
     "Yes, because $D'(5) < 0$ and $D'(8) < 0$",
     "Yes, because $D'$ is decreasing from $-0.3$ to $-1.1$",
     "No, because $D'(10) > 0$"
@@ -478,7 +478,7 @@
    "level": "apply",
    "diff": 3,
    "calc": true,
-   "q": "$f'(x) = \\cos(x^2) - 0.3$. On $(0, 3)$, $f$ is decreasing on exactly one interval $(a, b)$. Find $b$.",
+   "q": "$f'(x) = \\cos(x^2) - 0.3$. On $(0, 2.5)$, $f$ is decreasing on exactly one interval $(a, b)$. Find $b$.",
    "numeric": {
     "answer": 2.239884290404325,
     "mistakes": [
@@ -489,7 +489,7 @@
     ]
    },
    "why": {
-    "correct": "Graph $y = \\cos(x^2) - 0.3$ (radian mode) and find its zeros on $(0, 3)$: $x \\approx 1.125$ and $x \\approx 2.240$. $f' < 0$ between them, so $b \\approx 2.240$."
+    "correct": "Graph $y = \\cos(x^2) - 0.3$ (radian mode) and find its zeros on $(0, 2.5)$: $x \\approx 1.125$ and $x \\approx 2.240$. $f' < 0$ between them, so $b \\approx 2.240$."
    }
   },
   {

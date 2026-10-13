@@ -298,9 +298,9 @@
    "q": "What is $u'(2)$?",
    "options": [
     "It does not exist: the one-sided slopes of $u$ at 2, $-1$ and $-7$, differ.",
-    "$-1$, using the slopes of $f$ and $g$ to the left of 2",
-    "$-7$, using the slopes of $f$ and $g$ to the right of 2",
-    "$-4$, the average of the two one-sided slopes"
+    "$-1$, using the slopes of $f$ and $g$ just to the left of $x = 2$",
+    "$-7$, using the slopes of $f$ and $g$ just to the right of $x = 2$",
+    "$-4$, the average of the two one-sided slopes of $u$ at $x = 2$"
    ],
    "correct": 0,
    "why": {
@@ -500,10 +500,10 @@
    "diff": 2,
    "q": "Let $f(x) = x$ and $g(x) = x$. Which comparison of $\\left( f(x)g(x) \\right)'$ and $f'(x)g'(x)$ is correct?",
    "options": [
-    "$(fg)' = 2x$ but $f'g' = 1$, so a product's derivative is not the product of derivatives.",
-    "Both equal $2x$, so a product's derivative is the product of derivatives.",
-    "Both equal 1, because $f' = g' = 1$.",
-    "$(fg)' = 1$ but $f'g' = 2x$."
+    "$(fg)' = 2x$ and $f'g' = 1$; they differ, so $(fg)' \\ne f'g'$",
+    "Both equal $2x$, so $(fg)' = f'g'$ for these two functions",
+    "Both equal $1$, because $f' = 1$ and $g' = 1$ for these functions",
+    "$(fg)' = 1$ and $f'g' = 2x$; they differ, so $(fg)' \\ne f'g'$"
    ],
    "correct": 0,
    "why": {

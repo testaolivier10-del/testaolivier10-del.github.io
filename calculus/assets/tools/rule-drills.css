@@ -4,9 +4,6 @@
    graphs, as on every calculus plot. */
 :root{--rd-a:#7A4F9E;--rd-b:#00805C;--rd-at:rgba(122,79,158,.09);--rd-bt:rgba(0,128,92,.09);}
 :root[data-theme="dark"]{--rd-a:#C3A3E0;--rd-b:#52CFA6;--rd-at:rgba(195,163,224,.12);--rd-bt:rgba(82,207,166,.12);}
-/* The course crumb is not in the Tool Studio's hidden list yet (shared fix
-   reported); hide it here so the studio is exactly one screen. */
-body.ls-on .calc-crumb{display:none;}
 
 .rd-ca{color:var(--rd-a);} .rd-cb{color:var(--rd-b);}
 .rd-stage{display:flex;flex-direction:column;gap:12px;flex:1;min-height:0;overflow:auto;}
@@ -84,3 +81,13 @@ body.ls-on .calc-crumb{display:none;}
   .rd-pow{font-size:19px;}
   .rd-examples .rd-lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
 }
+
+/* A narrow stage with room to spare below the tree also shows f and f′
+   (rd-room, set by the script when at least 170 px are left). */
+.rd-stage.rd-room .rd-side{display:flex;flex:1 1 auto;min-height:170px;}
+.rd-stage.rd-room .rd-plot{display:flex;flex:1;min-height:170px;}
+/* Phone pass (docs/tools-phone-pass.md): on-picture text at least 12 px. */
+.ls-root.ls-phone .rd-role{font-size:12px;}
+.ls-root.ls-phone .rd-rule{font-size:13px;}
+.ls-root.ls-phone .rd-plot .calc-plot,.ls-root.ls-phone .ls-drill-stage .calc-plot{font-size:13px;}
+.ls-root .ls-drill-stage .rd-fig math{math-style:normal;}

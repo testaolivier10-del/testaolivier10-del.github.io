@@ -402,7 +402,7 @@
    "why": {
     "correct": "$f(x) = \\frac{(x - 3)(x + 3)}{(x - 3)(x + 1)} = \\frac{x + 3}{x + 1}$ for $x \\ne 3$. The factor $x - 3$ cancels (a hole), and $x + 1$ stays: one asymptote, $x = -1$.",
     "options": [
-     "At $x = 3$ the factor cancels, so $\\lim_{x \\to 3} f(x) = \\frac{6}{4}$: a hole.",
+     "At $x = 3$ the factor cancels, so $\\lim_{x \\to 3} f(x) = \\frac{3}{2}$: a hole.",
      "$x = 3$ is the hole; the asymptote is $x = -1$.",
      "Only the uncancelled factor $x + 1$ gives an asymptote.",
      "$x = -3$ makes the numerator 0, which gives a zero of $f$."

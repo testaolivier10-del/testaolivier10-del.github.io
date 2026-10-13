@@ -276,10 +276,10 @@
       function fitStage(){
         var w = el.stage.getBoundingClientRect().width;
         if(!w) return;
-        var narrow = w < 520, was = el.stage.classList.contains('rd-narrow');
+        var narrow = w < 520;
         el.stage.classList.toggle('rd-wide', w >= 720);
         el.stage.classList.toggle('rd-narrow', narrow);
-        if(narrow !== was && cur) drawTree();
+        if(cur) drawTree();
       }
       if(window.ResizeObserver) new ResizeObserver(fitStage).observe(el.stage);
       requestAnimationFrame(fitStage);
@@ -322,8 +322,32 @@
       var p2 = el.det.querySelector('.rd-plot2');
       if(p2) fitPlot(p2, plotSpec);
     }
-    // A narrow stage shows the first level of the tree only (its pieces); a wide one three.
-    function drawTree(){ var nw = el.stage.classList.contains('rd-narrow'); el.tree.innerHTML = treeHtml(cur.node, { showD: true, showDAll: true, noRootD: true, slimRoot: true, depth: nw ? 1 : 3 }); }
+    /* Three levels of the tree when they fit the stage's width (a wide stage
+       always); a narrow one drops levels until the tree fits without
+       scrolling sideways. Then, on a narrow stage, f and f′ are drawn below
+       the tree when at least 170 px are left (rd-room). */
+    function drawTree(){
+      var nw = el.stage.classList.contains('rd-narrow');
+      for(var dp = 3; dp >= 1; dp--){
+        el.tree.innerHTML = treeHtml(cur.node, { showD: true, showDAll: true, noRootD: true, slimRoot: true, depth: dp });
+        if(!nw || dp === 1 || fits()) break;
+      }
+      fitRoom();
+    }
+    // Nothing scrolls sideways or is cut: the tree, and every card in it.
+    function fits(){
+      if(el.tree.scrollWidth > el.tree.clientWidth + 1) return false;
+      return [].every.call(el.tree.querySelectorAll('.rd-node'), function(n){
+        var b = n.getBoundingClientRect();
+        return [].every.call(n.children, function(c){ var r = c.getBoundingClientRect(); return r.left >= b.left - 0.5 && r.right <= b.right + 0.5; });
+      });
+    }
+    function fitRoom(){
+      var wide = el.stage.classList.contains('rd-wide'), main = el.stage.querySelector('.rd-main');
+      var used = el.tree.getBoundingClientRect().bottom - main.getBoundingClientRect().top, room = wide ? 0 : el.stage.clientHeight - used - 12, on = !wide && room >= 170, was = el.stage.classList.contains('rd-room');
+      el.stage.classList.toggle('rd-room', on);
+      if(on && !was) requestAnimationFrame(drawPlot);
+    }
     function plotSpec(){
       var a = cur, f = E.compile(a.tree), d = E.compile(a.d), ff = function(x){ return f({ x: x }); }, dd = function(x){ return d({ x: x }); };
       var x = [-3, 3], ok = 0;

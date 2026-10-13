@@ -6,6 +6,6 @@
   "def": "A function defined by a definite integral with a variable limit, such as $g(x) = \\int_a^x f(t)\\,dt$: the amount accumulated from $a$ up to $x$. It is 0 at $x = a$."
  },
  "ftc": {
-  "def": "The link between derivatives and integrals. Part 1: if $f$ is continuous, $\\frac{d}{dx}\\int_a^x f(t)\\,dt = f(x)$, and with a function as the upper limit, $\\frac{d}{dx}\\int_a^{u(x)} f(t)\\,dt = f(u(x))\\,u'(x)$. Part 2: $\\int_a^b f(x)\\,dx = F(b) - F(a)$ for any antiderivative $F$ of $f$."
+  "def": "The link between derivatives and integrals. Part 1: if $f$ is continuous, $\\frac{d}{dx}\\int_a^x f(t)\\,dt = f(x)$, and with a function as the upper limit, $\\frac{d}{dx}\\int_a^{u(x)} f(t)\\,dt = f(u(x))\\,u'(x)$. Part 2 (topic 6.7): $\\int_a^b f(x)\\,dx = F(b) - F(a)$ for any antiderivative $F$ of $f$."
  }
 }

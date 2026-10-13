@@ -31,10 +31,6 @@
 .le-off path{fill:none;stroke:var(--le-f);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;}
 .le-off text{fill:var(--le-f);font-weight:800;}
 
-/* The course crumb is not in the Tool Studio's hidden list yet (shared fix
-   reported); hide it here so the studio is exactly one screen. */
-body.ls-on .calc-crumb{display:none;}
-
 /* The table and the checklist */
 .le-side{flex:none;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:10px 14px;align-items:start;}
 .le-th{display:flex;justify-content:space-between;margin:0 0 2px;font:800 12px var(--font-ui);color:var(--muted);}
@@ -117,7 +113,8 @@ body.ls-on .calc-crumb{display:none;}
 .le-fig2 .le-vtabs{align-self:center;flex:none;}
 .le-fig2-plot{flex:1;min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;}
 .ls-root .ls-drill-stage .le-fig2-plot > svg{flex:none;width:auto;height:auto;max-width:100%;max-height:100%;}
-@media (max-width:699.98px){ .le-fig2-plot{display:none;} }
+/* A phone: the IVT table over its picture (the points and the line y = k), not beside it. */
+@media (max-width:699.98px){ .ls-root .ls-drill-stage .le-fig2{flex-direction:column;gap:6px;} .le-fig2-plot{flex:1 1 0;width:100%;min-height:150px;} }
 .le-tfig{align-items:center !important;justify-content:center;}
 .le-vtabs{display:flex;gap:18px;justify-content:center;align-items:flex-start;max-width:100%;}
 .le-vtab{border-collapse:collapse;font:600 16px var(--font-mono);font-variant-numeric:tabular-nums;color:var(--ink);}
@@ -130,3 +127,17 @@ body.ls-on .calc-crumb{display:none;}
 :root[data-theme="dark"] .le-vtab.l td,:root[data-theme="dark"] .le-vtab caption.l{color:#C3A3E0;}
 :root[data-theme="dark"] .le-vtab.r td,:root[data-theme="dark"] .le-vtab caption.r{color:#F29A5C;}
 @media (max-width:699.98px){ .le-vtabs{gap:8px;} .le-vtab{font-size:13px;} .le-vtab th,.le-vtab td{padding:3px 7px;} .le-vtab thead th{font-size:13px;} }
+/* A phone on its side: compact tables, so the IVT picture beside them gets the width. */
+.ls-root.ls-phone .le-fig2 .le-vtabs{gap:8px;} .ls-root.ls-phone .le-fig2 .le-vtab th,.ls-root.ls-phone .le-fig2 .le-vtab td{padding:3px 8px;}
+
+/* Phone pass (docs/tools-phone-pass.md): on-picture text at least 12 px,
+   key numbers at least 14 px, at 360 px and when enlarged. */
+.ls-root.ls-phone .le-graph svg{font-size:13px;}
+.ls-root.ls-phone .le-compact .le-tab{font-size:14px;}
+.ls-root.ls-phone .le-compact .le-tab th{font-size:12px;}
+.ls-root.ls-phone .le-compact .le-check{font-size:13px;}
+.ls-root.ls-phone .le-compact .le-verdict{font-size:13px;}
+.ls-root.ls-phone .ls-drill-stage .calc-plot{font-size:13px;}
+@media (max-width:699.98px){ .le-vtab{font-size:14px;} }
+/* A fraction in the problem statement on the stage is set full size, not as a superscript-sized inline fraction. */
+.ls-root .ls-drill-stage math{math-style:normal;}

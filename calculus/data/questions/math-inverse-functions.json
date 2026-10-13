@@ -100,7 +100,7 @@
      },
      {
       "value": 6,
-      "why": "$f(0) = 3$; and $f^{-1}(5) = 1$. Sum: 4."
+      "why": "6 is $1 + 5$: the 5 is $f(1)$, not $f(0)$. Read $f(0) = 3$ from the table; with $f^{-1}(5) = 1$ the sum is 4."
      }
     ]
    },
@@ -371,7 +371,7 @@
     "$\\arcsin x$, the angle in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$ whose sine is $x$",
     "$\\frac{1}{\\sin x}$",
     "$-\\sin x$",
-    "$(\\sin x)^{-1}$, the cosecant"
+    "$\\sin\\left(x^{-1}\\right) = \\sin\\frac{1}{x}$"
    ],
    "correct": 0,
    "why": {
@@ -380,7 +380,7 @@
      "The inverse of sine on its restricted domain.",
      "$\\frac{1}{\\sin x}$ is $\\csc x$; it is written $(\\sin x)^{-1}$.",
      "An inverse is not a negative.",
-     "$(\\sin x)^{-1}$, with parentheses, is $\\csc x$; $\\sin^{-1} x$ is arcsine."
+     "That would be written $\\sin\\left(\\frac{1}{x}\\right)$: the sine of a reciprocal input. The $-1$ on the name $\\sin$ means the inverse function."
     ]
    }
   }

@@ -36,6 +36,8 @@ export const JUSTIFY_SKILLS = {
   motion: 'Motion: direction, speeding up, displacement and distance',
   context: 'Meaning in context, with units and the interval',
   de: 'Differential equations and slope fields',
+  rules: 'Derivative rules with every step shown (chain, product, implicit)',
+  setup: 'Area and volume set-ups: radii, limits, the factor of π',
 };
 
 export function loadExams(dataDir) {
@@ -187,11 +189,93 @@ export function checkJustify(prompts, ctx) {
 /* Every number in an exam-only item or a prompt, recomputed: the value, and
    where it must appear (an item's keyed option, or a prompt's text). Each
    entry is { id, key, starts?, check? } for an item and { id, has: [...] }
-   for a prompt. Phase 3 fills both lists as the forms and prompts are
-   written; calculus keys can also be recomputed with ApCalcMath (integral,
-   deriv, root) from scripts/lib/apcalc-tool-checks/_shared.mjs. */
-export const EXAM_NUMBERS = [];
-export const JUSTIFY_NUMBERS = [];
+   for a prompt. The numerical work here is our own (composite Simpson,
+   bisection, a central difference), written apart from the runtime and
+   from the scratch script that wrote the items, so a key that disagrees
+   with the math fails the check. Calculator keys show three decimals,
+   rounded, as the options do. */
+const simpson = (f, a, b, n = 20000) => { const h = (b - a) / n; let s = f(a) + f(b); for (let i = 1; i < n; i++) s += f(a + i * h) * (i % 2 ? 4 : 2); return s * h / 3; };
+const bisect = (f, a, b) => { let fa = f(a); for (let i = 0; i < 200; i++) { const m = (a + b) / 2, fm = f(m); if (fa * fm <= 0) b = m; else { a = m; fa = fm; } } return (a + b) / 2; };
+// Every simple zero of f on [a, b], from sign changes on a fine grid.
+const zeros = (f, a, b, n = 4000) => { const out = [], h = (b - a) / n; for (let i = 0; i < n; i++) { const x0 = a + i * h; if (f(x0) * f(x0 + h) < 0) out.push(bisect(f, x0, x0 + h)); } return out; };
+const dif = (f, x, h = 1e-5) => (f(x + h) - f(x - h)) / (2 * h);
+const r3 = x => (Math.round(x * 1000) / 1000).toFixed(3);
+const m3 = x => `$${r3(x)}$`;
+const most = (f, xs, best) => xs.every(x => best === x || f(best) > f(x));
+const least = (f, xs, best) => xs.every(x => best === x || f(best) < f(x));
+
+// Form 1: the tank (r in, 7 out, 50 liters at t = 0) and its set.
+const rIn = t => 6 + 4 * Math.sin(t * t / 8);
+const tank = x => 50 + simpson(t => rIn(t) - 7, 0, x);
+const tankZ = zeros(t => rIn(t) - 7, 0, 6);
+const v15 = t => 2 * Math.cos(0.8 * t) - 0.3 * t;
+const fp16 = x => Math.exp(Math.sin(x)) - 1.5;
+const near17 = bisect(x => (x - 2) + Math.exp(2 * x), -2, 2);            // D'(x)/2 for D = (x - 2)² + e^{2x}
+const s19 = t => Math.sin(t * t), g19 = x => simpson(s19, 0, x);
+const area111 = zeros(x => 4 - x * x - Math.exp(x), -3, 3);
+// Form 2: the particle with v = e^{sin t} - 1.2 from x = 1.
+const vp = t => Math.exp(Math.sin(t)) - 1.2;
+const vpZ = zeros(vp, 0, 4);
+const dist = simpson(t => Math.abs(vp(t)), 0, vpZ[0], 2000) + simpson(t => Math.abs(vp(t)), vpZ[0], vpZ[1], 2000) + simpson(t => Math.abs(vp(t)), vpZ[1], 4, 2000);
+const f26 = x => x * x - 3 * Math.sin(2 * x);
+const c26 = zeros(x => 2 * x - 6 * Math.cos(2 * x), -1, 3);
+const z28 = zeros(x => Math.exp(x / 2) - 2 * x, -2, 6);
+const T213 = t => 20 + 10 * Math.exp(-0.1 * t) * Math.cos(t / 3);
+
+export const EXAM_NUMBERS = [
+  // form 1
+  { id: 'calc-exam-1-01', key: m3(tank(6)) },                                                     // 50 + ∫₀⁶ (r − 7) dt
+  { id: 'calc-exam-1-02', key: m3(tankZ[1]), check: () => tankZ.length === 2 && most(tank, [0, ...tankZ, 6], tankZ[1]) },  // candidates test
+  { id: 'calc-exam-1-03', key: `${m3(dif(rIn, 4))} liters per minute per minute`, check: () => Math.abs(dif(rIn, 4) - 4 * Math.cos(2)) < 1e-6 },
+  { id: 'calc-exam-1-04', key: m3(bisect(x => Math.exp(x) - 2 * x - (Math.exp(2) - 5) / 2, 0.5, 2)), check: () => zeros(x => Math.exp(x) - 2 * x - (Math.exp(2) - 5) / 2, 0, 2).length === 1 },
+  { id: 'calc-exam-1-05', key: `Speeding up, because $v(3) \\approx ${r3(v15(3))}$ and $a(3) \\approx ${r3(dif(v15, 3))}$ have the same sign`, check: () => v15(3) < 0 && dif(v15, 3) < 0 },
+  { id: 'calc-exam-1-06', key: m3(zeros(fp16, 0, 4)[1]), check: () => zeros(fp16, 0, 4).length === 2 && fp16(2) > 0 && fp16(3.5) < 0 },
+  { id: 'calc-exam-1-07', key: m3(Math.hypot(near17 - 2, Math.exp(near17))) },                   // √D at the one critical point
+  { id: 'calc-exam-1-08', key: m3(2 + simpson(x => Math.sqrt(1 + x ** 3), 1, 3)) },
+  { id: 'calc-exam-1-09', key: m3(g19(Math.sqrt(Math.PI))), check: () => most(g19, [0, Math.sqrt(Math.PI), Math.sqrt(2 * Math.PI), 3], Math.sqrt(Math.PI)) },
+  { id: 'calc-exam-1-10', key: m3(4 * Math.log(4) - 3) },                                         // ∫₀³ ln(1 + x) dx, by parts (exact)
+  { id: 'calc-exam-1-11', key: m3(simpson(x => 4 - x * x - Math.exp(x), area111[0], area111[1])), check: () => area111.length === 2 },
+  { id: 'calc-exam-1-12', key: m3(Math.PI * simpson(x => (Math.log(x + 1) + 1) ** 2 - 1, 0, 3)) }, // washers about y = −1
+  { id: 'calc-exam-1-13', key: m3(simpson(t => (t + 1) * Math.cos(t), 0, Math.PI / 2) - simpson(t => (t + 1) * Math.cos(t), Math.PI / 2, 4)) }, // split where v changes sign
+  // form 2
+  { id: 'calc-exam-2-01', key: m3(vpZ[1]), check: () => vpZ.length === 2 && vp(vpZ[1] - 0.01) > 0 && vp(vpZ[1] + 0.01) < 0 },
+  { id: 'calc-exam-2-02', key: m3(1 + simpson(vp, 0, 4)) },
+  { id: 'calc-exam-2-03', key: m3(dist) },
+  { id: 'calc-exam-2-04', key: m3(bisect(x => 6 * x - Math.exp(x), 1, 4)), check: () => zeros(x => 6 * x - Math.exp(x), 1, 4).length === 1 },
+  { id: 'calc-exam-2-05', key: `${m3(20 / (Math.PI * 3.2 ** 2))} inches per second` },           // 5 = (πh²/4) dh/dt
+  { id: 'calc-exam-2-06', key: m3(f26(c26[1])), check: () => c26.length === 2 && least(f26, [-1, ...c26, 3], c26[1]) },
+  { id: 'calc-exam-2-07', key: m3(zeros(x => Math.cos(x) - x * Math.sin(x), 0, 2)[0]), check: () => zeros(x => Math.cos(x) - x * Math.sin(x), 0, 2).length === 1 },
+  { id: 'calc-exam-2-08', key: `$(${r3(z28[0])}, ${r3(z28[1])})$`, check: () => z28.length === 2 && Math.exp(1) - 4 < 0 },
+  { id: 'calc-exam-2-09', key: m3(3 + simpson(x => Math.log(x * x + 2), 1, 4)) },
+  { id: 'calc-exam-2-10', key: m3(Math.exp(0.25) + Math.exp(2.25)) },                           // midpoints 0.5 and 1.5, width 1
+  { id: 'calc-exam-2-11', key: String(Math.round(simpson(t => 1200 * Math.exp(-((t - 3) ** 2) / 2), 0, 8))) },
+  { id: 'calc-exam-2-12', key: m3(simpson(x => (2 * Math.exp(-x * x)) ** 2, 0, 1.2)) },         // side squared
+  { id: 'calc-exam-2-13', key: `${m3(simpson(T213, 0, 10) / 10)} degrees Celsius` },
+];
+// The prompts' numbers, each recomputed from the prompt's own data.
+const cubic = x => x ** 3 - 3 * x ** 2;                                       // u5 candidates test
+const vt = y => [-2 * y, y];                                                  // x = -2y on x² + xy + y² = 12
+const washer = 2 * (24 * 2 - 10 * 2 ** 3 / 3 + 2 ** 5 / 5);                  // ∫ from -2 to 2 of (5 - x²)² - 1
+export const JUSTIFY_NUMBERS = [
+  { id: 'u1-removable-hole', has: [`\\lim_{x \\to 3} (x + 3) = ${3 + 3}`] },
+  { id: 'u2-estimate-rate-with-units', has: [`= ${(35 - 26) / (5 - 2)}$ degrees Celsius per minute`] },
+  { id: 'u2-differentiable-piecewise', has: [`p'(1) = ${2 * 1}`] },
+  { id: 'u3-chain-rule-from-table', has: [`= ${5 * -2}`] },
+  { id: 'u3-inverse-derivative-point', has: [`f(1) = 1 + 1 + 1 = ${1 + 1 + 1}`, `f'(1) = ${3 * 1 ** 2 + 1}`, `g'(3) = \\frac{1}{${3 * 1 ** 2 + 1}}`] },
+  { id: 'u4-speeding-up-signs', has: [`= ${2.5 ** 2 - 4 * 2.5 + 3}`, `a(2.5) = ${2 * 2.5 - 4}`] },
+  { id: 'u4-lhospital-form-first', has: [`\\frac{${3 * Math.exp(0)}}{${Math.cos(0)}} = 3`] },
+  { id: 'u5-mvt-altitude', has: [`\\frac{30 - 10}{4} = ${(30 - 10) / (6 - 2)}`] },
+  { id: 'u5-candidates-absolute-min', has: [`f(-1) = ${cubic(-1)}`, `f(0) = ${cubic(0)}`, `f(2) = ${cubic(2)}`, `f(4) = ${cubic(4)}`] },
+  { id: 'u5-vertical-tangent', has: [`3y^2 = 12`, `(${vt(2).join(', ')})`, `(${vt(-2).join(', ')})`] },
+  { id: 'u6-left-sum-underestimate', has: [`= ${2 * 4 + 3 * 7 + 4 * 9}`] },
+  { id: 'u6-lower-limit-above', has: [`5 - 6 = ${5 - 6}`] },
+  { id: 'u7-separation-with-constant', has: [`\\sqrt{2x^2 + ${2 * (3 ** 2 / 2)}}`] },
+  { id: 'u7-tangent-under-concave-up', has: [`3 + (-2)(0.2) = ${3 + (1 - 3) * 0.2}`, `1 - (1 - 3) = ${1 - (1 - 3)}`] },
+  { id: 'u8-distance-vs-displacement', has: [`= ${(4 * 2 - 2 ** 2)}$ and`, `= ${(4 * 3 - 3 ** 2) - (4 * 2 - 2 ** 2)}$`, `= ${(4 * 2 - 2 ** 2) - ((4 * 3 - 3 ** 2) - (4 * 2 - 2 ** 2))}$ meters`] },
+  { id: 'u8-position-from-later-start', has: [`5 + (-7) = ${5 - 7}`] },
+  { id: 'u8-washer-about-line', has: [`\\frac{${Math.round(15 * washer)}\\pi}{15}`] },
+  { id: 'u8-average-value-meaning', has: [`\\frac{840}{12} = ${840 / 12}`] },
+];
 /* items: Map(id -> item); prompts: list. Returns problems. */
 export function checkNumbers(items, prompts) {
   const errs = [];

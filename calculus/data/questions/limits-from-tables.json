@@ -472,7 +472,7 @@
      "Right side only.",
      "The left side has not been checked.",
      "A trend near 0 is not the value at 0.",
-     "There are no inputs to the left of 0."
+     "The table gives no inputs to the left of 0, so it says nothing about the left-hand limit."
     ]
    }
   }

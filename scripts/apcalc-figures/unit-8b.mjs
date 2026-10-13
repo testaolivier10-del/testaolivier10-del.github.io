@@ -250,17 +250,17 @@ FIGS['area-between-y-strip'] = () => {
   const right = y => y + 2, left = y => y * y;
   const P = panel({ px: 60, py: 50, pw: 380, ph: 340, xr: [-1, 5], yr: [-2.2, 3], xStep: 1, yStep: 1 });
   P.shadeY(right, left, -1, 2, C.pale);
-  const y0 = 0.45, dy = 0.22;
+  const y0 = 0.9, dy = 0.22;
   P.rect(left(y0 + dy / 2), right(y0 + dy / 2), y0, y0 + dy);
   P.curveY(left, -2.0, 2.2, C.crimson).curveY(right, -2.2, 2.75, C.blue);
   P.dot(1, -1).dot(4, 2);
-  P.label(1.12, -1.55, '(1, −1)', { anchor: 'start', size: 13 }).label(4.05, 2.32, '(4, 2)', { anchor: 'start', size: 13 });
+  P.label(1.12, -1.55, '(1, −1)', { anchor: 'start', size: 13 }).label(3.9, 2.32, '(4, 2)', { anchor: 'end', size: 13 });
   P.label(0.2, 2.6, `left: ${it('x')} = ${it('y')}${sup('2')}`, { anchor: 'start', size: 14, color: C.crimson, weight: 'bold' });
   P.label(2.15, -0.7, `right: ${it('x')} = ${it('y')} + 2`, { anchor: 'start', size: 14, color: C.blue, weight: 'bold' });
   let s = P.svg();
   const yy = P.sy(y0) + 12;
   s += darrow(P.sx(left(y0 + dy / 2)), yy, P.sx(right(y0 + dy / 2)), yy, C.ink, 1.6);
-  s += text((P.sx(left(y0 + dy / 2)) + P.sx(right(y0 + dy / 2))) / 2, yy + 18, 'right − left', { anchor: 'middle', size: 13 });
+  s += text(P.sx(left(y0 + dy / 2)) + 8, yy + 18, 'right − left', { anchor: 'start', size: 13 });
   s += text(P.sx(right(y0 + dy / 2)) + 10, P.sy(y0 + dy / 2) + 5, `thickness Δ${it('y')}`, { anchor: 'start', size: 13 });
   const bx = 470;
   s += box(bx, 60, 270, 320, { fill: '#FFFFFF', stroke: C.grid });
@@ -514,7 +514,7 @@ FIGS['disc-solid-x-axis'] = () => revolutionFigure({
   },
   cam: { az: -0.42, el: 0.28, F: 30 }, fit: [380, 60, 730, 380],
   R: Math.sqrt, a: 0, b: 4, x0: 2.3, dx: 0.3,
-  draw3d: cam => radiusArrow(cam, 2.3, 0, Math.sqrt(2.45), '#0072B2', `${it('r')} = √${it('x')}`, { dx: -10, anchor: 'end', dy: -6 }) + (() => { const T = cam.P([5.4, 0, 0]); return text(T[0] - 4, T[1] + 22, `axis: the ${it('x')}-axis`, { anchor: 'end', size: 13 }); })()
+  draw3d: cam => radiusArrow(cam, 2.3, 0, Math.sqrt(2.45), '#0072B2', `${it('r')} = √${it('x')}`, { dx: -10, anchor: 'end', dy: -6 }) + (() => { const T = cam.P([4.7, 0, 0]); return text(T[0] - 4, T[1] + 22, `axis: the ${it('x')}-axis`, { anchor: 'end', size: 13 }); })()
 });
 
 FIGS['disc-solid-line'] = () => revolutionFigure({

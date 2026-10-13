@@ -71,7 +71,7 @@
     function rebind(s2, F2){ var had = document.activeElement === g; svg = s2; F = F2; svg.appendChild(g); place(); if(had) g.focus(); }
     g.setAttribute('class', 'sf-handle' + (o.cls ? ' ' + o.cls : ''));
     g.setAttribute('tabindex', '0'); g.setAttribute('role', 'slider');
-    g.innerHTML = '<circle class="sf-halo" r="18"/><circle class="sf-dot" r="' + (o.r || 8) + '"/>';
+    g.innerHTML = '<circle class="sf-hitc" r="22"/><circle class="sf-halo" r="18"/><circle class="sf-dot" r="' + (o.r || 8) + '"/>';
     svg.appendChild(g);
     function txt(){ return o.label(x, y); }
     function place(){ g.setAttribute('transform', 'translate(' + r2(F.sx(x)) + ' ' + r2(F.sy(y)) + ')'); g.setAttribute('aria-valuenow', String(+y.toFixed(2))); g.setAttribute('aria-valuetext', txt()); g.setAttribute('aria-label', txt()); }
@@ -103,7 +103,7 @@
 
   /* =========================================================== explore */
   function explore(host, data){
-    var id = 'x+y', d = S.de(id), params = {}, x0, y0, exactOn = true, density = 13, sel = null, LS = null, touched = false, F = null, svg = null, H = null, view = null, fn = null;
+    var id = 'x+y', d = S.de(id), params = {}, x0, y0, exactOn = true, density = 13, dEff = 13, sel = null, LS = null, touched = false, F = null, svg = null, H = null, view = null, fn = null;
     S.GALLERY.forEach(function(g){ if(g.params) params[g.id] = JSON.parse(JSON.stringify(g.params)); });
     var nid = T.nid('sf');
     function $(q){ return host.querySelector(q) || (LS ? LS.root.querySelector(q) : null); }
@@ -149,6 +149,17 @@
       if(id === 'cool') return '\\frac{dT}{dt} = -' + String(+p.k.toFixed(2)) + '(T - ' + p.Ta + ')';
       return '\\frac{dy}{dx} = ' + d.tex;
     }
+    /* A view with the same span across and up (x + y, x/y, xy, y − 2) is
+       widened along the longer side of the box, so one unit across is as
+       long as one unit up and a slope of 1 is drawn at 45 degrees. */
+    function squareView(v, w, h){
+      var sx = v.x[1] - v.x[0], sy = v.y[1] - v.y[0];
+      if(Math.abs(sx - sy) > 1e-9) return v;
+      var iw = w - 48, ih = h - 40, cx = (v.x[0] + v.x[1]) / 2, cy = (v.y[0] + v.y[1]) / 2;
+      var snap = function(c, half){ return [c - half, c + half]; };
+      if(iw > ih) return { x: snap(cx, sx / 2 * iw / ih), y: v.y.slice() };
+      return { x: v.x.slice(), y: snap(cy, sy / 2 * ih / iw) };
+    }
     function xv(){ return d.xv || 'x'; } function yv(){ return d.yv || 'y'; }
     function clamp(x, y){
       var sn = d.snap, X = Math.round(x / sn[0]) * sn[0], Y = Math.round(y / sn[1]) * sn[1];
@@ -161,11 +172,13 @@
     function build(){
       var box = $('.sf-plot'), w = Math.max(280, Math.round(box.clientWidth || 520)), h = Math.max(240, Math.round(box.clientHeight || 0)) || Math.round(w * 0.8);
       if(!LS || !box.clientHeight) h = Math.round(Math.min(w * 0.82, 560));
+      view = squareView(d.view, w, h);
       var spec = { label: 'Slope field of ' + window.ApCalcTex.text(eqTex()) + ', with the solution curve through the starting point', width: w, height: h, x: view.x, y: view.y, xLabel: xv(), yLabel: yv() };
       var base = P.svg(spec);
       F = P.frame(spec);
       var eqs = d.eq(params[id] || {}).filter(function(v){ return v >= view.y[0] && v <= view.y[1]; });
-      var extra = fieldSvg(fn.f, view, F, density) +
+      dEff = Math.round(density * Math.max(1, (w - 48) / 470));   // about the same spacing on a wide stage
+      var extra = fieldSvg(fn.f, view, F, dEff) +
         eqs.map(function(v){ return '<line class="sf-eqline" x1="' + F.sx(view.x[0]) + '" x2="' + F.sx(view.x[1]) + '" y1="' + r2(F.sy(v)) + '" y2="' + r2(F.sy(v)) + '"/><text class="sf-eqlab" x="' + r2(F.sx(view.x[0]) + 30) + '" y="' + r2(F.sy(v) - 6) + '" text-anchor="start">' + esc(yv() + ' = ' + clean(v)) + ' (equilibrium)</text>'; }).join('') +
         '<rect class="sf-hit" x="' + F.pad.l + '" y="' + F.pad.t + '" width="' + (F.w - F.pad.l - F.pad.r) + '" height="' + (F.h - F.pad.t - F.pad.b) + '"/>' +
         '<g class="sf-dyn"></g>';
@@ -174,7 +187,7 @@
       svg.setAttribute('role', 'group'); // it holds a draggable point (a slider), so it is not a plain image
       svg.querySelector('.sf-hit').addEventListener('click', function(e){
         var pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY; var m = svg.getScreenCTM(), q = m ? pt.matrixTransform(m.inverse()) : pt;
-        var g = S.grid(view, density), X = F.ix(q.x), Y = F.iy(q.y);
+        var g = S.grid(view, dEff), X = F.ix(q.x), Y = F.iy(q.y);
         var gx = g.xs.reduce(function(a, b){ return Math.abs(b - X) < Math.abs(a - X) ? b : a; }), gy = g.ys.reduce(function(a, b){ return Math.abs(b - Y) < Math.abs(a - Y) ? b : a; });
         act(); sel = [gx, gy]; update(); announceSel();
       });
@@ -359,6 +372,8 @@
       B.dyn.innerHTML = shown.join('');
     }
     sized(el, function(w, h){
+      // equal units across and up: a slope of 1 is drawn at 45 degrees
+      w = h = Math.min(w, h);
       var spec = { label: 'Slope field of the differential equation in the problem' + (g.marks ? ', with the point' + (g.marks.length > 1 ? 's ' : ' ') + g.marks.map(function(m){ return m.label; }).join(' and ') + ' marked' : ''), width: w, height: h, x: view.x, y: view.y, xLabel: 'x', yLabel: 'y' };
       var F0 = P.frame(spec);
       var marks = (g.marks || []).map(function(m){ return '<circle class="sf-qmark" cx="' + r2(F0.sx(m.at[0])) + '" cy="' + r2(F0.sy(m.at[1])) + '" r="6"/><text class="sf-qlab" x="' + r2(F0.sx(m.at[0]) + 9) + '" y="' + r2(F0.sy(m.at[1]) - 9) + '">' + esc(m.label) + '</text>'; }).join('');
@@ -380,14 +395,24 @@
     for(k = Math.ceil(view.y[0]); k <= view.y[1]; k++) if(k) ticks += '<line y1="' + r2(F.sy(k)) + '" y2="' + r2(F.sy(k)) + '" x1="' + r2(F.sx(0) - 3) + '" x2="' + r2(F.sx(0) + 3) + '"/>';
     return '<svg class="calc-plot sf-thumb" viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '" role="img" aria-label="' + esc(label) + '">' +
       '<g class="calc-plot-axis"><line x1="' + pad + '" x2="' + (w - pad) + '" y1="' + r2(F.sy(0)) + '" y2="' + r2(F.sy(0)) + '"/><line y1="' + pad + '" y2="' + (h - pad) + '" x1="' + r2(F.sx(0)) + '" x2="' + r2(F.sx(0)) + '"/>' + ticks + '</g>' +
-      fieldSvg(f2(s), view, F, Math.min(w, h) < 90 ? 7 : Math.min(w, h) < 140 ? 9 : 11) + '</svg>';
+      fieldSvg(f2(s), view, F, Math.min(w, h) < 90 ? 7 : Math.min(w, h) < 140 ? 9 : Math.min(w, h) < 240 ? 11 : 13) + '</svg>';
   }
+  function phone(el){ var r = el && el.closest && el.closest('.ls-root'); return !!(r && r.classList.contains('ls-phone')) || window.innerWidth <= 640; }
+  /* The four fields as a 2 by 2 grid of squares, as big as the stage
+     allows (on a phone each is about 160 px or more, and the corner under
+     the Enlarge button is left free when that costs little). */
   function matchFig(el, p){
     var g = p.fig, view = g.view, key = false;
     sized(el, function(w, h){
-      var cw = Math.max(110, Math.floor((w - 10) / 2) - 8), ch = Math.max(80, Math.floor((h - 10) / 2) - 24);
-      el.innerHTML = '<div class="sf-match">' + g.des.map(function(s, i){
-        return '<figure class="sf-mfig' + (key && i === g.answer ? ' is-key' : '') + '" data-i="' + i + '"><figcaption>Field ' + (i + 1) + '</figcaption>' + thumb(s, view, cw, ch, 'Field ' + (i + 1) + ': a slope field on the square from minus 3 to 3') + '</figure>';
+      var st = el.closest && el.closest('.ls-drill-stage'), ph = phone(el), gap = 8, box = 12, cap = 22;
+      var side = Math.floor((w - gap) / 2) - box;
+      if(st && h > 0){
+        var fitH = Math.floor((h - gap) / 2) - box - cap, clear = Math.floor((h - 44 - gap) / 2) - box - cap;
+        side = Math.min(side, ph && clear >= 156 ? clear : fitH);
+      }
+      side = Math.max(110, side);
+      el.innerHTML = '<div class="sf-match" style="grid-template-columns:repeat(2,' + (side + box) + 'px)">' + g.des.map(function(s, i){
+        return '<figure class="sf-mfig' + (key && i === g.answer ? ' is-key' : '') + '" data-i="' + i + '"><figcaption>Field ' + (i + 1) + '</figcaption>' + thumb(s, view, side, side, 'Field ' + (i + 1) + ': a slope field on the square from minus 3 to 3') + '</figure>';
       }).join('') + '</div>';
     }, 0.95);
     return { after: function(s){ if(s.key === 'mf'){ key = true; var fg = el.querySelector('.sf-mfig[data-i="' + g.answer + '"]'); if(fg) fg.classList.add('is-key'); } } };
@@ -408,6 +433,7 @@
       if(r && !r.disabled) r.checked = true;
     }
     sized(el, function(w, h){
+      w = h = Math.min(w, h);
       var spec = { label: 'Slope field with the starting point (' + clean(g.x0) + ', ' + clean(g.y0) + ') and points you drag to draw the solution curve', width: w, height: h, x: view.x, y: view.y, xLabel: 'x', yLabel: 'y' };
       var F0 = P.frame(spec), focused = hs.map(function(hd){ return document.activeElement === hd.el; }).indexOf(true);
       var eq = (g.eq || []).map(function(v){ return '<line class="sf-eqline" x1="' + F0.sx(view.x[0]) + '" x2="' + F0.sx(view.x[1]) + '" y1="' + r2(F0.sy(v)) + '" y2="' + r2(F0.sy(v)) + '"/>'; }).join('');
@@ -446,11 +472,18 @@
       B.dyn.innerHTML = shown.join('');
     }
     sized(el, function(w, h){
+      // on a phone the bottom strip stays clear for the Enlarge button
+      var ph = phone(el) && !!(el.closest && el.closest('.ls-drill-stage'));
+      if(ph) h = Math.max(150, h - 40);
       var spec = { label: 'Graph of the amount against time, with the given data points', width: w, height: h, x: [0, tMax], y: [0, yMax], xLabel: 't (' + g.unit + ')', yLabel: 'y' };
       var F0 = P.frame(spec), y2 = g.grow ? 2 * g.y0 : g.y0 / 2;
       var pts = '<circle class="sf-qmark" cx="' + r2(F0.sx(0)) + '" cy="' + r2(F0.sy(g.y0)) + '" r="6"/><text class="sf-qlab" x="' + r2(F0.sx(0) + 9) + '" y="' + r2(F0.sy(g.y0) - 9) + '">(0, ' + g.y0 + ')</text>' +
         '<circle class="sf-qmark" cx="' + r2(F0.sx(g.T)) + '" cy="' + r2(F0.sy(y2)) + '" r="6"/><text class="sf-qlab" x="' + r2(F0.sx(g.T) + 9) + '" y="' + r2(F0.sy(y2) - 9) + '">(' + g.T + ', ' + clean(y2) + ')</text>';
-      B = plotBox(el, spec, pts); overlay();
+      B = plotBox(el, spec, pts);
+      // 4- and 5-digit tick numbers as 2k, 10k, so they fit the left margin
+      Array.prototype.forEach.call(B.svg.querySelectorAll('text'), function(t){ if(/^\d{4,}$/.test(t.textContent)) t.textContent = (+t.textContent / 1000) + 'k'; });
+      overlay();
+      var fg = el.querySelector('.sf-qfig'); if(fg) fg.classList.toggle('is-clear', ph);
     }, 0.75);
     return { after: function(s){ done.push(s.key); overlay(); } };
   }

@@ -51,6 +51,6 @@
 <circle cx="134.3" cy="96" r="5" fill="#0072B2" stroke="#0072B2" stroke-width="2"/>
 <rect x="144.4" y="394" width="273.2" height="20" fill="#fff" fill-opacity="0.92" rx="3"/><text x="148.4" y="408" font-size="13" text-anchor="start" fill="#8C1036" font-weight="bold">through (0, 1): rises toward y = 3</text>
 <rect x="144.4" y="72" width="288.8" height="20" fill="#fff" fill-opacity="0.92" rx="3"/><text x="148.4" y="86" font-size="13" text-anchor="start" fill="#0072B2" font-weight="bold">through (0, 5.5): falls toward y = 3</text>
-<rect x="363.6" y="222" width="234.2" height="20" fill="#fff" fill-opacity="0.92" rx="3"/><text x="367.6" y="236" font-size="13" text-anchor="start" fill="#009E73" font-weight="bold">y = 3: slope 0 at every point</text>
+<rect x="148.1" y="222" width="234.2" height="20" fill="#fff" fill-opacity="0.92" rx="3"/><text x="152.1" y="236" font-size="13" text-anchor="start" fill="#009E73" font-weight="bold">y = 3: slope 0 at every point</text>
 <rect x="363.6" y="55" width="171.2" height="23" fill="#fff" fill-opacity="0.92" rx="3"/><text x="367.6" y="72" font-size="16" text-anchor="start" fill="#1F2A28" font-weight="bold">dy/dx = (3 − y)/2</text>
 </svg>

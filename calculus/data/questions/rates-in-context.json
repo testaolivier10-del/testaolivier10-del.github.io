@@ -435,7 +435,7 @@
    "why": {
     "correct": "$L$ is in liters per hour, so $L'(3)$ is in liters per hour per hour: at 3 p.m. the leak rate is decreasing by 2 liters per hour each hour.",
     "options": [
-     "That would be a statement about the amount, not about how the leak rate changes.",
+     "$L$ is the leak rate, so a statement about the amount of water changing at 2 liters per hour is about $L(3)$, not $L'(3)$.",
      "$L$ is itself a rate, so $L'$ is a rate of change of a rate.",
      "That would be $L(3) = 2$.",
      "That is a total over an interval; $L'(3)$ is a rate at one instant."

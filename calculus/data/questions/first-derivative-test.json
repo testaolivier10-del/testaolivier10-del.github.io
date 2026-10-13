@@ -241,7 +241,7 @@
     "A relative minimum, because the derivative $g'(2)$ does not exist",
     "A relative maximum, because $g$ has a corner there",
     "A point where $g$ is not continuous",
-    "No relative extremum: $g'$ is negative on both sides"
+    "No relative extremum, because $g'$ is negative on both sides"
    ],
    "correct": 3,
    "why": {
@@ -404,7 +404,7 @@
       "why": "At $x \\approx 0.417$, $f'$ changes from negative to positive: that is a relative minimum."
      },
      {
-      "value": 156.07913338208567,
+      "value": 156.07972351056551,
       "why": "That is in degrees. Use radian mode."
      }
     ]

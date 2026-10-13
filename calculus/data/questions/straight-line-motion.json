@@ -77,14 +77,16 @@
       "ends": [
        "closed",
        null
-      ]
+      ],
+      "cls": "s1"
      },
      {
       "fn": "4",
       "domain": [
        2,
        5
-      ]
+      ],
+      "cls": "s1"
      },
      {
       "fn": "19 - 3x",
@@ -95,7 +97,8 @@
       "ends": [
        null,
        "closed"
-      ]
+      ],
+      "cls": "s1"
      }
     ],
     "points": [
@@ -507,7 +510,7 @@
     "slowing down, because $a(3)$ is negative",
     "slowing down, because $v(3)$ is negative",
     "at rest, because $v(3)$ and $a(3)$ are both negative",
-    "speeding up: $v(3)$ and $a(3)$ share a sign"
+    "speeding up, because $v(3)$ and $a(3)$ share a sign"
    ],
    "correct": 3,
    "why": {

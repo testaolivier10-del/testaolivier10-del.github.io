@@ -675,7 +675,7 @@
       }
     }
     function plotSpec(w, h){
-      var f = p.fig, base = f.kind === 'graph' ? f : f.kind === 'table' ? tableSpec() : f.plot, s = JSON.parse(JSON.stringify(base));
+      var f = p.fig, base = f.kind === 'graph' ? f : f.kind === 'table' ? tableSpec(w) : f.plot, s = JSON.parse(JSON.stringify(base));
       s.width = w; s.height = h;
       s.curves = (s.curves || []).slice(); s.lines = (s.lines || []).slice(); s.points = (s.points || []).slice(); s.labels = (s.labels || []).slice();
       var mk = figState.marks;
@@ -705,9 +705,12 @@
       if(p.type === 'notdiff' && mk.zoom){ var yc = p.f(p.c); if(!isFinite(yc)) yc = 0; o.push('<circle class="tt-ring-c" cx="' + X(p.c) + '" cy="' + Y(Math.max(Fr.y[0], Math.min(Fr.y[1], yc))) + '" r="16"/>'); }
       return o.join('');
     }
-    function tableSpec(){
-      var F = p.fig, lo = Math.min.apply(null, F.vs), hi = Math.max.apply(null, F.vs), pad = Math.max(2, (hi - lo) * 0.15);
-      return { label: 'The data from the table: ' + F.F + ' against ' + F.t + ', with the time t = ' + F.c + ' marked', x: [F.ts[0] - 0.5, F.ts[4] + 0.5], y: [Math.floor(lo - pad), Math.ceil(hi + pad)], xLabel: F.t + ' (' + F.tu + ')', yLabel: F.F + ' (' + F.unit + ')' };
+    // Narrow (a phone): the x-axis says just t (the table above names the
+    // unit) and the axis runs a little past the last time, so its label
+    // never sits on the last data point.
+    function tableSpec(w){
+      var F = p.fig, lo = Math.min.apply(null, F.vs), hi = Math.max.apply(null, F.vs), pad = Math.max(2, (hi - lo) * 0.15), nw = w < 520;
+      return { label: 'The data from the table: ' + F.F + ' against ' + F.t + ', with the time t = ' + F.c + ' marked', x: [F.ts[0] - 0.5, F.ts[4] + (nw ? 0.5 + (F.ts[4] - F.ts[0]) * 0.1 : 0.5)], y: [Math.floor(lo - pad), Math.ceil(hi + pad)], xLabel: nw ? F.t : F.t + ' (' + F.tu + ')', yLabel: F.F + ' (' + F.unit + ')' };
     }
     function drawGraph(w, h){
       var box = figEl.querySelector('.tt-fbox'); if(!box) return;

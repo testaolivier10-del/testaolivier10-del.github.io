@@ -63,8 +63,40 @@
     var lo = Math.min.apply(null, vals.concat([0])), hi = Math.max.apply(null, vals.concat([0])), sp = hi - lo || 1;
     return [lo - sp * 0.1, hi + sp * 0.14];
   }
+  /* Equal scales on both axes (a semicircle drawn round, grid squares
+     square) in a w x h plot: the shorter range is widened about its middle
+     to fill the box. With stretch > 1 one unit up may be up to that many
+     times one unit across before a range is widened (a short landscape
+     stage). ApCalcPlot's margins are 48 px across and 40 down. */
+  function equalAxes(xr, yr, w, h, stretch){
+    var iw = Math.max(40, w - 48), ih = Math.max(40, h - 40), px = iw / (xr[1] - xr[0]), py = ih / (yr[1] - yr[0]), k = stretch || 1;
+    if(py > px * k) py = px * k; else if(px > py * k) px = py * k;
+    var cx = (xr[0] + xr[1]) / 2, cy = (yr[0] + yr[1]) / 2, hx = iw / px / 2, hy = ih / py / 2, ppu = Math.min(px, py);
+    return { x: [cx - hx, cx + hx], y: [cy - hy, cy + hy], ppu: ppu, step: ppu >= 24 ? 1 : ppu >= 12 ? 2 : 5 };
+  }
+  function nice(raw){ var p = Math.pow(10, Math.floor(Math.log10(raw))), q = raw / p; return (q <= 1 ? 1 : q <= 2 ? 2 : q <= 2.5 ? 2.5 : q <= 5 ? 5 : 10) * p; }
+  /* a tick step that leaves at least 24 px between labels on a short plot */
+  function yStepFor(yr, h){ var span = yr[1] - yr[0]; return nice(Math.max(span / 7, span * 24 / Math.max(40, h - 40))); }
+  function phone(el){ var r = el && el.closest && el.closest('.ls-root'); return !!(r && r.classList.contains('ls-phone')) || window.innerWidth <= 640; }
+  /* A bigger, invisible touch target (44 px) on a drag handle. */
+  function hitArea(g){ var c = document.createElementNS(NS, 'circle'); c.setAttribute('r', '22'); c.setAttribute('class', 'ac-hit'); g.insertBefore(c, g.firstChild); }
+  /* sized(box, draw): draw(w, h) at a default size, again once the Tool
+     Studio has placed the figure, and whenever its box changes, so an SVG is
+     drawn at the size it is shown (its text stays readable on a phone). */
+  function sized(box, draw){
+    var last = '';
+    function dims(){
+      var st = box.closest && box.closest('.ls-drill-stage'), w = Math.round(box.clientWidth) || 540, h = st ? Math.round(box.clientHeight) : 0;
+      return [Math.max(200, w), h];
+    }
+    function go(force){ var d = dims(), k = d.join('x'); if(k === last && !force) return; last = k; draw(d[0], d[1]); }
+    draw(540, 0);
+    setTimeout(function(){ go(true); }, 0);
+    if(window.ResizeObserver){ var t = null; new ResizeObserver(function(){ clearTimeout(t); t = setTimeout(go, 40); }).observe(box); }
+  }
   /* the tank, its level the amount, an inlet sized by R and a drain by D */
-  function tankSvg(amt, cap, R, D, rmax, unit, moving){
+  function tankSvg(amt, cap, R, D, rmax, unit, moving, compact){
+    if(compact) return tankSmall(amt, cap, R, D, rmax, unit, moving);
     var W = 170, H = 236, x0 = 34, x1 = 140, top = 50, bot = 206, frac = Math.max(0, Math.min(1, amt / cap)), lev = bot - (bot - top) * frac;
     var wIn = 2 + 7 * Math.max(0, R) / rmax, wOut = 2 + 7 * Math.max(0, D) / rmax;
     var ticks = [0, 0.5, 1].map(function(t){ var y = bot - (bot - top) * t; return '<line class="ac-tk" x1="' + (x1 - 9) + '" x2="' + x1 + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '"/><text class="ac-tkt" x="' + (x1 + 4) + '" y="' + (y + 4).toFixed(1) + '">' + M.fmt(cap * t, 3) + '</text>'; }).join('');
@@ -76,6 +108,21 @@
       '<rect class="ac-tank" x="' + x0 + '" y="' + top + '" width="' + (x1 - x0) + '" height="' + (bot - top) + '" rx="6"/>' + ticks +
       '<path class="ac-pipe" d="M' + (x1 - 20) + ' ' + bot + ' V' + (bot + 14) + ' H' + (W + 10) + '"/><path class="ac-drain' + (moving ? ' is-on' : '') + '" style="stroke-width:' + wOut.toFixed(1) + '" d="M' + (x1 + 4) + ' ' + (bot + 14) + ' H' + (W + 12) + '"/><text class="ac-tkt" x="' + (W - 14) + '" y="' + (bot + 30) + '">out</text>' +
       '<text class="ac-tank-v" x="' + ((x0 + x1) / 2) + '" y="' + Math.min(bot - 8, Math.max(top + 18, lev + 22)).toFixed(1) + '" text-anchor="middle">' + esc(M.fmt(amt, 4)) + ' ' + esc(unit) + '</text></svg>';
+  }
+
+  /* The same tank for a narrow box (a phone): no tick numbers, the amount
+     in two big lines, sized for a box about 100 px wide. */
+  function tankSmall(amt, cap, R, D, rmax, unit, moving){
+    var x0 = 10, x1 = 90, top = 40, bot = 168, frac = Math.max(0, Math.min(1, amt / cap)), lev = bot - (bot - top) * frac;
+    var wIn = 2 + 6 * Math.max(0, R) / rmax, wOut = 2 + 6 * Math.max(0, D) / rmax, ty = Math.min(bot - 26, Math.max(top + 20, lev + 20));
+    return '<svg class="ac-tank-svg is-small" viewBox="0 0 100 196" role="img" aria-label="Tank holding ' + esc(M.fmt(amt, 4)) + ' ' + esc(unit) + '; it comes in at ' + esc(M.fmt(R, 3)) + ' and goes out at ' + esc(M.fmt(D, 3)) + ' ' + esc(unit) + ' per hour">' +
+      '<defs><clipPath id="acTankClipS"><rect x="' + x0 + '" y="' + top + '" width="' + (x1 - x0) + '" height="' + (bot - top) + '" rx="6"/></clipPath></defs>' +
+      '<path class="ac-pipe" d="M3 18 H24 Q30 18 30 24 V32"/><text class="ac-tkt" x="36" y="22">in</text>' +
+      '<path class="ac-pour' + (moving ? ' is-on' : '') + '" style="stroke-width:' + wIn.toFixed(1) + '" d="M30 32 V' + lev.toFixed(1) + '"/>' +
+      '<g clip-path="url(#acTankClipS)"><rect class="ac-water" x="' + x0 + '" y="' + lev.toFixed(1) + '" width="' + (x1 - x0) + '" height="' + (bot - lev + 2).toFixed(1) + '"/><path class="ac-wave" d="M' + x0 + ' ' + lev.toFixed(1) + ' q10 -4 20 0 t20 0 t20 0 t20 0"/></g>' +
+      '<rect class="ac-tank" x="' + x0 + '" y="' + top + '" width="' + (x1 - x0) + '" height="' + (bot - top) + '" rx="6"/>' +
+      '<path class="ac-pipe" d="M70 ' + bot + ' V' + (bot + 12) + ' H97"/><path class="ac-drain' + (moving ? ' is-on' : '') + '" style="stroke-width:' + wOut.toFixed(1) + '" d="M74 ' + (bot + 12) + ' H98"/><text class="ac-tkt" x="40" y="' + (bot + 17) + '" text-anchor="end">out</text>' +
+      '<text class="ac-tank-v" x="50" y="' + ty.toFixed(1) + '" text-anchor="middle">' + esc(M.fmt(amt, 4)) + '</text><text class="ac-tank-u" x="50" y="' + (ty + 16).toFixed(1) + '" text-anchor="middle">' + esc(unit) + '</text></svg>';
   }
 
   /* --------------------------------------------------------- explore */
@@ -198,9 +245,14 @@
     function build(){
       var it = cur.it, nm = names(), D = m.D, pad = (D[1] - D[0]) * 0.03;
       var whf = size($('.ac-fplot')), whg = size($('.ac-gplot'));
-      var fspec = { label: isTank() ? 'Rates in and out of the tank against time, with the net amount added so far shaded' : 'Graph of f with the signed area from a to x shaded', width: whf[0], height: whf[1], x: [D[0] - pad, D[1] + pad], y: m.yF, piX: !!it.piX,
-        xLabel: 't', yLabel: isTank() ? 'rate' : 'f', curves: isTank() ? [{ fn: m.R, domain: D, cls: 's2', label: 'R' }, { fn: m.Dout, domain: D, cls: 's4', label: 'D' }] : [{ fn: m.f, domain: D, cls: 's1', label: 'f' }] };
-      var gspec = { label: isTank() ? 'Graph of the amount A(t) in the tank, drawn as far as t has gone' : 'Graph of g, the accumulation function, drawn as far as x has gone', width: whg[0], height: whg[1], x: [D[0] - pad, D[1] + pad], y: m.yG, piX: !!it.piX,
+      // A graph of segments and semicircles is drawn to scale (a semicircle
+      // looks round, grid squares are 1 by 1); g shares its x range, so the
+      // two graphs line up, one above the other.
+      var xr = [D[0] - pad, D[1] + pad], yF = m.yF, st = {};
+      if(cur.type === 'graph'){ var eq = equalAxes(xr, m.yF, whf[0], whf[1], whf[0] > 3 * whf[1] ? 2 : 1.5); xr = eq.x; yF = eq.y; st = { xStep: eq.step, yStep: eq.step }; }
+      var fspec = { label: isTank() ? 'Rates in and out of the tank against time, with the net amount added so far shaded' : 'Graph of f with the signed area from a to x shaded', width: whf[0], height: whf[1], x: xr, y: yF, piX: !!it.piX, xStep: st.xStep, yStep: st.yStep || yStepFor(yF, whf[1]),
+        xLabel: 't', yLabel: isTank() ? 'rate' : 'f', curves: isTank() ? [{ fn: m.R, domain: D, cls: 's2', label: 'R' }, { fn: m.Dout, domain: D, cls: 's4', label: 'D' }] : [{ fn: m.f, domain: D, cls: 's1', label: cur.type === 'graph' ? '' : 'f' }] };
+      var gspec = { label: isTank() ? 'Graph of the amount A(t) in the tank, drawn as far as t has gone' : 'Graph of g, the accumulation function, drawn as far as x has gone', width: whg[0], height: whg[1], x: xr, y: m.yG, piX: !!it.piX, xStep: st.xStep, yStep: yStepFor(m.yG, whg[1]),
         xLabel: isTank() ? 't' : 'x', yLabel: isTank() ? 'A' : 'g', curves: showAll ? [{ fn: function(t){ return interp(t); }, domain: D, cls: 's5', dashed: true }] : [] };
       Ff = P.frame(fspec); Fg = P.frame(gspec);
       var fs = P.svg(fspec).replace('<g class="calc-plot-axis">', '<g class="ac-shade"></g><g class="calc-plot-axis">').replace('</svg>', '<g class="ac-fmarks"></g></svg>');
@@ -212,10 +264,10 @@
       // the handles: drag along the t-axis of the graph of f
       var yAxis = Math.max(m.yF[0], Math.min(m.yF[1], 0));
       hx = P.draggable(fSvg, Ff, { x: x, y: yAxis, axis: 'x', step: m.step, label: view === 'net' ? 'Upper limit, drag along the axis' : (isTank() ? 'Time t, drag along the axis' : 'x, drag along the axis'), constrain: function(nx){ return [snap(nx), yAxis]; }, onMove: function(nx){ act(); stop(); x = nx; lo = Math.min(lo, x); hi = Math.max(hi, x); if(sl) sl.set(x); live(); } });
-      hx.el.classList.add('ac-handle');
+      hx.el.classList.add('ac-handle'); hitArea(hx.el); hx.el.setAttribute('aria-valuemin', String(D[0])); hx.el.setAttribute('aria-valuemax', String(D[1]));
       if(view === 'net'){
         hx1 = P.draggable(fSvg, Ff, { x: x1, y: yAxis, axis: 'x', step: m.step, label: 'Lower limit of the net change, drag along the axis', constrain: function(nx){ return [snap(nx), yAxis]; }, onMove: function(nx){ act(); stop(); x1 = nx; if(sl1) sl1.set(x1); live(); } });
-        hx1.el.classList.add('ac-handle', 'is-from');
+        hx1.el.classList.add('ac-handle', 'is-from'); hitArea(hx1.el); hx1.el.setAttribute('aria-valuemin', String(D[0])); hx1.el.setAttribute('aria-valuemax', String(D[1]));
       } else hx1 = null;
       if(isTank()) $('.ac-tank').hidden = false;
       live();
@@ -237,7 +289,7 @@
       if(isTank()) shade = shadePolys(Ff, m.R, m.Dout, u0, x, 1);
       else shade = shadePolys(Ff, m.f, function(){ return 0; }, u0, x, x >= u0 ? 1 : -1);
       // lower limit marker, x marker
-      var mk = function(t, cls, lab){ return '<line class="ac-vl ' + cls + '" x1="' + Ff.sx(t).toFixed(1) + '" x2="' + Ff.sx(t).toFixed(1) + '" y1="' + Ff.pad.t + '" y2="' + (Ff.h - Ff.pad.b) + '"/>' + (lab ? '<text class="ac-vlab ' + cls + '" x="' + (Ff.sx(t) + 4).toFixed(1) + '" y="' + (Ff.pad.t + 11) + '">' + esc(lab) + '</text>' : ''); };
+      var mk = function(t, cls, lab){ return '<line class="ac-vl ' + cls + '" x1="' + Ff.sx(t).toFixed(1) + '" x2="' + Ff.sx(t).toFixed(1) + '" y1="' + Ff.pad.t + '" y2="' + (Ff.h - Ff.pad.b) + '"/>' + (lab ? '<text class="ac-vlab ' + cls + '" x="' + (Ff.sx(t) + 4).toFixed(1) + '" y="' + (Ff.h - Ff.pad.b - 5) + '">' + esc(lab) + '</text>' : ''); };
       if(!isTank()) fmarks += mk(view === 'net' ? x1 : a, 'is-a', view === 'net' ? '' : 'a');
       if(isFinite(fx) && !isTank()) fmarks += '<line class="ac-hgt" x1="' + Ff.sx(x).toFixed(1) + '" x2="' + Ff.sx(x).toFixed(1) + '" y1="' + Ff.sy(0).toFixed(1) + '" y2="' + Ff.sy(fx).toFixed(1) + '"/><circle class="ac-fpt" cx="' + Ff.sx(x).toFixed(1) + '" cy="' + Ff.sy(fx).toFixed(1) + '" r="4.5"/>';
       if(isTank()){ fmarks += '<circle class="ac-fpt is-in" cx="' + Ff.sx(x).toFixed(1) + '" cy="' + Ff.sy(m.R(x)).toFixed(1) + '" r="4"/><circle class="ac-fpt is-out" cx="' + Ff.sx(x).toFixed(1) + '" cy="' + Ff.sy(m.Dout(x)).toFixed(1) + '" r="4"/>'; }
@@ -264,7 +316,8 @@
       gSvg.querySelector('.ac-gmarks').innerHTML = gmarks;
       if(isTank()){
         var cap = niceCap(Math.max.apply(null, m.gs) * 1.15), rmax = Math.max(m.yF[1], 1);
-        $('.ac-tank').innerHTML = tankSvg(gx, cap, m.R(x), m.Dout(x), rmax, it.unitAbbr, !!anim);
+        var tb = $('.ac-tank');
+        tb.innerHTML = tankSvg(gx, cap, m.R(x), m.Dout(x), rmax, it.unitAbbr, !!anim, tb.clientWidth > 0 && tb.clientWidth < 140);
       }
       words();
     }
@@ -364,13 +417,19 @@
 
   /* ------------------------------------------------------ test yourself */
   /* A tank problem's scene: the two rates on [0, T] and the tank at t = 0. */
-  function tankFigure(k){
+  function tankFigure(el, k){
     var R = M.fn(k.Rx), D = M.fn(k.Dx), vals = [];
     for(var i = 0; i <= 60; i++){ var t = k.T * i / 60; vals.push(R(t)); vals.push(D(t)); }
-    var spec = { label: 'Graphs of the rate in R and the rate out D, in ' + k.rateUnit + ', for t from 0 to ' + k.T + ' ' + k.tUnit, width: 420, height: 260, x: [-0.2, k.T + 0.2], y: yRange(vals), xStep: 1,
-      xLabel: 't', yLabel: k.rateUnit, curves: [{ fn: R, domain: [0, k.T], cls: 's2', label: 'R' }, { fn: D, domain: [0, k.T], cls: 's4', label: 'D' }] };
     var rmax = Math.max.apply(null, vals);
-    return '<figure class="ac-qfig ac-qtank"><div class="ac-qrow">' + P.svg(spec) + '<div class="ac-qtk">' + tankSvg(k.A0, k.A0 * 2, R(0), D(0), rmax, k.unit, false) + '</div></div><figcaption class="bt-small">Rate in R (blue) and rate out D (orange); the tank at t = 0 holds ' + esc(String(k.A0)) + ' ' + esc(k.unit) + '.</figcaption></figure>';
+    el.innerHTML = '<figure class="ac-qfig ac-qtank"><div class="ac-qrow"><div class="ac-qplot"></div><div class="ac-qtk"></div></div><figcaption class="bt-small">Rate in R (blue) and rate out D (orange), in ' + esc(k.rateUnit) + '; the tank at t = 0 holds ' + esc(String(k.A0)) + ' ' + esc(k.unit) + '.</figcaption></figure>';
+    var box = el.querySelector('.ac-qplot'), tk = el.querySelector('.ac-qtk');
+    sized(box, function(w, h){
+      if(!h) h = Math.round(Math.min(300, Math.max(190, w * 0.62))); else h = Math.max(90, h);
+      var spec = { label: 'Graphs of the rate in R and the rate out D, in ' + k.rateUnit + ', for t from 0 to ' + k.T + ' ' + k.tUnit, width: w, height: h, x: [-0.2, k.T + 0.2], y: yRange(vals), xStep: 1,
+        xLabel: 't', yLabel: 'rate', curves: [{ fn: R, domain: [0, k.T], cls: 's2', label: 'R' }, { fn: D, domain: [0, k.T], cls: 's4', label: 'D' }] };
+      box.innerHTML = P.svg(spec);
+      tk.innerHTML = tankSvg(k.A0, k.A0 * 2, R(0), D(0), rmax, k.unit, false, tk.clientWidth > 0 && tk.clientWidth < 140);
+    });
   }
   function quiz(host, data){
     var o = { slug: 'accumulation', noun: 'drill',
@@ -384,14 +443,27 @@
     };
     T.drill(host, data, o);
   }
+  /* The graph of f (or h′) drawn to scale at the size it is shown: grid
+     squares are square, so a semicircle looks round. */
   function figure(el, p){
-    if(p.tank){ el.innerHTML = tankFigure(p.tank); return; }
+    if(p.tank){ tankFigure(el, p.tank); return; }
     if(!p.graph){ el.innerHTML = ''; return; }
     var Pc = p.graph, D = A.domain(Pc), vals = [];
     for(var i = 0; i <= 200; i++) vals.push(A.val(Pc, D[0] + (D[1] - D[0]) * i / 200));
-    var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
-    var fn = p.fname || 'f', spec = { label: A.graphDesc(Pc, fn).replace(/′/g, ' prime'), width: 540, height: Math.round(Math.max(240, 46 * (Math.ceil(hi) - Math.floor(lo) + 1))), x: [D[0] - 0.5, D[1] + 0.5], y: [Math.floor(lo) - 0.6, Math.ceil(hi) + 0.6], xStep: 1, yStep: 1,
-      xLabel: 'x', yLabel: 'y', curves: [{ fn: function(t){ return A.val(Pc, t); }, domain: D, cls: 's1', label: fn, ends: ['closed', 'closed'], samples: 600 }] };
-    el.innerHTML = '<figure class="ac-qfig">' + P.svg(spec) + '<figcaption class="bt-small">The graph of ' + esc(fn) + ' (grid squares are 1 by 1)' + (p.a != null && p.type !== 'netgraph' ? '; lower limit a = ' + nf(p.a) : '') + '.</figcaption></figure>';
+    var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals), fn = p.fname || 'f';
+    var xr = [D[0] - 0.5, D[1] + 0.5], yr = [Math.floor(lo) - 0.6, Math.ceil(hi) + 0.6];
+    el.innerHTML = '<figure class="ac-qfig"><div class="ac-qplot"></div><figcaption class="bt-small">The graph of ' + esc(fn) + ' (grid squares are 1 by 1)' + (p.a != null && p.type !== 'netgraph' ? '; lower limit a = ' + nf(p.a) : '') + '.</figcaption></figure>';
+    var box = el.querySelector('.ac-qplot');
+    sized(box, function(w, h){
+      // off the stage (or before it is placed): as tall as the graph needs
+      if(!h) h = Math.round(Math.min(560, 40 + (yr[1] - yr[0]) * Math.min(64, (w - 48) / (xr[1] - xr[0])))); else h = Math.max(90, h);
+      var eq = equalAxes(xr, yr, w, h), ph = phone(el);
+      // the end of the graph's label sits clear of the end point
+      var spec = { label: A.graphDesc(Pc, fn).replace(/′/g, ' prime'), width: w, height: h, x: eq.x, y: eq.y, xStep: 1, yStep: eq.ppu >= 18 ? 1 : 2,
+        xLabel: 'x', yLabel: 'y', curves: [{ fn: function(t){ return A.val(Pc, t); }, domain: D, cls: 's1', ends: ['closed', 'closed'], samples: 600 }] };
+      var F0 = P.frame(spec), mid = D[0] + (D[1] - D[0]) * 0.12, yl = A.val(Pc, mid);
+      box.innerHTML = P.svg(spec).replace('</svg>', '<text class="calc-plot-label ac-fname" x="' + F0.sx(mid).toFixed(1) + '" y="' + (F0.sy(yl) + (yl >= 0 ? -10 : 20)).toFixed(1) + '" text-anchor="middle">' + esc(fn) + '</text></svg>');
+      box.classList.toggle('is-phone', ph);
+    });
   }
 })();

@@ -185,7 +185,8 @@
     });
     return out || '0';
   }
-  function fac(k, r){ return '(x ' + (r < 0 ? '+ ' + (-r) : '- ' + r) + ')' + (k > 1 ? '^' + k : ''); }
+  /* A factor (x − r)^k as TeX; a zero at 0 is plain x, never (x − 0). */
+  function fac(k, r){ return (r === 0 ? 'x' : '(x ' + (r < 0 ? '+ ' + (-r) : '- ' + r) + ')') + (k > 1 ? '^' + k : ''); }
   function lead(k){ return k === 1 ? '' : k === -1 ? '-' : String(k); }
   /* Interval text from cut points and signs: "(-∞, -1) and (3, ∞)". */
   function ivText(pts, want, sg){
@@ -279,7 +280,7 @@
         ['$f\'\'(' + (crit[0] != null ? crit[0] : a) + ') ' + (6 * s * (crit[0] != null ? crit[0] : a) - 3 * s * (p + q) < 0 ? '< 0' : '> 0') + '$.', 'The second derivative test is local. The absolute maximum needs every candidate compared.']
       ], '3.E')
     ];
-    var sol = ['$f\'(x) = ' + polyTex(cp) + ' = ' + (s < 0 ? '-' : '') + '3(x ' + (p < 0 ? '+ ' + (-p) : '- ' + p) + ')(x ' + (q < 0 ? '+ ' + (-q) : '- ' + q) + ')$, so the critical points are $x = ' + p + '$ and $x = ' + q + '$.',
+    var sol = ['$f\'(x) = ' + polyTex(cp) + ' = ' + (s < 0 ? '-' : '') + '3' + (p === 0 ? fac(1, p) + fac(1, q) : q === 0 ? fac(1, q) + fac(1, p) : fac(1, p) + fac(1, q)) + '$, so the critical points are $x = ' + p + '$ and $x = ' + q + '$.',
       'Candidates in $[' + a + ', ' + b + ']$: ' + cand.map(function(x){ return '$f(' + x + ') = ' + n(f(x)) + '$'; }).join(', ') + '.',
       'Absolute maximum $' + n(mx) + '$ at $x = ' + xMax + '$; absolute minimum $' + n(mn) + '$ at $x = ' + xMin + '$ (candidates test).'];
     return { text: text, steps: steps, solution: sol, fig: { kind: 'f', f: f, dom: [a, b], closed: true, label: 'Graph of f on the closed interval' }, values: { c: c, a: a, b: b, p: p, q: q, max: mx, min: mn, xMax: xMax, xMin: xMin, cand: cand } };
@@ -356,7 +357,9 @@
       if(s1 && s2 && s1 !== s2) infl.push(pts[m][0]);
     }
     // a flat piece between rising and falling also counts once its ends differ: keep the simple rule (adjacent pieces)
-    var X = function(list){ return list.length ? '$x = ' + list.map(function(z){ return n(z); }).join('$ and $x = ') + '$' : 'nowhere'; };
+    // a zero between two grid points is a fraction (like 4/3): write it exactly
+    var fr = function(z){ for(var d = 1; d <= 12; d++){ var k = Math.round(z * d); if(Math.abs(k / d - z) < 1e-9) return d === 1 ? String(k) : (k < 0 ? '-' : '') + '\\frac{' + Math.abs(k) + '}{' + d + '}'; } return n(z); };
+    var X = function(list){ return list.length ? '$x = ' + list.map(fr).join('$ and $x = ') + '$' : 'nowhere'; };
     var text = H('<p>The graph of $f\'$, the derivative of $f$, is shown for $0 \\le x \\le 8$. It is made of straight pieces.</p>');
     var pos = []; for(var pi = 0; pi < pts.length - 1; pi++) if(pts[pi][1] >= 0 && pts[pi + 1][1] >= 0 && (pts[pi][1] || pts[pi + 1][1])) pos.push('(' + pts[pi][0] + ', ' + pts[pi + 1][0] + ')');
     pos = merge(pos);
@@ -404,7 +407,7 @@
       var text2 = H('<p>A farmer has ' + P + ' meters of fence to enclose a rectangular field along a straight river. No fence is needed along the river. Let <i>x</i> be the length of each side perpendicular to the river. What dimensions give the largest area?</p>');
       var steps2 = [
         exprStep('obj', 'Write the area $A(x)$.', 'A(x) =', 'x(' + P + ' - 2x)', [['x(' + P + ' - x)', 'Two sides are perpendicular to the river: the side along the river is ' + P + ' − 2x.'], ['x(' + P / 2 + ' - x)', 'That fences all four sides. The river side needs no fence: the parallel side is ' + P + ' − 2x.']], [1, P / 2 - 1]),
-        numStep('x', 'Find the critical point of $A$.', xf, [[P / 2, 'At $x = ' + P / 2 + '$ the area is 0: that is an endpoint.'], [P / 6, 'That would split the fence into three equal sides. Solve $A\'(x) = ' + P + ' - 4x = 0$.']], { practice: '1.E', unit: 'm' }),
+        numStep('x', 'Find the critical point of $A$.', xf, [[P / 2, 'At $x = ' + P / 2 + '$ the area is 0: that is an endpoint.'], [P / 3, 'That splits the fence into three equal sides, which is not the best shape. Solve $A\'(x) = ' + P + ' - 4x = 0$.']], { practice: '1.E', unit: 'm' }),
         numStep('A', 'What is the largest area?', A, [[P * P / 9, 'Use $x = ' + xf + '$: $A(' + xf + ') = ' + xf + '(' + P + ' - ' + 2 * xf + ')$.'], [xf * xf, 'The side along the river is ' + P + ' − 2x = ' + (P - 2 * xf) + ' m, not ' + xf + ' m.']], { practice: '1.E', unit: 'm²' }),
         choice('why', 'Why is this the absolute maximum?', [
           ['$A\'$ changes from positive to negative at $x = ' + xf + '$, the only critical point in $(0, ' + P / 2 + ')$, and $A = 0$ at both ends.', 'Right: a single critical point that is a relative maximum, with the endpoints checked.'],

@@ -77,7 +77,7 @@
    "prompt": "On the slope field, <b>sketch</b> the solution curve through $(0, 3)$ and the solution curve through $(0, 1)$.",
    "rubric": [
     {
-     "point": "Curve through $(0, 3)$: passes through the point, follows the segments and stays above $y = 2$; rising to the right of 0 (leaving the window near $x = \\frac{\\pi}{2}$) and falling to the left of 0 toward a low point near $\\left(-\\frac{\\pi}{2}, 2.4\\right)$; drawn across the field.",
+     "point": "Curve through $(0, 3)$: passes through the point, follows the segments and stays above $y = 2$; rising to the right of 0 (leaving the top of the window near $x = 0.77$, before $x = \\frac{\\pi}{2}$) and falling to the left of 0 toward a low point near $\\left(-\\frac{\\pi}{2}, 2.4\\right)$; drawn across the field.",
      "accept": [
       "a curve through (0, 3) consistent with the slope field, extending across the window"
      ]
@@ -105,11 +105,12 @@
     {
      "point": "Reason: $y = 2$ is itself a solution and solution curves of this equation do not cross, so a curve starting at $y = 1 < 2$ stays below $y = 2$.",
      "accept": [
-      "curves cannot cross the equilibrium solution y = 2"
+      "curves cannot cross the equilibrium solution y = 2",
+      "the solution through $(0, 1)$ is $y = 2 - e^{\\sin x}$ (separation, as in part (d)), and $e^{\\sin x} > 0$, so $y < 2$ for every $x$"
      ]
     }
    ],
-   "sample": "If $y = 2$, then $\\frac{dy}{dx} = (2 - 2)\\cos x = 0$ for every $x$, and the derivative of the constant 2 is 0, so $y = 2$ is a solution. Solution curves of this equation do not cross, so the curve through $(0, 1)$, which starts below 2, stays below $y = 2$."
+   "sample": "If $y = 2$, then $\\frac{dy}{dx} = (2 - 2)\\cos x = 0$ for every $x$, and the derivative of the constant 2 is 0, so $y = 2$ is a solution. Solution curves of this equation do not cross, so the curve through $(0, 1)$, which starts below 2, stays below $y = 2$. (A direct check: separating as in part (d) with $y(0) = 1$ gives $y = 2 - e^{\\sin x}$, which is less than 2 for every $x$.)"
   },
   {
    "label": "c",

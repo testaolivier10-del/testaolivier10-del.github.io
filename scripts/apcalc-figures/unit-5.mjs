@@ -66,8 +66,8 @@ function panel(box, xr, yr, o = {}) {
     const s = [];
     s.push(arrow(box.x - 4, ax, box.x + box.w + 10, ax, C.ink, 1.6));
     if (o.yAxis !== false) s.push(arrow(ay, box.y + box.h + 4, ay, box.y - 10, C.ink, 1.6));
-    for (const v of xt) { if (Math.abs(v) < 1e-9 && o.yAxis !== false) continue; s.push(line(sx(v), ax - 4, sx(v), ax + 4, C.ink, 1.4)); s.push(text(sx(v), ax + 18, o.xFmt ? o.xFmt(v) : num(v), { size: 12.5, anchor: 'middle', halo: true })); }
-    for (const v of yt) { if (Math.abs(v) < 1e-9) continue; s.push(line(ay - 4, sy(v), ay + 4, sy(v), C.ink, 1.4)); s.push(text(ay - 8, sy(v) + 4.5, num(v), { size: 12.5, anchor: 'end', halo: true })); }
+    for (const v of xt) { if (Math.abs(v) < 1e-9 && o.yAxis !== false) continue; s.push(line(sx(v), ax - 4, sx(v), ax + 4, C.ink, 1.4)); s.push(tickLabel(text(sx(v), ax + 18, o.xFmt ? o.xFmt(v) : num(v), { size: 12.5, anchor: 'middle', halo: true }))); }
+    for (const v of yt) { if (Math.abs(v) < 1e-9) continue; s.push(line(ay - 4, sy(v), ay + 4, sy(v), C.ink, 1.4)); s.push(tickLabel(text(ay - 8, sy(v) + 4.5, num(v), { size: 12.5, anchor: 'end', halo: true }))); }
     if (o.xLabel) s.push(text(box.x + box.w + 14, ax + 5, o.xLabel, { size: 15, italic: true }));
     if (o.yLabel && o.yAxis !== false) s.push(text(ay + 8, box.y - 4, o.yLabel, { size: 15 }));
     return s.join('');
@@ -99,7 +99,13 @@ function tangentSeg(P, f, df, a, L, o = {}) {
   const y0 = f(a), m = df(a);
   return line(P.sx(a - L), P.sy(y0 - m * L), P.sx(a + L), P.sy(y0 + m * L), o.color || C.blue, o.width || 2.2, o.dash);
 }
+/* Tick labels are marked here and moved to the end of the figure by svgDoc, so
+   dashed guide lines, curves and shading drawn after the axes never cross them
+   (their white halo then keeps them readable). */
+const tickLabel = s => `<g data-tick="1">${s}</g>`;
 function svgDoc(id, w, h, title, desc, body) {
+  const ticks = [];
+  body = body.replace(/<g data-tick="1">([\s\S]*?)<\/g>/g, (m, inner) => { ticks.push(inner); return ''; }) + (ticks.length ? '\n' + ticks.join('') : '');
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-labelledby="${id}-t ${id}-d" font-family="Arial, Helvetica, sans-serif">
 <title id="${id}-t">${esc(title)}</title>
 <desc id="${id}-d">${esc(desc)}</desc>
@@ -192,7 +198,7 @@ const range = (a, b, s = 1) => { const o = []; for (let v = a; v <= b + 1e-9; v 
   b.push(text(P.sx(2.25), P.sy(2.2), fName(), { size: 18, color: C.crimson, weight: 'bold', anchor: 'end' }));
   b.push(text(Q.sx(-2.2), Q.sy(8.6), fName(PRIME), { size: 18, color: C.blue, weight: 'bold' }));
   b.push(text(P.sx(-1.7), 60, 'increasing', { size: 14, anchor: 'middle', color: '#00664A', weight: 'bold' }), text(P.sx(0), 60, 'decreasing', { size: 14, anchor: 'middle', color: '#A34400', weight: 'bold' }), text(P.sx(1.7), 60, 'increasing', { size: 14, anchor: 'middle', color: '#00664A', weight: 'bold' }));
-  b.push(text(Q.sx(-1.45), Q.sy(6.5), `${fName(PRIME)} > 0`, { size: 15, anchor: 'middle', color: '#00664A', weight: 'bold', halo: true }), text(Q.sx(0.5), Q.sy(4.5), `${fName(PRIME)} < 0`, { size: 15, anchor: 'middle', color: '#A34400', weight: 'bold', halo: true }), text(Q.sx(1.45), Q.sy(6.5), `${fName(PRIME)} > 0`, { size: 15, anchor: 'middle', color: '#00664A', weight: 'bold', halo: true }));
+  b.push(text(Q.sx(-1.45), Q.sy(6.5), `${fName(PRIME)} > 0`, { size: 15, anchor: 'middle', color: '#00664A', weight: 'bold', halo: true }), text(Q.sx(0.5), Q.sy(4.5), `${fName(PRIME)} &lt; 0`, { size: 15, anchor: 'middle', color: '#A34400', weight: 'bold', halo: true }), text(Q.sx(1.45), Q.sy(6.5), `${fName(PRIME)} > 0`, { size: 15, anchor: 'middle', color: '#00664A', weight: 'bold', halo: true }));
   b.push(text(660, 120, `${fName()}(${it('x')}) = ${it('x')}³ ${MINUS} 3${it('x')}`, { size: 14, color: C.crimson }));
   b.push(text(660, 390, `${fName(PRIME)}(${it('x')}) = 3${it('x')}² ${MINUS} 3`, { size: 14, color: C.blue }));
   b.push(text(660, 270, 'Same x-scale:', { size: 13.5, color: C.grey }), text(660, 288, `read the sign of ${fName(PRIME)}`, { size: 13.5, color: C.grey }), text(660, 306, `straight up to ${fName()}`, { size: 13.5, color: C.grey }));
@@ -289,7 +295,7 @@ const range = (a, b, s = 1) => { const o = []; for (let v = a; v <= b + 1e-9; v 
   b.push(text(P.sx(-0.1), 80, 'tangent lines above the curve', { size: 12.5, anchor: 'middle', color: C.grey }), text(P.sx(2.1), 80, 'tangent lines below the curve', { size: 12.5, anchor: 'middle', color: C.grey }));
   b.push(curvePath(Q, fp, -1.1, 3.1, { color: C.blue }));
   b.push(dot(Q.sx(1), Q.sy(-3), { color: C.blue }));
-  b.push(text(Q.sx(-0.1), 350, `${fName(PRIME)} decreasing`, { size: 14, anchor: 'middle', color: '#A34400', weight: 'bold' }), text(Q.sx(2.1), 350, `${fName(PRIME)} increasing`, { size: 14, anchor: 'middle', color: '#00664A', weight: 'bold' }));
+  b.push(text(Q.sx(-0.5), 350, `${fName(PRIME)} decreasing`, { size: 14, anchor: 'middle', color: '#A34400', weight: 'bold', halo: true }), text(Q.sx(2.1), 350, `${fName(PRIME)} increasing`, { size: 14, anchor: 'middle', color: '#00664A', weight: 'bold' }));
   b.push(text(Q.sx(1) + 10, Q.sy(-3) + 16, `lowest point of ${fName(PRIME)}`, { size: 13, halo: true }));
   b.push(text(665, 120, `${fName()}(${it('x')}) = ${it('x')}³ ${MINUS} 3${it('x')}² + 2`, { size: 14, color: C.crimson }));
   b.push(text(665, 390, `${fName(PRIME)}(${it('x')}) = 3${it('x')}² ${MINUS} 6${it('x')}`, { size: 14, color: C.blue }));
@@ -307,7 +313,7 @@ const range = (a, b, s = 1) => { const o = []; for (let v = a; v <= b + 1e-9; v 
   const b = [];
   const cases = [
     { title: `${fName(PRIME)}(${it('c')}) = 0, ${fName(DPRIME)}(${it('c')}) > 0`, verdict: 'relative minimum', sub: 'concave up at a flat point', curves: [{ f: x => x * x - 0.9, col: C.crimson }] },
-    { title: `${fName(PRIME)}(${it('c')}) = 0, ${fName(DPRIME)}(${it('c')}) < 0`, verdict: 'relative maximum', sub: 'concave down at a flat point', curves: [{ f: x => -x * x + 0.9, col: C.crimson }] },
+    { title: `${fName(PRIME)}(${it('c')}) = 0, ${fName(DPRIME)}(${it('c')}) &lt; 0`, verdict: 'relative maximum', sub: 'concave down at a flat point', curves: [{ f: x => -x * x + 0.9, col: C.crimson }] },
     { title: `${fName(PRIME)}(${it('c')}) = 0, ${fName(DPRIME)}(${it('c')}) = 0`, verdict: 'the test says nothing', sub: 'any of the three can happen', curves: [{ f: x => x ** 4, col: C.blue, lab: `${it('x')}⁴: min` }, { f: x => -(x ** 4), col: C.green, lab: `${MINUS}${it('x')}⁴: max` }, { f: x => x ** 3, col: C.verm, lab: `${it('x')}³: neither` }] },
   ];
   cases.forEach((cs, i) => {

@@ -1,0 +1,120 @@
+{
+ "about": "Justification trainer prompts for Unit 5 (docs/apcalc-architecture.md, \"Justification trainer\"). Every number is recomputed in scripts/lib/apcalc-exams.mjs (JUSTIFY_NUMBERS).",
+ "prompts": [
+  {
+   "unit": "unit-5",
+   "id": "u5-mvt-altitude",
+   "topic": "mean-value-theorem",
+   "practice": "3.C",
+   "skill": "theorems",
+   "title": "A balloon that must climb at the average rate",
+   "context": "<p>A balloon's altitude $h(t)$, in meters, is a differentiable function of time $t$, in minutes. $h(2) = 10$ and $h(6) = 30$.</p>",
+   "prompt": "<b>Justify</b> that at some time $t$ in $(2, 6)$ the balloon climbs at exactly 5 meters per minute.",
+   "checklist": [
+    "States that $h$ is differentiable, so it is continuous on $[2, 6]$ and differentiable on $(2, 6)$",
+    "Computes the average rate of change: $\\frac{h(6) - h(2)}{6 - 2} = \\frac{30 - 10}{4} = 5$",
+    "Names the Mean Value Theorem and concludes $h'(c) = 5$ for some $c$ in $(2, 6)$"
+   ],
+   "earns": {
+    "answer": "$h$ is differentiable, so it is continuous on $[2, 6]$ and differentiable on $(2, 6)$. The average rate of change is $\\frac{h(6) - h(2)}{6 - 2} = \\frac{30 - 10}{4} = 5$. By the Mean Value Theorem there is a $c$ in $(2, 6)$ with $h'(c) = 5$: at that time the balloon climbs at 5 meters per minute.",
+    "why": "Both hypotheses are stated with their intervals before the theorem is used, and the conclusion is in context."
+   },
+   "misses": {
+    "answer": "The average rate is $\\frac{30 - 10}{6 - 2} = 5$, so by the Mean Value Theorem the balloon climbs at 5 meters per minute at some time.",
+    "why": "It never checks the hypotheses. The Mean Value Theorem needs $h$ continuous on $[2, 6]$ and differentiable on $(2, 6)$, and the answer must say so."
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-relative-max-sign-change",
+   "topic": "first-derivative-test",
+   "practice": "3.E",
+   "skill": "extrema",
+   "title": "Which critical point is a maximum",
+   "context": "<p>The derivative of a function $f$ is $f'(x) = (3 - x)(x + 1)^2$.</p>",
+   "prompt": "<b>Find</b> each $x$ at which $f$ has a relative maximum, and <b>justify</b> your answer.",
+   "checklist": [
+    "Finds the critical points: $x = 3$ and $x = -1$",
+    "Says $f'$ changes from positive to negative at $x = 3$, so $f$ has a relative maximum there",
+    "Explains that $f'$ does not change sign at $x = -1$ (it is positive on both sides), so there is no extremum there"
+   ],
+   "earns": {
+    "answer": "$f'(x) = 0$ at $x = -1$ and $x = 3$. Since $(x + 1)^2 \\ge 0$, the sign of $f'$ is the sign of $3 - x$: $f' > 0$ for $x < -1$ and for $-1 < x < 3$, and $f' < 0$ for $x > 3$. $f'$ changes from positive to negative at $x = 3$, so $f$ has a relative maximum at $x = 3$. $f'$ does not change sign at $x = -1$, so $f$ has no relative extremum there.",
+    "why": "It names the function whose sign changes ($f'$), says from what to what, and rules out the other critical point."
+   },
+   "misses": {
+    "answer": "$f'(3) = 0$, so $f$ has a relative maximum at $x = 3$.",
+    "why": "$f' = 0$ alone does not give a maximum: $f'(-1) = 0$ too, and there $f$ has no extremum. The reason must be the sign change of $f'$."
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-candidates-absolute-min",
+   "topic": "candidates-test",
+   "practice": "3.E",
+   "skill": "extrema",
+   "title": "An absolute minimum reached twice",
+   "context": "<p>Let $f(x) = x^3 - 3x^2$ on the closed interval $[-1, 4]$.</p>",
+   "prompt": "<b>Find</b> the absolute minimum value of $f$ on $[-1, 4]$, and <b>justify</b> your answer.",
+   "checklist": [
+    "Finds the critical points from $f'(x) = 3x^2 - 6x = 3x(x - 2) = 0$: $x = 0$ and $x = 2$",
+    "Evaluates $f$ at the critical points and both endpoints: $f(-1) = -4$, $f(0) = 0$, $f(2) = -4$, $f(4) = 16$",
+    "Concludes the absolute minimum value is $-4$, reached at $x = -1$ and at $x = 2$"
+   ],
+   "earns": {
+    "answer": "$f'(x) = 3x^2 - 6x = 3x(x - 2)$, so the critical points are $x = 0$ and $x = 2$. Candidates: $f(-1) = -4$, $f(0) = 0$, $f(2) = -4$ and $f(4) = 16$. The absolute minimum value of $f$ on $[-1, 4]$ is $-4$, at $x = -1$ and at $x = 2$.",
+    "why": "It is a candidates test: every critical point and both endpoints, compared in one list."
+   },
+   "misses": {
+    "answer": "$f'$ changes from negative to positive at $x = 2$, so $f$ has its absolute minimum at $x = 2$, where $f(2) = -4$.",
+    "why": "A sign change shows a relative minimum, not an absolute one. The endpoint $x = -1$ was never checked, and it gives the same lowest value."
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-inflection-sign-change",
+   "topic": "concavity",
+   "practice": "3.E",
+   "skill": "behavior",
+   "title": "Inflection needs a sign change",
+   "context": "<p>The second derivative of a function $f$ is $f''(x) = x^2(x - 3)$.</p>",
+   "prompt": "<b>Find</b> the $x$-coordinate of each point of inflection of the graph of $f$, and <b>justify</b> your answer.",
+   "checklist": [
+    "Finds the zeros of $f''$: $x = 0$ and $x = 3$",
+    "Checks the sign of $f''$: negative on both sides of 0, negative before 3 and positive after",
+    "Concludes the only point of inflection is at $x = 3$, where $f''$ changes sign"
+   ],
+   "earns": {
+    "answer": "$f''(x) = 0$ at $x = 0$ and $x = 3$. Since $x^2 \\ge 0$, the sign of $f''$ is the sign of $x - 3$: $f'' < 0$ for $x < 0$ and $0 < x < 3$, and $f'' > 0$ for $x > 3$. $f''$ changes sign only at $x = 3$, so the graph of $f$ has a point of inflection at $x = 3$ and not at $x = 0$.",
+    "why": "A point of inflection is where $f''$ changes sign (the concavity changes), and the answer checks both zeros."
+   },
+   "misses": {
+    "answer": "$f''(x) = 0$ at $x = 0$ and $x = 3$, so there are points of inflection at $x = 0$ and $x = 3$.",
+    "why": "$f'' = 0$ is only a candidate. At $x = 0$, $f''$ is negative on both sides, so the graph stays concave down."
+   }
+  },
+  {
+   "unit": "unit-5",
+   "id": "u5-vertical-tangent",
+   "topic": "implicit-relations",
+   "practice": "3.E",
+   "skill": "behavior",
+   "title": "Where a curve has a vertical tangent",
+   "context": "<p>For the curve $x^2 + xy + y^2 = 12$, $\\frac{dy}{dx} = -\\frac{2x + y}{x + 2y}$.</p>",
+   "prompt": "<b>Find</b> the points on the curve where the tangent line is vertical, and <b>justify</b> your answer.",
+   "checklist": [
+    "Sets the denominator to 0: $x + 2y = 0$, so $x = -2y$",
+    "Substitutes into the curve: $4y^2 - 2y^2 + y^2 = 3y^2 = 12$, so $y = \\pm 2$, giving $(-4, 2)$ and $(4, -2)$",
+    "Checks the numerator is not 0 at each point: $2x + y = -6$ and $6$"
+   ],
+   "earns": {
+    "answer": "A vertical tangent needs the denominator $x + 2y = 0$ with the numerator not 0. With $x = -2y$ the curve gives $4y^2 - 2y^2 + y^2 = 12$, so $y^2 = 4$ and $y = \\pm 2$. The points are $(-4, 2)$ and $(4, -2)$. There $2x + y$ is $-6$ and $6$, not 0, so the tangent lines are vertical.",
+    "why": "It uses the denominator, substitutes back into the curve to get real points, and checks the numerator."
+   },
+   "misses": {
+    "answer": "Vertical tangents are where $\\frac{dy}{dx} = 0$: $2x + y = 0$, so $y = -2x$, and the points are $(2, -4)$ and $(-2, 4)$.",
+    "why": "$\\frac{dy}{dx} = 0$ gives horizontal tangents. A vertical tangent is where the denominator is 0 and the numerator is not."
+   }
+  }
+ ]
+}

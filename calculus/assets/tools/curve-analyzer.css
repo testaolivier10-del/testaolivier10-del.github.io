@@ -103,3 +103,19 @@
   .ca-graphs-wrap{min-height:200px;}
   .ca-ograph-wrap{min-height:130px;}
 }
+
+/* Phones (docs/tools-phone-pass.md): labels at least 12 px, one graph at a
+   time when asked (the switch in the dock), the legend back and clear of
+   the Enlarge button. */
+.ca-gview,.ls-root:not(.ls-phone) .ca-gview.ls-seg,.ca-card:not(.ls-root *) .ca-gview.ls-seg{display:none;}
+.ls-root.ls-phone .ca-gview:not([hidden]){display:flex;}
+.ls-root.ls-phone .ca-gview > .bt-mode{flex:1;min-width:0;padding:0 4px;font-size:13.5px;}
+.ls-root.ls-phone .ca-tk,.ls-root.ls-phone .ca-xaxis text{font-size:12px;}
+.ls-root.ls-phone .ca-flab,.ls-root.ls-phone .ca-abs,.ls-root.ls-phone .ca-sgt,.ls-root.ls-phone .ca-rowk{font-size:12px;}
+.ls-root.ls-phone .ca-pl{font-size:14px;}
+.ls-root.ls-phone .ca-st{font-size:15px;}
+.ls-root.ls-phone .ca-legend{display:flex;font-size:12px;gap:2px 10px;padding-right:56px;min-height:46px;align-content:center;}
+.ls-root.ls-phone .ca-figwrap .calc-plot{font-size:13px;}
+.ls-root.ls-phone .ca-graphs-wrap{min-height:120px;}
+.ls-root.ls-phone .ca-scene-wrap{min-height:90px;}
+.ls-root.ls-phone .ca-ograph-wrap{min-height:110px;}

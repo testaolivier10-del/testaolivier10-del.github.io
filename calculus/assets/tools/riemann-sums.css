@@ -65,3 +65,13 @@
 .rs-qtable th,.rs-qtable td{border:1px solid var(--line);padding:6px 10px;text-align:center;font-variant-numeric:tabular-nums;}
 .rs-qtable caption{font:800 13px var(--font-ui);padding-bottom:4px;}
 .cd-o{display:inline;}
+
+/* Phones (docs/tools-phone-pass.md): labels at least 12 px. */
+.ls-root.ls-phone .rs-plot .calc-plot,.ls-root.ls-phone .rs-qfig .calc-plot{font-size:12.5px;}
+.ls-root.ls-phone .rs-qfig svg{max-height:none;}
+.ls-root.ls-phone .rs-fig.has-tank .rs-tank{flex-basis:112px;}
+.ls-root.ls-phone .rs-tank-svg .rs-tkt{font-size:20.5px;}
+.ls-root.ls-phone .rs-tank-svg .rs-tk-minor{display:none;}
+.ls-root.ls-phone .rs-tank-svg .rs-tank-v{font-size:21px;}
+/* keep the plot's right end clear of the Enlarge button */
+@media (max-width:640px){ .ls-root.ls-phone .rs-fig{padding-bottom:40px;} }

@@ -3,15 +3,15 @@
  "hook": "A ladder slides down a wall; water pours into a cone; a shadow stretches as someone walks from a lamppost. Unit 4 asks how fast those quantities change, and Unit 8 builds solids from slices. Before any calculus happens, each problem needs one geometric equation linking its variables. This page collects the formulas and the two big tools: the Pythagorean theorem and similar triangles.",
  "prereq": [
   {
-   "q": "Solve $\\frac{6}{s} = \\frac{15}{10 + s}$ for $s$.",
+   "q": "Solve $\\frac{4}{s} = \\frac{12}{8 + s}$ for $s$.",
    "options": [
-    "$\\frac{20}{3}$",
     "$4$",
-    "$\\frac{5}{2}$",
-    "$10$"
+    "$\\frac{8}{3}$",
+    "$2$",
+    "$8$"
    ],
    "correct": 0,
-   "why": "$60 + 6s = 15s$, so $s = \\frac{60}{9}$.",
+   "why": "Cross-multiply: $4(8 + s) = 12s$, so $32 = 8s$ and $s = 4$.",
    "review": "math-functions"
   },
   {

@@ -63,6 +63,34 @@
         cross: dk ? [242, 154, 92] : [213, 94, 0], slice: dk ? 'rgba(255,214,102,0.8)' : 'rgba(240,173,0,0.78)', sliceEdge: dk ? '#FFE08A' : '#7A5200',
         ink: dk ? '#ECECEC' : '#1E1E1E', faint: dk ? 'rgba(236,236,236,0.55)' : 'rgba(30,30,30,0.55)', axis: dk ? '#C3A3E0' : '#5B3A86', bg: dk ? '#1c1c1e' : '#ffffff' };
     }
+    /* The scale that fits the solid (and the axis past its ends) in the
+       canvas however it is turned left or right at the present tilt, so a
+       long solid fills a wide canvas instead of a circle as tall as the
+       canvas. Cached; it changes only with the tilt, the size or the solid. */
+    var fitKey = '', fitSc = 1;
+    function fit(c, lay, w, h, rad){
+      var k = [key, w, h, Math.round(pitch * 50), lay].join('|');
+      if(k === fitKey) return fitSc;
+      var pts = [], qs = meshC.quads, cp = Math.cos(pitch), sp = Math.sin(pitch);
+      for(var i = 0; i < qs.length; i += 2) pts.push(qs[i].p[0], qs[i].p[2]);
+      if(st.setup.kind === 'rev'){
+        var reg = st.reg, ax = st.setup.axis, e = (reg.b - reg.a) * 0.18;
+        pts.push(ax.dir === 'h' ? [reg.a - e, ax.at, 0] : [ax.at, reg.a - e, 0], ax.dir === 'h' ? [reg.b + e, ax.at, 0] : [ax.at, reg.b + e, 0]);
+      }
+      var ex = 1e-6, ey = 1e-6;
+      for(var j = 0; j < 16; j++){
+        var a = Math.PI * j / 16, ca = Math.cos(a), sa = Math.sin(a);
+        pts.forEach(function(p0){
+          var p = lay ? [p0[0], p0[2], -p0[1]] : p0, x = p[0] - c[0], y = p[1] - c[1], z = p[2] - c[2];
+          var x1 = ca * x + sa * z, z1 = -sa * x + ca * z, y2 = cp * y - sp * z1;
+          if(Math.abs(x1) > ex) ex = Math.abs(x1); if(Math.abs(y2) > ey) ey = Math.abs(y2);
+        });
+      }
+      // a margin for the perspective (near parts look up to 1.25 times bigger) and the labels
+      fitSc = Math.min(0.46 * w / ex, 0.42 * h / ey, Math.max(w, h) / rad) / 1.1;
+      fitKey = k;
+      return fitSc;
+    }
     function draw(){
       if(!st) return;
       var w = Math.max(160, host.clientWidth || 320), h = Math.max(160, host.clientHeight || 280), dpr = Math.min(2, window.devicePixelRatio || 1);
@@ -78,7 +106,7 @@
       var lay = setup.kind === 'cross';
       if(lay){ var m0 = mn, m1 = mx; mn = [m0[0], m0[2], -m1[1]]; mx = [m1[0], m1[2], -m0[1]]; }
       var c = [(mn[0] + mx[0]) / 2, (mn[1] + mx[1]) / 2, (mn[2] + mx[2]) / 2], rad = Math.max(1e-6, Math.sqrt(Math.pow(mx[0] - mn[0], 2) + Math.pow(mx[1] - mn[1], 2) + Math.pow(mx[2] - mn[2], 2)) / 2);
-      var sc = 0.46 * Math.min(w, h) / rad, cy = Math.cos(yaw), sy = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch), foc = 5 * rad;
+      var sc = fit(c, lay, w, h, rad), cy = Math.cos(yaw), sy = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch), foc = 5 * rad;
       function view(p){
         if(lay) p = [p[0], p[2], -p[1]];
         var x = p[0] - c[0], y = p[1] - c[1], z = p[2] - c[2];
@@ -151,7 +179,7 @@
   function sliceHandle(svg, F, o){
     var g = document.createElementNS(NS, 'g'), u = o.u;
     g.setAttribute('class', 'av-handle'); g.setAttribute('tabindex', '0'); g.setAttribute('role', 'slider');
-    g.innerHTML = '<circle class="av-halo" r="18"/><circle class="av-dot" r="8"/>';
+    g.innerHTML = '<circle class="av-hitc" r="22"/><circle class="av-halo" r="18"/><circle class="av-dot" r="8"/>';
     svg.appendChild(g);
     function pos(){ var w = o.at(u); return o.v === 'x' ? [F.sx(u), F.sy(w)] : [F.sx(w), F.sy(u)]; }
     function place(){ var p = pos(); g.setAttribute('transform', 'translate(' + r2(p[0]) + ' ' + r2(p[1]) + ')'); g.setAttribute('aria-valuenow', String(+u.toFixed(3))); g.setAttribute('aria-valuemin', String(+o.lo.toFixed(3))); g.setAttribute('aria-valuemax', String(+o.hi.toFixed(3))); g.setAttribute('aria-valuetext', o.label(u)); g.setAttribute('aria-label', 'The slice: ' + o.label(u)); }
@@ -470,7 +498,7 @@
       var out = '';
       [['F', R.ttex], ['Gf', R.btex]].forEach(function(c, i){
         if(R.bot === '0' && i === 1) return;
-        var u = R.a + (R.b - R.a) * (i ? 0.7 : 0.3), w = reg[c[0]](u), pt = reg.v === 'x' ? [F.sx(u), F.sy(w)] : [F.sx(w), F.sy(u)];
+        var u = R.a + (R.b - R.a) * (i ? 0.8 : 0.22), w = reg[c[0]](u), pt = reg.v === 'x' ? [F.sx(u), F.sy(w)] : [F.sx(w), F.sy(u)];
         out += '<text class="av-clab ' + (i ? 'av-g' : 'av-f') + '" x="' + r2(pt[0] + (reg.v === 'x' ? (i ? 10 : -10) : 10)) + '" y="' + r2(pt[1] + (i ? 18 : -10)) + '" text-anchor="' + (reg.v === 'x' && !i ? 'end' : 'start') + '">' + esc((reg.v === 'x' ? 'y = ' : 'x = ') + (window.ApCalcTex ? window.ApCalcTex.text(c[1]) : c[1])) + '</text>';
       });
       return out;

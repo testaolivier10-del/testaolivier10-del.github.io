@@ -176,7 +176,7 @@
     "Jump",
     "Removable",
     "Infinite",
-    "No discontinuity; the graph has a gap"
+    "No discontinuity; $f$ is simply not defined at 3"
    ],
    "correct": 2,
    "why": {
@@ -185,7 +185,7 @@
      "A jump needs two finite one-sided limits. These values grow without bound.",
      "There is no finite limit at 3 to fill a hole with.",
      "$f$ is unbounded near 3: an infinite discontinuity, with a vertical asymptote.",
-     "A gap in the graph is a discontinuity, and here it is an infinite one."
+     "Not being defined at 3 already breaks continuity there, and $f$ is unbounded nearby: an infinite discontinuity."
     ]
    }
   },

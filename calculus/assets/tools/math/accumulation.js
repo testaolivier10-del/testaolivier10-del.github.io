@@ -335,7 +335,7 @@
       ],
       solution: ['By the Fundamental Theorem, g′(x) = f(x), whatever the lower limit: g′(' + c1 + ') = f(' + c1 + ') = ' + M.fmt(f1, 4) + '.',
         'g″(x) = f′(x), the slope of the graph of f. On [' + L.x0 + ', ' + L.x1 + '] f is a segment of slope (' + L.y1 + ' − ' + L.y0 + ')/(' + L.x1 + ' − ' + L.x0 + ') = ' + M.fmt(m1, 4) + ', so g″(' + c1 + ') = ' + M.fmt(m1, 4) + '.',
-        'g′(' + c2 + ') = f(' + c2 + ') = ' + M.fmt(f2, 4) + ': the centre of the semicircle, one radius ' + (f2 > 0 ? 'above' : 'below') + ' the axis.'] };
+        'g′(' + c2 + ') = f(' + c2 + ') = ' + M.fmt(f2, 4) + ': the center of the semicircle, one radius ' + (f2 > 0 ? 'above' : 'below') + ' the axis.'] };
   }
 
   /* d/dx of ∫ from a to u(x) of h(t) dt = h(u(x))·u′(x) */

@@ -479,7 +479,7 @@
    "practice": "3.F",
    "level": "apply",
    "diff": 1,
-   "q": "An optimization problem asks: \"What dimensions give the largest area?\" Which answer is complete?",
+   "q": "A fencing problem asks: \"What dimensions give the pen the largest area?\" The work shows $x = 100$ feet, $y = 300$ feet and $A = 30{,}000$ square feet. Which answer is complete?",
    "options": [
     "\"$x = 100$\"",
     "\"30,000\"",

@@ -695,7 +695,7 @@
 
   /* ------------------------------------------------------ results */
 
-  function band(p){ return p >= 64 ? 5 : p >= 48 ? 4 : p >= 37 ? 3 : p >= 27 ? 2 : 1; }
+  function band(p){ return p >= 66 ? 5 : p >= 49 ? 4 : p >= 40 ? 3 : p >= 23 ? 2 : 1; }
   function finish(){
     if(!run || run.done) return;
     run.done = true;
@@ -752,7 +752,7 @@
       (fo ? '<div class="calc-pr-score calc-ex-fsum"><span class="calc-pr-score-big">' + fg + '<small>/' + fo + '</small></span><span><b>Free response (your self-score): ' + pctOf(fg, fo) + '%</b><span class="calc-small">' + plural(run.frqs.length, 'question') + ' scored with the rubrics' + (run.timeUp2 ? ' · time ran out in Section II' : '') + '</span></span></div>' : '') +
       (k === 'full' ? '<section class="calc-ex-band" aria-labelledby="calc-ex-band-h"><h2 id="calc-ex-band-h">Readiness estimate: band ' + b + ' of 5</h2>' +
         '<p class="calc-ex-band-warn"><b>' + NOT_CALIBRATED + '</b></p>' +
-        '<p class="calc-small">How it is worked out: multiple choice and free response count half each, as the two sections do on the exam, giving ' + composite + '%; then 64% and up is band 5, 48% band 4, 37% band 3, 27% band 2, below that band 1. These cut-offs are placeholders until they are fitted to the published score distributions; the real ones are not published and change a little each year' +
+        '<p class="calc-small">How it is worked out: multiple choice and free response count half each, as the two sections do on the exam, giving ' + composite + '%; then 66% and up is band 5, 49% band 4, 40% band 3, 23% band 2, below that band 1. These cut-offs are our estimate, fitted to the published 2024 to 2026 score distributions; the real ones are not published and change a little each year' +
         (run.meta.partial ? ', and this was a shorter exam that leaves out units with no questions yet' : '') + '. The <a href="' + BASE + 'score-calculator.html">score calculator</a> explains the method.</p></section>' : '') +
       (missedN ? '<p>' + plural(rows.filter(function(x){ return !x.r.correct && !x.q.own; }).length, 'missed question') + ' went to your <a href="' + BASE + 'review.html">review queue</a>' + (rows.some(function(x){ return !x.r.correct && x.q.own; }) ? ' (questions written only for this exam stay here, in the review below)' : '') + '.</p>' : '<p>Every multiple-choice question right.</p>') +
       (weak.length ? '<h2>Study next</h2><ul class="calc-pr-next-list">' + weak.map(function(x){

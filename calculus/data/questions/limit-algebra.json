@@ -159,7 +159,7 @@
     "No finite limit: the top heads to $-4$, the bottom to 0.",
     "It equals $\\frac{1}{4}$, found by factoring and then substituting $x = -2$.",
     "It equals 0, because $x = -2$ makes the denominator of $f$ equal to 0.",
-    "It equals $-\\frac{3}{2}$, the value of $\\frac{x + 3}{x}$ at $x = -2$."
+    "It equals $-\\frac{1}{2}$, the value of $\\frac{x + 3}{x}$ at $x = -2$."
    ],
    "correct": 0,
    "why": {

@@ -393,7 +393,13 @@
     if(washer) RMis.push({ expr: rs, why: 'That is the inner radius r, to the nearer curve. R reaches the farther curve.' });
     var vMis = [];
     if(washer){ var VRr = PI * M.integral(function(u){ var d = Rf(u) - rf(u); return d * d; }, R.a, R.b, 1e-8); vMis.push({ value: VRr, why: 'You used (R − r)². A washer is πR² − πr².' }); }
-    if(k !== 0){ var Ff = M.fn(far, [v]), Nf = M.fn(near, [v]); var V0 = PI * M.integral(function(u){ return Ff(u) * Ff(u) - (washer ? Nf(u) * Nf(u) : 0); }, R.a, R.b, 1e-8); vMis.push({ value: V0, why: 'That revolves the region about the ' + (axis.dir === 'h' ? 'x' : 'y') + '-axis. Measure the radii from ' + (axis.dir === 'h' ? 'y' : 'x') + ' = ' + k + '.' }); }
+    if(k !== 0){
+      var Ff = M.fn(far, [v]), Nf = M.fn(near, [v]), A0 = axis.dir === 'h' ? 'x' : 'y', L0 = (axis.dir === 'h' ? 'y' : 'x') + ' = ' + k;
+      // washers: the same region about the coordinate axis (|R² − r²| whichever curve is farther from it);
+      // discs: the curve's own height used as the radius
+      var V0 = washer ? PI * Math.abs(M.integral(function(u){ return Ff(u) * Ff(u) - Nf(u) * Nf(u); }, R.a, R.b, 1e-8)) : PI * M.integral(function(u){ return Ff(u) * Ff(u); }, R.a, R.b, 1e-8);
+      vMis.push({ value: V0, why: washer ? 'That revolves the region about the ' + A0 + '-axis. Measure both radii from the axis of rotation, ' + L0 + '.' : 'You used the curve\'s distance from the ' + A0 + '-axis as the radius. The radius runs from the axis of rotation, ' + L0 + ', to the curve.' });
+    }
     var V2 = M.integral(function(u){ return Rf(u) * Rf(u) - (washer ? rf(u) * rf(u) : 0); }, R.a, R.b, 1e-8);
     vMis.push({ value: V2, why: 'Missing π: V = π∫(R² − r²).' });
     var Vv = axis.dir === 'h' ? 'x' : 'y';

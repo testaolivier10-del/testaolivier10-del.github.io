@@ -102,7 +102,7 @@
    ],
    "correct": 0,
    "why": {
-    "correct": "$f$ and $g$ are differentiable, so continuous: $\\lim_{x \\to 2} f(x) = 0$ and $\\lim_{x \\to 2} g(x) = 0$. By L'Hospital's rule the limit is $\\frac{f'(2)}{g'(2)} = -\\frac{5}{2}$.",
+    "correct": "$f$ and $g$ are differentiable, so continuous: $\\lim_{x \\to 2} f(x) = 0$ and $\\lim_{x \\to 2} g(x) = 0$. By L'Hospital's rule the limit is $\\lim_{x \\to 2}\\frac{f'(x)}{g'(x)}$, and since $f$ and $g$ are twice differentiable, $f'$ and $g'$ are continuous, so this equals $\\frac{f'(2)}{g'(2)} = -\\frac{5}{2}$.",
     "options": [
      "Both limits are 0, so the limit is $\\frac{f'(2)}{g'(2)} = \\frac{5}{-2}$.",
      "$\\frac{0}{0}$ is not 0; it is an indeterminate form that needs more work.",
@@ -257,7 +257,7 @@
    "q": "One application of L'Hospital's rule gives $\\lim_{x \\to 0}\\frac{\\sin x}{2x}$. What should come next?",
    "stimulus": "lhospitals-rule-s2",
    "options": [
-    "Still $\\frac{0}{0}$: apply the rule again to get $\\frac{1}{2}$",
+    "Still $\\frac{0}{0}$, so apply the rule again to get $\\frac{1}{2}$",
     "It equals 0, because $\\sin 0 = 0$",
     "It does not exist, because the bottom is 0 at $x = 0$",
     "Use the quotient rule on $\\frac{\\sin x}{2x}$, then substitute 0"

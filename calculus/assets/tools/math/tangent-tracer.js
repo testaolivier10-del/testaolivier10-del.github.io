@@ -267,7 +267,7 @@
     { id: 'coffee', F: 'H', t: 't', what: 'the temperature of a cup of coffee', unit: 'degrees Celsius', tu: 'minutes', rate: 'degrees Celsius per minute', per: 'minutes per degree Celsius', acc: 'degrees Celsius per minute per minute', v0: [80, 92], d: [2, 5], sign: [-1] },
     { id: 'car', F: 's', t: 't', what: 'the distance a car has traveled', unit: 'meters', tu: 'seconds', rate: 'meters per second', per: 'seconds per meter', acc: 'meters per second per second', v0: [0, 20], d: [8, 20], sign: [1] },
     { id: 'snow', F: 'D', t: 't', what: 'the depth of snow on a field', unit: 'centimeters', tu: 'hours', rate: 'centimeters per hour', per: 'hours per centimeter', acc: 'centimeters per hour per hour', v0: [10, 30], d: [1, 4], sign: [1, -1] },
-    { id: 'bacteria', F: 'P', t: 't', what: 'the number of bacteria in a dish, in thousands', unit: 'thousand bacteria', tu: 'hours', rate: 'thousand bacteria per hour', per: 'hours per thousand bacteria', acc: 'thousand bacteria per hour per hour', v0: [20, 60], d: [3, 9], sign: [1] }
+    { id: 'bacteria', F: 'P', t: 't', what: 'the number of bacteria in a dish', unit: 'thousands of bacteria', tu: 'hours', rate: 'thousands of bacteria per hour', per: 'hours per thousand bacteria', acc: 'thousands of bacteria per hour per hour', v0: [20, 60], d: [3, 9], sign: [1] }
   ];
   function genTable(r, ctx){
     var S = r.pick(SCEN), sign = r.pick(S.sign), ts, vs, i, c, guard = 0;
@@ -511,7 +511,7 @@
       text = 'Let $f(x) = ' + tx + '$. Write an equation for the line tangent to the graph of $f$ at $x = ' + a + '$.';
       steps.push(step({ key: 'value', kind: 'num', d: 3, practice: '1.E', label: 'Find $f(' + a + ')$.', cell: M.cell(fa, 0, [{ value: m, why: 'That is $f\'(' + a + ')$. First find the point: $f(' + a + ')$.' }], 0.001) }));
       steps.push(step({ key: 'slope', kind: 'num', d: 3, practice: '1.C', label: 'Find $f\'(' + a + ')$.', hint: 'Power rule: the derivative of $x^n$ is $nx^{n-1}$.', cell: M.cell(m, 0, [
-        { value: cc * Math.pow(a, nn - 1) + bb, why: 'The power rule brings the exponent down: $\\frac{d}{dx}x^' + nn + ' = ' + nn + 'x^' + (nn - 1 === 1 ? '' : nn - 1) + '$. Multiply by ' + nn + '.' },
+        { value: cc * Math.pow(a, nn - 1) + bb, why: 'The power rule brings the exponent down: $\\frac{d}{dx}x^' + nn + ' = ' + nn + (nn - 1 === 1 ? 'x' : 'x^' + (nn - 1)) + '$. Multiply by ' + nn + '.' },
         { value: cc * nn * Math.pow(a, nn) + bb, why: 'Lower the exponent by one: $\\frac{d}{dx}x^' + nn + ' = ' + nn + 'x^{' + (nn - 1) + '}$, not $' + nn + 'x^' + nn + '$.' },
         { value: fa, why: 'That is $f(' + a + ')$, the height. The slope is $f\'(' + a + ')$.' }], 0.001) }));
       sol.push('$f(' + a + ') = ' + n(fa) + '$.', '$f\'(x) = ' + (cc * nn === 1 ? '' : cc * nn === -1 ? '-' : cc * nn) + (nn - 1 === 1 ? 'x' : 'x^' + (nn - 1)) + (bb ? (bb > 0 ? ' + ' : ' - ') + Math.abs(bb) : '') + '$, so $f\'(' + a + ') = ' + n(m) + '$.');
@@ -543,7 +543,7 @@
     // Full precision, so a mistake written with e or π matches exactly.
     var nA = String(A), nfa = String(fa), nm = String(m);
     if(Math.abs(fa - m) > 1e-9) addMk('(' + nm + ') + (' + nfa + ')*(x - (' + nA + '))', 'The slope and the height are swapped. The line is $y = f(a) + f\'(a)(x - a)$: the slope $f\'(a)$ multiplies $(x - a)$.');
-    if(A !== 0) addMk('(' + nfa + ') + (' + nm + ')*(x + (' + nA + '))', 'Check the sign inside the parentheses: the line passes through $x = ' + (typeof a === 'number' ? n(A) : 'a') + '$, so it is $(x - a)$ with $a$ subtracted.');
+    if(A !== 0) addMk('(' + nfa + ') + (' + nm + ')*(x + (' + nA + '))', 'Check the sign inside the parentheses: the line passes through $x = ' + (aTex || (typeof a === 'number' ? n(A) : 'a')) + '$, so it is $(x - a)$ with $a$ subtracted.');
     if(A !== 0) addMk('(' + nfa + ') + (' + nm + ')*x', 'That line has the right slope but passes through $(0, f(a))$. Shift it: $y = f(a) + f\'(a)(x - a)$.');
     var exprStep = step({ key: 'line', kind: 'expr', practice: '4.C', label: 'Write the equation of the tangent line.', hint: 'Point-slope form: $y = f(a) + f\'(a)(x - a)$.', lhs: 'y =',
       cell: M.exprCell(L.typed, { vars: ['x'], domain: [A - 3, A + 3], mistakes: mk }), line: { a: A, fa: fa, m: m } });
@@ -618,7 +618,10 @@
     };
     var rk = kind === 'jump' || kind === 'hole' ? 'gap' : kind;
     var wrongW = {
-      corner: 'There is no corner here: the slopes from both sides agree.', cusp: 'The sides of the graph do not get infinitely steep here.', vertical: 'The tangent is not vertical here.',
+      // Each wrong reason, worded for what the graph actually has at c.
+      corner: kind === 'cusp' ? 'A corner has two different finite slopes. Here the slopes do not settle on any finite value: they grow without bound, in opposite directions.' : kind === 'vertical' ? 'A corner has two different finite slopes. Here both sides get steeper and steeper in the same direction: a vertical tangent.' : kind === 'corner' ? '' : 'A corner is an unbroken graph with two different slopes. Here the graph itself breaks.',
+      cusp: kind === 'vertical' ? 'At a cusp the two sides turn steep in opposite directions (one up, one down). Here both sides go the same way, so the tangent is vertical.' : 'The sides of the graph do not get infinitely steep here.',
+      vertical: kind === 'cusp' ? 'At a vertical tangent both sides go steep in the same direction. Here they go in opposite directions: a cusp.' : 'The tangent is not vertical here.',
       gap: 'f is continuous at $x = ' + c + '$: there is no hole or jump. Something else breaks the derivative.'
     };
     var pool = ['corner', 'cusp', 'vertical', 'gap'].filter(function(k){ return k !== rk; });
@@ -640,7 +643,7 @@
         kind === 'corner' ? 'The one-sided slopes are $' + n(LS) + '$ from the left and $' + n(RS) + '$ from the right. They disagree, so $\\lim_{h \\to 0} \\frac{f(' + c + ' + h) - f(' + c + ')}{h}$ does not exist.' : 'The difference quotient at $x = ' + c + '$ has no finite limit: ' + K.why + '.',
         cont ? '$f$ is continuous at $x = ' + c + '$ but not differentiable: continuity does not imply differentiability.' : 'Differentiable implies continuous. $f$ is not continuous at $x = ' + c + '$, so it cannot be differentiable there.'
       ],
-      fig: { kind: 'graph', label: 'The graph of f with four marked x-values, one where f is not differentiable', x: [-5, 5], y: yr, xStep: 1, yStep: 1, xLabel: 'x', yLabel: 'y',
+      fig: { kind: 'graph', label: 'The graph of f with four marked x-values, one where f is not differentiable', x: [-5, 5], y: yr, xStep: 1, yStep: 1, xLabel: 'x', yLabel: marks.indexOf(0) > -1 ? '' : 'y',
         curves: curves, points: points, lines: marks.map(function(x){ return { through: [[x, -100], [x, 100]], cls: 'tt-guide', dashed: true }; }), labels: marks.map(function(x){ return { at: [x + 0.12, 4.45], text: 'x = ' + words(x), anchor: 'start' }; }) },
       f: f, c: c, marks: marks, turn: turn, cls: Lc, LS: LS, RS: RS
     };

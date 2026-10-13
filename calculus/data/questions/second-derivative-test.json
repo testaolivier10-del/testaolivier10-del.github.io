@@ -38,7 +38,7 @@
    "kind": "graph",
    "title": "The graph of $f(x) = 2x^3 + 3x^2 - 12x + 1$",
    "plot": {
-    "label": "Graph of f(x) = 2x cubed + 3x squared - 12x + 1 from -3.5 to 2.5: a high point at (-2, 21) and a low point at (1, -10)",
+    "label": "Graph of f(x) = 2x cubed + 3x squared - 12x + 1 from -3.5 to 2.5: a high point at (-2, 21) and a low point at (1, -6)",
     "x": [
      -3.5,
      2.5
@@ -73,9 +73,9 @@
      {
       "at": [
        1,
-       -10
+       -6
       ],
-      "label": "(1, -10)"
+      "label": "(1, -6)"
      }
     ]
    }
@@ -150,7 +150,7 @@
     "A relative maximum, because $f''(4) \\le 0$",
     "A point of inflection, because $f''(4) = 0$ and $f''$ is continuous",
     "A relative minimum, because $f'(4) = 0$",
-    "Nothing: $f''(4) = 0$, so the test is inconclusive"
+    "Nothing, because $f''(4) = 0$ makes the test inconclusive"
    ],
    "correct": 3,
    "why": {
@@ -231,8 +231,8 @@
     "answer": 21,
     "mistakes": [
      {
-      "value": -10,
-      "why": "$f(1) = -10$ is the relative minimum: $f''(1) = 18 > 0$."
+      "value": -6,
+      "why": "$f(1) = -6$ is the relative minimum: $f''(1) = 18 > 0$."
      },
      {
       "value": -2,
@@ -284,15 +284,15 @@
    "options": [
     "$f$ has no absolute minimum on $(0, \\infty)$, because the interval is open",
     "The absolute minimum is $1 = f(0)$, at the left end",
-    "The absolute minimum of $f$ on $(0, \\infty)$ is $-10$: $x = 1$ is the one critical point there, and it is a relative minimum",
-    "$-10$ is a relative minimum, which on any interval is also the absolute minimum"
+    "The absolute minimum of $f$ on $(0, \\infty)$ is $-6$, because $x = 1$ is the one critical point there and it is a relative minimum",
+    "$-6$ is a relative minimum, which on any interval is also the absolute minimum"
    ],
    "correct": 2,
    "why": {
-    "correct": "On $(0, \\infty)$, $f'(x) = 6(x + 2)(x - 1)$ is zero only at $x = 1$, and $f''(1) = 18 > 0$. With one critical point and it a relative minimum, $f(1) = -10$ is the absolute minimum on that interval.",
+    "correct": "On $(0, \\infty)$, $f'(x) = 6(x + 2)(x - 1)$ is zero only at $x = 1$, and $f''(1) = 18 > 0$. With one critical point and it a relative minimum, $f(1) = -6$ is the absolute minimum on that interval.",
     "options": [
      "An open interval can still have an absolute minimum; the one-critical-point argument shows it.",
-     "$x = 0$ is not in $(0, \\infty)$, and $f(1) = -10 < 1$.",
+     "$x = 0$ is not in $(0, \\infty)$, and $f(1) = -6 < 1$.",
      "A continuous function with exactly one critical point on an interval, where it has a relative minimum, has its absolute minimum there.",
      "In general a relative minimum is not the absolute one; here it is because $x = 1$ is the one critical point."
     ]
@@ -363,7 +363,7 @@
     "A relative minimum, because $f''(0) \\ge 0$",
     "A relative maximum, because the Second Derivative Test is inconclusive",
     "A relative minimum, because $f(0) = 0$",
-    "No extremum: $f'(x) = 4x^2(x - 3) < 0$ on both sides of 0"
+    "No extremum, because $f'(x) = 4x^2(x - 3) < 0$ on both sides of 0"
    ],
    "correct": 3,
    "why": {

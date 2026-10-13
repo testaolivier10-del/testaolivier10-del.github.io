@@ -337,7 +337,7 @@
    "stimulus": "f-and-its-derivatives-s2",
    "q": "Must the graph of $f$ have a point of inflection for some $x$ in $(1, 3)$?",
    "options": [
-    "Yes: $f''$ is continuous, $f''(1) > 0$ and $f''(3) < 0$, so $f''$ changes sign in $(1, 3)$",
+    "Yes, because $f''$ is continuous, $f''(1) > 0$ and $f''(3) < 0$, so $f''$ changes sign in $(1, 3)$",
     "Yes, at $x = 2$, because $f''(2) = 0$",
     "No, because $f'(1) = f'(3) = 0$",
     "No, because the table does not show $f''$ changing sign"

@@ -27,21 +27,24 @@
       "ends": [
        "closed",
        null
-      ]
+      ],
+      "cls": "s1"
      },
      {
       "fn": "6",
       "domain": [
        2,
        4
-      ]
+      ],
+      "cls": "s1"
      },
      {
       "fn": "18 - 3x",
       "domain": [
        4,
        6
-      ]
+      ],
+      "cls": "s1"
      },
      {
       "fn": "6 - x",
@@ -52,7 +55,8 @@
       "ends": [
        null,
        "closed"
-      ]
+      ],
+      "cls": "s1"
      }
     ],
     "points": [

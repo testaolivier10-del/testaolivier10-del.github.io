@@ -13,7 +13,6 @@
 .tt-svg .tt-ptitle{font:800 13px var(--font-ui);paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round;}
 .tt-svg text.tt-c1{fill:#B0123A;} .tt-svg text.tt-c2{fill:#0072B2;} .tt-svg text.tt-c5{fill:#7A4F9E;}
 :root[data-theme="dark"] .tt-svg text.tt-c1{fill:#F590AC;} :root[data-theme="dark"] .tt-svg text.tt-c2{fill:#6BB4E8;} :root[data-theme="dark"] .tt-svg text.tt-c5{fill:#C3A3E0;}
-body.ls-on .calc-crumb{display:none !important;}
 .tt-svg text.s4,.tt-svg text.s5{fill:currentColor;stroke:none;}
 .tt-frame{fill:none;stroke:var(--line);stroke-width:1;}
 .tt-svg .calc-plot-curve.tt-f,.tt-svg .calc-plot-curve.tt-fp{stroke-width:3;}
@@ -188,3 +187,16 @@ body.ls-on .calc-crumb{display:none !important;}
 /* Labels on the Test yourself plots keep a halo in both themes (the dark
    theme's series stroke would otherwise thicken them). */
 :root[data-theme] .tt-qsvg text.calc-plot-label{stroke:var(--white);stroke-width:4px;paint-order:stroke;}
+
+/* Phone pass (docs/tools-phone-pass.md): on-picture text at least 12 px at
+   360 px wide, in Explore, the drill figures and the sketch grid. */
+.ls-root.ls-phone .tt-svg text{font-size:13px;}
+.ls-root.ls-phone .tt-svg .tt-ptitle{font-size:14px;}
+.ls-root.ls-phone .ls-drill-stage .calc-plot,.ls-root.ls-phone .tt-qstage .calc-plot{font-size:13px;}
+.ls-root.ls-phone .tt-pic .calc-plot{font-size:11px;}
+.ls-root.ls-phone .tt-skq,.ls-root.ls-phone .tt-badge text{font-size:12px;}
+.ls-root.ls-phone .tt-ruler{font-size:12px;}
+/* The table drill's x-axis sits at the bottom of its picture: keep its last
+   tick and label clear of the Enlarge button (bottom right of the stage). */
+.ls-root.ls-phone .tt-fig-table{padding-bottom:40px;}
+.ls-root .ls-stage.is-big .tt-fig-table{padding-bottom:0;}

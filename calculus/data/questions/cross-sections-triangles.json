@@ -7,11 +7,12 @@
     "label": "The line y = 2x and the parabola y = x², which meet at (0, 0) and (2, 4). The region between them, the base of a solid, is shaded with the line on top.",
     "x": [-0.4, 2.6], "y": [-0.5, 5], "xStep": 0.5, "yStep": 1, "xLabel": "x", "yLabel": "y",
     "curves": [
-     { "fn": "2x", "domain": [-0.2, 2.45], "cls": "s2", "label": "y = 2x" },
-     { "fn": "x^2", "domain": [-0.4, 2.2], "cls": "s1", "label": "y = x²" }
+     { "fn": "2x", "domain": [-0.2, 2.45], "cls": "s2" },
+     { "fn": "x^2", "domain": [-0.4, 2.2], "cls": "s1" }
     ],
     "shade": [ { "fn": "2x", "fn2": "x^2", "domain": [0, 2] } ],
-    "points": [ { "at": [0, 0] }, { "at": [2, 4], "label": "(2, 4)" } ]
+    "points": [ { "at": [0, 0] }, { "at": [2, 4], "label": "(2, 4)" } ],
+    "labels": [ { "at": [1.0, 2.5], "text": "y = 2x", "anchor": "end" }, { "at": [1.6, 1.2], "text": "y = x²", "anchor": "start" } ]
    }
   },
   "cross-sections-triangles-s2": {

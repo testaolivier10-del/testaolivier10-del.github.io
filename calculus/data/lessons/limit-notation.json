@@ -53,7 +53,7 @@
   "$\\lim_{x \\to a} f(x) = L$ means: as $x$ gets close to $a$ (from both sides, $x \\ne a$), $f(x)$ gets close to $L$, as close as we like.",
   "The limit at $a$ and the value $f(a)$ are different questions. A hole can have a limit and no value; a filled dot off the curve gives a value that is not the limit.",
   "Read the notation from the bottom up: the input heads to $a$, the output heads to $L$.",
-  "Write \"lim\" with its arrow until you replace it with a number; never attach a limit to a single number."
+  "Write \"lim\" with its arrow on every line until the line where you substitute and get a number; then drop it."
  ],
  "misconception": {
   "wrong": "$\\lim_{x \\to a} f(x)$ is just $f(a)$, the value of the function at $a$.",

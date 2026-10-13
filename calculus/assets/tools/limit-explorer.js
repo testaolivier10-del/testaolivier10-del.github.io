@@ -103,7 +103,8 @@
       if(!fig.isConnected) return;
       var r = fig.getBoundingClientRect(), w = Math.round(r.width), h = Math.round(r.height);
       if(fig.classList.contains('le-fig2-plot')) h = Math.min(h, Math.round(w * 0.8));
-      spec.width = Math.max(240, Math.min(900, w || 420));
+      // Never drawn wider than its box (a scaled-down svg shrinks its labels).
+      spec.width = Math.max(fig.classList.contains('le-fig2-plot') ? 150 : 240, Math.min(900, w || 420));
       spec.height = Math.max(140, Math.min(620, h > 60 ? h : spec.width * 0.66));
       fig.innerHTML = P.svg(spec);
     }

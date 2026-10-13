@@ -15,15 +15,25 @@
 .ac-tank{display:flex;align-items:center;justify-content:center;min-height:0;}
 .ac-tank[hidden]{display:none;}
 .ac-tank svg{display:block;width:100%;height:auto;max-height:100%;}
-/* On the Tool Studio stage the two plots share the height (stacked on a
-   phone, side by side from 760 px); each SVG is drawn at its box's size. */
-.ls-root .ac-fig{flex:1;min-height:0;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:6px;}
-.ls-root .ac-fig.has-tank{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 64px;}
-@media (min-width:760px){.ls-root .ac-fig{gap:12px;} .ls-root .ac-fig.has-tank{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 140px;}}
+/* On the Tool Studio stage the graph of g sits under the graph of f, at
+   every size, so the two x-axes line up (and a phone gets two full-width
+   graphs instead of two thin ones); the tank, for Unit 8, is a column on the
+   right beside both. Each SVG is drawn at its box's size. */
+.ls-root .ac-fig{flex:1;min-height:0;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:4px;}
+.ls-root .ac-fig.has-tank{grid-template-columns:minmax(0,1fr) 104px;}
+.ls-root .ac-pf{grid-column:1;grid-row:1;} .ls-root .ac-pg{grid-column:1;grid-row:2;}
+.ls-root .ac-fig .ac-tank{grid-column:2;grid-row:1 / span 2;}
+@media (min-width:760px){.ls-root .ac-fig{gap:8px;} .ls-root .ac-fig.has-tank{grid-template-columns:minmax(0,1fr) 150px;}}
 @media (max-width:640px){.ls-root .ac-cap{display:none;}}
+.ls-phone .ac-cap{display:none;}
 .ls-root .ac-pane{height:100%;}
 .ls-root .ac-plot{flex:1;min-height:90px;}
 .ls-root .ac-plot svg{position:absolute;inset:0;width:100%;height:100%;}
+/* phones: tick numbers at least 12 px (the SVGs are drawn 1:1) */
+.ls-phone .ac-fig .calc-plot,.ls-phone .ac-qfig .calc-plot{font-size:12.5px;}
+.ls-phone .ac-fig .calc-plot .calc-plot-axlabel,.ls-phone .ac-qfig .calc-plot .calc-plot-axlabel{font-size:14px;}
+.calc-plot .ac-hit{fill:transparent;stroke:none;pointer-events:all;}
+.ls-phone .ls-drill-stage .ac-qfig figcaption{padding-right:46px;}
 
 .calc-plot .ac-area{stroke-width:1;}
 .calc-plot .ac-area.is-pos{fill:rgba(0,114,178,.22);stroke:rgba(0,114,178,.55);}
@@ -55,12 +65,12 @@
 .calc-plot .calc-plot-curve.s5.is-dashed{opacity:.55;}
 /* the handle on the axis */
 .calc-plot .ac-handle{cursor:ew-resize;}
-.calc-plot .ac-handle circle:not(.calc-plot-halo){fill:#B0123A;stroke:var(--white);stroke-width:2;}
-.calc-plot .ac-handle.is-from circle:not(.calc-plot-halo){fill:var(--ink-2,#555);}
+.calc-plot .ac-handle circle:not(.calc-plot-halo):not(.ac-hit){fill:#B0123A;stroke:var(--white);stroke-width:2;}
+.calc-plot .ac-handle.is-from circle:not(.calc-plot-halo):not(.ac-hit){fill:var(--ink-2,#555);}
 .calc-plot .ac-handle .calc-plot-halo{fill:rgba(176,18,58,.14);}
 .calc-plot .ac-handle:focus{outline:none;}
 .calc-plot .ac-handle:focus-visible .calc-plot-halo{fill:rgba(176,18,58,.3);stroke:var(--cink);stroke-width:2;}
-:root[data-theme="dark"] .calc-plot .ac-handle circle:not(.calc-plot-halo){fill:#F590AC;stroke:#1d2321;}
+:root[data-theme="dark"] .calc-plot .ac-handle circle:not(.calc-plot-halo):not(.ac-hit){fill:#F590AC;stroke:#1d2321;}
 
 .ac-seg{display:flex;padding:3px;border-radius:999px;background:var(--track,var(--paper));}
 .ac-seg[hidden]{display:none;}
@@ -87,16 +97,31 @@
 .ac-tank-svg .ac-tk{stroke:var(--ink-3,#888);stroke-width:1.2;}
 .ac-tank-svg .ac-tkt{fill:var(--muted);font:700 10px var(--font-ui);}
 .ac-tank-svg .ac-tank-v{fill:var(--ink);font:900 13px var(--font-ui);}
+.ac-tank-svg.is-small .ac-tkt{font-size:12px;} .ac-tank-svg.is-small .ac-tank-v{font-size:16px;}
+.ac-tank-svg .ac-tank-u{fill:var(--ink);font:700 12px var(--font-ui);}
 :root[data-theme="dark"] .ac-tank-svg .ac-water{fill:#3B8FC4;fill-opacity:.6;}
 :root[data-theme="dark"] .ac-tank-svg .ac-wave{stroke:#8FD0F5;}
 @keyframes ac-flow{to{stroke-dashoffset:-12;}}
 @media (prefers-reduced-motion: reduce){.ac-tank-svg .is-on{animation:none;}}
 
-/* Test yourself: the graph on the stage */
+/* Test yourself: the graph on the stage, drawn to scale at its box's size */
 .ac-qfig{margin:0;display:flex;flex-direction:column;gap:4px;min-height:0;}
-.ac-qfig svg{display:block;width:100%;height:auto;max-height:52vh;}
+.ac-qplot{position:relative;min-width:0;}
+.ac-qplot svg{display:block;width:100%;height:auto;}
 .ac-qrow{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:10px;align-items:center;}
-.ac-qrow > svg{width:100%;height:auto;}
-@media (max-width:640px){.ac-qrow{grid-template-columns:minmax(0,1fr) 76px;}}
+.ac-qtk svg{display:block;width:100%;height:auto;}
+@media (max-width:640px){.ac-qrow{grid-template-columns:minmax(0,1fr) 92px;gap:6px;}}
+.ls-root .ls-drill-stage .ac-qfig{flex:1;}
+.ls-root .ls-drill-stage .ac-qfig > .ac-qplot,.ls-root .ls-drill-stage .ac-qrow{flex:1;min-height:0;}
+.ls-root .ls-drill-stage .ac-qrow .ac-qplot{height:100%;}
+.ls-root .ls-drill-stage .ac-qplot svg{position:absolute;inset:0;width:100%;height:100%;}
+.ls-root .ls-drill-stage .ac-qfig figcaption{flex:none;}
+.calc-plot .ac-fname{fill:#B0123A;font-size:15px;}
+:root[data-theme="dark"] .calc-plot .ac-fname{fill:#F590AC;}
 .ls-drill-text math[display="block"]{margin:8px 0;}
 .cd-o{display:inline;}
+/* a phone on its side: the stage is short, so the figure keeps every pixel (the caption repeats the text) */
+.ls-root .ls-drill-stage .ac-qrow{grid-template-rows:minmax(0,1fr);align-items:stretch;}
+.ls-root .ls-drill-stage .ac-qtk{position:relative;height:100%;min-height:0;}
+.ls-root .ls-drill-stage .ac-qtk svg{position:absolute;inset:0;width:100%;height:100%;}
+@media (max-height:540px) and (orientation:landscape){.ls-phone .ls-drill-stage .ac-qfig figcaption{display:none;}}

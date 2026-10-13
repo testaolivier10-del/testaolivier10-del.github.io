@@ -402,22 +402,22 @@
    "practice": "1.E",
    "level": "apply",
    "diff": 2,
-   "q": "Find the area of the region between $y = \\sin x$ and $y = \\cos x$ for $0 \\le x \\le \\pi$.",
+   "q": "Find the area of the region between $y = 2\\sin x$ and $y = 1$ for $0 \\le x \\le \\pi$.",
    "numeric": {
-    "answer": "2*sqrt(2)",
+    "answer": "4*sqrt(3) - 4 - pi/3",
     "mistakes": [
      {
-      "value": -2,
-      "why": "That is $\\int_0^\\pi (\\cos x - \\sin x)\\,dx$, a net value. The curves cross at $x = \\frac{\\pi}{4}$: split there."
+      "value": "4 - pi",
+      "why": "That is $\\int_0^\\pi (2\\sin x - 1)\\,dx$, a net value. The curves cross at $x = \\frac{\\pi}{6}$ and $x = \\frac{5\\pi}{6}$: split there and add three positive pieces."
      },
      {
-      "value": 2,
-      "why": "Taking the absolute value of one integral does not undo the cancelling. Split at $x = \\frac{\\pi}{4}$ and add $\\sqrt{2} - 1$ and $\\sqrt{2} + 1$."
+      "value": "2*sqrt(3) - 2*pi/3",
+      "why": "That is only the middle piece, where $2\\sin x$ is on top. The line $y = 1$ is on top on $\\left[0, \\frac{\\pi}{6}\\right]$ and $\\left[\\frac{5\\pi}{6}, \\pi\\right]$; add those pieces too."
      }
     ]
    },
    "why": {
-    "correct": "$\\int_0^{\\pi/4} (\\cos x - \\sin x)\\,dx + \\int_{\\pi/4}^{\\pi} (\\sin x - \\cos x)\\,dx = (\\sqrt{2} - 1) + (1 + \\sqrt{2}) = 2\\sqrt{2}$."
+    "correct": "$2\\sin x = 1$ at $x = \\frac{\\pi}{6}$ and $\\frac{5\\pi}{6}$. Pieces: $\\int_0^{\\pi/6} (1 - 2\\sin x)\\,dx = \\frac{\\pi}{6} + \\sqrt{3} - 2$, $\\int_{\\pi/6}^{5\\pi/6} (2\\sin x - 1)\\,dx = 2\\sqrt{3} - \\frac{2\\pi}{3}$, $\\int_{5\\pi/6}^{\\pi} (1 - 2\\sin x)\\,dx = \\frac{\\pi}{6} + \\sqrt{3} - 2$. Area $= 4\\sqrt{3} - 4 - \\frac{\\pi}{3}$."
    }
   },
   {

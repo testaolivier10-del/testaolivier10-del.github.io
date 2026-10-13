@@ -64,11 +64,90 @@ export function unitSample(ch, ctx) {
    list of what to know, in our own words, grouped our way. Each row is
    [formula (TeX), what it is, when you use it, 'Unit N', topic id,
    trainers?]; the trainers (tools/<slug>.html) that practice it are linked
-   only when live. Phase 3 writes the rows (docs/apcalc-spec.md, build plan);
-   until then the page says the guide arrives with the first unit. */
-export const EQ = [];
-// Not given anywhere on the exam and easy to forget; Phase 3 fills it.
-export const NOT_ON = [];
+   only when live. A test holds the list to the rules, theorems and set-ups
+   the course teaches (scripts/test/apcalc-exams.test.mjs). */
+const D = String.raw;
+export const EQ = [
+  { id: 'limits', h: 'Limits and continuity', rows: [
+    [D`\lim_{x \to c} f(x) = f(c)`, 'Continuity at $x = c$: $f(c)$ is defined, the limit exists, and the two are equal.', 'To show a function is continuous at a point. For a piecewise function, find both one-sided limits first.', 'Unit 1', 'continuity-at-a-point', ['limit-explorer']],
+    [D`\lim_{x \to 0} \frac{\sin x}{x} = 1`, 'A special limit, with $x$ in radians, found with the squeeze theorem.', D`Limits such as $\lim_{x \to 0} \frac{\sin(3x)}{x}$: rewrite as $3 \cdot \frac{\sin(3x)}{3x}$.`, 'Unit 1', 'squeeze-theorem', ['limit-explorer']],
+    [D`\lim_{x \to 0} \frac{1 - \cos x}{x} = 0`, 'The companion special limit, also with $x$ in radians.', 'Limits with $1 - \\cos x$ over $x$; together with the first, it gives the derivatives of sine and cosine.', 'Unit 1', 'squeeze-theorem'],
+    [D`g(x) \le f(x) \le h(x) \Rightarrow \lim_{x \to c} f(x) = L`, 'The squeeze theorem, when $g(x) \\le f(x) \\le h(x)$ near $c$ and $g$ and $h$ both have limit $L$ at $c$.', 'When $f$ is trapped between two functions with the same limit, such as a bounded factor like $\\sin\\frac{1}{x}$ times something that goes to 0.', 'Unit 1', 'squeeze-theorem', ['limit-explorer']],
+    [D`f(c) = d \ \text{for some}\  c \ \text{in}\  [a, b]`, 'The Intermediate Value Theorem, when $f$ is continuous on $[a, b]$ and $d$ is between $f(a)$ and $f(b)$.', 'To show an equation $f(x) = d$ has a solution. Say first why $f$ is continuous on the closed interval.', 'Unit 1', 'intermediate-value-theorem'],
+    [D`\lim_{x \to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)}`, "L'Hospital's rule, when $f$ and $g$ both have limit 0, or both have infinite limits, and the limit on the right exists.", 'For $\\frac{0}{0}$ and $\\frac{\\infty}{\\infty}$ forms. Write the two limits separately first, then differentiate top and bottom on their own (not the quotient rule).', 'Unit 4', 'lhospitals-rule'],
+  ] },
+  { id: 'derivatives', h: 'Derivative rules', rows: [
+    [D`f'(a) = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}`, 'The definition of the derivative: the limit of the slopes of secant lines.', 'To recognize a limit as a derivative in disguise, or to check differentiability where two pieces meet.', 'Unit 2', 'derivative-definition', ['tangent-tracer']],
+    [D`\frac{f(b) - f(a)}{b - a}`, 'The average rate of change of $f$ on $[a, b]$, the slope of a secant line.', 'Rates over an interval from a formula or a table; to estimate $f\'(c)$ from a table, use the two values closest to $c$ on either side.', 'Unit 2', 'average-and-instant-rates', ['tangent-tracer']],
+    [D`\frac{d}{dx} x^n = n x^{n - 1}`, 'The power rule, for any real number $n$.', 'Powers, roots and reciprocals. Rewrite $\\sqrt{x}$ as $x^{1/2}$ and $\\frac{1}{x^2}$ as $x^{-2}$ first.', 'Unit 2', 'power-rule', ['rule-drills']],
+    [D`\frac{d}{dx}\left[f(x)g(x)\right] = f'(x)g(x) + f(x)g'(x)`, 'The product rule, for a product of two functions.', 'A product of two functions of $x$; for three factors, use it twice.', 'Unit 2', 'product-rule', ['rule-drills']],
+    [D`\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = \frac{f'(x)g(x) - f(x)g'(x)}{\left[g(x)\right]^2}`, 'The quotient rule, for a quotient of two functions.', 'A quotient that does not simplify by dividing first. The order on top matters.', 'Unit 2', 'quotient-rule', ['rule-drills']],
+    [D`\frac{d}{dx}\sin x = \cos x, \quad \frac{d}{dx}\cos x = -\sin x`, 'Derivatives of sine and cosine, with $x$ in radians.', 'Every trigonometric derivative starts here. The minus sign belongs to cosine.', 'Unit 2', 'derivatives-sin-cos-exp-ln', ['rule-drills']],
+    [D`\frac{d}{dx}e^x = e^x, \quad \frac{d}{dx}\ln x = \frac{1}{x}`, 'Derivatives of the natural exponential and the natural logarithm.', 'Exponentials and logarithms. With the chain rule, $\\frac{d}{dx}e^{u} = e^{u}u\'$ and $\\frac{d}{dx}\\ln u = \\frac{u\'}{u}$.', 'Unit 2', 'derivatives-sin-cos-exp-ln', ['rule-drills']],
+    [D`\frac{d}{dx}\tan x = \sec^2 x, \quad \frac{d}{dx}\sec x = \sec x \tan x`, 'Derivatives of tangent and secant, from the quotient rule.', 'Tangent and secant directly, without rewriting them as quotients each time.', 'Unit 2', 'other-trig-derivatives'],
+    [D`\frac{d}{dx}\cot x = -\csc^2 x, \quad \frac{d}{dx}\csc x = -\csc x \cot x`, 'Derivatives of cotangent and cosecant.', 'The co-functions follow the same pattern as tangent and secant, with minus signs.', 'Unit 2', 'other-trig-derivatives'],
+    [D`\frac{d}{dx}f(g(x)) = f'(g(x)) \cdot g'(x)`, 'The chain rule, for a composite function.', 'Any function inside another, such as $e^{3x}$, $\\sin(x^2)$ or $(2x + 1)^5$: multiply by the derivative of the inside.', 'Unit 3', 'chain-rule', ['rule-drills']],
+    [D`\frac{d}{dx}\left[y^n\right] = n y^{n - 1}\frac{dy}{dx}`, 'Implicit differentiation: $y$ is a function of $x$, so the chain rule brings out $\\frac{dy}{dx}$.', 'Curves such as $x^2 + xy + y^2 = 7$: differentiate both sides, keep the $= 0$, then solve for $\\frac{dy}{dx}$.', 'Unit 3', 'implicit-differentiation', ['rule-drills']],
+    [D`\left(f^{-1}\right)'(b) = \frac{1}{f'(a)} \ \text{where}\  f(a) = b`, 'The derivative of an inverse function at a point.', 'When you know $f$ but not its inverse: find the input $a$ with $f(a) = b$ first.', 'Unit 3', 'inverse-function-derivatives'],
+    [D`\frac{d}{dx}\arcsin x = \frac{1}{\sqrt{1 - x^2}}, \quad \frac{d}{dx}\arctan x = \frac{1}{1 + x^2}`, 'Derivatives of inverse sine and inverse tangent.', 'Inverse trigonometric functions, with the chain rule for $\\arcsin u$ and $\\arctan u$.', 'Unit 3', 'inverse-trig-derivatives'],
+    [D`y = f(a) + f'(a)(x - a)`, 'The tangent line at $x = a$, in point-slope form.', 'Tangent lines and local linear approximation. Whether the estimate is too big or too small comes from concavity.', 'Unit 4', 'local-linearity', ['tangent-tracer']],
+  ] },
+  { id: 'analysis', h: 'Theorems and curve analysis', rows: [
+    [D`\text{differentiable at}\  c \Rightarrow \text{continuous at}\  c`, 'Differentiability implies continuity. Not the other way: $|x|$ is continuous at 0 but not differentiable there.', 'To supply the continuity a theorem needs when you are told only that $f$ is differentiable.', 'Unit 2', 'differentiability'],
+    [D`f'(c) = \frac{f(b) - f(a)}{b - a},\ a < c < b`, 'The Mean Value Theorem, when $f$ is continuous on $[a, b]$ and differentiable on $(a, b)$.', 'To show an instantaneous rate equals an average rate. State both hypotheses in words first.', 'Unit 5', 'mean-value-theorem', ['curve-analyzer']],
+    [D`f \ \text{has an absolute max and min on}\  [a, b]`, 'The Extreme Value Theorem, when $f$ is continuous on the closed interval $[a, b]$.', 'To know absolute extrema exist before you look for them. It needs a closed interval and continuity.', 'Unit 5', 'extreme-value-theorem'],
+    [D`f' > 0 \Rightarrow f \ \text{increasing}, \quad f' < 0 \Rightarrow f \ \text{decreasing}`, 'Increasing and decreasing from the sign of $f\'$.', 'Where $f$ rises or falls, from a formula, a table, or a graph of $f\'$.', 'Unit 5', 'increasing-decreasing', ['curve-analyzer']],
+    [D`f' \ \text{from}\  + \ \text{to}\  - \ \text{at}\  c \Rightarrow \text{relative max}`, 'The first derivative test. From negative to positive: a relative minimum.', 'Any relative extremum. Name the function that changes sign and say from what to what; $f\'(c) = 0$ alone is not enough.', 'Unit 5', 'first-derivative-test', ['curve-analyzer']],
+    [D`\text{compare}\  f(a),\ f(b),\ f(\text{each critical point})`, 'The candidates test for absolute extrema on $[a, b]$, also called the closed interval method.', 'An absolute (global) maximum or minimum on a closed interval. A sign change only shows a relative extremum.', 'Unit 5', 'candidates-test', ['curve-analyzer']],
+    [D`f'' > 0 \Rightarrow \text{concave up}, \quad f'' < 0 \Rightarrow \text{concave down}`, 'Concavity. A point of inflection is where $f\'\'$ changes sign (where $f\'$ changes from increasing to decreasing, or back).', 'Concavity and inflection points, and whether a tangent line estimate is an overestimate (concave down) or an underestimate (concave up).', 'Unit 5', 'concavity', ['curve-analyzer']],
+    [D`f'(c) = 0,\ f''(c) < 0 \Rightarrow \text{relative max}`, 'The second derivative test. If $f\'\'(c) > 0$, a relative minimum; if $f\'\'(c) = 0$, the test says nothing.', 'A relative extremum at a critical point where $f\'\'$ is easy to evaluate.', 'Unit 5', 'second-derivative-test', ['curve-analyzer']],
+  ] },
+  { id: 'integrals', h: 'Integrals and the Fundamental Theorem', rows: [
+    [D`\int x^n\,dx = \frac{x^{n + 1}}{n + 1} + C \quad (n \ne -1)`, 'The power rule for antiderivatives.', 'Powers and roots, rewritten as powers first. Check by differentiating.', 'Unit 6', 'antiderivatives'],
+    [D`\int \frac{1}{x}\,dx = \ln|x| + C`, 'The case $n = -1$, with the absolute value.', 'An integrand $\\frac{1}{x}$, or $\\frac{u\'}{u}$ after a substitution.', 'Unit 6', 'antiderivatives'],
+    [D`\int e^x\,dx = e^x + C`, 'The antiderivative of the natural exponential.', 'Exponentials; with a substitution, $\\int e^{kx}\\,dx = \\frac{1}{k}e^{kx} + C$.', 'Unit 6', 'antiderivatives'],
+    [D`\int \sin x\,dx = -\cos x + C, \quad \int \cos x\,dx = \sin x + C`, 'Antiderivatives of sine and cosine.', 'Trigonometric integrands. The minus sign is on the antiderivative of sine.', 'Unit 6', 'antiderivatives'],
+    [D`\int \sec^2 x\,dx = \tan x + C, \quad \int \sec x \tan x\,dx = \sec x + C`, 'The derivatives of tangent and secant, read backward.', 'Integrands that are exactly one of these derivatives.', 'Unit 6', 'antiderivatives'],
+    [D`\int \frac{1}{\sqrt{1 - x^2}}\,dx = \arcsin x + C, \quad \int \frac{1}{1 + x^2}\,dx = \arctan x + C`, 'The inverse trigonometric derivatives, read backward.', 'Integrands of these forms, sometimes after a substitution or after completing the square.', 'Unit 6', 'antiderivatives'],
+    [D`\int_a^b f(x)\,dx = \lim_{n \to \infty}\sum_{i=1}^{n} f(x_i)\Delta x, \quad \Delta x = \frac{b - a}{n}`, 'The definite integral as a limit of Riemann sums.', 'To recognize a limit of sums as an integral: read $\\Delta x$ and $x_i$ to find $a$, $b$ and $f$.', 'Unit 6', 'definite-integral-notation', ['riemann-sums']],
+    [D`\frac{\Delta x_1}{2}\left[f(x_0) + f(x_1)\right] + \frac{\Delta x_2}{2}\left[f(x_1) + f(x_2)\right] + \cdots`, 'The trapezoidal sum, each trapezoid with its own width.', 'Approximating an integral from a table. Widths may differ; never assume they are equal.', 'Unit 6', 'riemann-sums', ['riemann-sums']],
+    [D`\frac{d}{dx}\int_a^x f(t)\,dt = f(x)`, 'The Fundamental Theorem of Calculus, first part, for continuous $f$.', 'Derivatives of accumulation functions. With an upper limit $g(x)$, multiply by $g\'(x)$: $\\frac{d}{dx}\\int_a^{g(x)} f(t)\\,dt = f(g(x))g\'(x)$.', 'Unit 6', 'ftc-accumulation', ['accumulation']],
+    [D`\int_a^b f(x)\,dx = F(b) - F(a), \ \text{where}\  F' = f`, 'The Fundamental Theorem of Calculus, second part: evaluate with any antiderivative.', 'Definite integrals without a calculator.', 'Unit 6', 'ftc-definite-integrals', ['accumulation']],
+    [D`\int_b^a f(x)\,dx = -\int_a^b f(x)\,dx`, 'Reversing the limits changes the sign.', 'An accumulation function evaluated below its lower limit, such as $\\int_4^1 f(t)\\,dt$.', 'Unit 6', 'integral-properties', ['accumulation']],
+    [D`\int_a^b f(x)\,dx + \int_b^c f(x)\,dx = \int_a^c f(x)\,dx`, 'Integrals over adjacent intervals add.', 'Integrals given in pieces, or a graph made of pieces whose areas you add.', 'Unit 6', 'integral-properties', ['accumulation']],
+    [D`\int f(g(x))g'(x)\,dx = \int f(u)\,du, \quad u = g(x)`, 'Substitution: the chain rule run backward.', 'An inside function whose derivative, up to a constant, is also a factor. For a definite integral, change the limits too.', 'Unit 6', 'u-substitution'],
+  ] },
+  { id: 'motion', h: 'Motion, rates and accumulation', rows: [
+    [D`v(t) = x'(t), \quad a(t) = v'(t) = x''(t)`, 'Velocity and acceleration from position.', 'Particle motion on a line.', 'Unit 4', 'straight-line-motion', ['motion-lab']],
+    [D`v, a \ \text{same sign} \Rightarrow \text{speeding up}`, 'Speeding up or slowing down. Opposite signs: slowing down. Speed is $|v(t)|$.', 'Any speeding-up question: give the signs of both $v$ and $a$ at that time.', 'Unit 4', 'straight-line-motion', ['motion-lab']],
+    [D`\frac{d}{dt}\left[x^2 + y^2\right] = 2x\frac{dx}{dt} + 2y\frac{dy}{dt}`, 'Related rates: differentiate the equation that links the quantities with respect to time.', 'Ladders, cones, shadows: differentiate first, then substitute the values at the moment asked about.', 'Unit 4', 'related-rates-intro', ['related-rates']],
+    [D`f_{\text{avg}} = \frac{1}{b - a}\int_a^b f(x)\,dx`, 'The average value of $f$ on $[a, b]$.', '"Average temperature" or "average velocity" asks for the average value of the function, not its average rate of change.', 'Unit 8', 'average-value'],
+    [D`x(t) = x(t_0) + \int_{t_0}^{t} v(s)\,ds`, 'Position from velocity and a known position.', 'Position at a time: start from the time where the position is known, not always $t = 0$.', 'Unit 8', 'motion-with-integrals', ['motion-lab']],
+    [D`\int_a^b v(t)\,dt \ \text{and}\  \int_a^b |v(t)|\,dt`, 'Displacement (the first) and total distance traveled (the second).', 'Total distance: integrate the speed, or, without a calculator, split where $v$ changes sign.', 'Unit 8', 'motion-with-integrals', ['motion-lab']],
+    [D`A(t) = A(0) + \int_0^t r(s)\,ds`, 'An amount from a rate and a starting amount (net change).', 'Water in a tank, people in a park: keep the starting amount, and subtract the rate out from the rate in.', 'Unit 8', 'accumulation-in-context', ['accumulation']],
+  ] },
+  { id: 'des', h: 'Differential equations', rows: [
+    [D`\frac{dy}{dx} = f(x)g(y) \Rightarrow \int \frac{1}{g(y)}\,dy = \int f(x)\,dx`, 'Separation of variables.', 'A particular solution: add $+ C$ as you antidifferentiate, use the initial condition right away, then solve for $y$.', 'Unit 7', 'separation-of-variables', ['slope-fields']],
+    [D`\frac{dy}{dt} = ky \Rightarrow y = y_0 e^{kt}`, 'Exponential growth ($k > 0$) and decay ($k < 0$); $y_0$ is the value at $t = 0$.', 'A rate proportional to the amount present.', 'Unit 7', 'exponential-models', ['slope-fields']],
+  ] },
+  { id: 'area', h: 'Area and volume', rows: [
+    [D`\int_a^b \left[f(x) - g(x)\right]dx`, 'Area between curves, $f$ above $g$, slicing along $x$.', 'Area between two graphs. Split at crossings if the top curve changes.', 'Unit 8', 'area-between-curves-x', ['area-volume']],
+    [D`\int_c^d \left[p(y) - q(y)\right]dy`, 'Area slicing along $y$: the right curve minus the left curve.', 'When the region is easier to describe with $x$ as a function of $y$.', 'Unit 8', 'area-between-curves-y', ['area-volume']],
+    [D`\int_a^b A(x)\,dx, \quad A = s^2 \ \text{for squares}`, 'Volume from cross sections of area $A(x)$; a square of side $s$ has area $s^2$.', 'Known cross sections on a base region: the side $s$ is the length across the base at $x$.', 'Unit 8', 'cross-sections-squares', ['area-volume']],
+    [D`A = \frac{\sqrt{3}}{4}s^2, \quad A = \frac{\pi}{8}s^2, \quad A = \frac{1}{2}s^2`, 'Cross-section areas: an equilateral triangle of side $s$, a semicircle of diameter $s$, an isosceles right triangle with a leg $s$ in the base.', 'Triangle and semicircle cross sections; with the hypotenuse $s$ in the base, the right triangle has area $\\frac{1}{4}s^2$.', 'Unit 8', 'cross-sections-triangles', ['area-volume']],
+    [D`\pi\int_a^b \left[R(x)\right]^2 dx`, 'The disc method, with the radius $R$ measured from the axis of revolution.', 'A region that touches the axis. About a line $y = k$, the radius is $|f(x) - k|$.', 'Unit 8', 'disc-method-axes', ['area-volume']],
+    [D`\pi\int_a^b \left(\left[R(x)\right]^2 - \left[r(x)\right]^2\right)dx`, 'The washer method: outer radius $R$ and inner radius $r$, both from the axis.', 'A region with a gap from the axis. Square each radius on its own; $(R - r)^2$ is wrong.', 'Unit 8', 'washer-method-axes', ['area-volume']],
+  ] },
+];
+// Easy to forget, and each one costs points every year (framework.md section 8).
+export const NOT_ON = [
+  ['$+ C$', 'Every indefinite integral ends with $+ C$. In a separable differential equation the constant appears as you antidifferentiate, before you solve for $y$.', 'separation-of-variables'],
+  ['Units of a rate of a rate', 'If $r(t)$ is in liters per minute, $r\'(t)$ is in liters per minute per minute, and $\\int_a^b r(t)\\,dt$ is in liters.', 'derivative-in-context'],
+  ['The chain factor on an accumulation function', '$\\frac{d}{dx}\\int_0^{x^2} f(t)\\,dt = f(x^2) \\cdot 2x$, not $f(x^2)$.', 'ftc-accumulation'],
+  ['Average value is not average rate', '$\\frac{1}{b - a}\\int_a^b f(x)\\,dx$ is the average value of $f$; $\\frac{f(b) - f(a)}{b - a}$ is its average rate of change.', 'average-value'],
+  ['Vertical tangents', 'Where the denominator of $\\frac{dy}{dx}$ is 0 and its numerator is not, at a point that is on the curve. $\\frac{dy}{dx} = 0$ gives horizontal tangents.', 'implicit-relations'],
+  ['$\\pi$ in discs and washers', 'Every disc or washer volume has a factor of $\\pi$; a square or triangle cross section has none.', 'disc-method-axes'],
+];
 
 export function entryPages(ctx) {
   const { map, C, put, head, tail, footer, crumbNav, crumbs, orgCrumbs, esc, text, SITE, BASE, COURSE_ID, COURSE_NAME, COURSE_HTML, BETA_PILL, LABEL, courseTitle, clampDesc, noindex, bodyOpen, questionHtml, questionForPage, groupSets, stimulusPanel, stimulusBody, isFreeTopic, frqs, liveTools } = ctx;
@@ -149,8 +228,8 @@ ${bodyOpen(' data-app="score-calculator"')}
     <p>Use the questions you got right and the points on each free-response question from a practice exam, or from a released one you scored with its rubric.</p>
     <p>The exam has two sections worth half the score each: 42 multiple-choice questions (29 without a calculator, 13 with one), and 6 free-response questions worth 9 points each, 54 in all. So the calculator turns each section into a score out of 50 and adds them:</p>
     <p class="calc-sc-formula"><b>composite = 50 &times; (multiple-choice right &divide; 42) + 50 &times; (free-response points &divide; 54)</b></p>
-    <p>A composite of 64 or more is shown as a 5, 48 or more as a 4, 37 or more as a 3, 27 or more as a 2, and anything lower as a 1. There is no penalty for a wrong multiple-choice answer, so a blank and a wrong answer count the same.</p>
-    <p class="calc-ex-band-warn"><b>Not calibrated: these cut-offs are placeholders, not official.</b> The College Board sets the real cut-offs after each exam, from how that year's students did, and has published none for the current calculus exam. Ours will be fitted to the published score distributions before the course launches; until then, use the estimate only to see which section has the most room to grow.</p>
+    <p>A composite of 66 or more is shown as a 5, 49 or more as a 4, 40 or more as a 3, 23 or more as a 2, and anything lower as a 1. There is no penalty for a wrong multiple-choice answer, so a blank and a wrong answer count the same.</p>
+    <p class="calc-ex-band-warn"><b>These cut-offs are estimates, not official.</b> The College Board sets the real cut-offs after each exam, from how that year's students did, and has published none for the current calculus exam. We chose ours so that, with the average free-response scores the College Board published for 2024 and 2025 (about 43% and 44% of the points), they give about the share of 5s (about 20%), 4s or better (about 49%), 3s or better (about 64%) and 2s or better (about 87%) reported for 2024 to 2026. How the 42-question multiple-choice section will be scaled in 2027 is not published either. Treat a result within about 5 points of a cut-off as either score, and use the estimate to see which section has the most room to grow.</p>
   </section>
   <section class="xsection" aria-labelledby="sc-next"><h2 id="sc-next">Raise your score</h2>
     <ul class="calc-links">
@@ -235,7 +314,8 @@ ${tail({ depth, section: 'exams', extra: ['calc-questions.js', 'pages/sample.js'
   const prompts = loadJustify(C.data, map).filter(p => C.published.has(p.unit));
   out['assets/justify.json'] = JSON.stringify({
     skills: JUSTIFY_SKILLS,
-    prompts: renderMath(prompts).map((p, i) => ({ id: p.id, unit: p.unit, topic: p.topic, practice: p.practice, skill: p.skill, title: p.title, context: p.context || '', prompt: p.prompt, checklist: p.checklist, earns: p.earns, misses: p.misses, ...(i < FREE_JUSTIFY ? { free: true } : {}) })),
+    // "answer" is a raw key for questions (never TeX), so the model answers are rendered on their own.
+    prompts: prompts.map((raw, i) => { const p = renderMath(raw), R1 = s => renderMath([s])[0]; return { id: p.id, unit: p.unit, topic: p.topic, practice: p.practice, skill: p.skill, title: p.title, context: p.context || '', prompt: p.prompt, checklist: p.checklist, earns: { answer: R1(raw.earns.answer), why: p.earns.why }, misses: { answer: R1(raw.misses.answer), why: p.misses.why }, ...(i < FREE_JUSTIFY ? { free: true } : {}) }; }),
   });
   return { pages: out, sampleUnits: units.filter(built).map(u => u.id), forms: live.length, prompts: prompts.length };
 }

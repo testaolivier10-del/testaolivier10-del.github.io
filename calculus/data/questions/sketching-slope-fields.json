@@ -99,8 +99,8 @@
       "why": "That is $y - 2x$, the sign reversed."
      },
      {
-      "value": -4,
-      "why": "The coordinates were swapped: use $x = 1$ and $y = 3$, so $2(1) - 3$."
+      "value": -2,
+      "why": "The 2 multiplies $x$: $2(1) - 3 = -1$, not $1 - 3$."
      }
     ]
    },
@@ -208,7 +208,7 @@
      },
      {
       "value": -3,
-      "why": "$x^2(y - 2)$ is a product, not a sum: $1 \\cdot (-1) = -1$."
+      "why": "The second factor uses $y$, not $x$: $y - 2 = 1 - 2 = -1$, so the slope is $(-1)^2 \\cdot (-1) = -1$."
      }
     ]
    },

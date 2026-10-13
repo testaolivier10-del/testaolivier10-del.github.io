@@ -158,7 +158,7 @@ As AP® Physics 1 (`--check`, `--out <dir>`, `APCALC_PUBLISHED=unit-6`, `APCALC_
   page loads `calc-questions.js`, `tools/calc-tool-math.js`, `tools/math/<slug>.js`,
   `tools/calc-tools.js`, `tools/calc-plot.js`, `tools/<slug>.js`.
 - `formula-sheet.html`: the exam gives no formula sheet, so this page lists the formulas to know
-  (`EQ` in `apcalc-entry.mjs`, empty until Phase 3).
+  (`EQ` in `apcalc-entry.mjs`).
 
 ## Runtime differences from AP® Physics 1
 
@@ -166,7 +166,7 @@ As AP® Physics 1 (`--check`, `--out <dir>`, `APCALC_PUBLISHED=unit-6`, `APCALC_
 |---|---|
 | `calc-questions.js` | `gradeNumeric` (three-decimal rule for calculator items, exact otherwise, optional units), `expr` renderer with a live preview, a "Calculator" chip on calculator items outside exams, graph stimuli. Exports `readNumber`, `splitNumber`, `threeOk`, `normUnit`, `formatKey`. |
 | `pages/exams.js` | `MCQ_PARTS` (A: 29 in 62 min, no calculator; B: 13 in 38 min, calculator) and `FRQ_PARTS` (A: 2 in 30 min, calculator; B: 4 in 60 min, no calculator), 9 points each. A calculator notice opens each part, with a link to a free graphing calculator (Desmos); nothing third party is embedded. Readiness is 50% MCQ + 50% FRQ, labelled "Not calibrated". |
-| `pages/score.js` | `ApCalcScore`: composite = 50 × (MCQ ÷ 42) + 50 × (FRQ points ÷ 54); bands 64/48/37/27 are placeholders (needs-author `score-cutoffs`); a test holds them equal to the practice exam's band. |
+| `pages/score.js` | `ApCalcScore`: composite = 50 × (MCQ ÷ 42) + 50 × (FRQ points ÷ 54); estimated bands 66/49/40/23 (needs-author `score-cutoffs`); a test holds them equal to the practice exam's band. |
 | `pages/cram.js` | Default exam date 2027-05-10; 29 + 13 and 2 + 4 format text; timed sets at 100/42 min a question. |
 | `pages/frq-kit.js`, `frq.js`, `dashboard.js`, `practice.js` | The eight FRQ types; practice filters for expr, calculator and no-calculator items. |
 | `calc.css` | Crimson tint (`--ctint` `#FCE8EE`, `--cink` `#8C1036`, 9.4:1 on white and 8.0:1 on the tint; dark `rgba(232,80,122,0.10)` / `#F7B8CA`), the same values as `body[data-course="apcalc"]` in `assets/theme.css`; MathML, plot and expr styles. |
@@ -232,18 +232,24 @@ As AP® Physics 1, checked by `checkForms` (`scripts/lib/apcalc-exams.mjs`): at 
 I is 42 questions, Part A's 29 no-calculator questions before Part B's 13 calculator ones; a block
 never mixes calculator and no-calculator items; each unit's count inside its weight range
 (`unitRange`: 5-10% gives 2-5, 10-15% 4-7, 15-20% 6-9 of 42); Section II is 6 FRQs, 2 calculator then
-4 no-calculator, 9 points each, no type more than twice; no question in two forms.
+4 no-calculator, 9 points each, no type more than twice; no question in two forms. Exam-only items
+(`items.json`, `calc-exam-<form>-<nn>`, stimuli `exam-<form>-s<n>`) are four-option calculator items in
+the bank format; their options show three decimals, rounded, and `EXAM_NUMBERS` recomputes each key.
 
 ## Justification trainer: `data/justify/<unit>.json`
 
-As AP® Physics 1. Skills (`JUSTIFY_SKILLS`): `limits`, `behavior`, `theorems`, `extrema`, `motion`,
-`accumulation`, `de`, `context`. The checker refuses a model answer that names the Intermediate, Mean
-or Extreme Value Theorem without saying the function is continuous.
+As AP® Physics 1. Skills (`JUSTIFY_SKILLS`): `theorems`, `limits`, `extrema`, `behavior`,
+`accumulation`, `motion`, `context`, `de`, `rules` (derivative steps shown), `setup` (area and volume).
+The checker refuses a model answer that names the Intermediate, Mean or Extreme Value Theorem without
+saying the function is continuous. A context table uses `<table class="calc-data">`. `answer` is a raw key
+elsewhere, so the generator renders `earns.answer` and `misses.answer` itself.
 
 ## Exams and entry pages
 
-`score-calculator.html` (54 FRQ points, placeholder cut-offs, "Not calibrated"), `formula-sheet.html`
-(empty frame until Phase 3), `unit-tests/<unit>.html` (built once a unit is published).
+`score-calculator.html` (54 FRQ points, estimated cut-offs), `formula-sheet.html` ("Formulas and theorems
+to know": `EQ` rows `[TeX, what, when, 'Unit N', topic, trainers?]` in groups, plus `NOT_ON` "easy to
+forget" lines `[title, text, topic]`; trainers link only when live), `unit-tests/<unit>.html` (built once a
+unit is published).
 
 ## Registration (hidden until launch)
 

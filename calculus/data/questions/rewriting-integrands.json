@@ -46,11 +46,11 @@
     "labels": [
      {
       "at": [
-       1.6,
-       9
+       3.3,
+       7.1
       ],
       "text": "integrand",
-      "anchor": "start"
+      "anchor": "middle"
      },
      {
       "at": [

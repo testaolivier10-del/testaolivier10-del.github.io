@@ -388,7 +388,7 @@
    "options": [
     "As the time gets closer and closer to 30 minutes, the number of people in the stadium gets closer and closer to 18,000.",
     "Exactly 18,000 people are in the stadium at 30 minutes.",
-    "The stadium holds 18,000 people more after 30 minutes than at the start.",
+    "Over the first 30 minutes, the number of people in the stadium grows by 18,000.",
     "People enter at 18,000 per minute at 30 minutes."
    ],
    "correct": 0,

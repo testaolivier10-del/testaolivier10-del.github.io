@@ -1,0 +1,97 @@
+{
+ "about": "Justification trainer prompts for Unit 7 (docs/apcalc-architecture.md, \"Justification trainer\"). Every number is recomputed in scripts/lib/apcalc-exams.mjs (JUSTIFY_NUMBERS).",
+ "prompts": [
+  {
+   "unit": "unit-7",
+   "id": "u7-verify-solution",
+   "topic": "verifying-solutions",
+   "practice": "3.D",
+   "skill": "de",
+   "title": "Checking a solution of a differential equation",
+   "context": "<p>Consider the differential equation $\\frac{dy}{dx} = -3(y - 4)$.</p>",
+   "prompt": "<b>Show</b> that $y = 4 + 2e^{-3x}$ is a solution of the differential equation.",
+   "checklist": [
+    "Differentiates the function: $\\frac{dy}{dx} = -6e^{-3x}$",
+    "Substitutes $y$ into the right side: $-3\\left(4 + 2e^{-3x} - 4\\right) = -6e^{-3x}$",
+    "Concludes the two sides are equal for every $x$"
+   ],
+   "earns": {
+    "answer": "For $y = 4 + 2e^{-3x}$, the left side is $\\frac{dy}{dx} = -6e^{-3x}$. The right side is $-3(y - 4) = -3\\left(4 + 2e^{-3x} - 4\\right) = -6e^{-3x}$. The two sides are equal for all $x$, so $y = 4 + 2e^{-3x}$ is a solution.",
+    "why": "It works each side on its own and shows they match for every $x$, not just at one point."
+   },
+   "misses": {
+    "answer": "At $x = 0$, $y = 6$ and $\\frac{dy}{dx} = -6$, and $-3(6 - 4) = -6$, so it works.",
+    "why": "Checking one point does not show the function solves the equation; it must hold for every $x$."
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-separation-with-constant",
+   "topic": "particular-solutions",
+   "practice": "3.D",
+   "skill": "de",
+   "title": "Separation with the initial condition",
+   "context": "<p>Consider $\\frac{dy}{dx} = \\frac{2x}{y}$ with $y(0) = 3$.</p>",
+   "prompt": "<b>Find</b> the particular solution $y = f(x)$ with $f(0) = 3$.",
+   "checklist": [
+    "Separates: $y\\,dy = 2x\\,dx$, then antidifferentiates: $\\frac{y^2}{2} = x^2 + C$",
+    "Uses the initial condition right away: $\\frac{9}{2} = 0 + C$, so $C = \\frac{9}{2}$",
+    "Solves with the positive root, since $y(0) = 3 > 0$: $y = \\sqrt{2x^2 + 9}$"
+   ],
+   "earns": {
+    "answer": "$y\\,dy = 2x\\,dx$, so $\\frac{y^2}{2} = x^2 + C$. With $y(0) = 3$: $\\frac{9}{2} = C$. So $y^2 = 2x^2 + 9$, and since $y(0) > 0$, $y = \\sqrt{2x^2 + 9}$.",
+    "why": "The constant appears when the antiderivatives are taken and is found from the initial condition before solving for $y$; the sign of the root is chosen from $y(0)$."
+   },
+   "misses": {
+    "answer": "$\\frac{y^2}{2} = x^2$, so $y = \\sqrt{2}\\,x$, and adding $C$ with $y(0) = 3$ gives $y = \\sqrt{2}\\,x + 3$.",
+    "why": "The constant must be added when you antidifferentiate, not after solving for $y$. Added at the end, it gives a function that does not solve the equation."
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-tangent-under-concave-up",
+   "topic": "reasoning-with-slope-fields",
+   "practice": "1.F",
+   "skill": "de",
+   "title": "Tangent line estimate from a differential equation",
+   "context": "<p>The function $y = f(x)$ solves $\\frac{dy}{dx} = x - y$ with $f(1) = 3$. The line tangent to its graph at $x = 1$ gives $f(1.2) \\approx 3 + (-2)(0.2) = 2.6$.</p>",
+   "prompt": "Is $2.6$ an overestimate or an underestimate of $f(1.2)$? <b>Justify</b> your answer with $\\frac{d^2y}{dx^2}$.",
+   "checklist": [
+    "Differentiates with the chain rule on $y$: $\\frac{d^2y}{dx^2} = 1 - \\frac{dy}{dx}$",
+    "Evaluates at $(1, 3)$: $\\frac{dy}{dx} = -2$, so $\\frac{d^2y}{dx^2} = 1 - (-2) = 3 > 0$",
+    "Concludes the graph is concave up near $x = 1$, so the tangent line lies below it: an underestimate"
+   ],
+   "earns": {
+    "answer": "$\\frac{d^2y}{dx^2} = \\frac{d}{dx}(x - y) = 1 - \\frac{dy}{dx} = 1 - (x - y)$. At $(1, 3)$ this is $1 - (1 - 3) = 3 > 0$, so the graph of $f$ is concave up near $x = 1$ and lies above its tangent line. The estimate 2.6 is an underestimate.",
+    "why": "It finds $\\frac{d^2y}{dx^2}$ with $y$ treated as a function of $x$, evaluates it at the point, and ties concavity to the position of the tangent line."
+   },
+   "misses": {
+    "answer": "$\\frac{d^2y}{dx^2} = 1$, which is positive, so the graph is concave up and 2.6 is an underestimate.",
+    "why": "The conclusion is right but the second derivative is not: differentiating $-y$ gives $-\\frac{dy}{dx}$, not 0. A wrong $\\frac{d^2y}{dx^2}$ earns neither point."
+   }
+  },
+  {
+   "unit": "unit-7",
+   "id": "u7-maximum-from-de",
+   "topic": "reasoning-with-slope-fields",
+   "practice": "3.E",
+   "skill": "extrema",
+   "title": "A maximum read from the differential equation",
+   "context": "<p>The function $y = f(x)$ solves $\\frac{dy}{dx} = (3 - x)y$, and $f(x) > 0$ for all $x$.</p>",
+   "prompt": "Does $f$ have a relative maximum, a relative minimum or neither at $x = 3$? <b>Justify</b> your answer.",
+   "checklist": [
+    "Finds $\\frac{dy}{dx} = 0$ at $x = 3$",
+    "Uses $y > 0$: the sign of $\\frac{dy}{dx}$ is the sign of $3 - x$",
+    "Says $\\frac{dy}{dx}$ changes from positive to negative at $x = 3$, so $f$ has a relative maximum"
+   ],
+   "earns": {
+    "answer": "At $x = 3$, $\\frac{dy}{dx} = 0$. Because $y = f(x) > 0$, $\\frac{dy}{dx} = (3 - x)y$ has the sign of $3 - x$: positive for $x < 3$ and negative for $x > 3$. So $\\frac{dy}{dx}$ changes from positive to negative at $x = 3$, and $f$ has a relative maximum there.",
+    "why": "It uses the given fact $y > 0$ to read the sign of $\\frac{dy}{dx}$ and names the derivative that changes sign."
+   },
+   "misses": {
+    "answer": "$f$ goes from increasing to decreasing at $x = 3$, so it has a relative maximum.",
+    "why": "It restates the conclusion. The readers want the reason: $\\frac{dy}{dx}$ changes from positive to negative at $x = 3$, which needs $y > 0$."
+   }
+  }
+ ]
+}

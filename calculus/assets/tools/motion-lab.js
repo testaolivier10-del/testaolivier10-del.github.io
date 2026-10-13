@@ -52,7 +52,7 @@
     var ids = (data.motions || []).map(function(m){ return m.id; }).filter(function(id){ return ML.MOTIONS[id]; });
     if(!ids.length) ids = ['cubic', 'quad', 'wave', 'surge'];
     var hasV = ids.some(function(id){ return ML.MOTIONS[id].mode === 'v'; });
-    var st = { id: ids[0], t: 0, playing: false, touched: false };
+    var st = { id: ids[0], t: 0, playing: false, touched: false, view: null };
     var saved = storeGet('apcalc_motionlab_motion'); if(saved && ids.indexOf(saved) > -1) st.id = saved;
     var cache = {};
     function mo(){ return ML.MOTIONS[st.id]; }
@@ -71,6 +71,7 @@
         '<div class="ml-ctl">' +
           (hasV ? '<div class="ml-modes ls-seg" role="group" aria-label="What is given"><button type="button" class="bt-mode" data-g="x" aria-pressed="true">Position given</button><button type="button" class="bt-mode" data-g="v" aria-pressed="false">Velocity given</button></div>' : '') +
           '<div class="ml-chips ls-scroll" role="group" aria-label="Motion"></div>' +
+          '<div class="ml-view ls-seg" role="group" aria-label="Graphs shown"><button type="button" class="bt-mode" data-k="all" aria-pressed="true">x, v, a</button><button type="button" class="bt-mode" data-k="x" aria-pressed="false">x only</button><button type="button" class="bt-mode" data-k="v" aria-pressed="false">v only</button><button type="button" class="bt-mode" data-k="a" aria-pressed="false">a only</button></div>' +
           '<div class="ml-time"><button type="button" class="bt-btn ls-btn ls-pri ml-play">Play</button><div class="ml-slot"></div></div>' +
         '</div>' +
         '<div class="ml-say"></div>' +
@@ -87,6 +88,13 @@
     var loop = null, gl = null, tl = null;
 
     function narrow(){ try{ return matchMedia('(max-width: 599.98px)').matches; }catch(e){ return false; } }
+    /* On a phone the three stacked graphs can be shown one at a time, each
+       on the whole stage (the switch in the dock); elsewhere all three. */
+    function phone(){ return !!(LS && LS.root && LS.root.classList.contains('ls-phone')); }
+    /* Not chosen yet: all three, except on a phone on its side, where three
+       graphs would be slivers: v alone (its sign and the bands tell most). */
+    function view(){ return st.view || (phone() && window.innerWidth > window.innerHeight ? 'v' : 'all'); }
+    function keys(){ var v = view(); return v === 'all' || !phone() ? ['x', 'v', 'a'] : [v]; }
     function chipsFor(g){
       // On a phone one row holds every motion (no room for the switch above it).
       chips.innerHTML = ids.filter(function(id){ return narrow() || ML.MOTIONS[id].mode === g; }).map(function(id){
@@ -107,11 +115,18 @@
     chips.addEventListener('click', function(e){ var b = e.target.closest('.ml-chip'); if(b){ touch(); setMotion(b.getAttribute('data-id')); } });
     if(modesEl) modesEl.addEventListener('click', function(e){ var b = e.target.closest('.bt-mode'); if(!b) return; var g = b.getAttribute('data-g'); if(g === mo().mode) return; touch(); setMotion(ids.filter(function(id){ return ML.MOTIONS[id].mode === g; })[0]); });
     function touch(){ if(!st.touched){ st.touched = true; cue.done(); } }
+    var viewEl = host.querySelector('.ml-view');
+    viewEl.addEventListener('click', function(e){
+      var b = e.target.closest('.bt-mode'); if(!b) return;
+      st.view = b.getAttribute('data-k'); touch();
+      viewEl.querySelectorAll('.bt-mode').forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+      gl = null; draw(false);
+    });
     function setT(t){ st.t = clamp(t, 0, mo().T); touch(); draw(true); }
 
     /* ---------------------------------------------- the road and the car */
     function trackLayout(){
-      var w = Math.max(280, Math.round(track.clientWidth || 600)), h = w < 520 ? 84 : 112;
+      var w = Math.max(280, Math.round(track.clientWidth || 600)), h = w < 520 ? 98 : 112;
       var tb = info().tb, lo = Math.min.apply(null, tb.x), hi = Math.max.apply(null, tb.x);
       var span = Math.max(2, hi - lo), pad = span * 0.12; lo = Math.floor(lo - pad); hi = Math.ceil(hi + pad);
       return { w: w, h: h, lo: lo, hi: hi, L: 22, R: w - 22, road: h - 30, sx: function(x){ return 22 + (x - lo) / (hi - lo) * (w - 44); } };
@@ -150,23 +165,27 @@
     }
     function arrow(x1, y, x2, cls, lab){
       if(Math.abs(x2 - x1) < 3) return '<g class="' + cls + '"><circle cx="' + r1(x1) + '" cy="' + y + '" r="2.5"/><text x="' + r1(x1 + 6) + '" y="' + (y + 4) + '">' + lab + ' = 0</text></g>';
-      var dx = x2 - x1, s = dx > 0 ? 1 : -1, hx = x2 - s * 7;
+      // never past the edge of the road: clip the arrow, and put its letter
+      // on the other side when there is no room for it at the tip
+      var W = tl ? tl.w : 600; x2 = clamp(x2, 4, W - 4);
+      var dx = x2 - x1, s = dx > 0 ? 1 : -1, hx = x2 - s * 7, room = s > 0 ? W - x2 > 16 : x2 > 16;
       return '<g class="' + cls + '"><line x1="' + r1(x1) + '" y1="' + y + '" x2="' + r1(hx) + '" y2="' + y + '"/><path d="M' + r1(x2) + ' ' + y + 'L' + r1(hx) + ' ' + (y - 4.5) + 'L' + r1(hx) + ' ' + (y + 4.5) + 'Z"/>' +
-        '<text x="' + r1(x2 + s * 5) + '" y="' + (y + 4) + '" text-anchor="' + (s > 0 ? 'start' : 'end') + '">' + lab + '</text></g>';
+        '<text x="' + r1(room ? x2 + s * 5 : x1 - s * 6) + '" y="' + (y + 4) + '" text-anchor="' + ((s > 0) === room ? 'start' : 'end') + '">' + lab + '</text></g>';
     }
 
     /* ---------------------------------------------------- the graphs */
     function graphsLayout(){
-      var w = Math.max(280, Math.round(gwrap.clientWidth || 600)), h = Math.max(240, Math.round(gwrap.clientHeight || 330));
-      var L = w < 420 ? 40 : 48, R = 12, top = 6, gap = 10, bottom = 24, ph = (h - top - bottom - 2 * gap) / 3;
+      var w = Math.max(280, Math.round(gwrap.clientWidth || 600)), h = Math.max(100, Math.round(gwrap.clientHeight || 330));
+      var ks = keys(), L = w < 420 ? 42 : 48, R = 12, top = 6, gap = 10, bottom = 24, ph = (h - top - bottom - (ks.length - 1) * gap) / ks.length;
       var m = mo(), tb = info().tb, rows = {};
-      ['x', 'v', 'a'].forEach(function(k, i){
+      if(viewEl) viewEl.querySelectorAll('.bt-mode').forEach(function(x){ x.setAttribute('aria-pressed', String(x.getAttribute('data-k') === view())); });
+      ks.forEach(function(k, i){
         var ys = tb[k], lo = Math.min(0, Math.min.apply(null, ys)), hi = Math.max(0, Math.max.apply(null, ys));
         if(m.pts && k === 'a'){ lo = Math.min(lo, -0.5); hi = Math.max(hi, 0.5); }
         var pad = (hi - lo) * 0.1 || 1; lo -= pad; hi += pad;
         rows[k] = { y0: top + i * (ph + gap), lo: lo, hi: hi };
       });
-      return { w: w, h: h, L: L, R: R, ph: ph, rows: rows, pw: w - L - R, bottom: h - bottom,
+      return { w: w, h: h, L: L, R: R, ph: ph, rows: rows, ks: ks, top: rows[ks[0]].y0, bot: rows[ks[ks.length - 1]].y0 + ph, pw: w - L - R, bottom: h - bottom,
         gx: function(t){ return L + t / m.T * (w - L - R); },
         gy: function(k, y){ var r = rows[k]; return r.y0 + (r.hi - y) / (r.hi - r.lo) * ph; } };
     }
@@ -176,7 +195,7 @@
       graphs.setAttribute('viewBox', '0 0 ' + g.w + ' ' + g.h);
       o.push('<defs><pattern id="ml-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" class="ml-hatch-l"/></pattern></defs>');
       var NAME = { x: 'x (m)', v: 'v (m/s)', a: 'a (m/s²)' }, CLS = { x: 's1', v: 's2', a: 's3' };
-      ['x', 'v', 'a'].forEach(function(k){
+      g.ks.forEach(function(k){
         var r = g.rows[k], y0 = r.y0, y1 = r.y0 + g.ph;
         o.push('<rect class="ml-panel" x="' + g.L + '" y="' + r1(y0) + '" width="' + g.pw + '" height="' + r1(g.ph) + '" rx="6"/>');
         // speeding-up / slowing-down bands
@@ -210,9 +229,9 @@
       // direction changes, on every panel
       an.turns.forEach(function(z){
         var px = r1(g.gx(z));
-        o.push('<line class="ml-turn" x1="' + px + '" y1="' + r1(g.rows.x.y0) + '" x2="' + px + '" y2="' + r1(g.rows.a.y0 + g.ph) + '"/>');
-        o.push('<circle class="ml-turn-pt" cx="' + px + '" cy="' + r1(g.gy('v', 0)) + '" r="4"/>');
-        if(!vMode || z <= t) o.push('<circle class="ml-turn-pt is-x" cx="' + px + '" cy="' + r1(g.gy('x', ML.xAt(m, z))) + '" r="4"/>');
+        o.push('<line class="ml-turn" x1="' + px + '" y1="' + r1(g.top) + '" x2="' + px + '" y2="' + r1(g.bot) + '"/>');
+        if(g.rows.v) o.push('<circle class="ml-turn-pt" cx="' + px + '" cy="' + r1(g.gy('v', 0)) + '" r="4"/>');
+        if(g.rows.x && (!vMode || z <= t)) o.push('<circle class="ml-turn-pt is-x" cx="' + px + '" cy="' + r1(g.gy('x', ML.xAt(m, z))) + '" r="4"/>');
       });
       // the time axis
       var tt = P.ticks(0, m.T, Math.max(4, Math.round(g.pw / 70)));
@@ -220,8 +239,8 @@
       o.push('<g class="ml-taxis">' + tt.map(function(v){ var px = r1(g.gx(v)); return '<text x="' + px + '" y="' + (g.h - 7) + '" text-anchor="middle">' + F(v, Math.abs(v - Math.round(v)) < 1e-9 ? 0 : 1) + '</text>'; }).join('') + '<text class="ml-tl" x="' + (g.L + g.pw) + '" y="' + (g.h - 7) + '" text-anchor="end">t (s)</text></g>');
       // the cursor
       var cx = r1(g.gx(t));
-      o.push('<line class="ml-cur" x1="' + cx + '" y1="' + r1(g.rows.x.y0) + '" x2="' + cx + '" y2="' + r1(g.rows.a.y0 + g.ph) + '"/>');
-      [['x', ML.xAt(m, t)], ['v', m.v(t)], ['a', m.a(t)]].forEach(function(p){ o.push('<circle class="ml-cur-pt ' + CLS[p[0]] + '" cx="' + cx + '" cy="' + r1(g.gy(p[0], p[1])) + '" r="5"/>'); });
+      o.push('<line class="ml-cur" x1="' + cx + '" y1="' + r1(g.top) + '" x2="' + cx + '" y2="' + r1(g.bot) + '"/>');
+      [['x', ML.xAt(m, t)], ['v', m.v(t)], ['a', m.a(t)]].filter(function(p){ return g.rows[p[0]]; }).forEach(function(p){ o.push('<circle class="ml-cur-pt ' + CLS[p[0]] + '" cx="' + cx + '" cy="' + r1(g.gy(p[0], p[1])) + '" r="5"/>'); });
       graphs.innerHTML = o.join('');
       gwrap.setAttribute('aria-valuenow', M.fixed(t, 2));
       gwrap.setAttribute('aria-valuetext', 't = ' + F(t, 2) + ' s: x = ' + F(ML.xAt(m, t), 2) + ' m, v = ' + F(m.v(t), 2) + ' m/s, a = ' + F(m.a(t), 2) + ' m/s²');
@@ -247,7 +266,7 @@
     function pills(){
       var m = mo(), t = st.t, x = ML.xAt(m, t), v = m.v(t), a = m.a(t), disp = x - ML.xAt(m, 0), dist = m.mode === 'v' ? ML.distTo(m, t) : 0;
       if(LS){
-        var narrow = false; try{ narrow = matchMedia('(max-width: 599.98px)').matches; }catch(e){}
+        var narrow = phone(); try{ narrow = narrow || matchMedia('(max-width: 599.98px)').matches; }catch(e){}
         var pills = narrow ? [{ html: '<span class="ml-pk s1">x</span> ' + F(x, 2) + ' · <span class="ml-pk s2">v</span> ' + F(v, 2) + ' · <span class="ml-pk s3">a</span> ' + F(a, 2), tone: 'ghost' }]
           : [{ k: 'x', html: F(x, 2) + ' m', tone: 'readout' }, { k: 'v', html: F(v, 2) + ' m/s', tone: 'readout' }, { k: 'a', html: F(a, 2) + ' m/s²', tone: 'readout' }];
         LS.pills(pills, 'left', 'explore');
@@ -335,23 +354,30 @@
   }
 
   /* ============================================================ test yourself */
+  /* The drill figure's size in its own units: on a phone about the stage's
+     size in CSS px, so its labels are drawn near their true size instead of
+     a desktop figure shrunk to 360 px. */
+  function figSize(w, h){
+    var W = window.innerWidth || 1280, Hh = window.innerHeight || 800;
+    if(W <= 640) return [340, Math.round(Math.max(260, Math.min(440, Hh * 0.62 - 90)))];
+    if(W <= 999 && Hh <= 540) return [440, Math.round(Math.max(220, Math.min(300, Hh - 110)))];
+    return [w, h];
+  }
   function figure(p){
     var f = p.fig, Tm = f.T, n = 160, ys = [];
     for(var i = 0; i <= n; i++) ys.push(f.f(Tm * i / n));
     var lo = Math.min(0, Math.min.apply(null, ys)), hi = Math.max(0, Math.max.apply(null, ys)), pad = (hi - lo) * 0.12 || 1;
-    var spec = { label: f.label + ', for t from 0 to ' + Tm, width: 600, height: 360, x: [0, Tm], y: [lo - pad, hi + pad], xLabel: 't', yLabel: f.kind === 'x' ? 'x(t)' : 'v(t)', xStep: Tm > 6 ? 2 : 1,
+    var sz = figSize(600, 360);
+    var spec = { label: f.label + ', for t from 0 to ' + Tm, width: sz[0], height: sz[1], x: [0, Tm], y: [lo - pad, hi + pad], xLabel: 't', yLabel: f.kind === 'x' ? 'x(t)' : 'v(t)', xStep: Tm > 6 ? 2 : 1,
       curves: [{ fn: f.f, domain: [0, Tm], cls: f.kind === 'x' ? 's1' : 's2' }], points: [] };
     if(f.pts) spec.points = f.pts.map(function(q){ return { at: q, cls: 's2' }; });
     if(f.mark != null) spec.points.push({ at: [f.mark, f.f(f.mark)], cls: f.kind === 'x' ? 's1' : 's2', label: 't = ' + ML.n(f.mark) });
     if(f.pts){ spec.yStep = 1; }
     try{ return '<div class="ml-figwrap">' + P.svg(spec) + '</div>'; }catch(e){ return ''; }
   }
-  /* The Tool Studio captions a problem with its text's textContent, which
-     would read each formula twice (MathML plus its TeX annotation). The
-     annotation is only for the build's ordering check, so drop it here. */
+  /* On the Tool Studio, caption the problem with its formulas rendered
+     (after the frame sets its own plain-text caption). */
   function plainCaption(area, p){
-    if(area) area.querySelectorAll('.bt-context annotation').forEach(function(a){ a.remove(); });
-    // and on the Tool Studio, caption with the formulas rendered (after the frame sets its own)
     var s = area && window.LevlStudio && window.LevlStudio.get && document.getElementById('app').getAttribute('data-studio') ? window.LevlStudio.get() : null;
     if(s && p) setTimeout(function(){ s.caption(String(p.text).replace(/<\/?p[^>]*>/g, ' ').trim(), 'quiz'); }, 0);
   }

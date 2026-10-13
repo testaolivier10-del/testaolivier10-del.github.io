@@ -43,18 +43,41 @@
     "curves": [
      {
       "fn": "2e^(-x^2)",
-      "label": "A = 2",
       "cls": "s1"
      },
      {
       "fn": "e^(-x^2)",
-      "label": "A = 1",
       "cls": "s2"
      },
      {
       "fn": "-e^(-x^2)",
-      "label": "A = -1",
       "cls": "s3"
+     }
+    ],
+    "labels": [
+     {
+      "at": [
+       0.2,
+       2.15
+      ],
+      "text": "A = 2",
+      "anchor": "start"
+     },
+     {
+      "at": [
+       0.95,
+       0.47
+      ],
+      "text": "A = 1",
+      "anchor": "start"
+     },
+     {
+      "at": [
+       0.8,
+       -0.9
+      ],
+      "text": "A = −1",
+      "anchor": "start"
      }
     ]
    }

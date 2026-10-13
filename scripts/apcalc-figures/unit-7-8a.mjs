@@ -208,7 +208,7 @@ export const FIGURES = {};
     dot(F, 0, 1), dot(F, 0, 5.5, { color: BLUE }),
     tag(F.sx(0.15), F.sy(0.6) + 18, 'through (0, 1): rises toward y = 3', { fill: CRIMSON, weight: 'bold' }),
     tag(F.sx(0.15), F.sy(5.5) - 10, 'through (0, 5.5): falls toward y = 3', { fill: BLUE, weight: 'bold' }),
-    tag(F.sx(3.1), F.sy(3) - 10, 'y = 3: slope 0 at every point', { fill: GREEN, weight: 'bold' }),
+    tag(F.sx(0.2), F.sy(3) - 10, 'y = 3: slope 0 at every point', { fill: GREEN, weight: 'bold' }),
     tag(F.sx(3.1), F.sy(5.9), 'dy/dx = (3 − y)/2', { size: 16, fill: INK, weight: 'bold' }),
   ].join('\n');
   FIGURES[id] = { W: 640, H: 500, title: 'Solution curves follow the slope field',

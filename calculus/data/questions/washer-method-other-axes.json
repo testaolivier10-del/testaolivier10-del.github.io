@@ -22,13 +22,13 @@
     "label": "The line y = x + 2 and the curve y = e^x. They cross near x = −1.84 and x = 1.15; the region Q between them is shaded, with the line on top. Dashed horizontal lines mark y = −1 below Q and y = 4 above it.",
     "x": [-2.4, 1.8], "y": [-1.6, 4.6], "xStep": 0.5, "yStep": 1, "xLabel": "x", "yLabel": "y",
     "curves": [
-     { "fn": "x + 2", "domain": [-2.4, 1.8], "cls": "s2", "label": "y = x + 2" },
-     { "fn": "e^x", "domain": [-2.4, 1.5], "cls": "s1", "label": "y = eˣ" },
+     { "fn": "x + 2", "domain": [-2.4, 1.8], "cls": "s2" },
+     { "fn": "e^x", "domain": [-2.4, 1.5], "cls": "s1" },
      { "fn": "-1", "domain": [-2.4, 1.8], "cls": "s3", "dashed": true, "label": "y = −1" },
-     { "fn": "4", "domain": [-2.4, 1.8], "cls": "s3", "dashed": true, "label": "y = 4" }
+     { "fn": "4", "domain": [-2.4, 1.8], "cls": "s3", "dashed": true }
     ],
     "shade": [ { "fn": "x + 2", "fn2": "e^x", "domain": [-1.8414056604369606, 1.1461932206205825] } ],
-    "labels": [ { "at": [-0.3, 1.2], "text": "Q" } ]
+    "labels": [ { "at": [-0.3, 1.2], "text": "Q" }, { "at": [-2.3, 1.0], "text": "y = x + 2", "anchor": "start" }, { "at": [1.75, 2.2], "text": "y = eˣ", "anchor": "end" }, { "at": [-2.3, 4.15], "text": "y = 4", "anchor": "start" } ]
    }
   }
  },

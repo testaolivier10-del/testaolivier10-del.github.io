@@ -350,7 +350,7 @@
     "Yes, because $f''(0) = 0$",
     "Yes, because the graph is flat at $x = 0$",
     "No, because $f'(0) = 0$",
-    "No: $f''(x) = 12x^2 \\ge 0$ on both sides, so the concavity does not change"
+    "No, because $f''(x) = 12x^2 \\ge 0$ on both sides, so the concavity does not change"
    ],
    "correct": 3,
    "why": {

@@ -270,7 +270,7 @@
     var L = trip[0], x = trip[1], y = trip[2], k = r.pick([1, 1.5, 2, 3, 4]), top = r() < 0.4;
     var L2 = L * L, dx, dy;
     if(!top){ dx = k; dy = -x * dx / y; } else { dy = -k; dx = -y * dy / x; }
-    var known = top ? 'the top slides down the wall at ' + n(k) + ' feet per second' : 'the bottom slides away from the wall at ' + n(k) + ' feet per second';
+    var fps = n(k) + (k === 1 ? ' foot' : ' feet') + ' per second', known = top ? 'the top slides down the wall at ' + fps : 'the bottom slides away from the wall at ' + fps;
     var when = top ? 'the top is ' + y + ' feet above the ground' : 'the bottom is ' + x + ' feet from the wall';
     var ask = top ? 'How fast is the bottom moving away from the wall' : 'How fast is the top sliding down the wall';
     var text = H('<p>A ' + L + '-foot ladder leans against a vertical wall, and ' + known + '. ' + ask + ' when ' + when + '?</p><p class="bt-small">Let <i>x</i> be the distance from the wall to the bottom and <i>y</i> the height of the top, in feet, at time <i>t</i> seconds.</p>');
@@ -345,7 +345,7 @@
         [0, BEFORE],
         [3 * dV / (Math.PI * R * R), 'That treats the surface radius as ' + R + ' ft at every depth. Use $r = ' + kt + 'h$ before differentiating.'],
         [dV / (Math.PI * k2 * h), 'Square the depth: $\\frac{dV}{dt} = ' + c3 + '\\pi h^2\\frac{dh}{dt}$.'],
-        [dh / 3, 'Keep the 3 from the power rule: $\\frac{d}{dt}\\left(h^3\\right) = 3h^2\\frac{dh}{dt}$.']
+        [3 * dh, 'Keep the 3 from the power rule: $\\frac{d}{dt}\\left(h^3\\right) = 3h^2\\frac{dh}{dt}$. Without it your rate is three times too big.']
       ], 'ft/min'),
       numStep('rdot', 'How fast is the radius of the water\'s surface changing at that moment? ($\\frac{dr}{dt}$, with its sign)', dr, [
         [-dr, 'The radius grows when the level rises and shrinks when it falls: $\\frac{dr}{dt}$ has the sign of $\\frac{dh}{dt}$.'],
@@ -414,7 +414,7 @@
     var r0 = r.pick([3, 4, 5, 6, 8, 10]), k = r.pick([0.5, 1, 1.5, 2, 3]), byArea = r() < 0.5;
     var dA = 2 * Math.PI * r0 * k, A = Math.PI * r0 * r0;
     var when = byArea ? 'the area inside the ripple is ' + (r0 * r0) + 'π square feet' : 'the radius is ' + r0 + ' feet';
-    var text = H('<p>A stone drops into a pond, and a circular ripple spreads so that its radius grows at ' + n(k) + ' feet per second. How fast is the area inside the ripple growing when ' + when + '?</p><p class="bt-small">Let <i>r</i> be the radius in feet and <i>A</i> the area in square feet, at time <i>t</i> seconds.</p>');
+    var text = H('<p>A stone drops into a pond, and a circular ripple spreads so that its radius grows at ' + n(k) + (k === 1 ? ' foot' : ' feet') + ' per second. How fast is the area inside the ripple growing when ' + when + '?</p><p class="bt-small">Let <i>r</i> be the radius in feet and <i>A</i> the area in square feet, at time <i>t</i> seconds.</p>');
     var steps = [
       choice('rel', 'Which equation relates $A$ and $r$ at every moment?', [
         ['$A = \\pi r^2$', 'Right: the area of a circle of radius $r$.'],
@@ -451,7 +451,8 @@
   };
 
   GEN.balloon = function(r){
-    var d = r.pick([300, 400, 500, 600, 800]), ratio = r.pick([[3, 4], [4, 3], [1, 1], [1, 2], [2, 1]]), h = d * ratio[0] / ratio[1];
+    // a whole number of feet high (400 × 4/3 would be 533.333...)
+    var d = r.pick([300, 400, 500, 600, 800]), ratio = r.pick([[3, 4], [4, 3], [1, 1], [1, 2], [2, 1]].filter(function(q){ return d * q[0] % q[1] === 0; })), h = d * ratio[0] / ratio[1];
     var v = r.pick([100, 120, 150, 200, 240, 300]);
     var tan = h / d, sec2 = 1 + tan * tan, dth = v / (d * sec2);
     var text = H('<p>A hot-air balloon rises straight up from a field at ' + v + ' feet per minute. An observer stands on the ground ' + d + ' feet from the launch point. How fast is the angle of elevation of the observer\'s line of sight increasing when the balloon is ' + n(h) + ' feet high?</p><p class="bt-small">Let <i>h</i> be the height in feet and <i>θ</i> the angle of elevation in radians, at time <i>t</i> minutes.</p>');

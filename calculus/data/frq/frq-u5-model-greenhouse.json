@@ -68,9 +68,9 @@
      ]
     },
     {
-     "point": "Answer $0.555$ (or $0.555\\ldots$) degrees Fahrenheit per hour",
+     "point": "Answer $0.555$ degrees Fahrenheit per hour",
      "accept": [
-      "$0.555$ or $0.556$ with units $^\\circ$F per hour",
+      "$0.555$ (rounded or truncated; the value is $0.55508\\ldots$) with units $^\\circ$F per hour",
       "the units point needs \"per hour\""
      ]
     }
@@ -85,7 +85,7 @@
     {
      "point": "$H'(5) \\approx -1.248$",
      "accept": [
-      "$-1.248$ or $-1.247$, from a numerical derivative"
+      "$-1.248$ (rounded or truncated; the value is $-1.24801\\ldots$), from a numerical derivative"
      ]
     },
     {

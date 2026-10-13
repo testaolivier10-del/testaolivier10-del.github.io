@@ -38,7 +38,7 @@
     ],
     "y": [
      -2,
-     3
+     3.8
     ],
     "xStep": 1,
     "yStep": 1,
@@ -148,7 +148,7 @@
    "q": "Is the approximation of $f(2.1)$ from the tangent line an overestimate or an underestimate?",
    "stimulus": "local-linearity-s1",
    "options": [
-    "An underestimate: $f'' > 0$, so $f$ is concave up there",
+    "An underestimate, because $f'' > 0$ makes $f$ concave up there",
     "An overestimate, because $f'(2) < 0$",
     "An overestimate, because $f'' > 0$ there",
     "Neither: the tangent line gives the exact value of $f(2.1)$"
@@ -203,7 +203,7 @@
    "stimulus": "local-linearity-s1",
    "options": [
     "An underestimate, because $f'' < 0$ there",
-    "An overestimate: $f'' < 0$, so $f$ is concave down there",
+    "An overestimate, because $f'' < 0$ makes $f$ concave down there",
     "An underestimate, because 4.8 lies to the left of the point $x = 5$",
     "An overestimate, because $f'(5) > 0$"
    ],
@@ -366,7 +366,7 @@
    "diff": 2,
    "q": "Is the estimate $\\sqrt{26} \\approx 5.1$ too large or too small, and why?",
    "options": [
-    "Too large: $\\sqrt{x}$ is concave down",
+    "Too large, because $\\sqrt{x}$ is concave down",
     "Too small, because $\\sqrt{x}$ is increasing",
     "Too small, because 26 is greater than 25",
     "Too small, because the slope $\\frac{1}{10}$ is positive"
@@ -419,7 +419,7 @@
    "q": "The tangent line to $y = \\sin x$ at $x = 0$ gives $\\sin(0.1) \\approx 0.1$. Which is true?",
    "options": [
     "$0.1$ is an underestimate, because $\\sin x$ is concave up near 0",
-    "An overestimate: $\\sin x$ is concave down on $(0, \\pi)$",
+    "$0.1$ is an overestimate, because $\\sin x$ is concave down on $(0, \\pi)$",
     "$0.1$ is exact, because the tangent line is $y = x$",
     "$0.1$ is an overestimate, because $\\cos 0 = 1$"
    ],

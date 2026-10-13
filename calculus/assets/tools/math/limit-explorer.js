@@ -72,6 +72,14 @@
     return out || '0';
   }
   function shift(a){ return a === 0 ? 'x' : a > 0 ? 'x - ' + tn(a) : 'x + ' + tn(-a); }
+  // The same factor in a plain sentence: x − 3, x + 2 (never "x − -2").
+  function pshift(a){ return a === 0 ? 'x' : a > 0 ? 'x − ' + a : 'x + ' + (-a); }
+  // c·x^k in a plain sentence, the coefficient a reduced fraction: (1/2)x, −x², 3x.
+  function plead(A, B, k){
+    var g = function(p, q){ return q ? g(q, p % q) : p; }, d = g(Math.abs(A), Math.abs(B)), nu = A / d * (B < 0 ? -1 : 1), de = Math.abs(B) / d;
+    var c = de === 1 ? (nu === 1 ? '' : nu === -1 ? '−' : String(nu).replace('-', '−')) : (nu < 0 ? '−' : '') + '(' + Math.abs(nu) + '/' + de + ')';
+    return c + 'x' + (k === 1 ? '' : k === 2 ? '²' : k === 3 ? '³' : '^' + k);
+  }
 
   /* ------------------------------------------------------ the gallery */
   var GALLERY = [
@@ -349,7 +357,7 @@
           { t: $('0') + ', so the limit is ' + $('0'), why: 'The top is 0, but so is the bottom: 0/0 is not 0. It is indeterminate.' },
           { t: 'a division by zero, so the limit does not exist', why: '0/0 does not decide the limit either way. Factor and cancel first.' }
         ], '1.C', true),
-        { key: 'simp', kind: 'expr', label: 'Factor and cancel the common factor. What expression is left?', cell: M.exprCell(simp, { domain: dom, mistakes: lin ? [{ expr: 'x - (' + c + ')', why: 'Cancel the factor that makes both top and bottom 0, (x − ' + c + '), and keep the other one.' }] : [{ expr: '(x - (' + c + '))/(x - (' + t + '))', why: 'Cancel the common factor (x − ' + c + ') from top and bottom; keep the other factors.' }] }), practice: '1.E', lhs: 'f(x) =' },
+        { key: 'simp', kind: 'expr', label: 'Factor and cancel the common factor. What expression is left?', cell: M.exprCell(simp, { domain: dom, mistakes: lin ? [{ expr: 'x - (' + c + ')', why: 'Cancel the factor that makes both top and bottom 0, (' + pshift(c) + '), and keep the other one.' }] : [{ expr: '(x - (' + c + '))/(x - (' + t + '))', why: 'Cancel the common factor (' + pshift(c) + ') from top and bottom; keep the other factors.' }] }), practice: '1.E', lhs: 'f(x) =' },
         numStep('lim', 'So $\\lim_{x \\to ' + tn(c) + '} f(x)$ =', L, [{ value: 0, why: '0/0 is not 0. After cancelling, substitute into what is left.' }], '1.E')
       ];
       return { text: 'Find $\\lim_{x \\to ' + tn(c) + '} f(x)$ for $f(x) = \\frac{' + num + '}{' + den + '}$.', steps: steps,
@@ -365,7 +373,7 @@
     var L2 = 1 / (2 * cc), inner = poly([k, 1]);
     var steps2 = [
       choiceStep('move', 'Substituting gives $\\frac{0}{0}$. What is the best next move?', [
-        { t: 'Multiply top and bottom by the conjugate ' + $('\\sqrt{' + inner + '} + ' + cc), ok: true, why: 'The conjugate turns (√(…) − ' + cc + ')(√(…) + ' + cc + ') into a difference of squares with no root, and the factor (' + 'x − ' + x0 + ') appears to cancel.' },
+        { t: 'Multiply top and bottom by the conjugate ' + $('\\sqrt{' + inner + '} + ' + cc), ok: true, why: 'The conjugate turns (√(…) − ' + cc + ')(√(…) + ' + cc + ') into a difference of squares with no root, and the factor (' + pshift(x0) + ') appears to cancel.' },
         { t: 'Factor the top as a quadratic', why: 'The top has a square root, so it does not factor like a polynomial. Rationalize it.' },
         { t: 'Conclude the limit does not exist', why: '0/0 is indeterminate: the limit may well exist. Rewrite first.' },
         { t: 'Conclude the limit is ' + $('0'), why: '0/0 is not 0.' }
@@ -387,12 +395,12 @@
   function genSqueeze(r){
     if(r() < 0.5){
       var n = r.pick([1, 2, 3]), k = r.pick([1, 2, 3]), trig = r.pick(['\\sin', '\\cos']);
-      var xn = n === 1 ? 'x' : 'x^' + n, ab = n === 2 ? 'x^2' : '|' + xn + '|';
+      var xn = n === 1 ? 'x' : 'x^' + n, ab = n === 2 ? 'x^2' : '|' + xn + '|', xp = n === 1 ? 'x' : n === 2 ? 'x²' : 'x³';
       var steps = [
         choiceStep('bounds', 'Which bounds hold for every $x \\ne 0$ and pin the function down?', [
-          { t: $('-' + ab + ' \\le ' + xn + ' ' + trig + '\\left(\\frac{' + k + '}{x}\\right) \\le ' + ab), ok: true, why: 'The ' + trig.slice(1) + ' is between −1 and 1; multiply by ' + xn + ' (with absolute values, since ' + xn + ' can be negative). Both bounds go to 0.' },
+          { t: $('-' + ab + ' \\le ' + xn + ' ' + trig + '\\left(\\frac{' + k + '}{x}\\right) \\le ' + ab), ok: true, why: 'The ' + trig.slice(1) + ' is between −1 and 1; multiply by ' + (n === 2 ? 'x², which is never negative' : '|' + xp + '| (with absolute values, since ' + xp + ' is negative when x < 0 and would flip the inequalities)') + '. Both bounds go to 0.' },
           { t: $('-1 \\le ' + xn + ' ' + trig + '\\left(\\frac{' + k + '}{x}\\right) \\le 1'), why: 'Not true for large x, and the bounds −1 and 1 do not meet, so they squeeze nothing.' },
-          { t: $('0 \\le ' + xn + ' ' + trig + '\\left(\\frac{' + k + '}{x}\\right) \\le ' + ab), why: 'The function is negative for many x near 0. The lower bound must be −' + ab + '.' }
+          { t: $('0 \\le ' + xn + ' ' + trig + '\\left(\\frac{' + k + '}{x}\\right) \\le ' + ab), why: 'The function is negative for many x near 0. The lower bound must be −' + (n === 2 ? 'x²' : '|' + xp + '|') + '.' }
         ], '3.C'),
         numStep('lim', 'So $\\lim_{x \\to 0} ' + xn + ' ' + trig + '\\left(\\frac{' + k + '}{x}\\right)$ =', 0, [], '3.C')
       ];
@@ -497,7 +505,7 @@
       choiceStep('lim', 'What is $' + limTex(a) + '$?', [
         { t: exists ? $(tn(L)) : DNE, ok: true, why: exists ? 'Left: ' + lt + ' → ' + L + '. Right: ' + rt + ' → ' + R + '. They agree.' : 'Left: ' + lt + ' → ' + L + '. Right: ' + rt + ' → ' + R + '. They differ.' },
         { t: exists ? DNE : $(tn(L)), why: exists ? 'Both sides give ' + L + ', so the limit exists.' : 'That is only the left-hand limit.' },
-        { t: $(tn(v === L ? (R === L ? L + 1 : R) : v)), why: v === L ? 'Substitute ' + a + ' into each piece.' : 'That is f(' + a + '), not the limit.' }
+        { t: $(tn(v === L ? (R === L ? L + 1 : R) : v)), why: v === L ? (R === L ? 'Substitute ' + a + ' into each piece.' : 'That is only the right-hand limit.') : (!exists && v === R ? 'That is f(' + a + '), and the right side heads there too, but the left side heads for ' + L + ': no two-sided limit.' : 'That is f(' + a + '), not the limit.') }
       ], '1.E'),
       choiceStep('cont', 'Is $f$ continuous at $x = ' + tn(a) + '$?', [
         { t: 'Yes: ' + $('f(' + tn(a) + ')') + ' equals the limit', ok: cont, why: cont ? 'All three conditions hold.' : 'Check again: ' + (exists ? 'the limit is ' + L + ' but f(' + a + ') = ' + v + '.' : 'the limit does not exist.') },
@@ -525,7 +533,7 @@
           { t: 'the value of the top at ' + $('x = ' + tn(c)) + ', which is ' + $('0'), why: 'That ignores the bottom. The fraction is 0/0 there; its limit is what k must match.' },
           { t: 'any number: the fraction is not defined at ' + $('x = ' + tn(c)), why: 'Exactly one value of k fills the hole: the limit.' }
         ], '3.F'),
-        numStep('k', 'So $k$ =', K, [{ value: 0, why: 'The top is 0 at x = ' + c + ', but the limit of the fraction is not. Factor and cancel.' }, { value: c + s, why: 'Cancel (x − ' + c + '); what is left is x − ' + s + '. Substitute x = ' + c + '.' }], '1.E')
+        numStep('k', 'So $k$ =', K, [{ value: 0, why: 'The top is 0 at x = ' + c + ', but the limit of the fraction is not. Factor and cancel.' }, { value: c + s, why: 'Cancel (' + pshift(c) + '); what is left is ' + pshift(s) + '. Substitute x = ' + c + '.' }], '1.E')
       ];
       return { text: 'Let $f(x) = \\frac{' + num + '}{' + shift(c) + '}$ for $x \\ne ' + tn(c) + '$ and $f(' + tn(c) + ') = k$.', steps: steps,
         key: { kind: 'hole', a: c, k: K, f: function(x){ return (x * x - (c + s) * x + c * s) / (x - c); } },
@@ -595,8 +603,8 @@
     var opt = function(v){ return $(tn(v)); };
     var cand = [Lp, Lm, 0, A / B, B / A, Infinity, -Infinity, A];
     var mk = function(v, where){
-      var list = [{ t: opt(v), ok: true, why: n < m ? 'The bottom grows faster (degree ' + m + ' > ' + n + '), so the fraction shrinks to 0.' : n === m ? 'Same degree: the ratio of the leading coefficients, ' + tn(A) + '/' + tn(B) + '.' : 'The top grows faster (degree ' + n + ' > ' + m + '): f behaves like ' + tn(A) + '/' + tn(B) + '·x^' + (n - m) + ' ' + where + ', which is ' + (v > 0 ? 'huge and positive.' : 'huge and negative.') }];
-      cand.forEach(function(c){ if(list.length < 4 && list.every(function(o){ return o.t !== opt(c); })) list.push({ t: opt(c), why: n < m ? 'Compare the degrees: the bottom wins, so the limit is 0.' : n === m ? 'Same degree: divide the leading coefficients, top over bottom.' : 'The top wins: no finite limit. Check the sign of ' + tn(A) + '/' + tn(B) + '·x^' + (n - m) + ' ' + where + '.' }); });
+      var list = [{ t: opt(v), ok: true, why: n < m ? 'The bottom grows faster (degree ' + m + ' > ' + n + '), so the fraction shrinks to 0.' : n === m ? 'Same degree: the ratio of the leading coefficients, ' + tn(A) + '/' + tn(B) + '.' : 'The top grows faster (degree ' + n + ' > ' + m + '): f behaves like ' + plead(A, B, n - m) + ' ' + where + ', which is ' + (v > 0 ? 'huge and positive.' : 'huge and negative.') }];
+      cand.forEach(function(c){ if(list.length < 4 && list.every(function(o){ return o.t !== opt(c); })) list.push({ t: opt(c), why: n < m ? 'Compare the degrees: the bottom wins, so the limit is 0.' : n === m ? 'Same degree: divide the leading coefficients, top over bottom.' : 'The top wins: no finite limit. Check the sign of ' + plead(A, B, n - m) + ' ' + where + '.' }); });
       return list;
     };
     var steps = [
@@ -643,7 +651,7 @@
       ], '3.F')
     ];
     var ylo = Math.min.apply(null, ys.concat([k])) - 1, yhi = Math.max.apply(null, ys.concat([k])) + 1;
-    var plot = { label: 'The table values of f as points, with the line y = ' + k + '; f is continuous between them but its graph is not shown', x: [-0.5, xs[n - 1] + 0.5], y: [ylo, yhi], xStep: 1, yStep: 1, xLabel: 'x', yLabel: 'y',
+    var plot = { label: 'The table values of f as points, with the line y = ' + k + '; f is continuous between them but its graph is not shown', x: [-0.5, xs[n - 1] + 0.5], y: [ylo, yhi], xStep: 1, yStep: 1, xLabel: k === 0 ? '' : 'x', yLabel: 'y',
       points: xs.map(function(x, i){ return { at: [x, ys[i]], cls: 's1' }; }), lines: [{ point: [0, k], slope: 0, cls: 's2', dashed: true, label: 'y = ' + k }] };
     return { text: 'The function $f$ is continuous on $[' + xs[0] + ', ' + xs[n - 1] + ']$. Some of its values are in the table.', fig: { table: tab, plot: plot }, steps: steps,
       key: { xs: xs, ys: ys, k: k, count: count, a: a, b: b },

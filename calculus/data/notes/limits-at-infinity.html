@@ -4,14 +4,14 @@
 <p>$\lim_{x \to \infty} f(x) = L$ means that as $x$ grows without bound, $f(x)$ gets as close to $L$ as you like. $\lim_{x \to -\infty} f(x) = L$ means the same as $x$ decreases without bound. When either limit is a finite number $L$, the line $y = L$ is a <b>horizontal asymptote</b>: the graph levels off toward it.</p>
 <p>The basic fact behind everything here: as $x \to \infty$, $\frac{1}{x} \to 0$, and so do $\frac{5}{x^2}$, $\frac{1}{\sqrt{x}}$ and $e^{-x} = \frac{1}{e^x}$. A fixed number divided by something growing without bound shrinks to 0.</p>
 <figure id="fig-end" data-fig="end-behavior-growth"><figcaption>Left: a graph leveling off at $y = 2$ (after crossing it). Right: which grows faster.</figcaption></figure>
-<p>A horizontal asymptote is about the far ends only. In the middle the graph may cross it: $\frac{2x^2 + x}{x^2 + 1}$ equals 2 at $x = 2$ and still approaches 2 as $x \to \infty$. Vertical asymptotes are different: a function is unbounded next to one, so its graph cannot cross it.</p>
+<p>A horizontal asymptote is about the far ends only. In the middle the graph may cross it: $\frac{2x^2 + x}{x^2 + 1}$ equals 2 at $x = 2$ and still approaches 2 as $x \to \infty$. Vertical asymptotes are different: next to one the function is unbounded, and for a rational function the line itself is outside the domain, so the graph runs along it instead of crossing it.</p>
 <table>
 <thead><tr><th></th><th>Vertical asymptote $x = c$</th><th>Horizontal asymptote $y = L$</th></tr></thead>
 <tbody>
 <tr><td>Limit</td><td>$\lim_{x \to c^\pm} f(x) = \pm\infty$</td><td>$\lim_{x \to \pm\infty} f(x) = L$</td></tr>
 <tr><td>$x$ is</td><td>approaching a number</td><td>growing without bound</td></tr>
 <tr><td>$f(x)$ is</td><td>growing without bound</td><td>approaching a number</td></tr>
-<tr><td>Can the graph cross it?</td><td>no</td><td>yes</td></tr>
+<tr><td>Can the graph cross it?</td><td>not for a rational function (undefined on the line)</td><td>yes, away from the far ends</td></tr>
 </tbody>
 </table>
 
@@ -46,7 +46,7 @@
 <h2>Exponentials, logarithms and the race to infinity</h2>
 <p>Some functions grow without bound, but at very different speeds. In the long run:</p>
 <p style="text-align:center"><b>slowest</b> $\ln x$, then $\sqrt{x}$, then $x$, then $x^3$, then $e^x$ <b>fastest</b></p>
-<p>"Slower" means the quotient of the slower function over the faster one approaches 0: $\lim_{x \to \infty} \frac{\ln x}{\sqrt{x}} = 0$ and $\lim_{x \to \infty} \frac{x^3}{e^x} = 0$. A logarithm loses to every positive power of $x$, a lower power loses to a higher one, and an exponential like $e^x$ beats every power. "Eventually" matters: $x^3$ is bigger than $e^x$ until about $x = 4.5$, then falls hopelessly behind.</p>
+<p>"Slower" means the quotient of the slower function over the faster one approaches 0: $\lim_{x \to \infty} \frac{\ln x}{\sqrt{x}} = 0$ and $\lim_{x \to \infty} \frac{x^3}{e^x} = 0$. A logarithm loses to every positive power of $x$, a lower power loses to a higher one, and an exponential like $e^x$ beats every power. "Eventually" matters: $x^3$ is bigger than $e^x$ for $x$ between about 1.9 and 4.5, and after that it falls hopelessly behind.</p>
 <div class="worked">
 <p><b>Worked example 3.</b> Find $\lim_{x \to \infty} \frac{3e^{2x} + x}{e^{2x} - 5}$.</p>
 <p>The <b>dominant term</b> in both the top and the bottom is $e^{2x}$. Divide everything by it:</p>

@@ -355,7 +355,7 @@
     "correct": "The reason must be about the outputs near 3: they are unbounded on both sides (in opposite directions), so they close in on no single number.",
     "options": [
      "Describes the outputs on each side and concludes correctly.",
-     "A missing value never decides a limit; the hole at $x = 1$ has a limit and no value on the curve.",
+     "A missing value never decides a limit: at a hole the limit exists even though the function has no value there. Here the reason is the unbounded outputs near 3.",
      "What happens at $x = 1$ says nothing about $x = 3$.",
      "Not touching the asymptote is not the reason; unbounded outputs are."
     ]

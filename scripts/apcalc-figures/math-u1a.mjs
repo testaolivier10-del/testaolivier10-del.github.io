@@ -166,13 +166,13 @@ FIGS['fn-reading-graph'] = () => {
     ['<b>Read <i>f</i>(1):</b> go to <i>x</i> = 1 and find', 'the <b>filled</b> dot. <i>f</i>(1) = 5.'],
     ['<b>Open dot:</b> the curve comes close to', '(1, 3.5), but that point is not on the graph.'],
     ['<b>Range:</b> the lowest output is −1 (at', '<i>x</i> = −2), the highest is 5. Range: [−1, 5].'],
-    ['<b>Solve <i>f</i>(<i>x</i>) = 2:</b> draw <i>y</i> = 2 across;', 'it meets the graph at <i>x</i> = 0 and <i>x</i> = 4.'],
+    ['<b>Solve <i>f</i>(<i>x</i>) = 1:</b> draw <i>y</i> = 1 across;', 'it meets the graph at <i>x</i> = −4, 0 and 5.'],
   ];
   let y = 70;
   let side = '';
   for (const [a, b] of notes) { side += rect(500, y - 22, 306, 64, { fill: C.pale, stroke: C.grid }) + text(512, y, a, { size: 14 }) + text(512, y + 22, b, { size: 14 }); y += 82; }
-  P.seg(-4.6, 2, 5.6, 2, C.green, 1.6, '3 5'); P.dot(0, 2, { color: C.green, r: 4.5 }); P.dot(4, 2, { color: C.green, r: 4.5 });
-  return doc('fn-reading-graph', W, H, 'Reading a piecewise graph', 'Graph of a piecewise function f on the domain from x = -4 to x = 5. On the left, a parabola piece starts at the filled point (-4, 1), dips to its lowest point (-2, -1) and rises toward an open circle at (1, 3.5). On the right, a straight line starts at the filled point (1, 5) and falls to the filled point (5, 1). So f(1) = 5, the range is from -1 to 5, and the horizontal line y = 2 meets the graph at x = 0 and x = 4.',
+  P.seg(-4.6, 1, 5.6, 1, C.green, 1.6, '3 5'); for (const x of [-4, 0, 5]) P.dot(x, 1, { color: C.green, r: 4.5 });
+  return doc('fn-reading-graph', W, H, 'Reading a piecewise graph', 'Graph of a piecewise function f on the domain from x = -4 to x = 5. On the left, a parabola piece starts at the filled point (-4, 1), dips to its lowest point (-2, -1) and rises toward an open circle at (1, 3.5). On the right, a straight line starts at the filled point (1, 5) and falls to the filled point (5, 1). So f(1) = 5, the range is from -1 to 5, and the horizontal line y = 1 meets the graph at x = -4, x = 0 and x = 5.',
     P.svg() + side, P.clipDef);
 };
 

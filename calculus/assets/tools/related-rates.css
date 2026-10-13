@@ -182,3 +182,28 @@
 .rr-scene tspan.is-given{fill:var(--rr-given);font-weight:900;}
 .rr-scene tspan.is-watch{fill:var(--rr-watch);font-weight:900;}
 .rr-scene:has(.rr-night) tspan.is-given{fill:#8FD0FF;} .rr-scene:has(.rr-night) tspan.is-watch{fill:#FFA8C0;} .rr-scene:has(.rr-night) .rr-leg-k{fill:#C9D2DC;}
+
+/* Phones (docs/tools-phone-pass.md): the scene is 420 units wide, drawn at
+   about 350 px, so its text is set larger in scene units (labels >= 12 px,
+   the moment's values >= 14 px); the readouts stay clear of Enlarge. */
+.ls-root.ls-phone .rr-scene .rr-t{font-size:15.5px;}
+.ls-root.ls-phone .rr-scene .rr-dl{font-size:17px;}
+.ls-root.ls-phone .rr-scene .rr-th{font-size:18px;}
+.ls-root.ls-phone .rr-scene .rr-leg{font-size:16px;}
+.ls-root.ls-phone .rr-side{padding-right:52px;}
+/* the drill legend sits above the scene, on the page: page colours even over the night scene */
+.rr-scene:has(.rr-night) .rr-legend .rr-t{fill:var(--rr-ink);stroke:var(--white);}
+.rr-scene:has(.rr-night) .rr-legend .rr-leg-k{fill:var(--rr-soft);}
+.rr-scene:has(.rr-night) .rr-legend tspan.is-given{fill:var(--rr-given);}
+.rr-scene:has(.rr-night) .rr-legend tspan.is-watch{fill:var(--rr-watch);}
+.rr-handle .rr-hit{fill:transparent;stroke:none;pointer-events:all;}
+/* a phone on its side: only the given and the watched rows, so the scene keeps the height */
+.ls-root.ls-phone .rr-read table.rr-tbl tbody tr:not(.is-given):not(.is-watch){display:none;}
+.ls-root.ls-phone .rr-read table.rr-tbl thead{display:none;}
+/* a phone on its side: the scene takes the whole stage (the two rates are in the
+   pills, the values on the scene, every number in "Graph & numbers") */
+@media (orientation:landscape){
+  .ls-root.ls-phone .rr-ls-stage .rr-side{display:none;}
+  .ls-root.ls-phone .rr-scene .rr-t{font-size:16.5px;}
+  .ls-root.ls-phone .rr-scene .rr-dl{font-size:18px;}
+}

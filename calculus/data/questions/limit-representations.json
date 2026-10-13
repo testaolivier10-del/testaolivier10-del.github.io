@@ -128,7 +128,7 @@
    "stimulus": "limit-representations-s1",
    "q": "Which is true about $\\lim_{x \\to 2} f(x)$?",
    "options": [
-    "It does not exist; the sides near $-1$ and $1$",
+    "It does not exist; the sides head to $-1$ and $1$",
     "It equals $1$, the height of the closed dot at $x = 2$",
     "It equals $-1$, the height of the open circle at $x = 2$",
     "It equals $0$, halfway between the two one-sided limits"
