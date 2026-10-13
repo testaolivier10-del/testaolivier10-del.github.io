@@ -237,13 +237,11 @@ Owner to confirm (needs-author `tools-premium`).
 
 ## 8. Open items for the owner
 
-- **Launch checklist (only you can do).** The course is published (free parts live, Premium shows
-  "coming soon" and locks nothing) until these are done, in order:
-  1. Apply `scripts/sql/migrations/2026-10f-apphys.sql` in Supabase (after 2026-10c, 2026-10d and 2026-10e-funnel-seen).
-  2. Create the Polar product "AP® Physics 1 Premium (through June 30, 2027)", one-time $25.
-  3. Add `"phys-2027": "<product id>"` to `POLAR_PRODUCTS` (Worker config, the `phys` pass key).
-  4. Merge the PR, then deploy the Worker (`node scripts/build-worker.mjs`, then deploy).
-  5. Delete `onSale: false` from `COURSES.apphys` in `assets/premium.js` and bump `CACHE_NAME` in `sw.js`.
+- **Launch checklist: done 2026-10-13.** Migration `2026-10f-apphys.sql` applied in Supabase (live function
+  bodies checked identical apart from `apphys` first); Polar product "AP® Physics 1 Premium (through June 30,
+  2027)" $25 one-time, id `49838969-bfd0-449a-a29f-afab5a5572d9`; `"phys-2027"` added to `POLAR_PRODUCTS` in the
+  Cloudflare Worker settings; `onSale: false` removed from `COURSES.apphys`, `sw.js` cache v76. Merging this PR
+  redeploys the Worker (`.github/workflows/deploy-worker.yml`) and puts AP® Physics 1 Premium on sale.
 - Questions in `docs/apphys-needs-author.md` (CED exclusions for Units 3-8 and the scope calls that rest on
   them, Unit 7 names, practice weights, g policy, score cut-offs, which trainers are free, the equations
   sheet's geometry row).
