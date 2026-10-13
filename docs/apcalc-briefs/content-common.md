@@ -25,7 +25,7 @@ stimuli, numeric items with units, one FRQ of each type).
 - No git commands that change anything (no add, commit, stash, checkout, reset). I commit.
 - Never run `node scripts/build-apcalc.mjs` without `--out <your scratch dir>`. Check your work with
   `node scripts/check-apcalc-content.mjs --topic <id>` (until clean) and `node scripts/check-apcalc-map.mjs`.
-  To see a page rendered, build to a scratch dir with `APPHYS_PUBLISHED=<your units> node scripts/build-apcalc.mjs --out <dir>`.
+  To see a page rendered, build to a scratch dir with `APCALC_PUBLISHED=<your units> node scripts/build-apcalc.mjs --out <dir>`.
 
 ## What each CED topic needs
 

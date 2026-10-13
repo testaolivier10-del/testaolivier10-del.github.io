@@ -65,20 +65,29 @@
 
   /* Units are optional in calculus answers and compared loosely: words and
      symbols ("feet per minute" = "ft/min"), plurals, "square"/"cubic"
-     and ² ³ ("cubic centimeters per second" = "cm^3/s"). */
+     and ² ³ ("cubic centimeters per second" = "cm^3/s"), masses, volumes,
+     counts (people, tickets, bacteria), degrees and "cubic units". */
   var UNIT_WORDS = { feet: 'ft', foot: 'ft', ft: 'ft', inch: 'in', inches: 'in', in: 'in', mile: 'mi', miles: 'mi', mi: 'mi', yard: 'yd', yards: 'yd',
     meter: 'm', meters: 'm', metre: 'm', metres: 'm', m: 'm', centimeter: 'cm', centimeters: 'cm', cm: 'cm', kilometer: 'km', kilometers: 'km', km: 'km',
     millimeter: 'mm', millimeters: 'mm', mm: 'mm', second: 's', seconds: 's', sec: 's', secs: 's', s: 's', minute: 'min', minutes: 'min', min: 'min', mins: 'min',
     hour: 'hr', hours: 'hr', hr: 'hr', hrs: 'hr', h: 'hr', day: 'day', days: 'day', week: 'wk', weeks: 'wk', year: 'yr', years: 'yr', yr: 'yr',
     gallon: 'gal', gallons: 'gal', gal: 'gal', liter: 'L', liters: 'L', litre: 'L', litres: 'L', l: 'L', milliliter: 'mL', milliliters: 'mL', ml: 'mL',
     degree: 'deg', degrees: 'deg', deg: 'deg', '°': 'deg', '°f': 'degF', '°c': 'degC', radian: 'rad', radians: 'rad', rad: 'rad',
-    person: 'person', people: 'person', persons: 'person', dollar: 'dollar', dollars: 'dollar', pound: 'lb', pounds: 'lb', lb: 'lb', lbs: 'lb' };
+    person: 'person', people: 'person', persons: 'person', dollar: 'dollar', dollars: 'dollar', pound: 'lb', pounds: 'lb', lb: 'lb', lbs: 'lb',
+    kilogram: 'kg', kilograms: 'kg', kilo: 'kg', kilos: 'kg', kg: 'kg', kgs: 'kg', gram: 'g', grams: 'g', g: 'g', gm: 'g', gms: 'g',
+    milligram: 'mg', milligrams: 'mg', mg: 'mg', mgs: 'mg', ounce: 'oz', ounces: 'oz', oz: 'oz', ton: 'ton', tons: 'ton',
+    ticket: 'ticket', tickets: 'ticket', bacterium: 'bacteria', bacteria: 'bacteria', cell: 'cell', cells: 'cell', car: 'car', cars: 'car',
+    unit: 'unit', units: 'unit', fahrenheit: 'degF', celsius: 'degC' };
   function normUnit(u){
-    u = String(u || '').toLowerCase().replace(/²/g, '^2').replace(/³/g, '^3').replace(/\bper\b/g, '/').replace(/[·*]/g, ' ').trim();
+    u = String(u || '').toLowerCase().replace(/²/g, '^2').replace(/³/g, '^3').replace(/\bmph\b/g, 'mi/hr')
+      // "degrees Fahrenheit", "deg F", "° F" are one unit (°f); "per", "each" and "every" divide.
+      .replace(/(?:\bdegrees?\b|\bdeg\b|°)\s*(fahrenheit|f|celsius|c)\b/g, function(m, x){ return x.charAt(0) === 'f' ? ' °f ' : ' °c '; })
+      .replace(/\b(?:per|each|every)\b/g, '/').replace(/[·*]/g, ' ').trim();
     var sides = u.split('/'), agg = {};
     sides.forEach(function(side, i){
       var toks = side.trim().split(/\s+/).filter(Boolean), pw = 1;
       toks.forEach(function(tok){
+        if(tok === '1' || tok === 'of') return;   // "1/hr", "cubic feet of water" is not a unit word
         if(tok === 'square' || tok === 'sq'){ pw = 2; return; }
         if(tok === 'cubic' || tok === 'cu'){ pw = 3; return; }
         if(tok === 'squared'){ var k2 = Object.keys(agg).pop(); if(k2){ agg[k2] += (i ? -1 : 1); } return; }

@@ -46,6 +46,8 @@ math.calc-m mtext{font-family:var(--font-body,inherit);}
 :root[data-theme="dark"] .calc-plot .s5{stroke:#C3A3E0;color:#C3A3E0;}
 :root[data-theme="dark"] .calc-plot .calc-plot-pt.s1:not(.is-open){fill:#F590AC;} :root[data-theme="dark"] .calc-plot .calc-plot-pt.s2:not(.is-open){fill:#6BB4E8;}
 :root[data-theme="dark"] .calc-plot text.s1{fill:#F590AC;} :root[data-theme="dark"] .calc-plot text.s2{fill:#6BB4E8;} :root[data-theme="dark"] .calc-plot text.s3{fill:#52CFA6;}
+/* Series strokes are for paths, lines and points: a label in a series colour keeps a plain glyph. */
+.calc-plot text.s4,.calc-plot text.s5,:root[data-theme="dark"] .calc-plot text.s1,:root[data-theme="dark"] .calc-plot text.s2,:root[data-theme="dark"] .calc-plot text.s3,:root[data-theme="dark"] .calc-plot text.s4,:root[data-theme="dark"] .calc-plot text.s5{stroke:none;}
 /* A typed expression: the box, its left-hand side and the live preview. */
 .calc-expr{display:grid;gap:6px;}
 .calc-expr label{font:800 14px var(--font-ui);}
@@ -54,6 +56,7 @@ math.calc-m mtext{font-family:var(--font-body,inherit);}
 .calc-expr-row input:focus-visible{outline:3px solid var(--cink);outline-offset:1px;}
 .calc-expr-lhs{font-size:18px;white-space:nowrap;}
 .calc-expr-preview{min-height:2.2em;padding:6px 10px;border-radius:10px;background:var(--ctint);color:var(--ink);overflow-x:auto;}
+.calc-expr-preview:empty{min-height:0;padding:0;background:none;} /* collapsed, not display:none: it stays a live region */
 .calc-expr-err{color:var(--bad-text,#A0291E);font:700 14px var(--font-ui);}
 
 

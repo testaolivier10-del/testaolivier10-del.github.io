@@ -11,7 +11,9 @@
    calculator flag; pre-registered tools; and no OpenStax figures.
 
      node scripts/check-apcalc-content.mjs                every topic with content
-     node scripts/check-apcalc-content.mjs --topic <id>   one topic (for authors)
+     node scripts/check-apcalc-content.mjs --topic <id>   one topic (for authors); the tool
+                                                         validators run only in a full run
+     node scripts/check-apcalc-content.mjs --tools        with --topic: run them too
      node scripts/check-apcalc-content.mjs --check        exit 1 on a failure in a
                                                          PUBLISHED chapter; the rest print
      APCALC_DATA=<dir>                                    check another data folder (tests)
@@ -422,7 +424,7 @@ export function checkFigure(fid, f, err) {
 }
 
 /* FRQs (spec section 1): rubric points add up, every part has a sample. */
-export function checkFrq(fid, f, map) {
+export function checkFrq(fid, f, map, figures = {}) {
   const errs = [], err = m => errs.push(m);
   if (f.id !== fid) err(`id "${f.id}" must match the file name`);
   if (hasApToken(fid)) err('the id contains the token "ap"');
@@ -444,7 +446,7 @@ export function checkFrq(fid, f, map) {
   if (!(f.units || []).length || !(f.topics || []).length || !(f.practices || []).length) err('units, topics and practices are required');
   for (const p of f.practices || []) if (!SKILL_RE.test(p)) err(`practice "${p}" is not a skill id`);
   if (!f.stimulus) err('stimulus missing');
-  else if (typeof f.stimulus === 'object') checkStimulus('(frq)', f.stimulus, {}, err);
+  else if (typeof f.stimulus === 'object') checkStimulus('(frq)', f.stimulus, figures, err);
   if (!Array.isArray(f.parts) || !f.parts.length) err('parts missing');
   let sum = 0;
   for (const p of f.parts || []) {
@@ -512,7 +514,7 @@ if (isMain) {
   const frqDir = join(DATA, 'frq');
   for (const f of exists(frqDir) ? readdirSync(frqDir).filter(f => f.endsWith('.json')).sort() : []) {
     const fid = f.slice(0, -5), d = readJson(join(frqDir, f));
-    const errs = checkFrq(fid, d, map);
+    const errs = checkFrq(fid, d, map, figures);
     if (errs.length) {
       const pub = (d.units || []).some(u => published.has(u));
       console.log(`frq ${fid}: FAIL${pub ? '' : ' (unpublished)'}`); for (const e of errs) console.log(`  FAIL: ${e}`);
@@ -546,9 +548,11 @@ if (isMain) {
     if (typeof t.topic !== 'string' || (map && !map.topicById(t.topic))) bad(`"topic" must be the tool's context topic in the map (got ${JSON.stringify(t.topic)})`);
   }
   // Tools: each content file against its validator (scripts/lib/apcalc-tool-checks/<slug>.mjs).
+  // They take minutes, so --topic skips them unless --tools asks.
   let toolFails = 0;
   const toolDir = join(DATA, 'tools');
-  for (const f of exists(toolDir) ? readdirSync(toolDir).filter(f => f.endsWith('.json')).sort() : []) {
+  const runTools = !only || args.includes('--tools');
+  for (const f of runTools && exists(toolDir) ? readdirSync(toolDir).filter(f => f.endsWith('.json')).sort() : []) {
     const slug = f.slice(0, -5), v = join(ROOT, 'scripts', 'lib', 'apcalc-tool-checks', `${slug}.mjs`);
     if (!exists(v)) { console.log(`tool ${slug}: FAIL: no validator at scripts/lib/apcalc-tool-checks/${slug}.mjs`); toolFails++; continue; }
     const { check } = await import(v);

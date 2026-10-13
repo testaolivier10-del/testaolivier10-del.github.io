@@ -46,6 +46,19 @@
   var uid = 0, unitMap = {};
   function nid(p){ return (p || 'bt') + '-' + (++uid); }
   function esc(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  /* Plain text of a node or an HTML string: each formula reads as its TeX's
+     plain reading (ApCalcTex.text), never as its MathML plus its annotation. */
+  function plainText(node){
+    if(typeof node === 'string'){ var d = document.createElement('div'); d.innerHTML = node; node = d; }
+    else node = node.cloneNode(true);
+    if(node.querySelectorAll) Array.prototype.slice.call(node.querySelectorAll('math')).forEach(function(m){
+      var a = m.querySelector('annotation'), tex = a ? a.textContent : '', t;
+      if(tex && window.ApCalcTex) t = window.ApCalcTex.text(tex);
+      else { if(a) a.parentNode.removeChild(a); t = m.textContent; }
+      m.parentNode.replaceChild(document.createTextNode(' ' + t + ' '), m);
+    });
+    return node.textContent.replace(/\s+/g, ' ').replace(/ ([.,;:?!)])/g, '$1').trim();
+  }
   function F(x, d){ var s = M.fixed(x, d == null ? 2 : d); return s.charAt(0) === '-' ? '−' + s.slice(1) : s; }
   function core(){ return window.ApCalcCore; }
   function base(){ return window.ApCalcBase || '../'; }
@@ -546,7 +559,9 @@
           var order = s.fixed ? s.options.map(function(x, k){ return k; }) : Q.shuffle(s.options.map(function(x, k){ return k; }));
           body = '<fieldset class="cd-opts' + (s.optionsHtml ? ' cd-pics' : '') + '"><legend class="sr-only">' + esc(String(s.label).replace(/<[^>]+>/g, '')) + '</legend>' + order.map(function(k, n){
             var id = sid + '-o' + k;
-            return '<div class="bt-radio cd-opt" data-k="' + k + '"><input type="radio" name="' + sid + '" id="' + id + '" value="' + k + '"><label for="' + id + '">' + (s.optionsHtml ? '<span class="cd-pic-n">Picture ' + (n + 1) + '</span>' + s.optionsHtml[k] : s.options[k]) + '</label></div>';
+            // A text option is one inline run (text and formulas keep their
+            // spaces) with a plain-text name, so a formula-only label is named.
+            return '<div class="bt-radio cd-opt" data-k="' + k + '"><input type="radio" name="' + sid + '" id="' + id + '" value="' + k + '"' + (s.optionsHtml ? '' : ' aria-label="' + esc(plainText(String(s.options[k]))) + '"') + '><label for="' + id + '">' + (s.optionsHtml ? '<span class="cd-pic-n">Picture ' + (n + 1) + '</span>' + s.optionsHtml[k] : '<span class="cd-opt-t">' + s.options[k] + '</span>') + '</label></div>';
           }).join('') + '</fieldset>';
         } else {
           body = '<p class="bt-small cd-rowhint">Type each value in the ' + esc(s.row) + ' row of the table.</p>';
@@ -601,7 +616,7 @@
         }
         function reveal(){
           if(s.kind === 'num' || s.kind === 'vol'){ input.value = shownNum(s.cell, s.d); if(range){ range.value = String(s.cell.answer); if(o.onVol) o.onVol(s.cell.answer, s, api); } }
-          else if(s.kind === 'expr'){ input.value = s.cell.expr.answer + (s.cell.expr.mode === 'constant' ? ' + C' : ''); }
+          else if(s.kind === 'expr'){ input.value = s.cell.expr.answer + (s.cell.expr.mode === 'constant' ? ' + C' : ''); input.dispatchEvent(new Event('input', { bubbles: true })); }
           else if(s.kind === 'row') s.cells.forEach(function(c, k){ if(rowInputs[k]) rowInputs[k].value = M.fmt(c.answer, 3); });
           else if(s.kind === 'coef') s.cells.forEach(function(c, k){ if(rowInputs[k]) rowInputs[k].value = coefText(c.answer); });
           else { var c = el.querySelector('input[value="' + s.correct + '"]'); if(c) c.checked = true; }
@@ -792,7 +807,7 @@
         stage.innerHTML = ''; det.innerHTML = '<h3 class="ls-title-l">This problem</h3>';
         why.innerHTML = '<h3 class="ls-title-l">Worked solution</h3><p class="ls-sub">It appears here once every step is answered.</p>';
         var extra = area.querySelector(':scope > .cd-extra'), fig = extra && (extra.children.length || extra.textContent.trim());
-        var ctx = area.querySelector(':scope > .bt-context'), text = ctx ? Array.prototype.map.call(ctx.childNodes, function(n){ return n.textContent; }).join(' ').replace(/\s+/g, ' ').trim() : '';
+        var ctx = area.querySelector(':scope > .bt-context'), text = ctx ? Array.prototype.map.call(ctx.childNodes, plainText).join(' ').replace(/\s+/g, ' ').trim() : '';
         // The problem is read on the stage when there is no figure, or when
         // the drill asks (o.textOnStage: a long problem over a table to
         // fill); otherwise it is the caption over the figure.
@@ -814,7 +829,7 @@
         // o.studioAsk: a long problem over a figure is captioned by its
         // equation and its question; the whole text is in Details.
         if(!onStage && o.studioAsk && ctx){
-          var eq = ctx.querySelector('.bt-eq'), eqT = eq ? eq.textContent.replace(/\s+/g, ' ').trim() : '';
+          var eq = ctx.querySelector('.bt-eq'), eqT = eq ? plainText(eq) : '';
           var rest = eqT ? text.replace(eqT, '').trim() : text, ss = rest.match(/[^.?!]+[.?!]+/g) || [rest];
           var ask = ss.filter(function(x){ return /\?\s*$/.test(x); }).pop() || ss[ss.length - 1];
           text = (eqT ? eqT.replace(/\s+K\s*=/, ', K =') + '. ' : '') + ask.trim();

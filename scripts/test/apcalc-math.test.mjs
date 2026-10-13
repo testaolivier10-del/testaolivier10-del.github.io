@@ -56,3 +56,17 @@ test('$...$ in text, and the plain-text reading for titles and search', () => {
   // The generator's text() reads rendered math back as plain text.
   assert.equal(text(`<p>Find ${R('\\int_0^1 x\\,dx')}.</p>`), 'Find ∫ from 0 to 1 of x dx .');
 });
+
+test('a minus with nothing before it to subtract from is a sign, with no binary spacing', () => {
+  const SIGN = '<mo form="prefix" lspace="0" rspace="0">−</mo>';
+  for (const s of ['x = -2', '-x^2', 'f(-1)', '(1, -3)', 'x \\to -\\infty', 'x \\le -1', 'x^{-1}', '3 \\cdot -2', '|-2|', '= \\, -4'])
+    assert.ok(R(s).includes(SIGN), s);
+  for (const s of ['a - b', 'f(x) - 1', '(x + 1) - 2', '|x| - 1', "f'(x) - 1", 'x^2 - 4'])
+    assert.ok(!R(s).includes(SIGN) && R(s).includes('<mo>−</mo>'), s);
+  assert.match(R('x = -2'), /<mo>=<\/mo><mo form="prefix" lspace="0" rspace="0">−<\/mo><mn>2<\/mn>/);
+  assert.match(R('\\lim_{x \\to 2^-} f(x)'), /<msup><mn>2<\/mn><mo>−<\/mo><\/msup>/, 'a one-sided limit mark is unchanged');
+  assert.equal(T.text('x = -2'), 'x = −2');
+  assert.equal(T.text('f(-1) = 3 - 4'), 'f(−1) = 3 − 4');
+  assert.equal(T.text('-x^2 + 1'), '−x² + 1');
+  assert.equal(T.text('x \\to -\\infty'), 'x → −∞');
+});

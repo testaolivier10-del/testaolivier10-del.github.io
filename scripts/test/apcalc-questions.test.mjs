@@ -72,6 +72,18 @@ test('numeric: optional units, compared loosely', () => {
   assert.equal(Q.normUnit('cm³/s'), Q.normUnit('cm^3 / sec'));
   assert.equal(Q.normUnit('square feet'), Q.normUnit('ft^2'));
   assert.notEqual(Q.normUnit('ft/min'), Q.normUnit('ft/s'));
+  // Common words, symbols and spellings read as one unit.
+  for (const [a, b] of [['kilograms', 'kg'], ['kilogram', 'kgs'], ['milligrams', 'mg'], ['grams', 'g'], ['liters', 'L'], ['litres', 'l'],
+    ['gallons', 'gal'], ['people', 'persons'], ['tickets', 'ticket'], ['bacteria', 'bacterium'], ['degrees', '°'], ['feet', 'ft'],
+    ['meters', 'm'], ['cubic units', 'units^3'], ['square units', 'units²'], ['people per hour', 'people/hr'], ['people per hr', 'persons / hour'],
+    ['gallons per minute', 'gal/min'], ['mg per hour', 'milligrams/h'], ['tickets per second', 'tickets/sec'], ['kilograms per day', 'kg/day'],
+    ['bacteria per hour', 'bacteria/hr'], ['degrees per minute', 'deg/min'], ['degrees Fahrenheit per minute', '°F/min'], ['deg F/min', '° F per min'],
+    ['liters per hour', 'L/hr'], ['cubic feet per minute', 'ft³/min'], ['mph', 'miles per hour'], ['1/hr', 'per hour'], ['meters each second', 'm/s']])
+    assert.equal(Q.normUnit(a), Q.normUnit(b), `${a} = ${b}`);
+  for (const [a, b] of [['kg', 'g'], ['mg', 'g'], ['gal/min', 'gal/hr'], ['°F/min', 'deg/min'], ['cubic units', 'square units'], ['people', 'tickets']])
+    assert.notEqual(Q.normUnit(a), Q.normUnit(b), `${a} != ${b}`);
+  const kg = { type: 'numeric', calc: true, numeric: { answer: 12.5, unit: 'kg per hour', askUnit: true } };
+  for (const u of ['kilograms per hour', 'kg/hr', 'kilograms/h', 'kg per hr']) assert.equal(Q.grade(kg, { value: '12.5', unit: u }).correct, true, u);
   // A unit typed after the number in one box.
   assert.equal(Q.grade({ type: 'numeric', calc: true, numeric: { answer: 62.5 } }, '62.5 liters').correct, true);
 });

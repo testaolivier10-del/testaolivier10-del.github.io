@@ -144,7 +144,8 @@ const SHELL_BUDGETS = [
      primary row, the stepper's Next tone and focus rules, one-line pills, segment contrast. Only tool pages
      load tool-studio.*; other course pages do not pay for it. Measured 21.2 KB. */
   /* 21.5 -> 22 (honest labels, docs/tools-calm.md): the named second-tab button in the dock. */
-  ['assets/course', 22],
+  // 22 -> 25.5 (2026-10-13): Tool Studio phone layout and the Enlarge view (docs/tools-calm.md, "Phones").
+  ['assets/course', 25.5],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —

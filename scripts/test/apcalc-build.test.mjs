@@ -119,8 +119,9 @@ test('tools: pre-registered, built only with a data file and a published topic, 
   assert.ok(at('tools/calc-tools.js') > at('tools/calc-tool-math.js'));
   assert.ok(at('tools/calc-plot.js') > -1, 'plot helper loaded');
   assert.ok(at('tools/riemann-sums.js') > at('tools/calc-plot.js'));
-  // A tool's own stylesheet is linked when it exists (none yet).
-  assert.doesNotMatch(page, /tools\/riemann-sums\.css/);
+  // A tool's own stylesheet is linked exactly when the file exists.
+  const hasCss = existsSync('calculus/assets/tools/riemann-sums.css');
+  assert.equal(/<link [^>]*href="[^"]*tools\/riemann-sums\.css"/.test(page), hasCss, hasCss ? 'its stylesheet is linked' : 'no link to a missing stylesheet');
   assert.ok(!existsSync(join(out, 'calculus/tools/tangent-tracer.html')), 'Unit 2 is not published');
 });
 

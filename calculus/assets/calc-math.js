@@ -116,10 +116,29 @@
           c.push(node);
           continue;
         }
+        // A minus or plus with nothing to subtract from (at the start, after
+        // =, (, a comma, \to or another operator) is a sign: no binary spacing.
+        if((t.t === 'ch' && (t.v === '-' || t.v === '+') || t.t === 'cmd' && (t.v === 'pm' || t.v === 'mp')) && signAt(c)){
+          p++;
+          c.push({ k: 'mo', v: t.v === '-' ? '−' : t.v === '+' ? '+' : OPS[t.v], sign: true });
+          continue;
+        }
         var a = atom();
         if(a) c.push(a);
       }
       return { k: 'row', c: c };
+    }
+    function signAt(c){
+      for(var i = c.length - 1; i >= 0; i--){
+        var q = c[i];
+        if(q.k === 'space') continue;
+        if(q.k === 'big') return true;
+        // An opening bar (an odd count so far): |-2|.
+        if(q.k === 'mo' && q.v === '|' && !q.size) return c.filter(function(o){ return o.k === 'mo' && o.v === '|' && !o.size; }).length % 2 === 1;
+        // After any operator but a closing bracket, a factorial or a size bar.
+        return q.k === 'mo' && !q.prime && !q.size && ')]}‖!′″‴…⋯'.indexOf(q.v) < 0;
+      }
+      return true;
     }
     function scripts(base){
       var sub = null, sup = null;
@@ -229,6 +248,7 @@
       case 'mo':
         if(n.size) return '<mo stretchy="true" symmetric="true" minsize="' + n.size + '" maxsize="' + n.size + '">' + esc(n.v) + '</mo>';
         if(n.prime) return '<mo lspace="0" rspace="0">' + esc(n.v) + '</mo>';
+        if(n.sign) return '<mo form="prefix" lspace="0" rspace="0">' + esc(n.v) + '</mo>';
         return '<mo' + (n.fence ? ' stretchy="false"' : '') + '>' + esc(n.v) + '</mo>';
       case 'mtext': return '<mtext>' + esc(n.v) + '</mtext>';
       case 'space': return '<mspace width="' + n.w + '"></mspace>';
@@ -287,7 +307,7 @@
     switch(n.k){
       case 'row': return n.c.map(tx).join('').replace(/\s+/g, ' ');
       case 'mi': case 'mn': case 'mtext': return n.v;
-      case 'mo': return /[=<>≤≥≠≈→⇒±+−∈]/.test(n.v) && !n.fence ? ' ' + n.v + ' ' : n.v === ',' ? ', ' : n.v;
+      case 'mo': return n.sign ? n.v : /[=<>≤≥≠≈→⇒±+−∈]/.test(n.v) && !n.fence ? ' ' + n.v + ' ' : n.v === ',' ? ', ' : n.v;
       case 'space': return ' ';
       case 'fn': return n.v + ' ';
       case 'big': return n.v + ' ';

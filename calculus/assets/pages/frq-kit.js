@@ -35,6 +35,19 @@
   function calcWord(f){ return f.calc ? 'calculator' : 'no calculator'; }
   var uid = 0;
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  /* An "Also accept" line: math the build rendered (<math>...</math>) is kept,
+     any $...$ left is rendered with ApCalcTex, and every other character is
+     escaped, so a stray < in the words cannot become markup. */
+  var MATH_SPLIT = /(<math[\s\S]*?<\/math>|\$\$[\s\S]+?\$\$|\$[^$]+?\$)/;
+  function richText(s){
+    var T = typeof window !== 'undefined' && window.ApCalcTex;
+    return String(s == null ? '' : s).replace(/\\\$/g, '\u0000').split(MATH_SPLIT).map(function(x, i){
+      if(i % 2 === 0) return esc(x);
+      if(x.charAt(0) === '<') return x;
+      var display = x.slice(0, 2) === '$$', tex = x.slice(display ? 2 : 1, display ? -2 : -1).replace(/\u0000/g, '\\$');
+      return T ? T.render(tex, { display: display }) : esc(x);
+    }).join('').replace(/\u0000/g, '$');
+  }
   function base(){ return window.ApCalcBase || ''; }
   var cache = {};
   function get(b, u){
@@ -80,7 +93,7 @@
         p.rubric.map(function(r, k){
           var id = name + '-' + i + '-' + k, on = had[i] && had[i][k];
           return '<label class="calc-fq-point" for="' + id + '"><input type="checkbox" id="' + id + '" data-part="' + i + '" data-k="' + k + '"' + (on ? ' checked' : '') + (opts.readonly ? ' disabled' : '') + '>' +
-            '<span><b>1 point.</b> ' + r.point + (r.accept && r.accept.length ? '<span class="calc-fq-accept">Also accept: ' + r.accept.map(esc).join('; ') + '</span>' : '') + '</span></label>';
+            '<span><b>1 point.</b> ' + r.point + (r.accept && r.accept.length ? '<span class="calc-fq-accept">Also accept: ' + r.accept.map(richText).join('; ') + '</span>' : '') + '</span></label>';
         }).join('') +
         '<div class="calc-fq-sample"><p class="calc-fq-sample-k">A full-credit answer</p><p>' + p.sample + '</p></div></fieldset>';
     }).join('') + '</div>';

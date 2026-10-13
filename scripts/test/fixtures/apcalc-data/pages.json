@@ -169,7 +169,7 @@
    "title": "Related Rates Trainer",
    "desc": "Animated related rates scenes (a sliding ladder, a filling cone, a shadow, a growing circle) with live rates and the chain of equations.",
    "blurb": "Watch rates change together, then write the equation that links them.",
-   "lede": "See every rate in the scene change together.",
+   "lede": "See every rate change together as the scene moves.",
    "premium": "tools",
    "studio": true
   },

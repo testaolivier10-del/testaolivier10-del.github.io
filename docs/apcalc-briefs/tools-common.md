@@ -51,7 +51,7 @@ recomputes every key independently; the test runs it plus model unit tests (e.g.
 
 - No git commands that change anything. I commit.
 - Never run `node scripts/build-apcalc.mjs` without `--out <your scratch dir>`. To preview a tool, its
-  context topic must be published: `APPHYS_PUBLISHED=unit-1,unit-2,...,skills-math node scripts/build-apcalc.mjs --out <dir>`
+  context topic must be published: `APCALC_PUBLISHED=unit-1,unit-2,...,skills-math node scripts/build-apcalc.mjs --out <dir>`
   (content may still be partial; that is fine for tools). Serve and screenshot with Playwright (installed) at
   1280 and 360 px, light and dark, and LOOK at the screenshots; iterate until it looks professional.
   If the scratch build does not include what you need to serve the page, work out the smallest way to
