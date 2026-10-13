@@ -239,7 +239,7 @@ Owner to confirm (needs-author `tools-premium`).
 
 - **Launch checklist (only you can do).** The course is published (free parts live, Premium shows
   "coming soon" and locks nothing) until these are done, in order:
-  1. Apply `scripts/sql/migrations/2026-10f-apphys.sql` in Supabase (after 2026-10c and 2026-10d).
+  1. Apply `scripts/sql/migrations/2026-10f-apphys.sql` in Supabase (after 2026-10c, 2026-10d and 2026-10e-funnel-seen).
   2. Create the Polar product "AP® Physics 1 Premium (through June 30, 2027)", one-time $25.
   3. Add `"phys-2027": "<product id>"` to `POLAR_PRODUCTS` (Worker config, the `phys` pass key).
   4. Merge the PR, then deploy the Worker (`node scripts/build-worker.mjs`, then deploy).
