@@ -99,11 +99,11 @@ One branch, `claude/apphys`, one PR at the end.
 |---|---|---|
 | R | Research: `docs/apphys-research/framework.md`, `market.md` | **done 2026-10-12** |
 | 0 | Fork AP® Chemistry: map (43 topics + math chapter), dependency map, generator, runtime `physics/assets/`, checks, tests, fixture, registration (registry, Premium pass, Worker, SQL migration, hub/pricing hidden until published, search, sitemap, OG card, budgets, theme colour, sw.js), tool scaffolding for every trainer, docs (architecture, authoring guide, phase0, needs-author) | **done 2026-10-12** (decisions 6-9): `docs/apphys-ced-map.json`, `docs/apphys-dependency-map.json` (48 topics, 203 concepts; `docs/apphys-phase0.md`), `scripts/build-apphys.mjs`, `check-apphys-map.mjs`, `check-apphys-content.mjs`, runtime `physics/assets/`, 11 tools pre-registered with per-tool files, formats in `docs/apphys-architecture.md`, rules in `docs/apphys-authoring-guide.md` |
-| 1 | Content: every unit's lessons, notes, banks, FRQs (all four types), glossary, figures | planned |
-| 2 | Trainers (section 6) | planned |
+| 1 | Content: every unit's lessons, notes, banks, FRQs (all four types), glossary, figures | **done 2026-10-12**: 48 topics, 747 bank questions, 21 FRQs, 203 glossary terms |
+| 2 | Trainers (section 6) | **done 2026-10-12**: all 11, each with Explore, a seeded drill, a validator and tests |
 | 3 | Justification trainer, two fixed practice exams, equations sheet, score calculator, unit tests, cram kit | **done 2026-10-12** (decision 10): 2 forms (42 MCQ + mr/tbr/lab/qqt each, 25 exam-only items), 33 prompts, 53 equation rows, estimated cut-offs 70/55/41/31; accuracy review of exams and prompts still due in Phase 4 |
-| 4 | Independent accuracy checks per unit and for tools/exams; fixes | planned |
-| Launch | Publish, generators, continuity pass, homepage and Premium-rules fixes, full CI with browser checks, PR | planned |
+| 4 | Independent accuracy checks per unit and for tools/exams; fixes | **done 2026-10-13**: `docs/apphys-reviews/` (u1, u2, u3-4, u5-6, u7-8, tools-a, tools-b, exams, and the authors' self-checks); open points in `docs/apphys-needs-author.md` |
+| Launch | Publish, generators, continuity pass, homepage and Premium-rules fixes, full CI with browser checks, PR | **done 2026-10-13** (decision 11); Premium not on sale until the section 8 checklist |
 
 Quality bar: AP® Chemistry authoring rules (original items only; at least 60% apply/analyze; stimulus
 sets; per-option explanations; key-length balance; worked example before any calculation type); every
@@ -206,11 +206,45 @@ Owner to confirm (needs-author `tools-premium`).
    - Cram kit: timed sets at the exam pace (85/42 min a question, was chemistry's 1.5), justification
      prompts on study days as well as weak-spot days, exam day n opens practice exam n.
 
+11. (2026-10-13, launch) **Published, Premium not on sale**, as apchem decision 18.
+   - All eight units and `skills-math` in `physics/data/published.json`; registry `status: 'beta'`; every
+     generator rerun (course, courses, pricing, OG tags, sitemap, crumbs, Worker, tutor). Hub and 404 cards say
+     "All 48 published topics" (`PHYS_ALL` in `build-pricing.mjs`). `sw.js` cache v75. Changelog entry.
+     `onSale: false` stays, so Premium shows "coming soon" and locks nothing.
+   - Owner's site fixes: the hub hero's course count is now generated from the registry by
+     `build-pricing.mjs` ("Six courses", "See all six courses"), the hero lede and meta description name every
+     course (no "AP" in the meta); the Premium rules and `terms.html#fixed-date` (now generated between
+     `<!-- fixed-date:start/end -->`) name every pass that runs through a date (`DATED`). Also stale course
+     lists on `search.html` (lede, meta, noscript links), a "Three courses" comment, and `sources.html` (new
+     AP® Chemistry and AP® Physics 1 sections).
+   - Publishing turned on the site checks for `physics/`: British spellings in data (cancelled, labelled,
+     grey) and the "centre of mass" alias removed; two descriptions rewritten (`gravitational-force` notes
+     opened "you met", `torque-balance` was 228 characters); a Unit 3 lesson prerequisite distractor said
+     "momentum" before it is taught (now "speed"). `courseTitle` puts " | LevlPrep" back when cutting a long
+     topic at a word frees the room (title-pattern; changes physics titles only). Home-page weight budget
+     8.5 → 8.8 KB (hub card, FAQ pass and offers; measured 8.6).
+   - Continuity pass (physics vs chemistry, every shared page type, 1280/360, light/dark, Playwright; practice
+     answered on a set item and a numeric item, a practice exam started). Shared-layer gaps fixed, the
+     same kind apchem decision 18 found: `assets/course/book.css` crumb spacing knew no `.phys-crumb`
+     (notes, unit and learn pages), `assets/course/study.css` answer chips knew no `.phys-mark` (doubled
+     chip), `assets/course/tool-studio.js` did not move `.phys-foot` into a trainer's About panel. Physics
+     fixes: the home trainers band named one free trainer (now "The motion graphs and free-body diagrams
+     trainers are free"); `premium.js` said "The first trainer of each unit" was free (now the three free
+     trainers by name, plus the progress line every course has); the teachers page's example URL overflowed
+     at 360 px (`<wbr>`); the free-body diagrams Explore pane gave its heading the id `fbx-h`, which its hatch
+     `<pattern>` also used (check-console duplicate id; the heading is now `fbx-title`). Tests: `site-search`
+     now expects `?course=physics` to pick the course.
+
 ## 8. Open items for the owner
 
-To be filled at launch (same checklist shape as AP® Chemistry: apply
-`scripts/sql/migrations/2026-10e-apphys.sql`, Polar product "AP® Physics 1 Premium (through June 30,
-2027)" $25, `"phys-2027"` in `POLAR_PRODUCTS`, merge and deploy the Worker, then delete
-`onSale: false` from `COURSES.apphys` in `assets/premium.js` and bump `CACHE_NAME` in `sw.js`).
-Questions in `docs/apphys-needs-author.md` (Units 3-8 exclusions, Unit 7 names, practice weights,
-g policy, score cut-offs, which trainers are free).
+- **Launch checklist (only you can do).** The course is published (free parts live, Premium shows
+  "coming soon" and locks nothing) until these are done, in order:
+  1. Apply `scripts/sql/migrations/2026-10e-apphys.sql` in Supabase (after 2026-10c and 2026-10d).
+  2. Create the Polar product "AP® Physics 1 Premium (through June 30, 2027)", one-time $25.
+  3. Add `"phys-2027": "<product id>"` to `POLAR_PRODUCTS` (Worker config, the `phys` pass key).
+  4. Merge the PR, then deploy the Worker (`node scripts/build-worker.mjs`, then deploy).
+  5. Delete `onSale: false` from `COURSES.apphys` in `assets/premium.js` and bump `CACHE_NAME` in `sw.js`.
+- Questions in `docs/apphys-needs-author.md` (CED exclusions for Units 3-8 and the scope calls that rest on
+  them, Unit 7 names, practice weights, g policy, score cut-offs, which trainers are free, the equations
+  sheet's geometry row).
+- Optional: an AP® Physics 1 teacher to review the course (the Beta note stays until then).
