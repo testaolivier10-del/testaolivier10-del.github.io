@@ -1,0 +1,3776 @@
+{
+ "about": "AP Physics 1 concept dependency map (docs/apphys-spec.md, docs/apphys-phase0.md): the 43 CED topics in CED order, the \"Math you need\" skills with the topic each comes before, and every concept with the topic that teaches it and the concepts it depends on. Our own words; no CED text. Checked by scripts/check-apphys-map.mjs.",
+ "version": 1,
+ "ced": {
+  "edition": "2024-25 revision (8 units, 43 topics)",
+  "effective": "Fall 2024; exam format of May 2027",
+  "note": "Built from docs/apphys-ced-map.json, itself from docs/apphys-research/framework.md. Units 3-8 boundaries and Unit 7 topic names unverified (docs/apphys-needs-author.md)."
+ },
+ "practices": [
+  {
+   "id": 1,
+   "name": "Creating Representations",
+   "skills": [
+    "1.A",
+    "1.B",
+    "1.C"
+   ],
+   "mcqWeight": [
+    0,
+    0
+   ],
+   "frqWeight": [
+    20,
+    35
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Mathematical Routines",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C",
+    "2.D"
+   ],
+   "mcqWeight": [
+    55,
+    75
+   ],
+   "frqWeight": [
+    30,
+    40
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Scientific Questioning and Argumentation",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C"
+   ],
+   "mcqWeight": [
+    25,
+    35
+   ],
+   "frqWeight": [
+    35,
+    45
+   ]
+  }
+ ],
+ "parts": [
+  {
+   "id": "course",
+   "title": "Units"
+  },
+  {
+   "id": "skills",
+   "title": "Skills"
+  }
+ ],
+ "chapters": [
+  {
+   "id": "unit-1",
+   "n": 1,
+   "part": "course",
+   "title": "Kinematics",
+   "weight": [
+    10,
+    15
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "motion-graphs",
+      "title": "Motion graphs: drive a cart and watch x, v and a draw themselves",
+      "topic": "motion-representations"
+     },
+     {
+      "id": "lab-design",
+      "title": "Experimental design: what to measure with what, linearize, fit, read the slope",
+      "topic": "motion-representations"
+     },
+     {
+      "id": "projectile-lab",
+      "title": "Projectile lab: launch angle and speed, components, range, frames",
+      "topic": "motion-2d"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Sketch v-t from a motion description, derive a stopping distance, justify",
+      "topic": "motion-representations",
+      "type": "MR"
+     },
+     {
+      "title": "Measure g with a dropped ball and a photogate: linearize and use the slope",
+      "topic": "motion-representations",
+      "type": "LAB"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Position-time graph of two runners",
+      "topic": "motion-representations",
+      "stimulus": "graph"
+     },
+     {
+      "title": "A ball launched off a table",
+      "topic": "motion-2d",
+      "stimulus": "diagram"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Distance and displacement, speed and velocity",
+      "topic": "scalars-vectors"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Graph to graph: slope down, area up",
+      "topic": "motion-representations"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-2",
+   "n": 2,
+   "part": "course",
+   "title": "Force and Translational Dynamics",
+   "weight": [
+    18,
+    23
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "free-body-diagrams",
+      "title": "Free-body diagram builder: drag and size forces, graded force by force",
+      "topic": "forces-fbd"
+     },
+     {
+      "id": "justification-trainer",
+      "title": "Justification trainer: claim, evidence, reasoning against a rubric",
+      "topic": "first-law"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Block on an incline: FBD, equation consistent with it, a-t graph, consistency",
+      "topic": "friction",
+      "type": "TBR"
+     },
+     {
+      "title": "Two hanging masses: which accelerates faster, then derive and check",
+      "topic": "second-law",
+      "type": "QQT"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Elevator scale readings over a ride",
+      "topic": "gravitational-force",
+      "stimulus": "table"
+     },
+     {
+      "title": "Crate pushed across a floor",
+      "topic": "friction",
+      "stimulus": "diagram"
+     },
+     {
+      "title": "Car on a banked curve",
+      "topic": "circular-motion",
+      "stimulus": "diagram"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Third-law pairs versus balanced forces",
+      "topic": "third-law"
+     },
+     {
+      "title": "Static and kinetic friction",
+      "topic": "friction"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Scene to FBD to Newton's second law",
+      "topic": "second-law"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-3",
+   "n": 3,
+   "part": "course",
+   "title": "Work, Energy, and Power",
+   "weight": [
+    18,
+    23
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "energy-bar-charts",
+      "title": "Energy bar charts: skater track, spring launcher, ramp with friction",
+      "topic": "energy-conservation"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Spring launches a block up a rough ramp: bar charts, equation, graph",
+      "topic": "energy-conservation",
+      "type": "TBR"
+     },
+     {
+      "title": "Find a spring constant from launch heights",
+      "topic": "potential-energy",
+      "type": "LAB"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Force-position graph of a stretched band",
+      "topic": "work-by-forces",
+      "stimulus": "graph"
+     },
+     {
+      "title": "A skater on a curved track",
+      "topic": "energy-conservation",
+      "stimulus": "diagram"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Conservative and nonconservative forces",
+      "topic": "potential-energy"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Choose the system, then count the energy",
+      "topic": "energy-conservation"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-4",
+   "n": 4,
+   "part": "course",
+   "title": "Linear Momentum",
+   "weight": [
+    10,
+    15
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "collision-lab",
+      "title": "Collision lab: two carts, elastic to sticky, momentum and energy bars, impulse",
+      "topic": "collisions"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Sticky collision then friction: p-t graph, derive vf, justify why p is constant",
+      "topic": "collisions",
+      "type": "MR"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Force-time graph of a ball bouncing off a wall",
+      "topic": "impulse",
+      "stimulus": "graph"
+     },
+     {
+      "title": "Two carts on a track before and after",
+      "topic": "collisions",
+      "stimulus": "diagram"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Elastic, inelastic and perfectly inelastic",
+      "topic": "collisions"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Momentum first, then energy",
+      "topic": "collisions"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-5",
+   "n": 5,
+   "part": "course",
+   "title": "Torque and Rotational Dynamics",
+   "weight": [
+    10,
+    15
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "torque-balance",
+      "title": "Torque balance: beams and mobiles, lever arms, rotational inertia race",
+      "topic": "rotational-equilibrium"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Meterstick on a pivot with a spring scale: find a mass from the slope",
+      "topic": "rotational-equilibrium",
+      "type": "LAB"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A beam held by a hinge and a cable",
+      "topic": "rotational-equilibrium",
+      "stimulus": "diagram"
+     },
+     {
+      "title": "Angular velocity of a wheel over time",
+      "topic": "rotational-kinematics",
+      "stimulus": "graph"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Translational and rotational quantities side by side",
+      "topic": "linear-rotational-link"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Pick the pivot, sum the torques",
+      "topic": "rotational-equilibrium"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-6",
+   "n": 6,
+   "part": "course",
+   "title": "Energy and Momentum of Rotating Systems",
+   "weight": [
+    5,
+    8
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "rotation-lab",
+      "title": "Rotation lab: rolling race, spinning skater, orbit energy",
+      "topic": "rolling"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Two toys with different rotational inertia: claim, derive, check",
+      "topic": "angular-momentum-conservation",
+      "type": "QQT"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "A hoop and a disk race down a ramp",
+      "topic": "rolling",
+      "stimulus": "diagram"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Rolling with and without slipping",
+      "topic": "rolling"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Linear and angular momentum, the same story",
+      "topic": "angular-momentum"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-7",
+   "n": 7,
+   "part": "course",
+   "title": "Oscillations",
+   "weight": [
+    5,
+    8
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "oscillator-lab",
+      "title": "Oscillator lab: mass on a spring and pendulum, graphs, energy, period",
+      "topic": "shm-period"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "Find a spring constant by timing oscillations: linearize T² against m",
+      "topic": "shm-period",
+      "type": "LAB"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Position-time graph of an oscillating cart",
+      "topic": "shm-representations",
+      "stimulus": "graph"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Spring-mass and pendulum: what sets the period",
+      "topic": "shm-period"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Where x, v and a are largest",
+      "topic": "shm-representations"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unit-8",
+   "n": 8,
+   "part": "course",
+   "title": "Fluids",
+   "weight": [
+    10,
+    15
+   ],
+   "tools": {
+    "simulators": [
+     {
+      "id": "fluids-tank",
+      "title": "Fluids tank: buoyancy, pressure with depth, flow through a pipe",
+      "topic": "buoyancy"
+     }
+    ],
+    "frqThemes": [
+     {
+      "title": "A block in fresh and salt water: claim, derive from Newton's second law, check",
+      "topic": "buoyancy",
+      "type": "QQT"
+     },
+     {
+      "title": "Fountain: projectile plus flow rate",
+      "topic": "fluid-flow",
+      "type": "MR"
+     }
+    ],
+    "stimulusThemes": [
+     {
+      "title": "Objects of different density in a tank",
+      "topic": "buoyancy",
+      "stimulus": "diagram"
+     },
+     {
+      "title": "Pressure readings at depths",
+      "topic": "fluid-pressure",
+      "stimulus": "table"
+     }
+    ],
+    "comparisonTables": [
+     {
+      "title": "Pressure, force and buoyant force",
+      "topic": "buoyancy"
+     }
+    ],
+    "pathways": [
+     {
+      "title": "Continuity, then Bernoulli",
+      "topic": "fluid-flow"
+     }
+    ]
+   }
+  },
+  {
+   "id": "skills-math",
+   "part": "skills",
+   "title": "Math you need",
+   "tools": {
+    "simulators": [
+     {
+      "id": "scaling-drills",
+      "title": "Scaling drills: functional dependence and units, seeded",
+      "topic": "math-proportional"
+     }
+    ]
+   }
+  }
+ ],
+ "topics": [
+  {
+   "id": "scalars-vectors",
+   "ced": "1.1",
+   "title": "Scalars and Vectors on a Line",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "scalars and vectors on a line physics 1 explained"
+  },
+  {
+   "id": "motion-quantities",
+   "ced": "1.2",
+   "title": "Displacement, Velocity and Acceleration",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "displacement, velocity and acceleration physics 1 explained"
+  },
+  {
+   "id": "motion-representations",
+   "ced": "1.3",
+   "title": "Representing Motion",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "representing motion physics 1 explained"
+  },
+  {
+   "id": "reference-frames",
+   "ced": "1.4",
+   "title": "Reference Frames and Relative Motion",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "reference frames and relative motion physics 1 explained"
+  },
+  {
+   "id": "motion-2d",
+   "ced": "1.5",
+   "title": "Vectors and Motion in Two Dimensions",
+   "chapter": "unit-1",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "vectors and motion in two dimensions physics 1 explained"
+  },
+  {
+   "id": "systems-center-of-mass",
+   "ced": "2.1",
+   "title": "Systems and Center of Mass",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "systems and center of mass physics 1 explained"
+  },
+  {
+   "id": "forces-fbd",
+   "ced": "2.2",
+   "title": "Forces and Free-Body Diagrams",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "forces and free-body diagrams physics 1 explained"
+  },
+  {
+   "id": "third-law",
+   "ced": "2.3",
+   "title": "Newton's Third Law",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "newton's third law physics 1 explained"
+  },
+  {
+   "id": "first-law",
+   "ced": "2.4",
+   "title": "Newton's First Law",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    3
+   ],
+   "searchPhrase": "newton's first law physics 1 explained"
+  },
+  {
+   "id": "second-law",
+   "ced": "2.5",
+   "title": "Newton's Second Law",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "newton's second law physics 1 explained"
+  },
+  {
+   "id": "gravitational-force",
+   "ced": "2.6",
+   "title": "Gravitational Force",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "gravitational force physics 1 explained"
+  },
+  {
+   "id": "friction",
+   "ced": "2.7",
+   "title": "Kinetic and Static Friction",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "kinetic and static friction physics 1 explained"
+  },
+  {
+   "id": "spring-forces",
+   "ced": "2.8",
+   "title": "Spring Forces",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "spring forces physics 1 explained"
+  },
+  {
+   "id": "circular-motion",
+   "ced": "2.9",
+   "title": "Circular Motion",
+   "chapter": "unit-2",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "circular motion physics 1 explained"
+  },
+  {
+   "id": "kinetic-energy",
+   "ced": "3.1",
+   "title": "Translational Kinetic Energy",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "translational kinetic energy physics 1 explained"
+  },
+  {
+   "id": "work-by-forces",
+   "ced": "3.2",
+   "title": "Work",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "work physics 1 explained"
+  },
+  {
+   "id": "potential-energy",
+   "ced": "3.3",
+   "title": "Potential Energy",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "potential energy physics 1 explained"
+  },
+  {
+   "id": "energy-conservation",
+   "ced": "3.4",
+   "title": "Conservation of Energy",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "conservation of energy physics 1 explained"
+  },
+  {
+   "id": "power",
+   "ced": "3.5",
+   "title": "Power",
+   "chapter": "unit-3",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "power physics 1 explained"
+  },
+  {
+   "id": "linear-momentum",
+   "ced": "4.1",
+   "title": "Linear Momentum",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "linear momentum physics 1 explained"
+  },
+  {
+   "id": "impulse",
+   "ced": "4.2",
+   "title": "Change in Momentum and Impulse",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "change in momentum and impulse physics 1 explained"
+  },
+  {
+   "id": "momentum-conservation",
+   "ced": "4.3",
+   "title": "Conservation of Linear Momentum",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "conservation of linear momentum physics 1 explained"
+  },
+  {
+   "id": "collisions",
+   "ced": "4.4",
+   "title": "Elastic and Inelastic Collisions",
+   "chapter": "unit-4",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "elastic and inelastic collisions physics 1 explained"
+  },
+  {
+   "id": "rotational-kinematics",
+   "ced": "5.1",
+   "title": "Rotational Kinematics",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "rotational kinematics physics 1 explained"
+  },
+  {
+   "id": "linear-rotational-link",
+   "ced": "5.2",
+   "title": "Linking Linear and Rotational Motion",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    2
+   ],
+   "searchPhrase": "linking linear and rotational motion physics 1 explained"
+  },
+  {
+   "id": "torque",
+   "ced": "5.3",
+   "title": "Torque",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "torque physics 1 explained"
+  },
+  {
+   "id": "rotational-inertia",
+   "ced": "5.4",
+   "title": "Rotational Inertia",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "rotational inertia physics 1 explained"
+  },
+  {
+   "id": "rotational-equilibrium",
+   "ced": "5.5",
+   "title": "Rotational Equilibrium",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "rotational equilibrium physics 1 explained"
+  },
+  {
+   "id": "rotational-second-law",
+   "ced": "5.6",
+   "title": "Newton's Second Law for Rotation",
+   "chapter": "unit-5",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "newton's second law for rotation physics 1 explained"
+  },
+  {
+   "id": "rotational-kinetic-energy",
+   "ced": "6.1",
+   "title": "Rotational Kinetic Energy",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    2
+   ],
+   "searchPhrase": "rotational kinetic energy physics 1 explained"
+  },
+  {
+   "id": "torque-work",
+   "ced": "6.2",
+   "title": "Torque and Work",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1,
+    2
+   ],
+   "searchPhrase": "torque and work physics 1 explained"
+  },
+  {
+   "id": "angular-momentum",
+   "ced": "6.3",
+   "title": "Angular Momentum and Angular Impulse",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "angular momentum and angular impulse physics 1 explained"
+  },
+  {
+   "id": "angular-momentum-conservation",
+   "ced": "6.4",
+   "title": "Conservation of Angular Momentum",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "conservation of angular momentum physics 1 explained"
+  },
+  {
+   "id": "rolling",
+   "ced": "6.5",
+   "title": "Rolling",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "rolling physics 1 explained"
+  },
+  {
+   "id": "orbits",
+   "ced": "6.6",
+   "title": "Motion of Orbiting Satellites",
+   "chapter": "unit-6",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "motion of orbiting satellites physics 1 explained"
+  },
+  {
+   "id": "shm-intro",
+   "ced": "7.1",
+   "title": "Defining Simple Harmonic Motion",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "defining simple harmonic motion physics 1 explained"
+  },
+  {
+   "id": "shm-period",
+   "ced": "7.2",
+   "title": "Frequency and Period of SHM",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "frequency and period of shm physics 1 explained"
+  },
+  {
+   "id": "shm-representations",
+   "ced": "7.3",
+   "title": "Representing and Analyzing SHM",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "representing and analyzing shm physics 1 explained"
+  },
+  {
+   "id": "shm-energy",
+   "ced": "7.4",
+   "title": "Energy of Simple Harmonic Oscillators",
+   "chapter": "unit-7",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "energy of simple harmonic oscillators physics 1 explained"
+  },
+  {
+   "id": "density-fluids",
+   "ced": "8.1",
+   "title": "Internal Structure and Density",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    2
+   ],
+   "searchPhrase": "internal structure and density physics 1 explained"
+  },
+  {
+   "id": "fluid-pressure",
+   "ced": "8.2",
+   "title": "Pressure",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "pressure physics 1 explained"
+  },
+  {
+   "id": "buoyancy",
+   "ced": "8.3",
+   "title": "Fluids and Newton's Laws",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    1,
+    2,
+    3
+   ],
+   "searchPhrase": "fluids and newton's laws physics 1 explained"
+  },
+  {
+   "id": "fluid-flow",
+   "ced": "8.4",
+   "title": "Fluids and Conservation Laws",
+   "chapter": "unit-8",
+   "kind": "concept",
+   "practices": [
+    2,
+    3
+   ],
+   "searchPhrase": "fluids and conservation laws physics 1 explained"
+  },
+  {
+   "id": "math-units",
+   "ced": null,
+   "title": "Units, Prefixes and Significant Figures",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    2
+   ],
+   "before": "scalars-vectors",
+   "searchPhrase": "si units and metric prefixes for physics"
+  },
+  {
+   "id": "math-symbols",
+   "ced": null,
+   "title": "Rearranging Equations with Symbols",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    2
+   ],
+   "before": "motion-quantities",
+   "searchPhrase": "rearranging physics equations with symbols"
+  },
+  {
+   "id": "math-proportional",
+   "ced": null,
+   "title": "Proportional Reasoning and Functional Dependence",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    2
+   ],
+   "before": "motion-representations",
+   "searchPhrase": "proportional reasoning functional dependence physics"
+  },
+  {
+   "id": "math-slopes-areas",
+   "ced": null,
+   "title": "Slopes and Areas of Graphs",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    1,
+    2
+   ],
+   "before": "motion-representations",
+   "searchPhrase": "slope and area under a graph physics"
+  },
+  {
+   "id": "math-trig-components",
+   "ced": null,
+   "title": "Right-Triangle Trigonometry and Vector Components",
+   "chapter": "skills-math",
+   "kind": "skill",
+   "practices": [
+    1,
+    2
+   ],
+   "before": "motion-2d",
+   "searchPhrase": "trigonometry and vector components for physics"
+  }
+ ],
+ "everydayWords": {
+  "about": "Common words a student already roughly knows. They may be used in their everyday sense before the topic that teaches them; the technical terms of the same concept stay strict (\"kinetic friction\", \"gravitational force\", \"mass density\").",
+  "words": [
+   "speed",
+   "speeds",
+   "distance",
+   "position",
+   "mass",
+   "masses",
+   "weight",
+   "gravity",
+   "friction",
+   "pressure",
+   "density",
+   "pulley",
+   "pulleys"
+  ]
+ },
+ "concepts": [
+  {
+   "id": "si-unit",
+   "term": "SI unit",
+   "aliases": [
+    "SI units",
+    "base unit",
+    "base units",
+    "kilogram",
+    "kilograms",
+    "meter",
+    "meters",
+    "metre"
+   ],
+   "taughtIn": "math-units",
+   "dependsOn": []
+  },
+  {
+   "id": "si-prefix",
+   "term": "metric prefix",
+   "aliases": [
+    "metric prefixes",
+    "SI prefix",
+    "SI prefixes",
+    "kilo",
+    "milli",
+    "centi",
+    "micro",
+    "mega"
+   ],
+   "taughtIn": "math-units",
+   "dependsOn": [
+    "si-unit"
+   ]
+  },
+  {
+   "id": "unit-conversion",
+   "term": "unit conversion",
+   "aliases": [
+    "unit conversions",
+    "conversion factor",
+    "conversion factors"
+   ],
+   "taughtIn": "math-units",
+   "dependsOn": [
+    "si-unit",
+    "si-prefix"
+   ]
+  },
+  {
+   "id": "scientific-notation",
+   "term": "scientific notation",
+   "aliases": [
+    "powers of ten"
+   ],
+   "taughtIn": "math-units",
+   "dependsOn": []
+  },
+  {
+   "id": "sig-figs",
+   "term": "significant figures",
+   "aliases": [
+    "significant figure",
+    "sig figs",
+    "sig fig"
+   ],
+   "taughtIn": "math-units",
+   "dependsOn": [
+    "scientific-notation"
+   ]
+  },
+  {
+   "id": "scalar",
+   "term": "scalar",
+   "aliases": [
+    "scalars",
+    "scalar quantity",
+    "scalar quantities"
+   ],
+   "taughtIn": "scalars-vectors",
+   "dependsOn": [
+    "si-unit"
+   ]
+  },
+  {
+   "id": "vector",
+   "term": "vector",
+   "aliases": [
+    "vectors",
+    "vector quantity",
+    "vector quantities"
+   ],
+   "taughtIn": "scalars-vectors",
+   "dependsOn": [
+    "scalar"
+   ]
+  },
+  {
+   "id": "magnitude",
+   "term": "magnitude",
+   "aliases": [
+    "magnitudes"
+   ],
+   "taughtIn": "scalars-vectors",
+   "dependsOn": [
+    "vector"
+   ]
+  },
+  {
+   "id": "position",
+   "term": "position",
+   "aliases": [
+    "positions"
+   ],
+   "taughtIn": "scalars-vectors",
+   "dependsOn": []
+  },
+  {
+   "id": "coordinate-system",
+   "term": "coordinate system",
+   "aliases": [
+    "coordinate systems",
+    "origin (coordinates)",
+    "positive direction",
+    "negative direction",
+    "x-axis"
+   ],
+   "taughtIn": "scalars-vectors",
+   "dependsOn": [
+    "position"
+   ]
+  },
+  {
+   "id": "distance",
+   "term": "distance",
+   "aliases": [
+    "distance traveled",
+    "path length"
+   ],
+   "taughtIn": "scalars-vectors",
+   "dependsOn": [
+    "scalar"
+   ]
+  },
+  {
+   "id": "displacement",
+   "term": "displacement",
+   "aliases": [
+    "displacements"
+   ],
+   "taughtIn": "scalars-vectors",
+   "dependsOn": [
+    "position",
+    "vector",
+    "coordinate-system"
+   ]
+  },
+  {
+   "id": "speed",
+   "term": "speed",
+   "aliases": [
+    "speeds"
+   ],
+   "taughtIn": "scalars-vectors",
+   "dependsOn": [
+    "distance",
+    "scalar"
+   ]
+  },
+  {
+   "id": "velocity",
+   "term": "velocity",
+   "aliases": [
+    "velocities"
+   ],
+   "taughtIn": "scalars-vectors",
+   "dependsOn": [
+    "displacement",
+    "speed"
+   ]
+  },
+  {
+   "id": "vector-sum-1d",
+   "term": "vector sum",
+   "aliases": [
+    "vector addition",
+    "adding vectors",
+    "resultant (vector)"
+   ],
+   "taughtIn": "scalars-vectors",
+   "dependsOn": [
+    "vector",
+    "coordinate-system"
+   ]
+  },
+  {
+   "id": "variable-symbol",
+   "term": "variable (symbol)",
+   "aliases": [
+    "variables",
+    "symbol for a quantity"
+   ],
+   "taughtIn": "math-symbols",
+   "dependsOn": []
+  },
+  {
+   "id": "delta-notation",
+   "term": "delta notation",
+   "aliases": [
+    "final minus initial",
+    "change in a quantity"
+   ],
+   "taughtIn": "math-symbols",
+   "dependsOn": [
+    "variable-symbol"
+   ]
+  },
+  {
+   "id": "subscript-notation",
+   "term": "subscript notation",
+   "aliases": [
+    "subscripts"
+   ],
+   "taughtIn": "math-symbols",
+   "dependsOn": [
+    "variable-symbol"
+   ]
+  },
+  {
+   "id": "rearrange-equation",
+   "term": "rearranging an equation",
+   "aliases": [
+    "rearrange an equation",
+    "solve for a variable",
+    "isolate a variable",
+    "isolating a variable"
+   ],
+   "taughtIn": "math-symbols",
+   "dependsOn": [
+    "variable-symbol"
+   ]
+  },
+  {
+   "id": "symbolic-expression",
+   "term": "symbolic expression",
+   "aliases": [
+    "symbolic expressions",
+    "symbolic answer",
+    "derivation"
+   ],
+   "taughtIn": "math-symbols",
+   "dependsOn": [
+    "rearrange-equation"
+   ]
+  },
+  {
+   "id": "substitution",
+   "term": "substitution",
+   "aliases": [
+    "substitute values",
+    "substituting values"
+   ],
+   "taughtIn": "math-symbols",
+   "dependsOn": [
+    "symbolic-expression"
+   ]
+  },
+  {
+   "id": "point-object",
+   "term": "object model",
+   "aliases": [
+    "point object",
+    "point objects",
+    "point-object model"
+   ],
+   "taughtIn": "motion-quantities",
+   "dependsOn": [
+    "position"
+   ]
+  },
+  {
+   "id": "time-interval",
+   "term": "time interval",
+   "aliases": [
+    "time intervals",
+    "elapsed time"
+   ],
+   "taughtIn": "motion-quantities",
+   "dependsOn": [
+    "delta-notation"
+   ]
+  },
+  {
+   "id": "average-velocity",
+   "term": "average velocity",
+   "aliases": [],
+   "taughtIn": "motion-quantities",
+   "dependsOn": [
+    "velocity",
+    "displacement",
+    "time-interval",
+    "delta-notation"
+   ]
+  },
+  {
+   "id": "acceleration",
+   "term": "acceleration",
+   "aliases": [
+    "accelerations",
+    "accelerating",
+    "accelerate",
+    "accelerates"
+   ],
+   "taughtIn": "motion-quantities",
+   "dependsOn": [
+    "velocity",
+    "time-interval"
+   ]
+  },
+  {
+   "id": "average-acceleration",
+   "term": "average acceleration",
+   "aliases": [],
+   "taughtIn": "motion-quantities",
+   "dependsOn": [
+    "acceleration",
+    "delta-notation"
+   ]
+  },
+  {
+   "id": "instantaneous-velocity",
+   "term": "instantaneous velocity",
+   "aliases": [
+    "instantaneous speed"
+   ],
+   "taughtIn": "motion-quantities",
+   "dependsOn": [
+    "average-velocity"
+   ]
+  },
+  {
+   "id": "instantaneous-acceleration",
+   "term": "instantaneous acceleration",
+   "aliases": [],
+   "taughtIn": "motion-quantities",
+   "dependsOn": [
+    "average-acceleration",
+    "instantaneous-velocity"
+   ]
+  },
+  {
+   "id": "proportional",
+   "term": "directly proportional",
+   "aliases": [
+    "proportional",
+    "proportionality",
+    "direct proportion"
+   ],
+   "taughtIn": "math-proportional",
+   "dependsOn": [
+    "variable-symbol"
+   ]
+  },
+  {
+   "id": "inverse-proportional",
+   "term": "inversely proportional",
+   "aliases": [
+    "inverse proportion",
+    "inverse relationship"
+   ],
+   "taughtIn": "math-proportional",
+   "dependsOn": [
+    "proportional"
+   ]
+  },
+  {
+   "id": "functional-dependence",
+   "term": "functional dependence",
+   "aliases": [
+    "factor of change",
+    "factors of change"
+   ],
+   "taughtIn": "math-proportional",
+   "dependsOn": [
+    "proportional",
+    "inverse-proportional"
+   ]
+  },
+  {
+   "id": "square-relationship",
+   "term": "square relationship",
+   "aliases": [
+    "quadratic relationship",
+    "inverse-square relationship",
+    "inverse square",
+    "square-root relationship"
+   ],
+   "taughtIn": "math-proportional",
+   "dependsOn": [
+    "functional-dependence"
+   ]
+  },
+  {
+   "id": "graph-axes",
+   "term": "axis label",
+   "aliases": [
+    "axis labels",
+    "dependent variable",
+    "independent variable"
+   ],
+   "taughtIn": "math-slopes-areas",
+   "dependsOn": [
+    "variable-symbol",
+    "si-unit"
+   ]
+  },
+  {
+   "id": "slope",
+   "term": "slope",
+   "aliases": [
+    "slopes",
+    "rise over run"
+   ],
+   "taughtIn": "math-slopes-areas",
+   "dependsOn": [
+    "graph-axes",
+    "proportional"
+   ]
+  },
+  {
+   "id": "linear-relationship",
+   "term": "linear relationship",
+   "aliases": [
+    "linear graph",
+    "straight-line graph"
+   ],
+   "taughtIn": "math-slopes-areas",
+   "dependsOn": [
+    "slope"
+   ]
+  },
+  {
+   "id": "area-under-graph",
+   "term": "area under a graph",
+   "aliases": [
+    "area under the graph",
+    "area under the curve",
+    "area under a curve"
+   ],
+   "taughtIn": "math-slopes-areas",
+   "dependsOn": [
+    "graph-axes"
+   ]
+  },
+  {
+   "id": "best-fit-line",
+   "term": "best-fit line",
+   "aliases": [
+    "line of best fit",
+    "best fit line",
+    "trend line"
+   ],
+   "taughtIn": "math-slopes-areas",
+   "dependsOn": [
+    "linear-relationship"
+   ]
+  },
+  {
+   "id": "linearization",
+   "term": "linearization",
+   "aliases": [
+    "linearize",
+    "linearizing",
+    "linearized graph"
+   ],
+   "taughtIn": "math-slopes-areas",
+   "dependsOn": [
+    "best-fit-line",
+    "square-relationship"
+   ]
+  },
+  {
+   "id": "motion-diagram",
+   "term": "motion diagram",
+   "aliases": [
+    "motion diagrams"
+   ],
+   "taughtIn": "motion-representations",
+   "dependsOn": [
+    "position",
+    "velocity"
+   ]
+  },
+  {
+   "id": "position-time-graph",
+   "term": "position-time graph",
+   "aliases": [
+    "position vs time graph",
+    "position versus time graph",
+    "x-t graph"
+   ],
+   "taughtIn": "motion-representations",
+   "dependsOn": [
+    "position",
+    "slope"
+   ]
+  },
+  {
+   "id": "velocity-time-graph",
+   "term": "velocity-time graph",
+   "aliases": [
+    "velocity vs time graph",
+    "velocity versus time graph",
+    "v-t graph"
+   ],
+   "taughtIn": "motion-representations",
+   "dependsOn": [
+    "velocity",
+    "slope",
+    "area-under-graph"
+   ]
+  },
+  {
+   "id": "acceleration-time-graph",
+   "term": "acceleration-time graph",
+   "aliases": [
+    "acceleration vs time graph",
+    "acceleration versus time graph",
+    "a-t graph"
+   ],
+   "taughtIn": "motion-representations",
+   "dependsOn": [
+    "acceleration",
+    "area-under-graph"
+   ]
+  },
+  {
+   "id": "constant-acceleration",
+   "term": "constant acceleration",
+   "aliases": [
+    "uniform acceleration",
+    "uniformly accelerated motion"
+   ],
+   "taughtIn": "motion-representations",
+   "dependsOn": [
+    "acceleration"
+   ]
+  },
+  {
+   "id": "kinematic-equations",
+   "term": "kinematic equations",
+   "aliases": [
+    "kinematics equations",
+    "constant-acceleration equations"
+   ],
+   "taughtIn": "motion-representations",
+   "dependsOn": [
+    "constant-acceleration",
+    "rearrange-equation",
+    "average-velocity"
+   ]
+  },
+  {
+   "id": "free-fall",
+   "term": "free fall",
+   "aliases": [
+    "free-fall",
+    "freely falling",
+    "free-fall acceleration",
+    "acceleration due to gravity"
+   ],
+   "taughtIn": "motion-representations",
+   "dependsOn": [
+    "constant-acceleration"
+   ]
+  },
+  {
+   "id": "nonuniform-acceleration",
+   "term": "nonuniform acceleration",
+   "aliases": [
+    "non-uniform acceleration",
+    "changing acceleration"
+   ],
+   "taughtIn": "motion-representations",
+   "dependsOn": [
+    "acceleration"
+   ]
+  },
+  {
+   "id": "reference-frame",
+   "term": "reference frame",
+   "aliases": [
+    "reference frames",
+    "frame of reference",
+    "frames of reference"
+   ],
+   "taughtIn": "reference-frames",
+   "dependsOn": [
+    "coordinate-system",
+    "velocity"
+   ]
+  },
+  {
+   "id": "relative-velocity",
+   "term": "relative velocity",
+   "aliases": [
+    "relative motion",
+    "velocity relative to"
+   ],
+   "taughtIn": "reference-frames",
+   "dependsOn": [
+    "reference-frame",
+    "vector-sum-1d"
+   ]
+  },
+  {
+   "id": "right-triangle",
+   "term": "right triangle",
+   "aliases": [
+    "right triangles",
+    "hypotenuse",
+    "Pythagorean theorem"
+   ],
+   "taughtIn": "math-trig-components",
+   "dependsOn": []
+  },
+  {
+   "id": "sine-cosine",
+   "term": "sine",
+   "aliases": [
+    "cosine",
+    "tangent (trigonometry)",
+    "sin",
+    "cos",
+    "tan",
+    "SOH CAH TOA",
+    "trig function",
+    "trig functions",
+    "trigonometry"
+   ],
+   "taughtIn": "math-trig-components",
+   "dependsOn": [
+    "right-triangle"
+   ]
+  },
+  {
+   "id": "degree-mode",
+   "term": "degree mode",
+   "aliases": [
+    "degrees mode",
+    "calculator mode"
+   ],
+   "taughtIn": "math-trig-components",
+   "dependsOn": [
+    "sine-cosine"
+   ]
+  },
+  {
+   "id": "vector-components",
+   "term": "vector component",
+   "aliases": [
+    "vector components",
+    "x-component",
+    "y-component",
+    "x-components",
+    "y-components",
+    "resolve a vector",
+    "resolving a vector"
+   ],
+   "taughtIn": "math-trig-components",
+   "dependsOn": [
+    "vector",
+    "sine-cosine",
+    "coordinate-system"
+   ]
+  },
+  {
+   "id": "vector-addition-2d",
+   "term": "tip-to-tail addition",
+   "aliases": [
+    "tip-to-tail",
+    "head-to-tail"
+   ],
+   "taughtIn": "math-trig-components",
+   "dependsOn": [
+    "vector-components",
+    "vector-sum-1d"
+   ]
+  },
+  {
+   "id": "independent-components",
+   "term": "independence of perpendicular motions",
+   "aliases": [
+    "independent motions",
+    "horizontal and vertical motion"
+   ],
+   "taughtIn": "motion-2d",
+   "dependsOn": [
+    "vector-components",
+    "kinematic-equations"
+   ]
+  },
+  {
+   "id": "projectile",
+   "term": "projectile",
+   "aliases": [
+    "projectiles",
+    "projectile motion"
+   ],
+   "taughtIn": "motion-2d",
+   "dependsOn": [
+    "independent-components",
+    "free-fall"
+   ]
+  },
+  {
+   "id": "launch-angle",
+   "term": "launch angle",
+   "aliases": [
+    "angle of launch"
+   ],
+   "taughtIn": "motion-2d",
+   "dependsOn": [
+    "projectile",
+    "sine-cosine"
+   ]
+  },
+  {
+   "id": "horizontal-range",
+   "term": "horizontal range",
+   "aliases": [
+    "range of a projectile"
+   ],
+   "taughtIn": "motion-2d",
+   "dependsOn": [
+    "projectile"
+   ]
+  },
+  {
+   "id": "time-of-flight",
+   "term": "time of flight",
+   "aliases": [
+    "hang time"
+   ],
+   "taughtIn": "motion-2d",
+   "dependsOn": [
+    "projectile"
+   ]
+  },
+  {
+   "id": "system",
+   "term": "system (physics)",
+   "aliases": [
+    "object system",
+    "system boundary",
+    "systems of objects"
+   ],
+   "taughtIn": "systems-center-of-mass",
+   "dependsOn": [
+    "point-object"
+   ]
+  },
+  {
+   "id": "surroundings",
+   "term": "surroundings",
+   "aliases": [
+    "environment (of a system)"
+   ],
+   "taughtIn": "systems-center-of-mass",
+   "dependsOn": [
+    "system"
+   ]
+  },
+  {
+   "id": "mass",
+   "term": "mass",
+   "aliases": [
+    "masses"
+   ],
+   "taughtIn": "systems-center-of-mass",
+   "dependsOn": [
+    "si-unit"
+   ]
+  },
+  {
+   "id": "internal-structure",
+   "term": "internal structure",
+   "aliases": [],
+   "taughtIn": "systems-center-of-mass",
+   "dependsOn": [
+    "system"
+   ]
+  },
+  {
+   "id": "center-of-mass",
+   "term": "center of mass",
+   "aliases": [
+    "centre of mass",
+    "center-of-mass",
+    "CM"
+   ],
+   "taughtIn": "systems-center-of-mass",
+   "dependsOn": [
+    "system",
+    "mass",
+    "position"
+   ]
+  },
+  {
+   "id": "interaction",
+   "term": "interaction",
+   "aliases": [
+    "interactions",
+    "interacting objects"
+   ],
+   "taughtIn": "forces-fbd",
+   "dependsOn": [
+    "system"
+   ]
+  },
+  {
+   "id": "force",
+   "term": "force",
+   "aliases": [
+    "forces",
+    "newton",
+    "newtons"
+   ],
+   "taughtIn": "forces-fbd",
+   "dependsOn": [
+    "interaction",
+    "vector"
+   ]
+  },
+  {
+   "id": "contact-force",
+   "term": "contact force",
+   "aliases": [
+    "contact forces"
+   ],
+   "taughtIn": "forces-fbd",
+   "dependsOn": [
+    "force"
+   ]
+  },
+  {
+   "id": "long-range-force",
+   "term": "force at a distance",
+   "aliases": [
+    "action at a distance",
+    "noncontact force",
+    "non-contact force",
+    "long-range force"
+   ],
+   "taughtIn": "forces-fbd",
+   "dependsOn": [
+    "force"
+   ]
+  },
+  {
+   "id": "agent-of-force",
+   "term": "agent of a force",
+   "aliases": [
+    "type and agent",
+    "agent and receiver"
+   ],
+   "taughtIn": "forces-fbd",
+   "dependsOn": [
+    "force",
+    "interaction"
+   ]
+  },
+  {
+   "id": "free-body-diagram",
+   "term": "free-body diagram",
+   "aliases": [
+    "free-body diagrams",
+    "free body diagram",
+    "FBD",
+    "FBDs"
+   ],
+   "taughtIn": "forces-fbd",
+   "dependsOn": [
+    "force",
+    "center-of-mass",
+    "agent-of-force"
+   ]
+  },
+  {
+   "id": "normal-force",
+   "term": "normal force",
+   "aliases": [
+    "normal forces",
+    "support force"
+   ],
+   "taughtIn": "forces-fbd",
+   "dependsOn": [
+    "contact-force"
+   ]
+  },
+  {
+   "id": "tension",
+   "term": "tension",
+   "aliases": [
+    "tensions",
+    "tension force"
+   ],
+   "taughtIn": "forces-fbd",
+   "dependsOn": [
+    "contact-force"
+   ]
+  },
+  {
+   "id": "weight",
+   "term": "weight",
+   "aliases": [
+    "weights",
+    "force of gravity",
+    "gravitational force near Earth"
+   ],
+   "taughtIn": "forces-fbd",
+   "dependsOn": [
+    "force",
+    "mass"
+   ],
+   "fullIn": [
+    "gravitational-force"
+   ]
+  },
+  {
+   "id": "net-force",
+   "term": "net force",
+   "aliases": [
+    "net forces",
+    "resultant force",
+    "sum of the forces"
+   ],
+   "taughtIn": "forces-fbd",
+   "dependsOn": [
+    "force",
+    "vector-sum-1d",
+    "vector-components"
+   ]
+  },
+  {
+   "id": "third-law",
+   "term": "Newton's third law",
+   "aliases": [
+    "third law",
+    "third-law pair",
+    "third-law pairs",
+    "action-reaction pair",
+    "action-reaction pairs"
+   ],
+   "taughtIn": "third-law",
+   "dependsOn": [
+    "force",
+    "interaction",
+    "system"
+   ]
+  },
+  {
+   "id": "internal-force",
+   "term": "internal force",
+   "aliases": [
+    "internal forces"
+   ],
+   "taughtIn": "third-law",
+   "dependsOn": [
+    "system",
+    "force"
+   ]
+  },
+  {
+   "id": "external-force",
+   "term": "external force",
+   "aliases": [
+    "external forces",
+    "net external force"
+   ],
+   "taughtIn": "third-law",
+   "dependsOn": [
+    "system",
+    "force",
+    "net-force"
+   ]
+  },
+  {
+   "id": "ideal-string",
+   "term": "ideal string",
+   "aliases": [
+    "ideal strings",
+    "ideal rope",
+    "massless string"
+   ],
+   "taughtIn": "third-law",
+   "dependsOn": [
+    "tension"
+   ]
+  },
+  {
+   "id": "ideal-pulley",
+   "term": "ideal pulley",
+   "aliases": [
+    "pulley",
+    "pulleys",
+    "massless pulley",
+    "frictionless pulley"
+   ],
+   "taughtIn": "third-law",
+   "dependsOn": [
+    "ideal-string"
+   ]
+  },
+  {
+   "id": "translational-equilibrium",
+   "term": "translational equilibrium",
+   "aliases": [
+    "balanced forces",
+    "equilibrium (forces)"
+   ],
+   "taughtIn": "first-law",
+   "dependsOn": [
+    "net-force"
+   ]
+  },
+  {
+   "id": "first-law",
+   "term": "Newton's first law",
+   "aliases": [
+    "first law",
+    "law of inertia"
+   ],
+   "taughtIn": "first-law",
+   "dependsOn": [
+    "translational-equilibrium",
+    "velocity"
+   ]
+  },
+  {
+   "id": "inertia",
+   "term": "inertia",
+   "aliases": [],
+   "taughtIn": "first-law",
+   "dependsOn": [
+    "mass"
+   ]
+  },
+  {
+   "id": "inertial-frame",
+   "term": "inertial reference frame",
+   "aliases": [
+    "inertial reference frames",
+    "inertial frame",
+    "inertial frames",
+    "noninertial frame"
+   ],
+   "taughtIn": "first-law",
+   "dependsOn": [
+    "reference-frame",
+    "first-law"
+   ]
+  },
+  {
+   "id": "second-law",
+   "term": "Newton's second law",
+   "aliases": [
+    "second law",
+    "F = ma",
+    "F=ma"
+   ],
+   "taughtIn": "second-law",
+   "dependsOn": [
+    "net-force",
+    "acceleration",
+    "mass",
+    "center-of-mass",
+    "external-force"
+   ]
+  },
+  {
+   "id": "system-acceleration",
+   "term": "acceleration of a system",
+   "aliases": [
+    "system acceleration"
+   ],
+   "taughtIn": "second-law",
+   "dependsOn": [
+    "second-law",
+    "external-force"
+   ]
+  },
+  {
+   "id": "connected-objects",
+   "term": "connected objects",
+   "aliases": [
+    "Atwood machine",
+    "Atwood's machine",
+    "modified Atwood machine"
+   ],
+   "taughtIn": "second-law",
+   "dependsOn": [
+    "system-acceleration",
+    "ideal-pulley"
+   ]
+  },
+  {
+   "id": "universal-gravitation",
+   "term": "Newton's law of universal gravitation",
+   "aliases": [
+    "universal gravitation",
+    "law of gravitation",
+    "gravitational constant"
+   ],
+   "taughtIn": "gravitational-force",
+   "dependsOn": [
+    "force",
+    "mass",
+    "square-relationship",
+    "center-of-mass"
+   ]
+  },
+  {
+   "id": "gravitational-force",
+   "term": "gravitational force",
+   "aliases": [
+    "gravitational forces",
+    "gravitational attraction",
+    "gravity"
+   ],
+   "taughtIn": "gravitational-force",
+   "dependsOn": [
+    "universal-gravitation",
+    "weight"
+   ]
+  },
+  {
+   "id": "gravitational-field",
+   "term": "gravitational field",
+   "aliases": [
+    "gravitational field strength",
+    "field strength"
+   ],
+   "taughtIn": "gravitational-force",
+   "dependsOn": [
+    "gravitational-force"
+   ]
+  },
+  {
+   "id": "apparent-weight",
+   "term": "apparent weight",
+   "aliases": [
+    "weightlessness",
+    "weightless"
+   ],
+   "taughtIn": "gravitational-force",
+   "dependsOn": [
+    "normal-force",
+    "second-law",
+    "weight"
+   ]
+  },
+  {
+   "id": "gravitational-mass",
+   "term": "gravitational mass",
+   "aliases": [
+    "inertial mass",
+    "equivalence principle"
+   ],
+   "taughtIn": "gravitational-force",
+   "dependsOn": [
+    "inertia",
+    "gravitational-force"
+   ]
+  },
+  {
+   "id": "friction",
+   "term": "friction",
+   "aliases": [
+    "frictional force",
+    "friction force",
+    "frictional forces"
+   ],
+   "taughtIn": "friction",
+   "dependsOn": [
+    "contact-force"
+   ]
+  },
+  {
+   "id": "coefficient-friction",
+   "term": "coefficient of friction",
+   "aliases": [
+    "coefficients of friction"
+   ],
+   "taughtIn": "friction",
+   "dependsOn": [
+    "friction",
+    "normal-force"
+   ]
+  },
+  {
+   "id": "kinetic-friction",
+   "term": "kinetic friction",
+   "aliases": [
+    "sliding friction",
+    "coefficient of kinetic friction"
+   ],
+   "taughtIn": "friction",
+   "dependsOn": [
+    "coefficient-friction"
+   ]
+  },
+  {
+   "id": "static-friction",
+   "term": "static friction",
+   "aliases": [
+    "coefficient of static friction",
+    "maximum static friction"
+   ],
+   "taughtIn": "friction",
+   "dependsOn": [
+    "coefficient-friction",
+    "translational-equilibrium"
+   ]
+  },
+  {
+   "id": "spring-force",
+   "term": "spring force",
+   "aliases": [
+    "spring forces",
+    "elastic force"
+   ],
+   "taughtIn": "spring-forces",
+   "dependsOn": [
+    "force"
+   ]
+  },
+  {
+   "id": "hookes-law",
+   "term": "Hooke's law",
+   "aliases": [
+    "spring constant",
+    "spring constants",
+    "force constant"
+   ],
+   "taughtIn": "spring-forces",
+   "dependsOn": [
+    "spring-force",
+    "proportional",
+    "displacement"
+   ]
+  },
+  {
+   "id": "ideal-spring",
+   "term": "ideal spring",
+   "aliases": [
+    "ideal springs",
+    "massless spring"
+   ],
+   "taughtIn": "spring-forces",
+   "dependsOn": [
+    "spring-force"
+   ]
+  },
+  {
+   "id": "uniform-circular-motion",
+   "term": "uniform circular motion",
+   "aliases": [
+    "circular motion"
+   ],
+   "taughtIn": "circular-motion",
+   "dependsOn": [
+    "velocity",
+    "acceleration"
+   ]
+  },
+  {
+   "id": "centripetal-acceleration",
+   "term": "centripetal acceleration",
+   "aliases": [
+    "radial acceleration"
+   ],
+   "taughtIn": "circular-motion",
+   "dependsOn": [
+    "uniform-circular-motion",
+    "square-relationship"
+   ]
+  },
+  {
+   "id": "centripetal-force",
+   "term": "centripetal net force",
+   "aliases": [
+    "centripetal force",
+    "net centripetal force"
+   ],
+   "taughtIn": "circular-motion",
+   "dependsOn": [
+    "centripetal-acceleration",
+    "second-law"
+   ]
+  },
+  {
+   "id": "tangential-acceleration",
+   "term": "tangential acceleration",
+   "aliases": [],
+   "taughtIn": "circular-motion",
+   "dependsOn": [
+    "centripetal-acceleration"
+   ]
+  },
+  {
+   "id": "period-motion",
+   "term": "period (motion)",
+   "aliases": [
+    "period of revolution",
+    "period of motion"
+   ],
+   "taughtIn": "circular-motion",
+   "dependsOn": [
+    "uniform-circular-motion"
+   ]
+  },
+  {
+   "id": "frequency",
+   "term": "frequency (motion)",
+   "aliases": [
+    "hertz",
+    "Hz",
+    "revolutions per second"
+   ],
+   "taughtIn": "circular-motion",
+   "dependsOn": [
+    "period-motion"
+   ]
+  },
+  {
+   "id": "banked-curve",
+   "term": "banked curve",
+   "aliases": [
+    "banked curves",
+    "banked road",
+    "banking angle"
+   ],
+   "taughtIn": "circular-motion",
+   "dependsOn": [
+    "centripetal-force",
+    "normal-force",
+    "vector-components"
+   ]
+  },
+  {
+   "id": "vertical-loop",
+   "term": "vertical loop",
+   "aliases": [
+    "loop-the-loop",
+    "vertical circle"
+   ],
+   "taughtIn": "circular-motion",
+   "dependsOn": [
+    "centripetal-force",
+    "weight"
+   ]
+  },
+  {
+   "id": "conical-pendulum",
+   "term": "conical pendulum",
+   "aliases": [],
+   "taughtIn": "circular-motion",
+   "dependsOn": [
+    "centripetal-force",
+    "tension",
+    "vector-components"
+   ]
+  },
+  {
+   "id": "circular-orbit",
+   "term": "circular orbit",
+   "aliases": [
+    "circular orbits",
+    "satellite",
+    "satellites",
+    "orbital speed"
+   ],
+   "taughtIn": "circular-motion",
+   "dependsOn": [
+    "centripetal-force",
+    "universal-gravitation"
+   ]
+  },
+  {
+   "id": "kepler-third",
+   "term": "Kepler's third law",
+   "aliases": [],
+   "taughtIn": "circular-motion",
+   "dependsOn": [
+    "circular-orbit",
+    "period-motion"
+   ]
+  },
+  {
+   "id": "energy",
+   "term": "energy",
+   "aliases": [
+    "energies"
+   ],
+   "taughtIn": "kinetic-energy",
+   "dependsOn": [
+    "scalar",
+    "system"
+   ]
+  },
+  {
+   "id": "joule",
+   "term": "joule",
+   "aliases": [
+    "joules"
+   ],
+   "taughtIn": "kinetic-energy",
+   "dependsOn": [
+    "energy",
+    "si-unit"
+   ]
+  },
+  {
+   "id": "kinetic-energy",
+   "term": "kinetic energy",
+   "aliases": [
+    "translational kinetic energy",
+    "KE"
+   ],
+   "taughtIn": "kinetic-energy",
+   "dependsOn": [
+    "energy",
+    "mass",
+    "speed",
+    "square-relationship"
+   ]
+  },
+  {
+   "id": "work",
+   "term": "work (physics)",
+   "aliases": [
+    "work done",
+    "work done by a force",
+    "net work",
+    "positive work",
+    "negative work"
+   ],
+   "taughtIn": "work-by-forces",
+   "dependsOn": [
+    "force",
+    "displacement",
+    "energy",
+    "sine-cosine"
+   ]
+  },
+  {
+   "id": "work-energy-theorem",
+   "term": "work-energy theorem",
+   "aliases": [
+    "work energy theorem",
+    "work-kinetic energy theorem"
+   ],
+   "taughtIn": "work-by-forces",
+   "dependsOn": [
+    "work",
+    "kinetic-energy"
+   ]
+  },
+  {
+   "id": "force-position-graph",
+   "term": "force-position graph",
+   "aliases": [
+    "force vs position graph",
+    "force versus position graph",
+    "force-displacement graph"
+   ],
+   "taughtIn": "work-by-forces",
+   "dependsOn": [
+    "work",
+    "area-under-graph"
+   ]
+  },
+  {
+   "id": "energy-transfer",
+   "term": "energy transfer",
+   "aliases": [
+    "energy transfers",
+    "transfer of energy"
+   ],
+   "taughtIn": "work-by-forces",
+   "dependsOn": [
+    "work",
+    "system"
+   ]
+  },
+  {
+   "id": "potential-energy",
+   "term": "potential energy",
+   "aliases": [
+    "stored energy"
+   ],
+   "taughtIn": "potential-energy",
+   "dependsOn": [
+    "energy",
+    "system",
+    "interaction"
+   ]
+  },
+  {
+   "id": "conservative-force",
+   "term": "conservative force",
+   "aliases": [
+    "conservative forces",
+    "nonconservative force",
+    "nonconservative forces",
+    "non-conservative force",
+    "dissipative force"
+   ],
+   "taughtIn": "potential-energy",
+   "dependsOn": [
+    "work",
+    "force"
+   ]
+  },
+  {
+   "id": "gravitational-pe",
+   "term": "gravitational potential energy",
+   "aliases": [
+    "gravitational PE"
+   ],
+   "taughtIn": "potential-energy",
+   "dependsOn": [
+    "potential-energy",
+    "conservative-force",
+    "gravitational-force"
+   ]
+  },
+  {
+   "id": "elastic-pe",
+   "term": "elastic potential energy",
+   "aliases": [
+    "spring potential energy",
+    "elastic PE"
+   ],
+   "taughtIn": "potential-energy",
+   "dependsOn": [
+    "potential-energy",
+    "hookes-law"
+   ]
+  },
+  {
+   "id": "zero-point",
+   "term": "zero of potential energy",
+   "aliases": [
+    "reference height",
+    "reference level"
+   ],
+   "taughtIn": "potential-energy",
+   "dependsOn": [
+    "potential-energy"
+   ]
+  },
+  {
+   "id": "universal-gpe",
+   "term": "gravitational potential energy far from a planet",
+   "aliases": [
+    "U_G"
+   ],
+   "taughtIn": "potential-energy",
+   "dependsOn": [
+    "gravitational-pe",
+    "universal-gravitation"
+   ]
+  },
+  {
+   "id": "mechanical-energy",
+   "term": "mechanical energy",
+   "aliases": [
+    "total mechanical energy"
+   ],
+   "taughtIn": "energy-conservation",
+   "dependsOn": [
+    "kinetic-energy",
+    "potential-energy"
+   ]
+  },
+  {
+   "id": "closed-system",
+   "term": "closed system",
+   "aliases": [
+    "closed systems",
+    "isolated system",
+    "isolated systems",
+    "open system"
+   ],
+   "taughtIn": "energy-conservation",
+   "dependsOn": [
+    "system",
+    "external-force",
+    "energy-transfer"
+   ]
+  },
+  {
+   "id": "conservation-of-energy",
+   "term": "conservation of energy",
+   "aliases": [
+    "energy conservation",
+    "energy is conserved",
+    "law of conservation of energy"
+   ],
+   "taughtIn": "energy-conservation",
+   "dependsOn": [
+    "mechanical-energy",
+    "energy-transfer",
+    "closed-system"
+   ]
+  },
+  {
+   "id": "energy-bar-chart",
+   "term": "energy bar chart",
+   "aliases": [
+    "energy bar charts",
+    "LOL diagram"
+   ],
+   "taughtIn": "energy-conservation",
+   "dependsOn": [
+    "conservation-of-energy"
+   ]
+  },
+  {
+   "id": "dissipated-energy",
+   "term": "thermal energy",
+   "aliases": [
+    "internal energy",
+    "dissipated energy",
+    "energy dissipated"
+   ],
+   "taughtIn": "energy-conservation",
+   "dependsOn": [
+    "mechanical-energy",
+    "conservative-force"
+   ]
+  },
+  {
+   "id": "power",
+   "term": "power (physics)",
+   "aliases": [
+    "average power",
+    "instantaneous power",
+    "watt",
+    "watts",
+    "rate of energy transfer"
+   ],
+   "taughtIn": "power",
+   "dependsOn": [
+    "energy-transfer",
+    "work",
+    "time-interval"
+   ]
+  },
+  {
+   "id": "momentum",
+   "term": "momentum",
+   "aliases": [
+    "linear momentum",
+    "momenta"
+   ],
+   "taughtIn": "linear-momentum",
+   "dependsOn": [
+    "mass",
+    "velocity",
+    "vector"
+   ]
+  },
+  {
+   "id": "collision-model",
+   "term": "collision model",
+   "aliases": [
+    "explosion",
+    "explosions",
+    "explosion model"
+   ],
+   "taughtIn": "linear-momentum",
+   "dependsOn": [
+    "momentum",
+    "internal-force"
+   ]
+  },
+  {
+   "id": "cm-velocity",
+   "term": "velocity of the center of mass",
+   "aliases": [
+    "center-of-mass velocity"
+   ],
+   "taughtIn": "linear-momentum",
+   "dependsOn": [
+    "momentum",
+    "center-of-mass"
+   ]
+  },
+  {
+   "id": "impulse",
+   "term": "impulse",
+   "aliases": [
+    "impulses"
+   ],
+   "taughtIn": "impulse",
+   "dependsOn": [
+    "force",
+    "time-interval",
+    "momentum"
+   ]
+  },
+  {
+   "id": "impulse-momentum-theorem",
+   "term": "impulse-momentum theorem",
+   "aliases": [
+    "impulse momentum theorem"
+   ],
+   "taughtIn": "impulse",
+   "dependsOn": [
+    "impulse"
+   ]
+  },
+  {
+   "id": "force-time-graph",
+   "term": "force-time graph",
+   "aliases": [
+    "force vs time graph",
+    "force versus time graph",
+    "F-t graph"
+   ],
+   "taughtIn": "impulse",
+   "dependsOn": [
+    "impulse",
+    "area-under-graph"
+   ]
+  },
+  {
+   "id": "momentum-time-graph",
+   "term": "momentum-time graph",
+   "aliases": [
+    "momentum vs time graph",
+    "momentum versus time graph",
+    "p-t graph"
+   ],
+   "taughtIn": "impulse",
+   "dependsOn": [
+    "momentum",
+    "slope"
+   ]
+  },
+  {
+   "id": "conservation-of-momentum",
+   "term": "conservation of momentum",
+   "aliases": [
+    "momentum conservation",
+    "momentum is conserved",
+    "total momentum"
+   ],
+   "taughtIn": "momentum-conservation",
+   "dependsOn": [
+    "momentum",
+    "external-force",
+    "internal-force",
+    "closed-system"
+   ]
+  },
+  {
+   "id": "system-choice",
+   "term": "choice of system",
+   "aliases": [
+    "choosing a system",
+    "system choice"
+   ],
+   "taughtIn": "momentum-conservation",
+   "dependsOn": [
+    "conservation-of-momentum",
+    "system"
+   ]
+  },
+  {
+   "id": "elastic-collision",
+   "term": "elastic collision",
+   "aliases": [
+    "elastic collisions",
+    "perfectly elastic"
+   ],
+   "taughtIn": "collisions",
+   "dependsOn": [
+    "conservation-of-momentum",
+    "kinetic-energy",
+    "collision-model"
+   ]
+  },
+  {
+   "id": "inelastic-collision",
+   "term": "inelastic collision",
+   "aliases": [
+    "inelastic collisions"
+   ],
+   "taughtIn": "collisions",
+   "dependsOn": [
+    "conservation-of-momentum",
+    "dissipated-energy"
+   ]
+  },
+  {
+   "id": "perfectly-inelastic",
+   "term": "perfectly inelastic collision",
+   "aliases": [
+    "perfectly inelastic collisions",
+    "completely inelastic",
+    "objects stick together"
+   ],
+   "taughtIn": "collisions",
+   "dependsOn": [
+    "inelastic-collision"
+   ]
+  },
+  {
+   "id": "momentum-bar-chart",
+   "term": "momentum bar chart",
+   "aliases": [
+    "momentum bar charts"
+   ],
+   "taughtIn": "collisions",
+   "dependsOn": [
+    "conservation-of-momentum"
+   ]
+  },
+  {
+   "id": "rigid-body",
+   "term": "rigid system",
+   "aliases": [
+    "rigid body",
+    "rigid bodies",
+    "rigid object"
+   ],
+   "taughtIn": "rotational-kinematics",
+   "dependsOn": [
+    "system"
+   ]
+  },
+  {
+   "id": "axis-of-rotation",
+   "term": "axis of rotation",
+   "aliases": [
+    "rotation axis",
+    "fixed axis"
+   ],
+   "taughtIn": "rotational-kinematics",
+   "dependsOn": [
+    "rigid-body"
+   ]
+  },
+  {
+   "id": "radian",
+   "term": "radian",
+   "aliases": [
+    "radians"
+   ],
+   "taughtIn": "rotational-kinematics",
+   "dependsOn": [
+    "si-unit",
+    "sine-cosine"
+   ]
+  },
+  {
+   "id": "angular-displacement",
+   "term": "angular displacement",
+   "aliases": [
+    "angular position"
+   ],
+   "taughtIn": "rotational-kinematics",
+   "dependsOn": [
+    "radian",
+    "displacement",
+    "axis-of-rotation"
+   ]
+  },
+  {
+   "id": "angular-velocity",
+   "term": "angular velocity",
+   "aliases": [
+    "angular speed"
+   ],
+   "taughtIn": "rotational-kinematics",
+   "dependsOn": [
+    "angular-displacement",
+    "velocity"
+   ]
+  },
+  {
+   "id": "angular-acceleration",
+   "term": "angular acceleration",
+   "aliases": [],
+   "taughtIn": "rotational-kinematics",
+   "dependsOn": [
+    "angular-velocity",
+    "acceleration"
+   ]
+  },
+  {
+   "id": "rotational-kinematic-equations",
+   "term": "rotational kinematic equations",
+   "aliases": [
+    "rotational kinematics equations"
+   ],
+   "taughtIn": "rotational-kinematics",
+   "dependsOn": [
+    "angular-acceleration",
+    "kinematic-equations"
+   ]
+  },
+  {
+   "id": "arc-length",
+   "term": "arc length",
+   "aliases": [],
+   "taughtIn": "linear-rotational-link",
+   "dependsOn": [
+    "radian",
+    "angular-displacement"
+   ]
+  },
+  {
+   "id": "tangential-speed",
+   "term": "tangential speed",
+   "aliases": [
+    "tangential velocity"
+   ],
+   "taughtIn": "linear-rotational-link",
+   "dependsOn": [
+    "angular-velocity",
+    "arc-length"
+   ]
+  },
+  {
+   "id": "line-of-action",
+   "term": "line of action",
+   "aliases": [],
+   "taughtIn": "torque",
+   "dependsOn": [
+    "force"
+   ]
+  },
+  {
+   "id": "torque",
+   "term": "torque",
+   "aliases": [
+    "torques",
+    "net torque"
+   ],
+   "taughtIn": "torque",
+   "dependsOn": [
+    "force",
+    "axis-of-rotation",
+    "vector-components"
+   ]
+  },
+  {
+   "id": "lever-arm",
+   "term": "lever arm",
+   "aliases": [
+    "lever arms",
+    "moment arm"
+   ],
+   "taughtIn": "torque",
+   "dependsOn": [
+    "torque",
+    "line-of-action"
+   ]
+  },
+  {
+   "id": "force-diagram",
+   "term": "force diagram",
+   "aliases": [
+    "force diagrams",
+    "extended free-body diagram"
+   ],
+   "taughtIn": "torque",
+   "dependsOn": [
+    "free-body-diagram",
+    "torque"
+   ]
+  },
+  {
+   "id": "rotational-inertia",
+   "term": "rotational inertia",
+   "aliases": [
+    "moment of inertia",
+    "moments of inertia"
+   ],
+   "taughtIn": "rotational-inertia",
+   "dependsOn": [
+    "mass",
+    "axis-of-rotation",
+    "inertia"
+   ]
+  },
+  {
+   "id": "mass-distribution",
+   "term": "mass distribution",
+   "aliases": [
+    "distribution of mass"
+   ],
+   "taughtIn": "rotational-inertia",
+   "dependsOn": [
+    "rotational-inertia"
+   ]
+  },
+  {
+   "id": "parallel-axis",
+   "term": "parallel-axis theorem",
+   "aliases": [
+    "parallel axis theorem"
+   ],
+   "taughtIn": "rotational-inertia",
+   "dependsOn": [
+    "rotational-inertia",
+    "center-of-mass"
+   ]
+  },
+  {
+   "id": "rotational-equilibrium",
+   "term": "rotational equilibrium",
+   "aliases": [
+    "static equilibrium",
+    "balanced torques"
+   ],
+   "taughtIn": "rotational-equilibrium",
+   "dependsOn": [
+    "torque",
+    "translational-equilibrium"
+   ]
+  },
+  {
+   "id": "rotational-first-law",
+   "term": "Newton's first law in rotational form",
+   "aliases": [
+    "rotational form of the first law"
+   ],
+   "taughtIn": "rotational-equilibrium",
+   "dependsOn": [
+    "rotational-equilibrium",
+    "angular-velocity",
+    "first-law"
+   ]
+  },
+  {
+   "id": "hinge-force",
+   "term": "hinge force",
+   "aliases": [
+    "force from a hinge",
+    "pivot force"
+   ],
+   "taughtIn": "rotational-equilibrium",
+   "dependsOn": [
+    "rotational-equilibrium",
+    "contact-force"
+   ]
+  },
+  {
+   "id": "rotational-second-law",
+   "term": "Newton's second law in rotational form",
+   "aliases": [
+    "rotational form of the second law"
+   ],
+   "taughtIn": "rotational-second-law",
+   "dependsOn": [
+    "torque",
+    "rotational-inertia",
+    "angular-acceleration",
+    "second-law"
+   ]
+  },
+  {
+   "id": "massive-pulley",
+   "term": "pulley with mass",
+   "aliases": [
+    "massive pulley"
+   ],
+   "taughtIn": "rotational-second-law",
+   "dependsOn": [
+    "rotational-second-law",
+    "ideal-pulley"
+   ]
+  },
+  {
+   "id": "rotational-ke",
+   "term": "rotational kinetic energy",
+   "aliases": [],
+   "taughtIn": "rotational-kinetic-energy",
+   "dependsOn": [
+    "kinetic-energy",
+    "rotational-inertia",
+    "angular-velocity"
+   ]
+  },
+  {
+   "id": "rotational-work",
+   "term": "work done by a torque",
+   "aliases": [
+    "rotational work"
+   ],
+   "taughtIn": "torque-work",
+   "dependsOn": [
+    "work",
+    "torque",
+    "angular-displacement"
+   ]
+  },
+  {
+   "id": "torque-angle-graph",
+   "term": "torque-angle graph",
+   "aliases": [
+    "torque vs angle graph",
+    "torque versus angle graph"
+   ],
+   "taughtIn": "torque-work",
+   "dependsOn": [
+    "rotational-work",
+    "area-under-graph"
+   ]
+  },
+  {
+   "id": "angular-momentum",
+   "term": "angular momentum",
+   "aliases": [],
+   "taughtIn": "angular-momentum",
+   "dependsOn": [
+    "momentum",
+    "rotational-inertia",
+    "angular-velocity"
+   ]
+  },
+  {
+   "id": "point-angular-momentum",
+   "term": "angular momentum of a point object",
+   "aliases": [],
+   "taughtIn": "angular-momentum",
+   "dependsOn": [
+    "angular-momentum",
+    "point-object",
+    "sine-cosine"
+   ]
+  },
+  {
+   "id": "angular-impulse",
+   "term": "angular impulse",
+   "aliases": [
+    "angular impulses"
+   ],
+   "taughtIn": "angular-momentum",
+   "dependsOn": [
+    "angular-momentum",
+    "impulse",
+    "torque"
+   ]
+  },
+  {
+   "id": "external-torque",
+   "term": "net external torque",
+   "aliases": [
+    "external torque",
+    "external torques"
+   ],
+   "taughtIn": "angular-momentum-conservation",
+   "dependsOn": [
+    "torque",
+    "external-force"
+   ]
+  },
+  {
+   "id": "conservation-angular-momentum",
+   "term": "conservation of angular momentum",
+   "aliases": [
+    "angular momentum conservation",
+    "angular momentum is conserved"
+   ],
+   "taughtIn": "angular-momentum-conservation",
+   "dependsOn": [
+    "angular-momentum",
+    "conservation-of-momentum",
+    "external-torque"
+   ]
+  },
+  {
+   "id": "shape-change",
+   "term": "changing rotational inertia",
+   "aliases": [
+    "spinning skater"
+   ],
+   "taughtIn": "angular-momentum-conservation",
+   "dependsOn": [
+    "conservation-angular-momentum",
+    "mass-distribution"
+   ]
+  },
+  {
+   "id": "rolling-without-slipping",
+   "term": "rolling without slipping",
+   "aliases": [
+    "rolls without slipping"
+   ],
+   "taughtIn": "rolling",
+   "dependsOn": [
+    "tangential-speed",
+    "rotational-ke",
+    "static-friction"
+   ]
+  },
+  {
+   "id": "total-kinetic-energy",
+   "term": "translational plus rotational kinetic energy",
+   "aliases": [
+    "total kinetic energy of a rolling object"
+   ],
+   "taughtIn": "rolling",
+   "dependsOn": [
+    "rolling-without-slipping",
+    "rotational-ke"
+   ]
+  },
+  {
+   "id": "rolling-with-slipping",
+   "term": "rolling while slipping",
+   "aliases": [
+    "rolls while slipping",
+    "rolling with slipping"
+   ],
+   "taughtIn": "rolling",
+   "dependsOn": [
+    "rolling-without-slipping",
+    "kinetic-friction"
+   ]
+  },
+  {
+   "id": "elliptical-orbit",
+   "term": "elliptical orbit",
+   "aliases": [
+    "elliptical orbits"
+   ],
+   "taughtIn": "orbits",
+   "dependsOn": [
+    "circular-orbit",
+    "angular-momentum",
+    "mechanical-energy"
+   ]
+  },
+  {
+   "id": "orbital-energy",
+   "term": "total orbital energy",
+   "aliases": [
+    "orbital energy",
+    "bound orbit"
+   ],
+   "taughtIn": "orbits",
+   "dependsOn": [
+    "universal-gpe",
+    "kinetic-energy",
+    "circular-orbit"
+   ]
+  },
+  {
+   "id": "escape-speed",
+   "term": "escape speed",
+   "aliases": [
+    "escape velocity"
+   ],
+   "taughtIn": "orbits",
+   "dependsOn": [
+    "orbital-energy",
+    "conservation-of-energy"
+   ]
+  },
+  {
+   "id": "periodic-motion",
+   "term": "periodic motion",
+   "aliases": [
+    "oscillation",
+    "oscillations",
+    "oscillate",
+    "oscillates",
+    "oscillating"
+   ],
+   "taughtIn": "shm-intro",
+   "dependsOn": [
+    "period-motion"
+   ]
+  },
+  {
+   "id": "restoring-force",
+   "term": "restoring force",
+   "aliases": [
+    "restoring forces"
+   ],
+   "taughtIn": "shm-intro",
+   "dependsOn": [
+    "net-force",
+    "displacement"
+   ]
+  },
+  {
+   "id": "equilibrium-position",
+   "term": "equilibrium position",
+   "aliases": [
+    "equilibrium point"
+   ],
+   "taughtIn": "shm-intro",
+   "dependsOn": [
+    "translational-equilibrium"
+   ]
+  },
+  {
+   "id": "shm",
+   "term": "simple harmonic motion",
+   "aliases": [
+    "SHM",
+    "simple harmonic oscillator",
+    "harmonic oscillator"
+   ],
+   "taughtIn": "shm-intro",
+   "dependsOn": [
+    "periodic-motion",
+    "restoring-force",
+    "proportional",
+    "equilibrium-position"
+   ]
+  },
+  {
+   "id": "amplitude",
+   "term": "amplitude",
+   "aliases": [
+    "amplitudes"
+   ],
+   "taughtIn": "shm-intro",
+   "dependsOn": [
+    "equilibrium-position",
+    "displacement"
+   ]
+  },
+  {
+   "id": "simple-pendulum",
+   "term": "simple pendulum",
+   "aliases": [
+    "pendulum",
+    "pendulums",
+    "small-angle approximation"
+   ],
+   "taughtIn": "shm-intro",
+   "dependsOn": [
+    "shm"
+   ]
+  },
+  {
+   "id": "oscillation-period",
+   "term": "period of oscillation",
+   "aliases": [
+    "oscillation frequency"
+   ],
+   "taughtIn": "shm-period",
+   "dependsOn": [
+    "shm",
+    "period-motion",
+    "frequency"
+   ]
+  },
+  {
+   "id": "spring-mass-period",
+   "term": "spring-mass period",
+   "aliases": [
+    "period of a mass on a spring",
+    "period of a spring-mass system"
+   ],
+   "taughtIn": "shm-period",
+   "dependsOn": [
+    "oscillation-period",
+    "hookes-law"
+   ]
+  },
+  {
+   "id": "pendulum-period",
+   "term": "pendulum period",
+   "aliases": [
+    "period of a pendulum",
+    "period of a simple pendulum"
+   ],
+   "taughtIn": "shm-period",
+   "dependsOn": [
+    "oscillation-period",
+    "simple-pendulum"
+   ]
+  },
+  {
+   "id": "sinusoidal-motion",
+   "term": "sinusoidal motion",
+   "aliases": [
+    "sinusoidal",
+    "sinusoid"
+   ],
+   "taughtIn": "shm-representations",
+   "dependsOn": [
+    "shm",
+    "sine-cosine",
+    "amplitude"
+   ]
+  },
+  {
+   "id": "amplitude-independence",
+   "term": "period independent of amplitude",
+   "aliases": [],
+   "taughtIn": "shm-representations",
+   "dependsOn": [
+    "spring-mass-period",
+    "pendulum-period",
+    "amplitude"
+   ]
+  },
+  {
+   "id": "oscillator-energy",
+   "term": "energy of a simple harmonic oscillator",
+   "aliases": [
+    "oscillator energy",
+    "total energy of an oscillator"
+   ],
+   "taughtIn": "shm-energy",
+   "dependsOn": [
+    "mechanical-energy",
+    "elastic-pe",
+    "amplitude",
+    "shm"
+   ]
+  },
+  {
+   "id": "state-of-matter",
+   "term": "state of matter",
+   "aliases": [
+    "states of matter"
+   ],
+   "taughtIn": "density-fluids",
+   "dependsOn": []
+  },
+  {
+   "id": "fluid",
+   "term": "fluid",
+   "aliases": [
+    "fluids"
+   ],
+   "taughtIn": "density-fluids",
+   "dependsOn": [
+    "state-of-matter"
+   ]
+  },
+  {
+   "id": "density",
+   "term": "density",
+   "aliases": [
+    "densities",
+    "mass density"
+   ],
+   "taughtIn": "density-fluids",
+   "dependsOn": [
+    "mass"
+   ]
+  },
+  {
+   "id": "ideal-fluid",
+   "term": "ideal fluid",
+   "aliases": [
+    "ideal fluids",
+    "incompressible fluid",
+    "incompressible",
+    "nonviscous"
+   ],
+   "taughtIn": "density-fluids",
+   "dependsOn": [
+    "fluid",
+    "density"
+   ]
+  },
+  {
+   "id": "pressure",
+   "term": "pressure",
+   "aliases": [
+    "pascal",
+    "pascals"
+   ],
+   "taughtIn": "fluid-pressure",
+   "dependsOn": [
+    "force",
+    "scalar"
+   ]
+  },
+  {
+   "id": "hydrostatic-pressure",
+   "term": "hydrostatic pressure",
+   "aliases": [
+    "pressure with depth",
+    "pressure at a depth"
+   ],
+   "taughtIn": "fluid-pressure",
+   "dependsOn": [
+    "pressure",
+    "density",
+    "gravitational-field"
+   ]
+  },
+  {
+   "id": "gauge-pressure",
+   "term": "gauge pressure",
+   "aliases": [
+    "absolute pressure",
+    "atmospheric pressure"
+   ],
+   "taughtIn": "fluid-pressure",
+   "dependsOn": [
+    "hydrostatic-pressure"
+   ]
+  },
+  {
+   "id": "fluid-parcel",
+   "term": "fluid parcel",
+   "aliases": [
+    "parcel of fluid"
+   ],
+   "taughtIn": "buoyancy",
+   "dependsOn": [
+    "fluid",
+    "second-law"
+   ]
+  },
+  {
+   "id": "buoyant-force",
+   "term": "buoyant force",
+   "aliases": [
+    "buoyancy",
+    "buoyant forces"
+   ],
+   "taughtIn": "buoyancy",
+   "dependsOn": [
+    "pressure",
+    "hydrostatic-pressure",
+    "net-force"
+   ]
+  },
+  {
+   "id": "archimedes",
+   "term": "Archimedes' principle",
+   "aliases": [
+    "displaced fluid",
+    "displaced volume",
+    "volume displaced"
+   ],
+   "taughtIn": "buoyancy",
+   "dependsOn": [
+    "buoyant-force",
+    "density"
+   ]
+  },
+  {
+   "id": "neutral-buoyancy",
+   "term": "neutral buoyancy",
+   "aliases": [
+    "neutrally buoyant",
+    "floating condition"
+   ],
+   "taughtIn": "buoyancy",
+   "dependsOn": [
+    "archimedes",
+    "translational-equilibrium"
+   ]
+  },
+  {
+   "id": "volume-flow-rate",
+   "term": "volume flow rate",
+   "aliases": [
+    "flow rate",
+    "flow rates"
+   ],
+   "taughtIn": "fluid-flow",
+   "dependsOn": [
+    "ideal-fluid"
+   ]
+  },
+  {
+   "id": "continuity",
+   "term": "continuity equation",
+   "aliases": [
+    "equation of continuity"
+   ],
+   "taughtIn": "fluid-flow",
+   "dependsOn": [
+    "volume-flow-rate"
+   ]
+  },
+  {
+   "id": "bernoulli",
+   "term": "Bernoulli's equation",
+   "aliases": [
+    "Bernoulli equation",
+    "Bernoulli's principle"
+   ],
+   "taughtIn": "fluid-flow",
+   "dependsOn": [
+    "continuity",
+    "conservation-of-energy",
+    "gauge-pressure",
+    "gravitational-pe",
+    "kinetic-energy"
+   ]
+  },
+  {
+   "id": "torricelli",
+   "term": "Torricelli's theorem",
+   "aliases": [
+    "Torricelli's law",
+    "efflux speed"
+   ],
+   "taughtIn": "fluid-flow",
+   "dependsOn": [
+    "bernoulli"
+   ]
+  }
+ ],
+ "circularDependencies": [
+  {
+   "id": "weight-for-fbds",
+   "problem": "Free-body diagrams (2.2) need the downward pull of Earth on every object before 2.6 teaches gravitational force and the gravitational field.",
+   "resolution": "pull-forward",
+   "into": [
+    "forces-fbd"
+   ],
+   "concepts": [
+    "weight"
+   ],
+   "fullIn": [
+    "gravitational-force"
+   ],
+   "detail": "A short version: near Earth's surface the Earth pulls every object down with a force of size mg (the weight), drawn from the center of mass and labelled \"F_g, Earth on block\". 2.6 owns Newton's law of gravitation, the field g = F/m and apparent weight."
+  }
+ ]
+}

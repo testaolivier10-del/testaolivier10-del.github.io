@@ -1,0 +1,1182 @@
+{
+ "about": "Topic map of the AP Physics 1 Course and Exam Description (2024-25 revision), written in LevlPrep's own words from docs/apphys-research/framework.md. No CED text is reproduced. Units 1-2 objectives and exclusions were read in the CED; Units 3-8 come from a per-topic transcription and must be verified (docs/apphys-needs-author.md, ced-exclusions); Unit 7 topic names are unverified (unit7-names).",
+ "ced": {
+  "title": "AP Physics 1: Algebra-Based Course and Exam Description",
+  "edition": "2024-25 revision",
+  "effective": "Fall 2024; first exam May 2025; May 2027 timing per the fall 2026 clarifications",
+  "officialUrls": [
+   "https://apcentral.collegeboard.org/media/pdf/ap-physics-1-course-and-exam-description.pdf",
+   "https://apcentral.collegeboard.org/media/pdf/ap-physics-1-course-and-exam-description-clarifications.pdf",
+   "https://apcentral.collegeboard.org/courses/ap-physics-1/exam"
+  ],
+  "verification": "CED PDF text read through the Unit 3 opener; topic names for every unit from the Course at a Glance except Unit 7.",
+  "oldNamesWarning": "Pre-2024 resources have 7 units, include waves, sound and circuits, and used 5 FRQs with multi-select MCQ; do not copy their numbering."
+ },
+ "sciencePractices": [
+  {
+   "id": 1,
+   "name": "Creating Representations",
+   "skills": [
+    "1.A",
+    "1.B",
+    "1.C"
+   ],
+   "mcqWeight": [
+    0,
+    0
+   ],
+   "frqWeight": [
+    20,
+    35
+   ],
+   "skillNames": {
+    "1.A": "Create diagrams, tables, charts or schematics of a physical situation",
+    "1.B": "Create quantitative graphs with scales, units and plotted data",
+    "1.C": "Sketch qualitative graphs of how a model behaves"
+   }
+  },
+  {
+   "id": 2,
+   "name": "Mathematical Routines",
+   "skills": [
+    "2.A",
+    "2.B",
+    "2.C",
+    "2.D"
+   ],
+   "mcqWeight": [
+    55,
+    75
+   ],
+   "frqWeight": [
+    30,
+    40
+   ],
+   "skillNames": {
+    "2.A": "Derive a symbolic expression from known quantities",
+    "2.B": "Calculate or estimate a quantity, with units",
+    "2.C": "Compare quantities across scenarios, times or places",
+    "2.D": "Predict new values or factors of change from functional dependence"
+   }
+  },
+  {
+   "id": 3,
+   "name": "Scientific Questioning and Argumentation",
+   "skills": [
+    "3.A",
+    "3.B",
+    "3.C"
+   ],
+   "mcqWeight": [
+    25,
+    35
+   ],
+   "frqWeight": [
+    35,
+    45
+   ],
+   "skillNames": {
+    "3.A": "Design an experimental procedure for a question",
+    "3.B": "Apply a law, definition or model to make a claim",
+    "3.C": "Justify a claim with evidence, representations or principles"
+   }
+  }
+ ],
+ "sciencePracticesNote": "Practices are not tied to learning objectives: any objective can be tested with any skill. Exam weights by practice are from a third-party copy of the CED table [unverified]; MCQ is mostly Mathematical Routines, and Creating Representations is assessed in free response (practice 1 is free response only here).",
+ "units": [
+  {
+   "n": 1,
+   "id": "unit-1",
+   "title": "Kinematics",
+   "weight": "10-15%",
+   "classPeriods": "12-17",
+   "topics": [
+    {
+     "id": "1.1",
+     "slug": "scalars-vectors",
+     "title": "Scalars and Vectors on a Line",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Tell scalars from vectors and add vectors that lie along one line."
+     ],
+     "knowledge": [
+      "A scalar has only a size; a vector has a size and a direction.",
+      "Distance and speed are scalars; position, displacement, velocity and acceleration are vectors.",
+      "Along one line, the sign of a vector gives its direction; opposite directions get opposite signs."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.2",
+     "slug": "motion-quantities",
+     "title": "Displacement, Velocity and Acceleration",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Describe motion with displacement, average velocity and average acceleration."
+     ],
+     "knowledge": [
+      "Displacement is the change in position; an object model ignores size, shape and inner structure.",
+      "Average velocity is Δx/Δt and average acceleration is Δv/Δt.",
+      "An object accelerates when its speed or its direction changes; averages over short intervals approach instantaneous values."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.3",
+     "slug": "motion-representations",
+     "title": "Representing Motion",
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Move between motion diagrams, graphs, equations and words for one-dimensional motion."
+     ],
+     "knowledge": [
+      "Three equations describe constant acceleration.",
+      "Near Earth a freely falling object accelerates downward at g, about 10 m/s² (9.8 m/s² is also accepted).",
+      "Slope of x-t is velocity, slope of v-t is acceleration, area under v-t is displacement, area under a-t is change in velocity."
+     ],
+     "exclusions": [
+      "Nonuniform acceleration is handled only qualitatively (graphs and words), never with calculations."
+     ],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.4",
+     "slug": "reference-frames",
+     "title": "Reference Frames and Relative Motion",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Describe the same motion from two inertial frames."
+     ],
+     "knowledge": [
+      "Every measurement of motion is made by an observer in some reference frame.",
+      "Velocity seen by an observer = velocity of the object in another frame + velocity of that frame.",
+      "Acceleration is the same in every inertial frame."
+     ],
+     "exclusions": [
+      "Relative velocity is added only in one dimension.",
+      "Frames are inertial unless a question says otherwise."
+     ],
+     "source": "CED (read)"
+    },
+    {
+     "id": "1.5",
+     "slug": "motion-2d",
+     "title": "Vectors and Motion in Two Dimensions",
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Resolve vectors into components and treat two-dimensional motion as two independent one-dimensional motions."
+     ],
+     "knowledge": [
+      "Any vector can be split into perpendicular components with trigonometry, in a coordinate system you choose.",
+      "Perpendicular components of motion are independent.",
+      "A projectile has zero acceleration horizontally and constant acceleration vertically."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "id": "unit-2",
+   "title": "Force and Translational Dynamics",
+   "weight": "18-23%",
+   "classPeriods": "22-27",
+   "topics": [
+    {
+     "id": "2.1",
+     "slug": "systems-center-of-mass",
+     "title": "Systems and Center of Mass",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Choose a system and find its center of mass."
+     ],
+     "knowledge": [
+      "A system's behavior comes from the interactions inside it; when the inside does not matter it can be treated as one object.",
+      "The center of mass lies on any line of symmetry; x_cm = Σmx/Σm.",
+      "A system can be modelled as a point at its center of mass."
+     ],
+     "exclusions": [
+      "Center of mass is calculated only for five or fewer point objects in two dimensions, or for highly symmetric objects."
+     ],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.2",
+     "slug": "forces-fbd",
+     "title": "Forces and Free-Body Diagrams",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Identify the forces on an object and draw its free-body diagram."
+     ],
+     "knowledge": [
+      "A force is an interaction between two objects; an object cannot exert a net force on itself.",
+      "Contact forces are electric forces between surfaces at the large scale.",
+      "A free-body diagram shows every force the surroundings exert on the object, drawn from a dot at its center of mass."
+     ],
+     "exclusions": [
+      "Free-body diagrams show whole forces, never their components."
+     ],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.3",
+     "slug": "third-law",
+     "title": "Newton's Third Law",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Pair forces between interacting objects and treat strings and pulleys as ideal."
+     ],
+     "knowledge": [
+      "The two forces of an interaction are equal in size, opposite in direction and act on different objects.",
+      "Internal forces do not change the motion of the center of mass.",
+      "An ideal string is massless and does not stretch, with one tension along it; an ideal pulley is massless and frictionless."
+     ],
+     "exclusions": [
+      "Tension in a string or chain with mass is qualitative only.",
+      "Gravity is the only force at a distance in this course."
+     ],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.4",
+     "slug": "first-law",
+     "title": "Newton's First Law",
+     "practices": [
+      1,
+      3
+     ],
+     "objectives": [
+      "Relate balanced forces to constant velocity."
+     ],
+     "knowledge": [
+      "The net force is the vector sum of all forces on an object.",
+      "Zero net force means constant velocity (translational equilibrium); forces can balance in one direction and not in another.",
+      "An inertial reference frame is one in which the first law holds."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.5",
+     "slug": "second-law",
+     "title": "Newton's Second Law",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Use net force and mass to find acceleration."
+     ],
+     "knowledge": [
+      "The center-of-mass acceleration is proportional to the net external force and in its direction.",
+      "Only a nonzero net external force changes the velocity of the center of mass."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.6",
+     "slug": "gravitational-force",
+     "title": "Gravitational Force",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Use Newton's law of gravitation and relate weight, apparent weight and the gravitational field."
+     ],
+     "knowledge": [
+      "Gravitational force ∝ m1m2/r², attractive, along the line between centers.",
+      "The gravitational field g = F/m; near a planet's surface it is treated as constant.",
+      "Apparent weight is the normal force; it differs from mg when the object accelerates.",
+      "Inertial and gravitational mass are found by experiment to be equal."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.7",
+     "slug": "friction",
+     "title": "Kinetic and Static Friction",
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Model kinetic and static friction."
+     ],
+     "knowledge": [
+      "Kinetic friction is μk·F_N, opposes the sliding of the surfaces, and does not depend on contact area.",
+      "Static friction takes whatever value prevents slipping, up to μs·F_N; usually μs > μk.",
+      "The normal force is perpendicular to the surface and away from it."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.8",
+     "slug": "spring-forces",
+     "title": "Spring Forces",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Use Hooke's law for an ideal spring."
+     ],
+     "knowledge": [
+      "An ideal spring is massless; its force is F = −kΔx, always toward its relaxed length."
+     ],
+     "exclusions": [],
+     "source": "CED (read)"
+    },
+    {
+     "id": "2.9",
+     "slug": "circular-motion",
+     "title": "Circular Motion",
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Analyze objects moving in circles, including circular orbits."
+     ],
+     "knowledge": [
+      "Centripetal acceleration is v²/r toward the center, supplied by one force, several, or components of forces.",
+      "Tangential acceleration changes speed; total acceleration is the vector sum.",
+      "Period T = 2πr/v; frequency is 1/T.",
+      "Circular orbits link the period and the radius through the central mass (Kepler's third law)."
+     ],
+     "exclusions": [
+      "Banked curves are quantitative only when no friction is needed; with friction they are qualitative.",
+      "Kepler's first and second laws are not required."
+     ],
+     "source": "CED (read)"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "id": "unit-3",
+   "title": "Work, Energy, and Power",
+   "weight": "18-23%",
+   "classPeriods": "22-27",
+   "topics": [
+    {
+     "id": "3.1",
+     "slug": "kinetic-energy",
+     "title": "Translational Kinetic Energy",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Calculate kinetic energy and compare it across situations."
+     ],
+     "knowledge": [
+      "K = ½mv², a scalar that is never negative.",
+      "Kinetic energy depends on the reference frame."
+     ],
+     "exclusions": [],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "3.2",
+     "slug": "work-by-forces",
+     "title": "Work",
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Find the work done by a force and use the work-energy theorem."
+     ],
+     "knowledge": [
+      "Work is energy transferred by a force; it can be positive, negative or zero.",
+      "For a constant force only the component parallel to the displacement does work.",
+      "The net work equals the change in kinetic energy; work is the area under a force-position graph."
+     ],
+     "exclusions": [
+      "Only mechanical energy transfer is analyzed (no heating or thermodynamics)."
+     ],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "3.3",
+     "slug": "potential-energy",
+     "title": "Potential Energy",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Define potential energy for a system and calculate it for springs and gravity."
+     ],
+     "knowledge": [
+      "Potential energy belongs to a system of interacting objects and exists only for conservative forces.",
+      "The zero point is chosen; ΔU_g = mgΔy, U_s = ½k(Δx)², U_G = −Gm1m2/r."
+     ],
+     "exclusions": [],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "3.4",
+     "slug": "energy-conservation",
+     "title": "Conservation of Energy",
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Track energy in a system with bar charts and equations."
+     ],
+     "knowledge": [
+      "A single-object system has only kinetic energy.",
+      "Mechanical energy = K + U; it changes only by work from outside or by internal nonconservative forces.",
+      "Total energy is always conserved."
+     ],
+     "exclusions": [
+      "Energy dissipated as thermal energy or sound is described qualitatively; only mechanical energy is analyzed quantitatively."
+     ],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "3.5",
+     "slug": "power",
+     "title": "Power",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Calculate average and instantaneous power."
+     ],
+     "knowledge": [
+      "Average power = ΔE/Δt = W/Δt.",
+      "Instantaneous power = F∥·v."
+     ],
+     "exclusions": [],
+     "source": "CED via physicslearn transcription [verify]"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "id": "unit-4",
+   "title": "Linear Momentum",
+   "weight": "10-15%",
+   "classPeriods": "10-15",
+   "topics": [
+    {
+     "id": "4.1",
+     "slug": "linear-momentum",
+     "title": "Linear Momentum",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Calculate momentum and use the collision and explosion models."
+     ],
+     "knowledge": [
+      "p = mv, a vector in the direction of the velocity.",
+      "In a collision or explosion the internal forces are much larger than any external force."
+     ],
+     "exclusions": [
+      "\"Momentum\" means linear momentum unless a question says otherwise."
+     ],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "4.2",
+     "slug": "impulse",
+     "title": "Change in Momentum and Impulse",
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Relate impulse to change in momentum, including from graphs."
+     ],
+     "knowledge": [
+      "Impulse J = F_avg·Δt is a vector and the area under a force-time graph.",
+      "Impulse equals the change in momentum; net force is the slope of a momentum-time graph."
+     ],
+     "exclusions": [
+      "No quantitative analysis of systems whose mass changes (rockets, leaking carts)."
+     ],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "4.3",
+     "slug": "momentum-conservation",
+     "title": "Conservation of Linear Momentum",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Decide when momentum is conserved and use conservation in one dimension."
+     ],
+     "knowledge": [
+      "With no net external force the center-of-mass velocity and the total momentum stay constant.",
+      "Whether momentum changes depends on the system chosen."
+     ],
+     "exclusions": [
+      "No questions that need simultaneous equations.",
+      "Momentum conservation is quantitative in one dimension; two dimensions are semiquantitative only."
+     ],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "4.4",
+     "slug": "collisions",
+     "title": "Elastic and Inelastic Collisions",
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Classify collisions by what happens to kinetic energy."
+     ],
+     "knowledge": [
+      "Elastic: total kinetic energy is unchanged (each object's can change).",
+      "Inelastic: total kinetic energy decreases; perfectly inelastic: the objects stick and share one final velocity."
+     ],
+     "exclusions": [
+      "No simultaneous equations (no \"find both final velocities\" of an elastic collision)."
+     ],
+     "source": "CED via physicslearn transcription [verify]"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "id": "unit-5",
+   "title": "Torque and Rotational Dynamics",
+   "weight": "10-15%",
+   "classPeriods": "15-20",
+   "topics": [
+    {
+     "id": "5.1",
+     "slug": "rotational-kinematics",
+     "title": "Rotational Kinematics",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Describe rotation about a fixed axis with angular quantities."
+     ],
+     "knowledge": [
+      "Angular displacement (in radians), angular velocity and angular acceleration describe a rigid system turning about a fixed axis.",
+      "Three constant-α equations and their graphs mirror one-dimensional kinematics."
+     ],
+     "exclusions": [
+      "Rotation is described only as clockwise or counterclockwise about a given axis (no vector directions)."
+     ],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "5.2",
+     "slug": "linear-rotational-link",
+     "title": "Linking Linear and Rotational Motion",
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Connect a point's linear motion to the rotation of the body."
+     ],
+     "knowledge": [
+      "s = rθ, v = rω, a_T = rα.",
+      "Every point of a rigid body shares the same ω and α."
+     ],
+     "exclusions": [
+      "Clockwise or counterclockwise only."
+     ],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "5.3",
+     "slug": "torque",
+     "title": "Torque",
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Calculate torque and draw force diagrams that show where forces act."
+     ],
+     "knowledge": [
+      "Only the force component perpendicular to r produces torque; the lever arm is the perpendicular distance from the axis to the line of action.",
+      "τ = rF sinθ."
+     ],
+     "exclusions": [
+      "The direction of the torque vector is beyond scope (sign conventions only)."
+     ],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "5.4",
+     "slug": "rotational-inertia",
+     "title": "Rotational Inertia",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Find rotational inertia from how mass is spread around the axis."
+     ],
+     "knowledge": [
+      "I = Σmr² for point masses; it depends on mass and its distribution.",
+      "I is least about the center of mass; I' = I_cm + Md²."
+     ],
+     "exclusions": [
+      "Calculate I for at most five objects; I of disks, rods and spheres is given, never memorized."
+     ],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "5.5",
+     "slug": "rotational-equilibrium",
+     "title": "Rotational Equilibrium",
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Use zero net torque and zero net force to analyze balanced objects."
+     ],
+     "knowledge": [
+      "Rotational and translational equilibrium are independent conditions.",
+      "Zero net torque means constant angular velocity; an unbalanced torque changes it."
+     ],
+     "exclusions": [
+      "No rotation in more than one plane at once."
+     ],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "5.6",
+     "slug": "rotational-second-law",
+     "title": "Newton's Second Law for Rotation",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Use α = τ_net/I, alone or with translational analysis."
+     ],
+     "knowledge": [
+      "Angular acceleration is net torque divided by rotational inertia, in the direction of the net torque.",
+      "A full description may need separate translational and rotational analyses."
+     ],
+     "exclusions": [],
+     "source": "CED via physicslearn transcription [verify]"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "id": "unit-6",
+   "title": "Energy and Momentum of Rotating Systems",
+   "weight": "5-8%",
+   "classPeriods": "8-14",
+   "topics": [
+    {
+     "id": "6.1",
+     "slug": "rotational-kinetic-energy",
+     "title": "Rotational Kinetic Energy",
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Calculate rotational kinetic energy."
+     ],
+     "knowledge": [
+      "K_rot = ½Iω², a scalar; a spinning body can have it while its center of mass is at rest."
+     ],
+     "exclusions": [],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "6.2",
+     "slug": "torque-work",
+     "title": "Torque and Work",
+     "practices": [
+      1,
+      2
+     ],
+     "objectives": [
+      "Find the work done by a torque."
+     ],
+     "knowledge": [
+      "W = τΔθ; the area under a torque-angle graph."
+     ],
+     "exclusions": [],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "6.3",
+     "slug": "angular-momentum",
+     "title": "Angular Momentum and Angular Impulse",
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Calculate angular momentum and relate angular impulse to its change."
+     ],
+     "knowledge": [
+      "L = Iω for a rigid body; L = rmv sinθ for a point object about a chosen point.",
+      "Angular impulse τΔt equals ΔL; net torque is the slope of an L-t graph."
+     ],
+     "exclusions": [
+      "The direction of angular momentum and angular impulse is beyond scope."
+     ],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "6.4",
+     "slug": "angular-momentum-conservation",
+     "title": "Conservation of Angular Momentum",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Use conservation of angular momentum when shape changes."
+     ],
+     "knowledge": [
+      "Total L is the sum of the parts; changing shape at constant L changes ω.",
+      "L is conserved when the net external torque is zero; the system choice matters."
+     ],
+     "exclusions": [],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "6.5",
+     "slug": "rolling",
+     "title": "Rolling",
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Analyze objects that roll with and without slipping."
+     ],
+     "knowledge": [
+      "Total kinetic energy = translational + rotational.",
+      "Rolling without slipping links v_cm = rω; static friction does no dissipative work.",
+      "Rolling while slipping has no such link and kinetic friction dissipates energy."
+     ],
+     "exclusions": [
+      "Rolling friction is beyond scope.",
+      "Rolling while slipping is qualitative only."
+     ],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "6.6",
+     "slug": "orbits",
+     "title": "Motion of Orbiting Satellites",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Use energy and angular momentum for circular and elliptical orbits."
+     ],
+     "knowledge": [
+      "In a circular orbit E, U, K and L are all constant; in an elliptical orbit E and L are constant while U and K change.",
+      "U_G = 0 at infinite separation; escape speed comes from total energy = 0."
+     ],
+     "exclusions": [
+      "Kepler's first and second laws are not required."
+     ],
+     "source": "CED via physicslearn transcription [verify]"
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "id": "unit-7",
+   "title": "Oscillations",
+   "weight": "5-8%",
+   "classPeriods": "5-10",
+   "topics": [
+    {
+     "id": "7.1",
+     "slug": "shm-intro",
+     "title": "Defining Simple Harmonic Motion",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Recognize simple harmonic motion from its restoring force."
+     ],
+     "knowledge": [
+      "SHM is periodic motion with a restoring force proportional to the displacement and opposite to it.",
+      "Equilibrium is where the net force is zero.",
+      "A pendulum at small angles is close to SHM."
+     ],
+     "exclusions": [],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "7.2",
+     "slug": "shm-period",
+     "title": "Frequency and Period of SHM",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Find what the period of a spring-mass system or a pendulum depends on."
+     ],
+     "knowledge": [
+      "T = 1/f.",
+      "Spring-mass: T = 2π√(m/k); small-angle pendulum: T = 2π√(ℓ/g)."
+     ],
+     "exclusions": [],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "7.3",
+     "slug": "shm-representations",
+     "title": "Representing and Analyzing SHM",
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Describe SHM with sine or cosine functions and graphs."
+     ],
+     "knowledge": [
+      "x(t) is a sine or cosine of time; maxima, minima and zeros of x, v and a are related.",
+      "The period does not depend on the amplitude."
+     ],
+     "exclusions": [],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "7.4",
+     "slug": "shm-energy",
+     "title": "Energy of Simple Harmonic Oscillators",
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Track kinetic and potential energy through an oscillation."
+     ],
+     "knowledge": [
+      "E = K + U stays constant; K is largest where U is smallest.",
+      "The amplitude sets the total energy (E = ½kA² for a spring)."
+     ],
+     "exclusions": [],
+     "source": "CED via physicslearn transcription [verify]"
+    }
+   ],
+   "namesUnverified": true
+  },
+  {
+   "n": 8,
+   "id": "unit-8",
+   "title": "Fluids",
+   "weight": "10-15%",
+   "classPeriods": "12-17",
+   "topics": [
+    {
+     "id": "8.1",
+     "slug": "density-fluids",
+     "title": "Internal Structure and Density",
+     "practices": [
+      2
+     ],
+     "objectives": [
+      "Describe fluids and calculate density."
+     ],
+     "knowledge": [
+      "States of matter differ in how their particles interact; a fluid has no fixed shape.",
+      "ρ = m/V; an ideal fluid is incompressible and has no viscosity."
+     ],
+     "exclusions": [],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "8.2",
+     "slug": "fluid-pressure",
+     "title": "Pressure",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Calculate pressure and how it changes with depth."
+     ],
+     "knowledge": [
+      "P = F⊥/A is a scalar.",
+      "Fluid pressure comes from particle collisions; P = P0 + ρgh, and gauge pressure is ρgh."
+     ],
+     "exclusions": [],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "8.3",
+     "slug": "buoyancy",
+     "title": "Fluids and Newton's Laws",
+     "practices": [
+      1,
+      2,
+      3
+     ],
+     "objectives": [
+      "Apply Newton's laws to fluids and to objects in them, including buoyancy."
+     ],
+     "knowledge": [
+      "Newton's laws apply to a parcel of fluid.",
+      "The buoyant force is the net upward push of the fluid; F_b = ρ_fluid·V_displaced·g."
+     ],
+     "exclusions": [],
+     "source": "CED via physicslearn transcription [verify]"
+    },
+    {
+     "id": "8.4",
+     "slug": "fluid-flow",
+     "title": "Fluids and Conservation Laws",
+     "practices": [
+      2,
+      3
+     ],
+     "objectives": [
+      "Use continuity and Bernoulli's equation for flowing fluids."
+     ],
+     "knowledge": [
+      "Volume flow rate Av is constant along a full pipe: A1v1 = A2v2.",
+      "Bernoulli's equation is energy conservation for a fluid; Torricelli's result follows from it."
+     ],
+     "exclusions": [
+      "Unless stated, fluids are ideal and pipes are completely full (no viscosity, turbulence or compressibility)."
+     ],
+     "source": "CED via physicslearn transcription [verify]"
+    }
+   ]
+  }
+ ],
+ "skillsTopics": [
+  {
+   "slug": "math-units",
+   "title": "Units, Prefixes and Significant Figures",
+   "before": "scalars-vectors",
+   "practices": [
+    2
+   ],
+   "objectives": [
+    "Carry SI units through every calculation and convert between prefixes."
+   ],
+   "knowledge": [
+    "Every measured quantity is a number with a unit.",
+    "Metric prefixes scale a unit by powers of ten (centi 10⁻², milli 10⁻³, kilo 10³).",
+    "Report a calculated result to the significant figures the data support."
+   ]
+  },
+  {
+   "slug": "math-symbols",
+   "title": "Rearranging Equations with Symbols",
+   "before": "motion-quantities",
+   "practices": [
+    2
+   ],
+   "objectives": [
+    "Solve an equation for any variable and keep answers in symbols."
+   ],
+   "knowledge": [
+    "Δ means \"final minus initial\".",
+    "Do the same operation to both sides to isolate a variable; substitute numbers last."
+   ]
+  },
+  {
+   "slug": "math-proportional",
+   "title": "Proportional Reasoning and Functional Dependence",
+   "before": "motion-representations",
+   "practices": [
+    2
+   ],
+   "objectives": [
+    "Predict how one quantity changes when another is scaled."
+   ],
+   "knowledge": [
+    "y ∝ x: doubling x doubles y; y ∝ 1/x: doubling x halves y; y ∝ x²: doubling x quadruples y.",
+    "Read the factor of change straight from an equation."
+   ]
+  },
+  {
+   "slug": "math-slopes-areas",
+   "title": "Slopes and Areas of Graphs",
+   "before": "motion-representations",
+   "practices": [
+    1,
+    2
+   ],
+   "objectives": [
+    "Read slopes and areas of graphs and turn a curve into a straight line."
+   ],
+   "knowledge": [
+    "Slope = rise/run, with units of y over units of x.",
+    "Area under a graph has units of y times units of x.",
+    "Plotting the right combination of variables gives a straight line whose slope means something."
+   ]
+  },
+  {
+   "slug": "math-trig-components",
+   "title": "Right-Triangle Trigonometry and Vector Components",
+   "before": "motion-2d",
+   "practices": [
+    1,
+    2
+   ],
+   "objectives": [
+    "Split a vector into components with sine and cosine."
+   ],
+   "knowledge": [
+    "In a right triangle: sin = opposite/hypotenuse, cos = adjacent/hypotenuse, tan = opposite/adjacent.",
+    "A vector of size A at angle θ to the x-axis has components A cosθ and A sinθ.",
+    "Check that the calculator is in degree mode."
+   ]
+  }
+ ],
+ "topicCount": 43,
+ "topicCountByUnit": {
+  "1": 5,
+  "2": 9,
+  "3": 5,
+  "4": 4,
+  "5": 6,
+  "6": 6,
+  "7": 4,
+  "8": 4
+ },
+ "exclusionsSummary": {
+  "verifiedUnits1to2": [
+   "1.3 quantitative nonuniform acceleration",
+   "1.4 relative velocity beyond one dimension",
+   "2.1 center of mass beyond five objects or symmetric systems",
+   "2.2 force components drawn on a free-body diagram",
+   "2.3 quantitative tension in massive strings; forces at a distance other than gravity",
+   "2.9 friction-required banked curves (quantitative); Kepler's first and second laws"
+  ],
+  "unverifiedUnits3to8": [
+   "3.2/3.4 thermal energy and heating (quantitative)",
+   "4.2 variable-mass systems",
+   "4.3 simultaneous equations; quantitative 2D momentum",
+   "5.1-5.3 vector directions of rotation and torque",
+   "5.4 memorizing I of extended bodies; more than five objects",
+   "5.5 rotation in more than one plane",
+   "6.3 direction of angular momentum",
+   "6.5 rolling friction; quantitative rolling while slipping",
+   "8.4 nonideal fluids and partly filled pipes"
+  ],
+  "outOfCourse": [
+   "mechanical waves and sound (moved to AP Physics 2)",
+   "electric circuits",
+   "electric and magnetic forces"
+  ]
+ },
+ "exam": {
+  "date2027": "2027-05-05",
+  "day": "Wednesday",
+  "session": "afternoon",
+  "totalTime": "3 h (plus a 10-minute break)",
+  "delivery": "Hybrid digital in Bluebook: multiple choice on screen; free-response questions read on screen and handwritten in paper booklets.",
+  "mcq": {
+   "questions": 42,
+   "minutes": 85,
+   "weight": "50%",
+   "options": 4,
+   "format": "Single-select only; discrete items and sets that share a stimulus."
+  },
+  "frq": {
+   "questions": 4,
+   "minutes": 95,
+   "weight": "50%",
+   "order": [
+    "mr",
+    "tbr",
+    "lab",
+    "qqt"
+   ],
+   "types": {
+    "mr": {
+     "name": "Mathematical Routines",
+     "points": 10
+    },
+    "tbr": {
+     "name": "Translation Between Representations",
+     "points": 12
+    },
+    "lab": {
+     "name": "Experimental Design and Analysis",
+     "points": 10
+    },
+    "qqt": {
+     "name": "Qualitative/Quantitative Translation",
+     "points": 8
+    }
+   },
+   "rawPoints": 40,
+   "suggestedMinutes": {
+    "mr": 24,
+    "tbr": 28,
+    "lab": 24,
+    "qqt": 19
+   }
+  },
+  "calculator": "Allowed on both sections; Desmos built into Bluebook.",
+  "reference": "Equations sheet with g = 9.8 m/s² (10 m/s² accepted). Not on it: moments of inertia of shapes (given in questions), escape speed, Torricelli, Kepler's third law.",
+  "previousFormat": "2025 and 2026: 40 MCQ in 80 min, 4 FRQs in 100 min."
+ },
+ "changes2024": "Fluids moved in as Unit 8; waves and sound moved out; science practices cut from 7 to 3; multi-select MCQ removed; four new FRQ types."
+}
