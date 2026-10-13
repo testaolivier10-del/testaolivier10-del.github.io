@@ -7,7 +7,7 @@
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
-  "alt": "A 10-foot ladder (crimson) against a wall with its foot x = 6 ft out and top y = 8 ft up, the foot sliding away at dx/dt = 2 ft/s and the top's rate dy/dt unknown; a grey ghost shows a later position. Beside it: x² + y² = 100, differentiated to 2x dx/dt + 2y dy/dt = 0, giving dy/dt = −3/2 ft/s at this instant."
+  "alt": "A 10-foot ladder (crimson) against a wall with its foot x = 6 ft out and top y = 8 ft up, the foot sliding away at dx/dt = 2 ft/s and the top's rate dy/dt unknown; a gray ghost shows a later position. Beside it: x² + y² = 100, differentiated to 2x dx/dt + 2y dy/dt = 0, giving dy/dt = −3/2 ft/s at this instant."
  },
  "ladder-sliding-question": {
   "file": "figures/ladder-sliding-question.svg",
@@ -17,7 +17,7 @@
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original diagram",
-  "alt": "A 10-foot ladder (crimson) leaning against a wall, its foot x = 6 ft from the wall and its top y = 8 ft up. The foot slides away at dx/dt = 2 ft/s; the top's rate dy/dt is unknown. The angle θ between ladder and floor is marked; a grey ghost shows a later position."
+  "alt": "A 10-foot ladder (crimson) leaning against a wall, its foot x = 6 ft from the wall and its top y = 8 ft up. The foot slides away at dx/dt = 2 ft/s; the top's rate dy/dt is unknown. The angle θ between ladder and floor is marked; a gray ghost shows a later position."
  },
  "cone-tank-question": {
   "file": "figures/cone-tank-question.svg",

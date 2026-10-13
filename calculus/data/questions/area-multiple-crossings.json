@@ -223,7 +223,7 @@
     "options": [
      "Top minus bottom on each piece: $f$ on top, then $g$, then $f$.",
      "One integral counts the middle piece, where $g$ is on top, as negative.",
-     "The absolute value is taken after the pieces have already cancelled.",
+     "The absolute value is taken after the pieces have already canceled.",
      "$\\int_1^2 (g - f)\\,dx$ is already positive; subtracting it removes that area."
     ]
    }

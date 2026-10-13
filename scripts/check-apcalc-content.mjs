@@ -94,12 +94,20 @@ export function testWise(items) {
   return errs;
 }
 
-/* Near-duplicates across topics: 75% shared content words (A&P decision 78). */
+/* Near-duplicates across topics: 75% shared content words (A&P decision 78). Each $...$ span counts as
+   one word, so "$y = x^2$" and "$x = y^2$" differ, and a set item counts its stimulus title too (`ctx`,
+   added by the main loop): "find the volume when $R$ is revolved about the $x$-axis" is a different
+   question for each region $R$. */
 const STOP = new Set('the a an of to in and or is are which what that this does with for from by on as at it its be most best your you their than into when why how'.split(' '));
+function words(t) {
+  const math = [];
+  const prose = strip(t).replace(/\$([^$]+)\$/g, (_, m) => { math.push('m:' + m.replace(/\s+/g, '')); return ' '; });
+  return [...math, ...prose.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(x => x && !STOP.has(x))];
+}
 export function duplicates(items) {
   const all = items.map(q => {
-    const t = [q.q, ...(q.options || []), ...(q.variables || []).map(v => v.name)].join(' ');
-    return { topic: q.topic, id: q.id, w: [...new Set(strip(t).toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(x => x && !STOP.has(x)))] };
+    const t = [q.ctx || '', q.q, ...(q.options || []), ...(q.variables || []).map(v => v.name)].join(' ');
+    return { topic: q.topic, id: q.id, w: [...new Set(words(t))] };
   });
   const errs = [];
   for (let i = 0; i < all.length; i++) for (let j = i + 1; j < all.length; j++) {
@@ -492,6 +500,9 @@ if (isMain) {
       continue;
     }
     const r = checkTopic(map, id, { glossary, figures });
+    const qf = join(DATA, 'questions', `${id}.json`);
+    const stims = exists(qf) ? (readJson(qf).stimuli || {}) : {};
+    r.items = r.items.map(q => q.stimulus && stims[q.stimulus] ? { ...q, ctx: stims[q.stimulus].title || '' } : q);
     total += r.items.length;
     allItems.push(...r.items);
     const isPub = published.has(topic.chapter);

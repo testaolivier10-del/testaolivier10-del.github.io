@@ -259,7 +259,7 @@
    "why": {
     "correct": "$d(x) = \\frac{(x + 2)(x - 1)}{(x + 1)(x - 1)}$. The factor $x - 1$ cancels, leaving a hole at $x = 1$. The factor $x + 1$ does not cancel, so $d$ is unbounded near $x = -1$.",
     "options": [
-     "A cancelled factor gives a hole; a factor left in the denominator gives a vertical asymptote.",
+     "A canceled factor gives a hole; a factor left in the denominator gives a vertical asymptote.",
      "At $x = 1$ the zero factor cancels, so the limit is $\\frac{3}{2}$, a finite number.",
      "At $x = -1$ the numerator is $-2 \\ne 0$ and the denominator is 0, so $d$ is unbounded there.",
      "$x = -2$ makes the numerator 0, which gives a zero of $d$, not a break."
@@ -523,7 +523,7 @@
      "A hole is also a point where the function is undefined.",
      "$f(2)$ is $\\frac{0}{0}$, which is undefined, not 0.",
      "The numerator is also 0 at 2, so the denominator alone does not decide. The limit is 4.",
-     "The cancelled factor leaves a hole at height 4, not an asymptote."
+     "The canceled factor leaves a hole at height 4, not an asymptote."
     ]
    }
   }

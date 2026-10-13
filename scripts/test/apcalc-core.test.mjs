@@ -132,6 +132,6 @@ test('lazy bank: the index, then only the units a set needs, then explanations',
   // Explanations arrive with their math rendered at build time.
   assert.match(qs[0].why.correct, /<math class="calc-m"/);
   assert.match(qs[0].why.correct, /62\.5/);
-  // Unit 6 has 11 topics, so its bank is split; 6.8 is in the second half.
-  assert.deepEqual(fetched, ['assets/bank/index.json', 'assets/bank/unit-6-b.json', 'assets/bank/unit-6-b-why.json']);
+  // One fixture topic fits one bank file (the real units split by gzipped size, topics[].bank).
+  assert.deepEqual(fetched, ['assets/bank/index.json', 'assets/bank/unit-6.json', 'assets/bank/unit-6-why.json']);
 });

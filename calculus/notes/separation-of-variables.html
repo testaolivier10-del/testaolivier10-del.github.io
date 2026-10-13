@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>General Solutions by Separation of… — AP® Calculus AB Notes</title>
+<meta name="description" content="You can now write a differential equation, check a proposed solution and sketch solutions from a slope field. This page finds solutions by formula.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/separation-of-variables.html">
+<meta property="og:title" content="General Solutions by Separation of… — AP® Calculus AB Notes">
+<meta property="og:description" content="You can now write a differential equation, check a proposed solution and sketch solutions from a slope field. This page finds solutions by formula.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/separation-of-variables.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/separation-of-variables.html#reading",
+      "name": "General Solutions by Separation of Variables",
+      "url": "https://levlprep.com/calculus/notes/separation-of-variables.html",
+      "description": "You can now write a differential equation, check a proposed solution and sketch solutions from a slope field. This page finds solutions by formula.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "general solutions by separation of variables ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Differential Equations",
+          "item": "https://levlprep.com/calculus/units/unit-7.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "General Solutions by Separation of Variables: notes",
+          "item": "https://levlprep.com/calculus/notes/separation-of-variables.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="separation-of-variables" data-unit="unit-7">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 7 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Integration and Accumulation of Change</a>
+    <a class="bk-toc-chap" href="../units/unit-7.html"><span class="bk-toc-chap-n">7</span><span><b>Differential Equations</b><small>7 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-7"><div class="tb-progress-row"><span><b>0</b> of 7 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="modeling-with-des"><a href="modeling-with-des.html"><span class="bk-toc-n">7.1</span>Writing Differential Equations</a></li><li data-toc-t="verifying-solutions"><a href="verifying-solutions.html"><span class="bk-toc-n">7.2</span>Verifying Solutions to Differential Equations</a></li><li data-toc-t="sketching-slope-fields"><a href="sketching-slope-fields.html"><span class="bk-toc-n">7.3</span>Sketching Slope Fields</a></li><li data-toc-t="reasoning-with-slope-fields"><a href="reasoning-with-slope-fields.html"><span class="bk-toc-n">7.4</span>Reasoning with Slope Fields</a></li><li class="current" data-toc-t="separation-of-variables"><a href="#main" aria-current="page"><span class="bk-toc-n">7.6</span>General Solutions by Separation of Variables</a><div class="bk-toc-onpage"><p>On this page</p><a href="#when-an-equation-is-separable">When an equation is separable</a><a href="#the-method-in-four-steps">The method in four steps</a><a href="#logarithms-and-the-absolute-value">Logarithms and the absolute value</a><a href="#shifted-variables">Shifted variables</a><a href="#common-slips">Common slips</a></div></li><li data-toc-t="particular-solutions"><a href="particular-solutions.html"><span class="bk-toc-n">7.7</span>Particular Solutions from Initial Conditions</a></li><li data-toc-t="exponential-models"><a href="exponential-models.html"><span class="bk-toc-n">7.8</span>Exponential Models</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Applications of Integration</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-7.html">Differential Equations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">General Solutions by Separation of Variables: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/separation-of-variables.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 7 &middot; Topic 7.6 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">General Solutions by Separation of Variables</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="separation-of-variables">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fseparation-of-variables.html&amp;title=General%20Solutions%20by%20Separation%20of%20Variables%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/separation-of-variables.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>You can now write a <a class="gl" href="../notes/modeling-with-des.html" data-c="differential-equation">differential equation</a>, check a proposed solution and sketch solutions from a <a class="gl" href="../notes/sketching-slope-fields.html" data-c="slope-field">slope field</a>. This page finds solutions by formula. The method, <b><span class="gl" tabindex="0" data-c="separation-of-variables">separation of variables</span></b>, works whenever the variables can be pulled apart. On the AP® Calculus AB exam it is the only solving method you need.</p>
+
+<h2 id="when-an-equation-is-separable">When an equation is separable</h2>
+<p>A differential equation <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>F</mi><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = F(x, y)</annotation></semantics></math> is <b>separable</b> when the right side is a product of a <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> alone and a function of <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> alone:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>h</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo><mo>.</mo></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = g(x)\,h(y).</annotation></semantics></math></p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead><tr><th>Equation</th><th>Separable?</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mi>x</mi><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = 2xy^2</annotation></semantics></math></td><td>yes</td><td><math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msup><mi>y</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2x)(y^2)</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><msup><mi>e</mi><mrow><mi>x</mi><mo>−</mo><mi>y</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = e^{x - y}</annotation></semantics></math></td><td>yes</td><td><math class="calc-m"><semantics><mrow><msup><mi>e</mi><mi>x</mi></msup><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>y</mi></mrow></msup></mrow><annotation encoding="application/x-tex">e^{x}e^{-y}</annotation></semantics></math>, by an exponent rule</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><msup><mi>x</mi><mn>2</mn></msup><mi>y</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = \frac{x^2}{y}</annotation></semantics></math></td><td>yes</td><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>⋅</mo><mfrac><mn>1</mn><mi>y</mi></mfrac></mrow><annotation encoding="application/x-tex">x^2 \cdot \frac{1}{y}</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>x</mi><mo>+</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = x + y</annotation></semantics></math></td><td>no</td><td>a sum cannot be written as <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mi>h</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(x)h(y)</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+
+<h2 id="the-method-in-four-steps">The method in four steps</h2>
+<ol>
+<li><b>Separate.</b> Multiply and divide so that every <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> is on the side with <math class="calc-m"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math> and every <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> is on the side with <math class="calc-m"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mfrac><mspace width="0.1667em"></mspace><mi>d</mi><mi>y</mi><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{1}{h(y)}\,dy = g(x)\,dx</annotation></semantics></math>. Both <math class="calc-m"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math> stay in numerators.</li>
+<li><b>Integrate both sides.</b> <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><mfrac><mn>1</mn><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mfrac><mspace width="0.1667em"></mspace><mi>d</mi><mi>y</mi><mo>=</mo><mo largeop="true" movablelimits="false">∫</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int \frac{1}{h(y)}\,dy = \int g(x)\,dx</annotation></semantics></math>.</li>
+<li><b>Add the constant now.</b> Each side has its own constant, but <math class="calc-m"><semantics><mrow><msub><mi>C</mi><mn>2</mn></msub><mo>−</mo><msub><mi>C</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">C_2 - C_1</annotation></semantics></math> is just one constant, so write a single <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">+ C</annotation></semantics></math>, usually on the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> side. Do it in this step, not later.</li>
+<li><b>Solve for <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></b> if you can. The result, with <math class="calc-m"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math> still in it, is the <b>general solution</b>: a whole family of curves.</li>
+</ol>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Find the general solution of <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mi>x</mi><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = 2xy^2</annotation></semantics></math>.</p>
+<p>Separate: divide by <math class="calc-m"><semantics><mrow><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">y^2</annotation></semantics></math> and multiply by <math class="calc-m"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><msup><mi>y</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>y</mi><mo>=</mo><mn>2</mn><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">y^{-2}\,dy = 2x\,dx</annotation></semantics></math>.</p>
+<p>Integrate: <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><msup><mi>y</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>y</mi><mo>=</mo><mo largeop="true" movablelimits="false">∫</mo><mn>2</mn><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int y^{-2}\,dy = \int 2x\,dx</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mi>y</mi></mfrac><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">-\frac{1}{y} = x^2 + C</annotation></semantics></math>.</p>
+<p>Solve: take reciprocals and change the sign: <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>C</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">y = -\frac{1}{x^2 + C}</annotation></semantics></math>.</p>
+<p>Check one case: with <math class="calc-m"><semantics><mrow><mi>C</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">C = 1</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">y = -(x^2 + 1)^{-1}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mi>x</mi><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></msup><mo>=</mo><mn>2</mn><mi>x</mi><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = 2x(x^2 + 1)^{-2} = 2xy^2</annotation></semantics></math>. It works.</p>
+</div>
+<p>Look at what would happen if you waited to add the constant: <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mi>y</mi></mfrac><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">-\frac{1}{y} = x^2</annotation></semantics></math> gives <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><msup><mi>x</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">y = -\frac{1}{x^2}</annotation></semantics></math>, and then "<math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">+ C</annotation></semantics></math>" gives <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><msup><mi>x</mi><mn>2</mn></msup></mfrac><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">y = -\frac{1}{x^2} + C</annotation></semantics></math>. That family is different, and for <math class="calc-m"><semantics><mrow><mi>C</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">C \ne 0</annotation></semantics></math> it does not satisfy the equation. The constant must go in when you integrate.</p>
+
+<h2 id="logarithms-and-the-absolute-value">Logarithms and the absolute value</h2>
+<p>Many separable equations put <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mi>y</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{y}</annotation></semantics></math> on the left. Its <a class="gl" href="../notes/ftc-accumulation.html" data-c="antiderivative">antiderivative</a> is <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">|</mo><mi>y</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\ln|y|</annotation></semantics></math>, with the absolute value. Keep it; it decides which solutions you find.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the general solution of <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>x</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = xy</annotation></semantics></math>.</p>
+<p>Separate: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mi>y</mi></mfrac><mo>=</mo><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{y} = x\,dx</annotation></semantics></math> (this assumes <math class="calc-m"><semantics><mrow><mi>y</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y \ne 0</annotation></semantics></math>; see below).</p>
+<p>Integrate: <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">|</mo><mi>y</mi><mo stretchy="false">|</mo><mo>=</mo><mfrac><msup><mi>x</mi><mn>2</mn></msup><mn>2</mn></mfrac><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\ln|y| = \frac{x^2}{2} + C</annotation></semantics></math>.</p>
+<p>Exponentiate both sides: <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>y</mi><mo stretchy="false">|</mo><mo>=</mo><msup><mi>e</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>/</mo><mn>2</mn><mo>+</mo><mi>C</mi></mrow></msup><mo>=</mo><msup><mi>e</mi><mi>C</mi></msup><msup><mi>e</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">|y| = e^{x^2/2 + C} = e^{C}e^{x^2/2}</annotation></semantics></math>.</p>
+<p>Remove the absolute value: <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">±</mo><msup><mi>e</mi><mi>C</mi></msup><msup><mi>e</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">y = \pm e^{C}e^{x^2/2}</annotation></semantics></math>. The number <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">±</mo><msup><mi>e</mi><mi>C</mi></msup></mrow><annotation encoding="application/x-tex">\pm e^{C}</annotation></semantics></math> can be any nonzero constant; call it <math class="calc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math>. So <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>A</mi><msup><mi>e</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">y = Ae^{x^2/2}</annotation></semantics></math>.</p>
+<p>Finally, <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y = 0</annotation></semantics></math> also satisfies <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>x</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = xy</annotation></semantics></math> (both sides are 0), but dividing by <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> hid it. Allowing <math class="calc-m"><semantics><mrow><mi>A</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A = 0</annotation></semantics></math> brings it back. General solution: <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>A</mi><msup><mi>e</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">y = Ae^{x^2/2}</annotation></semantics></math> for any constant <math class="calc-m"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math>.</p>
+</div>
+<figure id="fig-family"  class="calc-figure"><div class="calc-figimg" data-fig="separation-family"><img src="../figures/separation-family.svg" alt="The slope field of dy/dx = xy on −2.5 ≤ x ≤ 2.5 and −4 ≤ y ≤ 4, with the curves y = Ce^(x²/2) for C = 0.25, 0.5, 1, 2 in crimson above the x-axis, for C = −0.25, −0.5, −1, −2 in blue below it, and C = 0, the x-axis itself, in green. Each curve is flattest at x = 0 and follows the segments." width="600" height="500" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The general solution <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>A</mi><msup><mi>e</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">y = Ae^{x^2/2}</annotation></semantics></math> of <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>x</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = xy</annotation></semantics></math> drawn on its slope field: <math class="calc-m"><semantics><mrow><mi>A</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A &gt; 0</annotation></semantics></math> above the axis, <math class="calc-m"><semantics><mrow><mi>A</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A &lt; 0</annotation></semantics></math> below, <math class="calc-m"><semantics><mrow><mi>A</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A = 0</annotation></semantics></math> on it. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Two algebra facts do most of the work here. First, <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></msup><mo>=</mo><msup><mi>e</mi><mi>a</mi></msup><msup><mi>e</mi><mi>b</mi></msup></mrow><annotation encoding="application/x-tex">e^{a + b} = e^{a}e^{b}</annotation></semantics></math>, which turns <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>/</mo><mn>2</mn><mo>+</mo><mi>C</mi></mrow></msup></mrow><annotation encoding="application/x-tex">e^{x^2/2 + C}</annotation></semantics></math> into a constant times <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">e^{x^2/2}</annotation></semantics></math>; it is not <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>/</mo><mn>2</mn></mrow></msup><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">e^{x^2/2} + C</annotation></semantics></math>. Second, <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">|</mo><mi>y</mi><mo stretchy="false">|</mo><mo>=</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">\ln|y| = u</annotation></semantics></math> means <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>y</mi><mo stretchy="false">|</mo><mo>=</mo><msup><mi>e</mi><mi>u</mi></msup></mrow><annotation encoding="application/x-tex">|y| = e^{u}</annotation></semantics></math>; you undo a <a class="gl" href="../notes/math-exp-log.html" data-c="natural-log">logarithm</a> by exponentiating the <i>whole</i> other side.</p>
+
+<h2 id="shifted-variables">Shifted variables</h2>
+<p>The cooling equation <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>T</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.05</mn><mo stretchy="false">(</mo><mi>T</mi><mo>−</mo><mn>20</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{dT}{dt} = -0.05(T - 20)</annotation></semantics></math> separates as <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>T</mi></mrow><mrow><mi>T</mi><mo>−</mo><mn>20</mn></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.05</mn><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\frac{dT}{T - 20} = -0.05\,dt</annotation></semantics></math>. The whole quantity <math class="calc-m"><semantics><mrow><mi>T</mi><mo>−</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">T - 20</annotation></semantics></math> stays together in the denominator, and its antiderivative is <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">|</mo><mi>T</mi><mo>−</mo><mn>20</mn><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\ln|T - 20|</annotation></semantics></math>:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">|</mo><mi>T</mi><mo>−</mo><mn>20</mn><mo stretchy="false">|</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.05</mn><mi>t</mi><mo>+</mo><mi>C</mi><mo>,</mo><mspace width="2em"></mspace><mi>T</mi><mo>=</mo><mn>20</mn><mo>+</mo><mi>A</mi><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.05</mn><mi>t</mi></mrow></msup><mo>.</mo></mrow><annotation encoding="application/x-tex">\ln|T - 20| = -0.05t + C, \qquad T = 20 + Ae^{-0.05t}.</annotation></semantics></math></p>
+
+<h2 id="common-slips">Common slips</h2>
+<ul>
+<li>Leaving an <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> on the <math class="calc-m"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math> side or a <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> on the <math class="calc-m"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math> side. If the variables will not separate, the method does not apply.</li>
+<li>Missing <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">+ C</annotation></semantics></math>, or adding it only after solving for <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>.</li>
+<li>Writing <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">\ln y</annotation></semantics></math> instead of <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">|</mo><mi>y</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\ln|y|</annotation></semantics></math>, which loses the negative solutions.</li>
+<li>Writing <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mrow><mi>u</mi><mo>+</mo><mi>C</mi></mrow></msup><mo>=</mo><msup><mi>e</mi><mi>u</mi></msup><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">e^{u + C} = e^{u} + C</annotation></semantics></math>. It is <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mi>C</mi></msup><msup><mi>e</mi><mi>u</mi></msup></mrow><annotation encoding="application/x-tex">e^{C}e^{u}</annotation></semantics></math>, a constant <i>times</i> <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mi>u</mi></msup></mrow><annotation encoding="application/x-tex">e^{u}</annotation></semantics></math>.</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:separation-of-variables">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="reasoning-with-slope-fields.html"><span>&larr; Previous</span><b>Reasoning with Slope Fields</b></a><a class="tb-chapter-link next" href="particular-solutions.html"><span>Next &rarr;</span><b>Particular Solutions from Initial Conditions</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:separation-of-variables">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

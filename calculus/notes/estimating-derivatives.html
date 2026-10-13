@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estimating a Derivative at a Point — AP® Calculus AB Notes</title>
+<meta name="description" content="The definition of the derivative needs a formula: you substitute a + h , simplify and take a limit. Real data rarely comes with a formula.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/estimating-derivatives.html">
+<meta property="og:title" content="Estimating a Derivative at a Point — AP® Calculus AB Notes">
+<meta property="og:description" content="The definition of the derivative needs a formula: you substitute a + h , simplify and take a limit. Real data rarely comes with a formula.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/estimating-derivatives.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/estimating-derivatives.html#reading",
+      "name": "Estimating a Derivative at a Point",
+      "url": "https://levlprep.com/calculus/notes/estimating-derivatives.html",
+      "description": "The definition of the derivative needs a formula: you substitute a + h , simplify and take a limit. Real data rarely comes with a formula.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "estimating a derivative at a point ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Differentiation: Definition and Fundamental Properties",
+          "item": "https://levlprep.com/calculus/units/unit-2.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Estimating a Derivative at a Point: notes",
+          "item": "https://levlprep.com/calculus/notes/estimating-derivatives.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="estimating-derivatives" data-unit="unit-2">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 2 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-1.html"><span class="bk-toc-n">1</span>Limits and Continuity</a>
+    <a class="bk-toc-chap" href="../units/unit-2.html"><span class="bk-toc-chap-n">2</span><span><b>Differentiation: Definition and Fundamental Properties</b><small>10 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-2"><div class="tb-progress-row"><span><b>0</b> of 10 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="average-and-instant-rates"><a href="average-and-instant-rates.html"><span class="bk-toc-n">2.1</span>Average and Instantaneous Rates of Change</a></li><li data-toc-t="derivative-definition"><a href="derivative-definition.html"><span class="bk-toc-n">2.2</span>The Derivative and Its Notation</a></li><li class="current" data-toc-t="estimating-derivatives"><a href="#main" aria-current="page"><span class="bk-toc-n">2.3</span>Estimating a Derivative at a Point</a><div class="bk-toc-onpage"><p>On this page</p><a href="#from-a-table-a-difference-quotient">From a table: a difference quotient you can compute</a><a href="#uneven-spacing-is-fine">Uneven spacing is fine</a><a href="#the-symmetric-difference-quotient">The symmetric difference quotient</a><a href="#from-a-graph">From a graph</a><a href="#with-a-calculator">With a calculator</a><a href="#which-estimate-to-trust">Which estimate to trust</a></div></li><li data-toc-t="differentiability"><a href="differentiability.html"><span class="bk-toc-n">2.4</span>Differentiability and Continuity</a></li><li data-toc-t="power-rule"><a href="power-rule.html"><span class="bk-toc-n">2.5</span>The Power Rule</a></li><li data-toc-t="basic-derivative-rules"><a href="basic-derivative-rules.html"><span class="bk-toc-n">2.6</span>Constant, Sum, Difference and Constant Multiple Rules</a></li><li data-toc-t="derivatives-sin-cos-exp-ln"><a href="derivatives-sin-cos-exp-ln.html"><span class="bk-toc-n">2.7</span>Derivatives of sin x, cos x, e to the x and ln x</a></li><li data-toc-t="product-rule"><a href="product-rule.html"><span class="bk-toc-n">2.8</span>The Product Rule</a></li><li data-toc-t="quotient-rule"><a href="quotient-rule.html"><span class="bk-toc-n">2.9</span>The Quotient Rule</a></li><li data-toc-t="other-trig-derivatives"><a href="other-trig-derivatives.html"><span class="bk-toc-n">2.10</span>Derivatives of tan, cot, sec and csc</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Differentiation: Composite, Implicit, and Inverse Functions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Differentiation: Definition and Fundamental Properties</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Estimating a Derivative at a Point: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/estimating-derivatives.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 2 &middot; Topic 2.3 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Estimating a Derivative at a Point</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">5 min read &middot; free</span><span class="bk-chip" data-chip-topic="estimating-derivatives">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Festimating-derivatives.html&amp;title=Estimating%20a%20Derivative%20at%20a%20Point%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/estimating-derivatives.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>The definition of the <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a> needs a formula: you substitute <math class="calc-m"><semantics><mrow><mi>a</mi><mo>+</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">a + h</annotation></semantics></math>, simplify and take a <a class="gl" href="../notes/limit-notation.html" data-c="limit">limit</a>. Real data rarely comes with a formula. A thermometer gives readings every few minutes; a graph gives a picture. This page shows how to estimate <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(a)</annotation></semantics></math> from a table, from a graph and with a calculator, and how to say what the estimate means.</p>
+
+<h2 id="from-a-table-a-difference-quotient">From a table: a difference quotient you can compute</h2>
+<p>The derivative is the limit of <a class="gl" href="../notes/average-and-instant-rates.html" data-c="difference-quotient">difference quotients</a> as the interval shrinks. With a table, you cannot shrink the interval past the data, so you stop at the best interval the table offers and use that quotient as the estimate.</p>
+<p>To estimate <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(a)</annotation></semantics></math> from a table:</p>
+<ol>
+<li><b>Pick two inputs on either side of <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></b>, as close to <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> as the table allows: <math class="calc-m"><semantics><mrow><mi>c</mi><mo>&lt;</mo><mi>a</mi><mo>&lt;</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">c &lt; a &lt; b</annotation></semantics></math>. If <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> itself is in the table, the closest inputs just before and just after it are a good choice.</li>
+<li><b>Compute</b> <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><mrow><mi>b</mi><mo>−</mo><mi>c</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{f(b) - f(c)}{b - c}</annotation></semantics></math>, subtracting in the same order on top and bottom.</li>
+<li><b>Attach units</b>: <a class="gl" href="../notes/math-functions.html" data-c="function">output</a> units per input unit.</li>
+</ol>
+<p>The interval must contain <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>. A quotient from data far away describes a different stretch of the function. At the first or last entry of a table there is only one side, so use the closest one-sided quotient.</p>
+<figure id="fig-bread"  class="calc-figure"><div class="calc-figimg" data-fig="table-difference-quotient"><img src="../figures/table-difference-quotient.svg" alt="Five measured temperatures B(t) of a cooling loaf of bread, in degrees Fahrenheit, at t = 0, 4, 10, 14 and 20 minutes: 180, 152, 121, 105 and 88. A dashed secant line joins the points at t = 10 and t = 14, on either side of t = 12. Its slope, (105 minus 121) over (14 minus 10), is minus 4 degrees Fahrenheit per minute, the estimate of B prime of 12." width="780" height="400" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Temperature of a cooling loaf of bread. The secant line through the data at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">t = 10</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>14</mn></mrow><annotation encoding="application/x-tex">t = 14</annotation></semantics></math> gives the estimate of <math class="calc-m"><semantics><mrow><mrow><mi>B</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>12</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B'(12)</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example 1.</b> A loaf of bread cools on a rack. Its temperature <math class="calc-m"><semantics><mrow><mi>B</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B(t)</annotation></semantics></math>, in degrees Fahrenheit, is recorded at <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> minutes.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th><math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> (minutes)</th><th>0</th><th>4</th><th>10</th><th>14</th><th>20</th></tr></thead>
+<tbody><tr><td><math class="calc-m"><semantics><mrow><mi>B</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B(t)</annotation></semantics></math> (degrees Fahrenheit)</td><td>180</td><td>152</td><td>121</td><td>105</td><td>88</td></tr></tbody>
+</table></div>
+<p>Estimate <math class="calc-m"><semantics><mrow><mrow><mi>B</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>12</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B'(12)</annotation></semantics></math> and interpret it.</p>
+<p>Inputs on either side of 12: <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">t = 10</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>14</mn></mrow><annotation encoding="application/x-tex">t = 14</annotation></semantics></math>.</p>
+<p>Quotient: <math class="calc-m"><semantics><mrow><mrow><mi>B</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>12</mn><mo stretchy="false">)</mo><mo>≈</mo><mfrac><mrow><mi>B</mi><mo stretchy="false">(</mo><mn>14</mn><mo stretchy="false">)</mo><mo>−</mo><mi>B</mi><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo></mrow><mrow><mn>14</mn><mo>−</mo><mn>10</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>105</mn><mo>−</mo><mn>121</mn></mrow><mn>4</mn></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">B'(12) \approx \frac{B(14) - B(10)}{14 - 10} = \frac{105 - 121}{4} = -4</annotation></semantics></math> degrees Fahrenheit per minute.</p>
+<p>Meaning: at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">t = 12</annotation></semantics></math> minutes, the bread's temperature is decreasing at about 4 degrees Fahrenheit per minute.</p>
+</div>
+<p>Notice what the answer is: a rate, with "per minute" in its units. A frequent slip is to give a temperature instead, such as averaging <math class="calc-m"><semantics><mrow><mi>B</mi><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B(10)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>B</mi><mo stretchy="false">(</mo><mn>14</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B(14)</annotation></semantics></math> to get 113. That estimates <math class="calc-m"><semantics><mrow><mi>B</mi><mo stretchy="false">(</mo><mn>12</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B(12)</annotation></semantics></math>, the value, not <math class="calc-m"><semantics><mrow><mrow><mi>B</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>12</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B'(12)</annotation></semantics></math>, the rate.</p>
+<p>Notice, too, how the sentence is built. It names the time (<math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">t = 12</annotation></semantics></math>), the quantity (the bread's temperature), the direction (decreasing, from the negative sign) and the units. A sentence that says only "the <a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a> is <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">-4</annotation></semantics></math>" leaves out everything a reader needs.</p>
+
+<h2 id="uneven-spacing-is-fine">Uneven spacing is fine</h2>
+<p>Tables on the exam often have unequal gaps. Use the actual widths. With data at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">t = 9</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">t = 12</annotation></semantics></math>, the width is 3, whatever the other gaps are. In Worked example 1, the intervals are 4, 6, 4 and 6 minutes wide; each quotient divides by its own width.</p>
+
+<h2 id="the-symmetric-difference-quotient">The symmetric difference quotient</h2>
+<p>If you know <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>a</mi><mo>−</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">a - h</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>a</mi><mo>+</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">a + h</annotation></semantics></math>, the quotient across the point,</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo>−</mo><mi>h</mi><mo stretchy="false">)</mo></mrow><mrow><mn>2</mn><mi>h</mi></mrow></mfrac><mo>,</mo></mrow><annotation encoding="application/x-tex">\frac{f(a + h) - f(a - h)}{2h},</annotation></semantics></math></p>
+<p>is the <b>symmetric difference quotient</b>. Its denominator is the full width <math class="calc-m"><semantics><mrow><mn>2</mn><mi>h</mi></mrow><annotation encoding="application/x-tex">2h</annotation></semantics></math>. It equals the average of the left quotient <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo>−</mo><mi>h</mi><mo stretchy="false">)</mo></mrow><mi>h</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{f(a) - f(a - h)}{h}</annotation></semantics></math> and the right quotient <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mi>h</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{f(a + h) - f(a)}{h}</annotation></semantics></math>, and their errors partly cancel, so it is usually much closer to <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(a)</annotation></semantics></math> than either one.</p>
+
+<div class="worked">
+<p><b>Worked example 2.</b> A function has <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>2.9</mn><mo stretchy="false">)</mo><mo>=</mo><mn>24.389</mn></mrow><annotation encoding="application/x-tex">f(2.9) = 24.389</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>27</mn></mrow><annotation encoding="application/x-tex">f(3) = 27</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>3.1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>29.791</mn></mrow><annotation encoding="application/x-tex">f(3.1) = 29.791</annotation></semantics></math>. Estimate <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(3)</annotation></semantics></math>.</p>
+<p>Left: <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>27</mn><mo>−</mo><mn>24.389</mn></mrow><mn>0.1</mn></mfrac><mo>=</mo><mn>26.11</mn></mrow><annotation encoding="application/x-tex">\frac{27 - 24.389}{0.1} = 26.11</annotation></semantics></math>. Right: <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>29.791</mn><mo>−</mo><mn>27</mn></mrow><mn>0.1</mn></mfrac><mo>=</mo><mn>27.91</mn></mrow><annotation encoding="application/x-tex">\frac{29.791 - 27}{0.1} = 27.91</annotation></semantics></math>.</p>
+<p>Symmetric: <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>29.791</mn><mo>−</mo><mn>24.389</mn></mrow><mn>0.2</mn></mfrac><mo>=</mo><mfrac><mn>5.402</mn><mn>0.2</mn></mfrac><mo>=</mo><mn>27.01</mn></mrow><annotation encoding="application/x-tex">\frac{29.791 - 24.389}{0.2} = \frac{5.402}{0.2} = 27.01</annotation></semantics></math>, the average of the two. (These are values of <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">x^3</annotation></semantics></math>, whose derivative at 3 turns out to be exactly 27.)</p>
+</div>
+
+<h2 id="from-a-graph">From a graph</h2>
+<p>When you have a graph, the derivative at <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> is the slope of the <a class="gl" href="../notes/derivative-definition.html" data-c="tangent-line">tangent line</a> at <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, f(a))</annotation></semantics></math>. If the tangent line is drawn, read two points on it where it crosses grid lines and compute rise over run. If it is not drawn, lay a ruler along the curve so that it just touches at the point, then read two points on the ruler. Choose points far apart on the line: small reading errors matter less over a long run.</p>
+<p>A graph also tells you the sign of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(a)</annotation></semantics></math> at a glance: positive where the graph rises, negative where it falls, zero where its tangent line is level.</p>
+
+<h2 id="with-a-calculator">With a calculator</h2>
+<p>A graphing calculator has a <b><span class="gl" tabindex="0" data-c="numerical-derivative">numerical derivative</span></b> command. Give it the function and the input, and it returns a decimal estimate of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(a)</annotation></semantics></math>, computed from a symmetric difference quotient with a very small <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math>. On calculator questions:</p>
+<ul>
+<li>Write the setup, such as <math class="calc-m"><semantics><mrow><msub><mrow><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mrow><mo fence="true" stretchy="true">(</mo><mfrac><msup><mi>e</mi><mi>x</mi></msup><mrow><mn>1</mn><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo fence="true" stretchy="true">)</mo></mrow></mrow><mo fence="true" stretchy="true">|</mo></mrow><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow></msub></mrow><annotation encoding="application/x-tex">\left.\frac{d}{dx}\left( \frac{e^x}{1 + x^2} \right)\right|_{x=2}</annotation></semantics></math>, then the value. A bare number earns little.</li>
+<li>Give three decimal places: <math class="calc-m"><semantics><mrow><mn>0.296</mn></mrow><annotation encoding="application/x-tex">0.296</annotation></semantics></math>. Store intermediate values instead of rounding them.</li>
+<li>Use <a class="gl" href="../notes/math-trig.html" data-c="radian">radian</a> mode whenever a <a class="gl" href="../notes/math-trig.html" data-c="trig-function">trigonometric function</a> appears.</li>
+</ul>
+
+<h2 id="which-estimate-to-trust">Which estimate to trust</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Method</th><th>Uses</th><th>When</th></tr></thead>
+<tbody>
+<tr><td>Quotient across <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> from a table</td><td>the closest data on each side</td><td>data only; the usual exam method</td></tr>
+<tr><td>One-sided quotient</td><td><math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> and its nearest neighbor</td><td><math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> is the first or last entry</td></tr>
+<tr><td>Tangent line on a graph</td><td>two points on the line</td><td>a graph with the line drawn</td></tr>
+<tr><td>Numerical derivative</td><td>the calculator</td><td>a formula on a calculator question</td></tr>
+</tbody>
+</table></div>
+<p>Every one of these is an approximation of a limit. The exam asks for the estimate, its setup and its units; it does not expect the exact value. The next topic asks when a derivative exists at all.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:estimating-derivatives">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="derivative-definition.html"><span>&larr; Previous</span><b>The Derivative and Its Notation</b></a><a class="tb-chapter-link next" href="differentiability.html"><span>Next &rarr;</span><b>Differentiability and Continuity</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:estimating-derivatives">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

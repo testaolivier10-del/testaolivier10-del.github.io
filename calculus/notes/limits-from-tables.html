@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estimating Limits from Tables — AP® Calculus AB Notes</title>
+<meta name="description" content="Estimating Limits from Tables explained from scratch: free calculus study notes with figures and worked examples.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/limits-from-tables.html">
+<meta property="og:title" content="Estimating Limits from Tables — AP® Calculus AB Notes">
+<meta property="og:description" content="Estimating Limits from Tables explained from scratch: free calculus study notes with figures and worked examples.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/limits-from-tables.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/limits-from-tables.html#reading",
+      "name": "Estimating Limits from Tables",
+      "url": "https://levlprep.com/calculus/notes/limits-from-tables.html",
+      "description": "Estimating Limits from Tables explained from scratch: free calculus study notes with figures and worked examples.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "estimating limits from tables ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Limits and Continuity",
+          "item": "https://levlprep.com/calculus/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Estimating Limits from Tables: notes",
+          "item": "https://levlprep.com/calculus/notes/limits-from-tables.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="limits-from-tables" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Limits and Continuity</b><small>16 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 16 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="change-at-an-instant"><a href="change-at-an-instant.html"><span class="bk-toc-n">1.1</span>Can Change Happen at an Instant?</a></li><li data-toc-t="limit-notation"><a href="limit-notation.html"><span class="bk-toc-n">1.2</span>What a Limit Is and How to Write It</a></li><li data-toc-t="limits-from-plots"><a href="limits-from-plots.html"><span class="bk-toc-n">1.3</span>Reading Limits from a Graph</a></li><li class="current" data-toc-t="limits-from-tables"><a href="#main" aria-current="page"><span class="bk-toc-n">1.4</span>Estimating Limits from Tables</a><div class="bk-toc-onpage"><p>On this page</p><a href="#closing-in-from-both-sides">Closing in from both sides</a><a href="#when-a-table-says-no-limit">When a table says &quot;no limit&quot;</a><a href="#a-table-suggests-it-does-not">A table suggests; it does not prove</a><a href="#tables-in-context">Tables in context</a></div></li><li data-toc-t="limit-laws"><a href="limit-laws.html"><span class="bk-toc-n">1.5</span>Limit Laws</a></li><li data-toc-t="limit-algebra"><a href="limit-algebra.html"><span class="bk-toc-n">1.6</span>Limits by Algebra: Factor, Rationalize, Simplify</a></li><li data-toc-t="choosing-limit-methods"><a href="choosing-limit-methods.html"><span class="bk-toc-n">1.7</span>Choosing a Way to Find a Limit</a></li><li data-toc-t="squeeze-theorem"><a href="squeeze-theorem.html"><span class="bk-toc-n">1.8</span>The Squeeze Theorem</a></li><li data-toc-t="limit-representations"><a href="limit-representations.html"><span class="bk-toc-n">1.9</span>Limits Across Graphs, Tables and Formulas</a></li><li data-toc-t="discontinuity-types"><a href="discontinuity-types.html"><span class="bk-toc-n">1.10</span>Types of Discontinuity</a></li><li data-toc-t="continuity-at-a-point"><a href="continuity-at-a-point.html"><span class="bk-toc-n">1.11</span>Continuity at a Point</a></li><li data-toc-t="continuity-on-intervals"><a href="continuity-on-intervals.html"><span class="bk-toc-n">1.12</span>Continuity on an Interval</a></li><li data-toc-t="removing-discontinuities"><a href="removing-discontinuities.html"><span class="bk-toc-n">1.13</span>Removing a Discontinuity</a></li><li data-toc-t="infinite-limits"><a href="infinite-limits.html"><span class="bk-toc-n">1.14</span>Infinite Limits and Vertical Asymptotes</a></li><li data-toc-t="limits-at-infinity"><a href="limits-at-infinity.html"><span class="bk-toc-n">1.15</span>Limits at Infinity and Horizontal Asymptotes</a></li><li data-toc-t="intermediate-value-theorem"><a href="intermediate-value-theorem.html"><span class="bk-toc-n">1.16</span>The Intermediate Value Theorem</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Differentiation: Definition and Fundamental Properties</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Limits and Continuity</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Estimating Limits from Tables: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/limits-from-tables.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 1 &middot; Topic 1.4 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Estimating Limits from Tables</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">3 min read &middot; free</span><span class="bk-chip" data-chip-topic="limits-from-tables">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Flimits-from-tables.html&amp;title=Estimating%20Limits%20from%20Tables%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/limits-from-tables.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>A graph lets you see a <a class="gl" href="../notes/limit-notation.html" data-c="limit">limit</a>. A table lets you test one. When you can evaluate a <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> but cannot see its graph, or when all you have is a set of measurements, you choose inputs closer and closer to the point and watch the outputs. This page shows how to build that table, how to read it, and how a table can fool you if you stop too soon.</p>
+
+<h2 id="closing-in-from-both-sides">Closing in from both sides</h2>
+<p>To estimate <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to a} f(x)</annotation></semantics></math>, pick inputs that approach <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> from the left and from the right, getting closer each time. A standard choice is to shrink the distance by a factor of 10:</p>
+<p style="text-align:center"><math class="calc-m"><semantics><mrow><mi>a</mi><mo>−</mo><mn>0.1</mn><mo>,</mo><mspace width="0.2778em"></mspace><mi>a</mi><mo>−</mo><mn>0.01</mn><mo>,</mo><mspace width="0.2778em"></mspace><mi>a</mi><mo>−</mo><mn>0.001</mn></mrow><annotation encoding="application/x-tex">a - 0.1, \; a - 0.01, \; a - 0.001</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>a</mi><mo>+</mo><mn>0.001</mn><mo>,</mo><mspace width="0.2778em"></mspace><mi>a</mi><mo>+</mo><mn>0.01</mn><mo>,</mo><mspace width="0.2778em"></mspace><mi>a</mi><mo>+</mo><mn>0.1</mn></mrow><annotation encoding="application/x-tex">a + 0.001, \; a + 0.01, \; a + 0.1</annotation></semantics></math></p>
+<p>Skip <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math> itself. The limit never uses it, and often the formula is undefined there anyway. Then read each side the way you read each side of a graph: the outputs for inputs below <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> estimate the <a class="gl" href="../notes/limits-from-plots.html" data-c="one-sided-limit">left-hand limit</a>, and those above <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> estimate the right-hand limit.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Estimate <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>2</mn></mrow></munder><mfrac><mrow><msqrt><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow></msqrt><mo>−</mo><mn>2</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 2} \frac{\sqrt{x + 2} - 2}{x - 2}</annotation></semantics></math>.</p>
+<p>At <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math> the formula has a zero denominator, so make a table:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th><math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></th><td>1.9</td><td>1.99</td><td>1.999</td><td>2.001</td><td>2.01</td><td>2.1</td></tr></thead>
+<tbody><tr><th><math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math></th><td>0.251582</td><td>0.250156</td><td>0.250016</td><td>0.249984</td><td>0.249844</td><td>0.248457</td></tr></tbody>
+</table></div>
+<p>From the left, the values fall toward 0.25. From the right, they rise toward 0.25. Both sides agree, so the table suggests <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>2</mn></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.25</mn><mo>=</mo><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 2} f(x) = 0.25 = \frac{1}{4}</annotation></semantics></math>.</p>
+</div>
+<figure id="fig-zoom"  class="calc-figure"><div class="calc-figimg" data-fig="table-zoom"><img src="../figures/table-zoom.svg" alt="Left: the graph of f(x) = (square root of (x + 2) minus 2) over (x - 2), falling slowly, with an open circle at (2, 0.25). Right: a zoom near x = 2 showing points at x = 1.9, 1.99, 2.01 and 2.1 close to the open circle. Below: a table of x = 1.9, 1.99, 1.999, 2, 2.001, 2.01, 2.1 with f(x) = 0.251582, 0.250156, 0.250016, undefined, 0.249984, 0.249844, 0.248457." width="800" height="450" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The table's points on the graph. Zoomed in, they crowd around the open circle at height 0.25. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>The estimate is the number the values <i>approach</i>. The table value closest to <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>, 0.250016, is only an approximation; the limit is 0.25. On the exam, a question that says "estimate the limit" from a table expects that settled number.</p>
+
+<h2 id="when-a-table-says-no-limit">When a table says "no limit"</h2>
+<p>The same three behaviors that stop a limit on a graph show up in tables:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>The table shows</th><th>Conclusion</th></tr></thead>
+<tbody>
+<tr><td>Left side settles on one number, right side on another</td><td>one-sided limits differ: no limit</td></tr>
+<tr><td>Outputs like 100, 10,000, 1,000,000 as <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> gets closer</td><td><a class="gl" href="../notes/limits-from-plots.html" data-c="unbounded">unbounded</a>: no limit</td></tr>
+<tr><td>Outputs that keep jumping around, never settling</td><td>oscillating: no limit</td></tr>
+</tbody>
+</table></div>
+<div class="worked">
+<p><b>Worked example 2.</b> A shipping company charges <math class="calc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(w)</annotation></semantics></math> dollars for a package of weight <math class="calc-m"><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math> pounds. Its table gives 5.25 for <math class="calc-m"><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math> = 1.9, 1.99, 1.999 and 2, and 7.40 for <math class="calc-m"><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math> = 2.001, 2.01, 2.1. Find the one-sided limits at 2 and decide whether <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>w</mi><mo>→</mo><mn>2</mn></mrow></munder><mi>C</mi><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{w \to 2} C(w)</annotation></semantics></math> exists.</p>
+<p><math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>w</mi><mo>→</mo><msup><mn>2</mn><mo>−</mo></msup></mrow></munder><mi>C</mi><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo><mo>=</mo><mn>5.25</mn></mrow><annotation encoding="application/x-tex">\lim_{w \to 2^-} C(w) = 5.25</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>w</mi><mo>→</mo><msup><mn>2</mn><mo>+</mo></msup></mrow></munder><mi>C</mi><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo><mo>=</mo><mn>7.40</mn></mrow><annotation encoding="application/x-tex">\lim_{w \to 2^+} C(w) = 7.40</annotation></semantics></math> (dollars).</p>
+<p>Since <math class="calc-m"><semantics><mrow><mn>5.25</mn><mo>≠</mo><mn>7.40</mn></mrow><annotation encoding="application/x-tex">5.25 \ne 7.40</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>w</mi><mo>→</mo><mn>2</mn></mrow></munder><mi>C</mi><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{w \to 2} C(w)</annotation></semantics></math> does not exist. In context: the price jumps for packages just over 2 pounds.</p>
+</div>
+
+<h2 id="a-table-suggests-it-does-not">A table suggests; it does not prove</h2>
+<p>A table checks finitely many inputs, and a function can do something surprising between them or closer in. Here is a function <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> built to fool a short table:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th><math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></th><td>1.1</td><td>1.01</td><td>1.001</td><td>1.0001</td><td>1.00001</td></tr></thead>
+<tbody><tr><th><math class="calc-m"><semantics><mrow><mi>k</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">k(x)</annotation></semantics></math></th><td>2.0001</td><td>2.0099</td><td>2.5</td><td>2.9901</td><td>2.9999</td></tr></tbody>
+</table></div>
+<p>Stop after two columns and you would say the limit is 2. Keep going and the values head to 3. The lesson is not that tables are useless. It is that you keep going until the values clearly settle, and when the stakes are high, you confirm with algebra or a graph.</p>
+<p>A second caution: a calculator rounds. For inputs extremely close to <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>, such as <math class="calc-m"><semantics><mrow><mi>a</mi><mo>+</mo><msup><mn>10</mn><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>12</mn></mrow></msup></mrow><annotation encoding="application/x-tex">a + 10^{-12}</annotation></semantics></math>, subtracting two nearly equal numbers can wipe out the digits that matter, and the calculator may show nonsense like 0. Inputs within 0.001 or 0.0001 of <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> are usually plenty.</p>
+
+<h2 id="tables-in-context">Tables in context</h2>
+<p>Exam tables often come from measurements: temperatures, costs, flow rates. When you state a limit in context, include the units and the direction. "As the weight approaches 2 pounds from above, the shipping cost approaches $7.40" is a complete answer. And as always, a value in the table at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math> itself, such as <math class="calc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5.25</mn></mrow><annotation encoding="application/x-tex">C(2) = 5.25</annotation></semantics></math>, tells you <math class="calc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(2)</annotation></semantics></math> and nothing about the limit.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:limits-from-tables">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="limits-from-plots.html"><span>&larr; Previous</span><b>Reading Limits from a Graph</b></a><a class="tb-chapter-link next" href="limit-laws.html"><span>Next &rarr;</span><b>Limit Laws</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:limits-from-tables">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

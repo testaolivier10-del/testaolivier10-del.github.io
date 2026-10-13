@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Limit Laws — AP® Calculus AB Notes | LevlPrep</title>
+<meta name="description" content="So far you have estimated limits by looking: at a graph, at a table. Now you will find them exactly, with rules.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/limit-laws.html">
+<meta property="og:title" content="Limit Laws — AP® Calculus AB Notes | LevlPrep">
+<meta property="og:description" content="So far you have estimated limits by looking: at a graph, at a table. Now you will find them exactly, with rules.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/limit-laws.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/limit-laws.html#reading",
+      "name": "Limit Laws",
+      "url": "https://levlprep.com/calculus/notes/limit-laws.html",
+      "description": "So far you have estimated limits by looking: at a graph, at a table. Now you will find them exactly, with rules.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "limit laws ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Limits and Continuity",
+          "item": "https://levlprep.com/calculus/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Limit Laws: notes",
+          "item": "https://levlprep.com/calculus/notes/limit-laws.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="limit-laws" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Limits and Continuity</b><small>16 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 16 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="change-at-an-instant"><a href="change-at-an-instant.html"><span class="bk-toc-n">1.1</span>Can Change Happen at an Instant?</a></li><li data-toc-t="limit-notation"><a href="limit-notation.html"><span class="bk-toc-n">1.2</span>What a Limit Is and How to Write It</a></li><li data-toc-t="limits-from-plots"><a href="limits-from-plots.html"><span class="bk-toc-n">1.3</span>Reading Limits from a Graph</a></li><li data-toc-t="limits-from-tables"><a href="limits-from-tables.html"><span class="bk-toc-n">1.4</span>Estimating Limits from Tables</a></li><li class="current" data-toc-t="limit-laws"><a href="#main" aria-current="page"><span class="bk-toc-n">1.5</span>Limit Laws</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-limit-laws">The limit laws</a><a href="#direct-substitution">Direct substitution</a><a href="#when-the-laws-are-silent">When the laws are silent</a><a href="#one-sided-limits-from-formulas">One-sided limits from formulas</a><a href="#limits-of-compositions">Limits of compositions</a></div></li><li data-toc-t="limit-algebra"><a href="limit-algebra.html"><span class="bk-toc-n">1.6</span>Limits by Algebra: Factor, Rationalize, Simplify</a></li><li data-toc-t="choosing-limit-methods"><a href="choosing-limit-methods.html"><span class="bk-toc-n">1.7</span>Choosing a Way to Find a Limit</a></li><li data-toc-t="squeeze-theorem"><a href="squeeze-theorem.html"><span class="bk-toc-n">1.8</span>The Squeeze Theorem</a></li><li data-toc-t="limit-representations"><a href="limit-representations.html"><span class="bk-toc-n">1.9</span>Limits Across Graphs, Tables and Formulas</a></li><li data-toc-t="discontinuity-types"><a href="discontinuity-types.html"><span class="bk-toc-n">1.10</span>Types of Discontinuity</a></li><li data-toc-t="continuity-at-a-point"><a href="continuity-at-a-point.html"><span class="bk-toc-n">1.11</span>Continuity at a Point</a></li><li data-toc-t="continuity-on-intervals"><a href="continuity-on-intervals.html"><span class="bk-toc-n">1.12</span>Continuity on an Interval</a></li><li data-toc-t="removing-discontinuities"><a href="removing-discontinuities.html"><span class="bk-toc-n">1.13</span>Removing a Discontinuity</a></li><li data-toc-t="infinite-limits"><a href="infinite-limits.html"><span class="bk-toc-n">1.14</span>Infinite Limits and Vertical Asymptotes</a></li><li data-toc-t="limits-at-infinity"><a href="limits-at-infinity.html"><span class="bk-toc-n">1.15</span>Limits at Infinity and Horizontal Asymptotes</a></li><li data-toc-t="intermediate-value-theorem"><a href="intermediate-value-theorem.html"><span class="bk-toc-n">1.16</span>The Intermediate Value Theorem</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Differentiation: Definition and Fundamental Properties</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Limits and Continuity</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Limit Laws: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/limit-laws.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 1 &middot; Topic 1.5 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Limit Laws</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">5 min read &middot; free</span><span class="bk-chip" data-chip-topic="limit-laws">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Flimit-laws.html&amp;title=Limit%20Laws%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/limit-laws.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>So far you have estimated <a class="gl" href="../notes/limit-notation.html" data-c="limit">limits</a> by looking: at a graph, at a table. Now you will find them exactly, with rules. The good news is that the rules are the ones you would guess. Limits respect ordinary arithmetic. If you know where <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(x)</annotation></semantics></math> are heading, you know where <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>+</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x) + g(x)</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)g(x)</annotation></semantics></math> and many other combinations are heading. For most <a class="gl" href="../notes/math-functions.html" data-c="function">functions</a> in this course, the rules boil down to one step: substitute.</p>
+
+<h2 id="the-limit-laws">The limit laws</h2>
+<p>Suppose <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to a} f(x) = L</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to a} g(x) = M</annotation></semantics></math>, and both of these limits exist. Then:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Law</th><th>In symbols</th><th>Condition</th></tr></thead>
+<tbody>
+<tr><td>Sum and difference</td><td><math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><mrow><mo fence="true" stretchy="true">[</mo><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>±</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">]</mo></mrow><mo>=</mo><mi>L</mi><mo>±</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to a} \left[f(x) \pm g(x)\right] = L \pm M</annotation></semantics></math></td><td></td></tr>
+<tr><td>Constant multiple</td><td><math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><mi>k</mi><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>k</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to a} k f(x) = kL</annotation></semantics></math></td><td></td></tr>
+<tr><td>Product</td><td><math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>L</mi><mi>M</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to a} f(x) g(x) = LM</annotation></semantics></math></td><td></td></tr>
+<tr><td>Quotient</td><td><math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mfrac><mi>L</mi><mi>M</mi></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{L}{M}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>M</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">M \ne 0</annotation></semantics></math></td></tr>
+<tr><td>Power</td><td><math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><msup><mrow><mo fence="true" stretchy="true">[</mo><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">]</mo></mrow><mi>n</mi></msup><mo>=</mo><msup><mi>L</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">\lim_{x \to a} \left[f(x)\right]^n = L^n</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math> a positive integer</td></tr>
+<tr><td>Root</td><td><math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><msqrt><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></msqrt><mo>=</mo><msqrt><mi>L</mi></msqrt></mrow><annotation encoding="application/x-tex">\lim_{x \to a} \sqrt{f(x)} = \sqrt{L}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>L</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">L &gt; 0</annotation></semantics></math> for even roots</td></tr>
+</tbody>
+</table></div>
+<p>Two simple limits start everything off: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><mi>k</mi><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to a} k = k</annotation></semantics></math> for a constant <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math>, and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to a} x = a</annotation></semantics></math>. Both are obvious from their graphs, a flat line and the line <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y = x</annotation></semantics></math>.</p>
+<figure id="fig-laws"  class="calc-figure"><div class="calc-figimg" data-fig="limit-laws-sum"><img src="../figures/limit-laws-sum.svg" alt="Three curves near x = 2: f approaching 3, g approaching -1, and f + g approaching 2. A panel lists: as x approaches 2, f(x) approaches 3, g(x) approaches -1, f(x) + g(x) approaches 2, f(x) times g(x) approaches -3, and 5f(x) approaches 15." width="760" height="430" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Near <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math> the curve <math class="calc-m"><semantics><mrow><mi>f</mi><mo>+</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">f + g</annotation></semantics></math> heads to <math class="calc-m"><semantics><mrow><mn>3</mn><mo>+</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">3 + (-1) = 2</annotation></semantics></math>, the sum of the two limits. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> Given <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>4</mn></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 4} f(x) = 3</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>4</mn></mrow></munder><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 4} g(x) = -1</annotation></semantics></math>, find <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>4</mn></mrow></munder><mfrac><mrow><mn>2</mn><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mo stretchy="false">[</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><msup><mo stretchy="false">]</mo><mn>2</mn></msup></mrow><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>+</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 4} \frac{2f(x) - [g(x)]^2}{f(x) + g(x)}</annotation></semantics></math>.</p>
+<p>Numerator: <math class="calc-m"><semantics><mrow><mn>2</mn><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>−</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mn>6</mn><mo>−</mo><mn>1</mn><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">2(3) - (-1)^2 = 6 - 1 = 5</annotation></semantics></math>, by the constant multiple, power and difference laws.</p>
+<p>Denominator: <math class="calc-m"><semantics><mrow><mn>3</mn><mo>+</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">3 + (-1) = 2</annotation></semantics></math>, which is not 0, so the quotient law applies.</p>
+<p>So the limit is <math class="calc-m"><semantics><mrow><mfrac><mn>5</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{5}{2}</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="direct-substitution">Direct substitution</h2>
+<p>Every <a class="gl" href="../notes/math-functions.html" data-c="rational-function">polynomial</a> is built from constants and <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> using sums, products and constant multiples. The laws therefore give, for any polynomial <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math>,
+<math class="calc-m" display="block"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>p</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to a} p(x) = p(a)</annotation></semantics></math>
+The same holds for a rational function <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mrow><mi>q</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{p(x)}{q(x)}</annotation></semantics></math> as long as <math class="calc-m"><semantics><mrow><mi>q</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">q(a) \ne 0</annotation></semantics></math>, and for roots of these where the expression is defined. Finding a limit by evaluating at <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> is called <b><span class="gl" tabindex="0" data-c="direct-substitution">direct substitution</span></b>. It is the first thing to try on every limit.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>2</mn></mrow></munder><mfrac><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 2} \frac{x^3 - 4x + 1}{x + 3}</annotation></semantics></math>.</p>
+<p>This is a rational function, and the denominator at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math> is <math class="calc-m"><semantics><mrow><mn>5</mn><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">5 \ne 0</annotation></semantics></math>. Substitute:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>2</mn></mrow></munder><mfrac><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>8</mn><mo>−</mo><mn>8</mn><mo>+</mo><mn>1</mn></mrow><mrow><mn>2</mn><mo>+</mo><mn>3</mn></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>5</mn></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 2} \frac{x^3 - 4x + 1}{x + 3} = \frac{8 - 8 + 1}{2 + 3} = \frac{1}{5}</annotation></semantics></math></p>
+</div>
+<p>Why does this not contradict the idea that a limit ignores <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(a)</annotation></semantics></math>? It doesn't. For these well-behaved functions the limit and the value simply happen to agree. The laws prove they agree; the value is not being used as the definition.</p>
+
+<h2 id="when-the-laws-are-silent">When the laws are silent</h2>
+<p>The laws come with conditions, and the conditions are where exam questions live.</p>
+<ul>
+<li><b>Denominator heading to 0, numerator not.</b> For <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>2</mn></mrow></munder><mfrac><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 2} \frac{x + 1}{x - 2}</annotation></semantics></math>, the top heads to 3 and the bottom to 0. Numbers near 3 divided by numbers near 0 are huge in size, so there is no finite limit. Writing <math class="calc-m"><semantics><mrow><mfrac><mn>3</mn><mn>0</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{3}{0}</annotation></semantics></math> is never a value; say it in words.</li>
+<li><b>Both top and bottom heading to 0.</b> For <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>3</mn></mrow></munder><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>9</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 3} \frac{x^2 - 9}{x - 3}</annotation></semantics></math>, substitution gives a zero in both places, which tells you nothing yet. The limit might be any number, or might not exist. Topic 1.6 shows the algebra that settles it.</li>
+<li><b>One of the limits does not exist.</b> The laws need both limits to exist. If they do not, the laws do not apply, but the combination might still have a limit. Two jumps can cancel each other in a sum.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 3.</b> <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> jumps at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>: it heads to 2 from the left and 0 from the right. <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> heads to 1 from the left and 3 from the right. Find <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>1</mn></mrow></munder><mo stretchy="false">[</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>+</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to 1} [f(x) + g(x)]</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>1</mn></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to 1} f(x)g(x)</annotation></semantics></math>.</p>
+<p>Neither <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> nor <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> has a limit at 1, so use one side at a time.</p>
+<p>Sum: from the left <math class="calc-m"><semantics><mrow><mn>2</mn><mo>+</mo><mn>1</mn><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">2 + 1 = 3</annotation></semantics></math>; from the right <math class="calc-m"><semantics><mrow><mn>0</mn><mo>+</mo><mn>3</mn><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">0 + 3 = 3</annotation></semantics></math>. So <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>1</mn></mrow></munder><mo stretchy="false">[</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>+</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 1} [f(x) + g(x)] = 3</annotation></semantics></math>.</p>
+<p>Product: from the left <math class="calc-m"><semantics><mrow><mn>2</mn><mo>⋅</mo><mn>1</mn><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2 \cdot 1 = 2</annotation></semantics></math>; from the right <math class="calc-m"><semantics><mrow><mn>0</mn><mo>⋅</mo><mn>3</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">0 \cdot 3 = 0</annotation></semantics></math>. They differ, so <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>1</mn></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to 1} f(x)g(x)</annotation></semantics></math> does not exist.</p>
+</div>
+
+<h2 id="one-sided-limits-from-formulas">One-sided limits from formulas</h2>
+<p>The laws work for <a class="gl" href="../notes/limits-from-plots.html" data-c="one-sided-limit">one-sided limits</a> too. For a <a class="gl" href="../notes/math-functions.html" data-c="piecewise-function">piecewise function</a>, each one-sided limit uses the formula for that side.</p>
+<div class="worked">
+<p><b>Worked example 4.</b> Let <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo stretchy="true">{</mo><mtable columnalign="left left" columnspacing="1em"><mtr><mtd><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></mtd><mtd><mrow><mi>x</mi><mo>&lt;</mo><mn>3</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>2</mn></mrow></mtd><mtd><mrow><mi>x</mi><mo>≥</mo><mn>3</mn></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">f(x) = \begin{cases} x^2 - 1 &amp; x &lt; 3 \\ 2x + 2 &amp; x \ge 3 \end{cases}</annotation></semantics></math>. Find <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>3</mn></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to 3} f(x)</annotation></semantics></math>.</p>
+<p>Left: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>3</mn><mo>−</mo></msup></mrow></munder><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>9</mn><mo>−</mo><mn>1</mn><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 3^-} (x^2 - 1) = 9 - 1 = 8</annotation></semantics></math>. Right: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>3</mn><mo>+</mo></msup></mrow></munder><mo stretchy="false">(</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 3^+} (2x + 2) = 8</annotation></semantics></math>.</p>
+<p>Both are 8, so <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>3</mn></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 3} f(x) = 8</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="limits-of-compositions">Limits of compositions</h2>
+<p>For <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to a} f(g(x))</annotation></semantics></math>, work from the inside out. First find <math class="calc-m"><semantics><mrow><mi>b</mi><mo>=</mo><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">b = \lim_{x \to a} g(x)</annotation></semantics></math>. If <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is <a class="gl" href="../notes/discontinuity-types.html" data-c="discontinuity">continuous</a> at <math class="calc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math> (its graph is unbroken there), then <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(g(x))</annotation></semantics></math> heads to <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(b)</annotation></semantics></math>:
+<math class="calc-m" display="block"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><mi>f</mi><mrow><mo fence="true" stretchy="true">(</mo><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>a</mi></mrow></munder><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">)</mo></mrow><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to a} f(g(x)) = f\left(\lim_{x \to a} g(x)\right) = f(b)</annotation></semantics></math>
+For example, <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>3</mn></mrow></munder><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>7</mn></mrow></msqrt><mo>=</mo><msqrt><mn>16</mn></msqrt><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 3} \sqrt{x^2 + 7} = \sqrt{16} = 4</annotation></semantics></math>. With graphs, read the inside limit from the graph of <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math>, then read <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> near that number from the graph of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math>. If <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> jumps at <math class="calc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math>, check which side the inside values approach from.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:limit-laws">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="limits-from-tables.html"><span>&larr; Previous</span><b>Estimating Limits from Tables</b></a><a class="tb-chapter-link next" href="math-limit-algebra.html"><span>Next &rarr;</span><b>Algebra for Limits: Factoring and Rationalizing</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:limit-laws">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

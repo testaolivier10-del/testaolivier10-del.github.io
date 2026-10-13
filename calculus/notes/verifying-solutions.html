@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verifying Solutions to… — AP® Calculus AB Notes | LevlPrep</title>
+<meta name="description" content="A differential equation is a rule about rates. A solution to a differential equation is a function that obeys the rule.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/verifying-solutions.html">
+<meta property="og:title" content="Verifying Solutions to… — AP® Calculus AB Notes | LevlPrep">
+<meta property="og:description" content="A differential equation is a rule about rates. A solution to a differential equation is a function that obeys the rule.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/verifying-solutions.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/verifying-solutions.html#reading",
+      "name": "Verifying Solutions to Differential Equations",
+      "url": "https://levlprep.com/calculus/notes/verifying-solutions.html",
+      "description": "A differential equation is a rule about rates. A solution to a differential equation is a function that obeys the rule.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "verifying solutions to differential equations ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Differential Equations",
+          "item": "https://levlprep.com/calculus/units/unit-7.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Verifying Solutions to Differential Equations: notes",
+          "item": "https://levlprep.com/calculus/notes/verifying-solutions.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="verifying-solutions" data-unit="unit-7">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 7 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Integration and Accumulation of Change</a>
+    <a class="bk-toc-chap" href="../units/unit-7.html"><span class="bk-toc-chap-n">7</span><span><b>Differential Equations</b><small>7 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-7"><div class="tb-progress-row"><span><b>0</b> of 7 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="modeling-with-des"><a href="modeling-with-des.html"><span class="bk-toc-n">7.1</span>Writing Differential Equations</a></li><li class="current" data-toc-t="verifying-solutions"><a href="#main" aria-current="page"><span class="bk-toc-n">7.2</span>Verifying Solutions to Differential Equations</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-solution-means-here">What &quot;solution&quot; means here</a><a href="#the-three-step-check">The three-step check</a><a href="#equations-with-a-second-derivative">Equations with a second derivative</a><a href="#many-solutions-not-one">Many solutions, not one</a><a href="#solutions-live-on-intervals">Solutions live on intervals</a><a href="#common-slips">Common slips</a></div></li><li data-toc-t="sketching-slope-fields"><a href="sketching-slope-fields.html"><span class="bk-toc-n">7.3</span>Sketching Slope Fields</a></li><li data-toc-t="reasoning-with-slope-fields"><a href="reasoning-with-slope-fields.html"><span class="bk-toc-n">7.4</span>Reasoning with Slope Fields</a></li><li data-toc-t="separation-of-variables"><a href="separation-of-variables.html"><span class="bk-toc-n">7.6</span>General Solutions by Separation of Variables</a></li><li data-toc-t="particular-solutions"><a href="particular-solutions.html"><span class="bk-toc-n">7.7</span>Particular Solutions from Initial Conditions</a></li><li data-toc-t="exponential-models"><a href="exponential-models.html"><span class="bk-toc-n">7.8</span>Exponential Models</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Applications of Integration</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-7.html">Differential Equations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Verifying Solutions to Differential Equations: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/verifying-solutions.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 7 &middot; Topic 7.2 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Verifying Solutions to Differential Equations</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="verifying-solutions">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fverifying-solutions.html&amp;title=Verifying%20Solutions%20to%20Differential%20Equations%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/verifying-solutions.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>A <a class="gl" href="../notes/modeling-with-des.html" data-c="differential-equation">differential equation</a> is a rule about rates. A <b><span class="gl" tabindex="0" data-c="de-solution">solution to a differential equation</span></b> is a <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> that obeys the rule. Before you learn to find solutions, you need to be able to <i>check</i> one. The good news: checking uses nothing new. You <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">differentiate</a>, substitute and compare.</p>
+
+<h2 id="what-solution-means-here">What "solution" means here</h2>
+<p>In algebra, a solution of <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">x^2 = 9</annotation></semantics></math> is a number. Here a solution is a whole <b>function</b>. The function <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn><msup><mi>e</mi><mrow><mn>2</mn><mi>x</mi></mrow></msup></mrow><annotation encoding="application/x-tex">y = 3e^{2x}</annotation></semantics></math> is a solution of <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mi>y</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = 2y</annotation></semantics></math> because, for every <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, its <a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a> equals twice its height:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>6</mn><msup><mi>e</mi><mrow><mn>2</mn><mi>x</mi></mrow></msup><mspace width="2em"></mspace><mtext>and</mtext><mspace width="2em"></mspace><mn>2</mn><mi>y</mi><mo>=</mo><mn>2</mn><mrow><mo fence="true" stretchy="true">(</mo><mrow><mn>3</mn><msup><mi>e</mi><mrow><mn>2</mn><mi>x</mi></mrow></msup></mrow><mo fence="true" stretchy="true">)</mo></mrow><mo>=</mo><mn>6</mn><msup><mi>e</mi><mrow><mn>2</mn><mi>x</mi></mrow></msup><mo>.</mo></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = 6e^{2x} \qquad \text{and} \qquad 2y = 2\left(3e^{2x}\right) = 6e^{2x}.</annotation></semantics></math></p>
+<p>The two sides are the same function of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. That is what you must show: equality for every <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> in an interval, not at one lucky point.</p>
+
+<h2 id="the-three-step-check">The three-step check</h2>
+<ol>
+<li><b>Differentiate.</b> Find every derivative the equation uses: <math class="calc-m"><semantics><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">y'</annotation></semantics></math>, and <math class="calc-m"><semantics><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">″</mo></mrow></mrow><annotation encoding="application/x-tex">y''</annotation></semantics></math> if it appears.</li>
+<li><b>Substitute.</b> Put the function and its derivatives into the left side and into the right side. Work on each side separately.</li>
+<li><b>Compare.</b> Simplify both sides. If they are identical on an interval, the function is a solution there. If they differ anywhere in the interval, it is not.</li>
+</ol>
+<p>Keep the two sides apart while you simplify. Writing a long chain like <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>1</mn><mo>+</mo><mi>C</mi><msup><mi>e</mi><mi>x</mi></msup><mo>=</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>+</mo><mi>C</mi><msup><mi>e</mi><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = 1 + Ce^x = x + 1 + Ce^x</annotation></semantics></math> puts an equals sign between things that are not equal, a linkage error that costs points on the exam. Write "left side <math class="calc-m"><semantics><mrow><mo>=</mo><mo>…</mo></mrow><annotation encoding="application/x-tex">= \dots</annotation></semantics></math>" and "right side <math class="calc-m"><semantics><mrow><mo>=</mo><mo>…</mo></mrow><annotation encoding="application/x-tex">= \dots</annotation></semantics></math>", then compare.</p>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Show that <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>+</mo><mn>2</mn><msup><mi>e</mi><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">y = x + 1 + 2e^x</annotation></semantics></math> is a solution of <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>y</mi><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = y - x</annotation></semantics></math>.</p>
+<p>Differentiate: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>1</mn><mo>+</mo><mn>2</mn><msup><mi>e</mi><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = 1 + 2e^x</annotation></semantics></math>. (The derivative of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> is 1, of the constant 1 is 0.)</p>
+<p>Right side: <math class="calc-m"><semantics><mrow><mi>y</mi><mo>−</mo><mi>x</mi><mo>=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>+</mo><mn>2</mn><msup><mi>e</mi><mi>x</mi></msup><mo stretchy="false">)</mo><mo>−</mo><mi>x</mi><mo>=</mo><mn>1</mn><mo>+</mo><mn>2</mn><msup><mi>e</mi><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">y - x = (x + 1 + 2e^x) - x = 1 + 2e^x</annotation></semantics></math>.</p>
+<p>Compare: both sides are <math class="calc-m"><semantics><mrow><mn>1</mn><mo>+</mo><mn>2</mn><msup><mi>e</mi><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">1 + 2e^x</annotation></semantics></math> for every <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. So the function is a solution on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-\infty, \infty)</annotation></semantics></math>.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 2.</b> Is <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = x^2 + 1</annotation></semantics></math> a solution of <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi>y</mi></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = \frac{2y}{x}</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &gt; 0</annotation></semantics></math>?</p>
+<p>Left side: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = 2x</annotation></semantics></math>. Right side: <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>2</mn><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mi>x</mi></mfrac><mo>=</mo><mn>2</mn><mi>x</mi><mo>+</mo><mfrac><mn>2</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{2(x^2 + 1)}{x} = 2x + \frac{2}{x}</annotation></semantics></math>.</p>
+<p>These differ by <math class="calc-m"><semantics><mrow><mfrac><mn>2</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{2}{x}</annotation></semantics></math>, which is never 0. So <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = x^2 + 1</annotation></semantics></math> is <b>not</b> a solution. (Try <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">y = x^2</annotation></semantics></math> instead: then the right side is <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mrow><mi>x</mi></mfrac><mo>=</mo><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{2x^2}{x} = 2x</annotation></semantics></math>, and it works.)</p>
+</div>
+
+<h2 id="equations-with-a-second-derivative">Equations with a second derivative</h2>
+<p>The same check works when <math class="calc-m"><semantics><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">″</mo></mrow></mrow><annotation encoding="application/x-tex">y''</annotation></semantics></math> appears. For <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>2</mn><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y = \sin(2x)</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>=</mo><mn>2</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>2</mn><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y' = 2\cos(2x)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">″</mo></mrow><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>2</mn><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mi>y</mi></mrow><annotation encoding="application/x-tex">y'' = -4\sin(2x) = -4y</annotation></semantics></math>. So <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>2</mn><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y = \sin(2x)</annotation></semantics></math> is a solution of <math class="calc-m"><semantics><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">″</mo></mrow><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mi>y</mi></mrow><annotation encoding="application/x-tex">y'' = -4y</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find the positive constant <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> for which <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>e</mi><mrow><mi>k</mi><mi>x</mi></mrow></msup></mrow><annotation encoding="application/x-tex">y = e^{kx}</annotation></semantics></math> satisfies <math class="calc-m"><semantics><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">″</mo></mrow><mo>−</mo><mrow><mi>y</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>−</mo><mn>6</mn><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y'' - y' - 6y = 0</annotation></semantics></math>.</p>
+<p>Differentiate: <math class="calc-m"><semantics><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>=</mo><mi>k</mi><msup><mi>e</mi><mrow><mi>k</mi><mi>x</mi></mrow></msup></mrow><annotation encoding="application/x-tex">y' = ke^{kx}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">″</mo></mrow><mo>=</mo><msup><mi>k</mi><mn>2</mn></msup><msup><mi>e</mi><mrow><mi>k</mi><mi>x</mi></mrow></msup></mrow><annotation encoding="application/x-tex">y'' = k^2e^{kx}</annotation></semantics></math>.</p>
+<p>Substitute: <math class="calc-m"><semantics><mrow><msup><mi>k</mi><mn>2</mn></msup><msup><mi>e</mi><mrow><mi>k</mi><mi>x</mi></mrow></msup><mo>−</mo><mi>k</mi><msup><mi>e</mi><mrow><mi>k</mi><mi>x</mi></mrow></msup><mo>−</mo><mn>6</mn><msup><mi>e</mi><mrow><mi>k</mi><mi>x</mi></mrow></msup><mo>=</mo><msup><mi>e</mi><mrow><mi>k</mi><mi>x</mi></mrow></msup><mrow><mo fence="true" stretchy="true">(</mo><mrow><msup><mi>k</mi><mn>2</mn></msup><mo>−</mo><mi>k</mi><mo>−</mo><mn>6</mn></mrow><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">k^2e^{kx} - ke^{kx} - 6e^{kx} = e^{kx}\left(k^2 - k - 6\right)</annotation></semantics></math>.</p>
+<p>Since <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mrow><mi>k</mi><mi>x</mi></mrow></msup></mrow><annotation encoding="application/x-tex">e^{kx}</annotation></semantics></math> is never 0, the left side is 0 for every <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> exactly when <math class="calc-m"><semantics><mrow><msup><mi>k</mi><mn>2</mn></msup><mo>−</mo><mi>k</mi><mo>−</mo><mn>6</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k^2 - k - 6 = 0</annotation></semantics></math>, that is <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>k</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>k</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(k - 3)(k + 2) = 0</annotation></semantics></math>. The positive value is <math class="calc-m"><semantics><mrow><mi>k</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">k = 3</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="many-solutions-not-one">Many solutions, not one</h2>
+<p>An added constant has derivative 0. So if <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">y = x^2</annotation></semantics></math> solves <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = 2x</annotation></semantics></math>, so do <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x^2 + 5</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">x^2 - \pi</annotation></semantics></math>: a differential equation usually has infinitely many solutions. The same happens with multiplied constants: every <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>C</mi><msup><mi>e</mi><mrow><mn>3</mn><mi>x</mi></mrow></msup></mrow><annotation encoding="application/x-tex">y = Ce^{3x}</annotation></semantics></math> satisfies <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>3</mn><mi>y</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = 3y</annotation></semantics></math>, because <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>3</mn><mi>C</mi><msup><mi>e</mi><mrow><mn>3</mn><mi>x</mi></mrow></msup><mo>=</mo><mn>3</mn><mi>y</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = 3Ce^{3x} = 3y</annotation></semantics></math>.</p>
+<figure id="fig-family"  class="calc-figure"><div class="calc-figimg" data-fig="solution-family-check"><img src="../figures/solution-family-check.svg" alt="Five curves y = x + 1 + Ce^x for C = −1, −0.5, 0, 0.5 and 1 on −3 ≤ x ≤ 2. The C = 0 curve is the line y = x + 1, drawn in crimson. At x = 0.5 each curve carries a short black segment whose slope is y − 0.5, the value of y − x there, showing that every curve satisfies dy/dx = y − x." width="620" height="480" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Five members of the family <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>+</mo><mi>C</mi><msup><mi>e</mi><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">y = x + 1 + Ce^x</annotation></semantics></math>. All of them satisfy <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mi>y</mi><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = y - x</annotation></semantics></math>; at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">x = 0.5</annotation></semantics></math> each one's slope equals <math class="calc-m"><semantics><mrow><mi>y</mi><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y - x</annotation></semantics></math> at that point. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Picking one member of the family needs one more fact, such as a point the graph passes through. That comes in a later topic.</p>
+
+<h2 id="solutions-live-on-intervals">Solutions live on intervals</h2>
+<p>A solution must be <a class="gl" href="../notes/differentiability.html" data-c="differentiable">differentiable</a> wherever you claim it works. The function <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mfrac><mn>1</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">y = \frac{1}{x}</annotation></semantics></math> satisfies <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\frac{dy}{dx} = -y^2</annotation></semantics></math>, since <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><msup><mi>x</mi><mn>2</mn></msup></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>1</mn><mi>x</mi></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">-\frac{1}{x^2} = -\left(\frac{1}{x}\right)^2</annotation></semantics></math>. But it is undefined at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>, so it is a solution on <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &gt; 0</annotation></semantics></math> and, separately, on <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &lt; 0</annotation></semantics></math>. When you state that a function is a solution, name the interval.</p>
+
+<h2 id="common-slips">Common slips</h2>
+<ul>
+<li>Checking only one value of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. Agreement at one point proves nothing.</li>
+<li>Dropping a derivative: the derivative of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> is 1, and the <a class="gl" href="../notes/chain-rule.html" data-c="chain-rule">chain rule</a> factor in <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mrow><mn>3</mn><mi>x</mi></mrow></msup></mrow><annotation encoding="application/x-tex">e^{3x}</annotation></semantics></math> is 3.</li>
+<li>Comparing with the wrong side: in <math class="calc-m"><semantics><mrow><mi>x</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mn>2</mn><mi>y</mi></mrow><annotation encoding="application/x-tex">x\frac{dy}{dx} = 2y</annotation></semantics></math> the left side includes the factor <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>.</li>
+<li>Chaining unequal expressions with <math class="calc-m"><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math> instead of simplifying each side on its own.</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:verifying-solutions">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="modeling-with-des.html"><span>&larr; Previous</span><b>Writing Differential Equations</b></a><a class="tb-chapter-link next" href="sketching-slope-fields.html"><span>Next &rarr;</span><b>Sketching Slope Fields</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:verifying-solutions">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

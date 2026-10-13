@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solving Optimization Problems — AP® Calculus AB Notes</title>
+<meta name="description" content="The introduction showed the idea; this page is the full routine, applied to the kinds of problems the exam uses: boxes, cans, cables, shapes inside shapes.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/solving-optimization.html">
+<meta property="og:title" content="Solving Optimization Problems — AP® Calculus AB Notes">
+<meta property="og:description" content="The introduction showed the idea; this page is the full routine, applied to the kinds of problems the exam uses: boxes, cans, cables, shapes inside shapes.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/solving-optimization.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/solving-optimization.html#reading",
+      "name": "Solving Optimization Problems",
+      "url": "https://levlprep.com/calculus/notes/solving-optimization.html",
+      "description": "The introduction showed the idea; this page is the full routine, applied to the kinds of problems the exam uses: boxes, cans, cables, shapes inside shapes.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "solving optimization problems ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Analytical Applications of Differentiation",
+          "item": "https://levlprep.com/calculus/units/unit-5.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Solving Optimization Problems: notes",
+          "item": "https://levlprep.com/calculus/notes/solving-optimization.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="solving-optimization" data-unit="unit-5">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 5 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Contextual Applications of Differentiation</a>
+    <a class="bk-toc-chap" href="../units/unit-5.html"><span class="bk-toc-chap-n">5</span><span><b>Analytical Applications of Differentiation</b><small>12 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-5"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="mean-value-theorem"><a href="mean-value-theorem.html"><span class="bk-toc-n">5.1</span>The Mean Value Theorem</a></li><li data-toc-t="extreme-value-theorem"><a href="extreme-value-theorem.html"><span class="bk-toc-n">5.2</span>Extreme Value Theorem, Global and Local Extrema, Critical Points</a></li><li data-toc-t="increasing-decreasing"><a href="increasing-decreasing.html"><span class="bk-toc-n">5.3</span>Where a Function Increases or Decreases</a></li><li data-toc-t="first-derivative-test"><a href="first-derivative-test.html"><span class="bk-toc-n">5.4</span>The First Derivative Test</a></li><li data-toc-t="candidates-test"><a href="candidates-test.html"><span class="bk-toc-n">5.5</span>The Candidates Test</a></li><li data-toc-t="concavity"><a href="concavity.html"><span class="bk-toc-n">5.6</span>Concavity and Points of Inflection</a></li><li data-toc-t="second-derivative-test"><a href="second-derivative-test.html"><span class="bk-toc-n">5.7</span>The Second Derivative Test</a></li><li data-toc-t="sketching-derivatives"><a href="sketching-derivatives.html"><span class="bk-toc-n">5.8</span>Sketching f, f' and f''</a></li><li data-toc-t="f-and-its-derivatives"><a href="f-and-its-derivatives.html"><span class="bk-toc-n">5.9</span>Connecting f, f' and f''</a></li><li data-toc-t="optimization-intro"><a href="optimization-intro.html"><span class="bk-toc-n">5.10</span>Introduction to Optimization</a></li><li class="current" data-toc-t="solving-optimization"><a href="#main" aria-current="page"><span class="bk-toc-n">5.11</span>Solving Optimization Problems</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-routine">The routine</a><a href="#calculator-optimization">Calculator optimization</a><a href="#shapes-inside-shapes">Shapes inside shapes</a><a href="#checklist-before-you-write-the-answer">Checklist before you write the answer</a></div></li><li data-toc-t="implicit-relations"><a href="implicit-relations.html"><span class="bk-toc-n">5.12</span>Behavior of Implicit Relations</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Integration and Accumulation of Change</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-5.html">Analytical Applications of Differentiation</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Solving Optimization Problems: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/solving-optimization.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 5 &middot; Topic 5.11 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Solving Optimization Problems</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="solving-optimization">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fsolving-optimization.html&amp;title=Solving%20Optimization%20Problems%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/solving-optimization.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>The introduction showed the idea; this page is the full routine, applied to the kinds of problems the exam uses: boxes, cans, cables, shapes inside shapes. The calculus is short. Most mistakes happen in the setup, so the setup gets most of the attention here.</p>
+
+<h2 id="the-routine">The routine</h2>
+<ol>
+<li><b>Draw</b> the situation and label every changing length or amount with a letter.</li>
+<li>Write the <b><a class="gl" href="../notes/optimization-intro.html" data-c="optimization">objective function</a></b>: the quantity to maximize or minimize.</li>
+<li>Write the <b><span class="gl" tabindex="0" data-c="constraint">constraint</span></b>: the fixed fact that links the variables (a volume, a perimeter, a total length).</li>
+<li>Use the constraint to write the objective in <b>one variable</b>.</li>
+<li>Find the <b><a class="gl" href="../notes/math-functions.html" data-c="domain">domain</a></b> from the physical <a class="gl" href="../notes/limit-notation.html" data-c="limit">limits</a>.</li>
+<li>Find the <b><a class="gl" href="../notes/extreme-value-theorem.html" data-c="critical-point">critical points</a></b> in the domain.</li>
+<li><b>Justify</b> the <a class="gl" href="../notes/extreme-value-theorem.html" data-c="absolute-extremum">absolute extremum</a>: candidates on a closed domain, or one critical point that is a <a class="gl" href="../notes/extreme-value-theorem.html" data-c="relative-extremum">relative extremum</a>.</li>
+<li><b>Answer</b> the question in context, with units.</li>
+</ol>
+<p>Keep the objective and the constraint apart. In "an open box with a square base must hold 32 cubic feet; use the least material," the constraint is the volume <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mi>h</mi><mo>=</mo><mn>32</mn></mrow><annotation encoding="application/x-tex">x^2 h = 32</annotation></semantics></math>, and the objective is the material, <math class="calc-m"><semantics><mrow><mi>S</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn><mi>x</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">S = x^2 + 4xh</annotation></semantics></math>. Mixing them up is the most common setup error.</p>
+<figure id="fig-box"  class="calc-figure"><div class="calc-figimg" data-fig="box-from-sheet"><img src="../figures/box-from-sheet.svg" alt="Left: a 12-inch square sheet with a square of side x at each corner and dashed fold lines; folding gives an open box of height x and base 12 - 2x by 12 - 2x. Right: the graph of V(x) = x(12 - 2x) squared for 0 ≤ x ≤ 6, zero at both ends, highest at (2, 128)." width="900" height="390" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Corner squares of side <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> cut from a 12-inch sheet: the volume <math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mo stretchy="false">(</mo><mn>12</mn><mo>−</mo><mn>2</mn><mi>x</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">V(x) = x(12 - 2x)^2</annotation></semantics></math> is zero at both ends of <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>6</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 6]</annotation></semantics></math> and largest at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example 1.</b> A 16-inch by 10-inch sheet has a square of side <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> cut from each <a class="gl" href="../notes/differentiability.html" data-c="corner">corner</a>, and the sides are folded up into an open box. Find the largest volume.</p>
+<p><i>Objective:</i> the base loses <math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">2x</annotation></semantics></math> in each direction, so <math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mo stretchy="false">(</mo><mn>16</mn><mo>−</mo><mn>2</mn><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>10</mn><mo>−</mo><mn>2</mn><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>52</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>160</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">V(x) = x(16 - 2x)(10 - 2x) = 4x^3 - 52x^2 + 160x</annotation></semantics></math>.</p>
+<p><i>Domain:</i> the short side needs <math class="calc-m"><semantics><mrow><mn>10</mn><mo>−</mo><mn>2</mn><mi>x</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">10 - 2x \ge 0</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">0 \le x \le 5</annotation></semantics></math>.</p>
+<p><i>Critical points:</i> <math class="calc-m"><semantics><mrow><mrow><mi>V</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>12</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>104</mn><mi>x</mi><mo>+</mo><mn>160</mn><mo>=</mo><mn>4</mn><mo stretchy="false">(</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>20</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">V'(x) = 12x^2 - 104x + 160 = 4(3x - 20)(x - 2)</annotation></semantics></math>, zero at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mn>20</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">x = \frac{20}{3}</annotation></semantics></math>. Only <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math> is in the domain; <math class="calc-m"><semantics><mrow><mfrac><mn>20</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{20}{3}</annotation></semantics></math> would cut away more than the sheet has.</p>
+<p><i>Justify:</i> <math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V(0) = 0</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mo>⋅</mo><mn>12</mn><mo>⋅</mo><mn>6</mn><mo>=</mo><mn>144</mn></mrow><annotation encoding="application/x-tex">V(2) = 2 \cdot 12 \cdot 6 = 144</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V(5) = 0</annotation></semantics></math>.</p>
+<p><i>Answer:</i> cut 2-inch squares; the box holds 144 cubic inches.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 2.</b> A closed can must hold 500 cubic centimeters. What radius uses the least metal?</p>
+<p><i>Objective:</i> surface area, two ends plus the side: <math class="calc-m"><semantics><mrow><mi>S</mi><mo>=</mo><mn>2</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>π</mi><mi>r</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">S = 2\pi r^2 + 2\pi r h</annotation></semantics></math>.</p>
+<p><i>Constraint:</i> <math class="calc-m"><semantics><mrow><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mi>h</mi><mo>=</mo><mn>500</mn></mrow><annotation encoding="application/x-tex">\pi r^2 h = 500</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>h</mi><mo>=</mo><mfrac><mn>500</mn><mrow><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">h = \frac{500}{\pi r^2}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>S</mi><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mo>+</mo><mfrac><mn>1000</mn><mi>r</mi></mfrac></mrow><annotation encoding="application/x-tex">S(r) = 2\pi r^2 + \frac{1000}{r}</annotation></semantics></math>, for <math class="calc-m"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r &gt; 0</annotation></semantics></math>.</p>
+<p><i>Critical point:</i> <math class="calc-m"><semantics><mrow><mrow><mi>S</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mi>π</mi><mi>r</mi><mo>−</mo><mfrac><mn>1000</mn><msup><mi>r</mi><mn>2</mn></msup></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">S'(r) = 4\pi r - \frac{1000}{r^2} = 0</annotation></semantics></math> gives <math class="calc-m"><semantics><mrow><msup><mi>r</mi><mn>3</mn></msup><mo>=</mo><mfrac><mn>250</mn><mi>π</mi></mfrac></mrow><annotation encoding="application/x-tex">r^3 = \frac{250}{\pi}</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mroot><mfrac><mn>250</mn><mi>π</mi></mfrac><mn>3</mn></mroot><mo>≈</mo><mn>4.301</mn></mrow><annotation encoding="application/x-tex">r = \sqrt[3]{\frac{250}{\pi}} \approx 4.301</annotation></semantics></math> cm.</p>
+<p><i>Justify:</i> it is the only critical point for <math class="calc-m"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r &gt; 0</annotation></semantics></math>, and <math class="calc-m"><semantics><mrow><mrow><mi>S</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mi>π</mi><mo>+</mo><mfrac><mn>2000</mn><msup><mi>r</mi><mn>3</mn></msup></mfrac><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">S''(r) = 4\pi + \frac{2000}{r^3} &gt; 0</annotation></semantics></math>, so it is a relative minimum and therefore the absolute minimum.</p>
+</div>
+<p>The domain <math class="calc-m"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r &gt; 0</annotation></semantics></math> has no endpoints to compare, which is exactly when the one-critical-point argument is needed.</p>
+
+<h2 id="calculator-optimization">Calculator optimization</h2>
+<p>When the critical point has no clean formula, use the calculator to solve <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'(x) = 0</annotation></semantics></math>, store the result, and evaluate.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> A cable runs from a station on one bank of a river 2 km wide, underwater to a point <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> km downstream on the far bank, then along the bank to a factory 8 km downstream. It costs 5 thousand dollars per km underwater and 3.5 on land, so <math class="calc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn></mrow></msqrt><mo>+</mo><mn>3.5</mn><mo stretchy="false">(</mo><mn>8</mn><mo>−</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(x) = 5\sqrt{x^2 + 4} + 3.5(8 - x)</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">0 \le x \le 8</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mrow><mi>C</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mn>5</mn><mi>x</mi></mrow><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn></mrow></msqrt></mfrac><mo>−</mo><mn>3.5</mn></mrow><annotation encoding="application/x-tex">C'(x) = \frac{5x}{\sqrt{x^2 + 4}} - 3.5</annotation></semantics></math> (<a class="gl" href="../notes/chain-rule.html" data-c="chain-rule">chain rule</a> on the square root). Solving <math class="calc-m"><semantics><mrow><mrow><mi>C</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">C'(x) = 0</annotation></semantics></math> gives <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≈</mo><mn>1.960</mn></mrow><annotation encoding="application/x-tex">x \approx 1.960</annotation></semantics></math>.</p>
+<p>Candidates: <math class="calc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>38</mn></mrow><annotation encoding="application/x-tex">C(0) = 38</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mn>1.960</mn><mo stretchy="false">)</mo><mo>≈</mo><mn>35.141</mn></mrow><annotation encoding="application/x-tex">C(1.960) \approx 35.141</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mn>8</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn><msqrt><mn>68</mn></msqrt><mo>≈</mo><mn>41.231</mn></mrow><annotation encoding="application/x-tex">C(8) = 5\sqrt{68} \approx 41.231</annotation></semantics></math>. The cheapest route lands about 1.960 km downstream and costs about 35.141 thousand dollars.</p>
+</div>
+
+<h2 id="shapes-inside-shapes">Shapes inside shapes</h2>
+<p>For a rectangle with its base on the diameter of a semicircle of radius 5, put the top right corner at <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><msqrt><mrow><mn>25</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msqrt><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x, \sqrt{25 - x^2})</annotation></semantics></math>. The width is <math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">2x</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>x</mi><msqrt><mrow><mn>25</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">A(x) = 2x\sqrt{25 - x^2}</annotation></semantics></math> on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>5</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 5]</annotation></semantics></math>. The <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a> is zero at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mn>5</mn><msqrt><mn>2</mn></msqrt></mfrac></mrow><annotation encoding="application/x-tex">x = \frac{5}{\sqrt{2}}</annotation></semantics></math>, and <math class="calc-m"><semantics><mrow><mi>A</mi><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>5</mn><msqrt><mn>2</mn></msqrt></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">A\left(\frac{5}{\sqrt{2}}\right) = 25</annotation></semantics></math>, larger than <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mi>A</mi><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A(0) = A(5) = 0</annotation></semantics></math>. Placing a corner on the curve is what links the variables here; that is the constraint.</p>
+
+<h2 id="checklist-before-you-write-the-answer">Checklist before you write the answer</h2>
+<ul>
+<li>Is each critical point inside the domain? Reject the others, and say why.</li>
+<li>Did you justify the extremum, not just find <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'(x) = 0</annotation></semantics></math>?</li>
+<li>Did you answer what was asked (the dimensions, the cost, the radius) with units?</li>
+<li>On a calculator problem, did you show the setup, <math class="calc-m"><semantics><mrow><mrow><mi>C</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">C'(x) = 0</annotation></semantics></math>, and give three decimal places?</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:solving-optimization">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="optimization-intro.html"><span>&larr; Previous</span><b>Introduction to Optimization</b></a><a class="tb-chapter-link next" href="implicit-relations.html"><span>Next &rarr;</span><b>Behavior of Implicit Relations</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:solving-optimization">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

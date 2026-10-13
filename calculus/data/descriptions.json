@@ -1,6 +1,19 @@
 {
- "about": "Hand-written meta descriptions for pages whose opening text has no whole sentence short enough to be one. Shaped { lessons: {topic: text}, notes: {topic: text}, units: {chapter: text} }. Never use the mark here: no \"AP\" in any meta description (docs/apcalc-spec.md decision 2).",
+ "about": "Hand-written meta descriptions for pages whose opening text has no whole sentence short enough to be one. Shaped { lessons: {topic: text}, notes: {topic: text}, units: {chapter: text}, titles: {topic: text} }; \"titles\" is a shorter topic name for the <title> of its lesson and notes pages when the full one would be cut (two cut titles read the same). Never use the mark here: no \"AP\" in any meta description (docs/apcalc-spec.md decision 2).",
  "lessons": {},
- "notes": {},
- "units": {}
+ "notes": {
+  "area-between-curves-x": "The area between two curves is the integral of top minus bottom. How to find the limits, split the region where the curves cross, and check signs.",
+  "area-between-curves-y": "When the region's sides are curves x = f(y), slice it horizontally: integrate right minus left with respect to y. When to switch, and how to set it up.",
+  "continuity-at-a-point": "A function is continuous at x = c when f(c) is defined, the limit exists, and the two are equal. Each condition, how it fails, and how to justify continuity.",
+  "cross-sections-triangles": "Volumes of solids whose cross sections are triangles or semicircles: find the area A(x) of one slice from the base, then integrate it across the base.",
+  "disc-method-other-axes": "The disc method about a line such as y = 3 or x = −1: the radius is the distance from the curve to that line. How to set up and check the integral.",
+  "infinite-limits": "Infinite limits and vertical asymptotes: when a function grows without bound near a point, how to find the sign on each side, and how to write the limit.",
+  "lhospitals-rule": "L'Hospital's rule for limits of the form 0/0 or ∞/∞: check the form first, then take the limit of the quotient of derivatives. Worked examples and traps.",
+  "limit-notation": "What a limit is: the value f(x) closes in on as x approaches a number. How to read and write limit notation, including one-sided limits, with examples."
+ },
+ "units": {},
+ "titles": {
+  "ftc-accumulation": "The FTC and Accumulation Functions",
+  "ftc-definite-integrals": "The FTC and Definite Integrals"
+ }
 }

@@ -339,7 +339,9 @@ const BUDGETS = [
      sentence (build-pricing.mjs). Measured 8.1 KB with Unit 1 published. */
   /* 8.5 -> 8.8 for AP® Physics 1's launch (docs/apphys-spec.md decision 11):
      its hub card, its pass in the FAQ and the offers. Measured 8.6 KB. */
-  ['index.html', 8.8],
+  /* 8.8 -> 9.0 for AP® Calculus AB's launch (docs/apcalc-spec.md decision 12):
+     its hub card, its pass in the FAQ and the offers. Measured 8.9 KB. */
+  ['index.html', 9.0],
   /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
      preloads its one text face (Nunito, latin) so it is ready at first paint
      with font-display: optional, which removed the font-swap layout shift. */
@@ -905,7 +907,10 @@ function weigh(pageRel) {
   const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
   if (first) {
     const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
-    BUDGETS.push([`calculus/lessons/${id}.html`, 15], [`calculus/notes/${id}.html`, 22]);
+    /* Lesson 15 -> 22 at launch (docs/apcalc-spec.md decision 12): the first lesson, math-functions,
+       measured 21.6 KB, of which the MathML of its text and of its check questions (in the page data)
+       is most; the median calculus lesson is 15.9 KB. */
+    BUDGETS.push([`calculus/lessons/${id}.html`, 22], [`calculus/notes/${id}.html`, 22]);
     const sheets = join(ROOT, 'calculus', 'unit-sheets');
     const sheet = existsSync(sheets) ? readdirSync(sheets).filter((f) => f.endsWith('.html')).sort()[0] : null;
     if (sheet) BUDGETS.push([`calculus/unit-sheets/${sheet}`, 14]);

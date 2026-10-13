@@ -255,7 +255,7 @@
     }
   }catch(e){}
 
-  /* The bank, split per unit, or per half unit for a long unit (topics[].bank,
+  /* The bank, split per unit, or into parts by gzipped size (topics[].bank,
      scripts/build-apcalc.mjs): assets/bank/<file>.json
      holds { stimuli, items } without explanations, <unit>-why.json the
      explanations, index.json every item's tags. loadIndex -> stubs;

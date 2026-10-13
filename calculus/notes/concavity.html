@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concavity and Points of Inflection — AP® Calculus AB Notes</title>
+<meta name="description" content="Two cars can both be speeding up the road, one gaining speed faster and faster, the other gaining speed more and more slowly.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/concavity.html">
+<meta property="og:title" content="Concavity and Points of Inflection — AP® Calculus AB Notes">
+<meta property="og:description" content="Two cars can both be speeding up the road, one gaining speed faster and faster, the other gaining speed more and more slowly.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/concavity.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/concavity.html#reading",
+      "name": "Concavity and Points of Inflection",
+      "url": "https://levlprep.com/calculus/notes/concavity.html",
+      "description": "Two cars can both be speeding up the road, one gaining speed faster and faster, the other gaining speed more and more slowly.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "concavity and points of inflection ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Analytical Applications of Differentiation",
+          "item": "https://levlprep.com/calculus/units/unit-5.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Concavity and Points of Inflection: notes",
+          "item": "https://levlprep.com/calculus/notes/concavity.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="concavity" data-unit="unit-5">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 5 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Contextual Applications of Differentiation</a>
+    <a class="bk-toc-chap" href="../units/unit-5.html"><span class="bk-toc-chap-n">5</span><span><b>Analytical Applications of Differentiation</b><small>12 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-5"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="mean-value-theorem"><a href="mean-value-theorem.html"><span class="bk-toc-n">5.1</span>The Mean Value Theorem</a></li><li data-toc-t="extreme-value-theorem"><a href="extreme-value-theorem.html"><span class="bk-toc-n">5.2</span>Extreme Value Theorem, Global and Local Extrema, Critical Points</a></li><li data-toc-t="increasing-decreasing"><a href="increasing-decreasing.html"><span class="bk-toc-n">5.3</span>Where a Function Increases or Decreases</a></li><li data-toc-t="first-derivative-test"><a href="first-derivative-test.html"><span class="bk-toc-n">5.4</span>The First Derivative Test</a></li><li data-toc-t="candidates-test"><a href="candidates-test.html"><span class="bk-toc-n">5.5</span>The Candidates Test</a></li><li class="current" data-toc-t="concavity"><a href="#main" aria-current="page"><span class="bk-toc-n">5.6</span>Concavity and Points of Inflection</a><div class="bk-toc-onpage"><p>On this page</p><a href="#concave-up-and-concave-down">Concave up and concave down</a><a href="#points-of-inflection">Points of inflection</a><a href="#a-zero-of-f-is-not">A zero of f″ is not enough</a><a href="#concavity-from-a-graph-of-f">Concavity from a graph of f′</a><a href="#concavity-in-context">Concavity in context</a></div></li><li data-toc-t="second-derivative-test"><a href="second-derivative-test.html"><span class="bk-toc-n">5.7</span>The Second Derivative Test</a></li><li data-toc-t="sketching-derivatives"><a href="sketching-derivatives.html"><span class="bk-toc-n">5.8</span>Sketching f, f' and f''</a></li><li data-toc-t="f-and-its-derivatives"><a href="f-and-its-derivatives.html"><span class="bk-toc-n">5.9</span>Connecting f, f' and f''</a></li><li data-toc-t="optimization-intro"><a href="optimization-intro.html"><span class="bk-toc-n">5.10</span>Introduction to Optimization</a></li><li data-toc-t="solving-optimization"><a href="solving-optimization.html"><span class="bk-toc-n">5.11</span>Solving Optimization Problems</a></li><li data-toc-t="implicit-relations"><a href="implicit-relations.html"><span class="bk-toc-n">5.12</span>Behavior of Implicit Relations</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Integration and Accumulation of Change</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-5.html">Analytical Applications of Differentiation</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Concavity and Points of Inflection: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/concavity.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 5 &middot; Topic 5.6 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Concavity and Points of Inflection</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="concavity">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fconcavity.html&amp;title=Concavity%20and%20Points%20of%20Inflection%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/concavity.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Two cars can both be <a class="gl" href="../notes/straight-line-motion.html" data-c="speeding-up">speeding up</a> the road, one gaining <a class="gl" href="../notes/straight-line-motion.html" data-c="speed">speed</a> faster and faster, the other gaining speed more and more slowly. Both position graphs go up, but they bend differently. That bend is <a class="gl" href="../notes/local-linearity.html" data-c="concave">concavity</a>. You met it with <a class="gl" href="../notes/derivative-definition.html" data-c="tangent-line">tangent line</a> approximations; now it becomes a tool for describing a whole graph, and the <a class="gl" href="../notes/higher-order-derivatives.html" data-c="second-derivative">second derivative</a> is how you measure it.</p>
+
+<h2 id="concave-up-and-concave-down">Concave up and concave down</h2>
+<p>On an interval, the graph of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is <b>concave up</b> if <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> is increasing there: the <a class="gl" href="../notes/math-functions.html" data-c="slope">slopes</a> get larger as you move right, and the graph bends upward like a cup. It is <b>concave down</b> if <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> is decreasing: the slopes get smaller, and the graph bends downward like a cap.</p>
+<p>Since <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow></mrow><annotation encoding="application/x-tex">f''</annotation></semantics></math> is the <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a> of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math>, its sign tells whether <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> increases:</p>
+<ul>
+<li><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f''(x) &gt; 0</annotation></semantics></math> on an interval: <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> increasing, graph concave up.</li>
+<li><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f''(x) &lt; 0</annotation></semantics></math> on an interval: <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> decreasing, graph concave down.</li>
+</ul>
+<p>Concavity is independent of direction. A graph can be increasing and concave down (rising, but leveling off), or decreasing and concave up (falling, but leveling off).</p>
+<figure id="fig-conc"  class="calc-figure"><div class="calc-figimg" data-fig="concavity-tangents"><img src="../figures/concavity-tangents.svg" alt="Top: f(x) = x cubed minus 3x squared plus 2 with short tangent lines; for x &lt; 1 the graph is concave down and its tangent lines lie above it, for x &gt; 1 it is concave up and its tangent lines lie below it; the point of inflection is (1, 0). Bottom: f'(x) = 3x squared minus 6x, decreasing for x &lt; 1 and increasing for x &gt; 1, lowest at x = 1, where f''(x) = 6x - 6 changes sign." width="900" height="550" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Concave down on the left, with tangent lines above the curve; concave up on the right, with tangent lines below. The concavity changes at the point of inflection. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>The tangent lines show it too. On a concave-up stretch the graph lies above its tangent lines, so a <a class="gl" href="../notes/local-linearity.html" data-c="linearization">tangent line approximation</a> there <a class="gl" href="../notes/local-linearity.html" data-c="estimate-bias">underestimates</a>; on a concave-down stretch it overestimates.</p>
+
+<h2 id="points-of-inflection">Points of inflection</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="inflection-point">point of inflection</span></b> is a point on the graph where the concavity changes, from up to down or from down to up. For a <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> with a second derivative, that means <b><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow></mrow><annotation encoding="application/x-tex">f''</annotation></semantics></math> changes sign</b> there. Equivalently, <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> changes from increasing to decreasing, or from decreasing to increasing, so <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> has a <a class="gl" href="../notes/extreme-value-theorem.html" data-c="relative-extremum">relative maximum</a> or minimum at that <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>.</p>
+<p>To find them:</p>
+<ol>
+<li>Find <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f''(x)</annotation></semantics></math>.</li>
+<li>Find where <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f''(x) = 0</annotation></semantics></math> or <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f''(x)</annotation></semantics></math> does not exist. These are only candidates.</li>
+<li>Check the sign of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow></mrow><annotation encoding="application/x-tex">f''</annotation></semantics></math> on each side of each candidate. Keep the ones where the sign changes (and where <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is defined).</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> Find the intervals of concavity and the points of inflection of <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>4</mn></msup><mo>−</mo><mn>4</mn><msup><mi>x</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">f(x) = x^4 - 4x^3</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>12</mn><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">f'(x) = 4x^3 - 12x^2</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>12</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>24</mn><mi>x</mi><mo>=</mo><mn>12</mn><mi>x</mi><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f''(x) = 12x^2 - 24x = 12x(x - 2)</annotation></semantics></math>, zero at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>.</p>
+<p>Signs of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow></mrow><annotation encoding="application/x-tex">f''</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>36</mn><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f''(-1) = 36 &gt; 0</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>12</mn><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f''(1) = -12 &lt; 0</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>36</mn><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f''(3) = 36 &gt; 0</annotation></semantics></math>.</p>
+<p>Concave up on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-\infty, 0)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, \infty)</annotation></semantics></math>; concave down on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 2)</annotation></semantics></math>. The sign changes at both, so the points of inflection are <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 0)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>16</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, -16)</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="a-zero-of-f-is-not">A zero of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow></mrow><annotation encoding="application/x-tex">f''</annotation></semantics></math> is not enough</h2>
+<p>For <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">f(x) = x^4</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>12</mn><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">f''(x) = 12x^2</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f''(0) = 0</annotation></semantics></math>. But <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'' &gt; 0</annotation></semantics></math> on both sides of 0: the graph is concave up the whole way, and there is no point of inflection. This is the same trap as "<math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'(c) = 0</annotation></semantics></math> means an extremum": a zero is a candidate, and the sign change is what decides. A justification that says only "<math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f''(c) = 0</annotation></semantics></math>" earns nothing.</p>
+
+<h2 id="concavity-from-a-graph-of-f">Concavity from a graph of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math></h2>
+<p>This is the most tested version. Given the graph of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math>:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: On the graph of f′, Tells you about f"><table class="compare">
+<thead><tr><th scope="col">On the graph of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math></th><th scope="col">Tells you about <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></th></tr></thead>
+<tbody>
+<tr><td>Above or below the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis (the sign of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math>)</td><td>increasing or decreasing</td></tr>
+<tr><td>Crossing the axis (a sign change of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math>)</td><td>relative extremum</td></tr>
+<tr><td>Rising or falling (the slope of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math>, which is <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow></mrow><annotation encoding="application/x-tex">f''</annotation></semantics></math>)</td><td>concave up or concave down</td></tr>
+<tr><td>A peak or valley (where <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> turns)</td><td>point of inflection</td></tr>
+</tbody>
+</table></div>
+<p>The common error is to put inflection points at the zeros of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math>. Zeros of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> are where <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> may have extrema; the turns of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> are where <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> inflects.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>2</mn></mfrac><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f'(x) = \frac{x(x - 3)^2}{2} - 1</annotation></semantics></math> has a high point at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math> and a low point at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>. Where is <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> concave down, and where are its inflection points?</p>
+<p><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> is decreasing between its high point and its low point, so <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is concave down on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 3)</annotation></semantics></math> and concave up elsewhere.</p>
+<p>Points of inflection of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> are at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>, where <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> changes from increasing to decreasing and from decreasing to increasing. Justify: "<math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> changes from decreasing to increasing at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>, so the graph of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> has a point of inflection there."</p>
+</div>
+
+<h2 id="concavity-in-context">Concavity in context</h2>
+<p>If <math class="calc-m"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N(t)</annotation></semantics></math> counts people who have heard a rumor, <math class="calc-m"><semantics><mrow><mrow><mi>N</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N'(t)</annotation></semantics></math> is how fast it spreads. If <math class="calc-m"><semantics><mrow><mrow><mi>N</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">N'</annotation></semantics></math> increases until <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t = 3</annotation></semantics></math> and decreases after, the spread is fastest at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t = 3</annotation></semantics></math>: the graph of <math class="calc-m"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math> has a point of inflection there, changing from concave up to concave down. In words, "increasing at a decreasing rate" means <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f' &gt; 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'' &lt; 0</annotation></semantics></math>.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:concavity">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="candidates-test.html"><span>&larr; Previous</span><b>The Candidates Test</b></a><a class="tb-chapter-link next" href="second-derivative-test.html"><span>Next &rarr;</span><b>The Second Derivative Test</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:concavity">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

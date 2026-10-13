@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Intermediate Value Theorem — AP® Calculus AB Notes</title>
+<meta name="description" content="This is the first theorem of the course, and the first time the exam will ask you to justify an answer by naming a theorem and checking its conditions.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/intermediate-value-theorem.html">
+<meta property="og:title" content="The Intermediate Value Theorem — AP® Calculus AB Notes">
+<meta property="og:description" content="This is the first theorem of the course, and the first time the exam will ask you to justify an answer by naming a theorem and checking its conditions.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/intermediate-value-theorem.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/intermediate-value-theorem.html#reading",
+      "name": "The Intermediate Value Theorem",
+      "url": "https://levlprep.com/calculus/notes/intermediate-value-theorem.html",
+      "description": "This is the first theorem of the course, and the first time the exam will ask you to justify an answer by naming a theorem and checking its conditions.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "the intermediate value theorem ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Limits and Continuity",
+          "item": "https://levlprep.com/calculus/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "The Intermediate Value Theorem: notes",
+          "item": "https://levlprep.com/calculus/notes/intermediate-value-theorem.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="intermediate-value-theorem" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Limits and Continuity</b><small>16 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 16 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="change-at-an-instant"><a href="change-at-an-instant.html"><span class="bk-toc-n">1.1</span>Can Change Happen at an Instant?</a></li><li data-toc-t="limit-notation"><a href="limit-notation.html"><span class="bk-toc-n">1.2</span>What a Limit Is and How to Write It</a></li><li data-toc-t="limits-from-plots"><a href="limits-from-plots.html"><span class="bk-toc-n">1.3</span>Reading Limits from a Graph</a></li><li data-toc-t="limits-from-tables"><a href="limits-from-tables.html"><span class="bk-toc-n">1.4</span>Estimating Limits from Tables</a></li><li data-toc-t="limit-laws"><a href="limit-laws.html"><span class="bk-toc-n">1.5</span>Limit Laws</a></li><li data-toc-t="limit-algebra"><a href="limit-algebra.html"><span class="bk-toc-n">1.6</span>Limits by Algebra: Factor, Rationalize, Simplify</a></li><li data-toc-t="choosing-limit-methods"><a href="choosing-limit-methods.html"><span class="bk-toc-n">1.7</span>Choosing a Way to Find a Limit</a></li><li data-toc-t="squeeze-theorem"><a href="squeeze-theorem.html"><span class="bk-toc-n">1.8</span>The Squeeze Theorem</a></li><li data-toc-t="limit-representations"><a href="limit-representations.html"><span class="bk-toc-n">1.9</span>Limits Across Graphs, Tables and Formulas</a></li><li data-toc-t="discontinuity-types"><a href="discontinuity-types.html"><span class="bk-toc-n">1.10</span>Types of Discontinuity</a></li><li data-toc-t="continuity-at-a-point"><a href="continuity-at-a-point.html"><span class="bk-toc-n">1.11</span>Continuity at a Point</a></li><li data-toc-t="continuity-on-intervals"><a href="continuity-on-intervals.html"><span class="bk-toc-n">1.12</span>Continuity on an Interval</a></li><li data-toc-t="removing-discontinuities"><a href="removing-discontinuities.html"><span class="bk-toc-n">1.13</span>Removing a Discontinuity</a></li><li data-toc-t="infinite-limits"><a href="infinite-limits.html"><span class="bk-toc-n">1.14</span>Infinite Limits and Vertical Asymptotes</a></li><li data-toc-t="limits-at-infinity"><a href="limits-at-infinity.html"><span class="bk-toc-n">1.15</span>Limits at Infinity and Horizontal Asymptotes</a></li><li class="current" data-toc-t="intermediate-value-theorem"><a href="#main" aria-current="page"><span class="bk-toc-n">1.16</span>The Intermediate Value Theorem</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-idea">The idea</a><a href="#the-theorem">The theorem</a><a href="#writing-the-justification">Writing the justification</a><a href="#using-a-table">Using a table</a><a href="#existence-then-location">Existence, then location</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Differentiation: Definition and Fundamental Properties</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Limits and Continuity</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The Intermediate Value Theorem: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/intermediate-value-theorem.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 1 &middot; Topic 1.16 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">The Intermediate Value Theorem</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="intermediate-value-theorem">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fintermediate-value-theorem.html&amp;title=The%20Intermediate%20Value%20Theorem%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/intermediate-value-theorem.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>This is the first theorem of the course, and the first time the exam will ask you to justify an answer by naming a theorem and checking its conditions. The idea is simple. Getting the words right is what earns the points.</p>
+
+<h2 id="the-idea">The idea</h2>
+<p>Suppose the temperature outside was <math class="calc-m"><semantics><mrow><msup><mn>10</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">10^\circ</annotation></semantics></math>C at 6 a.m. and <math class="calc-m"><semantics><mrow><msup><mn>24</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">24^\circ</annotation></semantics></math>C at noon. At some moment in between it was exactly <math class="calc-m"><semantics><mrow><msup><mn>17</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">17^\circ</annotation></semantics></math>C. Temperature does not jump; it passes through every value on its way. A <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> whose graph has no breaks behaves the same way.</p>
+<figure id="fig-ivt"  class="calc-figure"><div class="calc-figimg" data-fig="ivt-continuous-vs-jump"><img src="../figures/ivt-continuous-vs-jump.svg" alt="Left: a continuous function on the closed interval [1, 5] with f(1) = 1 and f(5) = 5. The dashed line y = 3 lies between 1 and 5, and the curve crosses it three times, at c₁, c₂ and c₃, all inside (1, 5): the theorem promises at least one. Right: a function with a jump at x = 3 that also has f(1) = 1 and f(5) = 5 but skips over y = 3, so no c gives f(c) = 3." width="800" height="380" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Left: continuous on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>5</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1, 5]</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = 3</annotation></semantics></math> is reached (three times here). Right: a jump skips <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = 3</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="the-theorem">The theorem</h2>
+<p><b><span class="gl" tabindex="0" data-c="ivt">Intermediate Value Theorem</span>.</b> If <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is <a class="gl" href="../notes/discontinuity-types.html" data-c="discontinuity">continuous</a> on the closed interval <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math>, and <math class="calc-m"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math> is any number between <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(a)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(b)</annotation></semantics></math>, then there is at least one number <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> in <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, b)</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">f(c) = d</annotation></semantics></math>.</p>
+<p>The two conditions before "then" are the theorem's <b><span class="gl" tabindex="0" data-c="hypothesis">hypotheses</span></b>. They are not decoration. If either one fails, the theorem says nothing at all.</p>
+<ul>
+<li><b>Continuous on the closed interval <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math>.</b> One jump, hole or <a class="gl" href="../notes/math-functions.html" data-c="asymptote">asymptote</a> anywhere in <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math> is enough to break it. The graph on the right of the figure has <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(1) = 1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">f(5) = 5</annotation></semantics></math> but jumps straight over 3.</li>
+<li><b><math class="calc-m"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math> between <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(a)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(b)</annotation></semantics></math>.</b> Values outside that range might be reached (a graph can rise above both ends) but nothing guarantees it.</li>
+</ul>
+<p>Read the conclusion carefully too. It says <b>at least one</b> <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>, and only that <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> is somewhere in <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, b)</annotation></semantics></math>. The left graph in the figure crosses <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = 3</annotation></semantics></math> three times. The theorem predicted one; it does not count them and does not locate them.</p>
+
+<h2 id="writing-the-justification">Writing the justification</h2>
+<p>Scoring guidelines give the point only when the continuity hypothesis is stated. A complete justification has four parts: why <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is continuous on the closed interval, the number <math class="calc-m"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math> between the two endpoint values, the theorem's name, and the conclusion.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Show that <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x) = x^3 - 4x + 1</annotation></semantics></math> has a zero between 0 and 1.</p>
+<p>Continuity: <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is a <a class="gl" href="../notes/math-functions.html" data-c="rational-function">polynomial</a>, so it is continuous on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 1]</annotation></semantics></math>.</p>
+<p>Between: <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(0) = 1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo>−</mo><mn>4</mn><mo>+</mo><mn>1</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">f(1) = 1 - 4 + 1 = -2</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>&lt;</mo><mn>0</mn><mo>&lt;</mo><mi>f</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(1) &lt; 0 &lt; f(0)</annotation></semantics></math>.</p>
+<p>Conclusion: by the Intermediate Value Theorem, <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f(c) = 0</annotation></semantics></math> for some <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> in <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 1)</annotation></semantics></math>.</p>
+</div>
+<p>Compare two weaker answers. "<math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f(0) &gt; 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f(1) &lt; 0</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> has a zero between them" never mentions continuity: no credit for the reasoning. "<math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is continuous, so it equals 0 somewhere" never shows 0 is between the endpoint values: also incomplete.</p>
+
+<h2 id="using-a-table">Using a table</h2>
+<p>Many exam questions give a continuous function only through a table. Apply the theorem to each pair of neighboring inputs.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> <math class="calc-m"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math> is continuous, with <math class="calc-m"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">T(0) = 20</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>35</mn></mrow><annotation encoding="application/x-tex">T(2) = 35</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo><mo>=</mo><mn>31</mn></mrow><annotation encoding="application/x-tex">T(5) = 31</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mn>7</mn><mo stretchy="false">)</mo><mo>=</mo><mn>44</mn></mrow><annotation encoding="application/x-tex">T(7) = 44</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo><mo>=</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">T(10) = 40</annotation></semantics></math>. What is the least number of times in <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>10</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 10)</annotation></semantics></math> at which <math class="calc-m"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>33</mn></mrow><annotation encoding="application/x-tex">T(t) = 33</annotation></semantics></math>?</p>
+<p>On <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 2]</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mn>20</mn><mo>&lt;</mo><mn>33</mn><mo>&lt;</mo><mn>35</mn></mrow><annotation encoding="application/x-tex">20 &lt; 33 &lt; 35</annotation></semantics></math>, so the IVT gives a time in <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 2)</annotation></semantics></math>.</p>
+<p>On <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>2</mn><mo>,</mo><mn>5</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[2, 5]</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mn>31</mn><mo>&lt;</mo><mn>33</mn><mo>&lt;</mo><mn>35</mn></mrow><annotation encoding="application/x-tex">31 &lt; 33 &lt; 35</annotation></semantics></math>, so another time in <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 5)</annotation></semantics></math>.</p>
+<p>On <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>5</mn><mo>,</mo><mn>7</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[5, 7]</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mn>31</mn><mo>&lt;</mo><mn>33</mn><mo>&lt;</mo><mn>44</mn></mrow><annotation encoding="application/x-tex">31 &lt; 33 &lt; 44</annotation></semantics></math>, so another in <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mn>7</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(5, 7)</annotation></semantics></math>.</p>
+<p>On <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>7</mn><mo>,</mo><mn>10</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[7, 10]</annotation></semantics></math>: 33 is not between 44 and 40, so no guarantee.</p>
+<p>The intervals <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 2)</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 5)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mn>7</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(5, 7)</annotation></semantics></math> do not overlap, so <math class="calc-m"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>33</mn></mrow><annotation encoding="application/x-tex">T(t) = 33</annotation></semantics></math> at least 3 times.</p>
+</div>
+
+<h2 id="existence-then-location">Existence, then location</h2>
+<p>The theorem tells you a solution exists. To find it, use algebra if you can, or a graphing calculator. For <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>+</mo><mi>x</mi><mo>−</mo><mn>5</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x^3 + x - 5 = 0</annotation></semantics></math> on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 2)</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">f(1) = -3</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">f(2) = 5</annotation></semantics></math>, and <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is a polynomial, so a zero exists by the IVT. A calculator's zero finder gives <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≈</mo><mn>1.516</mn></mrow><annotation encoding="application/x-tex">x \approx 1.516</annotation></semantics></math>, written to three decimal places. Use <a class="gl" href="../notes/math-trig.html" data-c="radian">radian</a> mode whenever trigonometry is involved: <math class="calc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\cos x = x</annotation></semantics></math> has its solution at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≈</mo><mn>0.739</mn></mrow><annotation encoding="application/x-tex">x \approx 0.739</annotation></semantics></math> in radians.</p>
+<p>This pattern, state the hypotheses and then apply the theorem, comes back with every theorem in the course. Learn it here, where the theorem is easy.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:intermediate-value-theorem">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="limits-at-infinity.html"><span>&larr; Previous</span><b>Limits at Infinity and Horizontal Asymptotes</b></a><a class="tb-chapter-link next" href="average-and-instant-rates.html"><span>Next &rarr;</span><b>Average and Instantaneous Rates of Change</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:intermediate-value-theorem">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

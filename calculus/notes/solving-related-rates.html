@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solving Related Rates Problems — AP® Calculus AB Notes</title>
+<meta name="description" content="The last topic showed the key move: differentiate an equation with respect to time, and the chain rule links the rates.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/solving-related-rates.html">
+<meta property="og:title" content="Solving Related Rates Problems — AP® Calculus AB Notes">
+<meta property="og:description" content="The last topic showed the key move: differentiate an equation with respect to time, and the chain rule links the rates.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/solving-related-rates.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/solving-related-rates.html#reading",
+      "name": "Solving Related Rates Problems",
+      "url": "https://levlprep.com/calculus/notes/solving-related-rates.html",
+      "description": "The last topic showed the key move: differentiate an equation with respect to time, and the chain rule links the rates.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "solving related rates problems ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Contextual Applications of Differentiation",
+          "item": "https://levlprep.com/calculus/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Solving Related Rates Problems: notes",
+          "item": "https://levlprep.com/calculus/notes/solving-related-rates.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="solving-related-rates" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Differentiation: Composite, Implicit, and Inverse Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Contextual Applications of Differentiation</b><small>7 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 7 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="derivative-in-context"><a href="derivative-in-context.html"><span class="bk-toc-n">4.1</span>The Derivative in Context</a></li><li data-toc-t="straight-line-motion"><a href="straight-line-motion.html"><span class="bk-toc-n">4.2</span>Straight-Line Motion: Position, Velocity, Acceleration</a></li><li data-toc-t="rates-in-context"><a href="rates-in-context.html"><span class="bk-toc-n">4.3</span>Rates of Change in Other Contexts</a></li><li data-toc-t="related-rates-intro"><a href="related-rates-intro.html"><span class="bk-toc-n">4.4</span>Introduction to Related Rates</a></li><li class="current" data-toc-t="solving-related-rates"><a href="#main" aria-current="page"><span class="bk-toc-n">4.5</span>Solving Related Rates Problems</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-five-steps">The five steps</a><a href="#the-sliding-ladder">The sliding ladder</a><a href="#the-cone-tank-remove-a-variable">The cone tank: remove a variable first</a><a href="#shadows">Shadows</a><a href="#slips-that-cost-points">Slips that cost points</a></div></li><li data-toc-t="local-linearity"><a href="local-linearity.html"><span class="bk-toc-n">4.6</span>Local Linearity and Linearization</a></li><li data-toc-t="lhospitals-rule"><a href="lhospitals-rule.html"><span class="bk-toc-n">4.7</span>L'Hospital's Rule</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Analytical Applications of Differentiation</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Contextual Applications of Differentiation</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Solving Related Rates Problems: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/solving-related-rates.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 4 &middot; Topic 4.5 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Solving Related Rates Problems</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="solving-related-rates">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fsolving-related-rates.html&amp;title=Solving%20Related%20Rates%20Problems%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/solving-related-rates.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>The last topic showed the key move: <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">differentiate</a> an equation with respect to time, and the <a class="gl" href="../notes/chain-rule.html" data-c="chain-rule">chain rule</a> links the rates. A full <span class="gl" tabindex="0" data-c="related-rates-problem">related rates problem</span> wraps that move in a story. You must turn the story into a picture, the picture into an equation, and the answer back into words. The same five steps handle ladders, tanks, shadows and planes.</p>
+
+<h2 id="the-five-steps">The five steps</h2>
+<ol>
+<li><b>Draw and label.</b> Sketch the situation at a general moment. Give a letter to every quantity that changes; write numbers only on lengths that stay fixed.</li>
+<li><b>Relate.</b> Write an equation that links the quantities at <i>every</i> instant: Pythagoras, <a class="gl" href="../notes/math-geometry.html" data-c="similar-triangles">similar triangles</a>, an area or volume formula. If it has more changing quantities than you have rates for, use a second relation to remove one.</li>
+<li><b>Differentiate</b> both sides with respect to <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>.</li>
+<li><b>Substitute</b> the values at the instant asked about, with signs: shrinking or approaching means a negative rate.</li>
+<li><b>Solve and answer</b> with units, in a sentence.</li>
+</ol>
+
+<h2 id="the-sliding-ladder">The sliding ladder</h2>
+<figure id="fig-ladder"  class="calc-figure"><div class="calc-figimg" data-fig="ladder-sliding-wall"><img src="../figures/ladder-sliding-wall.svg" alt="A 10-foot ladder (crimson) against a wall with its foot x = 6 ft out and top y = 8 ft up, the foot sliding away at dx/dt = 2 ft/s and the top's rate dy/dt unknown; a gray ghost shows a later position. Beside it: x² + y² = 100, differentiated to 2x dx/dt + 2y dy/dt = 0, giving dy/dt = −3/2 ft/s at this instant." width="820" height="460" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A 10-foot ladder whose foot slides away at 2 ft/s. Relate, differentiate, then substitute the instant. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> A 10-foot ladder leans against a wall. Its foot slides away from the wall at 2 feet per second. How fast does the top slide down when the foot is 6 feet from the wall?</p>
+<p><b>Draw:</b> <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> = distance from wall to foot, <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> = height of the top. The ladder's 10 feet never changes, so it stays a number.</p>
+<p><b>Relate:</b> <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">x^2 + y^2 = 100</annotation></semantics></math>.</p>
+<p><b>Differentiate:</b> <math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>+</mo><mn>2</mn><mi>y</mi><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">2x\frac{dx}{dt} + 2y\frac{dy}{dt} = 0</annotation></semantics></math>.</p>
+<p><b>Substitute:</b> at this instant <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">x = 6</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msqrt><mrow><mn>100</mn><mo>−</mo><mn>36</mn></mrow></msqrt><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">y = \sqrt{100 - 36} = 8</annotation></semantics></math>, and <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\frac{dx}{dt} = 2</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mn>2</mn><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>+</mo><mn>2</mn><mo stretchy="false">(</mo><mn>8</mn><mo stretchy="false">)</mo><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">2(6)(2) + 2(8)\frac{dy}{dt} = 0</annotation></semantics></math>.</p>
+<p><b>Solve:</b> <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>24</mn><mn>16</mn></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>3</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} = -\frac{24}{16} = -\frac{3}{2}</annotation></semantics></math>. The top slides down the wall at 1.5 feet per second.</p>
+</div>
+<p>The rates are not equal: the foot moves at 2 ft/s, the top at 1.5 ft/s. And they change with time. When the foot is 8 feet out, <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">y = 6</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>8</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{dy}{dt} = -\frac{8}{3}</annotation></semantics></math>; the closer the top gets to the floor, the faster it falls.</p>
+<p>Angles work too. With <math class="calc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math> the angle between the ladder and the floor, <math class="calc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>=</mo><mfrac><mi>x</mi><mn>10</mn></mfrac></mrow><annotation encoding="application/x-tex">\cos\theta = \frac{x}{10}</annotation></semantics></math>. Differentiating gives <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mfrac><mrow><mi>d</mi><mi>θ</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>10</mn></mfrac><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">-\sin\theta\frac{d\theta}{dt} = \frac{1}{10}\frac{dx}{dt}</annotation></semantics></math>. At <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">x = 6</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>=</mo><mfrac><mn>8</mn><mn>10</mn></mfrac></mrow><annotation encoding="application/x-tex">\sin\theta = \frac{8}{10}</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>θ</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{d\theta}{dt} = -\frac{1}{4}</annotation></semantics></math> <a class="gl" href="../notes/math-trig.html" data-c="radian">radian</a> per second: the ladder flattens.</p>
+
+<h2 id="the-cone-tank-remove-a-variable">The cone tank: remove a variable first</h2>
+<figure id="fig-cone"  class="calc-figure"><div class="calc-figimg" data-fig="cone-tank-similar"><img src="../figures/cone-tank-similar.svg" alt="An inverted cone tank, top radius 3 ft and depth 6 ft, holding water of depth h and surface radius r. Similar triangles give r = h/2, so V = πh³/12 and dV/dt = (πh²/4)·dh/dt." width="760" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> An inverted cone 6 ft deep with a top radius of 3 ft. Similar triangles give <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mfrac><mi>h</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">r = \frac{h}{2}</annotation></semantics></math> for the water at every depth. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example 2.</b> Water pours into this tank at 4 cubic feet per minute. How fast is the water level rising when the water is 2 feet deep?</p>
+<p><b>Draw:</b> the water is a cone of depth <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> and surface radius <math class="calc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>, both changing.</p>
+<p><b>Relate:</b> <math class="calc-m"><semantics><mrow><mi>V</mi><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mi>h</mi></mrow><annotation encoding="application/x-tex">V = \frac{1}{3}\pi r^2 h</annotation></semantics></math>. That has two changing lengths, but we know only <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>V</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dV}{dt}</annotation></semantics></math>. Similar triangles fix the shape: <math class="calc-m"><semantics><mrow><mfrac><mi>r</mi><mi>h</mi></mfrac><mo>=</mo><mfrac><mn>3</mn><mn>6</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{r}{h} = \frac{3}{6}</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mfrac><mi>h</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">r = \frac{h}{2}</annotation></semantics></math> at every instant. Substitute it now, because it is always true: <math class="calc-m"><semantics><mrow><mi>V</mi><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mi>π</mi><msup><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mi>h</mi><mn>2</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup><mi>h</mi><mo>=</mo><mfrac><mrow><mi>π</mi><msup><mi>h</mi><mn>3</mn></msup></mrow><mn>12</mn></mfrac></mrow><annotation encoding="application/x-tex">V = \frac{1}{3}\pi\left(\frac{h}{2}\right)^2 h = \frac{\pi h^3}{12}</annotation></semantics></math>.</p>
+<p><b>Differentiate:</b> <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>V</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>π</mi><msup><mi>h</mi><mn>2</mn></msup></mrow><mn>4</mn></mfrac><mfrac><mrow><mi>d</mi><mi>h</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dV}{dt} = \frac{\pi h^2}{4}\frac{dh}{dt}</annotation></semantics></math>.</p>
+<p><b>Substitute and solve:</b> <math class="calc-m"><semantics><mrow><mn>4</mn><mo>=</mo><mfrac><mrow><mi>π</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><mn>4</mn></mfrac><mfrac><mrow><mi>d</mi><mi>h</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">4 = \frac{\pi(4)}{4}\frac{dh}{dt}</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>d</mi><mi>h</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mn>4</mn><mi>π</mi></mfrac><mo>≈</mo><mn>1.27</mn></mrow><annotation encoding="application/x-tex">\frac{dh}{dt} = \frac{4}{\pi} \approx 1.27</annotation></semantics></math> feet per minute.</p>
+</div>
+<p>Notice the difference between the two substitutions. <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mfrac><mi>h</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">r = \frac{h}{2}</annotation></semantics></math> holds at every instant, so it may go in before differentiating. <math class="calc-m"><semantics><mrow><mi>h</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">h = 2</annotation></semantics></math> holds at one instant, so it must wait until after.</p>
+
+<h2 id="shadows">Shadows</h2>
+<div class="worked">
+<p><b>Worked example 3.</b> A 6-foot person walks away from a 15-foot lamppost at 5 ft/s. How fast does the tip of the shadow move?</p>
+<p>Let <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> be the distance from the post to the person and <math class="calc-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> the shadow's length. The light ray makes two similar right triangles: <math class="calc-m"><semantics><mrow><mfrac><mi>s</mi><mn>6</mn></mfrac><mo>=</mo><mfrac><mrow><mi>x</mi><mo>+</mo><mi>s</mi></mrow><mn>15</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{s}{6} = \frac{x + s}{15}</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mn>9</mn><mi>s</mi><mo>=</mo><mn>6</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">9s = 6x</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>s</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>x</mi></mrow><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">s = \frac{2x}{3}</annotation></semantics></math>.</p>
+<p>The tip is at distance <math class="calc-m"><semantics><mrow><mi>x</mi><mo>+</mo><mi>s</mi><mo>=</mo><mfrac><mrow><mn>5</mn><mi>x</mi></mrow><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">x + s = \frac{5x}{3}</annotation></semantics></math> from the post. Differentiate: <math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>5</mn><mn>3</mn></mfrac><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mn>25</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{d}{dt}(x + s) = \frac{5}{3}\frac{dx}{dt} = \frac{25}{3}</annotation></semantics></math> ft/s, faster than the person walks.</p>
+</div>
+
+<h2 id="slips-that-cost-points">Slips that cost points</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<tr><th>Slip</th><th>Fix</th></tr>
+<tr><td>Substituting <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">x = 6</annotation></semantics></math> before differentiating</td><td>Differentiate the general relation first</td></tr>
+<tr><td>Keeping two unknown rates</td><td>Use similar triangles or a given condition to remove one</td></tr>
+<tr><td>"Decreasing at 10" entered as <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">+10</annotation></semantics></math></td><td>Decreasing means a negative rate</td></tr>
+<tr><td>Labeling a fixed length with a variable</td><td>Constants of the problem stay numbers</td></tr>
+<tr><td>A bare number</td><td>Units and a sentence: "the top slides down at 1.5 ft/s"</td></tr>
+</table></div>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:solving-related-rates">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="related-rates-intro.html"><span>&larr; Previous</span><b>Introduction to Related Rates</b></a><a class="tb-chapter-link next" href="local-linearity.html"><span>Next &rarr;</span><b>Local Linearity and Linearization</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:solving-related-rates">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinite Limits and Vertical… — AP® Calculus AB Notes</title>
+<meta name="description" content="Infinite limits and vertical asymptotes: when a function grows without bound near a point, how to find the sign on each side, and how to write the limit.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/infinite-limits.html">
+<meta property="og:title" content="Infinite Limits and Vertical… — AP® Calculus AB Notes">
+<meta property="og:description" content="Infinite limits and vertical asymptotes: when a function grows without bound near a point, how to find the sign on each side, and how to write the limit.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/infinite-limits.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/infinite-limits.html#reading",
+      "name": "Infinite Limits and Vertical Asymptotes",
+      "url": "https://levlprep.com/calculus/notes/infinite-limits.html",
+      "description": "Infinite limits and vertical asymptotes: when a function grows without bound near a point, how to find the sign on each side, and how to write the limit.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "infinite limits and vertical asymptotes ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Limits and Continuity",
+          "item": "https://levlprep.com/calculus/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Infinite Limits and Vertical Asymptotes: notes",
+          "item": "https://levlprep.com/calculus/notes/infinite-limits.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="infinite-limits" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Limits and Continuity</b><small>16 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 16 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="change-at-an-instant"><a href="change-at-an-instant.html"><span class="bk-toc-n">1.1</span>Can Change Happen at an Instant?</a></li><li data-toc-t="limit-notation"><a href="limit-notation.html"><span class="bk-toc-n">1.2</span>What a Limit Is and How to Write It</a></li><li data-toc-t="limits-from-plots"><a href="limits-from-plots.html"><span class="bk-toc-n">1.3</span>Reading Limits from a Graph</a></li><li data-toc-t="limits-from-tables"><a href="limits-from-tables.html"><span class="bk-toc-n">1.4</span>Estimating Limits from Tables</a></li><li data-toc-t="limit-laws"><a href="limit-laws.html"><span class="bk-toc-n">1.5</span>Limit Laws</a></li><li data-toc-t="limit-algebra"><a href="limit-algebra.html"><span class="bk-toc-n">1.6</span>Limits by Algebra: Factor, Rationalize, Simplify</a></li><li data-toc-t="choosing-limit-methods"><a href="choosing-limit-methods.html"><span class="bk-toc-n">1.7</span>Choosing a Way to Find a Limit</a></li><li data-toc-t="squeeze-theorem"><a href="squeeze-theorem.html"><span class="bk-toc-n">1.8</span>The Squeeze Theorem</a></li><li data-toc-t="limit-representations"><a href="limit-representations.html"><span class="bk-toc-n">1.9</span>Limits Across Graphs, Tables and Formulas</a></li><li data-toc-t="discontinuity-types"><a href="discontinuity-types.html"><span class="bk-toc-n">1.10</span>Types of Discontinuity</a></li><li data-toc-t="continuity-at-a-point"><a href="continuity-at-a-point.html"><span class="bk-toc-n">1.11</span>Continuity at a Point</a></li><li data-toc-t="continuity-on-intervals"><a href="continuity-on-intervals.html"><span class="bk-toc-n">1.12</span>Continuity on an Interval</a></li><li data-toc-t="removing-discontinuities"><a href="removing-discontinuities.html"><span class="bk-toc-n">1.13</span>Removing a Discontinuity</a></li><li class="current" data-toc-t="infinite-limits"><a href="#main" aria-current="page"><span class="bk-toc-n">1.14</span>Infinite Limits and Vertical Asymptotes</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-an-infinite-limit-says">What an infinite limit says</a><a href="#finding-the-sign-on-each-side">Finding the sign on each side</a><a href="#vertical-asymptotes">Vertical asymptotes</a><a href="#writing-it-correctly">Writing it correctly</a></div></li><li data-toc-t="limits-at-infinity"><a href="limits-at-infinity.html"><span class="bk-toc-n">1.15</span>Limits at Infinity and Horizontal Asymptotes</a></li><li data-toc-t="intermediate-value-theorem"><a href="intermediate-value-theorem.html"><span class="bk-toc-n">1.16</span>The Intermediate Value Theorem</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Differentiation: Definition and Fundamental Properties</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Limits and Continuity</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Infinite Limits and Vertical Asymptotes: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/infinite-limits.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 1 &middot; Topic 1.14 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Infinite Limits and Vertical Asymptotes</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="infinite-limits">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Finfinite-limits.html&amp;title=Infinite%20Limits%20and%20Vertical%20Asymptotes%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/infinite-limits.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>When substitution gives a nonzero number over 0, you already know the <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> is <a class="gl" href="../notes/limits-from-plots.html" data-c="unbounded">unbounded</a> near that point. This topic gives that behavior its notation, shows how to find which way the function heads on each side, and connects it to <a class="gl" href="../notes/math-functions.html" data-c="asymptote">vertical asymptotes</a>.</p>
+
+<h2 id="what-an-infinite-limit-says">What an infinite limit says</h2>
+<p>Look at <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">f(x) = \frac{1}{(x - 2)^2}</annotation></semantics></math> near 2. At <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2.1</mn></mrow><annotation encoding="application/x-tex">x = 2.1</annotation></semantics></math> it is 100; at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2.01</mn></mrow><annotation encoding="application/x-tex">x = 2.01</annotation></semantics></math> it is 10,000; at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2.001</mn></mrow><annotation encoding="application/x-tex">x = 2.001</annotation></semantics></math> it is 1,000,000. The same happens from the left. The values do not settle on any number. They grow beyond every bound. We write</p>
+<p><math class="calc-m" display="block"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>2</mn></mrow></munder><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 2} \frac{1}{(x - 2)^2} = \infty</annotation></semantics></math></p>
+<p>Read it as "<math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math> increases without bound as <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> approaches 2." This is an <b><span class="gl" tabindex="0" data-c="infinite-limit">infinite limit</span></b>. Be careful about what it means: <math class="calc-m"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math> is not a number, so the <a class="gl" href="../notes/limits-from-plots.html" data-c="limit-dne">limit does not exist</a>. The notation tells you how it fails to exist. In the same way, <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>c</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to c} f(x) = -\infty</annotation></semantics></math> means the values decrease without bound.</p>
+<figure id="fig-inf"  class="calc-figure"><div class="calc-figimg" data-fig="infinite-limits-two-cases"><img src="../figures/infinite-limits-two-cases.svg" alt="Two graphs with a dashed vertical asymptote at x = 2. Left: y = 1/(x − 2)², which rises without bound on both sides, so the limit as x approaches 2 is +∞ from each side. Right: y = 1/(x − 2), which falls without bound from the left (−∞) and rises without bound from the right (+∞), so the one-sided infinite limits have opposite signs." width="780" height="350" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Left: both sides go up. Right: the sides go opposite ways. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="finding-the-sign-on-each-side">Finding the sign on each side</h2>
+<p>When substitution gives a nonzero number over 0, the size of the quotient blows up. Its sign on each side decides between <math class="calc-m"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">-\infty</annotation></semantics></math>. Work it out from the signs of the pieces.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>3</mn><mo>−</mo></msup></mrow></munder><mfrac><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 3^-} \frac{x + 1}{x - 3}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>3</mn><mo>+</mo></msup></mrow></munder><mfrac><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 3^+} \frac{x + 1}{x - 3}</annotation></semantics></math>.</p>
+<p>Near 3 the numerator is close to 4, which is positive.</p>
+<p>Left of 3 (say <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2.99</mn></mrow><annotation encoding="application/x-tex">x = 2.99</annotation></semantics></math>): <math class="calc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x - 3</annotation></semantics></math> is a tiny negative number. Positive over tiny negative is hugely negative, so <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>3</mn><mo>−</mo></msup></mrow></munder><mfrac><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 3^-} \frac{x + 1}{x - 3} = -\infty</annotation></semantics></math>.</p>
+<p>Right of 3 (say <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3.01</mn></mrow><annotation encoding="application/x-tex">x = 3.01</annotation></semantics></math>): <math class="calc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x - 3</annotation></semantics></math> is a tiny positive number, so <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>3</mn><mo>+</mo></msup></mrow></munder><mfrac><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></mfrac><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 3^+} \frac{x + 1}{x - 3} = \infty</annotation></semantics></math>.</p>
+<p>The sides disagree, so the two-sided <a class="gl" href="../notes/limit-notation.html" data-c="limit">limit</a> does not exist and is not <math class="calc-m"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math> or <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">-\infty</annotation></semantics></math> either. Report the <a class="gl" href="../notes/limits-from-plots.html" data-c="one-sided-limit">one-sided limits</a>.</p>
+</div>
+<p>A squared factor such as <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>4</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(x - 4)^2</annotation></semantics></math> is positive on both sides, so it never changes sign. That is why <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{(x - 2)^2}</annotation></semantics></math> goes up on both sides.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>4</mn></mrow></munder><mfrac><mrow><mi>x</mi><mo>−</mo><mn>6</mn></mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>4</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 4} \frac{x - 6}{(x - 4)^2}</annotation></semantics></math>.</p>
+<p>The numerator approaches <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">-2</annotation></semantics></math>. The denominator is a tiny positive number on both sides. Negative over tiny positive is hugely negative on both sides, so the limit is <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">-\infty</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="vertical-asymptotes">Vertical asymptotes</h2>
+<p>The line <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x = c</annotation></semantics></math> is a <b>vertical asymptote</b> of the graph of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> when at least one of <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mi>c</mi><mo>−</mo></msup></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to c^-} f(x)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mi>c</mi><mo>+</mo></msup></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to c^+} f(x)</annotation></semantics></math> is <math class="calc-m"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math> or <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">-\infty</annotation></semantics></math>. One side is enough. The graph of <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\ln x</annotation></semantics></math>, for instance, has the asymptote <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math> with only a right side: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>0</mn><mo>+</mo></msup></mrow></munder><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to 0^+} \ln x = -\infty</annotation></semantics></math>.</p>
+<p>For a <a class="gl" href="../notes/math-functions.html" data-c="rational-function">rational function</a>, factor and cancel first. A factor that cancels gives a hole; a factor that stays in the denominator gives an asymptote.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find the vertical asymptotes of <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>9</mn></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">f(x) = \frac{x^2 - 9}{x^2 - 2x - 3}</annotation></semantics></math>.</p>
+<p>Factor: <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">f(x) = \frac{(x - 3)(x + 3)}{(x - 3)(x + 1)}</annotation></semantics></math>.</p>
+<p>At <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math> the factor cancels: <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></mfrac><mo>→</mo><mfrac><mn>6</mn><mn>4</mn></mfrac><mo>=</mo><mfrac><mn>3</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">f(x) = \frac{x + 3}{x + 1} \to \frac{6}{4} = \frac{3}{2}</annotation></semantics></math>. A hole, not an asymptote.</p>
+<p>At <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = -1</annotation></semantics></math> the numerator approaches 2 and the denominator approaches 0, so <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is unbounded. The only vertical asymptote is <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = -1</annotation></semantics></math>.</p>
+</div>
+<p>Other functions have asymptotes too. <math class="calc-m"><semantics><mrow><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mfrac><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\tan x = \frac{\sin x}{\cos x}</annotation></semantics></math> has one wherever <math class="calc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\cos x = 0</annotation></semantics></math>, such as <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mi>π</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">x = \frac{\pi}{2}</annotation></semantics></math>, with <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mfrac><mi>π</mi><mn>2</mn></mfrac><mo>−</mo></msup></mrow></munder><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to \frac{\pi}{2}^-} \tan x = \infty</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mfrac><mi>π</mi><mn>2</mn></mfrac><mo>+</mo></msup></mrow></munder><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to \frac{\pi}{2}^+} \tan x = -\infty</annotation></semantics></math>.</p>
+
+<h2 id="writing-it-correctly">Writing it correctly</h2>
+<ul>
+<li>Write <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mi>c</mi><mo>+</mo></msup></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to c^+} f(x) = \infty</annotation></semantics></math>, never <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">f(c) = \infty</annotation></semantics></math>. A function's value is a number or undefined.</li>
+<li>Write <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>c</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\lim_{x \to c} f(x) = \infty</annotation></semantics></math> only when both sides go to <math class="calc-m"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math>. If the sides differ, give them separately.</li>
+<li>To justify an asymptote, show an infinite one-sided limit. "The denominator is 0" is not enough, because a hole also has a zero denominator.</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:infinite-limits">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="removing-discontinuities.html"><span>&larr; Previous</span><b>Removing a Discontinuity</b></a><a class="tb-chapter-link next" href="limits-at-infinity.html"><span>Next &rarr;</span><b>Limits at Infinity and Horizontal Asymptotes</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:infinite-limits">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

@@ -83,7 +83,7 @@
     "options": [
      "$x - 2$ remains in the denominator after cancelling; $x + 1$ does not.",
      "At $x = -1$ the zero factor cancels, leaving a hole, not an asymptote.",
-     "$x = -1$ is a hole. The asymptote is where the uncancelled factor $x - 2$ is 0.",
+     "$x = -1$ is a hole. The asymptote is where the uncanceled factor $x - 2$ is 0.",
      "Near $x = 2$, $R(x) = \\frac{1}{x - 2}$ grows without bound."
     ]
    }
@@ -404,7 +404,7 @@
     "options": [
      "At $x = 3$ the factor cancels, so $\\lim_{x \\to 3} f(x) = \\frac{3}{2}$: a hole.",
      "$x = 3$ is the hole; the asymptote is $x = -1$.",
-     "Only the uncancelled factor $x + 1$ gives an asymptote.",
+     "Only the uncanceled factor $x + 1$ gives an asymptote.",
      "$x = -3$ makes the numerator 0, which gives a zero of $f$."
     ]
    }

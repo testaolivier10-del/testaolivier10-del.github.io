@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motion with Integrals — AP® Calculus AB Notes | LevlPrep</title>
+<meta name="description" content="In Unit 4 you started from a position function x(t) and differentiated: velocity v = x′ , acceleration a = v′ . Now run the film backward.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/motion-with-integrals.html">
+<meta property="og:title" content="Motion with Integrals — AP® Calculus AB Notes | LevlPrep">
+<meta property="og:description" content="In Unit 4 you started from a position function x(t) and differentiated: velocity v = x′ , acceleration a = v′ . Now run the film backward.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/motion-with-integrals.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/motion-with-integrals.html#reading",
+      "name": "Motion with Integrals",
+      "url": "https://levlprep.com/calculus/notes/motion-with-integrals.html",
+      "description": "In Unit 4 you started from a position function x(t) and differentiated: velocity v = x′ , acceleration a = v′ . Now run the film backward.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "motion with integrals ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Applications of Integration",
+          "item": "https://levlprep.com/calculus/units/unit-8.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Motion with Integrals: notes",
+          "item": "https://levlprep.com/calculus/notes/motion-with-integrals.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="motion-with-integrals" data-unit="unit-8">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 8 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-7.html"><span class="bk-toc-n">7</span>Differential Equations</a>
+    <a class="bk-toc-chap" href="../units/unit-8.html"><span class="bk-toc-chap-n">8</span><span><b>Applications of Integration</b><small>12 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-8"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="average-value"><a href="average-value.html"><span class="bk-toc-n">8.1</span>Average Value of a Function</a></li><li class="current" data-toc-t="motion-with-integrals"><a href="#main" aria-current="page"><span class="bk-toc-n">8.2</span>Motion with Integrals</a><div class="bk-toc-onpage"><p>On this page</p><a href="#displacement-the-integral-of-velocity">Displacement: the integral of velocity</a><a href="#total-distance-the-integral-of-speed">Total distance: the integral of speed</a><a href="#position-from-a-starting-point">Position from a starting point</a><a href="#with-a-calculator">With a calculator</a><a href="#displacement-or-distance">Displacement or distance?</a><a href="#common-slips">Common slips</a></div></li><li data-toc-t="accumulation-in-context"><a href="accumulation-in-context.html"><span class="bk-toc-n">8.3</span>Accumulation in Context</a></li><li data-toc-t="area-between-curves-x"><a href="area-between-curves-x.html"><span class="bk-toc-n">8.4</span>Area Between Curves (Functions of x)</a></li><li data-toc-t="area-between-curves-y"><a href="area-between-curves-y.html"><span class="bk-toc-n">8.5</span>Area Between Curves (Functions of y)</a></li><li data-toc-t="area-multiple-crossings"><a href="area-multiple-crossings.html"><span class="bk-toc-n">8.6</span>Area Between Curves That Cross More Than Twice</a></li><li data-toc-t="cross-sections-squares"><a href="cross-sections-squares.html"><span class="bk-toc-n">8.7</span>Volumes with Square and Rectangle Cross Sections</a></li><li data-toc-t="cross-sections-triangles"><a href="cross-sections-triangles.html"><span class="bk-toc-n">8.8</span>Volumes with Triangle and Semicircle Cross Sections</a></li><li data-toc-t="disc-method-axes"><a href="disc-method-axes.html"><span class="bk-toc-n">8.9</span>Disc Method About the Axes</a></li><li data-toc-t="disc-method-other-axes"><a href="disc-method-other-axes.html"><span class="bk-toc-n">8.10</span>Disc Method About Other Lines</a></li><li data-toc-t="washer-method-axes"><a href="washer-method-axes.html"><span class="bk-toc-n">8.11</span>Washer Method About the Axes</a></li><li data-toc-t="washer-method-other-axes"><a href="washer-method-other-axes.html"><span class="bk-toc-n">8.12</span>Washer Method About Other Lines</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-8.html">Applications of Integration</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Motion with Integrals: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/motion-with-integrals.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 8 &middot; Topic 8.2 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Motion with Integrals</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="motion-with-integrals">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fmotion-with-integrals.html&amp;title=Motion%20with%20Integrals%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/motion-with-integrals.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>In Unit 4 you started from a <a class="gl" href="../notes/straight-line-motion.html" data-c="position-function">position function</a> <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math> and differentiated: <a class="gl" href="../notes/straight-line-motion.html" data-c="velocity">velocity</a> <math class="calc-m"><semantics><mrow><mi>v</mi><mo>=</mo><mrow><mi>x</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">v = x'</annotation></semantics></math>, <a class="gl" href="../notes/straight-line-motion.html" data-c="acceleration">acceleration</a> <math class="calc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mrow><mi>v</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">a = v'</annotation></semantics></math>. Now run the film backward. Given the velocity, <a class="gl" href="../notes/definite-integral-notation.html" data-c="definite-integral">integrals</a> recover how far the particle moved and where it is. Two different questions hide here, and the exam asks both: how far did it end up from its start, and how far did it actually travel?</p>
+
+<h2 id="displacement-the-integral-of-velocity">Displacement: the integral of velocity</h2>
+<p>Because <math class="calc-m"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math> is the <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a> of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, the Fundamental Theorem gives</p>
+<p><math class="calc-m" display="block"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi><mo>=</mo><mi>x</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo><mo>−</mo><mi>x</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>.</mo></mrow><annotation encoding="application/x-tex">\int_a^b v(t)\,dt = x(b) - x(a).</annotation></semantics></math></p>
+<p>This <a class="gl" href="../notes/accumulation-of-change.html" data-c="accumulated-change">net change</a> in position is the <b><span class="gl" tabindex="0" data-c="displacement">displacement</span></b> on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math>. On a velocity graph it is the <a class="gl" href="../notes/accumulation-behavior.html" data-c="signed-area">signed area</a>: area above the <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math>-axis (moving right, or up, or forward) counts as positive, area below (moving left) counts as negative. So a trip right followed by an equal trip left has displacement 0.</p>
+
+<h2 id="total-distance-the-integral-of-speed">Total distance: the integral of speed</h2>
+<p>A car's odometer does not subtract when you drive back home. <a class="gl" href="../notes/straight-line-motion.html" data-c="speed">Speed</a> is <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|v(t)|</annotation></semantics></math>, and the <b><span class="gl" tabindex="0" data-c="total-distance">total distance</span></b> traveled is</p>
+<p><math class="calc-m" display="block"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup><mo stretchy="false">|</mo><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">|</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi><mo>.</mo></mrow><annotation encoding="application/x-tex">\int_a^b |v(t)|\,dt.</annotation></semantics></math></p>
+<p>On the graph, that is the sum of the areas, every one counted as positive.</p>
+<figure id="fig-vel"  class="calc-figure"><div class="calc-figimg" data-fig="velocity-areas"><img src="../figures/velocity-areas.svg" alt="The velocity v(t) = t² − 4t + 3 m/s for 0 ≤ t ≤ 4 s. It is positive on (0, 1) and (3, 4), where the region between the graph and the t-axis is shaded crimson with area 4/3 each, and negative on (1, 3), where the region below the axis is shaded blue with area 4/3. Displacement adds signed areas: 4/3 m. Total distance adds the areas: 4 m." width="660" height="450" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>t</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>t</mi><mo>+</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">v(t) = t^2 - 4t + 3</annotation></semantics></math>: the particle moves right on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 1)</annotation></semantics></math>, left on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 3)</annotation></semantics></math>, right on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 4)</annotation></semantics></math>. Each shaded region has area <math class="calc-m"><semantics><mrow><mfrac><mn>4</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{4}{3}</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example 1 (no calculator).</b> A particle moves with <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>t</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>t</mi><mo>+</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">v(t) = t^2 - 4t + 3</annotation></semantics></math> meters per second for <math class="calc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">0 \le t \le 4</annotation></semantics></math>. Find its displacement and its total distance.</p>
+<p><a class="gl" href="../notes/ftc-accumulation.html" data-c="antiderivative">Antiderivative</a>: <math class="calc-m"><semantics><mrow><mi>F</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><msup><mi>t</mi><mn>3</mn></msup><mn>3</mn></mfrac><mo>−</mo><mn>2</mn><msup><mi>t</mi><mn>2</mn></msup><mo>+</mo><mn>3</mn><mi>t</mi></mrow><annotation encoding="application/x-tex">F(t) = \frac{t^3}{3} - 2t^2 + 3t</annotation></semantics></math>.</p>
+<p>Displacement: <math class="calc-m"><semantics><mrow><mi>F</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>−</mo><mi>F</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>64</mn><mn>3</mn></mfrac><mo>−</mo><mn>32</mn><mo>+</mo><mn>12</mn><mo>=</mo><mfrac><mn>4</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">F(4) - F(0) = \frac{64}{3} - 32 + 12 = \frac{4}{3}</annotation></semantics></math> meters.</p>
+<p>Distance: <math class="calc-m"><semantics><mrow><mi>v</mi><mo>=</mo><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v = (t - 1)(t - 3)</annotation></semantics></math> changes sign at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t = 1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t = 3</annotation></semantics></math>, so split there. <math class="calc-m"><semantics><mrow><mi>F</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>−</mo><mi>F</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>4</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">F(1) - F(0) = \frac{4}{3}</annotation></semantics></math>; <math class="calc-m"><semantics><mrow><mi>F</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>−</mo><mi>F</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo>−</mo><mfrac><mn>4</mn><mn>3</mn></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>4</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">F(3) - F(1) = 0 - \frac{4}{3} = -\frac{4}{3}</annotation></semantics></math>; <math class="calc-m"><semantics><mrow><mi>F</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>−</mo><mi>F</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>4</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">F(4) - F(3) = \frac{4}{3}</annotation></semantics></math>.</p>
+<p>Add the sizes: <math class="calc-m"><semantics><mrow><mfrac><mn>4</mn><mn>3</mn></mfrac><mo>+</mo><mfrac><mn>4</mn><mn>3</mn></mfrac><mo>+</mo><mfrac><mn>4</mn><mn>3</mn></mfrac><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\frac{4}{3} + \frac{4}{3} + \frac{4}{3} = 4</annotation></semantics></math> meters. The particle traveled 4 m but ended only <math class="calc-m"><semantics><mrow><mfrac><mn>4</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{4}{3}</annotation></semantics></math> m to the right of where it began.</p>
+</div>
+<p>Without a calculator you cannot integrate <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>v</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|v|</annotation></semantics></math> directly. Find where <math class="calc-m"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math> changes sign, integrate <math class="calc-m"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math> on each piece, and add the absolute values. Check every zero, not just whole-number times.</p>
+
+<h2 id="position-from-a-starting-point">Position from a starting point</h2>
+<p>Displacement tells you the change. To know the position itself, you need one known position, then add the change:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo>+</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><msub><mi>t</mi><mn>0</mn></msub><mi>t</mi></msubsup><mi>v</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>s</mi><mo>.</mo></mrow><annotation encoding="application/x-tex">x(t) = x(t_0) + \int_{t_0}^{t} v(s)\,ds.</annotation></semantics></math></p>
+<div class="worked">
+<p><b>Worked example 2 (graph).</b> A particle's velocity is made of segments through <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 0)</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 4)</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(5, 4)</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>8</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(8, -2)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>10</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(10, -2)</annotation></semantics></math>, in m/s, and <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x(0) = -3</annotation></semantics></math>. Find <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x(10)</annotation></semantics></math>, the total distance, and the time it is farthest right.</p>
+<p>Areas: 4 on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 2]</annotation></semantics></math>, 12 on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>2</mn><mo>,</mo><mn>5</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[2, 5]</annotation></semantics></math>, 4 on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>5</mn><mo>,</mo><mn>7</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[5, 7]</annotation></semantics></math> (where <math class="calc-m"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math> reaches 0), then 1 and 4 below the axis on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>7</mn><mo>,</mo><mn>8</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[7, 8]</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>8</mn><mo>,</mo><mn>10</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[8, 10]</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>+</mo><mo stretchy="false">(</mo><mn>4</mn><mo>+</mo><mn>12</mn><mo>+</mo><mn>4</mn><mo>−</mo><mn>1</mn><mo>−</mo><mn>4</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>+</mo><mn>15</mn><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">x(10) = -3 + (4 + 12 + 4 - 1 - 4) = -3 + 15 = 12</annotation></semantics></math> m. Total distance: <math class="calc-m"><semantics><mrow><mn>4</mn><mo>+</mo><mn>12</mn><mo>+</mo><mn>4</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">4 + 12 + 4 + 1 + 4 = 25</annotation></semantics></math> m.</p>
+<p>The particle moves right while <math class="calc-m"><semantics><mrow><mi>v</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v &gt; 0</annotation></semantics></math> and left after <math class="calc-m"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math> changes sign at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">t = 7</annotation></semantics></math>, so it is farthest right at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">t = 7</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mn>7</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>+</mo><mn>20</mn><mo>=</mo><mn>17</mn></mrow><annotation encoding="application/x-tex">x(7) = -3 + 20 = 17</annotation></semantics></math> m.</p>
+</div>
+<p>The same idea gives velocity from acceleration: <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>v</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo>+</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><msub><mi>t</mi><mn>0</mn></msub><mi>t</mi></msubsup><mi>a</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">v(t) = v(t_0) + \int_{t_0}^{t} a(s)\,ds</annotation></semantics></math>. With <math class="calc-m"><semantics><mrow><mi>a</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>6</mn><mi>t</mi></mrow><annotation encoding="application/x-tex">a(t) = 6t</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">v(0) = -3</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>v</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo>+</mo><mn>12</mn><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">v(2) = -3 + 12 = 9</annotation></semantics></math> m/s.</p>
+
+<h2 id="with-a-calculator">With a calculator</h2>
+<p>When the velocity has no easy antiderivative, the calculator does the integral, and it can integrate <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>v</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|v|</annotation></semantics></math> directly. Write the setup every time, then the value to three decimal places:</p>
+<ul>
+<li>Displacement: <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>6</mn></msubsup><mo stretchy="false">(</mo><mn>4</mn><mo>−</mo><mi>t</mi><mo>+</mo><mn>2</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>t</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi><mo>≈</mo><mn>6.080</mn></mrow><annotation encoding="application/x-tex">\int_0^6 (4 - t + 2\sin t)\,dt \approx 6.080</annotation></semantics></math> feet.</li>
+<li>Total distance: <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>6</mn></msubsup><mo stretchy="false">|</mo><mn>4</mn><mo>−</mo><mi>t</mi><mo>+</mo><mn>2</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>t</mi><mo stretchy="false">|</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi><mo>≈</mo><mn>17.430</mn></mrow><annotation encoding="application/x-tex">\int_0^6 |4 - t + 2\sin t|\,dt \approx 17.430</annotation></semantics></math> feet.</li>
+<li>Position, if <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x(0) = 5</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn><mo>+</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>6</mn></msubsup><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi><mo>≈</mo><mn>11.080</mn></mrow><annotation encoding="application/x-tex">x(6) = 5 + \int_0^6 v(t)\,dt \approx 11.080</annotation></semantics></math> feet.</li>
+</ul>
+<p><a class="gl" href="../notes/math-trig.html" data-c="radian">Radian</a> mode, and keep full precision until the final answer.</p>
+
+<h2 id="displacement-or-distance">Displacement or distance?</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead><tr><th>Question asks for</th><th>Integral</th><th>Can it be negative?</th></tr></thead>
+<tbody>
+<tr><td>displacement, change in position, net distance</td><td><math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\int_a^b v(t)\,dt</annotation></semantics></math></td><td>yes</td></tr>
+<tr><td>total distance traveled</td><td><math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup><mo stretchy="false">|</mo><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">|</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\int_a^b |v(t)|\,dt</annotation></semantics></math></td><td>no</td></tr>
+<tr><td>position at time <math class="calc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>+</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup><mi>v</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">x(a) + \int_a^b v(t)\,dt</annotation></semantics></math></td><td>yes</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="common-slips">Common slips</h2>
+<ul>
+<li>Giving the displacement when the question asks for total distance, or the reverse.</li>
+<li>Forgetting the initial position, or starting the integral at 0 when the known position is at another time.</li>
+<li>Putting the absolute value outside: <math class="calc-m"><semantics><mrow><mrow><mo fence="true" stretchy="true">|</mo><mrow><mo largeop="true" movablelimits="false">∫</mo><mi>v</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><mo fence="true" stretchy="true">|</mo></mrow></mrow><annotation encoding="application/x-tex">\left|\int v\,dt\right|</annotation></semantics></math> is the size of the displacement, not the distance.</li>
+<li>Units: the integral of feet per second over seconds is feet.</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:motion-with-integrals">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="average-value.html"><span>&larr; Previous</span><b>Average Value of a Function</b></a><a class="tb-chapter-link next" href="accumulation-in-context.html"><span>Next &rarr;</span><b>Accumulation in Context</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:motion-with-integrals">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

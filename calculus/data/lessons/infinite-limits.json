@@ -54,7 +54,7 @@
   "Find each side by signs: a nonzero numerator over a denominator approaching 0 from the positive or negative side.",
   "If the two sides agree, write $\\lim_{x \\to c} f(x) = \\infty$ (or $-\\infty$). If they disagree, give each one-sided limit.",
   "$x = c$ is a <b>vertical asymptote</b> when at least one one-sided limit at $c$ is $\\infty$ or $-\\infty$.",
-  "For a rational function, cancel common factors first: a cancelled factor gives a hole, a factor left in the denominator gives an asymptote."
+  "For a rational function, cancel common factors first: a canceled factor gives a hole, a factor left in the denominator gives an asymptote."
  ],
  "misconception": {
   "wrong": "$\\lim_{x \\to 2} \\frac{1}{(x - 2)^2} = \\infty$, so the limit exists and its value is $\\infty$.",
@@ -69,5 +69,5 @@
   "calc-infinite-limits-15",
   "calc-infinite-limits-16"
  ],
- "summary": "An infinite limit, $\\lim_{x \\to c} f(x) = \\pm\\infty$, says $f$ grows without bound near $c$; the limit does not exist as a number. Find each side's sign from the signs of the numerator and the shrinking denominator. Any infinite one-sided limit at $c$ makes $x = c$ a vertical asymptote; a cancelled factor makes a hole instead."
+ "summary": "An infinite limit, $\\lim_{x \\to c} f(x) = \\pm\\infty$, says $f$ grows without bound near $c$; the limit does not exist as a number. Find each side's sign from the signs of the numerator and the shrinking denominator. Any infinite one-sided limit at $c$ makes $x = c$ a vertical asymptote; a canceled factor makes a hole instead."
 }

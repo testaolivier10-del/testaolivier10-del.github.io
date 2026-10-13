@@ -1,6 +1,6 @@
 {
  "topic": "rates-in-context",
- "hook": "Doctors track how fast a medicine's concentration falls, economists how fast cost grows with each extra unit, ecologists how fast a population spreads. The derivative is the same in all of them; what changes is the story and the units. This topic practises reading rates, and rates of rates, in many settings.",
+ "hook": "Doctors track how fast a medicine's concentration falls, economists how fast cost grows with each extra unit, ecologists how fast a population spreads. The derivative is the same in all of them; what changes is the story and the units. This topic practices reading rates, and rates of rates, in many settings.",
  "prereq": [
   {
    "q": "The units of $f'(t)$, when $f$ is in liters and $t$ in minutes, are",

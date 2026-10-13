@@ -31,7 +31,7 @@ function build(published) {
 test('a published unit builds every page kind, math rendered and graphs plotted, and the course rules pass', () => {
   const { root, files, html } = build('unit-6');
   const rel = files.map(f => f.slice(root.length + 1));
-  for (const p of ['calculus/index.html', 'calculus/learn.html', 'calculus/glossary.html', 'calculus/units/unit-6.html', 'calculus/unit-sheets/unit-6.html', `calculus/lessons/${T}.html`, `calculus/notes/${T}.html`, 'calculus/practice.html', 'calculus/exams.html', 'calculus/frq.html', 'calculus/formula-sheet.html', 'calculus/score-calculator.html', 'calculus/unit-tests/unit-6.html', 'calculus/assets/bank/unit-6-b.json', 'calculus/assets/bank/unit-6-b-why.json', 'calculus/assets/bank/index.json', 'calculus/assets/calc-curriculum.js']) assert.ok(rel.includes(p), p);
+  for (const p of ['calculus/index.html', 'calculus/learn.html', 'calculus/glossary.html', 'calculus/units/unit-6.html', 'calculus/unit-sheets/unit-6.html', `calculus/lessons/${T}.html`, `calculus/notes/${T}.html`, 'calculus/practice.html', 'calculus/exams.html', 'calculus/frq.html', 'calculus/formula-sheet.html', 'calculus/score-calculator.html', 'calculus/unit-tests/unit-6.html', 'calculus/assets/bank/unit-6.json', 'calculus/assets/bank/unit-6-why.json', 'calculus/assets/bank/index.json', 'calculus/assets/calc-curriculum.js']) assert.ok(rel.includes(p), p);
   assert.ok(rel.every(r => !hasApToken(r.slice(5))));
   const fails = [];
   trademark({ ROOT: root, fail: m => fails.push(m), htmlFiles: html });
@@ -57,7 +57,7 @@ test('a published unit builds every page kind, math rendered and graphs plotted,
   // The static (no-JavaScript) key of an expr item is rendered math, with + C.
   assert.match(lesson, /Answer: <math class="calc-m">[\s\S]*?<annotation encoding="application\/x-tex">\\int f\(x\)\\,dx =<\/annotation>[\s\S]*?x\^\{3\} \+ C<\/annotation>/);
   // The bank: rendered math, the expr key's HTML, the exact numeric key's value, the calculator flag.
-  const bank = JSON.parse(readFileSync(join(root, 'calculus/assets/bank/unit-6-b.json'), 'utf8'));
+  const bank = JSON.parse(readFileSync(join(root, 'calculus/assets/bank/unit-6.json'), 'utf8'));
   const by = id => bank.items.find(q => q.id === `calc-${T}-${id}`);
   assert.match(by(3).expr.answerHtml, /<math/); assert.equal(by(3).expr.answer, 'x^3');
   assert.ok(Math.abs(by(11).numeric.value - 1 / 3) < 1e-15); assert.match(by(11).numeric.answerHtml, /<mfrac>/);
@@ -69,7 +69,8 @@ test('a published unit builds every page kind, math rendered and graphs plotted,
   const order = CU.topics.map(t => t.id);
   assert.ok(order.indexOf('math-functions') < order.indexOf('change-at-an-instant'), 'the math you need comes first');
   assert.ok(CU.topics.find(t => t.id === 'math-trig').free, 'math lessons are free');
-  assert.equal(CU.topics.find(t => t.id === T).bank, 'unit-6-b');
+  // One fixture topic fits one file; the real Unit 6 is split by gzipped size (bankPlan).
+  assert.equal(CU.topics.find(t => t.id === T).bank, undefined);
 });
 
 test('nothing published: no topic pages, every page noindex', () => {

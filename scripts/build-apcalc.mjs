@@ -33,6 +33,7 @@
    "ap" (spec decision 2). */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
+import { gzipSync } from 'node:zlib';
 import { Hub } from './lib/hub.mjs';
 import { courseTitle } from './lib/page-title.mjs';
 import { glossaryJson as sharedGlossaryJson, glossaryMain, glossaryScript } from './lib/glossary.mjs';
@@ -163,7 +164,7 @@ function build() {
     const byId = new Map(items.map(q => [q.id, q]));
     const check = (L.check || []).map(x => byId.get(x)).filter(Boolean).map(questionForPage);
     const stimuli = stimuliFor(id, check);
-    const title = courseTitle(t.title, [`${LABEL} Lesson`, LABEL]);
+    const title = courseTitle(C.descriptions.titles?.[id] || t.title, [`${LABEL} Lesson`, LABEL]);
     const desc = C.descriptions.lessons?.[id] || clampDesc(L.summary, `${t.title}: a calculus lesson taught from scratch, step by step, with exam-style practice questions.`);
     const url = `${SITE}${BASE}lessons/${id}.html`;
     const fig = L.figure && L.figure.figure ? C.figures[L.figure.figure] : null;
@@ -303,7 +304,7 @@ ${tail({ depth, section: 'learn', extra: ['calc-questions.js', 'calc-lesson.js']
     const html = glossify(C, renderFigures(C, withIds, depth), { depth, topic: id, seen, index: GLOSS });
     const firstP = [...C.notes[id].matchAll(/<p>([\s\S]*?)<\/p>/g)].slice(0, 2).map(m => m[1]).join(' ') || t.title;
     const minutes = Math.max(1, Math.round(text(C.notes[id]).split(' ').length / 200));
-    const title = courseTitle(t.title, [`${LABEL} Notes`]);
+    const title = courseTitle(C.descriptions.titles?.[id] || t.title, [`${LABEL} Notes`]);
     const desc = C.descriptions.notes?.[id] || clampDesc(firstP, `${t.title} explained from scratch: free calculus study notes with figures and worked examples.`);
     const url = `${SITE}${BASE}notes/${id}.html`;
     const pv = prevBuilt(id), nx = nextBuilt(id);
@@ -1076,16 +1077,45 @@ window.ApCalcCurriculum = ${JSON.stringify(data)};
   }
   /* The bank, one pair of files per published chapter: questions and their
      stimulus panels, then explanations (fetched after an answer). */
-  /* Which bank file a topic's questions go in: its unit, or, for a unit of
-     more than BANK_SPLIT topics (only Unit 7, with 12), <unit>-a and <unit>-b by
-     course order, so no file outgrows its weight budget (check-weight.mjs:
-     split a unit rather than raise the budget). The curriculum carries it as
-     topics[].bank for the runtime. */
-  const BANK_SPLIT = 10;
+  /* Which bank file a topic's questions go in: its unit, or, when the unit's
+     questions would pass BANK_GZ gzipped (MathML and plotted stimuli make
+     calculus items heavy), <unit>-a, <unit>-b, ... packed in course order, so
+     no file outgrows its weight budget (check-weight.mjs: split a unit rather
+     than raise the budget). The curriculum carries it as topics[].bank for
+     the runtime; explanations follow the same split. */
+  const BANK_GZ = 44 * 1024;
+  let plan = null;
+  const cores = new Map();
+  function coreOf(t) {
+    if (cores.has(t.id)) return cores.get(t.id);
+    const qf = C.questions[t.id], stimuli = {}, items = [];
+    for (const [sid, s] of Object.entries(qf.stimuli || {})) stimuli[sid] = { kind: s.kind, title: s.title, html: stimulusBody(C, s, '') };
+    for (const q of qf.items) {
+      const { why: _w, ...rest } = questionForPage(q);
+      if (rest.variables) rest.variables = rest.variables.map(v => ({ name: v.name, answer: v.answer }));
+      items.push(rest);
+    }
+    cores.set(t.id, { stimuli, items });
+    return cores.get(t.id);
+  }
+  function bankPlan() {
+    if (plan) return plan;
+    plan = new Map();
+    const gz = parts => gzipSync(JSON.stringify({ stimuli: Object.assign({}, ...parts.map(p => p.stimuli)), items: parts.flatMap(p => p.items) })).length;
+    for (const ch of [...new Set(built.map(t => t.chapter))]) {
+      const ts = built.filter(t => t.chapter === ch), groups = [];
+      let cur = [];
+      for (const t of ts) {
+        const next = [...cur, t];
+        if (cur.length && gz(next.map(coreOf)) > BANK_GZ) { groups.push(cur); cur = [t]; } else cur = next;
+      }
+      groups.push(cur);
+      groups.forEach((g, i) => g.forEach(t => plan.set(t.id, groups.length === 1 ? ch : `${ch}-${'abcdefgh'[i]}`)));
+    }
+    return plan;
+  }
   function bankFile(t) {
-    const same = topics.filter(x => x.chapter === t.chapter);
-    if (same.length <= BANK_SPLIT) return t.chapter;
-    return t.chapter + (same.indexOf(t) < Math.ceil(same.length / 2) ? '-a' : '-b');
+    return bankPlan().get(t.id) || t.chapter;
   }
   function bank() {
     const out = {};

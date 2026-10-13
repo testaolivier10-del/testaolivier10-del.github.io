@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Behavior of Accumulation Functions — AP® Calculus AB Notes</title>
+<meta name="description" content="The graphical FTC question is a free-response regular: a graph of f built from lines and semicircles, and a function g(x) = ∫ from a to x of f(t) dt .">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/accumulation-behavior.html">
+<meta property="og:title" content="Behavior of Accumulation Functions — AP® Calculus AB Notes">
+<meta property="og:description" content="The graphical FTC question is a free-response regular: a graph of f built from lines and semicircles, and a function g(x) = ∫ from a to x of f(t) dt .">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/accumulation-behavior.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/accumulation-behavior.html#reading",
+      "name": "Behavior of Accumulation Functions",
+      "url": "https://levlprep.com/calculus/notes/accumulation-behavior.html",
+      "description": "The graphical FTC question is a free-response regular: a graph of f built from lines and semicircles, and a function g(x) = ∫ from a to x of f(t) dt .",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "behavior of accumulation functions ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Integration and Accumulation of Change",
+          "item": "https://levlprep.com/calculus/units/unit-6.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Behavior of Accumulation Functions: notes",
+          "item": "https://levlprep.com/calculus/notes/accumulation-behavior.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="accumulation-behavior" data-unit="unit-6">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 6 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Analytical Applications of Differentiation</a>
+    <a class="bk-toc-chap" href="../units/unit-6.html"><span class="bk-toc-chap-n">6</span><span><b>Integration and Accumulation of Change</b><small>11 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-6"><div class="tb-progress-row"><span><b>0</b> of 11 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="accumulation-of-change"><a href="accumulation-of-change.html"><span class="bk-toc-n">6.1</span>Accumulating Change</a></li><li data-toc-t="riemann-sums"><a href="riemann-sums.html"><span class="bk-toc-n">6.2</span>Estimating Area with Riemann Sums</a></li><li data-toc-t="definite-integral-notation"><a href="definite-integral-notation.html"><span class="bk-toc-n">6.3</span>Riemann Sums, Sigma Notation and the Definite Integral</a></li><li data-toc-t="ftc-accumulation"><a href="ftc-accumulation.html"><span class="bk-toc-n">6.4</span>The Fundamental Theorem and Accumulation Functions</a></li><li class="current" data-toc-t="accumulation-behavior"><a href="#main" aria-current="page"><span class="bk-toc-n">6.5</span>Behavior of Accumulation Functions</a><div class="bk-toc-onpage"><p>On this page</p><a href="#signed-area">Signed area</a><a href="#values-of-g-from-areas">Values of g from areas</a><a href="#where-g-increases-decreases-and-has">Where g increases, decreases and has extrema</a><a href="#concavity-and-inflection-points">Concavity and inflection points</a><a href="#absolute-extrema-the-candidates-test">Absolute extrema: the candidates test</a><a href="#writing-the-justification">Writing the justification</a></div></li><li data-toc-t="integral-properties"><a href="integral-properties.html"><span class="bk-toc-n">6.6</span>Properties of Definite Integrals</a></li><li data-toc-t="ftc-definite-integrals"><a href="ftc-definite-integrals.html"><span class="bk-toc-n">6.7</span>The Fundamental Theorem and Definite Integrals</a></li><li data-toc-t="antiderivatives"><a href="antiderivatives.html"><span class="bk-toc-n">6.8</span>Antiderivatives and Indefinite Integrals</a></li><li data-toc-t="u-substitution"><a href="u-substitution.html"><span class="bk-toc-n">6.9</span>Integrating by Substitution</a></li><li data-toc-t="rewriting-integrands"><a href="rewriting-integrands.html"><span class="bk-toc-n">6.10</span>Integrating by Long Division and Completing the Square</a></li><li data-toc-t="choosing-integration-methods"><a href="choosing-integration-methods.html"><span class="bk-toc-n">6.14</span>Choosing an Antidifferentiation Technique</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-7.html"><span class="bk-toc-n">7</span>Differential Equations</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-6.html">Integration and Accumulation of Change</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Behavior of Accumulation Functions: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/accumulation-behavior.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 6 &middot; Topic 6.5 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Behavior of Accumulation Functions</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="accumulation-behavior">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Faccumulation-behavior.html&amp;title=Behavior%20of%20Accumulation%20Functions%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/accumulation-behavior.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>The graphical <a class="gl" href="../notes/ftc-accumulation.html" data-c="ftc">FTC</a> question is a free-response regular: a graph of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> built from lines and semicircles, and a <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>x</mi></msubsup><mi>f</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">g(x) = \int_a^x f(t)\,dt</annotation></semantics></math>. You never see <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math>, yet you can find its values, where it rises and falls, its extrema, its <a class="gl" href="../notes/local-linearity.html" data-c="concave">concavity</a> and its <a class="gl" href="../notes/concavity.html" data-c="inflection-point">inflection points</a>. This page shows how to read each one, and how to write the justification.</p>
+
+<h2 id="signed-area">Signed area</h2>
+<p>A <a class="gl" href="../notes/riemann-sums.html" data-c="riemann-sum">Riemann sum</a> multiplies each width by a height. Where <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is negative, the heights are negative, so those products are negative. In the <a class="gl" href="../notes/limit-notation.html" data-c="limit">limit</a>, a <a class="gl" href="../notes/definite-integral-notation.html" data-c="definite-integral">definite integral</a> counts regions below the axis as negative:</p>
+<p style="text-align:center"><b><math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_a^b f(x)\,dx</annotation></semantics></math> = (area above the x-axis) minus (area below the x-axis)</b></p>
+<p>This is the <b><span class="gl" tabindex="0" data-c="signed-area">signed area</span></b>. On <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>2</mn><mi>π</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 2\pi]</annotation></semantics></math> the graph of <math class="calc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\sin x</annotation></semantics></math> has one arch above the axis and an identical arch below, so <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mrow><mn>2</mn><mi>π</mi></mrow></msubsup><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\int_0^{2\pi} \sin x\,dx = 0</annotation></semantics></math>, even though the total area of the two arches is 4.</p>
+
+<h2 id="values-of-g-from-areas">Values of g from areas</h2>
+<figure id="fig-gf"  class="calc-figure"><div class="calc-figimg" data-fig="g-from-f"><img src="../figures/g-from-f.svg" alt="Top: the graph of f on [0, 8]: a line from (0, 2) to (2, 0), a semicircle of radius 2 below the axis from x = 2 to 6, and a line from (6, 0) to (8, 2); the triangles have area 2 each and the half-disc area 2 pi. Bottom: g(x), the integral of f from 0 to x, rises to a relative maximum of 2 at x = 2, falls to a relative minimum of 2 - 2 pi at x = 6, and has an inflection point at x = 4, where f changes from decreasing to increasing." width="720" height="640" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Top: f, with the regions that add (crimson) and subtract (blue). Bottom: the function g they build. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> In <a class="figref" href="#fig-gf">the figure</a>, <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is a segment from <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 2)</annotation></semantics></math> to <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, 0)</annotation></semantics></math>, a semicircle of radius 2 below the axis from 2 to 6, and a segment from <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>6</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(6, 0)</annotation></semantics></math> to <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>8</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(8, 2)</annotation></semantics></math>. Let <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mi>x</mi></msubsup><mi>f</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">g(x) = \int_0^x f(t)\,dt</annotation></semantics></math>. Find <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(2)</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(6)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>8</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(8)</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(2)</annotation></semantics></math>: triangle above, <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\frac{1}{2}(2)(2) = 2</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(6)</annotation></semantics></math>: add the half-disc below, <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>π</mi><mo stretchy="false">(</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">-\frac{1}{2}\pi(2)^2 = -2\pi</annotation></semantics></math>. So <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mo>−</mo><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">g(6) = 2 - 2\pi</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>8</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(8)</annotation></semantics></math>: add the triangle above, <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">+2</annotation></semantics></math>. So <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>8</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mo>−</mo><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">g(8) = 4 - 2\pi</annotation></semantics></math>.</p>
+<p>Two classic slips: using the area of the whole disc (<math class="calc-m"><semantics><mrow><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\pi r^2</annotation></semantics></math>) for a half, and adding a region below the axis instead of subtracting it.</p>
+</div>
+
+<h2 id="where-g-increases-decreases-and-has">Where g increases, decreases and has extrema</h2>
+<p>Because <math class="calc-m"><semantics><mrow><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g'(x) = f(x)</annotation></semantics></math>, read the <b>sign of f</b>:</p>
+<ul>
+<li><math class="calc-m"><semantics><mrow><mi>f</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f &gt; 0</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> is increasing (area is being added).</li>
+<li><math class="calc-m"><semantics><mrow><mi>f</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f &lt; 0</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> is decreasing (area is being subtracted).</li>
+<li><math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> changes from positive to negative at <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> has a <a class="gl" href="../notes/extreme-value-theorem.html" data-c="relative-extremum">relative maximum</a> at <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>. From negative to positive: a relative minimum.</li>
+</ul>
+<p>In the figure, <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> changes from positive to negative at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math> (relative maximum of <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math>) and from negative to positive at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">x = 6</annotation></semantics></math> (relative minimum). A zero of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> without a sign change, like <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(t - 2)^2</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t = 2</annotation></semantics></math>, gives no extremum: <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> just pauses and keeps going.</p>
+
+<h2 id="concavity-and-inflection-points">Concavity and inflection points</h2>
+<p>Because <math class="calc-m"><semantics><mrow><mrow><mi>g</mi><mo lspace="0" rspace="0">″</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g''(x) = f'(x)</annotation></semantics></math>, read whether <b>f is rising or falling</b>:</p>
+<ul>
+<li><math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> increasing: <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> concave up. <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> decreasing: <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> concave down.</li>
+<li><math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> changes from increasing to decreasing (or back) at <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> has a point of inflection at <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>.</li>
+</ul>
+<p>In the figure, <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> decreases on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 4)</annotation></semantics></math> and increases on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>4</mn><mo>,</mo><mn>8</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(4, 8)</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> has its inflection point at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x = 4</annotation></semantics></math>, the bottom of the semicircle. Not at 2 or 6, where <math class="calc-m"><semantics><mrow><mi>f</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f = 0</annotation></semantics></math>: those are the extrema. Mixing up the two is the most common error on this question.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>On the graph of f</th><th>Means for g</th></tr></thead>
+<tbody>
+<tr><td>above the axis</td><td>g increasing</td></tr>
+<tr><td>crosses from above to below at c</td><td>relative maximum at c</td></tr>
+<tr><td>rising</td><td>g concave up</td></tr>
+<tr><td>turns from rising to falling at c</td><td>inflection point at c</td></tr>
+<tr><td>signed area from a to x</td><td>the value g(x)</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="absolute-extrema-the-candidates-test">Absolute extrema: the candidates test</h2>
+<p>A relative maximum need not be the largest value on the whole interval. To find the <a class="gl" href="../notes/extreme-value-theorem.html" data-c="absolute-extremum">absolute maximum</a> or minimum of <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math>, list the candidates: both endpoints and every place <math class="calc-m"><semantics><mrow><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>=</mo><mi>f</mi></mrow><annotation encoding="application/x-tex">g' = f</annotation></semantics></math> changes sign. Compute <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> at each and compare.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> For the <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> in the figure, on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>8</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 8]</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g(0) = 0</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">g(2) = 2</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mo>−</mo><mn>2</mn><mi>π</mi><mo>≈</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4.28</mn></mrow><annotation encoding="application/x-tex">g(6) = 2 - 2\pi \approx -4.28</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>8</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mo>−</mo><mn>2</mn><mi>π</mi><mo>≈</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2.28</mn></mrow><annotation encoding="application/x-tex">g(8) = 4 - 2\pi \approx -2.28</annotation></semantics></math>.</p>
+<p>Absolute maximum: 2, at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>. Absolute minimum: <math class="calc-m"><semantics><mrow><mn>2</mn><mo>−</mo><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2 - 2\pi</annotation></semantics></math>, at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">x = 6</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="writing-the-justification">Writing the justification</h2>
+<p>Name the function and the change: "<math class="calc-m"><semantics><mrow><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g'(x) = f(x)</annotation></semantics></math> changes from positive to negative at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> has a relative maximum there." Sentences such as "it goes up then down" or "the <a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a> changes sign" do not say which function and earn nothing. For an inflection point: "<math class="calc-m"><semantics><mrow><mrow><mi>g</mi><mo lspace="0" rspace="0">″</mo></mrow><mo>=</mo><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">g'' = f'</annotation></semantics></math> changes sign at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x = 4</annotation></semantics></math> because <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> changes from decreasing to increasing there."</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:accumulation-behavior">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="ftc-accumulation.html"><span>&larr; Previous</span><b>The Fundamental Theorem and Accumulation Functions</b></a><a class="tb-chapter-link next" href="integral-properties.html"><span>Next &rarr;</span><b>Properties of Definite Integrals</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:accumulation-behavior">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

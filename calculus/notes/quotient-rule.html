@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Quotient Rule — AP® Calculus AB Notes | LevlPrep</title>
+<meta name="description" content="Many quantities are ratios: miles per gallon, concentration, average cost per item.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/quotient-rule.html">
+<meta property="og:title" content="The Quotient Rule — AP® Calculus AB Notes | LevlPrep">
+<meta property="og:description" content="Many quantities are ratios: miles per gallon, concentration, average cost per item.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/quotient-rule.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/quotient-rule.html#reading",
+      "name": "The Quotient Rule",
+      "url": "https://levlprep.com/calculus/notes/quotient-rule.html",
+      "description": "Many quantities are ratios: miles per gallon, concentration, average cost per item.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "the quotient rule ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Differentiation: Definition and Fundamental Properties",
+          "item": "https://levlprep.com/calculus/units/unit-2.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "The Quotient Rule: notes",
+          "item": "https://levlprep.com/calculus/notes/quotient-rule.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="quotient-rule" data-unit="unit-2">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 2 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-1.html"><span class="bk-toc-n">1</span>Limits and Continuity</a>
+    <a class="bk-toc-chap" href="../units/unit-2.html"><span class="bk-toc-chap-n">2</span><span><b>Differentiation: Definition and Fundamental Properties</b><small>10 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-2"><div class="tb-progress-row"><span><b>0</b> of 10 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="average-and-instant-rates"><a href="average-and-instant-rates.html"><span class="bk-toc-n">2.1</span>Average and Instantaneous Rates of Change</a></li><li data-toc-t="derivative-definition"><a href="derivative-definition.html"><span class="bk-toc-n">2.2</span>The Derivative and Its Notation</a></li><li data-toc-t="estimating-derivatives"><a href="estimating-derivatives.html"><span class="bk-toc-n">2.3</span>Estimating a Derivative at a Point</a></li><li data-toc-t="differentiability"><a href="differentiability.html"><span class="bk-toc-n">2.4</span>Differentiability and Continuity</a></li><li data-toc-t="power-rule"><a href="power-rule.html"><span class="bk-toc-n">2.5</span>The Power Rule</a></li><li data-toc-t="basic-derivative-rules"><a href="basic-derivative-rules.html"><span class="bk-toc-n">2.6</span>Constant, Sum, Difference and Constant Multiple Rules</a></li><li data-toc-t="derivatives-sin-cos-exp-ln"><a href="derivatives-sin-cos-exp-ln.html"><span class="bk-toc-n">2.7</span>Derivatives of sin x, cos x, e to the x and ln x</a></li><li data-toc-t="product-rule"><a href="product-rule.html"><span class="bk-toc-n">2.8</span>The Product Rule</a></li><li class="current" data-toc-t="quotient-rule"><a href="#main" aria-current="page"><span class="bk-toc-n">2.9</span>The Quotient Rule</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-guess-that-fails-again">The guess that fails, again</a><a href="#deriving-the-rule-from-the-product">Deriving the rule from the product rule</a><a href="#the-quotient-rule">The quotient rule</a><a href="#from-a-table">From a table</a><a href="#a-constant-on-top">A constant on top</a><a href="#rewrite-when-you-can">Rewrite when you can</a><a href="#common-mistakes">Common mistakes</a></div></li><li data-toc-t="other-trig-derivatives"><a href="other-trig-derivatives.html"><span class="bk-toc-n">2.10</span>Derivatives of tan, cot, sec and csc</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Differentiation: Composite, Implicit, and Inverse Functions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Differentiation: Definition and Fundamental Properties</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The Quotient Rule: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/quotient-rule.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 2 &middot; Topic 2.9 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">The Quotient Rule</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">3 min read &middot; free</span><span class="bk-chip" data-chip-topic="quotient-rule">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fquotient-rule.html&amp;title=The%20Quotient%20Rule%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/quotient-rule.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Many quantities are ratios: miles per gallon, concentration, average cost per item. When both the top and the bottom of a fraction change, how fast does the fraction change? The <a class="gl" href="../notes/product-rule.html" data-c="product-rule">product rule</a> turns out to hold the answer. This page derives the <span class="gl" tabindex="0" data-c="quotient-rule">quotient rule</span> from it, shows how to use it without sign slips, and shows when a quick rewrite makes it unnecessary.</p>
+
+<h2 id="the-guess-that-fails-again">The guess that fails, again</h2>
+<p>As with products, dividing the <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivatives</a> does not work. Take <math class="calc-m"><semantics><mrow><mfrac><msup><mi>x</mi><mn>2</mn></msup><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{x^2}{x}</annotation></semantics></math>, which is just <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \ne 0</annotation></semantics></math>, with derivative 1. The quotient of the derivatives is <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>2</mn><mi>x</mi></mrow><mn>1</mn></mfrac><mo>=</mo><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{2x}{1} = 2x</annotation></semantics></math>. Wrong.</p>
+
+<h2 id="deriving-the-rule-from-the-product">Deriving the rule from the product rule</h2>
+<p>Let <math class="calc-m"><semantics><mrow><mi>q</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">q(x) = \frac{f(x)}{g(x)}</annotation></semantics></math>. Then <math class="calc-m"><semantics><mrow><mi>f</mi><mo>=</mo><mi>q</mi><mo>⋅</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">f = q \cdot g</annotation></semantics></math>, a product. Assuming <math class="calc-m"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math> is <a class="gl" href="../notes/differentiability.html" data-c="differentiable">differentiable</a>, the product rule gives</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>=</mo><mrow><mi>q</mi><mo lspace="0" rspace="0">′</mo></mrow><mi>g</mi><mo>+</mo><mi>q</mi><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>.</mo></mrow><annotation encoding="application/x-tex">f' = q'g + qg'.</annotation></semantics></math></p>
+<p>Solve for <math class="calc-m"><semantics><mrow><mrow><mi>q</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">q'</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mrow><mi>q</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>=</mo><mfrac><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>−</mo><mi>q</mi><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><mi>g</mi></mfrac></mrow><annotation encoding="application/x-tex">q' = \frac{f' - qg'}{g}</annotation></semantics></math>. Replace <math class="calc-m"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mfrac><mi>f</mi><mi>g</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{f}{g}</annotation></semantics></math> and multiply the top and bottom by <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math>:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mrow><mi>q</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>=</mo><mfrac><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>−</mo><mfrac><mi>f</mi><mi>g</mi></mfrac><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><mi>g</mi></mfrac><mo>=</mo><mfrac><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mi>g</mi><mo>−</mo><mi>f</mi><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><msup><mi>g</mi><mn>2</mn></msup></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">q' = \frac{f' - \frac{f}{g}g'}{g} = \frac{f'g - fg'}{g^2}.</annotation></semantics></math></p>
+
+<h2 id="the-quotient-rule">The quotient rule</h2>
+<p>If <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> are differentiable at <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g(x) \ne 0</annotation></semantics></math>,</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><msup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">\frac{d}{dx}\left( \frac{f(x)}{g(x)} \right) = \frac{f'(x)g(x) - f(x)g'(x)}{\left( g(x) \right)^2}.</annotation></semantics></math></p>
+<p>A rhyme many students use: <b>"low d-high minus high d-low, over low squared."</b> "Low" is the denominator, "high" is the numerator, and "d" means "the derivative of". Two things make this rule different from the product rule: the numerator is a <i>difference</i>, so its order matters, and the bottom is <i>squared</i>.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th></th><th>Product rule</th><th>Quotient rule</th></tr></thead>
+<tbody>
+<tr><td>Formula</td><td><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mi>g</mi><mo>+</mo><mi>f</mi><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'g + fg'</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mi>g</mi><mo>−</mo><mi>f</mi><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><msup><mi>g</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{f'g - fg'}{g^2}</annotation></semantics></math></td></tr>
+<tr><td>Middle sign</td><td>plus</td><td>minus</td></tr>
+<tr><td>Order matters?</td><td>no</td><td>yes: <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">f'g</annotation></semantics></math> first</td></tr>
+<tr><td>Denominator</td><td>none</td><td><math class="calc-m"><semantics><mrow><msup><mi>g</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">g^2</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Differentiate <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mi>x</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">f(x) = \frac{x}{x^2 + 1}</annotation></semantics></math>.</p>
+<p>High <math class="calc-m"><semantics><mrow><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">= x</annotation></semantics></math>, d-high <math class="calc-m"><semantics><mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">= 1</annotation></semantics></math>. Low <math class="calc-m"><semantics><mrow><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">= x^2 + 1</annotation></semantics></math>, d-low <math class="calc-m"><semantics><mrow><mo>=</mo><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">= 2x</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>−</mo><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>2</mn><mi>x</mi><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>1</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">f'(x) = \frac{(1)(x^2 + 1) - (x)(2x)}{(x^2 + 1)^2} = \frac{1 - x^2}{(x^2 + 1)^2}</annotation></semantics></math>.</p>
+<p>Check with the graph: the numerator is 0 at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">±</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = \pm 1</annotation></semantics></math>, where the graph turns, and <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f'(0) = 1</annotation></semantics></math>, where the graph rises through the origin.</p>
+</div>
+<figure id="fig-quot"  class="calc-figure"><div class="calc-figimg" data-fig="quotient-graph"><img src="../figures/quotient-graph.svg" alt="Top: the graph of f(x) = x over (x squared plus 1), with a low point at (minus 1, minus 0.5) and a high point at (1, 0.5). Level tangent lines are drawn at x = minus 1 and 1, and a tangent line of slope 1 at x = 0. Bottom: the graph of f prime of x = (1 minus x squared) over (x squared plus 1) squared, which crosses 0 at x = minus 1 and 1 and has height 1 at x = 0." width="800" height="530" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The graph of <math class="calc-m"><semantics><mrow><mfrac><mi>x</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{x}{x^2 + 1}</annotation></semantics></math> and of its derivative. The derivative is 0 where the tangent lines are level. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example 2.</b> Differentiate <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mfrac><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">y = \frac{\sin x}{x}</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &gt; 0</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mrow><mi>y</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mo stretchy="false">(</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><msup><mi>x</mi><mn>2</mn></msup></mfrac><mo>=</mo><mfrac><mrow><mi>x</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>−</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><msup><mi>x</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">y' = \frac{(\cos x)(x) - (\sin x)(1)}{x^2} = \frac{x\cos x - \sin x}{x^2}</annotation></semantics></math>.</p>
+<p>If you had written <math class="calc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>−</mo><mi>x</mi><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\sin x - x\cos x</annotation></semantics></math> on top, every <a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a> would have the wrong sign.</p>
+</div>
+
+<h2 id="from-a-table">From a table</h2>
+<div class="worked">
+<p><b>Worked example 3.</b> A table gives <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">f(2) = 4</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f'(2) = 1</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">g(2) = 2</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">g'(2) = -3</annotation></semantics></math>. Find <math class="calc-m"><semantics><mrow><mrow><mi>q</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q'(2)</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mi>q</mi><mo>=</mo><mfrac><mi>f</mi><mi>g</mi></mfrac></mrow><annotation encoding="application/x-tex">q = \frac{f}{g}</annotation></semantics></math>, then the <a class="gl" href="../notes/derivative-definition.html" data-c="tangent-line">tangent line</a>.</p>
+<p><math class="calc-m"><semantics><mrow><mrow><mi>q</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mi>g</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><msup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup></mfrac><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>−</mo><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><mn>4</mn></mfrac><mo>=</mo><mfrac><mn>14</mn><mn>4</mn></mfrac><mo>=</mo><mfrac><mn>7</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">q'(2) = \frac{f'(2)g(2) - f(2)g'(2)}{\left( g(2) \right)^2} = \frac{(1)(2) - (4)(-3)}{4} = \frac{14}{4} = \frac{7}{2}</annotation></semantics></math>.</p>
+<p>Height: <math class="calc-m"><semantics><mrow><mi>q</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>4</mn><mn>2</mn></mfrac><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">q(2) = \frac{4}{2} = 2</annotation></semantics></math>. Tangent line: <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn><mo>+</mo><mfrac><mn>7</mn><mn>2</mn></mfrac><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y = 2 + \frac{7}{2}(x - 2)</annotation></semantics></math>.</p>
+<p>Notice the double negative: <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">+</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">-(4)(-3) = +12</annotation></semantics></math>. Write every substituted value in parentheses so signs cannot hide.</p>
+</div>
+
+<h2 id="a-constant-on-top">A constant on top</h2>
+<p>When the numerator is a constant <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>, its derivative is 0 and the rule shortens to</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mi>c</mi><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>c</mi><mspace width="0.1667em"></mspace><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><msup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">\frac{d}{dx}\left( \frac{c}{g(x)} \right) = \frac{-c\,g'(x)}{\left( g(x) \right)^2}.</annotation></semantics></math></p>
+<p>For example, <math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>1</mn><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac><mo fence="true" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mi>x</mi></mrow><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{d}{dx}\left( \frac{1}{x^2 + 1} \right) = \frac{-2x}{(x^2 + 1)^2}</annotation></semantics></math>, which is <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">-\frac{1}{2}</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>.</p>
+
+<h2 id="rewrite-when-you-can">Rewrite when you can</h2>
+<p>When the denominator is a single term, divide first. <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>5</mn></mrow><mi>x</mi></mfrac><mo>=</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>5</mn><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\frac{3x^2 - 5}{x} = 3x - 5x^{-1}</annotation></semantics></math>, so its derivative is <math class="calc-m"><semantics><mrow><mn>3</mn><mo>+</mo><mn>5</mn><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">3 + 5x^{-2}</annotation></semantics></math>, with no quotient rule needed. The quotient rule gives the same answer, <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>6</mn><mi>x</mi><mo>⋅</mo><mi>x</mi><mo>−</mo><mo stretchy="false">(</mo><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><msup><mi>x</mi><mn>2</mn></msup></mfrac><mo>=</mo><mfrac><mrow><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>5</mn></mrow><msup><mi>x</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{6x \cdot x - (3x^2 - 5)}{x^2} = \frac{3x^2 + 5}{x^2}</annotation></semantics></math>, with more chances for a slip. Answers may look different and still be equal; that is fine on the exam.</p>
+
+<h2 id="common-mistakes">Common mistakes</h2>
+<ul>
+<li>Reversing the numerator: <math class="calc-m"><semantics><mrow><mi>f</mi><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>−</mo><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">fg' - f'g</annotation></semantics></math> gives the negative of the answer.</li>
+<li>Forgetting to square the denominator.</li>
+<li>Dividing the derivatives: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mrow><mi>g</mi><mo lspace="0" rspace="0">′</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{f'}{g'}</annotation></semantics></math> is not the derivative of <math class="calc-m"><semantics><mrow><mfrac><mi>f</mi><mi>g</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{f}{g}</annotation></semantics></math>.</li>
+<li>Simplifying more than needed. A correct, unsimplified answer earns full credit; a simplification error can lose it.</li>
+</ul>
+<p>With the quotient rule, the next topic finds the derivatives of the remaining <a class="gl" href="../notes/math-trig.html" data-c="trig-function">trigonometric functions</a>.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:quotient-rule">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="product-rule.html"><span>&larr; Previous</span><b>The Product Rule</b></a><a class="tb-chapter-link next" href="other-trig-derivatives.html"><span>Next &rarr;</span><b>Derivatives of tan, cot, sec and csc</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:quotient-rule">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

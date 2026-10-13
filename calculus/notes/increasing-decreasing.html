@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where a Function Increases or… — AP® Calculus AB Notes</title>
+<meta name="description" content="Walk along the graph of a function from left to right. Sometimes you climb, sometimes you descend.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/increasing-decreasing.html">
+<meta property="og:title" content="Where a Function Increases or… — AP® Calculus AB Notes">
+<meta property="og:description" content="Walk along the graph of a function from left to right. Sometimes you climb, sometimes you descend.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/increasing-decreasing.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/increasing-decreasing.html#reading",
+      "name": "Where a Function Increases or Decreases",
+      "url": "https://levlprep.com/calculus/notes/increasing-decreasing.html",
+      "description": "Walk along the graph of a function from left to right. Sometimes you climb, sometimes you descend.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "where a function increases or decreases ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Analytical Applications of Differentiation",
+          "item": "https://levlprep.com/calculus/units/unit-5.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Where a Function Increases or Decreases: notes",
+          "item": "https://levlprep.com/calculus/notes/increasing-decreasing.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="increasing-decreasing" data-unit="unit-5">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 5 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Contextual Applications of Differentiation</a>
+    <a class="bk-toc-chap" href="../units/unit-5.html"><span class="bk-toc-chap-n">5</span><span><b>Analytical Applications of Differentiation</b><small>12 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-5"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="mean-value-theorem"><a href="mean-value-theorem.html"><span class="bk-toc-n">5.1</span>The Mean Value Theorem</a></li><li data-toc-t="extreme-value-theorem"><a href="extreme-value-theorem.html"><span class="bk-toc-n">5.2</span>Extreme Value Theorem, Global and Local Extrema, Critical Points</a></li><li class="current" data-toc-t="increasing-decreasing"><a href="#main" aria-current="page"><span class="bk-toc-n">5.3</span>Where a Function Increases or Decreases</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-increasing-means">What increasing means</a><a href="#the-method-with-a-formula">The method with a formula</a><a href="#reading-a-graph-of-f">Reading a graph of f′</a><a href="#tables-of-f-values">Tables of f′ values</a><a href="#writing-the-justification">Writing the justification</a></div></li><li data-toc-t="first-derivative-test"><a href="first-derivative-test.html"><span class="bk-toc-n">5.4</span>The First Derivative Test</a></li><li data-toc-t="candidates-test"><a href="candidates-test.html"><span class="bk-toc-n">5.5</span>The Candidates Test</a></li><li data-toc-t="concavity"><a href="concavity.html"><span class="bk-toc-n">5.6</span>Concavity and Points of Inflection</a></li><li data-toc-t="second-derivative-test"><a href="second-derivative-test.html"><span class="bk-toc-n">5.7</span>The Second Derivative Test</a></li><li data-toc-t="sketching-derivatives"><a href="sketching-derivatives.html"><span class="bk-toc-n">5.8</span>Sketching f, f' and f''</a></li><li data-toc-t="f-and-its-derivatives"><a href="f-and-its-derivatives.html"><span class="bk-toc-n">5.9</span>Connecting f, f' and f''</a></li><li data-toc-t="optimization-intro"><a href="optimization-intro.html"><span class="bk-toc-n">5.10</span>Introduction to Optimization</a></li><li data-toc-t="solving-optimization"><a href="solving-optimization.html"><span class="bk-toc-n">5.11</span>Solving Optimization Problems</a></li><li data-toc-t="implicit-relations"><a href="implicit-relations.html"><span class="bk-toc-n">5.12</span>Behavior of Implicit Relations</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Integration and Accumulation of Change</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-5.html">Analytical Applications of Differentiation</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Where a Function Increases or Decreases: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/increasing-decreasing.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 5 &middot; Topic 5.3 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Where a Function Increases or Decreases</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="increasing-decreasing">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fincreasing-decreasing.html&amp;title=Where%20a%20Function%20Increases%20or%20Decreases%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/increasing-decreasing.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Walk along the <a class="gl" href="../notes/math-functions.html" data-c="function-graph">graph of a function</a> from left to right. Sometimes you climb, sometimes you descend. The <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a> is the <a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a> under your feet, so its sign tells you which. This page turns that picture into a method you can use with a formula, a graph of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> or a table, and into a justification that earns credit.</p>
+
+<h2 id="what-increasing-means">What increasing means</h2>
+<p>A <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is <b><span class="gl" tabindex="0" data-c="increasing">increasing on an interval</span></b> if, whenever <math class="calc-m"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>x</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">x_1 &lt; x_2</annotation></semantics></math> in the interval, <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false">)</mo><mo>&lt;</mo><mi>f</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x_1) &lt; f(x_2)</annotation></semantics></math>: larger inputs give larger outputs. It is <b>decreasing on an interval</b> if <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false">)</mo><mo>&gt;</mo><mi>f</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x_1) &gt; f(x_2)</annotation></semantics></math> whenever <math class="calc-m"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>x</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">x_1 &lt; x_2</annotation></semantics></math>.</p>
+<p>The derivative connects to this through the <a class="gl" href="../notes/derivative-definition.html" data-c="tangent-line">tangent lines</a>. If every tangent line on an interval slopes upward, the graph can only go up there.</p>
+<ul>
+<li>If <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'(x) &gt; 0</annotation></semantics></math> for every <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> in an interval, then <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is increasing on that interval.</li>
+<li>If <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'(x) &lt; 0</annotation></semantics></math> for every <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> in an interval, then <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is decreasing on that interval.</li>
+</ul>
+<p>(The <a class="gl" href="../notes/mean-value-theorem.html" data-c="mvt">Mean Value Theorem</a> is the reason: between any two points, the average rate equals some <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(c)</annotation></semantics></math>, which has the sign of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math>.)</p>
+<figure id="fig-incdec"  class="calc-figure"><div class="calc-figimg" data-fig="incdec-sign-of-fprime"><img src="../figures/incdec-sign-of-fprime.svg" alt="Top: f(x) = x cubed minus 3x. Bottom, on the same x-scale: f'(x) = 3x squared minus 3. Where f' is above the x-axis (x &lt; -1 and x &gt; 1) f is increasing; where f' is below the axis (-1 &lt; x &lt; 1) f is decreasing. Dashed lines at x = -1 and 1 join the zeros of f' to the turning points of f." width="860" height="530" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Where the graph of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> is above the axis, <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> rises; where it is below, <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> falls. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="the-method-with-a-formula">The method with a formula</h2>
+<p>The sign of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> can change only where <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> is zero or does not exist (for the functions in this course, <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> does not jump around otherwise). So:</p>
+<ol>
+<li>Find <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(x)</annotation></semantics></math> and factor it if you can.</li>
+<li>Find the <a class="gl" href="../notes/extreme-value-theorem.html" data-c="critical-point">critical points</a>: where <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'(x) = 0</annotation></semantics></math> or <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(x)</annotation></semantics></math> does not exist. Also note points outside the <a class="gl" href="../notes/math-functions.html" data-c="domain">domain</a>.</li>
+<li>These points cut the number line into intervals. Pick one test value in each interval and find the sign of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> there.</li>
+<li><math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> increases where <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f' &gt; 0</annotation></semantics></math> and decreases where <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f' &lt; 0</annotation></semantics></math>.</li>
+</ol>
+<div class="worked">
+<p><b>Worked example 1.</b> Where is <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>12</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">f(x) = x^3 - 12x</annotation></semantics></math> increasing and where is it decreasing?</p>
+<p><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>12</mn><mo>=</mo><mn>3</mn><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(x) = 3x^2 - 12 = 3(x - 2)(x + 2)</annotation></semantics></math>, zero at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = -2</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Interval, Test value, Sign of f′, f is"><table class="compare">
+<thead><tr><th scope="col">Interval</th><th scope="col">Test value</th><th scope="col">Sign of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math></th><th scope="col"><math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x &lt; -2</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>15</mn></mrow><annotation encoding="application/x-tex">f'(-3) = 15</annotation></semantics></math></td><td>positive</td><td>increasing</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">-2 &lt; x &lt; 2</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">f'(0) = -12</annotation></semantics></math></td><td>negative</td><td>decreasing</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x &gt; 2</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>15</mn></mrow><annotation encoding="application/x-tex">f'(3) = 15</annotation></semantics></math></td><td>positive</td><td>increasing</td></tr>
+</tbody>
+</table></div>
+<p>So <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> increases on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-\infty, -2)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2, \infty)</annotation></semantics></math> and decreases on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-2, 2)</annotation></semantics></math>.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> Where is <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>x</mi></mrow></msup></mrow><annotation encoding="application/x-tex">f(x) = x e^{-x}</annotation></semantics></math> increasing?</p>
+<p><a class="gl" href="../notes/product-rule.html" data-c="product-rule">Product rule</a>: <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>x</mi></mrow></msup><mo>+</mo><mi>x</mi><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>x</mi></mrow></msup><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>x</mi><mo stretchy="false">)</mo><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>x</mi></mrow></msup></mrow><annotation encoding="application/x-tex">f'(x) = e^{-x} + x(-e^{-x}) = (1 - x)e^{-x}</annotation></semantics></math>.</p>
+<p>The factor <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>x</mi></mrow></msup></mrow><annotation encoding="application/x-tex">e^{-x}</annotation></semantics></math> is always positive, so the sign of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> is the sign of <math class="calc-m"><semantics><mrow><mn>1</mn><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">1 - x</annotation></semantics></math>: positive for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x &lt; 1</annotation></semantics></math>. <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is increasing on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi mathvariant="normal">∞</mi><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-\infty, 1)</annotation></semantics></math>.</p>
+</div>
+<p><a class="gl" href="../notes/math-limit-algebra.html" data-c="factoring">Factoring</a> out a positive factor like <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>x</mi></mrow></msup></mrow><annotation encoding="application/x-tex">e^{-x}</annotation></semantics></math> or a square like <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(x - 3)^2</annotation></semantics></math> is the fastest way to read signs. A squared factor never changes sign, so it never flips the direction of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math>.</p>
+
+<h2 id="reading-a-graph-of-f">Reading a graph of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math></h2>
+<p>The exam often gives the graph of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math>, not <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math>. Then the question "where is <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> increasing?" becomes "where is this graph above the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis?"</p>
+<ul>
+<li>Graph of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> <b>above</b> the axis: <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> increasing.</li>
+<li>Graph of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> <b>below</b> the axis: <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> decreasing.</li>
+</ul>
+<p>Do not read the direction of the graph of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> (rising or falling) for this question. A graph of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> that is falling but still above the axis means <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is still increasing, just more slowly. Whether <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> rises or falls is about <a class="gl" href="../notes/local-linearity.html" data-c="concave">concavity</a>, a later topic.</p>
+<p>The same reading lets you compare values of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math>: if <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f' &lt; 0</annotation></semantics></math> on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 4)</annotation></semantics></math>, then <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>&lt;</mo><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(4) &lt; f(1)</annotation></semantics></math>, because <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> went down the whole way.</p>
+
+<h2 id="tables-of-f-values">Tables of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> values</h2>
+<p>A table gives <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> at a few points only. A negative value at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">t = 5</annotation></semantics></math> tells you <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is decreasing at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">t = 5</annotation></semantics></math>. It does not tell you what happens between readings: two negative readings do not prove <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> stays negative between them. But if <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> is <a class="gl" href="../notes/discontinuity-types.html" data-c="discontinuity">continuous</a> and changes from positive to negative between two readings, the <a class="gl" href="../notes/intermediate-value-theorem.html" data-c="ivt">Intermediate Value Theorem</a> gives a time when <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f' = 0</annotation></semantics></math>.</p>
+
+<h2 id="writing-the-justification">Writing the justification</h2>
+<p>A justification names the function and the condition on the interval:</p>
+<p style="text-align:center">"<math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'(x) &gt; 0</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-2 &lt; x &lt; 1</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is increasing on that interval."</p>
+<p>Answers that lose the point: "the graph goes up" (which graph?), "<math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> is increasing" (wrong condition), or a number line of signs with no sentence. Name <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math>, give its sign, give the interval.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:increasing-decreasing">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="extreme-value-theorem.html"><span>&larr; Previous</span><b>Extreme Value Theorem, Global and Local Extrema, Critical Points</b></a><a class="tb-chapter-link next" href="first-derivative-test.html"><span>Next &rarr;</span><b>The First Derivative Test</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:increasing-decreasing">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

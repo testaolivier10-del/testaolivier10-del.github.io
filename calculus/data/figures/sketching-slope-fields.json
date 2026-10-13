@@ -7,6 +7,6 @@
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original graph, drawn from its function by scripts/apcalc-figures/unit-7-8a.mjs",
-  "alt": "Short segments at the 25 integer points with x and y from −2 to 2. Each segment has slope x + y: slope 0 along the line y = −x, steep positive slopes up to 4 at (2, 2), and steep negative slopes down to −4 at (−2, −2). The nine points with x and y from −1 to 1 are labelled with their slopes."
+  "alt": "Short segments at the 25 integer points with x and y from −2 to 2. Each segment has slope x + y: slope 0 along the line y = −x, steep positive slopes up to 4 at (2, 2), and steep negative slopes down to −4 at (−2, −2). The nine points with x and y from −1 to 1 are labeled with their slopes."
  }
 }

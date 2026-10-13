@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antiderivatives and Indefinite… — AP® Calculus AB Notes</title>
+<meta name="description" content="To use the Fundamental Theorem you need antiderivatives, and lots of them.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/antiderivatives.html">
+<meta property="og:title" content="Antiderivatives and Indefinite… — AP® Calculus AB Notes">
+<meta property="og:description" content="To use the Fundamental Theorem you need antiderivatives, and lots of them.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/antiderivatives.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/antiderivatives.html#reading",
+      "name": "Antiderivatives and Indefinite Integrals",
+      "url": "https://levlprep.com/calculus/notes/antiderivatives.html",
+      "description": "To use the Fundamental Theorem you need antiderivatives, and lots of them.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "antiderivatives and indefinite integrals ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Integration and Accumulation of Change",
+          "item": "https://levlprep.com/calculus/units/unit-6.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Antiderivatives and Indefinite Integrals: notes",
+          "item": "https://levlprep.com/calculus/notes/antiderivatives.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="antiderivatives" data-unit="unit-6">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 6 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Analytical Applications of Differentiation</a>
+    <a class="bk-toc-chap" href="../units/unit-6.html"><span class="bk-toc-chap-n">6</span><span><b>Integration and Accumulation of Change</b><small>11 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-6"><div class="tb-progress-row"><span><b>0</b> of 11 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="accumulation-of-change"><a href="accumulation-of-change.html"><span class="bk-toc-n">6.1</span>Accumulating Change</a></li><li data-toc-t="riemann-sums"><a href="riemann-sums.html"><span class="bk-toc-n">6.2</span>Estimating Area with Riemann Sums</a></li><li data-toc-t="definite-integral-notation"><a href="definite-integral-notation.html"><span class="bk-toc-n">6.3</span>Riemann Sums, Sigma Notation and the Definite Integral</a></li><li data-toc-t="ftc-accumulation"><a href="ftc-accumulation.html"><span class="bk-toc-n">6.4</span>The Fundamental Theorem and Accumulation Functions</a></li><li data-toc-t="accumulation-behavior"><a href="accumulation-behavior.html"><span class="bk-toc-n">6.5</span>Behavior of Accumulation Functions</a></li><li data-toc-t="integral-properties"><a href="integral-properties.html"><span class="bk-toc-n">6.6</span>Properties of Definite Integrals</a></li><li data-toc-t="ftc-definite-integrals"><a href="ftc-definite-integrals.html"><span class="bk-toc-n">6.7</span>The Fundamental Theorem and Definite Integrals</a></li><li class="current" data-toc-t="antiderivatives"><a href="#main" aria-current="page"><span class="bk-toc-n">6.8</span>Antiderivatives and Indefinite Integrals</a><div class="bk-toc-onpage"><p>On this page</p><a href="#a-family-not-a-single-function">A family, not a single function</a><a href="#three-objects-with-the-same-sign">Three objects with the same sign</a><a href="#the-basic-rules">The basic rules</a><a href="#picking-one-function-use-a-known">Picking one function: use a known point</a><a href="#some-functions-have-no-formula-for">Some functions have no formula for an antiderivative</a></div></li><li data-toc-t="u-substitution"><a href="u-substitution.html"><span class="bk-toc-n">6.9</span>Integrating by Substitution</a></li><li data-toc-t="rewriting-integrands"><a href="rewriting-integrands.html"><span class="bk-toc-n">6.10</span>Integrating by Long Division and Completing the Square</a></li><li data-toc-t="choosing-integration-methods"><a href="choosing-integration-methods.html"><span class="bk-toc-n">6.14</span>Choosing an Antidifferentiation Technique</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-7.html"><span class="bk-toc-n">7</span>Differential Equations</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-6.html">Integration and Accumulation of Change</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Antiderivatives and Indefinite Integrals: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/antiderivatives.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 6 &middot; Topic 6.8 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Antiderivatives and Indefinite Integrals</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">3 min read &middot; free</span><span class="bk-chip" data-chip-topic="antiderivatives">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fantiderivatives.html&amp;title=Antiderivatives%20and%20Indefinite%20Integrals%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/antiderivatives.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>To use the Fundamental Theorem you need <a class="gl" href="../notes/ftc-accumulation.html" data-c="antiderivative">antiderivatives</a>, and lots of them. This page collects the basic rules, introduces the notation for "all the antiderivatives at once," and shows how a single known point picks out the <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> you want.</p>
+
+<h2 id="a-family-not-a-single-function">A family, not a single function</h2>
+<figure id="fig-family"  class="calc-figure"><div class="calc-figimg" data-fig="antiderivative-family"><img src="../figures/antiderivative-family.svg" alt="Five curves y = x cubed over 3 - x + C for C = -2, -1, 0, 1 and 2, each a vertical shift of the others. At x = 1.5 a dashed line crosses all five, and a short tangent segment at each crossing shows the same slope, 1.25, because every curve has derivative x squared - 1." width="720" height="470" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> y = x³/3 - x + C for five values of C. Same slope at every x; different heights. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>/</mo><mn>3</mn><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">x^3/3 - x</annotation></semantics></math> has <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a> <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x^2 - 1</annotation></semantics></math>. So does <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>/</mo><mn>3</mn><mo>−</mo><mi>x</mi><mo>+</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x^3/3 - x + 5</annotation></semantics></math>, and <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>/</mo><mn>3</mn><mo>−</mo><mi>x</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x^3/3 - x - 2</annotation></semantics></math>: a constant has derivative 0. On an interval, these are the <i>only</i> antiderivatives; two functions with the same derivative differ by a constant. Graphically they are vertical shifts of one curve, as <a class="figref" href="#fig-family">the figure</a> shows.</p>
+<p>The <b><span class="gl" tabindex="0" data-c="indefinite-integral">indefinite integral</span></b> names the whole family:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mfrac><msup><mi>x</mi><mn>3</mn></msup><mn>3</mn></mfrac><mo>−</mo><mi>x</mi><mo>+</mo><mi>C</mi><mo>.</mo></mrow><annotation encoding="application/x-tex">\int (x^2 - 1)\,dx = \frac{x^3}{3} - x + C.</annotation></semantics></math></p>
+<p><math class="calc-m"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math> is the <b>constant of integration</b>. Leaving it off says "this one function," which is wrong: the scoring guidelines take a point for a missing <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">+ C</annotation></semantics></math>.</p>
+
+<h2 id="three-objects-with-the-same-sign">Three objects with the same sign</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Written</th><th>Name</th><th>What it is</th><th>Example with <math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">2x</annotation></semantics></math></th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int_a^b f(x)\,dx</annotation></semantics></math></td><td><a class="gl" href="../notes/definite-integral-notation.html" data-c="definite-integral">definite integral</a></td><td>a number</td><td><math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>3</mn></msubsup><mn>2</mn><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">\int_0^3 2x\,dx = 9</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int f(x)\,dx</annotation></semantics></math></td><td>indefinite integral</td><td>a family of functions</td><td><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><mn>2</mn><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\int 2x\,dx = x^2 + C</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>x</mi></msubsup><mi>f</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\int_a^x f(t)\,dt</annotation></semantics></math></td><td><a class="gl" href="../notes/ftc-accumulation.html" data-c="accumulation-function">accumulation function</a></td><td>one function of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, 0 at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>1</mn><mi>x</mi></msubsup><mn>2</mn><mi>t</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\int_1^x 2t\,dt = x^2 - 1</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+
+<h2 id="the-basic-rules">The basic rules</h2>
+<p>Each rule is a derivative rule read backward. Differentiate the right side and you get the integrand.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Integrand</th><th>Antiderivative (add <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">+ C</annotation></semantics></math>)</th><th>Because</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">x^n</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>n</mi><mo>≠</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n \ne -1</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><msup><mi>x</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{x^{n+1}}{n+1}</annotation></semantics></math></td><td><a class="gl" href="../notes/power-rule.html" data-c="power-rule">power rule</a></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{x}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">\ln|x|</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo><mo>=</mo><mfrac><mn>1</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{d}{dx}\ln|x| = \frac{1}{x}</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msup><mi>e</mi><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">e^x</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msup><mi>e</mi><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">e^x</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msup><mi>e</mi><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">e^x</annotation></semantics></math> is its own derivative</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\cos x</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\sin x</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{d}{dx}\sin x = \cos x</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\sin x</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">-\cos x</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{d}{dx}\cos x = -\sin x</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msup><mi>sec</mi><mn>2</mn></msup><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\sec^2 x</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\tan x</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><msup><mi>sec</mi><mn>2</mn></msup><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{d}{dx}\tan x = \sec^2 x</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>sec</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\sec x \tan x</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>sec</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\sec x</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mi>sec</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mi>sec</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{d}{dx}\sec x = \sec x\tan x</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msup><mi>csc</mi><mn>2</mn></msup><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\csc^2 x</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>cot</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">-\cot x</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mi>cot</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mi>csc</mi><mn>2</mn></msup><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\frac{d}{dx}\cot x = -\csc^2 x</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{1 + x^2}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>arctan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\arctan x</annotation></semantics></math></td><td>inverse tangent derivative</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><msqrt><mrow><mn>1</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{\sqrt{1 - x^2}}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>arcsin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\arcsin x</annotation></semantics></math></td><td>inverse <a class="gl" href="../notes/math-trig.html" data-c="trig-function">sine</a> derivative</td></tr>
+</tbody>
+</table></div>
+<p>Constant factors come out and sums split: <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><mo stretchy="false">(</mo><mi>k</mi><mi>f</mi><mo>+</mo><mi>g</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mi>k</mi><mo largeop="true" movablelimits="false">∫</mo><mi>f</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>+</mo><mo largeop="true" movablelimits="false">∫</mo><mi>g</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int (kf + g)\,dx = k\int f\,dx + \int g\,dx</annotation></semantics></math>. Products and quotients do not split, so rewrite them first.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><mrow><mo fence="true" stretchy="true">(</mo><mrow><msqrt><mi>x</mi></msqrt><mo>+</mo><mfrac><mn>4</mn><msup><mi>x</mi><mn>3</mn></msup></mfrac><mo>−</mo><mn>2</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><mo fence="true" stretchy="true">)</mo></mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\int \left(\sqrt{x} + \frac{4}{x^3} - 2\cos x\right)dx</annotation></semantics></math>.</p>
+<p>Rewrite as powers: <math class="calc-m"><semantics><mrow><msqrt><mi>x</mi></msqrt><mo>=</mo><msup><mi>x</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\sqrt{x} = x^{1/2}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mfrac><mn>4</mn><msup><mi>x</mi><mn>3</mn></msup></mfrac><mo>=</mo><mn>4</mn><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\frac{4}{x^3} = 4x^{-3}</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><msup><mi>x</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mfrac><msup><mi>x</mi><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><msup><mi>x</mi><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\int x^{1/2}\,dx = \frac{x^{3/2}}{3/2} = \frac{2}{3}x^{3/2}</annotation></semantics></math>. <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><mn>4</mn><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mn>4</mn><mo>⋅</mo><mfrac><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></msup><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\int 4x^{-3}\,dx = 4\cdot\frac{x^{-2}}{-2} = -\frac{2}{x^2}</annotation></semantics></math>. <math class="calc-m"><semantics><mrow><mo largeop="true" movablelimits="false">∫</mo><mn>2</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mn>2</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\int 2\cos x\,dx = 2\sin x</annotation></semantics></math>.</p>
+<p>Answer: <math class="calc-m"><semantics><mrow><mfrac><mn>2</mn><mn>3</mn></mfrac><msup><mi>x</mi><mrow><mn>3</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>−</mo><mfrac><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mfrac><mo>−</mo><mn>2</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">\frac{2}{3}x^{3/2} - \frac{2}{x^2} - 2\sin x + C</annotation></semantics></math>. Check: differentiating gives back <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></msup><mo>+</mo><mn>4</mn><msup><mi>x</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow></msup><mo>−</mo><mn>2</mn><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">x^{1/2} + 4x^{-3} - 2\cos x</annotation></semantics></math>.</p>
+</div>
+<p>Two more rewrites: expand a power of a sum, <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><msup><mi>x</mi><mn>4</mn></msup><mo>+</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">(x^2 + 1)^2 = x^4 + 2x^2 + 1</annotation></semantics></math>, and split a fraction over a single term, <math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>2</mn><mi>x</mi></mrow><mi>x</mi></mfrac><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\frac{x^3 - 2x}{x} = x^2 - 2</annotation></semantics></math>. Never integrate the top and bottom of a fraction separately.</p>
+
+<h2 id="picking-one-function-use-a-known">Picking one function: use a known point</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f'(x) = 3x^2 - 4x + 1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">f(2) = 5</annotation></semantics></math>. Find <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math>.</p>
+<p>Antidifferentiate: <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mo>+</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">f(x) = x^3 - 2x^2 + x + C</annotation></semantics></math>.</p>
+<p>Substitute the point right away: <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>8</mn><mo>−</mo><mn>8</mn><mo>+</mo><mn>2</mn><mo>+</mo><mi>C</mi><mo>=</mo><mn>2</mn><mo>+</mo><mi>C</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">f(2) = 8 - 8 + 2 + C = 2 + C = 5</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>C</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">C = 3</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>x</mi><mo>+</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">f(x) = x^3 - 2x^2 + x + 3</annotation></semantics></math>.</p>
+</div>
+<p>With a <a class="gl" href="../notes/higher-order-derivatives.html" data-c="second-derivative">second derivative</a>, antidifferentiate twice; each step brings its own constant, and each needs its own piece of information, such as <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(0)</annotation></semantics></math> and then <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(0)</annotation></semantics></math>.</p>
+
+<h2 id="some-functions-have-no-formula-for">Some functions have no formula for an antiderivative</h2>
+<p>Every <a class="gl" href="../notes/discontinuity-types.html" data-c="discontinuity">continuous</a> function has antiderivatives (the <a class="gl" href="../notes/accumulation-of-change.html" data-c="accumulated-change">accumulation</a> function <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>x</mi></msubsup><mi>f</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\int_a^x f(t)\,dt</annotation></semantics></math> is one), but some cannot be written with familiar functions: <math class="calc-m"><semantics><mrow><msup><mi>e</mi><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msup></mrow><annotation encoding="application/x-tex">e^{-x^2}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sin(x^2)</annotation></semantics></math> are examples. On the exam, integrals of such functions appear on calculator questions, and the calculator evaluates them numerically.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:antiderivatives">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="ftc-definite-integrals.html"><span>&larr; Previous</span><b>The Fundamental Theorem and Definite Integrals</b></a><a class="tb-chapter-link next" href="u-substitution.html"><span>Next &rarr;</span><b>Integrating by Substitution</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:antiderivatives">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

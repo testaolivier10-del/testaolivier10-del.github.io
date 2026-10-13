@@ -7,6 +7,6 @@
   "source": "levlprep",
   "license": "LevlPrep original",
   "credit": "LevlPrep original graph, drawn from its function by scripts/apcalc-figures/unit-7-8a.mjs",
-  "alt": "The slope field of dy/dx = y² with the curve y = 1/(1 − x). The crimson branch through the closed point (0, 1) rises without bound as x approaches the dashed vertical asymptote x = 1; it is the solution, with domain x < 1. The grey dashed branch for x > 1, below the x-axis, also fits the equation but is not connected to (0, 1), so it is not part of this solution."
+  "alt": "The slope field of dy/dx = y² with the curve y = 1/(1 − x). The crimson branch through the closed point (0, 1) rises without bound as x approaches the dashed vertical asymptote x = 1; it is the solution, with domain x < 1. The gray dashed branch for x > 1, below the x-axis, also fits the equation but is not connected to (0, 1), so it is not part of this solution."
  }
 }

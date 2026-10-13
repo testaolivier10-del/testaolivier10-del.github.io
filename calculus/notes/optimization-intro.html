@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to Optimization — AP® Calculus AB Notes</title>
+<meta name="description" content="Businesses want the most profit, engineers the least material, farmers the most land from a roll of fence.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/optimization-intro.html">
+<meta property="og:title" content="Introduction to Optimization — AP® Calculus AB Notes">
+<meta property="og:description" content="Businesses want the most profit, engineers the least material, farmers the most land from a roll of fence.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/optimization-intro.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/optimization-intro.html#reading",
+      "name": "Introduction to Optimization",
+      "url": "https://levlprep.com/calculus/notes/optimization-intro.html",
+      "description": "Businesses want the most profit, engineers the least material, farmers the most land from a roll of fence.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "introduction to optimization ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Analytical Applications of Differentiation",
+          "item": "https://levlprep.com/calculus/units/unit-5.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Introduction to Optimization: notes",
+          "item": "https://levlprep.com/calculus/notes/optimization-intro.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="optimization-intro" data-unit="unit-5">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 5 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Contextual Applications of Differentiation</a>
+    <a class="bk-toc-chap" href="../units/unit-5.html"><span class="bk-toc-chap-n">5</span><span><b>Analytical Applications of Differentiation</b><small>12 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-5"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="mean-value-theorem"><a href="mean-value-theorem.html"><span class="bk-toc-n">5.1</span>The Mean Value Theorem</a></li><li data-toc-t="extreme-value-theorem"><a href="extreme-value-theorem.html"><span class="bk-toc-n">5.2</span>Extreme Value Theorem, Global and Local Extrema, Critical Points</a></li><li data-toc-t="increasing-decreasing"><a href="increasing-decreasing.html"><span class="bk-toc-n">5.3</span>Where a Function Increases or Decreases</a></li><li data-toc-t="first-derivative-test"><a href="first-derivative-test.html"><span class="bk-toc-n">5.4</span>The First Derivative Test</a></li><li data-toc-t="candidates-test"><a href="candidates-test.html"><span class="bk-toc-n">5.5</span>The Candidates Test</a></li><li data-toc-t="concavity"><a href="concavity.html"><span class="bk-toc-n">5.6</span>Concavity and Points of Inflection</a></li><li data-toc-t="second-derivative-test"><a href="second-derivative-test.html"><span class="bk-toc-n">5.7</span>The Second Derivative Test</a></li><li data-toc-t="sketching-derivatives"><a href="sketching-derivatives.html"><span class="bk-toc-n">5.8</span>Sketching f, f' and f''</a></li><li data-toc-t="f-and-its-derivatives"><a href="f-and-its-derivatives.html"><span class="bk-toc-n">5.9</span>Connecting f, f' and f''</a></li><li class="current" data-toc-t="optimization-intro"><a href="#main" aria-current="page"><span class="bk-toc-n">5.10</span>Introduction to Optimization</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-objective-function">The objective function</a><a href="#justifying-the-answer">Justifying the answer</a><a href="#revenue-a-second-model">Revenue, a second model</a><a href="#numbers-and-distances">Numbers and distances</a><a href="#answer-the-question-asked">Answer the question asked</a></div></li><li data-toc-t="solving-optimization"><a href="solving-optimization.html"><span class="bk-toc-n">5.11</span>Solving Optimization Problems</a></li><li data-toc-t="implicit-relations"><a href="implicit-relations.html"><span class="bk-toc-n">5.12</span>Behavior of Implicit Relations</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Integration and Accumulation of Change</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-5.html">Analytical Applications of Differentiation</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Introduction to Optimization: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/optimization-intro.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 5 &middot; Topic 5.10 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Introduction to Optimization</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="optimization-intro">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Foptimization-intro.html&amp;title=Introduction%20to%20Optimization%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/optimization-intro.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Businesses want the most profit, engineers the least material, farmers the most land from a roll of fence. Each of these is a search for an <a class="gl" href="../notes/extreme-value-theorem.html" data-c="absolute-extremum">absolute maximum</a> or minimum, which you already know how to find. What is new in <b><span class="gl" tabindex="0" data-c="optimization">optimization</span></b> is the first step: turning a paragraph of words into a <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> you can <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">differentiate</a>.</p>
+
+<h2 id="the-objective-function">The objective function</h2>
+<p>The <b>objective function</b> is the quantity you want to make as large or as small as possible, written as a function of one variable. Writing it takes three moves:</p>
+<ol>
+<li><b>Name the quantity.</b> What does the question want largest or smallest? Area, revenue, cost, distance.</li>
+<li><b>Write a formula for it.</b> Often it starts with two variables, like <math class="calc-m"><semantics><mrow><mi>A</mi><mo>=</mo><mi>x</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">A = xy</annotation></semantics></math>.</li>
+<li><b>Use the given facts to reduce it to one variable.</b> A fixed amount of fence, a fixed product, a price rule: solve it for one variable and substitute.</li>
+</ol>
+<p>Then find the <b><a class="gl" href="../notes/math-functions.html" data-c="domain">domain</a></b>: the values of the variable that make physical sense. Lengths, prices and amounts are not negative.</p>
+<figure id="fig-pen"  class="calc-figure"><div class="calc-figimg" data-fig="pen-river-area"><img src="../figures/pen-river-area.svg" alt="Left: a rectangular pen against a river, split by a middle fence; the three fences perpendicular to the river have length x, the far side has length y, and 3x + y = 600 feet. Right: the graph of A(x) = x(600 - 3x) for 0 ≤ x ≤ 200, zero at both ends, highest at (100, 30000)." width="900" height="360" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The fence fixes <math class="calc-m"><semantics><mrow><mn>3</mn><mi>x</mi><mo>+</mo><mi>y</mi><mo>=</mo><mn>600</mn></mrow><annotation encoding="application/x-tex">3x + y = 600</annotation></semantics></math>. Substituting <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>600</mn><mo>−</mo><mn>3</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">y = 600 - 3x</annotation></semantics></math> turns the area into a function of <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> alone, on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>200</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 200]</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example 1.</b> A farmer has 600 feet of fence for a rectangular pen against a straight river, split in two by a middle fence parallel to the ends. No fence goes along the river. Find the largest area.</p>
+<p><i>Quantity:</i> area, <math class="calc-m"><semantics><mrow><mi>A</mi><mo>=</mo><mi>x</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">A = xy</annotation></semantics></math>, with <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> the length of each end (and of the divider) and <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> the side opposite the river.</p>
+<p><i>Reduce:</i> the fence is <math class="calc-m"><semantics><mrow><mn>3</mn><mi>x</mi><mo>+</mo><mi>y</mi><mo>=</mo><mn>600</mn></mrow><annotation encoding="application/x-tex">3x + y = 600</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>600</mn><mo>−</mo><mn>3</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">y = 600 - 3x</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mo stretchy="false">(</mo><mn>600</mn><mo>−</mo><mn>3</mn><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>600</mn><mi>x</mi><mo>−</mo><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">A(x) = x(600 - 3x) = 600x - 3x^2</annotation></semantics></math>.</p>
+<p><i>Domain:</i> <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \ge 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>600</mn><mo>−</mo><mn>3</mn><mi>x</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y = 600 - 3x \ge 0</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>200</mn></mrow><annotation encoding="application/x-tex">0 \le x \le 200</annotation></semantics></math>.</p>
+<p><i><a class="gl" href="../notes/extreme-value-theorem.html" data-c="critical-point">Critical point</a>:</i> <math class="calc-m"><semantics><mrow><mrow><mi>A</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>600</mn><mo>−</mo><mn>6</mn><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A'(x) = 600 - 6x = 0</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">x = 100</annotation></semantics></math>.</p>
+<p><i>Justify:</i> candidates <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A(0) = 0</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mn>100</mn><mo stretchy="false">)</mo><mo>=</mo><mn>30</mn><mo>,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">A(100) = 30{,}000</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mn>200</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A(200) = 0</annotation></semantics></math>. The largest is <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mn>100</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A(100)</annotation></semantics></math>.</p>
+<p><i>Answer in context:</i> ends of 100 feet and a long side of 300 feet give the largest area, 30,000 square feet.</p>
+</div>
+
+<h2 id="justifying-the-answer">Justifying the answer</h2>
+<p>Setting <math class="calc-m"><semantics><mrow><mrow><mi>A</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A'(x) = 0</annotation></semantics></math> finds a candidate, not an answer. You must show it is the absolute extremum you want. Two ways work:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Situation, Argument"><table class="compare">
+<thead><tr><th scope="col">Situation</th><th scope="col">Argument</th></tr></thead>
+<tbody>
+<tr><td>Closed domain <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math></td><td><a class="gl" href="../notes/candidates-test.html" data-c="candidates-test">Candidates Test</a>: compare <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> at the endpoints and the critical points.</td></tr>
+<tr><td>Any interval, one critical point</td><td>The only critical point is a <a class="gl" href="../notes/extreme-value-theorem.html" data-c="relative-extremum">relative maximum</a> (or minimum), by the First or <a class="gl" href="../notes/second-derivative-test.html" data-c="second-derivative-test">Second Derivative Test</a>, so it is the absolute one.</td></tr>
+</tbody>
+</table></div>
+<p>Watch for the critical point being the wrong kind. For a shipping cost <math class="calc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mo>+</mo><mfrac><mn>16</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">C(x) = x + \frac{16}{x}</annotation></semantics></math> on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>8</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1, 8]</annotation></semantics></math>, the critical point <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x = 4</annotation></semantics></math> gives the smallest cost, 8. If the question asks for the largest cost, the answer is at an endpoint: <math class="calc-m"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>17</mn></mrow><annotation encoding="application/x-tex">C(1) = 17</annotation></semantics></math>.</p>
+
+<h2 id="revenue-a-second-model">Revenue, a second model</h2>
+<div class="worked">
+<p><b>Worked example 2.</b> At a price of <math class="calc-m"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math> dollars, a theater sells <math class="calc-m"><semantics><mrow><mn>1200</mn><mo>−</mo><mn>40</mn><mi>p</mi></mrow><annotation encoding="application/x-tex">1200 - 40p</annotation></semantics></math> tickets, <math class="calc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>p</mi><mo>≤</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">0 \le p \le 30</annotation></semantics></math>. What price maximizes revenue?</p>
+<p><i>Objective:</i> revenue = price times tickets, <math class="calc-m"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo><mo>=</mo><mi>p</mi><mo stretchy="false">(</mo><mn>1200</mn><mo>−</mo><mn>40</mn><mi>p</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1200</mn><mi>p</mi><mo>−</mo><mn>40</mn><msup><mi>p</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">R(p) = p(1200 - 40p) = 1200p - 40p^2</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mrow><mi>R</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1200</mn><mo>−</mo><mn>80</mn><mi>p</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R'(p) = 1200 - 80p = 0</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>p</mi><mo>=</mo><mn>15</mn></mrow><annotation encoding="application/x-tex">p = 15</annotation></semantics></math>. Candidates: <math class="calc-m"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R(0) = 0</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mn>15</mn><mo stretchy="false">)</mo><mo>=</mo><mn>9000</mn></mrow><annotation encoding="application/x-tex">R(15) = 9000</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mn>30</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R(30) = 0</annotation></semantics></math>.</p>
+<p>A price of 15 dollars gives the most revenue, 9000 dollars.</p>
+</div>
+<p>The derivative also has a meaning on its own. <math class="calc-m"><semantics><mrow><mrow><mi>R</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo><mo>=</mo><mn>400</mn></mrow><annotation encoding="application/x-tex">R'(10) = 400</annotation></semantics></math> dollars per dollar: at a price of 10 dollars, raising the price by 1 dollar raises revenue by about 400 dollars. A positive <math class="calc-m"><semantics><mrow><mrow><mi>R</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">R'</annotation></semantics></math> says the best price is higher still.</p>
+
+<h2 id="numbers-and-distances">Numbers and distances</h2>
+<p>Pure-number problems use the same steps. If two positive numbers add to 20, their product is <math class="calc-m"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mo stretchy="false">(</mo><mn>20</mn><mo>−</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(x) = x(20 - x)</annotation></semantics></math>; it is largest at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">x = 10</annotation></semantics></math>, giving 100. For a distance, minimize the squared distance instead: it is smallest at the same point and has no square root to differentiate. For the point of <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">y = \sqrt{x}</annotation></semantics></math> nearest <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 0)</annotation></semantics></math>, minimize <math class="calc-m"><semantics><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">D(x) = (x - 3)^2 + x</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mrow><mi>D</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>5</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">D'(x) = 2x - 5 = 0</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mn>5</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">x = \frac{5}{2}</annotation></semantics></math>, and the distance is <math class="calc-m"><semantics><mrow><msqrt><mrow><mi>D</mi><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mn>5</mn><mn>2</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow></mrow></msqrt><mo>=</mo><mfrac><msqrt><mn>11</mn></msqrt><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\sqrt{D\left(\frac{5}{2}\right)} = \frac{\sqrt{11}}{2}</annotation></semantics></math>. Remember to take the square root at the end.</p>
+
+<h2 id="answer-the-question-asked">Answer the question asked</h2>
+<p>The final line should answer in the problem's words and units: "100 feet by 300 feet, for 30,000 square feet," not "<math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">x = 100</annotation></semantics></math>." If the question asks for dimensions, give all of them; if it asks for the maximum value, give the value, not where it happens.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:optimization-intro">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="f-and-its-derivatives.html"><span>&larr; Previous</span><b>Connecting f, f' and f''</b></a><a class="tb-chapter-link next" href="solving-optimization.html"><span>Next &rarr;</span><b>Solving Optimization Problems</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:optimization-intro">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

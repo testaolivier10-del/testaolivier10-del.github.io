@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebra for Limits: Factoring and… — AP® Calculus AB Notes</title>
+<meta name="description" content="Here is the kind of limit you will meet again and again: lim as x → 3, (x² − 9)/(x − 3) . Substitute x = 3 and both the top and the bottom are 0.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/math-limit-algebra.html">
+<meta property="og:title" content="Algebra for Limits: Factoring and… — AP® Calculus AB Notes">
+<meta property="og:description" content="Here is the kind of limit you will meet again and again: lim as x → 3, (x² − 9)/(x − 3) . Substitute x = 3 and both the top and the bottom are 0.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/math-limit-algebra.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/math-limit-algebra.html#reading",
+      "name": "Algebra for Limits: Factoring and Rationalizing",
+      "url": "https://levlprep.com/calculus/notes/math-limit-algebra.html",
+      "description": "Here is the kind of limit you will meet again and again: lim as x → 3, (x² − 9)/(x − 3) . Substitute x = 3 and both the top and the bottom are 0.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "factoring and rationalizing for limits",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Math you need",
+          "item": "https://levlprep.com/calculus/units/skills-math.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Algebra for Limits: Factoring and Rationalizing: notes",
+          "item": "https://levlprep.com/calculus/notes/math-limit-algebra.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="math-limit-algebra" data-unit="skills-math">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Applications of Integration</a>
+    <a class="bk-toc-chap" href="../units/skills-math.html"><span class="bk-toc-chap-n">S</span><span><b>Math you need</b><small>7 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="skills-math"><div class="tb-progress-row"><span><b>0</b> of 7 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="math-functions"><a href="math-functions.html"><span class="bk-toc-n">S</span>Functions and Their Graphs</a></li><li data-toc-t="math-exponent-rules"><a href="math-exponent-rules.html"><span class="bk-toc-n">S</span>Exponent Rules and Rewriting Powers</a></li><li class="current" data-toc-t="math-limit-algebra"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Algebra for Limits: Factoring and Rationalizing</a><div class="bk-toc-onpage"><p>On this page</p><a href="#factoring">Factoring</a><a href="#cancel-factors-never-terms">Cancel factors, never terms</a><a href="#rationalizing-with-a-conjugate">Rationalizing with a conjugate</a><a href="#complex-fractions">Complex fractions</a><a href="#expanding-powers">Expanding powers</a></div></li><li data-toc-t="math-trig"><a href="math-trig.html"><span class="bk-toc-n">S</span>Trigonometry and the Unit Circle</a></li><li data-toc-t="math-exp-log"><a href="math-exp-log.html"><span class="bk-toc-n">S</span>Exponentials and Logarithms</a></li><li data-toc-t="math-inverse-functions"><a href="math-inverse-functions.html"><span class="bk-toc-n">S</span>Inverse Functions</a></li><li data-toc-t="math-geometry"><a href="math-geometry.html"><span class="bk-toc-n">S</span>Geometry for Calculus</a></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-math.html">Math you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Algebra for Limits: Factoring and Rationalizing: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/math-limit-algebra.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Skills <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Algebra for Limits: Factoring and Rationalizing</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="math-limit-algebra">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fmath-limit-algebra.html&amp;title=Algebra%20for%20Limits%3A%20Factoring%20and%20Rationalizing%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/math-limit-algebra.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Here is the kind of <a class="gl" href="../notes/limit-notation.html" data-c="limit">limit</a> you will meet again and again: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>3</mn></mrow></munder><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>9</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 3} \frac{x^2 - 9}{x - 3}</annotation></semantics></math>. Substitute <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math> and both the top and the bottom are 0. The <a class="gl" href="../notes/limit-laws.html" data-c="limit-laws">limit laws</a> cannot help, because the denominator heads to 0. The way forward is to rewrite the fraction into a form where the trouble disappears. That takes three precalculus moves, and this page drills each one: <span class="gl" tabindex="0" data-c="factoring">factoring</span>, <span class="gl" tabindex="0" data-c="rationalizing">rationalizing</span> and simplifying <span class="gl" tabindex="0" data-c="complex-fraction">complex fractions</span>.</p>
+
+<h2 id="factoring">Factoring</h2>
+<p>To factor is to rewrite a sum as a product. A <b>factored form</b> shows what each piece is multiplied by, and that is what lets pieces cancel. The patterns you need:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Pattern</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>Common factor</td><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>x</mi><mo>=</mo><mi>x</mi><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x^2 - 4x = x(x - 4)</annotation></semantics></math></td></tr>
+<tr><td><b>Difference of squares</b>: <math class="calc-m"><semantics><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><msup><mi>b</mi><mn>2</mn></msup><mo>=</mo><mo stretchy="false">(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a^2 - b^2 = (a - b)(a + b)</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>16</mn><mo>=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>4</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x^2 - 16 = (x - 4)(x + 4)</annotation></semantics></math></td></tr>
+<tr><td>Trinomial <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x^2 + bx + c</annotation></semantics></math>: two numbers that multiply to <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> and add to <math class="calc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>8</mn><mo>=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>4</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x^2 + 2x - 8 = (x + 4)(x - 2)</annotation></semantics></math></td></tr>
+<tr><td>Difference of cubes: <math class="calc-m"><semantics><mrow><msup><mi>a</mi><mn>3</mn></msup><mo>−</mo><msup><mi>b</mi><mn>3</mn></msup><mo>=</mo><mo stretchy="false">(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mi>a</mi><mi>b</mi><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a^3 - b^3 = (a - b)(a^2 + ab + b^2)</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>8</mn><mo>=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x^3 - 8 = (x - 2)(x^2 + 2x + 4)</annotation></semantics></math></td></tr>
+<tr><td>Sum of cubes: <math class="calc-m"><semantics><mrow><msup><mi>a</mi><mn>3</mn></msup><mo>+</mo><msup><mi>b</mi><mn>3</mn></msup><mo>=</mo><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mi>a</mi><mi>b</mi><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a^3 + b^3 = (a + b)(a^2 - ab + b^2)</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>+</mo><mn>1</mn><mo>=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x^3 + 1 = (x + 1)(x^2 - x + 1)</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>A useful shortcut: if a <a class="gl" href="../notes/math-functions.html" data-c="rational-function">polynomial</a> is 0 at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>, then <math class="calc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x - a</annotation></semantics></math> is one of its factors. So when substitution gives 0 on top at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>, you already know to look for the factor <math class="calc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x - 3</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Factor <math class="calc-m"><semantics><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>5</mn><mi>x</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">2x^2 + 5x - 3</annotation></semantics></math>. The leading coefficient is not 1, which is where most errors happen.</p>
+<p>Multiply <math class="calc-m"><semantics><mrow><mi>a</mi><mo>⋅</mo><mi>c</mi><mo>=</mo><mn>2</mn><mo>⋅</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">a \cdot c = 2 \cdot (-3) = -6</annotation></semantics></math>. Find two numbers that multiply to <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">-6</annotation></semantics></math> and add to <math class="calc-m"><semantics><mrow><mi>b</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">b = 5</annotation></semantics></math>: they are 6 and <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>.</p>
+<p>Split the middle term and group: <math class="calc-m"><semantics><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>6</mn><mi>x</mi><mo>−</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo>=</mo><mn>2</mn><mi>x</mi><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>3</mn><mo stretchy="false">)</mo><mo>−</mo><mn>1</mn><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2x^2 + 6x - x - 3 = 2x(x + 3) - 1(x + 3) = (2x - 1)(x + 3)</annotation></semantics></math>.</p>
+<p>Check by expanding: <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>6</mn><mi>x</mi><mo>−</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo>=</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>5</mn><mi>x</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">(2x - 1)(x + 3) = 2x^2 + 6x - x - 3 = 2x^2 + 5x - 3</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="cancel-factors-never-terms">Cancel factors, never terms</h2>
+<p>Canceling divides the top and bottom by the same nonzero <i>factor</i>. A term that is added cannot be canceled. This is the single most common algebra error on limit questions.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Wrong</th><th>Right</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>x</mi></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>16</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn><mi>x</mi></mrow><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>16</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{x^2 - 4x}{x^2 - 16} = \frac{-4x}{-16}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>4</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>4</mn><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mfrac><mi>x</mi><mrow><mi>x</mi><mo>+</mo><mn>4</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{x(x - 4)}{(x - 4)(x + 4)} = \frac{x}{x + 4}</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>9</mn></mrow><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow></mfrac><mo>=</mo><mi>x</mi><mo>+</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\frac{x^2 + 9}{x + 3} = x + 3</annotation></semantics></math></td><td>does not simplify: <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">x^2 + 9</annotation></semantics></math> has no real factors</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>x</mi><mo>+</mo><mn>6</mn></mrow><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow></mfrac><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\frac{x + 6}{x + 3} = 2</annotation></semantics></math></td><td>does not simplify</td></tr>
+</tbody>
+</table></div>
+<p>When in doubt, test a number. At <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>x</mi></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>16</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>15</mn></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>5</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{x^2 - 4x}{x^2 - 16} = \frac{-3}{-15} = \frac{1}{5}</annotation></semantics></math>. The wrong answer <math class="calc-m"><semantics><mrow><mfrac><mi>x</mi><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{x}{4}</annotation></semantics></math> gives <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{4}</annotation></semantics></math>; the right answer <math class="calc-m"><semantics><mrow><mfrac><mi>x</mi><mrow><mi>x</mi><mo>+</mo><mn>4</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{x}{x + 4}</annotation></semantics></math> gives <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>5</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{5}</annotation></semantics></math>.</p>
+
+<h2 id="rationalizing-with-a-conjugate">Rationalizing with a conjugate</h2>
+<p>When a square root sits next to a number, as in <math class="calc-m"><semantics><mrow><msqrt><mi>x</mi></msqrt><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\sqrt{x} - 2</annotation></semantics></math>, factoring does not apply directly. Instead multiply by its <b>conjugate</b>, the same expression with the opposite sign in the middle: <math class="calc-m"><semantics><mrow><msqrt><mi>x</mi></msqrt><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\sqrt{x} + 2</annotation></semantics></math>. A conjugate pair multiplies to a difference of squares, and the square root disappears:
+<math class="calc-m" display="block"><semantics><mrow><mo stretchy="false">(</mo><msqrt><mi>x</mi></msqrt><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msqrt><mi>x</mi></msqrt><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><msqrt><mi>x</mi></msqrt><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><msup><mn>2</mn><mn>2</mn></msup><mo>=</mo><mi>x</mi><mo>−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">(\sqrt{x} - 2)(\sqrt{x} + 2) = (\sqrt{x})^2 - 2^2 = x - 4</annotation></semantics></math>
+To keep the fraction's value, multiply the top <i>and</i> the bottom by the conjugate. This is called <b>rationalizing</b>.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Simplify <math class="calc-m"><semantics><mrow><mfrac><mrow><msqrt><mi>x</mi></msqrt><mo>−</mo><mn>2</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>4</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sqrt{x} - 2}{x - 4}</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x \ne 4</annotation></semantics></math>.</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><msqrt><mi>x</mi></msqrt><mo>−</mo><mn>2</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>4</mn></mrow></mfrac><mo>⋅</mo><mfrac><mrow><msqrt><mi>x</mi></msqrt><mo>+</mo><mn>2</mn></mrow><mrow><msqrt><mi>x</mi></msqrt><mo>+</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>x</mi><mo>−</mo><mn>4</mn></mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>4</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msqrt><mi>x</mi></msqrt><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mrow><msqrt><mi>x</mi></msqrt><mo>+</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sqrt{x} - 2}{x - 4} \cdot \frac{\sqrt{x} + 2}{\sqrt{x} + 2} = \frac{x - 4}{(x - 4)(\sqrt{x} + 2)} = \frac{1}{\sqrt{x} + 2}</annotation></semantics></math></p>
+<p>Notice the bottom was <i>not</i> multiplied out. Leaving it as <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>4</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msqrt><mi>x</mi></msqrt><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x - 4)(\sqrt{x} + 2)</annotation></semantics></math> is what makes the factor <math class="calc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x - 4</annotation></semantics></math> visible for canceling.</p>
+<p>Near <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x = 4</annotation></semantics></math>, the simplified form heads to <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><msqrt><mn>4</mn></msqrt><mo>+</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{\sqrt{4} + 2} = \frac{1}{4}</annotation></semantics></math>.</p>
+</div>
+<figure id="fig-rat"  class="calc-figure"><div class="calc-figimg" data-fig="rationalize-hole"><img src="../figures/rationalize-hole.svg" alt="The graph of y = (square root of x minus 2) divided by (x minus 4) for x from 0 to 12: it starts at (0, 0.5), falls slowly, and has an open circle at (4, 1/4). A panel shows the algebra: multiplying by the conjugate gives 1 over (square root of x plus 2), which is 1/4 at x = 4." width="760" height="430" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The original fraction and its simplified form share a graph, except for the hole at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x = 4</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="complex-fractions">Complex fractions</h2>
+<p>A <b>complex fraction</b> has fractions inside its numerator or denominator. Combine the small fractions over a common denominator first, then divide.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Simplify <math class="calc-m"><semantics><mrow><mfrac><mrow><mfrac><mn>1</mn><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow></mfrac><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{\frac{1}{x + 2} - \frac{1}{2}}{x}</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>0</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x \ne 0, -2</annotation></semantics></math>.</p>
+<p>Top, over the common denominator <math class="calc-m"><semantics><mrow><mn>2</mn><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2(x + 2)</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>2</mn><mo>−</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mrow><mn>2</mn><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>x</mi></mrow><mrow><mn>2</mn><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{2 - (x + 2)}{2(x + 2)} = \frac{-x}{2(x + 2)}</annotation></semantics></math>. The parentheses around <math class="calc-m"><semantics><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x + 2</annotation></semantics></math> matter: the minus sign applies to both terms.</p>
+<p>Divide by <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, which is the same as multiplying by <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{x}</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>x</mi></mrow><mrow><mn>2</mn><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mfrac><mo>⋅</mo><mfrac><mn>1</mn><mi>x</mi></mfrac><mo>=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><mrow><mn>2</mn><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{-x}{2(x + 2)} \cdot \frac{1}{x} = \frac{-1}{2(x + 2)}</annotation></semantics></math>.</p>
+<p>Near <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>, this heads to <math class="calc-m"><semantics><mrow><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{-1}{4}</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="expanding-powers">Expanding powers</h2>
+<p>Limits often contain expressions like <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>+</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">(3 + h)^2 - 9</annotation></semantics></math>. Expand every power completely before simplifying:
+<math class="calc-m" display="block"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>+</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mn>9</mn><mo>=</mo><mn>9</mn><mo>+</mo><mn>6</mn><mi>h</mi><mo>+</mo><msup><mi>h</mi><mn>2</mn></msup><mo>−</mo><mn>9</mn><mo>=</mo><mn>6</mn><mi>h</mi><mo>+</mo><msup><mi>h</mi><mn>2</mn></msup><mo>=</mo><mi>h</mi><mo stretchy="false">(</mo><mn>6</mn><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3 + h)^2 - 9 = 9 + 6h + h^2 - 9 = 6h + h^2 = h(6 + h)</annotation></semantics></math>
+Forgetting the middle term, <math class="calc-m"><semantics><mrow><mn>6</mn><mi>h</mi></mrow><annotation encoding="application/x-tex">6h</annotation></semantics></math>, is the classic slip; <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(a + h)^2</annotation></semantics></math> is never <math class="calc-m"><semantics><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>h</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">a^2 + h^2</annotation></semantics></math>. For a cube, <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>3</mn></msup><mo>=</mo><msup><mi>a</mi><mn>3</mn></msup><mo>+</mo><mn>3</mn><msup><mi>a</mi><mn>2</mn></msup><mi>h</mi><mo>+</mo><mn>3</mn><mi>a</mi><msup><mi>h</mi><mn>2</mn></msup><mo>+</mo><msup><mi>h</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">(a + h)^3 = a^3 + 3a^2h + 3ah^2 + h^3</annotation></semantics></math>.</p>
+<p>In every one of these moves, the goal is the same: produce a factor that matches the troublesome one in the denominator, so it can cancel. The next topic puts these moves to work on limits.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:math-limit-algebra">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="limit-laws.html"><span>&larr; Previous</span><b>Limit Laws</b></a><a class="tb-chapter-link next" href="limit-algebra.html"><span>Next &rarr;</span><b>Limits by Algebra: Factor, Rationalize, Simplify</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:math-limit-algebra">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

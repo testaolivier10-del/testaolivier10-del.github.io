@@ -33,7 +33,7 @@
  ],
  "misconception": {
   "wrong": "If the integral of $f - g$ comes out negative or zero, take its absolute value to get the area.",
-  "right": "By the time you take the absolute value, the pieces have already cancelled. Split at each crossing first (or put the absolute value inside the integral), then add the positive pieces."
+  "right": "By the time you take the absolute value, the pieces have already canceled. Split at each crossing first (or put the absolute value inside the integral), then add the positive pieces."
  },
  "check": [
   "calc-area-multiple-crossings-1",

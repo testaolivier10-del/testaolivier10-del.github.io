@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accumulation in Context — AP® Calculus AB Notes | LevlPrep</title>
+<meta name="description" content="Many exam questions are about a container: a tank, a reservoir, a museum, a pile of gravel, a driveway under snow.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/accumulation-in-context.html">
+<meta property="og:title" content="Accumulation in Context — AP® Calculus AB Notes | LevlPrep">
+<meta property="og:description" content="Many exam questions are about a container: a tank, a reservoir, a museum, a pile of gravel, a driveway under snow.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/accumulation-in-context.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/accumulation-in-context.html#reading",
+      "name": "Accumulation in Context",
+      "url": "https://levlprep.com/calculus/notes/accumulation-in-context.html",
+      "description": "Many exam questions are about a container: a tank, a reservoir, a museum, a pile of gravel, a driveway under snow.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "accumulation in context ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Applications of Integration",
+          "item": "https://levlprep.com/calculus/units/unit-8.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Accumulation in Context: notes",
+          "item": "https://levlprep.com/calculus/notes/accumulation-in-context.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="accumulation-in-context" data-unit="unit-8">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 8 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-7.html"><span class="bk-toc-n">7</span>Differential Equations</a>
+    <a class="bk-toc-chap" href="../units/unit-8.html"><span class="bk-toc-chap-n">8</span><span><b>Applications of Integration</b><small>12 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-8"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="average-value"><a href="average-value.html"><span class="bk-toc-n">8.1</span>Average Value of a Function</a></li><li data-toc-t="motion-with-integrals"><a href="motion-with-integrals.html"><span class="bk-toc-n">8.2</span>Motion with Integrals</a></li><li class="current" data-toc-t="accumulation-in-context"><a href="#main" aria-current="page"><span class="bk-toc-n">8.3</span>Accumulation in Context</a><div class="bk-toc-onpage"><p>On this page</p><a href="#rate-in-rate-out">Rate in, rate out</a><a href="#the-amount-at-a-time">The amount at a time</a><a href="#from-a-table">From a table</a><a href="#units-and-interpretations">Units and interpretations</a><a href="#common-slips">Common slips</a></div></li><li data-toc-t="area-between-curves-x"><a href="area-between-curves-x.html"><span class="bk-toc-n">8.4</span>Area Between Curves (Functions of x)</a></li><li data-toc-t="area-between-curves-y"><a href="area-between-curves-y.html"><span class="bk-toc-n">8.5</span>Area Between Curves (Functions of y)</a></li><li data-toc-t="area-multiple-crossings"><a href="area-multiple-crossings.html"><span class="bk-toc-n">8.6</span>Area Between Curves That Cross More Than Twice</a></li><li data-toc-t="cross-sections-squares"><a href="cross-sections-squares.html"><span class="bk-toc-n">8.7</span>Volumes with Square and Rectangle Cross Sections</a></li><li data-toc-t="cross-sections-triangles"><a href="cross-sections-triangles.html"><span class="bk-toc-n">8.8</span>Volumes with Triangle and Semicircle Cross Sections</a></li><li data-toc-t="disc-method-axes"><a href="disc-method-axes.html"><span class="bk-toc-n">8.9</span>Disc Method About the Axes</a></li><li data-toc-t="disc-method-other-axes"><a href="disc-method-other-axes.html"><span class="bk-toc-n">8.10</span>Disc Method About Other Lines</a></li><li data-toc-t="washer-method-axes"><a href="washer-method-axes.html"><span class="bk-toc-n">8.11</span>Washer Method About the Axes</a></li><li data-toc-t="washer-method-other-axes"><a href="washer-method-other-axes.html"><span class="bk-toc-n">8.12</span>Washer Method About Other Lines</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-8.html">Applications of Integration</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Accumulation in Context: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/accumulation-in-context.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 8 &middot; Topic 8.3 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Accumulation in Context</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="accumulation-in-context">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Faccumulation-in-context.html&amp;title=Accumulation%20in%20Context%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/accumulation-in-context.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Many exam questions are about a container: a tank, a reservoir, a museum, a pile of gravel, a driveway under snow. Something comes in at one rate and goes out at another. The questions are always the same few. How much is there at a given time? Is it going up or down right now? When is there the most? This page gives one equation that answers all of them.</p>
+
+<h2 id="rate-in-rate-out">Rate in, rate out</h2>
+<p>Call the <b><span class="gl" tabindex="0" data-c="rate-in-out">rate in</span></b> <math class="calc-m"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R(t)</annotation></semantics></math> (water entering, people arriving, snow falling) and the <b>rate out</b> <math class="calc-m"><semantics><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(t)</annotation></semantics></math> (water draining, people leaving, snow melting). The amount <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A(t)</annotation></semantics></math> changes at the difference:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mrow><mi>A</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>R</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>−</mo><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>.</mo></mrow><annotation encoding="application/x-tex">A'(t) = R(t) - D(t).</annotation></semantics></math></p>
+<p>So at any moment, the amount is increasing when <math class="calc-m"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>&gt;</mo><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R(t) &gt; D(t)</annotation></semantics></math> and decreasing when <math class="calc-m"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>&lt;</mo><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R(t) &lt; D(t)</annotation></semantics></math>. Notice what does <i>not</i> matter: whether <math class="calc-m"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math> itself is rising, or how big <math class="calc-m"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math> is on its own. Only the comparison counts.</p>
+
+<h2 id="the-amount-at-a-time">The amount at a time</h2>
+<p>Integrate the net rate and add what was there at the start:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>A</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>+</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>t</mi></msubsup><mo stretchy="true" symmetric="true" minsize="1.2em" maxsize="1.2em">(</mo><mi>R</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>−</mo><mi>D</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo stretchy="true" symmetric="true" minsize="1.2em" maxsize="1.2em">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>s</mi><mo>.</mo></mrow><annotation encoding="application/x-tex">A(t) = A(a) + \int_a^t \big(R(s) - D(s)\big)\,ds.</annotation></semantics></math></p>
+<p>The <a class="gl" href="../notes/definite-integral-notation.html" data-c="definite-integral">integral</a> is the <a class="gl" href="../notes/accumulation-of-change.html" data-c="accumulated-change">net change</a>; the first term is the starting amount. Leaving out the starting amount is the most common lost point in these questions.</p>
+<figure id="fig-inout"  class="calc-figure"><div class="calc-figimg" data-fig="rate-in-out"><img src="../figures/rate-in-out.svg" alt="Two rates on 0 ≤ t ≤ 12 minutes: water flows in at R(t) = 10 + 3 sin(πt/6) liters per minute (blue) and out at D(t) = 4 + t liters per minute (crimson). From t = 0 to 6 the rate in is larger and the gap is shaded green: the amount rises. The curves cross at t = 6, where both rates are 10. After that the rate out is larger and the gap is shaded vermillion: the amount falls. The amount is greatest at t = 6." width="680" height="450" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Rate in <math class="calc-m"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>10</mn><mo>+</mo><mn>3</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mrow><mi>π</mi><mi>t</mi></mrow><mn>6</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">R(t) = 10 + 3\sin\left(\frac{\pi t}{6}\right)</annotation></semantics></math> and rate out <math class="calc-m"><semantics><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mo>+</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">D(t) = 4 + t</annotation></semantics></math>, in liters per minute. Green: the amount rises. Vermillion: it falls. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example 1 (calculator).</b> A tank holds 50 liters at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math>. Water enters at <math class="calc-m"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>10</mn><mo>+</mo><mn>3</mn><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mrow><mo fence="true" stretchy="true">(</mo><mfrac><mrow><mi>π</mi><mi>t</mi></mrow><mn>6</mn></mfrac><mo fence="true" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">R(t) = 10 + 3\sin\left(\frac{\pi t}{6}\right)</annotation></semantics></math> and leaves at <math class="calc-m"><semantics><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mo>+</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">D(t) = 4 + t</annotation></semantics></math> liters per minute, <math class="calc-m"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">0 \le t \le 12</annotation></semantics></math>. (a) How much water is in the tank at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">t = 9</annotation></semantics></math>? (b) Is the amount increasing or decreasing at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">t = 9</annotation></semantics></math>? (c) What is the greatest amount?</p>
+<p>(a) <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mn>9</mn><mo stretchy="false">)</mo><mo>=</mo><mn>50</mn><mo>+</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>9</mn></msubsup><mo stretchy="true" symmetric="true" minsize="1.2em" maxsize="1.2em">(</mo><mi>R</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>−</mo><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="true" symmetric="true" minsize="1.2em" maxsize="1.2em">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi><mo>≈</mo><mn>50</mn><mo>+</mo><mn>19.230</mn><mo>=</mo><mn>69.230</mn></mrow><annotation encoding="application/x-tex">A(9) = 50 + \int_0^9 \big(R(t) - D(t)\big)\,dt \approx 50 + 19.230 = 69.230</annotation></semantics></math> liters.</p>
+<p>(b) <math class="calc-m"><semantics><mrow><mrow><mi>A</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>9</mn><mo stretchy="false">)</mo><mo>=</mo><mi>R</mi><mo stretchy="false">(</mo><mn>9</mn><mo stretchy="false">)</mo><mo>−</mo><mi>D</mi><mo stretchy="false">(</mo><mn>9</mn><mo stretchy="false">)</mo><mo>=</mo><mn>7</mn><mo>−</mo><mn>13</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>6</mn><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A'(9) = R(9) - D(9) = 7 - 13 = -6 &lt; 0</annotation></semantics></math>, so the amount is decreasing, at 6 liters per minute.</p>
+<p>(c) <math class="calc-m"><semantics><mrow><mrow><mi>A</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>R</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>−</mo><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A'(t) = R(t) - D(t) = 0</annotation></semantics></math> on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>12</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 12)</annotation></semantics></math> only at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">t = 6</annotation></semantics></math>, where <math class="calc-m"><semantics><mrow><mrow><mi>A</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">A'</annotation></semantics></math> changes from positive to negative. Candidates: <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo>=</mo><mn>50</mn></mrow><annotation encoding="application/x-tex">A(0) = 50</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo><mo>≈</mo><mn>79.459</mn></mrow><annotation encoding="application/x-tex">A(6) \approx 79.459</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mn>12</mn><mo stretchy="false">)</mo><mo>≈</mo><mn>50</mn></mrow><annotation encoding="application/x-tex">A(12) \approx 50</annotation></semantics></math>. The greatest amount is about 79.459 liters, at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">t = 6</annotation></semantics></math>.</p>
+</div>
+<p>In (c), the sign change alone shows a <a class="gl" href="../notes/extreme-value-theorem.html" data-c="relative-extremum">relative maximum</a> at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">t = 6</annotation></semantics></math>. For the <a class="gl" href="../notes/extreme-value-theorem.html" data-c="absolute-extremum">absolute maximum</a> on the closed interval, compare with the endpoints: the <a class="gl" href="../notes/candidates-test.html" data-c="candidates-test">candidates test</a>.</p>
+
+<h2 id="from-a-table">From a table</h2>
+<p>When the rate is only known at a few times, estimate the integral with a Riemann or <a class="gl" href="../notes/riemann-sums.html" data-c="trapezoidal-sum">trapezoidal sum</a>, using the table's own widths. They are often unequal.</p>
+<div class="worked">
+<p><b>Worked example 2 (no calculator).</b> Visitors enter a museum at the rates in the table. 25 visitors are inside at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0</annotation></semantics></math>, and visitors leave at a constant 70 people per hour. Estimate the number inside at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">t = 8</annotation></semantics></math>.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead><tr><th><math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> (hours)</th><th>0</th><th>2</th><th>3</th><th>5</th><th>8</th></tr></thead>
+<tbody><tr><td><math class="calc-m"><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E(t)</annotation></semantics></math> (people per hour)</td><td>60</td><td>110</td><td>150</td><td>90</td><td>30</td></tr></tbody>
+</table></div>
+<p>Trapezoidal sum: <math class="calc-m"><semantics><mrow><mn>2</mn><mo>⋅</mo><mfrac><mrow><mn>60</mn><mo>+</mo><mn>110</mn></mrow><mn>2</mn></mfrac><mo>+</mo><mn>1</mn><mo>⋅</mo><mfrac><mrow><mn>110</mn><mo>+</mo><mn>150</mn></mrow><mn>2</mn></mfrac><mo>+</mo><mn>2</mn><mo>⋅</mo><mfrac><mrow><mn>150</mn><mo>+</mo><mn>90</mn></mrow><mn>2</mn></mfrac><mo>+</mo><mn>3</mn><mo>⋅</mo><mfrac><mrow><mn>90</mn><mo>+</mo><mn>30</mn></mrow><mn>2</mn></mfrac><mo>=</mo><mn>170</mn><mo>+</mo><mn>130</mn><mo>+</mo><mn>240</mn><mo>+</mo><mn>180</mn><mo>=</mo><mn>720</mn></mrow><annotation encoding="application/x-tex">2 \cdot \frac{60 + 110}{2} + 1 \cdot \frac{110 + 150}{2} + 2 \cdot \frac{150 + 90}{2} + 3 \cdot \frac{90 + 30}{2} = 170 + 130 + 240 + 180 = 720</annotation></semantics></math> people entered.</p>
+<p>Leaving: <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>8</mn></msubsup><mn>70</mn><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi><mo>=</mo><mn>560</mn></mrow><annotation encoding="application/x-tex">\int_0^8 70\,dt = 560</annotation></semantics></math> people.</p>
+<p>Amount: <math class="calc-m"><semantics><mrow><mn>25</mn><mo>+</mo><mn>720</mn><mo>−</mo><mn>560</mn><mo>=</mo><mn>185</mn></mrow><annotation encoding="application/x-tex">25 + 720 - 560 = 185</annotation></semantics></math> people inside at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">t = 8</annotation></semantics></math> (an estimate).</p>
+</div>
+
+<h2 id="units-and-interpretations">Units and interpretations</h2>
+<p>An integral of a rate carries the accumulated unit. Gallons per hour integrated over hours gives gallons; people per hour over hours gives people. The <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a> of an amount carries the rate unit; the derivative of a rate carries "per hour per hour".</p>
+<p>When asked what an integral means, name three things: the quantity, its units and the interval. For example, <math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>6</mn></msubsup><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi><mo>=</mo><mn>42</mn></mrow><annotation encoding="application/x-tex">\int_0^6 D(t)\,dt = 42</annotation></semantics></math> means "42 liters of water leave the tank during the first 6 minutes." Not "the tank holds 42 liters", and not "the water drops by 42 liters": water was also coming in.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead><tr><th>Expression</th><th>Meaning</th><th>Units (rates in liters per minute)</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>−</mo><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R(t) - D(t)</annotation></semantics></math></td><td>how fast the amount changes at time <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></td><td>liters per minute</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup><mi>R</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\int_a^b R(t)\,dt</annotation></semantics></math></td><td>amount that comes in from <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> to <math class="calc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></td><td>liters</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>−</mo><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\int_a^b (R(t) - D(t))\,dt</annotation></semantics></math></td><td>net change in the amount from <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> to <math class="calc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></td><td>liters</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>A</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>+</mo><msubsup><mo largeop="true" movablelimits="false">∫</mo><mi>a</mi><mi>b</mi></msubsup><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>−</mo><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">A(a) + \int_a^b (R(t) - D(t))\,dt</annotation></semantics></math></td><td>amount at time <math class="calc-m"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></td><td>liters</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="common-slips">Common slips</h2>
+<ul>
+<li>Dropping the starting amount.</li>
+<li>Adding the rate out instead of subtracting it.</li>
+<li>Deciding "increasing" from <math class="calc-m"><semantics><mrow><mrow><mi>R</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R'(t) &gt; 0</annotation></semantics></math> instead of from <math class="calc-m"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>−</mo><mi>D</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R(t) - D(t) &gt; 0</annotation></semantics></math>.</li>
+<li>Finding the time of the maximum and stopping: the question may ask for the amount.</li>
+<li>Rate units on an amount: an integral of a rate is never "per minute".</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:accumulation-in-context">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="motion-with-integrals.html"><span>&larr; Previous</span><b>Motion with Integrals</b></a><a class="tb-chapter-link next" href="area-between-curves-x.html"><span>Next &rarr;</span><b>Area Between Curves (Functions of x)</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:accumulation-in-context">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

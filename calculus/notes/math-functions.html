@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Functions and Their Graphs — AP® Calculus AB Notes</title>
+<meta name="description" content="Every exam question hands you a function in some form: a formula, a graph, a table of values or a sentence about a real situation.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/math-functions.html">
+<meta property="og:title" content="Functions and Their Graphs — AP® Calculus AB Notes">
+<meta property="og:description" content="Every exam question hands you a function in some form: a formula, a graph, a table of values or a sentence about a real situation.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/math-functions.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/math-functions.html#reading",
+      "name": "Functions and Their Graphs",
+      "url": "https://levlprep.com/calculus/notes/math-functions.html",
+      "description": "Every exam question hands you a function in some form: a formula, a graph, a table of values or a sentence about a real situation.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "functions and graphs for calculus",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Math you need",
+          "item": "https://levlprep.com/calculus/units/skills-math.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Functions and Their Graphs: notes",
+          "item": "https://levlprep.com/calculus/notes/math-functions.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="math-functions" data-unit="skills-math">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Applications of Integration</a>
+    <a class="bk-toc-chap" href="../units/skills-math.html"><span class="bk-toc-chap-n">S</span><span><b>Math you need</b><small>7 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="skills-math"><div class="tb-progress-row"><span><b>0</b> of 7 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li class="current" data-toc-t="math-functions"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Functions and Their Graphs</a><div class="bk-toc-onpage"><p>On this page</p><a href="#a-function-is-a-rule-with">A function is a rule with one output per input</a><a href="#domain-and-range">Domain and range</a><a href="#reading-a-graph">Reading a graph</a><a href="#piecewise-functions">Piecewise functions</a><a href="#lines-and-slope">Lines and slope</a><a href="#composite-functions">Composite functions</a><a href="#moving-graphs">Moving graphs</a><a href="#polynomials-rational-functions-and-asymptotes">Polynomials, rational functions and asymptotes</a></div></li><li data-toc-t="math-exponent-rules"><a href="math-exponent-rules.html"><span class="bk-toc-n">S</span>Exponent Rules and Rewriting Powers</a></li><li data-toc-t="math-limit-algebra"><a href="math-limit-algebra.html"><span class="bk-toc-n">S</span>Algebra for Limits: Factoring and Rationalizing</a></li><li data-toc-t="math-trig"><a href="math-trig.html"><span class="bk-toc-n">S</span>Trigonometry and the Unit Circle</a></li><li data-toc-t="math-exp-log"><a href="math-exp-log.html"><span class="bk-toc-n">S</span>Exponentials and Logarithms</a></li><li data-toc-t="math-inverse-functions"><a href="math-inverse-functions.html"><span class="bk-toc-n">S</span>Inverse Functions</a></li><li data-toc-t="math-geometry"><a href="math-geometry.html"><span class="bk-toc-n">S</span>Geometry for Calculus</a></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-math.html">Math you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Functions and Their Graphs: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/math-functions.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Skills <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Functions and Their Graphs</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">6 min read &middot; free</span><span class="bk-chip" data-chip-topic="math-functions">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fmath-functions.html&amp;title=Functions%20and%20Their%20Graphs%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/math-functions.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Calculus is the study of how <span class="gl" tabindex="0" data-c="function">functions</span> change and how they add up. Every exam question hands you a function in some form: a formula, a graph, a table of values or a sentence about a real situation. If you are a little rusty from precalculus, this page is for you. It covers exactly the function skills the course uses, with the habits that save points later.</p>
+
+<h2 id="a-function-is-a-rule-with">A function is a rule with one output per input</h2>
+<p>A <b>function</b> takes an input and gives back exactly one output. We write <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math> for the output when the input is <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>. The letter <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> is just a placeholder: <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>3</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">f(x) = x^2 - 3x</annotation></semantics></math> means "square the input, then subtract three times the input."</p>
+<p>To evaluate, replace <i>every</i> <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> with the input, <b>in parentheses</b>. The parentheses matter most when the input is negative or is itself an expression. That habit, kept all year, prevents a whole family of sign mistakes.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Let <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>3</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">f(x) = x^2 - 3x</annotation></semantics></math>. Find <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(-2)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(a + 1)</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mn>3</mn><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mo>+</mo><mn>6</mn><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">f(-2) = (-2)^2 - 3(-2) = 4 + 6 = 10</annotation></semantics></math>. Without parentheses, <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><msup><mn>2</mn><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">-2^2</annotation></semantics></math> would read as <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">-4</annotation></semantics></math>, which is wrong.</p>
+<p><math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mn>3</mn><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>a</mi><mo>+</mo><mn>1</mn><mo>−</mo><mn>3</mn><mi>a</mi><mo>−</mo><mn>3</mn><mo>=</mo><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mi>a</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">f(a + 1) = (a + 1)^2 - 3(a + 1) = a^2 + 2a + 1 - 3a - 3 = a^2 - a - 2</annotation></semantics></math>.</p>
+<p>Notice that <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(a + 1)</annotation></semantics></math> is not <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(a) + 1</annotation></semantics></math>. A function acts on the whole input at once.</p>
+</div>
+
+<h2 id="domain-and-range">Domain and range</h2>
+<p>The <b><span class="gl" tabindex="0" data-c="domain">domain</span></b> is the set of inputs the rule accepts. The range is the set of outputs it actually produces. For the functions in this course, two things shrink a domain:</p>
+<ul>
+<li>A denominator can never be 0.</li>
+<li>A square root (or any even root) needs a number that is 0 or more.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example 2.</b> Find the domain of <math class="calc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><msqrt><mrow><mi>x</mi><mo>+</mo><mn>4</mn></mrow></msqrt><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">h(x) = \frac{\sqrt{x + 4}}{x - 1}</annotation></semantics></math>.</p>
+<p>The root needs <math class="calc-m"><semantics><mrow><mi>x</mi><mo>+</mo><mn>4</mn><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x + 4 \ge 0</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≥</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x \ge -4</annotation></semantics></math>. The denominator needs <math class="calc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>1</mn><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x - 1 \ne 0</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x \ne 1</annotation></semantics></math>.</p>
+<p>Domain: <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≥</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x \ge -4</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x \ne 1</annotation></semantics></math>. Notice that <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x = -4</annotation></semantics></math> is allowed: <math class="calc-m"><semantics><mrow><msqrt><mn>0</mn></msqrt><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\sqrt{0} = 0</annotation></semantics></math> is fine on top.</p>
+</div>
+
+<h2 id="reading-a-graph">Reading a graph</h2>
+<p>The graph of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is every point <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x, f(x))</annotation></semantics></math>. So <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(a)</annotation></semantics></math> is a <b>height</b>: go to <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math> on the horizontal axis and read how high the graph is there.</p>
+<figure id="fig-read"  class="calc-figure"><div class="calc-figimg" data-fig="fn-reading-graph"><img src="../figures/fn-reading-graph.svg" alt="Graph of a piecewise function f from x = -4 to x = 5: a parabola piece from the filled point (-4, 1) down to (-2, -1) and up toward an open circle at (1, 3.5), then a line from the filled point (1, 5) down to the filled point (5, 1). Notes beside it: f(1) = 5 is the filled dot; the open circle is not on the graph; the range is from -1 to 5; the line y = 2 meets the graph at x = 0 and x = 4." width="820" height="470" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> One graph, four readings: a value, an open circle, the range, and the solutions of an equation. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Graphs in calculus often have pieces, so learn the two kinds of dot. A <b>filled dot</b> is a point on the graph. An <b>open circle</b> marks a point the graph comes close to but does not include. In <a class="figref" href="#fig-read">the figure</a>, the open circle at <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>3.5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 3.5)</annotation></semantics></math> is not on the graph; the filled dot at <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 5)</annotation></semantics></math> is, so <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">f(1) = 5</annotation></semantics></math>.</p>
+<p>Three more readings you will use constantly:</p>
+<ul>
+<li><b>Solve <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">f(x) = k</annotation></semantics></math>:</b> draw the horizontal line <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">y = k</annotation></semantics></math> and read the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-values where it meets the graph.</li>
+<li><b>Where is <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> positive?</b> Where the graph is above the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis.</li>
+<li><b>Range:</b> the lowest and highest heights, minding open circles at the ends.</li>
+</ul>
+
+<h2 id="piecewise-functions">Piecewise functions</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="piecewise-function">piecewise function</span></b> uses different formulas on different parts of its domain:
+<math class="calc-m" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo stretchy="true">{</mo><mtable columnalign="left left" columnspacing="1em"><mtr><mtd><msup><mi>x</mi><mn>2</mn></msup></mtd><mtd><mrow><mi>x</mi><mo>&lt;</mo><mn>2</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>3</mn><mi>x</mi><mo>−</mo><mn>1</mn></mrow></mtd><mtd><mrow><mi>x</mi><mo>≥</mo><mn>2</mn></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">f(x) = \begin{cases} x^2 &amp; x &lt; 2 \\ 3x - 1 &amp; x \ge 2 \end{cases}</annotation></semantics></math>
+To evaluate, first decide which piece the input belongs to, then use only that formula. The boundary value goes wherever the "or equal to" sign is. Here <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(2)</annotation></semantics></math> uses <math class="calc-m"><semantics><mrow><mn>3</mn><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">3x - 1</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">f(2) = 5</annotation></semantics></math>, while <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>1.9</mn><mo stretchy="false">)</mo><mo>=</mo><mn>3.61</mn></mrow><annotation encoding="application/x-tex">f(1.9) = 3.61</annotation></semantics></math> uses <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math>. Calculus cares a lot about what happens at boundaries like <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>, so slow down there.</p>
+
+<h2 id="lines-and-slope">Lines and slope</h2>
+<p>The <b><span class="gl" tabindex="0" data-c="slope">slope</span></b> of a line is rise over run. Through <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_1, y_1)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_2, y_2)</annotation></semantics></math>:
+<math class="calc-m" display="block"><semantics><mrow><mi>m</mi><mo>=</mo><mfrac><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">m = \frac{y_2 - y_1}{x_2 - x_1}</annotation></semantics></math>
+Subtract in the same order on top and bottom. A positive slope means the line goes up to the right; a negative slope, down.</p>
+<p>Calculus writes lines in <b><span class="gl" tabindex="0" data-c="line-equation">point-slope form</span></b>, because it usually knows one point and the slope there:
+<math class="calc-m" display="block"><semantics><mrow><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub><mo>=</mo><mi>m</mi><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y - y_1 = m(x - x_1)</annotation></semantics></math>
+You do not need to rearrange it into <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>m</mi><mi>x</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">y = mx + b</annotation></semantics></math> unless a question asks; the exam accepts point-slope form.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find the line through <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 4)</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, -2)</annotation></semantics></math>.</p>
+<p>Slope: <math class="calc-m"><semantics><mrow><mi>m</mi><mo>=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo>−</mo><mn>4</mn></mrow><mrow><mn>3</mn><mo>−</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>6</mn></mrow><mn>2</mn></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">m = \frac{-2 - 4}{3 - 1} = \frac{-6}{2} = -3</annotation></semantics></math>.</p>
+<p>Point-slope form with <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 4)</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mi>y</mi><mo>−</mo><mn>4</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y - 4 = -3(x - 1)</annotation></semantics></math>. If you want it: <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mi>x</mi><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">y = -3x + 7</annotation></semantics></math>.</p>
+<p>Check with the other point: <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>3</mn><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>+</mo><mn>7</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">-3(3) + 7 = -2</annotation></semantics></math>. Correct.</p>
+</div>
+
+<h2 id="composite-functions">Composite functions</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="composition">composite function</span></b> feeds the output of one function into another. <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(g(x))</annotation></semantics></math> means: apply <math class="calc-m"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math> first, then apply <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> to the result. Work from the inside out.</p>
+<div class="worked">
+<p><b>Worked example 4.</b> Let <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">f(x) = x^2</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">g(x) = 3x - 1</annotation></semantics></math>. Find <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(g(x))</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g(f(x))</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mn>3</mn><mi>x</mi><mo>−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">f(g(x)) = f(3x - 1) = (3x - 1)^2</annotation></semantics></math>. Square the whole input.</p>
+<p><math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">g(f(x)) = g(x^2) = 3x^2 - 1</annotation></semantics></math>. Different! The order of composition matters.</p>
+<p>Going backward is just as useful. <math class="calc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></msqrt></mrow><annotation encoding="application/x-tex">h(x) = \sqrt{x^2 + 1}</annotation></semantics></math> is <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(g(x))</annotation></semantics></math> with inside <math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">g(x) = x^2 + 1</annotation></semantics></math> and outside <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">f(x) = \sqrt{x}</annotation></semantics></math>. In Unit 3 you will split functions this way all the time.</p>
+</div>
+
+<h2 id="moving-graphs">Moving graphs</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="transformation">graph transformation</span></b> changes a known graph in a predictable way:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Formula</th><th>What happens to the graph of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>+</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">f(x) + k</annotation></semantics></math></td><td>moves up <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> (down if <math class="calc-m"><semantics><mrow><mi>k</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k &lt; 0</annotation></semantics></math>): a vertical shift</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>h</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x - h)</annotation></semantics></math></td><td>moves right <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> (left if <math class="calc-m"><semantics><mrow><mi>h</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h &lt; 0</annotation></semantics></math>): a horizontal shift</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">-f(x)</annotation></semantics></math></td><td>flips over the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>a</mi><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a f(x)</annotation></semantics></math></td><td>stretches vertically by the factor <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<figure id="fig-shift"  class="calc-figure"><div class="calc-figimg" data-fig="fn-shifts"><img src="../figures/fn-shifts.svg" alt="The parabola y = x squared, dashed, with lowest point (0, 0), and the parabola y = (x - 2) squared + 1, solid, with lowest point (2, 1): the same shape moved 2 right and 1 up." width="640" height="420" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = (x - 2)^2 + 1</annotation></semantics></math> is <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">y = x^2</annotation></semantics></math> moved right 2 and up 1. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>The horizontal shift feels backward: <math class="calc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x - 2</annotation></semantics></math> moves the graph <i>right</i>. Here is why. The new graph reaches the old graph's lowest point when <math class="calc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>2</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x - 2 = 0</annotation></semantics></math>, that is, at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>.</p>
+
+<h2 id="polynomials-rational-functions-and-asymptotes">Polynomials, rational functions and asymptotes</h2>
+<p>A <b><span class="gl" tabindex="0" data-c="rational-function">polynomial</span></b> is a sum of terms like <math class="calc-m"><semantics><mrow><mn>5</mn><msup><mi>x</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">5x^3</annotation></semantics></math> or <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">-2x</annotation></semantics></math>, with whole-number powers. Its domain is every real number. A <b>rational function</b> is one polynomial divided by another, such as <math class="calc-m"><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>4</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">r(x) = \frac{2x + 1}{x - 4}</annotation></semantics></math>. Its domain leaves out every zero of the denominator.</p>
+<p>An <b><span class="gl" tabindex="0" data-c="asymptote">asymptote</span></b> is a line the graph approaches. For a rational function:</p>
+<ul>
+<li>Where the denominator is 0 and the numerator is <i>not</i>, there is a <b>vertical asymptote</b>. For <math class="calc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>, that is <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x = 4</annotation></semantics></math> (the numerator is 9 there).</li>
+<li>When top and bottom have the same degree, the outputs settle near the ratio of the leading coefficients as <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|x|</annotation></semantics></math> grows large: a <b>horizontal asymptote</b>. For <math class="calc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math>, that is <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mfrac><mn>2</mn><mn>1</mn></mfrac><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = \frac{2}{1} = 2</annotation></semantics></math>. When the top has lower degree, the horizontal asymptote is <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y = 0</annotation></semantics></math>.</li>
+</ul>
+<p>When the top and bottom are <i>both</i> 0 at the same <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>, something more interesting happens. Unit 1 is largely about that case.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:math-functions">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link next" href="math-exponent-rules.html"><span>Next &rarr;</span><b>Exponent Rules and Rewriting Powers</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:math-functions">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Average and Instantaneous Rates of… — AP® Calculus AB Notes</title>
+<meta name="description" content="Unit 1 asked whether change can happen at an instant and built the tool to answer it: the limit. This page puts that tool to work.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/average-and-instant-rates.html">
+<meta property="og:title" content="Average and Instantaneous Rates of… — AP® Calculus AB Notes">
+<meta property="og:description" content="Unit 1 asked whether change can happen at an instant and built the tool to answer it: the limit. This page puts that tool to work.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/average-and-instant-rates.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/average-and-instant-rates.html#reading",
+      "name": "Average and Instantaneous Rates of Change",
+      "url": "https://levlprep.com/calculus/notes/average-and-instant-rates.html",
+      "description": "Unit 1 asked whether change can happen at an instant and built the tool to answer it: the limit. This page puts that tool to work.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "average and instantaneous rates of change ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Differentiation: Definition and Fundamental Properties",
+          "item": "https://levlprep.com/calculus/units/unit-2.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Average and Instantaneous Rates of Change: notes",
+          "item": "https://levlprep.com/calculus/notes/average-and-instant-rates.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="average-and-instant-rates" data-unit="unit-2">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 2 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-1.html"><span class="bk-toc-n">1</span>Limits and Continuity</a>
+    <a class="bk-toc-chap" href="../units/unit-2.html"><span class="bk-toc-chap-n">2</span><span><b>Differentiation: Definition and Fundamental Properties</b><small>10 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-2"><div class="tb-progress-row"><span><b>0</b> of 10 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li class="current" data-toc-t="average-and-instant-rates"><a href="#main" aria-current="page"><span class="bk-toc-n">2.1</span>Average and Instantaneous Rates of Change</a><div class="bk-toc-onpage"><p>On this page</p><a href="#average-rate-of-change-a-change">Average rate of change: a change over a change</a><a href="#the-picture-a-secant-line">The picture: a secant line</a><a href="#shrinking-the-interval-the-difference-quotient">Shrinking the interval: the difference quotient</a><a href="#the-instantaneous-rate-of-change-is">The instantaneous rate of change is a limit</a><a href="#average-versus-instantaneous">Average versus instantaneous</a><a href="#common-mistakes">Common mistakes</a></div></li><li data-toc-t="derivative-definition"><a href="derivative-definition.html"><span class="bk-toc-n">2.2</span>The Derivative and Its Notation</a></li><li data-toc-t="estimating-derivatives"><a href="estimating-derivatives.html"><span class="bk-toc-n">2.3</span>Estimating a Derivative at a Point</a></li><li data-toc-t="differentiability"><a href="differentiability.html"><span class="bk-toc-n">2.4</span>Differentiability and Continuity</a></li><li data-toc-t="power-rule"><a href="power-rule.html"><span class="bk-toc-n">2.5</span>The Power Rule</a></li><li data-toc-t="basic-derivative-rules"><a href="basic-derivative-rules.html"><span class="bk-toc-n">2.6</span>Constant, Sum, Difference and Constant Multiple Rules</a></li><li data-toc-t="derivatives-sin-cos-exp-ln"><a href="derivatives-sin-cos-exp-ln.html"><span class="bk-toc-n">2.7</span>Derivatives of sin x, cos x, e to the x and ln x</a></li><li data-toc-t="product-rule"><a href="product-rule.html"><span class="bk-toc-n">2.8</span>The Product Rule</a></li><li data-toc-t="quotient-rule"><a href="quotient-rule.html"><span class="bk-toc-n">2.9</span>The Quotient Rule</a></li><li data-toc-t="other-trig-derivatives"><a href="other-trig-derivatives.html"><span class="bk-toc-n">2.10</span>Derivatives of tan, cot, sec and csc</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Differentiation: Composite, Implicit, and Inverse Functions</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-2.html">Differentiation: Definition and Fundamental Properties</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Average and Instantaneous Rates of Change: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/average-and-instant-rates.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 2 &middot; Topic 2.1 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Average and Instantaneous Rates of Change</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">6 min read &middot; free</span><span class="bk-chip" data-chip-topic="average-and-instant-rates">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Faverage-and-instant-rates.html&amp;title=Average%20and%20Instantaneous%20Rates%20of%20Change%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/average-and-instant-rates.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Unit 1 asked whether change can happen at an instant and built the tool to answer it: the <a class="gl" href="../notes/limit-notation.html" data-c="limit">limit</a>. This page puts that tool to work. You will measure change over an interval, shrink the interval, and let a limit finish the job. Everything in Unit 2 grows out of the one formula you meet here.</p>
+
+<h2 id="average-rate-of-change-a-change">Average rate of change: a change over a change</h2>
+<p>Suppose a delivery drone is 14 meters above the street at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t = 2</annotation></semantics></math> seconds and 47 meters up at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">t = 6</annotation></semantics></math> seconds. It climbed <math class="calc-m"><semantics><mrow><mn>47</mn><mo>−</mo><mn>14</mn><mo>=</mo><mn>33</mn></mrow><annotation encoding="application/x-tex">47 - 14 = 33</annotation></semantics></math> meters in <math class="calc-m"><semantics><mrow><mn>6</mn><mo>−</mo><mn>2</mn><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">6 - 2 = 4</annotation></semantics></math> seconds, so on average it climbed <math class="calc-m"><semantics><mrow><mfrac><mn>33</mn><mn>4</mn></mfrac><mo>=</mo><mn>8.25</mn></mrow><annotation encoding="application/x-tex">\frac{33}{4} = 8.25</annotation></semantics></math> meters per second. That number is an <b><a class="gl" href="../notes/change-at-an-instant.html" data-c="average-rate">average rate of change</a></b>.</p>
+<p>For any <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> on an interval <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math>:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mtext>average rate of change</mtext><mo>=</mo><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">\text{average rate of change} = \frac{f(b) - f(a)}{b - a}.</annotation></semantics></math></p>
+<p>Three habits keep this right every time:</p>
+<ul>
+<li><b>Subtract in the same order on top and bottom.</b> Later value minus earlier value, over later time minus earlier time.</li>
+<li><b>Divide by the change in input.</b> The difference <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(b) - f(a)</annotation></semantics></math> is how much <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> changed; it is not yet a rate.</li>
+<li><b>Name the units.</b> The units are output units per input unit: meters per second, gallons per minute, dollars per item.</li>
+</ul>
+<p>An average describes a whole interval. The drone might have climbed fast at first and slowly later; 8.25 meters per second hides that. It also does not tell you how high the drone was. A sentence that interprets an average rate names the quantity, its units and the interval: "Between <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t = 2</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">t = 6</annotation></semantics></math> seconds, the drone's altitude increased by an average of 8.25 meters per second."</p>
+
+<div class="worked">
+<p><b>Worked example 1.</b> The volume of water in a tank is <math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">V(t)</annotation></semantics></math> gallons after <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> minutes, with <math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>120</mn></mrow><annotation encoding="application/x-tex">V(3) = 120</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mn>8</mn><mo stretchy="false">)</mo><mo>=</mo><mn>95</mn></mrow><annotation encoding="application/x-tex">V(8) = 95</annotation></semantics></math>. Find the average rate of change of <math class="calc-m"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math> on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>3</mn><mo>,</mo><mn>8</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[3, 8]</annotation></semantics></math> and interpret it.</p>
+<p>Change in volume: <math class="calc-m"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mn>8</mn><mo stretchy="false">)</mo><mo>−</mo><mi>V</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>95</mn><mo>−</mo><mn>120</mn><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">V(8) - V(3) = 95 - 120 = -25</annotation></semantics></math> gallons. Change in time: <math class="calc-m"><semantics><mrow><mn>8</mn><mo>−</mo><mn>3</mn><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">8 - 3 = 5</annotation></semantics></math> minutes.</p>
+<p>Average rate: <math class="calc-m"><semantics><mrow><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>25</mn></mrow><mn>5</mn></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\frac{-25}{5} = -5</annotation></semantics></math> gallons per minute.</p>
+<p>Meaning: between <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t = 3</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">t = 8</annotation></semantics></math> minutes, the volume of water decreased by an average of 5 gallons per minute. The negative sign means the tank was losing water.</p>
+</div>
+
+<h2 id="the-picture-a-secant-line">The picture: a secant line</h2>
+<p>Plot the two points <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, f(a))</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>b</mi><mo>,</mo><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(b, f(b))</annotation></semantics></math> on the graph of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> and draw the line through them. That line is a <b><span class="gl" tabindex="0" data-c="secant-line">secant line</span></b>. Its slope is <a class="gl" href="../notes/math-functions.html" data-c="slope">rise over run</a>, <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{f(b) - f(a)}{b - a}</annotation></semantics></math>, which is exactly the average rate of change. So every average rate you compute is the slope of a secant line, and every secant slope you read from a graph is an average rate.</p>
+<figure id="fig-secants"  class="calc-figure"><div class="calc-figimg" data-fig="secants-closing-in"><img src="../figures/secants-closing-in.svg" alt="The parabola f(x) = x squared over 4, plus 1, with the point P at x = 1. Four secant lines join P to points Q at x = 4, 3, 2 and 1.4, with slopes 1.25, 1, 0.75 and 0.6; a table adds h = 0.01 with slope 0.5025. As Q moves toward P, the secant slopes approach 0.5, the instantaneous rate of change of f at x = 1." width="760" height="410" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Secant lines from <math class="calc-m"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math> on the graph of <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><msup><mi>x</mi><mn>2</mn></msup><mn>4</mn></mfrac><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x) = \frac{x^2}{4} + 1</annotation></semantics></math>, with their slopes. As <math class="calc-m"><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math> moves toward <math class="calc-m"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math>, the slopes close in on 0.5. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<h2 id="shrinking-the-interval-the-difference-quotient">Shrinking the interval: the difference quotient</h2>
+<p>To learn how fast <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> changes at one input <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math>, look at shorter and shorter intervals that start at <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>. Write the far end as <math class="calc-m"><semantics><mrow><mi>a</mi><mo>+</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">a + h</annotation></semantics></math>, where <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> is the width of the interval. The average rate on that interval is the <b><span class="gl" tabindex="0" data-c="difference-quotient">difference quotient</span></b>:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mi>h</mi></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">\frac{f(a + h) - f(a)}{h}.</annotation></semantics></math></p>
+<p>The number <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> can be positive (an interval to the right of <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>) or negative (an interval to the left). Look at <a class="figref" href="#fig-secants">the figure</a>: for <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><msup><mi>x</mi><mn>2</mn></msup><mn>4</mn></mfrac><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x) = \frac{x^2}{4} + 1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">a = 1</annotation></semantics></math>, the secant slopes for <math class="calc-m"><semantics><mrow><mi>h</mi><mo>=</mo><mn>3</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0.4</mn></mrow><annotation encoding="application/x-tex">h = 3, 2, 1, 0.4</annotation></semantics></math> are <math class="calc-m"><semantics><mrow><mn>1.25</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0.75</mn><mo>,</mo><mn>0.6</mn></mrow><annotation encoding="application/x-tex">1.25, 1, 0.75, 0.6</annotation></semantics></math>. As <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> shrinks, the second point slides toward <math class="calc-m"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math> and the secant lines pivot toward one line. Their slopes close in on a single number.</p>
+
+<h2 id="the-instantaneous-rate-of-change-is">The instantaneous rate of change is a limit</h2>
+<p>You cannot simply put <math class="calc-m"><semantics><mrow><mi>h</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h = 0</annotation></semantics></math> into the difference quotient: that gives <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mn>0</mn></mfrac><mo>=</mo><mfrac><mn>0</mn><mn>0</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{f(a) - f(a)}{0} = \frac{0}{0}</annotation></semantics></math>, an <a class="gl" href="../notes/limit-algebra.html" data-c="indeterminate-form">indeterminate form</a>. Instead, take the limit. The <b><a class="gl" href="../notes/change-at-an-instant.html" data-c="instantaneous-rate">instantaneous rate of change</a></b> of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math> is</p>
+<p><math class="calc-m" display="block"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mi>h</mi></mfrac><mo>,</mo></mrow><annotation encoding="application/x-tex">\lim_{h \to 0} \frac{f(a + h) - f(a)}{h},</annotation></semantics></math></p>
+<p>when that limit exists. The method is the limit algebra of Unit 1: expand, simplify until the factor <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> cancels, then let <math class="calc-m"><semantics><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h \to 0</annotation></semantics></math>.</p>
+
+<div class="worked">
+<p><b>Worked example 2.</b> Find the instantaneous rate of change of <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><msup><mi>x</mi><mn>2</mn></msup><mn>4</mn></mfrac><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x) = \frac{x^2}{4} + 1</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>.</p>
+<p>Values: <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>+</mo><mn>1</mn><mo>=</mo><mfrac><mn>5</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">f(1) = \frac{1}{4} + 1 = \frac{5}{4}</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mn>4</mn></mfrac><mo>+</mo><mn>1</mn><mo>=</mo><mfrac><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mi>h</mi><mo>+</mo><msup><mi>h</mi><mn>2</mn></msup></mrow><mn>4</mn></mfrac><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(1 + h) = \frac{(1 + h)^2}{4} + 1 = \frac{1 + 2h + h^2}{4} + 1</annotation></semantics></math>.</p>
+<p>Difference: <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mn>2</mn><mi>h</mi><mo>+</mo><msup><mi>h</mi><mn>2</mn></msup></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">f(1 + h) - f(1) = \frac{2h + h^2}{4}</annotation></semantics></math>. Keep the middle term <math class="calc-m"><semantics><mrow><mn>2</mn><mi>h</mi></mrow><annotation encoding="application/x-tex">2h</annotation></semantics></math> when you square <math class="calc-m"><semantics><mrow><mn>1</mn><mo>+</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">1 + h</annotation></semantics></math>; dropping it is the most common slip.</p>
+<p>Quotient, for <math class="calc-m"><semantics><mrow><mi>h</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h \ne 0</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>2</mn><mi>h</mi><mo>+</mo><msup><mi>h</mi><mn>2</mn></msup></mrow><mrow><mn>4</mn><mi>h</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>h</mi><mo stretchy="false">(</mo><mn>2</mn><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo></mrow><mrow><mn>4</mn><mi>h</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mo>+</mo><mi>h</mi></mrow><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{2h + h^2}{4h} = \frac{h(2 + h)}{4h} = \frac{2 + h}{4}</annotation></semantics></math>.</p>
+<p>Limit: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mn>2</mn><mo>+</mo><mi>h</mi></mrow><mn>4</mn></mfrac><mo>=</mo><mfrac><mn>2</mn><mn>4</mn></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\lim_{h \to 0} \frac{2 + h}{4} = \frac{2}{4} = \frac{1}{2}</annotation></semantics></math>. The rate of change of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math> is <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math>, the number the secant slopes in the figure were closing in on.</p>
+</div>
+
+<div class="worked">
+<p><b>Worked example 3.</b> A cart rolls so that it has traveled <math class="calc-m"><semantics><mrow><mi>s</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn><msup><mi>t</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">s(t) = 5t^2</annotation></semantics></math> meters after <math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> seconds. How fast is it moving at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t = 2</annotation></semantics></math>?</p>
+<p>Difference quotient: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>s</mi><mo stretchy="false">(</mo><mn>2</mn><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mi>s</mi><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mi>h</mi></mfrac><mo>=</mo><mfrac><mrow><mn>5</mn><mo stretchy="false">(</mo><mn>4</mn><mo>+</mo><mn>4</mn><mi>h</mi><mo>+</mo><msup><mi>h</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>−</mo><mn>20</mn></mrow><mi>h</mi></mfrac><mo>=</mo><mfrac><mrow><mn>20</mn><mi>h</mi><mo>+</mo><mn>5</mn><msup><mi>h</mi><mn>2</mn></msup></mrow><mi>h</mi></mfrac><mo>=</mo><mn>20</mn><mo>+</mo><mn>5</mn><mi>h</mi></mrow><annotation encoding="application/x-tex">\frac{s(2 + h) - s(2)}{h} = \frac{5(4 + 4h + h^2) - 20}{h} = \frac{20h + 5h^2}{h} = 20 + 5h</annotation></semantics></math>.</p>
+<p>For <math class="calc-m"><semantics><mrow><mi>h</mi><mo>=</mo><mn>0.1</mn></mrow><annotation encoding="application/x-tex">h = 0.1</annotation></semantics></math> the average is 20.5 meters per second; for <math class="calc-m"><semantics><mrow><mi>h</mi><mo>=</mo><mn>0.01</mn></mrow><annotation encoding="application/x-tex">h = 0.01</annotation></semantics></math> it is 20.05. The limit is <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></munder><mo stretchy="false">(</mo><mn>20</mn><mo>+</mo><mn>5</mn><mi>h</mi><mo stretchy="false">)</mo><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">\lim_{h \to 0} (20 + 5h) = 20</annotation></semantics></math>, so at the instant <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">t = 2</annotation></semantics></math> the cart is moving at 20 meters per second.</p>
+</div>
+
+<h2 id="average-versus-instantaneous">Average versus instantaneous</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th></th><th>Average rate of change</th><th>Instantaneous rate of change</th></tr></thead>
+<tbody>
+<tr><td>Describes</td><td>an interval <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math></td><td>one input <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math></td></tr>
+<tr><td>Formula</td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{f(b) - f(a)}{b - a}</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mi>h</mi></mfrac></mrow><annotation encoding="application/x-tex">\lim_{h \to 0} \frac{f(a + h) - f(a)}{h}</annotation></semantics></math></td></tr>
+<tr><td>On the graph</td><td>slope of a secant line</td><td>the limit of secant slopes</td></tr>
+<tr><td>Needs</td><td>two values of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></td><td>a limit</td></tr>
+<tr><td>Units</td><td>output per input</td><td>output per input</td></tr>
+</tbody>
+</table></div>
+<p>Both rates have the same units. The difference is what they describe: a stretch of time, or one moment.</p>
+
+<h2 id="common-mistakes">Common mistakes</h2>
+<ul>
+<li><b>A value over a time is not a rate.</b> The drone's altitude at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">t = 5</annotation></semantics></math> divided by 5 ignores where it started. A rate always compares two changes.</li>
+<li><b>Substituting <math class="calc-m"><semantics><mrow><mi>h</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h = 0</annotation></semantics></math> too early.</b> That gives <math class="calc-m"><semantics><mrow><mfrac><mn>0</mn><mn>0</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{0}{0}</annotation></semantics></math>, which says only that more algebra is needed.</li>
+<li><b>Losing the middle term.</b> <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>h</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>a</mi><mi>h</mi><mo>+</mo><msup><mi>h</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(a + h)^2 = a^2 + 2ah + h^2</annotation></semantics></math>.</li>
+<li><b>Treating an average as an instant.</b> An average on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>2</mn><mo>,</mo><mn>6</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[2, 6]</annotation></semantics></math> is not the rate at <math class="calc-m"><semantics><mrow><mi>t</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">t = 4</annotation></semantics></math>.</li>
+</ul>
+<p>The next topic gives the instantaneous rate its own name and notation, and turns it into a whole new function.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:average-and-instant-rates">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="intermediate-value-theorem.html"><span>&larr; Previous</span><b>The Intermediate Value Theorem</b></a><a class="tb-chapter-link next" href="derivative-definition.html"><span>Next &rarr;</span><b>The Derivative and Its Notation</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:average-and-instant-rates">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

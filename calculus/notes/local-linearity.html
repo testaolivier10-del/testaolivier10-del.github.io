@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local Linearity and Linearization — AP® Calculus AB Notes</title>
+<meta name="description" content="Zoom in on the graph of any differentiable function, near any point, and it starts to look like a straight line: its tangent line. This is local linearity .">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/local-linearity.html">
+<meta property="og:title" content="Local Linearity and Linearization — AP® Calculus AB Notes">
+<meta property="og:description" content="Zoom in on the graph of any differentiable function, near any point, and it starts to look like a straight line: its tangent line. This is local linearity .">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/local-linearity.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/local-linearity.html#reading",
+      "name": "Local Linearity and Linearization",
+      "url": "https://levlprep.com/calculus/notes/local-linearity.html",
+      "description": "Zoom in on the graph of any differentiable function, near any point, and it starts to look like a straight line: its tangent line. This is local linearity .",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "local linearity and linearization ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Contextual Applications of Differentiation",
+          "item": "https://levlprep.com/calculus/units/unit-4.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Local Linearity and Linearization: notes",
+          "item": "https://levlprep.com/calculus/notes/local-linearity.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="local-linearity" data-unit="unit-4">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 4 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-3.html"><span class="bk-toc-n">3</span>Differentiation: Composite, Implicit, and Inverse Functions</a>
+    <a class="bk-toc-chap" href="../units/unit-4.html"><span class="bk-toc-chap-n">4</span><span><b>Contextual Applications of Differentiation</b><small>7 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-4"><div class="tb-progress-row"><span><b>0</b> of 7 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="derivative-in-context"><a href="derivative-in-context.html"><span class="bk-toc-n">4.1</span>The Derivative in Context</a></li><li data-toc-t="straight-line-motion"><a href="straight-line-motion.html"><span class="bk-toc-n">4.2</span>Straight-Line Motion: Position, Velocity, Acceleration</a></li><li data-toc-t="rates-in-context"><a href="rates-in-context.html"><span class="bk-toc-n">4.3</span>Rates of Change in Other Contexts</a></li><li data-toc-t="related-rates-intro"><a href="related-rates-intro.html"><span class="bk-toc-n">4.4</span>Introduction to Related Rates</a></li><li data-toc-t="solving-related-rates"><a href="solving-related-rates.html"><span class="bk-toc-n">4.5</span>Solving Related Rates Problems</a></li><li class="current" data-toc-t="local-linearity"><a href="#main" aria-current="page"><span class="bk-toc-n">4.6</span>Local Linearity and Linearization</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-tangent-line-as-an-approximation">The tangent line as an approximation</a><a href="#too-big-or-too-small-concavity">Too big or too small? Concavity decides</a><a href="#how-good-is-the-estimate">How good is the estimate?</a><a href="#slips-that-cost-points">Slips that cost points</a></div></li><li data-toc-t="lhospitals-rule"><a href="lhospitals-rule.html"><span class="bk-toc-n">4.7</span>L'Hospital's Rule</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-5.html"><span class="bk-toc-n">5</span>Analytical Applications of Differentiation</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-4.html">Contextual Applications of Differentiation</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Local Linearity and Linearization: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/local-linearity.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 4 &middot; Topic 4.6 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Local Linearity and Linearization</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="local-linearity">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Flocal-linearity.html&amp;title=Local%20Linearity%20and%20Linearization%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/local-linearity.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Zoom in on the graph of any <a class="gl" href="../notes/differentiability.html" data-c="differentiable">differentiable</a> <a class="gl" href="../notes/math-functions.html" data-c="function">function</a>, near any point, and it starts to look like a straight line: its <a class="gl" href="../notes/derivative-definition.html" data-c="tangent-line">tangent line</a>. This is <b><span class="gl" tabindex="0" data-c="linearization">local linearity</span></b>. It turns the tangent line into a tool for estimating values that are hard to compute, such as <math class="calc-m"><semantics><mrow><msqrt><mn>26</mn></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{26}</annotation></semantics></math> or <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>2.1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(2.1)</annotation></semantics></math> when you only know <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> at 2. The exam then asks one more question every time: is the estimate too big or too small?</p>
+
+<h2 id="the-tangent-line-as-an-approximation">The tangent line as an approximation</h2>
+<p>The tangent line at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x = a</annotation></semantics></math> passes through <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, f(a))</annotation></semantics></math> with <a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a> <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(a)</annotation></semantics></math>. In <a class="gl" href="../notes/math-functions.html" data-c="line-equation">point-slope form</a> it is the <b>linearization</b> of <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mi>L</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>+</mo><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L(x) = f(a) + f'(a)(x - a)</annotation></semantics></math></p>
+<p>For <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> close to <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>≈</mo><mi>L</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x) \approx L(x)</annotation></semantics></math>. Read the formula as a story: start at the known height <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(a)</annotation></semantics></math>, then add the rate <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(a)</annotation></semantics></math> times the step <math class="calc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x - a</annotation></semantics></math>. It is the "rate times change" idea from the <a class="gl" href="../notes/derivative-in-context.html" data-c="derivative-in-context">derivative in context</a>, written as a line.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Estimate <math class="calc-m"><semantics><mrow><msqrt><mn>26</mn></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{26}</annotation></semantics></math>.</p>
+<p>Choose a nearby point where <math class="calc-m"><semantics><mrow><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{x}</annotation></semantics></math> is easy: <math class="calc-m"><semantics><mrow><mi>a</mi><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">a = 25</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>25</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">f(25) = 5</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><msqrt><mi>x</mi></msqrt></mrow></mfrac></mrow><annotation encoding="application/x-tex">f'(x) = \frac{1}{2\sqrt{x}}</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>25</mn><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mn>10</mn></mfrac></mrow><annotation encoding="application/x-tex">f'(25) = \frac{1}{10}</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mi>L</mi><mo stretchy="false">(</mo><mn>26</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn><mo>+</mo><mfrac><mn>1</mn><mn>10</mn></mfrac><mo stretchy="false">(</mo><mn>26</mn><mo>−</mo><mn>25</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5.1</mn></mrow><annotation encoding="application/x-tex">L(26) = 5 + \frac{1}{10}(26 - 25) = 5.1</annotation></semantics></math>. A calculator gives <math class="calc-m"><semantics><mrow><msqrt><mn>26</mn></msqrt><mo>≈</mo><mn>5.0990</mn></mrow><annotation encoding="application/x-tex">\sqrt{26} \approx 5.0990</annotation></semantics></math>, so the estimate is close, and slightly too large.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 2.</b> A table gives <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(5) = 1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">f'(5) = 2</annotation></semantics></math>. Estimate <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>4.8</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(4.8)</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mi>L</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo>+</mo><mn>2</mn><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L(x) = 1 + 2(x - 5)</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>4.8</mn><mo stretchy="false">)</mo><mo>≈</mo><mn>1</mn><mo>+</mo><mn>2</mn><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0.6</mn></mrow><annotation encoding="application/x-tex">f(4.8) \approx 1 + 2(-0.2) = 0.6</annotation></semantics></math>.</p>
+<p>The step <math class="calc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mi>a</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>0.2</mn></mrow><annotation encoding="application/x-tex">x - a = -0.2</annotation></semantics></math> is negative because 4.8 is to the left of 5. Dropping that sign is a common slip.</p>
+</div>
+
+<h2 id="too-big-or-too-small-concavity">Too big or too small? Concavity decides</h2>
+<p>A graph is <b><span class="gl" tabindex="0" data-c="concave">concave up</span></b> where it bends upward, like a cup, and <b>concave down</b> where it bends downward, like a cap. The <a class="gl" href="../notes/higher-order-derivatives.html" data-c="second-derivative">second derivative</a> tells which: <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'' &gt; 0</annotation></semantics></math> means <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> is increasing, so the slopes keep growing and the graph bends up; <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'' &lt; 0</annotation></semantics></math> means the graph bends down. (Unit 5 studies concavity in full; here we need just this much.)</p>
+<p>A concave up graph lies <i>above</i> its tangent lines, so the line gives values that are too small: an <b><span class="gl" tabindex="0" data-c="estimate-bias">underestimate</span></b>. A concave down graph lies <i>below</i> its tangent lines, so the line gives an <b>overestimate</b>.</p>
+<figure id="fig-sqrt"  class="calc-figure"><div class="calc-figimg" data-fig="sqrt-tangent-overestimate"><img src="../figures/sqrt-tangent-overestimate.svg" alt="The graph of y = √x (crimson) and its tangent line at (4, 2), L(x) = 2 + (x − 4)/4 (blue). At x = 7 the line gives 2.75 while √7 ≈ 2.646; a zoomed panel shows the line above the concave down curve, so the estimate is an overestimate." width="800" height="430" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> <math class="calc-m"><semantics><mrow><msqrt><mi>x</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{x}</annotation></semantics></math> is concave down, so its tangent line at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x = 4</annotation></semantics></math> lies above it: <math class="calc-m"><semantics><mrow><mi>L</mi><mo stretchy="false">(</mo><mn>7</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2.75</mn></mrow><annotation encoding="application/x-tex">L(7) = 2.75</annotation></semantics></math> overestimates <math class="calc-m"><semantics><mrow><msqrt><mn>7</mn></msqrt><mo>≈</mo><mn>2.646</mn></mrow><annotation encoding="application/x-tex">\sqrt{7} \approx 2.646</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<tr><th>On the interval between <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></th><th>Shape</th><th>Tangent line is</th><th><math class="calc-m"><semantics><mrow><mi>L</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L(x)</annotation></semantics></math> is</th></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'' &gt; 0</annotation></semantics></math></td><td>concave up</td><td>below the graph</td><td>an underestimate</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">″</mo></mrow><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'' &lt; 0</annotation></semantics></math></td><td>concave down</td><td>above the graph</td><td>an overestimate</td></tr>
+</table></div>
+<div class="worked">
+<p><b>Worked example 3.</b> Use the tangent line to <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\ln x</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math> to estimate <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>1.2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\ln(1.2)</annotation></semantics></math>, and decide whether the estimate is too large or too small.</p>
+<p><math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\ln 1 = 0</annotation></semantics></math> and the slope is <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>1</mn></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\frac{1}{1} = 1</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>L</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">L(x) = x - 1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mo stretchy="false">(</mo><mn>1.2</mn><mo stretchy="false">)</mo><mo>≈</mo><mn>0.2</mn></mrow><annotation encoding="application/x-tex">\ln(1.2) \approx 0.2</annotation></semantics></math>.</p>
+<p>The second <a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a> of <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\ln x</annotation></semantics></math> is <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><msup><mi>x</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">-\frac{1}{x^2}</annotation></semantics></math>, which is negative for every <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &gt; 0</annotation></semantics></math>. The graph is concave down, so the tangent line lies above it, and <math class="calc-m"><semantics><mrow><mn>0.2</mn></mrow><annotation encoding="application/x-tex">0.2</annotation></semantics></math> is an <b>overestimate</b>. (Indeed <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>1.2</mn><mo>≈</mo><mn>0.182</mn></mrow><annotation encoding="application/x-tex">\ln 1.2 \approx 0.182</annotation></semantics></math>.)</p>
+</div>
+<p>The justification must name concavity. "Overestimate because <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is increasing" does not earn the point: whether <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is increasing decides which way the line tilts, not which side of the curve it sits on. The concavity must hold on the whole interval between <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> and the point you estimate.</p>
+
+<h2 id="how-good-is-the-estimate">How good is the estimate?</h2>
+<p>The gap between the curve and the line is tiny near <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math> and grows as you move away. Using the tangent line at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 1</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>1.2</mn></mrow><annotation encoding="application/x-tex">\ln 1.2</annotation></semantics></math> is estimated as <math class="calc-m"><semantics><mrow><mn>0.2</mn></mrow><annotation encoding="application/x-tex">0.2</annotation></semantics></math> (true value about <math class="calc-m"><semantics><mrow><mn>0.182</mn></mrow><annotation encoding="application/x-tex">0.182</annotation></semantics></math>), but <math class="calc-m"><semantics><mrow><mi>ln</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\ln 3</annotation></semantics></math> is estimated as <math class="calc-m"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math> (true value about <math class="calc-m"><semantics><mrow><mn>1.099</mn></mrow><annotation encoding="application/x-tex">1.099</annotation></semantics></math>). Always build the line at the known point closest to where you estimate.</p>
+
+<h2 id="slips-that-cost-points">Slips that cost points</h2>
+<ul>
+<li>Swapping the height and the slope in <math class="calc-m"><semantics><mrow><mi>L</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>+</mo><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L(x) = f(a) + f'(a)(x - a)</annotation></semantics></math>.</li>
+<li>Losing the sign of <math class="calc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x - a</annotation></semantics></math> when estimating to the left of <math class="calc-m"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math>.</li>
+<li>Justifying over or under with the sign of <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math>, or with no reason.</li>
+<li>Using a tangent line built at a point far from the estimate.</li>
+</ul>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:local-linearity">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="solving-related-rates.html"><span>&larr; Previous</span><b>Solving Related Rates Problems</b></a><a class="tb-chapter-link next" href="lhospitals-rule.html"><span>Next &rarr;</span><b>L'Hospital's Rule</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:local-linearity">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

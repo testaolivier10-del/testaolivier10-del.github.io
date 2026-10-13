@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disc Method About Other Lines — AP® Calculus AB Notes</title>
+<meta name="description" content="The disc method about a line such as y = 3 or x = −1: the radius is the distance from the curve to that line. How to set up and check the integral.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/disc-method-other-axes.html">
+<meta property="og:title" content="Disc Method About Other Lines — AP® Calculus AB Notes">
+<meta property="og:description" content="The disc method about a line such as y = 3 or x = −1: the radius is the distance from the curve to that line. How to set up and check the integral.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/disc-method-other-axes.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/disc-method-other-axes.html#reading",
+      "name": "Disc Method About Other Lines",
+      "url": "https://levlprep.com/calculus/notes/disc-method-other-axes.html",
+      "description": "The disc method about a line such as y = 3 or x = −1: the radius is the distance from the curve to that line. How to set up and check the integral.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "disc method about other lines ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Applications of Integration",
+          "item": "https://levlprep.com/calculus/units/unit-8.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Disc Method About Other Lines: notes",
+          "item": "https://levlprep.com/calculus/notes/disc-method-other-axes.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="disc-method-other-axes" data-unit="unit-8">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 8 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-7.html"><span class="bk-toc-n">7</span>Differential Equations</a>
+    <a class="bk-toc-chap" href="../units/unit-8.html"><span class="bk-toc-chap-n">8</span><span><b>Applications of Integration</b><small>12 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-8"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="average-value"><a href="average-value.html"><span class="bk-toc-n">8.1</span>Average Value of a Function</a></li><li data-toc-t="motion-with-integrals"><a href="motion-with-integrals.html"><span class="bk-toc-n">8.2</span>Motion with Integrals</a></li><li data-toc-t="accumulation-in-context"><a href="accumulation-in-context.html"><span class="bk-toc-n">8.3</span>Accumulation in Context</a></li><li data-toc-t="area-between-curves-x"><a href="area-between-curves-x.html"><span class="bk-toc-n">8.4</span>Area Between Curves (Functions of x)</a></li><li data-toc-t="area-between-curves-y"><a href="area-between-curves-y.html"><span class="bk-toc-n">8.5</span>Area Between Curves (Functions of y)</a></li><li data-toc-t="area-multiple-crossings"><a href="area-multiple-crossings.html"><span class="bk-toc-n">8.6</span>Area Between Curves That Cross More Than Twice</a></li><li data-toc-t="cross-sections-squares"><a href="cross-sections-squares.html"><span class="bk-toc-n">8.7</span>Volumes with Square and Rectangle Cross Sections</a></li><li data-toc-t="cross-sections-triangles"><a href="cross-sections-triangles.html"><span class="bk-toc-n">8.8</span>Volumes with Triangle and Semicircle Cross Sections</a></li><li data-toc-t="disc-method-axes"><a href="disc-method-axes.html"><span class="bk-toc-n">8.9</span>Disc Method About the Axes</a></li><li class="current" data-toc-t="disc-method-other-axes"><a href="#main" aria-current="page"><span class="bk-toc-n">8.10</span>Disc Method About Other Lines</a><div class="bk-toc-onpage"><p>On this page</p><a href="#same-discs-a-different-center">Same discs, a different center</a><a href="#two-ways-to-get-it-wrong">Two ways to get it wrong</a><a href="#vertical-lines">Vertical lines</a><a href="#the-radius-at-a-glance">The radius at a glance</a></div></li><li data-toc-t="washer-method-axes"><a href="washer-method-axes.html"><span class="bk-toc-n">8.11</span>Washer Method About the Axes</a></li><li data-toc-t="washer-method-other-axes"><a href="washer-method-other-axes.html"><span class="bk-toc-n">8.12</span>Washer Method About Other Lines</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-math.html"><span class="bk-toc-n">S</span>Math you need</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-8.html">Applications of Integration</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Disc Method About Other Lines: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/disc-method-other-axes.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 8 &middot; Topic 8.10 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Disc Method About Other Lines</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="disc-method-other-axes">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fdisc-method-other-axes.html&amp;title=Disc%20Method%20About%20Other%20Lines%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/disc-method-other-axes.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<h2 id="same-discs-a-different-center">Same discs, a different center</h2>
+<p>In the last topic every solid spun around the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis or the <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>-axis. Nothing in the disc method needs the <a class="gl" href="../notes/disc-method-axes.html" data-c="disc-method">axis of rotation</a> to be one of the coordinate axes. A region can be <span class="gl" tabindex="0" data-c="shifted-axis">revolved about the line</span> <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = 1</annotation></semantics></math>, or <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = -2</annotation></semantics></math>, or <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>. The slices perpendicular to that line are still discs, as long as the region touches the line all the way across. What changes is the radius.</p>
+<p>The radius of a disc is the distance from its center, on the axis, to its edge, on the curve. When the axis was the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis, that distance happened to be <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math>, the curve's height. When the axis is the line <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">y = k</annotation></semantics></math>, the distance is the gap between the heights <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math>:</p>
+<math class="calc-m" display="block"><semantics><mrow><mi>r</mi><mo>=</mo><mi>k</mi><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mtext> if the line is above the curve</mtext><mo>,</mo><mspace width="2em"></mspace><mi>r</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mi>k</mi><mtext> if it is below.</mtext></mrow><annotation encoding="application/x-tex">r = k - f(x) \text{ if the line is above the curve}, \qquad r = f(x) - k \text{ if it is below.}</annotation></semantics></math>
+<p>Always subtract the smaller height from the larger, so the radius is positive. (Since the radius is squared, a sign slip does not change the volume, but it is a sign you have lost track of the picture.)</p>
+<figure id="fig-discline"  class="calc-figure"><div class="calc-figimg" data-fig="disc-solid-line"><img src="../figures/disc-solid-line.svg" alt="Left: the region between the parabola y = x² and the line y = 1, from x = −1 to 1, shaded, with y = 1 dashed as the axis of rotation and one thin vertical rectangle from the parabola up to the axis, of length 1 − x². Right: the solid made by revolving the region about y = 1, shaped like a lemon, with the axis through its center and one disc highlighted in blue whose radius is r = 1 − x². Below: V = the integral from −1 to 1 of π(1 − x²)² dx = 16π/15." width="760" height="440" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Revolving about <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = 1</annotation></semantics></math>. Each rectangle runs from the parabola up to the axis, so the radius is <math class="calc-m"><semantics><mrow><mn>1</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">1 - x^2</annotation></semantics></math>, not <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math>. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+
+<div class="worked">
+<p><b>Worked example.</b> The region between <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">y = x^2</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = 1</annotation></semantics></math> is revolved about the line <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = 1</annotation></semantics></math>. Find the volume.</p>
+<p><b><a class="gl" href="../notes/limit-notation.html" data-c="limit">Limits</a>.</b> <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x^2 = 1</annotation></semantics></math> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">±</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = \pm 1</annotation></semantics></math>.</p>
+<p><b>Radius.</b> The axis <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y = 1</annotation></semantics></math> is above the parabola, so <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>1</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">r = 1 - x^2</annotation></semantics></math>.</p>
+<p><b>Volume.</b></p>
+<math class="calc-m" display="block"><semantics><mrow><mi>V</mi><mo>=</mo><mi>π</mi><msubsup><mo largeop="true" movablelimits="false">∫</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><mn>1</mn></msubsup><msup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mn>1</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mi>π</mi><msubsup><mo largeop="true" movablelimits="false">∫</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><mn>1</mn></msubsup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mn>1</mn><mo>−</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>x</mi><mn>4</mn></msup></mrow><mo fence="true" stretchy="true">)</mo></mrow><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi><mo>=</mo><mi>π</mi><mrow><mo fence="true" stretchy="true">(</mo><mrow><mn>2</mn><mo>−</mo><mfrac><mn>4</mn><mn>3</mn></mfrac><mo>+</mo><mfrac><mn>2</mn><mn>5</mn></mfrac></mrow><mo fence="true" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mrow><mn>16</mn><mi>π</mi></mrow><mn>15</mn></mfrac><mo>.</mo></mrow><annotation encoding="application/x-tex">V = \pi\int_{-1}^{1} \left(1 - x^2\right)^2\,dx = \pi\int_{-1}^{1} \left(1 - 2x^2 + x^4\right)\,dx = \pi\left(2 - \frac{4}{3} + \frac{2}{5}\right) = \frac{16\pi}{15}.</annotation></semantics></math>
+</div>
+
+<h2 id="two-ways-to-get-it-wrong">Two ways to get it wrong</h2>
+<p><b>Measuring from the wrong place.</b> Using <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">r = x^2</annotation></semantics></math> in the example measures from the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis. That would spin the region under the parabola about the <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis, a different solid (<math class="calc-m"><semantics><mrow><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mn>5</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{2\pi}{5}</annotation></semantics></math>).</p>
+<p><b>Squaring each term.</b> <math class="calc-m"><semantics><mrow><mi>π</mi><mo largeop="true" movablelimits="false">∫</mo><mo stretchy="false">(</mo><msup><mn>1</mn><mn>2</mn></msup><mo>−</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo stretchy="false">)</mo><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\pi\int (1^2 - (x^2)^2)\,dx</annotation></semantics></math> is not the same as <math class="calc-m"><semantics><mrow><mi>π</mi><mo largeop="true" movablelimits="false">∫</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\pi\int (1 - x^2)^2\,dx</annotation></semantics></math>. The first gives <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>8</mn><mi>π</mi></mrow><mn>5</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{8\pi}{5}</annotation></semantics></math>. It looks tempting because it resembles a formula you will meet next topic, but for a solid disc the radius is one quantity: square the whole difference.</p>
+<p><b>Negative <math class="calc-m"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math>.</b> About <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">y = -2</annotation></semantics></math>, the radius to the curve <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>2</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">y = 2 - x^2</annotation></semantics></math> is <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>−</mo><mo stretchy="false">(</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(2 - x^2) - (-2) = 4 - x^2</annotation></semantics></math>. Write the subtraction with parentheses before simplifying.</p>
+
+<h2 id="vertical-lines">Vertical lines</h2>
+<p>When the axis is a vertical line <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">x = h</annotation></semantics></math>, the slices perpendicular to it are horizontal, stacked in <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>. Write the curve as <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> in terms of <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math>; the radius is the horizontal gap between <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x(y)</annotation></semantics></math>.</p>
+
+<div class="worked">
+<p><b>Worked example.</b> The <a class="gl" href="../notes/area-between-curves-x.html" data-c="area-between-curves">region bounded by</a> <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y = x</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y = 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math> is revolved about the line <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>. Find the volume.</p>
+<p><b>Slices.</b> Horizontal, from <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y = 0</annotation></semantics></math> to <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = 3</annotation></semantics></math>. At height <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> the region runs from the line <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x = y</annotation></semantics></math> to the axis <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>.</p>
+<p><b>Radius.</b> <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mn>3</mn><mo>−</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">r = 3 - y</annotation></semantics></math>.</p>
+<p><b>Volume.</b> <math class="calc-m"><semantics><mrow><mi>V</mi><mo>=</mo><mi>π</mi><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mn>3</mn></msubsup><mo stretchy="false">(</mo><mn>3</mn><mo>−</mo><mi>y</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>y</mi><mo>=</mo><mi>π</mi><msubsup><mrow><mo fence="true" stretchy="true">[</mo><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>−</mo><mi>y</mi><msup><mo stretchy="false">)</mo><mn>3</mn></msup></mrow><mn>3</mn></mfrac></mrow><mo fence="true" stretchy="true">]</mo></mrow><mn>0</mn><mn>3</mn></msubsup><mo>=</mo><mi>π</mi><mo>⋅</mo><mfrac><mn>27</mn><mn>3</mn></mfrac><mo>=</mo><mn>9</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">V = \pi\int_0^3 (3 - y)^2\,dy = \pi\left[-\frac{(3 - y)^3}{3}\right]_0^3 = \pi \cdot \frac{27}{3} = 9\pi</annotation></semantics></math>.</p>
+<p>The solid is a cone with radius 3 and height 3, and <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>3</mn></mfrac><mi>π</mi><mo stretchy="false">(</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>9</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">\frac{1}{3}\pi(3)^2(3) = 9\pi</annotation></semantics></math> agrees.</p>
+</div>
+
+<h2 id="the-radius-at-a-glance">The radius at a glance</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead><tr><th>Axis</th><th>Where it is</th><th>Radius</th><th>Integrate in</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">y = k</annotation></semantics></math></td><td>above the curve <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y = f(x)</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>k</mi><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">k - f(x)</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">y = k</annotation></semantics></math></td><td>below the curve</td><td><math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">f(x) - k</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">x = h</annotation></semantics></math></td><td>right of the curve <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x = g(y)</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>h</mi><mo>−</mo><mi>g</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h - g(y)</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math></td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">x = h</annotation></semantics></math></td><td>left of the curve</td><td><math class="calc-m"><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo><mo>−</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">g(y) - h</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>A quick check: the radius is 0 where the curve meets the axis, and largest where the curve is farthest from it. If your formula says otherwise, you are measuring from the wrong line.</p>
+<p>With a calculator, find any crossing with the axis line numerically, store it, write the setup with the radius in parentheses, for example <math class="calc-m"><semantics><mrow><mi>π</mi><msubsup><mo largeop="true" movablelimits="false">∫</mo><mn>0</mn><mi>c</mi></msubsup><msup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mn>4</mn><mo>−</mo><msup><mi>e</mi><mrow><mi>x</mi><mo>/</mo><mn>2</mn></mrow></msup></mrow><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup><mspace width="0.1667em"></mspace><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\pi\int_0^c \left(4 - e^{x/2}\right)^2\,dx</annotation></semantics></math>, and report three decimal places.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:disc-method-other-axes">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="disc-method-axes.html"><span>&larr; Previous</span><b>Disc Method About the Axes</b></a><a class="tb-chapter-link next" href="washer-method-axes.html"><span>Next &rarr;</span><b>Washer Method About the Axes</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:disc-method-other-axes">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

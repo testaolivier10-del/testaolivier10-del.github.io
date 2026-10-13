@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mean Value Theorem — AP® Calculus AB Notes | LevlPrep</title>
+<meta name="description" content="Suppose you drive 130 miles in exactly 2 hours. Your average speed was 65 miles per hour. Was your speedometer ever exactly at 65?">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/mean-value-theorem.html">
+<meta property="og:title" content="The Mean Value Theorem — AP® Calculus AB Notes | LevlPrep">
+<meta property="og:description" content="Suppose you drive 130 miles in exactly 2 hours. Your average speed was 65 miles per hour. Was your speedometer ever exactly at 65?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/mean-value-theorem.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/mean-value-theorem.html#reading",
+      "name": "The Mean Value Theorem",
+      "url": "https://levlprep.com/calculus/notes/mean-value-theorem.html",
+      "description": "Suppose you drive 130 miles in exactly 2 hours. Your average speed was 65 miles per hour. Was your speedometer ever exactly at 65?",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "the mean value theorem ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Analytical Applications of Differentiation",
+          "item": "https://levlprep.com/calculus/units/unit-5.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "The Mean Value Theorem: notes",
+          "item": "https://levlprep.com/calculus/notes/mean-value-theorem.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="mean-value-theorem" data-unit="unit-5">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 5 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-4.html"><span class="bk-toc-n">4</span>Contextual Applications of Differentiation</a>
+    <a class="bk-toc-chap" href="../units/unit-5.html"><span class="bk-toc-chap-n">5</span><span><b>Analytical Applications of Differentiation</b><small>12 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-5"><div class="tb-progress-row"><span><b>0</b> of 12 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li class="current" data-toc-t="mean-value-theorem"><a href="#main" aria-current="page"><span class="bk-toc-n">5.1</span>The Mean Value Theorem</a><div class="bk-toc-onpage"><p>On this page</p><a href="#average-rate-and-instant-rate-on">Average rate and instant rate on one picture</a><a href="#the-theorem-and-its-two-hypotheses">The theorem and its two hypotheses</a><a href="#when-a-hypothesis-fails">When a hypothesis fails</a><a href="#using-the-theorem-with-a-table">Using the theorem with a table</a><a href="#mean-value-theorem-or-intermediate-value">Mean Value Theorem or Intermediate Value Theorem?</a></div></li><li data-toc-t="extreme-value-theorem"><a href="extreme-value-theorem.html"><span class="bk-toc-n">5.2</span>Extreme Value Theorem, Global and Local Extrema, Critical Points</a></li><li data-toc-t="increasing-decreasing"><a href="increasing-decreasing.html"><span class="bk-toc-n">5.3</span>Where a Function Increases or Decreases</a></li><li data-toc-t="first-derivative-test"><a href="first-derivative-test.html"><span class="bk-toc-n">5.4</span>The First Derivative Test</a></li><li data-toc-t="candidates-test"><a href="candidates-test.html"><span class="bk-toc-n">5.5</span>The Candidates Test</a></li><li data-toc-t="concavity"><a href="concavity.html"><span class="bk-toc-n">5.6</span>Concavity and Points of Inflection</a></li><li data-toc-t="second-derivative-test"><a href="second-derivative-test.html"><span class="bk-toc-n">5.7</span>The Second Derivative Test</a></li><li data-toc-t="sketching-derivatives"><a href="sketching-derivatives.html"><span class="bk-toc-n">5.8</span>Sketching f, f' and f''</a></li><li data-toc-t="f-and-its-derivatives"><a href="f-and-its-derivatives.html"><span class="bk-toc-n">5.9</span>Connecting f, f' and f''</a></li><li data-toc-t="optimization-intro"><a href="optimization-intro.html"><span class="bk-toc-n">5.10</span>Introduction to Optimization</a></li><li data-toc-t="solving-optimization"><a href="solving-optimization.html"><span class="bk-toc-n">5.11</span>Solving Optimization Problems</a></li><li data-toc-t="implicit-relations"><a href="implicit-relations.html"><span class="bk-toc-n">5.12</span>Behavior of Implicit Relations</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-6.html"><span class="bk-toc-n">6</span>Integration and Accumulation of Change</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-5.html">Analytical Applications of Differentiation</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The Mean Value Theorem: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/mean-value-theorem.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 5 &middot; Topic 5.1 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">The Mean Value Theorem</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">5 min read &middot; free</span><span class="bk-chip" data-chip-topic="mean-value-theorem">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fmean-value-theorem.html&amp;title=The%20Mean%20Value%20Theorem%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/mean-value-theorem.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Suppose you drive 130 miles in exactly 2 hours. Your average <a class="gl" href="../notes/straight-line-motion.html" data-c="speed">speed</a> was 65 miles per hour. Was your speedometer ever exactly at 65? You may have sped up and slowed down many times, but if your speed changed smoothly, it must have passed through 65 at least once. The <span class="gl" tabindex="0" data-c="mvt">Mean Value Theorem</span> is the precise version of that idea, and it is the first of the big theorems in Unit 5.</p>
+
+<h2 id="average-rate-and-instant-rate-on">Average rate and instant rate on one picture</h2>
+<p>On the <a class="gl" href="../notes/math-functions.html" data-c="function-graph">graph of a function</a> <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math>, the <b><a class="gl" href="../notes/change-at-an-instant.html" data-c="average-rate">average rate of change</a></b> on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math> is the <a class="gl" href="../notes/math-functions.html" data-c="slope">slope</a> of the <a class="gl" href="../notes/average-and-instant-rates.html" data-c="secant-line">secant line</a> through the two endpoints:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{f(b) - f(a)}{b - a}</annotation></semantics></math></p>
+<p>The <b><a class="gl" href="../notes/change-at-an-instant.html" data-c="instantaneous-rate">instantaneous rate of change</a></b> at a point <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> is <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f'(c)</annotation></semantics></math>, the slope of the <a class="gl" href="../notes/derivative-definition.html" data-c="tangent-line">tangent line</a> there. The theorem says that, under the right conditions, these two slopes match somewhere: some tangent line inside the interval is parallel to the secant line.</p>
+<figure id="fig-mvt"  class="calc-figure"><div class="calc-figimg" data-fig="mvt-parallel-tangents"><img src="../figures/mvt-parallel-tangents.svg" alt="The graph of f(x) = x cubed minus 6x squared plus 9x plus 1 from (0, 1) to (4, 5). A dashed secant line joins the endpoints with slope 1. Tangent lines at c1 ≈ 0.85 and c2 ≈ 3.15 are parallel to it: at both points the derivative equals the average rate of change, 1." width="900" height="410" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The secant line from <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 1)</annotation></semantics></math> to <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>4</mn><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(4, 5)</annotation></semantics></math> has slope 1. The tangent lines at <math class="calc-m"><semantics><mrow><msub><mi>c</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">c_1</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><msub><mi>c</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">c_2</annotation></semantics></math> are parallel to it. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Picture sliding a ruler, held parallel to the secant line, across the curve. As it moves away from the secant line, the last spot where it still touches the curve is a point of tangency, and there the tangent line has the secant's slope. That picture only works if the curve is unbroken and smooth.</p>
+
+<h2 id="the-theorem-and-its-two-hypotheses">The theorem and its two hypotheses</h2>
+<p><b>Mean Value Theorem.</b> If <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is <a class="gl" href="../notes/discontinuity-types.html" data-c="discontinuity">continuous</a> on the closed interval <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math> and <a class="gl" href="../notes/differentiability.html" data-c="differentiable">differentiable</a> on the open interval <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, b)</annotation></semantics></math>, then there is at least one number <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> in <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, b)</annotation></semantics></math> with</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">f'(c) = \frac{f(b) - f(a)}{b - a}</annotation></semantics></math></p>
+<p>Read it as an if-then statement. The "if" part has two <a class="gl" href="../notes/intermediate-value-theorem.html" data-c="hypothesis">hypotheses</a>, and both matter:</p>
+<ul>
+<li><b>Continuous on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math></b>: no jumps, holes or <a class="gl" href="../notes/math-functions.html" data-c="asymptote">asymptotes</a> anywhere in the interval, including at the endpoints.</li>
+<li><b>Differentiable on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a, b)</annotation></semantics></math></b>: no corners, cusps or <a class="gl" href="../notes/differentiability.html" data-c="corner">vertical tangent</a> lines strictly inside. A corner at an endpoint is allowed.</li>
+</ul>
+<p>Because a differentiable <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> is always continuous, "<math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is differentiable on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math>" covers both at once. Say it anyway: the scoring guidelines want to see continuity named, and "<math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is differentiable, so it is continuous" is the safest sentence you can write.</p>
+<p>The conclusion says <i>at least one</i> <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> exists. It does not say where, and it does not say there is only one. In the figure there are two.</p>
+
+<div class="worked">
+<p><b>Worked example 1.</b> Find every <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> that satisfies the Mean Value Theorem for <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>6</mn><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>9</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x) = x^3 - 6x^2 + 9x + 1</annotation></semantics></math> on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>4</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 4]</annotation></semantics></math>.</p>
+<p>Check the hypotheses: <math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math> is a <a class="gl" href="../notes/math-functions.html" data-c="rational-function">polynomial</a>, so it is continuous on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>4</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 4]</annotation></semantics></math> and differentiable on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 4)</annotation></semantics></math>.</p>
+<p>Average rate: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><mrow><mn>4</mn><mo>−</mo><mn>0</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>5</mn><mo>−</mo><mn>1</mn></mrow><mn>4</mn></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\frac{f(4) - f(0)}{4 - 0} = \frac{5 - 1}{4} = 1</annotation></semantics></math>.</p>
+<p>Solve <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f'(c) = 1</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mn>3</mn><msup><mi>c</mi><mn>2</mn></msup><mo>−</mo><mn>12</mn><mi>c</mi><mo>+</mo><mn>9</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">3c^2 - 12c + 9 = 1</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mn>3</mn><msup><mi>c</mi><mn>2</mn></msup><mo>−</mo><mn>12</mn><mi>c</mi><mo>+</mo><mn>8</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">3c^2 - 12c + 8 = 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>c</mi><mo>=</mo><mn>2</mn><mo>±</mo><mfrac><mn>2</mn><msqrt><mn>3</mn></msqrt></mfrac></mrow><annotation encoding="application/x-tex">c = 2 \pm \frac{2}{\sqrt{3}}</annotation></semantics></math>.</p>
+<p>Both <math class="calc-m"><semantics><mrow><mi>c</mi><mo>≈</mo><mn>0.845</mn></mrow><annotation encoding="application/x-tex">c \approx 0.845</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>c</mi><mo>≈</mo><mn>3.155</mn></mrow><annotation encoding="application/x-tex">c \approx 3.155</annotation></semantics></math> lie in <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 4)</annotation></semantics></math>, so both work.</p>
+</div>
+
+<h2 id="when-a-hypothesis-fails">When a hypothesis fails</h2>
+<p>If a hypothesis fails, the theorem promises nothing. The conclusion might still happen by luck, or it might be false. Two classic failures:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Function and interval, Average rate, What goes wrong"><table class="compare">
+<thead><tr><th scope="col">Function and interval</th><th scope="col">Average rate</th><th scope="col">What goes wrong</th></tr></thead>
+<tbody>
+<tr><td><math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">|</mo><mi>x</mi><mo stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">f(x) = |x|</annotation></semantics></math> on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[-1, 1]</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></td><td>Corner at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = 0</annotation></semantics></math>: not differentiable there. The slope is <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math> or <math class="calc-m"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math>, never <math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>.</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mi>x</mi><mo>−</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">f(x) = \frac{1}{x - 2}</annotation></semantics></math> on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>4</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 4]</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{4}</annotation></semantics></math></td><td>Asymptote at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x = 2</annotation></semantics></math>: not continuous. <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'(x) &lt; 0</annotation></semantics></math> wherever it exists, never <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{4}</annotation></semantics></math>.</td></tr>
+</tbody>
+</table></div>
+<p>These examples are why a justification must check the hypotheses before using the conclusion.</p>
+
+<h2 id="using-the-theorem-with-a-table">Using the theorem with a table</h2>
+<p>On the exam the function is often given only by a table, with a sentence such as "<math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> is differentiable." You cannot find <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>, but you can show it exists.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> The water level <math class="calc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(t)</annotation></semantics></math> in a reservoir, in feet, is differentiable, with <math class="calc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>46</mn></mrow><annotation encoding="application/x-tex">h(3) = 46</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mn>7</mn><mo stretchy="false">)</mo><mo>=</mo><mn>38</mn></mrow><annotation encoding="application/x-tex">h(7) = 38</annotation></semantics></math> (<math class="calc-m"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math> in days). Must there be a time in <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>7</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 7)</annotation></semantics></math> when the level was falling at 2 feet per day?</p>
+<p>Average rate: <math class="calc-m"><semantics><mrow><mfrac><mrow><mi>h</mi><mo stretchy="false">(</mo><mn>7</mn><mo stretchy="false">)</mo><mo>−</mo><mi>h</mi><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><mrow><mn>7</mn><mo>−</mo><mn>3</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>38</mn><mo>−</mo><mn>46</mn></mrow><mn>4</mn></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\frac{h(7) - h(3)}{7 - 3} = \frac{38 - 46}{4} = -2</annotation></semantics></math> feet per day.</p>
+<p>Justification: "<math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> is differentiable, so it is continuous on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mn>3</mn><mo>,</mo><mn>7</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[3, 7]</annotation></semantics></math> and differentiable on <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>7</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 7)</annotation></semantics></math>. By the Mean Value Theorem, there is a time <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> in <math class="calc-m"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>7</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3, 7)</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mrow><mi>h</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">h'(c) = -2</annotation></semantics></math>." Yes: at that time the level was falling at 2 feet per day.</p>
+</div>
+<p>A special case comes up often: if <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(a) = f(b)</annotation></semantics></math>, the average rate is <math class="calc-m"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math>, so somewhere <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f'(c) = 0</annotation></semantics></math>, a flat tangent line. (This case has its own name, Rolle's theorem, but naming the Mean Value Theorem is enough.)</p>
+
+<h2 id="mean-value-theorem-or-intermediate-value">Mean Value Theorem or Intermediate Value Theorem?</h2>
+<p>Students lose points by using the wrong theorem. Ask what the question wants a value of:</p>
+<ul>
+<li>A value of <b><math class="calc-m"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></b> itself, between two known values ("is there a <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">f(c) = 5</annotation></semantics></math>?"): the <b><a class="gl" href="../notes/intermediate-value-theorem.html" data-c="ivt">Intermediate Value Theorem</a></b>, which needs continuity on <math class="calc-m"><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a, b]</annotation></semantics></math>.</li>
+<li>A value of the <b><a class="gl" href="../notes/derivative-definition.html" data-c="derivative">derivative</a></b> <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow></mrow><annotation encoding="application/x-tex">f'</annotation></semantics></math> equal to an average rate ("is there a <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">f'(c) = 2</annotation></semantics></math>?"): the <b>Mean Value Theorem</b>, which needs continuity and differentiability.</li>
+</ul>
+<p>Either way, the justification has the same three parts: name the theorem, check its hypotheses on the specific interval, and state the conclusion with the interval. "By the MVT, <math class="calc-m"><semantics><mrow><mrow><mi>f</mi><mo lspace="0" rspace="0">′</mo></mrow><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">f'(c) = 2</annotation></semantics></math>" with no hypotheses earns no credit.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:mean-value-theorem">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="lhospitals-rule.html"><span>&larr; Previous</span><b>L'Hospital's Rule</b></a><a class="tb-chapter-link next" href="extreme-value-theorem.html"><span>Next &rarr;</span><b>Extreme Value Theorem, Global and Local Extrema, Critical Points</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:mean-value-theorem">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

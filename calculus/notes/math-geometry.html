@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geometry for Calculus — AP® Calculus AB Notes | LevlPrep</title>
+<meta name="description" content="What takes the time, and where most mistakes happen, is the geometry: writing the one equation that connects the quantities in the picture.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/math-geometry.html">
+<meta property="og:title" content="Geometry for Calculus — AP® Calculus AB Notes | LevlPrep">
+<meta property="og:description" content="What takes the time, and where most mistakes happen, is the geometry: writing the one equation that connects the quantities in the picture.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/math-geometry.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/math-geometry.html#reading",
+      "name": "Geometry for Calculus",
+      "url": "https://levlprep.com/calculus/notes/math-geometry.html",
+      "description": "What takes the time, and where most mistakes happen, is the geometry: writing the one equation that connects the quantities in the picture.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "geometry formulas for calculus",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Math you need",
+          "item": "https://levlprep.com/calculus/units/skills-math.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Geometry for Calculus: notes",
+          "item": "https://levlprep.com/calculus/notes/math-geometry.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="math-geometry" data-unit="skills-math">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Applications of Integration</a>
+    <a class="bk-toc-chap" href="../units/skills-math.html"><span class="bk-toc-chap-n">S</span><span><b>Math you need</b><small>7 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="skills-math"><div class="tb-progress-row"><span><b>0</b> of 7 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="math-functions"><a href="math-functions.html"><span class="bk-toc-n">S</span>Functions and Their Graphs</a></li><li data-toc-t="math-exponent-rules"><a href="math-exponent-rules.html"><span class="bk-toc-n">S</span>Exponent Rules and Rewriting Powers</a></li><li data-toc-t="math-limit-algebra"><a href="math-limit-algebra.html"><span class="bk-toc-n">S</span>Algebra for Limits: Factoring and Rationalizing</a></li><li data-toc-t="math-trig"><a href="math-trig.html"><span class="bk-toc-n">S</span>Trigonometry and the Unit Circle</a></li><li data-toc-t="math-exp-log"><a href="math-exp-log.html"><span class="bk-toc-n">S</span>Exponentials and Logarithms</a></li><li data-toc-t="math-inverse-functions"><a href="math-inverse-functions.html"><span class="bk-toc-n">S</span>Inverse Functions</a></li><li class="current" data-toc-t="math-geometry"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Geometry for Calculus</a><div class="bk-toc-onpage"><p>On this page</p><a href="#formulas-to-know-by-heart">Formulas to know by heart</a><a href="#the-pythagorean-theorem">The Pythagorean theorem</a><a href="#similar-triangles">Similar triangles</a><a href="#right-triangle-trigonometry">Right-triangle trigonometry</a><a href="#a-routine-for-picture-problems">A routine for picture problems</a></div></li></ol></nav>
+    
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-math.html">Math you need</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Geometry for Calculus: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/math-geometry.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Skills <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Geometry for Calculus</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="math-geometry">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fmath-geometry.html&amp;title=Geometry%20for%20Calculus%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/math-geometry.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>Some of the most memorable problems in calculus are pictures: a ladder sliding down a wall, a cone-shaped tank filling with water, a person walking away from a streetlight while the shadow grows. The calculus in them is short. What takes the time, and where most mistakes happen, is the geometry: writing the one equation that connects the quantities in the picture. This page gathers the geometry you need and shows the two tools that do most of the work.</p>
+
+<h2 id="formulas-to-know-by-heart">Formulas to know by heart</h2>
+<p>The exam gives no formula sheet, so these must be automatic:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
+<thead><tr><th>Shape</th><th>Area or volume</th><th>Other</th></tr></thead>
+<tbody>
+<tr><td>Rectangle, triangle</td><td><math class="calc-m"><semantics><mrow><mi>l</mi><mi>w</mi></mrow><annotation encoding="application/x-tex">lw</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mspace width="0.2778em"></mspace><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>b</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">\;\frac{1}{2}bh</annotation></semantics></math></td><td></td></tr>
+<tr><td>Circle</td><td><math class="calc-m"><semantics><mrow><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\pi r^2</annotation></semantics></math></td><td>circumference <math class="calc-m"><semantics><mrow><mn>2</mn><mi>π</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">2\pi r</annotation></semantics></math></td></tr>
+<tr><td>Semicircle</td><td><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\frac{1}{2}\pi r^2</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> is half the diameter</td></tr>
+<tr><td>Trapezoid</td><td><math class="calc-m"><semantics><mrow><mfrac><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>+</mo><msub><mi>b</mi><mn>2</mn></msub></mrow><mn>2</mn></mfrac><mi>h</mi></mrow><annotation encoding="application/x-tex">\frac{b_1 + b_2}{2}h</annotation></semantics></math></td><td>average of the parallel sides times the height</td></tr>
+<tr><td>Equilateral triangle, side <math class="calc-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></td><td><math class="calc-m"><semantics><mrow><mfrac><msqrt><mn>3</mn></msqrt><mn>4</mn></mfrac><msup><mi>s</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\frac{\sqrt{3}}{4}s^2</annotation></semantics></math></td><td>height <math class="calc-m"><semantics><mrow><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac><mi>s</mi></mrow><annotation encoding="application/x-tex">\frac{\sqrt{3}}{2}s</annotation></semantics></math></td></tr>
+<tr><td>Box</td><td><math class="calc-m"><semantics><mrow><mi>l</mi><mi>w</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">lwh</annotation></semantics></math></td><td></td></tr>
+<tr><td>Cylinder</td><td><math class="calc-m"><semantics><mrow><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mi>h</mi></mrow><annotation encoding="application/x-tex">\pi r^2 h</annotation></semantics></math></td><td>curved surface <math class="calc-m"><semantics><mrow><mn>2</mn><mi>π</mi><mi>r</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">2\pi rh</annotation></semantics></math></td></tr>
+<tr><td>Cone</td><td><math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mn>3</mn></mfrac><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mi>h</mi></mrow><annotation encoding="application/x-tex">\frac{1}{3}\pi r^2 h</annotation></semantics></math></td><td>one third of the cylinder</td></tr>
+<tr><td>Sphere</td><td><math class="calc-m"><semantics><mrow><mfrac><mn>4</mn><mn>3</mn></mfrac><mi>π</mi><msup><mi>r</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">\frac{4}{3}\pi r^3</annotation></semantics></math></td><td>surface <math class="calc-m"><semantics><mrow><mn>4</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">4\pi r^2</annotation></semantics></math></td></tr>
+</tbody>
+</table></div>
+<p>A quick check catches many slips: areas have squared units and volumes have cubed units. If your "volume" formula has <math class="calc-m"><semantics><mrow><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">r^2</annotation></semantics></math> and nothing else with a length, something is missing.</p>
+
+<h2 id="the-pythagorean-theorem">The Pythagorean theorem</h2>
+<p>Whenever a picture has a right angle, the <b><span class="gl" tabindex="0" data-c="pythagorean-theorem">Pythagorean theorem</span></b> links the three sides: <math class="calc-m"><semantics><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo>=</mo><msup><mi>c</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">a^2 + b^2 = c^2</annotation></semantics></math>, where <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> is the hypotenuse, opposite the right angle. Calculus problems use it as an equation between <i>changing</i> quantities.</p>
+<figure id="fig-geo"  class="calc-figure"><div class="calc-figimg" data-fig="ladder-and-cone"><img src="../figures/ladder-and-cone.svg" alt="Left: a 10-foot ladder leans against a wall with its foot 6 feet out and its top 8 feet up, a right triangle with x squared + y squared = 10 squared. Right: a cone-shaped tank, point down, 10 feet tall with top radius 4 feet, holding water of depth h and surface radius r; similar triangles give r over h = 4 over 10." width="830" height="440" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A right triangle (left) and similar triangles (right): the two equations behind most picture problems. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Worked example 1.</b> A 10-foot ladder leans against a wall. Let <math class="calc-m"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math> be the distance from the wall to its foot and <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> the height of its top. Write an equation, and find <math class="calc-m"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math> when <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">x = 6</annotation></semantics></math>.</p>
+<p>The wall meets the ground at a right angle, and the ladder is the hypotenuse: <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">x^2 + y^2 = 100</annotation></semantics></math>.</p>
+<p>When <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">x = 6</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><mn>36</mn><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">36 + y^2 = 100</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>y</mi><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">y = 8</annotation></semantics></math> feet.</p>
+<p>The equation <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">x^2 + y^2 = 100</annotation></semantics></math> holds at every moment as the ladder slides; that is what Unit 4 will use.</p>
+</div>
+<p>The same theorem gives the distance between two cars moving along perpendicular roads, the length of a kite string, and the height of an equilateral triangle.</p>
+
+<h2 id="similar-triangles">Similar triangles</h2>
+<p>Two triangles are <b>similar</b> when they have the same three angles. Then one is a scaled copy of the other, and every pair of matching sides has the same ratio. Look for a small triangle sitting inside a big one, sharing an angle.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> A cone-shaped tank, point down, is 10 feet tall with a top radius of 4 feet. Write the volume of water as a <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> of its depth <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math>.</p>
+<p>The water is a small cone inside the tank. Viewed from the side, the water's triangle and the tank's triangle are similar: <math class="calc-m"><semantics><mrow><mfrac><mi>r</mi><mi>h</mi></mfrac><mo>=</mo><mfrac><mn>4</mn><mn>10</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{r}{h} = \frac{4}{10}</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mi>r</mi><mo>=</mo><mfrac><mn>2</mn><mn>5</mn></mfrac><mi>h</mi></mrow><annotation encoding="application/x-tex">r = \frac{2}{5}h</annotation></semantics></math>.</p>
+<p>Substitute into the cone formula: <math class="calc-m"><semantics><mrow><mi>V</mi><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mi>h</mi><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mi>π</mi><msup><mrow><mo fence="true" stretchy="true">(</mo><mrow><mfrac><mn>2</mn><mn>5</mn></mfrac><mi>h</mi></mrow><mo fence="true" stretchy="true">)</mo></mrow><mn>2</mn></msup><mi>h</mi><mo>=</mo><mfrac><mrow><mn>4</mn><mi>π</mi></mrow><mn>75</mn></mfrac><msup><mi>h</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">V = \frac{1}{3}\pi r^2 h = \frac{1}{3}\pi\left(\frac{2}{5}h\right)^2 h = \frac{4\pi}{75}h^3</annotation></semantics></math>.</p>
+<p>Now <math class="calc-m"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math> depends on one variable only. Replacing <math class="calc-m"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mfrac><mn>2</mn><mn>5</mn></mfrac><mi>h</mi></mrow><annotation encoding="application/x-tex">\frac{2}{5}h</annotation></semantics></math> <i>before</i> doing any calculus is the key step.</p>
+</div>
+<div class="worked">
+<p><b>Worked example 3.</b> A person 6 feet tall stands 10 feet from a lamppost 15 feet tall. Find the length <math class="calc-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math> of the shadow.</p>
+<p>The light, the top of the person's head and the tip of the shadow line up. The big triangle has height 15 and base <math class="calc-m"><semantics><mrow><mn>10</mn><mo>+</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">10 + s</annotation></semantics></math>; the small triangle has height 6 and base <math class="calc-m"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math>.</p>
+<p><math class="calc-m"><semantics><mrow><mfrac><mn>6</mn><mi>s</mi></mfrac><mo>=</mo><mfrac><mn>15</mn><mrow><mn>10</mn><mo>+</mo><mi>s</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{6}{s} = \frac{15}{10 + s}</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mn>6</mn><mo stretchy="false">(</mo><mn>10</mn><mo>+</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><mn>15</mn><mi>s</mi></mrow><annotation encoding="application/x-tex">6(10 + s) = 15s</annotation></semantics></math>, so <math class="calc-m"><semantics><mrow><mn>60</mn><mo>=</mo><mn>9</mn><mi>s</mi></mrow><annotation encoding="application/x-tex">60 = 9s</annotation></semantics></math>, and <math class="calc-m"><semantics><mrow><mi>s</mi><mo>=</mo><mfrac><mn>20</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">s = \frac{20}{3}</annotation></semantics></math> feet.</p>
+<p>The most common slip is using 10 as the big triangle's base instead of <math class="calc-m"><semantics><mrow><mn>10</mn><mo>+</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">10 + s</annotation></semantics></math>.</p>
+</div>
+
+<h2 id="right-triangle-trigonometry">Right-triangle trigonometry</h2>
+<p>When an angle is part of the question, use the right-triangle ratios: <math class="calc-m"><semantics><mrow><mi>sin</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>=</mo><mfrac><mtext>opposite</mtext><mtext>hypotenuse</mtext></mfrac></mrow><annotation encoding="application/x-tex">\sin\theta = \frac{\text{opposite}}{\text{hypotenuse}}</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>cos</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>=</mo><mfrac><mtext>adjacent</mtext><mtext>hypotenuse</mtext></mfrac></mrow><annotation encoding="application/x-tex">\cos\theta = \frac{\text{adjacent}}{\text{hypotenuse}}</annotation></semantics></math>, <math class="calc-m"><semantics><mrow><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>=</mo><mfrac><mtext>opposite</mtext><mtext>adjacent</mtext></mfrac></mrow><annotation encoding="application/x-tex">\tan\theta = \frac{\text{opposite}}{\text{adjacent}}</annotation></semantics></math>. A balloon rising straight up from a point 50 meters from an observer makes an angle of elevation <math class="calc-m"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math> with <math class="calc-m"><semantics><mrow><mi>tan</mi><mo lspace="0" rspace="0.1667em">&#x2061;</mo><mi>θ</mi><mo>=</mo><mfrac><mi>h</mi><mn>50</mn></mfrac></mrow><annotation encoding="application/x-tex">\tan\theta = \frac{h}{50}</annotation></semantics></math>.</p>
+
+<h2 id="a-routine-for-picture-problems">A routine for picture problems</h2>
+<ul>
+<li>Draw the picture, even if one is given.</li>
+<li>Label every quantity that changes with a letter and every fixed quantity with its number.</li>
+<li>Find the right angle or the <span class="gl" tabindex="0" data-c="similar-triangles">similar triangles</span>, and write one equation.</li>
+<li>If the formula has too many variables, use a ratio or the Pythagorean theorem to eliminate one.</li>
+</ul>
+<p>Substitute a specific moment's numbers (like <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">x = 6</annotation></semantics></math>) only at the end. If you put them in too early, the equation stops describing the changing picture.</p>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:math-geometry">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="rates-in-context.html"><span>&larr; Previous</span><b>Rates of Change in Other Contexts</b></a><a class="tb-chapter-link next" href="related-rates-intro.html"><span>Next &rarr;</span><b>Introduction to Related Rates</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:math-geometry">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>

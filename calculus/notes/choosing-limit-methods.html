@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh https://www.youtube-nocookie.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choosing a Way to Find a Limit — AP® Calculus AB Notes</title>
+<meta name="description" content="By now you have several tools for limits: reading a graph, building a table, the limit laws, factoring and rationalizing.">
+<link rel="canonical" href="https://levlprep.com/calculus/notes/choosing-limit-methods.html">
+<meta property="og:title" content="Choosing a Way to Find a Limit — AP® Calculus AB Notes">
+<meta property="og:description" content="By now you have several tools for limits: reading a graph, building a table, the limit laws, factoring and rationalizing.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/calculus/notes/choosing-limit-methods.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/calculus/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
+<link rel="stylesheet" href="../assets/calc.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/calculus/notes/choosing-limit-methods.html#reading",
+      "name": "Choosing a Way to Find a Limit",
+      "url": "https://levlprep.com/calculus/notes/choosing-limit-methods.html",
+      "description": "By now you have several tools for limits: reading a graph, building a table, the limit laws, factoring and rationalizing.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "choosing a way to find a limit ap calculus ab explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/calculus/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Calculus AB",
+          "item": "https://levlprep.com/calculus/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Limits and Continuity",
+          "item": "https://levlprep.com/calculus/units/unit-1.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Choosing a Way to Find a Limit: notes",
+          "item": "https://levlprep.com/calculus/notes/choosing-limit-methods.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="calc" data-topic="choosing-limit-methods" data-unit="unit-1">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="calc-rail" aria-expanded="false">&#9776; Unit 1 contents</button>
+  <aside class="tb-rail calc-nav-ref bk-rail" id="calc-rail">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../units/unit-1.html"><span class="bk-toc-chap-n">1</span><span><b>Limits and Continuity</b><small>16 topics</small></span></a>
+    <div class="calc-toc-prog" data-toc-prog="unit-1"><div class="tb-progress-row"><span><b>0</b> of 16 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="change-at-an-instant"><a href="change-at-an-instant.html"><span class="bk-toc-n">1.1</span>Can Change Happen at an Instant?</a></li><li data-toc-t="limit-notation"><a href="limit-notation.html"><span class="bk-toc-n">1.2</span>What a Limit Is and How to Write It</a></li><li data-toc-t="limits-from-plots"><a href="limits-from-plots.html"><span class="bk-toc-n">1.3</span>Reading Limits from a Graph</a></li><li data-toc-t="limits-from-tables"><a href="limits-from-tables.html"><span class="bk-toc-n">1.4</span>Estimating Limits from Tables</a></li><li data-toc-t="limit-laws"><a href="limit-laws.html"><span class="bk-toc-n">1.5</span>Limit Laws</a></li><li data-toc-t="limit-algebra"><a href="limit-algebra.html"><span class="bk-toc-n">1.6</span>Limits by Algebra: Factor, Rationalize, Simplify</a></li><li class="current" data-toc-t="choosing-limit-methods"><a href="#main" aria-current="page"><span class="bk-toc-n">1.7</span>Choosing a Way to Find a Limit</a><div class="bk-toc-onpage"><p>On this page</p><a href="#substitute-first">Substitute first</a><a href="#read-the-result">Read the result</a><a href="#zero-over-zero-rewrite">Zero over zero: rewrite</a><a href="#nonzero-over-zero-unbounded">Nonzero over zero: unbounded</a><a href="#break-points-one-side-at-a">Break points: one side at a time</a><a href="#a-checklist">A checklist</a></div></li><li data-toc-t="squeeze-theorem"><a href="squeeze-theorem.html"><span class="bk-toc-n">1.8</span>The Squeeze Theorem</a></li><li data-toc-t="limit-representations"><a href="limit-representations.html"><span class="bk-toc-n">1.9</span>Limits Across Graphs, Tables and Formulas</a></li><li data-toc-t="discontinuity-types"><a href="discontinuity-types.html"><span class="bk-toc-n">1.10</span>Types of Discontinuity</a></li><li data-toc-t="continuity-at-a-point"><a href="continuity-at-a-point.html"><span class="bk-toc-n">1.11</span>Continuity at a Point</a></li><li data-toc-t="continuity-on-intervals"><a href="continuity-on-intervals.html"><span class="bk-toc-n">1.12</span>Continuity on an Interval</a></li><li data-toc-t="removing-discontinuities"><a href="removing-discontinuities.html"><span class="bk-toc-n">1.13</span>Removing a Discontinuity</a></li><li data-toc-t="infinite-limits"><a href="infinite-limits.html"><span class="bk-toc-n">1.14</span>Infinite Limits and Vertical Asymptotes</a></li><li data-toc-t="limits-at-infinity"><a href="limits-at-infinity.html"><span class="bk-toc-n">1.15</span>Limits at Infinity and Horizontal Asymptotes</a></li><li data-toc-t="intermediate-value-theorem"><a href="intermediate-value-theorem.html"><span class="bk-toc-n">1.16</span>The Intermediate Value Theorem</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-2.html"><span class="bk-toc-n">2</span>Differentiation: Definition and Fundamental Properties</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="calc-crumb calc-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Calculus AB</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-1.html">Limits and Continuity</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Choosing a Way to Find a Limit: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/choosing-limit-methods.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Unit 1 &middot; Topic 1.7 <span class="calc-beta calc-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Choosing a Way to Find a Limit</h1>
+      <p class="bk-meta calc-nav-ref"><span class="bk-small">5 min read &middot; free</span><span class="bk-chip" data-chip-topic="choosing-limit-methods">Not practiced</span></p>
+      <div class="bk-actions calc-share calc-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fcalculus%2Fnotes%2Fchoosing-limit-methods.html&amp;title=Choosing%20a%20Way%20to%20Find%20a%20Limit%3A%20calculus%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/calculus/notes/choosing-limit-methods.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <article class="calc-prose bk-prose">
+<p>By now you have several tools for <a class="gl" href="../notes/limit-notation.html" data-c="limit">limits</a>: reading a graph, building a table, the <a class="gl" href="../notes/limit-laws.html" data-c="limit-laws">limit laws</a>, <a class="gl" href="../notes/math-limit-algebra.html" data-c="factoring">factoring</a> and <a class="gl" href="../notes/math-limit-algebra.html" data-c="rationalizing">rationalizing</a>. A real question does not say which one to use. This page gives you a plan. One substitution, read carefully, tells you which tool comes next.</p>
+
+<h2 id="substitute-first">Substitute first</h2>
+<p>Start every limit <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>c</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to c} f(x)</annotation></semantics></math> by putting <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x = c</annotation></semantics></math> into the expression. This is fast, and it is often the whole job. The limit laws say that for a polynomial, or a quotient of <a class="gl" href="../notes/math-functions.html" data-c="rational-function">polynomials</a> whose denominator is not 0 at <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>, the limit equals the value: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>c</mi></mrow></munder><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to c} f(x) = f(c)</annotation></semantics></math>. The same holds for roots, as long as the expression is defined on both sides of <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>.</p>
+<div class="worked">
+<p><b>Worked example 1.</b> Find <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>2</mn></mrow></munder><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 2} \frac{x^2 + 1}{x + 3}</annotation></semantics></math>.</p>
+<p>Substitute: the denominator is <math class="calc-m"><semantics><mrow><mn>2</mn><mo>+</mo><mn>3</mn><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">2 + 3 = 5</annotation></semantics></math>, not 0. So the limit is the value.</p>
+<p><math class="calc-m" display="block"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>2</mn></mrow></munder><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>4</mn><mo>+</mo><mn>1</mn></mrow><mn>5</mn></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 2} \frac{x^2 + 1}{x + 3} = \frac{4 + 1}{5} = 1</annotation></semantics></math></p>
+</div>
+
+<h2 id="read-the-result">Read the result</h2>
+<p>Substitution can come out three ways. Each one sends you somewhere different.</p>
+<figure id="fig-map"  class="calc-figure"><div class="calc-figimg" data-fig="limit-method-map"><img src="../figures/limit-method-map.svg" alt="A decision map for limits. Start by substituting x = c. A number means that is the limit. Zero over zero means rewrite by factoring, using a conjugate or combining fractions, then substitute again. A nonzero number over zero means the function is unbounded near c, so check the sign on each side. At a break point of a piecewise or absolute value function, find both one-sided limits and compare them." width="760" height="470" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A decision map: the result of substituting picks the next step. <span class="calc-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
+<thead><tr><th>Substituting gives</th><th>What it means</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>a number, like <math class="calc-m"><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></td><td>the expression is defined near <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></td><td>that number is the limit</td></tr>
+<tr><td><math class="calc-m"><semantics><mrow><mfrac><mn>0</mn><mn>0</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{0}{0}</annotation></semantics></math></td><td>top and bottom share a zero factor</td><td>rewrite, then substitute again</td></tr>
+<tr><td>nonzero over 0, like <math class="calc-m"><semantics><mrow><mfrac><mn>6</mn><mn>0</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{6}{0}</annotation></semantics></math></td><td>the bottom shrinks, the top does not</td><td>the <a class="gl" href="../notes/math-functions.html" data-c="function">function</a> is <a class="gl" href="../notes/limits-from-plots.html" data-c="unbounded">unbounded</a>; check each side's sign</td></tr>
+</tbody>
+</table></div>
+<p>One more case sits beside the table. If the function changes formula at <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> (a <a class="gl" href="../notes/math-functions.html" data-c="piecewise-function">piecewise function</a>, or an absolute value), the two sides follow different rules. Then find the left-hand and right-hand limits separately and compare them.</p>
+
+<h2 id="zero-over-zero-rewrite">Zero over zero: rewrite</h2>
+<p><math class="calc-m"><semantics><mrow><mfrac><mn>0</mn><mn>0</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{0}{0}</annotation></semantics></math> is called an <b><a class="gl" href="../notes/limit-algebra.html" data-c="indeterminate-form">indeterminate form</a></b>. It is not a number and it is not an answer. It says the numerator and the denominator both reach 0 at <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>, which usually means they share a factor that is 0 there. Remove that factor and the rest of the expression tells you the limit. Three moves cover almost every case.</p>
+<p><b>Factor and cancel</b> when you see polynomials.</p>
+<div class="worked">
+<p><b>Worked example 2.</b> Find <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>3</mn></mrow></munder><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mi>x</mi><mo>−</mo><mn>6</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 3} \frac{x^2 - x - 6}{x - 3}</annotation></semantics></math>.</p>
+<p>Substitute: <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>9</mn><mo>−</mo><mn>3</mn><mo>−</mo><mn>6</mn></mrow><mn>0</mn></mfrac><mo>=</mo><mfrac><mn>0</mn><mn>0</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{9 - 3 - 6}{0} = \frac{0}{0}</annotation></semantics></math>. Rewrite.</p>
+<p>Factor the top: <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mi>x</mi><mo>−</mo><mn>6</mn><mo>=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x^2 - x - 6 = (x - 3)(x + 2)</annotation></semantics></math>. For every <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x \ne 3</annotation></semantics></math>,</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></mfrac><mo>=</mo><mi>x</mi><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\frac{(x - 3)(x + 2)}{x - 3} = x + 2</annotation></semantics></math></p>
+<p>A limit never looks at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math> itself, so the two expressions have the same limit: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>3</mn></mrow></munder><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 3} (x + 2) = 5</annotation></semantics></math>.</p>
+</div>
+<p><b>Multiply by the conjugate</b> when a square root sits next to a subtraction.</p>
+<div class="worked">
+<p><b>Worked example 3.</b> Find <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><msqrt><mrow><mi>x</mi><mo>+</mo><mn>4</mn></mrow></msqrt><mo>−</mo><mn>2</mn></mrow><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 0} \frac{\sqrt{x + 4} - 2}{x}</annotation></semantics></math>.</p>
+<p>Substitute: <math class="calc-m"><semantics><mrow><mfrac><mrow><mn>2</mn><mo>−</mo><mn>2</mn></mrow><mn>0</mn></mfrac><mo>=</mo><mfrac><mn>0</mn><mn>0</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{2 - 2}{0} = \frac{0}{0}</annotation></semantics></math>. Multiply top and bottom by the conjugate <math class="calc-m"><semantics><mrow><msqrt><mrow><mi>x</mi><mo>+</mo><mn>4</mn></mrow></msqrt><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\sqrt{x + 4} + 2</annotation></semantics></math>:</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mo stretchy="false">(</mo><msqrt><mrow><mi>x</mi><mo>+</mo><mn>4</mn></mrow></msqrt><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msqrt><mrow><mi>x</mi><mo>+</mo><mn>4</mn></mrow></msqrt><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mrow><mi>x</mi><mo stretchy="false">(</mo><msqrt><mrow><mi>x</mi><mo>+</mo><mn>4</mn></mrow></msqrt><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>x</mi><mo>+</mo><mn>4</mn><mo>−</mo><mn>4</mn></mrow><mrow><mi>x</mi><mo stretchy="false">(</mo><msqrt><mrow><mi>x</mi><mo>+</mo><mn>4</mn></mrow></msqrt><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mrow><msqrt><mrow><mi>x</mi><mo>+</mo><mn>4</mn></mrow></msqrt><mo>+</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{(\sqrt{x + 4} - 2)(\sqrt{x + 4} + 2)}{x(\sqrt{x + 4} + 2)} = \frac{x + 4 - 4}{x(\sqrt{x + 4} + 2)} = \frac{1}{\sqrt{x + 4} + 2}</annotation></semantics></math></p>
+<p>Now substitute: <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mrow><mn>2</mn><mo>+</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>4</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2 + 2} = \frac{1}{4}</annotation></semantics></math>.</p>
+</div>
+<p><b>Combine fractions</b> when small fractions sit inside a big one.</p>
+<div class="worked">
+<p><b>Worked example 4.</b> Find <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>3</mn></mrow></munder><mfrac><mrow><mfrac><mn>1</mn><mi>x</mi></mfrac><mo>−</mo><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lim_{x \to 3} \frac{\frac{1}{x} - \frac{1}{3}}{x - 3}</annotation></semantics></math>.</p>
+<p>Substitute: <math class="calc-m"><semantics><mrow><mfrac><mn>0</mn><mn>0</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{0}{0}</annotation></semantics></math>. Put the top over one denominator: <math class="calc-m"><semantics><mrow><mfrac><mn>1</mn><mi>x</mi></mfrac><mo>−</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mo>=</mo><mfrac><mrow><mn>3</mn><mo>−</mo><mi>x</mi></mrow><mrow><mn>3</mn><mi>x</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{x} - \frac{1}{3} = \frac{3 - x}{3x}</annotation></semantics></math>. Then</p>
+<p><math class="calc-m" display="block"><semantics><mrow><mfrac><mrow><mn>3</mn><mo>−</mo><mi>x</mi></mrow><mrow><mn>3</mn><mi>x</mi><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><mrow><mn>3</mn><mi>x</mi><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mrow><mn>3</mn><mi>x</mi></mrow></mfrac><mspace width="1em"></mspace><mo stretchy="false">(</mo><mi>x</mi><mo>≠</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{3 - x}{3x(x - 3)} = \frac{-(x - 3)}{3x(x - 3)} = -\frac{1}{3x} \quad (x \ne 3)</annotation></semantics></math></p>
+<p>Substitute: <math class="calc-m"><semantics><mrow><mo form="prefix" lspace="0" rspace="0">−</mo><mfrac><mn>1</mn><mn>9</mn></mfrac></mrow><annotation encoding="application/x-tex">-\frac{1}{9}</annotation></semantics></math>.</p>
+</div>
+<p>Keep the limit symbol on every line until the final substitution. The rewritten expression equals the original only for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≠</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x \ne c</annotation></semantics></math>, and the limit symbol is what makes that enough. Never write <math class="calc-m"><semantics><mrow><mfrac><mn>0</mn><mn>0</mn></mfrac><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\frac{0}{0} = 5</annotation></semantics></math>: the 5 comes from the rewritten expression, not from <math class="calc-m"><semantics><mrow><mfrac><mn>0</mn><mn>0</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{0}{0}</annotation></semantics></math>.</p>
+
+<h2 id="nonzero-over-zero-unbounded">Nonzero over zero: unbounded</h2>
+<p>Suppose substitution gives <math class="calc-m"><semantics><mrow><mfrac><mn>6</mn><mn>0</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{6}{0}</annotation></semantics></math>. Near <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math> the numerator stays close to 6 while the denominator gets as small as you like. Dividing 6 by a tiny number gives a huge number. So the function is unbounded near <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>, and the <a class="gl" href="../notes/limits-from-plots.html" data-c="limit-dne">limit does not exist</a>. No rewriting changes this, because there is no common zero factor to cancel.</p>
+<p>The sign on each side tells the shape. For <math class="calc-m"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>x</mi><mo>+</mo><mn>3</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">h(x) = \frac{x + 3}{x - 3}</annotation></semantics></math> near 3: just left of 3, <math class="calc-m"><semantics><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x - 3</annotation></semantics></math> is a tiny negative number, so <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> is a huge negative number. Just right of 3, <math class="calc-m"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math> is a huge positive number. The graph has a <a class="gl" href="../notes/math-functions.html" data-c="asymptote">vertical asymptote</a> at <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = 3</annotation></semantics></math>. A later topic gives this behavior its own notation.</p>
+
+<h2 id="break-points-one-side-at-a">Break points: one side at a time</h2>
+<p>For a piecewise function, use the formula that applies on each side. For an absolute value, remember <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>u</mi><mo stretchy="false">|</mo><mo>=</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">|u| = u</annotation></semantics></math> when <math class="calc-m"><semantics><mrow><mi>u</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u \ge 0</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mo stretchy="false">|</mo><mi>u</mi><mo stretchy="false">|</mo><mo>=</mo><mo form="prefix" lspace="0" rspace="0">−</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">|u| = -u</annotation></semantics></math> when <math class="calc-m"><semantics><mrow><mi>u</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u &lt; 0</annotation></semantics></math>, so it is a piecewise function in disguise.</p>
+<div class="worked">
+<p><b>Worked example 5.</b> Let <math class="calc-m"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p(x) = 2x + 1</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x &lt; 2</annotation></semantics></math> and <math class="calc-m"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p(x) = x^2 + 1</annotation></semantics></math> for <math class="calc-m"><semantics><mrow><mi>x</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x \ge 2</annotation></semantics></math>. Find <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>2</mn></mrow></munder><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim_{x \to 2} p(x)</annotation></semantics></math>.</p>
+<p>From the left, use <math class="calc-m"><semantics><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2x + 1</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>2</mn><mo>−</mo></msup></mrow></munder><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 2^-} p(x) = 5</annotation></semantics></math>. From the right, use <math class="calc-m"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x^2 + 1</annotation></semantics></math>: <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><msup><mn>2</mn><mo>+</mo></msup></mrow></munder><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 2^+} p(x) = 5</annotation></semantics></math>.</p>
+<p>The <a class="gl" href="../notes/limits-from-plots.html" data-c="one-sided-limit">one-sided limits</a> are equal, so <math class="calc-m"><semantics><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>2</mn></mrow></munder><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\lim_{x \to 2} p(x) = 5</annotation></semantics></math>. Had they differed, the limit would not exist.</p>
+</div>
+
+<h2 id="a-checklist">A checklist</h2>
+<ol>
+<li>Substitute <math class="calc-m"><semantics><mrow><mi>x</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x = c</annotation></semantics></math>.</li>
+<li>A number? That is the limit.</li>
+<li><math class="calc-m"><semantics><mrow><mfrac><mn>0</mn><mn>0</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{0}{0}</annotation></semantics></math>? Factor, use a conjugate, or combine fractions. Then substitute again.</li>
+<li>Nonzero over 0? The function is unbounded near <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>; the limit does not exist. Check the sign on each side.</li>
+<li>A formula change at <math class="calc-m"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math>? Find both one-sided limits and compare.</li>
+<li>Still stuck, or no formula at all? Use a graph or a table of values.</li>
+</ol>
+
+    </article>
+    <p class="calc-report-page calc-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:choosing-limit-methods">Report a problem</button></p>
+    <nav class="tb-chapter-nav calc-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="limit-algebra.html"><span>&larr; Previous</span><b>Limits by Algebra: Factor, Rationalize, Simplify</b></a><a class="tb-chapter-link next" href="math-trig.html"><span>Next &rarr;</span><b>Trigonometry and the Unit Circle</b></a></nav>
+  </main>
+</div>
+<footer class="calc-foot xshell">
+  <p class="calc-accuracy-note"><span class="calc-beta calc-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Calculus AB teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="calc-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apcalc" data-report-question="notes:choosing-limit-methods">Report a problem</button></span></p>
+  <p class="calc-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../about.html">About</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApCalcSection = 'learn'; window.ApCalcBase = '../';</script>
+<script src="../assets/calc-curriculum.js" defer></script>
+<script src="../assets/calc-core.js" defer></script>
+<script src="../assets/calc-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<script src="../assets/calc-toc.js" defer></script>
+</body>
+</html>
