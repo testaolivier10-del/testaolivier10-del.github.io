@@ -81,7 +81,8 @@
       "hook": "Which valve sits between the left atrium and ventricle?",
       "buffer": "6ac452fa3fbdeb68b9092ae2",
       "youtube_id": "hKG6W1GyZTQ",
-      "yt_buffer": "6ac7063001166a3e1c11cbba"
+      "yt_buffer": "6ac7063001166a3e1c11cbba",
+      "shorts_thumb": true
     },
     {
       "id": "w1006-01-bag-rate",
@@ -97,7 +98,8 @@
       "buffer": "6ac6df3457f9bd074d1f8032",
       "youtube_id": "RwvK7olWBVw",
       "thumbnail_set": null,
-      "yt_buffer": "6ac706415632f7b74bd81781"
+      "yt_buffer": "6ac706415632f7b74bd81781",
+      "shorts_thumb": true
     },
     {
       "id": "w1006-02-heart-wiring",
@@ -113,7 +115,8 @@
       "buffer": "6ac6df3a5632f7b74bd295d0",
       "youtube_id": "EBZNvvrwnuo",
       "thumbnail_set": null,
-      "yt_buffer": "6ac706822977c961bdc2b4ed"
+      "yt_buffer": "6ac706822977c961bdc2b4ed",
+      "shorts_thumb": true
     },
     {
       "id": "w1006-03-chair-flip",
