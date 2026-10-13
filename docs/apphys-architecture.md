@@ -256,4 +256,4 @@ calculator states that its cut-offs are estimates and how they were chosen.
 | `check-apphys-content.mjs --check` | the formats above (4-option single items, numeric fields incl. `gAlt`, diagram stimuli, the four FRQ types with drawSpec/graphSpec rules, physics skill ids, practice 1 not in MCQ, every registered tool with `studio`, a map `topic`, and once it has data its script, model and validator), plus every AP® Chemistry rule. Only published chapters fail. |
 | site rules `apphys-trademark`, `apphys-beta-and-report` | as AP® Chemistry's, for `physics/` |
 | `scripts/test/apphys-*.test.mjs` | map, build (against the fixture; tool gating), core, questions (physics units, gAlt, slip feedback, `ApPhysMath`), scene, cram, exams (score estimate, 2027 format, form rules on synthetic forms), and one test per tool |
-| `sql-migration.test.mjs` | `2026-10e-apphys.sql` adds `apphys` everywhere and matches `schema.sql` |
+| `sql-migration.test.mjs` | `2026-10f-apphys.sql` adds `apphys` everywhere and matches `schema.sql` |

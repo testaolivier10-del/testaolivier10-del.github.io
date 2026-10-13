@@ -153,7 +153,7 @@ Owner to confirm (needs-author `tools-premium`).
    Physics 1, one force at a time."; ranks Point Particle → Vector Tracer → Force Balancer →
    Energy Keeper → Momentum Master → Torque Turner → Physics Legend; manifest and OG card
    "Physics" without the mark. Registered hidden exactly as apchem decision 11 (registry, every
-   generated course list, Worker, SQL with migration `2026-10e-apphys.sql` **not applied**,
+   generated course list, Worker, SQL with migration `2026-10f-apphys.sql` **not applied**,
    premium.js, hub/404/premium.html empty until a unit is published, site search
    `?course=physics`, tutor without a bank, sitemap, OG, budgets (site shell 287 → 288 KB), a11y
    and console samples, CI, site rules `apphys-trademark` and `apphys-beta-and-report`, `sw.js`
@@ -239,7 +239,7 @@ Owner to confirm (needs-author `tools-premium`).
 
 - **Launch checklist (only you can do).** The course is published (free parts live, Premium shows
   "coming soon" and locks nothing) until these are done, in order:
-  1. Apply `scripts/sql/migrations/2026-10e-apphys.sql` in Supabase (after 2026-10c and 2026-10d).
+  1. Apply `scripts/sql/migrations/2026-10f-apphys.sql` in Supabase (after 2026-10c and 2026-10d).
   2. Create the Polar product "AP® Physics 1 Premium (through June 30, 2027)", one-time $25.
   3. Add `"phys-2027": "<product id>"` to `POLAR_PRODUCTS` (Worker config, the `phys` pass key).
   4. Merge the PR, then deploy the Worker (`node scripts/build-worker.mjs`, then deploy).

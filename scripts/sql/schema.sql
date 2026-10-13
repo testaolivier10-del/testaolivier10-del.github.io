@@ -742,7 +742,7 @@ alter table public.premium_guarantee_claims enable row level security;
 create table if not exists public.premium_funnel (
   day    date not null default current_date,
   course text not null check (course in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys')),
-  step   text not null check (step in ('gate-shown', 'interest', 'signin-for-checkout', 'checkout-start', 'checkout-paid')),
+  step   text not null check (step in ('gate-shown', 'limit-hit', 'interest', 'signin-for-checkout', 'checkout-start', 'checkout-paid')),
   n      integer not null default 0,
   primary key (day, course, step)
 );
@@ -757,7 +757,7 @@ set search_path = public
 as $$
 begin
   if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys')
-     or p_step is null or p_step not in ('gate-shown', 'interest', 'signin-for-checkout', 'checkout-start') then
+     or p_step is null or p_step not in ('gate-shown', 'limit-hit', 'interest', 'signin-for-checkout', 'checkout-start') then
     return;
   end if;
   insert into public.premium_funnel (course, step, n)
@@ -801,7 +801,7 @@ declare
 begin
   if not (v_ref ~ '^(tt|yt|ig)-[a-z0-9-]{1,40}$' or v_ref in ('push', 'email', 'share'))
      or p_step is null
-     or p_step not in ('visit', 'gate-shown', 'interest', 'signin-for-checkout', 'checkout-start') then
+     or p_step not in ('visit', 'gate-shown', 'limit-hit', 'interest', 'signin-for-checkout', 'checkout-start') then
     return;
   end if;
   if not exists (select 1 from public.ref_events e where e.day = current_date and e.ref = v_ref and e.step = p_step)

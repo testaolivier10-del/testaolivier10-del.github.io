@@ -427,14 +427,13 @@
   /* The Premium funnel: Umami gets the event as before, and an anonymous
      daily count goes to the database (count_premium_step in
      scripts/sql/schema.sql), so the funnel can be read back without Umami:
-     limit hit -> dialog opened -> checkout started -> paid. No user, no
-     browser id, just a number per day; skipped when analytics is turned off.
-     A gate counts once per page load per feature, however often it repaints. */
+     card seen -> dialog opened -> checkout started -> paid. No user, no
+     browser id, just a number per day; skipped when analytics is turned off. */
   var funnelSeen = {};
   function funnel(step, course, data) {
     var an = window.LevlAnalytics;
     if (an) an.event('premium-' + step, data);
-    if (step === 'gate-shown') {
+    if (step === 'gate-shown' || step === 'limit-hit') {
       var k = course + ':' + (data && data.feature);
       if (funnelSeen[k]) return;
       funnelSeen[k] = true;
@@ -511,8 +510,7 @@
   function gate(course, feature, source) {
     var c = COURSES[course];
     if (!c || has(course)) return '';
-    funnel('gate-shown', course, { course: course, feature: feature || '' });
-    return '<div class="premium-card premium-lock" data-premium-feature="' + esc(feature || '') + '">' +
+    return '<div class="premium-card premium-lock" data-premium-course="' + esc(course) + '" data-premium-feature="' + esc(feature || '') + '">' +
       '<span class="premium-card__tag">Premium</span>' +
       '<b>' + esc(lockTitle(feature)) + '</b>' +
       scoreLine(course, feature) +
@@ -1037,9 +1035,44 @@
     }
   }
 
+  // Count a locked card only once a person sees it (docs/trust-conversion-plan.md).
+  var LIMIT_FEATURES = { 'daily-limit': 1, 'exam': 1, 'exams': 1 }, interacted = false;
+  function watchGates() {
+    if (!window.IntersectionObserver || !window.MutationObserver) return;
+    var sel = '.premium-lock[data-premium-course]';
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var el = e.target;
+        clearTimeout(el._lpT);
+        if (e.intersectionRatio < 0.5 || !interacted) return;
+        el._lpT = setTimeout(function () {
+          if (document.visibilityState !== 'visible' || !el.isConnected) return;
+          io.unobserve(el);
+          var c = el.dataset.premiumCourse, f = el.dataset.premiumFeature || '';
+          if (!has(c)) funnel(LIMIT_FEATURES[f] ? 'limit-hit' : 'gate-shown', c, { course: c, feature: f });
+        }, 1000);
+      });
+    }, { threshold: [0, 0.5] });
+    function scan() {
+      var cs = document.querySelectorAll(sel);
+      for (var i = 0; i < cs.length; i++) if (!cs[i]._lpW) { cs[i]._lpW = 1; io.observe(cs[i]); }
+    }
+    ['scroll', 'pointerdown', 'keydown'].forEach(function (ev) {
+      window.addEventListener(ev, function () {
+        if (interacted) return;
+        interacted = true;
+        var cs = document.querySelectorAll(sel);
+        for (var i = 0; i < cs.length; i++) { io.unobserve(cs[i]); io.observe(cs[i]); }
+      }, true);
+    });
+    scan();
+    new MutationObserver(scan).observe(document.documentElement, { childList: true, subtree: true });
+  }
+
   function mount() {
     if (window.__levlPremiumMounted) return;
     window.__levlPremiumMounted = true;
+    watchGates();
     document.addEventListener('click', function (e) {
       var btn = e.target && e.target.closest && e.target.closest('[data-premium-open]');
       if (!btn) return;

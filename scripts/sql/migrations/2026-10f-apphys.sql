@@ -1,11 +1,11 @@
 -- AP® Physics 1 (course key apphys): the database half of registering the course
--- (docs/apphys-spec.md, the owner checklist). Named 2026-10e so it sorts after
--- 2026-10d-ref-tracking.sql: migrations run, and are compared with schema.sql, in
+-- (docs/apphys-spec.md, the owner checklist). Named 2026-10f so it sorts after
+-- 2026-10e-funnel-seen.sql: migrations run, and are compared with schema.sql, in
 -- file-name order. NOT APPLIED anywhere yet.
 --
 -- Run once, BEFORE the AP® Physics 1 pass goes on sale: Supabase dashboard ->
--- SQL Editor -> New query -> paste -> Run. Needs 2026-10c-apchem.sql and
--- 2026-10d-ref-tracking.sql first. Idempotent: every check constraint is
+-- SQL Editor -> New query -> paste -> Run. Needs 2026-10c-apchem.sql,
+-- 2026-10d-ref-tracking.sql and 2026-10e-funnel-seen.sql first. Idempotent: every check constraint is
 -- dropped and re-added, every function is create-or-replace, so running it
 -- twice changes nothing the second time. schema.sql carries the same
 -- definitions (scripts/test/sql-migration.test.mjs checks them word for word).
@@ -14,8 +14,8 @@
 --   1. Adds 'apphys' to the course check on premium_passes, premium_funnel and
 --      exam_completions.
 --   2. Adds 'apphys' to every function with a course list: report_question,
---      join_waitlist, count_premium_step (as 2026-10d left it, with
---      'signin-for-checkout'), premium_add_pass (keeping p_until: the pass runs
+--      join_waitlist, count_premium_step (as 2026-10e-funnel-seen left it,
+--      with 'limit-hit' and 'signin-for-checkout'), premium_add_pass (keeping p_until: the pass runs
 --      through June 30, 2027 whenever it is bought), record_exam_completion,
 --      count_premium_paid. The signatures are unchanged, so the grants from
 --      earlier migrations still apply; they are repeated at the end anyway.
@@ -146,7 +146,7 @@ set search_path = public
 as $$
 begin
   if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio', 'apchem', 'apphys')
-     or p_step is null or p_step not in ('gate-shown', 'interest', 'signin-for-checkout', 'checkout-start') then
+     or p_step is null or p_step not in ('gate-shown', 'limit-hit', 'interest', 'signin-for-checkout', 'checkout-start') then
     return;
   end if;
   insert into public.premium_funnel (course, step, n)
